@@ -232,6 +232,7 @@ SUBSYSTEM_DEF(garbage)
 		postpone(time)
 
 /datum/controller/subsystem/garbage/Recover()
+	. = ..()
 	if (istype(SSgarbage.queues))
 		for (var/i in 1 to SSgarbage.queues.len)
 			queues[i] |= SSgarbage.queues[i]

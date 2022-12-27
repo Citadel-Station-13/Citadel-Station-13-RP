@@ -126,14 +126,14 @@
 	. = ..()
 	qdel(src)
 
-/obj/item/electric_hand/afterattack(var/atom/target, var/mob/living/carbon/human/user, proximity)
+/obj/item/electric_hand/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	// Handle glove conductivity.
-	var/obj/item/clothing/gloves/gloves = user.gloves
+	var/obj/item/clothing/gloves/gloves = user.item_by_slot(SLOT_ID_GLOVES)
 	var/siemens = 1
 	if(gloves)
 		siemens = gloves.siemens_coefficient

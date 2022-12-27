@@ -218,8 +218,9 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
 	return TRUE
 
-/obj/item/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
-	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
+/obj/item/pipe_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
+	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	//So that changing the menu settings doesn't affect the pipes already being built.
@@ -352,7 +353,7 @@
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
 	var/resolved = target.attackby(tool,user)
 	if(!resolved && tool && target)
-		tool.afterattack(target,user,1)
+		tool.afterattack(target,user,CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

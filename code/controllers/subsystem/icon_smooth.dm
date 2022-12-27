@@ -1,9 +1,10 @@
 SUBSYSTEM_DEF(icon_smooth)
 	name = "Icon Smoothing"
 	init_order = INIT_ORDER_ICON_SMOOTHING
-	wait = 1
+	// scale up to 40 fps
+	wait = 0.25
 	priority = FIRE_PRIORITY_SMOOTHING
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 
 	///Blueprints assemble an image of what pipes/manifolds/wires look like on initialization, and thus should be taken after everything's been smoothed
 	// var/list/blueprint_queue = list()

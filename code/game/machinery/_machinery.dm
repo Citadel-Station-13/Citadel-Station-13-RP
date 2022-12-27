@@ -106,6 +106,10 @@
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
 
+	/// machinery flags
+	var/machine_flags
+
+	// todo: roll this into machine flags
 	var/machine_stat = 0
 	var/emagged = FALSE
 	/**
@@ -402,14 +406,12 @@
 		user.visible_message( \
 			"<span class='warning'>\The [user] has [anchored ? "un" : ""]secured \the [src].</span>", \
 			"<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
-		anchored = !anchored
+		set_anchored(!anchored)
 		power_change() //Turn on or off the machine depending on the status of power in the new area.
 		update_appearance()
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-
-
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -458,6 +460,8 @@
 	playsound(src.loc, W.tool_sound, 50, 1)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
+
+#warn frames need to be standardized and machines need to read that for what decon/panel type they have
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)

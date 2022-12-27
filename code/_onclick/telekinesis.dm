@@ -84,7 +84,7 @@ var/const/tk_maxrange = 15
 	if(focus)
 		focus.attack_self_tk(user)
 
-/obj/item/tk_grab/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity)//TODO: go over this
+/obj/item/tk_grab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target || !user)	return
 	if(last_throw+3 > world.time)	return
 	if(!host || host != user)
@@ -116,7 +116,7 @@ var/const/tk_maxrange = 15
 		var/obj/item/I = focus
 		var/resolved = target.attackby(I, user, user:get_organ_target())
 		if(!resolved && target && I)
-			I.afterattack(target,user,1) // for splashing with beakers
+			I.afterattack(target,user,CLICKCHAIN_HAS_PROXIMITY) // for splashing with beakers
 	else
 		apply_focus_overlay()
 		focus.throw_at_old(target, 10, 1, user)

@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(nanoui)
 	var/list/processing_uis = list()
 
 /datum/controller/subsystem/nanoui/Recover()
+	. = ..()
 	if(SSnanoui.open_uis)
 		open_uis |= SSnanoui.open_uis
 	if(SSnanoui.processing_uis)

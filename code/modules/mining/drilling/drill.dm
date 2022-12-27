@@ -1,72 +1,53 @@
-/obj/machinery/mining
+/obj/machinery/mining_drill
 	icon = 'icons/obj/mining_drill.dmi'
 	anchored = 0
 	use_power = USE_POWER_OFF //The drill takes power directly from a cell.
 	density = 1
 	layer = MOB_LAYER+0.1 //So it draws over mobs in the tile north of it.
 
-/obj/machinery/mining/drill
+/obj/machinery/mining_drill/head
 	name = "mining drill head"
 	desc = "An enormous drill."
 	icon_state = "mining_drill"
 	circuit = /obj/item/circuitboard/miningdrill
+
+	/// how many braces we need
 	var/braces_needed = 2
+	/// connected braces
 	var/list/supports = list()
-	var/supported = 0
+	/// do we have enough supports?
+	var/supported = FALSE
+	/// inserted power cell
+	var/obj/item/cell/cell
+
+	#warn check below
 	var/active = 0
 	var/list/resource_field = list()
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
-
-	var/list/ore_types = list(
-		MAT_HEMATITE = /obj/item/ore/iron,
-		MAT_URANIUM = /obj/item/ore/uranium,
-		MAT_GOLD = /obj/item/ore/gold,
-		MAT_SILVER = /obj/item/ore/silver,
-		MAT_COPPER = /obj/item/ore/copper,
-		MAT_DIAMOND = /obj/item/ore/diamond,
-		MAT_PHORON = /obj/item/ore/phoron,
-		MAT_OSMIUM = /obj/item/ore/osmium,
-		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal
-		)
 
 	//Upgrades
 	var/harvest_speed
 	var/capacity
 	var/charge_use
-	var/exotic_drilling
-	var/obj/item/cell/cell = null
-
-	// Found with an advanced laser. exotic_drilling >= 1
-	var/list/ore_types_uncommon = list(
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead
-		)
-
-	// Found with an ultra laser. exotic_drilling >= 2
-	var/list/ore_types_rare = list(
-		MAT_VERDANTIUM = /obj/item/ore/verdantium
-		)
 
 	//Flags
 	var/need_update_field = 0
 	var/need_player_check = 0
 
-/obj/machinery/mining/drill/Initialize(mapload)
+/obj/machinery/mining_drill/head/Initialize(mapload)
 	. = ..()
-	component_parts = list(
-		new /obj/item/stock_parts/matter_bin(src),
-		new /obj/item/stock_parts/capacitor(src),
-		new /obj/item/stock_parts/micro_laser(src),
-		new /obj/item/cell/high(src)
-	)
-	RefreshParts()
+	default_apply_parts()
 
-/obj/machinery/mining/drill/get_cell()
+/obj/machinery/mining_drill/head/Destroy()
+	for(var/obj/machinery/mining_drill/brace/B in supports)
+		B.disconnect()
+	return ..()
+
+/obj/machinery/mining_drill/head/get_cell()
 	return cell
 
-/obj/machinery/mining/drill/process(delta_time)
+#warn refactor - has_resources too
+/obj/machinery/mining_drill/head/process(delta_time)
 
 	if(need_player_check)
 		return
@@ -152,10 +133,11 @@
 		update_icon()
 		system_error("Resources depleted.")
 
-/obj/machinery/mining/drill/attack_ai(var/mob/user as mob)
+/obj/machinery/mining_drill/head/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/mining/drill/attackby(obj/item/O as obj, mob/user as mob)
+
+/obj/machinery/mining_drill/head/attackby(obj/item/O as obj, mob/user as mob)
 	if(!active)
 		if(istype(O, /obj/item/multitool))
 			var/newtag = text2num(sanitizeSafe(input(user, "Enter new ID number or leave empty to cancel.", "Assign ID number") as text, 4))
@@ -183,7 +165,7 @@
 		return
 	..()
 
-/obj/machinery/mining/drill/attack_hand(mob/user as mob)
+/obj/machinery/mining_drill/head/attack_hand(mob/user as mob)
 	check_supports()
 
 	if (panel_open && cell && user.Adjacent(src))
@@ -214,7 +196,8 @@
 
 	update_icon()
 
-/obj/machinery/mining/drill/update_icon()
+/obj/machinery/mining_drill/head/update_icon_state()
+	. = ..()
 	if(need_player_check)
 		icon_state = "mining_drill_error"
 	else if(active)
@@ -223,9 +206,8 @@
 		icon_state = "mining_drill_braced"
 	else
 		icon_state = "mining_drill"
-	return
 
-/obj/machinery/mining/drill/RefreshParts()
+/obj/machinery/mining_drill/head/RefreshParts()
 	..()
 	harvest_speed = 0
 	capacity = 0
@@ -234,46 +216,33 @@
 	for(var/obj/item/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/stock_parts/micro_laser))
 			harvest_speed = P.rating
-			exotic_drilling = P.rating - 1
-			if(exotic_drilling >= 1)
-				ore_types |= ore_types_uncommon
-				if(exotic_drilling >= 2)
-					ore_types |= ore_types_rare
-			else
-				ore_types -= ore_types_uncommon
-				ore_types -= ore_types_rare
 		if(istype(P, /obj/item/stock_parts/matter_bin))
 			capacity = 200 * P.rating
 		if(istype(P, /obj/item/stock_parts/capacitor))
 			charge_use -= 10 * P.rating
 	cell = locate(/obj/item/cell) in component_parts
 
-/obj/machinery/mining/drill/proc/check_supports()
-
-	supported = 0
-
-	if((!supports || !supports.len) && initial(anchored) == 0)
-		icon_state = "mining_drill"
-		anchored = 0
-		active = 0
-	else
-		anchored = 1
-
-	if(supports && supports.len >= braces_needed)
-		supported = 1
-
+/obj/machinery/mining_drill/head/proc/check_supports()
+	var/braces = LAZYLEN(supports)
+	supported = braces >= braces_needed
+	set_anchored(!!braces)
 	update_icon()
 
-/obj/machinery/mining/drill/proc/system_error(var/error)
+/obj/machinery/mining_drill/head/proc/set_active(active)
+	src.active = active
 
+#warn impl
+
+/obj/machinery/mining_drill/head/proc/system_error(rror)
 	if(error)
-		src.visible_message("<span class='notice'>\The [src] flashes a '[error]' warning.</span>")
-		faultreporter.autosay(error, src.name, "Supply")
+		visible_message(SPAN_NOTICE("[src] flashes a warning: [error]"))
+		faultreporter.autosay(error, name, "Supply")
+
 	need_player_check = 1
 	active = 0
 	update_icon()
 
-/obj/machinery/mining/drill/proc/get_resource_field()
+/obj/machinery/mining_drill/head/proc/get_resource_field()
 
 	resource_field = list()
 	need_update_field = 0
@@ -294,14 +263,15 @@
 	if(!resource_field.len)
 		system_error("Resources depleted.")
 
-/obj/machinery/mining/drill/proc/use_cell_power()
+/obj/machinery/mining_drill/head/proc/use_cell_power()
 	if(!cell) return 0
 	if(cell.charge >= charge_use)
 		cell.use(charge_use)
 		return 1
 	return 0
 
-/obj/machinery/mining/drill/verb/unload()
+
+/obj/machinery/mining_drill/head/verb/unload()
 	set name = "Unload Drill"
 	set category = "Object"
 	set src in oview(1)
@@ -317,18 +287,27 @@
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")
 
 
-/obj/machinery/mining/brace
+/obj/machinery/mining_drill/brace
 	name = "mining drill brace"
 	desc = "A machinery brace for an industrial drill. It looks easily two feet thick."
 	icon_state = "mining_brace"
 	circuit = /obj/item/circuitboard/miningdrillbrace
-	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/Initialize(mapload, newdir)
+	/// connected drill
+	var/obj/machinery/mining_drill/head/drill
+
+/obj/machinery/mining_drill/brace/Initialize(mapload, newDir)
 	. = ..()
-	component_parts = list()
+	if(newDir)
+		setDir(newDir)
+	if(anchored)
+		connect()
+	default_apply_parts()
 
-/obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)
+#warn tool act standardization time for machines o_o
+#warn machine flagS?
+
+/obj/machinery/mining_drill/brace/attackby(obj/item/W as obj, mob/user as mob)
 	if(connected && connected.active)
 		to_chat(user, "<span class='notice'>You can't work with the brace of a running drill!</span>")
 		return
@@ -353,39 +332,32 @@
 		else
 			disconnect()
 
-/obj/machinery/mining/brace/proc/connect()
+/obj/machinery/mining_drill/update_icon_state()
+	. = ..()
+	icon_state = drill? "mining_brace_active" : "mining_brace"
 
-	var/turf/T = get_step(get_turf(src), src.dir)
-
-	for(var/thing in T.contents)
-		if(istype(thing, /obj/machinery/mining/drill))
-			connected = thing
-			break
-
-	if(!connected)
+/obj/machinery/mining_drill/brace/proc/connect()
+	disconnect()
+	var/turf/T = get_step(src, dir)
+	var/obj/machinery/mining_drill/head/potential = locate() in T
+	if(!potential)
 		return
+	LAZYADD(potential.supports, src)
+	drill = potential
+	drill.check_supports()
+	update_icon()
 
-	if(!connected.supports)
-		connected.supports = list()
+/obj/machinery/mining_drill/brace/proc/disconnect()
+	if(!drill)
+		return
+	LAZYREMOVE(drill.supports, src)
+	drill.check_supports()
+	drill = null
+	update_icon()
 
-	icon_state = "mining_brace_active"
-
-	connected.supports += src
-	connected.check_supports()
-
-/obj/machinery/mining/brace/proc/disconnect()
-
-	if(!connected) return
-
-	if(!connected.supports) connected.supports = list()
-
-	icon_state = "mining_brace"
-
-	connected.supports -= src
-	connected.check_supports()
-	connected = null
-
-/obj/machinery/mining/brace/verb/rotate_clockwise()
+#warn standardize rotation, perhaps on machinery and structure level
+#warn element: worth it? 200 bytes per obj is a lot.
+/obj/machinery/mining_drill/brace/verb/rotate_clockwise()
 	set name = "Rotate Brace Clockwise"
 	set category = "Object"
 	set src in oview(1)

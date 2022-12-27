@@ -50,11 +50,11 @@
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
 
-/obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hound = loc
 	if(!istype(target))
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(target.anchored)
 		return
@@ -137,7 +137,7 @@
 			return
 		user.visible_message("<span class='warning'>[hound.name] is ingesting [H.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [H] into your [src]...</span>")
 		if(!patient && !H.buckled && do_after (user, 50, H))
-			if(!proximity)
+			if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 				return //If they moved away, you can't eat them.
 			if(patient)
 				return //If you try to eat two people at once, you can only eat one.

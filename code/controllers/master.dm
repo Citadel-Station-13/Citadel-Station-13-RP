@@ -138,6 +138,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 /datum/controller/master/Recover()
+	. = ..()
 	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
 	for (var/varname in Master.vars)
 		switch (varname)
@@ -220,8 +221,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	tim_sort(subsystems, /proc/cmp_subsystem_display)
 
 	// Set world options.
-
-	world.fps = config_legacy.fps
+	set_fps(config_legacy.fps)
 
 	var/initialized_tod = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)
@@ -640,3 +640,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/thing in subsystems)
 		var/datum/controller/subsystem/SS = thing
 		SS.OnConfigLoad()
+
+/datum/controller/master/proc/set_fps(val)
+	ASSERT(isnum(val))
+	var/old = world.fps
+	world.fps = val
+	for(var/datum/controller/subsystem/SS in subsystems)
+		SS.on_fps_change(old, val)

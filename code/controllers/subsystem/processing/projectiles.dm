@@ -1,9 +1,10 @@
 PROCESSING_SUBSYSTEM_DEF(projectiles)
 	name = "Projectiles"
-	wait = 1
+	// scale up to 20 fps
+	wait = 0.5
 	stat_tag = "PP"
 	priority = FIRE_PRIORITY_PROJECTILES
-	subsystem_flags = SS_NO_INIT|SS_TICKER
+	subsystem_flags = SS_NO_INIT
 	var/global_max_tick_moves = 10
 	var/global_pixel_speed = 2
 	var/global_iterations_per_move = 16

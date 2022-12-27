@@ -69,9 +69,10 @@
 		return
 	return 1
 
-/obj/item/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/forensics/swab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity || istype(A, /obj/machinery/dnaforensics))
+	var/atom/A = target
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || istype(A, /obj/machinery/dnaforensics))
 		return
 
 	if(is_used())

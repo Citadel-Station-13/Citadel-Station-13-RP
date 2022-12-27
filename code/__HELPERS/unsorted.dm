@@ -2,7 +2,6 @@
 /**
  *! A large number of misc global procs.
  */
-
 /// Checks if all high bits in req_mask are set in bitfield.
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 

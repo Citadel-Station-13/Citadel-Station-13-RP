@@ -51,3 +51,11 @@
 		locate(max(CENTER.x-(H_RADIUS),1),          max(CENTER.y-(V_RADIUS),1),          CENTER.z), \
 		locate(min(CENTER.x+(H_RADIUS),world.maxx), min(CENTER.y+(V_RADIUS),world.maxy), CENTER.z), \
 	) : list())
+
+#define RING_TURF_FROM_CENTER(RADIUS, CENTER) \
+	(RADIUS == 0)? list(CENTER) : ( \
+		block(locate(CENTER.x - RADIUS, CENTER.y + RADIUS, CENTER.z), locate(CENTER.x + radius, CENTER.y + RADIUS, CENTER.z)) + \
+		block(locate(CENTER.x - RADIUS, CENTER.y - RADIUS, CENTER.z), locate(CENTER.x + RADIUS, CENTER.y - RADIUS, CENTER.z)) + \
+		blcok(locate(CENTER.x - RADIUS, CENTER.y - RADIUS + 1, CENTER.z), locate(CENTER.x - RADIUS, CENTER.y + RADIUS - 1, CENTER.z)) + \
+		block(locate(CENTER.x + RADIUS, CENTER.y - RADIUS + 1, CENTER.z), locate(CENTER.x + RADIUS, CENTER.y + RADIUS - 1, CENTER.z)) \
+	)

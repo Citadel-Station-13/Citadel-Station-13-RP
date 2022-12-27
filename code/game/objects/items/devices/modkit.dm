@@ -15,10 +15,12 @@
 		/obj/item/clothing/suit/space/void
 		)
 
-/obj/item/modkit/afterattack(obj/item/O, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/modkit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-
+	var/obj/O = target
+	if(!istype(O))
+		return
 	if (!target_species)
 		return	//it shouldn't be null, okay?
 
@@ -29,7 +31,7 @@
 
 	var/allowed = 0
 	for (var/permitted_type in permitted_types)
-		if(istype(O, permitted_type))
+		if(istype(target, permitted_type))
 			allowed = 1
 
 	var/obj/item/clothing/I = O
@@ -43,13 +45,13 @@
 		to_chat(user, "<span class='notice'>[I] is already modified.</span>")
 		return
 
-	if(!isturf(O.loc))
+	if(!isturf(target.loc))
 		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
 		return
 
-	playsound(src.loc, O.tool_sound, 100, 1)
+	playsound(src, target.tool_sound, 100, 1)
 
-	user.visible_message("<span class='notice'>\The [user] opens \the [src] and modifies \the [O].</span>","<span class='notice'>You open \the [src] and modify \the [O].</span>")
+	user.visible_message("<span class='notice'>\The [user] opens \the [src] and modifies \the [target].</span>","<span class='notice'>You open \the [src] and modify \the [target].</span>")
 
 	I.refit_for_species(target_species)
 

@@ -161,7 +161,7 @@
 	name = "Sintered Basalt Block"
 	result = /obj/item/basaltblock
 	time = 200
-	reqs = list(/obj/item/stack/ore/glass/basalt = 50)
+	reqs = list(/obj/item/stack/ore/sand/basalt = 50)
 	tools = list(TOOL_WELDER)
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS

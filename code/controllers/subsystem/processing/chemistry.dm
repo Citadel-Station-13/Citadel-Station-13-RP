@@ -8,6 +8,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	var/list/chemical_reagents = list()
 
 /datum/controller/subsystem/processing/chemistry/Recover()
+	. = ..()
 	chemical_reactions = SSchemistry.chemical_reactions
 	chemical_reagents = SSchemistry.chemical_reagents
 

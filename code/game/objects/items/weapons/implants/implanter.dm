@@ -116,13 +116,16 @@
 		return
 	..()
 
-/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/implanter/compressed/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return
+	var/obj/item/I = target
+	if(istype(I))
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
+	if(istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")

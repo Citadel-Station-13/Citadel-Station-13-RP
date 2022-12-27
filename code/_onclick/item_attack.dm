@@ -55,6 +55,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			return 0
 	if(attempt_vr(src,"vore_attackby",args))
 		return
+	if(user?.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from hitting [src] as your intent is set to help!"))
+		return FALSE	/// naaaw
 	return I.attack(src, user, user.zone_sel.selecting, damage_multiplier)
 
 // Used to get how fast a mob should attack, and influences click delay.
@@ -72,11 +75,6 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent
 	return speed
-
-// Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
-// Click parameters is the params string from byond Click() code, see that documentation.
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	return
 
 //I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
 /obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)

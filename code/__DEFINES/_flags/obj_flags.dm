@@ -1,4 +1,4 @@
-// Flags for the obj_flags var on /obj
+//! Flags for the obj_flags var on /obj
 /// we're emagged
 #define EMAGGED					(1<<0)
 /*
@@ -58,3 +58,16 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(ON_BLUEPRINTS),
 	BITFIELD(OBJ_PREVENT_CLICK_UNDER),
 ))
+
+//! flags for machine_flags on /obj/machinery
+/// allow default panel open/close
+#define MACHINE_ALLOW_DEFAULT_PANEL_ (1<<0)
+/// allow default un/anchoring
+#define MACHINE_ALLOW_DEFAULT_ANCHORING (1<<1)
+/// allow default decon while panel open with crowbar
+#define MACHINE_ALLOW_DEFAULT_DECONSTRUCTION (1<<2)
+/// allow default decon with screwdriver; obviously mutually exclusive with panels!
+#define MACHINE_ALLOW_DEFAULT_DECON_SCREWDRIVER (1<<3)
+/// allow default decon with wirecutters; obviously mutually
+
+#warn deal wit hthis rofl

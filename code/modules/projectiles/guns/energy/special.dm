@@ -54,7 +54,7 @@
 		list(mode_name="induce specific mutations", projectile_type=/obj/item/projectile/energy/floramut/gene, modifystate="floramut"),
 		)
 
-/obj/item/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
+/obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
@@ -265,11 +265,12 @@
 	else
 		..(A, user, def_zone) //If it can't fire, just bash with no delay.
 
-/obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
+/obj/item/gun/energy/maghowitzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return 0
 
+	var/atom/A = target
 	var/turf/target_turf = get_turf(A)
 
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
@@ -277,6 +278,7 @@
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
 
+	#warn whoever wrote this should be fucking ashamed of themselves
 	if(!power_cycle)
 		power_cycle = TRUE
 		if(do_after(user, 30))

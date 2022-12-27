@@ -145,6 +145,10 @@
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
 
+	//! Atom Damage
+	/// resistance flags - see __DEFINES/flags/atom_flags.dm
+	var/resistance_flags = NONE
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
@@ -920,6 +924,15 @@
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
+
+//! Cluttered / Contents Overstack
+
+/**
+ * are we considered cluttered?
+ * used to not over-stack contents
+ */
+/atom/proc/cluttered()
+	return length(contents) > 100
 
 //! Radiation
 /**

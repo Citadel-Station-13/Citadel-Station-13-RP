@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(ore_types, list(
 		MAT_PHORON = /obj/item/ore/phoron,
 		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
+		"silicates" = /obj/item/ore/sand,
 		MAT_CARBON = /obj/item/ore/coal,
 		MAT_VERDANTIUM = /obj/item/ore/verdantium,
 		MAT_MARBLE = /obj/item/ore/marble,

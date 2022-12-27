@@ -193,7 +193,7 @@
 
 /obj/item/clothing/gloves/gauntlets/rig/Touch(atom/A, proximity)
 
-	if(!A || !proximity)
+	if(!A || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return FALSE
 
 	var/mob/living/carbon/human/H = loc

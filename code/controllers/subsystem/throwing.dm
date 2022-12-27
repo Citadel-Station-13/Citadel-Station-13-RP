@@ -1,8 +1,9 @@
 SUBSYSTEM_DEF(throwing)
 	name = "Throwing"
 	priority = FIRE_PRIORITY_THROWING
-	wait = 1
-	subsystem_flags = SS_NO_INIT | SS_KEEP_TIMING | SS_TICKER
+	// scale up to 40 fps
+	wait = 0.25
+	subsystem_flags = SS_NO_INIT | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun

@@ -126,9 +126,10 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
+	var/atom/A = target
 	if(A && wielded)
 		if(istype(A,/obj/structure/window))
 			var/obj/structure/window/W = A
@@ -157,7 +158,7 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
@@ -225,7 +226,7 @@
 		. += "<span class='notice'>Alt-click to set your war cry.</span>"
 		. += "<span class='notice'>Right-click in combat mode to activate the attached explosive.</span>"
 
-/obj/item/material/twohanded/spear/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
@@ -319,9 +320,10 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
+	var/atom/A = target
 	if(A && wielded)
 		if(istype(A,/obj/structure/window))
 			var/obj/structure/window/W = A
@@ -349,9 +351,12 @@
 	force_wielded = 75
 	slowdown = 0
 
-/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(mob/living/G, mob/user)
-	..()
+/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	. = ..()
 
+	var/mob/living/G = target
+	if(!istype(G))
+		return
 	if(wielded)
 		if(prob(10))
 			G.electrocute_act(500, src, def_zone = BP_TORSO)

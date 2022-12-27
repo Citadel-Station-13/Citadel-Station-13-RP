@@ -1,5 +1,7 @@
 /**********************Mining Equipment Locker**************************/
 
+#warn refactor
+
 /obj/machinery/mineral/equipment_vendor
 	name = "mining equipment vendor"
 	desc = "An equipment vendor for miners, points collected at an ore redemption machine can be spent here."

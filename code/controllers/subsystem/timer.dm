@@ -335,12 +335,16 @@ SUBSYSTEM_DEF(timer)
 	second_queue = alltimers
 	bucket_count = new_bucket_count
 
-
 /datum/controller/subsystem/timer/Recover()
+	. = ..()
 	second_queue |= SStimer.second_queue
 	hashes |= SStimer.hashes
 	timer_id_dict |= SStimer.timer_id_dict
 	bucket_list |= SStimer.bucket_list
+
+/datum/controller/subsystem/timer/on_fps_change(old_val, new_val)
+	. = ..()
+	reset_buckets()
 
 /**
  * # Timed Event

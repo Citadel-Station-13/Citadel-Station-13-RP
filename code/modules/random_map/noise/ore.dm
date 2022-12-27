@@ -4,6 +4,7 @@
 	var/rare_val = 0.7              // Threshold for rare metal, set in new as percentage of cell_range.
 	var/chunk_size = 4              // Size each cell represents on map
 
+#warn kill
 /datum/random_map/noise/ore/New()
 	rare_val = cell_range * rare_val
 	deep_val = cell_range * deep_val
@@ -44,6 +45,7 @@
 	for(var/i=0,i<chunk_size,i++)
 		for(var/j=0,j<chunk_size,j++)
 			var/turf/simulated/T = locate(tx+j, ty+i, origin_z)
+			#warn has_resources
 			if(!istype(T) || !T.has_resources)
 				continue
 			if(!priority_process)

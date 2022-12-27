@@ -123,7 +123,7 @@
 
 	var/resolved = target.attackby(device,holder.wearer)
 	if(!resolved && device && target)
-		device.afterattack(target,holder.wearer,1)
+		device.afterattack(target,holder.wearer,CLICKCHAIN_HAS_PROXIMITY)
 	return 1
 
 

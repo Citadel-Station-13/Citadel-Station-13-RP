@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(overlays)
 	name = "Overlay"
-	subsystem_flags = SS_TICKER
-	wait = 1
+	subsystem_flags = NONE
+	// scale up to 40 fps
+	wait = 0.25
 	priority = FIRE_PRIORITY_OVERLAYS
 	init_order = INIT_ORDER_OVERLAY
 
@@ -24,6 +25,7 @@ SUBSYSTEM_DEF(overlays)
 	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
 
 /datum/controller/subsystem/overlays/Recover()
+	. = ..()
 	queue = SSoverlays.queue
 
 /datum/controller/subsystem/overlays/fire(resumed = FALSE, mc_check = TRUE)

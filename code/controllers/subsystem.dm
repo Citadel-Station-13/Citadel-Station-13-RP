@@ -242,6 +242,12 @@
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
+/datum/controller/subsystem/proc/subsystem_failure_log(msg)
+#ifdef UNIT_TESTS
+	stack_trace("subsystem error: [msg]")
+#endif
+	return log_subsystem(name, msg)
+
 //used to initialize the subsystem AFTER the map has loaded
 /datum/controller/subsystem/Initialize(start_timeofday)
 	initialized = TRUE
@@ -292,7 +298,8 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
-	return
+	. = ..()
+	subsystem_log("recovering...")
 
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)
@@ -308,4 +315,10 @@
  * called when max z is changed since subsystems hook it so much
  */
 /datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
+	return
+
+/**
+ * called when world fps is changed
+ */
+/datum/controller/subsystem/proc/on_fps_change(old_val, new_val)
 	return

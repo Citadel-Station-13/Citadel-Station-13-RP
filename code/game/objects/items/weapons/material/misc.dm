@@ -62,7 +62,7 @@
 		W.afterattack(M, user)
 	..()
 
-/obj/item/material/knife/machete/hatchet/unathiknife/afterattack(mob/M as mob, mob/user as mob)
+/obj/item/material/knife/machete/hatchet/unathiknife/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hits = initial(hits)
 	..()
 

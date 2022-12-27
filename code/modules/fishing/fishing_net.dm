@@ -26,7 +26,8 @@
 	. = ..()
 	update_icon()
 
-/obj/item/material/fishing_net/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/material/fishing_net/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
 	if(get_dist(get_turf(src), A) > reach)
 		return
 
@@ -35,7 +36,7 @@
 		for(var/type in accepted_mobs)
 			Target = locate(type) in A.contents
 			if(Target)
-				afterattack(Target, user, proximity)
+				afterattack(Target, user, clickchain_flags, params)
 				break
 
 	if(istype(A, /mob))

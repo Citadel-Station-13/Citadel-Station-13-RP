@@ -140,7 +140,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 	if(phoronguard_only)
 		return 1
 
-	return BIT_TEST_ALL(coverage, UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS)
+	return CHECK_MULTIPLE_BITFIELDS(coverage, UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS)
 
 /mob/living/carbon/human/proc/suit_contamination()
 	//Runs over the things that can be contaminated and does so.

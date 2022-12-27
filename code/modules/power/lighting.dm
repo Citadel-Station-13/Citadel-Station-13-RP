@@ -1138,8 +1138,8 @@ var/global/list/light_type_cache = list()
 // shatter light, unless it was an attempt to put it in a light socket
 // now only shatter if the intent was harm
 
-/obj/item/light/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/light/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target, /obj/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)

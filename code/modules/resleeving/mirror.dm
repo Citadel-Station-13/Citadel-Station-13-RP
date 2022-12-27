@@ -41,7 +41,7 @@
 		human = H
 		human.mirror = src
 
-/obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+/obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	target.active_mr = stored_mind
 	. = ..()
 

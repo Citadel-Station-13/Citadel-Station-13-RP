@@ -147,16 +147,16 @@
 		else continue
 		side = "right"
 
-/obj/item/reagent_containers/food/drinks/glass2/afterattack(var/obj/target, var/mob/user, var/proximity)
+/obj/item/reagent_containers/food/drinks/glass2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM) //We only want splashing to be done if they are on harm intent.
-		if(!is_open_container() || !proximity)
-			return 1
+		if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+			return
 		if(standard_splash_mob(user, target))
-			return 1
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(reagents && reagents.total_volume) //They are on harm intent, aka wanting to spill it.
 			to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>")
 			reagents.splash(target, reagents.total_volume)
-			return 1
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
 /obj/item/reagent_containers/food/drinks/glass2/standard_feed_mob(var/mob/user, var/mob/target)

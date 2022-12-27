@@ -1424,14 +1424,14 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		var/turf/simulated/mineral/T
 		var/mineral
 		T = get_pin_data(IC_INPUT, 1)
-		if(!ismineralturf(T) && !T.has_resources)
+		var/list/mineral = T.get_underground_resources()
+		if(!mineral)
 			mineral = null
 			set_pin_data(IC_OUTPUT, 1, null)
 			set_pin_data(IC_OUTPUT, 2, null)
 			push_data()
 			activate_pin(2)
 			return
-		mineral = T.resources
 		set_pin_data(IC_OUTPUT, 1, mineral)
 		push_data()
 		activate_pin(3)

@@ -39,8 +39,8 @@
 		"precise" = 0
 		)
 
-/obj/item/floor_painter/afterattack(var/atom/A, var/mob/user, proximity, params)
-	if(!proximity)
+/obj/item/floor_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/turf/simulated/floor/F = A

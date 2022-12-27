@@ -9,8 +9,9 @@
 /obj/item/inflatable/attack_self(mob/user)
 	inflate(user,user.loc)
 
-/obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
-	..(A, user)
+/obj/item/inflatable/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	. = ..()
+	var/atom/A = target
 	if(!user)
 		return
 	if(!user.Adjacent(A))

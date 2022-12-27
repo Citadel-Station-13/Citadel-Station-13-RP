@@ -99,7 +99,6 @@
 			ranged_attack_chain(A, NONE, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
-		return
 
 //Middle click cycles through selected modules.
 /mob/living/silicon/robot/MiddleClickOn(var/atom/A)

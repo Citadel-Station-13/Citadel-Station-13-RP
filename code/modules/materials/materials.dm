@@ -211,10 +211,27 @@
 /datum/material/proc/place_dismantled_product(turf/target, amount)
 	place_sheet(target, amount)
 
-// Debris product. Used ALL THE TIME.
+/**
+ * places amount of our sheet at target
+ *
+ * returns the placed sheet
+ *
+ * if sheet type is not an /obj/item/stack, it will be made individually and nothing will be returned!
+ *
+ * amount *ignores* stack max amounts.
+ *
+ * todo: mandate /obj/item/stack/material, there's no reason to allow other stuff.
+ */
 /datum/material/proc/place_sheet(turf/target, amount)
-	if(stack_type)
-		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
+	if(!stack_type)
+		return
+	if(ispath(stack_type, /obj/item/stack))
+		return new stack_type(target, amount)
+	else
+		// stricter assertion for unstackables
+		ASSERT(amount <= 20)
+		for(var/i in 1 to amount)
+			new stack_type(target)
 
 // As above.
 /datum/material/proc/place_shard(var/turf/target)

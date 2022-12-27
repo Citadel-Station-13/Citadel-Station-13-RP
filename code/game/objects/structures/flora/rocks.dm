@@ -9,7 +9,7 @@
 	randomize_size = TRUE
 	var/mindrop = 0
 	var/upperdrop = 4
-	var/outcropdrop = /obj/item/ore/glass
+	var/outcropdrop = /obj/item/ore/sand
 
 /obj/structure/flora/rock/alternative_1
 	icon_state = "basalt2"

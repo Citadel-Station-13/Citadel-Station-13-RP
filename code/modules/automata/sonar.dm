@@ -23,7 +23,7 @@
 	for(var/mob/M in T)
 		flick_sonar(M)
 
-/datum/automata/wave/sonar/act_cross(atom/movable/AM, power)
+/datum/automata/wave/sonar/act_cross(atom/movable/AM, metadata)
 	flick_sonar(AM)
 
 /datum/automata/wave/sonar/cleanup()

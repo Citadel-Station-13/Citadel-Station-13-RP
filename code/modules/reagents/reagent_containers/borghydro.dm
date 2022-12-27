@@ -178,8 +178,8 @@
 /obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
 	return
 
-/obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!proximity)
+/obj/item/reagent_containers/borghypo/service/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!target.is_open_container() || !target.reagents)

@@ -3,8 +3,9 @@
  */
 SUBSYSTEM_DEF(automata)
 	name = "Automata"
-	wait = 1
-	subsystem_flags = SS_TICKER
+	// scale up to 40 fps
+	wait = 0.25
+	subsystem_flags = NONE
 
 	/// all automata in world
 	var/static/list/datum/automata/automatons = list()

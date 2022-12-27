@@ -38,5 +38,6 @@ SUBSYSTEM_DEF(chat)
 		LAZYADD(payload_by_client[client], list(message))
 
 /datum/controller/subsystem/chat/Recover()
+	. = ..()
 	payload_by_client = list()
 	initialized = SSchat.initialized

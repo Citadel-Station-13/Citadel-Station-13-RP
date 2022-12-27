@@ -25,7 +25,7 @@
 /obj/item/reagent_containers/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/reagent_containers/proc/reagentlist() // For attack logs

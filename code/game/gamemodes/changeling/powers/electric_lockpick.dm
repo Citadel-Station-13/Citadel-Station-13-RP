@@ -42,10 +42,10 @@
 	to_chat(user, "<span class='notice'>We discreetly shape our finger back to a less suspicious form.</span>")
 	qdel(src)
 
-/obj/item/finger_lockpick/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/finger_lockpick/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!user.mind.changeling)
 		return

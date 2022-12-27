@@ -903,7 +903,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/machinery/mining/brace,
+/obj/machinery/mining_drill/brace,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cb" = (
@@ -917,7 +917,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/obj/machinery/mining/brace,
+/obj/machinery/mining_drill/brace,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cd" = (
@@ -1047,7 +1047,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
 "cr" = (
-/obj/machinery/mining/brace,
+/obj/machinery/mining_drill/brace,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cs" = (
@@ -1064,7 +1064,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/machinery/mining/brace,
+/obj/machinery/mining_drill/brace,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cu" = (
@@ -1527,7 +1527,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill/head,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "hK" = (
@@ -1816,7 +1816,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "Lp" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill/head,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "Ma" = (

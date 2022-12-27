@@ -44,8 +44,9 @@
 /obj/item/toy/balloon/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	return
 
-/obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	var/atom/A = target
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
 		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
@@ -165,10 +166,11 @@
 		else
 			to_chat(user, "<span class='warning'>It's already fully loaded.</span>")
 
-/obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+/obj/item/toy/crossbow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isturf(target.loc) || target == user) return
-	if(flag) return
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) return
 
+	var/atom/A = target
 	if (locate (/obj/structure/table, src.loc))
 		return
 	else if (bullets)
@@ -364,7 +366,8 @@
 /obj/item/toy/waterflower/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	return
 
-/obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
+/obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
 
 	if (istype(A, /obj/item/storage/backpack ))
 		return

@@ -1359,7 +1359,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill/head,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/central/base/common)
 "AG" = (
@@ -2505,7 +2505,7 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/lavaland/central/base/common)
 "Wh" = (
-/obj/machinery/mining/brace{
+/obj/machinery/mining_drill/brace{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2655,7 +2655,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/mining/brace{
+/obj/machinery/mining_drill/brace{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,

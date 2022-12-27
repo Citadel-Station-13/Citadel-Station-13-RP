@@ -22,7 +22,8 @@
 	. = ..()
 	src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
 
-/obj/item/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
+/obj/item/reagent_containers/spray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
 	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart))
 		return
 

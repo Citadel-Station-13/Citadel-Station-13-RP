@@ -56,5 +56,5 @@
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
-/obj/item/beach_ball/afterattack(atom/target, mob/user)
+/obj/item/beach_ball/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	user.throw_item(src, target)

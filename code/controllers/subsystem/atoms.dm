@@ -101,6 +101,7 @@ SUBSYSTEM_DEF(atoms)
 	initialized = old_subsystem_initialized
 
 /datum/controller/subsystem/atoms/Recover()
+	. = ..()
 	initialized = SSatoms.initialized
 	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
 		InitializeAtoms()

@@ -40,6 +40,7 @@
 	var/list/metals = list()
 	for(var/turf/simulated/T in range(scanrange, get_turf(user)))
 
+		#warn refactor
 		if(!T.has_resources)
 			continue
 
@@ -71,7 +72,7 @@
 	if(length(metals))
 		for(var/ore_type in metals)
 			var/result = "no sign"
-	
+
 			if(exact_amount)
 				result = "- [metals[ore_type]] of [ore_type]"
 			else

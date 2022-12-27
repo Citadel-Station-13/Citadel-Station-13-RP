@@ -109,7 +109,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "xj" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill/head,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "yh" = (
@@ -210,7 +210,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "Pz" = (
-/obj/machinery/mining/brace,
+/obj/machinery/mining_drill/brace,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "PI" = (

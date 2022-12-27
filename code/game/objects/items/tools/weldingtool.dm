@@ -121,8 +121,11 @@
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
 
-/obj/item/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/weldingtool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return
+	var/obj/O = target
+	if(!istype(O))
 		return
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)

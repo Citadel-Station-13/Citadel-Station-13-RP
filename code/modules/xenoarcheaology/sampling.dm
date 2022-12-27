@@ -53,7 +53,7 @@
 		find_presence["mercury"] = rand(1, 500) / 100
 	find_presence["chlorine"] = rand(500, 2500) / 100
 
-	for(var/datum/find/F in container.finds)
+	for(var/datum/find/legacy/F in container.finds)
 		var/responsive_reagent = get_responsive_reagent(F.find_type)
 		find_presence[responsive_reagent] = F.dissonance_spread
 
@@ -111,7 +111,7 @@
 	else
 		return ..()
 
-/obj/item/core_sampler/proc/sample_item(var/item_to_sample, var/mob/user)
+/obj/item/core_sampler/proc/sample_item (var/item_to_sample, var/mob/user)
 	var/datum/geosample/geo_data
 
 	if(istype(item_to_sample, /turf/simulated/mineral))

@@ -145,9 +145,11 @@
 		wipe_down(target, user)
 	return
 
-/obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/glass/rag/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
+
+	var/atom/A = target
 
 	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))
 		if(!reagents.get_free_space())

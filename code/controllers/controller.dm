@@ -17,5 +17,6 @@
 /datum/controller/proc/StopLoadingMap()
 
 /datum/controller/proc/Recover()
+	SHOULD_CALL_PARENT(TRUE)
 
 /datum/controller/proc/stat_entry()

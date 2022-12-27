@@ -2,6 +2,8 @@
 
 /**********************Mining Equipment Voucher**********************/
 
+#warn refactor
+
 /obj/item/mining_voucher
 	name = "mining voucher"
 	desc = "A token to redeem a piece of equipment. Use it on a mining equipment vendor."

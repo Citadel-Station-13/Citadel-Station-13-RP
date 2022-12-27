@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(events)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = wait * 0.1
 	while (currentrun.len)
 		var/datum/event/E = currentrun[currentrun.len]
 		currentrun.len--
@@ -58,6 +58,7 @@ SUBSYSTEM_DEF(events)
 	..("E:[active_events.len]")
 
 /datum/controller/subsystem/events/Recover()
+	. = ..()
 	if(SSevents.active_events)
 		active_events |= SSevents.active_events
 	if(SSevents.finished_events)

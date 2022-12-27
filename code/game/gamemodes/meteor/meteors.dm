@@ -217,7 +217,7 @@
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	hits = 1
 	hitpwr = 3
-	meteordrop = /obj/item/ore/glass
+	meteordrop = /obj/item/ore/sand
 	wall_power = 50
 
 // Medium-sized meteors aren't very special and can be stopped easily by r-walls.

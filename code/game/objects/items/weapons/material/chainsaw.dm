@@ -64,11 +64,12 @@
 	else
 		turnOff(user)
 
-/obj/item/chainsaw/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
-	..()
+/obj/item/chainsaw/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return ..()
+	. = ..()
 	if(on)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
+	var/atom/A = target
 	if(A && on)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)

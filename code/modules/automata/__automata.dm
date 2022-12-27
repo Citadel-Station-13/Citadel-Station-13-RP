@@ -21,8 +21,9 @@
 	/// callback to call when done
 	var/datum/callback/on_finish
 
-/datum/automata/New()
+/datum/automata/New(on_finish)
 	SSautomata.automatons += src
+	src.on_finish = on_finish
 
 /datum/automata/Destroy()
 	if(ticking)
@@ -81,14 +82,14 @@
 /**
  * adds us to a turf's acting_automata
  */
-/datum/automata/proc/add_turf_acting(turf/T, power)
-	LAZYSET(T.acting_automata, src, power)
+/datum/automata/proc/add_turf_acting(turf/T, metadata)
+	LAZYSET(T.acting_automata, src, metadata)
 	turfs_acting += T
 
 /**
  * act on crossed atom
  */
-/datum/automata/proc/act_cross(atom/movable/AM, power)
+/datum/automata/proc/act_cross(atom/movable/AM, metadata)
 
 /**
  * ticks

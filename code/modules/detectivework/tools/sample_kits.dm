@@ -139,10 +139,11 @@
 	var/obj/item/sample/S = new evidence_path(get_turf(user), supplied)
 	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
 
-/obj/item/forensics/sample_kit/afterattack(var/atom/A, var/mob/user, var/proximity)
-	if(!proximity)
+/obj/item/forensics/sample_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	add_fingerprint(user)
+	var/atom/A = target
 	if(can_take_sample(user, A))
 		take_sample(user,A)
 		return 1

@@ -1393,23 +1393,24 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user, "<span class='notice'>No radiation detected.</span>")
 
-/obj/item/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pda/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	var/atom/A = target
 	switch(scanmode)
 
 		if(3)
-			if(!isobj(A))
+			if(!isobj(target))
 				return
-			if(!isnull(A.reagents))
-				if(A.reagents.reagent_list.len > 0)
+			if(!isnull(target.reagents))
+				if(target.reagents.reagent_list.len > 0)
 					var/reagents_length = A.reagents.reagent_list.len
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
 					for (var/re in A.reagents.reagent_list)
 						to_chat(user,"<span class='notice'>    [re]</span>")
 				else
-					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
+					to_chat(user,"<span class='notice'>No active chemical agents found in [target].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significantchemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significantchemical agents found in [target].</span>")
 
 		if(5)
 			analyze_gases(A, user)

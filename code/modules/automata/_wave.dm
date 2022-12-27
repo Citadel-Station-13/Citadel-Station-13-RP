@@ -341,6 +341,7 @@
  * dirs are byond directions
  */
 /datum/automata/wave/proc/act(turf/T, dirs, power)
+	add_turf_acting(T, power)
 	return max(power - 1, 0)
 
 /**

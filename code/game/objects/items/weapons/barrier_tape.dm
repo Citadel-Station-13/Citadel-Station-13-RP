@@ -22,7 +22,7 @@
 			return
 		var/obj/machinery/door/door = locate(/obj/machinery/door) in T
 		if((door == /obj/machinery/door/airlock) || (door == /obj/machinery/door/firedoor))
-			afterattack(door, null, TRUE)
+			afterattack(door, null, CLICKCHAIN_HAS_PROXIMITY)
 		return INITIALIZE_HINT_QDEL
 
 
@@ -280,12 +280,13 @@ var/list/tape_roll_applications = list()
 		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 		return
 
-/obj/item/barrier_tape_roll/afterattack(var/atom/A, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/barrier_tape_roll/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
+	var/atom/A = target
 
-	if (istype(A, /obj/machinery/door))
-		var/turf/T = get_turf(A)
+	if (istype(target, /obj/machinery/door))
+		var/turf/T = get_turf(target)
 		if(locate(/obj/item/barrier_tape_segment, A.loc))
 			to_chat(user, "There's already tape over that door!")
 		else
@@ -294,8 +295,8 @@ var/list/tape_roll_applications = list()
 			P.layer = WINDOW_LAYER
 			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
-	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))
-		var/turf/F = A
+	if (istype(target, /turf/simulated/floor) ||istype(target, /turf/unsimulated/floor))
+		var/turf/F = target
 		var/direction = user.loc == F ? user.dir : turn(user.dir, 180)
 		var/icon/hazard_overlay = hazard_overlays["[direction]"]
 		if(tape_roll_applications[F] == null)

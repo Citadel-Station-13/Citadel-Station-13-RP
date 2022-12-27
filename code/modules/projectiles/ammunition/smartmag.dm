@@ -103,7 +103,7 @@
 
 	..()
 
-/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(src.loc == user)
 		scan_ammo(target, user)
 	..()

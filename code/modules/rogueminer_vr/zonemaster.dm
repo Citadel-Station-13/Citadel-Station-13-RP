@@ -225,17 +225,17 @@
 		if(isnull(archeo_turf.finds))
 			archeo_turf.finds = list()
 			if(prob(50))
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(10, 190)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(10, 190)))
 			else if(prob(75))
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(10, 90)))
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(110, 190)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(10, 90)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(110, 190)))
 			else
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(10, 50)))
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(60, 140)))
-				archeo_turf.finds.Add(new /datum/find(digsite, rand(150, 190)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(10, 50)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(60, 140)))
+				archeo_turf.finds.Add(new /datum/find/legacy(digsite, rand(150, 190)))
 
 			// Sometimes a find will be close enough to the surface to show
-			var/datum/find/F = archeo_turf.finds[1]
+			var/datum/find/legacy/F = archeo_turf.finds[1]
 			if(F.excavation_required <= F.view_range)
 				archeo_turf.archaeo_overlay = "overlay_archaeo[rand(1,3)]"
 				archeo_turf.update_icon()

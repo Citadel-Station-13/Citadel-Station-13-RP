@@ -46,8 +46,8 @@
 
 	return 0
 
-/obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/reagent_containers/food/drinks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 
 	if(standard_dispenser_refill(user, target))
 		return

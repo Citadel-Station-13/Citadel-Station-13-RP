@@ -60,7 +60,7 @@
  *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
- * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
+ * optional hard_refresh use if you need to block the ui from showing if the refresh queues
  */
 /datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
 	if(!user)

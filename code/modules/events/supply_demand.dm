@@ -335,6 +335,7 @@
 	return
 */
 /datum/event/supply_demand/proc/choose_alloy_items(var/differentTypes)
+	#warn ok USE GLOBAL LIST
 	var/list/types = typesof(/datum/alloy) - /datum/alloy
 	for(var/i in 1 to differentTypes)
 		var/datum/alloy/A = pick(types)

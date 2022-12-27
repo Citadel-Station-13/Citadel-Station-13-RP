@@ -211,7 +211,8 @@
 	w_class = ITEMSIZE_SMALL
 	var/datum/nifsoft/stored = null
 
-/obj/item/disk/nifsoft/afterattack(var/A, mob/user, flag, params)
+/obj/item/disk/nifsoft/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
 	if(!in_range(user, A))
 		return
 
@@ -262,13 +263,14 @@
 	stored = /datum/nifsoft/compliance
 	var/laws
 
-/obj/item/disk/nifsoft/compliance/afterattack(var/A, mob/user, flag, params)
+/obj/item/disk/nifsoft/compliance/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
 	if(!ishuman(A))
 		return
 	if(!laws)
 		to_chat(user,"<span class='warning'>You haven't set any laws yet. Use the disk in-hand first.</span>")
 		return
-	..(A,user,flag,params)
+	return ..()
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)
 	var/newlaws = input(user,"Please Input Laws","Compliance Laws",laws) as message

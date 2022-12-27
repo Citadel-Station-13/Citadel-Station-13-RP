@@ -33,5 +33,6 @@ SUBSYSTEM_DEF(assets)
 	return ..()
 
 /datum/controller/subsystem/assets/Recover()
+	. = ..()
 	cache = SSassets.cache
 	preload = SSassets.preload

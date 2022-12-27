@@ -236,6 +236,8 @@
  * Can we merge with this stack?
  */
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
+	if(amount >= max_amount)	// do not even bother
+		return FALSE
 	if(!istype(other))
 		return FALSE
 	if(mid_delete || other.mid_delete) // bandaid until new inventory code

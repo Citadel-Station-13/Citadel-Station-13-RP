@@ -281,7 +281,7 @@
 	if(wrapped) // We're interacting with the item inside. If you can hold a cup with 2 fingers and stick a straw in it, you could do that with a gripper and another robotic arm.
 		var/resolved = wrapped.attackby(O, user)
 		if(!resolved && wrapped && O)
-			O.afterattack(wrapped,user,1)
+			O.afterattack(wrapped,user,CLICKCHAIN_HAS_PROXIMITY)
 		return resolved
 	return ..()
 
@@ -305,8 +305,8 @@
 		return 1
 	return 0
 
-/obj/item/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
-	if(!proximity)
+/obj/item/gripper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return // This will prevent them using guns at range but adminbuse can add them directly to modules, so eh.
 
 
@@ -314,7 +314,7 @@
 		//Pass the attack on to the target. This might delete/relocate wrapped.
 		var/resolved = target.attackby(wrapped, user)
 		if(!resolved && wrapped && target)
-			wrapped.afterattack(target,user,1)
+			wrapped.afterattack(target,user,CLICKCHAIN_HAS_PROXIMITY)
 		//wrapped's force was set to zero.  This resets it to the value it had before.
 		if(wrapped)
 			wrapped.force = force_holder
@@ -391,9 +391,9 @@
 /obj/item/matter_decompiler/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	return
 
-/obj/item/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
+/obj/item/matter_decompiler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return //Not adjacent.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)

@@ -9,9 +9,10 @@ GLOBAL_VAR_INIT(allow_duped_corners, FALSE)
 
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
-	wait = 2
+	// scale up to 10 fps
+	wait = 1
 	init_order = INIT_ORDER_LIGHTING
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 
 /datum/controller/subsystem/lighting/stat_entry(msg)
 	msg = "L:[length(GLOB.lighting_update_lights)]|C:[length(GLOB.lighting_update_corners)]|O:[length(GLOB.lighting_update_objects)]"
@@ -104,4 +105,5 @@ SUBSYSTEM_DEF(lighting)
 
 
 /datum/controller/subsystem/lighting/Recover()
+	. = ..()
 	initialized = SSlighting.initialized

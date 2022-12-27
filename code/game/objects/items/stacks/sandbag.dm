@@ -29,7 +29,7 @@
 		icon_state = "sandbag_empty"
 
 /obj/item/stack/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
+	if(istype(W, /obj/item/ore/sand) && !interact(user, src))
 		if(do_after(user, 1 SECONDS, src) && use(1))
 			var/turf/T = get_turf(user)
 			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
@@ -86,7 +86,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 			to_chat(user, "<span class='notice'>You cut [src] into pieces, causing sand to spill everywhere!</span>")
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/material/cloth(drop_location())
-				new /obj/item/ore/glass(drop_location())
+				new /obj/item/ore/sand(drop_location())
 		return
 	else
 		if(do_after(user, 1 SECONDS, src) && use(1))
@@ -94,7 +94,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 			to_chat(user, "<span class='notice'>You cut the cords securing the sandbag, spilling sand everywhere!</span>")
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/emptysandbag(T)
-				new /obj/item/ore/glass(T)
+				new /obj/item/ore/sand(T)
 		return
 
 //Sandbag Barricades
@@ -210,5 +210,5 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		new /obj/item/stack/sandbags(src.loc)
 	else
 		new /obj/item/stack/material/cloth(src.loc)
-		new /obj/item/ore/glass(src.loc)
+		new /obj/item/ore/sand(src.loc)
 	qdel(src)

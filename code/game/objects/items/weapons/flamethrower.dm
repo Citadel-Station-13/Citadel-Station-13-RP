@@ -61,8 +61,8 @@
 
 	return
 
-/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)

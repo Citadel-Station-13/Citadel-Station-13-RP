@@ -10,11 +10,12 @@
 /obj/item/hand_labeler/attack()
 	return
 
-/obj/item/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/hand_labeler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!mode)	//if it's off, give up.
 		return
+	var/atom/A = target
 	if(A == loc)	// if placing the labeller into something (e.g. backpack)
 		return		// don't set a label
 

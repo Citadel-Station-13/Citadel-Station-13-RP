@@ -60,7 +60,7 @@
 		to_chat(usr, "<span class = 'notice'>You take the cap off \the [src].</span>")
 		atom_flags |= OPENCONTAINER
 
-/obj/item/reagent_containers/chem_disp_cartridge/afterattack(obj/target, mob/user , flag)
+/obj/item/reagent_containers/chem_disp_cartridge/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!is_open_container() || !flag)
 		return
 

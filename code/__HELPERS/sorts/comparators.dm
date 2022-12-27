@@ -8,6 +8,7 @@
  * the lazy man's low performance sort
  *
  * uses a datum's compare_to() proc.
+ * naturally compares ascending for datums without this defined.
  *
  * **Do not use this for any high performance context. It is slower than hardcoded comparators.
  *
@@ -15,13 +16,25 @@
  * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
  */
 /proc/cmp_auto_compare(datum/A, datum/B)
-	if(istext(A) || istext(B))
+	// why do we only check one? because you should be matching types anyways
+	// if you aren't, yes, please, we need to loudly runtime to Cry About It.
+	if(isnum(A))
+		return cmp_numeric_asc(A, B)
+	if(istext(A))
 		return cmp_text_asc("[A]", "[B]")
 	return A.compare_to(B)
 
 /**
+ * see cmp_auto_compare; but this is descending.
+ */
+/proc/cmp_auto_reverse(datum/A, datum/B)
+	return cmp_auto_compare(B, A)
+
+/**
  * standard datum comparison
  * no types are checked!
+ *
+ * this should be ascending.
  *
  * **Do not use this for any high performance context. It is slower than hardcoded comparators.
  *

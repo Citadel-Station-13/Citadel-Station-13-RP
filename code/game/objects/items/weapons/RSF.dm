@@ -97,9 +97,10 @@ RSF
 		to_chat(user,"<span class='notice'>Changed dispensing mode to 'Cigarette'</span>")
 		return
 
-/obj/item/rsf/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/rsf/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	var/atom/A = target
 
 	if(istype(user,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = user

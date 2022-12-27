@@ -38,8 +38,9 @@
 				to_chat(user,"<span class='notice'>Blood type: [M.blood_DNA[blood]]\nDNA: [blood]</span>")
 	return
 
-/obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
-	if(!proximity) return
+/obj/item/detective_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	var/atom/A = target
 	if(ismob(A))
 		return
 

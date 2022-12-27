@@ -62,6 +62,8 @@
 		new /datum/data/mining_equipment("Bar Shelter Capsule",			/obj/item/survivalcapsule/luxurybar,						1000)
 		)
 
+#warn refactor
+
 /obj/machinery/mineral/equipment_vendor/survey/interact(mob/user)
 	user.set_machine(src)
 

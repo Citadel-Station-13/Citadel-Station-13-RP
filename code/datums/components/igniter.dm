@@ -19,7 +19,7 @@
 	UnregisterSignal(parent, list(COMSIG_ITEM_AFTERATTACK, COMSIG_HOSTILE_ATTACKINGTARGET, COMSIG_PROJECTILE_ON_HIT))
 
 /datum/component/igniter/proc/item_afterattack(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	do_igniter(target)
 

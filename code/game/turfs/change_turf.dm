@@ -89,12 +89,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
-	if(connections)
-		connections.erase_all()
+	connections?.erase_all()
 
 	// store planet stuff
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
+
+	// store mining stuff
+	var/list/old_has_resources = has_resources
 
 	// prep for change
 	var/list/old_baseturfs = baseturfs
@@ -139,6 +141,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(old_fire)
 		fire = old_fire
 	queue_zone_update()
+
+	// restore mining
+	has_resources = old_has_resources
 
 	// restore lighting
 	if(SSlighting.initialized)

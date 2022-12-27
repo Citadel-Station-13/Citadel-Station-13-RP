@@ -4,14 +4,14 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'	// NO LONGER A PLACEHOLDER
 	icon_state = "kevlar_upgrade"	// RIP PLACEHOLDERS WOOO
 
-/obj/item/kevlarupgrade/afterattack(atom/A, mob/user)
+/obj/item/kevlarupgrade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/meleemax = FALSE
 	var/bulletmax = FALSE
 	var/lasermax = FALSE
 	var/used = FALSE
 
-	if(isobj(A) && istype(A, /obj/item/clothing/under))
-		var/obj/item/clothing/under/C = A
+	if(istype(target, /obj/item/clothing/under))
+		var/obj/item/clothing/under/C = target
 		if(C.armor["melee"] >= 10)
 			meleemax = TRUE
 		if(C.armor["bullet"] >= 5)

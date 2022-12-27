@@ -18,6 +18,7 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 //	var/cost_multiplier = MINERAL_MATERIAL_AMOUNT / 10 // Each circuit cost unit is 200cm3
 
 /datum/controller/subsystem/processing/circuit/Recover()
+	. = ..()
 	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 
 /datum/controller/subsystem/processing/circuit/Initialize(timeofday)

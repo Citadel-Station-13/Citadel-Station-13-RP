@@ -57,7 +57,7 @@
 
 	//? from: kapu1178
 	//src is only connected to the zone by a single direction, this is a safe removal.
-	if (!(. & (. - 1)))
+	if (!(check_dirs & (check_dirs - 1)))
 		return TRUE
 	//? end
 

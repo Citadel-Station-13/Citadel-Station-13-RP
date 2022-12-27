@@ -37,6 +37,7 @@ SUBSYSTEM_DEF(dbcore)
 			return
 
 /datum/controller/subsystem/dbcore/Recover()
+	. = ..()
 	connection = SSdbcore.connection
 
 /datum/controller/subsystem/dbcore/Shutdown()

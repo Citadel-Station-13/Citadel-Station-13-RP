@@ -27,6 +27,7 @@ SUBSYSTEM_DEF(input)
 	return ..()
 
 /datum/controller/subsystem/input/Recover()
+	. = ..()
 	initialized = SSinput.initialized
 	setup_macrosets()
 	refresh_client_macro_sets()

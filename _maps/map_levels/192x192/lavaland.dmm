@@ -1799,7 +1799,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/mining/brace{
+/obj/machinery/mining_drill/brace{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2107,7 +2107,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill/head,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/central/base/common)
 "QR" = (
@@ -2336,7 +2336,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
 "UV" = (
-/obj/machinery/mining/brace{
+/obj/machinery/mining_drill/brace{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,

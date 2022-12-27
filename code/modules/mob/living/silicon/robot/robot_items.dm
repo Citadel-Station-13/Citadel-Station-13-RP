@@ -77,10 +77,10 @@
 			to_chat(user, "The [src] is already empty.")
 
 
-/obj/item/portable_destructive_analyzer/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/portable_destructive_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!isturf(target.loc)) // Don't load up stuff if it's inside a container or mob!
 		return
@@ -103,10 +103,10 @@
 	icon_state = "portable_scanner"
 	desc = "An advanced scanning device used for analyzing objects without completely annihilating them for science. Unfortunately, it has no connection to any database like its angrier cousin."
 
-/obj/item/portable_scanner/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/portable_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/obj/item))
 		var/obj/item/I = target
@@ -159,10 +159,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "autoharvester"
 
-/obj/item/robot_harvester/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/robot_harvester/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		var/obj/machinery/portable_atmospherics/hydroponics/T = target
@@ -181,8 +181,8 @@
 	name = "RoboTray"
 	desc = "An autoloading tray specialized for carrying refreshments."
 
-/obj/item/tray/robotray/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/tray/robotray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if ( !target )
 		return
@@ -324,9 +324,9 @@
 /obj/item/form_printer/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	return
 
-/obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
+/obj/item/form_printer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!target || !flag)
+	if(!target || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(istype(target,/obj/structure/table))
@@ -438,8 +438,9 @@
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
-/obj/item/inflatable_dispenser/afterattack(var/atom/A, var/mob/user)
-	..(A, user)
+/obj/item/inflatable_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/atom/A = target
+	. = ..()
 	if(!user)
 		return
 	if(!user.Adjacent(A))
