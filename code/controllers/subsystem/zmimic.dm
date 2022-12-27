@@ -786,4 +786,3 @@ var/list/zmimic_fixed_planes = list(
 
 #undef FMT_DEPTH
 #undef READ_BASETURF
-#undef CT_OR
