@@ -19,6 +19,8 @@
 	var/list/forbid_species
 	/// languages that someone gets by picking this; typepaths are allowed, will be converted to uids
 	var/list/innate_languages
+	/// modify max custom language amount
+	var/language_amount_mod = 0
 
 /datum/lore/character_background/New()
 	// resolve typepaths
