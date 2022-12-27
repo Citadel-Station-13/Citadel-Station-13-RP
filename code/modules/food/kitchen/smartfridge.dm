@@ -11,6 +11,7 @@
 	active_power_usage = 100
 	atom_flags = NOREACT
 	pass_flags = NONE
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
@@ -30,17 +31,23 @@
 
 /obj/machinery/smartfridge/Initialize(mapload)
 	. = ..()
+	AIR_UPDATE_ON_INITIALIZE_AUTO
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
 		wires = new/datum/wires/smartfridge(src)
 
 /obj/machinery/smartfridge/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
 	qdel(wires)
 	for(var/A in item_records)	//Get rid of item records.
 		qdel(A)
 	wires = null
 	return ..()
+
+/obj/machinery/smartfridge/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))

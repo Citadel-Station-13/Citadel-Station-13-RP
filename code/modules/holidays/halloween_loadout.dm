@@ -1,6 +1,6 @@
 /datum/gear/seasonal/halloween
 	abstract_type = /datum/gear/seasonal/halloween
-	sort_category = "Halloween - Costumes"
+	sort_category = "Seasonal - Halloween"
 
 /datum/gear/seasonal/halloween/costumes
 	name = "Gentleman's Cane"

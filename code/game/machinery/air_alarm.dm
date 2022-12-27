@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(air_alarms)
+
 #define DECLARE_TLV_VALUES var/red_min; var/yel_min; var/yel_max; var/red_max; var/tlv_comparitor;
 #define LOAD_TLV_VALUES(x, y) red_min = x[1]; yel_min = x[2]; yel_max = x[3]; red_max = x[4]; tlv_comparitor = y;
 #define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
@@ -122,11 +124,13 @@
 
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
+	GLOB.air_alarms += src
 	if(!pixel_x && !pixel_y)
 		offset_airalarm()
 	first_run()
 
 /obj/machinery/alarm/Destroy()
+	GLOB.air_alarms -= src
 	unregister_radio(src, frequency)
 	qdel(wires)
 	wires = null

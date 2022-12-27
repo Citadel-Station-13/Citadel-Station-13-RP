@@ -82,6 +82,10 @@
 	//! menu group statuses
 	var/list/menu_group_status = list()
 
+	//! throttling
+	/// block re-execution of expensive verbs
+	var/verb_throttle = 0
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////
