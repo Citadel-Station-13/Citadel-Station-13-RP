@@ -264,30 +264,6 @@
 			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
 
 
-GLOBAL_LIST_EMPTY(mining_overlay_cache)
-
-/proc/get_cached_rock_border(cache_id, direction, icon_file, icon_state)
-	cache_id = "[cache_id]_[direction]"
-	//Cache miss
-	if(!GLOB.mining_overlay_cache[cache_id])
-		var/image/new_cached_image = image(icon_file, icon_state, dir = direction, layer = ABOVE_TURF_LAYER)
-		switch(direction)
-			if(NORTH)
-				new_cached_image.pixel_y = 32
-			if(SOUTH)
-				new_cached_image.pixel_y = -32
-			if(EAST)
-				new_cached_image.pixel_x = 32
-			if(WEST)
-				new_cached_image.pixel_x = -32
-		GLOB.mining_overlay_cache[cache_id] = new_cached_image
-		return new_cached_image
-
-	//Cache hit
-	return GLOB.mining_overlay_cache[cache_id]
-
-/* smoothing end */
-
 /turf/simulated/mineral/legacy_ex_act(severity)
 
 	switch(severity)

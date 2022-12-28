@@ -92,10 +92,13 @@
 	var/icon_colour
 	/// Wall and table base icon tag. See header.
 	var/icon_base = 'icons/turf/walls/solid.dmi'
-	/// Door base icon tag. See header.
-	var/door_icon_base = "metal"
 	/// Overlay used.
 	var/icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	/// Door base icon tag.
+	var/door_icon_base = "metal"
+	/// Table base icon tag.
+	var/table_icon_base = "metal"
+	var/table_reinf_icon_base = "reinf_over"
 
 	/// Do we have directional reinforced states on walls?
 	var/icon_reinf_directionals = FALSE

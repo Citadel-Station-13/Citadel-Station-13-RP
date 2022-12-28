@@ -124,6 +124,7 @@
 	door_icon_base = "stone"
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
+	table_icon_base = "stone"
 
 /datum/material/stone/marble
 	id = "marble"
@@ -145,6 +146,7 @@
 	icon_base = 'icons/turf/walls/solid.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#666666"
+	table_icon_base = "metal"
 
 /datum/material/steel/hull
 	id = "steel_hull"
@@ -198,6 +200,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
+	table_icon_base = "metal"
 
 /datum/material/plasteel/hull
 	id = "plasteel_hull"
@@ -229,6 +232,7 @@
 	reflectivity = 0.7 // Not a perfect mirror, but close.
 	stack_origin_tech = list(TECH_MATERIAL = 8)
 	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
+	table_icon_base = "metal"
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"
@@ -251,6 +255,7 @@
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
+	table_icon_base = "metal"
 
 /datum/material/plasteel/titanium/hull
 	id = "titanium_hull"
@@ -280,6 +285,7 @@
 	created_window = /obj/structure/window/basic
 	created_fulltile_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
+	table_icon_base = "glass"
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
@@ -682,6 +688,7 @@
 	destruction_desc = "splinters"
 	sheet_singular_name = "plank"
 	sheet_plural_name = "planks"
+	table_icon_base = "wood"
 
 /datum/material/wood/log
 	id = "log"
@@ -729,6 +736,7 @@
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
 	weight = 20	//likewise, heavier
+	table_icon_base = "marble"
 
 /datum/material/cardboard
 	id = "cardboard"
