@@ -7,6 +7,7 @@
 
 /turf/unsimulated/Initialize(mapload)
 	atom_flags |= ATOM_INITIALIZED
+	SETUP_SMOOTHING()
 	return INITIALIZE_HINT_NORMAL
 
 /turf/unsimulated/fake_space

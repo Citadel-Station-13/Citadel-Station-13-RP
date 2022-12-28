@@ -26,13 +26,13 @@
 	. = ..()
 
 	if(!(smoothing_junction & NORTH_JUNCTION))
-		. += mutable_appearance(get_cached_rock_border("rock_side", NORTH, icon, "rock_side"), "rock_side")
+		. += mutable_appearance(get_cached_rock_border("solidrock_rock_side", NORTH, icon, "rock_side"), "rock_side")
 	if(!(smoothing_junction & SOUTH_JUNCTION))
-		. += mutable_appearance(get_cached_rock_border("rock_side", SOUTH, icon, "rock_side"), "rock_side")
+		. += mutable_appearance(get_cached_rock_border("solidrock_rock_side", SOUTH, icon, "rock_side"), "rock_side")
 	if(!(smoothing_junction & EAST_JUNCTION))
-		. += mutable_appearance(get_cached_rock_border("rock_side", EAST, icon, "rock_side"), "rock_side")
+		. += mutable_appearance(get_cached_rock_border("solidrock_rock_side", EAST, icon, "rock_side"), "rock_side")
 	if(!(smoothing_junction & WEST_JUNCTION))
-		. += mutable_appearance(get_cached_rock_border("rock_side", WEST, icon, "rock_side"), "rock_side")
+		. += mutable_appearance(get_cached_rock_border("solidrock_rock_side", WEST, icon, "rock_side"), "rock_side")
 
 /turf/simulated/wall/solidrock/attackby()
 	return

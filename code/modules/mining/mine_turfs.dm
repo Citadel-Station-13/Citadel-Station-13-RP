@@ -203,10 +203,10 @@
 
 /turf/simulated/mineral/custom_smooth(dirs)
 	smoothing_junction = dirs
-	update_icon()
+	update_appearance()
 
-/turf/simulated/mineral/update_icon()
-	cut_overlays()
+/turf/simulated/mineral/update_appearance(updates)
+	. = ..()
 
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
@@ -219,33 +219,50 @@
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
 
-		if(!(smoothing_junction & NORTH_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
-		if(!(smoothing_junction & SOUTH_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
-		if(!(smoothing_junction & EAST_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
-		if(!(smoothing_junction & WEST_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
-
-		if(archaeo_overlay)
-			add_overlay(archaeo_overlay)
-		if(excav_overlay)
-			add_overlay(excav_overlay)
-
 	//We are a sand floor
 	else
 		name = "sand"
 		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
-		if(sand_dug)
-			add_overlay("dug_overlay")
-		if(overlay_detail)
-			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
+/turf/simulated/mineral/update_overlays()
+	. = ..()
 
-	// ..() has to be last to prevent trampling managed overlays
-	return ..()
+	//We are a wall (why does this system work like this??)
+	// todo: refactor this shitheap because this is pants on fucking head awful
+	if(density)
+
+		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
+		var/mutable_appearance/appearance
+		if(!(smoothing_junction & NORTH_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = 2.01)
+			appearance.pixel_y = 32
+			. += appearance
+		if(!(smoothing_junction & SOUTH_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = 2.01)
+			appearance.pixel_y = -32
+			. += appearance
+		if(!(smoothing_junction & WEST_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = 2.01)
+			appearance.pixel_x = -32
+			. += appearance
+		if(!(smoothing_junction & EAST_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = 2.01)
+			appearance.pixel_x = 32
+			. += appearance
+
+		if(archaeo_overlay)
+			. += mutable_appearance(icon, archaeo_overlay)
+		if(excav_overlay)
+			. += mutable_appearance(icon, excav_overlay)
+
+	//We are a sand floor
+	else
+		if(sand_dug)
+			. += mutable_appearance(icon, "dug_overlay")
+		if(overlay_detail)
+			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
+
 
 GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
@@ -623,7 +640,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 		add_overlay(excav_overlay)
 
 	if(updateIcon)
-		update_icon()
+		update_appearance()
 
 /turf/simulated/mineral/proc/clear_ore_effects()
 	for(var/obj/effect/mineral/M in contents)

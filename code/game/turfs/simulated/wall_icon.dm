@@ -31,6 +31,7 @@
 	. = ..()
 	if(icon == initial(icon))
 		icon = get_wall_icon()
+		icon_state = "wall-0"
 
 /turf/simulated/wall/update_overlays()
 	. = ..()
