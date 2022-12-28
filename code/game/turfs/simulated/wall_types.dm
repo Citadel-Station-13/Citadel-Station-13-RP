@@ -2,38 +2,57 @@
 	icon_state = "rgeneric"
 	rad_insulation = RAD_INSULATION_SUPER
 
-/turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/plasteel, /datum/material/plasteel) //3strong
+	material        = /datum/material/plasteel
+	reinf_material  = /datum/material/plasteel
+	girder_material = null
 
-/turf/simulated/wall/shull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace ship.
-	return ..(mapload, /datum/material/steel/hull, null, /datum/material/steel/hull)
+/turf/simulated/wall/shull
+	material        = /datum/material/steel/hull
+	reinf_material  = null
+	girder_material = /datum/material/steel/hull
 
-/turf/simulated/wall/rshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/steel/hull, /datum/material/steel/hull, /datum/material/steel/hull)
+/turf/simulated/wall/rshull
+	material        = /datum/material/steel/hull
+	reinf_material  = /datum/material/steel/hull
+	girder_material = /datum/material/steel/hull
 
-/turf/simulated/wall/pshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-er ship.
-	return ..(mapload, /datum/material/plasteel/hull, null, /datum/material/plasteel/hull)
+/turf/simulated/wall/pshull
+	material        = /datum/material/plasteel/hull
+	reinf_material  = null
+	girder_material = /datum/material/plasteel/hull
 
-/turf/simulated/wall/rpshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/plasteel/hull, /datum/material/plasteel/hull, /datum/material/plasteel/hull)
+/turf/simulated/wall/rpshull
+	material        = /datum/material/plasteel/hull
+	reinf_material  = /datum/material/plasteel/hull
+	girder_material = /datum/material/plasteel/hull
 
-/turf/simulated/wall/dshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-est ship.
-	return ..(mapload, /datum/material/durasteel/hull, null, /datum/material/durasteel/hull)
+/turf/simulated/wall/dshull
+	material        = /datum/material/durasteel/hull
+	reinf_material  = null
+	girder_material = /datum/material/durasteel/hull
 
-/turf/simulated/wall/rdshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/durasteel/hull, /datum/material/durasteel/hull, /datum/material/durasteel/hull)
+/turf/simulated/wall/rdshull
+	material        = /datum/material/durasteel/hull
+	reinf_material  = /datum/material/durasteel/hull
+	girder_material = /datum/material/durasteel/hull
 
-/turf/simulated/wall/thull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/plasteel/titanium/hull, null, /datum/material/plasteel/titanium/hull)
+/turf/simulated/wall/thull
+	material        = /datum/material/plasteel/titanium/hull
+	reinf_material  = null
+	girder_material = /datum/material/plasteel/titanium/hull
 
-/turf/simulated/wall/rthull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull)
+/turf/simulated/wall/rthull
+	material        = /datum/material/plasteel/titanium/hull
+	reinf_material  = /datum/material/plasteel/titanium/hull
+	girder_material = /datum/material/plasteel/titanium/hull
+
 
 /turf/simulated/wall/cult
 	icon_state = "cult"
 
-/turf/simulated/wall/cult/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, "cult", "cult2", "cult")
+	material        = /datum/material/cult
+	reinf_material  = /datum/material/cult/reinf
+	girder_material = /datum/material/cult
 
 /turf/unsimulated/wall/cult
 	name = "cult wall"
@@ -41,76 +60,124 @@
 	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "cult"
 
-/turf/simulated/wall/iron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/iron)
+/turf/simulated/wall/iron
+	material        = /datum/material/iron
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/uranium)
+/turf/simulated/wall/uranium
+	material        = /datum/material/uranium
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/diamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/diamond)
+/turf/simulated/wall/diamond
+	material        = /datum/material/diamond
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/gold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/gold)
+/turf/simulated/wall/gold
+	material        = /datum/material/gold
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/silver/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/silver)
+/turf/simulated/wall/silver
+	material        = /datum/material/silver
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/lead)
+/turf/simulated/wall/lead
+	material        = /datum/material/silver
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/r_lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/lead, /datum/material/lead)
+/turf/simulated/wall/r_lead
+	material        = /datum/material/silver
+	reinf_material  = /datum/material/silver
+	girder_material = null
 
-/turf/simulated/wall/phoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/phoron)
+/turf/simulated/wall/phoron
+	material        = /datum/material/phoron
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/sandstone/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/sandstone)
+/turf/simulated/wall/sandstone
+	material        = /datum/material/sandstone
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/ironphoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/iron, /datum/material/phoron)
+/turf/simulated/wall/ironphoron
+	material        = /datum/material/iron
+	reinf_material  = /datum/material/phoron
+	girder_material = null
 
-/turf/simulated/wall/golddiamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/gold, /datum/material/diamond)
+/turf/simulated/wall/golddiamond
+	material        = /datum/material/gold
+	reinf_material  = /datum/material/diamond
+	girder_material = null
 
-/turf/simulated/wall/silvergold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/silver, /datum/material/gold)
+/turf/simulated/wall/silvergold
+	material        = /datum/material/silver
+	reinf_material  = /datum/material/gold
+	girder_material = null
 
-/turf/simulated/wall/sandstonediamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/sandstone, /datum/material/diamond)
+/turf/simulated/wall/sandstonediamond
+	material        = /datum/material/sandstone
+	reinf_material  = /datum/material/diamond
+	girder_material = null
 
-/turf/simulated/wall/snowbrick/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/snowbrick)
+/turf/simulated/wall/snowbrick
+	material        = /datum/material/snowbrick
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/resin/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/resin, null, /datum/material/resin)
+/turf/simulated/wall/resin
+	material        = /datum/material/resin
+	reinf_material  = null
+	girder_material = /datum/material/resin
 
 // Kind of wondering if this is going to bite me in the butt.
-/turf/simulated/wall/skipjack/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/alienalloy)
+/turf/simulated/wall/skipjack
+	material        = /datum/material/alienalloy
+	reinf_material  = null
+	girder_material = null
+
 /turf/simulated/wall/skipjack/attackby()
 	return
-/turf/simulated/wall/titanium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/plasteel/titanium)
 
-/turf/simulated/wall/durasteel/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/durasteel, /datum/material/durasteel)
+/turf/simulated/wall/titanium
+	material        = /datum/material/plasteel/titanium
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/wood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/wood)
+/turf/simulated/wall/durasteel
+	material        = /datum/material/durasteel
+	reinf_material  = /datum/material/durasteel
+	girder_material = null
 
-/turf/simulated/wall/sifwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/wood/sif)
+/turf/simulated/wall/wood
+	material        = /datum/material/wood
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/hardwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/wood/hardwood)
+/turf/simulated/wall/sifwood
+	material        = /datum/material/wood/sif
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/log/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/wood/log)
+/turf/simulated/wall/hardwood
+	material        = /datum/material/wood/hardwood
+	reinf_material  = null
+	girder_material = null
 
-/turf/simulated/wall/log_sif/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, /datum/material/wood/log/sif)
+/turf/simulated/wall/log
+	material        = /datum/material/wood/log
+	reinf_material  = null
+	girder_material = null
+
+/turf/simulated/wall/log_sif
+	material        = /datum/material/wood/log/sif
+	reinf_material  = null
+	girder_material = null
 
 // TODO: Nuke. @Zandario
 // Shuttle Walls

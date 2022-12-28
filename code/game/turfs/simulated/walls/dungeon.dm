@@ -3,8 +3,8 @@
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
 
-/turf/simulated/wall/dungeon/Initialize(mapload, materialtype, rmaterialtype, girder_material)
-	return ..(mapload, "dungeonium")
+/turf/simulated/wall/dungeon
+	material = /datum/material/alienalloy/dungeonium
 
 /turf/simulated/wall/dungeon/attackby()
 	return
@@ -19,26 +19,20 @@
 	name = "solid rock"
 	desc = "This rock seems dense, impossible to drill."
 	description_info = "Probably not going to be able to drill or bomb your way through this, best to try and find a way around."
-	icon_state = "bedrock"
-	var/base_state = "bedrock"
+	icon = 'icons/turf/walls/rock.dmi'
 	block_tele = TRUE
 
-#warn TODO
-// /turf/simulated/wall/solidrock/custom_smooth(dirs)
-// 	smoothing_junction = dirs
-
-// 	if(!(smoothing_junction & NORTH_JUNCTION))
-// 		add_overlay(get_cached_rock_border("rock_side", NORTH, 'icons/turf/walls.dmi', "rock_side"))
-// 	if(!(smoothing_junction & SOUTH_JUNCTION))
-// 		add_overlay(get_cached_rock_border("rock_side", SOUTH, 'icons/turf/walls.dmi', "rock_side"))
-// 	if(!(smoothing_junction & EAST_JUNCTION))
-// 		add_overlay(get_cached_rock_border("rock_side", EAST, 'icons/turf/walls.dmi', "rock_side"))
-// 	if(!(smoothing_junction & WEST_JUNCTION))
-// 		add_overlay(get_cached_rock_border("rock_side", WEST, 'icons/turf/walls.dmi', "rock_side"))
-
-/turf/simulated/wall/solidrock/Initialize(mapload)
+/turf/simulated/wall/solidrock/update_overlays()
 	. = ..()
-	icon_state = base_state
+
+	if(!(smoothing_junction & NORTH_JUNCTION))
+		. += mutable_appearance(get_cached_rock_border("rock_side", NORTH, icon, "rock_side"), "rock_side")
+	if(!(smoothing_junction & SOUTH_JUNCTION))
+		. += mutable_appearance(get_cached_rock_border("rock_side", SOUTH, icon, "rock_side"), "rock_side")
+	if(!(smoothing_junction & EAST_JUNCTION))
+		. += mutable_appearance(get_cached_rock_border("rock_side", EAST, icon, "rock_side"), "rock_side")
+	if(!(smoothing_junction & WEST_JUNCTION))
+		. += mutable_appearance(get_cached_rock_border("rock_side", WEST, icon, "rock_side"), "rock_side")
 
 /turf/simulated/wall/solidrock/attackby()
 	return

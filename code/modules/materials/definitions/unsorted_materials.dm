@@ -177,7 +177,7 @@
 /datum/material/steel/holographic
 	id = "steel_holo"
 	name = "holo" + MAT_STEEL
-	display_name = MAT_STEEL
+	display_name = "steel"
 	stack_type = null
 	shard_type = SHARD_NONE
 

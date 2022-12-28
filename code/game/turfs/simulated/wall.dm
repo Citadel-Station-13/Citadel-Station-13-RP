@@ -8,6 +8,7 @@
 	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "generic"
+	base_icon_state = "wall"
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
@@ -18,7 +19,7 @@
 	baseturfs = /turf/simulated/floor/plating
 	edge_blending_priority = INFINITY // let's not have floors render onto us mmkay?
 
-	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
@@ -29,9 +30,9 @@
 	var/active
 	var/can_open = FALSE
 
-	var/datum/material/girder_material
 	var/datum/material/material
 	var/datum/material/reinf_material
+	var/datum/material/girder_material
 
 	var/last_state
 	var/construction_stage
@@ -41,27 +42,19 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/Initialize(mapload)
 	. = ..()
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = /datum/material/steel
-	material = SSmaterials.get_material(materialtype)
-	if(!girdertype)
-		girdertype = /datum/material/steel
-	girder_material = SSmaterials.get_material(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = SSmaterials.get_material(rmaterialtype)
-	update_material(TRUE)
+	//? Remove the color that was set for mapping clarity.
+	color = null
+
+	set_materials(material, reinf_material, girder_material)
+
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -71,6 +64,9 @@
 
 /turf/simulated/wall/proc/get_material()
 	return material
+
+/turf/simulated/wall/proc/get_default_material()
+	. = /datum/material/steel
 
 /turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))

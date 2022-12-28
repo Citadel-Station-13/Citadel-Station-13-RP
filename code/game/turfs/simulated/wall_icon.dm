@@ -20,50 +20,31 @@
 /turf/simulated/wall/proc/apply_reinf_overlay()
 	. = istype(reinf_material)
 
-// funny thing
-// we nowadays hijack tg's smoothing for our own purposes.
-// we can be faster with entirely our own code but this is more generic.
-
-// overridden find type
-/turf/simulated/wall/find_type_in_direction(direction)
-	if(!istype(material))
-		return NO_ADJ_FOUND
-	var/turf/simulated/wall/T = get_step(src, direction)
-	if(!T)
-		return NULLTURF_BORDER
-	return (istype(T) && (material.icon_base == T.material?.icon_base))? ADJ_FOUND : NO_ADJ_FOUND
-
-/turf/simulated/wall/custom_smooth(dirs)
-	smoothing_junction = dirs
-	update_icon()
-
-/turf/simulated/wall/update_overlays()
+/turf/simulated/wall/update_appearance(updates)
 	. = ..()
-	// materrialless walls don't use this system.
 	if(!istype(material))
 		return
 
-	cut_overlays()
+	color = material.icon_colour
 
-	var/image/I
-	var/base_color = material.icon_colour
-	var/material_icon_base = get_wall_icon()
+/turf/simulated/wall/update_icon()
+	. = ..()
+	if(icon == initial(icon))
+		icon = get_wall_icon()
+
+/turf/simulated/wall/update_overlays()
+	. = ..()
+	if(!istype(reinf_material))
+		return
 
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
-		var/mutable_appearance/appearance = mutable_appearance(material_icon_base, "fwall_open")
-		appearance.color = base_color
+		var/mutable_appearance/appearance = mutable_appearance(get_wall_icon(), "fwall_open")
+		appearance.color = material.icon_colour
 		. += appearance
 		return
 
-
-	//! Base wall.
-	for (var/i in 0 to 3)
-		var/mutable_appearance/appearance = mutable_appearance(material_icon_base, "[get_corner_state_using_junctions(i)]")
-		appearance.color = base_color
-		appearance.dir = (1<<i)
-		. += appearance
 
 	//! Wall Overlays
 	if (apply_reinf_overlay())
@@ -71,19 +52,19 @@
 		if (construction_stage != null && construction_stage < 6)
 			var/mutable_appearance/appearance = mutable_appearance('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]")
 			appearance.color = reinf_material.icon_colour
+			appearance.appearance_flags |= RESET_COLOR
 			. += appearance
 
 		// Directional Reinforcements.
 		else if(reinf_material.icon_reinf_directionals)
-			for(var/i in 0 to 3)
-				var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_reinf, "[get_corner_state_using_junctions(i)]")
-				appearance.color = base_color
-				appearance.dir = (1<<i)
-				. += appearance
+			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_base, icon_state)
+			appearance.appearance_flags |= RESET_COLOR
+			. += appearance
 
 		// Standard Reinforcements.
 		else
 			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_reinf, "reinforced")
+			appearance.appearance_flags |= RESET_COLOR
 			appearance.color = reinf_material.icon_colour
 			. += appearance
 

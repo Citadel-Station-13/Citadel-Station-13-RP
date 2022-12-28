@@ -190,15 +190,26 @@
 	user.put_in_hands(product)
 
 
-// Make sure we have a display name and shard icon even if they aren't explicitly set.
-/datum/material/New()
-	..()
+/**
+ * Handles initializing the material.
+ *
+ * Arugments:
+ * - _id: The ID the material should use. Overrides the existing ID.
+ */
+/datum/material/proc/Initialize(_id, ...)
+	if(_id)
+		id = _id
+	else if(isnull(id))
+		id = type
+
 	if(!display_name)
 		display_name = name
 	if(!use_name)
 		use_name = display_name
 	if(!shard_icon)
 		shard_icon = shard_type
+
+	return TRUE
 
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
@@ -236,10 +247,6 @@
 /datum/material/proc/products_need_process()
 	return (radioactivity>0) //todo
 
-
-/// Used by walls when qdel()ing to avoid neighbor merging.
-/datum/material/placeholder
-	name = "placeholder"
 
 
 /// Places a girder object when a wall is dismantled, also applies reinforced material.
