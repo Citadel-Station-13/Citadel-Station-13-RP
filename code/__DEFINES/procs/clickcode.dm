@@ -20,6 +20,8 @@
 #define CLICKCHAIN_TOOL_ACT					(1<<2)
 /// redirected by something - like when a switchtool to another item
 #define CLICKCHAIN_REDIRECTED				(1<<3)
+/// this is from tgui or the js statpanel - we should probably be paranoid
+#define CLICKCHAIN_FROM_HREF				(1<<4)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

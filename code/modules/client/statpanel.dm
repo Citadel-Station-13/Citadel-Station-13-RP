@@ -152,8 +152,9 @@
  * @params
  * * C - who pressed us
  * * action - (optional) action; in some cases there is none.
+ * * auth - successful admin authentication. obviously, non admins will always fail this.
  */
-/datum/proc/statpanel_click(client/C, action)
+/datum/proc/statpanel_click(client/C, action, auth)
 	return
 
 /**
@@ -170,7 +171,8 @@
 		if("act")
 			var/datum/D = locate(params["ref"])
 			if(istype(D))
-				D.statpanel_click(src)
+				// todo: admin token implementation
+				D.statpanel_click(src, null, FALSE)
 			return
 
 /**

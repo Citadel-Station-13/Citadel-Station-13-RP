@@ -305,6 +305,10 @@ const ELEMENT_ID_MENU = "stat_menu"
 const ELEMENT_ID_SUBMENU = "stat_submenu"
 const ELEMENT_ID_CONTENT = "stat_content"
 const SKIN_ID_MAP = "map";
+const ELEMENT_ID_ATOM_TABLE = "atom_elem"
+
+/// how long to wait before re-loading missing images
+var IMAGE_RETRY_DELAY = 1000;
 
 /////////////////////// ELEMENTS ////////////////////////
 
@@ -314,7 +318,6 @@ var stat_content = document.getElementById(ELEMENT_ID_CONTENT);
 
 // Status panel implementation ------------------------------------------------
 var href_token = null;
-var imageRetryDelay = 500;
 var imageRetryLimit = 50;
 var storedimages = [];
 var split_admin_tabs = false;
@@ -374,13 +377,25 @@ function byond_init() {
 /// called on data update
 function byond_push(data) {
 	data = [];
-	_push_data(data)
+	_push_data(data);
+	redraw_content();
 }
 
 /// called on data update to append
 function byond_append(data) {
-	_push_data(data)
+	_push_data(data);
+	redraw_content();
 }
+
+/// special 2 part push
+function byond_update(cdata, ddata) {
+	// push both c(ached) data and d(ynamic) data at once.
+	data = [];
+	_push_data(cdata);
+	_push_data(ddata);
+	redraw_content();
+}
+
 
 function _push_data(data) {
 	var parsed = JSON.parse(data);
@@ -389,7 +404,6 @@ function _push_data(data) {
 			data.push(parsed[i]);
 		}
 	}
-	redraw_content();
 }
 
 /// called to add tab
@@ -650,6 +664,20 @@ function draw_tab(tab) {
 	if(data.length != 0) {
 		for(var i = 0; i < data.length; ++i) {
 			var entry = data[i];
+			// shitcode central: decode data
+			var dtype = typeof entry;
+			if(dtype == "string") {
+				// just text; render normally
+
+				return;
+			}
+			// it's not just string, so it's an array
+			if(entry.length == 2) {
+				// simple k-v entry
+			}
+			else if(entry.length == 3) {
+				// k-v with value being clickable
+			}
 		}
 	}
 }
@@ -661,20 +689,89 @@ function draw_turf() {
 	stat_content[PROP_TEXT_CONTENT] = "";
 	// create table
 	var table = document.createElement("table");
+	table.id = ELEMENT_ID_ATOM_TABLE;
+
 	// draw turf itself
-	draw_atom(table, listed_turf_name, listed_turf_icon, listed_turf_ref);
+	draw_atom(listed_turf_name, listed_turf_icon, listed_turf_ref, table);
 }
 
-/// id for atom
+/// id for atom div
 function id_atom(ref){
 	return "a_" + ref;
 }
 
-function draw_atom(table, name, icon, ref){
-
+function draw_atom(name, icon, ref, table){
+	// if none passed in, probably an atom is being injected as opposed to a full redraw
+	if(!table) {
+		// resolve table
+		table = document.getElementById(ELEMENT_ID_ATOM_TABLE);
+		// if still not here we don't bother
+		if(!table) {
+			return;
+		}
+		// since it's not a full draw we want to de-dupe
+		var existing = id_atom(ref);
+		if(existing){
+			// don't make another
+			// todo: update existing instead of just returning
+			return;
+		}
+	}
+	// outer div
+	var adiv = document.createElement("div");
+	adiv.id = id_atom(ref);
+	// inner div
+	var ldiv = document.createElement("div");
+	ldiv.className = "link";
+	ldiv.onmousedown = lambda_onclick_atom(ref);
+	ldiv[PROP_TEXT_CONTENT] = name;
+	// image
+	var img = document.createElement("img");
+	img.onerror = lambda_reload_image(img);
+	img.src = icon;
+	// add
+	adiv.appendChild(img);
+	adiv.appendChild(ldiv);
+	// append
+	table.appendChild(adiv);
 }
 
 function dispose_atom(ref){
+	var table = document.getElementById(ELEMENT_ID_ATOM_TABLE);
+	if(!table){
+		return;
+	}
+	var child = document.getElementById(id_atom(ref));
+	if(!child){
+		return;
+	}
+	table.removeChild(child);
+}
+
+function atom_invoke(event, ref){
+	// transmit the click with params encoded as byond params so Click() needs to do
+	// minimal work
+
+	switch(event.button){
+		case 1:
+			// middle
+			break;
+		case 2:
+			// right
+			break;
+		default:
+			// left
+
+	}
+	if(e.shiftKey){
+
+	}
+	if(e.ctrlKey){
+
+	}
+	if(e.altKey){
+
+	}
 
 }
 
@@ -685,8 +782,30 @@ function dispose_atom(ref){
  */
 function lambda_onclick_verb(verb) {
 	return function(e) {
-
+		yield_invoke(function() {transmit_verb(verb);});
 	}
+}
+
+/**
+ * creates the onclick for atoms
+ */
+ function lambda_onclick_atom(ref) {
+	return function(e) {
+		e.preventDefault();
+		atom_invoke(e, ref);
+	}
+ }
+
+/**
+ * creates the onerror function used to load things
+ */
+function lambda_reload_image(node) {
+	var re_ref = node;
+	return setTimeout(function() {
+		var old_src = re_ref.old_src
+		re_ref.src = null;
+		re_ref.src = old_src + '#' + (Math.random() * 1000);
+	}, IMAGE_RETRY_DELAY);
 }
 
 /**
@@ -697,6 +816,7 @@ function yield_invoke(f) {
 	setTimeout(f, 0);
 }
 
+/////////////////////////////////////////////////////////
 
 
 // Any BYOND commands that could result in the client's focus changing go through this
@@ -975,17 +1095,6 @@ function TakeTabFromByond(tab) {
 	transmit_verb("Remove-Tabs " + tab);
 }
 
-function update(global_data, ping_entry, other_entries) {
-	status_tab_parts = [ping_entry];
-	var parsed = JSON.parse(global_data);
-	for(var i = 0; i < parsed.length; i++) if(parsed[i] != null) status_tab_parts.push(parsed[i]);
-	parsed = JSON.parse(other_entries);
-	for(var i = 0; i < parsed.length; i++) if(parsed[i] != null) status_tab_parts.push(parsed[i]);
-	if(current_tab == "Status")
-		draw_status();
-	else if(current_tab == "Debug Stat Panel")
-		draw_debug();
-}
 /// citadel statvoting
 function update_voting(vote_data) {
 	vote_parts = JSON.parse(vote_data);
@@ -1292,7 +1401,7 @@ function iconError() {
 		that.src = src + '#' + current_attempts;
 		that.id++;
 		draw_listedturf();
-	}, imageRetryDelay);
+	}, IMAGE_RETRY_DELAY);
 }
 function draw_listedturf() {
 	stat_content[PROP_TEXT_CONTENT] = "";
@@ -1489,15 +1598,6 @@ function draw_spells(cat) {
 	}
 	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
 }
-
-function make_verb_onclick(command) {
-	return function() {
-		run_after_focus(function() {
-			transmit_verb(command);
-		});
-	};
-}
-
 function set_theme(which) {
 	if (which == "light") {
 		document.body.className = "";
@@ -1528,13 +1628,6 @@ if(!current_tab) {
 	tab_change("Status");
 }
 
-function create_debug(){
-	if(!document.getElementById("Debug Stat Panel")) {
-		addPermanentTab("Debug Stat Panel");
-	} else {
-		removePermanentTab("Debug Stat Panel");
-	}
-}
 
 </script>
 </body>
