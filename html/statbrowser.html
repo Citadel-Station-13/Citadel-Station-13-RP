@@ -304,6 +304,7 @@ if (!String.prototype.trim) {
 const ELEMENT_ID_MENU = "stat_menu"
 const ELEMENT_ID_SUBMENU = "stat_submenu"
 const ELEMENT_ID_CONTENT = "stat_content"
+const SKIN_ID_MAP = "map";
 
 /////////////////////// ELEMENTS ////////////////////////
 
@@ -328,13 +329,21 @@ window.onload = function() {
 };
 
 function window_boot() {
+	register_events()
 	transmit_ready()
+}
+
+function register_events() {
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("mouseup", winset_focus_map);
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("keyup", winset_focus_map);
 }
 
 /////////////////////// DATA ////////////////////////////
 
 // for verbs ; tab name = list ( verb1, verb2, ... );
-var verbs = [];
+var verbs = {};
 // for stat ; list(entry, ...)
 // entry format:
 // 1. text: displayed verbatim, html allowed
@@ -503,6 +512,12 @@ function transmit_ready() {
 	transmit_verb(".statpanel_ready");
 }
 
+//////////////////// WINSET / WINGET / SKIN /////////////
+
+function winset_focus_map() {
+	yield_invoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
+}
+
 /////////////////////// STARTUP /////////////////////////
 
 //////////////////////// SHUTDOWN ///////////////////////
@@ -575,6 +590,10 @@ function change_tab(tab){
 	var next_tab = document.getElementById(id_tab(active_tab));
 	// transmit to byond
 	transmit_verb(".statpanel_tab " + tab);
+	// so UNFORTUNATELY we're going to wipe data
+	// in the future we want to have a system where we can cache last
+	// for now, well, the subsystem does fire every 0.4 seconds.
+	data = [];
 
 	// change ui
 	if(last_tab){
@@ -596,16 +615,44 @@ function erase_turf_tab() { erase_tab("Turf"); }
 ///////////////////// DRAWING - MISC ////////////////////
 
 function draw_loading(){
-
+	stat_content[PROP_TEXT_CONTENT] = "Loading..."
 }
 
 function draw_error() {
-
+	stat_content[PROP_TEXT_CONTENT] = "<center><h1>Statpanel errored. Contact an admin/coder, and reconnect.</h1></center>"
 }
 
 ///////////////////// DRAWING - TABS ////////////////////
 
-
+function draw_tab(tab) {
+	// wipe
+	stat_content[PROP_TEXT_CONTENT] = "";
+	// draw verbs
+	if(verbs[tab] != undefined) {
+		var verb_table = document.createElement("div");
+		verb_table.className = "grid-container";
+		var iterating = verbs[tab]
+		for(var i = 0; i < iterating.length; ++i) {
+			var verb = iterating[i];
+			var a = document.createElemtn("a");
+			a.href = "#";
+			a.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
+			a.className = "grid-item";
+			var t = document.createElement("span");
+			t[PROP_TEXT_CONTENT] = verb;
+			t.className = "grid-item-text";
+			a.appendChild(t);
+			verb_table.appendChild(a);
+		}
+		stat_content.appendChild(verb_table)
+	}
+	// draw data
+	if(data.length != 0) {
+		for(var i = 0; i < data.length; ++i) {
+			var entry = data[i];
+		}
+	}
+}
 
 ///////////////////// DRAWING - TURFS ///////////////////
 
@@ -630,6 +677,27 @@ function draw_atom(table, name, icon, ref){
 function dispose_atom(ref){
 
 }
+
+/////////// FUNCTION FUNCTIONS (IE IS TERRIBLE) /////////
+
+/**
+ * creates the onclick for verbs
+ */
+function lambda_onclick_verb(verb) {
+	return function(e) {
+
+	}
+}
+
+/**
+ * fires a function after the current stack/whatever
+ * used to yield focus and other stuff
+ */
+function yield_invoke(f) {
+	setTimeout(f, 0);
+}
+
+
 
 // Any BYOND commands that could result in the client's focus changing go through this
 // to ensure that when we relinquish our focus, we don't do it after the result of
@@ -1430,64 +1498,6 @@ function make_verb_onclick(command) {
 	};
 }
 
-function draw_verbs(cat){
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("div");
-	var additions = {}; // additional sub-categories to be rendered
-	table.className = "grid-container";
-	sortVerbs();
-	if (split_admin_tabs && cat.lastIndexOf(".") != -1) {
-		var splitName = cat.split(".");
-		if (splitName[0] === "Admin")
-			cat = splitName[1];
-	}
-	verbs.reverse(); // sort verbs backwards before we draw
-	for (var i = 0; i < verbs.length; ++i) {
-		var part = verbs[i];
-		var name = part[0];
-		if (split_admin_tabs && name.lastIndexOf(".") != -1) {
-			var splitName = name.split(".");
-			if (splitName[0] === "Admin")
-				name = splitName[1];
-		}
-		var command = part[1];
-
-		if (command && name.lastIndexOf(cat, 0) != -1 && (name.length == cat.length || name.charAt(cat.length) == ".")) {
-			var subCat = name.lastIndexOf(".") != -1 ? name.split(".")[1] : null;
-			if (subCat && !additions[subCat]) {
-				var newTable = document.createElement("div");
-				newTable.className = "grid-container";
-				additions[subCat] = newTable;
-			}
-
-			var a = document.createElement("a");
-			a.href = "#"
-			a.onclick = make_verb_onclick(command.replace(/\s/g, "-"));
-			a.className = "grid-item";
-			var t = document.createElement("span");
-			t[PROP_TEXT_CONTENT] = command;
-			t.className = "grid-item-text";
-			a.appendChild(t);
-			(subCat ? additions[subCat] : table).appendChild(a);
-		}
-	}
-
-	// Append base table to view
-	var content = document.getElementById(ELEMENT_ID_CONTENT);
-	content.appendChild(table);
-
-	// Append additional sub-categories if relevant
-	for (var cat in additions) {
-		if (additions.hasOwnProperty(cat)) {
-			// do addition here
-			var header = document.createElement("h3");
-			header[PROP_TEXT_CONTENT] = cat;
-			content.appendChild(header);
-			content.appendChild(additions[cat]);
-		}
-	}
-}
-
 function set_theme(which) {
 	if (which == "light") {
 		document.body.className = "";
@@ -1513,15 +1523,6 @@ function set_style_sheet(sheet) {
 	head.appendChild(sheetElement);
 }
 
-function restoreFocus() {
-	run_after_focus(function() {
-		window.location.href = "byond://winset?map.focus=true";
-	});
-}
-
-document[PROP_ADD_EVENT_LISTENER]("mouseup", restoreFocus);
-document[PROP_ADD_EVENT_LISTENER]("keyup", restoreFocus);
-
 if(!current_tab) {
 	addPermanentTab("Status");
 	tab_change("Status");
@@ -1535,18 +1536,6 @@ function create_debug(){
 	}
 }
 
-function getCookie(cname) {
-	var name = cname + '=';
-	var ca = document.cookie.split(';');
-	for(var i=0; i < ca.length; i++) {
-	var c = ca[i];
-	while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) === 0) {
-			return decoder(c.substring(name.length,c.length));
-		}
-	}
-	return '';
-}
 </script>
 </body>
 </html>
