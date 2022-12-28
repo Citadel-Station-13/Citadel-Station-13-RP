@@ -512,6 +512,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!round_end_announced) // Spam Prevention. Now it should announce only once.
 				to_chat(world, "<span class='danger'>The round has ended!</span>")
 				round_end_announced = 1
+		if(!SSemergencyshuttle.departed)
 			SSvote.autotransfer()
 
 	return 1
