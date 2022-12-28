@@ -1,13 +1,13 @@
 // For mappers to make invisible borders. For best results, place at least 8 tiles away from map edge.
-
+// TODO: Nuke this. @Zandario
 /obj/effect/blocker
 	desc = "You can't go there!"
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "rdebug"
-	anchored = 1.0
-	opacity = 0
-	density = 1
-	unacidable = 1
+	icon = 'icons/turf/walls/reinforced_debug.dmi'
+	icon_state = "reinforced"
+	anchored = TRUE
+	opacity = FALSE
+	density = TRUE
+	unacidable = TRUE
 
 /obj/effect/blocker/Initialize(mapload) // For non-gateway maps.
 	. = ..()

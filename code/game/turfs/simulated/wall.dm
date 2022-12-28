@@ -6,7 +6,7 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/wall_masks.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "generic"
 	opacity = TRUE
 	density = TRUE
@@ -16,22 +16,23 @@
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
-	edge_blending_priority = INFINITY		// let's not have floors render onto us mmkay?
+	edge_blending_priority = INFINITY // let's not have floors render onto us mmkay?
 
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
-	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
 	var/damage_overlay = 0
 	/// damage overlays are cached
 	var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
+
 	var/datum/material/girder_material
 	var/datum/material/material
 	var/datum/material/reinf_material
+
 	var/last_state
 	var/construction_stage
 
@@ -44,13 +45,13 @@
 	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
-		materialtype = MAT_STEEL
-	material = get_material_by_name(materialtype)
+		materialtype = /datum/material/steel
+	material = SSmaterials.get_material(materialtype)
 	if(!girdertype)
-		girdertype = MAT_STEEL
-	girder_material = get_material_by_name(girdertype)
+		girdertype = /datum/material/steel
+	girder_material = SSmaterials.get_material(girdertype)
 	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
+		reinf_material = SSmaterials.get_material(rmaterialtype)
 	update_material(TRUE)
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)

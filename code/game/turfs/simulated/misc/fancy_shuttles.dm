@@ -50,7 +50,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "hull"
-	wall_masks = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	var/mutable_appearance/under_MA
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag

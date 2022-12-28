@@ -3,115 +3,141 @@
 	rad_insulation = RAD_INSULATION_SUPER
 
 /turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, "plasteel","plasteel") //3strong
+	return ..(mapload, /datum/material/plasteel, /datum/material/plasteel) //3strong
 
 /turf/simulated/wall/shull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace ship.
-	return ..(mapload, MAT_STEELHULL, null, MAT_STEELHULL)
+	return ..(mapload, /datum/material/steel/hull, null, /datum/material/steel/hull)
+
 /turf/simulated/wall/rshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
+	return ..(mapload, /datum/material/steel/hull, /datum/material/steel/hull, /datum/material/steel/hull)
+
 /turf/simulated/wall/pshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-er ship.
-	return ..(mapload, MAT_PLASTEELHULL, null, MAT_PLASTEELHULL)
+	return ..(mapload, /datum/material/plasteel/hull, null, /datum/material/plasteel/hull)
+
 /turf/simulated/wall/rpshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_PLASTEELHULL, MAT_PLASTEELHULL, MAT_PLASTEELHULL)
+	return ..(mapload, /datum/material/plasteel/hull, /datum/material/plasteel/hull, /datum/material/plasteel/hull)
+
 /turf/simulated/wall/dshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-est ship.
-	return ..(mapload, MAT_DURASTEELHULL, null, MAT_DURASTEELHULL)
+	return ..(mapload, /datum/material/durasteel/hull, null, /datum/material/durasteel/hull)
+
 /turf/simulated/wall/rdshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_DURASTEELHULL, MAT_DURASTEELHULL, MAT_DURASTEELHULL)
+	return ..(mapload, /datum/material/durasteel/hull, /datum/material/durasteel/hull, /datum/material/durasteel/hull)
+
 /turf/simulated/wall/thull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_TITANIUMHULL, null, MAT_TITANIUMHULL)
+	return ..(mapload, /datum/material/plasteel/titanium/hull, null, /datum/material/plasteel/titanium/hull)
+
 /turf/simulated/wall/rthull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_TITANIUMHULL, MAT_TITANIUMHULL, MAT_TITANIUMHULL)
+	return ..(mapload, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull)
 
 /turf/simulated/wall/cult
 	icon_state = "cult"
+
 /turf/simulated/wall/cult/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"cult","cult2","cult")
+	return ..(mapload, "cult", "cult2", "cult")
+
 /turf/unsimulated/wall/cult
 	name = "cult wall"
 	desc = "Hideous images dance beneath the surface."
-	icon = 'icons/turf/wall_masks.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "cult"
 
 /turf/simulated/wall/iron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"iron")
+	return ..(mapload, /datum/material/iron)
+
 /turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"uranium")
+	return ..(mapload, /datum/material/uranium)
+
 /turf/simulated/wall/diamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"diamond")
+	return ..(mapload, /datum/material/diamond)
+
 /turf/simulated/wall/gold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"gold")
+	return ..(mapload, /datum/material/gold)
+
 /turf/simulated/wall/silver/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"silver")
+	return ..(mapload, /datum/material/silver)
+
 /turf/simulated/wall/lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"lead")
+	return ..(mapload, /datum/material/lead)
+
 /turf/simulated/wall/r_lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"lead", "lead")
+	return ..(mapload, /datum/material/lead, /datum/material/lead)
+
 /turf/simulated/wall/phoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"phoron")
+	return ..(mapload, /datum/material/phoron)
+
 /turf/simulated/wall/sandstone/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"sandstone")
+	return ..(mapload, /datum/material/sandstone)
+
 /turf/simulated/wall/ironphoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"iron","phoron")
+	return ..(mapload, /datum/material/iron, /datum/material/phoron)
+
 /turf/simulated/wall/golddiamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"gold","diamond")
+	return ..(mapload, /datum/material/gold, /datum/material/diamond)
+
 /turf/simulated/wall/silvergold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"silver","gold")
+	return ..(mapload, /datum/material/silver, /datum/material/gold)
+
 /turf/simulated/wall/sandstonediamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"sandstone","diamond")
+	return ..(mapload, /datum/material/sandstone, /datum/material/diamond)
+
 /turf/simulated/wall/snowbrick/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"packed snow")
+	return ..(mapload, /datum/material/snowbrick)
 
 /turf/simulated/wall/resin/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"resin",null,"resin")
+	return ..(mapload, /datum/material/resin, null, /datum/material/resin)
 
 // Kind of wondering if this is going to bite me in the butt.
 /turf/simulated/wall/skipjack/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"alienalloy")
+	return ..(mapload, /datum/material/alienalloy)
 /turf/simulated/wall/skipjack/attackby()
 	return
 /turf/simulated/wall/titanium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"titanium")
+	return ..(mapload, /datum/material/plasteel/titanium)
 
 /turf/simulated/wall/durasteel/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"durasteel", "durasteel")
+	return ..(mapload, /datum/material/durasteel, /datum/material/durasteel)
 
 /turf/simulated/wall/wood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_WOOD)
+	return ..(mapload, /datum/material/wood)
 
 /turf/simulated/wall/sifwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SIFWOOD)
+	return ..(mapload, /datum/material/wood/sif)
 
 /turf/simulated/wall/hardwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_HARDWOOD)
+	return ..(mapload, /datum/material/wood/hardwood)
 
 /turf/simulated/wall/log/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_LOG)
+	return ..(mapload, /datum/material/wood/log)
 
 /turf/simulated/wall/log_sif/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SIFLOG)
+	return ..(mapload, /datum/material/wood/log/sif)
 
+// TODO: Nuke. @Zandario
 // Shuttle Walls
 /turf/simulated/shuttle/wall
 	name = "autojoin wall"
 	icon_state = "light"
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	blocks_air = TRUE
 
-	var/base_state = "light" //The base iconstate to base sprites on
-	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)
-	var/true_name = "wall" //What to rename this to on init
+	/// The base iconstate to base sprites on
+	var/base_state = "light"
+	/// Forces hard corners (as opposed to diagonals)
+	var/hard_corner = 0
+	/// What to rename this to on init
+	var/true_name = "wall"
 
 	//Extra things this will try to locate and act like we're joining to. You can put doors, or whatever.
 	//Carefully means only if it's on a /turf/simulated/shuttle subtype turf.
 	var/static/list/join_carefully = list(
-	/obj/structure/grille,
-	/obj/machinery/door/blast/regular
+		/obj/machinery/door/blast/regular,
+		/obj/structure/grille,
 	)
 	var/static/list/join_always = list(
-	/obj/structure/shuttle/engine,
-	/obj/structure/shuttle/window,
-	/obj/machinery/door/airlock/voidcraft
+		/obj/machinery/door/airlock/voidcraft,
+		/obj/structure/shuttle/engine,
+		/obj/structure/shuttle/window,
 	)
 
 /turf/simulated/shuttle/wall/hard_corner
@@ -253,88 +279,3 @@
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")
 		I.color = stripe_color
 		add_overlay(I)
-
-/turf/simulated/flesh
-	name = "flesh wall"
-	desc = "The fleshy surface of this wall squishes nicely under your touch but looks and feels extremly strong"
-	icon = 'icons/turf/stomach_vr.dmi'
-	icon_state = "flesh"
-	opacity = 1
-	density = 1
-	blocks_air = 1
-
-/turf/simulated/flesh/colour
-	name = "flesh wall"
-	desc = "The fleshy surface of this wall squishes nicely under your touch but looks and feels extremly strong"
-	icon = 'icons/turf/stomach_vr.dmi'
-	icon_state = "colorable-wall"
-	opacity = 1
-	density = 1
-	blocks_air = 1
-
-/turf/simulated/flesh/attackby()
-	return
-
-/turf/simulated/flesh/Initialize(mapload)
-	. = ..()
-	update_icon(1)	//TODO: TG icon smoothing
-
-var/list/flesh_overlay_cache = list()
-
-/turf/simulated/flesh/update_icon(var/update_neighbors)
-	cut_overlays()
-
-	if(density)
-		icon = 'icons/turf/stomach_vr.dmi'
-		icon_state = "flesh"
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(src,direction)
-			if(istype(T) && !T.density)
-				var/place_dir = turn(direction, 180)
-				if(!flesh_overlay_cache["flesh_side_[place_dir]"])
-					flesh_overlay_cache["flesh_side_[place_dir]"] = image('icons/turf/stomach_vr.dmi', "flesh_side", dir = place_dir)
-				add_overlay(flesh_overlay_cache["flesh_side_[place_dir]"])
-
-	if(update_neighbors)
-		for(var/direction in GLOB.alldirs)
-			if(istype(get_step(src, direction), /turf/simulated/flesh))
-				var/turf/simulated/flesh/F = get_step(src, direction)
-				F.update_icon()
-
-/turf/simulated/bone
-	name = "bone wall"
-	desc = "This wall of aging bones is held together by sinew and dried gore. The empty eye sockets stare back at you."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "bone"
-	opacity = 1
-	density = 1
-	blocks_air = 1
-
-/turf/simulated/bone/attackby()
-	return
-
-/turf/simulated/bone/Initialize(mapload)
-	. = ..()
-	update_icon(1)	//TODO: TG icon smoothing
-
-var/list/bone_overlay_cache = list()
-
-/turf/simulated/bone/update_icon(var/update_neighbors)
-	cut_overlays()
-
-	if(density)
-		icon = 'icons/turf/wall_masks.dmi'
-		icon_state = "bone"
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(src,direction)
-			if(istype(T) && !T.density)
-				var/place_dir = turn(direction, 180)
-				if(!bone_overlay_cache["bone[place_dir]"])
-					bone_overlay_cache["bone[place_dir]"] = image('icons/turf/wall_masks.dmi', "bone", dir = place_dir)
-				add_overlay(bone_overlay_cache["bone[place_dir]"])
-
-	if(update_neighbors)
-		for(var/direction in GLOB.alldirs)
-			if(istype(get_step(src, direction), /turf/simulated/bone))
-				var/turf/simulated/bone/F = get_step(src, direction)
-				F.update_icon()
