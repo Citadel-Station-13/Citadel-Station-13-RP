@@ -95,6 +95,10 @@
 	/// statpanel variable tabs: spells / other "simple" action button frameworks
 	var/list/statpanel_spell_last
 
+	//! throttling
+	/// block re-execution of expensive verbs
+	var/verb_throttle = 0
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////
