@@ -66,7 +66,10 @@
 		return
 
 	if (!corners || !lighting_corners_initialised)
-		generate_missing_corners()
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
+			generate_missing_corners()
+		else
+			return
 
 	// This list can contain nulls on things like space turfs -- they only have their neighbors' corners.
 	for (var/datum/lighting_corner/C in corners)

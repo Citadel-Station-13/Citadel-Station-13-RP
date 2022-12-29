@@ -191,7 +191,6 @@ SUBSYSTEM_DEF(zmimic)
 			CHECK_TICK
 	// wake()
 
-
 /datum/controller/subsystem/zmimic/fire(resumed = FALSE, no_mc_tick = FALSE)
 	if (!resumed)
 		qt_idex = 1
@@ -592,8 +591,9 @@ SUBSYSTEM_DEF(zmimic)
 		MA.plane = depth == 0 ? TURF_PLANE : FLOAT_PLANE
 		MA.layer = FLY_LAYER	// probably fine
 	if (obliterate)
-		// Emissive blocker, hide it.
+		// Emissive, hide it.
 		MA.invisibility = INVISIBILITY_ABSTRACT
+		MA.alpha = 0	// ?!
 
 	if (fixed_overlays)
 		MA.overlays = fixed_overlays
@@ -616,8 +616,8 @@ SUBSYSTEM_DEF(zmimic)
 
 var/list/zmimic_fixed_planes = list(
 	"0" = "World plane (Non-Z)",
-	"-25" = "Mob plane (Non-Z)",
 	"-15" = "Cloaked plane (Non-Z)",
+	"-25" = "Mob plane (Non-Z)",
 	"-35" = "Object plane (Non-Z)",
 	"-45" = "Turf plane (Non-Z)"
 )

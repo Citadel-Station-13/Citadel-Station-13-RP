@@ -18,7 +18,13 @@ Public API:
 
 	Checking state:
 	- TURF_IS_MIMICKING(turf or any)
-		- value: bool - if the passed turf is z-mimic enabled
+		- value: bool - if the passed turf is z-mimic enabled -- do not use for movables, see below for those
+
+	- MOVABLE_IS_BELOW_ZTURF(movable)
+		- value: bool -- if any of this movable's locs are below a zturf
+
+	- MOVABLE_IS_ON_ZTURF(movable)
+		- value: bool -- if any of this movable's locs are on a zturf
 
 	- movable/get_above_oo()
 		- return: list of movables
