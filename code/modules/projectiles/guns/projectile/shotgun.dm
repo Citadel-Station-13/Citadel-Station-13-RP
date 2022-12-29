@@ -23,7 +23,7 @@
 
 /obj/item/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
-		return chambered.BB
+		return chambered.get_projectile()
 	return null
 
 /obj/item/gun/projectile/shotgun/pump/attack_self(mob/living/user as mob)

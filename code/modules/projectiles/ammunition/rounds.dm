@@ -296,10 +296,6 @@
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
 	matter = list(MAT_STEEL = 360, MAT_GLASS = 720)
 
-/obj/item/ammo_casing/a12g/stunshell/emp_act(severity)
-	if(prob(100/severity)) BB = null
-	update_icon()
-
 //Does not stun, only blinds, but has area of effect.
 /obj/item/ammo_casing/a12g/flare
 	name = "flare shell"
