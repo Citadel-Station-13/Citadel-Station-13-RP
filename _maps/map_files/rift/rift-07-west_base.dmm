@@ -7,7 +7,7 @@
 /area/rift/surfacebase/outside/west_base)
 "aJ" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/projectile/automatic/automat/taj,
+/obj/item/gun/ballistic/automatic/automat/taj,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
@@ -15,8 +15,8 @@
 /area/rift/facility/interior/vault)
 "aV" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/projectile/colt/taj,
-/obj/item/gun/projectile/colt/taj,
+/obj/item/gun/ballistic/colt/taj,
+/obj/item/gun/ballistic/colt/taj,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /turf/simulated/floor/tiled/steel_ridged,

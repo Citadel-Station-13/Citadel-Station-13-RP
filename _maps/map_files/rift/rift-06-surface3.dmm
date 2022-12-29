@@ -18702,7 +18702,7 @@
 	},
 /obj/item/ammo_magazine/s357,
 /obj/item/ammo_magazine/s357,
-/obj/item/gun/projectile/revolver/mateba,
+/obj/item/gun/ballistic/revolver/mateba,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/dark,
@@ -20070,7 +20070,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Nu" = (
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -20078,7 +20078,7 @@
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"
 	},
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/clothing/suit/armor/vest/alt{
 	name = "armor vest"
 	},
@@ -20725,7 +20725,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "OH" = (
-/obj/item/gun/projectile/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/item/duct_tape_roll,
 /obj/structure/closet/hydrant{
@@ -23969,7 +23969,7 @@
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
-/obj/item/gun/projectile/SVD,
+/obj/item/gun/ballistic/SVD,
 /obj/item/ammo_magazine/m762svd,
 /obj/item/ammo_magazine/m762svd,
 /obj/item/clothing/suit/space/void/merc/soviet,

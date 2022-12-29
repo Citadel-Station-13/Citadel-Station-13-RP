@@ -3819,7 +3819,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "lv" = (
 /obj/structure/closet/secure_closet/bar,
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -3832,7 +3832,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "lx" = (
@@ -3846,7 +3846,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 30
 	},
-/obj/item/gun/projectile/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
