@@ -544,7 +544,6 @@
 
 /obj/item/ammo_casing/spent // For simple hostile mobs only, so they don't cough up usable bullets when firing. This is for literally nothing else.
 	icon_state = "s-casing-spent"
-	BB = null
 	projectile_type = null
 
 /obj/item/ammo_casing/organic
