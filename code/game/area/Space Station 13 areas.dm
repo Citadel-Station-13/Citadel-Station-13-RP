@@ -3133,6 +3133,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/construction/solars
 	name = "\improper Solar Panels"
 	icon_state = "yellow"
+	is_outside = OUTSIDE_YES
 
 /area/construction/solarscontrol
 	name = "\improper Solar Panel Control"

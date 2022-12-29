@@ -1063,10 +1063,10 @@ Do this eventually. */
 	name = "\improper Trade Shop Debugger"
 
 
-
 //Abandoned Tajaran Base
 /area/rift/facility/exterior
 	name = "\improper Radioactive Exclusion Zone"
+	is_outside = OUTSIDE_YES
 
 /area/rift/facility/exterior/shuttle
 	name = "\improper Contaminated Shuttle"
@@ -1151,6 +1151,9 @@ Do this eventually. */
 /area/rift/asylum/command
 
 //Other Lythios outdoor areas
+/area/rift/exterior
+	is_outside = OUTSIDE_YES
+
 /area/rift/exterior/nuketown
 	name = "\improper High Yield Explosives Test Site"
 
