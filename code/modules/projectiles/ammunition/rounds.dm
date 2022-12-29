@@ -484,7 +484,7 @@
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	matter = list(MAT_STEEL = 180)
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a10x24mmcaseless/ap
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
@@ -510,7 +510,7 @@
 	icon_state = "casing" // Placeholder. Should probably be purple.
 	projectile_type = /obj/item/projectile/bullet/pistol // Close enough to be comparable.
 	matter = list(MAT_STEEL = 180)
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a5mmcaseless/stun
 	desc = "A 5mm solid phoron caseless stun round."
@@ -572,7 +572,7 @@
 	caliber = "musket"
 	projectile_type = /obj/item/projectile/bullet/musket
 	matter = list("lead" = 100)
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/musket/silver
 	name = "silver musket ball"
@@ -636,7 +636,7 @@
 	icon_state = "arrow"
 	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/arrow/wood
 	name = "wooden arrow"
@@ -676,7 +676,7 @@
 	icon_state = "foamdart"
 	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
-	caseless = 1
+	casing_flags = CASING_DELETE
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 

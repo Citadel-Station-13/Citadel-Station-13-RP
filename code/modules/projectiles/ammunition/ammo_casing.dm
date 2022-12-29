@@ -10,11 +10,13 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
+	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
+	var/casing_flags = NONE
+
 	var/leaves_residue = 1
 	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/projectile_type					//The bullet type to create when New() is called
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
-	var/caseless = null					//Caseless ammo deletes its self once the projectile is fired.
 	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
 /obj/item/ammo_casing/Initialize(mapload)
@@ -31,7 +33,9 @@
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	. = ..()
+
 	if(W.is_screwdriver())
 		if(!BB)
 			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")

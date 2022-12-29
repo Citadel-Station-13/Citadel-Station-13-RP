@@ -84,7 +84,7 @@
 
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
-			if(chambered.caseless)
+			if(chambered.casing_flags & CASING_DELETE)
 				qdel(chambered)
 				return
 			else
