@@ -1174,11 +1174,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	//Animate it growing
 	animate(img, alpha = 0, transform = matrix()*grow_to, time = anim_duration, loop = loops)
 
-// DEPRICATED SOON
-/proc/downloadImage(atom/A, dir) //this is expensive and dumb
-	var/icon/this_icon = get_flat_icon(A, dir=dir)
-	usr << ftp(this_icon,"[A.name].png")
-
 /*
  * * Accurate - Use more accurate color averaging, usually has better results and prevents muddied or overly dark colors. Mad thanks to wwjnc.
  * * ignoreGreyscale - Excempts greyscale colors from the color list, useful for filtering outlines or plate overlays.
