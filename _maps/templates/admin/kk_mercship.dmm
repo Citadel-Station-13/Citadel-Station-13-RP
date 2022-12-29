@@ -1138,7 +1138,7 @@
 /area/ship/manta/hangar)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/revolver/consul,
+/obj/item/gun/ballistic/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
@@ -1560,7 +1560,7 @@
 /area/ship/manta/hallways_aft)
 "hU" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
