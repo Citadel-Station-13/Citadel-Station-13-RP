@@ -49,7 +49,7 @@
 			else if(istype(I, /obj/item/gun/projectile))
 				var/obj/item/gun/projectile/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.BB
+				P = ammo.get_projectile()
 
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")

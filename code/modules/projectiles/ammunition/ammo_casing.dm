@@ -40,35 +40,34 @@
 	return ..()
 
 //removes the projectile from the ammo casing
+// todo: refactor for actual on-shot or whatever
 /obj/item/ammo_casing/proc/expend()
-	. = BB
-	BB = null
+	. = stored
+	stored = null
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	. = ..()
+/obj/item/ammo_casing/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	. = TRUE
+	if(!stored)
+		user.action_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
+		return
+	var/label_text = input(user, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	label_text = sanitize(label_text, MAX_NAME_LEN, extra = FALSE)
+	if(!label_text)
+		user.action_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
+		stored.name = initial(stored.name)
+		return
+	user.action_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
+	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
-	if(W.is_screwdriver())
-		if(!BB)
-			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
-			return
-
-		var/tmp_label = ""
-		var/label_text = sanitizeSafe(input(user, "Inscribe some text into \the [initial(BB.name)]","Inscription",tmp_label), MAX_NAME_LEN)
-		if(length(label_text) > 20)
-			to_chat(user, "<font color='red'>The inscription can be at most 20 characters long.</font>")
-		else if(!label_text)
-			to_chat(user, "<font color=#4F49AF>You scratch the inscription off of [initial(BB)].</font>")
-			BB.name = initial(BB.name)
-		else
-			to_chat(user, "<font color=#4F49AF>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
-			BB.name = "[initial(BB.name)] (\"[label_text]\")"
-
+/obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
+	return list(TOOL_SCREWDRIVER)
 
 /obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
-	if(!BB)
-		BB = new projectile_type(src, src)
+	if(stored)
+		return
+	init_projectile()
 
 /**
  * sees if we're currently loaded
@@ -93,6 +92,12 @@
 /obj/item/ammo_casing/proc/lazy_init_projectile()
 	if(stored == FALSE)
 		return null
+	return init_projectile()
+
+/**
+ * makes a new projectile
+ */
+/obj/item/ammo_casing/proc/init_projectile()
 	if(istype(stored))
 		CRASH("double init?")
 	stored = new projectile_type
