@@ -270,11 +270,11 @@
 	if(vel_x)
 		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (OVERMAP_PIXEL_TO_DIST(dist_to_go) / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
+		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
 	if(vel_y)
 		var/offset = MODULUS(position_y, WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (OVERMAP_PIXEL_TO_DIST(dist_to_go) / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
+		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
 	. = max(., 0)
 
 /obj/effect/overmap/visitable/ship/proc/halt()
