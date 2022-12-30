@@ -1,7 +1,7 @@
 // renamed because why the hell did you name it CHANGE_SPEED_BY
 #define PENALIZED_SPEED_CHANGE(speed_var, v_diff) \
 	v_diff = QUANTIZE_OVERMAP_DISTANCE(v_diff);\
-	if(!MOVING(speed_var + v_diff)) \
+	if(!QUANTIZE_OVERMAP_DISTANCE(speed_var + v_diff)) \
 		{speed_var = 0};\
 	else \
 		{speed_var = QUANTIZE_OVERMAP_DISTANCE((speed_var + v_diff)/(1 + speed_var*v_diff/(max_speed ** 2)))}
@@ -98,11 +98,11 @@
 
 // Projected acceleration based on information from engines
 /obj/effect/overmap/visitable/ship/proc/get_acceleration()
-	return round(get_total_thrust()/get_vessel_mass(), SHIP_MOVE_RESOLUTION)
+	return round(get_total_thrust()/get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
 // Does actual burn and returns the resulting acceleration
 /obj/effect/overmap/visitable/ship/proc/get_burn_acceleration()
-	return round(burn() / get_vessel_mass(), SHIP_MOVE_RESOLUTION)
+	return round(burn() / get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
 /obj/effect/overmap/visitable/ship/proc/get_vessel_mass()
 	. = vessel_mass

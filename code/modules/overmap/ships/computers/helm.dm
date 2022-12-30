@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	if(autopilot && dx && dy && !autopilot_disabled)
 		var/turf/T = locate(dx,dy,GLOB.using_map.overmap_z)
 		if(linked.loc == T)
-			if(linked.!is_moving())
+			if(!linked.is_moving())
 				autopilot = 0
 			else
 				linked.decelerate()

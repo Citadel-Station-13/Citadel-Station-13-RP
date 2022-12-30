@@ -11,19 +11,19 @@
  */
 
 /// units of overmap distance
-#define OVERMAP_DISTANCE_UNIT		"l-s"
+#define OVERMAP_DISTANCE_UNIT "l-s"
 /// overmap distance units per pixel
-#define OVERMAP_DISTANCE_PIXEL		3
+#define OVERMAP_DISTANCE_PIXEL 3
 /// overmap distance quantization
-#define OVERMAP_DISTANCE_ACCURACY	0.001
+#define OVERMAP_DISTANCE_ACCURACY 0.0001
 /// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.
-#define OVERMAP_WORLD_ICON_SIZE				32
+#define OVERMAP_WORLD_ICON_SIZE 32
 /// overmap coordinate distance in a tile
-#define OVERMAP_DISTANCE_TILE				(OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
+#define OVERMAP_DISTANCE_TILE (OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 /// overmap distance quantize helper
-#define QUANTIZE_OVERMAP_DISTANCE(d)		round(d, OVERMRAP_DISTANCE_ACCURACY)
+#define QUANTIZE_OVERMAP_DISTANCE(d) round(d, OVERMAP_DISTANCE_ACCURACY)
 /// render overmap distance
-#define OVERMAP_DISTANCE_RENDER(distance)				"[QUANTIZE_OVERMAP_DISTANCE(distance)] l-s"
+#define OVERMAP_DISTANCE_RENDER(distance) "[QUANTIZE_OVERMAP_DISTANCE(distance)] l-s"
 /// overmap dist to pixels
 #define OVERMAP_DIST_TO_PIXEL(d) (d / OVERMAP_DISTANCE_PIXEL)
 /// pixels to overmap dist
