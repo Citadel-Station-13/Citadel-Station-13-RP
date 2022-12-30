@@ -374,14 +374,14 @@
 
 /obj/item/nullrod/claymore/bostaff/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	add_fingerprint(user)
-	if(!issilicon(target))
+	if(!issilicon(M))
 		return ..()
-	if(!isliving(target))
+	if(!isliving(M))
 		return ..()
 	if(user.a_intent == INTENT_DISARM)
-		if(!ishuman(target))
+		if(!ishuman(M))
 			return ..()
-		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/human/H = M
 		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
 									  "[user] smacks [H] with the butt of [src]!", \
 									  "[user] broadsides [H] with [src]!", \
@@ -445,6 +445,9 @@
 /obj/item/nullrod/rosary/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(!isliving(M))
+		return ..()
+	var/mob/living/L = M
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
@@ -454,17 +457,17 @@
 		to_chat(user, "<span class='notice'>You are already using [src].</span>")
 		return
 
-	user.visible_message("<span class='info'>[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [deity_name].</span>", \
-		"<span class='info'>You kneel[M == user ? null : " next to [M]"] and begin a prayer to [deity_name].</span>")
+	user.visible_message("<span class='info'>[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name].</span>", \
+		"<span class='info'>You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name].</span>")
 
 	praying = TRUE
-	if(do_after(user, 20, target = M))
-		M.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(M, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
-		M.adjustToxLoss(-5, TRUE, TRUE)
-		M.adjustOxyLoss(-5)
-		M.adjustBruteLoss(-5)
-		M.adjustFireLoss(-5)
+	if(do_after(user, 20, target = L))
+		L.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
+		to_chat(L, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
+		L.adjustToxLoss(-5, TRUE, TRUE)
+		L.adjustOxyLoss(-5)
+		L.adjustBruteLoss(-5)
+		L.adjustFireLoss(-5)
 		praying = FALSE
 	else
 		to_chat(user, "<span class='notice'>Your prayer to [deity_name] was interrupted.</span>")

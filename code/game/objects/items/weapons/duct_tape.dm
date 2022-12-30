@@ -12,6 +12,7 @@
 	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
 /obj/item/duct_tape_roll/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(user.a_intent == INTENT_HELP)
 			return

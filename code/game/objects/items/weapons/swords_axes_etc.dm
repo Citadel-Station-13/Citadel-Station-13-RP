@@ -20,14 +20,15 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/classic_baton/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
+		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*force, BRUTE, BP_HEAD)
 		else
-			user.take_organ_damage(2*force)
+			L.take_organ_damage(2*force)
 		return
 	return ..()
 
