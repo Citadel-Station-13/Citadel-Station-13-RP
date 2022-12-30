@@ -123,7 +123,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/machinery/am_shielding/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/am_shielding/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return
 	if(W.force > 10)
 		stability -= W.force/2
@@ -199,7 +199,7 @@
 	throw_range = 2
 	matter = list(MAT_STEEL = 100)
 
-/obj/item/am_shielding_container/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))
 		new/obj/machinery/am_shielding(src.loc)
 		qdel(src)

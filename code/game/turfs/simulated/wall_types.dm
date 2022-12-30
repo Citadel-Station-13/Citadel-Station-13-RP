@@ -67,7 +67,7 @@
 // Kind of wondering if this is going to bite me in the butt.
 /turf/simulated/wall/skipjack/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload,"alienalloy")
-/turf/simulated/wall/skipjack/attackby_legacy()
+/turf/simulated/wall/skipjack/attackby()
 	return
 /turf/simulated/wall/titanium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload,"titanium")
@@ -272,7 +272,7 @@
 	density = 1
 	blocks_air = 1
 
-/turf/simulated/flesh/attackby_legacy()
+/turf/simulated/flesh/attackby()
 	return
 
 /turf/simulated/flesh/Initialize(mapload)
@@ -310,7 +310,7 @@ var/list/flesh_overlay_cache = list()
 	density = 1
 	blocks_air = 1
 
-/turf/simulated/bone/attackby_legacy()
+/turf/simulated/bone/attackby()
 	return
 
 /turf/simulated/bone/Initialize(mapload)

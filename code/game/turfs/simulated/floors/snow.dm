@@ -27,7 +27,7 @@
 	for(var/d in crossed_dirs)
 		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
 
-/turf/simulated/floor/outdoors/snow/attackby_legacy(var/obj/item/W, var/mob/user)
+/turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
 		to_chat(user, "<span class='notice'>You begin to remove \the [src] with your [W].</span>")
 		if(do_after(user, 4 SECONDS * W.tool_speed))

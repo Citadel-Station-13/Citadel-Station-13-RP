@@ -80,7 +80,7 @@
 	if(printing)
 		add_overlay("[base_icon_state]-active")
 
-/obj/machinery/organ_printer/attackby_legacy(obj/item/O, mob/user)
+/obj/machinery/organ_printer/attackby(obj/item/O, mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
 		return
@@ -299,7 +299,7 @@
 	visible_message(SPAN_INFO("\The [src] dings, then spits out \a [O]."))
 	return O
 
-/obj/machinery/organ_printer/flesh/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/organ_printer/flesh/attackby(obj/item/W, mob/user)
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
@@ -364,7 +364,7 @@
 	audible_message("<span class='info'>\The [src] dings, then spits out \a [O].</span>")
 	return O
 
-/obj/machinery/organ_printer/robot/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/organ_printer/robot/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == matter_type)
 		if((max_stored_matter-stored_matter) < matter_amount_per_sheet)
 			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")

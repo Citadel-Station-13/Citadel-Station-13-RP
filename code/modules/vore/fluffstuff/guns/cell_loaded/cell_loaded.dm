@@ -154,7 +154,7 @@
 
 	var/list/modes = list()
 
-/obj/item/ammo_magazine/cell_mag/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/ammo_magazine/cell_mag/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing/microbattery))
 		var/obj/item/ammo_casing/microbattery/B = W
 		if(!istype(B, ammo_type))

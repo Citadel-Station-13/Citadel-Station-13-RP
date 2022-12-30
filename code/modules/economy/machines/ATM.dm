@@ -81,7 +81,7 @@ log transactions
 	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
 	return TRUE
 
-/obj/machinery/atm/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/atm/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	if(istype(I, /obj/item/card))

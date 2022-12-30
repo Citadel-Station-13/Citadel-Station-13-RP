@@ -64,7 +64,7 @@
 		if(2)
 			. += "It is almost completely destroyed."
 
-/obj/item/rig_module/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/rig_module/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/stack/nanopaste))
 

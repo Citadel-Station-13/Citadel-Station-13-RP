@@ -199,7 +199,7 @@
 	gps_tag = "SHELTER"
 	tracking = TRUE
 
-/obj/item/gps/computer/attackby_legacy(obj/item/I, mob/living/user)
+/obj/item/gps/computer/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())
 		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
 			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")
@@ -264,7 +264,7 @@
 	. = ..()
 	new buildstacktype(drop_location(), buildstackamount)
 
-/obj/structure/fans/attackby_legacy(obj/item/I, mob/living/user)
+/obj/structure/fans/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())
 		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
 			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")

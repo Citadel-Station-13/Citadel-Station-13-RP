@@ -219,7 +219,7 @@ Protectiveness | Armor %
 	thrown_force_divisor = 0.2
 	var/wired = FALSE
 
-/obj/item/material/armor_plating/attackby_legacy(var/obj/O, mob/user)
+/obj/item/material/armor_plating/attackby(var/obj/O, mob/user)
 	if(istype(O, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/S = O
 		if(wired)
@@ -267,7 +267,7 @@ Protectiveness | Armor %
 	name = "wooden bucket"
 	icon_state = "woodbucket"
 
-/obj/item/clothing/head/helmet/bucket/attackby_legacy(var/obj/O, mob/user)
+/obj/item/clothing/head/helmet/bucket/attackby(var/obj/O, mob/user)
 	if(istype(O, /obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		if(S.use(2))

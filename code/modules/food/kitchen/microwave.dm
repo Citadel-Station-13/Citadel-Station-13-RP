@@ -55,7 +55,7 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/microwave/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(src.broken > 0)
 		if(src.broken == 2 && O.is_screwdriver()) // If it's broken and they're using a screwdriver
 			user.visible_message( \

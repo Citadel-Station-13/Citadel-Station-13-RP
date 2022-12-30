@@ -83,7 +83,7 @@
 		var/obj/item/borg/upgrade/modkit/M = AM
 		M.uninstall(src, FALSE)
 
-/obj/item/gun/energy/kinetic_accelerator/attackby_legacy(obj/item/I, mob/user)
+/obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/crowbar))
 		if(modkits.len)
 			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
@@ -290,7 +290,7 @@
 	. = ..()
 	. += "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>"
 
-/obj/item/borg/upgrade/modkit/attackby_legacy(obj/item/A, mob/user)
+/obj/item/borg/upgrade/modkit/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/gun/energy/kinetic_accelerator))
 		install(A, user)
 	else

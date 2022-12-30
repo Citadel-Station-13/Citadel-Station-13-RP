@@ -139,7 +139,7 @@
 		return
 
 
-/obj/item/gun/launcher/crossbow/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/gun/launcher/crossbow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!bolt)
 		if (istype(W,/obj/item/arrow))
 			if(!user.attempt_insert_item_for_installation(W, src))
@@ -229,7 +229,7 @@
 		if(5)
 			. += "It has a steel cable loosely strung across the lath."
 
-/obj/item/crossbowframe/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/crossbowframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/rods))
 		if(buildstate == 0)
 			var/obj/item/stack/rods/R = W

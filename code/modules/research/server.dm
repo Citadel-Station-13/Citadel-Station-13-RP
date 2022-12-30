@@ -110,7 +110,7 @@
 
 			env.merge(removed)
 
-/obj/machinery/r_n_d/server/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/server/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))

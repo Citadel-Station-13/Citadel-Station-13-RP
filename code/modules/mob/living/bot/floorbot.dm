@@ -369,7 +369,7 @@
 
 /* Assembly */
 
-/obj/item/storage/toolbox/attackby_legacy(var/obj/item/stack/tile/floor/T, mob/living/user, params)
+/obj/item/storage/toolbox/attackby(var/obj/item/stack/tile/floor/T, mob/living/user, params)
 	if(!istype(T, /obj/item/stack/tile/floor))
 		..()
 		return
@@ -424,7 +424,7 @@
 		icon_state = "[base_icon_state]-[skin]"
 		add_overlay("[base_icon_state]-tile")
 
-/obj/item/bot_assembly/floorbot/attackby_legacy(obj/item/W, mob/user, params)
+/obj/item/bot_assembly/floorbot/attackby(obj/item/W, mob/user, params)
 	..()
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)

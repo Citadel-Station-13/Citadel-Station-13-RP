@@ -39,7 +39,7 @@
 		var/turf/T = get_turf(locked)
 		to_chat(user, SPAN_NOTICE("The console is locked on to \[[T.loc.name]\]."))
 
-/obj/machinery/computer/teleporter/attackby_legacy(I as obj, mob/living/user as mob)
+/obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data))
 		var/obj/item/card/data/C = I
 		if(machine_stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))

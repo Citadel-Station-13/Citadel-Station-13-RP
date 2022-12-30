@@ -200,7 +200,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: attackby()
 // Parameters: 2 (C - what is used on the communicator. user - the mob that has the communicator)
 // Description: When an ID is swiped on the communicator, the communicator reads the job and checks it against the Owner name, if success, the occupation is added.
-/obj/item/communicator/attackby_legacy(obj/item/C as obj, mob/user as mob)
+/obj/item/communicator/attackby(obj/item/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/card/id))
 		var/obj/item/card/id/idcard = C

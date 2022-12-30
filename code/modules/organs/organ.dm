@@ -554,7 +554,7 @@
 		bitten(user)
 		return
 
-/obj/item/organ/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/organ/attackby(obj/item/W as obj, mob/user as mob)
 	if(can_butcher(W, user))
 		butcher(W, user)
 		return

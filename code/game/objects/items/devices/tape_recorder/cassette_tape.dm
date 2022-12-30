@@ -113,7 +113,7 @@
 	ruined = FALSE
 	update_icon()
 
-/obj/item/cassette_tape/attackby_legacy(obj/item/I, mob/user, params)
+/obj/item/cassette_tape/attackby(obj/item/I, mob/user, params)
 	if(ruined && I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
 		playsound(src, I.tool_sound, 50, 1)

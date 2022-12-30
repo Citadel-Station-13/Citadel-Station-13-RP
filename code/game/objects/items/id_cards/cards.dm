@@ -117,7 +117,7 @@
 
 	return 1
 
-/obj/item/card/emag/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/item/card/emag/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/stack/telecrystal))
 		var/obj/item/stack/telecrystal/T = O
 		if(T.amount < 1)

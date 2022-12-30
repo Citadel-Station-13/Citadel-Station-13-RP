@@ -152,9 +152,9 @@
 	else
 		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
-/obj/item/reagent_containers/food/snacks/attackby_legacy(obj/item/W, mob/user)
+/obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/storage))
-		. = ..() // -> item/attackby_legacy()
+		. = ..() // -> item/attackby()
 		return
 
 	// Eating with forks
@@ -624,7 +624,7 @@
 	src.visible_message("<font color='red'>[src.name] has been squashed.</font>","<font color='red'>You hear a smack.</font>")
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/egg/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
 		var/clr = C.colourName
@@ -3254,7 +3254,7 @@
 
 	update_icon()
 
-/obj/item/pizzabox/attackby_legacy( obj/item/I as obj, mob/user as mob )
+/obj/item/pizzabox/attackby( obj/item/I as obj, mob/user as mob )
 	if( istype(I, /obj/item/pizzabox/) )
 		var/obj/item/pizzabox/box = I
 
@@ -3396,7 +3396,7 @@
 	reagents.add_reagent("protein", 1)
 
 // Dough + rolling pin = flat dough
-/obj/item/reagent_containers/food/snacks/dough/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/kitchen/rollingpin))
 		new /obj/item/reagent_containers/food/snacks/sliceable/flatdough(src)
 		to_chat(user, "You flatten the dough.")
@@ -3445,7 +3445,7 @@
 	. = ..()
 
 /* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
-/obj/item/reagent_containers/food/snacks/bun/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
 		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
@@ -3469,7 +3469,7 @@
 END CITADEL CHANGE */
 
 // Burger + cheese wedge = cheeseburger
-/obj/item/reagent_containers/food/snacks/monkeyburger/attackby_legacy(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/monkeyburger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_containers/food/snacks/cheesewedge))
 		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
 		to_chat(user, "You make a cheeseburger.")
@@ -3480,7 +3480,7 @@ END CITADEL CHANGE */
 		. = ..()
 
 // Human Burger + cheese wedge = cheeseburger
-/obj/item/reagent_containers/food/snacks/human/burger/attackby_legacy(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/human/burger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))
 		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
 		to_chat(user, "You make a cheeseburger.")
@@ -3568,7 +3568,7 @@ END CITADEL CHANGE */
 	. = ..()
 
 // potato + knife = raw sticks
-/obj/item/reagent_containers/food/snacks/grown/attackby_legacy(obj/item/W, mob/user)
+/obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/W, mob/user)
 	if(seed && seed.kitchen_tag && seed.kitchen_tag == "potato" && istype(W,/obj/item/material/knife))
 		new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
@@ -4280,7 +4280,7 @@ END CITADEL CHANGE */
 	reagents.add_reagent("triglyceride", 20)
 	reagents.add_reagent("sodiumchloride",1)
 
-/obj/item/reagent_containers/food/snacks/rawcutlet/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/rawcutlet/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/knife))
 		new /obj/item/reagent_containers/food/snacks/rawbacon(src)
 		new /obj/item/reagent_containers/food/snacks/rawbacon(src)
@@ -4643,8 +4643,8 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("honey", 3)
 
-// Moved /bun/attackby_legacy() from /code/modules/food/food/snacks.dm
-/obj/item/reagent_containers/food/snacks/bun/attackby_legacy(obj/item/W as obj, mob/user as mob)
+// Moved /bun/attackby() from /code/modules/food/food/snacks.dm
+/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	//i honestly should probably refactor this whole thing but idgaf
 	if(istype(W,/obj/item/storage))
 		. = ..() //if you want to bag a ton of buns idk i don't play chef
@@ -4826,7 +4826,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("queso" = 20)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/dip/attackby_legacy(obj/item/reagent_containers/food/snacks/item as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/dip/attackby(obj/item/reagent_containers/food/snacks/item as obj, mob/user as mob)
 	. = ..()
 	var/obj/item/reagent_containers/food/snacks/returningitem
 	if(istype(item,/obj/item/reagent_containers/food/snacks/chip/nacho) && item.icon_state == "chip_nacho")

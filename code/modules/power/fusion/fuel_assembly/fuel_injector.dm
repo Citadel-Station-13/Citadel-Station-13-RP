@@ -40,7 +40,7 @@ var/list/fuel_injectors = list()
 		else
 			Inject()
 
-/obj/machinery/fusion_fuel_injector/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/fusion_fuel_injector/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Fuel Injector", id_tag) as null|text

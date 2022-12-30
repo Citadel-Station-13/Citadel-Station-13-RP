@@ -57,7 +57,7 @@
 	qdel(src)
 	user.put_in_hands(internal_paper_tmp)
 
-/obj/item/paperplane/attackby_legacy(obj/item/P, mob/living/carbon/human/user, params)
+/obj/item/paperplane/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	..()
 	if(istype(P, /obj/item/pen))
 		to_chat(user, "<span class='notice'>You should unfold [src] before changing it.</span>")

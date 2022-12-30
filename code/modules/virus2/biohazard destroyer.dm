@@ -6,7 +6,7 @@
 	density = 1
 	anchored = 1
 
-/obj/machinery/disease2/biodestroyer/attackby_legacy(var/obj/I as obj, var/mob/user as mob)
+/obj/machinery/disease2/biodestroyer/attackby(var/obj/I as obj, var/mob/user as mob)
 	// if you see me in git blame, trust me, what was here before was worse ~silicons
 	for(var/path in accepts)
 		if(I.type in typesof(path))

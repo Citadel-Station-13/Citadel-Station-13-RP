@@ -79,7 +79,7 @@
 			return 0
 	return
 
-/obj/item/mecha_parts/mecha_equipment/generator/attackby_legacy(weapon,mob/user)
+/obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user)
 	var/result = load_fuel(weapon)
 	if(isnull(result))
 		user.visible_message("[user] tries to shove [weapon] into [src]. What a dumb-ass.","<span class='warning'>[fuel] traces minimal. [weapon] cannot be used as fuel.</span>")

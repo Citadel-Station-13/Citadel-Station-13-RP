@@ -40,7 +40,7 @@
 	active_power_usage = 1500
 	field_type = /obj/structure/atmospheric_retention_field/impassable
 
-/obj/machinery/atmospheric_field_generator/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospheric_field_generator/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/crowbar) && isactive)
 		if(!src) return
 		to_chat(user, "<span class='warning'>You can't open the ARF-G whilst it's running!</span>")

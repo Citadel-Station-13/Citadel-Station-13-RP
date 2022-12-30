@@ -136,7 +136,7 @@
 	//No other icons for it atm
 
 
-/obj/machinery/power/am_control_unit/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/am_control_unit/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return
 	if(W.is_wrench())
 		if(!anchored)

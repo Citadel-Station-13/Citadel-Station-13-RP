@@ -6,7 +6,7 @@
 /turf/simulated/floor/holofloor
 	thermal_conductivity = 0
 
-/turf/simulated/floor/holofloor/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/turf/simulated/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 	// HOLOFLOOR DOES NOT GIVE A FUCK
 
@@ -161,7 +161,7 @@
 
 	return TRUE
 
-/obj/structure/window/reinforced/holowindow/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/window/reinforced/holowindow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
 		return//I really wish I did not need this
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
@@ -216,7 +216,7 @@
 	qdel(src)
 	return
 
-/obj/machinery/door/window/holowindoor/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/window/holowindoor/attackby(obj/item/I as obj, mob/user as mob)
 
 	if (src.operating == 1)
 		return
@@ -251,12 +251,12 @@
 		visible_message("[src] fades away as it shatters!")
 	qdel(src)
 
-/obj/structure/bed/chair/holochair/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/chair/holochair/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
 
-/obj/structure/bed/holobed/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/holobed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
@@ -319,7 +319,7 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/holo/esword/attackby_legacy(obj/item/W, mob/user)
+/obj/item/holo/esword/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool) && !active)
 		if(!rainbow)
 			rainbow = TRUE
@@ -361,7 +361,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 
-/obj/structure/holohoop/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/holohoop/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
 		if(G.state<2)
@@ -411,7 +411,7 @@
 	to_chat(user, "The station AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)

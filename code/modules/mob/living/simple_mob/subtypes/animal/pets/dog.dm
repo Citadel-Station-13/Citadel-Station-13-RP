@@ -40,7 +40,7 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
-/mob/living/simple_mob/animal/passive/dog/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))

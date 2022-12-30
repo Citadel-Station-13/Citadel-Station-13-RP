@@ -24,7 +24,7 @@
 	return
 
 
-/obj/machinery/computer/aiupload/attackby_legacy(obj/item/O, mob/user)
+/obj/machinery/computer/aiupload/attackby(obj/item/O, mob/user)
 	if (GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
@@ -64,7 +64,7 @@
 	var/mob/living/silicon/robot/current = null
 
 
-/obj/machinery/computer/borgupload/attackby_legacy(obj/item/aiModule/module, mob/user)
+/obj/machinery/computer/borgupload/attackby(obj/item/aiModule/module, mob/user)
 	if(istype(module, /obj/item/aiModule))
 		module.install(src, user)
 	else

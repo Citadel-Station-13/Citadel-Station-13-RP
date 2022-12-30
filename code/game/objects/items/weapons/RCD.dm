@@ -77,7 +77,7 @@
 	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
 // Used to add new cartridges.
-/obj/item/rcd/attackby_legacy(obj/item/W, mob/user)
+/obj/item/rcd/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))
 		var/obj/item/rcd_ammo/cartridge = W
 		var/can_store = min(max_stored_matter - stored_matter, cartridge.remaining)
@@ -394,7 +394,7 @@
 /obj/item/rcd/debug/consume_resources(amount)
 	return TRUE
 
-/obj/item/rcd/debug/attackby_legacy(obj/item/W, mob/user)
+/obj/item/rcd/debug/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))
 		to_chat(user, SPAN_NOTICE("\The [src] makes its own material, no need to add more."))
 		return FALSE

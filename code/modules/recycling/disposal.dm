@@ -55,7 +55,7 @@
 	return ..()
 
 // attack by item places it in to disposal
-/obj/machinery/disposal/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 
@@ -878,7 +878,7 @@
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct
 
-/obj/structure/disposalpipe/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/attackby(var/obj/item/I, var/mob/user)
 
 	var/turf/T = src.loc
 	if(!T.is_plating())
@@ -1167,7 +1167,7 @@
 	updatedesc()
 	update()
 
-/obj/structure/disposalpipe/tagger/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
 	if(..())
 		return
 
@@ -1235,7 +1235,7 @@
 	updatedesc()
 	update()
 
-/obj/structure/disposalpipe/sortjunction/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/disposalpipe/sortjunction/attackby(obj/item/I, mob/user)
 	if(..())
 		return
 
@@ -1343,7 +1343,7 @@
 	return
 
 	// Override attackby so we disallow trunkremoval when somethings ontop
-/obj/structure/disposalpipe/trunk/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/disposalpipe/trunk/attackby(obj/item/I, mob/user)
 
 	//Disposal bins or chutes
 	/*
@@ -1475,7 +1475,7 @@
 
 	return
 
-/obj/structure/disposaloutlet/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/disposaloutlet/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 	src.add_fingerprint(user, 0, I)

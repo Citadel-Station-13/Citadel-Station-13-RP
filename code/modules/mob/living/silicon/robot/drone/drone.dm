@@ -180,7 +180,7 @@
 	updateicon()
 
 //Drones cannot be upgraded with borg modules so we need to catch some items before they get used in ..().
-/mob/living/silicon/robot/drone/attackby_legacy(var/obj/item/W, var/mob/user)
+/mob/living/silicon/robot/drone/attackby(var/obj/item/W, var/mob/user)
 
 	if(user.a_intent == "help" && istype(W, /obj/item/clothing/head))
 		if(hat)

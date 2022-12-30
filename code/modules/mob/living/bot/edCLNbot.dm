@@ -129,7 +129,7 @@
 	item_state = "buildpipe"
 	created_name = "ED-CLN Security Robot"
 
-/obj/item/secbot_assembly/edCLN_assembly/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/secbot_assembly/edCLN_assembly/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	..()
 
 	if(istype(W, /obj/item/pen))

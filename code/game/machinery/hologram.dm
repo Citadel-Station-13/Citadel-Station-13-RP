@@ -44,7 +44,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
 
-/obj/machinery/hologram/holopad/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/hologram/holopad/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

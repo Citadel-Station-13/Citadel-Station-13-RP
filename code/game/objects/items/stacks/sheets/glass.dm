@@ -22,7 +22,7 @@
 /obj/item/stack/material/glass/attack_self(mob/user as mob)
 	construct_window(user)
 
-/obj/item/stack/material/glass/attackby_legacy(obj/item/W, mob/user)
+/obj/item/stack/material/glass/attackby(obj/item/W, mob/user)
 	..()
 	if(!is_reinforced)
 		if(istype(W,/obj/item/stack/cable_coil))
@@ -70,7 +70,7 @@
 	icon_state = "sheet-phoronglass"
 	default_type = "phoron glass"
 
-/obj/item/stack/material/glass/phoronglass/attackby_legacy(obj/item/W, mob/user)
+/obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
 	if( istype(W, /obj/item/stack/rods) )
 		var/obj/item/stack/rods/V  = W

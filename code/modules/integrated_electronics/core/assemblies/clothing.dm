@@ -53,7 +53,7 @@
 		EA.examine(user)
 	. = ..()
 
-/obj/item/clothing/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(EA)
 		if (I.is_crowbar())
 			var/turf/T = get_turf(src)
@@ -116,7 +116,7 @@
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)
 	return ..()
 
-/obj/item/clothing/under/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/under/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -143,7 +143,7 @@
 	item_state = "circuitry"
 	EA_Installed = 1
 
-/obj/item/clothing/gloves/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/gloves/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -174,7 +174,7 @@
 	item_state = "ewatch"
 	EA_Installed = 1
 
-/obj/item/clothing/gloves/ewatch/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/gloves/ewatch/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -204,7 +204,7 @@
 	item_state = "night" // The on-mob sprite would be identical anyways.
 	EA_Installed = 1
 
-/obj/item/clothing/glasses/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/glasses/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -234,7 +234,7 @@
 	item_state = "circuitry"
 	EA_Installed = 1
 
-/obj/item/clothing/shoes/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/shoes/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -264,7 +264,7 @@
 	item_state = "circuitry"
 	EA_Installed = 1
 
-/obj/item/clothing/head/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/head/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -295,7 +295,7 @@
 	item_state = "circuitry"
 	EA_Installed = 1
 
-/obj/item/clothing/ears/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/ears/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -325,7 +325,7 @@
 	item_state = "circuitry"
 	EA_Installed = 1
 
-/obj/item/clothing/suit/circuitry/attackby_legacy(obj/item/I, mob/user)
+/obj/item/clothing/suit/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/large))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))

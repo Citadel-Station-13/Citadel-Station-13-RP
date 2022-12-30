@@ -48,7 +48,7 @@
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 	..()
 
-/obj/structure/mirror/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
 		if(!glass)
 			playsound(src.loc, I.tool_sound, 50, 1)

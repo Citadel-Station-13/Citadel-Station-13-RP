@@ -12,7 +12,7 @@
 			return 0
 	return ..()
 
-/obj/item/grenade/spawnergrenade/manhacks/station/locked/attackby_legacy(obj/item/I, mob/user)
+/obj/item/grenade/spawnergrenade/manhacks/station/locked/attackby(obj/item/I, mob/user)
 	var/obj/item/card/id/id = I.GetID()
 	if(istype(id))
 		if(check_access(id))

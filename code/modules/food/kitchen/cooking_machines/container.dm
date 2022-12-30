@@ -31,7 +31,7 @@
 	if (reagents.total_volume)
 		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
 
-/obj/item/reagent_containers/cooking_container/attackby_legacy(var/obj/item/I as obj, var/mob/user as mob)
+/obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))

@@ -25,7 +25,7 @@ var/global/ingredientLimit = 20
 	src.reagents.add_reagent("nutriment",3)
 	src.updateName()
 
-/obj/item/reagent_containers/food/snacks/customizable/attackby_legacy(obj/item/I, mob/user)
+/obj/item/reagent_containers/food/snacks/customizable/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/reagent_containers/food/snacks))
 		if((contents.len >= ingMax) || (contents.len >= ingredientLimit))
 			to_chat(user, "<span class='warning'>That's already looking pretty stuffed.</span>")
@@ -140,7 +140,7 @@ var/global/ingredientLimit = 20
 	stackIngredients = 1
 	addTop = 0
 
-/obj/item/reagent_containers/food/snacks/customizable/sandwich/attackby_legacy(obj/item/I,mob/user)
+/obj/item/reagent_containers/food/snacks/customizable/sandwich/attackby(obj/item/I,mob/user)
 	if(istype(I,/obj/item/reagent_containers/food/snacks/slice/bread) && !addTop)
 		I.reagents.trans_to(src,I.reagents.total_volume)
 		qdel(I)
@@ -183,7 +183,7 @@ var/global/ingredientLimit = 20
 
 // Various Snacks //////////////////////////////////////////////
 
-/obj/item/reagent_containers/food/snacks/slice/bread/attackby_legacy(obj/item/I,mob/user,params)
+/obj/item/reagent_containers/food/snacks/slice/bread/attackby(obj/item/I,mob/user,params)
 	if(istype(I,/obj/item/reagent_containers/food/snacks))
 		if(!recursiveFood && istype(I, /obj/item/reagent_containers/food/snacks/customizable))
 			to_chat(user, "<span class='warning'>Sorry, no recursive food.</span>")
@@ -194,7 +194,7 @@ var/global/ingredientLimit = 20
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/snacks/bun/attackby_legacy(obj/item/I, mob/user)
+/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/I, mob/user)
 	// Bun + meatball = burger
 	if(istype(I,/obj/item/reagent_containers/food/snacks/meatball))
 		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
@@ -226,7 +226,7 @@ var/global/ingredientLimit = 20
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/snacks/sliceable/flatdough/attackby_legacy(obj/item/I, mob/user)
+/obj/item/reagent_containers/food/snacks/sliceable/flatdough/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		if(!recursiveFood && istype(I, /obj/item/reagent_containers/food/snacks/customizable))
 			to_chat(user, "<span class='warning'>Sorry, no recursive food.</span>")
@@ -237,7 +237,7 @@ var/global/ingredientLimit = 20
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/snacks/spagetti/attackby_legacy(obj/item/I, mob/user)
+/obj/item/reagent_containers/food/snacks/spagetti/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		if(!recursiveFood && istype(I, /obj/item/reagent_containers/food/snacks/customizable))
 			to_chat(user, "<span class='warning'>Sorry, no recursive food.</span>")
@@ -250,7 +250,7 @@ var/global/ingredientLimit = 20
 
 // Custom Meals ////////////////////////////////////////////////
 /*
-/obj/item/trash/plate/attackby_legacy(obj/item/I, mob/user)
+/obj/item/trash/plate/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/reagent_containers/food/snacks))
 		if(istype(I,/obj/item/reagent_containers/food/snacks/customizable/fullycustom)) //no platestacking even with recursive food, for now
 			to_chat(user, "<span class='warning'>That's already got a plate!</span>")
@@ -268,7 +268,7 @@ var/global/ingredientLimit = 20
 	icon = 'icons/obj/food_custom.dmi'
 	icon_state = "soup"
 
-/obj/item/trash/bowl/attackby_legacy(obj/item/I, mob/user)
+/obj/item/trash/bowl/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/reagent_containers/food/snacks))
 		if(!recursiveFood && istype(I, /obj/item/reagent_containers/food/snacks/customizable))
 			to_chat(user, "<span class='warning'>Sorry, no recursive food.</span>")

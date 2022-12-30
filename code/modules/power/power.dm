@@ -103,7 +103,7 @@
 
 // attach a wire to a power machine - leads from the turf you are standing on
 //almost never called, overwritten by all power machines but terminal and generator
-/obj/machinery/power/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/stack/cable_coil))
 

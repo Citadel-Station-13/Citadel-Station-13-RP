@@ -11,7 +11,7 @@
 	var/repair_amount = 5
 	var/repair_time = 40
 
-/obj/item/whetstone/attackby_legacy(obj/item/I, mob/user)
+/obj/item/whetstone/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/material))
 		var/obj/item/stack/material/M = I
 		if(M.amount >= 5)
@@ -53,7 +53,7 @@
 	repair_time = material.weight * 0.5
 	sharpen_time = material.weight * 3
 
-/obj/item/material/sharpeningkit/attackby_legacy(obj/item/W, mob/user)
+/obj/item/material/sharpeningkit/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material))
 		var/obj/item/stack/material/S = W
 		if(S.material == material)

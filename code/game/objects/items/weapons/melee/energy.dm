@@ -113,7 +113,7 @@
 			deactivate(user)
 			visible_message("<span class='notice'>\The [src]'s blade flickers, before deactivating.</span>")
 
-/obj/item/melee/energy/attackby_legacy(obj/item/W, mob/user)
+/obj/item/melee/energy/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool) && colorable && !active)
 		if(!rainbow)
 			rainbow = TRUE
@@ -307,7 +307,7 @@
 
 	return 1
 
-/obj/item/melee/energy/sword/attackby_legacy(obj/item/W, mob/living/user, params)
+/obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword))
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
 			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
@@ -432,7 +432,7 @@
 	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
-/obj/item/melee/energy/sword/charge/attackby_legacy(obj/item/W, mob/living/user, params)
+/obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword/charge))
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
 			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
@@ -721,7 +721,7 @@
 		for(var/obj/effect/plantsegment/P in range(mover,0))
 			qdel(P)
 
-/obj/item/melee/energy/hfmachete/attackby_legacy(obj/item/W, mob/living/user)
+/obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/melee/energy/hfmachete))
 		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")

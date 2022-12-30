@@ -18,7 +18,7 @@
 	var/list/pages = list()  // Ordered list of pages as they are to be displayed. Can be different order than src.contents.
 
 
-/obj/item/paper_bundle/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/paper_bundle/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (istype(W, /obj/item/paper/carbon))

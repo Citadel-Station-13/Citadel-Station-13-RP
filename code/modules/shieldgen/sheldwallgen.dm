@@ -156,7 +156,7 @@
 		CF.setDir(field_dir)
 
 
-/obj/machinery/shieldwallgen/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		if(active)
 			to_chat(user, "Turn off the field generator first.")

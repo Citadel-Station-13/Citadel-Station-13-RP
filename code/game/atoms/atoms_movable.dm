@@ -187,7 +187,7 @@
 	var/atom/master = null
 	anchored = TRUE
 
-/atom/movable/overlay/attackby_legacy(a, b)
+/atom/movable/overlay/attackby(a, b)
 	if (src.master)
 		return src.master.attackby(a, b)
 	return

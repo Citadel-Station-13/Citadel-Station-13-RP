@@ -285,7 +285,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && use_power)
@@ -315,7 +315,7 @@
 
 /// Scrubber Welding
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))

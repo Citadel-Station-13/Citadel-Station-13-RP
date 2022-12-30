@@ -48,7 +48,7 @@
 /obj/effect/energy_field/bullet_act(var/obj/item/projectile/Proj)
 	adjust_strength(-Proj.get_structure_damage() / 10)
 
-/obj/effect/energy_field/attackby_legacy(obj/item/W, mob/user)
+/obj/effect/energy_field/attackby(obj/item/W, mob/user)
 	if(W.force)
 		adjust_strength(-W.force / 20)
 		user.do_attack_animation(src)

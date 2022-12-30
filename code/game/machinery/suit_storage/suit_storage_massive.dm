@@ -195,7 +195,7 @@
 			LAZYREMOVE(boots, dispense_item)
 	return
 
-/obj/machinery/suit_storage_closet/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/suit_storage_closet/attackby(obj/item/I as obj, mob/user as mob)
 	if(!ispowered)
 		return
 	/*if(I.is_screwdriver())

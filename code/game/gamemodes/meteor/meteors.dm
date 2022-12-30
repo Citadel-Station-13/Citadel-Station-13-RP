@@ -182,7 +182,7 @@
 /obj/effect/meteor/legacy_ex_act()
 	return
 
-/obj/effect/meteor/attackby_legacy(obj/item/W as obj, mob/user as mob, params)
+/obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/pickaxe))
 		qdel(src)
 		return

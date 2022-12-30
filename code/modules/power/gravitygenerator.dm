@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/part
 	var/obj/machinery/gravity_generator/main/main_part = null
 
-/obj/machinery/gravity_generator/part/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/gravity_generator/part/attackby(obj/item/I, mob/user, params)
 	return main_part.attackby(I, user)
 
 /obj/machinery/gravity_generator/part/get_status()
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 // Interaction
 
 // Fixing the gravity generator.
-/obj/machinery/gravity_generator/main/attackby_legacy(obj/item/I, obj/item/W, mob/user, params)
+/obj/machinery/gravity_generator/main/attackby(obj/item/I, obj/item/W, mob/user, params)
 	switch(broken_state)
 		if(GRAV_NEEDS_SCREWDRIVER)
 			if(I.is_screwdriver())

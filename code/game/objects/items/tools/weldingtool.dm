@@ -80,7 +80,7 @@
 		return
 	return ..()
 
-/obj/item/weldingtool/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W,/obj/item/tool/screwdriver))
 		if(welding)
 			to_chat(user, "<span class='danger'>Stop welding first!</span>")
@@ -621,7 +621,7 @@
 	else
 		return ..()
 
-/obj/item/weldingtool/electric/attackby_legacy(obj/item/W, mob/user as mob)
+/obj/item/weldingtool/electric/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!power_supply)

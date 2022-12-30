@@ -20,7 +20,7 @@
 	else
 		has_extinguisher = new/obj/item/extinguisher(src)
 
-/obj/structure/extinguisher_cabinet/attackby_legacy(obj/item/O, mob/user)
+/obj/structure/extinguisher_cabinet/attackby(obj/item/O, mob/user)
 	if(isrobot(user))
 		return
 	if(istype(O, /obj/item/extinguisher))

@@ -78,7 +78,7 @@
 			qdel(src)
 	return
 
-/obj/structure/catwalk/attackby_legacy(obj/item/C as obj, mob/user as mob)
+/obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = C
 		if(WT.isOn())

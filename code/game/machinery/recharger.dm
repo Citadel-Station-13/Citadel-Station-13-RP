@@ -29,7 +29,7 @@
 		var/obj/item/cell/C = charging.get_cell()
 		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
-/obj/machinery/recharger/attackby_legacy(obj/item/G, mob/user)
+/obj/machinery/recharger/attackby(obj/item/G, mob/user)
 	var/allowed = FALSE
 	for (var/allowed_type in allowed_devices)
 		if(istype(G, allowed_type))

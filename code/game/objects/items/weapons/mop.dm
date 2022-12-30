@@ -132,7 +132,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 
 
-/obj/effect/attackby_legacy(obj/item/I, mob/user)
+/obj/effect/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mop) || istype(I, /obj/item/soap))
 		return
 	..()

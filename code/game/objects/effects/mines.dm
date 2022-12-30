@@ -51,7 +51,7 @@
 		if(!M.hovering)
 			explode(M)
 
-/obj/effect/mine/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/effect/mine/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(W.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] very carefully screws the mine's panel [panel_open ? "open" : "closed"].</span>",

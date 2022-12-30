@@ -100,7 +100,7 @@
 	if (prob(50))
 		qdel(src)
 
-/obj/machinery/chem_master/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I, 20))
 		return
 	else if(default_deconstruction_screwdriver(user, I))

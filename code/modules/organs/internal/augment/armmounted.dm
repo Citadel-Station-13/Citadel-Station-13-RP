@@ -14,7 +14,7 @@
 	integrated_object_type = /obj/item/gun/energy/laser/mounted/augment
 
 
-/obj/item/organ/internal/augment/armmounted/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/organ/internal/augment/armmounted/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		switch(organ_tag)
 			if(O_AUG_L_FOREARM)
@@ -52,7 +52,7 @@
 	w_class = ITEMSIZE_SMALL
 	integrated_object_type = /obj/item/portable_scanner
 
-/obj/item/organ/internal/augment/armmounted/hand/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/organ/internal/augment/armmounted/hand/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		switch(organ_tag)
 			if(O_AUG_L_HAND)
@@ -84,7 +84,7 @@
 	w_class = ITEMSIZE_HUGE
 	integrated_object_type = null
 
-/obj/item/organ/internal/augment/armmounted/shoulder/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/organ/internal/augment/armmounted/shoulder/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		switch(organ_tag)
 			if(O_AUG_L_UPPERARM)

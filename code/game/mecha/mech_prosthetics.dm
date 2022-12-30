@@ -127,7 +127,7 @@
 			return
 	return FALSE
 
-/obj/machinery/mecha_part_fabricator/pros/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
 	if(..())
 		return TRUE
 

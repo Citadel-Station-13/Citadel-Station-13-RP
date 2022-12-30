@@ -54,7 +54,7 @@
 	return
 
 
-/obj/structure/displaycase/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)

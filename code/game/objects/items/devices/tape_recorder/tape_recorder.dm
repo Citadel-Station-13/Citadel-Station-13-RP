@@ -44,7 +44,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/tape_recorder/attackby_legacy(obj/item/I, mob/user, params)
+/obj/item/tape_recorder/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/cassette_tape))
 		if(tape)
 			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")

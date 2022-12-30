@@ -291,7 +291,7 @@
 
 	update_icon()
 
-/obj/structure/frame/attackby_legacy(obj/item/P, mob/user)
+/obj/structure/frame/attackby(obj/item/P, mob/user)
 	if(P.is_wrench())
 		if(state == FRAME_PLACED && !anchored)
 			to_chat(user, SPAN_NOTICE("You start to wrench the frame into place."))

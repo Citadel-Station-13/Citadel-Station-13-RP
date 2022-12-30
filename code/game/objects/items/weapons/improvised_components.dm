@@ -6,7 +6,7 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
-/obj/item/material/butterflyconstruction/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/material/butterflyconstruction/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		to_chat(user, "You finish the concealed blade weapon.")
 		playsound(src, W.tool_sound, 50, 1)
@@ -30,7 +30,7 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
-/obj/item/material/butterflyhandle/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/material/butterflyhandle/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/butterflyblade))
 		var/obj/item/material/butterflyblade/B = W
 		to_chat(user, "You attach the two concealed blade parts.")
@@ -52,7 +52,7 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
-/obj/item/material/wirerod/attackby_legacy(var/obj/item/I, mob/user as mob)
+/obj/item/material/wirerod/attackby(var/obj/item/I, mob/user as mob)
 	..()
 	var/obj/item/finished
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
@@ -81,7 +81,7 @@
 
 	var/construction_stage = 1
 
-/obj/item/material/hammer_head/attackby_legacy(var/obj/item/thing, var/mob/user)
+/obj/item/material/hammer_head/attackby(var/obj/item/thing, var/mob/user)
 
 	if(istype(thing, /obj/item/stack/rods) && construction_stage == 1)
 		var/obj/item/stack/rods = thing

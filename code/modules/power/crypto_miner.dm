@@ -63,7 +63,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         GLOB.points_mined += newpoints
         GLOB.power_per_point = round(1 MEGAWATTS * (1.00276 ** GLOB.points_mined))//1.00276 doubles the first time at 250 points, which is the most expansive item in the vendor currently
 
-/obj/machinery/power/crypto_miner/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/crypto_miner/attackby(obj/item/W, mob/user)
 
     if(istype(W, /obj/item/card/id))
         var/obj/item/card/id/used_id = W

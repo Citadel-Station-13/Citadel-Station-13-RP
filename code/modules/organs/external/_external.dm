@@ -76,7 +76,7 @@
 			. += "<span class='danger'>There is \a [I] sticking out of it.</span>"
 	return
 
-/obj/item/organ/external/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/item/organ/external/attackby(obj/item/W as obj, mob/living/user as mob)
 	switch(stage)
 		if(0)
 			if(istype(W,/obj/item/surgical/scalpel))

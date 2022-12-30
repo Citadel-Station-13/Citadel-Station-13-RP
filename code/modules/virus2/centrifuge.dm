@@ -9,7 +9,7 @@
 	var/obj/item/reagent_containers/glass/beaker/vial/sample = null
 	var/datum/disease2/disease/virus2 = null
 
-/obj/machinery/computer/centrifuge/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/computer/centrifuge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.is_screwdriver())
 		return ..()
 

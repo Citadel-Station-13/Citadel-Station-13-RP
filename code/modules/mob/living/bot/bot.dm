@@ -141,7 +141,7 @@
 /mob/living/bot/death()
 	explode()
 
-/mob/living/bot/attackby_legacy(var/obj/item/O, var/mob/user)
+/mob/living/bot/attackby(var/obj/item/O, var/mob/user)
 	if(O.GetID())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked

@@ -217,7 +217,7 @@
 	var/burnt = FALSE
 	var/burned_in
 
-/obj/item/melee/bokken/attackby_legacy(obj/item/I, mob/living/user, params)
+/obj/item/melee/bokken/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))
 		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
 		if(new_name)
@@ -340,7 +340,7 @@
 	attack_verb = list("battered", "hammered", "struck")
 	hitsound = 'sound/weapons/genhit3.ogg'
 
-/obj/item/melee/kanabo/attackby_legacy(obj/item/I, mob/living/user, params)
+/obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))
 		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
 		if(new_name)

@@ -69,7 +69,7 @@
 	icon_state = "juicer"+num2text(!isnull(beaker))
 	return
 
-/obj/machinery/reagentgrinder/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/reagentgrinder/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(beaker)
 		if(default_deconstruction_screwdriver(user, O))
 			return
@@ -296,7 +296,7 @@
 /obj/machinery/chemical_analyzer/update_icon()
 	icon_state = "chem_analyzer[analyzing ? "-working":""]"
 
-/obj/machinery/chemical_analyzer/attackby_legacy(obj/item/I, mob/living/user)
+/obj/machinery/chemical_analyzer/attackby(obj/item/I, mob/living/user)
 	if(!istype(I))
 		return ..()
 

@@ -18,7 +18,7 @@
 	venus.temperature = 490
 	return venus
 
-/obj/structure/adherent_bath/attackby_legacy(var/obj/item/thing, var/mob/user)
+/obj/structure/adherent_bath/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing, /obj/item/grab))
 		var/obj/item/grab/G = thing
 		if(enter_bath(G.affecting))

@@ -14,7 +14,7 @@
 		// Move the pinned target along with the stake
 		pinned_target.forceMove(loc)
 
-/obj/structure/target_stake/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/target_stake/attackby(obj/item/W as obj, mob/user as mob)
 	// Putting objects on the stake. Most importantly, targets
 	if(pinned_target)
 		return ..() // get rid of that pinned target first!

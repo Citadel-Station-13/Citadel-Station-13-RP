@@ -90,7 +90,7 @@
 			flick("partslathe-lidopen", src)
 		icon_state = "partslathe-idle"
 
-/obj/machinery/partslathe/attackby_legacy(obj/item/O, mob/user)
+/obj/machinery/partslathe/attackby(obj/item/O, mob/user)
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return TRUE

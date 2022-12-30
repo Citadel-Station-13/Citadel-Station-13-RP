@@ -126,7 +126,7 @@
 		icon_state = "algae-on"
 	return TRUE
 
-/obj/machinery/atmospherics/component/binary/algae_farm/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/algae_farm/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return

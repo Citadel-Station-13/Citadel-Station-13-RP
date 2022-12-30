@@ -393,7 +393,7 @@
 	S.add(transfer)
 	return transfer
 
-/obj/item/stack/attackby_legacy(obj/item/W, mob/user)
+/obj/item/stack/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		src.transfer_to(S)

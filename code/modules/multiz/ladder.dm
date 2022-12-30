@@ -33,7 +33,7 @@
 		target_up = null
 	return ..()
 
-/obj/structure/ladder/attackby_legacy(obj/item/C as obj, mob/user as mob)
+/obj/structure/ladder/attackby(obj/item/C as obj, mob/user as mob)
 	attack_hand(user)
 	return
 

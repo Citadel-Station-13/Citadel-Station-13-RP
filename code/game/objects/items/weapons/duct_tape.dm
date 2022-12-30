@@ -189,7 +189,7 @@
 	cut_overlays()
 	qdel(src)
 
-/obj/item/duct_tape_piece/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/item/duct_tape_piece/attackby(var/obj/item/I, var/mob/user)
 	if(!(istype(src, /obj/item/handcuffs/cable/tape) || istype(src, /obj/item/clothing/mask/muzzle/tape)))
 		return ..()
 	else

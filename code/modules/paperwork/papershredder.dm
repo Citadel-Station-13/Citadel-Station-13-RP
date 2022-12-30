@@ -35,7 +35,7 @@
 	RefreshParts()
 	update_icon()
 
-/obj/machinery/papershredder/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/papershredder/attackby(var/obj/item/W, var/mob/user)
 
 	if(istype(W, /obj/item/storage))
 		empty_bin(user, W)
@@ -165,7 +165,7 @@
 	if(prob(65))
 		color = pick("#BABABA","#7F7F7F")
 
-/obj/item/shreddedp/attackby_legacy(var/obj/item/W as obj, var/mob/user)
+/obj/item/shreddedp/attackby(var/obj/item/W as obj, var/mob/user)
 	if(istype(W, /obj/item/flame/lighter))
 		burnpaper(W, user)
 	else

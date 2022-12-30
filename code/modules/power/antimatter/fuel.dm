@@ -20,7 +20,7 @@
 	content = "Anti-Hydrogen"
 	fuel = 1e-12		//pico-kilogram
 
-/obj/item/fuel/attackby_legacy(obj/item/fuel/F, mob/user)
+/obj/item/fuel/attackby(obj/item/fuel/F, mob/user)
 	..()
 	if(istype(src, /obj/item/fuel/antiH))
 		if(istype(F, /obj/item/fuel/antiH))

@@ -40,7 +40,7 @@
 		icon_state = "gridchecker_on"
 		set_light(2, 2, "#A8B0F8")
 
-/obj/machinery/power/grid_checker/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/grid_checker/attackby(obj/item/W, mob/user)
 	if(!user)
 		return
 	if(W.is_screwdriver())

@@ -270,7 +270,7 @@
 		emagged = 1
 		return 1
 
-/obj/machinery/power/port_gen/pacman/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
@@ -540,7 +540,7 @@
 	if(Adjacent(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"
 
-/obj/machinery/power/rtg/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/power/rtg/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	else if(default_deconstruction_crowbar(user, I))
@@ -568,7 +568,7 @@
 
 /obj/machinery/power/rtg/fake_gen/RefreshParts()
 	return
-/obj/machinery/power/rtg/fake_gen/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/power/rtg/fake_gen/attackby(obj/item/I, mob/user, params)
 	return
 /obj/machinery/power/rtg/fake_gen/update_icon()
 	return
@@ -626,7 +626,7 @@
 		playsound(src, 'sound/effects/metal_close.ogg', 50, 1)
 		return TRUE
 
-/obj/machinery/power/rtg/abductor/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
 	state_change = TRUE //Can't tell if parent did something
 	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
 		if(!user.attempt_insert_item_for_installation(I, src))

@@ -166,7 +166,7 @@
 	|| istype(user.module,/obj/item/robot_module/drone))) //Only dron (and engiborg) needs this.
 		rename_door(user)
 
-/obj/structure/door_assembly/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/door_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		rename_door(user)
 		return

@@ -314,7 +314,7 @@
 				visible_message("<span class='danger'>[M] has attempted to punch [src]!</span>")
 	return
 
-/mob/living/carbon/slime/attackby_legacy(obj/item/W, mob/user)
+/mob/living/carbon/slime/attackby(obj/item/W, mob/user)
 	if(W.force > 0)
 		attacked += 10
 		if(prob(25))

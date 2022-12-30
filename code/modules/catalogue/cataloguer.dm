@@ -317,7 +317,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	interact(usr) // So it refreshes the window.
 	return 1
 
-/obj/item/cataloguer/attackby_legacy(obj/item/W, mob/user)
+/obj/item/cataloguer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id) && !busy)
 		busy = TRUE
 		var/obj/item/card/id/ID = W

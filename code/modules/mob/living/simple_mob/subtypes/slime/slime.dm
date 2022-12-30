@@ -168,7 +168,7 @@
 		..()
 
 // Clicked on while holding an object.
-/mob/living/simple_mob/slime/attackby_legacy(obj/item/I, mob/user)
+/mob/living/simple_mob/slime/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/head)) // Handle hat simulator.
 		give_hat(I, user)
 		return

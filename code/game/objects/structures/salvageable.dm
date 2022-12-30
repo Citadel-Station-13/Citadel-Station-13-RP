@@ -13,7 +13,7 @@
 			new path (loc)
 	return
 
-/obj/structure/salvageable/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/salvageable/attackby(obj/item/I, mob/user)
 	if(I.is_crowbar())
 		playsound(src, I.tool_sound, 50, 1)
 		var/actual_time = I.tool_speed * 170
@@ -239,7 +239,7 @@
 	. = ..()
 	icon_state = "bliss[rand(0,1)]"
 
-/obj/structure/salvageable/bliss/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/salvageable/bliss/attackby(obj/item/I, mob/user)
 	if((. = ..()))
 		playsound(src, 'sound/machines/deniedbeep.ogg', 60, 1)
 

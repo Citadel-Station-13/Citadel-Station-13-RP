@@ -43,7 +43,7 @@
 		else
 			icon_state = icon_opened
 
-/obj/structure/closet/secure_closet/personal/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
 	if (src.opened)
 		if (istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W

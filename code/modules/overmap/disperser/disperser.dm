@@ -21,7 +21,7 @@
 	if(panel_open)
 		to_chat(user, "The maintenance panel is open.")
 
-/obj/machinery/disperser/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/disperser/attackby(obj/item/I, mob/user)
 	if(I && I.is_wrench())
 		if(panel_open)
 			user.visible_message("<span class='notice'>\The [user] rotates \the [src] with \the [I].</span>",

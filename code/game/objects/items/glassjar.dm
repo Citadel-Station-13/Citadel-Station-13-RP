@@ -66,7 +66,7 @@
 			update_icon()
 			return
 
-/obj/item/glass_jar/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/item/glass_jar/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/spacecash))
 		if(contains == 0)
 			contains = 1

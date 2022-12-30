@@ -44,7 +44,7 @@
 /obj/item/laser_pointer/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	laser_act(M, user)
 
-/obj/item/laser_pointer/attackby_legacy(obj/item/W, mob/user)
+/obj/item/laser_pointer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stock_parts/micro_laser))
 		if(!diode)
 			if(!user.attempt_insert_item_for_installation(W, src))

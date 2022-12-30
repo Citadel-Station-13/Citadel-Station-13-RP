@@ -88,7 +88,7 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/check_connectable(obj/machinery/atmospherics/target)
 	return (src.connect_types & target.connect_types)
 
-/obj/machinery/atmospherics/attackby_legacy(atom/A, mob/user as mob)
+/obj/machinery/atmospherics/attackby(atom/A, mob/user as mob)
 	if(istype(A, /obj/item/pipe_painter))
 		return
 	..()

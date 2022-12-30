@@ -2,7 +2,7 @@
 // Allows collars to be renamed with pen.
 //
 
-/obj/item/clothing/accessory/collar/attackby_legacy(obj/item/P as obj, mob/user as mob)
+/obj/item/clothing/accessory/collar/attackby(obj/item/P as obj, mob/user as mob)
 	. = ..()
 	if(istype(P, /obj/item/pen))
 		to_chat(user,"<span class='notice'>You write on [name]'s tag.</span>")

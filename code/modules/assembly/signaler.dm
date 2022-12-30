@@ -76,7 +76,7 @@
 
 	update_icon()
 
-/obj/item/assembly/signaler/attackby_legacy(obj/item/W, mob/user, params)
+/obj/item/assembly/signaler/attackby(obj/item/W, mob/user, params)
 	if(issignaler(W))
 		var/obj/item/assembly/signaler/signaler2 = W
 		if(secured && signaler2.secured)

@@ -277,7 +277,7 @@
 		return wrapped.attack_self(user)
 	return ..()
 
-/obj/item/gripper/attackby_legacy(var/obj/item/O, var/mob/user)
+/obj/item/gripper/attackby(var/obj/item/O, var/mob/user)
 	if(wrapped) // We're interacting with the item inside. If you can hold a cup with 2 fingers and stick a straw in it, you could do that with a gripper and another robotic arm.
 		var/resolved = wrapped.attackby(O, user)
 		if(!resolved && wrapped && O)

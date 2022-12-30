@@ -81,7 +81,7 @@
 	if(spawn_amt_left <= 0)
 		qdel(src)
 
-/obj/effect/rend/attackby_legacy(obj/item/I, mob/user, params)
+/obj/effect/rend/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/nullrod))
 		user.visible_message("<span class='danger'>[user] seals \the [src] with \the [I].</span>")
 		qdel(src)
@@ -244,7 +244,7 @@
 	var/cooldown_time = 30 //3s
 	var/cooldown = 0
 
-/obj/item/voodoo/attackby_legacy(obj/item/I, mob/user, params)
+/obj/item/voodoo/attackby(obj/item/I, mob/user, params)
 	if(target && cooldown < world.time)
 		if(I.get_temperature())
 			to_chat(target, "<span class='userdanger'>You suddenly feel very hot</span>")

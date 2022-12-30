@@ -50,7 +50,7 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
 /obj/item/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)

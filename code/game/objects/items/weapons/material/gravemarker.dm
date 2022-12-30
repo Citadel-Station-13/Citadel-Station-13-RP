@@ -11,7 +11,7 @@
 	var/grave_name = ""		//Name of the intended occupant
 	var/epitaph = ""		//A quick little blurb
 
-/obj/item/material/gravemarker/attackby_legacy(obj/item/W, mob/user as mob)
+/obj/item/material/gravemarker/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)

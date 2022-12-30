@@ -28,7 +28,7 @@
 	wires = null
 	return ..()
 
-/obj/item/plastique/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/item/plastique/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_screwdriver())
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
@@ -98,7 +98,7 @@
 	blast_light = 4
 	blast_flash = 7
 
-/obj/item/plastique/seismic/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/item/plastique/seismic/attackby(var/obj/item/I, var/mob/user)
 	. = ..()
 	if(open_panel)
 		if(istype(I, /obj/item/stock_parts/micro_laser))

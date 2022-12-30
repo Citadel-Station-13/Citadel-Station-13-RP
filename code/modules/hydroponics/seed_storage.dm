@@ -384,7 +384,7 @@
 				return TRUE
 			break
 
-/obj/machinery/seed_storage/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/seed_storage/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (istype(O, /obj/item/seeds) && !lockdown)
 		add(O)
 		user.visible_message("[user] puts \the [O.name] into \the [src].", "You put \the [O] into \the [src].")

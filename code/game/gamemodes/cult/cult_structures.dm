@@ -43,7 +43,7 @@
 /obj/structure/cult/pylon/attack_generic(var/mob/user, var/damage)
 	attackpylon(user, damage)
 
-/obj/structure/cult/pylon/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.force)
 
 /obj/structure/cult/pylon/take_damage(var/damage)

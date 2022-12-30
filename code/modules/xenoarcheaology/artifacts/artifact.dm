@@ -199,7 +199,7 @@
 	if(secondary_effect && secondary_effect.effect == EFFECT_TOUCH && secondary_effect.activated)
 		secondary_effect.DoEffectTouch(user)
 
-/obj/machinery/artifact/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/machinery/artifact/attackby(obj/item/W as obj, mob/living/user as mob)
 
 	if (istype(W, /obj/item/reagent_containers/))
 		if(W.reagents.has_reagent("hydrogen", 1) || W.reagents.has_reagent("water", 1))

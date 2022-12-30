@@ -38,7 +38,7 @@
 			active = W
 	update_icon()
 
-/obj/item/holowarrant/attackby_legacy(obj/item/W, mob/user)
+/obj/item/holowarrant/attackby(obj/item/W, mob/user)
 	if(active)
 		var/obj/item/card/id/I = W.GetIdCard()
 		if(I)

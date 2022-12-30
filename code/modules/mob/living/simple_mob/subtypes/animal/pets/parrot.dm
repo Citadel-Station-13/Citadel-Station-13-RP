@@ -65,7 +65,7 @@
 			used_radios += my_headset
 
 // Clicked on while holding an object.
-/mob/living/simple_mob/animal/passive/bird/parrot/attackby_legacy(obj/item/I, mob/user)
+/mob/living/simple_mob/animal/passive/bird/parrot/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/radio/headset))
 		give_headset(I, user)
 		return

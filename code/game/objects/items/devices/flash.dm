@@ -37,7 +37,7 @@
 	. = ..()
 	power_supply = new cell_type(src)
 
-/obj/item/flash/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/item/flash/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver() && broken)
 		if(repairing)
 			to_chat(user, "<span class='notice'>\The [src] is already being repaired!</span>")

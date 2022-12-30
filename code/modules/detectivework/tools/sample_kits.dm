@@ -41,7 +41,7 @@
 	to_chat(user, "<span class='notice'>You overlay \the [src] and \the [supplied], combining the print records.</span>")
 	return 1
 
-/obj/item/sample/attackby_legacy(var/obj/O, var/mob/user)
+/obj/item/sample/attackby(var/obj/O, var/mob/user)
 	if(O.type == src.type)
 		if(merge_evidence(O, user))
 			qdel(O)

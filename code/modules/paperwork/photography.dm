@@ -44,7 +44,7 @@ var/global/photo_count = 0
 /obj/item/photo/attack_self(mob/user as mob)
 	user.examinate(src)
 
-/obj/item/photo/attackby_legacy(obj/item/P as obj, mob/user as mob)
+/obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
 	if(istype(P, /obj/item/pen))
 		var/txt = sanitize(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text, 128)
 		if(loc == user && user.stat == 0)
@@ -139,7 +139,7 @@ var/global/photo_count = 0
 	to_chat(user, "You switch the camera [on ? "on" : "off"].")
 	return
 
-/obj/item/camera/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/camera/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/camera_film))
 		if(pictures_left)
 			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")

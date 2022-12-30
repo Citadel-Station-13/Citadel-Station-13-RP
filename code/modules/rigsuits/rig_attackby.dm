@@ -1,4 +1,4 @@
-/obj/item/rig/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/item/rig/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(!istype(user))
 		return 0
 

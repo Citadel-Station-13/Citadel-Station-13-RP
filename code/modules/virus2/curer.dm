@@ -8,7 +8,7 @@
 
 	var/obj/item/reagent_containers/container = null
 
-/obj/machinery/computer/curer/attackby_legacy(var/obj/I as obj, var/mob/user as mob)
+/obj/machinery/computer/curer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/reagent_containers))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!container)

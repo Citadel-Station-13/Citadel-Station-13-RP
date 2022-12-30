@@ -135,7 +135,7 @@
 			M.setDir(SOUTH)
 		return
 
-/obj/machinery/gateway/centerstation/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/gateway/centerstation/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/multitool))
 		if(!awaygate)
 			awaygate = locate(/obj/machinery/gateway/centeraway)
@@ -239,7 +239,7 @@
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 
 
-/obj/machinery/gateway/centeraway/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/gateway/centeraway/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/multitool))
 		if(calibrated && stationgate)
 			to_chat(user, "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>")

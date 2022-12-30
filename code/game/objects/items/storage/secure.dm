@@ -31,7 +31,7 @@
 	. = ..()
 	. += "The service panel is [src.open ? "open" : "closed"]."
 
-/obj/item/storage/secure/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
 		if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
@@ -66,7 +66,7 @@
 		// ... but it's still locked.
 		return
 
-		// -> storage/attackby_legacy() what with handle insertion, etc
+		// -> storage/attackby() what with handle insertion, etc
 	..()
 
 

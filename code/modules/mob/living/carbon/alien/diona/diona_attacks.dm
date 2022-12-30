@@ -10,7 +10,7 @@
 	else
 		return ..()
 
-/mob/living/carbon/alien/diona/attackby_legacy(var/obj/item/W, var/mob/user)
+/mob/living/carbon/alien/diona/attackby(var/obj/item/W, var/mob/user)
 	if(user.a_intent == "help" && istype(W, /obj/item/clothing/head))
 		if(hat)
 			to_chat(user, "<span class='warning'>\The [src] is already wearing \the [hat].</span>")

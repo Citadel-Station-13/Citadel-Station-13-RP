@@ -70,7 +70,7 @@
 		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
 		"<span class='notice'>You hear squelching...</span>")
 
-/obj/structure/bed/nest/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)

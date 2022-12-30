@@ -225,7 +225,7 @@
 			return
 	..()
 
-/obj/item/gun/projectile/pistol/attackby_legacy(obj/item/I as obj, mob/living/user as mob)
+/obj/item/gun/projectile/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/silencer))
 		if(!user.is_holding(src))	//if we're not in his hands
 			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
@@ -425,7 +425,7 @@
 	. = ..()
 	shotgun = new(src)
 
-/obj/item/gun/projectile/konigin/attackby_legacy(obj/item/I, mob/user)
+/obj/item/gun/projectile/konigin/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/a12g)))
 		shotgun.load_ammo(I, user)
 	else

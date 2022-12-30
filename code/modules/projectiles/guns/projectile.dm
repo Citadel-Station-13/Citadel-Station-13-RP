@@ -232,7 +232,7 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 	update_icon()
 
-/obj/item/gun/projectile/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 

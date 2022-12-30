@@ -68,7 +68,7 @@
 
 	return 1
 
-/obj/machinery/vr_sleeper/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/vr_sleeper/attackby(var/obj/item/I, var/mob/user)
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))

@@ -631,7 +631,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
-/obj/machinery/power/apc/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/apc/attackby(obj/item/W, mob/user)
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)

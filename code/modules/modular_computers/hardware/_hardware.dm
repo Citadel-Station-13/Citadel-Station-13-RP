@@ -22,7 +22,7 @@
 	/// Chance of malfunction when the component is damaged.
 	var/malfunction_probability = 10
 
-/obj/item/computer_hardware/attackby_legacy(var/obj/item/W as obj, var/mob/living/user as mob)
+/obj/item/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
 	// Multitool. Runs diagnostics
 	if(istype(W, /obj/item/multitool))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")

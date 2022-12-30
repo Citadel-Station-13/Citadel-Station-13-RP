@@ -65,7 +65,7 @@
 	else
 		return ..()
 
-/obj/item/gun/launcher/pneumatic/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/gun/launcher/pneumatic/attackby(obj/item/W as obj, mob/user as mob)
 	if(!tank && istype(W,/obj/item/tank))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -168,7 +168,7 @@
 		if(5)
 			. += "It has a transfer valve installed."
 
-/obj/item/cannonframe/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/cannonframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pipe))
 		if(buildstate == 0)
 			if(!user.attempt_consume_item_for_construction(W))

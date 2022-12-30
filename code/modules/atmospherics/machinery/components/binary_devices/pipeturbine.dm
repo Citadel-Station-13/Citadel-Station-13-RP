@@ -86,7 +86,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/machinery/atmospherics/pipeturbine/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/pipeturbine/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)
@@ -264,7 +264,7 @@
 	turbine.kin_energy -= power_generated
 	add_avail(power_generated * 0.001)
 
-/obj/machinery/power/turbinemotor/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/power/turbinemotor/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)

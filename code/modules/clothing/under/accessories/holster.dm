@@ -72,7 +72,7 @@
 			unholster(user)
 	..(user)
 
-/obj/item/clothing/accessory/holster/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
 	holster(W, user)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)

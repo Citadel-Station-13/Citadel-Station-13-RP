@@ -349,7 +349,7 @@
 	singular_name = "green flag"
 	icon_state = "greenflag"
 
-/obj/item/stack/flag/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/stack/flag/attackby(obj/item/W as obj, mob/user as mob)
 	if(upright && istype(W,src.type))
 		src.attack_hand(user)
 	else

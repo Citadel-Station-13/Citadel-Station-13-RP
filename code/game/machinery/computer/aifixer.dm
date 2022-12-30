@@ -14,7 +14,7 @@
 	/// Variable dictating if we are in the process of restoring the occupier AI
 	var/restoring = FALSE
 
-/obj/machinery/computer/aifixer/attackby_legacy(obj/item/I, mob/living/user)
+/obj/machinery/computer/aifixer/attackby(obj/item/I, mob/living/user)
 	if(I.is_screwdriver())
 		if(occupier)
 			if(machine_stat & (NOPOWER|BROKEN))

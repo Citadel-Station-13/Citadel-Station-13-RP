@@ -28,7 +28,7 @@ LINEN BINS
 		set_base_layer(initial(layer))
 	add_fingerprint(user)
 
-/obj/item/bedsheet/attackby_legacy(obj/item/I, mob/user)
+/obj/item/bedsheet/attackby(obj/item/I, mob/user)
 	if(is_sharp(I))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [I].</span>", "<span class='notice'>You begin cutting up [src] with [I].</span>")
 		if(do_after(user, 50))
@@ -200,7 +200,7 @@ LINEN BINS
 	else
 		icon_state = "linenbin-full"
 
-/obj/structure/bedsheetbin/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/bedsheet))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return

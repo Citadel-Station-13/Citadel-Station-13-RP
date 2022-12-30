@@ -69,7 +69,7 @@
 	return FALSE
 
 
-/obj/item/inducer/attackby_legacy(obj/item/W, mob/user)
+/obj/item/inducer/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		playsound(src, W.tool_sound, 50, 1)
 		if(!opened)

@@ -66,7 +66,7 @@
 /obj/vehicle/sealed/proc/exit_location(M)
 	return drop_location()
 
-/obj/vehicle/sealed/attackby_legacy(obj/item/I, mob/user, params)
+/obj/vehicle/sealed/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(I, src))

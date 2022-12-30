@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 
 
-/obj/machinery/power/solar/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/solar/attackby(obj/item/W, mob/user)
 
 	if(W.is_crowbar())
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		glass_type = null
 
 
-/obj/item/solar_assembly/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/item/solar_assembly/attackby(var/obj/item/W, var/mob/user)
 	if (!isturf(loc))
 		return 0
 	if(!anchored)
@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	return
 
-/obj/machinery/power/solar_control/attackby_legacy(obj/item/I, user as mob)
+/obj/machinery/power/solar_control/attackby(obj/item/I, user as mob)
 	if(I.is_screwdriver())
 		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 20))

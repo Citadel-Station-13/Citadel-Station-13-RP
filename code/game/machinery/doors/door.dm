@@ -208,7 +208,7 @@
 		return
 	..()
 
-/obj/machinery/door/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
 	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))

@@ -39,7 +39,7 @@
 		SPAN_NOTICE("You [!on?"de":""]activate \the [src]."))
 	return
 
-/obj/machinery/floorlayer/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/floorlayer/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		var/m = tgui_input_list(usr, "Choose work mode", "Mode", mode)
 		mode[m] = !mode[m]

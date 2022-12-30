@@ -115,7 +115,7 @@
 
 	ui_interact(user)
 
-/obj/machinery/autolathe/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return

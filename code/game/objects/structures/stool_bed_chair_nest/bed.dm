@@ -86,7 +86,7 @@
 				qdel(src)
 				return
 
-/obj/structure/bed/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
 		dismantle()
@@ -251,7 +251,7 @@
 /obj/structure/bed/roller/update_icon()
 	return
 
-/obj/structure/bed/roller/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	else if(istype(W,/obj/item/roller_holder))
@@ -283,7 +283,7 @@
 	R.add_fingerprint(user)
 	qdel(src)
 
-/obj/item/roller/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
@@ -388,5 +388,5 @@
 /obj/structure/bed/alien/update_icon()
 	return // Doesn't care about material or anything else.
 
-/obj/structure/bed/alien/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.

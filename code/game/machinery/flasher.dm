@@ -37,7 +37,7 @@
 //		sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/flasher/attackby(obj/item/W, mob/user)
 	if(W.is_wirecutter())
 		add_fingerprint(user, 0, W)
 		disable = !disable
@@ -110,7 +110,7 @@
 		if((M.m_intent != "walk") && (anchored))
 			flash()
 
-/obj/machinery/flasher/portable/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/flasher/portable/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		add_fingerprint(user)
 		anchored = !anchored

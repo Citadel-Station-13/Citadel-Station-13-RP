@@ -56,7 +56,7 @@
 	else
 		to_chat (usr, "You were unable to toggle the [src]'s radio.")
 
-/obj/item/mmi/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/mmi/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 
 		var/obj/item/organ/internal/brain/B = O
@@ -207,7 +207,7 @@
 	radio = new(src)
 	dead_mob_list -= brainmob
 
-/obj/item/mmi/digital/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/item/mmi/digital/attackby(obj/item/O as obj, mob/user as mob)
 	return //Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
 /obj/item/mmi/digital/examine(mob/user)

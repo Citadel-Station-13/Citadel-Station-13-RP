@@ -50,7 +50,7 @@
 	else
 		set_light(light_range_on, light_power_on)
 
-/obj/machinery/computer/timeclock/attackby_legacy(obj/I, mob/user)
+/obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
 		if(!card)
 			if(!user.attempt_insert_item_for_installation(I, src))

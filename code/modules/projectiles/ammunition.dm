@@ -31,7 +31,7 @@
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		if(!BB)
 			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
@@ -103,7 +103,7 @@
 			stored_ammo += new ammo_type(src)
 	update_icon()
 
-/obj/item/ammo_magazine/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
 		if(C.caliber != caliber)

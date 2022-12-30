@@ -12,7 +12,7 @@
 	/// Same as medibot, set to tox or ointment for the respective kits.
 	var/skin = null
 
-/obj/item/bot_assembly/attackby_legacy(obj/item/I, mob/user, params)
+/obj/item/bot_assembly/attackby(obj/item/I, mob/user, params)
 	..()
 	if(istype(I, /obj/item/pen))
 		rename_bot()

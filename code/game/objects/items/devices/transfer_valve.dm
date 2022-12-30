@@ -20,7 +20,7 @@
 	attached_device = null
 	return ..()
 
-/obj/item/transfer_valve/attackby_legacy(obj/item/item, mob/user, params)
+/obj/item/transfer_valve/attackby(obj/item/item, mob/user, params)
 	var/turf/location = get_turf(src) // For admin logs
 	if(istype(item, /obj/item/tank))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE

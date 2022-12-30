@@ -79,7 +79,7 @@
 		to_chat(user,"<span class='notice'>You are not able to ring [src].</span>")
 	return 0
 
-/obj/item/deskbell/attackby_legacy(obj/item/W, mob/user, params)
+/obj/item/deskbell/attackby(obj/item/W, mob/user, params)
 	if(!istype(W))
 		return
 	if(W.is_wrench() && isturf(loc))

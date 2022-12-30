@@ -13,7 +13,7 @@
 /obj/structure/ore_box/legacy_ex_act(severity)
 	return //if an overstuffed ore box explodes it crashes the server, thank you GC
 
-/obj/structure/ore_box/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/ore))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return

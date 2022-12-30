@@ -31,7 +31,7 @@
 	else
 		set_light(0)
 
-/obj/machinery/bodyscanner/attackby_legacy(var/obj/item/G, user as mob)
+/obj/machinery/bodyscanner/attackby(var/obj/item/G, user as mob)
 	if(!istype(G))
 		return ..()
 	if(istype(G, /obj/item/grab))
@@ -189,7 +189,7 @@
 		scanner.console = null
 	return ..()
 
-/obj/machinery/body_scanconsole/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/body_scanconsole/attackby(var/obj/item/I, var/mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else if(istype(I, /obj/item/multitool)) //Did you want to link it?

@@ -86,7 +86,7 @@ var/global/list/light_type_cache = list()
 		cell.update_icon()
 		cell = null
 
-/obj/machinery/light_construct/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(istype(W, /obj/item/cell/emergency_light))
 		if(!cell_connectors)
@@ -581,7 +581,7 @@ var/global/list/light_type_cache = list()
 	status = LIGHT_EMPTY
 	update()
 
-/obj/machinery/light/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/light/attackby(obj/item/W, mob/user)
 
 	//Light replacer code
 	if(istype(W, /obj/item/lightreplacer))
@@ -645,7 +645,7 @@ var/global/list/light_type_cache = list()
 			if (prob(75))
 				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
 
-/obj/machinery/light/flamp/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/light/flamp/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)
@@ -1115,7 +1115,7 @@ var/global/list/light_type_cache = list()
 
 // attack bulb/tube with object
 // if a syringe, can inject phoron to make it explode
-/obj/item/light/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/item/light/attackby(var/obj/item/I, var/mob/user)
 	..()
 	if(istype(I, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = I

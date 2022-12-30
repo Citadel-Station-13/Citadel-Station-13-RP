@@ -179,7 +179,7 @@
 		to_chat(user, "<span class='notice'>You hit the metal foam but bounce off it.</span>")
 	return
 
-/obj/structure/foamedmetal/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		G.affecting.forceMove(loc)

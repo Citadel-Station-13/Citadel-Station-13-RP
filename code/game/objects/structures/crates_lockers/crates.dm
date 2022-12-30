@@ -75,7 +75,7 @@
 	src.opened = 0
 	return 1
 
-/obj/structure/closet/crate/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
 	if(opened)
 		if(isrobot(user))
 			return
@@ -200,7 +200,7 @@
 	else
 		src.toggle(user)
 
-/obj/structure/closet/crate/secure/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
 	if(istype(W, /obj/item/melee/energy/blade))
@@ -404,7 +404,7 @@
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
 
-/obj/structure/closet/crate/bin/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && !src.opened)
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))

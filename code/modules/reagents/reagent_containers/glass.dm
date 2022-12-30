@@ -110,7 +110,7 @@
 			return 1
 	..()
 
-/obj/item/reagent_containers/glass/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/glass/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
 		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)
@@ -268,7 +268,7 @@
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
 
-/obj/item/reagent_containers/glass/bucket/attackby_legacy(var/obj/item/D, mob/user as mob)
+/obj/item/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "You add [D] to [src].")
 		qdel(D)
@@ -323,7 +323,7 @@
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
-/obj/item/reagent_containers/glass/bucket/wood/attackby_legacy(var/obj/D, mob/user as mob)
+/obj/item/reagent_containers/glass/bucket/wood/attackby(var/obj/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "This wooden bucket doesn't play well with electronics.")
 		return

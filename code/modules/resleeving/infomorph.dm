@@ -333,7 +333,7 @@ var/list/infomorph_emotions = list(
 	canmove = !resting
 
 ////////////////// ATTACKBY, HAND, SELF etc
-/mob/living/silicon/infomorph/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
 		src.adjustBruteLoss(W.force)
@@ -348,7 +348,7 @@ var/list/infomorph_emotions = list(
 	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 	close_up()
 
-/mob/living/silicon/infomorph/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/card/id/ID = W.GetID()
 	if(ID)
 		if (idaccessible == 1)

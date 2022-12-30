@@ -37,7 +37,7 @@
 	var/loc = get_step(src, NORTH)
 	connected = locate(/obj/machinery/power/am_engine/engine, get_step(loc, NORTH))
 
-/obj/machinery/power/am_engine/injector/attackby_legacy(obj/item/fuel/F, mob/user)
+/obj/machinery/power/am_engine/injector/attackby(obj/item/fuel/F, mob/user)
 	if( (stat & BROKEN) || !connected) return
 
 	if(istype(F, /obj/item/fuel/H))

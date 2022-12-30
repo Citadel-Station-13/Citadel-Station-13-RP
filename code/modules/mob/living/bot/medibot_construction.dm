@@ -34,7 +34,7 @@
 
 	add_overlay(temp_overlays)
 
-/obj/item/bot_assembly/medibot/attackby_legacy(obj/item/target_item, mob/user, params)
+/obj/item/bot_assembly/medibot/attackby(obj/item/target_item, mob/user, params)
 	..()
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
@@ -66,7 +66,7 @@
  *! Medibot Construction
  */
 
-/obj/item/storage/firstaid/attackby_legacy(obj/item/robot_parts/target_part, mob/user, params)
+/obj/item/storage/firstaid/attackby(obj/item/robot_parts/target_part, mob/user, params)
 
 	if ((!istype(target_part, /obj/item/robot_parts/l_arm)) && (!istype(target_part, /obj/item/robot_parts/r_arm)))
 		..()

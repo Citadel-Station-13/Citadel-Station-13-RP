@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		persist_nif_data(human)
 
 //Attackby proc, for maintenance
-/obj/item/nif/attackby_legacy(obj/item/W, mob/user as mob)
+/obj/item/nif/attackby(obj/item/W, mob/user as mob)
 	if(open == 0 && W.is_screwdriver())
 		if(do_after(user, 4 SECONDS, src) && open == 0)
 			user.visible_message("[user] unscrews and pries open \the [src].", SPAN_NOTICE("You unscrew and pry open \the [src]."))

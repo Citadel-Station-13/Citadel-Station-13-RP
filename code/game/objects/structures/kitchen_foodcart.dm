@@ -14,7 +14,7 @@
 			I.loc = src
 	update_icon()
 
-/obj/structure/foodcart/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/structure/foodcart/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_containers/food))
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return

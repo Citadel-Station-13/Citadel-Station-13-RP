@@ -5,7 +5,7 @@
 	w_class = ITEMSIZE_SMALL
 	body_parts_covered = 0
 
-/obj/item/clothing/head/woodcirclet/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/head/woodcirclet/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/complete
 	if(istype(W, /obj/item/reagent_containers/food/snacks/grown))
 		var/obj/item/reagent_containers/food/snacks/grown/G = W

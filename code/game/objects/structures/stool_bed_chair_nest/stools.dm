@@ -109,7 +109,7 @@ var/global/list/stool_cache = list() //haha stool
 		padding_material.place_sheet(get_turf(src))
 	qdel(src)
 
-/obj/item/stool/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/stool/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
 		dismantle()

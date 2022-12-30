@@ -114,7 +114,7 @@ var/list/table_icon_cache = list()
 			if(0.5 to 1.0)
 				. += "<span class='notice'>It has a few scrapes and dents.</span>"
 
-/obj/structure/table/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/table/attackby(obj/item/W, mob/user)
 
 	if(reinforced && W.is_screwdriver())
 		remove_reinforced(W, user)

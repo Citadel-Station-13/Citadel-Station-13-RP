@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	else
 		fish_type = null
 
-/turf/simulated/floor/water/attackby_legacy(obj/item/P as obj, mob/user as mob)
+/turf/simulated/floor/water/attackby(obj/item/P as obj, mob/user as mob)
 //If you use a fishing rod on an open body of water that var/has_fish enabled
 	if(istype(P, /obj/item/material/fishing_rod) && !being_fished)
 		var/obj/item/material/fishing_rod/R = P

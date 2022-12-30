@@ -112,7 +112,7 @@
 				for(var/datum/reagent/R in B.reagents.reagent_list)
 					. += "<font color=#4F49AF>[R.volume] units of [R.name]</font>"
 
-/obj/item/gun/projectile/dartgun/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/gun/projectile/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
 			to_chat(user, "<font color=#4F49AF>[I] doesn't seem to fit into [src].</font>")

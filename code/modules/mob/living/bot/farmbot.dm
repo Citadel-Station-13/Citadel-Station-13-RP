@@ -343,7 +343,7 @@
 		tank = theTank
 		tank.forceMove(src)
 
-/obj/structure/reagent_dispensers/watertank/attackby_legacy(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
 		return ..()
 	if(!user.attempt_consume_item_for_construction(S))
@@ -352,7 +352,7 @@
 
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
-/obj/structure/reagent_dispensers/watertank/attackby_legacy(var/obj/item/organ/external/S, mob/user as mob)
+/obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/organ/external/S, mob/user as mob)
 	if ((!istype(S, /obj/item/organ/external/arm)) || S.robotic != ORGAN_ROBOT)
 		return ..()
 	if(!user.attempt_consume_item_for_construction(S))
@@ -361,7 +361,7 @@
 
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
-/obj/item/farmbot_arm_assembly/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/farmbot_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if((istype(W, /obj/item/analyzer/plant_analyzer)) && (build_step == 0))
 		if(!user.attempt_consume_item_for_construction(W))

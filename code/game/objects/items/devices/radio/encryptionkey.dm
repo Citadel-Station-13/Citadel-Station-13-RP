@@ -11,7 +11,7 @@
 	var/syndie = 0
 	var/list/channels = list()
 
-/obj/item/encryptionkey/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/encryptionkey/attackby(obj/item/W as obj, mob/user as mob)
 
 /obj/item/encryptionkey/syndicate
 	icon_state = "syn_cypherkey"

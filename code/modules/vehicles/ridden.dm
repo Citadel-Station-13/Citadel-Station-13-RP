@@ -41,7 +41,7 @@
 	*/
 	return ..()
 
-/obj/vehicle/ridden/attackby_legacy(obj/item/I, mob/user, params)
+/obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transfer_item_to_loc(I, src))
 			to_chat(user, "<span class='notice'>You insert \the [I] into \the [src].</span>")

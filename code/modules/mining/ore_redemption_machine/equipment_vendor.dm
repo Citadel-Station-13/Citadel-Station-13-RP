@@ -196,7 +196,7 @@
 			flick(icon_deny, src)
 	updateUsrDialog()
 
-/obj/machinery/mineral/equipment_vendor/attackby_legacy(obj/item/I, mob/user, params)
+/obj/machinery/mineral/equipment_vendor/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		updateUsrDialog()
 		return CLICKCHAIN_DO_NOT_PROPAGATE

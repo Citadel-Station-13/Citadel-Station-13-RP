@@ -19,7 +19,7 @@
 	var/survey_points = 0
 	var/engineering_points
 
-/obj/item/card/mining_point_card/attackby_legacy(obj/item/I, mob/user, params)
+/obj/item/card/mining_point_card/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
 		if(mine_points)

@@ -98,7 +98,7 @@
 			health--
 		check_health()
 
-/obj/item/material/attackby_legacy(obj/item/W, mob/user)
+/obj/item/material/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/whetstone))
 		var/obj/item/whetstone/whet = W
 		repair(whet.repair_amount, whet.repair_time, user)
@@ -180,7 +180,7 @@ Commenting this out pending rebalancing of radiation based on small objects.
 	health -= material.combustion_effect(get_turf(src), temperature, 0.1)
 	check_health(1)
 
-/obj/item/material/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/material/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 		if(material.ignition_point && WT.remove_fuel(0, user))

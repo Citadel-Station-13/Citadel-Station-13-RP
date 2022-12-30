@@ -49,7 +49,7 @@
 	else
 		remove_contents(user)
 
-/obj/item/reagent_containers/glass/rag/attackby_legacy(obj/item/W, mob/user)
+/obj/item/reagent_containers/glass/rag/attackby(obj/item/W, mob/user)
 	if(!on_fire && istype(W, /obj/item/flame))
 		var/obj/item/flame/F = W
 		if(F.lit)

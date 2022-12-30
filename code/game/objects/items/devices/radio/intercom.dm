@@ -129,7 +129,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/radio/intercom/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(W.is_screwdriver())  // Opening the intercom up.
 		wiresexposed = !wiresexposed

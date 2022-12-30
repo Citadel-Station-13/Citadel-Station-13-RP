@@ -113,7 +113,7 @@ var/list/marker_beacon_colors = list(
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			qdel(src) //otherwise delete us
 
-/obj/structure/marker_beacon/attackby_legacy(obj/item/I, mob/user, params)
+/obj/structure/marker_beacon/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/marker_beacon))
 		var/obj/item/stack/marker_beacon/M = I
 		to_chat(user, "<span class='notice'>You start picking [src] up...</span>")

@@ -91,7 +91,7 @@
 		return FALSE
 	return ..()
 
-/turf/simulated/floor/outdoors/lava/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/turf/simulated/floor/outdoors/lava/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
 		return
 	else if(istype(W,/obj/item/stack/rods))

@@ -11,7 +11,7 @@
 	transform = M
 
 // Overwrite because we dont want people building rods in space.
-/turf/space/transit/attackby_legacy(obj/O as obj, mob/user as mob)
+/turf/space/transit/attackby(obj/O as obj, mob/user as mob)
 	return
 
 /turf/space/transit/north	// Moving to the north

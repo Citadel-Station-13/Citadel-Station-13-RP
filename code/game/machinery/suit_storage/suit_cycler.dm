@@ -146,7 +146,7 @@
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/suit_cycler/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/suit_cycler/attackby(obj/item/I as obj, mob/user as mob)
 
 	if(electrified != 0)
 		if(shock(user, 100))

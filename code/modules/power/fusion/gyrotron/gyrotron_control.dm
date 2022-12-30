@@ -94,7 +94,7 @@
 
 	return 0
 
-/obj/machinery/computer/gyrotron_control/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Gyrotron Control", id_tag) as null|text

@@ -26,7 +26,7 @@
 	if(cell)
 		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
 
-/obj/item/vertibore/attackby_legacy(var/obj/item/thing, var/mob/user)
+/obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing, /obj/item/cell))
 		if(cell)
 			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")

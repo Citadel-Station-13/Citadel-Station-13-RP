@@ -43,7 +43,7 @@
 	storage_capacity = (MOB_MEDIUM * 2) - 1
 	var/contains_body = 0
 
-/obj/structure/closet/body_bag/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_held_item() != W)
@@ -223,7 +223,7 @@
 		for(var/mob/living/L in contents)
 			L.examine(user)
 
-/obj/structure/closet/body_bag/cryobag/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/closet/body_bag/cryobag/attackby(obj/item/W, mob/user)
 	if(opened)
 		..()
 	else //Allows the bag to respond to a health analyzer by analyzing the mob inside without needing to open it.

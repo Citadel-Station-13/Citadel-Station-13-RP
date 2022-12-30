@@ -16,7 +16,7 @@
 		new creation_type(T, 50)
 		if(src) qdel(src)
 
-/obj/machinery/the_singularitygen/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/the_singularitygen/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 75, 1)

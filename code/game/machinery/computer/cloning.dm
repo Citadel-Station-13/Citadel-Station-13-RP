@@ -61,7 +61,7 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[num++]"
 
-/obj/machinery/computer/cloning/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/computer/cloning/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/disk/data)) //INSERT SOME DISKETTES
 		if (!diskette)
 			if(!user.attempt_insert_item_for_installation(W, src))

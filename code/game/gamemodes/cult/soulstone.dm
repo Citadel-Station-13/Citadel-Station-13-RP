@@ -93,7 +93,7 @@
 	icon_state = "construct-cult"
 	desc = "This eerie contraption looks like it would come alive if supplied with a missing ingredient."
 
-/obj/structure/constructshell/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/structure/constructshell/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/soulstone))
 		var/obj/item/soulstone/S = O;
 		S.transfer_soul("CONSTRUCT",src,user)

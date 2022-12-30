@@ -143,7 +143,7 @@ FLOOR SAFES
 				updateUsrDialog()
 
 
-/obj/structure/safe/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/structure/safe/attackby(obj/item/I as obj, mob/user as mob)
 	if(open)
 		if(I.w_class + space <= maxspace)
 			if(!user.attempt_insert_item_for_installation(I, src))

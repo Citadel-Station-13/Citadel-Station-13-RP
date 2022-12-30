@@ -56,7 +56,7 @@
 	else
 		return ..()
 
-/obj/item/gun/projectile/bow/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/bow/attackby(var/obj/item/A as obj, mob/user as mob)
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 

@@ -51,7 +51,7 @@
 		src.update_icon()
 	return
 
-/obj/item/toy/balloon/attackby_legacy(obj/O as obj, mob/user as mob)
+/obj/item/toy/balloon/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_containers/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
@@ -153,7 +153,7 @@
 	if(..(user, 2) && bullets)
 		to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
 
-/obj/item/toy/crossbow/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/ammo/crossbow))
 		if(bullets <= 4)
 			if(!user.attempt_consume_item_for_construction(I))
@@ -921,7 +921,7 @@
 		to_chat(M, "You name the plushie [input], giving it a hug for good luck.")
 		return 1
 
-/obj/item/toy/plushie/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/item/toy/plushie/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
 		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
 		"<span class='notice'>You make \the [I] kiss \the [src]!</span>")

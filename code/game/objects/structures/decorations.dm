@@ -13,7 +13,7 @@
 	else
 		..(P, def_zone)
 
-/obj/structure/shrine_seal/attackby_legacy(obj/item/P, mob/user)
+/obj/structure/shrine_seal/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut the hanging rope.</span>")

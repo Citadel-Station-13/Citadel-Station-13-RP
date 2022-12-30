@@ -417,7 +417,7 @@
 		if(S.sense(target,user,proximity))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
-/obj/item/electronic_assembly/attackby_legacy(var/obj/item/I, var/mob/user, intent)
+/obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
 	if(can_anchor && I.is_wrench())
 		if(anchored_by)
 			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))

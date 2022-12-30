@@ -71,7 +71,7 @@
 /atom/movable/screen/grab/attack_hand()
 	return
 
-/atom/movable/screen/grab/attackby_legacy()
+/atom/movable/screen/grab/attackby()
 	return
 
 

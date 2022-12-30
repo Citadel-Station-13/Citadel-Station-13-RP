@@ -52,7 +52,7 @@
 	nozzle.forceMove(src)
 	nozzle_attached = 1
 
-/obj/item/weldpack/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/weldpack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weldingtool) && !(W == nozzle))
 		var/obj/item/weldingtool/T = W
 		if(T.welding & prob(50))

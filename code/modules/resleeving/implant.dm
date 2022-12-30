@@ -78,7 +78,7 @@
 
 	return
 
-/obj/item/backup_implanter/attackby_legacy(obj/W, mob/user)
+/obj/item/backup_implanter/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/implant/backup))
 		if(imps.len < max_implants)
 			if(!user.attempt_insert_item_for_installation(W, src))

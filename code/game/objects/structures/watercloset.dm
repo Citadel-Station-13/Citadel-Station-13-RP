@@ -44,7 +44,7 @@
 /obj/structure/toilet/update_icon()
 	icon_state = "toilet[open][cistern]"
 
-/obj/structure/toilet/attackby_legacy(obj/item/I as obj, mob/living/user as mob)
+/obj/structure/toilet/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(I.is_crowbar())
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(user, "<span class='notice'>You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"].</span>")
@@ -105,7 +105,7 @@
 	density = 0
 	anchored = 1
 
-/obj/structure/urinal/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/structure/urinal/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(isliving(G.affecting))
@@ -168,7 +168,7 @@
 	else
 		soundloop.stop()
 
-/obj/machinery/shower/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/analyzer)
 		to_chat(user, "<span class='notice'>The water temperature seems to be [watertemp].</span>")
 	if(I.is_wrench())
@@ -402,7 +402,7 @@
 	for(var/mob/V in viewers(src, null))
 		V.show_message("<span class='notice'>[user] washes their hands using \the [src].</span>")
 
-/obj/structure/sink/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='warning'>Someone's already washing here.</span>")
 		return
@@ -482,7 +482,7 @@
 	..()
 	icon_state = "puddle"
 
-/obj/structure/sink/puddle/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
@@ -507,7 +507,7 @@
 	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")
 */
 
-/obj/structure/sink/oil_well/attackby_legacy(obj/item/O, mob/user, params)
+/obj/structure/sink/oil_well/attackby(obj/item/O, mob/user, params)
 	flick("puddle-oil-splash",src)
 	if(O == /obj/item/shovel) //attempt to deconstruct the puddle with a shovel
 		to_chat(user, "You fill in the oil well with soil.")

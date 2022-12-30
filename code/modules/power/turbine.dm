@@ -112,7 +112,7 @@
 		E += M.rating
 	efficiency = E / 6
 
-/obj/machinery/compressor/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/compressor/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 
 	if(default_deconstruction_screwdriver(user, W))
@@ -215,7 +215,7 @@
 	if(compressor)
 		compressor.locate_machinery()
 
-/obj/machinery/power/turbine/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/turbine/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 
 	if(default_deconstruction_screwdriver(user, W))
@@ -335,7 +335,7 @@
 		if(P.id == id)
 			doors += P
 
-/obj/machinery/computer/turbine_computer/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/computer/turbine_computer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", name, id) as null|text
 		if(new_ident && user.Adjacent(src))

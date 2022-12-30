@@ -10,7 +10,7 @@
 	. = ..()
 	add_overlay(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))
 
-/obj/structure/bed/chair/e_chair/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/chair/e_chair/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(loc)
 		playsound(src, W.tool_sound, 50, 1)

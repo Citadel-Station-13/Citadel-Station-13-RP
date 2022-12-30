@@ -458,7 +458,7 @@
 	return
 
 
-/obj/machinery/suit_storage_unit/attackby_legacy(obj/item/I as obj, mob/user as mob)
+/obj/machinery/suit_storage_unit/attackby(obj/item/I as obj, mob/user as mob)
 	if(!ispowered)
 		return
 	if(I.is_screwdriver())

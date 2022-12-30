@@ -265,7 +265,7 @@
 			return
 	return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby_legacy(obj/item/A, mob/user)
+/obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")

@@ -86,7 +86,8 @@
  *
  * @return clickchain flags to append
  */
-/atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
+// todo: we still use old attackby; convert when possible.
+// /atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 
 /**
  * called when we're used to attack a mob
@@ -161,7 +162,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/standard_obj_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/standard_obj_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	#warn impl
 
 /**
@@ -176,5 +177,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/post_obj_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/post_obj_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	#warn impl
+
+#warn process melee hit instead of this (?)

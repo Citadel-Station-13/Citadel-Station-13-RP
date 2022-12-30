@@ -92,7 +92,7 @@
 	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] the gibber safety guard.</span>")
 	return 1
 
-/obj/machinery/gibber/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/gibber/attackby(var/obj/item/W, var/mob/user)
 	var/obj/item/grab/G = W
 
 	if(default_unfasten_wrench(user, W, 40))

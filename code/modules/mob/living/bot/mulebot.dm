@@ -151,7 +151,7 @@
 			safety = !safety
 			. = TRUE
 
-/mob/living/bot/mulebot/attackby_legacy(var/obj/item/O, var/mob/user)
+/mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
 	..()
 	update_icons()
 

@@ -173,7 +173,7 @@
 
 	update_icon()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/attackby(obj/item/W as obj, mob/user as mob)
 	var/list/options = list()
 	if(istype(W, /obj/item/reagent_containers/glass))
 		if(!InputBeaker)

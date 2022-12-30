@@ -542,7 +542,7 @@
 			update_icon()
 
 
-/obj/machinery/porta_turret/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/porta_turret/attackby(obj/item/I, mob/user)
 	if(machine_stat & BROKEN)
 		if(I.is_crowbar())
 			//If the turret is destroyed, you can remove it with a crowbar to
@@ -988,7 +988,7 @@
 	/// The gun charge of the gun type installed.
 	var/gun_charge = 0
 
-/obj/machinery/porta_turret_construct/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/porta_turret_construct/attackby(obj/item/I, mob/user)
 	//this is a bit unwieldy but self-explanatory
 	switch(build_step)
 		if(0)	//first step

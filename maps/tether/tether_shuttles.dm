@@ -154,7 +154,7 @@
 	else
 		wear += rand(5,20)
 
-/obj/structure/shuttle/engine/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/shuttle/engine/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(repair_welder(user, W))
 		return

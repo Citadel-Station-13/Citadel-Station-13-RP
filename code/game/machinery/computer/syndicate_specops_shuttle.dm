@@ -182,7 +182,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 	if(syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return 0
 	else return 1
 
-/obj/machinery/computer/syndicate_elite_shuttle/attackby_legacy(I as obj, user as mob)
+/obj/machinery/computer/syndicate_elite_shuttle/attackby(I as obj, user as mob)
 	return attack_hand(user)
 
 /obj/machinery/computer/syndicate_elite_shuttle/attack_ai(var/mob/user as mob)

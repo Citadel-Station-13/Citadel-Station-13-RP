@@ -88,7 +88,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/med_data/attackby_legacy(var/obj/item/O, var/mob/user)
+/obj/machinery/computer/med_data/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return

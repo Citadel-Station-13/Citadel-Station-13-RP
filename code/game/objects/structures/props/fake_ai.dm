@@ -6,7 +6,7 @@
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "ai"
 
-/obj/structure/prop/fake_ai/attackby_legacy(obj/O, mob/user)
+/obj/structure/prop/fake_ai/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/aicard)) // People trying to card the fake AI will get told its impossible.
 		to_chat(user, SPAN_WARNING( "This core does not appear to have a suitable port to use \the [O] on..."))
 		return TRUE

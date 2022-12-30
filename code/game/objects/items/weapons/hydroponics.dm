@@ -29,7 +29,7 @@
 		if(0)
 			to_chat(usr, "The bag now picks up one seed pouch at a time.")
 
-/obj/item/seeds/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/seeds/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()
 	if (istype(O, /obj/item/seedbag))
 		var/obj/item/seedbag/S = O

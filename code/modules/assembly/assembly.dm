@@ -70,7 +70,7 @@
 		to_chat(user, SPAN_NOTICE("You attach \the [A] to \the [src]!"))
 		return TRUE
 
-/obj/item/assembly/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/assembly/attackby(obj/item/W as obj, mob/user as mob)
 	if(isassembly(W))
 		var/obj/item/assembly/A = W
 		if((!A.secured) && (!secured))

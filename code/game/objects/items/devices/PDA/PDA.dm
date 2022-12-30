@@ -1295,7 +1295,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return 0
 
 // access to status display signals
-/obj/item/pda/attackby_legacy(obj/item/C as obj, mob/user as mob)
+/obj/item/pda/attackby(obj/item/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/cartridge) && !cartridge)
 		if(!user.attempt_insert_item_for_installation(C, src))

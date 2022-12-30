@@ -87,7 +87,7 @@ var/global/list/active_radio_jammers = list()
 		else
 			to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
 
-/obj/item/radio_jammer/attackby_legacy(obj/W, mob/user)
+/obj/item/radio_jammer/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/cell/device/weapon) && !power_source)
 		if(!user.attempt_insert_item_for_installation(power_source, src))
 			return

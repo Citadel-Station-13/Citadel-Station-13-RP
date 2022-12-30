@@ -222,7 +222,7 @@
 	return
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
-/obj/machinery/clonepod/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/clonepod/attackby(obj/item/W as obj, mob/user as mob)
 	if(isnull(occupant))
 		if(default_deconstruction_screwdriver(user, W))
 			return

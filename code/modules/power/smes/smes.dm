@@ -244,7 +244,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/power/smes/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1

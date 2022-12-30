@@ -45,7 +45,7 @@
 	target.active_mr = stored_mind
 	. = ..()
 
-/obj/item/implant/mirror/attackby_legacy(obj/item/I, mob/user)
+/obj/item/implant/mirror/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mirrorscanner))
 		if(stored_mind == null)
 			to_chat(usr, "No consciousness found.")

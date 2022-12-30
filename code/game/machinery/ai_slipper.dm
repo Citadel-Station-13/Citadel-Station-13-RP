@@ -33,7 +33,7 @@
 	uses = uses
 	power_change()
 
-/obj/machinery/ai_slipper/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/ai_slipper/attackby(obj/item/W, mob/user)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(istype(user, /mob/living/silicon))

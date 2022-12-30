@@ -147,7 +147,7 @@
 
 	poster_set = TRUE
 
-/obj/structure/sign/poster/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wirecutter())
 		playsound(src.loc, W.tool_sound, 100, 1)
 		if(ruined)

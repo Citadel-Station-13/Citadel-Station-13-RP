@@ -96,7 +96,7 @@
 /obj/machinery/atmospherics/component/binary/heat_pump/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/atmospherics/component/binary/heat_pump/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
 		new_name = trim(new_name)

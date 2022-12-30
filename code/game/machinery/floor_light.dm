@@ -23,7 +23,7 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/prebuilt
 	anchored = TRUE
 
-/obj/machinery/floor_light/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/floor_light/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		anchored = !anchored
 		visible_message(SPAN_NOTICE("\The [user] has [anchored ? "attached" : "detached"] \the [src]."))

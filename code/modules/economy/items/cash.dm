@@ -18,7 +18,7 @@
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
-/obj/item/spacecash/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
 		if(istype(W, /obj/item/spacecash/ewallet)) return 0
 
@@ -187,7 +187,7 @@
 /obj/item/spacecash/ewallet/attack_self()
 	return //Don't act
 
-/obj/item/spacecash/ewallet/attackby_legacy()
+/obj/item/spacecash/ewallet/attackby()
 	return //like actual
 
 /obj/item/spacecash/ewallet/update_icon()

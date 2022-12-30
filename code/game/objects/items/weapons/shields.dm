@@ -98,7 +98,7 @@
 			return 1
 	return 0
 
-/obj/item/shield/riot/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/melee/baton))
 		if(cooldown < world.time - 25)
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
@@ -134,7 +134,7 @@
 		embedded_flash.attack()
 		update_icon()
 
-/obj/item/shield/riot/flash/attackby_legacy(obj/item/W, mob/user)
+/obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/flash))
 		var/obj/item/flash/flash = W
 		if(flashfail)

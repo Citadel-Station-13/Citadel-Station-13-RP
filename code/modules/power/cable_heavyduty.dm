@@ -11,7 +11,7 @@
 	layer = PIPES_LAYER - 0.05 //Just below pipes
 	color = null
 
-/obj/structure/cable/heavyduty/attackby_legacy(obj/item/W, mob/user)
+/obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)
 
 	var/turf/T = src.loc
 	if(!T.is_plating())

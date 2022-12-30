@@ -51,7 +51,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/trinary/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/trinary/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if(unsafe_pressure())

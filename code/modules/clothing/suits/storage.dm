@@ -24,7 +24,7 @@
 	if (pockets.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/suit/storage/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/suit/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(!(W in accessories))		// Make sure that an accessory wasn't successfully attached to suit.
 		pockets.attackby(W, user)

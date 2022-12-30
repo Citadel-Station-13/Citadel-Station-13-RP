@@ -104,7 +104,7 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby_legacy(obj/item/W, obj/item/I, mob/living/carbon/user)
+/obj/machinery/optable/attackby(obj/item/W, obj/item/I, mob/living/carbon/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))

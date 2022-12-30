@@ -50,7 +50,7 @@
 	pest_nest = null
 	return ..()
 
-/obj/structure/trash_pile/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
 	var/w_type = W.type
 	if(w_type in allocated_gamma)
 		if(!user.attempt_insert_item_for_installation(W, src))

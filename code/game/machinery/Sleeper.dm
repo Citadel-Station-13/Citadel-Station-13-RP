@@ -54,7 +54,7 @@
 	if(sleeper)
 		return nano_ui_interact(user)
 
-/obj/machinery/sleep_console/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/sleep_console/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
@@ -266,7 +266,7 @@
 /obj/machinery/sleeper/update_icon()
 	icon_state = "sleeper_[occupant ? TRUE : FALSE]"
 
-/obj/machinery/sleeper/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(G.affecting)

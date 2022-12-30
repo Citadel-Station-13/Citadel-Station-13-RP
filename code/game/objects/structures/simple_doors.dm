@@ -124,7 +124,7 @@
 	else
 		icon_state = material.door_icon_base
 
-/obj/structure/simple_door/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(W,/obj/item/pickaxe))
 		var/obj/item/pickaxe/digTool = W

@@ -28,7 +28,7 @@
 		return 1
 	nano_ui_interact(user)
 
-/obj/machinery/computer/xenobio2/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/xenobio2/attackby(var/obj/item/W, var/mob/user)
 
 	//Did you want to link it?
 	if(istype(W, /obj/item/multitool))

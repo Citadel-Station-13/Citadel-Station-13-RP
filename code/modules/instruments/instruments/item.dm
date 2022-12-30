@@ -57,7 +57,7 @@
 	interact(user)
 
 /*
-/obj/item/instrument/attackby_legacy(obj/item/W, mob/user, params)
+/obj/item/instrument/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/musicaltuner))
 		var/mob/living/carbon/human/H = user
 		if (HAS_TRAIT(H, TRAIT_MUSICIAN))

@@ -288,7 +288,7 @@
 		data["vocal"] = vocal
 	return data
 
-/mob/living/bot/medibot/attackby_legacy(obj/item/target_item, mob/user)
+/mob/living/bot/medibot/attackby(obj/item/target_item, mob/user)
 	if(istype(target_item, /obj/item/reagent_containers/glass))
 		if(locked)
 			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))

@@ -197,7 +197,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/machinery/station_map/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/machinery/station_map/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return

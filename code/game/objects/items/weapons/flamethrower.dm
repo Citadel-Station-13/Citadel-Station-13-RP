@@ -70,7 +70,7 @@
 			var/turflist = getline(user, target_turf)
 			flame_turf(turflist)
 
-/obj/item/flamethrower/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/flamethrower/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.stat || user.restrained() || user.lying)	return
 	if(W.is_wrench() && !status)//Taking this apart
 		var/turf/T = get_turf(src)

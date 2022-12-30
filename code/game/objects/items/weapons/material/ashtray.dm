@@ -48,7 +48,7 @@ var/global/list/ashtray_cache = list()
 
 	add_overlay(overlays_to_add)
 
-/obj/item/material/ashtray/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health <= 0)
 		return ..()
 	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))

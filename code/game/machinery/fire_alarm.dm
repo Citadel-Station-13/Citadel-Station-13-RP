@@ -79,7 +79,7 @@ FIRE ALARM
 		alarm(rand(30 / severity, 60 / severity))
 	..()
 
-/obj/machinery/firealarm/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/firealarm/attackby(obj/item/W, mob/user)
 	add_fingerprint(user)
 
 	if(alarm_deconstruction_screwdriver(user, W))

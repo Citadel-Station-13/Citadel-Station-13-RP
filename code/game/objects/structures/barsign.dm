@@ -29,7 +29,7 @@
 	. = ..()
 	icon_state = pick(get_valid_states())
 
-/obj/structure/sign/double/barsign/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
 	if(cult)
 		return ..()
 

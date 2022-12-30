@@ -43,7 +43,7 @@
 	if(charging)
 		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.maxcharge]")
 
-/obj/machinery/cell_charger/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(machine_stat & BROKEN)
 		return
 

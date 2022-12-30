@@ -90,7 +90,7 @@
 
 	return ..()
 
-/obj/machinery/turretid/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/turretid/attackby(obj/item/W, mob/user)
 	if(machine_stat & BROKEN)
 		return
 

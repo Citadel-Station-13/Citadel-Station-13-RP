@@ -114,7 +114,7 @@
 			return 1
 	..()
 
-/obj/item/reagent_containers/organic/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/organic/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
 		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)

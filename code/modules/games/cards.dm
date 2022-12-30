@@ -53,7 +53,7 @@
 		P.card_icon = "joker"
 		cards += P
 
-/obj/item/deck/attackby_legacy(obj/O as obj, mob/user as mob)
+/obj/item/deck/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O,/obj/item/hand))
 		var/obj/item/hand/H = O
 		if(H.parentdeck == src)
@@ -184,7 +184,7 @@
 	H.throw_at_old(get_step(target,target.dir),10,1,H)
 
 
-/obj/item/hand/attackby_legacy(obj/O as obj, mob/user as mob)
+/obj/item/hand/attackby(obj/O as obj, mob/user as mob)
 	if(cards.len == 1 && istype(O, /obj/item/pen))
 		var/datum/playingcard/P = cards[1]
 		if(P.name != "Blank Card")

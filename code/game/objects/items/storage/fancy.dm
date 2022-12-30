@@ -129,7 +129,7 @@
 		ma.add_overlay(image('icons/obj/crayons.dmi',crayon.colourName))
 	appearance = ma
 
-/obj/item/storage/fancy/crayons/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon))
 		switch(W:colourName)
 			if("mime")
@@ -171,7 +171,7 @@
 		ma.add_overlay(image('icons/obj/crayons.dmi',"m"+marker.colourName))
 	appearance = ma
 
-/obj/item/storage/fancy/markers/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon/marker))
 		switch(W:colourName)
 			if("mime")
@@ -444,7 +444,7 @@
 
 	return
 
-/obj/item/storage/lockbox/vials/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
 

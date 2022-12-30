@@ -148,7 +148,7 @@
 	else
 		..()
 
-/obj/item/cane/concealed/attackby_legacy(obj/item/material/butterfly/W, mob/user)
+/obj/item/cane/concealed/attackby(obj/item/material/butterfly/W, mob/user)
 	if(!src.concealed_blade && istype(W))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -287,7 +287,7 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
 
-/obj/item/caution/attackby_legacy(obj/item/D, mob/user)
+/obj/item/caution/attackby(obj/item/D, mob/user)
 	if(D.is_wirecutter())
 		to_chat(user, SPAN_NOTICE("You snap the handle of \the [src] with \the [D].  It's too warped to stand on its own now."))
 		user.put_in_hands(new /obj/item/clothing/suit/armor/caution)
@@ -403,7 +403,7 @@
 	desc = "Heavy-duty switching circuits for power control."
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/obj/item/module/power_control/attackby_legacy(obj/item/W, mob/user)
+/obj/item/module/power_control/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/multitool))
 		var/obj/item/circuitboard/ghettosmes/newcircuit = new/obj/item/circuitboard/ghettosmes(user.loc)
 		qdel(src)

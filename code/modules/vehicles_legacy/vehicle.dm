@@ -77,7 +77,7 @@
 	else
 		return 0
 
-/obj/vehicle_old/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/hand_labeler))
 		return
 	if(mechanical)

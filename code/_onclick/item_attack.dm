@@ -24,6 +24,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
+	// todo: on most subtypes, . = ..() and true/false check, not clickchain do not propagate, as
+	// attack_self isn't really part of the item attack chain.
+	// todo: move this to items.dm as it has not much to actually do with click attacks
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
@@ -33,15 +36,14 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-#warn remove
-/atom/proc/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	return
 
-/atom/movable/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!(I.item_flags & ITEM_NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
-/mob/living/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
 	#warn removed intent help check from srugery items, now we need generic support!
@@ -72,6 +74,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
+// todo: redo this
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	return
 

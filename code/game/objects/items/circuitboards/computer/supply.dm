@@ -27,7 +27,7 @@
 	var/obj/machinery/computer/supplycomp/S = A
 	contraband_enabled = S.can_order_contraband
 
-/obj/item/circuitboard/supplycomp/attackby_legacy(obj/item/I, mob/user)
+/obj/item/circuitboard/supplycomp/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/multitool))
 		var/catastasis = contraband_enabled
 		var/opposite_catastasis

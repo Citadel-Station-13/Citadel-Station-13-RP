@@ -13,7 +13,7 @@
 /obj/machinery/telecomms
 	var/list/temp = null // output message
 
-/obj/machinery/telecomms/attackby_legacy(obj/item/P as obj, mob/user as mob)
+/obj/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
 
 	// Using a multitool lets you access the receiver's interface
 	if(istype(P, /obj/item/multitool))

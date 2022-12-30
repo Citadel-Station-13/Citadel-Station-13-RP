@@ -25,7 +25,7 @@
 	y_offset = 26
 
 // Attackby on the lightswitch for deconstruction steps.
-/obj/machinery/light_switch/attackby_legacy(obj/item/W, mob/user, params)
+/obj/machinery/light_switch/attackby(obj/item/W, mob/user, params)
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -80,7 +80,7 @@
 /obj/structure/construction/update_icon()
 	icon_state = "[base_icon][stage]"
 
-/obj/structure/construction/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/construction/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(istype(W, /obj/item/weldingtool))
 		if(stage == FRAME_UNFASTENED)

@@ -35,7 +35,7 @@
 		return
 	interact(user)
 
-/obj/machinery/mineral/processing_unit_console/attackby_legacy(var/obj/item/I, var/mob/user)
+/obj/machinery/mineral/processing_unit_console/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/card/id))
 		if(!powered())
 			return

@@ -10,7 +10,7 @@
 	var/obj/item/mmi/brain = null
 
 
-/obj/structure/AIcore/attackby_legacy(obj/item/P as obj, mob/user as mob)
+/obj/structure/AIcore/attackby(obj/item/P as obj, mob/user as mob)
 
 	switch(state)
 		if(0)
@@ -228,7 +228,7 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 		if (ai.mind == malfai)
 			return 1
 
-/obj/structure/AIcore/deactivated/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/structure/AIcore/deactivated/attackby(var/obj/item/W, var/mob/user)
 
 	if(istype(W, /obj/item/aicard))
 		var/obj/item/aicard/card = W

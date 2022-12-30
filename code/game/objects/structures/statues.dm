@@ -15,7 +15,7 @@
 	density = 0
 	return ..()
 
-/obj/structure/statue/attackby_legacy(obj/item/tool/W, mob/living/user, params)
+/obj/structure/statue/attackby(obj/item/tool/W, mob/living/user, params)
 	add_fingerprint(user)
 	if(istype(W, /obj/item/tool/wrench))
 		if(anchored)

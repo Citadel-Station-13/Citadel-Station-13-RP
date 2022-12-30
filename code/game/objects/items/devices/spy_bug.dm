@@ -82,7 +82,7 @@
 	. = ..()
 	. += "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional."
 
-/obj/item/camerabug/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/item/camerabug/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W, /obj/item/bug_monitor))
 		var/obj/item/bug_monitor/SM = W
 		if(!linkedmonitor)
@@ -140,7 +140,7 @@
 
 	view_cameras(user)
 
-/obj/item/bug_monitor/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
+/obj/item/bug_monitor/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W, /obj/item/camerabug))
 		W.attackby(src, user)
 	else

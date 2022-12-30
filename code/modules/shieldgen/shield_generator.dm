@@ -356,7 +356,7 @@
 	else if (field_integrity() > 25)
 		overloaded = 0
 
-/obj/machinery/power/shield_generator/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/machinery/power/shield_generator/attackby(obj/item/O as obj, mob/user as mob)
 	if(panel_open && (O?.is_multitool() || O?.is_wirecutter()))
 		wires.Interact(user)
 		return TRUE

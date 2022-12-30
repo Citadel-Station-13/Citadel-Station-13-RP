@@ -65,7 +65,7 @@
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 
-/obj/structure/largecrate/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")
@@ -91,7 +91,7 @@
 	desc = "It comes in a box for the fabricator's sake. Where does the wood come from? ... And why is it lighter?"
 	icon_state = "mulecrate"
 
-/obj/structure/largecrate/hoverpod/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		var/obj/item/mecha_parts/mecha_equipment/ME
 		var/obj/mecha/working/hoverpod/H = new (loc)
@@ -170,7 +170,7 @@
 	name = "Bird crate"
 	desc = "You hear chirping and cawing inside the crate. It sounds like there are a lot of birds in there..."
 
-/obj/structure/largecrate/birds/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/birds/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		new /obj/item/stack/material/wood(src)
 		new /mob/living/simple_mob/animal/passive/bird(src)

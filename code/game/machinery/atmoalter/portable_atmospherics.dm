@@ -97,7 +97,7 @@
 	if (network)
 		network.update = 1
 
-/obj/machinery/portable_atmospherics/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
 		if (holding && (user.a_intent != INTENT_GRAB))
 			return
@@ -180,7 +180,7 @@
 		return 1
 	return 0
 
-/obj/machinery/portable_atmospherics/powered/attackby_legacy(obj/item/I, mob/user)
+/obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
 	if(use_cell && istype(I, /obj/item/cell))
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")

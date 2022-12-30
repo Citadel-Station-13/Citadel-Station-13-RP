@@ -112,7 +112,7 @@
 	else
 		user << browse(null,"window=eftpos")
 
-/obj/item/eftpos/attackby_legacy(obj/item/O as obj, user as mob)
+/obj/item/eftpos/attackby(obj/item/O as obj, user as mob)
 
 	var/obj/item/card/id/I = O.GetID()
 

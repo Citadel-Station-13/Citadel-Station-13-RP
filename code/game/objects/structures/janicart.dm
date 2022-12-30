@@ -27,7 +27,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	//everything else is visible, so doesn't need to be mentioned
 
 
-/obj/structure/janitorialcart/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
@@ -192,7 +192,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		. += "\A [mybag] is hanging on the [callme]."
 
 
-/obj/structure/bed/chair/janicart/attackby_legacy(obj/item/I, mob/user)
+/obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mop))
 		if(reagents.total_volume > 1)
 			reagents.trans_to_obj(I, 2)

@@ -115,7 +115,7 @@
 	..()
 	remove_cuffs(user)
 
-/obj/item/clothing/shoes/orange/attackby_legacy(H as obj, mob/user as mob)
+/obj/item/clothing/shoes/orange/attackby(H as obj, mob/user as mob)
 	..()
 	if (istype(H, /obj/item/handcuffs))
 		attach_cuffs(H, user)

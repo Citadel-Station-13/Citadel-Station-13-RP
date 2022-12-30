@@ -29,7 +29,7 @@
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 
-/obj/machinery/slime/extractor/attackby_legacy(var/obj/item/W, var/mob/user)
+/obj/machinery/slime/extractor/attackby(var/obj/item/W, var/mob/user)
 
 	//Let's try to deconstruct first.
 	if(W.is_screwdriver() && !inuse)

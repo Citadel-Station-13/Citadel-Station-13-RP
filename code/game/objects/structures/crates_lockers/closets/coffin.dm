@@ -74,7 +74,7 @@
 		var/limb_damage = rand(5,25)
 		H.adjustBruteLoss(limb_damage)
 
-/obj/structure/closet/grave/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/grave/attackby(obj/item/W as obj, mob/user as mob)
 	if(src.opened)
 		if(istype(W, /obj/item/shovel))
 			user.visible_message("<span class='notice'>[user] piles dirt into \the [src.name].</span>", \

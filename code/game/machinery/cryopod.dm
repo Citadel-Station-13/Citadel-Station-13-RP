@@ -515,7 +515,7 @@
 	qdel(to_despawn)
 	set_occupant(null)
 
-/obj/machinery/cryopod/attackby_legacy(obj/item/G, mob/user)
+/obj/machinery/cryopod/attackby(obj/item/G, mob/user)
 
 	if(istype(G, /obj/item/grab))
 

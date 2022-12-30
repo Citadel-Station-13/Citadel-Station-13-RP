@@ -21,7 +21,7 @@
 		return
 	..()
 
-/obj/item/radio/electropack/attackby_legacy(obj/item/W as obj, mob/user as mob)
+/obj/item/radio/electropack/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/clothing/head/helmet))
 		if(!b_stat)

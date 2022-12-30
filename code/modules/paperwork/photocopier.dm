@@ -152,7 +152,7 @@
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/photocopier/attackby_legacy(obj/item/O as obj, mob/user as mob)
+/obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
 		if(!copyitem)
 			if(!user.attempt_insert_item_for_installation(O, src))

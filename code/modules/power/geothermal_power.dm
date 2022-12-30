@@ -63,7 +63,7 @@
 			power_total += col.power_provided
 			//LAZYADD(collectors, col)
 
-/obj/machinery/power/geothermal_controller/attackby_legacy(obj/item/W, mob/user)
+/obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
 	if(scanner && istype(scanner))
 		if(W.is_multitool())
 			//update_use_power(USE_POWER_IDLE)

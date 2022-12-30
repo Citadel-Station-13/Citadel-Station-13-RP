@@ -137,7 +137,7 @@
 		else
 			to_chat(usr, SPAN_WARNING("There's nothing attached to the IV drip!"))
 
-/obj/machinery/iv_drip/attackby_legacy(obj/item/W, mob/user, params)
+/obj/machinery/iv_drip/attackby(obj/item/W, mob/user, params)
 	if(is_type_in_typecache(W, drip_containers))
 		if(reagent_container)
 			to_chat(user, SPAN_WARNING("[reagent_container] is already loaded on [src]!"))
