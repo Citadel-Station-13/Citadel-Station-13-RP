@@ -2151,34 +2151,6 @@
 "gz" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/escape)
-"gA" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
-"gB" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "gC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2615,19 +2587,6 @@
 /obj/machinery/power/pointdefense,
 /turf/simulated/floor/plating/eris/under,
 /area/shuttle/escape)
-"hV" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "hW" = (
 /obj/machinery/pointdefense_control,
 /turf/simulated/floor/tiled/steel_grid,
@@ -2660,19 +2619,6 @@
 /obj/item/folder/blue,
 /obj/item/pen,
 /turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
-"id" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "ie" = (
 /obj/machinery/light{
@@ -2823,22 +2769,6 @@
 "iE" = (
 /obj/machinery/status_display,
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/escape)
-"iF" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_cockpit"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
-"iG" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_cockpit"
-	},
-/turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "iH" = (
 /obj/machinery/door/airlock/command{
@@ -3602,20 +3532,6 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
-"kL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "kM" = (
 /obj/structure/handrail{
 	dir = 4
@@ -3633,22 +3549,7 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
-"kP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "kQ" = (
-/obj/effect/wingrille_spawn/reinforced/crescent,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -3657,7 +3558,7 @@
 	name = "Security Door";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
+/obj/spawner/window/full/firelocks,
 /turf/simulated/floor/plating,
 /area/centcom/simulated/security)
 "kR" = (
@@ -3924,9 +3825,7 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/terminal)
 "lt" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -3951,9 +3850,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "lx" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -4542,19 +4439,12 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "nc" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/machinery/door/blast/regular/open{
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_security"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
+/obj/spawner/window/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nd" = (
@@ -4563,13 +4453,6 @@
 	name = "holding cell"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
-"ne" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_security"
-	},
-/turf/simulated/floor,
 /area/shuttle/escape)
 "nf" = (
 /obj/structure/closet/emcloset,
@@ -4606,32 +4489,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
-"nh" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_medical"
-	},
-/turf/simulated/floor,
-/area/shuttle/escape)
 "ni" = (
 /obj/structure/bed/roller,
 /turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
-"nj" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/obj/structure/window/reinforced/polarized/full{
-	id = "emergency_medical"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -4719,9 +4579,7 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/restaurant)
 "ny" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -4754,19 +4612,15 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/medical)
 "nF" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/medical)
 "nG" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/sign/department/medbay,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -4804,10 +4658,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "Tram_Med"
-	},
+/obj/spawner/window/full/firelocks,
 /turf/simulated/floor,
 /area/shuttle/escape)
 "nN" = (
@@ -5408,7 +5259,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/centcom/terminal;
 	base_turf = /turf/unsimulated/floor/techfloor_grid;
-	docking_controller = null;
 	landmark_tag = "escape_cc";
 	name = "Escape Shuttle Centcom"
 	},
@@ -5532,7 +5382,6 @@
 /area/centcom/simulated/restaurant)
 "pS" = (
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Unit 1"
 	},
 /turf/simulated/floor/tiled/white,
@@ -5740,7 +5589,6 @@
 /area/centcom/simulated/bathroom)
 "qJ" = (
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Unit 2"
 	},
 /turf/simulated/floor/tiled/white,
@@ -8814,14 +8662,8 @@
 /turf/unsimulated/wall,
 /area/centcom/main_hall)
 "xI" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/structure/sign/warning/lethal_turrets,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -8833,19 +8675,6 @@
 	name = "Security Doors"
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/main_hall)
-"xK" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/main_hall)
 "xL" = (
 /obj/machinery/door/airlock/centcom{
@@ -8863,16 +8692,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xN" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -9052,13 +8872,7 @@
 /turf/unsimulated/wall,
 /area/tdome/tdomeadmin)
 "yq" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -9106,8 +8920,7 @@
 /area/centcom/command)
 "yB" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Visitors";
-	req_one_access = null
+	name = "NanoTrasen Visitors"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -9372,15 +9185,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/command)
-"zi" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/command)
 "zj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9792,8 +9596,7 @@
 "Aj" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Visitors";
-	req_one_access = null
+	name = "NanoTrasen Visitors"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -10135,10 +9938,7 @@
 	},
 /area/tdome/tdome1)
 "Bb" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -10284,7 +10084,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space/transit/south;
-	docking_controller = null;
 	landmark_tag = "escape_transit";
 	name = "Escape Shuttle Transit"
 	},
@@ -11981,7 +11780,7 @@ gx
 ji
 jP
 kt
-kL
+nc
 kt
 kt
 kt
@@ -12364,7 +12163,7 @@ ge
 gx
 gy
 gz
-hV
+nM
 gy
 jk
 jR
@@ -12753,7 +12552,7 @@ gz
 gz
 hi
 hX
-iF
+nM
 jm
 ia
 ku
@@ -12763,7 +12562,7 @@ lL
 gz
 gy
 mY
-ne
+nM
 iE
 gz
 of
@@ -12943,11 +12742,11 @@ dl
 eC
 fC
 ge
-gA
+nM
 ha
 hj
 hY
-iG
+nM
 jn
 jT
 jT
@@ -13137,7 +12936,7 @@ de
 eV
 fC
 ge
-gA
+nM
 hb
 hk
 ia
@@ -13331,11 +13130,11 @@ de
 fq
 fC
 ge
-gB
+nM
 hc
 hl
 hY
-iG
+nM
 jo
 jV
 jV
@@ -13529,7 +13328,7 @@ gz
 gz
 hm
 ib
-iG
+nM
 jp
 ia
 kx
@@ -13539,7 +13338,7 @@ lO
 gz
 gy
 mZ
-nh
+nM
 iE
 gz
 of
@@ -13916,7 +13715,7 @@ ge
 gx
 gy
 gz
-id
+nM
 gy
 jF
 jW
@@ -14309,7 +14108,7 @@ gx
 js
 jY
 kt
-kP
+nc
 kt
 kt
 kt
@@ -14509,8 +14308,8 @@ lJ
 mr
 mP
 nb
-nj
-nj
+nc
+nc
 nb
 ok
 gx
@@ -15705,7 +15504,7 @@ ss
 xm
 xj
 xz
-xK
+xN
 xk
 xj
 xy
@@ -20367,10 +20166,10 @@ xj
 xy
 yw
 yw
-zi
-zi
-zi
-zi
+Bb
+Bb
+Bb
+Bb
 yw
 yw
 Ar

@@ -28,9 +28,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
 "an" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -39,6 +36,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/shuttle/belter)
 "ao" = (
@@ -312,7 +310,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
 "cK" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/deep)
@@ -1389,8 +1386,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "mz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "mB" = (
@@ -2388,7 +2384,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "uW" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/turbolift/rwest_mining/deep)
 "uZ" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -2397,10 +2393,6 @@
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor,
 /area/shuttle/belter)
-"vg" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock)
 "vm" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c,
@@ -2457,9 +2449,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "vG" = (
-/obj/spawner/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/maintenance)
 "vI" = (
 /obj/machinery/door/airlock/multi_tile/glass,
@@ -2499,8 +2490,8 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "wq" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/near_gateway)
 "ws" = (
 /turf/simulated/floor/plating,
@@ -2564,8 +2555,8 @@
 /turf/unsimulated/mineral/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "wW" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/maintenance/north)
 "xa" = (
 /obj/structure/girder,
@@ -3066,7 +3057,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep)
 "BB" = (
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/quartermaster/belterdock)
 "BE" = (
@@ -3659,11 +3650,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
-"Gw" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock)
 "Gx" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
@@ -3782,11 +3768,11 @@
 /area/rnd/outpost/underground)
 "HS" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "gateway_windows"
 	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/gateway)
 "HW" = (
@@ -4007,11 +3993,11 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "JM" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "gateway_windows"
 	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/gateway)
 "JO" = (
@@ -4775,11 +4761,6 @@
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/prison)
-"RO" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor,
-/area/quartermaster/belterdock)
 "RV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4868,8 +4849,7 @@
 /turf/simulated/mineral/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "SP" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/recreation)
 "ST" = (
@@ -10766,7 +10746,7 @@ YK
 mz
 Ha
 RK
-yz
+mz
 kE
 sc
 oh
@@ -37389,9 +37369,9 @@ cK
 cK
 dP
 uZ
-Gw
+BB
 ll
-vg
+BB
 rn
 Cl
 Cl
@@ -38168,7 +38148,7 @@ dP
 uu
 Ij
 Ij
-RO
+BB
 Oe
 sW
 ZL
@@ -38350,8 +38330,8 @@ bh
 bh
 rn
 rn
-RO
-RO
+BB
+BB
 rn
 uZ
 dP
@@ -38363,8 +38343,8 @@ uu
 dg
 rn
 rn
-RO
-RO
+BB
+BB
 rn
 rn
 jZ
