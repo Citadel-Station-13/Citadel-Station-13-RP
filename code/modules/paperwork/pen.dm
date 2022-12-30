@@ -103,14 +103,12 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
-
-	if(!istype(M))
-		return
-
+/obj/item/pen/reagent/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	. = ..()
-
-	if(M.can_inject(user,1))
+	var/mob/living/L = M
+	if(istype(L))
+		return
+	if(L.can_inject(user,1))
 		if(reagents.total_volume)
 			if(M.reagents)
 				var/contained = reagents.get_reagents()

@@ -37,18 +37,15 @@
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
 	atom_flags |= OPENCONTAINER
 
-/obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/food/drinks/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
-
-	if(standard_feed_mob(user, M))
-		return
-
-	return 0
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	standard_feed_mob(user, M)
 
 /obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
-
+	if(!proximity)
+		return
 	if(standard_dispenser_refill(user, target))
 		return
 	if(standard_pour_into(user, target))

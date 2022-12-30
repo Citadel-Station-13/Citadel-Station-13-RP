@@ -110,6 +110,7 @@ var/global/photo_count = 0
 	desc = "A polaroid camera. 10 photos left."
 	icon_state = "camera"
 	item_state = "camera"
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	matter = list(MAT_STEEL = 2000)
@@ -128,9 +129,6 @@ var/global/photo_count = 0
 	if(nsize)
 		size = nsize
 		to_chat(usr, "<span class='notice'>Camera will now take [size]x[size] photos.</span>")
-
-/obj/item/camera/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	return
 
 /obj/item/camera/attack_self(mob/user as mob)
 	on = !on

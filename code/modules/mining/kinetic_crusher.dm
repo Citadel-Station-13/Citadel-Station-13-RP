@@ -113,13 +113,13 @@
 		return ..()
 */
 
-/obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
+/obj/item/kinetic_crusher/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
 	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 	var/target_health = target.health
-	..()
+	. = ..()
 /*
 	for(var/t in trophies)
 		if(!QDELETED(target))

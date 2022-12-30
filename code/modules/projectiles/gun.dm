@@ -249,17 +249,18 @@
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		handle_suicide(user)
-	else if(user.a_intent == INTENT_HARM) //point blank shooting
+/obj/item/gun/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+			handle_suicide(user)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else
 			Fire(A, user, pointblank=1)
-	else
-		return ..() //Pistolwhippin'
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby_legacy(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))

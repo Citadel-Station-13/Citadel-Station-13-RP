@@ -163,12 +163,12 @@
 		onclose(usr, "[name]")
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/paper/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [M]. </span>", \
 			"<span class='notice'> [user] holds up a paper and shows it to [M]. </span>")
 		M.examinate(src)
-
 	else if(user.zone_sel.selecting == O_MOUTH) // lipstick wiping
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -184,6 +184,7 @@
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
 					H.update_icons_body()
+	return ..()
 
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0

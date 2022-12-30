@@ -173,10 +173,11 @@
 
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
-	name = "Broken Bottle"
+	name = "broken bottle"
 	desc = "A bottle with a sharp broken bottom."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	force = 10
 	throw_force = 5
 	throw_speed = 3
@@ -187,10 +188,6 @@
 	sharp = 1
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
-
-/obj/item/broken_bottle/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return ..()
 
 /obj/item/reagent_containers/food/drinks/bottle/gin
 	name = "Griffeater Gin"

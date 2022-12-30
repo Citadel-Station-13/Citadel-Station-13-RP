@@ -47,7 +47,7 @@
 		var/mob/living/L = user
 		if(imbue == "runestun")
 			L.take_organ_damage(5, 0)
-			call(/obj/effect/rune/proc/runestun)(T)
+			call(/obj/effect/rune/proc/runestun)(M)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

@@ -47,7 +47,15 @@
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/food/snacks/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	attempt_feed(M, user)
+
+/obj/item/reagent_containers/food/snacks/proc/attempt_feed(mob/living/M, mob/living/user)
+	if(!istype(M) || !istype(user))
+		return
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)

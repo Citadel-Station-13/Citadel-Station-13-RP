@@ -87,8 +87,7 @@
 	var/obj/item/O = pick(contents)
 	. += "<font color=#4F49AF>You think you can see [O.name] in there.</font>"
 
-/obj/item/reagent_containers/food/snacks/csandwich/attack(mob/M as mob, mob/user as mob, def_zone)
-
+/obj/item/reagent_containers/food/snacks/csandwich/attempt_feed(mob/living/M, mob/living/user)
 	var/obj/item/shard
 	for(var/obj/item/O in contents)
 		if(istype(O,/obj/item/material/shard))
@@ -102,4 +101,4 @@
 	if(H && shard && M == user) //This needs a check for feeding the food to other people, but that could be abusable.
 		to_chat(H, "<font color='red'>You lacerate your mouth on a [shard.name] in the sandwich!</font>")
 		H.adjustBruteLoss(5) //TODO: Target head if human. //This TODO has been here for 4 years.
-	..()
+	return ..()

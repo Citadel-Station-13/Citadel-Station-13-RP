@@ -14,17 +14,19 @@
 	var/reveal_blood = TRUE
 	var/reveal_fibers = FALSE
 
-/obj/item/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
+/obj/item/detective_scanner/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if (!ishuman(M))
 		to_chat(user, SPAN_WARNING("\The [M] does not seem to be compatible with this device."))
 		flick("[icon_state]0",src)
-		return FALSE
+		return
 
 	if(reveal_fingerprints)
 		if((!( istype(M.dna, /datum/dna) ) || M.gloves))
 			to_chat(user, "<span class='notice'>No fingerprints found on [M]</span>")
 			flick("[icon_state]0",src)
-			return 0
+			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
 			P.attack(M, user)
@@ -36,7 +38,6 @@
 		spawn(15)
 			for(var/blood in M.blood_DNA)
 				to_chat(user,"<span class='notice'>Blood type: [M.blood_DNA[blood]]\nDNA: [blood]</span>")
-	return
 
 /obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
 	if(!proximity) return

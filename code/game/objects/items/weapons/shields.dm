@@ -119,9 +119,10 @@
 	. = ..()
 	embedded_flash = new(src)
 
-/obj/item/shield/riot/flash/attack(mob/living/M, mob/user)
-	. =  embedded_flash.attack(M, user)
-	update_icon()
+/obj/item/shield/riot/flash/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	return embedded_flash.attack_mob(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/living/carbon/user)
 	. = embedded_flash.attack_self(user)

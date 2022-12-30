@@ -21,9 +21,11 @@
 /obj/item/reagent_containers/food/condiment/attack_self(var/mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/condiment/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(standard_feed_mob(user, M))
-		return
+/obj/item/reagent_containers/food/condiment/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	standard_feed_mob(user, M)
 
 /obj/item/reagent_containers/food/condiment/afterattack(var/obj/target, var/mob/user, var/flag)
 	if(standard_dispenser_refill(user, target))

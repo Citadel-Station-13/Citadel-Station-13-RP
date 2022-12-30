@@ -201,7 +201,9 @@
 	attack(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/clothing/accessory/stethoscope/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(ishuman(M) && isliving(user))
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_sel.selecting)
@@ -248,7 +250,7 @@
 
 				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
 				return
-	return ..(M,user)
+	return ..()
 
 //Medals
 /obj/item/clothing/accessory/medal

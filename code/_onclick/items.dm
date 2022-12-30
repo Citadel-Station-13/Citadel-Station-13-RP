@@ -115,6 +115,6 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_obj(atom/A, mob/user, clickchain_flags, list/params)
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
 	#warn impl - oh and check user intent

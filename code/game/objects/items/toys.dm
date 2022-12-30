@@ -36,13 +36,11 @@
 	desc = "A translucent balloon. There's nothing in it."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
+	force = 0
 
 /obj/item/toy/balloon/Initialize(mapload)
 	. = ..()
 	create_reagents(10)
-
-/obj/item/toy/balloon/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(!proximity) return
@@ -213,7 +211,8 @@
 			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 
-/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+/obj/item/toy/crossbow/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	. = ..()
 	src.add_fingerprint(user)
 
 // ******* Check
@@ -355,14 +354,12 @@
 	item_state = "sunflower"
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
+	force = 0
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
 	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
-
-/obj/item/toy/waterflower/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	return
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
 
@@ -780,15 +777,14 @@
 	var/bitesound = 'sound/weapons/bite.ogg'
 
 // Attack mob
-/obj/item/toy/plushie/carp/attack(mob/M as mob, mob/user as mob)
-	playsound(loc, bitesound, 20, 1)	// Play bite sound in local area
-	return ..()
+/obj/item/toy/plushie/carp/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	. = ..()
+	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
 // Attack self
 /obj/item/toy/plushie/carp/attack_self(mob/user as mob)
-	playsound(src.loc, bitesound, 20, 1)
+	playsound(src, bitesound, 20, 1)
 	return ..()
-
 
 /obj/random/carp_plushie
 	name = "Random Carp Plushie"

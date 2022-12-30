@@ -165,9 +165,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trumpet/spectral/apply_hit_effect(mob/living/target, mob/living/user, hit_zone, attack_modifier)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
@@ -190,9 +190,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/saxophone/spectral/apply_hit_effect(mob/living/target, mob/living/user, hit_zone, attack_modifier)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/trombone
 	name = "trombone"
@@ -215,9 +215,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trombone/spectral/apply_hit_effect(mob/living/target, mob/living/user, hit_zone, attack_modifier)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 
 /obj/item/instrument/recorder
 	name = "recorder"
