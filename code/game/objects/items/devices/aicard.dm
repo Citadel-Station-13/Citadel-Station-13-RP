@@ -14,12 +14,12 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
-	if (!istype (M, /mob/living/silicon/decoy))
+/obj/item/aicard/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(!istype(M, /mob/living/silicon/decoy))
 		return ..()
-	else
-		M.death()
-		to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	M.death()
+	to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/aicard/attack_self(mob/user)
 

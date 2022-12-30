@@ -44,6 +44,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /mob/living/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
+	#warn removed intent help check from srugery items, now we need generic support!
 	if(can_operate(src) && I.do_surgery(src,user))
 		if(I.can_do_surgery(src,user))
 			return 1
