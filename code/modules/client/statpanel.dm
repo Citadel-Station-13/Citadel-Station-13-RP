@@ -69,12 +69,12 @@
 			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
-#warn kick turfs to native
+#warn kick turfs to native no seriously kick the tab TO NATIVE
 
 /client/proc/list_turf(turf/T)
 	if(statpanel_turf)
 		unlist_turf()
-	if(!T)
+	if(!T || !list_turf_check(T))
 		return
 	statpanel_turf = T
 	var/list/data = list()
@@ -94,6 +94,9 @@
 		COMSIG_ATOM_EXITED,
 	))
 	statpanel_turf = null
+
+/client/proc/list_turf_check(turf/T)
+	return mob.TurfAdjacent(T)
 
 /**
  * must return list(name, icon, ref).
@@ -148,7 +151,34 @@
 	if(!statpanel_on_byond)
 		return
 	..()	// hit mob.Stat()
-	#warn impl - turf
+	if(!statpanel("Turf"))
+		return
+	if(!statpanel_turf)
+		stat("No turf listed ; Alt click on an adjacent turf to view contents.")
+		return
+	stat(statpanel_turf.name, statpanel_turf)
+/*
+	var/list/overrides = list()
+	for(var/image/I in client.images)
+		if(I.loc && I.loc.loc == listed_turf && I.override)
+			overrides += I.loc
+*/
+	for(var/atom/movable/AM as anything in statpanel_turf)
+		if(!AM.mouse_opacity)
+			continue
+		if(AM.invisibility > using_perspective.see_invisible)
+			continue
+// too expensive rn
+/*
+		if(overrides.len && (A in overrides))
+			continue
+*/
+// not needed rn
+/*
+		if(A.IsObscured())
+			continue
+*/
+		stat(null, AM)
 
 //! data
 

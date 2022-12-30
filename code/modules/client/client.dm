@@ -96,6 +96,8 @@
 	var/list/statpanel_spell_last
 	/// are we on byond stat? if so we can just skip the js one in data transmit (and vice versa)
 	var/statpanel_on_byond = FALSE
+	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
+	var/statpanel_for_turf = FALSE
 
 	//! throttling
 	/// block re-execution of expensive verbs

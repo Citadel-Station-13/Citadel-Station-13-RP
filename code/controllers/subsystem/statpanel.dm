@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(statpanels)
 		// check if we're even on the js one
 		if(player.statpanel_on_byond)
 			continue
+		// check listed turf
+		if(player.statpanel_turf && !player.list_turf_check(player.statpanel_turf))
 		// are they an admin?
 		var/is_admin = !!player.holder
 		// grab their mob data
