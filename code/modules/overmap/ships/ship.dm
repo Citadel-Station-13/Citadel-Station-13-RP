@@ -220,8 +220,7 @@
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
 			return
-	pixel_x -= WORLD_ICON_SIZE
-	pixel_y -= WORLD_ICON_SIZE
+	// todo: actual animations
 	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
@@ -271,11 +270,11 @@
 	if(vel_x)
 		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., OVERMAP_DIST_TO_PIXEL(abs(vel_x)) / dist_to_go * 10)
+		. = min(., (OVERMAP_PIXEL_TO_DIST(dist_to_go) / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
 	if(vel_y)
 		var/offset = MODULUS(position_y, WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., OVERMAP_DIST_TO_PIXEL(abs(vel_y)) / dist_to_go * 10)
+		. = min(., (OVERMAP_PIXEL_TO_DIST(dist_to_go) / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
 	. = max(., 0)
 
 /obj/effect/overmap/visitable/ship/proc/halt()
