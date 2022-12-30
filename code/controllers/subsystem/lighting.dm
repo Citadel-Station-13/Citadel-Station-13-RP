@@ -66,14 +66,15 @@ SUBSYSTEM_DEF(lighting)
 	for (var/zlevel = 1 to world.maxz)
 		overlaycount += InitializeZlev(zlevel)
 
-	admin_notice(SPAN_BOLDANNOUNCE("Created [overlaycount] lighting overlays in [(REALTIMEOFDAY - starttime)/10] seconds."), R_DEBUG)
+	var/overlay_blurb = "Created [overlaycount] lighting overlays in [(REALTIMEOFDAY - starttime)/10] seconds!"
 
 	starttime = REALTIMEOFDAY
 	// Tick once to clear most lights.
 	fire(FALSE, TRUE)
 
-	var/time = (REALTIMEOFDAY - timeofday) / 10
+	var/time = (REALTIMEOFDAY - starttime) / 10
 	var/list/blockquote_data = list(
+		SPAN_BOLDANNOUNCE("[overlay_blurb]\n"),
 		SPAN_BOLDANNOUNCE("Lighting pre-bake completed within [time] second[time == 1 ? "" : "s"]!<hr>"),
 		SPAN_DEBUGINFO("Processed [processed_lights] light sources."),
 		SPAN_DEBUGINFO("\nProcessed [processed_corners] light corners."),
