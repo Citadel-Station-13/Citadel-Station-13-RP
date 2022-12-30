@@ -102,7 +102,7 @@
  */
 /obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
-	#warn impl
+	#warn impl - oh and check user intent
 
 /**
  * called at base of attack mob for a standard melee hit
