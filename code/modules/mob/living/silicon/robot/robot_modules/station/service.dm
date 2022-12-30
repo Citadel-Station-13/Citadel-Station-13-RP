@@ -256,7 +256,6 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-	..()
 
 // Uses modified K9 sprites.
 /obj/item/robot_module/robot/clerical/quad_serv

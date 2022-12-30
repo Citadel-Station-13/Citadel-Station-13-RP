@@ -283,7 +283,7 @@
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
 		/obj/item/healthanalyzer,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/gps,
 		/obj/item/switchtool,
 		/obj/item/ano_scanner

@@ -236,7 +236,7 @@
 	id = "uranium"
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
-	radioactivity = 12
+	radioactivity = RAD_INTENSITY_MAT_URANIUM
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
@@ -296,7 +296,7 @@
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
-	radioactivity = 20
+	radioactivity = RAD_INTENSITY_MAT_SUPERMATTER
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
@@ -1251,8 +1251,8 @@
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	icon_colour = "#ff9900"
-	hardness = 1
-	weight = 1
+	hardness = 0
+	weight = 0
 	protectiveness = 0 // 0%
 	conductive = 0
 

@@ -4,6 +4,7 @@
 	plane = OBJ_PLANE
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
+	rad_flags = NONE
 
 	var/obj_flags = CAN_BE_HIT
 	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
@@ -163,9 +164,6 @@
 	return FALSE
 
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
-	return
-
-/obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return
 
 // Used to mark a turf as containing objects that are dangerous to step onto.

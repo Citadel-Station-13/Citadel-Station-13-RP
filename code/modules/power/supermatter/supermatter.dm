@@ -32,7 +32,7 @@
 #define DAMAGE_HARD_LIMIT 50
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
-#define DETONATION_RADS 20
+#define DETONATION_RADS (1500 / RAD_MOB_ACT_COEFFICIENT) // compensates for mob act so everyone still takes this amount
 #define DETONATION_HALLUCINATION_BASE 300
 #define DETONATION_HALLUCINATION_RANGE 300
 #define DETONATION_HALLUCINATION 600
@@ -51,6 +51,7 @@
 	icon_state = "darkmatter"
 	density = 1
 	anchored = 0
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
 
 	var/gasefficency = 0.25
@@ -150,8 +151,6 @@
 		return 0
 	return round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
 
-
-
 /obj/machinery/power/supermatter/proc/explode()
 	message_admins("Supermatter exploded at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	log_game("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
@@ -162,7 +161,7 @@
 	if(!TS)
 		return
 	for(var/z in GetConnectedZlevels(TS.z))
-		SSradiation.z_radiate(locate(1, 1, z), DETONATION_RADS, 1)
+		z_radiation(locate(x, y, z), null, DETONATION_RADS, RAD_FALLOFF_ZLEVEL_SUPERMATTER_DELAMINATION)
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)
 		if(T && (loc.z == T.z))
@@ -357,7 +356,8 @@
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
-	SSradiation.radiate(src, max(power * 1.5, 50) ) //Better close those shutters!
+	//! uh oh!
+	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
 
@@ -458,7 +458,6 @@
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	Consume(W)
-	user.apply_effect(150, IRRADIATE)
 
 
 /obj/machinery/power/supermatter/Bumped(atom/AM as mob|obj)
@@ -492,8 +491,7 @@
 				"<span class=\"warning\">The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
 			l.show_message("<span class=\"warning\">You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
-	var/rads = 500
-	SSradiation.radiate(src, rads)
+	radiation_pulse(src, 3000, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
@@ -539,10 +537,11 @@
 /obj/item/broken_sm/Initialize(mapload)
 	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
+	investigate_log(INVESTIGATE_RADIATION, "Broken SM shard created.")
 	START_PROCESSING(SSobj, src)
 
 /obj/item/broken_sm/process(delta_time)
-	SSradiation.radiate(src, 50)
+	radiation_pulse(src, RAD_INTENSITY_SM_BROKEN, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/item/broken_sm/Destroy()
 	STOP_PROCESSING(SSobj, src)

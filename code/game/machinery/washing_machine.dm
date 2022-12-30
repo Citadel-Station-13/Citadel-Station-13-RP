@@ -50,6 +50,7 @@
 	sleep(200)
 	for(var/atom/A in washing)
 		A.clean_blood()
+		A.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER_WASHING_MACHINE, RAD_CONTAMINATION_CLEANSE_FACTOR_WASHING_MACHINE)
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()

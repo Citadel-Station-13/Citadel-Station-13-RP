@@ -1,6 +1,4 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-var/global/list/rad_collectors = list()
-
+// todo: rework
 /obj/machinery/power/rad_collector
 	name = "Radiation Collector Array"
 	desc = "A device which uses Hawking Radiation and phoron to produce power."
@@ -11,37 +9,40 @@ var/global/list/rad_collectors = list()
 	req_access = list(access_engine_equip)
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
-	var/last_power = 0
-	var/last_power_new = 0
+	/// stored power in kilojoules
+	var/stored_power = 0
+	/// mols of phoron to consume per kj of power
+	/**
+	 * (1013)(70)/((8.314)(293.15)) --> ~30 mol phoron in a full takn
+	 * assuming someone's tryharding, 5000 rad/second --> 5 * RAD_MISC_COLLECTOR_MULTIPLIER MW per collector
+	 * we want it to drain in x hours.
+	 * let rads be R, let hours be H, let mols be M
+	 * assuming ssradiation doesn't lag the fuck out,
+	 * factor = 30 / ((60 * 60 * H) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
+	 *
+	 * let's set it to 1 hours for such a tryhard setup for now; cooling phoron is now needed for longetivity :)
+	 */
+	var/gas_usage_factor = 30 / ((60 * 60 * 1) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
+	/// last KW
+	var/last_output
+	/// rad insulation when on
+	var/rad_insulation_active = RAD_INSULATION_HIGH
+	/// rad insulation when off
+	var/rad_insulation_inactive = RAD_INSULATION_NONE
+	/// amount of rads to toss
+	var/flat_loss = RAD_MISC_COLLECTOR_FLAT_LOSS
+	/// kj per rad
+	var/efficiency = RAD_MISC_COLLECTOR_MULTIPLIER
+	/// minimum kj to try to push
+	var/minimum_push = 10
+	/// % of stored power to push per process
+	var/push_ratio = 0.05
 	var/active = 0
 	var/locked = 0
-	var/drainratio = 1
 
 /obj/machinery/power/rad_collector/Initialize(mapload)
 	. = ..()
-	rad_collectors += src
-
-/obj/machinery/power/rad_collector/Destroy()
-	rad_collectors -= src
-	return ..()
-
-/obj/machinery/power/rad_collector/process(delta_time)
-	//so that we don't zero out the meter if the SM is processed first.
-	last_power = last_power_new
-	last_power_new = 0
-
-
-	if(P && active)
-		var/rads = SSradiation.get_rads_at_turf(get_turf(src))
-		if(rads)
-			receive_pulse(rads * 5) //Maths is hard
-
-	if(P)
-		if(P.air_contents.gas[/datum/gas/phoron] == 0)
-			investigate_log("<font color='red'>out of fuel</font>.","singulo")
-			eject()
-		else
-			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
 /obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
 	if(anchored)
@@ -99,7 +100,10 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
-	. += "The meter indicates that \the [src] is collecting [last_power] W."
+	if(active)
+		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
+	else
+		. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"</span>"
 
 /obj/machinery/power/rad_collector/legacy_ex_act(severity)
 	switch(severity)
@@ -120,12 +124,28 @@ var/global/list/rad_collectors = list()
 	else
 		update_icons()
 
-/obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
-	if(P && active)
-		var/power_produced = 0
-		power_produced = (min(P.air_contents.gas[/datum/gas/phoron], 1000)) * pulse_strength * 20
-		add_avail(power_produced * 0.001)
-		last_power_new = power_produced
+// todo: rework
+/obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave/wave)
+	. = ..()
+	var/power_produced = max(0, (strength - flat_loss) * efficiency)
+	var/gas_needed = power_produced * gas_usage_factor
+	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
+		return
+	P.air_contents.adjust_gas(/datum/gas/phoron, -gas_needed)
+	if(!P.air_contents.gas[/datum/gas/phoron])
+		investigate_log("ran out of gas", INVESTIGATE_SINGULO)
+		eject()
+	stored_power += power_produced
+
+/obj/machinery/power/rad_collector/process(delta_time)
+	if(!stored_power)
+		last_output = 0
+		return
+	var/attempt = clamp(max(minimum_push, stored_power * push_ratio), 0, stored_power)
+	// if you don't have a powernet you still lose the poewr
+	stored_power -= attempt
+	//? kj to kw
+	add_avail((last_output = (attempt / delta_time)))
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	cut_overlays()
@@ -143,6 +163,7 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 	if(active)
 		icon_state = "ca_on"
 		flick("ca_active", src)

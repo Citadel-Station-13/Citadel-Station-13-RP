@@ -111,7 +111,7 @@
 
 /obj/item/nullrod/godhand/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/staff
 	icon_state = "godstaff-red"
@@ -261,7 +261,7 @@
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/clown
 	icon = 'icons/obj/wizard.dmi'
@@ -330,7 +330,7 @@
 
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/armblade/claw
 	name = "profane blessing"

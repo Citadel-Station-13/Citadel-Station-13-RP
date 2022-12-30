@@ -178,7 +178,7 @@
 
 //Note: external organs have their own version of this proc
 /obj/item/organ/take_damage(amount, var/silent=0)
-	ASSERT(amount > 0)
+	ASSERT(amount >= 0)
 	if(src.robotic >= ORGAN_ROBOT)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
 	else
@@ -607,6 +607,12 @@
 	return 1
 
 /obj/item/organ/proc/handle_organ_mod_special(var/removed = FALSE)	// Called when created, transplanted, and removed.
+	// todo: better way
+	if(owner)
+		rad_flags |= RAD_NO_CONTAMINATE
+	else
+		rad_flags &= ~RAD_NO_CONTAMINATE
+
 	if(!istype(owner))
 		return
 

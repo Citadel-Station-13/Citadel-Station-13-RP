@@ -10698,7 +10698,7 @@
 /obj/item/storage/backpack/rig{
 	pixel_x = -7
 	},
-/obj/item/universal_translator/ear/all{
+/obj/item/universal_translator/ear/adaptive{
 	pixel_x = 11;
 	pixel_y = -3
 	},

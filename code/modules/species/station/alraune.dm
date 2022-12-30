@@ -260,7 +260,7 @@
 		if(SA_pp > SA_para_min)
 
 			// 3 gives them one second to wake up and run away a bit!
-			H.Paralyse(3)
+			H.Unconscious(3)
 
 			// Enough to make us sleep as well
 			if(SA_pp > SA_sleep_min)

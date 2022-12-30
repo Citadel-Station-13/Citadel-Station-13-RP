@@ -389,8 +389,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	switch (numb)
 		if (1) //EMP.
 			emp_area()
-		if (2, 3) //Tox damage all carbon mobs in area.
-			toxmob()
 		if (4) //Stun mobs who lack optic scanners.
 			mezzer()
 		else
@@ -398,23 +396,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	if(current_size == STAGE_SUPER)
 		smwave()
 	return 1
-
-
-/obj/singularity/proc/toxmob()
-	var/toxrange = 10
-	var/toxdamage = 4
-	var/radiation = 15
-	if (src.energy>200)
-		toxdamage = round(((src.energy-150)/50)*4,1)
-		radiation = round(((src.energy-150)/50)*5,1)
-	SSradiation.radiate(src, radiation) //Always radiate at max, so a decent dose of radiation is applied
-	for(var/mob/living/M in view(toxrange, src.loc))
-		if(M.status_flags & GODMODE)
-			continue
-		toxdamage = (toxdamage - (toxdamage*M.getarmor(null, "rad")))
-		M.apply_effect(toxdamage, TOX)
-	return
-
 
 /obj/singularity/proc/mezzer()
 	for(var/mob/living/carbon/M in oviewers(8, src))
@@ -450,13 +431,11 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			to_chat(M, "<span class=\"danger\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class=\"danger\">You don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
 			M.dust()
-	SSradiation.radiate(src, rand(energy))
-	return
+	radiation_pulse(src, energy, RAD_FALLOFF_ENGINE_SINGULARITY)
 
 /obj/singularity/proc/pulse()
-	for(var/obj/machinery/power/rad_collector/R in rad_collectors)
-		if (get_dist(R, src) <= 15) //Better than using orange() every process.
-			R.receive_pulse(energy)
+	//! if you hit super you eat shit from 50k :^)
+	radiation_pulse(src, clamp(energy, 0, 50000))
 
 /obj/singularity/proc/on_capture()
 	chained = 1

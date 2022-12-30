@@ -7,6 +7,7 @@
 	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 	sight = SIGHT_FLAGS_DEFAULT
+	rad_flags = NONE
 
 //! Core
 	/// mobs use ids as ref tags instead of actual refs.
@@ -44,7 +45,7 @@
 	var/cached_multiplicative_slowdown
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
-	/// Last world.time we finished a move
+	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
@@ -235,7 +236,6 @@
 	var/can_pull_mobs = MOB_PULL_LARGER
 
 	var/datum/dna/dna = null//?Carbon
-	var/radiation = 0 //?Carbon
 
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations

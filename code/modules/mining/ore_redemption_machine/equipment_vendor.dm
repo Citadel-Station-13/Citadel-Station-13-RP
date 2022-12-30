@@ -22,7 +22,7 @@
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,			150),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									200),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,										900),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											750),
+		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,											750),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,												300),
 		new /datum/data/mining_equipment("GPS Device",					/obj/item/gps/mining,										100),
 		new /datum/data/mining_equipment("Portable Fuel Can",			/obj/item/reagent_containers/portable_fuelcan,		250),

@@ -399,14 +399,28 @@
 		pulledby?.stop_pulling()
 		if(pulling)
 			stop_pulling()
+		var/old_z
 		if (loc)
 			var/atom/oldloc = loc
 			var/area/old_area = get_area(oldloc)
+			var/turf/oldturf = get_turf(oldloc)
 			oldloc.Exited(src, null)
 			if(old_area)
 				old_area.Exited(src, null)
+			if(oldturf)
+				old_z = oldturf.z
 		loc = null
+		// guh - hate that this is needed
+		if(old_z)
+			onTransitZ(old_z, null)	// GUH, THIS HURTS
 
+/**
+ * called recursively to anything that changes zlevels
+ *
+ * @params
+ * - old_z - real z index; null if coming from nullspace
+ * - new_z - real z index; null if going to nullspace
+ */
 /atom/movable/proc/onTransitZ(old_z,new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
