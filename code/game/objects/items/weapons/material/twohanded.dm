@@ -333,9 +333,10 @@
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/twohanded/sledgehammer/pre_attack(var/mob/living/target, var/mob/living/user)
-	if(istype(target))
-		cleave(user, target)
+/obj/item/material/twohanded/sledgehammer/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+	if(isliving(A))
+		cleave(user, A)
+	return ..()
 
 /obj/item/material/twohanded/sledgehammer/mjollnir
 	icon_state = "mjollnir0"

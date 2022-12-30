@@ -489,7 +489,7 @@
 	name = "hardlight shield"
 	desc = "This should not exist."
 
-/obj/item/soap/holoswitch/pre_attack()
+/obj/item/soap/holoswitch/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
 	wet()
 	return ..()
 

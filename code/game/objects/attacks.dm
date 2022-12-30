@@ -29,10 +29,10 @@
 	return hit_mobs > 0 // Returns TRUE if anything got hit.
 
 /// This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/pre_attack(mob/living/target, mob/living/user)
-	if(can_cleave && istype(target))
-		cleave(user, target)
-	..()
+/obj/item/material/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+	if(can_cleave && isliving(A))
+		cleave(user, A)
+	return ..()
 
 /// This is purely the visual effect of cleaving.
 /obj/item/proc/cleave_visual(mob/living/user, mob/living/target)

@@ -26,13 +26,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/attack_self(mob/user)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
-// Called at the start of resolve_attackby(), before the actual attack.
-/obj/item/proc/pre_attack(atom/a, mob/user)
-	return
-
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
-	pre_attack(A, user)
 	if(!(atom_flags & NOPRINT))
 		add_fingerprint(user)
 	return A.attackby(src, user, params, NONE, attack_modifier)

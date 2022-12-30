@@ -13,6 +13,9 @@
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
+	if((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
 	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
 	var/stupid_fucking_shim = list2params(params)
 
@@ -48,3 +51,18 @@
 	if(user && (user.a_intent == INTENT_HARM))
 		return NONE
 	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT)
+
+/**
+ * called at the start of melee attack chains
+ * only called if proximate (ranged skips)
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ *
+ * @return clickchain flags to add, halting the chain if CLICKCHAIN_DO_NOT_PROPAGATE is returned
+ */
+/obj/item/proc/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+	return NONE

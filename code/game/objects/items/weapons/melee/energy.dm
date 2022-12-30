@@ -346,9 +346,10 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	projectile_parry_chance = 85
 
-/obj/item/melee/energy/sword/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+	return ..()
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
@@ -461,9 +462,10 @@
 	projectile_parry_chance = 65
 	hitcost = 150
 
-/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+	return ..()
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
