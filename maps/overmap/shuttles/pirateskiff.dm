@@ -12,10 +12,10 @@
 /obj/effect/overmap/visitable/ship/landable/pirate
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
+	fore_dir = WEST
 	vessel_mass = 4000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Pirate Skiff"
-
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
