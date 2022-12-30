@@ -62,7 +62,7 @@
 					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
 	return 1
 
-/obj/item/reagent_containers/borghypo/attack(var/mob/living/M, var/mob/user)
+/obj/item/reagent_containers/borghypo/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!istype(M))
 		return
 
@@ -92,7 +92,6 @@
 			reagent_volumes[reagent_ids[mode]] -= t
 			add_attack_logs(user, M, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
-	return
 
 /obj/item/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
 	var/t = ""
@@ -175,7 +174,7 @@
 		"whiskey",
 		"wine")
 
-/obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
+/obj/item/reagent_containers/borghypo/service/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)

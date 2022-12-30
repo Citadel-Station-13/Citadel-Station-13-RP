@@ -404,7 +404,7 @@
 	else
 		return
 
-/obj/item/reagent_containers/hypospray/glukoz/attack(mob/living/H as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/glukoz/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(closed)
 		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
 		return

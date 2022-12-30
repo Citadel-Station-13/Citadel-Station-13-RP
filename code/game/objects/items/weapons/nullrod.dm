@@ -180,9 +180,9 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/nullrod/claymore/multiverse/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	force = rand(1, 30)
-	..()
+	return ..()
 
 /obj/item/nullrod/claymore/saber
 	name = "light energy sword"
@@ -372,7 +372,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack(mob/target, mob/living/user)
+/obj/item/nullrod/claymore/bostaff/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -442,7 +442,7 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack(mob/living/M, mob/living/user)
+/obj/item/nullrod/rosary/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 

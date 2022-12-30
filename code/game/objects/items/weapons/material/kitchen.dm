@@ -24,7 +24,7 @@
 		src.pixel_y = rand(0, 4)
 	create_reagents(5)
 
-/obj/item/material/kitchen/utensil/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/material/kitchen/utensil/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!istype(M))
 		return ..()
 

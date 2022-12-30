@@ -27,52 +27,51 @@
 	if(reagents.total_volume && rename_with_volume)
 		name += " ([reagents.total_volume]u)"
 
-/obj/item/reagent_containers/pill/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_containers/pill/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(!H.check_has_mouth())
 				to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			var/obj/item/blocked = H.check_mouth_coverage()
 			if(blocked)
 				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_void_item_for_installation(src))
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 
 			to_chat(M, "<span class='notice'>You swallow \the [src].</span>")
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 			qdel(src)
-			return 1
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	else if(istype(M, /mob/living/carbon/human))
 
 		var/mob/living/carbon/human/H = M
 		if(!H.check_has_mouth())
 			to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
 			to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>")
 
 		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, M))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_void_item_for_installation(src))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>")
 		var/contained = reagentlist()
 		add_attack_logs(user,M,"Fed a pill containing [contained]")
 		if(reagents && reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		qdel(src)
-		return 1
-	return 0
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/reagent_containers/pill/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) return

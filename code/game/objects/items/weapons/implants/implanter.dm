@@ -107,13 +107,14 @@
 		icon_state = "cimplanter0"
 	return
 
-/obj/item/implanter/compressed/attack(mob/M as mob, mob/user as mob)
+/obj/item/implanter/compressed/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	var/obj/item/implant/compressed/c = imp
-	if (!c)	return
+	if (!c)
+		return
 	if (c.scanned == null)
 		to_chat(user, "Please scan an object with the implanter first.")
 		return
-	..()
+	return ..()
 
 /obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
 	if(!proximity)

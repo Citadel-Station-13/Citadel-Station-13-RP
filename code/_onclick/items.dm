@@ -79,14 +79,14 @@
  * usually triggers attack_obj or attack_mob
  *
  * @params
- * * A - atom being attacked
+ * * I - item being used to use/attack us in melee
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
  *
  * @return clickchain flags to append
  */
-/atom/movable/attackby(atom/A, mob/user, clickchain_flags, list/params)
+/atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 
 /**
  * called when we're used to attack a mob

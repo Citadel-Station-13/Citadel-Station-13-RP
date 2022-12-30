@@ -78,14 +78,11 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/organic/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/organic/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
 		return	..()
 
-	if(standard_feed_mob(user, M))
-		return
-
-	return 0
+	standard_feed_mob
 
 /obj/item/reagent_containers/organic/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())

@@ -114,7 +114,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "kibble"
 
-/obj/item/trash/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/trash/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.trashcan == 1)
@@ -132,7 +132,7 @@
 			playsound(R,'sound/items/eatfood.ogg', rand(10,50), 1)
 			R.visible_message("<span class='warning'>[user] feeds [R] with [src]!</span>")
 			return
-	..()
+	return ..()
 
 /obj/item/trash/fancyplate
 	name = "dirty fancy plate"
