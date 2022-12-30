@@ -1,7 +1,5 @@
-#define SHIP_MOVE_RESOLUTION 0.00001
-#define MOVING(speed) abs(speed) >= min_speed
-#define SANITIZE_SPEED(speed) SIGN(speed) * clamp(abs(speed), 0, max_speed)
-#define CHANGE_SPEED_BY(speed_var, v_diff) \
+// renamed because why the hell did you name it CHANGE_SPEED_BY
+#define PENALIZED_SPEED_CHANGE(speed_var, v_diff) \
 	v_diff = SANITIZE_SPEED(v_diff);\
 	if(!MOVING(speed_var + v_diff)) \
 		{speed_var = 0};\
@@ -9,6 +7,7 @@
 		{speed_var = SANITIZE_SPEED((speed_var + v_diff)/(1 + speed_var*v_diff/(max_speed ** 2)))}
 // Uses Lorentzian dynamics to avoid going too fast.
 
+// todo: /obj/overmap/entity
 /obj/effect/overmap/visitable/ship
 	name = "spacecraft"
 	desc = "This marker represents a spaceship. Scan it for more information."
@@ -16,23 +15,29 @@
 	dir = NORTH
 	icon_state = "ship"
 	appearance_flags = TILE_BOUND|KEEP_TOGETHER|LONG_GLIDE
+	glide_size = 8
 	var/moving_state = "ship_moving"
+
+	//! identity
+	/// id
+	var/id
+	/// next id
+	var/static/id_next = 0
+
 
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
 	var/vessel_mass = 10000
 	/// Arbitrary number, affects how likely are we to evade meteors.
 	var/vessel_size = SHIP_SIZE_LARGE
-	/// "Speed of light" for the ship, in turfs/decisecond.
-	var/max_speed = 1/(1 SECOND)
-	/// Below this, we round speed to 0 to avoid math errors.
-	var/min_speed = 1/(2 MINUTES)
 
 	/// Pixel coordinates in the world.
 	var/position_x
 	/// Pixel coordinates in the world.
 	var/position_y
-	/// Speed in x,y direction.
-	var/list/speed = list(0,0)
+	/// velocity x in overmap units per second
+	var/vel_x
+	/// velocity y in overmap units per second
+	var/vel_y
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0
 	/// How often ship can do burns.
@@ -52,6 +57,11 @@
 	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
 
+/obj/effect/overmap/visitable/ship/New()
+	// assign id immediately
+	id = "[++id_next]"
+	return ..()
+
 /obj/effect/overmap/visitable/ship/Initialize(mapload)
 	. = ..()
 	min_speed = round(min_speed, SHIP_MOVE_RESOLUTION)
@@ -59,6 +69,7 @@
 	SSshuttle.ships += src
 	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_x + 1
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
+
 
 /obj/effect/overmap/visitable/ship/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
@@ -69,9 +80,6 @@
 /obj/effect/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
 	accelerate(direction, accel_limit)
 	operator_skill = user.get_skill_value(/datum/skill/pilot)
-
-/obj/effect/overmap/visitable/ship/proc/is_still()
-	return !MOVING(speed[1]) && !MOVING(speed[2])
 
 /obj/effect/overmap/visitable/ship/get_scan_data(mob/user)
 	. = ..()
@@ -103,18 +111,18 @@
 		. += ship.get_vessel_mass()
 
 /obj/effect/overmap/visitable/ship/proc/get_speed()
-	return round(sqrt(speed[1] ** 2 + speed[2] ** 2), SHIP_MOVE_RESOLUTION)
+	return QUANTIZE_OVERMAP_DISTANCE(sqrt(vel_x ** 2 + vel_y ** 2))
 
 // Get heading in BYOND dir bits
 /obj/effect/overmap/visitable/ship/proc/get_heading()
-	var/res = 0
-	if(MOVING(speed[1]))
-		if(speed[1] > 0)
+	var/res = NONE
+	if(vel_x)
+		if(vel_x > 0)
 			res |= EAST
 		else
 			res |= WEST
-	if(MOVING(speed[2]))
-		if(speed[2] > 0)
+	if(vel_y)
+		if(vel_y > 0)
 			res |= NORTH
 		else
 			res |= SOUTH
@@ -122,12 +130,12 @@
 
 // Get heading in degrees (like a compass heading)
 /obj/effect/overmap/visitable/ship/proc/get_heading_degrees()
-	return (arctan(speed[2], speed[1]) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
+	return (arctan(vel_y, vel_x) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
 
 /obj/effect/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
 	var/old_still = is_still()
-	CHANGE_SPEED_BY(speed[1], n_x)
-	CHANGE_SPEED_BY(speed[2], n_y)
+	PENALIZED_SPEED_CHANGE(vel_x, n_x)
+	PENALIZED_SPEED_CHANGE(vel_y, n_y)
 	update_icon()
 	var/still = is_still()
 	if(still == old_still)
@@ -159,17 +167,22 @@
 	return round(num_burns/burns_per_grid)
 
 /obj/effect/overmap/visitable/ship/proc/decelerate()
-	if(((speed[1]) || (speed[2])) && can_burn())
-		if (speed[1])
-			adjust_speed(-SIGN(speed[1]) * min(get_burn_acceleration(),abs(speed[1])), 0)
-		if (speed[2])
-			adjust_speed(0, -SIGN(speed[2]) * min(get_burn_acceleration(),abs(speed[2])))
+	if(is_moving() && can_burn())
+		var/deceleration = get_burn_acceleration()
+		//? shim: convert to new overmaps units from old
+		//? old was, for some stupid reason, "turfs per decosecond".
+		deceleration = deceleration * OVERMAP_DISTANCE_TILE
+		adjust_speed(-SIGN(vel_x) * min(deceleration,abs(vel_x)), -SIGN(vel_y) * min(deceleration,abs(vel_y)))
 		last_burn = world.time
 
 /obj/effect/overmap/visitable/ship/proc/accelerate(direction, accel_limit)
 	if(can_burn())
 		last_burn = world.time
 		var/acceleration = min(get_burn_acceleration(), accel_limit)
+		//? shim: convert to new overmaps units from old
+		//? old was, for some stupid reason, "turfs per decosecond".
+		acceleration = acceleration * OVERMAP_DISTANCE_TILE
+
 		if(direction & EAST)
 			adjust_speed(acceleration, 0)
 		if(direction & WEST)
@@ -180,8 +193,8 @@
 			adjust_speed(0, -acceleration)
 
 /obj/effect/overmap/visitable/ship/process(delta_time)
-	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * delta_time * 10)
-	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * delta_time * 10)
+	var/new_position_x = position_x + (OVERMAP_DIST_TO_PIXEL(vel_x) * delta_time)
+	var/new_position_y = position_y + (OVERMAP_DIST_TO_PIXEL(vel_y) * delta_time)
 
 	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
 	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
@@ -202,7 +215,9 @@
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
 			return
-	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = delta_time * 10, flags = ANIMATION_END_NOW)
+	pixel_x -= WORLD_ICON_SIZE
+	pixel_y -= WORLD_ICON_SIZE
+	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
 /obj/effect/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
@@ -248,18 +263,18 @@
 // Deciseconds to next step
 /obj/effect/overmap/visitable/ship/proc/ETA()
 	. = INFINITY
-	if(MOVING(speed[1]))
+	if(vel_x)
 		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
-		var/dist_to_go = (speed[1] > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (dist_to_go / abs(speed[1])) * (1/WORLD_ICON_SIZE))
-	if(MOVING(speed[2]))
+		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
+		. = min(., OVERMAP_DIST_TO_PIXEL(abs(vel_x)) / dist_to_go * 10)
+	if(vel_y)
 		var/offset = MODULUS(position_y, WORLD_ICON_SIZE)
-		var/dist_to_go = (speed[2] > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (dist_to_go / abs(speed[2])) * (1/WORLD_ICON_SIZE))
+		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
+		. = min(., OVERMAP_DIST_TO_PIXEL(abs(vel_y)) / dist_to_go * 10)
 	. = max(., 0)
 
 /obj/effect/overmap/visitable/ship/proc/halt()
-	adjust_speed(-speed[1], -speed[2])
+	adjust_speed(-vel_x, -vel_y)
 	halted = 1
 
 /obj/effect/overmap/visitable/ship/proc/unhalt()
@@ -286,6 +301,5 @@
 	var/y_to_use = T?.y || "UNK"
 	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed() * 1000], HDG:[get_heading_degrees()]\]"
 
-#undef MOVING
-#undef SANITIZE_SPEED
-#undef CHANGE_SPEED_BY
+/obj/effect/overmap/visitable/ship/set_glide_size(new_glide_size, recursive)
+	return	// *no*.
