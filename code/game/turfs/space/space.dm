@@ -5,7 +5,6 @@
 	plane = SPACE_PLANE
 	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
-	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	permit_ao = FALSE
 
