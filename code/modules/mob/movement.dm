@@ -112,14 +112,14 @@
   */
 
 /client/Move(n, direct)
-	// no tile, or new dir, or mob is transforming
-	if(!n || !direct || mob.transforming) // i'm moving something ahead of that check
-		return FALSE
 	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
 		next_move_dir_add = 0
 		next_move_dir_sub = 0
+	// no tile, or new dir, or mob is transforming
+	if(!n || !direct || mob.transforming) // i'm moving something ahead of that check
+		return FALSE
 	// commented out - not needed without momentum preservation
 	// var/old_delay = mob.move_delay
 	// prevent more than one move per tick if we get interrupted from normal movement
