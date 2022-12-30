@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/mob/living/carbon/human/U = user
 	var/mob/living/carbon/human/T = M
 
-	if(istype(T.species,/datum/species/shapeshifter/promethean) && target_zone == BP_TORSO)
+	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")

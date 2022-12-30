@@ -51,15 +51,13 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
 	default_material = "durasteel"
 
-/obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
+/obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(hits > 0)
 		return
 	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
-		var/obj/item/W = I
-		W.attack(M, user)
-		W.afterattack(M, user)
+		I.melee_attack_chain(M, user, CLICKCHAIN_REDIRECTED, params)
 	..()
 
 /obj/item/material/knife/machete/hatchet/unathiknife/afterattack(mob/M as mob, mob/user as mob)

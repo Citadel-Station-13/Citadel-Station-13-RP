@@ -250,16 +250,19 @@
 		return
 
 /obj/item/gun/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/target/A = M
+	if(!istype(A))
+		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
 		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
 			handle_suicide(user)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+			return
 		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+			return
 		else
 			Fire(A, user, pointblank=1)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+			return
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby_legacy(obj/item/A, mob/user)

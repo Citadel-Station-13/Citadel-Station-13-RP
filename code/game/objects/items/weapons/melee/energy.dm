@@ -106,12 +106,12 @@
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/melee/energy/attack(mob/M, mob/user)
+/obj/item/melee/energy/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))
 			deactivate(user)
 			visible_message("<span class='notice'>\The [src]'s blade flickers, before deactivating.</span>")
-	return ..()
 
 /obj/item/melee/energy/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool) && colorable && !active)

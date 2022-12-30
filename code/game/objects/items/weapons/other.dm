@@ -178,12 +178,11 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
 
-/obj/item/cane/whitecane/attack(mob/M as mob, mob/user as mob)
+/obj/item/cane/whitecane/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [M] on the ankle with their white cane!"))
-		return TRUE
-	else
-		. = ..()
+		return
+	return ..()
 
 //Code for Telescopic White Cane writen by Gozulio
 

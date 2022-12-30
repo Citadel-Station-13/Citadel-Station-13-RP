@@ -5,6 +5,7 @@
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
+	force = 0
 	desc = "This is rubbish."
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
@@ -96,9 +97,6 @@
 	name = "Basch's Baked Beans"
 	icon_state = "baschbeans"
 
-/obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
-	return
-
 /obj/item/trash/creamcorn
 	name = "Garm n' Bozia's Cream Corn"
 	icon_state = "creamcorn"
@@ -107,9 +105,6 @@
 	name = "used lollipop stick"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "lollipop_stick"
-
-/obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
-	return
 
 // Custom garbage or whatever
 

@@ -90,9 +90,6 @@
 		target.cut_overlay(image_overlay)
 	qdel(src)
 
-/obj/item/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
-	return
-
 /obj/item/plastique/seismic
 	name = "seismic charge"
 	desc = "Used to dig holes in specific areas without too much extra hole."
