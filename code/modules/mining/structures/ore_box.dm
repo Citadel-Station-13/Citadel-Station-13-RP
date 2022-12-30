@@ -22,7 +22,7 @@
 	. = ..()
 	. += "It holds: "
 	for(var/id in stored)
-		var/datum/ore/O = SSmaterials.resolve_ore(id)
+		var/datum/ore/O = SSmaterials.get_ore(id)
 		. += " - [stored[id]] [O.display_name]"
 
 /**
@@ -33,7 +33,7 @@
 	if(is_empty())
 		return
 	var/id = stored[1]
-	var/datum/ore/O = SSmaterials.resolve_ore(id)
+	var/datum/ore/O = SSmaterials.get_ore(id)
 	if(!O)
 		stored -= id
 		CRASH("invalid id [id]")
@@ -56,7 +56,7 @@
 	if(is_empty())
 		return
 	var/id = pick(stored)
-	var/datum/ore/O = SSmaterials.resolve_ore(id)
+	var/datum/ore/O = SSmaterials.get_ore(id)
 	if(!O)
 		stored -= id
 		CRASH("invalid id [id]")
@@ -70,7 +70,8 @@
 		extract_random(newLoc, amt - 1)
 
 /obj/structure/ore_box/proc/insert(obj/item/ore/O)
-	ASSERT(!QDEELTED(O))
+	if(QDELETED(O))
+		CRASH("ore was already deleted?")
 	++stored[O.ore_id]
 	qdel(O)
 
@@ -84,7 +85,7 @@
 	if (istype(W, /obj/item/ore))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
-		take(W)
+		insert(W)
 
 	else if (istype(W, /obj/item/storage))
 		var/obj/item/storage/S = W
@@ -98,7 +99,7 @@
 /obj/structure/ore_box/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(istype(AM, /obj/item/ore))
-		take(AM)
+		insert(AM)
 
 /obj/structure/ore_box/verb/empty_box()
 	set name = "Empty Ore Box"
