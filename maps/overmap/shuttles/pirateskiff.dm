@@ -2,9 +2,9 @@
 /datum/shuttle/autodock/overmap/pirate
 	name = "Pirate Skiff"
 	warmup_time = 3
-	shuttle_area = list(/area/shuttle/pirate/general)
-	current_location = "piratebase_hanger"
-	docking_controller_tag = "pirate_docker"
+	shuttle_area = list(/area/shuttle/pirate/deck, /area/shuttle/pirate/bridge, /area/shuttle/pirate/engine)
+	current_location = "pirate_docker"
+	docking_controller_tag = "pirate_dock"
 	fuel_consumption = 5
 	defer_initialisation = TRUE
 
@@ -13,13 +13,13 @@
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	fore_dir = WEST
-	vessel_mass = 4000
+	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Pirate Skiff"
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
-	landmark_tag = "piratebase_hanger"
+	landmark_tag = "pirate_docker"
 	base_turf = /turf/space
 	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate
@@ -34,11 +34,11 @@
 	name = "\improper Pirate Skiff"
 	icon_state = "shuttle1"
 
-/area/shuttle/pirate/general
-	name = "\improper Pirate Skiff Shuttle"
+/area/shuttle/pirate/deck
+	name = "\improper Pirate Skiff Deck"
 
-/area/shuttle/pirate/cockpit
-	name = "\improper Pirate Skiff Shuttle Cockpit"
+/area/shuttle/pirate/bridge
+	name = "\improper Pirate Skiff Bridge"
 
-/area/shuttle/pirate/cargo
-	name = "\improper Pirate Skiff Shuttle Cockpit"
+/area/shuttle/pirate/engine
+	name = "\improper Pirate Skiff Engine"

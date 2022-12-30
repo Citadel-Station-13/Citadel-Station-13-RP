@@ -101,7 +101,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
-	initial_generic_waypoints = list("piratebase_hanger")
+	initial_generic_waypoints = list("pirate_docker")
 
 /obj/effect/overmap/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
