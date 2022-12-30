@@ -199,6 +199,7 @@
 		remove_from_overmap()
 		add_to_overmap()		// adds us if we're in another overmap
 		return
+	#warn what the fuck is this
 	x = (x - overmap.cached_x_start) + 16
 	y = (y - overmap.cached_y_start) + 16
 	// above jumps us to center of tile
