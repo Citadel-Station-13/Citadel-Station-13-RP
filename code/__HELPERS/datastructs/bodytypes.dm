@@ -88,6 +88,8 @@
 GLOBAL_LIST_EMPTY(struct_bodytypes)
 
 /proc/fetch_bodytypes_struct(encoded)
+	if(istype(encoded, /datum/bodytypes))
+		return encoded
 	var/list/original
 	if(islist(encoded))
 		original = encoded
