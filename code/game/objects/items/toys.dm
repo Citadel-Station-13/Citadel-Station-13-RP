@@ -326,7 +326,7 @@
 	)
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
-	return THROW_HIT_TERMINATE
+	return COMPONENT_THROW_HIT_TERMINATE
 
 /obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
