@@ -172,7 +172,7 @@
 /obj/item/necromantic_stone/unlimited
 	unlimited = 1
 
-/obj/item/necromantic_stone/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
+/obj/item/necromantic_stone/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!istype(M))
 		return ..()
 

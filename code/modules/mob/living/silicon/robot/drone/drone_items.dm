@@ -376,7 +376,6 @@
 
 //TODO: Matter decompiler.
 /obj/item/matter_decompiler
-
 	name = "matter decompiler"
 	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
 	icon = 'icons/obj/device.dmi'
@@ -387,9 +386,6 @@
 	var/datum/matter_synth/glass = null
 	var/datum/matter_synth/wood = null
 	var/datum/matter_synth/plastic = null
-
-/obj/item/matter_decompiler/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	return
 
 /obj/item/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
 

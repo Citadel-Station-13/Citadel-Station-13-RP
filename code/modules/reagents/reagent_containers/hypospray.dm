@@ -29,11 +29,11 @@
 				reagents.add_reagent(r, filled_reagents[r])
 	update_icon()
 
-/obj/item/reagent_containers/hypospray/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 		return
-	if (!istype(M))
+	if (!ishuman(M))
 		return
 
 	var/mob/living/carbon/human/H = M
@@ -59,9 +59,7 @@
 					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
 					if(!do_after(user, 30, H))
 						return
-
 	do_injection(H, user)
-	return
 
 // This does the actual injection and transfer.
 /obj/item/reagent_containers/hypospray/proc/do_injection(mob/living/carbon/human/H, mob/living/user)

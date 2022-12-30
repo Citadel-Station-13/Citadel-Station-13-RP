@@ -11,17 +11,18 @@
 /obj/item/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/forensics/swab/attack(var/mob/living/M, var/mob/user)
-
+/obj/item/forensics/swab/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(!ishuman(M))
 		return ..()
-
 	if(is_used())
 		return
 
 	var/mob/living/carbon/human/H = M
 	var/sample_type
 
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user != H && H.a_intent != "help" && !H.lying)
 		user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
 		return
@@ -66,8 +67,6 @@
 
 	if(sample_type)
 		set_used(sample_type, H)
-		return
-	return 1
 
 /obj/item/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
 

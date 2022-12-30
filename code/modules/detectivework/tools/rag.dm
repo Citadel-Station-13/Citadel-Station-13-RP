@@ -112,13 +112,13 @@
 				if(T)
 					T.clean(src, user)
 
-/obj/item/reagent_containers/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
-	if(isliving(target)) //Leaving this as isliving.
-		var/mob/living/M = target
+/obj/item/reagent_containers/glass/rag/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(isliving(M)) //Leaving this as isliving.
+		var/mob/living/L = M
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
 			user.visible_message(SPAN_DANGER("\The [user] hits [target] with [src]!"))
 			user.do_attack_animation(src)
-			M.IgniteMob()
+			L.IgniteMob()
 		else if(user.zone_sel.selecting == O_MOUTH) //Check player target location, provided the rag is not on fire. Then check if mouth is exposed.
 			if(ishuman(target)) //Added this since player species process reagents in majority of cases.
 				var/mob/living/carbon/human/H = target
@@ -143,7 +143,6 @@
 			wipe_down(target, user)
 	else
 		wipe_down(target, user)
-	return
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
 	if(!proximity)

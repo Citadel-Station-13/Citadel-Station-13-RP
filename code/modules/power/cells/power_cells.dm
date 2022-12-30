@@ -102,7 +102,9 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/fbp_backup_cell/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(!used && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.isSynthetic())
@@ -114,8 +116,8 @@
 			to_chat(user,"<span class='warning'>You lick the cell, and your tongue tingles slightly.</span>")
 		else
 			to_chat(user,"<span class='warning'>This cell is meant for use on humanoid synthetics only.</span>")
-
-	. = ..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/fbp_backup_cell/proc/use(mob/living/user, mob/living/target)
 	if(used)
