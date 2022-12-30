@@ -6,22 +6,22 @@
 #define MOVABLE_IS_BELOW_ZTURF(M) (isturf(loc) && ((M:mz_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:above?:mz_flags & MZ_MIMIC_BELOW) || (loc:above?:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:above?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
 #define MOVABLE_IS_ON_ZTURF(M) (isturf(loc) && ((M:mz_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:mz_flags & MZ_MIMIC_BELOW) || (loc:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
 
-//! Turf Multi-Z flags.
-#define MZ_MIMIC_BELOW     (1<<0)  /// If this turf should mimic the turf on the Z below.
-#define MZ_MIMIC_OVERWRITE (1<<1)  /// If this turf is Z-mimicing, overwrite the turf's appearance instead of using a movable. This is faster, but means the turf cannot have its own appearance (say, edges or a translucent sprite).
-#define MZ_MIMIC_NO_AO     (1<<2)  /// If the turf shouldn't apply regular turf AO and only do Z-mimic AO.
-#define MZ_MIMIC_BASETURF  (1<<3)  /// Mimic baseturf instead of the below atom. Sometimes useful for elevators.
+//# Turf Multi-Z flags.
+#define MZ_MIMIC_BELOW     (1<<0)  //! If this turf should mimic the turf on the Z below.
+#define MZ_MIMIC_OVERWRITE (1<<1)  //! If this turf is Z-mimicing, overwrite the turf's appearance instead of using a movable. This is faster, but means the turf cannot have its own appearance (say, edges or a translucent sprite).
+#define MZ_MIMIC_NO_AO     (1<<2)  //! If the turf shouldn't apply regular turf AO and only do Z-mimic AO.
+#define MZ_MIMIC_BASETURF  (1<<3)  //! Mimic baseturf instead of the below atom. Sometimes useful for elevators.
 
-#define MZ_ALLOW_LIGHTING  (1<<4)  /// If this turf should permit passage of lighting.
-#define MZ_NO_OCCLUDE      (1<<5)  /// Don't occlude below atoms if we're a non-mimic z-turf.
+#define MZ_ALLOW_LIGHTING  (1<<4)  //! If this turf should permit passage of lighting.
+#define MZ_NO_OCCLUDE      (1<<5)  //! Don't occlude below atoms if we're a non-mimic z-turf.
 
-#define MZ_OPEN_UP         (1<<6)  /// Allow atom movement through top.
-#define MZ_OPEN_DOWN       (1<<7)  /// Allow atom movement through bottom.
+#define MZ_OPEN_UP         (1<<6)  //! Allow atom movement through top.
+#define MZ_OPEN_DOWN       (1<<7)  //! Allow atom movement through bottom.
 
-#define MZ_ATMOS_UP        (1<<8)  /// Allow atmos passage through top.
-#define MZ_ATMOS_DOWN      (1<<9)  /// Allow atmos passage through bottom.
+#define MZ_ATMOS_UP        (1<<8)  //! Allow atmos passage through top.
+#define MZ_ATMOS_DOWN      (1<<9)  //! Allow atmos passage through bottom.
 
-//! Convenience flags.
+//# Convenience flags.
 #define MZ_MIMIC_DEFAULTS (MZ_MIMIC_BELOW|MZ_ALLOW_LIGHTING)
 #define MZ_ATMOS_BOTH (MZ_ATMOS_UP|MZ_ATMOS_DOWN)
 #define MZ_OPEN_BOTH  (MZ_OPEN_UP|MZ_OPEN_DOWN)
@@ -61,7 +61,7 @@ DEFINE_BITFIELD(mz_flags, list(
 ))
 
 
-//! Movable mz_flags.
-#define ZMM_IGNORE         (1<<0) /// Do not copy this movable. Atoms with INVISIBILITY_ABSTRACT implicitly do not copy.
-#define ZMM_MANGLE_PLANES  (1<<1) /// Check this movable's overlays/underlays for explicit plane use and mangle for compatibility with Z-Mimic. If you're using emissive overlays, you probably should be using this flag. Expensive, only use if necessary.
-#define ZMM_LOOKAHEAD      (1<<2) /// Look one turf ahead and one turf back when considering z-turfs that might be seeing this atom. Cheap, but not free.
+//# Movable mz_flags.
+#define ZMM_IGNORE         (1<<0) //! Do not copy this movable. Atoms with INVISIBILITY_ABSTRACT implicitly do not copy.
+#define ZMM_MANGLE_PLANES  (1<<1) //! Check this movable's overlays/underlays for explicit plane use and mangle for compatibility with Z-Mimic. If you're using emissive overlays, you probably should be using this flag. Expensive, only use if necessary.
+#define ZMM_LOOKAHEAD      (1<<2) //! Look one turf ahead and one turf back when considering z-turfs that might be seeing this atom. Cheap, but not free.
