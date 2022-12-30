@@ -117,11 +117,11 @@
 	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
 
-/datum/material/stone/generate_recipes()
+/datum/material/sandstone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
 
-/datum/material/stone/marble/generate_recipes()
+/datum/material/sandstone/marble/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("light marble floor tile", /obj/item/stack/tile/wmarble, 1, 4, 20)
 	recipes += new/datum/stack_recipe("dark marble floor tile", /obj/item/stack/tile/bmarble, 1, 4, 20)

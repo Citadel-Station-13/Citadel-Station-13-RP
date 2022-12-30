@@ -107,7 +107,7 @@
 	return round(totalPhoron/100)
 */
 
-/datum/material/stone
+/datum/material/sandstone
 	id = "sandstone"
 	name = "sandstone"
 	stack_type = /obj/item/stack/material/sandstone
@@ -126,7 +126,7 @@
 	sheet_plural_name = "bricks"
 	table_icon_base = "stone"
 
-/datum/material/stone/marble
+/datum/material/sandstone/marble
 	id = "marble"
 	name = "marble"
 	icon_colour = "#AAAAAA"
@@ -1039,7 +1039,7 @@
 	protectiveness = 10 // 33%
 	icon_colour = "#d6c100"
 
-/datum/material/stone/silencium
+/datum/material/sandstone/silencium
 	id = "silencium"
 	name = "silencium"
 	icon_colour = "#AAAAAA"

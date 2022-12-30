@@ -6,9 +6,11 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "generic"
+	icon = 'icons/turf/walls/solid.dmi'
+	icon_state = "wall-0"
 	base_icon_state = "wall"
+	color = "#666666"
+
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
