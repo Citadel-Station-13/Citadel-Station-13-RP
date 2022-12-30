@@ -1,11 +1,15 @@
 /obj/machinery/ore_processor
 	name = "ore processor"
-	#warn impl desc icon etc
+	icon = 'icons/modules/mining/machinery/smelter.dmi'
+	icon_state = "processor"
+	#warn icon in dmi
+	#warn impl desc etc
 	density = TRUE
 	anchored = TRUE
 	#warn handle direction with state?
 	resistance_flags = INDESTRUCTIBLE // dropping all that ore will probably crash the server
 	#warn machinery processing brackets - tone it the fuck down if we're not active too
+	#warn buildable, circuit, anchoring
 
 	/// are we processing?
 	var/smelting = FALSE
@@ -15,7 +19,7 @@
 	var/list/ores_processing = list()
 	/// stored mining points
 	var/points = 0
-	/// attempt to smelt this many *ores* per tick
+	/// attempt to smelt this many *ores* per tick - rounds *UP*
 	var/smelt_rate = 4
 
 #warn impl
@@ -56,6 +60,7 @@
 			if(ORE_PROCESS_PULVERIZE)
 				result_id = ore.pulverizes_to
 				result_amount = (ore.pulverize_ratio || ore.product_ratio) * min(smelt_rate, stored[id])
+			#warn above result_amount needs to round UP
 		#warn impl
 	// smelt alloy
 	// alloying is a little hugboxy

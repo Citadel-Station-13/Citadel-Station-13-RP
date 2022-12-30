@@ -42,21 +42,29 @@
 
 /**
  * digs up and drops on the ground a ratio of ores. efficiency is how much drops rather than is destroyed.
+ *
+ * @return amount
  */
 /turf/proc/drop_percent_underground_resources(ratio = 1, efficiency = 1)
+	. = 0
 	var/list/taking = take_percent_underground_resources(ratio, efficiency)
 	for(var/ore in taking)
 		var/amount = taking[ore]
 		SSmaterials.instantiate_ore(ore, src, amount)
+		. += amount
 
 /**
  * digs up and drops on the ground a ratio of ores. efficiency is how much drops rather than is destroyed.
+ *
+ * @return amount
  */
 /turf/proc/drop_exact_underground_resources(total = 10, efficiency = 1)
+	. = 0
 	var/list/taking = take_exact_underground_resources(total, efficiency)
 	for(var/ore in taking)
 		var/amount = taking[ore]
 		SSmaterials.instantiate_ore(ore, src, amount)
+		. += amount
 
 /**
  * returns a list of underground resources to take
