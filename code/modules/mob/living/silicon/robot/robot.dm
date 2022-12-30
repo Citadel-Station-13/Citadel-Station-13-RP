@@ -882,6 +882,11 @@
 	return 0
 
 /mob/living/silicon/robot/updateicon()
+	if (wideborg)
+		mz_flags |= ZMM_LOOKAHEAD
+	else
+		mz_flags &= ~ZMM_LOOKAHEAD
+
 	cut_overlays()
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.

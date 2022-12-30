@@ -42,13 +42,11 @@
 	if (!bound_overlay || !isturf(loc))
 		return
 
-	var/turf/T = loc
-
-	if (TURF_IS_MIMICKING(T.above))
+	if (MOVABLE_IS_BELOW_ZTURF(src))
 		SSzmimic.queued_overlays += bound_overlay
 		bound_overlay.queued += 1
-	else
-		qdel(bound_overlay)
+	else if (bound_overlay && !bound_overlay.destruction_timer)
+		bound_overlay.destruction_timer = addtimer(CALLBACK(bound_overlay, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
 
 // Grabs a list of every openspace object that's directly or indirectly mimicking this object. Returns an empty list if none found.
 /atom/movable/proc/get_above_oo()
@@ -182,7 +180,7 @@
 
 /atom/movable/openspace/mimic/forceMove(turf/dest)
 	. = ..()
-	if (TURF_IS_MIMICKING(dest))
+	if (MOVABLE_IS_BELOW_ZTURF(associated_atom))
 		if (destruction_timer)
 			deltimer(destruction_timer)
 			destruction_timer = null

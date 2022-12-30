@@ -1,6 +1,10 @@
 #define TURF_IS_MIMICKING(T) (isturf(T) && (T:mz_flags & MZ_MIMIC_BELOW))
-#define CHECK_OO_EXISTENCE(OO) if (OO && !TURF_IS_MIMICKING(OO.loc)) { qdel(OO); }
+#define CHECK_OO_EXISTENCE(OO) if (OO && !MOVABLE_IS_ON_ZTURF(OO) && !OO.destruction_timer) { OO.destruction_timer = addtimer(CALLBACK(OO, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE); }
 #define UPDATE_OO_IF_PRESENT CHECK_OO_EXISTENCE(bound_overlay); if (bound_overlay) { update_above(); }
+
+// I do not apologize.
+#define MOVABLE_IS_BELOW_ZTURF(M) (isturf(loc) && ((M:mz_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:above?:mz_flags & MZ_MIMIC_BELOW) || (loc:above?:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:above?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
+#define MOVABLE_IS_ON_ZTURF(M) (isturf(loc) && ((M:mz_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:mz_flags & MZ_MIMIC_BELOW) || (loc:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
 
 //! Turf Multi-Z flags.
 #define MZ_MIMIC_BELOW     (1<<0)  /// If this turf should mimic the turf on the Z below.
@@ -58,5 +62,6 @@ DEFINE_BITFIELD(mz_flags, list(
 
 
 //! Movable mz_flags.
-#define ZMM_IGNORE         (1<<0) /// Do not copy this movable.
+#define ZMM_IGNORE         (1<<0) /// Do not copy this movable. Atoms with INVISIBILITY_ABSTRACT implicitly do not copy.
 #define ZMM_MANGLE_PLANES  (1<<1) /// Check this movable's overlays/underlays for explicit plane use and mangle for compatibility with Z-Mimic. If you're using emissive overlays, you probably should be using this flag. Expensive, only use if necessary.
+#define ZMM_LOOKAHEAD      (1<<2) /// Look one turf ahead and one turf back when considering z-turfs that might be seeing this atom. Cheap, but not free.
