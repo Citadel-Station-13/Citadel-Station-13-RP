@@ -94,7 +94,9 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/attack(mob/M as mob, mob/user as mob)
+/obj/item/pen/crayon/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(M == user)
 		to_chat(user, "You take a bite of the crayon and swallow it.")
 		user.nutrition += 1
@@ -104,8 +106,8 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your crayon!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/pen/crayon/marker/black
 	icon_state = "markerblack"
@@ -180,7 +182,9 @@
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return
 
-/obj/item/pen/crayon/marker/attack(mob/M as mob, mob/user as mob)
+/obj/item/pen/crayon/marker/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(M == user)
 		to_chat(user, "You take a bite of the marker and swallow it.")
 		user.nutrition += 1
@@ -190,8 +194,8 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate the marker!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 //Ritual Chalk
 /obj/item/pen/crayon/chalk/white
@@ -241,7 +245,9 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/chalk/attack(mob/M as mob, mob/user as mob)
+/obj/item/pen/crayon/chalk/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(M == user)
 		to_chat(user, "You take a bite of the chalk and swallow it.")
 		user.nutrition += 1
@@ -251,5 +257,5 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your chalk!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()

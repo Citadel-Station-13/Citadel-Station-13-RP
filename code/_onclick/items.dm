@@ -104,6 +104,54 @@
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
 	#warn impl - oh and check user intent oh and make message even if it's harmless
 
+//I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
+#warn kill this
+/obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
+	if(item_flags & ITEM_NOBLUDGEON)
+		return 0
+	if(!force)
+		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
+		user.do_attack_animation(M)
+		return 0
+	if(M == user && user.a_intent != INTENT_HARM)
+		return 0
+
+	/////////////////////////
+	user.lastattacked = M
+	M.lastattacker = user
+
+	if(!no_attack_log)
+		add_attack_logs(user,M,"attacked with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])")
+	/////////////////////////
+
+	user.setClickCooldown(user.get_attack_speed(src))
+	user.do_attack_animation(M)
+
+	var/hit_zone = M.resolve_item_attack(src, user, target_zone)
+	if(hit_zone)
+		apply_hit_effect(M, user, hit_zone, attack_modifier)
+
+	return 1
+
+#warn kill this
+//Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
+/obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
+	user.break_cloak()
+	if(hitsound)
+		playsound(loc, hitsound, 50, 1, -1)
+
+	var/power = force
+	for(var/datum/modifier/M in user.modifiers)
+		if(!isnull(M.outgoing_melee_damage_percent))
+			power *= M.outgoing_melee_damage_percent
+
+	if(MUTATION_HULK in user.mutations)
+		power *= 2
+
+	power *= attack_modifier
+
+	return target.hit_with_weapon(src, user, power, hit_zone)
+
 /**
  * called at base of attack mob for a standard melee hit
  *

@@ -296,12 +296,11 @@
 	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
 	remove_item(drop_location())
 
-/obj/item/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/gripper/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(wrapped) 	//The force of the wrapped obj gets set to zero during the attack() and afterattack().
 		force_holder = wrapped.force
 		wrapped.force = 0
-		wrapped.attack(M,user)
-		M.attackby(wrapped, user)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
+		M.attackby(wrapped, user, params, clickchain_flags)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
 		return 1
 	return 0
 

@@ -36,8 +36,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			return
 	..()
 
-/obj/item/clothing/mask/facehugger/attack(mob/living/M as mob, mob/user as mob)
-	..()
+/obj/item/clothing/mask/facehugger/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	user.drop_item_to_ground(src, INV_OP_FORCE)
 	Attach(M)
 
