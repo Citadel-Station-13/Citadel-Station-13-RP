@@ -1,10 +1,10 @@
 // renamed because why the hell did you name it CHANGE_SPEED_BY
 #define PENALIZED_SPEED_CHANGE(speed_var, v_diff) \
-	v_diff = SANITIZE_SPEED(v_diff);\
+	v_diff = QUANTIZE_OVERMAP_DISTANCE(v_diff);\
 	if(!MOVING(speed_var + v_diff)) \
 		{speed_var = 0};\
 	else \
-		{speed_var = SANITIZE_SPEED((speed_var + v_diff)/(1 + speed_var*v_diff/(max_speed ** 2)))}
+		{speed_var = QUANTIZE_OVERMAP_DISTANCE((speed_var + v_diff)/(1 + speed_var*v_diff/(max_speed ** 2)))}
 // Uses Lorentzian dynamics to avoid going too fast.
 
 // todo: /obj/overmap/entity
@@ -38,6 +38,8 @@
 	var/vel_x
 	/// velocity y in overmap units per second
 	var/vel_y
+	/// max speed in overmap units per second
+	var/max_speed = OVERMAP_DISTANCE_TILE
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0
 	/// How often ship can do burns.
@@ -64,12 +66,9 @@
 
 /obj/effect/overmap/visitable/ship/Initialize(mapload)
 	. = ..()
-	min_speed = round(min_speed, SHIP_MOVE_RESOLUTION)
-	max_speed = round(max_speed, SHIP_MOVE_RESOLUTION)
 	SSshuttle.ships += src
 	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_x + 1
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
-
 
 /obj/effect/overmap/visitable/ship/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
@@ -84,7 +83,7 @@
 /obj/effect/overmap/visitable/ship/get_scan_data(mob/user)
 	. = ..()
 
-	if(!is_still())
+	if(!!is_moving())
 		. += {"\n\[i\]Heading\[/i\]: [get_heading_degrees()]\n\[i\]Velocity\[/i\]: [get_speed() * 1000]"}
 	else
 		. += {"\n\[i\]Vessel was stationary at time of scan.\[/i\]\n"}
@@ -133,11 +132,11 @@
 	return (arctan(vel_y, vel_x) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
 
 /obj/effect/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
-	var/old_still = is_still()
+	var/old_still = !is_moving()
 	PENALIZED_SPEED_CHANGE(vel_x, n_x)
 	PENALIZED_SPEED_CHANGE(vel_y, n_y)
 	update_icon()
-	var/still = is_still()
+	var/still = !is_moving()
 	if(still == old_still)
 		return
 	else if(still)
@@ -156,7 +155,7 @@
 /obj/effect/overmap/visitable/ship/proc/get_brake_path()
 	if(!get_acceleration())
 		return INFINITY
-	if(is_still())
+	if(!is_moving())
 		return 0
 	if(!burn_delay)
 		return 0
@@ -233,7 +232,7 @@
 
 
 /obj/effect/overmap/visitable/ship/update_icon()
-	if(!is_still())
+	if(!!is_moving())
 		icon_state = moving_state
 		transform = matrix().Turn(get_heading_degrees())
 	else
