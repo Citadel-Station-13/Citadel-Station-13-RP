@@ -33,12 +33,14 @@
 	// physics
 	/// current physics mode
 	var/physics_mode = ENTITY_PHYSICS_SIMULATED
+	#warn vel_x, vel_y
 	/// vel x in overmaps coordinates per second
 	var/velocity_x
 	/// vel y in overmaps coordinates per second
 	var/velocity_y
 	/// vel angle in degrees clockwise per second
 	var/angular_velocity
+	#warn pos_x, pos_y
 	/// current x - this is not in pixels, this is in overmaps distance
 	var/position_x
 	/// current y - this is not in pixels, this is in overmaps distance
