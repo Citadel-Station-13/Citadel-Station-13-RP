@@ -21,12 +21,12 @@
 	var/broken_chance = 0
 
 	///how much light it gives off
-	var/brightness_range = 5
-	var/brightness_power = 0.75
+	var/brightness_range = 8
+	var/brightness_power = 0.8
 	var/brightness_color = LIGHT_COLOR_HALOGEN
 
-	var/nightshift_range = 2
-	var/nightshift_power = 0.3
+	var/nightshift_range = 6
+	var/nightshift_power = 0.4
 	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
 
 /obj/item/light/tube
@@ -36,11 +36,11 @@
 	base_icon_state = "ltube"
 	item_state = "c_tube"
 	matter = list(MAT_GLASS = 100)
-	brightness_range = 6
+	brightness_range = 8
 	brightness_power = 0.8
 	brightness_color = LIGHT_COLOR_HALOGEN
 
-	nightshift_range = 4
+	nightshift_range = 6
 	nightshift_power = 0.4
 
 /obj/item/light/tube/large
@@ -108,8 +108,8 @@
 
 	brightness_range = 4
 
-	nightshift_range = 3
-	nightshift_power = 0.25
+	nightshift_range = 4
+	nightshift_power = 0.4
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
