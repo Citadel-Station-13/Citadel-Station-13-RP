@@ -133,6 +133,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return prefs.process_link(usr,href_list)
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
+		if("stat")
+			return _statpanel_act(href_list["act"], href_list)
 
 	switch(href_list["action"])
 		if("openLink")

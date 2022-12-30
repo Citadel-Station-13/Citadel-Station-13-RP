@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html>
+
+<!--
+	STATPANEL - In House Citadel Edition (tm)
+
+	Known limitations:
+	- does not handle mouse drag events
+	- does not handle holding down keys by BYOND refspec: we instead just pass in "button"
+	- does not handle mouse pixel location on listed turf (atom) clicks
+	- in fact, most BYOND mouse handling stuff isn't passed in.
+	- does not allow right clicking atoms for verbs.
+ -->
+
 <head>
 <title>Stat Browser</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -227,9 +239,6 @@
 		image-rendering: pixelated;
 	}
 
-	.interview_panel_controls, .interview_panel_stats {
-		margin-bottom: 10px;
-	}
 </style>
 </head>
 <body>
@@ -490,6 +499,10 @@ function byond_dispose_token(token){
 //////////////// TRANSMIT TO BYOND //////////////////////
 
 /// command queue
+// todo: this will actually have a use if we make statpanel actually
+// able to hold state for connection
+// as of right now this *WAS* called (before I removed it) in init_verbs
+// but why the hell are you even able to click verbs before they're init'd?
 var command_queue = [];
 
 /// direct send, do not use
@@ -509,7 +522,7 @@ function transmit_verb(cmd) {
 }
 
 /// immediate sends
-function transmit_href(action, data = null) {
+function transmit_href(action, data) {
 
 }
 
@@ -662,23 +675,38 @@ function draw_tab(tab) {
 	}
 	// draw data
 	if(data.length != 0) {
+		var stat_table = document.createElement("table");
 		for(var i = 0; i < data.length; ++i) {
+			var tr = document.createElement("tr");
 			var entry = data[i];
 			// shitcode central: decode data
 			var dtype = typeof entry;
+			var tdk = document.createElement("td");
+			var tdv = document.createElement("td");
 			if(dtype == "string") {
 				// just text; render normally
-
-				return;
+				tdk[PROP_TEXT_CONTENT] = entry;
 			}
 			// it's not just string, so it's an array
-			if(entry.length == 2) {
+			else if(entry.length == 2) {
 				// simple k-v entry
+				tdk[PROP_TEXT_CONTENT] = entry[0];
+				tdv[PROP_TEXT_CONTENT] = entry[1];
 			}
 			else if(entry.length == 3) {
 				// k-v with value being clickable
+				tdk[PROP_TEXT_CONTENT] = entry[0];
+				var a = document.createElement("a");
+				a[PROP_TEXT_CONTENT] = entry[1];
+				// todo: token
+				a.href = "?src=_stat_;act=click;ref=" + entry[2];
+				tdv.appendChild(a);
 			}
+			tr.appendChild(tdk);
+			tr.appendChild(tdv);
+			stat_table.appendChild(tr);
 		}
+		stat_content.appendChild(stat_table);
 	}
 }
 
@@ -751,28 +779,30 @@ function dispose_atom(ref){
 function atom_invoke(event, ref){
 	// transmit the click with params encoded as byond params so Click() needs to do
 	// minimal work
-
+	var params = "";
 	switch(event.button){
 		case 1:
 			// middle
+			params += "button=middle&";
 			break;
 		case 2:
 			// right
+			params += "button=right&";
 			break;
 		default:
 			// left
-
+			params += "button=left&";
 	}
 	if(e.shiftKey){
-
+		params += "shift=1&";
 	}
 	if(e.ctrlKey){
-
+		params += "ctrl=1&"
 	}
 	if(e.altKey){
-
+		params += "alt=1&"
 	}
-
+	transmit_href("click", {"ref": ref, "params": params});
 }
 
 /////////// FUNCTION FUNCTIONS (IE IS TERRIBLE) /////////
@@ -818,42 +848,6 @@ function yield_invoke(f) {
 
 /////////////////////////////////////////////////////////
 
-
-// Any BYOND commands that could result in the client's focus changing go through this
-// to ensure that when we relinquish our focus, we don't do it after the result of
-// a command has already taken focus for itself.
-function run_after_focus(callback) {
-	setTimeout(callback, 0);
-}
-
-function connected_to_server() {
-	if (connected) {
-		return;
-	}
-
-	connected = true;
-
-	for (var index = 0; index < commandQueue.length; index++) {
-		// This is just setting it a lot, is this not going to cancel?
-		window.location.href = commandQueue[index];
-	}
-
-	commandQueue = [];
-}
-
-function update_split_admin_tabs(status) {
-	status = (status == true);
-
-	if (split_admin_tabs !== status) {
-		if (split_admin_tabs === true) {
-			removeStatusTab("Events");
-			removeStatusTab("Fun");
-			removeStatusTab("Game");
-		}
-		update_verbs();
-	}
-	split_admin_tabs = status;
-}
 
 function createStatusTab(name) {
 	if (name.indexOf(".") != -1) {
@@ -1095,152 +1089,6 @@ function TakeTabFromByond(tab) {
 	transmit_verb("Remove-Tabs " + tab);
 }
 
-/// citadel statvoting
-function update_voting(vote_data) {
-	vote_parts = JSON.parse(vote_data);
-	if(current_tab == "Status")
-		draw_status();
-}
-
-function update_mc(global_mc_data, coords_entry) {
-	mc_tab_parts = JSON.parse(global_mc_data);
-	mc_tab_parts.splice(0,0,["Location:",coords_entry]);
-	if(!verb_tabs.includes("MC"))
-		verb_tabs.push("MC");
-	createStatusTab("MC");
-	if(current_tab == "MC")
-		draw_mc();
-}
-
-function remove_mc() {
-	removeStatusTab("MC");
-	if(current_tab == "MC")
-		tab_change("Status");
-}
-function remove_spells() {
-	for(var s = 0; s < spell_tabs.length; s++){
-		removeStatusTab(spell_tabs[s]);
-	}
-}
-
-function init_spells() {
-	var cat = "";
-	for(var i = 0; i < spell_tabs.length; i++) {
-		cat = spell_tabs[i];
-		if(cat.length > 0) {
-			verb_tabs.push(cat);
-			createStatusTab(cat);
-		}
-	}
-}
-
-function check_spells() {
-	for(var v = 0; v < spell_tabs.length; v++)
-		spell_cat_check(spell_tabs[v]);
-}
-function spell_cat_check(cat) {
-	var spells_in_cat = 0;
-	var spellcat = "";
-	for(var s = 0; s < spells.length; s++){
-		var spell = spells[s];
-		spellcat = spell[0];
-		if(spellcat == cat){
-			spells_in_cat++;
-		}
-	}
-	if(spells_in_cat < 1) {
-		removeStatusTab(cat);
-	}
-}
-function update_spells(t, s) {
-	spell_tabs = JSON.parse(t);
-	var do_update = false;
-	if(spell_tabs.includes(current_tab)) {
-		do_update = true;
-	}
-	init_spells();
-	if(s) {
-		spells = JSON.parse(s);
-		if(do_update) {
-			draw_spells(current_tab);
-		}
-	} else {
-		remove_spells();
-	}
-}
-
-function draw_debug() {
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var wipeverbstabs = document.createElement("div");
-	var link = document.createElement("a");
-	link.onclick = function() {wipe_verbs()};
-	link[PROP_TEXT_CONTENT] = "Wipe All Verbs";
-	wipeverbstabs.appendChild(link);
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(wipeverbstabs);
-	var wipeUpdateVerbsTabs = document.createElement("div");
-	var updateLink = document.createElement("a");
-	updateLink.onclick = function() {update_verbs()};
-	updateLink[PROP_TEXT_CONTENT] = "Wipe and Update All Verbs";
-	wipeUpdateVerbsTabs.appendChild(updateLink);
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(wipeUpdateVerbsTabs);
-	var text = document.createElement("div");
-	text[PROP_TEXT_CONTENT] = "Verb Tabs:";
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(text);
-	var table1 = document.createElement("table");
-	for(var i=0; i < verb_tabs.length ; i++) {
-		var part = verb_tabs[i];
-		// Hide subgroups except admin subgroups if they are split
-		if (verb_tabs[i].lastIndexOf(".") != -1) {
-			var splitName = verb_tabs[i].split(".");
-			if (split_admin_tabs && splitName[0] === "Admin")
-				part = splitName[1];
-			else
-				continue;
-		}
-		var tr = document.createElement("tr");
-		var td1 = document.createElement("td");
-		td1[PROP_TEXT_CONTENT] = part;
-		var a = document.createElement("a");
-		a.onclick = function (part) {
-			return function() {removeStatusTab(part)};
-		}(part);
-		a[PROP_TEXT_CONTENT] = " Delete Tab " + part;
-		td1.appendChild(a);
-		tr.appendChild(td1);
-		table1.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table1);
-	var header2 = document.createElement("div");
-	header2[PROP_TEXT_CONTENT] = "Verbs:";
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(header2);
-	var table2 = document.createElement("table");
-	for(var v = 0; v < verbs.length; v++) {
-		var part2 = verbs[v];
-		var trr = document.createElement("tr");
-		var tdd1 = document.createElement("td");
-		tdd1[PROP_TEXT_CONTENT] = part2[0];
-		var tdd2 = document.createElement("td");
-		tdd2[PROP_TEXT_CONTENT] = part2[1];
-		trr.appendChild(tdd1);
-		trr.appendChild(tdd2);
-		table2.appendChild(trr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table2);
-	var text3 = document.createElement("div");
-	text3[PROP_TEXT_CONTENT] = "Permanent Tabs:";
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(text3);
-	var table3 = document.createElement("table");
-	for(var i=0; i < permanent_tabs.length ; i++) {
-		var part3 = permanent_tabs[i];
-		var trrr = document.createElement("tr");
-		var tddd1 = document.createElement("td");
-		tddd1[PROP_TEXT_CONTENT] = part3;
-		trrr.appendChild(tddd1);
-		table3.appendChild(trrr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table3);
-
-}
 function draw_status() {
 	if(!document.getElementById("Status")) {
 		createStatusTab("Status");
@@ -1289,94 +1137,6 @@ function draw_status() {
 	}
 }
 
-function draw_mc() {
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("table");
-	for(var i = 0; i < mc_tab_parts.length; i++) {
-		var part = mc_tab_parts[i];
-		var tr = document.createElement("tr");
-		var td1 = document.createElement("td");
-		td1[PROP_TEXT_CONTENT] = part[0];
-		var td2 = document.createElement("td");
-		if(part[2]) {
-			var a = document.createElement("a");
-			a.href = "?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
-			a[PROP_TEXT_CONTENT] = part[1];
-			td2.appendChild(a);
-		} else {
-			td2[PROP_TEXT_CONTENT] = part[1];
-		}
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		table.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
-function update_tickets(T){
-	tickets = JSON.parse(T);
-	if(!verb_tabs.includes("Tickets")) {
-		verb_tabs.push("Tickets");
-		addPermanentTab("Tickets");
-	}
-	if(current_tab == "Tickets")
-		draw_tickets();
-}
-function update_interviews(I){
-	interviewManager = JSON.parse(I);
-	if(current_tab == "Tickets")
-		draw_interviews();
-}
-function update_sdql2(S) {
-	sdql2 = JSON.parse(S);
-	if(sdql2.length > 0 && !verb_tabs.includes("SDQL2")) {
-		verb_tabs.push("SDQL2");
-		addPermanentTab("SDQL2");
-	}
-	if(current_tab == "SDQL2")
-		draw_sdql2();
-}
-
-function remove_sdql2() {
-	if(sdql2) {
-		sdql2 = [];
-		removePermanentTab("SDQL2");
-		if(current_tab == "SDQL2")
-			tab_change("Status");
-	}
-	checkStatusTab();
-}
-
-function remove_tickets() {
-	if(tickets) {
-		tickets = [];
-		removePermanentTab("Tickets");
-		if(current_tab == "Tickets")
-			tab_change("Status");
-	}
-	checkStatusTab();
-}
-
-function remove_interviews() {
-	if(tickets) {
-		tickets = [];
-	}
-	checkStatusTab();
-}
-
-// removes MC, Tickets and MC tabs.
-function remove_admin_tabs() {
-	href_token = null;
-	remove_mc();
-	remove_tickets();
-	remove_sdql2();
-//	remove_interviews();
-}
-
-function add_admin_tabs(ht) {
-	href_token = ht;
-	addPermanentTab("MC");
-	addPermanentTab("Tickets");
-}
 function create_listedturf(TN) {
 	remove_listedturf(); // remove the last one if we had one
 	turfname = JSON.parse(TN);
@@ -1388,21 +1148,7 @@ function update_listedturf(TC) {
 	if(current_tab == turfname)
 		draw_listedturf();
 }
-function iconError() {
-	var that = this;
-	setTimeout(function() {
-		var current_attempts = that.id; // a bit of a hack, change this if we need to call on img id's later
-		if(!current_attempts)
-			that.id = 1;
-		if (current_attempts > imageRetryLimit)
-			return;
-		var src = that.src;
-		that.src = null;
-		that.src = src + '#' + current_attempts;
-		that.id++;
-		draw_listedturf();
-	}, IMAGE_RETRY_DELAY);
-}
+
 function draw_listedturf() {
 	stat_content[PROP_TEXT_CONTENT] = "";
 	var table = document.createElement("table");
@@ -1470,134 +1216,7 @@ function remove_listedturf() {
 	if(current_tab == turfname)
 		tab_change("Status");
 }
-function draw_sdql2(){
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("table");
-	for(var i = 0; i < sdql2.length; i++) {
-		var part = sdql2[i];
-		var tr = document.createElement("tr");
-		var td1 = document.createElement("td");
-		td1[PROP_TEXT_CONTENT] = part[0];
-		var td2 = document.createElement("td");
-		if(part[2]) {
-			var a = document.createElement("a");
-			a.href = "?src=" + "_statpanel_" + ";statpanel_item_target=" + part[2] + ";statpanel_item_click=left";
-			a[PROP_TEXT_CONTENT] = part[1];
-			td2.appendChild(a);
-		} else {
-			td2[PROP_TEXT_CONTENT] = part[1];
-		}
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		table.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
 
-function draw_tickets() {
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("table");
-	if(!tickets)
-		return;
-	for(var i = 0; i < tickets.length; i++) {
-		var part = tickets[i];
-		var tr = document.createElement("tr");
-		var td1 = document.createElement("td");
-		td1[PROP_TEXT_CONTENT] = part[0];
-		var td2 = document.createElement("td");
-		if(part[2]) {
-			var a = document.createElement("a");
-			a.href = "?_src_=holder;admin_token=" + href_token + ";ahelp=" + part[2] + ";ahelp_action=ticket;statpanel_item_click=left;action=ticket" ;
-			a[PROP_TEXT_CONTENT] = part[1];
-			td2.appendChild(a);
-		} else if(part[3]){
-			var a = document.createElement("a");
-			a.href = "?src=_statpanel_" + ";statpanel_item_target=" + part[3] + ";statpanel_item_click=left";
-			a[PROP_TEXT_CONTENT] = part[1];
-			td2.appendChild(a);
-		} else {
-			td2[PROP_TEXT_CONTENT] = part[1];
-		}
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		table.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
-
-function draw_interviews() {
-	var body = document.createElement("div");
-	var header = document.createElement("h3");
-	header[PROP_TEXT_CONTENT] = "Interviews";
-	body.appendChild(header);
-	var manDiv = document.createElement("div");
-	manDiv.className = "interview_panel_controls"
-	var manLink = document.createElement("a");
-	manLink[PROP_TEXT_CONTENT] = "Open Interview Manager Panel";
-	manLink.href = "?_src_=holder;admin_token=" + href_token + ";interview_man=1;statpanel_item_click=left";
-	manDiv.appendChild(manLink);
-	body.appendChild(manDiv);
-
-	// List interview stats
-	var statsDiv = document.createElement("table");
-	statsDiv.className="interview_panel_stats";
-	for (var key in interviewManager.status) {
-		var d = document.createElement("div");
-		var tr = document.createElement("tr");
-		var stat_name = document.createElement("td");
-		var stat_text = document.createElement("td");
-		stat_name[PROP_TEXT_CONTENT] = key;
-		stat_text[PROP_TEXT_CONTENT] = interviewManager.status[key];
-		tr.appendChild(stat_name);
-		tr.appendChild(stat_text);
-		statsDiv.appendChild(tr);
-	}
-	body.appendChild(statsDiv);
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(body);
-
-	// List interviews if any are open
-	var table = document.createElement("table");
-	table.className = "interview_panel_table";
-	if(!interviewManager)
-		return;
-	for(var i = 0; i < interviewManager.interviews.length; i++) {
-		var part = interviewManager.interviews[i];
-		var tr = document.createElement("tr");
-		var td = document.createElement("td");
-		var a = document.createElement("a");
-		a[PROP_TEXT_CONTENT] = part["status"];
-		a.href = "?_src_=holder;admin_token=" + href_token + ";interview=" + part["ref"] + ";statpanel_item_click=left";
-		td.appendChild(a);
-		tr.appendChild(td);
-		table.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
-
-function draw_spells(cat) {
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("table");
-	for(var i = 0; i < spells.length; i++) {
-		var part = spells[i];
-		if(part[0] != cat) continue;
-		var tr = document.createElement("tr");
-		var td1 = document.createElement("td");
-		td1[PROP_TEXT_CONTENT] = part[1];
-		var td2 = document.createElement("td");
-		if(part[3]) {
-			var a = document.createElement("a");
-			a.href = "?src=" + part[3] + ";statpanel_item_click=left";
-			a[PROP_TEXT_CONTENT] = part[2];
-			td2.appendChild(a);
-		} else {
-			td2[PROP_TEXT_CONTENT] = part[2];
-		}
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		table.appendChild(tr);
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
 function set_theme(which) {
 	if (which == "light") {
 		document.body.className = "";

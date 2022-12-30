@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(statpanels)
 				player << output(url_encode(json_encode(additional)), "statpanel:byond_append")
 		// assert admin tabs - these are special and do not check for additional info
 		if(player.statpanel_tab("MC", is_admin))
-			player << output(fetch_mc_data(), "statpanel:byond_update")
+			player << output(fetch_mc_data(), "statpanel:byond_update")w
 		if(player.statpanel_tab("Tickets", is_admin))
 			player << output(fetch_ticket_data(), "statpanel:byond_update")
 		if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))

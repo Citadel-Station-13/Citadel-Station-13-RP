@@ -159,6 +159,8 @@
 
 /**
  * routes actions from statpanel
+ *
+ * todo: do we move this to /datum/statpanel?
  */
 /client/proc/_statpanel_act(action, list/params)
 	switch(action)
@@ -170,10 +172,23 @@
 			return
 		if("act")
 			var/datum/D = locate(params["ref"])
-			if(istype(D))
-				// todo: admin token implementation
-				D.statpanel_click(src, null, FALSE)
+			if(!istype(D))
+				return
+			// todo: admin token implementation
+			D.statpanel_click(src, null, FALSE)
 			return
+		if("click")
+			var/atom/A = locate(params["ref"])
+			if(!istype(A))
+				return
+			// assert: it's within a *VERY* generous range
+			if(get_dist(A, mob) > 5)
+				return
+			// todo: admin token implementation
+			var/params = params["params"]
+			mob.ClickOn(A, params, CLICKCHAIN_FROM_HREF)
+			return
+		// todo: mousedrag event
 
 /**
  * grabs statpanel data to send on tick

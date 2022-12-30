@@ -10,6 +10,11 @@
 
 /mob/statpanel_data(client/C)
 	. = ..()
+	//! WARNING
+	//! NO, SERIOUSLY, READ THIS
+	// DO NOT COPY PASTE THE FOLLOWING CODE.
+	// THIS IS ALREADY SNOWFLAKED CODE; YOU *WILL* BREAK EVERYTHING IF YOU DO BY OVERWRITING DATA!!
+
 	// i'm going to trust people aren't stupid and won't put the name of a regular panel in spells.
 	if(!length(spell_list))
 		if(C.statpanel_spell_last)
