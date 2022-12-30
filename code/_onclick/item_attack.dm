@@ -104,6 +104,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 	return 1
 
+#warn kill this
 //Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
 	user.break_cloak()

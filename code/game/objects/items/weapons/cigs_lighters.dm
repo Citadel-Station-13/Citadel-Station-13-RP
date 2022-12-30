@@ -217,6 +217,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_icon()
 
 /obj/item/clothing/mask/smokable/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/carbon/human/H = M
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)

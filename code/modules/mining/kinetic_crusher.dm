@@ -114,6 +114,9 @@
 */
 
 /obj/item/kinetic_crusher/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/target = M
+	if(!istype(target))
+		return ..()
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return

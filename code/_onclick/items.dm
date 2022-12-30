@@ -104,6 +104,36 @@
 	#warn impl
 
 /**
+ * called at base of attack mob for a standard melee hit
+ *
+ * @params
+ * * M - mob being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/standard_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+	#warn impl
+
+/**
+ * called after a standard melee hit
+ *
+ * @params
+ * * M - M being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/post_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+	#warn impl
+
+/**
  * called when we're used to attack a non-mob
  * this doesn't actually need to be an obj.
  *
@@ -118,3 +148,33 @@
 /obj/item/proc/attack_obj(atom/A, mob/user, clickchain_flags, list/params)
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
 	#warn impl - oh and check user intent
+
+/**
+ * called at base of attack obj for a standard melee hit
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/standard_obj_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+	#warn impl
+
+/**
+ * called after a standard melee hit
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/post_obj_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+	#warn impl

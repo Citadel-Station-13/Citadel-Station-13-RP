@@ -3,7 +3,7 @@
 #define ITEM_IN_INVENTORY		(1<<0)
 /// When dropped, it calls qdel on itself
 #define ITEM_DROPDEL			(1<<1)
-/// cannot be used to do normal melee hits
+/// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
 #define ITEM_NOBLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT			(1<<3)
