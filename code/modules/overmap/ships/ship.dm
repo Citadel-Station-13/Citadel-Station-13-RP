@@ -84,7 +84,7 @@
 	. = ..()
 
 	if(!!is_moving())
-		. += {"\n\[i\]Heading\[/i\]: [get_heading_degrees()]\n\[i\]Velocity\[/i\]: [get_speed() * 1000]"}
+		. += {"\n\[i\]Heading\[/i\]: [get_heading_degrees()]\n\[i\]Velocity\[/i\]: [get_speed_legacy() * 1000]"}
 	else
 		. += {"\n\[i\]Vessel was stationary at time of scan.\[/i\]\n"}
 
@@ -97,11 +97,11 @@
 	. += {"\[i\]Life Signs\[/i\]: [life ? life : "None"]"}
 
 // Projected acceleration based on information from engines
-/obj/effect/overmap/visitable/ship/proc/get_acceleration()
+/obj/effect/overmap/visitable/ship/proc/get_acceleration_legacy()
 	return round(get_total_thrust()/get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
 // Does actual burn and returns the resulting acceleration
-/obj/effect/overmap/visitable/ship/proc/get_burn_acceleration()
+/obj/effect/overmap/visitable/ship/proc/get_burn_acceleration_legacy()
 	return round(burn() / get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
 /obj/effect/overmap/visitable/ship/proc/get_vessel_mass()
@@ -109,8 +109,14 @@
 	for(var/obj/effect/overmap/visitable/ship/ship in src)
 		. += ship.get_vessel_mass()
 
-/obj/effect/overmap/visitable/ship/proc/get_speed()
-	return QUANTIZE_OVERMAP_DISTANCE(sqrt(vel_x ** 2 + vel_y ** 2))
+/**
+ * ! legacy
+ *
+ * get speed in tiles / decisecond
+ */
+/obj/effect/overmap/visitable/ship/proc/get_speed_legacy()
+	. = QUANTIZE_OVERMAP_DISTANCE(sqrt(vel_x ** 2 + vel_y ** 2))
+	. = OVERMAP_DIST_TO_PIXEL(.) / WORLD_ICON_SIZE / 10
 
 // Get heading in BYOND dir bits
 /obj/effect/overmap/visitable/ship/proc/get_heading()
@@ -153,34 +159,34 @@
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, REVERSE_DIR(fore_dir))
 
 /obj/effect/overmap/visitable/ship/proc/get_brake_path()
-	if(!get_acceleration())
+	if(!get_acceleration_legacy())
 		return INFINITY
 	if(!is_moving())
 		return 0
 	if(!burn_delay)
 		return 0
-	if(!get_speed())
+	if(!get_speed_legacy())
 		return 0
-	var/num_burns = get_speed()/get_acceleration() + 2	// Some padding in case acceleration drops form fuel usage
-	var/burns_per_grid = 1/ (burn_delay * get_speed())
+	var/num_burns = get_speed_legacy()/get_acceleration_legacy() + 2	// Some padding in case acceleration drops form fuel usage
+	var/burns_per_grid = 1/ (burn_delay * get_speed_legacy())
 	return round(num_burns/burns_per_grid)
 
 /obj/effect/overmap/visitable/ship/proc/decelerate()
 	if(is_moving() && can_burn())
-		var/deceleration = get_burn_acceleration()
+		var/deceleration = get_burn_acceleration_legacy()
 		//? shim: convert to new overmaps units from old
 		//? old was, for some stupid reason, "turfs per decosecond".
-		deceleration = deceleration * OVERMAP_DISTANCE_TILE
+		deceleration = deceleration * OVERMAP_DISTANCE_TILE * 10
 		adjust_speed(-SIGN(vel_x) * min(deceleration,abs(vel_x)), -SIGN(vel_y) * min(deceleration,abs(vel_y)))
 		last_burn = world.time
 
 /obj/effect/overmap/visitable/ship/proc/accelerate(direction, accel_limit)
 	if(can_burn())
 		last_burn = world.time
-		var/acceleration = min(get_burn_acceleration(), accel_limit)
+		var/acceleration = min(get_burn_acceleration_legacy(), accel_limit)
 		//? shim: convert to new overmaps units from old
 		//? old was, for some stupid reason, "turfs per decosecond".
-		acceleration = acceleration * OVERMAP_DISTANCE_TILE
+		acceleration = acceleration * OVERMAP_DISTANCE_TILE * 10
 
 		if(direction & EAST)
 			adjust_speed(acceleration, 0)
@@ -298,7 +304,7 @@
 	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
 	var/x_to_use = T?.x || "UNK"
 	var/y_to_use = T?.y || "UNK"
-	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed() * 1000], HDG:[get_heading_degrees()]\]"
+	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed_legacy() * 1000], HDG:[get_heading_degrees()]\]"
 
 /obj/effect/overmap/visitable/ship/set_glide_size(new_glide_size, recursive)
 	return	// *no*.

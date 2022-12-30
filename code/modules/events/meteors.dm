@@ -94,7 +94,7 @@
 	if(!victim)
 		return
 	var/skill = victim.get_helm_skill()
-	var/speed = victim.get_speed()
+	var/speed = victim.get_speed_legacy()
 	if(skill >= SKILL_PROF)
 		. = round(. * 0.5)
 	if(!victim.is_moving())		// Standing still means less shit flies your way
