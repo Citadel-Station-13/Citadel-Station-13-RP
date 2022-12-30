@@ -8680,12 +8680,6 @@
 /turf/simulated/floor,
 /area/tether/surfacebase/security/briefingroom)
 "gNQ" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/reinforced/airless,
 /area/space)
@@ -43504,7 +43498,7 @@ lzL
 hYD
 cYR
 gNQ
-coX
+lLO
 peB
 dBY
 lLO
