@@ -10,7 +10,7 @@
 
 	var/obj/item/virusdish/dish = null
 
-/obj/machinery/disease2/diseaseanalyser/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/machinery/disease2/diseaseanalyser/attackby_legacy(var/obj/O as obj, var/mob/user as mob)
 	if(default_unfasten_wrench(user, O, 20))
 		return
 

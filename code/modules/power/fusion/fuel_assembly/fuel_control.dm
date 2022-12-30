@@ -94,7 +94,7 @@
 	updateDialog()
 
 
-/obj/machinery/computer/fusion_fuel_control/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/fusion_fuel_control/attackby_legacy(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Fuel Control", id_tag) as null|text

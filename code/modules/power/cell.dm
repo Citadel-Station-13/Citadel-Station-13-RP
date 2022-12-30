@@ -166,7 +166,7 @@
 	else
 		. += "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%."
 
-/obj/item/cell/attackby(obj/item/W, mob/user)
+/obj/item/cell/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = W

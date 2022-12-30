@@ -21,7 +21,7 @@
 		else
 	return
 
-/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
+/obj/structure/sign/attackby_legacy(obj/item/tool as obj, mob/user as mob)	//deconstruction
 	if(tool.is_screwdriver() && !istype(src, /obj/structure/sign/double))
 		playsound(src, tool.tool_sound, 50, 1)
 		to_chat(user, "You unfasten the sign with your [tool].")
@@ -42,7 +42,7 @@
 	w_class = ITEMSIZE_NORMAL		//big
 	var/sign_state = ""
 
-/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction
+/obj/item/sign/attackby_legacy(obj/item/tool as obj, mob/user as mob)	//construction
 	if(tool.is_screwdriver() && isturf(user.loc))
 		var/direction = input("In which direction?", "Select direction.") in list("North", "East", "South", "West", "Cancel")
 		if(direction == "Cancel") return

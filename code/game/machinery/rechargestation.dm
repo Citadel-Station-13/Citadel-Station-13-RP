@@ -155,7 +155,7 @@
 		cell.emp_act(severity)
 	..(severity)
 
-/obj/machinery/recharge_station/attackby(obj/item/O, mob/user)
+/obj/machinery/recharge_station/attackby_legacy(obj/item/O, mob/user)
 	if(!occupant)
 		if(default_deconstruction_screwdriver(user, O))
 			return

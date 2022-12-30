@@ -66,7 +66,7 @@
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
-/mob/living/simple_mob/horror/Steve/attackby()
+/mob/living/simple_mob/horror/Steve/attackby_legacy()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

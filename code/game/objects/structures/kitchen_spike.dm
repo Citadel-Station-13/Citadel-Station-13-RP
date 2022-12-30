@@ -12,7 +12,7 @@
 	var/meat_type
 	var/victim_name = "corpse"
 
-/obj/structure/kitchenspike/attackby(obj/item/grab/G as obj, mob/user as mob)
+/obj/structure/kitchenspike/attackby_legacy(obj/item/grab/G as obj, mob/user as mob)
 	if(!istype(G, /obj/item/grab) || !ismob(G.affecting))
 		return
 	if(occupied)

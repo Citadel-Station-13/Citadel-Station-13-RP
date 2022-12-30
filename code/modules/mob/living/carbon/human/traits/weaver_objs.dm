@@ -15,7 +15,7 @@ var/global/list/weavable_items = list()
 	qdel(src)
 	return
 
-/obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/weaversilk/attackby_legacy(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
 	if(W.force)
@@ -75,7 +75,7 @@ var/global/list/weavable_items = list()
 /obj/structure/bed/double/weaversilk_nest/update_icon()
 	return
 
-/obj/structure/bed/double/weaversilk_nest/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/double/weaversilk_nest/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	..()

@@ -184,7 +184,7 @@
 		open()
 		return 1
 
-/obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/window/attackby_legacy(obj/item/I as obj, mob/user as mob)
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)

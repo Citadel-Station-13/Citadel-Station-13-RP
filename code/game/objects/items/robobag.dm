@@ -78,7 +78,7 @@
 			else
 				H.add_modifier(/datum/modifier/fbp_debug/robobag)
 
-/obj/structure/closet/body_bag/cryobag/robobag/attackby(obj/item/W, mob/user)
+/obj/structure/closet/body_bag/cryobag/robobag/attackby_legacy(obj/item/W, mob/user)
 	if(opened)
 		..()
 	else //Allows the bag to respond to a cyborg analyzer and tag.

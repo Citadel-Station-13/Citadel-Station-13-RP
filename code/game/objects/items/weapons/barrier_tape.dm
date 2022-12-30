@@ -328,7 +328,7 @@ var/list/tape_roll_applications = list()
 				return FALSE
 			crumple()
 
-/obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/barrier_tape_segment/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
 /obj/item/barrier_tape_segment/attack_hand(mob/user as mob)

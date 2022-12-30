@@ -414,7 +414,7 @@
 	reagents.add_reagent("myelamine", 3)
 	src.bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/meat/worm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/meat/worm/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/knife))
 		var/to_spawn = pickweight(/obj/random/junk = 30,
 		/obj/random/trash = 30,

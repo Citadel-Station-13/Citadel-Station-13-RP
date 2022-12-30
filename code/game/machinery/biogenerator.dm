@@ -254,7 +254,7 @@
 		if(processing)
 			add_overlay("[base_icon_state]-work")
 
-/obj/machinery/biogenerator/attackby(obj/item/O, mob/user)
+/obj/machinery/biogenerator/attackby_legacy(obj/item/O, mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))

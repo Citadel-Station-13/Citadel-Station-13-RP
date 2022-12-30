@@ -98,7 +98,7 @@
 	. = ..()
 	uid = "[rand(100,999)]-G[rand(10,99)]"
 
-/obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
+/obj/machinery/computer/guestpass/attackby_legacy(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
 		if(!giver)
 			if(!user.attempt_insert_item_for_installation(I, src))

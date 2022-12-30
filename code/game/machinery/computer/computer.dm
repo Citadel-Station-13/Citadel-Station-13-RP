@@ -116,7 +116,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/computer/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

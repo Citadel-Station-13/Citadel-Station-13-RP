@@ -6,7 +6,7 @@
 /turf/simulated/wall/dungeon/Initialize(mapload, materialtype, rmaterialtype, girder_material)
 	return ..(mapload, "dungeonium")
 
-/turf/simulated/wall/dungeon/attackby()
+/turf/simulated/wall/dungeon/attackby_legacy()
 	return
 
 /turf/simulated/wall/dungeon/legacy_ex_act()
@@ -45,7 +45,7 @@
 	. = ..()
 	icon_state = base_state
 
-/turf/simulated/wall/solidrock/attackby()
+/turf/simulated/wall/solidrock/attackby_legacy()
 	return
 
 /turf/simulated/wall/solidrock/legacy_ex_act()

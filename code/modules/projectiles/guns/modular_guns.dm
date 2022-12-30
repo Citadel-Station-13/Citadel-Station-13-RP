@@ -49,7 +49,7 @@
 		manipulator_rating += MA.rating
 	FireModeModify()
 
-/obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
+/obj/item/gun/energy/modular/attackby_legacy(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled

@@ -94,7 +94,7 @@
 	created_name = "ED-209 Security Robot"
 	var/lasercolor = ""
 
-/obj/item/secbot_assembly/ed209_assembly/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/secbot_assembly/ed209_assembly/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	..()
 
 	if(istype(W, /obj/item/pen))

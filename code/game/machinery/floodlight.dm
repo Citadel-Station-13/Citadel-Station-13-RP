@@ -88,7 +88,7 @@
 
 	update_icon()
 
-/obj/machinery/floodlight/attackby(obj/item/W, mob/user)
+/obj/machinery/floodlight/attackby_legacy(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		if(!open)
 			if(unlocked)

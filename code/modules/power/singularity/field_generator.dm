@@ -93,7 +93,7 @@ field_generator power level display
 		return
 
 
-/obj/machinery/field_generator/attackby(obj/item/W, mob/user)
+/obj/machinery/field_generator/attackby_legacy(obj/item/W, mob/user)
 	if(active)
 		to_chat(user, "The [src] needs to be off.")
 		return

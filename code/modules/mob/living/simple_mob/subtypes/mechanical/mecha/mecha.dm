@@ -126,7 +126,7 @@
 	qdel(deflect_image)
 //	flick_overlay_view(deflect_image, src, duration = 1 SECOND, gc_after = TRUE)
 
-/mob/living/simple_mob/mechanical/mecha/attackby(obj/item/I, mob/user)
+/mob/living/simple_mob/mechanical/mecha/attackby_legacy(obj/item/I, mob/user)
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [user]'s [I] bounces off \the [src]'s armor!"))
 		deflect_sprite()

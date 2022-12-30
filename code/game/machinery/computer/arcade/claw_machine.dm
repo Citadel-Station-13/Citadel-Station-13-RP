@@ -19,7 +19,7 @@
 	var/winscreen = ""
 
 // Payment
-/obj/machinery/computer/arcade/clawmachine/attackby(obj/item/I, mob/user)
+/obj/machinery/computer/arcade/clawmachine/attackby_legacy(obj/item/I, mob/user)
 	if(..())
 		return
 

@@ -288,7 +288,7 @@
 		return
 	return 1
 
-/obj/structure/medical_stand/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/medical_stand/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype (W, /obj/item/tool))
 		if (valve_opened)
 			to_chat(user, "<span class='warning'>Close the valve first.</span>")

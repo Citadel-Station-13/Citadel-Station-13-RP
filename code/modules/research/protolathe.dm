@@ -89,7 +89,7 @@
 	else
 		icon_state = base_icon_state
 
-/obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/protolathe/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return 1

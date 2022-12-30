@@ -72,7 +72,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/ammo_magazine/smart/attackby(var/obj/item/I as obj, mob/user)
+/obj/item/ammo_magazine/smart/attackby_legacy(var/obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/cell/device))
 		if(attached_cell)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_cell.name] attached.</span>")

@@ -73,7 +73,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	else
 		icon_state = "[state]"
 
-/obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
+/obj/machinery/navbeacon/attackby_legacy(obj/item/I, mob/user)
 	var/turf/T = loc
 	if(!T.is_plating())
 		return		// prevent intraction when T-scanner revealed

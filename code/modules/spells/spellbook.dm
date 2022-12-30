@@ -280,7 +280,7 @@
 	used = 1
 	user.visible_message(SPAN_CAUTION("[src] glows dark for a second!"))
 
-/obj/item/spellbook/oneuse/attackby()
+/obj/item/spellbook/oneuse/attackby_legacy()
 	return
 
 /obj/item/spellbook/oneuse/fireball

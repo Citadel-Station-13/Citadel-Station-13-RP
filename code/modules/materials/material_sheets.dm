@@ -81,7 +81,7 @@
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		..()
 
-/obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/material/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		material.build_wired_product(user, W, src)
 		return
@@ -367,7 +367,7 @@
 	color = "#6f432a"
 	plank_type = /obj/item/stack/material/wood/hard
 
-/obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/material/log/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(!istype(W) || W.force <= 0)
 		return ..()
 	if(W.sharp && W.edge)

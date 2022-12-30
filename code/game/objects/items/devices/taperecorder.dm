@@ -37,7 +37,7 @@
 	return ..()
 
 
-/obj/item/tape_recorder/attackby(obj/item/I, mob/user, params)
+/obj/item/tape_recorder/attackby_legacy(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/cassette_tape))
 		if(mytape)
 			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")
@@ -413,7 +413,7 @@
 	storedinfo += "*\[[time2text(used_capacity*10,"mm:ss")]\] [text]"
 
 
-/obj/item/cassette_tape/attackby(obj/item/I, mob/user, params)
+/obj/item/cassette_tape/attackby_legacy(obj/item/I, mob/user, params)
 	if(ruined && I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
 		playsound(src, I.tool_sound, 50, 1)

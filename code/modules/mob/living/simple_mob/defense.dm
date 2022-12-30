@@ -42,7 +42,7 @@
 
 
 // When somoene clicks us with an item in hand
-/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/stack/medical))
 		if(stat != DEAD)
 			// This could be done better.

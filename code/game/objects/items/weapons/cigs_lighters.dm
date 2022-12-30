@@ -227,7 +227,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return 1
 	return ..()
 
-/obj/item/clothing/mask/smokable/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	if(W.is_hot())
 		var/text = matchmes
@@ -284,7 +284,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(nicotine_amt)
 		reagents.add_reagent("nicotine", nicotine_amt)
 
-/obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if(istype(W, /obj/item/melee/energy/sword))
@@ -409,7 +409,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"
 
-/obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/cigar/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 
 	user.update_inv_wear_mask(0)
@@ -451,7 +451,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			user.visible_message("<span class='notice'>[user] puts out \the [src].</span>")
 			quench()
 
-/obj/item/clothing/mask/smokable/pipe/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/pipe/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/melee/energy/sword))
 		return
 
@@ -524,7 +524,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = ITEMSIZE_TINY
 	icon_state = "cig paper"
 
-/obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/rollingpaper/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/grown/G = W
 		if (!G.dry)
@@ -547,7 +547,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = ITEMSIZE_TINY
 	icon_state = "blunt paper"
 
-/obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/rollingblunt/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/grown/G = W
 		if (!G.dry)

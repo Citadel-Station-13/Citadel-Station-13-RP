@@ -189,7 +189,7 @@
 			overlays_to_add += "drying_rack_drying"
 	add_overlay(overlays_to_add)
 
-/obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
+/obj/machinery/smartfridge/drying_rack/attackby_legacy(var/obj/item/O as obj, mob/user)
 	. = ..()
 	if(istype(O, /obj/item/stack/wetleather/))
 		var/obj/item/stack/wetleather/WL = O
@@ -248,7 +248,7 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(obj/item/O, mob/user)
+/obj/machinery/smartfridge/attackby_legacy(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")

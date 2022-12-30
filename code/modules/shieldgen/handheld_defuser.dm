@@ -73,7 +73,7 @@
 	else
 		return ..()
 
-/obj/item/shield_diffuser/attackby(obj/item/W, mob/user as mob)
+/obj/item/shield_diffuser/attackby_legacy(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!cell)

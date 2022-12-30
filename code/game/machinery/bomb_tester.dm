@@ -89,7 +89,7 @@
 		scan_rating += S.rating
 	simulation_delay = 25 SECONDS - scan_rating SECONDS
 
-/obj/machinery/bomb_tester/attackby(obj/item/I, mob/user)
+/obj/machinery/bomb_tester/attackby_legacy(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))

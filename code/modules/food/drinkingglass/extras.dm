@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food/drinks/glass2/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_containers/food/drinks/glass2/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(extras.len >= 2) return ..() // max 2 extras, one on each side of the drink
 
 	if(istype(I, /obj/item/glass_extra))

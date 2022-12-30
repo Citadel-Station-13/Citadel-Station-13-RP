@@ -38,7 +38,7 @@
 		return 1
 	return 0
 
-/obj/machinery/fusion_fuel_compressor/attackby(var/obj/item/thing, var/mob/user)
+/obj/machinery/fusion_fuel_compressor/attackby_legacy(var/obj/item/thing, var/mob/user)
 
 	if(default_deconstruction_screwdriver(user, thing))
 		return

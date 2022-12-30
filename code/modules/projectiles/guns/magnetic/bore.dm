@@ -73,7 +73,7 @@
 /obj/item/gun/magnetic/matfed/use_ammo()
 	mat_storage -= mat_cost
 
-/obj/item/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/magnetic/matfed/attackby_legacy(var/obj/item/thing, var/mob/user)
 	if(removable_components)
 		if(istype(thing, /obj/item/cell))
 			if(cell)

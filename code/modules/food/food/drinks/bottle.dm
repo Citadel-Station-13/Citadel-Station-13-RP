@@ -97,7 +97,7 @@
 	usr.visible_message("<span class='danger'>\The [usr] smashed \the [src] on \the [choice]!</span>")
 	to_chat(usr, "<span class='danger'>You smash \the [src] on \the [choice]!</span>")
 
-/obj/item/reagent_containers/food/drinks/bottle/attackby(obj/item/W, mob/user)
+/obj/item/reagent_containers/food/drinks/bottle/attackby_legacy(obj/item/W, mob/user)
 	if(!rag && istype(W, /obj/item/reagent_containers/glass/rag))
 		insert_rag(W, user)
 		return

@@ -57,7 +57,7 @@
 		radio_controller.remove_object(src,frequency)
 	return ..()
 
-/obj/machinery/status_display/attackby(I as obj, user as mob)
+/obj/machinery/status_display/attackby_legacy(I as obj, user as mob)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

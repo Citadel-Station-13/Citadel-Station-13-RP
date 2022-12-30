@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/power/generator/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 75, 1)
 		anchored = !anchored

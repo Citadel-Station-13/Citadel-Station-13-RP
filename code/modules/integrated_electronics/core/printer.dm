@@ -71,7 +71,7 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit_printer/attackby(var/obj/item/O, var/mob/user)
+/obj/item/integrated_circuit_printer/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/stack = O
 		if(stack.material.name == MAT_STEEL)

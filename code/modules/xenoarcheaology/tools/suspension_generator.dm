@@ -90,7 +90,7 @@
 				locked = !locked
 				return TRUE
 
-/obj/machinery/suspension_gen/attackby(obj/item/W, mob/user)
+/obj/machinery/suspension_gen/attackby_legacy(obj/item/W, mob/user)
 	if(!locked && !suspension_field && default_deconstruction_screwdriver(user, W))
 		return
 	else if(W.is_wrench())

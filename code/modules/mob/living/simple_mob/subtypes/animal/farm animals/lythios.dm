@@ -85,7 +85,7 @@
 		for(var/obj/effect/plant/SV in loc)
 			SV.die_off(1)
 
-/mob/living/simple_mob/animal/icegoat/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/icegoat/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
@@ -158,7 +158,7 @@
 			else
 				coat_amount += 1
 
-/mob/living/simple_mob/animal/passive/woolie/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/passive/woolie/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/tool/wirecutters/C = O
 	if(istype(C))
 		if(coat_amount == 0)

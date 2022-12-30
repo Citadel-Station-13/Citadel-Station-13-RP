@@ -96,7 +96,7 @@
 */
 
 /*
-/obj/item/kinetic_crusher/attackby(obj/item/I, mob/living/user)
+/obj/item/kinetic_crusher/attackby_legacy(obj/item/I, mob/living/user)
 	if(I.tool_behaviour == TOOL_CROWBAR)
 		if(LAZYLEN(trophies))
 			to_chat(user, "<span class='notice'>You remove [src]'s trophies.</span>")
@@ -348,7 +348,7 @@
 	. += "<span class='notice'>Causes [effect_desc()] when attached to a kinetic crusher.</span>"
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
-/obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
+/obj/item/crusher_trophy/attackby_legacy(obj/item/A, mob/living/user)
 	if(istype(A, /obj/item/kinetic_crusher))
 		add_to(A, user)
 	else

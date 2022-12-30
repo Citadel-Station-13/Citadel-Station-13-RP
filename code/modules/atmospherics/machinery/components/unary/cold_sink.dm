@@ -161,7 +161,7 @@
 	power_setting = new_power_setting
 	power_rating = max_power_rating * (power_setting/100)
 
-/obj/machinery/atmospherics/component/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))

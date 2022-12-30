@@ -234,7 +234,7 @@
 	w_class = ITEMSIZE_NORMAL
 	var/created_name = "Cleanbot"
 
-/obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
+/obj/item/bucket_sensor/attackby_legacy(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic left arm") || (W.name == "robotic right arm"))))
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -275,7 +275,7 @@
 	var/coolingdown = 0
 	var/attackcooldown = 0
 
-/mob/living/bot/cleanbot/roomba/attackby(var/obj/item/W, mob/user)
+/mob/living/bot/cleanbot/roomba/attackby_legacy(var/obj/item/W, mob/user)
 	if(istype(W, /obj/item/material/kitchen/utensil/fork) && !armed && user.a_intent != INTENT_HARM)
 		qdel(W)
 		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation.</span>")
@@ -339,7 +339,7 @@
 	icon_state = "maidbot0"
 	armed = 0
 
-/mob/living/bot/cleanbot/roomba/meido/attackby(var/obj/item/W, mob/user)
+/mob/living/bot/cleanbot/roomba/meido/attackby_legacy(var/obj/item/W, mob/user)
 	if(istype(W, /obj/item/material/kitchen/utensil/fork) || istype(W, /obj/item/flame/lighter))
 		to_chat(user, "<span class='notice'>\The [src] buzzes and recoils at \the [W]. Perhaps it would prefer something more refined?</span>")
 		return

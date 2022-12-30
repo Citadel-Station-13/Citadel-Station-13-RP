@@ -133,7 +133,7 @@
 	..(severity*2, user, T)
 
 
-/obj/item/gun/energy/particle/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/energy/particle/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/pressurelock))
 		if(safetycatch)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_safety].</span>")

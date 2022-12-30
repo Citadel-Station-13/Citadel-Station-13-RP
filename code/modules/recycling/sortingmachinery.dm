@@ -20,7 +20,7 @@
 	// Destroy will drop our wrapped object on the turf, so let it.
 	qdel(src)
 
-/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bigDelivery/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/destTagger))
 		var/obj/item/destTagger/O = W
 		if(O.currTag)
@@ -140,7 +140,7 @@
 	qdel(src)
 	return
 
-/obj/item/smallDelivery/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/smallDelivery/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/destTagger))
 		var/obj/item/destTagger/O = W
 		if(O.currTag)
@@ -423,7 +423,7 @@
 	update()
 	return
 
-/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/disposal/deliveryChute/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(!I || !user)
 		return
 

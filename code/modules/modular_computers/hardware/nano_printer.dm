@@ -50,7 +50,7 @@
 		fields++
 	return fields
 
-/obj/item/computer_hardware/nano_printer/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/computer_hardware/nano_printer/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/paper))
 		if(stored_paper >= max_paper)
 			to_chat(user, "You try to add \the [W] into \the [src], but its paper bin is full.")

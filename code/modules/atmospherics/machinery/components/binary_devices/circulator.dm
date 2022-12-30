@@ -93,7 +93,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/circulator/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 75, 1)
 		anchored = !anchored

@@ -77,7 +77,7 @@
 	name = "supermatter coin"
 	icon_state = "coin_supermatter"
 
-/obj/item/coin/attackby(obj/item/W, mob/user)
+/obj/item/coin/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(string_attached)

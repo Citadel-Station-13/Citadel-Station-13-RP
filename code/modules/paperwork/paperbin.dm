@@ -83,7 +83,7 @@
 	return
 
 
-/obj/item/paper_bin/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/item/paper_bin/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!istype(I, /obj/item/paper))
 		return ..()
 

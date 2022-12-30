@@ -69,7 +69,7 @@
 			pixel_y = 0
 
 
-/obj/vehicle_old/train/engine/quadbike/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/train/engine/quadbike/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)
 		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
 		if(new_paint)
@@ -250,7 +250,7 @@
 	Bodypaint.color = paint_color
 	add_overlay(Bodypaint)
 
-/obj/vehicle_old/train/trolley/trailer/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/train/trolley/trailer/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)
 		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
 		if(new_paint)

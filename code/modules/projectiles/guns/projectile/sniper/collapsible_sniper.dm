@@ -91,7 +91,7 @@
 
 	update_build()
 
-/obj/item/sniper_rifle_part/attackby(var/obj/item/sniper_rifle_part/A as obj, mob/user as mob)
+/obj/item/sniper_rifle_part/attackby_legacy(var/obj/item/sniper_rifle_part/A as obj, mob/user as mob)
 
 	to_chat(user, "<span class='notice'>You begin adding \the [A] to \the [src].</span>")
 	if(!do_after(user, 30))

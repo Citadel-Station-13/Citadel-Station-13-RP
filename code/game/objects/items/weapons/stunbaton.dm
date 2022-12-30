@@ -78,7 +78,7 @@
 	if(!bcell)
 		. += "<span class='warning'>The [src] does not have a power source installed.</span>"
 
-/obj/item/melee/baton/attackby(obj/item/W, mob/user)
+/obj/item/melee/baton/attackby_legacy(obj/item/W, mob/user)
 	if(use_external_power)
 		return
 	if(istype(W, /obj/item/cell))
@@ -198,7 +198,7 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
+/obj/item/melee/baton/cattleprod/attackby_legacy(obj/item/W, mob/user)
 	if(use_external_power)
 		return
 	if(istype(W, /obj/item/cell))

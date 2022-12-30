@@ -8,6 +8,9 @@
  * - params - params as list.
  */
 /obj/item/proc/melee_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+	// wow we have a lot of params
+	// if only this was ss14 so we could have the EntityEventArgs :pleading:
+
 	. = clickchain_flags
 
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
@@ -66,3 +69,47 @@
  */
 /obj/item/proc/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
 	return NONE
+
+/**
+ * called when someone hits us with an item while in Reachability() range
+ *
+ * usually triggers attack_obj or attack_mob
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ *
+ * @return clickchain flags to append
+ */
+/atom/movable/attackby(atom/A, mob/user, clickchain_flags, list/params)
+
+/**
+ * called when we're used to attack a mob
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	#warn impl
+
+/**
+ * called when we're used to attack a non-mob
+ * this doesn't actually need to be an obj.
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	#warn impl

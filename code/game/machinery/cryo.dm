@@ -181,7 +181,7 @@
 
 	return TRUE // update UIs attached to this object
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/attackby(obj/item/G, mob/user)
+/obj/machinery/atmospherics/component/unary/cryo_cell/attackby_legacy(obj/item/G, mob/user)
 	if(istype(G, /obj/item/reagent_containers/glass))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))

@@ -628,7 +628,7 @@ var/list/flooring_types
 	icon_state = "c_flesh_floor"
 	initial_flooring = /singleton/flooring/flesh
 
-/turf/simulated/floor/flesh/attackby()
+/turf/simulated/floor/flesh/attackby_legacy()
 	return
 
 /singleton/flooring/flesh

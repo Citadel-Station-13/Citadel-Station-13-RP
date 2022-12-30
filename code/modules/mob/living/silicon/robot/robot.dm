@@ -517,7 +517,7 @@
 		spark_system.start()
 	return 2
 
-/mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/robot/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
 		return
 

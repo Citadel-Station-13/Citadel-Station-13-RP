@@ -241,7 +241,7 @@ proc/check_panel(mob/M)
 
 	var/health = 100
 
-/obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
+/obj/effect/fake_attacker/attackby_legacy(var/obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(world.view,my_target))
 		to_chat(M, "<font color='red'><B>[my_target] flails around wildly.</B></font>")

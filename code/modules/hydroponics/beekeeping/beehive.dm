@@ -38,7 +38,7 @@
 	if(!closed)
 		. += "The lid is open."
 
-/obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/beehive/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(I.is_crowbar())
 		closed = !closed
 		user.visible_message("<span class='notice'>[user] [closed ? "closes" : "opens"] \the [src].</span>", "<span class='notice'>You [closed ? "close" : "open"] \the [src].</span>")
@@ -167,7 +167,7 @@
 	var/processing = 0
 	var/honey = 0
 
-/obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/honey_extractor/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(processing)
 		to_chat(user, "<span class='notice'>\The [src] is currently spinning, wait until it's finished.</span>")
 		return

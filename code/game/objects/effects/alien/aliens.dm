@@ -130,7 +130,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
+/obj/effect/alien/resin/attackby_legacy(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	var/aforce = W.force
@@ -322,7 +322,7 @@ Alien plants should do something if theres a lot of poison
 				qdel(src)
 	return
 
-/obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/alien/weeds/attackby_legacy(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(W.attack_verb.len)
 		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -525,7 +525,7 @@ Alien plants should do something if theres a lot of poison
 	return
 
 
-/obj/effect/alien/egg/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/alien/egg/attackby_legacy(var/obj/item/W, var/mob/user)
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return

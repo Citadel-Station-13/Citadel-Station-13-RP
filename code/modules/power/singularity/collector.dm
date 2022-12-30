@@ -54,7 +54,7 @@
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
 
-/obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
+/obj/machinery/power/rad_collector/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
 		if(!src.anchored)
 			to_chat(user, "<font color='red'>The [src] needs to be secured to the floor first.</font>")

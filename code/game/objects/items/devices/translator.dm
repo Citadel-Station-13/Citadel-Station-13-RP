@@ -52,7 +52,7 @@
 	if(cassette_translation)
 		. += SPAN_NOTICE("Use a cassette tape on this to translate the tape's contents where possible.")
 
-/obj/item/universal_translator/attackby(obj/item/I, mob/user)
+/obj/item/universal_translator/attackby_legacy(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cassette_tape))
 		if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_TAPE_TRANSLATION))
 			user.action_feedback(SPAN_WARNING("[src] cannot translate tapes that fast."), src)

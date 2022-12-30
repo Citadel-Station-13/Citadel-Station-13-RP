@@ -803,7 +803,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		apply_danger_level(0)
 	update_icon()
 
-/obj/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/alarm/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(alarm_deconstruction_screwdriver(user, W))
 		return

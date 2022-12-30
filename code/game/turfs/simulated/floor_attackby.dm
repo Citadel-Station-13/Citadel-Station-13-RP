@@ -1,4 +1,4 @@
-/turf/simulated/floor/attackby(obj/item/C as obj, mob/user as mob)
+/turf/simulated/floor/attackby_legacy(obj/item/C as obj, mob/user as mob)
 
 	if(!C || !user)
 		return 0

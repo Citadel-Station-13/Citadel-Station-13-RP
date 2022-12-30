@@ -6,7 +6,7 @@
 	name = T_BOARD("R&D control console")
 	build_path = /obj/machinery/computer/rdconsole/core
 
-/obj/item/circuitboard/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/circuitboard/rdconsole/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		playsound(src, I.tool_sound, 50, TRUE)
 		user.visible_message(

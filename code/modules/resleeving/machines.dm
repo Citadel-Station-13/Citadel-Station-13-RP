@@ -348,7 +348,7 @@
 	to_chat(user, "Current print cycle is [busy]% complete.")
 	return
 
-/obj/machinery/transhuman/synthprinter/attackby(obj/item/W, mob/user)
+/obj/machinery/transhuman/synthprinter/attackby_legacy(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
@@ -456,7 +456,7 @@
 	user << browse(dat, "window=resleever")
 	onclose(user, "resleever")
 
-/obj/machinery/transhuman/resleever/attackby(obj/item/W, mob/user)
+/obj/machinery/transhuman/resleever/attackby_legacy(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return

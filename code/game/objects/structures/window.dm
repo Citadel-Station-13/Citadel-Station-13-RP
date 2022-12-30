@@ -279,7 +279,7 @@
 	user.do_attack_animation(src)
 	return 1
 
-/obj/structure/window/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/window/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return//I really wish I did not need this
 
 	// Fixing.
@@ -699,7 +699,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
-/obj/structure/window/reinforced/polarized/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/window/reinforced/polarized/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && !anchored) // Only allow programming if unanchored!
 		var/obj/item/multitool/MT = W
 		// First check if they have a windowtint button buffered
@@ -759,7 +759,7 @@
 /obj/machinery/button/windowtint/update_icon()
 	icon_state = "light[active]"
 
-/obj/machinery/button/windowtint/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/button/windowtint/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/MT = W
 		if(!id)

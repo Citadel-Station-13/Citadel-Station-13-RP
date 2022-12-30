@@ -60,7 +60,7 @@
 		inserted.forceMove(drop_location())
 	return ..()
 
-/obj/machinery/gear_painter/attackby(obj/item/I, mob/living/user)
+/obj/machinery/gear_painter/attackby_legacy(obj/item/I, mob/living/user)
 	if(inserted)
 		to_chat(user, SPAN_WARNING("The machine is already loaded."))
 		return

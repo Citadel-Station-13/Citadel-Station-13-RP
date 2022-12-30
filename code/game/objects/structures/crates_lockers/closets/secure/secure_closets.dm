@@ -64,7 +64,7 @@
 	else
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
-/obj/structure/closet/secure_closet/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/secure_closet/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(src.opened)
 		if(istype(W, /obj/item/storage/laundry_basket))
 			return ..(W,user)

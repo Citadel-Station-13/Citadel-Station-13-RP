@@ -50,7 +50,7 @@
 	else
 		to_chat(user, "<span class='notice'>If you want to kill the pirate off, something to pry open the sleeper might be the best way to do it.</span>")
 
-/obj/structure/ghost_role_spawner/pirate/attackby(obj/item/W, mob/user, params)
+/obj/structure/ghost_role_spawner/pirate/attackby_legacy(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_CROWBAR && user.a_intent != INTENT_HARM)
 		if(user.mind.has_antag_datum(/datum/antagonist/pirate))
 			to_chat(user,"<span class='warning'>Why would you want to do that to your shipmate? That'd kill them.</span>")

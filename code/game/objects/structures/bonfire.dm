@@ -48,7 +48,7 @@
 /obj/structure/bonfire/permanent/sifwood/Initialize(mapload)
 	. = ..(mapload, MAT_SIFWOOD)
 
-/obj/structure/bonfire/attackby(obj/item/W, mob/user)
+/obj/structure/bonfire/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/rods) && !buckle_allowed && !grill)
 		var/obj/item/stack/rods/R = W
 		var/choice = input(user, "What would you like to construct?", "Bonfire") as null|anything in list("Stake","Grill")
@@ -279,7 +279,7 @@
 	var/set_temperature = T0C + 20	//K
 	var/heating_power = 40000
 
-/obj/structure/fireplace/attackby(obj/item/W, mob/user)
+/obj/structure/fireplace/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material/wood) || istype(W, /obj/item/stack/material/log) )
 		add_fuel(W, user)
 

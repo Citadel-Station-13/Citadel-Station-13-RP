@@ -36,7 +36,7 @@
 		. = TRUE
 	return .
 
-/obj/structure/flora/tree/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/flora/tree/attackby_legacy(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
 		..(W, user)
 		return

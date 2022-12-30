@@ -4,7 +4,7 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/signpost/attackby(obj/item/W, mob/user)
+/obj/structure/signpost/attackby_legacy(obj/item/W, mob/user)
 	return attack_hand(user)
 
 /obj/structure/signpost/attack_hand(mob/user)

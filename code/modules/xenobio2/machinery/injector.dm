@@ -90,7 +90,7 @@
 	else
 		beaker.reagents.trans_to_mob(occupant, computer.transfer_amount)
 
-/obj/machinery/xenobio2/manualinjector/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/xenobio2/manualinjector/attackby_legacy(var/obj/item/W, var/mob/user)
 
 	//Let's try to deconstruct first.
 	if(W.is_screwdriver())

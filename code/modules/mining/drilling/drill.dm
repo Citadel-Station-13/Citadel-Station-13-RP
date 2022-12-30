@@ -155,7 +155,7 @@
 /obj/machinery/mining/drill/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/mining/drill/attackby(obj/item/O as obj, mob/user as mob)
+/obj/machinery/mining/drill/attackby_legacy(obj/item/O as obj, mob/user as mob)
 	if(!active)
 		if(istype(O, /obj/item/multitool))
 			var/newtag = text2num(sanitizeSafe(input(user, "Enter new ID number or leave empty to cancel.", "Assign ID number") as text, 4))
@@ -328,7 +328,7 @@
 	. = ..()
 	component_parts = list()
 
-/obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/mining/brace/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(connected && connected.active)
 		to_chat(user, "<span class='notice'>You can't work with the brace of a running drill!</span>")
 		return

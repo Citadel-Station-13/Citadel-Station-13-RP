@@ -69,7 +69,7 @@
 	update_weight()
 	return
 
-/obj/item/material/fishing_net/attackby(var/obj/item/W, var/mob/user)
+/obj/item/material/fishing_net/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(contents)
 		for(var/mob/living/L in contents)
 			if(prob(25))

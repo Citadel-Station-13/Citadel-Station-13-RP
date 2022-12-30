@@ -34,7 +34,7 @@ Barricades
 /obj/structure/barricade/get_material()
 	return material
 
-/obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/barricade/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
@@ -130,7 +130,7 @@ Barricades
 	. = ..()
 	icon_state = "barrier[locked]"
 
-/obj/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/deployable/barrier/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(W, /obj/item/card/id/))
 		if(allowed(user))

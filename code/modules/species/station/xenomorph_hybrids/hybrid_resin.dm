@@ -115,7 +115,7 @@
 		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
 		"<span class='notice'>You hear squelching...</span>")
 
-/obj/structure/bed/hybrid_nest/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/hybrid_nest/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
@@ -244,7 +244,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/attackby(obj/item/W as obj, mob/user as mob)
+/obj/effect/alien/hybrid_resin/attackby_legacy(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	var/aforce = W.force

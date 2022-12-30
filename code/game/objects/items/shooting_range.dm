@@ -18,7 +18,7 @@
 			break
 	return ..() // delete target
 
-/obj/item/target/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/target/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weldingtool))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/weldingtool/WT = W

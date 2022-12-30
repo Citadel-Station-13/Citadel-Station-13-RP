@@ -169,7 +169,7 @@
 	if(seed) seed.thrown_at(src,hit_atom)
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/attackby(var/obj/item/W, var/mob/living/user)
+/obj/item/reagent_containers/food/snacks/grown/attackby_legacy(var/obj/item/W, var/mob/living/user)
 
 	if(seed)
 		if(seed.get_trait(TRAIT_PRODUCES_POWER) && istype(W, /obj/item/stack/cable_coil))

@@ -54,7 +54,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
+/obj/machinery/computer/card/attackby_legacy(obj/item/card/id/id_card, mob/user)
 	if(!istype(id_card))
 		return ..()
 

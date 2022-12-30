@@ -66,7 +66,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/pipe/tank/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/pipe/tank/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/pipe_painter))
 		return
 

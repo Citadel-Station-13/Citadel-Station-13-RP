@@ -294,7 +294,7 @@
 		src.emagged = 1
 		return 1
 
-/obj/machinery/librarycomp/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/librarycomp/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/barcodescanner))
 		var/obj/item/barcodescanner/scanner = W
 		scanner.computer = src
@@ -471,7 +471,7 @@
 	density = 1
 	var/obj/item/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/libraryscanner/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/book))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
@@ -535,7 +535,7 @@
 	if(panel_open)
 		add_overlay("[base_icon_state]-panel")
 
-/obj/machinery/bookbinder/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/bookbinder/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/paper))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return

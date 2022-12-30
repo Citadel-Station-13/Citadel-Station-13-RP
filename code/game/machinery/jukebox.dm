@@ -151,7 +151,7 @@
 		tracks.Remove(secret_tracks)
 	updateDialog()
 
-/obj/machinery/media/jukebox/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/media/jukebox/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
@@ -319,7 +319,7 @@
 	new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	qdel(src)
 
-/obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)
+/obj/machinery/media/jukebox/attackby_legacy(obj/item/W, mob/user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))

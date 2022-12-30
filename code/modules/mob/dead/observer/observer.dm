@@ -164,7 +164,7 @@
 			return
 		src.examinate(I)
 
-/mob/observer/dead/attackby(obj/item/W, mob/user)
+/mob/observer/dead/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W,/obj/item/book/tome))
 		var/mob/observer/dead/M = src
 		M.manifest(user)

@@ -268,7 +268,7 @@
 	board_icon = "hoverboard_red"
 	move_delay = 0
 
-/obj/vehicle_old/skateboard/hoverboard/attackby(obj/item/I, mob/user, params)
+/obj/vehicle_old/skateboard/hoverboard/attackby_legacy(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/rods))
 		return
 	else if(istype(I, /obj/item/tool/screwdriver))
@@ -367,7 +367,7 @@
 
 //Basic Board Construction
 
-/obj/item/skateboard_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/skateboard_frame/attackby_legacy(var/obj/item/W as obj, var/mob/user)
 	..()
 
 	switch(build_step)
@@ -425,7 +425,7 @@
 
 //Pro Board
 
-/obj/item/heavy_skateboard_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/heavy_skateboard_frame/attackby_legacy(var/obj/item/W as obj, var/mob/user)
 	..()
 
 	switch(build_step)
@@ -501,7 +501,7 @@
 /obj/vehicle_old/skateboard/scooter/Initialize(mapload)
 	. = ..()
 
-/obj/vehicle_old/skateboard/scooter/attackby(obj/item/W, mob/user)
+/obj/vehicle_old/skateboard/scooter/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/wrench))
 		to_chat(user, "<span class='notice'>You begin to remove the handlebars...</span>")
 		var/obj/vehicle_old/skateboard/S = new(drop_location())
@@ -526,7 +526,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/build_step = 0
 
-/obj/item/scooter_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/scooter_frame/attackby_legacy(var/obj/item/W as obj, var/mob/user)
 	..()
 
 	switch(build_step)
@@ -558,7 +558,7 @@
 
 //Decontstruction
 
-/obj/item/scooter_frame/attackby(obj/item/W, mob/user)
+/obj/item/scooter_frame/attackby_legacy(obj/item/W, mob/user)
 	. = ..()
 	if(istype(W, /obj/item/tool/wrench))
 		to_chat(user, "<span class='notice'>You deconstruct \the [src].</span>")
@@ -567,7 +567,7 @@
 		qdel(src)
 	return
 
-/obj/vehicle_old/skateboard/scooter/attackby(obj/item/W, mob/user)
+/obj/vehicle_old/skateboard/scooter/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/screwdriver))
 		to_chat(user, "<span class='notice'>You uninstall the wheels and handlebars from \the [src].</span>")
 		new /obj/item/stack/rods(drop_location(), 2)

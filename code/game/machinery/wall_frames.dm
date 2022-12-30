@@ -16,7 +16,7 @@
 	if(!frame_types_wall)
 		frame_types_wall = construction_frame_wall
 
-/obj/item/frame/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/frame/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		new refund_type(get_turf(src.loc), refund_amt)
 		qdel(src)

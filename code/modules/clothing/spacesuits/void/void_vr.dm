@@ -125,7 +125,7 @@
 	helmet = new /obj/item/clothing/head/helmet/space/void/autolok //autoinstall the helmet
 
 //override the attackby screwdriver proc so that people can't remove the helmet
-/obj/item/clothing/suit/space/void/autolok/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/suit/space/void/autolok/attackby_legacy(obj/item/W as obj, mob/user as mob)
 
 	if(!isliving(user))
 		return

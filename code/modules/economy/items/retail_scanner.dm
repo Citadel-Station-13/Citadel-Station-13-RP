@@ -156,7 +156,7 @@
 
 
 
-/obj/item/retail_scanner/attackby(obj/O as obj, user as mob)
+/obj/item/retail_scanner/attackby_legacy(obj/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
 	var/obj/item/card/id/I = O.GetID()
 	if(I)

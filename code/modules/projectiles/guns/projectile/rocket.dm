@@ -39,7 +39,7 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/projectile/rocket/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/rocket/attackby_legacy(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/rocket)))
 		load(I, user)
 	else
@@ -82,7 +82,7 @@
 		return 0
 	return ..()
 
-/obj/item/gun/projectile/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/rocket/collapsible/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 

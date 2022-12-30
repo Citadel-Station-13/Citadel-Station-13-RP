@@ -78,7 +78,7 @@
 	imp_in = null
 	return ..()
 
-/obj/item/implant/attackby(obj/item/I, mob/user)
+/obj/item/implant/attackby_legacy(obj/item/I, mob/user)
 	if(istype(I, /obj/item/implanter))
 		var/obj/item/implanter/implanter = I
 		if(implanter.imp)

@@ -48,7 +48,7 @@
 	force = 20
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
-/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
@@ -88,7 +88,7 @@
 	ammo_type = /obj/item/ammo_casing/a357/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
@@ -132,7 +132,7 @@
 	ammo_type = /obj/item/ammo_casing/a44/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)

@@ -366,7 +366,7 @@
 	var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new mimic_type(drop_location())
 	visible_message("<span class='boldwarning'>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</span>")
 
-/obj/effect/floormimic/attackby(obj/item/I, mob/living/L)
+/obj/effect/floormimic/attackby_legacy(obj/item/I, mob/living/L)
 	if(mimic_active)
 		awaken(L)
 	else

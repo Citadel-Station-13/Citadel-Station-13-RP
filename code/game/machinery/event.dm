@@ -110,7 +110,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	var/sliced = FALSE
 	var/gutted = FALSE
 
-/obj/structure/broken_pump/attackby(obj/item/I as obj, mob/user)
+/obj/structure/broken_pump/attackby_legacy(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
 		to_chat(user, SPAN_NOTICE("You begin cutting through the exterior plating of \the [src]."))
@@ -258,7 +258,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	var/sliced = FALSE
 	var/gutted = FALSE
 
-/obj/structure/broken_reservoir/attackby(obj/item/I as obj, mob/user)
+/obj/structure/broken_reservoir/attackby_legacy(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
 		to_chat(user, SPAN_NOTICE("You begin cutting through the thick glass of the [src]."))

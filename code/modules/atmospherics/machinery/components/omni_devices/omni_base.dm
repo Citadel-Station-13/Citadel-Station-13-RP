@@ -80,7 +80,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/quaternary/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/quaternary/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(!W.is_wrench())
 		return ..()
 

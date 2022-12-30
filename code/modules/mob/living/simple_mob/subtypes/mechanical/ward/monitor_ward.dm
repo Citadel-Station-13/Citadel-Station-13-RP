@@ -45,7 +45,7 @@
 /mob/living/simple_mob/mechanical/ward/monitor/crew
 	icon_state = "ward-nt"
 
-/mob/living/simple_mob/mechanical/ward/monitor/crew/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/mechanical/ward/monitor/crew/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/card/id) && !owner)
 		owner = user
 		return

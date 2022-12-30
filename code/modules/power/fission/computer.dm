@@ -22,7 +22,7 @@
 	linked = null
 	return ..()
 
-/obj/machinery/computer/fission_monitor/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/computer/fission_monitor/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		if (!isnull(M.connectable) && istype(M.connectable, /obj/machinery/power/fission))

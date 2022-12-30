@@ -347,7 +347,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 							break
 		attack_self(H)
 
-/obj/item/technomancer_catalog/attackby(var/atom/movable/AM, var/mob/user)
+/obj/item/technomancer_catalog/attackby_legacy(var/atom/movable/AM, var/mob/user)
 	var/turf/T = get_turf(user)
 	if(T.z in GLOB.using_map.player_levels)
 		to_chat(user, "<span class='danger'>You can only refund at your base, it's too late now!</span>")

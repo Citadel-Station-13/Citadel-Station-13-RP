@@ -30,7 +30,7 @@
 	if(inside_item_type)
 		new /obj/item/archaeological_find(src, inside_item_type)
 
-/obj/item/strangerock/attackby(var/obj/item/I, var/mob/user)
+/obj/item/strangerock/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/pickaxe/brush))
 		var/obj/item/inside = locate() in src
 		if(inside)

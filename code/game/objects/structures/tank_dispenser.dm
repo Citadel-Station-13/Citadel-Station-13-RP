@@ -54,7 +54,7 @@
 	return
 
 
-/obj/structure/dispenser/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/dispenser/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/tank/oxygen) || istype(I, /obj/item/tank/air) || istype(I, /obj/item/tank/anesthetic))
 		if(oxygentanks < 10)
 			if(!user.attempt_insert_item_for_installation(I, src))

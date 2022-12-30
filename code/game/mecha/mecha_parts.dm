@@ -17,7 +17,7 @@
 	icon_state = "backbone"
 	var/datum/construction/construct
 
-/obj/item/mecha_parts/chassis/attackby(obj/item/W, mob/user)
+/obj/item/mecha_parts/chassis/attackby_legacy(obj/item/W, mob/user)
 	if(!construct || !construct.action(W, user))
 		..()
 	return

@@ -64,7 +64,7 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[num++]"
 
-/obj/machinery/computer/transhuman/resleeving/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/computer/transhuman/resleeving/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		var/obj/machinery/clonepod/transhuman/P = M.connecting

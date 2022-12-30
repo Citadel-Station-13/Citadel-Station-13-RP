@@ -152,7 +152,7 @@
 		return success_smash(user)
 	return fail_smash(user)
 
-/turf/simulated/wall/attackby(obj/item/W as obj, mob/user as mob)
+/turf/simulated/wall/attackby_legacy(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	if (!user)

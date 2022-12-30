@@ -69,7 +69,7 @@
 	if(Adjacent(user))
 		. += SPAN_NOTICE("... from this distance, they seem to be made of [material.name] ...")
 
-/obj/structure/barricade/cutout/attackby(obj/I, mob/user)
+/obj/structure/barricade/cutout/attackby_legacy(obj/I, mob/user)
 	if(is_type_in_list(I, painters))
 		var/choice = tgui_input_list(user, "What would you like to paint the cutout as?", "Cutout Painting", cutout_types)
 		if(!choice || !Adjacent(user, src) || I != user.get_active_held_item())

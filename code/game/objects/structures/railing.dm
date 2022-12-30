@@ -197,7 +197,7 @@
 	update_icon()
 	return
 
-/obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/railing/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(W.is_wrench() && !anchored)
 		playsound(src.loc, W.tool_sound, 50, 1)

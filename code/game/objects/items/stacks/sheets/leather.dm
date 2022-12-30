@@ -183,7 +183,7 @@
 	type_to_spawn = /obj/item/stack/wetleather
 
 //Step one - dehairing.
-/obj/item/stack/animalhide/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/stack/animalhide/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(	istype(W, /obj/item/material/knife) || \
 		istype(W, /obj/item/material/twohanded/fireaxe) || \
 		istype(W, /obj/item/material/knife/machete/hatchet) )

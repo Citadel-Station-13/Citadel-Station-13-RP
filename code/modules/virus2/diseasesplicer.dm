@@ -11,7 +11,7 @@
 	var/splicing = 0
 	var/scanning = 0
 
-/obj/machinery/computer/diseasesplicer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/computer/diseasesplicer/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
 		return ..(I, user)
 

@@ -32,7 +32,7 @@
 	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = WATER_LAYER)
 	add_overlay(water_sprite)
 
-/turf/simulated/floor/water/attackby(obj/item/O as obj, mob/user as mob)
+/turf/simulated/floor/water/attackby_legacy(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_containers/RG = O
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent(reagent_type, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))

@@ -17,7 +17,7 @@
 		underlays += image(syringe.icon, src, syringe.icon_state)
 		underlays += syringe.filling
 
-/obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
+/obj/item/syringe_cartridge/attackby_legacy(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/syringe))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
@@ -118,7 +118,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/syringe/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/launcher/syringe/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/syringe_cartridge))
 		var/obj/item/syringe_cartridge/C = A
 		if(darts.len >= max_darts)

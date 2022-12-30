@@ -26,7 +26,7 @@
 			I.loc = src
 	update_icon()
 
-/obj/structure/bookcase/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/bookcase/attackby_legacy(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
@@ -235,7 +235,7 @@
 	else
 		to_chat(user, "This book is completely blank!")
 
-/obj/item/book/attackby(obj/item/W, mob/user)
+/obj/item/book/attackby_legacy(obj/item/W, mob/user)
 	if(carved)
 		if(!store)
 			if(W.w_class < ITEMSIZE_LARGE)

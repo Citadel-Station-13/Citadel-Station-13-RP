@@ -57,7 +57,7 @@
 	if(powernet && (powernet == control.powernet)) //update if we're still in the same powernet
 		control.cdir = angle
 
-/obj/machinery/power/tracker/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/tracker/attackby_legacy(var/obj/item/W, var/mob/user)
 
 	if(W.is_crowbar())
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)

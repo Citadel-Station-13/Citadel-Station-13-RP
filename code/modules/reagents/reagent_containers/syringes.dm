@@ -50,7 +50,7 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_containers/syringe/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	return
 
 /obj/item/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)
@@ -225,7 +225,7 @@
 					H.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
-			
+
 			if(ismob(target) && affected)
 				dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 

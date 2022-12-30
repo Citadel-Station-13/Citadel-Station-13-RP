@@ -80,7 +80,7 @@
 	if(done)
 		charging = null
 
-/obj/machinery/mech_recharger/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/mech_recharger/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))

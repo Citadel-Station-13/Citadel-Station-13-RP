@@ -54,7 +54,7 @@ var/bomb_set
 				attack_hand(M)
 	return
 
-/obj/machinery/nuclearbomb/attackby(obj/item/O, mob/user)
+/obj/machinery/nuclearbomb/attackby_legacy(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		playsound(src, O.tool_sound, 50, TRUE)
 		add_fingerprint(user)

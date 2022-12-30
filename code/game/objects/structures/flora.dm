@@ -40,7 +40,7 @@
 	if(harvest_count < max_harvests)
 		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
 
-/obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/flora/attackby_legacy(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
 		var/harvest_spawn = pickweight(harvest_loot)
 		var/atom/movable/AM = spawn_harvest(harvest_spawn, user)
@@ -97,7 +97,7 @@
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 
-/obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/flora/ausbushes/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(istype(W, /obj/item/shovel))
 		playsound(src.loc, W.tool_sound, 50, 1)

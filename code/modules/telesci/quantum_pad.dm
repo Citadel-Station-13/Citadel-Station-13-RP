@@ -46,7 +46,7 @@
 	teleport_cooldown = initial(teleport_cooldown)
 	teleport_cooldown -= (E * 100)
 
-/obj/machinery/power/quantumpad/attackby(obj/item/I, mob/user, params)
+/obj/machinery/power/quantumpad/attackby_legacy(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 

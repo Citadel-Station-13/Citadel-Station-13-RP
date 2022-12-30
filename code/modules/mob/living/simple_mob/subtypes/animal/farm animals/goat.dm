@@ -75,7 +75,7 @@
 		for(var/obj/effect/plant/SV in loc)
 			SV.die_off(1)
 
-/mob/living/simple_mob/animal/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/goat/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")

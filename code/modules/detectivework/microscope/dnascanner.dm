@@ -24,7 +24,7 @@
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 
-/obj/machinery/dnaforensics/attackby(obj/item/W, mob/user)
+/obj/machinery/dnaforensics/attackby_legacy(obj/item/W, mob/user)
 	if(bloodsamp)
 		to_chat(user, SPAN_WARNING("There is a sample in the machine."))
 		return

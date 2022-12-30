@@ -41,7 +41,7 @@
 		return
 	to_chat(user, "<span class='warning'>You can't move.</span>")
 
-/obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
+/obj/effect/spresent/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (!W.is_wirecutter())
@@ -204,7 +204,7 @@
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-/obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/living/user as mob)
+/obj/item/wrapping_paper/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
 	..()
 	if (!( locate(/obj/structure/table, loc) ))
 		to_chat(user, "<span class='warning'>You must put the paper on a table first!</span>")

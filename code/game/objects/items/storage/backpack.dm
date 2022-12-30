@@ -16,7 +16,7 @@
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/storage/backpack/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/backpack/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (src.use_sound)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	..()
@@ -50,7 +50,7 @@
 	name = "dufflebag of holding"
 	icon_state = "holdingduffle"
 
-/obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/backpack/holding/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
 		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
 		//qdel(W) - fuck this holy shit

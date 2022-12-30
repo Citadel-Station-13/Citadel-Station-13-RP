@@ -21,7 +21,7 @@
 /obj/structure/girder/puzzle/Initialize(mapload, materialtype, rmaterialtype, girder_material)
 	return ..(mapload, "dungeonium")
 
-/obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/girder/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
 		to_chat(user, "<span class='notice'>You find no bolts to dissamble the pillar...</span>")
 		return

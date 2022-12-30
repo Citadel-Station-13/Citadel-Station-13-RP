@@ -28,7 +28,7 @@
 	. = ..()
 	AIR_UPDATE_ON_MOVED_AUTO
 
-/obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
+/obj/structure/plasticflaps/attackby_legacy(obj/item/P, mob/user)
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut the plastic flaps.</span>")

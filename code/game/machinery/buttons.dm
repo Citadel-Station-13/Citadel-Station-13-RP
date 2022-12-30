@@ -13,7 +13,7 @@
 /obj/machinery/button/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/button/attackby(obj/item/W, mob/user)
+/obj/machinery/button/attackby_legacy(obj/item/W, mob/user)
 	return attack_hand(user)
 
 /obj/machinery/button/attack_hand(obj/item/W, mob/user)

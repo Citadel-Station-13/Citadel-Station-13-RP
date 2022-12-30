@@ -71,7 +71,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/fence/attackby(obj/item/W, mob/user)
+/obj/structure/fence/attackby_legacy(obj/item/W, mob/user)
 	if(W.is_wirecutter())
 		if(!cuttable)
 			to_chat(user, SPAN_WARNING( "This section of the fence can't be cut."))

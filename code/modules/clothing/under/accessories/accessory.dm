@@ -126,7 +126,7 @@
 		forceMove(get_turf(src))
 
 //default attackby behaviour
-/obj/item/clothing/accessory/attackby(obj/item/I, mob/user)
+/obj/item/clothing/accessory/attackby_legacy(obj/item/I, mob/user)
 	..()
 
 //default attack_hand behaviour
@@ -820,7 +820,7 @@
 		..()
 		desc = initial(desc) + " The tag says \"[tag]\"."
 
-/obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
+/obj/item/clothing/accessory/collar/attackby_legacy(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		return
 

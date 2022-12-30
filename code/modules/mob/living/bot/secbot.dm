@@ -219,7 +219,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("\The [src] is already corrupt."))
 
-/mob/living/bot/secbot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/secbot/attackby_legacy(var/obj/item/O, var/mob/user)
 	var/curhealth = health
 	. = ..()
 	if(health < curhealth && on == TRUE)
@@ -448,7 +448,7 @@
 
 //Secbot Construction
 
-/obj/item/clothing/head/helmet/attackby(var/obj/item/assembly/signaler/S, mob/user as mob)
+/obj/item/clothing/head/helmet/attackby_legacy(var/obj/item/assembly/signaler/S, mob/user as mob)
 	..()
 	if(!issignaler(S))
 		..()
@@ -479,7 +479,7 @@
 	var/build_step = 0
 	var/created_name = "Securitron"
 
-/obj/item/secbot_assembly/attackby(var/obj/item/W, var/mob/user)
+/obj/item/secbot_assembly/attackby_legacy(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/weldingtool) && !build_step)
 		var/obj/item/weldingtool/WT = W

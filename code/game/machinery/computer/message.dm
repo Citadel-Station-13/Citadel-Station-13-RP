@@ -30,7 +30,7 @@
 	var/custommessage 	= "This is a test, please ignore."
 
 
-/obj/machinery/computer/message_monitor/attackby(obj/item/O as obj, mob/living/user as mob)
+/obj/machinery/computer/message_monitor/attackby_legacy(obj/item/O as obj, mob/living/user as mob)
 	if(machine_stat & (NOPOWER|BROKEN))
 		..()
 		return

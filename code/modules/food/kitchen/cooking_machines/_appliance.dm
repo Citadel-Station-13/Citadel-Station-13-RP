@@ -240,7 +240,7 @@
 
 	else return 1
 
-/obj/machinery/appliance/attackby(obj/item/I, mob/user)
+/obj/machinery/appliance/attackby_legacy(obj/item/I, mob/user)
 	if(!cook_type || (machine_stat & (BROKEN)))
 		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")
 		return

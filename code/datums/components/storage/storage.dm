@@ -491,7 +491,7 @@
 	return FALSE
 
 //This proc is called when you want to place an item into the storage item.
-/datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
+/datum/component/storage/proc/attackby_legacy(datum/source, obj/item/I, mob/M, params)
 	if(istype(I, /obj/item/hand_labeler))
 		var/obj/item/hand_labeler/labeler = I
 		if(labeler.mode)

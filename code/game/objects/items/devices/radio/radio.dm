@@ -615,7 +615,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			. += SPAN_NOTICE("\The [src] can not be modified or attached!")
 	return
 
-/obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/radio/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	user.set_machine(src)
 	if (!W.is_screwdriver())
@@ -664,7 +664,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/datum/robot_component/C = R.components["radio"]
 		R.cell_use_power(C.active_usage)
 
-/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/item/radio/borg/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	user.set_machine(src)
 	if (!(I.is_screwdriver() || istype(I, /obj/item/encryptionkey)))
 		return ..()
@@ -819,7 +819,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		add_fingerprint(usr)
 		M.put_in_hands(src)
 
-/obj/item/bluespace_radio/attackby(obj/item/W, mob/user, params)
+/obj/item/bluespace_radio/attackby_legacy(obj/item/W, mob/user, params)
 	if(W == handset)
 		reattach_handset(user)
 	else

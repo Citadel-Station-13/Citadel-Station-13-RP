@@ -118,7 +118,7 @@ Add those other swinging traps you mentioned above!
 	name = "strange area"
 	desc = "The dust hangs strangely in the air here."
 
-/obj/effect/trap/pit/attackby(obj/item/W, mob/user)
+/obj/effect/trap/pit/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/material/wood))
 		var/obj/item/stack/material/wood/M = W
 		if(M.amount >= 3)
@@ -181,7 +181,7 @@ Add those other swinging traps you mentioned above!
 		M.visible_message("<span class='danger'>[M] falls onto a punji stake!</span>", \
 						"<span class='userdanger'>You slide onto a punji stake!</span>")
 
-/obj/effect/trap/pit/punji/attackby(obj/item/W, mob/user)
+/obj/effect/trap/pit/punji/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if(istype(W,/obj/item/stack/tile))
 		var/obj/item/stack/tile/M = W
@@ -227,7 +227,7 @@ Add those other swinging traps you mentioned above!
 	if(!broken_legs)
 		return
 
-/obj/effect/trap/pit/bone_breaker/attackby(obj/item/W, mob/user)
+/obj/effect/trap/pit/bone_breaker/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if(istype(W,/obj/item/stack/tile))
 		var/obj/item/stack/tile/M = W
@@ -272,7 +272,7 @@ Add those other swinging traps you mentioned above!
 		M.visible_message("<span class='danger'>[M] falls into a writhing mass of tentacles!</span>", \
 						"<span class='userdanger'>You are entwined by a writhing mass of tentacles!</span>")
 
-/obj/effect/trap/pit/tentacle/attackby(obj/item/W, mob/user)
+/obj/effect/trap/pit/tentacle/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if(istype(W,/obj/item/stack/tile))
 		var/obj/item/stack/tile/M = W
@@ -354,7 +354,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/proc/get_projectile()
 	return new projectile_type(get_turf(src))
 
-/obj/effect/trap/launcher/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/launcher/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/rods))
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 5)
@@ -433,7 +433,7 @@ Add those other swinging traps you mentioned above!
 	healthcheck()
 	return
 
-/obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/pop_up/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 
@@ -654,7 +654,7 @@ if (istype(AM, /mob/living))
 		visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
 		M.Weaken(12)
 
-/obj/effect/trap/pop_up/thrower/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/pop_up/thrower/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/rods))
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 3)
@@ -700,7 +700,7 @@ if (istype(AM, /mob/living))
 	var/min_damage = 20
 	var/max_damage = 40
 
-/obj/effect/trap/falling/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/falling/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/M = W
 		if(M.amount >= 5 && broken)

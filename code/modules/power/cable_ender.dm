@@ -22,7 +22,7 @@
 				if (!powernetless_only || !target.powernet)
 					. |= target
 
-/obj/structure/cable/ender/attackby(obj/item/W, mob/user)
+/obj/structure/cable/ender/attackby_legacy(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(W.is_wirecutter())
 		to_chat(user,  "<span class='notice'> These cables are too tough to be cut with those [W.name].</span>")

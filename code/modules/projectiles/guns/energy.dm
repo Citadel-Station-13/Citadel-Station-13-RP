@@ -93,7 +93,7 @@
 			charge_tick = 0
 	return 1
 
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/energy/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	..()
 
 /obj/item/gun/energy/switch_firemodes(mob/user)
@@ -151,7 +151,7 @@
 	else
 		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/energy/attackby_legacy(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 

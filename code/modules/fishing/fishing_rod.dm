@@ -51,7 +51,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/material/fishing_rod/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/material/fishing_rod/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(I.is_wirecutter() && strung)
 		strung = FALSE
 		to_chat(user, "<span class='notice'>You cut \the [src]'s string!</span>")

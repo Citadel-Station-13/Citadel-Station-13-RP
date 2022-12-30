@@ -136,7 +136,7 @@
 
 /obj/item/tray/var/cooldown = 0	//shield bash cooldown. based on world.time
 
-/obj/item/tray/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/tray/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/material/kitchen/rollingpin))
 		if(cooldown < world.time - 25)
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")

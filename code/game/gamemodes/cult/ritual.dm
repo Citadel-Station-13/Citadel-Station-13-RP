@@ -89,7 +89,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		. += "This spell circle reads: <i>[word1] [word2] [word3]</i>."
 
 
-/obj/effect/rune/attackby(var/obj/I, mob/user)
+/obj/effect/rune/attackby_legacy(var/obj/I, mob/user)
 	if(istype(I, /obj/item/book/tome) && iscultist(user))
 		to_chat(user, "You retrace your steps, carefully undoing the lines of the rune.")
 		qdel(src)

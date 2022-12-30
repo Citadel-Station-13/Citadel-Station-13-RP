@@ -188,7 +188,7 @@
 	else
 		return ..()
 
-/obj/item/flashlight/attackby(obj/item/W, mob/user as mob)
+/obj/item/flashlight/attackby_legacy(obj/item/W, mob/user as mob)
 	if(power_use)
 		if(istype(W, /obj/item/cell))
 			if(istype(W, /obj/item/cell/device))

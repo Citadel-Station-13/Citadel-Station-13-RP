@@ -1352,7 +1352,7 @@
 ////// AttackBy //////
 //////////////////////
 
-/obj/mecha/attackby(obj/item/W as obj, mob/user as mob)
+/obj/mecha/attackby_legacy(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W, /obj/item/mmi))
 		if(mmi_move_inside(W,user))

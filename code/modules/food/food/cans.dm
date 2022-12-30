@@ -6,7 +6,7 @@
 	pickup_sound = 'sound/items/pickup/soda.ogg'
 	var/modified_type = /obj/item/trash/punctured_can
 
-/obj/item/reagent_containers/food/drinks/cans/attackby(obj/item/W, mob/user)
+/obj/item/reagent_containers/food/drinks/cans/attackby_legacy(obj/item/W, mob/user)
 	. = ..()
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!reagents || reagents.total_volume == 0)

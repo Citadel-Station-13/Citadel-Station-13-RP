@@ -61,7 +61,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		to_chat(user, "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>")
 	return
 
-/obj/item/clothing/mask/facehugger/attackby(obj/item/I, mob/user)
+/obj/item/clothing/mask/facehugger/attackby_legacy(obj/item/I, mob/user)
 	if(I.force)
 		user.do_attack_animation(src)
 		Die()
@@ -343,7 +343,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		to_chat(user, "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>")
 	return
 
-/mob/living/simple_mob/animal/space/alien/facehugger/attackby(obj/item/I, mob/user)
+/mob/living/simple_mob/animal/space/alien/facehugger/attackby_legacy(obj/item/I, mob/user)
 	if(I.force)
 		user.do_attack_animation(src)
 		Die()

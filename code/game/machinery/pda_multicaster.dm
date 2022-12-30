@@ -39,7 +39,7 @@
 	else
 		icon_state = "[initial(icon_state)]-p"
 
-/obj/machinery/pda_multicaster/attackby(obj/item/I, mob/user)
+/obj/machinery/pda_multicaster/attackby_legacy(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		default_deconstruction_screwdriver(user, I)
 	else if(I.is_crowbar())

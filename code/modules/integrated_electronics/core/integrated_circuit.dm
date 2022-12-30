@@ -52,7 +52,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	external_examine(user)
 	ui_interact(user)
 
-/// Can be called via electronic_assembly/attackby()
+/// Can be called via electronic_assembly/attackby_legacy()
 /obj/item/integrated_circuit/proc/additem(var/obj/item/I, var/mob/living/user)
 	attackby(I, user)
 

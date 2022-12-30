@@ -55,7 +55,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	hide(hides_under_flooring() && !T.is_plating())
 
 
-/obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
+/obj/item/radio/beacon/anchored/attackby_legacy(obj/item/I, mob/living/user)
 	..()
 	if(istype(I, /obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/S = I

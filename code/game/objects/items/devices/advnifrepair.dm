@@ -20,7 +20,7 @@
 	. = ..()
 	supply = new(max = 60, A = src)
 
-/obj/item/nifrepairer/attackby(obj/W, mob/user)
+/obj/item/nifrepairer/attackby_legacy(obj/W, mob/user)
 	if(istype(W,/obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/np = W
 		if(np.use(1) && supply.get_free_space() >= efficiency)

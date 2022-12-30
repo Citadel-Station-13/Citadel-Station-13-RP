@@ -397,7 +397,7 @@
 	else
 		icon_state = icon_on
 
-/obj/machinery/coinbank/attackby(obj/item/O, mob/user)
+/obj/machinery/coinbank/attackby_legacy(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")

@@ -72,7 +72,7 @@
 	else
 		..()
 
-/obj/item/defib_kit/attackby(obj/item/W, mob/user, params)
+/obj/item/defib_kit/attackby_legacy(obj/item/W, mob/user, params)
 	if(W == paddles)
 		reattach_paddles(user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE

@@ -756,7 +756,7 @@ var/list/ai_verbs_default = list(
 		camera.set_light(0)
 		camera = null
 
-/mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/ai/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/aicard))
 
 		var/obj/item/aicard/card = W

@@ -125,7 +125,7 @@
 		return
 	return 1
 
-/obj/machinery/oxygen_pump/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/oxygen_pump/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		machine_stat ^= MAINT
 		user.visible_message( \

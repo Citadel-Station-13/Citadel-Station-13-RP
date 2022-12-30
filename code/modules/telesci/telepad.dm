@@ -22,7 +22,7 @@
 		E += C.rating
 	efficiency = E
 
-/obj/machinery/telepad/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/telepad/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	if(default_deconstruction_screwdriver(user, W))

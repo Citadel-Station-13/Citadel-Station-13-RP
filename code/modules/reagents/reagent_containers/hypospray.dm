@@ -112,7 +112,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/hypospray/vial/attackby(obj/item/W, mob/user as mob)
+/obj/item/reagent_containers/hypospray/vial/attackby_legacy(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/reagent_containers/glass/beaker/vial))
 		if(!loaded_vial)
 			user.visible_message("<span class='notice'>[user] begins loading [W] into \the [src].</span>","<span class='notice'>You start loading [W] into \the [src].</span>")

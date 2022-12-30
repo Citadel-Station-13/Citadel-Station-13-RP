@@ -27,7 +27,7 @@
 	icon_state = "basalt3"
 
 
-/obj/structure/flora/rock/attackby(obj/item/W as obj, mob/user as mob)		//Shamelessly copied from mine_outcrops.dm
+/obj/structure/flora/rock/attackby_legacy(obj/item/W as obj, mob/user as mob)		//Shamelessly copied from mine_outcrops.dm
 	if (istype(W, /obj/item/pickaxe))
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
 		if(do_after(user,40))

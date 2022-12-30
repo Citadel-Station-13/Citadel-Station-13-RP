@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	icon_state = pick(postertypes)
 	update_icon()
 
-/obj/machinery/holoposter/attackby(obj/item/W, mob/user)
+/obj/machinery/holoposter/attackby_legacy(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(machine_stat & (NOPOWER))
 		return

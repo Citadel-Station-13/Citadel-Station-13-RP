@@ -44,7 +44,7 @@
 			I.layer = ABOVE_LIGHTING_LAYER
 			add_overlay(I)
 
-/obj/machinery/tele_projector/attackby(obj/item/W)
+/obj/machinery/tele_projector/attackby_legacy(obj/item/W)
 	attack_hand()
 
 /obj/machinery/tele_projector/attack_ai()

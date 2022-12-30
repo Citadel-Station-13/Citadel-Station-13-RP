@@ -44,7 +44,7 @@
 	. = ..()
 	machine_id = "[station_name()] Acc. DB #[GLOB.num_financial_terminals++]"
 
-/obj/machinery/account_database/attackby(obj/O, mob/user)
+/obj/machinery/account_database/attackby_legacy(obj/O, mob/user)
 	if(!istype(O, /obj/item/card/id))
 		return ..()
 

@@ -102,7 +102,7 @@
 	master = C
 	master.active_dummy = src
 
-/obj/effect/dummy/chameleon/attackby()
+/obj/effect/dummy/chameleon/attackby_legacy()
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

@@ -182,7 +182,7 @@
 	mod_min = 150
 	mod_max = 150
 
-/mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
+/mob/living/simple_mob/otie/attackby_legacy(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
 	if(istype(O, /obj/item/reagent_containers/food))
 		qdel(O)
 		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)

@@ -121,7 +121,7 @@
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/dna_scannernew/attackby(obj/item/item, mob/user)
+/obj/machinery/dna_scannernew/attackby_legacy(obj/item/item, mob/user)
 	if(istype(item, /obj/item/reagent_containers/glass))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
@@ -255,7 +255,7 @@
 	active_power_usage = 400
 	var/waiting_for_user_input=0 // Fix for #274 (Mash create block injector without answering dialog to make unlimited injectors) - N3X
 
-/obj/machinery/computer/scan_consolenew/attackby(obj/item/I, mob/user)
+/obj/machinery/computer/scan_consolenew/attackby_legacy(obj/item/I, mob/user)
 	if (istype(I, /obj/item/disk/data)) //INSERT SOME diskS
 		if (!src.disk)
 			if(!user.attempt_insert_item_for_installation(I, src))

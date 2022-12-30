@@ -13,7 +13,7 @@
 	circuit = /obj/item/circuitboard/dnarevive
 	var/reviving = FALSE
 
-/obj/machinery/fossilrevive/attackby(obj/item/I, mob/user)
+/obj/machinery/fossilrevive/attackby_legacy(obj/item/I, mob/user)
 	if(reviving)
 		to_chat(user, SPAN_NOTICE("The machine is processing!"))
 		return ..()

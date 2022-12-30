@@ -204,7 +204,7 @@
 	//Coat the victim in some oil
 	oil.trans_to(victim, 40)
 
-/obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/cooker/fryer/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/reagent_containers/glass) && I.reagents)
 		if (I.reagents.total_volume <= 0 && oil)
 			//Its empty, handle scooping some hot oil out of the fryer

@@ -93,7 +93,7 @@
 	else
 		. += "The connect error light is blinking."
 
-/obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/meter/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
@@ -124,5 +124,5 @@
 /obj/machinery/meter/turf/select_target()
 	return loc
 
-/obj/machinery/meter/turf/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/meter/turf/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	return

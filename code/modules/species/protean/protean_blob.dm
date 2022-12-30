@@ -245,7 +245,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/protean_blob/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name

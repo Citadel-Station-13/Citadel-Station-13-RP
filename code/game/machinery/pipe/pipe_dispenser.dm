@@ -102,7 +102,7 @@
 				VARSET_IN(src, wait, FALSE, 15)
 
 
-/obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/pipedispenser/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		if(!user.attempt_consume_item_for_construction(W))
 			return

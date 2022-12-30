@@ -78,7 +78,7 @@
 // Proc: attackby()
 // Parameters: 2 (I - the item being whacked against the machine, user - the person doing the whacking)
 // Description: Handles deconstruction.
-/obj/machinery/exonet_node/attackby(obj/item/I, mob/user)
+/obj/machinery/exonet_node/attackby_legacy(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		default_deconstruction_screwdriver(user, I)
 	else if(I.is_crowbar())

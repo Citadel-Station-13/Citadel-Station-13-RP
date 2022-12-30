@@ -27,7 +27,7 @@
 	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
 	return
 
-/obj/structure/vehiclecage/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/vehiclecage/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")

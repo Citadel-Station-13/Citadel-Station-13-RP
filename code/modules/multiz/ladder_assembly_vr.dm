@@ -14,7 +14,7 @@
 	var/state = 0
 	var/created_name = null
 
-/obj/structure/ladder_assembly/attackby(obj/item/W, mob/user)
+/obj/structure/ladder_assembly/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter the name for the ladder.", "Ladder Name", src.created_name), MAX_NAME_LEN)
 		if(in_range(src, user))

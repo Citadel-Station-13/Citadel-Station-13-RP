@@ -88,7 +88,7 @@
 	upperdrop = 8
 	outcropdrop = /obj/item/ore/uranium
 
-/obj/structure/outcrop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/outcrop/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pickaxe))
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
 		if(do_after(user,40))

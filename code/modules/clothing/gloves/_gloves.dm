@@ -33,7 +33,7 @@
 /obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
 	return 0 // return 1 to cancel attack_hand()
 
-/*/obj/item/clothing/gloves/attackby(obj/item/W, mob/user)
+/*/obj/item/clothing/gloves/attackby_legacy(obj/item/W, mob/user)
 	if(W.is_wirecutter() || istype(W, /obj/item/scalpel))
 		if (clipped)
 			to_chat(user, "<span class='notice'>The [src] have already been clipped!</span>")

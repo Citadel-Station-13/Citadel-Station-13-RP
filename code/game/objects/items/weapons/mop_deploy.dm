@@ -43,7 +43,7 @@
 				T.clean_deploy(src)
 			to_chat(user, "<span class='notice'>You have finished mopping!</span>")
 
-/obj/effect/attackby(obj/item/I, mob/user)
+/obj/effect/attackby_legacy(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mop_deploy) || istype(I, /obj/item/soap))
 		return
 	..()

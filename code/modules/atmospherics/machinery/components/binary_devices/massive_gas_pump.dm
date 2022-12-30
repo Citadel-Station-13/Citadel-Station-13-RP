@@ -97,7 +97,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return

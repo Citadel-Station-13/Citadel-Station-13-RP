@@ -16,7 +16,7 @@
 
 	var/obj/item/card/id/inserted
 
-/obj/machinery/computer/id_restorer/attackby(obj/I, mob/user)
+/obj/machinery/computer/id_restorer/attackby_legacy(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id) && !(istype(I,/obj/item/card/id/guest)))
 		if(!inserted)
 			if(!user.attempt_insert_item_for_installation(I, src))

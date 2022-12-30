@@ -110,7 +110,7 @@ var/list/global/tank_gauge_cache = list()
 		. += "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>"
 
 
-/obj/item/tank/attackby(obj/item/W, mob/user)
+/obj/item/tank/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if (istype(loc, /obj/item/assembly))
 		icon = loc

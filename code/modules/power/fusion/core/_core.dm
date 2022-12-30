@@ -106,7 +106,7 @@ var/list/fusion_cores = list()
 	if(owned_field)
 		Shutdown()
 
-/obj/machinery/power/fusion_core/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/fusion_core/attackby_legacy(var/obj/item/W, var/mob/user)
 
 	if(owned_field)
 		to_chat(user,"<span class='warning'>Shut \the [src] off first!</span>")

@@ -392,7 +392,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
+/obj/machinery/atmospherics/component/unary/vent_pump/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
@@ -428,7 +428,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
+/obj/machinery/atmospherics/component/unary/vent_pump/attackby_legacy(obj/item/W, mob/user)
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && use_power)

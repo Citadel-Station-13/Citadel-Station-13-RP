@@ -67,14 +67,14 @@
 
 	return ..()
 
-/obj/vehicle_old/train/trolley/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/train/trolley/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(open && W.is_wirecutter())
 		passenger_allowed = !passenger_allowed
 		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
 	else
 		..()
 
-/obj/vehicle_old/train/engine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/train/engine/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, key_type))
 		if(!key)
 			if(!user.attempt_insert_item_for_installation(W, src))

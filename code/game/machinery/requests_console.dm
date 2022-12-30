@@ -229,7 +229,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	return
 
 					//err... hacking code, which has no reason for existing... but anyway... it was once supposed to unlock priority 3 messaging on that console (EXTREME priority...), but the code for that was removed.
-/obj/machinery/requests_console/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/requests_console/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	if(computer_deconstruction_screwdriver(user, O))
 		return
 	if(istype(O, /obj/item/multitool))

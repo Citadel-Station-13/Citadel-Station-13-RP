@@ -45,7 +45,7 @@
 
 	return 1
 
-/obj/machinery/vr_sleeper/attackby(obj/item/I, mob/user)
+/obj/machinery/vr_sleeper/attackby_legacy(obj/item/I, mob/user)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, I))
 		return

@@ -46,7 +46,7 @@
 	. = ..()
 	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
 
-/obj/vehicle_old/bike/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle_old/bike/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)
 		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
 		if(new_paint)

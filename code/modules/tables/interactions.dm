@@ -55,7 +55,7 @@
 				return 1
 	return 1
 
-/obj/structure/table/attackby(obj/item/W, mob/user, params)
+/obj/structure/table/attackby_legacy(obj/item/W, mob/user, params)
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W

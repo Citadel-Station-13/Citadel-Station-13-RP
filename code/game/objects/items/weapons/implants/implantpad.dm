@@ -35,7 +35,7 @@
 	return
 
 
-/obj/item/implantpad/attackby(obj/item/implantcase/C as obj, mob/user as mob)
+/obj/item/implantpad/attackby_legacy(obj/item/implantcase/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/implantcase))
 		if(!( src.case ))

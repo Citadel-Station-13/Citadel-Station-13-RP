@@ -119,7 +119,7 @@
 		src.connected = null
 
 
-/obj/structure/morgue/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/morgue/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_held_item() != W)
@@ -256,7 +256,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	src.add_fingerprint(user)
 	update()
 
-/obj/structure/morgue/crematorium/attackby(P as obj, mob/user as mob)
+/obj/structure/morgue/crematorium/attackby_legacy(P as obj, mob/user as mob)
 	if (istype(P, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_held_item() != P)

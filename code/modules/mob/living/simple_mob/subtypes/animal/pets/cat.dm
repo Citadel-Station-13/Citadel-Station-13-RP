@@ -167,7 +167,7 @@
 	say_maybe_target = list("Meow?","Mew?","Mao?")
 	say_got_target = list("MEOW!","HSSSS!","REEER!")
 
-/mob/living/simple_mob/animal/passive/cat/attackby(obj/item/W as obj, mob/user as mob)
+/mob/living/simple_mob/animal/passive/cat/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
 		if(named)
 			to_chat(user, "<span class='notice'>\the [name] already has a name!</span>")

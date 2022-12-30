@@ -371,7 +371,7 @@
 	canmove = !resting
 
 //Overriding this will stop a number of headaches down the track.
-/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/pai/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
 		src.adjustBruteLoss(W.force)
@@ -438,7 +438,7 @@
 	grabber.update_inv_r_hand()
 	return H
 
-/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
+/mob/living/silicon/pai/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	var/obj/item/card/id/ID = W.GetID()
 	if(ID)
 		if (idaccessible == 1)

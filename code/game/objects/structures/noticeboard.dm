@@ -23,7 +23,7 @@
 	. = ..()
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/noticeboard/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		if(notices < 5)
 			if(!user.attempt_insert_item_for_installation(O, src))

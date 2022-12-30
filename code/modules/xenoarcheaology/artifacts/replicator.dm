@@ -172,7 +172,7 @@
 				else
 					visible_message(fail_message)
 
-/obj/machinery/replicator/attackby(obj/item/W as obj, mob/living/user as mob)
+/obj/machinery/replicator/attackby_legacy(obj/item/W as obj, mob/living/user as mob)
 	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 	stored_materials.Add(W)

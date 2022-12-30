@@ -60,7 +60,7 @@
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
-/mob/living/simple_mob/horror/BigTim/attackby()
+/mob/living/simple_mob/horror/BigTim/attackby_legacy()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

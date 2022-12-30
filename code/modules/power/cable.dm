@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 //   - Multitool : get the power currently passing through the cable
 //
 
-/obj/structure/cable/attackby(obj/item/W, mob/user)
+/obj/structure/cable/attackby_legacy(obj/item/W, mob/user)
 
 	var/turf/T = src.loc
 	if(!T.is_plating())

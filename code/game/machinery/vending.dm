@@ -167,7 +167,7 @@
 		to_chat(user, "You short out \the [src]'s product lock.")
 		return 1
 
-/obj/machinery/vending/attackby(obj/item/W, mob/user)
+/obj/machinery/vending/attackby_legacy(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
 	if(currently_vending && GLOB.vendor_account && !GLOB.vendor_account.suspended)

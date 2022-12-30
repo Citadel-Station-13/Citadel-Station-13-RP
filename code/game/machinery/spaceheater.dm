@@ -47,7 +47,7 @@
 		cell.emp_act(severity)
 	..(severity)
 
-/obj/machinery/space_heater/attackby(obj/item/I, mob/user)
+/obj/machinery/space_heater/attackby_legacy(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cell))
 		if(panel_open)
 			if(cell)
@@ -208,7 +208,7 @@
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 
-/obj/machinery/power/thermoregulator/attackby(obj/item/I, mob/user)
+/obj/machinery/power/thermoregulator/attackby_legacy(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		if(default_deconstruction_screwdriver(user,I))
 			return

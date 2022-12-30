@@ -48,7 +48,7 @@
 		use(1, user)
 
 // Generic use
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/kit))
 		var/obj/item/kit/K = W
 		K.customize(src, user)
@@ -127,21 +127,21 @@
 				suit.species_restricted = list(H.species.get_bodytype_legacy(H))
 		use(1,user)
 
-/obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/head/helmet/space/void/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/kit/suit))
 		var/obj/item/kit/suit/kit = O
 		kit.customize(src, user)
 		return
 	return ..()
 
-/obj/item/clothing/suit/space/void/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/suit/space/void/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/kit/suit))
 		var/obj/item/kit/suit/kit = O
 		kit.customize(src, user)
 		return
 	return ..()
 
-/obj/item/clothing/suit/storage/hooded/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/suit/storage/hooded/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/kit/suit))
 		var/obj/item/kit/suit/kit = O
 		kit.customize(src, user)
@@ -189,7 +189,7 @@
 /obj/item/kit/suit/rig/can_customize(var/obj/item/I)
 	return istype(I, /obj/item/rig)
 
-/obj/item/rig/attackby(var/obj/item/O, var/mob/user)
+/obj/item/rig/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/kit/suit))
 		var/obj/item/kit/suit/rig/kit = O
 		kit.customize(src, user)
@@ -244,7 +244,7 @@
 	M.update_icon()
 	use(1, user)
 
-/obj/mecha/attackby(var/obj/item/W, var/mob/user)
+/obj/mecha/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/kit/paint))
 		var/obj/item/kit/paint/P = W
 		P.customize(src, user)

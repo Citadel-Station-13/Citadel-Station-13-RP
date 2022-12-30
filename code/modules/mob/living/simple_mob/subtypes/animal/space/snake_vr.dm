@@ -141,7 +141,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/snake/noodle/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/animal/passive/snake/noodle/attackby_legacy(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/reagent_containers/food/snacks/snakesnack))
 		visible_message("<span class='notice'>[user] feeds \the [O] to [src].</span>")
 		qdel(O)

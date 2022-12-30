@@ -68,7 +68,7 @@
 	verbs |= /mob/living/proc/ventcrawl
 	verbs |= /mob/living/proc/hide
 
-/mob/living/simple_mob/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/spiderbot/attackby_legacy(var/obj/item/O as obj, var/mob/user as mob)
 
 	if(istype(O, /obj/item/mmi))
 		var/obj/item/mmi/B = O

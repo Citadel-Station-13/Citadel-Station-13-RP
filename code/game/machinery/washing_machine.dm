@@ -74,7 +74,7 @@
 /obj/machinery/washing_machine/update_icon()
 	icon_state = "wm_[state][panel_open]"
 
-/obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/washing_machine/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(state == 2 && washing.len < 1)
 		if(default_deconstruction_screwdriver(user, W))
 			return

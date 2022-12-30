@@ -14,7 +14,7 @@
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
 
-/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/attackby_legacy(obj/item/W as obj, mob/user as mob)
 		return
 
 /obj/structure/reagent_dispensers/Destroy()
@@ -138,7 +138,7 @@
 	icon_state = "barrel"
 	modded = TRUE
 
-/obj/structure/reagent_dispensers/fueltank/barrel/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/fueltank/barrel/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if (W.is_wrench()) //can't wrench it shut, it's always open
 		return
 	return ..()
@@ -160,7 +160,7 @@
 			rig = null
 			cut_overlays()
 
-/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/fueltank/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if (W.is_wrench())
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
@@ -294,7 +294,7 @@
 	setDir(turn(dir, 270))
 	return 1
 
-/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/water_cooler/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
 		src.add_fingerprint(user)
 		if(bottle)

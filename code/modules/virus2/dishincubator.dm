@@ -14,7 +14,7 @@
 	var/foodsupply = 0
 	var/toxins = 0
 
-/obj/machinery/disease2/incubator/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/machinery/disease2/incubator/attackby_legacy(var/obj/O as obj, var/mob/user as mob)
 	if(default_unfasten_wrench(user, O, 20))
 		return
 

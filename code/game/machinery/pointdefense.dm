@@ -93,7 +93,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	data["turrets"] = turrets
 	return data
 
-/obj/machinery/pointdefense_control/attackby(obj/item/W, mob/user)
+/obj/machinery/pointdefense_control/attackby_legacy(obj/item/W, mob/user)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
 		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
@@ -212,7 +212,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		if(PDC.id_tag == id_tag && (get_z(PDC) in connected_z_levels))
 			return PDC
 
-/obj/machinery/power/pointdefense/attackby(obj/item/W, mob/user)
+/obj/machinery/power/pointdefense/attackby_legacy(obj/item/W, mob/user)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
 		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))

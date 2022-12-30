@@ -143,7 +143,7 @@
 	if(reinf_material)
 		reinforce_girder()
 
-/obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/girder/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
 		if(anchored && !reinf_material)
 			playsound(src, W.tool_sound, 100, 1)
@@ -336,7 +336,7 @@
 	new /obj/effect/decal/remains/human(get_turf(src))
 	qdel(src)
 
-/obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/girder/cult/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")

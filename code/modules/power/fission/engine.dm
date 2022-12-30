@@ -195,7 +195,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/power/fission/attackby(obj/item/W , mob/user)
+/obj/machinery/power/fission/attackby_legacy(obj/item/W , mob/user)
 	add_fingerprint(user)
 	if(exploded)
 		return ..()

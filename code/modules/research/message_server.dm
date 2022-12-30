@@ -142,7 +142,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 	return
 
-/obj/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
+/obj/machinery/message_server/attackby_legacy(obj/item/O as obj, mob/living/user as mob)
 	if (active && !(machine_stat & (BROKEN|NOPOWER)) && (spamfilter_limit < MESSAGE_SERVER_DEFAULT_SPAM_LIMIT*2) && \
 		istype(O, /obj/item/circuitboard/message_monitor))
 		if(!user.attempt_consume_item_for_construction(O))

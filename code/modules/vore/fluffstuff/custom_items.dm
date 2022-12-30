@@ -607,7 +607,7 @@
 	reagents.add_reagent("egg", 9)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/egg/roiz/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
 		var/clr = C.colourName
@@ -716,7 +716,7 @@
 	configured = 1
 	to_chat(user, "<span class='notice'>Card settings set.</span>")
 
-/obj/item/card/id/fluff/amaya/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/card/id/fluff/amaya/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/card/id) && !accessset)
 		var/obj/item/card/id/O = I
 		access |= O.access
@@ -874,7 +874,7 @@
 		else
 			return
 
-/obj/item/perfect_tele/attackby(obj/W, mob/user)
+/obj/item/perfect_tele/attackby_legacy(obj/W, mob/user)
 	if(istype(W,cell_type) && !power_source)
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -1332,7 +1332,7 @@
 	icon_state = "egg_roiz_yellow"
 
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/evian/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/egg/roiz/evian/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon)) //No coloring these ones!
 		return
 	else

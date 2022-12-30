@@ -35,7 +35,7 @@
 	. = ..()
 	song.nano_ui_interact(user)
 
-/obj/structure/musician/attackby(obj/item/I, mob/living/user)
+/obj/structure/musician/attackby_legacy(obj/item/I, mob/living/user)
 	if(I.is_wrench())
 		playsound(src, I.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored? "loosen" : "tighten"] [src]'s casters...</span>")

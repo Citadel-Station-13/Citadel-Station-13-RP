@@ -7,7 +7,7 @@
 
 	var/construction_stage = 1
 
-/obj/item/coilgun_assembly/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/coilgun_assembly/attackby_legacy(var/obj/item/thing, var/mob/user)
 
 	if(istype(thing, /obj/item/stack/material) && construction_stage == 1)
 		var/obj/item/stack/material/reinforcing = thing

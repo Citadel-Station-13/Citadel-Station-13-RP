@@ -29,7 +29,7 @@
 
 	return
 
-/obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clipboard/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return

@@ -253,7 +253,7 @@
 	else
 		icon_state = "access_button_off"
 
-/obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/access_button/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	//Swiping ID on the access button
 	if (istype(I, /obj/item/card/id) || istype(I, /obj/item/pda))
 		attack_hand(user)

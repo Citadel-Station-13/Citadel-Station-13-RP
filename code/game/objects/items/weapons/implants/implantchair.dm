@@ -67,7 +67,7 @@
 		return
 
 
-/obj/machinery/implantchair/attackby(obj/item/G, mob/user)
+/obj/machinery/implantchair/attackby_legacy(obj/item/G, mob/user)
 	if(istype(G, /obj/item/grab))
 		var/obj/item/grab/grab = G
 		if(!ismob(grab.affecting))

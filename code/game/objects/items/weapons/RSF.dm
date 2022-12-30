@@ -36,7 +36,7 @@ RSF
 	. = ..()
 	. += "<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>"
 
-/obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/rsf/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	if (istype(W, /obj/item/rcd_ammo))
 

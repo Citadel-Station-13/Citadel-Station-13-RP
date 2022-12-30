@@ -135,7 +135,7 @@
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
+/mob/living/simple_mob/animal/goliath/attackby_legacy(obj/item/O, mob/user)
 	. = ..()
 	if(istype(O, /obj/item/seeds) && !breedable)
 		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")

@@ -172,7 +172,7 @@ Buildable meters
 	else
 		return ..()
 
-/obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/pipe/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(W, user)
 	return ..()
@@ -261,7 +261,7 @@ Buildable meters
 	w_class = ITEMSIZE_LARGE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
-/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(W, user)
 	return ..()

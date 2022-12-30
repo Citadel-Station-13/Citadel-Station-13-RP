@@ -72,7 +72,7 @@ var/list/ai_status_emotions = list(
 
 	var/emotion = "Neutral"
 
-/obj/machinery/ai_status_display/attackby(I as obj, user as mob)
+/obj/machinery/ai_status_display/attackby_legacy(I as obj, user as mob)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

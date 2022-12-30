@@ -39,7 +39,7 @@
 	update_nearby_tiles()
 	..()
 
-/obj/machinery/shield/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/shield/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	//Calculate damage
@@ -279,7 +279,7 @@
 		update_icon()
 		return 1
 
-/obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/shieldgen/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		playsound(src, W.tool_sound, 100, 1)
 		if(is_open)

@@ -19,7 +19,7 @@
 	. = ..()
 	create_reagents(60)
 
-/obj/item/slime_extract/attackby(obj/item/O, mob/user)
+/obj/item/slime_extract/attackby_legacy(obj/item/O, mob/user)
 	if(istype(O, /obj/item/slimepotion/enhancer))
 		if(enhanced)
 			to_chat(user, "<span class='warning'>You cannot enhance this extract further!</span>")

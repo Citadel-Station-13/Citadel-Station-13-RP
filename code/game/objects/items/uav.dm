@@ -99,7 +99,7 @@
 			if(can_transition_to(state == UAV_PAIRING ? UAV_OFF : UAV_PAIRING, user))
 				return toggle_pairing(user)
 
-/obj/item/uav/attackby(var/obj/item/I, var/mob/user)
+/obj/item/uav/attackby_legacy(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/modular_computer) && state == UAV_PAIRING)
 		var/obj/item/modular_computer/MC = I
 		LAZYDISTINCTADD(MC.paired_uavs, WEAKREF(src))

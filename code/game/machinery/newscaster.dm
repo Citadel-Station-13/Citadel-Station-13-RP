@@ -754,7 +754,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["refresh"])
 			updateUsrDialog()
 
-/obj/machinery/newscaster/attackby(obj/item/I, mob/user)
+/obj/machinery/newscaster/attackby_legacy(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
@@ -923,7 +923,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		if(istype(src.loc, /mob))
 			attack_self(src.loc)
 
-/obj/item/newspaper/attackby(obj/item/W, mob/user)
+/obj/item/newspaper/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		if(scribble_page == curr_page)
 			to_chat(user, "<font color=#4F49AF>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")

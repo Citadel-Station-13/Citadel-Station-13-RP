@@ -145,7 +145,7 @@
 		A.firer = src
 		A.fire(dir2angle(dir))
 
-/obj/machinery/power/emitter/attackby(obj/item/W, mob/user)
+/obj/machinery/power/emitter/attackby_legacy(obj/item/W, mob/user)
 
 	if(W.is_wrench())
 		if(active)

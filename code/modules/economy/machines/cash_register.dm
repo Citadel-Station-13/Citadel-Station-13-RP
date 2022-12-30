@@ -165,7 +165,7 @@
 
 
 
-/obj/machinery/cash_register/attackby(obj/item/O as obj, user as mob)
+/obj/machinery/cash_register/attackby_legacy(obj/item/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
 	var/obj/item/card/id/I = O.GetID()
 	if(I)

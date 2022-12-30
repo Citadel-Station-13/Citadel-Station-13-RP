@@ -33,14 +33,15 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+#warn remove
+/atom/proc/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	return
 
-/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/atom/movable/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!(I.item_flags & ITEM_NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
-/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/mob/living/attackby_legacy(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))
@@ -74,6 +75,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return
 
 //I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
+#warn kill this
 /obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
 	if(item_flags & ITEM_NOBLUDGEON)
 		return 0

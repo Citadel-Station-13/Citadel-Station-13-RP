@@ -56,7 +56,7 @@
 	s.set_up(5, 1, src)
 	s.start()
 
-/obj/machinery/shield_gen/attackby(obj/item/W, mob/user)
+/obj/machinery/shield_gen/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
 		if(emagged)
 			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")

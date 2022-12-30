@@ -44,7 +44,7 @@
 		has_powder = FALSE
 		return ..()
 
-/obj/item/gun/projectile/musket/attackby(obj/item/W, mob/user)
+/obj/item/gun/projectile/musket/attackby_legacy(obj/item/W, mob/user)
 	..()
 	if (istype(W, /obj/item/reagent_containers))
 		if(has_powder)
@@ -107,7 +107,7 @@
 	w_class = ITEMSIZE_NORMAL
 	one_handed_penalty = 0
 
-/obj/item/gun/projectile/musket/pistol/brass 
+/obj/item/gun/projectile/musket/pistol/brass
 	name = "brass wheelock"
 	desc = "A brass black powder pistol with a strange gear like firing mechanism. You are not quite certain how it actually works though."
 	icon_state = "flintlock-brass"

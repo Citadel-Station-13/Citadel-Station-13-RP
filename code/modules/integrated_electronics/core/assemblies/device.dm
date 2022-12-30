@@ -15,7 +15,7 @@
 	QDEL_NULL(EA)
 	return ..()
 
-/obj/item/assembly/electronic_assembly/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/assembly/electronic_assembly/attackby_legacy(obj/item/I as obj, mob/user as mob)
 	if (I.is_crowbar())
 		toggle_open(user)
 	else if (opened)

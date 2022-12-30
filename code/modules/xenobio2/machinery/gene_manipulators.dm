@@ -59,7 +59,7 @@
 /obj/machinery/xenobio/attack_hand(mob/user as mob)
 	nano_ui_interact(user)
 
-/obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/xenobio/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
@@ -133,7 +133,7 @@
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 
-/obj/machinery/xenobio/extractor/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/xenobio/extractor/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/xenoproduct))
 		if(product)
 			to_chat(user, "There is already a xenobiological product loaded.")
@@ -275,7 +275,7 @@
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 
-/obj/machinery/xenobio/editor/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/xenobio/editor/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/grab))
 		var/obj/item/grab/G = W
 		if(occupant)

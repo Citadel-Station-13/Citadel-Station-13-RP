@@ -68,7 +68,7 @@
 	. = ..()
 	. += "It has [uses] lights remaining."
 
-/obj/item/lightreplacer/attackby(obj/item/W, mob/user)
+/obj/item/lightreplacer/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "glass")
 		var/obj/item/stack/G = W
 		if(uses >= max_uses)

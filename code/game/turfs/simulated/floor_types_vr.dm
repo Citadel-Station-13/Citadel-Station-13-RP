@@ -10,7 +10,7 @@
 	icon_state = "colorable-floor"
 	icon = 'icons/turf/stomach_vr.dmi'
 
-/turf/simulated/floor/flesh/attackby()
+/turf/simulated/floor/flesh/attackby_legacy()
 	return
 
 /turf/simulated/floor/flesh/legacy_ex_act(severity)

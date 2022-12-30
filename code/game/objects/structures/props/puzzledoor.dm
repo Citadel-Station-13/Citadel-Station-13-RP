@@ -59,7 +59,7 @@
 	else
 		to_chat(user, "<span class='notice'>\The [src] does not respond to your touch.</span>")
 
-/obj/machinery/door/blast/puzzle/attackby(obj/item/C as obj, mob/user as mob)
+/obj/machinery/door/blast/puzzle/attackby_legacy(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item))
 		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN)))
 			if(istype(C,/obj/item/material/twohanded/fireaxe))

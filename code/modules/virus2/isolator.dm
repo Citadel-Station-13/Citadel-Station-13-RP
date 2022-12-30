@@ -20,7 +20,7 @@
 	else
 		icon_state = "isolator"
 
-/obj/machinery/disease2/isolator/attackby(var/obj/O as obj, var/mob/user)
+/obj/machinery/disease2/isolator/attackby_legacy(var/obj/O as obj, var/mob/user)
 	if(default_unfasten_wrench(user, O, 20))
 		return
 

@@ -175,7 +175,7 @@
 		return
 	..()
 
-/obj/item/clothing/suit/space/rig/attackby(obj/item/I, mob/living/M)
+/obj/item/clothing/suit/space/rig/attackby_legacy(obj/item/I, mob/living/M)
 	if(istype(I, /obj/item/material/knife/tacknife))
 		if(tacknife)
 			return

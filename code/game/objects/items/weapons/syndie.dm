@@ -64,7 +64,7 @@
 			T.dismantle_wall(1)
 	qdel(src)
 
-/obj/item/syndie/c4explosive/attackby(obj/item/W, mob/user)
+/obj/item/syndie/c4explosive/attackby_legacy(obj/item/W, mob/user)
 	if(istype(W, /obj/item/flame/lighter/zippo/c4detonator))
 		var/obj/item/flame/lighter/zippo/c4detonator/D = W
 		D.bomb = src
@@ -106,7 +106,7 @@
 				user.visible_message("<span class='rose'>You hear a quiet click, as \the [user] shuts off \the [src] without even looking at what they're doing.</span>")
 
 
-/obj/item/flame/lighter/zippo/c4detonator/attackby(obj/item/W, mob/user as mob)
+/obj/item/flame/lighter/zippo/c4detonator/attackby_legacy(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
 		detonator_mode = !detonator_mode
 		playsound(src, W.tool_sound, 50, 1)

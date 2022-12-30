@@ -28,7 +28,7 @@
 	else
 		icon_state = "sandbag_empty"
 
-/obj/item/stack/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/emptysandbag/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
 		if(do_after(user, 1 SECONDS, src) && use(1))
 			var/turf/T = get_turf(user)
@@ -79,7 +79,7 @@
 var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	new/datum/stack_recipe("sandbag barricade", /obj/structure/sandbag, 10, one_per_turf = 1, on_floor = 1))
 
-/obj/item/stack/sandbags/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/sandbags/attackby_legacy(var/obj/item/W, var/mob/user)
 	if(is_sharp(W))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [W].</span>", "<span class='notice'>You begin cutting up [src] with [W].</span>")
 		if(do_after(user, 3 SECONDS, src) && use(1))
@@ -148,7 +148,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 				. += "<span class='notice'>It has a few nicks and holes.</span>"
 
 
-/obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/sandbag/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack/sandbags))
 		var/obj/item/stack/sandbags/S = W

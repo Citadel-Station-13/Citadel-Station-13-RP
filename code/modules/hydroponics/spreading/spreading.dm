@@ -37,7 +37,7 @@
 /obj/effect/dead_plant/attack_hand()
 	qdel(src)
 
-/obj/effect/dead_plant/attackby()
+/obj/effect/dead_plant/attackby_legacy()
 	..()
 	for(var/obj/effect/plant/neighbor in range(1))
 		neighbor.update_neighbors()
@@ -220,7 +220,7 @@
 	floor = 1
 	return 1
 
-/obj/effect/plant/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/plant/attackby_legacy(var/obj/item/W, var/mob/user)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	SSplants.add_plant(src)

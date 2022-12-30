@@ -164,7 +164,7 @@
 	. = ..()
 	launcher = new(src)
 
-/obj/item/gun/projectile/automatic/z8/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/automatic/z8/attackby_legacy(obj/item/I, mob/user)
 	if((istype(I, /obj/item/grenade)))
 		launcher.load(I, user)
 	else

@@ -96,7 +96,7 @@
 				return 1
 	return 0
 
-/obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/robot_parts/robot_suit/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 		var/obj/item/stack/material/M = W
@@ -239,7 +239,7 @@
 
 	return
 
-/obj/item/robot_parts/chest/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/robot_parts/chest/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/cell))
 		if(cell)
@@ -261,7 +261,7 @@
 			to_chat(user, "<span class='notice'>You insert the wire!</span>")
 	return
 
-/obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/robot_parts/head/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/flash))
 		if(istype(user,/mob/living/silicon/robot))

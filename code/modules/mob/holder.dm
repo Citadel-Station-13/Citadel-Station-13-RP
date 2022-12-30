@@ -174,7 +174,7 @@
 /obj/item/holder/fuhrer
 	w_class = ITEMSIZE_TINY
 
-/obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/holder/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 

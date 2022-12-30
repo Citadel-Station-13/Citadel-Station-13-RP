@@ -61,7 +61,7 @@
 	cartridges -= label
 	SStgui.update_uis(src)
 
-/obj/machinery/chemical_dispenser/attackby(obj/item/W, mob/user)
+/obj/machinery/chemical_dispenser/attackby_legacy(obj/item/W, mob/user)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "un" : ""]fasten \the [src].</span>")

@@ -326,7 +326,7 @@
 			else
 				go_to_side()
 
-/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/tvalve/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/airlock_electronics) && istype(src, /obj/machinery/atmospherics/tvalve/digital))
 		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
 			to_chat(user, "<span class='warning'>Access denied.</span>")

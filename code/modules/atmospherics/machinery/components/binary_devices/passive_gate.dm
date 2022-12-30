@@ -241,7 +241,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attackby_legacy(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
 		new_name = trim(new_name)

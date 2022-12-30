@@ -424,7 +424,7 @@
 
 		update_icon()
 
-/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
+/obj/item/paper/attackby_legacy(obj/item/P as obj, mob/user as mob)
 	..()
 	var/clown = 0
 	if(user.mind && (user.mind.assigned_role == "Clown"))

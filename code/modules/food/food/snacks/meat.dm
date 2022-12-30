@@ -22,7 +22,7 @@
 	if (name == initial(name))
 		name = "cooked [name]"
 
-/obj/item/reagent_containers/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/meat/attackby_legacy(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/knife))
 		new /obj/item/reagent_containers/food/snacks/rawcutlet(src)
 		new /obj/item/reagent_containers/food/snacks/rawcutlet(src)

@@ -2,7 +2,7 @@
 	name = "biomass flooring"
 	icon_state = "diona"
 
-/turf/simulated/floor/diona/attackby()
+/turf/simulated/floor/diona/attackby_legacy()
 	return
 
 /turf/simulated/shuttle_ceiling

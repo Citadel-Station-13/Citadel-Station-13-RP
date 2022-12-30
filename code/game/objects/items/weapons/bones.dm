@@ -16,7 +16,7 @@
 	icon_state = "skull"
 	throw_force = 7
 
-/obj/item/bone/skull/attackby(var/obj/item/material/knife/D, mob/user as mob)
+/obj/item/bone/skull/attackby_legacy(var/obj/item/material/knife/D, mob/user as mob)
 	to_chat(user, "<span class='notice'>You hack chunks out of \the [src] with \the [D].  It might fit on top of your head.</span>")
 	user.put_in_hands(new /obj/item/clothing/head/skull)
 	qdel(src)
