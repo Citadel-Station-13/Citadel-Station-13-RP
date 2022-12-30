@@ -534,9 +534,13 @@
 	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
-/obj/item/plunger/attack(obj/O, mob/living/user)
-	if(!O.plunger_act(src, user, reinforced))
+/obj/item/plunger/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+	if(!isobj(A))
 		return ..()
+	var/obj/O = A
+	if(O.plunger_act(src, user, reinforced))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
 	. = ..()

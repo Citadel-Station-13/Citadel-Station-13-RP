@@ -19,23 +19,20 @@
 
 //////////////////////////////Capturing////////////////////////////////////////////////////////
 
-/obj/item/soulstone/attack(mob/living/carbon/human/M as mob, mob/user as mob)
+/obj/item/soulstone/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(!istype(M, /mob/living/carbon/human))//If target is not a human.
 		return ..()
 	if(istype(M, /mob/living/carbon/human/dummy))
-		return..()
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(jobban_isbanned(M, "cultist"))
 		to_chat(user, "<span class='warning'>This person's soul is too corrupt and cannot be captured!</span>")
-		return..()
-
+		return
 	if(M.has_brain_worms()) //Borer stuff - RR
 		to_chat(user, "<span class='warning'>This being is corrupted by an alien intelligence and cannot be soul trapped.</span>")
-		return..()
-
+		return
 	add_attack_logs(user,M,"Soulstone'd with [src.name]")
 	transfer_soul("VICTIM", M, user)
-	return
-
 
 ///////////////////Options for using captured souls///////////////////////////////////////
 
