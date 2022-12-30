@@ -477,12 +477,12 @@ function byond_turf_set(name, ref, icon, contents){
 
 /// called to add an atom from listed turf
 function byond_turf_add(data){
-
+	draw_atom(data[0], data[1], data[2]);
 }
 
 /// called to remove an atom from listed turf
 function byond_turf_del(ref){
-
+	dispose_atom(ref);
 }
 
 /// called to give us a href token
@@ -1137,86 +1137,9 @@ function draw_status() {
 	}
 }
 
-function create_listedturf(TN) {
-	remove_listedturf(); // remove the last one if we had one
-	turfname = JSON.parse(TN);
-	addPermanentTab(turfname);
-	tab_change(turfname);
-}
-function update_listedturf(TC) {
-	turfcontents = JSON.parse(TC);
-	if(current_tab == turfname)
-		draw_listedturf();
-}
+// old stuff below - we won't remove it for reference but it's not being used. //
 
-function draw_listedturf() {
-	stat_content[PROP_TEXT_CONTENT] = "";
-	var table = document.createElement("table");
-	for(var i = 0; i < turfcontents.length; i++) {
-		var part = turfcontents[i];
-		if(storedimages[part[1]] == null && part[2]) {
-			var img = document.createElement("img");
-			img.src = part[2];
-			img.id = part[1];
-			storedimages[part[1]] = part[2];
-			img.onerror = function() {
-				iconError();
-			};
-			table.appendChild(img);
-		} else {
-			var img = document.createElement("img");
-			img.onerror = function() {
-				iconError();
-			};
-			img.src = storedimages[part[1]];
-			img.id = part[1];
-			table.appendChild(img);
-		}
-		var b = document.createElement("div");
-		var clickcatcher = "";
-		b.className = "link";
-		b.onmousedown = function (part) {
-			// The outer function is used to close over a fresh "part" variable,
-			// rather than every onmousedown getting the "part" of the last entry.
-			return function(e) {
-				e.preventDefault();
-				clickcatcher = "?src=_statpanel_;statpanel_item_target=" + part[1];
-				switch(e.button){
-					case 1:
-						clickcatcher += ";statpanel_item_click=middle"
-						break;
-					case 2:
-						clickcatcher += ";statpanel_item_click=right"
-						break;
-					default:
-						clickcatcher += ";statpanel_item_click=left"
-				}
-				if(e.shiftKey){
-					clickcatcher += ";statpanel_item_shiftclick=1";
-				}
-				if(e.ctrlKey){
-					clickcatcher += ";statpanel_item_ctrlclick=1";
-				}
-				if(e.altKey) {
-					clickcatcher += ";statpanel_item_altclick=1";
-				}
-				window.location.href = clickcatcher;
-			}
-		}(part);
-		b[PROP_TEXT_CONTENT] = part[0];
-		table.appendChild(b);
-		table.appendChild(document.createElement("br"));
-	}
-	document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-}
-
-function remove_listedturf() {
-	removePermanentTab(turfname);
-	checkStatusTab();
-	if(current_tab == turfname)
-		tab_change("Status");
-}
-
+/*
 function set_theme(which) {
 	if (which == "light") {
 		document.body.className = "";
@@ -1242,11 +1165,7 @@ function set_style_sheet(sheet) {
 	head.appendChild(sheetElement);
 }
 
-if(!current_tab) {
-	addPermanentTab("Status");
-	tab_change("Status");
-}
-
+*/
 
 </script>
 </body>

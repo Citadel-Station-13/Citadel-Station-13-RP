@@ -56,7 +56,7 @@
 	description_holders["interactions"] = A.get_description_interaction()
 
 	description_holders["name"] = "[A.name]"
-	description_holders["icon"] = "\icon[A]" //this is icon not icon2html
+	description_holders["icon"] = "[costly_icon2html(A, src, TRUE)]" //this is icon not icon2html
 	description_holders["desc"] = A.desc
 
 /mob/statpanel_data(client/C)

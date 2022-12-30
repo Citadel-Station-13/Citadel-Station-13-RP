@@ -1,3 +1,13 @@
+/**
+ * citadel RP stat system
+ *
+ * we use a hybrid approach
+ * most stat goes to the statpanel, which is default for users;
+ * this is a browser system that uses .js and is relatively fast for serialization/whatnot
+ * the listed turf, however, gets sent to native Stat() so it supports native mouse
+ * handling among other things.
+ */
+
 //! external - state
 
 /client/proc/statpanel_init()
@@ -58,6 +68,8 @@
 		if(status)
 			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
+
+#warn kick turfs to native
 
 /client/proc/list_turf(turf/T)
 	if(statpanel_turf)
@@ -129,6 +141,12 @@
 		LAZYINITLIST(verblist[verb_to_init.category])
 		verblist[verb_to_init.category] += verb_to_init.name
 	src << output("[url_encode(json_encode(verblist))]", "statbrowser:byond_init_verbs")
+
+//! native
+
+/client/Stat()
+	..()	// hit mob.Stat()
+	#warn impl - turf
 
 //! data
 
