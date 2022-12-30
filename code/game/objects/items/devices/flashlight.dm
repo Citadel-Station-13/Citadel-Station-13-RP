@@ -124,8 +124,9 @@
 		O.emp_act(severity)
 	..()
 
-/obj/item/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
-	add_fingerprint(user)
+/obj/item/flashlight/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(on && user.zone_sel.selecting == O_EYES)
 
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
@@ -170,8 +171,8 @@
 
 			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
 			M.flash_eyes()
-	else
-		return ..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/flashlight/attack_hand(mob/user as mob)
 	if(user.get_inactive_held_item() == src)

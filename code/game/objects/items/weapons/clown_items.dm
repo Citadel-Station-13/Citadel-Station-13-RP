@@ -58,14 +58,13 @@
 		A.clean_blood()
 	return
 
-//attack_as_weapon
-/obj/item/soap/attack(mob/living/target, mob/living/user, var/target_zone)
-	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
+/obj/item/soap/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(M && user && ishuman(M) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /*
  * Bike Horns

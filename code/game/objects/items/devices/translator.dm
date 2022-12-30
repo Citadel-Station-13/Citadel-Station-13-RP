@@ -68,11 +68,12 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/universal_translator/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
+/obj/item/universal_translator/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!isrobot(M))
 		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(context, /datum/translation_context/variable))
 		user.action_feedback(SPAN_WARNING("[src] does not have a variable translation matrix."), src)
 		return

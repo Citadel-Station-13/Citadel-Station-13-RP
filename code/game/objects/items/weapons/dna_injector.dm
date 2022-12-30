@@ -98,13 +98,13 @@
 			qdel(src)
 	return uses
 
-/obj/item/dnainjector/attack(mob/M as mob, mob/user as mob)
-	if (!istype(M, /mob))
-		return
-	if (!usr.IsAdvancedToolUser())
+/obj/item/dnainjector/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!user.IsAdvancedToolUser())
+		user.action_feedback(SPAN_WARNING("You have no clue what to do with [src]."), src)
 		return
 	if(inuse)
-		return 0
+		return
 
 	user.visible_message("<span class='danger'>\The [user] is trying to inject \the [M] with \the [src]!</span>")
 	inuse = 1

@@ -86,7 +86,7 @@
 		qdel(src)
 
 	hud_unlayerise()
-	item_flags &= ~IN_INVENTORY
+	item_flags &= ~ITEM_IN_INVENTORY
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
@@ -109,7 +109,7 @@
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	hud_layerise()
-	item_flags |= IN_INVENTORY
+	item_flags |= ITEM_IN_INVENTORY
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 

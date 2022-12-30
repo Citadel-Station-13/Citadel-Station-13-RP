@@ -26,6 +26,7 @@
 	if(resolve_attackby(target, user, stupid_fucking_shim))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
+	// todo: signal for afterattack here & anywhere that calls afterattack
 	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, stupid_fucking_shim)
 
 /**
@@ -43,6 +44,7 @@
 	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
 	var/stupid_fucking_shim = list2params(params)
 
+	// todo: signal for afterattack here & anywhere that calls afterattack
 	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, stupid_fucking_shim)
 
 /**
@@ -68,6 +70,7 @@
  * @return clickchain flags to add, halting the chain if CLICKCHAIN_DO_NOT_PROPAGATE is returned
  */
 /obj/item/proc/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+	// todo: signal
 	return NONE
 
 /**
@@ -97,6 +100,7 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
 	#warn impl
 
 /**
@@ -112,4 +116,5 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	#warn impl
+	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
+	#warn impl - oh and check user intent

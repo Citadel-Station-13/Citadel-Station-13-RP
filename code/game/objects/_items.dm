@@ -112,7 +112,7 @@
 	if(islist(origin_tech))
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
 	if(istype(loc, /obj/item/storage))
-		item_flags |= IN_STORAGE
+		item_flags |= ITEM_IN_STORAGE
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)

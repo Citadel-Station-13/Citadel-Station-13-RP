@@ -782,7 +782,7 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
-	if(!(item_flags & IN_INVENTORY))
+	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 

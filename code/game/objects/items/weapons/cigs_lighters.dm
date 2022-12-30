@@ -216,15 +216,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/clothing/mask/smokable/attack(mob/living/carbon/human/H, mob/user, def_zone)
+/obj/item/clothing/mask/smokable/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
 			to_chat(H, "<span class='warning'>\The [blocked] is in the way!</span>")
-			return 1
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(H, "<span class='notice'>You take a drag on your [name].</span>")
 		smoke(5)
-		return 1
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/clothing/mask/smokable/attackby_legacy(obj/item/W as obj, mob/user as mob)
@@ -627,13 +627,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
-	return
 
-
-/obj/item/flame/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M, /mob))
-		return
-
+/obj/item/flame/lighter/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(lit == 1)
 		M.IgniteMob()
 		add_attack_logs(user,M,"Lit on fire with [src]")
@@ -647,8 +642,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
 			else
 				cig.light("<span class='notice'>[user] holds the [name] out for [M], and lights the [cig.name].</span>")
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
