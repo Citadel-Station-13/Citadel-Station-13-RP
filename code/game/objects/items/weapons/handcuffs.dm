@@ -21,6 +21,9 @@
 	var/use_time = 30
 
 /obj/item/handcuffs/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/carbon/C = M
+	if(!istype(C))
+		return
 	if(!user.IsAdvancedToolUser())
 		return
 

@@ -19,8 +19,11 @@
 /obj/item/melee/cultblade/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		return ..()
+	if(!isliving(user))
+		return ..()
+	var/mob/living/L = user
 
-	var/zone = (user.hand ? "l_arm":"r_arm")
+	var/zone = (L.hand ? "l_arm":"r_arm")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/affecting = H.get_organ(zone)

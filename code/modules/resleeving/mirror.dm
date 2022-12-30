@@ -117,7 +117,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+/obj/item/mirrortool/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(target_zone == BP_TORSO && imp == null)
 		if(imp == null && M.mirror)
 			M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
@@ -157,6 +157,7 @@
 						update_icon()
 	else
 		to_chat(usr, "You must target the torso.")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/attack_self(var/mob/user)
 	if(!imp)

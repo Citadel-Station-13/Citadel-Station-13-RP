@@ -332,7 +332,7 @@
 
 	return 1
 
-/obj/item/grab/attack(mob/M, mob/living/user)
+/obj/item/grab/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(QDELETED(src))
 		return
 	if(!affecting)

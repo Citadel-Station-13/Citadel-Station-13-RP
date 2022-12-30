@@ -3,6 +3,7 @@
 	desc = "A roll of sticky tape. Possibly for taping ducks... or was that ducts?"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "taperoll"
+	force = 0
 	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
@@ -10,7 +11,7 @@
 
 	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
-/obj/item/duct_tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
+/obj/item/duct_tape_roll/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(istype(H))
 		if(user.a_intent == INTENT_HELP)
 			return
@@ -64,6 +65,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), SLOT_ID_GLASSES)
 				H.update_inv_glasses()
 				playsound(src, 'sound/effects/tape.ogg',25)
+				return
 
 			else if(user.zone_sel.selecting == O_MOUTH || user.zone_sel.selecting == BP_HEAD)
 				if(!H.organs_by_name[BP_HEAD])
@@ -103,6 +105,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), SLOT_ID_MASK)
 				H.update_inv_wear_mask()
 				playsound(src, 'sound/effects/tape.ogg',25)
+				return
 
 			else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 				can_place = 0
@@ -122,9 +125,8 @@
 
 				if(!T.place_handcuffs(H, user))
 					qdel(T)
-			else
-				return ..()
-			return 1
+				return
+	return ..()
 
 /obj/item/duct_tape_roll/attack_self(mob/user)
 	to_chat(user, "You remove a piece of tape from the roll.")

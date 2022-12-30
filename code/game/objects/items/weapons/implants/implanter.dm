@@ -39,9 +39,9 @@
 	src.icon_state += "_[active]"
 	return
 
-/obj/item/implanter/attack(mob/M as mob, mob/user as mob)
+/obj/item/implanter/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if (!istype(M, /mob/living/carbon))
-		return
+		return ..()
 	if(active)
 		if (imp)
 			M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>")
@@ -66,7 +66,6 @@
 					update()
 	else
 		to_chat(user, "<span class='warning'>You need to activate \the [src.name] first.</span>")
-	return
 
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"

@@ -37,11 +37,14 @@
 /obj/item/reagent_containers/hard_candy/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/hard_candy/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/hard_candy/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
-		return 0
+		return
 
 	if(istype(M, /mob/living/carbon))
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
@@ -96,7 +99,7 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-					
+
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 			user.setClickCooldown(user.get_attack_speed(src))
 			if(!do_mob(user, M, 3 SECONDS))
@@ -115,9 +118,6 @@
 					reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 				bitecount++
 				On_Consume(M, user)
-			return 1
-
-	return 0
 
 /obj/item/reagent_containers/hard_candy/process()
 	if(!owner)

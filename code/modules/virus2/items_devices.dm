@@ -7,7 +7,10 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
 
-/obj/item/antibody_scanner/attack(mob/M as mob, mob/user as mob)
+/obj/item/antibody_scanner/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(M,/mob/living/carbon/))
 		report("Scan aborted: Incompatible target.", user)
 		return

@@ -40,7 +40,7 @@
 */
 //! End ofNon-implemented Subtypes
 
-/obj/item/reagent_containers/pill/patch/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_containers/pill/patch/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	var/mob/living/L = user
 
 	if(M == L)
@@ -129,5 +129,3 @@
 			break //dont bandage more than one wound, its only one patch you can have in your stack
 		affecting.update_damages()
 
-		return TRUE
-	return FALSE
