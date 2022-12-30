@@ -42,6 +42,9 @@ SUBSYSTEM_DEF(statpanels)
 		// check if ready
 		if(!player.statpanel_ready)
 			continue
+		// check if we're even on the js one
+		if(player.statpanel_on_byond)
+			continue
 		// are they an admin?
 		var/is_admin = !!player.holder
 		// grab their mob data

@@ -145,6 +145,8 @@
 //! native
 
 /client/Stat()
+	if(!statpanel_on_byond)
+		return
 	..()	// hit mob.Stat()
 	#warn impl - turf
 
@@ -214,7 +216,7 @@
 /client/proc/_statpanel_data()
 	return statpanel_data(src)
 
-//! verb hooks
+//! verb hooks - js stat
 
 /client/verb/hook_statpanel_ready()
 	set name = ".statpanel_ready"
@@ -245,3 +247,9 @@
 	set hidden = TRUE
 
 	statpanel_tab = tab
+
+//! verb hooks - byond stat
+
+//! verb hooks - tab switcher
+
+#warn hook for detecting where we are so we don't unnecessarily stat

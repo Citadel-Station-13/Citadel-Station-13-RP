@@ -94,6 +94,8 @@
 	var/list/statpanel_tabs
 	/// statpanel variable tabs: spells / other "simple" action button frameworks
 	var/list/statpanel_spell_last
+	/// are we on byond stat? if so we can just skip the js one in data transmit (and vice versa)
+	var/statpanel_on_byond = FALSE
 
 	//! throttling
 	/// block re-execution of expensive verbs
