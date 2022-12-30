@@ -142,9 +142,9 @@
 /obj/item/tray/var/cooldown = 0	//shield bash cooldown. based on world.time
 
 /obj/item/tray/attackby(atom/A, mob/user, clickchain_flags, list/params)
-	if(istype(W, /obj/item/material/kitchen/rollingpin))
+	if(istype(A, /obj/item/material/kitchen/rollingpin))
 		if(cooldown < world.time - 25)
-			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
+			user.visible_message("<span class='warning'>[user] bashes [src] with [A]!</span>")
 			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
 			cooldown = world.time
 		return CLICKCHAIN_DO_NOT_PROPAGATE
