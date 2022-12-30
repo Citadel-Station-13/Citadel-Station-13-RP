@@ -85,6 +85,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(!force)
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		user.do_attack_animation(M)
+		user.setClickCooldown(user.get_attack_speed(src))
 		return 0
 	if(M == user && user.a_intent != INTENT_HARM)
 		return 0
