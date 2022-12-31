@@ -94,7 +94,7 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/pen/crayon/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(M == user)
@@ -182,7 +182,7 @@
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return
 
-/obj/item/pen/crayon/marker/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/pen/crayon/marker/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(M == user)
@@ -245,7 +245,7 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/chalk/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/pen/crayon/chalk/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(M == user)

@@ -47,7 +47,7 @@
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/snacks/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/reagent_containers/food/snacks/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

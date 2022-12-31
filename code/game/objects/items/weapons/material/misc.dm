@@ -51,7 +51,7 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
 	default_material = "durasteel"
 
-/obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/material/knife/machete/hatchet/unathiknife/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(hits > 0)
 		return
 	var/obj/item/I = user.get_inactive_held_item()

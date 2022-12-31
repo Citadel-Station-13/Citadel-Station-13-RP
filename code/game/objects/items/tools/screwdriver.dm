@@ -59,7 +59,7 @@
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
 
-/obj/item/tool/screwdriver/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/tool/screwdriver/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting != O_EYES && user.zone_sel.selecting != BP_HEAD)

@@ -21,7 +21,7 @@
 	icon_state = "potcyan"
 	description_info = "The slime needs to be alive for this to work.  It will reduce the chances of mutation by 15%."
 
-/obj/item/slimepotion/stabilizer/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/stabilizer/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -48,7 +48,7 @@
 	description_info = "The slime needs to be alive for this to work.  It will increase the chances of mutation by 12%."
 	icon_state = "potred"
 
-/obj/item/slimepotion/mutator/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/mutator/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -76,7 +76,7 @@
 	icon_state = "potlightpink"
 	description_info = "The target needs to be alive, not already passive, and be an animal or slime type entity."
 
-/obj/item/slimepotion/docility/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/docility/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -137,7 +137,7 @@
 	Extra extracts are not passed down to offspring when reproducing."
 	icon_state = "potpurple"
 
-/obj/item/slimepotion/steroid/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/steroid/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -169,7 +169,7 @@
 	carry over to offspring when reproducing."
 	icon_state = "potpink"
 
-/obj/item/slimepotion/unity/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/unity/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -199,7 +199,7 @@
 	the user's faction, which means the slime will attack things that are hostile to the user's faction, such as carp, spiders, and other slimes."
 	icon_state = "potred"
 
-/obj/item/slimepotion/loyalty/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/loyalty/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -238,7 +238,7 @@
 	their 'friend', and will never attack them.  This might also work on other things besides slimes."
 	icon_state = "potlightpink"
 
-/obj/item/slimepotion/friendship/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/friendship/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -276,7 +276,7 @@
 	description_info = "The slime needs to be alive for this to work.  It will instantly grow the slime enough to reproduce."
 	icon_state = "potyellow"
 
-/obj/item/slimepotion/feeding/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/slimepotion/feeding/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

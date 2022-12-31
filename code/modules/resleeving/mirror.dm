@@ -117,7 +117,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/mirrortool/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = M
 	if(!istype(H))
 		return

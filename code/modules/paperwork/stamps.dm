@@ -19,7 +19,7 @@
 		'sound/items/stamp3.ogg'
 		)
 
-/obj/item/stamp/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/stamp/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	playsound(M, pick(stamp_sounds), 30, 1, -1)
 

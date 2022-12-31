@@ -106,7 +106,7 @@
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/melee/energy/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/melee/energy/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))

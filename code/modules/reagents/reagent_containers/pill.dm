@@ -27,7 +27,7 @@
 	if(reagents.total_volume && rename_with_volume)
 		name += " ([reagents.total_volume]u)"
 
-/obj/item/reagent_containers/pill/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/reagent_containers/pill/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

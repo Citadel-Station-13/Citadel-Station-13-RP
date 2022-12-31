@@ -7,7 +7,7 @@
 	var/mode = 0	//off or on.
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/hand_labeler/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/hand_labeler/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 

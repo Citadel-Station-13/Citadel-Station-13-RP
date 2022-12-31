@@ -113,7 +113,7 @@
 		return ..()
 */
 
-/obj/item/kinetic_crusher/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/kinetic_crusher/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/target = M
 	if(!istype(target))
 		return ..()
