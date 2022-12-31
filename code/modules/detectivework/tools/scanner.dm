@@ -29,7 +29,7 @@
 			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
-			P.attack(M, user)
+			P.melee_attack_chain(M, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
 	//		to_chat(user, "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]</span>")
 

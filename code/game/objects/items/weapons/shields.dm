@@ -131,7 +131,7 @@
 /obj/item/shield/riot/flash/handle_shield(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
 	if (. && damage && !embedded_flash.broken)
-		embedded_flash.attack()
+		embedded_flash.melee_attack_chain()
 		update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
