@@ -1,3 +1,8 @@
+//? If you change any of these procs, you better find/replace *every single* proc signature to match
+//? Obviously you don't need to do this for default arguments, because that'd insert a lot of compiled in isnull()'s
+//? But the whole point of this refactor is to standardize.
+//? All PRs that breach convention will be held until in compliance.
+
 /**
  * Called when trying to click something that the user can Reachability() to.
  *
@@ -105,6 +110,7 @@
 	if(item_flags & ITEM_NOBLUDGEON)
 		return NONE
 	// is mob, go to that
+	// todo: signals for both
 	if(ismob(A))
 		. |= attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
@@ -131,7 +137,8 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
-	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
+	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	// if it's harmless, smack 'em anyways
 
 	#warn impl - oh and check user intent oh and make message even if it's harmless
 	#warn apply_melee_effects - generic - DO NOT USE ATTACKED
@@ -183,7 +190,25 @@
 	return target.hit_with_weapon(src, user, power, hit_zone)
 
 /**
- * called after a standard melee hit
+ * called at base of attack_mob after standard melee attack resolves
+ *
+ * @return clickchain flags to append
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage/force multiplier
+ * * target_zone - zone to target
+ * * intent - action intent to use
+ */
+/obj/item/proc/attack_mob_effects(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+	SHOULD_CALL_PARENT(TRUE)
+	return NONE
+
+/**
+ * called after attack_mob, regardless of if standard handling is done
  *
  * @params
  * * A - atom being attacked
@@ -197,7 +222,7 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attacked_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
-	#warn impl
+	return NONE
 
 /**
  * called when we're used to attack a non-mob
@@ -212,27 +237,32 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attack_object(atom/A, mob/user, clickchain_flags, list/params)
-	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
-	#warn impl - oh and check user intent
-	#warn apply_melee_effects - generic - DO NOT USE ATTACKED
+	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	if(user.a_intent != INTENT_HARM)
+		user.action_feedback(SPAN_WARNING("You refrain from hitting [A] because your intent is not set to harm."), src)
+		return
+	// sorry, no atom damage
+	// ... yet >:)
+	visible_message(SPAN_WARNING("[user] bashes [A] with [src]."))
+	return attack_object_effects(A, user, clickchain_flags, params)
 
 /**
- * called at base of attack obj for a standard melee hit
+ * called at base of attack_object after standard melee attack resolves
+ *
+ * @return clickchain flags to append
  *
  * @params
  * * A - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
- * * mult - damage multiplier
- *
- * @return clickchain flags to append
  */
-/obj/item/proc/standard_obj_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
-	#warn impl
+/obj/item/proc/attack_object_effects(atom/A, mob/user, clickchain_flags, list/params)
+	SHOULD_CALL_PARENT(TRUE)
+	return NONE
 
 /**
- * called after a standard melee hit
+ * called after attack_object, regardless of if standard handling is done
  *
  * @params
  * * A - atom being attacked
@@ -244,6 +274,6 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/attacked_object(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
-	#warn impl
+	return NONE
 
 #warn process melee hit instead of this (?)

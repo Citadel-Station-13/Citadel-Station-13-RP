@@ -40,6 +40,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return
 
 /atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	I.standard_melee_attack(src, user, clickchain_flags, params) // damage_multiplier on attackby is being removed, don't.
 	if(!(I.item_flags & ITEM_NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
