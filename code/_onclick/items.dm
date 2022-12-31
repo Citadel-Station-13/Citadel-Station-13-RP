@@ -138,38 +138,42 @@
  */
 /obj/item/proc/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	//! legacy: for now no attacking nonliving
+	if(!isliving(M))
+		return
+	var/mob/living/L = M
 	// if it's harmless, smack 'em anyways
 	if(!force)
 		// todo: proper weapon sound ranges/rework
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		// feedback
-		user.visible_message(SPAN_WARNING("[user] harmlessly taps [M] with [src]."))
-		user.do_attack_animation(M)
+		user.visible_message(SPAN_WARNING("[user] harmlessly taps [L] with [src]."))
+		user.do_attack_animation(L)
 		// todo: clickcd rework
 		user.setClickCooldown(user.get_attack_speed(src))
 		return NONE
 	// check intent
-	if(user == M)
+	if(user == L)
 		if(user.a_intent != INTENT_HARM)
 			user.action_feedback(SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."), src)
 			return NONE
 	// todo: better tracking
-	user.lastattacked = M
-	M.lastattacker = user
+	user.lastattacked = L
+	L.lastattacker = user
 	// log
-	add_attack_logs(user, M, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
+	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
 	// click cooldown
 	// todo: clickcd rework
 	user.setClickCooldown(user.get_attack_speed(src))
 	// animation
-	user.do_attack_animation(M)
+	user.do_attack_animation(L)
 	// resolve accuracy
-	var/hit_zone = M.resolve_item_attack(src, user, target_zone)
+	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
 	if(!hit_zone)
 		// missed
-		return melee_mob_missed(M, user, clickchain_flags, params, mult, target_zone, intent)
+		return melee_mob_missed(L, user, clickchain_flags, params, mult, target_zone, intent)
 	// hit
-	return melee_mob_effects(M, user, clickchain_flags, params, mult, target_zone, intent)
+	return melee_mob_effects(L, user, clickchain_flags, params, mult, target_zone, intent)
 
 
 
@@ -194,10 +198,14 @@
 /obj/item/proc/melee_mob_missed(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	//! legacy: decloak
 	user.break_cloak()
+	//! legacy: for now no attacking nonliving
+	if(!isliving(M))
+		return
+	var/mob/living/L = M
 	// todo: proper weapon sound ranges/rework
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	// feedback
-	visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
+	visible_message("<span class='danger'>\The [user] misses [L] with \the [src]!</span>")
 	return NONE
 
 /**
@@ -218,21 +226,25 @@
 	SHOULD_CALL_PARENT(TRUE)
 	//! legacy: decloak
 	user.break_cloak()
+	//! legacy: for now no attacking nonliving
+	if(!isliving(M))
+		return
+	var/mob/living/L = M
 	// todo: proper weapon sound ranges/rework
 	if(hitsound)
 		playsound(src, hitsound, 50, 1, -1)
 	// feedback
-	visible_message(SPAN_DANGER("[M] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
+	visible_message(SPAN_DANGER("[L] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
 
 	//! legacy code start
 	var/power = force
-	for(var/datum/modifier/M in user.modifiers)
-		if(!isnull(M.outgoing_melee_damage_percent))
-			power *= M.outgoing_melee_damage_percent
+	for(var/datum/modifier/L in user.modifiers)
+		if(!isnull(L.outgoing_melee_damage_percent))
+			power *= L.outgoing_melee_damage_percent
 	if(MUTATION_HULK in user.mutations)
 		power *= 2
 	power *= mult
-	M.hit_with_weapon(src, user, power, hit_zone)
+	L.hit_with_weapon(src, user, power, hit_zone)
 	//! legacy code end
 
 	return NONE
