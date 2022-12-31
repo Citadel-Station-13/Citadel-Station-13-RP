@@ -31,11 +31,6 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-
-	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
-
 //! Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
@@ -74,6 +69,10 @@
 //! Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
+
+	var/datum/mind/mind
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
