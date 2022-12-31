@@ -2393,6 +2393,7 @@
 #include "code\modules\ghostroles\spawnpoint.dm"
 #include "code\modules\ghostroles\roles\ashlander.dm"
 #include "code\modules\ghostroles\roles\hermit.dm"
+#include "code\modules\ghostroles\roles\pirate.dm"
 #include "code\modules\ghosttrap\trap.dm"
 #include "code\modules\holidays\_holiday.dm"
 #include "code\modules\holidays\christmas.dm"
