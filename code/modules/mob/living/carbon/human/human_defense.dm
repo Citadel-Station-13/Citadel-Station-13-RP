@@ -224,9 +224,6 @@ emp_act
 	var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
 
 	if(!hit_zone)
-		user.do_attack_animation(src)
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
 		return null
 
 	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))

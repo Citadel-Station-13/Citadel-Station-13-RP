@@ -115,12 +115,12 @@
 		. |= melee_attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
-		return . | melee_attacked_mob(A, user, . | clickchain_flags, params, mult, target_zone, intent)
+		return . | melee_mob_finalize(A, user, . | clickchain_flags, params, mult, target_zone, intent)
 	// is obj, go to that
 	. = melee_attack_object(A, user, clickchain_flags, params, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	return . | melee_attacked_object(A, user, . | clickchain_flags, params, mult)
+	return . | melee_object_finalize(A, user, . | clickchain_flags, params, mult)
 
 /**
  * called when we're used to attack a mob
@@ -140,7 +140,7 @@
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// if it's harmless, smack 'em anyways
 	if(!force)
-		// todo: proper weapon sound ranges
+		// todo: proper weapon sound ranges/rework
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		// feedback
 		user.visible_message(SPAN_WARNING("[user] harmlessly taps [M] with [src]."))
@@ -161,60 +161,44 @@
 	// click cooldown
 	// todo: clickcd rework
 	user.setClickCooldown(user.get_attack_speed(src))
-	// feedback
-	visible_message(SPAN_DANGER("[M] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
+	// animation
 	user.do_attack_animation(M)
-
-
-
-	#warn impl - oh and check user intent oh and make message even if it's harmless
-	#warn apply_melee_effects - generic - DO NOT USE ATTACKED
-
-//I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
-#warn kill this
-/obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
-	if(!force)
-		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
-		user.do_attack_animation(M)
-		return 0
-	if(M == user && user.a_intent != INTENT_HARM)
-		return 0
-
-	/////////////////////////
-	user.lastattacked = M
-	M.lastattacker = user
-
-	if(!no_attack_log)
-		add_attack_logs(user,M,"attacked with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])")
-	/////////////////////////
-
-	user.setClickCooldown(user.get_attack_speed(src))
-	user.do_attack_animation(M)
-
+	// resolve accuracy
 	var/hit_zone = M.resolve_item_attack(src, user, target_zone)
-	if(hit_zone)
-		apply_hit_effect(M, user, hit_zone, attack_modifier)
+	if(!hit_zone)
+		// missed
+		return melee_mob_missed(M, user, clickchain_flags, params, mult, target_zone, intent)
+	// hit
+	return melee_mob_effects(M, user, clickchain_flags, params, mult, target_zone, intent)
 
-	return 1
+
 
 #warn kill this
 //Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
+
+/**
+ * called at base of melee_attack_mob after standard melee attack misses
+ *
+ * @return clickchain flags to append
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier that would have been used
+ * * target_zone - zone that user tried to target
+ * * intent - action intent that was attempted
+ */
+/obj/item/proc/melee_mob_missed(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+	//! legacy: decloak
 	user.break_cloak()
-	if(hitsound)
-		playsound(loc, hitsound, 50, 1, -1)
-
-	var/power = force
-	for(var/datum/modifier/M in user.modifiers)
-		if(!isnull(M.outgoing_melee_damage_percent))
-			power *= M.outgoing_melee_damage_percent
-
-	if(MUTATION_HULK in user.mutations)
-		power *= 2
-
-	power *= attack_modifier
-
-	return target.hit_with_weapon(src, user, power, hit_zone)
+	// todo: proper weapon sound ranges/rework
+	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+	// feedback
+	visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
+	return NONE
 
 /**
  * called at base of melee_attack_mob after standard melee attack resolves
@@ -232,10 +216,30 @@
  */
 /obj/item/proc/melee_mob_effects(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	SHOULD_CALL_PARENT(TRUE)
+	//! legacy: decloak
+	user.break_cloak()
+	// todo: proper weapon sound ranges/rework
+	if(hitsound)
+		playsound(src, hitsound, 50, 1, -1)
+	// feedback
+	visible_message(SPAN_DANGER("[M] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
+
+	//! legacy code start
+	var/power = force
+	for(var/datum/modifier/M in user.modifiers)
+		if(!isnull(M.outgoing_melee_damage_percent))
+			power *= M.outgoing_melee_damage_percent
+	if(MUTATION_HULK in user.mutations)
+		power *= 2
+	power *= mult
+	M.hit_with_weapon(src, user, power, hit_zone)
+	//! legacy code end
+
 	return NONE
 
 /**
  * called after melee_attack_mob, regardless of if standard handling is done
+ * this is currently called even if the attacker missed!
  *
  * @params
  * * A - atom being attacked
@@ -248,7 +252,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_attacked_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/melee_mob_finalize(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	return NONE
 
 /**
@@ -290,6 +294,7 @@
 
 /**
  * called after melee_attack_object, regardless of if standard handling is done
+ * this is currently called even if the attacker missed!
  *
  * @params
  * * A - atom being attacked
@@ -300,7 +305,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_attacked_object(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/melee_object_finalize(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	return NONE
 
 #warn process melee hit instead of this (?)
