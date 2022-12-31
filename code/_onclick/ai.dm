@@ -108,53 +108,62 @@
 	return SECONDARY_ATTACK_CALL_NORMAL
 
 
-/*
-	Since the AI handles shift, ctrl, and alt-click differently
-	than anything else in the game, atoms have separate procs
-	for AI shift, ctrl, and alt clicking.
-*/
+/**
+ * Since the AI handles shift, ctrl, and alt-click differently
+ * than anything else in the game, atoms have separate procs
+ * for AI shift, ctrl, and alt clicking.
+ */
 
 /mob/living/silicon/ai/CtrlShiftClickOn(atom/A)
 	A.AICtrlShiftClick(src)
+
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
 	A.AIShiftClick(src)
+
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
 	A.AICtrlClick(src)
+
 /mob/living/silicon/ai/AltClickOn(atom/A)
 	A.AIAltClick(src)
+
 /mob/living/silicon/ai/MiddleClickOn(atom/A)
 	A.AIMiddleClick(src)
 
 
-/*
-	The following criminally helpful code is just the previous code cleaned up;
-	I have no idea why it was in atoms.dm instead of respective files.
-*/
-/* Questions: Instead of an Emag check on every function, can we not add to airlocks onclick if emag return? */
-
-/* Atom Procs */
+/**
+ * # Atom Procs
+ */
 /atom/proc/AICtrlClick()
 	return
+
 /atom/proc/AIAltClick(mob/living/silicon/ai/user)
 	AltClick(user)
 	return
+
 /atom/proc/AIShiftClick()
 	return
+
 /atom/proc/AICtrlShiftClick()
 	return
+
 /atom/proc/AIMiddleClick()
 	return
 
 
-/* Airlocks */
-/obj/machinery/door/airlock/AICtrlClick() // Bolts doors
+/**
+ *# Airlocks
+ */
+
+//? Bolts doors
+/obj/machinery/door/airlock/AICtrlClick()
 	if(obj_flags & EMAGGED)
 		return
 
 	toggle_bolt(usr)
 	add_hiddenprint(usr)
 
-/obj/machinery/door/airlock/AIAltClick() // Eletrifies doors.
+//? Eletrifies doors.
+/obj/machinery/door/airlock/AIAltClick()
 	if(obj_flags & EMAGGED)
 		return
 
@@ -167,21 +176,26 @@
 	// else
 	// 	shock_restore(usr)
 
-/obj/machinery/door/airlock/AIShiftClick()  // Opens and closes doors!
+//? Opens and closes doors!
+/obj/machinery/door/airlock/AIShiftClick()
 	if(obj_flags & EMAGGED)
 		return
 
 	user_toggle_open(usr)
 	add_hiddenprint(usr)
 
-// /obj/machinery/door/airlock/AICtrlShiftClick()  // Sets/Unsets Emergency Access Override
-// 	if(obj_flags & EMAGGED)
-// 		return
+/*
+//? Sets/Unsets Emergency Access Override
+/obj/machinery/door/airlock/AICtrlShiftClick()
+	if(obj_flags & EMAGGED)
+		return
 
-// 	toggle_emergency(usr)
-// 	add_hiddenprint(usr)
+	toggle_emergency(usr)
+	add_hiddenprint(usr)
+*/
 
-/obj/machinery/door/airlock/AIMiddleClick(mob/user) // Toggles door bolt lights.
+//? Toggles door bolt lights.
+/obj/machinery/door/airlock/AIMiddleClick(mob/user)
 	if(..())
 		return
 	add_hiddenprint(user)
@@ -194,25 +208,34 @@
 	return TRUE
 
 
-/* APC */
-/obj/machinery/power/apc/AICtrlClick(mob/user) // turns off/on APCs.
+/**
+ *# APC
+ */
+
+//? Turns off/on APCs.
+/obj/machinery/power/apc/AICtrlClick(mob/user)
 	add_hiddenprint(user)
 	toggle_breaker(user)
 	return TRUE
 
 
-/* AI Turrets */
-/obj/machinery/turretid/AICtrlClick(mob/user) //turns off/on Turrets
+/**
+ *# AI Turrets
+ */
+
+//? Turns off/on Turrets.
+/obj/machinery/turretid/AICtrlClick(mob/user)
 	add_hiddenprint(user)
 	enabled = !enabled //toggles the turret on/off
 	return TRUE
 
-/obj/machinery/turretid/AIAltClick(mob/user) //toggles lethal on turrets
+//? Toggles lethal on turrets.
+/obj/machinery/turretid/AIAltClick(mob/user)
 	add_hiddenprint(user)
 	lethal = !lethal
 	return TRUE
 
 
-/// Override AdjacentQuick for AltClicking.
+//? Override AdjacentQuick for AltClicking.
 /mob/living/silicon/ai/TurfAdjacent(turf/T)
 	return (GLOB.cameranet && GLOB.cameranet.checkTurfVis(T))
