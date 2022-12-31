@@ -63,8 +63,8 @@
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
 /obj/item/weldingtool/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if(ishuman(A) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = A
+	if(ishuman(M) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)

@@ -63,14 +63,15 @@
 	return 1
 
 /obj/item/reagent_containers/borghypo/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if(!istype(M))
+	var/mob/living/L = M
+	if(!istype(L))
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
 		to_chat(user, "<span class='warning'>The injector is empty.</span>")
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = L
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
@@ -82,15 +83,15 @@
 			return
 		*/
 
-	if(M.can_inject(user, 1, ignore_thickness = bypass_protection))
-		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
-		M.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+	if(L.can_inject(user, 1, ignore_thickness = bypass_protection))
+		to_chat(user, "<span class='notice'>You inject [L] with the injector.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
-		if(M.reagents)
+		if(L.reagents)
 			var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])
-			M.reagents.add_reagent(reagent_ids[mode], t)
+			L.reagents.add_reagent(reagent_ids[mode], t)
 			reagent_volumes[reagent_ids[mode]] -= t
-			add_attack_logs(user, M, "Borg injected with [reagent_ids[mode]]")
+			add_attack_logs(user, L, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
 
 /obj/item/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode

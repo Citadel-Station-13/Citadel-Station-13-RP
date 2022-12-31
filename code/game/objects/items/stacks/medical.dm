@@ -167,11 +167,11 @@
 			return
 
 		if(affecting.is_bandaged())
-			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
+			to_chat(user, "<span class='warning'>The wounds on [H]'s [affecting.name] have already been bandaged.</span>")
 			return
 		else
-			user.visible_message("<span class='notice'>\The [user] starts treating [M]'s [affecting.name].</span>", \
-					             "<span class='notice'>You start treating [M]'s [affecting.name].</span>" )
+			user.visible_message("<span class='notice'>\The [user] starts treating [H]'s [affecting.name].</span>", \
+					             "<span class='notice'>You start treating [H]'s [affecting.name].</span>" )
 			var/used = 0
 			for (var/datum/wound/W in affecting.wounds)
 				if (W.internal)
@@ -180,28 +180,28 @@
 					continue
 				if(used == amount)
 					break
-				if(!do_mob(user, M, W.damage/5))
+				if(!do_mob(user, H, W.damage/5))
 					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
 					break
 
 				if(affecting.is_bandaged()) // We do a second check after the delay, in case it was bandaged after the first check.
-					to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
+					to_chat(user, "<span class='warning'>The wounds on [H]'s [affecting.name] have already been bandaged.</span>")
 					return
 
 				if (W.current_stage <= W.max_bleeding_stage)
-					user.visible_message("<span class='notice'>\The [user] bandages \a [W.desc] on [M]'s [affecting.name].</span>", \
-					                              "<span class='notice'>You bandage \a [W.desc] on [M]'s [affecting.name].</span>" )
+					user.visible_message("<span class='notice'>\The [user] bandages \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You bandage \a [W.desc] on [H]'s [affecting.name].</span>" )
 					//H.add_side_effect("Itch")
 				else if (W.damage_type == BRUISE)
-					user.visible_message("<span class='notice'>\The [user] places a bruise patch over \a [W.desc] on [M]'s [affecting.name].</span>", \
-					                              "<span class='notice'>You place a bruise patch over \a [W.desc] on [M]'s [affecting.name].</span>" )
+					user.visible_message("<span class='notice'>\The [user] places a bruise patch over \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You place a bruise patch over \a [W.desc] on [H]'s [affecting.name].</span>" )
 				else
-					user.visible_message("<span class='notice'>\The [user] places a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>", \
-					                              "<span class='notice'>You place a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>" )
+					user.visible_message("<span class='notice'>\The [user] places a bandaid over \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You place a bandaid over \a [W.desc] on [H]'s [affecting.name].</span>" )
 				W.bandage()
 				playsound(src, pick(apply_sounds), 25)
 				used++
-				M.bitten = 0
+				H.bitten = 0
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())

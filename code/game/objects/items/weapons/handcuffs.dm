@@ -226,6 +226,9 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
 /obj/item/handcuffs/legcuffs/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/carbon/C = M
+	if(!istype(C))
+		return
 	if(!user.IsAdvancedToolUser())
 		return
 

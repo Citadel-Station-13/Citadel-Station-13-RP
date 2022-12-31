@@ -250,14 +250,15 @@
 		return
 
 /obj/item/gun/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	var/mob/living/target/A = M
+	var/mob/living/A = M
 	if(!istype(A))
 		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
 		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
 			handle_suicide(user)
 			return
-		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else

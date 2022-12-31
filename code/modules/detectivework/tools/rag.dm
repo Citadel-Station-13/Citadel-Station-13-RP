@@ -116,33 +116,33 @@
 	if(isliving(M)) //Leaving this as isliving.
 		var/mob/living/L = M
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
-			user.visible_message(SPAN_DANGER("\The [user] hits [target] with [src]!"))
+			user.visible_message(SPAN_DANGER("\The [user] hits [L] with [src]!"))
 			user.do_attack_animation(src)
 			L.IgniteMob()
-		else if(user.zone_sel.selecting == O_MOUTH) //Check player target location, provided the rag is not on fire. Then check if mouth is exposed.
-			if(ishuman(target)) //Added this since player species process reagents in majority of cases.
-				var/mob/living/carbon/human/H = target
+		else if(user.zone_sel.selecting == O_MOUTH) //Check player L location, provided the rag is not on fire. Then check if mouth is exposed.
+			if(ishuman(L)) //Added this since player species process reagents in majority of cases.
+				var/mob/living/carbon/human/H = L
 				if(H.head && (H.head.body_parts_covered & FACE)) //Check human head coverage.
 					to_chat(user, SPAN_WARNING("Remove their [H.head] first."))
 					return
-				else if(reagents.total_volume) //Final check. If the rag is not on fire and their face is uncovered, smother target.
+				else if(reagents.total_volume) //Final check. If the rag is not on fire and their face is uncovered, smother L.
 					user.do_attack_animation(src)
 					user.visible_message(
-						SPAN_DANGER("\The [user] smothers [target] with [src]!"),
-						SPAN_WARNING("You smother [target] with [src]!"),
+						SPAN_DANGER("\The [user] smothers [L] with [src]!"),
+						SPAN_WARNING("You smother [L] with [src]!"),
 						"You hear some struggling and muffled cries of surprise"
 						)
 					//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
-					reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
+					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_BLOOD)
 					update_name()
 				else
 					to_chat(user, SPAN_WARNING("You can't smother this creature."))
 			else
 				to_chat(user, SPAN_WARNING("You can't smother this creature."))
 		else
-			wipe_down(target, user)
+			wipe_down(L, user)
 	else
-		wipe_down(target, user)
+		wipe_down(M, user)
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
 	if(!proximity)

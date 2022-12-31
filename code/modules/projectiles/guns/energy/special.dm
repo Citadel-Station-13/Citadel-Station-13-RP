@@ -240,6 +240,7 @@
 	return FALSE
 
 /obj/item/gun/energy/maghowitzer/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/atom/A = M
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return

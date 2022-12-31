@@ -630,19 +630,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/flame/lighter/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+	var/mob/living/carbon/human/H = M
+	if(!istype(H))
+		return ..()
 	if(lit == 1)
-		M.IgniteMob()
-		add_attack_logs(user,M,"Lit on fire with [src]")
-
-	if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.zone_sel.selecting == O_MOUTH && lit)
-		var/obj/item/clothing/mask/smokable/cigarette/cig = M.wear_mask
-		if(M == user)
+		H.IgniteMob()
+		add_attack_logs(user,H,"Lit on fire with [src]")
+	if(istype(H.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.zone_sel.selecting == O_MOUTH && lit)
+		var/obj/item/clothing/mask/smokable/cigarette/cig = H.wear_mask
+		if(H == user)
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/flame/lighter/zippo))
-				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
+				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [H].</span>")
 			else
-				cig.light("<span class='notice'>[user] holds the [name] out for [M], and lights the [cig.name].</span>")
+				cig.light("<span class='notice'>[user] holds the [name] out for [H], and lights the [cig.name].</span>")
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
