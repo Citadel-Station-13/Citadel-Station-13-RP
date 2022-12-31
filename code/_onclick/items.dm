@@ -139,6 +139,33 @@
 /obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// if it's harmless, smack 'em anyways
+	if(!force)
+		// todo: proper weapon sound ranges
+		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
+		// feedback
+		user.visible_message(SPAN_WARNING("[user] harmlessly taps [M] with [src]."))
+		user.do_attack_animation(M)
+		// todo: clickcd rework
+		user.setClickCooldown(user.get_attack_speed(src))
+		return NONE
+	// check intent
+	if(user == M)
+		if(user.a_intent != INTENT_HARM)
+			user.action_feedback(SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."), src)
+			return NONE
+	// todo: better tracking
+	user.lastattacked = M
+	M.lastattacker = user
+	// log
+	add_attack_logs(user, M, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
+	// click cooldown
+	// todo: clickcd rework
+	user.setClickCooldown(user.get_attack_speed(src))
+	// feedback
+	visible_message(SPAN_DANGER("[M] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
+	user.do_attack_animation(M)
+
+
 
 	#warn impl - oh and check user intent oh and make message even if it's harmless
 	#warn apply_melee_effects - generic - DO NOT USE ATTACKED

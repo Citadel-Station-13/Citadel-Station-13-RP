@@ -32,8 +32,11 @@
 	var/obj/item/master = null
 	/// Used by R&D to determine what research bonuses it grants.
 	var/list/origin_tech = null
-	/// Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
-	var/list/attack_verb = list()
+	/**
+	 * Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	 * Either a list() with equal chances or a single verb.
+	 */
+	var/list/attack_verb = "attacked"
 	var/force = 0
 
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
@@ -698,3 +701,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // /obj/item/update_filters()
 // 	. = ..()
 // 	update_action_buttons()
+
+/**
+ * grabs an attack verb to use
+ *
+ * @params
+ * * target - thing being attacked
+ * * user - person attacking
+ *
+ * @return attack verb
+ */
+/obj/item/proc/get_attack_verb(atom/target, mob/user)
+	return length(attack_verb)? pick(attack_verb) : attack_verb
