@@ -76,7 +76,7 @@
 /**
  * called when someone hits us with an item while in Reachability() range
  *
- * usually triggers attack_obj or attack_mob
+ * usually triggers attack_object or attack_mob
  *
  * @params
  * * I - item being used to use/attack us in melee
@@ -90,6 +90,33 @@
 // /atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 
 /**
+ * standard proc for engaging a target in melee
+ *
+ * @params
+ * * A - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage/force multiplier
+ * * target_zone - zone to target
+ * * intent - action intent to use
+ */
+/obj/item/proc/standard_melee_attack(atom/A, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_zel?.selecting, intent = user?.a_intent)
+	if(item_flags & ITEM_NOBLUDGEON)
+		return NONE
+	// is mob, go to that
+	if(ismob(A))
+		. |= attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
+		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+			return
+		return . | attacked_mob(A, user, . | clickchain_flags, params, mult, target_zone, intent)
+	// is obj, go to that
+	. = attack_object(A, user, clickchain_flags, params, mult)
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	return . | attacked_object(A, user, . | clickchain_flags, params, mult)
+
+/**
  * called when we're used to attack a mob
  *
  * @params
@@ -97,18 +124,21 @@
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
+ * * mult - damage/force multiplier
+ * * target_zone - zone to target
+ * * intent - action intent to use
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
+
 	#warn impl - oh and check user intent oh and make message even if it's harmless
+	#warn apply_melee_effects - generic - DO NOT USE ATTACKED
 
 //I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
 #warn kill this
 /obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
-	if(item_flags & ITEM_NOBLUDGEON)
-		return 0
 	if(!force)
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		user.do_attack_animation(M)
@@ -153,33 +183,20 @@
 	return target.hit_with_weapon(src, user, power, hit_zone)
 
 /**
- * called at base of attack mob for a standard melee hit
- *
- * @params
- * * M - mob being attacked
- * * user - person attacking
- * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
- * * params - list of click params
- * * mult - damage multiplier
- *
- * @return clickchain flags to append
- */
-/obj/item/proc/standard_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
-	#warn impl
-
-/**
  * called after a standard melee hit
  *
  * @params
- * * M - M being attacked
+ * * A - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
- * * mult - damage multiplier
+ * * mult - damage/force multiplier
+ * * target_zone - zone to target
+ * * intent - action intent to use
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/post_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/attacked_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	#warn impl
 
 /**
@@ -194,9 +211,10 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_obj(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_object(atom/A, mob/user, clickchain_flags, list/params)
 	// todo: signal - is here even the right place? maybe doing it on calling proc is better?
 	#warn impl - oh and check user intent
+	#warn apply_melee_effects - generic - DO NOT USE ATTACKED
 
 /**
  * called at base of attack obj for a standard melee hit
@@ -225,7 +243,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/post_obj_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/attacked_object(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	#warn impl
 
 #warn process melee hit instead of this (?)
