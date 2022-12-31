@@ -5,6 +5,9 @@
 	},
 /turf/simulated/floor/airless,
 /area/piratebase/facility)
+"ax" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "aA" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -12,8 +15,12 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"aS" = (
+/obj/structure/ghost_role_spawner/pirate,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/space)
 "bg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
@@ -40,7 +47,7 @@
 /obj/structure/closet/crate/large/secure{
 	name = "Booty"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "cs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -60,11 +67,6 @@
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/space)
-"cB" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/clotting,
-/turf/simulated/floor/reinforced,
-/area/space)
 "cM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -82,7 +84,7 @@
 /area/shuttle/pirate/engine)
 "dt" = (
 /obj/structure/bed/chair/bay/shuttle,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/deck)
 "dC" = (
 /obj/structure/table/steel_reinforced,
@@ -121,8 +123,20 @@
 	name = "The Plank";
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"dJ" = (
+/obj/machinery/body_scanconsole{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/space)
 "dK" = (
 /obj/item/clothing/head/helmet/space/vox/carapace,
 /obj/item/clothing/suit/space/vox/carapace,
@@ -145,7 +159,11 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/obj/item/radio/intercom/raider{
+	dir = 8;
+	pixel_x = -22
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/deck)
 "eC" = (
 /obj/machinery/access_button{
@@ -166,15 +184,25 @@
 /obj/item/projectile/beam/medical_cell/burn3,
 /turf/simulated/floor/reinforced,
 /area/space)
-"fb" = (
-/obj/machinery/sleeper/survival_pod,
-/turf/simulated/floor/reinforced,
+"fe" = (
+/obj/machinery/mecha_part_fabricator/pros{
+	dir = 8;
+	part_sets = list("Prosthetics","Prosthetics, Internal");
+	pixel_y = 3;
+	req_access = null
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"fo" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "fy" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "fB" = (
 /obj/machinery/light_switch{
@@ -202,7 +230,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "gG" = (
 /obj/machinery/airlock_sensor{
@@ -213,11 +241,21 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/piratebase/facility)
+"hi" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/surgical/circular_saw,
+/obj/item/surgical/hemostat,
+/obj/item/surgical/surgicaldrill,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "hk" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/diamond,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
+"hm" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "hJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/cigarettes,
@@ -248,17 +286,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"iD" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
-"iV" = (
-/obj/machinery/bodyscanner{
+"iB" = (
+/obj/machinery/shower{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/space)
 "jy" = (
 /obj/machinery/light{
@@ -266,12 +298,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"jB" = (
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "jJ" = (
 /obj/machinery/light,
 /obj/machinery/power/terminal{
 	dir = 8
 	},
 /obj/structure/cable/green,
+/obj/item/radio/intercom/raider{
+	pixel_y = -22
+	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
 "jM" = (
@@ -281,12 +319,27 @@
 "kb" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
+"kp" = (
+/obj/structure/closet/crate/large,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
+"kC" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/box/syringes{
+	pixel_x = -2
+	},
+/obj/item/storage/box/traumainjectors{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "kD" = (
 /obj/machinery/door/window/brigdoor/eastright{
 	dir = 1;
 	name = "Prisoner Storage"
 	},
-/turf/simulated/floor/tiled/old_tile/white,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "lA" = (
 /obj/machinery/recharger/wallcharger{
@@ -372,15 +425,11 @@
 	name = "north bump";
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "or" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/mre,
-/turf/simulated/floor/reinforced,
-/area/space)
-"oQ" = (
-/obj/structure/bed/padded,
 /turf/simulated/floor/reinforced,
 /area/space)
 "pg" = (
@@ -391,7 +440,7 @@
 "pv" = (
 /obj/machinery/computer/ship/engines,
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "pH" = (
 /obj/structure/dispenser/phoron,
@@ -409,12 +458,6 @@
 "qx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/firstaid,
-/turf/simulated/floor/reinforced,
-/area/space)
-"qQ" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/adv,
-/obj/machinery/cell_charger,
 /turf/simulated/floor/reinforced,
 /area/space)
 "re" = (
@@ -476,7 +519,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "su" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -497,7 +540,7 @@
 	dir = 1;
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "tj" = (
 /obj/machinery/light{
@@ -523,7 +566,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "tG" = (
 /obj/machinery/access_button{
@@ -568,12 +611,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
-"uJ" = (
-/obj/machinery/body_scanconsole{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
 "uX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
@@ -594,7 +631,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "vr" = (
 /obj/structure/grille,
@@ -607,7 +644,7 @@
 	name = "Vault";
 	req_one_access = list(25)
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "vI" = (
 /obj/machinery/door/airlock/external,
@@ -630,8 +667,12 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
 "wi" = (
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"wx" = (
+/obj/structure/closet/crate/large,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/space)
 "wE" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable/green{
@@ -653,7 +694,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "wL" = (
 /obj/machinery/vending/cola,
@@ -668,48 +709,51 @@
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
 "xJ" = (
-/obj/structure/sink{
-	pixel_y = 23
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
-"ya" = (
 /obj/structure/toilet{
-	pixel_y = 16
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
-"yi" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/space)
-"yB" = (
-/obj/structure/closet,
-/obj/random/mre,
-/obj/random/tool,
-/obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"yi" = (
+/obj/structure/curtain,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"yG" = (
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/space)
 "zg" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/deck)
 "zn" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "zx" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
+"zA" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/surgical/bonesetter,
+/obj/item/surgical/cautery,
+/obj/item/surgical/FixOVein,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "Ax" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -734,7 +778,7 @@
 	dir = 1
 	},
 /obj/structure/bed,
-/turf/simulated/floor/tiled/old_tile/white,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "BQ" = (
 /turf/simulated/floor/phoron,
@@ -742,12 +786,6 @@
 "BR" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/recharge/captain,
-/turf/simulated/floor/reinforced,
-/area/space)
-"Cr" = (
-/obj/machinery/sleep_console{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "Cv" = (
@@ -772,7 +810,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "DC" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/space)
 "DJ" = (
 /obj/machinery/power/smes/buildable{
@@ -796,10 +834,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "Fl" = (
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "Fr" = (
 /turf/simulated/shuttle/wall/alien,
@@ -815,7 +853,7 @@
 	pixel_y = 26
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "FU" = (
 /obj/effect/shuttle_landmark/automatic,
@@ -834,12 +872,18 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/deck)
+"GI" = (
+/obj/structure/mirror/long/right_broke{
+	pixel_y = 5
+	},
+/turf/simulated/wall/r_lead,
+/area/space)
 "GZ" = (
 /obj/machinery/computer/ship/helm{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "Hq" = (
 /obj/machinery/meter,
@@ -852,6 +896,10 @@
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"HB" = (
+/obj/structure/ghost_role_spawner/pirate,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "HC" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -865,6 +913,18 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
+"HM" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "HZ" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
@@ -880,7 +940,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "Iq" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -913,7 +973,7 @@
 	pixel_x = 26;
 	pixel_y = 36
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "Is" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate,
@@ -926,11 +986,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"Iy" = (
-/obj/structure/bed/padded,
-/obj/machinery/light,
-/turf/simulated/floor/reinforced,
-/area/space)
 "Jt" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -942,30 +997,34 @@
 	pixel_y = 26;
 	req_one_access = list(25)
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"JI" = (
-/obj/machinery/shower{
-	pixel_y = 18
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
+"JM" = (
+/obj/structure/table/steel_reinforced,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/space)
 "JW" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/piratebase/facility)
+"JZ" = (
+/obj/machinery/optable,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"Kd" = (
+/obj/machinery/shower{
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "Kq" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/mhydrogen,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
-"Kw" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/bonemed,
-/turf/simulated/floor/reinforced,
-/area/space)
 "KN" = (
 /obj/machinery/light{
 	dir = 8
@@ -990,9 +1049,29 @@
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/space)
+"LH" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"Ma" = (
+/obj/structure/medical_stand/anesthetic,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"Mh" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "Mk" = (
-/obj/machinery/door/airlock/phoron,
-/turf/simulated/floor/reinforced,
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/space)
 "Ml" = (
 /obj/structure/lattice,
@@ -1007,21 +1086,19 @@
 /obj/item/gun/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
 /area/space)
-"MQ" = (
-/obj/machinery/door/airlock/multi_tile/metal/mait,
-/turf/simulated/floor/reinforced,
-/area/space)
 "MR" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	volume = 20000
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
-"MY" = (
-/obj/machinery/shower{
-	pixel_y = 18
+"MU" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/machinery/bodyscanner,
+/turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "Nk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -1034,13 +1111,6 @@
 /area/shuttle/pirate/engine)
 "Nn" = (
 /turf/space/basic,
-/area/space)
-"NI" = (
-/obj/machinery/sleep_console{
-	dir = 4
-	},
-/obj/machinery/light,
-/turf/simulated/floor/reinforced,
 /area/space)
 "Oc" = (
 /obj/machinery/vending/snack,
@@ -1059,7 +1129,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "OC" = (
 /obj/machinery/light,
@@ -1069,11 +1139,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/slime,
 /obj/random/mre,
-/turf/simulated/floor/reinforced,
-/area/space)
-"OL" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/insiderepair,
 /turf/simulated/floor/reinforced,
 /area/space)
 "OQ" = (
@@ -1086,6 +1151,12 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/bridge)
+"Pb" = (
+/obj/structure/mirror/long/broke{
+	pixel_y = 5
+	},
+/turf/simulated/wall/r_lead,
+/area/space)
 "Pc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -1098,7 +1169,7 @@
 "Pj" = (
 /obj/machinery/computer/ship/sensors,
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "Py" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1118,6 +1189,9 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
+"Qc" = (
+/turf/simulated/wall/r_lead,
+/area/space)
 "Qj" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -1144,7 +1218,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/white,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "Rg" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1162,19 +1236,32 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "RP" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/bridge)
 "RQ" = (
-/obj/structure/toilet{
-	pixel_y = 16
+/obj/structure/mirror/long/left_broke{
+	pixel_y = 5
 	},
-/obj/machinery/light{
-	dir = 8
+/turf/simulated/wall/r_lead,
+/area/space)
+"Sf" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = -2
 	},
-/turf/simulated/floor/reinforced,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"Sp" = (
+/obj/structure/curtain/medical,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/space)
 "Sz" = (
 /obj/machinery/light{
@@ -1190,8 +1277,20 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/deck)
+"SQ" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/o2{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "Td" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/reinforced,
@@ -1207,7 +1306,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "TB" = (
 /obj/machinery/turretid/lethal{
@@ -1219,8 +1318,22 @@
 /obj/structure/bed/chair/bay/comfy/red{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/obj/item/radio/intercom/raider{
+	dir = 4;
+	pixel_x = 22;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"TI" = (
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/structure/closet/crate/freezer{
+	name = "Blood Supply"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "TW" = (
 /obj/machinery/light{
 	dir = 8
@@ -1250,13 +1363,17 @@
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/reinforced,
 /area/space)
+"Vn" = (
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "Vr" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
 	pixel_y = 26
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "VF" = (
 /obj/machinery/shipsensors,
@@ -1267,7 +1384,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "Wm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1287,7 +1404,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/old_tile/red,
+/turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "Wy" = (
 /obj/machinery/light{
@@ -1304,6 +1421,13 @@
 /obj/effect/overmap/visitable/sector/pirate_base,
 /turf/space,
 /area/space)
+"Xv" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/surgical/retractor,
+/obj/item/surgical/bonegel,
+/obj/item/surgical/scalpel,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "XA" = (
 /obj/structure/handrail{
 	dir = 8
@@ -1317,6 +1441,11 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"XM" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "XN" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/phoron,
@@ -1362,7 +1491,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "Zh" = (
 /turf/simulated/floor/phoron,
@@ -1397,6 +1526,12 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"Zu" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
 "ZH" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -18029,7 +18164,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 tL
 tL
 tL
@@ -18221,10 +18356,10 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
+Nn
+Nn
+Nn
+Nn
 tL
 tL
 tL
@@ -18416,9 +18551,9 @@ tL
 tL
 tL
 tL
+Nn
 tL
-tL
-tL
+Nn
 tL
 tL
 Tg
@@ -18599,17 +18734,17 @@ tL
 tL
 tL
 tL
+Nn
 tL
 tL
+Nn
 tL
 tL
+Nn
+Nn
 tL
-tL
-tL
-tL
-tL
-tL
-tL
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -18792,15 +18927,15 @@ tL
 tL
 tL
 tL
+Nn
+tL
+Nn
 tL
 tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
+Nn
 Tg
 Tg
 Tg
@@ -18986,7 +19121,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 tL
 Nn
 Nn
@@ -19178,7 +19313,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 Nn
 Nn
 Nn
@@ -19371,7 +19506,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 tL
 Nn
 Nn
@@ -19564,7 +19699,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 tL
 Nn
 Nn
@@ -19732,22 +19867,22 @@ tL
 tL
 tL
 tL
-DC
-DC
-yi
-yi
-yi
-yi
-yi
-yi
-DC
-DC
-yi
-yi
-yi
-yi
-yi
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 tL
 tL
 tL
@@ -19926,22 +20061,22 @@ tL
 tL
 tL
 tL
-DC
-RQ
-Mk
-TW
-bS
-TW
-bS
-yi
-DC
-LD
-TW
-bS
-oQ
-bS
-oQ
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 tL
 tL
 tL
@@ -20120,22 +20255,22 @@ tL
 tL
 tL
 tL
-DC
-yi
-yi
-bS
-yi
-xJ
-bS
-yi
-DC
-LD
-bS
-bS
-bS
-bS
-OC
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 tL
 tL
 tL
@@ -20295,41 +20430,41 @@ tL
 tL
 tL
 tL
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-DC
 tL
 tL
 tL
 tL
 tL
-DC
-RQ
-Mk
-bS
-yi
-xJ
-bS
-yi
-DC
-LD
-bS
-bS
-oQ
-bS
-oQ
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 tL
 tL
 tL
@@ -20489,41 +20624,41 @@ tL
 tL
 tL
 tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+ax
+ax
+ax
+ax
 yi
-OF
-Fy
-OF
-oa
-lR
-YA
-lX
-mA
-Rg
-sn
-cz
-Rg
-DC
-tL
-tL
-tL
-tL
-tL
-DC
-yi
-yi
-bS
-yi
+ax
+ax
+ax
 xJ
-bS
-yi
-DC
-LD
-bS
-bS
-bS
-bS
-bS
-yi
+Qc
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 tL
 tL
 tL
@@ -20683,41 +20818,41 @@ tL
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-DC
 tL
 tL
 tL
 tL
 tL
-DC
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+iB
+Qc
+Kd
+ax
 RQ
 Mk
+ax
+Qc
+Qc
+Qc
+Qc
 bS
-yi
-xJ
-bS
-Mk
-DC
-yB
-bS
-bS
-bS
-bS
-bS
-yi
+mE
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 tL
 tL
@@ -20877,41 +21012,41 @@ tL
 tL
 tL
 tL
-yi
-Wy
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-DC
 tL
 tL
 tL
 tL
 tL
-DC
-yi
-yi
-bS
-bS
-bS
-bS
-yi
-DC
-LD
-bS
-bS
-bS
-bS
-bS
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+iB
+Qc
+Kd
+ax
+Pb
 Mk
+ax
+ax
+xJ
+Qc
+bS
+bS
+bS
+bS
+TW
+bS
+bS
+bS
+Qc
 tL
 tL
 tL
@@ -21071,41 +21206,41 @@ tL
 tL
 tL
 tL
-yi
-bS
-qx
-pg
-Ej
-Ej
-Fy
-Lg
-Yg
-Gn
-Yg
-BR
-bS
-DC
 tL
 tL
 tL
 tL
 tL
-DC
-ya
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+ax
+ax
+ax
+ax
+Pb
 Mk
+ax
+Qc
+Qc
+Qc
 bS
 bS
-jy
 bS
-yi
-DC
-LD
+Yd
 bS
 bS
-oQ
+or
 bS
-oQ
-yi
+Qc
 tL
 tL
 tL
@@ -21265,41 +21400,41 @@ tL
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-OC
-DC
 tL
 tL
 tL
 tL
 tL
-DC
-yi
-yi
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+iB
+Qc
+Kd
+ax
+Pb
 Mk
-yi
-yi
-yi
-DC
-LD
+ax
+ax
+xJ
+Qc
+Wy
 bS
 bS
+or
 bS
 bS
+Oe
 bS
-yi
+Qc
 tL
 tL
 tL
@@ -21459,41 +21594,41 @@ tL
 tL
 tL
 tL
-MQ
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-DC
 tL
 tL
 tL
 tL
 tL
-DC
-yi
-JI
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+iB
+Qc
+Kd
+ax
+GI
+Mk
+ax
+Qc
+Qc
+Qc
+jM
 bS
 bS
-bS
-TW
-yi
-DC
-LD
+or
 bS
 bS
-oQ
-bS
-Iy
-yi
+HZ
+OC
+Qc
 tL
 tL
 tL
@@ -21653,41 +21788,41 @@ tL
 tL
 tL
 tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+ax
+ax
+ax
+ax
+ax
+yi
+ax
+ax
+ax
+xJ
+Qc
+UR
 bS
 bS
-Lg
-Py
-mY
-qx
-eR
-nO
-Fy
-mA
-Yg
-Fy
+Oe
 bS
-DC
-tL
-tL
-tL
-tL
-tL
-DC
-yi
-MY
-yi
-MY
-yi
-MY
-yi
-DC
-DC
-yi
-yi
-yi
-yi
-yi
-yi
+bS
+Yd
+bS
+Qc
 tL
 tL
 tL
@@ -21847,41 +21982,41 @@ tL
 tL
 tL
 tL
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+ax
+ax
+Qc
+Qc
+Qc
+wL
 bS
 bS
+HZ
 bS
 bS
+Yd
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-DC
-tL
-tL
-tL
-tL
-tL
-DC
-yi
-MY
-yi
-MY
-yi
-MY
-yi
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
 tL
 tL
 tL
@@ -22041,41 +22176,41 @@ fE
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+kp
+aS
+hm
 DC
-tL
-tL
-tL
-tL
-tL
-DC
-yi
-MY
+HB
+wx
+Qc
+Td
 bS
 bS
+Yd
 bS
 bS
-DC
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+HZ
+bS
+Qc
 tL
 tL
 tL
@@ -22235,41 +22370,41 @@ fE
 tL
 tL
 tL
-yi
-Wy
-Lg
-lX
-lX
-lX
-YX
-tU
-hJ
-sg
-Fy
-CH
-OC
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
 DC
-tL
-tL
-tL
-tL
-tL
+hm
 DC
+hm
 DC
-DC
-DC
-DC
-DC
-DC
-DC
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+hm
+Qc
+Td
+bS
+bS
+Oe
+bS
+bS
+Yd
+bS
+Qc
 tL
 tL
 tL
@@ -22429,41 +22564,41 @@ fE
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+kp
+aS
+hm
 DC
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-Fr
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+HB
+wx
+Qc
+Oc
+bS
+bS
+HZ
+bS
+bS
+HZ
+bS
+Qc
 tL
 tL
 tL
@@ -22623,41 +22758,41 @@ fE
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
 DC
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-Fr
-tL
-Fr
-tL
-Fr
-tL
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
+hm
+DC
+hm
+DC
+hm
+Qc
+sR
+bS
+bS
+LD
+bS
+bS
+bS
+OC
+Qc
 tL
 tL
 tL
@@ -22817,41 +22952,41 @@ fE
 tL
 tL
 tL
-yi
-Fy
-MB
-CU
-nE
-to
-nE
-nE
-nE
-nE
-pH
-My
-My
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+kp
+aS
+hm
 DC
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-Fr
-Fr
-Fr
-tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
+HB
+wx
+Qc
+sR
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
 tL
 tL
@@ -23011,41 +23146,41 @@ fE
 tL
 tL
 tL
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
-DC
 tL
 tL
 tL
 tL
-Fr
 tL
 tL
 tL
 tL
-Fr
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Qc
+DC
+hm
+DC
+hm
+DC
+hm
+Qc
+bS
+bS
+jy
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
 tL
 tL
@@ -23217,38 +23352,38 @@ tL
 tL
 tL
 tL
-Fr
 tL
 tL
 tL
 tL
-Fr
-Fr
-Fr
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-fE
-fE
-fE
-fE
-BQ
-BQ
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
+Qc
+Qc
+Qc
+Qc
+Qc
+hm
+DC
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+bS
+bS
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 tL
 tL
@@ -23409,39 +23544,39 @@ tL
 tL
 tL
 tL
-Fr
-tL
-Fr
-tL
-Fr
-tL
-Fr
-tL
-Fr
-tL
-Fr
 tL
 tL
 tL
 tL
 tL
 tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
+Qc
+jB
+jB
+jB
+jB
+hm
+hm
+jB
+jB
+jB
+jB
+Qc
+jB
+jB
+jB
+hm
+hm
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
 Zr
 Zr
 Zr
@@ -23604,38 +23739,38 @@ tL
 tL
 tL
 tL
-Fr
-Fr
-Fr
-tL
-tL
-tL
-tL
-Fr
 tL
 tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
+Qc
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+Mh
+hm
+Mh
+hm
+hm
+hm
+jB
 Zr
 bg
 ZP
@@ -23794,42 +23929,42 @@ vJ
 um
 CC
 tL
-Fr
 tL
 tL
 tL
 tL
-Fr
-tL
-tL
-yi
-yi
-bS
-mE
-yi
-yi
-yi
-yi
-yi
-yi
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
+tL
+tL
+Qc
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+jB
+hm
+jB
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+Mh
+fo
+Mh
+hm
+hm
+hm
+hm
 tG
 JW
 JW
@@ -23989,41 +24124,41 @@ XN
 CC
 tL
 tL
-Fr
 tL
 tL
 tL
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-bS
-TW
-bS
-bS
-bS
-yi
 tL
 tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
+Qc
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+hm
+Mh
+hm
+Mh
+hm
+hm
+hm
+jB
 Zr
 Wm
 gG
@@ -24181,43 +24316,43 @@ Zp
 vJ
 vJ
 Pz
-Fr
-Fr
-Fr
-Fr
 tL
 tL
 tL
 tL
 tL
-yi
-bS
-bS
-bS
-Yd
-bS
-bS
-or
-bS
-yi
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
+tL
+tL
+Qc
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+Qc
+jB
+jB
+jB
+hm
+hm
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
+jB
 Zr
 Zr
 Zr
@@ -24377,42 +24512,42 @@ vJ
 vJ
 tL
 tL
-Fr
 tL
 tL
 tL
 tL
 tL
 tL
-yi
-Wy
-bS
-bS
-or
-bS
-bS
-Oe
-bS
-yi
-tL
-tL
-tL
-fE
-fE
-fE
-BQ
-BQ
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+hm
+hm
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 Nn
 Nn
@@ -24570,7 +24705,6 @@ vJ
 ZL
 CC
 tL
-Fr
 tL
 tL
 tL
@@ -24578,26 +24712,27 @@ tL
 tL
 tL
 tL
-yi
-jM
-bS
-bS
-or
-bS
-bS
-HZ
-OC
-yi
+Qc
+OF
+Fy
+OF
+oa
+lR
+YA
+lX
+mA
+Rg
+sn
+cz
+Rg
+Qc
 tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-fE
-tL
+Qc
+ax
+ax
+ax
+HM
+Qc
 tL
 tL
 tL
@@ -24771,27 +24906,27 @@ tL
 tL
 tL
 tL
-tL
-yi
-UR
+Qc
 bS
 bS
-Oe
 bS
 bS
-Yd
 bS
-yi
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-fE
-tL
+Qc
+dJ
+ax
+ax
+Sf
+Qc
 tL
 tL
 tL
@@ -24965,27 +25100,27 @@ tL
 tL
 tL
 tL
-tL
-yi
-wL
+Qc
+Wy
 bS
 bS
-HZ
 bS
 bS
-Yd
 bS
-yi
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-fE
-tL
+Qc
+MU
+ax
+ax
+SQ
+Qc
 tL
 tL
 tL
@@ -25159,27 +25294,27 @@ tL
 tL
 tL
 tL
-tL
-yi
-Td
+Qc
 bS
+qx
+pg
+Ej
+Ej
+Fy
+Lg
+Yg
+Gn
+Yg
+BR
 bS
-Yd
-bS
-bS
-HZ
-bS
-yi
+Qc
 tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-fE
-tL
+Qc
+ax
+ax
+ax
+kC
+Qc
 tL
 tL
 tL
@@ -25353,28 +25488,28 @@ tL
 tL
 tL
 tL
+Qc
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+OC
+Qc
 tL
-yi
-Td
-bS
-bS
-Oe
-bS
-bS
-Yd
-bS
-yi
+Qc
+Vn
+ax
+ax
+TI
+Qc
 tL
-tL
-tL
-fE
-fE
-fE
-BQ
-BQ
-fE
-fE
-fE
 tL
 tL
 tL
@@ -25547,42 +25682,42 @@ tL
 tL
 tL
 tL
-tL
-yi
-Oc
+Qc
 bS
 bS
-HZ
 bS
 bS
-HZ
 bS
-yi
-tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-tL
-tL
-yi
 bS
-mE
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
+tL
+Qc
+Ma
+ax
+ax
+JM
+Qc
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -25741,42 +25876,42 @@ tL
 tL
 tL
 tL
+Qc
+bS
+Lg
+Py
+mY
+qx
+eR
+nO
+Fy
+mA
+Yg
+Fy
+bS
+Qc
 tL
-yi
-sR
-bS
-bS
-bS
-bS
-bS
-bS
-OC
-yi
+Qc
+Vn
+ax
+ax
+Zu
+Qc
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
 tL
 tL
-DC
-bS
-bS
-bS
-bS
-fb
-fb
-OL
-cB
-Kw
-qQ
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -25935,42 +26070,42 @@ tL
 tL
 tL
 tL
+Qc
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
-yi
-sR
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-yi
+Qc
+Ma
+ax
+ax
+fe
+Qc
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
 tL
 tL
-DC
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -26129,42 +26264,42 @@ tL
 tL
 tL
 tL
+Qc
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
 tL
-yi
-bS
-bS
-jy
-bS
-bS
-bS
-bS
-bS
-yi
+Qc
+Qc
+Sp
+Sp
+Qc
+Qc
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-Fr
-fE
 tL
 tL
-DC
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-OC
-yi
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
 Nn
 Nn
 Nn
@@ -26323,42 +26458,42 @@ tL
 tL
 tL
 tL
-tL
-yi
-yi
-yi
-yi
-yi
-yi
-bS
-mE
-yi
-yi
-tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-Fr
-BQ
-fE
-tL
-tL
-DC
+Qc
 Wy
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-yi
+Lg
+lX
+lX
+lX
+YX
+tU
+hJ
+sg
+Fy
+CH
+OC
+Qc
+tL
+Qc
+XM
+ax
+ax
+yG
+Qc
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -26517,42 +26652,42 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-DC
+Qc
 bS
-uJ
 bS
-Cr
 bS
-Cr
 bS
-Cr
 bS
-NI
-yi
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
+tL
+Qc
+JZ
+ax
+ax
+ax
+Qc
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
 tL
 Nn
 Nn
@@ -26711,44 +26846,44 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-BQ
-Fr
-BQ
-fE
-tL
-tL
-DC
+Qc
 bS
-iV
 bS
-iD
 bS
-iD
 bS
-iD
 bS
-iD
-yi
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+Qc
+tL
+Qc
+zA
+hi
+Xv
+LH
+Qc
 tL
 tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+Nn
+Nn
+Nn
+Nn
 Nn
 Nn
 Nn
@@ -26905,6 +27040,27 @@ tL
 tL
 tL
 tL
+Qc
+Fy
+MB
+CU
+nE
+to
+nE
+nE
+nE
+nE
+pH
+My
+My
+Qc
+tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 tL
 tL
@@ -26919,30 +27075,9 @@ tL
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-Fr
-fE
+Nn
 tL
-tL
-DC
-bS
-bS
-bS
-bS
-bS
-jy
-bS
-bS
-bS
-bS
-yi
-tL
-tL
+Nn
 Nn
 Nn
 Nn
@@ -27099,6 +27234,20 @@ tL
 tL
 tL
 tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 tL
 tL
@@ -27113,31 +27262,17 @@ tL
 tL
 tL
 tL
-fE
-BQ
-BQ
-BQ
-BQ
-BQ
-BQ
-fE
-tL
-tL
-DC
-DC
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
 tL
 tL
 tL
+tL
+tL
+Nn
+tL
+Nn
+tL
+tL
+Nn
 Nn
 Nn
 Nn
@@ -27307,14 +27442,6 @@ tL
 tL
 tL
 tL
-fE
-fE
-fE
-fE
-fE
-fE
-fE
-fE
 tL
 tL
 tL
@@ -27333,6 +27460,14 @@ tL
 tL
 tL
 tL
+tL
+tL
+tL
+tL
+Nn
+Nn
+tL
+Nn
 Nn
 Nn
 Nn
@@ -27525,7 +27660,7 @@ tL
 tL
 tL
 tL
-tL
+Nn
 tL
 Nn
 Nn
