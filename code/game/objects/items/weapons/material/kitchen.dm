@@ -132,9 +132,12 @@
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
 /obj/item/material/kitchen/rollingpin/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
+	var/mob/living/L = user
+	if(!istype(L))
+		return ..()
+	if ((MUTATION_CLUMSY in L.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
-		user.take_organ_damage(10)
-		user.Unconscious(2)
+		L.take_organ_damage(10)
+		L.Unconscious(2)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

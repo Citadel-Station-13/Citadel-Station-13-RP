@@ -248,9 +248,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		light(text)
 
 /obj/item/clothing/mask/smokable/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if(istype(M) && M.on_fire)
-		user.do_attack_animation(M)
-		light("<span class='notice'>[user] coldly lights the [name] with the burning body of [M].</span>")
+	var/mob/living/L = M
+	if(istype(L) && L.on_fire)
+		user.do_attack_animation(L)
+		light("<span class='notice'>[user] coldly lights the [name] with the burning body of [L].</span>")
 		return
 	else
 		return ..()

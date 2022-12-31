@@ -173,17 +173,18 @@
 	unlimited = 1
 
 /obj/item/necromantic_stone/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
-	if(!istype(M))
+	var/mob/living/carbon/human/H = M
+	if(!istype(H))
 		return ..()
 
 	if(!istype(user))
 		return
 
-	if(M.stat != DEAD)
+	if(H.stat != DEAD)
 		to_chat(user, "<span class='warning'>This artifact can only affect the dead!</span>")
 		return
 
-	if(!M.mind || !M.client)
+	if(!H.mind || !H.client)
 		to_chat(user, "<span class='warning'>There is no soul connected to this body...</span>")
 		return
 
@@ -192,13 +193,13 @@
 		to_chat(user, "<span class='warning'>This artifact can only affect three undead at a time!</span>")
 		return
 
-	M.set_species(/datum/species/skeleton, regen_icons=0)
-	M.revive()//full_heal = 1, admin_revive = 1)
-	spooky_scaries |= M
-	to_chat(M, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
-	to_chat(M, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")
+	H.set_species(/datum/species/skeleton, regen_icons=0)
+	H.revive()//full_heal = 1, admin_revive = 1)
+	spooky_scaries |= H
+	to_chat(H, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
+	to_chat(H, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")
 
-	equip_roman_skeleton(M)
+	equip_roman_skeleton(H)
 
 	desc = "A shard capable of resurrecting humans as skeleton thralls[unlimited ? "." : ", [spooky_scaries.len]/3 active thralls."]"
 

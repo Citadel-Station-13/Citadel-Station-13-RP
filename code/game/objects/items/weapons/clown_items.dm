@@ -60,7 +60,7 @@
 
 /obj/item/soap/attack_mob(mob/M, mob/user, clickchain_flags, list/params)
 	if(M && user && ishuman(M) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
-		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
+		user.visible_message("<span class='danger'>\The [user] washes \the [M]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
 		return CLICKCHAIN_DO_NOT_PROPAGATE

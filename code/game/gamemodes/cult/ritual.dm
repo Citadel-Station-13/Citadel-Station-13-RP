@@ -295,16 +295,17 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		var/mob/observer/dead/D = M
 		D.manifest(user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	if(!istype(M))
+	var/mob/living/L = M
+	if(!istype(L))
 		return NONE
 	if(!iscultist(user))
 		return ..()
 	if(iscultist(M))
 		return NONE
-	add_attack_logs(user,M,"Hit with [name]")
-	M.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
-	for(var/mob/O in viewers(M, null))
-		O.show_message("<span class='warning'>\The [user] beats \the [M] with \the [src]!</span>", 1)
+	add_attack_logs(user, L, "Hit with [name]")
+	L.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
+	for(var/mob/O in viewers(L, null))
+		O.show_message("<span class='warning'>\The [user] beats \the [L] with \the [src]!</span>", 1)
 	to_chat(M, "<span class='danger'>You feel searing heat inside!</span>")
 
 /obj/item/book/tome/attack_self(mob/user)

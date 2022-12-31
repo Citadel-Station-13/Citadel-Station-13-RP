@@ -410,7 +410,7 @@
 		to_chat(user, "<span class='notice'>This [src] is empty!</span>")
 		return
 	if(!closed)
-		do_injection(H, user)
+		do_injection(M, user)
 		return
 
 /obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)

@@ -58,14 +58,14 @@
 			return FALSE
 		H.UpdateDamageIcon()
 	else
-		M.heal_organ_damage((src.heal_brute/2), (src.heal_burn/2))
+		C.heal_organ_damage((src.heal_brute/2), (src.heal_burn/2))
 		user.visible_message( \
 			"<span class='notice'>[M] has been applied with [src] by [user].</span>", \
 			"<span class='notice'>You apply \the [src] to [M].</span>" \
 		)
 		use(1)
 		. = FALSE // already did so
-	M.updatehealth()
+	C.updatehealth()
 	return TRUE
 
 /obj/item/stack/medical/proc/upgrade_stack(var/upgrade_amount)
@@ -384,8 +384,8 @@
 		if (M != user)
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You start to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 		else
-			if(( !user.hand && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
-				user.hand && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
+			if(( !H.hand && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
+				H.hand && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
 				to_chat(user, "<span class='danger'>You can't apply a splint to the arm you're using!</span>")
 				return
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to their [limb].</span>", "<span class='danger'>You start to apply \the [src] to your [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
