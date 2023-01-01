@@ -167,12 +167,6 @@
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
-
-
-#warn kill this
-//Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
-/obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
-
 /**
  * called at base of attack_mob after standard melee attack misses
  *
@@ -320,5 +314,3 @@
  */
 /obj/item/proc/finalize_object_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	return NONE
-
-#warn process melee hit instead of this (?)

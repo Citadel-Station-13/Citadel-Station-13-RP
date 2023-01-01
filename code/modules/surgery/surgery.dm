@@ -118,6 +118,7 @@
 				return 0
 	return 0
 
+#warn oh no
 /obj/item/proc/do_surgery(mob/living/carbon/M, mob/living/user)
 	if(!istype(M))
 		return 0

@@ -148,7 +148,7 @@
 	var/obj/item/organ/external/affecting = null
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		affecting = H.get_organ(hit_zone)
+		affecting = H.get_organ(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
 		. = ..()
@@ -169,7 +169,7 @@
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, hit_zone, src)
+		target.stun_effect_act(stun, agony, target_zone, src)
 		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
 
 		if(ishuman(target))
@@ -332,7 +332,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	target.stun_effect_act(stunforce, agonyforce, hit_zone, src)
+	target.stun_effect_act(stunforce, agonyforce, target_zone, src)
 	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
 
 	deductcharge(hitcost)

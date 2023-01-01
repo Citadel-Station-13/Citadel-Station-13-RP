@@ -100,8 +100,9 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(2*force, BRUTE, BP_HEAD)
-			else
-				user.take_organ_damage(2*force)
+			else if(isliving(user))
+				var/mob/living/L = user
+				L.take_organ_damage(2*force)
 			return
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb

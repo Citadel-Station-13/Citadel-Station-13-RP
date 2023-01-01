@@ -205,6 +205,9 @@
 
 /obj/item/melee/nanite_knife/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(!target.reagents)
 		return
 	if(target.can_inject(src, null, hit_zone))
