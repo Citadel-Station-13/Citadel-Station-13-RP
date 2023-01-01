@@ -313,8 +313,11 @@
 			user.emote("flip")
 		sleep(1)
 
-/obj/item/bo_staff/apply_hit_effect(mob/living/target, mob/living/user, hit_zone, attack_modifier)
+/obj/item/bo_staff/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	var/mob/living/carbon/human/H = target
 	var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
 									"[user] smacks [H] with the butt of [src]!", \

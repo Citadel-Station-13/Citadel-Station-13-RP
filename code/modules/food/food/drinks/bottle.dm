@@ -142,18 +142,18 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	var/blocked = ..()
-
+/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(user.a_intent != INTENT_HARM)
 		return
 	if(!smash_check(1))
 		return //won't always break on the first hit
 
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = 0
-	if(blocked < 100)
-		weaken_duration = smash_duration + min(0, force - target.run_mob_armor(hit_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, force - target.run_mob_armor(hit_zone, "melee") + 10)
 
 	if(hit_zone == "head" && istype(target, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [target]'s head!</span>")

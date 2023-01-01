@@ -136,7 +136,10 @@
 	deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/baton/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(isrobot(target))
 		return ..()
 
@@ -250,11 +253,9 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/apply_hit_effect(mob/living/L, mob/living/carbon/user, shoving = FALSE)//handles making things teleport when hit
+/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!. || L.anchored)
-		return
-	do_teleport(L, get_turf(L), 15)
+	do_teleport(M, get_turf(M), 15)
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -269,8 +270,11 @@
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	..(target, user, hit_zone)
+/obj/item/melee/baton/shocker/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/target = M
+	if(!istype(target))
+		return
+	. = ..()
 	if(status && target.has_AI())
 		target.taunt(user)
 
@@ -303,13 +307,15 @@
 		bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/loaded/mini/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	var/mob/living/carbon/human/H
 	if(ishuman(target))
 		H = target
 		if(!status)
-			..(target, user, hit_zone)
-			return
+			return ..()
 	else
 		return
 

@@ -240,9 +240,11 @@
 					return
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(seed && seed.get_trait(TRAIT_STINGS))
 		if(!reagents || reagents.total_volume <= 0)
 			return

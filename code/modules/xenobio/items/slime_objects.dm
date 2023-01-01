@@ -80,10 +80,12 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
-/obj/item/slime_crystal/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/slime_crystal/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	target.visible_message("<span class='warning'>\The [target] has been teleported with \the [src] by \the [user]!</span>")
 	safe_blink(target, 14)
 	qdel(src)
+	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
