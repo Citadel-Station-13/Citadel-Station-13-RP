@@ -3,6 +3,7 @@
  */
 
 #define WALL_AO_ALPHA 80
+#define Z_AO_ALPHA 160
 
 #define AO_UPDATE_NONE    0
 #define AO_UPDATE_OVERLAY 1
