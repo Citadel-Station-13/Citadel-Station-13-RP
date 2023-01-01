@@ -2,6 +2,7 @@
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 	use_power = USE_POWER_IDLE
+	layer = EXPOSED_ATMOS_LAYER
 
 	var/datum/gas_mixture/air1
 	var/datum/gas_mixture/air2

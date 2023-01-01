@@ -112,10 +112,13 @@ var/list/flooring_types
 	var/list/movable_atom_whitelist = list()
 	var/list/movable_atom_blacklist = list()
 
-/singleton/flooring/proc/get_plating_type(var/turf/T)
+	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
+/singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type
 
-/singleton/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
+/singleton/flooring/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, layer = TURF_DETAIL_LAYER)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer

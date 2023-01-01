@@ -162,7 +162,7 @@
 	if(!imp)
 		to_chat(usr, "No mirror is loaded.")
 	else
-		user.put_in_hands(imp)
+		user.put_in_hands_or_drop(imp)
 		imp = null
 		update_icon()
 

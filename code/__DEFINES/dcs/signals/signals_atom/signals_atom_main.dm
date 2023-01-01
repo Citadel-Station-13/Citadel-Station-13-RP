@@ -77,7 +77,7 @@
 /// Called when an atom stops orbiting another atom: (atom)
 ////#define COMSIG_ATOM_ORBIT_STOP "atom_orbit_stop"
 /// From base of atom/set_opacity(): (new_opacity)
-////#define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
+#define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
 /// From base of atom/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 ////#define COMSIG_ATOM_HITBY "atom_hitby"
 /// When an atom starts playing a song datum (datum/song)
