@@ -17,7 +17,7 @@
 	var/mode = 1;
 
 /obj/item/robotanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	do_scan(M, user)
+	do_scan(target, user)
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)
 	if((MUTATION_CLUMSY in user.mutations) && prob(50))

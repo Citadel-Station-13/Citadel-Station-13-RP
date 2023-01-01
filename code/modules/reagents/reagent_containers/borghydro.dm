@@ -63,7 +63,7 @@
 	return 1
 
 /obj/item/reagent_containers/borghypo/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/L = M
+	var/mob/living/L = target
 	if(!istype(L))
 		return
 

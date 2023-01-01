@@ -21,7 +21,7 @@
 
 /obj/item/stamp/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	playsound(M, pick(stamp_sounds), 30, 1, -1)
+	playsound(target, pick(stamp_sounds), 30, 1, -1)
 
 /obj/item/stamp/captain
 	name = "Facility Director's rubber stamp"

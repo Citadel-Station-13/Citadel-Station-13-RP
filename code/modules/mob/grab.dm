@@ -344,7 +344,7 @@
 	reset_kill_state() //using special grab moves will interrupt choking them
 
 	//clicking on the victim while grabbing them
-	if(M == affecting)
+	if(target == affecting)
 		if(ishuman(affecting))
 			var/mob/living/carbon/human/H = affecting
 			var/hit_zone = assailant.zone_sel.selecting
@@ -375,7 +375,7 @@
 					pin_down(affecting, assailant)
 
 	//clicking on yourself while grabbing them
-	if(M == assailant && state >= GRAB_AGGRESSIVE)
+	if(target == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
 
 /obj/item/grab/proc/reset_kill_state()

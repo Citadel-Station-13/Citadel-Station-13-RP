@@ -26,7 +26,7 @@
 	icon_state = "[initial(icon_state)][charges ? "" : "-drained"]"
 
 /obj/item/gun/magic/wand/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(M == user)
+	if(target == user)
 		return
 	return ..()
 

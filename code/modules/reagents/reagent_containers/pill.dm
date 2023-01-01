@@ -28,9 +28,9 @@
 		name += " ([reagents.total_volume]u)"
 
 /obj/item/reagent_containers/pill/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(M == user)
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
+	if(target == user)
+		if(istype(target, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = target
 			if(!H.check_has_mouth())
 				to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
 				return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -41,15 +41,15 @@
 			if(!user.attempt_void_item_for_installation(src))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 
-			to_chat(M, "<span class='notice'>You swallow \the [src].</span>")
+			to_chat(target, "<span class='notice'>You swallow \the [src].</span>")
 			if(reagents.total_volume)
-				reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
+				reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	else if(istype(M, /mob/living/carbon/human))
+	else if(istype(target, /mob/living/carbon/human))
 
-		var/mob/living/carbon/human/H = M
+		var/mob/living/carbon/human/H = target
 		if(!H.check_has_mouth())
 			to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -58,18 +58,18 @@
 			to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
-		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] attempts to force [target] to swallow \the [src].</span>")
 
 		user.setClickCooldown(user.get_attack_speed(src))
-		if(!do_mob(user, M))
+		if(!do_mob(user, target))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_void_item_for_installation(src))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] forces [target] to swallow \the [src].</span>")
 		var/contained = reagentlist()
-		add_attack_logs(user,M,"Fed a pill containing [contained]")
+		add_attack_logs(user,target,"Fed a pill containing [contained]")
 		if(reagents && reagents.total_volume)
-			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
+			reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
 		qdel(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 

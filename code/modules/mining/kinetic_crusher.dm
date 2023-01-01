@@ -114,7 +114,7 @@
 */
 
 /obj/item/kinetic_crusher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return ..()
 	if(!wielded && requires_wield)

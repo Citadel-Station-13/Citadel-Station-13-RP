@@ -567,8 +567,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(ishuman(M) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = M
+	if(ishuman(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)

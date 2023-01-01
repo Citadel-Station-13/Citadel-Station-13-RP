@@ -445,9 +445,9 @@
 /obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(!isliving(M))
+	if(!isliving(target))
 		return ..()
-	var/mob/living/L = M
+	var/mob/living/L = target
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
