@@ -112,4 +112,4 @@
 /obj/item/clothing/suit/space/void/pirate/scrapper
 	name = "Scrapper voidsuit"
 	desc = "Not all pirate crews go for flashy colors and intricate paint jobs. This refit mining suit functions both as a voidsuit capable of zero-G salvage and mining, and also as a robust raiding rig."
-	icon_state = "rig0-RedMiner"
+	icon_state = "rig-RedMiner"

@@ -11,12 +11,26 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"aj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "am" = (
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/construction)
+"an" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/piratebase/captain)
 "ap" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -31,7 +45,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "as" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -45,17 +59,20 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "au" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "ax" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "ay" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -68,7 +85,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "aA" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -81,7 +98,7 @@
 "aI" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/simulated/wall/r_lead,
-/area/space)
+/area/piratebase/mining)
 "aP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -89,11 +106,20 @@
 /obj/structure/table/wooden_reinforced,
 /obj/random/drinkbottle,
 /turf/simulated/floor/wood,
-/area/space)
-"aS" = (
-/obj/structure/ghost_role_spawner/pirate,
-/turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/captain)
+"aQ" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
+"aY" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "bi" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -124,11 +150,11 @@
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	name = "Quarters";
+	name = "Bunks";
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "bt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -137,7 +163,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "bu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -152,7 +178,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/construction)
 "bz" = (
 /obj/structure/closet/crate/bin{
 	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
@@ -163,10 +189,10 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "bS" = (
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "bT" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/surgical/retractor,
@@ -176,31 +202,60 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"bU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "cc" = (
 /obj/structure/closet/crate/large/secure{
 	name = "Booty"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"ce" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "ch" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "cm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "cs" = (
 /obj/machinery/alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27;
 	req_one_access = list(168)
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "cz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -209,16 +264,16 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "cI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "cM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -237,7 +292,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "cY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -251,26 +306,30 @@
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/knife/tacknife/plasteel,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "dj" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
 "dk" = (
 /obj/structure/closet/crate/large,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
-"dp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+/area/piratebase/bunks)
+"dl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "dr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -285,7 +344,7 @@
 	dir = 9
 	},
 /turf/simulated/mineral/floor,
-/area/space)
+/area/piratebase/construction)
 "ds" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -298,7 +357,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "dt" = (
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -312,21 +371,21 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "dC" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /obj/structure/fuel_port/heavy{
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
+/obj/structure/cable/cyan{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
@@ -365,16 +424,15 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/piratebase/sickbay)
 "dL" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/reagent_containers/food/snacks/dionaroast,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "dQ" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -388,12 +446,15 @@
 "dU" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "ej" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "er" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -406,7 +467,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "ez" = (
 /obj/structure/bed/chair/bay/shuttle,
 /obj/machinery/light{
@@ -430,8 +491,11 @@
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(168)
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "eI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/effect/floor_decal/rust,
@@ -446,7 +510,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "eM" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -458,11 +522,16 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
+"eP" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "fd" = (
 /obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/food/snacks/diggerstew_can,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "fe" = (
 /obj/machinery/mecha_part_fabricator/pros{
 	dir = 8;
@@ -472,12 +541,12 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "fi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/diamond,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "fo" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -491,7 +560,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "fy" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -508,21 +577,43 @@
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
 "fE" = (
-/turf/simulated/shuttle/wall/dark,
-/area/space)
+/turf/simulated/wall,
+/area/piratebase/construction)
 "fG" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "fH" = (
 /obj/effect/floor_decal/industrial/loading,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "fM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
+"fO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/construction)
+"fQ" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "fS" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -533,6 +624,17 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
+"ga" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/sickbay)
+"gg" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable/green,
+/turf/simulated/floor/plating,
+/area/piratebase/power)
 "gn" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -551,7 +653,10 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"gq" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "gr" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -566,11 +671,11 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "gE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "gG" = (
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -579,15 +684,23 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "gJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"hh" = (
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
+"hk" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "hm" = (
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "hH" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -599,7 +712,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
+"hK" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -609,7 +726,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "hR" = (
 /obj/structure/fans/tiny,
 /obj/structure/cable/green{
@@ -637,16 +754,28 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"ia" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
 "if" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "ii" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "ir" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -655,45 +784,82 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "is" = (
 /obj/structure/closet/secure_closet{
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"it" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "iw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
+"ix" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "iz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "iB" = (
 /obj/machinery/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "iD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
+"jf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "jg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "jh" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -703,7 +869,13 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
+"jo" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "jq" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -712,10 +884,10 @@
 	name = "Stall"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "jB" = (
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/dock)
 "jD" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -727,11 +899,14 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "jE" = (
 /obj/machinery/portable_atmospherics/canister/empty/oxygen,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "jH" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -741,7 +916,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "jJ" = (
 /obj/machinery/light,
 /obj/machinery/power/terminal{
@@ -760,8 +935,12 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
 	},
+/obj/machinery/door/airlock/hatch{
+	name = "Mining";
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "jX" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -770,7 +949,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "jY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -785,10 +964,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "kb" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
+"kc" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "kg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -797,27 +982,67 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "ki" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
+"kl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
+"km" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
+"ko" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
 "kp" = (
 /obj/structure/closet/crate/large,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
+"kq" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/wood,
+/area/piratebase/captain)
 "kr" = (
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "kA" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "kD" = (
 /obj/machinery/door/window/brigdoor/eastright{
 	dir = 1;
@@ -830,26 +1055,25 @@
 /obj/structure/medical_stand/anesthetic,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "kH" = (
-/obj/structure/ghost_role_spawner/pirate,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "kI" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "kS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "kV" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "pirate"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "kX" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
@@ -858,11 +1082,22 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
+"lh" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/storage/vest/tactical/pirate{
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/storage/vest/tactical/pirate,
+/obj/item/clothing/suit/storage/vest/tactical/pirate{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "li" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
 "lk" = (
 /obj/machinery/door/firedoor/multi_tile{
 	req_one_access = list(168)
@@ -873,8 +1108,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 8;
+	req_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "lv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -883,7 +1122,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "lx" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -891,6 +1130,10 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/airless,
 /area/space)
+"lz" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "lA" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
@@ -911,6 +1154,18 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"lE" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
+"lF" = (
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "lG" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -923,6 +1178,10 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"lJ" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
 "lK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8
@@ -937,13 +1196,28 @@
 /obj/machinery/mineral/input,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
+"lS" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 5;
+	pixel_y = 26
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/shuttle/pirate/bridge)
 "lT" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/helmet/space/vox/carapace,
 /obj/item/clothing/suit/space/vox/carapace,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"lY" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "mi" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -953,18 +1227,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "mp" = (
 /obj/structure/table/steel_reinforced,
+/obj/item/tray,
+/obj/item/reagent_containers/food/snacks/chickenfillet,
 /obj/item/reagent_containers/food/snacks/chickenfillet,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "my" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "mD" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/green{
@@ -974,20 +1250,33 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
+"mE" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "mP" = (
 /obj/machinery/atmospherics/component/binary/pump/on,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "mR" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/green,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "mZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -996,7 +1285,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
+"na" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "nb" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -1014,27 +1307,33 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/vault)
 "ne" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "nf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "nt" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
+"nz" = (
+/turf/simulated/mineral/vacuum,
+/area/piratebase/construction)
+"nA" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/atmospherics)
 "nB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1046,15 +1345,28 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "nG" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/item/tray,
+/obj/item/reagent_containers/food/snacks/corn_dog{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/snacks/corn_dog{
+	pixel_x = 3
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
+"nN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "nP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -1065,15 +1377,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "nW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/deuterium,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "oc" = (
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "od" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -1083,27 +1395,43 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
+"oh" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "oi" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "ol" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
 	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "oo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "op" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -1113,6 +1441,24 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"oy" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/armor/tactical/pirate{
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/tactical/pirate,
+/obj/item/clothing/suit/armor/tactical/pirate{
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/pirate{
+	pixel_y = -8
+	},
+/obj/item/clothing/head/helmet/pirate{
+	pixel_y = -4
+	},
+/obj/item/clothing/head/helmet/pirate,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "oC" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -1122,8 +1468,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "oD" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -1138,29 +1487,56 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "oR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
+"oU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "oV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "oW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/gold,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"pf" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden/east_bump{
+	req_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/piratebase/mining)
 "pg" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/pickaxe/diamonddrill,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "pn" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -1180,8 +1556,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "pv" = (
 /obj/machinery/computer/ship/engines,
 /obj/structure/table/steel_reinforced,
@@ -1200,13 +1577,25 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"pD" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/atmospherics)
+"pG" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "pJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "pY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1222,7 +1611,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "pZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -1237,7 +1626,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "qd" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -1255,14 +1644,14 @@
 /obj/item/reagent_containers/glass/beaker,
 /obj/item/reagent_containers/glass/beaker,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
 "ql" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "qq" = (
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1;
@@ -1280,7 +1669,7 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/sickbay)
 "qs" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1291,18 +1680,21 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "qx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/firstaid,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "qy" = (
 /obj/structure/curtain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "qK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -1314,7 +1706,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "qW" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1322,7 +1714,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "qY" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
@@ -1330,7 +1722,7 @@
 	id = "piratemine"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "re" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1349,13 +1741,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "rq" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "ru" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
@@ -1369,7 +1761,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "rB" = (
 /obj/structure/table/rack,
 /obj/structure/cable/cyan{
@@ -1385,9 +1777,19 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
+"rG" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/food/snacks/crab_legs,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
+"rI" = (
+/obj/machinery/light/small,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/piratebase/mining)
 "rK" = (
 /turf/simulated/mineral/floor,
-/area/space)
+/area/piratebase/construction)
 "rN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -1404,22 +1806,27 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
+"rP" = (
+/obj/machinery/door/airlock/external,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/plating,
+/area/piratebase/construction)
 "rV" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "sn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "so" = (
 /obj/structure/dispenser,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "sp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -1429,6 +1836,12 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
+"ss" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "st" = (
 /obj/machinery/light{
 	dir = 8
@@ -1442,19 +1855,13 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
-"sE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "sL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "sR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/regular{
@@ -1470,7 +1877,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"sY" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "sZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -1479,7 +1890,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "tc" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -1491,20 +1902,21 @@
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
 "te" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "pirate_mining";
 	pixel_x = 26
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "tf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
 "tj" = (
 /obj/machinery/light{
 	dir = 8
@@ -1518,12 +1930,28 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"tq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "tx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "ty" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1531,8 +1959,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "tB" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -1544,13 +1972,13 @@
 	dir = 10
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
 "tF" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "tG" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
@@ -1565,8 +1993,11 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "tL" = (
 /turf/simulated/mineral/vacuum,
 /area/space)
@@ -1577,13 +2008,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
-"uj" = (
-/obj/machinery/porta_turret/industrial{
-	faction = "pirate"
+/area/piratebase/halls)
+"tS" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
 	},
-/turf/simulated/floor/airless,
-/area/shuttle/pirate/bridge)
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
+"tV" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "up" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1595,21 +2032,30 @@
 "uw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "uy" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cosmosdouble,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"uC" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "uG" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/dock)
 "uQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "uU" = (
 /obj/structure/sink{
 	pixel_y = 20
@@ -1619,14 +2065,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "uV" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "uX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
@@ -1656,14 +2102,14 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
 "vg" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "vo" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -1691,8 +2137,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "vA" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -1700,7 +2153,7 @@
 	output = 7
 	},
 /turf/simulated/floor/reinforced/airmix,
-/area/space)
+/area/piratebase/atmospherics)
 "vG" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
@@ -1732,12 +2185,11 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "vK" = (
-/obj/structure/ghost_role_spawner/pirate,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "vM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1746,15 +2198,20 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
+"vO" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "vS" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
 "vW" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/trash/plate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "vZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -1763,10 +2220,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/yellow{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "wi" = (
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
@@ -1777,11 +2234,18 @@
 	},
 /obj/machinery/mineral/output,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
+"ww" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "wx" = (
 /obj/structure/closet/crate/large,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "wE" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -1806,14 +2270,21 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "wI" = (
 /obj/structure/table/rack/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe/silver,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/emergency,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "wK" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -1822,8 +2293,8 @@
 /area/shuttle/pirate/bridge)
 "wO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "wR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1838,7 +2309,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/construction)
 "wS" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -1851,30 +2322,38 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "xv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
 "xA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/rigged,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"xE" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/sickbay)
 "xJ" = (
 /obj/structure/toilet{
 	dir = 1
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "xL" = (
 /obj/structure/table/rack/steel,
 /obj/random/projectile/random,
+/obj/item/radio/intercom/raider{
+	dir = 8;
+	pixel_x = -22
+	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "xV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -1889,35 +2368,51 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "ya" = (
 /obj/item/stool/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "yc" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/durasteel,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"yh" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "yi" = (
 /obj/structure/curtain,
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "yw" = (
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "yx" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Waste"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
+"yy" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "yB" = (
 /obj/machinery/power/smes/buildable{
 	charge = 1.5e+007;
@@ -1928,16 +2423,33 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "yC" = (
-/obj/structure/closet/crate,
+/obj/structure/closet/crate{
+	name = "Spare Rations"
+	},
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
+"yM" = (
+/obj/structure/closet{
+	name = "Surplus Uniforms"
+	},
+/obj/item/clothing/under/surplus,
+/obj/item/clothing/under/surplus,
+/obj/item/clothing/under/surplus,
+/obj/item/clothing/under/surplus/russoblue,
+/obj/item/clothing/under/surplus/russoblue,
+/obj/item/clothing/under/surplus/russoblue,
+/obj/item/clothing/under/surplus/desert,
+/obj/item/clothing/under/surplus/desert,
+/obj/item/clothing/under/surplus/desert,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "zg" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
@@ -1948,7 +2460,11 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/osmium,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"zl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/piratebase/bunks)
 "zn" = (
 /obj/machinery/light{
 	dir = 4
@@ -1968,11 +2484,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/hatch{
-	name = "Engine";
+	name = "Power Management";
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "zq" = (
 /obj/structure/cable/green,
 /obj/machinery/power/solar,
@@ -1987,7 +2503,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "zw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -1996,7 +2512,7 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "zx" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -2009,13 +2525,34 @@
 /obj/item/surgical/cautery,
 /obj/item/surgical/FixOVein,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"zC" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
+"zE" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "pirate_construction"
+	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "pirate_construction";
+	pixel_y = 28
+	},
+/turf/simulated/floor/plating,
+/area/piratebase/construction)
+"zG" = (
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/sickbay)
 "zK" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "zT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -2024,12 +2561,12 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/construction)
 "zU" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray/rigged,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "Ag" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -2038,8 +2575,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Aq" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -2058,7 +2598,13 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
+"Ar" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "Ax" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -2089,7 +2635,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "AM" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -2100,14 +2646,38 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
+"AO" = (
+/obj/item/clothing/shoes/boots/workboots,
+/obj/item/clothing/shoes/boots/workboots,
+/obj/item/clothing/shoes/boots/workboots,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/mask/balaclava,
+/obj/item/clothing/mask/balaclava,
+/obj/item/clothing/mask/balaclava,
+/obj/structure/closet{
+	name = "Surplus Gear"
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/emergency,
+/obj/item/tank/emergency,
+/obj/item/tank/emergency,
+/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phoron/pressurized,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "AT" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "AV" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/syringes{
@@ -2120,15 +2690,24 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Bc" = (
 /obj/machinery/door/airlock/external,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = -26;
+	req_access = list(168)
+	},
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "Bi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -2138,7 +2717,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Bj" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -2150,10 +2729,21 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Bk" = (
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "pirate_construction";
+	pixel_y = 26
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "pirate_construction"
+	},
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "Bu" = (
 /obj/structure/handrail{
 	dir = 8
@@ -2175,13 +2765,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
+"BB" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/mining)
+"BC" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
 "BG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
+/area/piratebase/atmospherics)
 "BO" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -2194,19 +2791,35 @@
 	faction = "pirate"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/dock)
 "Cc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
+"Cg" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/projectile/pirate/junker_pistol{
+	pixel_y = -4
+	},
+/obj/item/gun/projectile/pirate/junker_pistol,
+/obj/item/gun/projectile/pirate/junker_pistol{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Cj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "Ck" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -2214,17 +2827,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Cl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Cm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "Cv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/shuttle/engine/heater{
@@ -2236,26 +2852,26 @@
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
-"CC" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/piratebase/facility)
+/area/piratebase/mess)
 "CJ" = (
 /obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
+"CP" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/power)
 "CU" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/material/sword/katana/durasteel,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "CW" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Dc" = (
 /obj/structure/curtain/medical,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2264,8 +2880,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Dh" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2275,7 +2895,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "Dj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -2284,27 +2904,31 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
+"Dl" = (
+/obj/structure/dispenser,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "Dn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "Dr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "DC" = (
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "DI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /obj/item/gun/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "DJ" = (
 /obj/machinery/power/smes/buildable{
 	charge = 1.5e+007;
@@ -2320,35 +2944,73 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "DU" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "DZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
+"Ec" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "Ed" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/halls)
+"Ee" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/piratebase/construction)
+"Ej" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "Ep" = (
 /obj/structure/toilet{
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Eq" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2356,15 +3018,15 @@
 	},
 /obj/item/paper,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "Eu" = (
 /obj/machinery/reagentgrinder,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
 "ED" = (
 /turf/simulated/wall,
-/area/space)
+/area/piratebase/atmospherics)
 "EG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -2379,16 +3041,13 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/space)
-"EJ" = (
-/turf/simulated/mineral/vacuum,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "EQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "ES" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/green{
@@ -2401,7 +3060,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
 "EX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2410,7 +3069,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "EY" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -2424,15 +3083,18 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "Ff" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "Fg" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -2440,28 +3102,61 @@
 /obj/machinery/power/tracker,
 /turf/simulated/floor/airless,
 /area/space)
+"Fi" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/construction)
 "Fl" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"Fn" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/halls)
+"Fo" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "Fr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
+"Fu" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/captain)
 "Fz" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/table/wooden_reinforced,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate{
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/space/void/pirate{
+	pixel_y = -10
+	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"FA" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "FM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/phoron,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "FP" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
@@ -2488,18 +3183,23 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "FX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
+"Gc" = (
+/obj/machinery/door/airlock/external,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/plating,
+/area/piratebase/construction)
 "Gf" = (
 /obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "Gg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2507,8 +3207,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "Gl" = (
 /obj/structure/sink{
 	pixel_y = 20
@@ -2520,13 +3224,64 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
+"Gm" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate{
+	pixel_y = 4
+	},
+/obj/item/clothing/suit/space/void/pirate{
+	pixel_y = 4
+	},
+/obj/item/clothing/suit/space/void/pirate{
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/space/void/pirate/alt{
+	pixel_y = -10
+	},
+/obj/item/clothing/head/helmet/space/void/pirate/alt{
+	pixel_y = -10
+	},
+/obj/item/clothing/head/helmet/space/void/pirate/alt{
+	pixel_y = -10
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
+"Gq" = (
+/obj/structure/table/bench/steel,
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
+"Gs" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/construction)
+"Gu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
+"Gx" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/sickbay)
 "Gz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "GB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -2541,7 +3296,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/construction)
 "GE" = (
 /obj/machinery/atmospheric_field_generator/perma,
 /obj/machinery/door/blast/regular{
@@ -2550,12 +3305,23 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/deck)
+"GF" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "GI" = (
 /obj/structure/mirror/long/right_broke{
 	pixel_y = 5
 	},
 /turf/simulated/wall/r_lead,
-/area/space)
+/area/piratebase/bunks)
+"GM" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/sickbay)
 "GR" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -2567,13 +3333,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "GX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "GZ" = (
 /obj/machinery/computer/ship/helm{
 	dir = 1
@@ -2581,6 +3350,12 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"Hj" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "Hm" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
@@ -2588,7 +3363,19 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
+"Hn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "Hq" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -2600,16 +3387,36 @@
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"HB" = (
-/obj/structure/ghost_role_spawner/pirate,
+"Hw" = (
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
+"HB" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/bunks)
 "HC" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/pirate/engine)
+"HF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "HI" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/shuttle/engine/heater{
@@ -2628,7 +3435,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "HM" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/fire{
@@ -2640,18 +3447,31 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "HN" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 28;
+	req_one_access = list(168)
+	},
+/obj/item/radio/intercom/raider{
+	dir = 4;
+	pixel_x = 22;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "HP" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "HU" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -2663,7 +3483,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "HZ" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -2679,13 +3499,22 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
+"Ib" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "Id" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
+"Ie" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "Ih" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -2698,7 +3527,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Ii" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2711,14 +3540,14 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "Il" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
 	name = "Airmix to Distro"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "In" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1445;
@@ -2727,10 +3556,7 @@
 	volume_rate = 700
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/space)
-"Iq" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/piratebase/facility)
+/area/piratebase/atmospherics)
 "Ir" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -2791,12 +3617,26 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
+"Ix" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "IB" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
+"IJ" = (
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/construction)
+"IK" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
 "IN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -2805,7 +3645,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "IO" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2816,11 +3656,11 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "Jc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "Jm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -2828,12 +3668,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "Jq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
+"Jr" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/trash/fancyplate,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
 "Jt" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -2847,6 +3693,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"JA" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/food/snacks/chips,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
 "JB" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -2854,8 +3705,13 @@
 /obj/machinery/power/apc/alarms_hidden/east_bump{
 	req_access = list(168)
 	},
+/obj/item/radio/intercom/raider{
+	dir = 4;
+	pixel_x = 22;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/dock)
 "JH" = (
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1;
@@ -2863,11 +3719,11 @@
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	name = "Mining";
+	name = "Mining Operations";
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "JM" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
@@ -2875,10 +3731,23 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"JQ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "JW" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "JX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2886,20 +3755,33 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"Kc" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/piratebase/captain)
 "Kj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "Kk" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/sign/warning/vacuum{
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "KC" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -2913,19 +3795,20 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "KF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "KH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "KN" = (
 /obj/machinery/light{
 	dir = 8
@@ -2939,20 +3822,43 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"KR" = (
+/obj/structure/dispenser,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Le" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
+"Lo" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/bunks)
 "Lu" = (
 /obj/machinery/power/solar_control/autostart,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/power)
+"LA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "LH" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/spray/cleaner{
@@ -2962,7 +3868,22 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"LP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "LT" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -2974,11 +3895,11 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "Ma" = (
 /obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Md" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -2988,10 +3909,13 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"Mf" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
 "Mh" = (
 /obj/structure/bed/chair,
 /obj/machinery/turretid/lethal{
-	control_area = "\improper Pirate Skiff Shuttle";
+	control_area = "\improper Pirate Base - Dock";
 	pixel_x = 30;
 	pixel_y = -32;
 	req_access = list(168)
@@ -3002,15 +3926,26 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "pirate_armory";
+	name = "Ready Room";
+	pixel_x = -32;
+	pixel_y = -28;
+	req_one_access = list(168)
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "Mi" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Ml" = (
 /obj/structure/lattice,
 /turf/space,
@@ -3020,7 +3955,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "Mx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3028,14 +3963,30 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
+"MF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
+"MM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "MN" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -3047,7 +3998,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "MQ" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3056,7 +4007,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "MR" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	volume = 20000
@@ -3070,14 +4021,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/machinery/bodyscanner,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/piratebase/sickbay)
 "Ni" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "Nk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -3095,28 +4046,57 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe/gold,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/emergency,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "NB" = (
 /obj/machinery/microwave,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
+"ND" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/vault)
+"NG" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/mess)
 "NM" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/construction)
 "NT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "NX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "Ol" = (
 /obj/structure/table/bench/steel,
+/obj/item/radio/intercom/raider{
+	pixel_y = -22
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
+"Oo" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Oq" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -3145,10 +4125,13 @@
 	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/atmospherics)
 "Ot" = (
 /turf/simulated/floor/reinforced/airmix,
-/area/space)
+/area/piratebase/atmospherics)
+"ON" = (
+/turf/simulated/wall/r_lead,
+/area/piratebase/bunks)
 "OO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3156,7 +4139,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "OQ" = (
 /obj/machinery/mass_driver{
 	dir = 1;
@@ -3174,7 +4157,13 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/dock)
+"OU" = (
+/obj/item/radio/intercom/raider{
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/bunks)
 "OX" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -3189,13 +4178,13 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "Pb" = (
 /obj/structure/mirror/long/broke{
 	pixel_y = 5
 	},
 /turf/simulated/wall/r_lead,
-/area/space)
+/area/piratebase/bunks)
 "Pc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -3208,7 +4197,7 @@
 "Pf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
 "Pj" = (
 /obj/machinery/computer/ship/sensors,
 /obj/structure/table/steel_reinforced,
@@ -3222,7 +4211,7 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "PG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3231,21 +4220,21 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "PV" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "PW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "PX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3260,7 +4249,7 @@
 	dir = 8
 	},
 /turf/simulated/mineral/floor,
-/area/space)
+/area/piratebase/construction)
 "PZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -3271,8 +4260,13 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/bridge)
 "Qc" = (
-/turf/simulated/wall/r_lead,
-/area/space)
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/piratebase/dock)
 "Qf" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -3282,7 +4276,7 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Qh" = (
 /obj/machinery/airlock_sensor{
 	dir = 8;
@@ -3295,7 +4289,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "Qj" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -3314,6 +4308,35 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"Qn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1;
+	req_one_access = list(168)
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2;
+	req_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
+"Qu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "QB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3329,7 +4352,7 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "QD" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -3341,14 +4364,20 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "QE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
+"QF" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mess)
 "QJ" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -3357,7 +4386,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "QL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -3376,16 +4405,24 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "QM" = (
 /obj/machinery/door/airlock/external,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = -26;
+	req_access = list(168)
+	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
-/area/piratebase/facility)
+/area/piratebase/construction)
 "QR" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/projectile/random,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "QT" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3405,16 +4442,38 @@
 /obj/machinery/door/firedoor/multi_tile{
 	req_one_access = list(168)
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 8;
+	req_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
 "QX" = (
 /obj/structure/table/rack/steel,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe/silver,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/emergency,
+/obj/item/clothing/shoes/magboots/syndicate,
+/obj/item/clothing/suit/space/void/pirate/scrapper,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "Rg" = (
 /obj/effect/floor_decal/rust,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Rl" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
@@ -3429,19 +4488,19 @@
 	req_one_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "Rn" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "Rp" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "pirate"
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
 "Rv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -3454,7 +4513,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Ry" = (
 /obj/structure/handrail{
 	dir = 1
@@ -3468,6 +4527,12 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"RN" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "RP" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/bridge)
@@ -3476,12 +4541,16 @@
 	pixel_y = 5
 	},
 /turf/simulated/wall/r_lead,
-/area/space)
+/area/piratebase/bunks)
 "RY" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
+"Sb" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/construction)
 "Sh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3492,21 +4561,38 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mining)
+"Si" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/halls)
 "Sp" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Ss" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/construction)
+"St" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Sy" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "Sz" = (
 /obj/machinery/light{
 	dir = 1
@@ -3533,23 +4619,32 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/item/radio/intercom/raider{
+	pixel_y = -22
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "SR" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "SW" = (
 /obj/machinery/optable,
 /obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "SX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "Tg" = (
 /turf/space,
 /area/space)
@@ -3557,7 +4652,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
+"Tl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "Tp" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3572,21 +4679,21 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "pirate_solars";
-	pixel_x = 26
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "pirate_construction";
+	pixel_x = 26
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "Tt" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/reinforced/airmix,
-/area/space)
+/area/piratebase/atmospherics)
 "Tx" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3601,7 +4708,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "Tz" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3616,7 +4723,7 @@
 /area/space)
 "TB" = (
 /obj/machinery/turretid/lethal{
-	control_area = "\improper Pirate Skiff Shuttle";
+	control_area = "\improper Pirate Skiff Deck";
 	pixel_x = 30;
 	pixel_y = -32;
 	req_access = list(168)
@@ -3635,7 +4742,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/uranium,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "TI" = (
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -3644,7 +4751,7 @@
 	name = "Blood Supply"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "TK" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -3656,13 +4763,13 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/space)
+/area/piratebase/construction)
 "TN" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "TP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3670,8 +4777,23 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
+"TW" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/dock)
+"Uf" = (
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "Ui" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/map_helper/airlock/door/int_door,
@@ -3687,6 +4809,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"Uj" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/piratebase/mess)
 "Uz" = (
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(168)
@@ -3702,7 +4830,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
 "UI" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "pirate"
@@ -3714,7 +4842,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "Vg" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -3726,11 +4854,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Vn" = (
 /obj/structure/bed/roller,
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "Vr" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
@@ -3739,10 +4871,19 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"VC" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "VE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "VF" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/airless,
@@ -3750,7 +4891,7 @@
 "VI" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "VK" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -3769,7 +4910,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "Wb" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -3779,7 +4920,7 @@
 	dir = 4
 	},
 /obj/machinery/turretid/lethal{
-	control_area = "\improper Pirate Skiff Shuttle";
+	control_area = "\improper Pirate Base - Captain's Quarters";
 	pixel_x = -32;
 	req_access = list(168)
 	},
@@ -3787,7 +4928,22 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"Wc" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/melee/energy/sword/pirate{
+	pixel_x = 5
+	},
+/obj/item/melee/energy/sword/pirate{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/melee/energy/sword/pirate{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Wd" = (
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1;
@@ -3805,14 +4961,14 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/mess)
 "Wf" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "Wg" = (
 /obj/machinery/mineral/unloading_machine,
 /obj/machinery/conveyor{
@@ -3821,14 +4977,14 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "Wj" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Wm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8;
@@ -3837,16 +4993,16 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "Wn" = (
-/obj/machinery/power/apc{
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
@@ -3857,13 +5013,20 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/power)
 "Wv" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/piratebase/bunks)
+"Ww" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Wy" = (
 /obj/structure/sink{
 	pixel_y = 20
@@ -3872,12 +5035,12 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "WH" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "WM" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3888,30 +5051,38 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "WO" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "WZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "Xd" = (
 /obj/effect/overmap/visitable/sector/pirate_base,
 /turf/space,
 /area/space)
+"Xg" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "Xn" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3923,7 +5094,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "Xq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3946,7 +5117,7 @@
 	name = "DECOMMISSIONED"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/construction)
 "Xy" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/surgical/circular_saw,
@@ -3956,7 +5127,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
 "XA" = (
 /obj/structure/handrail{
 	dir = 8
@@ -3979,11 +5150,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "XE" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "XG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	external_pressure_bound = 0;
@@ -3999,12 +5170,23 @@
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced/airmix,
-/area/space)
+/area/piratebase/atmospherics)
 "XM" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/defib_kit/loaded,
+/obj/item/radio/intercom/raider{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/sickbay)
+"XS" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/mining)
 "XV" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -4020,18 +5202,30 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/power)
+"Yb" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/piratebase/halls)
 "Yd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/dock)
 "Yg" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "Yh" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
@@ -4045,20 +5239,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/turf/simulated/floor/plating,
+/area/piratebase/halls)
 "Yx" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -30;
+	req_one_access = list(168)
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/atmospherics)
 "YA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 "YC" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -4070,7 +5269,7 @@
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/mess)
 "YG" = (
 /obj/structure/sink{
 	pixel_y = 20
@@ -4079,7 +5278,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/piratebase/bunks)
 "YK" = (
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(168)
@@ -4095,17 +5294,15 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
 "Zd" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"Zh" = (
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/piratebase/facility)
 "Zj" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/pirate/deck)
@@ -4116,9 +5313,22 @@
 /obj/machinery/power/solar,
 /turf/simulated/floor/airless,
 /area/space)
+"Zn" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
+/obj/machinery/door/airlock/hatch{
+	icon_state = "door_locked";
+	id_tag = "pirate_armory";
+	locked = 1;
+	name = "Ready Room";
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "Zr" = (
 /turf/simulated/wall/r_lead,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "Zt" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
@@ -4145,13 +5355,24 @@
 	id = "piratemine"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/space)
+/area/piratebase/mining)
 "ZB" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/piratebase/captain)
+"ZG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/projectile/pirate{
+	pixel_y = -5
+	},
+/obj/item/gun/projectile/pirate,
+/obj/item/gun/projectile/pirate{
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/piratebase/dock)
 "ZH" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -4164,23 +5385,26 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/piratebase/mining)
+"ZK" = (
+/turf/simulated/floor/plating,
+/area/piratebase/mining)
 "ZO" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/bunks)
 "ZP" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = null;
 	frequency = 1380;
 	id_tag = "pirate_dock";
-	layer = 3.3;
 	name = "Skiff Dock Controller";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/piratebase/facility)
+/area/piratebase/dock)
 "ZQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -4195,12 +5419,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
-/area/space)
+/area/piratebase/halls)
 "ZX" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/silver,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/piratebase/vault)
 
 (1,1,1) = {"
 Tg
@@ -17258,10 +18482,10 @@ Tg
 Tg
 Ml
 Tg
-Iq
+fE
+Gc
 QM
-QM
-Iq
+fE
 tL
 Tg
 Tg
@@ -17452,10 +18676,10 @@ Tg
 Tg
 Ml
 Tg
-CC
+fE
 Bk
 vJ
-CC
+fE
 tL
 Tg
 tL
@@ -17646,10 +18870,10 @@ Tg
 Tg
 Ml
 Tg
-CC
-Bk
+fE
+Ee
 jg
-CC
+fE
 tL
 Tg
 tL
@@ -17840,10 +19064,10 @@ tL
 tL
 tL
 tL
-CC
-Bk
+fE
+zE
 ej
-CC
+fE
 tL
 tL
 tL
@@ -18033,12 +19257,12 @@ tL
 tL
 tL
 tL
-CC
-Iq
-QM
+fE
+fE
+rP
 Bc
-Iq
-CC
+fE
+fE
 tL
 tL
 tL
@@ -18227,12 +19451,12 @@ tL
 tL
 tL
 tL
-CC
-Zh
-Bk
+fE
+IJ
+NM
 jg
-Zh
-CC
+IJ
+fE
 tL
 tL
 tL
@@ -18421,12 +19645,12 @@ tL
 tL
 tL
 tL
-CC
-Bk
-Bk
+fE
+NM
+NM
 KF
-Bk
-CC
+NM
+fE
 tL
 tL
 tL
@@ -18615,12 +19839,12 @@ tL
 tL
 tL
 tL
-CC
-Bk
-Bk
+fE
+NM
+NM
 KF
-Bk
-CC
+NM
+fE
 tL
 tL
 tL
@@ -18809,12 +20033,12 @@ tL
 tL
 tL
 tL
-CC
-Zh
-Bk
+fE
+IJ
+NM
 KF
-Zh
-CC
+IJ
+fE
 tL
 tL
 tL
@@ -19003,12 +20227,12 @@ tL
 tL
 tL
 tL
-CC
-Bk
-Bk
+fE
+NM
+NM
 KF
-Zh
-CC
+IJ
+fE
 tL
 tL
 tL
@@ -19198,10 +20422,10 @@ tL
 tL
 fE
 fE
-jB
+IJ
 NM
-Fr
-jB
+KF
+IJ
 fE
 fE
 tL
@@ -19391,11 +20615,11 @@ tL
 tL
 tL
 fE
-jB
-jB
-hm
-sE
-jB
+IJ
+IJ
+Gs
+jg
+IJ
 NM
 fE
 tL
@@ -19586,11 +20810,11 @@ tL
 tL
 fE
 NM
-hm
-hm
-Fr
+Gs
+Gs
+KF
 NM
-jB
+IJ
 fE
 tL
 tL
@@ -19781,10 +21005,10 @@ tL
 fE
 TK
 Ss
-ZO
+Fi
 zT
 NM
-jB
+IJ
 fE
 tL
 tL
@@ -19973,12 +21197,12 @@ tL
 tL
 tL
 fE
-jB
+IJ
 NM
 NM
 GB
-hm
-jB
+Gs
+IJ
 fE
 tL
 tL
@@ -20167,12 +21391,12 @@ tL
 tL
 tL
 fE
-jB
+IJ
 NM
-hm
+Gs
 bu
-jB
-jB
+IJ
+IJ
 fE
 tL
 tL
@@ -20363,7 +21587,7 @@ tL
 fE
 fE
 fE
-hm
+Gs
 bu
 fE
 fE
@@ -20558,7 +21782,7 @@ tL
 tL
 NM
 NM
-Mx
+fO
 NM
 rK
 tL
@@ -20751,7 +21975,7 @@ tL
 tL
 tL
 rK
-tL
+nz
 bu
 NM
 rK
@@ -21324,12 +22548,12 @@ tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
 tL
 tL
 tL
@@ -21513,22 +22737,22 @@ Yh
 Yh
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+CP
+CP
+CP
+CP
+CP
+Fn
 CJ
-GX
+Hj
 GX
 iw
-Qc
+Fn
 tL
 tL
 rK
 bu
-tL
+nz
 rK
 tL
 tL
@@ -21707,17 +22931,17 @@ Yh
 Yh
 tL
 tL
-Qc
+CP
 DP
 mR
 yB
 Mq
-Qc
+Fn
 Gf
 xa
 Le
 Yv
-Qc
+Fn
 tL
 tL
 rK
@@ -21901,22 +23125,22 @@ Yh
 tL
 tL
 tL
-Qc
+CP
 mD
-mR
+gg
 yB
 QJ
-Qc
+Fn
 ii
 wO
 ty
 zK
-Qc
+Fn
 tL
 rK
 rK
 bu
-hm
+Gs
 rK
 tL
 tL
@@ -21927,21 +23151,21 @@ tL
 tL
 ED
 ED
-Qc
-oi
+nA
+pD
 Os
-Qc
+nA
 ED
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+NG
+NG
+NG
+NG
+NG
+NG
+NG
+NG
+NG
+NG
 tL
 tL
 tL
@@ -22093,21 +23317,21 @@ ag
 zq
 Yh
 tL
-Qc
-Qc
-Qc
+CP
+CP
+CP
 ES
-mR
+gg
 yB
 QJ
-Qc
+Fn
 Jq
 gE
 nB
 sL
-Qc
+Fn
 tL
-hm
+Gs
 NM
 wR
 NM
@@ -22121,12 +23345,12 @@ tL
 tL
 tL
 tL
-Qc
-hm
+Fn
+Uf
 VX
-Qc
+Fn
 tL
-Qc
+NG
 qd
 oR
 Eu
@@ -22135,7 +23359,7 @@ NB
 dj
 vc
 yC
-Qc
+NG
 tL
 tL
 tL
@@ -22294,42 +23518,42 @@ AF
 jh
 tF
 Dj
-Qc
-Qc
-Qc
+Fn
+Fn
+Fn
 Aq
-Qc
-Qc
-Qc
-Qc
-oi
+Fn
+Fn
+Fn
+Fn
+Sb
 Xq
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-hm
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+VC
 Rv
-Qc
+Fn
 tL
-Qc
-hm
+NG
+Mf
 ax
 ax
-Rg
-Rg
+km
+km
 ax
 ax
-hm
-Qc
+Mf
+NG
 tL
 tL
 tL
@@ -22481,40 +23705,40 @@ Tz
 zq
 Yh
 tL
-Qc
-Qc
-Qc
+CP
+CP
+CP
 wF
 hN
 Wt
 vZ
 zo
 as
-BA
+it
 ZQ
-BA
-BA
-BA
-BA
-dp
+Gu
+it
+it
+Ec
+MM
 QL
-BA
-BA
-BA
-BA
-BA
-BA
-BA
-BA
-BA
-BA
-BA
+it
+Tl
+it
+it
+it
+it
+Ec
+MM
+Tl
+Gu
+it
 lk
 lv
 eI
-Qc
+Fn
 tL
-Qc
+NG
 YC
 AT
 Rn
@@ -22522,8 +23746,8 @@ Ij
 ax
 ax
 ax
-hm
-Qc
+Mf
+NG
 tL
 tL
 tL
@@ -22677,47 +23901,47 @@ Yh
 tL
 tL
 tL
-Qc
+CP
 Lu
 ya
 pJ
 Ff
-Qc
+Fn
 vw
-hm
-oi
-hm
-hm
-hm
-hm
-hm
-hm
-hm
-hm
-hm
-hm
-hm
-oi
-oi
-oi
-hm
-hm
-hm
-hm
-hm
+Uf
+tV
+kc
+Hw
+Uf
+ss
+Uf
+Uf
+Uf
+Uf
+Uf
+Uf
+Hw
+tV
+fQ
+tV
+Uf
+kc
+Uf
+Uf
+Uf
 pY
-Qc
+Fn
 tL
-Qc
-hm
-fd
+NG
+QF
+BC
 mp
 dL
 Dh
 nG
 fd
-hm
-Qc
+lJ
+NG
 tL
 tL
 tL
@@ -22871,47 +24095,47 @@ Yh
 Yh
 tL
 tL
-Qc
+CP
 so
 DZ
 Cm
 AM
-Qc
-vw
+Fn
+oU
 JH
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-hm
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Uf
 ap
-Qc
+Fn
 tL
-Qc
-oi
+NG
+ia
 ax
 ax
-au
-bt
+Uj
+ko
 ax
 ax
-oi
-Qc
+ia
+NG
 tL
 tL
 tL
@@ -23065,15 +24289,15 @@ Yh
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+CP
+CP
+CP
+CP
+CP
+BB
 Sh
-hm
-Qc
+gq
+BB
 tL
 tL
 tL
@@ -23091,21 +24315,21 @@ tL
 tL
 tL
 tL
-Qc
-hm
+Fn
+zC
 Mx
-Qc
+Fn
 tL
-Qc
-Ol
-fd
+NG
+hK
+BC
 kI
-au
-bt
+Uj
+ko
 kI
-fd
+Jr
 RY
-Qc
+NG
 tL
 tL
 tL
@@ -23264,10 +24488,10 @@ tL
 tL
 tL
 tL
-Qc
-Sh
-hm
-Qc
+BB
+bU
+gq
+BB
 tL
 tL
 tL
@@ -23275,9 +24499,9 @@ tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
+ND
+ND
+ND
 tL
 tL
 tL
@@ -23285,13 +24509,13 @@ tL
 tL
 tL
 tL
-Qc
-hm
-Mx
-Qc
+Fn
+VC
+kl
+Fn
 tL
-Qc
-Ol
+NG
+Gq
 vW
 Cw
 ql
@@ -23299,7 +24523,7 @@ FX
 yw
 uV
 Ol
-Qc
+NG
 tL
 tL
 tL
@@ -23453,25 +24677,25 @@ Yh
 Yh
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+BB
+BB
+BB
+BB
+BB
+BB
 Sh
-hm
-Qc
+gq
+BB
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
+ND
+ND
+ND
+ND
+ND
 kV
-Qc
+ND
 tL
 tL
 tL
@@ -23479,21 +24703,21 @@ tL
 tL
 tL
 tL
-Qc
-oi
-Mx
-Qc
+Fn
+hk
+jf
+Fn
 tL
-Qc
-Ol
-fd
+NG
+hK
+rG
 fG
 nt
-bt
+ko
 kI
-fd
-Ol
-Qc
+JA
+hK
+NG
 tL
 tL
 tL
@@ -23647,25 +24871,25 @@ Yh
 Yh
 tL
 tL
-Qc
+BB
 qY
 SR
 if
 XE
 ZJ
-Sh
-hm
-Qc
+LP
+XS
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 nW
 QR
 fi
 gJ
 bS
-Qc
+ND
 tL
 tL
 tL
@@ -23673,21 +24897,21 @@ tL
 tL
 tL
 tL
-Qc
-oi
-Mx
-Qc
+Fn
+tV
+HF
+Fn
 tL
-Qc
-hm
+NG
+QF
 ax
 ax
-au
-bt
+Uj
+ko
 ax
 ax
-hm
-Qc
+lJ
+NG
 tL
 tL
 tL
@@ -23841,25 +25065,25 @@ Yh
 tL
 tL
 tL
-Qc
+BB
 Wg
-hm
-KH
+gq
+nN
 XE
 ZJ
 Sh
-hm
-Qc
+lE
+BB
 tL
 tL
-Qc
+ND
 kV
 bS
 bS
 uw
 ch
 KC
-Qc
+ND
 tL
 tL
 tL
@@ -23867,21 +25091,21 @@ tL
 tL
 tL
 tL
-Qc
-oi
-Mx
-Qc
+Fn
+tV
+HF
+Fn
 tL
-Qc
-hm
-hm
-hm
-au
-bt
-oi
-hm
-hm
-Qc
+NG
+Mf
+Mf
+Mf
+Uj
+ko
+ia
+Mf
+Mf
+NG
 tL
 tL
 tL
@@ -24035,49 +25259,49 @@ Yh
 tL
 tL
 tL
-Qc
+BB
 jX
-hm
+gq
 Jm
 Kj
 QW
 iD
-hm
-Qc
+lz
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 YA
 xA
 gJ
 oW
 TP
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-hm
-Mx
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-au
+ND
+Fu
+Fu
+Fu
+Fu
+Fu
+Fn
+Fn
+Fn
+Uf
+Qn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Uj
 Wd
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
 tL
 tL
 tL
@@ -24229,52 +25453,52 @@ tL
 tL
 tL
 tL
-Qc
+BB
 lO
-hm
-pJ
-hm
-hm
-Sh
-hm
-Qc
+gq
+ww
+RN
+gq
+Hn
+gq
+BB
 tL
 tL
-Qc
+ND
 kV
 bS
 kS
 oo
 oo
 WM
-Qc
+ND
+kq
 kr
-kr
-kr
+Kc
 kr
 Rp
-Qc
-jB
-jB
-hm
-Mx
-uG
-uG
-jB
-Qc
-jB
-jB
-TN
-cI
-jB
-uG
-jB
-uG
-uG
-Qc
-Qc
-Qc
-Qc
+Fn
+hh
+hh
+Uf
+HF
+na
+Fo
+yy
+Fn
+Ix
+jo
+Xg
+MF
+hh
+na
+mE
+na
+na
+Fn
+Zr
+Zr
+Zr
 tL
 tL
 tL
@@ -24423,52 +25647,52 @@ tL
 tL
 tL
 tL
-Qc
+BB
 Zx
 aI
-pJ
+Qu
 Sy
 ZJ
-Sh
-hm
-Qc
+Hn
+tS
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 ZX
 YA
 zU
 QR
 Xn
-Qc
+ND
 kr
 PV
 da
 kr
 kr
-Qc
-jB
-oi
-hm
+Fn
+hh
+tV
+Uf
 FV
+aj
 uQ
-uQ
-uQ
+aj
 Bj
-uQ
-uQ
+aj
+aj
 Ck
 mZ
 sZ
-uQ
+aj
 uQ
 kg
-jB
-Qc
+hh
+Fn
 Wf
 Yd
-Qc
+Zr
 tL
 tL
 tL
@@ -24617,18 +25841,18 @@ tL
 tL
 tL
 tL
-Qc
+BB
 wu
 fH
 HN
-Sy
+pf
 ZJ
-Sh
-hm
-Qc
+Hn
+gq
+BB
 tL
 tL
-Qc
+ND
 kV
 bS
 bS
@@ -24658,11 +25882,11 @@ ay
 Dr
 Dr
 Ih
-BA
-Rl
+it
+oh
 nP
 ds
-Qc
+Zr
 tL
 tL
 tL
@@ -24811,52 +26035,52 @@ tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Sh
-hm
-Qc
+BB
+BB
+BB
+BB
+BB
+BB
+dl
+gq
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 yc
 CU
 qx
 ZX
 EX
-Qc
+ND
 Gg
 Eq
 aP
 kr
 kr
-Qc
-uG
-hm
-hm
+Fn
+aQ
+Uf
+Uf
 WO
-hm
-hm
-hm
+FA
+Uf
+Uf
 Qf
-hm
-hm
-hm
+Uf
+Uf
+Uf
 Mi
 cI
-hm
-hm
-oi
-jB
-Qc
+FA
+Uf
+tV
+hh
+Fn
 hm
 HZ
-Qc
+Zr
 tL
 tL
 tL
@@ -25006,51 +26230,51 @@ tL
 tL
 tL
 tL
-Qc
+BB
 Np
 QX
 wI
-Qc
-Sh
-hm
-Qc
+BB
+LA
+Ie
+BB
 tL
 tL
-Qc
+ND
 kV
 bS
 kS
 oo
 oo
 pp
-Qc
-Gg
+ND
+an
 kr
 gy
 kr
 Rp
-Qc
-jB
-uG
-hm
-WO
-jB
-jB
-jB
-Qc
-jB
-uG
-uG
-TN
-cI
-jB
-jB
-jB
-jB
-Qc
+Fn
+hh
+na
+Uf
+Yb
+hh
+hh
+GF
+Fn
+hh
+na
+na
+Xg
+MF
+hh
+Si
+hh
+hh
+Fn
 hm
 jY
-Qc
+Zr
 tL
 tL
 tL
@@ -25200,58 +26424,58 @@ tL
 tL
 tL
 tL
-Qc
-pJ
-hm
+BB
+ce
+gq
 KH
-Qc
-Sh
-hm
-Qc
+BB
+Hn
+lE
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 pg
 FM
 Yg
 zi
 rl
-Qc
+ND
 QB
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-hm
+Fu
+Fu
+Fu
+Fu
+Fn
+Fn
+Fn
+HB
 bn
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-TN
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+Fn
+ga
 qq
-Qc
-Qc
-Qc
-Qc
-Qc
-hm
+Fn
+Fn
+Fn
+Fn
+Fn
+lY
 jY
-Qc
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
 tL
 tL
 tL
@@ -25394,58 +26618,58 @@ tL
 tL
 tL
 tL
-Qc
+BB
 Cc
 QE
 OO
 jM
 HL
-hm
-Qc
+lz
+BB
 tL
 tL
-Qc
+ND
 kV
 bS
 bS
 uw
 ch
 Gz
-Qc
-Gg
+ND
+an
 xL
 is
-Qc
+Fu
 tL
-Qc
+ON
 NX
 HP
 Pf
 XC
 NT
 Ni
-Qc
+ON
 tL
 tL
-Qc
-Rg
+xE
+Gx
 au
 bt
 HM
-Qc
+xE
 tL
 tL
-Qc
+Zr
 hm
 jY
-Qc
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Zr
+JQ
+oy
+ZG
+Wc
+AO
+yM
+Zr
 tL
 tL
 tL
@@ -25588,58 +26812,58 @@ tL
 tL
 tL
 tL
-Qc
-hm
+BB
+Dl
 Fr
-hm
-Qc
-hm
-hm
-Qc
+lz
+BB
+gq
+lz
+BB
 tL
 tL
-Qc
-Qc
+ND
+ND
 lT
 DI
 Ty
 TD
 bS
-Qc
+ND
 JX
 Jc
 ZB
-Qc
+Fu
 tL
-Qc
+ON
 kp
-aS
-hm
+DC
+HB
 GR
 HB
 wx
-Qc
+ON
 tL
 tL
-Qc
+xE
 dJ
 au
 IN
 sR
-Qc
+xE
 tL
 tL
-Qc
-hm
-jY
-Qc
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Zr
+IK
+Ej
+Zr
+lF
+jB
+jB
+jB
+jB
+vO
+Zr
 tL
 tL
 tL
@@ -25782,58 +27006,58 @@ tL
 tL
 tL
 tL
-Qc
-Qc
+BB
+BB
 YK
-Qc
-Qc
-Qc
-Qc
-Qc
+BB
+BB
+BB
+BB
+BB
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
+ND
+ND
+ND
+ND
+ND
 kV
-Qc
+ND
 Fz
 uy
 px
-Qc
+Fu
 tL
-Qc
+ON
 Dn
 WH
-NT
+zl
 od
 Pf
 my
-Qc
+ON
 tL
 tL
-Qc
+xE
 MU
 au
 bt
 SQ
-Qc
+xE
 tL
 tL
-Qc
-hm
+Zr
+uC
 jY
-Qc
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Zr
+Gm
+lh
+Cg
+KR
+jB
+St
+Zr
 tL
 tL
 tL
@@ -25976,11 +27200,11 @@ tL
 tL
 tL
 tL
-Qc
+BB
 Qh
 Vc
 zw
-Qc
+BB
 tL
 tL
 tL
@@ -25991,46 +27215,46 @@ tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+ND
+ND
+ND
+Fu
+Fu
+Fu
+Fu
 tL
-Qc
+ON
 kp
 kH
-hm
+HB
 cN
 vK
 wx
-Qc
+ON
 tL
 tL
-Qc
+xE
 jD
 rq
 ir
 AV
-Qc
+xE
 tL
 tL
-Qc
+Zr
 oi
 jY
+Zr
+Zr
+Zr
+Zr
 Qc
+Zn
 Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+Zr
+Zr
+Zr
+Zr
 tL
 tL
 tL
@@ -26038,7 +27262,7 @@ Nn
 Nn
 RP
 RP
-FP
+lS
 wi
 vS
 cc
@@ -26170,11 +27394,11 @@ tL
 tL
 tL
 tL
-Qc
+BB
 te
-NM
-NM
-Qc
+ZK
+rI
+BB
 tL
 tL
 tL
@@ -26193,35 +27417,35 @@ tL
 tL
 tL
 tL
-Qc
+ON
 LT
 ZO
 Wv
 hH
 DC
-hm
-Qc
+OU
+ON
 tL
 tL
-Qc
+xE
 Vn
-ax
+GM
 du
 TI
-Qc
+xE
 tL
 tL
-Qc
-oi
+Zr
+TW
 jY
-Qc
+Zr
 BX
-uG
+yh
+Oo
 jB
 jB
 jB
-jB
-uG
+Ww
 jB
 BX
 Zr
@@ -26364,11 +27588,11 @@ tL
 tL
 Yh
 Yh
-Qc
-Qc
+BB
+BB
 ru
-Qc
-Qc
+BB
+BB
 tL
 tL
 tL
@@ -26376,39 +27600,39 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
 tL
 tL
 tL
 tL
-Qc
+tL
+tL
+tL
+tL
+tL
+ON
 dk
-aS
-hm
+DC
+HB
 vM
 HB
 wx
-Qc
+ON
 tL
 tL
-Qc
+xE
 Ma
-ax
+GM
 bt
 JM
-Qc
+xE
 tL
 tL
-Qc
-hm
-jY
-Qc
+Zr
+eP
+tq
+Zr
 jB
 hm
 hm
@@ -26570,36 +27794,36 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-ax
+tL
+tL
+tL
+tL
+tL
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+Ib
 It
-Qc
-Qc
-Qc
+ON
+ON
+ON
 tL
 tL
-Qc
-Vn
-ax
+xE
+zG
+GM
 bt
 CW
-Qc
+xE
 tL
 tL
-Qc
+Zr
 hm
 xV
 Rl
@@ -26764,14 +27988,14 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
+tL
+tL
+tL
+tL
+tL
+ON
 dU
 fM
 fM
@@ -26782,21 +28006,21 @@ PG
 qc
 jq
 Ep
-Qc
+ON
 tL
 tL
-Qc
+xE
 kE
-ax
+GM
 bt
 fe
-Qc
+xE
 tL
 tL
-Qc
+Zr
 hm
 oi
-Qc
+Zr
 jB
 hm
 hm
@@ -26958,46 +28182,46 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-ax
+tL
+tL
+tL
+tL
+tL
+ON
+Ib
 iB
-Qc
+ON
 eM
 Wj
 RQ
 Gl
 cm
-Qc
-Qc
-Qc
+ON
+ON
+ON
 tL
 tL
-Qc
-Qc
+xE
+xE
 Sp
 Dc
-Qc
-Qc
+xE
+xE
 tL
 tL
-Qc
-Qc
-Qc
-Qc
+Zr
+Zr
+Zr
+Zr
 OT
 uG
-jB
+aY
 jB
 JB
 jB
-jB
+aY
 uG
 BX
 Zr
@@ -27152,49 +28376,49 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-ax
+tL
+tL
+tL
+tL
+tL
+ON
+Ib
 iB
-Qc
+ON
 Vg
-ax
+Ib
 Pb
 uU
-ax
+Ib
 jq
 xJ
-Qc
+ON
 tL
 tL
-Qc
+xE
 XM
-ax
+GM
 bt
 bz
-Qc
+xE
 tL
 tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
 tL
 Nn
 Nn
@@ -27346,33 +28570,33 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-ax
-ax
-Rg
-bt
-ax
+tL
+tL
+tL
+tL
+tL
+ON
+Lo
+Ib
+sY
+ix
+Ib
 Pb
 uU
-ax
-Qc
-Qc
-Qc
+pG
+ON
+ON
+ON
 tL
 tL
-Qc
+xE
 SW
 sn
 cz
 Rg
-Qc
+xE
 tL
 tL
 tL
@@ -27393,7 +28617,7 @@ tL
 Nn
 Nn
 Nn
-uj
+UI
 sp
 su
 Tg
@@ -27405,7 +28629,7 @@ Id
 Tg
 Pc
 dF
-uj
+UI
 Nn
 Nn
 Nn
@@ -27540,33 +28764,33 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-Rg
+tL
+tL
+tL
+tL
+tL
+ON
+sY
 iB
-Qc
+ON
 Vg
-ax
+Ib
 Pb
 YG
-ax
+Ib
 jq
 xJ
-Qc
+ON
 tL
 tL
-Qc
+xE
 zA
 Xy
 bT
 LH
-Qc
+xE
 tL
 tL
 tL
@@ -27734,33 +28958,33 @@ tL
 tL
 tL
 tL
-EJ
-EJ
-EJ
-EJ
-EJ
 tL
 tL
-Qc
-ax
+tL
+tL
+tL
+tL
+tL
+ON
+Ib
 iB
-Qc
+ON
 er
-WZ
+Ar
 GI
 Wy
 WZ
-Qc
-Qc
-Qc
+ON
+ON
+ON
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+xE
+xE
+xE
+xE
+xE
+xE
 tL
 tL
 tL
@@ -27935,18 +29159,18 @@ tL
 tL
 tL
 tL
-Qc
+ON
 Cl
 fM
 fM
 tx
-ax
+Ib
 yi
-ax
-Rg
+Ib
+sY
 jq
 xJ
-Qc
+ON
 tL
 tL
 tL
@@ -28129,18 +29353,18 @@ tL
 tL
 tL
 tL
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
-Qc
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+ON
+ON
 tL
 tL
 tL
