@@ -67,14 +67,14 @@
  * only called if proximate (ranged skips)
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
  *
  * @return clickchain flags to add, halting the chain if CLICKCHAIN_DO_NOT_PROPAGATE is returned
  */
-/obj/item/proc/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	// todo: signal
 	return NONE
 
@@ -98,7 +98,7 @@
  * standard proc for engaging a target in melee
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -106,7 +106,7 @@
  * * target_zone - zone to target
  * * intent - action intent to use
  */
-/obj/item/proc/standard_melee_attack(atom/A, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
 		target_zone = user.zone_sel?.selecting
@@ -132,7 +132,7 @@
  * called when we're used to attack a mob
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -142,7 +142,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
@@ -150,7 +150,7 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	//! legacy: for now no attacking nonliving
+	//? legacy: for now no attacking nonliving
 	if(!isliving(M))
 		return
 	var/mob/living/L = M
@@ -185,7 +185,7 @@
  * @return clickchain flags to append
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -193,16 +193,16 @@
  * * target_zone - zone that user tried to target
  * * intent - action intent that was attempted
  */
-/obj/item/proc/melee_mob_miss(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/melee_mob_miss(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
 		target_zone = user.zone_sel?.selecting
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	//! legacy: decloak
+	//? legacy: decloak
 	user.break_cloak()
-	//! legacy: for now no attacking nonliving
+	//? legacy: for now no attacking nonliving
 	if(!isliving(M))
 		return
 	var/mob/living/L = M
@@ -218,7 +218,7 @@
  * @return clickchain flags to append
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -226,7 +226,7 @@
  * * target_zone - zone to target
  * * intent - action intent to use
  */
-/obj/item/proc/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	SHOULD_CALL_PARENT(TRUE)
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
@@ -234,9 +234,9 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	//! legacy: decloak
+	//? legacy: decloak
 	user.break_cloak()
-	//! legacy: for now no attacking nonliving
+	//? legacy: for now no attacking nonliving
 	if(!isliving(M))
 		return
 	// harmless, just tap them and leave
@@ -253,18 +253,18 @@
 	// feedback
 	visible_message(SPAN_DANGER("[L] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
 
-	//! legacy code start
+	//? legacy code start
 	var/power = force
 	if(isliving(user))
 		var/mob/living/attacker = user
-		for(var/datum/modifier/L in attacker.modifiers)
-			if(!isnull(L.outgoing_melee_damage_percent))
-				power *= L.outgoing_melee_damage_percent
+		for(var/datum/modifier/mod in attacker.modifiers)
+			if(!isnull(mod.outgoing_melee_damage_percent))
+				power *= mod.outgoing_melee_damage_percent
 	if(MUTATION_HULK in user.mutations)
 		power *= 2
 	power *= mult
 	L.hit_with_weapon(src, user, power, target_zone)
-	//! legacy code end
+	//? legacy code end
 
 	return NONE
 
@@ -273,7 +273,7 @@
  * this is currently called even if the attacker missed!
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -283,7 +283,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/finalize_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/finalize_mob_melee(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
 		target_zone = user.zone_sel?.selecting
@@ -297,14 +297,14 @@
  * this doesn't actually need to be an obj.
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_object(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if(user.a_intent != INTENT_HARM)
 		user.action_feedback(SPAN_WARNING("You refrain from hitting [A] because your intent is not set to harm."), src)
@@ -320,13 +320,13 @@
  * @return clickchain flags to append
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
  * * mult - damage multiplier
  */
-/obj/item/proc/melee_object_hit(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/melee_object_hit(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
 	return NONE
 
@@ -335,7 +335,7 @@
  * this is currently called even if the attacker missed!
  *
  * @params
- * * A - atom being attacked
+ * * target - atom being attacked
  * * user - person attacking
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
@@ -343,5 +343,5 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/finalize_object_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/finalize_object_melee(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
 	return NONE
