@@ -198,8 +198,7 @@
 /obj/item/clothing/accessory/stethoscope/do_surgery(mob/living/carbon/human/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool
 		return ..()
-	attack(M, user) //default surgery behaviour is just to scan as usual
-	return 1
+	return TRUE
 
 /obj/item/clothing/accessory/stethoscope/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)

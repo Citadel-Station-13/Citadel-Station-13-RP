@@ -69,15 +69,15 @@
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
 			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
-			return
+			return NONE
 
 		if(!welding)
 			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
-			return
+			return NONE
 
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
-		return
+		return NONE
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)

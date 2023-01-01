@@ -37,25 +37,20 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // No comment
 /atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	return
-
-/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	I.standard_melee_attack(src, user, clickchain_flags, params) // damage_multiplier on attackby is being removed, don't.
-	if(!(I.item_flags & ITEM_NOBLUDGEON))
-		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
 /mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	if(!ismob(user))
-		return 0
-	#warn removed intent help check from srugery items, now we need generic support!
-	if(can_operate(src) && I.do_surgery(src,user))
+	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
+/*
 		if(I.can_do_surgery(src,user))
-			return 1
+			return NONE
 		else
-			return 0
+			return NONE
+*/
+		return NONE
 	if(attempt_vr(src,"vore_attackby",args))
 		return
-	return I.attack(src, user, user.zone_sel.selecting, damage_multiplier)
+	return I.standard_melee_attack(src, user, clickchain_flags, params2list(params), damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.
