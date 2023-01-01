@@ -33,7 +33,6 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "as" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -41,6 +40,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -76,6 +78,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"aI" = (
+/obj/machinery/mineral/processing_unit_console,
+/turf/simulated/wall/r_lead,
+/area/space)
 "aP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -509,6 +515,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/space)
+"fH" = (
+/obj/effect/floor_decal/industrial/loading,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "fM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -627,6 +637,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"if" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "ii" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -663,6 +679,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"iD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "jg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -729,6 +753,24 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
+"jM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
+"jX" = (
+/obj/machinery/mineral/output,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "piratemine"
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "jY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -887,6 +929,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"lO" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "piratemine"
+	},
+/obj/machinery/mineral/input,
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "lT" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/helmet/space/vox/carapace,
@@ -1272,6 +1323,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/space)
+"qY" = (
+/obj/machinery/mineral/input,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "piratemine"
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "re" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1296,6 +1355,20 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"ru" = (
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = -26;
+	req_access = list(168)
+	},
+/obj/machinery/door/airlock/external/glass{
+	req_access = list(168)
+	},
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/plating,
 /area/space)
 "rB" = (
 /obj/structure/table/rack,
@@ -1417,6 +1490,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"te" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "pirate_mining";
+	pixel_x = 26
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "tf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -1599,6 +1681,18 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/shuttle/pirate/bridge)
+"vw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "vA" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -1676,6 +1770,14 @@
 "wi" = (
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/pirate/bridge)
+"wu" = (
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "piratemine"
+	},
+/obj/machinery/mineral/output,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "wx" = (
 /obj/structure/closet/crate/large,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -1704,6 +1806,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"wI" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/space)
 "wK" = (
 /obj/structure/cable/cyan{
@@ -1878,6 +1987,15 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
+"zw" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "pirate_mining"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
 /area/space)
 "zx" = (
 /obj/structure/cable/cyan{
@@ -2071,14 +2189,17 @@
 /obj/structure/bed,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
-"BQ" = (
-/turf/simulated/floor/phoron,
-/area/space)
 "BX" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "pirate"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"Cc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "Cj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
@@ -2496,6 +2617,18 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
+"HL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "HM" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/fire{
@@ -2507,6 +2640,12 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"HN" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/space)
 "HP" = (
 /obj/effect/floor_decal/rust,
@@ -2682,6 +2821,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/space)
+"Jm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "Jq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -2740,6 +2888,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"Kj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "Kk" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/sign/warning/vacuum{
@@ -2767,6 +2920,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/facility)
+"KH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "KN" = (
 /obj/machinery/light{
 	dir = 8
@@ -2931,6 +3090,13 @@
 "Nn" = (
 /turf/space/basic,
 /area/space)
+"Np" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "NB" = (
 /obj/machinery/microwave,
 /obj/structure/table/steel_reinforced,
@@ -2982,6 +3148,14 @@
 /area/space)
 "Ot" = (
 /turf/simulated/floor/reinforced/airmix,
+/area/space)
+"OO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "OQ" = (
 /obj/machinery/mass_driver{
@@ -3109,6 +3283,19 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
+"Qh" = (
+/obj/machinery/airlock_sensor{
+	dir = 8;
+	pixel_x = -25
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "pirate_mining"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/plating,
+/area/space)
 "Qj" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -3154,6 +3341,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
+/area/space)
+"QE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
 "QJ" = (
 /obj/structure/cable/yellow{
@@ -3205,6 +3399,18 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"QW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/multi_tile{
+	req_one_access = list(168)
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
+"QX" = (
+/obj/structure/table/rack/steel,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "Rg" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -3276,6 +3482,18 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
+"Sh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
 "Sp" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -3285,6 +3503,9 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
+/area/space)
+"Sy" = (
+/turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/space)
 "Sz" = (
 /obj/machinery/light{
@@ -3313,6 +3534,12 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"SR" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/space)
 "SW" = (
 /obj/machinery/optable,
@@ -3354,7 +3581,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/space)
 "Tt" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -3474,7 +3701,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/space)
 "UI" = (
 /obj/machinery/porta_turret/industrial{
@@ -3482,6 +3709,12 @@
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/pirate/deck)
+"Vc" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "Vg" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -3579,6 +3812,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
+/area/space)
+"Wg" = (
+/obj/machinery/mineral/unloading_machine,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "piratemine"
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/space)
 "Wj" = (
 /obj/effect/floor_decal/rust,
@@ -3738,6 +3980,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/space)
+"XE" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "XG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	external_pressure_bound = 0;
@@ -3773,7 +4019,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/space)
 "Yd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3834,6 +4080,23 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/space)
+"YK" = (
+/obj/machinery/door/airlock/external/glass{
+	req_access = list(168)
+	},
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = -26;
+	req_access = list(168)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/plating,
+/area/space)
 "Zd" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -3875,6 +4138,14 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
+"Zx" = (
+/obj/machinery/mineral/processing_unit,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "piratemine"
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/space)
 "ZB" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -3886,6 +4157,14 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/deck)
+"ZJ" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(168)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/space)
 "ZO" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -22404,7 +22683,7 @@ ya
 pJ
 Ff
 Qc
-cI
+vw
 hm
 oi
 hm
@@ -22598,7 +22877,7 @@ DZ
 Cm
 AM
 Qc
-cI
+vw
 JH
 Qc
 Qc
@@ -22792,9 +23071,9 @@ Qc
 Qc
 Qc
 Qc
-tL
-tL
-tL
+Sh
+hm
+Qc
 tL
 tL
 tL
@@ -22985,10 +23264,10 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
+Qc
+Sh
+hm
+Qc
 tL
 tL
 tL
@@ -23174,15 +23453,15 @@ Yh
 Yh
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Sh
+hm
+Qc
 tL
 tL
 tL
@@ -23368,15 +23647,15 @@ Yh
 Yh
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+qY
+SR
+if
+XE
+ZJ
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -23562,15 +23841,15 @@ Yh
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Wg
+hm
+KH
+XE
+ZJ
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -23756,15 +24035,15 @@ Yh
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+jX
+hm
+Jm
+Kj
+QW
+iD
+hm
+Qc
 tL
 tL
 Qc
@@ -23950,15 +24229,15 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+lO
+hm
+pJ
+hm
+hm
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -24144,15 +24423,15 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Zx
+aI
+pJ
+Sy
+ZJ
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -24338,15 +24617,15 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+wu
+fH
+HN
+Sy
+ZJ
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -24526,21 +24805,21 @@ tL
 tL
 tL
 tL
-rK
 tL
 tL
 tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Qc
+Qc
+Qc
+Qc
+Qc
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -24720,8 +24999,6 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
@@ -24729,12 +25006,14 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Np
+QX
+wI
+Qc
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -24914,8 +25193,6 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
@@ -24923,12 +25200,14 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+pJ
+hm
+KH
+Qc
+Sh
+hm
+Qc
 tL
 tL
 Qc
@@ -25107,8 +25386,6 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
@@ -25117,12 +25394,14 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Cc
+QE
+OO
+jM
+HL
+hm
+Qc
 tL
 tL
 Qc
@@ -25300,9 +25579,6 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
 tL
 tL
 tL
@@ -25312,11 +25588,14 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
+Qc
+hm
+Fr
+hm
+Qc
+hm
+hm
+Qc
 tL
 tL
 Qc
@@ -25494,9 +25773,6 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
 tL
 tL
 tL
@@ -25506,11 +25782,14 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
+Qc
+Qc
+YK
+Qc
+Qc
+Qc
+Qc
+Qc
 tL
 tL
 tL
@@ -25688,8 +25967,6 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
@@ -25699,9 +25976,11 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
+Qc
+Qh
+Vc
+zw
+Qc
 tL
 tL
 tL
@@ -25883,8 +26162,6 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
@@ -25893,9 +26170,11 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
+Qc
+te
+NM
+NM
+Qc
 tL
 tL
 tL
@@ -26078,18 +26357,18 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
 tL
 tL
 tL
-fE
-fE
-fE
-fE
-fE
 tL
+Yh
+Yh
+Qc
+Qc
+ru
+Qc
+Qc
 tL
 tL
 tL
@@ -26270,19 +26549,19 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
-rK
-rK
-rK
 tL
 tL
-fE
-BQ
-BQ
-BQ
-fE
+tL
+tL
+tL
+Yh
+tL
+tL
+Yh
+Yh
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -26464,20 +26743,20 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
-rK
-rK
-rK
-rK
 tL
-fE
-BQ
-BQ
-BQ
-fE
 tL
+tL
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -26658,19 +26937,19 @@ tL
 tL
 tL
 tL
-rK
-rK
 tL
-rK
-rK
-rK
-rK
-rK
-fE
-BQ
-BQ
-BQ
-fE
+tL
+tL
+Yh
+Yh
+Yh
+Yh
+Yh
+tL
+tL
+Yh
+tL
+tL
 tL
 tL
 tL
@@ -26852,19 +27131,19 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
-rK
-rK
 tL
 tL
-rK
-fE
-BQ
-BQ
-BQ
-fE
+Yh
+Yh
+Yh
+tL
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+tL
 tL
 tL
 tL
@@ -27046,19 +27325,19 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
-rK
+tL
+Yh
+Yh
+Yh
 tL
 tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-fE
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -27242,18 +27521,18 @@ tL
 tL
 tL
 tL
-rK
-rK
+Yh
+Yh
+tL
+Yh
 tL
 tL
-tL
-tL
-fE
-BQ
-BQ
-BQ
-fE
-tL
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -27436,19 +27715,19 @@ tL
 tL
 tL
 tL
-rK
-rK
+Yh
+Yh
+Yh
+Yh
 tL
+Yh
+Yh
+Yh
+Yh
 tL
-tL
-tL
-fE
-fE
-fE
-fE
-fE
-tL
-tL
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -27630,19 +27909,19 @@ tL
 tL
 tL
 tL
-rK
+Yh
+Yh
 tL
 tL
 tL
+Yh
 tL
 tL
+Yh
 tL
 tL
-tL
-tL
-tL
-tL
-tL
+Yh
+Yh
 tL
 tL
 tL
@@ -27824,20 +28103,20 @@ tL
 tL
 tL
 tL
-rK
+Yh
 tL
 tL
+Yh
+Yh
 tL
+Yh
+Yh
 tL
+Yh
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -28017,21 +28296,21 @@ tL
 tL
 tL
 tL
-rK
-rK
+Yh
+Yh
+tL
+tL
+tL
+Yh
 tL
 tL
 tL
 tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
+Yh
+Yh
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -28209,9 +28488,9 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -28222,9 +28501,9 @@ tL
 tL
 tL
 tL
-tL
-tL
-tL
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -28403,9 +28682,9 @@ tL
 tL
 tL
 tL
-rK
-rK
-rK
+Yh
+Yh
+Yh
 tL
 tL
 tL
@@ -28417,8 +28696,8 @@ tL
 tL
 tL
 tL
-tL
-tL
+Yh
+Yh
 tL
 tL
 tL
@@ -28598,8 +28877,8 @@ tL
 tL
 tL
 tL
-rK
-rK
+Yh
+Yh
 tL
 tL
 tL
