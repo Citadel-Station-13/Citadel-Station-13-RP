@@ -160,8 +160,6 @@
 	// todo: better tracking
 	user.lastattacked = L
 	L.lastattacker = user
-	// log
-	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
 	// click cooldown
 	// todo: clickcd rework
 	user.setClickCooldown(user.get_attack_speed(src))
@@ -171,7 +169,11 @@
 	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
 	if(!hit_zone)
 		// missed
+		// log
+		add_attack_logs(user, L, "missed with [src] DT [damtype] F [force] I [user.a_intent]")
 		return melee_mob_missed(L, user, clickchain_flags, params, mult, target_zone, intent)
+	// log
+	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
 	// hit
 	return melee_mob_effects(L, user, clickchain_flags, params, mult, target_zone, intent)
 
@@ -238,13 +240,15 @@
 
 	//! legacy code start
 	var/power = force
-	for(var/datum/modifier/L in user.modifiers)
-		if(!isnull(L.outgoing_melee_damage_percent))
-			power *= L.outgoing_melee_damage_percent
+	if(isliving(user))
+		var/mob/living/attacker = user
+		for(var/datum/modifier/L in attacker.modifiers)
+			if(!isnull(L.outgoing_melee_damage_percent))
+				power *= L.outgoing_melee_damage_percent
 	if(MUTATION_HULK in user.mutations)
 		power *= 2
 	power *= mult
-	L.hit_with_weapon(src, user, power, hit_zone)
+	L.hit_with_weapon(src, user, power, target_zone)
 	//! legacy code end
 
 	return NONE

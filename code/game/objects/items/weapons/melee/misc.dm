@@ -203,7 +203,7 @@
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
 
-/obj/item/melee/nanite_knife/apply_hit_effect(mob/living/target, mob/living/user, hit_zone, attack_modifier)
+/obj/item/melee/nanite_knife/melee_mob_effects(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!target.reagents)
 		return
