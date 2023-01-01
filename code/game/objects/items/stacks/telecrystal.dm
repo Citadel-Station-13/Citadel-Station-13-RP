@@ -11,11 +11,11 @@
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
 /obj/item/stack/telecrystal/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	if(amount >= 5)
-		add_attack_logs(user, M, "teleported with telecrystals")
+		add_attack_logs(user, target, "teleported with telecrystals")
 		target.visible_message("<span class='warning'>\The [target] has been transported with \the [src] by \the [user].</span>")
 		safe_blink(target, 14)
 		use(5)

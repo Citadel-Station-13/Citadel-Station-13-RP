@@ -14,9 +14,9 @@
 
 
 /obj/item/stack/nanopaste/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(!isliving(M))
+	if(!isliving(target))
 		return ..()
-	var/mob/living/L = M
+	var/mob/living/L = target
 	if (istype(L,/mob/living/silicon/robot))	//Repairing cyborgs
 		var/mob/living/silicon/robot/R = L
 		if (R.getBruteLoss() || R.getFireLoss())

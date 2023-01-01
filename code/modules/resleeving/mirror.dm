@@ -118,7 +118,7 @@
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return
 	if(target_zone == BP_TORSO && imp == null)

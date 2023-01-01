@@ -18,7 +18,7 @@
 /obj/item/stack/medical/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	checked_application(M, user)
+	checked_application(target, user)
 
 /obj/item/stack/medical/proc/checked_application(mob/M, mob/user)
 	var/mob/living/carbon/C = M

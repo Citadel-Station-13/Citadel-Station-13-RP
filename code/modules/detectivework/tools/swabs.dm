@@ -14,12 +14,12 @@
 /obj/item/forensics/swab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(!ishuman(M))
+	if(!ishuman(target))
 		return ..()
 	if(is_used())
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	var/sample_type
 
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

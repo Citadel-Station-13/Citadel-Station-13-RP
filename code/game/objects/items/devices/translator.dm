@@ -71,7 +71,7 @@
 /obj/item/universal_translator/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(!isrobot(M))
+	if(!isrobot(target))
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(context, /datum/translation_context/variable))
@@ -80,7 +80,7 @@
 	if(!allow_knowledge_transfer)
 		user.action_feedback(SPAN_WARNING("[src] doesn't have a data port."), src)
 		return
-	var/mob/living/silicon/robot/R = M
+	var/mob/living/silicon/robot/R = target
 	var/datum/translation_context/variable/theirs = R.translation_context
 	if(!istype(theirs))
 		user.action_feedback(SPAN_WARNING("[R] does not have a variable translation matrix."), src)

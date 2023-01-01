@@ -68,10 +68,10 @@
 	if(!open)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	if(!ishuman(M))
+	if(!ishuman(target))
 		to_chat(user, "<span class='notice'>Where are the lips on that?</span>")
 		return
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(H.lip_style)	//if they already have lipstick on
 		to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
 		return

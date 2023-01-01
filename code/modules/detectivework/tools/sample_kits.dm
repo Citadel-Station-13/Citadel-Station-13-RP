@@ -77,14 +77,14 @@
 	icon_state = "fingerprint1"
 
 /obj/item/sample/print/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(!ishuman(M) || user.a_intent == INTENT_HARM)
+	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(evidence && evidence.len)
 		user.action_feedback(SPAN_WARNING("[src] is full!"), src)
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 
 	if(H.gloves)
 		to_chat(user, "<span class='warning'>\The [H] is wearing gloves.</span>")

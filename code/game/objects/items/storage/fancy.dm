@@ -265,7 +265,7 @@
 	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(M == user && user.zone_sel.selecting == O_MOUTH)
+	if(target == user && user.zone_sel.selecting == O_MOUTH)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 

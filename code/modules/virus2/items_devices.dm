@@ -11,11 +11,11 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	if(!istype(M,/mob/living/carbon/))
+	if(!iscarbon(target))
 		report("Scan aborted: Incompatible target.", user)
 		return
 
-	var/mob/living/carbon/C = M
+	var/mob/living/carbon/C = target
 	if (istype(C,/mob/living/carbon/human/))
 		var/mob/living/carbon/human/H = C
 		if(!H.should_have_organ(O_HEART))

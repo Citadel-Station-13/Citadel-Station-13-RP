@@ -65,8 +65,8 @@
 	if(user.zone_sel.selecting != O_EYES && user.zone_sel.selecting != BP_HEAD)
 		return ..()
 	if((MUTATION_CLUMSY in user.mutations) && prob(50))
-		M = user
-	return eyestab(M,user)
+		target = user
+	return eyestab(target,user)
 
 /obj/item/tool/screwdriver/bone
 	name = "primitive screwdriver"

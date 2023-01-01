@@ -113,8 +113,8 @@
 					T.clean(src, user)
 
 /obj/item/reagent_containers/glass/rag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(isliving(M)) //Leaving this as isliving.
-		var/mob/living/L = M
+	if(isliving(target)) //Leaving this as isliving.
+		var/mob/living/L = target
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
 			user.visible_message(SPAN_DANGER("\The [user] hits [L] with [src]!"))
 			user.do_attack_animation(src)
@@ -142,7 +142,7 @@
 		else
 			wipe_down(L, user)
 	else
-		wipe_down(M, user)
+		wipe_down(target, user)
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
 	if(!proximity)

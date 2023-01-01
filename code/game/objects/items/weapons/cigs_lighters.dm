@@ -217,7 +217,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_icon()
 
 /obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
@@ -248,7 +248,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		light(text)
 
 /obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/L = M
+	var/mob/living/L = target
 	if(istype(L) && L.on_fire)
 		user.do_attack_animation(L)
 		light("<span class='notice'>[user] coldly lights the [name] with the burning body of [L].</span>")
@@ -631,7 +631,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/flame/lighter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return ..()
 	if(lit == 1)

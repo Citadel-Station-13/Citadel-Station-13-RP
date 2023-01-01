@@ -115,8 +115,8 @@
 	icon_state = "kibble"
 
 /obj/item/trash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(H.species.trashcan == 1)
 			if(!user.attempt_insert_item_for_installation(src, H.vore_selected))
 				return
@@ -124,8 +124,8 @@
 			to_chat(H, "<span class='notice'>You can taste the flavor of garbage. Wait what?</span>")
 			return
 
-	if(isrobot(M))
-		var/mob/living/silicon/robot/R = M
+	if(isrobot(target))
+		var/mob/living/silicon/robot/R = target
 		if(R.module.type == /obj/item/robot_module/robot/quad_jani) // You can now feed the trash borg yay.
 			if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
 				return

@@ -82,7 +82,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return	..()
 
-	standard_feed_mob(user, M)
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/organic/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
