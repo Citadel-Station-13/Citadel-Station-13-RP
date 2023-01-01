@@ -10,8 +10,9 @@
 	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_SNOW)
 	canSmoothWith = list(SMOOTH_GROUP_FLOOR_SNOW)
 
-	var/list/crossed_dirs = list()
-
+	//var/list/crossed_dirs = list() //Only needed for footprints
+//We might wanna enable footprints in the future
+/*
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -21,11 +22,11 @@
 		crossed_dirs[mdir] = 1
 		update_icon()
 	..()
-
 /turf/simulated/floor/outdoors/snow/update_icon()
 	..()
 	for(var/d in crossed_dirs)
 		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
+*/
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
