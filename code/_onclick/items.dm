@@ -220,7 +220,7 @@
 		// todo: proper weapon sound ranges/rework
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		// feedback
-		user.visible_message(SPAN_WARNING("[user] harmlessly taps [L] with [src]."))
+		user.visible_message(SPAN_WARNING("[user] harmlessly taps [M] with [src]."))
 		return NONE
 	var/mob/living/L = M
 	// todo: proper weapon sound ranges/rework

@@ -23,7 +23,7 @@
 		return
 
 	if(reveal_fingerprints)
-		if((!( istype(M.dna, /datum/dna) ) || M.gloves))
+		if((!( istype(M.dna, /datum/dna) ) || M.item_by_slot(SLOT_ID_GLOVES)))
 			to_chat(user, "<span class='notice'>No fingerprints found on [M]</span>")
 			flick("[icon_state]0",src)
 			return

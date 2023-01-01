@@ -210,7 +210,7 @@
 		return
 	if(!target.reagents)
 		return
-	if(target.can_inject(src, null, hit_zone))
+	if(target.can_inject(src, null, target_zone))
 		inject_poison(M, target_zone)
 
  // Does actual poison injection, after all checks passed.

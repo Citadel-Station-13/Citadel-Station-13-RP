@@ -82,6 +82,9 @@
 
 /obj/item/slime_crystal/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	target.visible_message("<span class='warning'>\The [target] has been teleported with \the [src] by \the [user]!</span>")
 	safe_blink(target, 14)
 	qdel(src)
