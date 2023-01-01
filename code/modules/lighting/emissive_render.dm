@@ -1,12 +1,12 @@
 /**
-  * y'know tg's emissive_blocker
-  *
-  * this is the opposite
-  *
-  * please don't use this unless you know what you're doing
-  *
-  * no seriously this is a Citadel Moment, don't do what we did.
-  */
+ * y'know tg's emissive_blocker
+ *
+ * this is the opposite
+ *
+ * please don't use this unless you know what you're doing
+ *
+ * no seriously this is a Citadel Moment, don't do what we did.
+ */
 /atom/movable/emissive_render
 	name = "emissive render"
 	plane = EMISSIVE_PLANE

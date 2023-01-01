@@ -189,7 +189,7 @@ var/list/channel_to_radio_key = new
 
 	if(speaking == -1)
 		return
-		
+
 	if(!speaking)
 		speaking = get_default_language()
 
@@ -372,6 +372,7 @@ var/list/channel_to_radio_key = new
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
+	/*
 	var/mob/above = src.shadow
 	while(!QDELETED(above))
 		var/turf/ST = get_turf(above)
@@ -384,6 +385,7 @@ var/list/channel_to_radio_key = new
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	*/
 	var/atom/emitter = src
 	if(!isobserver(emitter) || !IsAdminGhost(emitter))
 		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
