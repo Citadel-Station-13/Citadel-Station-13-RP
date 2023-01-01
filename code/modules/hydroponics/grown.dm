@@ -242,7 +242,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	if(seed && seed.get_trait(TRAIT_STINGS))

@@ -15,4 +15,4 @@
 
 /obj/item/pai_cable/attack_object(atom/target, mob/user, clickchain_flags, list/params)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	plugin(A, user)
+	plugin(target, user)

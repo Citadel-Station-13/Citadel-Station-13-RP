@@ -17,10 +17,10 @@
 
 /obj/item/tray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!isliving(user) || !isliving(M))
+	if(!isliving(user) || !isliving(target))
 		return
 	var/mob/living/L = user
-	var/mob/living/victim = M
+	var/mob/living/victim = target
 	L.setClickCooldown(L.get_attack_speed(src))
 	// Drop all the things. All of them.
 	cut_overlays()

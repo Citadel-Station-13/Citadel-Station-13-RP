@@ -51,7 +51,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	attempt_feed(M, user)
+	attempt_feed(target, user)
 
 /obj/item/reagent_containers/food/snacks/proc/attempt_feed(mob/living/M, mob/living/user)
 	if(!istype(M) || !istype(user))

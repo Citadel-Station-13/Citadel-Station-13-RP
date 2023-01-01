@@ -393,7 +393,7 @@
 
 /obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	if(target.isSynthetic() && active)

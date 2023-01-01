@@ -41,7 +41,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	standard_feed_mob(user, M)
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)

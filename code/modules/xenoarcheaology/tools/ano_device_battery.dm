@@ -201,9 +201,9 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	if (!isliving(M))
+	if (!isliving(target))
 		return
-	var/mob/living/L = M
+	var/mob/living/L = target
 
 	if(activated && inserted_battery?.battery_effect?.effect == EFFECT_TOUCH && !isnull(inserted_battery))
 		inserted_battery?.battery_effect?.DoEffectTouch(L)

@@ -203,8 +203,8 @@
 /obj/item/clothing/accessory/stethoscope/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(ishuman(M) && isliving(user))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(target) && isliving(user))
+		var/mob/living/carbon/human/H = target
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_sel.selecting)
 			if(body_part)
