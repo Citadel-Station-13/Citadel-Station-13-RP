@@ -17,7 +17,7 @@ Lateload files and such are now under the lateload folder. Currently there are f
 ```dm
 	lateload_z_levels = list(
 		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
 		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet

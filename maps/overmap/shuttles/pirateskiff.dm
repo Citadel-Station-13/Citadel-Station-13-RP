@@ -3,8 +3,8 @@
 	name = "Pirate Skiff"
 	warmup_time = 3
 	shuttle_area = list(/area/shuttle/pirate/deck, /area/shuttle/pirate/bridge, /area/shuttle/pirate/engine)
-	current_location = "pirate_docker"
-	docking_controller_tag = "pirate_dock"
+	current_location = "pirate_docking_arm"
+	docking_controller_tag = "pirate_docker"
 	fuel_consumption = 5
 	defer_initialisation = TRUE
 
@@ -19,7 +19,7 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
-	landmark_tag = "pirate_docker"
+	landmark_tag = "pirate_docking_arm"
 	base_turf = /turf/space
 	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate

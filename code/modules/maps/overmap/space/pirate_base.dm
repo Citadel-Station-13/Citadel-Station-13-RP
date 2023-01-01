@@ -1,6 +1,6 @@
 
 /obj/effect/overmap/visitable/sector/pirate_base
-	name = "Vox Pirate Base"
+	name = "Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]
 Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
@@ -8,7 +8,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
-	initial_generic_waypoints = list("pirate_docker")
+	initial_generic_waypoints = list("pirate_docking_arm")
 
 // -- Objs -- //
 

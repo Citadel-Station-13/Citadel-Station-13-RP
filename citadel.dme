@@ -2705,7 +2705,7 @@
 #include "code\modules\maps\overmap\space\alienship.dm"
 #include "code\modules\maps\overmap\space\debrisfield.dm"
 #include "code\modules\maps\overmap\space\fueldepot.dm"
-#include "code\modules\maps\overmap\space\vox_pirate_base.dm"
+#include "code\modules\maps\overmap\space\pirate_base.dm"
 #include "code\modules\maps\overmap\space\talon\talon.dm"
 #include "code\modules\maps\overmap\space\talon\talon_areas.dm"
 #include "code\modules\maps\overmap\space\trade_station\trade_station.dm"

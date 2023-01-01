@@ -1,7 +1,7 @@
 /datum/ghostrole/pirate
 	name = "Pirate"
 	assigned_role = "Pirate"
-	desc = "Do what you want, cuz a pirate is free! You are a Pirate!"
+	desc = "You are a pirate! A legendary, if oft maligned, profession."
 	spawntext = "There are countless roving gangs of pirates across the Frontier. A constant menace to honest traders and Corporate convoys alike, pirates are part of a never ending conflict with local SDF and private security forces from system to system."
 	important_info = "You are a member of a pirate crew. You pillage, kidnap, and steal for profit and pleasure. NanoTrasen has recently moved into this system, providing plenty of opportunities for plunder, but beware! Certain areas are considered off limits, even to pirates. Only a fool would anger Nebula Gas by raiding their station, although NebGas vessels in transit are fair game. Attempting to visit NanoTrasen's primary facility is equally dangerous and ill-advised. Focusing on isolated vessels in flight or expeditions on planets may be the most reliable way to score precious booty."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/pirate

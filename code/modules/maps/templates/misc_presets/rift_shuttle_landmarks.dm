@@ -3,7 +3,7 @@ Need to turn all of these into proper initializers like this:
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
-	landmark_tag = "pirate_docker"
+	landmark_tag = "pirate_docking_arm"
 	base_turf = /turf/space
 	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate
