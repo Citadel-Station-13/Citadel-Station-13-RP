@@ -121,7 +121,6 @@
 	var/mob/living/carbon/human/H = M
 	if(!istype(H))
 		return
-	var/target_zone = user.zone_sel?.selecting
 	if(target_zone == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")

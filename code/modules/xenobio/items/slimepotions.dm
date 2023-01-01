@@ -95,13 +95,13 @@
 
 	// Slimes.
 	if(istype(S, /mob/living/simple_mob/slime/xenobio))
-		var/mob/living/simple_mob/slime/xenobio/S = S
-		if(S.harmless)
+		var/mob/living/simple_mob/slime/xenobio/XS = S
+		if(XS.harmless)
 			to_chat(user, "<span class='warning'>The slime is already docile!</span>")
 			return
 
-		S.pacify()
-		S.nutrition = 700
+		XS.pacify()
+		XS.nutrition = 700
 		to_chat(S, "<span class='warning'>You absorb the agent and feel your intense desire to feed melt away.</span>")
 		to_chat(user, "<span class='notice'>You feed the slime the agent, removing its hunger and calming it.</span>")
 
