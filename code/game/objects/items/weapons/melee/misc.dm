@@ -205,13 +205,13 @@
 
 /obj/item/melee/nanite_knife/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
-	if(!target.reagents)
+	if(!L.reagents)
 		return
-	if(target.can_inject(src, null, target_zone))
-		inject_poison(target, target_zone)
+	if(L.can_inject(src, null, target_zone))
+		inject_poison(L, target_zone)
 
  // Does actual poison injection, after all checks passed.
 /obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)

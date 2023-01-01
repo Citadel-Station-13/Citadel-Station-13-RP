@@ -137,17 +137,17 @@
 	return ..()
 
 /obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
-	if(isrobot(target))
+	if(isrobot(L))
 		return ..()
 
 	var/agony = agonyforce
 	var/stun = stunforce
 	var/obj/item/organ/external/affecting = null
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
 		affecting = H.get_organ(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
@@ -157,23 +157,23 @@
 		stun *= 0.5
 	else if(!status)
 		if(affecting)
-			target.visible_message("<span class='warning'>[target] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
 		else
-			target.visible_message("<span class='warning'>[target] has been prodded with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
 	else
 		if(affecting)
-			target.visible_message("<span class='danger'>[target] has been prodded in the [affecting.name] with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
 		else
-			target.visible_message("<span class='danger'>[target] has been prodded with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, target_zone, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+		L.stun_effect_act(stun, agony, target_zone, src)
+		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
+		if(ishuman(L))
+			var/mob/living/carbon/human/H = L
 			H.forcesay(hit_appends)
 	powercheck(hitcost)
 
@@ -271,12 +271,12 @@
 	attack_verb = list("poked")
 
 /obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
 	. = ..()
-	if(status && target.has_AI())
-		target.taunt(user)
+	if(status && L.has_AI())
+		L.taunt(user)
 
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
@@ -308,12 +308,12 @@
 	update_icon()
 
 /obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
 	var/mob/living/carbon/human/H
-	if(ishuman(target))
-		H = target
+	if(ishuman(L))
+		H = L
 		if(!status)
 			return ..()
 	else
@@ -332,7 +332,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	target.stun_effect_act(stunforce, agonyforce, target_zone, src)
-	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

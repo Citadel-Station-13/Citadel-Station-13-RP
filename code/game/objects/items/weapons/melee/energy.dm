@@ -393,21 +393,21 @@
 
 /obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
-	if(target.isSynthetic() && active)
+	if(L.isSynthetic() && active)
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
-		target.emp_act(3) // A weaker severity is used because this has infinite uses.
-		playsound(get_turf(target), 'sound/effects/EMPulse.ogg', 100, 1)
-		target.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
-		playsound(get_turf(target), 'sound/weapons/blade1.ogg', 100, 1)
+		L.emp_act(3) // A weaker severity is used because this has infinite uses.
+		playsound(get_turf(L), 'sound/effects/EMPulse.ogg', 100, 1)
+		L.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
+		playsound(get_turf(L), 'sound/weapons/blade1.ogg', 100, 1)
 
 		// Make lesser robots really mad at us.
-		if(target.mob_class & MOB_CLASS_SYNTHETIC)
-			if(target.has_AI())
-				target.taunt(user)
-			target.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
+		if(L.mob_class & MOB_CLASS_SYNTHETIC)
+			if(L.has_AI())
+				L.taunt(user)
+			L.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"

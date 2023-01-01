@@ -316,10 +316,10 @@
 
 /obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/target = target
-	if(!istype(target))
+	var/mob/living/L = target
+	if(!istype(L))
 		return
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/H = L
 	var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
 									"[user] smacks [H] with the butt of [src]!", \
 									"[user] broadsides [H] with [src]!", \
