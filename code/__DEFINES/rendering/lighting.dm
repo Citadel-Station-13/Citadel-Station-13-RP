@@ -31,6 +31,9 @@
  */
 #define USE_INTELLIGENT_LIGHTING_UPDATES
 
+/// Maximum light_range before forced to always queue instead of using sync updates. Setting this too high will cause server stutter with moving large lights.
+#define LIGHTING_MAXIMUM_INSTANT_RANGE 8
+
 /**
  * Mostly identical to below, but doesn't make sure T is valid first.
  * Should only be used by lighting code.
