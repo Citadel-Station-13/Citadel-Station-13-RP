@@ -51,7 +51,7 @@
 	..()
 
 //hit other people with it
-/obj/item/holowarrant/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/holowarrant/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='notice'>You show the warrant to [M].</span>", \
 			"<span class='notice'>[user] holds up a warrant projector and shows the contents to [M].</span>")
 	M.examinate(src)

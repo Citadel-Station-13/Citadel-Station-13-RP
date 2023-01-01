@@ -103,7 +103,7 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = M
 	if(istype(L))

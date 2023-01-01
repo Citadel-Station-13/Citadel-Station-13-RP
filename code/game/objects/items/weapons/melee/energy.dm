@@ -106,7 +106,7 @@
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/melee/energy/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/energy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))
@@ -346,7 +346,7 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	projectile_parry_chance = 85
 
-/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
 	return ..()
@@ -391,7 +391,7 @@
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
 	return ..()
 
-/obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/target = M
 	if(!istype(target))
@@ -465,7 +465,7 @@
 	projectile_parry_chance = 65
 	hitcost = 150
 
-/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
 	return ..()

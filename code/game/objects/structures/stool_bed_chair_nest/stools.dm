@@ -72,7 +72,7 @@ var/global/list/stool_cache = list() //haha stool
 		padding_material = null
 	update_icon()
 
-/obj/item/stool/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 
 	var/mob/living/L = user

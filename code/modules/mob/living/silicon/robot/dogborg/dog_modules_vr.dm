@@ -441,7 +441,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/dogborg/mirrortool/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = M
 	if(!istype(H))
 		return

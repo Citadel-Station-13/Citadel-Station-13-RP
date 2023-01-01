@@ -336,7 +336,7 @@
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/shockpaddles/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shockpaddles/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = M
 	if(!istype(H) || user.a_intent == INTENT_HARM)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
@@ -349,7 +349,7 @@
 		update_icon()
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/target = M
 	if(!istype(target))
 		return

@@ -40,7 +40,7 @@
 */
 //! End ofNon-implemented Subtypes
 
-/obj/item/reagent_containers/pill/patch/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/pill/patch/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = user
 
 	if(M == L)

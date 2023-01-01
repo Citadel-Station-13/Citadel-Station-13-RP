@@ -142,7 +142,7 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/target = M
 	if(!istype(target))

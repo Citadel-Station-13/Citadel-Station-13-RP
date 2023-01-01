@@ -11,7 +11,7 @@
 	hitcost = 48	//Less zap for less cost
 	description_info = "This baton will stun a slime or other slime-based lifeform for about five seconds, if hit with it while on."
 
-/obj/item/melee/baton/slime/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/slime/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = M
 	if(istype(L) && status) // Is it on?
 		if(L.mob_class & MOB_CLASS_SLIME) // Are they some kind of slime? (Prommies might pass this check someday).

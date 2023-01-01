@@ -240,7 +240,7 @@
 					return
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/target = M
 	if(!istype(target))

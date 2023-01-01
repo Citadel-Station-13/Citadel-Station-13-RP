@@ -19,7 +19,7 @@
 
 //////////////////////////////Capturing////////////////////////////////////////////////////////
 
-/obj/item/soulstone/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/soulstone/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!istype(M, /mob/living/carbon/human))//If target is not a human.
 		return ..()
 	if(istype(M, /mob/living/carbon/human/dummy))

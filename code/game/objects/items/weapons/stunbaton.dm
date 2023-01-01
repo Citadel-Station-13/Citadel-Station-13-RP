@@ -127,7 +127,7 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.Weaken(30)
@@ -136,7 +136,7 @@
 	deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/baton/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/target = M
 	if(!istype(target))
 		return
@@ -253,7 +253,7 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	do_teleport(M, get_turf(M), 15)
 
@@ -270,7 +270,7 @@
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/target = M
 	if(!istype(target))
 		return
@@ -307,7 +307,7 @@
 		bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/target = M
 	if(!istype(target))
 		return

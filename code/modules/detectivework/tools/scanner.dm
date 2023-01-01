@@ -14,7 +14,7 @@
 	var/reveal_blood = TRUE
 	var/reveal_fibers = FALSE
 
-/obj/item/detective_scanner/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/detective_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if (!ishuman(M))

@@ -34,7 +34,7 @@
 		var/mob/living/M = AM
 		M.slip("the [src.name]",3)
 
-/obj/item/soap/pre_attack(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/soap/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (A in user.client.screen))
@@ -58,7 +58,7 @@
 		A.clean_blood()
 	return
 
-/obj/item/soap/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/soap/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(M && user && ishuman(M) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [M]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)

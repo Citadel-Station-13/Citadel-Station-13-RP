@@ -80,7 +80,7 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
-/obj/item/slime_crystal/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/target = M
 	if(!istype(target))
