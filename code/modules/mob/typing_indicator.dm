@@ -24,8 +24,6 @@
 		add_overlay(typing_indicator)
 		typing = TRUE
 
-	shadow?.set_typing_indicator(state)
-
 /mob/verb/say_wrapper()
 	set name = ".Say"
 	set hidden = 1
