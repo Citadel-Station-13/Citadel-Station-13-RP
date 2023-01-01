@@ -18,7 +18,7 @@
 	if(isliving(AM))
 		if(!(crossed_dirs & AM.dir))
 			crossed_dirs |= AM.dir
-			add_overlay(image(icon = 'icons/turf/outdiirs.dmi', icon_state = "snow_footprints", dir = AM.dir))
+			add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = AM.dir))
 	return ..()
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
