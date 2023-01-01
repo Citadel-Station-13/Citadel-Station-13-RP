@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(lighting)
 	var/total_ss_updates = 0
 	var/total_instant_updates = 0
 
+	var/instant_ctr = 0
+
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 	var/force_queued = TRUE
 	/// For admins.
@@ -37,7 +39,7 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/stat_entry()
 	var/list/out = list(
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-		"IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]%\n",
+		"IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]% Instant: [force_queued ? "Disabled" : "Allowed"] \n",
 #endif
 		"\tT:{L:[total_lighting_sources] C:[lighting_corners.len] O:[total_lighting_overlays]}\n",
 		"\tP:{L:[light_queue.len - (lq_idex - 1)]|C:[corner_queue.len - (cq_idex - 1)]|O:[overlay_queue.len - (oq_idex - 1)]}\n",
@@ -57,6 +59,25 @@ SUBSYSTEM_DEF(lighting)
 	total_instant_updates = 0
 
 #endif
+
+/// Disable instant updates, relying entirely on the (slower, but less laggy) queued pathway. Use if changing a *lot* of lights.
+/datum/controller/subsystem/lighting/proc/pause_instant()
+	if (force_override)
+		return
+
+	instant_ctr += 1
+	if (instant_ctr == 1)
+		force_queued = TRUE
+
+/// Resume instant updates.
+/datum/controller/subsystem/lighting/proc/resume_instant()
+	if (force_override)
+		return
+
+	instant_ctr = max(instant_ctr - 1, 0)
+
+	if (!instant_ctr)
+		force_queued = FALSE
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	var/overlaycount = 0
@@ -93,9 +114,12 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/proc/InitializeZlev(zlev)
 	for (var/thing in Z_ALL_TURFS(zlev))
 		var/turf/T = thing
-		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) && !T.lighting_overlay)	// Can't assume that one hasn't already been created on bay/neb.
-			new /atom/movable/lighting_overlay(T)
-			. += 1
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+			if (T.lighting_overlay)
+				log_subsystem(name, "Found unexpected lighting overlay at [T.x],[T.y],[T.z]")
+			else
+				new /atom/movable/lighting_overlay(T)
+				. += 1
 			if (T.ambient_light)
 				T.generate_missing_corners()	// Forcibly generate corners.
 
