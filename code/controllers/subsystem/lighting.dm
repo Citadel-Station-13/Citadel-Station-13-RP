@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/proc/InitializeZlev(zlev)
 	for (var/thing in Z_ALL_TURFS(zlev))
 		var/turf/T = thing
-		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))	// Can't assume that one hasn't already been created on bay/neb.
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			if (T.lighting_overlay)
 				log_subsystem(name, "Found unexpected lighting overlay at [T.x],[T.y],[T.z]")
 			else
