@@ -255,9 +255,9 @@
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
-	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -268,9 +268,9 @@
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
-	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 

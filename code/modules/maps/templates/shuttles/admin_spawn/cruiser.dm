@@ -49,7 +49,7 @@
 
 /area/mothership/vault
 	name = "Daedalus - Vault"
-	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 
 /area/mothership/teleporter
 	name = "Daedalus - Teleporter Room"
@@ -86,7 +86,7 @@
 
 /area/mothership/armory
 	name = "Daedalus - Armory"
-	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 
 /area/mothership/bridge
 	name = "Daedalus - Bridge"
