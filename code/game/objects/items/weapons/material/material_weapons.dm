@@ -89,7 +89,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/material/melee_mob_effects(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!unbreakable)
 		if(material.is_brittle())

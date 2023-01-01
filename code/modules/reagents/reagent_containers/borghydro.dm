@@ -62,7 +62,7 @@
 					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
 	return 1
 
-/obj/item/reagent_containers/borghypo/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/borghypo/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = M
 	if(!istype(L))
 		return
@@ -175,7 +175,7 @@
 		"whiskey",
 		"wine")
 
-/obj/item/reagent_containers/borghypo/service/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/borghypo/service/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return
 
 /obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)

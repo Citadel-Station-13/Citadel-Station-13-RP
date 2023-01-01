@@ -98,7 +98,7 @@
 			qdel(src)
 	return uses
 
-/obj/item/dnainjector/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/dnainjector/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!user.IsAdvancedToolUser())
 		user.action_feedback(SPAN_WARNING("You have no clue what to do with [src]."), src)

@@ -41,7 +41,7 @@
 /obj/item/laser_pointer/upgraded
 	diode = /obj/item/stock_parts/micro_laser/ultra
 
-/obj/item/laser_pointer/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/laser_pointer/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	laser_act(M, user)
 
 /obj/item/laser_pointer/attackby(obj/item/W, mob/user)

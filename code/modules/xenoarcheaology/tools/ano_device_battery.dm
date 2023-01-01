@@ -197,7 +197,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/anodevice/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/anodevice/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

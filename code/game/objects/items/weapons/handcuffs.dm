@@ -20,7 +20,7 @@
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
 
-/obj/item/handcuffs/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = M
 	if(!istype(C))
 		return
@@ -225,7 +225,7 @@ var/last_chew = 0
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legcuffs/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = M
 	if(!istype(C))
 		return

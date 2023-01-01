@@ -17,7 +17,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	var/datum/mind/stored_mind
 
-/obj/item/sleevemate/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/sleevemate/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(ishuman(M))
 		scan_mob(M, user)

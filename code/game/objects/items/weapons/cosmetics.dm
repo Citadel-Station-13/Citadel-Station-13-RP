@@ -64,7 +64,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/lipstick/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/lipstick/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!open)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

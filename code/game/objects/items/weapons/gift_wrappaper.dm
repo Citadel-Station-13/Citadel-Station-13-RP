@@ -244,7 +244,7 @@
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 
-/obj/item/wrapping_paper/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/wrapping_paper/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if (!istype(M, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = M

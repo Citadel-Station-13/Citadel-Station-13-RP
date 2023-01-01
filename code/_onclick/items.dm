@@ -81,7 +81,7 @@
 /**
  * called when someone hits us with an item while in Reachability() range
  *
- * usually triggers melee_attack_object or melee_attack_mob
+ * usually triggers process_object_melee or process_mob_melee
  *
  * @params
  * * I - item being used to use/attack us in melee
@@ -112,15 +112,15 @@
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(A))
-		. |= melee_attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
+		. |= process_mob_melee(A, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
-		return . | melee_mob_finalize(A, user, . | clickchain_flags, params, mult, target_zone, intent)
+		return . | finalize_mob_melee(A, user, . | clickchain_flags, params, mult, target_zone, intent)
 	// is obj, go to that
-	. = melee_attack_object(A, user, clickchain_flags, params, mult)
+	. = process_object_melee(A, user, clickchain_flags, params, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	return . | melee_object_finalize(A, user, . | clickchain_flags, params, mult)
+	return . | finalize_object_melee(A, user, . | clickchain_flags, params, mult)
 
 /**
  * called when we're used to attack a mob
@@ -136,7 +136,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	//! legacy: for now no attacking nonliving
 	if(!isliving(M))
@@ -171,11 +171,11 @@
 		// missed
 		// log
 		add_attack_logs(user, L, "missed with [src] DT [damtype] F [force] I [user.a_intent]")
-		return melee_mob_missed(L, user, clickchain_flags, params, mult, target_zone, intent)
+		return melee_mob_miss(L, user, clickchain_flags, params, mult, target_zone, intent)
 	// log
 	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
 	// hit
-	return melee_mob_effects(L, user, clickchain_flags, params, mult, target_zone, intent)
+	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
 
 
@@ -184,7 +184,7 @@
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
 
 /**
- * called at base of melee_attack_mob after standard melee attack misses
+ * called at base of process_mob_melee after standard melee attack misses
  *
  * @return clickchain flags to append
  *
@@ -197,7 +197,7 @@
  * * target_zone - zone that user tried to target
  * * intent - action intent that was attempted
  */
-/obj/item/proc/melee_mob_missed(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/melee_mob_miss(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	//! legacy: decloak
 	user.break_cloak()
 	//! legacy: for now no attacking nonliving
@@ -211,7 +211,7 @@
 	return NONE
 
 /**
- * called at base of melee_attack_mob after standard melee attack resolves
+ * called at base of process_mob_melee after standard melee attack resolves
  *
  * @return clickchain flags to append
  *
@@ -224,7 +224,7 @@
  * * target_zone - zone to target
  * * intent - action intent to use
  */
-/obj/item/proc/melee_mob_effects(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	SHOULD_CALL_PARENT(TRUE)
 	//! legacy: decloak
 	user.break_cloak()
@@ -254,7 +254,7 @@
 	return NONE
 
 /**
- * called after melee_attack_mob, regardless of if standard handling is done
+ * called after process_mob_melee, regardless of if standard handling is done
  * this is currently called even if the attacker missed!
  *
  * @params
@@ -268,7 +268,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_mob_finalize(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/finalize_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	return NONE
 
 /**
@@ -283,7 +283,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_attack_object(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/process_object_melee(atom/A, mob/user, clickchain_flags, list/params)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if(user.a_intent != INTENT_HARM)
 		user.action_feedback(SPAN_WARNING("You refrain from hitting [A] because your intent is not set to harm."), src)
@@ -291,10 +291,10 @@
 	// sorry, no atom damage
 	// ... yet >:)
 	visible_message(SPAN_WARNING("[user] bashes [A] with [src]."))
-	return melee_object_effects(A, user, clickchain_flags, params)
+	return melee_object_hit(A, user, clickchain_flags, params)
 
 /**
- * called at base of melee_attack_object after standard melee attack resolves
+ * called at base of process_object_melee after standard melee attack resolves
  *
  * @return clickchain flags to append
  *
@@ -304,12 +304,12 @@
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * params - list of click params
  */
-/obj/item/proc/melee_object_effects(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/melee_object_hit(atom/A, mob/user, clickchain_flags, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 	return NONE
 
 /**
- * called after melee_attack_object, regardless of if standard handling is done
+ * called after process_object_melee, regardless of if standard handling is done
  * this is currently called even if the attacker missed!
  *
  * @params
@@ -321,7 +321,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/melee_object_finalize(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/finalize_object_melee(atom/A, mob/user, clickchain_flags, list/params, mult = 1)
 	return NONE
 
 #warn process melee hit instead of this (?)

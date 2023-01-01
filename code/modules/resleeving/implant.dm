@@ -90,7 +90,7 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] is already full!</span>")
 
-/obj/item/backup_implanter/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/backup_implanter/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if (!istype(M, /mob/living/carbon))

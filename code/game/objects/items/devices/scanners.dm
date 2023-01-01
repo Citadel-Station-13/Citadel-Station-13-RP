@@ -39,7 +39,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/healthanalyzer/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/healthanalyzer/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	scan_mob(M, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -527,7 +527,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_range = 7
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/obj/item/slime_scanner/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slime_scanner/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(M, /mob/living/simple_mob/slime/xenobio))
 		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")

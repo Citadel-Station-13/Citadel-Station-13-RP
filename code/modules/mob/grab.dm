@@ -332,7 +332,7 @@
 
 	return 1
 
-/obj/item/grab/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/grab/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)

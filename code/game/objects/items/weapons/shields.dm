@@ -119,10 +119,10 @@
 	. = ..()
 	embedded_flash = new(src)
 
-/obj/item/shield/riot/flash/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shield/riot/flash/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	return embedded_flash.melee_attack_mob(arglist(args))
+	return embedded_flash.process_mob_melee(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/living/carbon/user)
 	. = embedded_flash.attack_self(user)

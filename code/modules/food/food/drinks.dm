@@ -37,7 +37,7 @@
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
 	atom_flags |= OPENCONTAINER
 
-/obj/item/reagent_containers/food/drinks/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/drinks/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

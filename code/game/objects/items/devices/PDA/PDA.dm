@@ -1340,7 +1340,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 
-/obj/item/pda/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pda/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/carbon/C = M
 	if (istype(C, /mob/living/carbon))

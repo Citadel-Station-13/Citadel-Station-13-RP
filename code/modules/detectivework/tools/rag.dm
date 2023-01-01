@@ -112,7 +112,7 @@
 				if(T)
 					T.clean(src, user)
 
-/obj/item/reagent_containers/glass/rag/melee_attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/rag/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(M)) //Leaving this as isliving.
 		var/mob/living/L = M
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
