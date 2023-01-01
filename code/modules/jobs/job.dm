@@ -321,7 +321,7 @@
 		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 		dress_mannequin(mannequin)
 		mannequin.dir = SOUTH
-		COMPILE_OVERLAYS(mannequin)
+		mannequin.compile_overlays()
 		var/icon/preview_icon = get_flat_icon(mannequin)
 
 		preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)	// Scaling here to prevent blurring in the browser.

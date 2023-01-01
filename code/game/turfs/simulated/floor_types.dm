@@ -130,14 +130,16 @@
 
 /turf/simulated/shuttle/floor/alien
 	icon_state = "alienpod1"
-	light_range = 3
-	light_power = 0.6
-	light_color = "#66ffff"	// Bright cyan.
 	block_tele = TRUE
 
 /turf/simulated/shuttle/floor/alien/Initialize(mapload)
-	. = ..()
+
+	ambient_light = COLOR_LUMINOL
+	ambient_light_multiplier = 0.6
+
 	icon_state = "alienpod[rand(1, 9)]"
+
+	return ..()
 
 /turf/simulated/shuttle/floor/alienplating
 	icon_state = "alienplating"

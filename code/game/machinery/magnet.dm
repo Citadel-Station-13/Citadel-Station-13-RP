@@ -9,7 +9,7 @@
 	icon_state = "floor_magnet-f"
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
