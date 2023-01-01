@@ -46,7 +46,7 @@
 	var/cached_multiplicative_slowdown
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
-	/// Last world.time we finished a move
+	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0

@@ -42,6 +42,8 @@
 	var/list/beam_segments	//assoc list of datum/point or datum/point/vector, start = end. Used for hitscan effect generation.
 	var/datum/point/beam_index
 	var/turf/hitscan_last	//last turf touched during hitscanning.
+	/// do we have a tracer? if not we completely ignore hitscan logic
+	var/has_tracer = TRUE
 	var/tracer_type
 	var/muzzle_type
 	var/impact_type
@@ -173,10 +175,13 @@
 	return FALSE
 
 /obj/item/projectile/proc/record_hitscan_start(datum/point/pcache)
-	if(pcache)
-		beam_segments = list()
-		beam_index = pcache
-		beam_segments[beam_index] = null	//record start.
+	if(!has_tracer)
+		return
+	if(!pcache)
+		return
+	beam_segments = list()
+	beam_index = pcache
+	beam_segments[beam_index] = null	//record start.
 
 /obj/item/projectile/proc/process_hitscan()
 	var/safety = range * 3
@@ -368,6 +373,8 @@
 	return
 
 /obj/item/projectile/proc/store_hitscan_collision(datum/point/pcache)
+	if(!has_tracer)
+		return
 	beam_segments[beam_index] = pcache
 	beam_index = pcache
 	beam_segments[beam_index] = null
@@ -456,6 +463,8 @@
 	return ..()
 
 /obj/item/projectile/proc/cleanup_beam_segments()
+	if(!has_tracer)
+		return
 	QDEL_LIST_ASSOC(beam_segments)
 	beam_segments = list()
 	qdel(beam_index)
@@ -467,6 +476,8 @@
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
 /obj/item/projectile/proc/finalize_hitscan_and_generate_tracers(impacting = TRUE)
+	if(!has_tracer)
+		return
 	if(trajectory && beam_index)
 		var/datum/point/pcache = trajectory.copy_to()
 		beam_segments[beam_index] = pcache

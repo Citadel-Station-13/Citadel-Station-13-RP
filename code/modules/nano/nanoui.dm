@@ -352,6 +352,9 @@ nanoui is used to open and update nano browser uis
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
+		// transform urls
+		for(var/key in templates)
+			templates[key] = SSassets.transport.get_asset_url(templates[key])
 		template_data_json = strip_improper(json_encode(templates))
 
 	var/list/send_data = get_send_data(initial_data)
