@@ -41,7 +41,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	return INITIALIZE_HINT_QDEL
 
 /obj/map_helper/airlock/proc/payload(obj/machinery/door/airlock/payload)
-	return
+	setup(payload)
 
 /obj/map_helper/airlock/Destroy()
 	my_controller = null
