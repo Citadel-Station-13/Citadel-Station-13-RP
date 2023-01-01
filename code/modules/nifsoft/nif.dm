@@ -645,11 +645,11 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 ////////////////////////////////
 // Special Promethean """surgery"""
 /obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(!ishuman(M) || !ishuman(user) || (M == user))
+	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 
 	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/T = M
+	var/mob/living/carbon/human/T = target
 
 	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
 		. = CLICKCHAIN_DO_NOT_PROPAGATE

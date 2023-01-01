@@ -106,7 +106,7 @@
 	if(inuse)
 		return
 
-	user.visible_message("<span class='danger'>\The [user] is trying to inject \the [M] with \the [src]!</span>")
+	user.visible_message("<span class='danger'>\The [user] is trying to inject \the [target] with \the [src]!</span>")
 	inuse = 1
 	s_time = world.time
 	spawn(50)
@@ -116,11 +116,11 @@
 		return
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	user.do_attack_animation(M)
+	user.do_attack_animation(target)
 
-	M.visible_message("<span class='danger'>\The [M] has been injected with \the [src] by \the [user].</span>")
+	target.visible_message("<span class='danger'>\The [target] has been injected with \the [src] by \the [user].</span>")
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		to_chat(user, "<span class='warning'>Apparently it didn't work...</span>")
 		return
@@ -130,10 +130,10 @@
 	if((buf.types & DNA2_BUF_SE) && (block ? (GetState() && block == DNABLOCK_MONKEY) : GetState(DNABLOCK_MONKEY)))
 		injected_with_monkey = " <span class='danger'>(MONKEY)</span>"
 
-	add_attack_logs(user,M,"[injected_with_monkey] used the [name] on")
+	add_attack_logs(user,target,"[injected_with_monkey] used the [name] on")
 
 	// Apply the DNA shit.
-	inject(M, user)
+	inject(target, user)
 	return
 
 /obj/item/dnainjector/hulkmut

@@ -137,7 +137,7 @@
 	return ..()
 
 /obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	if(isrobot(target))
@@ -255,7 +255,7 @@
 
 /obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	do_teleport(M, get_turf(M), 15)
+	do_teleport(target, get_turf(target), 15)
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -271,7 +271,7 @@
 	attack_verb = list("poked")
 
 /obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	. = ..()
@@ -308,7 +308,7 @@
 	update_icon()
 
 /obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/target = M
+	var/mob/living/target = target
 	if(!istype(target))
 		return
 	var/mob/living/carbon/human/H

@@ -13,7 +13,7 @@
 
 /obj/item/bodysnatcher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
-	attempt_swap(M, user)
+	attempt_swap(target, user)
 
 /obj/item/bodysnatcher/proc/attempt_swap(mob/living/M, mob/living/user)
 	if(!isliving(M) || !isliving(user))

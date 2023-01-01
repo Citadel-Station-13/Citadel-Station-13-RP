@@ -30,8 +30,8 @@
 
 /// This cannot go into afterattack since some mobs delete themselves upon dying.
 /obj/item/material/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(can_cleave && isliving(A))
-		cleave(user, A)
+	if(can_cleave && isliving(target))
+		cleave(user, target)
 	return ..()
 
 /// This is purely the visual effect of cleaving.

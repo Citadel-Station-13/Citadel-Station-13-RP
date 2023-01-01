@@ -1342,7 +1342,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	var/mob/living/carbon/C = M
+	var/mob/living/carbon/C = target
 	if (istype(C, /mob/living/carbon))
 		switch(scanmode)
 			if(1)

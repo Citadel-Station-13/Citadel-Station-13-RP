@@ -374,14 +374,14 @@
 
 /obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
-	if(!issilicon(M))
+	if(!issilicon(target))
 		return ..()
-	if(!isliving(M))
+	if(!isliving(target))
 		return ..()
 	if(user.a_intent == INTENT_DISARM)
-		if(!ishuman(M))
+		if(!ishuman(target))
 			return ..()
-		var/mob/living/carbon/human/H = M
+		var/mob/living/carbon/human/H = target
 		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
 									  "[user] smacks [H] with the butt of [src]!", \
 									  "[user] broadsides [H] with [src]!", \

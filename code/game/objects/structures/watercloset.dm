@@ -535,9 +535,9 @@
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
 /obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!isobj(A))
+	if(!isobj(target))
 		return ..()
-	var/obj/O = A
+	var/obj/O = target
 	if(O.plunger_act(src, user, reinforced))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

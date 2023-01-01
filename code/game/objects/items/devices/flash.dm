@@ -148,7 +148,7 @@
 
 //attack_as_weapon
 /obj/item/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	flash_mob(M, user)
+	flash_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/flash/proc/flash_mob(mob/M, mob/user)

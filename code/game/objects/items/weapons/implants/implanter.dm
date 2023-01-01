@@ -40,27 +40,27 @@
 	return
 
 /obj/item/implanter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if (!istype(M, /mob/living/carbon))
+	if (!istype(target, /mob/living/carbon))
 		return ..()
 	if(active)
 		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>")
+			target.visible_message("<span class='warning'>[user] is attempting to implant [target].</span>")
 
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
+			user.do_attack_animation(target)
 
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 50)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+			var/turf/T1 = get_turf(target)
+			if (T1 && ((target == user) || do_after(user, 50)))
+				if(user && target && (get_turf(target) == T1) && src && src.imp)
+					target.visible_message("<span class='warning'>[target] has been implanted by [user].</span>")
 
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+					add_attack_logs(user,target,"Implanted with [imp.name] using [name]")
 
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
+					if(imp.handle_implant(target))
+						imp.post_implant(target)
 
-						if(ishuman(M))
-							var/mob/living/carbon/human/H = M
+						if(ishuman(target))
+							var/mob/living/carbon/human/H = target
 							H.update_hud_sec_implants()
 					src.imp = null
 					update()

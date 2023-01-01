@@ -117,16 +117,16 @@
 		return NONE
 	// is mob, go to that
 	// todo: signals for both
-	if(ismob(A))
-		. |= attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
+	if(ismob(target))
+		. |= attack_mob(target, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
-		return . | finalize_mob_melee(A, user, . | clickchain_flags, params, mult, target_zone, intent)
+		return . | finalize_mob_melee(target, user, . | clickchain_flags, params, mult, target_zone, intent)
 	// is obj, go to that
-	. = attack_object(A, user, clickchain_flags, params, mult)
+	. = attack_object(target, user, clickchain_flags, params, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	return . | finalize_object_melee(A, user, . | clickchain_flags, params, mult)
+	return . | finalize_object_melee(target, user, . | clickchain_flags, params, mult)
 
 /**
  * called when we're used to attack a mob
@@ -151,9 +151,9 @@
 		intent = user.a_intent
 	// end
 	//? legacy: for now no attacking nonliving
-	if(!isliving(M))
+	if(!isliving(target))
 		return
-	var/mob/living/L = M
+	var/mob/living/L = target
 	// check intent
 	if(user == L)
 		if(user.a_intent != INTENT_HARM)
@@ -203,9 +203,9 @@
 	//? legacy: decloak
 	user.break_cloak()
 	//? legacy: for now no attacking nonliving
-	if(!isliving(M))
+	if(!isliving(target))
 		return
-	var/mob/living/L = M
+	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	// feedback
@@ -237,16 +237,16 @@
 	//? legacy: decloak
 	user.break_cloak()
 	//? legacy: for now no attacking nonliving
-	if(!isliving(M))
+	if(!isliving(target))
 		return
 	// harmless, just tap them and leave
 	if(!force)
 		// todo: proper weapon sound ranges/rework
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		// feedback
-		user.visible_message(SPAN_WARNING("[user] harmlessly taps [M] with [src]."))
+		user.visible_message(SPAN_WARNING("[user] harmlessly taps [target] with [src]."))
 		return NONE
-	var/mob/living/L = M
+	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
 	if(hitsound)
 		playsound(src, hitsound, 50, 1, -1)
@@ -307,12 +307,12 @@
 /obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if(user.a_intent != INTENT_HARM)
-		user.action_feedback(SPAN_WARNING("You refrain from hitting [A] because your intent is not set to harm."), src)
+		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is not set to harm."), src)
 		return
 	// sorry, no atom damage
 	// ... yet >:)
-	visible_message(SPAN_WARNING("[user] bashes [A] with [src]."))
-	return melee_object_hit(A, user, clickchain_flags, params, 1)
+	visible_message(SPAN_WARNING("[user] bashes [target] with [src]."))
+	return melee_object_hit(target, user, clickchain_flags, params, 1)
 
 /**
  * called at base of attack_object after standard melee attack resolves

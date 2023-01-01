@@ -25,29 +25,29 @@
 	create_reagents(5)
 
 /obj/item/material/kitchen/utensil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(!istype(M))
+	if(!istype(target))
 		return ..()
 
 	if(user.a_intent != INTENT_HELP)
 		if(user.zone_sel.selecting == BP_HEAD || user.zone_sel.selecting == O_EYES)
 			if((MUTATION_CLUMSY in user.mutations) && prob(50))
-				M = user
-			return eyestab(M,user)
+				target = user
+			return eyestab(target,user)
 		else
 			return ..()
 
 	if (reagents.total_volume > 0)
-		reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
-		if(M == user)
-			if(!M.can_eat(loaded))
+		reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
+		if(target == user)
+			if(!target.can_eat(loaded))
 				return
-			M.visible_message("<span class='notice'>\The [user] eats some [loaded] from \the [src].</span>")
+			target.visible_message("<span class='notice'>\The [user] eats some [loaded] from \the [src].</span>")
 		else
-			user.visible_message("<span class='warning'>\The [user] begins to feed \the [M]!</span>")
-			if(!(M.can_force_feed(user, loaded) && do_mob(user, M, 5 SECONDS)))
+			user.visible_message("<span class='warning'>\The [user] begins to feed \the [target]!</span>")
+			if(!(target.can_force_feed(user, loaded) && do_mob(user, target, 5 SECONDS)))
 				return
-			M.visible_message("<span class='notice'>\The [user] feeds some [loaded] to \the [M] with \the [src].</span>")
-		playsound(M.loc,'sound/items/eatfood.ogg', rand(10,40), 1)
+			target.visible_message("<span class='notice'>\The [user] feeds some [loaded] to \the [target] with \the [src].</span>")
+		playsound(target,'sound/items/eatfood.ogg', rand(10,40), 1)
 		cut_overlays()
 		return
 	else

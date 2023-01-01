@@ -180,7 +180,7 @@
 
 /obj/item/cane/whitecane/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [M] on the ankle with their white cane!"))
+		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
 		return
 	return ..()
 

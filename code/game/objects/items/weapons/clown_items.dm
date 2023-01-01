@@ -37,30 +37,30 @@
 /obj/item/soap/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
-	if(user.client && (A in user.client.screen))
-		to_chat(user, "<span class='notice'>You need to take that [A.name] off before cleaning it.</span>")
-	else if(istype(A,/obj/effect/debris/cleanable/blood))
-		to_chat(user, "<span class='notice'>You scrub \the [A.name] out.</span>")
-		A.clean_blood()
+	if(user.client && (target in user.client.screen))
+		to_chat(user, "<span class='notice'>You need to take that [target.name] off before cleaning it.</span>")
+	else if(istype(target,/obj/effect/debris/cleanable/blood))
+		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
+		target.clean_blood()
 		return	//Blood is a cleanable decal, therefore needs to be accounted for before all cleanable decals.
-	else if(istype(A,/obj/effect/debris/cleanable))
-		to_chat(user, "<span class='notice'>You scrub \the [A.name] out.</span>")
-		qdel(A)
-	else if(istype(A,/turf))
-		to_chat(user, "<span class='notice'>You scrub \the [A.name] clean.</span>")
-		var/turf/T = A
+	else if(istype(target,/obj/effect/debris/cleanable))
+		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
+		qdel(target)
+	else if(istype(target,/turf))
+		to_chat(user, "<span class='notice'>You scrub \the [target.name] clean.</span>")
+		var/turf/T = target
 		T.clean(src, user)
-	else if(istype(A,/obj/structure/sink))
+	else if(istype(target,/obj/structure/sink))
 		to_chat(user, "<span class='notice'>You wet \the [src] in the sink.</span>")
 		wet()
 	else
-		to_chat(user, "<span class='notice'>You clean \the [A.name].</span>")
-		A.clean_blood()
+		to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+		target.clean_blood()
 	return
 
 /obj/item/soap/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(M && user && ishuman(M) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
-		user.visible_message("<span class='danger'>\The [user] washes \the [M]'s mouth out with soap!</span>")
+	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
+		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
 		return CLICKCHAIN_DO_NOT_PROPAGATE

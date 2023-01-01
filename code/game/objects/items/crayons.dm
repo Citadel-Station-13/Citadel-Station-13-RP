@@ -97,7 +97,7 @@
 /obj/item/pen/crayon/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(M == user)
+	if(target == user)
 		to_chat(user, "You take a bite of the crayon and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("crayon_dust",min(5,uses)/3)

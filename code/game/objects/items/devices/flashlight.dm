@@ -127,8 +127,8 @@
 /obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(on && user.zone_sel.selecting == O_EYES && isliving(M))
-		var/mob/living/L = M
+	if(on && user.zone_sel.selecting == O_EYES && isliving(target))
+		var/mob/living/L = target
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
