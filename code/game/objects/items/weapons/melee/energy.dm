@@ -393,6 +393,9 @@
 
 /obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(target.isSynthetic() && active)
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
 		target.emp_act(3) // A weaker severity is used because this has infinite uses.

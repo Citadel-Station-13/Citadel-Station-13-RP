@@ -142,16 +142,6 @@
 	if(!isliving(M))
 		return
 	var/mob/living/L = M
-	// if it's harmless, smack 'em anyways
-	if(!force)
-		// todo: proper weapon sound ranges/rework
-		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
-		// feedback
-		user.visible_message(SPAN_WARNING("[user] harmlessly taps [L] with [src]."))
-		user.do_attack_animation(L)
-		// todo: clickcd rework
-		user.setClickCooldown(user.get_attack_speed(src))
-		return NONE
 	// check intent
 	if(user == L)
 		if(user.a_intent != INTENT_HARM)
@@ -231,6 +221,13 @@
 	//! legacy: for now no attacking nonliving
 	if(!isliving(M))
 		return
+	// harmless, just tap them and leave
+	if(!force)
+		// todo: proper weapon sound ranges/rework
+		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
+		// feedback
+		user.visible_message(SPAN_WARNING("[user] harmlessly taps [L] with [src]."))
+		return NONE
 	var/mob/living/L = M
 	// todo: proper weapon sound ranges/rework
 	if(hitsound)

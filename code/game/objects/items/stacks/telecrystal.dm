@@ -10,8 +10,12 @@
 	origin_tech = list(TECH_MATERIAL = 6, TECH_BLUESPACE = 4)
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
-/obj/item/stack/telecrystal/melee_mob_hit(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/telecrystal/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/target = M
+	if(!istype(target))
+		return
 	if(amount >= 5)
+		add_attack_logs(user, M, "teleported with telecrystals")
 		target.visible_message("<span class='warning'>\The [target] has been transported with \the [src] by \the [user].</span>")
 		safe_blink(target, 14)
 		use(5)
