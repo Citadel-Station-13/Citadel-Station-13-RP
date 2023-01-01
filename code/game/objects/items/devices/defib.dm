@@ -350,7 +350,7 @@
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
 /obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/ = target
+	var/mob/living/L = target
 	if(!istype(L))
 		return
 	if(ishuman(L) && can_use(user, L))
