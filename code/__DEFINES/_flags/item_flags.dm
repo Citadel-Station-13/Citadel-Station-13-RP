@@ -15,6 +15,8 @@
 #define ITEM_NO_TOOL_ATTACK		(1<<6)
 /// we're dual wielded - multi-wielding coming later tm
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
+/// don't allow help intent attacking
+#define ITEM_CAREFUL_BLUDGEON	(1<<8)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -25,6 +27,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_THROW_UNCATCHABLE),
 	BITFIELD(ITEM_NO_TOOL_ATTACK),
 	BITFIELD(ITEM_MULTIHAND_WIELDED),
+	BITFIELD(ITEM_CAREFUL_BLUDGEON),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

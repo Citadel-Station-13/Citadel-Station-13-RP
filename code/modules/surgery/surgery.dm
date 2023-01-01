@@ -164,10 +164,7 @@
 				if (ishuman(M))
 					var/mob/living/carbon/human/H = M
 					H.update_surgery()
-				return	TRUE	  												//don't want to do weapony things after surgery
-			if(user.a_intent == INTENT_HELP)
-				. = TRUE	// if the step is valid at all for this tool allow it to interrupt attack but only for help intent
-
+				return TRUE	  												//don't want to do weapony things after surgery
 
 /proc/initialize_surgeries()
 	. = list()

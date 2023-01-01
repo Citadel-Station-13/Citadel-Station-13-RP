@@ -159,6 +159,10 @@
 		if(user.a_intent != INTENT_HARM)
 			user.action_feedback(SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."), src)
 			return NONE
+	else
+		if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
+			user.action_feedback(SPAN_WARNING("You refrain from hitting [target] with [src], as your intent is set to help."), src)
+			return NONE
 	// todo: better tracking
 	user.lastattacked = L
 	L.lastattacker = user
