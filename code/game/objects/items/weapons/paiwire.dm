@@ -13,6 +13,6 @@
 	else
 		user.visible_message("[user] fumbles to find a place on [M] to plug in [src].", "There aren't any ports on [M] that match the jack belonging to [src].")
 
-/obj/item/pai_cable/process_object_melee(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/pai_cable/attack_object(atom/A, mob/user, clickchain_flags, list/params)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	plugin(A, user)

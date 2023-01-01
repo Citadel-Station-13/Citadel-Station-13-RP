@@ -201,7 +201,7 @@
 	attack(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/clothing/accessory/stethoscope/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/stethoscope/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(ishuman(M) && isliving(user))

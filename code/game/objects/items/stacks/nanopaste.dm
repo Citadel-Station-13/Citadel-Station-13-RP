@@ -13,7 +13,7 @@
 	var/restoration_internal = 20
 
 
-/obj/item/stack/nanopaste/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/nanopaste/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!isliving(M))
 		return ..()
 	var/mob/living/L = M

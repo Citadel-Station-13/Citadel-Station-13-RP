@@ -16,7 +16,7 @@
 	matter = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	var/mode = 1;
 
-/obj/item/robotanalyzer/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/robotanalyzer/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	do_scan(M, user)
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)

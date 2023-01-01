@@ -36,7 +36,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			return
 	..()
 
-/obj/item/clothing/mask/facehugger/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/facehugger/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.drop_item_to_ground(src, INV_OP_FORCE)
 	Attach(M)
 

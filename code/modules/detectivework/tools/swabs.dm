@@ -11,7 +11,7 @@
 /obj/item/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/forensics/swab/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/forensics/swab/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!ishuman(M))

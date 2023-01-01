@@ -81,7 +81,7 @@
 /**
  * called when someone hits us with an item while in Reachability() range
  *
- * usually triggers process_object_melee or process_mob_melee
+ * usually triggers attack_object or attack_mob
  *
  * @params
  * * I - item being used to use/attack us in melee
@@ -112,12 +112,12 @@
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(A))
-		. |= process_mob_melee(A, user, clickchain_flags, params, mult, target_zone, intent)
+		. |= attack_mob(A, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
 		return . | finalize_mob_melee(A, user, . | clickchain_flags, params, mult, target_zone, intent)
 	// is obj, go to that
-	. = process_object_melee(A, user, clickchain_flags, params, mult)
+	. = attack_object(A, user, clickchain_flags, params, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	return . | finalize_object_melee(A, user, . | clickchain_flags, params, mult)
@@ -136,7 +136,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
+/obj/item/proc/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult = 1, target_zone = user?.zone_sel?.selecting, intent = user?.a_intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	//! legacy: for now no attacking nonliving
 	if(!isliving(M))
@@ -174,7 +174,7 @@
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
 
 /**
- * called at base of process_mob_melee after standard melee attack misses
+ * called at base of attack_mob after standard melee attack misses
  *
  * @return clickchain flags to append
  *
@@ -201,7 +201,7 @@
 	return NONE
 
 /**
- * called at base of process_mob_melee after standard melee attack resolves
+ * called at base of attack_mob after standard melee attack resolves
  *
  * @return clickchain flags to append
  *
@@ -251,7 +251,7 @@
 	return NONE
 
 /**
- * called after process_mob_melee, regardless of if standard handling is done
+ * called after attack_mob, regardless of if standard handling is done
  * this is currently called even if the attacker missed!
  *
  * @params
@@ -280,7 +280,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/process_object_melee(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_object(atom/A, mob/user, clickchain_flags, list/params)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if(user.a_intent != INTENT_HARM)
 		user.action_feedback(SPAN_WARNING("You refrain from hitting [A] because your intent is not set to harm."), src)
@@ -291,7 +291,7 @@
 	return melee_object_hit(A, user, clickchain_flags, params)
 
 /**
- * called at base of process_object_melee after standard melee attack resolves
+ * called at base of attack_object after standard melee attack resolves
  *
  * @return clickchain flags to append
  *
@@ -306,7 +306,7 @@
 	return NONE
 
 /**
- * called after process_object_melee, regardless of if standard handling is done
+ * called after attack_object, regardless of if standard handling is done
  * this is currently called even if the attacker missed!
  *
  * @params

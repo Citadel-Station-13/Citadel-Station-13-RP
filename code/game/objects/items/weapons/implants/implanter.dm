@@ -39,7 +39,7 @@
 	src.icon_state += "_[active]"
 	return
 
-/obj/item/implanter/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/implanter/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if (!istype(M, /mob/living/carbon))
 		return ..()
 	if(active)
@@ -107,7 +107,7 @@
 		icon_state = "cimplanter0"
 	return
 
-/obj/item/implanter/compressed/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/implanter/compressed/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/obj/item/implant/compressed/c = imp
 	if (!c)
 		return

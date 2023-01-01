@@ -239,7 +239,7 @@
 		return return_target
 	return FALSE
 
-/obj/item/gun/energy/maghowitzer/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/energy/maghowitzer/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/atom/A = M
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")

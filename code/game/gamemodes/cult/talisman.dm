@@ -42,7 +42,7 @@
 	else
 		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
 
-/obj/item/paper/talisman/process_mob_melee(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/paper/talisman/attack_mob(mob/M, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(user) && iscultist(user))
 		var/mob/living/L = user
 		if(imbue == "runestun")
