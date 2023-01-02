@@ -23,6 +23,7 @@ jobs:
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm
+
       - name: Restore Yarn cache
         uses: actions/cache@v3
         with:
@@ -31,24 +32,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
+      - name: Restore Rust cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Install Tools
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
-        # cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
+
       - name: Run Linters
         run: |
           bash tools/ci/check_filedirs.sh citadel.dme
           bash tools/ci/check_changelogs.sh
           bash tools/ci/check_grep.sh
           bash tools/ci/check_misc.sh
-          tools/bootstrap/python tools/validate_dme.py <citadel.dme
           tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+        # This is supposed to go after `bash tools/ci/check_misc.sh`
+        #  tools/bootstrap/python tools/validate_dme.py <citadel.dme
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2
         if: always()
