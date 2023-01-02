@@ -310,8 +310,8 @@
  */
 /obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
-	if(user.a_intent != INTENT_HARM)
-		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is not set to harm."), src)
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
+		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return
 	// sorry, no atom damage
 	// ... yet >:)
