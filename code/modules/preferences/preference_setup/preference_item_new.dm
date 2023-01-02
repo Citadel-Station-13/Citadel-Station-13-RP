@@ -155,7 +155,7 @@
 
 // todo: multi stage random character generation
 
-/datum/category_item/player_setup_item/vv_edit_var(var_name, var_value, raw_edit)
+/datum/category_item/player_setup_item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)
 		if(NAMEOF(src, is_global))
 			return FALSE		// let's not!

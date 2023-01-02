@@ -190,6 +190,19 @@
 		hide_signal = !hide_signal
 		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")
 
+/datum/gps_waypoint
+	/// name
+	var/name
+	/// x coord
+	var/x
+	/// y coord
+	var/y
+	/// virtual level id from ssmapping
+	var/level_id
+
+/datum/gps_waypoint/proc/locality_equivalent(datum/gps_waypoint/other)
+	return x == other.x && y == other.y && level_id == other.level_id
+
 /obj/item/gps
 	name = "global positioning system"
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
@@ -202,6 +215,16 @@
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
+	/// max waypoints
+	var/waypoints_max = 10
+	/// our waypoints
+	var/list/datum/gps_waypoint/waypoints
+	/// active tracking target - either a waypoint or a gps signal
+	var/datum/tracking
+	/// active tracking arrow object
+	var/atom/movable/screen/waypoint_tracker/hud_arrow
+	/// the perspective we're bound to right now
+	var/datum/perspective/hud_bound
 
 	var/emped = FALSE
 	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
@@ -225,7 +248,13 @@
 	else if(tracking)
 		add_overlay("working")
 
-/obj/item/gps/vv_edit_var(var_name, var_value, raw_edit)
+/obj/item/gps/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	if(raw_edit)
+		return ..()
+	switch(var_name)
+		if(NAMEOF(src, tracking))
+			return start_tracking(var_value)
+	. = ..()
 	switch(var_name)
 		if(NAMEOF(src, gps_tag))
 			update_tag()
@@ -234,6 +263,35 @@
 		if(NAMEOF(src, emped))
 			update_icon()
 			update_emit()
+
+//? we use very simple perspective hooks as mob perspectives shouldn't be deleting
+
+/obj/item/gps/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+
+/obj/item/gps/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+
+/**
+ * bind our hud rendering to a perspective
+ */
+/obj/item/gps/proc/bind_perspective(datum/perspective/pers)
+
+/**
+ * start tracking a target - either a gps signal or a waypoint
+ */
+/obj/item/gps/proc/start_tracking(datum/target)
+
+/**
+ * stop tracking a target
+ */
+/obj/item/gps/proc/stop_tracking()
+
+/**
+ * updates tracking target
+ */
+/obj/item/gps/proc/update_tracking()
+
 
 /**
  * update our tag
