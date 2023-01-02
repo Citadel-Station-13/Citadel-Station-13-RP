@@ -1,7 +1,4 @@
 
-
-///Global GPS_list. All  GPS components get saved in here for easy reference.
-GLOBAL_LIST_EMPTY(GPS_list)
 ///GPS component. Atoms that have this show up on gps. Pretty simple stuff.
 /datum/component/gps
 	var/gps_tag = "GEN0"
