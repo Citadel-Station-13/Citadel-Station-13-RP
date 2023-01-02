@@ -1593,7 +1593,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/pathfinder
 	default_cartridge = /obj/item/cartridge/signal/science
-	icon_state = "pda-lawyer-old"
+	icon_state = "pda-lawyer"
 
 /obj/item/pda/explorer
 	default_cartridge = /obj/item/cartridge/signal/science
