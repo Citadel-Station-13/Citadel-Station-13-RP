@@ -10,26 +10,16 @@
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_SNOW)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_SNOW)
 
-	var/list/crossed_dirs = list()
-	var/list/footprints = list()
+	var/crossed_dirs = NONE
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
 	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
 		return ..()
 	if(isliving(AM))
-		var/mdir = "[AM.dir]"
-		crossed_dirs[mdir] = 1
-		update_overlays()
+		if(!(crossed_dirs & AM.dir))
+			crossed_dirs |= AM.dir
+			add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = AM.dir))
 	return ..()
-
-/turf/simulated/floor/outdoors/snow/update_overlays()
-	. = ..()
-	cut_overlay(footprints)
-
-	for(var/d in crossed_dirs)
-		footprints += image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d))
-	add_overlay(footprints)
-
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
