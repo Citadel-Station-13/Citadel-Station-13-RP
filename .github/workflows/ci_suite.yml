@@ -23,6 +23,7 @@ jobs:
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm
+
       - name: Restore Yarn cache
         uses: actions/cache@v3
         with:
@@ -31,12 +32,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
+      - name: Restore Rust cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Install Tools
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           tools/bootstrap/python -c ''
+
       - name: Run Linters
         run: |
           bash tools/ci/check_filedirs.sh citadel.dme
