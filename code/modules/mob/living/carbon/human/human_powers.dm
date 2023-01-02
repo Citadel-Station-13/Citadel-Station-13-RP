@@ -167,7 +167,7 @@
 				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
 				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
 		if ("Projection")
-			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as text|null)
+			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as message|null)
 			if(msg)
 				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
 				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
