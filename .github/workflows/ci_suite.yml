@@ -31,14 +31,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      # - name: Restore Rust cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.cargo
-      #     key: ${{ runner.os }}-rust
-      #     restore-keys: |
-      #       ${{ runner.os }}-build-
-      #       ${{ runner.os }}-
       - name: Install Tools
         run: |
           pip3 install setuptools
