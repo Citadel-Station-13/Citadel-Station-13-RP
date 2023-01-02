@@ -286,6 +286,7 @@
 	created_fulltile_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
 	table_icon_base = "glass"
+	table_reinf_icon_base = "rglass"
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
