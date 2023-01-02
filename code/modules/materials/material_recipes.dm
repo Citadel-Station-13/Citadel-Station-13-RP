@@ -105,7 +105,12 @@
 		))
 	recipes += new/datum/stack_recipe("desk bell", /obj/item/deskbell, 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 5, time = 20, one_per_turf = 1, on_floor = 1)
-
+	
+	recipes += new/datum/stack_recipe_list("Teshari Nests", list( \
+        new/datum/stack_recipe("Small Teshari Nest", /obj/structure/bed/chair/bay/chair/padded/red/smallnest, 10, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("Large Teshari Nest", /obj/structure/bed/chair/bay/chair/padded/red/bignest, 20, one_per_turf = 1, on_floor = 1), \
+    ))
+	
 /datum/material/plasteel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("AI core", /obj/structure/AIcore, 4, time = 50, one_per_turf = 1)
