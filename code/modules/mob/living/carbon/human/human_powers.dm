@@ -158,11 +158,20 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
-		to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+	var/msg_style = alert("Do you want to whisper or to project?", "Psychic style", "Whisper", "Projection", "Cancel")
+	switch(msg_style)
+		if ("Whisper")
+			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+		if ("Projection")
+			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You projected: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
