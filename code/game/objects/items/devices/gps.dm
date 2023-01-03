@@ -55,6 +55,14 @@
 	. = ..()
 	AddComponent(/datum/component/gps_signal, gps_tag)
 
+/obj/item/gps/Destroy()
+	stop_tracking()
+	QDEL_NULL(hud_arrow)
+	QDEL_LIST(waypoints)
+	. = ..()
+	if(hud_bound)
+		stack_trace("failed to clear hud bound during gc")
+
 /obj/item/gps/update_icon()
 	cut_overlays()
 	if(emped)
@@ -102,6 +110,34 @@
 	if(!user.Reachability(src))
 		return
 	toggle_power(user = user)
+
+/obj/item/gps/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
+	if(istype(I, /obj/item/gps))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
+		var/obj/item/gps/transfer_to = I
+		var/list/needed = list()
+		for(var/datum/gps_waypoint/P1 as anything in waypoints)
+			var/unnecessary = FALSE
+			for(var/datum/gps_waypoint/P2 as anything in transfer_to.waypoints)
+				if(P1.same(P2))
+					unnecessary = TRUE
+					break
+			if(unnecessary)
+				continue
+			needed += P1
+		if(!length(needed))
+			return
+		var/max_to_transfer = min(length(needed), transfer_to.waypoints_max - (transfer_to.waypoints))
+		if(max_to_transfer <= 0)
+			user.action_feedback(SPAN_WARNING("[transfer_to] has no more room to store waypoints."), src)
+			return
+		if(max_to_transfer < length(needed))
+			user.action_feedback(SPAN_WARNING("Waypoints partially transferred: insffucient space."), src)
+		else
+			user.action_feedback(SPAN_NOTICE("Waypoints transferred."), src)
+		transfer_to.waypoints += needed
+		transfer_to.push_waypoint_data()
+	return ..()
 
 /obj/item/gps/emp_act(severity)
 	emped = TRUE
