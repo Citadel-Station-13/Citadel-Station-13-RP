@@ -49,12 +49,20 @@
 
 	/**
 	 * Baseturfs
+	 *
+	 * Baseturfs can either be a list or a single turf type.
+	 * In class definitions it should always be a single type.
+	 * A de-duplicated/cached list will be created in init that builds the
+	 * baseturf "stack", so that we can access in runtime
+	 *
+	 * If this is a list, it's bottom first top last (so [1] is bottommost and [length] is topmost)
+	 *
+	 * To facilitate fast direct reads, we are not putting VAR_PRIVATE on this.
+	 *
+	 * ? Do not, under any circumstances, attempt to modify this list directly.
+	 * ? Helper procs will do that for you. Modfiying the list directly
+	 * ? WILL cause cache corruption and mess up the round.
 	 */
-	// baseturfs can be either a list or a single turf type.
-	// In class definition like here it should always be a single type.
-	// A list will be created in initialization that figures out the baseturf's baseturf etc.
-	// In the case of a list it is sorted from bottom layer to top.
-	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/baseturf_bottom
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
