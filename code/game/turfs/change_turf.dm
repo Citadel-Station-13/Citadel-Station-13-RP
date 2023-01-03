@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_object, /obj/effect/shuttle_landmark))
+	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_overlay, /obj/effect/shuttle_landmark))
 	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
@@ -78,14 +78,16 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		return new path(src)
 
 	// store lighting
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
+	var/old_opacity          = opacity
+	var/old_above            = above
 	var/old_affecting_lights = affecting_lights
-	var/old_lighting_object = lighting_object
-	var/old_lc_topright = lc_topright
-	var/old_lc_topleft = lc_topleft
-	var/old_lc_bottomright = lc_bottomright
-	var/old_lc_bottomleft = lc_bottomleft
+	var/old_lighting_overlay = lighting_overlay
+	var/old_dynamic_lighting = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
+	var/old_corners          = corners
+	var/old_ao_neighbors     = ao_neighbors
+	// var/old_is_open          = is_open()
+	var/old_ambience =         ambient_light
+	var/old_ambience_mult =    ambient_light_multiplier
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
@@ -111,6 +113,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/W = new path(src)
 
+	W.above = old_above // Multiz ref tracking.
+
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
 	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
@@ -135,20 +139,22 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 
+	// Regen AO
+	if (permit_ao)
+		regenerate_ao()
+
 	// restore/update atmos
 	if(old_fire)
 		fire = old_fire
 	queue_zone_update()
 
 	// restore lighting
+	W.ao_neighbors = old_ao_neighbors
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
-		lighting_object = old_lighting_object
+		lighting_overlay = old_lighting_overlay
 		affecting_lights = old_affecting_lights
-		lc_topright = old_lc_topright
-		lc_topleft = old_lc_topleft
-		lc_bottomright = old_lc_bottomright
-		lc_bottomleft = old_lc_bottomleft
+		corners = old_corners
 		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
 			reconsider_lights()
 			updateVisibility(src)
@@ -159,9 +165,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
-		// todo: non dynamic lighting space starlight
-		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			S.update_starlight()
+		if (old_ambience != ambient_light || old_ambience_mult != ambient_light_multiplier)
+			update_ambient_light(FALSE)
+
+
 
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
@@ -403,7 +410,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
 	levelupdate()
-	update_vertical_turf_graphics()
+	if (above)
+		above.update_mimic()
 
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)
@@ -411,4 +419,5 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/ReplaceWithLattice()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	new /obj/structure/lattice(locate(x, y, z))
+	if(!(locate(/obj/structure/lattice) in .))
+		new /obj/structure/lattice(.)

@@ -56,7 +56,6 @@ var/list/department_radio_keys = list(
 
 
 var/list/channel_to_radio_key = new
-
 /proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
@@ -103,6 +102,7 @@ var/list/channel_to_radio_key = new
 		. = TRUE
 		message_data[1] = ""
 		return
+
 
 	if((MUTATION_HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
@@ -189,7 +189,7 @@ var/list/channel_to_radio_key = new
 
 	if(speaking == -1)
 		return
-		
+
 	if(!speaking)
 		speaking = get_default_language()
 
@@ -234,7 +234,7 @@ var/list/channel_to_radio_key = new
 		message = autocorrect(message)
 
 	//Whisper vars
-	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
+	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
 	var/w_not_heard				//The message for people in watching range
 
@@ -372,6 +372,7 @@ var/list/channel_to_radio_key = new
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
+	/*
 	var/mob/above = src.shadow
 	while(!QDELETED(above))
 		var/turf/ST = get_turf(above)
@@ -384,6 +385,7 @@ var/list/channel_to_radio_key = new
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	*/
 	var/atom/emitter = src
 	if(!isobserver(emitter) || !IsAdminGhost(emitter))
 		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
@@ -402,8 +404,7 @@ var/list/channel_to_radio_key = new
 						images_to_clients[I1] |= M.client
 						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-				if(whispering) //Don't even bother with these unless whispering
-
+				else if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble

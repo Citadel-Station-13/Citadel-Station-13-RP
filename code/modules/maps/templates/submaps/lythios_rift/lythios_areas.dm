@@ -2,6 +2,7 @@
 	name = "Lythios Rift Submap Area"
 	icon_state = "submap"
 	ambience = AMBIENCE_RUINS
+	is_outside = OUTSIDE_YES
 
 
 // West Caves areas

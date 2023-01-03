@@ -7,9 +7,6 @@
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
 	edge_blending_priority = 1
-	light_range = 2
-	light_power = 0.75
-	light_color = LIGHT_COLOR_LAVA
 	// flags = TURF_HAS_EDGES
 	// todo: THE ABOVE FLAGS DOESNT WORK BECAUSE ITS ON FLOORING!
 	movement_cost = 2
@@ -22,11 +19,20 @@
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE
 
-// For maximum pedantry.
+
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
+	ambient_light = LIGHT_COLOR_LAVA
+	ambient_light_multiplier = 0.6
+
+	// For maximum pedantry.
 	if(!outdoors)
 		name = "magma"
+
 	return ..()
+
+/turf/simulated/floor/outdoors/lava/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
 
 /turf/simulated/floor/outdoors/lava/make_outdoors()
 	..()

@@ -538,7 +538,7 @@
 		alpha_mask.blend_mode = BLEND_SUBTRACT
 		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
 		dummy.add_overlay(alpha_mask)
-		COMPILE_OVERLAYS(dummy)
+		dummy.compile_overlays()
 		dummy.alpha = 192
 
 		// remove hudlist
