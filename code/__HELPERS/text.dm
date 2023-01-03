@@ -22,6 +22,8 @@
  *! Text sanitization
  */
 
+// todo probably split this file into other files
+
 /// Used for preprocessing entered text.
 /proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
@@ -51,6 +53,14 @@
 		input = trim(input)
 
 	return input
+
+/**
+ * standard sanitization for atom names
+ *
+ * disallows linebreaks, trims, encodes html.
+ */
+/proc/sanitize_atom_name(str, max_len = 32)
+	return sanitize(str, max_length, TRUE, TRUE, FALSE)
 
 //TODO: Have to rewrite this sanitize code :djoy:
 /proc/sanitize_filename(t)

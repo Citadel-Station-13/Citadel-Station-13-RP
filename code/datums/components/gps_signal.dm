@@ -86,3 +86,6 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	else
 		src.disabled = FALSE
 		register_transmitter()
+
+/datum/component/gps_signal/proc/set_gps_tag(new_tag)
+	gps_tag = new_tag

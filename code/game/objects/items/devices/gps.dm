@@ -1,34 +1,3 @@
-
-///Called on COMSIG_P
-///Calls toggletracking
-/datum/component/gps/proc/on_AltClick(datum/source, mob/user)
-	toggletracking(user)
-
-/datum/component/gps/Topic(var/href, var/list/href_list)
-	if(..())
-		return 1
-
-
-	if(href_list["tag"])
-		var/atom/A = parent
-		var/a = input("Please enter desired tag.", A.name, gps_tag) as text
-		a = uppertext(copytext(sanitize(a), 1, 11))
-		if(in_range(A, usr))
-			gps_tag = a
-			if(update_name)
-				A.name = "[initial(A.name)] ([gps_tag])"
-			to_chat(usr, "You set your GPS's tag to '[gps_tag]'.")
-
-	if(href_list["range"])
-		local_mode = !local_mode
-		to_chat(usr, "You set the signal receiver to [local_mode ? "'NARROW'" : "'BROAD'"].")
-
-	if(href_list["hide"])
-		if(!can_hide_signal)
-			return
-		hide_signal = !hide_signal
-		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")
-
 /datum/gps_waypoint
 	/// name
 	var/name
@@ -217,6 +186,10 @@
 	var/angle
 	var/valid = TRUE
 	var/curr_l_id = SSmapping.level_id(get_z(src))
+	var/turf/T = get_turf(src)
+	if(!T)
+		hud_arrow?.set_disabled(TRUE)
+		return
 	if(istype(tracking, /datum/gps_waypoint))
 		var/datum/gps_waypoint/waypoint = tracking
 		if(waypoint.level_id != curr_l_id)
@@ -226,18 +199,19 @@
 	else if(istype(tracking, /datum/component/gps_signal))
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
+		var/turf/AT = get_turf(A)
 		if(SSmapping.level_id(get_z(A)) != curr_l_id)
 			valid = FALSE
 		else
-			angle = arctan(A.x - T.x, A.y - T.y)
+			angle = arctan(AT.x - T.x, AT.y - T.y)
 	else
 		stop_tracking()
 		CRASH("invalid tracking target detected and cleared")
 	if(valid)
 		hud_arrow?.set_angle(angle)
-		hud_arrow.set_disabled(FALSE)
+		hud_arrow?.set_disabled(FALSE)
 	else
-		hud_arrow.set_disabled(TRUE)
+		hud_arrow?.set_disabled(TRUE)
 
 /**
  * set our tag
@@ -302,16 +276,16 @@
 	var/list/data = list()
 	for(var/datum/gps_waypoint/point as anything in waypoints)
 		data[++data.len] = list(
-			"name": point.name,
-			"x": point.x,
-			"y": point.y,
-			"level": point.level_id,
+			"name" = point.name,
+			"x" = point.x,
+			"y" = point.y,
+			"level" =  point.level_id,
 			"ref" = ref(point),
 		)
 	return data
 
 /obj/item/gps/proc/push_waypoint_data()
-	send_tgui_data_immediate(data = list("waypoints" = ui_waypoint_data))
+	send_tgui_data_immediate(data = list("waypoints" = ui_waypoint_data()))
 
 /obj/item/gps/ui_static_data(mob/user)
 	. = ..()
@@ -325,6 +299,7 @@
 	.["visible"] = !hide_signal
 	.["long_range"] = !!long_range
 	.["has_stealth"] = !!can_hide_signal
+	.["updating"] = ui.autoupdate
 
 	if(!on)
 		return
@@ -356,7 +331,7 @@
 		return TRUE
 	switch(action)
 		if("tag")
-			set_gps_tag(params["name"]? sanitize(params["name"], 32, TRUE, TRUE, FALSE) : "NULL")
+			set_tag(params["name"]? sanitize_atom_name(params["name"], 32) : "NULL")
 			return TRUE
 		if("power")
 			toggle_power(user = usr)
@@ -370,15 +345,25 @@
 			hide_signal = !hide_signal
 			return TRUE
 		if("add_waypoint")
-
+			var/tag_as = sanitize_atom_name(params["name"], 32)
+			if(!tag_as)
+				return FALSE
+			var/turf/T = get_turf(src)
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
-
+			remove_waypoint(params["ref"])
+			return FALSE // remove waypoint pushes data already
 		if("select_target")
-
+			start_tracking(params["ref"])
+			return TRUE
 		if("toggle_update")
-
+			ui.set_autoupdate(!ui.autoupdate)
+			return TRUE // push one more time
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
+	if(!x || !y || !level_id || !name)
+		return
 	var/datum/gps_waypoint/point = new
 	point.name = name
 	point.x = x

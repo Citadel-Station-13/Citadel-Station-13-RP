@@ -6,8 +6,6 @@
 	/// distance from center
 	var/dist = 96
 
-#warn impl
-
 /atom/movable/screen/waypoint_tracker/Initialize(mapload)
 	. = ..()
 	// center on, well, center
