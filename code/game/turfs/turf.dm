@@ -127,35 +127,27 @@
  */
 /turf/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(FALSE)
-	PROFILE_SET
 	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_INITIALIZED
-	PROFILE_TICK
 
 	assemble_baseturfs()
-	PROFILE_TICK
 
 	SETUP_SMOOTHING()
-	PROFILE_TICK
 
 	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
 	QUEUE_SMOOTH(src)
-	PROFILE_TICK
 
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-	PROFILE_TICK
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
-	PROFILE_TICK
 
 	var/area/A = loc
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
-	PROFILE_TICK
 
 	if (light_power && light_range)
 		update_light()
@@ -173,7 +165,6 @@
 
 	if(isnull(outdoors))
 		outdoors = A.initial_outdoors
-	PROFILE_TICK
 
 	return INITIALIZE_HINT_NORMAL
 
