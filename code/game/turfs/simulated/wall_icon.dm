@@ -29,11 +29,20 @@
 
 /turf/simulated/wall/update_icon()
 	. = ..()
+
 	if(icon == initial(icon))
 		icon = get_wall_icon()
-	// Just in case we use a preview in another icon file.
-	if(icon_state == initial(icon_state))
-		icon_state = "wall-0"
+
+/turf/simulated/wall/update_icon_state()
+	. = ..()
+
+	// handle fakewalls
+	// TODO: MAKE FAKEWALLS NOT TURFS WTF
+	if(!density)
+		cached_wall_state = icon_state
+		icon_state = "fwall_open"
+	else if(icon_state == "fwall_open")
+		icon_state = cached_wall_state
 
 /turf/simulated/wall/update_overlays()
 	. = ..()
@@ -43,9 +52,6 @@
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
-		var/mutable_appearance/appearance = mutable_appearance(get_wall_icon(), "fwall_open")
-		appearance.color = material.icon_colour
-		. += appearance
 		return
 
 
@@ -53,21 +59,18 @@
 	if (apply_reinf_overlay())
 		// Reinforcement Construction
 		if (construction_stage != null && construction_stage < 6)
-			var/mutable_appearance/appearance = mutable_appearance('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]")
+			var/mutable_appearance/appearance = mutable_appearance('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]", appearance_flags = RESET_COLOR)
 			appearance.color = reinf_material.icon_colour
-			appearance.appearance_flags |= RESET_COLOR
 			. += appearance
 
 		// Directional Reinforcements.
 		else if(reinf_material.icon_reinf_directionals)
-			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_base, icon_state)
-			appearance.appearance_flags |= RESET_COLOR
+			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_base, icon_state, appearance_flags = RESET_COLOR)
 			. += appearance
 
 		// Standard Reinforcements.
 		else
-			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_reinf, "reinforced")
-			appearance.appearance_flags |= RESET_COLOR
+			var/mutable_appearance/appearance = mutable_appearance(reinf_material.icon_reinf, "reinforced", appearance_flags = RESET_COLOR)
 			appearance.color = reinf_material.icon_colour
 			. += appearance
 
