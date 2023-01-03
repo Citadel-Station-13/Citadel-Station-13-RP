@@ -37,3 +37,10 @@
 		screen_loc = null
 
 /atom/movable/screen/waypoint_tracker/gps
+	icon = 'icons/screen/objets/arrows_48.dmi'
+	icon_state = "1"
+	icon_dimension_x = 48
+	icon_dimension_y = 48
+	dist = 128
+	alpha = 128
+	color = rgb(177, 177, 255)
