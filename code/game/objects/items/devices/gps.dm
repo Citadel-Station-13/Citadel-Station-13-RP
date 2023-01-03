@@ -215,17 +215,29 @@
 	if(!hud_bound || !tracking)
 		return
 	var/angle
+	var/valid = TRUE
+	var/curr_l_id = SSmapping.level_id(get_z(src))
 	if(istype(tracking, /datum/gps_waypoint))
 		var/datum/gps_waypoint/waypoint = tracking
-		angle = arctan(waypoint.x - T.x, waypoint.y - T.y)
+		if(waypoint.level_id != curr_l_id)
+			valid = FALSE
+		else
+			angle = arctan(waypoint.x - T.x, waypoint.y - T.y)
 	else if(istype(tracking, /datum/component/gps_signal))
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
-		angle = arctan(A.x - T.x, A.y - T.y)
+		if(SSmapping.level_id(get_z(A)) != curr_l_id)
+			valid = FALSE
+		else
+			angle = arctan(A.x - T.x, A.y - T.y)
 	else
 		stop_tracking()
 		CRASH("invalid tracking target detected and cleared")
-	hud_arrow?.set_angle(angle)
+	if(valid)
+		hud_arrow?.set_angle(angle)
+		hud_arrow.set_disabled(FALSE)
+	else
+		hud_arrow.set_disabled(TRUE)
 
 /**
  * set our tag
