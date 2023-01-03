@@ -352,15 +352,23 @@
 	. = ..()
 	if(.)
 		return
+	if(!usr?.Reachability(src))
+		return TRUE
 	switch(action)
 		if("tag")
-
+			set_gps_tag(params["name"]? sanitize(params["name"], 32, TRUE, TRUE, FALSE) : "NULL")
+			return TRUE
 		if("power")
-
+			toggle_power(user = usr)
+			return TRUE
 		if("range")
-
+			local_mode = !local_mode
+			return TRUE
 		if("hide")
-
+			if(!can_hide_signal)
+				return FALSE
+			hide_signal = !hide_signal
+			return TRUE
 		if("add_waypoint")
 
 		if("del_waypoint")
@@ -368,6 +376,7 @@
 		if("select_target")
 
 		if("toggle_update")
+
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
 	var/datum/gps_waypoint/point = new
