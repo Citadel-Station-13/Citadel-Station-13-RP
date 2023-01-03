@@ -200,4 +200,4 @@
 
 //! Lighting
 
-#define AO_USE_LIGHTING_OPACITY
+// #define AO_USE_LIGHTING_OPACITY
