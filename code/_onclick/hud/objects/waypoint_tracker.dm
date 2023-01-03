@@ -35,8 +35,8 @@
 		screen_loc = null
 
 /atom/movable/screen/waypoint_tracker/gps
-	icon = 'icons/screen/objets/arrows_48.dmi'
-	icon_state = "1"
+	icon = 'icons/screen/objets/arrows_32.dmi'
+	icon_state = "europa1"
 	icon_dimension_x = 48
 	icon_dimension_y = 48
 	dist = 128

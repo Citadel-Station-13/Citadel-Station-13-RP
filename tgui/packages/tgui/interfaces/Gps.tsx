@@ -1,3 +1,41 @@
+import { useBackend } from "../backend";
+import { BooleanLike } from "../../common/react";
+
+type GpsContext = {
+  on: BooleanLike,
+  tag: string,
+  visible: BooleanLike,
+  long_range: BooleanLike,
+  has_stealth: BooleanLike,
+  updating: BooleanLike,
+  x: number,
+  y: number,
+  level: string,
+  signals: GpsSignal[],
+  waypoints: GpsWaypoint[],
+};
+
+type GpsSignal = {
+  ref: string,
+  name: string,
+  x: number,
+  y: number,
+  level: string,
+};
+
+type GpsWaypoint = {
+  ref: string,
+  name: string,
+  x: number,
+  y: number,
+  level: string,
+};
+
+export const Gps = (props, context) => {
+  const { act, data } = useBackend<GpsContext>(context);
+
+};
+
 // import { map, sortBy } from 'common/collections';
 // import { flow } from 'common/fp';
 // import { clamp } from 'common/math';

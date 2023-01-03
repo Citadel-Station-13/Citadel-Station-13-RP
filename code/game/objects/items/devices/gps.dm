@@ -309,7 +309,7 @@
 	.["y"] = curr.y
 	.["level"] = SSmapping.level_id(curr.z)
 	var/list/others = list()
-	.["gps_list"] = others
+	.["signals"] = others
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
 		var/l_id = SSmapping.level_id(other_z)
@@ -321,6 +321,7 @@
 				"y" = A.y,
 				"level" = l_id,
 				"ref" = ref(sig),
+				"name" = sig.gps_tag
 			)
 
 /obj/item/gps/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
