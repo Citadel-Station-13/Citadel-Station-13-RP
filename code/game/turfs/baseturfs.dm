@@ -19,23 +19,51 @@
 
 GLOBAL_LIST_EMPTY(created_baseturf_lists)
 
-// A proc in case it needs to be recreated or badmins want to change the baseturfs
-/turf/proc/assemble_baseturfs(turf/fake_baseturf_type)
-	var/list/created_baseturf_lists = GLOB.created_baseturf_lists
-	var/turf/current_target
-	if(fake_baseturf_type)
-		if(length(fake_baseturf_type)) // We were given a list, just apply it and move on
-			baseturfs = baseturfs_string_list(fake_baseturf_type, src)
+/**
+ * Assembles baseturfs from a certain root
+ *
+ * @params
+ * * root - Optional; A turf or a list of turfs to use instead of current baseturfs
+ */
+/turf/proc/assemble_baseturfs(turf/root)
+	var/turf/target
+	if(root)
+		if(length(root))
+			// was given list, just stringify and go
+			baseturfs = baseturfs_string_list(root, src)
 			return
-		current_target = fake_baseturf_type
+		// (assume) must be path
+		target = root
 	else
+		// use our own
 		if(length(baseturfs))
-			return // No replacement baseturf has been given and the current baseturfs value is already a list/assembled
-		if(!baseturfs)
+			// already a list
+			return
+		else if(baseturfs == /turf/baseturf_bottom)
+			// we are going to """waste""" an op to fastpath this
+			// because so many turfs use this it's a net gain
+			return
+		else if(isnull(baseturfs)) // null check; let it runtime if it's not null or path
 			current_target = initial(baseturfs) || type // This should never happen but just in case...
 			stack_trace("baseturfs var was null for [type]. Failsafe activated and it has been given a new baseturfs value of [current_target].")
 		else
-			current_target = baseturfs
+			target = baseturfs
+
+	// target at this point should be a path
+	. = GLOB.created_baseturf_lists[target]
+	if(isnull(.))
+		// not found
+
+		return
+	// found
+	if(ispath(.))
+		baseturfs = .
+		return
+	// must be a list at this point
+
+
+
+	var/list/created_baseturf_lists = GLOB.created_baseturf_lists
 
 	// If we've made the output before we don't need to regenerate it
 	if(created_baseturf_lists[current_target])

@@ -71,8 +71,6 @@
 
 	// General properties.
 	var/icon_old = null
-	/// How much does it cost to pathfind over this turf?
-	var/pathweight = 1
 	/// Has the turf been blessed?
 	var/blessed = FALSE
 
@@ -120,33 +118,36 @@
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
 /turf/Initialize(mapload, ...)
+	PROFILE_SET
 	SHOULD_CALL_PARENT(FALSE)
 	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_INITIALIZED
-
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.len = 0
+	PROFILE_TICK
 
 	assemble_baseturfs()
-
-	levelupdate()
+	PROFILE_TICK
 
 	SETUP_SMOOTHING()
+	PROFILE_TICK
 
-	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
-		QUEUE_SMOOTH(src)
+	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
+	QUEUE_SMOOTH(src)
+	PROFILE_TICK
 
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+	PROFILE_TICK
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
+	PROFILE_TICK
 
 	var/area/A = loc
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
+	PROFILE_TICK
 
 	if (light_power && light_range)
 		update_light()
@@ -162,12 +163,9 @@
 	if (mz_flags & MZ_MIMIC_BELOW)
 		setup_zmimic(mapload)
 
-	//Pathfinding related
-	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
-		pathweight = movement_cost
-
 	if(isnull(outdoors))
 		outdoors = A.initial_outdoors
+	PROFILE_TICK
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -187,6 +185,7 @@
 	if(force)
 		..()
 		//this will completely wipe turf state
+		vis_contents.len = 0
 		var/turf/B = new world.turf(src)
 		for(var/A in B.contents)
 			qdel(A)
@@ -207,6 +206,7 @@
 	if (mimic_proxy)
 		QDEL_NULL(mimic_proxy)
 
+	// clear vis contents here instead of in Init
 	vis_contents.len = 0
 
 	..()
@@ -347,12 +347,7 @@
 			. += T
 
 /turf/proc/Distance(turf/t)
-	if(get_dist(src,t) == 1)
-		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= (pathweight+t.pathweight)/2
-		return cost
-	else
-		return get_dist(src,t)
+	return get_dist(src,t)
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()

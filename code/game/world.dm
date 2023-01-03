@@ -118,6 +118,8 @@ GLOBAL_LIST(topic_status_cache)
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
 
+	LINE_PROFILE_START
+
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
