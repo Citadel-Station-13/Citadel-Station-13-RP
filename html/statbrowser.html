@@ -562,7 +562,13 @@ function transmit_verb(cmd) {
 
 /// immediate sends
 function transmit_href(action, data) {
-
+	var assembled = "";
+	if(data != undefined){
+		for(var key in data){
+			assembled += key + "=" + ((data[key] == undefined)? "1" : data[key]) + ";"
+		}
+	}
+	window.location.href = "?_src_=statpanel;act=" + action + ";" + assembled;
 }
 
 /// flushes queue
@@ -593,7 +599,12 @@ function winset_focus_map() {
 //////////////////////// MAIN ///////////////////////////
 
 function redraw_menu(){
-
+	// wipe
+	stat_menu[PROP_TEXT_CONTENT] = ""
+	// redraw
+	for(var tab in all_tabs){
+		__create_tab_element(tab);
+	}
 }
 
 function redraw_content(){
@@ -642,6 +653,54 @@ function erase_tab(name) {
 /// clear tabs that don't have verbs
 function erase_tabs() {
 
+}
+
+/// unchecked add tab element
+function __create_tab_element(tab) {
+	var id = id_tab(tab);
+	if(document.getElementById(id)){
+		return;
+	}
+	var button = document.createElement("button");
+	button.onclick = function() {
+		change_tab(tab);
+		this.blur;
+	};
+	button.id = id;
+	button[PROP_TEXT_CONTENT] = tab;
+	button.className = "button";
+	button.style.order = tab_order(tab);
+	stat_menu.appendChild(button);
+	// don't know what this does
+	stat_submenu.style.height = stat_menu.clientHeight + 'px';
+}
+
+/// get order for tab element
+function tab_order(tab) {
+	if(tab == "Status") {
+		return 1;
+	}
+	else if(tab == "Examine") {
+		return 2;
+	}
+	else if(tab == "MC") {
+		return 4;
+	}
+	else if(tab == "Turf") {
+		return 3;
+	}
+	else {
+		return tab.charCodeAt(0) + 3;
+	}
+}
+
+/// unchecked del tab element
+function __delete_tab_element(tab) {
+	var elem = document.getElementById(id_tab(tab));
+	if(!elem){
+		return;
+	}
+	stat_menu.removeChild(elem);
 }
 
 /// swap tabs - input is tab ID, NOT NAME.
