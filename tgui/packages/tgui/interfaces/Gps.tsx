@@ -1,5 +1,7 @@
 import { useBackend } from "../backend";
 import { BooleanLike } from "../../common/react";
+import { Window } from "../layouts";
+import { Section, Button, LabeledList } from "../components";
 
 type GpsContext = {
   on: BooleanLike,
@@ -33,7 +35,51 @@ type GpsWaypoint = {
 
 export const Gps = (props, context) => {
   const { act, data } = useBackend<GpsContext>(context);
-
+  return (
+    <Window
+      title="Global Positioning System"
+      width={470}
+      height={700}>
+      <Window.Content scrollable>
+        <Section
+          title="Control"
+          buttons={(
+            <Button
+              icon="power-off"
+              content={data.on? "On" : "off"}
+              selected={!!data.on}
+              onClick={() => act('power')} />
+          )}>
+          <LabeledList>
+            <LabeledList.Item label="Tag">
+              test
+            </LabeledList.Item>
+            <LabeledList.Item label="Scan Mode">
+              test
+            </LabeledList.Item>
+            <LabeledList.Item label="Updating">
+              test
+            </LabeledList.Item>
+            {
+              data.has_stealth && (
+                <LabeledList.Item label="Visibility">
+                  test
+                </LabeledList.Item>
+              )
+            }
+          </LabeledList>
+        </Section>
+        <Section
+          title="Signals">
+          test
+        </Section>
+        <Section
+          title="Waymarks">
+          test
+        </Section>
+      </Window.Content>
+    </Window>
+  );
 };
 
 // import { map, sortBy } from 'common/collections';
