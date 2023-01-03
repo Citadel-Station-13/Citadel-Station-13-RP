@@ -12,10 +12,6 @@
 /obj/structure/sign/warning/secure_area/armory,
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
-"ay" = (
-/mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
 "aA" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -38,10 +34,6 @@
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
-"aP" = (
-/mob/living/simple_mob/humanoid/merc/ranged/garand,
-/turf/simulated/shuttle/floor/classp,
-/area/submap/HeadscientistHQ)
 "aY" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/green{
@@ -61,18 +53,25 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
+"bU" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "bX" = (
 /obj/structure/sign/department/rnd,
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
 "cb" = (
 /obj/effect/debris/cleanable/blood,
-/mob/living/simple_mob/humanoid/merc/ranged/smg,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "cp" = (
 /obj/structure/sign/atmos/phoron,
 /turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"cq" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "cs" = (
 /obj/machinery/door/airlock/external/glass/bolted,
@@ -93,6 +92,10 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
+"cQ" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "dB" = (
 /obj/machinery/r_n_d/destructive_analyzer,
 /obj/machinery/light{
@@ -122,6 +125,10 @@
 /obj/structure/girder,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/plating,
+/area/submap/HeadscientistHQ)
+"ew" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "fd" = (
 /obj/structure/fence/corner{
@@ -202,6 +209,10 @@
 /obj/machinery/autolathe,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
+"iy" = (
+/mob/living/simple_mob/mechanical/hivebot/support/logistics,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "iz" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -291,6 +302,11 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/medigun,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
+"lW" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "mb" = (
 /obj/item/inducer/sci,
 /turf/simulated/floor/classp/outdoors,
@@ -316,7 +332,7 @@
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood,
-/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor,
+/mob/living/simple_mob/humanoid/possessed/merc/feral,
 /turf/simulated/shuttle/floor/yellow/classp,
 /area/submap/HeadscientistHQ)
 "nZ" = (
@@ -348,6 +364,13 @@
 "pb" = (
 /obj/structure/stasis_cage,
 /turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"pl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "pX" = (
 /turf/simulated/floor/classp/outdoors,
@@ -407,14 +430,8 @@
 	},
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
-"tD" = (
-/obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
-/turf/simulated/shuttle/floor/purple/classp,
-/area/submap/HeadscientistHQ)
 "tN" = (
 /obj/effect/debris/cleanable/blood/oil,
-/mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "tU" = (
@@ -447,11 +464,16 @@
 /obj/effect/decal/remains/robot,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
-"va" = (
-/obj/effect/debris/cleanable/blood/oil,
-/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun,
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
+"uO" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/mechanical/hivebot/support,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"uR" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "ve" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor/classp,
@@ -464,7 +486,6 @@
 /area/submap/HeadscientistHQ)
 "vk" = (
 /obj/effect/debris/cleanable/blood,
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "vn" = (
@@ -472,6 +493,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"wn" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "ws" = (
@@ -487,6 +514,14 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"xp" = (
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"xy" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
 "xA" = (
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /turf/template_noop,
@@ -522,19 +557,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
-"zD" = (
-/obj/effect/debris/cleanable/blood,
-/mob/living/simple_mob/humanoid/merc/ranged/space,
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
-"zG" = (
-/obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/humanoid/merc/ranged/garand,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/purple/classp,
-/area/submap/HeadscientistHQ)
 "zK" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -553,11 +575,6 @@
 /obj/machinery/optable,
 /obj/effect/decal/warning_stripes,
 /turf/simulated/shuttle/floor/purple/classp,
-/area/submap/HeadscientistHQ)
-"At" = (
-/obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/humanoid/merc/ranged,
-/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Az" = (
 /obj/effect/debris/cleanable/dirt,
@@ -585,7 +602,7 @@
 /area/submap/HeadscientistHQ)
 "By" = (
 /obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Bz" = (
@@ -735,7 +752,6 @@
 /area/submap/HeadscientistHQ)
 "Gs" = (
 /obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/humanoid/merc/ranged/space,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -745,6 +761,10 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
+"GU" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "GZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -785,6 +805,10 @@
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
+"JF" = (
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "JO" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable{
@@ -852,6 +876,10 @@
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
+"KO" = (
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "Ln" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
@@ -887,10 +915,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/classp/outdoors,
-/area/template_noop)
-"LY" = (
-/mob/living/simple_mob/humanoid/merc/ranged,
-/turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "Nb" = (
 /obj/structure/shuttle/engine/heater{
@@ -950,12 +974,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
-"Rn" = (
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
 "RC" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/shuttle/floor/classp,
@@ -964,10 +985,9 @@
 /obj/machinery/r_n_d/circuit_imprinter,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
-"RN" = (
-/obj/effect/debris/cleanable/dirt,
-/mob/living/simple_mob/humanoid/merc/ranged,
-/turf/simulated/shuttle/floor/red/classp,
+"Sb" = (
+/mob/living/simple_mob/mechanical/hivebot/swarm,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Sm" = (
 /obj/structure/table/steel_reinforced,
@@ -1009,10 +1029,6 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
 /turf/simulated/shuttle/floor/purple/classp,
-/area/submap/HeadscientistHQ)
-"UP" = (
-/mob/living/simple_mob/humanoid/merc/ranged/deagle,
-/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "UV" = (
 /turf/simulated/shuttle/floor/purple/classp,
@@ -1084,10 +1100,6 @@
 "WP" = (
 /turf/template_noop,
 /area/template_noop)
-"Xa" = (
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
-/turf/simulated/shuttle/floor/red/classp,
-/area/submap/HeadscientistHQ)
 "Xc" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/debris/cleanable/dirt,
@@ -1133,7 +1145,6 @@
 /area/submap/HeadscientistHQ)
 "Zw" = (
 /obj/machinery/light,
-/mob/living/simple_mob/humanoid/merc/ranged,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "ZT" = (
@@ -1477,7 +1488,7 @@ Yi
 Yi
 kr
 Yi
-Yi
+bU
 Yi
 Yi
 Yi
@@ -1530,7 +1541,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+JF
 Yi
 Yi
 WP
@@ -1629,7 +1640,7 @@ Yi
 Yi
 Yi
 Yi
-LY
+Yi
 Yi
 Yi
 Yi
@@ -1729,7 +1740,7 @@ YH
 YH
 YH
 Yi
-Yi
+JF
 Yi
 Yi
 Yi
@@ -1768,7 +1779,7 @@ WP
 WP
 Yi
 Yi
-Rn
+JF
 Yi
 YH
 Fm
@@ -1833,7 +1844,7 @@ YH
 Yi
 Yi
 Yi
-Yi
+cQ
 Yi
 aq
 Yi
@@ -1885,7 +1896,7 @@ Yi
 Yi
 Yi
 Yi
-Rn
+Yi
 Yi
 Yi
 Yi
@@ -1933,7 +1944,7 @@ ve
 YH
 YH
 Yi
-Rn
+Yi
 Yi
 Yi
 Yi
@@ -1970,7 +1981,7 @@ WP
 WP
 Yi
 Yi
-Rn
+Yi
 Yi
 Yi
 YH
@@ -2082,7 +2093,7 @@ ve
 cb
 Tj
 Tj
-aP
+Tj
 WI
 YH
 jt
@@ -2094,7 +2105,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+GU
 Yi
 Pd
 WP
@@ -2121,7 +2132,7 @@ WP
 WP
 uG
 Yi
-Yi
+GU
 Yi
 Yi
 YH
@@ -2176,7 +2187,7 @@ Yi
 Yi
 Yi
 YH
-UV
+uR
 Xf
 YH
 YH
@@ -2273,7 +2284,7 @@ Hb
 WP
 WP
 Yi
-Rn
+Yi
 Yi
 YH
 YH
@@ -2335,13 +2346,13 @@ YH
 IS
 WI
 yf
-yf
-At
+uO
+ve
 WI
 bF
 YH
 uA
-Xa
+jt
 jt
 Xl
 YH
@@ -2380,7 +2391,7 @@ Yi
 YH
 Ek
 UV
-Xf
+lW
 OR
 YH
 Xc
@@ -2426,7 +2437,7 @@ Hb
 Hb
 Hb
 Yi
-Yi
+JF
 Yi
 YH
 Ek
@@ -2443,7 +2454,7 @@ Tj
 bF
 YH
 jt
-RN
+cN
 cN
 ba
 YH
@@ -2486,15 +2497,15 @@ Wq
 OR
 YH
 hn
-Tj
+ew
 yf
 ve
 ve
-Tj
+xy
 ld
 YH
 jt
-By
+cN
 cN
 Zh
 YH
@@ -2532,8 +2543,8 @@ Yi
 Yi
 YH
 dB
-UV
-tD
+KO
+Xf
 la
 YH
 Bz
@@ -2597,7 +2608,7 @@ nd
 YH
 kD
 cN
-Xa
+jt
 jt
 YH
 Yi
@@ -2606,7 +2617,7 @@ Yi
 Yi
 Yi
 Yi
-Rn
+Yi
 vk
 Yi
 kr
@@ -2648,18 +2659,18 @@ nd
 ar
 cN
 Hl
-Hl
+wn
 lP
 YH
 Yi
 Yi
 Yi
 Yi
+JF
 Yi
 Yi
 Yi
-Yi
-Yi
+bU
 kr
 WP
 WP
@@ -2690,7 +2701,7 @@ UV
 UV
 xT
 Bz
-Tj
+cq
 Lo
 sV
 yP
@@ -2698,7 +2709,7 @@ jq
 nd
 Tw
 cN
-By
+cN
 cN
 cN
 YH
@@ -2788,7 +2799,7 @@ Yi
 YH
 UI
 Xf
-zG
+NX
 uz
 YH
 Bz
@@ -2838,7 +2849,7 @@ Yi
 Yi
 YH
 ZT
-Xf
+lW
 NX
 Dj
 YH
@@ -2852,7 +2863,7 @@ VI
 YH
 pb
 sr
-By
+cN
 Kp
 YH
 Yi
@@ -2898,12 +2909,12 @@ PM
 Tj
 Tj
 Tj
-PM
+pl
 Ds
 YH
 jt
 kh
-jt
+xp
 Bs
 YH
 Yi
@@ -2986,7 +2997,7 @@ WP
 WP
 WP
 WP
-Rn
+Yi
 Yi
 Yi
 YH
@@ -2997,7 +3008,7 @@ YH
 YH
 jB
 WE
-Tj
+Sb
 Tj
 Tj
 nd
@@ -3010,10 +3021,10 @@ un
 YH
 Yi
 Yi
+JF
 Yi
 Yi
 Yi
-Rn
 WP
 WP
 WP
@@ -3037,7 +3048,7 @@ WP
 WP
 WP
 WP
-va
+tN
 Yi
 Yi
 YH
@@ -3049,7 +3060,7 @@ YH
 Fh
 LF
 Tj
-UP
+Tj
 jF
 Bw
 AW
@@ -3113,7 +3124,7 @@ YH
 Yi
 Yi
 Yi
-ay
+Yi
 Yi
 WP
 WP
@@ -3201,7 +3212,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+iy
 Yi
 JX
 Yi
@@ -3240,7 +3251,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+JF
 Yi
 Yi
 Yi
@@ -3303,11 +3314,11 @@ Yi
 Yi
 Yi
 Yi
-Rn
+Yi
 Yi
 JX
 Yi
-Yi
+cQ
 Yi
 Yi
 WP
@@ -3335,7 +3346,7 @@ WP
 WP
 "}
 (44,1,1) = {"
-Yi
+JF
 aM
 gQ
 gQ
@@ -3352,14 +3363,14 @@ Yi
 Yi
 Yi
 Yi
-Rn
+Yi
 Yi
 Yi
 Yi
 JX
 Yi
 Yi
-ay
+Yi
 Yi
 WP
 WP
@@ -3406,7 +3417,7 @@ Yi
 Yi
 Yi
 Yi
-zD
+vk
 JX
 Yi
 Yi
@@ -3454,7 +3465,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+JF
 Yi
 Yi
 Yi
@@ -3760,7 +3771,7 @@ Yi
 Yi
 Yi
 Yi
-Yi
+JF
 Yi
 Yi
 WP
