@@ -18,6 +18,7 @@
 	baseturfs = /turf/baseturf_bottom
 
 GLOBAL_LIST_EMPTY(created_baseturf_lists)
+GLOBAL_LIST_EMPTY(cached_baseturf_lists)
 
 /**
  * Assembles baseturfs from a certain root
@@ -38,60 +39,50 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 		// use our own
 		if(length(baseturfs))
 			// already a list
+			// dedupe
+			baseturfs = baseturfs_string_list(baseturfs, src)
 			return
 		else if(baseturfs == /turf/baseturf_bottom)
 			// we are going to """waste""" an op to fastpath this
 			// because so many turfs use this it's a net gain
 			return
 		else if(isnull(baseturfs)) // null check; let it runtime if it's not null or path
-			current_target = initial(baseturfs) || type // This should never happen but just in case...
-			stack_trace("baseturfs var was null for [type]. Failsafe activated and it has been given a new baseturfs value of [current_target].")
+			target = initial(baseturfs) || type // This should never happen but just in case...
+			stack_trace("baseturfs var was null for [type]. Failsafe activated and it has been given a new baseturfs value of [target].")
 		else
 			target = baseturfs
 
 	// target at this point should be a path
-	. = GLOB.created_baseturf_lists[target]
-	if(isnull(.))
+	var/list/found = GLOB.created_baseturf_lists[target]
+	if(isnull(found))
 		// not found
-
+		// we have to build the list then
+		var/turf/next = initial(target.baseturfs)
+		if(next == target)
+			// if we're the same type..
+			baseturfs = target
+			GLOB.created_baseturf_lists[target] = target
+			return
+		var/list/built = list(target)
+		for(var/i = 0; target != next; ++i)
+			if(i > 20)
+				// A baseturfs list over 20 members long is silly
+				// Because of how this is all structured it will only runtime/message once per type
+				stack_trace("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+				message_admins("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+				break
+			built.Insert(1, next)
+			target = next
+			next = initial(target.baseturfs)
 		return
 	// found
-	if(ispath(.))
-		baseturfs = .
+	if(ispath(found))
+		// is path, just directly set
+		baseturfs = found
 		return
 	// must be a list at this point
-
-
-
-	var/list/created_baseturf_lists = GLOB.created_baseturf_lists
-
-	// If we've made the output before we don't need to regenerate it
-	if(created_baseturf_lists[current_target])
-		var/list/premade_baseturfs = created_baseturf_lists[current_target]
-		if(length(premade_baseturfs))
-			baseturfs = baseturfs_string_list(premade_baseturfs.Copy(), src)
-		else
-			baseturfs = baseturfs_string_list(premade_baseturfs, src)
-		return baseturfs
-
-	var/turf/next_target = initial(current_target.baseturfs)
-	//Most things only have 1 baseturf so this loop won't run in most cases
-	if(current_target == next_target)
-		baseturfs = current_target
-		created_baseturf_lists[current_target] = current_target
-		return current_target
-	var/list/new_baseturfs = list(current_target)
-	for(var/i=0;current_target != next_target;i++)
-		if(i > 100)
-			// A baseturfs list over 100 members long is silly
-			// Because of how this is all structured it will only runtime/message once per type
-			stack_trace("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
-			message_admins("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
-			break
-		new_baseturfs.Insert(1, next_target)
-		current_target = next_target
-		next_target = initial(current_target.baseturfs)
-
-	baseturfs = baseturfs_string_list(new_baseturfs, src)
-	created_baseturf_lists[new_baseturfs[new_baseturfs.len]] = new_baseturfs.Copy()
-	return new_baseturfs
+	// thus, because we can *assume* no one is going to touch baseturfs,
+	// we're going to grab the cached list or make a new cached list
+	// we DO NOT use baseturfs_string_list because we don't need to dedupe when this should
+	// never be changed / stay cached anyways.
+	baseturfs = (GLOB.cached_baseturf_lists[target] || (GLOB.cached_baseturf_lists[target] = found.Copy()))

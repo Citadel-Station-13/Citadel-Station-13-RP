@@ -118,8 +118,8 @@
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
 /turf/Initialize(mapload, ...)
-	PROFILE_SET
 	SHOULD_CALL_PARENT(FALSE)
+	PROFILE_SET
 	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_INITIALIZED
