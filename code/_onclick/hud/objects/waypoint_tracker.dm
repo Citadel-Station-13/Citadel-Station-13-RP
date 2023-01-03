@@ -3,15 +3,26 @@
 	screen_loc = "CENTER"
 	/// current visible?
 	var/visible = TRUE
-
+	/// distance from center
+	var/dist = 96
 
 #warn impl
+
+/atom/movable/screen/waypoint_tracker/Initialize(mapload)
+	. = ..()
+	// center on, well, center
+	auto_pixel_offset_to_center()
+	// kick it to the edge of the tile, then x distance away
+	pixel_x += dist + world.icon_size + -get_centering_pixel_x_offset()
 
 /**
  * angle is natural math angle, as in deg clockwise of east
  * NOT "byond angle".
  */
 /atom/movable/screen/waypoint_tracker/proc/set_angle(angle)
+	var/matrix/M = matrix()
+	M.Turn(-angle)
+	transform = M
 
 /**
  * sets if we're invis/disabled
