@@ -38,9 +38,38 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
-//wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself
-/turf/proc/TerraformTurf(path, new_baseturf, flags)
-	return ChangeTurf(path, new_baseturf, flags)
+/**
+ * get what /turf/baseturf_bottom should be
+ */
+/turf/proc/baseturf_core()
+	// todo: this is shitcode, pull it out on maploader refactor.
+	// this is very obviously a copypaste from ChangeTurf.
+	. = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+	if(!ispath(.))
+		. = text2path(.)
+		if (!ispath(.))
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+			. = /turf/space
+	if(. == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
+		if(istype(GetBelow(src), /turf/simulated))
+			. = /turf/simulated/open
+/**
+ * get baseturf on bottom
+ */
+/turf/proc/baseturf_bottom()
+	. = islist(baseturfs)? baseturfs[1] : baseturfs
+	return (. == /turf/baseturf_bottom)? baseturf_core() : .
+
+/**
+ * get baseturf underneath
+ */
+/turf/proc/baseturf_underneath()
+	. = islist(baseturfs)? baseturfs[length(baseturfs)] : baseturfs
+	// check if it's bottom, if it is let bottom proc handle
+	// if it's not bottom but another baseturf we assume it's fine
+	// because if something shoved, say, /turf/baseturf_skipover
+	// to the bottom of the stack, man, we got BIGGER worries.
+	return (. == /turf/baseturf_bottom)? baseturf_core() : .
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm

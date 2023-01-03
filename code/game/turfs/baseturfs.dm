@@ -17,8 +17,10 @@
 	desc = "Marker for z-level baseturf, usually resolves to space."
 	baseturfs = /turf/baseturf_bottom
 
+/**
+ * created baseturfs, keyed by their top turf
+ */
 GLOBAL_LIST_EMPTY(created_baseturf_lists)
-GLOBAL_LIST_EMPTY(cached_baseturf_lists)
 
 /**
  * Assembles baseturfs from a certain root
@@ -30,7 +32,7 @@ GLOBAL_LIST_EMPTY(cached_baseturf_lists)
 	var/turf/target
 	if(root)
 		if(length(root))
-			// was given list, just stringify and go
+			// was given list, just dedupe and go
 			baseturfs = baseturfs_string_list(root, src)
 			return
 		// (assume) must be path
@@ -74,6 +76,7 @@ GLOBAL_LIST_EMPTY(cached_baseturf_lists)
 			built.Insert(1, next)
 			target = next
 			next = initial(target.baseturfs)
+		baseturfs = (GLOB.created_baseturf_lists[built[length(built)]] = built)
 		return
 	// found
 	if(ispath(found))
@@ -82,7 +85,6 @@ GLOBAL_LIST_EMPTY(cached_baseturf_lists)
 		return
 	// must be a list at this point
 	// thus, because we can *assume* no one is going to touch baseturfs,
-	// we're going to grab the cached list or make a new cached list
 	// we DO NOT use baseturfs_string_list because we don't need to dedupe when this should
 	// never be changed / stay cached anyways.
-	baseturfs = (GLOB.cached_baseturf_lists[target] || (GLOB.cached_baseturf_lists[target] = found.Copy()))
+	baseturfs = found
