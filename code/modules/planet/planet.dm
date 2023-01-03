@@ -11,8 +11,18 @@
 
 	var/datum/weather_holder/weather_holder
 
-	var/sun_position = 0 // 0 means midnight, 1 means noon.
-	var/list/sun = list("range","brightness","color","lum_r","lum_g","lum_b")
+	/// 0 means midnight, 1 means noon.
+	var/sun_position = 0
+	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
+	var/sun_brightness_modifier = 0.5
+	var/list/sun = list(
+		"range",
+		"brightness",
+		"color",
+		"lum_r",
+		"lum_g",
+		"lum_b",
+	)
 	var/list/datum/lighting_corner/sunlit_corners = list()
 	var/list/expected_z_levels = list()
 
@@ -61,9 +71,8 @@
 	if(weather_holder)
 		weather_holder.process()
 
-/datum/planet/proc/update_sun_deferred(var/new_range, var/new_brightness, var/new_color)
+/datum/planet/proc/update_sun_deferred(new_range, new_brightness, new_color)
 	sun["range"] = new_range
 	sun["brightness"] = new_brightness
 	sun["color"] = new_color
 	needs_work |= PLANET_PROCESS_SUN
-
