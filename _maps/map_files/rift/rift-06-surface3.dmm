@@ -414,15 +414,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/emt/cockpit)
 "aN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "aO" = (
@@ -943,6 +935,10 @@
 	dir = 4
 	},
 /obj/structure/table/marble,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "bB" = (
@@ -2667,6 +2663,10 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/item/storage/single_use/med_pouch/overdose,
 /obj/item/storage/single_use/med_pouch/toxin,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "eL" = (
@@ -5542,13 +5542,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "kw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "kx" = (
@@ -7284,6 +7278,17 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
+"nP" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/bed/chair/sofa/black/right,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/bar)
 "nQ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -7332,9 +7337,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "nV" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "nW" = (
@@ -8956,18 +8959,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "rs" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "rt" = (
@@ -9235,6 +9227,10 @@
 /obj/item/flame/candle,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/bar)
@@ -11013,13 +11009,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "vz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "vA" = (
@@ -12074,8 +12064,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/smartfridge,
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/glass{
+	name = "Hydroponics";
+	req_one_access = list(35,28)
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "xq" = (
 /obj/machinery/door/airlock/glass_external,
@@ -17393,15 +17386,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "Io" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar_backroom)
 "Ip" = (
@@ -17830,12 +17815,6 @@
 "Jf" = (
 /turf/simulated/wall,
 /area/exploration/showers)
-"Jg" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacethree)
 "Jh" = (
 /obj/machinery/door/airlock/maintenance/command,
 /turf/simulated/floor/plating,
@@ -18051,6 +18030,10 @@
 /obj/item/stool/padded,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -19606,6 +19589,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "MI" = (
@@ -19686,9 +19673,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "MT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/cafeteria)
 "MU" = (
@@ -21044,17 +21029,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"PF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/holosign/bar{
-	id = "bar_sign";
-	layer = 4.9;
-	pixel_y = -1
-	},
-/turf/simulated/floor/plating,
-/area/crew_quarters/bar)
 "PG" = (
 /obj/structure/bed/chair/wood,
 /obj/machinery/light{
@@ -23167,6 +23141,21 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
+"TK" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "arv_check_shutter";
+	name = "Arrivals Checkpoint Shutter";
+	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/security/checkpoint2)
 "TL" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -23426,9 +23415,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Un" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -23438,14 +23424,12 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "Uo" = (
@@ -23661,6 +23645,17 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"UI" = (
+/obj/structure/window/reinforced,
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/bar)
 "UJ" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/corner/lightgrey{
@@ -24532,9 +24527,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/smartfridge,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Ww" = (
@@ -25451,12 +25445,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"Yo" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cargo)
 "Yp" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -37072,9 +37060,9 @@ MH
 JY
 JC
 Mt
-jF
+nP
 rV
-QH
+UI
 Aj
 cO
 bx
@@ -39204,7 +39192,7 @@ Po
 Po
 kx
 Sd
-PF
+rs
 RO
 eW
 Fm
@@ -40741,19 +40729,19 @@ SJ
 cZ
 Ez
 ET
-Un
-Un
+TK
+TK
 Un
 cZ
 cZ
 aZ
 bC
-Jg
+De
 TZ
 Kx
 Cu
 Cu
-Jg
+De
 Yc
 Wg
 aQ
@@ -40942,12 +40930,12 @@ dp
 cZ
 bc
 bE
-Jg
+De
 Bc
 UG
 Cu
 Cu
-Jg
+De
 YO
 Wg
 aQ
@@ -41180,7 +41168,7 @@ wY
 xn
 LA
 TS
-Yo
+Cc
 LA
 zE
 mn

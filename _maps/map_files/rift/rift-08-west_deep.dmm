@@ -2723,8 +2723,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "yz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/rift/facility/interior/prison)
 "yB" = (
@@ -2820,7 +2819,6 @@
 	landmark_tag = "belter_station";
 	name = "Belter Parking Spot"
 	},
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -2829,7 +2827,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/shuttle/belter)
 "zi" = (

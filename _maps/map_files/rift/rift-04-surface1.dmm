@@ -31782,14 +31782,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "ujt" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva)
 "ujw" = (
@@ -35410,8 +35408,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "wAv" = (

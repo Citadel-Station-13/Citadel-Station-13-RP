@@ -3298,15 +3298,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "cwR" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "cwV" = (
@@ -3795,9 +3787,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "cRn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "cRt" = (
@@ -8281,9 +8271,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "gek" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "geu" = (
@@ -10079,12 +10067,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "hyJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "hyN" = (
@@ -13917,6 +13903,10 @@
 /obj/item/melee/baton,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"kmy" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/stairwell/primary/surfacetwo)
 "kmQ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -18961,9 +18951,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "odk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "odu" = (
@@ -25360,12 +25348,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"tiN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacetwo)
 "tjO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -31655,12 +31637,10 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "xXn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/sign/department/operational{
 	pixel_x = -32
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
 "xXV" = (
@@ -45926,7 +45906,7 @@ ndb
 gwp
 cMV
 rVC
-qZS
+kmy
 cno
 cno
 ppg
@@ -46120,7 +46100,7 @@ rRs
 gwp
 cMV
 wqh
-qZS
+kmy
 cno
 cno
 bSg
@@ -48836,7 +48816,7 @@ rZr
 djg
 riA
 fZA
-tiN
+kmy
 cno
 cno
 vQP
@@ -49030,7 +49010,7 @@ dRG
 jNi
 lQY
 fPA
-tiN
+kmy
 cno
 cno
 czJ
