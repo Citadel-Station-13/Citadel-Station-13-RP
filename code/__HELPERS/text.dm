@@ -60,7 +60,7 @@
  * disallows linebreaks, trims, encodes html.
  */
 /proc/sanitize_atom_name(str, max_len = 32)
-	return sanitize(str, max_length, TRUE, TRUE, FALSE)
+	return sanitize(str, max_len, TRUE, TRUE, FALSE)
 
 //TODO: Have to rewrite this sanitize code :djoy:
 /proc/sanitize_filename(t)
