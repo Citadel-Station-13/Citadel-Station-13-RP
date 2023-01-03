@@ -243,11 +243,13 @@
 			to_chat(user, SPAN_NOTICE("[src] is now active, and visible to other GPS devices."))
 		on = TRUE
 		update_emit()
+		update_icon()
 	else
 		if(user)
 			to_chat(user, SPAN_NOTICE("[src] is now inactive, and invisible to other GPS devices."))
 		on = FALSE
 		update_emit()
+		update_icon()
 
 /**
  * sets if we should transmit

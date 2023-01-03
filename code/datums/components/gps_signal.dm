@@ -6,6 +6,9 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	if(GLOB.gps_transmitters.len > world.maxz)
 		CRASH("How? We just tried to shrink the GPS list!")
 	GLOB.gps_transmitters.len = world.maxz
+	for(var/i in 1 to GLOB.gps_transmitters.len)
+		if(!islist(GLOB.gps_transmitters[i]))
+			GLOB.gps_transmitters[i] = list()
 
 /**
  * for when admins do an oopsy woopsy and fuck up royally.
@@ -13,6 +16,8 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 /proc/rebuild_gps_transmitters()
 	GLOB.gps_transmitters = list()
 	GLOB.gps_transmitters.len = world.maxz
+	for(var/i in 1 to GLOB.gps_transmitters.len)
+		GLOB.gps_transmitters[i] = list()
 	// the forbidden `in world`
 	for(var/datum/component/gps_signal/sig in world)
 		sig.register_transmitter()
@@ -34,7 +39,7 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	var/disabled
 
 /datum/component/gps_signal/Initialize(gps_tag = "COM0", disabled = FALSE)
-	if(!isatom(parent) || ((. == ..()) & COMPONENT_INCOMPATIBLE))
+	if(!isatom(parent) || ((. = ..()) & COMPONENT_INCOMPATIBLE))
 		return COMPONENT_INCOMPATIBLE
 	src.gps_tag = gps_tag
 	src.disabled = disabled
