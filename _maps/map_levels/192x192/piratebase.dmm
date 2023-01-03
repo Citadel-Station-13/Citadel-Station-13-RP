@@ -451,6 +451,7 @@
 /obj/structure/sign/warning/nosmoking_1{
 	pixel_y = -32
 	},
+/obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor,
 /area/shuttle/pirate/engine)
 "dU" = (
@@ -687,7 +688,7 @@
 "gG" = (
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
-	id_tag = "pirate_dock";
+	id_tag = "pirate_primary";
 	pixel_x = 25
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -711,6 +712,14 @@
 /area/piratebase/dock)
 "hr" = (
 /obj/structure/table/steel_reinforced,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /obj/item/handcuffs/cable,
 /obj/item/handcuffs/cable,
 /obj/item/handcuffs/cable,
@@ -744,7 +753,6 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/power)
 "hR" = (
-/obj/structure/fans/tiny,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -775,14 +783,8 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mess)
 "ie" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/electrical{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 2;
-	pixel_y = 2
+/obj/machinery/autolathe{
+	hacked = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/piratebase/dock)
@@ -2220,7 +2222,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "vI" = (
-/obj/structure/fans/tiny,
 /obj/machinery/airlock_sensor{
 	dir = 1;
 	frequency = 1380;
@@ -2402,10 +2403,13 @@
 /area/piratebase/bunks)
 "xL" = (
 /obj/structure/table/rack/steel,
-/obj/random/projectile/random,
 /obj/item/radio/intercom/raider{
 	dir = 8;
 	pixel_x = -22
+	},
+/obj/item/cell/device/weapon,
+/obj/item/gun/energy/zip{
+	name = "First Mate Zippy"
 	},
 /turf/simulated/floor/wood,
 /area/piratebase/captain)
@@ -3630,7 +3634,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "Is" = (
-/obj/effect/shuttle_landmark/shuttle_initializer/pirate,
 /obj/effect/overmap/visitable/ship/landable/pirate,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3638,6 +3641,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/effect/shuttle_landmark/shuttle_initializer/pirate,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "It" = (
@@ -3996,6 +4000,15 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
+"Mm" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "pirate_primary_pump"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/piratebase/dock)
 "Mq" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -4472,7 +4485,6 @@
 /area/piratebase/construction)
 "QR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/random/projectile/random,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "QT" = (
@@ -5045,7 +5057,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "pirate_dock_pump"
+	id_tag = "pirate_primary_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -5315,11 +5327,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/piratebase/atmospherics)
-"YA" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/random/energy,
-/turf/simulated/floor/reinforced,
-/area/piratebase/vault)
 "YC" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -5460,7 +5467,7 @@
 /area/piratebase/bunks)
 "ZP" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = null;
+	cycle_to_external_air = 1;
 	dir = 4;
 	frequency = 1380;
 	id_tag = "pirate_dock";
@@ -25363,7 +25370,7 @@ tL
 tL
 ND
 ND
-YA
+QR
 xA
 gJ
 oW
@@ -25752,7 +25759,7 @@ tL
 ND
 ND
 ZX
-YA
+QR
 zU
 QR
 Xn
@@ -28122,7 +28129,7 @@ hm
 oi
 jB
 Zr
-Wm
+Mm
 gG
 Wm
 Zr

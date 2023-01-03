@@ -86,6 +86,7 @@
 /obj/item/radio/headset/raider
 	icon_state = "pirate_headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
+	syndie = 0
 	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/raider
 
@@ -96,7 +97,7 @@
 /obj/item/radio/headset/trader
 	name = "trade headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
+	syndie = 0
 	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/trader
 
