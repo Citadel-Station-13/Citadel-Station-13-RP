@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
 
 	var/list/reservation_ready = list()
+
+
 	var/clearing_reserved_turfs = FALSE
 
 	/// Zlevel manager list of zlevels.
@@ -27,6 +29,7 @@ SUBSYSTEM_DEF(mapping)
 	var/static/datum/map_config/next_map_config
 
 	/// Cached map name for statpanel
+
 	var/static/stat_map_name = "Loading..."
 
 //dlete dis once #39770 is resolved

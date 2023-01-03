@@ -1,169 +1,8 @@
 
-///GPS component. Atoms that have this show up on gps. Pretty simple stuff.
-/datum/component/gps
-	var/gps_tag = "GEN0"
-	var/emped = FALSE
-	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
-	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
-	var/local_mode = FALSE		// If true, only GPS signals of the same Z level are shown.
-	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
-	var/can_hide_signal = FALSE	// If it can toggle the above var.
-	var/update_name = TRUE		// If the GPS tag is added to the end of the name
-
-/datum/component/gps/Destroy()
-	GLOB.GPS_list -= src
-	return ..()
-
-/datum/component/gps/Initialize(_gpstag = "GEN0", _emped = FALSE, _tracking = FALSE, _long_range = FALSE, _local_mode = FALSE, _hide_signal = FALSE, _can_hide_signal = FALSE, _update_name = TRUE)
-	if(!isatom(parent))
-		return COMPONENT_INCOMPATIBLE
-
-	gps_tag = _gpstag
-	emped = _emped
-	tracking = _tracking
-	long_range = _long_range
-	local_mode = _local_mode
-	hide_signal = _hide_signal
-	can_hide_signal = _can_hide_signal
-	update_name = _update_name
-
-	GLOB.GPS_list += src
-
-	var/atom/A = parent
-	A.update_icon()
-	if(update_name)
-		A.name = "[initial(A.name)] ([gps_tag])"
-
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, .proc/interact)
-	RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, .proc/on_emp_act)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/on_AltClick)
-
-///Called on COMSIG_ITEM_ATTACK_SELF
-/datum/component/gps/proc/interact(datum/source, mob/user)
-	if(user)
-		display(user)
-
-///Called on COMSIG_PARENT_EXAMINE
-/datum/component/gps/proc/on_examine(datum/source, mob/user, list/examine_list)
-	examine_list += "<span class='notice'>Alt-click to switch it [tracking ? "off":"on"].</span>"
-
-///Called on COMSIG_ATOM_EMP_ACT
-/datum/component/gps/proc/on_emp_act(datum/source, severity)
-	if(emped) // Without a fancy callback system, this will have to do.
-		return
-	var/severity_modifier = severity ? severity : 4 // In case emp_act gets called without any arguments.
-	var/duration = 5 MINUTES / severity_modifier
-	emped = TRUE
-	var/atom/A = parent
-	A.update_icon()
-
-	spawn(duration)
-		emped = FALSE
-		A.update_icon()
-		A.visible_message("\The [parent] appears to be functional again.")
-
+///Called on COMSIG_P
 ///Calls toggletracking
 /datum/component/gps/proc/on_AltClick(datum/source, mob/user)
 	toggletracking(user)
-
-///Toggles the tracking for the gps
-/datum/component/gps/proc/toggletracking(mob/user)
-	if(!istype(user))
-		return
-	if(emped)
-		to_chat(user, "It's busted!")
-		return
-
-	var/atom/A = parent
-	if(tracking)
-		to_chat(user, "[parent] is no longer tracking, or visible to other GPS devices.")
-		tracking = FALSE
-		A.update_icon()
-	else
-		to_chat(user, "[parent] is now tracking, and visible to other GPS devices.")
-		tracking = TRUE
-		A.update_icon()
-
-// Compiles all the data not available directly from the GPS
- // Like the positions and directions to all other GPS units
-/datum/component/gps/proc/display_list()
-	var/list/dat = list()
-
-	var/turf/curr = get_turf(parent)
-	var/area/my_area = get_area(parent)
-
-	dat["my_area_name"] = my_area.name
-	dat["curr_x"] = curr.x
-	dat["curr_y"] = curr.y
-	dat["curr_z"] = curr.z
-	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
-	var/list/gps_list = list()
-	dat["gps_list"] = gps_list
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
-
-	for(var/gps in GLOB.GPS_list - src)
-		var/datum/component/gps/G = gps
-		if(!G.tracking || G.emped || G.hide_signal)
-			continue
-
-		var/turf/T = get_turf(G.parent)
-		if(local_mode && curr.z != T.z)
-			continue
-		if(!(T.z in dat["z_level_detection"]))
-			continue
-
-		var/list/gps_data[0]
-		gps_data["ref"] = G
-		gps_data["gps_tag"] = G.gps_tag
-
-		var/area/A = get_area(G.parent)
-		gps_data["area_name"] = A.name
-		if(istype(A, /area/submap))
-			gps_data["area_name"] = "Unknown Area" // Avoid spoilers.
-
-		gps_data["z_name"] = GLOB.using_map.get_zlevel_name(T.z)
-		gps_data["direction"] = get_adir(curr, T)
-		gps_data["degrees"] = round(Get_Angle(curr,T))
-		gps_data["distX"] = T.x - curr.x
-		gps_data["distY"] = T.y - curr.y
-		gps_data["distance"] = get_dist(curr, T)
-		gps_data["local"] = (curr.z == T.z)
-		gps_data["x"] = T.x
-		gps_data["y"] = T.y
-		gps_list[++gps_list.len] = gps_data
-
-	return dat
-
-/datum/component/gps/proc/display(mob/user)
-	if(!tracking)
-		to_chat(user, "The device is off. Alt-click it to turn it on.")
-		return
-	if(emped)
-		to_chat(user, "It's busted!")
-		return
-
-	var/list/dat = list()
-	var/list/gps_data = display_list()
-
-	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
-	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
-	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
-	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
-
-	var/list/gps_list = gps_data["gps_list"]
-	if(gps_list.len)
-		dat += "Detected signals;"
-		for(var/gps in gps_data["gps_list"])
-			if(istype(gps_data["ref"], /obj/item/gps/internal/poi))
-				dat += "    [gps["gps_tag"]]: [gps["area_name"]] - [gps["local"] ? "[gps["direction"]] Dist: [round(gps["distance"], 10)]m" : "in \the [gps["z_name"]]"]"
-			else
-				dat += "    [gps["gps_tag"]]: [gps["area_name"]], ([gps["x"]], [gps["y"]]) - [gps["local"] ? "[gps["direction"]] Dist: [gps["distX"] ? "[abs(round(gps["distX"], 1))]m [(gps["distX"] > 0) ? "E" : "W"], " : ""][gps["distY"] ? "[abs(round(gps["distY"], 1))]m [(gps["distY"] > 0) ? "N" : "S"]" : ""]" : "in \the [gps["z_name"]]"]"
-	else
-		dat += "No other signals detected."
-
-	var/result = dat.Join("<br>")
-	to_chat(user, result)
 
 /datum/component/gps/Topic(var/href, var/list/href_list)
 	if(..())
@@ -203,6 +42,12 @@
 /datum/gps_waypoint/proc/locality_equivalent(datum/gps_waypoint/other)
 	return x == other.x && y == other.y && level_id == other.level_id
 
+/datum/gps_waypoint/proc/same(datum/gps_waypoint/other)
+	// same
+	// so true oomfie
+	// fr fr bestie
+	return locality_equivalent(other) && name == other.name
+
 /obj/item/gps
 	name = "global positioning system"
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
@@ -216,7 +61,7 @@
 	/// our GPS tag
 	var/gps_tag = "GEN0"
 	/// max waypoints
-	var/waypoints_max = 10
+	var/waypoints_max = 25
 	/// our waypoints
 	var/list/datum/gps_waypoint/waypoints
 	/// active tracking target - either a waypoint or a gps signal
@@ -226,8 +71,12 @@
 	/// the perspective we're bound to right now
 	var/datum/perspective/hud_bound
 
+	/// emped?
 	var/emped = FALSE
-	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
+	/// emp unset timerid
+	var/emp_timerid
+
+	var/on = FALSE		// Will not show other signals or emit its own signal if false.
 	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
 	var/local_mode = FALSE		// If true, only GPS signals of the same Z level are shown.
 	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
@@ -235,17 +84,13 @@
 
 /obj/item/gps/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/gps, gps_tag, emped, tracking, long_range, local_mode, hide_signal, can_hide_signal)
-
-/obj/item/gps/Destroy()
-	. = ..()
-	qdel(GetComponent(/datum/component/gps))
+	AddComponent(/datum/component/gps_signal, gps_tag)
 
 /obj/item/gps/update_icon()
 	cut_overlays()
 	if(emped)
 		add_overlay("emp")
-	else if(tracking)
+	else if(on)
 		add_overlay("working")
 
 /obj/item/gps/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
@@ -258,40 +103,136 @@
 	switch(var_name)
 		if(NAMEOF(src, gps_tag))
 			update_tag()
-		if(NAMEOF(src, tracking), NAMEOF(src, hide_signal))
+		if(NAMEOF(src, on), NAMEOF(src, hide_signal))
 			update_emit()
 		if(NAMEOF(src, emped))
 			update_icon()
 			update_emit()
+			if(!var_value && emp_timerid)
+				deltimer(emp_timerid)
 
 //? we use very simple perspective hooks as mob perspectives shouldn't be deleting
 
 /obj/item/gps/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
+	bind_perspective(user.get_perspective())
 
 /obj/item/gps/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
+	bind_perspective(null)
+
+/obj/item/gps/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
+
+// todo: better altclick system
+/obj/item/gps/AltClick(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.Reachability(src))
+		return
+	toggle_power(user = user)
+
+/obj/item/gps/emp_act(severity)
+	emped = TRUE
+	update_emit()
+	update_icon()
+	if(emp_timerid)
+		deltimer(emp_timerid)
+	else
+		visible_message(SPAN_WARNING("[src] overloads!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
+	emp_timerid = addtimer(CALLBACK(src, /obj/item/gps/proc/reset_emped), 5 MINUTES / severity, TIMER_STOPPABLE)
+
+/obj/item/gps/proc/reset_emped()
+	if(!emped)
+		return
+	emped = FALSE
+	update_emit()
+	update_icon()
+	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
+
+/obj/item/gps/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(emped)
+		to_chat(user, SPAN_WARNING("[src] is still spitting out gibberish!"))
+		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Gps", name)
+		ui.open()
 
 /**
  * bind our hud rendering to a perspective
  */
 /obj/item/gps/proc/bind_perspective(datum/perspective/pers)
+	if(pers == hud_bound)
+		return
+	if(hud_bound)
+		if(hud_arrow)
+			hud_bound.RemoveScreen(hud_arrow)
+		hud_bound = null
+	hud_bound = pers
+	if(hud_arrow)
+		hud_bound.AddScreen(hud_arrow)
 
 /**
  * start tracking a target - either a gps signal or a waypoint
  */
 /obj/item/gps/proc/start_tracking(datum/target)
+	if(!(istype(target, /datum/gps_waypoint) || istype(target, /datum/component/gps_signal)))
+		stop_tracking()
+		return FALSE
+	if(target == tracking)
+		return FALSE
+	if(tracking)
+		stop_tracking()
+	tracking = target
+	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, /obj/item/gps/proc/stop_tracking)
+	if(!hud_arrow)
+		hud_arrow = new /atom/movable/screen/waypoint_tracker/gps
+		hud_bound?.AddScreen(hud_arrow)
+	hud_arrow.set_disabled(FALSE)
+	update_tracking()
+	START_PROCESSING(SSprocessing, src)
+	return TRUE
 
 /**
  * stop tracking a target
  */
 /obj/item/gps/proc/stop_tracking()
+	if(!tracking)
+		return
+	UnregisterSignal(tracking, COMSIG_PARENT_QDELETING)
+	tracking = null
+	// just kick it out
+	hud_arrow?.set_disabled(TRUE)
+	STOP_PROCESSING(SSprocessing, src)
 
 /**
  * updates tracking target
  */
 /obj/item/gps/proc/update_tracking()
+	if(!hud_bound || !tracking)
+		return
+	var/angle
+	if(istype(tracking, /datum/gps_waypoint))
+		var/datum/gps_waypoint/waypoint = tracking
+		angle = arctan(waypoint.x - T.x, waypoint.y - T.y)
+	else if(istype(tracking, /datum/component/gps_signal))
+		var/datum/component/gps_signal/sig = tracking
+		var/atom/A = sig.parent
+		angle = arctan(A.x - T.x, A.y - T.y)
+	else
+		stop_tracking()
+		CRASH("invalid tracking target detected and cleared")
+	hud_arrow?.set_angle(angle)
 
+/**
+ * set our tag
+ */
+/obj/item/gps/proc/set_tag(new_tag)
+	gps_tag = new_tag
+	update_tag()
 
 /**
  * update our tag
@@ -301,10 +242,39 @@
 	sig.set_gps_tag(gps_tag)
 
 /**
+ * set power
+ */
+/obj/item/gps/proc/toggle_power(new_state = !on, mob/user)
+	if(new_state == on)
+		return
+
+	if(new_state)
+		if(emped)
+			if(user)
+				to_chat(user, SPAN_WARNING("The GPS is spouting gibberish."))
+			return
+		if(user)
+			to_chat(user, SPAN_NOTICE("[src] is now active, and visible to other GPS devices."))
+		on = TRUE
+		update_emit()
+	else
+		if(user)
+			to_chat(user, SPAN_NOTICE("[src] is now inactive, and invisible to other GPS devices."))
+		on = FALSE
+		update_emit()
+
+/**
+ * sets if we should transmit
+ */
+/obj/item/gps/proc/set_hidden(new_hidden)
+	hide_signal = new_hidden
+	update_emit()
+
+/**
  * returns if we should transmit
  */
 /obj/item/gps/proc/should_emit()
-	return !hide_signal && tracking && !emped
+	return !hide_signal && on && !emped
 
 /**
  * updates our transmit mode
@@ -312,6 +282,102 @@
 /obj/item/gps/proc/update_emit()
 	var/datum/component/gps_signal/sig = GetComponent(/datum/component/gps_signal)
 	sig.set_disabled(!should_emit())
+
+/**
+ * encodes waypoint data
+ */
+/obj/item/gps/proc/ui_waypoint_data()
+	var/list/data = list()
+	for(var/datum/gps_waypoint/point as anything in waypoints)
+		data[++data.len] = list(
+			"name": point.name,
+			"x": point.x,
+			"y": point.y,
+			"level": point.level_id,
+			"ref" = ref(point),
+		)
+	return data
+
+/obj/item/gps/proc/push_waypoint_data()
+	send_tgui_data_immediate(data = list("waypoints" = ui_waypoint_data))
+
+/obj/item/gps/ui_static_data(mob/user)
+	. = ..()
+	.["waypoints"] = ui_waypoint_data()
+
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	.["on"] = !!on
+	.["tag"] = gps_tag
+	.["visible"] = !hide_signal
+	.["long_range"] = !!long_range
+	.["has_stealth"] = !!can_hide_signal
+
+	if(!on)
+		return
+	var/turf/curr = get_turf(src)
+	var/list/detecting_levels = GLOB.using_map.get_map_levels(curr.z, long_range)
+	.["x"] = curr.x
+	.["y"] = curr.y
+	.["level"] = SSmapping.level_id(curr.z)
+	var/list/others = list()
+	.["gps_list"] = others
+	for(var/other_z in detecting_levels)
+		var/list/gpses = GLOB.gps_transmitters[other_z]
+		var/l_id = SSmapping.level_id(other_z)
+		for(var/datum/component/gps_signal/sig as anything in gpses)
+			var/list/built = list()
+			var/atom/A = sig.parent
+			built += list(
+				"x" = A.x,
+				"y" = A.y,
+				"level" = l_id,
+				"ref" = ref(sig),
+			)
+
+/obj/item/gps/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("tag")
+
+		if("power")
+
+		if("range")
+
+		if("hide")
+
+		if("add_waypoint")
+
+		if("del_waypoint")
+
+		if("select_target")
+
+		if("toggle_update")
+
+/obj/item/gps/proc/add_waypoint(name, x, y, level_id)
+	var/datum/gps_waypoint/point = new
+	point.name = name
+	point.x = x
+	point.y = y
+	point.level_id = level_id
+	for(var/datum/gps_waypoint/p2 as anything in waypoints)
+		// de dupe
+		if(!p2.same(point))
+			continue
+		qdel(point)
+		return
+	// inject
+	waypoints += point
+	push_waypoint_data()
+
+/obj/item/gps/proc/remove_waypoint(datum/gps_waypoint/point)
+	if(!(point in waypoints))
+		return
+	waypoints -= point
+	push_waypoint_data()
 
 /obj/item/gps/on // Defaults to off to avoid polluting the signal list with a bunch of GPSes without owners. If you need to spawn active ones, use these.
 	tracking = TRUE
