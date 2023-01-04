@@ -2847,17 +2847,6 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mining)
-"Cg" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/projectile/pirate/junker_pistol{
-	pixel_y = -4
-	},
-/obj/item/gun/projectile/pirate/junker_pistol,
-/obj/item/gun/projectile/pirate/junker_pistol{
-	pixel_y = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/piratebase/dock)
 "Cj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/structure/grille,
@@ -5434,13 +5423,6 @@
 /area/piratebase/captain)
 "ZG" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/projectile/pirate{
-	pixel_y = -5
-	},
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate{
-	pixel_y = 5
-	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/piratebase/dock)
 "ZH" = (
@@ -26373,7 +26355,7 @@ Fn
 hm
 jY
 Zr
-Cg
+ZG
 ZG
 ZW
 yM
