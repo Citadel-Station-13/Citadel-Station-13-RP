@@ -54,6 +54,7 @@
 /obj/item/gps/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/gps_signal, gps_tag)
+	toggle_power(on)
 
 /obj/item/gps/Destroy()
 	stop_tracking()
@@ -157,6 +158,11 @@
 	update_icon()
 	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
 
+/obj/item/gps/attack_self(mob/user)
+	. = ..()
+	// TODO: ATTACK_SELF REFACTOR
+	ui_interact(user)
+
 /obj/item/gps/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(emped)
 		to_chat(user, SPAN_WARNING("[src] is still spitting out gibberish!"))
@@ -206,12 +212,13 @@
  */
 /obj/item/gps/proc/stop_tracking()
 	if(!tracking)
-		return
+		return FALSE
 	UnregisterSignal(tracking, COMSIG_PARENT_QDELETING)
 	tracking = null
 	// just kick it out
 	hud_arrow?.set_disabled(TRUE)
 	STOP_PROCESSING(SSprocessing, src)
+	return TRUE
 
 /**
  * updates tracking target
@@ -337,7 +344,8 @@
 	.["visible"] = !hide_signal
 	.["long_range"] = !!long_range
 	.["has_stealth"] = !!can_hide_signal
-	.["updating"] = ui.autoupdate
+	.["updating"] = ui? ui.autoupdate : FALSE
+	.["tracking"] = isnull(tracking)? "" : ref(tracking)
 
 	if(!on)
 		return
@@ -348,19 +356,21 @@
 	.["level"] = SSmapping.level_id(curr.z)
 	var/list/others = list()
 	.["signals"] = others
+	var/datum/component/gps_signal/our_sig = GetComponent(/datum/component/gps_signal)
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
 		var/l_id = SSmapping.level_id(other_z)
 		for(var/datum/component/gps_signal/sig as anything in gpses)
-			var/list/built = list()
+			if(sig == our_sig)
+				continue
 			var/atom/A = sig.parent
-			built += list(
+			built += list(list(
 				"x" = A.x,
 				"y" = A.y,
 				"level" = l_id,
 				"ref" = ref(sig),
 				"name" = sig.gps_tag
-			)
+			))
 
 /obj/item/gps/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -399,6 +409,8 @@
 		if("toggle_update")
 			ui.set_autoupdate(!ui.autoupdate)
 			return TRUE // push one more time
+		if("track")
+			return start_tracking(params["ref"])
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
 	if(!x || !y || !level_id || !name)
@@ -425,35 +437,35 @@
 	push_waypoint_data()
 
 /obj/item/gps/on // Defaults to off to avoid polluting the signal list with a bunch of GPSes without owners. If you need to spawn active ones, use these.
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/command
 	icon_state = "gps-com"
 	gps_tag = "COM0"
 
 /obj/item/gps/command/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/security
 	icon_state = "gps-sec"
 	gps_tag = "SEC0"
 
 /obj/item/gps/security/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/medical
 	icon_state = "gps-med"
 	gps_tag = "MED0"
 
 /obj/item/gps/medical/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/science
 	icon_state = "gps-sci"
 	gps_tag = "SCI0"
 
 /obj/item/gps/science/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/science/rd
 	icon_state = "gps-rd"
@@ -464,7 +476,7 @@
 	gps_tag = "SEC0"
 
 /obj/item/gps/security/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/security/hos
 	icon_state = "gps-hos"
@@ -475,7 +487,7 @@
 	gps_tag = "MED0"
 
 /obj/item/gps/medical/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/medical/cmo
 	icon_state = "gps-cmo"
@@ -486,7 +498,7 @@
 	gps_tag = "ENG0"
 
 /obj/item/gps/engineering/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/engineering/ce
 	icon_state = "gps-ce"
@@ -502,7 +514,7 @@
 	desc = "A positioning system helpful for rescuing trapped or injured miners, keeping one on you at all times while mining might just save your life."
 
 /obj/item/gps/mining/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/explorer
 	icon_state = "gps-exp"
@@ -510,7 +522,7 @@
 	desc = "A positioning system helpful for rescuing trapped or injured explorers, keeping one on you at all times while exploring might just save your life."
 
 /obj/item/gps/explorer/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/survival
 	icon_state = "gps-exp"
@@ -519,20 +531,20 @@
 	local_mode = TRUE
 
 /obj/item/gps/survival/on
-	tracking = TRUE
+	on = TRUE
 
 /obj/item/gps/robot
 	icon_state = "gps-borg"
 	gps_tag = "SYNTH0"
 	desc = "A synthetic internal positioning system. Used as a recovery beacon for damaged synthetic assets, or a collaboration tool for mining or exploration teams."
-	tracking = TRUE // On by default.
+	on = TRUE  // On by default.
 
 /obj/item/gps/internal // Base type for immobile/internal GPS units.
 	icon_state = "internal"
 	gps_tag = "Eerie Signal"
 	desc = "Report to a coder immediately."
 	invisibility = INVISIBILITY_MAXIMUM
-	tracking = TRUE // Meant to point to a location, so it needs to be on.
+	on = TRUE  // Meant to point to a location, so it needs to be on.
 	anchored = TRUE
 
 /obj/item/gps/internal/base

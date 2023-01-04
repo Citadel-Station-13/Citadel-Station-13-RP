@@ -1,7 +1,7 @@
 import { useBackend } from "../backend";
 import { BooleanLike } from "../../common/react";
 import { Window } from "../layouts";
-import { Section, Button, LabeledList } from "../components";
+import { Section, Button, LabeledList, Table, Input, Box } from "../components";
 
 type GpsContext = {
   on: BooleanLike,
@@ -15,23 +15,23 @@ type GpsContext = {
   level: string,
   signals: GpsSignal[],
   waypoints: GpsWaypoint[],
+  tracking: string,
 };
 
-type GpsSignal = {
+interface Trackable {
   ref: string,
   name: string,
   x: number,
   y: number,
   level: string,
-};
+}
 
-type GpsWaypoint = {
-  ref: string,
-  name: string,
-  x: number,
-  y: number,
-  level: string,
-};
+interface GpsSignal extends Trackable {}
+interface GpsWaypoint extends Trackable {}
+
+interface TrackingEntryContext {
+  tracking: Trackable,
+}
 
 export const Gps = (props, context) => {
   const { act, data } = useBackend<GpsContext>(context);
@@ -46,37 +46,135 @@ export const Gps = (props, context) => {
           buttons={(
             <Button
               icon="power-off"
-              content={data.on? "On" : "off"}
+              content={data.on? "On" : "Off"}
               selected={!!data.on}
               onClick={() => act('power')} />
           )}>
           <LabeledList>
             <LabeledList.Item label="Tag">
-              test
+              <Input
+                value={data.tag}
+                onChange={(_, value) => act('tag', { tag: value })}
+              />
             </LabeledList.Item>
-            <LabeledList.Item label="Scan Mode">
-              test
+            <LabeledList.Item label="Range">
+              <Button
+                icon="sync"
+                content={data.long_range? "Maximum" : "Local"}
+                selected={!data.long_range}
+                onClick={() => act('range')} />
             </LabeledList.Item>
             <LabeledList.Item label="Updating">
-              test
+              <Button
+                icon={data.updating? "unlock" : "lock"}
+                content={data.updating? "Auto" : "Manual"}
+                selected={!data.updating}
+                onClick={() => act('toggle_update')} />
             </LabeledList.Item>
             {
-              data.has_stealth && (
-                <LabeledList.Item label="Visibility">
-                  test
+              !!data.has_stealth && (
+                <LabeledList.Item label="Stealth">
+                  <Button
+                    icon="sync"
+                    content={data.visible? "Broadcasting" : "Concealed"}
+                    selected={!data.visible}
+                    onClick={() => act('hide')} />
                 </LabeledList.Item>
               )
             }
           </LabeledList>
         </Section>
-        <Section
-          title="Signals">
-          test
-        </Section>
-        <Section
-          title="Waymarks">
-          test
-        </Section>
+        {!!data.on && (
+          <>
+            <Section
+              title="Status">
+              <Box fontSize="18px">
+                Location: {data.x}, {data.y} - {data.level}
+              </Box>
+            </Section>
+            <Section
+              title="Tracking">
+              <Table>
+                <Table.Row bold>
+                  <Table.Cell content="Name" />
+                  <Table.Cell collapsing content="Direction" />
+                  <Table.Cell collapsing content="Coordinates" />
+                  <Table.Cell collapsing content="Tracking" />
+                </Table.Row>
+                {
+                  data.waypoints.map(waypoint => (
+                    <Table.Row key={waypoint.ref} className="candystripe">
+                      <Table.Cell bold color="label">
+                        {waypoint.name}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {
+                          data.level === waypoint.level? (
+                            `${Math.round(Math.atan2(waypoint.x - data.x, waypoint.y - data.y) * 180 / Math.PI)}`
+                          ) : (
+                            ``
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell>
+                        {
+                          data.level === waypoint.level? (
+                            `${waypoint.x}, ${waypoint.y}`
+                          ) : (
+                            `${waypoint.level}`
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          icon="bullseye"
+                          content={data.tracking === waypoint.ref? "Tracking" : "Track"}
+                          selected={data.tracking === waypoint.ref}
+                          onclick={() => act('track', { ref: waypoint.ref })}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  ))
+                }
+                {
+                  data.signals.map(signal => (
+                    <Table.Row key={signal.ref} className="candystripe">
+                      <Table.Cell bold color="label">
+                        {signal.name}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {
+                          data.level === signal.level? (
+                            `${Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)}`
+                          ) : (
+                            ``
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell>
+                        {
+                          data.level === signal.level? (
+                            `${signal.x}, ${signal.y}`
+                          ) : (
+                            `${signal.level}`
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          icon="bullseye"
+                          content={data.tracking === signal.ref? "Tracking" : "Track"}
+                          selected={data.tracking === signal.ref}
+                          onclick={() => act('track', { ref: signal.ref })}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  ))
+                }
+              </Table>
+            </Section>
+          </>
+        )}
       </Window.Content>
     </Window>
   );
