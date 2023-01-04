@@ -91,9 +91,6 @@
 "jD" = (
 /turf/simulated/floor/lino,
 /area/space)
-"kK" = (
-/turf/simulated/floor/reinforced/carbon_dioxide,
-/area/space)
 "lD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -4955,9 +4952,9 @@ VJ
 VJ
 VJ
 VJ
-Fp
-Fp
-Fp
+VJ
+VJ
+VJ
 NT
 NT
 NT
@@ -5149,12 +5146,12 @@ VJ
 VJ
 VJ
 VJ
-kK
-kK
-Fp
-Fp
-Fp
-Fp
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 NT
 NT
 NT
@@ -5343,15 +5340,15 @@ VJ
 VJ
 VJ
 VJ
-Fp
-Fp
-Fp
-kK
-kK
-Fp
-Fp
-Fp
-Fp
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 NT
 NT
 NT

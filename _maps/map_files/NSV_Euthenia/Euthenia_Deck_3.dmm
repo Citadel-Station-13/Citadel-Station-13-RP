@@ -2430,6 +2430,10 @@
 "cmh" = (
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/cafeteria)
+"cmq" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/space)
 "cmP" = (
 /turf/simulated/wall,
 /area/maintenance/deck_three)
@@ -26465,6 +26469,7 @@
 /obj/machinery/atmospherics/pipe/vent/high_volume{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/space)
 "xPW" = (
@@ -34626,7 +34631,7 @@ pVf
 pVf
 asI
 asI
-sVT
+cmq
 dff
 bYV
 dff
@@ -34820,7 +34825,7 @@ pVf
 pVf
 asI
 asI
-sVT
+cmq
 dff
 bYV
 dff
@@ -35014,7 +35019,7 @@ pVf
 pVf
 asI
 asI
-sVT
+cmq
 dff
 bYV
 dff
