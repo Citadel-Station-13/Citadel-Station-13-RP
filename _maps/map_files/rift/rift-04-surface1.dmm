@@ -28777,7 +28777,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "sph" = (
-/obj/structure/fake_stairs/south/bottom,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "spM" = (
@@ -42063,7 +42065,7 @@ iFN
 oFG
 oFG
 oFG
-mix
+sph
 sph
 sEO
 tmv
