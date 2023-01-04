@@ -157,11 +157,6 @@
 		if (z_level_change)
 			M.onTransitZ(Origin.z, X.z)
 
-		if (istype(M, /mob/living))
-			var/mob/living/LM = M
-			// Need to check their Z-shadow, which is normally done in forceMove().
-			LM.check_shadow()
-
 	if (turftoleave)
 		Origin.ChangeTurf(turftoleave)
 	else

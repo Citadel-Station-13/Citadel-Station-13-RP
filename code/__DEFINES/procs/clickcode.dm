@@ -12,7 +12,8 @@
  * MouseDroppedOn
  */
 
-/// stop the click chain from proceeding past this point
+/// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
+/// DO NOT ABUSE THIS PROC TO INTERRUPT AFTERATTACKS WITHOUT CARE; this is NOT what this is here for!
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
