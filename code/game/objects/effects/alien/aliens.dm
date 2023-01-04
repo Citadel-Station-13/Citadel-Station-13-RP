@@ -324,10 +324,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	if(W.attack_verb.len)
-		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		visible_message("<span class='danger'>\The [src] have been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
 	var/damage = W.force / 4.0
 
@@ -529,10 +526,7 @@ Alien plants should do something if theres a lot of poison
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
-	if(W.attack_verb.len)
-		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))

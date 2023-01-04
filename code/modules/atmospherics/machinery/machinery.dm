@@ -14,8 +14,8 @@ Pipelines + Other Objects -> Pipe network
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
-	layer = ATMOS_LAYER
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
+	layer = EXPOSED_PIPE_LAYER
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
@@ -232,3 +232,9 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
+
+/obj/machinery/atmospherics/hide(do_hide)
+	if(do_hide && level == 1)
+		layer = PIPE_LAYER
+	else
+		reset_plane_and_layer()

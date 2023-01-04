@@ -3672,6 +3672,11 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
+"cGX" = (
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfaceeva/aa/surface_south)
 "cHz" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -4064,16 +4069,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
-"cUP" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "cVJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -5039,6 +5034,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"dvH" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dwr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock{
@@ -5884,6 +5888,13 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
+"dTy" = (
+/obj/effect/zone_divider,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dTK" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
@@ -26616,6 +26627,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"qIy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 26
+	},
+/obj/machinery/holoposter{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/foyer)
 "qIG" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
@@ -30452,12 +30481,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
-"teB" = (
-/obj/effect/zone_divider,
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
 "teC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -30852,24 +30875,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/maintenance/research/lower)
-"tqx" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 5
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/computer/guestpass{
-	pixel_y = 26
-	},
-/obj/machinery/holoposter{
-	pixel_x = 32
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer)
 "trb" = (
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
@@ -48742,10 +48747,10 @@ lcN
 gxt
 mfX
 mfX
-mfX
-cUP
-fiX
-mfX
+aqe
+dvH
+dTy
+aqe
 mfX
 iFN
 iFN
@@ -48935,11 +48940,11 @@ gxt
 mfX
 iFN
 iFN
-iFN
-jZZ
+lPZ
+mUL
 wSo
-teB
-iFN
+cGX
+lPZ
 iFN
 iFN
 iFN
@@ -49128,13 +49133,13 @@ mfX
 iFN
 iFN
 iFN
-iFN
-iFN
+lPZ
+lPZ
 rPa
 cTN
 rMj
-arS
-iFN
+dER
+lPZ
 iFN
 iFN
 iFN
@@ -49322,7 +49327,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 wSo
 nYy
 cTN
@@ -49522,7 +49527,7 @@ rPa
 cTN
 fWO
 dER
-iFN
+lPZ
 hgE
 hgE
 hgE
@@ -55665,7 +55670,7 @@ sYX
 rQb
 qOO
 xTe
-tqx
+qIy
 hMM
 tko
 xAW

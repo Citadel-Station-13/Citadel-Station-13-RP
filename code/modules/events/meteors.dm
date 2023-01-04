@@ -83,7 +83,7 @@
 	return
 
 /datum/event/meteor_wave/overmap/tick()
-	if(victim && !victim.is_still())	// Meteors mostly fly in your face
+	if(victim && !!victim.is_moving())	// Meteors mostly fly in your face
 		start_side = prob(90) ? victim.fore_dir : pick(GLOB.cardinal)
 	else	// Unless you're standing still
 		start_side = pick(GLOB.cardinal)
@@ -94,10 +94,10 @@
 	if(!victim)
 		return
 	var/skill = victim.get_helm_skill()
-	var/speed = victim.get_speed()
+	var/speed = victim.get_speed_legacy()
 	if(skill >= SKILL_PROF)
 		. = round(. * 0.5)
-	if(victim.is_still())		// Standing still means less shit flies your way
+	if(!victim.is_moving())		// Standing still means less shit flies your way
 		. = round(. * 0.1)
 	if(speed < SHIP_SPEED_SLOW)	// Slow and steady
 		. = round(. * 0.5)

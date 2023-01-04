@@ -242,7 +242,7 @@
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
 	mannequin.update_transform()
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 
 	update_character_previews(new /mutable_appearance(mannequin))
 
@@ -291,6 +291,5 @@
 	mannequin.update_transform()
 	mannequin.toggle_tail_vr(setting = TRUE)
 	mannequin.toggle_wing_vr(setting = TRUE)
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 	update_character_previews(new /mutable_appearance(mannequin))
-

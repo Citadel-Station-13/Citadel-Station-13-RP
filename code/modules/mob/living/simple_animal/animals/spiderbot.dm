@@ -150,7 +150,7 @@
 			return 0
 
 	else
-		O.attack(src, user, user.zone_sel.selecting)
+		O.melee_attack_chain(src, user, user.zone_sel.selecting)
 
 /mob/living/simple_mob/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
