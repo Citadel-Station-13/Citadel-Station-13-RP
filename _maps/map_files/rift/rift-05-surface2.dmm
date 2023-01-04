@@ -22721,16 +22721,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
-"qZS" = (
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "chemistry";
-	layer = 3.1;
-	name = "Chemistry Shutters"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacetwo)
 "rab" = (
 /turf/simulated/wall/r_wall,
 /area/rift/stairwell/primary/surfacetwo)
@@ -46493,7 +46483,7 @@ ktB
 hhA
 vzn
 gjf
-qZS
+kmy
 hPU
 ngb
 vKN
@@ -46687,7 +46677,7 @@ ktB
 aoF
 nTp
 kYq
-qZS
+kmy
 grW
 ngb
 vKN
@@ -46880,7 +46870,7 @@ rab
 rab
 rab
 rab
-qZS
+kmy
 rab
 qIm
 ngb
@@ -48044,7 +48034,7 @@ rab
 rab
 rab
 rab
-qZS
+kmy
 rab
 fGJ
 kQY
@@ -48239,7 +48229,7 @@ ktB
 wHt
 ngX
 jpg
-qZS
+kmy
 hPU
 ngb
 vKN
@@ -48433,7 +48423,7 @@ ktB
 hhA
 sRF
 gjf
-qZS
+kmy
 grW
 ngb
 fre
