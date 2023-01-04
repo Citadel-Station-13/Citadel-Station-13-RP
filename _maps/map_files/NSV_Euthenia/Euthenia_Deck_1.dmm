@@ -4048,6 +4048,11 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_4)
+"des" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/firedoor/multi_tile,
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "deG" = (
 /turf/simulated/wall{
 	can_open = 1
@@ -5977,11 +5982,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/reception)
-"eKW" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/obj/structure/sign/hangar/one,
-/turf/simulated/floor/plating,
-/area/space)
 "eLn" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -37400,8 +37400,8 @@ eEc
 eEc
 eEc
 eEc
-eEc
-eEc
+xKi
+xKi
 isG
 fDP
 fDP
@@ -37594,8 +37594,8 @@ nxk
 mTt
 mTt
 nxk
-eEc
-eEc
+xKi
+xKi
 isG
 fDP
 fDP
@@ -37788,8 +37788,8 @@ mTt
 lMW
 lMW
 mTt
-eEc
-eEc
+xKi
+xKi
 isG
 fDP
 fDP
@@ -37982,8 +37982,8 @@ mTt
 lMW
 lMW
 mTt
-eEc
-eEc
+xKi
+xKi
 isG
 fDP
 fDP
@@ -38169,15 +38169,15 @@ aBR
 nxk
 nxk
 mTt
-iXZ
-iXZ
-eKW
+mTt
+mTt
+nxk
 brg
 hMl
 hMl
 brg
-nxk
-nxk
+iXZ
+iXZ
 tdF
 fDP
 fDP
@@ -38369,7 +38369,7 @@ qwr
 qwr
 qwr
 qwr
-qwr
+des
 qwr
 qwr
 tdF

@@ -198,6 +198,11 @@
 "dl" = (
 /turf/simulated/floor/wood,
 /area/space)
+"dt" = (
+/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_four/aft/port)
 "dI" = (
 /obj/structure/railing{
 	dir = 4
@@ -791,6 +796,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/deck_four)
+"qn" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/port)
 "qq" = (
 /turf/simulated/floor/reinforced,
 /area/maintenance/deck_four/port)
@@ -1219,6 +1228,10 @@
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor/plating,
 /area/rnd/research)
+"Ag" = (
+/obj/structure/stairs/spawner/east,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_four/aft/port)
 "Am" = (
 /obj/machinery/camera/network/research{
 	dir = 8
@@ -1748,6 +1761,9 @@
 "KJ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
+"KV" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_four/aft/port)
 "KX" = (
 /turf/simulated/floor/plating,
 /area/engineering/shunt)
@@ -2101,6 +2117,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"Sz" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/maintenance/deck_four/aft/port)
 "SF" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -2352,6 +2374,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/maintenance/deck_four/port)
+"Wz" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/port)
 "WC" = (
 /obj/machinery/light{
 	dir = 1
@@ -8122,8 +8148,8 @@ tZ
 tZ
 tZ
 tZ
-tZ
-tZ
+Wz
+Wz
 tZ
 KJ
 KJ
@@ -8315,9 +8341,9 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
+tZ
+KV
+KV
 KJ
 KJ
 KJ
@@ -8509,9 +8535,9 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
+dt
+KV
+KV
 KJ
 KJ
 KJ
@@ -8703,9 +8729,9 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
+KV
+KV
+KV
 KJ
 KJ
 KJ
@@ -8897,10 +8923,10 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+tZ
+Sz
+Sz
+tZ
 KJ
 KJ
 KJ
@@ -9091,10 +9117,10 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+qn
+KV
+KV
+qn
 KJ
 KJ
 tZ
@@ -9285,10 +9311,10 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+qn
+Ag
+Ag
+qn
 KJ
 KJ
 tZ
@@ -9479,10 +9505,10 @@ KJ
 KJ
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+tZ
+tZ
+tZ
+tZ
 KJ
 KJ
 tZ

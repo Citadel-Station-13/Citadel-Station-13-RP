@@ -18299,8 +18299,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "nCj" = (
-/obj/machinery/door/airlock/glass,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "nCl" = (
@@ -41450,7 +41450,7 @@ xRi
 xRi
 sBf
 sBf
-nCj
+sBf
 sBf
 sBf
 qmn
