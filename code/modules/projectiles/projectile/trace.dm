@@ -36,5 +36,5 @@
 		hit |= A
 	return ..()
 
-/obj/item/projectile/test/attack_mob()
+/obj/item/projectile/test/projectile_attack_mob()
 	return

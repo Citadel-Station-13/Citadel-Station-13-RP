@@ -502,6 +502,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
 	return power
 
+// todo: this really needs to be refactored
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 

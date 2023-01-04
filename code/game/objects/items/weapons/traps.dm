@@ -100,7 +100,7 @@
 	else
 		return ..()
 
-/obj/item/beartrap/proc/attack_mob(mob/living/L)
+/obj/item/beartrap/proc/trap_mob(mob/living/L)
 
 	var/target_zone
 	if(L.lying)
@@ -139,7 +139,7 @@
 				"<span class='danger'>You step on \the [src]!</span>",
 				"<b>You hear a loud metallic snap!</b>"
 				)
-			attack_mob(L)
+			trap_mob(L)
 			if(!has_buckled_mobs())
 				anchored = 0
 			deployed = 0
@@ -174,6 +174,6 @@
 	name = "stealth disruptor trap"
 	desc = "A mechanically activated leg trap. High tech and reliable. Looks like it could really be a problem for unshielded electronics."
 
-/obj/item/beartrap/hunting/emp/attack_mob(mob/living/L)
+/obj/item/beartrap/hunting/emp/trap_mob(mob/living/L)
 	. = ..()
 	empulse(L.loc, 0, 0, 0, 0)	// very localized, apparently

@@ -107,7 +107,7 @@
 	w_class = ITEMSIZE_NORMAL
 	one_handed_penalty = 0
 
-/obj/item/gun/projectile/musket/pistol/brass 
+/obj/item/gun/projectile/musket/pistol/brass
 	name = "brass wheelock"
 	desc = "A brass black powder pistol with a strange gear like firing mechanism. You are not quite certain how it actually works though."
 	icon_state = "flintlock-brass"

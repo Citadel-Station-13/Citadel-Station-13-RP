@@ -234,7 +234,7 @@
 		pressure_decrease_active = TRUE
 	return ..()
 
-/obj/item/projectile/kinetic/attack_mob(mob/living/target_mob, distance, miss_modifier)
+/obj/item/projectile/kinetic/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
 		damage = damage * pressure_decrease

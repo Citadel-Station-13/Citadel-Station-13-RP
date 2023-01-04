@@ -85,7 +85,7 @@
 		if(istype(W,/obj/item/robotanalyzer))
 			var/obj/item/robotanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.attack(L,user)
+				analyzer.melee_attack_chain(L,user)
 
 		else if(istype(W, /obj/item/clothing/accessory/badge))
 			if(corptag)
