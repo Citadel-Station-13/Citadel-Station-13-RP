@@ -1016,8 +1016,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "QU" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/base)
 "Rw" = (
