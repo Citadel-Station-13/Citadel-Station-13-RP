@@ -11,7 +11,6 @@
 
 /mob/living/singularity_pull(S, current_size)
 	step_towards(src, S)
-	apply_effect(current_size * 3, IRRADIATE, blocked = getarmor(null, "rad"))
 
 /mob/living/carbon/human/singularity_act()
 	var/gain = 20
@@ -37,7 +36,7 @@
 	..()
 
 /obj/singularity_act()
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
 	legacy_ex_act(1)
 	if(!QDELETED(src))
@@ -45,7 +44,7 @@
 	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
 	if(anchored)
 		if(current_size >= STAGE_FIVE)

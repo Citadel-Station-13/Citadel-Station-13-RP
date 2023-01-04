@@ -345,7 +345,7 @@
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/take_picture(var/atom/A in world)
+/client/proc/take_picture(atom/A in world)
 	set name = "Save PNG"
 	set category = "Debug"
 	set desc = "Opens a dialog to save a PNG of any object in the game."
@@ -353,7 +353,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	downloadImage(A)
+	download_icon(A)
 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
@@ -511,10 +511,10 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[/datum/gas/phoron] = 70
-				Rad.drainratio = 0
+				/// supercooled so we don't just maxcap the engine lol
+				Phoron.air_contents.adjust_gas_temp(/datum/gas/phoron, 350, 25)
+				Phoron.forceMove(Rad)
 				Rad.P = Phoron
-				Phoron.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()

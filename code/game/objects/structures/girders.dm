@@ -2,7 +2,7 @@
 	icon_state = "girder"
 	anchored = 1
 	density = 1
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
 	var/state = 0
 	var/health = 200
@@ -38,7 +38,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 
@@ -226,7 +226,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M))
 		return 0
 
@@ -251,7 +251,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.set_materials(M, reinf_material, girder_material)
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -267,7 +267,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0
@@ -401,8 +401,8 @@
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

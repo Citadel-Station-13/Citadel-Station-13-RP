@@ -16,7 +16,7 @@
 
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
-		if(!(A.flags & ATOM_ABSTRACT))
+		if(!(A.atom_flags & ATOM_ABSTRACT))
 			return 0
 	return 1
 
@@ -136,7 +136,7 @@
 
 	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 	for(var/obj/O in Origin)
-		if(O.flags & ATOM_ABSTRACT)
+		if(O.atom_flags & ATOM_ABSTRACT)
 			continue
 		O.loc = X
 		O.update_light()
@@ -146,7 +146,7 @@
 
 	// Move the mobs unless it's an AI eye or other eye type.
 	for(var/mob/M in Origin)
-		if (M.flags & ATOM_ABSTRACT)
+		if (M.atom_flags & ATOM_ABSTRACT)
 			continue
 		if (isEye(M))
 			// If we need to check for more mobs, I'll add a variable.
@@ -156,11 +156,6 @@
 		// Same goes for mobs.
 		if (z_level_change)
 			M.onTransitZ(Origin.z, X.z)
-
-		if (istype(M, /mob/living))
-			var/mob/living/LM = M
-			// Need to check their Z-shadow, which is normally done in forceMove().
-			LM.check_shadow()
 
 	if (turftoleave)
 		Origin.ChangeTurf(turftoleave)
@@ -174,7 +169,7 @@
  * This assumes that the atom is located inside the target turf.
  */
 /atom/proc/is_between_turfs(turf/origin, turf/target)
-	if (flags & ON_BORDER)
+	if (atom_flags & ATOM_BORDER)
 		var/testdir = get_dir(target, origin)
 		return (dir & testdir)
 	return TRUE

@@ -56,8 +56,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "al" = (
@@ -105,8 +104,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ar" = (
@@ -144,9 +142,7 @@
 /area/crew_quarters/public_bunker)
 "av" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/zone_divider,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -279,8 +275,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aR" = (
@@ -614,6 +609,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_smes)
 "bC" = (
@@ -634,6 +630,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "bF" = (
@@ -728,8 +725,7 @@
 /area/engineering/engine_core)
 "bV" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bX" = (
@@ -1010,9 +1006,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/engineering/workshop)
 "cX" = (
 /obj/structure/cable{
@@ -1035,16 +1030,6 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/turf/simulated/floor,
-/area/engineering/engine_room)
-"dc" = (
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "sm_monitor_blast";
-	name = "Engineering Engine Monitoring Blast Door"
-	},
-/obj/structure/grille,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "df" = (
@@ -1093,8 +1078,7 @@
 /area/engineering/engine_room)
 "dm" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dp" = (
@@ -1103,6 +1087,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "dq" = (
@@ -1267,8 +1252,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dQ" = (
@@ -1278,7 +1262,6 @@
 	id = "EngineVent";
 	name = "Reactor Vent"
 	},
-/obj/effect/zone_divider,
 /turf/simulated/floor/greengrid/nitrogen,
 /area/engineering/engine_core)
 "dR" = (
@@ -1849,6 +1832,7 @@
 	name = "Electrical Maintenance";
 	req_access = list(10)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "ft" = (
@@ -1901,8 +1885,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fH" = (
@@ -2131,10 +2114,8 @@
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "gq" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2;
-	req_one_access = list(18,47)
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 8
 	},
@@ -2480,16 +2461,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "hk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
-/turf/simulated/floor,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
-"hl" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "hm" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -2533,6 +2507,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/locker_room)
 "hu" = (
@@ -2548,6 +2523,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "hy" = (
@@ -2956,8 +2932,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "jc" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "jd" = (
@@ -3695,6 +3670,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
 "kI" = (
@@ -3781,9 +3757,8 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "kZ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
-/turf/simulated/floor,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "lb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -5183,18 +5158,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oV" = (
-/obj/structure/grille,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bunker"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "oW" = (
@@ -5236,18 +5204,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oZ" = (
-/obj/structure/grille,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bunker"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "pb" = (
@@ -5658,6 +5619,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "qu" = (
@@ -6263,8 +6225,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sA" = (
@@ -6564,6 +6525,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "tN" = (
@@ -6626,6 +6588,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "ub" = (
@@ -6653,6 +6616,7 @@
 /area/maintenance/lower/mining)
 "ul" = (
 /obj/machinery/door/airlock/atmos,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/locker_room)
 "um" = (
@@ -7006,6 +6970,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"vV" = (
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bunker"
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/crew_quarters/public_bunker)
 "vY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -7096,12 +7068,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"wv" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/floor/sky/depths/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "ww" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -7480,10 +7446,6 @@
 /turf/simulated/floor/wood,
 /area/chapel/observation)
 "xM" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2;
-	req_one_access = list(18,47)
-	},
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
 	},
@@ -7541,12 +7503,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"yd" = (
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
-	special_temperature = 233
-	},
-/area/engineering/engine_room)
 "ye" = (
 /obj/structure/railing{
 	dir = 4
@@ -7571,6 +7527,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "yh" = (
@@ -7641,14 +7598,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
-"yE" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
-/turf/simulated/floor/sky/depths/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "yG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -7846,6 +7795,7 @@
 	name = "Engineering EVA Storage";
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "zS" = (
@@ -8382,11 +8332,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"Cv" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "CA" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/under2)
@@ -8620,11 +8565,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
-"DA" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
-/turf/simulated/floor/plating,
-/area/engineering/engineering_monitoring)
 "DB" = (
 /turf/simulated/wall,
 /area/engineering/break_room)
@@ -8666,9 +8606,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "DL" = (
-/obj/effect/zone_divider,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -8888,11 +8826,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EO" = (
-/obj/structure/grille,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "EP" = (
@@ -9158,6 +9095,9 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2
 	},
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "FU" = (
@@ -9240,6 +9180,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Gh" = (
@@ -9257,6 +9198,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "Gl" = (
@@ -9704,6 +9646,7 @@
 	name = "Engine Airlock Interior";
 	req_access = list(11)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "IB" = (
@@ -9778,6 +9721,13 @@
 	pixel_y = 7
 	},
 /obj/item/pen/red,
+/obj/item/folder/yellow{
+	pixel_x = 9
+	},
+/obj/item/folder/yellow{
+	pixel_x = 9;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "IQ" = (
@@ -9856,6 +9806,7 @@
 	name = "Engine Access";
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "Jm" = (
@@ -9945,6 +9896,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "JC" = (
@@ -10006,6 +9958,7 @@
 	name = "Chief Engineer";
 	req_access = list(56)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/chief)
 "JS" = (
@@ -10041,9 +9994,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "JW" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "JZ" = (
@@ -10396,8 +10347,7 @@
 	id = "sm_monitor_blast";
 	name = "Engineering Engine Monitoring Blast Door"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/grille,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "LF" = (
@@ -10517,8 +10467,8 @@
 "Mb" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/single_use/med_pouch/radiation{
-	pixel_y = -7;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -7
 	},
 /obj/item/storage/single_use/med_pouch/trauma{
 	pixel_x = -7;
@@ -10849,6 +10799,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "Nm" = (
@@ -10942,6 +10893,7 @@
 	name = "Engineering Monitoring Room";
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "NG" = (
@@ -11119,19 +11071,6 @@
 /obj/structure/noticeboard,
 /turf/simulated/wall,
 /area/quartermaster/miningdock)
-"OE" = (
-/obj/structure/grille,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "bunker"
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced,
-/turf/simulated/floor/plating,
-/area/crew_quarters/public_bunker)
 "OF" = (
 /obj/effect/floor_decal/chapel{
 	dir = 1
@@ -11173,8 +11112,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "ON" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "OO" = (
@@ -11194,8 +11132,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "OT" = (
-/obj/item/geiger,
-/obj/item/geiger,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -11381,15 +11319,6 @@
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_airlock)
-"PF" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
-	special_temperature = 233
-	},
-/area/engineering/engine_room)
 "PG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11562,11 +11491,6 @@
 /obj/machinery/suit_cycler/mining,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
-"Qs" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/floor/sky/depths/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "Qt" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
@@ -11587,6 +11511,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/multi_tile/metal,
+/obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "Qz" = (
@@ -11661,13 +11586,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
-"QV" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "QX" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -11697,6 +11615,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
 "Rh" = (
@@ -12148,10 +12067,6 @@
 /obj/structure/girder,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"TF" = (
-/obj/effect/zone_divider,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "TG" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12325,10 +12240,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
-"UC" = (
-/obj/effect/zone_divider,
-/turf/simulated/floor/sky/depths/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "UF" = (
 /obj/machinery/door/airlock/maintenance/common{
 	req_one_access = list(27)
@@ -12414,6 +12325,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "UV" = (
@@ -12715,14 +12627,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "Wi" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2;
-	req_one_access = list(18,47)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel_grid,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/engineering/foyer)
 "Wk" = (
 /obj/structure/bed/chair/pew/left{
@@ -12903,17 +12812,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"WQ" = (
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "WT" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
-"WV" = (
-/obj/effect/zone_divider,
-/turf/simulated/wall/r_wall,
-/area/rift/surfacebase/underground/under2)
 "WX" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -12967,6 +12868,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "Xh" = (
@@ -13003,6 +12905,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/papershredder,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Xq" = (
@@ -13017,13 +12920,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
-"Xs" = (
-/obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
-/turf/simulated/floor/sky/depths/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "Xw" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
@@ -13158,6 +13054,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "XZ" = (
@@ -13191,6 +13088,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_airlock)
 "Yj" = (
@@ -13214,6 +13112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Yp" = (
@@ -13319,9 +13218,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "YM" = (
@@ -13408,6 +13305,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Zj" = (
@@ -13575,7 +13473,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13587,7 +13484,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13599,7 +13495,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13611,7 +13506,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13623,7 +13517,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13635,7 +13528,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13647,7 +13539,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13659,7 +13550,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13671,7 +13561,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13683,7 +13572,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13695,7 +13583,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13707,7 +13594,6 @@ yT
 yT
 yT
 yT
-Xs
 yT
 yT
 yT
@@ -13719,7 +13605,6 @@ yT
 yT
 yT
 yT
-yE
 yT
 yT
 yT
@@ -13731,7 +13616,6 @@ yT
 yT
 yT
 yT
-yE
 yT
 yT
 yT
@@ -13743,7 +13627,21 @@ yT
 yT
 yT
 yT
-Xs
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
+yT
 yT
 yT
 yT
@@ -13769,7 +13667,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13781,7 +13678,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13793,7 +13689,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13805,7 +13700,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13817,7 +13711,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13829,7 +13722,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13841,7 +13733,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13853,7 +13744,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13865,7 +13755,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13877,7 +13766,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13889,7 +13777,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13901,7 +13788,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13913,7 +13799,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -13925,7 +13810,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -13937,7 +13821,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -13963,7 +13861,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13975,7 +13872,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13987,7 +13883,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -13999,7 +13894,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14011,7 +13905,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14023,7 +13916,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14035,7 +13927,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14047,7 +13938,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14059,7 +13949,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14071,7 +13960,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14083,7 +13971,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14095,7 +13982,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14107,7 +13993,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14119,7 +14004,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14131,7 +14015,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -14157,7 +14055,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14169,7 +14066,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14181,7 +14077,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14193,7 +14088,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14205,7 +14099,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14217,7 +14110,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14229,7 +14121,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14241,7 +14132,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14253,7 +14143,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14265,7 +14154,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14277,7 +14165,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14289,7 +14176,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14301,7 +14187,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14313,7 +14198,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14325,7 +14209,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -14351,7 +14249,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14363,7 +14260,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14375,7 +14271,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14387,7 +14282,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14399,7 +14293,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14411,7 +14304,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14423,7 +14315,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14435,7 +14326,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14447,7 +14337,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14459,7 +14348,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14471,7 +14359,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14483,7 +14370,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14495,7 +14381,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14507,7 +14392,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14519,7 +14403,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -14545,7 +14443,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14557,7 +14454,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14569,7 +14465,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14581,7 +14476,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14593,7 +14487,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14605,7 +14498,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14617,7 +14509,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14629,7 +14520,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14641,7 +14531,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14653,7 +14542,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14665,7 +14553,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14677,7 +14564,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14689,7 +14575,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14701,7 +14586,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14713,7 +14597,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -14739,7 +14637,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14751,7 +14648,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14763,7 +14659,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14775,7 +14670,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14787,7 +14681,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14799,7 +14692,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14811,7 +14703,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14823,7 +14714,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14835,7 +14725,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14847,7 +14736,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14859,7 +14747,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14871,7 +14758,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14883,7 +14769,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14895,7 +14780,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -14907,7 +14791,21 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -14933,7 +14831,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14945,7 +14842,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14957,7 +14853,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14969,7 +14864,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14981,7 +14875,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -14993,7 +14886,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15005,7 +14897,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15017,7 +14908,14 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15029,7 +14927,7 @@ ML
 ML
 ML
 ML
-WV
+ML
 WA
 WA
 WA
@@ -15041,7 +14939,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15053,7 +14950,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15065,7 +14961,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15077,7 +14972,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15089,7 +14983,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15101,7 +14994,12 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15127,7 +15025,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15139,7 +15036,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15151,7 +15047,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15163,7 +15058,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15175,7 +15069,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15187,7 +15080,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15199,7 +15091,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15211,7 +15102,14 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15223,7 +15121,7 @@ ML
 ML
 ML
 ML
-WV
+ML
 WA
 WA
 WA
@@ -15235,7 +15133,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15247,7 +15144,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15259,7 +15155,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15271,7 +15166,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15283,7 +15177,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15295,7 +15188,12 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15321,7 +15219,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15333,7 +15230,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15345,7 +15241,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15357,7 +15252,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15369,7 +15263,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15381,7 +15274,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15393,7 +15285,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15405,7 +15296,14 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15417,7 +15315,7 @@ ML
 aa
 aa
 aa
-WV
+ML
 WA
 WA
 WA
@@ -15429,7 +15327,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15441,7 +15338,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15453,7 +15349,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15465,7 +15360,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15477,7 +15371,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15489,7 +15382,12 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 aa
@@ -15515,7 +15413,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15527,7 +15424,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15539,7 +15435,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15551,7 +15446,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15563,7 +15457,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15575,7 +15468,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15587,7 +15479,13 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15599,7 +15497,6 @@ WA
 WA
 su
 su
-WQ
 su
 su
 su
@@ -15607,35 +15504,18 @@ su
 su
 su
 su
-aa
-aa
-aa
-aa
-TF
-aa
+su
 aa
 aa
 aa
 aa
 aa
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
+aa
+aa
+aa
+aa
+aa
+aa
 WA
 WA
 WA
@@ -15647,7 +15527,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15659,7 +15538,6 @@ WA
 WA
 WA
 WA
-Qs
 WA
 WA
 WA
@@ -15671,7 +15549,27 @@ WA
 WA
 WA
 WA
-Qs
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15683,7 +15581,7 @@ WA
 aa
 aa
 aa
-TF
+aa
 aa
 aa
 aa
@@ -15698,191 +15596,191 @@ Xh
 "}
 (12,1,1) = {"
 AW
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-Qs
-Qs
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-TF
-TF
-TF
-TF
-hl
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-Qs
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-wv
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-wv
-UC
-UC
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-TF
-QV
-Cv
-TF
-TF
-TF
-TF
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
+su
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -15903,10 +15801,10 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
+aa
 WA
 WA
 WA
@@ -15915,7 +15813,7 @@ WA
 WA
 WA
 WA
-UC
+WA
 WA
 WA
 WA
@@ -15927,7 +15825,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15939,7 +15836,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15951,7 +15847,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -15963,7 +15858,10 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
+WA
+WA
 WA
 WA
 WA
@@ -15975,7 +15873,7 @@ WA
 WA
 WA
 aa
-TF
+aa
 aa
 aa
 aa
@@ -15999,7 +15897,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16011,55 +15908,52 @@ aa
 aa
 aa
 aa
-TF
-aa
-aa
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-Qs
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
 aa
 aa
 aa
-Cv
+aa
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
+WA
 aa
 aa
 aa
@@ -16071,7 +15965,11 @@ aa
 aa
 aa
 aa
-Cv
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16097,7 +15995,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16109,7 +16006,8 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
 aa
 aa
 aa
@@ -16121,7 +16019,7 @@ WA
 WA
 WA
 WA
-UC
+WA
 WA
 WA
 WA
@@ -16133,7 +16031,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -16145,7 +16042,8 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
 WA
 WA
 WA
@@ -16157,7 +16055,7 @@ WA
 WA
 WA
 WA
-UC
+WA
 WA
 WA
 WA
@@ -16169,7 +16067,7 @@ aa
 aa
 aa
 aa
-TF
+aa
 aa
 aa
 aa
@@ -16193,7 +16091,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16205,7 +16102,8 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
 aa
 aa
 aa
@@ -16217,7 +16115,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -16229,7 +16126,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -16241,7 +16137,9 @@ WA
 WA
 WA
 WA
-Qs
+WA
+WA
+WA
 WA
 WA
 aa
@@ -16253,7 +16151,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16265,7 +16162,8 @@ aa
 aa
 aa
 aa
-Cv
+aa
+aa
 aa
 aa
 aa
@@ -16291,7 +16189,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16303,7 +16200,8 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
 aa
 aa
 aa
@@ -16315,7 +16213,7 @@ aa
 WA
 WA
 WA
-UC
+WA
 WA
 WA
 WA
@@ -16327,7 +16225,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -16339,7 +16236,8 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
 WA
 WA
 WA
@@ -16351,10 +16249,10 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
+WA
 aa
 aa
 aa
@@ -16363,7 +16261,7 @@ aa
 aa
 aa
 aa
-TF
+aa
 aa
 aa
 aa
@@ -16387,7 +16285,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16399,7 +16296,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16411,7 +16307,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16423,7 +16318,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16435,7 +16329,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16447,7 +16340,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16459,7 +16351,13 @@ aa
 aa
 aa
 aa
-Cv
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16485,7 +16383,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16497,7 +16394,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16509,7 +16405,9 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16521,7 +16419,6 @@ WA
 WA
 WA
 WA
-UC
 WA
 WA
 WA
@@ -16533,7 +16430,8 @@ WA
 WA
 WA
 WA
-UC
+WA
+WA
 WA
 WA
 WA
@@ -16545,7 +16443,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16557,7 +16454,8 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
 aa
 aa
 aa
@@ -16581,7 +16479,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16593,7 +16490,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16605,7 +16501,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16617,7 +16512,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16629,7 +16523,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16641,7 +16534,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16653,7 +16545,13 @@ aa
 aa
 aa
 aa
-Cv
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16679,7 +16577,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16691,7 +16588,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16703,7 +16599,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16715,7 +16610,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16727,7 +16621,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16739,7 +16632,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16751,7 +16643,13 @@ aa
 aa
 aa
 aa
-TF
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16775,7 +16673,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16787,7 +16684,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16799,7 +16695,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16811,7 +16706,6 @@ aa
 aa
 aa
 aa
-TF
 aa
 aa
 aa
@@ -16823,7 +16717,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16835,7 +16728,6 @@ aa
 aa
 aa
 aa
-Cv
 aa
 aa
 aa
@@ -16847,7 +16739,13 @@ aa
 aa
 aa
 aa
-Cv
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18324,7 +18222,7 @@ su
 su
 su
 lf
-WQ
+su
 su
 aa
 aa
@@ -18518,7 +18416,7 @@ Lp
 su
 su
 hW
-WQ
+su
 su
 su
 aa
@@ -22035,8 +21933,8 @@ aa
 aa
 lS
 lS
-yd
-yd
+am
+am
 lS
 lS
 lS
@@ -24939,12 +24837,12 @@ kx
 wG
 ar
 Xb
-PF
 Ne
 Ne
 Ne
 Ne
-PF
+Ne
+Ne
 Xb
 am
 qI
@@ -25327,12 +25225,12 @@ wG
 wG
 ar
 Xb
-PF
+Ne
 US
 gT
 Ne
 Ne
-PF
+Ne
 Xb
 DL
 lk
@@ -27662,8 +27560,8 @@ fq
 bC
 Pa
 Pa
-dc
-dc
+LD
+LD
 LD
 LD
 LD
@@ -28786,10 +28684,10 @@ ab
 ab
 gP
 mG
-OE
+vV
 oW
 pd
-oP
+vV
 my
 bb
 bG
@@ -29174,7 +29072,7 @@ ab
 ab
 jJ
 mS
-OE
+vV
 oY
 pf
 oP
@@ -29399,7 +29297,7 @@ nE
 vq
 fp
 Zu
-DA
+ON
 NI
 ce
 Im
@@ -29593,7 +29491,7 @@ sm
 nE
 fp
 gW
-DA
+ON
 eY
 ce
 Im
@@ -29785,8 +29683,8 @@ MC
 ON
 ON
 NE
-DA
-DA
+ON
+ON
 MC
 gf
 ce

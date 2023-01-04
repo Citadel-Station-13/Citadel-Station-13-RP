@@ -70,19 +70,23 @@
 	updateicon()
 
 /obj/item/robot_parts/robot_suit/proc/updateicon()
-	src.overlays.Cut()
-	if(src.l_arm)
-		src.overlays += "l_arm+o"
-	if(src.r_arm)
-		src.overlays += "r_arm+o"
-	if(src.chest)
-		src.overlays += "chest+o"
-	if(src.l_leg)
-		src.overlays += "l_leg+o"
-	if(src.r_leg)
-		src.overlays += "r_leg+o"
-	if(src.head)
-		src.overlays += "head+o"
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
+	if(l_arm)
+		overlays_to_add += "l_arm+o"
+	if(r_arm)
+		overlays_to_add += "r_arm+o"
+	if(chest)
+		overlays_to_add += "chest+o"
+	if(l_leg)
+		overlays_to_add += "l_leg+o"
+	if(r_leg)
+		overlays_to_add += "r_leg+o"
+	if(head)
+		overlays_to_add += "head+o"
+
+	add_overlay(overlays_to_add)
 
 /obj/item/robot_parts/robot_suit/proc/check_completion()
 	if(src.l_arm && src.r_arm)

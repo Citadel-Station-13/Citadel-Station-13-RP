@@ -11,7 +11,7 @@
 GLOBAL_REAL(Master, /datum/controller/master) = new
 
 //THIS IS THE INIT ORDER
-//Master -> SSPreInit -> GLOB -> world -> config -> SSInit -> Failsafe
+//Master -> SSPreInit -> GLOB -> SSSetup() -> world -> config -> SSInit -> Failsafe
 //GOT IT MEMORIZED?
 
 /datum/controller/master
@@ -72,6 +72,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		random_seed = (TEST_RUN_PARAMETER in world.params) ? 29051994 : rand(1, 1e9)
 		rand_seed(random_seed)
 
+	// 2. create subsystems
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
@@ -82,11 +83,25 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
 			tim_sort(subsytem_types, /proc/cmp_subsystem_init)
 			for(var/I in subsytem_types)
-				_subsystems += new I
+				var/datum/controller/subsystem/S = new I
+				_subsystems += S
 		Master = src
 
+	// 2. call PreInit() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.PreInit(FALSE)
+
+	// 3. set up globals
 	if(!GLOB)
 		new /datum/controller/global_vars
+
+	// 4. call Preload() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.Preload(FALSE)
 
 /datum/controller/master/Destroy()
 	..()
@@ -150,7 +165,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, "<span class='boldannounce'>[msg]</span>")
+			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -160,7 +175,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE)
 
 
@@ -178,7 +193,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	tim_sort(subsystems, /proc/cmp_subsystem_init)
@@ -195,7 +210,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 
 	if (!current_runlevel)

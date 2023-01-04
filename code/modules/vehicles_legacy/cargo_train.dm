@@ -48,7 +48,7 @@
 		cell = new cell(src)
 	key = new key_type(src)
 	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
-	overlays += I
+	add_overlay(I)
 	turn_off()	//so engine verbs are correctly set
 
 /obj/vehicle_old/train/engine/Move(var/turf/destination)
@@ -300,7 +300,7 @@
 //This prevents the object from being interacted with until it has
 // been unloaded. A dummy object is loaded instead so the loading
 // code knows to handle it correctly.
-/obj/vehicle_old/train/trolley/proc/load_object(var/atom/movable/C)
+/obj/vehicle_old/train/trolley/proc/load_object(atom/movable/C)
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
 		return 0
 	if(load || C.anchored)
@@ -319,20 +319,20 @@
 		C.pixel_y += load_offset_y
 		C.layer = layer
 
-		overlays += C
+		add_overlay(C)
 
 		//we can set these back now since we have already cloned the icon into the overlay
 		C.pixel_x = initial(C.pixel_x)
 		C.pixel_y = initial(C.pixel_y)
 		C.layer = initial(C.layer)
 
-/obj/vehicle_old/train/trolley/unload(var/mob/user, var/direction)
+/obj/vehicle_old/train/trolley/unload(mob/user, direction)
 	if(istype(load, /datum/vehicle_dummy_load))
 		var/datum/vehicle_dummy_load/dummy_load = load
 		load = dummy_load.actual_load
 		dummy_load.actual_load = null
 		qdel(dummy_load)
-		overlays.Cut()
+		cut_overlays()
 	..()
 
 //-------------------------------------------

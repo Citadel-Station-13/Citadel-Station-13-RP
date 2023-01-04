@@ -140,7 +140,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "bP" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/caves)
@@ -615,7 +614,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "gz" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/caves)
 "gA" = (
 /obj/machinery/light/small{
@@ -834,10 +833,6 @@
 	},
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
-"iC" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "iD" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/facility/interior/medical)
@@ -1968,9 +1963,7 @@
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost/washrooms)
 "vY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)
 "wb" = (
@@ -3180,8 +3173,8 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "HW" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/lythios43c/indoors,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "Ia" = (
 /obj/structure/transit_tube/high_velocity{
@@ -3498,6 +3491,10 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
+"Ma" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/outpost/mining_main/outpost)
 "Mb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3792,11 +3789,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
-"PO" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/storage)
 "PP" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rwest_mining/caves)
@@ -3835,8 +3827,7 @@
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Qe" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "Qh" = (
@@ -4420,11 +4411,10 @@
 /turf/simulated/floor/outdoors/lava/indoors/geothermal,
 /area/rift/geothermal)
 "VW" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "VZ" = (
@@ -4794,12 +4784,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Zz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)
 "ZB" = (
@@ -25275,7 +25263,7 @@ Sn
 Sn
 Sn
 Sn
-iC
+Sn
 Sn
 Sn
 Sn
@@ -35368,7 +35356,7 @@ dI
 ir
 ii
 YS
-Ou
+Ma
 Hg
 xF
 ga
@@ -35760,9 +35748,9 @@ ga
 hK
 ga
 ga
-Ou
-Ou
-Ou
+Ma
+Ma
+Ma
 ox
 BS
 Qn
@@ -35770,7 +35758,7 @@ WW
 IZ
 Qn
 Qn
-Ou
+Ma
 ga
 ga
 ga
@@ -36338,7 +36326,7 @@ ir
 ir
 ii
 Wm
-Ou
+Ma
 xd
 CM
 sM
@@ -36532,7 +36520,7 @@ ir
 ir
 ii
 YS
-Ou
+Ma
 TL
 lR
 Mn
@@ -36726,7 +36714,7 @@ ir
 ir
 ii
 Wm
-Ou
+Ma
 QE
 mi
 Ce
@@ -37308,7 +37296,7 @@ Dh
 Dh
 tH
 Sv
-PO
+vY
 tB
 KA
 gY
@@ -37502,7 +37490,7 @@ YV
 YV
 YV
 YV
-PO
+vY
 XF
 KR
 pD
@@ -37696,7 +37684,7 @@ up
 Dy
 Yn
 dK
-PO
+vY
 aG
 KC
 aG
@@ -37890,7 +37878,7 @@ xa
 mJ
 XY
 dK
-PO
+vY
 ET
 ET
 Hw
@@ -38085,13 +38073,13 @@ mJ
 XY
 bc
 Wk
-PO
-PO
-PO
+vY
+vY
+vY
 Wk
-PO
-PO
-PO
+vY
+vY
+vY
 Wk
 wn
 VW

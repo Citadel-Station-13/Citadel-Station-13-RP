@@ -77,7 +77,7 @@
 			return 1
 		return 0
 
-	if(speaking.language_flags & INNATE)
+	if(speaking.language_flags & LANGUAGE_INNATE)
 		return 1
 
 	//Language check.

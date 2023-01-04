@@ -284,8 +284,8 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_VOX | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX, BODYTYPE_TESHARI)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
 
 /obj/item/clothing/under/sexymime

@@ -470,16 +470,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<font color=#4F49AF>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</font>")
 		to_chat(src, "<font color=#4F49AF>Heat Capacity: [round(environment.heat_capacity(),0.1)]</font>")
 
-/mob/observer/dead/verb/check_radiation()
-	set name = "Check Radiation"
-	set category = "Ghost"
-
-	var/turf/t = get_turf(src)
-	if(t)
-		var/rads = SSradiation.get_rads_at_turf(t)
-		to_chat(src, "<span class='notice'>Radiation level: [rads ? rads : "0"] Bq.</span>")
-
-
 /mob/observer/dead/verb/become_mouse()
 	set name = "Become mouse"
 	set category = "Ghost"
@@ -789,7 +779,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		if(choice)
 			icon = 'icons/mob/ghost.dmi'
-			overlays.Cut()
+			cut_overlays()
 
 			if(icon_state && icon)
 				previous_state = icon_state
@@ -820,9 +810,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(PP.pai == null)
 				count++
 				PP.icon = 'icons/obj/pda_vr.dmi'
-				PP.overlays += "pai-ghostalert"
+				PP.add_overlay("pai-ghostalert")
 				spawn(54)
-					PP.overlays.Cut()
+					PP.cut_overlays()
 		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
 	else
 		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")

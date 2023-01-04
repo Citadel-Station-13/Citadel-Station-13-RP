@@ -144,11 +144,11 @@
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
-/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/vent_icon = "vent"
 
@@ -166,7 +166,7 @@
 	else
 		vent_icon += "[pump_direction ? "out" : "in"]"
 
-	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
+	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
 
 /obj/machinery/atmospherics/component/unary/vent_pump/update_underlays()
 	if(..())

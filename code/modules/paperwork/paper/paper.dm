@@ -163,15 +163,15 @@
 		onclose(usr, "[name]")
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user.zone_sel.selecting == O_EYES)
-		user.visible_message("<span class='notice'>You show the paper to [M]. </span>", \
-			"<span class='notice'> [user] holds up a paper and shows it to [M]. </span>")
-		M.examinate(src)
-
+		user.visible_message("<span class='notice'>You show the paper to [target]. </span>", \
+			"<span class='notice'> [user] holds up a paper and shows it to [target]. </span>")
+		target.examinate(src)
 	else if(user.zone_sel.selecting == O_MOUTH) // lipstick wiping
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		if(ishuman(target))
+			var/mob/living/carbon/human/H = target
 			if(H == user)
 				to_chat(user, "<span class='notice'>You wipe off the lipstick with [src].</span>")
 				H.lip_style = null
@@ -184,6 +184,7 @@
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
 					H.update_icons_body()
+	return ..()
 
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
@@ -226,7 +227,7 @@
 	info_links = info
 	var/i = 0
 	for(i=1,i<=fields,i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
+		addtofield(i, "<font face=\"[deffont]\"><a href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
 
@@ -235,7 +236,7 @@
 	stamps = null
 	free_space = MAX_PAPER_MESSAGE_LEN
 	stamped = list()
-	overlays.Cut()
+	cut_overlays()
 	updateinfolinks()
 	update_icon()
 
@@ -507,7 +508,7 @@
 		if(!stamped)
 			stamped = new
 		stamped += P.type
-		overlays += stampoverlay
+		add_overlay(stampoverlay)
 
 		to_chat(user, "<span class='notice'>You stamp the paper with your rubber stamp.</span>")
 

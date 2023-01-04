@@ -119,9 +119,10 @@
 	. = ..()
 	embedded_flash = new(src)
 
-/obj/item/shield/riot/flash/attack(mob/living/M, mob/user)
-	. =  embedded_flash.attack(M, user)
-	update_icon()
+/obj/item/shield/riot/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	return embedded_flash.attack_mob(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/living/carbon/user)
 	. = embedded_flash.attack_self(user)
@@ -130,7 +131,7 @@
 /obj/item/shield/riot/flash/handle_shield(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
 	if (. && damage && !embedded_flash.broken)
-		embedded_flash.attack()
+		embedded_flash.melee_attack_chain()
 		update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
@@ -289,7 +290,7 @@
 	icon_state = "eshield"
 	item_state = "eshield"
 	slot_flags = SLOT_EARS
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	force = 3.0
 	throw_force = 5.0
 	throw_speed = 1

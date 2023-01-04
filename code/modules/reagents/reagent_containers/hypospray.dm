@@ -12,7 +12,7 @@
 	unacidable = 1
 	volume = 30
 	possible_transfer_amounts = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
@@ -29,14 +29,14 @@
 				reagents.add_reagent(r, filled_reagents[r])
 	update_icon()
 
-/obj/item/reagent_containers/hypospray/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 		return
-	if (!istype(M))
+	if (!ishuman(target))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
@@ -59,9 +59,7 @@
 					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
 					if(!do_after(user, 30, H))
 						return
-
 	do_injection(H, user)
-	return
 
 // This does the actual injection and transfer.
 /obj/item/reagent_containers/hypospray/proc/do_injection(mob/living/carbon/human/H, mob/living/user)
@@ -121,7 +119,7 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			if(W.is_open_container())
-				W.flags ^= OPENCONTAINER
+				W.atom_flags ^= OPENCONTAINER
 				W.update_icon()
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
@@ -156,13 +154,13 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 	icon_state = "[initial(icon_state)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
@@ -375,7 +373,7 @@
 	amount_per_transfer_from_this = 20
 	volume = 20
 	filled = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_BIO = 4, TECH_ILLEGAL = 3)
 	filled_reagents = list("impedrezene" = 15, "toxin" = 5)
 	preserve_item = 0
@@ -390,7 +388,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 
 	icon_state = "[initial(icon_state)]_used"
 
@@ -404,7 +402,7 @@
 	else
 		return
 
-/obj/item/reagent_containers/hypospray/glukoz/attack(mob/living/H as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/glukoz/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(closed)
 		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
 		return
@@ -412,13 +410,13 @@
 		to_chat(user, "<span class='notice'>This [src] is empty!</span>")
 		return
 	if(!closed)
-		do_injection(H, user)
+		do_injection(target, user)
 		return
 
 /obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		to_chat(user, "<span class='notice'>You jab the [src] needle into your skin!</span>")
 		icon_state = "[initial(icon_state)]_used"
 		filled = 0

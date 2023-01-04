@@ -2,34 +2,43 @@
 // WHOEVER WROTE THIS IS HIGH
 // I might do this soon, if I don't, bully me. @Zandario
 //Interactions
-/turf/simulated/wall/proc/toggle_open(var/mob/user)
-
+/turf/simulated/wall/proc/toggle_open(mob/user)
 	if(can_open == WALL_OPENING)
 		return
 
-	SSradiation.resistance_cache.Remove(src)
+	can_open = WALL_OPENING
 
 	if(density)
-		can_open = WALL_OPENING
-		//flick("[material.icon_base]fwall_opening", src)
-		density = 0
+		update_underlay(TRUE)
 		blocks_air = FALSE
-		update_icon()
-		update_air()
-		set_opacity(0)
-		queue_zone_update()
+		set_density(FALSE)
+		set_opacity(FALSE)
+		flick("fwall_opening", src)
 	else
-		can_open = WALL_OPENING
-		//flick("[material.icon_base]fwall_closing", src)
-		density = 1
+		update_underlay(FALSE)
 		blocks_air = TRUE
-		update_icon()
-		update_air()
-		set_opacity(1)
-		queue_zone_update()
+		set_density(TRUE)
+		set_opacity(TRUE)
+		flick("fwall_closing", src)
+
+	update_appearance()
+	update_air()
 
 	can_open = WALL_CAN_OPEN
-	update_icon()
+
+// IF I CATCH YOU USING THIS YOU'RE DEAD @Zandario
+/// Set mode to TRUE to add the baseturf underlay, set to FALSE to remove.
+/turf/simulated/wall/proc/update_underlay(mode = TRUE)
+	if(!mode)
+		underlays.Cut()
+
+	var/mutable_appearance/under_ma
+	under_ma = new()
+	under_ma.icon = 'icons/turf/flooring/plating_vr.dmi'
+	under_ma.icon_state = "plating"
+
+	underlays += under_ma
+
 
 /turf/simulated/wall/proc/update_air()
 	update_thermal(src)
@@ -91,10 +100,11 @@
 		if(!material.wall_touch_special(src, user))
 			to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
-	else
-		toggle_open(user)
-	return 0
+		return 0
 
+	toggle_open(user)
+
+	return 0
 
 /turf/simulated/wall/attack_hand(var/mob/user)
 

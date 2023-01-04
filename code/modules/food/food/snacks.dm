@@ -4,7 +4,7 @@
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -47,7 +47,15 @@
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	attempt_feed(target, user)
+
+/obj/item/reagent_containers/food/snacks/proc/attempt_feed(mob/living/M, mob/living/user)
+	if(!istype(M) || !istype(user))
+		return
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
@@ -144,7 +152,7 @@
 	else
 		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
-/obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/storage))
 		. = ..() // -> item/attackby()
 		return
@@ -165,12 +173,12 @@
 				"<font color=#4F49AF>You scoop up some [src] with \the [U]!</font>" \
 			)
 
-			src.bitecount++
-			U.overlays.Cut()
+			bitecount++
+			U.cut_overlays()
 			U.loaded = "[src]"
 			var/image/I = new(U.icon, "loadedfood")
-			I.color = src.filling_color
-			U.overlays += I
+			I.color = filling_color
+			U.add_overlay(I)
 
 			reagents.trans_to_obj(U, min(reagents.total_volume,5))
 
@@ -180,11 +188,11 @@
 
 	if (is_sliceable())
 		//these are used to allow hiding edge items in food that is not on a table/tray
-		var/can_slice_here = isturf(src.loc) && ((locate(/obj/structure/table) in src.loc) || (locate(/obj/machinery/optable) in src.loc) || (locate(/obj/item/tray) in src.loc))
+		var/can_slice_here = isturf(loc) && ((locate(/obj/structure/table) in loc) || (locate(/obj/machinery/optable) in loc) || (locate(/obj/item/tray) in loc))
 		var/hide_item = !has_edge(W) || !can_slice_here
 
 		if (hide_item)
-			if (W.w_class >= src.w_class || is_robot_module(W))
+			if (W.w_class >= w_class || is_robot_module(W))
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -207,7 +215,7 @@
 
 			var/reagents_per_slice = reagents.total_volume/slices_num
 			for(var/i=1 to (slices_num-slices_lost))
-				var/obj/slice = new slice_path (src.loc)
+				var/obj/slice = new slice_path (loc)
 				reagents.trans_to_obj(slice, reagents_per_slice)
 			qdel(src)
 			return
@@ -1801,7 +1809,7 @@
 /obj/item/reagent_containers/food/snacks/monkeycube
 	name = "monkey cube"
 	desc = "Just add water!"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
@@ -1831,7 +1839,7 @@
 	desc = "Just add water!"
 	to_chat(user, "You unwrap the cube.")
 	wrapped = 0
-	flags |= OPENCONTAINER
+	atom_flags |= OPENCONTAINER
 	return
 
 /obj/item/reagent_containers/food/snacks/monkeycube/On_Consume(var/mob/M)
@@ -1849,7 +1857,7 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped
 	desc = "Still wrapped in some paper."
 	icon_state = "monkeycubewrap"
-	flags = 0
+	atom_flags = 0
 	wrapped = 1
 
 /obj/item/reagent_containers/food/snacks/monkeycube/farwacube
@@ -3158,7 +3166,8 @@
 
 /obj/item/pizzabox/update_icon()
 
-	overlays = list()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	// Set appropriate description
 	if( open && pizza )
@@ -3186,7 +3195,7 @@
 		if( pizza )
 			var/image/pizzaimg = image(icon = pizza.icon, icon_state = pizza.icon_state)
 			pizzaimg.pixel_y = -3
-			overlays += pizzaimg
+			overlays_to_add += pizzaimg
 
 		return
 	else
@@ -3203,9 +3212,10 @@
 		if( doimgtag )
 			var/image/tagimg = image("food.dmi", icon_state = "pizzabox_tag")
 			tagimg.pixel_y = boxes.len * 3
-			overlays += tagimg
+			overlays_to_add += tagimg
 
 	icon_state = "pizzabox[boxes.len+1]"
+	add_overlay(overlays_to_add)
 
 /obj/item/pizzabox/attack_hand( mob/user as mob )
 
@@ -4002,11 +4012,12 @@ END CITADEL CHANGE */
 	color = "#FFFFFF" //Some fruits use the color var. Reset this so it doesnt tint the batter
 	I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
 	I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_raw),ICON_MULTIPLY)
-	var/image/J = image(I)
-	J.alpha = 200
-	J.blend_mode = BLEND_OVERLAY
-	J.tag = "coating"
-	overlays += J
+
+	var/image/coating_image = image(I)
+	coating_image.alpha = 200
+	coating_image.blend_mode = BLEND_OVERLAY
+	coating_image.tag = "coating"
+	add_overlay(coating_image)
 
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] dips \the [src] into \the [coating.name]"), SPAN_NOTICE("You dip \the [src] into \the [coating.name]"))
@@ -4034,10 +4045,10 @@ END CITADEL CHANGE */
 		color = "#FFFFFF" //Some fruits use the color var
 		I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
 		I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_cooked),ICON_MULTIPLY)
-		var/image/J = image(I)
-		J.alpha = 200
-		J.tag = "coating"
-		overlays += J
+		var/image/coating_image = image(I)
+		coating_image.alpha = 200
+		coating_image.tag = "coating"
+		add_overlay(coating_image)
 
 
 		if (do_coating_prefix == 1)

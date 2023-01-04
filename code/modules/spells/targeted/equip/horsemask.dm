@@ -30,7 +30,7 @@
 
 /spell/targeted/equip_item/horsemask/summon_item(var/new_type)
 	var/obj/item/new_item = new new_type
-	ADD_TRAIT(new_item, TRAIT_NODROP, MAGIC_TRAIT)
+	ADD_TRAIT(new_item, TRAIT_ITEM_NODROP, MAGIC_TRAIT)
 	new_item.unacidable = 1
 	if(istype(new_item, /obj/item/clothing/mask/horsehead))
 		var/obj/item/clothing/mask/horsehead/magichead = new_item

@@ -14,12 +14,12 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
-	if (!istype (M, /mob/living/silicon/decoy))
+/obj/item/aicard/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!istype(target, /mob/living/silicon/decoy))
 		return ..()
-	else
-		M.death()
-		to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	target.death()
+	to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/aicard/attack_self(mob/user)
 
@@ -86,10 +86,10 @@
 	return 1
 
 /obj/item/aicard/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aicard-on")
+			add_overlay(image('icons/obj/pda.dmi', "aicard-on"))
 		if(carded_ai.stat)
 			icon_state = "aicard-404"
 		else
@@ -170,10 +170,10 @@
 	icon_state = "aitater"
 
 /obj/item/aicard/aitater/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aitater-on")
+			add_overlay(image('icons/obj/pda.dmi', "aitater-on"))
 		if(carded_ai.stat)
 			icon_state = "aitater-404"
 		else
@@ -187,10 +187,10 @@
 	icon_state = "aispook"
 
 /obj/item/aicard/aispook/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aispook-on")
+			add_overlay(image('icons/obj/pda.dmi', "aispook-on"))
 		if(carded_ai.stat)
 			icon_state = "aispook-404"
 		else

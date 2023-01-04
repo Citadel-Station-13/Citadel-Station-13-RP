@@ -95,7 +95,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT // so it doesn't react until you light it
+	atom_flags |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	if(smoketime && !max_smoketime)
 		max_smoketime = smoketime
@@ -173,7 +173,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			e.start()
 			qdel(src)
 			return
-		flags &= ~NOREACT // allowing reagents to react after being lit
+		atom_flags &= ~NOREACT // allowing reagents to react after being lit
 		reagents.handle_reactions()
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
@@ -216,15 +216,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/clothing/mask/smokable/attack(mob/living/carbon/human/H, mob/user, def_zone)
+/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
 			to_chat(H, "<span class='warning'>\The [blocked] is in the way!</span>")
-			return 1
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(H, "<span class='notice'>You take a drag on your [name].</span>")
 		smoke(5)
-		return 1
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/clothing/mask/smokable/attackby(obj/item/W as obj, mob/user as mob)
@@ -246,11 +247,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		text = replacetext(text, "FLAME", "[W.name]")
 		light(text)
 
-/obj/item/clothing/mask/smokable/attack(var/mob/living/M, var/mob/living/user, def_zone)
-	if(istype(M) && M.on_fire)
-		user.do_attack_animation(M)
-		light("<span class='notice'>[user] coldly lights the [name] with the burning body of [M].</span>")
-		return 1
+/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(istype(L) && L.on_fire)
+		user.do_attack_animation(L)
+		light("<span class='notice'>[user] coldly lights the [name] with the burning body of [L].</span>")
+		return
 	else
 		return ..()
 
@@ -627,28 +629,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
-	return
 
-
-/obj/item/flame/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M, /mob))
-		return
-
+/obj/item/flame/lighter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
+	if(!istype(H))
+		return ..()
 	if(lit == 1)
-		M.IgniteMob()
-		add_attack_logs(user,M,"Lit on fire with [src]")
-
-	if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.zone_sel.selecting == O_MOUTH && lit)
-		var/obj/item/clothing/mask/smokable/cigarette/cig = M.wear_mask
-		if(M == user)
+		H.IgniteMob()
+		add_attack_logs(user,H,"Lit on fire with [src]")
+	if(istype(H.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.zone_sel.selecting == O_MOUTH && lit)
+		var/obj/item/clothing/mask/smokable/cigarette/cig = H.wear_mask
+		if(H == user)
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/flame/lighter/zippo))
-				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
+				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [H].</span>")
 			else
-				cig.light("<span class='notice'>[user] holds the [name] out for [M], and lights the [cig.name].</span>")
-	else
-		..()
+				cig.light("<span class='notice'>[user] holds the [name] out for [H], and lights the [cig.name].</span>")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)

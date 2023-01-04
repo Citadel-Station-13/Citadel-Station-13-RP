@@ -117,10 +117,8 @@ var/list/fusion_reactions
 	var/turf/origin = get_turf(holder)
 	holder.Rupture()
 	qdel(holder)
-	var/radiation_level = 200
 
-	// Copied from the SM for proof of concept. //Not any more --Cirra //Use the whole z proc --Leshana
-	SSradiation.z_radiate(locate(1, 1, holder.z), radiation_level, 1)
+	radiation_pulse(holder, 7500, RAD_FALLOFF_ENGINE_FUSION)
 
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)

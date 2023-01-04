@@ -558,7 +558,7 @@
 	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-10)
-	holder.radiation = max(holder.radiation - 50, 0)
+	holder.cure_radiation(RAD_MOB_CURE_PROTEAN_REGEN)
 
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ

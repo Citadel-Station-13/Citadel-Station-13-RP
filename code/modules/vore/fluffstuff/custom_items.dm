@@ -212,10 +212,12 @@
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
-/obj/item/flag/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/flag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
-
+		user.visible_message("<span class='warning'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
 
 /obj/item/flag/federation
 	name = "Federation Banner"
@@ -281,7 +283,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "holochain_mob"
 
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	slot_flags = SLOT_BELT
 	force = 10
 	throw_force = 3
@@ -1170,10 +1172,13 @@
 	icon_state = "hisstective_badge"
 	//slot_flags = SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
-		user.do_attack_animation(M)
+		user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
+		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user as mob)
@@ -1210,10 +1215,12 @@
 	name = "Lesser Form Injector"
 	desc = "Turn the user into their lesser, more primal form."
 
-/obj/item/fluff/injector/monkey/attack(mob/living/M, mob/living/user)
-
-	if(usr == M) //Is the person using it on theirself?
-		if(ishuman(M)) //If so, monkify them.
+/obj/item/fluff/injector/monkey/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(usr == target) //Is the person using it on theirself?
+		if(ishuman(target)) //If so, monkify them.
 			var/mob/living/carbon/human/H = user
 			H.monkeyize()
 			qdel(src) //One time use.
@@ -1224,10 +1231,12 @@
 	name = "Numbing Venom Injector"
 	desc = "Injects the user with a high dose of some type of chemical, causing any chemical glands they have to kick into overdrive and create the production of a numbing enzyme that is injected via bites.."
 
-/obj/item/fluff/injector/numb_bite/attack(mob/living/M, mob/living/user)
-
-	if(usr == M) //Is the person using it on theirself?
-		if(ishuman(M)) //Give them numbing bites.
+/obj/item/fluff/injector/numb_bite/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(usr == target) //Is the person using it on theirself?
+		if(ishuman(target)) //Give them numbing bites.
 			var/mob/living/carbon/human/H = user
 			H.species.give_numbing_bite() //This was annoying, but this is the easiest way of performing it.
 			qdel(src) //One time use.

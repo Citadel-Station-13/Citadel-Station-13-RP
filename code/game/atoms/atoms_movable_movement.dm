@@ -1,14 +1,24 @@
 /**
-  * Hook for running code when a dir change occurs
-  *
-  * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
-  */
+ * Hook for running code when a dir change occurs
+ *
+ * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ */
 /atom/proc/setDir(newdir)
 	if(dir == newdir)
 		return FALSE
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
+
+	if (light_source_solo)
+		if (light_source_solo.light_angle)
+			light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		for (var/thing in light_source_multi)
+			L = thing
+			if (L.light_angle)
+				L.source_atom.update_light()
 	return TRUE
 
 ////////////////////////////////////////
@@ -399,14 +409,28 @@
 		pulledby?.stop_pulling()
 		if(pulling)
 			stop_pulling()
+		var/old_z
 		if (loc)
 			var/atom/oldloc = loc
 			var/area/old_area = get_area(oldloc)
+			var/turf/oldturf = get_turf(oldloc)
 			oldloc.Exited(src, null)
 			if(old_area)
 				old_area.Exited(src, null)
+			if(oldturf)
+				old_z = oldturf.z
 		loc = null
+		// guh - hate that this is needed
+		if(old_z)
+			onTransitZ(old_z, null)	// GUH, THIS HURTS
 
+/**
+ * called recursively to anything that changes zlevels
+ *
+ * @params
+ * - old_z - real z index; null if coming from nullspace
+ * - new_z - real z index; null if going to nullspace
+ */
 /atom/movable/proc/onTransitZ(old_z,new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.

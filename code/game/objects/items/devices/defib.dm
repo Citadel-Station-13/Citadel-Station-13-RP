@@ -41,6 +41,8 @@
 
 
 /obj/item/defib_kit/update_icon()
+
+	cut_overlays()
 	var/list/new_overlays = list()
 
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
@@ -59,7 +61,7 @@
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
 
-	overlays = new_overlays
+	add_overlay(new_overlays)
 
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()
@@ -334,35 +336,30 @@
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/shockpaddles/attack(mob/living/M, mob/living/user, var/target_zone)
-	var/mob/living/carbon/human/H = M
+/obj/item/shockpaddles/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
 	if(!istype(H) || user.a_intent == INTENT_HARM)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
-
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(can_use(user, H))
 		busy = 1
 		update_icon()
-
 		do_revive(H, user)
-
 		busy = 0
 		update_icon()
-
-	return 1
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(ishuman(target) && can_use(user, target))
+/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(ishuman(L) && can_use(user, L))
 		busy = 1
 		update_icon()
-
-		do_electrocute(target, user, hit_zone)
-
+		do_electrocute(L, user, target_zone)
 		busy = 0
 		update_icon()
-
-		return 1
-
+		return NONE
 	return ..()
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
@@ -591,12 +588,13 @@
 	return 1
 
 /obj/item/shockpaddles/standalone/checked_use(var/charge_amt)
-	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
+	radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB)
 	return 1
 
 /obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
-		SSradiation.radiate(src, fail_counter--)
+		fail_counter--
+		radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB_FAIL)
 	else
 		STOP_PROCESSING(SSobj, src)
 

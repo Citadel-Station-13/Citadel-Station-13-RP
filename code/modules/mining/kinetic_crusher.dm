@@ -85,14 +85,6 @@
 		return TRUE
 	return !ishuman(victim) && !issilicon(victim)
 
-/// triggered on wield of two handed item
-/obj/item/kinetic_crusher/proc/on_wield(obj/item/source, mob/user)
-	wielded = TRUE
-
-/// triggered on unwield of two handed item
-/obj/item/kinetic_crusher/proc/on_unwield(obj/item/source, mob/user)
-	wielded = FALSE
-
 /obj/item/kinetic_crusher/examine(mob/living/user)
 	. = ..()
 	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
@@ -121,21 +113,24 @@
 		return ..()
 */
 
-/obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
+/obj/item/kinetic_crusher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return ..()
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
-	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
-	var/target_health = target.health
-	..()
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/target_health = L.health
+	. = ..()
 /*
 	for(var/t in trophies)
-		if(!QDELETED(target))
+		if(!QDELETED(L))
 			var/obj/item/crusher_trophy/T = t
-			T.on_melee_hit(target, user)
+			T.on_melee_hit(L, user)
 */
-	if(!QDELETED(C) && !QDELETED(target))
-		C.total_damage += target_health - target.health //we did some damage, but let's not assume how much we did
+	if(!QDELETED(C) && !QDELETED(L))
+		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
 /obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	. = ..()
@@ -184,7 +179,7 @@
 			C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 		new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 		var/backstab_dir = get_dir(user, L)
-		var/def_check = L.getarmor(type = "bomb")
+		var/def_check = L.run_mob_armor(type = "bomb")
 		var/detonation_damage = src.detonation_damage * (!ishuman(L)? 1 : human_damage_nerf)
 		var/backstab_bonus = src.backstab_bonus * (!ishuman(L)? 1 : human_backstab_nerf)
 		var/thrown_bonus = thrown? (src.thrown_bonus * (!ishuman(L)? 1 : human_damage_nerf)) : 0

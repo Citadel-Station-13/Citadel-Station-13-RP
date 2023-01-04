@@ -103,7 +103,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 		//Get out of the way, ankles!
 		for (var/mob/living/L in T)
-			attack(L)
+			melee_attack_chain(L, user)
 
 		if (!is_blocked_turf(T))
 			T.clean(src, user, 1)

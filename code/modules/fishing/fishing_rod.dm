@@ -79,10 +79,10 @@
 	return ..()
 
 /obj/item/material/fishing_rod/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(strung)
-		overlays += image(icon, "[icon_state]_string")
+		add_overlay(image(icon, "[icon_state]_string"))
 
 /obj/item/material/fishing_rod/proc/update_bait()
 	if(istype(Bait, bait_type))
@@ -102,13 +102,6 @@
 		Bait = null
 		return TRUE
 	return FALSE
-
-/obj/item/material/fishing_rod/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(cast)
-		to_chat(user, "<span class='notice'>You cannot cast \the [src] when it is already in use!</span>")
-		return FALSE
-	update_bait()
-	return ..()
 
 /obj/item/material/fishing_rod/modern
 	name = "fishing rod"

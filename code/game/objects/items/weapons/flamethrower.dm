@@ -44,16 +44,21 @@
 		location.hotspot_expose(700, 2)
 
 /obj/item/flamethrower/update_icon()
-	overlays.Cut()
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
 	if(igniter)
-		overlays += "+igniter[status]"
+		overlays_to_add += "+igniter[status]"
 	if(ptank)
-		overlays += "+ptank"
+		overlays_to_add += "+ptank"
 	if(lit)
-		overlays += "+lit"
+		overlays_to_add += "+lit"
 		item_state = "flamethrower_1"
 	else
 		item_state = "flamethrower_0"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 /obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)

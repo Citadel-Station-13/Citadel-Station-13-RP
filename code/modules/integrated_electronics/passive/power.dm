@@ -111,7 +111,7 @@
 	extended_desc = "This is effectively an internal beaker.  It will consume and produce power from phoron, slime jelly, welding fuel, carbon,\
 	 ethanol, and nutriments, in order of decreasing efficiency.  It will consume fuel only if the battery can take more energy.  Blood is also able to be used as \
 	 a source of organic fuel; blood from sapient creatures is more efficient."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 4
 	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)

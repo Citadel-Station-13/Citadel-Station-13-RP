@@ -19,7 +19,7 @@
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /mob/new_player/verb/new_player_panel()
@@ -30,6 +30,8 @@
 /mob/new_player/proc/new_player_panel_proc()
 	if(age_gate_result == null && client.prefs && !client.is_preference_enabled(/datum/client_preference/debug/age_verified)) // run first time verification
 		verifyage()
+	if(!client)
+		return	// verifyage sleeps what the fuck
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"

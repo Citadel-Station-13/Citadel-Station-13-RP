@@ -39,8 +39,9 @@ HALOGEN COUNTER	- Radcount on mobs
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/healthanalyzer/attack(mob/living/M, mob/living/user)
-	scan_mob(M, user)
+/obj/item/healthanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	scan_mob(target, user)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
 	var/dat = ""
@@ -405,7 +406,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
 	w_class = ITEMSIZE_SMALL
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	throw_force = 5
 	throw_speed = 4
@@ -485,7 +486,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		return
 
 	if(!isnull(O.reagents))
-		if(!(O.flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
+		if(!(O.atom_flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
 			to_chat(user, SPAN_WARNING( "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
 			return
 
@@ -526,11 +527,12 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_range = 7
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/obj/item/slime_scanner/attack(mob/living/M as mob, mob/living/user as mob)
-	if(!istype(M, /mob/living/simple_mob/slime/xenobio))
+/obj/item/slime_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!istype(target, /mob/living/simple_mob/slime/xenobio))
 		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")
 		return
-	var/mob/living/simple_mob/slime/xenobio/S = M
+	var/mob/living/simple_mob/slime/xenobio/S = target
 	user.show_message("Slime scan results:<br>[S.slime_color] [S.is_adult ? "adult" : "baby"] slime<br>Health: [S.health]<br>Mutation Probability: [S.mutation_chance]")
 
 	var/list/mutations = list()
@@ -557,27 +559,5 @@ HALOGEN COUNTER	- Radcount on mobs
 		user.show_message("Subject is friendly to other slime colors.")
 
 	user.show_message("Growth progress: [S.amount_grown]/10")
-
-/obj/item/halogen_counter
-	name = "halogen counter"
-	icon_state = "eftpos"
-	icon = 'icons/obj/device.dmi'
-	desc = "A hand-held halogen counter, used to detect the level of irradiation of living beings."
-	w_class = ITEMSIZE_SMALL
-	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 2)
-	throw_force = 0
-	throw_speed = 3
-	throw_range = 7
-
-/obj/item/halogen_counter/attack(mob/living/M as mob, mob/living/user as mob)
-	if(!iscarbon(M))
-		to_chat(user, "<span class='warning'>This device can only scan organic beings!</span>")
-		return
-	user.visible_message("<span class='warning'>\The [user] has analyzed [M]'s radiation levels!</span>", "<span class='notice'>Analyzing Results for [M]:</span>")
-	if(M.radiation)
-		to_chat(user, "<span class='notice'>Radiation Level: [M.radiation]</span>")
-	else
-		to_chat(user, "<span class='notice'>No radiation detected.</span>")
-	return
 
 #undef DEFIB_TIME_LIMIT

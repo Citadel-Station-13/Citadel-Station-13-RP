@@ -214,7 +214,8 @@
 
 /obj/effect/alien/weeds/proc/updateWeedOverlays()
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(!weedImageCache || !weedImageCache.len)
 		weedImageCache = list()
@@ -230,16 +231,18 @@
 	var/turf/W = get_step(src, WEST)
 	if(!locate(/obj/effect/alien) in N.contents)
 		if(istype(N, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_SOUTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_SOUTH_EDGING]
 	if(!locate(/obj/effect/alien) in S.contents)
 		if(istype(S, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_NORTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_NORTH_EDGING]
 	if(!locate(/obj/effect/alien) in E.contents)
 		if(istype(E, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_WEST_EDGING]
+			overlays_to_add += weedImageCache[WEED_WEST_EDGING]
 	if(!locate(/obj/effect/alien) in W.contents)
 		if(istype(W, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_EAST_EDGING]
+			overlays_to_add += weedImageCache[WEED_EAST_EDGING]
+
+	add_overlay(overlays_to_add)
 
 /obj/effect/alien/weeds/proc/fullUpdateWeedOverlays()
 	for (var/obj/effect/alien/weeds/W in range(1,src))
@@ -321,10 +324,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	if(W.attack_verb.len)
-		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		visible_message("<span class='danger'>\The [src] have been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
 	var/damage = W.force / 4.0
 
@@ -526,10 +526,7 @@ Alien plants should do something if theres a lot of poison
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
-	if(W.attack_verb.len)
-		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))

@@ -10,7 +10,7 @@
 	desc = "Just your average condiment container."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "emptycondiment"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = list("x"=16, "y"=6)
 	volume = 50
@@ -21,9 +21,11 @@
 /obj/item/reagent_containers/food/condiment/attack_self(var/mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/condiment/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(standard_feed_mob(user, M))
-		return
+/obj/item/reagent_containers/food/condiment/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/food/condiment/afterattack(var/obj/target, var/mob/user, var/flag)
 	if(standard_dispenser_refill(user, target))

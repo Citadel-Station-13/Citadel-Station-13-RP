@@ -13,7 +13,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/poi/pascalb/process(delta_time)
-	SSradiation.radiate(src, 5)
+	radiation_pulse(src, RAD_INTENSITY_POI_MANHOLE_COVER)
 
 /obj/item/poi/pascalb/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -41,7 +41,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/poi/brokenoldreactor/process(delta_time)
-	SSradiation.radiate(src, 25)
+	radiation_pulse(src, RAD_INTENSITY_POI_REACTOR_RACK)
 
 /obj/item/poi/brokenoldreactor/Destroy()
 	STOP_PROCESSING(SSobj, src)

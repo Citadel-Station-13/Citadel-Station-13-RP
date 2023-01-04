@@ -1,20 +1,41 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
+	abstract_type = /turf
+
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
 
+	//! Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
 	var/holy = 0
 
-	// Atmospherics / ZAS Environmental
-	/// Initial air contents, as a specially formatted gas string.
+	//! atmospherics
+	/**
+	 * the gas we start out as
+	 * can be:
+	 * - a gas string (will be parsed)
+	 * - an atmosphere id (use defines please)
+	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	// End
+	//! outdoors
+	/**
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
+	 */
+	var/outdoors = FALSE
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -62,9 +83,6 @@
 
 	var/list/footstep_sounds = null
 
-	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
-	var/outdoors = FALSE
-
 	/// If true, most forms of teleporting to or from this turf tile will fail.
 	var/block_tele = FALSE
 	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
@@ -73,6 +91,22 @@
 	var/list/dangerous_objects
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
+
+	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
+	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
+	// roofing tile). By default, it will ask the area for the state to use, and will update on
+	// area change. When dealing with weather, it will check the entire z-column for interruptions
+	// that will prevent it from using its own state, so a floor above a level will generally
+	// override both area is_outside, and turf is_outside. The only time the base value will be used
+	// by itself is if you are dealing with a non-multiz level, or the top level of a multiz chunk.
+
+	// Weather relies on is_outside to determine if it should apply to a turf or not and will be
+	// automatically updated on ChangeTurf set_outside etc. Don't bother setting it manually, it will
+	// get overridden almost immediately.
+
+	// TL;DR: just leave these vars alone.
+	// var/tmp/obj/abstract/weather_system/weather
+	var/tmp/is_outside = OUTSIDE_AREA
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
@@ -85,11 +119,11 @@
  *
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
-/turf/Initialize(mapload)
+/turf/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.len = 0
@@ -98,17 +132,9 @@
 
 	levelupdate()
 
-	if(length(smoothing_groups))
-		// In case it's not properly ordered, let's avoid duplicate entries with the same values.
-		tim_sort(smoothing_groups)
-		SET_BITFLAG_LIST(smoothing_groups)
-	if(length(canSmoothWith))
-		tim_sort(canSmoothWith)
-		// If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
-		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF)
-			smoothing_flags |= SMOOTH_OBJ
-		SET_BITFLAG_LIST(canSmoothWith)
-	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+	SETUP_SMOOTHING()
+
+	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -125,12 +151,23 @@
 	if (light_power && light_range)
 		update_light()
 
+	SSambient_lighting.queued += src
+
 	if (opacity)
 		has_opaque_atom = TRUE
+
+	if (mapload && permit_ao)
+		queue_ao()
+
+	if (mz_flags & MZ_MIMIC_BELOW)
+		setup_zmimic(mapload)
 
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
+
+	if(isnull(outdoors))
+		outdoors = A.initial_outdoors
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -157,25 +194,38 @@
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
 	// QDEL_LIST(blueprint_data)
-	flags &= ~INITIALIZED
+	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
+
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (mz_flags & MZ_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (mimic_proxy)
+		QDEL_NULL(mimic_proxy)
 
 	vis_contents.len = 0
 
 	..()
 
 /turf/legacy_ex_act(severity)
-	return 0
+	return FALSE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
+
+/turf/proc/is_open()
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
 // Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -316,7 +366,7 @@
 	if(density)
 		return 1
 	for(var/atom/A in src)
-		if(A.density && !(A.flags & ON_BORDER))
+		if(A.density && !(A.atom_flags & ATOM_BORDER))
 			return 1
 	return 0
 
@@ -423,3 +473,68 @@
 			return TRUE
 */
 	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+
+/* // TODO: Implement this. @Zandario
+/turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)
+
+	if(isnull(new_weather))
+		new_weather = global.weather_by_z["[z]"]
+
+	// We have a weather system and we are exposed to it; update our vis contents.
+	if(istype(new_weather) && is_outside())
+		if(weather != new_weather)
+			if(weather)
+				remove_vis_contents(src, weather.vis_contents_additions)
+			weather = new_weather
+			add_vis_contents(src, weather.vis_contents_additions)
+			. = TRUE
+
+	// We are indoors or there is no local weather system, clear our vis contents.
+	else if(weather)
+		remove_vis_contents(src, weather.vis_contents_additions)
+		weather = null
+		. = TRUE
+
+	// Propagate our weather downwards if we permit it.
+	if(force_update_below || (is_open() && .))
+		var/turf/below = GetBelow(src)
+		if(below)
+			below.update_weather(new_weather)
+*/
+
+/turf/proc/is_outside()
+
+	// Can't rain inside or through solid walls.
+	// TODO: dense structures like full windows should probably also block weather.
+	if(density)
+		return OUTSIDE_NO
+
+	// What would we like to return in an ideal world?
+	if(is_outside == OUTSIDE_AREA)
+		var/area/A = get_area(src)
+		. = A ? A.is_outside : OUTSIDE_NO
+	else
+		. = is_outside
+
+	// Notes for future self when confused: is_open() on higher
+	// turfs must match effective is_outside value if the turf
+	// should get to use the is_outside value it wants to. If it
+	// doesn't line up, we invert the outside value (roof is not
+	// open but turf wants to be outside, invert to OUTSIDE_NO).
+
+	// Do we have a roof over our head? Should we care?
+	if(HasAbove(z))
+		var/turf/top_of_stack = src
+		while(HasAbove(top_of_stack.z))
+			top_of_stack = GetAbove(top_of_stack)
+			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+				return !.
+
+/turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
+	if(is_outside != new_outside)
+		is_outside = new_outside
+		// if(!skip_weather_update)
+		// 	update_weather()
+		SSambient_lighting.queued += src
+		return TRUE
+	return FALSE

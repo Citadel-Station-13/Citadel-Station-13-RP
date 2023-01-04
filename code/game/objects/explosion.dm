@@ -98,7 +98,7 @@
 				if(!T)
 					T = locate(x0,y0,z0)
 				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
-					if(AM.flags & ATOM_ABSTRACT)
+					if(AM.atom_flags & ATOM_ABSTRACT)
 						continue
 					LEGACY_EX_ACT(AM, dist, null)
 

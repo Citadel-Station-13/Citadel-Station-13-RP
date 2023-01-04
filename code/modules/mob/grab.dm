@@ -56,7 +56,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
 	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL
-	flags = ATOM_ABSTRACT
+	atom_flags = ATOM_ABSTRACT
 	drop_sound = null
 	pickup_sound = null
 	equip_sound = null
@@ -332,7 +332,7 @@
 
 	return 1
 
-/obj/item/grab/attack(mob/M, mob/living/user)
+/obj/item/grab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)
@@ -344,7 +344,7 @@
 	reset_kill_state() //using special grab moves will interrupt choking them
 
 	//clicking on the victim while grabbing them
-	if(M == affecting)
+	if(target == affecting)
 		if(ishuman(affecting))
 			var/mob/living/carbon/human/H = affecting
 			var/hit_zone = assailant.zone_sel.selecting
@@ -375,7 +375,7 @@
 					pin_down(affecting, assailant)
 
 	//clicking on yourself while grabbing them
-	if(M == assailant && state >= GRAB_AGGRESSIVE)
+	if(target == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
 
 /obj/item/grab/proc/reset_kill_state()

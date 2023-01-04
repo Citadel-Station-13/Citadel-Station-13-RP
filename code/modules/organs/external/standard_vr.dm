@@ -3,15 +3,17 @@
 /// For custom heads with custom parts since the base code is restricted to a single icon file.
 /obj/item/organ/external/head/vr/get_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	if(!owner || !owner.species)
 		return
+
+	var/list/overlays_to_add = list()
 
 	for(var/M in markings)
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
-		overlays |= mark_s //So when it's not on your body, it has icons
+		overlays_to_add.Add(mark_s) //So when it's not on your body, it has icons
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
 
@@ -25,11 +27,11 @@
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 			mob_icon.Blend(eyes_icon, ICON_OVERLAY)
-			overlays |= eyes_icon
+			overlays_to_add.Add(eyes_icon)
 
 	if(owner.lip_style && (species && (species.species_appearance_flags & HAS_LIPS)))
 		var/icon/lip_icon = new/icon('icons/mob/human_face.dmi', "lips_[owner.lip_style]_s")
-		overlays |= lip_icon
+		overlays_to_add.Add(lip_icon)
 		mob_icon.Blend(lip_icon, ICON_OVERLAY)
 
 	if(owner.f_style)
@@ -38,7 +40,7 @@
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_ADD)
-			overlays |= image(facial_s, "pixel_y" = head_offset)
+			overlays_to_add.Add(image(facial_s, "pixel_y" = head_offset))
 
 	if(owner.h_style && !(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR)))
 		var/datum/sprite_accessory/hair_style = GLOB.legacy_hair_lookup[owner.h_style]
@@ -46,7 +48,10 @@
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
 				hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), ICON_MULTIPLY)
-			overlays |= image(hair_s, "pixel_y" = head_offset)
+			overlays_to_add.Add(image(hair_s, "pixel_y" = head_offset))
+
+	add_overlay(overlays_to_add)
+
 	return mob_icon
 
 /obj/item/organ/external/head/vr

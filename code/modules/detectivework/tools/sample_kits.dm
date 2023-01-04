@@ -1,7 +1,7 @@
 /obj/item/sample
 	name = "forensic sample"
 	icon = 'icons/obj/forensics.dmi'
-	flags = NOPRINT
+	atom_flags = NOPRINT
 	w_class = ITEMSIZE_TINY
 	var/list/evidence = list()
 
@@ -76,23 +76,23 @@
 	name = "[initial(name)] (\the [H])"
 	icon_state = "fingerprint1"
 
-/obj/item/sample/print/attack(var/mob/living/M, var/mob/user)
-
-	if(!ishuman(M))
+/obj/item/sample/print/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return ..()
-
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(evidence && evidence.len)
-		return 0
+		user.action_feedback(SPAN_WARNING("[src] is full!"), src)
+		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 
 	if(H.gloves)
 		to_chat(user, "<span class='warning'>\The [H] is wearing gloves.</span>")
-		return 1
+		return
 
 	if(user != H && H.a_intent != "help" && !H.lying)
 		user.visible_message("<span class='danger'>\The [user] tries to take prints from \the [H], but they move away.</span>")
-		return 1
+		return
 
 	if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 		var/has_hand
@@ -105,15 +105,13 @@
 				has_hand = 1
 		if(!has_hand)
 			to_chat(user, "<span class='warning'>They don't have any hands.</span>")
-			return 1
+			return
 		user.visible_message("[user] takes a copy of \the [H]'s fingerprints.")
 		var/fullprint = H.get_full_print()
 		evidence[fullprint] = fullprint
 		copy_evidence(src)
 		name = "[initial(name)] (\the [H])"
 		icon_state = "fingerprint1"
-		return 1
-	return 0
 
 /obj/item/sample/print/copy_evidence(var/atom/supplied)
 	if(supplied.fingerprints && supplied.fingerprints.len)
@@ -122,7 +120,7 @@
 		supplied.fingerprints.Cut()
 
 /obj/item/forensics
-	flags = NOPRINT
+	atom_flags = NOPRINT
 
 /obj/item/forensics/sample_kit
 	name = "fiber collection kit"

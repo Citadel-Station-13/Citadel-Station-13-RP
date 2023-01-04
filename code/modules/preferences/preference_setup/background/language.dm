@@ -66,7 +66,7 @@
 	var/datum/character_species/CS = prefs.character_species_datum()
 	for(var/id in extraneous)
 		var/datum/language/L = SScharacters.resolve_language_id(id)
-		if((L.language_flags & WHITELISTED) && (!(L in CS.whitelist_languages)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
+		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L in CS.whitelist_languages)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
 			errors?.Add(SPAN_WARNING("[L.id] is a whitelisted language."))
 			return FALSE
 	return TRUE
@@ -100,7 +100,16 @@
  * returns max amounts we can have. doesn't take into account what we do have.
  */
 /datum/preferences/proc/extraneous_languages_max()
-	return max(character_species_datum().max_additional_languages, 0)
+	var/list/datum/lore/character_background/backgrounds = list(
+		lore_citizenship_datum(),
+		lore_origin_datum(),
+		lore_religion_datum(),
+		lore_faction_datum()
+	)
+	var/tally = character_species_datum().max_additional_languages
+	for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
+		tally += B.language_amount_mod
+	return max(tally, 0)
 
 /**
  * returns ids of languages that aren't innate to our species/background
