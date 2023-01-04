@@ -43,7 +43,7 @@
 // todo: refactor for actual on-shot or whatever
 /obj/item/ammo_casing/proc/expend()
 	. = stored
-	stored = null
+	stored = FALSE
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
