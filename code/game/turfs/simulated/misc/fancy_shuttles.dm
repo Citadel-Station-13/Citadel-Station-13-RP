@@ -50,14 +50,14 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "hull"
-	wall_masks = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	var/mutable_appearance/under_MA
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
 // Reinforced hull steel
-/turf/simulated/wall/fancy_shuttle/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	. = ..(mapload,  MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
+/turf/simulated/wall/fancy_shuttle
+	material       = /datum/material/steel/hull
+	reinf_material = /datum/material/steel/hull
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 			material.place_dismantled_product(src)
 
 	clear_plants()
-	material = get_material_by_name("placeholder")
+	material = SSmaterials.get_material(/datum/material/placeholder)
 	reinf_material = null
 	girder_material = null
 
