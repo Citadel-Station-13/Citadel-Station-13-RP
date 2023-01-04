@@ -1,3 +1,4 @@
+// todo: rewrite this shitcode
 /obj/item/beartrap
 	name = "mechanical trap"
 	throw_speed = 2
@@ -10,6 +11,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(MAT_STEEL = 18750)
+	buckle_restrained_resist_time = 15 SECONDS
 	var/deployed = 0
 	var/camo_net = FALSE
 	var/stun_length = 0.25 SECONDS
@@ -80,7 +82,10 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user as mob)
+/obj/item/beartrap/attack_hand(mob/user)
+	// check unbuckle first
+	if(click_unbuckle_interaction(user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(deployed)
 		user.visible_message(
 			"<span class='danger'>[user] starts to disarm \the [src].</span>",
@@ -94,8 +99,10 @@
 				"<span class='danger'>[user] has disarmed \the [src].</span>",
 				"<span class='notice'>You have disarmed \the [src]!</span>"
 				)
-			deployed = 0
-			anchored = 0
+			deployed = FALSE
+			anchored = FALSE
+			// reset buckle allowed
+			buckle_allowed = FALSE
 			update_icon()
 	else
 		return ..()
@@ -123,10 +130,12 @@
 
 	//trap the victim in place
 	setDir(L.dir)
+	// allow it so they can do buckle interactions at all
+	buckle_allowed = TRUE
 	buckle_mob(L, BUCKLE_OP_FORCE)
 	L.Stun(stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
-	deployed = 0
+	deployed = FALSE
 
 /obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
 	if(AM.is_incorporeal())
