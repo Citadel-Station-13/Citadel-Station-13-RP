@@ -1,7 +1,7 @@
-import { useBackend } from "../backend";
+import { useBackend, useLocalState } from "../backend";
 import { BooleanLike } from "../../common/react";
 import { Window } from "../layouts";
-import { Section, Button, LabeledList, Table, Input, Box } from "../components";
+import { Section, Button, LabeledList, Table, Input, Box, Icon } from "../components";
 
 type GpsContext = {
   on: BooleanLike,
@@ -35,6 +35,10 @@ interface TrackingEntryContext {
 
 export const Gps = (props, context) => {
   const { act, data } = useBackend<GpsContext>(context);
+  const [addWaypointName, setAddWaypointName] = useLocalState(context, 'waypointName', "");
+  const [addWaypointX, setAddWaypointX] = useLocalState(context, 'waypointX', "");
+  const [addWaypointY, setAddWaypointY] = useLocalState(context, 'waypointY', "");
+  const [addWaypointLevel, setAddWaypointLevel] = useLocalState(context, 'waypointLevel', "");
   return (
     <Window
       title="Global Positioning System"
@@ -72,13 +76,17 @@ export const Gps = (props, context) => {
                 onClick={() => act('toggle_update')} />
             </LabeledList.Item>
             {
-              !!data.has_stealth && (
+              data.has_stealth ? (
                 <LabeledList.Item label="Stealth">
                   <Button
                     icon="sync"
                     content={data.visible? "Broadcasting" : "Concealed"}
                     selected={!data.visible}
                     onClick={() => act('hide')} />
+                </LabeledList.Item>
+              ) : (
+                <LabeledList.Item label="Signal">
+                  {data.visible? "Broadcasting" : "Concealed"}
                 </LabeledList.Item>
               )
             }
@@ -92,66 +100,63 @@ export const Gps = (props, context) => {
                 Location: {data.x}, {data.y} - {data.level}
               </Box>
             </Section>
+            <Section title="Add Waypoint"
+              buttons={
+                <Button
+                  icon="plus"
+                  onClick={() => act('add_waypoint', { name: addWaypointName, level_id: addWaypointLevel,
+                    x: addWaypointX, y: addWaypointY })} />
+              }>
+              <Input placeholder="Waypoint" width="25rem"
+                value={addWaypointName} onChange={(_, v) => setAddWaypointName(v)} />
+              <Input placeholder="X" width="3rem"
+                value={addWaypointX} onChange={(_, v) => setAddWaypointX(v)} />
+              <Input placeholder="Y" width="3rem"
+                value={addWaypointY} onChange={(_, v) => setAddWaypointY(v)} />
+              <Input placeholder="Level" width="10rem"
+                value={addWaypointLevel} onChange={(_, v) => setAddWaypointLevel(v)} />
+            </Section>
             <Section
-              title="Tracking">
+              title="Signals / Waypoints">
               <Table>
                 <Table.Row bold>
-                  <Table.Cell content="Name" />
-                  <Table.Cell collapsing content="Direction" />
-                  <Table.Cell collapsing content="Coordinates" />
-                  <Table.Cell collapsing content="Tracking" />
+                  <Table.Cell />
+                  <Table.Cell collapsing>
+                    DIR
+                  </Table.Cell>
+                  <Table.Cell collapsing>
+                    CRD
+                  </Table.Cell>
+                  <Table.Cell collapsing />
                 </Table.Row>
-                {
-                  data.waypoints.map(waypoint => (
-                    <Table.Row key={waypoint.ref} className="candystripe">
-                      <Table.Cell bold color="label">
-                        {waypoint.name}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {
-                          data.level === waypoint.level? (
-                            `${Math.round(Math.atan2(waypoint.x - data.x, waypoint.y - data.y) * 180 / Math.PI)}`
-                          ) : (
-                            ``
-                          )
-                        }
-                      </Table.Cell>
-                      <Table.Cell>
-                        {
-                          data.level === waypoint.level? (
-                            `${waypoint.x}, ${waypoint.y}`
-                          ) : (
-                            `${waypoint.level}`
-                          )
-                        }
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          icon="bullseye"
-                          content={data.tracking === waypoint.ref? "Tracking" : "Track"}
-                          selected={data.tracking === waypoint.ref}
-                          onclick={() => act('track', { ref: waypoint.ref })}
-                        />
-                      </Table.Cell>
-                    </Table.Row>
-                  ))
-                }
+                <Table.Row bold>
+                  <Table.Cell>
+                    SIGNALS
+                  </Table.Cell>
+                  <Table.Cell collapsing minWidth="5rem" />
+                  <Table.Cell collapsing minWidth="5rem" />
+                  <Table.Cell collapsing />
+                </Table.Row>
                 {
                   data.signals.map(signal => (
                     <Table.Row key={signal.ref} className="candystripe">
                       <Table.Cell bold color="label">
                         {signal.name}
                       </Table.Cell>
-                      <Table.Cell>
+                      <Table.Cell collapsing>
                         {
-                          data.level === signal.level? (
-                            `${Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)}`
+                          data.level === signal.level ? (
+                            <Icon
+                              mr={1}
+                              size={1.2}
+                              name="arrow-up"
+                              rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)} />
                           ) : (
-                            ``
+                            `FAR`
                           )
                         }
                       </Table.Cell>
-                      <Table.Cell>
+                      <Table.Cell collapsing>
                         {
                           data.level === signal.level? (
                             `${signal.x}, ${signal.y}`
@@ -160,13 +165,59 @@ export const Gps = (props, context) => {
                           )
                         }
                       </Table.Cell>
-                      <Table.Cell>
+                      <Table.Cell collapsing>
                         <Button
                           icon="bullseye"
-                          content={data.tracking === signal.ref? "Tracking" : "Track"}
                           selected={data.tracking === signal.ref}
-                          onclick={() => act('track', { ref: signal.ref })}
+                          onClick={() => act('track', { ref: signal.ref })}
                         />
+                      </Table.Cell>
+                    </Table.Row>
+                  ))
+                }
+                <Table.Row bold>
+                  <Table.Cell>
+                    WAYPOINTS
+                  </Table.Cell>
+                  <Table.Cell collapsing minWidth="5rem" />
+                  <Table.Cell collapsing minWidth="5rem" />
+                  <Table.Cell collapsing />
+                </Table.Row>
+                {
+                  data.waypoints.map(signal => (
+                    <Table.Row key={signal.ref} className="candystripe">
+                      <Table.Cell bold color="label">
+                        {signal.name}
+                      </Table.Cell>
+                      <Table.Cell collapsing>
+                        {
+                          data.level === signal.level && (
+                            <Icon
+                              mr={1}
+                              size={1.2}
+                              name="arrow-up"
+                              rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)} />
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell collapsing>
+                        {
+                          data.level === signal.level? (
+                            `${signal.x}, ${signal.y}`
+                          ) : (
+                            `FAR: ${signal.level}`
+                          )
+                        }
+                      </Table.Cell>
+                      <Table.Cell collapsing>
+                        <Button
+                          icon="bullseye"
+                          selected={data.tracking === signal.ref}
+                          onClick={() => act('track', { ref: signal.ref })}
+                        />
+                        <Button.Confirm
+                          icon="trash"
+                          onClick={() => act('del_waypoint', { ref: signal.ref })} />
                       </Table.Cell>
                     </Table.Row>
                   ))

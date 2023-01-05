@@ -136,6 +136,7 @@
 			user.action_feedback(SPAN_WARNING("Waypoints partially transferred: insffucient space."), src)
 		else
 			user.action_feedback(SPAN_NOTICE("Waypoints transferred."), src)
+		LAZYINITLIST(transfer_to.waypoints)
 		transfer_to.waypoints += needed
 		transfer_to.push_waypoint_data()
 	return ..()
@@ -427,6 +428,7 @@
 		qdel(point)
 		return
 	// inject
+	LAZYINITLIST(waypoints)
 	waypoints += point
 	push_waypoint_data()
 
