@@ -104,20 +104,16 @@
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
-			spawn(0)
-				if(istype(vismob, /mob/observer))
-					var/mob/observer/O = vismob
-					if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
-						O.show_message(admin_message)
-					else
-						continue
-				if(!istype(vismob, /mob/observer))
-					M.show_message(message, 2)
+			if(!istype(vismob, /mob/observer))
+				M.show_message(message, 2)
+			else //(istype(vismob, /mob/observer))
+				var/mob/observer/O = vismob
+				if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
+					O.show_message(admin_message)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj
-			spawn(0)
-				O.see_emote(src, message, 2)
+			O.see_emote(src, message, 2)
 
 /////// END
 
