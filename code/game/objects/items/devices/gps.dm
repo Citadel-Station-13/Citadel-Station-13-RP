@@ -54,7 +54,7 @@
 /obj/item/gps/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/gps_signal, gps_tag)
-	toggle_power(on)
+	toggle_power(on, force = TRUE)
 
 /obj/item/gps/Destroy()
 	stop_tracking()
@@ -273,8 +273,8 @@
 /**
  * set power
  */
-/obj/item/gps/proc/toggle_power(new_state = !on, mob/user)
-	if(new_state == on)
+/obj/item/gps/proc/toggle_power(new_state = !on, mob/user, force = FALSE)
+	if(new_state == on && !force)
 		return
 
 	if(new_state)
