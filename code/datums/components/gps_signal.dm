@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 		GLOB.gps_transmitters[i] = list()
 	// the forbidden `in world`
 	for(var/datum/component/gps_signal/sig in world)
+		sig.registered = FALSE
 		sig.register_transmitter()
 
 /**
@@ -37,6 +38,8 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	var/gps_tag
 	/// disabled
 	var/disabled
+	/// registered in list?
+	var/registered = FALSE
 
 /datum/component/gps_signal/Initialize(gps_tag = "COM0", disabled = FALSE)
 	if(!isatom(parent) || ((. = ..()) & COMPONENT_INCOMPATIBLE))
@@ -47,10 +50,12 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 /datum/component/gps_signal/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED, .proc/on_z_transit)
+	register_transmitter()
 
 /datum/component/gps_signal/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED)
+	unregister_transmitter()
 
 /datum/component/gps_signal/proc/on_z_transit(datum/source, old_z, new_z)
 	SIGNAL_HANDLER
@@ -63,7 +68,9 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	var/turf/T = get_turf(A)
 	if(!T)
 		return
+	ASSERT(!registered)
 	GLOB.gps_transmitters[T.z] += src
+	registered = TRUE
 
 /datum/component/gps_signal/proc/unregister_transmitter()
 	if(disabled)
@@ -72,7 +79,9 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 	var/turf/T = get_turf(A)
 	if(!T)
 		return
+	ASSERT(registered)
 	GLOB.gps_transmitters[T.z] -= src
+	registered = FALSE
 
 /datum/component/gps_signal/proc/update_transmitter(old_z, new_z)
 	if(disabled)

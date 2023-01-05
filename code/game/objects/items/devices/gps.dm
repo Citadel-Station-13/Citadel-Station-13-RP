@@ -364,7 +364,7 @@
 			if(sig == our_sig)
 				continue
 			var/atom/A = sig.parent
-			built += list(list(
+			others += list(list(
 				"x" = A.x,
 				"y" = A.y,
 				"level" = l_id,
