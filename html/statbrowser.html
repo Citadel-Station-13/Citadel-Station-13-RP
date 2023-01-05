@@ -437,10 +437,14 @@ function byond_remove_verb(name, category) {
 /// called to add multiple verbs: same format as init verbs
 function byond_add_verbs(data, force_draw) {
 	var had = force_draw || false;
+	var tabs_changed = false;
 	for(var cat in data) {
 		if(cat == active_tab) {
 			had = true;
 		}
+		if(!(all_tabs.includes(cat)))
+			all_tabs.push(cat);
+			tabs_changed = true;
 		var arr = verbs[cat];
 		if(arr == undefined) {
 			arr = [];
@@ -464,14 +468,26 @@ function byond_add_verbs(data, force_draw) {
 			return 0;
 		})
 	}
+	if(tabs_changed){
+		redraw_menu();
+	}
 }
 
 /// called to remove multiple verbs: same format as init verbs
 function byond_remove_verbs(data) {
 	var had = false;
+	var tabs_changed = false;
 	for(var cat in data) {
 		if(cat == active_tab) {
 			had = true;
+		}
+		if(all_tabs.includes(cat) && !(stat_tabs.includes(cat))){
+			for(var i = all_tabs.length - 1; i >= 0; --i){
+				if(all_tabs[i] == cat){
+					all_tabs.splice(i, 1);
+				}
+			}
+			tabs_changed = true;
 		}
 		var arr = verbs[cat];
 		if(arr == undefined) {
@@ -486,6 +502,9 @@ function byond_remove_verbs(data) {
 				break;
 			}
 		}
+	}
+	if(tabs_changed){
+		redraw_menu();
 	}
 }
 
@@ -652,7 +671,15 @@ function erase_tab(name) {
 
 /// clear tabs that don't have verbs
 function erase_tabs() {
-
+	stat_tabs = [];
+	for(var i = all_tabs.length - 1; i >= 0; --i){
+		var tab = all_tabs[i];
+		if(verbs.includes(tab)){
+			continue;
+		}
+		all_tabs.splice(i, 1);
+	}
+	redraw_menu();
 }
 
 /// unchecked add tab element
