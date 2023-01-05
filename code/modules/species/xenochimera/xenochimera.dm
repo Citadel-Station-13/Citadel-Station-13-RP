@@ -454,7 +454,7 @@
 /mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Chimera"
+	set category = "Abilities"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -507,7 +507,7 @@
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Chimera"
+	set category = "Abilities"
 
 	var/list/temperature_options = list(
 	"warm-blooded",
@@ -601,7 +601,7 @@
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Chimera"
+	set category = "Abilities"
 
 
 	var/list/pressure_options = list(
