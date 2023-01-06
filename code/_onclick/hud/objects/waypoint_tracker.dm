@@ -22,11 +22,12 @@
 	if(last_angle == angle)
 		return
 	var/matrix/M = transform
-	// 90 - angle because byond is weird
+	// 360 - angle because byond is weird
 	// and arctan operates off irl angles (CCW of EAST)
 	// but byond angle sare usually CW; we reset to EAST
 	// because we're stubborn thus we convert it
-	angle = 90 - angle
+	// thus, we go in reverse.
+	angle = 360 - angle
 	M.TurnTo(last_angle, angle)
 	transform = M
 	last_angle = angle

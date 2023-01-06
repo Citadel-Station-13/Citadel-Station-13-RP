@@ -444,6 +444,8 @@
 	if(!(point in waypoints))
 		return
 	waypoints -= point
+	if(point == tracking)
+		stop_tracking()
 	push_waypoint_data()
 
 /obj/item/gps/on // Defaults to off to avoid polluting the signal list with a bunch of GPSes without owners. If you need to spawn active ones, use these.
