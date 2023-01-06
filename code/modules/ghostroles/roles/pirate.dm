@@ -56,7 +56,7 @@
 			outfit.uniform = /obj/item/clothing/under/surplus/desert
 			outfit.suit = /obj/item/clothing/suit/storage/vest/tactical/pirate
 			outfit.shoes = /obj/item/clothing/shoes/boots/workboots
-			//outfit.belt = /obj/item/gun/projectile/pirate
+			outfit.belt = /obj/item/gun/ballistic/pirate
 			outfit.back = /obj/item/storage/backpack/rebel
 			outfit.l_ear = /obj/item/radio/headset/raider
 			outfit.id_slot = SLOT_ID_WORN_ID

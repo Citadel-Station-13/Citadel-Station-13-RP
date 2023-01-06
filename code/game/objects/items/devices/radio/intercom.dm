@@ -102,7 +102,7 @@
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(RAID_FREQ)] = list(access_pirate)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
