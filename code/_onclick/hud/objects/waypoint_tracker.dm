@@ -12,14 +12,21 @@
 
 /atom/movable/screen/waypoint_tracker/Initialize(mapload)
 	. = ..()
-	reset_angle(0)
+	reset_angle()
 
 /**
  * angle is natural math angle, as in deg clockwise of east
  * NOT "byond angle".
  */
 /atom/movable/screen/waypoint_tracker/proc/set_angle(angle)
+	if(last_angle == angle)
+		return
 	var/matrix/M = transform
+	// 90 - angle because byond is weird
+	// and arctan operates off irl angles (CCW of EAST)
+	// but byond angle sare usually CW; we reset to EAST
+	// because we're stubborn thus we convert it
+	angle = 90 - angle
 	M.TurnTo(last_angle, angle)
 	transform = M
 	last_angle = angle
@@ -30,12 +37,17 @@
  * angle is natural math angle, as in deg clockwise of east
  * NOT "byond angle".
  */
-/atom/movable/screen/waypoint_tracker/proc/reset_angle(angle)
+/atom/movable/screen/waypoint_tracker/proc/reset_angle()
 	var/matrix/M = matrix()
-	M.Translate(dist, 0)
+	// turn to math deg 0
+	M.Turn(90)
+	// scale properly
 	M.Scale(size, size)
-	M.Turn(-angle)
+	// move out
+	M.Translate(dist, 0)
+	// set
 	transform = M
+	// track angle for fast turns
 	last_angle = 0
 
 /**
@@ -57,5 +69,4 @@
 	icon_dimension_y = 48
 	dist = 128
 	alpha = 128
-	size = 0.5
-	color = rgb(177, 177, 255)
+	size = 2 / 3

@@ -184,6 +184,8 @@
 			hud_bound.RemoveScreen(hud_arrow)
 		hud_bound = null
 	hud_bound = pers
+	if(!hud_bound)
+		return
 	if(hud_arrow)
 		hud_bound.AddScreen(hud_arrow)
 
@@ -220,6 +222,9 @@
 	hud_arrow?.set_disabled(TRUE)
 	STOP_PROCESSING(SSprocessing, src)
 	return TRUE
+
+/obj/item/gps/process(delta_time)
+	update_tracking()
 
 /**
  * updates tracking target
