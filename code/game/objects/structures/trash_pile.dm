@@ -22,9 +22,9 @@
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/gun/energy/netgun,
-		/obj/item/gun/projectile/pirate,
+		/obj/item/gun/ballistic/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/gun/projectile/dartgun
+		/obj/item/gun/ballistic/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()

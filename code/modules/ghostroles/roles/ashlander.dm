@@ -68,7 +68,7 @@
 			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
 			outfit.head = /obj/item/clothing/head/helmet/gladiator/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
-			outfit.back = /obj/item/gun/projectile/bow/ashen
+			outfit.back = /obj/item/gun/ballistic/bow/ashen
 			outfit.belt = /obj/item/storage/belt/quiver/full/ash
 			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 		if("exile")
@@ -80,7 +80,7 @@
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
 			outfit.belt = /obj/item/reagent_containers/glass/powder_horn/tribal
 			outfit.back = /obj/item/storage/backpack/satchel/bone
-			outfit.r_hand = /obj/item/gun/projectile/musket/tribal
+			outfit.r_hand = /obj/item/gun/ballistic/musket/tribal
 			outfit.l_hand = /obj/item/storage/box/munition_box
 	return outfit
 

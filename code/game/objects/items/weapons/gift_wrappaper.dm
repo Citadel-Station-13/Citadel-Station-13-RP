@@ -79,7 +79,7 @@
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/gun/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/prize/deathripley,
 		/obj/item/toy/prize/durand,
@@ -179,7 +179,7 @@
 		/obj/item/storage/backpack/holding,
 		/obj/item/grenade/smokebomb,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/gun/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/sword,
 		/obj/item/storage/belt/utility/full)

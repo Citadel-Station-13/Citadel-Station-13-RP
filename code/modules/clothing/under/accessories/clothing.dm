@@ -132,7 +132,7 @@
 	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	action_button_name = "Adjust Cloak"
 
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)

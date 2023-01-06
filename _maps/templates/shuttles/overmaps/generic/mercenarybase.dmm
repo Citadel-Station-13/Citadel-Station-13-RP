@@ -3511,12 +3511,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalstorage)
 "oq" = (
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/p90,
-/obj/item/gun/projectile/automatic/p90,
-/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(150)
 	},

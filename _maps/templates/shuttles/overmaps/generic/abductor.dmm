@@ -892,8 +892,8 @@
 /obj/item/ammo_magazine/cell_mag/advanced,
 /obj/item/ammo_magazine/cell_mag/advanced,
 /obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/gun/projectile/cell_loaded,
-/obj/item/gun/projectile/cell_loaded,
+/obj/item/gun/ballistic/cell_loaded,
+/obj/item/gun/ballistic/cell_loaded,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Zk" = (
