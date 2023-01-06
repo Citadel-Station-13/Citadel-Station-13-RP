@@ -107,7 +107,7 @@ export const Gps = (props, context) => {
                   onClick={() => act('add_waypoint', { name: addWaypointName, level_id: addWaypointLevel,
                     x: addWaypointX, y: addWaypointY })} />
               }>
-              <Input placeholder="Waypoint" width="25rem"
+              <Input placeholder="Waypoint" width="15rem"
                 value={addWaypointName} onChange={(_, v) => setAddWaypointName(v)} />
               <Input placeholder="X" width="3rem"
                 value={addWaypointX} onChange={(_, v) => setAddWaypointX(v)} />

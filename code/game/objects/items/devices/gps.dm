@@ -402,16 +402,19 @@
 			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
-			remove_waypoint(params["ref"])
+			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
+			remove_waypoint(locate(params["ref"]))
 			return FALSE // remove waypoint pushes data already
 		if("select_target")
-			start_tracking(params["ref"])
+			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
+			start_tracking(locate(params["ref"]))
 			return TRUE
 		if("toggle_update")
 			ui.set_autoupdate(!ui.autoupdate)
 			return TRUE // push one more time
 		if("track")
-			return start_tracking(params["ref"])
+			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
+			return start_tracking(locate(params["ref"]))
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
 	if(!x || !y || !level_id || !name)
