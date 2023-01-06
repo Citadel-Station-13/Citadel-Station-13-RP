@@ -6,6 +6,7 @@
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 	SETUP_SMOOTHING()
 	return INITIALIZE_HINT_NORMAL

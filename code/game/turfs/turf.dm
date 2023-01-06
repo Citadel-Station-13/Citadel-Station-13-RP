@@ -49,12 +49,20 @@
 
 	/**
 	 * Baseturfs
+	 *
+	 * Baseturfs can either be a list or a single turf type.
+	 * In class definitions it should always be a single type.
+	 * A de-duplicated/cached list will be created in init that builds the
+	 * baseturf "stack", so that we can access in runtime
+	 *
+	 * If this is a list, it's bottom first top last (so [1] is bottommost and [length] is topmost)
+	 *
+	 * To facilitate fast direct reads, we are not putting VAR_PRIVATE on this.
+	 *
+	 * ? Do not, under any circumstances, attempt to modify this list directly.
+	 * ? Helper procs will do that for you. Modfiying the list directly
+	 * ? WILL cause cache corruption and mess up the round.
 	 */
-	// baseturfs can be either a list or a single turf type.
-	// In class definition like here it should always be a single type.
-	// A list will be created in initialization that figures out the baseturf's baseturf etc.
-	// In the case of a list it is sorted from bottom layer to top.
-	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/baseturf_bottom
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
@@ -71,8 +79,6 @@
 
 	// General properties.
 	var/icon_old = null
-	/// How much does it cost to pathfind over this turf?
-	var/pathweight = 1
 	/// Has the turf been blessed?
 	var/blessed = FALSE
 
@@ -125,17 +131,12 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_INITIALIZED
 
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.len = 0
-
 	assemble_baseturfs()
-
-	levelupdate()
 
 	SETUP_SMOOTHING()
 
-	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
-		QUEUE_SMOOTH(src)
+	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
+	QUEUE_SMOOTH(src)
 
 	//atom color stuff
 	if(color)
@@ -162,10 +163,6 @@
 	if (mz_flags & MZ_MIMIC_BELOW)
 		setup_zmimic(mapload)
 
-	//Pathfinding related
-	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
-		pathweight = movement_cost
-
 	if(isnull(outdoors))
 		outdoors = A.initial_outdoors
 
@@ -187,6 +184,7 @@
 	if(force)
 		..()
 		//this will completely wipe turf state
+		vis_contents.len = 0
 		var/turf/B = new world.turf(src)
 		for(var/A in B.contents)
 			qdel(A)
@@ -207,6 +205,7 @@
 	if (mimic_proxy)
 		QDEL_NULL(mimic_proxy)
 
+	// clear vis contents here instead of in Init
 	vis_contents.len = 0
 
 	..()
@@ -347,12 +346,7 @@
 			. += T
 
 /turf/proc/Distance(turf/t)
-	if(get_dist(src,t) == 1)
-		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= (pathweight+t.pathweight)/2
-		return cost
-	else
-		return get_dist(src,t)
+	return get_dist(src,t)
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
