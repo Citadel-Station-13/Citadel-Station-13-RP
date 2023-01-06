@@ -341,10 +341,10 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		* they ever get their equipment, and so it can't get a picture of them in their equipment.
 		* Latejoiners do not have this problem, because /mob/new_player/proc/AttemptLateSpawn calls EquipRank() before it calls
 		* this proc, which means that they're already clothed by the time they get their picture taken here.
-		* The COMPILE_OVERLAYS() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
+		* The compile_overlays() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
 		* take a picture of them, we want all the overlays.
 		*/
-		COMPILE_OVERLAYS(H)
+		H.compile_overlays()
 
 		var/id = generate_record_id()
 		//General Record

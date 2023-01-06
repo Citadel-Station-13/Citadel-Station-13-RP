@@ -29,14 +29,14 @@
 				reagents.add_reagent(r, filled_reagents[r])
 	update_icon()
 
-/obj/item/reagent_containers/hypospray/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 		return
-	if (!istype(M))
+	if (!ishuman(target))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
@@ -59,9 +59,7 @@
 					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
 					if(!do_after(user, 30, H))
 						return
-
 	do_injection(H, user)
-	return
 
 // This does the actual injection and transfer.
 /obj/item/reagent_containers/hypospray/proc/do_injection(mob/living/carbon/human/H, mob/living/user)
@@ -404,7 +402,7 @@
 	else
 		return
 
-/obj/item/reagent_containers/hypospray/glukoz/attack(mob/living/H as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/glukoz/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(closed)
 		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
 		return
@@ -412,7 +410,7 @@
 		to_chat(user, "<span class='notice'>This [src] is empty!</span>")
 		return
 	if(!closed)
-		do_injection(H, user)
+		do_injection(target, user)
 		return
 
 /obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)

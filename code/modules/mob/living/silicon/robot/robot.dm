@@ -51,6 +51,15 @@
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
+
+	mz_flags = ZMM_MANGLE_PLANES
+
+	// Wideborgs are offset, but their light shouldn't be. This disables offset because of how the math works (1 is less than 16).
+	light_offset_x = 1
+	light_offset_y = 1
+
+	can_be_antagged = TRUE
+
 	/// Is our integrated light on?
 	var/lights_on = 0
 	var/used_power_this_tick = 0
@@ -65,8 +74,6 @@
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
-
-	can_be_antagged = TRUE
 
 //! ## Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates
@@ -171,7 +178,8 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	add_language("Robot Talk", 1)
+	add_language("Robot Talk", TRUE)
+	add_language(LANGUAGE_EAL, TRUE)
 	// todo: translation contexts on language holder?
 	// this is messy
 	for(var/datum/language/L as anything in SScharacters.all_languages())
@@ -425,7 +433,12 @@
 
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
-	handle_light()
+
+	if (lights_on)
+		radio.set_light(integrated_light_power)
+	else
+		radio.set_light(0)
+
 	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
@@ -870,6 +883,11 @@
 	return 0
 
 /mob/living/silicon/robot/updateicon()
+	if (wideborg)
+		mz_flags |= ZMM_LOOKAHEAD
+	else
+		mz_flags &= ~ZMM_LOOKAHEAD
+
 	cut_overlays()
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.

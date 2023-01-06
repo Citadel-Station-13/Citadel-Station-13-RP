@@ -1,49 +1,33 @@
 //! Flags for the item_flags var on /obj/item
-/*
-#define BEING_REMOVED			(1<<0)
-*/
 /// is this item equipped into an inventory slot or hand of a mob? used for tooltips
-#define IN_INVENTORY			(1<<1)
-/*
-/// used for tooltips
-#define FORCE_STRING_OVERRIDE	(1<<2)
-/// Used by security bots to determine if this item is safe for public use.
-#define NEEDS_PERMIT			(1<<3)
-#define SLOWS_WHILE_IN_HAND		(1<<4)
-/// Stops you from putting things like an RCD or other items into an ORM or protolathe for materials.
-#define NO_MAT_REDEMPTION		(1<<5)
-*/
+#define ITEM_IN_INVENTORY		(1<<0)
 /// When dropped, it calls qdel on itself
-#define ITEM_DROPDEL					(1<<6)
-
-/// when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
-#define ITEM_NOBLUDGEON				(1<<7)
+#define ITEM_DROPDEL			(1<<1)
+/// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
+#define ITEM_NOBLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
-#define ITEM_ABSTRACT			(1<<8)
-/// When players should not be able to change the slowdown of the item (Speed potions, ect)
-#define IMMUTABLE_SLOW			(1<<9)
-/// Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
-#define SURGICAL_TOOL			(1<<10)
+#define ITEM_ABSTRACT			(1<<3)
 /// is this item in a storage component?
-#define IN_STORAGE				(1<<14)
+#define ITEM_IN_STORAGE			(1<<4)
 /// we can't be caught when hitting a mob on throw
-#define ITEM_THROW_UNCATCHABLE	(1<<15)
+#define ITEM_THROW_UNCATCHABLE	(1<<5)
 /// we cannot be used a tool on click, no matter what
-#define ITEM_NO_TOOL_ATTACK		(1<<16)
+#define ITEM_NO_TOOL_ATTACK		(1<<6)
 /// we're dual wielded - multi-wielding coming later tm
-#define ITEM_MULTIHAND_WIELDED	(1<<17)
+#define ITEM_MULTIHAND_WIELDED	(1<<7)
+/// don't allow help intent attacking
+#define ITEM_CAREFUL_BLUDGEON	(1<<8)
 
 DEFINE_BITFIELD(item_flags, list(
-	BITFIELD(IN_INVENTORY),
+	BITFIELD(ITEM_IN_INVENTORY),
 	BITFIELD(ITEM_DROPDEL),
 	BITFIELD(ITEM_NOBLUDGEON),
 	BITFIELD(ITEM_ABSTRACT),
-	BITFIELD(IMMUTABLE_SLOW),
-	BITFIELD(SURGICAL_TOOL),
-	BITFIELD(IN_STORAGE),
+	BITFIELD(ITEM_IN_STORAGE),
 	BITFIELD(ITEM_THROW_UNCATCHABLE),
 	BITFIELD(ITEM_NO_TOOL_ATTACK),
 	BITFIELD(ITEM_MULTIHAND_WIELDED),
+	BITFIELD(ITEM_CAREFUL_BLUDGEON),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

@@ -113,21 +113,24 @@
 		return ..()
 */
 
-/obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
+/obj/item/kinetic_crusher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return ..()
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
-	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
-	var/target_health = target.health
-	..()
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/target_health = L.health
+	. = ..()
 /*
 	for(var/t in trophies)
-		if(!QDELETED(target))
+		if(!QDELETED(L))
 			var/obj/item/crusher_trophy/T = t
-			T.on_melee_hit(target, user)
+			T.on_melee_hit(L, user)
 */
-	if(!QDELETED(C) && !QDELETED(target))
-		C.total_damage += target_health - target.health //we did some damage, but let's not assume how much we did
+	if(!QDELETED(C) && !QDELETED(L))
+		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
 /obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	. = ..()

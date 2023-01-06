@@ -25,10 +25,10 @@
 /obj/item/gun/magic/wand/update_icon()
 	icon_state = "[initial(icon_state)][charges ? "" : "-drained"]"
 
-/obj/item/gun/magic/wand/attack(atom/target, mob/living/user)
+/obj/item/gun/magic/wand/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user)
 		return
-	..()
+	return ..()
 
 /obj/item/gun/magic/wand/afterattack(atom/target, mob/living/user)
 	if(!charges)

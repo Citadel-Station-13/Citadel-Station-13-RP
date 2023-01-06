@@ -36,10 +36,9 @@ var/const/MAX_ACTIVE_TIME = 400
 			return
 	..()
 
-/obj/item/clothing/mask/facehugger/attack(mob/living/M as mob, mob/user as mob)
-	..()
+/obj/item/clothing/mask/facehugger/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.drop_item_to_ground(src, INV_OP_FORCE)
-	Attach(M)
+	Attach(target)
 
 //Bypasses the config check because it's completely blocking spawn.
 /*

@@ -168,7 +168,7 @@
 
 /datum/gear/seasonal/masquarade/syndicate/revolver
 	display_name = ".357 revolver (capgun)"
-	path = /obj/item/gun/projectile/revolver/capgun
+	path = /obj/item/gun/ballistic/revolver/capgun
 
 /**
  * changeling

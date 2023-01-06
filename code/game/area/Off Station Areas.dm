@@ -9,18 +9,25 @@
 
 
 /area/triumph/surfacebase
-	icon = 'icons/turf/areas.dmi'
+	name = "Surface Base"
+
 /area/triumph/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/triumph/surfacebase/outside/outside1
 	icon_state = "outside1"
+
 /area/triumph/surfacebase/outside/outside2
 	icon_state = "outside2"
+
 /area/triumph/surfacebase/outside/outside3
 	icon_state = "outside3"
+
 /area/triumph/surfacebase/outside/empty
 	name = "Outside - Empty Area"
+
 /area/triumph/surfacebase/outside/wilderness
 	name = "Outside - Wilderness"
 	icon_state = "invi"
@@ -118,6 +125,7 @@
 // Solars map areas
 /area/triumph/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/triumph/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 //Surface med
@@ -318,6 +326,7 @@
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
 	icon_state = "yellow"
+	is_outside = OUTSIDE_YES
 
 // Frozen planet world areas
 /area/class_p
@@ -583,7 +592,7 @@
 	name = "Warship - Surgery"
 /area/mothership/vault
 	name = "Warship - Vault"
-	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/teleporter
 	name = "Warship - Teleporter Room"
 /area/mothership/security
@@ -608,7 +617,7 @@
 	name = "Warship - Warden"
 /area/mothership/armory
 	name = "Warship - Armory"
-	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/bridge
 	name = "Warship - Bridge"
 /area/mothership/holodeck
@@ -810,6 +819,7 @@
 	icon_state = "away"
 	requires_power = FALSE
 	dynamic_lighting = FALSE
+	is_outside = OUTSIDE_YES
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
@@ -817,11 +827,13 @@
 	requires_power = TRUE
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	dynamic_lighting = TRUE
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/surface
 	area_flags = AREA_RAD_SHIELDED
@@ -965,6 +977,7 @@
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -1003,6 +1016,7 @@
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

@@ -425,7 +425,7 @@
 /datum/supply_pack/med/ml3m
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
-			/obj/item/gun/projectile/cell_loaded/medical = 1,
+			/obj/item/gun/ballistic/cell_loaded/medical = 1,
 			/obj/item/ammo_magazine/cell_mag/medical = 1
 			)
 	cost = 250

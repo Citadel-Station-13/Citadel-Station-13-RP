@@ -367,7 +367,7 @@
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat appears to have its kevlar lining removed."
 	icon_state = "detective"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/trench/grey
@@ -389,7 +389,7 @@
 	desc = "A duster commonly seen on cowboys from Earth's late 1800's."
 	icon_state = "duster"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/cardigan
@@ -412,7 +412,7 @@
 	desc = "A sleek black trenchcoat, paired with a stylish red scarf. Worn either by the coolest, or the weirdest."
 	icon_state = "gothcoat"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_blue
@@ -420,7 +420,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is blue, which is not what the ocean's color is anymore."
 	icon_state = "blue_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_brown
@@ -428,7 +428,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is brown, which makes you feel like you're back in the rust-colored oceans."
 	icon_state = "brown_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_green
@@ -436,7 +436,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is green, like the 'vegan rations' you were dared to eat. It was actually bottom-deck gunk. It smelled nicer than this coat."
 	icon_state = "green_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/stripe_jacket
@@ -444,7 +444,7 @@
 	desc = "A high collar, a gaudy stripe, clasps that don't actually work. All the ingredients to a fashionable clown! Trust me, they are /definitely/ laughing at your jokes, and not you."
 	icon_state = "stripe_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 /*
  * stripper
@@ -551,7 +551,7 @@
 	desc = "A thick, well-worn WW2 leather bomber jacket."
 	icon_state = "bomber"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|ARMS
@@ -573,7 +573,7 @@
 	name = "leather jacket"
 	desc = "A black leather coat."
 	icon_state = "leather_jacket"
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 
@@ -956,7 +956,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 
 /obj/item/clothing/suit/storage/snowsuit/command
 	name = "command snowsuit"
@@ -1041,7 +1041,7 @@
 				/obj/item/tank/emergency/oxygen,
 				/obj/item/flashlight,
 				/obj/item/gun/energy,
-				/obj/item/gun/projectile,
+				/obj/item/gun/ballistic,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/storage/fancy/shotgun_ammo,
@@ -1099,7 +1099,7 @@
 				/obj/item/tank/emergency/oxygen,
 				/obj/item/flashlight,
 				/obj/item/gun/energy,
-				/obj/item/gun/projectile,
+				/obj/item/gun/ballistic,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/storage/fancy/shotgun_ammo,

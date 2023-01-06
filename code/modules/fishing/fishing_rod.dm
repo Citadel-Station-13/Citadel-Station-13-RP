@@ -103,13 +103,6 @@
 		return TRUE
 	return FALSE
 
-/obj/item/material/fishing_rod/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(cast)
-		to_chat(user, "<span class='notice'>You cannot cast \the [src] when it is already in use!</span>")
-		return FALSE
-	update_bait()
-	return ..()
-
 /obj/item/material/fishing_rod/modern
 	name = "fishing rod"
 	desc = "A refined rod for catching fish."

@@ -10,7 +10,7 @@
 
 /area/abductor/
 	name = "Abductor Ship"
-	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 
 /area/abductor/interior
 	name = "Abductor Ship Interior"
@@ -80,4 +80,3 @@ You will find a dispenser within the room you started in which contains some bas
 /obj/machinery/power/port_gen/abductor/built/abductor
 	name = "Void Core"
 	power_gen = 5000000
-

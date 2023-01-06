@@ -6,6 +6,7 @@
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
+	permit_ao = TRUE
 
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
@@ -75,13 +76,28 @@
  */
 
 /turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
+	if(flooring == newflooring)
+		return
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
+
 	footstep_sounds = newflooring.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
+
+	var/check_z_flags
+	if(flooring)
+		check_z_flags = flooring.mz_flags
+	else
+		check_z_flags = initial(mz_flags)
+
+	if(check_z_flags & MZ_MIMIC_BELOW)
+		enable_zmimic(check_z_flags)
+	else
+		disable_zmimic()
+
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
@@ -123,6 +139,11 @@
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
+
+	if(flooring)
+		layer = TURF_LAYER
+	else
+		layer = PLATING_LAYER
 
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
@@ -171,7 +192,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			T.set_material(M, the_rcd.make_rwalls ? M : null, M)
+			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
 		if(RCD_AIRLOCK)
