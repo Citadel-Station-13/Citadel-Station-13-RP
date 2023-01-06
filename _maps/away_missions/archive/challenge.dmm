@@ -589,8 +589,7 @@
 /area/awaymission/challenge/end)
 "cf" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Airlock";
-
+	name = "Airlock"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -672,13 +671,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "cw" = (
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "cx" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Security";
-
+	name = "Security"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -702,8 +700,7 @@
 /area/awaymission/challenge/end)
 "cB" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrator";
-
+	name = "Administrator"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -995,8 +992,7 @@
 /area)
 "dm" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Gateway Access";
-
+	name = "Gateway Access"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
