@@ -16,18 +16,21 @@
 /obj/item/melee/cultblade/cultify()
 	return
 
-/obj/item/melee/cultblade/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/melee/cultblade/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		return ..()
+	if(!isliving(user))
+		return ..()
+	var/mob/living/L = user
 
-	var/zone = (user.hand ? "l_arm":"r_arm")
+	var/zone = (L.hand ? "l_arm":"r_arm")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/affecting = H.get_organ(zone)
 		to_chat(user, "<span class='danger'>An inexplicable force rips through your [affecting.name], tearing the sword from your grasp!</span>")
 		//random amount of damage between half of the blade's force and the full force of the blade.
-		user.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
-		user.Weaken(5)
+		H.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
+		H.Weaken(5)
 	else if(!istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='danger'>An inexplicable force rips through you, tearing the sword from your grasp!</span>")
 	else
@@ -39,7 +42,7 @@
 	var/spooky = pick('sound/hallucinations/growl1.ogg', 'sound/hallucinations/growl2.ogg', 'sound/hallucinations/growl3.ogg', 'sound/hallucinations/wail.ogg')
 	playsound(loc, spooky, 50, 1)
 
-	return 1
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/melee/cultblade/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()

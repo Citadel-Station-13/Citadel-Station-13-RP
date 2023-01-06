@@ -454,7 +454,7 @@
 /mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Chimera"
+	set category = "Abilities"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -501,13 +501,13 @@
 				virus2.makerandom()
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
-		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+			target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Chimera"
+	set category = "Abilities"
 
 	var/list/temperature_options = list(
 	"warm-blooded",
@@ -596,12 +596,12 @@
 				virus2.makerandom()
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
-		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+			target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Chimera"
+	set category = "Abilities"
 
 
 	var/list/pressure_options = list(

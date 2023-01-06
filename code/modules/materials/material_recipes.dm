@@ -105,7 +105,12 @@
 		))
 	recipes += new/datum/stack_recipe("desk bell", /obj/item/deskbell, 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 5, time = 20, one_per_turf = 1, on_floor = 1)
-
+	
+	recipes += new/datum/stack_recipe_list("teshari nests", list(
+		new/datum/stack_recipe("small teshari nest", /obj/structure/bed/chair/bay/chair/padded/red/smallnest, 1, one_per_turf = 1, on_floor = 1), //So, turns out that I don't know how to edit how much the nests give on deconstruction - Papalus
+		new/datum/stack_recipe("large teshari nest", /obj/structure/bed/chair/bay/chair/padded/red/bignest, 1, one_per_turf = 1, on_floor = 1), //And so, I gave them the construction price equal to decon material gain. You can balance it yourselves. - Papalus
+	))
+	
 /datum/material/plasteel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("AI core", /obj/structure/AIcore, 4, time = 50, one_per_turf = 1)
@@ -117,11 +122,11 @@
 	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
 
-/datum/material/stone/generate_recipes()
+/datum/material/sandstone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
 
-/datum/material/stone/marble/generate_recipes()
+/datum/material/sandstone/marble/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("light marble floor tile", /obj/item/stack/tile/wmarble, 1, 4, 20)
 	recipes += new/datum/stack_recipe("dark marble floor tile", /obj/item/stack/tile/bmarble, 1, 4, 20)

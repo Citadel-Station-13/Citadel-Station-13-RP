@@ -877,7 +877,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 		for(var/D in showDirs)
 			body.setDir(D)
-			COMPILE_OVERLAYS(body)
+			body.compile_overlays()
 			var/icon/partial = get_flat_icon(body)
 			out_icon.Insert(partial,dir=D)
 

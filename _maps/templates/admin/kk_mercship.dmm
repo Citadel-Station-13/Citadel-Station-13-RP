@@ -1138,7 +1138,7 @@
 /area/ship/manta/hangar)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/revolver/consul,
+/obj/item/gun/ballistic/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
@@ -1560,8 +1560,8 @@
 /area/ship/manta/hallways_aft)
 "hU" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/automatic/c20r,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
@@ -1572,7 +1572,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /turf/simulated/floor/tiled/techfloor,
@@ -1616,8 +1616,8 @@
 /area/ship/manta/armoury_st)
 "ih" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/silenced,
-/obj/item/gun/projectile/silenced,
+/obj/item/gun/ballistic/silenced,
+/obj/item/gun/ballistic/silenced,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/ap,
@@ -1626,8 +1626,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/item/gun/projectile/sec/wood,
-/obj/item/gun/projectile/sec/wood,
+/obj/item/gun/ballistic/sec/wood,
+/obj/item/gun/ballistic/sec/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "ik" = (
@@ -2274,8 +2274,8 @@
 /area/ship/manta/hallways_aft)
 "lj" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/automatic/c20r,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
@@ -2283,7 +2283,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /turf/simulated/floor/tiled/techfloor,
@@ -2302,8 +2302,8 @@
 	dir = 4
 	},
 /obj/structure/table/rack,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
@@ -3037,8 +3037,8 @@
 /area/space)
 "oO" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/silenced,
-/obj/item/gun/projectile/silenced,
+/obj/item/gun/ballistic/silenced,
+/obj/item/gun/ballistic/silenced,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/ap,
@@ -3051,8 +3051,8 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/item/gun/projectile/sec/wood,
-/obj/item/gun/projectile/sec/wood,
+/obj/item/gun/ballistic/sec/wood,
+/obj/item/gun/ballistic/sec/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "oP" = (
@@ -5988,7 +5988,7 @@
 "Dq" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/sniperammo,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/ballistic/heavysniper,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -6384,7 +6384,7 @@
 /area/ship/manta/barracks)
 "Fx" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/rocket,
+/obj/item/gun/ballistic/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -6744,7 +6744,7 @@
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
-/obj/item/gun/projectile/revolver/consul,
+/obj/item/gun/ballistic/revolver/consul,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -7726,8 +7726,8 @@
 /obj/structure/table/rack,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunammo/large,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -8490,8 +8490,8 @@
 /obj/item/ammo_magazine/m9mm,
 /obj/item/ammo_magazine/m9mm,
 /obj/item/ammo_magazine/m9mm,
-/obj/item/gun/projectile/luger,
-/obj/item/gun/projectile/luger/brown,
+/obj/item/gun/ballistic/luger,
+/obj/item/gun/ballistic/luger/brown,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -9302,10 +9302,10 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/bullpup,
-/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
+/obj/item/gun/ballistic/automatic/bullpup,
 /obj/item/ammo_magazine/m762m,
 /obj/item/ammo_magazine/m762m,
 /obj/item/ammo_magazine/m762m,

@@ -264,11 +264,8 @@
 		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
 	return ..()
 
-/obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M, /mob))
-		return
-
-	if(M == user && user.zone_sel.selecting == O_MOUTH)
+/obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(target == user && user.zone_sel.selecting == O_MOUTH)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 

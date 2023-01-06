@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(parallax)
 	var/obj/effect/overmap/visitable/ship/V = get_overmap_sector(z)
 	if(!istype(V))
 		return
-	if(V.is_still())
+	if(!V.is_moving())
 		return
 	return list(
 		60,

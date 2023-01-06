@@ -62,15 +62,16 @@
 					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
 	return 1
 
-/obj/item/reagent_containers/borghypo/attack(var/mob/living/M, var/mob/user)
-	if(!istype(M))
+/obj/item/reagent_containers/borghypo/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
 		to_chat(user, "<span class='warning'>The injector is empty.</span>")
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = L
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
@@ -82,17 +83,16 @@
 			return
 		*/
 
-	if(M.can_inject(user, 1, ignore_thickness = bypass_protection))
-		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
-		M.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+	if(L.can_inject(user, 1, ignore_thickness = bypass_protection))
+		to_chat(user, "<span class='notice'>You inject [L] with the injector.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
-		if(M.reagents)
+		if(L.reagents)
 			var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])
-			M.reagents.add_reagent(reagent_ids[mode], t)
+			L.reagents.add_reagent(reagent_ids[mode], t)
 			reagent_volumes[reagent_ids[mode]] -= t
-			add_attack_logs(user, M, "Borg injected with [reagent_ids[mode]]")
+			add_attack_logs(user, L, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
-	return
 
 /obj/item/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
 	var/t = ""
@@ -175,7 +175,7 @@
 		"whiskey",
 		"wine")
 
-/obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
+/obj/item/reagent_containers/borghypo/service/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return
 
 /obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)

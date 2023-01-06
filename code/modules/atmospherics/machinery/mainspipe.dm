@@ -34,8 +34,8 @@
 
 /obj/machinery/atmospherics/mains_pipe
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'
-	layer = PIPES_LAYER
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
+	layer = PIPE_LAYER
 
 	var/volume = 0
 

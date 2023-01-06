@@ -1310,7 +1310,7 @@
 	},
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/projectile/silenced,
+/obj/item/gun/ballistic/silenced,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fH" = (
@@ -1627,7 +1627,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/ballistic/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gJ" = (
@@ -1863,7 +1863,7 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/space/syndicate,
-/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/ballistic/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hA" = (
@@ -2107,7 +2107,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "im" = (
@@ -2174,7 +2174,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iC" = (
@@ -2193,7 +2193,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iE" = (

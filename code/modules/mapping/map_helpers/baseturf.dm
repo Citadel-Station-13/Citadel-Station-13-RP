@@ -31,6 +31,7 @@
 
 /obj/effect/baseturf_helper/proc/replace_baseturf(turf/thing)
 	var/list/baseturf_cache = thing.baseturfs
+	// todo: this is janky as fuck and at the very least need comments
 	if(length(baseturf_cache))
 		for(var/i in baseturf_cache)
 			if(baseturf_to_replace[i])

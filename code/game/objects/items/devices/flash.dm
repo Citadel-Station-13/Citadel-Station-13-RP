@@ -147,15 +147,21 @@
 		return TRUE
 
 //attack_as_weapon
-/obj/item/flash/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!user || !M)	return	//sanity
+/obj/item/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	flash_mob(target, user)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/item/flash/proc/flash_mob(mob/M, mob/user)
+	if(!user || !M)
+		return	//sanity
 
 	add_attack_logs(user,M,"Flashed (attempt) with [src]")
 
 	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(M)
 
-	if(!clown_check(user))	return
+	if(!clown_check(user))
+		return
 	if(broken)
 		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
 		return
@@ -224,23 +230,16 @@
 	if(!flashfail)
 		flick("flash2", src)
 		if(!issilicon(M))
-
 			user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
 		else
-
 			user.visible_message("<span class='notice'>[user] overloads [M]'s sensors with the flash!</span>")
 			M.Weaken(rand(5,10))
 	else
-
 		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
 
-	return
-
-
-
-
 /obj/item/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	if(!user || !clown_check(user)) 	return
+	if(!user || !clown_check(user))
+		return
 
 	user.setClickCooldown(user.get_attack_speed(src))
 
@@ -300,8 +299,8 @@
 	can_repair = FALSE
 
 //attack_as_weapon
-/obj/item/flash/synthetic/attack(mob/living/M, mob/living/user, var/target_zone)
-	..()
+/obj/item/flash/synthetic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	if(!broken)
 		broken = 1
 		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")

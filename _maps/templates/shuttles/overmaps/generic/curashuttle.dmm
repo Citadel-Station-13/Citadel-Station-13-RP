@@ -300,7 +300,7 @@
 /obj/item/storage/secure/safe{
 	pixel_x = 31
 	},
-/obj/item/gun/projectile/automatic/mini_uzi,
+/obj/item/gun/ballistic/automatic/mini_uzi,
 /obj/item/card/id/syndicate{
 	access = list(616);
 	assignment = "Curabitur Contractor";

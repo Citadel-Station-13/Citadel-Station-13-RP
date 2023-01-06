@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/nsfw
+/obj/item/gun/ballistic/nsfw
 	name = "Hephaestus Hydra"
 	desc = "The Hydra is a recent product from Hephaestus Industries, offering such a variety of fire modes that combatants will not know what to expect."
 

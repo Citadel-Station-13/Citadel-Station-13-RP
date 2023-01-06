@@ -102,7 +102,7 @@
 			/obj/item/healthanalyzer,
 			/obj/item/robotanalyzer,
 			/obj/item/mass_spectrometer,
-			/obj/item/halogen_counter,
+			/obj/item/geiger_counter,
 			/obj/item/stack/medical,
 			/obj/item/gps,
 			/obj/item/radio/beacon,

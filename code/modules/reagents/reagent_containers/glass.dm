@@ -71,14 +71,10 @@
 		atom_flags |= OPENCONTAINER
 	update_icon()
 
-/obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
-		return	..()
-
-	if(standard_feed_mob(user, M))
-		return
-
-	return 0
+/obj/item/reagent_containers/glass/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/glass/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
