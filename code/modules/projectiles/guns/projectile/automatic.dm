@@ -293,7 +293,7 @@
 //MG42 - It's an old gun, but it's just for fun!
 /obj/item/gun/ballistic/automatic/lmg/mg42
 	name = "MG 42"
-	desc = "An antique Terran machine gun, very few original MG 42 platforms have survived to the modern day. The Schwarzlindt Arms LTD manufacturer's stamp on the body marks this as a Frontier reproduction. It is no less deadly."
+	desc = "The MG 42 is an antique Terran machine gun, and very few original platforms have survived to the modern day. The Schwarzlindt Arms LTD manufacturer's stamp on the body marks this as a Frontier reproduction. It is no less deadly."
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
