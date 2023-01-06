@@ -134,7 +134,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_BLIZZARD	= new /datum/weather/lythios43c/blizzard(),
 		WEATHER_HAIL		= new /datum/weather/lythios43c/hail(),
 		WEATHER_FALLOUT		= new /datum/weather/lythios43c/fallout(),
-		WEATHER_BLOODMOON	= new /datum/weather/lythios43c/bloodmoon()
+		WEATHER_BLOODMOON	= new /datum/weather/lythios43c/blood_moon()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 27.5,
