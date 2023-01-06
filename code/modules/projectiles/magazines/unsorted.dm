@@ -740,6 +740,25 @@
 /obj/item/ammo_magazine/m545saw/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m545_mg42
+	name = "antique ammo drum (5.45mm)"
+	icon_state = "mg42_drum"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	caliber = "5.45mm"
+	matter = list(MAT_STEEL = 10000)
+	ammo_type = /obj/item/ammo_casing/a545
+	w_class = ITEMSIZE_NORMAL
+	max_ammo = 50
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m545_mg42/ap
+	name = "antique ammo drum box (5.45mm armor-piercing)"
+	ammo_type = /obj/item/ammo_casing/a545/ap
+
+/obj/item/ammo_magazine/m545_mg42/empty
+	initial_ammo = 0
+
 ///////// .44 Magnum /////////
 
 /obj/item/ammo_magazine/m44

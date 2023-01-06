@@ -810,7 +810,7 @@
 		prob(3);/obj/item/gun/ballistic/automatic/bullpup,
 		prob(2);/obj/item/gun/energy/pulse_rifle,
 		prob(2);/obj/item/gun/energy/gun/nuclear,
-		prob(2);/obj/item/gun/ballistic/automatic/l6_saw,
+		prob(2);/obj/item/gun/ballistic/automatic/lmg,
 		prob(2);/obj/item/gun/energy/gun/burst,
 		prob(2);/obj/item/storage/box/frags,
 		prob(2);/obj/item/material/twohanded/fireaxe,
@@ -818,6 +818,7 @@
 		prob(2);/obj/item/gun/launcher/crossbow,
 		// prob(1);/obj/item/gun/ballistic/automatic/battlerifle, // Too OP
 		prob(1);/obj/item/gun/ballistic/deagle/gold,
+		prob(1);/obj/item/gun/ballistic/automatic/lmg/mg42,
 		prob(1);/obj/item/gun/energy/imperial,
 		prob(1);/obj/item/gun/ballistic/automatic/as24,
 		prob(1);/obj/item/gun/ballistic/rocket,

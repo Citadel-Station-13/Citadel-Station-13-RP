@@ -2834,9 +2834,9 @@
 /area/centcom/simulated/evac)
 "iR" = (
 /obj/structure/statue/marble/venus{
+	anchored = 1;
 	dir = 8;
-	pixel_y = -5;
-	anchored = 1
+	pixel_y = -5
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
@@ -2858,8 +2858,8 @@
 /area/centcom/simulated/evac)
 "iU" = (
 /obj/structure/statue/marble/venus{
-	pixel_y = -5;
-	anchored = 1
+	anchored = 1;
+	pixel_y = -5
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
@@ -6578,8 +6578,8 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/ballistic/automatic/l6_saw,
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
