@@ -189,6 +189,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	// Instantiate statpanel
+	statpanel_create()
 
 	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -335,7 +337,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//! Initialize UI
 	// initialize statbrowser
-	statpanel_init()
+	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
 

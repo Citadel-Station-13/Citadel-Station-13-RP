@@ -176,11 +176,8 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -197,7 +194,6 @@ window "outputwindow"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -218,7 +214,6 @@ window "outputwindow"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
@@ -237,7 +232,6 @@ window "outputwindow"
 		size = 200x200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = ""
 
@@ -248,19 +242,15 @@ window "stat_pane_browser"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Status Panel"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "statbrowser"
 		type = BROWSER
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 
 window "stat_pane_byond"
@@ -270,12 +260,9 @@ window "stat_pane_byond"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Turf / Misc"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "statpanel"
 		type = INFO
 		pos = 0,0
@@ -283,7 +270,6 @@ window "stat_pane_byond"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = ""
-		tab-background-color = none
 
 window "statwindow"
 	elem "statwindow"
@@ -305,8 +291,8 @@ window "statwindow"
 		anchor2 = 100,100
 		background-color = none
 		saved-params = ""
-		tabs = "stat_pane_byond,stat_pane_browser"
-		current-tab = "stat_pane_byond,stat_pane_browser"
+		tabs = "stat_pane_browser,stat_pane_byond"
+		current-tab = "stat_pane_browser,stat_pane_byond"
 		multi-line = false
 		on-tab = ".statswitcher [[*]]"
 
