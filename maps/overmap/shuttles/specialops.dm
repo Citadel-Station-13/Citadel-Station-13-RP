@@ -5,8 +5,8 @@
 	name = "NDV Quicksilver"
 	warmup_time = 3
 	shuttle_area = list(/area/shuttle/specops)
-	current_location = "specops_hangar"
-	docking_controller_tag = "specops_docker"
+	current_location = "specops_docker"
+	docking_controller_tag = "specops_dock"
 	fuel_consumption = 5
 	defer_initialisation = TRUE
 
