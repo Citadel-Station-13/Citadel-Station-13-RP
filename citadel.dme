@@ -2717,6 +2717,7 @@
 #include "code\modules\maps\overmap\planets\virgo2.dm"
 #include "code\modules\maps\overmap\planets\virgo4.dm"
 #include "code\modules\maps\overmap\space\alienship.dm"
+#include "code\modules\maps\overmap\space\centcom.dm"
 #include "code\modules\maps\overmap\space\debrisfield.dm"
 #include "code\modules\maps\overmap\space\fueldepot.dm"
 #include "code\modules\maps\overmap\space\vox_pirate_base.dm"
