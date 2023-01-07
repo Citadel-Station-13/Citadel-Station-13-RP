@@ -252,6 +252,10 @@
 		O.maptext = ""
 		O.hud_layerise()
 
+	// If we're not overloaded, force overlays to build now to reduce visual lag.
+	if (!TICK_CHECK)
+		storage_start.compile_overlays()
+
 	closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
