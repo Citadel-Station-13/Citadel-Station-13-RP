@@ -48,7 +48,7 @@
 		M.add_language(id)
 	return TRUE
 
-/datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid citizenship for your current species.")

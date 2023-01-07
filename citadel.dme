@@ -2876,6 +2876,7 @@
 #include "code\modules\mob\characteristics\holder.dm"
 #include "code\modules\mob\characteristics\mob.dm"
 #include "code\modules\mob\characteristics\modifier.dm"
+#include "code\modules\mob\characteristics\presets.dm"
 #include "code\modules\mob\characteristics\skill.dm"
 #include "code\modules\mob\characteristics\specialization.dm"
 #include "code\modules\mob\characteristics\stat.dm"

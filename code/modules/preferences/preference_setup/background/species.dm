@@ -24,7 +24,7 @@
 	. += "[CS.desc]"
 	. += "</div>"
 
-/datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
 	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
 		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))

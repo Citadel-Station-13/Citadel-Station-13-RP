@@ -47,7 +47,7 @@
 		M.add_language(id)
 	return TRUE
 
-/datum/category_item/player_setup_item/background/religion/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/religion/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/lore/character_background/religion/current = SScharacters.resolve_religion(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid religion for your current species.")
