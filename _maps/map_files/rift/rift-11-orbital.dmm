@@ -6042,14 +6042,11 @@
 "rS" = (
 /obj/machinery/light,
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 1
-	},
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rT" = (
 /obj/machinery/chemical_dispenser/bar_coffee/full{
-	dir = 1
+	dir = 8
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
@@ -6063,13 +6060,13 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rW" = (
-/obj/structure/table/reinforced,
 /obj/machinery/camera/network/crescent{
 	dir = 1
 	},
 /obj/machinery/chemical_dispenser/bar_alc/full{
 	dir = 1
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rY" = (
@@ -9333,6 +9330,13 @@
 "Bv" = (
 /turf/space/basic,
 /area/space)
+"Bw" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1
+	},
+/turf/simulated/floor/lino,
+/area/centcom/simulated/bar)
 "Bx" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
@@ -13320,7 +13324,7 @@ gD
 rh
 gx
 fC
-Bv
+fC
 Bv
 wW
 xj
@@ -13514,7 +13518,7 @@ gD
 rh
 gx
 fC
-Bv
+fC
 Bv
 wW
 xj
@@ -13708,7 +13712,7 @@ gD
 rh
 gx
 fC
-Bv
+fC
 Bv
 wW
 xj
@@ -13902,7 +13906,7 @@ gD
 rh
 gx
 fC
-Bv
+fC
 Bv
 wW
 xj
@@ -17392,11 +17396,11 @@ qj
 qF
 qX
 qX
+Bw
 qi
-fs
-fs
-fs
-fs
+Bv
+Bv
+wW
 xl
 xj
 xw
@@ -17587,10 +17591,10 @@ qG
 qX
 rm
 qi
-Fy
-BI
-Cf
-Rc
+fs
+fs
+fs
+fs
 xl
 xj
 xw
@@ -17781,10 +17785,10 @@ qH
 qX
 ro
 qi
-se
-VV
-st
-fs
+Fy
+BI
+Cf
+Rc
 xl
 xj
 xw
@@ -17975,9 +17979,9 @@ nz
 nz
 rt
 nx
-fs
-fs
-fs
+se
+VV
+st
 fs
 xl
 xj
@@ -18169,10 +18173,10 @@ nz
 nz
 ru
 nx
-Fy
-BI
-Cf
-Rc
+fs
+fs
+fs
+fs
 xl
 xj
 xw
@@ -18363,10 +18367,10 @@ nz
 nz
 rv
 nx
-se
-VV
-st
-fs
+Fy
+BI
+Cf
+Rc
 xl
 xj
 xw
@@ -18557,9 +18561,9 @@ oR
 nz
 rw
 nx
-fs
-fs
-fs
+se
+VV
+st
 fs
 xl
 xj
@@ -18750,12 +18754,12 @@ ql
 oR
 nz
 rx
-wW
-xq
-xq
-xq
-xE
-xi
+nx
+fs
+fs
+fs
+fs
+xl
 xj
 xw
 yw
@@ -18945,11 +18949,11 @@ ot
 qZ
 ry
 wW
-xj
-xj
-xj
-xj
-xj
+xq
+xq
+xq
+xE
+xi
 xj
 xw
 yw
@@ -19139,10 +19143,10 @@ nx
 nx
 nx
 wW
-xq
-xq
-xE
-xk
+xj
+xj
+xj
+xj
 xj
 xj
 xw
@@ -19333,10 +19337,10 @@ qI
 oZ
 ou
 wW
-wW
-wW
-wW
-xl
+xq
+xq
+xE
+xk
 xj
 xj
 xw
@@ -19527,10 +19531,10 @@ ov
 ov
 ov
 wW
-xq
-xq
-xE
-xi
+wW
+wW
+wW
+xl
 xj
 xj
 xw
@@ -19721,10 +19725,10 @@ qJ
 nS
 rz
 wW
-xj
-xj
-xj
-xj
+xq
+xq
+xE
+xi
 xj
 xj
 xw
@@ -19915,11 +19919,11 @@ pT
 nS
 rA
 wW
-xq
-xq
-xq
-xE
-xk
+xj
+xj
+xj
+xj
+xj
 xj
 xx
 yw
@@ -20108,12 +20112,12 @@ nE
 nE
 nE
 nE
-nE
-nE
-nE
-nE
 wW
-xl
+xq
+xq
+xq
+xE
+xk
 xj
 xj
 yA
@@ -20303,9 +20307,9 @@ qK
 ra
 rB
 nE
-sh
-sA
-tj
+nE
+nE
+nE
 wW
 xl
 xj
@@ -20497,9 +20501,9 @@ qM
 rb
 rL
 nE
-sm
-sp
-sp
+sh
+sA
+tj
 wW
 xl
 xj
@@ -20691,7 +20695,7 @@ qN
 rc
 rM
 nE
-sn
+sm
 sp
 sp
 wW
@@ -20885,9 +20889,9 @@ qM
 rd
 rN
 nE
-so
+sn
 sp
-tk
+sp
 wW
 xl
 xj
@@ -21079,7 +21083,7 @@ qO
 pC
 rO
 nE
-sp
+so
 sp
 tk
 wW
@@ -23972,13 +23976,13 @@ hP
 hP
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+hf
+hf
+hf
+hf
+hf
+hf
+hf
 Bv
 Bv
 Bv
