@@ -1,3 +1,4 @@
+//NT Pulse Weapon Pinnacle Technology
 /obj/item/gun/energy/pulse_rifle
 	name = "\improper NT-PR-2 pulse rifle"
 	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, pulse rifles use advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
@@ -11,7 +12,7 @@
 	accuracy = 90
 	one_handed_penalty = 10
 	heavy = TRUE
-	
+
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 120),
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 120),

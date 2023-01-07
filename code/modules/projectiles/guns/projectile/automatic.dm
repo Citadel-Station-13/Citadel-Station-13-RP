@@ -222,7 +222,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
 	heavy = TRUE
-	one_handed_penalty = 90
+	one_handed_penalty = 75
 
 	var/cover_open = 0
 
@@ -230,7 +230,7 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 0),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.6, 1.0), automatic = 0),
 		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-1,-1,-2,-2), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2), automatic = 0),
-		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),
+		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
 /*
@@ -305,6 +305,29 @@
 	icon_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
 	item_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
+/obj/item/gun/ballistic/automatic/lmg/m60
+	name = "M60"
+	desc = "Affectionately dubbed 'The Pig' by the Old Earth soldiers assigned it, the M60 belt fed machine gun fell into disuse prior to the Final War, with no known original models surviving to the modern day. Several companies have since begun manufacturing faithful reproductions such as this one."
+	icon_state = "M60closed75"
+	item_state = "M60closed"
+	max_shells = 75
+	caliber = "7.62mm"
+	magazine_type = /obj/item/ammo_magazine/m762/m60
+	allowed_magazines = list(/obj/item/ammo_magazine/m762/m60)
+	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	one_handed_penalty = 100
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/lmg/m60/update_icon_state()
+	. = ..()
+	icon_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 15) : "-empty"]"
+	item_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
+
+//Future AA-12
 /obj/item/gun/ballistic/automatic/as24
 	name = "automatic shotgun"
 	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
@@ -631,6 +654,31 @@
 	else
 		icon_state = "[initial(icon_state)]-empty"
 
+//NT SpecOps SMG
+/obj/item/gun/ballistic/automatic/combat
+	name = "NT-SMG-8 submachine gun"
+	desc = "A compact submachine gun designed for close-quarters combat for NanoTrasen special operations. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	icon_state = "combatsmg"
+	item_state = "combatsmg"
+	w_class = ITEMSIZE_NORMAL
+	caliber = "5.7x28mm"
+	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
+	slot_flags = SLOT_BELT
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/smg/ap
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/smg)
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="3-round burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(60,30,30), dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/combat/update_icon_state()
+	. = ..()
+	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
+
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam
 	name = "toy submachine gun"
@@ -695,6 +743,8 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
+	heavy = FALSE
+	one_handed_penalty = 25
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon_state()
 	. = ..()

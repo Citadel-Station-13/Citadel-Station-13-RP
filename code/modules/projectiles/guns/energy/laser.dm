@@ -304,3 +304,24 @@
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
+
+//NT SpecOps Laser Rifle
+/obj/item/gun/energy/combat
+	name = "NT-LR-4 laser rifle"
+	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
+	icon_state = "clrifle"
+	item_state = "clrifle"
+	fire_delay = 6
+	slot_flags = SLOT_BELT|SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
+	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
+	projectile_type = /obj/item/projectile/beam/midlaser
+	heavy = FALSE
+	one_handed_penalty = 25
+
+	firemodes = list(
+		list(mode_name="normal", fire_delay=6, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 200),
+		list(mode_name="suppressive", fire_delay=3, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 50),
+		)
