@@ -386,7 +386,7 @@
 		return TRUE
 	switch(action)
 		if("tag")
-			set_tag(params["name"]? sanitize_atom_name(params["name"], 32) : "NULL")
+			set_tag(params["tag"]? sanitize_atom_name(params["tag"], 32) : "NULL")
 			return TRUE
 		if("power")
 			toggle_power(user = usr)
