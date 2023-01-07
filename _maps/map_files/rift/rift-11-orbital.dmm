@@ -9341,8 +9341,12 @@
 /obj/machinery/computer/ship/helm{
 	dir = 8
 	},
-/obj/item/gps/internal/base,
 /obj/structure/table/steel_reinforced,
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
+	gps_tag = "QKSLVR";
+	name = "shuttle beacon"
+	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
@@ -10100,7 +10104,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	cycle_to_external_air = null;
 	frequency = 1380;
-	id_tag = "specops_dock";
+	id_tag = "specops_hangar_dock";
 	pixel_x = -25
 	},
 /turf/unsimulated/floor{

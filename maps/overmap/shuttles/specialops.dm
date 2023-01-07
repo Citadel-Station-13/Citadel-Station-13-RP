@@ -5,8 +5,8 @@
 	name = "NDV Quicksilver"
 	warmup_time = 3
 	shuttle_area = list(/area/shuttle/specops/general, /area/shuttle/specops/cockpit, /area/shuttle/specops/engine)
-	current_location = "specops_docker"
-	docking_controller_tag = "specops_dock"
+	current_location = "specops_hangar"
+	docking_controller_tag = "specops_docker"
 	fuel_consumption = 5
 	defer_initialisation = TRUE
 
@@ -22,7 +22,7 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops
 	name = "Special Operations Dock"
 	landmark_tag = "specops_hangar"
-	docking_controller = "specops_dock"
+	docking_controller = "specops_hangar_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
