@@ -104,7 +104,7 @@
 
 // Nerfing the value of the base rad to adjust and not cause immediate rad poisoning to a crew member.
 /datum/disease2/effect/radian/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.apply_effect(1.10*multiplier, IRRADIATE, check_protection = 0)
+	mob.afflict_radiation(RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier))
 
 /datum/disease2/effect/deaf
 	name = "Deafness"

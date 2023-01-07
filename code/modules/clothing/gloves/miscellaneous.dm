@@ -328,7 +328,7 @@
 
 /obj/item/clothing/gloves/fingerless/pugilist/rapid/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, GLOVE_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, GLOVE_TRAIT)
 
 /obj/item/clothing/gloves/fingerless/pugilist/rapid/Touch(atom/target, proximity = TRUE)
 	if(!isliving(target))

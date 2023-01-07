@@ -44,6 +44,8 @@
 ### TheLordME
 
 /code/modules/power/geothermal_power.dm @TheLordME
+/code/modules/mob/living/6carbon/human/human_powers.dm @TheLordME
+
 
 ### Multiple Owners
 

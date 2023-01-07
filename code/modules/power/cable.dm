@@ -44,18 +44,22 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	))
 
 /obj/structure/cable
-	level = 1
-	anchored =1
-	var/datum/powernet/powernet
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
+
+	plane = TURF_PLANE
+	layer = EXPOSED_WIRE_LAYER
+	color = COLOR_RED
+
+	level = 1
+	anchored =1
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+
 	var/d1 = 0
 	var/d2 = 1
-	plane = PLATING_PLANE
-	layer = WIRES_LAYER
-	color = COLOR_RED
+	var/datum/powernet/powernet
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
@@ -81,9 +85,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		d1 = text2num( copytext( icon_state, 1, dash ) )
 		d2 = text2num( copytext( icon_state, dash+1 ) )
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1)
+	var/turf/T = src.loc // hide if turf is not intact
+	if(level==1 && T)
 		hide(!T.is_plating())
+
 	cable_list += src //add it to the global cable list
 	if(auto_merge)
 		auto_merge()
@@ -565,21 +570,21 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 ///////////////////////////////////
 
 //you can use wires to heal robotics
-/obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
-	if(ishuman(A) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = A
+/obj/item/stack/cable_coil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(ishuman(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			return ..()
+			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			return
 
 		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
-				src.use(use_amt)
-
-	else
-		return ..()
+				use(use_amt)
+		return
+	return ..()
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)

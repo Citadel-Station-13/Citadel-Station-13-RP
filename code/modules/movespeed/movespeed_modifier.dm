@@ -249,6 +249,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /// Get the move speed modifier datums of this mob
 /mob/proc/get_movespeed_modifiers()
 	RETURN_TYPE(/list)
+	. = list()
 	for(var/id in movespeed_modification)
 		if(id in movespeed_mod_immunities)
 			continue

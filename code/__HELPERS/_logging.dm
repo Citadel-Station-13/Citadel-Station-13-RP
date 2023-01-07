@@ -441,8 +441,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_unit_test(text)
 	log_world("## UNIT_TEST: [text]")
 
-/proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+/proc/report_progress(progress_message)
+	admin_notice(SPAN_BOLDANNOUNCE("[progress_message]"), R_DEBUG)
 	log_world(progress_message)
 
 /proc/log_nsay(text, inside, mob/speaker)

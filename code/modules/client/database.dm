@@ -27,28 +27,28 @@
 	src.ckey = ckey
 	if(!src.ckey)
 		return
-	Load()
+	load()
 
 /**
  * async
  */
-/datum/client_dbdata/proc/Load()
+/datum/client_dbdata/proc/load()
 	if(!SSdbcore.Connect())
 		if(isnull(available))
 			available = FALSE
 		return FALSE
-	INVOKE_ASYNC(src, .proc/Load_Async)
+	INVOKE_ASYNC(src, .proc/load_blocking)
 	return TRUE
 
-/datum/client_dbdata/proc/Load_Async()
+/datum/client_dbdata/proc/load_blocking()
 	// allow admin proccalls - there's no args here.
 	var/was_proccall = !!IsAdminAdvancedProcCall()
 	var/old_usr = usr
 	usr = null
-	_Load_Lock(was_proccall)
+	_load_lock(was_proccall)
 	usr = old_usr
 
-/datum/client_dbdata/proc/_Load_Lock(was_proccall)
+/datum/client_dbdata/proc/_load_lock(was_proccall)
 	if(IsAdminAdvancedProcCall())
 		return
 	if(loading)
@@ -56,10 +56,10 @@
 			CRASH("loading is still locked; why are we loading this fast?")
 		return
 	loading = TRUE
-	_Load()
+	_load()
 	loading = FALSE
 
-/datum/client_dbdata/proc/_Load()
+/datum/client_dbdata/proc/_load()
 	if(IsAdminAdvancedProcCall())
 		return
 	var/datum/db_query/lookup
@@ -103,9 +103,9 @@
 			CRASH("failed to lookup player row on id [lookup_pid] even though id was present in player_lookup.")
 	else
 		qdel(lookup)
-		RegisterNewPlayer(lookup_firstseen, lookup_id)
+		register_new_player(lookup_firstseen, lookup_id)
 
-/datum/client_dbdata/proc/RegisterNewPlayer(migrate_firstseen, lookup_id)
+/datum/client_dbdata/proc/register_new_player(migrate_firstseen, lookup_id)
 	if(IsAdminAdvancedProcCall())
 		return
 	// new person!
@@ -149,7 +149,7 @@
 /**
  * async
  */
-/datum/client_dbdata/proc/Save()
+/datum/client_dbdata/proc/save()
 	set waitfor = FALSE
 	// why are we in here if we're write locked?
 	if(saving)
@@ -164,11 +164,11 @@
 	usr = null
 	// don't lock; if something is spamming our flags they probably shouldn't be
 	saving = TRUE
-	_Save()
+	_save()
 	saving = FALSE
 	usr = old_usr
 
-/datum/client_dbdata/proc/_Save()
+/datum/client_dbdata/proc/_save()
 	qdel(SSdbcore.ExecuteQuery(
 		"UPDATE [format_table_name("player")] SET flags = :flags WHERE id = :id",
 		list(
@@ -180,11 +180,11 @@
 /**
  * async
  */
-/datum/client_dbdata/proc/LogConnect()
+/datum/client_dbdata/proc/log_connect()
 	set waitfor = FALSE
-	UpdateLastSeen()
+	update_last_seen()
 
-/datum/client_dbdata/proc/UpdateLastSeen()
+/datum/client_dbdata/proc/update_last_seen()
 	// don't interrupt
 	if(!block_on_available())
 		return FALSE

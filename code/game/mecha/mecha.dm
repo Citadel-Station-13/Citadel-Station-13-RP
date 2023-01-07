@@ -1207,7 +1207,7 @@
 			var/hit_occupant = 1 //only allow the occupant to be hit once
 			for(var/i in 1 to min(Proj.penetrating, round(Proj.damage/15)))
 				if(src.occupant && hit_occupant && prob(20))
-					Proj.attack_mob(src.occupant, distance)
+					Proj.projectile_attack_mob(src.occupant, distance)
 					hit_occupant = 0
 				else
 					if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.

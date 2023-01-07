@@ -9,6 +9,7 @@
 /area/rift/space
 	name = "Rift Debug Space"
 	requires_power = 0
+	is_outside = OUTSIDE_YES
 
 // Elevator areas.
 /area/turbolift/runder/level2
@@ -283,23 +284,34 @@
 
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
+
 /area/rift/surfacebase/underground
 	name = "Outside - Underground"
+	is_outside = OUTSIDE_YES
+
 /area/rift/surfacebase/underground/under3
 	icon_state = "red"
+
 /area/rift/surfacebase/underground/under2
 	icon_state = "under2"
+
 /area/rift/surfacebase/underground/under1
 	icon_state = "under1"
+
 /area/rift/surfacebase/outside
 	name = "Outside - Surface"
 	ambience = AMBIENCE_LYTHIOS
+	is_outside = OUTSIDE_YES
+
 /area/rift/surfacebase/outside/outside1
 	icon_state = "outside1"
+
 /area/rift/surfacebase/outside/outside2
 	icon_state = "outside2"
+
 /area/rift/surfacebase/outside/outside3
 	icon_state = "outside3"
+
 /area/rift/surfacebase/outside/empty
 	name = "Outside - Empty Area"
 
@@ -364,6 +376,7 @@
 // Mining Underdark // ???? Fix this.
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
+
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
 
@@ -415,6 +428,8 @@
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
+
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 
@@ -428,29 +443,41 @@
 /area/rift/geothermal/sauna
 	name = "\improper Geothermal Sauna"
 
+
 /area/maintenance/substation/medsec
 	name = "\improper MedSec Substation"
+
 /area/maintenance/substation/mining
 	name = "\improper Mining Substation"
+
 /area/maintenance/substation/bar
 	name = "\improper Bar Substation"
+
 /area/maintenance/substation/surface_atmos
 	name = "\improper Surface Atmos Substation"
+
 /area/maintenance/substation/civ_west
 	name = "\improper Civilian West Substation"
 
+
 /area/tether/surfacebase/security
 	icon_state = "security"
+
 /area/tether/surfacebase/security/breakroom
 	name = "\improper Surface Security Break Room"
+
 /area/tether/surfacebase/security/lobby
 	name = "\improper Surface Security Lobby"
+
 /area/tether/surfacebase/security/common
 	name = "\improper Surface Security Room"
+
 /area/rift/surfacebase/security/armory
 	name = "\improper Surface Armory"
+
 /area/rift/surfacebase/security/checkpoint
 	name = "\improper Surface Checkpoint Office"
+
 /area/tether/surfacebase/security/hallway
 	name = "\improper Surface Checkpoint Hallway"
 
@@ -465,22 +492,31 @@
 	icon_state = "atmos"
 	sound_env = MOUNTAINS
 
+
 /area/engineering/engine_core
 	name = "\improper Supermatter Engine Core"
+
 /area/engineering/turbine_room
 	name = "\improper Gas Turbine Engine Room"
+
 /area/engineering/atmos/hallway
 	name = "\improper Atmospherics Main Hallway"
+
 /area/engineering/lower/lobby
 	name = "\improper Enginering Surface Lobby"
+
 /area/engineering/lower/breakroom
 	name = "\improper Enginering Surface Break Room"
+
 /area/engineering/lower/corridor
 	name = "\improper Tether Lower Service Corridor"
+
 /area/engineering/lower/atmos_lockers
 	name = "\improper Engineering Atmos Locker Room"
+
 /area/engineering/lower/atmos_eva
 	name = "\improper Engineering Atmos EVA"
+
 
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
@@ -488,103 +524,145 @@
 /area/maintenance/lower
 	icon_state = "fsmaint"
 
+
 /area/maintenance/lower/xenoflora
 	name = "\improper Xenoflora Maintenance"
+
 /area/maintenance/lower/research
 	name = "\improper Research Maintenance"
+
 /area/maintenance/lower/atmos
 	name = "\improper Atmospherics Maintenance"
+
 /area/maintenance/lower/locker_room
 	name = "\improper Locker Room Maintenance"
+
 /area/maintenance/lower/vacant_site
 	name = "\improper Vacant Site Maintenance"
+
 /area/maintenance/lower/atrium
 	name = "\improper Atrium Maintenance"
+
 /area/maintenance/lower/rnd
 	name = "\improper RnD Maintenance"
+
 /area/maintenance/lower/north
 	name = "\improper North Maintenance"
+
 /area/maintenance/lower/bar
 	name = "\improper Bar Maintenance"
+
 /area/maintenance/lower/mining
 	name = "\improper Mining Maintenance"
+
 /area/maintenance/lower/south
 	name = "\improper South Maintenance"
+
 /area/maintenance/lower/trash_pit
 	name = "\improper Trash Pit"
+
 /area/maintenance/lower/solars
 	name = "\improper Solars Maintenance"
+
 /area/maintenance/lower/mining_eva
 	name = "\improper Mining EVA Maintenance"
+
 /area/maintenance/lower/public_garden_maintenence
 	name = "\improper Public Garden Maintenance"
+
 
 // Research
 /area/rnd/xenobiology/cell
 	name = "\improper Xenobiology Cell 1"
+
 /area/rnd/xenobiology/cell/two
 	name = "\improper Xenobiology Cell 2"
+
 /area/rnd/xenobiology/cell/three
 	name = "\improper Xenobiology Cell 3"
+
 /area/rnd/xenobiology/cell/four
 	name = "\improper Xenobiology Cell 4"
+
 /area/rnd/xenobiology/cell/five
 	name = "\improper Xenobiology Cell 5"
+
 /area/rnd/xenobiology/cell/six
 	name = "\improper Xenobiology Cell 6"
+
 /area/rnd/xenobiology/cell/seven
 	name = "\improper Xenobiology Cell 7"
+
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
+
 /area/rnd/breakroom
 	name = "\improper Research Break Room"
 	icon_state = "research"
+
 /area/rnd/reception_desk
 	name = "\improper Research Reception Desk"
 	icon_state = "research"
+
 /area/rnd/lockers
 	name = "\improper Research Locker Room"
 	icon_state = "research"
+
 /area/rnd/external
 	name = "\improper Research External Access"
 	icon_state = "research"
+
 /area/rnd/hallway
 	name = "\improper Research Lower Hallway"
 	icon_state = "research"
+
 /area/rnd/anomaly_lab
 	name = "\improper Anomaly Lab"
 	icon_state = "research"
+
 /area/rnd/anomaly_lab/containment_one
 	name = "\improper Anomaly Lab - Containment One"
 	icon_state = "research"
+
 /area/rnd/anomaly_lab/containment_two
 	name = "\improper Anomaly Lab - Containment Two"
 	icon_state = "research"
+
 /area/rnd/xenoarch_storage
 	name = "\improper Xenoarch Storage"
 	icon_state = "research"
+
+
 // Misc
 /area/hallway/lower/third_south
 	name = "\improper Hallway Third Floor South"
 	icon_state = "hallC1"
+
 /area/hallway/lower/first_west
 	name = "\improper Hallway First Floor West"
 	icon_state = "hallC1"
 
+
 /area/storage/surface_eva
 	icon_state = "storage"
 	name = "\improper Surface EVA"
+
 /area/storage/surface_eva/external
 	name = "\improper Surface EVA Access"
 
+
 /area/tether/surfacebase/shuttle_pad
 	name = "\improper Tether Shuttle Pad"
+
 /area/tether/surfacebase/reading_room
 	name = "\improper Reading Room"
+
 /area/tether/surfacebase/vacant_site
 	name = "\improper Vacant Site"
+
 /area/crew_quarters/freezer
 	name = "\improper Kitchen Freezer"
+
 
 //
 // Station Z Levels
@@ -594,18 +672,23 @@
 /area/rift/station/stairs_one
 	name = "\improper Engineering Stairwell First Floor"
 	icon_state = "dk_yellow"
+
 /area/rift/station/stairs_two
 	name = "\improper Engineering Stairwell Second Floor"
 	icon_state = "dk_yellow"
+
 /area/tether/station/stairs_three
 	name = "\improper Station Stairwell Third Floor"
 	icon_state = "dk_yellow"
+
 /area/tether/station/dock_one
 	name = "\improper Dock One"
 	icon_state = "dk_yellow"
+
 /area/tether/station/dock_two
 	name = "\improper Dock Two"
 	icon_state = "dk_yellow"
+
 
 /area/crew_quarters/showers
 	name = "\improper Unisex Showers"
@@ -643,114 +726,159 @@
 	name = "\improper Dorm 7 Holodeck"
 	icon_state = "dk_yellow"
 
+
 /area/holodeck/holodorm/source_basic
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_desert
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_seating
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_beach
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_garden
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_boxing
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_snow
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_space
 	name = "\improper Holodeck Source"
+
 /area/holodeck/holodorm/source_off
 	name = "\improper Holodeck Source"
+
 
 /area/ai/foyer
 	name = "\improper AI Core Access"
 
+
 /area/medical/virologyisolation
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
 
+
 /area/security/hallway
 	name = "\improper Security Hallway"
 	icon_state = "security"
+
 /area/security/hallwayaux
 	name = "\improper Security Armory Hallway"
 	icon_state = "security"
+
 /area/security/forensics
 	name = "\improper Forensics Lab"
 	icon_state = "security"
+
 /area/security/breakroom
 	name = "\improper Security Breakroom"
 	icon_state = "security"
+
 /area/security/brig/visitation
 	name = "\improper Visitation"
 	icon_state = "security"
+
 /area/security/brig/bathroom
 	name = "\improper Brig Bathroom"
 	icon_state = "security"
+
 /area/security/armory/blue
 	name = "\improper Armory - Blue"
 	icon_state = "armory"
+
 /area/security/armory/red
 	name = "\improper Armory - Red"
 	icon_state = "red2"
+
 /area/security/observation
 	name = "\improper Brig Observation"
 	icon_state = "riot_control"
+
 /area/security/eva
 	name = "\improper Security EVA"
 	icon_state = "security_equip_storage"
+
 /area/security/recstorage
 	name = "\improper Brig Recreation Storage"
 	icon_state = "brig"
 
+
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
+
 /area/engineering/engine_balcony
 	name = "\improper Engine Room Balcony"
+
 /area/engineering/foyer_mezzenine
 	name = "\improper Engineering Mezzenine"
 
+
 /area/hallway/station
 	icon_state = "hallC1"
+
 /area/hallway/station/atrium
 	name = "\improper Main Station Atrium"
+
 /area/hallway/station/port
 	name = "\improper Main Port Hallway"
+
 /area/hallway/station/starboard
 	name = "\improper Main Starboard Hallway"
+
 /area/hallway/station/upper
 	name = "\improper Main Upper Hallway"
+
 /area/hallway/station/docks
 	name = "\improper Docks Hallway"
 
+
 /area/maintenance/station
 	icon_state = "fsmaint"
+
 /area/maintenance/station/bridge
 	name = "\improper Bridge Maintenance"
+
 /area/maintenance/station/eng_lower
 	name = "\improper Engineering Lower Maintenance"
+
 /area/maintenance/station/eng_upper
 	name = "\improper Engineering Upper Maintenance"
+
 /area/maintenance/station/medbay
 	name = "\improper Medbay Maintenance"
+
 /area/maintenance/station/cargo
 	name = "\improper Cargo Maintenance"
+
 /area/maintenance/station/elevator
 	name = "\improper Elevator Maintenance"
+
 /area/maintenance/station/sec_lower
 	name = "\improper Security Lower Maintenance"
+
 /area/maintenance/station/sec_upper
 	name = "\improper Security Upper Maintenance"
+
 /area/maintenance/station/micro
 	name = "\improper Micro Maintenance"
+
 /area/maintenance/station/virology
 	name = "\improper Virology Maintenance"
+
 /area/maintenance/station/ai
 	name = "\improper AI Maintenance"
 	sound_env = SEWER_PIPE
+
 
 /area/rift/station/public_meeting_room
 	name = "Public Meeting Room"
@@ -761,9 +889,11 @@
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
+
 /area/shuttle/tether/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
+
 
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
@@ -806,10 +936,12 @@
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Lythios-43c Sky"
 
+
 //Adherent Maintenance
 /area/rift/station/adherent_maintenance
 	icon_state = "yellow"
 	name = "\improper Adherent Maintenance"
+
 
 //Fighter Bay
 /area/rift/station/fighter_bay
@@ -822,6 +954,7 @@
 
 /area/rift/station/fighter_bay/maintenance
 	name = "\improper Fighter Bay Maintenance"
+
 
 //Civilian Garden
 
@@ -930,10 +1063,10 @@ Do this eventually. */
 	name = "\improper Trade Shop Debugger"
 
 
-
 //Abandoned Tajaran Base
 /area/rift/facility/exterior
 	name = "\improper Radioactive Exclusion Zone"
+	is_outside = OUTSIDE_YES
 
 /area/rift/facility/exterior/shuttle
 	name = "\improper Contaminated Shuttle"
@@ -1018,6 +1151,9 @@ Do this eventually. */
 /area/rift/asylum/command
 
 //Other Lythios outdoor areas
+/area/rift/exterior
+	is_outside = OUTSIDE_YES
+
 /area/rift/exterior/nuketown
 	name = "\improper High Yield Explosives Test Site"
 
@@ -1041,6 +1177,3 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
-
-
-

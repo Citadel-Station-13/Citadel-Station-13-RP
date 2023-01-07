@@ -21,14 +21,6 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "tether3"
 
-// Elevator areas.
-/area/turbolift
-	delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
-
-	requires_power = FALSE
-
 /area/turbolift/tether/transit
 	name = "tether (midway)"
 	lift_floor_label = "Tether Midpoint"
@@ -146,6 +138,8 @@
 /area/tether/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/tether/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/tether/surfacebase/outside/outside2
@@ -318,6 +312,7 @@
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 
@@ -1481,13 +1476,13 @@
 
 // Override telescience shielding on some areas
 /area/security/armoury
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/tactical
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/nuke_storage
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/supply
 

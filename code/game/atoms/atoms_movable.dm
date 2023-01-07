@@ -141,6 +141,8 @@
 
 /atom/movable/Initialize(mapload)
 	. = ..()
+	if (!mapload && loc)
+		loc.Entered(src, null)
 	switch(blocks_emissive)
 		if(EMISSIVE_BLOCK_GENERIC)
 			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
@@ -163,10 +165,13 @@
 	// kick perspectives before moving
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
+
 	throwing?.terminate()
 	if(pulling)
 		stop_pulling()
+
 	. = ..()
+
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()

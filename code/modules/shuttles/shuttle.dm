@@ -70,13 +70,13 @@
 		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
 
 	if(src.name in SSshuttle.shuttles)
-		CRASH("A shuttle with the name '[name]' is already defined.")
+		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
 	SSshuttle.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
 		SSshuttle.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(SSsupply.shuttle)
-			CRASH("A supply shuttle is already defined.")
+			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))
 		SSsupply.shuttle = src
 
 /datum/shuttle/Destroy()

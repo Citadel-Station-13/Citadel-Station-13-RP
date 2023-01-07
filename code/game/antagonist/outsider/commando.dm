@@ -22,7 +22,7 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 /datum/antagonist/deathsquad/mercenary/equip(var/mob/living/carbon/human/player)
 
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(player), SLOT_ID_UNIFORM)
-	player.equip_to_slot_or_del(new /obj/item/gun/projectile/silenced(player), SLOT_ID_BELT)
+	player.equip_to_slot_or_del(new /obj/item/gun/ballistic/silenced(player), SLOT_ID_BELT)
 	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/swat(player), SLOT_ID_SHOES)
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(player), SLOT_ID_GLOVES)
 	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal(player), SLOT_ID_GLASSES)

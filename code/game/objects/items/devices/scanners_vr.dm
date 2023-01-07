@@ -17,11 +17,11 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	var/datum/mind/stored_mind
 
-/obj/item/sleevemate/attack(mob/living/M, mob/living/user)
-	if(ishuman(M))
-		scan_mob(M, user)
-	else
-		to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
+/obj/item/sleevemate/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(ishuman(target))
+		scan_mob(target, user)
+	to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
 /obj/item/sleevemate/attack_self(mob/living/user)
 	if(!stored_mind)

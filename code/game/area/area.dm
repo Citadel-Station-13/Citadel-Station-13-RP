@@ -90,6 +90,8 @@
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
 	var/area/area_limited_icon_smoothing
 
+	var/tmp/is_outside = OUTSIDE_NO
+
 /**
  * Called when an area loads
  *
@@ -137,7 +139,7 @@
 		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
 			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = CONFIG_GET(number/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
 
 	. = ..()
 
@@ -202,9 +204,11 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-// Changes the area of T to A. Do not do this manually.
-// Area is expected to be a non-null instance.
-/proc/ChangeArea(var/turf/T, var/area/A)
+/**
+ * Changes the area of T to A. Do not do this manually.
+ * Area is expected to be a non-null instance.
+ */
+/proc/ChangeArea(turf/T, area/A)
 	if(!istype(A))
 		CRASH("Area change attempt failed: invalid area supplied.")
 	var/area/old_area = get_area(T)
@@ -222,10 +226,15 @@
 				T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
+
 	for(var/atom/movable/AM in T)
 		A.Entered(AM, old_area)
+
 	for(var/obj/machinery/M in T)
 		M.power_change()
+
+	// if(T.is_outside == OUTSIDE_AREA && T.is_outside() != old_outside)
+	// 	T.update_weather()
 
 // compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
 /area/has_gravity()
@@ -251,7 +260,9 @@
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA in src)
+	for (var/obj/machinery/alarm/AA as anything in GLOB.air_alarms)
+		if(AA.loc?.loc != src)
+			continue
 		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
 			danger_level = max(danger_level, AA.danger_level)
 

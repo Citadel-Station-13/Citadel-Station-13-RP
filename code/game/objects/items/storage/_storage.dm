@@ -352,7 +352,7 @@
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
-	W.item_flags |= IN_STORAGE
+	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -400,14 +400,14 @@
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
-	W.item_flags &= ~IN_STORAGE
+	W.item_flags &= ~ITEM_IN_STORAGE
 	update_icon()
 	return 1
 
 /obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.item_flags & IN_STORAGE)
+		if(I.item_flags & ITEM_IN_STORAGE)
 			remove_from_storage(I, null, FALSE)
 	return ..()
 
@@ -720,3 +720,10 @@
 
 /obj/item/storage/AllowDrop()
 	return TRUE
+
+/obj/item/storage/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/atom/A as anything in contents)
+		A.clean_radiation(str, mul, cheap)

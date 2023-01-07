@@ -106,12 +106,12 @@
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/melee/energy/attack(mob/M, mob/user)
+/obj/item/melee/energy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))
 			deactivate(user)
 			visible_message("<span class='notice'>\The [src]'s blade flickers, before deactivating.</span>")
-	return ..()
 
 /obj/item/melee/energy/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool) && colorable && !active)
@@ -309,8 +309,8 @@
 
 /obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword))
-		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
 		if(istype(W, /obj/item/melee/energy/sword/charge))
 			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
@@ -346,9 +346,10 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	projectile_parry_chance = 85
 
-/obj/item/melee/energy/sword/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+	return ..()
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
@@ -390,20 +391,23 @@
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
 	return ..()
 
-/obj/item/melee/energy/sword/ionic_rapier/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(target.isSynthetic() && active)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(L.isSynthetic() && active)
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
-		target.emp_act(3) // A weaker severity is used because this has infinite uses.
-		playsound(get_turf(target), 'sound/effects/EMPulse.ogg', 100, 1)
-		target.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
-		playsound(get_turf(target), 'sound/weapons/blade1.ogg', 100, 1)
+		L.emp_act(3) // A weaker severity is used because this has infinite uses.
+		playsound(get_turf(L), 'sound/effects/EMPulse.ogg', 100, 1)
+		L.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
+		playsound(get_turf(L), 'sound/weapons/blade1.ogg', 100, 1)
 
 		// Make lesser robots really mad at us.
-		if(target.mob_class & MOB_CLASS_SYNTHETIC)
-			if(target.has_AI())
-				target.taunt(user)
-			target.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
+		if(L.mob_class & MOB_CLASS_SYNTHETIC)
+			if(L.has_AI())
+				L.taunt(user)
+			L.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"
@@ -433,8 +437,8 @@
 
 /obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword/charge))
-		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
 		else
 			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
@@ -461,9 +465,10 @@
 	projectile_parry_chance = 65
 	hitcost = 150
 
-/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+	return ..()
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))

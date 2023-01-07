@@ -23,6 +23,7 @@
 	gender = NEUTER
 	voice_name = "synthesized voice"
 	silicon_privileges = PRIVILEGES_SILICON
+	rad_flags = RAD_BLOCK_CONTENTS
 	var/syndicate = 0
 	var/const/MAIN_CHANNEL = "Main Frequency"
 	var/lawchannel = MAIN_CHANNEL // Default channel on which to state laws
@@ -48,11 +49,17 @@
 
 	var/hudmode = null
 
+	/// our translation context
+	var/datum/translation_context/translation_context
+	/// default translation context type
+	var/translation_context_type = /datum/translation_context/simple/silicons
+
 /mob/living/silicon/Initialize(mapload)
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	create_translation_context()
 	init_id()
 	init_subsystems()
 
@@ -223,7 +230,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			var/default_str
 			if(L == default_language)
 				default_str = " - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a>"
@@ -399,3 +406,12 @@
 
 /mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_METAL
+
+//! Topic
+/mob/living/silicon/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["ooc_notes"])
+		src.Examine_OOC()
+		return TRUE

@@ -22,6 +22,8 @@
 	// todo: sort languages into categories
 	/// category in UI
 	var/category = "General"
+	/// translation classes
+	var/translation_class = NONE
 	/// 'says', 'hisses', 'farts'.
 	var/speech_verb = "says"
 	/// Used when sentence ends in a ?
@@ -30,7 +32,7 @@
 	var/exclaim_verb = "exclaims"
 	/// Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/whisper_verb
-	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG language_flags
+	/// list of emotes that might be displayed if this language has LANGUAGE_NONVERBAL or LANGUAGE_SIGNLANG language_flags
 	var/signlang_verb = list("signs", "gestures")
 	/// CSS style to use for strings in this language.
 	var/colour = "body"
@@ -44,12 +46,11 @@
 	var/list/syllables
 	/// Likelihood of getting a space in the random scramble string
 	var/list/space_chance = 55
-	/// Whether machines can parse and understand this language
-	var/machine_understands = 1
 	/// List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
 	var/list/partial_understanding
 	var/list/scramble_cache = list()
 
+	// todo: icon state support, shorthand is kind of jarring to see in chat
 	/// The shorthand name of this language, used for the indicators in chat. Should be only a handful of all-caps letters.
 	var/shorthand = "???"
 
@@ -115,7 +116,7 @@
 		return stars(input)
 
 	// If the input is cached already, move it to the end of the cache and return it
-	if(input in scramble_cache)
+	if(scramble_cache[input])
 		var/n = scramble_cache[input]
 		scramble_cache -= input
 		scramble_cache[input] = n
@@ -197,7 +198,7 @@
 	if(name != "Noise")	// Audible Emotes
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
-			if(H.species.has_organ[O_VOICE] && !(language_flags & SIGNLANG) && !(language_flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
+			if(H.species.has_organ[O_VOICE] && !(language_flags & LANGUAGE_SIGNLANG) && !(language_flags & LANGUAGE_NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
 				var/obj/item/organ/internal/voicebox/vocal = H.internal_organs_by_name[O_VOICE]
 				if(!vocal || vocal.is_broken() || vocal.mute)
 					return FALSE
@@ -247,7 +248,7 @@
 	if(speaking.can_speak_special(src))
 		if(universal_speak)
 			return 1
-		if(speaking && (speaking.language_flags & INNATE))
+		if(speaking && (speaking.language_flags & LANGUAGE_INNATE))
 			return 1
 		if(speaking in src.languages)
 			return 1
@@ -268,7 +269,7 @@
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			dat += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
 	src << browse(dat, "window=checklanguage")
@@ -281,7 +282,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			if(L == default_language)
 				dat += "<b>[L.name] ([get_language_prefix()][L.key])</b> - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/>[L.desc]<br/><br/>"
 			else if (can_speak(L))

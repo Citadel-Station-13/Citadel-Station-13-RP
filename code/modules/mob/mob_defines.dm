@@ -6,7 +6,9 @@
 	animate_movement = 2
 	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
+	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
+	rad_flags = NONE
 
 //! Core
 	/// mobs use ids as ref tags instead of actual refs.
@@ -30,11 +32,6 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-
-	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
-
 //! Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
@@ -44,7 +41,7 @@
 	var/cached_multiplicative_slowdown
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
-	/// Last world.time we finished a move
+	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
@@ -73,6 +70,10 @@
 //! Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
+
+	var/datum/mind/mind
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
@@ -235,7 +236,6 @@
 	var/can_pull_mobs = MOB_PULL_LARGER
 
 	var/datum/dna/dna = null//?Carbon
-	var/radiation = 0 //?Carbon
 
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations

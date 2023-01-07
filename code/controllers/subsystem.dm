@@ -242,12 +242,12 @@
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
-//used to initialize the subsystem AFTER the map has loaded
+/// Used to initialize the subsystem AFTER the map has loaded.
 /datum/controller/subsystem/Initialize(start_timeofday)
 	initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 	log_subsystem("INIT", msg)
 	return time
@@ -303,3 +303,9 @@
 		if (NAMEOF(src, queued_priority)) //editing this breaks things.
 			return FALSE
 	. = ..()
+
+/**
+ * called when max z is changed since subsystems hook it so much
+ */
+/datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
+	return

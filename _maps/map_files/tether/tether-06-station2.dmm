@@ -999,7 +999,7 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/gun/projectile/revolver/consul,
+/obj/item/gun/ballistic/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /turf/simulated/floor/tiled/dark,
@@ -3488,7 +3488,7 @@
 /obj/item/robotanalyzer,
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
-/obj/item/geiger,
+/obj/item/geiger_counter,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer,
 /obj/item/t_scanner,
@@ -11709,7 +11709,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/random/toolbox,
-/obj/item/geiger,
+/obj/item/geiger_counter,
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "aTc" = (

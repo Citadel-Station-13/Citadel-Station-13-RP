@@ -28,12 +28,6 @@
 	else
 		return list()
 
-/datum/job/station/assistant/New()
-	..()
-	if(config)
-		total_positions = config_legacy.limit_visitors
-		spawn_positions = config_legacy.limit_visitors
-
 /datum/job/station/assistant/get_access()
 	return list()
 

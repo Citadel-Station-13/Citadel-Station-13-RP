@@ -884,12 +884,12 @@
 		spawn()
 			popUp() //pop the turret up if it's not already up.
 		setDir(get_dir(src, target)) //even if you can't shoot, follow the target
-		spawn()
-			shootAt(target)
+		shootAt(target)
 		return 1
 	return
 
 /obj/machinery/porta_turret/proc/shootAt(mob/living/target)
+	set waitfor = FALSE
 	//any emagged turrets will shoot extremely fast! This not only is deadly, but drains a lot power!
 	if(!(emagged || attacked)) //if it hasn't been emagged or attacked, it has to obey a cooldown rate
 		if(last_fired || !raised) //prevents rapid-fire shooting, unless it's been emagged

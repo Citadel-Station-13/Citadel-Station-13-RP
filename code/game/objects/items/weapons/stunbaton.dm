@@ -5,6 +5,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
+	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	force = 15
 	sharp = 0
@@ -126,7 +127,7 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack(mob/M, mob/user)
+/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.Weaken(30)
@@ -135,16 +136,19 @@
 	deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(isrobot(target))
+/obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(isrobot(L))
 		return ..()
 
 	var/agony = agonyforce
 	var/stun = stunforce
 	var/obj/item/organ/external/affecting = null
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		affecting = H.get_organ(hit_zone)
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		affecting = H.get_organ(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
 		. = ..()
@@ -153,23 +157,23 @@
 		stun *= 0.5
 	else if(!status)
 		if(affecting)
-			target.visible_message("<span class='warning'>[target] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
 		else
-			target.visible_message("<span class='warning'>[target] has been prodded with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
 	else
 		if(affecting)
-			target.visible_message("<span class='danger'>[target] has been prodded in the [affecting.name] with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
 		else
-			target.visible_message("<span class='danger'>[target] has been prodded with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, hit_zone, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+		L.stun_effect_act(stun, agony, target_zone, src)
+		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
+		if(ishuman(L))
+			var/mob/living/carbon/human/H = L
 			H.forcesay(hit_appends)
 	powercheck(hitcost)
 
@@ -249,11 +253,9 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/apply_hit_effect(mob/living/L, mob/living/carbon/user, shoving = FALSE)//handles making things teleport when hit
+/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!. || L.anchored)
-		return
-	do_teleport(L, get_turf(L), 15)
+	do_teleport(target, get_turf(target), 15)
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -268,10 +270,13 @@
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	..(target, user, hit_zone)
-	if(status && target.has_AI())
-		target.taunt(user)
+/obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	. = ..()
+	if(status && L.has_AI())
+		L.taunt(user)
 
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
@@ -302,13 +307,15 @@
 		bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/loaded/mini/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	var/mob/living/carbon/human/H
-	if(ishuman(target))
-		H = target
+	if(ishuman(L))
+		H = L
 		if(!status)
-			..(target, user, hit_zone)
-			return
+			return ..()
 	else
 		return
 
@@ -325,7 +332,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	target.stun_effect_act(stunforce, agonyforce, hit_zone, src)
-	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

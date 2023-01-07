@@ -2,7 +2,7 @@
 	icon_state = "girder"
 	anchored = 1
 	density = 1
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
 	var/state = 0
 	var/health = 200
@@ -38,7 +38,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 
@@ -251,7 +251,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.set_materials(M, reinf_material, girder_material)
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -402,7 +402,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE
