@@ -19,11 +19,12 @@ SUBSYSTEM_DEF(statpanels)
 	/// cached sdql2 data
 	var/cache_sdql_data
 
-	var/encoded_global_data
-	var/mc_data_encoded
-	var/list/cached_images = list()
+/datum/controller/subsystem/statpanels/Initialize()
+	spawn()
+		manual_ticking()
+	return ..()
 
-/datum/controller/subsystem/statpanels/fire(resumed = FALSE)
+/datum/controller/subsystem/statpanels/fire(resumed = FALSE, no_tick_check)
 	if(!resumed)
 		// dispose / rebuild caches
 		cache_mc_data = null
@@ -36,6 +37,8 @@ SUBSYSTEM_DEF(statpanels)
 	// cache for sanic speed
 	var/list/currentrun = src.currentrun
 	while(length(currentrun))
+		if(!no_tick_check && MC_TICK_CHECK)
+			return
 		// grab victim
 		var/client/player = currentrun[length(currentrun)]
 		--currentrun.len
@@ -100,7 +103,7 @@ SUBSYSTEM_DEF(statpanels)
 	var/shuttle_eta = SSemergencyshuttle.get_status_panel_eta()
 	if(shuttle_eta)
 		STATPANEL_DATA_ENTRY("Shuttle", shuttle_eta)
-	cache_server_data = url_encode(json_encode(.))
+	. = (cache_server_data = url_encode(json_encode(.)))
 
 /datum/controller/subsystem/statpanels/proc/fetch_ticket_data()
 	if(cache_ticket_data)
@@ -116,5 +119,15 @@ SUBSYSTEM_DEF(statpanels)
 		. += Q.generate_stat()
 	cache_sdql_data = url_encode(json_encode(.))
 
-/atom/proc/remove_from_cache()
-	SSstatpanels.cached_images -= REF(src)
+/**
+ * is this shitcode?
+ * yes it is
+ * if you wanna do better, do better; i'm not at the point of janking up our MC with my own
+ * fuckery.
+ *
+ * tl;dr this ensures we push data while MC is initializing.
+ */
+/datum/controller/subsystem/statpanels/proc/manual_ticking()
+	while(!Master.initialized)
+		fire(null, TRUE)
+		sleep(10)

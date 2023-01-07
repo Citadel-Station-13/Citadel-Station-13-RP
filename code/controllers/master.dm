@@ -21,6 +21,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/processing = TRUE
 	// How many times have we ran
 	var/iteration = 0
+	/// initialized?
+	var/initialized = FALSE
 
 	// world.time of last fire, for tracking lag outside of the mc
 	var/last_run
@@ -173,6 +175,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			Master.subsystems += new BadBoy.type	//NEW_SS_GLOBAL will remove the old one
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
+		initialized = TRUE
 		StartProcessing(10)
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
@@ -231,6 +234,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(sleep_offline_after_initializations)// && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
+
+	initialized = TRUE
 
 	// Loop.
 	Master.StartProcessing(0)
