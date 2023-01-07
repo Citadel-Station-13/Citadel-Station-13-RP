@@ -444,6 +444,7 @@ function byond_add_verbs(data, force_draw) {
 		}
 		if(!(all_tabs.includes(cat)))
 			all_tabs.push(cat);
+			transmit_verb(".statpanel_tab_add " + cat);
 			tabs_changed = true;
 		var arr = verbs[cat];
 		if(arr == undefined) {
@@ -487,6 +488,7 @@ function byond_remove_verbs(data) {
 					all_tabs.splice(i, 1);
 				}
 			}
+			transmit_verb(".statpanel_tab_remove " + cat);
 			tabs_changed = true;
 		}
 		var arr = verbs[cat];
@@ -661,12 +663,42 @@ function id_tab(name) {
 
 /// ensure a tab is there
 function ensure_tab(name) {
-
+	var tabs_changed = false;
+	if(!(stat_tabs.includes(name))){
+		stat_tabs.push(name);
+	}
+	if(!(all_tabs.includes(name))){
+		all_tabs.push(name);
+		transmit_verb(".statpanel_tab_add " + name);
+		tabs_changed = true;
+	}
+	if(tabs_changed){
+		redraw_menu();
+	}
 }
 
 /// ensure a tab *isn't* there
 function erase_tab(name) {
-
+	var tabs_changed = false;
+	if(stat_tabs.includes(name)){
+		for(var i = stat_tabs.length - 1; i >= 0; --i){
+			if(stat_tabs[i] == name){
+				stat_tabs.splice(i, 1);
+			}
+		}
+	}
+	if(all_tabs.includes(name) && !(name in verbs)){
+		tabs_changed = true;
+		transmit_verb(".statpanel_tab_remove " + name);
+		for(var i = all_tabs.length - 1; i >= 0; --i){
+			if(all_tabs[i] == name){
+				all_tabs.splice(i, 1);
+			}
+		}
+	}
+	if(tabs_changed){
+		redraw_menu();
+	}
 }
 
 /// clear tabs that don't have verbs
@@ -674,11 +706,12 @@ function erase_tabs() {
 	stat_tabs = [];
 	for(var i = all_tabs.length - 1; i >= 0; --i){
 		var tab = all_tabs[i];
-		if(verbs.includes(tab)){
+		if(tab in verbs){
 			continue;
 		}
 		all_tabs.splice(i, 1);
 	}
+	transmit_verb(".statpanel_tab_wipe");
 	redraw_menu();
 }
 
@@ -974,242 +1007,6 @@ function yield_invoke(f) {
 }
 
 /////////////////////////////////////////////////////////
-
-
-function createStatusTab(name) {
-	if (name.indexOf(".") != -1) {
-		var splitName = name.split(".");
-		if (split_admin_tabs && splitName[0] === "Admin")
-			name = splitName[1];
-		else
-			name = splitName[0];
-	}
-	if(document.getElementById(name) || name.trim() == "")
-		return;
-	if(!verb_tabs.includes(name) && !permanent_tabs.includes(name))
-		return;
-	var B = document.createElement("BUTTON");
-	B.onclick = function() {
-		tab_change(name);
-		this.blur();
-	};
-	B.id = name;
-	B[PROP_TEXT_CONTENT] = name;
-	B.className = "button";
-	//ORDERING ALPHABETICALLY
-	B.style.order = name.charCodeAt(0);
-	if(name == "Status" || name == "MC")
-		B.style.order = name == "Status" ? 1 : 2;
-	//END ORDERING
-	stat_menu.appendChild(B);
-	SendTabToByond(name);
-	stat_submenu.style.height = stat_menu.clientHeight + 'px';
-}
-
-function removeStatusTab(name) {
-	if(!document.getElementById(name) || permanent_tabs.includes(name))
-		return;
-	for (var i = verb_tabs.length - 1; i >= 0; --i) {
-		if (verb_tabs[i] == name) {
-			verb_tabs.splice(i, 1);
-		}
-	}
-	stat_menu.removeChild(document.getElementById(name));
-	TakeTabFromByond(name);
-	stat_submenu.style.height = stat_menu.clientHeight + 'px';
-}
-
-
-
-function check_verbs() {
-	for(var v = verb_tabs.length - 1; v >= 0; v--){
-		verbs_cat_check(verb_tabs[v]);
-	}
-}
-
-function verbs_cat_check(cat) {
-	var tabCat = cat;
-	if (cat.indexOf(".") != -1) {
-		var splitName = cat.split(".");
-		if (split_admin_tabs && splitName[0] === "Admin")
-			tabCat = splitName[1];
-		else
-			tabCat = splitName[0];
-	}
-	var verbs_in_cat = 0;
-	var verbcat = "";
-	if(!verb_tabs.includes(tabCat)){
-		removeStatusTab(tabCat);
-		return;
-	}
-	for(var v = 0; v < verbs.length; v++){
-		var part = verbs[v];
-		verbcat = part[0];
-		if (verbcat.indexOf(".") != -1) {
-			var splitName = verbcat.split(".");
-			if (split_admin_tabs && splitName[0] === "Admin")
-				verbcat = splitName[1];
-			else
-				verbcat = splitName[0];
-		}
-		if(verbcat != tabCat || verbcat.trim() == ""){
-			continue;
-		}
-		else{
-			verbs_in_cat = 1;
-			break; // we only need one
-		}
-	}
-	if(verbs_in_cat != 1) {
-		removeStatusTab(tabCat);
-		if(current_tab == tabCat)
-			tab_change("Status");
-	}
-}
-
-function wipe_verbs() {
-	verbs = [["", ""]];
-	verb_tabs = [];
-	checkStatusTab(); // remove all empty verb tabs
-}
-
-function update_verbs() {
-	wipe_verbs();
-	transmit_verb("Update-Verbs");
-}
-
-function remove_verb_list(v) {
-	var to_remove = JSON.parse(v);
-	for(var i = 0; i < to_remove.length; i++) {
-		remove_verb(to_remove[i]);
-	}
-	check_verbs();
-	sortVerbs();
-	if(verb_tabs.includes(current_tab))
-		draw_verbs(current_tab);
-}
-
-// passes a 2D list of (verbcategory, verbname) creates tabs and adds verbs to respective list
-// example (IC, Say)
-function init_verbs(c, v) {
-	connected_to_server();
-	wipe_verbs(); // remove all verb categories so we can replace them
-	checkStatusTab(); // remove all status tabs
-	verb_tabs = JSON.parse(c);
-	verb_tabs.sort(); // sort it
-	var do_update = false;
-	var cat = "";
-	for(var i = 0; i < verb_tabs.length; i++){
-		cat = verb_tabs[i];
-		createStatusTab(cat); // create a category if the verb doesn't exist yet
-	}
-	if(verb_tabs.includes(current_tab)) {
-		do_update = true;
-	}
-	if(v) {
-		add_verb_list(v);
-		sortVerbs(); // sort them
-		if(do_update) {
-			draw_verbs(current_tab);
-		}
-	}
-	SendTabsToByond();
-}
-
-function SendTabsToByond(){
-	var tabstosend = [];
-	tabstosend = tabstosend.concat(permanent_tabs, verb_tabs);
-	for(var i=0; i < tabstosend.length; i++){
-		SendTabToByond(tabstosend[i]);
-	}
-}
-
-function SendTabToByond(tab) {
-	transmit_verb("Send-Tabs " + tab);
-}
-
-//Byond can't have this tab anymore since we're removing it
-function TakeTabFromByond(tab) {
-	transmit_verb("Remove-Tabs " + tab);
-}
-
-function draw_status() {
-	if(!document.getElementById("Status")) {
-		createStatusTab("Status");
-		current_tab = "Status";
-	}
-	stat_content[PROP_TEXT_CONTENT] = '';
-	for(var i = 0; i < status_tab_parts.length; i++) {
-		if(status_tab_parts[i].trim() == "") {
-			document.getElementById(ELEMENT_ID_CONTENT).appendChild(document.createElement("br"));
-		} else {
-			var div = document.createElement("div");
-			div[PROP_TEXT_CONTENT] = status_tab_parts[i];
-			document.getElementById(ELEMENT_ID_CONTENT).appendChild(div);
-		}
-	}
-	//voting shitcode. See mc for more info.
-	if(vote_parts && vote_parts[0][0]) { //null verification.
-		var table = document.createElement("table");
-		for(var i = 0; i < vote_parts.length; i++) {
-			var part = vote_parts[i];
-			var tr = document.createElement("tr");
-			var td1 = document.createElement("td");
-			td1[PROP_TEXT_CONTENT] = part[0];
-			var td2 = document.createElement("td");
-			if(part[2]) {
-				var a = document.createElement("a");
-				if(part[2] === "disabled") {
-					a.href = "byond://winset?command=Vote";
-				} else {
-					a.href = "?src=" + part[2];
-				}
-				a[PROP_TEXT_CONTENT] = part[1];
-				td2.appendChild(a);
-			} else {
-				td2[PROP_TEXT_CONTENT] = part[1];
-			}
-			tr.appendChild(td1);
-			tr.appendChild(td2);
-			table.appendChild(tr);
-		}
-		document.getElementById(ELEMENT_ID_CONTENT).appendChild(table);
-	}
-	if(verb_tabs.length == 0 || !verbs)
-	{
-		transmit_verb("Fix-Stat-Panel");
-	}
-}
-
-// old stuff below - we won't remove it for reference but it's not being used. //
-
-/*
-function set_theme(which) {
-	if (which == "light") {
-		document.body.className = "";
-		set_style_sheet("browserOutput_white");
-	} else if (which == "dark") {
-		document.body.className = "dark";
-		set_style_sheet("browserOutput");
-	}
-}
-
-function set_style_sheet(sheet) {
-	if(document.getElementById("goonStyle")) {
-		var currentSheet = document.getElementById("goonStyle");
-		currentSheet.parentElement.removeChild(currentSheet);
-	}
-	var head = document.getElementsByTagName('head')[0];
-	var sheetElement = document.createElement("link");
-	sheetElement.id = "goonStyle";
-	sheetElement.rel = "stylesheet";
-	sheetElement.type = "text/css";
-	sheetElement.href = sheet + ".css";
-	sheetElement.media = 'all';
-	head.appendChild(sheetElement);
-}
-
-*/
 
 </script>
 </body>

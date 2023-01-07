@@ -258,7 +258,7 @@
 	set name = ".statpanel_tab_add"
 	set hidden = TRUE
 
-	statpanel_tabs += tab
+	statpanel_tabs |= tab
 
 /client/verb/hook_statpanel_remove_tab(tab as text)
 	set name = ".statpanel_tab_remove"
