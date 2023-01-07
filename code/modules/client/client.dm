@@ -34,6 +34,7 @@
 	 * is the way it is, please do update this comment
 	 */
 	parent_type = /datum
+	show_verb_panel = FALSE
 
 	//! Intrinsics
 	/// did New() finish?
