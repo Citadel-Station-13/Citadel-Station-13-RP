@@ -2315,7 +2315,7 @@
     motto = ""
     org_type = "government"
 
-    ship_prefixes = list("NA-DV" = "a diplomatic", "NA-RV" = "a quick response", "NA-TV" = "a fueling", "NA-CV" = "a cargo", "NA-HV" = "a hunting")
+    ship_prefixes = list("NA-DV" = "a diplomatic", "NA-RV" = "a quick response", "NA-TV" = "a trade", "NA-CV" = "a cargo", "NA-HV" = "a hunting")
     ship_names = list(
             "Seat of Power",
             "Tools of Trade",
