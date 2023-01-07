@@ -12,7 +12,7 @@
 
 /client/proc/statpanel_init()
 	pass()
-	src << browse(null, "statbrowser:byond_init")
+	src << output(null, "statbrowser:byond_init")
 	init_verbs()
 
 /client/proc/statpanel_check()
@@ -30,7 +30,7 @@
 	statpanel_tabs = null
 	statpanel_spell_last = null
 	unlist_turf()
-	src << browse(null, "statbrowser:byond_shutdown")
+	src << output(null, "statbrowser:byond_shutdown")
 
 /client/proc/statpanel_ready()
 	statpanel_tabs = list()
@@ -43,13 +43,13 @@
 
 /client/proc/statpanel_reset()
 	init_verbs()
-	src << browse(null, "statbrowser:byond_clear_tabs")
+	src << output(null, "statbrowser:byond_clear_tabs")
 
 /client/proc/statpanel_token(token)
 	if(!token)
-		src << browse(null, "statbrowser:byond_dispose_token")
+		src << output(null, "statbrowser:byond_dispose_token")
 		return
-	src << browse(token, "statbrowser:byond_grant_token")
+	src << output(token, "statbrowser:byond_grant_token")
 
 /**
  * returns TRUE if the tab should exist and we are on the tab
@@ -63,11 +63,11 @@
 		return
 	if(tab in statpanel_tabs)
 		if(!status)
-			src << browse(url_encode(tab), "statbrowser:byond_remove_tab")
+			src << output(url_encode(tab), "statbrowser:byond_remove_tab")
 			return FALSE	// removing
 	else
 		if(status)
-			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
+			src << output(url_encode(tab), "statbrowser:byond_add_tab")
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
 /client/proc/list_turf(turf/T)
@@ -84,14 +84,14 @@
 		if(!got)
 			continue
 		data[++data.len] = got
-	src << browse("[url_encode(T.name)];[url_encode(REF(T))];[icon2html(T, src, sourceonly = TRUE)];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
+	src << output("[url_encode(T.name)];[url_encode(REF(T))];[icon2html(T, src, sourceonly = TRUE)];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
 */
 
 /client/proc/unlist_turf()
 	if(!statpanel_turf)
 		return
 /* not using js
-	src << browse(null, "statbrowser:byond_turf_unset")
+	src << output(null, "statbrowser:byond_turf_unset")
 	UnregisterSignal(statpanel_turf, list(
 		COMSIG_ATOM_ENTERED,
 		COMSIG_ATOM_EXITED,
@@ -127,10 +127,10 @@
 	var/list/got = statpanel_encode_atom(AM)
 	if(!got)
 		return
-	src << browse("[url_encode(json_encode(got))]", "statbrowser:byond_turf_add")
+	src << output("[url_encode(json_encode(got))]", "statbrowser:byond_turf_add")
 
 /client/proc/__stat_hook_turf_exit(datum/source, atom/movable/AM)
-	src << browse("[url_encode(REF(AM))]", "statbrowser:byond_turf_del")
+	src << output("[url_encode(REF(AM))]", "statbrowser:byond_turf_del")
 
 //! external - load
 /// compiles a full list of verbs and sends it to the browser
@@ -252,7 +252,7 @@
 	return statpanel_data(src)
 
 //! verb hooks - js stat
-/*
+
 /client/verb/hook_statpanel_ready()
 	set name = ".statpanel_ready"
 	set hidden = TRUE
@@ -282,7 +282,7 @@
 	set hidden = TRUE
 
 	statpanel_tab = tab
-*/
+
 //! verb hooks - byond stat
 
 //! verb hooks - tab switcher

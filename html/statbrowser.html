@@ -701,6 +701,9 @@ function ensure_tab(name) {
 	if(tabs_changed){
 		redraw_menu();
 	}
+	if(name == active_tab){
+		redraw_content();
+	}
 }
 
 /// ensure a tab *isn't* there
@@ -724,6 +727,9 @@ function erase_tab(name) {
 	}
 	if(tabs_changed){
 		redraw_menu();
+	}
+	if(name == active_tab){
+		redraw_content();
 	}
 }
 
