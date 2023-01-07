@@ -238,8 +238,8 @@
 			if(get_dist(A, mob) > 5)
 				return
 			// todo: admin token implementation
-			var/params = params["params"]
-			mob.ClickOn(A, params, CLICKCHAIN_FROM_HREF)
+			var/clickparams = params["params"]
+			mob.ClickOn(A, clickparams, CLICKCHAIN_FROM_HREF)
 			return
 		// todo: mousedrag event
 
