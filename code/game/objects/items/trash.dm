@@ -25,6 +25,10 @@
 	name = "\improper Cheesie Honkers"
 	icon_state = "cheesie_honkers"
 
+/obj/item/trash/hot_cheesie
+	name = "Hot Cheesie Honkers"
+	icon_state = "hot_cheesie_honkers"
+
 /obj/item/trash/chips
 	name = "chips"
 	icon_state = "chips"

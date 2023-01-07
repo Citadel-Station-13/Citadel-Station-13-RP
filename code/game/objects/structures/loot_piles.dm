@@ -235,6 +235,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/trash/candy,
 		/obj/item/trash/candy/proteinbar,
 		/obj/item/trash/cheesie,
+		/obj/item/trash/hot_cheesie,
 		/obj/item/trash/chips,
 		/obj/item/trash/liquidfood,
 		/obj/item/trash/pistachios,
