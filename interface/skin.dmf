@@ -242,17 +242,13 @@ window "stat_pane_browser"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "statbrowser"
 		type = BROWSER
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 
 window "stat_pane_byond"
@@ -262,10 +258,7 @@ window "stat_pane_byond"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "statpanel"
 		type = INFO
 		pos = 0,0
@@ -273,7 +266,6 @@ window "stat_pane_byond"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = ""
-		tab-background-color = none
 
 window "statwindow"
 	elem "statwindow"
@@ -297,4 +289,5 @@ window "statwindow"
 		saved-params = ""
 		tabs = "stat_pane_byond,stat_pane_browser"
 		multi-line = false
+		on-tab = ".statswitcher [[*]]"
 

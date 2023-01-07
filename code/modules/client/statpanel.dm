@@ -285,4 +285,8 @@
 
 //! verb hooks - tab switcher
 
-#warn hook for detecting where we are so we don't unnecessarily stat
+/client/verb/hook_statswitcher_set_tab(tab as text)
+	set name = ".statswitcher"
+	set hidden = TRUE
+
+	statpanel_on_byond = (tab == "stat_pane_byond")
