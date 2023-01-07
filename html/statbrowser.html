@@ -426,16 +426,21 @@ function byond_clear_tabs() {
 
 /// called to add verb
 function byond_add_verb(name, category) {
-	byond_add_verbs({name: category});
+	__byond_add_verbs({name: category});
 }
 
 /// called to remove verb
 function byond_remove_verb(name, category) {
-	byond_remove_verbs({name: category});
+	__byond_remove_verbs({name: category});
 }
 
 /// called to add multiple verbs: same format as init verbs
 function byond_add_verbs(data, force_draw) {
+	data = JSON.parse(data);
+	return __byond_add_verbs(data, force_draw);
+}
+
+function __byond_add_verbs(data, force_draw) {
 	var had = force_draw || false;
 	var tabs_changed = false;
 	for(var cat in data) {
@@ -451,7 +456,8 @@ function byond_add_verbs(data, force_draw) {
 			arr = [];
 			verbs[cat] = arr;
 		}
-		for(var verb in data[cat]) {
+		for(var i = 0; i < data[cat].length; ++i) {
+			var verb = data[cat][i];
 			if(arr.includes(verb)) {
 				continue;
 			}
@@ -476,6 +482,11 @@ function byond_add_verbs(data, force_draw) {
 
 /// called to remove multiple verbs: same format as init verbs
 function byond_remove_verbs(data) {
+	data = JSON.parse(data);
+	return __byond_remove_verbs(data);
+}
+
+function __byond_remove_verbs(data) {
 	var had = false;
 	var tabs_changed = false;
 	for(var cat in data) {
@@ -495,12 +506,13 @@ function byond_remove_verbs(data) {
 		if(arr == undefined) {
 			continue;
 		}
-		for(var verb in data[cat]) {
-			for(var i = arr.length - 1; i >= 0; --i) {
-				if(arr[i] != verb) {
+		for(var i = 0; i < data[cat].length; ++i) {
+			var verb = data[cat][i];
+			for(var j = arr.length - 1; j >= 0; --j) {
+				if(arr[j] != verb) {
 					continue;
 				}
-				arr.splice(i, 1);
+				arr.splice(j, 1);
 				break;
 			}
 		}
@@ -537,6 +549,7 @@ function byond_turf_set(name, ref, icon, contents){
 
 /// called to add an atom from listed turf
 function byond_turf_add(data){
+	data = JSON.parse(data);
 	draw_atom(data[0], data[1], data[2]);
 }
 
@@ -564,6 +577,7 @@ function byond_dispose_token(token){
 // as of right now this *WAS* called (before I removed it) in init_verbs
 // but why the hell are you even able to click verbs before they're init'd?
 var command_queue = [];
+// var connected = false;
 
 /// direct send, do not use
 function __transmit_verb(cmd) {
@@ -573,12 +587,15 @@ function __transmit_verb(cmd) {
 
 /// queues or sends
 function transmit_verb(cmd) {
+	__transmit_verb(cmd);
+	/*
 	if(connected){
 		__transmit_verb(cmd);
 	}
 	else{
 		command_queue.push(cm)
 	}
+	*/
 }
 
 /// immediate sends
@@ -623,8 +640,17 @@ function redraw_menu(){
 	// wipe
 	stat_menu[PROP_TEXT_CONTENT] = ""
 	// redraw
-	for(var tab in all_tabs){
+	for(var i = 0; i < all_tabs.length; ++i){
+		var tab = all_tabs[i];
 		__create_tab_element(tab);
+	}
+	// empty? shouldn't happen but..
+	if(!all_tabs.length) {
+		return;
+	}
+	// change if needed
+	if(!(all_tabs.includes(active_tab))) {
+		change_tab(all_tabs[0]);
 	}
 }
 
@@ -821,7 +847,7 @@ function draw_tab(tab) {
 		var iterating = verbs[tab]
 		for(var i = 0; i < iterating.length; ++i) {
 			var verb = iterating[i];
-			var a = document.createElemtn("a");
+			var a = document.createElement("a");
 			a.href = "#";
 			a.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
 			a.className = "grid-item";
@@ -1007,6 +1033,35 @@ function yield_invoke(f) {
 }
 
 /////////////////////////////////////////////////////////
+
+// MAGICAL SHIT FROM TG IM NOT TOUCHING
+// fun fact this doesn't even work
+// because some idiot removed the .css entirely!
+
+function set_theme(which) {
+	if (which == "light") {
+		document.body.className = "";
+		set_style_sheet("browserOutput_white");
+	} else if (which == "dark") {
+		document.body.className = "dark";
+		set_style_sheet("browserOutput");
+	}
+}
+
+function set_style_sheet(sheet) {
+	if(document.getElementById("goonStyle")) {
+		var currentSheet = document.getElementById("goonStyle");
+		currentSheet.parentElement.removeChild(currentSheet);
+	}
+	var head = document.getElementsByTagName('head')[0];
+	var sheetElement = document.createElement("link");
+	sheetElement.id = "goonStyle";
+	sheetElement.rel = "stylesheet";
+	sheetElement.type = "text/css";
+	sheetElement.href = sheet + ".css";
+	sheetElement.media = 'all';
+	head.appendChild(sheetElement);
+}
 
 </script>
 </body>

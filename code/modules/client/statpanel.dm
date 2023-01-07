@@ -11,6 +11,7 @@
 //! external - state
 
 /client/proc/statpanel_init()
+	pass()
 	src << browse(null, "statbrowser:byond_init")
 	init_verbs()
 
@@ -146,6 +147,7 @@
 			continue
 		LAZYINITLIST(verblist[verb_to_init.category])
 		verblist[verb_to_init.category] += verb_to_init.name
+	pass()
 	src << output("[url_encode(json_encode(verblist))]", "statbrowser:byond_init_verbs")
 
 //! native
@@ -250,7 +252,7 @@
 	return statpanel_data(src)
 
 //! verb hooks - js stat
-
+/*
 /client/verb/hook_statpanel_ready()
 	set name = ".statpanel_ready"
 	set hidden = TRUE
@@ -280,7 +282,7 @@
 	set hidden = TRUE
 
 	statpanel_tab = tab
-
+*/
 //! verb hooks - byond stat
 
 //! verb hooks - tab switcher
