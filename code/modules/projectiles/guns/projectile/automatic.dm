@@ -297,8 +297,8 @@
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m545_mg42
-	allowed_magazines = list(/obj/item/ammo_magazine/m545_mg42)
+	magazine_type = /obj/item/ammo_magazine/m762_mg42
+	allowed_magazines = list(/obj/item/ammo_magazine/m762_mg42)
 
 /obj/item/gun/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
@@ -312,14 +312,14 @@
 	item_state = "M60closed"
 	max_shells = 75
 	caliber = "7.62mm"
-	magazine_type = /obj/item/ammo_magazine/m762/m60
-	allowed_magazines = list(/obj/item/ammo_magazine/m762/m60)
+	magazine_type = /obj/item/ammo_magazine/m762_m60
+	allowed_magazines = list(/obj/item/ammo_magazine/m762_m60)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 	one_handed_penalty = 100
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 0),
-		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		list(mode_name="automatic", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
 /obj/item/gun/ballistic/automatic/lmg/m60/update_icon_state()
