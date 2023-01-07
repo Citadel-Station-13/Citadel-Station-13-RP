@@ -2305,7 +2305,7 @@
 
 //Cheeses
 /datum/lore/organization/gov/naramadi_ascendancy
-    name = "The Naramadi Ascendancy
+    name = "The Naramadi Ascendancy"
     short_name = "Naramadi Ascendancy"
     acronym = "NA"
     desc = "The Naramadi Ascendancy is a member-state of the Moghes Hegemony, though operating largely independant in matters of diplomacy and Trade, often sending Traders and Diplomats out to establish relations."
@@ -2320,7 +2320,7 @@
             "Seat of Power",
             "Tools of Trade",
             "Knowledge of Elders",
-            "Return what's taken",
+            "Return what is taken",
             "High and Mighty",
             "Moral High Ground",
             "Voice that speaks",
