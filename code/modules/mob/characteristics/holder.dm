@@ -45,3 +45,13 @@
 
 /datum/characteristics_holder/proc/has_talent(datum/characteristic_talent/id_or_typepath)
 	return !!talents[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
+
+/**
+ * apply a preset to us
+ *
+ * @params
+ * - typepath_or_preset - typepath or preset datum
+ * - overwrite - should we replace everything in us or instead raise / append if needed?
+ */
+/datum/characteristics_holder/proc/apply_preset(datum/characteristic_preset/typepath_or_preset, overwrite = FALSE)
+	#warn impl
