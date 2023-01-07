@@ -7739,9 +7739,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"wD" = (
-/turf/unsimulated/floor/techfloor_grid,
-/area/shuttle/specops/general)
 "wH" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/gloves/yellow,
@@ -9366,11 +9363,6 @@
 	},
 /turf/unsimulated/wall,
 /area/centcom/control)
-"Cl" = (
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/cockpit)
 "Cs" = (
 /obj/effect/step_trigger/lost_in_space/shuttle,
 /turf/space/transit/east,
@@ -9402,7 +9394,7 @@
 	icon_state = "burst_r"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/centcom/specops/dock)
+/area/shuttle/specops/engine)
 "CZ" = (
 /obj/machinery/cell_charger,
 /obj/structure/table/reinforced,
@@ -9641,9 +9633,6 @@
 	icon_state = "floor_red"
 	},
 /area/shuttle/specops/cockpit)
-"Kz" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/centcom/specops/dock)
 "KE" = (
 /turf/simulated/sky/lythios43c/moving/west,
 /area/space)
@@ -9719,7 +9708,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specops/cockpit)
+/area/shuttle/specops/general)
 "Mw" = (
 /obj/machinery/light{
 	dir = 4
@@ -9754,13 +9743,13 @@
 	icon_state = "burst_l"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/centcom/specops/dock)
+/area/shuttle/specops/engine)
 "NB" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/centcom/specops/dock)
+/area/shuttle/specops/engine)
 "NC" = (
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/specops/dock)
@@ -9884,7 +9873,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specops/engine)
+/area/shuttle/specops/general)
 "Pv" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -9931,9 +9920,6 @@
 /obj/effect/shuttle_landmark/rift/deck4/north,
 /turf/simulated/sky/lythios43c/moving/south,
 /area/space)
-"Qk" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/shuttle/specops/cockpit)
 "Ql" = (
 /obj/effect/shuttle_landmark/transit/rift/pirate,
 /turf/space,
@@ -10045,7 +10031,7 @@
 "SC" = (
 /obj/machinery/porta_turret,
 /turf/simulated/floor/plating,
-/area/centcom/specops/dock)
+/area/shuttle/specops/general)
 "SG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -10293,7 +10279,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specops/cockpit)
+/area/shuttle/specops/general)
 "Yz" = (
 /obj/structure/flora/pottedplant{
 	pixel_y = 8
@@ -21890,13 +21876,13 @@ Xr
 Xr
 Xr
 Xr
-yw
-yw
-yw
-yw
-yw
-ad
-ad
+Xr
+Xr
+Xr
+Xr
+Xr
+Xr
+Xr
 hP
 hP
 Bv
@@ -22275,13 +22261,13 @@ Xr
 NC
 NC
 NC
-Kz
+Hw
 Ne
 NB
 NB
 NB
 CW
-Kz
+Hw
 NC
 NC
 Nc
@@ -23831,9 +23817,9 @@ rJ
 FF
 FM
 Yv
-Cl
+FF
 Mr
-Qk
+rJ
 WH
 NC
 Nc
@@ -24408,7 +24394,7 @@ ss
 Xr
 NC
 NC
-wD
+NC
 rJ
 Mw
 Yh
@@ -24416,7 +24402,7 @@ fP
 FF
 LE
 rJ
-wD
+NC
 NC
 Nc
 Bv
@@ -24991,13 +24977,13 @@ Xr
 NC
 NC
 NC
-wD
+NC
 rJ
 GN
 FF
 Le
 rJ
-wD
+NC
 NC
 NC
 Nc
@@ -25380,11 +25366,11 @@ NC
 NC
 NC
 NC
-wD
-wD
-wD
-wD
-wD
+NC
+NC
+NC
+NC
+NC
 NC
 NC
 NC

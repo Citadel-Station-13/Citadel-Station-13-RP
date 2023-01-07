@@ -4,7 +4,7 @@
 /datum/shuttle/autodock/overmap/specops
 	name = "NDV Quicksilver"
 	warmup_time = 3
-	shuttle_area = list(/area/shuttle/specops)
+	shuttle_area = list(/area/shuttle/specops/general, /area/shuttle/specops/cockpit, /area/shuttle/specops/engine)
 	current_location = "specops_docker"
 	docking_controller_tag = "specops_dock"
 	fuel_consumption = 5
@@ -14,6 +14,7 @@
 /obj/effect/overmap/visitable/ship/landable/specops
 	name = "NDV Quicksilver"
 	desc = "A NanoTrasen ST-ERT rapid response vessel."
+	fore_dir = "EAST"
 	vessel_mass = 4000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "NDV Quicksilver"
@@ -21,6 +22,7 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops
 	name = "Special Operations Dock"
 	landmark_tag = "specops_hangar"
+	docking_controller = "specops_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
