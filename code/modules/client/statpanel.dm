@@ -69,14 +69,14 @@
 			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
-#warn kick turfs to native no seriously kick the tab TO NATIVE
-
 /client/proc/list_turf(turf/T)
 	if(statpanel_turf)
 		unlist_turf()
 	if(!T || !list_turf_check(T))
 		return
 	statpanel_turf = T
+	return
+/* not using js
 	var/list/data = list()
 	for(var/atom/movable/AM as anything in T)
 		var/list/got = statpanel_encode_atom(AM)
@@ -84,16 +84,19 @@
 			continue
 		data[++data.len] = got
 	src << browse("[url_encode(T.name)];[url_encode(REF(T))];[icon2html(T, src, sourceonly = TRUE)];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
+*/
 
 /client/proc/unlist_turf()
 	if(!statpanel_turf)
 		return
+/* not using js
 	src << browse(null, "statbrowser:byond_turf_unset")
 	UnregisterSignal(statpanel_turf, list(
 		COMSIG_ATOM_ENTERED,
 		COMSIG_ATOM_EXITED,
 	))
 	statpanel_turf = null
+*/
 
 /client/proc/list_turf_check(turf/T)
 	return mob.TurfAdjacent(T)
