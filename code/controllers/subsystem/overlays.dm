@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(overlays)
-	name = "Overlay"
+	name = "Overlays"
 	wait = 1
 	priority = FIRE_PRIORITY_OVERLAYS
 	init_order = INIT_ORDER_OVERLAY
