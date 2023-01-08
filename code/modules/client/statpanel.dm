@@ -227,14 +227,14 @@
 		if("ready")
 			statpanel_ready()
 			return
-		if("act")
+		if("stat_click")
 			var/datum/D = locate(params["ref"])
 			if(!istype(D))
 				return
 			// todo: admin token implementation
 			D.statpanel_click(src, null, FALSE)
 			return
-		if("click")
+		if("atom_click")
 			var/atom/A = locate(params["ref"])
 			if(!istype(A))
 				return

@@ -887,21 +887,21 @@ function draw_tab(tab) {
 			var tdv = document.createElement("td");
 			if(dtype == "string") {
 				// just text; render normally
-				tdk[PROP_TEXT_CONTENT] = entry;
+				tdk.innerHTML = entry;
 			}
 			// it's not just string, so it's an array
 			else if(entry.length == 2) {
 				// simple k-v entry
-				tdk[PROP_TEXT_CONTENT] = entry[0];
-				tdv[PROP_TEXT_CONTENT] = entry[1];
+				tdk.innerHTML = entry[0];
+				tdv.innerHTML = entry[1];
 			}
 			else if(entry.length == 3) {
 				// k-v with value being clickable
-				tdk[PROP_TEXT_CONTENT] = entry[0];
+				tdk.innerHTML = entry[0];
 				var a = document.createElement("a");
-				a[PROP_TEXT_CONTENT] = entry[1];
+				a.innerHTML = entry[1];
 				// todo: token
-				a.href = "?_src_=stat;act=click;ref=" + entry[2];
+				a.href = "?_src_=stat;act=stat_click;ref=" + entry[2];
 				tdv.appendChild(a);
 			}
 			tr.appendChild(tdk);
@@ -1004,7 +1004,7 @@ function atom_invoke(event, ref){
 	if(e.altKey){
 		params += "alt=1&"
 	}
-	transmit_href("click", {"ref": ref, "params": params});
+	transmit_href("atom_click", {"ref": ref, "params": params});
 }
 
 /////////// FUNCTION FUNCTIONS (IE IS TERRIBLE) /////////
