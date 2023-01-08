@@ -29,6 +29,8 @@
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
+	/// update name with tag
+	var/update_name_tag = TRUE
 	/// max waypoints
 	var/waypoints_max = 25
 	/// our waypoints
@@ -275,6 +277,8 @@
 /obj/item/gps/proc/update_tag()
 	var/datum/component/gps_signal/sig = GetComponent(/datum/component/gps_signal)
 	sig.set_gps_tag(gps_tag)
+	if(update_name_tag)
+		name = "[initial(name)] ([gps_tag])"
 
 /**
  * set power
