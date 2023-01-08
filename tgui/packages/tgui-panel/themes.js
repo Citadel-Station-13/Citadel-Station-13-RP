@@ -36,11 +36,11 @@ let setClientThemeTimer = null;
 export const setClientTheme = name => {
   // Transmit once for fast updates and again in a little while in case we won
   // the race against statbrowser init.
-  clearInterval(setClientThemeTimer);
+  clearTimeout(setClientThemeTimer);
   Byond.command(`.output statbrowser:set_theme ${name}`);
   setClientThemeTimer = setTimeout(() => {
     Byond.command(`.output statbrowser:set_theme ${name}`);
-  }, 1500);
+  }, 5000);
 
   if (name === 'light') {
     return Byond.winset({

@@ -11,7 +11,6 @@
 //! external - state
 
 /client/proc/statpanel_init()
-	pass()
 	src << output(null, "statbrowser:byond_init")
 	init_verbs()
 
@@ -20,30 +19,53 @@
 		return
 	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
 
+/**
+ * boots statpanel up during connect
+ */
 /client/proc/statpanel_create()
+	// loads statbrowser if it isn't there
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	// if it is there and we can't tell because byond is byond, send it a signal to reload
+	src << output(null, "statbrowser:byond_reconnect")
+	// check for it incase it breaks
 	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
 
+/**
+ * cleans up statpanel stuff during disconnect
+ */
 /client/proc/statpanel_dispose()
 	statpanel_ready = FALSE
 	statpanel_tab = null
 	statpanel_tabs = null
 	statpanel_spell_last = null
 	unlist_turf()
-	src << output(null, "statbrowser:byond_shutdown")
+	src << output(null, "statbrowser:byond_cleanup")
 
+
+/client/proc/statpanel_reload()
+
+
+/**
+ * only called for debug; fully reset statbrowser.
+ */
+/client/proc/statpanel_reset()
+	statpanel_dispose()
+	sleep(1)
+	src << browse("RELOADING", "window=statbrowser")
+	sleep(1)
+	statpanel_boot()
+
+/**
+ * called by statbrowser when it's ready
+ */
 /client/proc/statpanel_ready()
 	statpanel_tabs = list()
 	statpanel_init()
 	statpanel_ready = TRUE
 
-/client/proc/statpanel_reload()
-	statpanel_create()
-	statpanel_init()
-
-/client/proc/statpanel_reset()
-	init_verbs(TRUE)
-
+/**
+ * called to set/dispose admin token
+ */
 /client/proc/statpanel_token(token)
 	if(!token)
 		src << output(null, "statbrowser:byond_dispose_token")

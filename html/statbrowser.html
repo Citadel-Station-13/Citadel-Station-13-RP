@@ -19,6 +19,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
 <link id="goonStyle" rel="stylesheet" type="text/css" href="browserOutput_white.css" media="all" />
+
+<!-- FIRST SCRIPT - TGUI NEEDS TO BE ABLE TO CALL THIS FROM OTHER WINDOWS -->
+
+<script>
+
+// MAGICAL SHIT FROM TG IM NOT TOUCHING
+// fun fact this doesn't even work
+// because some idiot removed the .css entirely!
+
+function set_theme(which) {
+	if (which == "light") {
+		document.body.className = "";
+		set_style_sheet("browserOutput_white");
+	} else if (which == "dark") {
+		document.body.className = "dark";
+		set_style_sheet("browserOutput");
+	}
+}
+
+function set_style_sheet(sheet) {
+	if(document.getElementById("goonStyle")) {
+		var currentSheet = document.getElementById("goonStyle");
+		currentSheet.parentElement.removeChild(currentSheet);
+	}
+	var head = document.getElementsByTagName('head')[0];
+	var sheetElement = document.createElement("link");
+	sheetElement.id = "goonStyle";
+	sheetElement.rel = "stylesheet";
+	sheetElement.type = "text/css";
+	sheetElement.href = sheet + ".css";
+	sheetElement.media = 'all';
+	head.appendChild(sheetElement);
+}
+
+</script>
+
+<!-- MAIN CSS -->
+
 <style>
 	body {
 		font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -243,9 +281,15 @@
 </style>
 </head>
 <body>
+
+<!-- HTML BODY -->
+
 <ul id="stat_menu" class="button-container"></ul>
 <div id="stat_submenu"></div>
 <div id="stat_content"></div>
+
+<!-- MAIN SCRIPT -->
+
 <script>
 // Polyfills and compatibility ------------------------------------------------
 var decoder = decodeURIComponent || unescape;
@@ -366,16 +410,44 @@ var listed_turf_name = null;
 var listed_turf_icon = null;
 var listed_turf_ref = null;
 
-//////////////// CALLED FROM BYOND //////////////////////
-
-/// called for shutdown
-function byond_shutdown() {
-
+/// wipes state
+function wipe_state(redraw) {
+	data = [];
+	verbs = {};
+	admin_token = null;
+	byond_turf_unset();
+	active_tab = null;
+	if(redraw) {
+		redraw_menu();
+		redraw_content();
+	}
 }
 
-/// called for init
-function byond_init() {
+//////////////// CALLED FROM BYOND //////////////////////
 
+/// called for shutdown or reconnect - this should reset state
+function byond_cleanup() {
+	// we just don't do that for now
+	// this way you can still see your stat data and it's smoother during restarts
+	// todo: connection state tracking?
+}
+
+/// called for init - this is not what initializes us, this is sent after we tell BYOND we are ready.
+function byond_init() {
+	// nothing is done now, this is just a placeholder
+	// /client/proc/statpanel_init() needs to send all data
+	// in one package to this function instead of init_verbs()'ing
+	// if we want to do anything more
+	// as we cannot trust JS function call order or winset/winget order
+	// at all.
+}
+
+/// called for reconnect - this should reset state and transmit ready
+function byond_reconnect() {
+	// wipe state
+	wipe_state();
+	// signal ready so BYOND re-initializes us.
+	transmit_ready();
 }
 
 /// called on data update
@@ -1060,35 +1132,6 @@ function yield_invoke(f) {
 }
 
 /////////////////////////////////////////////////////////
-
-// MAGICAL SHIT FROM TG IM NOT TOUCHING
-// fun fact this doesn't even work
-// because some idiot removed the .css entirely!
-
-function set_theme(which) {
-	if (which == "light") {
-		document.body.className = "";
-		set_style_sheet("browserOutput_white");
-	} else if (which == "dark") {
-		document.body.className = "dark";
-		set_style_sheet("browserOutput");
-	}
-}
-
-function set_style_sheet(sheet) {
-	if(document.getElementById("goonStyle")) {
-		var currentSheet = document.getElementById("goonStyle");
-		currentSheet.parentElement.removeChild(currentSheet);
-	}
-	var head = document.getElementsByTagName('head')[0];
-	var sheetElement = document.createElement("link");
-	sheetElement.id = "goonStyle";
-	sheetElement.rel = "stylesheet";
-	sheetElement.type = "text/css";
-	sheetElement.href = sheet + ".css";
-	sheetElement.media = 'all';
-	head.appendChild(sheetElement);
-}
 
 </script>
 </body>
