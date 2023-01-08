@@ -738,9 +738,13 @@ var/list/zmimic_fixed_planes = list(
 /datum/controller/subsystem/zmimic/proc/debug_fmt_thing(atom/A, list/out, turf/original)
 	if (istype(A, /atom/movable/openspace/mimic))
 		var/atom/movable/openspace/mimic/OO = A
+		var/base = "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)], fixup [OO.have_performed_fixup ? "Y" : "N"]"
+		if (QDELETED(OO.associated_atom))	// This shouldn't happen, but can if the deletion hook is not working.
+			return "[base] - [OO.type] copying <unknown> ([OO.mimiced_type]) - <font color='red'>ORPHANED</font></em></li>"
+
 		var/atom/movable/AA = OO.associated_atom
 		var/copied_type = AA.type == OO.mimiced_type ? "[AA.type] \[direct\]" : "[AA.type], eventually [OO.mimiced_type]"
-		return "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)], fixup [OO.have_performed_fixup ? "Y" : "N"], associated Z-level [AA.z] - [OO.type] copying [AA] ([copied_type])</li>"
+		return "[base], associated Z-level [AA.z] - [OO.type] copying [AA] ([copied_type])</li>"
 
 	else if (istype(A, /atom/movable/openspace/turf_mimic))
 		var/atom/movable/openspace/turf_mimic/DC = A
