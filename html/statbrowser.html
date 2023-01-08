@@ -439,19 +439,19 @@ function byond_remove_verb(name, category) {
 }
 
 /// called to add multiple verbs: same format as init verbs
-function byond_add_verbs(data, force_draw) {
+function byond_add_verbs(data, force_draw, resetting) {
 	data = JSON.parse(data);
 	return __byond_add_verbs(data, force_draw);
 }
 
-function __byond_add_verbs(data, force_draw) {
+function __byond_add_verbs(data, force_draw, resetting) {
 	var had = force_draw || false;
 	var tabs_changed = false;
 	for(var cat in data) {
 		if(cat == active_tab) {
 			had = true;
 		}
-		if(!(all_tabs.includes(cat)))
+		if(!resetting && !(all_tabs.includes(cat)))
 			all_tabs.push(cat);
 			transmit_verb(".statpanel_tab_add " + cat);
 			tabs_changed = true;
@@ -527,9 +527,12 @@ function __byond_remove_verbs(data) {
 }
 
 /// called to init verbs: takes object of categories to lists of names. throws out any verbs not in this.
-function byond_init_verbs(data) {
+function byond_init_verbs(_data, reset) {
 	verbs = [];
-	byond_add_verbs(data, true);
+	byond_add_verbs(_data, true, !reset);
+	if(reset){
+		byond_clear_tabs();
+	}
 }
 
 /// called to remove listed turf
@@ -745,12 +748,11 @@ function erase_tab(name) {
 /// clear tabs that don't have verbs
 function erase_tabs() {
 	stat_tabs = [];
-	for(var i = all_tabs.length - 1; i >= 0; --i){
-		var tab = all_tabs[i];
-		if(tab in verbs){
-			continue;
+	all_tabs = [];
+	for(var tab in verbs){
+		if(!(all_tabs.includes(tab))){
+			all_tabs.push(tab);
 		}
-		all_tabs.splice(i, 1);
 	}
 	// tell byond what's left
 	transmit_verb(".statpanel_tab_reset " + quote_verb_text(JSON.stringify(all_tabs)));

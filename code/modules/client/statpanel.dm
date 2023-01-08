@@ -42,8 +42,7 @@
 	statpanel_init()
 
 /client/proc/statpanel_reset()
-	init_verbs()
-	src << output(null, "statbrowser:byond_clear_tabs")
+	init_verbs(TRUE)
 
 /client/proc/statpanel_token(token)
 	if(!token)
@@ -134,7 +133,7 @@
 
 //! external - load
 /// compiles a full list of verbs and sends it to the browser
-/client/proc/init_verbs()
+/client/proc/init_verbs(reset = FALSE)
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
@@ -150,7 +149,7 @@
 		LAZYINITLIST(verblist[verb_to_init.category])
 		verblist[verb_to_init.category] += verb_to_init.name
 	pass()
-	src << output("[url_encode(json_encode(verblist))]", "statbrowser:byond_init_verbs")
+	src << output("[url_encode(json_encode(verblist))];[reset]", "statbrowser:byond_init_verbs")
 
 //! native
 
@@ -201,7 +200,7 @@
 
 /client/statpanel_data(client/C)
 	var/datum/D = statobj
-	return (istype(D) && D?.statpanel_data(C)) || list()
+	return istype(D)? D.statpanel_data(C) : list()
 
 /**
  * acts on a statpanel action / press
@@ -251,7 +250,9 @@
  * grabs statpanel data to send on tick
  */
 /client/proc/_statpanel_data()
-	return statpanel_data(src)
+	. = statpanel_data(src)
+	if(!islist(.))
+		CRASH("[.] was not list.")
 
 //! verb hooks - js stat
 

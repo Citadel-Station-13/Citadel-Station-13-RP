@@ -16,7 +16,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
 /obj/effect/statclick/proc/update(text)
 	name = text
-	return src
+	return name
 
 /obj/effect/statclick/statpanel_click(client/C, action)
 	Click()
