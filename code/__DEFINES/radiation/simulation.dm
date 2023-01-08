@@ -12,7 +12,7 @@
 /// default falloff
 #define RAD_FALLOFF_NORMAL 0.75
 /// default falloff for contaminated objects
-#define RAD_FALLOFF_CONTAMINATION_NORMAL 2
+#define RAD_FALLOFF_CONTAMINATION_NORMAL 1.25
 /// default falloff for anomalies
 #define RAD_FALLOFF_ANOMALY 0.5
 /// default falloff for smashed anomalies

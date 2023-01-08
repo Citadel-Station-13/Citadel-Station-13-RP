@@ -21,7 +21,8 @@
 
 	if (bound_overlay)
 		bound_overlay.forceMove(get_step(src, UP))
-		if (bound_overlay.dir != dir)
+		// forceMove could've deleted our overlay
+		if (bound_overlay && bound_overlay.dir != dir)
 			bound_overlay.setDir(dir)
 
 	if (light_source_solo)

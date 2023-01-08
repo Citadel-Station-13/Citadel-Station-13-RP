@@ -29,7 +29,7 @@
 		return FALSE
 
 	if(isliving(target))
-		my_tool.attack(target, chassis.occupant, BP_TORSO)
+		my_tool.melee_attack_chain(target, chassis.occupant, BP_TORSO)
 
 	target.attackby(my_tool,chassis.occupant)
 

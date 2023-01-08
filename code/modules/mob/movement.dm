@@ -56,6 +56,13 @@
 	if(!mover.density && !mover.throwing)
 		return TRUE
 
+/mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if((buckled?.loc == target) && ismovable(blocker))
+		var/atom/movable/AM = blocker
+		if(AM.pass_flags & ATOM_PASS_BUCKLED)
+			return TRUE
+	return ..()
+
 /**
   * Toggle the move intent of the mob
   *

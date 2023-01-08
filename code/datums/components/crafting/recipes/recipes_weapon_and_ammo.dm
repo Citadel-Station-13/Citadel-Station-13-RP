@@ -315,7 +315,7 @@
 
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
-	result =  /obj/item/gun/projectile/bow/pipe
+	result =  /obj/item/gun/ballistic/bow/pipe
 	reqs = list(/obj/item/pipe = 5,
 	/obj/item/stack/material/plastic = 15,
 	/obj/item/weaponcrafting/string = 5)
@@ -325,7 +325,7 @@
 
 /datum/crafting_recipe/dartgun
 	name = "prototype dart gun"
-	result =  /obj/item/gun/projectile/dartgun/research
+	result =  /obj/item/gun/ballistic/dartgun/research
 	reqs = list(/obj/item/stack/material/steel = 10,
 	/obj/item/stack/material/glass = 5,
 	/obj/item/tank/emergency/oxygen = 1,
@@ -348,7 +348,7 @@
 
 /datum/crafting_recipe/rapiddartgun
 	name = "dart gun"
-	result = /obj/item/gun/projectile/dartgun
+	result = /obj/item/gun/ballistic/dartgun
 	reqs = list(
 		/obj/item/ammo_casing/chemdart = 1,
 		/obj/item/stack/material/plastic = 5,
@@ -402,7 +402,7 @@
 
 /datum/crafting_recipe/piperifle
 	name = "pipe rifle"
-	result = /obj/item/gun/projectile/contender/pipegun
+	result = /obj/item/gun/ballistic/contender/pipegun
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,

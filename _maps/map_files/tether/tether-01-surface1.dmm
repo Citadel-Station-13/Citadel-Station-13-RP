@@ -30979,7 +30979,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/laser/practice,
-/obj/item/gun/projectile/shotgun/pump/rifle/practice,
+/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /turf/simulated/floor/tiled/dark,

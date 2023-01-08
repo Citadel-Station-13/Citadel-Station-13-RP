@@ -574,7 +574,7 @@
 					if(Bump(G.affecting))
 						return //If Bump() returns 0 (keep going) then we continue on to attack M.
 
-			passthrough = !attack_mob(M, distance)
+			passthrough = !projectile_attack_mob(M, distance)
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
@@ -583,7 +583,7 @@
 			for(var/obj/O in A)
 				O.bullet_act(src)
 			for(var/mob/living/M in A)
-				attack_mob(M, distance)
+				projectile_attack_mob(M, distance)
 
 	//penetrating projectiles can pass through things that otherwise would not let them
 	if(!passthrough && penetrating > 0)
@@ -647,7 +647,7 @@
 	return TRUE
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
+/obj/item/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
 	if(!istype(target_mob))
 		return
 

@@ -678,7 +678,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/projectile/automatic/as24{
+/obj/item/gun/ballistic/automatic/as24{
 	desc = "Never ask to speak to the manager.";
 	name = "Kate"
 	},
@@ -7319,7 +7319,7 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/obj/item/gun/projectile/shotgun/pump/JSDF{
+/obj/item/gun/ballistic/shotgun/pump/JSDF{
 	desc = "The Iceman cometh.";
 	name = "mercenary tactical shotgun"
 	},
@@ -9793,7 +9793,7 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "LL" = (

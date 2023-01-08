@@ -103,19 +103,17 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
-
-	if(!istype(M))
-		return
-
+/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-
-	if(M.can_inject(user,1))
+	var/mob/living/L = target
+	if(istype(L))
+		return
+	if(L.can_inject(user,1))
 		if(reagents.total_volume)
-			if(M.reagents)
+			if(target.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(M, 30, CHEM_BLOOD)
-				add_attack_logs(user,M,"Injected with [src.name] containing [contained], trasferred [trans] units")
+				var/trans = reagents.trans_to_mob(target, 30, CHEM_BLOOD)
+				add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
  * Blade pens.
