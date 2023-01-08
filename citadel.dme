@@ -4067,6 +4067,7 @@
 #include "code\modules\sprite_accessories\ears\fictional\demon.dm"
 #include "code\modules\sprite_accessories\ears\fictional\draconic.dm"
 #include "code\modules\sprite_accessories\ears\fictional\elf.dm"
+#include "code\modules\sprite_accessories\ears\fictional\halo.dm"
 #include "code\modules\sprite_accessories\ears\fictional\jackalope.dm"
 #include "code\modules\sprite_accessories\ears\fictional\oni.dm"
 #include "code\modules\sprite_accessories\ears\fictional\otie.dm"
