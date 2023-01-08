@@ -144,7 +144,7 @@
 	if(HAS_TRAIT(src, "VERB_UPDATE_QUEUED"))
 		return
 	ADD_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
-	addtimer(CALLBACK(Src, .proc/legacy_verb_update), 1 SECONDS)
+	addtimer(CALLBACK(src, .proc/legacy_verb_update), 1 SECONDS)
 
 /// -_-
 /client/proc/legacy_verb_update()
@@ -158,7 +158,7 @@
 	if(mob)
 		verbstoprocess += mob.verbs
 		for(var/atom/movable/AM as anything in mob)
-			verbs_to_process += AM.verbs
+			verbstoprocess += AM.verbs
 	for(var/thing in verbstoprocess)
 		var/procpath/verb_to_init = thing
 		if(verb_to_init.hidden)
