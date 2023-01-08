@@ -289,6 +289,13 @@
 			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
 				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
+	do_examinate(A)
+
+/**
+ * examines something & sends results
+ * no pre-checks for dist/view/whatnot
+ */
+/mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?

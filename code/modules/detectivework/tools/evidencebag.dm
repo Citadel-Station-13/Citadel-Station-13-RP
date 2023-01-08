@@ -92,4 +92,4 @@
 /obj/item/evidencebag/examine(mob/user)
 	. = ..()
 	if(stored_item)
-		stored_item.examine(user)
+		. += stored_item.examine(user)
