@@ -22,7 +22,7 @@
 /**
  * boots statpanel up during connect
  */
-/client/proc/statpanel_create()
+/client/proc/statpanel_boot()
 	// loads statbrowser if it isn't there
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	// if it is there and we can't tell because byond is byond, send it a signal to reload
@@ -41,9 +41,12 @@
 	unlist_turf()
 	src << output(null, "statbrowser:byond_cleanup")
 
-
+/**
+ * instructs statpanel to reload
+ */
 /client/proc/statpanel_reload()
-
+	// this is janky as shit tbh - init_verbs shouldn't be our reset call too.
+	init_verbs(TRUE)
 
 /**
  * only called for debug; fully reset statbrowser.

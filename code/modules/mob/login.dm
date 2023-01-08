@@ -98,7 +98,7 @@
 	// load rendering onto client's screen
 	reload_rendering()
 	// reset statpanel of any verbs/whatnot
-	client.statpanel_reset()
+	client.statpanel_reload()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()
