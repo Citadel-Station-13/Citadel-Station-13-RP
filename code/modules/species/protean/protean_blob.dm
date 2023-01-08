@@ -90,7 +90,7 @@
 
 /mob/living/simple_mob/protean_blob/statpanel_data(client/C)
 	. = ..()
-	if(humanform)
+	if(humanform && C.statpanel_tab("Species", TRUE))
 		. += humanform.species.statpanel_status(C, humanform)
 
 /mob/living/simple_mob/protean_blob/updatehealth()
