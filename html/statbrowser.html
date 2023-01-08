@@ -529,7 +529,7 @@ function __byond_remove_verbs(data) {
 /// called to init verbs: takes object of categories to lists of names. throws out any verbs not in this.
 function byond_init_verbs(_data, reset) {
 	verbs = [];
-	byond_add_verbs(_data, true, !reset);
+	byond_add_verbs(_data, true, reset);
 	if(reset){
 		byond_clear_tabs();
 	}
@@ -631,7 +631,7 @@ function transmit_ready() {
 
 /// quotes a text arg
 function quote_verb_text(text) {
-	return "\"" + text.replace("\"", "\\\"") + "\"";
+	return "\"" + text.replace(/"/g, "\\\"") + "\"";
 }
 
 //////////////////// WINSET / WINGET / SKIN /////////////
@@ -661,8 +661,8 @@ function redraw_menu(){
 		return;
 	}
 	// change if needed
-	if(!(all_tabs.includes(active_tab))) {
-		change_tab(all_tabs[0]);
+	if(!(all_tabs.includes(active_tab)) && all_tabs.includes("Status")) {
+		change_tab("Status");
 	}
 }
 
@@ -792,6 +792,9 @@ function tab_order(tab) {
 	}
 	else if(tab == "Turf") {
 		return 3;
+	}
+	else if(tab == "Tickets") {
+		return 5;
 	}
 	else {
 		return tab.charCodeAt(0) + 3;

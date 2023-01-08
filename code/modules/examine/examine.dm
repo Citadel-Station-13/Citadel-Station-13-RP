@@ -34,7 +34,7 @@
 
 // Quickly adds the boilerplate code to add an image and padding for the image.
 /proc/desc_panel_image(var/icon_state)
-	return "\icon[description_icons[icon_state]][EXAMINE_PANEL_PADDING]"
+	return "[icon2html(description_icons[icon_state])][EXAMINE_PANEL_PADDING]"
 
 /mob/living/get_description_fluff()
 	if(flavor_text) //Get flavor text for the green text.
@@ -56,7 +56,7 @@
 	description_holders["interactions"] = A.get_description_interaction()
 
 	description_holders["name"] = "[A.name]"
-	description_holders["icon"] = "[costly_icon2html(A, src, TRUE)]" //this is icon not icon2html
+	description_holders["icon"] = "[costly_icon2html(A, src)]" //this is icon not icon2html
 	description_holders["desc"] = A.desc
 
 /mob/statpanel_data(client/C)
