@@ -70,10 +70,7 @@
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
 /client/proc/list_turf(turf/T)
-	if(statpanel_turf == T)
-		unlist_turf()
-		return
-	else if(statpanel_turf)
+	if(statpanel_turf)
 		unlist_turf()
 	if(!T || !list_turf_check(T))
 		return
@@ -81,6 +78,7 @@
 	// using byond atm
 	if(!statpanel_on_byond)
 		statpanel_for_turf = TRUE
+		statpanel_on_byond = TRUE
 		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BYONDSTAT]")
 /* not using js
 	var/list/data = list()
@@ -93,11 +91,10 @@
 */
 
 /client/proc/unlist_turf()
-	if(!statpanel_turf)
-		return
 	// using byond atm
 	if(statpanel_for_turf)
 		statpanel_for_turf = FALSE
+		statpanel_on_byond = FALSE
 		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BROWSERSTAT]")
 /* not using js
 	src << output(null, "statbrowser:byond_turf_unset")
@@ -105,8 +102,8 @@
 		COMSIG_ATOM_ENTERED,
 		COMSIG_ATOM_EXITED,
 	))
-	statpanel_turf = null
 */
+	statpanel_turf = null
 
 /client/proc/list_turf_check(turf/T)
 	return mob.TurfAdjacent(T)

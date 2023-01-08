@@ -750,6 +750,9 @@ function erase_tabs() {
 	stat_tabs = [];
 	all_tabs = [];
 	for(var tab in verbs){
+		if(!verbs.hasOwnProperty(tab)){
+			continue;
+		}
 		if(!(all_tabs.includes(tab))){
 			all_tabs.push(tab);
 		}
