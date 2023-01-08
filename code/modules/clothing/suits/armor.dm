@@ -131,13 +131,6 @@
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
-/obj/item/clothing/suit/armor/tactical/pirate
-	name = "defaced tactical armor"
-	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
-	icon_state = "swatarmor_pirate"
-	armor = list(melee = 20, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
-	siemens_coefficient = 0.7
-
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
@@ -846,3 +839,16 @@
 		|ACCESSORY_SLOT_ARMOR_L\
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
+
+//Pirate Armor
+/obj/item/clothing/suit/storage/vest/tactical/pirate
+	name = "surplus tactical vest"
+	desc = "A surplus tactical vest. Although its aging webbing remains intact, its original armor plating has long since been replaced."
+	armor = list(melee = 20, bullet = 20, laser = 30, energy = 10, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/armor/tactical/pirate
+	name = "defaced tactical armor"
+	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
+	icon_state = "swatarmor_pirate"
+	armor = list(melee = 30, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
