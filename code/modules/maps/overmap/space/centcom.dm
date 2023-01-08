@@ -1,11 +1,11 @@
 //Overmap Controller
-/obj/effect/overmap/visitable/sector/centcom
-	name = "NTS Demeter"
+/obj/effect/overmap/visitable/sector/ert_ship
+	name = "NRV Gentry Clover"
 	desc = "The seat of NanoTrasen's power in the Lythios system."
 	scanner_desc = @{"[i]Information[/i]: NanoTrasen's hub station for the system, and the base of local Central Command."}
 	in_space = 1
 	known = TRUE
-	icon_state = "fueldepot"
+	icon_state = "ship"
 	color = "#007396"
 
 	initial_restricted_waypoints = list(

@@ -98,6 +98,10 @@ Need to turn all of these into proper initializers like this:
 	name = "In transit"
 	landmark_tag = "nav_transit_pirate"
 
+/obj/effect/shuttle_landmark/transit/rift/specops
+	name = "In transit"
+	landmark_tag = "nav_transit_specops"
+
 /obj/effect/shuttle_landmark/transit/rift/civvie
 	name = "In transit"
 	landmark_tag = "nav_transit_civvie"

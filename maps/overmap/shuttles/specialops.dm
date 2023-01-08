@@ -7,7 +7,9 @@
 	shuttle_area = list(/area/shuttle/specops/general, /area/shuttle/specops/cockpit, /area/shuttle/specops/engine)
 	current_location = "specops_hangar"
 	docking_controller_tag = "specops_docker"
+	landmark_transition = "nav_transit_specops"
 	fuel_consumption = 5
+	move_time = 5
 	defer_initialisation = TRUE
 
 // The 'ship' of the shuttle
