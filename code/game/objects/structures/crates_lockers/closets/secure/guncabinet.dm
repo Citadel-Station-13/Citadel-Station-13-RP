@@ -28,7 +28,7 @@
 		for (var/obj/item/gun/G in contents)
 			if (istype(G, /obj/item/gun/energy))
 				lazors++
-			if (istype(G, /obj/item/gun/projectile))
+			if (istype(G, /obj/item/gun/ballistic))
 				shottas++
 		for (var/i = 0 to 2)
 			if(lazors || shottas) // only make icons if we have one of the two types.
@@ -71,13 +71,13 @@
 
 	starts_with = list(
 		/obj/item/ammo_magazine/clip/c762/hunter = 9,
-		/obj/item/gun/projectile/shotgun/pump/rifle = 2)
+		/obj/item/gun/ballistic/shotgun/pump/rifle = 2)
 
 /obj/structure/closet/secure_closet/guncabinet/rifle/Initialize(mapload)
 	if(prob(85))
-		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle
+		starts_with += /obj/item/gun/ballistic/shotgun/pump/rifle
 	else
-		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle/lever
+		starts_with += /obj/item/gun/ballistic/shotgun/pump/rifle/lever
 	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/phase

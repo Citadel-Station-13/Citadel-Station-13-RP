@@ -9,7 +9,7 @@
 #define SHADOWER_DARKENING_FACTOR 0.6
 /// The above, but as an RGB string for lighting-less turfs.
 #define SHADOWER_DARKENING_COLOR "#999999"
-#define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[1] : T.baseturfs)
+#define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[length(T.baseturfs)] : T.baseturfs)
 
 SUBSYSTEM_DEF(zmimic)
 	name = "Z-Mimic"

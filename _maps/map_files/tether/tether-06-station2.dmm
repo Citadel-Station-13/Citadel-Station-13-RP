@@ -999,7 +999,7 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/gun/projectile/revolver/consul,
+/obj/item/gun/ballistic/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /turf/simulated/floor/tiled/dark,

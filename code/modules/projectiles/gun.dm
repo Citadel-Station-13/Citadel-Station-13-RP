@@ -249,17 +249,22 @@
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		handle_suicide(user)
-	else if(user.a_intent == INTENT_HARM) //point blank shooting
-		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
+/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/A = target
+	if(!istype(A))
+		return ..()
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+			handle_suicide(user)
+			return
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else
 			Fire(A, user, pointblank=1)
-	else
-		return ..() //Pistolwhippin'
+			return
+	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
@@ -782,7 +787,7 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
-	if(!(item_flags & IN_INVENTORY))
+	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 

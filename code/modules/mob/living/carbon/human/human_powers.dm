@@ -104,8 +104,7 @@
 	if(!target)
 		return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
-	text = sanitize(text)
+	text = sanitize(input("What would you like to say?", "Speak to creature", null, null) as message|null)
 
 	if(!text)
 		return

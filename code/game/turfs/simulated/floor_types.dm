@@ -73,7 +73,7 @@
 		else if(isfloor(T3) || istype(T3, /turf/space))
 			under = T3
 		else
-			under = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
+			under = baseturf_underneath()
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1	// Prevents us from 'landing on grass' and having interior corners update.

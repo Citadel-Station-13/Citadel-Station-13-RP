@@ -296,12 +296,11 @@
 	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
 	remove_item(drop_location())
 
-/obj/item/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/gripper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(wrapped) 	//The force of the wrapped obj gets set to zero during the attack() and afterattack().
 		force_holder = wrapped.force
 		wrapped.force = 0
-		wrapped.attack(M,user)
-		M.attackby(wrapped, user)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
+		target.attackby(wrapped, user, params, clickchain_flags)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
 		return 1
 	return 0
 
@@ -376,7 +375,6 @@
 
 //TODO: Matter decompiler.
 /obj/item/matter_decompiler
-
 	name = "matter decompiler"
 	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
 	icon = 'icons/obj/device.dmi'
@@ -387,9 +385,6 @@
 	var/datum/matter_synth/glass = null
 	var/datum/matter_synth/wood = null
 	var/datum/matter_synth/plastic = null
-
-/obj/item/matter_decompiler/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	return
 
 /obj/item/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
 

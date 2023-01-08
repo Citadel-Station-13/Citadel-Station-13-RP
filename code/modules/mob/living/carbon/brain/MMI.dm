@@ -104,7 +104,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	if(brainmob)
-		O.attack(brainmob, user)//Oh noooeeeee
+		O.melee_attack_chain(brainmob, user)//Oh noooeeeee
 		return
 	..()
 

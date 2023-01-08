@@ -192,7 +192,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			T.set_material(M, the_rcd.make_rwalls ? M : null, M)
+			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
 		if(RCD_AIRLOCK)

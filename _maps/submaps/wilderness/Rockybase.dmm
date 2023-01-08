@@ -200,7 +200,7 @@
 /area/submap/Rockybase)
 "aQ" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -235,8 +235,8 @@
 /area/submap/Rockybase)
 "aV" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "aW" = (
@@ -362,7 +362,7 @@
 "bn" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "bo" = (

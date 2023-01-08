@@ -184,10 +184,10 @@
 		/obj/item/megaphone,
 		/obj/item/melee,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/p92x,
 		/obj/item/barrier_tape_roll,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -230,7 +230,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -565,22 +565,22 @@
 		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/toxgun,
 		/obj/item/gun/energy/zip,
-		/obj/item/gun/projectile/colt,
-		/obj/item/gun/projectile/contender,
-		/obj/item/gun/projectile/dartgun,
-		/obj/item/gun/projectile/deagle,
-		/obj/item/gun/projectile/derringer,
-		/obj/item/gun/projectile/gyropistol,
-		/obj/item/gun/projectile/luger,
-		/obj/item/gun/projectile/r9,
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
-		/obj/item/gun/projectile/shotgun/flare,
-		/obj/item/gun/projectile/silenced,
-		/obj/item/gun/projectile/p92x,
-		/obj/item/gun/projectile/pistol,
-		/obj/item/gun/projectile/pirate
+		/obj/item/gun/ballistic/colt,
+		/obj/item/gun/ballistic/contender,
+		/obj/item/gun/ballistic/dartgun,
+		/obj/item/gun/ballistic/deagle,
+		/obj/item/gun/ballistic/derringer,
+		/obj/item/gun/ballistic/gyropistol,
+		/obj/item/gun/ballistic/luger,
+		/obj/item/gun/ballistic/r9,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
+		/obj/item/gun/ballistic/shotgun/flare,
+		/obj/item/gun/ballistic/silenced,
+		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/ballistic/pirate
 		)
 
 /obj/item/storage/belt/quiver

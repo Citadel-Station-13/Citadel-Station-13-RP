@@ -203,13 +203,15 @@
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
 
-/obj/item/melee/nanite_knife/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
+/obj/item/melee/nanite_knife/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(isliving(M))
-		if(M.reagents)
-			target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
-			if(M.can_inject(src, null, target_zone))
-				inject_poison(M, target_zone)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(!L.reagents)
+		return
+	if(L.can_inject(src, null, target_zone))
+		inject_poison(L, target_zone)
 
  // Does actual poison injection, after all checks passed.
 /obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)
