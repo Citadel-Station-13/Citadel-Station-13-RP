@@ -8,7 +8,7 @@
 	icon_state = "fueldepot"
 	color = "#007396"
 
-	initial_restricted_waypoints = list(
+	initial_generic_waypoints = list(
 		"NDV Quicksilver" = list("specops_hangar")
 		)
 
