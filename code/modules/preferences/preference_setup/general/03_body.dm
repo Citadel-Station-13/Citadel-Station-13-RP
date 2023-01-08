@@ -848,6 +848,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	// Sanitize the name so that there aren't any numbers sticking around.
 	var/species_name = real_species_name()
-	real_name          = sanitize_name(real_name, species_name)
+	real_name          = sanitize_species_name(real_name, species_name)
 	if(!real_name)
 		real_name      = random_name(identifying_gender, species_name)

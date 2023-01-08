@@ -1,4 +1,4 @@
-/mob/vv_edit_var(var_name, var_value, raw_edit)
+/mob/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	if(raw_edit)
 		return ..()
 	switch(var_name)
