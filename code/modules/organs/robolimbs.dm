@@ -687,7 +687,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_sergal
-	company = OSS - Sergal"
+	company = "OSS - Naramadi"
 
 /datum/robolimb/dsi_nevrean
 	company = "OSS - Nevrean"
