@@ -279,7 +279,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	for(var/ability in abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
-		STATPANEL_DATA_CLICK("[A.ability_name]", "[A.name]", "\ref[A]")
+		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean

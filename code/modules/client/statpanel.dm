@@ -139,12 +139,26 @@
 	src << output("[url_encode(REF(AM))]", "statbrowser:byond_turf_del")
 
 //! external - load
+/// for legacy shit like rigsuits that didn't get the hint about not using verbs
+/client/proc/queue_legacy_verb_update()
+	if(HAS_TRAIT(src, "VERB_UPDATE_QUEUED"))
+		return
+	ADD_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
+	addtimer(CALLBACK(Src, .proc/legacy_verb_update), 1 SECONDS)
+
+/// -_-
+/client/proc/legacy_verb_update()
+	REMOVE_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
+	init_verbs(FALSE)
+
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs(reset = FALSE)
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
 		verbstoprocess += mob.verbs
+		for(var/atom/movable/AM as anything in mob)
+			verbs_to_process += AM.verbs
 	for(var/thing in verbstoprocess)
 		var/procpath/verb_to_init = thing
 		if(verb_to_init.hidden)
@@ -154,7 +168,7 @@
 		if(verb_to_init.name[1] == ".")
 			continue
 		LAZYINITLIST(verblist[verb_to_init.category])
-		verblist[verb_to_init.category] += verb_to_init.name
+		verblist[verb_to_init.category] |= verb_to_init.name
 	pass()
 	src << output("[url_encode(json_encode(verblist))];[reset]", "statbrowser:byond_init_verbs")
 
@@ -308,3 +322,11 @@
 	set instant = TRUE
 
 	statpanel_on_byond = (tab == "stat_pane_byond")
+
+//? Verbs - For Players
+
+/client/verb/fix_stat_panel()
+	set name = "Fix Stat Panel"
+	set category = "OOC"
+
+	statpanel_reset()

@@ -102,7 +102,7 @@
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			STATPANEL_DATA_LINE("Suit charge: [cell_status]")
+			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
 
 		if(mind)
 			if(mind.changeling)

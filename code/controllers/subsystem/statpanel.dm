@@ -28,7 +28,8 @@ SUBSYSTEM_DEF(statpanels)
 	if(!resumed)
 		// dispose / rebuild caches
 		cache_mc_data = null
-		cache_server_data = build_server_data()
+		cache_server_data = null
+		build_server_data()
 		cache_ticket_data = null
 		cache_sdql_data = null
 		// reset currentrun
