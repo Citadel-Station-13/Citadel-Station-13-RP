@@ -847,7 +847,7 @@ function __create_tab_element(tab) {
 	};
 	button.id = id;
 	button[PROP_TEXT_CONTENT] = tab;
-	button.className = "button";
+	button.className = (tab == active_tab)? "button active" : "button";
 	button.style.order = tab_order(tab);
 	stat_menu.appendChild(button);
 	// don't know what this does
@@ -890,16 +890,12 @@ function __delete_tab_element(tab) {
 
 /// swap tabs - input is tab ID, NOT NAME.
 function change_tab(tab){
-	// already there? don't bother
-	if(tab == active_tab){
-		return;
-	}
 	// grab last
 	var last_tab = document.getElementById(id_tab(active_tab));
+	// grab current
+	var next_tab = document.getElementById(id_tab(tab));
 	// set active
 	active_tab = tab;
-	// grab current
-	var next_tab = document.getElementById(id_tab(active_tab));
 	// transmit to byond
 	transmit_verb(".statpanel_tab " + tab);
 	// so UNFORTUNATELY we're going to wipe data
@@ -908,7 +904,7 @@ function change_tab(tab){
 	data = [];
 
 	// change ui
-	if(last_tab){
+	if(last_tab && (last_tab != next_tab)){
 		last_tab.className = "button";
 	}
 	if(next_tab){
