@@ -70,12 +70,18 @@
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
 /client/proc/list_turf(turf/T)
-	if(statpanel_turf)
+	if(statpanel_turf == T)
+		unlist_turf()
+		return
+	else if(statpanel_turf)
 		unlist_turf()
 	if(!T || !list_turf_check(T))
 		return
 	statpanel_turf = T
-	return
+	// using byond atm
+	if(!statpanel_on_byond)
+		statpanel_for_turf = TRUE
+		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BYONDSTAT]")
 /* not using js
 	var/list/data = list()
 	for(var/atom/movable/AM as anything in T)
@@ -89,6 +95,10 @@
 /client/proc/unlist_turf()
 	if(!statpanel_turf)
 		return
+	// using byond atm
+	if(statpanel_for_turf)
+		statpanel_for_turf = FALSE
+		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BROWSERSTAT]")
 /* not using js
 	src << output(null, "statbrowser:byond_turf_unset")
 	UnregisterSignal(statpanel_turf, list(
