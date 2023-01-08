@@ -305,7 +305,7 @@
 		var/done = FALSE
 		while(!done)
 			var/message = "\[Remaining: [points_left] points, [traits_left] traits\] Select a trait to read the description and see the cost."
-			trait_choice = input(message,"Trait List") as null|anything in nicelist
+			trait_choice = tgui_input_list(user, message,"Pick a trait", nicelist)
 			if(!trait_choice)
 				done = TRUE
 			if(trait_choice in nicelist)
