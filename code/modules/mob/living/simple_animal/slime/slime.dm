@@ -469,11 +469,11 @@
 	return FALSE
 
 
-/mob/living/simple_animal/slime/get_description_interaction()
+/mob/living/simple_animal/slime/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!stat)
-		results += "[desc_panel_image("slimebaton")]to stun the slime, if it's being bad."
+		results += "[desc_panel_image("slimebaton", user)]to stun the slime, if it's being bad."
 
 	results += ..()
 

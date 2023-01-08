@@ -29,7 +29,7 @@
 	return
 
 // This one is slightly different, in that it must return a list.
-/atom/proc/get_description_interaction()
+/atom/proc/get_description_interaction(mob/user)
 	return list()
 
 // Quickly adds the boilerplate code to add an image and padding for the image.
@@ -53,7 +53,7 @@
 	description_holders["info"] = A.get_description_info()
 	description_holders["fluff"] = A.get_description_fluff()
 	description_holders["antag"] = (update_antag_info)? A.get_description_antag() : ""
-	description_holders["interactions"] = A.get_description_interaction()
+	description_holders["interactions"] = A.get_description_interaction(mob)
 
 	description_holders["name"] = "[A.name]"
 	description_holders["icon"] = "[costly_icon2html(A, src)]" //this is icon not icon2html

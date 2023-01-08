@@ -25,11 +25,11 @@
 			new /obj/item/stack/material/steel(loc)
 			qdel(src)
 
-/obj/structure/dancepole/get_description_interaction()
+/obj/structure/dancepole/get_description_interaction(mob/user)
 	var/list/results = list()
-	results += "[desc_panel_image("welder")] to deconstruct."
+	results += "[desc_panel_image("welder", user)] to deconstruct."
 	if(anchored)
-		results += "[desc_panel_image("wrench")] to unbolt from the floor."
+		results += "[desc_panel_image("wrench", user)] to unbolt from the floor."
 	else
-		results += "[desc_panel_image("wrench")] to anchor to the floor."
+		results += "[desc_panel_image("wrench", user)] to anchor to the floor."
 	return results

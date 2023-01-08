@@ -32,10 +32,10 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		circuit = new circuit(src)
 	default_apply_parts()
 
-/obj/machinery/pointdefense_control/get_description_interaction()
+/obj/machinery/pointdefense_control/get_description_interaction(mob/user)
 	. = ..()
 	if(!id_tag)
-		. += "[desc_panel_image("multitool")]to set ident tag"
+		. += "[desc_panel_image("multitool", user)]to set ident tag"
 
 /obj/machinery/pointdefense_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -156,10 +156,10 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(powernet)
 		. += "It is connected to a power cable below."
 
-/obj/machinery/power/pointdefense/get_description_interaction()
+/obj/machinery/power/pointdefense/get_description_interaction(mob/user)
 	. = ..()
 	if(!id_tag)
-		. += "[desc_panel_image("multitool")]to set ident tag and connect to a mainframe."
+		. += "[desc_panel_image("multitool", user)]to set ident tag and connect to a mainframe."
 
 /obj/machinery/power/pointdefense/update_icon()
 	if(!active || !id_tag || inoperable())

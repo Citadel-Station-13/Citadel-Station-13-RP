@@ -291,7 +291,7 @@
 	color = new_skin
 	update_icon()
 
-/mob/living/simple_mob/slime/promethean/get_description_interaction()
+/mob/living/simple_mob/slime/promethean/get_description_interaction(mob/user)
 	return
 
 

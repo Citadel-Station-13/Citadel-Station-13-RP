@@ -225,11 +225,11 @@
 		else
 			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
 
-/obj/item/melee/baton/get_description_interaction()
+/obj/item/melee/baton/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(bcell)
-		results += "[desc_panel_image("offhand")]to remove the weapon cell."
+		results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 	else
 		results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
 
