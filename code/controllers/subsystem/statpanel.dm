@@ -58,17 +58,17 @@ SUBSYSTEM_DEF(statpanels)
 		// server data has priority
 		// assert primary status tab
 		if(player.statpanel_tab("Status", TRUE))
-			player << output(cache_server_data, "statpanel:byond_push")
+			player << output(cache_server_data, "statbrowser:byond_push")
 		// assert admin tabs - these are special and do not check for additional info
 		if(player.statpanel_tab("MC", is_admin))
-			player << output(fetch_mc_data(), "statpanel:byond_push")
+			player << output(fetch_mc_data(), "statbrowser:byond_push")
 		if(player.statpanel_tab("Tickets", is_admin))
-			player << output(fetch_ticket_data(), "statpanel:byond_push")
+			player << output(fetch_ticket_data(), "statbrowser:byond_push")
 		if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))
-			player << output(fetch_sdql2_data(), "statpanel:byond_push")
+			player << output(fetch_sdql2_data(), "statbrowser:byond_push")
 		// send additional
 		if(length(additional))
-			player << output("[url_encode(json_encode(additional))]", "statpanel:byond_append")
+			player << output("[url_encode(json_encode(additional))]", "statbrowser:byond_append")
 
 /datum/controller/subsystem/statpanels/proc/fetch_mc_data()
 	if(cache_mc_data)
