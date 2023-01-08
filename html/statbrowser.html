@@ -10,6 +10,7 @@
 	- does not handle mouse pixel location on listed turf (atom) clicks
 	- in fact, most BYOND mouse handling stuff isn't passed in.
 	- does not allow right clicking atoms for verbs.
+	- does NOT play nicely with tabs with spaces
  -->
 
 <head>
@@ -378,15 +379,15 @@ function byond_init() {
 }
 
 /// called on data update
-function byond_push(data) {
+function byond_push(_data) {
 	data = [];
-	_push_data(data);
+	_push_data(_data);
 	redraw_content();
 }
 
 /// called on data update to append
-function byond_append(data) {
-	_push_data(data);
+function byond_append(_data) {
+	_push_data(_data);
 	redraw_content();
 }
 
@@ -400,8 +401,11 @@ function byond_update(cdata, ddata) {
 }
 
 /// pushes data
-function _push_data(data) {
-	var parsed = JSON.parse(data);
+function _push_data(_data) {
+	if(!_data){
+		return;
+	}
+	var parsed = JSON.parse(_data);
 	for(var i = 0; i < parsed.length; i++){
 		if(parsed[i] != null){
 			data.push(parsed[i]);
@@ -606,7 +610,7 @@ function transmit_href(action, data) {
 			assembled += key + "=" + ((data[key] == undefined)? "1" : data[key]) + ";"
 		}
 	}
-	window.location.href = "?_src_=statpanel;act=" + action + ";" + assembled;
+	window.location.href = "?_src_=stat;act=" + action + ";" + assembled;
 }
 
 /// flushes queue
@@ -620,6 +624,11 @@ function transmit_flush_queue() {
 /// informs byond we are ready
 function transmit_ready() {
 	transmit_verb(".statpanel_ready");
+}
+
+/// quotes a text arg
+function quote_verb_text(text) {
+	return "\"" + text.replace("\"", "\\\"") + "\"";
 }
 
 //////////////////// WINSET / WINGET / SKIN /////////////
@@ -736,15 +745,15 @@ function erase_tab(name) {
 /// clear tabs that don't have verbs
 function erase_tabs() {
 	stat_tabs = [];
-	transmit_verb(".statpanel_tab_wipe");
 	for(var i = all_tabs.length - 1; i >= 0; --i){
 		var tab = all_tabs[i];
 		if(tab in verbs){
-			transmit_verb(".statpanel_tab_add " + tab)
 			continue;
 		}
 		all_tabs.splice(i, 1);
 	}
+	// tell byond what's left
+	transmit_verb(".statpanel_tab_reset " + quote_verb_text(JSON.stringify(all_tabs)));
 	redraw_menu();
 }
 
@@ -892,7 +901,7 @@ function draw_tab(tab) {
 				var a = document.createElement("a");
 				a[PROP_TEXT_CONTENT] = entry[1];
 				// todo: token
-				a.href = "?src=_stat_;act=click;ref=" + entry[2];
+				a.href = "?_src_=stat;act=click;ref=" + entry[2];
 				tdv.appendChild(a);
 			}
 			tr.appendChild(tdk);

@@ -42,6 +42,12 @@
 	var/list/output_list = list()
 	for(var/thing in verbs_list)
 		var/procpath/verb_to_add = thing
+		if(verb_to_add.hidden)
+			continue
+		if(!istext(verb_to_add.category) || !verb_to_add.name)
+			continue
+		if(verb_to_add.name[1] == ".")
+			continue
 		if(!islist(output_list[verb_to_add.category]))
 			output_list[verb_to_add.category] = list()
 		output_list[verb_to_add.category] += verb_to_add.name

@@ -55,20 +55,20 @@ SUBSYSTEM_DEF(statpanels)
 		var/is_admin = !!player.holder
 		// grab their mob data
 		var/list/additional = player._statpanel_data()
+		// server data has priority
 		// assert primary status tab
 		if(player.statpanel_tab("Status", TRUE))
-			// server data has priority
-			player << output(cache_server_data, "statpanel:byond_update")
-			// send additional
-			if(length(additional))
-				player << output(url_encode(json_encode(additional)), "statpanel:byond_append")
+			player << output(cache_server_data, "statpanel:byond_push")
 		// assert admin tabs - these are special and do not check for additional info
 		if(player.statpanel_tab("MC", is_admin))
-			player << output(fetch_mc_data(), "statpanel:byond_update")
+			player << output(fetch_mc_data(), "statpanel:byond_push")
 		if(player.statpanel_tab("Tickets", is_admin))
-			player << output(fetch_ticket_data(), "statpanel:byond_update")
+			player << output(fetch_ticket_data(), "statpanel:byond_push")
 		if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))
-			player << output(fetch_sdql2_data(), "statpanel:byond_update")
+			player << output(fetch_sdql2_data(), "statpanel:byond_push")
+		// send additional
+		if(length(additional))
+			player << output("[url_encode(json_encode(additional))]", "statpanel:byond_append")
 
 /datum/controller/subsystem/statpanels/proc/fetch_mc_data()
 	if(cache_mc_data)
@@ -85,7 +85,8 @@ SUBSYSTEM_DEF(statpanels)
 	STATPANEL_DATA_LINE("")
 	for(var/datum/controller/subsystem/S as anything in Master.subsystems)
 		STATPANEL_DATA_CLICK(S.stat_key(), S.stat_entry(), "\ref[S]")
-	cache_mc_data = url_encode(json_encode(.))
+	. = url_encode(json_encode(.))
+	cache_mc_data = .
 
 /datum/controller/subsystem/statpanels/proc/build_server_data()
 	if(cache_server_data)
@@ -103,12 +104,14 @@ SUBSYSTEM_DEF(statpanels)
 	var/shuttle_eta = SSemergencyshuttle.get_status_panel_eta()
 	if(shuttle_eta)
 		STATPANEL_DATA_ENTRY("Shuttle", shuttle_eta)
-	. = (cache_server_data = url_encode(json_encode(.)))
+	. = url_encode(json_encode(.))
+	cache_server_data = .
 
 /datum/controller/subsystem/statpanels/proc/fetch_ticket_data()
 	if(cache_ticket_data)
 		return cache_ticket_data
-	cache_ticket_data = url_encode(json_encode(GLOB.ahelp_tickets.stat_data()))
+	. = url_encode(json_encode(GLOB.ahelp_tickets.stat_data()))
+	cache_ticket_data = .
 
 /datum/controller/subsystem/statpanels/proc/fetch_sdql2_data()
 	if(cache_sdql_data)
@@ -117,7 +120,8 @@ SUBSYSTEM_DEF(statpanels)
 	STATPANEL_DATA_CLICK("Global SDQL2 List:", "\[Edit\]", "\ref[GLOB.sdql2_vv_statobj]")
 	for(var/datum/SDQL2_query/Q in GLOB.sdql2_queries)
 		. += Q.generate_stat()
-	cache_sdql_data = url_encode(json_encode(.))
+	. = url_encode(json_encode(.))
+	cache_sdql_data = .
 
 /**
  * is this shitcode?

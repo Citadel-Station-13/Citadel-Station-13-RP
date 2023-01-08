@@ -143,7 +143,9 @@
 		var/procpath/verb_to_init = thing
 		if(verb_to_init.hidden)
 			continue
-		if(!istext(verb_to_init.category))
+		if(!istext(verb_to_init.category) || !verb_to_init.name)
+			continue
+		if(verb_to_init.name[1] == ".")
 			continue
 		LAZYINITLIST(verblist[verb_to_init.category])
 		verblist[verb_to_init.category] += verb_to_init.name
@@ -256,30 +258,35 @@
 /client/verb/hook_statpanel_ready()
 	set name = ".statpanel_ready"
 	set hidden = TRUE
+	set instant = TRUE
 
 	statpanel_ready()
 
 /client/verb/hook_statpanel_add_tab(tab as text)
 	set name = ".statpanel_tab_add"
 	set hidden = TRUE
+	set instant = TRUE
 
 	statpanel_tabs |= tab
 
 /client/verb/hook_statpanel_remove_tab(tab as text)
 	set name = ".statpanel_tab_remove"
 	set hidden = TRUE
+	set instant = TRUE
 
 	statpanel_tabs -= tab
 
-/client/verb/hook_statpanel_wipe_tabs()
-	set name = ".statpanel_tab_wipe"
+/client/verb/hook_statpanel_wipe_tabs(reset_to as text)
+	set name = ".statpanel_tab_reset"
 	set hidden = TRUE
+	set instant = TRUE
 
-	statpanel_tabs = list()
+	statpanel_tabs = json_decode(reset_to)
 
 /client/verb/hook_statpanel_set_tab(tab as text)
 	set name = ".statpanel_tab"
 	set hidden = TRUE
+	set instant = TRUE
 
 	statpanel_tab = tab
 
@@ -290,5 +297,6 @@
 /client/verb/hook_statswitcher_set_tab(tab as text)
 	set name = ".statswitcher"
 	set hidden = TRUE
+	set instant = TRUE
 
 	statpanel_on_byond = (tab == "stat_pane_byond")
