@@ -24,11 +24,11 @@
 							EMPRESS = 0,
 							QUEEN = 0,
 							PRAE = 0,
-							"sentinel" = 0,
-							"drone" = 0,
-							"hunter" = 0)
+							SENTINEL = 0,
+							DRONE = 0,
+							HUNTER = 0)
 	var/const/strength = 1
-	var/const/debug_players = 20
+	var/const/debug_players = 0
 
 
 /datum/event/xeno_infestation/setup()
@@ -128,8 +128,6 @@
 	 * 01 /mob/living/simple_mob/animal/space/alien
 	 */
 	while(player_value > 0)
-		TO_WORLD("Player value is: [player_value], queen spawning is [queen_spawning]")
-		log_this()
 		if(player_value >= (20 * 1.5))//Multiplier to rather spawn more small ones than one big one
 			spawn_types[MOTHER] += 1
 			player_value -= 20
