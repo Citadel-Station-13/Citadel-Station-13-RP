@@ -293,6 +293,24 @@
 	icon_state = "steel_dirty"
 	initial_flooring = /singleton/flooring/tiling/steel_dirty
 
+/turf/simulated/floor/tiled/steel_dirty/dark
+	color = COLOR_GRAY
+
+/turf/simulated/floor/tiled/steel_dirty/red
+	color = COLOR_RED_GRAY
+
+/turf/simulated/floor/tiled/steel_dirty/cyan
+	color = COLOR_CYAN
+
+/turf/simulated/floor/tiled/steel_dirty/olive
+	color = COLOR_OLIVE
+
+/turf/simulated/floor/tiled/steel_dirty/silver
+	color = COLOR_SILVER
+
+/turf/simulated/floor/tiled/steel_dirty/yellow
+	color = COLOR_BROWN
+
 /turf/simulated/floor/tiled/steel/airless
 	initial_gas_mix = GAS_STRING_VACUUM
 
