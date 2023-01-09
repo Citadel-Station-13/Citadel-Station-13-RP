@@ -2080,12 +2080,8 @@
 "hQ" = (
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
-/obj/item/sign{
-	dir = 1;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -7287,12 +7283,7 @@
 "AD" = (
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
-/obj/item/sign{
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
-	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "AE" = (
@@ -9133,12 +9124,8 @@
 /area/maintenance/engineering)
 "GY" = (
 /obj/structure/catwalk,
-/obj/item/sign{
-	dir = 8;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -14350,12 +14337,8 @@
 "Zy" = (
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
-/obj/item/sign{
-	dir = 8;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)

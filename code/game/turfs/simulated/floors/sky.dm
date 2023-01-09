@@ -2,7 +2,7 @@
 /turf/simulated/sky
 	name = "sky"
 	desc = "Hope you don't have a fear of heights."
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky_slow"
 	outdoors = TRUE
 

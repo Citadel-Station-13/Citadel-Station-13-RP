@@ -791,7 +791,7 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -799,14 +799,14 @@
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
 "bM" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -842,7 +842,7 @@
 /area/centcom/specops)
 "bS" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -852,7 +852,7 @@
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -862,7 +862,7 @@
 /obj/item/clothing/head/helmet/ert/command,
 /obj/item/storage/backpack/ert/commander,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -870,7 +870,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -896,7 +896,7 @@
 "bZ" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -910,7 +910,7 @@
 /obj/item/pinpointer/advpinpointer,
 /obj/item/stamp/centcomm,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -920,7 +920,7 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -931,7 +931,7 @@
 /obj/item/ammo_magazine/m44,
 /obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -951,7 +951,7 @@
 /obj/item/perfect_tele,
 /obj/item/hand_tele,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -1042,7 +1042,7 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -1051,7 +1051,7 @@
 /obj/item/rig/ert,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -1059,7 +1059,7 @@
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -1146,7 +1146,7 @@
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -1156,7 +1156,7 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -10435,21 +10435,21 @@
 "vC" = (
 /obj/machinery/vending/cigarette,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "vD" = (
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "vE" = (
 /obj/machinery/vending/nifsoft_shop,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10458,20 +10458,20 @@
 	dir = 1
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "vG" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "vH" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10480,7 +10480,7 @@
 	icon_state = "plant-22"
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10874,7 +10874,7 @@
 	pixel_y = 30
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10883,7 +10883,7 @@
 	pixel_y = 29
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11119,7 +11119,7 @@
 "wL" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11350,7 +11350,7 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11358,7 +11358,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/fries,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11370,7 +11370,7 @@
 	},
 /obj/item/reagent_containers/food/snacks/cheeseburger,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11379,7 +11379,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11387,7 +11387,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11395,7 +11395,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11675,7 +11675,7 @@
 	pixel_y = -3
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11683,7 +11683,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/bigbiteburger,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11691,7 +11691,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/roastbeef,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11699,7 +11699,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatsteak,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11830,7 +11830,7 @@
 	dir = 1
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12265,7 +12265,7 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12273,7 +12273,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/pastatomato,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12281,7 +12281,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatballspagetti,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12294,7 +12294,7 @@
 	pixel_y = 26
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12330,7 +12330,7 @@
 	pixel_y = 12
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12339,7 +12339,7 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12368,7 +12368,7 @@
 	pixel_y = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12613,7 +12613,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/kitsuneudon,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12621,14 +12621,14 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "zh" = (
 /obj/machinery/door/firedoor,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12757,7 +12757,7 @@
 	dir = 2
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13004,14 +13004,14 @@
 "zL" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
 "zM" = (
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13072,7 +13072,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/grenadine,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13080,7 +13080,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13088,7 +13088,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/cash_register/civilian,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13096,7 +13096,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13106,14 +13106,14 @@
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Aa" = (
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13257,35 +13257,35 @@
 /area/centcom/main_hall)
 "Ap" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Aq" = (
 /obj/machinery/vending/coffee,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "Ar" = (
 /obj/machinery/vending/sovietsoda,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "As" = (
 /obj/machinery/vending/snack,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "At" = (
 /obj/machinery/vending/cola,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13328,14 +13328,14 @@
 "Ax" = (
 /obj/machinery/smartfridge/drinks,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Ay" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13343,7 +13343,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13351,7 +13351,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13361,7 +13361,7 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/item/reagent_containers/food/drinks/flask/vacuumflask,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors_vr.dmi';
+	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -15488,12 +15488,6 @@
 	icon_state = "white"
 	},
 /area/centcom/bathroom)
-"TW" = (
-/obj/machinery/power/shield_generator/charged,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "Ur" = (
 /obj/effect/floor_decal/derelict/d7,
 /turf/unsimulated/floor/steel,
@@ -27312,7 +27306,7 @@ aX
 aX
 aX
 cg
-TW
+Mw
 Mw
 Xa
 cz

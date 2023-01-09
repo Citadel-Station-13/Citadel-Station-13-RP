@@ -133,7 +133,8 @@
 //? ABOVE TURF
 
 #define DECAL_LAYER                 (TURF_LAYER+0.03) /// For intentionally placed floor decal overlays.
-#define AO_LAYER                    (TURF_LAYER+0.04) /// Ambient Occlusion layer.
+#define TURF_DAMAGE_LAYER           (TURF_LAYER+0.04) /// Layer at which turf damage overlays are placed.
+#define TURF_AO_LAYER               (TURF_LAYER+0.05) /// Ambient Occlusion layer.
 #define EXPOSED_PIPE_LAYER          (TURF_LAYER+0.06)
 #define EXPOSED_WIRE_LAYER          (TURF_LAYER+0.07)
 #define EXPOSED_WIRE_TERMINAL_LAYER (TURF_LAYER+0.08)
