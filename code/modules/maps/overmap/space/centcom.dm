@@ -7,10 +7,31 @@
 	known = TRUE
 	icon_state = "fueldepot"
 	color = "#007396"
+	start_x = 17
+	start_y = 12
 
-	initial_generic_waypoints = list(
+	initial_restricted_waypoints = list(
 		"NDV Quicksilver" = list("specops_hangar")
 		)
+
+//This is an Orbit system I tried to write to get the Demeter to simulate an orbit around Lythios.
+//It "works", but sadly the object is placed on the Overmap before these variables run, preventing it from actually functioning as intended.
+/*
+	var/randxloc = null
+	var/randyloc = null
+	start_x = null
+	start_y = null
+
+/obj/effect/overmap/visitable/sector/centcom/Initialize()
+	. = ..()
+	Orbit()
+
+/obj/effect/overmap/visitable/sector/centcom/proc/Orbit()
+	if(!randxloc)
+		start_x = pick(13, 14, 16, 17)
+	if(!randyloc)
+		start_y = pick(8, 9, 11, 12)
+*/
 
 /obj/landmark/map_data/centcom
     height = 1
