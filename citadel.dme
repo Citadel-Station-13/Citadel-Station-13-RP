@@ -2275,6 +2275,7 @@
 #include "code\modules\events\spontaneous_appendicitis.dm"
 #include "code\modules\events\supply_demand.dm"
 #include "code\modules\events\wallrot.dm"
+#include "code\modules\events\xenoinfestation.dm"
 #include "code\modules\examine\examine.dm"
 #include "code\modules\examine\stat_icons.dm"
 #include "code\modules\examine\descriptions\armor.dm"
