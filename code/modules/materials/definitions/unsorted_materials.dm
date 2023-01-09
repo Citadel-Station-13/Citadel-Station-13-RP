@@ -737,7 +737,7 @@
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
 	weight = 20	//likewise, heavier
-	table_icon_base = "marble"
+	table_icon_base = "stone"
 
 /datum/material/cardboard
 	id = "cardboard"
