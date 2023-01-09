@@ -265,6 +265,9 @@
 /stat_rig_module/proc/CanUse()
 	return 0
 
+/stat_rig_module/statpanel_click(client/C, action, auth)
+	Click()
+
 /stat_rig_module/Click()
 	if(CanUse())
 		var/list/href_list = list(
