@@ -205,7 +205,6 @@
 		/obj/item/inflatable_dispenser/robot,
 		/obj/item/pickaxe/plasmacutter,
 		/obj/item/dogborg/jaws/small,
-		/obj/item/dogborg/boop_module,
 		/obj/item/geiger_counter,
 		/obj/item/pipe_painter,
 		/obj/item/floor_painter,

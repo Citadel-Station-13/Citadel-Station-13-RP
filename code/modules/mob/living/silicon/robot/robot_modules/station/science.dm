@@ -97,7 +97,6 @@
 	. |= list(
 		/obj/item/portable_destructive_analyzer,
 		/obj/item/dogborg/jaws/small,
-		/obj/item/dogborg/boop_module,
 		/obj/item/gripper/research,
 		/obj/item/gripper/circuit,
 		/obj/item/gripper/no_use/organ/robotics,
