@@ -243,15 +243,12 @@
 	. = list()
 	if(!C.statpanel_tab("Hardsuit Modules", needed))
 		return
-	if(R?.is_activated() && R.installed_modules.len && statpanel("Hardsuit Modules"))
-		var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
-		stat("Suit charge", cell_status)
-		for(var/obj/item/rig_module/module in R.installed_modules)
-		{
-			for(var/stat_rig_module/SRM in module.stat_modules)
-				if(SRM.CanUse())
-					stat(SRM.module.interface_name,SRM)
-		}
+	var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
+	STATPANEL_DATA_ENTRY("Suit charge", cell_status)
+	for(var/obj/item/rig_module/module in R.installed_modules)
+		for(var/stat_rig_module/SRM in module.stat_modules)
+			if(SRM.CanUse())
+				STATPANEL_DATA_CLICK(SRM.module.interface_name, SRM.name, REF(SRM))
 
 /stat_rig_module
 	parent_type = /atom/movable
