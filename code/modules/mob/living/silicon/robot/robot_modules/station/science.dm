@@ -54,18 +54,13 @@
 	. = ..()
 	src.emag = new /obj/item/borg/combat/shield(src)
 
-	var/datum/matter_synth/nanite = synths_by_kind[MATSYN_NANITES]
-	var/datum/matter_synth/wire = synths_by_kind[MATSYN_WIRE]						//Added to allow repairs, would rather add cable now than be asked to add it later,
-
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
-	N.synths = list(nanite)
+	N.synths = list(synths_by_kind[MATSYN_NANITES])
 	src.modules += N
 
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)	//Cable code, taken from engiborg,
-	C.synths = list(wire)
-	src.modules += C
+	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
@@ -136,8 +131,6 @@
 	B.water = synths_by_kind[MATSYN_WATER]
 	. += B
 
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(synths_by_kind[MATSYN_WIRE])
-	. += C
+	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
 	src.emag = new /obj/item/borg/combat/shield(src)

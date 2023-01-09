@@ -54,44 +54,15 @@
 	MD.plastic = synths_by_kind[MATSYN_PLASTIC]
 	. += MD
 
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(synths_by_kind[MATSYN_METAL])
-	. += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.synths = list(synths_by_kind[MATSYN_GLASS])
-	. += G
-
-	var/obj/item/stack/rods/cyborg/rods = new /obj/item/stack/rods/cyborg(src)
-	rods.synths = list(synths_by_kind[MATSYN_METAL])
-	. += rods
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(synths_by_kind[MATSYN_WIRE])
-	. += C
-
-	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
-	S.synths = list(synths_by_kind[MATSYN_METAL])
-	. += S
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(
-		synths_by_kind[MATSYN_METAL],
-		synths_by_kind[MATSYN_GLASS]
-	)
-	. += RG
-
-	var/obj/item/stack/tile/wood/cyborg/WT = new /obj/item/stack/tile/wood/cyborg(src)
-	WT.synths = list(synths_by_kind[MATSYN_WOOD])
-	. += WT
-
-	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(synths_by_kind[MATSYN_WOOD])
-	. += W
-
-	var/obj/item/stack/material/cyborg/plastic/P = new (src)
-	P.synths = list(synths_by_kind[MATSYN_PLASTIC])
-	. += P
+	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
+	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
+	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
+	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
+	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
 
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"

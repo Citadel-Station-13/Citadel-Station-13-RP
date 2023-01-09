@@ -117,61 +117,21 @@
 
 	src.emag = new /obj/item/melee/baton/robot/arm(src)
 
-	var/datum/matter_synth/metal = synths_by_kind[MATSYN_METAL]
-	var/datum/matter_synth/glass = synths_by_kind[MATSYN_GLASS]
-	var/datum/matter_synth/plasteel = synths_by_kind[MATSYN_PLASTEEL]
-	var/datum/matter_synth/wood = synths_by_kind[MATSYN_WOOD]
-	var/datum/matter_synth/plastic = synths_by_kind[MATSYN_PLASTIC]
-
 	var/obj/item/matter_decompiler/MD = new /obj/item/matter_decompiler(src)
-	MD.metal = metal
-	MD.glass = glass
+	MD.metal = synths_by_kind[MATSYN_METAL]
+	MD.glass = synths_by_kind[MATSYN_GLASS]
 	src.modules += MD
 
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(metal)
-	. += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.synths = list(glass)
-	. += G
-
-	var/obj/item/stack/rods/cyborg/rods = new /obj/item/stack/rods/cyborg(src)
-	rods.synths = list(metal)
-	. += R
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(synths_by_kind[MATSYN_WIRE])
-	. += C
-
-	var/obj/item/stack/material/cyborg/plasteel/PS = new (src)
-	PS.synths = list(plasteel)
-	. += PS
-
-	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
-	S.synths = list(metal)
-	. += S
-
-	var/obj/item/stack/tile/roofing/cyborg/CT = new /obj/item/stack/tile/roofing/cyborg(src)
-	CT.synths = list(metal)
-	. += CT
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(metal, glass)
-	. += RG
-
-	var/obj/item/stack/tile/wood/cyborg/WT = new /obj/item/stack/tile/wood/cyborg(src)
-	WT.synths = list(wood)
-	. += WT
-
-	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(wood)
-	. += W
-
-	var/obj/item/stack/material/cyborg/plastic/PL = new (src)
-	PL.synths = list(plastic)
-	. += PL
-
+	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
+	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
+	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
+	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
+	CYBORG_STACK(tile/roofing/cyborg  , MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
+	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
 
 /obj/item/robot_module/robot/quad/engi
 	name = "EngiQuad module"
@@ -229,61 +189,25 @@
 
 	src.emag = new /obj/item/dogborg/pounce(src)
 
-	var/datum/matter_synth/metal = synths_by_kind[MATSYN_METAL]
-	var/datum/matter_synth/glass = synths_by_kind[MATSYN_GLASS]
-	var/datum/matter_synth/wood = synths_by_kind[MATSYN_WOOD]
-	var/datum/matter_synth/plastic = synths_by_kind[MATSYN_PLASTIC]
-	// var/datum/matter_synth/plasteel = synths_by_kind[MATSYN_PLASTEEL]
-	var/datum/matter_synth/wire = synths_by_kind[MATSYN_WIRE]
-
 	var/obj/item/lightreplacer/dogborg/LR = new /obj/item/lightreplacer/dogborg(src)
-	LR.glass = glass
+	LR.glass = synths_by_kind[MATSYN_GLASS]
 	. += LR
 
 	var/obj/item/dogborg/sleeper/compactor/decompiler/MD = new /obj/item/dogborg/sleeper/compactor/decompiler(src)
-	MD.metal = metal
-	MD.glass = glass
-	MD.wood = wood
-	MD.plastic = plastic
+	MD.metal = synths_by_kind[MATSYN_METAL]
+	MD.glass = synths_by_kind[MATSYN_GLASS]
+	MD.wood = synths_by_kind[MATSYN_WOOD]
+	MD.plastic = synths_by_kind[MATSYN_PLASTIC]
 	MD.water = synths_by_kind[MATSYN_WATER]
 	. += MD
 
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(metal)
-	. += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.synths = list(glass)
-	. += G
-
-	var/obj/item/stack/rods/cyborg/RD = new /obj/item/stack/rods/cyborg(src)
-	RD.synths = list(metal)
-	. += RD
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(wire)
-	. += C
-
-	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
-	S.synths = list(metal)
-	. += S
-
-	var/obj/item/stack/tile/roofing/cyborg/CT = new /obj/item/stack/tile/roofing/cyborg(src)
-	CT.synths = list(metal)
-	. += CT
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(metal, glass)
-	. += RG
-
-	var/obj/item/stack/tile/wood/cyborg/WT = new /obj/item/stack/tile/wood/cyborg(src)
-	WT.synths = list(wood)
-	. += WT
-
-	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(wood)
-	. += W
-
-	var/obj/item/stack/material/cyborg/plastic/PL = new (src)
-	PL.synths = list(plastic)
-	. += PL
+	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
+	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
+	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
+	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
+	CYBORG_STACK(tile/roofing/cyborg  , MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
+	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
