@@ -1,3 +1,11 @@
+// todo: either tgui window
+// or make it an inhouse lightweight datum
+// probably the latter for minimal points of failure
+// we need to send all init & reload/reset-on-mob-login data in one
+// go, because byond does not ensure function call order
+// race conditions can cause problems where verbs get removed
+// after they get added by a remove-add turning into an add-remove.
+
 /**
  * citadel RP stat system
  *
@@ -55,6 +63,7 @@
 	statpanel_dispose()
 	sleep(1)
 	src << browse("RELOADING", "window=statbrowser")
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	sleep(1)
 	statpanel_boot()
 
@@ -323,12 +332,12 @@
 
 	statpanel_tabs -= tab
 
-/client/verb/hook_statpanel_wipe_tabs(reset_to as text)
+/client/verb/hook_statpanel_wipe_tabs()
 	set name = ".statpanel_tab_reset"
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel_tabs = json_decode(reset_to)
+	statpanel_tabs = list()
 
 /client/verb/hook_statpanel_set_tab(tab as text)
 	set name = ".statpanel_tab"

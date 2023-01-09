@@ -511,29 +511,28 @@ function byond_remove_verb(name, category) {
 }
 
 /// called to add multiple verbs: same format as init verbs
-function byond_add_verbs(data, force_draw, resetting) {
-	data = JSON.parse(data);
-	return __byond_add_verbs(data, force_draw);
+function byond_add_verbs(_data, force_draw, resetting) {
+	_data = JSON.parse(_data);
+	return __byond_add_verbs(_data, force_draw);
 }
 
-function __byond_add_verbs(data, force_draw, resetting) {
+function __byond_add_verbs(_data, force_draw, resetting) {
 	var had = force_draw || false;
 	var tabs_changed = false;
-	for(var cat in data) {
+	for(var cat in _data) {
 		if(cat == active_tab) {
 			had = true;
 		}
 		if(!resetting && !(all_tabs.includes(cat)))
 			all_tabs.push(cat);
-			transmit_verb(".statpanel_tab_add " + cat);
 			tabs_changed = true;
 		var arr = verbs[cat];
 		if(arr == undefined) {
 			arr = [];
 			verbs[cat] = arr;
 		}
-		for(var i = 0; i < data[cat].length; ++i) {
-			var verb = data[cat][i];
+		for(var i = 0; i < _data[cat].length; ++i) {
+			var verb = _data[cat][i];
 			if(arr.includes(verb)) {
 				continue;
 			}
@@ -551,39 +550,30 @@ function __byond_add_verbs(data, force_draw, resetting) {
 			return 0;
 		})
 	}
-	if(tabs_changed){
+	if((had || tabs_changed) && !resetting){
 		redraw_menu();
 	}
 }
 
 /// called to remove multiple verbs: same format as init verbs
-function byond_remove_verbs(data) {
-	data = JSON.parse(data);
-	return __byond_remove_verbs(data);
+function byond_remove_verbs(_data) {
+	_data = JSON.parse(_data);
+	return __byond_remove_verbs(_data);
 }
 
-function __byond_remove_verbs(data) {
+function __byond_remove_verbs(_data) {
 	var had = false;
 	var tabs_changed = false;
-	for(var cat in data) {
+	for(var cat in _data) {
 		if(cat == active_tab) {
 			had = true;
-		}
-		if(all_tabs.includes(cat) && !(stat_tabs.includes(cat))){
-			for(var i = all_tabs.length - 1; i >= 0; --i){
-				if(all_tabs[i] == cat){
-					all_tabs.splice(i, 1);
-				}
-			}
-			transmit_verb(".statpanel_tab_remove " + cat);
-			tabs_changed = true;
 		}
 		var arr = verbs[cat];
 		if(arr == undefined) {
 			continue;
 		}
-		for(var i = 0; i < data[cat].length; ++i) {
-			var verb = data[cat][i];
+		for(var i = 0; i < _data[cat].length; ++i) {
+			var verb = _data[cat][i];
 			for(var j = arr.length - 1; j >= 0; --j) {
 				if(arr[j] != verb) {
 					continue;
@@ -591,6 +581,18 @@ function __byond_remove_verbs(data) {
 				arr.splice(j, 1);
 				break;
 			}
+		}
+		// empty ; dispose.
+		if(!arr.length){
+			if(all_tabs.includes(cat) && !(stat_tabs.includes(cat))){
+				for(var i = all_tabs.length - 1; i >= 0; --i){
+					if(all_tabs[i] == cat){
+						all_tabs.splice(i, 1);
+					}
+				}
+				tabs_changed = true;
+			}
+			verbs[cat] = undefined
 		}
 	}
 	if(tabs_changed){
@@ -601,6 +603,7 @@ function __byond_remove_verbs(data) {
 /// called to init verbs: takes object of categories to lists of names. throws out any verbs not in this.
 function byond_init_verbs(_data, reset) {
 	verbs = [];
+	reset = (reset == "1")? true : false;
 	byond_add_verbs(_data, true, reset);
 	if(reset){
 		byond_clear_tabs();
@@ -627,9 +630,9 @@ function byond_turf_set(name, ref, icon, contents){
 }
 
 /// called to add an atom from listed turf
-function byond_turf_add(data){
-	data = JSON.parse(data);
-	draw_atom(data[0], data[1], data[2]);
+function byond_turf_add(_data){
+	_data = JSON.parse(_data);
+	draw_atom(_data[0], _data[1], _data[2]);
 }
 
 /// called to remove an atom from listed turf
@@ -678,11 +681,11 @@ function transmit_verb(cmd) {
 }
 
 /// immediate sends
-function transmit_href(action, data) {
+function transmit_href(action, _data) {
 	var assembled = "";
-	if(data != undefined){
-		for(var key in data){
-			assembled += key + "=" + ((data[key] == undefined)? "1" : data[key]) + ";"
+	if(_data != undefined){
+		for(var key in _data){
+			assembled += key + "=" + ((_data[key] == undefined)? "1" : _data[key]) + ";"
 		}
 	}
 	window.location.href = "?_src_=stat;act=" + action + ";" + assembled;
@@ -776,10 +779,10 @@ function ensure_tab(name) {
 	var tabs_changed = false;
 	if(!(stat_tabs.includes(name))){
 		stat_tabs.push(name);
+		transmit_verb(".statpanel_tab_add " + name);
 	}
 	if(!(all_tabs.includes(name))){
 		all_tabs.push(name);
-		transmit_verb(".statpanel_tab_add " + name);
 		tabs_changed = true;
 	}
 	if(tabs_changed){
@@ -799,10 +802,10 @@ function erase_tab(name) {
 				stat_tabs.splice(i, 1);
 			}
 		}
+		transmit_verb(".statpanel_tab_remove " + name);
 	}
 	if(all_tabs.includes(name) && !(name in verbs)){
 		tabs_changed = true;
-		transmit_verb(".statpanel_tab_remove " + name);
 		for(var i = all_tabs.length - 1; i >= 0; --i){
 			if(all_tabs[i] == name){
 				all_tabs.splice(i, 1);
@@ -830,7 +833,7 @@ function erase_tabs() {
 		}
 	}
 	// tell byond what's left
-	transmit_verb(".statpanel_tab_reset " + quote_verb_text(JSON.stringify(all_tabs)));
+	transmit_verb(".statpanel_tab_reset");
 	redraw_menu();
 }
 

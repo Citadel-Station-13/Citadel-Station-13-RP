@@ -495,8 +495,6 @@
 	. = ..()
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
-	if (statpanel("Status"))
-		STATPANEL_DATA_LINE("")
 		if(cell)
 			STATPANEL_DATA_LINE( text("Charge Left: [round(cell.percent())]%"))
 			STATPANEL_DATA_LINE( text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
