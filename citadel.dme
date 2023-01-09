@@ -3095,6 +3095,7 @@
 #include "code\modules\mob\living\silicon\robot\drone\swarm_abilities.dm"
 #include "code\modules\mob\living\silicon\robot\drone\swarm_items.dm"
 #include "code\modules\mob\living\silicon\robot\drone\~defines.dm"
+#include "code\modules\mob\living\silicon\robot\robot_modules\_robot_modules_defs.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules\event.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules\event_vr.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules\station.dm"
