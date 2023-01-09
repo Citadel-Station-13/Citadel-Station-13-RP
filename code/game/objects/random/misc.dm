@@ -819,6 +819,7 @@
 		// prob(1);/obj/item/gun/ballistic/automatic/battlerifle, // Too OP
 		prob(1);/obj/item/gun/ballistic/deagle/gold,
 		prob(1);/obj/item/gun/ballistic/automatic/lmg/mg42,
+		prob(1);/obj/item/gun/ballistic/automatic/lmg/m60,
 		prob(1);/obj/item/gun/energy/imperial,
 		prob(1);/obj/item/gun/ballistic/automatic/as24,
 		prob(1);/obj/item/gun/ballistic/rocket,

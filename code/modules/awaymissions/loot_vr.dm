@@ -166,6 +166,7 @@
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
 					prob(2);/obj/item/gun/ballistic/deagle/gold,\
 					prob(2);/obj/item/gun/ballistic/automatic/lmg/mg42,\
+					prob(2);/obj/item/gun/ballistic/automatic/lmg/m60,\
 					prob(1);/obj/item/gun/ballistic/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/ballistic/gyropistol,\
