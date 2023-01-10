@@ -945,15 +945,14 @@ function draw_tab(tab) {
 		var iterating = verbs[tab]
 		for(var i = 0; i < iterating.length; ++i) {
 			var verb = iterating[i];
-			var a = document.createElement("a");
-			a.href = "#";
-			a.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
-			a.className = "grid-item";
+			var button = document.createElement("button");
+			button.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
+			button.className = "grid-item";
 			var t = document.createElement("span");
 			t[PROP_TEXT_CONTENT] = verb;
 			t.className = "grid-item-text";
-			a.appendChild(t);
-			verb_table.appendChild(a);
+			button.appendChild(t);
+			verb_table.appendChild(button);
 		}
 		stat_content.appendChild(verb_table)
 	}
