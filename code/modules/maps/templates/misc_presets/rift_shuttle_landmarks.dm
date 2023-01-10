@@ -38,6 +38,12 @@ Need to turn all of these into proper initializers like this:
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
+/obj/effect/shuttle_landmark/rift/deck3/specops
+	name = "NSB Atlas - Special Operations Dock"
+	landmark_tag = "rift_specops_dock"
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
+
 // Shared landmark for docking *inside* the station
 
 

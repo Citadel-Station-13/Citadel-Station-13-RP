@@ -1908,9 +1908,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "fQ" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -5072,6 +5073,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
+"oS" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "oT" = (
 /obj/structure/sign/double/barsign{
 	dir = 8
@@ -5527,6 +5536,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
+"qs" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
+/turf/unsimulated/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/centcom/specops)
 "qy" = (
 /obj/structure/sign/warning{
 	name = "\improper STAND AWAY FROM TRACK EDGE"
@@ -6877,15 +6896,27 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"ut" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
+"up" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/specops/general)
+"ut" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
@@ -7893,9 +7924,7 @@
 	name = "Cockpit";
 	req_one_access = list(103)
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "xi" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9342,9 +9371,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "BI" = (
 /obj/effect/floor_decal/carpet{
@@ -9387,9 +9414,10 @@
 /obj/item/tank/phoron/pressurized,
 /obj/item/tank/phoron/pressurized,
 /obj/effect/floor_decal/industrial/outline/red,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/machinery/light{
+	dir = 1
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "CW" = (
 /obj/machinery/atmospherics/component/unary/engine{
@@ -9402,6 +9430,16 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
+	},
+/area/centcom/specops)
+"Dl" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Power Management";
+	req_one_access = list(103)
+	},
+/turf/unsimulated/floor{
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Do" = (
@@ -9434,22 +9472,38 @@
 /obj/effect/shuttle_landmark/transit/rift/excursion,
 /turf/space/transit/east,
 /area/space)
+"DV" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "DZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
-"Es" = (
-/obj/machinery/light{
-	dir = 8
+"Ep" = (
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/machinery/door/airlock/hatch{
+	name = "Power Management";
+	req_one_access = list(103)
 	},
-/area/shuttle/specops/general)
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "EH" = (
 /obj/machinery/access_button/airlock_interior{
 	dir = 8;
@@ -9466,9 +9520,10 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "EP" = (
 /obj/structure/cable/green{
@@ -9483,9 +9538,7 @@
 	network = list("NETWORK_ERT");
 	pixel_y = -32
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "ET" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -9494,6 +9547,16 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"Fg" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/unsimulated/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/centcom/specops)
 "Fy" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/captain,
@@ -9514,14 +9577,13 @@
 	pixel_y = 28
 	},
 /obj/structure/bed/chair/bay/shuttle,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "FF" = (
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "FM" = (
 /obj/structure/cable/green{
@@ -9530,17 +9592,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Gb" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/computer/ship/engines{
+/obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "GL" = (
@@ -9563,16 +9624,28 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/specops,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
+"GT" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "Hh" = (
 /turf/unsimulated/floor/steel,
 /area/centcom/test)
 "Hw" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
+"HB" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "HC" = (
 /turf/space/transit/west,
 /area/space)
@@ -9588,10 +9661,24 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Ix" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "Je" = (
 /obj/effect/shuttle_landmark/transit/rift/specops,
 /turf/space/transit/west,
 /area/space)
+"Jj" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/specops/general)
 "Jz" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -26
@@ -9610,9 +9697,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "JD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -9625,18 +9713,14 @@
 	pixel_y = 32;
 	req_access = list(103)
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "JV" = (
 /obj/machinery/computer/shuttle_control/explore/specops{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "KE" = (
 /turf/simulated/sky/lythios43c/moving/west,
@@ -9653,6 +9737,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"KG" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "KI" = (
 /obj/structure/table/reinforced,
 /obj/item/pda/ert,
@@ -9685,9 +9775,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "LE" = (
 /obj/machinery/light{
@@ -9700,9 +9788,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Mb" = (
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
@@ -9710,9 +9796,7 @@
 /area/space)
 "Mr" = (
 /obj/machinery/recharge_station,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Mw" = (
 /obj/machinery/light{
@@ -9723,9 +9807,7 @@
 	pixel_y = 28
 	},
 /obj/structure/bed/chair/bay/shuttle,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "MK" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -9787,6 +9869,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"Oh" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/specops/general)
 "Oj" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9832,16 +9920,17 @@
 	name = "Emergency NanoMed";
 	pixel_y = 30
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Pe" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
 /obj/structure/cable/green{
-	icon_state = "0-4"
+	icon_state = "1-4"
+	},
+/obj/machinery/computer/ship/engines{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
@@ -9871,10 +9960,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
+"Pr" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/spawner/window/borosillicate/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "Pv" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -9893,8 +9987,12 @@
 	},
 /area/centcom/specops)
 "PA" = (
-/obj/machinery/atmospherics/pipe/tank/air,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "PM" = (
@@ -9940,8 +10038,8 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
 "QE" = (
-/obj/machinery/power/smes/magical,
-/obj/structure/cable/yellow{
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -9953,9 +10051,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "QX" = (
 /obj/effect/shuttle_landmark/transit/rift/trade,
@@ -9981,9 +10077,10 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Ru" = (
 /obj/machinery/recharger/wallcharger{
@@ -9993,9 +10090,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "RF" = (
 /obj/effect/floor_decal/borderfloor{
@@ -10003,20 +10098,22 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"RK" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "RM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "Sf" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Ss" = (
 /obj/effect/step_trigger/lost_in_space/shuttle,
@@ -10120,9 +10217,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "UK" = (
 /obj/structure/window/reinforced{
@@ -10147,6 +10242,9 @@
 "Vj" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "VG" = (
@@ -10183,10 +10281,13 @@
 	pixel_x = -24;
 	pixel_y = 26
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
+"Wc" = (
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "WH" = (
 /obj/machinery/shipsensors{
 	dir = 1
@@ -10206,9 +10307,7 @@
 	pixel_x = -25
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Xm" = (
 /turf/unsimulated/map/edge,
@@ -10247,18 +10346,14 @@
 	},
 /obj/structure/cable/green,
 /obj/machinery/power/apc/alarms_hidden/west_bump,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "Yh" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_bump,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
 "Yj" = (
 /obj/spawner/window/full/firelocks,
@@ -10277,6 +10372,33 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"YB" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
+"YC" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/specops/general)
+"Zk" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "Zu" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/shuttle/engine/heater{
@@ -21854,9 +21976,9 @@ tJ
 tJ
 tJ
 ss
-Bv
-Bv
-Bv
+tJ
+Fg
+ss
 Bv
 Bv
 Bv
@@ -22047,10 +22169,10 @@ ss
 tJ
 tJ
 tJ
+Dl
+tJ
+qs
 ss
-Bv
-Bv
-Bv
 Bv
 Bv
 Bv
@@ -23029,7 +23151,7 @@ NC
 NC
 JA
 rF
-rF
+Pr
 Oj
 rF
 Hw
@@ -23223,7 +23345,7 @@ NC
 NC
 rJ
 CN
-Es
+YC
 Pq
 xb
 RM
@@ -23417,7 +23539,7 @@ NC
 NC
 rJ
 Sf
-FF
+YC
 FM
 Tw
 JV
@@ -23805,7 +23927,7 @@ MK
 NC
 rJ
 rJ
-FF
+YC
 FM
 Yv
 FF
@@ -24000,8 +24122,8 @@ NC
 JA
 rJ
 FC
-FM
-FF
+up
+Oh
 FF
 Ru
 rJ
@@ -24193,7 +24315,7 @@ NC
 NC
 SR
 rJ
-FC
+Jj
 QK
 JC
 FF
@@ -24971,7 +25093,7 @@ NC
 NC
 rJ
 GN
-FF
+YC
 Le
 rJ
 NC
@@ -25359,7 +25481,7 @@ NC
 NC
 NC
 NC
-NC
+RK
 NC
 NC
 NC
@@ -25548,12 +25670,12 @@ ss
 Bv
 Xr
 NC
-NC
-NC
-NC
-NC
-NC
-NC
+KG
+Ix
+Ix
+Ix
+Ix
+GT
 NC
 NC
 NC
@@ -25739,10 +25861,10 @@ vY
 wo
 wo
 ss
-Bv
 Xr
 Xr
 Xr
+Ep
 Xr
 Xr
 Xr
@@ -25933,11 +26055,11 @@ vZ
 wp
 wp
 ss
-Bv
-Bv
-Bv
-Bv
-Bv
+Zk
+oS
+DV
+HB
+Xr
 Bv
 Bv
 Bv
@@ -26127,11 +26249,11 @@ vZ
 wq
 wq
 ss
-Bv
-Bv
-Bv
-Bv
-Bv
+YB
+Wc
+YB
+Wc
+Xr
 Bv
 Bv
 Bv
@@ -26322,10 +26444,10 @@ ss
 ss
 ss
 ss
-Bv
-Bv
-Bv
-Bv
+Xr
+Xr
+Xr
+Xr
 Bv
 Bv
 Bv

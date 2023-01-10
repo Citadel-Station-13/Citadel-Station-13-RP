@@ -23,7 +23,8 @@
 		"Courser Scouting Vessel" = list("rift_courser_hangar"),
 		"Civilian Transport" = list("rift_civvie_pad"),
 		"Dart EMT Shuttle" = list("rift_emt_pad"),
-		"Beruang Trade Ship" = list("rift_trade_dock")
+		"Beruang Trade Ship" = list("rift_trade_dock"),
+		"NDV Quicksilver" = list("rift_specops_dock")
 		)
 
 
