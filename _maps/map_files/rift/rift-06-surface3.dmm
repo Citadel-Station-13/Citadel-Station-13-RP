@@ -19805,6 +19805,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Nd" = (
+/obj/effect/shuttle_landmark/rift/deck3/pirate,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ne" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -32055,7 +32059,7 @@ us
 us
 us
 us
-us
+Nd
 us
 us
 us

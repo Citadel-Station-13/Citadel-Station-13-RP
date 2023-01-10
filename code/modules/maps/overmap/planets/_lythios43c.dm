@@ -24,7 +24,8 @@
 		"Civilian Transport" = list("rift_civvie_pad"),
 		"Dart EMT Shuttle" = list("rift_emt_pad"),
 		"Beruang Trade Ship" = list("rift_trade_dock"),
-		"NDV Quicksilver" = list("rift_specops_dock")
+		"NDV Quicksilver" = list("rift_specops_dock"),
+		"Pirate Skiff" = list("rift_pirate_dock"),
 		)
 
 //Despite not being in the multi-z complex, these levels are part of the overmap sector

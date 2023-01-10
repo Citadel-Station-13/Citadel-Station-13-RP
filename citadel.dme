@@ -2736,6 +2736,7 @@
 #include "code\modules\maps\templates\shuttles\admin_spawn\_generic_shuttles.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\abductor.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\bearcat.dm"
+#include "code\modules\maps\templates\shuttles\admin_spawn\cruise_ship.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\cruiser.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\curashuttle.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\ert.dm"

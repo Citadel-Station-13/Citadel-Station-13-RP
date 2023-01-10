@@ -39,8 +39,14 @@ Need to turn all of these into proper initializers like this:
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/specops
-	name = "NSB Atlas - Special Operations Dock"
+	name = "NSB Atlas - Special Operations Pad"
 	landmark_tag = "rift_specops_dock"
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
+
+/obj/effect/shuttle_landmark/rift/deck3/pirate
+	name = "NSB Atlas - Pirate Landing Pad"
+	landmark_tag = "rift_pirate_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
