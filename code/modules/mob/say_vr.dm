@@ -89,7 +89,7 @@
 
 	if(input)
 		log_subtle_anti_ghost(message,src)
-		message = "<B>[src]</B> " + SPAN_SINGING(message)
+		message = "<B>[src]</B> " + SPAN_SINGING(input)
 	else
 		return
 
