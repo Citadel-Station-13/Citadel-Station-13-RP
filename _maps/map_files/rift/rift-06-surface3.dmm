@@ -3809,16 +3809,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"ha" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "hb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -5958,14 +5948,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"lk" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/obj/structure/marker_beacon/yellow,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "ll" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -8808,7 +8790,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "qZ" = (
@@ -11486,16 +11467,6 @@
 /obj/structure/bed,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
-"ws" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Upload Access";
@@ -12029,13 +12000,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
-"xj" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/marker_beacon/yellow,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -12374,14 +12338,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"xV" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xW" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -12635,7 +12591,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "yt" = (
@@ -13805,14 +13760,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
-"AS" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/yellow,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "AT" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -14164,16 +14111,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
-"Bz" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "BA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -17671,13 +17608,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"IM" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/marker_beacon/red,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/shuttle)
 "IN" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
@@ -19070,7 +19000,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "LE" = (
@@ -19240,13 +19169,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
-"LW" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/yellow,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "LX" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
@@ -21091,10 +21013,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"PF" = (
-/obj/structure/marker_beacon/red,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/shuttle)
 "PG" = (
 /obj/structure/bed/chair/wood,
 /obj/machinery/light{
@@ -22120,14 +22038,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"Ry" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/marker_beacon/red,
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "Rz" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -22885,7 +22795,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/marker_beacon/red,
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
@@ -23700,13 +23609,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
-"UE" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/red,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/shuttle)
 "UF" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -24651,14 +24553,8 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
-"WA" = (
-/obj/structure/railing,
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "WB" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -25268,14 +25164,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
-"XE" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "XF" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -33572,7 +33460,7 @@ Oi
 Oi
 Oi
 Oi
-ha
+qY
 UZ
 UZ
 UZ
@@ -33591,7 +33479,7 @@ UZ
 UZ
 UZ
 UZ
-XE
+mj
 vN
 Gz
 IA
@@ -33765,7 +33653,7 @@ Oi
 Oi
 Oi
 Oi
-ws
+aC
 us
 us
 us
@@ -33786,7 +33674,7 @@ us
 us
 us
 us
-XE
+mj
 vM
 IA
 IA
@@ -37697,7 +37585,6 @@ cH
 cH
 cH
 fk
-xj
 UZ
 UZ
 UZ
@@ -37712,7 +37599,8 @@ UZ
 UZ
 UZ
 UZ
-lk
+UZ
+fQ
 ej
 cH
 cH
@@ -37860,7 +37748,7 @@ us
 us
 us
 us
-WA
+mn
 ej
 cH
 cH
@@ -39218,7 +39106,7 @@ us
 us
 us
 us
-WA
+mn
 ej
 cH
 kr
@@ -39831,7 +39719,6 @@ Ad
 Ad
 cH
 iL
-LW
 TN
 TN
 TN
@@ -39846,7 +39733,8 @@ TN
 TN
 TN
 TN
-AS
+TN
+tI
 cF
 IA
 IA
@@ -40019,7 +39907,7 @@ UZ
 UZ
 UZ
 UZ
-Ry
+fQ
 CU
 cH
 Ad
@@ -40222,7 +40110,7 @@ Ad
 Ad
 cc
 mX
-IM
+gP
 gP
 gP
 gP
@@ -40749,7 +40637,7 @@ cH
 cH
 cH
 QK
-Bz
+fo
 us
 us
 us
@@ -40770,7 +40658,7 @@ us
 us
 us
 jy
-xV
+tI
 pX
 cH
 cH
@@ -40944,7 +40832,7 @@ cH
 cH
 cH
 QK
-Bz
+fo
 TN
 TN
 TN
@@ -40994,7 +40882,7 @@ CU
 Ad
 Ad
 dx
-PF
+Uu
 Uu
 Uu
 Uu
@@ -42546,7 +42434,7 @@ CU
 Ad
 Ad
 Id
-PF
+Uu
 Uu
 Uu
 Uu
@@ -43326,7 +43214,7 @@ Ad
 Ad
 Hx
 SZ
-UE
+yc
 yc
 yc
 yc
@@ -43711,7 +43599,6 @@ Ad
 Ad
 cH
 fk
-xj
 UZ
 UZ
 UZ
@@ -43726,7 +43613,8 @@ UZ
 UZ
 UZ
 UZ
-lk
+UZ
+fQ
 cF
 IA
 IA
@@ -45845,7 +45733,6 @@ cH
 cH
 cH
 iL
-LW
 TN
 TN
 TN
@@ -45860,7 +45747,8 @@ TN
 TN
 TN
 TN
-AS
+TN
+tI
 ej
 cH
 cH
