@@ -3192,6 +3192,15 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
+"fN" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "fO" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/minitree{
@@ -3751,16 +3760,6 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
-"gS" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "gT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3824,7 +3823,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/obj/structure/marker_beacon/yellow,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "hb" = (
@@ -7504,7 +7503,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/marker_beacon/green,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "on" = (
@@ -10589,6 +10588,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"uD" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uE" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -11503,11 +11509,6 @@
 /obj/structure/bed,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
-"ws" = (
-/obj/structure/railing,
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Upload Access";
@@ -13802,6 +13803,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
+"AS" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "AT" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -16457,7 +16467,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/marker_beacon/yellow,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Gk" = (
@@ -17662,7 +17672,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/marker_beacon/yellow,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "IN" = (
@@ -21027,14 +21037,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
-"Pz" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "PA" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge Meeting Room";
@@ -21288,7 +21290,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/marker_beacon/yellow,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Qa" = (
@@ -24691,7 +24693,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/marker_beacon/green,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "WF" = (
@@ -25625,7 +25627,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/marker_beacon/green,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "YA" = (
@@ -33572,7 +33574,7 @@ Oi
 Oi
 Oi
 Oi
-gS
+AS
 UZ
 UZ
 UZ
@@ -33591,7 +33593,7 @@ UZ
 UZ
 UZ
 UZ
-Yz
+mj
 vN
 Gz
 IA
@@ -37860,7 +37862,7 @@ us
 us
 us
 us
-ws
+mn
 ej
 cH
 cH
@@ -39218,7 +39220,7 @@ us
 us
 us
 us
-ws
+mn
 ej
 cH
 kr
@@ -39432,14 +39434,14 @@ Ad
 Ad
 Ad
 Ad
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 dx
 us
@@ -39634,7 +39636,7 @@ Ad
 Ad
 Ad
 Ad
-cH
+Ad
 dx
 us
 us
@@ -39815,18 +39817,18 @@ ej
 Ad
 Ad
 cH
+AS
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+fQ
+CU
 cH
-cH
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
 Ad
 Ad
 cH
@@ -40009,16 +40011,16 @@ ej
 Ad
 Ad
 qY
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
 Pj
 CU
 cH
@@ -40770,7 +40772,7 @@ us
 us
 us
 jy
-Pz
+Gj
 pX
 cH
 cH
@@ -40944,7 +40946,7 @@ cH
 cH
 cH
 QK
-om
+fo
 TN
 TN
 TN
@@ -43501,16 +43503,16 @@ cH
 cH
 cH
 ys
-TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
 SW
 CU
 Ad
@@ -43695,17 +43697,17 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+fN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+uD
+CU
 cH
 Ad
 Ad
