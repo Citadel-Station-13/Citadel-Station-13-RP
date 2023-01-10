@@ -5077,9 +5077,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
+/turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "oT" = (
 /obj/structure/sign/double/barsign{
@@ -5541,10 +5542,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_bump,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plating,
 /area/centcom/specops)
 "qy" = (
 /obj/structure/sign/warning{
@@ -9437,10 +9435,7 @@
 	name = "Power Management";
 	req_one_access = list(103)
 	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plating,
 /area/centcom/specops)
 "Do" = (
 /obj/effect/overmap/visitable/sector/centcom,
@@ -9474,14 +9469,11 @@
 /area/space)
 "DV" = (
 /obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
+/obj/structure/cable,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
+/turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "DZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -9492,18 +9484,6 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/general)
-"Ep" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/hatch{
-	name = "Power Management";
-	req_one_access = list(103)
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops/dock)
 "EH" = (
 /obj/machinery/access_button/airlock_interior{
 	dir = 8;
@@ -9548,14 +9528,11 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "Fg" = (
-/obj/machinery/power/rtg,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
+/obj/machinery/power/rtg/fake_gen,
+/turf/simulated/floor/plating,
 /area/centcom/specops)
 "Fy" = (
 /obj/structure/bed/padded,
@@ -9638,14 +9615,6 @@
 "Hw" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
-"HB" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops/dock)
 "HC" = (
 /turf/space/transit/west,
 /area/space)
@@ -9794,6 +9763,9 @@
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
 /turf/simulated/sky/lythios43c/moving/west,
 /area/space)
+"Mj" = (
+/turf/simulated/floor/plating,
+/area/centcom/specops)
 "Mr" = (
 /obj/machinery/recharge_station,
 /turf/simulated/shuttle/floor/black,
@@ -10236,6 +10208,16 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"UU" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Power Management";
+	req_one_access = list(103)
+	},
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "Ve" = (
 /turf/space/transit/south,
 /area/space)
@@ -10284,9 +10266,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/cockpit)
 "Wc" = (
-/turf/unsimulated/floor{
-	icon_state = "dark"
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
+/obj/machinery/power/rtg/fake_gen,
+/turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "WH" = (
 /obj/machinery/shipsensors{
@@ -10373,13 +10357,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "YB" = (
-/obj/machinery/power/rtg,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "YC" = (
 /obj/structure/cable{
@@ -10391,13 +10369,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "Zu" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -21976,7 +21948,7 @@ tJ
 tJ
 tJ
 ss
-tJ
+Mj
 Fg
 ss
 Bv
@@ -22170,7 +22142,7 @@ tJ
 tJ
 tJ
 Dl
-tJ
+Mj
 qs
 ss
 Bv
@@ -24688,9 +24660,9 @@ tI
 tX
 uB
 ss
+vf
 tJ
-tJ
-tJ
+vr
 ss
 vF
 vU
@@ -25669,8 +25641,8 @@ wI
 ss
 Bv
 Xr
-NC
 KG
+Ix
 Ix
 Ix
 Ix
@@ -25852,7 +25824,7 @@ tJ
 ug
 uG
 uU
-vf
+tJ
 tJ
 tJ
 vt
@@ -25863,8 +25835,8 @@ wo
 ss
 Xr
 Xr
+UU
 Xr
-Ep
 Xr
 Xr
 Xr
@@ -26058,8 +26030,8 @@ ss
 Zk
 oS
 DV
-HB
 Xr
+Bv
 Bv
 Bv
 Bv
@@ -26240,20 +26212,20 @@ tK
 uh
 uH
 ss
+vf
 tJ
-tJ
-tJ
+vr
 ss
 vL
 vZ
 wq
 wq
 ss
-YB
+Wc
 Wc
 YB
-Wc
 Xr
+Bv
 Bv
 Bv
 Bv
@@ -26436,7 +26408,7 @@ ss
 ss
 tJ
 tJ
-vr
+tJ
 ss
 ss
 ss
@@ -26447,7 +26419,7 @@ ss
 Xr
 Xr
 Xr
-Xr
+Bv
 Bv
 Bv
 Bv
@@ -28376,7 +28348,7 @@ uK
 ss
 vg
 tJ
-vr
+tJ
 ss
 Dv
 uu
