@@ -89,13 +89,12 @@
 
 	if(input)
 		log_subtle_anti_ghost(message,src)
-		message = "<B>[src]</B> <I>[input]</I>"
+		message = SPAN_SINGING(message)
 	else
 		return
 
 	if (message)
 		message = say_emphasis(message)
-		var/admin_message = "<B>SUBTLER EMOTE:</B> [message]"
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
@@ -109,7 +108,7 @@
 			else //(istype(vismob, /mob/observer))
 				var/mob/observer/O = vismob
 				if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
-					O.show_message(admin_message)
+					O.show_message(message)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj
