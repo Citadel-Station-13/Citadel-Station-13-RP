@@ -21,10 +21,9 @@
 /turf/simulated/floor/gold,
 /area/shuttle/cruise_ship)
 "bl" = (
-/obj/machinery/power/terminal{
-	dir = 8
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
 	},
-/obj/structure/cable/green,
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
 "dE" = (
@@ -43,13 +42,8 @@
 /obj/structure/curtain/black,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
-"eU" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	dir = 8
-	},
+"fa" = (
+/obj/machinery/vending/sovietsoda,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "fu" = (
@@ -129,9 +123,6 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/cruise_ship)
 "oI" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 8;
@@ -174,10 +165,9 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "qY" = (
-/obj/spawner/window/borosillicate/full/firelocks,
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
 "rw" = (
@@ -186,10 +176,15 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
-"tv" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+"rZ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cruise_dance_tint"
 	},
+/turf/simulated/floor,
+/area/shuttle/cruise_ship)
+"tv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
@@ -205,9 +200,6 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/cruise_ship)
 "vm" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -218,9 +210,6 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/shuttle/cruise_ship/bedroom)
 "vx" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -255,17 +244,11 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "De" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/overmap/visitable/ship/landable/cruise_ship,
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "EY" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/fuel_port{
 	dir = 4;
 	pixel_y = 32
@@ -273,7 +256,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor,
+/area/shuttle/cruise_ship)
+"FL" = (
+/obj/machinery/button/windowtint{
+	id = "cruise_dance_tint";
+	pixel_x = -24
+	},
+/turf/simulated/floor/gold,
 /area/shuttle/cruise_ship)
 "FV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -289,9 +282,6 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/cruise_ship)
 "HM" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -333,26 +323,33 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/cruise_ship)
 "Lx" = (
-/obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/cyan{
-	icon_state = "0-8"
+	icon_state = "0-4"
 	},
+/obj/machinery/power/rtg,
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
 "Mi" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
+/obj/machinery/vending/snack{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Mt" = (
-/obj/spawner/window/borosillicate/full/firelocks,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "cruise_blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
 "Mu" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 4;
@@ -377,9 +374,31 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
+"NJ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cruise_dance_tint"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "cruise_blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor,
+/area/shuttle/cruise_ship)
 "NU" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "cruise_blast";
+	name = "Shuttle Rear Hatch";
+	pixel_y = -26
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
@@ -394,6 +413,9 @@
 /obj/machinery/door/airlock/gold{
 	name = "Engine"
 	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Ov" = (
@@ -401,6 +423,14 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/polarized/full{
 	id = "cruise_tint"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "cruise_blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor,
 /area/shuttle/cruise_ship/bedroom)
@@ -411,11 +441,11 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Qv" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
@@ -431,22 +461,22 @@
 /area/shuttle/cruise_ship/bedroom)
 "QZ" = (
 /obj/structure/cable/cyan{
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
 /obj/structure/cable/cyan{
-	icon_state = "1-2"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "RA" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/cruise_ship)
@@ -489,14 +519,11 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "UR" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Wd" = (
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -544,9 +571,6 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "Yx" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-4"
-	},
 /obj/structure/flora/pottedplant/flower,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
@@ -622,7 +646,7 @@ xa
 (4,1,1) = {"
 xa
 xa
-wq
+RF
 Mt
 Mt
 Ga
@@ -704,7 +728,7 @@ wg
 kv
 Sx
 QZ
-eU
+Pz
 Yx
 Mt
 xa
@@ -712,7 +736,7 @@ xa
 (10,1,1) = {"
 xa
 Mt
-Ue
+fa
 Ue
 Ue
 Ue
@@ -729,8 +753,8 @@ xa
 RF
 RF
 eH
-Mt
-Mt
+rZ
+rZ
 vm
 RF
 Oj
@@ -741,11 +765,11 @@ xa
 "}
 (12,1,1) = {"
 xa
-Mt
-hF
+NJ
+FL
 hF
 RN
-Mt
+rZ
 vm
 wq
 EY
@@ -756,11 +780,11 @@ xa
 "}
 (13,1,1) = {"
 xa
-Mt
+NJ
 hF
 ji
 qq
-Mt
+rZ
 HM
 wq
 RA
@@ -771,11 +795,11 @@ xa
 "}
 (14,1,1) = {"
 xa
-Mt
+NJ
 aN
 nd
 HN
-Mt
+rZ
 vm
 wq
 rw
