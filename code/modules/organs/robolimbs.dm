@@ -642,8 +642,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 //Darkside Incorperated synthetic augmentation list! Many current most used fuzzy and notsofuzzy races made into synths here.
 
 /datum/robolimb/dsi_tajaran
-	company = "DSI - Tajaran"
-	desc = "This limb feels soft and fluffy, realistic design and squish. By Darkside Incorperated."
+	company = "OSS - Tajaran"
+	desc = "This limb feels soft and fluffy, realistic design and squish. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -655,11 +655,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_tajaran
-	company = "DSI - Tajaran"
+	company = "OSS - Tajaran"
 
 /datum/robolimb/dsi_lizard
-	company = "DSI - Lizard"
-	desc = "This limb feels smooth and scalie, realistic design and squish. By Darkside Incorperated."
+	company = "OSS - Lizard"
+	desc = "This limb feels smooth and scalie, realistic design and squish. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSILizard/dsi_lizard.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -671,11 +671,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_lizard
-	company = "DSI - Lizard"
+	company = "OSS - Lizard"
 
 /datum/robolimb/dsi_sergal
-	company = "DSI - Sergal"
-	desc = "This limb feels soft and fluffy, realistic design and toned muscle. By Darkside Incorperated."
+	company = "OSS - Naramadi"
+	desc = "This limb feels soft and fluffy, realistic design and toned muscle. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSISergal/dsi_sergal.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -687,11 +687,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_sergal
-	company = "DSI - Sergal"
+	company = "OSS - Naramadi"
 
 /datum/robolimb/dsi_nevrean
-	company = "DSI - Nevrean"
-	desc = "This limb feels soft and feathery, lightweight, realistic design and squish. By Darkside Incorperated."
+	company = "OSS - Nevrean"
+	desc = "This limb feels soft and feathery, lightweight, realistic design and squish. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSINevrean/dsi_nevrean.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -703,11 +703,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_nevrean
-	company = "DSI - Nevrean"
+	company = "OSS - Nevrean"
 
 /datum/robolimb/dsi_vulpkanin
-	company = "DSI - Vulpkanin"
-	desc = "This limb feels soft and fluffy, realistic design and squish. Seems a little mischievous. By Darkside Incorperated."
+	company = "OSS - Vulpkanin"
+	desc = "This limb feels soft and fluffy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSIVulpkanin/dsi_vulpkanin.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -719,11 +719,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_vulpkanin
-	company = "DSI - Vulpkanin"
+	company = "OSS - Vulpkanin"
 
 /datum/robolimb/dsi_akula
-	company = "DSI - Akula"
-	desc = "This limb feels soft and fleshy, realistic design and squish. Seems a little mischievous. By Darkside Incorperated."
+	company = "OSS - Akula"
+	desc = "This limb feels soft and fleshy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -735,11 +735,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_akula
-	company = "DSI - Akula"
+	company = "OSS - Akula"
 
 /datum/robolimb/dsi_spider
-	company = "DSI - Vasilissan"
-	desc = "This limb feels hard and chitinous, realistic design. Seems a little mischievous. By Darkside Incorperated."
+	company = "OSS - Vasilissan"
+	desc = "This limb feels hard and chitinous, realistic design. Seems a little mischievous. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSISpider/dsi_spider.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
@@ -751,11 +751,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_spider
-	company = "DSI - Vasilissan"
+	company = "OSS - Vasilissan"
 
 /datum/robolimb/dsi_teshari
-	company = "DSI - Teshari"
-	desc = "This limb has a thin synthflesh casing with a few connection ports."
+	company = "OSS - Teshari"
+	desc = "This limb has a thin synthflesh casing with a few connection ports. By Onkhera Synthetic Solutions."
 	icon = 'icons/mob/cyberlimbs/DSITeshari/dsi_teshari.dmi'
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -769,7 +769,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	..()
 
 /obj/item/disk/limb/dsi_teshari
-	company = "DSI - Teshari"
+	company = "OSS - Teshari"
 
 
 /datum/robolimb/braincase
