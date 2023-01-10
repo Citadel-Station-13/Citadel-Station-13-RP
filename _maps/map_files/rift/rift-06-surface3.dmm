@@ -3751,6 +3751,16 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
+"gS" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "gT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3809,6 +3819,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"ha" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "hb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -6445,6 +6463,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"mo" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
 "mp" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -7472,6 +7497,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
+"om" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "on" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -8790,6 +8825,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "qZ" = (
@@ -11467,6 +11503,11 @@
 /obj/structure/bed,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
+"ws" = (
+/obj/structure/railing,
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Upload Access";
@@ -12591,6 +12632,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "yt" = (
@@ -16410,6 +16452,14 @@
 "Gi" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/bar_backroom)
+"Gj" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Gk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17608,6 +17658,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"IM" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "IN" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
@@ -19000,6 +19057,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "LE" = (
@@ -20274,6 +20332,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"Of" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
 "Og" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20830,6 +20895,14 @@
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
+"Pj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Pk" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rsurface/level3)
@@ -20954,6 +21027,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
+"Pz" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "PA" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge Meeting Room";
@@ -21203,6 +21284,13 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"PZ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Qa" = (
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 5
@@ -21858,6 +21946,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
+"Rk" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
 "Rl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -22795,6 +22887,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/marker_beacon/red,
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
@@ -24553,6 +24646,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "WB" = (
@@ -24590,6 +24684,16 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"WE" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "WF" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -25516,6 +25620,14 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
+"Yz" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "YA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -33460,7 +33572,7 @@ Oi
 Oi
 Oi
 Oi
-qY
+gS
 UZ
 UZ
 UZ
@@ -33479,7 +33591,7 @@ UZ
 UZ
 UZ
 UZ
-mj
+Yz
 vN
 Gz
 IA
@@ -33653,7 +33765,7 @@ Oi
 Oi
 Oi
 Oi
-aC
+WE
 us
 us
 us
@@ -33674,7 +33786,7 @@ us
 us
 us
 us
-mj
+Yz
 vM
 IA
 IA
@@ -37585,6 +37697,7 @@ cH
 cH
 cH
 fk
+PZ
 UZ
 UZ
 UZ
@@ -37599,8 +37712,7 @@ UZ
 UZ
 UZ
 UZ
-UZ
-fQ
+ha
 ej
 cH
 cH
@@ -37748,7 +37860,7 @@ us
 us
 us
 us
-mn
+ws
 ej
 cH
 cH
@@ -39106,7 +39218,7 @@ us
 us
 us
 us
-mn
+ws
 ej
 cH
 kr
@@ -39719,6 +39831,7 @@ Ad
 Ad
 cH
 iL
+IM
 TN
 TN
 TN
@@ -39733,8 +39846,7 @@ TN
 TN
 TN
 TN
-TN
-tI
+Gj
 cF
 IA
 IA
@@ -39907,7 +40019,7 @@ UZ
 UZ
 UZ
 UZ
-fQ
+Pj
 CU
 cH
 Ad
@@ -40110,7 +40222,7 @@ Ad
 Ad
 cc
 mX
-gP
+Of
 gP
 gP
 gP
@@ -40637,7 +40749,7 @@ cH
 cH
 cH
 QK
-fo
+om
 us
 us
 us
@@ -40658,7 +40770,7 @@ us
 us
 us
 jy
-tI
+Pz
 pX
 cH
 cH
@@ -40832,7 +40944,7 @@ cH
 cH
 cH
 QK
-fo
+om
 TN
 TN
 TN
@@ -40882,7 +40994,7 @@ CU
 Ad
 Ad
 dx
-Uu
+Rk
 Uu
 Uu
 Uu
@@ -42434,7 +42546,7 @@ CU
 Ad
 Ad
 Id
-Uu
+Rk
 Uu
 Uu
 Uu
@@ -43214,7 +43326,7 @@ Ad
 Ad
 Hx
 SZ
-yc
+mo
 yc
 yc
 yc
@@ -43599,6 +43711,7 @@ Ad
 Ad
 cH
 fk
+PZ
 UZ
 UZ
 UZ
@@ -43613,8 +43726,7 @@ UZ
 UZ
 UZ
 UZ
-UZ
-fQ
+ha
 cF
 IA
 IA
@@ -45733,6 +45845,7 @@ cH
 cH
 cH
 iL
+IM
 TN
 TN
 TN
@@ -45747,8 +45860,7 @@ TN
 TN
 TN
 TN
-TN
-tI
+Gj
 ej
 cH
 cH
