@@ -471,12 +471,40 @@
 	secondary_color = rgb(191,159,95)
 
 /obj/item/card/id/external/merchant //created so that when assigning the outfit of merchant, it assigns a working ID
-	name = "external identification card"
-	desc = "An identification card of some sort. It does not look like it is issued by NT."
-	icon_state = "generic"
+	name = "identity chit"
+	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification."
+	icon_state = "chit"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
 	access = list(160, 13)
+	var/random_color = TRUE
+
+/obj/item/card/id/external/merchant/Initialize(mapload)
+	. = ..()
+	if(random_color)
+		switch(pick("brown","green","red","purple","white","orange","blue"))
+			if ("brown")
+				icon_state = "chit"
+			if ("green")
+				icon_state = "chit_green"
+			if ("red")
+				icon_state = "chit_red"
+			if ("purple")
+				icon_state = "chit_purple"
+			if ("white")
+				icon_state = "chit_white"
+			if ("orange")
+				icon_state = "chit_orange"
+			if ("blue")
+				icon_state = "chit_blue"
+
+/obj/item/card/id/external/pirate
+	name = "black market identity chit"
+	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification. It appears to have been illegally modified."
+	icon_state = "pirate"
+	primary_color = rgb(17, 1, 1)
+	secondary_color = rgb(149, 152, 153)
+	access = list(168)
 
 /obj/item/card/id/medical/sar
 	assignment = "Field Medic"

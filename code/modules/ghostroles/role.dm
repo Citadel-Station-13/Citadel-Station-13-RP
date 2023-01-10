@@ -68,17 +68,15 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 
 /datum/ghostrole/proc/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	if(show_standard_greeting)
-		to_chat(created, {"<b><font size='5px'>You have spawned as a ghostrole.</font></b>
-		These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit!
-		Spawntext as follows;"})
+		to_chat(created, "<blockquote class='info'>You have spawned as a ghostrole. These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit! Spawntext as follows;</blockquote>")
 	if(spawntext)
-		to_chat(created, spawntext)
+		to_chat(created, "<blockquote class='info'>[spawntext]</blockquote>")
 	if(spawnpoint.spawntext)
-		to_chat(created, spawntext)
+		to_chat(created, "<blockquote class='info'>[spawntext]</blockquote>")
 
-/datum/ghostrole/proc/ImportantInfo()
-	// todo: policyconfig
-	return important_info
+/datum/ghostrole/proc/ImportantInfo(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+	if(important_info)
+		to_chat(created, "<blockquote class='info'>[important_info]</blockquote>")
 
 /**
  * Master proc for spawning someone as this role.
@@ -182,6 +180,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  */
 /datum/ghostrole/proc/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	Greet(created, spawnpoint, params)
+	ImportantInfo(created, spawnpoint, params)
 	if(automatic_objective)
 		GiveCustomObjective(created, automatic_objective)
 	spawns++

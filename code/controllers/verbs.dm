@@ -15,6 +15,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	src.target = target
 
 /obj/effect/statclick/proc/update(text)
+	if(name == text)
+		return src	// let's ont change for no reason shall we
 	name = text
 	return src
 

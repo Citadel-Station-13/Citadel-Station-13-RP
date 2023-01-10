@@ -1959,3 +1959,15 @@
 	name = "Half Moon outfit"
 	desc = "This eminently fashionable outfit evokes memories of Luna. It consists of a tailored latex leotard and daringly cut white shorts. Paired with plunging off-color stockings, it's to die for."
 	icon_state = "half_moon"
+
+//Military Surplus
+/obj/item/clothing/under/surplus
+	name = "surplus fatigues"
+	desc = "Old military fatigues like these are very common across the Frontier. Sturdy and somewhat comfortable, they hold up to the harsh working environments many colonists face, while also adding a little flair - regardless of prior military service."
+	icon_state = "bdu_olive"
+
+/obj/item/clothing/under/surplus/desert
+	icon_state = "bdu_desert"
+
+/obj/item/clothing/under/surplus/russoblue
+	icon_state = "bdu_russoblue"

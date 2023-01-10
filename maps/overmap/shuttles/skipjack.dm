@@ -10,7 +10,7 @@
 	landmark_transition = "skipjack_transit"
 	shuttle_area = /area/shuttle/skipjack
 	destination_tags = list(
-		"piratebase_hanger",
+		"pirate_docking_arm",
 		"skipjack_base",
 		"aerostat_south",
 		"beach_e",

@@ -27,8 +27,6 @@
 		"NDV Quicksilver" = list("rift_specops_dock")
 		)
 
-
-
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
 
@@ -70,4 +68,3 @@
 	//For ships, it's safe to assume they're big enough to not be sneaky
 	else if(istype(AM, /obj/effect/overmap/visitable/ship))
 		GLOB.lore_atc.msg(message)
-

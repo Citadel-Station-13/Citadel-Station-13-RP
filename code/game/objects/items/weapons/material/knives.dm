@@ -231,10 +231,6 @@
 	default_material = "plasteel"
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
-/obj/item/material/knife/tacknife/dataknife/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/gps, "DAT&#%F0", FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE)
-
 /obj/item/material/knife/tacknife/dataknife/is_multitool()
 	return TRUE
 
