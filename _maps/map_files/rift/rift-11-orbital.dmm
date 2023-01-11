@@ -346,8 +346,7 @@
 "bk" = (
 /obj/structure/closet/crate,
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/suppy)
 "bl" = (
@@ -6608,8 +6607,7 @@
 /obj/item/stack/nanopaste,
 /obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tp" = (
@@ -6627,8 +6625,7 @@
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tq" = (
@@ -6640,8 +6637,7 @@
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tr" = (
@@ -6654,8 +6650,7 @@
 /obj/item/storage/pill_bottle/nutriment,
 /obj/item/storage/pill_bottle/nutriment,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "ts" = (
@@ -6672,23 +6667,20 @@
 /obj/item/bodybag/cryobag,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tt" = (
 /obj/machinery/chemical_dispenser/ert,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tu" = (
 /obj/machinery/chem_master,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tv" = (
@@ -6699,8 +6691,7 @@
 	},
 /obj/item/storage/firstaid/regular,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tw" = (
@@ -6714,8 +6705,7 @@
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tx" = (
@@ -6804,14 +6794,7 @@
 /obj/item/gun/energy/gun/martin,
 /obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/specops)
-"tJ" = (
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tK" = (
@@ -6832,8 +6815,7 @@
 /obj/item/clothing/accessory/storage/white_drop_pouches,
 /obj/item/clothing/accessory/storage/white_drop_pouches,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tL" = (
@@ -7058,8 +7040,7 @@
 "tX" = (
 /obj/machinery/iv_drip,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tY" = (
@@ -7070,8 +7051,7 @@
 	},
 /obj/item/storage/box/syringes,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "tZ" = (
@@ -7089,8 +7069,7 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "ue" = (
@@ -7100,8 +7079,7 @@
 /obj/item/healthanalyzer/advanced,
 /obj/item/healthanalyzer/advanced,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uf" = (
@@ -7112,8 +7090,7 @@
 	},
 /obj/item/storage/firstaid/adv,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "ug" = (
@@ -7124,8 +7101,7 @@
 	},
 /obj/item/storage/firstaid/toxin,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uh" = (
@@ -7143,8 +7119,7 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "ui" = (
@@ -7280,15 +7255,13 @@
 	pixel_y = 12
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uC" = (
 /obj/machinery/vending/medical,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uD" = (
@@ -7303,8 +7276,7 @@
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uE" = (
@@ -7316,8 +7288,7 @@
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uF" = (
@@ -7328,8 +7299,7 @@
 	},
 /obj/item/storage/firstaid/fire,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uG" = (
@@ -7340,8 +7310,7 @@
 	},
 /obj/item/storage/firstaid/o2,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uH" = (
@@ -7351,8 +7320,7 @@
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uI" = (
@@ -7432,8 +7400,7 @@
 	tag_door = "specops_centcom_dock_door"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uR" = (
@@ -7453,8 +7420,7 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "uV" = (
@@ -7522,8 +7488,7 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "vg" = (
@@ -7532,8 +7497,7 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "vh" = (
@@ -7584,8 +7548,7 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "vs" = (
@@ -8172,8 +8135,7 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wy" = (
@@ -8409,8 +8371,7 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wW" = (
@@ -8422,8 +8383,7 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wY" = (
@@ -8976,8 +8936,7 @@
 	name = "Thunderdome Axe Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "yK" = (
@@ -8986,8 +8945,7 @@
 	name = "Thunderdome General Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "yL" = (
@@ -8996,14 +8954,12 @@
 	name = "Thunderdome Heavy Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "yM" = (
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "yN" = (
@@ -9012,8 +8968,7 @@
 	name = "Thunderdome Blast Door Control"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "yO" = (
@@ -9252,8 +9207,7 @@
 	req_access = list(101)
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
 "zr" = (
@@ -9399,8 +9353,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/melee/energy/axe,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "zL" = (
@@ -9416,8 +9369,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/melee/energy/axe,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "zN" = (
@@ -9440,8 +9392,7 @@
 	name = "Axe Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "zQ" = (
@@ -9526,8 +9477,7 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ac" = (
@@ -9536,8 +9486,7 @@
 	name = "General Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ad" = (
@@ -9545,8 +9494,7 @@
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ae" = (
@@ -9555,8 +9503,7 @@
 	name = "Thunderdome Blast Door"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Af" = (
@@ -9564,8 +9511,7 @@
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ag" = (
@@ -9577,8 +9523,7 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ah" = (
@@ -9608,8 +9553,7 @@
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Al" = (
@@ -9620,8 +9564,7 @@
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Am" = (
@@ -9716,8 +9659,7 @@
 	invisibility = 101
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ax" = (
@@ -9737,8 +9679,7 @@
 	invisibility = 101
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Az" = (
@@ -9853,8 +9794,7 @@
 /area/centcom/command)
 "AL" = (
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "AO" = (
@@ -9863,8 +9803,7 @@
 	name = "Heavy Supply"
 	},
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "AP" = (
@@ -9921,8 +9860,7 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Ba" = (
@@ -9933,8 +9871,7 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/tdome/tdome1)
 "Bb" = (
@@ -12388,14 +12325,14 @@ tH
 tW
 uA
 uR
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
 wX
 xj
 xj
@@ -12582,14 +12519,14 @@ tn
 tn
 tn
 uT
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
 wX
 xj
 xj
@@ -12776,9 +12713,9 @@ ss
 ss
 ss
 ss
-tJ
-tJ
-tJ
+tn
+tn
+tn
 ss
 ss
 ss
@@ -12971,7 +12908,7 @@ tX
 uB
 ss
 vf
-tJ
+tn
 vr
 ss
 vF
@@ -13160,13 +13097,13 @@ fB
 ss
 ss
 tp
-tJ
-tJ
-tJ
+tn
+tn
+tn
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 tn
 tn
@@ -13354,13 +13291,13 @@ fB
 ss
 ss
 tq
-tJ
+tn
 tY
 uC
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 vG
 vV
@@ -13548,13 +13485,13 @@ fB
 ss
 ss
 tr
-tJ
+tn
 tZ
 uD
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 tn
 tn
@@ -13742,13 +13679,13 @@ fB
 ss
 ss
 ts
-tJ
+tn
 ue
 uE
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 vH
 vW
@@ -13936,13 +13873,13 @@ fB
 ss
 ss
 tt
-tJ
+tn
 uf
 uF
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 vI
 vX
@@ -14130,13 +14067,13 @@ fB
 ss
 ss
 tu
-tJ
+tn
 ug
 uG
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 vJ
 vY
@@ -14324,13 +14261,13 @@ fB
 ss
 ss
 tv
-tJ
-tJ
-tJ
+tn
+tn
+tn
 uU
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vt
 vK
 vZ
@@ -14523,7 +14460,7 @@ uh
 uH
 ss
 vf
-tJ
+tn
 vr
 ss
 vL
@@ -14716,9 +14653,9 @@ ss
 ss
 ss
 ss
-tJ
-tJ
-tJ
+tn
+tn
+tn
 ss
 ss
 ss
@@ -14910,9 +14847,9 @@ tL
 tn
 uI
 ss
-tJ
-tJ
-tJ
+tn
+tn
+tn
 ss
 vM
 wa
@@ -15105,8 +15042,8 @@ tn
 uJ
 ss
 vg
-tJ
-tJ
+tn
+tn
 ss
 tn
 tn
@@ -15298,9 +15235,9 @@ tn
 tn
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vu
 tn
 tn
@@ -15492,9 +15429,9 @@ tM
 ui
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vu
 tn
 tn
@@ -15686,9 +15623,9 @@ tN
 uj
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vv
 vN
 tn
@@ -15880,9 +15817,9 @@ tO
 uk
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vz
 vO
 tn
@@ -16074,9 +16011,9 @@ tP
 ul
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vA
 vP
 tn
@@ -16268,9 +16205,9 @@ tQ
 uw
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vB
 vQ
 tn
@@ -16462,9 +16399,9 @@ tR
 ux
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vu
 tn
 tn
@@ -16656,9 +16593,9 @@ tn
 tn
 tn
 uV
-tJ
-tJ
-tJ
+tn
+tn
+tn
 vu
 tn
 tn
@@ -16851,8 +16788,8 @@ tn
 tn
 ss
 vg
-tJ
-tJ
+tn
+tn
 ss
 tn
 tn
@@ -17044,9 +16981,9 @@ tS
 uy
 uK
 ss
-tJ
-tJ
-tJ
+tn
+tn
+tn
 ss
 vR
 wb
@@ -18594,16 +18531,16 @@ tg
 tg
 tU
 uz
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
 ss
 xq
 xq
@@ -18788,16 +18725,16 @@ tg
 tg
 tV
 uz
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
 ss
 xj
 xj
@@ -18983,15 +18920,15 @@ tz
 sf
 ss
 uO
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
-tJ
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
+tn
 ss
 xq
 xq
