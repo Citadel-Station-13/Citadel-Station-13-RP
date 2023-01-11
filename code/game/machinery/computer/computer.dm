@@ -45,12 +45,12 @@
 				return
 			if (prob(50))
 				for(var/x in verbs)
-					verbs -= x
+					remove_obj_verb(src, x)
 				set_broken()
 		if(3.0)
 			if (prob(25))
 				for(var/x in verbs)
-					verbs -= x
+					remove_obj_verb(src, x)
 				set_broken()
 		else
 	return

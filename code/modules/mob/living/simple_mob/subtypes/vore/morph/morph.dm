@@ -56,7 +56,7 @@
 	/obj/effect))
 
 /mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)

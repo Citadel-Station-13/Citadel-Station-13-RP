@@ -100,7 +100,7 @@
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
 	plane = PLANE_GHOSTS //Why doesn't the var above work...???
-	verbs += /mob/observer/dead/proc/dead_tele
+	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
 	var/turf/T
 	if(ismob(body))
@@ -215,7 +215,7 @@ Works together with spawning an observer, noted above.
 		if(ghost.client)
 			ghost.client.time_died_as_mouse = ghost.timeofdeath
 		if(ghost.client && !ghost.client.holder && !config_legacy.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-			ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+			remove_verb(ghost, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
 		ghost.client?.holder?.update_stealth_ghost()
 		return ghost
 
@@ -254,16 +254,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.set_respawn_timer()
 			announce_ghost_joinleave(ghost)
 
-/mob/observer/dead/can_use_hands()	return 0
-/mob/observer/dead/is_active()		return 0
+/mob/observer/dead/can_use_hands()
+	return 0
 
-/mob/observer/dead/Stat()
-	..()
-	if(statpanel("Status"))
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
+/mob/observer/dead/is_active()
+	return 0
 
 /mob/observer/dead/verb/reenter_corpse()
 	set category = "Ghost"
@@ -621,8 +616,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/manifest(mob/user)
 	is_manifest = TRUE
-	verbs |= /mob/observer/dead/proc/toggle_visibility
-	verbs |= /mob/observer/dead/proc/ghost_whisper
+	add_verb(src, /mob/observer/dead/proc/toggle_visibility)
+	add_verb(src, /mob/observer/dead/proc/ghost_whisper)
 	to_chat(src,"<font color='purple'>As you are now in the realm of the living, you can whisper to the living with the <b>Spectral Whisper</b> verb, inside the IC tab.</font>")
 	if(plane != PLANE_WORLD)
 		user.visible_message( \

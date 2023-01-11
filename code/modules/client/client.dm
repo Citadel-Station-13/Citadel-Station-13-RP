@@ -34,6 +34,7 @@
 	 * is the way it is, please do update this comment
 	 */
 	parent_type = /datum
+	show_verb_panel = FALSE
 
 	//! Intrinsics
 	/// did New() finish?
@@ -77,10 +78,27 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
-	//! menu button statuses
+	//! Datum Menus
+	/// menu button statuses
 	var/list/menu_buttons_checked = list()
-	//! menu group statuses
+	/// menu group statuses
 	var/list/menu_group_status = list()
+
+	//! Statpanel
+	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
+	var/statpanel_tab
+	/// statpanel initialized
+	var/statpanel_ready = FALSE
+	/// turf being listed
+	var/turf/statpanel_turf
+	/// tabs the panel has
+	var/list/statpanel_tabs
+	/// statpanel variable tabs: spells / other "simple" action button frameworks
+	var/list/statpanel_spell_last
+	/// are we on byond stat? if so we can just skip the js one in data transmit (and vice versa)
+	var/statpanel_on_byond = FALSE
+	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
+	var/statpanel_for_turf = FALSE
 
 	//! throttling
 	/// block re-execution of expensive verbs

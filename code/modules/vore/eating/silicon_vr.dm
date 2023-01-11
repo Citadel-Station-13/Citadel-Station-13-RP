@@ -50,6 +50,7 @@
 	set name = "Hardlight Nom"
 	set category = "AI Commands"
 	set desc = "Wrap up a person in hardlight holograms."
+	set src = usr
 
 	// Wrong state
 	if (!eyeobj || !holo)

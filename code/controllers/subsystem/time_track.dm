@@ -19,8 +19,8 @@ SUBSYSTEM_DEF(time_track)
 	var/last_measurement = 0
 	var/measurement_delay = 60
 
-	var/stat_time_text
-	var/time_dilation_text
+	var/stat_time_text = "Calculating..."
+	var/time_dilation_text = "Calculating..."
 
 /datum/controller/subsystem/time_track/fire()
 	if(++last_measurement == measurement_delay)

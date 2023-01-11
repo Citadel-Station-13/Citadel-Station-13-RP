@@ -186,13 +186,12 @@
 	. += "<span class='notice'>It holds:</span>"
 	for(var/ore in stored_ore)
 		. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
-	return
 
 /obj/item/storage/bag/ore/open(mob/user as mob) //No opening it for the weird UI of having shit-tons of ore inside it.
 	if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
-		examine(user)
+		user.do_examinate(src)
 
 /obj/item/storage/bag/ore/proc/update_ore_count() //Stolen from ore boxes.
 

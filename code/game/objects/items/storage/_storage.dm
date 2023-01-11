@@ -516,14 +516,14 @@
 	. = ..()
 
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
 	else
-		verbs -= /obj/item/storage/verb/quick_empty
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 	else
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"

@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(zmimic)
 		"T: { T: [openspace_turfs] O: [openspace_overlays] } Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
-	..(entries.Join("\n\t"))
+	return ..() + entries.Join("<br>&emsp;")
 
 // 1, 2, 3..=7, 8
 /datum/controller/subsystem/zmimic/proc/build_zstack_display()

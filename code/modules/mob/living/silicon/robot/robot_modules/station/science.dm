@@ -145,7 +145,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.icon_dimension_x = 64
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	add_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	add_verb(R, /mob/living/proc/shred_limb)
+	add_verb(R, /mob/living/silicon/robot/proc/rest_style)
 

@@ -39,10 +39,10 @@
 		if(LARGE_HOLE)
 			. += "\The [src] has been completely cut through."
 
-/obj/structure/fence/get_description_interaction()
+/obj/structure/fence/get_description_interaction(mob/user)
 	var/list/results = list()
 	if(cuttable && !invulnerable && hole_size < MAX_HOLE_SIZE)
-		results += "[desc_panel_image("wirecutters")]to [hole_size > NO_HOLE ? "expand the":"cut a"] hole into the fence, allowing passage."
+		results += "[desc_panel_image("wirecutters", user)]to [hole_size > NO_HOLE ? "expand the":"cut a"] hole into the fence, allowing passage."
 	return results
 
 /obj/structure/fence/end
