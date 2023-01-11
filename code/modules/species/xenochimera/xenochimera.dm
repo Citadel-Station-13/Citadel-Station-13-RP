@@ -599,7 +599,10 @@
 				virus2.makerandom()
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
-			target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+			target.visible_message(
+				SPAN_DANGER("[src] pulls the tendrils out!"),
+				SPAN_WARNING("The sensation fades. You feel made anew."),
+			)
 
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
