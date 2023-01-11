@@ -78,13 +78,7 @@
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players after this many minutes, if non-0
-	var/show_mods = 0
-	var/show_devs = 0
-	var/show_event_managers = 0
-	var/mods_can_tempban = 0
-	var/mods_can_job_tempban = 0
-	var/mod_tempban_max = 1440
-	var/mod_job_tempban_max = 1440
+
 	var/load_jobs_from_txt = 0
 	var/ToRban = 0
 	var/automute_on = 0					//enables automuting/spam prevention
@@ -576,27 +570,6 @@
 
 				if("kick_inactive")
 					config_legacy.kick_inactive = text2num(value)
-
-				if("show_mods")
-					config_legacy.show_mods = 1
-
-				if("show_devs")
-					config_legacy.show_devs = 1
-
-				if("show_event_managers")
-					config_legacy.show_event_managers = 1
-
-				if("mods_can_tempban")
-					config_legacy.mods_can_tempban = 1
-
-				if("mods_can_job_tempban")
-					config_legacy.mods_can_job_tempban = 1
-
-				if("mod_tempban_max")
-					config_legacy.mod_tempban_max = text2num(value)
-
-				if("mod_job_tempban_max")
-					config_legacy.mod_job_tempban_max = text2num(value)
 
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1

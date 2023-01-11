@@ -214,7 +214,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_display_overlay_log,
 	/client/proc/air_report,
 	/client/proc/reload_admins,
-	/client/proc/reload_eventMs,
 	/client/proc/restart_controller,
 	/datum/admins/proc/restart,
 	/client/proc/print_random_map,

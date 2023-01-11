@@ -74,21 +74,23 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /**
  * Returns 1 if it is the selected month and day.
  */
-/proc/isDay(var/month, var/day)
+/proc/isDay(month, day)
 	if(isnum(month) && isnum(day))\
-		/// Get the current month.
+		// Get the current month.
 		var/MM = text2num(time2text(world.timeofday, "MM"))
-		/// Get the current day.
+		// Get the current day.
 		var/DD = text2num(time2text(world.timeofday, "DD"))
 		if(month == MM && day == DD)
 			return TRUE
 
-		// Uncomment this out when debugging!
-		// else
-		// 	return TRUE
 
-/var/next_duration_update = 0
-/var/last_round_duration = 0
+/// Returns timestamp in a sql and a not-quite-compliant ISO 8601 friendly format.
+/proc/SQLtime(timevar)
+	return time2text(timevar || world.timeofday, "YYYY-MM-DD hh:mm:ss")
+
+
+var/next_duration_update = 0
+var/last_round_duration = 0
 
 /proc/roundduration2text()
 	if(!SSticker.round_start_time)

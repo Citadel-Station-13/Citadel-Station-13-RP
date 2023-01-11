@@ -102,20 +102,12 @@
 	set name = "Reload Admins"
 	set category = "Debug"
 
-	if(!check_rights(R_SERVER))	return
+	if(!check_rights(R_SERVER))
+		return
 
 	message_admins("[usr] manually reloaded admins")
 	load_admins()
 	feedback_add_details("admin_verb","RLDA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/reload_eventMs()
-	set name = "Reload Event Managers"
-	set category = "Debug"
-
-	if(!check_rights(R_SERVER)) return
-
-	message_admins("[usr] manually reloaded Event Managers")
-	world.load_mods()
 
 
 //todo:

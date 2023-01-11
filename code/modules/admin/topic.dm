@@ -632,10 +632,6 @@
 			to_chat(usr, "<span class='adminlog warning'>You do not have the appropriate permissions to add job bans!</span>")
 			return
 
-		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN,0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
-			to_chat(usr, "<span class='adminlog warning'>Mod jobbanning is disabled!</span>")
-			return
-
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
 			to_chat(usr, "<span class='adminlog'>This can only be used on instances of type /mob</span>")
@@ -729,9 +725,6 @@
 						return
 					var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
 					if(!mins)
-						return
-					if(check_rights(R_MOD, 0) && !check_rights(R_BAN, 0) && mins > config_legacy.mod_job_tempban_max)
-						to_chat(usr, "<span class='adminlog warning'> Moderators can only job tempban up to [config_legacy.mod_job_tempban_max] minutes!</span>")
 						return
 					var/reason = sanitize(input(usr,"Reason?","Please State Reason","") as text|null)
 					if(!reason)
@@ -845,10 +838,6 @@
 			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
 			return
 
-		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN, 0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
-			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
-			return
-
 		var/mob/M = locate(href_list["newban"])
 		if(!ismob(M)) return
 
@@ -858,9 +847,6 @@
 			if("Yes")
 				var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
 				if(!mins)
-					return
-				if(check_rights(R_MOD, 0) && !check_rights(R_BAN, 0) && mins > config_legacy.mod_tempban_max)
-					to_chat(usr, "<span class='warning'>Moderators can only job tempban up to [config_legacy.mod_tempban_max] minutes!</span>")
 					return
 				if(mins >= 525600) mins = 525599
 				var/reason = sanitize(input(usr,"Reason?","reason","Griefer") as text|null)

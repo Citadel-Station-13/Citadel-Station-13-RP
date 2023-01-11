@@ -46,10 +46,6 @@
 
 /datum/config_entry/flag/show_irc_name
 
-/// allows admins with relevant permissions to have their own ooc colour
-/datum/config_entry/flag/allow_admin_ooccolor
-	default = TRUE
-
 /datum/config_entry/number/rounds_until_hard_restart
 	default = -1
 	min_val = 0
