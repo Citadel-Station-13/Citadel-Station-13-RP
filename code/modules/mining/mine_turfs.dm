@@ -152,6 +152,7 @@
 	opacity = FALSE
 	recalc_atom_opacity()
 	reconsider_lights()
+	regenerate_ao()
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
@@ -166,6 +167,7 @@
 	opacity = TRUE
 	recalc_atom_opacity()
 	reconsider_lights()
+	regenerate_ao()
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
