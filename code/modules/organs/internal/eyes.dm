@@ -11,7 +11,7 @@
 /obj/item/organ/internal/eyes/robotize()
 	..()
 	name = "optical sensor"
-	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color
+	add_obj_verb(src, /obj/item/organ/internal/eyes/proc/change_eye_color)
 
 /obj/item/organ/internal/eyes/robot
 	name = "optical sensor"

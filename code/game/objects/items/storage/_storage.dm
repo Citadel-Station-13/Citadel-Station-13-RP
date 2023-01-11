@@ -352,7 +352,7 @@
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
-	W.item_flags |= IN_STORAGE
+	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -400,14 +400,14 @@
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
-	W.item_flags &= ~IN_STORAGE
+	W.item_flags &= ~ITEM_IN_STORAGE
 	update_icon()
 	return 1
 
 /obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.item_flags & IN_STORAGE)
+		if(I.item_flags & ITEM_IN_STORAGE)
 			remove_from_storage(I, null, FALSE)
 	return ..()
 
@@ -516,14 +516,14 @@
 	. = ..()
 
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
 	else
-		verbs -= /obj/item/storage/verb/quick_empty
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 	else
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"

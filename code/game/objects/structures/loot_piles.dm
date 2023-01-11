@@ -235,6 +235,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/trash/candy,
 		/obj/item/trash/candy/proteinbar,
 		/obj/item/trash/cheesie,
+		/obj/item/trash/hot_cheesie,
 		/obj/item/trash/chips,
 		/obj/item/trash/liquidfood,
 		/obj/item/trash/pistachios,
@@ -592,8 +593,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
     )
     rare_loot = list(
         /obj/item/storage/belt/utility/alien/full,
-        /obj/item/gun/projectile/revolver,
-        /obj/item/gun/projectile/sec,
+        /obj/item/gun/ballistic/revolver,
+        /obj/item/gun/ballistic/sec,
         /obj/item/gun/launcher/crossbow
     )
 
@@ -1086,7 +1087,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/gun/projectile/gyropistol,
+		/obj/item/gun/ballistic/gyropistol,
 		/obj/item/mecha_parts/mecha_equipment/generator/nuclear
 		)
 

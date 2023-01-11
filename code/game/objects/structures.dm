@@ -1,6 +1,7 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
+	pass_flags = ATOM_PASS_BUCKLED
 
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
@@ -16,7 +17,7 @@
 	. = ..()
 
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 
 	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)
@@ -109,6 +110,7 @@
 			return O
 	return 0
 
+// todo: climbable obj-level (to avoid element/signal spam)
 /obj/structure/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
 		return

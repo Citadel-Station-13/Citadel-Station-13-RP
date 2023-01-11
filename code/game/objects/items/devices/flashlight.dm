@@ -35,7 +35,7 @@
 		brightness_levels = list("low" = 0.25, "medium" = 0.5, "high" = 1)
 		power_usage = brightness_levels[brightness_level]
 	else
-		verbs -= /obj/item/flashlight/verb/toggle
+		remove_obj_verb(src, /obj/item/flashlight/verb/toggle)
 
 	update_appearance()
 
@@ -142,14 +142,15 @@
 		O.emp_act(severity)
 	..()
 
-/obj/item/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
-	add_fingerprint(user)
-	if(on && user.zone_sel.selecting == O_EYES)
-
+/obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(on && user.zone_sel.selecting == O_EYES && isliving(target))
+		var/mob/living/L = target
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
-		var/mob/living/carbon/human/H = M	//mob has protective eyewear
+		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
 				if(istype(C) && (C.body_parts_covered & EYES))
@@ -162,34 +163,34 @@
 			if(!vision)
 				to_chat(user, SPAN_WARNING("You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!"))
 
-			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [M]'s eyes."), \
-							 	 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
+			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [L]'s eyes."), \
+							 	 SPAN_NOTICE("You direct [src] to [L]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
-				if(M.stat == DEAD || M.blinded)	//mob is dead or fully blind
-					to_chat(user, SPAN_WARNING("\The [M]'s pupils do not react to the light!"))
+				if(L.stat == DEAD || L.blinded)	//mob is dead or fully blind
+					to_chat(user, SPAN_WARNING("\The [L]'s pupils do not react to the light!"))
 					return
-				if(MUTATION_XRAY in M.mutations)
-					to_chat(user, SPAN_NOTICE("\The [M] pupils give an eerie glow!"))
+				if(MUTATION_XRAY in L.mutations)
+					to_chat(user, SPAN_NOTICE("\The [L] pupils give an eerie glow!"))
 				if(vision.is_bruised())
-					to_chat(user, SPAN_WARNING("There's visible damage to [M]'s [vision.name]!"))
-				else if(M.eye_blurry)
-					to_chat(user, SPAN_NOTICE("\The [M]'s pupils react slower than normally."))
-				if(M.getBrainLoss() > 15)
+					to_chat(user, SPAN_WARNING("There's visible damage to [L]'s [vision.name]!"))
+				else if(L.eye_blurry)
+					to_chat(user, SPAN_NOTICE("\The [L]'s pupils react slower than normally."))
+				if(L.getBrainLoss() > 15)
 					to_chat(user, SPAN_NOTICE("There's visible lag between left and right pupils' reactions."))
 
 				var/list/pinpoint = list("oxycodone"=1,"tramadol"=5)
 				var/list/dilating = list("space_drugs"=5,"mindbreaker"=1)
-				if(M.reagents.has_any_reagent(pinpoint) || H.ingested.has_any_reagent(pinpoint))
-					to_chat(user, SPAN_NOTICE("\The [M]'s pupils are already pinpoint and cannot narrow any more."))
-				else if(M.reagents.has_any_reagent(dilating) || H.ingested.has_any_reagent(dilating))
-					to_chat(user, SPAN_NOTICE("\The [M]'s pupils narrow slightly, but are still very dilated."))
+				if(L.reagents.has_any_reagent(pinpoint) || H.ingested.has_any_reagent(pinpoint))
+					to_chat(user, SPAN_NOTICE("\The [L]'s pupils are already pinpoint and cannot narrow any more."))
+				else if(L.reagents.has_any_reagent(dilating) || H.ingested.has_any_reagent(dilating))
+					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow slightly, but are still very dilated."))
 				else
-					to_chat(user, SPAN_NOTICE("\The [M]'s pupils narrow."))
+					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow."))
 
 			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
-			M.flash_eyes()
-	else
-		return ..()
+			L.flash_eyes()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/flashlight/attack_hand(mob/user as mob)
 	if(user.get_inactive_held_item() == src)

@@ -53,7 +53,7 @@
 /area/submap/virgo2/MilitaryCamp1)
 "q" = (
 /obj/structure/table/standard,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/MilitaryCamp1)
 "r" = (

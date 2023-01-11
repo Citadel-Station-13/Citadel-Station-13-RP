@@ -6,6 +6,7 @@
 	animate_movement = 2
 	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
+	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
 
@@ -30,11 +31,6 @@
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
-
-
-	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
 
 //! Movespeed
 	/// List of movement speed modifiers applying to this mob
@@ -74,6 +70,10 @@
 //! Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
+
+	var/datum/mind/mind
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
@@ -288,9 +288,6 @@
 	 * so don't treat them as being SSD even though their client var is null.
 	 */
 	var/mob/teleop = null //? This is mainly used for adghosts to hear things from their actual body.
-
-	/// The current turf being examined in the stat panel.
-	var/turf/listed_turf = null
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM

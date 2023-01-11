@@ -18,8 +18,8 @@
 		icon_state = initial(icon_state)
 
 
-/obj/structure/girder/puzzle/Initialize(mapload, materialtype, rmaterialtype, girder_material)
-	return ..(mapload, "dungeonium")
+/obj/structure/girder/puzzle
+	material = /datum/material/alienalloy/dungeonium
 
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
@@ -54,4 +54,3 @@
 	desc = "A sturdy metal pillar that is smooth all around. You can't seem to get a grip on it."
 	icon_state = "puzzle-block"
 	opacity = 1
-

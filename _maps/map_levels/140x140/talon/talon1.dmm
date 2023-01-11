@@ -859,7 +859,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/spaceflare,
 /obj/item/storage/box/flashshells/large,
-/obj/item/gun/projectile/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/machinery/alarm/talon{
 	dir = 1;
 	pixel_y = -22

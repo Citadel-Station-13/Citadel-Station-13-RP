@@ -4,7 +4,7 @@
 	desc = "A standard steel railing.  Play stupid games, win stupid prizes."
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
 	climbable = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE
@@ -26,7 +26,7 @@
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 

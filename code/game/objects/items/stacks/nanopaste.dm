@@ -13,11 +13,12 @@
 	var/restoration_internal = 20
 
 
-/obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
-	if (!istype(M) || !istype(user))
-		return 0
-	if (istype(M,/mob/living/silicon/robot))	//Repairing cyborgs
-		var/mob/living/silicon/robot/R = M
+/obj/item/stack/nanopaste/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!isliving(target))
+		return ..()
+	var/mob/living/L = target
+	if (istype(L,/mob/living/silicon/robot))	//Repairing cyborgs
+		var/mob/living/silicon/robot/R = L
 		if (R.getBruteLoss() || R.getFireLoss())
 			if(!can_use(1))
 				to_chat(user, SPAN_WARNING("There isn't enough left."))
@@ -32,8 +33,8 @@
 		else
 			to_chat(user, "<span class='notice'>All [R]'s systems are nominal.</span>")
 
-	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
-		var/mob/living/carbon/human/H = M
+	if (istype(L,/mob/living/carbon/human))		//Repairing robolimbs
+		var/mob/living/carbon/human/H = L
 		var/obj/item/organ/external/S = H.get_organ(user.zone_sel.selecting)
 		if (S && (S.robotic >= ORGAN_ROBOT))
 			if(!S.get_damage())
@@ -47,8 +48,8 @@
 					S.heal_damage(restoration_external,restoration_external, robo_repair =1)
 				H.updatehealth()
 				use(1)
-				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != M ? "[M]'s [S.name]" : "[S]"] with [src].</span>",\
-				"<span class='notice'>You apply some nanite paste on [user == M ? "your" : "[M]'s"] [S.name].</span>")
+				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != L ? "[L]'s [S.name]" : "[S]"] with [src].</span>",\
+				"<span class='notice'>You apply some nanite paste on [user == L ? "your" : "[L]'s"] [S.name].</span>")
 
 /obj/item/stack/nanopaste/advanced
 	name = "advanced nanopaste"

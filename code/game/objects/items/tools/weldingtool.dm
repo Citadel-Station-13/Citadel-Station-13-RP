@@ -62,22 +62,22 @@
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
-/obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
-	if(ishuman(A) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = A
+/obj/item/weldingtool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(ishuman(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			return ..()
+			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			return NONE
 
 		if(!welding)
 			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
-			return 1
+			return NONE
 
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
-			return 1
-
+		return NONE
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)

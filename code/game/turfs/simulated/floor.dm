@@ -8,6 +8,10 @@
 	heat_capacity = 10000
 	permit_ao = TRUE
 
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
+
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
@@ -192,7 +196,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			T.set_material(M, the_rcd.make_rwalls ? M : null, M)
+			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
 		if(RCD_AIRLOCK)

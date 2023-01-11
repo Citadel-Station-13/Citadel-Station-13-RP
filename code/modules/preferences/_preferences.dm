@@ -251,15 +251,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	if(client)
 		if(!IsGuestKey(client.key))
-			load_path(client.ckey)
-			if(load_preferences())
-				if(load_character())
-					load_skin()
-					sanitize_everything()
-					player_setup.sanitize_setup()
-					client.update_movement_keys()
-					initialized = TRUE
-					return
+			if(load_path(client.ckey))
+				if(load_preferences())
+					if(load_character())
+						load_skin()
+						sanitize_everything()
+						player_setup.sanitize_setup()
+						client.update_movement_keys()
+						initialized = TRUE
+						return
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	client?.update_movement_keys(src)

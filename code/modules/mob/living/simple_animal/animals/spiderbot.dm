@@ -65,8 +65,8 @@
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
-	verbs |= /mob/living/proc/ventcrawl
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/simple_mob/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
@@ -150,7 +150,7 @@
 			return 0
 
 	else
-		O.attack(src, user, user.zone_sel.selecting)
+		O.melee_attack_chain(src, user, user.zone_sel.selecting)
 
 /mob/living/simple_mob/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)

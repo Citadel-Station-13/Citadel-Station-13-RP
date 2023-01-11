@@ -502,6 +502,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
 	return power
 
+// todo: this really needs to be refactored
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 
@@ -1126,3 +1127,8 @@
 	base_pixel_y = new_value
 
 	pixel_y = pixel_y + base_pixel_y - .
+
+/// forcefully center us
+/atom/proc/auto_pixel_offset_to_center()
+	set_base_pixel_y(get_centering_pixel_y_offset())
+	set_base_pixel_x(get_centering_pixel_x_offset())

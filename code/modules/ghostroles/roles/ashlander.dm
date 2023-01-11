@@ -2,8 +2,8 @@
 	name = "Ashlander"
 	assigned_role = "Ashlander"
 	desc = "You are an Ashlander! An old and storied race of subterranean xenos."
-	spawntext = "The nomadic Ashlanders are a neutral party. The Ashlander race (Scorian), is selected by default. If you accidentally swap, make sure to change it back. Ashlanders are all permadeath characters. They have gray skin of varying hues, red eyes, and - typically - white, black, or brown hair. These options are selectable through the appearance menu, directly below the race block, and above hairstyles. "
-	important_info = "Your tribe still worships the Buried Ones. The wastes are sacred ground, its monsters a blessed bounty - your people have long farmed these creatures. From Goliaths you can harvest fresh meat and hardy leather, and you may breed them using Bentar seeds. Gutshank glands may be milked for water. You would never willingly leave your homeland behind. You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
+	spawntext = "Your tribe still worships the Buried Ones. The wastes are sacred ground, its monsters a blessed bounty - your people have long farmed these creatures. From Goliaths you can harvest fresh meat and hardy leather, and you may breed them using Bentar seeds. Gutshank glands may be milked for water. You would never willingly leave your homeland behind. You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
+	important_info = "The nomadic Ashlanders are a neutral party. The Ashlander race (Scorian), is selected by default. If you accidentally swap, make sure to change it back. Ashlanders are all permadeath characters. They have gray skin of varying hues, red eyes, and - typically - white, black, or brown hair. These options are selectable through the appearance menu, directly below the race block, and above hairstyles. "
 	instantiator = /datum/ghostrole_instantiator/human/random/species/ashlander
 
 /datum/ghostrole/ashlander/Instantiate(client/C, atom/loc, list/params)
@@ -68,7 +68,7 @@
 			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
 			outfit.head = /obj/item/clothing/head/helmet/gladiator/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
-			outfit.back = /obj/item/gun/projectile/bow/ashen
+			outfit.back = /obj/item/gun/ballistic/bow/ashen
 			outfit.belt = /obj/item/storage/belt/quiver/full/ash
 			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 		if("exile")
@@ -80,7 +80,7 @@
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
 			outfit.belt = /obj/item/reagent_containers/glass/powder_horn/tribal
 			outfit.back = /obj/item/storage/backpack/satchel/bone
-			outfit.r_hand = /obj/item/gun/projectile/musket/tribal
+			outfit.r_hand = /obj/item/gun/ballistic/musket/tribal
 			outfit.l_hand = /obj/item/storage/box/munition_box
 	return outfit
 

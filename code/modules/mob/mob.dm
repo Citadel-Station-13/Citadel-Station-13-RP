@@ -139,6 +139,11 @@
 	spell_masters = null
 	zone_sel = null
 
+/mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 /mob/show_message(msg, type, alt, alt_type)
 
@@ -284,6 +289,13 @@
 			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
 				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
+	do_examinate(A)
+
+/**
+ * examines something & sends results
+ * no pre-checks for dist/view/whatnot
+ */
+/mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
@@ -725,87 +737,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
-/**
- * Output an update to the stat panel for the client
- *
- * calculates client ping, round id, server time, time dilation and other data about the round
- * and puts it in the mob status panel on a regular loop
- */
-/mob/Stat()
-	..()
-
-	//This is only called from client/Stat(), let's assume client exists.
-
-	if(statpanel("Status"))
-		//var/list/L = list()
-		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		//L += SSmapping.stat_map_name
-		stat("Round ID", "[GLOB.round_id || "ERROR"]")
-		// VIRGO START
-		stat("Station Time", stationtime2text())
-		stat("Station Date", stationdate2text())
-		stat("Round Duration", roundduration2text())
-		// VIRGO END
-		stat("Time dilation", SStime_track.stat_time_text)
-		//L += SSshuttle.emergency_shuttle_stat_text
-		//stat(null, "[L.Join("\n\n")]")
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
-
-	if(client.holder)
-		if(statpanel("MC"))
-			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu]")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
-			stat("Real time of day:", REALTIMEOFDAY)
-			GLOB.stat_entry()
-			config.stat_entry()
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-			//GLOB.GLOB.cameranet.stat_entry()
-		if(statpanel("Tickets"))
-			GLOB.ahelp_tickets.stat_entry()
-		if(length(GLOB.sdql2_queries))
-			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-				for(var/i in GLOB.sdql2_queries)
-					var/datum/SDQL2_query/Q = i
-					Q.generate_stat()
-
-
 /// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
 	return 0
@@ -813,8 +744,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
-
-
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)
@@ -902,7 +831,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -996,18 +925,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/verb/northfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(NORTH))
 
 /mob/verb/southfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(SOUTH))
 
 /mob/verb/eastfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(EAST))
 
 /mob/verb/westfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(WEST))
 
 /mob/proc/adjustEarDamage()
@@ -1126,6 +1059,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set name = "diceroll"
 	set category = "OOC"
 	set desc = "Roll a random number between 1 and a chosen number."
+	set src = usr
 
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)

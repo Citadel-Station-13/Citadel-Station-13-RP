@@ -76,27 +76,27 @@ var/datum/antagonist/raider/raiders
 		/obj/item/gun/launcher/crossbow,
 		/obj/item/gun/launcher/grenade,
 		/obj/item/gun/launcher/pneumatic,
-		/obj/item/gun/projectile/automatic/mini_uzi,
-		/obj/item/gun/projectile/automatic/c20r,
-		/obj/item/gun/projectile/automatic/wt550,
-		/obj/item/gun/projectile/automatic/sts35,
-		/obj/item/gun/projectile/automatic/bullpup,
-		/obj/item/gun/projectile/automatic/tommygun,
-		/obj/item/gun/projectile/silenced,
-		/obj/item/gun/projectile/shotgun/pump,
-		/obj/item/gun/projectile/shotgun/pump/combat,
-		/obj/item/gun/projectile/shotgun/pump/rifle,
-		/obj/item/gun/projectile/shotgun/doublebarrel,
-		/obj/item/gun/projectile/shotgun/doublebarrel/pellet,
-		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
-		/obj/item/gun/projectile/colt/detective,
-		/obj/item/gun/projectile/pistol,
-		/obj/item/gun/projectile/p92x,
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/pirate,
-		/obj/item/gun/projectile/revolver/judge,
-		list(/obj/item/gun/projectile/luger,/obj/item/gun/projectile/luger/brown),
-		list(/obj/item/gun/projectile/deagle, /obj/item/gun/projectile/deagle/gold, /obj/item/gun/projectile/deagle/camo)
+		/obj/item/gun/ballistic/automatic/mini_uzi,
+		/obj/item/gun/ballistic/automatic/c20r,
+		/obj/item/gun/ballistic/automatic/wt550,
+		/obj/item/gun/ballistic/automatic/sts35,
+		/obj/item/gun/ballistic/automatic/bullpup,
+		/obj/item/gun/ballistic/automatic/tommygun,
+		/obj/item/gun/ballistic/silenced,
+		/obj/item/gun/ballistic/shotgun/pump,
+		/obj/item/gun/ballistic/shotgun/pump/combat,
+		/obj/item/gun/ballistic/shotgun/pump/rifle,
+		/obj/item/gun/ballistic/shotgun/doublebarrel,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
+		/obj/item/gun/ballistic/colt/detective,
+		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/ballistic/pirate,
+		/obj/item/gun/ballistic/revolver/judge,
+		list(/obj/item/gun/ballistic/luger,/obj/item/gun/ballistic/luger/brown),
+		list(/obj/item/gun/ballistic/deagle, /obj/item/gun/ballistic/deagle/gold, /obj/item/gun/ballistic/deagle/camo)
 		)
 
 	var/list/raider_holster = list(
@@ -247,7 +247,7 @@ var/datum/antagonist/raider/raiders
 
 	//Give some of the raiders a pirate gun as a secondary
 	if(prob(60))
-		var/obj/item/secondary = new /obj/item/gun/projectile/pirate(T)
+		var/obj/item/secondary = new /obj/item/gun/ballistic/pirate(T)
 		if(!(primary.slot_flags & SLOT_HOLSTER))
 			holster = new new_holster(T)
 			holster.holstered = secondary
@@ -277,8 +277,8 @@ var/datum/antagonist/raider/raiders
 			player.put_in_hands(holster)
 
 /datum/antagonist/raider/proc/equip_ammo(var/mob/living/carbon/human/player, var/obj/item/gun/gun)
-	if(istype(gun, /obj/item/gun/projectile))
-		var/obj/item/gun/projectile/bullet_thrower = gun
+	if(istype(gun, /obj/item/gun/ballistic))
+		var/obj/item/gun/ballistic/bullet_thrower = gun
 		if(bullet_thrower.magazine_type)
 			player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_LEFT_POCKET)
 			if(prob(20)) //don't want to give them too much

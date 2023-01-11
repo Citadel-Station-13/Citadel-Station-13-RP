@@ -9,7 +9,7 @@
 #define SHADOWER_DARKENING_FACTOR 0.6
 /// The above, but as an RGB string for lighting-less turfs.
 #define SHADOWER_DARKENING_COLOR "#999999"
-#define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[1] : T.baseturfs)
+#define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[length(T.baseturfs)] : T.baseturfs)
 
 SUBSYSTEM_DEF(zmimic)
 	name = "Z-Mimic"
@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(zmimic)
 		"T: { T: [openspace_turfs] O: [openspace_overlays] } Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
-	..(entries.Join("\n\t"))
+	return ..() + entries.Join("<br>&emsp;")
 
 // 1, 2, 3..=7, 8
 /datum/controller/subsystem/zmimic/proc/build_zstack_display()
@@ -738,9 +738,13 @@ var/list/zmimic_fixed_planes = list(
 /datum/controller/subsystem/zmimic/proc/debug_fmt_thing(atom/A, list/out, turf/original)
 	if (istype(A, /atom/movable/openspace/mimic))
 		var/atom/movable/openspace/mimic/OO = A
+		var/base = "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)], fixup [OO.have_performed_fixup ? "Y" : "N"]"
+		if (QDELETED(OO.associated_atom))	// This shouldn't happen, but can if the deletion hook is not working.
+			return "[base] - [OO.type] copying <unknown> ([OO.mimiced_type]) - <font color='red'>ORPHANED</font></em></li>"
+
 		var/atom/movable/AA = OO.associated_atom
 		var/copied_type = AA.type == OO.mimiced_type ? "[AA.type] \[direct\]" : "[AA.type], eventually [OO.mimiced_type]"
-		return "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)], fixup [OO.have_performed_fixup ? "Y" : "N"], associated Z-level [AA.z] - [OO.type] copying [AA] ([copied_type])</li>"
+		return "[base], associated Z-level [AA.z] - [OO.type] copying [AA] ([copied_type])</li>"
 
 	else if (istype(A, /atom/movable/openspace/turf_mimic))
 		var/atom/movable/openspace/turf_mimic/DC = A

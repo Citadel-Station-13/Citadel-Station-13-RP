@@ -1048,8 +1048,10 @@
 	if(status_flags & GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
+	var/was_ssd = FALSE
 	if(species.get_ssd(src) && !client && !teleop && !override_ssd && !temporary_form)
 		Sleeping(2)
+		was_ssd = TRUE
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
 		silent = 0
@@ -1072,10 +1074,6 @@
 					fake_attack(src)
 				if(!handling_hal)
 					spawn handle_hallucinations() //The not boring kind!
-				if(client && prob(5))
-					client.dir = pick(2,4,8)
-					spawn(rand(20,50))
-						client.dir = 1
 
 			hallucination = max(0, hallucination - 2)
 		else
@@ -1106,7 +1104,7 @@
 				handle_dreams()
 				if (mind)
 					//Are they SSD? If so we'll keep them asleep but work off some of that sleep var in case of stoxin or similar.
-					if(client || sleeping > 3)
+					if(!was_ssd || sleeping > 3)
 						AdjustSleeping(-1)
 				if( prob(2) && health && !hal_crit )
 					spawn(0)

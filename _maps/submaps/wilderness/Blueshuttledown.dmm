@@ -158,8 +158,8 @@
 /area/submap/Blackshuttledown)
 "ax" = (
 /obj/structure/table/steel,
-/obj/item/gun/projectile/automatic/wt550,
-/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/gun/ballistic/automatic/p90,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ay" = (
@@ -692,7 +692,7 @@
 /area/submap/Blackshuttledown)
 "cc" = (
 /obj/structure/table/steel,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
