@@ -493,8 +493,8 @@
 /area/shuttle/specops/centcom)
 "aZ" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
@@ -510,13 +510,13 @@
 /area/shuttle/specops/centcom)
 "ba" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/advanced_smg,
+/obj/item/gun/ballistic/automatic/advanced_smg,
 /obj/item/ammo_magazine/m9mmAdvanced,
 /obj/item/ammo_magazine/m9mmAdvanced,
 /obj/item/ammo_magazine/m9mmAdvanced,
 /obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/gun/projectile/revolver/detective45,
-/obj/item/gun/projectile/revolver/detective45,
+/obj/item/gun/ballistic/revolver/detective45,
+/obj/item/gun/ballistic/revolver/detective45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
@@ -620,8 +620,8 @@
 /area/shuttle/specops/centcom)
 "bn" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
@@ -713,10 +713,10 @@
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bx" = (
@@ -729,8 +729,8 @@
 "by" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
@@ -1925,7 +1925,7 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_y = -35
 	},
-/obj/item/gun/projectile/deagle,
+/obj/item/gun/ballistic/deagle,
 /obj/item/ammo_magazine/m44,
 /obj/item/ammo_magazine/m44,
 /turf/simulated/shuttle/floor/black,

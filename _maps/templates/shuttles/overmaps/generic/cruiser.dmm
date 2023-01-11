@@ -4868,7 +4868,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
 "kL" = (
-/obj/item/gun/projectile/shotgun/pump/combat{
+/obj/item/gun/ballistic/shotgun/pump/combat{
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	desc = "Built for close quarters combat, the Hesphaistos Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. This one has 'Property of the Warden' inscribed on the stock.";
 	name = "warden's shotgun"
@@ -5322,10 +5322,10 @@
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -5350,9 +5350,9 @@
 /obj/item/ammo_magazine/m9mm/compact/practice,
 /obj/item/ammo_magazine/m9mm/compact/practice,
 /obj/item/ammo_magazine/m9mm/compact/practice,
-/obj/item/gun/projectile/pistol,
-/obj/item/gun/projectile/pistol,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
+/obj/item/gun/ballistic/pistol,
+/obj/item/gun/ballistic/pistol,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -5591,8 +5591,8 @@
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -5733,10 +5733,10 @@
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -5842,8 +5842,8 @@
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/gun/projectile/automatic/p90,
-/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
 /obj/item/ammo_magazine/m9mmt/flash,
 /obj/item/ammo_magazine/m9mmt/flash,
 /obj/item/ammo_magazine/m9mmt/flash,
@@ -5877,8 +5877,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/gun/projectile/automatic/l6_saw,
-/obj/item/gun/projectile/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -6272,9 +6272,9 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/ballistic/heavysniper,
 /obj/item/storage/box/sniperammo,
 /obj/item/storage/box/sniperammo,
 /obj/item/ammo_magazine/m762,

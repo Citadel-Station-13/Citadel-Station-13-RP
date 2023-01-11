@@ -890,7 +890,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uI" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uP" = (

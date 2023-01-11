@@ -712,13 +712,13 @@
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6)
+					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1)
+					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -946,7 +946,7 @@
 	req_access = list(access_security)
 	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4, /obj/item/flash = 5, /obj/item/reagent_containers/spray/pepper = 6,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/storage/box/evidence = 6,
-					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
+					/obj/item/gun/ballistic/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
 					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/hailer = 6, /obj/item/barrier_tape_roll/police = 6, /obj/item/flashlight/glowstick = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
@@ -1299,9 +1299,9 @@
 	product_slogans = "The best defense is good offense!;Buy for your whole family today!;Nobody can outsmart bullet!;God created man - Frozen Star made them EQUAL!;Nobody can outsmart bullet!;Stupidity can be cured! By LEAD.;Dead kids can't bully your children!"
 	product_ads = "Stunning!;Take justice in your own hands!;LEADearship!"
 	icon_state = "weapon"
-	products = list(/obj/item/flash = 6,/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/projectile/olivaw = 5, /obj/item/gun/projectile/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
+	products = list(/obj/item/flash = 6,/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
-	prices = list(/obj/item/flash = 600,/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/projectile/olivaw = 1600, /obj/item/gun/projectile/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
+	prices = list(/obj/item/flash = 600,/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
 /obj/machinery/vending/blood

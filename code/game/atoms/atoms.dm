@@ -1121,3 +1121,8 @@
 	base_pixel_y = new_value
 
 	pixel_y = pixel_y + base_pixel_y - .
+
+/// forcefully center us
+/atom/proc/auto_pixel_offset_to_center()
+	set_base_pixel_y(get_centering_pixel_y_offset())
+	set_base_pixel_x(get_centering_pixel_x_offset())

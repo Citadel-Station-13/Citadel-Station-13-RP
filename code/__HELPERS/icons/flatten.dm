@@ -41,9 +41,9 @@
 /proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
-	return get_flat_icon_new_actual(appearancelike, dir, no_anim, null, TRUE)
+	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
 
-/proc/get_flat_icon_new_actual(image/A, defdir, no_anim, deficon, start)
+/proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -205,7 +205,7 @@
 		else
 			// use full get_flat_icon
 			blend_mode = copying.blend_mode
-			adding = get_flat_icon_new_actual(copying, defdir, no_anim, icon)
+			adding = _get_flat_icon(copying, defdir, no_anim, icon)
 
 		// if we got nothing, skip
 		if(!adding)

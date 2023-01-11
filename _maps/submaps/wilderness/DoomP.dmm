@@ -365,7 +365,7 @@
 /area/submap/DoomP)
 "bs" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/contender,
+/obj/item/gun/ballistic/contender,
 /obj/item/ammo_magazine/s357,
 /obj/item/ammo_magazine/s357,
 /turf/simulated/floor/tiled/techfloor,

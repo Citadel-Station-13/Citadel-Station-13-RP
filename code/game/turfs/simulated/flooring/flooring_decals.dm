@@ -7,7 +7,14 @@ var/list/floor_decals = list()
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals_vr.dmi'
 	plane = TURF_PLANE
+	#ifndef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = TURF_DETAIL_LAYER
+	#else
+	layer = PLATING_LAYER
+	#endif
+	#ifdef IN_MAP_EDITOR
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)

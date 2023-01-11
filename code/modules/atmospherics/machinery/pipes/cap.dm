@@ -114,7 +114,6 @@
 /obj/machinery/atmospherics/pipe/cap/hidden
 	level = 1
 	icon_state = "cap"
-	alpha = 128
 
 /obj/machinery/atmospherics/pipe/cap/hidden/scrubbers
 	name = "scrubbers pipe endcap"

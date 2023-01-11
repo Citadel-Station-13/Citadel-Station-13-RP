@@ -138,7 +138,7 @@
 /area/submap/virgo2/Rockybase)
 "aC" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aD" = (
@@ -158,8 +158,8 @@
 /area/submap/virgo2/Rockybase)
 "aG" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aH" = (
@@ -263,7 +263,7 @@
 "aW" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aX" = (
@@ -293,8 +293,8 @@
 /area/submap/virgo2/Rockybase)
 "bc" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/automatic/c20r,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bd" = (

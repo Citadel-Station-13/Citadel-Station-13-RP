@@ -104,8 +104,7 @@
 	if(!target)
 		return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
-	text = sanitize(text)
+	text = sanitize(input("What would you like to say?", "Speak to creature", null, null) as message|null)
 
 	if(!text)
 		return
@@ -223,8 +222,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(src, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(src, /mob/living/carbon/human/proc/regenerate)
 
 		for(var/obj/item/organ/external/E in organs) // Just fall apart.
 			E.droplimb(TRUE)

@@ -689,3 +689,10 @@
 	model_text = "Talon captain"
 	req_access = list(access_talon)
 	departments = list("Talon Officer","No Change")
+
+//Pirate
+/obj/machinery/suit_cycler/pirate
+	name = "Black Market suit cycler"
+	model_text = "Pirate"
+	req_access = list(access_pirate)
+	departments = list("No Change")

@@ -8,7 +8,13 @@
 	name = "large power cable"
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
 	plane = TURF_PLANE
+
+	#ifndef IN_MAP_EDITOR
 	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
+	#else
+	layer = ABOVE_TURF_LAYER
+	#endif
+
 	color = null
 
 /obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)

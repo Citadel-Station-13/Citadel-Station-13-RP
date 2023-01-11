@@ -18,4 +18,12 @@
 
 /datum/controller/proc/Recover()
 
+/datum/controller/proc/stat_key()
+	return "[name]:"
+
 /datum/controller/proc/stat_entry()
+	return "\[DEBUG\]"
+
+/datum/controller/statpanel_click(client/C, action)
+	C.debug_variables(src)
+	message_admins("Admin [key_name_admin(C)] is debugging the [name] controller.")

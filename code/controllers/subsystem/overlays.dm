@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(overlays)
 	var/overlays_initialized = FALSE
 
 /datum/controller/subsystem/overlays/stat_entry()
-	..("Ov:[processing.len - (idex - 1)]")
+	return ..() + " Ov:[processing.len - (idex - 1)]"
 
 /datum/controller/subsystem/overlays/Initialize()
 	overlays_initialized = TRUE

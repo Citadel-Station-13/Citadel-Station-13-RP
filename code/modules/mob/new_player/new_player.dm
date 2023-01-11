@@ -150,28 +150,28 @@
 
 
 
-/mob/new_player/Stat()
-	..()
-
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		if(statpanel("Status"))
+/mob/new_player/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		if(SSticker.current_state == GAME_STATE_PREGAME)
 			if(SSticker.hide_mode)
-				stat("Game Mode:", "Secret")
+				STATPANEL_DATA_ENTRY("Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
+					STATPANEL_DATA_ENTRY("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
-				stat(null, "Time To Start: [round(time_remaining/10)]s")
+				STATPANEL_DATA_LINE("Time To Start: [round(time_remaining/10)]s")
 			else if(time_remaining == -10)
-				stat(null, "Time To Start: DELAYED")
+				STATPANEL_DATA_LINE("Time To Start: DELAYED")
 			else
-				stat(null, "Time To Start: SOON")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				STATPANEL_DATA_LINE("Time To Start: SOON")
+			STATPANEL_DATA_ENTRY("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
+				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
@@ -275,7 +275,7 @@
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
 			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+				remove_verb(observer, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
 			observer.key = key
 			observer.client?.holder?.update_stealth_ghost()
 			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults

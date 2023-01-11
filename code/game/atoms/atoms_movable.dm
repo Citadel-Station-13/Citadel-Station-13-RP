@@ -170,6 +170,9 @@
 	if(pulling)
 		stop_pulling()
 
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
 	. = ..()
 
 	moveToNullspace()

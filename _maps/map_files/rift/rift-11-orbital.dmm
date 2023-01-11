@@ -6418,8 +6418,8 @@
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6441,8 +6441,8 @@
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6578,8 +6578,8 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/projectile/automatic/l6_saw,
-/obj/item/gun/projectile/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -6845,8 +6845,8 @@
 "tM" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6879,7 +6879,7 @@
 "tP" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/projectile/automatic/advanced_smg,
+/obj/item/gun/ballistic/automatic/advanced_smg,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
@@ -6902,16 +6902,16 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/projectile/revolver/detective45,
-/obj/item/gun/projectile/revolver/detective45,
+/obj/item/gun/ballistic/revolver/detective45,
+/obj/item/gun/ballistic/revolver/detective45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
@@ -7511,7 +7511,7 @@
 /obj/item/ammo_casing/nsfw_batt/net,
 /obj/item/ammo_casing/nsfw_batt/net,
 /obj/item/ammo_magazine/nsfw_mag,
-/obj/item/gun/projectile/nsfw,
+/obj/item/gun/ballistic/nsfw,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -7572,7 +7572,7 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/ammo_magazine/m44,
 /obj/item/ammo_magazine/m44,
-/obj/item/gun/projectile/deagle,
+/obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
