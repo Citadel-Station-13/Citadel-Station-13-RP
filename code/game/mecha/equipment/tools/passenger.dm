@@ -28,8 +28,12 @@
 
 	if(do_after(user, 40, needhand=0))
 		if(!src.occupant)
-			user.forceMove(src)
-			user.update_perspective()
+			//? WARNING WARNING SHITCODE ALERT
+			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY
+			//? THUS, SLEEP A SINGLE TICK.
+			spawn(world.tick_lag)
+				user.forceMove(src)
+				user.update_perspective()
 			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant = user
 			log_message("[user] boarded.")
@@ -43,6 +47,7 @@
 /mob/proc/verb_eject_mech_passenger()
 	set name = "Eject Passenger"
 	set category = "Exosuit Interface"
+	set src = usr
 
 	var/obj/item/mecha_parts/mecha_equipment/tool/passenger/pod = loc
 	if(!istype(pod))
