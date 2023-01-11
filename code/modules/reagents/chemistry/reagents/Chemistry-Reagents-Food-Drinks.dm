@@ -4156,6 +4156,40 @@ End Citadel Change */
 	glass_name = "Piña Colada"
 	glass_desc = "For those not into yoga."
 
+//Never Fade Away
+/datum/reagent/ethanol/silverhand
+	name = "Johnny Silverhand"
+	id = "silverhand"
+	description = "Old fashioned, beer, and chili. A drink for an angry, angry soul."
+	taste_description = "an old-world classic with a firey finish"
+	color = "#8d5b28" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "Johnny Silverhand"
+	glass_desc = "...at the end of it all, it's the code you live by that defines who you are."
+
+/datum/reagent/ethanol/welles
+	name = "Jackie Welles"
+	id = "welles"
+	description = "An updated take on a Moscow Mule, for those trying to make a fresh mark on the world."
+	taste_description = "vodka and lime with a burst of fizzy ginger"
+	color = "#db7878" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "Jackie Welles"
+	glass_desc = "But that's done after tomorrow. Afterlife, here we come, baby!"
+
+/datum/reagent/ethanol/martinez
+	name = "David Martinez"
+	id = "martinez"
+	description = "Vodka and cola with a splash of sakura. A drink for those who shoot for the moon."
+	taste_description = "vodka, cola, and sakura flower"
+	color = "#206cc4" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "David Martinez"
+	glass_desc = "You still have a dream to stick around for. Need you to see it through. That's my dream."
+
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()

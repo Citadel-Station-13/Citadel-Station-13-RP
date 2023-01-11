@@ -1804,6 +1804,28 @@
 	required_reagents = list("blood" = 1, "mead" = 1)
 	result_amount = 2
 
+//Never Fade Away
+/datum/chemical_reaction/drinks/silverhand
+	name = "Johnny Silverhand"
+	id = "silverhand"
+	result = "silverhand"
+	required_reagents = list("oldfashioned" = 1, "beer" = 1, "capsaicin" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/welles
+	name = "Jackie Welles"
+	id = "welles"
+	result = "welles"
+	required_reagents = list("vodkatonic" = 1, "limejuice" = 1, "gingerale" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/martinez
+	name = "David Martinez"
+	id = "martinez"
+	result = "martinez"
+	required_reagents = list("vodka" = 1, "cola" = 1, "ice" = 1)
+	result_amount = 3
+
 // Unathi drinks
 
 /datum/chemical_reaction/skrianhi
