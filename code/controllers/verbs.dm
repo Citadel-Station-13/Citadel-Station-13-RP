@@ -18,7 +18,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	if(name == text)
 		return src	// let's ont change for no reason shall we
 	name = text
-	return src
+	return name
+
+/obj/effect/statclick/statpanel_click(client/C, action)
+	Click()
 
 /obj/effect/statclick/debug
 	var/class

@@ -132,10 +132,10 @@
 			has_roll = autodetect_rolldown(detected_bodytype)
 
 	if(!has_roll)
-		verbs -= /obj/item/clothing/under/verb/rollsuit
+		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		worn_rolled_down = UNIFORM_ROLL_NULLED
 	else
-		verbs |= /obj/item/clothing/under/verb/rollsuit
+		add_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		if(worn_rolled_down == UNIFORM_ROLL_NULLED)
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 	if(!updating)
@@ -156,10 +156,10 @@
 			has_sleeves = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
-		verbs -= /obj/item/clothing/under/verb/rollsleeves
+		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		worn_rolled_sleeves = UNIFORM_ROLL_NULLED
 	else
-		verbs |= /obj/item/clothing/under/verb/rollsleeves
+		add_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		if(worn_rolled_sleeves == UNIFORM_ROLL_NULLED)
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 	if(!updating)

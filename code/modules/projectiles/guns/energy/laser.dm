@@ -186,6 +186,7 @@
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1
+	set src in usr
 
 	toggle_scope(2.0)
 
@@ -221,6 +222,7 @@
 	set category = "Object"
 	set name = "Aim Down Sights"
 	set popup_menu = 1
+	set src in usr
 
 	toggle_scope(scope_multiplier)
 

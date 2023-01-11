@@ -122,7 +122,7 @@
 
 	dislocated = 1
 	if(istype(owner))
-		owner.verbs |= /mob/living/carbon/human/proc/relocate
+		add_verb(owner, /mob/living/carbon/human/proc/relocate)
 
 /obj/item/organ/external/proc/relocate()
 	if(dislocated == -1)
@@ -136,7 +136,7 @@
 		for(var/obj/item/organ/external/limb in owner.organs)
 			if(limb.dislocated == 1)
 				return
-		owner.verbs -= /mob/living/carbon/human/proc/relocate
+		remove_verb(owner, /mob/living/carbon/human/proc/relocate)
 
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
@@ -1147,7 +1147,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
-	owner.verbs += /mob/proc/yank_out_object
+	add_verb(owner, /mob/proc/yank_out_object)
 	W.add_blood(owner)
 	W.forceMove(owner)
 

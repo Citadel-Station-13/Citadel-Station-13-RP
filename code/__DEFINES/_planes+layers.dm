@@ -147,6 +147,8 @@
 #define HIDING_LAYER                (TURF_LAYER+0.14) /// Layer at which mobs hide to be under things like tables.
 #define UNDERWATER_LAYER            (TURF_LAYER+0.15) /// Anything on this layer will render under the water layer.
 
+#define BELOW_OBJ_LAYER             (TURF_LAYER+0.90)
+
 //! Turf/Obj layer boundary
 
 #define WATER_LAYER                 (OBJ_LAYER)      /// Layer for water overlays.

@@ -451,6 +451,8 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+	/// do we have a species statpanel?
+	var/species_statpanel = FALSE
 
 	//!Weaver abilities
 	var/is_weaver = FALSE
@@ -708,16 +710,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
-	return
+	if(!inherent_verbs)
+		return
+	remove_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
-	return
+	add_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
 	if(inherent_spells)
@@ -818,8 +816,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return FALSE
 
 // Allow species to display interesting information in the human stat panels
-/datum/species/proc/Stat(var/mob/living/carbon/human/H)
-	return
+/datum/species/proc/statpanel_status(client/C, mob/living/carbon/human/H)
+	return list()
 
 /datum/species/proc/update_attack_types()
 	unarmed_attacks = list()

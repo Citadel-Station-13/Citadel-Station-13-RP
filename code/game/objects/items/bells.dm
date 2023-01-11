@@ -45,7 +45,7 @@
 	// Once the player has decided their option, choose the behaviour that will happen under said option.
 	switch(choice)
 		if("examine")
-			examine(user)
+			user.do_examinate(src)
 
 		if("use")
 			if(check_ability(user))
