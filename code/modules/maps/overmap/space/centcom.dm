@@ -43,5 +43,16 @@
 	name = "NTS Demeter Hangar"
 	landmark_tag = "specops_hangar"
 	docking_controller = "specops_hangar_dock"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/centcom/specops/dock
+
+//ERT Cryo
+/obj/machinery/cryopod/robot/door/travel/specops
+	name = "Transfer Elevator"
+	announce_channel = "Response Team"
+	on_store_message = "has departed to the Civilian district."
+	on_store_name = "Central Command ST-ERT"
+	on_enter_visible_message = "steps into the"
+	on_enter_occupant_message = "The elevator door closes slowly, ready to bring you down to the ST-ERT personnel deck."
+	on_store_visible_message_1 = "makes a ding as it moves"
+	on_store_visible_message_2 = "to the ST-ERT personnel deck."
