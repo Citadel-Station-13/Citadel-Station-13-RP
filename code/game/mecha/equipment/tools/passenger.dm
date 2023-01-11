@@ -55,8 +55,8 @@
 		return
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
-	pod.occupant_message("[occupant] disembarked.")
-	pod.log_message("[occupant] disembarked.")
+	pod.occupant_message("[pod.occupant] disembarked.")
+	pod.log_message("[pod.occupant] disembarked.")
 	pod.add_fingerprint(src)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/go_out()
