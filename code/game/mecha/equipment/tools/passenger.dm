@@ -30,7 +30,7 @@
 		if(!src.occupant)
 			user.forceMove(src)
 			user.update_perspective()
-			remove_verb(user, /mob/proc/__eject_mech_passenger)
+			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
@@ -40,18 +40,17 @@
 		to_chat(user, "You stop entering the exosuit.")
 
 // todo: action
-/mob/proc/__eject_mech_passenger()
-	set name = "Eject"
+/mob/proc/verb_eject_mech_passenger()
+	set name = "Eject Passenger"
 	set category = "Exosuit Interface"
-	set popup_menu = 0
 
 	var/obj/item/mecha_parts/mecha_equipment/tool/passenger/pod = loc
 	if(!istype(pod))
-		remove_verb(src, /mob/proc/__eject_mech_passenger)
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	if(src != pod.occupant)
 		forceMove(get_turf(pod))
-		remove_verb(src, /mob/proc/__eject_mech_passenger)
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
@@ -62,7 +61,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/go_out()
 	if(!occupant)
 		return
-	remove_verb(occupant, /mob/proc/__eject_mech_passenger)
+	remove_verb(occupant, /mob/proc/verb_eject_mech_passenger)
 	occupant.forceMove(get_turf(src))
 	occupant.update_perspective()
 	occupant = null
