@@ -27,6 +27,16 @@
 	. = ..()
 	reagents.add_reagent("cola", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/cola/cherry
+	name = "\improper Space Cola Cherry"
+	desc = "Cherry cola. In space!"
+	icon_state = "cherrycola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola/cherry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cherrycola", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
 	desc = "Introduced to the vending machines by Skrellian request, this water comes straight from the Martian poles."
@@ -88,6 +98,17 @@
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dr_gibb", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb/cherry
+	name = "\improper Dr. Gibb Cherry"
+	desc = "A delicious blend of 42 different flavors, but mostly cherry."
+	icon_state = "dr_gibbcherry"
+	center_of_mass = list("x"=16, "y"=10)
+
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb/cherry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dr_gibbcherry", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/crystalgibb
 	name = "Crystal Dr. Gibb"
@@ -243,6 +264,16 @@
 /obj/item/reagent_containers/food/drinks/cans/nicola/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nicola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola/sakura
+	name = "\improper NiCola Sakura"
+	desc = "A can of crisp NiCola, subtly flavored with cherry."
+	icon_state = "nicolasakura"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola/sakura/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicolacherry", 30)
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune
