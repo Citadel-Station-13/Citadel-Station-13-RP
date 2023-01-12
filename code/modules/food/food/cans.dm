@@ -27,13 +27,13 @@
 	. = ..()
 	reagents.add_reagent("cola", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/cola/cherry
+/obj/item/reagent_containers/food/drinks/cans/cola_cherry
 	name = "\improper Space Cola Cherry"
 	desc = "Cherry cola. In space!"
 	icon_state = "cherrycola"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/cola/cherry/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/cola_cherry/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cherrycola", 30)
 
@@ -99,14 +99,14 @@
 	. = ..()
 	reagents.add_reagent("dr_gibb", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/dr_gibb/cherry
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry
 	name = "\improper Dr. Gibb Cherry"
 	desc = "A delicious blend of 42 different flavors, but mostly cherry."
 	icon_state = "dr_gibbcherry"
 	center_of_mass = list("x"=16, "y"=10)
 
 
-/obj/item/reagent_containers/food/drinks/cans/dr_gibb/cherry/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dr_gibbcherry", 30)
 
@@ -265,13 +265,13 @@
 	. = ..()
 	reagents.add_reagent("nicola", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola/sakura
+/obj/item/reagent_containers/food/drinks/cans/nicola_sakura
 	name = "\improper NiCola Sakura"
 	desc = "A can of crisp NiCola, subtly flavored with cherry."
 	icon_state = "nicolasakura"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola/sakura/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/nicola_sakura/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nicolacherry", 30)
 
