@@ -61,7 +61,7 @@
 /area/space)
 "gM" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "hh" = (
 /obj/structure/railing,
@@ -245,7 +245,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "zp" = (
 /turf/simulated/floor/tiled/monotile,
@@ -254,7 +254,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "Ao" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -361,7 +361,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "Ke" = (
 /obj/machinery/oxygen_pump/mobile,
@@ -419,7 +419,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "PW" = (
 /turf/simulated/floor/tiled/dark,
@@ -493,7 +493,7 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "VJ" = (
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "VR" = (
 /obj/spawner/window/reinforced/full/firelocks,
