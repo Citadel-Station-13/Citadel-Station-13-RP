@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(transcore)
 	msg += "IM:[implants.len]|"
 	msg += "BK:[backed_up.len]"
 	msg += "} "
-	..(jointext(msg, null))
+	return ..() + " [jointext(msg, null)]"
 
 /datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
 	ASSERT(mind)

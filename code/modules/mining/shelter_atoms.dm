@@ -167,8 +167,8 @@
 
 /obj/structure/table/survival_pod/Initialize(mapload)
 	material = get_material_by_name(MAT_STEEL)
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
 /obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)

@@ -346,11 +346,11 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs -= V
+			remove_verb(user, V)
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in stored_swap.mind.special_verbs)
-			stored_swap.verbs -= V
+			remove_verb(stored_swap, V)
 
 	var/mob/observer/dead/ghost = stored_swap.ghostize(0)
 	ghost.spell_list = stored_swap.spell_list
@@ -360,7 +360,7 @@
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
 	ghost.mind.transfer_to(user)
 	user.key = ghost.key
@@ -368,7 +368,7 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
 	to_chat(stored_swap, "<span class='warning'>You're suddenly somewhere else... and someone else?!</span>")
 	to_chat(user, "<span class='warning'>Suddenly you're staring at [src] again... where are you, who are you?!</span>")

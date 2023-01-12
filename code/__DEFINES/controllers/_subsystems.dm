@@ -66,15 +66,15 @@ DEFINE_BITFIELD(runlevels, list(
 	BITFIELD(RUNLEVEL_POSTGAME),
 ))
 
-
 /**
  *! Subsystem init_order, from highest priority to lowest priority.
  *? Subsystems shutdown in the reverse of the order they initialize in.
  *? The numbers just define the ordering, they are meaningless otherwise.
  */
 
-#define INIT_ORDER_PROTOTYPES      103
-#define INIT_ORDER_FAIL2TOPIC      102
+#define INIT_ORDER_FAIL2TOPIC      104
+#define INIT_ORDER_STATPANELS      103
+#define INIT_ORDER_PROTOTYPES      102
 #define INIT_ORDER_DBCORE          101
 #define INIT_ORDER_INPUT           100
 #define INIT_ORDER_JOBS            99
@@ -153,6 +153,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PROJECTILES  150
 #define FIRE_PRIORITY_THROWING     150
 #define FIRE_PRIORITY_CHAT         400
+#define FIRE_PRIORITY_STATPANELS   400
 #define FIRE_PRIORITY_OVERLAYS     500
 #define FIRE_PRIORITY_SMOOTHING    500
 #define FIRE_PRIORITY_TIMER        700

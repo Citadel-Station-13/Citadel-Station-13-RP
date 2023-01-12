@@ -254,7 +254,7 @@
 /obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	if(base_icon == "pill_canister")
-		verbs += /obj/item/storage/pill_bottle/proc/choose_color
+		add_obj_verb(src, /obj/item/storage/pill_bottle/proc/choose_color)
 	update_icon()
 
 /obj/item/storage/pill_bottle/antitox

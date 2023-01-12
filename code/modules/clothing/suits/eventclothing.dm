@@ -106,5 +106,5 @@
 	if(A) //If a selection is made, call the other proc
 		hide_accessory(usr,A)
 	if(!LAZYLEN(accessories)) //But if there are no accessories, list will be empty, meaning we ought to remove access to verb
-		src.verbs -= /obj/item/clothing/under/event_reward/foxmiko/verb/hidetie //Removes access to verb
+		remove_verb(src, /obj/item/clothing/under/event_reward/foxmiko/verb/hidetie) //Removes access to verb
 		accessories = null

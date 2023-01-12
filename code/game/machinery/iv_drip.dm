@@ -258,7 +258,7 @@
 /obj/machinery/iv_drip/verb/eject_beaker()
 	set category = "Object"
 	set name = "Remove IV Container"
-	set src in view(1)
+	set src in oview(1)
 
 	if(!isliving(usr))
 		to_chat(usr, SPAN_WARNING("You can't do that!"))
@@ -278,7 +278,7 @@
 /obj/machinery/iv_drip/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Mode"
-	set src in view(1)
+	set src in oview(1)
 
 	if(!isliving(usr))
 		to_chat(usr, SPAN_WARNING("You can't do that!"))

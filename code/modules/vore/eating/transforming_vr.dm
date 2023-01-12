@@ -215,7 +215,7 @@
 	if(!istype(M) || !istype(O))
 		return
 
-	M.verbs -=  M.species.inherent_verbs	//Take away their unique stuff
+	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
 	var/list/backup_implants = list()
 	for(var/obj/item/organ/I in M.organs)

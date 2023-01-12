@@ -29,12 +29,12 @@
 	return
 
 // This one is slightly different, in that it must return a list.
-/atom/proc/get_description_interaction()
+/atom/proc/get_description_interaction(mob/user)
 	return list()
 
 // Quickly adds the boilerplate code to add an image and padding for the image.
-/proc/desc_panel_image(var/icon_state)
-	return "\icon[description_icons[icon_state]][EXAMINE_PANEL_PADDING]"
+/proc/desc_panel_image(var/icon_state, mob/user)
+	return "[icon2html(description_icons[icon_state], user)][EXAMINE_PANEL_PADDING]"
 
 /mob/living/get_description_fluff()
 	if(flavor_text) //Get flavor text for the green text.
@@ -53,27 +53,29 @@
 	description_holders["info"] = A.get_description_info()
 	description_holders["fluff"] = A.get_description_fluff()
 	description_holders["antag"] = (update_antag_info)? A.get_description_antag() : ""
-	description_holders["interactions"] = A.get_description_interaction()
+	description_holders["interactions"] = A.get_description_interaction(mob)
 
 	description_holders["name"] = "[A.name]"
-	description_holders["icon"] = "\icon[A]" //this is icon not icon2html
+	description_holders["icon"] = "[icon2html(A, src)]" //this is icon not icon2html
 	description_holders["desc"] = A.desc
 
-/mob/Stat()
+/mob/statpanel_data(client/C)
 	. = ..()
-	if(client && statpanel("Examine"))
-		var/description_holders = client.description_holders
-		stat(null,"[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
-		stat(null,"[description_holders["desc"]]") //the default examine text.
+	if(C.statpanel_tab("Examine", TRUE))
+		var/description_holders = C.description_holders
+		if(!description_holders)
+			return	// piece of shit don't update when it's not there
+		STATPANEL_DATA_LINE("[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
+		STATPANEL_DATA_LINE("[description_holders["desc"]]") //the default examine text.
 		if(description_holders["info"])
-			stat(null,"<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
+			STATPANEL_DATA_LINE("<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
 		if(description_holders["interactions"])
 			for(var/line in description_holders["interactions"])
-				stat(null, "<font color='#084B8A'><b>[line]</b></font>")
+				STATPANEL_DATA_LINE("<font color='#084B8A'><b>[line]</b></font>")
 		if(description_holders["fluff"])
-			stat(null,"<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
+			STATPANEL_DATA_LINE("<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
 		if(description_holders["antag"])
-			stat(null,"<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
+			STATPANEL_DATA_LINE("<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
 
 //override examinate verb to update description holders when things are examined
 /mob/examinate(atom/A as mob|obj|turf in view())

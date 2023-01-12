@@ -366,7 +366,7 @@
 				pretty_ear_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_ear_style = input(user, "Pick ears", "Character Preference", current?.name) as null|anything in pretty_ear_styles
+		var/new_ear_style = tgui_input_list(user, "Pick ears", "Character Preference", pretty_ear_styles, current?.name)
 		if(new_ear_style)
 			pref.ear_style_id = pretty_ear_styles[new_ear_style]
 
@@ -409,7 +409,7 @@
 				pretty_horn_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_horn_style = input(user, "Pick Secondary Ears", "Character Preference", current?.name) as null|anything in pretty_horn_styles
+		var/new_horn_style = tgui_input_list(user, "Pick Secondary Ears", "Character Preference",pretty_horn_styles ,current?.name)
 		if(new_horn_style)
 			pref.horn_style_id = pretty_horn_styles[new_horn_style]
 
@@ -452,7 +452,7 @@
 				pretty_tail_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_tail_style = input(user, "Pick tails", "Character Preference", current?.name) as null|anything in pretty_tail_styles
+		var/new_tail_style = tgui_input_list(user, "Pick tails", "Character Preference", pretty_tail_styles, current?.name)
 		if(new_tail_style)
 			pref.tail_style_id = pretty_tail_styles[new_tail_style]
 
@@ -495,7 +495,7 @@
 				pretty_wing_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_wing_style = input(user, "Pick wings", "Character Preference", current?.name) as null|anything in pretty_wing_styles
+		var/new_wing_style = tgui_input_list(user, "Pick wings", "Character Preference", pretty_wing_styles, current?.name)
 		if(new_wing_style)
 			pref.wing_style_id = pretty_wing_styles[new_wing_style]
 

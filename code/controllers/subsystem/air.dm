@@ -35,14 +35,26 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
-/datum/controller/subsystem/air/stat_entry(msg_prefix)
-	var/list/msg = list(
-		msg_prefix,
-		"\tSt: [current_step ? part_names[current_step] : ""] Z: [zones.len] E: [edges.len] ",
-		"\tCost: { T: [round(cost_turfs, 1)] | E: [round(cost_edges, 1)] | F: [round(cost_firezones, 1)] | H: [round(cost_hotspots, 1)] | Z: [round(cost_zones, 1)] } ",
-		"\tCyc: [current_cycle] U: { T: [tiles_to_update.len] | E: [active_edges.len] | F: [active_fire_zones.len] | H: [active_hotspots.len] | Z: [zones_to_update.len]  }",
-	)
-	..(msg.Join("\n"))
+/datum/controller/subsystem/air/stat_entry()
+	var/list/msg = list()
+	msg += "S:[current_step ? part_names[current_step] : ""] "
+	msg += "C:{"
+	msg += "T [round(cost_turfs, 1)] | "
+	msg += "E [round(cost_edges, 1)] | "
+	msg += "F [round(cost_firezones, 1)] | "
+	msg += "H [round(cost_hotspots, 1)] | "
+	msg += "Z [round(cost_zones, 1)] "
+	msg += "}"
+	msg += "Z: [zones.len] "
+	msg += "E: [edges.len] "
+	msg += "Cycle: [current_cycle] {"
+	msg += "T [tiles_to_update.len] | "
+	msg += "E [active_edges.len] | "
+	msg += "F [active_fire_zones.len] | "
+	msg += "H [active_hotspots.len] | "
+	msg += "Z [zones_to_update.len] "
+	msg += "}"
+	return ..() + " [msg.Join()]"
 
 /datum/controller/subsystem/air/PreInit(recovering)
 	air_master = src
