@@ -99,7 +99,7 @@
 
 	cut_overlays()
 
-	/// We add our overlays to this list, then add them all at once to avoid appearance churn.
+	/// We add our overlays to this list, then add them all at once to reduce SSoverlays overhead.
 	var/list/temp_overlays = list()
 	temp_overlays.Add("[base_icon_state]-scanner")
 	if(busy)
@@ -112,7 +112,7 @@
 		else
 			temp_overlays.Add("[base_icon_state]-[on]")
 
-	add_overlay(temp_overlays) // This makes one appearance churn instead of three.
+	add_overlay(temp_overlays)
 
 
 /mob/living/bot/medibot/handleIdle()

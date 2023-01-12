@@ -452,13 +452,16 @@
 
 
 /atom/proc/clear_smooth_overlays()
-	cut_overlay(top_left_corner)
+	// cut_overlay() is efficient with single calls, but we might as well just pay proc-call overhead once given that we always have 4.
+	cut_overlay(list(
+		top_left_corner,
+		top_right_corner,
+		bottom_right_corner,
+		bottom_left_corner
+	))
 	top_left_corner = null
-	cut_overlay(top_right_corner)
 	top_right_corner = null
-	cut_overlay(bottom_right_corner)
 	bottom_right_corner = null
-	cut_overlay(bottom_left_corner)
 	bottom_left_corner = null
 
 /**
