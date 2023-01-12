@@ -174,6 +174,10 @@ SUBSYSTEM_DEF(overlays)
 /atom/proc/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
 	if (islist(new_overlays))
+		// A lot of code seems to assume that it's safe to pass long-lived lists to SSoverlays.
+		// That was true with the old overlays SS, but is not true of this one.
+		// So we're copying the list. Fix all the callsites if you want to avoid this copy.
+		new_overlays = new_overlays:Copy()
 		listclearnulls(new_overlays)
 		for (var/i in 1 to length(new_overlays))
 			var/image/cached_overlay = new_overlays[i]
