@@ -186,8 +186,6 @@
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
-
-
 /obj/item/reagent_containers/food/drinks/cans/gingerale/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gingerale", 30)
@@ -197,7 +195,6 @@
 	desc = "A tall can of...what one could assume to be a type of soda? There's a very confused looking female vulp on the front."
 	icon_state = "dumbjuice"
 	center_of_mass = list("x"=16, "y"=10)
-
 
 /obj/item/reagent_containers/food/drinks/cans/dumbjuice/Initialize(mapload)
 	. = ..()
@@ -237,6 +234,15 @@
 	. = ..()
 	reagents.add_reagent("coconutwater", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/nicola
+	name = "\improper NiCola Classic"
+	desc = "A can of crisp NiCola, imported directly from Osaka IV."
+	icon_state = "nicola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicola", 30)
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune

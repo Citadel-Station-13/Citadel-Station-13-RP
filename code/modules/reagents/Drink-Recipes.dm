@@ -455,6 +455,13 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/nicola
+	name = "NiCola"
+	id = "nicola"
+	result = "nicola"
+	required_reagents = list("grenadine" = 1, "tonic" = 1, "cola" = 1)
+	result_amount = 3
+
 /datum/chemical_reaction/drinks/astral_wind
 	name = "Astral Wind"
 	id = "astral_wind"
@@ -1823,7 +1830,7 @@
 	name = "David Martinez"
 	id = "martinez"
 	result = "martinez"
-	required_reagents = list("vodka" = 1, "cola" = 1, "ice" = 1)
+	required_reagents = list("vodka" = 1, "nicola" = 1, "ice" = 1)
 	result_amount = 3
 
 // Unathi drinks

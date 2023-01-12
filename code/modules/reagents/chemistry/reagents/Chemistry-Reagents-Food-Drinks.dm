@@ -1731,6 +1731,16 @@ End Citadel Change */
 	glass_desc = "The original, refreshing not-actually-ale."
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/nicola
+	name = "NiCola"
+	id = "nicola"
+	description = "Imported straight from Osaka IV."
+	taste_description = "cough syrup and cola"
+	color = "#271402"
+
+	glass_name = "NiCola"
+	glass_desc = "A glass of imported Japanese NiCola."
+
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
 	id =  "shirley_temple"
