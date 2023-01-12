@@ -273,6 +273,7 @@ SUBSYSTEM_DEF(overlays)
 		if(cut_old)
 			our_overlays = cached_other.Copy()
 		else
+			LAZYINITLIST(our_overlays)	// We might not have overlays yet.
 			our_overlays |= cached_other
 		if(NOT_QUEUED_ALREADY)
 			QUEUE_FOR_COMPILE
