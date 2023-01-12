@@ -34,19 +34,22 @@
 	name = "UKN Aerondight"
 	current_location = "omship_spawn_aerondight"
 	docking_controller_tag = "aerondight_docker"
-	shuttle_area = /area/shuttle/cruise_ship
+	shuttle_area = list(/area/shuttle/cruise_ship, /area/shuttle/cruise_ship/bedroom)
 	fuel_consumption = 0
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
 /obj/effect/overmap/visitable/ship/landable/cruise_ship
+	icon_state = "shuttle"
+	moving_state = "shuttle"
 	scanner_name = "UKN Aerondight"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Pleasure Yacht
 [i]Transponder[/i]: Transmitting (CIV), UNKNOWN
 [b]Notice[/b]: Diplomatic vessel"}
-	color = "#b4a90a" //Indigo
+	color = "#b4a90a" //Gold baybeee
 	vessel_mass = 3000
 	fore_dir = WEST
 	vessel_size = SHIP_SIZE_SMALL
+	initial_generic_waypoints = list("cruise_ship_port", "curose_ship_starboard")
 	shuttle = "UKN Aerondight"

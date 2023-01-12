@@ -246,6 +246,13 @@
 "De" = (
 /obj/effect/overmap/visitable/ship/landable/cruise_ship,
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "aerondight_docker";
+	pixel_x = 28;
+	pixel_y = -32;
+	req_one_access = null
+	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "EY" = (
@@ -534,15 +541,6 @@
 	frequency = 1380
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/wood,
-/area/shuttle/cruise_ship)
-"WT" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "aerondight_docker";
-	pixel_y = -32;
-	req_one_access = null
-	},
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Xg" = (
@@ -846,7 +844,7 @@ Ub
 wq
 iB
 De
-WT
+Ue
 wq
 Ub
 Ub
