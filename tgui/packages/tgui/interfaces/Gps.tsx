@@ -146,11 +146,15 @@ export const Gps = (props, context) => {
                       <Table.Cell collapsing>
                         {
                           data.level === signal.level ? (
-                            <Icon
-                              mr={1}
-                              size={1.2}
-                              name="arrow-up"
-                              rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)} />
+                            <>
+                              <Icon
+                                mr={1}
+                                size={1.2}
+                                name="arrow-up"
+                                rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y)
+                                  * 180 / Math.PI)} />
+                              {Math.round(Math.sqrt(Math.pow(signal.x - data.x, 2) + Math.pow(signal.y - data.y, 2)))}m
+                            </>
                           ) : (
                             `FAR`
                           )
@@ -161,7 +165,7 @@ export const Gps = (props, context) => {
                           data.level === signal.level? (
                             `${signal.x}, ${signal.y}`
                           ) : (
-                            `${signal.level}`
+                            `${signal.level} - ${signal.x}, ${signal.y}`
                           )
                         }
                       </Table.Cell>
@@ -191,12 +195,18 @@ export const Gps = (props, context) => {
                       </Table.Cell>
                       <Table.Cell collapsing>
                         {
-                          data.level === signal.level && (
-                            <Icon
-                              mr={1}
-                              size={1.2}
-                              name="arrow-up"
-                              rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y) * 180 / Math.PI)} />
+                          data.level === signal.level ? (
+                            <>
+                              <Icon
+                                mr={1}
+                                size={1.2}
+                                name="arrow-up"
+                                rotation={Math.round(Math.atan2(signal.x - data.x, signal.y - data.y)
+                                  * 180 / Math.PI)} />
+                              {Math.round(Math.sqrt(Math.pow(signal.x - data.x, 2) + Math.pow(signal.y - data.y, 2)))}m
+                            </>
+                          ) : (
+                            `FAR`
                           )
                         }
                       </Table.Cell>
@@ -205,7 +215,7 @@ export const Gps = (props, context) => {
                           data.level === signal.level? (
                             `${signal.x}, ${signal.y}`
                           ) : (
-                            `FAR: ${signal.level}`
+                            `${signal.level} - ${signal.x}, ${signal.y}`
                           )
                         }
                       </Table.Cell>
