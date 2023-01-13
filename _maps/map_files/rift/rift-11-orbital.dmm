@@ -304,12 +304,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
-"bg" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Shuttle Hatch"
-	},
-/turf/space,
-/area/space)
 "bh" = (
 /turf/space/basic,
 /turf/space/basic,
@@ -920,16 +914,6 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
-"cM" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
-	name = "Shuttle Hatch"
-	},
-/turf/space,
-/area/space)
 "cN" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/evac)
@@ -6577,8 +6561,6 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/ballistic/automatic/l6_saw,
-/obj/item/gun/ballistic/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -8386,20 +8368,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"wY" = (
-/turf/simulated/wall{
-	can_open = 1;
-	icon = 'icons/turf/walls.dmi';
-	icon_state = "riveted"
-	},
-/area/centcom/control)
-"xf" = (
-/turf/simulated/wall{
-	can_open = 1;
-	icon = 'icons/turf/walls.dmi';
-	icon_state = "riveted"
-	},
-/area/centcom/specops)
 "xh" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant{
@@ -8487,13 +8455,6 @@
 "xq" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/unsimulated/floor/steel,
-/area/centcom/main_hall)
-"xr" = (
-/turf/simulated/wall{
-	can_open = 1;
-	icon = 'icons/turf/walls.dmi';
-	icon_state = "riveted"
-	},
 /area/centcom/main_hall)
 "xs" = (
 /obj/structure/table/woodentable,
@@ -10528,13 +10489,13 @@ hP
 hP
 hP
 hP
-bg
 hP
 hP
 hP
 hP
 hP
-cM
+hP
+hP
 hP
 hP
 hP
@@ -10722,13 +10683,13 @@ hP
 hP
 hP
 hP
-bg
 hP
 hP
 hP
 hP
 hP
-cM
+hP
+hP
 hP
 hP
 hP
@@ -11114,13 +11075,13 @@ hP
 hP
 hP
 hP
-bg
 hP
 hP
 hP
 hP
 hP
-cM
+hP
+hP
 hP
 hP
 hP
@@ -11498,13 +11459,13 @@ hP
 hP
 hP
 hP
-bg
 hP
 hP
 hP
 hP
 hP
-cM
+hP
+hP
 hP
 hP
 hP
@@ -11692,13 +11653,13 @@ hP
 hP
 hP
 hP
-bg
 hP
 hP
 hP
 hP
 hP
-cM
+hP
+hP
 hP
 hP
 hP
@@ -17959,7 +17920,7 @@ uM
 fs
 wu
 wu
-wY
+fs
 xo
 xt
 xC
@@ -19123,10 +19084,10 @@ ss
 ss
 wx
 wV
-xf
-xr
-xr
-xr
+ss
+wW
+wW
+wW
 xl
 xj
 xj
