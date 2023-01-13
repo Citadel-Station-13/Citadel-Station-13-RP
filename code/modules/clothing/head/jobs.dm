@@ -207,3 +207,9 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is navy blue."
 	icon_state = "surgcap_navyblue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
+
+/obj/item/clothing/head/beret/medical
+	name = "medical beret"
+	desc = "A fashionably white piece of headwear issued to anyone who asks. Most patients have had an overall positive feedback, in spite of the increased risk of infection, or fraud."
+	icon_state = "beret_med"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_med", SLOT_ID_LEFT_HAND = "beret_med")
