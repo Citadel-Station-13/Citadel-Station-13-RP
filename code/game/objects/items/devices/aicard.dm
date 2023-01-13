@@ -89,7 +89,7 @@
 	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			add_overlay(image('icons/obj/pda.dmi', "aicard-on"))
+			add_overlay("aicard-on")
 		if(carded_ai.stat)
 			icon_state = "aicard-404"
 		else
@@ -173,7 +173,7 @@
 	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			add_overlay(image('icons/obj/pda.dmi', "aitater-on"))
+			add_overlay("aitater-on")
 		if(carded_ai.stat)
 			icon_state = "aitater-404"
 		else
@@ -190,7 +190,7 @@
 	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			add_overlay(image('icons/obj/pda.dmi', "aispook-on"))
+			add_overlay("aispook-on")
 		if(carded_ai.stat)
 			icon_state = "aispook-404"
 		else

@@ -149,7 +149,7 @@
 			gen_emissive_blocker.color = GLOB.em_block_color
 			gen_emissive_blocker.dir = dir
 			gen_emissive_blocker.appearance_flags |= appearance_flags
-			add_overlay(list(gen_emissive_blocker))
+			add_overlay(gen_emissive_blocker)
 		if(EMISSIVE_BLOCK_UNIQUE)
 			add_emissive_blocker()
 
