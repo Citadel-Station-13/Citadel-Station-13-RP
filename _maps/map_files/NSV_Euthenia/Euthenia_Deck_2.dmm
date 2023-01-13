@@ -31266,10 +31266,6 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_gas)
-"wXX" = (
-/obj/structure/sign/hangar/two,
-/turf/simulated/wall,
-/area/space)
 "wXZ" = (
 /obj/structure/bed/chair/sofa/black/left,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -45324,11 +45320,11 @@ sBf
 xRi
 xRi
 xRi
-rHE
+mRB
 aoJ
 aoJ
 aoJ
-wXX
+ftQ
 xRi
 xRi
 sBf
@@ -45518,7 +45514,7 @@ cfR
 sBf
 sBf
 sBf
-rHE
+mRB
 bRO
 bRO
 bRO
@@ -45712,7 +45708,7 @@ poa
 sBf
 sBf
 sBf
-rHE
+mRB
 bRO
 hhv
 bRO
@@ -45903,16 +45899,16 @@ kLI
 kLI
 mRB
 vUI
-rHE
-rHE
-rHE
-rHE
-rHE
-rHE
-rHE
-rHE
-rHE
-wXX
+mRB
+mRB
+mRB
+mRB
+mRB
+mRB
+mRB
+mRB
+mRB
+ftQ
 kaQ
 kaQ
 azT

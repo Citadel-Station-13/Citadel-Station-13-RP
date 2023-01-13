@@ -1318,10 +1318,6 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "bcx" = (
@@ -2505,10 +2501,6 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
 /obj/structure/sign/warning/secure_area/armory{
 	pixel_y = -32
 	},
@@ -3027,14 +3019,6 @@
 /area/medical/surgery2)
 "cjS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/projectile/shotgun/pump{
-	pixel_x = 2;
-	pixel_y = -6
-	},
-/obj/item/gun/projectile/shotgun/pump{
-	pixel_x = 1;
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
@@ -8117,6 +8101,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
+"gnr" = (
+/obj/structure/sign/deck/first,
+/turf/simulated/wall/r_wall,
+/area/hallway/primary/central_one)
 "gnD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -9274,7 +9262,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
-/obj/item/gun/projectile/automatic/z8,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -10944,12 +10931,6 @@
 /obj/item/gunbox/lethal{
 	pixel_y = -3
 	},
-/obj/item/gun/projectile/shotgun/pump/combat{
-	pixel_y = -6
-	},
-/obj/item/gun/projectile/shotgun/pump/combat{
-	pixel_y = 5
-	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "iDm" = (
@@ -11501,7 +11482,7 @@
 /area/space)
 "iYe" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/space)
 "iYj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12755,6 +12736,7 @@
 	pixel_x = -25;
 	pixel_y = 7
 	},
+/obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officeb)
 "kfl" = (
@@ -13364,7 +13346,6 @@
 /area/security/tactical)
 "kCW" = (
 /obj/structure/closet/secure_closet/bar,
-/obj/item/gun/projectile/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -13377,7 +13358,6 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/gun/projectile/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/space)
 "kDy" = (
@@ -26843,6 +26823,10 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_one/starboard)
+"wcE" = (
+/obj/structure/sign/hangar/one,
+/turf/simulated/wall/r_wall,
+/area/space)
 "wcM" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -29195,6 +29179,7 @@
 	pixel_x = 25;
 	pixel_y = 7
 	},
+/obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officea)
 "ygp" = (
@@ -38020,10 +38005,10 @@ eEc
 eEc
 eEc
 eEc
-nxk
+aBR
 mTt
 mTt
-nxk
+aBR
 xKi
 xKi
 tim
@@ -38596,19 +38581,19 @@ lLO
 lLO
 lLO
 aBR
-nxk
-nxk
+aBR
+aBR
 mTt
 mTt
 mTt
-nxk
+aBR
 brg
 hMl
 hMl
-brg
+wcE
 iXZ
 fDI
-iEK
+lNy
 tQp
 vUX
 fjn
@@ -38793,10 +38778,10 @@ aBR
 dpB
 dpB
 dpB
-qwr
-qwr
-qwr
-qwr
+dpB
+dpB
+dpB
+dpB
 qwr
 qwr
 des
@@ -38987,10 +38972,10 @@ qcx
 dpB
 dpB
 dpB
-qwr
-qwr
-qwr
-qwr
+dpB
+dpB
+dpB
+dpB
 qwr
 qwr
 qwr
@@ -39183,11 +39168,11 @@ dpB
 dpB
 dpB
 dpB
-qwr
-qwr
 dpB
+dpB
+qwr
 iYe
-nxk
+aBR
 qwr
 qwr
 nLu
@@ -39377,10 +39362,10 @@ mTt
 aBR
 lyf
 dpB
-qwr
-qwr
 dpB
 dpB
+qwr
+qwr
 mTt
 qwr
 qwr
@@ -39573,8 +39558,8 @@ auW
 qwr
 qwr
 qwr
-dpB
-dpB
+qwr
+qwr
 mTt
 qwr
 qwr
@@ -39767,8 +39752,8 @@ auW
 qwr
 qwr
 qwr
-dpB
-dpB
+qwr
+qwr
 mTt
 eZw
 eZw
@@ -39959,11 +39944,11 @@ oco
 aBR
 aPE
 dpB
-qwr
-qwr
 dpB
+dpB
+qwr
 iYe
-nxk
+aBR
 nxk
 nxk
 nLu
@@ -40153,8 +40138,8 @@ oco
 aBR
 kkJ
 dpB
-qwr
-qwr
+dpB
+dpB
 qwr
 qwr
 rKf
@@ -40543,9 +40528,9 @@ auW
 qwr
 qwr
 qwr
-dpB
-dpB
-nxk
+qwr
+qwr
+aBR
 oFr
 oFr
 fMx
@@ -40735,11 +40720,11 @@ mTt
 aBR
 gIO
 dpB
-qwr
-qwr
 dpB
 dpB
-nxk
+qwr
+qwr
+aBR
 oFr
 oFr
 fMx
@@ -40929,11 +40914,11 @@ dpB
 dpB
 dpB
 dpB
-qwr
-qwr
 dpB
+dpB
+qwr
 iYe
-nxk
+aBR
 oFr
 oFr
 fMx
@@ -41123,11 +41108,11 @@ dpB
 dpB
 dpB
 dpB
-qwr
-qwr
 dpB
 dpB
-nxk
+qwr
+qwr
+aBR
 oFr
 oFr
 fMx
@@ -41317,11 +41302,11 @@ dpB
 dpB
 xZI
 dpB
-qwr
-qwr
 dpB
 dpB
-nxk
+qwr
+qwr
+aBR
 oFr
 oFr
 fMx
@@ -41506,16 +41491,16 @@ lLO
 lLO
 lLO
 fsO
-xcX
-cJw
-xcX
-jpc
+fsO
+jLu
+fsO
+lBt
+tdk
+tdk
 tdk
 pXp
 pXp
-tdk
-vwm
-jpc
+gnr
 jpc
 jpc
 jpc
@@ -42290,8 +42275,8 @@ jpc
 jpc
 jpc
 jpc
-vwm
 jpc
+vwm
 jpc
 jpc
 jpc
