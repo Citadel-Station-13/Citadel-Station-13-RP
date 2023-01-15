@@ -85,7 +85,9 @@
 	var/list/decals
 
 	/// How much the turf slows down movement, if any.
-	var/movement_cost = 0
+	var/slowdown = 0
+	/// Pathfinding cost; null defaults to slowdown
+	var/pathweight
 
 	var/list/footstep_sounds = null
 
@@ -346,7 +348,12 @@
 			. += T
 
 /turf/proc/Distance(turf/t)
-	return get_dist(src,t)
+	if(get_dist(src,t) == 1)
+		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
+		cost *= ((isnull(pathweight)? slowdown : pathweight) + (isnull(t.pathweight)? t.slowdown : t.pathweight))/2
+		return cost
+	else
+		return get_dist(src,t)
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
