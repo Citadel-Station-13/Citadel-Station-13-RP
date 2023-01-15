@@ -27,8 +27,8 @@
 							SENTINEL = 0,
 							DRONE = 0,
 							HUNTER = 0)
-	var/const/strength = 2//one player = 2 points
-	var/const/additional_players = 3//adds three points of aliens independent of player count
+	var/strength = 2//one player = 2 points
+	var/additional_players = 3//adds three points of aliens independent of player count
 
 /datum/event/xeno_infestation/extreme
 	strength = 4
