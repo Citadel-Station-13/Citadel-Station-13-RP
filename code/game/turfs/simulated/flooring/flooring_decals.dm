@@ -1265,6 +1265,43 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/corner/lightorange/bordercee
 	icon_state = "bordercolorcee"
 
+// CENTCOM
+/obj/effect/floor_decal/corner/centcom
+	name = "centcom corner"
+	color = "#005B06"
+
+/obj/effect/floor_decal/corner/centcom/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/centcom/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/centcom/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/centcom/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/centcom/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/centcom/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/centcom/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/centcom/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/centcom/bordercee
+	icon_state = "bordercolorcee"
+
+/obj/effect/floor_decal/corner/centcom/border/shifted
+	icon_state = "bordercolor_shifted"
+
+
+
 /obj/effect/floor_decal/corner/lime/border/shifted
 	icon_state = "bordercolor_shifted"
 

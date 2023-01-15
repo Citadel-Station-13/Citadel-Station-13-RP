@@ -3,8 +3,10 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "Floor3"
 
-	//! NOTICE: UNSIMULATED TURFS DO NOT SMOOTH, THIS IS MORESO FOR OTHER TURFS
+	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+
 
 /turf/unsimulated/mask
 	name = "mask"

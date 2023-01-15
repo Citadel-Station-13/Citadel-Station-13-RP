@@ -1,26 +1,18 @@
 /turf/unsimulated/wall
 	name = "wall"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "riveted"
+	icon = 'icons/turf/walls/riveted.dmi'
+	icon_state = "riveted-0"
+	base_icon_state = "riveted"
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
 
-	//! NOTICE: UNSIMULATED TURFS DO NOT SMOOTH, THIS IS MORESO FOR OTHER TURFS
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
-/turf/unsimulated/wall/fakeglass
-	name = "window"
-	icon_state = "fakewindows"
-	opacity = FALSE
-
-/turf/unsimulated/wall/other
-	icon_state = "r_wall"
 
 /turf/unsimulated/wall/seperator //to block vision between transit zones
 	name = ""
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "1"
-
-/turf/unsimulated/wall/transit
-	icon = 'icons/turf/transit_vr.dmi'

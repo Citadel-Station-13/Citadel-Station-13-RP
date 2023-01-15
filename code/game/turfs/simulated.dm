@@ -1,5 +1,6 @@
 /turf/simulated
 	name = "station"
+
 	var/wet = 0
 	var/image/wet_overlay = null
 

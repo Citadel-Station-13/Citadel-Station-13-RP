@@ -5,15 +5,10 @@
  */
 /turf/simulated/wall
 	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms."
+	desc = "A huge chunk of steel used to separate rooms."
 	icon = 'icons/turf/walls/solid.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
-	color = "#666666"
-
-	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	layer = PLATING_LAYER
-	#endif
 
 	opacity = TRUE
 	density = TRUE

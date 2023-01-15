@@ -68,7 +68,7 @@
 					if("/turf/unsimulated/floor")
 						colour  = rgb(240,240,240)
 
-					if("/turf/unsimulated/wall", "/turf/unsimulated/wall/other")
+					if("/turf/unsimulated/wall")
 						colour  = rgb(140,140,140)
 
 					else
@@ -215,7 +215,7 @@
 					if("/turf/unsimulated/floor")
 						colour  = rgb(240,240,240)
 
-					if("/turf/unsimulated/wall", "/turf/unsimulated/wall/other")
+					if("/turf/unsimulated/wall")
 						colour  = rgb(140,140,140)
 
 					else

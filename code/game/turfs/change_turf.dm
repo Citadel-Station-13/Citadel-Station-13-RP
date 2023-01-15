@@ -38,6 +38,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
+/// Wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself.
+/turf/proc/TerraformTurf(path, new_baseturf, flags)
+	return ChangeTurf(path, new_baseturf, flags)
+
 /**
  * get what /turf/baseturf_bottom should be
  */

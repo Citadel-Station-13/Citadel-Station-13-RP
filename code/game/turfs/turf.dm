@@ -3,10 +3,14 @@
 	abstract_type = /turf
 
 	icon = 'icons/turf/floors.dmi'
-	layer = TURF_LAYER
 	plane = TURF_PLANE
+	layer = TURF_LAYER
 	luminosity = 1
 	level = 1
+
+	#ifdef IN_MAP_EDITOR
+	layer = PLATING_LAYER // Display everything above turfs in map editors to make piping and such easier.
+	#endif
 
 	//! Flags
 	/// turf flags

@@ -9,6 +9,9 @@
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 	SETUP_SMOOTHING()
+	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
+	QUEUE_SMOOTH(src)
+
 	return INITIALIZE_HINT_NORMAL
 
 /turf/unsimulated/fake_space
