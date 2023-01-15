@@ -30,6 +30,9 @@
 	var/const/strength = 2//one player = 2 points
 	var/const/additional_players = 3//adds three points of aliens independent of player count
 
+/datum/event/xeno_infestation/extreme
+	strength = 4
+	additional_players = 10
 
 /datum/event/xeno_infestation/setup()
 	// make sure startWhen doesn't go to 0 or below!
