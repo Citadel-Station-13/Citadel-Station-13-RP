@@ -1,7 +1,8 @@
 /mob/observer
 	name = "observer"
 	desc = "This shouldn't appear"
-	density = 0
+	mz_flags = ZMM_IGNORE
+	density = FALSE
 
 /mob/observer/dead
 	name = "ghost"
