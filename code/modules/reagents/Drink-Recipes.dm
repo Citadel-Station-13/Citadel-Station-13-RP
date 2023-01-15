@@ -483,6 +483,13 @@
 	required_reagents = list("cherryjelly" = 1, "cola" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/drinks/coffeecola
+	name = "Space Cola Coffee"
+	id = "coffeecola"
+	result = "coffeecola"
+	required_reagents = list("coffee" = 1, "cola" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/astral_wind
 	name = "Astral Wind"
 	id = "astral_wind"
