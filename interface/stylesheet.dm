@@ -59,6 +59,11 @@ em						{font-style: normal;font-weight: bold;}
 .admin_channel			{color: #9611D4;	font-weight: bold;}
 .event_channel			{color: #cc3399;	font-weight: bold;}
 
+//* Mentor *//
+.mentorsay				{color: #5E2D79;	font-weight: bold;}
+.mentorsay_admin		{color: #8A2BE2;	font-weight: bold;}
+.mentornotice			{color: #5E2D79;	font-weight: bold;}
+
 //* Radio: Misc *//
 .deadsay				{color: #530FAD;}
 .binarysay				{color: #20c20e;	background-color: #000000;	display: block;}
