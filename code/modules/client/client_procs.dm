@@ -113,6 +113,29 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		cmd_admin_pm(C,null)
 		return
 
+	// Mentor PM
+	if(href_list["mentor_msg"])
+		if(CONFIG_GET(flag/mentors_mobname_only))
+			var/mob/M = locate(href_list["mentor_msg"])
+			cmd_mentor_pm(M,null)
+		else
+			cmd_mentor_pm(href_list["mentor_msg"],null)
+		return TRUE
+
+	//Mentor Follow
+	if(href_list["mentor_follow"])
+		var/mob/living/M = locate(href_list["mentor_follow"])
+
+		if(istype(M))
+			mentor_follow(M)
+		return TRUE
+
+	if(href_list["mentor_unfollow"])
+		var/mob/living/M = locate(href_list["mentor_follow"])
+		if(M && mentor_datum.following == M)
+			mentor_unfollow()
+		return TRUE
+
 	// Depricated. go use TGS
 	if(href_list["irc_msg"])
 		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes

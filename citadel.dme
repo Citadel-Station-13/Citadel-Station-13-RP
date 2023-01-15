@@ -2807,6 +2807,7 @@
 #include "code\modules\mentor\dementor.dm"
 #include "code\modules\mentor\follow.dm"
 #include "code\modules\mentor\mentor.dm"
+#include "code\modules\mentor\mentor_client.dm"
 #include "code\modules\mentor\mentor_log.dm"
 #include "code\modules\mentor\mentor_memo.dm"
 #include "code\modules\mentor\mentor_verbs.dm"
