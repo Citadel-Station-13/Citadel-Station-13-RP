@@ -423,7 +423,10 @@
 			return TRUE // push one more time
 		if("track")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
-			return start_tracking(locate(params["ref"]))
+			var/datum/D = locate(params["ref"])
+			if(D == tracking)
+				return stop_tracking()
+			return start_tracking(D)
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
 	if(!x || !y || !level_id || !name)

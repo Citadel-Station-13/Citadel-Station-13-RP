@@ -111,8 +111,8 @@
 			card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
+	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 
 	//PDA
 	pda = new(src)
@@ -128,19 +128,17 @@
 	if(client.prefs)
 		ooc_notes = client.prefs.metadata
 
-
 // this function shows the information about being silenced as a pAI in the Status panel
 /mob/living/silicon/pai/proc/show_silenced()
+	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
+/mob/living/silicon/pai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		. += show_silenced()
 
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
@@ -304,9 +302,9 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	verbs += /mob/living/silicon/pai/proc/pai_nom
-	verbs += /mob/living/proc/set_size
-	verbs += /mob/living/proc/shred_limb
+	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/shred_limb)
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
@@ -338,7 +336,7 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
@@ -421,7 +419,7 @@
 	canmove = TRUE
 	resting = FALSE
 	icon_state = "[chassis]"
-	verbs -= /mob/living/silicon/pai/proc/pai_nom
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()

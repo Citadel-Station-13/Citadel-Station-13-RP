@@ -252,6 +252,10 @@
 		O.maptext = ""
 		O.hud_layerise()
 
+	// If we're not overloaded, force overlays to build now to reduce visual lag.
+	if (!TICK_CHECK)
+		storage_start.compile_overlays()
+
 	closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
@@ -516,14 +520,14 @@
 	. = ..()
 
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
 	else
-		verbs -= /obj/item/storage/verb/quick_empty
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 	else
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"

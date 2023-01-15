@@ -30,19 +30,19 @@
 	// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
 	var/mutable_appearance/appearance
 	if(!(smoothing_junction & NORTH_JUNCTION))
-		appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = 2.01)
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = EDGE_LAYER)
 		appearance.pixel_y = 32
 		. += appearance
 	if(!(smoothing_junction & SOUTH_JUNCTION))
-		appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = 2.01)
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = EDGE_LAYER)
 		appearance.pixel_y = -32
 		. += appearance
 	if(!(smoothing_junction & WEST_JUNCTION))
-		appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = 2.01)
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = EDGE_LAYER)
 		appearance.pixel_x = -32
 		. += appearance
 	if(!(smoothing_junction & EAST_JUNCTION))
-		appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = 2.01)
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
 		appearance.pixel_x = 32
 		. += appearance
 

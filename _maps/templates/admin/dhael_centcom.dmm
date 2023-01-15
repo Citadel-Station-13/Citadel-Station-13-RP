@@ -2574,7 +2574,6 @@
 "fm" = (
 /obj/structure/table/standard,
 /obj/structure/reagent_dispensers/acid{
-	density = 0;
 	pixel_y = -30
 	},
 /obj/item/storage/toolbox/mechanical{
@@ -3775,7 +3774,7 @@
 "ie" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -15254,8 +15253,8 @@
 /area/centcom/specops)
 "Og" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/l6_saw,
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -15488,12 +15487,6 @@
 	icon_state = "white"
 	},
 /area/centcom/bathroom)
-"TW" = (
-/obj/machinery/power/shield_generator/charged,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "Ur" = (
 /obj/effect/floor_decal/derelict/d7,
 /turf/unsimulated/floor/steel,
@@ -27312,7 +27305,7 @@ aX
 aX
 aX
 cg
-TW
+Mw
 Mw
 Xa
 cz

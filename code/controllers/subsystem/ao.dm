@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(ao)
 
 
 /datum/controller/subsystem/ao/stat_entry()
-	..("Queue: [queue.len]")
+	return ..() + "Queue: [queue.len]"
 
 /datum/controller/subsystem/ao/fire(resume = 0, no_mc_tick = FALSE)
 	if (!queue.len)

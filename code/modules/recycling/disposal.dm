@@ -664,14 +664,19 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
-
-	level = 1			// underfloor only
-	var/dpdir = 0		// bitmask of pipe directions
-	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
+	level = 1 // underfloor only
+	dir = 0 // dir will contain dominant direction for junction pipes
 	plane = TURF_PLANE
-	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	base_icon_state	// initial icon state on map
+	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
+
+	/// Bitmask of pipe directions.
+	var/dpdir = 0
+	/// Health points 0-10
+	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

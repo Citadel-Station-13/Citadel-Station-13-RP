@@ -130,10 +130,11 @@
 #define WATER_FLOOR_LAYER           (TURF_LAYER)      /// The 'bottom' of water tiles.
 #define TURF_DETAIL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 
-//? ABOVE TURF
+//? ABOVE FLOOR
 
 #define DECAL_LAYER                 (TURF_LAYER+0.03) /// For intentionally placed floor decal overlays.
 #define AO_LAYER                    (TURF_LAYER+0.04) /// Ambient Occlusion layer.
+#define EDGE_LAYER                  (TURF_LAYER+0.05) /// Floor edge overlay layer.
 #define EXPOSED_PIPE_LAYER          (TURF_LAYER+0.06)
 #define EXPOSED_WIRE_LAYER          (TURF_LAYER+0.07)
 #define EXPOSED_WIRE_TERMINAL_LAYER (TURF_LAYER+0.08)
@@ -145,6 +146,8 @@
 
 #define HIDING_LAYER                (TURF_LAYER+0.14) /// Layer at which mobs hide to be under things like tables.
 #define UNDERWATER_LAYER            (TURF_LAYER+0.15) /// Anything on this layer will render under the water layer.
+
+#define BELOW_OBJ_LAYER             (TURF_LAYER+0.90)
 
 //! Turf/Obj layer boundary
 

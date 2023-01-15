@@ -528,6 +528,12 @@
 	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
 	plane = TURF_PLANE
 
+	#ifndef IN_MAP_EDITOR
+	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
+	#else
+	layer = BELOW_OBJ_LAYER
+	#endif
+
 /obj/machinery/door/firedoor/glass/hidden/open()
 	. = ..()
 	plane = TURF_PLANE

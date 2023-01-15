@@ -1,7 +1,11 @@
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
-	if(!ckey)	return
+	if(!ckey)
+		return FALSE
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
+	if(!fexists(path))
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/load_preferences()
 	// todo: storage handler datums...

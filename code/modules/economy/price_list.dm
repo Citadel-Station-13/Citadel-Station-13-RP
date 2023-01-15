@@ -405,6 +405,9 @@
 /obj/item/reagent_containers/food/drinks/cans/gingerale
 	price_tag = 1
 
+/obj/item/reagent_containers/food/drinks/cans/nicola
+	price_tag = 1
+
 //***************//
 //----Bottles----//
 //***************//
@@ -533,6 +536,9 @@
 
 /obj/item/reagent_containers/food/snacks/cheesiehonkers
 	price_tag = 1
+
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+	price_tag = 3
 
 /obj/item/reagent_containers/food/snacks/tastybread
 	price_tag = 2

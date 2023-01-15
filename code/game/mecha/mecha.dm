@@ -385,10 +385,10 @@
 ////////////////////////
 
 /obj/mecha/proc/removeVerb(verb_path)
-	verbs -= verb_path
+	remove_obj_verb(src, verb_path)
 
 /obj/mecha/proc/addVerb(verb_path)
-	verbs += verb_path
+	add_obj_verb(src, verb_path)
 
 /obj/mecha/proc/add_airtank()
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
@@ -1611,7 +1611,7 @@
 		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
 		mmi_as_oc.mecha = src
-		src.verbs += /obj/mecha/verb/eject
+		add_obj_verb(src, /obj/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
 		update_icon()
@@ -1699,8 +1699,8 @@
 		if(possible_port)
 			if(connect(possible_port))
 				occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
-				verbs += /obj/mecha/verb/disconnect_from_port
-				verbs -= /obj/mecha/verb/connect_to_port
+				add_obj_verb(src, /obj/mecha/verb/disconnect_from_port)
+				remove_obj_verb(src, /obj/mecha/verb/connect_to_port)
 				return
 			else
 				occupant_message("<span class='danger'>\The [name] failed to connect to the port.</span>")
@@ -1723,8 +1723,8 @@
 
 	if(disconnect())
 		occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
-		verbs -= /obj/mecha/verb/disconnect_from_port
-		verbs += /obj/mecha/verb/connect_to_port
+		remove_obj_verb(src, /obj/mecha/verb/disconnect_from_port)
+		add_obj_verb(src, /obj/mecha/verb/connect_to_port)
 	else
 		occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
 
@@ -1878,7 +1878,7 @@
 		H.update_perspective()
 		occupant = H
 		add_fingerprint(H)
-		verbs += /obj/mecha/verb/eject
+		add_obj_verb(src, /obj/mecha/verb/eject)
 		log_append_to_last("[H] moved in as pilot.")
 		update_icon()
 		if(occupant.hud_used)
@@ -1888,21 +1888,21 @@
 //And it's not like this 10yo code wasn't clunky before.
 
 		if(!smoke_possible)			//Can't use smoke? No verb for you.
-			verbs -= /obj/mecha/verb/toggle_smoke
+			remove_obj_verb(src, /obj/mecha/verb/toggle_smoke)
 		if(!thrusters_possible)		//Can't use thrusters? No verb for you.
-			verbs -= /obj/mecha/verb/toggle_thrusters
+			remove_obj_verb(src, /obj/mecha/verb/toggle_thrusters)
 		if(!defence_mode_possible)	//Do i need to explain everything?
-			verbs -= /obj/mecha/verb/toggle_defence_mode
+			remove_obj_verb(src, /obj/mecha/verb/toggle_defence_mode)
 		if(!overload_possible)
-			verbs -= /obj/mecha/verb/toggle_overload
+			remove_obj_verb(src, /obj/mecha/verb/toggle_overload)
 		if(!zoom_possible)
-			verbs -= /obj/mecha/verb/toggle_zoom
+			remove_obj_verb(src, /obj/mecha/verb/toggle_zoom)
 		if(!phasing_possible)
-			verbs -= /obj/mecha/verb/toggle_phasing
+			remove_obj_verb(src, /obj/mecha/verb/toggle_phasing)
 		if(!switch_dmg_type_possible)
-			verbs -= /obj/mecha/verb/switch_damtype
+			remove_obj_verb(src, /obj/mecha/verb/switch_damtype)
 		if(!cloak_possible)
-			verbs -= /obj/mecha/verb/toggle_cloak
+			remove_obj_verb(src, /obj/mecha/verb/toggle_cloak)
 
 		occupant.in_enclosed_vehicle = 1	//Useful for when you need to know if someone is in a mecho.
 		update_cell_alerts()
@@ -2000,7 +2000,7 @@
 		occupant = null
 		update_appearance()
 		setDir(dir_in)
-		verbs -= /obj/mecha/verb/eject
+		remove_obj_verb(src, /obj/mecha/verb/eject)
 
 		// Doesn't seem needed.
 		if(src.occupant && src.occupant.client)

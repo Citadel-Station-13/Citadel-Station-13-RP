@@ -537,6 +537,7 @@
 ///Hidden verb to turn east
 /mob/verb/eastface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(EAST)
@@ -546,6 +547,7 @@
 ///Hidden verb to turn west
 /mob/verb/westface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(WEST)
@@ -555,6 +557,7 @@
 ///Hidden verb to turn north
 /mob/verb/northface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
@@ -564,6 +567,7 @@
 ///Hidden verb to turn south
 /mob/verb/southface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
@@ -573,6 +577,7 @@
 //! Pixel Shifting
 /mob/verb/eastshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_x < 16)
@@ -580,6 +585,7 @@
 
 /mob/verb/westshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_x > -16)
@@ -587,6 +593,7 @@
 
 /mob/verb/northshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_y < 16)
@@ -594,6 +601,7 @@
 
 /mob/verb/southshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_y > -16)
