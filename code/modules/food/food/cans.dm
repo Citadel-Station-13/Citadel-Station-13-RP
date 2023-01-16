@@ -39,7 +39,7 @@
 
 /obj/item/reagent_containers/food/drinks/cans/cola_coffee
 	name = "\improper Space Cola Coffee"
-	desc = "Coffee Cola. In space!"
+	desc = "Coffee cola. In space!"
 	icon_state = "coffeecola"
 	center_of_mass = list("x"=16, "y"=10)
 

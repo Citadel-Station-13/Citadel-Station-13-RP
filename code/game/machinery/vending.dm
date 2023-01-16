@@ -748,9 +748,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
  					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
 					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
+					 /obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 10,
 					 /obj/item/reagent_containers/food/drinks/bludbox = 5,
-					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5,
-					 /obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 10)
+					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
 				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
