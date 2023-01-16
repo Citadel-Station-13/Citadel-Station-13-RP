@@ -121,8 +121,10 @@ SUBSYSTEM_DEF(zmimic)
 		"",	// newline
 		"ZSt: [build_zstack_display()]",	// This is a human-readable list of the z-stacks known to ZM.
 		"ZMx: [zlev_maximums.Join(", ")]",	// And this is the raw internal state.
-		// In order: Total, Queued, Skipped
-		"T: { T: [openspace_turfs] O: [openspace_overlays] } Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
+		// This one gets broken out from the below because it's more important.
+		"Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
+		// In order: Total, Skipped
+		"T: { T: [openspace_turfs] O: [openspace_overlays] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
 	return ..() + entries.Join("<br>&emsp;")
@@ -334,7 +336,7 @@ SUBSYSTEM_DEF(zmimic)
 		// Add everything below us to the update queue.
 		for (var/thing in T.below)
 			var/atom/movable/object = thing
-			if (QDELETED(object) || (object.mz_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
+			if (QDELETED(object) || (object.zmm_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
 				// Don't queue deleted stuff, stuff that's not visible, blacklisted stuff, or stuff that's centered on another tile but intersects ours.
 				continue
 
@@ -452,14 +454,14 @@ SUBSYSTEM_DEF(zmimic)
 			OO.particles = OO.associated_atom.particles
 
 		OO.appearance = OO.associated_atom
-		OO.mz_flags = OO.associated_atom.mz_flags
+		OO.zmm_flags = OO.associated_atom.zmm_flags
 		OO.plane = OPENTURF_MAX_PLANE - OO.depth
 
 		OO.opacity = FALSE
 		OO.queued = 0
 
 		// If an atom has explicit plane sets on its overlays/underlays, we need to replace the appearance so they can be mangled to work with our planing.
-		if (OO.mz_flags & ZMM_MANGLE_PLANES)
+		if (OO.zmm_flags & ZMM_MANGLE_PLANES)
 			var/new_appearance = fixup_appearance_planes(OO.appearance)
 			if (new_appearance)
 				OO.appearance = new_appearance
@@ -484,9 +486,8 @@ SUBSYSTEM_DEF(zmimic)
 		if (T.below.mimic_proxy)
 			QDEL_NULL(T.below.mimic_proxy)
 	QDEL_NULL(T.mimic_underlay)
-	for (var/atom/movable/openspace/OO in T)
-		if (istype(OO, /atom/movable/openspace/mimic))
-			qdel(OO)
+	for (var/atom/movable/openspace/mimic/OO in T)
+		qdel(OO)
 
 /datum/controller/subsystem/zmimic/proc/simple_appearance_copy(turf/T, new_appearance, target_plane)
 	if (T.mz_flags & MZ_MIMIC_OVERWRITE)

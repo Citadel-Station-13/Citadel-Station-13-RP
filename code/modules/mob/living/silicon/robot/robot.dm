@@ -52,7 +52,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
 
-	mz_flags = ZMM_MANGLE_PLANES
+	zmm_flags = ZMM_MANGLE_PLANES
 
 	// Wideborgs are offset, but their light shouldn't be. This disables offset because of how the math works (1 is less than 16).
 	light_offset_x = 1
@@ -875,9 +875,9 @@
 
 /mob/living/silicon/robot/updateicon()
 	if (wideborg)
-		mz_flags |= ZMM_LOOKAHEAD
+		zmm_flags |= ZMM_LOOKAHEAD
 	else
-		mz_flags &= ~ZMM_LOOKAHEAD
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	cut_overlays()
 	if(stat == CONSCIOUS)
