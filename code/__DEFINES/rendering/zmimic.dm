@@ -65,3 +65,22 @@ DEFINE_BITFIELD(mz_flags, list(
 #define ZMM_IGNORE         (1<<0) //! Do not copy this movable. Atoms with INVISIBILITY_ABSTRACT implicitly do not copy.
 #define ZMM_MANGLE_PLANES  (1<<1) //! Check this movable's overlays/underlays for explicit plane use and mangle for compatibility with Z-Mimic. If you're using emissive overlays, you probably should be using this flag. Expensive, only use if necessary.
 #define ZMM_LOOKAHEAD      (1<<2) //! Look one turf ahead and one turf back when considering z-turfs that might be seeing this atom. Cheap, but not free.
+#define ZMM_AUTOMANGLE_STD (1<<3) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
+#define ZMM_AUTOMANGLE_PRI (1<<4) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
+
+#define ZMM_AUTOMANGLE (ZMM_AUTOMANGLE_STD|ZMM_AUTOMANGLE_PRI)	// convenience
+
+DEFINE_BITFIELD(zmm_flags, list(
+	BITFIELD(ZMM_IGNORE),
+	BITFIELD(ZMM_MANGLE_PLANES),
+	BITFIELD(ZMM_LOOKAHEAD),
+	BITFIELD(ZMM_AUTOMANGLE_STD),
+	BITFIELD(ZMM_AUTOMANGLE_PRI)
+))
+
+/*
+On ZMM_AUTOMANGLE_*:
+	So, it's possible for both normal and priority overlays to contain mangle targets.
+	Tracking them separately means that the logic in SSoverlays can avoid additional iterations of overlays.
+	They're also separate from ZMM_MANGLE_PLANES so SSoverlays doesn't disable mangling on a manually flagged atom.
+*/

@@ -461,7 +461,7 @@ SUBSYSTEM_DEF(zmimic)
 		OO.queued = 0
 
 		// If an atom has explicit plane sets on its overlays/underlays, we need to replace the appearance so they can be mangled to work with our planing.
-		if (OO.zmm_flags & ZMM_MANGLE_PLANES)
+		if (OO.zmm_flags & (ZMM_MANGLE_PLANES | ZMM_AUTOMANGLE))
 			var/new_appearance = fixup_appearance_planes(OO.appearance)
 			if (new_appearance)
 				OO.appearance = new_appearance
