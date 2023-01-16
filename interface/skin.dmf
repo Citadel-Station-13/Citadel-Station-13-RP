@@ -216,7 +216,7 @@ window "outputwindow"
 		anchor2 = -1,-1
 		saved-params = ""
 		text = "Hotkey Toggle"
-		command = "skin_toggle_hotkeys"
+		command = "Toggle-Hotkeys"
 		button-type = pushbox
 	elem "output"
 		type = OUTPUT
