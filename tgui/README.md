@@ -112,7 +112,7 @@ This is a known issue with Yarn (and some other tools, like Webpack), and fix is
 This happens if your Documents folder in Windows has a custom location, for example in `E:\Libraries\Documents`. Development server tries its best to find this non-standard location (searches for a Windows Registry key), but it can fail. You have to run the dev server with an additional environmental variable, with a full path to BYOND cache.
 
 ```js
-BYOND_CACHE="E:/Libraries/Documents/BYOND/cache"
+BYOND_CACHE = 'E:/Libraries/Documents/BYOND/cache';
 ```
 
 **Webpack errors out with some cryptic messages!**
@@ -138,7 +138,7 @@ Press `F12` or click the green bug to open the KitchenSink interface. This inter
 playground to test various tgui components.
 
 **Layout Debugger.**
-Press `F11` to toggle the *layout debugger*. It will show outlines of
+Press `F11` to toggle the _layout debugger_. It will show outlines of
 all tgui elements, which makes it easy to understand how everything comes
 together, and can reveal certain layout bugs which are not normally visible.
 

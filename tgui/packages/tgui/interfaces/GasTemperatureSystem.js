@@ -1,7 +1,15 @@
 import { round } from 'common/math';
-import { useBackend } from "../backend";
-import { Button, LabeledList, Section, Knob, Slider, LabeledControls, AnimatedNumber } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import {
+  Button,
+  LabeledList,
+  Section,
+  Knob,
+  Slider,
+  LabeledControls,
+  AnimatedNumber,
+} from '../components';
+import { Window } from '../layouts';
 
 export const GasTemperatureSystem = (props, context) => {
   const { act, data } = useBackend(context);
@@ -18,18 +26,19 @@ export const GasTemperatureSystem = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={270}
-      height={270}
-      resizeable>
+    <Window width={270} height={270} resizeable>
       <Window.Content>
-        <Section title="Controls" buttons={
-          <Button
-            icon="power-off"
-            content={on ? "On" : "Off"}
-            selected={on}
-            onClick={() => act("toggleStatus")} />
-        }>
+        <Section
+          title="Controls"
+          buttons={
+            <Button
+              icon="power-off"
+              content={on ? 'On' : 'Off'}
+              selected={on}
+              onClick={() => act('toggleStatus')}
+            />
+          }
+        >
           <LabeledControls>
             <LabeledControls.Item label="Power Level">
               <Knob
@@ -37,7 +46,7 @@ export const GasTemperatureSystem = (props, context) => {
                 maxValue="100"
                 stepPixelSize="1"
                 value={powerSetting}
-                onChange={(e, val) => act("setPower", { value: val })}
+                onChange={(e, val) => act('setPower', { value: val })}
               />
             </LabeledControls.Item>
             <LabeledControls.Item label="Gas Pressure">
@@ -61,10 +70,11 @@ export const GasTemperatureSystem = (props, context) => {
             maxValue={maxGasTemperature}
             fillValue={gasTemperature}
             value={targetGasTemperature}
-            format={value => (gasTemperature + " / " + round(value))}
+            format={(value) => gasTemperature + ' / ' + round(value)}
             unit="K"
             color={gasTemperatureClass}
-            onChange={(e, val) => act("setGasTemperature", { temp: val })} />
+            onChange={(e, val) => act('setGasTemperature', { temp: val })}
+          />
         </Section>
       </Window.Content>
     </Window>

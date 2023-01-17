@@ -20,10 +20,10 @@ export const InputModal = (props, context) => {
   // Current Input Value
   const [curValue, setCurValue] = useLocalState(context, 'curValue', initial);
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     if (e.keyCode === KEY_ESCAPE) {
       e.preventDefault();
-      act("cancel");
+      act('cancel');
       return;
     }
   };
@@ -71,12 +71,23 @@ export const InputModal = (props, context) => {
   }
 
   return (
-    <Window title={title} theme="abstract" width={initialWidth} height={initialHeight}>
+    <Window
+      title={title}
+      theme="abstract"
+      width={initialWidth}
+      height={initialHeight}
+    >
       {timeout !== undefined && <Loader value={timeout} />}
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow>
-            <Section fill scrollable className="InputModal__Section" title={message} tabIndex={0}>
+            <Section
+              fill
+              scrollable
+              className="InputModal__Section"
+              title={message}
+              tabIndex={0}
+            >
               {modalBody}
             </Section>
           </Stack.Item>
@@ -92,7 +103,13 @@ export const InputModal = (props, context) => {
                 />
               </Stack.Item>
               <Stack.Item grow basis={0}>
-                <Button fluid color="bad" lineHeight={2} content="Cancel" onClick={() => act('cancel')} />
+                <Button
+                  fluid
+                  color="bad"
+                  lineHeight={2}
+                  content="Cancel"
+                  onClick={() => act('cancel')}
+                />
               </Stack.Item>
             </Stack>
           </Stack.Item>

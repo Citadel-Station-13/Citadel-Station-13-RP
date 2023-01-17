@@ -62,8 +62,8 @@ export const Interview = (props, context) => {
           <Section title="Welcome!">
             <p>{linkify_text(welcome_message)}</p>
           </Section>
-        ))
-          || rendered_status(status)}
+        )) ||
+          rendered_status(status)}
         <Section
           title="Questionnaire"
           buttons={
@@ -93,7 +93,8 @@ export const Interview = (props, context) => {
                 </span>
               )}
             </span>
-          }>
+          }
+        >
           {!read_only && (
             <p>
               Please answer the following questions, and press submit when you
@@ -116,11 +117,12 @@ export const Interview = (props, context) => {
                   maxLength={500}
                   placeholder="Write your response here, max of 500 characters."
                   onChange={(e, input) =>
-                    input !== response
-                    && act('update_answer', {
+                    input !== response &&
+                    act('update_answer', {
                       qidx: qidx,
                       answer: input,
-                    })}
+                    })
+                  }
                 />
               )}
             </Section>

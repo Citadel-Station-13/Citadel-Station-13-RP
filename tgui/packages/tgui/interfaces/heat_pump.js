@@ -1,6 +1,12 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import {
+  Button,
+  LabeledList,
+  Section,
+  NumberInput,
+  AnimatedNumber,
+} from '../components';
+import { Window } from '../layouts';
 
 export const heat_pump = (props, context) => {
   const { act, data } = useBackend(context);
@@ -16,9 +22,7 @@ export const heat_pump = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={435}
-      height={175}>
+    <Window width={435} height={175}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -27,10 +31,11 @@ export const heat_pump = (props, context) => {
                 icon={on ? 'power-off' : 'times'}
                 content={on ? 'On' : 'Off'}
                 selected={on}
-                onClick={() => act('power')} />
+                onClick={() => act('power')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="Current Efficency">
-              <AnimatedNumber value={efficency*100} /> %
+              <AnimatedNumber value={efficency * 100} /> %
             </LabeledList.Item>
             <LabeledList.Item label="Current Temperature">
               <AnimatedNumber value={current_temp} /> Kelvin
@@ -44,9 +49,12 @@ export const heat_pump = (props, context) => {
                 icon="minus"
                 content="min"
                 disabled={target_temp === lowest_temp}
-                onClick={() => act('target_temp', {
-                  temperature: lowest_temp,
-                })} />
+                onClick={() =>
+                  act('target_temp', {
+                    temperature: lowest_temp,
+                  })
+                }
+              />
               <NumberInput
                 animated
                 value={parseFloat(target_temp)}
@@ -55,17 +63,23 @@ export const heat_pump = (props, context) => {
                 minValue={lowest_temp}
                 maxValue={highest_temp}
                 step={10}
-                onChange={(e, value) => act('target_temp', {
-                  temperature: value,
-                })} />
+                onChange={(e, value) =>
+                  act('target_temp', {
+                    temperature: value,
+                  })
+                }
+              />
               <Button
                 ml={1}
                 icon="plus"
                 content="Max"
                 disabled={target_temp === highest_temp}
-                onClick={() => act('target_temp', {
-                  temperature: highest_temp,
-                })} />
+                onClick={() =>
+                  act('target_temp', {
+                    temperature: highest_temp,
+                  })
+                }
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>

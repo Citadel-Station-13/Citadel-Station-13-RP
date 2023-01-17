@@ -1,5 +1,15 @@
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Knob, LabeledControls, LabeledList, NumberInput, Section, Tooltip } from '../../components';
+import {
+  Box,
+  Button,
+  Icon,
+  Knob,
+  LabeledControls,
+  LabeledList,
+  NumberInput,
+  Section,
+  Tooltip,
+} from '../../components';
 import { getGasLabel } from '../../constants';
 import { HelpDummy, HoverHelp } from './helpers';
 
@@ -10,7 +20,7 @@ import { HelpDummy, HoverHelp } from './helpers';
 
 const ComboKnob = (props, context) => {
   const {
-    color=false,
+    color = false,
     defaultValue,
     icon,
     flipIcon,
@@ -18,7 +28,7 @@ const ComboKnob = (props, context) => {
     minValue,
     maxValue,
     parameter,
-    step=5,
+    step = 5,
     value,
     ...rest
   } = props;
@@ -30,23 +40,21 @@ const ComboKnob = (props, context) => {
     iconProps.rotation = 180;
   }
 
-  const icon_element = icon && (<Icon
-    position="absolute"
-    top="16px"
-    left="-27px"
-    color="label"
-    fontSize="200%"
-    name={icon}
-    {...iconProps}
-  />);
+  const icon_element = icon && (
+    <Icon
+      position="absolute"
+      top="16px"
+      left="-27px"
+      color="label"
+      fontSize="200%"
+      name={icon}
+      {...iconProps}
+    />
+  );
 
   return (
-    <Box
-      position="relative"
-      left="2px">
-      {help
-        ? (<Tooltip content={help}>{icon_element}</Tooltip>)
-        : icon_element}
+    <Box position="relative" left="2px">
+      {help ? <Tooltip content={help}>{icon_element}</Tooltip> : icon_element}
       <Knob
         color={color}
         size={2}
@@ -96,7 +104,9 @@ export const HypertorusSecondaryControls = (props, context) => {
       <LabeledControls justify="space-around" wrap>
         <LabeledControls.Item label="Heating Conductor">
           <ComboKnob
-            color={data.heating_conductor > 50 && data.heat_output > 0 && "yellow"}
+            color={
+              data.heating_conductor > 50 && data.heat_output > 0 && 'yellow'
+            }
             value={parseFloat(data.heating_conductor)}
             unit="J/cm"
             minValue={50}
@@ -135,7 +145,7 @@ export const HypertorusSecondaryControls = (props, context) => {
         </LabeledControls.Item>
         <LabeledControls.Item label="Current Damper">
           <ComboKnob
-            color={data.current_damper && "yellow"}
+            color={data.current_damper && 'yellow'}
             value={parseFloat(data.current_damper)}
             unit="W"
             minValue={0}
@@ -161,8 +171,10 @@ export const HypertorusWasteRemove = (props, context) => {
           label={
             <>
               <HoverHelp
-                content={"Remove waste gases from Fusion,"
-                +" and any selected gases from the Moderator."}
+                content={
+                  'Remove waste gases from Fusion,' +
+                  ' and any selected gases from the Moderator.'
+                }
               />
               Waste remove:
             </>
@@ -172,10 +184,16 @@ export const HypertorusWasteRemove = (props, context) => {
             icon={data.waste_remove ? 'power-off' : 'times'}
             content={data.waste_remove ? 'On' : 'Off'}
             selected={data.waste_remove}
-            onClick={() => act('waste_remove')} />
+            onClick={() => act('waste_remove')}
+          />
         </LabeledList.Item>
         <LabeledList.Item
-          label={<><HelpDummy />Moderator filtering rate:</>}
+          label={
+            <>
+              <HelpDummy />
+              Moderator filtering rate:
+            </>
+          }
         >
           <NumberInput
             animated
@@ -183,22 +201,33 @@ export const HypertorusWasteRemove = (props, context) => {
             unit="mol/s"
             minValue={5}
             maxValue={200}
-            onDrag={(e, value) => act('mod_filtering_rate', {
-              mod_filtering_rate: value,
-            })} />
+            onDrag={(e, value) =>
+              act('mod_filtering_rate', {
+                mod_filtering_rate: value,
+              })
+            }
+          />
         </LabeledList.Item>
         <LabeledList.Item
-          label={<><HelpDummy />Filter from moderator mix:</>}
+          label={
+            <>
+              <HelpDummy />
+              Filter from moderator mix:
+            </>
+          }
         >
-          {filterTypes.map(filter => (
+          {filterTypes.map((filter) => (
             <Button
               key={filter.gas_id}
               icon={filter.enabled ? 'check-square-o' : 'square-o'}
               selected={filter.enabled}
               content={getGasLabel(filter.gas_id, filter.gas_name)}
-              onClick={() => act('filter', {
-                mode: filter.gas_id,
-              })} />
+              onClick={() =>
+                act('filter', {
+                  mode: filter.gas_id,
+                })
+              }
+            />
           ))}
         </LabeledList.Item>
       </LabeledList>

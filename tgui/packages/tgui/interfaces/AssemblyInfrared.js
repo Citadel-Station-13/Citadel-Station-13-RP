@@ -1,13 +1,10 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, Section } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import { Button, LabeledList, Section } from '../components';
+import { Window } from '../layouts';
 
 export const AssemblyInfrared = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    on,
-    visible,
-  } = data;
+  const { on, visible } = data;
   return (
     <Window>
       <Window.Content>
@@ -18,8 +15,9 @@ export const AssemblyInfrared = (props, context) => {
                 icon="power-off"
                 fluid
                 selected={on}
-                onClick={() => act("state")}>
-                {on ? "On" : "Off"}
+                onClick={() => act('state')}
+              >
+                {on ? 'On' : 'Off'}
               </Button>
             </LabeledList.Item>
             <LabeledList.Item label="Visibility">
@@ -27,8 +25,9 @@ export const AssemblyInfrared = (props, context) => {
                 icon="eye"
                 fluid
                 selected={visible}
-                onClick={() => act("visible")}>
-                {visible ? "Able to be seen" : "Invisible"}
+                onClick={() => act('visible')}
+              >
+                {visible ? 'Able to be seen' : 'Invisible'}
               </Button>
             </LabeledList.Item>
           </LabeledList>

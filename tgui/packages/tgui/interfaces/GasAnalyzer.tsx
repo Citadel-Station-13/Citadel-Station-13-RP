@@ -37,4 +37,3 @@ export const GasAnalyzer = (props, context) => {
     </Window>
   );
 };
-  

@@ -3,9 +3,20 @@
 import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "../components";
-import { Window } from "../layouts";
+import { useBackend, useLocalState } from '../backend';
+import {
+  Box,
+  ByondUi,
+  Button,
+  Flex,
+  Icon,
+  LabeledList,
+  Input,
+  ProgressBar,
+  Section,
+  Table,
+} from '../components';
+import { Window } from '../layouts';
 import { CrewManifestContent } from './CrewManifest';
 
 const HOMETAB = 1;
@@ -24,33 +35,43 @@ let TabToTemplate = {}; // Populated under each template
 export const Communicator = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    currentTab,
-    video_comm,
-    mapRef,
-  } = data;
+  const { currentTab, video_comm, mapRef } = data;
 
   /* 0: Fullscreen Video
    * 1: Popup Video
    * 2: Minimized Video
    */
-  const [videoSetting, setVideoSetting] = useLocalState(context, 'videoSetting', 0);
+  const [videoSetting, setVideoSetting] = useLocalState(
+    context,
+    'videoSetting',
+    0
+  );
 
   return (
     <Window width={475} height={700} resizable>
       <Window.Content>
-        {video_comm && <VideoComm videoSetting={videoSetting} setVideoSetting={setVideoSetting} />}
+        {video_comm && (
+          <VideoComm
+            videoSetting={videoSetting}
+            setVideoSetting={setVideoSetting}
+          />
+        )}
         {(!video_comm || videoSetting !== 0) && (
           <Fragment>
             <CommunicatorHeader />
-            <Box height="88%" mb={1} style={{
-              "overflow-y": "auto",
-            }}>
+            <Box
+              height="88%"
+              mb={1}
+              style={{
+                'overflow-y': 'auto',
+              }}
+            >
               {TabToTemplate[currentTab] || <TemplateError />}
             </Box>
             <CommunicatorFooter
               videoSetting={videoSetting}
-              setVideoSetting={setVideoSetting} />
+              setVideoSetting={setVideoSetting}
+            />
           </Fragment>
         )}
       </Window.Content>
@@ -61,15 +82,9 @@ export const Communicator = (props, context) => {
 const VideoComm = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    video_comm,
-    mapRef,
-  } = data;
+  const { video_comm, mapRef } = data;
 
-  const {
-    videoSetting,
-    setVideoSetting,
-  } = props;
+  const { videoSetting, setVideoSetting } = props;
 
   if (videoSetting === 0) {
     return (
@@ -80,7 +95,8 @@ const VideoComm = (props, context) => {
           params={{
             id: mapRef,
             type: 'map',
-          }} />
+          }}
+        />
         <Flex justify="space-between" spacing={1} mt={0.5}>
           <Flex.Item grow={1}>
             <Button
@@ -88,7 +104,8 @@ const VideoComm = (props, context) => {
               fluid
               fontSize={1.5}
               icon="window-minimize"
-              onClick={() => setVideoSetting(1)} />
+              onClick={() => setVideoSetting(1)}
+            />
           </Flex.Item>
           <Flex.Item grow={1}>
             <Button
@@ -97,7 +114,8 @@ const VideoComm = (props, context) => {
               fontSize={1.5}
               color="bad"
               icon="video-slash"
-              onClick={() => act("endvideo")} />
+              onClick={() => act('endvideo')}
+            />
           </Flex.Item>
           <Flex.Item grow={1}>
             <Button
@@ -106,7 +124,8 @@ const VideoComm = (props, context) => {
               fontSize={1.5}
               color="bad"
               icon="phone-slash"
-              onClick={() => act("hang_up")} />
+              onClick={() => act('hang_up')}
+            />
           </Flex.Item>
         </Flex>
       </Box>
@@ -115,11 +134,12 @@ const VideoComm = (props, context) => {
     return (
       <Box
         style={{
-          "position": "absolute",
-          "right": "5px",
-          "bottom": "50px",
-          "z-index": 1,
-        }}>
+          'position': 'absolute',
+          'right': '5px',
+          'bottom': '50px',
+          'z-index': 1,
+        }}
+      >
         <Section p={0} m={0}>
           <Flex justify="space-between" spacing={1}>
             <Flex.Item grow={1}>
@@ -128,7 +148,8 @@ const VideoComm = (props, context) => {
                 fluid
                 fontSize={1.5}
                 icon="window-minimize"
-                onClick={() => setVideoSetting(2)} />
+                onClick={() => setVideoSetting(2)}
+              />
             </Flex.Item>
             <Flex.Item grow={1}>
               <Button
@@ -136,7 +157,8 @@ const VideoComm = (props, context) => {
                 fluid
                 fontSize={1.5}
                 icon="window-maximize"
-                onClick={() => setVideoSetting(0)} />
+                onClick={() => setVideoSetting(0)}
+              />
             </Flex.Item>
             <Flex.Item grow={1}>
               <Button
@@ -145,7 +167,8 @@ const VideoComm = (props, context) => {
                 fontSize={1.5}
                 color="bad"
                 icon="video-slash"
-                onClick={() => act("endvideo")} />
+                onClick={() => act('endvideo')}
+              />
             </Flex.Item>
             <Flex.Item grow={1}>
               <Button
@@ -154,7 +177,8 @@ const VideoComm = (props, context) => {
                 fontSize={1.5}
                 color="bad"
                 icon="phone-slash"
-                onClick={() => act("hang_up")} />
+                onClick={() => act('hang_up')}
+              />
             </Flex.Item>
           </Flex>
         </Section>
@@ -164,7 +188,8 @@ const VideoComm = (props, context) => {
           params={{
             id: mapRef,
             type: 'map',
-          }} />
+          }}
+        />
       </Box>
     );
   }
@@ -174,14 +199,11 @@ const VideoComm = (props, context) => {
 const TemplateError = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    currentTab,
-  } = data;
+  const { currentTab } = data;
 
   return (
     <Section title="Error!">
-      You tried to access tab #{currentTab},
-      but there was no template defined!
+      You tried to access tab #{currentTab}, but there was no template defined!
     </Section>
   );
 };
@@ -189,30 +211,20 @@ const TemplateError = (props, context) => {
 const CommunicatorHeader = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    time,
-    connectionStatus,
-    owner,
-    occupation,
-  } = data;
+  const { time, connectionStatus, owner, occupation } = data;
 
   return (
     <Section>
       <Flex align="center" justify="space-between">
-        <Flex.Item color="average">
-          {time}
-        </Flex.Item>
+        <Flex.Item color="average">{time}</Flex.Item>
         <Flex.Item>
           <Icon
-            color={connectionStatus === 1 ? "good" : "bad"}
-            name={connectionStatus === 1 ? "signal" : "exclamation-triangle"} />
+            color={connectionStatus === 1 ? 'good' : 'bad'}
+            name={connectionStatus === 1 ? 'signal' : 'exclamation-triangle'}
+          />
         </Flex.Item>
-        <Flex.Item color="average">
-          {decodeHtmlEntities(owner)}
-        </Flex.Item>
-        <Flex.Item color="average">
-          {decodeHtmlEntities(occupation)}
-        </Flex.Item>
+        <Flex.Item color="average">{decodeHtmlEntities(owner)}</Flex.Item>
+        <Flex.Item color="average">{decodeHtmlEntities(occupation)}</Flex.Item>
       </Flex>
     </Section>
   );
@@ -221,25 +233,21 @@ const CommunicatorHeader = (props, context) => {
 const CommunicatorFooter = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    flashlight,
-  } = data;
+  const { flashlight } = data;
 
-  const {
-    videoSetting,
-    setVideoSetting,
-  } = props;
+  const { videoSetting, setVideoSetting } = props;
 
   return (
     <Flex>
-      <Flex.Item basis={videoSetting === 2 ? "60%" : "80%"}>
+      <Flex.Item basis={videoSetting === 2 ? '60%' : '80%'}>
         <Button
           p={1}
           fluid
           icon="home"
           iconSize={2}
           textAlign="center"
-          onClick={() => act("switch_tab", { switch_tab: HOMETAB })} />
+          onClick={() => act('switch_tab', { switch_tab: HOMETAB })}
+        />
       </Flex.Item>
       <Flex.Item basis="20%">
         <Button
@@ -251,7 +259,8 @@ const CommunicatorFooter = (props, context) => {
           selected={flashlight}
           tooltip="Flashlight"
           tooltipPosition="top"
-          onClick={() => act("Light")} />
+          onClick={() => act('Light')}
+        />
       </Flex.Item>
       {videoSetting === 2 && (
         <Flex.Item basis="20%">
@@ -263,7 +272,8 @@ const CommunicatorFooter = (props, context) => {
             textAlign="center"
             tooltip="Open Video"
             tooltipPosition="top"
-            onClick={() => setVideoSetting(1)} />
+            onClick={() => setVideoSetting(1)}
+          />
         </Flex.Item>
       )}
     </Flex>
@@ -283,8 +293,14 @@ const hasNotifications = (app, context) => {
     video_comm,
   } = data;
 
-  if (app === "Phone") {
-    if (voice_mobs.length || communicating.length || requestsReceived.length || invitesSent.length || video_comm) {
+  if (app === 'Phone') {
+    if (
+      voice_mobs.length ||
+      communicating.length ||
+      requestsReceived.length ||
+      invitesSent.length ||
+      video_comm
+    ) {
       return true;
     }
   }
@@ -298,35 +314,33 @@ const hasNotifications = (app, context) => {
 const HomeTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    homeScreen,
-  } = data;
+  const { homeScreen } = data;
 
   return (
     <Flex mt={2} wrap="wrap" align="center" justify="center">
-      {homeScreen.map(app => (
+      {homeScreen.map((app) => (
         <Flex.Item basis="25%" textAlign="center" mb={2} key={app.number}>
           <Button
             style={{
-              "border-radius": "10%",
-              "border": "1px solid #000",
+              'border-radius': '10%',
+              'border': '1px solid #000',
             }}
             width="64px"
             height="64px"
             position="relative"
-            onClick={() => act("switch_tab", { switch_tab: app.number })}>
+            onClick={() => act('switch_tab', { switch_tab: app.number })}
+          >
             <Icon
               spin={hasNotifications(app.module, context)}
-              color={hasNotifications(app.module, context) ? "bad" : null}
+              color={hasNotifications(app.module, context) ? 'bad' : null}
               name={app.icon}
               position="absolute"
               size={3}
               top="25%"
-              left="25%" />
+              left="25%"
+            />
           </Button>
-          <Box>
-            {app.module}
-          </Box>
+          <Box>{app.module}</Box>
         </Flex.Item>
       ))}
     </Flex>
@@ -358,12 +372,14 @@ const PhoneTab = (props, context) => {
               <Input
                 fluid
                 value={targetAddress}
-                onInput={(e, val) => act("write_target_address", { val: val })} />
+                onInput={(e, val) => act('write_target_address', { val: val })}
+              />
             </Flex.Item>
             <Flex.Item>
               <Button
                 icon="times"
-                onClick={() => act("clear_target_address")} />
+                onClick={() => act('clear_target_address')}
+              />
             </Flex.Item>
           </Flex>
         </LabeledList.Item>
@@ -375,36 +391,37 @@ const PhoneTab = (props, context) => {
             <Button
               fluid
               content={
-                selfie_mode
-                  ? "Front-facing Camera"
-                  : "Rear-facing Camera"
+                selfie_mode ? 'Front-facing Camera' : 'Rear-facing Camera'
               }
-              onClick={() => act("selfie_mode")} />
+              onClick={() => act('selfie_mode')}
+            />
           </LabeledList.Item>
         </LabeledList>
         <Section title="External Connections" level={3}>
-          {!!voice_mobs.length && (
+          {(!!voice_mobs.length && (
             <LabeledList>
-              {voice_mobs.map(mob => (
-                <LabeledList.Item label={decodeHtmlEntities(mob.name)} key={mob.ref}>
+              {voice_mobs.map((mob) => (
+                <LabeledList.Item
+                  label={decodeHtmlEntities(mob.name)}
+                  key={mob.ref}
+                >
                   <Button
                     icon="times"
                     color="bad"
                     content="Disconnect"
-                    onClick={() => act("disconnect", { disconnect: mob.true_name })} />
+                    onClick={() =>
+                      act('disconnect', { disconnect: mob.true_name })
+                    }
+                  />
                 </LabeledList.Item>
               ))}
             </LabeledList>
-          ) || (
-            <Box>
-              No connections
-            </Box>
-          )}
+          )) || <Box>No connections</Box>}
         </Section>
         <Section title="Internal Connections" level={3}>
-          {!!communicating.length && (
+          {(!!communicating.length && (
             <Table>
-              {communicating.map(comm => (
+              {communicating.map((comm) => (
                 <Table.Row key={comm.address}>
                   <Table.Cell color="label">
                     {decodeHtmlEntities(comm.name)}
@@ -414,76 +431,83 @@ const PhoneTab = (props, context) => {
                       icon="times"
                       color="bad"
                       content="Disconnect"
-                      onClick={() => act("disconnect", { disconnect: comm.true_name })} />
-                    {video_comm === null && (
+                      onClick={() =>
+                        act('disconnect', { disconnect: comm.true_name })
+                      }
+                    />
+                    {(video_comm === null && (
                       <Button
                         icon="camera"
                         content="Start Video"
-                        onClick={() => act("startvideo", { startvideo: comm.ref })} />
-                    ) || video_comm === comm.ref && (
-                      <Button
-                        icon="times"
-                        color="bad"
-                        content="Stop Video"
-                        onClick={() => act("endvideo", { endvideo: comm.true_name })} />
-                    )}
+                        onClick={() =>
+                          act('startvideo', { startvideo: comm.ref })
+                        }
+                      />
+                    )) ||
+                      (video_comm === comm.ref && (
+                        <Button
+                          icon="times"
+                          color="bad"
+                          content="Stop Video"
+                          onClick={() =>
+                            act('endvideo', { endvideo: comm.true_name })
+                          }
+                        />
+                      ))}
                   </Table.Cell>
                 </Table.Row>
               ))}
             </Table>
-          ) || (
-            <Box>
-              No connections
-            </Box>
-          )}
+          )) || <Box>No connections</Box>}
         </Section>
         <Section title="Requests Received" level={3}>
-          {!!requestsReceived.length && (
+          {(!!requestsReceived.length && (
             <LabeledList>
-              {requestsReceived.map(request => (
-                <LabeledList.Item label={decodeHtmlEntities(request.name)} key={request.address}>
+              {requestsReceived.map((request) => (
+                <LabeledList.Item
+                  label={decodeHtmlEntities(request.name)}
+                  key={request.address}
+                >
                   <Box>{decodeHtmlEntities(request.address)}</Box>
                   <Box>
                     <Button
                       icon="signal"
                       content="Accept"
-                      onClick={() => act("dial", { dial: request.address })} />
+                      onClick={() => act('dial', { dial: request.address })}
+                    />
                     <Button
                       icon="times"
                       content="Decline"
-                      onClick={() => act("decline", { decline: request.ref })} />
+                      onClick={() => act('decline', { decline: request.ref })}
+                    />
                   </Box>
                 </LabeledList.Item>
               ))}
             </LabeledList>
-          ) || (
-            <Box>
-              No requests received.
-            </Box>
-          )}
+          )) || <Box>No requests received.</Box>}
         </Section>
         <Section title="Invites Sent" level={3}>
-          {!!invitesSent.length && (
+          {(!!invitesSent.length && (
             <LabeledList>
-              {invitesSent.map(invite => (
-                <LabeledList.Item label={decodeHtmlEntities(invite.name)} key={invite.address}>
+              {invitesSent.map((invite) => (
+                <LabeledList.Item
+                  label={decodeHtmlEntities(invite.name)}
+                  key={invite.address}
+                >
                   <Box>{decodeHtmlEntities(invite.address)}</Box>
                   <Box>
                     <Button
                       icon="pen"
                       onClick={() => {
-                        act("copy", { "copy": invite.address });
+                        act('copy', { 'copy': invite.address });
                       }}
-                      content="Copy" />
+                      content="Copy"
+                    />
                   </Box>
                 </LabeledList.Item>
               ))}
             </LabeledList>
-          ) || (
-            <Box>
-              No invites sent.
-            </Box>
-          )}
+          )) || <Box>No invites sent.</Box>}
         </Section>
       </Section>
     </Section>
@@ -494,19 +518,35 @@ const PhoneTab = (props, context) => {
 const NumberPad = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    targetAddress,
-  } = data;
+  const { targetAddress } = data;
 
-  const validCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+  const validCharacters = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+  ];
 
-  let buttonArray = validCharacters.map(char => (
+  let buttonArray = validCharacters.map((char) => (
     <Button
       key={char}
       content={char}
       fontSize={2}
       fluid
-      onClick={() => act("add_hex", { add_hex: char })} />
+      onClick={() => act('add_hex', { add_hex: char })}
+    />
   ));
 
   let finalArray = [];
@@ -525,9 +565,7 @@ const NumberPad = (props, context) => {
   return (
     <Flex align="center" justify="center" mt={1}>
       <Flex.Item>
-        <Table>
-          {finalArray}
-        </Table>
+        <Table>{finalArray}</Table>
         <Flex width="100%" justify="space-between">
           {/* Dial */}
           <Flex.Item basis="33%">
@@ -535,17 +573,17 @@ const NumberPad = (props, context) => {
               width="100%"
               height="64px"
               position="relative"
-              onClick={() => act("dial", { dial: targetAddress })}>
+              onClick={() => act('dial', { dial: targetAddress })}
+            >
               <Icon
                 name="phone"
                 position="absolute"
                 size={3}
                 top="25%"
-                left="25%" />
+                left="25%"
+              />
             </Button>
-            <Box textAlign="center">
-              Dial
-            </Box>
+            <Box textAlign="center">Dial</Box>
           </Flex.Item>
           {/* Message */}
           <Flex.Item basis="33%">
@@ -554,19 +592,19 @@ const NumberPad = (props, context) => {
               height="64px"
               position="relative"
               onClick={() => {
-                act("message", { message: targetAddress });
-                act("switch_tab", { switch_tab: MESSTAB });
-              }}>
+                act('message', { message: targetAddress });
+                act('switch_tab', { switch_tab: MESSTAB });
+              }}
+            >
               <Icon
                 name="comment-alt"
                 position="absolute"
                 size={3}
                 top="25%"
-                left="25%" />
+                left="25%"
+              />
             </Button>
-            <Box textAlign="center">
-              Message
-            </Box>
+            <Box textAlign="center">Message</Box>
           </Flex.Item>
           {/* Hang Up */}
           <Flex.Item basis="33%">
@@ -574,17 +612,17 @@ const NumberPad = (props, context) => {
               width="100%"
               height="64px"
               position="relative"
-              onClick={() => act("hang_up")}>
+              onClick={() => act('hang_up')}
+            >
               <Icon
                 name="times"
                 position="absolute"
                 size={3}
                 top="25%"
-                left="25%" />
+                left="25%"
+              />
             </Button>
-            <Box textAlign="center">
-              Hang Up
-            </Box>
+            <Box textAlign="center">Hang Up</Box>
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -598,19 +636,20 @@ TabToTemplate[PHONTAB] = <PhoneTab />;
 const ContactsTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    knownDevices,
-  } = data;
+  const { knownDevices } = data;
 
   return (
     <Section title="Known Devices">
-      {knownDevices.length && (
+      {(knownDevices.length && (
         <Table>
-          {knownDevices.map(device => (
+          {knownDevices.map((device) => (
             <Table.Row key={device.address}>
-              <Table.Cell color="label" style={{
-                "word-break": "break-all",
-              }}>
+              <Table.Cell
+                color="label"
+                style={{
+                  'word-break': 'break-all',
+                }}
+              >
                 {decodeHtmlEntities(device.name)}
               </Table.Cell>
               <Table.Cell>
@@ -619,36 +658,35 @@ const ContactsTab = (props, context) => {
                   <Button
                     icon="pen"
                     onClick={() => {
-                      act("copy", { "copy": device.address });
-                      act("switch_tab", { switch_tab: PHONTAB });
+                      act('copy', { 'copy': device.address });
+                      act('switch_tab', { switch_tab: PHONTAB });
                     }}
-                    content="Copy" />
+                    content="Copy"
+                  />
                   <Button
                     icon="phone"
                     onClick={() => {
-                      act("dial", { "dial": device.address });
-                      act("copy", { "copy": device.address });
-                      act("switch_tab", { switch_tab: PHONTAB });
+                      act('dial', { 'dial': device.address });
+                      act('copy', { 'copy': device.address });
+                      act('switch_tab', { switch_tab: PHONTAB });
                     }}
-                    content="Call" />
+                    content="Call"
+                  />
                   <Button
                     icon="comment-alt"
                     onClick={() => {
-                      act("copy", { "copy": device.address });
-                      act("copy_name", { "copy_name": device.name });
-                      act("switch_tab", { switch_tab: MESSSUBTAB });
+                      act('copy', { 'copy': device.address });
+                      act('copy_name', { 'copy_name': device.name });
+                      act('switch_tab', { switch_tab: MESSSUBTAB });
                     }}
-                    content="Msg" />
+                    content="Msg"
+                  />
                 </Box>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table>
-      ) || (
-        <Box>
-          No devices detected on your local NTNet region.
-        </Box>
-      )}
+      )) || <Box>No devices detected on your local NTNet region.</Box>}
     </Section>
   );
 };
@@ -659,19 +697,20 @@ TabToTemplate[CONTTAB] = <ContactsTab />;
 const MessagingTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    imContacts,
-  } = data;
+  const { imContacts } = data;
 
   return (
     <Section title="Messaging">
-      {imContacts.length && (
+      {(imContacts.length && (
         <Table>
-          {imContacts.map(device => (
+          {imContacts.map((device) => (
             <Table.Row key={device.address}>
-              <Table.Cell color="label" style={{
-                "word-break": "break-all",
-              }}>
+              <Table.Cell
+                color="label"
+                style={{
+                  'word-break': 'break-all',
+                }}
+              >
                 {decodeHtmlEntities(device.name)}:
               </Table.Cell>
               <Table.Cell>
@@ -680,24 +719,26 @@ const MessagingTab = (props, context) => {
                   <Button
                     icon="comment"
                     onClick={() => {
-                      act("copy", { copy: device.address });
-                      act("copy_name", { copy_name: device.name });
-                      act("switch_tab", { switch_tab: MESSSUBTAB });
+                      act('copy', { copy: device.address });
+                      act('copy_name', { copy_name: device.name });
+                      act('switch_tab', { switch_tab: MESSSUBTAB });
                     }}
-                    content="View Conversation" />
+                    content="View Conversation"
+                  />
                 </Box>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table>
-      ) || (
+      )) || (
         <Box>
           You haven&apos;t sent any messages yet.
           <Button
             fluid
             icon="user"
-            onClick={() => act("switch_tab", { switch_tab: CONTTAB })}
-            content="Contacts" />
+            onClick={() => act('switch_tab', { switch_tab: CONTTAB })}
+            content="Contacts"
+          />
         </Box>
       )}
     </Section>
@@ -714,7 +755,7 @@ const IsIMOurs = (im, targetAddress) => {
 const enforceLengthLimit = (prefix, name, length) => {
   if ((prefix + name).length > length) {
     if (name.length > length) {
-      return name.slice(0, length) + "...";
+      return name.slice(0, length) + '...';
     }
     return name;
   }
@@ -723,110 +764,138 @@ const enforceLengthLimit = (prefix, name, length) => {
 
 const findClassMessage = (im, targetAddress, lastIndex, filterArray) => {
   if (lastIndex < 0 || lastIndex > filterArray.length) {
-    return IsIMOurs(im, targetAddress) ? "TinderMessage_First_Sent" : "TinderMessage_First_Received";
+    return IsIMOurs(im, targetAddress)
+      ? 'TinderMessage_First_Sent'
+      : 'TinderMessage_First_Received';
   }
 
   let thisSent = IsIMOurs(im, targetAddress);
   let lastSent = IsIMOurs(filterArray[lastIndex], targetAddress);
   if (thisSent && lastSent) {
-    return "TinderMessage_Subsequent_Sent";
+    return 'TinderMessage_Subsequent_Sent';
   } else if (!thisSent && !lastSent) {
-    return "TinderMessage_Subsequent_Received";
+    return 'TinderMessage_Subsequent_Received';
   }
-  return thisSent ? "TinderMessage_First_Sent" : "TinderMessage_First_Received";
+  return thisSent ? 'TinderMessage_First_Sent' : 'TinderMessage_First_Received';
 };
 
 const MessagingThreadTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    targetAddressName,
-    targetAddress,
-    imList,
-  } = data;
+  const { targetAddressName, targetAddress, imList } = data;
 
-  const [clipboardMode, setClipboardMode] = useLocalState(context, 'clipboardMode', false);
+  const [clipboardMode, setClipboardMode] = useLocalState(
+    context,
+    'clipboardMode',
+    false
+  );
 
   if (clipboardMode) {
     return (
       <Section
-        title={(
+        title={
           <Box
             inline
             style={{
-              "white-space": "nowrap",
-              "overflow-x": "hidden",
+              'white-space': 'nowrap',
+              'overflow-x': 'hidden',
             }}
-            width="90%">
-            {enforceLengthLimit("Conversation with ", decodeHtmlEntities(targetAddressName), 30)}
+            width="90%"
+          >
+            {enforceLengthLimit(
+              'Conversation with ',
+              decodeHtmlEntities(targetAddressName),
+              30
+            )}
           </Box>
-        )}
+        }
         buttons={
           <Button
             icon="eye"
             selected={clipboardMode}
             tooltip="Exit Clipboard Mode"
             tooltipPosition="bottom-end"
-            onClick={() => setClipboardMode(!clipboardMode)} />
+            onClick={() => setClipboardMode(!clipboardMode)}
+          />
         }
         height="100%"
-        stretchContents>
-        <Section style={{
-          "height": "95%",
-          "overflow-y": "auto",
-        }}>
+        stretchContents
+      >
+        <Section
+          style={{
+            'height': '95%',
+            'overflow-y': 'auto',
+          }}
+        >
           {imList.map((im, i) => (
             <Box
               key={i}
-              className={IsIMOurs(im, targetAddress) ? "ClassicMessage_Sent" : "ClassicMessage_Received"}>
-              {IsIMOurs(im, targetAddress) ? "You" : "Them"}: {im.im}
+              className={
+                IsIMOurs(im, targetAddress)
+                  ? 'ClassicMessage_Sent'
+                  : 'ClassicMessage_Received'
+              }
+            >
+              {IsIMOurs(im, targetAddress) ? 'You' : 'Them'}: {im.im}
             </Box>
           ))}
         </Section>
         <Button
           icon="comment"
-          onClick={() => act("message", { "message": targetAddress })}
-          content="Message" />
+          onClick={() => act('message', { 'message': targetAddress })}
+          content="Message"
+        />
       </Section>
     );
   }
 
   return (
     <Section
-      title={(
+      title={
         <Box
           inline
           style={{
-            "white-space": "nowrap",
-            "overflow-x": "hidden",
+            'white-space': 'nowrap',
+            'overflow-x': 'hidden',
           }}
-          width="100%">
-          {enforceLengthLimit("Conversation with ", decodeHtmlEntities(targetAddressName), 30)}
+          width="100%"
+        >
+          {enforceLengthLimit(
+            'Conversation with ',
+            decodeHtmlEntities(targetAddressName),
+            30
+          )}
         </Box>
-      )}
+      }
       buttons={
         <Button
           icon="eye"
           selected={clipboardMode}
           tooltip="Enter Clipboard Mode"
           tooltipPosition="bottom-end"
-          onClick={() => setClipboardMode(!clipboardMode)} />
+          onClick={() => setClipboardMode(!clipboardMode)}
+        />
       }
       height="100%"
-      stretchContents>
-      <Section style={{
-        "height": "95%",
-        "overflow-y": "auto",
-      }}>
+      stretchContents
+    >
+      <Section
+        style={{
+          'height': '95%',
+          'overflow-y': 'auto',
+        }}
+      >
         {imList.map((im, i, filterArr) => (
           <Box
-            textAlign={IsIMOurs(im, targetAddress) ? "right" : "left"}
+            textAlign={IsIMOurs(im, targetAddress) ? 'right' : 'left'}
             mb={1}
-            key={i}>
+            key={i}
+          >
             <Box
               maxWidth="75%"
               className={findClassMessage(im, targetAddress, i - 1, filterArr)}
-              inline>
+              inline
+            >
               {decodeHtmlEntities(im.im)}
             </Box>
           </Box>
@@ -834,8 +903,9 @@ const MessagingThreadTab = (props, context) => {
       </Section>
       <Button
         icon="comment"
-        onClick={() => act("message", { "message": targetAddress })}
-        content="Message" />
+        onClick={() => act('message', { 'message': targetAddress })}
+        content="Message"
+      />
     </Section>
   );
 };
@@ -846,22 +916,16 @@ TabToTemplate[MESSSUBTAB] = <MessagingThreadTab />;
 const NewsTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    feeds,
-    target_feed,
-  } = data;
+  const { feeds, target_feed } = data;
 
   return (
     <Section title="News" stretchContents height="100%">
-      {!feeds.length && (
+      {(!feeds.length && (
         <Box color="bad">
           Error: No newsfeeds available. Please try again later.
         </Box>
-      ) || target_feed && (
-        <NewsTargetFeed />
-      ) || (
-        <NewsFeed />
-      )}
+      )) ||
+        (target_feed && <NewsTargetFeed />) || <NewsFeed />}
     </Section>
   );
 };
@@ -869,31 +933,36 @@ const NewsTab = (props, context) => {
 const NewsTargetFeed = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    target_feed,
-  } = data;
+  const { target_feed } = data;
 
   return (
     <Section
-      title={decodeHtmlEntities(target_feed.name) + " by " + decodeHtmlEntities(target_feed.author)}
+      title={
+        decodeHtmlEntities(target_feed.name) +
+        ' by ' +
+        decodeHtmlEntities(target_feed.author)
+      }
       level={2}
       buttons={
         <Button
           content="Back"
           icon="chevron-up"
-          onClick={() => act("newsfeed", { newsfeed: null })} />
-      }>
-      {target_feed.messages.map(message => (
+          onClick={() => act('newsfeed', { newsfeed: null })}
+        />
+      }
+    >
+      {target_feed.messages.map((message) => (
         <Section key={message.ref}>
           - {decodeHtmlEntities(message.body)}
           {!!message.img && (
             <Box>
-              <img src={"data:image/png;base64," + message.img} />
+              <img src={'data:image/png;base64,' + message.img} />
               {decodeHtmlEntities(message.caption) || null}
             </Box>
           )}
           <Box color="grey">
-            [{message.message_type} by {decodeHtmlEntities(message.author)} - {message.time_stamp}]
+            [{message.message_type} by {decodeHtmlEntities(message.author)} -{' '}
+            {message.time_stamp}]
           </Box>
         </Section>
       ))}
@@ -904,24 +973,22 @@ const NewsTargetFeed = (props, context) => {
 const NewsFeed = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    feeds,
-    latest_news,
-  } = data;
+  const { feeds, latest_news } = data;
 
   return (
     <Fragment>
       <Section title="Recent News" level={2}>
         <Section>
-          {latest_news.map(news => (
+          {latest_news.map((news) => (
             <Box mb={2} key={news.index}>
               <h5>
                 {decodeHtmlEntities(news.channel)}
                 <Button
                   ml={1}
                   icon="chevron-up"
-                  onClick={() => act("newsfeed", { newsfeed: news.index })}
-                  content="Go to" />
+                  onClick={() => act('newsfeed', { newsfeed: news.index })}
+                  content="Go to"
+                />
               </h5>
               - {decodeHtmlEntities(news.body)}
               {!!news.img && (
@@ -931,20 +998,25 @@ const NewsFeed = (props, context) => {
                 </Box>
               )}
               <Box fontSize={0.9}>
-                [{news.message_type} by <Box inline color="average">{news.author}</Box> - {news.time_stamp}]
+                [{news.message_type} by{' '}
+                <Box inline color="average">
+                  {news.author}
+                </Box>{' '}
+                - {news.time_stamp}]
               </Box>
             </Box>
           ))}
         </Section>
       </Section>
       <Section title="News Feeds" level={2}>
-        {feeds.map(feed => (
+        {feeds.map((feed) => (
           <Button
             key={feed.index}
             fluid
             icon="chevron-up"
-            onClick={() => act("newsfeed", { newsfeed: feed.index })}
-            content={feed.name} />
+            onClick={() => act('newsfeed', { newsfeed: feed.index })}
+            content={feed.name}
+          />
         ))}
       </Section>
     </Fragment>
@@ -957,21 +1029,26 @@ TabToTemplate[NEWSTAB] = <NewsTab />;
 const NoteTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    note,
-  } = data;
+  const { note } = data;
 
   return (
-    <Section title="Note Keeper" height="100%" stretchContents buttons={
-      <Button
-        icon="pen"
-        onClick={() => act("edit")}
-        content="Edit Notes" />
-    }>
-      <Section color="average" width="100%" height="100%" style={{
-        "word-break": "break-all",
-        "overflow-y": "auto",
-      }}>
+    <Section
+      title="Note Keeper"
+      height="100%"
+      stretchContents
+      buttons={
+        <Button icon="pen" onClick={() => act('edit')} content="Edit Notes" />
+      }
+    >
+      <Section
+        color="average"
+        width="100%"
+        height="100%"
+        style={{
+          'word-break': 'break-all',
+          'overflow-y': 'auto',
+        }}
+      >
         {note}
       </Section>
     </Section>
@@ -983,58 +1060,62 @@ TabToTemplate[NOTETAB] = <NoteTab />;
 /* Weather App */
 const getItemColor = (value, min2, min1, max1, max2) => {
   if (value < min2) {
-    return "bad";
+    return 'bad';
   } else if (value < min1) {
-    return "average";
+    return 'average';
   } else if (value > max1) {
-    return "average";
+    return 'average';
   } else if (value > max2) {
-    return "bad";
+    return 'bad';
   }
-  return "good";
+  return 'good';
 };
 
 const WeatherTab = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    aircontents,
-    weather,
-  } = data;
+  const { aircontents, weather } = data;
 
   return (
     <Section title="Weather">
       <Section level={2} title="Current Conditions">
         <LabeledList>
           {filter(
-            i => (i.val !== "0") || i.entry === "Pressure" || i.entry === "Temperature"
-          )(aircontents)
-            .map(item => (
-              <LabeledList.Item
-                key={item.entry}
-                label={item.entry}
-                color={getItemColor(item.val, item.bad_low, item.poor_low, item.poor_high, item.bad_high)}>
-                {item.val}{decodeHtmlEntities(item.units)}
-              </LabeledList.Item>
-            ))}
+            (i) =>
+              i.val !== '0' ||
+              i.entry === 'Pressure' ||
+              i.entry === 'Temperature'
+          )(aircontents).map((item) => (
+            <LabeledList.Item
+              key={item.entry}
+              label={item.entry}
+              color={getItemColor(
+                item.val,
+                item.bad_low,
+                item.poor_low,
+                item.poor_high,
+                item.bad_high
+              )}
+            >
+              {item.val}
+              {decodeHtmlEntities(item.units)}
+            </LabeledList.Item>
+          ))}
         </LabeledList>
       </Section>
       <Section level={2} title="Weather Reports">
-        {!!weather.length && (
+        {(!!weather.length && (
           <LabeledList>
-            {weather.map(wr => (
+            {weather.map((wr) => (
               <LabeledList.Item label={wr.Planet} key={wr.Planet}>
                 <LabeledList>
-                  <LabeledList.Item label="Time">
-                    {wr.Time}
-                  </LabeledList.Item>
+                  <LabeledList.Item label="Time">{wr.Time}</LabeledList.Item>
                   <LabeledList.Item label="Weather">
                     {toTitleCase(wr.Weather)}
                   </LabeledList.Item>
                   <LabeledList.Item label="Temperature">
-                    Current: {wr.Temperature.toFixed()}&deg;C
-                    | High: {wr.High.toFixed()}&deg;C
-                    | Low: {wr.Low.toFixed()}&deg;C
+                    Current: {wr.Temperature.toFixed()}&deg;C | High:{' '}
+                    {wr.High.toFixed()}&deg;C | Low: {wr.Low.toFixed()}&deg;C
                   </LabeledList.Item>
                   <LabeledList.Item label="Wind Direction">
                     {wr.WindDir}
@@ -1049,7 +1130,7 @@ const WeatherTab = (props, context) => {
               </LabeledList.Item>
             ))}
           </LabeledList>
-        ) || (
+        )) || (
           <Box color="bad">
             No weather reports available. Please check back later.
           </Box>
@@ -1087,23 +1168,25 @@ const SettingsTab = (props, context) => {
             icon="pen"
             fluid
             content={decodeHtmlEntities(owner)}
-            onClick={() => act("rename")} />
+            onClick={() => act('rename')}
+          />
         </LabeledList.Item>
         <LabeledList.Item label="Camera Mode">
           <Button
             fluid
-            content={
-              selfie_mode
-                ? "Front-facing Camera"
-                : "Rear-facing Camera"
-            }
-            onClick={() => act("selfie_mode")} />
+            content={selfie_mode ? 'Front-facing Camera' : 'Rear-facing Camera'}
+            onClick={() => act('selfie_mode')}
+          />
         </LabeledList.Item>
         <LabeledList.Item label="Occupation">
           {decodeHtmlEntities(occupation)}
         </LabeledList.Item>
         <LabeledList.Item label="Connection">
-          {connectionStatus === 1 ? <Box color="good">Connected</Box> : <Box color="bad">Disconnected</Box>}
+          {connectionStatus === 1 ? (
+            <Box color="good">Connected</Box>
+          ) : (
+            <Box color="bad">Disconnected</Box>
+          )}
         </LabeledList.Item>
         <LabeledList.Item label="Device EPv2 Address">
           {address}
@@ -1115,26 +1198,25 @@ const SettingsTab = (props, context) => {
             fluid
             content={
               visible
-                ? "This device can be seen by other devices."
-                : "This device is invisible to other devices."
+                ? 'This device can be seen by other devices.'
+                : 'This device is invisible to other devices.'
             }
-            onClick={() => act("toggle_visibility")} />
+            onClick={() => act('toggle_visibility')}
+          />
         </LabeledList.Item>
         <LabeledList.Item label="Ringer">
           <Button.Checkbox
             checked={ring}
             selected={ring}
             fluid
-            content={
-              ring
-                ? "Ringer on."
-                : "Ringer off."
-            }
-            onClick={() => act("toggle_ringer")} />
+            content={ring ? 'Ringer on.' : 'Ringer off.'}
+            onClick={() => act('toggle_ringer')}
+          />
           <Button
             fluid
             content="Set Ringer Tone"
-            onClick={() => act("set_ringer_tone")} />
+            onClick={() => act('set_ringer_tone')}
+          />
         </LabeledList.Item>
       </LabeledList>
     </Section>

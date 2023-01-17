@@ -105,11 +105,14 @@ const GasHandbook = (props, context) => {
             setActiveGasId(
               gasInfo.find((gas) =>
                 gas.name.toLowerCase().startsWith(keyword.toLowerCase())
-              )?.id || '')}
+              )?.id || ''
+            )
+          }
           activeInput={gasActiveInput}
           setActiveInput={setGasActiveInput}
         />
-      }>
+      }
+    >
       {relevantGas && (
         <>
           <Box mb="0.5em">{relevantGas.description}</Box>
@@ -167,11 +170,14 @@ const ReactionHandbook = (props, context) => {
             setActiveReactionId(
               reactionInfo.find((reaction) =>
                 reaction.name.toLowerCase().startsWith(keyword.toLowerCase())
-              )?.id || '')}
+              )?.id || ''
+            )
+          }
           activeInput={reactionActiveInput}
           setActiveInput={setReactionActiveInput}
         />
-      }>
+      }
+    >
       {relevantReaction && (
         <>
           <Box mb="0.5em">{relevantReaction.description}</Box>
@@ -191,13 +197,17 @@ const ReactionHandbook = (props, context) => {
                       <Flex>
                         <Flex.Item
                           style={{ 'border-bottom': 'dotted 2px' }}
-                          shrink>
+                          shrink
+                        >
                           {factor.factor_name + ':'}
                         </Flex.Item>
                       </Flex>
                     </Tooltip>
-                  ) : (factor.factor_name)
-                }>
+                  ) : (
+                    factor.factor_name
+                  )
+                }
+              >
                 {factor.desc}
               </LabeledList.Item>
             ))}

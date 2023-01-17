@@ -11,15 +11,15 @@ const COLOR_DARK_BG_DARKER = '#171717';
 const COLOR_DARK_TEXT = '#a4bad6';
 */
 /* CIT SPECIFIC DEFINES. */
-const COLOR_DARK_INFO_BUTTONS_BG = "#40628A";
-const COLOR_DARK_BG = "#272727";
-const COLOR_DARK_DARKBG = "#242424";
-const COLOR_DARK_TEXT = "#E0E0E0";
+const COLOR_DARK_INFO_BUTTONS_BG = '#40628A';
+const COLOR_DARK_BG = '#272727';
+const COLOR_DARK_DARKBG = '#242424';
+const COLOR_DARK_TEXT = '#E0E0E0';
 
-const COLOR_WHITE_INFO_BUTTONS_BG = "#90B3DD";
-const COLOR_WHITE_BG = "#F0F0F0";
-const COLOR_WHITE_DARKBG = "#E6E6E6";
-const COLOR_WHITE_TEXT = "#000000";
+const COLOR_WHITE_INFO_BUTTONS_BG = '#90B3DD';
+const COLOR_WHITE_BG = '#F0F0F0';
+const COLOR_WHITE_DARKBG = '#E6E6E6';
+const COLOR_WHITE_TEXT = '#000000';
 
 let setClientThemeTimer = null;
 
@@ -33,10 +33,10 @@ let setClientThemeTimer = null;
  * There's no way round it. We're essentially changing the skin by hand.
  * It's painful but it works, and is the way Lummox suggested.
  */
-export const setClientTheme = name => {
+export const setClientTheme = (name) => {
   // Transmit once for fast updates and again in a little while in case we won
   // the race against statbrowser init.
-  let stat_theme = name === "light"? "light" : "dark";
+  let stat_theme = name === 'light' ? 'light' : 'dark';
   clearTimeout(setClientThemeTimer);
   Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
   setClientThemeTimer = setTimeout(() => {
@@ -147,7 +147,8 @@ export const setClientTheme = name => {
       'tooltip.text-color': COLOR_DARK_TEXT,
     });
   }
-  if (name === 'default') { // white-theme (chat) BUT game is using dorktheme
+  if (name === 'default') {
+    // white-theme (chat) BUT game is using dorktheme
     Byond.winset({
       // Main windows
       'infowindow.background-color': COLOR_DARK_DARKBG,

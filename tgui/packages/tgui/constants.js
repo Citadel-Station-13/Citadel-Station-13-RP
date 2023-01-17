@@ -33,16 +33,16 @@ export const COLORS = {
   },
   // VOREStation Addition begin
   manifest: {
-    command: "#3333FF",
-    security: "#8e0000",
-    medical: "#006600",
-    engineering: "#b27300",
-    science: "#a65ba6",
-    cargo: "#bb9040",
-    planetside: "#555555",
-    civilian: "#a32800",
-    miscellaneous: "#666666",
-    silicon: "#222222",
+    command: '#3333FF',
+    security: '#8e0000',
+    medical: '#006600',
+    engineering: '#b27300',
+    science: '#a65ba6',
+    cargo: '#bb9040',
+    planetside: '#555555',
+    civilian: '#a32800',
+    miscellaneous: '#666666',
+    silicon: '#222222',
   },
   // VOREStation Addition end
   // Damage type colors
@@ -54,8 +54,8 @@ export const COLORS = {
   },
   // reagent / chemistry related colours
   reagent: {
-    acidicbuffer: "#fbc314",
-    basicbuffer: "#3853a4",
+    acidicbuffer: '#fbc314',
+    basicbuffer: '#3853a4',
   },
 };
 
@@ -256,17 +256,19 @@ const GASES = [
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(gas => gas.id === gasSearchString
-    || gas.name.toLowerCase() === gasSearchString);
-  return gas && gas.label
-    || fallbackValue
-    || gasId;
+  const gas = GASES.find(
+    (gas) =>
+      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
+  );
+  return (gas && gas.label) || fallbackValue || gasId;
 };
 
-export const getGasColor = gasId => {
+export const getGasColor = (gasId) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(gas => gas.id === gasSearchString
-    || gas.name.toLowerCase() === gasSearchString);
+  const gas = GASES.find(
+    (gas) =>
+      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
+  );
   return gas && gas.color;
 };
 

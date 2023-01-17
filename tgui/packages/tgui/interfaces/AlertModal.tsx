@@ -1,6 +1,13 @@
 import { Loader } from './common/Loader';
 import { useBackend, useLocalState } from '../backend';
-import { KEY_ENTER, KEY_ESCAPE, KEY_LEFT, KEY_RIGHT, KEY_SPACE, KEY_TAB } from '../../common/keycodes';
+import {
+  KEY_ENTER,
+  KEY_ESCAPE,
+  KEY_LEFT,
+  KEY_RIGHT,
+  KEY_SPACE,
+  KEY_TAB,
+} from '../../common/keycodes';
 import { Autofocus, Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
@@ -29,10 +36,10 @@ export const AlertModal = (_, context) => {
   } = data;
   const [selected, setSelected] = useLocalState<number>(context, 'selected', 0);
   // Dynamically sets window dimensions
-  const windowHeight
-    = 115
-    + (message.length > 30 ? Math.ceil(message.length / 4) : 0)
-    + (message.length && large_buttons ? 5 : 0);
+  const windowHeight =
+    115 +
+    (message.length > 30 ? Math.ceil(message.length / 4) : 0) +
+    (message.length && large_buttons ? 5 : 0);
   const windowWidth = 325 + (buttons.length > 2 ? 55 : 0);
   const onKey = (direction: number) => {
     if (selected === 0 && direction === KEY_DECREMENT) {
@@ -65,7 +72,8 @@ export const AlertModal = (_, context) => {
             e.preventDefault();
             onKey(KEY_INCREMENT);
           }
-        }}>
+        }}
+      >
         <Section fill>
           <Stack fill vertical>
             <Stack.Item grow m={1}>
@@ -100,7 +108,8 @@ const ButtonDisplay = (props, context) => {
       direction={!swapped_buttons ? 'row-reverse' : 'row'}
       fill
       justify="space-around"
-      wrap>
+      wrap
+    >
       {buttons?.map((button, index) =>
         !!large_buttons && buttons.length < 3 ? (
           <Flex.Item grow key={index}>
@@ -144,7 +153,8 @@ const AlertButton = (props, context) => {
       pt={large_buttons ? 0.33 : 0}
       selected={selected}
       textAlign="center"
-      width={!large_buttons && buttonWidth}>
+      width={!large_buttons && buttonWidth}
+    >
       {!large_buttons ? button : button.toUpperCase()}
     </Button>
   );

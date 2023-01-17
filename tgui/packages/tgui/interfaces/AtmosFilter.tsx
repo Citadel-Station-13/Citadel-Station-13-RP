@@ -22,9 +22,7 @@ export const AtmosFilter = (props, context) => {
   const { filter_types = [], on, rate, max_rate } = data;
 
   return (
-    <Window
-      width={420}
-      height={221}>
+    <Window width={420} height={221}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -47,7 +45,8 @@ export const AtmosFilter = (props, context) => {
                 onDrag={(_, value) =>
                   act('rate', {
                     rate: value,
-                  })}
+                  })
+                }
               />
               <Button
                 ml={1}
@@ -57,7 +56,8 @@ export const AtmosFilter = (props, context) => {
                 onClick={() =>
                   act('rate', {
                     rate: 'max',
-                  })}
+                  })
+                }
               />
             </LabeledList.Item>
             <LabeledList.Item label="Filters">
@@ -69,7 +69,8 @@ export const AtmosFilter = (props, context) => {
                   onClick={() =>
                     act('filter', {
                       filterset: filter.f_type,
-                    })}
+                    })
+                  }
                 />
               ))}
             </LabeledList.Item>

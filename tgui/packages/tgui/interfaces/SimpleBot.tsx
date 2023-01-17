@@ -1,6 +1,15 @@
 import { multiline } from '../../common/string';
 import { useBackend } from '../backend';
-import { Button, Icon, LabeledControls, NoticeBox, Section, Slider, Stack, Tooltip } from '../components';
+import {
+  Button,
+  Icon,
+  LabeledControls,
+  NoticeBox,
+  Section,
+  Slider,
+  Stack,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
 
 type SimpleBotContext = {
@@ -32,7 +41,7 @@ type Controls = {
 export const SimpleBot = (_, context) => {
   const { data } = useBackend<SimpleBotContext>(context);
   const { can_hack, locked } = data;
-  const access = (!locked || can_hack);
+  const access = !locked || can_hack;
 
   return (
     <Window width={450} height={300}>
@@ -40,9 +49,7 @@ export const SimpleBot = (_, context) => {
         <Stack fill vertical>
           <Stack.Item>
             <Section title="Settings" buttons={<TabDisplay />}>
-              {!access
-                ? (<NoticeBox>Locked!</NoticeBox>)
-                : (<SettingsDisplay />)}
+              {!access ? <NoticeBox>Locked!</NoticeBox> : <SettingsDisplay />}
             </Section>
           </Stack.Item>
           {access && (
@@ -74,7 +81,8 @@ const TabDisplay = (_, context) => {
         icon={locked ? 'lock' : 'lock-open'}
         onClick={() => act('lock')}
         selected={locked}
-        tooltip={`${locked ? 'Unlock' : 'Lock'} the control panel.`}>
+        tooltip={`${locked ? 'Unlock' : 'Lock'} the control panel.`}
+      >
         Controls Lock
       </Button>
     </>
@@ -97,7 +105,8 @@ const HackButton = (_, context) => {
         !emagged
           ? 'Unlocks the safety protocols.'
           : 'Resets the bot operating system.'
-      }>
+      }
+    >
       {emagged ? 'Malfunctional' : 'Safety Lock'}
     </Button>
   );
@@ -113,7 +122,8 @@ const PaiButton = (_, context) => {
       <Button
         color="transparent"
         icon="robot"
-        tooltip={multiline`Insert an active PAI card to control this device.`}>
+        tooltip={multiline`Insert an active PAI card to control this device.`}
+      >
         No PAI Inserted
       </Button>
     );
@@ -123,7 +133,8 @@ const PaiButton = (_, context) => {
         disabled={!card_inserted}
         icon="eject"
         onClick={() => act('eject_pai')}
-        tooltip={multiline`Ejects the current PAI.`}>
+        tooltip={multiline`Ejects the current PAI.`}
+      >
         Eject PAI
       </Button>
     );
@@ -152,7 +163,8 @@ const SettingsDisplay = (_, context) => {
         <Tooltip
           content={`${
             !airplane_mode ? 'Disables' : 'Enables'
-          } remote access via console.`}>
+          } remote access via console.`}
+        >
           <Icon
             size={2}
             name="plane"
@@ -165,7 +177,8 @@ const SettingsDisplay = (_, context) => {
         <Tooltip
           content={`${
             patrol_station ? 'Disables' : 'Enables'
-          } automatic station patrol.`}>
+          } automatic station patrol.`}
+        >
           <Icon
             size={2}
             name="map-signs"
@@ -180,7 +193,8 @@ const SettingsDisplay = (_, context) => {
             maintenance_lock
               ? 'Opens the maintenance hatch for repairs.'
               : 'Closes the maintenance hatch.'
-          }>
+          }
+        >
           <Icon
             size={2}
             name="toolbox"
@@ -210,7 +224,9 @@ const ControlsDisplay = (_, context) => {
             label={control[0]
               .replace('_', ' ')
               .replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-                letter.toUpperCase())}>
+                letter.toUpperCase()
+              )}
+          >
             <ControlHelper control={control} />
           </LabeledControls.Item>
         );
@@ -255,7 +271,8 @@ const MedbotSync = (_, context) => {
   return (
     <Tooltip
       content={multiline`Synchronize surgical data with research network.
-       Improves Tending Efficiency.`}>
+       Improves Tending Efficiency.`}
+    >
       <Icon
         color="purple"
         name="cloud-download-alt"
@@ -300,7 +317,8 @@ const FloorbotTiles = (props, context) => {
       disabled={!control[1]}
       icon={control[1] ? 'eject' : ''}
       onClick={() => act('eject_tiles')}
-      tooltip="Number of floor tiles contained in the bot.">
+      tooltip="Number of floor tiles contained in the bot."
+    >
       {control[1] ? `${control[1]}` : 'Empty'}
     </Button>
   );
@@ -317,7 +335,8 @@ const FloorbotLine = (props, context) => {
         color={control[1] ? 'good' : 'gray'}
         name={control[1] ? 'compass' : 'toggle-off'}
         onClick={() => act('line_mode')}
-        size={!control[1] ? 2 : 1.5}>
+        size={!control[1] ? 2 : 1.5}
+      >
         {' '}
         {control[1] ? control[1].toString().charAt(0).toUpperCase() : ''}
       </Icon>

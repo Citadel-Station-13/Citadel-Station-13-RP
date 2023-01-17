@@ -32,8 +32,8 @@ export const RequestManager = (props, context) => {
       (request) =>
         decodeHtmlEntities(request.message)
           .toLowerCase()
-          .includes(filterText)
-        || request.owner_name.toLowerCase().includes(filterText)
+          .includes(filterText) ||
+        request.owner_name.toLowerCase().includes(filterText)
     );
   }
 
@@ -52,7 +52,8 @@ export const RequestManager = (props, context) => {
               />
               <FilterPanel />
             </>
-          }>
+          }
+        >
           {displayedRequests.map((request) => (
             <div className="RequestManager__row" key={request.id}>
               <div className="RequestManager__rowContents">
@@ -145,7 +146,8 @@ const FilterPanel = (_, context) => {
           className="RequestManager__filterPanel"
           style={{
             display: filterVisible ? 'block' : 'none',
-          }}>
+          }}
+        >
           <Table width="0">
             {Object.keys(displayTypeMap).map((type) => {
               return (
@@ -168,7 +170,8 @@ const FilterPanel = (_, context) => {
             })}
           </Table>
         </div>
-      }>
+      }
+    >
       <Button icon="cog" onClick={() => setFilterVisible(!filterVisible)}>
         Type Filter
       </Button>

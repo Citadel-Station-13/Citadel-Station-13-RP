@@ -37,8 +37,8 @@ export const AtmosControlConsole = (props, context) => {
     'chamberId',
     chambers[0]?.id
   );
-  const selectedChamber
-    = chambers.length === 1
+  const selectedChamber =
+    chambers.length === 1
       ? chambers[0]
       : chambers.find((chamber) => chamber.id === chamberId);
   const [setActiveGasId, setActiveReactionId] = atmosHandbookHooks(context);
@@ -53,8 +53,10 @@ export const AtmosControlConsole = (props, context) => {
               selected={selectedChamber?.name}
               onSelected={(value) =>
                 setChamberId(
-                  chambers.find((chamber) => chamber.name === value)?.id
-                    || chambers[0].id)}
+                  chambers.find((chamber) => chamber.name === value)?.id ||
+                    chambers[0].id
+                )
+              }
             />
           </Section>
         )}
@@ -66,8 +68,10 @@ export const AtmosControlConsole = (props, context) => {
                 icon="undo"
                 content="Reconnect"
                 onClick={() => act('reconnect')}
-              />)
-          }>
+              />
+            )
+          }
+        >
           {!!selectedChamber && !!selectedChamber.gasmix ? (
             <GasmixParser
               gasmix={selectedChamber.gasmix}
@@ -100,7 +104,8 @@ export const AtmosControlConsole = (props, context) => {
                         onClick={() =>
                           act('toggle_input', {
                             chamber: selectedChamber.id,
-                          })}
+                          })
+                        }
                       />
                     </LabeledList.Item>
                     <LabeledList.Item label="Input Rate">
@@ -117,7 +122,8 @@ export const AtmosControlConsole = (props, context) => {
                           act('adjust_input', {
                             chamber: selectedChamber.id,
                             rate: value,
-                          })}
+                          })
+                        }
                       />
                     </LabeledList.Item>
                   </LabeledList>
@@ -142,7 +148,8 @@ export const AtmosControlConsole = (props, context) => {
                         onClick={() =>
                           act('toggle_output', {
                             chamber: selectedChamber.id,
-                          })}
+                          })
+                        }
                       />
                     </LabeledList.Item>
                     <LabeledList.Item label="Output Pressure">
@@ -160,7 +167,8 @@ export const AtmosControlConsole = (props, context) => {
                           act('adjust_output', {
                             chamber: selectedChamber.id,
                             rate: value,
-                          })}
+                          })
+                        }
                       />
                     </LabeledList.Item>
                   </LabeledList>

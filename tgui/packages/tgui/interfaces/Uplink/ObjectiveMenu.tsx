@@ -1,29 +1,43 @@
-import { BooleanLike, classes } from "common/react";
-import { Component } from "inferno";
-import { Section, Stack, Box, Button, Flex, Tooltip, NoticeBox, Dimmer, Icon } from "../../components";
-import { calculateProgression, getReputation, Rank } from "./calculateReputationLevel";
-import { ObjectiveState } from "./constants";
+import { BooleanLike, classes } from 'common/react';
+import { Component } from 'inferno';
+import {
+  Section,
+  Stack,
+  Box,
+  Button,
+  Flex,
+  Tooltip,
+  NoticeBox,
+  Dimmer,
+  Icon,
+} from '../../components';
+import {
+  calculateProgression,
+  getReputation,
+  Rank,
+} from './calculateReputationLevel';
+import { ObjectiveState } from './constants';
 
 export type Objective = {
-  id: number,
-  name: string,
-  description: string,
-  progression_minimum: number,
-  progression_reward: number,
-  telecrystal_reward: number,
-  telecrystal_penalty: number,
-  ui_buttons?: ObjectiveUiButton[],
-  objective_state: ObjectiveState,
-  original_progression: number,
-  final_objective: BooleanLike
-}
+  id: number;
+  name: string;
+  description: string;
+  progression_minimum: number;
+  progression_reward: number;
+  telecrystal_reward: number;
+  telecrystal_penalty: number;
+  ui_buttons?: ObjectiveUiButton[];
+  objective_state: ObjectiveState;
+  original_progression: number;
+  final_objective: BooleanLike;
+};
 
 export type ObjectiveUiButton = {
-  name: string,
-  tooltip: string,
-  icon: string,
-  action: string,
-}
+  name: string;
+  tooltip: string;
+  icon: string;
+  action: string;
+};
 
 type ObjectiveMenuProps = {
   activeObjectives: Objective[];
@@ -36,18 +50,20 @@ type ObjectiveMenuProps = {
   handleObjectiveCompleted: (objective: Objective) => void;
   handleObjectiveAbort: (objective: Objective) => void;
   handleRequestObjectives: () => void;
-}
+};
 
 type ObjectiveMenuState = {
-  draggingObjective: Objective|null;
+  draggingObjective: Objective | null;
   objectiveX: number;
   objectiveY: number;
-}
+};
 
 let dragClickTimer = 0;
 
-export class ObjectiveMenu
-  extends Component<ObjectiveMenuProps, ObjectiveMenuState> {
+export class ObjectiveMenu extends Component<
+  ObjectiveMenuProps,
+  ObjectiveMenuState
+> {
   constructor() {
     super();
     this.state = {
@@ -66,7 +82,8 @@ export class ObjectiveMenu
     if (this.state?.draggingObjective) {
       return;
     }
-    if (event.button === 0) { // Left click
+    if (event.button === 0) {
+      // Left click
       this.setState({
         draggingObjective: objective,
         objectiveX: event.clientX,
@@ -101,9 +118,7 @@ export class ObjectiveMenu
   }
 
   handleObjectiveAdded(event: MouseEvent) {
-    const {
-      draggingObjective,
-    } = this.state as ObjectiveMenuState;
+    const { draggingObjective } = this.state as ObjectiveMenuState;
     if (!draggingObjective) {
       return;
     }
@@ -122,11 +137,8 @@ export class ObjectiveMenu
       handleObjectiveAbort,
       handleRequestObjectives,
     } = this.props;
-    const {
-      draggingObjective,
-      objectiveX,
-      objectiveY,
-    } = this.state as ObjectiveMenuState;
+    const { draggingObjective, objectiveX, objectiveY } = this
+      .state as ObjectiveMenuState;
 
     potentialObjectives.sort((objA, objB) => {
       if (objA.progression_minimum < objB.progression_minimum) {
@@ -142,46 +154,41 @@ export class ObjectiveMenu
           <Stack.Item>
             <Section>
               <Stack>
-                {Array.apply(null,
-                  Array(maximumActiveObjectives)).map((_, index) => {
-                  if (index >= activeObjectives.length) {
+                {Array.apply(null, Array(maximumActiveObjectives)).map(
+                  (_, index) => {
+                    if (index >= activeObjectives.length) {
+                      return (
+                        <Stack.Item key={index} minHeight="100px" grow>
+                          <Box
+                            color="label"
+                            className="UplinkObjective__EmptyObjective"
+                            onMouseUp={this.handleObjectiveAdded}
+                          >
+                            <Stack textAlign="center" fill align="center">
+                              <Stack.Item textAlign="center" width="100%">
+                                Empty Objective, drop objectives here to take
+                                them
+                              </Stack.Item>
+                            </Stack>
+                          </Box>
+                        </Stack.Item>
+                      );
+                    }
+                    const objective = activeObjectives[index];
                     return (
-                      <Stack.Item
-                        key={index}
-                        minHeight="100px"
-                        grow
-                      >
-                        <Box
-                          color="label"
-                          className="UplinkObjective__EmptyObjective"
-                          onMouseUp={this.handleObjectiveAdded}
-                        >
-                          <Stack textAlign="center" fill align="center">
-                            <Stack.Item textAlign="center" width="100%">
-                              Empty Objective, drop objectives here to take them
-                            </Stack.Item>
-                          </Stack>
-                        </Box>
+                      <Stack.Item key={index} grow>
+                        {ObjectiveFunction(
+                          objective,
+                          true,
+                          handleObjectiveAction,
+                          handleObjectiveCompleted,
+                          handleObjectiveAbort,
+                          true
+                        )}
                       </Stack.Item>
                     );
                   }
-                  const objective = activeObjectives[index];
-                  return (
-                    <Stack.Item
-                      key={index}
-                      grow
-                    >
-                      {ObjectiveFunction(
-                        objective,
-                        true,
-                        handleObjectiveAction,
-                        handleObjectiveCompleted,
-                        handleObjectiveAbort,
-                        true,
-                      )}
-                    </Stack.Item>
-                  );
-                })}
+                )}
               </Stack>
             </Section>
           </Stack.Item>
@@ -193,7 +200,7 @@ export class ObjectiveMenu
               scrollable
             >
               <Flex wrap="wrap" justify="space-evenly">
-                {potentialObjectives.map(objective => {
+                {potentialObjectives.map((objective) => {
                   return (
                     <Flex.Item
                       key={objective.id}
@@ -205,18 +212,18 @@ export class ObjectiveMenu
                         this.handleObjectiveClick(event, objective);
                       }}
                     >
-                      {objective.id !== draggingObjective?.id
-                      && ObjectiveFunction(
-                        objective,
-                        false,
-                        undefined,
-                        undefined,
-                        undefined,
-                        true,
-                      ) || (
+                      {(objective.id !== draggingObjective?.id &&
+                        ObjectiveFunction(
+                          objective,
+                          false,
+                          undefined,
+                          undefined,
+                          undefined,
+                          true
+                        )) || (
                         <Box
                           style={{
-                            "border": "2px dashed black",
+                            'border': '2px dashed black',
                           }}
                           width="100%"
                           height="100%"
@@ -226,45 +233,42 @@ export class ObjectiveMenu
                     </Flex.Item>
                   );
                 })}
-                {maximumPotentialObjectives === 0 && (
+                {(maximumPotentialObjectives === 0 && (
                   <Dimmer>
-                    <Icon
-                      name="lock"
-                      color="red"
-                      fontSize={8}
-                      mb={2}
-                    />
+                    <Icon name="lock" color="red" fontSize={8} mb={2} />
                     <Box color="red" fontSize={3}>
                       You are locked out of objectives
                     </Box>
                   </Dimmer>
-                )
-                || potentialObjectives.length < maximumPotentialObjectives && (
-                  <Flex.Item
-                    basis="100%"
-                    style={{
-                      // "background-color": "rgba(0, 0, 0, 0.5)",
-                    }}
-                    mb={1}
-                    mx="0.5%"
-                    minHeight="100px"
-                  >
-                    <Stack
-                      align="center"
-                      height="100%"
-                      width="100%"
-                      textAlign="center"
+                )) ||
+                  (potentialObjectives.length < maximumPotentialObjectives && (
+                    <Flex.Item
+                      basis="100%"
+                      style={
+                        {
+                          // "background-color": "rgba(0, 0, 0, 0.5)",
+                        }
+                      }
+                      mb={1}
+                      mx="0.5%"
+                      minHeight="100px"
                     >
-                      <Stack.Item width="100%">
-                        <Button
-                          content="Request More Objectives"
-                          fontSize={2}
-                          onClick={handleRequestObjectives}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                  </Flex.Item>
-                )}
+                      <Stack
+                        align="center"
+                        height="100%"
+                        width="100%"
+                        textAlign="center"
+                      >
+                        <Stack.Item width="100%">
+                          <Button
+                            content="Request More Objectives"
+                            fontSize={2}
+                            onClick={handleRequestObjectives}
+                          />
+                        </Stack.Item>
+                      </Stack>
+                    </Flex.Item>
+                  ))}
               </Flex>
             </Section>
           </Stack.Item>
@@ -277,7 +281,7 @@ export class ObjectiveMenu
             left={`${objectiveX - 180}px`}
             top={`${objectiveY}px`}
             style={{
-              "pointer-events": "none",
+              'pointer-events': 'none',
             }}
           >
             {ObjectiveFunction(draggingObjective, false)}
@@ -294,7 +298,7 @@ const ObjectiveFunction = (
   handleObjectiveAction?: (objective: Objective, action: string) => void,
   handleCompletion?: (objective: Objective) => void,
   handleAbort?: (objective: Objective) => void,
-  grow: boolean = false,
+  grow: boolean = false
 ) => {
   const reputation = getReputation(objective.progression_minimum);
   return (
@@ -308,8 +312,11 @@ const ObjectiveFunction = (
       objectiveState={objective.objective_state}
       originalProgression={objective.original_progression}
       finalObjective={objective.final_objective}
-      canAbort={!!handleAbort && !objective.final_objective
-        && objective.objective_state === ObjectiveState.Active}
+      canAbort={
+        !!handleAbort &&
+        !objective.final_objective &&
+        objective.objective_state === ObjectiveState.Active
+      }
       grow={grow}
       handleCompletion={(event) => {
         if (handleCompletion) {
@@ -322,27 +329,24 @@ const ObjectiveFunction = (
         }
       }}
       uiButtons={
-        active && handleObjectiveAction
-          ? (
-            <Stack width="100%" justify="center">
-              {objective.ui_buttons?.map((value, index) => (
-                <Stack.Item key={index}>
-                  <Button
-                    content={value.name}
-                    icon={value.icon}
-                    tooltip={value.tooltip}
-                    className={reputation.gradient}
-                    onClick={() => {
-                      handleObjectiveAction(objective, value.action);
-                    }}
-                  />
-                </Stack.Item>
-              ))}
-            </Stack>
-          )
-          : undefined
+        active && handleObjectiveAction ? (
+          <Stack width="100%" justify="center">
+            {objective.ui_buttons?.map((value, index) => (
+              <Stack.Item key={index}>
+                <Button
+                  content={value.name}
+                  icon={value.icon}
+                  tooltip={value.tooltip}
+                  className={reputation.gradient}
+                  onClick={() => {
+                    handleObjectiveAction(objective, value.action);
+                  }}
+                />
+              </Stack.Item>
+            ))}
+          </Stack>
+        ) : undefined
       }
-
     />
   );
 };
@@ -363,7 +367,7 @@ type ObjectiveElementProps = {
 
   handleCompletion: (event: MouseEvent) => void;
   handleAbort: (event: MouseEvent) => void;
-}
+};
 
 const ObjectiveElement = (props: ObjectiveElementProps, context) => {
   const {
@@ -384,36 +388,34 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
     ...rest
   } = props;
 
-  const objectiveFinished
-    = objectiveState === ObjectiveState.Completed
-    || objectiveState === ObjectiveState.Failed
-    || objectiveState === ObjectiveState.Invalid;
+  const objectiveFinished =
+    objectiveState === ObjectiveState.Completed ||
+    objectiveState === ObjectiveState.Failed ||
+    objectiveState === ObjectiveState.Invalid;
 
   const objectiveFailed = objectiveState !== ObjectiveState.Completed;
   let objectiveCompletionText;
   switch (objectiveState) {
     case ObjectiveState.Invalid:
-      objectiveCompletionText = "Invalidated";
+      objectiveCompletionText = 'Invalidated';
       break;
     case ObjectiveState.Completed:
-      objectiveCompletionText = "Completed";
+      objectiveCompletionText = 'Completed';
       break;
     case ObjectiveState.Failed:
-      objectiveCompletionText = "Failed";
+      objectiveCompletionText = 'Failed';
       break;
   }
 
-
-  const progressionDiff = Math.round(
-    (1 - (progressionReward / originalProgression))*1000
-  )/10;
+  const progressionDiff =
+    Math.round((1 - progressionReward / originalProgression) * 1000) / 10;
 
   return (
-    <Flex height={grow? "100%" : undefined} direction="column">
+    <Flex height={grow ? '100%' : undefined} direction="column">
       <Flex.Item grow={grow} basis="content">
         <Box
           className={classes([
-            "UplinkObjective__Titlebar",
+            'UplinkObjective__Titlebar',
             reputation.gradient,
           ])}
           width="100%"
@@ -421,7 +423,8 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
         >
           <Stack>
             <Stack.Item grow={1}>
-              {name} {!objectiveFinished? null : `- ${objectiveCompletionText}`}
+              {name}{' '}
+              {!objectiveFinished ? null : `- ${objectiveCompletionText}`}
             </Stack.Item>
             {canAbort && (
               <Stack.Item>
@@ -437,41 +440,33 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
         </Box>
       </Flex.Item>
       <Flex.Item grow={grow} basis="content">
-        <Box
-          className="UplinkObjective__Content"
-          height="100%"
-        >
-          <Box>
-            {description}
-          </Box>
+        <Box className="UplinkObjective__Content" height="100%">
+          <Box>{description}</Box>
           {!finalObjective && (
             <Box mt={1}>
               Failing this objective will deduct {telecrystalPenalty} TC.
             </Box>
           )}
-          {(finalObjective && objectiveState === ObjectiveState.Inactive) && (
+          {finalObjective && objectiveState === ObjectiveState.Inactive && (
             <NoticeBox warning mt={1}>
-              Taking this objective will lock you out of getting
-              anymore objectives! Furthermore, you will be unable to
-              abort this objective.
+              Taking this objective will lock you out of getting anymore
+              objectives! Furthermore, you will be unable to abort this
+              objective.
             </NoticeBox>
           )}
-
         </Box>
       </Flex.Item>
       <Flex.Item>
-        <Box
-          className="UplinkObjective__Footer"
-        >
+        <Box className="UplinkObjective__Footer">
           <Stack vertical>
             <Stack.Item>
               <Stack align="center" justify="center">
                 <Box
                   style={{
-                    "border": "2px solid rgba(0, 0, 0, 0.5)",
-                    "border-left": "none",
-                    "border-right": "none",
-                    "border-bottom": objectiveFinished? "none" : undefined,
+                    'border': '2px solid rgba(0, 0, 0, 0.5)',
+                    'border-left': 'none',
+                    'border-right': 'none',
+                    'border-bottom': objectiveFinished ? 'none' : undefined,
                   }}
                   className={reputation.gradient}
                   py={0.5}
@@ -483,44 +478,58 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
                     {calculateProgression(progressionReward)} Reputation
                     {Math.abs(progressionDiff) > 10 && (
                       <Tooltip
-                        content={(
+                        content={
                           <Box>
                             You will get
                             <Box
                               mr={1}
                               ml={1}
-                              color={progressionDiff > 0? progressionDiff > 25? "red" : "orange" : "green"}
+                              color={
+                                progressionDiff > 0
+                                  ? progressionDiff > 25
+                                    ? 'red'
+                                    : 'orange'
+                                  : 'green'
+                              }
                               as="span"
                             >
                               {Math.abs(progressionDiff)}%
                             </Box>
-                            {progressionDiff > 0 ? "less" : "more"} reputation from this objective.
-                            This is because your reputation is {progressionDiff > 0? "ahead " : "behind "}
+                            {progressionDiff > 0 ? 'less' : 'more'} reputation
+                            from this objective. This is because your reputation
+                            is {progressionDiff > 0 ? 'ahead ' : 'behind '}
                             where it normally should be at.
                           </Box>
-                        )}
+                        }
                       >
                         <Box
                           ml={1}
-                          color={progressionDiff > 0? progressionDiff > 35? "red" : "orange" : "green"}
+                          color={
+                            progressionDiff > 0
+                              ? progressionDiff > 35
+                                ? 'red'
+                                : 'orange'
+                              : 'green'
+                          }
                           as="span"
                         >
-                          ({progressionDiff > 0? "-" : "+"}{Math.abs(progressionDiff)}%)
+                          ({progressionDiff > 0 ? '-' : '+'}
+                          {Math.abs(progressionDiff)}%)
                         </Box>
                       </Tooltip>
                     )}
                   </Box>
                 </Box>
               </Stack>
-              {objectiveFinished? (
+              {objectiveFinished ? (
                 <Box
                   inline
                   className={reputation.gradient}
                   style={{
-                    "border-radius": "0",
-                    "border": "2px solid rgba(0, 0, 0, 0.5)",
-                    "border-left": "none",
-                    "border-right": "none",
+                    'border-radius': '0',
+                    'border': '2px solid rgba(0, 0, 0, 0.5)',
+                    'border-left': 'none',
+                    'border-right': 'none',
                   }}
                   position="relative"
                   width="100%"
@@ -530,31 +539,30 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
                   <Box
                     width="100%"
                     height="100%"
-                    backgroundColor={objectiveFailed
-                      ? "rgba(255, 0, 0, 0.1)"
-                      : "rgba(0, 255, 0, 0.1)"}
+                    backgroundColor={
+                      objectiveFailed
+                        ? 'rgba(255, 0, 0, 0.1)'
+                        : 'rgba(0, 255, 0, 0.1)'
+                    }
                     position="absolute"
                     left={0}
                     top={0}
                   />
                   <Button
                     onClick={handleCompletion}
-                    color={objectiveFailed? "bad" : "good"}
+                    color={objectiveFailed ? 'bad' : 'good'}
                     style={{
-                      "border": "1px solid rgba(0, 0, 0, 0.65)",
+                      'border': '1px solid rgba(0, 0, 0, 0.65)',
                     }}
                     my={1}
                   >
                     TURN IN
                   </Button>
                 </Box>
-              )
-                : null}
+              ) : null}
             </Stack.Item>
             {!!uiButtons && !objectiveFinished && (
-              <Stack.Item>
-                {uiButtons}
-              </Stack.Item>
+              <Stack.Item>{uiButtons}</Stack.Item>
             )}
           </Stack>
         </Box>

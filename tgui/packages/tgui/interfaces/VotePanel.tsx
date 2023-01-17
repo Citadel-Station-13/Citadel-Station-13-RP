@@ -1,5 +1,14 @@
 import { BooleanLike } from 'common/react';
-import { Box, Icon, Stack, Button, Section, NoticeBox, LabeledList, Collapsible } from '../components';
+import {
+  Box,
+  Icon,
+  Stack,
+  Button,
+  Section,
+  NoticeBox,
+  LabeledList,
+  Collapsible,
+} from '../components';
 import { Window } from '../layouts';
 import { useBackend } from '../backend';
 
@@ -49,7 +58,11 @@ export const VotePanel = (props, context) => {
    */
   let windowTitle = 'Vote';
   if (currentVote) {
-    windowTitle += ': ' + (currentVote.question || currentVote.vote.name).replace(/^\w/, (c) => c.toUpperCase());
+    windowTitle +=
+      ': ' +
+      (currentVote.question || currentVote.vote.name).replace(/^\w/, (c) =>
+        c.toUpperCase()
+      );
   }
 
   return (
@@ -80,7 +93,7 @@ const VoteOptions = (props, context) => {
     <Stack.Item>
       <Collapsible title="Start a Vote">
         <Stack vertical justify="space-between">
-          { possibleVotes.map(option => (
+          {possibleVotes.map((option) => (
             <Stack.Item key={option.name}>
               {!!user.isLowerAdmin && option.config !== VoteConfig.None && (
                 <Button.Checkbox
@@ -88,17 +101,27 @@ const VoteOptions = (props, context) => {
                   color="red"
                   checked={option.config === VoteConfig.Enabled}
                   disabled={!user.isUpperAdmin}
-                  content={option.config === VoteConfig.Enabled ? 'Enabled' : 'Disabled'}
-                  onClick={() => act('toggleVote', {
-                    voteName: option.name,
-                  })} />
+                  content={
+                    option.config === VoteConfig.Enabled
+                      ? 'Enabled'
+                      : 'Disabled'
+                  }
+                  onClick={() =>
+                    act('toggleVote', {
+                      voteName: option.name,
+                    })
+                  }
+                />
               )}
               <Button
                 disabled={!option.canBeInitiated}
                 content={option.name}
-                onClick={() => act('callVote', {
-                  voteName: option.name,
-                })} />
+                onClick={() =>
+                  act('callVote', {
+                    voteName: option.name,
+                  })
+                }
+              />
             </Stack.Item>
           ))}
         </Stack>
@@ -116,7 +139,11 @@ const VotersList = (props, context) => {
 
   return (
     <Stack.Item>
-      <Collapsible title={`View Voters${data.voting.length ? `: ${data.voting.length}` : ""}`}>
+      <Collapsible
+        title={`View Voters${
+          data.voting.length ? `: ${data.voting.length}` : ''
+        }`}
+      >
         <Section height={8} fill scrollable>
           {data.voting.map((voter) => {
             return <Box key={voter}>{voter}</Box>;
@@ -140,7 +167,7 @@ const ChoicesPanel = (props, context) => {
       <Section fill scrollable title="Choices">
         {currentVote && currentVote.choices.length !== 0 ? (
           <LabeledList>
-            {currentVote.choices.map(choice => (
+            {currentVote.choices.map((choice) => (
               <Box key={choice.name}>
                 <LabeledList.Item
                   label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
@@ -150,19 +177,21 @@ const ChoicesPanel = (props, context) => {
                       disabled={user.selectedChoice === choice.name}
                       onClick={() => {
                         act('vote', { voteOption: choice.name });
-                      }}>
+                      }}
+                    >
                       Vote
                     </Button>
-                  }>
-                  {user.selectedChoice
-                  && choice.name === user.selectedChoice && (
-                    <Icon
-                      alignSelf="right"
-                      mr={2}
-                      color="green"
-                      name="vote-yea"
-                    />
-                  )}
+                  }
+                >
+                  {user.selectedChoice &&
+                    choice.name === user.selectedChoice && (
+                      <Icon
+                        alignSelf="right"
+                        mr={2}
+                        color="green"
+                        name="vote-yea"
+                      />
+                    )}
                   {choice.votes} Votes
                 </LabeledList.Item>
                 <LabeledList.Divider />
@@ -170,7 +199,9 @@ const ChoicesPanel = (props, context) => {
             ))}
           </LabeledList>
         ) : (
-          <NoticeBox>{currentVote ? "No choices available!" : "No vote active!"}</NoticeBox>
+          <NoticeBox>
+            {currentVote ? 'No choices available!' : 'No vote active!'}
+          </NoticeBox>
         )}
       </Section>
     </Stack.Item>
@@ -189,14 +220,16 @@ const TimePanel = (props, context) => {
     <Stack.Item mt={1}>
       <Section>
         <Stack justify="space-between">
-          <Box fontSize={1.5}>Time Remaining:&nbsp;
+          <Box fontSize={1.5}>
+            Time Remaining:&nbsp;
             {currentVote?.timeRemaining || 0}s
           </Box>
           {!!user.isLowerAdmin && (
             <Button
               color="red"
               disabled={!user.isLowerAdmin || !currentVote}
-              onClick={() => act('cancel')}>
+              onClick={() => act('cancel')}
+            >
               Cancel Vote
             </Button>
           )}

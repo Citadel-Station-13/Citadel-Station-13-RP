@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, LabeledList, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  LabeledList,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
 export const ArcadeBattle = (props, context) => {
@@ -38,7 +45,8 @@ export const ArcadeBattle = (props, context) => {
                       good: [20, 31],
                       average: [10, 20],
                       bad: [-Infinity, 10],
-                    }}>
+                    }}
+                  >
                     {playerHP}HP
                   </ProgressBar>
                 </LabeledList.Item>
@@ -51,7 +59,8 @@ export const ArcadeBattle = (props, context) => {
                       purple: [11, Infinity],
                       violet: [3, 11],
                       bad: [-Infinity, 3],
-                    }}>
+                    }}
+                  >
                     {playerMP}MP
                   </ProgressBar>
                 </LabeledList.Item>
@@ -69,21 +78,23 @@ export const ArcadeBattle = (props, context) => {
                       good: [20, 31],
                       average: [10, 20],
                       bad: [-Infinity, 10],
-                    }}>
+                    }}
+                  >
                     {enemyHP}HP
                   </ProgressBar>
                 </LabeledList.Item>
               </LabeledList>
             </Flex.Item>
           </Flex>
-          {gameOver && (
+          {(gameOver && (
             <Button
               fluid
               mt={1}
               color="green"
               content="New Game"
-              onClick={() => act("newgame")} />
-          ) || (
+              onClick={() => act('newgame')}
+            />
+          )) || (
             <Flex mt={2} justify="space-between" spacing={1}>
               <Flex.Item grow={1}>
                 <Button
@@ -92,7 +103,8 @@ export const ArcadeBattle = (props, context) => {
                   tooltip="Go in for the kill!"
                   tooltipPosition="top"
                   onClick={() => act('attack')}
-                  content="Attack!" />
+                  content="Attack!"
+                />
               </Flex.Item>
               <Flex.Item grow={1}>
                 <Button
@@ -101,7 +113,8 @@ export const ArcadeBattle = (props, context) => {
                   tooltip="Heal yourself!"
                   tooltipPosition="top"
                   onClick={() => act('heal')}
-                  content="Heal!" />
+                  content="Heal!"
+                />
               </Flex.Item>
               <Flex.Item grow={1}>
                 <Button
@@ -110,7 +123,8 @@ export const ArcadeBattle = (props, context) => {
                   tooltip="Recharge your magic!"
                   tooltipPosition="top"
                   onClick={() => act('charge')}
-                  content="Recharge!" />
+                  content="Recharge!"
+                />
               </Flex.Item>
             </Flex>
           )}

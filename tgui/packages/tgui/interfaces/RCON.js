@@ -1,17 +1,24 @@
 import { round } from 'common/math';
 import { formatPower } from '../format';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from "../components";
-import { Window } from "../layouts";
+import { useBackend, useLocalState } from '../backend';
+import {
+  Box,
+  Button,
+  Icon,
+  LabeledList,
+  ProgressBar,
+  Stack,
+  Section,
+  Tabs,
+  Slider,
+} from '../components';
+import { Window } from '../layouts';
 import { capitalize } from 'common/string';
 
 export const RCON = (props, context) => {
   return (
-    <Window
-      width={630}
-      height={440}
-      resizable>
+    <Window width={630} height={440} resizable>
       <Window.Content scrollable>
         <RCONContent />
       </Window.Content>
@@ -35,19 +42,19 @@ export const RCONContent = (props, context) => {
         <Tabs.Tab
           key="SMESs"
           selected={0 === tabIndex}
-          onClick={() => setTabIndex(0)}>
+          onClick={() => setTabIndex(0)}
+        >
           <Icon name="power-off" /> SMESs
         </Tabs.Tab>
         <Tabs.Tab
           key="Breakers"
           selected={1 === tabIndex}
-          onClick={() => setTabIndex(1)}>
+          onClick={() => setTabIndex(1)}
+        >
           <Icon name="bolt" /> Breakers
         </Tabs.Tab>
       </Tabs>
-      <Box m={2}>
-        {body}
-      </Box>
+      <Box m={2}>{body}</Box>
     </Fragment>
   );
 };
@@ -55,14 +62,12 @@ export const RCONContent = (props, context) => {
 const RCONSmesList = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    smes_info,
-  } = data;
+  const { smes_info } = data;
 
   return (
     <Section title="SMESs">
       <Stack vertical>
-        {smes_info.map(smes => (
+        {smes_info.map((smes) => (
           <Stack.Item key={smes.RCON_tag}>
             <SMESItem smes={smes} />
           </Stack.Item>
@@ -105,9 +110,10 @@ const SMESItem = (props, context) => {
                 good: [0.5, Infinity],
                 average: [0.15, 0.5],
                 bad: [-Infinity, 0.15],
-              }}>
-              {round(charge/60, 1)} kWh / {round(capacity/60)} kWh
-              ({capacityPercent}%)
+              }}
+            >
+              {round(charge / 60, 1)} kWh / {round(capacity / 60)} kWh (
+              {capacityPercent}%)
             </ProgressBar>
           </Stack.Item>
         </Stack>
@@ -125,10 +131,7 @@ const SMESItem = (props, context) => {
 
 const SMESControls = (props, context) => {
   const { act } = useBackend(context);
-  const {
-    way,
-    smes,
-  } = props;
+  const { way, smes } = props;
   const {
     capacityPercent,
     capacity,
@@ -157,35 +160,41 @@ const SMESControls = (props, context) => {
   let powerTooltip;
 
   switch (way) {
-    case "input":
+    case 'input':
       level = inputLevel;
       levelMax = inputLevelMax;
       available = inputAvailable;
-      direction = "IN";
-      changeStatusAct = "smes_in_toggle";
-      changeAmountAct = "smes_in_set";
+      direction = 'IN';
+      changeStatusAct = 'smes_in_toggle';
+      changeAmountAct = 'smes_in_set';
       enabled = inputAttempt;
-      powerColor = !inputAttempt ? null : (inputting ? "green" : "yellow");
-      powerTooltip = !inputAttempt ? "The SMES input is off." : (inputting ? "The SMES is drawing power." : "The SMES lacks power.");
+      powerColor = !inputAttempt ? null : inputting ? 'green' : 'yellow';
+      powerTooltip = !inputAttempt
+        ? 'The SMES input is off.'
+        : inputting
+        ? 'The SMES is drawing power.'
+        : 'The SMES lacks power.';
       break;
-    case "output":
+    case 'output':
       level = outputLevel;
       levelMax = outputLevelMax;
       available = outputUsed;
-      direction = "OUT";
-      changeStatusAct = "smes_out_toggle";
-      changeAmountAct = "smes_out_set";
+      direction = 'OUT';
+      changeStatusAct = 'smes_out_toggle';
+      changeAmountAct = 'smes_out_set';
       enabled = outputAttempt;
-      powerColor = !outputAttempt ? null : (outputting ? "green" : "yellow");
-      powerTooltip = !outputAttempt ? "The SMES output is off." : (outputting ? "The SMES is outputting power." : "The SMES lacks any draw.");
+      powerColor = !outputAttempt ? null : outputting ? 'green' : 'yellow';
+      powerTooltip = !outputAttempt
+        ? 'The SMES output is off.'
+        : outputting
+        ? 'The SMES is outputting power.'
+        : 'The SMES lacks any draw.';
       break;
   }
 
   return (
     <Stack fill>
-      <Stack.Item basis="20%">
-        {capitalize(way)}
-      </Stack.Item>
+      <Stack.Item basis="20%">{capitalize(way)}</Stack.Item>
       <Stack.Item grow={1}>
         <Stack>
           <Stack.Item>
@@ -193,25 +202,34 @@ const SMESControls = (props, context) => {
               icon="power-off"
               color={powerColor}
               tooltip={powerTooltip}
-              onClick={() => act(changeStatusAct, {
-                smes: RCON_tag,
-              })} />
+              onClick={() =>
+                act(changeStatusAct, {
+                  smes: RCON_tag,
+                })
+              }
+            />
           </Stack.Item>
           <Stack.Item>
             <Button
               icon="fast-backward"
               disabled={level === 0}
-              onClick={() => act(changeAmountAct, {
-                target: 'min',
-                smes: RCON_tag,
-              })} />
+              onClick={() =>
+                act(changeAmountAct, {
+                  target: 'min',
+                  smes: RCON_tag,
+                })
+              }
+            />
             <Button
               icon="backward"
               disabled={level === 0}
-              onClick={() => act(changeAmountAct, {
-                adjust: -10,
-                smes: RCON_tag,
-              })} />
+              onClick={() =>
+                act(changeAmountAct, {
+                  adjust: -10,
+                  smes: RCON_tag,
+                })
+              }
+            />
           </Stack.Item>
           <Stack.Item grow={1}>
             <Slider
@@ -221,27 +239,40 @@ const SMESControls = (props, context) => {
               maxValue={levelMax}
               step={5}
               stepPixelSize={4}
-              format={value => formatPower(available * 1000, 1) + "/" + formatPower(value * 1000, 1)}
-              onDrag={(e, value) => act(changeAmountAct, {
-                target: value,
-                smes: RCON_tag,
-              })} />
+              format={(value) =>
+                formatPower(available * 1000, 1) +
+                '/' +
+                formatPower(value * 1000, 1)
+              }
+              onDrag={(e, value) =>
+                act(changeAmountAct, {
+                  target: value,
+                  smes: RCON_tag,
+                })
+              }
+            />
           </Stack.Item>
           <Stack.Item>
             <Button
               icon="forward"
               disabled={level === levelMax}
-              onClick={() => act(changeAmountAct, {
-                adjust: 10,
-                smes: RCON_tag,
-              })} />
+              onClick={() =>
+                act(changeAmountAct, {
+                  adjust: 10,
+                  smes: RCON_tag,
+                })
+              }
+            />
             <Button
               icon="fast-forward"
               disabled={level === levelMax}
-              onClick={() => act(changeAmountAct, {
-                target: 'max',
-                smes: RCON_tag,
-              })} />
+              onClick={() =>
+                act(changeAmountAct, {
+                  target: 'max',
+                  smes: RCON_tag,
+                })
+              }
+            />
           </Stack.Item>
         </Stack>
       </Stack.Item>
@@ -252,31 +283,33 @@ const SMESControls = (props, context) => {
 const RCONBreakerList = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    breaker_info,
-  } = data;
+  const { breaker_info } = data;
 
   return (
     <Section title="Breakers">
       <LabeledList>
-        {breaker_info ? breaker_info.map(breaker => (
-          <LabeledList.Item
-            key={breaker.RCON_tag}
-            label={breaker.RCON_tag}
-            buttons={(
-              <Button
-                icon="power-off"
-                content={breaker.enabled ? "Enabled" : "Disabled"}
-                selected={breaker.enabled}
-                color={breaker.enabled ? null : "bad"}
-                onClick={() => act("toggle_breaker", {
-                  breaker: breaker.RCON_tag,
-                })} />
-            )} />
-        )) : (
-          <LabeledList.Item color="bad">
-            No breakers detected.
-          </LabeledList.Item>
+        {breaker_info ? (
+          breaker_info.map((breaker) => (
+            <LabeledList.Item
+              key={breaker.RCON_tag}
+              label={breaker.RCON_tag}
+              buttons={
+                <Button
+                  icon="power-off"
+                  content={breaker.enabled ? 'Enabled' : 'Disabled'}
+                  selected={breaker.enabled}
+                  color={breaker.enabled ? null : 'bad'}
+                  onClick={() =>
+                    act('toggle_breaker', {
+                      breaker: breaker.RCON_tag,
+                    })
+                  }
+                />
+              }
+            />
+          ))
+        ) : (
+          <LabeledList.Item color="bad">No breakers detected.</LabeledList.Item>
         )}
       </LabeledList>
     </Section>

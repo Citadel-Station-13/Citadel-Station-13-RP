@@ -19,7 +19,7 @@ type GasmixParserProps = {
   pressureOnClick?: () => void;
   reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  detailedReactions?: boolean; 
+  detailedReactions?: boolean;
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {
@@ -34,8 +34,8 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
     ...rest
   } = props;
 
-  const { gases, temperature, volume, pressure, total_moles, reactions }
-    = gasmix;
+  const { gases, temperature, volume, pressure, total_moles, reactions } =
+    gasmix;
 
   return !total_moles ? (
     <Box nowrap italic mb="10px">
@@ -48,13 +48,16 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
           label={
             gasesOnClick ? (
               <Button content={gas[1]} onClick={() => gasesOnClick(gas[0])} />
-            ) : (gas[1])
+            ) : (
+              gas[1]
+            )
           }
-          key={gas[1]}>
-          {gas[2].toFixed(2)
-            + ' mol ('
-            + ((gas[2] / total_moles) * 100).toFixed(2)
-            + ' %)'}
+          key={gas[1]}
+        >
+          {gas[2].toFixed(2) +
+            ' mol (' +
+            ((gas[2] / total_moles) * 100).toFixed(2) +
+            ' %)'}
         </LabeledList.Item>
       ))}
       <LabeledList.Item
@@ -64,24 +67,33 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
               content={'Temperature'}
               onClick={() => temperatureOnClick()}
             />
-          ) : ('Temperature')
-        }>
+          ) : (
+            'Temperature'
+          )
+        }
+      >
         {(total_moles ? temperature.toFixed(2) : '-') + ' K'}
       </LabeledList.Item>
       <LabeledList.Item
         label={
           volumeOnClick ? (
             <Button content={'Volume'} onClick={() => volumeOnClick()} />
-          ) : ('Volume')
-        }>
+          ) : (
+            'Volume'
+          )
+        }
+      >
         {(total_moles ? volume.toFixed(2) : '-') + ' L'}
       </LabeledList.Item>
       <LabeledList.Item
         label={
           pressureOnClick ? (
             <Button content={'Pressure'} onClick={() => pressureOnClick()} />
-          ) : ('Pressure')
-        }>
+          ) : (
+            'Pressure'
+          )
+        }
+      >
         {(total_moles ? pressure.toFixed(2) : '-') + ' kPa'}
       </LabeledList.Item>
       {detailedReactions ? (
@@ -94,8 +106,11 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
                   content={reaction[1]}
                   onClick={reactionOnClick(reaction[0])}
                 />
-              ) : (reaction[1])
-            }>
+              ) : (
+                reaction[1]
+              )
+            }
+          >
             {reaction[2]}
           </LabeledList.Item>
         ))
@@ -103,15 +118,17 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
         <LabeledList.Item label="Gas Reactions">
           {reactions.length
             ? reactions.map((reaction) =>
-              reactionOnClick ? (
-                <Box mb="0.5em">
-                  <Button
-                    content={reaction[1]}
-                    onClick={() => reactionOnClick(reaction[0])}
-                  />
-                </Box>
-              ) : (<div>{reaction[1]}</div>)
-            )
+                reactionOnClick ? (
+                  <Box mb="0.5em">
+                    <Button
+                      content={reaction[1]}
+                      onClick={() => reactionOnClick(reaction[0])}
+                    />
+                  </Box>
+                ) : (
+                  <div>{reaction[1]}</div>
+                )
+              )
             : 'No reactions detected'}
         </LabeledList.Item>
       )}

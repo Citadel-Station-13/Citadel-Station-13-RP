@@ -1,5 +1,13 @@
 import { useBackend } from '../backend';
-import { Box, Button, NoticeBox, LabeledList, ProgressBar, Section, Table } from '../components';
+import {
+  Box,
+  Button,
+  NoticeBox,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 import { capitalize } from 'common/string';
 
@@ -18,10 +26,7 @@ export const AlgaeFarm = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={500}
-      height={300}
-      resizable>
+    <Window width={500} height={300} resizable>
       <Window.Content>
         {errorText && (
           <NoticeBox warning>
@@ -37,8 +42,10 @@ export const AlgaeFarm = (props, context) => {
               icon="power-off"
               content="Processing"
               selected={usePower === 2}
-              onClick={() => act("toggle")} />
-          }>
+              onClick={() => act('toggle')}
+            />
+          }
+        >
           <LabeledList>
             <LabeledList.Item label="Flow Rate">
               {last_flow_rate} L/s
@@ -47,29 +54,34 @@ export const AlgaeFarm = (props, context) => {
               {last_power_draw} W
             </LabeledList.Item>
             <LabeledList.Divider size={1} />
-            {materials.map(material => (
+            {materials.map((material) => (
               <LabeledList.Item
                 key={material.name}
-                label={capitalize(material.display)}>
+                label={capitalize(material.display)}
+              >
                 <ProgressBar
                   width="80%"
                   value={material.qty}
-                  maxValue={material.max}>
+                  maxValue={material.max}
+                >
                   {material.qty}/{material.max}
                 </ProgressBar>
                 <Button
                   ml={1}
                   content="Eject"
-                  onClick={() => act("ejectMaterial", {
-                    mat: material.name,
-                  })} />
+                  onClick={() =>
+                    act('ejectMaterial', {
+                      mat: material.name,
+                    })
+                  }
+                />
               </LabeledList.Item>
             ))}
           </LabeledList>
           <Table mt={1}>
             <Table.Row>
               <Table.Cell>
-                <Section title={"Gas Input (" + inputDir + ")"}>
+                <Section title={'Gas Input (' + inputDir + ')'}>
                   {input ? (
                     <LabeledList>
                       <LabeledList.Item label="Total Pressure">
@@ -85,7 +97,7 @@ export const AlgaeFarm = (props, context) => {
                 </Section>
               </Table.Cell>
               <Table.Cell>
-                <Section title={"Gas Output (" + outputDir + ")"}>
+                <Section title={'Gas Output (' + outputDir + ')'}>
                   {output ? (
                     <LabeledList>
                       <LabeledList.Item label="Total Pressure">

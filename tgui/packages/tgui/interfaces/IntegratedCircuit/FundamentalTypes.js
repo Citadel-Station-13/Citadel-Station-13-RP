@@ -23,7 +23,8 @@ export const FUNDAMENTAL_DATA_TYPES = {
         name={name}
         setValue={setValue}
         value={value}
-        defaultValue={0}>
+        defaultValue={0}
+      >
         <NumberInput
           value={value}
           color={color}
@@ -69,17 +70,12 @@ export const FUNDAMENTAL_DATA_TYPES = {
     );
   },
   'option': (props, context) => {
-    const {
-      value,
-      setValue,
-    } = props;
+    const { value, setValue } = props;
     let large = false;
     const extraData = props.extraData || [];
-    const data = Array.isArray(extraData)
-      ? extraData
-      : Object.keys(extraData);
+    const data = Array.isArray(extraData) ? extraData : Object.keys(extraData);
 
-    data.forEach(element => {
+    data.forEach((element) => {
       if (element.length > OPTION_DROPDOWN_LARGE_CHAR_AMOUNT) {
         large = true;
       }
@@ -88,11 +84,11 @@ export const FUNDAMENTAL_DATA_TYPES = {
     return (
       <Dropdown
         className="IntegratedCircuit__BlueBorder"
-        color={"transparent"}
+        color={'transparent'}
         options={data}
         onSelected={setValue}
         displayText={value}
-        openWidth={large ? "200px" : undefined}
+        openWidth={large ? '200px' : undefined}
         noscroll
       />
     );
@@ -104,7 +100,8 @@ export const FUNDAMENTAL_DATA_TYPES = {
         name={name}
         setValue={setValue}
         value={value}
-        defaultValue={''}>
+        defaultValue={''}
+      >
         <Stack>
           <Stack.Item>
             <Button
