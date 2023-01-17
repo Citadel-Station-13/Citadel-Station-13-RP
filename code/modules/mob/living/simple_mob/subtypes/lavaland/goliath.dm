@@ -77,6 +77,7 @@
 	say_list_type = /datum/say_list/goliath
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
+	var/datum/reagents/goliath_sac = null
 	var/pre_attack = 0
 	var/tentacle_warning = 0.5 SECONDS
 	var/pre_attack_icon = "goliath2"
@@ -134,9 +135,19 @@
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
+	goliath_sac = new(50)
+	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
+	var/obj/item/reagent_containers/glass/G = O
+	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
+		user.visible_message("<span class='notice'>[user] drains the sac of the [src] using \the [O].</span>")
+		var/transfered = goliath_sac.trans_id_to(G, "gunpowder", rand(15,30))
+		if(G.reagents.total_volume >= G.volume)
+			to_chat(user, "<font color='red'>The [O] is full.</font>")
+		if(!transfered)
+			to_chat(user, "<font color='red'>The sac is empty. Wait a bit longer...</font>")
 	if(istype(O, /obj/item/seeds) && !breedable)
 		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")
 		breedable = 1
