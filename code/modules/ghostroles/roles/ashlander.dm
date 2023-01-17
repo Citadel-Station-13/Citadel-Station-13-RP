@@ -52,11 +52,16 @@
 	possible_species = list(
 		/datum/species/scori
 	)
+	var/list/ashlander_crafting = list(/datum/crafting_recipe/bonetalisman, /datum/crafting_recipe/bonecodpiece, /datum/crafting_recipe/bracers, /datum/crafting_recipe/goliathcloak,
+		/datum/crafting_recipe/drakecloak, /datum/crafting_recipe/bonebag, /datum/crafting_recipe/bonespear, /datum/crafting_recipe/boneaxe, /datum/crafting_recipe/bone_bow,
+		/datum/crafting_recipe/quiver, /datum/crafting_recipe/rib, /datum/crafting_recipe/skull, /datum/crafting_recipe/halfskull, /datum/crafting_recipe/boneshovel, /datum/crafting_recipe/bonehatchet,
+		/datum/crafting_recipe/primalretractor, /datum/crafting_recipe/primalhemostat, /datum/crafting_recipe/primalcautery, /datum/crafting_recipe/primalscalpel, /datum/crafting_recipe/primalsaw,
+		/datum/crafting_recipe/primalsetter, /datum/crafting_recipe/bone_crowbar, /datum/crafting_recipe/bone_screwdriver, /datum/crafting_recipe/bone_wrench, /datum/crafting_recipe/bone_wirecutters,
+		/datum/crafting_recipe/bone_welder, /datum/crafting_recipe/munition_box, /datum/crafting_recipe/powder_horn
+	)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
-	//var/mob/M = /mob/living/carbon/human/H
-	M.faction = "lavaland"
 	switch(params["fluff"])
 		if("nomad")
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
@@ -83,6 +88,11 @@
 			outfit.r_hand = /obj/item/gun/ballistic/musket/tribal
 			outfit.l_hand = /obj/item/storage/box/munition_box
 	return outfit
+
+/datum/ghostrole_instantiator/human/random/species/ashlander/AfterSpawn(mob/created, list/params)
+	. = ..()
+	created.faction = "lavaland"
+	created.mind.teach_crafting_recipe(ashlander_crafting)
 
 /obj/structure/ghost_role_spawner/ashlander
 	name = "ashlander yurt"

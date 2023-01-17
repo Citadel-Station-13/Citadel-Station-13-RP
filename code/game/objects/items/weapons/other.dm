@@ -847,3 +847,11 @@
 	icon_state = "spring"
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 40)
+
+//Yay Saddles.
+/obj/item/saddle
+	name = "saddle"
+	desc = "A portable seat designed to be mounted on trained animals."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "saddle"
+	w_class = ITEMSIZE_LARGE

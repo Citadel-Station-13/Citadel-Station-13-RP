@@ -5,6 +5,7 @@
 	reqs = list(/obj/item/stack/material/bone = 2,
 				 /obj/item/stack/sinew = 1)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bonecodpiece
 	name = "Skull Codpiece"
@@ -13,6 +14,7 @@
 	reqs = list(/obj/item/stack/material/bone = 2,
 				 /obj/item/stack/animalhide/goliath_hide = 1)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bracers
 	name = "Bone Bracers"
@@ -21,6 +23,7 @@
 	reqs = list(/obj/item/stack/material/bone = 2,
 				 /obj/item/stack/sinew = 1)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/goliathcloak
 	name = "Goliath Cloak"
@@ -29,6 +32,7 @@
 	reqs = list(/obj/item/stack/sinew = 2,
 				/obj/item/stack/animalhide/goliath_hide = 4)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/drakecloak
 	name = "Ash Drake Armour"
@@ -38,6 +42,7 @@
 				/obj/item/stack/sinew = 2,
 				/obj/item/stack/animalhide/ashdrake = 5)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bonebag
 	name = "Bone Satchel"
@@ -46,6 +51,7 @@
 	reqs = list(/obj/item/stack/material/bone = 3,
 				/obj/item/stack/sinew = 2)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bonespear
 	name = "Bone Spear"
@@ -54,6 +60,7 @@
 	reqs = list(/obj/item/stack/material/bone = 4,
 				 /obj/item/stack/sinew = 1)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/boneaxe
 	name = "Bone Axe"
@@ -62,6 +69,7 @@
 	reqs = list(/obj/item/stack/material/bone = 6,
 				 /obj/item/stack/sinew = 3)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
@@ -99,6 +107,7 @@
 	reqs = list(/obj/item/stack/material/leather = 3,
 				 /obj/item/stack/sinew = 4)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
@@ -107,6 +116,7 @@
 	reqs = list(/obj/item/stack/material/bone = 8,
 				 /obj/item/stack/sinew = 4)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /* Leaving this out until I decide to fuck with the recipe knowledge stuff.
 /datum/crafting_recipe/bow_tablet
@@ -128,6 +138,7 @@
 			)
 	result = /obj/structure/statue/bone
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/skull
 	name = "Skull Carving"
@@ -138,6 +149,7 @@
 			)
 	result = /obj/structure/statue/bone/skull
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/halfskull
 	name = "Cracked Skull Carving"
@@ -148,6 +160,7 @@
 			)
 	result = /obj/structure/statue/bone/skull/half
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/boneshovel
 	name = "Serrated Bone Shovel"
@@ -158,6 +171,7 @@
             /obj/item/shovel = 1)
 	result = /obj/item/shovel/bone
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bonehatchet
 	name = "Bone Hatchet"
@@ -167,6 +181,7 @@
             /obj/item/stack/sinew = 2)
 	result = /obj/item/material/knife/machete/hatchet/bone
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 //Surgical Tools - I've added these to this crafting menu after I found the sprites on Main and brought them over for the novelty.
 /datum/crafting_recipe/primalretractor
@@ -177,6 +192,7 @@
             /obj/item/stack/sinew = 2)
 	result = /obj/item/surgical/retractor_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/primalhemostat
 	name = "Primitive Hemostat"
@@ -186,6 +202,7 @@
             /obj/item/stack/sinew = 3)
 	result = /obj/item/surgical/hemostat_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/primalcautery
 	name = "Primitive Cautery"
@@ -196,6 +213,7 @@
 			/obj/item/soulstone = 1)
 	result = /obj/item/surgical/cautery_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/primalscalpel
 	name = "Primitive Scalpel"
@@ -206,6 +224,7 @@
 			/obj/item/material/shard = 1)
 	result = /obj/item/surgical/scalpel_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/primalsaw
 	name = "Primitive Bone Saw"
@@ -216,6 +235,7 @@
 			/obj/item/material/shard = 3)
 	result = /obj/item/surgical/saw_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/primalsetter
 	name = "Primitive Bone Setter"
@@ -225,6 +245,7 @@
             /obj/item/stack/sinew = 3)
 	result = /obj/item/surgical/bonesetter_primitive
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_crowbar
 	name = "Primitive Crowbar"
@@ -233,6 +254,7 @@
 	reqs = list(/obj/item/stack/material/bone = 8
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_screwdriver
 	name = "Primitive Screwdriver"
@@ -242,6 +264,7 @@
 				/obj/item/stack/sinew = 2
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_wrench
 	name = "Primitive Wrench"
@@ -251,6 +274,7 @@
 				/obj/item/stack/sinew = 1
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_wirecutters
 	name = "Primitive Wirecutters"
@@ -260,6 +284,7 @@
 				/obj/item/stack/sinew = 2
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/bone_welder
 	name = "Primitive Welding Tool"
@@ -269,6 +294,7 @@
 				/obj/item/stack/sinew = 4
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/munition_box
 	name = "Primitive Munitions Box"
@@ -279,6 +305,7 @@
 				/obj/item/stack/animalhide/goliath_hide = 1
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE
 
 /datum/crafting_recipe/powder_horn
 	name = "Bone Powder Horn"
@@ -288,3 +315,4 @@
 				/obj/item/stack/sinew = 3
 				)
 	category = CAT_PRIMAL
+	always_available = FALSE

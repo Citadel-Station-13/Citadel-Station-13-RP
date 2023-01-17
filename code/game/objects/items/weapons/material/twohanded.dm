@@ -163,9 +163,9 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
-	icon_state = "fireaxe_mask0"
-	base_icon = "fireaxe_mask"
-	applies_material_colour = 1
+	icon_state = "bone_axe0"
+	base_icon = "bone_axe"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -269,9 +269,9 @@
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
-	icon_state = "spear_mask0"
-	base_icon = "spear_mask"
-	applies_material_colour = 1
+	icon_state = "bone_spear0"
+	base_icon = "bone_spear"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
 	..(mapload,"bone")
