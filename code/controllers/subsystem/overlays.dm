@@ -233,7 +233,7 @@ SUBSYSTEM_DEF(overlays)
 // This one gets to be done the sane way because it shouldn't be as hot as the others.
 /atom/movable/cut_overlays(priority = FALSE)
 	..()
-	zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_STD
+	zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_NRML
 
 /// Remove one or more overlays from this atom.
 /atom/proc/cut_overlay(list/overlays, priority)
@@ -277,7 +277,7 @@ SUBSYSTEM_DEF(overlays)
 				found = TRUE
 				break
 		if (!found)
-			zmm_flags &= ~ZMM_AUTOMANGLE_STD
+			zmm_flags &= ~ZMM_AUTOMANGLE_NRML
 
 	// Likewise, but now for priority and AUTOMANGLE_PRI.
 	else if (priority && LAZYLEN(cached_priority))
@@ -293,7 +293,7 @@ SUBSYSTEM_DEF(overlays)
 
 	// None left, just unset the bit.
 	else
-		zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_STD
+		zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_NRML
 
 /// Add one or more overlays to this atom.
 /atom/proc/add_overlay(list/overlays, priority = FALSE)
@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(overlays)
 	overlays = build_appearance_list(overlays)
 	if (SSoverlays.context_needs_automangle && is_movable)
 		// This is a movable flag.
-		src:zmm_flags |= priority ? ZMM_AUTOMANGLE_PRI : ZMM_AUTOMANGLE_STD
+		src:zmm_flags |= priority ? ZMM_AUTOMANGLE_PRI : ZMM_AUTOMANGLE_NRML
 
 	if (!overlays || (islist(overlays) && !overlays.len))
 		// No point trying to compile if we don't have any overlays.
@@ -340,7 +340,7 @@ SUBSYSTEM_DEF(overlays)
 			LAZYADD(priority_overlays, overlays)
 	else
 		if (!SSoverlays.context_needs_automangle && is_movable)
-			src:zmm_flags &= ~ZMM_AUTOMANGLE_STD
+			src:zmm_flags &= ~ZMM_AUTOMANGLE_NRML
 
 		LAZYCLEARLIST(our_overlays)
 		if (overlays)
@@ -362,7 +362,7 @@ SUBSYSTEM_DEF(overlays)
 			for (var/i in 1 to length(cached_other))
 				var/image/I = cached_other[i]
 				if (I.plane != FLOAT_PLANE)
-					src:zmm_flags |= ZMM_AUTOMANGLE_STD
+					src:zmm_flags |= ZMM_AUTOMANGLE_NRML
 					break
 
 		if(cut_old)
