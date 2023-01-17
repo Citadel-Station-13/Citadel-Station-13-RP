@@ -38,6 +38,7 @@ GLOBAL_PROTECT(href_token)
 		owner.holder = src
 		owner.add_admin_verbs()	//TODO
 		GLOB.admins |= C
+		C.mentor_datum_set(TRUE)
 
 /datum/admins/proc/disassociate()
 	if(owner)
@@ -45,6 +46,8 @@ GLOBAL_PROTECT(href_token)
 		owner.remove_admin_verbs()
 		owner.deadmin_holder = owner.holder
 		owner.holder = null
+		owner.remove_mentor_verbs()
+		owner.mentor_datum = null
 
 /datum/admins/proc/reassociate()
 	if(owner)

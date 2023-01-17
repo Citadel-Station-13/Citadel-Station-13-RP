@@ -4,7 +4,7 @@
 	if(!is_mentor())
 		return
 	remove_mentor_verbs()
-	if (/client/proc/mentor_unfollow in verbs)
+	if (/client/verb/mentor_unfollow in verbs)
 		mentor_unfollow()
 	GLOB.mentors -= src
 	add_verb(src, /client/proc/cmd_mentor_rementor)
