@@ -130,3 +130,11 @@
 		heal_amount -= posion_damage
 
 	H.nutrition += heal_amount
+
+/datum/species/xenohybrid/digigrade
+	name = SPECIES_XENOHYBRID_DIGI
+	uid = SPECIES_ID_XENOHYBRID_DIGI
+
+	icobase = 'icons/mob/species/xenohybrid/xeno_parts_greyscale.dmi'
+	//tail = ""
+
