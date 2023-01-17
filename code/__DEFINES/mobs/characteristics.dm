@@ -8,14 +8,28 @@
 //? skill levels.
 //? These must be SEQUENTIAL FROM 1 TO X.
 #define CHARACTER_SKILL_UNTRAINED 1
-#define CHARACTER_SKILL_BASIC 2
-#define CHARACTER_SKILL_NOVICE 3
-#define CHARACTER_SKILL_TRAINED 4
-#define CHARACTER_SKILL_EXPERIENCED 5
-#define CHARACTER_SKILL_PROFESSIONAL 6
+#define CHARACTER_SKILL_NOVICE 2
+#define CHARACTER_SKILL_TRAINED 3
+#define CHARACTER_SKILL_EXPERIENCED 4
+#define CHARACTER_SKILL_PROFESSIONAL 5
 
 #define CHARACTER_SKILL_ENUM_MIN 1
-#define CHARACTER_SKILL_ENUM_MAX 6
+#define CHARACTER_SKILL_ENUM_MAX 5
+
+//? Skill costs
+/// baseline skillpoints
+#define SKILLPOINTS_BASELINE 36
+/// for a negligible gain from the last level
+#define SKILLCOST_INCREMENT_NEGLIGIBLE 1
+/// for a mild gain from the last level
+#define SKILLCOST_INCREMENT_MINOR 2
+/// for a moderate gain from the last level
+#define SKILLCOST_INCREMENT_MODERATE 3
+/// for a major gain from the last level
+#define SKILLCOST_INCREMENT_MAJOR 4
+/// for an extreme gain from the last level
+#define SKILLCOST_INCREMENT_EXTREME 6
+
 
 //! Stats
 

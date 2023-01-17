@@ -2885,6 +2885,7 @@
 #include "code\modules\mob\characteristics\skills\engineering.dm"
 #include "code\modules\mob\characteristics\skills\logistics.dm"
 #include "code\modules\mob\characteristics\skills\medical.dm"
+#include "code\modules\mob\characteristics\skills\misc.dm"
 #include "code\modules\mob\characteristics\skills\science.dm"
 #include "code\modules\mob\characteristics\skills\security.dm"
 #include "code\modules\mob\characteristics\skills\service.dm"

@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
  */
 /datum/characteristic_skill
 	abstract_type = /datum/characteristic_skill
-	//! basics
+	//? basics
 	/// unique id
 	var/id
 	/// name
@@ -29,23 +29,22 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	/// category - just strings for now, don't need defines yet
 	var/category = "Unsorted"
 
-	//! values
+	//? values
 	/// what to return if characteristics are disabled
 	var/baseline_value = CHARACTER_SKILL_ENUM_MIN
 	/// max skill value
 	var/max_value = CHARACTER_SKILL_ENUM_MAX
 
-	//! costs
+	//? costs - these are additive!
 	var/cost_multiplier = 1
-	var/cost_basic = 2
-	var/cost_novice = 4
-	var/cost_trained = 6
+	var/cost_novice = 2
+	var/cost_trained = 4
 	var/cost_experienced = 8
-	var/cost_professional = 10
+	var/cost_professional = 12
+	#warn caching system
 
-	//! descriptions
+	//? descriptions
 	var/desc_untrained = "ERR: NO UNTRAINED DESC"
-	var/desc_basic = "ERR: NO BASIC DESC"
 	var/desc_novice = "ERR: NO NOVICE DESC"
 	var/desc_trained = "ERR: NO TRAINED DESC"
 	var/desc_experienced = "ERR: NO EXPERIENCED DESC"
@@ -60,8 +59,6 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	switch(level)
 		if(CHARACTER_SKILL_UNTRAINED)
 			return 0
-		if(CHARACTER_SKILL_BASIC)
-			. = cost_basic
 		if(CHARACTER_SKILL_NOVICE)
 			. = cost_novice
 		if(CHARACTER_SKILL_TRAINED)
@@ -76,8 +73,6 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	switch(level)
 		if(CHARACTER_SKILL_UNTRAINED)
 			return desc_untrained
-		if(CHARACTER_SKILL_BASIC)
-			return desc_basic
 		if(CHARACTER_SKILL_NOVICE)
 			return desc_novice
 		if(CHARACTER_SKILL_TRAINED)
