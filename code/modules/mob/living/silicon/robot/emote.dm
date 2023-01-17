@@ -211,7 +211,7 @@
 				to_chat(src, "You are not security.")
 
 		if("bark")
-			if (module.is_quad)
+			if (module.is_dog())
 				if (emote_target)
 					message = "barks at [emote_target]."
 				else
@@ -223,7 +223,7 @@
 				to_chat(src, "You're not a dog!")
 
 		if("arfe")
-			if (module.is_quad)
+			if (module.is_dog())
 				message = "lets out an A R F E."
 
 				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)

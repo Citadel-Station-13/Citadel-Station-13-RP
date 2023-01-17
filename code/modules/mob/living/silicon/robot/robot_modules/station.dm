@@ -219,6 +219,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
 
+/// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
+/obj/item/robot_module/proc/is_dog()
+	return FALSE
+
 /obj/item/robot_module/robot/get_modules()
 	. = ..()
 	// Common items that all modules have.
@@ -286,22 +290,25 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	T.water = synths_by_kind[MATSYN_WATER]
 	. += T
 
-// Custom sprite stuff.
+/obj/item/robot_module/robot/quad/is_dog()
+	var/mob/living/silicon/robot/R = loc
+	ASSERT(istype(R))
+	// This is the only non-canid dogborg type right now.
+	return R.icontype != "F3-LINE"
+
+// Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
 
 /obj/item/robot_module/robot/quad/engi/handle_custom_item(mob/living/silicon/robot/R)
 	. = ..()
 	if (R.client?.ckey == "nezuli")
-		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 
 /obj/item/robot_module/robot/quad/medi/handle_custom_item(mob/living/silicon/robot/R)
 	. = ..()
 	if (R.client?.ckey == "nezuli")
-		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
 
 /obj/item/robot_module/robot/quad/sec/handle_custom_item(mob/living/silicon/robot/R)
 	. = ..()
 	if (R.client?.ckey == "nezuli")
-		sprites += "Alina"
 		sprites["Alina"] = "alina-sec"

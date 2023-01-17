@@ -882,6 +882,10 @@
 			return 1
 	return 0
 
+/mob/living/silicon/robot/update_canmove()
+	. = ..()
+	updateicon()
+
 /mob/living/silicon/robot/updateicon()
 	if (wideborg)
 		mz_flags |= ZMM_LOOKAHEAD
