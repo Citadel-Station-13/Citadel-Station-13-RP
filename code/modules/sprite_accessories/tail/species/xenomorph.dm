@@ -65,3 +65,12 @@
 	id = "tail_xeno_sentinel_color"
 	icon_state = "xenos_sentinel_tail_hc_s"
 	do_colouration = 1
+
+/datum/sprite_accessory/tail/special/xenotail_wag
+	name = "Xenomorph tail (Waggable)"
+	id = "tail_xeno_wag"
+	icon = "icons/mob/sprite_accessories/xeno_parts.dmi"
+	icon_state = "xenotail"
+	ani_state = "xenotail_w"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
