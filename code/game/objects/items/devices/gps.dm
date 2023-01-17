@@ -374,9 +374,10 @@
 			if(sig == our_sig)
 				continue
 			var/atom/A = sig.parent
+			var/turf/T = get_turf(A)
 			others += list(list(
-				"x" = A.x,
-				"y" = A.y,
+				"x" = T.x,
+				"y" = T.y,
 				"level" = l_id,
 				"ref" = ref(sig),
 				"name" = sig.gps_tag
