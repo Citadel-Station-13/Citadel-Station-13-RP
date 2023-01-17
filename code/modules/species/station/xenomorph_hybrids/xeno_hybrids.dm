@@ -131,9 +131,9 @@
 
 	H.nutrition += heal_amount
 
-/datum/species/xenohybrid/digigrade
-	name = SPECIES_XENOHYBRID_DIGI
-	uid = SPECIES_ID_XENOHYBRID_DIGI
+/datum/species/xenohybrid/alt
+	name = SPECIES_XENOHYBRID_ALT
+	uid = SPECIES_ID_XENOHYBRID_ALT
 
 	icobase = 'icons/mob/species/xenohybrid/xeno_parts_greyscale.dmi'
 	//tail = ""
