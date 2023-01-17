@@ -30,19 +30,16 @@ export const Cleanbot = (props, context) => {
             <Button icon="power-off" selected={on} onClick={() => act('start')}>
               {on ? 'On' : 'Off'}
             </Button>
-          }
-        >
+          }>
           <LabeledList>
             <LabeledList.Item
               label="Maintenance Panel"
-              color={open ? 'bad' : 'good'}
-            >
+              color={open ? 'bad' : 'good'}>
               {open ? 'Open' : 'Closed'}
             </LabeledList.Item>
             <LabeledList.Item
               label="Behavior Controls"
-              color={locked ? 'good' : 'bad'}
-            >
+              color={locked ? 'good' : 'bad'}>
               {locked ? 'Locked' : 'Unlocked'}
             </LabeledList.Item>
           </LabeledList>
@@ -55,8 +52,7 @@ export const Cleanbot = (props, context) => {
                   fluid
                   icon={blood ? 'toggle-on' : 'toggle-off'}
                   selected={blood}
-                  onClick={() => act('blood')}
-                >
+                  onClick={() => act('blood')}>
                   {blood ? 'Clean' : 'Ignore'}
                 </Button>
               </LabeledList.Item>
@@ -65,8 +61,7 @@ export const Cleanbot = (props, context) => {
                   fluid
                   icon={vocal ? 'toggle-on' : 'toggle-off'}
                   selected={vocal}
-                  onClick={() => act('vocal')}
-                >
+                  onClick={() => act('vocal')}>
                   {vocal ? 'On' : 'Off'}
                 </Button>
               </LabeledList.Item>
@@ -116,8 +111,7 @@ export const Cleanbot = (props, context) => {
                       fluid
                       selected={wet_floors}
                       onClick={() => act('wet_floors')}
-                      icon="screwdriver"
-                    >
+                      icon="screwdriver">
                       {wet_floors ? 'Yes' : 'No'}
                     </Button>
                   </LabeledList.Item>
@@ -127,8 +121,7 @@ export const Cleanbot = (props, context) => {
                       color="brown"
                       selected={spray_blood}
                       onClick={() => act('spray_blood')}
-                      icon="screwdriver"
-                    >
+                      icon="screwdriver">
                       {spray_blood ? 'Yes' : 'No'}
                     </Button>
                   </LabeledList.Item>

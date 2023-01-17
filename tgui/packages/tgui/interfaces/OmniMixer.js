@@ -41,8 +41,7 @@ export const OmniMixer = (props, context) => {
                 onClick={() => act('configure')}
               />
             </Fragment>
-          }
-        >
+          }>
           <Table>
             <Table.Row header>
               <Table.Cell textAlign="center">Port</Table.Cell>

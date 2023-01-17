@@ -1,12 +1,6 @@
 /* eslint react/no-danger: "off" */
 import { useBackend } from '../backend';
-import {
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  NoticeBox,
-} from '../components';
+import { Button, LabeledList, ProgressBar, Section, NoticeBox } from '../components';
 import { NtosWindow } from '../layouts';
 import { resolveAsset } from '../assets';
 import { Fragment } from 'inferno';
@@ -62,8 +56,7 @@ const SelectedArticle = (props, context) => {
             Close
           </Button>
         </Fragment>
-      }
-    >
+      }>
       {!!cover && <img src={resolveAsset(cover)} />}
       {/* News articles are written in premade .html files and cannot be
        * edited by players, so it should be safe enough to use
@@ -85,12 +78,10 @@ const ViewArticles = (props, context) => {
       buttons={
         <Button.Checkbox
           onClick={() => act('PRG_toggle_archived')}
-          checked={showing_archived}
-        >
+          checked={showing_archived}>
           Show Archived
         </Button.Checkbox>
-      }
-    >
+      }>
       <LabeledList>
         {(all_articles.length &&
           all_articles.map((article) => (
@@ -102,8 +93,7 @@ const ViewArticles = (props, context) => {
                   icon="download"
                   onClick={() => act('PRG_openarticle', { uid: article.uid })}
                 />
-              }
-            >
+              }>
               {article.size} GQ
             </LabeledList.Item>
           ))) || (
@@ -130,8 +120,7 @@ const ArticleDownloading = (props, context) => {
             color="good"
             minValue={0}
             value={download_progress}
-            maxValue={download_maxprogress}
-          >
+            maxValue={download_maxprogress}>
             {download_progress} / {download_maxprogress} GQ
           </ProgressBar>
         </LabeledList.Item>

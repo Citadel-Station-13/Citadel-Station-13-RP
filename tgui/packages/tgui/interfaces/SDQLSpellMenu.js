@@ -1,17 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Dropdown,
-  Input,
-  LabeledList,
-  Modal,
-  NumberInput,
-  Section,
-  Stack,
-  Tooltip,
-} from '../components';
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, Modal, NumberInput, Section, Stack, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 /**
@@ -418,14 +406,12 @@ export const SDQLSpellMenu = (props, context) => {
                     <Button
                       disabled={!type}
                       tooltip="Save the spell to a json file on your local system."
-                      onClick={() => act('save')}
-                    >
+                      onClick={() => act('save')}>
                       Save Spell
                     </Button>
                     <Button
                       tooltip="Load a spell from a json file on your local system."
-                      onClick={() => act('load')}
-                    >
+                      onClick={() => act('load')}>
                       Load Spell
                     </Button>
                   </Stack.Item>

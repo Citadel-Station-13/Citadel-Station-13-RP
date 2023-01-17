@@ -1,18 +1,6 @@
 import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Input,
-  LabeledList,
-  NoticeBox,
-  ProgressBar,
-  Section,
-  Stack,
-  Tabs,
-  Tooltip,
-} from '../components';
+import { Box, Button, Collapsible, Input, LabeledList, NoticeBox, ProgressBar, Section, Stack, Tabs, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type PandemicContext = {
@@ -170,8 +158,7 @@ const BeakerDisplay = (_, context) => {
             onClick={() => act('eject_beaker')}
           />
         </>
-      }
-    >
+      }>
       {content}
     </Section>
   );
@@ -232,22 +219,21 @@ const AntibodyInfoDisplay = (_, context) => {
         {!resistances.length
           ? 'None'
           : resistances.map((resistance) => {
-              return (
-                <Button
-                  key={resistance.name}
-                  icon="eye-dropper"
-                  disabled={!is_ready}
-                  tooltip="Creates a vaccine bottle."
-                  onClick={() =>
-                    act('create_vaccine_bottle', {
-                      index: resistance.id,
-                    })
-                  }
-                >
-                  {`${resistance.name}`}
-                </Button>
-              );
-            })}
+            return (
+              <Button
+                key={resistance.name}
+                icon="eye-dropper"
+                disabled={!is_ready}
+                tooltip="Creates a vaccine bottle."
+                onClick={() =>
+                  act('create_vaccine_bottle', {
+                    index: resistance.id,
+                  })
+                }>
+                {`${resistance.name}`}
+              </Button>
+            );
+          })}
       </LabeledList.Item>
     </LabeledList>
   );
@@ -291,8 +277,7 @@ const SpecimenDisplay = (_, context) => {
             />
           </Stack.Item>
         </Stack>
-      }
-    >
+      }>
       <Stack fill vertical>
         <Stack.Item>
           <VirusDisplay virus={virus} />
@@ -320,8 +305,7 @@ const VirusTabs = (props: TabsProps, context) => {
           <Tabs.Tab
             selected={tab === index}
             onClick={() => tabHandler(index)}
-            key={virus.name}
-          >
+            key={virus.name}>
             {virus.name}
           </Tabs.Tab>
         );
@@ -401,16 +385,14 @@ const VirusTraitInfo = (props: VirusInfoProps) => {
         <Tooltip content="Decides the cure complexity.">
           <LabeledList.Item
             color={GetColor(virus.resistance)}
-            label="Resistance"
-          >
+            label="Resistance">
             {virus.resistance}
           </LabeledList.Item>
         </Tooltip>
         <Tooltip content="Symptomic progression.">
           <LabeledList.Item
             color={GetColor(virus.stage_speed)}
-            label="Stage speed"
-          >
+            label="Stage speed">
             {virus.stage_speed}
           </LabeledList.Item>
         </Tooltip>
@@ -422,8 +404,7 @@ const VirusTraitInfo = (props: VirusInfoProps) => {
         <Tooltip content="Decides the spread type.">
           <LabeledList.Item
             color={GetColor(virus.transmission)}
-            label="Transmissibility"
-          >
+            label="Transmissibility">
             {virus.transmission}
           </LabeledList.Item>
         </Tooltip>
@@ -478,16 +459,14 @@ const SymptomTraitInfo = (props: SymptomInfoProps) => {
         <Tooltip content="Decides the cure complexity.">
           <LabeledList.Item
             color={GetColor(symptom.resistance)}
-            label="Resistance"
-          >
+            label="Resistance">
             {symptom.resistance}
           </LabeledList.Item>
         </Tooltip>
         <Tooltip content="Symptomic progression.">
           <LabeledList.Item
             color={GetColor(symptom.stage_speed)}
-            label="Stage Speed"
-          >
+            label="Stage Speed">
             {symptom.stage_speed}
           </LabeledList.Item>
         </Tooltip>
@@ -499,8 +478,7 @@ const SymptomTraitInfo = (props: SymptomInfoProps) => {
         <Tooltip content="Decides the spread type.">
           <LabeledList.Item
             color={GetColor(symptom.transmission)}
-            label="Transmission"
-          >
+            label="Transmission">
             {symptom.transmission}
           </LabeledList.Item>
         </Tooltip>

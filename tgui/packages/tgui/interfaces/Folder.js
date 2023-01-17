@@ -10,8 +10,7 @@ export const Folder = (props, context) => {
       title={folder_name || 'Folder'}
       theme={theme}
       width={400}
-      height={500}
-    >
+      height={500}>
       <Window.Content backgroundColor={bg_color || '#7f7f7f'} scrollable>
         {contents.map((item, index) => (
           <Flex
@@ -19,8 +18,7 @@ export const Folder = (props, context) => {
             color="black"
             backgroundColor="white"
             style={{ padding: '2px 2px 0 2px' }}
-            mb={0.5}
-          >
+            mb={0.5}>
             <Flex.Item align="center" grow={1}>
               <Box align="center">{item}</Box>
             </Flex.Item>

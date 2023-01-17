@@ -34,8 +34,7 @@ export const ICCircuit = (props, context) => {
               <Button onClick={() => act('scan')}>Scan with Device</Button>
               <Button onClick={() => act('remove')}>Remove</Button>
             </Fragment>
-          }
-        >
+          }>
           <LabeledList>
             <LabeledList.Item label="Complexity">{complexity}</LabeledList.Item>
             <LabeledList.Item label="Cooldown Per Use">
@@ -71,10 +70,9 @@ export const ICCircuit = (props, context) => {
                 inputs.length && outputs.length
                   ? '33%'
                   : inputs.length || outputs.length
-                  ? '45%'
-                  : '100%'
-              }
-            >
+                    ? '45%'
+                    : '100%'
+              }>
               <Section title={displayed_name} mb={1}>
                 <Box>{desc}</Box>
               </Section>
@@ -130,8 +128,7 @@ const ICLinkDisplay = (props, context) => {
   return pin.linked.map((link) => (
     <Box inline key={link.ref}>
       <Button
-        onClick={() => act('pin_unwire', { pin: pin.ref, link: link.ref })}
-      >
+        onClick={() => act('pin_unwire', { pin: pin.ref, link: link.ref })}>
         {link.name}
       </Button>
       @&nbsp;

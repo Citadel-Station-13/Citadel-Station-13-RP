@@ -1,14 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  LabeledList,
-  ProgressBar,
-  Section,
-} from '../components';
+import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
 import { createLogger } from '../logging';
@@ -131,8 +123,7 @@ const StatusDisplay = (props, context) => {
               color={bar.color(bar.value)}
               minValue={bar.minValue}
               maxValue={bar.maxValue}
-              value={bar.value}
-            >
+              value={bar.value}>
               {bar.textValue}
             </ProgressBar>
           </LabeledList.Item>
@@ -328,8 +319,8 @@ const AirlockConsoleAdvanced = (props, context) => {
     return value < 80 || value > 120
       ? 'bad'
       : value < 95 || value > 110
-      ? 'average'
-      : 'good';
+        ? 'average'
+        : 'good';
   };
 
   const bars = [
@@ -407,8 +398,8 @@ const AirlockConsoleSimple = (props, context) => {
         return value < 80 || value > 120
           ? 'bad'
           : value < 95 || value > 110
-          ? 'average'
-          : 'good';
+            ? 'average'
+            : 'good';
       },
     },
   ];
@@ -453,8 +444,8 @@ const AirlockConsolePhoron = (props, context) => {
         return value < 80 || value > 120
           ? 'bad'
           : value < 95 || value > 110
-          ? 'average'
-          : 'good';
+            ? 'average'
+            : 'good';
       },
     },
     {
@@ -508,8 +499,8 @@ const AirlockConsoleDocking = (props, context) => {
         return value < 80 || value > 120
           ? 'bad'
           : value < 95 || value > 110
-          ? 'average'
-          : 'good';
+            ? 'average'
+            : 'good';
       },
     },
   ];
@@ -527,8 +518,7 @@ const AirlockConsoleDocking = (props, context) => {
               onClick={() => act('toggle_override')}
             />
           ) : null
-        }
-      >
+        }>
         <DockStatus />
       </Section>
       <StatusDisplay bars={bars} />
@@ -586,8 +576,7 @@ const DockingConsoleSimple = (props, context) => {
             onClick={() => act('toggle_override')}
           />
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Dock Status">
           <DockStatus />
@@ -619,8 +608,7 @@ const DockingConsoleMulti = (props, context) => {
               <LabeledList.Item
                 color={airlock.override_enabled ? 'bad' : 'good'}
                 key={airlock.name}
-                label={airlock.name}
-              >
+                label={airlock.name}>
                 {airlock.override_enabled ? 'OVERRIDE ENABLED' : 'STATUS OK'}
               </LabeledList.Item>
             ))}
@@ -676,8 +664,7 @@ const DoorAccessConsole = (props, context) => {
             }}
           />
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Exterior Door Status">
           {data.exterior_status.state === 'closed' ? 'Locked' : 'Open'}

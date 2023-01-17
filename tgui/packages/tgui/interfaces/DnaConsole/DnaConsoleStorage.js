@@ -1,26 +1,10 @@
 import { uniqBy } from 'common/collections';
 import { capitalize } from 'common/string';
 import { useBackend } from '../../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Divider,
-  Flex,
-  LabeledList,
-  Section,
-} from '../../components';
+import { Box, Button, Collapsible, Divider, Flex, LabeledList, Section } from '../../components';
 import { GeneticMakeupInfo } from './GeneticMakeupInfo';
 import { MutationInfo } from './MutationInfo';
-import {
-  STORAGE_CONS_SUBMODE_CHROMOSOMES,
-  STORAGE_CONS_SUBMODE_MUTATIONS,
-  STORAGE_DISK_SUBMODE_ENZYMES,
-  STORAGE_DISK_SUBMODE_MUTATIONS,
-  STORAGE_MODE_ADVINJ,
-  STORAGE_MODE_CONSOLE,
-  STORAGE_MODE_DISK,
-} from './constants';
+import { STORAGE_CONS_SUBMODE_CHROMOSOMES, STORAGE_CONS_SUBMODE_MUTATIONS, STORAGE_DISK_SUBMODE_ENZYMES, STORAGE_DISK_SUBMODE_MUTATIONS, STORAGE_MODE_ADVINJ, STORAGE_MODE_CONSOLE, STORAGE_MODE_DISK } from './constants';
 
 const DnaConsoleAdvancedInjectors = (props, context) => {
   const { act, data } = useBackend(context);
@@ -55,8 +39,7 @@ const DnaConsoleAdvancedInjectors = (props, context) => {
                 }
               />
             </>
-          }
-        >
+          }>
           <StorageMutations
             mutations={injector.mutations}
             customMode={`advinj${advInjectors.findIndex(
@@ -252,8 +235,7 @@ const StorageMutations = (props, context) => {
       <Flex.Item width="140px">
         <Section
           title={`${capitalize(data.view.storageMode)} Storage`}
-          level={2}
-        >
+          level={2}>
           {mutations.map((mutation) => (
             <Button
               key={mutation.ByondRef}

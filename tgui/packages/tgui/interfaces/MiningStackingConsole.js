@@ -1,12 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { useBackend } from '../backend';
-import {
-  Button,
-  Section,
-  LabeledList,
-  AnimatedNumber,
-  NumberInput,
-} from '../components';
+import { Button, Section, LabeledList, AnimatedNumber, NumberInput } from '../components';
 import { Window } from '../layouts';
 
 export const MiningStackingConsole = (props, context) => {
@@ -40,12 +34,10 @@ export const MiningStackingConsole = (props, context) => {
                       icon="eject"
                       onClick={() =>
                         act('release_stack', { stack: stack.type })
-                      }
-                    >
+                      }>
                       Eject
                     </Button>
-                  }
-                >
+                  }>
                   <AnimatedNumber value={stack.amt} />
                 </LabeledList.Item>
               ))) || (

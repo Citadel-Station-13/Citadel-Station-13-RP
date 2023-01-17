@@ -1,13 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  AnimatedNumber,
-} from '../components';
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from '../components';
 import { Window } from '../layouts';
 
 export const OvermapShieldGenerator = (props, context) => {
@@ -48,12 +41,10 @@ const OvermapShieldGeneratorContent = (props, context) => {
               <Button
                 icon="power-off"
                 selected={mode.status}
-                onClick={() => act('toggle_mode', { toggle_mode: mode.flag })}
-              >
+                onClick={() => act('toggle_mode', { toggle_mode: mode.flag })}>
                 {mode.status ? 'Enabled' : 'Disabled'}
               </Button>
-            }
-          >
+            }>
             <Box color="label">{mode.desc}</Box>
             <Box mt={0.5}>Multiplier: {mode.multiplier}</Box>
           </Section>
@@ -159,23 +150,20 @@ const OvermapShieldGeneratorControls = (props, context) => {
               <Button
                 icon="power-off"
                 onClick={() => act('begin_shutdown')}
-                selected
-              >
+                selected>
                 Turn off
               </Button>
               {(running === 3 && (
                 <Button
                   icon="power-off"
-                  onClick={() => act('toggle_idle', { toggle_idle: 0 })}
-                >
+                  onClick={() => act('toggle_idle', { toggle_idle: 0 })}>
                   Activate
                 </Button>
               )) || (
                 <Button
                   icon="power-off"
                   onClick={() => act('toggle_idle', { toggle_idle: 1 })}
-                  selected
-                >
+                  selected>
                   Deactivate
                 </Button>
               )}
@@ -189,15 +177,13 @@ const OvermapShieldGeneratorControls = (props, context) => {
             <Button
               icon="exclamation-triangle"
               onClick={() => act('emergency_shutdown')}
-              color="bad"
-            >
+              color="bad">
               EMERGENCY SHUTDOWN
             </Button>
           )) ||
             null}
         </Fragment>
-      }
-    >
+      }>
       <Button icon="expand-arrows-alt" onClick={() => act('set_range')}>
         Set Field Range
       </Button>
@@ -211,8 +197,7 @@ const OvermapShieldGeneratorControls = (props, context) => {
               key={val}
               selected={val === idle_multiplier}
               disabled={running === 4}
-              onClick={() => act('switch_idle', { switch_idle: val })}
-            >
+              onClick={() => act('switch_idle', { switch_idle: val })}>
               {val}
             </Button>
           ))}

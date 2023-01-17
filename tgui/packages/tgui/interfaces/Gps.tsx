@@ -1,15 +1,7 @@
 import { useBackend, useLocalState } from '../backend';
 import { BooleanLike } from '../../common/react';
 import { Window } from '../layouts';
-import {
-  Section,
-  Button,
-  LabeledList,
-  Table,
-  Input,
-  Box,
-  Icon,
-} from '../components';
+import { Section, Button, LabeledList, Table, Input, Box, Icon } from '../components';
 
 type GpsContext = {
   on: BooleanLike;
@@ -75,8 +67,7 @@ export const Gps = (props, context) => {
               selected={!!data.on}
               onClick={() => act('power')}
             />
-          }
-        >
+          }>
           <LabeledList>
             <LabeledList.Item label="Tag">
               <Input
@@ -137,8 +128,7 @@ export const Gps = (props, context) => {
                     })
                   }
                 />
-              }
-            >
+              }>
               <Input
                 placeholder="Waypoint"
                 width="15rem"

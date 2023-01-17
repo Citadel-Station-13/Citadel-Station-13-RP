@@ -1,17 +1,7 @@
 import { capitalize } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  Collapsible,
-  Icon,
-  LabeledList,
-  NoticeBox,
-  Section,
-  Tabs,
-} from '../components';
+import { Box, Button, Flex, Collapsible, Icon, LabeledList, NoticeBox, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 
@@ -137,14 +127,12 @@ const VoreBellySelectionAndCustomization = (props, context) => {
             key={belly.name}
             selected={belly.selected}
             textColor={digestModeToColor[belly.digest_mode]}
-            onClick={() => act('bellypick', { bellypick: belly.ref })}
-          >
+            onClick={() => act('bellypick', { bellypick: belly.ref })}>
             <Box
               inline
               textColor={
                 (belly.selected && digestModeToColor[belly.digest_mode]) || null
-              }
-            >
+              }>
               {belly.name} ({belly.contents})
             </Box>
           </Tabs.Tab>
@@ -241,8 +229,7 @@ const VoreSelectedBellyControls = (props, context) => {
               onClick={() => act('move_belly', { dir: 1 })}
             />
           </Fragment>
-        }
-      >
+        }>
         <Button
           onClick={() => act('set_attribute', { attribute: 'b_name' })}
           content={belly_name}
@@ -299,8 +286,7 @@ const VoreSelectedBellyDescriptions = (props, context) => {
             onClick={() => act('set_attribute', { attribute: 'b_desc' })}
             icon="pen"
           />
-        }
-      >
+        }>
         {desc}
       </LabeledList.Item>
       <LabeledList.Item
@@ -312,8 +298,7 @@ const VoreSelectedBellyDescriptions = (props, context) => {
             }
             icon="pen"
           />
-        }
-      >
+        }>
         {absorbed_desc}
       </LabeledList.Item>
       <LabeledList.Item label="Vore Verb">
@@ -734,8 +719,7 @@ const VoreSelectedBellyVisuals = (props, context) => {
           selected={belly_fullscreen === '' || belly_fullscreen === null}
           onClick={() =>
             act('set_attribute', { attribute: 'b_fullscreen', val: null })
-          }
-        >
+          }>
           Disabled
         </Button>
         {Object.keys(possible_fullscreens).map((key) => (
@@ -746,8 +730,7 @@ const VoreSelectedBellyVisuals = (props, context) => {
             selected={key === belly_fullscreen}
             onClick={() =>
               act('set_attribute', { attribute: 'b_fullscreen', val: key })
-            }
-          >
+            }>
             <Box
               className={classes(['vore240x240', key])}
               style={{
@@ -777,8 +760,7 @@ const VoreSelectedBellyInteractions = (props, context) => {
           selected={escapable}
           content={escapable ? 'Interactions On' : 'Interactions Off'}
         />
-      }
-    >
+      }>
       {escapable ? (
         <LabeledList>
           <LabeledList.Item label="Escape Chance">
@@ -880,8 +862,7 @@ const VoreContentsPanel = (props, context) => {
           textAlign="center"
           fluid
           mb={1}
-          onClick={() => act('pick_from_outside', { 'pickall': true })}
-        >
+          onClick={() => act('pick_from_outside', { 'pickall': true })}>
           All
         </Button>
       )) ||
@@ -906,8 +887,7 @@ const VoreContentsPanel = (props, context) => {
                       'belly': belly,
                     }
                   )
-                }
-              >
+                }>
                 <img
                   src={'data:image/jpeg;base64, ' + thing.icon}
                   width="64px"
@@ -939,8 +919,7 @@ const VoreContentsPanel = (props, context) => {
                       'belly': belly,
                     }
                   )
-                }
-              >
+                }>
                 Interact
               </Button>
             </LabeledList.Item>
@@ -1219,12 +1198,10 @@ const VoreUserPreferences = (props, context) => {
         <Button
           icon="eye"
           selected={show_pictures}
-          onClick={() => act('show_pictures')}
-        >
+          onClick={() => act('show_pictures')}>
           Contents Preference: {show_pictures ? 'Show Pictures' : 'Show List'}
         </Button>
-      }
-    >
+      }>
       <Flex spacing={1} wrap="wrap" justify="center">
         <Flex.Item basis="32%">
           <VoreUserPreferenceItem spec={preferences.digestion} />

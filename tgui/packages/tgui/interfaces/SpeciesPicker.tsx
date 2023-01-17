@@ -83,8 +83,7 @@ export const SpeciesPicker = (props, context) => {
                   color="transparent"
                   fluid
                   selected={selectedCategory === k}
-                  onClick={() => setSelectedCategory(k)}
-                >
+                  onClick={() => setSelectedCategory(k)}>
                   {k}
                 </Button>
               ))}
@@ -105,8 +104,7 @@ export const SpeciesPicker = (props, context) => {
                       color="transparent"
                       key={s.id}
                       selected={selectedSpecies === s.id}
-                      onClick={() => setSelectedSpecies(s.id)}
-                    >
+                      onClick={() => setSelectedSpecies(s.id)}>
                       {s.name}
                     </Button>
                   ))}
@@ -129,8 +127,7 @@ export const SpeciesPicker = (props, context) => {
                   right="10px"
                   width="auto"
                   position="absolute"
-                  textAlign="center"
-                >
+                  textAlign="center">
                   {!!isRestricted(selected) && (
                     <NoticeBox danger textAlign="center">
                       This is a restricted species. You can select it, but
@@ -157,8 +154,7 @@ export const SpeciesPicker = (props, context) => {
                     color="transparent"
                     textAlign="center"
                     width="100% "
-                    onClick={() => act('pick', { id: selected?.id })}
-                  >
+                    onClick={() => act('pick', { id: selected?.id })}>
                     Select
                   </Button>
                 </Box>

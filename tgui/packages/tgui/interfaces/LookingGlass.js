@@ -19,8 +19,7 @@ export const LookingGlass = (props, context) => {
               fluid
               icon="eye"
               selected={program === currentProgram}
-              onClick={() => act('program', { program: program })}
-            >
+              onClick={() => act('program', { program: program })}>
               {program}
             </Button>
           ))}
@@ -32,8 +31,7 @@ export const LookingGlass = (props, context) => {
                 fluid
                 icon="user-astronaut"
                 selected={gravity}
-                onClick={() => act('gravity')}
-              >
+                onClick={() => act('gravity')}>
                 {gravity ? 'Enabled' : 'Disabled'}
               </Button>
             </LabeledList.Item>
@@ -43,8 +41,7 @@ export const LookingGlass = (props, context) => {
                 fluid
                 icon="eye"
                 selected={immersion}
-                onClick={() => act('immersion')}
-              >
+                onClick={() => act('immersion')}>
                 {immersion ? 'Enabled' : 'Disabled'}
               </Button>
             </LabeledList.Item>

@@ -1,10 +1,4 @@
-import {
-  CheckboxInput,
-  FeatureColorInput,
-  Feature,
-  FeatureDropdownInput,
-  FeatureToggle,
-} from '../base';
+import { CheckboxInput, FeatureColorInput, Feature, FeatureDropdownInput, FeatureToggle } from '../base';
 
 export const asaycolor: Feature<string> = {
   name: 'Admin chat color',

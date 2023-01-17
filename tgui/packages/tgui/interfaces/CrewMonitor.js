@@ -130,8 +130,7 @@ export const CrewMonitorContent = (props, context) => {
         <Tabs.Tab
           key="DataView"
           selected={0 === tabIndex}
-          onClick={() => setTabIndex(0)}
-        >
+          onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Data View
         </Tabs.Tab>
         {/* <Tabs.Tab

@@ -8,14 +8,7 @@ import { Window } from '../layouts';
 import { useBackend } from '../backend';
 import { toFixed } from 'common/math';
 import { RADIO_CHANNELS } from '../constants';
-import {
-  Button,
-  LabeledList,
-  NumberInput,
-  NoticeBox,
-  Section,
-  Input,
-} from '../components';
+import { Button, LabeledList, NumberInput, NoticeBox, Section, Input } from '../components';
 
 export const TelecommsInteraction = (props, context) => {
   const { act, data } = useBackend(context);
@@ -47,8 +40,7 @@ export const TelecommsInteraction = (props, context) => {
                 <Button
                   icon={power ? 'power-off' : 'times'}
                   color={power ? 'good' : 'bad'}
-                  onClick={() => act('toggle')}
-                >
+                  onClick={() => act('toggle')}>
                   {power ? 'On' : 'Off'}
                 </Button>
               </LabeledList.Item>
@@ -80,8 +72,7 @@ export const TelecommsInteraction = (props, context) => {
                   </LabeledList.Item>
                   <LabeledList.Item
                     label="Prefabrication"
-                    color={power ? 'good' : 'bad'}
-                  >
+                    color={power ? 'good' : 'bad'}>
                     {prefab ? 'TRUE' : 'FALSE'}
                   </LabeledList.Item>
                   {!!isrelay && (
@@ -94,8 +85,7 @@ export const TelecommsInteraction = (props, context) => {
                             act('relay', {
                               'broadcast': true,
                             })
-                          }
-                        >
+                          }>
                           {machine.broadcast ? 'YES' : 'NO'}
                         </Button>
                       </LabeledList.Item>
@@ -107,8 +97,7 @@ export const TelecommsInteraction = (props, context) => {
                             act('relay', {
                               'receiving': true,
                             })
-                          }
-                        >
+                          }>
                           {machine.receiving ? 'YES' : 'NO'}
                         </Button>
                       </LabeledList.Item>
@@ -123,8 +112,7 @@ export const TelecommsInteraction = (props, context) => {
                           act('frequency', {
                             'toggle': true,
                           })
-                        }
-                      >
+                        }>
                         {machine.chang_frequency ? 'Enabled' : 'Disabled'}
                       </Button>
                       {!!machine.chang_frequency && (
@@ -162,8 +150,7 @@ export const TelecommsInteraction = (props, context) => {
                                 act('multitool', {
                                   'Link': true,
                                 })
-                              }
-                            >
+                              }>
                               Link
                             </Button>
                             <Button
@@ -171,8 +158,7 @@ export const TelecommsInteraction = (props, context) => {
                                 act('multitool', {
                                   'Flush': true,
                                 })
-                              }
-                            >
+                              }>
                               Flush
                             </Button>
                           </Fragment>
@@ -182,13 +168,11 @@ export const TelecommsInteraction = (props, context) => {
                               act('multitool', {
                                 'Add': true,
                               })
-                            }
-                          >
+                            }>
                             Add Machine
                           </Button>
                         )
-                      }
-                    >
+                      }>
                       {!!multitool_buf &&
                         `${multitool_buf.name} (${multitool_buf.id})`}
                     </LabeledList.Item>
@@ -212,12 +196,10 @@ export const TelecommsInteraction = (props, context) => {
                               act('unlink', {
                                 'value': entity.ref,
                               })
-                            }
-                          >
+                            }>
                             Remove
                           </Button>
-                        }
-                      >
+                        }>
                         {`${entity.name} (${entity.id})`}
                       </LabeledList.Item>
                     ))}
@@ -229,37 +211,35 @@ export const TelecommsInteraction = (props, context) => {
                       act('freq', {
                         'add': true,
                       })
-                    }
-                  >
+                    }>
                     Add Filter
                   </Button>
                   <br />
                   <br />
                   {freq_listening && freq_listening.length
                     ? freq_listening.map((thing) => {
-                        const valid = RADIO_CHANNELS.find(
-                          (channel) => channel.freq === thing
-                        );
-                        return (
-                          <Button
-                            key={thing}
-                            icon="times"
-                            onClick={() =>
-                              act('freq', {
-                                'remove': thing,
-                              })
-                            }
-                          >
-                            {valid ? (
-                              <span style={`color: ${valid.color}`}>
-                                {`${thing} (${valid.name})`}
-                              </span>
-                            ) : (
-                              thing
-                            )}
-                          </Button>
-                        );
-                      })
+                      const valid = RADIO_CHANNELS.find(
+                        (channel) => channel.freq === thing
+                      );
+                      return (
+                        <Button
+                          key={thing}
+                          icon="times"
+                          onClick={() =>
+                            act('freq', {
+                              'remove': thing,
+                            })
+                          }>
+                          {valid ? (
+                            <span style={`color: ${valid.color}`}>
+                              {`${thing} (${valid.name})`}
+                            </span>
+                          ) : (
+                            thing
+                          )}
+                        </Button>
+                      );
+                    })
                     : ''}
                 </Section>
               </Fragment>

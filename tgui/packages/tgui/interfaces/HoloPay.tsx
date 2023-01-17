@@ -1,17 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Dropdown,
-  Icon,
-  NoticeBox,
-  RestrictedInput,
-  Section,
-  Stack,
-  Table,
-  TextArea,
-  Tooltip,
-} from '../components';
+import { Box, Button, Dropdown, Icon, NoticeBox, RestrictedInput, Section, Stack, Table, TextArea, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type HoloPayData = {
@@ -120,8 +108,7 @@ const TerminalDisplay = (props, context) => {
         )
       }
       fill
-      title="Terminal"
-    >
+      title="Terminal">
       <Stack fill vertical>
         <Stack.Item align="center">
           <Icon color="good" name={shop_logo} size="5" />
@@ -199,15 +186,13 @@ const SetupDisplay = (props, context) => {
           onClick={() => {
             act('done');
             onClick();
-          }}
-        >
+          }}>
           Done
         </Button>
       }
       fill
       scrollable
-      title="Settings"
-    >
+      title="Settings">
       <Stack fill vertical>
         <Stack.Item>
           <Box bold color="label">

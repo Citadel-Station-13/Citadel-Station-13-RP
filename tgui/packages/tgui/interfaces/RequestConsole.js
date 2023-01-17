@@ -22,8 +22,7 @@ const RequestConsoleSettings = (props, context) => {
       <Button
         selected={!silent}
         icon={silent ? 'volume-mute' : 'volume-up'}
-        onClick={() => act('toggleSilent')}
-      >
+        onClick={() => act('toggleSilent')}>
         Speaker {silent ? 'OFF' : 'ON'}
       </Button>
     </Section>
@@ -74,14 +73,12 @@ const RequestConsoleSendMenu = (props, context) => {
                 <Fragment>
                   <Button
                     icon="envelope-open-text"
-                    onClick={() => act('write', { write: dept, priority: 1 })}
-                  >
+                    onClick={() => act('write', { write: dept, priority: 1 })}>
                     Message
                   </Button>
                   <Button
                     icon="exclamation-triangle"
-                    onClick={() => act('write', { write: dept, priority: 2 })}
-                  >
+                    onClick={() => act('write', { write: dept, priority: 2 })}>
                     High Priority
                   </Button>
                 </Fragment>
@@ -104,8 +101,7 @@ const RequestConsoleSendPass = (props, context) => {
       <Box>
         <Button
           icon="arrow-right"
-          onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}
-        >
+          onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}>
           Continue
         </Button>
       </Box>
@@ -123,8 +119,7 @@ const RequestConsoleSendFail = (props, context) => {
       <Box>
         <Button
           icon="arrow-right"
-          onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}
-        >
+          onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}>
           Continue
         </Button>
       </Box>
@@ -145,12 +140,10 @@ const RequestConsoleViewMessages = (props, context) => {
             buttons={
               <Button
                 icon="print"
-                onClick={() => act('print', { print: i + 1 })}
-              >
+                onClick={() => act('print', { print: i + 1 })}>
                 Print
               </Button>
-            }
-          >
+            }>
             {decodeHtmlEntities(msg[1])}
           </LabeledList.Item>
         ))) || <Box>No messages.</Box>}
@@ -171,33 +164,29 @@ const RequestConsoleMessageAuth = (props, context) => {
           {priority === 2
             ? 'High Priority'
             : priority === 1
-            ? 'Normal Priority'
-            : 'Unknown'}
+              ? 'Normal Priority'
+              : 'Unknown'}
         </LabeledList.Item>
         <LabeledList.Item
           label="Validated By"
-          color={msgVerified ? 'good' : 'bad'}
-        >
+          color={msgVerified ? 'good' : 'bad'}>
           {decodeHtmlEntities(msgVerified) || 'No Validation'}
         </LabeledList.Item>
         <LabeledList.Item
           label="Stamped By"
-          color={msgStamped ? 'good' : 'bad'}
-        >
+          color={msgStamped ? 'good' : 'bad'}>
           {decodeHtmlEntities(msgStamped) || 'No Stamp'}
         </LabeledList.Item>
       </LabeledList>
       <Button
         mt={1}
         icon="share"
-        onClick={() => act('department', { department: recipient })}
-      >
+        onClick={() => act('department', { department: recipient })}>
         Send Message
       </Button>
       <Button
         icon="undo"
-        onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}
-      >
+        onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}>
         Back
       </Button>
     </Section>
@@ -239,12 +228,10 @@ const RequestConsoleAnnounce = (props, context) => {
               <Button
                 ml={1}
                 icon="pen"
-                onClick={() => act('writeAnnouncement')}
-              >
+                onClick={() => act('writeAnnouncement')}>
                 Edit
               </Button>
-            }
-          >
+            }>
             {message || 'No Message'}
           </Section>
         </Fragment>
@@ -256,14 +243,12 @@ const RequestConsoleAnnounce = (props, context) => {
       <Button
         disabled={!message || !announceAuth}
         icon="share"
-        onClick={() => act('sendAnnouncement')}
-      >
+        onClick={() => act('sendAnnouncement')}>
         Announce
       </Button>
       <Button
         icon="undo"
-        onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}
-      >
+        onClick={() => act('setScreen', { setScreen: RCS_MAINMENU })}>
         Back
       </Button>
     </Section>
@@ -294,37 +279,32 @@ export const RequestConsole = (props, context) => {
           <Tabs.Tab
             selected={screen === RCS_VIEWMSGS}
             onClick={() => act('setScreen', { setScreen: RCS_VIEWMSGS })}
-            icon="envelope-open-text"
-          >
+            icon="envelope-open-text">
             Messages
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_RQASSIST}
             onClick={() => act('setScreen', { setScreen: RCS_RQASSIST })}
-            icon="share-square"
-          >
+            icon="share-square">
             Assistance
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_RQSUPPLY}
             onClick={() => act('setScreen', { setScreen: RCS_RQSUPPLY })}
-            icon="share-square"
-          >
+            icon="share-square">
             Supplies
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_SENDINFO}
             onClick={() => act('setScreen', { setScreen: RCS_SENDINFO })}
-            icon="share-square-o"
-          >
+            icon="share-square-o">
             Report
           </Tabs.Tab>
           {(announcementConsole && (
             <Tabs.Tab
               selected={screen === RCS_ANNOUNCE}
               onClick={() => act('setScreen', { setScreen: RCS_ANNOUNCE })}
-              icon="volume-up"
-            >
+              icon="volume-up">
               Announce
             </Tabs.Tab>
           )) ||

@@ -157,8 +157,7 @@ export const ComplexModal = (props, context) => {
           <Flex.Item key={i} flex="1 1 auto">
             <Button
               selected={i + 1 === parseInt(data.modal.value, 10)}
-              onClick={() => modalAnswer(context, id, i + 1, null)}
-            >
+              onClick={() => modalAnswer(context, id, i + 1, null)}>
               <img src={c} />
             </Button>
           </Flex.Item>
@@ -194,8 +193,7 @@ export const ComplexModal = (props, context) => {
       maxWidth={props.maxWidth || window.innerWidth / 2 + 'px'}
       maxHeight={props.maxHeight || window.innerHeight / 2 + 'px'}
       onEnter={modalOnEnter}
-      mx="auto"
-    >
+      mx="auto">
       <Box inline>{text}</Box>
       {modalBody}
       {modalFooter}

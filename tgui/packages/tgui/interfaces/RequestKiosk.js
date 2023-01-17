@@ -1,15 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Flex,
-  LabeledList,
-  NumberInput,
-  Section,
-  TextArea,
-} from '../components';
+import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from '../components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
@@ -46,8 +37,7 @@ export const RequestKioskContent = (props, context) => {
                 content="Log out"
                 onClick={() => act('clear')}
               />
-            }
-          >
+            }>
             {accountName || 'N/A'}
           </LabeledList.Item>
         </LabeledList>
@@ -103,8 +93,7 @@ export const RequestKioskContent = (props, context) => {
                             width="510px"
                             style={{
                               border: `2px solid ${color}`,
-                            }}
-                          >
+                            }}>
                             {applicant.name}
                           </Flex.Item>
                           <Flex.Item align="end">

@@ -25,8 +25,7 @@ export const OvermapNavigationContent = (props, context) => {
           <Button icon="eye" selected={viewing} onClick={() => act('viewing')}>
             Map View
           </Button>
-        }
-      >
+        }>
         <LabeledList>
           <LabeledList.Item label="Current Location">{sector}</LabeledList.Item>
           <LabeledList.Item label="Coordinates">

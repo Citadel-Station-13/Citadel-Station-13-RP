@@ -478,10 +478,10 @@ module.exports = function () {
       }
       return event instanceof Event
         ? _.assign(
-            event,
-            { 'timeStamp': _.now() },
-            typeof type == 'string' ? { 'type': type } : type
-          )
+          event,
+          { 'timeStamp': _.now() },
+          typeof type == 'string' ? { 'type': type } : type
+        )
         : new Event(type);
     }
 
@@ -1740,20 +1740,20 @@ module.exports = function () {
         // to avoid potential engine optimizations enabled over the life of the test.
         var funcBody = deferred
           ? 'var d#=this,${fnArg}=d#,m#=d#.benchmark._original,f#=m#.fn,su#=m#.setup,td#=m#.teardown;' +
-            // When `deferred.cycles` is `0` then...
-            'if(!d#.cycles){' +
-            // set `deferred.fn`,
-            'd#.fn=function(){var ${fnArg}=d#;if(typeof f#=="function"){try{${fn}\n}catch(e#){f#(d#)}}else{${fn}\n}};' +
-            // set `deferred.teardown`,
-            'd#.teardown=function(){d#.cycles=0;if(typeof td#=="function"){try{${teardown}\n}catch(e#){td#()}}else{${teardown}\n}};' +
-            // execute the benchmark's `setup`,
-            'if(typeof su#=="function"){try{${setup}\n}catch(e#){su#()}}else{${setup}\n};' +
-            // start timer,
-            't#.start(d#);' +
-            // and then execute `deferred.fn` and return a dummy object.
-            '}d#.fn();return{uid:"${uid}"}'
+          // When `deferred.cycles` is `0` then...
+          'if(!d#.cycles){' +
+          // set `deferred.fn`,
+          'd#.fn=function(){var ${fnArg}=d#;if(typeof f#=="function"){try{${fn}\n}catch(e#){f#(d#)}}else{${fn}\n}};' +
+          // set `deferred.teardown`,
+          'd#.teardown=function(){d#.cycles=0;if(typeof td#=="function"){try{${teardown}\n}catch(e#){td#()}}else{${teardown}\n}};' +
+          // execute the benchmark's `setup`,
+          'if(typeof su#=="function"){try{${setup}\n}catch(e#){su#()}}else{${setup}\n};' +
+          // start timer,
+          't#.start(d#);' +
+          // and then execute `deferred.fn` and return a dummy object.
+          '}d#.fn();return{uid:"${uid}"}'
           : 'var r#,s#,m#=this,f#=m#.fn,i#=m#.count,n#=t#.ns;${setup}\n${begin};' +
-            'while(i#--){${fn}\n}${end};${teardown}\nreturn{elapsed:r#,uid:"${uid}"}';
+          'while(i#--){${fn}\n}${end};${teardown}\nreturn{elapsed:r#,uid:"${uid}"}';
 
         var compiled =
             (bench.compiled =

@@ -4,18 +4,7 @@ import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  ByondUi,
-  Button,
-  Flex,
-  Icon,
-  LabeledList,
-  Input,
-  ProgressBar,
-  Section,
-  Table,
-} from '../components';
+import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 import { CrewManifestContent } from './CrewManifest';
 
@@ -64,8 +53,7 @@ export const Communicator = (props, context) => {
               mb={1}
               style={{
                 'overflow-y': 'auto',
-              }}
-            >
+              }}>
               {TabToTemplate[currentTab] || <TemplateError />}
             </Box>
             <CommunicatorFooter
@@ -138,8 +126,7 @@ const VideoComm = (props, context) => {
           'right': '5px',
           'bottom': '50px',
           'z-index': 1,
-        }}
-      >
+        }}>
         <Section p={0} m={0}>
           <Flex justify="space-between" spacing={1}>
             <Flex.Item grow={1}>
@@ -328,8 +315,7 @@ const HomeTab = (props, context) => {
             width="64px"
             height="64px"
             position="relative"
-            onClick={() => act('switch_tab', { switch_tab: app.number })}
-          >
+            onClick={() => act('switch_tab', { switch_tab: app.number })}>
             <Icon
               spin={hasNotifications(app.module, context)}
               color={hasNotifications(app.module, context) ? 'bad' : null}
@@ -403,8 +389,7 @@ const PhoneTab = (props, context) => {
               {voice_mobs.map((mob) => (
                 <LabeledList.Item
                   label={decodeHtmlEntities(mob.name)}
-                  key={mob.ref}
-                >
+                  key={mob.ref}>
                   <Button
                     icon="times"
                     color="bad"
@@ -466,8 +451,7 @@ const PhoneTab = (props, context) => {
               {requestsReceived.map((request) => (
                 <LabeledList.Item
                   label={decodeHtmlEntities(request.name)}
-                  key={request.address}
-                >
+                  key={request.address}>
                   <Box>{decodeHtmlEntities(request.address)}</Box>
                   <Box>
                     <Button
@@ -492,8 +476,7 @@ const PhoneTab = (props, context) => {
               {invitesSent.map((invite) => (
                 <LabeledList.Item
                   label={decodeHtmlEntities(invite.name)}
-                  key={invite.address}
-                >
+                  key={invite.address}>
                   <Box>{decodeHtmlEntities(invite.address)}</Box>
                   <Box>
                     <Button
@@ -573,8 +556,7 @@ const NumberPad = (props, context) => {
               width="100%"
               height="64px"
               position="relative"
-              onClick={() => act('dial', { dial: targetAddress })}
-            >
+              onClick={() => act('dial', { dial: targetAddress })}>
               <Icon
                 name="phone"
                 position="absolute"
@@ -594,8 +576,7 @@ const NumberPad = (props, context) => {
               onClick={() => {
                 act('message', { message: targetAddress });
                 act('switch_tab', { switch_tab: MESSTAB });
-              }}
-            >
+              }}>
               <Icon
                 name="comment-alt"
                 position="absolute"
@@ -612,8 +593,7 @@ const NumberPad = (props, context) => {
               width="100%"
               height="64px"
               position="relative"
-              onClick={() => act('hang_up')}
-            >
+              onClick={() => act('hang_up')}>
               <Icon
                 name="times"
                 position="absolute"
@@ -648,8 +628,7 @@ const ContactsTab = (props, context) => {
                 color="label"
                 style={{
                   'word-break': 'break-all',
-                }}
-              >
+                }}>
                 {decodeHtmlEntities(device.name)}
               </Table.Cell>
               <Table.Cell>
@@ -709,8 +688,7 @@ const MessagingTab = (props, context) => {
                 color="label"
                 style={{
                   'word-break': 'break-all',
-                }}
-              >
+                }}>
                 {decodeHtmlEntities(device.name)}:
               </Table.Cell>
               <Table.Cell>
@@ -800,8 +778,7 @@ const MessagingThreadTab = (props, context) => {
               'white-space': 'nowrap',
               'overflow-x': 'hidden',
             }}
-            width="90%"
-          >
+            width="90%">
             {enforceLengthLimit(
               'Conversation with ',
               decodeHtmlEntities(targetAddressName),
@@ -819,14 +796,12 @@ const MessagingThreadTab = (props, context) => {
           />
         }
         height="100%"
-        stretchContents
-      >
+        stretchContents>
         <Section
           style={{
             'height': '95%',
             'overflow-y': 'auto',
-          }}
-        >
+          }}>
           {imList.map((im, i) => (
             <Box
               key={i}
@@ -834,8 +809,7 @@ const MessagingThreadTab = (props, context) => {
                 IsIMOurs(im, targetAddress)
                   ? 'ClassicMessage_Sent'
                   : 'ClassicMessage_Received'
-              }
-            >
+              }>
               {IsIMOurs(im, targetAddress) ? 'You' : 'Them'}: {im.im}
             </Box>
           ))}
@@ -858,8 +832,7 @@ const MessagingThreadTab = (props, context) => {
             'white-space': 'nowrap',
             'overflow-x': 'hidden',
           }}
-          width="100%"
-        >
+          width="100%">
           {enforceLengthLimit(
             'Conversation with ',
             decodeHtmlEntities(targetAddressName),
@@ -877,25 +850,21 @@ const MessagingThreadTab = (props, context) => {
         />
       }
       height="100%"
-      stretchContents
-    >
+      stretchContents>
       <Section
         style={{
           'height': '95%',
           'overflow-y': 'auto',
-        }}
-      >
+        }}>
         {imList.map((im, i, filterArr) => (
           <Box
             textAlign={IsIMOurs(im, targetAddress) ? 'right' : 'left'}
             mb={1}
-            key={i}
-          >
+            key={i}>
             <Box
               maxWidth="75%"
               className={findClassMessage(im, targetAddress, i - 1, filterArr)}
-              inline
-            >
+              inline>
               {decodeHtmlEntities(im.im)}
             </Box>
           </Box>
@@ -949,8 +918,7 @@ const NewsTargetFeed = (props, context) => {
           icon="chevron-up"
           onClick={() => act('newsfeed', { newsfeed: null })}
         />
-      }
-    >
+      }>
       {target_feed.messages.map((message) => (
         <Section key={message.ref}>
           - {decodeHtmlEntities(message.body)}
@@ -1038,8 +1006,7 @@ const NoteTab = (props, context) => {
       stretchContents
       buttons={
         <Button icon="pen" onClick={() => act('edit')} content="Edit Notes" />
-      }
-    >
+      }>
       <Section
         color="average"
         width="100%"
@@ -1047,8 +1014,7 @@ const NoteTab = (props, context) => {
         style={{
           'word-break': 'break-all',
           'overflow-y': 'auto',
-        }}
-      >
+        }}>
         {note}
       </Section>
     </Section>
@@ -1095,8 +1061,7 @@ const WeatherTab = (props, context) => {
                 item.poor_low,
                 item.poor_high,
                 item.bad_high
-              )}
-            >
+              )}>
               {item.val}
               {decodeHtmlEntities(item.units)}
             </LabeledList.Item>

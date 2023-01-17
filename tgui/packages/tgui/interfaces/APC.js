@@ -1,14 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Dimmer,
-  Icon,
-  LabeledList,
-  NoticeBox,
-  ProgressBar,
-  Section,
-} from '../components';
+import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { FullscreenNotice } from './common/FullscreenNotice';
@@ -119,8 +110,7 @@ const ApcContent = (props, context) => {
                 disabled={locked}
                 onClick={() => act('breaker')}
               />
-            }
-          >
+            }>
             [ {externalPowerStatus.externalPowerText} ]
           </LabeledList.Item>
           <LabeledList.Item label="Power Cell">
@@ -137,8 +127,7 @@ const ApcContent = (props, context) => {
                 disabled={locked}
                 onClick={() => act('charge')}
               />
-            }
-          >
+            }>
             [ {chargingStatus.chargingText} ]
           </LabeledList.Item>
         </LabeledList>
@@ -156,8 +145,7 @@ const ApcContent = (props, context) => {
                     <Box
                       inline
                       mx={2}
-                      color={channel.status >= 2 ? 'good' : 'bad'}
-                    >
+                      color={channel.status >= 2 ? 'good' : 'bad'}>
                       {channel.status >= 2 ? 'On' : 'Off'}
                     </Box>
                     <Button
@@ -185,8 +173,7 @@ const ApcContent = (props, context) => {
                       onClick={() => act('channel', topicParams.off)}
                     />
                   </>
-                }
-              >
+                }>
                 {channel.powerLoad} W
               </LabeledList.Item>
             );
@@ -212,8 +199,7 @@ const ApcContent = (props, context) => {
               onClick={() => act('overload')}
             />
           )
-        }
-      >
+        }>
         <LabeledList>
           <LabeledList.Item
             label="Cover Lock"

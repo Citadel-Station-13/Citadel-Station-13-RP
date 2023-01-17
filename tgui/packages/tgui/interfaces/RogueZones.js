@@ -32,14 +32,12 @@ export const RogueZones = (props, context) => {
                   <Button
                     color="bad"
                     icon="rocket"
-                    onClick={() => act('recall_shuttle')}
-                  >
+                    onClick={() => act('recall_shuttle')}>
                     Recall Shuttle
                   </Button>
                 )) ||
                 null
-              }
-            >
+              }>
               {shuttle_location}
             </LabeledList.Item>
             {(occupied && (
@@ -60,12 +58,10 @@ export const RogueZones = (props, context) => {
               disabled={!scan_ready}
               fluid
               icon="search"
-              onClick={() => act('scan_for_new')}
-            >
+              onClick={() => act('scan_for_new')}>
               Scan For Asteroids
             </Button>
-          }
-        >
+          }>
           <LabeledList>
             <LabeledList.Item label="Scn Ramestat Core">
               <ProgressBar

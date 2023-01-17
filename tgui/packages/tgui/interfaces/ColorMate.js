@@ -1,14 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Icon,
-  NoticeBox,
-  NumberInput,
-  Section,
-  Table,
-  Tabs,
-  Slider,
-} from '../components';
+import { Button, Icon, NoticeBox, NumberInput, Section, Table, Tabs, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const ColorMate = (props, context) => {
@@ -58,8 +49,7 @@ export const ColorMate = (props, context) => {
                     act('switch_modes', {
                       mode: 1,
                     })
-                  }
-                >
+                  }>
                   Tint coloring (Simple)
                 </Tabs.Tab>
                 <Tabs.Tab
@@ -69,8 +59,7 @@ export const ColorMate = (props, context) => {
                     act('switch_modes', {
                       mode: 2,
                     })
-                  }
-                >
+                  }>
                   HSV coloring (Normal)
                 </Tabs.Tab>
                 <Tabs.Tab
@@ -80,8 +69,7 @@ export const ColorMate = (props, context) => {
                     act('switch_modes', {
                       mode: 3,
                     })
-                  }
-                >
+                  }>
                   Matrix coloring (Advanced)
                 </Tabs.Tab>
               </Tabs>

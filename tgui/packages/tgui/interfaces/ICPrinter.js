@@ -1,13 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import {
-  Button,
-  Flex,
-  LabeledList,
-  ProgressBar,
-  Section,
-  Tabs,
-  Stack,
-} from '../components';
+import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from '../components';
 import { Window } from '../layouts';
 import { sortBy, filter } from 'common/collections';
 
@@ -86,8 +78,7 @@ const ICPrinterCategories = (props, context) => {
               <Tabs.Tab
                 selected={categoryTarget === cat.name}
                 onClick={() => setcategoryTarget(cat.name)}
-                key={cat.name}
-              >
+                key={cat.name}>
                 {cat.name}
               </Tabs.Tab>
             ))}
@@ -108,12 +99,10 @@ const ICPrinterCategories = (props, context) => {
                         icon="print"
                         onClick={() =>
                           act('build', { build: item.path, cost: item.cost })
-                        }
-                      >
+                        }>
                         Print
                       </Button>
-                    }
-                  >
+                    }>
                     {item.desc}
                   </LabeledList.Item>
                 ))}

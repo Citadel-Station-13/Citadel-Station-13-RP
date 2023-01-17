@@ -1,15 +1,6 @@
 import { Color } from '../../common/color';
 import { useBackend, useSharedState } from '../backend';
-import {
-  AnimatedNumber,
-  Box,
-  Button,
-  ColorBox,
-  LabeledList,
-  NumberInput,
-  Section,
-  Table,
-} from '../components';
+import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 type ChemMasterData = {
@@ -119,8 +110,7 @@ const ChemMasterContent = (props, context) => {
               />
             </>
           )
-        }
-      >
+        }>
         {!is_beaker_loaded && (
           <Box color="label" mt="3px" mb="5px">
             No beaker loaded.
@@ -155,8 +145,7 @@ const ChemMasterContent = (props, context) => {
               onClick={() => act('toggleMode')}
             />
           </>
-        }
-      >
+        }>
         {buffer_contents.length === 0 && (
           <Box color="label" mt="3px" mb="5px">
             Buffer is empty.
@@ -355,8 +344,7 @@ const PackagingControls = (props, context) => {
               textAlign="center"
               selected={pill.id === chosen_pill_style}
               color="transparent"
-              onClick={() => act('change_pill_style', { id: pill.id })}
-            >
+              onClick={() => act('change_pill_style', { id: pill.id })}>
               <Box mx={-1} mb={0} mt={1} className={pill.className} />
             </Button>
           ))}
@@ -388,8 +376,7 @@ const PackagingControls = (props, context) => {
               color="transparent"
               onClick={() =>
                 act('change_patch_style', { chosen_patch_style: patch.id })
-              }
-            >
+              }>
               <Box mb={0} mt={1} className={patch.className} />
             </Button>
           ))}
@@ -420,8 +407,7 @@ const PackagingControls = (props, context) => {
               selected={bottle.id === chosen_bottle_style}
               textAlign="center"
               color="transparent"
-              onClick={() => act('change_bottle_style', { id: bottle.id })}
-            >
+              onClick={() => act('change_bottle_style', { id: bottle.id })}>
               <Box mx={-1} mb={0} mt={1} className={bottle.className} />
             </Button>
           ))}
@@ -454,8 +440,7 @@ const PackagingControls = (props, context) => {
               })
             }
             checked={auto_condi_style_chosen}
-            disabled={!condi_styles.length}
-          >
+            disabled={!condi_styles.length}>
             Guess from contents
           </Button.Checkbox>
         </LabeledList.Item>
@@ -470,8 +455,7 @@ const PackagingControls = (props, context) => {
               textAlign="center"
               color="transparent"
               title={style.title}
-              onClick={() => act('condiStyle', { id: style.id })}
-            >
+              onClick={() => act('condiStyle', { id: style.id })}>
               <Box mx={-1} className={style.className} />
             </Button>
           ))}
@@ -529,8 +513,7 @@ const AnalysisResults = (props, context) => {
             })
           }
         />
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
         <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>

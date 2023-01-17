@@ -42,8 +42,7 @@ export const pAIAtmos = (props, context) => {
                   item.poor_low,
                   item.poor_high,
                   item.bad_high
-                )}
-              >
+                )}>
                 {item.val}
                 {decodeHtmlEntities(item.units)}
               </LabeledList.Item>

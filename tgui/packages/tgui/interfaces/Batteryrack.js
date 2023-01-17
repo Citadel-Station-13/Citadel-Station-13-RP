@@ -1,13 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  AnimatedNumber,
-  Box,
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  Table,
-} from '../components';
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 export const Batteryrack = (props, context) => {
@@ -84,8 +76,7 @@ export const Batteryrack = (props, context) => {
                     value={cell.used ? cell.percentage : 100}
                     minValue={0}
                     maxValue={100}
-                    color={cell.used ? 'good' : 'bad'}
-                  >
+                    color={cell.used ? 'good' : 'bad'}>
                     {cell.used ? cell.percentage + '%' : 'N/C'}
                   </ProgressBar>
                 </Table.Cell>

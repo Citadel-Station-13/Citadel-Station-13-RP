@@ -21,8 +21,7 @@ export const XenoarchDepthScanner = (props, context) => {
                 content="Delete Entry"
                 onClick={() => act('clear', { index: current.index })}
               />
-            }
-          >
+            }>
             <LabeledList>
               <LabeledList.Item label="Time">{current.time}</LabeledList.Item>
               <LabeledList.Item label="Coords">
@@ -54,15 +53,13 @@ export const XenoarchDepthScanner = (props, context) => {
               content="Delete All"
               onClick={() => act('clear')}
             />
-          }
-        >
+          }>
           {(positive_locations.length &&
             positive_locations.map((loc) => (
               <Button
                 key={loc.index}
                 icon="eye"
-                onClick={() => act('select', { select: loc.index })}
-              >
+                onClick={() => act('select', { select: loc.index })}>
                 {loc.time}, {loc.coords}
               </Button>
             ))) || <Box color="bad">No traces found.</Box>}

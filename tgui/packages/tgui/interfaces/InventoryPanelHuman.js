@@ -30,8 +30,7 @@ export const InventoryPanelHuman = (props, context) => {
                   <Button
                     mb={-1}
                     icon={slot.item ? 'hand-paper' : 'gift'}
-                    onClick={() => act(slot.act, slot.params)}
-                  >
+                    onClick={() => act(slot.act, slot.params)}>
                     {slot.item || 'Nothing'}
                   </Button>
                 </LabeledList.Item>
@@ -44,8 +43,7 @@ export const InventoryPanelHuman = (props, context) => {
                   <Button
                     mb={-1}
                     icon={slot.item ? 'hand-paper' : 'gift'}
-                    onClick={() => act(slot.act, slot.params)}
-                  >
+                    onClick={() => act(slot.act, slot.params)}>
                     {slot.item || 'Nothing'}
                   </Button>
                 </LabeledList.Item>
@@ -56,23 +54,20 @@ export const InventoryPanelHuman = (props, context) => {
           <Button
             fluid
             icon="running"
-            onClick={() => act('targetSlot', { slot: 'splints' })}
-          >
+            onClick={() => act('targetSlot', { slot: 'splints' })}>
             Remove Splints
           </Button>
           <Button
             fluid
             icon="hand-paper"
-            onClick={() => act('targetSlot', { slot: 'pockets' })}
-          >
+            onClick={() => act('targetSlot', { slot: 'pockets' })}>
             Empty Pockets
           </Button>
           {(internalsValid && (
             <Button
               fluid
               icon="lungs"
-              onClick={() => act('targetSlot', { slot: 'internals' })}
-            >
+              onClick={() => act('targetSlot', { slot: 'internals' })}>
               Set Internals
             </Button>
           )) ||
@@ -81,8 +76,7 @@ export const InventoryPanelHuman = (props, context) => {
             <Button
               fluid
               icon="book-medical"
-              onClick={() => act('targetSlot', { slot: 'sensors' })}
-            >
+              onClick={() => act('targetSlot', { slot: 'sensors' })}>
               Set Sensors
             </Button>
           )) ||
@@ -92,8 +86,7 @@ export const InventoryPanelHuman = (props, context) => {
               fluid
               color="bad"
               icon="unlink"
-              onClick={() => act('targetSlot', handcuffedParams)}
-            >
+              onClick={() => act('targetSlot', handcuffedParams)}>
               Handcuffed
             </Button>
           )) ||
@@ -103,8 +96,7 @@ export const InventoryPanelHuman = (props, context) => {
               fluid
               color="bad"
               icon="unlink"
-              onClick={() => act('targetSlot', legcuffedParams)}
-            >
+              onClick={() => act('targetSlot', legcuffedParams)}>
               Legcuffed
             </Button>
           )) ||
@@ -114,8 +106,7 @@ export const InventoryPanelHuman = (props, context) => {
               fluid
               color="bad"
               icon="unlink"
-              onClick={() => act('targetSlot', { slot: 'tie' })}
-            >
+              onClick={() => act('targetSlot', { slot: 'tie' })}>
               Remove Accessory
             </Button>
           )) ||

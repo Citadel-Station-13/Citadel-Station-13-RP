@@ -42,8 +42,7 @@ export const NtosWordProcessor = (props, context) => {
                   content="Back to editor"
                   onClick={() => act('PRG_closebrowser')}
                 />
-              }
-            >
+              }>
               <Section title="Available documents (local)" level={2}>
                 <Table>
                   <Table.Row header>
@@ -60,8 +59,7 @@ export const NtosWordProcessor = (props, context) => {
                           icon="file-word"
                           onClick={() =>
                             act('PRG_openfile', { 'PRG_openfile': file.name })
-                          }
-                        >
+                          }>
                           Open
                         </Button>
                       </Table.Cell>
@@ -86,8 +84,7 @@ export const NtosWordProcessor = (props, context) => {
                 </Button>
                 <Button
                   disabled={!filedata}
-                  onClick={() => act('PRG_printfile')}
-                >
+                  onClick={() => act('PRG_printfile')}>
                   Print
                 </Button>
               </Box>

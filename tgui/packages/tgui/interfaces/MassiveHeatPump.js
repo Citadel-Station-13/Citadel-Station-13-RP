@@ -1,11 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  AnimatedNumber,
-} from '../components';
+import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from '../components';
 import { formatPower, formatSiUnit } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from '../layouts';
@@ -45,8 +39,7 @@ export const MassiveHeatPump = (props, context) => {
                 value={last_power_draw}
                 minValue={0}
                 maxValue={power_level}
-                color={last_power_draw < power_level - 5 ? 'good' : 'average'}
-              >
+                color={last_power_draw < power_level - 5 ? 'good' : 'average'}>
                 {formatPower(last_power_draw)}
               </ProgressBar>
             </LabeledList.Item>
@@ -61,8 +54,7 @@ export const MassiveHeatPump = (props, context) => {
               selected={on}
               onClick={() => act('power')}
             />
-          }
-        >
+          }>
           <LabeledList>
             <LabeledList.Item
               label="Target Temperature"
@@ -84,8 +76,7 @@ export const MassiveHeatPump = (props, context) => {
                     onClick={() => act('set_temp', { temp: 'set' })}
                   />
                 </Fragment>
-              }
-            >
+              }>
               {formatSiUnit(target_temp, 0, 'K')}
             </LabeledList.Item>
             <LabeledList.Item
@@ -108,8 +99,7 @@ export const MassiveHeatPump = (props, context) => {
                     onClick={() => act('set_pow', { pow: 'set' })}
                   />
                 </Fragment>
-              }
-            >
+              }>
               {formatPower(power_level)}
             </LabeledList.Item>
           </LabeledList>

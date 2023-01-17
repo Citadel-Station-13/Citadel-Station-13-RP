@@ -1,13 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  Flex,
-  AnimatedNumber,
-} from '../components';
+import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber } from '../components';
 import { Window } from '../layouts';
 import { round } from 'common/math';
 import { toTitleCase } from 'common/string';
@@ -44,8 +36,7 @@ const SupermatterMonitorList = (props, context) => {
       title="Supermatters Detected"
       buttons={
         <Button content="Refresh" icon="sync" onClick={() => act('refresh')} />
-      }
-    >
+      }>
       <Flex wrap="wrap">
         {supermatters.map((sm, i) => (
           <Flex.Item basis="49%" grow={i % 2} key={i}>
@@ -96,8 +87,7 @@ const SupermatterMonitorActive = (props, context) => {
           content="Return to Menu"
           onClick={() => act('clear')}
         />
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Core Integrity">
           <ProgressBar
@@ -118,8 +108,7 @@ const SupermatterMonitorActive = (props, context) => {
               (SM_power > 300 && 'bad') ||
               (SM_power > 150 && 'average') ||
               'good'
-            }
-          >
+            }>
             <AnimatedNumber
               format={(val) => round(val, 2) + ' MeV/cm³'}
               value={SM_power}
@@ -132,8 +121,7 @@ const SupermatterMonitorActive = (props, context) => {
               (SM_ambienttemp > 5000 && 'bad') ||
               (SM_ambienttemp > 4000 && 'average') ||
               'good'
-            }
-          >
+            }>
             <AnimatedNumber
               format={(val) => round(val, 2) + ' K'}
               value={SM_ambienttemp}
@@ -146,8 +134,7 @@ const SupermatterMonitorActive = (props, context) => {
               (SM_ambientpressure > 10000 && 'bad') ||
               (SM_ambientpressure > 5000 && 'average') ||
               'good'
-            }
-          >
+            }>
             <AnimatedNumber
               format={(val) => round(val, 2) + ' kPa'}
               value={SM_ambientpressure}
@@ -156,8 +143,9 @@ const SupermatterMonitorActive = (props, context) => {
         </LabeledList.Item>
         <LabeledList.Item label="Chamber EPR">
           <Box
-            color={(SM_EPR > 4 && 'bad') || (SM_EPR > 1 && 'average') || 'good'}
-          >
+            color={
+              (SM_EPR > 4 && 'bad') || (SM_EPR > 1 && 'average') || 'good'
+            }>
             <AnimatedNumber format={(val) => round(val, 2)} value={SM_EPR} />
           </Box>
         </LabeledList.Item>

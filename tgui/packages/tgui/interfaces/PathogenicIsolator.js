@@ -1,9 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  ComplexModal,
-  modalRegisterBodyOverride,
-} from '../interfaces/common/ComplexModal';
+import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -28,8 +25,7 @@ const virusModalBodyOverride = (modal, context) => {
           />
           <Button icon="times" color="red" onClick={() => act('modal_close')} />
         </Fragment>
-      }
-    >
+      }>
       <Box mx="0.5rem">
         <LabeledList>
           <LabeledList.Item label="Spread">
@@ -127,8 +123,7 @@ const PathogenicIsolatorTabHome = (props, context) => {
             onClick={() => act('eject')}
           />
         </Fragment>
-      }
-    >
+      }>
       {(pathogen_pool.length &&
         pathogen_pool.map((pathogen) => (
           <Section key={pathogen.unique_id}>
@@ -185,16 +180,14 @@ const PathogenicIsolatorTabDatabase = (props, context) => {
           disabled={!can_print}
           onClick={() => act('print', { type: 'virus_list' })}
         />
-      }
-    >
+      }>
       {(database.length &&
         database.map((entry) => (
           <Button
             key={entry.name}
             fluid
             icon="search"
-            onClick={() => act('view_entry', { vir: entry.record })}
-          >
+            onClick={() => act('view_entry', { vir: entry.record })}>
             {entry.name}
           </Button>
         ))) || <Box color="average">The viral database is empty.</Box>}

@@ -1,15 +1,7 @@
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Dropdown,
-  Flex,
-  Input,
-  Section,
-} from '../components';
+import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from '../components';
 import { Window } from '../layouts';
 import { refocusLayout } from '../layouts';
 
@@ -145,8 +137,7 @@ const CasinoPrizeDispenserItemsCategory = (properties, context) => {
             lineHeight="20px"
             style={{
               float: 'left',
-            }}
-          >
+            }}>
             {item.name}
           </Box>
           <Button

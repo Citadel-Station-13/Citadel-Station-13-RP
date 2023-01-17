@@ -75,15 +75,13 @@ export const AtmosControlContent = (props, context) => {
         <Tabs.Tab
           key="AlarmView"
           selected={0 === tabIndex}
-          onClick={() => setTabIndex(0)}
-        >
+          onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Alarm View
         </Tabs.Tab>
         <Tabs.Tab
           key="MapView"
           selected={1 === tabIndex}
-          onClick={() => setTabIndex(1)}
-        >
+          onClick={() => setTabIndex(1)}>
           <Icon name="map-marked-alt" /> Map View
         </Tabs.Tab>
       </Tabs>

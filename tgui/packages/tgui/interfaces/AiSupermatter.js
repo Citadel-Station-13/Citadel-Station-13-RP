@@ -64,8 +64,7 @@ const AiSupermatterContent = (props, context) => {
               bad: [5000, Infinity],
               average: [4000, 5000],
               good: [-Infinity, 4000],
-            }}
-          >
+            }}>
             {ambient_temp} K
           </ProgressBar>
         </LabeledList.Item>

@@ -23,8 +23,7 @@ export const GuestPass = (props, context) => {
                 selected
                 onClick={() => act('mode', { mode: 0 })}
               />
-            }
-          >
+            }>
             <Button
               icon="print"
               content="Print"
@@ -49,8 +48,7 @@ export const GuestPass = (props, context) => {
                 content="Activity Log"
                 onClick={() => act('mode', { mode: 1 })}
               />
-            }
-          >
+            }>
             <LabeledList>
               <LabeledList.Item label="Issuing ID">
                 <Button

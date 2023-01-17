@@ -21,8 +21,7 @@ export const DroneConsole = (props, context) => {
               content={fabPower ? 'Enabled' : 'Disabled'}
               onClick={() => act('toggle_fab')}
             />
-          }
-        >
+          }>
           {!fabricator ? (
             <Box color="bad">
               Fabricator not detected.
@@ -70,8 +69,7 @@ export const DroneConsole = (props, context) => {
                         onClick={() => act('shutdown', { ref: drone.ref })}
                       />
                     </Fragment>
-                  }
-                >
+                  }>
                   <LabeledList>
                     <LabeledList.Item label="Location">
                       {drone.loc}

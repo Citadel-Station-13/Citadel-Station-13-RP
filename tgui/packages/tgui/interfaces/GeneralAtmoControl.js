@@ -203,8 +203,7 @@ const AtmoControlTankCoreControl = (props, context) => {
             onClick={() => actions.power()}
           />
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         {(info && (
           <LabeledList.Item label={name}>
@@ -229,8 +228,7 @@ const AtmoControlTankCoreControl = (props, context) => {
               disabled={!info}
               onClick={() => actions.apply()}
             />
-          }
-        >
+          }>
           <Slider
             mt="0.4em"
             animated
@@ -239,8 +237,7 @@ const AtmoControlTankCoreControl = (props, context) => {
             stepPixelSize={1 / (maxSliderValue / 500)}
             value={sliderControl}
             fillValue={sliderFill ? sliderFill : 0}
-            onChange={(e, val) => actions.slider(e, val)}
-          >
+            onChange={(e, val) => actions.slider(e, val)}>
             {sliderFill ? sliderFill : 'UNK'} {unit} / {sliderControl} {unit}
           </Slider>
         </LabeledList.Item>
@@ -277,8 +274,7 @@ const AtmoControlFuel = (props, context) => {
             disabled={automation || !device_info}
           />
         </Fragment>
-      }
-    >
+      }>
       {device_info ? (
         <LabeledList>
           <LabeledList.Item label="Status">

@@ -50,8 +50,7 @@ export const IsolationCentrifuge = (props, context) => {
         ) : (
           <Fragment>
             <Section
-              title={is_antibody_sample ? 'Antibody Sample' : 'Blood Sample'}
-            >
+              title={is_antibody_sample ? 'Antibody Sample' : 'Blood Sample'}>
               <Flex spacing={1} mb={1}>
                 <Flex.Item grow={1}>
                   <Button

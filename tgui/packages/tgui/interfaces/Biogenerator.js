@@ -1,15 +1,7 @@
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Dropdown,
-  Flex,
-  Input,
-  Section,
-} from '../components';
+import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from '../components';
 import { Window } from '../layouts';
 import { refocusLayout } from '../layouts';
 
@@ -39,8 +31,7 @@ export const Biogenerator = (props, context) => {
                 ml={1}
                 icon="eject"
                 disabled={!data.beaker}
-                onClick={() => act('detach')}
-              >
+                onClick={() => act('detach')}>
                 Eject Beaker
               </Button>
             </Section>
@@ -175,8 +166,7 @@ const BiogeneratorItemsCategory = (properties, context) => {
             lineHeight="20px"
             style={{
               float: 'left',
-            }}
-          >
+            }}>
             {item.name}
           </Box>
           <Button

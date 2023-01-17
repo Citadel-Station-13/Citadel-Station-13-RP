@@ -64,8 +64,7 @@ const ResearchServer = (props, context) => {
         <Button icon="undo" onClick={() => setSelectedServer(null)}>
           Back
         </Button>
-      }
-    >
+      }>
       <Tabs>
         <Tabs.Tab selected={tab === 0} onClick={() => setTab(0)}>
           Access Rights
@@ -115,8 +114,7 @@ const ResearchServerAccess = (props, context) => {
           consoles.map((console) => (
             <LabeledList.Item
               key={console.name}
-              label={console.name + ' (' + console.loc + ')'}
-            >
+              label={console.name + ' (' + console.loc + ')'}>
               <Button
                 icon={hasUploadAccess(server, console) ? 'lock-open' : 'lock'}
                 selected={hasUploadAccess(server, console)}
@@ -125,8 +123,7 @@ const ResearchServerAccess = (props, context) => {
                     server: server.ref,
                     console: console.ref,
                   })
-                }
-              >
+                }>
                 {hasUploadAccess(server, console) ? 'Upload On' : 'Upload Off'}
               </Button>
               <Button
@@ -137,8 +134,7 @@ const ResearchServerAccess = (props, context) => {
                     server: server.ref,
                     console: console.ref,
                   })
-                }
-              >
+                }>
                 {hasDownloadAccess(server, console)
                   ? 'Download On'
                   : 'Download Off'}

@@ -59,15 +59,13 @@ export const CryoStorageItems = (props, context) => {
         <Button icon="hand-rock" onClick={() => act('allitems')}>
           Claim All
         </Button>
-      }
-    >
+      }>
       {(items.length &&
         items.map((item) => (
           <Button
             key={item.ref}
             icon="hand-rock"
-            onClick={() => act('item', { ref: item.ref })}
-          >
+            onClick={() => act('item', { ref: item.ref })}>
             {item.name}
           </Button>
         ))) || <Box color="average">No items stored.</Box>}

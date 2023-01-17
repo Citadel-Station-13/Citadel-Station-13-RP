@@ -47,16 +47,14 @@ export const CrewManifestContent = (props, context) => {
                   }
                   m={-1}
                   pt={1}
-                  pb={1}
-                >
+                  pb={1}>
                   <Box ml={1} textAlign="center" fontSize={1.4}>
                     {category.cat}
                   </Box>
                 </Box>
               }
               key={category.cat}
-              level={2}
-            >
+              level={2}>
               <Table>
                 <Table.Row header color="white">
                   <Table.Cell>Name</Table.Cell>

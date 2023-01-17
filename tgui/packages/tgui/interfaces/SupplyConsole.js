@@ -2,19 +2,8 @@ import { filter, sortBy } from 'common/collections';
 import { Fragment } from 'inferno';
 import { formatTime } from '../format';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  Section,
-  Tabs,
-  AnimatedNumber,
-  Stack,
-} from '../components';
-import {
-  ComplexModal,
-  modalRegisterBodyOverride,
-} from '../interfaces/common/ComplexModal';
+import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from '../components';
+import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Window } from '../layouts';
 import { flow } from 'common/fp';
 
@@ -36,13 +25,11 @@ const viewCrateContents = (modal, context) => {
           disabled={cost > supply_points}
           onClick={() => act('request_crate', { ref: ref })}
         />
-      }
-    >
+      }>
       <Section
         title={'Contains' + (random ? ' any ' + random + ' of:' : '')}
         scrollable
-        height="200px"
-      >
+        height="200px">
         {manifest.map((m) => (
           <Box key={m}>{m}</Box>
         ))}
@@ -133,8 +120,7 @@ const SupplyConsoleShuttleStatus = (props, context) => {
                   />
                 ) : null}
               </Fragment>
-            }
-          >
+            }>
             {shuttle.location}
           </LabeledList.Item>
           <LabeledList.Item label="Engine">{shuttle.engine}</LabeledList.Item>
@@ -162,36 +148,31 @@ const SupplyConsoleMenu = (props, context) => {
         <Tabs.Tab
           icon="box"
           selected={tabIndex === 0}
-          onClick={() => setTabIndex(0)}
-        >
+          onClick={() => setTabIndex(0)}>
           Request
         </Tabs.Tab>
         <Tabs.Tab
           icon="check-circle-o"
           selected={tabIndex === 1}
-          onClick={() => setTabIndex(1)}
-        >
+          onClick={() => setTabIndex(1)}>
           Accepted
         </Tabs.Tab>
         <Tabs.Tab
           icon="circle-o"
           selected={tabIndex === 2}
-          onClick={() => setTabIndex(2)}
-        >
+          onClick={() => setTabIndex(2)}>
           Requests
         </Tabs.Tab>
         <Tabs.Tab
           icon="book"
           selected={tabIndex === 3}
-          onClick={() => setTabIndex(3)}
-        >
+          onClick={() => setTabIndex(3)}>
           Order history
         </Tabs.Tab>
         <Tabs.Tab
           icon="book"
           selected={tabIndex === 4}
-          onClick={() => setTabIndex(4)}
-        >
+          onClick={() => setTabIndex(4)}>
           Export history
         </Tabs.Tab>
       </Tabs>
@@ -338,8 +319,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
                 onClick={() => act('delete_order', { ref: order.ref })}
               />
             ) : null
-          }
-        >
+          }>
           <LabeledList>
             {order.entries.map((field) =>
               field.entry ? (
@@ -359,8 +339,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
                         }}
                       />
                     ) : null
-                  }
-                >
+                  }>
                   {field.entry}
                 </LabeledList.Item>
               ) : null
@@ -421,8 +400,7 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
                       }
                     />
                   ) : null
-                }
-              >
+                }>
                 {title.entry}
               </LabeledList.Item>
             ))}
@@ -463,8 +441,7 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
                         />
                       </Fragment>
                     ) : null
-                  }
-                >
+                  }>
                   {item.quantity}x -&gt; {item.value} points
                 </LabeledList.Item>
               ))

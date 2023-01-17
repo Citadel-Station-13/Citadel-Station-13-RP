@@ -43,8 +43,7 @@ export const TelecommsMachineBrowser = (props, context) => {
                     onClick={() => act('release')}
                   />
                 </Fragment>
-              }
-            >
+              }>
               <Button
                 content={network}
                 icon="pen"
@@ -93,8 +92,7 @@ const TelecommsBrowser = (props, context) => {
             onClick={() => act('mainmenu')}
           />
         )
-      }
-    >
+      }>
       <Box color="label">
         <u>Linked entities</u>
       </Box>
@@ -103,8 +101,7 @@ const TelecommsBrowser = (props, context) => {
           list.map((machine) => (
             <LabeledList.Item
               key={machine.id}
-              label={machine.name + ' (' + machine.id + ')'}
-            >
+              label={machine.name + ' (' + machine.id + ')'}>
               <Button
                 content="View"
                 icon="eye"

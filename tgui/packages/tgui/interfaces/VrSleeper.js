@@ -45,8 +45,7 @@ export const VrSleeper = (props, context) => {
           <Button
             icon={data.toggle_open ? 'unlock' : 'lock'}
             disabled={data.stored < data.max}
-            onClick={() => act('toggle_open')}
-          >
+            onClick={() => act('toggle_open')}>
             {data.toggle_open ? 'Close VR Sleeper' : 'Open VR Sleeper'}
           </Button>
           <Section>
@@ -57,8 +56,7 @@ export const VrSleeper = (props, context) => {
                   act('vr_connect');
                   act('tgui:close');
                 }}
-                icon={'unlock'}
-              >
+                icon={'unlock'}>
                 Connect to VR
               </Button.Confirm>
             ) : (
@@ -70,8 +68,7 @@ export const VrSleeper = (props, context) => {
               icon={'recycle'}
               onClick={() => {
                 act('delete_avatar');
-              }}
-            >
+              }}>
               Delete VR avatar
             </Button>
           )}

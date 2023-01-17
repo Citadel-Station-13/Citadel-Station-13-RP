@@ -57,8 +57,7 @@ const LanguageInfo = (props, context) => {
           right="10px"
           width="auto"
           bottom="10px"
-          textAlign="center"
-        >
+          textAlign="center">
           Select
         </Button>
       </Section>
@@ -83,8 +82,7 @@ const LanguageCategories = (props, context) => {
             color="transparent"
             key={c}
             selected={c === selectedCategory}
-            onClick={() => setSelectedCategory(c)}
-          >
+            onClick={() => setSelectedCategory(c)}>
             {c}
           </Button>
         );
@@ -119,8 +117,7 @@ const LanguageSelect = (props, context) => {
                 fluid
                 color="transparent"
                 selected={selectedLanguage === l.id}
-                onClick={() => setSelectedLanguage(l.id)}
-              >
+                onClick={() => setSelectedLanguage(l.id)}>
                 {l.name}
               </Button>
             );

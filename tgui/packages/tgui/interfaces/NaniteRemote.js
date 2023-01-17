@@ -1,14 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Button,
-  LabeledList,
-  NumberInput,
-  Section,
-  NoticeBox,
-  Input,
-  Table,
-} from '../components';
+import { Button, LabeledList, NumberInput, Section, NoticeBox, Input, Table } from '../components';
 import { Window } from '../layouts';
 
 export const NaniteRemote = (props, context) => {
@@ -50,8 +42,7 @@ export const NaniteRemoteContent = (props, context) => {
             content="Lock Interface"
             onClick={() => act('lock')}
           />
-        }
-      >
+        }>
         <LabeledList>
           <LabeledList.Item label="Name">
             <Input

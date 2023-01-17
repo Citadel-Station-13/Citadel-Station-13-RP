@@ -7,16 +7,7 @@ import { Fragment } from 'inferno';
 import { Window } from '../layouts';
 import { useBackend, useSharedState } from '../backend';
 import { RADIO_CHANNELS } from '../constants';
-import {
-  Box,
-  Button,
-  LabeledList,
-  NoticeBox,
-  Section,
-  Tabs,
-  Input,
-  ProgressBar,
-} from '../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Tabs, Input, ProgressBar } from '../components';
 
 export const TelecommsMonitor = (props, context) => {
   const { act, data } = useBackend(context);
@@ -56,27 +47,24 @@ export const TelecommsMonitor = (props, context) => {
                     <Button
                       icon="minus-circle"
                       disabled={!servers.length || !!selected}
-                      onClick={() => act('release')}
-                    >
+                      onClick={() => act('release')}>
                       Flush Buffer
                     </Button>
                     <Button
                       icon="sync"
                       disabled={selected}
-                      onClick={() => act('probe')}
-                    >
+                      onClick={() => act('probe')}>
                       Probe Network
                     </Button>
                   </Fragment>
-                }
-              >
+                }>
                 {!selected
                   ? servers
                     ? `${servers.length} currently probed and buffered`
                     : 'Buffer is empty!'
                   : selected_servers
-                  ? `${selected_servers.length} currently probed and buffered`
-                  : 'Connected devices is empty!'}
+                    ? `${selected_servers.length} currently probed and buffered`
+                    : 'Connected devices is empty!'}
               </LabeledList.Item>
               <LabeledList.Item
                 label="Selected Entity"
@@ -87,8 +75,7 @@ export const TelecommsMonitor = (props, context) => {
                     disabled={!selected}
                     onClick={() => act('mainmenu')}
                   />
-                }
-              >
+                }>
                 {selected ? `${selected.name} (${selected.id})` : 'None (None)'}
               </LabeledList.Item>
             </LabeledList>
@@ -97,16 +84,14 @@ export const TelecommsMonitor = (props, context) => {
             <Tabs.Tab
               selected={tab === 'network-entity'}
               icon="server"
-              onClick={() => setTab('network-entity')}
-            >
+              onClick={() => setTab('network-entity')}>
               Network Entities
             </Tabs.Tab>
             <Tabs.Tab
               disabled={!selected}
               icon="tasks"
               selected={tab === 'network-stat'}
-              onClick={() => setTab('network-stat')}
-            >
+              onClick={() => setTab('network-stat')}>
               Entity Status
             </Tabs.Tab>
           </Tabs>
@@ -115,8 +100,7 @@ export const TelecommsMonitor = (props, context) => {
               <LabeledList>
                 <LabeledList.Item
                   label="Status"
-                  color={operational ? 'good' : 'bad'}
-                >
+                  color={operational ? 'good' : 'bad'}>
                   {operational ? 'Running' : 'Server down!'}
                 </LabeledList.Item>
                 <LabeledList.Item label="Network Traffic">
@@ -138,8 +122,7 @@ export const TelecommsMonitor = (props, context) => {
                         selected.netspeed * 0.71,
                         Infinity,
                       ],
-                    }}
-                  >
+                    }}>
                     {operational // Not to be confused to totaltraffic
                       ? selected.traffic <= 1024
                         ? `${Math.max(selected.traffic, 0)} Gigabytes`
@@ -152,16 +135,15 @@ export const TelecommsMonitor = (props, context) => {
                     ? selected.netspeed <= 1024
                       ? `${selected.netspeed} Gigabytes/second`
                       : `${Math.round(
-                          selected.netspeed / 1024
-                        )} Terrabytes/second`
+                        selected.netspeed / 1024
+                      )} Terrabytes/second`
                     : '0 Gigabytes/second'}
                 </LabeledList.Item>
                 <LabeledList.Item
                   label="Multi-Z Link"
                   color={
                     operational && selected.long_range_link ? 'good' : 'bad'
-                  }
-                >
+                  }>
                   {operational && selected.long_range_link
                     ? 'true' // was capitalized before
                     : 'false'}
@@ -200,8 +182,7 @@ export const TelecommsMonitor = (props, context) => {
                               })
                             }
                           />
-                        }
-                      >
+                        }>
                         {`${server.name} (${server.id})`}
                       </LabeledList.Item>
                     ))}
@@ -231,8 +212,7 @@ export const TelecommsMonitor = (props, context) => {
                             })
                           }
                         />
-                      }
-                    >
+                      }>
                       {`${server.name} (${server.id})`}
                     </LabeledList.Item>
                   ))}

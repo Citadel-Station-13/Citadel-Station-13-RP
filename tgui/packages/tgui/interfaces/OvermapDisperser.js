@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  LabeledList,
-  Section,
-  AnimatedNumber,
-} from '../components';
+import { Box, Button, Flex, LabeledList, Section, AnimatedNumber } from '../components';
 import { Window } from '../layouts';
 import { OvermapPanControls } from './common/Overmap';
 
@@ -84,8 +77,7 @@ const OvermapDisperserContent = (props, context) => {
           <Button
             ml={1}
             icon="exchange-alt"
-            onClick={() => act('skill_calibration')}
-          >
+            onClick={() => act('skill_calibration')}>
             Pre-Calibration
           </Button>
           <Box mt={1}>
@@ -95,8 +87,7 @@ const OvermapDisperserContent = (props, context) => {
                 <Button
                   ml={1}
                   icon="random"
-                  onClick={() => act('calibration', { calibration: i })}
-                >
+                  onClick={() => act('calibration', { calibration: i })}>
                   {
                     //* We do this to make the button size correctly at 0 *//
                     cal.toString()
@@ -119,8 +110,7 @@ const OvermapDisperserContent = (props, context) => {
               <Button
                 fluid
                 icon="expand-arrows-alt"
-                onClick={() => act('range')}
-              >
+                onClick={() => act('range')}>
                 {range}
               </Button>
             </LabeledList.Item>

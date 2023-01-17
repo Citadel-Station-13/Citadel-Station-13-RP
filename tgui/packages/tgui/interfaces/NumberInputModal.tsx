@@ -49,8 +49,7 @@ export const NumberInputModal = (_, context) => {
           if (keyCode === KEY_ESCAPE) {
             act('cancel');
           }
-        }}
-      >
+        }}>
         <Section fill>
           <Stack fill vertical>
             <Stack.Item grow>

@@ -75,8 +75,7 @@ export const InputModal = (props, context) => {
       title={title}
       theme="abstract"
       width={initialWidth}
-      height={initialHeight}
-    >
+      height={initialHeight}>
       {timeout !== undefined && <Loader value={timeout} />}
       <Window.Content>
         <Stack fill vertical>
@@ -86,8 +85,7 @@ export const InputModal = (props, context) => {
               scrollable
               className="InputModal__Section"
               title={message}
-              tabIndex={0}
-            >
+              tabIndex={0}>
               {modalBody}
             </Section>
           </Stack.Item>

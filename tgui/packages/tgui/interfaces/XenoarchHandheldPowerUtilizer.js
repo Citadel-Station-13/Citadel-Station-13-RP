@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  NumberInput,
-  Section,
-  ProgressBar,
-} from '../components';
+import { Box, Button, LabeledList, NumberInput, Section, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 export const XenoarchHandheldPowerUtilizer = (props, context) => {
@@ -32,12 +25,10 @@ export const XenoarchHandheldPowerUtilizer = (props, context) => {
             <Button
               disabled={!inserted_battery}
               icon="eject"
-              onClick={() => act('ejectbattery')}
-            >
+              onClick={() => act('ejectbattery')}>
               Eject Battery
             </Button>
-          }
-        >
+          }>
           {(inserted_battery && (
             <LabeledList>
               <LabeledList.Item label="Inserted Battery">

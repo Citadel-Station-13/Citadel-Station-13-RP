@@ -36,8 +36,7 @@ export const Turbolift = (props, context) => {
                 onClick={() => act('emergency_stop')}
               />
             </Fragment>
-          }
-        >
+          }>
           {!fire_mode || (
             <Section
               className="Section--elevator--fire"
@@ -59,10 +58,10 @@ export const Turbolift = (props, context) => {
                         floor.current
                           ? 'red'
                           : floor.target
-                          ? 'green'
-                          : floor.queued
-                          ? 'yellow'
-                          : null
+                            ? 'green'
+                            : floor.queued
+                              ? 'yellow'
+                              : null
                       }
                       onClick={() => act('move_to_floor', { ref: floor.ref })}
                     />

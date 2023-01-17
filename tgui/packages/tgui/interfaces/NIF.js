@@ -1,17 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  ProgressBar,
-  Modal,
-  Section,
-  Dropdown,
-  AnimatedNumber,
-  NoticeBox,
-  Table,
-} from '../components';
+import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from '../components';
 import { Window } from '../layouts';
 
 const NIF_WORKING = 0;
@@ -95,8 +84,7 @@ export const NIF = (props, context) => {
                     onClick={() => setViewing(null)}
                   />
                 </Fragment>
-              }
-            >
+              }>
               <Box>{viewingModule.desc}</Box>
               <Box>
                 It consumes{' '}
@@ -139,8 +127,7 @@ export const NIF = (props, context) => {
               selected={settingsOpen}
               onClick={() => setSettingsOpen(!settingsOpen)}
             />
-          }
-        >
+          }>
           {(settingsOpen && <NIFSettings />) || (
             <NIFMain setViewing={setViewing} />
           )}
@@ -216,8 +203,7 @@ const NIFMain = (props, context) => {
               good: [50, Infinity],
               average: [25, 50],
               bad: [-Infinity, 0],
-            }}
-          >
+            }}>
             {getNifCondition(nif_stat, nif_percent)}
             (<AnimatedNumber value={nif_percent} />
             %)
@@ -232,8 +218,7 @@ const NIFMain = (props, context) => {
               good: [250, Infinity],
               average: [150, 250],
               bad: [0, 150],
-            }}
-          >
+            }}>
             {getNutritionText(nutrition, isSynthetic)}
           </ProgressBar>
         </LabeledList.Item>
@@ -262,8 +247,7 @@ const NIFMain = (props, context) => {
                     tooltipPosition="left"
                   />
                 </Fragment>
-              }
-            >
+              }>
               {(module.activates && (
                 <Button
                   fluid

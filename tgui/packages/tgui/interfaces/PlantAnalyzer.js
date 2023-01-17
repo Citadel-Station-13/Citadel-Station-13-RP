@@ -52,8 +52,7 @@ const PlantAnalyzerContent = (props, context) => {
             onClick={() => act('close')}
           />
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Plant Name">
           {seed.name}#{seed.uid}

@@ -41,8 +41,7 @@ export const OmniFilter = (props, context) => {
                 onClick={() => act('configure')}
               />
             </Fragment>
-          }
-        >
+          }>
           <LabeledList>
             {ports ? (
               ports.map((port) => (

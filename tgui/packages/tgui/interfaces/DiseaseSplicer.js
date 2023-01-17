@@ -43,8 +43,7 @@ const DiseaseSplicerVirusDish = (props, context) => {
           disabled={!dish_inserted}
           onClick={() => act('eject')}
         />
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Growth Density">
           <ProgressBar

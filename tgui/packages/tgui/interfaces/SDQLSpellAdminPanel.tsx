@@ -21,8 +21,7 @@ export const SDQLSpellAdminPanel = (props, context) => {
       width={1200}
       height={500}
       theme="admin"
-      resizable
-    >
+      resizable>
       <Window.Content>
         <Table>
           <Table.Row header>

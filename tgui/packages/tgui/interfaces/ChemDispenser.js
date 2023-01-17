@@ -74,8 +74,7 @@ const ChemDispenserChemicals = (properties, context) => {
   return (
     <Section
       title={data.glass ? 'Drink Dispenser' : 'Chemical Dispenser'}
-      flexGrow="1"
-    >
+      flexGrow="1">
       <Flex direction="row" wrap="wrap" height="100%" align="flex-start">
         {chemicals.map((c, i) => (
           <Flex.Item key={i} grow="1" m={0.2} basis="40%" height="20px">
@@ -128,8 +127,7 @@ const ChemDispenserBeaker = (properties, context) => {
             onClick={() => act('ejectBeaker')}
           />
         </Box>
-      }
-    >
+      }>
       <BeakerContents
         beakerLoaded={isBeakerLoaded}
         beakerContents={beakerContents}

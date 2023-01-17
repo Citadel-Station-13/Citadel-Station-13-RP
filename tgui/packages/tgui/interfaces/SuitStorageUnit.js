@@ -1,15 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Icon,
-  LabeledList,
-  Knob,
-  NoticeBox,
-  Section,
-  Flex,
-} from '../components';
+import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from '../components';
 import { Window } from '../layouts';
 
 export const SuitStorageUnit = (props, context) => {
@@ -58,8 +49,7 @@ const SuitStorageUnitContent = (props, context) => {
             />
           )}
         </Fragment>
-      }
-    >
+      }>
       {!!(occupied && safeties) && (
         <NoticeBox>
           Biological entity detected in suit chamber. Please remove before

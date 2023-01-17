@@ -1,14 +1,7 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Fragment } from 'inferno';
-import {
-  Button,
-  Box,
-  Section,
-  LabeledList,
-  NumberInput,
-  Icon,
-} from '../components';
+import { Button, Box, Section, LabeledList, NumberInput, Icon } from '../components';
 import { round } from 'common/math';
 import { formatSiUnit, formatPower } from '../format';
 import { FullscreenNotice } from './common/FullscreenNotice';
@@ -138,8 +131,7 @@ const ShieldGeneratorContent = (props, context) => {
             selected={active}
             onClick={() => act('toggle')}
           />
-        }
-      >
+        }>
         <LabeledList>
           <LabeledList.Item label="Coverage Radius">
             <NumberInput

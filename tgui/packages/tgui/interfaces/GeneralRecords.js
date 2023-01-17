@@ -1,14 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Icon,
-  Input,
-  LabeledList,
-  Section,
-  Tabs,
-} from '../components';
+import { Box, Button, Icon, Input, LabeledList, Section, Tabs } from '../components';
 import { ComplexModal, modalOpen } from '../interfaces/common/ComplexModal';
 import { Window } from '../layouts';
 import { LoginInfo } from './common/LoginInfo';
@@ -238,8 +230,7 @@ const GeneralRecordsViewGeneral = (_properties, context) => {
               key={i}
               display="inline-block"
               textAlign="center"
-              color="label"
-            >
+              color="label">
               <img
                 src={p.substr(1, p.length - 1)}
                 style={{
@@ -264,15 +255,13 @@ const GeneralRecordsNavigation = (_properties, context) => {
     <Tabs>
       <Tabs.Tab
         selected={screen === 2}
-        onClick={() => act('screen', { screen: 2 })}
-      >
+        onClick={() => act('screen', { screen: 2 })}>
         <Icon name="list" />
         List Records
       </Tabs.Tab>
       <Tabs.Tab
         selected={screen === 3}
-        onClick={() => act('screen', { screen: 3 })}
-      >
+        onClick={() => act('screen', { screen: 3 })}>
         <Icon name="wrench" />
         Record Maintenance
       </Tabs.Tab>

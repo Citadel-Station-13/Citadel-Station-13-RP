@@ -43,8 +43,7 @@ export const BotanyIsolator = (props, context) => {
                       <Button
                         mb={-1}
                         icon="download"
-                        onClick={() => act('get_gene', { get_gene: mask.tag })}
-                      >
+                        onClick={() => act('get_gene', { get_gene: mask.tag })}>
                         Extract
                       </Button>
                     </LabeledList.Item>

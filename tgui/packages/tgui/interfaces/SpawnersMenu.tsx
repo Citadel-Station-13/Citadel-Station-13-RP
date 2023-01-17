@@ -52,8 +52,7 @@ export const SpawnersMenu = (props, context) => {
                       />
                     </Stack.Item>
                   </Stack>
-                }
-              >
+                }>
                 <LabeledList>
                   <LabeledList.Item label="Origin">
                     {spawner.short_desc || 'Unknown'}

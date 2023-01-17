@@ -1,15 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Icon,
-  LabeledList,
-  NoticeBox,
-  Section,
-  Stack,
-  Table,
-} from '../components';
+import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 
 type VendingData = {
@@ -160,8 +151,7 @@ const ProductDisplay = (_, context) => {
             {(user && user.cash) || 0} cr <Icon name="coins" color="gold" />
           </Box>
         )
-      }
-    >
+      }>
       <Table>
         {inventory.map((product) => (
           <VendingRow
@@ -275,8 +265,7 @@ const ProductStock = (props) => {
         (remaining <= 0 && 'bad') ||
         (!custom && remaining <= product.max_amount / 2 && 'average') ||
         'good'
-      }
-    >
+      }>
       {remaining} left
     </Box>
   );
@@ -302,8 +291,7 @@ const ProductButton = (props, context) => {
         act('dispense', {
           'item': product.name,
         })
-      }
-    >
+      }>
       {customPrice}
     </Button>
   ) : (
@@ -314,8 +302,7 @@ const ProductButton = (props, context) => {
         act('vend', {
           'ref': product.ref,
         })
-      }
-    >
+      }>
       {standardPrice}
     </Button>
   );

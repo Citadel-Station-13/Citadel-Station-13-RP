@@ -63,22 +63,19 @@ const ActiveConversation = (props, context) => {
         />
       }
       height="450px"
-      stretchContents
-    >
+      stretchContents>
       <Section
         style={{
           'height': '97%',
           'overflow-y': 'auto',
-        }}
-      >
+        }}>
         {filter((im) => im.target === active_conversation)(messages).map(
           (im, i, filterArr) => (
             <Box textAlign={im.sent ? 'right' : 'left'} mb={1} key={i}>
               <Box
                 maxWidth="75%"
                 className={findClassMessage(im, i - 1, filterArr)}
-                inline
-              >
+                inline>
                 {decodeHtmlEntities(im.message)}
               </Box>
             </Box>
@@ -108,22 +105,19 @@ const ActiveConversation = (props, context) => {
           />
         }
         height="450px"
-        stretchContents
-      >
+        stretchContents>
         <Section
           style={{
             'height': '97%',
             'overflow-y': 'auto',
-          }}
-        >
+          }}>
           {filter((im) => im.target === active_conversation)(messages).map(
             (im, i) => (
               <Box
                 key={i}
                 className={
                   im.sent ? 'ClassicMessage_Sent' : 'ClassicMessage_Received'
-                }
-              >
+                }>
                 {m.sent ? 'You:' : 'Them:'} {decodeHtmlEntities(im.message)}
               </Box>
             )
@@ -145,8 +139,7 @@ const ActiveConversation = (props, context) => {
           <Button
             icon="trash"
             color="bad"
-            onClick={() => act('Clear', { option: 'Convo' })}
-          >
+            onClick={() => act('Clear', { option: 'Convo' })}>
             Delete Conversations
           </Button>
         </LabeledList.Item>
@@ -168,15 +161,13 @@ const MessengerList = (props, context) => {
           <Button
             selected={!silent}
             icon={silent ? 'volume-mute' : 'volume-up'}
-            onClick={() => act('Toggle Ringer')}
-          >
+            onClick={() => act('Toggle Ringer')}>
             Ringer: {silent ? 'Off' : 'On'}
           </Button>
           <Button
             color={toff ? 'bad' : 'green'}
             icon="power-off"
-            onClick={() => act('Toggle Messenger')}
-          >
+            onClick={() => act('Toggle Messenger')}>
             Messenger: {toff ? 'Off' : 'On'}
           </Button>
           <Button icon="bell" onClick={() => act('Ringtone')}>
@@ -185,8 +176,7 @@ const MessengerList = (props, context) => {
           <Button
             icon="trash"
             color="bad"
-            onClick={() => act('Clear', { option: 'All' })}
-          >
+            onClick={() => act('Clear', { option: 'All' })}>
             Delete All Conversations
           </Button>
         </LabeledList.Item>

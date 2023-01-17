@@ -1,15 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Section,
-  Icon,
-  NoticeBox,
-  Collapsible,
-  Stack,
-} from '../components';
+import { Box, Button, Section, Icon, NoticeBox, Collapsible, Stack } from '../components';
 import { Window } from '../layouts';
 
 interface JoinableRoles {
@@ -79,13 +71,12 @@ export const JoinMenu = (props, context) => {
           {!!data.evacuated && (
             <NoticeBox
               info={data.evacuated === 2}
-              warning={data.evacuated === 1 || data.evacuated === 3}
-            >
+              warning={data.evacuated === 1 || data.evacuated === 3}>
               {data.evacuated === 2
                 ? 'A crew transfer is in progress.'
                 : data.evacuated === 3
-                ? 'The installation has been evacuated.'
-                : 'An evacuation is in progress.'}
+                  ? 'The installation has been evacuated.'
+                  : 'An evacuation is in progress.'}
             </NoticeBox>
           )}
         </Section>
@@ -118,8 +109,7 @@ export const JoinMenu = (props, context) => {
                           />
                         </>
                       }
-                      style={{ 'padding-left': '5%' }}
-                    >
+                      style={{ 'padding-left': '5%' }}>
                       <Box>{role.desc}</Box>
                     </Collapsible>
                   );
@@ -160,8 +150,7 @@ const JoinFaction = (props: JoinFactionProps, context) => {
             color="transparent"
             key={depName}
             title={depName}
-            style={{ 'padding-left': '5%' }}
-          >
+            style={{ 'padding-left': '5%' }}>
             {jobs.map((job) => {
               return (
                 <Collapsible
@@ -180,11 +169,9 @@ const JoinFaction = (props: JoinFactionProps, context) => {
                         onClick={() => act('join', { id: job.id, type: 'job' })}
                       />
                     </>
-                  }
-                >
+                  }>
                   <Section
-                    style={{ 'padding-left': '5%', 'padding-right': '5%' }}
-                  >
+                    style={{ 'padding-left': '5%', 'padding-right': '5%' }}>
                     {job.desc}
                   </Section>
                 </Collapsible>

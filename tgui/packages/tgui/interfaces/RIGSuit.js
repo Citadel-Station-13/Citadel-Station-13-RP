@@ -1,13 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  LabeledList,
-  ProgressBar,
-  Section,
-} from '../components';
+import { Box, Button, Flex, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { capitalize, toTitleCase } from 'common/string';
 
@@ -103,8 +96,7 @@ const RIGSuitStatus = (props, context) => {
           {AIButton}
           {CoolingButton}
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Power Supply">
           <ProgressBar
@@ -115,8 +107,7 @@ const RIGSuitStatus = (props, context) => {
               good: [35, Infinity],
               average: [15, 35],
               bad: [-Infinity, 15],
-            }}
-          >
+            }}>
             {charge} / {maxcharge}
           </ProgressBar>
         </LabeledList.Item>
@@ -166,8 +157,7 @@ const RIGSuitHardware = (props, context) => {
               selected={helmetDeployed}
               onClick={() => act('toggle_piece', { piece: 'helmet' })}
             />
-          }
-        >
+          }>
           {helmet ? capitalize(helmet) : 'ERROR'}
         </LabeledList.Item>
         <LabeledList.Item
@@ -180,8 +170,7 @@ const RIGSuitHardware = (props, context) => {
               selected={gauntletsDeployed}
               onClick={() => act('toggle_piece', { piece: 'gauntlets' })}
             />
-          }
-        >
+          }>
           {gauntlets ? capitalize(gauntlets) : 'ERROR'}
         </LabeledList.Item>
         <LabeledList.Item
@@ -194,8 +183,7 @@ const RIGSuitHardware = (props, context) => {
               selected={bootsDeployed}
               onClick={() => act('toggle_piece', { piece: 'boots' })}
             />
-          }
-        >
+          }>
           {boots ? capitalize(boots) : 'ERROR'}
         </LabeledList.Item>
         <LabeledList.Item
@@ -208,8 +196,7 @@ const RIGSuitHardware = (props, context) => {
               selected={chestDeployed}
               onClick={() => act('toggle_piece', { piece: 'chest' })}
             />
-          }
-        >
+          }>
           {chest ? capitalize(chest) : 'ERROR'}
         </LabeledList.Item>
       </LabeledList>
@@ -298,8 +285,7 @@ const RIGSuitModules = (props, context) => {
                   />
                 ) : null}
               </Fragment>
-            }
-          >
+            }>
             {module.damage >= 2 ? (
               <Box color="bad">-- MODULE DESTROYED --</Box>
             ) : (
@@ -322,8 +308,7 @@ const RIGSuitModules = (props, context) => {
                     {module.charges.map((charge, i) => (
                       <LabeledList.Item
                         key={charge.caption}
-                        label={capitalize(charge.caption)}
-                      >
+                        label={capitalize(charge.caption)}>
                         <Button
                           selected={module.realchargetype === charge.index}
                           icon="arrow-right"

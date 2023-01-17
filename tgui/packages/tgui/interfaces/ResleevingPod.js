@@ -37,8 +37,7 @@ export const ResleevingPod = (model, context) => {
                         average: [0.25, 0.5],
                         bad: [-Infinity, 0.25],
                       }}
-                      value={health / maxHealth}
-                    >
+                      value={health / maxHealth}>
                       {health}%
                     </ProgressBar>
                   )}

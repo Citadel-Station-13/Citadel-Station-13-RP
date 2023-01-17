@@ -6,14 +6,7 @@
 import { Fragment } from 'inferno';
 import { Window } from '../layouts';
 import { useBackend, useSharedState } from '../backend';
-import {
-  Button,
-  LabeledList,
-  NoticeBox,
-  Section,
-  Tabs,
-  Input,
-} from '../components';
+import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
 
 // This is the entrypoint, don't mind the others
 export const TelecommsPDALog = (props, context) => {
@@ -105,20 +98,17 @@ export const TelecommsPDALog = (props, context) => {
                     <Button
                       icon="minus-circle"
                       disabled={!servers.length}
-                      onClick={() => act('release')}
-                    >
+                      onClick={() => act('release')}>
                       Flush Buffer
                     </Button>
                     <Button
                       icon="sync"
                       disabled={servers.length}
-                      onClick={() => act('probe')}
-                    >
+                      onClick={() => act('probe')}>
                       Probe Network
                     </Button>
                   </Fragment>
-                }
-              >
+                }>
                 {servers
                   ? `${servers.length} currently probed and buffered`
                   : 'Buffer is empty!'}
@@ -130,22 +120,19 @@ export const TelecommsPDALog = (props, context) => {
                   <Fragment>
                     <Button
                       disabled={!authenticated || !selected}
-                      onClick={() => act('change_auth')}
-                    >
+                      onClick={() => act('change_auth')}>
                       Change Password
                     </Button>
                     {!!canhack && (
                       <Button
                         color="bad"
                         disabled={authenticated || !selected}
-                        onClick={() => act('hack')}
-                      >
+                        onClick={() => act('hack')}>
                         Brute Force
                       </Button>
                     )}
                   </Fragment>
-                }
-              >
+                }>
                 {authenticated ? 'KEY OK' : 'KEY FAIL'}
               </LabeledList.Item>
               <LabeledList.Item
@@ -156,26 +143,22 @@ export const TelecommsPDALog = (props, context) => {
                       icon={authenticated ? 'unlock' : 'lock'}
                       color={authenticated ? 'good' : 'bad'}
                       disabled={!selected}
-                      onClick={() => act('auth')}
-                    >
+                      onClick={() => act('auth')}>
                       {!authenticated ? 'Login' : 'Logout'}
                     </Button>
                     <Button
                       icon="minus-circle"
                       disabled={!selected}
-                      onClick={() => act('mainmenu')}
-                    >
+                      onClick={() => act('mainmenu')}>
                       Disconnect
                     </Button>
                   </Fragment>
-                }
-              >
+                }>
                 {selected ? `${selected.name} (${selected.id})` : 'None (None)'}
               </LabeledList.Item>
               <LabeledList.Item
                 label="PDA Server Status"
-                color={selected && selected.status ? 'good' : 'bad'}
-              >
+                color={selected && selected.status ? 'good' : 'bad'}>
                 {selected
                   ? selected.status
                     ? 'Running'
@@ -189,32 +172,28 @@ export const TelecommsPDALog = (props, context) => {
             <Tabs.Tab
               icon="server"
               selected={tab === 'pdalog-servers'}
-              onClick={() => setTab('pdalog-servers')}
-            >
+              onClick={() => setTab('pdalog-servers')}>
               Servers
             </Tabs.Tab>
             <Tabs.Tab
               disabled={!valid}
               icon="file"
               selected={tab === 'pdalog-message'}
-              onClick={() => setTab('pdalog-message')}
-            >
+              onClick={() => setTab('pdalog-message')}>
               Message Logs
             </Tabs.Tab>
             <Tabs.Tab
               disabled={!valid}
               icon="file"
               selected={tab === 'pdalog-reqmsg'}
-              onClick={() => setTab('pdalog-reqmsg')}
-            >
+              onClick={() => setTab('pdalog-reqmsg')}>
               Req. Console Logs
             </Tabs.Tab>
             <Tabs.Tab
               disabled={!valid}
               icon="server"
               selected={tab === 'pdalog-custommsg'}
-              onClick={() => setTab('pdalog-custommsg')}
-            >
+              onClick={() => setTab('pdalog-custommsg')}>
               Set Admin Message
             </Tabs.Tab>
           </Tabs>
@@ -235,12 +214,10 @@ export const TelecommsPDALog = (props, context) => {
                             act('viewmachine', {
                               'value': server.id,
                             })
-                          }
-                        >
+                          }>
                           Connect
                         </Button>
-                      }
-                    >
+                      }>
                       {`${server.name} (${server.id})`}
                     </LabeledList.Item>
                   ))}
@@ -289,8 +266,7 @@ export const TeleLogs = (props, context) => {
           act('clear_log', {
             'value': msgs_log ? 'rc_msgs' : 'pda_logs',
           })
-        }
-      >
+        }>
         Delete All Logs
       </Button.Confirm>
       <Section title="Messages" level={2}>
@@ -305,17 +281,14 @@ export const TeleLogs = (props, context) => {
                       act('del_log', {
                         'ref': message.ref,
                       })
-                    }
-                  >
+                    }>
                     Delete
                   </Button>
-                }
-              >
+                }>
                 {message.sender}
               </LabeledList.Item>
               <LabeledList.Item
-                label={msgs_log ? 'Receiving Dep.' : 'Recipient'}
-              >
+                label={msgs_log ? 'Receiving Dep.' : 'Recipient'}>
                 {message.recipient}
               </LabeledList.Item>
               <LabeledList.Item
@@ -329,13 +302,11 @@ export const TeleLogs = (props, context) => {
                           'src': message.ref,
                           'photo': 1,
                         })
-                      }
-                    >
+                      }>
                       Image
                     </Button>
                   )
-                }
-              >
+                }>
                 {message.message}
               </LabeledList.Item>
               {!!msgs_log && (
@@ -343,14 +314,12 @@ export const TeleLogs = (props, context) => {
                   <LabeledList.Item
                     label="Stamp"
                     color={message.stamp !== 'Unstamped' ? 'label' : 'bad'}
-                    bold={message.stamp !== 'Unstamped'}
-                  >
+                    bold={message.stamp !== 'Unstamped'}>
                     {message.stamp}
                   </LabeledList.Item>
                   <LabeledList.Item
                     label="ID Authentication"
-                    color={message.auth !== 'Unauthenticated' ? 'good' : 'bad'}
-                  >
+                    color={message.auth !== 'Unauthenticated' ? 'good' : 'bad'}>
                     {message.auth}
                   </LabeledList.Item>
                   <LabeledList.Item
@@ -360,8 +329,7 @@ export const TeleLogs = (props, context) => {
                         ? prioritycolorMap[message.priority]
                         : 'good'
                     }
-                    bold={message.priority === 'Extreme'}
-                  >
+                    bold={message.priority === 'Extreme'}>
                     {message.priority === 'Extreme'
                       ? `!!${message.priority}!!`
                       : message.priority}
@@ -382,11 +350,11 @@ export const CustomMsg = (props, context) => {
     data.fake_message !== {}
       ? data.fake_message
       : {
-          'sender': 'System Administrator',
-          'job': 'Admin',
-          'recepient': null,
-          'message': 'This is a test, please ignore',
-        };
+        'sender': 'System Administrator',
+        'job': 'Admin',
+        'recepient': null,
+        'message': 'This is a test, please ignore',
+      };
   return (
     <Section title="Custom Message">
       <Button
@@ -395,8 +363,7 @@ export const CustomMsg = (props, context) => {
           act('fake', {
             'reset': true,
           })
-        }
-      >
+        }>
         Reset
       </Button>
       <Button
@@ -405,8 +372,7 @@ export const CustomMsg = (props, context) => {
           act('fake', {
             'send': true,
           })
-        }
-      >
+        }>
         Send
       </Button>
       <br />
@@ -443,8 +409,7 @@ export const CustomMsg = (props, context) => {
               act('fake', {
                 'recepient': true,
               })
-            }
-          >
+            }>
             {fake_message.recepient ? fake_message.recepient : 'Select'}
           </Button>
         </LabeledList.Item>

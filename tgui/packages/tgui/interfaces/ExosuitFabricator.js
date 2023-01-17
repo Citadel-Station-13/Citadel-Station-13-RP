@@ -2,19 +2,7 @@ import { classes } from 'common/react';
 import { uniqBy } from 'common/collections';
 import { useBackend, useSharedState } from '../backend';
 import { formatSiUnit, formatMoney } from '../format';
-import {
-  Flex,
-  Section,
-  Tabs,
-  Box,
-  Button,
-  Fragment,
-  ProgressBar,
-  NumberInput,
-  Icon,
-  Input,
-  Tooltip,
-} from '../components';
+import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from '../components';
 import { Window } from '../layouts';
 import { createSearch, toTitleCase } from 'common/string';
 import { toFixed } from 'common/math';
@@ -183,14 +171,12 @@ export const ExosuitFabricator = (props, context) => {
               <Section title="Settings" height="100%">
                 <Button.Checkbox
                   onClick={() => setDisplayMatCost(!displayMatCost)}
-                  checked={displayMatCost}
-                >
+                  checked={displayMatCost}>
                   Display Material Costs
                 </Button.Checkbox>
                 <Button.Checkbox
                   onClick={() => setDisplayAllMat(!displayAllMat)}
-                  checked={displayAllMat}
-                >
+                  checked={displayAllMat}>
                   Display All Materials
                 </Button.Checkbox>
                 {(data.species_types && (
@@ -226,8 +212,7 @@ export const ExosuitFabricator = (props, context) => {
                       content="R&D Sync"
                       onClick={() => act('sync_rnd')}
                     />
-                  }
-                >
+                  }>
                   <PartSets />
                 </Section>
               </Flex.Item>
@@ -400,8 +385,7 @@ const PartSets = (props, context) => {
               key={set}
               selected={set === selectedPartTab}
               disabled={!buildableParts[set]}
-              onClick={() => setSelectedPartTab(set)}
-            >
+              onClick={() => setSelectedPartTab(set)}>
               {set}
             </Tabs.Tab>
           )
@@ -531,8 +515,7 @@ const PartCategory = (props, context) => {
               })
             }
           />
-        }
-      >
+        }>
         {!parts.length && placeholder}
         {parts.map((part) => (
           <Fragment key={part.name}>
@@ -580,8 +563,7 @@ const PartCategory = (props, context) => {
                   <Flex.Item
                     width={'50px'}
                     key={material}
-                    color={COLOR_KEYS[part.format[material].color]}
-                  >
+                    color={COLOR_KEYS[part.format[material].color]}>
                     <MaterialAmount
                       formatmoney
                       style={{
@@ -642,8 +624,7 @@ const Queue = (props, context) => {
                 />
               )}
             </Fragment>
-          }
-        >
+          }>
           <Flex direction="column" height="100%">
             <Flex.Item>
               <BeingBuilt />
@@ -710,8 +691,7 @@ const QueueList = (props, context) => {
         justify="center"
         wrap="wrap"
         height="20px"
-        inline
-      >
+        inline>
         <Flex.Item basis="content">
           <Button
             height="20px"

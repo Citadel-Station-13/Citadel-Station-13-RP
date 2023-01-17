@@ -2,17 +2,7 @@ import { round } from 'common/math';
 import { formatPower } from '../format';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Icon,
-  LabeledList,
-  ProgressBar,
-  Stack,
-  Section,
-  Tabs,
-  Slider,
-} from '../components';
+import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from '../components';
 import { Window } from '../layouts';
 import { capitalize } from 'common/string';
 
@@ -42,15 +32,13 @@ export const RCONContent = (props, context) => {
         <Tabs.Tab
           key="SMESs"
           selected={0 === tabIndex}
-          onClick={() => setTabIndex(0)}
-        >
+          onClick={() => setTabIndex(0)}>
           <Icon name="power-off" /> SMESs
         </Tabs.Tab>
         <Tabs.Tab
           key="Breakers"
           selected={1 === tabIndex}
-          onClick={() => setTabIndex(1)}
-        >
+          onClick={() => setTabIndex(1)}>
           <Icon name="bolt" /> Breakers
         </Tabs.Tab>
       </Tabs>
@@ -110,8 +98,7 @@ const SMESItem = (props, context) => {
                 good: [0.5, Infinity],
                 average: [0.15, 0.5],
                 bad: [-Infinity, 0.15],
-              }}
-            >
+              }}>
               {round(charge / 60, 1)} kWh / {round(capacity / 60)} kWh (
               {capacityPercent}%)
             </ProgressBar>
@@ -172,8 +159,8 @@ const SMESControls = (props, context) => {
       powerTooltip = !inputAttempt
         ? 'The SMES input is off.'
         : inputting
-        ? 'The SMES is drawing power.'
-        : 'The SMES lacks power.';
+          ? 'The SMES is drawing power.'
+          : 'The SMES lacks power.';
       break;
     case 'output':
       level = outputLevel;
@@ -187,8 +174,8 @@ const SMESControls = (props, context) => {
       powerTooltip = !outputAttempt
         ? 'The SMES output is off.'
         : outputting
-        ? 'The SMES is outputting power.'
-        : 'The SMES lacks any draw.';
+          ? 'The SMES is outputting power.'
+          : 'The SMES lacks any draw.';
       break;
   }
 

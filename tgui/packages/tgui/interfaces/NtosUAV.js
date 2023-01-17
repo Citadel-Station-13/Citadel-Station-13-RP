@@ -23,8 +23,7 @@ export const NtosUAV = (props, context) => {
                 <Button
                   icon="power-off"
                   selected={current_uav.power}
-                  onClick={() => act('power_uav')}
-                >
+                  onClick={() => act('power_uav')}>
                   {current_uav.power ? 'Online' : 'Offline'}
                 </Button>
               )) ||
@@ -36,8 +35,7 @@ export const NtosUAV = (props, context) => {
                   icon="power-off"
                   selected={in_use}
                   disabled={!current_uav.power}
-                  onClick={() => act('view_uav')}
-                >
+                  onClick={() => act('view_uav')}>
                   {current_uav.power ? 'Available' : 'Unavailable'}
                 </Button>
               )) ||
@@ -55,8 +53,7 @@ export const NtosUAV = (props, context) => {
                     icon="quidditch"
                     onClick={() =>
                       act('switch_uav', { 'switch_uav': uav.uavref })
-                    }
-                  >
+                    }>
                     {uav.name}
                   </Button>
                 </Flex.Item>

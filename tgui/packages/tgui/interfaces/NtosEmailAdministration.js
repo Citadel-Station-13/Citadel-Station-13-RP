@@ -44,8 +44,7 @@ const MainMenu = (props, context) => {
           fluid
           icon="eye"
           key={account.uid}
-          onClick={() => act('viewaccount', { viewaccount: account.uid })}
-        >
+          onClick={() => act('viewaccount', { viewaccount: account.uid })}>
           {account.login}
         </Button>
       ))}
@@ -63,8 +62,7 @@ const EmailError = (props, context) => {
         <Button icon="undo" onClick={() => act('back')}>
           Back
         </Button>
-      }
-    >
+      }>
       {error}
     </Section>
   );
@@ -99,16 +97,14 @@ const ViewAccount = (props, context) => {
         <Button icon="undo" onClick={() => act('back')}>
           Back
         </Button>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Account Status">
           <Button
             color={cur_suspended ? 'bad' : ''}
             icon="ban"
             tooltip={(cur_suspended ? 'Uns' : 'S') + 'uspend Account?'}
-            onClick={() => act('ban')}
-          >
+            onClick={() => act('ban')}>
             {cur_suspended ? 'Suspended' : 'Normal'}
           </Button>
         </LabeledList.Item>
@@ -135,8 +131,7 @@ const ViewAccount = (props, context) => {
                 <Table.Cell>
                   <Button
                     icon="eye"
-                    onClick={() => act('viewmail', { viewmail: message.uid })}
-                  >
+                    onClick={() => act('viewmail', { viewmail: message.uid })}>
                     View
                   </Button>
                 </Table.Cell>

@@ -36,20 +36,17 @@ export const OvermapShipSensorsContent = (props, context) => {
             <Button
               icon="eye"
               selected={viewing}
-              onClick={() => act('viewing')}
-            >
+              onClick={() => act('viewing')}>
               Map View
             </Button>
             <Button
               icon="power-off"
               selected={on}
-              onClick={() => act('toggle_sensor')}
-            >
+              onClick={() => act('toggle_sensor')}>
               {on ? 'Sensors Enabled' : 'Sensors Disabled'}
             </Button>
           </Fragment>
-        }
-      >
+        }>
         <LabeledList>
           <LabeledList.Item label="Status">{status}</LabeledList.Item>
           <LabeledList.Item label="Range">
@@ -65,8 +62,7 @@ export const OvermapShipSensorsContent = (props, context) => {
                 bad: [-Infinity, max_health * 0.25],
               }}
               value={health}
-              maxValue={max_health}
-            >
+              maxValue={max_health}>
               {health} / {max_health}
             </ProgressBar>
           </LabeledList.Item>
@@ -78,8 +74,7 @@ export const OvermapShipSensorsContent = (props, context) => {
                 good: [-Infinity, critical_heat * 0.5],
               }}
               value={heat}
-              maxValue={critical_heat}
-            >
+              maxValue={critical_heat}>
               {(heat < critical_heat * 0.5 && <Box>Temperature low.</Box>) ||
                 (heat < critical_heat * 0.75 && (
                   <Box>Sensor temperature high!</Box>
@@ -99,8 +94,7 @@ export const OvermapShipSensorsContent = (props, context) => {
               key={alien.ref}
               fluid
               icon="search"
-              onClick={() => act('scan', { scan: alien.ref })}
-            >
+              onClick={() => act('scan', { scan: alien.ref })}>
               <Box bold inline>
                 Scan: {alien.name}
               </Box>

@@ -19,8 +19,7 @@ export const InventoryPanel = (props, context) => {
                   <Button
                     mb={-1}
                     icon={slot.item ? 'hand-paper' : 'gift'}
-                    onClick={() => act(slot.act)}
-                  >
+                    onClick={() => act(slot.act)}>
                     {slot.item || 'Nothing'}
                   </Button>
                 </LabeledList.Item>

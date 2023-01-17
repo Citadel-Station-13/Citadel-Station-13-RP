@@ -14,8 +14,7 @@ export const FilingCabinet = (props, context) => {
             color="black"
             backgroundColor="white"
             style={{ padding: '2px' }}
-            mb={0.5}
-          >
+            mb={0.5}>
             <Flex.Item align="center" grow={1}>
               <Box align="center">{object}</Box>
             </Flex.Item>

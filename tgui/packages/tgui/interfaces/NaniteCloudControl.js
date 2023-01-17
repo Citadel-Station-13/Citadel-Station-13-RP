@@ -1,15 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Grid,
-  LabeledList,
-  NoticeBox,
-  NumberInput,
-  Section,
-} from '../components';
+import { Box, Button, Collapsible, Grid, LabeledList, NoticeBox, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const NaniteDiskBox = (props, context) => {
@@ -52,8 +43,7 @@ export const NaniteInfoBox = (props, context) => {
         <Box inline bold color={activated ? 'good' : 'bad'}>
           {activated ? 'Activated' : 'Deactivated'}
         </Box>
-      }
-    >
+      }>
       <Grid>
         <Grid.Column mr={1}>{desc}</Grid.Column>
         <Grid.Column size={0.5}>
@@ -179,8 +169,7 @@ export const NaniteCloudBackupDetails = (props, context) => {
             onClick={() => act('upload_program')}
           />
         )
-      }
-    >
+      }>
       {cloud_programs.map((program) => {
         const rules = program.rules || [];
         return (
@@ -197,8 +186,7 @@ export const NaniteCloudBackupDetails = (props, context) => {
                   })
                 }
               />
-            }
-          >
+            }>
             <Section>
               <NaniteInfoBox program={program} />
               {(!!can_rule || !!program.has_rules) && (
@@ -219,8 +207,7 @@ export const NaniteCloudBackupDetails = (props, context) => {
                         }
                       />
                     )
-                  }
-                >
+                  }>
                   {program.has_rules ? (
                     rules.map((rule) => (
                       <Box key={rule.display}>
@@ -265,8 +252,7 @@ export const NaniteCloudControl = (props, context) => {
               disabled={!has_disk}
               onClick={() => act('eject')}
             />
-          }
-        >
+          }>
           <NaniteDiskBox />
         </Section>
         <Section
@@ -300,8 +286,7 @@ export const NaniteCloudControl = (props, context) => {
                 <Button icon="plus" onClick={() => act('create_backup')} />
               </Fragment>
             )
-          }
-        >
+          }>
           {!data.current_view ? (
             <NaniteCloudBackupList />
           ) : (

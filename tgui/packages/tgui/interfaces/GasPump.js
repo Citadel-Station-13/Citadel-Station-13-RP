@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-  LabeledControls,
-  AnimatedNumber,
-} from '../components';
+import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from '../components';
 import { Window } from '../layouts';
 
 export const GasPump = (props, context) => {
@@ -30,8 +23,7 @@ export const GasPump = (props, context) => {
                 maxValue={max_power_draw}
                 color={
                   last_power_draw < max_power_draw - 5 ? 'good' : 'average'
-                }
-              >
+                }>
                 {last_power_draw + ' W'}
               </ProgressBar>
             </LabeledList.Item>
@@ -46,8 +38,7 @@ export const GasPump = (props, context) => {
               selected={on}
               onClick={() => act('power')}
             />
-          }
-        >
+          }>
           <LabeledControls>
             <LabeledControls.Item>
               <Button

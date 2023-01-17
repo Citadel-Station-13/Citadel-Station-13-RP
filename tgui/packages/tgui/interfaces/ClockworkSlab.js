@@ -8,15 +8,7 @@
 
 import { useBackend, useSharedState } from '../backend';
 import { map } from 'common/collections';
-import {
-  Section,
-  Tabs,
-  Table,
-  Button,
-  Box,
-  NoticeBox,
-  Divider,
-} from '../components';
+import { Section, Tabs, Table, Button, Box, NoticeBox, Divider } from '../components';
 import { Fragment } from 'inferno';
 import { Window } from '../layouts';
 
@@ -52,12 +44,10 @@ export const ClockworkSlab = (props, context) => {
                 icon="book"
                 tooltip={'Tutorial'}
                 tooltipPosition={'left'}
-                onClick={() => act('toggle')}
-              >
+                onClick={() => act('toggle')}>
                 Recollection
               </Button>
-            }
-          >
+            }>
             <b>{power}</b> power is available for scripture and other consumers.
             <Section level={2}>
               <Tabs>
@@ -65,8 +55,7 @@ export const ClockworkSlab = (props, context) => {
                   <Tabs.Tab
                     key={name}
                     selected={tab === name}
-                    onClick={() => setTab(name)}
-                  >
+                    onClick={() => setTab(name)}>
                     {name}
                   </Tabs.Tab>
                 ))(scripture)}
@@ -75,8 +64,7 @@ export const ClockworkSlab = (props, context) => {
                 as={'span'}
                 textColor={'#B18B25'}
                 bold={!!tierInfo.ready} // muh booleans
-                italic={!tierInfo.ready}
-              >
+                italic={!tierInfo.ready}>
                 {tierInfo.ready
                   ? 'These scriptures are permanently unlocked.'
                   : tierInfo.requirement}
@@ -137,8 +125,7 @@ export const CSScripture = (props, context) => {
             act('recite', {
               'script': script.type,
             })
-          }
-        >
+          }>
           {`Recite ${script.required}`}
         </Button>
       </Table.Cell>
@@ -150,8 +137,7 @@ export const CSScripture = (props, context) => {
             act('bind', {
               'script': script.type,
             })
-          }
-        >
+          }>
           {script.bound ? `Unbind ${script.bound}` : 'Quickbind'}
         </Button>
       </Table.Cell>
@@ -174,12 +160,10 @@ export const CSTutorial = (props, context) => {
         <Button
           icon="cog"
           tooltipPosition={'left'}
-          onClick={() => act('toggle')}
-        >
+          onClick={() => act('toggle')}>
           Recital
         </Button>
-      }
-    >
+      }>
       <Box>
         {HONOR_RATVAR ? (
           <Box as="span" textColor="#BE8700" fontSize={2} bold>
@@ -191,8 +175,7 @@ export const CSTutorial = (props, context) => {
               as="span"
               textColor="#BE8700"
               fontSize={2} // 2rem
-              bold
-            >
+              bold>
               Chetr nyy hagehguf naq ubabe Ratvar.
             </Box>
             <NoticeBox warning>
@@ -225,8 +208,7 @@ export const CSTutorial = (props, context) => {
               act('rec_category', {
                 'category': cat.name,
               })
-            }
-          >
+            }>
             {cat.name}
           </Button>
         </Fragment>

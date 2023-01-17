@@ -1,22 +1,8 @@
 import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Dimmer,
-  Flex,
-  Icon,
-  LabeledList,
-  NoticeBox,
-  ProgressBar,
-  Section,
-  Tabs,
-} from '../components';
-import {
-  ComplexModal,
-  modalRegisterBodyOverride,
-} from '../interfaces/common/ComplexModal';
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from '../components';
+import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Window } from '../layouts';
 
 const MENU_MAIN = 1;
@@ -40,8 +26,7 @@ const viewMindRecordModalBodyOverride = (modal, context) => {
       title={'Mind Record (' + realname + ')'}
       buttons={
         <Button icon="times" color="red" onClick={() => act('modal_close')} />
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{realname}</LabeledList.Item>
         <LabeledList.Item label="Status">{obviously_dead}</LabeledList.Item>
@@ -71,8 +56,7 @@ const viewMindRecordModalBodyOverride = (modal, context) => {
         <LabeledList.Item label="OOC Notes">
           <Section
             style={{ 'word-break': 'break-all', 'height': '100px' }}
-            scrollable
-          >
+            scrollable>
             {oocnotes}
           </Section>
         </LabeledList.Item>
@@ -101,8 +85,7 @@ const viewBodyRecordModalBodyOverride = (modal, context) => {
       title={'Body Record (' + realname + ')'}
       buttons={
         <Button icon="times" color="red" onClick={() => act('modal_close')} />
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{realname}</LabeledList.Item>
         <LabeledList.Item label="Species">{species}</LabeledList.Item>
@@ -114,8 +97,7 @@ const viewBodyRecordModalBodyOverride = (modal, context) => {
         <LabeledList.Item label="OOC Notes">
           <Section
             style={{ 'word-break': 'break-all', 'height': '100px' }}
-            scrollable
-          >
+            scrollable>
             {oocnotes}
           </Section>
         </LabeledList.Item>
@@ -179,8 +161,7 @@ const ResleevingConsoleNavigation = (props, context) => {
           act('menu', {
             num: MENU_MAIN,
           })
-        }
-      >
+        }>
         Main
       </Tabs.Tab>
       <Tabs.Tab
@@ -190,8 +171,7 @@ const ResleevingConsoleNavigation = (props, context) => {
           act('menu', {
             num: MENU_BODY,
           })
-        }
-      >
+        }>
         Body Records
       </Tabs.Tab>
       <Tabs.Tab
@@ -201,8 +181,7 @@ const ResleevingConsoleNavigation = (props, context) => {
           act('menu', {
             num: MENU_MIND,
           })
-        }
-      >
+        }>
         Mind Records
       </Tabs.Tab>
     </Tabs>
@@ -319,8 +298,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
               average: [0.25, 0.75],
               bad: [-Infinity, 0.25],
             }}
-            mt="0.5rem"
-          >
+            mt="0.5rem">
             <Box textAlign="center">{round(pod.progress, 0) + '%'}</Box>
           </ProgressBar>
         );
@@ -352,8 +330,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
           width="64px"
           textAlign="center"
           display="inline-block"
-          mr="0.5rem"
-        >
+          mr="0.5rem">
           <img
             src={'pod_' + pod.status + '.gif'}
             style={{
@@ -388,8 +365,7 @@ const ResleevingConsolePodSleevers = (props, context) => {
           width="64px"
           textAlign="center"
           display="inline-block"
-          mr="0.5rem"
-        >
+          mr="0.5rem">
           <img
             src={'sleeve_' + (pod.occupied ? 'occupied' : 'empty') + '.gif'}
             style={{
@@ -435,8 +411,7 @@ const ResleevingConsolePodSpods = (props, context) => {
               average: [0.25, 0.75],
               bad: [-Infinity, 0.25],
             }}
-            mt="0.5rem"
-          >
+            mt="0.5rem">
             <Box textAlign="center">{round(pod.progress, 0) + '%'}</Box>
           </ProgressBar>
         );
@@ -468,8 +443,7 @@ const ResleevingConsolePodSpods = (props, context) => {
           width="64px"
           textAlign="center"
           display="inline-block"
-          mr="0.5rem"
-        >
+          mr="0.5rem">
           <img
             src={'synthprinter' + (pod.busy ? '_working' : '') + '.gif'}
             style={{

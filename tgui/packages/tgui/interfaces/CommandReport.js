@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Dropdown,
-  Input,
-  Section,
-  Stack,
-  TextArea,
-} from '../components';
+import { Button, Dropdown, Input, Section, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 
 export const CommandReport = (props, context) => {
@@ -25,8 +18,7 @@ export const CommandReport = (props, context) => {
       title="Create Command Report"
       width={325}
       height={525}
-      theme="admin"
-    >
+      theme="admin">
       <Window.Content>
         <Stack vertical>
           <Stack.Item>
@@ -87,8 +79,7 @@ export const CommandReport = (props, context) => {
                   <Button.Checkbox
                     fluid
                     checked={announce_contents}
-                    onClick={() => act('toggle_announce')}
-                  >
+                    onClick={() => act('toggle_announce')}>
                     Announce Contents
                   </Button.Checkbox>
                 </Stack.Item>

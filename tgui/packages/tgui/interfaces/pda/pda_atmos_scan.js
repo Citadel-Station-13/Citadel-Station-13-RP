@@ -37,8 +37,7 @@ export const pda_atmos_scan = (props, context) => {
               item.poor_low,
               item.poor_high,
               item.bad_high
-            )}
-          >
+            )}>
             {item.val}
             {decodeHtmlEntities(item.units)}
           </LabeledList.Item>

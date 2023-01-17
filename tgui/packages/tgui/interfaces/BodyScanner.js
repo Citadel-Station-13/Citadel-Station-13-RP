@@ -1,18 +1,7 @@
 import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import {
-  AnimatedNumber,
-  Box,
-  Button,
-  Flex,
-  Icon,
-  LabeledList,
-  ProgressBar,
-  Section,
-  Table,
-  Tooltip,
-} from '../components';
+import { AnimatedNumber, Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const stats = [
@@ -89,15 +78,15 @@ const mapTwoByTwo = (a, c) => {
 const reduceOrganStatus = (A) => {
   return A.length > 0
     ? A.reduce((a, s) =>
-        a === null ? (
-          s
-        ) : (
-          <Fragment>
-            {a}
-            {!!s && <Box>{s}</Box>}
-          </Fragment>
-        )
+      a === null ? (
+        s
+      ) : (
+        <Fragment>
+          {a}
+          {!!s && <Box>{s}</Box>}
+        </Fragment>
       )
+    )
     : null;
 };
 
@@ -175,8 +164,7 @@ const BodyScannerMainOccupant = (props, context) => {
             Print Report
           </Button>
         </Fragment>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
@@ -348,8 +336,7 @@ const BodyScannerMainDamageBar = (props) => {
       value={props.value / 100}
       mt="0.5rem"
       mb={!!props.marginBottom && '0.5rem'}
-      ranges={damageRange}
-    >
+      ranges={damageRange}>
       {round(props.value, 0)}
     </ProgressBar>
   );
@@ -381,8 +368,7 @@ const BodyScannerMainOrgansExternal = (props) => {
                 max={o.maxHealth}
                 mt={i > 0 && '0.5rem'}
                 value={o.totalLoss / 100}
-                ranges={damageRange}
-              >
+                ranges={damageRange}>
                 <Box float="left" inline>
                   {!!o.bruteLoss && (
                     <Box inline position="relative">
@@ -458,8 +444,7 @@ const BodyScannerMainOrgansInternal = (props) => {
                 max={o.maxHealth}
                 value={o.damage / 100}
                 mt={i > 0 && '0.5rem'}
-                ranges={damageRange}
-              >
+                ranges={damageRange}>
                 {round(o.damage, 0)}
               </ProgressBar>
             </Table.Cell>

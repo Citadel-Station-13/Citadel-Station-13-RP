@@ -24,8 +24,7 @@ export const XenoarchArtifactHarvester = (props, context) => {
                   mt={1}
                   fluid
                   icon="stop"
-                  onClick={() => act('stopharvest')}
-                >
+                  onClick={() => act('stopharvest')}>
                   Stop Early
                 </Button>
               </Box>
@@ -40,8 +39,7 @@ export const XenoarchArtifactHarvester = (props, context) => {
                     mt={1}
                     fluid
                     icon="stop"
-                    onClick={() => act('stopharvest')}
-                  >
+                    onClick={() => act('stopharvest')}>
                     Stop Early
                   </Button>
                 </Box>
@@ -63,8 +61,7 @@ export const XenoarchArtifactHarvester = (props, context) => {
                     mt={1}
                     fluid
                     icon="eject"
-                    onClick={() => act('ejectbattery')}
-                  >
+                    onClick={() => act('ejectbattery')}>
                     Eject Battery
                   </Button>
                   <Button fluid icon="bolt" onClick={() => act('drainbattery')}>

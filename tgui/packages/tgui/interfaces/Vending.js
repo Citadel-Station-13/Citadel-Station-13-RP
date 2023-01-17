@@ -36,8 +36,7 @@ const VendingRow = (props, context) => {
             (product.amount <= 0 && 'bad') ||
             (product.amount <= product.max_amount / 2 && 'average') ||
             'good'
-          }
-        >
+          }>
           {product.amount} in stock
         </Box>
       </Table.Cell>
