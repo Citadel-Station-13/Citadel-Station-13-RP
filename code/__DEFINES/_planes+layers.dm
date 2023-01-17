@@ -114,6 +114,7 @@
 #define TURF_PLANE -45
 
 #define PLATING_LAYER               (AREA_LAYER)
+#define PLATING_DECAL_LAYER         (AREA_LAYER+0.01) //! Used for decals on plating and for map editors.
 #define DISPOSAL_LAYER              (AREA_LAYER+0.1)
 #define DECAL_PLATING_LAYER         (AREA_LAYER+0.2)
 #define DISPOSALS_PIPE_LAYER        (AREA_LAYER+0.3)
@@ -128,7 +129,7 @@
 //? ABOVE PLATING
 
 #define WATER_FLOOR_LAYER           (TURF_LAYER)      /// The 'bottom' of water tiles.
-#define TURF_DETAIL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
+#define FLOOR_DECAL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 
 //? ABOVE FLOOR
 
