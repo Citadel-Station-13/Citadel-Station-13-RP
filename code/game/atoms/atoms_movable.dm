@@ -149,7 +149,7 @@
 			gen_emissive_blocker.color = GLOB.em_block_color
 			gen_emissive_blocker.dir = dir
 			gen_emissive_blocker.appearance_flags |= appearance_flags
-			add_overlay(list(gen_emissive_blocker))
+			add_overlay(gen_emissive_blocker)
 		if(EMISSIVE_BLOCK_UNIQUE)
 			add_emissive_blocker()
 
@@ -412,6 +412,7 @@
 	// no mouse opacity
 	name = ""
 	var/atom/movable/master
+	SET_APPEARANCE_FLAGS(RESET_COLOR | RESET_ALPHA | PIXEL_SCALE | TILE_BOUND)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()

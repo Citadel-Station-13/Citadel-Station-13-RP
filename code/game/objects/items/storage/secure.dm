@@ -104,8 +104,7 @@
 				l_set = 1
 			else if ((code == l_code) && (emagged == 0) && (l_set == 1))
 				locked = 0
-				cut_overlays()
-				add_overlay(image('icons/obj/storage.dmi', icon_opened))
+				set_overlays(icon_opened)
 				code = null
 			else
 				code = "ERROR"
@@ -129,10 +128,10 @@
 /obj/item/storage/secure/emag_act(remaining_charges, mob/user, feedback)
 	if(!emagged)
 		emagged = 1
-		add_overlay(image('icons/obj/storage.dmi', icon_sparking))
+		add_overlay(icon_sparking)
+		compile_overlays()
 		sleep(6)
-		cut_overlays()
-		add_overlay(image('icons/obj/storage.dmi', icon_locking))
+		set_overlays(icon_locking)
 		locked = 0
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1

@@ -1555,7 +1555,7 @@
 			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
-			var/viewflags = machine.check_eye(src)
+			var/viewflags = machine.check_eye(src, TRUE)
 			if(viewflags < 0)
 				reset_perspective()
 			else if(viewflags && !looking_elsewhere)

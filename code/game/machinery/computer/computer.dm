@@ -93,7 +93,7 @@
 	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
-	. += mutable_appearance(icon, overlay_state)
+	. += overlay_state
 	//. += emissive_appearance(icon, overlay_state)
 	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 

@@ -733,12 +733,16 @@
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10,
+					/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
+					/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
 					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 10,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10,
+					/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 10,
 					/obj/item/reagent_containers/food/drinks/cans/ochamidori = 10,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
 					/obj/item/reagent_containers/food/drinks/cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
+					/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
  					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
@@ -756,7 +760,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
 					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
 					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70,
-					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6)
+					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6, /obj/item/reagent_containers/food/drinks/cans/nicola = 1,
+					/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 1,
+					/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 1)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.

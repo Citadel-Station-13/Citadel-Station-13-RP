@@ -107,7 +107,7 @@
 		P.info += "<br>"
 		P.info += "\icon[scanned_object] [results]"
 		P.stamped = list(/obj/item/stamp)
-		P.add_overlay(list("paper_stamped"))
+		P.add_overlay("paper_stamped")
 
 		if(scanned_object && istype(scanned_object, /obj/machinery/artifact))
 			var/obj/machinery/artifact/A = scanned_object

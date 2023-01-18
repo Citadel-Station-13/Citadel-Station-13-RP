@@ -32,7 +32,7 @@
 	name = "tacticool pleated skirt"
 	icon_state = "tactifool_skirt"
 
-/obj/item/clothing/under/syndicate/combat
+/obj/item/clothing/under/syndicate/combat/suit
 	name = "syndicate combat suit"
 	desc = "This streamlined tactical suit is a cut above the tactical turtleneck. It has four more pockets."
 	icon_state = "syndicate_combat"

@@ -4356,9 +4356,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
-"jJ" = (
-/turf/simulated/floor/tiled/white,
-/area/mothership/resleeving)
 "jK" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -5790,7 +5787,6 @@
 /area/mothership/armory)
 "mz" = (
 /obj/structure/reagent_dispensers/acid{
-	density = 0;
 	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5877,8 +5873,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/gun/ballistic/automatic/l6_saw,
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -18132,7 +18128,7 @@ hp
 gG
 iZ
 js
-jJ
+jp
 jZ
 kl
 ky
@@ -18274,7 +18270,7 @@ hp
 gG
 ja
 jt
-jJ
+jp
 ka
 kl
 kz
@@ -18416,7 +18412,7 @@ is
 gG
 jb
 ju
-jJ
+jp
 kb
 kl
 kA

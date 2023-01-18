@@ -57,7 +57,7 @@
 /atom/movable/screen/waypoint_tracker/proc/set_disabled(v)
 	if((!v) == visible)
 		return
-	visible = v
+	visible = !v
 	if(visible)
 		screen_loc = "CENTER"
 	else

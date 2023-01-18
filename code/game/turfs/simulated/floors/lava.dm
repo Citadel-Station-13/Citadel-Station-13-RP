@@ -9,7 +9,7 @@
 	edge_blending_priority = 1
 	// flags = TURF_HAS_EDGES
 	// todo: THE ABOVE FLAGS DOESNT WORK BECAUSE ITS ON FLOORING!
-	movement_cost = 2
+	slowdown = 2
 	special_temperature = T0C + 2200
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
