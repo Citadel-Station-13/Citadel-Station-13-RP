@@ -142,7 +142,7 @@
 #define SPECIES_XENO_SENTINEL "Xenomorph Sentinel"
 #define SPECIES_XENOCHIMERA "Xenochimera"
 #define SPECIES_XENOHYBRID "Xenomorph Hybrid"
-#define SPECIES_XENOHYBRID_ALT "Xenomorph Hybrid (Alt)"
+#define SPECIES_XENOHYBRID_ALT "Xenomorph Hybrid"
 #define SPECIES_ZADDAT "Zaddat"
 #define SPECIES_ZORREN_FLAT "Flatland Zorren"
 #define SPECIES_ZORREN_HIGH "Highlander Zorren"
