@@ -3,16 +3,6 @@
 	category = "Security"
 
 /**
- * Melee
- *
- * Implementation status: Not started
- */
-// /datum/characteristic_skill/security/melee
-// 	id = "melee"
-// 	name = "Close Combat"
-// 	desc = "How skilled you are with melee weaponry or hand to hand combat."
-
-/**
  * Ranged
  *
  * Implementation status: Not started
