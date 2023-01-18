@@ -48,7 +48,7 @@
 		/obj/item/clothing/suit/storage/det_suit/fluff/tas_coat,
 		/obj/item/clothing/under/det/fluff/tasald,
 		/obj/item/clothing/accessory/permit/gun/fluff/tasald_corlethian,
-		/obj/item/gun/projectile/revolver/mateba/fluff/tasald_corlethian,
+		/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian,
 		/obj/item/implanter/loyalty)
 
 //bwoincognito:Octavious Ward
@@ -182,7 +182,7 @@
 /obj/item/storage/box/fluff/sebastian_aji
 	name = "Sebastian's Lumoco Arms P3 Box"
 	has_items = list(
-		/obj/item/gun/projectile/pistol,
+		/obj/item/gun/ballistic/pistol,
 		/obj/item/ammo_magazine/m9mm/compact/flash,
 		/obj/item/ammo_magazine/m9mm/compact/flash,
 		/obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji)
@@ -191,7 +191,7 @@
 /obj/item/storage/box/fluff/briana_moore
 	name = "Briana's Derringer Box"
 	has_items = list(
-		/obj/item/gun/projectile/derringer/fluff/briana,
+		/obj/item/gun/ballistic/derringer/fluff/briana,
 		/obj/item/clothing/accessory/permit/gun/fluff/briana_moore)
 */
 
@@ -201,7 +201,7 @@
 	name = "Serdy's Weapon Box"
 	has_items = list(
 		/obj/item/clothing/accessory/permit/gun/fluff/silencedmp5a5,
-		/obj/item/gun/projectile/colt/fluff/serdy)
+		/obj/item/gun/ballistic/colt/fluff/serdy)
 */
 
 //BeyondMyLife: Ne'tra Ky'ram //Made a box because they have so many items that it'd spam the debug log.
@@ -308,6 +308,14 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 /obj/item/storage/box/fluff/swimsuit/latex
 	name = "Latex Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/latex)
+
+/obj/item/storage/box/fluff/swimsuit/risque
+	name = "Risque Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/risque)
+
+/obj/item/storage/box/fluff/swimsuit/streamlined
+	name = "Streamlined Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/streamlined)
 
 //Monkey boxes for the new primals we have
 /obj/item/storage/box/monkeycubes/sobakacubes

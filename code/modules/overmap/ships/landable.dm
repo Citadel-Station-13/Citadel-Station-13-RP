@@ -56,7 +56,7 @@
 		visitor_dir = turn(visitor_dir, 90)
 
 	if(multiz)
-		new /atom/movable/landmark/map_data(center_loc, (multiz + 1))
+		new /obj/landmark/map_data(center_loc, (multiz + 1))
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
@@ -124,11 +124,9 @@
 	core_landmark = master
 	name = _name
 	landmark_tag = master.shuttle_name + _name
-	RegisterSignal(master, COMSIG_PARENT_QDELETING, .proc/qdel_self)
+	RegisterSignal(master, COMSIG_PARENT_QDELETING, /datum/proc/qdel_self)
 	. = ..()
 
-/obj/effect/shuttle_landmark/visiting_shuttle/proc/qdel_self()
-	qdel(src)
 
 /obj/effect/shuttle_landmark/visiting_shuttle/Destroy()
 	UnregisterSignal(core_landmark, COMSIG_PARENT_QDELETING)

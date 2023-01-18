@@ -6,7 +6,7 @@
 	icon_state = "map_example"
 	icon_living = "map_example"
 	faction = "shadekin"
-	ui_icons = 'icons/mob/shadekin_hud.dmi'
+	ui_icons = 'icons/screen/hud/common/shadekin.dmi'
 	mob_class = MOB_CLASS_HUMANOID
 	mob_bump_flag = HUMAN
 
@@ -188,10 +188,16 @@
 		"The chaos of being digested fades as you're snuffed out by a harsh clench! You're steadily broken down into a thick paste, processed and absorbed by the predator!"
 		)
 
-/mob/living/simple_mob/shadekin/Life()
-	. = ..()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
+
+/mob/living/simple_mob/shadekin/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
@@ -208,19 +214,18 @@
 	add_overlay(tailimage)
 	add_overlay(eye_icon_state)
 
-/mob/living/simple_mob/shadekin/Stat()
+/mob/living/simple_mob/shadekin/statpanel_data(client/C)
 	. = ..()
-	if(statpanel("Shadekin"))
-		abilities_stat()
-
-/mob/living/simple_mob/shadekin/proc/abilities_stat()
-	for(var/A in shadekin_abilities)
-		var/obj/effect/shadekin_ability/ability = A
-		stat("[ability.ability_name]",ability.atom_button_text())
+	if(C.statpanel_tab("Shadekin"))
+		STATPANEL_DATA_LINE("")
+		for(var/A in shadekin_abilities)
+			var/obj/effect/shadekin_ability/ability = A
+			ability.atom_button_text()
+			STATPANEL_DATA_CLICK("[ability.ability_name]", "[ability.name]", "\ref[ability]")
 
 //They phase back to the dark when killed
 /mob/living/simple_mob/shadekin/death(gibbed, deathmessage = "phases to somewhere far away!")
-	overlays = list()
+	cut_overlays()
 	icon_state = ""
 	flick("tp_out",src)
 	spawn(1 SECOND)
@@ -229,7 +234,7 @@
 	. = ..(FALSE, deathmessage)
 
 //They reach nutritional equilibrium (important for blue-eyes healbelly)
-/mob/living/simple_mob/shadekin/Life()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
 	if((. = ..()))
 		handle_shade()
 

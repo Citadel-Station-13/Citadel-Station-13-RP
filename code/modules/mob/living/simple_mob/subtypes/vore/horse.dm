@@ -43,19 +43,22 @@
 	hide_amount = 4
 	exotic_amount = 2
 
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
 	buckle_lying = FALSE
-	mount_offset_x = 0
+	buckle_max_mobs = 1
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 
 	say_list_type = /datum/say_list/horse
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-// Activate Noms!
-/mob/living/simple_mob/vore/horse
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
+
+/mob/living/simple_mob/vore/horse/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/riding_filter/mob/animal/horse)
+
+/datum/component/riding_filter/mob/animal/horse
 
 /datum/say_list/horse
 	speak = list("NEHEHEHEHEH","Neh?")

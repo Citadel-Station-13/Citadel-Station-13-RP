@@ -46,7 +46,7 @@ Also includes Life and New
 
 
 //Life additions
-/mob/living/simple_mob/xeno/Life()
+/mob/living/simple_mob/xeno/Life(seconds, times_fired)
 	if(stasis)
 		stasis--
 		if(stasis < 0)

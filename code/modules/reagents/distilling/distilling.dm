@@ -195,16 +195,16 @@
 	switch(choice)
 		if("install input")
 			if(!InputBeaker)
-				user.drop_from_inventory(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				W.add_fingerprint(user)
-				W.forceMove(src)
 				InputBeaker = W
 
 		if("install output")
 			if(!OutputBeaker)
-				user.drop_from_inventory(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				W.add_fingerprint(user)
-				W.forceMove(src)
 				OutputBeaker = W
 
 	update_icon()

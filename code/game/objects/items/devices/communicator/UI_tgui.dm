@@ -46,9 +46,6 @@
 		return
 
 	var/newturf = get_turf(video_source)
-	if(!is_on_same_plane_or_station(get_z(newturf), get_z(src)))
-		show_static()
-		return
 
 	var/obj/item/communicator/communicator = video_source.loc
 	if(istype(communicator))
@@ -69,10 +66,6 @@
 
 	// We get a new turf in case they've moved in the last half decisecond (it's BYOND, it might happen)
 	last_camera_turf = get_turf(video_source)
-
-	if(!is_on_same_plane_or_station(get_z(last_camera_turf), get_z(src)))
-		show_static()
-		return
 
 	var/list/visible_turfs = list()
 	var/list/visible_things = view(video_range, last_camera_turf)
@@ -379,7 +372,7 @@
 				exonet.send_message(their_address, "text", text)
 				im_list += list(list("address" = exonet.address, "to_address" = their_address, "im" = text))
 				log_pda("(COMM: [src]) sent \"[text]\" to [exonet.get_atom_from_address(their_address)]", usr)
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 						if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 							continue

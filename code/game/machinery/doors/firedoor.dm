@@ -256,13 +256,13 @@
 			user.visible_message("<span class='danger'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].</span>",\
 			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
 			"You hear something being welded.")
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			update_icon()
 			return
 
 	if(density && C.is_screwdriver())
 		hatch_open = !hatch_open
-		playsound(src, C.usesound, 50, 1)
+		playsound(src, C.tool_sound, 50, 1)
 		user.visible_message("<span class='danger'>[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
 									"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch.")
 		update_icon()
@@ -276,7 +276,7 @@
 									"You start to remove the electronics from [src].")
 			if(do_after(user,30))
 				if(blocked && density && hatch_open)
-					playsound(src, C.usesound, 50, 1)
+					playsound(src, C.tool_sound, 50, 1)
 					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
 										"You have removed the electronics from [src].")
 
@@ -321,8 +321,8 @@
 				"You hear metal strain.")
 		prying = 1
 		update_icon()
-		playsound(src, C.usesound, 100, 1)
-		if(do_after(user,30 * C.toolspeed))
+		playsound(src, C.tool_sound, 100, 1)
+		if(do_after(user,30 * C.tool_speed))
 			if(C.is_crowbar())
 				if(machine_stat & (BROKEN|NOPOWER) || !density)
 					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
@@ -436,29 +436,34 @@
 
 
 /obj/machinery/door/firedoor/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(density)
 		icon_state = "door_closed"
 		if(prying)
 			icon_state = "prying_closed"
 		if(hatch_open)
-			overlays += "hatch"
+			overlays_to_add += "hatch"
 		if(blocked)
-			overlays += "welded"
+			overlays_to_add += "welded"
 		if(pdiff_alert)
-			overlays += "palert"
+			overlays_to_add += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
-						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+						overlays_to_add += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 	else
 		icon_state = "door_open"
 		if(prying)
 			icon_state = "prying_open"
 		if(blocked)
-			overlays += "welded_open"
+			overlays_to_add += "welded_open"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 //These are playing merry hell on ZAS.  Sorry fellas :(
@@ -472,7 +477,7 @@
 	air_properties_vary_with_direction = 1
 
 	CanPass(atom/movable/mover, turf/target)
-		if(istype(mover) && mover.checkpass(PASSGLASS))
+		if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 			return 1
 		if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
 			return !density
@@ -480,7 +485,7 @@
 			return 1
 
 	CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-		if(istype(mover) && mover.checkpass(PASSGLASS))
+		if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 			return 1
 		if(get_dir(loc, target) == dir)
 			return !density
@@ -501,6 +506,10 @@
 		return 1
 */
 
+// For prosperity, in case border doors get reimplemented.
+/obj/machinery/door/firedoor/border_only/CanAStarPass(obj/item/card/id/ID, to_dir)
+	return ..() || (dir != to_dir)
+
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'
 	width = 2
@@ -518,6 +527,12 @@
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
 	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
 	plane = TURF_PLANE
+
+	#ifndef IN_MAP_EDITOR
+	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
+	#else
+	layer = BELOW_OBJ_LAYER
+	#endif
 
 /obj/machinery/door/firedoor/glass/hidden/open()
 	. = ..()

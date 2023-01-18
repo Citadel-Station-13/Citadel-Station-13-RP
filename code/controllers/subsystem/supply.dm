@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(supply)
 			var/datum/exported_crate/adm = new()
 			adm.name = EC.name
 			adm.value = EC.value
-			adm.contents = deepCopyList(EC.contents)
+			adm.contents = deep_copy_list(EC.contents)
 			adm_export_history += adm
 
 			qdel(MA)
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(supply)
 				continue
 			var/occupied = 0
 			for(var/atom/A in T.contents)
-				if((A.flags & AF_ABSTRACT))
+				if((A.atom_flags & ATOM_ABSTRACT))
 					continue
 				occupied = 1
 				break

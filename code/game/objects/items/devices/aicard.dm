@@ -14,12 +14,12 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
-	if (!istype (M, /mob/living/silicon/decoy))
+/obj/item/aicard/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!istype(target, /mob/living/silicon/decoy))
 		return ..()
-	else
-		M.death()
-		to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	target.death()
+	to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/aicard/attack_self(mob/user)
 
@@ -86,10 +86,10 @@
 	return 1
 
 /obj/item/aicard/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aicard-on")
+			add_overlay("aicard-on")
 		if(carded_ai.stat)
 			icon_state = "aicard-404"
 		else
@@ -98,10 +98,6 @@
 		icon_state = "aicard"
 
 /obj/item/aicard/proc/grab_ai(var/mob/living/silicon/ai/ai, var/mob/living/user)
-	if(!ai.client && !ai.deployed_shell)
-		to_chat(user, "<span class='danger'>ERROR:</span> AI [ai.name] is offline. Unable to transfer.")
-		return 0
-
 	if(carded_ai)
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
 		return 0
@@ -137,7 +133,8 @@
 
 		ai.canmove = 1
 		update_icon()
-	return 1
+		return TRUE
+	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))
@@ -173,10 +170,10 @@
 	icon_state = "aitater"
 
 /obj/item/aicard/aitater/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aitater-on")
+			add_overlay("aitater-on")
 		if(carded_ai.stat)
 			icon_state = "aitater-404"
 		else
@@ -190,10 +187,10 @@
 	icon_state = "aispook"
 
 /obj/item/aicard/aispook/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aispook-on")
+			add_overlay("aispook-on")
 		if(carded_ai.stat)
 			icon_state = "aispook-404"
 		else

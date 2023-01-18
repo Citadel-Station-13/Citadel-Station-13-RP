@@ -51,23 +51,162 @@ GLOBAL_LIST_EMPTY(apcs)
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
 
+/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
+
+/obj/machinery/power/apc/direction_bump/east
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/direction_bump/west
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/direction_bump/north
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/direction_bump/south
+	name = "south bump"
+	pixel_y = -28
+
+//Critical//
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
+/obj/machinery/power/apc/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// High capacity cell APCs
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
+/obj/machinery/power/apc/high/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/high/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/high/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/high/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// Super capacity cell APCS
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
+/obj/machinery/power/apc/super/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// Critical APCs with super cells
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
+/obj/machinery/power/apc/super/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// APCS with hyper cells. How lewd
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
+/obj/machinery/power/apc/hyper/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/hyper/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/hyper/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/hyper/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
+
+/obj/machinery/power/apc/alarms_hidden/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/south_bump
+	name = "south bump"
+	pixel_y = -28
 
 /**
  * APCs
@@ -377,19 +516,22 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(!(update_state & UPDATE_ALLGOOD))
 		if(overlays.len)
-			overlays = 0
+			cut_overlays()
 			return
 
 	if(update & 2)
 		if(overlays.len)
-			overlays.len = 0
+			cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			overlays += status_overlays_lock[locked+1]
-			overlays += status_overlays_charging[charging+1]
+			var/list/overlays_to_add = list()
+			overlays_to_add += status_overlays_lock[locked+1]
+			overlays_to_add += status_overlays_charging[charging+1]
 			if(operating)
-				overlays += status_overlays_equipment[equipment+1]
-				overlays += status_overlays_lighting[lighting+1]
-				overlays += status_overlays_environ[environ+1]
+				overlays_to_add += status_overlays_equipment[equipment+1]
+				overlays_to_add += status_overlays_lighting[lighting+1]
+				overlays_to_add += status_overlays_environ[environ+1]
+
+			add_overlay(overlays_to_add)
 
 	if(update & 3)
 		if(update_state & UPDATE_BLUESCREEN)
@@ -499,9 +641,9 @@ GLOBAL_LIST_EMPTY(apcs)
 			if (terminal)
 				to_chat(user,"<span class='warning'>Disconnect the wires first.</span>")
 				return
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user,"You begin to remove the power control board...") //lpeters - fixed grammar issues //Ner - grrrrrr
-			if(do_after(user, 50 * W.toolspeed))
+			if(do_after(user, 50 * W.tool_speed))
 				if (has_electronics==1)
 					has_electronics = 0
 					if ((machine_stat & BROKEN))
@@ -535,9 +677,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(W.w_class != ITEMSIZE_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
-
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		cell = W
 		user.visible_message(\
 			"<span class='warning'>[user.name] has inserted a power cell into [src.name]!</span>",\
@@ -553,12 +694,12 @@ GLOBAL_LIST_EMPTY(apcs)
 				if (has_electronics==1 && terminal)
 					has_electronics = 2
 					machine_stat &= ~MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You screw the circuit electronics into place.")
 				else if (has_electronics==2)
 					has_electronics = 1
 					machine_stat |= MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You unfasten the electronics.")
 				else /* has_electronics==0 */
 					to_chat(user,"<span class='warning'>There is nothing to secure.</span>")
@@ -567,7 +708,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		else
 			wiresexposed = !wiresexposed
 			to_chat(user,"The wires have been [wiresexposed ? "exposed" : "unexposed"].")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			update_icon()
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))			// trying to unlock the interface with an ID card
@@ -623,7 +764,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] starts dismantling the [src]'s power terminal.</span>", \
 							"You begin to cut the cables...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, 50 * W.toolspeed))
+		if(do_after(user, 50 * W.tool_speed))
 			if(terminal && opened && has_electronics!=2)
 				if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -655,8 +796,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] begins cutting apart [src] with the [WT.name].</span>", \
 							"You start welding the APC frame...", \
 							"You hear welding.")
-		playsound(src, WT.usesound, 25, 1)
-		if(do_after(user, 50 * WT.toolspeed))
+		playsound(src, WT.tool_sound, 25, 1)
+		if(do_after(user, 50 * WT.tool_speed))
 			if(!src || !WT.remove_fuel(3, user)) return
 			if (emagged || (machine_stat & BROKEN) || opened==2)
 				new /obj/item/stack/material/steel(loc)
@@ -1093,7 +1234,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		main_status = 2
 
 	if(debug)
-		log_debug("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
+		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
@@ -1103,8 +1244,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		// TODO: rewrite APCs. entirely.
 		// if we're empty just kill it all
 		if(cell.percent() < 1)
-			charging = 0
-			chargecount = 0
 			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
 			equipment = autoset(equipment, 0)
 			lighting = autoset(lighting, 0)
@@ -1141,9 +1280,10 @@ GLOBAL_LIST_EMPTY(apcs)
 				chargecount = 0
 
 		// show cell as fully charged if so
-		if(cell.charge >= cell.maxcharge)
-			cell.charge = cell.maxcharge
+		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
 			charging = 2
+		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
+			charging = 1
 
 		if(chargemode)
 			if(!charging)
@@ -1219,7 +1359,7 @@ GLOBAL_LIST_EMPTY(apcs)
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
-obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
+/obj/machinery/power/apc/proc/autoset(cur_state, on)
 	switch(cur_state)
 		if(POWERCHAN_OFF_AUTO)
 			if(on == 1)
@@ -1254,30 +1394,30 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	update_icon()
 	..()
 
-/obj/machinery/power/apc/ex_act(severity)
+/obj/machinery/power/apc/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1)
 			//set_broken() //now qdel() do what we need
 			if (cell)
-				cell.ex_act(1) // more lags woohoo
+				LEGACY_EX_ACT(cell, 1, null) // more lags woohoo
 			qdel(src)
 			return
 		if(2)
 			if (prob(75))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(2)
+					LEGACY_EX_ACT(cell, 2, null)
 		if(3)
 			if (prob(50))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(3)
+					LEGACY_EX_ACT(cell, 3, null)
 		if(4)
 			if (prob(25))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(3)
+					LEGACY_EX_ACT(cell, 3, null)
 	return
 
 /obj/machinery/power/apc/disconnect_terminal()
@@ -1382,7 +1522,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 
 	if(prob(10)) // Computers get broken.
 		for(var/obj/machinery/computer/comp in area)
-			comp.ex_act(3)
+			LEGACY_EX_ACT(comp, 3, null)
 
 	if(prob(5)) // APC completely ruined.
 		set_broken()

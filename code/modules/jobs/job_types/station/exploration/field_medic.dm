@@ -1,4 +1,5 @@
 /datum/job/station/field_medic
+	id = JOB_ID_FIELD_MEDIC
 	title = "Field Medic"
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
@@ -34,9 +35,8 @@
 	l_ear = /obj/item/radio/headset/sar
 	l_hand = /obj/item/storage/firstaid/regular
 	belt = /obj/item/storage/belt/medical/emt
+	pda_slot = SLOT_ID_LEFT_POCKET
 	r_pocket = /obj/item/flashlight/pen
-
-	pda_slot = slot_l_store
 	pda_type = /obj/item/pda/sar
 	id_type = /obj/item/card/id/medical/sar
 	id_pda_assignment = "Field Medic"

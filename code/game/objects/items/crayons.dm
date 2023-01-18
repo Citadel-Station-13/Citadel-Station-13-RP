@@ -83,7 +83,7 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with a crayon.")
@@ -94,8 +94,10 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
+/obj/item/pen/crayon/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(target == user)
 		to_chat(user, "You take a bite of the crayon and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("crayon_dust",min(5,uses)/3)
@@ -104,8 +106,8 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your crayon!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/pen/crayon/marker/black
 	icon_state = "markerblack"
@@ -180,8 +182,10 @@
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return
 
-/obj/item/pen/crayon/marker/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
+/obj/item/pen/crayon/marker/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(target == user)
 		to_chat(user, "You take a bite of the marker and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("marker_ink",6)
@@ -190,8 +194,8 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate the marker!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 //Ritual Chalk
 /obj/item/pen/crayon/chalk/white
@@ -230,7 +234,7 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/decal/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
 			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with chalk.")
@@ -241,8 +245,10 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/chalk/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
+/obj/item/pen/crayon/chalk/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(target == user)
 		to_chat(user, "You take a bite of the chalk and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("chalk_dust",min(5,uses)/3)
@@ -251,5 +257,5 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your chalk!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()

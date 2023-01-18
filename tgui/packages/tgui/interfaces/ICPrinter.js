@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
 import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
 
@@ -13,12 +13,12 @@ export const ICPrinter = (props, context) => {
     debug,
     upgraded,
     can_clone,
-    assembly_to_clone,
+    program,
     categories,
   } = data;
 
   return (
-    <Window width={600} height={630}>
+    <Window width={800} height={630}>
       <Window.Content scrollable>
         <Section title="Status">
           <LabeledList>
@@ -37,6 +37,7 @@ export const ICPrinter = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
+        <ICCloningSection />
         <ICPrinterCategories />
       </Window.Content>
     </Window>
@@ -87,7 +88,7 @@ const ICPrinterCategories = (props, context) => {
           {selectedCategory && (
             <Section>
               <LabeledList>
-                {sortBy(item => item.name)(selectedCategory.items).map(item => (
+                {(selectedCategory.items).map(item => (
                   <LabeledList.Item
                     key={item.name}
                     label={item.name}
@@ -96,7 +97,7 @@ const ICPrinterCategories = (props, context) => {
                       <Button
                         disabled={!canBuild(item, data)}
                         icon="print"
-                        onClick={() => act("build", { build: item.path })}>
+                        onClick={() => act("build", { build: item.path, cost: item.cost })}>
                         Print
                       </Button>
                     }>
@@ -108,6 +109,43 @@ const ICPrinterCategories = (props, context) => {
           ) || "No category selected."}
         </Stack.Item>
       </Stack>
+    </Section>
+  );
+};
+const ICCloningSection = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    can_clone,
+    program,
+  } = data;
+
+  if (!can_clone) {
+    return false;
+  }
+  return (
+    <Section title="Cloning" >
+      <Flex>
+        <Flex.Item basis={"50%"}>
+          <Button
+            p={1}
+            fluid
+            icon="home"
+            iconSize={2}
+            tooltip="Load a program to print."
+            textAlign="center"
+            onClick={() => act("load_blueprint", { build: item.path })} />
+        </Flex.Item>
+        <Flex.Item basis={"50%"}>
+          <Button
+            p={1}
+            fluid
+            icon="print"
+            color={program ? "good" : "bad"}
+            iconSize={2}
+            textAlign="center"
+            onClick={() => act("clone", { build: item.path })} />
+        </Flex.Item>
+      </Flex>
     </Section>
   );
 };

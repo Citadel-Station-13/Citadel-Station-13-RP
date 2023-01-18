@@ -4,7 +4,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-qm"
 	item_state = "stamp"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 7
@@ -19,9 +19,9 @@
 		'sound/items/stamp3.ogg'
 		)
 
-/obj/item/stamp/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/stamp/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	playsound(M, pick(stamp_sounds), 30, 1, -1)
+	playsound(target, pick(stamp_sounds), 30, 1, -1)
 
 /obj/item/stamp/captain
 	name = "Facility Director's rubber stamp"

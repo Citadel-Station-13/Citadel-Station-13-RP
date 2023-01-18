@@ -14,8 +14,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /atom/movable/landmark, /atom/movable/lighting_object, /obj/effect/shuttle_landmark))
-	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
+	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_overlay, /obj/effect/shuttle_landmark))
+	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
 		var/thing = allowed_contents[i]
@@ -38,9 +38,38 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
-//wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself
-/turf/proc/TerraformTurf(path, new_baseturf, flags)
-	return ChangeTurf(path, new_baseturf, flags)
+/**
+ * get what /turf/baseturf_bottom should be
+ */
+/turf/proc/baseturf_core()
+	// todo: this is shitcode, pull it out on maploader refactor.
+	// this is very obviously a copypaste from ChangeTurf.
+	. = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+	if(!ispath(.))
+		. = text2path(.)
+		if (!ispath(.))
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+			. = /turf/space
+	if(. == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
+		if(istype(GetBelow(src), /turf/simulated))
+			. = /turf/simulated/open
+/**
+ * get baseturf on bottom
+ */
+/turf/proc/baseturf_bottom()
+	. = islist(baseturfs)? baseturfs[1] : baseturfs
+	return (. == /turf/baseturf_bottom)? baseturf_core() : .
+
+/**
+ * get baseturf underneath
+ */
+/turf/proc/baseturf_underneath()
+	. = islist(baseturfs)? baseturfs[length(baseturfs)] : baseturfs
+	// check if it's bottom, if it is let bottom proc handle
+	// if it's not bottom but another baseturf we assume it's fine
+	// because if something shoved, say, /turf/baseturf_skipover
+	// to the bottom of the stack, man, we got BIGGER worries.
+	return (. == /turf/baseturf_bottom)? baseturf_core() : .
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
@@ -78,14 +107,16 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		return new path(src)
 
 	// store lighting
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
+	var/old_opacity          = opacity
+	var/old_above            = above
 	var/old_affecting_lights = affecting_lights
-	var/old_lighting_object = lighting_object
-	var/old_lc_topright = lc_topright
-	var/old_lc_topleft = lc_topleft
-	var/old_lc_bottomright = lc_bottomright
-	var/old_lc_bottomleft = lc_bottomleft
+	var/old_lighting_overlay = lighting_overlay
+	var/old_dynamic_lighting = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
+	var/old_corners          = corners
+	var/old_ao_neighbors     = ao_neighbors
+	// var/old_is_open          = is_open()
+	var/old_ambience =         ambient_light
+	var/old_ambience_mult =    ambient_light_multiplier
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
@@ -111,6 +142,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/W = new path(src)
 
+	W.above = old_above // Multiz ref tracking.
+
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
 	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
@@ -135,20 +168,22 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 
+	// Regen AO
+	if (permit_ao)
+		regenerate_ao()
+
 	// restore/update atmos
 	if(old_fire)
 		fire = old_fire
-	air_master.mark_for_update(src)
+	queue_zone_update()
 
 	// restore lighting
+	W.ao_neighbors = old_ao_neighbors
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
-		lighting_object = old_lighting_object
+		lighting_overlay = old_lighting_overlay
 		affecting_lights = old_affecting_lights
-		lc_topright = old_lc_topright
-		lc_topleft = old_lc_topleft
-		lc_bottomright = old_lc_bottomright
-		lc_bottomleft = old_lc_bottomleft
+		corners = old_corners
 		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
 			reconsider_lights()
 			updateVisibility(src)
@@ -159,9 +194,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
-		// todo: non dynamic lighting space starlight
-		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			S.update_starlight()
+		if (old_ambience != ambient_light || old_ambience_mult != ambient_light_multiplier)
+			update_ambient_light(FALSE)
+
+
 
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
@@ -172,10 +208,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
 	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
 		// invalidate zone
-		if(zone)
+		if(has_valid_zone())
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// store air
@@ -183,17 +219,17 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		. = ..()
 		if(!.)
 			return
-		if(air_master.has_valid_zone(src))
+		if(has_valid_zone())
 			stack_trace("zone rebuilt too fast")
 		// restore air
 		air = GM
 	else
 		// if we're not doing so,
-		if(zone)
+		if(has_valid_zone())
 			// remove and rebuild zone
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// at this point the zone does not have our gas mixture in it, and is invalidated
@@ -201,12 +237,12 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(!.)
 			return
 		// ensure zone didn't rebuild yet
-		if(air_master.has_valid_zone(src))
+		if(has_valid_zone())
 			stack_trace("zone reubilt too fast")
 		// reset air
 		if(!air)
 			air = new /datum/gas_mixture(CELL_VOLUME)
-		air.parse_gas_string(initial_gas_mix)
+		air.parse_gas_string(initial_gas_mix, src)
 
 /// Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)
@@ -258,6 +294,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	baseturfs = baseturfs_string_list(new_baseturfs, src)
 
 /**
+ *
  * put a turf in from the bottom above logically multiz hole baseturfs. can changeturf.
  * used for shuttle ceilings
  */
@@ -340,7 +377,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 	var/turf/newT
 	if(flags & CHANGETURF_SKIP) // We haven't been initialized
-		if(src.flags & INITIALIZED)
+		if(src.atom_flags & ATOM_INITIALIZED)
 			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
 	if(fake_turf_type)
@@ -403,7 +440,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
 	levelupdate()
-	update_vertical_turf_graphics()
+	if (above)
+		above.update_mimic()
 
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)
@@ -411,4 +449,5 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/ReplaceWithLattice()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	new /obj/structure/lattice(locate(x, y, z))
+	if(!(locate(/obj/structure/lattice) in .))
+		new /obj/structure/lattice(.)

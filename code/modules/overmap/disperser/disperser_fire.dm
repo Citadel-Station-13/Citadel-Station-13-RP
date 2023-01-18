@@ -21,17 +21,17 @@
 				explosion(T,1,2,3)
 				continue
 			else
-				T.ex_act(1)
+				LEGACY_EX_ACT(T, 1, null)
 		for(var/atom/A in T)
 			if(A.density)
 				if(distance < 7)
 					explosion(A,1,2,3)
 					break
 				else
-					A.ex_act(1)
+					LEGACY_EX_ACT(A, 1, null)
 
 	var/list/relevant_z = GetConnectedZlevels(start.z)
-	for(var/mob/M in global.player_list)
+	for(var/mob/M in global.GLOB.player_list)
 		var/turf/T = get_turf(M)
 		if(!T || !(T.z in relevant_z))
 			continue

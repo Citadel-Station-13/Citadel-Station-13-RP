@@ -27,8 +27,11 @@
 					"Miss M" = "miss-medical",
 					"Coffical" = "coffin-Medical",
 					"Coffcue" = "coffin-Rescue",
-					"X-88" = "xeightyeight-medical"
-
+					"X-88" = "xeightyeight-medical",
+					"Acheron" = "mechoid-Medical",
+					"Shellguard Noble" = "Noble-MED",
+					"ZOOM-BA" = "zoomba-medical",
+					"W02M" = "worm-crisis"
 					)
 
 /obj/item/robot_module/robot/medical/surgeon/Initialize(mapload)
@@ -94,8 +97,8 @@
 
 //Crisis module removed - 5/2/2021
 
-/obj/item/robot_module/robot/medihound
-	name = "MediHound module"
+/obj/item/robot_module/robot/quad_medi
+	name = "MediQuad module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
@@ -104,10 +107,11 @@
 					"Medical Hound" = "medihound",
 					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
-					"Borgi" = "borgi-medi"
+					"Borgi" = "borgi-medi",
+					"F3-LINE" = "FELI-Medical"
 					)
 
-/obj/item/robot_module/robot/medihound/Initialize(mapload)
+/obj/item/robot_module/robot/quad_medi/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
@@ -174,19 +178,16 @@
 	src.modules += P
 	// END CITADEL CHANGES
 
-	R.icon = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x  	 = -16
-	R.default_pixel_x = -16
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	R.icon_dimension_x = 64
+	add_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	add_verb(R, /mob/living/proc/shred_limb)
+	add_verb(R, /mob/living/silicon/robot/proc/rest_style)
 
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
+		. = ..()

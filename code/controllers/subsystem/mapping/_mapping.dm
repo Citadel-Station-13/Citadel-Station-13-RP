@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
 
 	var/list/reservation_ready = list()
+
+
 	var/clearing_reserved_turfs = FALSE
 
 	/// Zlevel manager list of zlevels.
@@ -27,11 +29,8 @@ SUBSYSTEM_DEF(mapping)
 	var/static/datum/map_config/next_map_config
 
 	/// Cached map name for statpanel
-	var/static/stat_map_name = "Loading..."
 
-	// Obfuscation Module
-	/// "secret" key
-	var/obfuscation_secret
+	var/static/stat_map_name = "Loading..."
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -44,6 +43,9 @@ SUBSYSTEM_DEF(mapping)
 	stat_map_name = config.map_name
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	report_progress("Initializing [name] subsystem...")
+	// shim: this goes at the top
+	world.max_z_changed(0, world.maxz) // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	HACK_LoadMapConfig()
 	if(initialized)
 		return
@@ -51,11 +53,10 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Tethermap"))
 			config = old_config
 	loadWorld()
 	repopulate_sorted_areas()
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
 	load_map_templates()
 
@@ -309,7 +310,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
 	var/dmm_suite/maploader = null
-	var/atom/movable/landmark/engine_loader/engine_loader
+	var/obj/landmark/engine_loader/engine_loader
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
@@ -365,6 +366,7 @@ SUBSYSTEM_DEF(mapping)
 	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
+#ifndef FASTBOOT_DISABLE_LATELOAD
 	var/list/deffo_load = GLOB.using_map.lateload_z_levels
 	var/list/maybe_load = GLOB.using_map.lateload_single_pick
 
@@ -396,6 +398,7 @@ SUBSYSTEM_DEF(mapping)
 				log_world("Randompick Z level \"[map]\" is not a valid map!")
 			else
 				MT.load_new_z(centered = FALSE)
+#endif
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))

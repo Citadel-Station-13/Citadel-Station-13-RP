@@ -35,31 +35,32 @@ var/datum/antagonist/renegade/renegades
 		/obj/item/gun/energy/gun/nuclear,
 		/obj/item/gun/energy/crossbow,
 		/obj/item/gun/energy/crossbow/largecrossbow,
-		/obj/item/gun/projectile/automatic,
-		/obj/item/gun/projectile/automatic/mini_uzi,
-		/obj/item/gun/projectile/automatic/c20r,
-		/obj/item/gun/projectile/automatic/sts35,
-		/obj/item/gun/projectile/automatic/bullpup,
-		/obj/item/gun/projectile/automatic/wt550,
-		/obj/item/gun/projectile/automatic/z8,
-		/obj/item/gun/projectile/automatic/tommygun,
-		/obj/item/gun/projectile/colt/detective,
-		/obj/item/gun/projectile/sec/wood,
-		/obj/item/gun/projectile/silenced,
-		/obj/item/gun/projectile/pistol,
-		/obj/item/gun/projectile/p92x,
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/derringer,
-		/obj/item/gun/projectile/shotgun/pump,
-		/obj/item/gun/projectile/shotgun/pump/rifle,
-		/obj/item/gun/projectile/shotgun/pump/combat,
-		/obj/item/gun/projectile/shotgun/doublebarrel,
-		/obj/item/gun/projectile/revolver/judge,
-		/obj/item/gun/projectile/revolver/lemat,
-		list(/obj/item/gun/projectile/shotgun/doublebarrel/pellet, /obj/item/gun/projectile/shotgun/doublebarrel/sawn),
-		list(/obj/item/gun/projectile/deagle, /obj/item/gun/projectile/deagle/gold, /obj/item/gun/projectile/deagle/camo),
-		list(/obj/item/gun/projectile/revolver/detective, /obj/item/gun/projectile/revolver/deckard),
-		list(/obj/item/gun/projectile/luger,/obj/item/gun/projectile/luger/brown)
+		/obj/item/gun/ballistic/automatic,
+		/obj/item/gun/ballistic/automatic/mini_uzi,
+		/obj/item/gun/ballistic/automatic/c20r,
+		/obj/item/gun/ballistic/automatic/sts35,
+		/obj/item/gun/ballistic/automatic/bullpup,
+		/obj/item/gun/ballistic/automatic/wt550,
+		/obj/item/gun/ballistic/automatic/z8,
+		/obj/item/gun/ballistic/automatic/tommygun,
+		/obj/item/gun/ballistic/colt/detective,
+		/obj/item/gun/ballistic/sec/wood,
+		/obj/item/gun/ballistic/silenced,
+		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/ballistic/konigin,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/ballistic/derringer,
+		/obj/item/gun/ballistic/shotgun/pump,
+		/obj/item/gun/ballistic/shotgun/pump/rifle,
+		/obj/item/gun/ballistic/shotgun/pump/combat,
+		/obj/item/gun/ballistic/shotgun/doublebarrel,
+		/obj/item/gun/ballistic/revolver/judge,
+		/obj/item/gun/ballistic/revolver/lemat,
+		list(/obj/item/gun/ballistic/shotgun/doublebarrel/pellet, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn),
+		list(/obj/item/gun/ballistic/deagle, /obj/item/gun/ballistic/deagle/gold, /obj/item/gun/ballistic/deagle/camo),
+		list(/obj/item/gun/ballistic/revolver/detective, /obj/item/gun/ballistic/revolver/deckard),
+		list(/obj/item/gun/ballistic/luger,/obj/item/gun/ballistic/luger/brown)
 		)
 
 /datum/antagonist/renegade/New()
@@ -75,7 +76,7 @@ var/datum/antagonist/renegade/renegades
 	survive.owner = player
 	player.objectives |= survive
 
-/datum/antagonist/renegade/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/renegade/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return
@@ -83,24 +84,24 @@ var/datum/antagonist/renegade/renegades
 	var/gun_type = pick(spawn_guns)
 	if(islist(gun_type))
 		gun_type = pick(gun_type)
-	var/obj/item/gun = new gun_type(get_turf(player))
+	var/obj/item/gun = new gun_type(player)
 
 	// Attempt to put into a container.
-	if(player.equip_to_storage(gun))
+	if(player.equip_to_slot_if_possible(gun, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_FLUFFLESS | INV_OP_SILENT))
 		return
 
 	// If that failed, attempt to put into any valid non-handslot
-	if(player.equip_to_appropriate_slot(gun))
+	if(player.equip_to_appropriate_slot(gun, INV_OP_SILENT | INV_OP_FLUFFLESS))
 		return
 
 	// If that failed, then finally attempt to at least let the player carry the weapon
-	player.put_in_hands(gun)
+	player.put_in_hands_or_drop(gun)
 
 
 /proc/rightandwrong()
 	to_chat(usr, "<B>You summoned guns!</B>")
 	message_admins("[key_name_admin(usr, 1)] summoned guns!")
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(H.stat == 2 || !(H.client)) continue
 		if(is_special_character(H)) continue
 		renegades.add_antagonist(H.mind)

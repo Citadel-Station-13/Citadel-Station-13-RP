@@ -57,8 +57,11 @@
 			if(MT.imp)
 				to_chat(usr, "The mirror tool already contains a mirror.")
 				return // It's full.
-			user.drop_from_inventory(src)
-			forceMove(MT)
+			if(loc == user)			// we assume they can't click someone else's hand items lmao
+				if(!user.attempt_insert_item_for_installation(src, MT))
+					return
+			else
+				forceMove(MT)
 			MT.imp = src
 			MT.update_icon()
 		else
@@ -67,10 +70,9 @@
 				if(MT.imp)
 					to_chat(usr, "The mirror tool already contains a mirror.")
 					return // It's full.
-				user.drop_from_inventory(src)
+				// dogborgs can't hold mirrors
 				forceMove(MT)
 				MT.imp = src
-
 
 /obj/item/implant/mirror/positronic
 	name = "Synthetic Mirror"
@@ -85,7 +87,6 @@
 	else
 		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
 		H.mirror = src
-		return
 
 /obj/item/mirrorscanner
 	name = "Mirror Scanner"
@@ -94,7 +95,7 @@
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -108,7 +109,7 @@
 	icon_state = "mirrortool"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -116,52 +117,56 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+/obj/item/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
+	if(!istype(H))
+		return
 	if(target_zone == BP_TORSO && imp == null)
-		if(imp == null && M.mirror)
-			M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+		if(imp == null && H.mirror)
+			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 20)))
-				if(user && M && (get_turf(M) == T1) && src)
-					M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
-					add_attack_logs(user,M,"Mirror removed by [user]")
-					src.imp = M.mirror
-					M.mirror = null
+			user.do_attack_animation(H)
+			var/turf/T1 = get_turf(H)
+			if (T1 && ((H == user) || do_after(user, 20)))
+				if(user && H && (get_turf(H) == T1) && src)
+					H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+					add_attack_logs(user,H,"Mirror removed by [user]")
+					src.imp = H.mirror
+					H.mirror = null
 					update_icon()
 		else
 			to_chat(usr, "This person has no mirror installed.")
 
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			if(!M.client)
+			if(!H.client)
 				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
 				return
-			if(M.mirror)
+			if(H.mirror)
 				to_chat(usr, "This person already has a mirror!")
 				return
-			if(!M.mirror)
-				M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+			if(!H.mirror)
+				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
 				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-				user.do_attack_animation(M)
-				var/turf/T1 = get_turf(M)
-				if (T1 && ((M == user) || do_after(user, 20)))
-					if(user && M && (get_turf(M) == T1) && src && src.imp)
-						M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
-						add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
-						if(imp.handle_implant(M))
-							imp.post_implant(M)
+				user.do_attack_animation(H)
+				var/turf/T1 = get_turf(H)
+				if (T1 && ((H == user) || do_after(user, 20)))
+					if(user && H && (get_turf(H) == T1) && src && src.imp)
+						H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+						add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
+						if(imp.handle_implant(H))
+							imp.post_implant(H)
 						src.imp = null
 						update_icon()
 	else
 		to_chat(usr, "You must target the torso.")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/attack_self(var/mob/user)
 	if(!imp)
 		to_chat(usr, "No mirror is loaded.")
 	else
-		user.put_in_hands(imp)
+		user.put_in_hands_or_drop(imp)
 		imp = null
 		update_icon()
 

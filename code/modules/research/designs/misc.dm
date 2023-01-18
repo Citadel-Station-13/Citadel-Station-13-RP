@@ -12,7 +12,7 @@
 	build_path = /obj/item/communicator
 	sort_string = "TAAAA"
 
-datum/design/item/general/laserpointer
+/datum/design/item/general/laserpointer
 	name = "laser pointer"
 	desc = "Don't shine it in your eyes!"
 	id = "laser_pointer"
@@ -113,7 +113,7 @@ datum/design/item/general/laserpointer
 	id = "translator_all"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_GOLD = 500, MAT_SILVER = 500)
-	build_path = /obj/item/universal_translator/all
+	build_path = /obj/item/universal_translator/adaptive
 	sort_string = "TAACC"
 
 /datum/design/item/general/ear_translator_all
@@ -121,5 +121,29 @@ datum/design/item/general/laserpointer
 	id = "ear_translator_all"
 	req_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 6)	//dude what hte fuck lmao
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_GOLD = 2000, MAT_SILVER = 2000)
-	build_path = /obj/item/universal_translator/ear/all
+	build_path = /obj/item/universal_translator/ear/adaptive
 	sort_string = "TAACD"
+
+/datum/design/item/advmop
+	name = "Advanced Mop"
+	desc = "An upgraded mop with a large internal capacity for holding water or other cleaning chemicals."
+	id = "advmop"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_POWER = 3)
+	materials = list(MAT_PLASTIC = 2500, MAT_STEEL = 500, MAT_COPPER = 200)
+	build_path = /obj/item/mop/advanced
+
+/datum/design/item/holosign
+	name = "Holographic Sign Projector"
+	desc = "A holograpic projector used to project various warning signs."
+	id = "holosign"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_BLUESPACE = 4, TECH_POWER = 4)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	build_path = /obj/item/holosign_creator
+
+/datum/design/item/blutrash
+	name = "Trashbag of Holding"
+	desc = "An advanced trash bag with bluespace properties; capable of holding a plethora of garbage."
+	id = "blutrash"
+	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6)
+	materials = list(MAT_PLASTIC = 5000, MAT_GOLD = 1500, MAT_URANIUM = 250, MAT_PHORON = 1500)
+	build_path = /obj/item/storage/bag/trash/bluespace

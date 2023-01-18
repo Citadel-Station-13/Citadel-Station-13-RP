@@ -11,10 +11,6 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi'
-		)
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -27,17 +23,22 @@
 	show_above_suit = !show_above_suit
 	update_icon()
 
-//Some belts have sprites to show icons
-/obj/item/storage/belt/make_worn_icon(body_type, slot_id, inhands, default_icon, default_layer, icon/clip_mask = null)
-	var/image/standing = ..()
-	if(!inhands && contents.len)
-		for(var/obj/item/i in contents)
-			var/i_state = i.item_state
-			if(!i_state) i_state = i.icon_state
-			standing.add_overlay(image(icon = INV_BELT_DEF_ICON, icon_state = i_state))
-	return standing
+// todo: this bad lol
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
+	for(var/obj/item/I in contents)
+		var/state = resolve_belt_state(I, funny_belt_icon)
+		if(!state)
+			continue
+		MA.add_overlay(image(icon = funny_belt_icon, icon_state = state))
+
+// todo: this bad lol x2
+/obj/item/storage/belt/proc/resolve_belt_state(obj/item/I, icon/ifile)
+	return I.belt_state || I.item_state || I.icon_state
 
 /obj/item/storage/update_icon()
+	. = ..()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt()
@@ -163,6 +164,7 @@
 		/obj/item/handcuffs,
 		/obj/item/flash,
 		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/a10g,
 		/obj/item/ammo_casing/a12g,
 		/obj/item/ammo_magazine,
 		/obj/item/cell/device,
@@ -182,10 +184,10 @@
 		/obj/item/megaphone,
 		/obj/item/melee,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/p92x,
 		/obj/item/barrier_tape_roll,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -228,7 +230,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -281,7 +283,7 @@
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
 		/obj/item/healthanalyzer,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/gps,
 		/obj/item/switchtool,
 		/obj/item/ano_scanner
@@ -563,22 +565,22 @@
 		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/toxgun,
 		/obj/item/gun/energy/zip,
-		/obj/item/gun/projectile/colt,
-		/obj/item/gun/projectile/contender,
-		/obj/item/gun/projectile/dartgun,
-		/obj/item/gun/projectile/deagle,
-		/obj/item/gun/projectile/derringer,
-		/obj/item/gun/projectile/gyropistol,
-		/obj/item/gun/projectile/luger,
-		/obj/item/gun/projectile/r9,
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
-		/obj/item/gun/projectile/shotgun/flare,
-		/obj/item/gun/projectile/silenced,
-		/obj/item/gun/projectile/p92x,
-		/obj/item/gun/projectile/pistol,
-		/obj/item/gun/projectile/pirate
+		/obj/item/gun/ballistic/colt,
+		/obj/item/gun/ballistic/contender,
+		/obj/item/gun/ballistic/dartgun,
+		/obj/item/gun/ballistic/deagle,
+		/obj/item/gun/ballistic/derringer,
+		/obj/item/gun/ballistic/gyropistol,
+		/obj/item/gun/ballistic/luger,
+		/obj/item/gun/ballistic/r9,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
+		/obj/item/gun/ballistic/shotgun/flare,
+		/obj/item/gun/ballistic/silenced,
+		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/ballistic/pirate
 		)
 
 /obj/item/storage/belt/quiver
@@ -589,4 +591,30 @@
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/ammo_casing/arrow
+		)
+
+/obj/item/storage/belt/quiver/full
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow = 15
+		)
+
+/obj/item/storage/belt/quiver/full/ash
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow/ash = 15
 		)

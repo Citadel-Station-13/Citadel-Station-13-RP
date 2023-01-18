@@ -16,7 +16,7 @@
 	var/list/directions = list(2,4,1,8,2,4,1,8,2,4,1,8,2,4,1,8,2,4,1,8)
 
 /datum/disease2/effect/spin/activate(var/mob/living/carbon/mob,var/multiplier)
-	if(mob.buckled())
+	if(mob.is_buckled())
 		mob.visible_message("<span class='warning'>[mob.name] struggles violently against their restraints!</span>")
 	else
 		mob.visible_message("<span class='warning'>[mob.name] spins around violently!</span>")

@@ -138,13 +138,13 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		should_be_in = brain.parent_organ
 
 	if(istype(H) && !H.nif && H.species && (loc == H.get_organ(should_be_in)))
-		if(!bioadap && (H.species.flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
+		if(!bioadap && (H.species.species_flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
 			return FALSE
 
 		human = H
 		human.nif = src
 		stat = NIF_INSTALLING
-		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		add_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 		menu = H.AddComponent(/datum/component/nif_menu)
 		if(starting_software)
 			for(var/path in starting_software)
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 	QDEL_NULL(menu)
 	H.nif = null
 	human = null
@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
-/obj/item/nif/proc/life()
+/obj/item/nif/proc/on_life()
 	if(!human || loc != human.get_organ(should_be_in))
 		unimplant(human)
 		return FALSE
@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 			//Process all the ones that want that
 			for(var/datum/nifsoft/nifsoft as anything in nifsofts_life)
-				nifsoft.life(human)
+				nifsoft.on_life(human)
 
 		if(NIF_POWFAIL)
 			if(human && human.nutrition < 100)
@@ -644,14 +644,15 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 ////////////////////////////////
 // Special Promethean """surgery"""
-/obj/item/nif/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!ishuman(M) || !ishuman(user) || (M == user))
+/obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 
 	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/T = M
+	var/mob/living/carbon/human/T = target
 
-	if(istype(T.species,/datum/species/shapeshifter/promethean) && target_zone == BP_TORSO)
+	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
 			return
@@ -663,8 +664,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		"<span class='notice'>You begin installing [src] into [T]'s chest by just stuffing it in.</span>",
 		"There's a wet SQUISH noise.")
 		if(do_mob(user = user, target = T, time = 200, target_zone = BP_TORSO))
-			user.unEquip(src)
-			forceMove(eo)
+			if(!user.attempt_insert_item_for_installation(src, eo))
+				return
 			eo.implants |= src
 			implant(T)
 			playsound(T,'sound/effects/slime_squish.ogg',50,1)
@@ -677,7 +678,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		verbs -= /mob/living/carbon/human/proc/set_nif_examine
+		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

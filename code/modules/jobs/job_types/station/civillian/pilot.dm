@@ -1,4 +1,5 @@
 /datum/job/station/pilot
+	id = JOB_ID_PILOT
 	title = "Pilot"
 	flag = PILOT
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -35,8 +36,8 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/fakesunglasses/aviator
 	l_ear = /obj/item/radio/headset/pilot/alt
-	id_slot = slot_wear_id
-	pda_slot = slot_belt
+	id_slot = SLOT_ID_WORN_ID
+	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda
 	id_type = /obj/item/card/id/explorer/pilot
 	id_pda_assignment = "Pilot"

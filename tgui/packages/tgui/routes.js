@@ -6,6 +6,7 @@
 
 import { selectBackend } from './backend';
 import { Icon, Section, Stack } from './components';
+import { UI_HARD_REFRESHING } from './constants';
 import { selectDebug } from './debug/selectors';
 import { Window } from './layouts';
 
@@ -60,7 +61,7 @@ export const getRoutedComponent = store => {
   if (suspended) {
     return SuspendedWindow;
   }
-  if (config.refreshing) {
+  if (config.refreshing === UI_HARD_REFRESHING) {
     return RefreshingWindow;
   }
   if (process.env.NODE_ENV !== 'production') {

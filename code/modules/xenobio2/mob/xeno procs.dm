@@ -52,7 +52,7 @@ Divergence proc, used in mutation to make unique datums.
 			return
 
 		//Let's handle some chemical smoke, for scientific smoke bomb purposes.
-		for(var/obj/effect/smoke/chem/smoke in view(1, src))
+		for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 			if(smoke.reagents.total_volume)
 				smoke.reagents.trans_to_mob(src, 10, CHEM_BLOOD, copy = 1)
 
@@ -123,7 +123,7 @@ Divergence proc, used in mutation to make unique datums.
 			var/complete_message = ",[language.key] [message]"
 			if(!(complete_message in speak))
 				speech_buffer.Add(complete_message)
-				log_debug("Added '[complete_message]'.")
+				log_debug(SPAN_DEBUGINFO("Added '[complete_message]'."))
 		else
 		*/
 		if(!(message in speak))
@@ -136,8 +136,8 @@ Divergence proc, used in mutation to make unique datums.
 			var/chosen = pick(speech_buffer)
 			speak.Add(chosen)
 		/*	Uncoment for logging of speech list.
-			log_debug("Added [chosen] to speak list.")
-		log_debug("Speechlist cut.") */
+			log_debug(SPAN_DEBUGINFO("Added [chosen] to speak list."))
+		log_debug(SPAN_DEBUGINFO("Speechlist cut.")) */
 		speech_buffer.Cut()
 //
 /mob/living/simple_mob/xeno/proc/BuildReagentLists()

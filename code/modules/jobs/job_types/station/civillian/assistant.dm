@@ -1,4 +1,5 @@
 /datum/job/station/assistant
+	id = JOB_ID_ASSISTANT
 	title = USELESS_JOB
 	flag = ASSISTANT
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -26,12 +27,6 @@
 		return list(access_maint_tunnels)
 	else
 		return list()
-
-/datum/job/station/assistant/New()
-	..()
-	if(config)
-		total_positions = config_legacy.limit_visitors
-		spawn_positions = config_legacy.limit_visitors
 
 /datum/job/station/assistant/get_access()
 	return list()

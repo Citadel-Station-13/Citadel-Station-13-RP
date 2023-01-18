@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in all_species_names()))
+	if(!(new_species in SScharacters.all_species_names()))
 		return
 
 	set_species(new_species)
@@ -40,7 +40,7 @@
 	if(h_style == hair_style)
 		return
 
-	if(!(hair_style in hair_styles_list))
+	if(!(hair_style in GLOB.legacy_hair_lookup))
 		return
 
 	h_style = hair_style
@@ -85,7 +85,7 @@
 	if(f_style == facial_hair_style)
 		return
 
-	if(!(facial_hair_style in facial_hair_styles_list))
+	if(!(facial_hair_style in GLOB.legacy_facial_hair_lookup))
 		return
 
 	f_style = facial_hair_style
@@ -184,17 +184,17 @@
 
 /mob/living/carbon/human/proc/generate_valid_species(var/check_whitelist = 1, var/list/whitelist = list(), var/list/blacklist = list())
 	var/list/valid_species = new()
-	for(var/datum/species/S in all_static_species_meta())
+	for(var/datum/species/S in SScharacters.all_static_species_meta())
 		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+			if(!(S.species_spawn_flags & SPECIES_SPAWN_CHARACTER))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((S.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, S))
+			if((S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(S.name), ckey))
 				continue
 
 		valid_species += current_species_name
@@ -203,13 +203,13 @@
 
 /mob/living/carbon/human/proc/generate_valid_hairstyles(var/check_gender = 1)
 
-	var/use_species = species.get_bodytype(src)
+	var/use_species = species.get_bodytype_legacy(src)
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
-	if(H) use_species = H.species.get_bodytype(src)
+	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_hairstyles = new()
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+	for(var/hairstyle in GLOB.legacy_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 
 		if(check_gender && gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)
@@ -217,7 +217,7 @@
 			else if(gender == FEMALE && S.gender == MALE)
 				continue
 
-		if(!(use_species in S.species_allowed))
+		if(S.apply_restrictions && !(use_species in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 
@@ -225,13 +225,13 @@
 
 /mob/living/carbon/human/proc/generate_valid_facial_hairstyles()
 
-	var/use_species = species.get_bodytype(src)
+	var/use_species = species.get_bodytype_legacy(src)
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
-	if(H) use_species = H.species.get_bodytype(src)
+	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_facial_hairstyles = new()
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
 		if(gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)
@@ -239,7 +239,7 @@
 			else if(gender == FEMALE && S.gender == MALE)
 				continue
 
-		if(!(use_species in S.species_allowed))
+		if(S.apply_restrictions && !(use_species in S.species_allowed))
 			continue
 
 		valid_facial_hairstyles += facialhairstyle

@@ -1,6 +1,6 @@
 #define LG_IMAGE_SIZE 736
 
-/atom/movable/landmark/looking_glass
+/obj/landmark/looking_glass
 	var/image/holding
 
 	var/list/viewers
@@ -9,31 +9,31 @@
 
 	mouse_opacity = 0
 
-/atom/movable/landmark/looking_glass/Initialize(mapload)
+/obj/landmark/looking_glass/Initialize(mapload)
 	. = ..()
 	viewers = list()
 
-/atom/movable/landmark/looking_glass/proc/gain_viewer(var/client/C)
+/obj/landmark/looking_glass/proc/gain_viewer(var/client/C)
 	if(C in viewers)
 		stack_trace("Looking Glass [x],[y],[z] tried to add a duplicate viewer.")
 	viewers |= C
 	if(holding)
 		show_to(C)
 
-/atom/movable/landmark/looking_glass/proc/lose_viewer(var/client/C)
+/obj/landmark/looking_glass/proc/lose_viewer(var/client/C)
 	if(!(C in viewers))
 		stack_trace("Looking Glass [x],[y],[z] tried to remove a viewer it didn't have")
 	viewers -= C
 	if(holding)
 		unshow_to(C)
 
-/atom/movable/landmark/looking_glass/proc/show_to(var/client/C)
+/obj/landmark/looking_glass/proc/show_to(var/client/C)
 	C.images |= holding
 
-/atom/movable/landmark/looking_glass/proc/unshow_to(var/client/C)
+/obj/landmark/looking_glass/proc/unshow_to(var/client/C)
 	C.images -= holding
 
-/atom/movable/landmark/looking_glass/proc/take_image(var/image/newimage)
+/obj/landmark/looking_glass/proc/take_image(var/image/newimage)
 	if(!istype(newimage))
 		return
 
@@ -52,7 +52,7 @@
 	for(var/client in viewers)
 		show_to(client)
 
-/atom/movable/landmark/looking_glass/proc/drop_image()
+/obj/landmark/looking_glass/proc/drop_image()
 	if(!holding)
 		return
 

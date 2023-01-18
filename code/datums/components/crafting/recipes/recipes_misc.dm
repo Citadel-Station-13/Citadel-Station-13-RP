@@ -425,7 +425,7 @@
 /*
 /datum/crafting_recipe/motorized_wheelchair
 	name = "Hoverchair"
-	result = /obj/vehicle/ridden/wheelchair/motorized
+	result = /obj/vehicle_old/ridden/wheelchair/motorized
 	reqs = list(/obj/item/stack/material/plasteel = 10,
 		/obj/item/stack/rods = 8,
 		/obj/item/stock_parts/manipulator = 2,
@@ -439,7 +439,7 @@
 */
 /datum/crafting_recipe/skateboard
 	name = "Skateboard"
-	result = /obj/vehicle/skateboard
+	result = /obj/vehicle_old/skateboard
 	time = 60
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 10)
@@ -448,7 +448,7 @@
 
 /datum/crafting_recipe/scooter
 	name = "Scooter"
-	result = /obj/vehicle/skateboard/scooter
+	result = /obj/vehicle_old/skateboard/scooter
 	time = 65
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 12)
@@ -698,3 +698,33 @@
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_MISCELLANEOUS
 	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/scanning_array
+	name = "Geothermal Scanning Array"
+	result = /obj/item/scanning_array
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_adv
+	name = "Advanced Geothermal Scanning Array"
+	result = /obj/item/scanning_array/adv
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/adv = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_phasic
+	name = "Phasic Geothermal Scanning Array"
+	result = /obj/item/scanning_array/phasic
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/phasic = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)

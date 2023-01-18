@@ -45,6 +45,14 @@
 		if(grill_loop)
 			grill_loop.stop(src)
 
+/obj/machinery/appliance/cooker/grill
+	desc = "These static grills are a mainstay of any open air get-together. Modern variants use heating elements instead of charcoal."
+	icon_state = "standgrill_off"
+	food_color = "#8b3b13"
+	on_icon = "standgrill_on"
+	off_icon = "standgrill_off"
+	max_contents = 1 // Arbitrary number, 3 grill 'racks'
+
 /* // Test Comment this out too, /cooker does this for us, and this path '/obj/machinery/appliance/grill' is invalid anyways, meaning it does jack shit. - Updated the paths, but I'm basically commenting all this shit out and if the grill works as-normal, none of this stuff is needed.
 
 /obj/machinery/appliance/grill/toggle_power()

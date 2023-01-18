@@ -31,7 +31,7 @@
 	icon_rest = "bigcat_rest"
 	icon = 'icons/mob/64x64.dmi'
 
-	default_pixel_x = -16
+	base_pixel_x = -16
 	pixel_x = -16
 
 	maxHealth = 200
@@ -107,8 +107,8 @@
 			return FALSE
 		if(ishuman(L))	// Might be metal, but they're humanoid shaped.
 			var/mob/living/carbon/human/H = L
-			if(H.get_active_hand())
-				var/obj/item/I = H.get_active_hand()
+			if(H.get_active_held_item())
+				var/obj/item/I = H.get_active_held_item()
 				if(I.force >= 1.20 * melee_damage_upper)
 					return TRUE
 		else if(istype(L, /mob/living/simple_mob))

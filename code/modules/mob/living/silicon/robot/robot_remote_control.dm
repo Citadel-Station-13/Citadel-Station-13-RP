@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	lawsync()
 
 	// Give button to leave.
-	verbs += /mob/living/silicon/robot/proc/undeploy_act
+	add_verb(src, /mob/living/silicon/robot/proc/undeploy_act)
 	to_chat(AI, SPAN_NOTICE("You have connected to an AI Shell remotely, and are now in control of it.<br>\
 	To return to your core, use the <b>Release Control</b> verb."))
 
@@ -117,13 +117,13 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 // This can be turned off in the config (and is off by default).
 // Note that mapping in more than one of these will result in multiple shells.
 // TODO :USE A SPAWNER OBJECT DAMNIT
-/atom/movable/landmark/free_ai_shell
+/obj/landmark/free_ai_shell
 	name = "free ai shell spawner"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 	delete_on_roundstart = TRUE
 
-/atom/movable/landmark/free_ai_shell/Initialize(mapload)
+/obj/landmark/free_ai_shell/Initialize(mapload)
 	if(config_legacy.allow_ai_shells && config_legacy.give_free_ai_shell)
 		new /mob/living/silicon/robot/ai_shell(get_turf(src))
 	return ..()

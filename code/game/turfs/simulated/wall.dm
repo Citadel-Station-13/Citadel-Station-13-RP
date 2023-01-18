@@ -6,27 +6,44 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "generic"
+	icon = 'icons/turf/walls/solid.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	color = "#666666"
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
+
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	rad_insulation = RAD_INSULATION_EXTREME
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
-	smoothing_flags = SMOOTH_CUSTOM
+	edge_blending_priority = INFINITY // let's not have floors render onto us mmkay?
 
-	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+
+	/// This is a var we are temporarily using until we have falsewall structures, until then we'll store our previous icon_state so we don't need to resmooth every time.
+	// TODO: Remove this when falsewalls are implemented.
+	var/cached_wall_state
+
 	var/damage = 0
 	var/damage_overlay = 0
 	/// damage overlays are cached
 	var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
-	var/datum/material/girder_material
+
 	var/datum/material/material
 	var/datum/material/reinf_material
+	var/datum/material/girder_material
+
 	var/last_state
 	var/construction_stage
 
@@ -35,27 +52,31 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/Initialize(mapload)
 	. = ..()
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = MAT_STEEL
-	material = get_material_by_name(materialtype)
-	if(!girdertype)
-		girdertype = MAT_STEEL
-	girder_material = get_material_by_name(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
-	update_material(TRUE)
+	//? Remove the color that was set for mapping clarity.
+	color = null
+
+	set_materials(material, reinf_material, girder_material)
+
+	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
+		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+		if(fixed_underlay["space"])
+			underlay_appearance.icon = 'icons/turf/space.dmi'
+			underlay_appearance.icon_state = "space"
+			underlay_appearance.plane = SPACE_PLANE
+		else
+			underlay_appearance.icon = fixed_underlay["icon"]
+			underlay_appearance.icon_state = fixed_underlay["icon_state"]
+		fixed_underlay = string_assoc_list(fixed_underlay)
+		underlays += underlay_appearance
+
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -65,6 +86,9 @@
 
 /turf/simulated/wall/proc/get_material()
 	return material
+
+/turf/simulated/wall/proc/get_default_material()
+	. = /datum/material/steel
 
 /turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))
@@ -107,12 +131,12 @@
 	take_damage(damage)
 	return
 
-/turf/simulated/wall/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
-	..()
-	if(ismob(AM))
+/turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 
-	var/tforce = AM:throwforce * (speed/THROWFORCE_SPEED_DIVISOR)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	if (tforce < 15)
 		return
 
@@ -213,7 +237,7 @@
 			O.forceMove(src)
 	ScrapeAway()
 
-/turf/simulated/wall/ex_act(severity)
+/turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
@@ -273,7 +297,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)

@@ -3,7 +3,6 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
-	flags = NOBLUDGEON
 	req_access = list(access_heads)
 	anchored = 1
 
@@ -27,9 +26,9 @@
 // Claim machine ID
 /obj/machinery/cash_register/Initialize(mapload, newdir)
 	. = ..()
-	machine_id = "RETAIL UNIT #[num_financial_terminals++]"
+	machine_id = "RETAIL UNIT #[GLOB.num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 /obj/machinery/cash_register/examine(mob/user)
 	. = ..()
@@ -48,7 +47,7 @@
 		if(cash_stored)
 			spawn_money(cash_stored, loc, user)
 			cash_stored = 0
-			overlays -= "register_cash"
+			cut_overlay("register_cash")
 		else
 			open_cash_box()
 	else
@@ -179,10 +178,7 @@
 		if(cash_open)
 			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
-			overlays |= "register_cash"
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				H.drop_from_inventory(SC)
+			add_overlay("register_cash")
 			qdel(SC)
 		else
 			scan_cash(SC)
@@ -196,7 +192,7 @@
 		scan_item_price(O)
 
 
-/obj/machinery/cash_register/MouseDrop_T(atom/dropping, mob/user)
+/obj/machinery/cash_register/MouseDroppedOnLegacy(atom/dropping, mob/user)
 	if(Adjacent(dropping) && Adjacent(user) && !user.stat)
 		attackby(dropping, user)
 
@@ -255,7 +251,7 @@
 					T.purpose = transaction_purpose
 					T.amount = "([transaction_amount])"
 					T.source_terminal = machine_id
-					T.date = current_date_string
+					T.date = GLOB.current_date_string
 					T.time = stationtime2text()
 					D.transaction_log.Add(T)
 
@@ -265,7 +261,7 @@
 					T.purpose = transaction_purpose
 					T.amount = "[transaction_amount]"
 					T.source_terminal = machine_id
-					T.date = current_date_string
+					T.date = GLOB.current_date_string
 					T.time = stationtime2text()
 					linked_account.transaction_log.Add(T)
 
@@ -303,7 +299,7 @@
 			T.purpose = transaction_purpose
 			T.amount = "[transaction_amount]"
 			T.source_terminal = machine_id
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = stationtime2text()
 			linked_account.transaction_log.Add(T)
 
@@ -333,9 +329,6 @@
 		SC.worth -= transaction_amount
 		SC.update_icon()
 		if(!SC.worth)
-			if(ishuman(SC.loc))
-				var/mob/living/carbon/human/H = SC.loc
-				H.drop_from_inventory(SC)
 			qdel(SC)
 		cash_stored += transaction_amount
 
@@ -462,19 +455,24 @@
 	set desc = "Open/closes the register's cash box."
 	set src in view(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if(cash_open)
 		cash_open = 0
-		overlays -= "register_approve"
-		overlays -= "register_open"
-		overlays -= "register_cash"
+		var/list/overlays_to_remove = list()
+		overlays_to_remove.Add("register_approve")
+		overlays_to_remove.Add("register_open")
+		overlays_to_remove.Add("register_cash")
+		cut_overlays(overlays_to_remove)
 	else if(!cash_locked)
+		var/list/overlays_to_add = list()
 		cash_open = 1
-		overlays += "register_approve"
-		overlays += "register_open"
+		overlays_to_add.Add("register_approve")
+		overlays_to_add.Add("register_open")
 		if(cash_stored)
-			overlays += "register_cash"
+			overlays_to_add.Add("register_cash")
+		add_overlay(overlays_to_add)
 	else
 		to_chat(usr, "<span class='warning'>The cash box is locked.</span>")
 
@@ -488,8 +486,8 @@
 	else
 		user.visible_message("<span class='warning'>\The [user] begins unsecuring \the [src] from the floor.</span>",
 	                         "You begin unsecuring \the [src] from the floor.")
-	playsound(src, W.usesound, 50, 1)
-	if(!do_after(user, 20 * W.toolspeed))
+	playsound(src, W.tool_sound, 50, 1)
+	if(!do_after(user, 20 * W.tool_speed))
 		manipulating = 0
 		return
 	if(!anchored)

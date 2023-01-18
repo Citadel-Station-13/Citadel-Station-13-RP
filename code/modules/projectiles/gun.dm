@@ -33,15 +33,16 @@
 	desc = "Its a gun. It's pretty terrible, though."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	matter = list(MAT_STEEL = 2000)
+	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	force = 5
@@ -139,9 +140,9 @@
 	if(dna_lock)
 		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
-		verbs -= /obj/item/gun/verb/remove_dna
-		verbs -= /obj/item/gun/verb/give_dna
-		verbs -= /obj/item/gun/verb/allow_dna
+		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -164,11 +165,11 @@
 		var/mob/living/M = loc
 		if(istype(M))
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				item_state_slots[slot_l_hand_str] = wielded_item_state
-				item_state_slots[slot_r_hand_str] = wielded_item_state
+				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
 			else
-				item_state_slots[slot_l_hand_str] = initial(item_state)
-				item_state_slots[slot_r_hand_str] = initial(item_state)
+				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
 
 
@@ -204,20 +205,20 @@
 						sleep(1)
 						qdel(src)
 					return 0
-	if(HULK in M.mutations)
+	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
+	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
 			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
 				handle_post_fire(user, user)
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message(
 					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
 					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
 					)
-				M.drop_item()
+				M.drop_item_to_ground(src)
 		else
 			handle_click_empty(user)
 		return 0
@@ -227,11 +228,11 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
-/obj/item/gun/dropped(mob/living/user)
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/equipped(mob/user, slot)
+/obj/item/gun/equipped(mob/user, slot, flags)
 	. = ..()
 	update_appearance()
 
@@ -248,53 +249,58 @@
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		handle_suicide(user)
-	else if(user.a_intent == INTENT_HARM) //point blank shooting
-		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
+/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/A = target
+	if(!istype(A))
+		return ..()
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+			handle_suicide(user)
+			return
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else
 			Fire(A, user, pointblank=1)
-	else
-		return ..() //Pistolwhippin'
+			return
+	return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(A, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_lock = A
 		dna_lock = 1
-		verbs += /obj/item/gun/verb/remove_dna
-		verbs += /obj/item/gun/verb/give_dna
-		verbs += /obj/item/gun/verb/allow_dna
+		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		add_obj_verb(src, /obj/item/gun/verb/give_dna)
+		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		return
 
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 25 * A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 25 * A.tool_speed))
 				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
-				verbs -= /obj/item/gun/verb/remove_dna
-				verbs -= /obj/item/gun/verb/give_dna
-				verbs -= /obj/item/gun/verb/allow_dna
+				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 
 	if(A.is_multitool())
 		if(!scrambled)
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 60 * A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60 * A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
@@ -313,8 +319,8 @@
 	if(A.is_wirecutter())
 		if(pin && scrambled)
 			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 60* A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60* A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
@@ -344,38 +350,6 @@
 		return 1
 	if(pin)
 		pin.emag_act(remaining_charges, user)
-
-/obj/item/gun/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	if(!user || !target) return
@@ -446,7 +420,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.item_is_in_hands(src) && user.hands_are_full())
+	if(user.is_holding(src) && user.hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -463,7 +437,7 @@
 
 	next_fire_time = world.time + fire_delay
 
-	accuracy = initial(accuracy)	//Reset the gun's accuracy
+	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
 	if(muzzle_flash)
 		if(gun_light)
@@ -813,7 +787,7 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
-	if(!(item_flags & IN_INVENTORY))
+	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 

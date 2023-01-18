@@ -2,13 +2,12 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
-
 	anchored = TRUE
-	var/on = TRUE
+
+	var/state = 0
 	var/id_tag
 	var/frequency = 1439
-	var/state = 0
-
+	var/on = TRUE
 	var/output = 3
 	//Flags:
 	// 1 for pressure
@@ -27,7 +26,7 @@
 /obj/machinery/air_sensor/process(delta_time)
 	if(on)
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.data["tag"] = id_tag
 		signal.data["timestamp"] = world.time
 
@@ -67,7 +66,7 @@
 	if(frequency)
 		set_frequency(frequency)
 
-obj/machinery/air_sensor/Destroy()
+/obj/machinery/air_sensor/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)
 	. = ..()
@@ -82,7 +81,7 @@ obj/machinery/air_sensor/Destroy()
 	var/datum/radio_frequency/radio_connection
 	circuit = /obj/item/circuitboard/air_management
 
-obj/machinery/computer/general_air_control/Destroy()
+/obj/machinery/computer/general_air_control/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
 	..()
@@ -94,10 +93,12 @@ obj/machinery/computer/general_air_control/Destroy()
 	ui_interact(user)
 
 /obj/machinery/computer/general_air_control/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
-	if(!id_tag || !sensors.Find(id_tag)) return
+	if(!id_tag || !sensors.Find(id_tag))
+		return
 
 	sensor_information[id_tag] = signal.data
 
@@ -195,7 +196,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	if(!radio_connection)
 		return FALSE
 	var/datum/signal/signal = new
-	signal.transmission_method = 1 //radio signal
+	signal.transmission_method = TRANSMISSION_RADIO //radio signal
 	signal.source = src
 	switch(action)
 		if("in_refresh_status")
@@ -358,7 +359,7 @@ obj/machinery/computer/general_air_control/Destroy()
 					injecting = 1
 
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.source = src
 
 		signal.data = list(

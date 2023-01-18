@@ -53,7 +53,7 @@
 	component_parts += /obj/item/stock_parts/matter_bin
 	component_parts += /obj/item/stock_parts/matter_bin
 	if(output_options.len)
-		verbs += /obj/machinery/appliance/proc/choose_output
+		add_obj_verb(src, /obj/machinery/appliance/proc/choose_output)
 
 	if (!available_recipes)
 		available_recipes = new
@@ -266,7 +266,7 @@
 
 //Override for container mechanics
 /obj/machinery/appliance/proc/add_content(var/obj/item/I, var/mob/user)
-	if(!user.unEquip(I))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
 	var/datum/cooking_item/CI = has_space(I)
@@ -531,12 +531,13 @@
 
 /obj/machinery/appliance/proc/burn_food(var/datum/cooking_item/CI)
 	// You dun goofed.
-	CI.burned = 1
+	CI.burned = TRUE
 	CI.container.clear()
 	new /obj/item/reagent_containers/food/snacks/badrecipe(CI.container)
 
 	// Produce nasty smoke.
-	visible_message("<span class='danger'>\The [src] vomits a gout of rancid smoke!</span>")
+	visible_message(SPAN_DANGER("\The [src] vomits a gout of rancid smoke!"))
+	//TODO: True particles @Zandario
 	var/datum/effect_system/smoke_spread/bad/smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)
 	smoke.set_up(10, 0, get_turf(src), 300)

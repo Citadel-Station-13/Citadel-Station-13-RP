@@ -10,9 +10,8 @@ SUBSYSTEM_DEF(processing)
 	var/list/processing = list()
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/processing/stat_entry(msg)
-	msg = "[stat_tag]:[length(processing)]"
-	return ..()
+/datum/controller/subsystem/processing/stat_entry()
+	return ..() + " [stat_tag]:[length(processing)]"
 
 /datum/controller/subsystem/processing/fire(resumed = FALSE)
 	if (!resumed)

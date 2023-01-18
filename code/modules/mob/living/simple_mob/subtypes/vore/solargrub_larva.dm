@@ -27,7 +27,7 @@ var/global/list/grub_machine_overlays = list()
 
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	can_pull_size = ITEMSIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	density = 0
@@ -62,7 +62,7 @@ var/global/list/grub_machine_overlays = list()
 	sparks = new(src)
 	sparks.set_up()
 	sparks.attach(src)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 /mob/living/simple_mob/animal/solargrub_larva/death()
 	powermachine.draining = 0
@@ -73,31 +73,33 @@ var/global/list/grub_machine_overlays = list()
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
 	if(machine_effect)
-		for(var/mob/L in player_list)
+		for(var/mob/L in GLOB.player_list)
 			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	return ..()
 
-/mob/living/simple_mob/animal/solargrub_larva/Life()
-	. = ..()
+/mob/living/simple_mob/animal/solargrub_larva/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if(machine_effect && !istype(loc, /obj/machinery))
 		QDEL_NULL(machine_effect)
 
-	if(!.)	// || ai_inactive
-		return
-
 	if(power_drained >= 7 MEGAWATTS && prob(5))
 		expand_grub()
+		return TRUE
+
+/mob/living/simple_mob/animal/solargrub_larva/PhysicalLife()
+	if((. = ..()))
 		return
 
 	if(istype(loc, /obj/machinery))
-		if(machine_effect && air_master.current_cycle%30)
-			for(var/mob/M in player_list)
+		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
+		if(machine_effect && (air_master.current_cycle % 30))
+			for(var/mob/M in GLOB.player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
 			sparks.start()
-		return
 
 /mob/living/simple_mob/animal/solargrub_larva/attack_target(atom/A)
 	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
@@ -130,7 +132,7 @@ var/global/list/grub_machine_overlays = list()
 	if(!(M.type in grub_machine_overlays))
 		generate_machine_effect(M)
 	machine_effect = image(grub_machine_overlays[M.type], M) //Can't do this the reasonable way with an overlay,
-	for(var/mob/L in player_list)				//because nearly every machine updates its icon by removing all overlays first
+	for(var/mob/L in GLOB.player_list)				//because nearly every machine updates its icon by removing all overlays first
 		SEND_IMAGE(L, machine_effect)
 
 /mob/living/simple_mob/animal/solargrub_larva/proc/generate_machine_effect(var/obj/machinery/M)
@@ -148,7 +150,7 @@ var/global/list/grub_machine_overlays = list()
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
-		for(var/mob/L in player_list)
+		for(var/mob/L in GLOB.player_list)
 			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	ai_holder.target = null

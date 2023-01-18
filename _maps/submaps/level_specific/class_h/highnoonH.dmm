@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/WW_Town)
 "aN" = (
 /obj/structure/table/rack/shelf,
 /obj/item/ammo_magazine/clip/c762/hunter,
@@ -6,9 +10,21 @@
 /obj/item/ammo_magazine/clip/c762/hunter,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
+"bT" = (
+/mob/living/simple_mob/animal/giant_spider/tunneler,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/WW_Town)
+"cX" = (
+/obj/structure/girder,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/WW_Town)
 "dt" = (
 /obj/structure/table/rack/shelf,
 /obj/random/toolbox,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/WW_Town)
+"dv" = (
+/mob/living/simple_mob/animal/giant_spider/carrier,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "dy" = (
@@ -21,24 +37,16 @@
 /area/class_h/POIs/WW_Town)
 "dI" = (
 /obj/structure/bed/padded,
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
-"dR" = (
-/obj/structure/table/woodentable,
-/obj/item/gun/projectile/revolver/detective45,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
-"eT" = (
-/mob/living/simple_mob/humanoid/merc/ranged/poi,
-/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "fG" = (
 /obj/structure/closet/wardrobe/grey,
 /turf/simulated/floor/wood,
+/area/class_h/POIs/WW_Town)
+"fX" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/WW_Town)
 "hI" = (
 /obj/structure/toilet{
@@ -47,9 +55,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
-"iD" = (
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
-/turf/simulated/floor/wood/classh,
+"hP" = (
+/mob/living/simple_mob/animal/giant_spider/ion,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "iO" = (
 /obj/structure/table/gamblingtable,
@@ -61,11 +69,6 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
-"ju" = (
-/obj/structure/table/bench/wooden,
-/mob/living/simple_mob/humanoid/merc/melee/poi,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "nG" = (
@@ -103,6 +106,15 @@
 /obj/random/multiple/minevault,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
+"rR" = (
+/obj/structure/table/rack/shelf,
+/obj/item/gun/ballistic/shotgun/pump/rifle,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/WW_Town)
+"tN" = (
+/mob/living/simple_mob/animal/giant_spider/pepper,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/WW_Town)
 "tV" = (
 /obj/structure/closet/wardrobe/white,
 /turf/simulated/floor/wood,
@@ -124,10 +136,6 @@
 /area/class_h/POIs/WW_Town)
 "vV" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
-"wA" = (
-/mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "wL" = (
@@ -164,10 +172,6 @@
 "Bf" = (
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
-"Ci" = (
-/mob/living/simple_mob/humanoid/merc/ranged/smg,
-/turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
 "Ep" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
@@ -177,6 +181,10 @@
 "Eu" = (
 /obj/machinery/door/window/holowindoor,
 /turf/simulated/floor/wood,
+/area/class_h/POIs/WW_Town)
+"Gm" = (
+/obj/structure/bed/chair/wood,
+/turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "Gz" = (
 /obj/machinery/light/small{
@@ -191,22 +199,21 @@
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
+"GF" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/WW_Town)
 "GS" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/WW_Town)
+"IV" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "KK" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
-"Lo" = (
-/mob/living/simple_mob/humanoid/merc/ranged/deagle,
-/turf/simulated/floor/wood/classh,
-/area/class_h/POIs/WW_Town)
-"LH" = (
-/obj/structure/bed/chair/wood,
-/mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "LP" = (
@@ -216,10 +223,6 @@
 	},
 /obj/structure/bed/pod,
 /turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
-"ML" = (
-/mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
-/turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "NK" = (
 /obj/structure/table/woodentable,
@@ -243,6 +246,10 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
+"QP" = (
+/mob/living/simple_mob/animal/giant_spider/webslinger,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/POIs/WW_Town)
 "Rw" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -250,6 +257,10 @@
 "RG" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/wood/classh,
+/area/class_h/POIs/WW_Town)
+"RY" = (
+/mob/living/simple_mob/animal/giant_spider/nurse,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Sy" = (
 /obj/machinery/light/small{
@@ -278,18 +289,12 @@
 /obj/structure/closet/wardrobe/yellow,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
-"Vd" = (
-/mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
-"Vx" = (
-/obj/structure/table/rack/shelf,
-/obj/item/gun/projectile/shotgun/pump/rifle,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
-"Wm" = (
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier,
-/obj/machinery/light/small,
+"TN" = (
+/obj/structure/table/woodentable,
+/obj/item/gun/ballistic/revolver/detective45,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Xx" = (
@@ -341,7 +346,7 @@ Xx
 Xx
 Xx
 ou
-Lo
+PE
 RG
 Ao
 ou
@@ -351,21 +356,21 @@ GS
 GS
 ou
 oU
-ML
+IV
 SX
 Xx
-Xx
+QP
 Xx
 Xx
 ou
-PE
+tN
 rw
 RG
 ou
 GS
 "}
 (5,1,1) = {"
-GS
+fX
 ou
 dt
 dt
@@ -387,21 +392,21 @@ ou
 ou
 ou
 ou
-ou
+cX
 GS
 Xx
 Xx
 ou
 ou
 ou
-ou
+PE
 ou
 GS
 "}
 (7,1,1) = {"
 GS
 ou
-LH
+Gm
 iO
 KK
 ou
@@ -419,16 +424,16 @@ GS
 GS
 ou
 oU
-ju
+qh
 PE
 SX
 Xx
 Xx
 Xx
-GS
+bT
 ou
 SP
-Ci
+PE
 ou
 GS
 "}
@@ -437,7 +442,7 @@ GS
 ou
 PE
 PE
-PE
+dv
 ou
 GS
 Xx
@@ -462,7 +467,7 @@ Xx
 Xx
 ou
 qh
-PE
+IV
 ou
 GS
 "}
@@ -487,7 +492,7 @@ GS
 GS
 SX
 PE
-iD
+PE
 nG
 ou
 GS
@@ -527,7 +532,7 @@ ou
 GS
 Xx
 Xx
-ou
+cX
 ou
 ou
 ou
@@ -545,9 +550,9 @@ Xx
 Xx
 GS
 ou
-Vx
-Vx
-Vx
+rR
+rR
+rR
 ou
 GS
 "}
@@ -555,7 +560,7 @@ GS
 GS
 ou
 PP
-wA
+PE
 PE
 ou
 GS
@@ -563,8 +568,8 @@ Xx
 Xx
 PR
 Bf
-Bf
-Wm
+hP
+GF
 ou
 GS
 "}
@@ -572,7 +577,7 @@ GS
 GS
 ou
 oU
-PE
+tN
 PE
 ou
 oL
@@ -593,14 +598,14 @@ wL
 wR
 ou
 GS
-Xx
+QP
 GS
 ou
 ou
 ou
 ou
-ou
-GS
+cX
+bT
 "}
 (19,1,1) = {"
 GS
@@ -621,7 +626,7 @@ GS
 "}
 (20,1,1) = {"
 GS
-ou
+cX
 hI
 ug
 hI
@@ -631,7 +636,7 @@ Xx
 Xx
 PR
 Bf
-Bf
+ai
 pP
 ou
 GS
@@ -648,7 +653,7 @@ Xx
 Xx
 ou
 pP
-Vd
+Bf
 fG
 ou
 GS
@@ -656,7 +661,7 @@ GS
 (22,1,1) = {"
 GS
 ou
-eT
+ai
 Bf
 Bf
 PR
@@ -665,7 +670,7 @@ Xx
 GS
 ou
 tV
-Bf
+RY
 pP
 ou
 GS
@@ -674,7 +679,7 @@ GS
 GS
 ou
 NK
-dR
+TN
 Rw
 ou
 GS
@@ -709,7 +714,7 @@ GS
 GS
 GS
 GS
-GS
+fX
 GS
 GS
 GS

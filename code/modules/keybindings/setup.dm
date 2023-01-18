@@ -26,7 +26,7 @@
 	if(!SSinput.initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return
-	log_debug("[src] reset their keybindings.")
+	log_debug(SPAN_DEBUG("[src] reset their keybindings."))
 	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
 	set_macros(prefs)
 
@@ -55,6 +55,7 @@
 	keys_held.Cut()
 
 	erase_all_macros()
+	update_movement_keys()
 
 	apply_macro_set(SKIN_MACROSET_HOTKEYS, SSinput.macroset_hotkey)
 	apply_macro_set(SKIN_MACROSET_CLASSIC_HOTKEYS, SSinput.macroset_classic_hotkey)

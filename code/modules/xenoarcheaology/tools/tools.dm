@@ -66,8 +66,6 @@
 						if(nearestTargetDist < 0 || cur_dist < nearestTargetDist)
 							nearestTargetDist = cur_dist + rand() * 2 - 1
 							nearestTargetId = T.artifact_find.artifact_id
-				else
-					SSxenoarch.artifact_spawning_turfs.Remove(T)
 
 			for(var/A in SSxenoarch.digsite_spawning_turfs)
 				var/turf/simulated/mineral/T = A
@@ -87,6 +85,8 @@
 			to_chat(user, "Background radiation levels detected.")
 	else
 		to_chat(user, "Scanning array is recharging.")
+
+/obj/item/ano_scanner/integrated
 
 /obj/item/depth_scanner
 	name = "depth analysis scanner"
@@ -215,7 +215,7 @@
 					qdel(D)
 					current = null
 			else
-				QDEL_LIST_NULL(positive_locations)
+				QDEL_LIST(positive_locations)
 				QDEL_NULL(current)
 			return TRUE
 
@@ -334,7 +334,7 @@
 
 /obj/item/xenoarch_multi_tool/Initialize(mapload)
 	. = ..()
-	anomaly_scanner = new/obj/item/ano_scanner(src)
+	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
@@ -356,4 +356,4 @@
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	if(!(src in usr))
 		return
-	anomaly_scanner.ui_interact(usr)
+	anomaly_scanner.interact(usr)

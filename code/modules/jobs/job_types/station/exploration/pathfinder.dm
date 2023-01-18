@@ -1,4 +1,5 @@
 /datum/job/station/pathfinder
+	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
@@ -38,9 +39,8 @@
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer //TODO: Uniforms.
 	l_ear = /obj/item/radio/headset/pathfinder
-	id_slot = slot_wear_id
-
-	pda_slot = slot_l_store
+	id_slot = SLOT_ID_WORN_ID
+	pda_slot = SLOT_ID_LEFT_POCKET
 	pda_type = /obj/item/pda/pathfinder
 	id_type = /obj/item/card/id/explorer/head/pathfinder
 	id_pda_assignment = "Pathfinder"

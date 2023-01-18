@@ -90,7 +90,7 @@
 		//	step_to(holder, A)
 			if(holder.IMove(get_step_to(holder, A)) == MOVEMENT_FAILED)
 				ai_log("walk_path() : Failed to move, attempting breakthrough.", AI_LOG_INFO)
-				breakthrough(A) // We failed to move, time to smash things.
+				INVOKE_ASYNC(src, .proc/breakthrough, A)
 			return
 
 		if(move_once() == FALSE) // Start walking the path.
@@ -119,7 +119,7 @@
 
 	if(path_display)
 		var/turf/T = src.path[1]
-		T.overlays -= path_overlay
+		T.cut_overlay(path_overlay)
 
 //	step_towards(holder, src.path[1])
 	if(holder.IMove(get_step_towards(holder, src.path[1])) != MOVEMENT_ON_COOLDOWN)

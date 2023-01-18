@@ -49,7 +49,7 @@
 
 	wizard_garb = 1
 
-obj/item/clothing/shoes/sandal/clogs
+/obj/item/clothing/shoes/sandal/clogs
 	name = "plastic clogs"
 	desc = "A pair of plastic clog shoes."
 	icon_state = "clogs"
@@ -84,7 +84,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "boots"
 	desc = "A pair of boots worn by the followers of Nar-Sie."
 	icon_state = "cult"
-	item_state_slots = list(slot_r_hand_str = "cult", slot_l_hand_str = "cult")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
 	force = 2
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
@@ -115,7 +115,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "worn bunny slippers"
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
-	item_state_slots = list(slot_r_hand_str = "slippers", slot_l_hand_str = "slippers")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
 	force = 0
 	w_class = ITEMSIZE_SMALL
 
@@ -135,7 +135,7 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Help you swim good."
 	name = "swimming fins"
 	icon_state = "flippers"
-	item_state_slots = list(slot_r_hand_str = "galoshes", slot_l_hand_str = "galoshes")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
 	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
@@ -151,14 +151,14 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
 	icon_state = "sportshoe"
 	addblends = "sportshoe_a"
-	item_state_slots = list(slot_r_hand_str = "sportheld", slot_l_hand_str = "sportheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sportheld", SLOT_ID_LEFT_HAND = "sportheld")
 
 /obj/item/clothing/shoes/skater
 	name = "skater shoes"
 	desc = "A pair of wide shoes with thick soles.  Designed for skating."
 	icon_state = "skatershoe"
 	addblends = "skatershoe_a"
-	item_state_slots = list(slot_r_hand_str = "skaterheld", slot_l_hand_str = "skaterheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skaterheld", SLOT_ID_LEFT_HAND = "skaterheld")
 
 /obj/item/clothing/shoes/heels
 	name = "high heels"
@@ -212,6 +212,11 @@ obj/item/clothing/shoes/sandal/clogs
 /obj/item/clothing/shoes/roman
 	name = "Roman Caligae"
 	desc = "Hardy leather sandles capable of holding up for many miles."
+	icon_state = "roman"
+
+/obj/item/clothing/shoes/ashwalker
+	name = "ashen sandals"
+	desc = "Hardy leather sandles capable of withstanding harsh conditions."
 	icon_state = "roman"
 
 /obj/item/clothing/shoes/boots/bsing

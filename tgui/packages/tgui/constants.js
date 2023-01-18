@@ -10,6 +10,10 @@ export const UI_UPDATE = 1;
 export const UI_DISABLED = 0;
 export const UI_CLOSE = -1;
 
+export const UI_NOT_REFRESHING = 0;
+export const UI_SOFT_REFRESHING = 1;
+export const UI_HARD_REFRESHING = 2;
+
 // All game related colors are stored here
 export const COLORS = {
   // Department colors

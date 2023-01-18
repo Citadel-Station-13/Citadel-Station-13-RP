@@ -3,7 +3,11 @@
  *
  * Allows for generating arbitrary obfuscation IDs from static mapload time IDs, that are deterministic within a round.
  */
-/datum/controller/subsystem/mapping/PreInit()
+/datum/controller/subsystem/mapping
+	/// "secret" key
+	var/obfuscation_secret
+
+/datum/controller/subsystem/mapping/PreInit(recovering)
 	. = ..()
 	if(!obfuscation_secret)
 		obfuscation_secret = md5(GUID())

@@ -10,13 +10,15 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
 //	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
-	"Medihound"		= /obj/item/robot_module/robot/medihound,
-	"K9"		= /obj/item/robot_module/robot/knine,
-	"ERT"		= /obj/item/robot_module/robot/ert,
-	"Janihound"		= /obj/item/robot_module/robot/scrubpup,
-	"Sci-Hound"		= /obj/item/robot_module/robot/science,
-	"Pupdozer"		= /obj/item/robot_module/robot/engiedog,
-	"Service-Hound"		= /obj/item/robot_module/robot/clerical/brodog
+	"Quadruped"		= /obj/item/robot_module/robot/quad_basic,
+	"MediQuad"		= /obj/item/robot_module/robot/quad_medi,
+	"SecuriQuad"	= /obj/item/robot_module/robot/quad_sec,
+	"JaniQuad"		= /obj/item/robot_module/robot/quad_jani,
+	"SciQuad"		= /obj/item/robot_module/robot/quad_sci,
+	"EngiQuad"		= /obj/item/robot_module/robot/quad_engi,
+	"Mining Quad"	= /obj/item/robot_module/robot/quad_miner,
+	"Service Quad"	= /obj/item/robot_module/robot/clerical/quad_serv,
+	"ERT"			= /obj/item/robot_module/robot/ert
 	))
 
 /obj/item/robot_module
@@ -28,10 +30,30 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/hide_on_manifest = 0
 	var/channels = list()
 	var/networks = list()
-	var/languages = list(LANGUAGE_SOL_COMMON = 1, LANGUAGE_TRADEBAND = 1, LANGUAGE_UNATHI = 0, LANGUAGE_SIIK = 0, LANGUAGE_AKHANI = 0, LANGUAGE_SKRELLIAN = 0, LANGUAGE_GUTTER = 0, LANGUAGE_SCHECHI = 0, LANGUAGE_SIGN = 0, LANGUAGE_TERMINUS = 1, LANGUAGE_ZADDAT = 0)
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
+
+	var/languages = list(
+		LANGUAGE_AKHANI = 0,
+		LANGUAGE_BIRDSONG = 0,
+		LANGUAGE_CANILUNZT = 0,
+		LANGUAGE_DAEMON = 0,
+		LANGUAGE_ECUREUILIAN = 0,
+		LANGUAGE_ENOCHIAN = 0,
+		LANGUAGE_GUTTER = 0,
+		LANGUAGE_SAGARU = 0,
+		LANGUAGE_SCHECHI = 0,
+		LANGUAGE_SIIK = 0,
+		LANGUAGE_SIGN = 0,
+		LANGUAGE_SKRELLIAN = 0,
+		LANGUAGE_SOL_COMMON = 1,
+		LANGUAGE_TERMINUS = 1,
+		LANGUAGE_TRADEBAND = 1,
+		LANGUAGE_UNATHI = 0,
+		LANGUAGE_ZADDAT = 0
+		)
+
 	var/list/modules = list()
 	var/list/datum/matter_synth/synths = list()
 	var/obj/item/emag = null
@@ -59,14 +81,12 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
-	vr_add_sprites() //TODO: Add into the normal lists.
-
 	R.set_module_sprites(sprites)
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	for(var/obj/item/I in modules)
-		I.canremove = 0
+		ADD_TRAIT(I, TRAIT_ITEM_NODROP, CYBORG_MODULE_TRAIT)
 
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
@@ -148,10 +168,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	added_networks.Cut()
 
 /obj/item/robot_module/proc/add_subsystems(var/mob/living/silicon/robot/R)
-	R.verbs |= subsystems
+	add_verb(R, subsystems)
 
 /obj/item/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
-	R.verbs -= subsystems
+	remove_verb(R, subsystems)
 
 /obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
@@ -169,3 +189,15 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/gps/robot(src)
 	vr_new() // For modules in robot_modules_vr.dm //TODO: Integrate
+
+//Just add a new proc with the robot_module type if you wish to run some other vore code
+/obj/item/robot_module/proc/vr_new() // Any Global modules, just add them before the return (This will also affect all the borgs in this file)
+	return
+
+// /obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here
+
+// /obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here

@@ -3,11 +3,11 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "sheet-metal"
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 7
@@ -20,10 +20,10 @@
 
 
 
-/obj/item/paper_bin/MouseDrop(mob/user as mob)
+/obj/item/paper_bin/OnMouseDropLegacy(mob/user as mob)
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
-			if( !usr.get_active_hand() )		//if active hand is empty
+			if( !usr.get_active_held_item() )		//if active hand is empty
 				var/mob/living/carbon/human/H = user
 				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
 
@@ -48,18 +48,20 @@
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 	var/response = ""
-	if(!papers.len > 0)
+	if(!papers.len)
 		response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon-Copy", "Cancel")
+		if(!user.Adjacent(src))
+			return
 		if (response != "Regular" && response != "Carbon-Copy")
 			add_fingerprint(user)
 			return
 	if(amount >= 1)
 		amount--
-		if(amount==0)
+		if(!amount)
 			update_icon()
 
 		var/obj/item/paper/P
-		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+		if(papers.len)	//If there's any custom paper on the stack, use that instead of creating a new paper.
 			P = papers[papers.len]
 			papers.Remove(P)
 		else
@@ -72,9 +74,7 @@
 						P.updateinfolinks()
 			else if (response == "Carbon-Copy")
 				P = new /obj/item/paper/carbon
-
-		P.loc = user.loc
-		user.put_in_hands(P)
+		user.put_in_hands_or_drop(P)
 		to_chat(user, "<span class='notice'>You take [P] out of the [src].</span>")
 	else
 		to_chat(user, "<span class='notice'>[src] is empty!</span>")
@@ -83,14 +83,15 @@
 	return
 
 
-/obj/item/paper_bin/attackby(obj/item/paper/i as obj, mob/user as mob)
-	if(!istype(i))
+/obj/item/paper_bin/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	if(!istype(I, /obj/item/paper))
+		return ..()
+
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
-	user.drop_item()
-	i.loc = src
-	to_chat(user, "<span class='notice'>You put [i] in [src].</span>")
-	papers.Add(i)
+	to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+	papers.Add(I)
 	update_icon()
 	amount++
 
@@ -102,8 +103,6 @@
 			. += "<span class='notice'>There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.</span>"
 		else
 			. += "<span class='notice'>There are no papers in the bin.</span>"
-	return
-
 
 /obj/item/paper_bin/update_icon()
 	if(amount < 1)

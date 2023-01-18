@@ -1,17 +1,20 @@
 /obj
+
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
+	animate_movement = SLIDE_STEPS
+	rad_flags = NONE
 
+	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = CAN_BE_HIT
-	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	var/set_obj_flags
 
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
-	animate_movement = 2
-	var/throwforce = 1
-	var/catchable = 1	// can it be caught on throws/flying?
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors
@@ -28,6 +31,9 @@
 	// Access levels, used in modules\jobs\access.dm
 	var/list/req_access
 	var/list/req_one_access
+
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
 
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
@@ -47,6 +53,8 @@
 	STOP_PROCESSING(SSobj, src)
 	if(register_as_dangerous_object)
 		unregister_dangerous_to_step()
+	SStgui.close_uis(src)
+	SSnanoui.close_uis(src)
 	return ..()
 
 /obj/Moved(atom/oldloc)
@@ -75,11 +83,11 @@
 					is_in_use = 1
 					src.attack_ai(usr)
 
-		// check for TK users
+		// check for MUTATION_TELEKINESIS users
 
 		if (istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
-			if(H.get_type_in_hands(/obj/item/tk_grab))
+			if(H.get_held_item_of_type(/obj/item/tk_grab))
 				if(!(H in nearby))
 					if(H.client && H.machine==src)
 						is_in_use = 1
@@ -125,6 +133,24 @@
 /obj/proc/hides_under_flooring()
 	return 0
 
+	/**
+ * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
+ *
+ * Trying to generate one long path across the station will call this proc on every single object on every single tile that we're seeing if we can move through, likely
+ * multiple times per tile since we're likely checking if we can access said tile from multiple directions, so keep these as lightweight as possible.
+ *
+ * Arguments:
+ * * ID- An ID card representing what access we have (and thus if we can open things like airlocks or windows to pass through them). The ID card's physical location does not matter, just the reference
+ * * to_dir- What direction we're trying to move in, relevant for things like directional windows that only block movement in certain directions
+ * * caller- The movable we're checking pass flags for, if we're making any such checks
+ **/
+/obj/proc/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(ismovable(caller))
+		var/atom/movable/AM = caller
+		if(AM.pass_flags & pass_flags_self)
+			return TRUE
+	. = !density
+
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
 		talking_atom.catchMessage(text, M)
@@ -140,9 +166,6 @@
 	return FALSE
 
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
-	return
-
-/obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return
 
 // Used to mark a turf as containing objects that are dangerous to step onto.

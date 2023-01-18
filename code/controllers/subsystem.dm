@@ -92,10 +92,30 @@
 //Do not override
 ///datum/controller/subsystem/New()
 
-// Used to initialize the subsystem BEFORE the map has loaded
-// Called AFTER Recover if that is called
-// Prefer to use Initialize if possible
-/datum/controller/subsystem/proc/PreInit()
+/**
+ * Called before global vars are initialized
+ * Called before Recover()
+ *
+ * ! Warning: Old subsystem won't be cleaned up yet if recovering,
+ * ! be sure to reference us normally and not with SSname. pattern,
+ * ! unless you are doing it on purpose.
+ *
+ * ? Prefer Initialize() where possible, don't put anything laggy in here please.
+ */
+/datum/controller/subsystem/proc/PreInit(recovering)
+	return
+
+/**
+ * Called after global vars are initialized
+ * Called before Recover()
+ *
+ * ! Warning: Old subsystem won't be cleaned up yet if recovering,
+ * ! be sure to reference us normally and not with SSname. pattern,
+ * ! unless you are doing it on purpose.
+ *
+ * ? Prefer Initialize() where possible, don't put anything laggy in here please.
+ */
+/datum/controller/subsystem/proc/Preload(recovering)
 	return
 
 /// This is used so the mc knows when the subsystem sleeps. do not override.
@@ -222,33 +242,25 @@
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
-//used to initialize the subsystem AFTER the map has loaded
+/// Used to initialize the subsystem AFTER the map has loaded.
 /datum/controller/subsystem/Initialize(start_timeofday)
 	initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 	log_subsystem("INIT", msg)
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
-/datum/controller/subsystem/stat_entry(msg)
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-
-
+/datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
-		msg = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]\t[msg]"
+		. = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]&emsp;"
 	else
-		msg = "OFFLINE\t[msg]"
+		. = "OFFLINE&emsp;"
 
-	var/title = name
-	if (can_fire)
-		title = "\[[state_letter()]][title]"
-
-	stat(title, statclick.update(msg))
+/datum/controller/subsystem/stat_key()
+	return can_fire? "\[[state_letter()]\][name]" : name
 
 /datum/controller/subsystem/proc/state_letter()
 	switch (state)
@@ -272,6 +284,7 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
+	return
 
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)
@@ -282,3 +295,9 @@
 		if (NAMEOF(src, queued_priority)) //editing this breaks things.
 			return FALSE
 	. = ..()
+
+/**
+ * called when max z is changed since subsystems hook it so much
+ */
+/datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
+	return

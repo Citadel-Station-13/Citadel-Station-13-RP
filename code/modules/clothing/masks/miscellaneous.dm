@@ -12,7 +12,7 @@
 	desc = "It's a robust DIY muzzle!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape_cross"
-	item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 	w_class = ITEMSIZE_TINY
 
 /obj/item/clothing/mask/muzzle/Initialize(mapload)
@@ -29,7 +29,7 @@
 	name = "sterile mask"
 	desc = "A sterile mask designed to help prevent the spread of diseases."
 	icon_state = "sterile"
-	item_state_slots = list(slot_r_hand_str = "sterile", slot_l_hand_str = "sterile")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sterile", SLOT_ID_LEFT_HAND = "sterile")
 	w_class = ITEMSIZE_SMALL
 	body_parts_covered = FACE
 	clothing_flags = FLEXIBLEMATERIAL
@@ -53,7 +53,7 @@
 			icon_state = initial(icon_state)
 			armor = initial(armor)
 			to_chat(usr, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/surgical/verb/toggle()
 	set category = "Object"
@@ -154,7 +154,7 @@
 	name = "camera MIU"
 	desc = "Allows for direct mental connection to accessible camera networks."
 	icon_state = "s-ninja"
-	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 	flags_inv = HIDEFACE
 	body_parts_covered = 0
 	var/mob/observer/eye/aiEye/eye
@@ -165,7 +165,7 @@
 
 /obj/item/clothing/mask/ai/equipped(var/mob/user, var/slot)
 	..(user, slot)
-	if(slot == slot_wear_mask)
+	if(slot == SLOT_ID_MASK)
 		eye.owner = user
 		user.eyeobj = eye
 
@@ -173,7 +173,7 @@
 			c.remove(eye)
 		eye.setLoc(user)
 
-/obj/item/clothing/mask/ai/dropped(var/mob/user)
+/obj/item/clothing/mask/ai/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(eye.owner == user)
 		for(var/datum/chunk/c in eye.visibleChunks)
@@ -187,7 +187,7 @@
 	name = "menpo"
 	desc = "Antique facial armor hailing from old Earth. Designed to protect against sword blows and potentially arrows. This version has been carefully retrofitted to provide air."
 	icon_state = "menpo"
-	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
@@ -207,16 +207,16 @@
 	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_parts_covered = FACE
 	icon_state = "bandblack"
-	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
-		if(slot_wear_mask) //Mask is the default for all the settings
+		if(SLOT_ID_MASK) //Mask is the default for all the settings
 			flags_inv = initial(flags_inv)
 			body_parts_covered = initial(body_parts_covered)
 			icon_state = initial(icon_state)
 
-		if(slot_head)
+		if(SLOT_ID_HEAD)
 			flags_inv = 0
 			body_parts_covered = HEAD
 			icon_state = "[initial(icon_state)]_up"
@@ -227,31 +227,31 @@
 	name = "red bandana"
 	desc = "A fine red bandana with nanotech lining. Can be worn on the head or face."
 	icon_state = "bandred"
-	item_state_slots = list(slot_r_hand_str = "bandred", slot_l_hand_str = "bandred")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandred", SLOT_ID_LEFT_HAND = "bandred")
 
 /obj/item/clothing/mask/bandana/blue
 	name = "blue bandana"
 	desc = "A fine blue bandana with nanotech lining. Can be worn on the head or face."
 	icon_state = "bandblue"
-	item_state_slots = list(slot_r_hand_str = "bandblue", slot_l_hand_str = "bandblue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblue", SLOT_ID_LEFT_HAND = "bandblue")
 
 /obj/item/clothing/mask/bandana/green
 	name = "green bandana"
 	desc = "A fine green bandana with nanotech lining. Can be worn on the head or face."
 	icon_state = "bandgreen"
-	item_state_slots = list(slot_r_hand_str = "bandgreen", slot_l_hand_str = "bandgreen")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandgreen", SLOT_ID_LEFT_HAND = "bandgreen")
 
 /obj/item/clothing/mask/bandana/gold
 	name = "gold bandana"
 	desc = "A fine gold bandana with nanotech lining. Can be worn on the head or face."
 	icon_state = "bandgold"
-	item_state_slots = list(slot_r_hand_str = "bandgold", slot_l_hand_str = "bandgold")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandgold", SLOT_ID_LEFT_HAND = "bandgold")
 
 /obj/item/clothing/mask/bandana/skull
 	name = "skull bandana"
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
-	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandskull", SLOT_ID_LEFT_HAND = "bandskull")
 
 /obj/item/clothing/mask/paper
 	name = "paper mask"

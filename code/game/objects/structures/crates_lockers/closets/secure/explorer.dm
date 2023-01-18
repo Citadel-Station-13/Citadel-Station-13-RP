@@ -21,7 +21,7 @@
 		/obj/item/flashlight,
 		/obj/item/gps/explorer,
 		/obj/item/storage/box/flare,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/stack/marker_beacon/thirty,
@@ -74,7 +74,7 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical,
 		/obj/item/gps/medical,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact)
 
@@ -101,7 +101,7 @@
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/storage/box/flare,
-		/obj/item/gun/projectile/shotgun/flare/explo,
+		/obj/item/gun/ballistic/shotgun/flare/explo,
 		/obj/item/storage/box/flashshells,
 		/obj/item/cell/device,
 		/obj/item/radio,
@@ -140,7 +140,7 @@
 		/obj/item/storage/belt/explorer,
 		/obj/item/storage/box/flare,
 		/obj/item/storage/box/explorerkeys,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/bluespace_radio,
@@ -148,14 +148,14 @@
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/fnseven,
+		/obj/item/gun/ballistic/fnseven,
 		/obj/item/ammo_magazine/m57x28mm,
 		/obj/item/ammo_magazine/m57x28mm,
 		/obj/item/clothing/accessory/holster/machete,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,
-		/obj/item/clothing/glasses/omnihud/exp,
 		/obj/item/cataloguer/compact/pathfinder)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)

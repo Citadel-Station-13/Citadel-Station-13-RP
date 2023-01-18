@@ -1,9 +1,9 @@
 /obj/item/plantspray
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	item_state = "spraycan"
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
-	throwforce = 4
+	throw_force = 4
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
@@ -26,7 +26,7 @@
 
 /obj/item/plantspray/pests/old
 	name = "bottle of pestkiller"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle16"
 
 /obj/item/plantspray/pests/old/carbaryl
@@ -53,28 +53,28 @@
 
 /obj/item/weedkiller
 	name = "bottle of weedkiller"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle16"
 	var/toxicity = 0
 	var/weed_kill_str = 0
 
 /obj/item/weedkiller/triclopyr
 	name = "bottle of glyphosate"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle16"
 	toxicity = 4
 	weed_kill_str = 2
 
 /obj/item/weedkiller/lindane
 	name = "bottle of triclopyr"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle18"
 	toxicity = 6
 	weed_kill_str = 4
 
 /obj/item/weedkiller/D24
 	name = "bottle of 2,4-D"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle15"
 	toxicity = 8
 	weed_kill_str = 7

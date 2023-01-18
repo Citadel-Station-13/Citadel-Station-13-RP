@@ -9,7 +9,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 0
 
 	////TG PROJECTILE SYTSEM
@@ -42,6 +42,8 @@
 	var/list/beam_segments	//assoc list of datum/point or datum/point/vector, start = end. Used for hitscan effect generation.
 	var/datum/point/beam_index
 	var/turf/hitscan_last	//last turf touched during hitscanning.
+	/// do we have a tracer? if not we completely ignore hitscan logic
+	var/has_tracer = TRUE
 	var/tracer_type
 	var/muzzle_type
 	var/impact_type
@@ -173,10 +175,13 @@
 	return FALSE
 
 /obj/item/projectile/proc/record_hitscan_start(datum/point/pcache)
-	if(pcache)
-		beam_segments = list()
-		beam_index = pcache
-		beam_segments[beam_index] = null	//record start.
+	if(!has_tracer)
+		return
+	if(!pcache)
+		return
+	beam_segments = list()
+	beam_index = pcache
+	beam_segments[beam_index] = null	//record start.
 
 /obj/item/projectile/proc/process_hitscan()
 	var/safety = range * 3
@@ -237,7 +242,7 @@
 	if(AM.is_incorporeal())
 		return
 	..()
-	if(isliving(AM) && !(pass_flags & PASSMOB))
+	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
 		var/mob/living/L = AM
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)
@@ -353,7 +358,7 @@
 	if(.)
 		if(temporary_unstoppable_movement)
 			temporary_unstoppable_movement = FALSE
-			DISABLE_BITFIELD(movement_type, UNSTOPPABLE)
+			movement_type &= ~UNSTOPPABLE
 		if(fired && can_hit_target(original, permutated, TRUE))
 			Bump(original)
 
@@ -368,6 +373,8 @@
 	return
 
 /obj/item/projectile/proc/store_hitscan_collision(datum/point/pcache)
+	if(!has_tracer)
+		return
 	beam_segments[beam_index] = pcache
 	beam_index = pcache
 	beam_segments[beam_index] = null
@@ -430,9 +437,8 @@
 		var/y = text2num(screen_loc_Y[1]) * 32 + text2num(screen_loc_Y[2]) - 32
 
 		//Calculate the "resolution" of screen based on client's view and world's icon size. This will work if the user can view more tiles than average.
-		var/list/screenview = user.client? getviewsize(user.client.view) : world.view
-		var/screenviewX = screenview[1] * world.icon_size
-		var/screenviewY = screenview[2] * world.icon_size
+		var/screenviewX = user.client.current_viewport_width * world.icon_size
+		var/screenviewY = user.client.current_viewport_height * world.icon_size
 
 		var/ox = round(screenviewX/2) - user.client.pixel_x //"origin" x
 		var/oy = round(screenviewY/2) - user.client.pixel_y //"origin" y
@@ -457,6 +463,8 @@
 	return ..()
 
 /obj/item/projectile/proc/cleanup_beam_segments()
+	if(!has_tracer)
+		return
 	QDEL_LIST_ASSOC(beam_segments)
 	beam_segments = list()
 	qdel(beam_index)
@@ -468,6 +476,8 @@
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
 /obj/item/projectile/proc/finalize_hitscan_and_generate_tracers(impacting = TRUE)
+	if(!has_tracer)
+		return
 	if(trajectory && beam_index)
 		var/datum/point/pcache = trajectory.copy_to()
 		beam_segments[beam_index] = pcache
@@ -564,7 +574,7 @@
 					if(Bump(G.affecting))
 						return //If Bump() returns 0 (keep going) then we continue on to attack M.
 
-			passthrough = !attack_mob(M, distance)
+			passthrough = !projectile_attack_mob(M, distance)
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
@@ -573,7 +583,7 @@
 			for(var/obj/O in A)
 				O.bullet_act(src)
 			for(var/mob/living/M in A)
-				attack_mob(M, distance)
+				projectile_attack_mob(M, distance)
 
 	//penetrating projectiles can pass through things that otherwise would not let them
 	if(!passthrough && penetrating > 0)
@@ -630,14 +640,14 @@
 	return 1
 
 /obj/item/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
-	check_trajectory(target, user, pass_flags, flags)
+	check_trajectory(target, user, pass_flags, atom_flags)
 
 /obj/item/projectile/CanAllowThrough()
 	. = ..()
 	return TRUE
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
+/obj/item/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
 	if(!istype(target_mob))
 		return
 

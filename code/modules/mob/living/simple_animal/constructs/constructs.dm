@@ -120,7 +120,7 @@
 	updateicon()
 
 /mob/living/simple_animal/construct/updateicon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(do_glow)
 		add_glow()
@@ -152,7 +152,7 @@
 
 /mob/living/simple_animal/construct/examine(mob/user)
 	. = ..()
-	. += "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
+	. += "<span cass='info'>This is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		. += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -160,7 +160,6 @@
 		else
 			. += "<B>It looks severely dented!</B>\n"
 		. += "</span>"
-	. += "*---------*</span>"
 
 
 /mob/living/simple_animal/construct/Process_Spacemove()
@@ -207,7 +206,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/armoured/Life()
+/mob/living/simple_animal/construct/armoured/Life(seconds, times_fired)
 	weakened = 0
 	..()
 
@@ -429,15 +428,15 @@
 /mob/living/simple_animal/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = ABOVE_LIGHTING_PLANE
-	overlays += eye_glow
+	add_overlay(eye_glow)
 	set_light(2, -2, l_color = "#FFFFFF")
 
 /mob/living/simple_animal/construct/proc/remove_glow()
-	overlays.Cut()
+	cut_overlays()
 
 ////////////////HUD//////////////////////
 
-/mob/living/simple_animal/construct/Life()
+/mob/living/simple_animal/construct/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(fire)

@@ -11,7 +11,7 @@
 GLOBAL_REAL(Master, /datum/controller/master) = new
 
 //THIS IS THE INIT ORDER
-//Master -> SSPreInit -> GLOB -> world -> config -> SSInit -> Failsafe
+//Master -> SSPreInit -> GLOB -> SSSetup() -> world -> config -> SSInit -> Failsafe
 //GOT IT MEMORIZED?
 
 /datum/controller/master
@@ -21,6 +21,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/processing = TRUE
 	// How many times have we ran
 	var/iteration = 0
+	/// initialized?
+	var/initialized = FALSE
 
 	// world.time of last fire, for tracking lag outside of the mc
 	var/last_run
@@ -72,6 +74,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		random_seed = (TEST_RUN_PARAMETER in world.params) ? 29051994 : rand(1, 1e9)
 		rand_seed(random_seed)
 
+	// 2. create subsystems
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
@@ -80,13 +83,27 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			qdel(Master)
 		else
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
-			sortTim(subsytem_types, /proc/cmp_subsystem_init)
+			tim_sort(subsytem_types, /proc/cmp_subsystem_init)
 			for(var/I in subsytem_types)
-				_subsystems += new I
+				var/datum/controller/subsystem/S = new I
+				_subsystems += S
 		Master = src
 
+	// 2. call PreInit() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.PreInit(FALSE)
+
+	// 3. set up globals
 	if(!GLOB)
 		new /datum/controller/global_vars
+
+	// 4. call Preload() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.Preload(FALSE)
 
 /datum/controller/master/Destroy()
 	..()
@@ -95,7 +112,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /datum/controller/master/Shutdown()
 	processing = FALSE
-	sortTim(subsystems, /proc/cmp_subsystem_init)
+	tim_sort(subsystems, /proc/cmp_subsystem_init)
 	reverseRange(subsystems)
 	for(var/datum/controller/subsystem/ss in subsystems)
 		log_world("Shutting down [ss.name] subsystem...")
@@ -150,7 +167,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, "<span class='boldannounce'>[msg]</span>")
+			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -158,9 +175,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			Master.subsystems += new BadBoy.type	//NEW_SS_GLOBAL will remove the old one
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
+		initialized = TRUE
 		StartProcessing(10)
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE)
 
 
@@ -178,10 +196,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
-	sortTim(subsystems, /proc/cmp_subsystem_init)
+	tim_sort(subsystems, /proc/cmp_subsystem_init)
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
@@ -195,14 +213,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 
 	if (!current_runlevel)
 		SetRunLevel(RUNLEVEL_LOBBY)
 
 	// Sort subsystems by display setting for easy access.
-	sortTim(subsystems, /proc/cmp_subsystem_display)
+	tim_sort(subsystems, /proc/cmp_subsystem_display)
 
 	// Set world options.
 
@@ -216,6 +234,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(sleep_offline_after_initializations)// && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
+
+	initialized = TRUE
 
 	// Loop.
 	Master.StartProcessing(0)
@@ -287,9 +307,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	queue_tail = null
 	//these sort by lower priorities first to reduce the number of loops needed to add subsequent SS's to the queue
 	//(higher subsystems will be sooner in the queue, adding them later in the loop means we don't have to loop thru them next queue add)
-	sortTim(SStickersubsystems, /proc/cmp_subsystem_priority)
+	tim_sort(SStickersubsystems, /proc/cmp_subsystem_priority)
 	for(var/I in runlevel_sorted_subsystems)
-		sortTim(runlevel_sorted_subsystems, /proc/cmp_subsystem_priority)
+		tim_sort(runlevel_sorted_subsystems, /proc/cmp_subsystem_priority)
 		I += SStickersubsystems
 
 	var/cached_runlevel = current_runlevel
@@ -588,14 +608,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	log_world("MC: SoftReset: Finished.")
 	. = 1
 
-
-
 /datum/controller/master/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%))")
-	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (Iteration:[Master.iteration])"))
+	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration])"
 
 /datum/controller/master/StartLoadingMap()
 	//disallow more than one map to load at once, multithreading it will just cause race conditions

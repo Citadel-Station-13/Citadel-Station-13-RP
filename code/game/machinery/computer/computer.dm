@@ -34,7 +34,7 @@
 	..()
 
 
-/obj/machinery/computer/ex_act(severity)
+/obj/machinery/computer/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -45,12 +45,12 @@
 				return
 			if (prob(50))
 				for(var/x in verbs)
-					verbs -= x
+					remove_obj_verb(src, x)
 				set_broken()
 		if(3.0)
 			if (prob(25))
 				for(var/x in verbs)
-					verbs -= x
+					remove_obj_verb(src, x)
 				set_broken()
 		else
 	return
@@ -61,7 +61,7 @@
 	..()
 
 /obj/machinery/computer/blob_act()
-	ex_act(2)
+	legacy_ex_act(2)
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
@@ -93,7 +93,7 @@
 	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
-	. += mutable_appearance(icon, overlay_state)
+	. += overlay_state
 	//. += emissive_appearance(icon, overlay_state)
 	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 
@@ -116,19 +116,19 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(obj/item/I, mob/user)
+/obj/machinery/computer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
 		if(istype(I,/obj/item/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
 			var/obj/item/gripper/B = I	//B, for Borg.
-			if(!B.wrapped)
+			if(!B.get_item())
 				to_chat(user, "\The [B] is not holding anything.")
 				return
 			else
-				var/B_held = B.wrapped
+				var/B_held = B.get_item()
 				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
 				playsound(src, "keyboard", 100, 1, 0)
+				attackby(B.get_item(), user, params, clickchain_flags, damage_multiplier)
 			return
-		attack_hand(user)
-		return
+		return ..()

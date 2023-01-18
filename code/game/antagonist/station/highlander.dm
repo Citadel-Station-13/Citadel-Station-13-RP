@@ -37,12 +37,12 @@ var/datum/antagonist/highlander/highlanders
 			continue
 		qdel(I)
 
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/radio/headset/heads/captain(player), slot_l_ear)
-	player.equip_to_slot_or_del(new /obj/item/clothing/head/beret(player), slot_head)
-	player.equip_to_slot_or_del(new /obj/item/material/sword(player), slot_l_hand)
-	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/combat(player), slot_shoes)
-	player.equip_to_slot_or_del(new /obj/item/pinpointer(get_turf(player)), slot_l_store)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(player), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/radio/headset/heads/captain(player), SLOT_ID_LEFT_EAR)
+	player.equip_to_slot_or_del(new /obj/item/clothing/head/beret(player), SLOT_ID_HEAD)
+	player.put_in_hands_or_del(new /obj/item/material/sword(player))
+	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/combat(player), SLOT_ID_SHOES)
+	player.equip_to_slot_or_del(new /obj/item/pinpointer(get_turf(player)), SLOT_ID_LEFT_POCKET)
 
 	var/obj/item/card/id/W = new(player)
 	W.name = "[player.real_name]'s ID Card"
@@ -51,15 +51,10 @@ var/datum/antagonist/highlander/highlanders
 	W.access |= get_all_centcom_access()
 	W.assignment = "Highlander"
 	W.registered_name = player.real_name
-	player.equip_to_slot_or_del(W, slot_wear_id)
+	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 
 /proc/only_one()
-
-	if(!SSticker)
-		alert("The game hasn't started yet!")
-		return
-
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(H.stat == 2 || !(H.client)) continue
 		if(is_special_character(H)) continue
 		highlanders.add_antagonist(H.mind)

@@ -6,10 +6,10 @@
 	item_state = "electronic"
 	force = 0
 	w_class = WEIGHT_CLASS_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
-	clothing_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/list/signs = list()
 	var/max_signs = 10
 	var/creation_time = 0 //time to create a holosign in deciseconds.
@@ -47,9 +47,6 @@
 					to_chat(user, "<span class='notice'>You create \a [H] with [src].</span>")
 				else
 					to_chat(user, "<span class='notice'>[src] is projecting at max capacity!</span>")
-
-/obj/item/holosign_creator/attack(mob/living/carbon/human/M, mob/user)
-	return
 
 /obj/item/holosign_creator/attack_self(mob/user)
 	if(signs.len)

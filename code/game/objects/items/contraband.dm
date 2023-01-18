@@ -14,7 +14,7 @@
 	starts_with = list(/obj/item/reagent_containers/pill/zoom = 7)
 
 /obj/item/reagent_containers/glass/beaker/vial/random
-	flags = 0
+	atom_flags = NONE
 	var/list/random_reagent_list = list(list("water" = 15) = 1, list("cleaner" = 15) = 1)
 
 /obj/item/reagent_containers/glass/beaker/vial/random/toxin
@@ -27,7 +27,7 @@
 /obj/item/reagent_containers/glass/beaker/vial/random/Initialize(mapload)
 	. = ..()
 	if(is_open_container())
-		flags ^= OPENCONTAINER
+		atom_flags ^= OPENCONTAINER
 
 	var/list/picked_reagents = pickweight(random_reagent_list)
 	for(var/reagent in picked_reagents)
@@ -64,7 +64,7 @@
 				to_chat(usr, "The box contained nothing!")
 				return
 		*/
-		var/loot = pick(/atom/movable/landmark/costume,
+		var/loot = pick(/obj/landmark/costume,
 						/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat,
 						/obj/item/clothing/gloves/combat/advanced,

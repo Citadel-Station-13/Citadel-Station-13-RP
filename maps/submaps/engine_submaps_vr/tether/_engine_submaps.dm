@@ -38,24 +38,24 @@
 	display_name = list("Edison's Bane", "Lady Tesla", "Lightning Ball", "Overpowered Phone Charger", "Exploder of Machines")
 
 // Landmark for where to load in the engine on permament map
-/atom/movable/landmark/engine_loader
+/obj/landmark/engine_loader
 	name = "Engine Loader"
 	var/clean_turfs // A list of lists, where each list is (x, )
 
-/atom/movable/landmark/engine_loader/New()
+/obj/landmark/engine_loader/New()
 	if(SSmapping.engine_loader)
 		warning("Duplicate engine_loader landmarks: [log_info_line(src)] and [log_info_line(SSmapping.engine_loader)]")
 		delete_me = TRUE
 	SSmapping.engine_loader = src
 	return ..()
 
-/atom/movable/landmark/engine_loader/proc/get_turfs_to_clean()
+/obj/landmark/engine_loader/proc/get_turfs_to_clean()
 	. = list()
 	if(clean_turfs)
 		for(var/list/coords in clean_turfs)
 			. += block(locate(coords[1], coords[2], src.z), locate(coords[3], coords[4], src.z))
 
-/atom/movable/landmark/engine_loader/proc/annihilate_bounds()
+/obj/landmark/engine_loader/proc/annihilate_bounds()
 	var/deleted_atoms = 0
 	admin_notice("<span class='danger'>Annihilating objects in engine loading locatation.</span>", R_DEBUG)
 	var/list/turfs_to_clean = get_turfs_to_clean()

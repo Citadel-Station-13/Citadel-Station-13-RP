@@ -35,6 +35,7 @@ var/list/ventcrawl_machinery = list(
 	if(is_ventcrawling && istype(loc, /obj/machinery/atmospherics)) //attach us back into the pipes
 		remove_ventcrawl()
 		add_ventcrawl(loc)
+		update_perspective()
 		client.screen += GLOB.global_hud.centermarker
 
 /mob/living/simple_mob/slime/xenobio/can_ventcrawl()
@@ -56,7 +57,7 @@ var/list/ventcrawl_machinery = list(
 			break
 
 	//Only allow it if it's "IN" the mob, not equipped on/being held
-	if(listed && !get_inventory_slot(carried_item))
+	if((listed && !is_holding(carried_item)) || !is_in_inventory(carried_item))
 		return 1
 
 /mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
@@ -163,6 +164,7 @@ var/list/ventcrawl_machinery = list(
 
 			forceMove(vent_found)
 			add_ventcrawl(vent_found)
+			update_perspective()
 
 		else
 			to_chat(src, "This vent is not connected to anything.")
@@ -193,5 +195,4 @@ var/list/ventcrawl_machinery = list(
 		for(var/image/current_image in pipes_shown)
 			client.images -= current_image
 		client.screen -= GLOB.global_hud.centermarker
-	update_perspective()
 	pipes_shown.len = 0

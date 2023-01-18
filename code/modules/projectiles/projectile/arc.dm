@@ -126,7 +126,7 @@
 
 /obj/item/projectile/arc/blue_energy/on_impact(turf/T)
 	for(var/mob/living/L in T)
-		attack_mob(L) // Everything on the turf it lands gets hit.
+		projectile_attack_mob(L) // Everything on the turf it lands gets hit.
 
 // Fragmentation arc shot
 /obj/item/projectile/arc/fragmentation
@@ -164,7 +164,7 @@
 	icon_state = "green_pellet"
 	icon_scale_x = 2
 	icon_scale_y = 2
-	var/rad_power = 50
+	var/rad_power = RAD_INTENSITY_PROJ_ARC
 
 /obj/item/projectile/arc/radioactive/on_impact(turf/T)
-	SSradiation.radiate(T, rad_power)
+	radiation_pulse(T, rad_power)

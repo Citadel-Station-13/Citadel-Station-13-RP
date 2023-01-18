@@ -34,7 +34,7 @@
 			my_mob.client.screen -= src
 		my_mob = null
 
-/atom/movable/screen/movable/ability_master/MouseDrop()
+/atom/movable/screen/movable/ability_master/OnMouseDropLegacy()
 	if(showing)
 		return
 
@@ -54,14 +54,14 @@
 				my_mob.client.screen -= O
 //			O.handle_icon_updates = 0
 		showing = 0
-		overlays.len = 0
-		overlays.Add(closed_state)
+		cut_overlays()
+		add_overlay(closed_state)
 	else if(forced_state != 1) // We're opening it, show the icons.
 		open_ability_master()
 		update_abilities(1)
 		showing = 1
-		overlays.len = 0
-		overlays.Add(open_state)
+		cut_overlays()
+		add_overlay(open_state)
 	update_icon()
 
 /atom/movable/screen/movable/ability_master/proc/open_ability_master()
@@ -176,6 +176,7 @@
 
 /mob/Login()
 	. = ..()
+
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master
@@ -241,10 +242,10 @@
 //				overlays -= last_charged_icon
 //	else
 //		icon_state = "[spell_base]_spell_ready"
-	overlays.Cut()
+	cut_overlays()
 	icon_state = "[background_base_state]_spell_base"
 
-	overlays += ability_icon_state
+	add_overlay(ability_icon_state)
 
 //	last_charge = spell.charge_counter
 
@@ -260,7 +261,7 @@
 //	spell.perform(usr)
 	activate()
 
-/atom/movable/screen/ability/MouseDrop(var/atom/A)
+/atom/movable/screen/ability/OnMouseDropLegacy(var/atom/A)
 	if(!A || A == src)
 		return
 	if(istype(A, /atom/movable/screen/ability))

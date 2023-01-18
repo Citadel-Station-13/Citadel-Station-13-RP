@@ -7,7 +7,7 @@
 	name = "laundry basket"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "laundry-empty"
-	item_state_slots = list(slot_r_hand_str = "laundry", slot_l_hand_str = "laundry")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "laundry", SLOT_ID_LEFT_HAND = "laundry")
 	desc = "The peak of thousands of years of laundry evolution."
 
 	w_class = ITEMSIZE_HUGE
@@ -20,7 +20,6 @@
 	collection_mode = 1
 	var/linked
 
-
 /obj/item/storage/laundry_basket/attack_hand(mob/living/user as mob)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -31,7 +30,7 @@
 			to_chat(user, "<span class='warning'>You need two hands to pick this up!</span>")
 			return
 
-	if(user.get_inactive_hand())
+	if(user.get_inactive_held_item())
 		to_chat(user, "<span class='warning'>You need your other hand to be empty</span>")
 		return
 	return ..()
@@ -41,8 +40,10 @@
 	to_chat(user, "<span class='notice'>You dump the [src]'s contents onto \the [T].</span>")
 	return ..()
 
-/obj/item/storage/laundry_basket/pickup(mob/user)
+/obj/item/storage/laundry_basket/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
+	if(!use_to_pickup)
+		return		// DON'T FUCKING INFINITELY RECURSE
 	var/obj/item/storage/laundry_basket/offhand/O = new(user)
 	O.name = "[name] - second hand"
 	O.desc = "Your second grip on the [name]."
@@ -57,14 +58,15 @@
 	else
 		icon_state = "laundry-empty"
 
-/obj/item/storage/laundry_basket/MouseDrop(obj/over_object as obj)
+/obj/item/storage/laundry_basket/OnMouseDropLegacy(obj/over_object as obj)
 	if(over_object == usr)
 		return
 	else
 		return ..()
 
-/obj/item/storage/laundry_basket/dropped(mob/user as mob)
-	QDEL_NULL(linked)
+/obj/item/storage/laundry_basket/dropped(mob/user, flags, atom/newLoc)
+	if(use_to_pickup)	// sigh refactor this shit when
+		QDEL_NULL(linked)
 	return ..()
 
 /obj/item/storage/laundry_basket/show_to(mob/user as mob)
@@ -74,13 +76,13 @@
 
 
 //Offhand
+// TODO: REFACTOR THIS SHIT
 /obj/item/storage/laundry_basket/offhand
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "offhand"
 	name = "second hand"
 	use_to_pickup = 0
 
-/obj/item/storage/laundry_basket/offhand/dropped(mob/user)
+/obj/item/storage/laundry_basket/offhand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	user.drop_from_inventory(linked)
-
+	user.drop_item_to_ground(linked)

@@ -167,8 +167,8 @@
 
 /obj/structure/table/survival_pod/Initialize(mapload)
 	material = get_material_by_name(MAT_STEEL)
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
 /obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
@@ -260,9 +260,9 @@
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/proc/deconstruct()
-	new buildstacktype(loc,buildstackamount)
-	qdel(src)
+/obj/structure/fans/drop_products(method)
+	. = ..()
+	new buildstacktype(drop_location(), buildstackamount)
 
 /obj/structure/fans/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())

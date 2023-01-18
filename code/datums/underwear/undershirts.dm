@@ -192,3 +192,8 @@
 	name = "Off the Shoulder Shirt"
 	icon_state = "one_arm"
 	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/ribbon
+	name = "Ribbon Underwear"
+	icon_state = "ribbon"
+	has_color = TRUE

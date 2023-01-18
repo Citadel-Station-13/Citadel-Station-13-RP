@@ -6,12 +6,12 @@
 	icon_state = "inducer-engi"
 	item_state = "inducer-engi"
 	item_icons = list(
-		slot_l_hand_str = 'icons/obj/item/inducer.dmi',
-		slot_r_hand_str = 'icons/obj/item/inducer.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/obj/item/inducer.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/obj/item/inducer.dmi',
 	)
 	item_state_slots = list(
-		slot_l_hand_str = "inducer_lefthand",
-		slot_r_hand_str = "inducer_righthand"
+		SLOT_ID_LEFT_HAND = "inducer_lefthand",
+		SLOT_ID_RIGHT_HAND = "inducer_righthand"
 	)
 	force = 7
 	/// transfer amount per second
@@ -47,24 +47,12 @@
 	if(cell)
 		cell.emp_act(severity)
 
-/obj/item/inducer/attack(mob/living/M, mob/living/user)
-	if(user.a_intent == INTENT_HARM)
-		return ..()
-	else
-		return 0 //No accidental bludgeons!
-
-
 /obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-
 	if(cantbeused(user))
 		return
-
-	if(recharge(A, user))
-		return
-
-	return ..()
+	recharge(A, user)
 
 /obj/item/inducer/proc/cantbeused(mob/user)
 	if(!user.IsAdvancedToolUser())
@@ -83,7 +71,7 @@
 
 /obj/item/inducer/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		if(!opened)
 			to_chat(user, "<span class='notice'>You open the battery compartment.</span>")
 			opened = TRUE
@@ -97,8 +85,8 @@
 	if(istype(W, /obj/item/cell))
 		if(opened)
 			if(!cell)
-				user.drop_from_inventory(W)
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 				cell = W
 				update_icon()
@@ -154,7 +142,7 @@
 		var/datum/current = targets[1]
 		targets.Cut(1, 2)
 
-		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist))
+		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist) && !QDELETED(cell))
 			var/amount = min(cell.charge, transfer_rate * 2)	// transfer rate is per second, we do this every 2 seconds
 			var/charged = current.inducer_act(src, amount, inducer_flags)
 			spark_system.start()

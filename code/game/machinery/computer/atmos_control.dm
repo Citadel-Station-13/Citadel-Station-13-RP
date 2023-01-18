@@ -26,7 +26,6 @@
 	icon_keyboard = "pcu_key"
 	density = FALSE
 	light_color = "#00cc00"
-	density = FALSE
 
 /obj/machinery/computer/atmoscontrol/attack_ai(mob/user)
 	ui_interact(user)

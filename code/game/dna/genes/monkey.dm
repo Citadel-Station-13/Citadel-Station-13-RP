@@ -2,12 +2,12 @@
 	name="Monkey"
 
 /datum/gene/monkey/New()
-	block=MONKEYBLOCK
+	block = DNABLOCK_MONKEY
 
-/datum/gene/monkey/can_activate(var/mob/M,var/flags)
+/datum/gene/monkey/can_activate(mob/M, flags)
 	return istype(M, /mob/living/carbon/human) || istype(M,/mob/living/carbon/monkey)
 
-/datum/gene/monkey/activate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/activate(mob/living/M, connected, flags)
 	if(!istype(M,/mob/living/carbon/human))
 		//testing("Cannot monkey-ify [M], type is [M.type].")
 		return
@@ -74,13 +74,13 @@
 	for (var/obj/item/implant/I in implants)
 		I.loc = O
 		I.implanted = O
-//		O.update_icon = 1	//queue a full icon update at next life() call
+		// O.update_icon = 1	//queue a full icon update at next life() call
 	qdel(M)
 	return
 
-/datum/gene/monkey/deactivate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/deactivate(mob/living/M, connected, flags)
 	if(!istype(M,/mob/living/carbon/monkey))
-		//testing("Cannot humanize [M], type is [M.type].")
+		// testing("Cannot humanize [M], type is [M.type].")
 		return
 	var/mob/living/carbon/monkey/Mo = M
 	Mo.transforming = 1
@@ -123,13 +123,13 @@
 			O.suiciding = M.suiciding
 			M.suiciding = null
 
-	//for(var/obj/T in M)
-	//	qdel(T)
+	// for(var/obj/T in M)
+	// 	qdel(T)
 
 	O.loc = M.loc
 
 	if(M.mind)
-		M.mind.transfer_to(O)	//transfer our mind to the human
+		M.mind.transfer_to(O) //transfer our mind to the human
 
 	if (connected) //inside dna thing
 		var/obj/machinery/dna_scannernew/C = connected
@@ -141,9 +141,9 @@
 	while (!i)
 		var/randomname
 		if (O.gender == MALE)
-			randomname = capitalize(pick(first_names_male) + " " + capitalize(pick(last_names)))
+			randomname = capitalize(pick(GLOB.first_names_male) + " " + capitalize(pick(GLOB.last_names)))
 		else
-			randomname = capitalize(pick(first_names_female) + " " + capitalize(pick(last_names)))
+			randomname = capitalize(pick(GLOB.first_names_female) + " " + capitalize(pick(GLOB.last_names)))
 		if (findname(randomname))
 			continue
 		else
@@ -158,6 +158,6 @@
 	for (var/obj/item/implant/I in implants)
 		I.loc = O
 		I.implanted = O
-//		O.update_icon = 1	//queue a full icon update at next life() call
+		// O.update_icon = 1	//queue a full icon update at next life() call
 	qdel(M)
 	return

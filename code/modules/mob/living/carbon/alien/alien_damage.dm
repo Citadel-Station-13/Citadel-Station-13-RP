@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/ex_act(severity)
+/mob/living/carbon/alien/legacy_ex_act(severity)
 
 	if(!blinded)
 		flash_eyes()
@@ -23,7 +23,7 @@
 		if(3.0)
 			b_loss += 30
 			if (prob(50))
-				Paralyse(1)
+				Unconscious(1)
 			ear_damage += 15
 			ear_deaf += 60
 

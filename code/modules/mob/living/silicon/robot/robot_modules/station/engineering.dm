@@ -24,8 +24,11 @@
 					"Miss M" = "miss-engineer",
 					"Coffstruction" = "coffin-Construction",
 					"Coffgineer" = "coffin-Engineering",
-					"X-88" = "xeightyeight-engineering"
-
+					"X-88" = "xeightyeight-engineering",
+					"Acheron" = "mechoid-Engineering",
+					"Shellguard Noble" = "Noble-ENG",
+					"ZOOM-BA" = "zoomba-engineering",
+					"W02M" = "worm-engineering"
 					)
 
 /obj/item/robot_module/robot/engineering/construction
@@ -45,7 +48,7 @@
 	src.modules += new /obj/item/pipe_painter(src)
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
-	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/geiger_counter(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
 	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel()
@@ -93,7 +96,7 @@
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
 	src.emag = new /obj/item/melee/baton/robot/arm(src)
-	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/geiger_counter/cyborg(src)
 	src.modules += new /obj/item/rcd/electric/mounted/borg(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
@@ -163,19 +166,22 @@
 	src.modules += PL
 
 
-/obj/item/robot_module/robot/engiedog
-	name = "Construction Hound module"
+/obj/item/robot_module/robot/quad_engi
+	name = "EngiQuad module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot",
-					"Borgi" = "borgi-eng"
+					"Borgi" = "borgi-eng",
+					"Engineering Hound" = "engihound",
+					"Engineering Hound Dark" = "engihounddark",
+					"F3-LINE" = "FELI-Engineer"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/engiedog/Initialize(mapload)
+/obj/item/robot_module/robot/quad_engi/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
@@ -192,7 +198,7 @@
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
-	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/geiger_counter(src)
 	src.modules += new /obj/item/pipe_painter(src)
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/gripper(src)
@@ -283,22 +289,18 @@
 	PL.synths = list(plastic)
 	src.modules += PL
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	R.icon_dimension_x = 64
+	add_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	add_verb(R, /mob/living/proc/shred_limb)
+	add_verb(R, /mob/living/silicon/robot/proc/rest_style)
 
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
-
+		. = ..()
 
 

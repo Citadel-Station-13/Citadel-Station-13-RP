@@ -35,7 +35,7 @@
 	name = "firesuit"
 	desc = "A suit that protects against extreme fire and heat."
 	//icon_state = "thermal"
-	item_state_slots = list(slot_r_hand_str = "black_suit", slot_l_hand_str = "black_suit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black_suit", SLOT_ID_LEFT_HAND = "black_suit")
 	w_class = ITEMSIZE_LARGE//bulky item
 	slowdown = 1.5
 
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/suit/bomb_suit/security
 	icon_state = "bombsuitsec"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 /*

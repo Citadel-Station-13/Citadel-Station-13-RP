@@ -4,7 +4,7 @@
 	icon_state = "jaws"
 	desc = "The jaws of the law."
 	force = 10
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 	w_class = ITEMSIZE_NORMAL
@@ -15,7 +15,7 @@
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
 	force = 5
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	w_class = ITEMSIZE_NORMAL
@@ -31,7 +31,7 @@
 			icon_state = "jaws"
 			desc = "The jaws of the law."
 			force = 10
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			w_class = ITEMSIZE_NORMAL
@@ -41,7 +41,7 @@
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
 			force = 5
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			w_class = ITEMSIZE_NORMAL
@@ -54,13 +54,10 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	force = 0
-	throwforce = 0
+	item_flags = ITEM_NOBLUDGEON
+	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
-
-/obj/item/dogborg/boop_module/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
 	if (!( istype(user.loc, /turf) ))
@@ -178,12 +175,9 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	hitsound = 'sound/effects/attackblob.ogg'
+	item_flags = ITEM_NOBLUDGEON
 	var/emagged = 0
 	var/datum/matter_synth/water = null
-
-/obj/item/dogborg/tongue/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/tongue/examine(user)
 	. = ..()
@@ -222,7 +216,7 @@
 	else if(water.energy < 5)
 		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
-	else if(istype(target,/obj/effect/decal/cleanable))
+	else if(istype(target,/obj/effect/debris/cleanable))
 		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
@@ -256,7 +250,7 @@
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 			water.use_charge(5)
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 	else if(ishuman(target))
@@ -283,7 +277,7 @@
 		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 			water.use_charge(5)
@@ -297,11 +291,8 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
+	item_flags = ITEM_NOBLUDGEON
 	var/enabled = FALSE
-
-/obj/item/pupscrubber/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/pupscrubber/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user
@@ -333,7 +324,7 @@
 	force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
-	throwforce = 0 //This shouldn't be thrown in the first place.
+	throw_force = 0 //This shouldn't be thrown in the first place.
 	hitsound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
 	w_class = ITEMSIZE_NORMAL
@@ -373,11 +364,8 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	force = 0
-	throwforce = 0
-
-/obj/item/dogborg/pounce/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
+	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user
@@ -420,9 +408,9 @@
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
-	pixel_y = default_pixel_y
+	pixel_y = base_pixel_y
 	cell.charge -= 750
 
 	sleep(5)
@@ -453,33 +441,36 @@
 	w_class = ITEMSIZE_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/dogborg/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+/obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
+	if(!istype(H))
+		return
 	if(target_zone == BP_TORSO && imp == null)
-		for(var/obj/item/organ/I in M.organs)
+		for(var/obj/item/organ/I in H.organs)
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				if(imp == null)
-					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+					H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
 					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-					user.do_attack_animation(M)
-					var/turf/T1 = get_turf(M)
-					if (T1 && ((M == user) || do_after(user, 20)))
-						if(user && M && (get_turf(M) == T1) && src)
-							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
-							add_attack_logs(user,M,"Mirror removed by [user]")
+					user.do_attack_animation(H)
+					var/turf/T1 = get_turf(H)
+					if (T1 && ((H == user) || do_after(user, 20)))
+						if(user && H && (get_turf(H) == T1) && src)
+							H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+							add_attack_logs(user,H,"Mirror removed by [user]")
 							src.imp = MI
 							qdel(MI)
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+			H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 20)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
+			user.do_attack_animation(H)
+			var/turf/T1 = get_turf(H)
+			if (T1 && ((H == user) || do_after(user, 20)))
+				if(user && H && (get_turf(H) == T1) && src && src.imp)
+					H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+					add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
+					if(imp.handle_implant(H))
+						imp.post_implant(H)
 					src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")

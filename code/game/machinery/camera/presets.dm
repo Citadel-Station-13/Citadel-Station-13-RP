@@ -131,7 +131,7 @@ var/global/list/engineering_networks = list(
 
 //Tether-unique network cameras
 /obj/machinery/camera/network/tether
-	network = list(NETWORK_TRIUMPH)
+	network = list(NETWORK_TETHER)
 
 /obj/machinery/camera/network/triumph
 	network = list(NETWORK_TRIUMPH)

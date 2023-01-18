@@ -48,9 +48,9 @@ var/hadevent    = 0
 		if(isNotStationLevel(T.z))
 			continue
 		if(istype(H,/mob/living/carbon/human))
-			H.apply_effect((rand(15,75)),IRRADIATE,0)
+			H.afflict_radiation(rand(200, 1000))
 			if (prob(5))
-				H.apply_effect((rand(90,150)),IRRADIATE,0)
+				H.afflict_radiation(rand(200, 1000))
 			if (prob(25))
 				if (prob(75))
 					randmutb(H)
@@ -103,7 +103,7 @@ var/hadevent    = 0
 		log_world("ERROR: Could not initate grey-tide. Unable find prison or brig area.")
 
 /proc/carp_migration() // -- Darem
-	for(var/atom/movable/landmark/C in GLOB.landmarks_list)
+	for(var/obj/landmark/C in GLOB.landmarks_list)
 		if(C.name == "carpspawn")
 			new /mob/living/simple_mob/animal/space/carp(C.loc)
 	//sleep(100)
@@ -119,7 +119,7 @@ var/hadevent    = 0
 
 		for(var/i=1,i<=lightsoutAmount,i++)
 			var/list/possibleEpicentres = list()
-			for(var/atom/movable/landmark/newEpicentre in GLOB.landmarks_list)
+			for(var/obj/landmark/newEpicentre in GLOB.landmarks_list)
 				if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 					possibleEpicentres += newEpicentre
 			if(possibleEpicentres.len)
@@ -130,7 +130,7 @@ var/hadevent    = 0
 		if(!epicentreList.len)
 			return
 
-		for(var/atom/movable/landmark/epicentre in epicentreList)
+		for(var/obj/landmark/epicentre in epicentreList)
 			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
@@ -167,7 +167,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 			var/allergysev = pick("deathly", "mildly", "severely", "contagiously")
 			var/crew
 			var/list/pos_crew = list()
-			for(var/mob/living/carbon/human/pos in player_list)
+			for(var/mob/living/carbon/human/pos in GLOB.player_list)
 				pos_crew += pos.real_name
 			if(pos_crew.len)
 				crew = pick(pos_crew)

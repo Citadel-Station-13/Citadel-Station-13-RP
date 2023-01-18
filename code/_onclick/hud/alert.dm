@@ -415,7 +415,7 @@ so as to remain in compliance with the most up-to-date laws."
 // /atom/movable/screen/alert/notify_jump/Click()
 // 	if(!usr || !usr.client) return
 // 	if(!jump_target) return
-// 	var/mob/dead/observer/G = usr
+// 	var/mob/observer/dead/G = usr
 // 	if(!istype(G)) return
 // 	if(attack_not_jump)
 // 		jump_target.attack_ghost(G)
@@ -480,8 +480,7 @@ so as to remain in compliance with the most up-to-date laws."
 		mymob?.client?.screen |= alert
 	return 1
 
-/mob
-	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+/mob/var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
 
 /atom/movable/screen/alert/Click(location, control, params)
 	if(!usr || !usr.client)

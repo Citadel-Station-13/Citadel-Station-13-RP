@@ -3,11 +3,11 @@
 	desc = "It's a net made of green energy."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
-	throwforce = 0
+	throw_force = 0
 	force = 0
 	var/net_type = /obj/effect/energy_net
 
-/obj/item/energy_net/dropped()
+/obj/item/energy_net/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	QDEL_IN(src, 10)
 
@@ -37,15 +37,14 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 
-	density = 1
-	opacity = 0
-	mouse_opacity = 1
-	anchored = 0
+	density = TRUE
+	opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_ICON
+	anchored = FALSE
 
-	can_buckle = 1
-	buckle_movable = 1
-	buckle_lying = 0
-	buckle_dir = SOUTH
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // maybe when these aren't bullshit op i'll feel the need to """fix""" the fact that they're perfect projectile blockers half the time
+	buckle_restrained_resist_time = 0
 
 	var/escape_time = 8 SECONDS
 
@@ -78,20 +77,18 @@
 				unbuckle_mob(occupant)
 				qdel(src)
 
-/obj/effect/energy_net/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	user.setClickCooldown(user.get_attack_speed())
-	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
-	if(do_after(user, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
-		if(!has_buckled_mobs())
-			return
-		visible_message("<span class='danger'>[user] manages to tear \the [src] apart!</span>")
-		unbuckle_mob(buckled_mob)
+/obj/effect/energy_net/mob_resist_buckle(mob/M, semantic)
+	. = ..()
+	if(!.)
+		return
+	M.setClickCooldown(M.get_attack_speed())
+	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
+	if(!do_after(M, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+		return FALSE
+	visible_message("<span class='danger'>[M] manages to tear \the [src] apart!</span>")
+	qdel(src)
+	return FALSE
 
-/obj/effect/energy_net/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) //Just buckled someone
-		..()
-		layer = M.layer+1
-		M.can_pull_size = 0
-	else //Just unbuckled someone
-		M.can_pull_size = initial(M.can_pull_size)
-		qdel(src)
+/obj/effect/energy_net/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	layer = M.layer + 1

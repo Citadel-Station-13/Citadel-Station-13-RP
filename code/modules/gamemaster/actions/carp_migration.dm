@@ -34,7 +34,7 @@
 	var/group_size_min = 3
 	var/group_size_max = 5
 
-	for(var/atom/movable/landmark/C in GLOB.landmarks_list)
+	for(var/obj/landmark/C in GLOB.landmarks_list)
 		if(C.name == "carpspawn")
 			spawn_locations.Add(C.loc)
 

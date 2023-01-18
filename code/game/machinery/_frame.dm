@@ -273,9 +273,6 @@
 		if(dir)
 			setDir(dir)
 
-		if(loc)
-			src.loc = loc
-
 		if(frame_type.x_offset)
 			pixel_x = (dir & 3)? 0 : (dir == EAST ? -frame_type.x_offset : frame_type.x_offset)
 
@@ -298,8 +295,8 @@
 	if(P.is_wrench())
 		if(state == FRAME_PLACED && !anchored)
 			to_chat(user, SPAN_NOTICE("You start to wrench the frame into place."))
-			playsound(src.loc, P.usesound, 50, TRUE)
-			if(do_after(user, 20 * P.toolspeed))
+			playsound(src, P.tool_sound, 50, TRUE)
+			if(do_after(user, 20 * P.tool_speed))
 				anchored = TRUE
 				if(!need_circuit && circuit)
 					state = FRAME_FASTENED
@@ -310,8 +307,8 @@
 					to_chat(user, SPAN_NOTICE("You wrench the frame into place."))
 
 		else if(state == FRAME_PLACED && anchored)
-			playsound(src, P.usesound, 50, TRUE)
-			if(do_after(user, 20 * P.toolspeed))
+			playsound(src, P.tool_sound, 50, TRUE)
+			if(do_after(user, 20 * P.tool_speed))
 				to_chat(user, SPAN_NOTICE("You unfasten the frame."))
 				anchored = FALSE
 
@@ -319,11 +316,11 @@
 		if(state == FRAME_PLACED)
 			var/obj/item/weldingtool/WT = P
 			if(WT.remove_fuel(0, user))
-				playsound(src.loc, P.usesound, 50, TRUE)
-				if(do_after(user, 20 * P.toolspeed))
+				playsound(src, P.tool_sound, 50, TRUE)
+				if(do_after(user, 20 * P.tool_speed))
 					if(src && WT.isOn())
 						to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
-						new /obj/item/stack/material/steel(src.loc, frame_type.frame_size)
+						new /obj/item/stack/material/steel(loc, frame_type.frame_size)
 						qdel(src)
 						return
 			else if(!WT.remove_fuel(0, user))
@@ -335,11 +332,11 @@
 			var/obj/item/circuitboard/B = P
 			var/datum/frame/frame_types/board_type = B.board_type
 			if(board_type.name == frame_type.name)
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
+				if(!user.attempt_insert_item_for_installation(P, src))
+					return
+				playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
 				circuit = P
-				user.drop_item()
-				P.loc = src
 				state = FRAME_UNFASTENED
 				if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 					check_components()
@@ -351,18 +348,18 @@
 	else if(P.is_screwdriver())
 		if(state == FRAME_UNFASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You screw the circuit board into place."))
 				state = FRAME_FASTENED
 
 		else if(state == FRAME_FASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You unfasten the circuit board."))
 				state = FRAME_UNFASTENED
 
 			else if(!need_circuit && circuit)
-				playsound(src, P.usesound, 50, 1)
+				playsound(src, P.tool_sound, 50, 1)
 				to_chat(user, SPAN_NOTICE("You unfasten the outer cover."))
 				state = FRAME_PLACED
 
@@ -374,8 +371,8 @@
 						component_check = 0
 						break
 				if(component_check)
-					playsound(src, P.usesound, 50, TRUE)
-					var/obj/machinery/new_machine = new circuit.build_path(src.loc, dir)
+					playsound(src, P.tool_sound, 50, TRUE)
+					var/obj/machinery/new_machine = new circuit.build_path(loc, dir)
 					// Handle machines that have allocated default parts in thier constructor.
 					if(new_machine.component_parts)
 						for(var/CP in new_machine.component_parts)
@@ -384,7 +381,7 @@
 					else
 						new_machine.component_parts = list()
 
-					circuit.construct(new_machine)
+					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
 						if(circuit.contain_parts)
@@ -404,13 +401,13 @@
 					return
 
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You fasten the cover."))
-				var/obj/machinery/B = new circuit.build_path(src.loc)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -418,26 +415,26 @@
 
 		else if(state == FRAME_PANELED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
-				var/obj/machinery/B = new circuit.build_path(src.loc)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
 				return
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
-				var/obj/machinery/B = new circuit.build_path(src.loc)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -446,39 +443,39 @@
 	else if(P.is_crowbar())
 		if(state == FRAME_UNFASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				state = FRAME_PLACED
-				circuit.forceMove(src.loc)
+				circuit.forceMove(loc)
 				circuit = null
 				if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 					req_components = null
 
 		else if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				if(components.len == 0)
 					to_chat(user, SPAN_NOTICE("There are no components to remove."))
 				else
 					to_chat(user, SPAN_NOTICE("You remove the components."))
 					for(var/obj/item/W in components)
-						W.forceMove(src.loc)
+						W.forceMove(loc)
 					check_components()
 					update_desc()
 					to_chat(user, desc)
 
 		else if(state == FRAME_PANELED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
-				new /obj/item/stack/material/glass(src.loc, 2)
+				new /obj/item/stack/material/glass(loc, 2)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
-				new /obj/item/stack/material/glass(src.loc, 2)
+				new /obj/item/stack/material/glass(loc, 2)
 
 	else if(istype(P, /obj/item/stack/cable_coil))
 		if(state == FRAME_FASTENED)
@@ -487,7 +484,7 @@
 				to_chat(user, SPAN_WARNING("You need five coils of wire to add them to the frame."))
 				return
 			to_chat(user, SPAN_NOTICE("You start to add cables to the frame."))
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
+			playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 			if(do_after(user, 20) && state == FRAME_FASTENED)
 				if(C.use(5))
 					to_chat(user, SPAN_NOTICE("You add cables to the frame."))
@@ -498,7 +495,6 @@
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 				for(var/I in req_components)
 					if(istype(P, I) && (req_components[I] > 0))
-						playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						if(istype(P, /obj/item/stack/cable_coil))
 							var/obj/item/stack/cable_coil/CP = P
 							if(CP.get_amount() > 1)
@@ -510,10 +506,11 @@
 								components += CC
 								req_components[I] -= camt
 								update_desc()
+								playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 								break
-
-						user.drop_item()
-						P.forceMove(src)
+						if(!user.attempt_insert_item_for_installation(P, src))
+							return
+						playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						components += P
 						req_components[I]--
 						update_desc()
@@ -523,28 +520,28 @@
 	else if(P.is_wirecutter())
 		if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src.loc, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src.loc, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src.loc, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src.loc, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 	else if(istype(P, /obj/item/stack/material) && P.get_material_name() == "glass")
 		if(state == FRAME_WIRED)
@@ -553,7 +550,7 @@
 				if(G.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
+				playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
 				if(do_after(user, 20) && state == FRAME_WIRED)
 					if(G.use(2))
@@ -565,7 +562,7 @@
 				if(G.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
+				playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
 				if(do_after(user, 20) && state == FRAME_WIRED)
 					if(G.use(2))
@@ -577,7 +574,6 @@
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 				for(var/I in req_components)
 					if(istype(P, I) && (req_components[I] > 0))
-						playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						if(istype(P, /obj/item/stack))
 							var/obj/item/stack/ST = P
 							if(ST.get_amount() > 1)
@@ -589,10 +585,11 @@
 								components += NS
 								req_components[I] -= camt
 								update_desc()
+								playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 								break
-
-						user.drop_item()
-						P.forceMove(src)
+						if(!user.attempt_insert_item_for_installation(P, src))
+							return
+						playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						components += P
 						req_components[I]--
 						update_desc()

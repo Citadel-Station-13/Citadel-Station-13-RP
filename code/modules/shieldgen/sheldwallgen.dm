@@ -164,14 +164,14 @@
 
 		else if(state == 0)
 			state = 1
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(user, "You secure the external reinforcing bolts to the floor.")
 			src.anchored = 1
 			return
 
 		else if(state == 1)
 			state = 0
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(user, "You undo the external reinforcing bolts.")
 			src.anchored = 0
 			return
@@ -289,7 +289,7 @@
 	return
 
 
-/obj/machinery/shieldwall/ex_act(severity)
+/obj/machinery/shieldwall/legacy_ex_act(severity)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		switch(severity)
@@ -315,10 +315,11 @@
 				G.storedpower -= 12000
 	return
 
-
 /obj/machinery/shieldwall/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	. = ..()
+	if(.)
+		return
+	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return prob(20)
 	if(istype(mover, /obj/item/projectile))
 		return prob(10)
-	return !density

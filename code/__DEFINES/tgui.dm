@@ -1,3 +1,4 @@
+// ui_status
 /// Green eye; fully interactive
 #define UI_INTERACTIVE 2
 /// Orange eye; updates but is not interactive
@@ -7,6 +8,14 @@
 /// UI Should close
 #define UI_CLOSE -1
 
+// refreshing var
+/// no refresh queued
+#define UI_NOT_REFRESHING 0
+/// soft refreshing - can show a status, won't block viewport
+#define UI_SOFT_REFRESHING 1
+/// hard refreshing - completely block the ui while it is queued
+#define UI_HARD_REFRESHING 2
+
 /// Maximum number of windows that can be suspended/reused
 #define TGUI_WINDOW_SOFT_LIMIT 5
 /// Maximum number of open windows
@@ -15,7 +24,7 @@
 /// Maximum ping timeout allowed to detect zombie windows
 #define TGUI_PING_TIMEOUT 4 SECONDS
 /// Used for rate-limiting to prevent DoS by excessively refreshing a TGUI window
-#define TGUI_REFRESH_FULL_UPDATE_COOLDOWN 5 SECONDS
+#define TGUI_REFRESH_FULL_UPDATE_COOLDOWN 2 SECONDS
 
 /// Window does not exist
 #define TGUI_WINDOW_CLOSED 0

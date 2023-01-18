@@ -28,7 +28,6 @@
 /obj/item/gun/energy/laser/mounted/augment
 	use_external_power = FALSE
 	use_organic_power = TRUE
-	canremove = FALSE
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
@@ -169,11 +168,10 @@
 	ionized beams, this is a weapon to kill from a distance."
 	icon_state = "sniper"
 	item_state = "sniper"
-	item_state_slots = list(slot_r_hand_str = "z8carbine", slot_l_hand_str = "z8carbine") //placeholder
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "z8carbine", SLOT_ID_LEFT_HAND = "z8carbine") //placeholder
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
 	projectile_type = /obj/item/projectile/beam/sniper
 	slot_flags = SLOT_BACK
-	battery_lock = 1
 	charge_cost = 600
 	fire_delay = 35
 	force = 10
@@ -188,6 +186,7 @@
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1
+	set src in usr
 
 	toggle_scope(2.0)
 
@@ -197,6 +196,7 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
+	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
 	charge_cost = 600
 
@@ -222,6 +222,7 @@
 	set category = "Object"
 	set name = "Aim Down Sights"
 	set popup_menu = 1
+	set src in usr
 
 	toggle_scope(scope_multiplier)
 
@@ -305,3 +306,24 @@
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
+
+//NT SpecOps Laser Rifle
+/obj/item/gun/energy/combat
+	name = "NT-LR-4 laser rifle"
+	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
+	icon_state = "clrifle"
+	item_state = "clrifle"
+	fire_delay = 6
+	slot_flags = SLOT_BELT|SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
+	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
+	projectile_type = /obj/item/projectile/beam/midlaser
+	heavy = FALSE
+	one_handed_penalty = 25
+
+	firemodes = list(
+		list(mode_name="normal", fire_delay=6, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 200),
+		list(mode_name="suppressive", fire_delay=3, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 50),
+		)

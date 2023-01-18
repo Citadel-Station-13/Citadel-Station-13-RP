@@ -61,14 +61,13 @@ SUBSYSTEM_DEF(timer)
 	var/log_all_loop_flagged = FALSE
 #endif
 
-/datum/controller/subsystem/timer/PreInit()
+/datum/controller/subsystem/timer/PreInit(recovering)
 	bucket_list.len = BUCKET_LEN
 	head_offset = world.time
 	bucket_resolution = world.tick_lag
 
-/datum/controller/subsystem/timer/stat_entry(msg)
-	msg = "B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]"
-	return ..()
+/datum/controller/subsystem/timer/stat_entry()
+	return ..() + " B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]"
 
 /datum/controller/subsystem/timer/fire(resumed = FALSE)
 	// Store local references to datum vars as it is faster to access them
@@ -280,7 +279,7 @@ SUBSYSTEM_DEF(timer)
 		return
 
 	// Sort all timers by time to run
-	sortTim(alltimers, .proc/cmp_timer)
+	tim_sort(alltimers, .proc/cmp_timer)
 
 	// Get the earliest timer, and if the TTR is earlier than the current world.time,
 	// then set the head offset appropriately to be the earliest time tracked by the

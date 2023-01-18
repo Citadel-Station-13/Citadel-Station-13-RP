@@ -12,6 +12,7 @@ import { openExternalBrowser, toggleDebugLayout, toggleKitchenSink } from './act
 const relayedTypes = [
   'backend/update',
   'chat/message',
+  'backend/data',
 ];
 
 export const debugMiddleware = store => {

@@ -32,8 +32,8 @@ var/list/floor_light_cache = list()
 		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
 			return
-		playsound(src.loc, WT.usesound, 50, TRUE)
-		if(!do_after(user, 20 * WT.toolspeed))
+		playsound(src.loc, WT.tool_sound, 50, TRUE)
+		if(!do_after(user, 20 * WT.tool_speed))
 			return
 		if(!src || !WT.isOn())
 			return
@@ -44,7 +44,7 @@ var/list/floor_light_cache = list()
 
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/MT = W
-		playsound(src.loc, MT.usesound, 50, TRUE)
+		playsound(src.loc, MT.tool_sound, 50, TRUE)
 		if(!on)
 			to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
 			return
@@ -119,7 +119,7 @@ var/list/floor_light_cache = list()
 	update_icon()
 
 /obj/machinery/floor_light/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(use_power && !broken())
 		if(isnull(damaged))
 			var/cache_key = "floorlight-[default_light_colour]"
@@ -128,7 +128,7 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
-			overlays |= floor_light_cache[cache_key]
+			add_overlay(floor_light_cache[cache_key])
 		else
 			if(damaged == 0) //Needs init.
 				damaged = rand(1,4)
@@ -138,12 +138,12 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
-			overlays |= floor_light_cache[cache_key]
+			add_overlay(floor_light_cache[cache_key])
 
 /obj/machinery/floor_light/proc/broken()
 	return (machine_stat & (BROKEN|NOPOWER))
 
-/obj/machinery/floor_light/ex_act(severity)
+/obj/machinery/floor_light/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

@@ -30,7 +30,8 @@ var/list/all_supply_groups = list("Atmospherics",
 								  "Science",
 								  "Security",
 								  "Supplies",
-								  "Voidsuits")
+								  "Voidsuits",
+								  "Vehicles")
 
 /datum/supply_pack
 	var/name
@@ -91,7 +92,7 @@ var/list/all_supply_groups = list("Atmospherics",
 				var/list/L = access
 				O.req_access = L.Copy()
 			else
-				log_debug("<span class='danger'>Supply pack with invalid access restriction [access] encountered!</span>")
+				log_debug(SPAN_DEBUGERROR("Supply pack with invalid access restriction [access] encountered!"))
 
 /**
  * spawn an object of a certain type
@@ -199,16 +200,8 @@ var/list/all_supply_groups = list("Atmospherics",
 	// pick and take
 	. = list()
 	for(var/i in 1 to num_contained)
-		var/path = SAFEPICK(L)
-		if(!path)
-			break
-		L[path]--
-		if(!L[path])
-			L -= path
-		if(.[path])
-			.[path]++
-		else
-			.[path] = 1
+		var/path = pickweight(L)
+		.[path]++
 
 /datum/supply_pack/randomised/is_random()
 	return num_contained

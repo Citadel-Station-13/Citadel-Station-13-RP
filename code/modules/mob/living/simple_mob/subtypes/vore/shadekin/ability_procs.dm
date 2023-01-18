@@ -19,12 +19,13 @@
 	//Shifting in
 	if(ability_flags & AB_PHASE_SHIFTED)
 		ability_flags &= ~AB_PHASE_SHIFTED
+		mouse_opacity = 2
 		name = real_name
 		for(var/belly in vore_organs)
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		overlays.Cut()
+		cut_overlays()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)
@@ -70,6 +71,7 @@
 	//Shifting out
 	else
 		ability_flags |= AB_PHASE_SHIFTED
+		mouse_opacity = 0
 		custom_emote(1,"phases out!")
 		real_name = name
 		name = "Something"
@@ -78,7 +80,7 @@
 			var/obj/belly/B = belly
 			B.escapable = FALSE
 
-		overlays.Cut()
+		cut_overlays()
 		flick("tp_out",src)
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO

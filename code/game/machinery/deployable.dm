@@ -10,6 +10,7 @@ Barricades
 	desc = "This space is blocked off by a barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barricade"
+	pass_flags_self = ATOM_PASS_TABLE
 	anchored = TRUE
 	density = TRUE
 	var/health = 100
@@ -93,19 +94,13 @@ Barricades
 	qdel(src)
 	return
 
-/obj/structure/barricade/ex_act(severity)
+/obj/structure/barricade/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			dismantle()
 		if(2.0)
 			health -= 25
 			CheckHealth()
-
-/obj/structure/barricade/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
 
 //Actual Deployable machinery stuff
 /obj/machinery/deployable
@@ -121,6 +116,7 @@ Barricades
 	anchored = FALSE
 	density = TRUE
 	icon_state = "barrier0"
+	pass_flags_self = ATOM_PASS_TABLE
 	var/health = 100
 	var/maxhealth = 100
 	var/locked = FALSE
@@ -196,7 +192,7 @@ Barricades
 	CheckHealth()
 	return
 
-/obj/machinery/deployable/barrier/ex_act(severity)
+/obj/machinery/deployable/barrier/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			explode()
@@ -213,12 +209,6 @@ Barricades
 		locked = !locked
 		anchored = !anchored
 		icon_state = "barrier[locked]"
-
-/obj/machinery/deployable/barrier/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
 
 /obj/machinery/deployable/barrier/proc/explode()
 

@@ -1,4 +1,4 @@
-/mob/living/start_pulling(atom/movable/AM, supress_message = FALSE)
+/mob/living/start_pulling(atom/movable/AM, force = pull_force, suppress_message = FALSE)
 	if(!AM || !src)
 		return FALSE
 	if(!(AM.can_be_pulled(src)))
@@ -62,7 +62,7 @@
 	setClickCooldown(DEFAULT_PULL_COODDOWN)
 
 	if(AM.pulledby)
-		if(!supress_message)
+		if(!suppress_message)
 			AM.visible_message("<span class='danger'>[src] pulls [AM] from [AM.pulledby]'s grip.</span>", \
 							"<span class='danger'>[src] pulls you from [AM.pulledby]'s grip.</span>", null, null, src)
 			to_chat(src, "<span class='notice'>You pull [AM] from [AM.pulledby]'s grip!</span>")
@@ -72,11 +72,11 @@
 
 	pulling = AM
 	AM.pulledby = src
-	AM.set_glide_size(glide_size)
+	recursive_glidesize_update()
 
 	//SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM)
 
-	if(!supress_message)
+	if(!suppress_message)
 		var/sound_to_play = 'sound/weapons/thudswoosh.ogg'
 		/*
 		if(ishuman(src))
@@ -93,7 +93,7 @@
 		var/mob/M = AM
 
 		log_attack("[src] started to passively pull [AM].")
-		if(!supress_message)	// && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
+		if(!suppress_message)	// && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
 			M.visible_message("<span class='warning'>[src] starts to pull [M] [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by their hands":"passively"]!</span>", \
 							"<span class='warning'>[src] starts to pull you [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by your hands":"passively"]!</span>")//, null, null, src)
 			//to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
@@ -135,4 +135,4 @@
 	update_pull_hud_icon()
 
 /mob/proc/update_pull_hud_icon()
-	pullin.icon_state = pulling? "pull1" : "pull0"
+	pullin?.icon_state = pulling? "pull1" : "pull0"

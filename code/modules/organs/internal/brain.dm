@@ -7,10 +7,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	organ_tag = "brain"
 	parent_organ = BP_HEAD
 	vital = 1
+	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
 	force = 1.0
 	w_class = ITEMSIZE_SMALL
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_BIO = 3)
@@ -18,23 +19,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
-	var/defib_timer = -1
 
-/obj/item/organ/internal/brain/process(delta_time)
-	..()
-	if(owner && owner.stat != DEAD) // So there's a lower risk of ticking twice.
-		tick_defib_timer()
+/obj/item/organ/internal/brain/Initialize(mapload, ...)
+	. = ..()
+	health = config_legacy.default_brain_health
+	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
 
-///This is called by `process()` when the owner is alive, or brain is not in a body, and by `Life()` directly when dead.
-/obj/item/organ/internal/brain/proc/tick_defib_timer()
-	if(preserved) // In an MMI/ice box/etc.
-		return
-
-	if(!owner || owner.stat == DEAD)
-		defib_timer = max(--defib_timer, 0)
-	else
-		//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
-		defib_timer = min(++defib_timer, (CONFIG_GET(number/defib_timer) MINUTES) / 20)
+/obj/item/organ/internal/brain/Destroy()
+	QDEL_NULL(brainmob)
+	return ..()
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist
@@ -79,20 +72,9 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		tmp_owner.internal_organs_by_name[organ_tag] = new replace_path(tmp_owner, 1)
 		tmp_owner = null
 
-/obj/item/organ/internal/brain/Initialize(mapload, ...)
-	. = ..()
-	health = config_legacy.default_brain_health
-	//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
-	defib_timer = ((CONFIG_GET(number/defib_timer) MINUTES) / 20)
-	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
-
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud
-
-/obj/item/organ/internal/brain/Destroy()
-	QDEL_NULL(brainmob)
-	return ..()
 
 /obj/item/organ/internal/brain/proc/transfer_identity(var/mob/living/carbon/H)
 
@@ -155,9 +137,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	..()
 
 /obj/item/organ/internal/brain/proc/get_control_efficiency()
-	. = max(0, 1 - (round(damage / max_damage * 10) / 10))
-
-	return .
+	return max(0, 1 - (round(damage / max_damage * 10) / 10))
 
 /obj/item/organ/internal/brain/pariah_brain
 	name = "brain remnants"
@@ -184,36 +164,49 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	decays = FALSE
 	parent_organ = BP_TORSO
 	clone_source = TRUE
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	var/list/owner_flavor_text = list()
 
+	var/owner_species
+	var/owner_base_species
+
 /obj/item/organ/internal/brain/slime/is_open_container()
-	return 1
+	return TRUE
 
 /obj/item/organ/internal/brain/slime/Initialize(mapload)
 	. = ..()
 	create_reagents(50)
+	set_owner_vars()
 	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
+
+/obj/item/organ/internal/brain/slime/proc/set_owner_vars()
+	if(!ishuman(owner))
+		return
+	owner_species = owner.species.name
+	owner_base_species = owner.species.base_species || owner_species
 
 /obj/item/organ/internal/brain/slime/proc/sync_color()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		color = rgb(min(H.r_skin + 40, 255), min(H.g_skin + 40, 255), min(H.b_skin + 40, 255))
 
-/obj/item/organ/internal/brain/slime/removed(var/mob/living/user)
+/obj/item/organ/internal/brain/slime/removed(mob/living/user)
 	if(istype(owner))
 		owner_flavor_text = owner.flavor_texts.Copy()
 	..()
 
 /obj/item/organ/internal/brain/slime/proc/reviveBody()
 	var/datum/dna2/record/R = new /datum/dna2/record()
-	R.dna = brainmob.dna
-	R.ckey = brainmob.ckey
-	R.id = copytext(md5(brainmob.real_name), 2, 6)
-	R.name = R.dna.real_name
-	R.types = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
+	R.dna       = brainmob.dna
+	R.name      = R.dna.real_name
+	R.id        = copytext(md5(brainmob.real_name), 2, 6)
+	R.ckey      = brainmob.ckey
+	R.types     = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
 	R.languages = brainmob.languages
-	R.flavor = list()
+	R.flavor    = list()
+	//! Dumb hack to make sure the slime core knows what species to revive the body as.
+	R.dna.base_species = owner_base_species
+	R.dna.species      = owner_species
 	if(islist(owner_flavor_text))
 		R.flavor = owner_flavor_text.Copy()
 	for(var/datum/modifier/mod in brainmob.modifiers)
@@ -222,24 +215,28 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	var/datum/mind/clonemind = brainmob.mind
 
-	if(!istype(clonemind, /datum/mind))	//not a mind
-		return 0
-	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
-		return 0
-	if(clonemind.active)	//somebody is using that mind
+	// Not a mind.
+	if(!istype(clonemind, /datum/mind))
+		return FALSE
+	// Mind is associated with a non-dead body.
+	if(clonemind.current && clonemind.current.stat != DEAD)
+		return FALSE
+	/// Somebody is using that mind.
+	if(clonemind.active)
 		if(ckey(clonemind.key) != R.ckey)
-			return 0
+			return FALSE
 	else
-		for(var/mob/observer/dead/G in player_list)
+		for(var/mob/observer/dead/G in GLOB.player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
 				else
-					return 0
+					return FALSE
 
-	for(var/modifier_type in R.genetic_modifiers)	//Can't be revived. Probably won't happen...?
+	// Can't be revived. Probably won't happen...?
+	for(var/modifier_type in R.genetic_modifiers)
 		if(istype(modifier_type, /datum/modifier/no_clone))
-			return 0
+			return FALSE
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(get_turf(src), R.dna.species)
 
@@ -254,12 +251,13 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(!R.dna.real_name)	//to prevent null names
 		R.dna.real_name = "promethean ([rand(0,999)])"
 	H.real_name = R.dna.real_name
+	H.name = H.real_name
 	H.ooc_notes = brainmob.ooc_notes
 
 	H.nutrition = 260 //Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
-	H.Paralyse(4)
+	H.Unconscious(4)
 	H.updatehealth()
 	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
@@ -275,7 +273,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		H.add_language(L.name)
 	H.flavor_texts = R.flavor.Copy()
 	qdel(src)
-	return 1
+	return TRUE
 
 /datum/chemical_reaction/promethean_brain_revival
 	name = "Promethean Revival"
@@ -284,12 +282,12 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	required_reagents = list(MAT_PHORON = 40)
 	result_amount = 1
 
-/datum/chemical_reaction/promethean_brain_revival/can_happen(var/datum/reagents/holder)
+/datum/chemical_reaction/promethean_brain_revival/can_happen(datum/reagents/holder)
 	if(holder.my_atom && istype(holder.my_atom, /obj/item/organ/internal/brain/slime))
 		return ..()
 	return FALSE
 
-/datum/chemical_reaction/promethean_brain_revival/on_reaction(var/datum/reagents/holder)
+/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
 	if(brain.reviveBody())
 		brain.visible_message(SPAN_NOTICE("[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!"))

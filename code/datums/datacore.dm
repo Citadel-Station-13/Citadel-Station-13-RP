@@ -51,14 +51,14 @@
 
 		if(OOC)
 			var/active = 0
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
 					active = 1
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 		else
 			isactive[name] = t.fields["p_stat"]
-			//to_world("[name]: [rank]")
+			//TO_WORLD("[name]: [rank]")
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 		var/department = 0
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
@@ -96,7 +96,7 @@
 			var/real_rank = make_list_rank(t.fields["real_rank"])
 
 			var/active = 0
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
 					active = 1
 					break
@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 /datum/datacore/proc/manifest()
 	spawn()
-		for(var/mob/living/carbon/human/H in player_list)
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			manifest_inject(H)
 		return
 
@@ -341,11 +341,10 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		* they ever get their equipment, and so it can't get a picture of them in their equipment.
 		* Latejoiners do not have this problem, because /mob/new_player/proc/AttemptLateSpawn calls EquipRank() before it calls
 		* this proc, which means that they're already clothed by the time they get their picture taken here.
-		* The COMPILE_OVERLAYS() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
+		* The compile_overlays() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
 		* take a picture of them, we want all the overlays.
 		*/
-		COMPILE_OVERLAYS(H)
-		SSoverlays.queue -= H
+		H.compile_overlays()
 
 		var/id = generate_record_id()
 		//General Record

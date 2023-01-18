@@ -28,9 +28,9 @@
 	cost = -2
 	var_changes = list("total_health" = 75)
 
-	apply(var/datum/species/S,var/mob/living/carbon/human/H)
-		..(S,H)
-		H.setMaxHealth(S.total_health)
+/datum/trait/negative/endurance_low/apply(datum/species/S, mob/living/carbon/human/H)
+	..(S,H)
+	H.setMaxHealth(S.total_health)
 
 /datum/trait/negative/endurance_very_low
 	name = "Extremely Low Endurance"
@@ -38,9 +38,9 @@
 	cost = -3 //Teshari HP. This makes the person a lot more suseptable to getting stunned, killed, etc.
 	var_changes = list("total_health" = 50)
 
-	apply(var/datum/species/S,var/mob/living/carbon/human/H)
-		..(S,H)
-		H.setMaxHealth(S.total_health)
+/datum/trait/negative/endurance_very_low/apply(datum/species/S, mob/living/carbon/human/H)
+	..(S,H)
+	H.setMaxHealth(S.total_health)
 
 /datum/trait/negative/minor_brute_weak
 	name = "Minor Brute Weakness"
@@ -215,7 +215,7 @@
 	excludes = list(
 		/datum/trait/negative/blind
 	)
-	
+
 // todo: organ disability? better way to have mutual exclusion from having all 3
 /datum/trait/negative/mute
 	name = "Mute"
@@ -224,4 +224,3 @@
 	traits = list(
 		TRAIT_MUTE
 	)
-

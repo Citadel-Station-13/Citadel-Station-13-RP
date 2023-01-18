@@ -2,7 +2,9 @@
 /obj/machinery/computer/security/verb/station_map()
 	set name = ".map"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
+	set hidden = TRUE
+
 	usr.set_machine(src)
 	if(!mapping)	return
 	log_game("[usr]([usr.key]) used station map L[z] in [src.loc.loc]")
@@ -317,13 +319,13 @@
 
 		return
 
-proc/getr(col)
+/proc/getr(col)
 	return hex2num(copytext(col, 2,4))
 
-proc/getg(col)
+/proc/getg(col)
 	return hex2num(copytext(col, 4,6))
 
-proc/getb(col)
+/proc/getb(col)
 	return hex2num(copytext(col, 6))
 
 /mob/proc/clearmap()

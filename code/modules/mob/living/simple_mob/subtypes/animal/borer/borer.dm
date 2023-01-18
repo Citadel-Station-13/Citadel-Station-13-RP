@@ -31,7 +31,7 @@
 	friendly = list("prods")
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 
 	universal_understand = TRUE
@@ -63,8 +63,8 @@
 /mob/living/simple_mob/animal/borer/Initialize(mapload)
 	add_language("Cortical Link")
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
@@ -105,15 +105,10 @@
 			if(prob(host.brainloss/20))
 				host.say("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
 
-/mob/living/simple_mob/animal/borer/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Chemicals", chemicals)
+/mob/living/simple_mob/animal/borer/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Chemicals", "[chemicals]")
 
 /mob/living/simple_mob/animal/borer/proc/detatch()
 	if(!host || !controlling)
@@ -128,9 +123,9 @@
 	controlling = FALSE
 
 	host.remove_language("Cortical Link")
-	host.verbs -= /mob/living/carbon/proc/release_control
-	host.verbs -= /mob/living/carbon/proc/punish_host
-	host.verbs -= /mob/living/carbon/proc/spawn_larvae
+	remove_verb(host, /mob/living/carbon/proc/release_control)
+	remove_verb(host, /mob/living/carbon/proc/punish_host)
+	remove_verb(host, /mob/living/carbon/proc/spawn_larvae)
 
 	if(host_brain)
 		// these are here so bans and multikey warnings are not triggered on the wrong people when ckey is changed.
@@ -238,7 +233,7 @@
 		return emote(copytext(message, 2))
 
 	var/datum/language/L = parse_language(message)
-	if(L && L.flags & HIVEMIND)
+	if(L && L.language_flags & LANGUAGE_HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return
 
@@ -267,7 +262,7 @@
 	to_chat(src, "You drop words into [host]'s mind: \"[message]\"")
 	to_chat(host, "Your own thoughts speak: \"[message]\"")
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(istype(M, /mob/new_player))
 			continue
 		else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))

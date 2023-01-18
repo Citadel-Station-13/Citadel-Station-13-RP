@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(tgui)
 	/// The HTML base used for all UIs.
 	var/basehtml
 
-/datum/controller/subsystem/tgui/PreInit()
+/datum/controller/subsystem/tgui/PreInit(recovering)
 	basehtml = file2text('tgui/public/tgui.html')
 	// Inject inline polyfills
 	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(tgui)
 */
 
 /datum/controller/subsystem/tgui/stat_entry()
-	return ..("P:[length(open_uis)]")
+	return ..() + " P:[length(open_uis)]"
 
 /datum/controller/subsystem/tgui/fire(resumed = FALSE)
 	if(!resumed)

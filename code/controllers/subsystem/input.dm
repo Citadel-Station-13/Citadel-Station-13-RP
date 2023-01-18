@@ -20,12 +20,16 @@ SUBSYSTEM_DEF(input)
 
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
-
+	// set init early so refresh macrosets works
 	initialized = TRUE
-
 	refresh_client_macro_sets()
 
 	return ..()
+
+/datum/controller/subsystem/input/Recover()
+	initialized = SSinput.initialized
+	setup_macrosets()
+	refresh_client_macro_sets()
 
 /// Sets up the key list for classic mode for when badmins screw up vv's.
 /datum/controller/subsystem/input/proc/setup_macrosets()

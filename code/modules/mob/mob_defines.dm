@@ -4,33 +4,78 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	flags = PROXMOVE | HEAR
+	atom_flags = ATOM_HEAR
+	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
+	generic_canpass = FALSE
+	sight = SIGHT_FLAGS_DEFAULT
+	rad_flags = NONE
 
-//! ## Rendering
+//! Core
+	/// mobs use ids as ref tags instead of actual refs.
+	var/static/next_mob_id = 0
+
+//! Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! ## Intents
+//! Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-//! ## Perspectives
+//! Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-	var/static/next_mob_id = 0
+//! Buckling
+	/// Atom we're buckled to
+	var/atom/movable/buckled
+	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
+	var/atom/movable/buckling
+
+//! Movespeed
+	/// List of movement speed modifiers applying to this mob
+	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/cached_multiplicative_slowdown
+	/// Next world.time we will be able to move.
+	var/move_delay = 0
+	/// Last world.time we finished a normal, non relay/intercepted move
+	var/last_move_time = 0
+	/// Last world.time we turned in our spot without moving (see: facing directions)
+	var/last_turn = 0
+
+//! Actionspeed
+	/// List of action speed modifiers applying to this mob
+	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
+	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
+	/// The calculated mob action speed slowdown based on the modifiers list
+	var/cached_multiplicative_actions_slowdown
+
+//! Pixel Offsets
+	/// are we shifted by the user?
+	var/shifted_pixels = FALSE
+	/// shifted pixel x
+	var/shift_pixel_x = 0
+	/// shifted pixel y
+	var/shift_pixel_y = 0
+
+//! Size
+	//! todo kill this with fire it should just be part of icon_scale_x/y.
+	/// our size multiplier
+	var/size_multiplier = 1
+
+//! Misc
+	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
+	var/list/interacting_with
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/stat = CONSCIOUS
-	/// Next world.time we will be able to move.
-	var/move_delay = 0
-	/// Last world.time we turned in our spot without moving (see: facing directions)
-	var/last_turn = 0
-	var/next_move = null // For click delay, despite the misleading name.
 
-	//Not in use yet
-	var/obj/effect/organstructure/organStructure = null
+	var/next_move = null // For click delay, despite the misleading name.
 
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
@@ -119,9 +164,6 @@
 	var/lying = 0
 	var/lying_prev = 0
 
-	/// Player pixel shifting, if TRUE, we need to reset on move.
-	var/is_shifted = FALSE
-
 	var/canmove = 1
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
@@ -147,7 +189,6 @@
 	var/name_archive
 
 	var/timeofdeath = 0 //?Living
-	var/cpr_time = 1 //?Carbon
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
@@ -162,12 +203,10 @@
 	var/stunned = 0
 	var/weakened = 0
 	var/losebreath = 0 //?Carbon
-	var/_intent = null //?Living
 	var/shakecamera = 0
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
-	var/obj/buckled = null //?Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
 
@@ -177,12 +216,16 @@
 
 	var/list/mapobjs = list()
 
-	var/in_throw_mode = 0
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
 
+	// todo: nuke from orbit
 	var/music_lastplayed = "null"
 
+	// todo: nuke from orbit
 	var/job = null //?Living
 
+	// todo: nuke from orbit
 	var/const/blindness = 1 //?Carbon
 	var/const/deafness = 2 //?Carbon
 	var/const/muteness = 4 //?Carbon
@@ -193,7 +236,6 @@
 	var/can_pull_mobs = MOB_PULL_LARGER
 
 	var/datum/dna/dna = null//?Carbon
-	var/radiation = 0 //?Carbon
 
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations
@@ -203,20 +245,8 @@
 	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
 	var/faction = "neutral"
 	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
+	// todo: what the fuck
 	var/can_be_antagged = FALSE
-
-	/// Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
-	var/proc_holder_list[] = list()//Right now unused.
-	//Also unlike the spell list, this would only store the object in contents, not an object in itself.
-
-	/* Add this line to whatever stat module you need in order to use the proc holder list.
-	Unlike the object spell system, it's also possible to attach verb procs from these objects to right-click menus.
-	This requires creating a verb for the object proc holder.
-
-	if (proc_holder_list.len)//Generic list for proc_holder objects.
-		for(var/obj/effect/proc_holder/P in proc_holder_list)
-			statpanel("[P.panel]","",P)
-	*/
 
 	/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant = null
@@ -259,11 +289,6 @@
 	 */
 	var/mob/teleop = null //? This is mainly used for adghosts to hear things from their actual body.
 
-	/// The current turf being examined in the stat panel.
-	var/turf/listed_turf = null
-	/// List of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes.
-	var/list/shouldnt_see = list()
-
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM
 	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
@@ -274,16 +299,8 @@
 
 	var/get_rig_stats = 0
 
-	var/typing
-	var/obj/effect/decal/typing_indicator
-
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
-
-	/// For offsetting mobs.
-	var/default_pixel_x = 0
-	/// For offsetting mobs.
-	var/default_pixel_y = 0
 
 	/// Icon to use when attacking w/o anything in-hand.
 	var/attack_icon
@@ -299,3 +316,20 @@
 
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
+
+	//! ## Virgo Defines
+	/// Do I have the HUD enabled?
+	var/vantag_hud = FALSE
+	/// Allows flight.
+	var/flying = FALSE
+	/// For holding onto a temporary form.
+	var/mob/temporary_form
+	/// Time of client loss, set by Logout(), for timekeeping.
+	var/disconnect_time = null
+
+	var/atom/movable/screen/shadekin/shadekin_display = null
+	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
+
+	//! Typing Indicator
+	var/typing = FALSE
+	var/mutable_appearance/typing_indicator

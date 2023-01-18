@@ -1,7 +1,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	name = "mounted sleeper"
 	desc = "A sleeper. Mountable to an exosuit. (Can be attached to: Medical Exosuits)"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "sleeper_0"
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 3)
 	energy_drain = 20
@@ -237,7 +237,7 @@
 	M.AdjustStunned(-4)
 	M.AdjustWeakened(-4)
 	M.AdjustStunned(-4)
-	M.Paralyse(2)
+	M.Unconscious(2)
 	M.Weaken(2)
 	M.Stun(2)
 	if(M.reagents.get_reagent_amount("inaprovaline") < 5)

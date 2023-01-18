@@ -28,6 +28,13 @@
 	. = ..()
 	if(mapload)
 		levelupdate()
+	if(outdoors)
+		SSplanets.addTurf(src)
+
+/turf/simulated/Destroy()
+	if(outdoors)
+		SSplanets.removeTurf(src)
+	return ..()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -63,12 +70,12 @@
 			wet_overlay = null
 
 /turf/simulated/clean_blood()
-	for(var/obj/effect/decal/cleanable/blood/B in contents)
+	for(var/obj/effect/debris/cleanable/blood/B in contents)
 		B.clean_blood()
 	..()
 
 /turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
-	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src
+	var/obj/effect/debris/cleanable/blood/tracks/tracks = locate(typepath) in src
 	if(!tracks)
 		tracks = new typepath(src)
 	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
@@ -76,10 +83,10 @@
 /turf/simulated/proc/update_dirt()
 	if(can_dirty)
 		dirt = min(dirt+1, 101)
-		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, src)
+		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, src)
 		if (dirt > 50)
 			if (!dirtoverlay)
-				dirtoverlay = new/obj/effect/decal/cleanable/dirt(src)
+				dirtoverlay = new/obj/effect/debris/cleanable/dirt(src)
 			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
 
 /turf/simulated/Entered(atom/A, atom/OL)
@@ -153,7 +160,7 @@
 		return 0
 
 	if(istype(M))
-		for(var/obj/effect/decal/cleanable/blood/B in contents)
+		for(var/obj/effect/debris/cleanable/blood/B in contents)
 			if(!B.blood_DNA)
 				B.blood_DNA = list()
 			if(!B.blood_DNA[M.dna.unique_enzymes])
@@ -167,10 +174,10 @@
 // Only adds blood on the floor -- Skie
 /turf/simulated/proc/add_blood_floor(mob/living/carbon/M as mob)
 	if( istype(M, /mob/living/carbon/alien ))
-		var/obj/effect/decal/cleanable/blood/xeno/this = new /obj/effect/decal/cleanable/blood/xeno(src)
+		var/obj/effect/debris/cleanable/blood/xeno/this = new /obj/effect/debris/cleanable/blood/xeno(src)
 		this.blood_DNA["UNKNOWN BLOOD"] = "X*"
 	else if( istype(M, /mob/living/silicon/robot ))
-		new /obj/effect/decal/cleanable/blood/oil(src)
+		new /obj/effect/debris/cleanable/blood/oil(src)
 	else if(ishuman(M))
 		add_blood(M)
 

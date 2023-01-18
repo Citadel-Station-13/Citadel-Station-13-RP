@@ -3,7 +3,7 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "retail_idle"
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 	req_access = list(access_heads)
 	w_class = ITEMSIZE_SMALL
@@ -26,10 +26,10 @@
 // Claim machine ID
 /obj/item/retail_scanner/Initialize(mapload)
 	. = ..()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
+	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	if(locate(/obj/structure/table) in loc)
 		pixel_y = 3
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 // Always face the user when put on a table
 /obj/item/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
@@ -41,7 +41,7 @@
 		scan_item_price(AM)
 
 // Reset dir when picked back up
-/obj/item/retail_scanner/pickup(mob/user)
+/obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	setDir(SOUTH)
 	pixel_y = 0
@@ -228,7 +228,7 @@
 					T.purpose = transaction_purpose
 					T.amount = "([transaction_amount])"
 					T.source_terminal = machine_id
-					T.date = current_date_string
+					T.date = GLOB.current_date_string
 					T.time = stationtime2text()
 					D.transaction_log.Add(T)
 
@@ -238,7 +238,7 @@
 					T.purpose = transaction_purpose
 					T.amount = "[transaction_amount]"
 					T.source_terminal = machine_id
-					T.date = current_date_string
+					T.date = GLOB.current_date_string
 					T.time = stationtime2text()
 					linked_account.transaction_log.Add(T)
 
@@ -271,7 +271,7 @@
 			T.purpose = transaction_purpose
 			T.amount = "[transaction_amount]"
 			T.source_terminal = machine_id
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = stationtime2text()
 			linked_account.transaction_log.Add(T)
 

@@ -52,8 +52,9 @@
 
 /obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
-		if(!card && user.unEquip(I))
-			I.forceMove(src)
+		if(!card)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			card = I
 			SStgui.update_uis(src)
 			update_icon()
@@ -91,7 +92,7 @@
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/job/job = job_master.GetJob(card.rank)
+		var/datum/job/job = SSjob.get_job(card.rank)
 		if(job)
 			data["job_datum"] = list(
 				"title" = job.title,
@@ -120,9 +121,10 @@
 				usr.put_in_hands(card)
 				card = null
 			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-					I.forceMove(src)
+				var/obj/item/I = usr.get_active_held_item()
+				if (istype(I, /obj/item/card/id))
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					card = I
 			update_icon()
 			return TRUE
@@ -146,7 +148,7 @@
 
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjob.occupations)
 		if(isOpenOnDutyJob(user, department, job))
 			available_jobs[job.title] = list(job.title)
 			if(job.alt_titles)
@@ -166,8 +168,8 @@
 		   && job.timeoff_factor > 0
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
-	var/datum/job/oldjob = job_master.GetJob(card.rank)
-	var/datum/job/newjob = job_master.GetJob(newrank)
+	var/datum/job/oldjob = SSjob.get_job(card.rank)
+	var/datum/job/newjob = SSjob.get_job(newrank)
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
@@ -188,12 +190,12 @@
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
-	var/datum/job/foundjob = job_master.GetJob(card.rank)
+	var/datum/job/foundjob = SSjob.get_job(card.rank)
 	if(!foundjob)
 		return
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
 	var/datum/job/ptojob = null
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjob.occupations)
 		if(job.pto_type == new_dept && job.timeoff_factor < 0)
 			ptojob = job
 			break

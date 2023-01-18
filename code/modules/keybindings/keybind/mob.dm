@@ -104,6 +104,30 @@
 	M.mode()
 	return TRUE
 
+/datum/keybinding/mob/multihand_wield
+	hotkey_keys = list("ShiftX")
+	classic_keys = list("X")
+	name = "multihand_wield"
+	full_name = "Wield Item"
+	description = "Wield an item with two, or more hands (if it's supported)."
+
+/datum/keybinding/mob/multihand_wield/down(client/user)
+	// yes, get component is asinine sometimes
+	// i don't care though, this is such a small feature
+	var/obj/item/I = user.mob.get_active_held_item()
+	if(!I)
+		to_chat(user, SPAN_WARNING("You are not holding anything to wield."))
+		return FALSE
+	var/datum/component/wielding/comp = I.GetComponent(/datum/component/wielding)
+	if(!comp)
+		to_chat(user, SPAN_WARNING("That can't be wielded."))
+		return FALSE
+	if(comp.wielder)
+		comp.unwield()
+	else
+		comp.wield(user.mob)
+	return TRUE
+
 /datum/keybinding/mob/say
 	hotkey_keys = list("T", "F3")
 	name = "say"
@@ -174,11 +198,11 @@
 	if(isrobot(user.mob)) //cyborgs can't drop items
 		return FALSE
 	var/mob/M = user.mob
-	var/obj/item/I = M.get_active_hand()
+	var/obj/item/I = M.get_active_held_item()
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else
-		M.drop_item(M.drop_location())
+		M.drop_item_to_ground(I)
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

@@ -54,13 +54,13 @@
 	if(linked)
 		user.set_machine(src)
 		user.reset_perspective(linked)
-	user.set_viewsize(world.view + extra_view)
+	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()
-	user.set_viewsize() // reset to default
+	user.client?.change_view(world.view, translocate = FALSE) // reset to default
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
@@ -110,12 +110,12 @@
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
 	data["s_x"] = linked.x
 	data["s_y"] = linked.y
-	data["speed"] = round(linked.get_speed()*1000, 0.01)
-	data["accel"] = round(linked.get_acceleration()*1000, 0.01)
+	data["speed"] = round(linked.get_speed_legacy()*1000, 0.01)
+	data["accel"] = round(linked.get_acceleration_legacy()*1000, 0.01)
 	data["heading"] = linked.get_heading_degrees()
 	data["viewing"] = viewing_overmap(user)
 
-	if(linked.get_speed())
+	if(linked.get_speed_legacy())
 		data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
 	else
 		data["ETAnext"] = "N/A"
@@ -175,13 +175,6 @@
 			sensors = S
 			break
 
-/datum/tgui_module/ship/fullmonty/relaymove(var/mob/user, direction)
-	if(viewing_overmap(user) && linked)
-		direction = turn(direction,pick(90,-90))
-		linked.relaymove(user, direction, accellimit)
-		return 1
-	return ..()
-
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
 /datum/tgui_module/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
@@ -199,7 +192,7 @@
 	data["d_x"] = dx
 	data["d_y"] = dy
 	data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
-	data["accel"] = min(round(linked.get_acceleration()*1000, 0.01),accellimit*1000)
+	data["accel"] = min(round(linked.get_acceleration_legacy()*1000, 0.01),accellimit*1000)
 	data["heading"] = linked.get_heading_degrees()
 	data["autopilot_disabled"] = autopilot_disabled
 	data["autopilot"] = autopilot
@@ -207,16 +200,16 @@
 	data["canburn"] = linked.can_burn()
 	data["accellimit"] = accellimit*1000
 
-	var/speed = round(linked.get_speed()*1000, 0.01)
+	var/speed = round(linked.get_speed_legacy()*1000, 0.01)
 	var/speed_color = null
-	if(linked.get_speed() < SHIP_SPEED_SLOW)
+	if(linked.get_speed_legacy() < SHIP_SPEED_SLOW)
 		speed_color = "good"
-	if(linked.get_speed() > SHIP_SPEED_FAST)
+	if(linked.get_speed_legacy() > SHIP_SPEED_FAST)
 		speed_color = "average"
 	data["speed"] = speed
 	data["speed_color"] = speed_color
 
-	if(linked.get_speed())
+	if(linked.get_speed_legacy())
 		data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
 	else
 		data["ETAnext"] = "N/A"

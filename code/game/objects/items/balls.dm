@@ -6,9 +6,9 @@
 	icon = 'icons/obj/balls.dmi'
 	icon_state = "tennis_classic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/balls_left.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/balls_right.dmi',
-		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/mouthball.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/balls_left.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/balls_right.dmi',
+		SLOT_ID_MASK = 'icons/mob/mouthball.dmi'
 		)
 	item_state = "tennis_classic"
 	slot_flags = SLOT_MASK

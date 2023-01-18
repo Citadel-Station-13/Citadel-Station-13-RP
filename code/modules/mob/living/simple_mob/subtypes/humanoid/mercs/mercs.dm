@@ -71,7 +71,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
-	corpse = /atom/movable/spawner/corpse/syndicatesoldier
+	corpse = /obj/spawner/corpse/syndicatesoldier
 	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
@@ -112,7 +112,7 @@
 
 	var/obj/item/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
-		G.throw_at(A, G.throw_range, G.throw_speed, src)
+		G.throw_at_old(A, G.throw_range, G.throw_speed, src)
 		G.det_time = grenade_timer
 		G.activate(src)
 		special_attack_charges = max(special_attack_charges-1, 0)
@@ -194,7 +194,7 @@
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
-	loot_list = list(/obj/item/gun/projectile/colt = 100)
+	loot_list = list(/obj/item/gun/ballistic/colt = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Not the best default, but it fits the pistol
@@ -207,7 +207,7 @@
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
@@ -228,8 +228,8 @@
 	icon_living = "blueforranged_smg"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
-	corpse = /atom/movable/spawner/corpse/solarpeacekeeper
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+	corpse = /obj/spawner/corpse/solarpeacekeeper
+	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -269,7 +269,7 @@
 	projectiletype = /obj/item/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/garand = 100)
+	loot_list = list(/obj/item/gun/ballistic/garand = 100)
 
 	reload_max = 8
 	reload_time = 2 // It takes a bit to jam a stripper clip into the rifle.
@@ -282,7 +282,7 @@
 	icon_living = "syndicate_handcannon"
 	projectiletype = /obj/item/projectile/bullet/pistol/strong
 	projectilesound = 'sound/weapons/Gunshot_deagle.ogg'
-	loot_list = list(/obj/item/gun/projectile/deagle = 100)
+	loot_list = list(/obj/item/gun/ballistic/deagle = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Deagle Reload
@@ -306,7 +306,7 @@
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/grenadier)
 
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump = 100)
+	loot_list = list(/obj/item/gun/ballistic/shotgun/pump = 100)
 
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment
@@ -348,7 +348,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/spawner/corpse/syndicatecommando
+	corpse = /obj/spawner/corpse/syndicatecommando
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/space/Process_Spacemove(var/check_drift = 0)
 	return
@@ -374,12 +374,12 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/spawner/corpse/syndicatecommando
+	corpse = /obj/spawner/corpse/syndicatecommando
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
@@ -398,7 +398,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100)
+	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100)
 
 //Auto-Shotgun Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
@@ -413,7 +413,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/automatic/as24 = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/as24 = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
@@ -430,7 +430,7 @@
 	projectiletype = /obj/item/projectile/bullet/rifle/a545
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/automatic/l6_saw = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/lmg = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
@@ -460,7 +460,7 @@
 	projectiletype = /obj/item/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/automatic/fal = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/fal = 100)
 
 	reload_max = 20
 
@@ -501,7 +501,7 @@
 	// you thought killing him would be the least of your worries?
 	// think again
 	var/obj/item/grenade/banger = new deathnade_path(get_turf(src))
-	banger.throw_at(ai_holder.target, 9, 9, null)
+	banger.throw_at_old(ai_holder.target, 9, 9, null)
 	banger.det_time = 25
 	banger.activate(null)
 	..()
@@ -617,8 +617,8 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/spawner/corpse/vox/pirate
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
+	corpse = /obj/spawner/corpse/vox/pirate
+	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting = 100,
 					/obj/item/ammo_magazine/clip/c762 = 30,
 					/obj/item/ammo_magazine/clip/c762 = 30
 					)
@@ -660,7 +660,7 @@
 	attack_edge = 1
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
-	corpse = /atom/movable/spawner/corpse/vox/boarder_m
+	corpse = /obj/spawner/corpse/vox/boarder_m
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
@@ -703,8 +703,8 @@
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
-	corpse = /atom/movable/spawner/corpse/vox/boarder_r
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
+	corpse = /obj/spawner/corpse/vox/boarder_r
+	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,
 					/obj/item/ammo_magazine/m12gdrum = 30
 					)
@@ -734,7 +734,7 @@
 	projectilesound = 'sound/weapons/Laser.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
-	corpse = /atom/movable/spawner/corpse/vox/boarder_t
+	corpse = /obj/spawner/corpse/vox/boarder_t
 	loot_list = list(/obj/item/gun/energy/ionrifle)
 
 	needs_reload = TRUE
@@ -766,7 +766,7 @@
 	projectilesound = 'sound/effects/basscannon.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/destructive
-	corpse = /atom/movable/spawner/corpse/vox/suppressor
+	corpse = /obj/spawner/corpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
@@ -798,7 +798,7 @@
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/destructive
-	corpse = /atom/movable/spawner/corpse/vox/captain
+	corpse = /obj/spawner/corpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
 	needs_reload = TRUE

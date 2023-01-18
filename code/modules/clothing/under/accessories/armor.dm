@@ -176,7 +176,7 @@
 /obj/item/clothing/accessory/armor/armguards
 	name = "arm guards"
 	desc = "A pair of black arm pads reinforced with armor plating. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
 	body_parts_covered = ARMS
@@ -209,7 +209,7 @@
 	name = "ablative arm guards"
 	desc = "These arm guards will protect your arms from energy weapons."
 	icon_state = "armguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -217,7 +217,7 @@
 	name = "bullet resistant arm guards"
 	desc = "These arm guards will protect your arms from ballistic weapons."
 	icon_state = "armguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
 	armor = list(melee = 10, bullet = 80, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -225,7 +225,7 @@
 	name = "riot arm guards"
 	desc = "These arm guards will protect your arms from close combat weapons."
 	icon_state = "armguards_riot"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -235,7 +235,7 @@
 /obj/item/clothing/accessory/armor/legguards
 	name = "leg guards"
 	desc = "A pair of armored leg pads in black. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
 	body_parts_covered = LEGS
@@ -268,7 +268,7 @@
 	name = "ablative leg guards"
 	desc = "These will protect your legs from energy weapons."
 	icon_state = "legguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -276,7 +276,7 @@
 	name = "bullet resistant leg guards"
 	desc = "These will protect your legs from ballistic weapons."
 	icon_state = "legguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
 	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
@@ -284,7 +284,7 @@
 	name = "riot leg guards"
 	desc = "These will protect your legs from close combat weapons."
 	icon_state = "legguards_riot"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
@@ -294,7 +294,7 @@
 /obj/item/clothing/accessory/armor/tag
 	name = "\improper SCG Flag"
 	desc = "An emblem depicting the Solar Confederate Government's flag."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL
@@ -378,7 +378,7 @@
 // Helmet Covers
 /////////////////
 
-obj/item/clothing/accessory/armor/helmcover
+/obj/item/clothing/accessory/armor/helmcover
 	name = "helmet cover"
 	desc = "A fabric cover for armored helmets."
 	icon_override = 'icons/mob/clothing/ties.dmi'

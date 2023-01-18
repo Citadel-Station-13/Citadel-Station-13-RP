@@ -1,11 +1,10 @@
-/mob/living/silicon/decoy/Life()
-	if (src.stat == 2)
+/mob/living/silicon/decoy/Life(seconds, times_fired)
+	if((. = ..()))
 		return
-	else
-		if (src.health <= config_legacy.health_threshold_dead && src.stat != 2)
-			death()
-			return
 
+	if (src.health <= config_legacy.health_threshold_dead && stat != DEAD)
+		death()
+		return TRUE
 
 /mob/living/silicon/decoy/updatehealth()
 	if(status_flags & GODMODE)

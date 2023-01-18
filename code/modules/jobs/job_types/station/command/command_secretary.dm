@@ -1,4 +1,5 @@
 /datum/job/station/command_secretary
+	id = JOB_ID_COMMAND_SECRETARY
 	title = "Command Secretary"
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
@@ -46,6 +47,7 @@
 
 /datum/alt_title/commsec/officer
 	title = "Bridge Officer"
+	title_outfit = /datum/outfit/job/station/command_secretary/bridge_officer
 
 /datum/outfit/job/station/command_secretary
 	name = OUTFIT_JOB_NAME("Command Secretary")
@@ -61,3 +63,20 @@
 		uniform = /obj/item/clothing/under/suit_jacket/female/skirt
 	else
 		uniform = /obj/item/clothing/under/suit_jacket/charcoal
+
+/datum/outfit/job/station/command_secretary/bridge_officer
+	name = OUTFIT_JOB_NAME("Bridge Officer")
+	shoes = /obj/item/clothing/shoes/laceup
+	id_type = /obj/item/card/id/silver/secretary
+	pda_type = /obj/item/pda/heads/hop
+	l_hand = /obj/item/clipboard
+	head = /obj/item/clothing/head/bocap
+	suit = /obj/item/clothing/suit/storage/bridgeofficer
+	glasses = /obj/item/clothing/glasses/sunglasses
+
+/datum/outfit/job/station/command_secretary/bridge_officer/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/bridgeofficerskirt
+	else
+		uniform = /obj/item/clothing/under/bridgeofficer

@@ -131,7 +131,7 @@
 				var/turf/checking = locate(tx,ty,cz)
 
 				if(!istype(checking))
-					log_debug("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting.")
+					log_debug(SPAN_DEBUGERROR("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting."))
 					qdel(src)
 					return
 
@@ -153,7 +153,7 @@
 
 				// Clear out contents.
 				for(var/atom/movable/thing in checking.contents)
-					if(!(thing.flags & AF_ABSTRACT))
+					if(!(thing.atom_flags & ATOM_ABSTRACT))
 						qdel(thing)
 
 				if(tx >= ux && tx <= ex && ty >= uy && ty <= ey)
@@ -170,7 +170,7 @@
 						checking.ChangeTurf(floor_type)
 						checking = locate(tx,ty,cz)
 					for(var/atom/movable/thing in checking.contents)
-						if(!(thing.flags & AF_ABSTRACT))
+						if(!(thing.atom_flags & ATOM_ABSTRACT))
 							qdel(thing)
 				if(checking.type == floor_type) // Don't build over empty space on lower levels.
 					var/obj/machinery/door/airlock/lift/newdoor = new door_type(checking)
@@ -202,7 +202,7 @@
 
 		// Update area.
 		if(az > areas_to_use.len)
-			log_debug("Insufficient defined areas in turbolift datum, aborting.")
+			log_debug(SPAN_DEBUGWARNING("Insufficient defined areas in turbolift datum, aborting."))
 			qdel(src)
 			return
 

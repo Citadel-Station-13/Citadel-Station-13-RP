@@ -20,32 +20,37 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
-/obj/item/clothing/gloves/regen/equipped(var/mob/living/carbon/human/H)
-	if(H && H.gloves == src)
-		wearer = H
-		if(wearer.can_feel_pain())
-			to_chat(H, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
-			wearer.custom_pain("You feel a sharp pain in your hands!",1)
-	..()
+/obj/item/clothing/gloves/regen/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_GLOVES)
+		var/mob/living/L = user
+		if(!istype(L))
+			return
+		if(L.can_feel_pain())
+			to_chat(L, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
+			L.custom_pain("You feel a sharp pain in your hands!",1)
 
-/obj/item/clothing/gloves/regen/dropped(var/mob/living/carbon/human/H)
-	..()
-	if(wearer)
-		if(wearer.can_feel_pain())
-			to_chat(wearer, "<span class='danger'>You feel the hypodermic needles as you slide \the [src] off!</span>")
-			wearer.custom_pain("Your hands hurt like hell!",1)
-		wearer = null
+/obj/item/clothing/gloves/regen/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_GLOVES)
+		var/mob/living/L = user
+		if(!istype(L))
+			return
+		if(L.can_feel_pain())
+			to_chat(user, "<span class='danger'>You feel the hypodermic needles as you slide \the [src] off!</span>")
+			L.custom_pain("Your hands hurt like hell!",1)
 
 /obj/item/clothing/gloves/regen/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/gloves/regen/Destroy()
-	wearer = null
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/clothing/gloves/regen/process(delta_time)
+	var/mob/living/wearer = worn_mob()
+
 	if(!wearer || wearer.isSynthetic() || wearer.stat == DEAD || wearer.nutrition <= 10)
 		return // Robots and dead people don't have a metabolism.
 

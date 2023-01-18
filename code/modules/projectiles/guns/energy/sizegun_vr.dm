@@ -25,7 +25,7 @@
 
 /obj/item/gun/energy/sizegun/Initialize(mapload)
 	. = ..()
-	verbs += /obj/item/gun/energy/sizegun/proc/select_size
+	add_obj_verb(src, /obj/item/gun/energy/sizegun/proc/select_size)
 
 /obj/item/gun/energy/sizegun/attack_self(mob/user)
 	. = ..()

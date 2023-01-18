@@ -286,8 +286,8 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/teshari
 	name = "Teshari labcoat"
 	desc = "A small suit that protects against minor chemical spills. This one is a good fit on Teshari."
-	icon = 'icons/mob/clothing/species/teshari/suit.dmi'
-	icon_override = 'icons/mob/clothing/species/teshari/suit.dmi'
+	icon = 'icons/mob/clothing/species/teshari/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
 	icon_state = "tesh_labcoat"
 	species_restricted = list(SPECIES_TESHARI)
 
@@ -317,7 +317,7 @@
 	icon_override = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hcloak_bo"
-	item_state_slots = list(slot_r_hand_str = "tesh_hcloak_bo", slot_l_hand_str = "tesh_hcloak_bo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hcloak_bo", SLOT_ID_LEFT_HAND = "tesh_hcloak_bo")
 	species_restricted = list(SPECIES_TESHARI)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER|HIDETIE
@@ -335,7 +335,7 @@
 	icon_override = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hood_bo"
-	item_state_slots = list(slot_r_hand_str = "tesh_hood_bo", slot_l_hand_str = "tesh_hood_bo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hood_bo", SLOT_ID_LEFT_HAND = "tesh_hood_bo")
 	flags_inv = BLOCKHAIR
 	body_parts_covered = HEAD
 	cold_protection = HEAD|FACE

@@ -73,7 +73,7 @@
 	maxHealth = 200
 	health = 200
 	randomized = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5
@@ -121,7 +121,7 @@
 // Does actual poison injection, after all checks passed.
 /mob/living/simple_mob/animal/giant_spider/proc/inject_poison(mob/living/L, target_zone)
 	if(prob(poison_chance))
-		to_chat(L, "<span class='warning'>You feel a tiny prick.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 /mob/living/simple_mob/animal/giant_spider/proc/make_spiderling()

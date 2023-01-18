@@ -159,7 +159,7 @@
 
 	if(stance in STANCES_COMBAT)
 		// Should resist?  We check this before fleeing so that we can actually flee and not be trapped in a chair.
-		if(holder.incapacitated(INCAPACITATION_BUCKLED_PARTIALLY))
+		if(holder.incapacitated(INCAPACITATION_BUCKLED_PARTIALLY) || LAZYLEN(holder.grabbed_by))
 			ai_log("handle_stance_tactical() : Going to handle_resist().", AI_LOG_TRACE)
 			handle_resist()
 
@@ -167,7 +167,7 @@
 			var/obj/structure/closet/C = holder.loc
 			ai_log("handle_stance_tactical() : Inside a closet. Going to attempt escape.", AI_LOG_TRACE)
 			if(C.sealed)
-				holder.resist()
+				INVOKE_ASYNC(holder, /mob/living/verb/resist)
 			else
 				C.open()
 
@@ -176,6 +176,10 @@
 			ai_log("handle_stance_tactical() : Going to flee.", AI_LOG_TRACE)
 			set_stance(STANCE_FLEE)
 			return
+	else if(stance == STANCE_DISABLED)
+		if(LAZYLEN(holder.grabbed_by))
+			ai_log("handle_stance_tactical() : Going to resist while disabled due to grab.", AI_LOG_TRACE)
+			holder.resist()
 
 	switch(stance)
 		if(STANCE_IDLE)

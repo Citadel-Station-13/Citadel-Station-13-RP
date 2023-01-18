@@ -13,7 +13,7 @@
 	icon_state = "fishing_rod"
 	item_state = "fishing_rod"
 	force_divisor = 0.02
-	throwforce = 1
+	throw_force = 1
 	sharp = TRUE
 	attack_verb = list("whipped", "battered", "slapped", "fished", "hooked")
 	hitsound = 'sound/weapons/punchmiss.ogg'
@@ -37,7 +37,7 @@
 	. = ..()
 	if(Bait)
 		. += "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>"
-		Bait.examine(user)
+		. += Bait.examine(user)
 
 /obj/item/material/fishing_rod/CtrlClick(mob/user)
 	if((src.loc == user || Adjacent(user)) && Bait)
@@ -69,20 +69,20 @@
 			update_icon()
 			return
 	else if(istype(I, bait_type))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		if(Bait)
-			Bait.forceMove(get_turf(user))
+			user.grab_item_from_interacted_with(Bait, src)
 			to_chat(user, "<span class='notice'>You swap \the [Bait] with \the [I].</span>")
 		Bait = I
-		user.drop_from_inventory(Bait)
-		Bait.forceMove(src)
 		update_bait()
 	return ..()
 
 /obj/item/material/fishing_rod/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(strung)
-		overlays += image(icon, "[icon_state]_string")
+		add_overlay(image(icon, "[icon_state]_string"))
 
 /obj/item/material/fishing_rod/proc/update_bait()
 	if(istype(Bait, bait_type))
@@ -91,10 +91,10 @@
 			if(re.id == "nutriment" || re.id == "protein" || re.id == "glucose" || re.id == "fishbait")
 				foodvolume += re.volume
 
-		toolspeed = initial(toolspeed) * min(0.75, (0.5 / max(0.5, (foodvolume / Bait.reagents.maximum_volume))))
+		tool_speed = initial(tool_speed) * min(0.75, (0.5 / max(0.5, (foodvolume / Bait.reagents.maximum_volume))))
 
 	else
-		toolspeed = initial(toolspeed)
+		tool_speed = initial(tool_speed)
 
 /obj/item/material/fishing_rod/proc/consume_bait()
 	if(Bait)
@@ -102,13 +102,6 @@
 		Bait = null
 		return TRUE
 	return FALSE
-
-/obj/item/material/fishing_rod/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(cast)
-		to_chat(user, "<span class='notice'>You cannot cast \the [src] when it is already in use!</span>")
-		return FALSE
-	update_bait()
-	return ..()
 
 /obj/item/material/fishing_rod/modern
 	name = "fishing rod"
@@ -119,7 +112,7 @@
 	attackspeed = 2 SECONDS
 	default_material = "titanium"
 
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 /obj/item/material/fishing_rod/modern/built
 	strung = FALSE
@@ -129,10 +122,10 @@
 	desc = "Mass produced, but somewhat reliable."
 	default_material = "plastic"
 
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/material/fishing_rod/modern/strong
 	desc = "A extremely refined rod for catching fish."
 	default_material = "durasteel"
 
-	toolspeed = 0.5
+	tool_speed = 0.5

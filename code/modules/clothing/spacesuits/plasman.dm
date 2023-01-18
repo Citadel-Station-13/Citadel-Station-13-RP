@@ -4,7 +4,7 @@
 	name = "Phoronoid containment suit"
 	icon = 'icons/obj/plasmeme/suits.dmi'
 	icon_state = "plasmaman_suit"
-	icon_override = 'icons/mob/plasmeme/suit.dmi'
+	icon_override = 'icons/mob/plasmeme/suits.dmi'
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Seems like it doesn't protect from much else."
 	slowdown = 1
 	clothing_flags = ALLOWINTERNALS

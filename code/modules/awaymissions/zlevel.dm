@@ -54,14 +54,14 @@
 		return
 
 // This landmark type so it's not so ghetto.
-/atom/movable/landmark/gateway_scatter
+/obj/landmark/gateway_scatter
 	name = "uncalibrated gateway destination"
-/atom/movable/landmark/gateway_scatter/Initialize(mapload)
+/obj/landmark/gateway_scatter/Initialize(mapload)
 	. = ..()
 	awaydestinations += src
 
-/atom/movable/landmark/event_scatter
+/obj/landmark/event_scatter
 	name = "uncalibrated gateway destination"
-/atom/movable/landmark/event_scatter/Initialize(mapload)
+/obj/landmark/event_scatter/Initialize(mapload)
 	. = ..()
 	eventdestinations += src

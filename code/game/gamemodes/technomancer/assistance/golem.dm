@@ -103,31 +103,33 @@
 /mob/living/simple_animal/hostile/hivebot/death()
 	..()
 	visible_message("\The [src] disintegrates!")
-	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs/robot(src.loc)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
 
 /mob/living/simple_animal/technomancer_golem/update_icon()
-	overlays.Cut()
-	overlays += sword_image
-	overlays += spell_image
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	overlays_to_add += sword_image
+	overlays_to_add += spell_image
+	add_overlay(overlays_to_add)
 	update_modifier_visuals()
 
-// Unfortunately, BYOND does not let you flick() images or other overlays, so we need to do this in a terrible way.
-/atom/proc/manual_flick(var/list/frames, var/image/I, var/reset_to = null)
+/// Unfortunately, BYOND does not let you flick() images or other overlays, so we need to do this in a terrible way.
+/atom/proc/manual_flick(list/frames, image/I, reset_to = null)
 	// Swap in and out each frame manually.
 	for(var/frame in frames)
-		overlays -= I
+		cut_overlay(I)
 		I.icon_state = frame
-		overlays += I
+		add_overlay(I)
 		sleep(frames[frame])
 	if(reset_to)
 		// One more time to reset it to what it was before.
-		overlays -= I
+		cut_overlay(I)
 		I.icon_state = reset_to
-		overlays += I
+		add_overlay(I)
 
 /mob/living/simple_animal/technomancer_golem/proc/spellcast_pre_animation()
 	setClickCooldown(5)
@@ -213,7 +215,7 @@
 		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \
 		yourself!  It'll always stand by your side, ready to help you out.  You have no idea what GOLEM stands for, however..."
 
-/mob/living/simple_animal/technomancer_golem/Life()
+/mob/living/simple_animal/technomancer_golem/Life(seconds, times_fired)
 	..()
 	handle_ai()
 

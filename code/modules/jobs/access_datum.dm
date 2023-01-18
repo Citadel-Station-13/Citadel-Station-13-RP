@@ -494,9 +494,19 @@ var/const/access_pilot = 67
 	id = access_syndicate
 	access_type = ACCESS_TYPE_SYNDICATE
 
+/var/const/access_pirate = 168//Pirate Crew Access (Blackbeard was born in 1680.)
+/datum/access/pirate
+	id = access_pirate
+	access_type = ACCESS_TYPE_PRIVATE
+
 /*******
 * Misc *
 *******/
+/var/const/access_trader = 160//General Beruang Trader Access
+/datum/access/trader
+	id = access_trader
+	access_type = ACCESS_TYPE_PRIVATE
+
 /var/const/access_synth = 199
 /datum/access/synthetic
 	id = access_synth
@@ -507,11 +517,6 @@ var/const/access_pilot = 67
 /datum/access/crate_cash
 	id = access_crate_cash
 	access_type = ACCESS_TYPE_NONE
-
-/var/const/access_trader = 160//General Beruang Trader Access
-/datum/access/trader
-	id = access_trader
-	access_type = ACCESS_TYPE_PRIVATE
 
 /var/const/access_alien = 300 // For things like crashed ships.
 /datum/access/alien

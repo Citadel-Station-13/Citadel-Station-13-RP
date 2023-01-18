@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/tether_gateway/snowfield
+/obj/effect/overmap/visitable/sector/gateway/snowfield
 	initial_generic_waypoints = list("tether_excursion_snowfield")
 	in_space = 0
 	scanner_name = "Snowy Field"
@@ -106,7 +106,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. The controls are locked."
 	icon_state = "smes"
 
-/atom/movable/landmark/away
+/obj/landmark/away
 	name = "awaystart"
 
 /obj/effect/floor_decal/derelict/d1

@@ -14,8 +14,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "ap" = (
 /obj/structure/cable/orange{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -40,7 +38,7 @@
 	amount = 10
 	},
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "bH" = (
@@ -48,7 +46,7 @@
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "bQ" = (
@@ -72,8 +70,6 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "cZ" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -88,8 +84,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "dy" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -117,7 +111,7 @@
 /area/class_d/unexplored)
 "ex" = (
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "eT" = (
@@ -161,8 +155,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "gH" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -181,8 +173,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "hu" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
@@ -194,8 +184,6 @@
 /area/class_d/explored/underground)
 "hD" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/item/ammo_casing/spent,
@@ -266,7 +254,6 @@
 /area/class_d/unexplored/underground)
 "kb" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -284,8 +271,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "kn" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
@@ -296,13 +281,9 @@
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "kA" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/classd,
@@ -346,8 +327,6 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 4;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -357,15 +336,12 @@
 	dir = 4
 	},
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "mk" = (
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -385,8 +361,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "mo" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -396,8 +370,6 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "mU" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -414,16 +386,12 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "nk" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "np" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock,
@@ -451,8 +419,6 @@
 "ob" = (
 /obj/structure/closet/crate/mimic/airlock/dangerous,
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd,
@@ -468,7 +434,6 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "ov" = (
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -487,8 +452,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "oJ" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -514,8 +477,6 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "pw" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd,
@@ -537,8 +498,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "pW" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -564,7 +523,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/classd,
@@ -580,8 +538,6 @@
 	dir = 8
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classd,
@@ -592,8 +548,6 @@
 /area/class_d/unexplored/underground)
 "rr" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -626,8 +580,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "rO" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -655,16 +607,12 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "st" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "sO" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -689,7 +637,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "te" = (
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -703,8 +650,6 @@
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "ti" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -756,8 +701,6 @@
 /area/class_d/unexplored/underground)
 "uA" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -772,7 +715,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "uH" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "vo" = (
@@ -784,7 +727,7 @@
 "vy" = (
 /obj/item/beartrap,
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "vD" = (
@@ -809,8 +752,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "wv" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/light/spot/flicker{
@@ -837,18 +778,12 @@
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "wK" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -904,8 +839,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "yb" = (
 /obj/structure/cable/orange{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/classd,
@@ -915,8 +848,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "yd" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -930,13 +861,9 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "yl" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -958,8 +885,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "yO" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/sandbag,
@@ -967,7 +892,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "yQ" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/offmap_spawn/empty,
@@ -983,7 +907,7 @@
 /turf/simulated/floor/outdoors/rocks/classd,
 /area/class_d/explored)
 "zT" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Af" = (
@@ -998,8 +922,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "Aq" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classd,
@@ -1021,11 +943,9 @@
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "AZ" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1081,8 +1001,6 @@
 /area/class_d/unexplored)
 "CV" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/classd,
@@ -1133,8 +1051,6 @@
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Ej" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/gibspawner/robot,
@@ -1143,8 +1059,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "ED" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1152,8 +1066,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "EE" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1243,8 +1155,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "GT" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/classd,
@@ -1255,7 +1165,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "HB" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "HD" = (
@@ -1284,7 +1194,7 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Ik" = (
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Im" = (
@@ -1306,8 +1216,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "ID" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd,
@@ -1388,13 +1296,9 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "KD" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/classd,
@@ -1452,7 +1356,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "Mf" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1467,7 +1371,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "MG" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "MP" = (
@@ -1488,8 +1392,6 @@
 "Nz" = (
 /obj/structure/barricade,
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classd,
@@ -1506,14 +1408,12 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "On" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Oy" = (
@@ -1531,7 +1431,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "OH" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -1567,8 +1466,6 @@
 	dir = 4
 	},
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -1608,8 +1505,6 @@
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "Qz" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1622,8 +1517,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "Ry" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/light/spot/flicker{
@@ -1639,19 +1532,15 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "Sc" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Sk" = (
@@ -1669,8 +1558,6 @@
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "SR" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -1681,19 +1568,15 @@
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "SU" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "SZ" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "Tg" = (
@@ -1748,8 +1631,6 @@
 	anchored = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 8;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -1760,8 +1641,6 @@
 /area/class_d/explored/underground)
 "VX" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd/indoors,
@@ -1771,8 +1650,6 @@
 	dir = 4
 	},
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/classd,
@@ -1822,8 +1699,6 @@
 /area/class_d/unexplored)
 "YG" = (
 /obj/structure/cable/orange{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/light/spot{
@@ -1833,8 +1708,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "Za" = (
 /obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -1848,8 +1721,6 @@
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "Zx" = (
 /obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{

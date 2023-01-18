@@ -185,6 +185,16 @@
 			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 			m_type = 1
 
+		if("spin")
+			message = "spins!"
+			m_type = 1
+			if(has_buckled_mobs())
+				for(var/mob/living/L in buckled_mobs)
+					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
+					unbuckle_mob(L, BUCKLE_OP_FORCE)
+					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
+			spin(15, 1)
+
 		if("yes", "ye")
 			var/M = null
 			if(param)
@@ -199,7 +209,7 @@
 				message = "emits an affirmative blip at [param]."
 			else
 				message = "emits an affirmative blip."
-			playsound(src.loc, 'sound/machines/synth_yes.ogg', 50, 0)
+			playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
 			m_type = 1
 
 		if("no")
@@ -329,7 +339,7 @@
 				m_type = 1
 
 		if("law")
-			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine))
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/quad_sec))
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -338,7 +348,7 @@
 				to_chat(src, "You are not THE LAW, pal.")
 
 		if("halt")
-			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine))
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/quad_sec))
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)
@@ -347,7 +357,7 @@
 				to_chat(src, "You are not security.")
 
 		if("bark")
-			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
+			if (istype(module,/obj/item/robot_module/robot/quad_sec) || istype(module,/obj/item/robot_module/robot/quad_medi) || istype(module,/obj/item/robot_module/robot/quad_jani) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/quad_sci) || istype(module,/obj/item/robot_module/robot/quad_engi) || istype(module,/obj/item/robot_module/robot/clerical/quad_serv) || istype(module,/obj/item/robot_module/robot/quad_basic) || istype(module,/obj/item/robot_module/robot/quad_miner))
 				message = "lets out a bark."
 
 				playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
@@ -355,7 +365,7 @@
 			else
 				to_chat(src, "You're not a dog!")
 		if("arfe")
-			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
+			if (istype(module,/obj/item/robot_module/robot/quad_sec) || istype(module,/obj/item/robot_module/robot/quad_medi) || istype(module,/obj/item/robot_module/robot/quad_jani) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/quad_sci) || istype(module,/obj/item/robot_module/robot/quad_engi) || istype(module,/obj/item/robot_module/robot/clerical/quad_serv) || istype(module,/obj/item/robot_module/robot/quad_basic) || istype(module,/obj/item/robot_module/robot/quad_miner))
 				message = "lets out an A R F E."
 
 				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)

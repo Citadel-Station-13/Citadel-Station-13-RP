@@ -5,10 +5,8 @@
 	organ_tag = "liver"
 	parent_organ = BP_GROIN
 
-/obj/item/organ/internal/liver/process(delta_time)
-	..()
-	if(!iscarbon(owner))
-		return
+/obj/item/organ/internal/liver/tick_life(dt)
+	. = ..()
 
 	if((owner.life_tick % 10) == 0)
 
@@ -16,16 +14,16 @@
 		if(owner.getToxLoss() >= 50 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
-				src.damage += 0.2 * (delta_time * 5)
+				src.damage += 0.2 * (dt * 5)
 			//Damaged one shares the fun
 			else
 				var/obj/item/organ/internal/O = pick(owner.internal_organs)
 				if(O)
-					O.damage += 0.2  * (delta_time * 5)
+					O.damage += 0.2  * (dt * 5)
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			src.damage -= 0.2 * (delta_time * 5)
+			heal_damage_i(0.2 * (dt * 5))
 
 		if(src.damage < 0)
 			src.damage = 0
@@ -39,11 +37,11 @@
 
 		// Do some reagent processing.
 		if(owner.chem_effects[CE_ALCOHOL_TOXIC])
-			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5), prob(1)) // Chance to warn them
+			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (dt * 5), prob(1)) // Chance to warn them
 			if(filter_effect < 2)	//Liver is badly damaged, you're drinking yourself to death
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * (delta_time * 5))
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * (dt * 5))
 			if(filter_effect < 3)
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5))
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (dt * 5))
 
 /obj/item/organ/internal/liver/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

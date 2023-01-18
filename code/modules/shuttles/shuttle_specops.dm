@@ -156,10 +156,10 @@
 		sleep(10)
 
 		var/spawn_marauder[] = new()
-		for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+		for(var/obj/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Entry")
 				spawn_marauder.Add(L)
-		for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+		for(var/obj/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Exit")
 				var/obj/effect/portal/P = new(L.loc)
 				P.invisibility = 101	// So it is not seen by anyone.
@@ -202,17 +202,3 @@
 						M.close()
 		special_ops.readyreset()	// Reset firealarm after the team launched.
 	// End Marauder launchpad.
-
-/obj/machinery/light/small/readylight
-	brightness_range = 5
-	brightness_power = 1
-	brightness_color = "#DA0205"
-	var/state = 0
-
-/obj/machinery/light/small/readylight/proc/set_state(var/new_state)
-	state = new_state
-	if(state)
-		brightness_color = "00FF00"
-	else
-		brightness_color = initial(brightness_color)
-	update()

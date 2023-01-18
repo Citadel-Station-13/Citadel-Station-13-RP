@@ -1,11 +1,11 @@
-// Making this separate from /atom/movable/landmark until that mess can be dealt with
+// Making this separate from /obj/landmark until that mess can be dealt with
 /obj/effect/shuttle_landmark
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 	anchored = 1
 	unacidable = 1
-	flags = AF_ABSTRACT
+	atom_flags = ATOM_ABSTRACT
 	invisibility = 101
 	var/shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
 
@@ -56,6 +56,7 @@
 	if(GLOB.using_map.use_overmap)
 		var/obj/effect/overmap/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
+
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()
@@ -176,7 +177,7 @@
 		return
 	var/turf/T = get_turf(src)
 	var/mob/M = loc
-	if(istype(M) && !M.unEquip(src, T))
+	if(istype(M) && !M.drop_item_to_ground(src))
 		return
 
 	active = 1

@@ -11,7 +11,7 @@
 
 /obj/item/paper/carbon/cursedform/burnpaper(obj/item/flame/P, mob/user)
 	var/class = "warning"
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	if(P.lit && !user.restrained())
 		if(istype(P, /obj/item/flame/lighter/zippo))
@@ -24,10 +24,10 @@
 			user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 			"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
-			if(user.get_inactive_hand() == src)
-				user.drop_from_inventory(src)
+			if(user.get_inactive_held_item() == src)
+				user.drop_item_to_ground(src, INV_OP_FORCE)
 
-			new /obj/effect/decal/cleanable/ash(src.loc)
+			new /obj/effect/debris/cleanable/ash(src.loc)
 			qdel(src)
 
 		else

@@ -88,7 +88,7 @@
 
 	switch(action)
 		if("PRG_beginReconstruction")
-			if(occupier?.health < 100)
+			if((occupier?.health < 100) || (occupier?.stat == DEAD))
 				to_chat(usr, "<span class='notice'>Reconstruction in progress. This will take several minutes.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 				restoring = TRUE

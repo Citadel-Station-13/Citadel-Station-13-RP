@@ -49,7 +49,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/possessed //Set to Null on silenced.
 
-//	corpse = /atom/movable/spawner/corpse/possessed
+//	corpse = /obj/spawner/corpse/possessed
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
 
 //Miasma Cloud "Item"
@@ -83,7 +83,10 @@
 		playsound(src, pick('sound/h_sounds/headcrab.ogg', 'sound/h_sounds/holla.ogg', 'sound/h_sounds/lynx.ogg', 'sound/h_sounds/mumble.ogg', 'sound/h_sounds/yell.ogg'), 50, 1)
 
 //Plays the sound every ~4 seconds.
-/mob/living/simple_mob/humanoid/possessed/Life()
+/mob/living/simple_mob/humanoid/possessed/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(idle <= 0 && silenced == 0)
 		playsound(src, 'sound/h_sounds/breathing.ogg', 60, 1)
 		idle = 4

@@ -37,12 +37,12 @@
 	// If the randomize is true, we need to generate a new set of wires and ignore any wire color directories.
 	if(randomize)
 		randomize()
-
-	if(!GLOB.wire_color_directory[holder_type])
-		randomize()
-		GLOB.wire_color_directory[holder_type] = colors
 	else
-		colors = GLOB.wire_color_directory[holder_type]
+		if(!GLOB.wire_color_directory[holder_type])
+			randomize()
+			GLOB.wire_color_directory[holder_type] = colors
+		else
+			colors = GLOB.wire_color_directory[holder_type]
 
 /datum/wires/Destroy()
 	holder = null
@@ -158,7 +158,7 @@
 	if(!interactable(user))
 		return
 
-	var/obj/item/I = user.get_active_hand()
+	var/obj/item/I = user.get_active_held_item()
 	var/color = lowertext(params["wire"])
 	holder.add_hiddenprint(user)
 
@@ -170,7 +170,7 @@
 				to_chat(user, "<span class='error'>You need wirecutters!</span>")
 				return
 
-			playsound(holder, I.usesound, 20, 1)
+			playsound(holder, I.tool_sound, 20, 1)
 			cut_color(color)
 			return TRUE
 
@@ -202,11 +202,9 @@
 				to_chat(user, "<span class='error'>You need a remote signaller!</span>")
 				return
 
-			if(user.unEquip(I))
+			if(user.attempt_void_item_for_installation(I))
 				attach_assembly(color, I)
 				return TRUE
-			else
-				to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 
 /**
  * Proc called to determine if the user can see wire define information, such as "Contraband", "Door Bolts", etc.
@@ -220,7 +218,7 @@
  	// TODO: Reimplement this if we ever get Advanced Admin Interaction.
 	// if(user.can_admin_interact())
 		// return TRUE
-	var/obj/item/I = user.get_active_hand()
+	var/obj/item/I = user.get_active_held_item()
 	if(istype(I, /obj/item/multitool/alien))
 		return TRUE
 	return FALSE

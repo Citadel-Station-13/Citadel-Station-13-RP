@@ -9,20 +9,14 @@
 	can_build_into_floor = TRUE
 	baseturfs = /turf/simulated/floor/outdoors/rocks
 
-/turf/simulated/floor/outdoors/Initialize(mapload)
-	QUEUE_SMOOTH(src)
-	return ..()
-
 /turf/simulated/floor/outdoors/mud
 	name = "mud"
 	icon_state = "mud_dark"
-	edge_blending_priority = 3
 
 /turf/simulated/floor/outdoors/rocks
 	name = "rocks"
 	desc = "Hard as a rock."
 	icon_state = "rock"
-	edge_blending_priority = 1
 	baseturfs = /turf/baseturf_bottom
 
 /turf/simulated/floor/outdoors/rocks/caves
@@ -38,7 +32,7 @@
 /turf/simulated/floor/outdoors/snow/chill()
 	return // Todo: Add heavy snow.
 
-/turf/simulated/floor/outdoors/ex_act(severity)
+/turf/simulated/floor/outdoors/legacy_ex_act(severity)
 	switch(severity)
 		// Outdoor turfs are less explosion resistant
 		if(1)

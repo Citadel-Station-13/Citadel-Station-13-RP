@@ -111,16 +111,8 @@
 			card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
-	//Default languages without universal translator software
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_SIGN, 0)
-
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
+	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 
 	//PDA
 	pda = new(src)
@@ -129,7 +121,6 @@
 		pda.owner = text("[]", src)
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
-	..()
 
 /mob/living/silicon/pai/Login()
 	..()
@@ -137,19 +128,17 @@
 	if(client.prefs)
 		ooc_notes = client.prefs.metadata
 
-
 // this function shows the information about being silenced as a pAI in the Status panel
 /mob/living/silicon/pai/proc/show_silenced()
+	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
+/mob/living/silicon/pai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		. += show_silenced()
 
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
@@ -298,7 +287,7 @@
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
+		holder.drop_item_to_ground(card, INV_OP_FORCE)
 	else if(istype(card.loc,/obj/item/pda))
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
@@ -313,9 +302,9 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	verbs += /mob/living/silicon/pai/proc/pai_nom
-	verbs += /mob/living/proc/set_size
-	verbs += /mob/living/proc/shred_limb
+	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/shred_limb)
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
@@ -347,7 +336,7 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
@@ -420,20 +409,17 @@
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
 	card.forceMove(loc)
 	forceMove(card)
 	update_perspective()
-	canmove = 1
-	resting = 0
+	canmove = TRUE
+	resting = FALSE
 	icon_state = "[chassis]"
-	verbs -= /mob/living/silicon/pai/proc/pai_nom
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
@@ -496,3 +482,8 @@
 	visible_message("<b>[src]</b> fades away from the screen, the pAI device goes silent.")
 	card.removePersonality()
 	clear_client()
+
+// See software.dm for Topic()
+/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
+	// Resting is just an aesthetic feature for them.
+	return ..(movable, be_close, no_dexterity, no_tk)

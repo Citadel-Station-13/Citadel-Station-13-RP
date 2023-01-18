@@ -41,11 +41,10 @@
 		else
 			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src.name]. It reads: [badge_string].</span>")
 
-/obj/item/clothing/accessory/badge/attack(mob/living/carbon/human/M, mob/living/user)
-	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
-		user.do_attack_animation(M)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+/obj/item/clothing/accessory/badge/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
+	user.do_attack_animation(target)
+	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
@@ -58,11 +57,10 @@
 	user.visible_message("[user] shows their sheriff badge. There's a new sheriff in town!",\
 		"You flash the sheriff badge to everyone around you!")
 
-/obj/item/clothing/accessory/badge/sheriff/attack(mob/living/carbon/human/M, mob/living/user)
-	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, the sheriff badge into their face!.</span>","<span class='danger'>You invade [M]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
-		user.do_attack_animation(M)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+/obj/item/clothing/accessory/badge/sheriff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, shoving the sheriff badge into their face!.</span>","<span class='danger'>You invade [target]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
+	user.do_attack_animation(target)
+	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo
@@ -112,15 +110,16 @@
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/New()
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	..()
+	return
 
 /obj/item/clothing/accessory/badge/holo/warden
 	name = "warden's holobadge"
@@ -143,16 +142,17 @@
 /obj/item/storage/box/holobadge/hos
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo/warden(src)
-		new /obj/item/clothing/accessory/badge/holo/detective(src)
-		new /obj/item/clothing/accessory/badge/holo/detective(src)
-		new /obj/item/clothing/accessory/badge/holo/hos(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/hos/New()
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo/warden(src)
+	new /obj/item/clothing/accessory/badge/holo/detective(src)
+	new /obj/item/clothing/accessory/badge/holo/detective(src)
+	new /obj/item/clothing/accessory/badge/holo/hos(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	..()
+	return
 
 // Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 

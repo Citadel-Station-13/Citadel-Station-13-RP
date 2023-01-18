@@ -83,14 +83,12 @@
 		var/obj/item/implanter/implanter = I
 		if(implanter.imp)
 			return // It's full.
-		user.drop_from_inventory(src)
-		forceMove(implanter)
+		if(!user.attempt_insert_item_for_installation(src, implanter))
+			return
 		implanter.imp = src
 		implanter.update()
 	else
 		..()
-
-
 
 //////////////////////////////
 //	Tracking Implant
@@ -473,7 +471,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		to_chat(source, "<span class='notice'>You feel a sudden surge of energy!</span>")
 		source.SetStunned(0)
 		source.SetWeakened(0)
-		source.SetParalysis(0)
+		source.SetUnconscious(0)
 
 	return
 

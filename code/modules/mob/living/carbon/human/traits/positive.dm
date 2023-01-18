@@ -1,8 +1,9 @@
 /datum/trait/positive/speed_fast
 	name = "Haste"
 	desc = "Allows you to move faster on average than baseline."
-	cost = 4
-	var_changes = list("slowdown" = -0.5)
+	cost = 2
+	var_changes = list("slowdown" = -0.2)
+	excludes = list(/datum/trait/positive/hardy, /datum/trait/positive/hardy_plus)
 
 /datum/trait/positive/hardy
 	name = "Hardy"
@@ -28,9 +29,9 @@
 	cost = 4
 	var_changes = list("total_health" = 125)
 
-	apply(var/datum/species/S,var/mob/living/carbon/human/H)
-		..(S,H)
-		H.setMaxHealth(S.total_health)
+/datum/trait/positive/endurance_high/apply(datum/species/S, mob/living/carbon/human/H)
+	..(S,H)
+	H.setMaxHealth(S.total_health)
 
 /datum/trait/positive/nonconductive
 	name = "Non-Conductive"
@@ -157,14 +158,17 @@
 
 /datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/flying_toggle
-	H.verbs |= /mob/living/proc/start_wings_hovering
+	add_verb(H, /mob/living/proc/flying_toggle)
+	add_verb(H, /mob/living/proc/start_wings_hovering)
 
 /datum/trait/positive/hardfeet
 	name = "Hard Feet"
 	desc = "Makes your nice clawed, scaled, hooved, armored, or otherwise just awfully calloused feet immune to glass shards."
 	cost = 1
-	var_changes = list("flags" = NO_MINOR_CUT) //Checked the flag is only used by shard stepping.
+
+/datum/trait/positive/hardfeet/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	S.species_flags |= NO_MINOR_CUT
 
 /datum/trait/positive/antiseptic_saliva
 	name = "Antiseptic Saliva"
@@ -173,7 +177,7 @@
 
 /datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/positive/thick_blood
 	name = "Thick Blood"
@@ -189,8 +193,8 @@
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/check_silk_amount
-	H.verbs |= /mob/living/carbon/human/proc/toggle_silk_production
-	H.verbs |= /mob/living/carbon/human/proc/weave_structure
-	H.verbs |= /mob/living/carbon/human/proc/weave_item
-	H.verbs |= /mob/living/carbon/human/proc/set_silk_color
+	add_verb(H, /mob/living/carbon/human/proc/check_silk_amount)
+	add_verb(H, /mob/living/carbon/human/proc/toggle_silk_production)
+	add_verb(H, /mob/living/carbon/human/proc/weave_structure)
+	add_verb(H, /mob/living/carbon/human/proc/weave_item)
+	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)

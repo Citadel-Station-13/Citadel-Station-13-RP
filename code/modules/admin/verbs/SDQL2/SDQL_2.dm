@@ -264,7 +264,7 @@
 					selectors_used |= query.where_switched
 					combined_refs |= query.select_refs
 					running -= query
-					if(!CHECK_BITFIELD(query.options, SDQL2_OPTION_DO_NOT_AUTOGC))
+					if(!(query.options & SDQL2_OPTION_DO_NOT_AUTOGC))
 						QDEL_IN(query, 50)
 				else
 					if(usr)
@@ -393,17 +393,15 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			return "##HALTING"
 
 /datum/SDQL2_query/proc/generate_stat()
+	. = list()
 	if(!allow_admin_interact)
 		return
-	if(!delete_click)
-		delete_click = new(null, "INITIALIZING", src)
-	if(!action_click)
-		action_click = new(null, "INITIALIZNG", src)
-	stat("[id]		", delete_click.update("DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
+	STATPANEL_DATA_CLICK("[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
-	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]"))
-	stat("			", action_click.update("[SDQL2_IS_RUNNING? "HALT" : "RUN"]"))
+	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]", \
+	"\ref[delete_click]")
+	STATPANEL_DATA_CLICK("", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
 
 /datum/SDQL2_query/proc/delete_click()
 	admin_del(usr)
@@ -442,19 +440,19 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		if("select")
 			switch(value)
 				if("force_nulls")
-					DISABLE_BITFIELD(options, SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
+					options &= ~SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS
 		if("proccall")
 			switch(value)
 				if("blocking")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_BLOCKING_CALLS)
+					options |= SDQL2_OPTION_BLOCKING_CALLS
 		if("priority")
 			switch(value)
 				if("high")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_HIGH_PRIORITY)
+					options |= SDQL2_OPTION_HIGH_PRIORITY
 		if("autogc")
 			switch(value)
 				if("keep_alive")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_DO_NOT_AUTOGC)
+					options |= SDQL2_OPTION_DO_NOT_AUTOGC
 
 /datum/SDQL2_query/proc/ARun()
 	INVOKE_ASYNC(src, .proc/Run)

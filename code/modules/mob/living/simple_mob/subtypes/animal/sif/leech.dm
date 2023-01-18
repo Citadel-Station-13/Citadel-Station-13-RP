@@ -32,7 +32,7 @@
 	density = FALSE	// Non-dense, so things can pass over them.
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	maxHealth = 100
 	health = 100
@@ -100,12 +100,12 @@
 	if(!istype(H))
 		return .
 
-	if(istype(L.buckled, /obj/vehicle) || L.hovering) // Ignore people hovering or on boats.
+	if(istype(L.buckled, /obj/vehicle_old) || L.hovering) // Ignore people hovering or on boats.
 		return TRUE
 
 	if(!.)
 		var/has_organ = FALSE
-		var/obj/item/organ/internal/O = H.get_active_hand()
+		var/obj/item/organ/internal/O = H.get_active_held_item()
 		if(istype(O) && O.robotic < ORGAN_ROBOT && !(O.status & ORGAN_DEAD))
 			has_organ = TRUE
 		return has_organ
@@ -118,18 +118,14 @@
 /mob/living/simple_mob/animal/sif/leech/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
-/mob/living/simple_mob/animal/sif/leech/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Chemicals", chemicals)
+/mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_ENTRY("Chemicals", chemicals)
 
 /mob/living/simple_mob/animal/sif/leech/do_special_attack(atom/A)
 	. = TRUE

@@ -49,8 +49,9 @@
 	return ..()
 
 /obj/machinery/computer/skills/attackby(obj/item/O as obj, var/mob/user)
-	if(istype(O, /obj/item/card/id) && !scan && user.unEquip(O))
-		O.loc = src
+	if(istype(O, /obj/item/card/id) && !scan)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		scan = O
 		to_chat(user, "You insert [O].")
 		ui_interact(user)
@@ -147,14 +148,14 @@
 		if("scan")
 			if(scan)
 				scan.forceMove(loc)
-				if(ishuman(usr) && !usr.get_active_hand())
+				if(ishuman(usr) && !usr.get_active_held_item())
 					usr.put_in_hands(scan)
 				scan = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/card/id))
-					usr.drop_item()
-					I.forceMove(src)
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					scan = I
 		if("cleartemp")
 			temp = null
@@ -186,7 +187,7 @@
 			if("logout")
 				if(scan)
 					scan.forceMove(loc)
-					if(ishuman(usr) && !usr.get_active_hand())
+					if(ishuman(usr) && !usr.get_active_held_item())
 						usr.put_in_hands(scan)
 					scan = null
 				authenticated = null
@@ -345,7 +346,7 @@
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"]	= pick("Male", "Female")
 				if(3)

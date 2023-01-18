@@ -22,15 +22,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/space
 	name = "\improper Space"
 	icon_state = "space"
-	requires_power = 1
-	always_unpowered = 1
-	dynamic_lighting = 0
+	requires_power = TRUE
+	always_unpowered = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	has_gravity = FALSE
 	power_light = 0
 	has_gravity = 0
 	power_equip = 0
 	power_environ = 0
 	ambience = AMBIENCE_SPACE
+	area_flags = AREA_FLAG_EXTERNAL
+	is_outside = OUTSIDE_YES
 
 /area/space/atmosalert()
 	return
@@ -68,8 +70,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
+	area_limited_icon_smoothing = /area/shuttle
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -122,7 +125,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/mining
 	name = "\improper Mining Elevator"
 	music = "music/escape.ogg"
-	dynamic_lighting = 0
 
 /area/shuttle/transport1/centcom
 	icon_state = "shuttle"
@@ -190,7 +192,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/trade
 	name = "\improper Trade Station"
 	icon_state = "red"
-	dynamic_lighting = 0
 
 /area/shuttle/thunderdome
 	name = "honk"
@@ -198,7 +199,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/research
 	name = "\improper Research Elevator"
 	music = "music/escape.ogg"
-	dynamic_lighting = 0
 
 /area/shuttle/awaymission/home
 	name = "NSB Adephagia (AM)"
@@ -269,19 +269,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Courser Vessel Battery"
 
 
-// Pirate Skiff
-/area/shuttle/pirate
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/pirate/general
-	name = "\improper Pirate Skiff Shuttle"
-
-/area/shuttle/pirate/cockpit
-	name = "\improper Pirate Skiff Shuttle Cockpit"
-
-/area/shuttle/pirate/cargo
-	name = "\improper Pirate Skiff Shuttle Cockpit"
 
 // Civilian Transport
 /area/shuttle/civvie
@@ -306,7 +293,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/shuttle/trade_ship/general
 	name = "\improper Beruang Trade Shuttle"
@@ -343,7 +330,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
 	requires_power = 0
-	dynamic_lighting = 0
 
 // Antag Space Shuttle.	// Also Known as "ASS"
 /area/shuttle/antag_space
@@ -424,7 +410,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper CentCom"
 	icon_state = "centcom"
 	requires_power = 0
-	dynamic_lighting = 0
 
 /area/centcom/control
 	name = "\improper CentCom Control"
@@ -448,7 +433,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper CentCom Living Quarters"
 
 /area/centcom/specops
-	name = "\improper CentCom Special Ops"
+	name = "\improper CentCom Special Operations"
+
+/area/centcom/specops/dock
+	name = "\improper CentCom Special Operations - Dock"
 
 /area/centcom/creed
 	name = "Creed's Office"
@@ -501,7 +489,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
 	requires_power = 0
-	dynamic_lighting = 0
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_mothership/control
@@ -535,6 +522,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/asteroid_spawns = list()
 	var/mob_spawns = list()
 	var/shuttle_area //It would be neat if this were more dynamic, but eh.
+	ambience = AMBIENCE_SPACE
+//	has_gravity = FALSE
 
 /area/asteroid/rogue/zone1
 	name = "Asteroid Belt Zone 1"
@@ -561,7 +550,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
-	dynamic_lighting = 0
 	sound_env = ARENA
 
 /area/tdome/tdome1
@@ -587,7 +575,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Independent Station"
 	icon_state = "yellow"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -642,7 +630,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = 0
-	dynamic_lighting = 0
 	ambience = AMBIENCE_OTHERWORLDLY
 
 /area/skipjack_station
@@ -773,7 +760,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -1351,7 +1338,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "crew_quarters"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1647,6 +1634,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Pool"
 	icon_state = "pool"
 
+/area/crew_quarters/pool/changing_room
+	name = "\improper Pool Changing Room"
+	icon_state = "pool"
+
+/area/crew_quarters/pool/emergency_closet
+	name = "\improper Poolside Emergency Closet"
+	icon_state = "maint_locker"
+
 /area/crew_quarters/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
@@ -1749,7 +1744,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "holodeck_control"
 
 /area/vacant
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/vacant/vacant_shop
 	name = "\improper Vacant Shop"
@@ -1766,12 +1761,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"
@@ -1792,7 +1785,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/holodeck
 	name = "\improper Holodeck"
 	icon_state = "Holodeck"
-	dynamic_lighting = 0
 	sound_env = LARGE_ENCLOSED
 
 /area/holodeck/alphadeck
@@ -2029,32 +2021,32 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/solar
 	requires_power = 1
 	always_unpowered = 1
-	dynamic_lighting = 0
 	ambience = AMBIENCE_SPACE
 
-	auxport
-		name = "\improper Fore Port Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxport
+	name = "\improper Fore Port Solar Array"
+	icon_state = "panelsA"
 
-	auxstarboard
-		name = "\improper Fore Starboard Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxstarboard
+	name = "\improper Fore Starboard Solar Array"
+	icon_state = "panelsA"
 
-	fore
-		name = "\improper Fore Solar Array"
-		icon_state = "yellow"
+/area/solar/fore
+	name = "\improper Fore Solar Array"
+	icon_state = "yellow"
 
-	aft
-		name = "\improper Aft Solar Array"
-		icon_state = "aft"
+/area/solar/aft
+	name = "\improper Aft Solar Array"
+	icon_state = "aft"
 
-	starboard
-		name = "\improper Aft Starboard Solar Array"
-		icon_state = "panelsS"
+/area/solar/starboard
+	name = "\improper Aft Starboard Solar Array"
+	icon_state = "panelsS"
 
-	port
-		name = "\improper Aft Port Solar Array"
-		icon_state = "panelsP"
+/area/solar/port
+	name = "\improper Aft Port Solar Array"
+	icon_state = "panelsP"
+
 
 /area/maintenance/auxsolarport
 	name = "Solar Maintenance - Fore Port"
@@ -2247,6 +2239,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
+/area/medical/virologytransitwest
+	name = "\improper Virology Transit Hub - West"
+	icon_state = "virology"
+
+/area/medical/virologytransiteast
+	name = "\improper Virology Transit Hub - East"
+	icon_state = "virology"
+
+/area/medical/virologymaint
+	name = "\improper Virology Maintenance Shaft"
+	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
@@ -2362,7 +2370,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Armory"
 	icon_state = "armory"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/briefing_room
 	name = "\improper Security - Briefing Room"
@@ -2422,7 +2430,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/hallway
 	name = "\improper Security Hallway"
@@ -2502,7 +2510,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vault"
 	icon_state = "nuke_storage"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/checkpoint
 	name = "\improper Security Checkpoint"
@@ -2559,6 +2567,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Quartermasters"
 	icon_state = "quart"
 
+/area/quartermaster/hallway
+	name = "\improper Cargo Hallway"
+	icon_state = "quart"
+
 /area/quartermaster/office
 	name = "\improper Cargo Office"
 	icon_state = "quartoffice"
@@ -2588,9 +2600,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
 
+/area/quartermaster/mining_airlock
+	name = "\improper Mining Airlock"
+	icon_state = "mining"
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"
+
+/area/quartermaster/garage
+	name = "\improper Cargo Garage"
 
 // SCIENCE
 
@@ -2722,6 +2740,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/rnd/outpost/eva
 	name = "Research Outpost EVA Storage"
 	icon_state = "eva"
+
+/area/rnd/outpost/maintenance
+	name = "\improper Research Outpost Maintenence"
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
+/area/rnd/outpost/underground
+	name = "\improper Research Outpost Underground"
 
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"
@@ -3018,7 +3046,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/constructionsite
 	name = "\improper Construction Site Shuttle"
 	icon_state = "yellow"
-	dynamic_lighting = 0
 
 /area/shuttle/constructionsite/station
 	name = "\improper Construction Site Shuttle"
@@ -3109,6 +3136,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/construction/solars
 	name = "\improper Solar Panels"
 	icon_state = "yellow"
+	is_outside = OUTSIDE_YES
 
 /area/construction/solarscontrol
 	name = "\improper Solar Panel Control"
@@ -3186,28 +3214,24 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
 	luminosity = 1
-	dynamic_lighting = 0
 	ambience = AMBIENCE_AI
 
 /area/AIsatextFS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
 	luminosity = 1
-	dynamic_lighting = 0
 	ambience = AMBIENCE_AI
 
 /area/AIsatextAS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
 	luminosity = 1
-	dynamic_lighting = 0
 	ambience = AMBIENCE_AI
 
 /area/AIsatextAP
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
 	luminosity = 1
-	dynamic_lighting = 0
 	ambience = AMBIENCE_AI
 
 /area/NewAIMain
@@ -3222,7 +3246,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/alien
 	name = "\improper Alien base"
 	icon_state = "yellow"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 0
 
 /area/alien/unknown
@@ -3240,7 +3264,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Keelin's private beach"
 	icon_state = "yellow"
 	luminosity = 1
-	dynamic_lighting = 0
 	requires_power = 0
 
 /area/wreck
@@ -3272,7 +3295,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/bigship
 	name = "Bigship"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	icon_state = "red2"
 
@@ -3282,7 +3305,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/houseboat
 	name = "Small Cruiser"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 	lightswitch = TRUE
 
@@ -3400,25 +3423,23 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Used for creating the exchange areas.
 /area/turbolift
 	name = "Turbolift"
-	requires_power = 0
+	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	sound_env = SMALL_ENCLOSED
+	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
+	requires_power = FALSE
 
 	var/lift_floor_label = null
 	var/lift_floor_name = null
 	var/lift_announce_str = "Ding!"
 	var/arrival_sound = 'sound/machines/ding.ogg'
 	var/delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
-
-	requires_power = FALSE
 
 /area/turbolift/t_ship/level1
 	name = "Deck 1"
 	lift_floor_label = "Deck 1"
 	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
 	lift_announce_str = "Arriving at Deck 1."
-
 
 /area/turbolift/t_ship/level2
 	name = "Deck 2"

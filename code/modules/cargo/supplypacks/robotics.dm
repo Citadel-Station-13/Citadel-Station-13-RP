@@ -57,7 +57,7 @@
 	name = "Morpheus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/morpheus)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/morpheus
 	container_name = "Robolimb blueprints (Morpheus)"
 	access = access_robotics
 
@@ -81,7 +81,7 @@
 	name = "Xion robolimb blueprints"
 	contains = list(/obj/item/disk/limb/xion)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/xion
 	container_name = "Robolimb blueprints (Xion)"
 	access = access_robotics
 
@@ -89,7 +89,7 @@
 	name = "Grayson robolimb blueprints"
 	contains = list(/obj/item/disk/limb/grayson)
 	cost = 30
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Robolimb blueprints (Grayson)"
 	access = access_robotics
 
@@ -97,7 +97,7 @@
 	name = "Hephaestus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/hephaestus)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/heph
 	container_name = "Robolimb blueprints (Hephaestus)"
 	access = access_robotics
 
@@ -105,7 +105,7 @@
 	name = "Ward-Takahashi robolimb blueprints"
 	contains = list(/obj/item/disk/limb/wardtakahashi)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Robolimb blueprints (Ward-Takahashi)"
 	access = access_robotics
 
@@ -113,7 +113,7 @@
 	name = "Zeng Hu robolimb blueprints"
 	contains = list(/obj/item/disk/limb/zenghu)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/zenghu
 	container_name = "Robolimb blueprints (Zeng Hu)"
 	access = access_robotics
 
@@ -121,7 +121,7 @@
 	name = "Bishop robolimb blueprints"
 	contains = list(/obj/item/disk/limb/bishop)
 	cost = 70
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/bishop
 	container_name = "Robolimb blueprints (Bishop)"
 	access = access_robotics
 
@@ -208,26 +208,6 @@
 	container_name = "Restraining bolt crate"
 	access = access_robotics
 
-/datum/supply_pack/robotics/bike
-	name = "Spacebike Crate"
-	contains = list()
-	cost = 200
-	container_type = /obj/structure/largecrate/vehicle/bike
-	container_name = "Spacebike Crate"
-
-/datum/supply_pack/robotics/quadbike
-	name = "ATV Crate"
-	contains = list()
-	cost = 300
-	container_type = /obj/structure/largecrate/vehicle/quadbike
-	container_name = "ATV Crate"
-
-/datum/supply_pack/robotics/quadtrailer
-	name = "ATV Trailer Crate"
-	contains = list()
-	cost = 50
-	container_type = /obj/structure/largecrate/vehicle/quadtrailer
-	container_name = "ATV Trailer Crate"
 
 /datum/supply_pack/robotics/mecha_gopher
 	name = "Circuit Crate (\"Gopher\" APLU)"

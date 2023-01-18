@@ -248,7 +248,7 @@
 /obj/machinery/artifact/Bumped(M as mob|obj)
 	..()
 	if(istype(M,/obj))
-		if(M:throwforce >= 10)
+		if(M:throw_force >= 10)
 			if(my_effect.trigger == TRIGGER_FORCE)
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
@@ -289,7 +289,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/ex_act(severity)
+/obj/machinery/artifact/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0) qdel(src)
 		if(2.0)

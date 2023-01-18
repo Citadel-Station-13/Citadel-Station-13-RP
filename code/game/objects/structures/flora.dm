@@ -4,7 +4,7 @@
 	desc = "A perfectly generic plant."
 
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
+	plane = TURF_PLANE
 	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE
@@ -100,7 +100,7 @@
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(istype(W, /obj/item/shovel))
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
 			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)
@@ -471,12 +471,12 @@
 	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
 	icon_state = "decor-pumpkin"
 
-/atom/movable/landmark/carved_pumpkin_spawn
+/obj/landmark/carved_pumpkin_spawn
 	name = "jack o'lantern spawn"
 	icon = 'icons/obj/flora/pumpkins.dmi'
 	icon_state = "spawner-jackolantern"
 
-/atom/movable/landmark/carved_pumpkin_spawn/New()
+/obj/landmark/carved_pumpkin_spawn/New()
     var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
         prob(60);/obj/structure/flora/pumpkin/carved,

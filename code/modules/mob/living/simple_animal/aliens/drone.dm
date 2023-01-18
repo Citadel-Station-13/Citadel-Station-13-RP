@@ -75,7 +75,7 @@
 	return TRUE
 
 //self repair systems have a chance to bring the drone back to life
-/mob/living/simple_mob/hostile/malf_drone/Life()
+/mob/living/simple_mob/hostile/malf_drone/Life(seconds, times_fired)
 
 	//emps and lots of damage can temporarily shut us down
 	if(disabled > 0)

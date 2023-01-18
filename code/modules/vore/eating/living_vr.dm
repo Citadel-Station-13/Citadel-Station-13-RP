@@ -45,13 +45,13 @@
 // Hook for generic creation of stuff on new creatures
 //
 /hook/living_new/proc/vore_setup(mob/living/M)
-	M.verbs += /mob/living/proc/escapeOOC
-	M.verbs += /mob/living/proc/lick
-	M.verbs += /mob/living/proc/smell
-	M.verbs += /mob/living/proc/switch_scaling
+	add_verb(M, /mob/living/proc/escapeOOC)
+	add_verb(M, /mob/living/proc/lick)
+	add_verb(M, /mob/living/proc/smell)
+	add_verb(M, /mob/living/proc/switch_scaling)
 	if(M.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
 		return TRUE
-	M.verbs += /mob/living/proc/insidePanel
+	add_verb(M, /mob/living/proc/insidePanel)
 
 	//Tries to load prefs if a client is present otherwise gives freebie stomach
 	spawn(2 SECONDS)
@@ -118,7 +118,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed."))
 
 			///// If user clicked on their grabbed target
 			else if((src == G.affecting) && (attacker.a_intent == INTENT_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
@@ -129,7 +129,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed."))
 
 			///// If user clicked on anyone else but their grabbed target
 			else if((src != G.affecting) && (src != G.assailant) && (is_vore_predator(src)))
@@ -147,7 +147,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/holder
 	else if(istype(I,/obj/item/holder))
@@ -163,7 +163,7 @@
 						H.held_mob = null
 			return TRUE //return TRUE to exit upper procs
 		else
-			log_debug("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed.")
+			log_debug(SPAN_DEBUG("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/radio/beacon
 	else if(istype(I,/obj/item/radio/beacon))
@@ -173,9 +173,9 @@
 			if(!istype(B))
 				return TRUE
 			visible_message("<span class='warning'>[user] is trying to stuff a beacon into [src]'s [lowertext(B.name)]!</span>","<span class='warning'>[user] is trying to stuff a beacon into you!</span>")
-			if(do_after(user,30,src))
-				user.drop_item()
-				I.forceMove(B)
+			if(do_after(user, 30, src))
+				if(!user.attempt_insert_item_for_installation(I, B))
+					return
 				return TRUE
 			else
 				return TRUE //You don't get to hit someone 'later'
@@ -475,7 +475,7 @@
 /mob/living/proc/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
 	//Sanity
 	if(!user || !prey || !pred || !istype(belly) || !(belly in pred.vore_organs))
-		log_debug("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong.")
+		log_debug(SPAN_DEBUG("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong."))
 		return
 
 	// The belly selected at the time of noms
@@ -635,7 +635,7 @@
 		to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
 		return
 
-	var/obj/item/I = get_active_hand()
+	var/obj/item/I = get_active_held_item()
 	if(!I)
 		to_chat(src, "<span class='notice'>You are not holding anything.</span>")
 		return
@@ -669,7 +669,6 @@
 						return
 					visible_message("<span class='warning'>[src] successfully makes [P] disappear!</span>")
 			to_chat(src, "<span class='notice'>You can taste the sweet flavor of delicious technology.</span>")
-			drop_item()
 			I.forceMove(vore_selected)
 			updateVRPanel()
 			return
@@ -679,8 +678,9 @@
 				to_chat(src, "<span class='warning'>There's something inside!</span>")
 				return
 
-		drop_item()
-		I.forceMove(vore_selected)
+		if(!attempt_insert_item_for_installation(I, vore_selected))
+			return
+
 		updateVRPanel()
 
 		log_admin("LOG: [src] used Eat Trash to swallow [I].")
@@ -744,12 +744,22 @@
 
 /mob/living/examine(mob/user)
 	. = ..()
-	if(showvoreprefs)
-		. += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
+
+	if(ooc_notes)
+		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
+
+	if(print_flavor_text())
+		. += "\n[print_flavor_text()]"
+
+	. += attempt_vr(src,"examine_bellies",args)
+
+	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
+		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])
 		display_voreprefs(usr)
+		return TRUE
 	return ..()
 
 /mob/living/proc/display_voreprefs(mob/user)	//Called by Topic() calls on instances of /mob/living (and subtypes) containing vore_prefs as an argument

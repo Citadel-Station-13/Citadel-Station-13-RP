@@ -1,3 +1,4 @@
+//TODO: Organize these into a "abilities" folder.
 // These should all be procs, you can add them to humans/subspecies by species.dm's inherent_verbs
 
 /mob/living/carbon/human/proc/tie_hair()
@@ -10,16 +11,16 @@
 		return
 
 	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
 		var/selected_string
-		if(!(hair_style.flags & HAIR_TIEABLE))
+		if(!(hair_style.hair_flags & HAIR_TIEABLE))
 			to_chat(src, SPAN_WARNING("Your hair isn't long enough to tie."))
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
-			for(var/hair_string in hair_styles_list)
-				var/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
-				if(test.flags & HAIR_TIEABLE)
+			for(var/hair_string in GLOB.legacy_hair_lookup)
+				var/datum/sprite_accessory/hair/test = GLOB.legacy_hair_lookup[hair_string]
+				if(test.hair_flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
@@ -103,8 +104,7 @@
 	if(!target)
 		return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
-	text = sanitize(text)
+	text = sanitize(input("What would you like to say?", "Speak to creature", null, null) as message|null)
 
 	if(!text)
 		return
@@ -157,11 +157,20 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
-		to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+	var/msg_style = alert("Do you want to whisper or to project?", "Psychic style", "Whisper", "Projection", "Cancel")
+	switch(msg_style)
+		if ("Whisper")
+			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+		if ("Projection")
+			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as message|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You projected: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -188,18 +197,17 @@
 	for(var/mob/living/carbon/alien/diona/D in src)
 		nymphs++
 		D.forceMove(T)
-		transfer_languages(src, D, WHITELISTED|RESTRICTED)
+		transfer_languages(src, D, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
-			transfer_languages(src, M, WHITELISTED|RESTRICTED)
+			transfer_languages(src, M, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	var/obj/item/organ/external/Chest = organs_by_name[BP_TORSO]
 
@@ -214,8 +222,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(src, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(src, /mob/living/carbon/human/proc/regenerate)
 
 		for(var/obj/item/organ/external/E in organs) // Just fall apart.
 			E.droplimb(TRUE)
@@ -308,10 +316,10 @@
 	if(!get_turf(src))
 		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
-	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
+	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SONAR_PULSE))
 		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
 		return
-	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
+	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
 
 	visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),
@@ -380,7 +388,7 @@
 
 				Int.rejuvenate(TRUE)
 
-		handle_organs() // Update everything
+		handle_organs(2) // Update everything
 
 		update_icons_body()
 		active_regen = FALSE
@@ -416,3 +424,59 @@
 		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
 
 	return TRUE
+
+/mob/living/carbon/human/proc/shadekin_get_energy()
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		return sk.get_energy(src)
+	if(istype(besk))
+		return besk.get_energy(src)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_get_max_energy()
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		return sk.get_max_energy(src)
+	if(istype(besk))
+		return besk.get_max_energy(src)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		sk.set_energy(src, new_energy)
+	if(istype(besk))
+		sk.set_energy(src, new_energy)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		sk.set_max_energy(src, new_max_energy)
+	if(istype(besk))
+		besk.set_max_energy(src, new_max_energy)
+	return FALSE
+
+
+
+/mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		if(amount > 0 || !(sk.check_infinite_energy(src)))
+			var/new_amount = sk.get_energy(src) + amount
+			sk.set_energy(src, new_amount)
+	if(istype(besk))
+		if(amount > 0 || !(besk.check_infinite_energy(src)))
+			var/new_amount = besk.get_energy(src) + amount
+			besk.set_energy(src, new_amount)
+	return FALSE

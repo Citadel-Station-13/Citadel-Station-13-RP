@@ -26,8 +26,6 @@
 /obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
 	name = "Dyed Pelt Cloak"
 	desc = "This is a cloak made by various rare pelts all sewn together, dyed in  expensive dyes and covered with various noble metal strands. There is a small mark on it saying From the Silc clan to the Szi clan, as a marriage gift."
-	icon = 'icons/obj/clothing/ties_cit.dmi'
-	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "peltcloak"
 	item_state = "peltcloak"
 
@@ -35,7 +33,7 @@
 	name = "Double Sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
 	icon_state = "double"
-	item_state_slots = list(slot_r_hand_str = "double", slot_l_hand_str = "double")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "double", SLOT_ID_LEFT_HAND = "double")
 	darkness_view = -1
 	flash_protection = FLASH_PROTECTION_NONE
 	icon = 'icons/obj/clothing/donatorclothing.dmi'

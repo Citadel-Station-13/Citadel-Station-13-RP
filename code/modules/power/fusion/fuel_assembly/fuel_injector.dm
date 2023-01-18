@@ -53,18 +53,15 @@ var/list/fuel_injectors = list()
 		if(injecting)
 			to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 
-		if(cur_assembly)
-			cur_assembly.forceMove(get_turf(src))
-			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
-		else
-			visible_message("<span class='notice'>\The [user] inserts \a [W] into \the [src].</span>")
-
-		user.drop_from_inventory(W)
-		W.forceMove(src)
 		if(cur_assembly)
 			cur_assembly.forceMove(get_turf(src))
 			user.put_in_hands(cur_assembly)
+			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
+		else
+			visible_message("<span class='notice'>\The [user] inserts \a [W] into \the [src].</span>")
 		cur_assembly = W
 		return
 

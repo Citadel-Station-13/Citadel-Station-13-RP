@@ -6,8 +6,15 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals_vr.dmi'
-	plane = DECAL_PLANE
-	layer = MAPPER_DECAL_LAYER
+	plane = TURF_PLANE
+	#ifndef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = TURF_DETAIL_LAYER
+	#else
+	layer = PLATING_LAYER
+	#endif
+	#ifdef IN_MAP_EDITOR
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
@@ -23,7 +30,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/proc/make_decal_image()
 	var/image/I = image(icon = icon, icon_state = icon_state, dir = dir)
-	I.layer = MAPPER_DECAL_LAYER
+	I.layer = DECAL_LAYER
 	I.color = color
 	I.alpha = alpha
 	return I
@@ -1284,3 +1291,11 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/corner/yellow/border/shifted
 	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/transit/orange
+	icon = 'icons/turf/transit_vr.dmi'
+	icon_state = "transit_techfloororange_edges"
+
+/obj/effect/transit/light
+	icon = 'icons/turf/transit_128.dmi'
+	icon_state = "tube1-2"

@@ -5,12 +5,13 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
+	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	force = 15
 	sharp = 0
 	edge = 0
-	throwforce = 7
-	flags = NOCONDUCT
+	throw_force = 7
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
@@ -33,41 +34,9 @@
 	return bcell
 
 /obj/item/melee/baton/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='suicide'>\The [user] is putting the live [name] in [TU.his] mouth! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)
-
-/obj/item/melee/baton/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
 
 /obj/item/melee/baton/loaded/Initialize(mapload)
 	. = ..()
@@ -115,8 +84,8 @@
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!bcell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()
@@ -126,7 +95,7 @@
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
 /obj/item/melee/baton/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
 			user.put_in_hands(bcell)
@@ -158,8 +127,8 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack(mob/M, mob/user)
-	if(status && (CLUMSY in user.mutations) && prob(50))
+/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.Weaken(30)
 		deductcharge(hitcost)
@@ -167,16 +136,19 @@
 	deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(isrobot(target))
+/obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(isrobot(L))
 		return ..()
 
 	var/agony = agonyforce
 	var/stun = stunforce
 	var/obj/item/organ/external/affecting = null
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		affecting = H.get_organ(hit_zone)
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		affecting = H.get_organ(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
 		. = ..()
@@ -185,23 +157,23 @@
 		stun *= 0.5
 	else if(!status)
 		if(affecting)
-			target.visible_message("<span class='warning'>[target] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
 		else
-			target.visible_message("<span class='warning'>[target] has been prodded with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
 	else
 		if(affecting)
-			target.visible_message("<span class='danger'>[target] has been prodded in the [affecting.name] with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
 		else
-			target.visible_message("<span class='danger'>[target] has been prodded with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, hit_zone, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+		L.stun_effect_act(stun, agony, target_zone, src)
+		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
+		if(ishuman(L))
+			var/mob/living/carbon/human/H = L
 			H.forcesay(hit_appends)
 	powercheck(hitcost)
 
@@ -219,10 +191,10 @@
 /obj/item/melee/baton/cattleprod
 	name = "stunprod"
 	desc = "An improvised stun baton."
-	icon_state = "stunprod_nocell"
+	icon_state = "stunprod"
 	item_state = "prod"
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
 	hitcost = 2500
@@ -230,11 +202,13 @@
 	slot_flags = null
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
+	if(use_external_power)
+		return
 	if(istype(W, /obj/item/cell))
 		if(!istype(W, /obj/item/cell/device))
 			if(!bcell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()
@@ -242,6 +216,7 @@
 				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
+
 	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(!bcell)
 			var/obj/item/ore/bluespace_crystal/BSC = W
@@ -252,14 +227,12 @@
 			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
 		else
 			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
-	else
-		return ..()
 
-/obj/item/melee/baton/get_description_interaction()
+/obj/item/melee/baton/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(bcell)
-		results += "[desc_panel_image("offhand")]to remove the weapon cell."
+		results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 	else
 		results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
 
@@ -268,25 +241,21 @@
 	return results
 
 /obj/item/melee/baton/cattleprod/teleprod
-	name = "telebaton"
-	desc = "An ."
-	icon_state = "stunprod_nocell"
+	name = "teleprod"
+	desc = "An improvised stun baton with a bluespace crystal attached to the tip."
+	icon_state = "teleprod"
 	item_state = "prod"
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
 	hitcost = 2500
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/apply_hit_effect(mob/living/L, mob/living/carbon/user, shoving = FALSE)//handles making things teleport when hit
+/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!. || L.anchored)
-		return
-	do_teleport(L, get_turf(L), 15)
-
-/obj/item/melee/baton/cattleprod/attackby(obj/item/I, mob/user, params)//handles sticking a crystal onto a stunprod to make a teleprod
+	do_teleport(target, get_turf(target), 15)
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -297,14 +266,17 @@
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
 	force = 10
-	throwforce = 5
+	throw_force = 5
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	..(target, user, hit_zone)
-	if(status && target.has_AI())
-		target.taunt(user)
+/obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	. = ..()
+	if(status && L.has_AI())
+		L.taunt(user)
 
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
@@ -324,7 +296,7 @@
 	w_class = ITEMSIZE_SMALL
 	force = 5
 	stunforce = 5
-	throwforce = 2
+	throw_force = 2
 	agonyforce = 120	//one-hit
 	integrated_cell = TRUE
 	hitcost = 1150
@@ -335,13 +307,15 @@
 		bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/loaded/mini/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	var/mob/living/carbon/human/H
-	if(ishuman(target))
-		H = target
+	if(ishuman(L))
+		H = L
 		if(!status)
-			..(target, user, hit_zone)
-			return
+			return ..()
 	else
 		return
 
@@ -358,7 +332,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	target.stun_effect_act(stunforce, agonyforce, hit_zone, src)
-	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

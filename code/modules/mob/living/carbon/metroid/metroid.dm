@@ -14,7 +14,7 @@
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey baby slime"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/is_adult = 0
 	speak_emote = list("chirps")
 
@@ -74,7 +74,7 @@
 	var/core_removal_stage = 0 //For removing cores.
 
 /mob/living/carbon/slime/Initialize(mapload, colour = "grey")
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 	src.colour = colour
 	number = rand(1, 1000)
@@ -155,22 +155,19 @@
 /mob/living/carbon/slime/Process_Spacemove()
 	return 2
 
-/mob/living/carbon/slime/Stat()
-	..()
-
-	statpanel("Status")
-	stat(null, "Health: [round((health / getMaxHealth()) * 100)]%")
-	stat(null, "Intent: [a_intent]")
-
-	if (client.statpanel == "Status")
-		stat(null, "Nutrition: [nutrition]/[get_max_nutrition()]")
+/mob/living/carbon/slime/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
+		STATPANEL_DATA_LINE("Intent: [a_intent]")
+		STATPANEL_DATA_LINE("Nutrition: [nutrition]/[get_max_nutrition()]")
 		if(amount_grown >= 10)
 			if(is_adult)
-				stat(null, "You can reproduce!")
+				STATPANEL_DATA_LINE("You can reproduce!")
 			else
-				stat(null, "You can evolve!")
-
-		stat(null,"Power Level: [powerlevel]")
+				STATPANEL_DATA_LINE("You can evolve!")
+		STATPANEL_DATA_LINE("Power Level: [powerlevel]")
 
 /mob/living/carbon/slime/adjustFireLoss(var/amount,var/include_robo)
 	..(-abs(amount)) // Heals them
@@ -185,7 +182,7 @@
 	powerlevel = 0 // oh no, the power!
 	..()
 
-/mob/living/carbon/slime/ex_act(severity)
+/mob/living/carbon/slime/legacy_ex_act(severity)
 	..()
 
 	var/b_loss = null
@@ -208,10 +205,6 @@
 	adjustFireLoss(f_loss)
 
 	updatehealth()
-
-
-/mob/living/carbon/slime/u_equip(obj/item/W as obj)
-	return
 
 /mob/living/carbon/slime/attack_ui(slot)
 	return
@@ -294,7 +287,7 @@
 
 			attacked += 10
 			if (prob(90))
-				if (HULK in M.mutations)
+				if (MUTATION_HULK in M.mutations)
 					damage += 5
 					if(Victim || Target)
 						Victim = null

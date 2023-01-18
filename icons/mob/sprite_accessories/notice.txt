@@ -1,0 +1,2 @@
+This folder doesn't really seem to be used all the much even though we've had it for like... forever? I'll be moving and reorganizing our actual sprite_accessories
+here at a later date. @Zandario 6/21/22

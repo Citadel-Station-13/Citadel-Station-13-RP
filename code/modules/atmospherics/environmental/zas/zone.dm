@@ -49,7 +49,8 @@ Class Procs:
 	var/list/edges = list()
 	var/datum/gas_mixture/air = new
 
-	var/list/turf_graphics = list()
+	/// turf graphics holder
+	var/atom/movable/zas_graphics/renderer_one_for_all
 
 /datum/zas_zone/New()
 	air_master.add_zone(src)
@@ -58,57 +59,63 @@ Class Procs:
 	air.volume = CELL_VOLUME
 
 /datum/zas_zone/proc/add(turf/simulated/T)
-#ifdef ZASDBG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(T))
-	ASSERT(!air_master.has_valid_zone(T))
+	ASSERT(!T.has_valid_zone())
 #endif
 
-	if(!istype(T))
-		return
 	var/datum/gas_mixture/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
-	contents.Add(T)
+	contents += T
 	if(T.fire)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
-		fire_tiles.Add(T)
+		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
+		fire_tiles += T
 		air_master.active_fire_zones |= src
-		if(fuel) fuel_objs += fuel
-	if(T.allow_gas_overlays && !T.outdoors)
-		T.vis_contents += turf_graphics
+		if(fuel)
+			fuel_objs += fuel
+	if(renderer_one_for_all && T.allow_gas_overlays && !T.outdoors)
+		T.vis_contents += renderer_one_for_all
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
-#ifdef ZASDBG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(T))
 	ASSERT(T.zone == src)
-	soft_assert(T in contents, "Lists are weird broseph")
 #endif
-	contents.Remove(T)
-	fire_tiles.Remove(T)
+#ifdef ZAS_ASSERTIONS_EXPENSIVE
+	if(!(T in contents))
+		stack_trace("Turf was not in contents.")
+#endif
+	contents -= T
 	if(T.fire)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
-		fuel_objs -= fuel
+		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
+		fire_tiles -= T
+		if(fuel)
+			fuel_objs -= fuel
 	T.zone = null
-	T.vis_contents -= turf_graphics
+	if(renderer_one_for_all)
+		T.vis_contents -= renderer_one_for_all
 	if(contents.len)
 		air.group_multiplier = contents.len
 	else
 		c_invalidate()
 
 /datum/zas_zone/proc/c_merge(datum/zas_zone/into)
-#ifdef ZASDBG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(into))
 	ASSERT(into != src)
 	ASSERT(!into.invalid)
 #endif
+
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= turf_graphics
+		if(renderer_one_for_all)
+			T.vis_contents -= renderer_one_for_all
 		into.add(T)
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.dbg(merged)
 		#endif
 
@@ -117,24 +124,25 @@ Class Procs:
 		if(E.contains_zone(into))
 			continue //don't need to rebuild this edge
 		for(var/turf/T in E.connecting_turfs)
-			air_master.mark_for_update(T)
+			T.queue_zone_update()
 
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
 	air_master.remove_zone(src)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG_GRAPHICS
 	for(var/turf/simulated/T in contents)
 		T.dbg(invalid_zone)
 	#endif
 
 /datum/zas_zone/proc/rebuild()
-	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
+	if(invalid)
+		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= turf_graphics
+		if(renderer_one_for_all)
+			T.vis_contents -= renderer_one_for_all
 		//T.dbg(invalid_zone)
-		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
-		air_master.mark_for_update(T)
+		T.queue_zone_update()
 
 /datum/zas_zone/proc/add_tile_air(datum/gas_mixture/tile_air)
 	//air.volume += CELL_VOLUME
@@ -151,15 +159,23 @@ Class Procs:
 		if(istype(T))
 			T.create_fire(firelevel_multiplier)
 
-	var/list/returned = air.get_turf_graphics()
-	if(!(returned ~= turf_graphics))
-		var/list/removed = turf_graphics - returned
-		var/list/added = returned - turf_graphics
-		for(var/turf/simulated/T in contents)
-			T.vis_contents -= removed
-			if(T.allow_gas_overlays && !T.outdoors)
-				T.vis_contents += added
-		turf_graphics = returned
+	var/list/new_graphics = air.get_turf_graphics()
+	if(length(new_graphics))
+		if(renderer_one_for_all)
+			// we have it; mutate
+			renderer_one_for_all.overlays = new_graphics
+		else
+			// we don't; make
+			renderer_one_for_all = new
+			renderer_one_for_all.overlays = new_graphics
+			for(var/turf/T as anything in contents)
+				T.vis_contents += renderer_one_for_all
+	else
+		if(renderer_one_for_all)
+			// destruct; don't need it anymore
+			for(var/turf/T as anything in contents)
+				T.vis_contents -= renderer_one_for_all
+			QDEL_NULL(renderer_one_for_all)
 
 	for(var/datum/zas_edge/E in edges)
 		if(E.sleeping)
@@ -194,3 +210,15 @@ Class Procs:
 /**
  * TODO: SUPERCONDUCTION
  */
+
+/**
+ * renderer object for overlays
+ */
+/atom/movable/zas_graphics
+	name = null
+	desc = "WHY can you see this?"
+	icon = null
+	icon_state = null
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

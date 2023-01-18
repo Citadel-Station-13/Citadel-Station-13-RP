@@ -25,7 +25,7 @@
 
 		if(floor.density)
 			if(!isnull(seed.chems["pacid"]))
-				spawn(rand(5,25)) floor.ex_act(3)
+				spawn(rand(5,25)) LEGACY_EX_ACT(floor, 3, null)
 			continue
 
 		if(!Adjacent(floor) || !floor.Enter(src))
@@ -48,7 +48,7 @@
 		die_off()
 		return 0
 
-	for(var/obj/effect/smoke/chem/smoke in view(1, src))
+	for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.has_reagent("plantbgone"))
 			die_off()
 			return

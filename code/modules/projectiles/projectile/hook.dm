@@ -67,7 +67,7 @@
 
 /obj/item/projectile/energy/hook/proc/ranged_disarm(var/mob/living/carbon/human/H)
 	if(istype(H))
-		var/list/holding = list(H.get_active_hand() = 60, H.get_inactive_hand() = 40)
+		var/list/holding = list(H.get_active_held_item() = 60, H.get_inactive_held_item() = 40)
 
 		for(var/obj/item/gun/W in holding)	// Guns are complex devices, both of a mechanical and electronic nature. A weird gravity ball or other type of object trying to pull or grab it is likely not safe.
 			if(W && prob(holding[W]))
@@ -79,7 +79,7 @@
 					visible_message("<span class='danger'>[H]'s [W] goes off due to \the [src]!</span>")
 					return W.afterattack(target,H)
 
-		if(!(H.species.flags & NO_SLIP) && prob(50))
+		if(!(H.species.species_flags & NO_SLIP) && prob(50))
 			var/armor_check = H.run_armor_check(def_zone, "melee")
 			H.apply_effect(3, WEAKEN, armor_check)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -94,12 +94,10 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
-			for(var/obj/item/I in holding)
-				if(I)
-					H.drop_from_inventory(I)
-					visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-					return
+			H.drop_all_held_items()
+			visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+			return
 
 /obj/item/projectile/energy/hook/proc/perform_intent_unique(atom/target)
 	playsound(src, impact_sound, 40, 1)
@@ -137,7 +135,7 @@
 				spawn(2)
 					playsound(target, crack_sound, 40, 1)
 				visible_message("<span class='notice'>\The [T] is snatched by \the [src]!</span>")
-				T.throw_at(get_turf(firer), 7, 1, src)
+				T.throw_at_old(get_turf(firer), 7, 1, src)
 				success = TRUE
 	else if(isliving(target) && !done_mob_unique)
 		var/mob/living/L = target
@@ -162,7 +160,7 @@
 						ranged_disarm(L)
 					else
 						L.visible_message("<span class='danger'>\The [src] sends \the [L] stumbling backwards.</span>")
-						L.throw_at(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
+						L.throw_at_old(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 				if(INTENT_GRAB)
@@ -170,13 +168,13 @@
 					spawn(2)
 						playsound(STurf, crack_sound, 60, 1)
 					L.visible_message("<span class='critical'>\The [src] rips [L] towards \the [firer]!</span>")
-					L.throw_at(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
+					L.throw_at_old(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 	else if(istype(target, /obj/structure))
 		var/obj/structure/S = target
 		if(!S.anchored)
-			S.throw_at(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src)
+			S.throw_at_old(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src)
 			success = TRUE
 	qdel(my_tracking_beam)
 	return success

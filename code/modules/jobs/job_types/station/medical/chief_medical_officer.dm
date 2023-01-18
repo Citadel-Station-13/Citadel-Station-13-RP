@@ -1,4 +1,5 @@
 /datum/job/station/chief_medical_officer
+	id = JOB_ID_CHIEF_MEDICAL_OFFICER
 	title = "Chief Medical Officer"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
@@ -56,8 +57,7 @@
 
 	id_type = /obj/item/card/id/medical/head
 	pda_type = /obj/item/pda/heads/cmo
-	pda_slot = slot_l_store
-
+	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med

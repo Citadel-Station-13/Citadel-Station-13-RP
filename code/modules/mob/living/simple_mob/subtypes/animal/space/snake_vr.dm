@@ -54,8 +54,9 @@
 	var/obj/movement_target
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/snake/noodle/Life()
-	..()
+/mob/living/simple_mob/animal/passive/snake/noodle/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 
@@ -98,7 +99,7 @@
 						visible_emote("stares at the [movement_target] that [movement_target.loc] has with an unknowable reptilian gaze.")
 
 /* old eating code, couldn't figure out how to make the "swallows food" thing so I'm keeping this here incase someone wants legacy"
-/mob/living/simple_mob/animal/passive/snake/noodle/Life() //stolen from Ian in corgi.dm
+/mob/living/simple_mob/animal/passive/snake/noodle/Life(seconds, times_fired) //stolen from Ian in corgi.dm
 	if(!..())
 		return 0
 

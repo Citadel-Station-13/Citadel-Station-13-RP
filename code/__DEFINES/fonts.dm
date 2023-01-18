@@ -22,4 +22,4 @@
 
 /// Emoji icon set
 #define EMOJI_SET 'icons/ui_icons/emoji/emoji.dmi'
-#define EMOJI_SET32 'icons/emoji_32.dmi'
+#define EMOJI32_SET 'icons/ui_icons/emoji/emoji32.dmi'

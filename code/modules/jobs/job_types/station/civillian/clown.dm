@@ -1,4 +1,5 @@
 /datum/job/station/clown
+	id = JOB_ID_CLOWN
 	title = "Clown"
 	flag = CLOWN
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -12,7 +13,6 @@
 	minimal_access = list(access_entertainment)
 	desc = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
-	latejoin_only = 0
 	outfit_type = /datum/outfit/job/station/clown
 	pto_type = PTO_CIVILIAN
 	alt_titles = list("Jester" = /datum/alt_title/clown/jester, "Fool" = /datum/alt_title/clown/fool)
@@ -36,10 +36,9 @@
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	r_pocket = /obj/item/bikehorn
 	l_ear = /obj/item/radio/headset
-
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/civilian
-	pda_slot = slot_belt
+	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda/clown
 	id_pda_assignment = "Clown"
 

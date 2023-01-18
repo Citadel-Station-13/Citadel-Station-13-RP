@@ -19,7 +19,7 @@ var/list/dreams = list(
 	//Species
 	"a teshari","an alarune","a promethean","a vox","a sergal","an akula","a zorren","a nevrean","a chimera","a vasilissan", //actual races not covered in the defaults
 
-	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", "a xenomorph","a security K9","a medihound","a scrubpuppy","a borgi", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
+	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", "a xenomorph","a securiquad","a mediquad","a janiquad","a borgi", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
 
 	"more dakka","something indescribable","a tiny prick","family","a collar", "time stopping","a sweet liquid","a compliance disk","love","war","submitting","dominating","a demotion","a promotion",
 	"HELP MAINT","only vendor food","a blue ethereal figure","a hologram","an anomaly","a cold, metallic surgery table","reality warping","time dialation","a corrupted hound","clouds of phoron",
