@@ -479,7 +479,7 @@
       // but not usable as construtor ?
       window.CustomEvent
         ? // use the CustomEvent interface in such case
-          'CustomEvent'
+        'CustomEvent'
         : 'Event',
       // otherwise the common compatible one
       {

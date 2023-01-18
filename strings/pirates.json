@@ -1,5 +1,5 @@
 {
-	"beginnings":[
+	"beginnings": [
 		"Comet",
 		"Ion",
 		"Laser",
@@ -11,7 +11,7 @@
 		"Star",
 		"Void"
 	],
-	"endings":[
+	"endings": [
 		"beard",
 		"bilge",
 		"deck",
@@ -24,7 +24,7 @@
 		"knot",
 		"salt"
 	],
-	"rogue_names":[
+	"rogue_names": [
 		"Abyssal Titan",
 		"Ashes to Ashes",
 		"Asteroid Blaster",
@@ -67,7 +67,7 @@
 		"War as a Business",
 		"Xenophobia"
 	],
-	"silverscale_names":[
+	"silverscale_names": [
 		"Antelope's Run",
 		"Aristocrat's Principle",
 		"Aristocratic Tributary",

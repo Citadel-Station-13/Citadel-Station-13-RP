@@ -6,12 +6,12 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/compatibility-club-penguin.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-* **Website:** <http://citadel-station.net>
-* **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
-* **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
-* **Forums:** <http://citadel-station.net/forum>
-* **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
-* **Discord:**  <https://discord.gg/citadelstation>
+- **Website:** <http://citadel-station.net>
+- **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
+- **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
+- **Forums:** <http://citadel-station.net/forum>
+- **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
+- **Discord:** <https://discord.gg/citadelstation>
 
 This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
 

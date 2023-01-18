@@ -4,7 +4,7 @@ This folder contains all(most) of our sound files.
 
 We enforce a rigid-ish structure for organization.
 
-*Please* contact a maintainer before changing the hierarchy!
+_Please_ contact a maintainer before changing the hierarchy!
 
 ## Compression
 

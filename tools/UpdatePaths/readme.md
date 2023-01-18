@@ -89,7 +89,6 @@ On this example map key:
 
 You will then result the following:
 
-
 ```dm
 "a" = (
 /obj/structure/door/airlock/science/closed/rd,
@@ -141,6 +140,7 @@ UpdatePaths has the powerful ability to output multiple paths from a single inpu
 ```txt
 /turf/open/floor/iron/i_like_spawning_mobs : /obj/mob_spawner, /turf/open/floor/iron
 ```
+
 So, now when you have the following example map keys:
 
 ```dm
@@ -157,6 +157,7 @@ Running the script will mutate this into:
 /turf/open/floor/iron,
 /area/station/kitchen),
 ```
+
 Remember that this is a kind of silly example, but this is one of the things that UpdatePaths was built to do- help coders fix shitty code without having to bug out over how maps don't compile.
 
 ### Subtype Handling
@@ -198,7 +199,6 @@ Running the script will update this into:
 ```
 
 Note how since you kept in `{@OLD}`, it was able to retain the re-named variables of the subtypes.
-
 
 ### Old Path Variable Filtering
 

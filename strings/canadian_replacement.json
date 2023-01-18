@@ -1,5 +1,4 @@
 {
-
 	"canadian": {
 		"toilet": "washroom",
 		"bathroom": "washroom",
@@ -39,7 +38,5 @@
 		"tumor": "tumour",
 		"mile": "kilometre",
 		"pound": "kilogram"
-		}
-
-
+	}
 }

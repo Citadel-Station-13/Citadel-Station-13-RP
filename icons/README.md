@@ -4,7 +4,7 @@ This folder contains all(most) of our .dmi files.
 
 We enforce a rigid-ish structure for organization.
 
-*Please* contact a maintainer before changing the hierarchy!
+_Please_ contact a maintainer before changing the hierarchy!
 
 ## Hierarchy
 
@@ -19,18 +19,18 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /job - basic job uniforms
     - /misc - unsorted things
     - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
-  - /mapping - used for sprites for in-map-editor objects that are   invisible in game world
-    - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
+  - /mapping - used for sprites for in-map-editor objects that are invisible in game world
+    - /helpers - mapping helpers like autopipe/autocable/baseturf replacers go here
     - /landmarks - landmark icons
     - /spawners - things like window spawners
-  - /overmaps - **All** overmap sprites, whether or not it's screen   rendering, goes in here
-  - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
-    - **Warning!** - everything not in this folder cannot be accessed by   "filename" and must be compiled in with 'filename'.
-  - /screen - all screen objects, like hud icons, buttons, inventory   interface, parallax, etc
+  - /overmaps - **All** overmap sprites, whether or not it's screen rendering, goes in here
+  - /runtime - follow similar structure inside this, treat it as a sub-copy. icons in this are copied over for use during runtime
+    - **Warning!** - everything not in this folder cannot be accessed by "filename" and must be compiled in with 'filename'.
+  - /screen - all screen objects, like hud icons, buttons, inventory interface, parallax, etc
     - /actions - all action button sprites go in here
-    - /atom_hud - the /image huds that atoms can have has their icons in   here
-    - /fullscreen - fullscreen effects go in here (see code/_rendering/  fullscreen)
-    - /hud - "regular" hud objects go in here, like mob intent buttons,   inventory buttons, etc
+    - /atom_hud - the /image huds that atoms can have has their icons in here
+    - /fullscreen - fullscreen effects go in here (see code/\_rendering/ fullscreen)
+    - /hud - "regular" hud objects go in here, like mob intent buttons, inventory buttons, etc
       - /common - common, theme-agnostic icons
       - /theme1, /theme2, ..., etc - put theme icons in here, name by theme!
     - /parallax - parallax/skybox images. base parallax images are 480x480.

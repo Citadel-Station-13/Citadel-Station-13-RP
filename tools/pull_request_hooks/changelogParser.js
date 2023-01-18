@@ -17,8 +17,7 @@ for (const [types, entry] of changelogConfig.CHANGELOG_ENTRIES) {
 function parseChangelogBody(lines, openTag) {
 	const [changelogOpening] = lines.splice(0, 1);
 
-	const author =
-		changelogOpening.substring(openTag.length).trim() || undefined;
+	const author = changelogOpening.substring(openTag.length).trim() || undefined;
 
 	const changelog = {
 		author,

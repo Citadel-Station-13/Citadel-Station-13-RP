@@ -79,30 +79,12 @@
 		"stun gloves"
 	],
 
-	"george": [
-		"joerge",
-		"george",
-		"gorge",
-		"gdoruge"
-	],
+	"george": ["joerge", "george", "gorge", "gdoruge"],
 
-	"mellens": [
-		"mellens",
-		"melons",
-		"mwrlins"
-	],
-	"random_gibberish": [
-		"g",
-		"squid",
-		"r",
-		"carbon dioxide"
-	],
+	"mellens": ["mellens", "melons", "mwrlins"],
+	"random_gibberish": ["g", "squid", "r", "carbon dioxide"],
 
-	"y_replacements": [
-		"y",
-		"i",
-		"e"
-	],
+	"y_replacements": ["y", "i", "e"],
 
 	"servers": [
 		"bager",
@@ -115,13 +97,7 @@
 		"colonel hall"
 	],
 
-	"create_verbs": [
-		"spawn",
-		"MAke me",
-		"creat",
-		"tc trade me",
-		"gib"
-	],
+	"create_verbs": ["spawn", "MAke me", "creat", "tc trade me", "gib"],
 
 	"create_nouns": [
 		"zenomorfs",
@@ -137,67 +113,57 @@
 		"anteg"
 	],
 
-	"bug": [
-		"",
-		"IS TIS A BUG??",
-		"SI IST A BUGG/",
-		"BUG!!!"
-	],
+	"bug": ["", "IS TIS A BUG??", "SI IST A BUGG/", "BUG!!!"],
 
-	"semicolon": [
-		"",
-		";",
-		".h"
-	],
+	"semicolon": ["", ";", ".h"],
 
 	"god_foe": [
 		"MORTALS",
 		"HERETICS",
 		"INSECTS",
-	"UNBELIEVERS",
-	"BLASPHEMERS",
-	"PARASITES",
-	"WEAKLINGS",
-	"PEASANTS"
+		"UNBELIEVERS",
+		"BLASPHEMERS",
+		"PARASITES",
+		"WEAKLINGS",
+		"PEASANTS"
 	],
 
 	"god_aggressive": [
 		"BEGONE, @pick(god_foe)!",
 		"DIE, @pick(god_foe)!",
 		"BLEED, @pick(god_foe)!",
-	"BURN, @pick(god_foe)!",
-	"ALL WILL FALL BEFORE ME!",
-	"ENDLESS SUFFERING AWAITS YOU, @pick(god_foe).",
-	"DEATH TO @pick(god_foe)!"
+		"BURN, @pick(god_foe)!",
+		"ALL WILL FALL BEFORE ME!",
+		"ENDLESS SUFFERING AWAITS YOU, @pick(god_foe).",
+		"DEATH TO @pick(god_foe)!"
 	],
 
 	"god_neutral": [
 		"STOP",
-	"HALT.",
+		"HALT.",
 		"BE SILENT.",
 		"QUIET",
-	"SEE THE TRUTH BEFORE YOU, MORTALS.",
-	"MORTALS, SAY YOUR NAME",
-	"BEGONE, MORTALS.",
-	"BE HEALED, MORTALS. I AM FEELING MERCIFUL.",
-	"DANCE FOR ME, LITTLE MORTALS.",
-	"YOU. STOP.",
-	"REST, MORTALS, TOMORROW IS A LONG DAY.",
-	"YOU MORTALS MAKE ME SICK.",
-	"HONK..."
+		"SEE THE TRUTH BEFORE YOU, MORTALS.",
+		"MORTALS, SAY YOUR NAME",
+		"BEGONE, MORTALS.",
+		"BE HEALED, MORTALS. I AM FEELING MERCIFUL.",
+		"DANCE FOR ME, LITTLE MORTALS.",
+		"YOU. STOP.",
+		"REST, MORTALS, TOMORROW IS A LONG DAY.",
+		"YOU MORTALS MAKE ME SICK.",
+		"HONK..."
 	],
 
 	"god_unstun": [
-	"GET UP. I HAVE NO TIME TO LOSE.",
-	"GET UP, PRIEST.",
-	"GET UP."
+		"GET UP. I HAVE NO TIME TO LOSE.",
+		"GET UP, PRIEST.",
+		"GET UP."
 	],
 
 	"god_heal": [
-	"YOU WILL LIVE TO SEE ANOTHER DAY.",
-	"YOU SHALL SURVIVE THIS, MY PRIEST.",
-	"BE HEALED, PRIEST.",
-	"YOUR LIFE IS IMPORTANT. KEEP IT."
+		"YOU WILL LIVE TO SEE ANOTHER DAY.",
+		"YOU SHALL SURVIVE THIS, MY PRIEST.",
+		"BE HEALED, PRIEST.",
+		"YOUR LIFE IS IMPORTANT. KEEP IT."
 	]
-
 }

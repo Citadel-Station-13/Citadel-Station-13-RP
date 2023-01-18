@@ -2,7 +2,7 @@
 
 This is a quick little guide to where things are to be organized.
 
-## _Shim
+## \_Shim
 
 This is on the chopping board. Do not add anythere here, I just have no other place at the moment to put the files that are in there
 
@@ -27,3 +27,4 @@ Lateload files and such are now under the lateload folder. Currently there are f
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 	)
+```

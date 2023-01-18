@@ -5,7 +5,7 @@
 // TODO: ADD PYTHON SCRIPT TO AUTOMATE THIS
 
 Yeah so we're (me) all a bunch of idiots (insane).
-As such we have a *ton* of path replacements.
+As such we have a _ton_ of path replacements.
 All of these regexes are for VSC. They are not necessarily optimized, so, if you're good at regexes, do help!
 
 Apply regexes in this order:
@@ -38,6 +38,7 @@ Apply regexes in this order:
 `/obj/machinery/atmospherics/(unary|binary|trinary)`-`/obj/machinery/atmospherics/component/$1`
 
 ## Pruning
+
 // getting rid of extraneous d1/d2 varedits
 // d1-d2
 `\td1 = (1|2|4|8);\n\td2 = (1|2|4|8);\n\ticon_state = "\1-\2"(;\n\tpixel_[xy] = [0-9]+){0,2}`-`\ticon_state = "$1-$2"`

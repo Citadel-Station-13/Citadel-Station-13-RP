@@ -1,4 +1,5 @@
-## DOWNLOADING
+# DOWNLOADING
+
 There are a number of ways to download the source code. Some are described here.
 
 Option 1: The more complicated and easier to update method is using git.
@@ -6,7 +7,7 @@ You'll need to download git or some client from [here](http://git-scm.com/).
 When that's installed, right click in any folder and click on "Git Bash".
 When that opens, type in:
 
-```
+```pwsh
 git clone https://github.com/Citadel-Station-13/Citadel-Station-13-RP.git
 ```
 

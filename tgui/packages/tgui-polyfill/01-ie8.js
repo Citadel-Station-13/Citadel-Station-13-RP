@@ -430,8 +430,8 @@
             ? self.fireEvent(ontype, e)
             : commonEventLoop(self, e, currentType.h, true)
           : (parentNode = self.parentNode) /* && live(self) */
-          ? parentNode.dispatchEvent(e)
-          : true,
+            ? parentNode.dispatchEvent(e)
+            : true,
         !e.defaultPrevented
       );
     }),
@@ -545,8 +545,8 @@
         return this.keyCode
           ? this.keyCode
           : isNaN(this.button)
-          ? undefined
-          : this.button + 1;
+            ? undefined
+            : this.button + 1;
       },
     },
     charCode: {

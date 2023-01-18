@@ -10,7 +10,7 @@ TODO - This documentation is incomplete.
 ### Print Tag
 
 - The print tag outputs variable as text to the UI.
-`{{:data.variable}}`
+  `{{:data.variable}}`
 
 ### If Tag
 
@@ -34,9 +34,9 @@ TODO - This documentation is incomplete.
 ### Tansclusion Tag
 
 - Include the contents of another template which has been added to the ui.
-`{{#def.atmosphericScan}}`
+  `{{#def.atmosphericScan}}`
 
 - You first must have added a template to the ui server side in your DM code:
-`ui.add_template("atmosphericScan", "atmospheric_scan.tmpl")`
+  `ui.add_template("atmosphericScan", "atmospheric_scan.tmpl")`
 
-- Then you can reference it in the main template.  The tag will be replaced by the contents of the named template.  All tags in the named template are evaluated as normal.
+- Then you can reference it in the main template. The tag will be replaced by the contents of the named template. All tags in the named template are evaluated as normal.
