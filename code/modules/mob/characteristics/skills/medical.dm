@@ -4,6 +4,8 @@
 
 /**
  * anatomy: surgery / evaluations / whatnot
+ *
+ * implementation status: not started
  */
 /datum/characteristic_skill/medical/anatomy
 	id = "anatomy"
@@ -13,6 +15,8 @@
 
 /**
  * medicine: medical in general
+ *
+ * implementation status: not started
  */
 /datum/characteristic_skill/medical/medicine
 	id = "medicine"
@@ -22,6 +26,8 @@
 
 /**
  * chemistry
+ *
+ * implementation status: not started
  */
 /datum/characteristic_skill/medical/chemistry
 	id = "chemistry"

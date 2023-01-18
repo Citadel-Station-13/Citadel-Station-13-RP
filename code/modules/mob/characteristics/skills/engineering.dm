@@ -36,13 +36,14 @@
 	#warn impl
 
 /**
- * Engines
+ * Engines & Ship Systems
  *
  * Implementation status: not started
  */
 /datum/characteristic_skill/engineering/engines
 	id = "engines"
-	name = "Engine Operation"
-	desc = "How experienced you are with various engines."
+	name = "Engine & Voidcraft Operation"
+	desc = "How experienced you are with various engines, as well as with systems aboard a ship."
+
 	#warn impl
 

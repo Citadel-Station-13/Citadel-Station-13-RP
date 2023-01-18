@@ -45,7 +45,6 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	var/tmp/total_cost_trained
 	var/tmp/total_cost_experienced
 	var/tmp/total_cost_professional
-	#warn caching system impl
 
 	//? descriptions
 	var/desc_untrained = "ERR: NO UNTRAINED DESC"
@@ -54,9 +53,10 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	var/desc_experienced = "ERR: NO EXPERIENCED DESC"
 	var/desc_professional = "ERR: NO PROFESSIONAL DESC"
 
-
 	#warn specializations?
 
+/datum/characteristic_skill/New()
+	compute_caches()
 
 /datum/characteristic_skill/proc/total_cost(level)
 	switch(level)
@@ -73,13 +73,9 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 
 /datum/characteristic_skill/proc/compute_caches()
 	var/total = 0
-	total += cost_novice * cost_multiplier
 	total_cost_novice = round(total, 1)
-	total += cost_trained * cost_multiplier
 	total_cost_trained = round(total, 1)
-	total += cost_experienced * cost_multiplier
 	total_cost_experienced = round(total, 1)
-	total += cost_professional * cost_multiplier
 	total_cost_professional = round(total, 1)
 
 /datum/characteristic_skill/proc/level_description(level)
