@@ -36,12 +36,16 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	var/max_value = CHARACTER_SKILL_ENUM_MAX
 
 	//? costs - these are additive!
-	var/cost_multiplier = 1
-	var/cost_novice = 2
-	var/cost_trained = 4
-	var/cost_experienced = 8
-	var/cost_professional = 12
-	#warn caching system
+	var/cost_novice = 0
+	var/cost_trained = 0
+	var/cost_experienced = 0
+	var/cost_professional = 0
+
+	var/tmp/total_cost_novice
+	var/tmp/total_cost_trained
+	var/tmp/total_cost_experienced
+	var/tmp/total_cost_professional
+	#warn caching system impl
 
 	//? descriptions
 	var/desc_untrained = "ERR: NO UNTRAINED DESC"
@@ -53,21 +57,30 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 
 	#warn specializations?
 
-	#warn scaling
 
-/datum/characteristic_skill/proc/level_cost(level)
+/datum/characteristic_skill/proc/total_cost(level)
 	switch(level)
 		if(CHARACTER_SKILL_UNTRAINED)
 			return 0
 		if(CHARACTER_SKILL_NOVICE)
-			. = cost_novice
+			. = total_cost_novice
 		if(CHARACTER_SKILL_TRAINED)
-			. = cost_trained
+			. = total_cost_trained
 		if(CHARACTER_SKILL_EXPERIENCED)
-			. = cost_experienced
+			. = total_cost_experienced
 		if(CHARACTER_SKILL_PROFESSIONAL)
-			. = cost_professional
-	. *= cost_multiplier
+			. = total_cost_professional
+
+/datum/characteristic_skill/proc/compute_caches()
+	var/total = 0
+	total += cost_novice * cost_multiplier
+	total_cost_novice = round(total, 1)
+	total += cost_trained * cost_multiplier
+	total_cost_trained = round(total, 1)
+	total += cost_experienced * cost_multiplier
+	total_cost_experienced = round(total, 1)
+	total += cost_professional * cost_multiplier
+	total_cost_professional = round(total, 1)
 
 /datum/characteristic_skill/proc/level_description(level)
 	switch(level)

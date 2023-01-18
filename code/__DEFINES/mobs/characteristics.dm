@@ -30,6 +30,13 @@
 /// for an extreme gain from the last level
 #define SKILLCOST_INCREMENT_EXTREME 6
 
+//? Skill scaling
+/// constant * 2 ** level diff
+#define SKILL_SCALING_EXPONENTIAL_HARD 1
+/// constant * level diff
+#define SKILL_SCALING_LINEAR 2
+/// constant * 1.5 ** level diff
+#define SKILL_SCALING_EXPONENTIAL_SOFT 3
 
 //! Stats
 

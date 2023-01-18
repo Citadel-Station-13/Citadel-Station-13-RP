@@ -26,3 +26,30 @@ GLOBAL_LIST_EMPTY(characteristics_presets)
 	var/list/stats
 	/// talent typepaths or ids
 	var/list/talents
+
+/datum/characteristic_preset/New(list/skills = list(), list/stats = list(), list/talents = list())
+	src.skills = skills.Copy()
+	src.stats = stats.Copy()
+	src.talents = talents.Copy()
+	transform()
+
+/**
+ * flatten everything into ids
+ */
+/datum/characteristic_preset/proc/transform()
+	var/datum/characteristic_skill/skillpath_or_id
+	var/datum/characteristic_stat/statpath_or_id
+	var/datum/characteristic_talent/talentpath_or_id
+	for(var/i in 1 to length(skills))
+		skillpath_or_id = skills[i]
+		if(ispath(skillpath_or_id))
+			skills[i] = initial(skillpath_or_id.id)
+	for(var/i in 1 to length(stats))
+		statpath_or_id = stats[i]
+		if(ispath(statpath_or_id))
+			stats[i] = initial(statpath_or_id.id)
+	for(var/i in 1 to length(talents))
+		talentpath_or_id = talents[i]
+		if(ispath(talentpath_or_id))
+			talents[i] = initial(talentpath_or_id.id)
+
