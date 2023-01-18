@@ -5,6 +5,7 @@
 /obj/structure/ashlander/forge
 	name = "magma forge"
 	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "forge"
 
 /obj/structure/ashlander/forge/attackby(obj/item/O, mob/user)
@@ -33,6 +34,7 @@
 /obj/structure/ashlander/brickmaker
 	name = "brick press"
 	desc = "Scorians have been observed using this device to compress sand and clay into hardened bricks."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "brickmaker"
 
 /obj/structure/ashlander/brickmaker/attackby(obj/item/O, mob/user)

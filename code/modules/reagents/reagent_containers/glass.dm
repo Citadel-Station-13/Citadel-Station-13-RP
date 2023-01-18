@@ -390,11 +390,17 @@
 	w_class = ITEMSIZE_TINY
 	volume = 20
 
-/obj/item/reagent_containers/stone
+/obj/item/reagent_containers/glass/stone
 	name = "stone mortar"
 	desc = "A hand-crafted stone mortar, designed to hold ground up herbs and reagents."
-	icon_state = "stonebeaker"
-	base_icon_state = "stonebeaker"
+	icon_state = "stonemortar"
+	base_icon_state = "stonemortar"
+
+/obj/item/reagent_containers/glass/stone/update_icon()
+	cut_overlays()
+	if (!is_open_container())
+		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
+		add_overlay(lid)
 
 //Vials
 /obj/item/reagent_containers/glass/beaker/vial/bicaridine
