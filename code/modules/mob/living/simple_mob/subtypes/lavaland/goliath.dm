@@ -181,6 +181,14 @@
 	pregnant = 0
 	new child_type(get_turf(src))
 
+/mob/living/simple_mob/animal/goliath/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		if(goliath_sac && prob(5))
+			goliath_sac.add_reagent("gunpowder", rand(5, 10))
+
 /mob/living/simple_mob/animal/goliath/death()
 	STOP_PROCESSING(SSobj, src)
 	return ..()

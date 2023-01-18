@@ -316,3 +316,24 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/saddle
+	name = "Hide Saddle"
+	result = /obj/item/saddle
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 5,
+				/obj/item/stack/sinew = 6,
+				/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/stone_mortar
+	name = "Stone Mortar"
+	result = /obj/item/reagent_containers/stone
+	time = 40
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 1,
+				/obj/item/ore/slag = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE

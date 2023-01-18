@@ -97,7 +97,7 @@
 /obj/structure/ghost_role_spawner/ashlander
 	name = "ashlander yurt"
 	desc = "A coarse leather tent. Squat and vaguely onion shaped, the thick red hide acting as a door covering flaps in the warm breeze. It seems like it could easily be dismantled and moved. A strange red icon shaped out of sinew and leather hangs over the doorway."
-	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "yurt"
 	anchored = TRUE
 	density = TRUE
