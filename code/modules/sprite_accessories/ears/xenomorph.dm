@@ -15,3 +15,8 @@
 	name = "Xenomorph Warrior dome"
 	id = "ears_xeno_warrior"
 	icon_state = "xenohead_warrior"
+
+/datum/sprite_accessory/ears/xenohead/net
+	name = "Xenomorph Net dome"
+	id = "ears_xeno_net"
+	icon_state = "xenohead_net"
