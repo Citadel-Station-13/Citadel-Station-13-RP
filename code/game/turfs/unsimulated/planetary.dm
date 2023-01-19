@@ -5,12 +5,16 @@
 	desc = "Choo choo!"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "riveted"
-	opacity = 1
-	density = 1
-	alpha = 0
-	blocks_air = 0
+	opacity = TRUE
+	density = TRUE
+	alpha = FALSE
+	blocks_air = FALSE
 	// Set these to get your desired planetary atmosphere.
 	initial_gas_mix = GAS_STRING_STP
+
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()
