@@ -246,12 +246,12 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.icon_dimension_x = 64
-	add_obj_verb(R, list(
+	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	if (can_shred)
-		add_obj_verb(R, /mob/living/proc/shred_limb)
+		add_verb(R, /mob/living/proc/shred_limb)
 
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.pixel_y = initial(R.pixel_y)
 	R.icon = initial(R.icon)
 	R.base_pixel_x = initial(R.pixel_x)
-	remove_obj_verb(R, list(
+	remove_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/proc/shred_limb,
 		/mob/living/silicon/robot/proc/rest_style
