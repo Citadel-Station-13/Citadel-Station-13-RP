@@ -88,9 +88,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
-	R.set_module_sprites(sprites)
-
 	handle_custom_item(R)
+
+	R.set_module_sprites(sprites)
 
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
