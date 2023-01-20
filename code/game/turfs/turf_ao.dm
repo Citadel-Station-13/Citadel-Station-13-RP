@@ -6,6 +6,29 @@
 #define AO_SELF_CHECK(T) (!T.density && !T.opacity)
 #endif
 
+#define AO_DENSE_CHECK(DIRECTION) \
+	var/turf/target_turf = get_step(src, direction); \
+	if (!target_turf) { \
+		return NULLTURF_BORDER; \
+	} \
+	if (AO_TURF_CHECK(target_turf)) { \
+		return ADJ_FOUND; \
+	} \
+	return NO_ADJ_FOUND
+
+/**
+ * Scans direction to find targets to smooth with.
+ */
+/atom/proc/find_dense_turf_in_direction(direction)
+	var/turf/target_turf = get_step(src, direction)
+	if(!target_turf)
+		return NULLTURF_BORDER
+
+	if(AO_TURF_CHECK(target_turf))
+		return ADJ_FOUND
+
+	return NO_ADJ_FOUND
+
 /turf
 	var/permit_ao = TRUE
 	/// Current ambient occlusion overlays. Tracked so we can reverse them without dropping all priority overlays.
@@ -22,21 +45,20 @@
 			T.queue_ao(TRUE)
 
 /turf/proc/calculate_ao_neighbors()
-	ao_neighbors = 0
-	ao_neighbors_mimic = 0
+	ao_neighbors = NONE
+	ao_neighbors_mimic = NONE
 	if (!permit_ao)
 		return
 
-	var/turf/T
 	if (mz_flags & MZ_MIMIC_BELOW)
-		CALCULATE_NEIGHBORS(src, ao_neighbors_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
+		ao_neighbors_mimic = calculate_ao_adjacencies()
 	if (AO_SELF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
-		CALCULATE_NEIGHBORS(src, ao_neighbors, T, AO_TURF_CHECK(T))
+		ao_neighbors = calculate_ao_adjacencies()
 
 // TODO: Prebaked AO? @Zandario
 /proc/make_ao_image(corner, i, px = 0, py = 0, pz = 0, pw = 0, alpha)
 	var/list/cache = SSao.image_cache
-	var/cstr = "[corner]"
+	var/cstr = "ao-[corner]"
 	// PROCESS_AO_CORNER below also uses this cache, check it before changing this key.
 	var/key = "[cstr]|[i]|[px]/[py]/[pz]/[pw]|[alpha]"
 
@@ -74,7 +96,7 @@
 		corner |= 4; \
 	} \
 	if (corner != 7) {	/* 7 is the 'no shadows' state, no reason to add overlays for it. */ \
-		var/image/I = cache["[corner]|[CORNER_INDEX]|[pixel_x]/[pixel_y]/[pixel_z]/[pixel_w]|[ALPHA]"]; \
+		var/image/I = cache["ao-[corner]|[CORNER_INDEX]|[pixel_x]/[pixel_y]/[pixel_z]/[pixel_w]|[ALPHA]"]; \
 		if (!I) { \
 			I = make_ao_image(corner, CORNER_INDEX, TARGET.pixel_x, TARGET.pixel_y, TARGET.pixel_z, TARGET.pixel_w, ALPHA)	/* this will also add the image to the cache. */ \
 		} \
@@ -108,6 +130,55 @@
 		REGEN_AO(shadower, ao_overlays_mimic, ao_neighbors_mimic, Z_AO_ALPHA)
 	if (AO_TURF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
 		REGEN_AO(src, ao_overlays, ao_neighbors, WALL_AO_ALPHA)
+
+/**
+ * Scans all adjacent turfs to find targets to smooth with.
+ */
+/atom/proc/calculate_ao_adjacencies()
+	. = NONE
+
+	if(!loc)
+		return
+
+	for(var/direction in GLOB.cardinal)
+		// var/turf/target_turf = get_step(src, direction)
+		switch(find_dense_turf_in_direction(direction))
+			if(NULLTURF_BORDER)
+				// BYOND and smooth dirs are the same for cardinals.
+				. |= direction
+			if(ADJ_FOUND)
+				// BYOND and smooth dirs are the same for cardinals.
+				. |= direction
+
+	if(. & NORTH_JUNCTION)
+		if(. & WEST_JUNCTION)
+			switch(find_dense_turf_in_direction(NORTHWEST))
+				if(NULLTURF_BORDER)
+					. |= NORTHWEST_JUNCTION
+				if(ADJ_FOUND)
+					. |= NORTHWEST_JUNCTION
+
+		if(. & EAST_JUNCTION)
+			switch(find_dense_turf_in_direction(NORTHEAST))
+				if(NULLTURF_BORDER)
+					. |= NORTHEAST_JUNCTION
+				if(ADJ_FOUND)
+					. |= NORTHEAST_JUNCTION
+
+	if(. & SOUTH_JUNCTION)
+		if(. & WEST_JUNCTION)
+			switch(find_dense_turf_in_direction(SOUTHWEST))
+				if(NULLTURF_BORDER)
+					. |= SOUTHWEST_JUNCTION
+				if(ADJ_FOUND)
+					. |= SOUTHWEST_JUNCTION
+
+		if(. & EAST_JUNCTION)
+			switch(find_dense_turf_in_direction(SOUTHEAST))
+				if(NULLTURF_BORDER)
+					. |= SOUTHEAST_JUNCTION
+				if(ADJ_FOUND)
+					. |= SOUTHEAST_JUNCTION
 
 #undef REGEN_AO
 #undef PROCESS_AO_CORNER
