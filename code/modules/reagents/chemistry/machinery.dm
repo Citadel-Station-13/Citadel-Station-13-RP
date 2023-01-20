@@ -60,7 +60,7 @@
 			var/obj/item/O = i
 			. += "<span class='notice'>- \A [O.name].</span>"
 
-	if(!(machine_stat & (NOPOWER|BROKEN) && !no_panel))
+	if(!(machine_stat & (NOPOWER|BROKEN)) && (!no_panel))
 		. += "<span class='notice'>The status display reads:</span>\n"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
