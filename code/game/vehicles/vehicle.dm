@@ -82,10 +82,10 @@
 
 
 /obj/vehicle/proc/removeVerb(verb_path)
-	verbs -= verb_path
+	remove_obj_verb(src, verb_path)
 
 /obj/vehicle/proc/addVerb(verb_path)
-	verbs += verb_path
+	add_obj_verb(src, verb_path)
 
 /*/obj/vehicle/proc/add_airtank() //In airtight.dm -Agouri
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)

@@ -85,8 +85,7 @@
 
 /obj/item/sleevecard/proc/setEmotion(emotion)
 	if(infomorph && emotion)
-		cut_overlays()
-		add_overlay(emotion)
+		set_overlays(emotion)
 		current_emotion = emotion
 
 /obj/item/sleevecard/emp_act(severity)

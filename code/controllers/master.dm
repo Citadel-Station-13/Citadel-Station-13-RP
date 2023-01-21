@@ -21,6 +21,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/processing = TRUE
 	// How many times have we ran
 	var/iteration = 0
+	/// initialized?
+	var/initialized = FALSE
 
 	// world.time of last fire, for tracking lag outside of the mc
 	var/last_run
@@ -173,6 +175,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			Master.subsystems += new BadBoy.type	//NEW_SS_GLOBAL will remove the old one
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
+		initialized = TRUE
 		StartProcessing(10)
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
@@ -231,6 +234,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(sleep_offline_after_initializations)// && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
+
+	initialized = TRUE
 
 	// Loop.
 	Master.StartProcessing(0)
@@ -604,11 +609,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	. = 1
 
 /datum/controller/master/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
-	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (Iteration:[Master.iteration])"))
+	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration])"
 
 /datum/controller/master/StartLoadingMap()
 	//disallow more than one map to load at once, multithreading it will just cause race conditions

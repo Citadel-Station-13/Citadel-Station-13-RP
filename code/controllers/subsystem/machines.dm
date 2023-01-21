@@ -35,10 +35,10 @@ SUBSYSTEM_DEF(machines)
 /datum/controller/subsystem/machines/stat_entry()
 	var/msg = list(
 		"MC/MS: [round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]",
-		"\tCost: { PiNet: [round(cost_pipenets,1)] | M: [round(cost_machinery,1)] | PowNet: [round(cost_powernets,1)] | PowObj: [round(cost_power_objects,1)] }",
-		"\tTotal: { PiNet [global.pipe_networks.len] | M: [global.processing_machines.len] | PowNet: [global.powernets.len] | PowObj: [global.processing_power_items.len] }"
+		"&emsp;Cost: { PiNet: [round(cost_pipenets,1)] | M: [round(cost_machinery,1)] | PowNet: [round(cost_powernets,1)] | PowObj: [round(cost_power_objects,1)] }",
+		"&emsp;Total: { PiNet [global.pipe_networks.len] | M: [global.processing_machines.len] | PowNet: [global.powernets.len] | PowObj: [global.processing_power_items.len] }"
 	)
-	..(jointext(msg, "\n"))
+	return ..() + jointext(msg, "<br>")
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()

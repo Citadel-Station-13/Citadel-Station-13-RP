@@ -1,7 +1,8 @@
-#if DM_VERSION > 514
-#error Remie said that lummox was adding a way to get a lists
-#error contents via list.values, if that is true remove this
-#error otherwise, update the version and bug lummox
+#if DM_VERSION > 515
+// this is just a warn now, we give up
+#warn Remie said that lummox was adding a way to get a lists
+#warn contents via list.values, if that is true remove this
+#warn otherwise, update the version and bug lummox
 #endif
 
 /**

@@ -156,18 +156,18 @@
 		air_supply = new air_type(src)
 	if(glove_type)
 		gloves = new glove_type(src)
-		verbs |= /obj/item/rig/proc/toggle_gauntlets
+		add_obj_verb(src, /obj/item/rig/proc/toggle_gauntlets)
 	if(helm_type)
 		helmet = new helm_type(src)
-		verbs |= /obj/item/rig/proc/toggle_helmet
+		add_obj_verb(src, /obj/item/rig/proc/toggle_helmet)
 	if(boot_type)
 		boots = new boot_type(src)
-		verbs |= /obj/item/rig/proc/toggle_boots
+		add_obj_verb(src, /obj/item/rig/proc/toggle_boots)
 	if(chest_type)
 		chest = new chest_type(src)
 		if(allowed)
 			chest.allowed = allowed
-		verbs |= /obj/item/rig/proc/toggle_chest
+		add_obj_verb(src, /obj/item/rig/proc/toggle_chest)
 
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
@@ -621,14 +621,6 @@
 
 	cell.use(cost*10)
 	return 1
-
-// this function displays the current cell charge in the stat panel
-/obj/item/rig/proc/show_cell_power()
-	if(cell)
-		stat(null, text("Charge Left: [round(cell.percent())]%"))
-		stat(null, text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-	else
-		stat(null, text("No Cell Inserted!"))
 
 /obj/item/rig/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
 	if(!user)
@@ -1158,13 +1150,6 @@
 //Shows cell charge on screen, ideally.
 
 var/atom/movable/screen/cells = null
-
-// update the status screen display
-/obj/item/rig/Stat()
-	..()
-	if (statpanel("Status"))
-		show_cell_power()
-
 
 #undef ONLY_DEPLOY
 #undef ONLY_RETRACT

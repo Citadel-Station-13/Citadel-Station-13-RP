@@ -195,6 +195,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.name = "Next Page"
 		E.next_page = TRUE
 		E.add_overlay("radial_next")
+		E.compile_overlays()
 	else
 		if(istext(choices_values[choice_id]))
 			E.name = choices_values[choice_id]
@@ -206,6 +207,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.next_page = FALSE
 		if(choices_icons[choice_id])
 			E.add_overlay(choices_icons[choice_id])
+			E.compile_overlays()
 
 /datum/radial_menu/New()
 	close_button = new

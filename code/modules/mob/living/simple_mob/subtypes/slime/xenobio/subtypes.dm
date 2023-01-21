@@ -606,7 +606,7 @@
 /mob/living/simple_mob/slime/xenobio/gold/slimebatoned(mob/living/user, amount)
 	power_charge = between(0, power_charge + amount, 10)
 
-/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction() // So it doesn't say to use a baton on them.
+/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction(mob/user) // So it doesn't say to use a baton on them.
 	return list()
 
 

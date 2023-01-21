@@ -201,7 +201,7 @@
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
 			/obj/item/gun/ballistic/automatic/c20r/foam = 2,
-			/obj/item/gun/ballistic/automatic/l6_saw/foam = 1,
+			/obj/item/gun/ballistic/automatic/lmg/foam = 1,
 			/obj/item/ammo_magazine/mfoam/c20 = 4,
 			/obj/item/ammo_magazine/mfoam/lmg = 2,
 			/obj/item/material/twohanded/spear/foam = 2,

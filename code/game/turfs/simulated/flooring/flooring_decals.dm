@@ -5,9 +5,19 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal
 	name = "floor decal"
-	icon = 'icons/turf/flooring/decals_vr.dmi'
+	icon = 'icons/turf/flooring/decals.dmi'
+
 	plane = TURF_PLANE
-	layer = TURF_DETAIL_LAYER
+
+	#ifdef IN_MAP_EDITOR
+	// Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_DECAL_LAYER
+	alpha = 128 // Set for the benefit of mapping.
+	#else
+	// Our actual layer ingame.
+	layer = FLOOR_DECAL_LAYER
+	#endif
+
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
@@ -28,7 +38,7 @@ var/list/floor_decals = list()
 	I.alpha = alpha
 	return I
 
-/obj/effect/floor_decal/proc/get_cache_key(var/turf/T)
+/obj/effect/floor_decal/proc/get_cache_key(turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.

@@ -374,9 +374,10 @@
 			if(sig == our_sig)
 				continue
 			var/atom/A = sig.parent
+			var/turf/T = get_turf(A)
 			others += list(list(
-				"x" = A.x,
-				"y" = A.y,
+				"x" = T.x,
+				"y" = T.y,
 				"level" = l_id,
 				"ref" = ref(sig),
 				"name" = sig.gps_tag
@@ -423,7 +424,10 @@
 			return TRUE // push one more time
 		if("track")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
-			return start_tracking(locate(params["ref"]))
+			var/datum/D = locate(params["ref"])
+			if(D == tracking)
+				return stop_tracking()
+			return start_tracking(D)
 
 /obj/item/gps/proc/add_waypoint(name, x, y, level_id)
 	if(!x || !y || !level_id || !name)

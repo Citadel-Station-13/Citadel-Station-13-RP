@@ -240,6 +240,8 @@
 		return FALSE
 	if(mid_delete || other.mid_delete) // bandaid until new inventory code
 		return FALSE
+	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
+		return FALSE
 	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(used)
@@ -286,8 +288,6 @@
 	if (!get_amount())
 		return 0
 	if (!can_merge(S) && !type_verified)
-		return 0
-	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
 		return 0
 
 	if (isnull(tamount))

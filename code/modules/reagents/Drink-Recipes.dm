@@ -455,6 +455,41 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/nicola
+	name = "NiCola"
+	id = "nicola"
+	result = "nicola"
+	required_reagents = list("grenadine" = 1, "tonic" = 1, "cola" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/nicola/cherry
+	name = "NiCola Sakura"
+	id = "nicolacherry"
+	result = "nicolacherry"
+	required_reagents = list("cherryjelly" = 1, "nicola" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/cherrycola
+	name = "Space Cola Cherry"
+	id = "dr_gibbcherry"
+	result = "dr_gibbcherry"
+	required_reagents = list("cherryjelly" = 1, "dr_gibb" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/dr_gibbcherry
+	name = "Dr. Gibb Cherry"
+	id = "cherrycola"
+	result = "cherrycola"
+	required_reagents = list("cherryjelly" = 1, "cola" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/coffeecola
+	name = "Space Cola Coffee"
+	id = "coffeecola"
+	result = "coffeecola"
+	required_reagents = list("coffee" = 1, "cola" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/astral_wind
 	name = "Astral Wind"
 	id = "astral_wind"
@@ -1803,6 +1838,28 @@
 	result = "red_mead"
 	required_reagents = list("blood" = 1, "mead" = 1)
 	result_amount = 2
+
+//Never Fade Away
+/datum/chemical_reaction/drinks/silverhand
+	name = "Johnny Silverhand"
+	id = "silverhand"
+	result = "silverhand"
+	required_reagents = list("oldfashioned" = 1, "beer" = 1, "capsaicin" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/welles
+	name = "Jackie Welles"
+	id = "welles"
+	result = "welles"
+	required_reagents = list("vodkatonic" = 1, "limejuice" = 1, "gingerale" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/martinez
+	name = "David Martinez"
+	id = "martinez"
+	result = "martinez"
+	required_reagents = list("vodka" = 1, "nicola" = 1, "ice" = 1)
+	result_amount = 3
 
 // Unathi drinks
 

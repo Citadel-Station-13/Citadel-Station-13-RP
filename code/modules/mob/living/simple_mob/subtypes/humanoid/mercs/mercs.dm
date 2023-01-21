@@ -430,7 +430,7 @@
 	projectiletype = /obj/item/projectile/bullet/rifle/a545
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/l6_saw = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/lmg = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 

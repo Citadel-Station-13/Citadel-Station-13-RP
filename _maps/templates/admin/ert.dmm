@@ -5151,9 +5151,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
+/obj/item/gun/energy/sniperrifle,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "Mv" = (
@@ -5539,12 +5537,8 @@
 /area/ship/ert/engineering)
 "OO" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
+/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)
@@ -6067,8 +6061,8 @@
 /area/ship/ert/armoury_dl)
 "Sy" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/ballistic/automatic/l6_saw,
-/obj/item/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,

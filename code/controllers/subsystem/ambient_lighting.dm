@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(ambient_lighting)
 	var/list/queued = list()
 
 /datum/controller/subsystem/ambient_lighting/stat_entry()
-	..("Queue:[length(queued)]")
+	return ..() + " Queue:[length(queued)]"
 
 /datum/controller/subsystem/ambient_lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queued

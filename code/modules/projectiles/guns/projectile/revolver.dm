@@ -324,6 +324,7 @@
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
+//NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
 	name = "NT-R-7 combat revolver"
 	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."

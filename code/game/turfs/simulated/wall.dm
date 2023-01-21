@@ -11,6 +11,10 @@
 	base_icon_state = "wall"
 	color = "#666666"
 
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
+
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE

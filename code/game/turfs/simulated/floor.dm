@@ -1,12 +1,16 @@
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
 	permit_ao = TRUE
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
 
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
@@ -19,7 +23,7 @@
 	// Plating data.
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
-	var/base_icon = 'icons/turf/flooring/plating_vr.dmi'
+	var/base_icon = 'icons/turf/flooring/plating.dmi'
 	var/static/list/base_footstep_sounds = list("human" = list(
 		'sound/effects/footstep/plating1.ogg',
 		'sound/effects/footstep/plating2.ogg',
