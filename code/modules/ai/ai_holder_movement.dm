@@ -134,7 +134,10 @@
 	return MOVEMENT_ON_COOLDOWN
 
 /datum/ai_holder/proc/should_wander()
-	return wander && !leader
+	if(HAS_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT))
+		return
+	else
+		return wander && !leader
 
 // Wanders randomly in cardinal directions.
 /datum/ai_holder/proc/handle_wander_movement()
@@ -152,3 +155,9 @@
 			holder.IMove(get_step(holder,moving_to))
 			wander_delay = base_wander_delay
 	ai_log("handle_wander_movement() : Exited.", AI_LOG_TRACE)
+
+/datum/ai_holder/proc/pause_automated_movement(source)
+	ADD_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT, source)
+
+/datum/ai_holder/proc/resume_automated_movement(source)
+	REMOVE_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT, source)

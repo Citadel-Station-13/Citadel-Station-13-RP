@@ -210,7 +210,8 @@
 	update_icon()
 
 /datum/component/riding_handler/shank
-	rider_offsets = list(10, 0, 0, null)
+	rider_offsets = list(0, 8, 1, null)
+	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
 /mob/living/simple_mob/animal/shank/apply_melee_effects(atom/A)
 	. = ..()

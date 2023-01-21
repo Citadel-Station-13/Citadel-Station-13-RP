@@ -1,14 +1,18 @@
 //As part of the Phase 3 expansions, Ashlanders are receiving some dedicated structures.
 //One of these is a functional forge where they can produce metal rods and lead sheets.
 //Another is a bricklayer that will compress sandstone blocks for construction.
+/obj/structure/ashlander
+	name = "ashlander structure"
+	desc = "Woah! You shouldn't be seeing me, outlander! Report me to the Buried Ones at once!"
+	icon = 'icons/obj/lavaland.dmi'
+	density = TRUE
+	anchored = TRUE
 
 /obj/structure/ashlander/forge
 	name = "magma forge"
 	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "forge"
-	density = TRUE
-	anchored = TRUE
 
 /obj/structure/ashlander/forge/attackby(obj/item/O, mob/user)
 	. = ..()
@@ -34,8 +38,6 @@
 	desc = "A hand crafted press and sieve designed to extract seeds from fruit."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "press"
-	density = TRUE
-	anchored = TRUE
 	use_power = USE_POWER_OFF
 
 /obj/structure/ashlander/brickmaker
@@ -43,8 +45,6 @@
 	desc = "Scorians have been observed using this device to compress sand and clay into hardened bricks."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "brickmaker"
-	density = TRUE
-	anchored = TRUE
 
 /obj/structure/ashlander/brickmaker/attackby(obj/item/O, mob/user)
 	. = ..()
@@ -62,6 +62,8 @@
 	desc = "A primitive assembly designed to hold a mortar and pestle."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "alchemy1"
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_OFF
 	circuit = null
 	no_panel = TRUE
