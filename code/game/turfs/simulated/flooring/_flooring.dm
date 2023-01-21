@@ -679,3 +679,11 @@ var/list/flooring_types
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/honeycomb
 	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+
+/singleton/flooring/sandstone
+	name = "sandstone floor"
+	desc = "A tile made out of sand that has been compacted and hardened until it's nearly as dense as stone."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "sandstone"
+	build_type = /obj/item/stack/tile/floor/sandstone
+	flags = TURF_REMOVE_CROWBAR

@@ -1668,7 +1668,7 @@
 	seed_name = "bentar"
 	display_name = "bentars"
 	kitchen_tag = "bentars"
-	chems = list("sugar" = list(1,5), "dylovene" = list(1,10))
+	chems = list("sugar" = list(1,5), "Dylovene" = list(1,10))
 
 /datum/seed/bentars/New()
 	..()

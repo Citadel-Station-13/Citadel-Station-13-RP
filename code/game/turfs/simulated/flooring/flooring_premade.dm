@@ -426,6 +426,12 @@
 	icon_state = "clockwork_floor"
 	initial_flooring = /singleton/flooring/brass
 
+/turf/simulated/floor/sandstone
+	name = "sandstone"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "sandstone"
+	initial_flooring = /singleton/flooring/sandstone
+
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless
 	name = "vacuum floor"

@@ -22,6 +22,11 @@
 		qdel(O)
 		var/turf/T = get_turf(src)
 		new /obj/item/stack/rods(T)
+	if(istype(O, /obj/item/ore/glass))
+		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! It starts melt in the crucible.</span>")
+		qdel(O)
+		var/turf/T = get_turf(src)
+		new /obj/item/ore/slag(T)
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press
