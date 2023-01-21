@@ -22,6 +22,7 @@
 	fire_delay = 35
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	recoil = 4
+	no_pin_required = 1
 
 	ammo_type = /obj/item/ammo_casing/musket
 
