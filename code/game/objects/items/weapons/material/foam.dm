@@ -37,7 +37,7 @@
 	hitsound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/twohanded/spear/foam/Initialize(mapload, material_key)
-	return ..(mapload,"foam")
+	..(mapload,"foam")
 
 /obj/item/material/twohanded/fireaxe/foam
 	attack_verb = list("bonked","whacked")

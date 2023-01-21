@@ -692,4 +692,4 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "sandstone"
 	build_type = /obj/item/stack/tile/floor/sandstone
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
