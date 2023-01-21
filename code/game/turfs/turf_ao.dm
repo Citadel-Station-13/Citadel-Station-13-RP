@@ -21,6 +21,14 @@
 		if (T?.permit_ao)
 			T.queue_ao(TRUE)
 
+/turf/proc/queue_ao(rebuild = TRUE)
+	if (!ao_queued)
+		SSao.queue += src
+
+	var/new_level = rebuild ? AO_UPDATE_REBUILD : AO_UPDATE_OVERLAY
+	if (ao_queued < new_level)
+		ao_queued = new_level
+
 /turf/proc/calculate_ao_neighbors()
 	ao_neighbors = NONE
 	ao_neighbors_mimic = NONE
@@ -53,14 +61,6 @@
 
 	. = cache[key] = I
 
-/turf/proc/queue_ao(rebuild = TRUE)
-	if (!ao_queued)
-		SSao.queue += src
-
-	var/new_level = rebuild ? AO_UPDATE_REBUILD : AO_UPDATE_OVERLAY
-	if (ao_queued < new_level)
-		ao_queued = new_level
-
 #define PROCESS_AO(TARGET, AO_LIST, NEIGHBORS, ALPHA) \
 	if (NEIGHBORS != AO_ALL_NEIGHBORS) { \
 		var/image/I = cache["ao-[NEIGHBORS]|[pixel_x]/[pixel_y]/[pixel_z]/[pixel_w]|[ALPHA]"]; \
@@ -68,12 +68,6 @@
 			I = make_ao_image(NEIGHBORS, TARGET.pixel_x, TARGET.pixel_y, TARGET.pixel_z, TARGET.pixel_w, ALPHA)	/* this will also add the image to the cache. */ \
 		} \
 		LAZYADD(AO_LIST, I); \
-	}
-
-#define CUT_AO(TARGET, AO_LIST) \
-	if (AO_LIST) { \
-		TARGET.cut_overlay(AO_LIST, TRUE); \
-		AO_LIST.Cut(); \
 	}
 
 #define REGEN_AO(TARGET, AO_LIST, NEIGHBORS, ALPHA) \
@@ -85,6 +79,12 @@
 		TARGET.add_overlay(AO_LIST, TRUE); \
 	}
 
+#define CUT_AO(TARGET, AO_LIST) \
+	if (AO_LIST) { \
+		TARGET.cut_overlay(AO_LIST, TRUE); \
+		AO_LIST.Cut(); \
+	}
+
 /turf/proc/update_ao()
 	var/list/cache = SSao.image_cache
 	CUT_AO(shadower, ao_overlays_mimic)
@@ -93,56 +93,6 @@
 		REGEN_AO(shadower, ao_overlays_mimic, ao_neighbors_mimic, Z_AO_ALPHA)
 	if (AO_TURF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
 		REGEN_AO(src, ao_overlays, ao_neighbors, WALL_AO_ALPHA)
-
-/**
- * Scans direction to find targets to smooth with.
- */
-/atom/proc/find_dense_turf_in_direction(direction)
-	var/turf/target_turf = get_step(src, direction)
-	if(!target_turf)
-		return NULLTURF_BORDER
-
-	if(AO_TURF_CHECK(target_turf))
-		return ADJ_FOUND
-
-	return NO_ADJ_FOUND
-
-/**
- * Scans all adjacent turfs to find valid turfs to smooth ao with.
- */
-/atom/proc/calculate_ao_adjacencies()
-	. = NONE
-
-	if(!loc)
-		return
-
-	for(var/direction in GLOB.cardinal)
-		switch(find_dense_turf_in_direction(direction))
-			if(NULLTURF_BORDER, ADJ_FOUND)
-				// BYOND and smooth dirs are the same for cardinals.
-				. |= direction
-
-	if(. & NORTH_JUNCTION)
-		if(. & WEST_JUNCTION)
-			switch(find_dense_turf_in_direction(NORTHWEST))
-				if(NULLTURF_BORDER, ADJ_FOUND)
-					. |= NORTHWEST_JUNCTION
-
-		if(. & EAST_JUNCTION)
-			switch(find_dense_turf_in_direction(NORTHEAST))
-				if(NULLTURF_BORDER, ADJ_FOUND)
-					. |= NORTHEAST_JUNCTION
-
-	if(. & SOUTH_JUNCTION)
-		if(. & WEST_JUNCTION)
-			switch(find_dense_turf_in_direction(SOUTHWEST))
-				if(NULLTURF_BORDER, ADJ_FOUND)
-					. |= SOUTHWEST_JUNCTION
-
-		if(. & EAST_JUNCTION)
-			switch(find_dense_turf_in_direction(SOUTHEAST))
-				if(NULLTURF_BORDER, ADJ_FOUND)
-					. |= SOUTHEAST_JUNCTION
 
 #undef REGEN_AO
 #undef PROCESS_AO
