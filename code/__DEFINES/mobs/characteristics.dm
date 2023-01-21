@@ -1,7 +1,6 @@
 //! General
 
-//? skillcheck types used for specializations and skill checks
-
+// none yet
 
 //! Skills
 
@@ -53,5 +52,3 @@
 #define CHARACTER_STAT_UNKNOWN "unkw"
 
 //! Talents
-
-//! Specializations

@@ -2878,7 +2878,6 @@
 #include "code\modules\mob\characteristics\modifier.dm"
 #include "code\modules\mob\characteristics\presets.dm"
 #include "code\modules\mob\characteristics\skill.dm"
-#include "code\modules\mob\characteristics\specialization.dm"
 #include "code\modules\mob\characteristics\stat.dm"
 #include "code\modules\mob\characteristics\talent.dm"
 #include "code\modules\mob\characteristics\ui.dm"

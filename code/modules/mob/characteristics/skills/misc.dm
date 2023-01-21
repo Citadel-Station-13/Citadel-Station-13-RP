@@ -12,7 +12,7 @@
 /datum/characteristic_skill/security/athletics
 	id = "athletics"
 	name = "Athletics"
-	desc = "How skilled you are with gymnastics, athletics, as well as general hand-eye coordination. Each level also gives a very slight boost to sprinting."
+	desc = "How skilled you are with gymnastics, athletics, as well as general hand-eye coordination."
 	desc_untrained = "You don't really have any experience with gymnastics or serious fitness."
 	desc_novice = "You have a bit of recreational exercise. Fall damage is slightly decreased, and some minor tasks are slightly faster."
 	desc_trained = "You are a recreational athlete. Fall damage is more decreased, and you get up faster from falls. Your metabolism is slightly more efficient."
