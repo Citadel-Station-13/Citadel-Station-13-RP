@@ -319,7 +319,7 @@
 
 /datum/crafting_recipe/saddle
 	name = "Hide Saddle"
-	result = /obj/item/saddle
+	result = /obj/item/saddle/shank
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 6,

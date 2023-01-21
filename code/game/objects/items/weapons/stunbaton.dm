@@ -295,6 +295,10 @@
 	w_class = ITEMSIZE_NORMAL
 	reach = 2
 
+/obj/item/melee/baton/stunlance/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 /obj/item/melee/baton/loaded/mini
 	name = "Personal Defense Baton"
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."

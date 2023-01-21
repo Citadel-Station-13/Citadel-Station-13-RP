@@ -525,6 +525,10 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
 
+/obj/item/weldingtool/welder_spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 /*
  * Electric/Arc Welder
  */

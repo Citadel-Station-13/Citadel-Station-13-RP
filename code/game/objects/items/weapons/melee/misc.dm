@@ -177,6 +177,10 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/items/bikehorn.ogg'
 
+/obj/item/melee/clownstaff/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 //Clown Dagger
 /obj/item/melee/clownop
 	name = "clown knife"

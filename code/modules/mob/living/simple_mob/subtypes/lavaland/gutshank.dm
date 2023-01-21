@@ -196,7 +196,7 @@
 	var/rideable = 0
 
 /mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/saddle) && !rideable)
+	if(istype(O, /obj/item/saddle/shank) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1
 		AddComponent(/datum/component/riding_handler/shank)
@@ -206,11 +206,11 @@
 		rideable = 0
 		DelComponent(/datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
-		new /obj/item/saddle(T)
+		new /obj/item/saddle/shank(T)
 	update_icon()
 
 /datum/component/riding_handler/shank
-	rider_offsets = list(0, 8, 0, null)
+	rider_offsets = list(-4, 11, 0, null)
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
 /mob/living/simple_mob/animal/shank/apply_melee_effects(atom/A)

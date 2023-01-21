@@ -851,7 +851,15 @@
 //Yay Saddles.
 /obj/item/saddle
 	name = "saddle"
-	desc = "A portable seat designed to be mounted on trained animals."
+	desc = "A portable seat designed to be mounted on trained animals. You shouldn't be seeing this version!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "saddle"
 	w_class = ITEMSIZE_LARGE
+
+/obj/item/saddle/horse
+	desc = "A portable seat designed to be mounted on trained animals. This leather design originates from Old Earth, where it was primarily used on horses."
+
+/obj/item/saddle/shank
+	name = "goliath hide saddle"
+	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
+	icon_state = "saddle_lavaland"

@@ -162,7 +162,6 @@
 	if(isliving(parent))
 		var/mob/living/L = parent
 		L.ai_holder?.pause_automated_movement()
-		L.AddComponent(/datum/component/jousting)
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
@@ -170,7 +169,6 @@
 	if(isliving(parent))
 		var/mob/living/L = parent
 		L.ai_holder?.resume_automated_movement()
-		L.DelComponent(/datum/component/jousting)
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()

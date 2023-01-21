@@ -191,6 +191,10 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
+/obj/item/material/twohanded/fireaxe/scythe/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 //spears, bay edition
 /obj/item/material/twohanded/spear
 	icon_state = "spearglass0"
@@ -218,6 +222,10 @@
 	slowdown = 1.05
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /obj/item/material/twohanded/spear/examine(mob/user)
 	. = ..()
