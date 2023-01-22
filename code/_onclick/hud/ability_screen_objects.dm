@@ -1,3 +1,5 @@
+// TODO: KILL THIS SHIT FOR ACTION BUTTONS
+// TODO: NEW SCREEN LOC DECODING PROCS.
 /atom/movable/screen/movable/ability_master
 	name = "Abilities"
 	icon = 'icons/mob/screen_spells.dmi'
@@ -8,9 +10,11 @@
 	var/open_state = "master_open"		// What the button looks like when it's 'open', showing the other buttons.
 	var/closed_state = "master_closed"	// Button when it's 'closed', hiding everything else.
 
-	screen_loc = ui_spell_master // TODO: Rename
+	screen_loc = ui_ability_master // TODO: Rename
 
 	var/mob/my_mob = null // The mob that possesses this hud object.
+	var/opens_to_left = TRUE
+	var/opens_downwards = TRUE
 
 /atom/movable/screen/movable/ability_master/Initialize(mapload)
 	. = ..()
@@ -70,20 +74,22 @@
 	//Create list of X offsets
 	var/list/screen_loc_X = splittext(screen_loc_xy[1],":")
 	var/x_position = decode_screen_X(screen_loc_X[1])
-	var/x_pix = screen_loc_X[2]
+	var/x_pix = text2num(screen_loc_X[2])
 
 	//Create list of Y offsets
 	var/list/screen_loc_Y = splittext(screen_loc_xy[2],":")
 	var/y_position = decode_screen_Y(screen_loc_Y[1])
-	var/y_pix = screen_loc_Y[2]
+	var/y_pix = text2num(screen_loc_Y[2])
 
 	for(var/i = 1; i <= ability_objects.len; i++)
-		var/atom/movable/screen/ability/A = ability_objects[i]
-		var/xpos = x_position + (x_position < 8 ? 1 : -1)*(i%7)
-		var/ypos = y_position + (y_position < 8 ? round(i/7) : -round(i/7))
-		A.screen_loc = "[encode_screen_X(xpos)]:[x_pix],[encode_screen_Y(ypos)]:[y_pix]"
+		var/atom/movable/screen/ability/S = ability_objects[i]
+		// TODO: WARNING THIS IS SHITCODE AND MONKEY PATCHED AND WILL BREAK VERY SOON
+		// Pray we finish abilities refactor by then!
+		var/xpos = x_position + (opens_to_left? -1 : 1) * ((i % 7) + 1) - 1
+		var/ypos = y_position + (opens_downwards? -1 : 1) * (round(i / 7) + 0) - 1
+		S.screen_loc = "[encode_screen_X(xpos)]:[x_pix],[encode_screen_Y(ypos)]:[y_pix]"
 		if(my_mob && my_mob.client)
-			my_mob.client.screen += A
+			my_mob.client.screen += S
 //			A.handle_icon_updates = 1
 
 /atom/movable/screen/movable/ability_master/proc/update_abilities(forced = 0, mob/user)
