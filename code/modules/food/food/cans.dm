@@ -37,9 +37,19 @@
 	. = ..()
 	reagents.add_reagent("cherrycola", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee
+	name = "\improper Space Cola Coffee"
+	desc = "Coffee cola. In space!"
+	icon_state = "coffeecola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coffeecola", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
-	desc = "Introduced to the vending machines by Skrellian request, this water comes straight from the Martian poles."
+	desc = "Introduced to the vending machines by Skrellian request, this water probably came from some icy comet in deep space!"
 	icon_state = "waterbottle"
 	center_of_mass = list("x"=15, "y"=8)
 	drop_sound = 'sound/items/drop/disk.ogg'
@@ -274,6 +284,36 @@
 /obj/item/reagent_containers/food/drinks/cans/nicola_sakura/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nicolacherry", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpress
+	name = "\improper Robust Express"
+	desc = "Delicious caffeine awaits inside. It's pleasantly warm to the touch."
+	icon_state = "robustexpress"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpress/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coffee", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpressiced
+	name = "\improper Robust Express Iced"
+	desc = "Delicious caffeine awaits inside. It's refreshingly cool to the touch."
+	icon_state = "robustexpressiced"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpressiced/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("icecoffee", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte
+	name = "\improper Robust Express Latte"
+	desc = "Delicious caffeine awaits inside, now with milk! It's pleasantly warm to the touch."
+	icon_state = "robustexpresslatte"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cafe_latte", 30)
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune

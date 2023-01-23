@@ -44,7 +44,7 @@
 	I.alpha = alpha
 	I.blend_mode = BLEND_OVERLAY
 	I.appearance_flags = RESET_ALPHA|RESET_COLOR|TILE_BOUND
-	I.layer = AO_LAYER
+	I.layer = TURF_AO_LAYER
 	// If there's an offset, counteract it.
 	if (px || py || pz || pw)
 		I.pixel_x = -px
