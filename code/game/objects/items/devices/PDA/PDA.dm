@@ -1411,7 +1411,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significantchemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significant chemical agents found in [A].</span>")
 
 		if(5)
 			analyze_gases(A, user)
