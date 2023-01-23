@@ -730,3 +730,75 @@
 	message = sanitize(message)
 	if(message)
 		soulcatcher.emote_into(message,src,null)
+
+#define ENV_WIDTH 9
+#define ENV_HEIGHT 9
+#define ENCODE_REL(x, y) (y * ENV_HEIGHT + x)
+#define DECODE_REL(n, _x, _y) _x = n % ENV_HEIGHT; _y = round(n / ENV_HEIGHT);
+
+/datum/soulcatcher_environment
+	/// version
+	var/save_version = 1
+	/// turf block
+	var/datum/turf_reservation/allocation
+
+/datum/soulcatcher_environment/proc/serialize()
+	RETURN_TYPE(/list)
+	ASSERT(allocation)
+	var/list/data = list()
+	var/cache_ll_x = allocation.bottom_left_coords[1]
+	var/cache_ll_y = allocation.bottom_left_coords[2]
+	var/cache_ll_z = allocation.bottom_left_coords[3]
+	for(var/turf/T as anything in allocation.block_turfs())
+		var/rel_x = T.x - cache_ll_x + 1
+		var/rel_y = T.y - cache_ll_y + 1
+		var/key = "[ENCODE_REL(rel_x, rel_y)]"
+		data[key] = encode_turf(T)
+	return data
+
+/datum/soulcatcher_environment/proc/deserialize(list/data)
+	ASSERT(allocation)
+	var/cache_ll_x = allocation.bottom_left_coords[1]
+	var/cache_ll_y = allocation.bottom_left_coords[2]
+	var/cache_ll_z = allocation.bottom_left_coords[3]
+	for(var/key in data)
+		var/rel_x
+		var/rel_y
+		var/index = text2num(key)
+		DECODE_REL(index, rel_x, rel_y)
+		decode_turf(locate(cache_ll_x + rel_x - 1, cache_ll_y + rel_y - 1, cache_ll_z), data[key])
+
+/datum/soulcatcher_environment/proc/encode_turf(turf/T)
+	. = list()
+	for(var/i in 1 to min(10, length(T.contents)))
+		var/atom/movable/AM = T.contents[i]
+		if(AM.atom_flags & ATOM_ABSTRACT)
+			continue
+		if(isitem(AM))
+			// todo: item serialization
+
+		else
+			// simple object serialization
+			. += list(list(
+				"type" = "obj",
+				"path" = AM.type,
+			))
+
+/datum/soulcatcher_environment/proc/decode_turf(turf/T, list/data)
+	for(var/i in 1 to min(10, length(data)))
+		var/list/decoding = data[i]
+		switch(decoding["type"])
+			if("obj")
+				var/path = decoding["path"]
+				var/obj/effect/soulcatcher_holoclone/cloning = new(T)
+				var/atom/loading = path
+				cloning.appearance = initial(loading.appearance)
+			if("item")
+				// todo: item deserializatoin
+
+/obj/effect/soulcatcher_holoclone
+
+#undef ENCODE_REL
+#undef DECODE_REL
+#undef ENV_WIDTH
+#undef ENV_HEIGHT

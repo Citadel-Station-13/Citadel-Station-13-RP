@@ -80,6 +80,15 @@
 	src.height = height
 	return TRUE
 
+/**
+ * block()'s the turfs
+ */
+/datum/turf_reservation/proc/block_turfs()
+	return block(
+		locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]),
+		locate(top_right_coords[1], top_right_coords[2], top_right_coords[3])
+	)
+
 /datum/turf_reservation/New()
 	LAZYADD(SSmapping.turf_reservations, src)
 
