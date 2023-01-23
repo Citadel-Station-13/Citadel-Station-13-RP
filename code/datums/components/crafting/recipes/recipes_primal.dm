@@ -71,6 +71,28 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/bonesword
+	name = "Bone Sword"
+	result = /obj/item/melee/ashlander
+	time = 100
+	reqs = list(/obj/item/stack/material/bone = 4,
+				 /obj/item/stack/sinew = 1,
+				 /obj/item/elderstone = 1,
+				 /obj/item/stack/animalhide/goliath_hide = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/bonesword_elder
+	name = "Bone Sword (Elder)"
+	result = /obj/item/melee/ashlander/elder
+	time = 100
+	reqs = list(/obj/item/stack/material/bone = 4,
+				 /obj/item/stack/sinew = 1,
+				 /obj/item/elderstone = 1,
+				 /obj/item/stack/animalhide/goliath_hide = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
 	time = 60
@@ -210,7 +232,7 @@
 	reqs = list(
             /obj/item/stack/material/bone = 3,
             /obj/item/stack/sinew = 2,
-			/obj/item/soulstone = 1)
+			/obj/item/elderstone = 1)
 	result = /obj/item/surgical/cautery_primitive
 	category = CAT_PRIMAL
 	always_available = FALSE
@@ -291,7 +313,8 @@
 	result = /obj/item/weldingtool/bone
 	time = 50
 	reqs = list(/obj/item/stack/material/bone = 6,
-				/obj/item/stack/sinew = 4
+				/obj/item/stack/sinew = 4,
+				/obj/item/elderstone = 1
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE

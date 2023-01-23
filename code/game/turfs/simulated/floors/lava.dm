@@ -72,20 +72,13 @@
 	if(AM)
 		thing_to_check = list(AM)
 
-	for(var/thing in thing_to_check)
-		if(isobj(thing))
-			var/obj/O = thing
-			if(O.throwing)
-				continue
-			. = TRUE
-			O.lava_act()
-
-		else if(isliving(thing))
-			var/mob/living/L = thing
-			if(L.hovering || L.throwing) // Flying over the lava. We're just gonna pretend convection doesn't exist.
-				continue
-			. = TRUE
-			L.lava_act()
+	for(var/atom/movable/thing as anything in thing_to_check)
+		if(thing.is_avoiding_ground()) // Flying/riding over the lava. We're just gonna pretend convection doesn't exist.
+			continue
+		if(istype(AM, /obj/vehicle/ridden/boat/ashlander))
+			continue
+		. = TRUE
+		thing.lava_act()
 
 // Lava that does nothing at all.
 /turf/simulated/floor/outdoors/lava/harmless/burn_stuff(atom/movable/AM)

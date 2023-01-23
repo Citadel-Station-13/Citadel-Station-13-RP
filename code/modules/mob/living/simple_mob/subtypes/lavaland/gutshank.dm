@@ -191,7 +191,7 @@
 	buckle_lying = FALSE
 	buckle_max_mobs = 1
 	buckle_allowed = TRUE
-	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF || BUCKLING_GROUND_HOIST
 
 	var/rideable = 0
 

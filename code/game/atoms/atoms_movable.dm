@@ -533,4 +533,10 @@
 	qdel(em_render)
 	em_render = null
 
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/atom/movable/proc/is_avoiding_ground()
+    return (movement_type != GROUND) || throwing
+
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting

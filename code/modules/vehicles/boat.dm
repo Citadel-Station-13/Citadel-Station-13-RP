@@ -49,6 +49,17 @@
 /obj/vehicle/ridden/boat/dragon/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
 
+/obj/vehicle/ridden/boat/ashlander
+	name = "blessed boat"
+	desc = "This vessel has been blessed by the priesthood to grant safe passage. Lined with goliath hide and studded with elderstone, these vessels are rarely seen outside of seafaring convoys."
+	icon = 'icons/obj/vehicles_36x32.dmi'
+	icon_state = "boat_older"
+	integrity = 150
+	max_integrity = 150
+
+/obj/vehicle/ridden/boat/ashlander/Initialize(mapload, material_name)
+	return ..(mapload, "cult") //Apparently there's no other dark red/maroon material that's stony. I don't think anyone will see this material type.
+
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"

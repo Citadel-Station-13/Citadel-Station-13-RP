@@ -863,3 +863,12 @@
 	name = "goliath hide saddle"
 	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
 	icon_state = "saddle_lavaland"
+
+//Ashlander Specific Crafting Item - I'll eventually just make an item .dm for these guys at this rate.
+//This item will replace soulstones in Lavaland recipes/features.
+/obj/item/elderstone
+	name = "elder stone"
+	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "elderstone"
+	w_class = ITEMSIZE_SMALL
