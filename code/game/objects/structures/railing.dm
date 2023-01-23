@@ -105,8 +105,8 @@
 			if (UpdateNeighbors)
 				R.update_icon(UpdateNeighbors = FALSE)
 
-/obj/structure/railing/update_icon(updates, UpdateNeighgors = TRUE)
-	NeighborsCheck(UpdateNeighgors)
+/obj/structure/railing/update_icon(updates, UpdateNeighbors = TRUE)
+	NeighborsCheck(UpdateNeighbors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
 	cut_overlays()
 
