@@ -698,9 +698,9 @@
 	vend_delay = 34
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
-	products = list(/obj/item/reagent_containers/food/drinks/coffee = 25,/obj/item/reagent_containers/food/drinks/tea = 25,/obj/item/reagent_containers/food/drinks/h_chocolate = 25)
+	products = list(/obj/item/reagent_containers/food/drinks/coffee = 25,/obj/item/reagent_containers/food/drinks/tea = 25,/obj/item/reagent_containers/food/drinks/h_chocolate = 25,/obj/item/reagent_containers/food/drinks/cans/robustexpress = 10,/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/ice = 10)
-	prices = list(/obj/item/reagent_containers/food/drinks/coffee = 3, /obj/item/reagent_containers/food/drinks/tea = 3, /obj/item/reagent_containers/food/drinks/h_chocolate = 3)
+	prices = list(/obj/item/reagent_containers/food/drinks/coffee = 3, /obj/item/reagent_containers/food/drinks/tea = 3, /obj/item/reagent_containers/food/drinks/h_chocolate = 3, /obj/item/reagent_containers/food/drinks/h_chocolate = 25,/obj/item/reagent_containers/food/drinks/cans/robustexpress = 1, /obj/item/reagent_containers/food/drinks/cans/robustexpresslatte = 1)
 
 /obj/machinery/vending/snack
 	name = "Getmore Chocolate Corp"
@@ -712,13 +712,13 @@
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6)
+					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1)
+					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -733,16 +733,22 @@
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10,
+					/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
+					/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
 					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 10,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10,
+					/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 10,
 					/obj/item/reagent_containers/food/drinks/cans/ochamidori = 10,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
 					/obj/item/reagent_containers/food/drinks/cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
+					/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 10,
+					/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
  					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
 					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
+					 /obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 10,
 					 /obj/item/reagent_containers/food/drinks/bludbox = 5,
 					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
@@ -756,7 +762,10 @@
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
 					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
 					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70,
-					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6)
+					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6, /obj/item/reagent_containers/food/drinks/cans/nicola = 1,
+					/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 1,
+					/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 1, /obj/item/reagent_containers/food/drinks/cans/cola_coffee = 1,
+					/obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 1)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.

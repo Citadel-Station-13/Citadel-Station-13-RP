@@ -17,6 +17,13 @@
 /// main window split
 #define SKIN_SPLITTER_ID_MAIN "mainwindow.split"
 
+//! Stat System
+#define SKIN_TAB_ID_STAT "stat_tab"
+#define SKIN_PANE_ID_BYONDSTAT "stat_pane_byond"
+#define SKIN_PANE_ID_BROWSERSTAT "stat_pane_browser"
+#define SKIN_BROWSER_ID_STAT "statbrowser"
+#define SKIN_INFO_ID_STAT "statpanel"
+
 //? Dynamic skin IDs used by code-generated elements
 //? button groups MUST have unique ids to all skin elements!
 // TOP LEVEL MENU //

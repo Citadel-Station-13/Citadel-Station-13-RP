@@ -289,9 +289,6 @@
 	 */
 	var/mob/teleop = null //? This is mainly used for adghosts to hear things from their actual body.
 
-	/// The current turf being examined in the stat panel.
-	var/turf/listed_turf = null
-
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM
 	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.

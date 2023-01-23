@@ -9,6 +9,7 @@
 	#define COMPONENT_MOVABLE_BLOCK_PRE_MOVE (1<<0)
 /// From base of atom/movable/Moved(): (atom/old_loc, dir, forced, list/old_locs)
 #define COMSIG_MOVABLE_MOVED "movable_moved"
+// todo: abstract move and attach_loc or whatever from tg, no more cross/uncross!!!
 /// From base of atom/movable/Cross(): (/atom/movable)
 #define COMSIG_MOVABLE_CROSS "movable_cross"
 /// From base of atom/movable/Crossed(): (/atom/movable)

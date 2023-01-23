@@ -2980,8 +2980,7 @@
 "ue" = (
 /obj/structure/closet/crate,
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/centcom/suppy)
 "uf" = (

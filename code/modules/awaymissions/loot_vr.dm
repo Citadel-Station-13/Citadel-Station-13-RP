@@ -157,7 +157,7 @@
 					prob(7);/obj/item/gun/ballistic/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
 				/*	prob(6);/obj/item/gun/ballistic/SVD,\*/
-					prob(6);/obj/item/gun/ballistic/automatic/l6_saw,\
+					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
 					prob(6);/obj/item/gun/energy/lasercannon,\
 					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
 					prob(5);/obj/item/gun/energy/pulse_rifle,\
@@ -165,6 +165,8 @@
 					prob(3);/obj/item/gun/ballistic/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
 					prob(2);/obj/item/gun/ballistic/deagle/gold,\
+					prob(2);/obj/item/gun/ballistic/automatic/lmg/mg42,\
+					prob(2);/obj/item/gun/ballistic/automatic/lmg/m60,\
 					prob(1);/obj/item/gun/ballistic/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/ballistic/gyropistol,\
@@ -349,7 +351,7 @@
 	anchored = 1
 	layer = 3.5
 	name = "strange symbol"
-	icon = 'icons/obj/decals_vr.dmi'
+	icon = 'icons/obj/decals.dmi'
 
 /obj/structure/symbol/ca
 	desc = "It looks like a skull, or maybe a crown."

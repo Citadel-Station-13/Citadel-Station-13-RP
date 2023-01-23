@@ -581,18 +581,22 @@
 		blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	return 1 //we applied blood to the item
 
+// Protip: don't use world scans to implement caching. Yes, that is how this used to work.
+GLOBAL_LIST_EMPTY(blood_overlay_cache)
+
 /obj/item/proc/generate_blood_overlay()
 	if(blood_overlay)
 		return
 
-	var/icon/I = new /icon(icon, icon_state)
-	I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)),ICON_ADD) //fills the icon_state with white (except where it's transparent)
-	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"),ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+	if (GLOB.blood_overlay_cache[type])
+		blood_overlay = GLOB.blood_overlay_cache[type]
+		return
 
-	//not sure if this is worth it. It attaches the blood_overlay to every item of the same type if they don't have one already made.
-	for(var/obj/item/A in world)
-		if(A.type == type && !A.blood_overlay)
-			A.blood_overlay = image(I)
+	var/icon/I = new /icon(icon, icon_state)
+	I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
+	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+
+	blood_overlay = GLOB.blood_overlay_cache[type] = image(I)
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))

@@ -170,14 +170,6 @@
 	tag_exterior_door = "ert1_shuttle_outer";
 	tag_interior_door = "ert1_shuttle_inner"
 	},
-/obj/effect/overmap/visitable/ship/landable/specialops2,
-/obj/effect/shuttle_landmark/premade{
-	base_area = /area/centcom/specops;
-	base_turf = /turf/unsimulated/floor;
-	docking_controller = "ert_shuttle_bay";
-	landmark_tag = "specops_base";
-	name = "ERT Shuttle Bay"
-	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "au" = (
@@ -441,9 +433,7 @@
 "aW" = (
 /obj/structure/table/rack/steel,
 /obj/item/gun/energy/netgun,
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
+/obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/gun/martin{
 	battery_lock = 0
 	},
@@ -1127,12 +1117,6 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/plating,
-/area/shuttle/specops/centcom)
-"co" = (
-/obj/machinery/computer/shuttle_control/explore/specialops2{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cp" = (
 /obj/structure/bed/chair{
@@ -2447,7 +2431,7 @@ aj
 ap
 ap
 bV
-co
+aH
 ap
 ap
 aj

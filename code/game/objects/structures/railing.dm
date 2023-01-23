@@ -26,7 +26,7 @@
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 
@@ -109,30 +109,31 @@
 	NeighborsCheck(UpdateNeighgors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
 	cut_overlays()
-	var/list/overlays_to_add = list()
 
 	if (!check || !anchored)//|| !anchored
 		icon_state = "railing0"
 	else
 		icon_state = "railing1"
 		if (check & 32)
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "corneroverlay")
+			add_overlay("corneroverlay")
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
+			add_overlay("frontoverlay_l")
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
+			var/list/overlays_to_add = list(
+				"frontoverlay_r"
+			)
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_y = 32)
 
-	add_overlay(overlays_to_add)
+			add_overlay(overlays_to_add)
 
 /obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"

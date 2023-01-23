@@ -47,7 +47,7 @@ More detailed setup instructions arecoming soon, for now ask in our Discord.
 
 ## LICENSE
 
-The code for VOREStation is licensed under the [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
+The code for Citadel-Station-13-RP is licensed under the [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
 
 All code with a git authorship date after `1420675200 +0000` (2015/01/08 00:00) is assumed to be licensed under [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
 

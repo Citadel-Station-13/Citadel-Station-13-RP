@@ -35,7 +35,7 @@
 		brightness_levels = list("low" = 0.25, "medium" = 0.5, "high" = 1)
 		power_usage = brightness_levels[brightness_level]
 	else
-		verbs -= /obj/item/flashlight/verb/toggle
+		remove_obj_verb(src, /obj/item/flashlight/verb/toggle)
 
 	update_appearance()
 

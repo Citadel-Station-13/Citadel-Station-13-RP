@@ -433,7 +433,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper CentCom Living Quarters"
 
 /area/centcom/specops
-	name = "\improper CentCom Special Ops"
+	name = "\improper CentCom Special Operations"
+
+/area/centcom/specops/dock
+	name = "\improper CentCom Special Operations - Dock"
 
 /area/centcom/creed
 	name = "Creed's Office"

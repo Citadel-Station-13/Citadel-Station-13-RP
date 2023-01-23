@@ -2,7 +2,7 @@
 	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
-	category = "Special"
+	category = SPECIES_CATEGORY_RESTRICTED
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
@@ -159,7 +159,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,

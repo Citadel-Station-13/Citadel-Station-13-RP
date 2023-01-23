@@ -110,12 +110,6 @@
 	/// contamination insulation; null defaults to rad_insulation
 	var/rad_stickiness
 
-	//! ## Overlays
-	/// a very temporary list of overlays to remove
-	var/list/remove_overlays
-	/// a very temporary list of overlays to add
-	var/list/add_overlays
-
 	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
 	var/list/managed_vis_overlays
 	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
@@ -1127,3 +1121,8 @@
 	base_pixel_y = new_value
 
 	pixel_y = pixel_y + base_pixel_y - .
+
+/// forcefully center us
+/atom/proc/auto_pixel_offset_to_center()
+	set_base_pixel_y(get_centering_pixel_y_offset())
+	set_base_pixel_x(get_centering_pixel_x_offset())

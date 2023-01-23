@@ -149,7 +149,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/crew_shadekin(H)
 	for(var/datum/power/crew_shadekin/P in crew_shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_crew_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,

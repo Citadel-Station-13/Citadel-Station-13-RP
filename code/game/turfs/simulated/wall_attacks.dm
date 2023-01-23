@@ -34,7 +34,7 @@
 
 	var/mutable_appearance/under_ma
 	under_ma = new()
-	under_ma.icon = 'icons/turf/flooring/plating_vr.dmi'
+	under_ma.icon = 'icons/turf/flooring/plating.dmi'
 	under_ma.icon_state = "plating"
 
 	underlays += under_ma

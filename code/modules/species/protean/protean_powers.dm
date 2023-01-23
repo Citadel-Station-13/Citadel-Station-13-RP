@@ -372,6 +372,9 @@
 /obj/effect/protean_ability/proc/atom_button_text()
 	return src
 
+/obj/effect/protean_ability/statpanel_click(client/C, action, auth)
+	Click()
+
 /obj/effect/protean_ability/Click(var/location, var/control, var/params)
 	var/list/clickprops = params2list(params)
 	var/opts = clickprops["shift"]

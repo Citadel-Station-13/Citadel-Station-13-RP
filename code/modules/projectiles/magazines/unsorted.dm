@@ -523,6 +523,17 @@
 /obj/item/ammo_magazine/m57x28mm/large/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m57x28mm/smg
+	name = "NT-SMG-8 magazine (5.7x28mm)"
+	desc = "A compact double stack aluminum magazine."
+	icon_state = "combatsmg"
+	max_ammo = 40
+
+/obj/item/ammo_magazine/m57x28mm/smg/ap
+	name = "NT-SMG-8 magazine (5.7x28mm armor piercing)"
+	ammo_mark = "cmbtsmg_ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+
 //Vintage Mags
 /obj/item/ammo_magazine/m57x28mm/vintage
 	name = "vinage magazine (5.7x28mm)"
@@ -901,6 +912,38 @@
 	ammo_type = /obj/item/ammo_casing/a762/ap
 
 /obj/item/ammo_magazine/m762svd/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m762_mg42
+	name = "antique ammo drum (7.62mm)"
+	icon_state = "mg42_drum"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	caliber = "7.62mm"
+	matter = list(MAT_STEEL = 10000)
+	ammo_type = /obj/item/ammo_casing/a762
+	w_class = ITEMSIZE_NORMAL
+	max_ammo = 50
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m762_mg42/ap
+	name = "antique ammo drum box (7.62mm armor-piercing)"
+	ammo_type = /obj/item/ammo_casing/a762/ap
+
+/obj/item/ammo_magazine/m762_mg42/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m762_m60
+	name = "M60 belt (7.62mm)"
+	icon_state = "M60MAG"
+	mag_type = MAGAZINE
+	caliber = "7.62mm"
+	matter = list(MAT_STEEL = 20000)
+	ammo_type = /obj/item/ammo_casing/a762
+	max_ammo = 75
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m762_m60/empty
 	initial_ammo = 0
 
 ///////// 12g /////////

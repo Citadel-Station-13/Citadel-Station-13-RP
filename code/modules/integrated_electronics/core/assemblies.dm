@@ -309,6 +309,7 @@
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this?", "Rename", src.name, MAX_NAME_LEN)

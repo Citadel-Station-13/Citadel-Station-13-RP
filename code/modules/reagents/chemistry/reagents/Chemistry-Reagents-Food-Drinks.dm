@@ -1624,7 +1624,27 @@ End Citadel Change */
 	adj_temp = -5
 
 	glass_name = "Space Cola"
-	glass_desc = "A glass of refreshing Space Cola"
+	glass_desc = "A glass of refreshing Space Cola."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/cherry
+	name = "Space Cola Cherry"
+	id = "cherrycola"
+	description = "A refreshing cherry-flavored beverage."
+	taste_description = "cherry cola"
+
+	glass_name = "Space Cola Cherry"
+	glass_desc = "A glass of refreshing Space Cola Cherry."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/coffee
+	name = "Space Cola Coffee"
+	id = "coffeecola"
+	description = "An energizing blend of Space Cola and coffee."
+	taste_description = "caffeinated cola"
+
+	glass_name = "Space Cola Coffee"
+	glass_desc = "A glass of energizing Space Cola Coffee."
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/spacemountainwind
@@ -1686,7 +1706,7 @@ End Citadel Change */
 /datum/reagent/drink/soda/dr_gibb
 	name = "Dr. Gibb"
 	id = "dr_gibb"
-	description = "A delicious blend of 42 different flavors"
+	description = "A delicious blend of 42 different flavors."
 	taste_description = "cherry soda"
 	color = "#102000"
 	adj_drowsy = -6
@@ -1694,6 +1714,16 @@ End Citadel Change */
 
 	glass_name = "Dr. Gibb"
 	glass_desc = "Dr. Gibb. Not as dangerous as the name might imply."
+
+/datum/reagent/drink/soda/dr_gibb/cherry
+	name = "Dr. Gibb Cherry"
+	id = "dr_gibbcherry"
+	description = "A delicious blend of 42 different flavors, but mostly cherry."
+	taste_description = "extra cherry soda"
+
+	glass_name = "Dr. Gibb Cherry"
+	glass_desc = "A delicious blend of 42 different flavors."
+	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/space_up
 	name = "Space-Up"
@@ -1730,6 +1760,26 @@ End Citadel Change */
 	glass_name = "Ginger Ale"
 	glass_desc = "The original, refreshing not-actually-ale."
 	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/nicola
+	name = "NiCola"
+	id = "nicola"
+	description = "Imported straight from Osaka IV."
+	taste_description = "cough syrup and cola"
+	color = "#271402"
+
+	glass_name = "NiCola"
+	glass_desc = "A glass of imported Japanese NiCola."
+
+/datum/reagent/drink/soda/nicola/cherry
+	name = "NiCola Sakura"
+	id = "nicolacherry"
+	description = "Originally a limited flavor, brought back by popular demand."
+	taste_description = "cherry cough syrup and cola"
+	color = "#271402"
+
+	glass_name = "NiCola Sakura"
+	glass_desc = "A glass of limited edition NiCola Sakura."
 
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
@@ -4155,6 +4205,40 @@ End Citadel Change */
 
 	glass_name = "Piña Colada"
 	glass_desc = "For those not into yoga."
+
+//Never Fade Away
+/datum/reagent/ethanol/silverhand
+	name = "Johnny Silverhand"
+	id = "silverhand"
+	description = "Old fashioned, beer, and chili. A drink for an angry, angry soul."
+	taste_description = "an old-world classic with a firey finish"
+	color = "#8d5b28" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "Johnny Silverhand"
+	glass_desc = "...at the end of it all, it's the code you live by that defines who you are."
+
+/datum/reagent/ethanol/welles
+	name = "Jackie Welles"
+	id = "welles"
+	description = "An updated take on a Moscow Mule, for those trying to make a fresh mark on the world."
+	taste_description = "vodka and lime with a burst of fizzy ginger"
+	color = "#db7878" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "Jackie Welles"
+	glass_desc = "But that's done after tomorrow. Afterlife, here we come, baby!"
+
+/datum/reagent/ethanol/martinez
+	name = "David Martinez"
+	id = "martinez"
+	description = "Vodka and cola with a splash of sakura. A drink for those who shoot for the moon."
+	taste_description = "vodka, cola, and sakura flower"
+	color = "#206cc4" // rgb(119, 68, 16)
+	strength = 20
+
+	glass_name = "David Martinez"
+	glass_desc = "You still have a dream to stick around for. Need you to see it through. That's my dream."
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)

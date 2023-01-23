@@ -101,7 +101,7 @@
 	if(current)					//remove ourself from our old body's mind variable
 		if(changeling)
 			current.remove_changeling_powers()
-			current.verbs -= /datum/changeling/proc/EvolutionMenu
+			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 		current.mind = null
 
 		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
@@ -514,7 +514,7 @@
 		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
-		src.client.verbs += /client/proc/aooc
+		add_verb(client, /client/proc/aooc)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

@@ -2,7 +2,7 @@
 	name = "snow"
 	icon_state = "snow"
 	edge_blending_priority = 1
-	movement_cost = 2
+	slowdown = 2
 	initial_flooring = /singleton/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
@@ -65,7 +65,7 @@
 	name = "ice"
 	icon_state = "ice"
 	desc = "Looks slippery."
-	movement_cost = 4
+	slowdown = 4
 	edge_blending_priority = 0
 
 // Ice that is safe to walk on.
@@ -73,7 +73,7 @@
 	name = "ice"
 	icon_state = "ice"
 	desc = "Seems safe enough to walk on."
-	movement_cost = 2
+	slowdown = 2
 	edge_blending_priority = 0
 
 // Snowy gravel

@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(events)
 		EC.process(dt)
 
 /datum/controller/subsystem/events/stat_entry()
-	..("E:[active_events.len]")
+	return ..() + " E:[active_events.len]"
 
 /datum/controller/subsystem/events/Recover()
 	if(SSevents.active_events)

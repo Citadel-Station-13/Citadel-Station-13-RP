@@ -114,6 +114,7 @@
 #define TURF_PLANE -45
 
 #define PLATING_LAYER               (AREA_LAYER)
+#define PLATING_DECAL_LAYER         (AREA_LAYER+0.01) //! Used for decals on plating and for map editors.
 #define DISPOSAL_LAYER              (AREA_LAYER+0.1)
 #define DECAL_PLATING_LAYER         (AREA_LAYER+0.2)
 #define DISPOSALS_PIPE_LAYER        (AREA_LAYER+0.3)
@@ -128,16 +129,18 @@
 //? ABOVE PLATING
 
 #define WATER_FLOOR_LAYER           (TURF_LAYER)      /// The 'bottom' of water tiles.
-#define TURF_DETAIL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
+#define FLOOR_DECAL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 
-//? ABOVE TURF
+//? ABOVE FLOOR
 
-#define DECAL_LAYER                 (TURF_LAYER+0.03) /// For intentionally placed floor decal overlays.
-#define AO_LAYER                    (TURF_LAYER+0.04) /// Ambient Occlusion layer.
+#define DECAL_LAYER                 (TURF_LAYER+0.03)  /// For intentionally placed floor decal overlays.
+#define TURF_DAMAGE_LAYER           (TURF_LAYER+0.035) /// Layer at which turf damage overlays are placed.
+#define TURF_AO_LAYER               (TURF_LAYER+0.04)  /// Ambient Occlusion layer.
+#define EDGE_LAYER                  (TURF_LAYER+0.05)  /// Floor edge overlay layer.
 #define EXPOSED_PIPE_LAYER          (TURF_LAYER+0.06)
 #define EXPOSED_WIRE_LAYER          (TURF_LAYER+0.07)
 #define EXPOSED_WIRE_TERMINAL_LAYER (TURF_LAYER+0.08)
-#define EXPOSED_ATMOS_LAYER         (TURF_LAYER+0.09) /// Pipe-like atmos machinery that goes on the floor, like filters.
+#define EXPOSED_ATMOS_LAYER         (TURF_LAYER+0.09)  /// Pipe-like atmos machinery that goes on the floor, like filters.
 #define CATWALK_LAYER               (TURF_LAYER+0.10)
 #define PLANT_LAYER                 (TURF_LAYER+0.12)
 
@@ -145,6 +148,8 @@
 
 #define HIDING_LAYER                (TURF_LAYER+0.14) /// Layer at which mobs hide to be under things like tables.
 #define UNDERWATER_LAYER            (TURF_LAYER+0.15) /// Anything on this layer will render under the water layer.
+
+#define BELOW_OBJ_LAYER             (TURF_LAYER+0.90)
 
 //! Turf/Obj layer boundary
 
