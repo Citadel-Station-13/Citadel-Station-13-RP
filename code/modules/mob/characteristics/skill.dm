@@ -1,6 +1,18 @@
 GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 
 /proc/_create_characteristics_skills()
+	. = list()
+	for(var/datum/characteristic_skill/skill in subtypesof(/datum/characteristic_skill))
+		if(is_abstract(skill))
+			continue
+		. = new skill
+		if(isnull(skill.id))
+			stack_trace("null id on [skill.type]")
+			continue
+		if(.[skill.id])
+			stack_trace("collision on id [skill.id] between types [skill.type] and [.[skill.id]:type]")
+			continue
+		.[skill.id] = skill
 
 /**
  * gets a skill datum

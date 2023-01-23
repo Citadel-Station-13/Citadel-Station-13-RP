@@ -1,6 +1,18 @@
 GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
 
 /proc/_create_characteristics_stats()
+	. = list()
+	for(var/datum/characteristic_stat/stat in subtypesof(/datum/characteristic_stat))
+		if(is_abstract(stat))
+			continue
+		. = new stat
+		if(isnull(stat.id))
+			stack_trace("null id on [stat.type]")
+			continue
+		if(.[stat.id])
+			stack_trace("collision on id [stat.id] between types [stat.type] and [.[stat.id]:type]")
+			continue
+		.[stat.id] = stat
 
 /**
  * gets a stat datum

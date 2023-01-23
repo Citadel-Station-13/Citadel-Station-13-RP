@@ -1,8 +1,18 @@
 GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
 
 /proc/_create_characteristics_talents()
-	#warn impl
-
+	. = list()
+	for(var/datum/characteristic_talent/talent in subtypesof(/datum/characteristic_talent))
+		if(is_abstract(talent))
+			continue
+		. = new talent
+		if(isnull(talent.id))
+			stack_trace("null id on [talent.type]")
+			continue
+		if(.[talent.id])
+			stack_trace("collision on id [talent.id] between types [talent.type] and [.[talent.id]:type]")
+			continue
+		.[talent.id] = talent
 
 /**
  * gets a talent datum
