@@ -295,9 +295,9 @@
 		return
 
 	if(get_turf(user) == get_turf(src))
-		usr.forceMove(get_step(src, src.dir))
+		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 	else
-		usr.forceMove(get_turf(src))
+		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	if(!anchored)	take_damage(maxhealth) // Fatboy
