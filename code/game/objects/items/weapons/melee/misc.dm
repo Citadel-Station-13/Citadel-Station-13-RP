@@ -292,17 +292,17 @@
 
 /obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
-	playsound(loc, 'sound/items/welderactivate.ogg', 50, 1)
+	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
 	src.force = 20
 	src.damtype = "fire"
 	src.w_class = ITEMSIZE_LARGE
-	src.hitsound = 'sound/items/welder.ogg'
+	src.hitsound = 'sound/weapons/gun_flamethrower2.ogg'
 	active = 1
 	update_icon()
 
 /obj/item/melee/ashlander/elder/proc/deactivate(mob/living/user)
 	to_chat(user, "<span class='notice'>You douse \the [src]'s sacred flame.</span>")
-	playsound(loc, 'sound/items/welderdeactivate.ogg', 50, 1)
+	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
 	src.force = 20
 	src.damtype = "brute"
 	src.w_class = initial(src.w_class)
