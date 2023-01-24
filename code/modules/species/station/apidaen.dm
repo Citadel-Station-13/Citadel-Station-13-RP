@@ -1,7 +1,8 @@
 /datum/species/apidaen
+	uid = SPECIES_ID_APIDAEN
+	id = SPECIES_ID_APIDAEN
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
-	uid = SPECIES_ID_APIDAEN
 
 	icobase      = 'icons/mob/species/apidaen/body.dmi'
 	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
