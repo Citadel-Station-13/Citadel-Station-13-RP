@@ -57,6 +57,7 @@
 	integrity = 150
 	max_integrity = 150
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
+	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small/ashlander
 
 /obj/vehicle/ridden/boat/ashlander/Initialize()
 	. = ..()
@@ -119,6 +120,20 @@
 	allowed_turf_types = list(
 		/turf/simulated/floor/water,
 		/turf/simulated/floor/outdoors/lava
+	)
+	rider_offsets = list(
+		list(
+			list(1, 4, 0.1, null),
+			list(6, 4, -0.1, null),
+			list(1, 4, -0.1, null),
+			list(-4, 4, -0.1, null)
+		),
+		list(
+			list(1, 4, 0.2, null),
+			list(-7, 4, -0.2, null),
+			list(1, 9, -0.2, null),
+			list(7, 4, -0.2, null)
+		)
 	)
 
 /datum/component/riding_handler/vehicle/boat/big

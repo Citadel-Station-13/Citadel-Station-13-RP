@@ -317,7 +317,6 @@
 	return isOn()
 
 //I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
-/*
 /obj/item/melee/twohanded
 	name = "Two Handed Weapon"
 	desc = "You shouldn't be seeing this. Report to a Maintainer."
@@ -328,18 +327,6 @@
 	var/wieldsound = null
 	var/unwieldsound = null
 
-/obj/item/melee/twohanded/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
-		wielded = 1
-		force = force_wielded
-		update_icon()
-	else
-		wielded = 0
-		force = force_unwielded
-	update_icon()
-	..()
-
 //Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
 /obj/item/melee/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
@@ -348,24 +335,27 @@
 		return 1
 	return 0
 
+/obj/item/melee/twohanded/attack_self(mob/user)
+	. = ..()
+	if(!wielded)
+		wielded = 1
+	else if(wielded)
+		wielded = 0
+	update_icon()
+
 /obj/item/melee/twohanded/update_icon()
+	..()
 	if(wielded)
-		icon_state = "[icon_state]1"
+		icon_state = "[icon_state]_1"
 		item_state = icon_state
 	else
 		icon_state = initial(icon_state)
 		item_state = icon_state
 
-/obj/item/melee/twohanded/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		wielded = 0
-		update_icon()
-
 /obj/item/melee/twohanded/mjollnir
 	name = "Mjollnir"
 	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
-	icon_state = "mjollnir0"
+	icon_state = "mjollnir"
 	hitsound = 'sound/effects/lightningbolt.ogg'
 	force = 0
 	throw_force = 30
@@ -395,7 +385,6 @@
 			G.Unconscious(20)
 			playsound(src.loc, "sparks", 50, 1)
 			return
-*/
 */
 
 //The Tyrmalin equivalent of the plasma cutter. I'm not making it a plasma cutter subtype because it has to be snowflaked. It should match most cutter stats, otherwise.

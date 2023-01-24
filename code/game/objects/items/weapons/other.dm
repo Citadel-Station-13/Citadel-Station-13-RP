@@ -866,9 +866,21 @@
 
 //Ashlander Specific Crafting Item - I'll eventually just make an item .dm for these guys at this rate.
 //This item will replace soulstones in Lavaland recipes/features.
+/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
+	name = "Scorian Religion - Elder Stones"
+	desc = "Originally depicted in Scorian carvings and cave paintings discovered at various dig sites around Surt, \
+	actual samples of these curious gems only recently became available. These gems, whose name most closely translates \
+	to 'Elder Stone' in Galactic Common, are considered items of intense religious significance to Scorian tribes. \
+	Outlanders who have been seen in possession of elder stones are frequently treated with hostility by the Scorian people, \
+	leading to several diplomatic incidents in recent months. Elder stones possess subtle anomalous properties, most notably \
+	a musical chiming tone, similar to the constant ringing of a bell. They are considered especially valuable by anomalous \
+	study groups and anthropological initiatives alike."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /obj/item/elderstone
 	name = "elder stone"
-	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties."
+	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "elderstone"
 	w_class = ITEMSIZE_SMALL
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)

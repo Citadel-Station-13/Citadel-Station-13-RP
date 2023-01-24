@@ -41,6 +41,7 @@
 	icon_living = "goliath"
 	icon_dead = "goliath_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath)
 
 	maxHealth = 300
 	health = 300
@@ -302,6 +303,7 @@
 	maxHealth = 400
 	health = 400
 	tentacle_warning = 1 SECOND
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath/ancient)
 
 //Calves
 /datum/category_item/catalogue/fauna/goliath/calf
@@ -319,6 +321,7 @@
 	icon_state = "goliath_baby"
 	maxHealth = 150
 	health = 150
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath/calf)
 
 	movement_cooldown = 7
 	special_attack_min_range = 1

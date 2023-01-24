@@ -43,6 +43,7 @@
 	icon_living = "gutshank"
 	icon_dead = "gutshank_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/shank/gutshank)
 
 	maxHealth = 100
 	health = 100
@@ -163,6 +164,7 @@
 	icon_living = "shank"
 	icon_dead = "shank_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/shank)
 
 	maxHealth = 150
 	health = 150
