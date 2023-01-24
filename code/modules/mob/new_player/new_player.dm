@@ -571,7 +571,7 @@
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.id), ckey))
+		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? chosen_species.id : chosen_species.uid), ckey))
 			new_character = new(T, use_species_name)
 
 	if(!new_character)

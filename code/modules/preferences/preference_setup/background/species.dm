@@ -14,7 +14,7 @@
 		. += "<br>This is a [SPAN_RED("restricted")] species. You cannot join as this outside of special circumstances."
 	else if(CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 		. += "<br>This is a whitelisted species. You "
-		if(config.check_alien_whitelist(ckey(CS.superspecies_id), prefs.client_ckey))
+		if(config.check_alien_whitelist(ckey(CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? CS.superspecies_id : CS.uid), prefs.client_ckey))
 			. += SPAN_GREEN("do")
 		else
 			. += SPAN_RED("do not")
@@ -29,7 +29,7 @@
 	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
 		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
 		return FALSE
-	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(CS.superspecies_id), prefs.client_ckey))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? CS.superspecies_id : CS.uid), prefs.client_ckey))
 		errors?.Add(SPAN_WARNING("You do not have the whitelist to play as a [CS.name]."))
 		return FALSE
 	return TRUE
@@ -79,7 +79,7 @@
 	var/datum/species/S = SScharacters.resolve_species_id(data)
 	if(!S)
 		return SScharacters.default_species_id()
-	if(!(S.name in SScharacters.playable_species))
+	if(!(S.uid in SScharacters.playable_species))
 		return SScharacters.default_species_id()
 	return data
 
