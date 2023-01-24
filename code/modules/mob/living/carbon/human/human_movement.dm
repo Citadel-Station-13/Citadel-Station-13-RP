@@ -140,8 +140,8 @@
 	if(!T)
 		return 0
 
-	if(T.movement_cost)
-		var/turf_move_cost = T.movement_cost
+	if(T.slowdown)
+		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)
 				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.water_movement, 15)

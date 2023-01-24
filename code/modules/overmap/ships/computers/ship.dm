@@ -85,14 +85,15 @@
 		L.handle_vision()
 	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
 
-/obj/machinery/computer/ship/proc/unlook(mob/user)
+/obj/machinery/computer/ship/proc/unlook(mob/user, vis_update)
 	user.reset_perspective()
 	user.client?.change_view(world.view, FALSE, translocate = TRUE)
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user
 		L.looking_elsewhere = 0
-		L.handle_vision()
+		if(!vis_update)
+			L.handle_vision()
 	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
@@ -112,9 +113,9 @@
 	user.unset_machine()
 	unlook(user)
 
-/obj/machinery/computer/ship/check_eye(mob/user)
+/obj/machinery/computer/ship/check_eye(mob/user, vis_update)
 	if(!get_dist(user, src) > 1 || user.blinded || !linked)
-		unlook(user)
+		unlook(user, vis_update)
 		return -1
 	else
 		return 0

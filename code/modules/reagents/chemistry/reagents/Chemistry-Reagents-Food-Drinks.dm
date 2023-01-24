@@ -1637,6 +1637,16 @@ End Citadel Change */
 	glass_desc = "A glass of refreshing Space Cola Cherry."
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/coffee
+	name = "Space Cola Coffee"
+	id = "coffeecola"
+	description = "An energizing blend of Space Cola and coffee."
+	taste_description = "caffeinated cola"
+
+	glass_name = "Space Cola Coffee"
+	glass_desc = "A glass of energizing Space Cola Coffee."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/soda/spacemountainwind
 	name = "Mountain Wind"
 	id = "spacemountainwind"

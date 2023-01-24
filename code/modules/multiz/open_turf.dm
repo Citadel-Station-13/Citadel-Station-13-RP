@@ -7,7 +7,7 @@
 	icon = 'icons/turf/space.dmi'
 	icon_state = ""
 	density = FALSE
-	movement_cost = INFINITY //Seriously, don't try and path over this one numbnuts
+	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
 	mz_flags = MZ_MIMIC_DEFAULTS | MZ_MIMIC_OVERWRITE | MZ_MIMIC_NO_AO | MZ_ATMOS_BOTH | MZ_OPEN_BOTH

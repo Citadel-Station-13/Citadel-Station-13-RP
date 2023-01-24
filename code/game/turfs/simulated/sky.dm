@@ -5,7 +5,7 @@
 /turf/simulated/floor/sky
 	name = "the sky"
 	desc = "It's the sky! Be careful!"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky_slow"
 	dir = SOUTH
 	var/does_skyfall = TRUE
