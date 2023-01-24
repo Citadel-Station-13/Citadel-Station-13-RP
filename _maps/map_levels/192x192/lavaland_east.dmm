@@ -26,22 +26,10 @@
 "kx" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
-"nt" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
 "oC" = (
 /obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
-"ro" = (
-/obj/structure/sign/warning{
-	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
-	name = "\improper MEMETIC HAZARD";
-	pixel_x = -32
-	},
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/explored)
 "ww" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/unexplored)
@@ -61,40 +49,11 @@
 "Qh" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/unexplored)
-"QK" = (
-/turf/simulated/wall/lavaland,
-/area/lavaland/east/transit)
 "SS" = (
 /obj/effect/map_effect/portal/master/side_b{
 	dir = 4;
 	name = "east_to_center";
 	portal_id = "eaststep"
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
-"TB" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/infinite;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
-"TG" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "ll_east_shutter";
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
-"TJ" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "ll_east_shutter";
-	pixel_x = -25;
-	pixel_y = -1
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
@@ -102,19 +61,8 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
-"XB" = (
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
-"XE" = (
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "ll_east_shutter";
-	name = "East Transit Shutter"
-	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/east/transit)
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/explored)
 
 (1,1,1) = {"
 al
@@ -234,13 +182,13 @@ al
 al
 al
 al
-QK
+al
 SS
 Xs
 Xs
 Xs
 Xs
-QK
+al
 al
 al
 al
@@ -428,13 +376,13 @@ kx
 kx
 kx
 al
-QK
-TB
-XB
-XB
-XB
-nt
-QK
+al
+ix
+ix
+ix
+ix
+ix
+al
 al
 kx
 kx
@@ -621,15 +569,15 @@ kx
 kx
 kx
 kx
+kx
 al
-QK
-TG
-XB
-XB
-XB
-XB
-QK
-al
+ix
+ix
+ix
+ix
+ix
+kx
+kx
 kx
 kx
 kx
@@ -815,15 +763,15 @@ Qh
 Qh
 Qh
 Qh
-al
-QK
-QK
-XE
-XE
-XE
-QK
-QK
-al
+kx
+kx
+ix
+ix
+ix
+ix
+ix
+ix
+kx
 Qh
 Qh
 Qh
@@ -1011,11 +959,11 @@ Qh
 Qh
 kx
 kx
-TJ
 ix
 ix
 ix
-ro
+ix
+ix
 ix
 kx
 kx

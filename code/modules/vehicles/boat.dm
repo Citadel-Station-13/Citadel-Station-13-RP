@@ -56,9 +56,10 @@
 	icon_state = "boat_older"
 	integrity = 150
 	max_integrity = 150
+	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
 
-/obj/vehicle/ridden/boat/ashlander/Initialize(mapload, material_name)
-	return ..(mapload, "cult") //Apparently there's no other dark red/maroon material that's stony. I don't think anyone will see this material type.
+/obj/vehicle/ridden/boat/ashlander/Initialize()
+	. = ..()
 
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
@@ -113,6 +114,12 @@
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
+
+/datum/component/riding_handler/vehicle/boat/small/ashlander
+	allowed_turf_types = list(
+		/turf/simulated/floor/water,
+		/turf/simulated/floor/outdoors/lava
+	)
 
 /datum/component/riding_handler/vehicle/boat/big
 	rider_offsets = list(

@@ -174,6 +174,7 @@
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
+	reach = 2
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/items/bikehorn.ogg'
 
@@ -314,6 +315,88 @@
 
 /obj/item/melee/ashlander/elder/is_hot()
 	return isOn()
+
+//I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
+/*
+/obj/item/melee/twohanded
+	name = "Two Handed Weapon"
+	desc = "You shouldn't be seeing this. Report to a Maintainer."
+	w_class = ITEMSIZE_LARGE
+	var/wielded = 0
+	var/force_wielded = 0
+	var/force_unwielded
+	var/wieldsound = null
+	var/unwieldsound = null
+
+/obj/item/melee/twohanded/update_held_icon()
+	var/mob/living/M = loc
+	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
+		wielded = 1
+		force = force_wielded
+		update_icon()
+	else
+		wielded = 0
+		force = force_unwielded
+	update_icon()
+	..()
+
+//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
+/obj/item/melee/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
+		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+		return 1
+	return 0
+
+/obj/item/melee/twohanded/update_icon()
+	if(wielded)
+		icon_state = "[icon_state]1"
+		item_state = icon_state
+	else
+		icon_state = initial(icon_state)
+		item_state = icon_state
+
+/obj/item/melee/twohanded/dropped(mob/user, flags, atom/newLoc)
+	..()
+	if(wielded)
+		wielded = 0
+		update_icon()
+
+/obj/item/melee/twohanded/mjollnir
+	name = "Mjollnir"
+	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
+	icon_state = "mjollnir0"
+	hitsound = 'sound/effects/lightningbolt.ogg'
+	force = 0
+	throw_force = 30
+	force_wielded = 75
+	force_unwielded = 50
+	w_class = ITEMSIZE_HUGE
+	edge = 1
+	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
+	armor_penetration = 50
+	slowdown = 0
+
+//This currently just kills the user. lol
+/*
+/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/living/G, mob/user)
+	..()
+
+	if(wielded || isliving(target))
+		if(prob(10))
+			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			return
+		if(prob(10))
+			G.dust()
+			return
+		else
+			G.stun_effect_act(10 , 50, BP_TORSO, src)
+			G.take_organ_damage(10)
+			G.Unconscious(20)
+			playsound(src.loc, "sparks", 50, 1)
+			return
+*/
+*/
 
 //The Tyrmalin equivalent of the plasma cutter. I'm not making it a plasma cutter subtype because it has to be snowflaked. It should match most cutter stats, otherwise.
 #define FUEL_BURN_INTERVAL 15

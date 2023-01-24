@@ -75,8 +75,6 @@
 	for(var/atom/movable/thing as anything in thing_to_check)
 		if(thing.is_avoiding_ground()) // Flying/riding over the lava. We're just gonna pretend convection doesn't exist.
 			continue
-		if(istype(AM, /obj/vehicle/ridden/boat/ashlander))
-			continue
 		. = TRUE
 		thing.lava_act()
 

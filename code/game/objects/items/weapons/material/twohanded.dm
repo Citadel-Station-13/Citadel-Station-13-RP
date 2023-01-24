@@ -345,36 +345,3 @@
 	if(isliving(target))
 		cleave(user, target)
 	return ..()
-
-/obj/item/material/twohanded/sledgehammer/mjollnir
-	icon_state = "mjollnir0"
-	base_icon = "mjollnir0"
-	name = "Mjollnir"
-	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
-	force_divisor = 2
-	hitsound = 'sound/effects/lightningbolt.ogg'
-	force = 50
-	throw_force = 15
-	force_wielded = 75
-	slowdown = 0
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(mob/living/G, mob/user)
-	..()
-
-	if(wielded)
-		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
-			return
-		if(prob(10))
-			G.dust()
-			return
-		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
-			G.take_organ_damage(10)
-			G.Unconscious(20)
-			playsound(src.loc, "sparks", 50, 1)
-			return
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/update_icon()  //Currently only here to fuck with the on-mob icons.
-	icon_state = "mjollnir[wielded]"
-	return
