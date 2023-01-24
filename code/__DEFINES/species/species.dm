@@ -1,6 +1,5 @@
 /**
  * Species IDs
- * any time you check species.id or species.uid you should put it through the ckey() proc, at least for Whitelists
  */
 #define SPECIES_ID_ADHERENT "adherent"
 #define SPECIES_ID_AKULA "akula"
