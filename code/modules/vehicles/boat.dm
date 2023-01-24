@@ -105,13 +105,13 @@
 			list(0, 7, 0.1, null),
 			list(7, 2, -0.1, null),
 			list(0, 2, -0.1, null),
-			list(-7, 2, -0.1, null)
+			list(-7, 2, 0.1, null)
 		),
 		list(
 			list(0, 2, 0.2, null),
 			list(-7, 2, -0.2, null),
 			list(0, 9, -0.2, null),
-			list(7, 2, -0.2, null)
+			list(7, 2, 0.2, null)
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
