@@ -266,6 +266,11 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
+"XQ" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/oar/ashlander,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/east/ashlander_village)
 "Zq" = (
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/ashlander_village)
@@ -17708,7 +17713,7 @@ kV
 kV
 kV
 pY
-ST
+XQ
 uE
 yM
 pY
@@ -17902,7 +17907,7 @@ kV
 kV
 kV
 pY
-ST
+XQ
 uE
 yM
 pY
