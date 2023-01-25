@@ -98,3 +98,10 @@
 		else if(do_after(user, 4))
 			material.use(2)
 			new /obj/structure/catwalk(src)
+	else if(istype(W,/obj/item/stack/tile/floor/sandstone))
+		var/obj/item/stack/tile/floor/sandstone/material = W
+		if(material.get_amount() < 2)
+			return 0
+		else if(do_after(user, 4))
+			material.use(2)
+			new /obj/structure/catwalk/ashlander(src)

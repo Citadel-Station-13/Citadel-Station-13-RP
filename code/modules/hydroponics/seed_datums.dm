@@ -1647,7 +1647,7 @@
 	seed_name = "pyrrhlea"
 	display_name = "pyrrhlea"
 	kitchen_tag = "pyrrhlea"
-	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inapprovaline" = list(1,10))
+	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inaprovaline" = list(1,10))
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
@@ -1690,7 +1690,7 @@
 	seed_name = "juhtak"
 	display_name = "juhtak"
 	kitchen_tag = "juhtak"
-	chems = list("nutriment" = list(1,5), "bicardine" = list(1,10))
+	chems = list("nutriment" = list(1,5), "bicaridine" = list(1,10))
 
 /datum/seed/juhtak/New()
 	..()
