@@ -217,6 +217,8 @@
 	latejoin = TRUE // AIize in transform_procs.dm uses get_latejoin_spawnpoint() for spawning in a AI -- including at roundstart.
 	delete_on_roundstart = TRUE
 	job_path = /datum/job/station/ai
+	prevent_mob_stack = FALSE
+	spawns_left = 1
 	var/primary_ai = TRUE
 	var/latejoin_active = TRUE
 
