@@ -24,11 +24,9 @@
 
 /obj/item/material/butterflyblade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/duct_tape_roll))
-		var/obj/item/duct_tape_roll/D
 		to_chat(user, "You wrap the blade with the entire roll of duct tape.")
 		new /obj/item/melee/shiv(user.loc)
-		qdel(D)
-		qdel(src)
+		qdel(W)
 		return
 
 /obj/item/material/butterflyhandle

@@ -384,3 +384,13 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/goliath_curtain
+	name = "Goliath hide curtain"
+	result = /obj/structure/curtain/ashlander
+	time = 20
+	reqs = list(/obj/item/stack/material/bone = 1,
+				/obj/item/stack/animalhide/goliath_hide = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE

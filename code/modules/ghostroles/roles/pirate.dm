@@ -53,37 +53,11 @@
 	M.faction = "pirate"
 	switch(params["fluff"])
 		if("immigrant")
-			outfit.uniform = /obj/item/clothing/under/surplus/desert
-			outfit.suit = /obj/item/clothing/suit/storage/vest/tactical/pirate
-			outfit.shoes = /obj/item/clothing/shoes/boots/workboots
-			outfit.belt = /obj/item/gun/ballistic/pirate
-			outfit.back = /obj/item/storage/backpack/rebel
-			outfit.l_ear = /obj/item/radio/headset/raider
-			outfit.id_slot = SLOT_ID_WORN_ID
-			outfit.id_type = /obj/item/card/id/external/pirate
-			outfit.r_pocket = /obj/item/melee/energy/sword/pirate
+			return /datum/outfit/pirate
 		if("dilettante")
-			outfit.uniform = /obj/item/clothing/under/surplus
-			outfit.suit = /obj/item/clothing/suit/storage/vest/tactical/pirate
-			outfit.shoes = /obj/item/clothing/shoes/boots/jackboots
-			outfit.belt = /obj/item/melee/energy/sword/pirate
-			outfit.back = /obj/item/storage/backpack/rebel
-			outfit.l_ear = /obj/item/radio/headset/raider
-			outfit.id_slot = SLOT_ID_WORN_ID
-			outfit.id_type = /obj/item/card/id/external/pirate
-			outfit.l_hand = /obj/item/shield/makeshift
+			return /datum/outfit/pirate/dilettante
 		if("professional")
-			outfit.uniform = /obj/item/clothing/under/surplus/russoblue
-			outfit.suit = /obj/item/clothing/suit/armor/tactical/pirate
-			outfit.shoes = /obj/item/clothing/shoes/boots/jackboots
-			outfit.mask = /obj/item/clothing/mask/balaclava
-			outfit.belt = /obj/item/gun/energy/zip
-			outfit.back = /obj/item/storage/backpack/rebel
-			outfit.l_ear = /obj/item/radio/headset/raider
-			outfit.id_slot = SLOT_ID_WORN_ID
-			outfit.id_type = /obj/item/card/id/external/pirate
-			outfit.r_pocket = /obj/item/melee/energy/sword/pirate
-			outfit.r_hand = /obj/item/shield/makeshift
+			return /datum/outfit/pirate/professional
 	return outfit
 
 /obj/structure/ghost_role_spawner/pirate
