@@ -7688,10 +7688,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
-"JP" = (
-/obj/effect/decal/remains/deer,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/facility/exterior)
 "JT" = (
 /turf/simulated/floor/outdoors/rocks/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -10226,10 +10222,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
-"Ve" = (
-/obj/effect/decal/remains/mouse,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/facility/exterior)
 "Vl" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -13539,7 +13531,7 @@ Rs
 Rs
 Rs
 Rs
-Ve
+Rs
 Rs
 Rs
 lK
@@ -15476,7 +15468,7 @@ Rs
 Rs
 Rs
 Rs
-JP
+Rs
 Rs
 Rs
 Rs
@@ -17615,7 +17607,7 @@ lK
 lK
 lK
 Rs
-JP
+Rs
 Rs
 Rs
 Rs
@@ -19557,7 +19549,7 @@ Rs
 ot
 Rs
 Rs
-Ve
+Rs
 lK
 lK
 lK
@@ -20346,7 +20338,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -20910,7 +20902,7 @@ fz
 Rs
 Rs
 Rs
-Ve
+Rs
 Rs
 Rs
 Rs
@@ -23005,7 +22997,7 @@ Rs
 Rs
 Rs
 Rs
-Ve
+Rs
 Rs
 Rs
 Rs
@@ -23222,7 +23214,7 @@ Rs
 Rs
 Rs
 Rs
-Ve
+Rs
 Rs
 Rs
 Rs
@@ -23545,7 +23537,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -23981,7 +23973,7 @@ Rs
 Rs
 Rs
 Rs
-JP
+Rs
 Rs
 Rs
 Rs
@@ -24982,7 +24974,7 @@ fz
 fz
 fz
 Rs
-JP
+Rs
 lK
 lK
 ka
@@ -25917,7 +25909,6 @@ lK
 Rs
 Rs
 Rs
-Ve
 Rs
 Rs
 Rs
@@ -25934,7 +25925,8 @@ Rs
 Rs
 Rs
 Rs
-Ve
+Rs
+Rs
 Rs
 Rs
 Rs
@@ -30108,7 +30100,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -33143,7 +33135,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -38796,7 +38788,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -40100,7 +40092,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -42291,7 +42283,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
