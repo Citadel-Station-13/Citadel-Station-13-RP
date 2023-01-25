@@ -168,10 +168,6 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/ashlander_village)
-"GX" = (
-/obj/structure/catwalk/ashlander,
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/east/ashlander_village)
 "JG" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/glass/stone,
@@ -22339,7 +22335,7 @@ pY
 Qg
 uE
 rm
-GX
+uE
 rm
 uE
 pY
@@ -22532,9 +22528,9 @@ Qh
 pY
 Qg
 uE
-GX
-GX
-GX
+uE
+uE
+uE
 uE
 yG
 Zq
@@ -22727,7 +22723,7 @@ pY
 Qg
 uE
 rm
-GX
+uE
 rm
 uE
 pY
