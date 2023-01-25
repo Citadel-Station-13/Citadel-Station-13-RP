@@ -758,6 +758,10 @@
 	name = "Lava Land (East) - Transit"
 	icon_state = "blue"
 
+/area/lavaland/east/ashlander_village
+	name = "Lava Land (East) - Ashlander Village"
+	icon_state = "blue"
+
 /area/lavaland/west/explored
 	name = "Lava Land (West) - Thoroughfare"
 	icon_state = "red"

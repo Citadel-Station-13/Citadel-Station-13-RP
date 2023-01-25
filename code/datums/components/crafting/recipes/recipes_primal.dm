@@ -360,3 +360,27 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/blessed_boat
+	name = "Blessed Boat"
+	result = /obj/vehicle/ridden/boat/ashlander
+	time = 500
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 10,
+				/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 5,
+				/obj/item/elderstone = 2
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/blessed_oar
+	name = "Blessed Boat"
+	result = /obj/item/oar/ashlander
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/animalhide/goliath_hide = 5,
+				/obj/item/stack/sinew = 2,
+				/obj/item/elderstone = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE

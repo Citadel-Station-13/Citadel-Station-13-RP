@@ -85,6 +85,15 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
+/obj/item/oar/ashlander
+	name = "blessed oar"
+	desc = "An oar carved from bone. It has been studded with elder stone and baffled with Goliath hide to protect it from lava while still providing propulsion to a boat."
+	icon_state = "oar_ashlander"
+	item_state = "oar_ashlander"
+
+/obj/item/oar/sifwood/Initialize()
+	. = ..()
+
 /datum/component/riding_handler/vehicle/boat
 	vehicle_move_delay = 3.5
 	allowed_turf_types = list(

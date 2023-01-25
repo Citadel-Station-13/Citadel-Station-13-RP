@@ -316,6 +316,18 @@
 /obj/item/melee/ashlander/elder/is_hot()
 	return isOn()
 
+/obj/item/melee/shiv
+	name = "shiv"
+	desc = "A crude improvised weapon. Although visually frightening, shivs are usually more effective for maiming than killing."
+	icon_state = "shiv"
+	item_state = "knife"
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "stabbed", "sliced", "diced", "cut")
+	force = 8
+	throw_force = 5
+	w_class = ITEMSIZE_SMALL
+	sharp = 1
+
 //I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
 /obj/item/melee/twohanded
 	name = "Two Handed Weapon"
