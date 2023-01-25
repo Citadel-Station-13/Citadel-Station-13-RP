@@ -22,6 +22,8 @@
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE
 
+/turf/simulated/floor/outdoors/lava/indoors/noblend
+	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
 	ambient_light = LIGHT_COLOR_LAVA
