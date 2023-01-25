@@ -235,12 +235,17 @@ function set_style_sheet(sheet) {
 	.grid-item:hover .grid-item-text {
 		width: auto;
 		text-decoration: underline;
+		background-color: #ffffff;
+	}
+
+	.dark .grid-item:hover .grid-item-text {
+		background-color: #131313;
 	}
 
 	.grid-item-text {
 		display: inline-block;
-		width: 100%;
-		background-color: #dfdfdf;
+		width: calc(98%);
+		background-color: #F0F0F0;
 		margin: 0 -6px;
 		padding: 0 6px;
 		white-space: nowrap;
