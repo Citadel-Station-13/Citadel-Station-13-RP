@@ -214,6 +214,7 @@
 /obj/landmark/spawnpoint/job/ai
 	name = "AI"
 	icon_state = "AI"
+	latejoin = TRUE // AIize in transform_procs.dm uses get_latejoin_spawnpoint() for spawning in a AI -- including at roundstart.
 	delete_on_roundstart = TRUE
 	job_path = /datum/job/station/ai
 	var/primary_ai = TRUE
