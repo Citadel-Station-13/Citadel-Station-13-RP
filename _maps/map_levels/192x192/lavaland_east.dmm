@@ -81,6 +81,9 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/ashlander_village)
+"sO" = (
+/turf/simulated/floor/outdoors/lava/noblend/lavaland,
+/area/lavaland/east/unexplored)
 "tb" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/ashlander_village)
@@ -211,7 +214,7 @@
 /obj/vehicle/ridden/boat/ashlander{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/floor/outdoors/lava/noblend/lavaland,
 /area/lavaland/east/ashlander_village)
 "OR" = (
 /obj/structure/fence/wooden/post{
@@ -252,7 +255,8 @@
 "To" = (
 /obj/structure/catwalk/ashlander,
 /obj/structure/ashlander/forge,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/obj/effect/ceiling,
+/turf/simulated/floor/outdoors/lava/noblend/lavaland,
 /area/lavaland/east/ashlander_village)
 "Xs" = (
 /obj/effect/map_effect/portal/line/side_b{
@@ -17119,11 +17123,11 @@ ww
 ww
 ww
 ww
-ww
-ww
-ww
-ww
-ww
+sO
+sO
+sO
+sO
+sO
 ww
 ww
 ww
@@ -17313,11 +17317,11 @@ ww
 ww
 ww
 ww
-ww
+sO
 uE
 ND
 uE
-ww
+sO
 ww
 ww
 ww

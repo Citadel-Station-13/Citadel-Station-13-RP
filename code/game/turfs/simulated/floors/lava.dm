@@ -16,6 +16,9 @@
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_LAVA)
 
+/turf/simulated/floor/outdoors/lava/noblend
+	edge_blending_priority = 0
+
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE
 

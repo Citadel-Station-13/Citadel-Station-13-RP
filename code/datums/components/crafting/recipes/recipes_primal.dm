@@ -184,13 +184,20 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/bonepickaxe
+	name = "Bone Pickaxe"
+	reqs = list(
+            /obj/item/stack/material/bone = 3,
+            /obj/item/stack/sinew = 1)
+	result = /obj/item/pickaxe/bone
+	category = CAT_PRIMAL
+	always_available = FALSE
+
 /datum/crafting_recipe/boneshovel
 	name = "Serrated Bone Shovel"
-	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 4,
-            //datum/reagent/crude_oil = 5,
-            /obj/item/shovel = 1)
+            /obj/item/stack/sinew = 1)
 	result = /obj/item/shovel/bone
 	category = CAT_PRIMAL
 	always_available = FALSE
