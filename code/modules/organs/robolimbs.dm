@@ -475,7 +475,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_alternates = list(SPECIES_TAJ = "Zeng-Hu - Tajaran")
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
-
+	
+/datum/robolimb/unbranded_alt1
+	company = "Hammond Tech - RACS Spectre "
+	desc = "A simple robotic limb design used for the Hammond Tech RASC Spectre. A lightweight robotic chassis ideal for exploration and combat duties."
+	icon = 'icons/mob/cyberlimbs/_fluff_vr/spectre.dmi'
+	unavailable_to_build = TRUE
 
 
 /datum/robolimb/cyber_beast
