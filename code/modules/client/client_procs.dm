@@ -18,6 +18,113 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 #define CURRENT_MINUTE	3
 #define MINUTE_COUNT	4
 #define ADMINSWARNED_AT	5
+
+/client/New()
+	// Cache our callback as we will potentially be using it (10 / ticklag) times per second,
+	mouseover_callback = CALLBACK(src, .proc/refresh_mouseover_highlight_timer)
+	. = ..()
+// This proc iterates constantly whenever something is being mouseover'd, so that it
+// can update appearance to match any changes in the base icon. I considered using
+// some kind of hook in update_icon() and set_dir() but this seemed much more robust.
+/client/proc/refresh_mouseover_highlight_timer()
+	if(!current_highlight_atom || !refresh_mouseover_highlight(current_highlight_atom?.resolve(), last_mouseover_params))
+		// If refresh_mouseover_highlight() returns false we need to end our iteration and kill the highlight.
+		if(current_highlight)
+			images -= current_highlight
+			qdel(current_highlight)
+			current_highlight = null
+		current_highlight_atom = null
+		deltimer(mouseover_refresh_timer)
+		mouseover_refresh_timer = null
+
+// Main body of work happens in this proc.
+/client/proc/refresh_mouseover_highlight(object, params, check_adjacency = FALSE)
+
+	// Verify if we should be showing a highlight at all.
+	if(!istype(object, /atom/movable) || (check_adjacency && !mob.Adjacent(object)))
+		return FALSE
+//	var/list/modifiers = params2list(params)
+	var/atom/movable/AM = object
+	if(get_dist(mob, object) > 1)
+		return FALSE
+
+	// Generate our dummy objects if they got nulled/discarded.
+	if(!current_highlight)
+		current_highlight = new /image
+		current_highlight.appearance_flags |= (KEEP_TOGETHER|RESET_COLOR)
+		images += current_highlight
+	if(!mouseover_highlight_dummy)
+		mouseover_highlight_dummy = new
+
+	// Copy over the atom's appearance to our holder object.
+	// client.images does not respect pixel offsets for images, but vis contents does,
+	// and images have vis contents - so we throw a null image into client.images, then
+	// throw a holder object with the appearance of the mouse-overed atom into its vis contents.
+	mouseover_highlight_dummy.appearance = AM
+	mouseover_highlight_dummy.name = ""
+	mouseover_highlight_dummy.verbs.Cut()
+	mouseover_highlight_dummy.vis_flags |= VIS_INHERIT_ID
+	mouseover_highlight_dummy.dir = AM.dir
+	mouseover_highlight_dummy.transform = AM.transform
+
+	// For some reason you need to explicitly zero the pixel offsets of the holder object
+	// or anything with a pixel offset will not line up with the highlight. Thanks DM.
+	mouseover_highlight_dummy.pixel_x = 0
+	mouseover_highlight_dummy.pixel_y = 0
+	mouseover_highlight_dummy.pixel_w = 0
+	mouseover_highlight_dummy.pixel_z = 0
+
+	// Replane to be over the UI, make sure it can't block clicks, and set its outline.
+	mouseover_highlight_dummy.mouse_opacity = 0
+	mouseover_highlight_dummy.layer = LAYER_HUD_ABOVE
+	mouseover_highlight_dummy.plane = PLANE_PLAYER_HUD_ABOVE
+	mouseover_highlight_dummy.alpha = 255
+	mouseover_highlight_dummy.appearance_flags |= (KEEP_TOGETHER|RESET_COLOR)
+	mouseover_highlight_dummy.add_filter("glow", 1, list("drop_shadow", color = rgb(rand(1,255),rand(1,255),rand(1,255)) + "F0", size = 1, offset = 1, x = 0, y = 0))
+
+	// Replanes the overlays to avoid explicit plane/layer setting (such as
+	// computer overlays) interfering with the ordering of the highlight.
+	if(length(mouseover_highlight_dummy.overlays))
+		var/list/replaned_overlays
+		for(var/thing in mouseover_highlight_dummy.overlays)
+			var/mutable_appearance/MA = new(thing)
+			MA.plane = FLOAT_PLANE
+			MA.layer = FLOAT_LAYER
+			LAZYADD(replaned_overlays, MA)
+		mouseover_highlight_dummy.overlays = replaned_overlays
+	if(length(mouseover_highlight_dummy.underlays))
+		var/list/replaned_underlays
+		for(var/thing in mouseover_highlight_dummy.underlays)
+			var/mutable_appearance/MA = new(thing)
+			MA.plane = FLOAT_PLANE
+			MA.layer = FLOAT_LAYER
+			LAZYADD(replaned_underlays, MA)
+		mouseover_highlight_dummy.underlays = replaned_underlays
+
+	// Finally update our highlight's vis contents and location .
+	clear_vis_contents(current_highlight)
+	add_vis_contents(current_highlight, mouseover_highlight_dummy)
+	current_highlight.loc = object
+	current_highlight_atom = WEAKREF(AM)
+
+	// Keep track our params so the update ticker knows if we were holding shift or not.
+	last_mouseover_params = params
+
+	return TRUE
+
+// Simple hooks to catch the client mouseover/mouseleave events and start our highlight timer as needed.
+/client/MouseEntered(object, location, control, params)
+	if(world.time > last_mouseover_highlight_time && refresh_mouseover_highlight(object, params, check_adjacency = TRUE) && !mouseover_refresh_timer)
+		last_mouseover_highlight_time = world.time
+		mouseover_refresh_timer = addtimer(mouseover_callback, 1, (TIMER_UNIQUE | TIMER_LOOP | TIMER_STOPPABLE))
+	. = ..()
+/client/MouseExited(object, location, control, params)
+	if(current_highlight_atom?.resolve() == object)
+		current_highlight_atom = null
+		refresh_mouseover_highlight_timer()
+	. = ..()
+
+
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]

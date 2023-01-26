@@ -298,6 +298,7 @@
 #include "code\__HELPERS\vector.dm"
 #include "code\__HELPERS\verbs.dm"
 #include "code\__HELPERS\view.dm"
+#include "code\__HELPERS\vis_contents.dm"
 #include "code\__HELPERS\datastructs\armor.dm"
 #include "code\__HELPERS\datastructs\bodytypes.dm"
 #include "code\__HELPERS\files\client_io.dm"

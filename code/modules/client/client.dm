@@ -200,3 +200,14 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+	//MOUSEOVER THINGS
+	var/datum/callback/mouseover_callback   // Cached callback, see /client/New()
+	var/obj/mouseover_highlight_dummy       // Dummy atom to hold the appearance of our highlighted atom, see comments in /client/proc/refresh_mouseover_highlight.
+	var/datum/weakref/current_highlight_atom      // Current weakref to highlighted atom, used for checking if we're mousing over the same atom repeatedly.
+	var/image/current_highlight             // Current dummy image holding our highlight.
+
+	var/mouseover_refresh_timer             // Holds an ID to the timer used to update the mouseover highlight.
+	var/last_mouseover_params               // Stores mouse/keyboard params as of last mouseover, to check for shift being held.
+	var/last_mouseover_highlight_time       // Stores last world.time we mouseover'd, to prevent it happening more than once per world.tick_lag.
+
