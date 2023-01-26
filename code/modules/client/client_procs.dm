@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// For some reason you need to explicitly zero the pixel offsets of the holder object
 	// or anything with a pixel offset will not line up with the highlight. Thanks DM.
 	mouseover_highlight_dummy.pixel_x = -4
-	mouseover_highlight_dummy.pixel_y = 24
+	mouseover_highlight_dummy.pixel_y = 0
 	mouseover_highlight_dummy.pixel_w = 4
 	mouseover_highlight_dummy.pixel_z = 4
 
@@ -80,12 +80,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	mouseover_highlight_dummy.plane = PLANE_PLAYER_HUD_ABOVE
 	mouseover_highlight_dummy.alpha = 255
 	mouseover_highlight_dummy.appearance_flags |= (KEEP_TOGETHER|RESET_COLOR)
-	mouseover_highlight_dummy.add_filter( // TODO... Figure out why this isn't visible.
+	mouseover_highlight_dummy.add_filter(
 		"drop",
 		1,
 		list(
 			type = "drop_shadow",
-			color = "#99ff66",
+			color = rgb(rand(0,255),rand(0,255),rand(0,255)),
 			size = 4,
 			offset = 2, x = 0, y = 0
 			)
