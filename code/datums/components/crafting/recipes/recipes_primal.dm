@@ -77,7 +77,6 @@
 	time = 100
 	reqs = list(/obj/item/stack/material/bone = 4,
 				 /obj/item/stack/sinew = 1,
-				 /obj/item/elderstone = 1,
 				 /obj/item/stack/animalhide/goliath_hide = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE

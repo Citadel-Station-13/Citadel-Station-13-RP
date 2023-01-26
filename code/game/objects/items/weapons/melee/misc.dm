@@ -242,6 +242,7 @@
 	force = 20
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BELT
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
 	sharp = 1
 	edge = 1

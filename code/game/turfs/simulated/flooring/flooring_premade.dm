@@ -426,6 +426,17 @@
 	icon_state = "sandstone"
 	initial_flooring = /singleton/flooring/sandstone
 
+/turf/simulated/floor/bone
+	name = "bone floor"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "bone"
+	initial_flooring = /singleton/flooring/bone
+
+/turf/simulated/floor/bone/engraved
+	name = "engraved bone floor"
+	icon_state = "bonecarve"
+	initial_flooring = /singleton/flooring/bone/engraved
+
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless
 	name = "vacuum floor"

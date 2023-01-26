@@ -151,9 +151,9 @@
 	name = "Shank"
 	desc = "When allowed to mature, the common Gutshank transforms into a lightweight creature. Although still \
 	subsiting primarily on a diet of blood, the Shank begins to also consume silt and loose rocks commonly found \
-	in KT-943's soil. Shanks were originally believed to be a different creature, due to the significian morphological \
+	in KT-943's soil. Shanks were originally believed to be an unrelated creature, due to the significian morphological \
 	differences they display compared to their younger forms. However, since the return of Scorians to the surface, \
-	evidence of the creatures being cultivated as mounts and pack animals has confirmed this curious development cycle."
+	evidence of these beasts being cultivated to serve as mounts and pack animals has confirmed this curious maturation cycle."
 	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/animal/shank
@@ -188,7 +188,8 @@
 	faction = "lavaland"
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	//I changed the ai_holder from simple/melee to retaliate/coop because when riding a Shank, it would override user inputs to charge non-faction mobs. Which is annoying.
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	buckle_lying = FALSE
 	buckle_max_mobs = 1
