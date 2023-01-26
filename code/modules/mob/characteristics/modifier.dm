@@ -3,4 +3,6 @@
  */
 /datum/characteristic_modifier
 
-	// todo
+
+
+// todo: this file isn't done yet.

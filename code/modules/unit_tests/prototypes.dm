@@ -1,4 +1,4 @@
-/datum/unit_test/prototypes
+/datum/unit_test/prototypes/Run()
 	var/list/id_cache = list()
 	var/list/type_cache = list()
 	for(var/datum/prototype/instance as anything in subtypesof(/datum/prototype))

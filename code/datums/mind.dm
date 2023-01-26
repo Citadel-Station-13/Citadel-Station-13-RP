@@ -36,7 +36,6 @@
 	//! Characteristics
 	/// characteristics holder
 	var/datum/characteristics_holder/characteristics
-	#warn when do we init this
 
 	//! Preferences
 	/**
@@ -93,7 +92,7 @@
 /datum/mind/New(var/key)
 	src.key = key
 
-/datum/Destroy()
+/datum/mind/Destroy()
 	QDEL_NULL(characteristics)
 	return ..()
 
@@ -122,7 +121,7 @@
 
 	current = new_character		//link ourself to our new body
 	new_character.mind = src	//and link our new body to ourself
-	characteristics?.assocaite_with_mob(current)
+	characteristics?.associate_with_mob(current)
 
 	if(changeling)
 		new_character.make_changeling()

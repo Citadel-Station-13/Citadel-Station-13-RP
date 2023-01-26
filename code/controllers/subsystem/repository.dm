@@ -17,39 +17,13 @@ SUBSYSTEM_DEF(repository)
 	var/list/subtype_lists
 
 /datum/controller/subsystem/repository/Initialize()
-	// little bobby tables
-	for(var/id as anything in uid_lookup)
-		qdel(uid_lookup[id])
-	for(var/path as anything in type_lookup)
-		if(!QDELETED(type_lookup[path]))
-			qdel(type_lookup[path])
 	uid_lookup = type_lookup = null
 	generate()
 	return ..()
 
 /datum/controller/subsystem/repository/Recover()
-	// drop type lookup
 	src.type_lookup = SSrepository.type_lookup
-	for(var/path as anything in src.type_lookup)
-		if(!QDELETED(src.type_lookup[path]))
-			qdel(src.type_lookup[path])
-	// drop anything from uid that was destroyed
 	src.uid_lookup = SSrepository.uid_lookup
-	for(var/id as anything in src.uid_lookup)
-		if(!istext(id))
-			src.uid_lookup -= id
-		var/datum/prototype/instance = src.uid_lookup[id]
-		if(!istype(instance) || QDELETED(instance))
-			src.uid_lookup -= id
-	// regenerate first
-	var/list/cached = src.uid_lookup
-	src.uid_lookup = list()
-	generate()
-	// put stuff back if they don't collide
-	for(var/id in cached)
-		if(src.uid_lookup[id])
-			continue
-		src.uid_lookup = cached[id]
 	return ..()
 
 /**

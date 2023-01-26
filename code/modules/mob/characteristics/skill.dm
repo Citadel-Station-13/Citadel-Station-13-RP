@@ -65,8 +65,6 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	var/desc_experienced = "ERR: NO EXPERIENCED DESC"
 	var/desc_professional = "ERR: NO PROFESSIONAL DESC"
 
-	#warn specializations?
-
 /datum/characteristic_skill/New()
 	compute_caches()
 

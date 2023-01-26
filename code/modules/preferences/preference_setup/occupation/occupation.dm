@@ -205,7 +205,7 @@
 /datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
 	return list()
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/available_alt_titles(datum/job/J)
+/datum/category_item/player_setup_item/occupation/jobs/proc/available_alt_titles(datum/role/job/J)
 	if(J.alt_titles | J.title)
 	#warn shitcode shim for "strict" mode
 	#warn impl

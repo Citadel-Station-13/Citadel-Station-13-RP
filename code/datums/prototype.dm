@@ -13,7 +13,6 @@ candidates for conversion:
  *
  * ids are optional, but no id means it can only be fetched by type. set anonymous to TRUE for that!
  *
- *
  * all prototypes should eventually be serializable
  */
 /datum/prototype
