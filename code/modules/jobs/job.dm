@@ -2,7 +2,7 @@
 	/// Abstract type.
 	abstract_type = /datum/job
 
-	//! Intrinsics
+	//? Intrinsics
 	/// ID of the job, used for save/load
 	var/id
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
@@ -14,6 +14,8 @@
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
 
+
+	//? unsorted
 	// Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 
 	/// Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population).
