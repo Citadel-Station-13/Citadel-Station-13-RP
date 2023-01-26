@@ -80,7 +80,16 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	mouseover_highlight_dummy.plane = PLANE_PLAYER_HUD_ABOVE
 	mouseover_highlight_dummy.alpha = 255
 	mouseover_highlight_dummy.appearance_flags |= (KEEP_TOGETHER|RESET_COLOR)
-	mouseover_highlight_dummy.add_filter("glow", 1, list("drop_shadow", color = rgb(rand(1,255),rand(1,255),rand(1,255)) + "F0", size = 1, offset = 1, x = 0, y = 0))
+	mouseover_highlight_dummy.add_filter(
+		"glow",
+		1,
+		list(
+			type = "outline",
+			color = rgb(rand(1,255),rand(1,255),rand(1,255)),
+			size = 2,
+			offset = 1, x = 0, y = 0
+			)
+		)
 
 	// Replanes the overlays to avoid explicit plane/layer setting (such as
 	// computer overlays) interfering with the ordering of the highlight.
