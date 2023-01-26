@@ -53,8 +53,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
-/obj/structure/anomaly_container,
-/obj/machinery/artifact,
+/obj/structure/safe,
+/obj/random/curseditem,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "bk" = (

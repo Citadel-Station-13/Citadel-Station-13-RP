@@ -77,36 +77,36 @@
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 32
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 2
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
 	for (var/obj/structure/railing/R in get_step(src, Lturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 16
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 	for (var/obj/structure/railing/R in get_step(src, Rturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 1
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
 	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 64
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 4
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
-/obj/structure/railing/update_icon(UpdateNeighgors = TRUE)
-	NeighborsCheck(UpdateNeighgors)
+/obj/structure/railing/update_icon(updates, UpdateNeighbors = TRUE)
+	NeighborsCheck(UpdateNeighbors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
 	cut_overlays()
 
@@ -295,9 +295,9 @@
 		return
 
 	if(get_turf(user) == get_turf(src))
-		usr.forceMove(get_step(src, src.dir))
+		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 	else
-		usr.forceMove(get_turf(src))
+		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	if(!anchored)	take_damage(maxhealth) // Fatboy
