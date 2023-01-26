@@ -50,6 +50,14 @@
 	QDEL_NULL(closer)
 	return ..()
 
+/obj/item/storage/attack_self(mob/user)
+	if(user in is_seeing)
+		src.close(user)
+	else if(isliving(user) && user.Reachability(src))
+		src.open(user)
+	else
+		return ..()
+
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
