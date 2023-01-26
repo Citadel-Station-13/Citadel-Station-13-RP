@@ -1,39 +1,10 @@
-// TODO: FILE UNTICKED
 /*
-tl;dr:
-
-"needing to create these at runtime, register them, AND maintain the ability to fetch types seamlessly,
-AND make this user friendly by not making you prefix everything with material_ chemical_ outfit_ design_"
-```
-var/list/a = list("test" = list("b" = new /datum, "c" = new /datum), "test2" = list())
-var/list/b = list("test_b" = new /datum, "test_c" = new /datum)
-var/out
-var/c = a[1]
-var/d = a[2]
-TICKBENCH("2d", out = a["test"]?["b"])
-TICKBENCH("2d_noentry", out = a["test"]?["d"])
-TICKBENCH("2d_nonamespace", out = a["a"]?["b"])
-TICKBENCH("1d", out = b["test_b"])
-TICKBENCH("1d_concat", out = b["[c]_[d]"])
-OUT << out
-```
-
-results:
-2d: 147960 iterations
-2d_noentry: 149693 iterations
-2d_nonamespace: 232871 iterations
-1d: 281352 iterations
-1d_concat: 105750 iterations
-
-and so yes, this is a project for another day.
-as of right now i cannot think of a way to make this both
-- fast
-- sane to use
-- support both types and ids without much of a hit
+candidates for conversion:
+- /datum/role
+- /datum/material
+- /datum/lore
+- /datum/design
 */
-
-
-// ---------------------------------------------------------------------------------------------
 
 /**
  * global singletons fetched from SSrepository
@@ -50,9 +21,12 @@ as of right now i cannot think of a way to make this both
 	/// should this be saved?
 	var/savable = FALSE
 	/// namespace - should be unique to a given domain or kind of prototype, e.g. /datum/prototype/lore, /datum/prototype/outfit, etc
+	/// this should NEVER be changed at runtime!
 	var/namespace
 	/// identifier - must be unique within a namespace
 	var/identifier
+	/// lazyloaded
+	var/lazy = FALSE
 
 /datum/prototype/New()
 	uid = "[namespace]_[identifier]"
@@ -68,6 +42,7 @@ as of right now i cannot think of a way to make this both
 
 /**
  * called on unregister
+ * this should never fail; returning FALSE causes a fatal runtime to be generated.
  *
  * @return TRUE / FALSE on success / failure
  */
@@ -76,10 +51,12 @@ as of right now i cannot think of a way to make this both
 
 /datum/prototype/serialize()
 	. = ..()
-	.[NAMEOF(src, uid)] = uid
+	.[NAMEOF(src, identifier)] = identifier
 
 /datum/prototype/deserialize(list/data)
 	. = ..()
-	uid = data[NAMEOF(src, uid)]
+	identifier = data[NAMEOF(src, identifier)]
+	uid = "[namespace]_[identifier]"
 
-#warn impl all
+/datum/prototype/proc/assert_identifier()
+	return uid == "[namespace]_[identifier]" && namespace == initial(namespace)

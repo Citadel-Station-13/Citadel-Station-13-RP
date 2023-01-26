@@ -72,18 +72,20 @@ DEFINE_BITFIELD(runlevels, list(
  *? The numbers just define the ordering, they are meaningless otherwise.
  */
 
-#define INIT_ORDER_FAIL2TOPIC      104
-#define INIT_ORDER_STATPANELS      103
-#define INIT_ORDER_PROTOTYPES      102
-#define INIT_ORDER_DBCORE          101
-#define INIT_ORDER_INPUT           100
-#define INIT_ORDER_JOBS            99
-#define INIT_ORDER_CHARACTERS      98
-#define INIT_ORDER_SOUNDS          95
+// todo: tg init brackets
+
+#define INIT_ORDER_FAIL2TOPIC      200
+#define INIT_ORDER_TIMER           195
+#define INIT_ORDER_DBCORE          190
+#define INIT_ORDER_REPOSITORY      180
+#define INIT_ORDER_STATPANELS      170
+#define INIT_ORDER_INPUT           160
+#define INIT_ORDER_JOBS            150
+#define INIT_ORDER_CHARACTERS      140
+#define INIT_ORDER_SOUNDS          130
+#define INIT_ORDER_GARBAGE         120
 #define INIT_ORDER_VIS             80
-#define INIT_ORDER_GARBAGE         70
 #define INIT_ORDER_SERVER_MAINT    65
-#define INIT_ORDER_TIMER           60
 #define INIT_ORDER_INSTRUMENTS     50
 #define INIT_ORDER_EARLY_ASSETS    48
 #define INIT_ORDER_SQLITE          40
