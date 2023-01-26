@@ -6,6 +6,48 @@
 #define AO_SELF_CHECK(T) (!T.density && !T.opacity)
 #endif
 
+#define PROCESS_AO(TARGET, AO_LIST, NEIGHBORS, ALPHA) \
+	if (permit_ao && NEIGHBORS != AO_ALL_NEIGHBORS) { \
+		if (NEIGHBORS != AO_ALL_NEIGHBORS) { \
+			var/image/I = cache["ao-[NEIGHBORS]|[pixel_x]/[pixel_y]/[pixel_z]/[pixel_w]|[ALPHA]"]; \
+			if (!I) { \
+				/* This will also add the image to the cache. */ \
+				I = make_ao_image(NEIGHBORS, TARGET.pixel_x, TARGET.pixel_y, TARGET.pixel_z, TARGET.pixel_w, ALPHA) \
+			} \
+			LAZYADD(AO_LIST, I); \
+		} \
+	} \
+	UNSETEMPTY(AO_LIST); \
+	if (AO_LIST) { \
+		TARGET.add_overlay(AO_LIST, TRUE); \
+	}
+
+#define CUT_AO(TARGET, AO_LIST) \
+	if (AO_LIST) { \
+		TARGET.cut_overlay(AO_LIST, TRUE); \
+		AO_LIST.Cut(); \
+	}
+
+/proc/make_ao_image(corner, px = 0, py = 0, pz = 0, pw = 0, alpha)
+	var/list/cache = SSao.image_cache
+	var/cstr = "ao-[corner]"
+	// PROCESS_AO below also uses this cache, check it before changing this key.
+	var/key = "[cstr]|[px]/[py]/[pz]/[pw]|[alpha]"
+
+	var/image/I = image('icons/turf/flooring/shadows.dmi', cstr)
+	I.alpha = alpha
+	I.blend_mode = BLEND_OVERLAY
+	I.appearance_flags = RESET_ALPHA | RESET_COLOR | TILE_BOUND
+	I.layer = AO_LAYER
+	// If there's an offset, counteract it.
+	if (px || py || pz || pw)
+		I.pixel_x = -px
+		I.pixel_y = -py
+		I.pixel_z = -pz
+		I.pixel_w = -pw
+
+	. = cache[key] = I
+
 /turf
 	/**
 	 * Whether this turf is allowed to have ambient occlusion.
@@ -36,6 +78,18 @@
 	/// Whether this turf is currently queued for ambient occlusion.
 	var/ao_queued = AO_UPDATE_NONE
 
+/turf/proc/calculate_ao_junction()
+	ao_junction = NONE
+	ao_junction_mimic = NONE
+	if (!permit_ao)
+		return
+
+	var/turf/T
+	if (mz_flags & MZ_MIMIC_BELOW)
+		CALCULATE_NEIGHBORS(src, ao_junction_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
+	if (AO_SELF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
+		CALCULATE_NEIGHBORS(src, ao_junction, T, AO_TURF_CHECK(T))
+
 /turf/proc/regenerate_ao()
 	for (var/thing in RANGE_TURFS(1, src))
 		var/turf/T = thing
@@ -50,68 +104,15 @@
 	if (ao_queued < new_level)
 		ao_queued = new_level
 
-/turf/proc/calculate_ao_junction()
-	ao_junction = NONE
-	ao_junction_mimic = NONE
-	if (!permit_ao)
-		return
-
-	var/turf/T
-	if (mz_flags & MZ_MIMIC_BELOW)
-		CALCULATE_NEIGHBORS(src, ao_junction_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
-	if (AO_SELF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
-		CALCULATE_NEIGHBORS(src, ao_junction, T, AO_TURF_CHECK(T))
-
-/proc/make_ao_image(corner, px = 0, py = 0, pz = 0, pw = 0, alpha)
-	var/list/cache = SSao.image_cache
-	var/cstr = "ao-[corner]"
-	// REGEN_AO below also uses this cache, check it before changing this key.
-	var/key = "[cstr]|[px]/[py]/[pz]/[pw]|[alpha]"
-
-	var/image/I = image('icons/turf/flooring/shadows.dmi', cstr)
-	I.alpha = alpha
-	I.blend_mode = BLEND_OVERLAY
-	I.appearance_flags = RESET_ALPHA | RESET_COLOR | TILE_BOUND
-	I.layer = AO_LAYER
-	// If there's an offset, counteract it.
-	if (px || py || pz || pw)
-		I.pixel_x = -px
-		I.pixel_y = -py
-		I.pixel_z = -pz
-		I.pixel_w = -pw
-
-	. = cache[key] = I
-
-#define REGEN_AO(TARGET, AO_LIST, NEIGHBORS, ALPHA) \
-	if (permit_ao && NEIGHBORS != AO_ALL_NEIGHBORS) { \
-		if (NEIGHBORS != AO_ALL_NEIGHBORS) { \
-			var/image/I = cache["ao-[NEIGHBORS]|[pixel_x]/[pixel_y]/[pixel_z]/[pixel_w]|[ALPHA]"]; \
-			if (!I) { \
-				I = make_ao_image(NEIGHBORS, TARGET.pixel_x, TARGET.pixel_y, TARGET.pixel_z, TARGET.pixel_w, ALPHA) /* this will also add the image to the cache. */ \
-			} \
-			LAZYADD(AO_LIST, I); \
-		} \
-	} \
-	UNSETEMPTY(AO_LIST); \
-	if (AO_LIST) { \
-		TARGET.add_overlay(AO_LIST, TRUE); \
-	}
-
-#define CUT_AO(TARGET, AO_LIST) \
-	if (AO_LIST) { \
-		TARGET.cut_overlay(AO_LIST, TRUE); \
-		AO_LIST.Cut(); \
-	}
-
 /turf/proc/update_ao()
 	var/list/cache = SSao.image_cache
 	CUT_AO(shadower, ao_overlays_mimic)
 	CUT_AO(src, ao_overlays)
 	if (mz_flags & MZ_MIMIC_BELOW)
-		REGEN_AO(shadower, ao_overlays_mimic, ao_junction_mimic, Z_AO_ALPHA)
+		PROCESS_AO(shadower, ao_overlays_mimic, ao_junction_mimic, Z_AO_ALPHA)
 	if (AO_TURF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
-		REGEN_AO(src, ao_overlays, ao_junction, WALL_AO_ALPHA)
+		PROCESS_AO(src, ao_overlays, ao_junction, WALL_AO_ALPHA)
 
-#undef REGEN_AO
 #undef AO_TURF_CHECK
 #undef AO_SELF_CHECK
+#undef PROCESS_AO
