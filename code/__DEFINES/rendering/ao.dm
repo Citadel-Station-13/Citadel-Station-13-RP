@@ -18,8 +18,8 @@
  * Arguments:
  * - ORIGIN  - The atom to step from,
  * - VAR     - The var to write the bitfield to.
- * - TVAR   - The temporary turf variable to use.
- * - TFUNC - An additional function used to validate the turf. Generally should reference TVAR.
+ * - TVAR    - The temporary turf variable to use.
+ * - TFUNC   - An additional function used to validate the turf found in each direction. Generally should reference TVAR.
  *   - Example:
  *   -    var/VAR_INPUT = 0
  *   -    var/turf/TVAR_INPUT
