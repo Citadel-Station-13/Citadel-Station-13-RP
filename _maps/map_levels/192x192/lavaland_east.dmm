@@ -188,9 +188,6 @@
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
-"In" = (
-/turf/simulated/mineral/ignore_cavegen/lavaland,
-/area/lavaland/east/ashlander_village)
 "JG" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/glass/stone,
@@ -17929,7 +17926,7 @@ kV
 kV
 kV
 kV
-In
+kV
 kV
 kV
 pY

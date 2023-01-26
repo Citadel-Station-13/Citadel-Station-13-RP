@@ -373,6 +373,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	outdoors = 1
+	edge_blending_priority = 2
 	base_icon_state = "asteroid"
 	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /singleton/flooring/outdoors/lavaland
