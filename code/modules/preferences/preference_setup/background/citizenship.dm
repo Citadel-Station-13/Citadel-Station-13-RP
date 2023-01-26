@@ -6,9 +6,17 @@
 /datum/category_item/player_setup_item/background/citizenship/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/citizenship/available = SScharacters.available_citizenships(prefs.character_species_id())
+	var/list/categories = list()
+	for(var/datum/lore/character_background/citizenship/O as anything in available)
+		LAZYADD(categories[O.category], O)
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	. += "<center>"
 	. += "<b>Citizenship</b><br>"
+	if(length(categories) > 1)
+		for(var/category in categories)
+			. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+			. += " "
+		. += "<br>"
 	for(var/datum/lore/character_background/citizenship/O in available)
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
@@ -31,6 +39,16 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this citizenship."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
+			prefs.sanitize_background_lore()	// update
+			return PREFERENCES_REFRESH
+		if("category")
+			var/cat = params["category"]
+			var/list/datum/lore/character_background/citizenship/citizenships = SScharacters.available_citizenships(prefs.character_species_id(), cat)
+			if(!length(citizenships))
+				to_chat(user, SPAN_WARNING("No citizenships in that category have been found; this might be an error."))
+				return PREFERENCES_NOACTION
+			var/datum/lore/character_background/citizenship/first = citizenships[1]
+			write(prefs, first.id)
 			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
 	return ..()

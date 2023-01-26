@@ -6,9 +6,17 @@
 /datum/category_item/player_setup_item/background/religion/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/religion/available = SScharacters.available_religions(prefs.character_species_id())
+	var/list/categories = list()
+	for(var/datum/lore/character_background/religion/O as anything in available)
+		LAZYADD(categories[O.category], O)
 	var/datum/lore/character_background/religion/current = SScharacters.resolve_religion(data)
 	. += "<center>"
 	. += "<b>Religion</b><br>"
+	if(length(categories) > 1)
+		for(var/category in categories)
+			. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+			. += " "
+		. += "<br>"
 	for(var/datum/lore/character_background/religion/O in available)
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
@@ -31,6 +39,16 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this religion."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
+			return PREFERENCES_REFRESH
+		if("category")
+			var/cat = params["category"]
+			var/list/datum/lore/character_background/religion/religions = SScharacters.available_religions(prefs.character_species_id(), cat)
+			if(!length(religions))
+				to_chat(user, SPAN_WARNING("No religions in that category have been found; this might be an error."))
+				return PREFERENCES_NOACTION
+			var/datum/lore/character_background/religion/first = religions[1]
+			write(prefs, first.id)
+			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
 	return ..()
 

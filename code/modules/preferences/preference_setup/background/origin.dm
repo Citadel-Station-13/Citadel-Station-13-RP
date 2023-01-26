@@ -12,10 +12,11 @@
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	. += "<center>"
 	. += "<b>Origin</b><br>"
-	for(var/category in categories)
-		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
-		. += " "
-	. += "<br>"
+	if(length(categories) > 1)
+		for(var/category in categories)
+			. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+			. += " "
+		. += "<br>"
 	for(var/datum/lore/character_background/origin/O in categories[current.category])
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"

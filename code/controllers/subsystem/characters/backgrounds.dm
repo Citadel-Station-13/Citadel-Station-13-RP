@@ -45,27 +45,33 @@
 	tim_sort(character_religions, /proc/cmp_auto_compare, TRUE)
 	tim_sort(character_factions, /proc/cmp_auto_compare, TRUE)
 
-/datum/controller/subsystem/characters/proc/available_citizenships(species_id)
+/datum/controller/subsystem/characters/proc/available_citizenships(species_id, category)
 	. = list()
 	for(var/id in character_citizenships)
 		var/datum/lore/character_background/citizenship/L = character_citizenships[id]
+		if(category && (L.category != category))
+			continue
 		if(L.check_species_id(species_id))
 			. += L
 
-/datum/controller/subsystem/characters/proc/available_religions(species_id)
+/datum/controller/subsystem/characters/proc/available_religions(species_id, category)
 	. = list()
 	for(var/id in character_religions)
 		var/datum/lore/character_background/religion/L = character_religions[id]
+		if(category && (L.category != category))
+			continue
 		if(L.check_species_id(species_id))
 			. += L
 
-/datum/controller/subsystem/characters/proc/available_factions(species_id, origin_id, citizenship_id)
+/datum/controller/subsystem/characters/proc/available_factions(species_id, origin_id, citizenship_id, category)
 	. = list()
 	for(var/id in character_factions)
 		var/datum/lore/character_background/faction/L = character_factions[id]
 		if(L.origin_whitelist && !(origin_id in L.origin_whitelist))
 			continue
 		if(L.citizenship_whitelist && !(citizenship_id in L.citizenship_whitelist))
+			continue
+		if(category && (L.category != category))
 			continue
 		if(L.check_species_id(species_id))
 			. += L
