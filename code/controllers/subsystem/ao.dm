@@ -6,29 +6,35 @@ SUBSYSTEM_DEF(ao)
 	subsystem_flags = SS_NO_INIT
 
 	var/static/list/image_cache = list()
-	var/static/list/turf/queue = list()
+	var/static/list/turf/queue  = list()
 
 
 /datum/controller/subsystem/ao/stat_entry()
 	return ..() + "Queue: [queue.len]"
 
-/datum/controller/subsystem/ao/fire(resume = 0, no_mc_tick = FALSE)
+/datum/controller/subsystem/ao/fire(resume = FALSE, no_mc_tick = FALSE)
 	if (!queue.len)
 		return
+
 	var/cut_until = 1
 	for (var/turf/turf as anything in queue)
 		++cut_until
+
 		if(QDELETED(turf))
 			continue
+
 		if (turf.ao_queued == AO_UPDATE_REBUILD)
-			var/previous_neighbours = turf.ao_neighbors
-			turf.calculate_ao_neighbors()
-			if (previous_neighbours != turf.ao_neighbors)
+			var/previous_neighbours = turf.ao_junction
+			turf.calculate_ao_junction()
+			if (previous_neighbours != turf.ao_junction)
 				turf.update_ao()
+
 		turf.ao_queued = AO_UPDATE_NONE
+
 		if (no_mc_tick)
 			CHECK_TICK
 		else if (MC_TICK_CHECK)
 			queue.Cut(1, cut_until)
 			return
+
 	queue.len = 0
