@@ -1,5 +1,9 @@
 /**
  * holds characteristics data
+ *
+ * can be just used as a holder datum but can also be used as a 1:1 with a mind
+ * downsides: can only be associated with one mind at a time, for now.
+ * if this belongs to a mind the mind has free reign to qdel it. you have been warned.
  */
 /datum/characteristics_holder
 	//! ownership
@@ -16,32 +20,77 @@
 	// todo: modifiers
 
 /datum/characteristics_holder/Destroy()
-	#warn de-mind
+	if(mind)
+		disassociate_from_mind(mind)
 	return ..()
 
 /datum/characteristics_holder/proc/associate_with_mind(datum/mind/M)
-	#warn impl
+	if(M.current)
+		associate_with_mob(M.current)
+	if(M.characteristics)
+		stack_trace("mind already had characteristics")
+	M.characteristics = src
+	for(var/id in talents)
+		var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+		talent.gain(M, talents[id])
 
 /datum/characteristics_holder/proc/disassociate_from_mind(datum/mind/M)
-	#warn impl
+	if(M.current)
+		disassociate_from_mob(M.current)
+	if(M.characteristics != src)
+		stack_trace("mind characteristics was not self")
+	for(var/id in talents)
+		var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+		talent.lose(M, talents[id])
+	M.characteristics = null
+
+/datum/characteristics_holder/proc/associate_with_mob(mob/M)
+	for(var/id in talents)
+		var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+		talent.attach(M, talents[id])
+
+/datum/characteristics_holder/proc/disassociate_from_mob(mob/M)
+	for(var/id in talents)
+		var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+		talent.detach(M, talents[id])
 
 /datum/characteristics_holder/proc/set_stat(datum/characteristic_stat/id_or_typepath, val)
+	LAZYINITLIST(stats)
 	stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] = val
 
 /datum/characteristics_holder/proc/set_skill(datum/characteristic_skill/id_or_typepath, val)
+	LAZYINITLIST(skills)
 	skills[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] = val
 
 /datum/characteristics_holder/proc/get_stat(datum/characteristic_stat/id_or_typepath)
-	. = stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
+	. = stats?[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
 
 /datum/characteristics_holder/proc/get_skill(datum/characteristic_skill/id_or_typepath)
-	. = skills[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] || CHARACTER_SKILL_UNTRAINED
+	. = skills?[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] || CHARACTER_SKILL_UNTRAINED
 
 /datum/characteristics_holder/proc/add_talent(datum/characteristic_talent/id_or_typepath, ...)
-	#warn impl
+	var/id = ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath
+	if(talents?[id])
+		// do NOT allow overwrite!
+		return FALSE
+	var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+	talents[id] = talent.metadata(arglist(args.Copy(2)))
+	if(mind)
+		if(mind.current)
+			talent.attach(mind.current, talents[id])
+		talent.gain(mind, talents[id])
 
 /datum/characteristics_holder/proc/remove_talent(datum/characteristic_talent/id_or_typepath)
-	#warn impl
+	var/id = ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath
+	if(!talents?[id])
+		return FALSE
+	var/datum/characteristic_talent/talent = resolve_characteristics_talent(id)
+	if(mind)
+		if(mind.current)
+			talent.detach(mind.current, talents[id])
+		talent.lose(mind, talents[id])
+	talents -= id
+	return TRUE
 
 /datum/characteristics_holder/proc/has_talent(datum/characteristic_talent/id_or_typepath)
 	return !!talents[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
@@ -55,3 +104,14 @@
  */
 /datum/characteristics_holder/proc/apply_preset(datum/characteristic_preset/typepath_or_preset, overwrite = FALSE)
 	#warn impl
+
+/**
+ * clones
+ */
+/datum/characteristics_holder/proc/clone()
+	RETURN_TYPE(/datum/characteristics_holder)
+	var/datum/characteristics_holder/cloning = new
+	cloning.skills = skills.Copy()
+	cloning.stats = stats.Copy()
+	cloning.talents = talents.Copy()
+	return cloning

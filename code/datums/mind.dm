@@ -93,7 +93,18 @@
 /datum/mind/New(var/key)
 	src.key = key
 
-	..()
+/datum/Destroy()
+	QDEL_NULL(characteristics)
+	return ..()
+
+/**
+ * make sure we have a characteristics holder
+ */
+/datum/mind/proc/characteristics_holder()
+	if(!characteristics)
+		characteristics = new
+		characteristics.associate_with_mind(src)
+	return characteristics
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -103,6 +114,7 @@
 			current.remove_changeling_powers()
 			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 		current.mind = null
+		characteristics?.disassociate_from_mob(current)
 
 		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
@@ -110,6 +122,7 @@
 
 	current = new_character		//link ourself to our new body
 	new_character.mind = src	//and link our new body to ourself
+	characteristics?.assocaite_with_mob(current)
 
 	if(changeling)
 		new_character.make_changeling()

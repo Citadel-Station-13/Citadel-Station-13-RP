@@ -88,3 +88,11 @@
  */
 /mob/proc/characteristic_skill_difference(datum/characteristic_skill/typepath_or_id, level)
 	return level - get_characteristic_skill(typepath_or_id)
+
+/**
+ * get or create characteristics holder
+ */
+/mob/proc/characteristics_holder()
+	if(!mind)
+		mind_initialize()
+	mind.
