@@ -476,7 +476,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
 	
-/datum/robolimb/unbranded_alt1
+/datum/robolimb/spectre
 	company = "Hammond Tech - RACS Spectre "
 	desc = "A simple robotic limb design used for the Hammond Tech RASC Spectre. A lightweight robotic chassis ideal for exploration and security duties."
 	icon = 'icons/mob/cyberlimbs/_fluff_vr/spectre.dmi'
