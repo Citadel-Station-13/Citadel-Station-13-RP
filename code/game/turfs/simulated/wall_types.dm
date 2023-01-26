@@ -152,6 +152,14 @@
 	reinf_material  = null
 	girder_material = null
 
+/turf/simulated/wall/bone
+	icon = 'icons/turf/walls/stone.dmi'
+	color = "#e6dfc8"
+
+	material        = /datum/material/bone
+	reinf_material  = null
+	girder_material = /datum/material/bone
+
 /turf/simulated/wall/ironphoron
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#5C5454"
@@ -256,14 +264,6 @@
 	color = "#0099cc"
 
 	material        = /datum/material/wood/log/sif
-	reinf_material  = null
-	girder_material = null
-
-/turf/simulated/wall/bone
-	icon = 'icons/turf/walls/stone.dmi'
-	color = "#e6dfc8"
-
-	material        = /datum/material/bone
 	reinf_material  = null
 	girder_material = null
 

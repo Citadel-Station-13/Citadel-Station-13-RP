@@ -68,7 +68,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "pY" = (
-/turf/simulated/wall/sandstone,
+/turf/simulated/wall/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "qw" = (
 /obj/structure/bed/chair/post,
@@ -17545,7 +17545,7 @@ kV
 ww
 ww
 pY
-rm
+uE
 uE
 uE
 pY
@@ -18309,7 +18309,7 @@ wP
 wP
 wP
 wP
-wP
+kV
 vg
 kV
 kV
@@ -18503,7 +18503,7 @@ wP
 wP
 wP
 wP
-wP
+kV
 Zq
 Zq
 Zq
@@ -18697,7 +18697,7 @@ wP
 wP
 wP
 wP
-wP
+kV
 sw
 kV
 kV
@@ -18891,7 +18891,7 @@ wP
 wP
 wP
 wP
-wP
+DP
 DP
 DP
 kV
@@ -27038,7 +27038,7 @@ wP
 wP
 wP
 wP
-wP
+kV
 Fi
 Zq
 kV

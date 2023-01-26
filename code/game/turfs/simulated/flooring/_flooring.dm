@@ -696,7 +696,7 @@ var/list/flooring_types
 
 /singleton/flooring/bone
 	name = "bone floor"
-	desc = "A plate of solid bone, etched into a subtle tiled pattern."
+	desc = "A plate of solid bone etched into a subtle tiled pattern."
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "bone"
 	build_type = null
@@ -704,5 +704,5 @@ var/list/flooring_types
 
 /singleton/flooring/bone/engraved
 	name = "engraved bone floor"
-	desc = "A plate of solid bone with intricately symbols and patterns engraved into it."
+	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
 	icon_base = "bonecarve"
