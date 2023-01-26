@@ -84,7 +84,6 @@
 	)
 	channels = list("Science" = 1)
 	can_be_pushed = 0
-	is_quad = TRUE
 	can_shred = TRUE
 
 /obj/item/robot_module/robot/quad/sci/get_modules()

@@ -33,8 +33,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
-	/// Enables some dogborg mechanics and icon behaviors.
-	var/is_quad = FALSE
 	/// Affects emotes.
 	var/is_the_law = FALSE
 	/// Enables a verb.
@@ -234,7 +232,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	)
 
 /obj/item/robot_module/robot/quad
-	is_quad = TRUE
 
 /obj/item/robot_module/robot/quad/Initialize()
 	. = ..()
