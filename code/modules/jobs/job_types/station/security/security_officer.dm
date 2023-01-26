@@ -1,4 +1,4 @@
-/datum/job/station/officer
+/datum/role/job/station/officer
 	id = JOB_ID_SECURITY_OFFICER
 	title = "Security Officer"
 	flag = OFFICER

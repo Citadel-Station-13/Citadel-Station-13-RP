@@ -1,4 +1,4 @@
-/datum/job/station/atmos
+/datum/role/job/station/atmos
 	id = JOB_ID_ATMOSPHERIC_TECHNICIAN
 	title = "Atmospheric Technician"
 	flag = ATMOSTECH

@@ -3949,6 +3949,7 @@
 #include "code\modules\rogueminer_vr\wrappers.dm"
 #include "code\modules\rogueminer_vr\zone_console.dm"
 #include "code\modules\rogueminer_vr\zonemaster.dm"
+#include "code\modules\roles\role.dm"
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
 #include "code\modules\shieldgen\directional_shield.dm"

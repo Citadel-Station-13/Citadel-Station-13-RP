@@ -2,7 +2,7 @@
 //////////////////////////////////
 //			Xenobotanist
 //////////////////////////////////
-/datum/job/station/xenobotanist
+/datum/role/job/station/xenobotanist
 	title = "Xenobotanist"
 	flag = XENOBOTANIST
 	departments = list(DEPARTMENT_RESEARCH)

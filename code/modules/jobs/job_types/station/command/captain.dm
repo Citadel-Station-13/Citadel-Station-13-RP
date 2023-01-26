@@ -1,6 +1,6 @@
 var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
-/datum/job/station/captain
+/datum/role/job/station/captain
 	id = JOB_ID_CAPTAIN
 	title = "Facility Director"
 	flag = CAPTAIN
@@ -36,7 +36,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	)
 
 
-/datum/job/station/captain/get_access()
+/datum/role/job/station/captain/get_access()
 	return get_all_station_access().Copy()
 
 /datum/alt_title/overseer

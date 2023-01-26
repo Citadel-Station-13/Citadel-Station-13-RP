@@ -1,4 +1,4 @@
-/datum/job/station/quartermaster
+/datum/role/job/station/quartermaster
 	id = JOB_ID_QUARTERMASTER
 	title = "Quartermaster"
 	flag = QUARTERMASTER

@@ -1,6 +1,6 @@
-/datum/job
+/datum/role/job
 	/// Abstract type.
-	abstract_type = /datum/job
+	abstract_type = /datum/role/job
 
 	//? Intrinsics
 	/// ID of the job, used for save/load
@@ -83,7 +83,7 @@
 	// Disallow joining as this job midround from off-duty position via going on-duty
 	var/disallow_jobhop = FALSE
 
-/datum/job/New()
+/datum/role/job/New()
 	. = ..()
 	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
@@ -92,7 +92,7 @@
  *
  * @return 0 to number of slots remaining
  */
-/datum/job/proc/slots_remaining(latejoin)
+/datum/role/job/proc/slots_remaining(latejoin)
 	if(!latejoin)
 		if(spawn_positions == -1)
 			return INFINITY
@@ -110,7 +110,7 @@
  *
  * todo: check ckey proc too?
  */
-/datum/job/proc/check_client_availability(client/C, check_char, latejoin)
+/datum/role/job/proc/check_client_availability(client/C, check_char, latejoin)
 	. = NONE
 	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
@@ -143,7 +143,7 @@
  *
  * todo: check ckey proc too?
  */
-/datum/job/proc/check_client_availability_one(client/C, check_char, latejoin)
+/datum/role/job/proc/check_client_availability_one(client/C, check_char, latejoin)
 	. = NONE
 	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
@@ -169,7 +169,7 @@
 /**
  * get an user-friendly reason of why they can't spawn as us
  */
-/datum/job/proc/get_availability_reason(client/C, reason)
+/datum/role/job/proc/get_availability_reason(client/C, reason)
 	if(reason & ROLE_UNAVAILABLE_BANNED)
 		return "BANNED"
 	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
@@ -193,7 +193,7 @@
 /**
  * get a short abbreviation for why they can't spawn as us; used for preferences
  */
-/datum/job/proc/get_availability_error(client/C, reason)
+/datum/role/job/proc/get_availability_error(client/C, reason)
 	if(reason & ROLE_UNAVAILABLE_BANNED)
 		return "BANNED"
 	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
@@ -214,14 +214,14 @@
 		return "SPECIES"
 	return "UNKNOWN (BUG)"
 
-/datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip(H, title, alt_title)
 	return 1
 
-/datum/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
 	if(alt_title && alt_titles)
 		var/datum/alt_title/A = alt_titles[alt_title]
 		if(A && initial(A.title_outfit))
@@ -232,7 +232,7 @@
 
 	// TODO: job refactor
 
-/datum/job/proc/setup_account(var/mob/living/carbon/human/H)
+/datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
@@ -264,49 +264,49 @@
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
 // Overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
-/datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip_base(H, title, alt_title)
 
-/datum/job/proc/get_access()
+/datum/role/job/proc/get_access()
 	if(!config || config_legacy.jobs_have_minimal_access)
 		return src.minimal_access.Copy()
 	else
 		return src.access.Copy()
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
-/datum/job/proc/player_old_enough(client/C)
+/datum/role/job/proc/player_old_enough(client/C)
 	return (available_in_days(C) == 0)	// Available in 0 days = available right now = player is old enough to play.
 
-/datum/job/proc/available_in_days(client/C)
+/datum/role/job/proc/available_in_days(client/C)
 	if(C.has_jexp_bypass())
 		return 0
 	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0
 
-/datum/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
+/datum/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
 	if(!istype(target))
 		return 0
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return 1
 
-/datum/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
+/datum/role/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
 	item.add_fingerprint(holder,1)
 	if(item.contents.len)
 		for(var/obj/item/sub_item in item.contents)
 			apply_fingerprints_to_item(holder, sub_item)
 
-/datum/job/proc/is_position_available()
+/datum/role/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
 
-/datum/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
+/datum/role/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
 
-/datum/job/proc/get_description_blurb(var/alt_title)
+/datum/role/job/proc/get_description_blurb(var/alt_title)
 	var/list/message = list()
 	message |= desc
 
@@ -318,7 +318,7 @@
 				message |= A.title_blurb
 	return message
 
-/datum/job/proc/get_job_icon()
+/datum/role/job/proc/get_job_icon()
 	if(!SSjob.job_icons[title])
 		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 		dress_mannequin(mannequin)
@@ -331,17 +331,17 @@
 
 	return SSjob.job_icons[title]
 
-/datum/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
+/datum/role/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin)
 	if(mannequin.back)
 		qdel(mannequin.back)
 
 /// Check client-specific availability rules.
-/datum/job/proc/player_has_enough_pto(client/C)
+/datum/role/job/proc/player_has_enough_pto(client/C)
 	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, pto_type) > 0)
 
-/datum/job/proc/equip_backpack(mob/living/carbon/human/H)
+/datum/role/job/proc/equip_backpack(mob/living/carbon/human/H)
 	switch(H.backbag)
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), SLOT_ID_BACK)

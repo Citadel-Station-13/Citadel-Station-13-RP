@@ -1,4 +1,4 @@
-/datum/job/station/clown
+/datum/role/job/station/clown
 	id = JOB_ID_CLOWN
 	title = "Clown"
 	flag = CLOWN
@@ -23,7 +23,7 @@
 /datum/alt_title/clown/fool
 	title = "Fool"
 
-/datum/job/station/clown/get_access()
+/datum/role/job/station/clown/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels, access_entertainment, access_clown, access_tomfoolery)
 	else

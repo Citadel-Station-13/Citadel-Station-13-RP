@@ -92,7 +92,7 @@
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/job/job = SSjob.get_job(card.rank)
+		var/datum/role/job/job = SSjob.get_job(card.rank)
 		if(job)
 			data["job_datum"] = list(
 				"title" = job.title,
@@ -148,7 +148,7 @@
 
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/job/job in SSjob.occupations)
+	for(var/datum/role/job/job in SSjob.occupations)
 		if(isOpenOnDutyJob(user, department, job))
 			available_jobs[job.title] = list(job.title)
 			if(job.alt_titles)
@@ -157,7 +157,7 @@
 						available_jobs[job.title] += alt_job
 	return available_jobs
 
-/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/job/job)
+/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
 	return job \
 		   && job.is_position_available() \
 		   && !job.whitelist_only \
@@ -168,8 +168,8 @@
 		   && job.timeoff_factor > 0
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
-	var/datum/job/oldjob = SSjob.get_job(card.rank)
-	var/datum/job/newjob = SSjob.get_job(newrank)
+	var/datum/role/job/oldjob = SSjob.get_job(card.rank)
+	var/datum/role/job/newjob = SSjob.get_job(newrank)
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
@@ -190,12 +190,12 @@
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
-	var/datum/job/foundjob = SSjob.get_job(card.rank)
+	var/datum/role/job/foundjob = SSjob.get_job(card.rank)
 	if(!foundjob)
 		return
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
-	var/datum/job/ptojob = null
-	for(var/datum/job/job in SSjob.occupations)
+	var/datum/role/job/ptojob = null
+	for(var/datum/role/job/job in SSjob.occupations)
 		if(job.pto_type == new_dept && job.timeoff_factor < 0)
 			ptojob = job
 			break

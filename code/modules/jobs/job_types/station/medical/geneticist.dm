@@ -3,7 +3,7 @@
 //////////////////////////////////
 //			Geneticist
 //////////////////////////////////
-/datum/job/station/geneticist
+/datum/role/job/station/geneticist
 	id = "geneticist"
 	title = "Geneticist"
 	flag = GENETICIST

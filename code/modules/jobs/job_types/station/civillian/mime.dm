@@ -1,4 +1,4 @@
-/datum/job/station/mime
+/datum/role/job/station/mime
 	id = JOB_ID_MIME
 	title = "Mime"
 	flag = MIME
@@ -20,7 +20,7 @@
 /datum/alt_title/mime/poseur
 	title = "Poseur"
 
-/datum/job/station/mime/get_access()
+/datum/role/job/station/mime/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels, access_entertainment, access_tomfoolery, access_mime)
 	else

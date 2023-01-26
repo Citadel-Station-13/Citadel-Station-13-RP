@@ -1,4 +1,4 @@
-/datum/job/station/assistant
+/datum/role/job/station/assistant
 	id = JOB_ID_ASSISTANT
 	title = USELESS_JOB
 	flag = ASSISTANT
@@ -10,8 +10,8 @@
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
 	economic_modifier = 1
-	access = list()			//See /datum/job/station/assistant/get_access()
-	minimal_access = list()	//See /datum/job/station/assistant/get_access()
+	access = list()			//See /datum/role/job/station/assistant/get_access()
+	minimal_access = list()	//See /datum/role/job/station/assistant/get_access()
 	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
@@ -22,13 +22,13 @@
 		"Assistant" = /datum/alt_title/assistant
 	)
 
-/datum/job/station/assistant/get_access()
+/datum/role/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels)
 	else
 		return list()
 
-/datum/job/station/assistant/get_access()
+/datum/role/job/station/assistant/get_access()
 	return list()
 
 /datum/alt_title/visitor

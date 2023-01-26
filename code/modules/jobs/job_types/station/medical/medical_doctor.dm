@@ -1,4 +1,4 @@
-/datum/job/station/doctor
+/datum/role/job/station/doctor
 	id = JOB_ID_MEDICAL_DOCTOR
 	title = "Medical Doctor"
 	flag = DOCTOR

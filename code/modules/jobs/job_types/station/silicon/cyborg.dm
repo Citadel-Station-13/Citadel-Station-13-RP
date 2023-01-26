@@ -1,4 +1,4 @@
-/datum/job/station/cyborg
+/datum/role/job/station/cyborg
 	id = JOB_ID_CYBORG
 	title = "Cyborg"
 	flag = CYBORG
@@ -35,11 +35,11 @@
 					and important piece of station property, and is expected to follow its Laws."
 
 // Cyborg procs
-/datum/job/station/cyborg/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/cyborg/equip(var/mob/living/carbon/human/H)
 	if(!H)	return 0
 	return 1
 
-/datum/job/station/cyborg/equip_preview(mob/living/carbon/human/H)
+/datum/role/job/station/cyborg/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cardborg(H), SLOT_ID_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), SLOT_ID_HEAD)
 	return 1

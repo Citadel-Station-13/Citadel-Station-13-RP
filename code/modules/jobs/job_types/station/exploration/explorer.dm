@@ -1,4 +1,4 @@
-/datum/job/station/explorer
+/datum/role/job/station/explorer
 	id = JOB_ID_EXPLORER
 	title = "Explorer"
 	flag = EXPLORER

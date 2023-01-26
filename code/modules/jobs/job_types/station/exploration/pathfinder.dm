@@ -1,4 +1,4 @@
-/datum/job/station/pathfinder
+/datum/role/job/station/pathfinder
 	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
 	flag = PATHFINDER

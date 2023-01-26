@@ -1,4 +1,4 @@
-/datum/job/station/senior_researcher
+/datum/role/job/station/senior_researcher
 	title = "Senior Researcher"
 	id = JOB_ID_SENIOR_RESEARCHER
 	flag = SENIOR_RESEARCHER

@@ -1,4 +1,4 @@
-/datum/job/station/cargo_tech
+/datum/role/job/station/cargo_tech
 	id = JOB_ID_CARGO_TECHNICIAN
 	title = "Cargo Technician"
 	flag = CARGOTECH

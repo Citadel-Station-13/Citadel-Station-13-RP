@@ -18,7 +18,7 @@
 	var/list/jobs = sanitize_islist(data)
 	var/highest
 	for(var/id in jobs)
-		var/datum/job/J = SSjob.job_by_id(id)
+		var/datum/role/job/J = SSjob.job_by_id(id)
 		if(!J)
 			jobs -= id
 			continue
@@ -97,7 +97,7 @@
 #undef END_COLUMN
 #undef START_COLUMN
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/render_job(datum/preferences/prefs, datum/job/J, current_priority, assistant_selected)
+/datum/category_item/player_setup_item/occupation/jobs/proc/render_job(datum/preferences/prefs, datum/role/job/J, current_priority, assistant_selected)
 	. = list()
 	. += "<tr bgcolor='[J.selection_color]'><td width='60%' align='right'>"
 	// left side
@@ -147,7 +147,7 @@
 /**
  * return null if allowed, otherwise return error to display
  */
-/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/job/J, current_priority)
+/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/role/job/J, current_priority)
 	var/client/C = pref.client
 	if(!C)
 		return null
@@ -164,7 +164,7 @@
 			prefs.set_job_priority(job_id, level)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("title")
-			var/datum/job/J = SSjob.job_by_id(params["title"])
+			var/datum/role/job/J = SSjob.job_by_id(params["title"])
 			if(!J)
 				return PREFERENCES_NOACTION
 			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in (J.alt_titles | J.title)
@@ -173,7 +173,7 @@
 			prefs.set_job_title(params["title"], title)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("help")
-			var/datum/job/J = SSjob.job_by_id(params["help"])
+			var/datum/role/job/J = SSjob.job_by_id(params["help"])
 			var/list/built = list("<blockquote class='info'>")
 			built += "<center><b><h3>[J.title]</h3></b></center>"
 			built += "<b>Purpose:</b> [J.desc]"
@@ -217,7 +217,7 @@
 /datum/category_item/player_setup_item/occupation/alt_titles/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
 	for(var/id in jobs)
-		var/datum/job/J = SSjob.job_by_id(id)
+		var/datum/role/job/J = SSjob.job_by_id(id)
 		if(!J)
 			jobs -= id
 			continue
@@ -250,11 +250,11 @@
 	)
 	return sanitize_inlist(data, static_list, JOB_ALTERNATIVE_BE_ASSISTANT)
 
-/datum/preferences/proc/get_job_priority(datum/job/J)
+/datum/preferences/proc/get_job_priority(datum/role/job/J)
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
 
-/datum/preferences/proc/get_job_alt_title_name(datum/job/J)
+/datum/preferences/proc/get_job_alt_title_name(datum/role/job/J)
 	RETURN_TYPE(/datum/alt_title)
 	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
 	return titles[J.id] || J.title
@@ -277,7 +277,7 @@
 			continue
 		.[id] = priorities[id]
 
-/datum/preferences/proc/effective_job_priority(datum/job/J)
+/datum/preferences/proc/effective_job_priority(datum/role/job/J)
 	if(!lore_faction_job_check(J))
 		return JOB_PRIORITY_NEVER
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
@@ -287,7 +287,7 @@
  * gets effective job priority of a job for current slot; used for
  * roundstart procs. returns JOB_PRIORITY_NEVER if we can't be said job.
  */
-/client/proc/effective_job_priority(datum/job/J)
+/client/proc/effective_job_priority(datum/role/job/J)
 	if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 		return JOB_PRIORITY_NEVER
 	return prefs?.effective_job_priority(J)
@@ -302,7 +302,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/priorities = sanitize_islist(prefs.get_character_data(CHARACTER_DATA_JOBS))
-	for(var/datum/job/J as anything in SSjob.all_jobs())
+	for(var/datum/role/job/J as anything in SSjob.all_jobs())
 		if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 			continue
 		var/id = J.id
@@ -332,7 +332,7 @@
 	return get_character_data(CHARACTER_DATA_OVERFLOW_MODE)
 
 /datum/preferences/proc/set_job_priority(id, priority)
-	var/datum/job/J = SSjob.job_by_id(id)
+	var/datum/role/job/J = SSjob.job_by_id(id)
 	if(!J)
 		return
 	if(priority < JOB_PRIORITY_NEVER || priority > JOB_PRIORITY_HIGH)
@@ -345,7 +345,7 @@
 	set_character_data(CHARACTER_DATA_JOBS, current)
 
 /datum/preferences/proc/set_job_title(id, title)
-	var/datum/job/J = SSjob.job_by_id(id)
+	var/datum/role/job/J = SSjob.job_by_id(id)
 	if(!J)
 		return
 	var/list/current = get_character_data(CHARACTER_DATA_ALT_TITLES)

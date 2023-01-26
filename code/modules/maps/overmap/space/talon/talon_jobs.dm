@@ -18,7 +18,7 @@
 	assignable = FALSE
 	visible = FALSE
 
-/datum/job/talon_captain
+/datum/role/job/talon_captain
 	title = "Talon Captain"
 	flag = TALCAP
 	department_flag = TALON
@@ -43,7 +43,7 @@
 /datum/alt_title/talon_commander
 	title = "Talon Commander"
 
-/datum/job/talon_doctor
+/datum/role/job/talon_doctor
 	title = "Talon Doctor"
 	flag = TALDOC
 	department_flag = TALON
@@ -68,7 +68,7 @@
 	title = "Talon Medic"
 
 
-/datum/job/talon_engineer
+/datum/role/job/talon_engineer
 	title = "Talon Engineer"
 	flag = TALENG
 	department_flag = TALON
@@ -93,7 +93,7 @@
 	title = "Talon Technician"
 
 
-/datum/job/talon_pilot
+/datum/role/job/talon_pilot
 	title = "Talon Pilot"
 	flag = TALPIL
 	department_flag = TALON
@@ -118,7 +118,7 @@
 	title = "Talon Helmsman"
 
 
-/datum/job/talon_guard
+/datum/role/job/talon_guard
 	title = "Talon Guard"
 	flag = TALSEC
 	department_flag = TALON

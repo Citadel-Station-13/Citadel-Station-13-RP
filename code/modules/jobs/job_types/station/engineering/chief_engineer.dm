@@ -1,4 +1,4 @@
-/datum/job/station/chief_engineer
+/datum/role/job/station/chief_engineer
 	id = JOB_ID_CHIEF_ENGINEER
 	title = "Chief Engineer"
 	flag = CHIEF
