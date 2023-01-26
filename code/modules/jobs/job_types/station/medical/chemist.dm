@@ -19,14 +19,14 @@
 	desc = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
-		"Pharmacist" = /datum/alt_title/pharmacist,
-		"Pharmacologist" = /datum/alt_title/pharmacologist
+		"Pharmacist" = /datum/prototype/alt_title/pharmacist,
+		"Pharmacologist" = /datum/prototype/alt_title/pharmacologist
 		)
-/datum/alt_title/pharmacist
+/datum/prototype/alt_title/pharmacist
 	title = "Pharmacist"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
-/datum/alt_title/pharmacologist
+/datum/prototype/alt_title/pharmacologist
 	title = "Pharmacologist"
 	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
 

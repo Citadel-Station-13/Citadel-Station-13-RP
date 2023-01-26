@@ -11,17 +11,27 @@ candidates for conversion:
  *
  * they can be registered, or non-registered.
  *
- * all prototypes *must* be serializable
+ * ids are optional, but no id means it can only be fetched by type. set anonymous to TRUE for that!
+ *
+ *
+ * all prototypes should eventually be serializable
  */
 /datum/prototype
 	abstract_type = /datum/prototype
 
 	/// our id - must be unique for a given namespace. automatically generated.
 	var/uid
+	/// uid next global on /datum/prototype
+	var/static/uid_next = 0
+	/// anonymous? if true, we should not have a coded identifier.
+	var/anonymous = FALSE
 	/// should this be saved?
+	//  todo: not yet implemented
 	var/savable = FALSE
 	/// namespace - should be unique to a given domain or kind of prototype, e.g. /datum/prototype/lore, /datum/prototype/outfit, etc
 	/// this should NEVER be changed at runtime!
+	/// changing this may cause persistent data to be thrown out.
+	/// you have been warned.
 	var/namespace
 	/// identifier - must be unique within a namespace
 	var/identifier
@@ -29,7 +39,13 @@ candidates for conversion:
 	var/lazy = FALSE
 
 /datum/prototype/New()
-	uid = "[namespace]_[identifier]"
+	if(anonymous)
+		generate_anonymous_uid()
+	else
+		uid = "[namespace]_[identifier]"
+
+/datum/prototype/proc/generate_anonymous_uid()
+	uid = "[namespace]_[num2text(world.realtime, 16)]_[++uid_next]"
 
 /**
  * called on register
@@ -58,5 +74,8 @@ candidates for conversion:
 	identifier = data[NAMEOF(src, identifier)]
 	uid = "[namespace]_[identifier]"
 
+/**
+ * checks that our identifier is set properly
+ */
 /datum/prototype/proc/assert_identifier()
-	return uid == "[namespace]_[identifier]" && namespace == initial(namespace)
+	return !anonymous && uid == "[namespace]_[identifier]" && namespace == initial(namespace)

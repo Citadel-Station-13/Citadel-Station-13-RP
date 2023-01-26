@@ -15,9 +15,9 @@
 	outfit_type = /datum/outfit/job/station/cargo_technician
 	desc = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
-	alt_titles = list("Logistics Specialist" = /datum/alt_title/logi_spec)
+	alt_titles = list("Logistics Specialist" = /datum/prototype/alt_title/logi_spec)
 
-/datum/alt_title/logi_spec
+/datum/prototype/alt_title/logi_spec
 	title = "Logistics Specialist"
 
 /datum/outfit/job/station/cargo_technician

@@ -20,9 +20,9 @@
 
 	outfit_type = /datum/outfit/job/station/quartermaster
 	desc = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
-	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
+	alt_titles = list("Supply Chief" = /datum/prototype/alt_title/supply_chief)
 
-/datum/alt_title/supply_chief
+/datum/prototype/alt_title/supply_chief
 	title = "Supply Chief"
 
 /datum/outfit/job/station/quartermaster

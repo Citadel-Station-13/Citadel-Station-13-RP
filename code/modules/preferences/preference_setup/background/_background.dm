@@ -16,3 +16,4 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
+	sanitize_preference(/datum/category_item/player_setup_item/occupation/alt_titles)

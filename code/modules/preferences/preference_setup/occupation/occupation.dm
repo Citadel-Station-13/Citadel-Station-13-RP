@@ -167,7 +167,7 @@
 			var/datum/role/job/J = SSjob.job_by_id(params["title"])
 			if(!J)
 				return PREFERENCES_NOACTION
-			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in (J.alt_titles | J.title)
+			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in available_alt_titles(J)
 			if(!title)
 				return PREFERENCES_NOACTION
 			prefs.set_job_title(params["title"], title)
@@ -205,6 +205,11 @@
 /datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
 	return list()
 
+/datum/category_item/player_setup_item/occupation/jobs/proc/available_alt_titles(datum/job/J)
+	if(J.alt_titles | J.title)
+	#warn shitcode shim for "strict" mode
+	#warn impl
+
 /**
  * display is done by jobs; this datum only handles data filtering
  *
@@ -224,6 +229,11 @@
 		var/title = jobs[id]
 		if(!J.alt_titles[title])
 			jobs -= id
+			continue
+		var/datum/prototype/alt_title/instance = SSrepository.fetch(J.alt_titles[title])
+		if(instance.background_restricted && !check_background(instance.background_restricted))
+			jobs -= id
+			#warn shitcode shim for "strict" mode
 			continue
 	return jobs
 
@@ -255,7 +265,7 @@
 	return jobs[J.id]
 
 /datum/preferences/proc/get_job_alt_title_name(datum/role/job/J)
-	RETURN_TYPE(/datum/alt_title)
+	RETURN_TYPE(/datum/prototype/alt_title)
 	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
 	return titles[J.id] || J.title
 

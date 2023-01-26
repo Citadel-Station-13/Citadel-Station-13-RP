@@ -16,10 +16,10 @@
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(
-		"Visitor" = /datum/alt_title/visitor,
-		"Server" = /datum/alt_title/server,
-		"Morale Officer" = /datum/alt_title/morale_officer,
-		"Assistant" = /datum/alt_title/assistant
+		"Visitor" = /datum/prototype/alt_title/visitor,
+		"Server" = /datum/prototype/alt_title/server,
+		"Morale Officer" = /datum/prototype/alt_title/morale_officer,
+		"Assistant" = /datum/prototype/alt_title/assistant
 	)
 
 /datum/role/job/station/assistant/get_access()
@@ -31,18 +31,18 @@
 /datum/role/job/station/assistant/get_access()
 	return list()
 
-/datum/alt_title/visitor
+/datum/prototype/alt_title/visitor
 	title = "Visitor"
 	title_outfit = /datum/outfit/job/station/assistant/visitor
 
-/datum/alt_title/server
+/datum/prototype/alt_title/server
 	title = "Server"
 	title_outfit = /datum/outfit/job/station/assistant/server
 
-/datum/alt_title/morale_officer
+/datum/prototype/alt_title/morale_officer
 	title = "Morale Officer"
 
-/datum/alt_title/assistant
+/datum/prototype/alt_title/assistant
 	title = "Assistant"
 	title_outfit = /datum/outfit/job/station/assistant
 

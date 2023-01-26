@@ -25,8 +25,8 @@
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(
-		"Crew Resources Officer" = /datum/alt_title/cro,
-		"Deputy Director" = /datum/alt_title/hop/deputy
+		"Crew Resources Officer" = /datum/prototype/alt_title/cro,
+		"Deputy Director" = /datum/prototype/alt_title/hop/deputy
 	)
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
@@ -42,10 +42,10 @@
 						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
 						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
-/datum/alt_title/cro
+/datum/prototype/alt_title/cro
 	title = "Crew Resources Officer"
 
-/datum/alt_title/hop/deputy
+/datum/prototype/alt_title/hop/deputy
 	title = "Deputy Director"
 
 /datum/outfit/job/station/head_of_personnel

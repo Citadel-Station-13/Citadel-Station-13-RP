@@ -39,6 +39,7 @@
 	var/selection_color = COLOR_WHITE
 	/// List of alternate titles; There is no need for an alt-title datum for the base job title.
 	var/list/alt_titles = null
+	#warn shitcode shim for "strict" mode
 	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 	/// If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
@@ -223,7 +224,7 @@
 
 /datum/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
 	if(alt_title && alt_titles)
-		var/datum/alt_title/A = alt_titles[alt_title]
+		var/datum/prototype/alt_title/A = alt_titles[alt_title]
 		if(A && initial(A.title_outfit))
 			. = initial(A.title_outfit)
 	. = . || outfit_type
@@ -313,7 +314,7 @@
 	if(alt_title && alt_titles)
 		var/typepath = alt_titles[alt_title]
 		if(typepath)
-			var/datum/alt_title/A = new typepath()
+			var/datum/prototype/alt_title/A = new typepath()
 			if(A.title_blurb)
 				message |= A.title_blurb
 	return message

@@ -15,12 +15,12 @@
 	whitelist_only = 1
 	outfit_type = /datum/outfit/job/station/clown
 	pto_type = PTO_CIVILIAN
-	alt_titles = list("Jester" = /datum/alt_title/clown/jester, "Fool" = /datum/alt_title/clown/fool)
+	alt_titles = list("Jester" = /datum/prototype/alt_title/clown/jester, "Fool" = /datum/prototype/alt_title/clown/fool)
 
-/datum/alt_title/clown/jester
+/datum/prototype/alt_title/clown/jester
 	title = "Jester"
 
-/datum/alt_title/clown/fool
+/datum/prototype/alt_title/clown/fool
 	title = "Fool"
 
 /datum/role/job/station/clown/get_access()

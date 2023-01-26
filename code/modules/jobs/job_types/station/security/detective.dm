@@ -18,15 +18,15 @@
 	desc = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
-		"Forensic Technician" = /datum/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/alt_title/detective/csi
+		"Forensic Technician" = /datum/prototype/alt_title/detective/forensics_tech,
+		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi
 		)
 
-/datum/alt_title/detective/csi
+/datum/prototype/alt_title/detective/csi
 	title = "Crime Scene Investigator"
 
 /// Detective Alt Titles
-/datum/alt_title/detective/forensics_tech
+/datum/prototype/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
 	title_outfit = /datum/outfit/job/station/detective/forensic
