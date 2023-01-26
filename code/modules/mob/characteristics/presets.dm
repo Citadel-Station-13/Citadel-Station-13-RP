@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(characteristics_presets)
 	var/list/skills
 	/// stat typepaths or ids associated to values
 	var/list/stats
-	/// talent typepaths or ids
+	/// talent typepaths or ids associated to lists (or null) of what to pass in for arglist in talent add.
 	var/list/talents
 
 /datum/characteristic_preset/New(list/skills = list(), list/stats = list(), list/talents = list())

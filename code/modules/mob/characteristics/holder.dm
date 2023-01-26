@@ -103,7 +103,33 @@
  * - overwrite - should we replace everything in us or instead raise / append if needed?
  */
 /datum/characteristics_holder/proc/apply_preset(datum/characteristic_preset/typepath_or_preset, overwrite = FALSE)
-	#warn impl
+	if(ispath(typepath_or_preset))
+		typepath_or_preset = resolve_characteristics_preset(typepath_or_preset)
+	if(typepath_or_preset.skills)
+		LAZYINITLIST(skills)
+		if(overwrite)
+			skills = typepath_or_preset.skills.Copy()
+		else
+			for(var/id in typepath_or_preset.skills)
+				skills[id] = max(skills[id], typepath_or_preset.skills[id])
+	if(typepath_or_preset.stats)
+		LAZYINITLIST(stats)
+		if(overwrite)
+			stats = typepath_or_preset.stats.Copy()
+		else
+			for(var/id in typepath_or_preset.stats)
+				var/datum/characteristic_stat/stat = resolve_characteristics_stat(id)
+				stats[id] = stat.greater_value(stats[id], typepath_or_preset.stats[id])
+	if(typepath_or_preset.talents)
+		LAZYINITLIST(talents)
+		for(var/id in typepath_or_preset.talents)
+			if(has_talent(id))
+				continue
+			if(typepath_or_preset.talents[id])
+				add_talent(arglist(list(id) + typepath_or_preset.talents[id]))
+			else
+				add_talent(id)
+	return TRUE
 
 /**
  * clones

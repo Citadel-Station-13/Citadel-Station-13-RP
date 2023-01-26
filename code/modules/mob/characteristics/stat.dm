@@ -44,3 +44,19 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
 	var/datatype = CHARACTER_STAT_UNKNOWN
 	/// default value when characteristics are disabled
 	var/baseline_value
+
+/**
+ * get the greater value. this is automatic for numbers, less so for everything else.
+ *
+ * if number, default handling without a proc override is return greater
+ * if bool, default handling is returning TRUE if either is true
+ * else, returns first value.
+ */
+/datum/characteristic_stat/proc/greater_value(a, b)
+	switch(datatype)
+		if(CHARACTER_STAT_NUMERIC)
+			return a > b? a : b
+		if(CHARACTER_STAT_BOOL)
+			return a || b
+		else
+			return a
