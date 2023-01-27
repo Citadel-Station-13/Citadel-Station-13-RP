@@ -2320,14 +2320,14 @@
             "Seat of Power",
             "Tools of Trade",
             "Knowledge of Elders",
-            "Return what is taken",
+            "Return What Is Taken",
             "High and Mighty",
             "Moral High Ground",
-            "Voice that speaks",
-            "Map that guides",
-            "Hand that strikes",
-            "Hand that feeds",
-            "Of Artificers aplenty"
+            "Voice That Speaks",
+            "Map That Guides",
+            "Hand That Strikes",
+            "Hand That Feeds",
+            "Of Artificers Aplenty"
             )
     destination_names = list(
             "the Moghes Hegemony",
