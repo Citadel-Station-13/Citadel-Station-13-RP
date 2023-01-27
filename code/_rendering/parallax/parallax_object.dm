@@ -68,7 +68,7 @@
 	view_current = client_view
 	if(!dynamic_self_tile)
 		return
-	var/list/real_view = getviewsize(client_view)
+	var/list/real_view = decode_view_size(client_view)
 	var/count_x = CEILING((real_view[1] / 2) / 15, 1) + 1
 	var/count_y = CEILING((real_view[2] / 2) / 15, 1) + 1
 	var/list/new_overlays = GetOverlays()

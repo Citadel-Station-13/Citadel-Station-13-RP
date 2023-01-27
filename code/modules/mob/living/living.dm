@@ -3,12 +3,14 @@
 	AddElement(/datum/element/z_radiation_listener)
 
 	//I'll just hang my coat up over here
-	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
-	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
-	dsma.alpha = 0
-	dsma.plane = LIGHTING_PLANE
-	dsma.blend_mode = BLEND_ADD
-	dsoverlay.appearance = dsma
+	// TODO: REFACTOR
+	if(!isAI(src))
+		dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
+		var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
+		dsma.alpha = 0
+		dsma.plane = LIGHTING_PLANE
+		dsma.blend_mode = BLEND_ADD
+		dsoverlay.appearance = dsma
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 

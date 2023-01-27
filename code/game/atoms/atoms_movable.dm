@@ -412,6 +412,7 @@
 	// no mouse opacity
 	name = ""
 	var/atom/movable/master
+	SET_APPEARANCE_FLAGS(RESET_COLOR | RESET_ALPHA | PIXEL_SCALE | TILE_BOUND)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()

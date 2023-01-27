@@ -33,10 +33,11 @@
 	// TODO: Remove this when falsewalls are implemented.
 	var/cached_wall_state
 
-	var/damage = 0
-	var/damage_overlay = 0
-	/// damage overlays are cached
-	var/static/list/damage_overlays = generate_wall_damage_overlays()
+	var/damage
+	var/tmp/image/damage_overlay
+	// Damage overlays are cached.
+	var/global/damage_overlays[16]
+
 	var/active
 	var/can_open = FALSE
 
@@ -148,7 +149,7 @@
 	for(var/obj/effect/plant/plant in range(src, 1))
 		if(!plant.floor) //shrooms drop to the floor
 			plant.floor = 1
-			plant.update_icon()
+			plant.update_appearance()
 			plant.pixel_x = 0
 			plant.pixel_y = 0
 		plant.update_neighbors()
@@ -205,7 +206,7 @@
 	if(damage >= cap)
 		dismantle_wall()
 	else
-		update_icon()
+		update_appearance()
 
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)

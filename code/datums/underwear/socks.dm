@@ -110,3 +110,111 @@
 /datum/category_item/underwear/socks/pantyhose_rip_stirrup
 	name = "Ripped Pantyhose (Stirrup)"
 	icon_state = "pantyhose_ripped-stir"
+
+/datum/category_item/underwear/socks/commie_thigh
+	name = "Thigh, Communist"
+	icon_state = "commie_thigh"
+
+/datum/category_item/underwear/socks/commie_knee
+	name = "Knee, Communist"
+	icon_state = "commie_knee"
+
+/datum/category_item/underwear/socks/christmas_knee
+	name = "Knee, Christmas"
+	icon_state = "christmas_knee"
+
+/datum/category_item/underwear/socks/bee_thigh
+	name = "Thigh, Bee"
+	icon_state = "bee_thigh"
+
+/datum/category_item/underwear/socks/bee_norm
+	name = "Normal, Bee"
+	icon_state = "bee_norm"
+
+/datum/category_item/underwear/socks/bee_knee
+	name = "Knee, Bee"
+	icon_state = "bee_knee"
+
+/datum/category_item/underwear/socks/garter
+	name = "Garters"
+	icon_state = "garter"
+
+/datum/category_item/underwear/socks/uk_thigh
+	name = "Thigh, UK"
+	icon_state = "uk_thigh"
+
+/datum/category_item/underwear/socks/uk_knee
+	name = "Knee, UK"
+	icon_state = "uk_knee"
+
+/datum/category_item/underwear/socks/assblastusa_knee
+	name = "Knee, USA"
+	icon_state = "assblastusa_knee"
+
+/datum/category_item/underwear/socks/assblastusa_thigh
+	name = "Thigh, USA"
+	icon_state = "assblastusa_thigh"
+
+/datum/category_item/underwear/sockscandycaner_thigh
+	name = "Thigh, Candy Cane"
+	icon_state = "candycaner_thigh"
+
+/datum/category_item/underwear/socks/candycaner_norm
+	name = "Normal, Candy Cane"
+	icon_state = "candycaner_norm"
+
+/datum/category_item/underwear/socks/candycaner_knee
+	name = "Knee, Candy Cane"
+	icon_state = "candycaner_knee"
+
+/datum/category_item/underwear/socks/candycaneg_thigh
+	name = "Thigh, Green Candy Cane"
+	icon_state = "candycaneg_thigh"
+
+/datum/category_item/underwear/socks/candycaneg_norm
+	name = "Normal, Green Candy Cane"
+	icon_state = "candycaneg_norm"
+
+/datum/category_item/underwear/socks/candycaneg_knee
+	name = "Knee, Green Candy Cane"
+	icon_state = "candycaneg_knee"
+
+/datum/category_item/underwear/socks/christmas_norm
+	name = "Normal, Christmas"
+	icon_state = "christmas_norm"
+
+/datum/category_item/underwear/socks/stockings_green
+	name = "Green Stockings"
+	icon_state = "stockings_green"
+
+/datum/category_item/underwear/socks/stockings_dpink
+	name = "Dark Pink Stockings"
+	icon_state = "stockings_dpink"
+
+/datum/category_item/underwear/socks/stockings_cyan
+	name = "Cyan Stockings"
+	icon_state = "stockings_cyan"
+
+/datum/category_item/underwear/socks/stockings_blue
+	name = "Blue Stockings"
+	icon_state = "stockings_blue"
+
+/datum/category_item/underwear/socks/stockings_yellow
+	name = "Yellow Stockings"
+	icon_state = "stockings_yellow"
+
+/datum/category_item/underwear/socks/stockings_purple
+	name = "Purple Stockings"
+	icon_state = "stockings_purple"
+
+/datum/category_item/underwear/socks/stockings_lpink
+	name = "Light Pink Stockings"
+	icon_state = "stockings_lpink"
+
+/datum/category_item/underwear/socks/stockings_orange
+	name = "Orange Stockings"
+	icon_state = "stockings_orange"
+
+/datum/category_item/underwear/socks/christmas_thigh
+	name = "Thigh, Christmas"
+	icon_state = "christmas_thigh"

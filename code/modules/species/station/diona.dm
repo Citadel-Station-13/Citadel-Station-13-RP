@@ -1,8 +1,9 @@
 
 /datum/species/diona
+	uid = SPECIES_ID_DIONA
+	id = SPECIES_ID_DIONA
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
-	uid = SPECIES_ID_DIONA
 	//primitive_form = "Nymph"
 
 	icobase      = 'icons/mob/species/diona/body.dmi'

@@ -34,7 +34,7 @@
 
 	var/mutable_appearance/under_ma
 	under_ma = new()
-	under_ma.icon = 'icons/turf/flooring/plating_vr.dmi'
+	under_ma.icon = 'icons/turf/flooring/plating.dmi'
 	under_ma.icon_state = "plating"
 
 	underlays += under_ma
@@ -343,7 +343,7 @@
 					construction_stage = 5
 					user.update_examine_panel(src)
 					to_chat(user, "<span class='notice'>You cut through the outer grille.</span>")
-					update_icon()
+					update_appearance()
 					return
 			if(5)
 				if (W.is_screwdriver())
@@ -353,7 +353,7 @@
 						return
 					construction_stage = 4
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>You unscrew the support lines.</span>")
 					return
 				else if (W.is_wirecutter())
@@ -361,7 +361,7 @@
 					user.update_examine_panel(src)
 					to_chat(user, "<span class='notice'>You mend the outer grille.</span>")
 					playsound(src, W.tool_sound, 100, 1)
-					update_icon()
+					update_appearance()
 					return
 			if(4)
 				var/cut_cover
@@ -395,7 +395,7 @@
 						return
 					construction_stage = 3
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
 					return
 				else if (W.is_screwdriver())
@@ -405,7 +405,7 @@
 						return
 					construction_stage = 5
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>You screw down the support lines.</span>")
 					return
 			if(3)
@@ -416,7 +416,7 @@
 						return
 					construction_stage = 2
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>You pry off the cover.</span>")
 					return
 			if(2)
@@ -427,7 +427,7 @@
 						return
 					construction_stage = 1
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
 					return
 			if(1)
@@ -451,7 +451,7 @@
 						return
 					construction_stage = 0
 					user.update_examine_panel(src)
-					update_icon()
+					update_appearance()
 					to_chat(user, "<span class='notice'>The slice through the support rods.</span>")
 					return
 			if(0)

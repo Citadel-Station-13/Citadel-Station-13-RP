@@ -2306,7 +2306,7 @@
 //Cheeses
 /datum/lore/organization/gov/naramadi_ascendancy
     name = "The Naramadi Ascendancy"
-    short_name = "Naramadi Ascendancy"
+    short_name = "Naramadi Ascendancy "
     acronym = "NA"
     desc = "The Naramadi Ascendancy is a member-state of the Moghes Hegemony, though operating largely independant in matters of diplomacy and Trade, often sending Traders and Diplomats out to establish relations."
     history = ""
@@ -2327,7 +2327,7 @@
             "Map that guides",
             "Hand that strikes",
             "Hand that feeds",
-            "Of Artificers aplenty",
+            "Of Artificers aplenty"
             )
     destination_names = list(
             "the Moghes Hegemony",

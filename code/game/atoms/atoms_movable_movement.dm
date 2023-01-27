@@ -295,7 +295,7 @@
 			else
 				M.doLocationTransitForceMove(destination)
 			if(!(M.buckled == src))
-				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, oldbuckled[M])
+				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, null, oldbuckled[M])
 
 	if(oldpulling)
 		if(recurse_levels)

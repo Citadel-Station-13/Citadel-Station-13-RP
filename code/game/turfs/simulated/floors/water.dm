@@ -7,7 +7,7 @@
 	var/water_state = "water_shallow"
 	var/under_state = "rock"
 	edge_icon_state = "water_shallow"
-	movement_cost = 4
+	slowdown = 4
 	outdoors = TRUE
 
 	layer = WATER_FLOOR_LAYER
@@ -95,7 +95,7 @@
 	desc = "A body of water.  It seems quite deep."
 	icon_state = "seadeep" // So it shows up in the map editor as water.
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 2
 
 /turf/simulated/floor/water/pool
@@ -210,7 +210,7 @@ var/list/shoreline_icon_cache = list()
 	icon_state = "acid_shallow"
 	var/acid_state = "acid_shallow"
 	under_state = "rock"
-	movement_cost = 4
+	slowdown = 4
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
@@ -310,7 +310,7 @@ var/list/shoreline_icon_cache = list()
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."
 	icon_state = "acid_deep"
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 5
 
 //Blood
@@ -321,7 +321,7 @@ var/list/shoreline_icon_cache = list()
 	icon_state = "acidb_shallow"
 	var/blood_state = "acidb_shallow"
 	under_state = "rock"
-	movement_cost = 4
+	slowdown = 4
 	layer = WATER_FLOOR_LAYER
 	depth = 6
 
@@ -406,5 +406,5 @@ var/list/shoreline_icon_cache = list()
 	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
 	icon_state = "acidb_deep"
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 7

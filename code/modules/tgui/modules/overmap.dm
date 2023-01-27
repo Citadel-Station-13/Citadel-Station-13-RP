@@ -51,16 +51,18 @@
 		return 1
 
 /datum/tgui_module/ship/proc/look(var/mob/user)
-	if(linked)
-		user.set_machine(src)
-		user.reset_perspective(linked)
-	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
+	if(!linked)
+		to_chat(user, SPAN_DANGER("No linked ship. Something's wrong."))
+		return
+	user.reset_perspective(linked)
+	var/list/view_size = decode_view_size(world.view)
+	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()
-	user.client?.change_view(world.view, translocate = FALSE) // reset to default
+	user.client?.reset_temporary_view()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
 

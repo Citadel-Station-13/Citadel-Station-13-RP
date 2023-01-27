@@ -167,6 +167,7 @@
 
 #define ui_spell_master "RIGHT-1:16,TOP-1:16"
 #define ui_genetic_master "RIGHT-1:16,TOP-2:16"
+#define ui_ability_master "RIGHT-1:16,TOP-3:16"
 
 #define ui_shadekin_display "RIGHT-1:28,CENTER-3:15"
 #define ui_xenochimera_danger_display "RIGHT-1:28,CENTER-3:15"
