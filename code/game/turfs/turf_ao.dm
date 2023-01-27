@@ -31,7 +31,7 @@
 /proc/make_ao_image(corner, px = 0, py = 0, pz = 0, pw = 0, alpha)
 	var/list/cache = SSao.image_cache
 	var/cstr = "ao-[corner]"
-	// PROCESS_AO below also uses this cache, check it before changing this key.
+	// PROCESS_AO above also uses this cache, check it before changing this key.
 	var/key = "[cstr]|[px]/[py]/[pz]/[pw]|[alpha]"
 
 	var/image/I = image('icons/turf/flooring/shadows.dmi', cstr)
