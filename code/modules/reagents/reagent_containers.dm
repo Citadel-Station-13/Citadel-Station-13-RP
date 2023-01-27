@@ -63,7 +63,7 @@
 
 	var/contained = reagentlist()
 	add_attack_logs(user,target,"Splashed with [src.name] containing [contained]")
-	user.visible_message(SPAN_DANGER("[target] has been splashed with something by [user]!"), "<span class = 'notice'>You splash the solution onto [target].</span>")
+	user.visible_message(SPAN_DANGER("[target] has been splashed with something by [user]!"), SPAN_NOTICE("You splash the solution onto [target]."))
 	reagents.splash(target, reagents.total_volume)
 	return 1
 

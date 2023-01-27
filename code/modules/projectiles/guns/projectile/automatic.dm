@@ -695,7 +695,7 @@
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 	mouthshoot = 0
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/blue
@@ -727,7 +727,7 @@
 		icon_state = "toy_c20r"
 
 /obj/item/gun/ballistic/automatic/c20r/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 	mouthshoot = 0
 
 //Foam LMG
@@ -756,6 +756,6 @@
 	update_held_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 	mouthshoot = 0
 	return

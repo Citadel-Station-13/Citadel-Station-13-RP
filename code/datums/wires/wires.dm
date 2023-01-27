@@ -167,7 +167,7 @@
 		if("cut")
 			// if(!I.is_wirecutter() && !user.can_admin_interact())
 			if(!istype(I) || !I.is_wirecutter())
-				to_chat(user, "<span class='error'>You need wirecutters!</span>")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return
 
 			playsound(holder, I.tool_sound, 20, 1)
@@ -178,7 +178,7 @@
 		if("pulse")
 			// if(!I.is_multitool() && !user.can_admin_interact())
 			if(!istype(I) || !I.is_multitool())
-				to_chat(user, "<span class='error'>You need a multitool!</span>")
+				to_chat(user, SPAN_WARNING("You need a multitool!"))
 				return
 
 			playsound(holder, 'sound/weapons/empty.ogg', 20, 1)
@@ -199,7 +199,7 @@
 					return TRUE
 
 			if(!istype(I, /obj/item/assembly/signaler))
-				to_chat(user, "<span class='error'>You need a remote signaller!</span>")
+				to_chat(user, SPAN_WARNING("You need a remote signaller!"))
 				return
 
 			if(user.attempt_void_item_for_installation(I))

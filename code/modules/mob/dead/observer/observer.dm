@@ -565,7 +565,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			choices += B
 
 	if(!choices.len)
-		to_chat(src, "<span class = 'warning'>There is no blood to use nearby.</span>")
+		to_chat(src, SPAN_WARNING("There is no blood to use nearby."))
 		return
 
 	var/obj/effect/debris/cleanable/blood/choice = input(src,"What blood would you like to use?") in null|choices

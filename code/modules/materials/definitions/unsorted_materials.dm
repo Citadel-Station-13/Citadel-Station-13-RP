@@ -860,7 +860,7 @@
 /datum/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
-		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")
+		to_chat(M, SPAN_NOTICE("\The [W] shudders under your touch, starting to become porous."))
 		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
 		if(do_after(L, 5 SECONDS))
 			spawn(2)
@@ -886,7 +886,7 @@
 /datum/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
-		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")
+		to_chat(M, SPAN_NOTICE("\The [W] shudders under your touch, starting to become porous."))
 		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
 		if(do_after(L, 5 SECONDS))
 			spawn(2)

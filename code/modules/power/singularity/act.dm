@@ -28,7 +28,7 @@
 		for(var/obj/item/hand in get_held_items())
 			if(prob(current_size*5) && hand.w_class >= ((11-current_size)/2) && drop_item_to_ground(hand))
 				step_towards(hand, S)
-				to_chat(src, "<span class = 'warning'>The [S] pulls \the [hand] from your grip!</span>")
+				to_chat(src, SPAN_WARNING("The [S] pulls \the [hand] from your grip!"))
 
 	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.species_flags & NOSLIP)) && prob(current_size*5))
 		to_chat(src, SPAN_DANGER("A strong gravitational force slams you to the ground!"))

@@ -576,7 +576,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 	mouthshoot = 0
 	return
 

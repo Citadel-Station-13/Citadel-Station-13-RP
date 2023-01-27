@@ -147,7 +147,7 @@
 		return
 
 
-	to_chat(src, "<span class = 'danger'>It only takes a few moments to render the dead host brain down into a nutrient-rich slurry...</span>")
+	to_chat(src, SPAN_DANGER("It only takes a few moments to render the dead host brain down into a nutrient-rich slurry..."))
 	replace_brain()
 */
 
@@ -160,7 +160,7 @@
 		to_chat(src, "This host does not have a suitable brain.")
 		return
 
-	to_chat(src, "<span class = 'danger'>You settle into the empty brainpan and begin to expand, fusing inextricably with the dead flesh of [H].</span>")
+	to_chat(src, SPAN_DANGER("You settle into the empty brainpan and begin to expand, fusing inextricably with the dead flesh of [H]."))
 
 	H.add_language("Cortical Link")
 

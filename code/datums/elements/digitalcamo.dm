@@ -24,7 +24,7 @@
 	attached_mobs -= target
 
 /datum/element/digitalcamo/proc/on_examine(datum/source, mob/M)
-	to_chat(M, "<span class = 'warning'>[source.p_their()] skin seems to be shifting and morphing like is moving around below it.</span>")
+	to_chat(M, SPAN_WARNING("[source.p_their()] skin seems to be shifting and morphing like is moving around below it."))
 
 /datum/element/digitalcamo/proc/can_track(datum/source)
 	return COMPONENT_CANT_TRACK

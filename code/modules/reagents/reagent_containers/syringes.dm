@@ -92,7 +92,7 @@
 						return
 
 					if(T.isSynthetic())
-						to_chat(user, "<span class = 'warning'>You can't draw blood from a synthetic!</span>")
+						to_chat(user, SPAN_WARNING("You can't draw blood from a synthetic!"))
 						return
 
 					if(drawing)

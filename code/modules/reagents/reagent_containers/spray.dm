@@ -135,11 +135,11 @@
 
 /obj/item/reagent_containers/spray/pepper/attack_self(var/mob/user)
 	safety = !safety
-	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+	to_chat(usr, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
 /obj/item/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)
-		to_chat(usr, "<span class = 'warning'>The safety is on!</span>")
+		to_chat(usr, SPAN_WARNING("The safety is on!"))
 		return
 	. = ..()
 
@@ -236,11 +236,11 @@
 
 /obj/item/reagent_containers/spray/squirt/attack_self(var/mob/user)
 	pumped = !pumped
-	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
+	to_chat(usr, SPAN_NOTICE("You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank."))
 
 /obj/item/reagent_containers/spray/squirt/Spray_at(atom/A as mob|obj)
 	if(pumped)
-		to_chat(usr, "<span class = 'warning'>The tank has no pressure!</span>")
+		to_chat(usr, SPAN_WARNING("The tank has no pressure!"))
 		return
 	. = ..()
 

@@ -60,13 +60,13 @@
 /obj/item/reagent_containers/organic/attack_self(mob/user)
 	..()
 	if(is_open_container())
-		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")
+		to_chat(usr, SPAN_NOTICE("You crush \the [src] in your hands."))
 		playsound(loc, 'sound/effects/slime_squish.ogg', 50, 1)
 		qdel(src)
 		var/crushed_organic_container = /obj/item/stack/material/wax
 		new crushed_organic_container(get_turf(user))
 	else
-		to_chat(usr, "<span class = 'notice'>You peel the wax layer off \the [src].</span>")
+		to_chat(usr, SPAN_NOTICE("You peel the wax layer off \the [src]."))
 		playsound(loc, 'sound/effects/pageturn2.ogg', 50, 1)
 		atom_flags |= OPENCONTAINER
 	update_icon()

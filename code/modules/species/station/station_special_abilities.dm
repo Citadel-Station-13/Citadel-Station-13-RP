@@ -578,11 +578,11 @@
 					T.apply_damage(500, OXY) //Bit of fluff.
 					absorbing_prey = 0
 					if(T.isSynthetic())
-						to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
-						to_chat(T, "<span class='danger'size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>")
+						to_chat(src, SPAN_NOTICE("You have completely drained the power from [T], shutting them down for good."))
+						to_chat(T, SPAN_DANGER("<span size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>"))
 					else
-						to_chat(src, "<span class='notice'>You have completely drained [T], killing them.</span>")
-						to_chat(T, "<span class='danger'size='5'>You feel... So... Weak...</span>")
+						to_chat(src, SPAN_NOTICE("You have completely drained [T], killing them."))
+						to_chat(T, SPAN_DANGER("<span size='5'>You feel... So... Weak...</span>"))
 					add_attack_logs(src,T,"Succubus drained (almost lethal)")
 					return
 				if(drain_finalized == 1 || T.getBrainLoss() < 55) //Let's not kill them with this unless the drain is finalized. This will still stack up to 55, since 60 is lethal.
@@ -596,11 +596,11 @@
 				T.apply_damage(500, OXY) //Kill them.
 				absorbing_prey = 0
 				if(T.isSynthetic())
-					to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
-					to_chat(T, "<span class='danger'size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>")
+					to_chat(src, SPAN_NOTICE("You have completely drained the power from [T], shutting them down for good."))
+					to_chat(T, SPAN_DANGER("<span size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>"))
 				else
 					to_chat(src, SPAN_NOTICE("You have completely drained [T], killing them."))
-					to_chat(T, "<span class='danger'size='5'>You feel... So... Weak...</span>")
+					to_chat(T, SPAN_DANGER("<span size='5'>You feel... So... Weak..."))
 				visible_message(SPAN_DANGER("[src] seems to finish whatever they were doing to [T]."))
 				add_attack_logs(src,T,"Succubus drained (lethal)")
 				return

@@ -22,8 +22,8 @@ GLOBAL_LIST_INIT(event_role_list, list(
 
 GLOBAL_LIST_INIT(event_role_descs, list(
 	"[EVENT_PREF_BE_ANTAGONIST_CHAOTIC]" = SPAN_NOTICE("<b>Chaotic Antagonists:</b> Volunteer to partake in more chaotic and high-action/violent antagonism, like murder, hostage taking, destruction, high-risk sabotage, heists, etc."),
-	"[EVENT_PREF_BE_ANTAGONIST_MILD]" = "<span class='notice'><b>Mild Antagonists:</b> Volunteer to partake in more mild-mannered antagonism, like theft, infiltration, espionage, causing general ruckuses, etc. This doesn't mean you will never be \
-	involved in violence, but these roles are far lower octane than full-on chaotic.</span>",
+	"[EVENT_PREF_BE_ANTAGONIST_MILD]" = SPAN_NOTICE("<b>Mild Antagonists:</b> Volunteer to partake in more mild-mannered antagonism, like theft, infiltration, espionage, causing general ruckuses, etc. This doesn't mean you will never be \
+	involved in violence, but these roles are far lower octane than full-on chaotic."),
 	"[EVENT_PREF_BE_HOSTAGE]" = SPAN_NOTICE("<b>Hostage:</b> Volunteer to be hostage by some more dangerous threats."),
 	"[EVENT_PREF_BE_KILLED]" = SPAN_NOTICE("<b>Killed in Action:</b> Volunteer to be the target of assassins, killers, etc. This may or may not result in you being revivable."),
 	"[EVENT_PREF_CALM_EVENT_CHARACTERS]" = SPAN_NOTICE("<b>Misc Event Characters:</b> Volunteer to be some more mild and random event characters: Traders, lost robots, all kinds of things that don't fit into anything else.")

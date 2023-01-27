@@ -470,13 +470,13 @@
 	if(!choice || !target)
 		return
 	if(target.isSynthetic())
-		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		to_chat(src,SPAN_NOTICE("We cannot change a being of metal!"))
 		return
 	var/resp_biomorph = gas_choices[choice]
 	if(target == src)
-		to_chat(src,"<span class = 'Notice'>We begin modifying our internal structure.</span>")
+		to_chat(src,SPAN_NOTICE("We begin modifying our internal structure."))
 	else
-		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
+		target.visible_message(SPAN_DANGER("[src] begins to burrow their digits into [target], slithering down their throat!"), SPAN_WARNING("You feel an extremely uncomfortable slithering sensation going through your throat and into your chest..."))
 	if(do_after(src,15 SECONDS))
 		switch(resp_biomorph)
 			if(/datum/gas/oxygen)
@@ -494,7 +494,7 @@
 				target.species.breath_type = /datum/gas/carbon_dioxide
 				target.species.exhale_type = /datum/gas/oxygen
 		if(target == src)
-			to_chat("<span class = 'Notice'>It is done.</span>")
+			to_chat(SPAN_NOTICE("It is done."))
 		else
 			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
@@ -527,12 +527,12 @@
 	if(!biothermic_adapt || !target)
 		return
 	if(target.isSynthetic())
-		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		to_chat(src,SPAN_NOTICE("We cannot change a being of metal!"))
 		return
 	if(target == src)
-		to_chat(src, "<span class = 'Notice'>We begin modifying our internal biothermic structure.</span>")
+		to_chat(src, SPAN_NOTICE("We begin modifying our internal biothermic structure."))
 	else
-		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin slither inside the veins of [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, your veins suddenly feeling as if they have bugs crawling inside...</span>")
+		target.visible_message(SPAN_DANGER("[src] has fleshy tendrils emerge and begin slither inside the veins of [target]!"), SPAN_WARNING("You feel an extremely uncomfortable slithering sensation going through your skin, your veins suddenly feeling as if they have bugs crawling inside..."))
 	if(do_after(src,15 SECONDS))
 		switch(biothermic_adapt)
 			if("warm-blooded")	//reverts to default
@@ -592,7 +592,7 @@
 
 				target.species.heat_discomfort_level = T0C+19
 		if(target == src)
-			to_chat(src, "<span class = 'Notice'>It is done.</span>")
+			to_chat(src, SPAN_NOTICE("It is done."))
 		else
 			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
@@ -623,12 +623,12 @@
 	if(!atmos_biomorph || !target)
 		return
 	if(target.isSynthetic())
-		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		to_chat(src,SPAN_NOTICE("We cannot change a being of metal!"))
 		return
 	if(target == src)
-		to_chat("<span class = 'Notice'>We begin modifying our skin...</span>")
+		to_chat(SPAN_NOTICE("We begin modifying our skin..."))
 	else
-		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
+		target.visible_message(SPAN_DANGER("[src] has fleshy tendrils emerge and begin to merge and mold with [target]!"), SPAN_WARNING("You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them..."))
 	if(do_after(src,15 SECONDS))
 		switch(atmos_biomorph)
 			if("flexible")
@@ -644,7 +644,7 @@
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
 		if(target == src)
-			to_chat(src, "<span class = 'notice'>It is done.</span>")
+			to_chat(src, SPAN_NOTICE("It is done."))
 		else
 			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease

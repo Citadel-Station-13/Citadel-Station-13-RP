@@ -21,7 +21,7 @@
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, "<span>You deactivate the pinpointer</span>")
+		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer"))
 
 /obj/item/pinpointer/proc/workdisk()
 	if(!active)
@@ -47,7 +47,7 @@
 	. = ..()
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
-			. += "<span class = 'danger'>Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]</span>"
+			. += SPAN_DANGER("Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]")
 
 /obj/item/pinpointer/Destroy()
 	active = 0

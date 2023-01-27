@@ -33,20 +33,20 @@
 			if(G.pin && !(G.pin.pin_irremovable))
 				G.pin.forceMove(get_turf(G))
 				G.pin.gun_remove(G)
-				to_chat(user, "<span class ='notice'>You remove [G]'s old pin. Rendering it unuseable in the process.</span>")
+				to_chat(user, SPAN_NOTICE("You remove [G]'s old pin. Rendering it unuseable in the process."))
 				gun_insert(user, G)
 				return
 			if(!G.pin)
 				gun_insert(user, G)
 				return
 			else
-				to_chat(user, "<span class ='notice'>This firearm already has a firing pin installed.</span>")
+				to_chat(user, SPAN_NOTICE("This firearm already has a firing pin installed."))
 
 /obj/item/firing_pin/proc/gun_insert(mob/living/user, obj/item/gun/G)
 	if(!user.attempt_insert_item_for_installation(src, G))
 		return
 	G.pin = src
-	to_chat(user, "<span class ='notice'>You insert [src] into [G].</span>")
+	to_chat(user, SPAN_NOTICE("You insert [src] into [G]."))
 
 /obj/item/firing_pin/proc/gun_remove(obj/item/gun/G)
 	G.pin = null

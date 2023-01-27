@@ -348,7 +348,7 @@
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/ballistic/shotgun/pump/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 	mouthshoot = 0
 	return
 

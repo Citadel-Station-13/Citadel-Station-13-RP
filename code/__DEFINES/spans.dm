@@ -92,6 +92,7 @@
 #define SPAN_NICEGREEN(str) ("<span class='nicegreen'>[str]</span>")
 #define SPAN_NOTICE(str) ("<span class='notice'>[str]</span>")
 #define SPAN_NOTICEALIEN(str) ("<span class='noticealien'>[str]</span>")
+#define SPAN_NOTIFY(str) ("<span class='notify'>[str]</span>")
 #define SPAN_OOC(str) ("<span class='ooc'>[str]</span>")
 #define SPAN_PAPYRUS(str) ("<span class='papyrus'>[str]</span>")
 #define SPAN_PHOBIA(str) ("<span class='phobia'>[str]</span>")

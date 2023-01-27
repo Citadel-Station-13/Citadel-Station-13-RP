@@ -26,7 +26,7 @@
 	..()
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Robotic Intelligence"
-	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
+	to_chat(brainmob, SPAN_NOTIFY("You feel slightly disoriented. That's normal when you're little more than a complex circuit."))
 	return
 
 /obj/item/mmi/digital/robot/attack_self(mob/user as mob)

@@ -27,22 +27,22 @@
 	if(!user || !A)
 		return
 	if(transforming)
-		to_chat(user,"<span class = 'warning'>You can't fire while \the [src] transforming!</span>")
+		to_chat(user,SPAN_WARNING("You can't fire while \the [src] transforming!"))
 		return
 	if(!((wallhack && (get_dist(A, get_turf(user)) <= range)) || (A in view(get_turf(user), range))))
 		to_chat(user, SPAN_WARNING("The target is either out of range, or you couldn't see it clearly enough to lock on!"))
 		return
 	if((current_fire - last_fire) <= cooldown)
-		to_chat(user,"<span class = 'warning'>\The [src] is recharging...</span>")
+		to_chat(user,SPAN_WARNING("\The [src] is recharging..."))
 		return
 	if(is_jammed(A) || is_jammed(user))
-		to_chat(user,"<span class = 'warning'>\The [src] shot fizzles due to interference!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] shot fizzles due to interference!"))
 		last_fire = current_fire
 		playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 		return
 	var/turf/T = get_turf(A)
 	if(!T || T.check_density(ignore_border = TRUE))
-		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
+		to_chat(user,SPAN_WARNING("That's a little too solid to harpoon into!"))
 		return
 	if(get_area(A).area_flags & AREA_FLAG_BLUE_SHIELDED)
 		to_chat(user, SPAN_WARNING("The target area protected by bluespace shielding!"))
@@ -81,7 +81,7 @@
 	if(transforming) return
 	mode = !mode
 	transforming = 1
-	to_chat(user,"<span class = 'info'>You change \the [src]'s mode to [mode ? "transmiting" : "receiving"].</span>")
+	to_chat(user,SPAN_INFO("You change \the [src]'s mode to [mode ? "transmiting" : "receiving"]."))
 	update_icon()
 
 /obj/item/bluespace_harpoon/update_icon()

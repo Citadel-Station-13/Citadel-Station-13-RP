@@ -139,7 +139,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
-				to_chat(H,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
+				to_chat(H,SPAN_NOTICE("We don't have enough nutriment. This ability is costly..."))
 				return FALSE
 			else return TRUE
 
@@ -171,7 +171,7 @@
 			SPAN_ITALICS("You hear organic matter ripping and tearing!"))
 			..()
 		else
-			to_chat(user,"<span class = 'warning'>We were interrupted!</span>")
+			to_chat(user,SPAN_WARNING("We were interrupted!"))
 			charge_counter = 9.8 MINUTES
 
 
@@ -201,7 +201,7 @@
 
 		var/confirmation = alert("You will begin a lengthy process of around ten minutes you cannot cancel- Is this what you want?","Hatching Prompt","Yes", "No")
 		if(confirmation != "Yes")
-			to_chat(user, "<span class = 'notice'> Hatching cancelled. </span>")
+			to_chat(user, SPAN_NOTICE(" Hatching cancelled. "))
 			return FALSE
 		else return TRUE
 
@@ -209,26 +209,26 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.stat == DEAD)
-			H.visible_message("<span class = 'warning'> [H] lays eerily still. Something about them seems off, even when dead.</span>","<span class = 'notice'>We begin to gather up whatever is left to begin regrowth.</span>")
+			H.visible_message(SPAN_WARNING(" [H] lays eerily still. Something about them seems off, even when dead."),SPAN_NOTICE("We begin to gather up whatever is left to begin regrowth."))
 		else
-			H.visible_message("<span class = 'warning'> [H] suddenly collapses, seizing up and going eerily still. </span>", "<span class = 'notice'>We begin the regrowth process to start anew.</span>")
+			H.visible_message(SPAN_WARNING(" [H] suddenly collapses, seizing up and going eerily still. "), SPAN_NOTICE("We begin the regrowth process to start anew."))
 			H.SetUnconscious(8000) //admin style self-stun
 
 		//These are only messages to give the player and everyone around them an idea of which stage they're at
 		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"),4 MINUTES)
+		addtimer(CALLBACK(H, /atom/.proc/visible_message,SPAN_WARNING(" [H]'s skin begins to ripple and move, as if something was crawling underneath.")), 4 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,SPAN_NOTICE("We begin to recycle the dead tissue.")),4 MINUTES)
 
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 MINUTES)
+		addtimer(CALLBACK(H, /atom/.proc/visible_message,SPAN_WARNING(" <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i>"),SPAN_NOTICE("There is little left. We will soon be ready.")), 8 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,SPAN_NOTICE("There is little left. We will soon be ready.")), 8 MINUTES)
 
 		addtimer(CALLBACK(src, .proc/add_pop,H,), 10 MINUTES)
 
 /spell/targeted/chimera/hatch/proc/add_pop(mob/user = usr)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		H.visible_message("<span class = 'warning'> <b>[H] looks ready to burst!</b></span>")
-		to_chat(H,"<span class = 'notice'><b>We are ready.</b></span>")
+		H.visible_message(SPAN_WARNING(" <b>[H] looks ready to burst!</b>"))
+		to_chat(H,SPAN_NOTICE("<b>We are ready.</b>"))
 		var/spell/targeted/chimera/hatch_pop/S = new /spell/targeted/chimera/hatch_pop(H)
 		var/master_type = /atom/movable/screen/movable/spell_master/chimera
 		H.add_spell(S, "cult", master_type)

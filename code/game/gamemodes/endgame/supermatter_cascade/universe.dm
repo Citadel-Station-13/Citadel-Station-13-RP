@@ -30,7 +30,7 @@ var/global/universe_has_ended = 0
 // Apply changes when entering state
 /datum/universal_state/supermatter_cascade/OnEnter()
 	set background = 1
-	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
+	to_chat(world, SPAN_SINISTER("<span style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>"))
 
 	SEND_SOUND(world, sound('sound/effects/cascade.ogg'))
 

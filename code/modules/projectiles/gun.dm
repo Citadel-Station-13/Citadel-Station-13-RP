@@ -700,10 +700,10 @@
 		return
 	var/obj/item/projectile/in_chamber = consume_next_projectile()
 	if (istype(in_chamber))
-		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
+		user.visible_message(SPAN_WARNING("[user] pulls the trigger."))
 		play_fire_sound(M, in_chamber)
 		if(istype(in_chamber, /obj/item/projectile/beam/lasertag))
-			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+			user.show_message(SPAN_WARNING("You feel rather silly, trying to commit suicide with a toy."))
 			mouthshoot = 0
 			return
 
@@ -713,7 +713,7 @@
 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
 			user.death()
 		else if(in_chamber.damage_type == HALLOSS)
-			to_chat(user, "<span class = 'notice'>Ow...</span>")
+			to_chat(user, SPAN_NOTICE("Ow..."))
 			user.apply_effect(110,AGONY,0)
 		qdel(in_chamber)
 		mouthshoot = 0

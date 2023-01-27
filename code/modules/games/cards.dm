@@ -178,9 +178,9 @@
 		H.update_icon()
 	if(user==target)
 		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to [TU.himself].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] deals [dcard] card(s) to [TU.himself]."))
 	else
-		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to \the [target].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] deals [dcard] card(s) to \the [target]."))
 	H.throw_at_old(get_step(target,target.dir),10,1,H)
 
 
@@ -188,7 +188,7 @@
 	if(cards.len == 1 && istype(O, /obj/item/pen))
 		var/datum/playingcard/P = cards[1]
 		if(P.name != "Blank Card")
-			to_chat(user,"<span class = 'notice'>You cannot write on that card.</span>")
+			to_chat(user,SPAN_NOTICE("You cannot write on that card."))
 			return
 		var/cardtext = sanitize(input(user, "What do you wish to write on the card?", "Card Editing") as text|null, MAX_PAPER_MESSAGE_LEN)
 		if(!cardtext)
@@ -207,7 +207,7 @@
 			H.update_icon()
 			return
 		else
-			to_chat(user,"<span class = 'notice'>You cannot mix cards from other decks!</span>")
+			to_chat(user,SPAN_NOTICE("You cannot mix cards from other decks!"))
 			return
 
 	..()
@@ -232,7 +232,7 @@
 			newcards += P
 			cards -= P
 		cards = newcards
-		user.visible_message("<span class = 'notice'>\The [user] shuffles [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] shuffles [src]."))
 		playsound(user, 'sound/items/cardshuffle.ogg', 50, 1)
 		cooldown = world.time
 	else
@@ -285,7 +285,7 @@
 
 
 /obj/item/pack/attack_self(var/mob/user as mob)
-	user.visible_message("<span class ='danger'>[user] rips open \the [src]!</span>")
+	user.visible_message(SPAN_DANGER("[user] rips open \the [src]!"))
 	var/obj/item/hand/H = new()
 
 	H.cards += cards
@@ -337,7 +337,7 @@
 		H.parentdeck = src.parentdeck
 		H.update_icon()
 		src.update_icon()
-		usr.visible_message("<span class = 'notice'>\The [usr] plays \the [discarding].</span>")
+		usr.visible_message(SPAN_NOTICE("\The [usr] plays \the [discarding]."))
 		H.loc = get_step(usr,usr.dir)
 
 	if(!cards.len)
@@ -346,7 +346,7 @@
 /obj/item/hand/attack_self(var/mob/user as mob)
 	concealed = !concealed
 	update_icon()
-	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
+	user.visible_message(SPAN_NOTICE("\The [user] [concealed ? "conceals" : "reveals"] their hand."))
 
 /obj/item/hand/examine(mob/user)
 	. = ..()

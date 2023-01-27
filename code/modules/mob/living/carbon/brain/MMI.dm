@@ -312,7 +312,7 @@
 	..()
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Robotic Intelligence"
-	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
+	to_chat(brainmob, SPAN_NOTIFY("You feel slightly disoriented. That's normal when you're little more than a complex circuit."))
 	return
 
 /datum/category_item/catalogue/fauna/brain/posibrain
@@ -344,7 +344,7 @@
 	..()
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Positronic Brain"
-	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're just a metal cube.</span>")
+	to_chat(brainmob, SPAN_NOTIFY("You feel slightly disoriented. That's normal when you're just a metal cube."))
 	icon_state = "posibrain-occupied"
 	return
 

@@ -76,8 +76,8 @@
 			var/obj/item/W = damage_source
 			if(attacker)
 				W.melee_attack_chain(attacker)
-				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
-				on the same side, and hits you!</span>")
+				to_chat(attacker, SPAN_DANGER("Your [damage_source.name] goes through \the [src] in one location, comes out \
+				on the same side, and hits you!"))
 
 				spark_system.start()
 				playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
