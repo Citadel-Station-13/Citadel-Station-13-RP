@@ -16,48 +16,49 @@
  * Define for getting a bitfield of adjacent turfs that meet a condition.
  *
  * Arguments:
- * - ORIGIN  - The atom to step from,
- * - VAR     - The var to write the bitfield to.
- * - TVAR    - The temporary turf variable to use.
- * - TFUNC   - An additional function used to validate the turf found in each direction. Generally should reference TVAR.
- *   - Example:
- *   -    var/VAR_INPUT = 0
- *   -    var/turf/TVAR_INPUT
- *   -    CALCULATE_NEIGHBORS(src, VAR_INPUT, TVAR_INPUT, isopenturf(TVAR_INPUT))
- *   -    // isopenturf(TVAR_INPUT) NEEDS to be in the macro call since its nested into for loops.
+ * - ORIGIN - The atom to step from,
+ * - VAR    - The var to write the bitfield to.
+ * - TVAR   - The temporary turf variable to use.
+ * - FUNC   - An additional function used to validate the turf found in each direction. Generally should reference TVAR.
+ *
+ * Example:
+ * -  var/our_junction = 0
+ * -  var/turf/T
+ * -  CALCULATE_NEIGHBORS(src, our_junction, T, isopenturf(T))
+ * -  // isopenturf(T) NEEDS to be in the macro call since its nested into for loops.
  */
-#define CALCULATE_NEIGHBORS(ORIGIN, VAR, TVAR, TFUNC) \
-	for (var/_tdir in GLOB.cardinal) {                \
-		TVAR = get_step(ORIGIN, _tdir);               \
-		if ((TVAR) && (TFUNC)) {                      \
-			VAR |= _tdir;                             \
-		}                                             \
-	}                                                 \
-	if (VAR & NORTH_JUNCTION) {                       \
-		if (VAR & WEST_JUNCTION) {                    \
-			TVAR = get_step(ORIGIN, NORTHWEST);       \
-			if (TFUNC) {                              \
-				VAR |= NORTHWEST_JUNCTION;            \
-			}                                         \
-		}                                             \
-		if (VAR & EAST_JUNCTION) {                    \
-			TVAR = get_step(ORIGIN, NORTHEAST);       \
-			if (TFUNC) {                              \
-				VAR |= NORTHEAST_JUNCTION;            \
-			}                                         \
-		}                                             \
-	}                                                 \
-	if (VAR & SOUTH_JUNCTION) {                       \
-		if (VAR & WEST_JUNCTION) {                    \
-			TVAR = get_step(ORIGIN, SOUTHWEST);       \
-			if (TFUNC) {                              \
-				VAR |= SOUTHWEST_JUNCTION;            \
-			}                                         \
-		}                                             \
-		if (VAR & EAST_JUNCTION) {                    \
-			TVAR = get_step(ORIGIN, SOUTHEAST);       \
-			if (TFUNC) {                              \
-				VAR |= SOUTHEAST_JUNCTION;            \
-			}                                         \
-		}                                             \
+#define CALCULATE_NEIGHBORS(ORIGIN, VAR, TVAR, FUNC) \
+	for (var/_tdir in GLOB.cardinal) {               \
+		TVAR = get_step(ORIGIN, _tdir);              \
+		if ((TVAR) && (FUNC)) {                      \
+			VAR |= _tdir;                            \
+		}                                            \
+	}                                                \
+	if (VAR & NORTH_JUNCTION) {                      \
+		if (VAR & WEST_JUNCTION) {                   \
+			TVAR = get_step(ORIGIN, NORTHWEST);      \
+			if (FUNC) {                              \
+				VAR |= NORTHWEST_JUNCTION;           \
+			}                                        \
+		}                                            \
+		if (VAR & EAST_JUNCTION) {                   \
+			TVAR = get_step(ORIGIN, NORTHEAST);      \
+			if (FUNC) {                              \
+				VAR |= NORTHEAST_JUNCTION;           \
+			}                                        \
+		}                                            \
+	}                                                \
+	if (VAR & SOUTH_JUNCTION) {                      \
+		if (VAR & WEST_JUNCTION) {                   \
+			TVAR = get_step(ORIGIN, SOUTHWEST);      \
+			if (FUNC) {                              \
+				VAR |= SOUTHWEST_JUNCTION;           \
+			}                                        \
+		}                                            \
+		if (VAR & EAST_JUNCTION) {                   \
+			TVAR = get_step(ORIGIN, SOUTHEAST);      \
+			if (FUNC) {                              \
+				VAR |= SOUTHEAST_JUNCTION;           \
+			}                                        \
+		}                                            \
 	}
