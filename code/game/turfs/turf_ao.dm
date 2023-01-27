@@ -86,9 +86,9 @@
 
 	var/turf/T
 	if (mz_flags & MZ_MIMIC_BELOW)
-		CALCULATE_NEIGHBORS(src, ao_junction_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
+		CALCULATE_JUNCTIONS(src, ao_junction_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
 	if (AO_SELF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
-		CALCULATE_NEIGHBORS(src, ao_junction, T, AO_TURF_CHECK(T))
+		CALCULATE_JUNCTIONS(src, ao_junction, T, AO_TURF_CHECK(T))
 
 /turf/proc/regenerate_ao()
 	for (var/thing in RANGE_TURFS(1, src))

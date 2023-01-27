@@ -24,10 +24,14 @@
  * Example:
  * -  var/our_junction = 0
  * -  var/turf/T
- * -  CALCULATE_NEIGHBORS(src, our_junction, T, isopenturf(T))
+ * -  CALCULATE_JUNCTIONS(src, our_junction, T, isopenturf(T))
  * -  // isopenturf(T) NEEDS to be in the macro call since its nested into for loops.
+ *
+ * NOTICE:
+ * - This macro used to be CALCULATE_NEIGHBORS.
+ * - It has been renamed to avoid conflicts and confusions with other codebases.
  */
-#define CALCULATE_NEIGHBORS(ORIGIN, VAR, TVAR, FUNC) \
+#define CALCULATE_JUNCTIONS(ORIGIN, VAR, TVAR, FUNC) \
 	for (var/_tdir in GLOB.cardinal) {               \
 		TVAR = get_step(ORIGIN, _tdir);              \
 		if ((TVAR) && (FUNC)) {                      \
