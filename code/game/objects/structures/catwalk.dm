@@ -83,14 +83,14 @@
 		var/obj/item/weldingtool/WT = C
 		if(WT.isOn())
 			if(WT.remove_fuel(0, user))
-				to_chat(user, "<span class='notice'>Slicing lattice joints ...</span>")
+				to_chat(user, SPAN_NOTICE("Slicing lattice joints ..."))
 				new /obj/item/stack/rods(src.loc)
 				new /obj/item/stack/rods(src.loc)
 				new /obj/structure/lattice(src.loc)
 				qdel(src)
 	if(C.is_screwdriver())
 		if(health < maxhealth)
-			to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [C.name].</span>")
+			to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [C.name]."))
 			if(do_after(user, 20, src))
 				health = maxhealth
 	else
@@ -113,7 +113,7 @@
 /obj/structure/catwalk/take_damage(amount)
 	health -= amount
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		visible_message(SPAN_WARNING("\The [src] breaks down!"))
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 		new /obj/item/stack/rods(get_turf(src))
 		qdel(src)
@@ -198,10 +198,10 @@
 		switch(rand(1,100))
 			if(1 to 5)
 				qdel(src)
-				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
+				visible_message(SPAN_DANGER("The planks splinter and disintegrate beneath the weight!"))
 			if(6 to 50)
 				take_damage(rand(10,20))
-				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
+				visible_message(SPAN_DANGER("The planks creak and groan as they're crossed."))
 			if(51 to 100)
 				return
 
@@ -209,7 +209,7 @@
 	health -= amount
 	update_icon()
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		visible_message(SPAN_WARNING("\The [src] breaks down!"))
 		Destroy()
 
 /obj/structure/catwalk/plank/update_icon()

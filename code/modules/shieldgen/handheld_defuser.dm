@@ -64,7 +64,7 @@
 			cell.update_icon()
 			user.put_in_hands(cell)
 			cell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 			enabled = 0
 			update_icon()
@@ -80,10 +80,10 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				cell = W
-				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in \the [src]."))
 				playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 				update_icon()
 			else
-				to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] already has a cell."))
 		else
-			to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] cannot use that type of cell."))

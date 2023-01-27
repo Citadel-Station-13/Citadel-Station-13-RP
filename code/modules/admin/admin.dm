@@ -12,7 +12,7 @@ var/global/floorIsLava = 0
 		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
-	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
+	var/rendered = "<span class='log_message'>[SPAN_PREFIX("ATTACK:")] <span class='message'>[text]</span></span>"
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
@@ -709,12 +709,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	//Time to find how they screwed up.
 	//Wasn't the right length
 	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
-		to_chat(usr,"<span class='warning'>You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds.</span>")
+		to_chat(usr,SPAN_WARNING("You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds."))
 		return
 
 	//Too long a conversation
 	if((decomposed.len / 3) > 20)
-		to_chat(usr,"<span class='warning'>This conversation is too long! 20 messages maximum, please.</span>")
+		to_chat(usr,SPAN_WARNING("This conversation is too long! 20 messages maximum, please."))
 		return
 
 	//Missed some sleeps, or sanitized to nothing.
@@ -723,24 +723,24 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		//Sanitize sender
 		var/clean_sender = sanitize(decomposed[i])
 		if(!clean_sender)
-			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message.</span>")
+			to_chat(usr,SPAN_WARNING("One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message."))
 			return
 		decomposed[i] = clean_sender
 
 		//Sanitize message
 		var/clean_message = sanitize(decomposed[++i])
 		if(!clean_message)
-			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the body of the [(i+2)/3]\th message.</span>")
+			to_chat(usr,SPAN_WARNING("One part of your conversation was not able to be sanitized. It was the body of the [(i+2)/3]\th message."))
 			return
 		decomposed[i] = clean_message
 
 		//Sanitize wait time
 		var/clean_time = text2num(decomposed[++i])
 		if(!isnum(clean_time))
-			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the wait time after the [(i+2)/3]\th message.</span>")
+			to_chat(usr,SPAN_WARNING("One part of your conversation was not able to be sanitized. It was the wait time after the [(i+2)/3]\th message."))
 			return
 		if(clean_time > 60)
-			to_chat(usr,"<span class='warning'>Max 60 second wait time between messages for sanity's sake please.</span>")
+			to_chat(usr,SPAN_WARNING("Max 60 second wait time between messages for sanity's sake please."))
 			return
 		decomposed[i] = clean_time
 
@@ -1362,7 +1362,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		return 1
 	if(tomob.client) //No need to ghostize if there is no client
 		tomob.ghostize(0)
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name].</span>")
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name]."))
 	log_admin("[key_name(usr)] stuffed [frommob.ckey] into [tomob.name].")
 	feedback_add_details("admin_verb","CGD")
 	tomob.ckey = frommob.ckey
@@ -1533,20 +1533,20 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
 
 	if(destination.receivefax(P))
-		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
+		to_chat(src.owner, SPAN_NOTICE("Message reply to transmitted successfully."))
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, SPAN_ADMIN("<span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)"))
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, SPAN_ADMIN("<span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)"))
 
 	else
-		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")
+		to_chat(src.owner, SPAN_WARNING("Message reply failed."))
 
 	spawn(100)
 		qdel(P)

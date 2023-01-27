@@ -1,4 +1,4 @@
-/mob/living/proc/reveal(var/silent, var/message = "<span class='warning'>You have been revealed! You are no longer hidden.</span>")
+/mob/living/proc/reveal(var/silent, var/message = SPAN_WARNING("You have been revealed! You are no longer hidden."))
 	if(status_flags & HIDING)
 		status_flags &= ~HIDING
 		reset_plane_and_layer()
@@ -15,9 +15,9 @@
 		return
 
 	if(status_flags & HIDING)
-		reveal("<span class='notice'>You have stopped hiding.</span>")
+		reveal(SPAN_NOTICE("You have stopped hiding."))
 	else
 		status_flags |= HIDING
 		set_base_layer(HIDING_LAYER)
 		plane = OBJ_PLANE
-		to_chat(src,"<span class='notice'>You are now hiding.</span>")
+		to_chat(src,SPAN_NOTICE("You are now hiding."))

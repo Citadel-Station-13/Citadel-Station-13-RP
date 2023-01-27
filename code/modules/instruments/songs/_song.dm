@@ -174,7 +174,7 @@
 	if(playing)
 		return
 	if(!using_instrument?.ready())
-		to_chat(user, "<span class='warning'>An error has occured with [src]. Please reset the instrument.</span>")
+		to_chat(user, SPAN_WARNING("An error has occured with [src]. Please reset the instrument."))
 		return
 	playing = TRUE
 	updateDialog()

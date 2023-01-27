@@ -831,7 +831,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	var/mob/living/carbon/human/user = usr
 	if(!handset)
-		to_chat(user, "<span class='warning'>The handset is missing!</span>")
+		to_chat(user, SPAN_WARNING("The handset is missing!"))
 		return
 
 	if(handset.loc != src)
@@ -839,10 +839,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return
 
 	if(!slot_check())
-		to_chat(user, "<span class='warning'>You need to equip [src] before taking out [handset].</span>")
+		to_chat(user, SPAN_WARNING("You need to equip [src] before taking out [handset]."))
 	else
 		if(!usr.put_in_hands(handset)) //Detach the handset into the user's hands
-			to_chat(user, "<span class='warning'>You need a free hand to hold the handset!</span>")
+			to_chat(user, SPAN_WARNING("You need a free hand to hold the handset!"))
 		update_icon() //success
 
 //checks that the base unit is in the correct slot to be used
@@ -867,7 +867,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return
 
 	if(ismob(handset.loc))
-		to_chat(handset.loc, "<span class='notice'>\The [handset] snaps back into the main unit.</span>")
+		to_chat(handset.loc, SPAN_NOTICE("\The [handset] snaps back into the main unit."))
 	handset.forceMove(src)
 
 //Subspace Radio Handset

@@ -57,7 +57,7 @@
 /obj/item/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
-		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] fires \the [src] into \the [target]!"))
 		Fire(target,user)
 		return
 	..()
@@ -74,7 +74,7 @@
 
 	gene = SSplants.plant_gene_datums[genemask]
 
-	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
+	to_chat(usr, SPAN_INFO("You set the [src]'s targeted genetic area to [genemask]."))
 
 	return
 
@@ -146,14 +146,14 @@
 
 /obj/item/gun/energy/staff/special_check(var/mob/user)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
-		to_chat(usr, "<span class='warning'>You focus your mind on \the [src], but nothing happens!</span>")
+		to_chat(usr, SPAN_WARNING("You focus your mind on \the [src], but nothing happens!"))
 		return 0
 
 	return ..()
 
 /obj/item/gun/energy/staff/handle_click_empty(mob/user = null)
 	if (user)
-		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
+		user.visible_message("*fizzle*", SPAN_DANGER("*fizzle*"))
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
@@ -175,11 +175,11 @@
 	attack_self(mob/living/user as mob)
 		if(projectile_type == "/obj/item/projectile/forcebolt")
 			charge_cost = 400
-			to_chat(user, "<span class='warning'>The [src.name] will now strike a small area.</span>")
+			to_chat(user, SPAN_WARNING("The [src.name] will now strike a small area."))
 			projectile_type = "/obj/item/projectile/forcebolt/strong"
 		else
 			charge_cost = 200
-			to_chat(user, "<span class='warning'>The [src.name] will now strike only a single person.</span>")
+			to_chat(user, SPAN_WARNING("The [src.name] will now strike only a single person."))
 			projectile_type = "/obj/item/projectile/forcebolt"
 	*/
 
@@ -242,12 +242,12 @@
 /obj/item/gun/energy/maghowitzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/atom/A = target
 	if(power_cycle)
-		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already powering up!"))
 		return
 	var/turf/target_turf = get_turf(A)
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
 	if(beameffect)
-		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
+		user.visible_message(SPAN_CULT("[user] aims \the [src] at \the [A]."))
 	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
 		power_cycle = TRUE
 		if(do_after(user, 30))
@@ -268,7 +268,7 @@
 
 /obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(power_cycle)
-		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already powering up!"))
 		return 0
 
 	var/turf/target_turf = get_turf(A)
@@ -276,7 +276,7 @@
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
 
 	if(beameffect)
-		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
+		user.visible_message(SPAN_CULT("[user] aims \the [src] at \the [A]."))
 
 	if(!power_cycle)
 		power_cycle = TRUE
@@ -295,7 +295,7 @@
 			handle_click_empty(user)
 		power_cycle = FALSE
 	else
-		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already powering up!"))
 
 //_vr Items:
 

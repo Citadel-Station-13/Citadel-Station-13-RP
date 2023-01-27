@@ -10,14 +10,14 @@
 
 /obj/item/reskin_kit/afterattack(obj/O, mob/user)
 	if(istype(O, product)) // Checks what it was used on
-		to_chat(user,"<span class='warning'>[O] is already modified!</span>") //If it's being used on an already reskinned item
+		to_chat(user,SPAN_WARNING("[O] is already modified!")) //If it's being used on an already reskinned item
 	else if(O.type == fromitem) //makes sure O is the right thing
 		new product(user.drop_location()) //spawns the product
-		user.visible_message("<span class='warning'>[user] modifies [O]!</span>","<span class='warning'>You modify the [O]!</span>") //Tells the user it's been done
+		user.visible_message(SPAN_WARNING("[user] modifies [O]!"),SPAN_WARNING("You modify the [O]!")) //Tells the user it's been done
 		qdel(O) //Gets rid of the unskinned item
 		qdel(src) //gets rid of the kit
 	else
-		to_chat(user, "<span class='warning'> You can't modify [O] with this kit!</span>") //Tells the user they have the wrong item type.
+		to_chat(user, SPAN_WARNING(" You can't modify [O] with this kit!")) //Tells the user they have the wrong item type.
 
 /obj/item/reskin_kit/jenna
 	name = "silver's helmet kit"

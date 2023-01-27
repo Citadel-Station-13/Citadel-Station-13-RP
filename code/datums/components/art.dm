@@ -13,8 +13,8 @@
 		RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, .proc/apply_moodlet)
 
 /datum/component/art/proc/apply_moodlet(mob/M, impress)
-	M.visible_message("<span class='notice'>[M] stops and looks intently at [parent].</span>", \
-						 "<span class='notice'>You stop to take in [parent].</span>")
+	M.visible_message(SPAN_NOTICE("[M] stops and looks intently at [parent]."), \
+						 SPAN_NOTICE("You stop to take in [parent]."))
 	switch(impress)
 		if (0 to BAD_ART)
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "artbad", /datum/mood_event/artbad)

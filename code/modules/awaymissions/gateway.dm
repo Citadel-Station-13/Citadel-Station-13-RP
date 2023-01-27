@@ -81,10 +81,10 @@
 	if(linked.len != 8)	return
 	if(!powered())		return
 	if(!awaygate)
-		to_chat(user, "<span class='notice'>Error: No destination found. Please program gateway.</span>")
+		to_chat(user, SPAN_NOTICE("Error: No destination found. Please program gateway."))
 		return
 	if(world.time < wait)
-		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
+		to_chat(user, SPAN_NOTICE("Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes."))
 		return
 	if(!awaygate.calibrated && !LAZYLEN(awaydestinations))
 		to_chat(user, SPAN_NOTICE("Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update."))
@@ -140,7 +140,7 @@
 		if(!awaygate)
 			awaygate = locate(/obj/machinery/gateway/centeraway)
 			if(!awaygate) // We still can't find the damn thing because there is no destination.
-				to_chat(user, "<span class='notice'>Error: Programming failed. No destination found.</span>")
+				to_chat(user, SPAN_NOTICE("Error: Programming failed. No destination found."))
 				return
 			to_chat(user, "<span class='notice'><b>Startup programming successful!</b></span>: A destination in another point of space and time has been detected.")
 		else
@@ -247,7 +247,7 @@
 		else
 			stationgate = locate(/obj/machinery/gateway/centerstation)
 			if(!stationgate)
-				to_chat(user, "<span class='notice'>Error: Recalibration failed. No destination found... That can't be good.</span>")
+				to_chat(user, SPAN_NOTICE("Error: Recalibration failed. No destination found... That can't be good."))
 				return
 			else
 				to_chat(user, "<font color=#4F49AF><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")

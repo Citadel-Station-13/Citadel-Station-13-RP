@@ -28,7 +28,7 @@
 	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)
-		to_chat(user, "<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent."))
 		var/obj/item/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
 		qdel(src)
@@ -39,11 +39,11 @@
 	if(istype(O, /obj/item/stack/telecrystal))
 		var/obj/item/stack/telecrystal/T = O
 		if(T.amount < 1)
-			to_chat(usr, "<span class='notice'>You are not adding enough telecrystals to fuel \the [src].</span>")
+			to_chat(usr, SPAN_NOTICE("You are not adding enough telecrystals to fuel \the [src]."))
 			return
 		uses += T.amount/2 //Gives 5 uses per 10 TC
 		uses = CEILING(uses, 1) //Ensures no decimal uses nonsense, rounds up to be nice
-		to_chat(usr, "<span class='notice'>You add \the [O] to \the [src]. Increasing the uses of \the [src] to [uses].</span>")
+		to_chat(usr, SPAN_NOTICE("You add \the [O] to \the [src]. Increasing the uses of \the [src] to [uses]."))
 		qdel(O)
 
 // todo: emag_act

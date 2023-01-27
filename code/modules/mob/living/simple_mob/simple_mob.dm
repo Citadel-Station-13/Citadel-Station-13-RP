@@ -409,11 +409,11 @@
 		for(var/i in 1 to actual_exotic_amount)
 			new exotic_type(drop_location())
 	if(issmall(src))
-		user?.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
+		user?.visible_message(SPAN_DANGER("[user] chops up \the [src]!"))
 		new /obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 		qdel(src)
 	else
-		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
+		user.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
 		gib()
 
 /* Replace the above ^^^^ with this if enabling the butchering component.

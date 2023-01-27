@@ -134,7 +134,7 @@
 /obj/item/organ/examine(mob/user)
 	. = ..()
 	if(status & ORGAN_DEAD)
-		. += "<span class='notice'>The decay has set in.</span>"
+		. += SPAN_NOTICE("The decay has set in.")
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
 	return 0

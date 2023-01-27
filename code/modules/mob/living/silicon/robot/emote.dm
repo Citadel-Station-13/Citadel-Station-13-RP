@@ -333,7 +333,7 @@
 
 		if("flip")
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained())
-				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
+				to_chat(src, SPAN_WARNING("You can't *flip in your current state!"))
 			else
 				src.SpinAnimation(7,1)
 				m_type = 1

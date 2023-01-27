@@ -63,7 +63,7 @@
 			to_chat(user,"<span class='notice'>You place your cards on the bottom of \the [src]</span>.")
 			return
 		else
-			to_chat(user,"<span class='warning'>You can't mix cards from other decks!</span>")
+			to_chat(user,SPAN_WARNING("You can't mix cards from other decks!"))
 			return
 	..()
 
@@ -86,19 +86,19 @@
 	if(usr.stat || !Adjacent(usr)) return
 
 	if(user.hands_full()) // Safety check lest the card disappear into oblivion
-		to_chat(user,"<span class='notice'>Your hands are full!</span>")
+		to_chat(user,SPAN_NOTICE("Your hands are full!"))
 		return
 
 	if(!istype(usr,/mob/living/carbon))
 		return
 
 	if(!cards.len)
-		to_chat(user,"<span class='notice'>There are no cards in the deck.</span>")
+		to_chat(user,SPAN_NOTICE("There are no cards in the deck."))
 		return
 
 	var/obj/item/hand/H = user.get_held_item_of_type(/obj/item/hand)
 	if(H && !(H.parentdeck == src))
-		to_chat(user,"<span class='warning'>You can't mix cards from different decks!</span>")
+		to_chat(user,SPAN_WARNING("You can't mix cards from different decks!"))
 		return
 
 	if(!H)
@@ -113,8 +113,8 @@
 	cards -= P
 	H.parentdeck = src
 	H.update_icon()
-	user.visible_message("<span class='notice'>\The [user] draws a card.</span>")
-	to_chat(user,"<span class='notice'>It's the [P].</span>")
+	user.visible_message(SPAN_NOTICE("\The [user] draws a card."))
+	to_chat(user,SPAN_NOTICE("It's the [P]."))
 
 /obj/item/deck/verb/deal_card()
 
@@ -126,7 +126,7 @@
 	if(usr.stat || !Adjacent(usr)) return
 
 	if(!cards.len)
-		to_chat(usr,"<span class='notice'>There are no cards in the deck.</span>")
+		to_chat(usr,SPAN_NOTICE("There are no cards in the deck."))
 		return
 
 	var/list/players = list()
@@ -150,7 +150,7 @@
 	if(usr.stat || !Adjacent(usr)) return
 
 	if(!cards.len)
-		to_chat(usr,"<span class='notice'>There are no cards in the deck.</span>")
+		to_chat(usr,SPAN_NOTICE("There are no cards in the deck."))
 		return
 
 	var/list/players = list()
@@ -248,10 +248,10 @@
 				if (H.hand)
 					temp = H.organs_by_name["l_hand"]
 				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+					to_chat(user,SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
 					return
 
-				to_chat(user,"<span class='notice'>You pick up [src].</span>")
+				to_chat(user,SPAN_NOTICE("You pick up [src]."))
 				user.put_in_hands(src)
 
 /obj/item/deck/verb_pickup(mob/user as mob) // Snowflaked so pick up verb work as intended
@@ -264,10 +264,10 @@
 				if (H.hand)
 					temp = H.organs_by_name["l_hand"]
 				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+					to_chat(user,SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
 					return
 
-				to_chat(user,"<span class='notice'>You pick up [src].</span>")
+				to_chat(user,SPAN_NOTICE("You pick up [src]."))
 				user.put_in_hands(src)
 	return
 
@@ -367,7 +367,7 @@
 	if(user.stat || !Adjacent(user)) return
 
 	if(user.hands_full()) // Safety check lest the card disappear into oblivion
-		to_chat(usr,"<span class='danger'>Your hands are full!</span>")
+		to_chat(usr,SPAN_DANGER("Your hands are full!"))
 		return
 
 	var/pickablecards = list()

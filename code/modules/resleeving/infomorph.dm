@@ -150,7 +150,7 @@ var/list/infomorph_emotions = list(
 	if(prob(20))
 		var/turf/T = get_turf_or_move(src.loc)
 		for (var/mob/M in viewers(T))
-			M.show_message("<span class='warning'>A shower of sparks spray from \the [src]'s inner workings.</span>", 3, "<span class='warning'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</span>", 2)
+			M.show_message(SPAN_WARNING("A shower of sparks spray from \the [src]'s inner workings."), 3, SPAN_WARNING("You hear and smell the ozone hiss of electrical sparks being expelled violently."), 2)
 		return src.death(0)
 
 /mob/living/silicon/infomorph/death(gibbed,var/message = "beeps once, then goes offline.")
@@ -180,7 +180,7 @@ var/list/infomorph_emotions = list(
 	medicalActive2 = null
 	medical_cannotfind = 0
 	SSnanoui.update_uis(src)
-	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
+	to_chat(usr, SPAN_NOTICE("You reset your record-viewing software."))
 
 /*
 /mob/living/silicon/infomorph/proc/switchCamera(var/obj/machinery/camera/C)
@@ -233,7 +233,7 @@ var/list/infomorph_emotions = list(
 				if(card in affecting.implants)
 					affecting.take_damage(rand(30,50))
 					affecting.implants -= card
-					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
+					H.visible_message(SPAN_DANGER("\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!"))
 					break
 	/*
 	if(src.client)
@@ -323,24 +323,24 @@ var/list/infomorph_emotions = list(
 
 	resting = !resting
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
 	canmove = !resting
 
 ////////////////// ATTACKBY, HAND, SELF etc
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.force)
-		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
+		visible_message(SPAN_DANGER("[user.name] attacks [src] with [W]!"))
 		src.adjustBruteLoss(W.force)
 		src.updatehealth()
 	else
-		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
+		visible_message(SPAN_WARNING("[user.name] bonks [src] harmlessly with [W]."))
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
 /mob/living/silicon/infomorph/attack_hand(mob/user as mob)
-	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
+	visible_message(SPAN_DANGER("[user.name] boops [src] on the head."))
 	close_up()
 
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
@@ -350,16 +350,16 @@ var/list/infomorph_emotions = list(
 			switch(alert(user, "Do you wish to add access to [src] or remove access from [src]?",,"Add Access","Remove Access", "Cancel"))
 				if("Add Access")
 					idcard.access |= ID.access
-					to_chat(user, "<span class='notice'>You add the access from the [W] to [src].</span>")
+					to_chat(user, SPAN_NOTICE("You add the access from the [W] to [src]."))
 					return
 				if("Remove Access")
 					idcard.access = null
-					to_chat(user, "<span class='notice'>You remove the access from [src].</span>")
+					to_chat(user, SPAN_NOTICE("You remove the access from [src]."))
 					return
 				if("Cancel")
 					return
 		else if (istype(W, /obj/item/card/id) && idaccessible == 0)
-			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
+			to_chat(user, SPAN_NOTICE("[src] is not accepting access modifcations at this time."))
 			return
 
 //////////////////// MISC VERBS
@@ -370,11 +370,11 @@ var/list/infomorph_emotions = list(
 
 	if(idaccessible == 0)
 		idaccessible = 1
-		to_chat(src, "<span class='notice'>You allow access modifications.</span>")
+		to_chat(src, SPAN_NOTICE("You allow access modifications."))
 
 	else
 		idaccessible = 0
-		to_chat(src, "<span class='notice'>You block access modfications.</span>")
+		to_chat(src, SPAN_NOTICE("You block access modfications."))
 
 /mob/living/silicon/infomorph/verb/wipe_software()
 	set name = "Suspend Self"
@@ -405,7 +405,7 @@ var/list/infomorph_emotions = list(
 	if(radio)
 		radio.nano_ui_interact(src,"main",null,1,conscious_state)
 	else
-		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
+		to_chat(src,SPAN_WARNING("You don't have a radio!"))
 
 /mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silence_time)
@@ -434,7 +434,7 @@ var/global/list/default_infomorph_software = list()
 		var/datum/infomorph_software/P = new type()
 		if(infomorph_software_by_key[P.id])
 			var/datum/infomorph_software/O = infomorph_software_by_key[P.id]
-			to_chat(world, "<span class='warning'>Infomorph software module [P.name] has the same key as [O.name]!</span>")
+			to_chat(world, SPAN_WARNING("Infomorph software module [P.name] has the same key as [O.name]!"))
 			r = 0
 			continue
 		infomorph_software_by_key[P.id] = P
@@ -569,7 +569,7 @@ var/global/list/default_infomorph_software = list()
 	if(src.cable)
 		if(get_dist(src, src.cable) > 1)
 			var/turf/T = get_turf(src)
-			T.visible_message("<span class='warning'>\The [src]'s data cable rapidly retracts back into its spool.</span>")
+			T.visible_message(SPAN_WARNING("\The [src]'s data cable rapidly retracts back into its spool."))
 			qdel(src.cable)
 			cable = null
 

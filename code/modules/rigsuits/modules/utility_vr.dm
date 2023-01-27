@@ -37,7 +37,7 @@
 		return 0
 
 	var/mob/living/carbon/human/H = holder.wearer
-	to_chat(H,"<span class='notice'>You activate the P.A.T. module.</span>")
+	to_chat(H,SPAN_NOTICE("You activate the P.A.T. module."))
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/boop)
 
 /obj/item/rig_module/pat_module/deactivate()
@@ -45,7 +45,7 @@
 		return 0
 
 	var/mob/living/carbon/human/H = holder.wearer
-	to_chat(H,"<span class='notice'>Your disable the P.A.T. module.</span>")
+	to_chat(H,SPAN_NOTICE("Your disable the P.A.T. module."))
 	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
 
 /obj/item/rig_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
@@ -74,10 +74,10 @@
 
 	//Okay, we either found an airlock or we're about to give up.
 	if(!A || !A.density || !A.can_open() || !..())
-		to_chat(H,"<span class='warning'>Unable to comply! Energy too low, or not facing a working airlock!</span>")
+		to_chat(H,SPAN_WARNING("Unable to comply! Energy too low, or not facing a working airlock!"))
 		return 0
 
-	H.visible_message("<span class='warning'>[H] begins overriding the airlock!</span>","<span class='notice'>You begin overriding the airlock!</span>")
+	H.visible_message(SPAN_WARNING("[H] begins overriding the airlock!"),SPAN_NOTICE("You begin overriding the airlock!"))
 	if(do_after(H,6 SECONDS,A) && A.density)
 		A.open()
 
@@ -138,7 +138,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		to_chat(H,"<span class='danger'>You have not selected a chemical type.</span>")
+		to_chat(H,SPAN_DANGER("You have not selected a chemical type."))
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -147,7 +147,7 @@
 		return 0
 
 	if(charge.charges <= 0)
-		to_chat(H,"<span class='danger'>Insufficient chems!</span>")
+		to_chat(H,SPAN_DANGER("Insufficient chems!"))
 		return 0
 
 	else if(charge.charges < chems_to_use)
@@ -159,8 +159,8 @@
 	else
 		return 0
 
-	to_chat(H,"<span class='notice'>You inject [target_mob == H ? "yourself" : target_mob] with [chems_to_use] unit\s of [charge.short_name].</span>")
-	to_chat(target_mob,"<span class='notice'>You feel a rushing in your veins as you're injected by \the [src].</span>")
+	to_chat(H,SPAN_NOTICE("You inject [target_mob == H ? "yourself" : target_mob] with [chems_to_use] unit\s of [charge.short_name]."))
+	to_chat(target_mob,SPAN_NOTICE("You feel a rushing in your veins as you're injected by \the [src]."))
 	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use

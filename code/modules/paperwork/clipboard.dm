@@ -35,7 +35,7 @@
 			return
 		if(istype(W, /obj/item/paper))
 			toppaper = W
-		to_chat(user, "<span class='notice'>You clip the [W] onto \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You clip the [W] onto \the [src]."))
 		update_icon()
 
 	else if(istype(toppaper) && istype(W, /obj/item/pen))
@@ -89,7 +89,7 @@
 					if(!usr.attempt_insert_item_for_installation(W, src))
 						return
 					haspen = W
-					to_chat(usr, "<span class='notice'>You slot the pen into \the [src].</span>")
+					to_chat(usr, SPAN_NOTICE("You slot the pen into \the [src]."))
 
 		else if(href_list["write"])
 			var/obj/item/P = locate(href_list["write"])
@@ -150,7 +150,7 @@
 			var/obj/item/P = locate(href_list["top"])
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
 				toppaper = P
-				to_chat(usr, "<span class='notice'>You move [P.name] to the top.</span>")
+				to_chat(usr, SPAN_NOTICE("You move [P.name] to the top."))
 
 		//Update everything
 		attack_self(usr)

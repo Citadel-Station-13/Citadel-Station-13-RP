@@ -27,7 +27,7 @@
 	playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 	opened = !opened
 	EA.opened = opened
-	to_chat(user, "<span class='notice'>You [opened ? "opened" : "closed"] \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
 	secured = 1
 	update_icon()
 

@@ -98,7 +98,7 @@
 		src.visible_message("You put up \the [src]'s kickstand.")
 	else
 		if(istype(src.loc,/turf/space) || istype(src.loc, /turf/simulated/floor/water))
-			to_chat(usr, "<span class='warning'> You don't think kickstands work here...</span>")
+			to_chat(usr, SPAN_WARNING(" You don't think kickstands work here..."))
 			return
 		src.visible_message("You put down \the [src]'s kickstand.")
 		if(pulledby)
@@ -116,7 +116,7 @@
 
 /obj/vehicle_old/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
-		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
+		to_chat(user, SPAN_WARNING(" You were unable to load \the [C] onto \the [src]."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -139,7 +139,7 @@
 
 	if(on && (!cell || cell.charge < charge_use))
 		turn_off()
-		visible_message("<span class='warning'>\The [src] whines, before its engines wind down.</span>")
+		visible_message(SPAN_WARNING("\The [src] whines, before its engines wind down."))
 		return 0
 
 	//these things like space, not turf. Dragging shouldn't weigh you down.

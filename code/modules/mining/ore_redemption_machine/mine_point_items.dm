@@ -24,24 +24,24 @@
 		var/obj/item/card/id/C = I
 		if(mine_points)
 			C.mining_points += mine_points
-			to_chat(user, "<span class='info'>You transfer [mine_points] excavation points to [C].</span>")
+			to_chat(user, SPAN_INFO("You transfer [mine_points] excavation points to [C]."))
 			mine_points = 0
 		else
-			to_chat(user, "<span class='info'>There's no excavation points left on [src].</span>")
+			to_chat(user, SPAN_INFO("There's no excavation points left on [src]."))
 
 		if(survey_points)
 			C.survey_points += survey_points
-			to_chat(user, "<span class='info'>You transfer [survey_points] survey points to [C].</span>")
+			to_chat(user, SPAN_INFO("You transfer [survey_points] survey points to [C]."))
 			survey_points = 0
 		else
-			to_chat(user, "<span class='info'>There's no survey points left on [src].</span>")
+			to_chat(user, SPAN_INFO("There's no survey points left on [src]."))
 
 		if(engineering_points)
 			C.engineer_points += engineering_points
-			to_chat(user, "<span class='info'>You transfer [engineering_points] engineering points to [C].</span>")
+			to_chat(user, SPAN_INFO("You transfer [engineering_points] engineering points to [C]."))
 			engineering_points = 0
 		else
-			to_chat(user, "<span class='info'>There's no engineering points left on [src].</span>")
+			to_chat(user, SPAN_INFO("There's no engineering points left on [src]."))
 	..()
 
 /obj/item/card/mining_point_card/examine(mob/user)

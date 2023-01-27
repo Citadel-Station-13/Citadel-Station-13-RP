@@ -35,7 +35,7 @@
 /obj/structure/cult/pylon/swarm/pylonhit(var/damage)
 	if(!isbroken)
 		if(prob(1 + damage * 3))
-			visible_message("<span class='danger'>[shatter_message]</span>")
+			visible_message(SPAN_DANGER("[shatter_message]"))
 			STOP_PROCESSING(SSobj, src)
 			playsound(get_turf(src),shatter_sound, 75, 1)
 			isbroken = 1
@@ -47,8 +47,8 @@
 	if(!isbroken)
 		if(prob(1 + damage * 3))
 			user.visible_message(
-				"<span class='danger'>[user] smashed \the [src]!</span>",
-				"<span class='warning'>You hit \the [src], and its crystal breaks apart!</span>",
+				SPAN_DANGER("[user] smashed \the [src]!"),
+				SPAN_WARNING("You hit \the [src], and its crystal breaks apart!"),
 				"You hear a tinkle of crystalline shards."
 				)
 			STOP_PROCESSING(SSobj, src)
@@ -115,7 +115,7 @@
 /obj/structure/cult/pylon/swarm/defender/pylonhit(var/damage)
 	if(!isbroken)
 		if(prob(1 + damage * 3) && round(damage * 0.8) >= 30)
-			visible_message("<span class='danger'>[shatter_message]</span>")
+			visible_message(SPAN_DANGER("[shatter_message]"))
 			STOP_PROCESSING(SSobj, src)
 			playsound(get_turf(src),shatter_sound, 75, 1)
 			isbroken = 1
@@ -127,8 +127,8 @@
 	if(!isbroken)
 		if(prob(1 + damage * 3) && round(damage * 0.8) >= 25)
 			user.visible_message(
-				"<span class='danger'>[user] smashed \the [src]!</span>",
-				"<span class='warning'>You hit \the [src], and its crystal breaks apart!</span>",
+				SPAN_DANGER("[user] smashed \the [src]!"),
+				SPAN_WARNING("You hit \the [src], and its crystal breaks apart!"),
 				"You hear a tinkle of crystalline shards."
 				)
 			STOP_PROCESSING(SSobj, src)

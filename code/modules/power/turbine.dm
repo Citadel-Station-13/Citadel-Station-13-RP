@@ -137,10 +137,10 @@
 			inturf = get_step(src, dir)
 			locate_machinery()
 			if(turbine)
-				to_chat(user, "<span class='notice'>Turbine connected.</span>")
+				to_chat(user, SPAN_NOTICE("Turbine connected."))
 				machine_stat &= ~BROKEN
 			else
-				to_chat(user, "<span class='alert'>Turbine not connected.</span>")
+				to_chat(user, SPAN_ALERT("Turbine not connected."))
 				machine_stat |= BROKEN
 
 /obj/machinery/compressor/process(delta_time)
@@ -235,10 +235,10 @@
 			outturf = get_step(src, dir)
 			locate_machinery()
 			if(compressor)
-				to_chat(user, "<span class='notice'>Compressor connected.</span>")
+				to_chat(user, SPAN_NOTICE("Compressor connected."))
 				machine_stat &= ~BROKEN
 			else
-				to_chat(user, "<span class='alert'>Compressor not connected.</span>")
+				to_chat(user, SPAN_ALERT("Compressor not connected."))
 				machine_stat |= BROKEN
 
 /obj/machinery/power/turbine/process(delta_time)

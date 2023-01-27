@@ -53,7 +53,7 @@
 		var/obj/item/card/id/I = W.GetID()
 
 		if(src.broken)
-			to_chat(user, "<span class='warning'>It appears to be broken.</span>")
+			to_chat(user, SPAN_WARNING("It appears to be broken."))
 			return
 		if(!I || !I.registered_name)	return
 		if(src.allowed(user) || !src.registered_name || (istype(I) && (src.registered_name == I.registered_name)))
@@ -66,7 +66,7 @@
 				src.registered_name = I.registered_name
 				src.desc = "Owned by [I.registered_name]."
 		else
-			to_chat(user, "<span class='warning'>Access Denied</span>")
+			to_chat(user, SPAN_WARNING("Access Denied"))
 	else if(istype(W, /obj/item/melee/energy/blade))
 		if(emag_act(INFINITY, user, "The locker has been sliced open by [user] with \an [W]!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
@@ -75,7 +75,7 @@
 			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 			playsound(src.loc, "sparks", 50, 1)
 	else
-		to_chat(user, "<span class='warning'>Access Denied</span>")
+		to_chat(user, SPAN_WARNING("Access Denied"))
 	return
 
 /obj/structure/closet/secure_closet/personal/emag_act(var/remaining_charges, var/mob/user, var/visual_feedback, var/audible_feedback)
@@ -85,7 +85,7 @@
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 		if(visual_feedback)
-			visible_message("<span class='warning'>[visual_feedback]</span>", "<span class='warning'>[audible_feedback]</span>")
+			visible_message(SPAN_WARNING("[visual_feedback]"), SPAN_WARNING("[audible_feedback]"))
 		return 1
 
 /obj/structure/closet/secure_closet/personal/verb/reset()
@@ -97,9 +97,9 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		if (src.locked || !src.registered_name)
-			to_chat(usr, "<span class='warning'>You need to unlock it first.</span>")
+			to_chat(usr, SPAN_WARNING("You need to unlock it first."))
 		else if (src.broken)
-			to_chat(usr, "<span class='warning'>It appears to be broken.</span>")
+			to_chat(usr, SPAN_WARNING("It appears to be broken."))
 		else
 			if (src.opened)
 				if(!src.close())

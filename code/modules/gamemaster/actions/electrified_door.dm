@@ -36,7 +36,7 @@
 	if(!chosen_door)
 		return
 	command_announcement.Announce("An electrical issue has been detected in your area, please repair potential electronic overloads.", "Electrical Alert")
-	chosen_door.visible_message("<span class='danger'>\The [chosen_door]'s panel sparks!</span>")
+	chosen_door.visible_message(SPAN_DANGER("\The [chosen_door]'s panel sparks!"))
 	chosen_door.set_safeties(0)
 	playsound(get_turf(chosen_door), 'sound/machines/buzz-sigh.ogg', 50, 1)
 	if(severity >= EVENT_LEVEL_MODERATE)
@@ -47,22 +47,22 @@
 
 	if(severity >= EVENT_LEVEL_MAJOR)	// New Major effect. Hydraulic boom.
 		spawn()
-			chosen_door.visible_message("<span class='warning'>\The [chosen_door] buzzes.</span>")
+			chosen_door.visible_message(SPAN_WARNING("\The [chosen_door] buzzes."))
 			playsound(get_turf(chosen_door), 'sound/machines/buzz-sigh.ogg', 50, 1)
 			sleep(rand(10 SECONDS, 3 MINUTES))
 			if(!chosen_door || !chosen_door.arePowerSystemsOn())
 				return
-			chosen_door.visible_message("<span class='warning'>\The [chosen_door]'s hydraulics creak.</span>")
+			chosen_door.visible_message(SPAN_WARNING("\The [chosen_door]'s hydraulics creak."))
 			playsound(get_turf(chosen_door), 'sound/machines/airlock_creaking.ogg', 50, 1)
 			sleep(rand(30 SECONDS, 10 MINUTES))
 			if(!chosen_door || !chosen_door.arePowerSystemsOn())
 				return
-			chosen_door.visible_message("<span class='danger'>\The [chosen_door] emits a hydraulic shriek!</span>")
+			chosen_door.visible_message(SPAN_DANGER("\The [chosen_door] emits a hydraulic shriek!"))
 			playsound(get_turf(chosen_door), 'sound/machines/airlock.ogg', 80, 1)
 			spawn(rand(5 SECONDS, 30 SECONDS))
 			if(!chosen_door || !chosen_door.arePowerSystemsOn())
 				return
-			chosen_door.visible_message("<span class='critical'>\The [chosen_door]'s hydraulics detonate!</span>")
+			chosen_door.visible_message(SPAN_CRITICAL("\The [chosen_door]'s hydraulics detonate!"))
 			chosen_door.fragmentate(get_turf(chosen_door), rand(5, 10), rand(3, 5), list(/obj/item/projectile/bullet/pellet/fragment/tank/small))
 			explosion(get_turf(chosen_door),-1,-1,2,3)
 

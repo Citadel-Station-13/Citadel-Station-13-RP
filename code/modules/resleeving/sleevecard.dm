@@ -45,9 +45,9 @@
 	add_fingerprint(user)
 
 	if(!infomorph)
-		to_chat(user,"<span class='warning'>\The [src] does not have a mind in it!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] does not have a mind in it!"))
 	else
-		to_chat(user,"<span class='notice'>\The [src] displays the name '[infomorph]'.</span>")
+		to_chat(user,SPAN_NOTICE("\The [src] displays the name '[infomorph]'."))
 
 //This is a 'hard' proc, it does no permission checking, do that on the computer
 /obj/item/sleevecard/proc/sleeveInto(var/datum/transhuman/mind_record/MR)
@@ -100,12 +100,12 @@
 
 /obj/item/sleevecard/see_emote(mob/living/M, text)
 	if(infomorph && infomorph.client && !infomorph.canmove)
-		var/rendered = "<span class='message'>[text]</span>"
+		var/rendered = SPAN_MESSAGE("[text]")
 		infomorph.show_message(rendered, 2)
 	..()
 
 /obj/item/sleevecard/show_message(msg, type, alt, alt_type)
 	if(infomorph && infomorph.client)
-		var/rendered = "<span class='message'>[msg]</span>"
+		var/rendered = SPAN_MESSAGE("[msg]")
 		infomorph.show_message(rendered, type)
 	..()

@@ -17,7 +17,7 @@
 	if(!active)
 		active = 1
 		workdisk()
-		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+		to_chat(usr, SPAN_NOTICE("You activate the pinpointer"))
 	else
 		active = 0
 		icon_state = "pinoff"
@@ -70,11 +70,11 @@
 			worklocation()
 		if(mode == 2)
 			workobj()
-		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+		to_chat(usr, SPAN_NOTICE("You activate the pinpointer"))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, "<span class='notice'>You deactivate the pinpointer</span>")
+		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer"))
 
 /obj/item/pinpointer/advpinpointer/proc/worklocation()
 	if(!active)
@@ -188,14 +188,14 @@
 		active = 1
 		if(!mode)
 			workdisk()
-			to_chat(user, "<span class='notice'>Authentication Disk Locator active.</span>")
+			to_chat(user, SPAN_NOTICE("Authentication Disk Locator active."))
 		else
 			worklocation()
-			to_chat(user, "<span class='notice'>Shuttle Locator active.</span>")
+			to_chat(user, SPAN_NOTICE("Shuttle Locator active."))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(user, "<span class='notice'>You deactivate the pinpointer.</span>")
+		to_chat(user, SPAN_NOTICE("You deactivate the pinpointer."))
 
 
 /obj/item/pinpointer/nukeop/workdisk()
@@ -240,7 +240,7 @@
 		mode = 0
 		workdisk()
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-		visible_message("<span class='notice'>Authentication Disk Locator active.</span>")
+		visible_message(SPAN_NOTICE("Authentication Disk Locator active."))
 		return
 	if(!home)
 		home = locate()
@@ -273,11 +273,11 @@
 	if(!active)
 		active = TRUE
 		find_shuttle()
-		to_chat(user, "<span class='notice'>Shuttle Locator active.</span>")
+		to_chat(user, SPAN_NOTICE("Shuttle Locator active."))
 	else
 		active = FALSE
 		icon_state = "pinoff"
-		to_chat(user, "<span class='notice'>You deactivate the pinpointer.</span>")
+		to_chat(user, SPAN_NOTICE("You deactivate the pinpointer."))
 
 /obj/item/pinpointer/shuttle/proc/find_shuttle()
 	if(!active)

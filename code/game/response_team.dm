@@ -13,13 +13,13 @@ var/silent_ert = 0
 	set desc = "Send an emergency response team to the station"
 
 	if(!holder)
-		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
+		to_chat(usr, SPAN_DANGER("Only administrators may use this command."))
 		return
 	if(SSticker.current_state <= GAME_STATE_PLAYING)
-		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
+		to_chat(usr, SPAN_DANGER("The round hasn't started yet!"))
 		return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='danger'>[GLOB.using_map.boss_name] has already dispatched an emergency response team!</span>")
+		to_chat(usr, SPAN_DANGER("[GLOB.using_map.boss_name] has already dispatched an emergency response team!"))
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
@@ -30,7 +30,7 @@ var/silent_ert = 0
 			if("No")
 				return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
+		to_chat(usr, SPAN_DANGER("Looks like somebody beat you to it!"))
 		return
 
 	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team.", 1)
@@ -43,7 +43,7 @@ var/silent_ert = 0
 	set category = "IC"
 
 	if(!MayRespawn(1))
-		to_chat(usr, "<span class='warning'>You cannot join the response team at this time.</span>")
+		to_chat(usr, SPAN_WARNING("You cannot join the response team at this time."))
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))
@@ -51,7 +51,7 @@ var/silent_ert = 0
 			to_chat(usr, "No emergency response team is currently being sent.")
 			return
 		if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team") || jobban_isbanned(usr, "Security Officer"))
-			to_chat(usr, "<span class='danger'>You are jobbanned from the emergency reponse team!</span>")
+			to_chat(usr, SPAN_DANGER("You are jobbanned from the emergency reponse team!"))
 			return
 		if(ert.current_antagonists.len >= ert.hard_cap)
 			to_chat(usr, "The emergency response team is already full!")

@@ -351,7 +351,7 @@
 /obj/machinery/transhuman/synthprinter/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -360,15 +360,15 @@
 	if(default_part_replacement(user, W))
 		return
 	if(panel_open)
-		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
+		to_chat(user, SPAN_NOTICE("You can't load \the [src] while it's opened."))
 		return
 	if(!istype(W, /obj/item/stack/material))
-		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
 	var/obj/item/stack/material/S = W
 	if(!(S.material.name in stored_material))
-		to_chat(user, "<span class='warning'>\the [src] doesn't accept [S.material]!</span>")
+		to_chat(user, SPAN_WARNING("\the [src] doesn't accept [S.material]!"))
 		return
 
 	var/amnt = S.perunit

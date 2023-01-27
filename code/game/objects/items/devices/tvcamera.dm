@@ -63,20 +63,20 @@
 		if(nc)
 			channel = nc
 			camera.c_tag = channel
-			to_chat(usr, "<span class='notice'>New channel name - '[channel]' is set</span>")
+			to_chat(usr, SPAN_NOTICE("New channel name - '[channel]' is set"))
 	if(href_list["video"])
 		camera.set_status(!camera.status)
 		if(camera.status)
-			to_chat(usr,"<span class='notice'>Video streaming activated. Broadcasting on channel '[channel]'</span>")
+			to_chat(usr,SPAN_NOTICE("Video streaming activated. Broadcasting on channel '[channel]'"))
 		else
-			to_chat(usr,"<span class='notice'>Video streaming deactivated.</span>")
+			to_chat(usr,SPAN_NOTICE("Video streaming deactivated."))
 		update_icon()
 	if(href_list["sound"])
 		radio.ToggleBroadcast()
 		if(radio.broadcasting)
-			to_chat(usr,"<span class='notice'>Audio streaming activated. Broadcasting on frequency [format_frequency(radio.frequency)].</span>")
+			to_chat(usr,SPAN_NOTICE("Audio streaming activated. Broadcasting on frequency [format_frequency(radio.frequency)]."))
 		else
-			to_chat(usr,"<span class='notice'>Audio streaming deactivated.</span>")
+			to_chat(usr,SPAN_NOTICE("Audio streaming deactivated."))
 	if(!href_list["close"])
 		attack_self(usr)
 

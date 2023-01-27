@@ -134,7 +134,7 @@
 	switch(rand(99))
 		if(0 to 85)
 			sparks()
-			visible_message("<span class='warning'>The telepad weakly fizzles.</span>")
+			visible_message(SPAN_WARNING("The telepad weakly fizzles."))
 			return
 		if(86 to 90)
 			// Irradiate everyone in telescience!
@@ -143,7 +143,7 @@
 				sparks()
 				for(var/mob/living/carbon/human/M in viewers(L, null))
 					M.apply_effect((rand(10, 20)), IRRADIATE, 0)
-					to_chat(M, "<span class='warning'>You feel strange.</span>")
+					to_chat(M, SPAN_WARNING("You feel strange."))
 			return
 		if(91 to 98)
 			// They did the mash! (They did the monster mash!) The monster mash! (It was a graveyard smash!)
@@ -159,7 +159,7 @@
 			return
 		if(99)
 			sparks()
-			visible_message("<span class='warning'>The telepad changes colors rapidly, and opens a portal, and you see what your mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you.</span>")
+			visible_message(SPAN_WARNING("The telepad changes colors rapidly, and opens a portal, and you see what your mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you."))
 			spacevine_infestation()
 			return
 

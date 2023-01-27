@@ -439,13 +439,13 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 	if(emergency_message_cooldown)
-		to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
+		to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 		return
 	var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 	if(!input)
 		return
 	message_centcom(input, usr)
-	to_chat(usr, "<span class='notice'>Message transmitted.</span>")
+	to_chat(usr, SPAN_NOTICE("Message transmitted."))
 	log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 	emergency_message_cooldown = 1
 	spawn(300)
@@ -485,7 +485,7 @@ var/list/ai_verbs_default = list(
 			if(H)
 				H.attack_ai(src) //may as well recycle
 			else
-				to_chat(src, "<span class='notice'>Unable to locate the holopad.</span>")
+				to_chat(src, SPAN_NOTICE("Unable to locate the holopad."))
 
 	if (href_list["track"])
 		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
@@ -765,7 +765,7 @@ var/list/ai_verbs_default = list(
 
 	else if(W.is_wrench())
 		if(user == deployed_shell)
-			to_chat(user, "<span class='notice'>The shell's subsystems resist your efforts to tamper with your bolts.</span>")
+			to_chat(user, SPAN_NOTICE("The shell's subsystems resist your efforts to tamper with your bolts."))
 			return
 		if(anchored)
 			playsound(src, W.tool_sound, 50, 1)
@@ -822,21 +822,21 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/check_unable(var/flags = 0, var/feedback = 1)
 	if(stat == DEAD)
 		if(feedback)
-			to_chat(src, "<span class='warning'>You are dead!</span>")
+			to_chat(src, SPAN_WARNING("You are dead!"))
 		return 1
 
 	if(aiRestorePowerRoutine)
 		if(feedback)
-			to_chat(src, "<span class='warning'>You lack power!</span>")
+			to_chat(src, SPAN_WARNING("You lack power!"))
 		return 1
 
 	if((flags & AI_CHECK_WIRELESS) && src.control_disabled)
 		if(feedback)
-			to_chat(src, "<span class='warning'>Wireless control is disabled!</span>")
+			to_chat(src, SPAN_WARNING("Wireless control is disabled!"))
 		return 1
 	if((flags & AI_CHECK_RADIO) && src.aiRadio.disabledAi)
 		if(feedback)
-			to_chat(src, "<span class='warning'>System Error - Transceiver Disabled!</span>")
+			to_chat(src, SPAN_WARNING("System Error - Transceiver Disabled!"))
 		return 1
 	return 0
 

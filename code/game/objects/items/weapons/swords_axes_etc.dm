@@ -22,7 +22,7 @@
 /obj/item/melee/classic_baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
-		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
+		to_chat(user, SPAN_WARNING("You club yourself over the head."))
 		user.Weaken(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -59,8 +59,8 @@
 /obj/item/melee/telebaton/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		on = 1
-		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
-		"<span class='warning'>You extend the baton.</span>",\
+		user.visible_message(SPAN_WARNING("With a flick of their wrist, [user] extends their telescopic baton."),\
+		SPAN_WARNING("You extend the baton."),\
 		"You hear an ominous click.")
 		src.icon_state = "[icon_state]_1"
 		src.item_state = "[item_state]_1"
@@ -69,8 +69,8 @@
 		attack_verb = list("struck", "beat")
 	else
 		on = 0
-		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
-		"<span class='notice'>You collapse the baton.</span>",\
+		user.visible_message(SPAN_NOTICE("\The [user] collapses their telescopic baton."),\
+		SPAN_NOTICE("You collapse the baton."),\
 		"You hear a click.")
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
@@ -95,7 +95,7 @@
 /obj/item/melee/telebaton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
+			to_chat(user, SPAN_WARNING("You club yourself over the head."))
 			user.Weaken(3 * force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
@@ -192,12 +192,12 @@
 /obj/item/melee/stool/faiza/attack_self(mob/user as mob)
 
 	if(on == 0)
-		user.visible_message("<span class='notice'>In a quick motion, [user] extends their collapsible stool.</span>")
+		user.visible_message(SPAN_NOTICE("In a quick motion, [user] extends their collapsible stool."))
 		icon_state = "cn_stool"
 		w_class = ITEMSIZE_HUGE
 		on = 1
 	else
-		user.visible_message("<span class='notice'>\ [user] collapses their stool.</span>")
+		user.visible_message(SPAN_NOTICE("\ [user] collapses their stool."))
 		icon_state = "cn_stool_c"
 		w_class = ITEMSIZE_SMALL
 		on = 0
@@ -326,8 +326,8 @@
 									"[user] smashes [H]'s head with [src]!", \
 									"[user] beats [H] with front of [src]!", \
 									"[user] twirls and slams [H] with [src]!")
-	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
-							"<span class='userdanger'>[pick(fluffmessages)]</span>")
+	H.visible_message(SPAN_WARNING("[pick(fluffmessages)]"), \
+							SPAN_USERDANGER("[pick(fluffmessages)]"))
 	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 	if(prob(25))
 		INVOKE_ASYNC(src, .proc/jedi_spin, user)

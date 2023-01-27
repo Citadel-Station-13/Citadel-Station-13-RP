@@ -106,7 +106,7 @@
 	if(I in items_list)
 		if(I in contents)		//already in us somehow? i probably shouldn't catch this so it's easier to spot bugs but eh..
 			return
-		I.visible_message("<span class='notice'>[I] snaps back into [src]!</span>")
+		I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
 		I.forceMove(src)
 		if(I == holder)
 			holder = nul

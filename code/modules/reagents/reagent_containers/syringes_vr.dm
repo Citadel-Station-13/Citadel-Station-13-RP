@@ -70,7 +70,7 @@
 	switch(mode)
 		if(SYRINGE_CAPPED)
 			mode = SYRINGE_DRAW
-			to_chat(user,"<span class='notice'>You uncap the syringe.</span>")
+			to_chat(user,SPAN_NOTICE("You uncap the syringe."))
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
 		if(SYRINGE_INJECT)

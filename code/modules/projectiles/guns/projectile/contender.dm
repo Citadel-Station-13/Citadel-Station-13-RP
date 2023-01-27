@@ -21,20 +21,20 @@
 		loaded -= C
 
 	if(!retracted_bolt)
-		to_chat(user, "<span class='notice'>You cycle back the bolt on [src], ejecting the casing and allowing you to reload.</span>")
+		to_chat(user, SPAN_NOTICE("You cycle back the bolt on [src], ejecting the casing and allowing you to reload."))
 		icon_state = icon_retracted
 		retracted_bolt = 1
 		return 1
 	else if(retracted_bolt && loaded.len)
-		to_chat(user, "<span class='notice'>You cycle the loaded round into the chamber, allowing you to fire.</span>")
+		to_chat(user, SPAN_NOTICE("You cycle the loaded round into the chamber, allowing you to fire."))
 	else
-		to_chat(user, "<span class='notice'>You cycle the bolt back into position, leaving the gun empty.</span>")
+		to_chat(user, SPAN_NOTICE("You cycle the bolt back into position, leaving the gun empty."))
 	icon_state = initial(icon_state)
 	retracted_bolt = 0
 
 /obj/item/gun/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
 	if(!retracted_bolt)
-		to_chat(user, "<span class='notice'>You can't load [src] without cycling the bolt.</span>")
+		to_chat(user, SPAN_NOTICE("You can't load [src] without cycling the bolt."))
 		return
 	..()
 
@@ -108,17 +108,17 @@
 		if(unstable)
 			switch(rand(1,100))
 				if(1 to 10)
-					to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
+					to_chat(user, SPAN_DANGER("The pipe bursts open as the gun backfires!"))
 					explosion(get_turf(src), -1, 0, 2, 3)
 					qdel(src)
 				if(11 to 39)
-					to_chat(user, "<span class='notice'>The [src] misfires!</span>")
+					to_chat(user, SPAN_NOTICE("The [src] misfires!"))
 					playsound(src, 'sound/machines/button.ogg', 25)
 					handle_click_empty()
 					return
 				if(40 to 100)
 					return 1
 		if(jammed)
-			to_chat(user, "<span class='notice'>The [src] is jammed!</span>")
+			to_chat(user, SPAN_NOTICE("The [src] is jammed!"))
 			handle_click_empty()
 			return

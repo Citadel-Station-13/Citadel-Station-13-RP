@@ -33,7 +33,7 @@
 		var/area/A = get_area(S)
 		if(!A || A.area_flags & AREA_RAD_SHIELDED)	// Rad shielding will protect from ions too
 			continue
-		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
+		to_chat(S, SPAN_WARNING("Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart."))
 		var/ionbug = rand(3, 9)
 		S.confused += ionbug
 		S.eye_blurry += (ionbug - 1)
@@ -43,7 +43,7 @@
 		if(!(target.z in affecting_z))
 			continue
 		var/law = target.generate_ion_law()
-		to_chat(target, "<span class='danger'>You have detected a change in your laws information:</span>")
+		to_chat(target, SPAN_DANGER("You have detected a change in your laws information:"))
 		to_chat(target, law)
 		target.add_ion_law(law)
 		target.show_laws()

@@ -34,26 +34,26 @@ RSF
 
 /obj/item/rsf/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>"
+	. += SPAN_NOTICE("It currently holds [stored_matter]/30 fabrication-units.")
 
 /obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if (istype(W, /obj/item/rcd_ammo))
 
 		if ((stored_matter + 10) > 30)
-			to_chat(user, "<span class='warning'>The RSF can't hold any more matter.</span>")
+			to_chat(user, SPAN_WARNING("The RSF can't hold any more matter."))
 			return
 
 		qdel(W)
 
 		stored_matter += 10
 		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
-		to_chat(user,"<span class='notice'>The RSF now holds [stored_matter]/30 fabrication-units.</span>")
+		to_chat(user,SPAN_NOTICE("The RSF now holds [stored_matter]/30 fabrication-units."))
 		return
 
 /obj/item/rsf/CtrlClick(mob/living/user)
 	if(!Adjacent(user) || !istype(user))
-		to_chat(user,"<span class='notice'>You are too far away.</span>")
+		to_chat(user,SPAN_NOTICE("You are too far away."))
 		return
 	var/glass_choice = input(user, "Please choose which type of glass you would like to produce.") as null|anything in container_types
 
@@ -94,7 +94,7 @@ RSF
 		return
 	if (mode == 8)
 		mode = 1
-		to_chat(user,"<span class='notice'>Changed dispensing mode to 'Cigarette'</span>")
+		to_chat(user,SPAN_NOTICE("Changed dispensing mode to 'Cigarette'"))
 		return
 
 /obj/item/rsf/afterattack(atom/A, mob/user as mob, proximity)
@@ -143,7 +143,7 @@ RSF
 			product = new /obj/random/plushie(target) //dear god if this gets spammed i will commit die
 			used_energy = 1000
 
-	to_chat(user,"<span class='notice'>Dispensing [product ? product : "product"]...</span>")
+	to_chat(user,SPAN_NOTICE("Dispensing [product ? product : "product"]..."))
 
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
@@ -151,4 +151,4 @@ RSF
 			R.cell.use(used_energy)
 	else
 		stored_matter--
-		to_chat(user,"<span class='notice'>The RSF now holds [stored_matter]/30 fabrication-units.</span>")
+		to_chat(user,SPAN_NOTICE("The RSF now holds [stored_matter]/30 fabrication-units."))

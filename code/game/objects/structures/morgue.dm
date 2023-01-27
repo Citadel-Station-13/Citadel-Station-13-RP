@@ -133,11 +133,11 @@
 			src.name = "Morgue"
 	if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
-			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			user.show_message(text(SPAN_NOTICE("[src] can now be moved.")))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 		else if(!anchored)
-			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			user.show_message(text(SPAN_NOTICE("[src] is now secured.")))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	src.add_fingerprint(user)
@@ -198,7 +198,7 @@
 	if (user != O)
 		for(var/mob/B in viewers(user, 3))
 			if ((B.client && !( B.blinded )))
-				to_chat(B, "<span class='warning'>\The [user] stuffs [O] into [src]!</span>")
+				to_chat(B, SPAN_WARNING("\The [user] stuffs [O] into [src]!"))
 	return
 
 
@@ -229,7 +229,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 /obj/structure/morgue/crematorium/attack_hand(mob/user as mob)
 	if (cremating)
-		to_chat(usr, "<span class='warning'>It's locked.</span>")
+		to_chat(usr, SPAN_WARNING("It's locked."))
 		return
 	if ((src.connected) && (src.locked == 0))
 		for(var/atom/movable/A as mob|obj in src.connected.loc)
@@ -295,7 +295,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 	if(contents.len <= 0)
 		for (var/mob/M in viewers(src))
-			to_chat(M,"<span class='warning'>You hear a hollow crackle.</span>")
+			to_chat(M,SPAN_WARNING("You hear a hollow crackle."))
 			return
 
 	else
@@ -304,7 +304,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			return
 
 		for (var/mob/M in viewers(src))
-			to_chat(M,"<span class='warning'>You hear a roar as the crematorium activates.</span>")
+			to_chat(M,SPAN_WARNING("You hear a roar as the crematorium activates."))
 
 		cremating = 1
 		locked = 1
@@ -359,7 +359,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 				if (!C.cremating)
 					C.cremate(user)
 	else
-		to_chat(user,"<span class='warning'>Access denied.</span>")
+		to_chat(user,SPAN_WARNING("Access denied."))
 
 
 //! ## VR FILE MERGE ## !//
@@ -376,7 +376,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 	if(contents.len <= 0)
 		for (var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
+			M.show_message(SPAN_WARNING("You hear a hollow crackle."), 1)
 			return
 	else
 		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
@@ -385,17 +385,17 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 		for(var/I in contents)
 			if(!(I in allowed_items))
-				to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] cannot cremate while there are items inside!"))
 				return
 			if(istype(I, /mob/living))
 				var/mob/living/cremated = I
 				for(var/Z in cremated.contents)
 					if(!(Z in allowed_items))
-						to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+						to_chat(user, SPAN_NOTICE("\The [src] cannot cremate while there are items inside!"))
 						return
 
 		for (var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>You hear a roar as the crematorium activates.</span>", 1)
+			M.show_message(SPAN_WARNING("You hear a roar as the crematorium activates."), 1)
 
 		cremating = 1
 		locked = 1

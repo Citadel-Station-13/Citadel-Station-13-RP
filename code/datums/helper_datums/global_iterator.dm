@@ -141,7 +141,7 @@
 		arg_list = arguments
 		return 1
 	else
-		// to_chat(world, "<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>")
+		// to_chat(world, SPAN_DANGER("Invalid arguments supplied for [src.type], ref = \ref[src]"))
 		return 0
 
 /datum/global_iterator/proc/toggle_null_checks()

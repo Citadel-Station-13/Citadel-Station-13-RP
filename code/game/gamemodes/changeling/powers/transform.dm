@@ -26,7 +26,7 @@
 		return
 
 	changeling.chem_charges -= 5
-	src.visible_message("<span class='warning'>[src] transforms!</span>")
+	src.visible_message(SPAN_WARNING("[src] transforms!"))
 	changeling.geneticdamage = 5
 
 	if(ishuman(src))

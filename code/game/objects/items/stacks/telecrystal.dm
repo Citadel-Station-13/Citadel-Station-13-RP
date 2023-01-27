@@ -16,16 +16,16 @@
 		return
 	if(amount >= 5)
 		add_attack_logs(user, L, "teleported with telecrystals")
-		L.visible_message("<span class='warning'>\The [L] has been transported with \the [src] by \the [user].</span>")
+		L.visible_message(SPAN_WARNING("\The [L] has been transported with \the [src] by \the [user]."))
 		safe_blink(L, 14)
 		use(5)
 	else
-		to_chat(user, "<span class='warning'>There are not enough telecrystals to do that.</span>")
+		to_chat(user, SPAN_WARNING("There are not enough telecrystals to do that."))
 	return NONE
 
 /obj/item/stack/telecrystal/attack_self(mob/user as mob)
 	if(user.mind.accept_tcrystals) //Checks to see if antag type allows for tcrystals
-		to_chat(user, "<span class='notice'>You use \the [src], adding [src.amount] to your balance.</span>")
+		to_chat(user, SPAN_NOTICE("You use \the [src], adding [src.amount] to your balance."))
 		user.mind.tcrystals += amount
 		use(amount)
 	return

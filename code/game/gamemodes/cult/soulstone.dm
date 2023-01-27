@@ -26,10 +26,10 @@
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(jobban_isbanned(target, "cultist"))
-		to_chat(user, "<span class='warning'>This person's soul is too corrupt and cannot be captured!</span>")
+		to_chat(user, SPAN_WARNING("This person's soul is too corrupt and cannot be captured!"))
 		return
 	if(target.has_brain_worms()) //Borer stuff - RR
-		to_chat(user, "<span class='warning'>This being is corrupted by an alien intelligence and cannot be soul trapped.</span>")
+		to_chat(user, SPAN_WARNING("This being is corrupted by an alien intelligence and cannot be soul trapped."))
 		return
 	add_attack_logs(user,target,"Soulstone'd with [src.name]")
 	transfer_soul("VICTIM", target, user)

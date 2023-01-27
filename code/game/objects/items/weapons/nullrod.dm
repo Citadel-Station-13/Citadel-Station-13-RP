@@ -33,7 +33,7 @@
 	if(!proximity)
 		return
 	if (istype(A, /turf/simulated/floor))
-		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You hit the floor with the [src]."))
 		call(/obj/effect/rune/proc/revealrunes)(src)
 	if (isliving(A))
 		var/mob/living/tm = A // targeted mob
@@ -292,8 +292,8 @@
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0)
-		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
-		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")
+		to_chat(user, SPAN_NOTICE("Your pride reflects on [H]."))
+		to_chat(H, SPAN_USERDANGER("You feel insecure, taking on [user]'s burden."))
 
 /obj/item/nullrod/whip
 	name = "holy whip"
@@ -388,8 +388,8 @@
 									  "[user] smashes [H]'s head with [src]!", \
 									  "[user] beats [H] with front of [src]!", \
 									  "[user] twirls and slams [H] with [src]!")
-		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
-							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
+		H.visible_message(SPAN_WARNING("[pick(fluffmessages)]"), \
+							   SPAN_USERDANGER("[pick(fluffmessages)]"))
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		if(prob(25))
 			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
@@ -450,25 +450,25 @@
 	var/mob/living/L = target
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
-		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
+		to_chat(user, SPAN_NOTICE("You are not close enough with [deity_name] to use [src]."))
 		return
 
 	if(praying)
-		to_chat(user, "<span class='notice'>You are already using [src].</span>")
+		to_chat(user, SPAN_NOTICE("You are already using [src]."))
 		return
 
-	user.visible_message("<span class='info'>[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name].</span>", \
-		"<span class='info'>You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name].</span>")
+	user.visible_message(SPAN_INFO("[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name]."), \
+		SPAN_INFO("You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name]."))
 
 	praying = TRUE
 	if(do_after(user, 20, target = L))
 		L.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(L, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
+		to_chat(L, SPAN_NOTICE("[user]'s prayer to [deity_name] has eased your pain!"))
 		L.adjustToxLoss(-5, TRUE, TRUE)
 		L.adjustOxyLoss(-5)
 		L.adjustBruteLoss(-5)
 		L.adjustFireLoss(-5)
 		praying = FALSE
 	else
-		to_chat(user, "<span class='notice'>Your prayer to [deity_name] was interrupted.</span>")
+		to_chat(user, SPAN_NOTICE("Your prayer to [deity_name] was interrupted."))
 		praying = FALSE

@@ -58,13 +58,13 @@
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
 		var/obj/item/material/tmp_shard = I
 		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.name)
-		to_chat(user, "<span class='notice'>You fasten \the [I] to the top of the rod with the cable.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten \the [I] to the top of the rod with the cable."))
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
-		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten the wirecutters to the top of the rod with the cable, prongs outward."))
 	else if(istype(I, /obj/item/weldingtool/mini))
 		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
-		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten the mini welder to the top of the rod with the cable, nozzle outward."))
 	if(finished)
 		qdel(I)
 		qdel(src)
@@ -86,24 +86,24 @@
 	if(istype(thing, /obj/item/stack/rods) && construction_stage == 1)
 		var/obj/item/stack/rods = thing
 		if(rods.get_amount() < 4)
-			to_chat(user, "<span class='warning'>You need at least 4 rods for this task.</span>")
+			to_chat(user, SPAN_WARNING("You need at least 4 rods for this task."))
 			return
 		rods.use(4)
-		user.visible_message("<span class='notice'>\The [user] puts some rods together in \the [src] hole.</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] puts some rods together in \the [src] hole."))
 		increment_construction_stage()
 		return
 
 	if(istype(thing, /obj/item/weldingtool) && construction_stage == 2)
 		var/obj/item/weldingtool/welder = thing
 		if(!welder.isOn())
-			to_chat(user, "<span class='warning'>Turn it on first!</span>")
+			to_chat(user, SPAN_WARNING("Turn it on first!"))
 			return
 
 		if(!welder.remove_fuel(0,user))
-			to_chat(user, "<span class='warning'>You need more fuel!</span>")
+			to_chat(user, SPAN_WARNING("You need more fuel!"))
 			return
 
-		user.visible_message("<span class='notice'>\The [user] welds the rods to the head \the [src] together with \the [thing].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] welds the rods to the head \the [src] together with \the [thing]."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 		spawn(5)
 		increment_construction_stage()
@@ -112,10 +112,10 @@
 	if(istype(thing, /obj/item/stack/rods) && construction_stage == 3)
 		var/obj/item/stack/rods = thing
 		if(rods.get_amount() < 4)
-			to_chat(user, "<span class='warning'>You need at least 4 rods for this task.</span>")
+			to_chat(user, SPAN_WARNING("You need at least 4 rods for this task."))
 			return
 		rods.use(4)
-		user.visible_message("<span class='notice'>\The [user] jams \the [thing]'s into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] jams \the [thing]'s into \the [src]."))
 		increment_construction_stage()
 		return
 
@@ -123,14 +123,14 @@
 		var/obj/item/weldingtool/welder = thing
 
 		if(!welder.isOn())
-			to_chat(user, "<span class='warning'>Turn it on first!</span>")
+			to_chat(user, SPAN_WARNING("Turn it on first!"))
 			return
 
 		if(!welder.remove_fuel(0,user))
-			to_chat(user, "<span class='warning'>You need more fuel!</span>")
+			to_chat(user, SPAN_WARNING("You need more fuel!"))
 			return
 
-		user.visible_message("<span class='notice'>\The [user] welds the rods together of the handle into place, forming a long irregular shaft.</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] welds the rods together of the handle into place, forming a long irregular shaft."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 
 		increment_construction_stage()
@@ -141,29 +141,29 @@
 		var/datum/material/reinforcing_with = reinforcing.get_material()
 		if(reinforcing_with.name == MAT_STEEL) // Steel
 			if(reinforcing.get_amount() < 3)
-				to_chat(user, "<span class='warning'>You need at least 3 [reinforcing.singular_name]\s for this task.</span>")
+				to_chat(user, SPAN_WARNING("You need at least 3 [reinforcing.singular_name]\s for this task."))
 				return
 			reinforcing.use(3)
-			user.visible_message("<span class='notice'>\The [user] shapes some metal sheets around the rods.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] shapes some metal sheets around the rods."))
 			increment_construction_stage()
 			return
 
 	if(istype(thing, /obj/item/weldingtool) && construction_stage == 6)
 		var/obj/item/weldingtool/welder = thing
 		if(!welder.isOn())
-			to_chat(user, "<span class='warning'>Turn it on first!</span>")
+			to_chat(user, SPAN_WARNING("Turn it on first!"))
 			return
 		if(!welder.remove_fuel(10,user))
-			to_chat(user, "<span class='warning'>You need more fuel!</span>")
+			to_chat(user, SPAN_WARNING("You need more fuel!"))
 			return
-		user.visible_message("<span class='notice'>\The [user] heats up the metal sheets until it glows red.</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] heats up the metal sheets until it glows red."))
 		playsound(src, 'sound/items/Welder2.ogg', 100, 1)
 		increment_construction_stage()
 		return
 
 
 	if(istype(thing, /obj/item/tool/wrench) && construction_stage == 7)
-		user.visible_message("<span class='notice'>\The [user] whacks at \the [src] like a caveman, shaping the metal with \the [thing] into a rough handle, finishing it off.</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] whacks at \the [src] like a caveman, shaping the metal with \the [thing] into a rough handle, finishing it off."))
 		increment_construction_stage()
 		playsound(src, 'sound/weapons/smash5.ogg', 100, 1)
 		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, material.name)
@@ -192,16 +192,16 @@
 	if(.)
 		switch(construction_stage) //BLACKMAJOR YOU KNOW YOU SHOULDN'T INLINE SWITCH STATEMENTS AAAA
 			if(1)
-				. += "<span class='notice'>It has a slot in the base for a metal rod.</span>"
+				. += SPAN_NOTICE("It has a slot in the base for a metal rod.")
 			if(2)
-				. += "<span class='notice'>It has a bunch of rods sticking out of the hole. Consider welding it.</span>"
+				. += SPAN_NOTICE("It has a bunch of rods sticking out of the hole. Consider welding it.")
 			if(3)
-				. += "<span class='notice'>It has a short rough metal shaft sticking to it, quite short, needs more rods.</span>"
+				. += SPAN_NOTICE("It has a short rough metal shaft sticking to it, quite short, needs more rods.")
 			if(4)
-				. += "<span class='notice'>It has a bunch of unwelded rods jammed into the shaft.</span>"
+				. += SPAN_NOTICE("It has a bunch of unwelded rods jammed into the shaft.")
 			if(5)
-				. += "<span class='notice'>It has a pretty long rough metal shaft sticking out of it, it look hard to grab. Could make a handle with some steel...</span>"
+				. += SPAN_NOTICE("It has a pretty long rough metal shaft sticking out of it, it look hard to grab. Could make a handle with some steel...")
 			if(6)
-				. += "<span class='notice'>It has a few unwelded sheets bent in half across the handle.</span>"
+				. += SPAN_NOTICE("It has a few unwelded sheets bent in half across the handle.")
 			if(7)
-				. += "<span class='notice'>It has red hot, pliable looking metal sheets spread over the handle. What a sloppy job. Finish the job with a wrench.</span>"
+				. += SPAN_NOTICE("It has red hot, pliable looking metal sheets spread over the handle. What a sloppy job. Finish the job with a wrench.")

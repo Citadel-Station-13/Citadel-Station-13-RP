@@ -55,7 +55,7 @@
 /obj/structure/cult/pylon/proc/pylonhit(var/damage)
 	if(!isbroken)
 		if(prob(1+ damage * 5))
-			visible_message("<span class='danger'>[shatter_message]</span>")
+			visible_message(SPAN_DANGER("[shatter_message]"))
 			STOP_PROCESSING(SSobj, src)
 			playsound(get_turf(src),shatter_sound, 75, 1)
 			isbroken = 1
@@ -67,8 +67,8 @@
 	if(!isbroken)
 		if(prob(1+ damage * 5))
 			user.visible_message(
-				"<span class='danger'>[user] smashed \the [src]!</span>",
-				"<span class='warning'>You hit \the [src], and its crystal breaks apart!</span>",
+				SPAN_DANGER("[user] smashed \the [src]!"),
+				SPAN_WARNING("You hit \the [src], and its crystal breaks apart!"),
 				"You hear a tinkle of crystal shards."
 				)
 			STOP_PROCESSING(SSobj, src)

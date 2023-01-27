@@ -248,14 +248,14 @@
 		if(H.nutrition >= 100 && prob(0.5) && !isbelly(H.loc))
 			switch(H.nutrition)
 				if(150 to 200)
-					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
+					to_chat(H,SPAN_INFO("You feel rather hungry. It might be a good idea to find some some food..."))
 				if(100 to 150)
-					to_chat(H,"<span class='warning'>You feel like you're going to snap and give in to your hunger soon... It would be for the best to find some [pick("food","prey")] to eat...</span>")
+					to_chat(H,SPAN_WARNING("You feel like you're going to snap and give in to your hunger soon... It would be for the best to find some [pick("food","prey")] to eat..."))
 					danger = TRUE
 
 		// Going feral due to hunger
 		else if(H.nutrition < 100 && !isbelly(H.loc))
-			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
+			to_chat(H,SPAN_DANGER("<big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big>"))
 			log_and_message_admins("has gone feral due to hunger.", H)
 			feral = 5
 			danger = TRUE
@@ -269,7 +269,7 @@
 			//If the majority of their shock is due to halloss, greater chance of snapping.
 			if(2.5*H.halloss >= H.traumatic_shock)
 				if(prob(min(10,(0.2 * H.traumatic_shock))))
-					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
+					to_chat(H,SPAN_DANGER("<big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big>"))
 					log_and_message_admins("has gone feral due to halloss.", H)
 					feral = 5
 					danger = TRUE
@@ -279,7 +279,7 @@
 
 			//Majority due to other damage sources
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
-				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
+				to_chat(H,SPAN_DANGER("<big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big>"))
 				feral = 5
 				danger = TRUE
 				feral_state = TRUE
@@ -289,7 +289,7 @@
 
 		//No hungry or shock, but jittery
 		else if(jittery)
-			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
+			to_chat(H,SPAN_WARNING("<big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big>"))
 			feral = 5
 			danger = TRUE
 			feral_state = TRUE
@@ -336,7 +336,7 @@
 			feral_state = FALSE
 			if(has_feral_spells)
 				remove_feral_spells(H)
-			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
+			to_chat(H,SPAN_INFO("Your thoughts start clearing, your feral urges having passed - for the time being, at least."))
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
 			return
@@ -376,19 +376,19 @@
 		if(darkish || !isturf(H.loc))
 			// If hurt, tell 'em to heal up
 			if (shock)
-				to_chat(H,"<span class='info'>This place seems safe, secure, hidden, a place to lick your wounds and recover...</span>")
+				to_chat(H,SPAN_INFO("This place seems safe, secure, hidden, a place to lick your wounds and recover..."))
 
 			//If hungry, nag them to go and find someone or something to eat.
 			else if(hungry)
-				to_chat(H,"<span class='info'>Secure in your hiding place, your hunger still gnaws at you. You need to catch some food...</span>")
+				to_chat(H,SPAN_INFO("Secure in your hiding place, your hunger still gnaws at you. You need to catch some food..."))
 
 			//If jittery, etc
 			else if(jittery)
-				to_chat(H,"<span class='info'>sneakysneakyyesyesyescleverhidingfindthingsyessssss</span>")
+				to_chat(H,SPAN_INFO("sneakysneakyyesyesyescleverhidingfindthingsyessssss"))
 
 			//Otherwise, just tell them to keep hiding.
 			else
-				to_chat(H,"<span class='info'>...safe...</span>")
+				to_chat(H,SPAN_INFO("...safe..."))
 
 		// NOT in the darkness
 		else
@@ -403,18 +403,18 @@
 			if(nearby.len)
 				var/M = pick(nearby)
 				if(shock)
-					to_chat(H,"<span class='danger'>You're hurt, in danger, exposed, and [M] looks to be a little too close for comfort...</span>")
+					to_chat(H,SPAN_DANGER("You're hurt, in danger, exposed, and [M] looks to be a little too close for comfort..."))
 				else if(hungry || jittery)
-					to_chat(H,"<span class='danger'>Every movement, every flick, every sight and sound has your full attention, your hunting instincts on high alert... In fact, [M] looks extremely appetizing...</span>")
+					to_chat(H,SPAN_DANGER("Every movement, every flick, every sight and sound has your full attention, your hunting instincts on high alert... In fact, [M] looks extremely appetizing..."))
 
 			// Nobody around
 			else
 				if(hungry)
-					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you - scary and disorienting it may be, but the drive to hunt, to feed, to survive, compels you.</span>")
+					to_chat(H,SPAN_DANGER("Confusing sights and sounds and smells surround you - scary and disorienting it may be, but the drive to hunt, to feed, to survive, compels you."))
 				else if(jittery)
-					to_chat(H,"<span class='danger'>yesyesyesyesyesyesgetthethingGETTHETHINGfindfoodsfindpreypounceyesyesyes</span>")
+					to_chat(H,SPAN_DANGER("yesyesyesyesyesyesgetthethingGETTHETHINGfindfoodsfindpreypounceyesyesyes"))
 				else
-					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
+					to_chat(H,SPAN_DANGER("Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground..."))
 
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)

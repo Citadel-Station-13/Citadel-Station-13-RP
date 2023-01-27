@@ -77,7 +77,7 @@
 			pods += P
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
-			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You connect [P] to [src]."))
 
 	else if (menu == 4 && (istype(W, /obj/item/card/id) || istype(W, /obj/item/pda)))
 		if(check_access(W))

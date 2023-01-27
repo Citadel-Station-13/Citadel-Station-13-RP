@@ -108,8 +108,8 @@
 		if(!shock(user, 90))
 			playsound(src, W.tool_sound, 100, 1)
 			anchored = !anchored
-			user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] the grille.</span>", \
-								 "<span class='notice'>You have [anchored ? "fastened the grille to" : "unfastened the grille from"] the floor.</span>")
+			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."), \
+								 SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grille from"] the floor."))
 			return
 
 	//window placing begin //TODO CONVERT PROPERLY TO MATERIAL DATUM
@@ -119,24 +119,24 @@
 			return 0
 
 		if( !(( x == user.x ) || (y == user.y)) ) //Only supposed to work for cardinal directions.
-			to_chat(user, "<span class='notice'>You can't reach.</span>")
+			to_chat(user, SPAN_NOTICE("You can't reach."))
 			return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
 
 		for(var/obj/structure/window/WINDOW in loc)
-			to_chat(user, "<span class='notice'>There is already a window here.</span>")
+			to_chat(user, SPAN_NOTICE("There is already a window here."))
 			return
 
-		to_chat(user, "<span class='notice'>You start placing the window.</span>")
+		to_chat(user, SPAN_NOTICE("You start placing the window."))
 
 		if(do_after(user,20))
 			for(var/obj/structure/window/WINDOW in loc)
-				to_chat(user, "<span class='notice'>There is already a window here.</span>")
+				to_chat(user, SPAN_NOTICE("There is already a window here."))
 				return
 
 			var/wtype = ST.material.created_fulltile_window
 			if (ST.use(2))
 				var/obj/structure/window/WD = new wtype(loc, 1)
-				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
+				to_chat(user, SPAN_NOTICE("You place the [WD] on [src]."))
 				WD.update_icon()
 		return
 //window placing end
@@ -204,7 +204,7 @@
 	..()
 
 /obj/structure/grille/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	user.do_attack_animation(src)
 	health -= damage
 	spawn(1) healthcheck()

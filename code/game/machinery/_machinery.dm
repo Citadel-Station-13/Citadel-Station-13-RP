@@ -361,9 +361,9 @@
 		return 0
 	if(!component_parts)
 		return 0
-	to_chat(user, "<span class='notice'>Following parts detected in [src]:</span>")
+	to_chat(user, SPAN_NOTICE("Following parts detected in [src]:"))
 	for(var/obj/item/C in component_parts)
-		to_chat(user, "<span class='notice'>    [C.name]</span>")
+		to_chat(user, SPAN_NOTICE("    [C.name]"))
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
@@ -380,7 +380,7 @@
 						component_parts -= A
 						component_parts += B
 						B.loc = null
-						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
+						to_chat(user, SPAN_NOTICE("[A.name] replaced with [B.name]."))
 						break
 			update_appearance()
 			RefreshParts()
@@ -396,12 +396,12 @@
 	var/actual_time = W.tool_speed * time
 	if(actual_time != 0)
 		user.visible_message( \
-			"<span class='warning'>\The [user] begins [anchored ? "un" : ""]securing \the [src].</span>", \
-			"<span class='notice'>You start [anchored ? "un" : ""]securing \the [src].</span>")
+			SPAN_WARNING("\The [user] begins [anchored ? "un" : ""]securing \the [src]."), \
+			SPAN_NOTICE("You start [anchored ? "un" : ""]securing \the [src]."))
 	if(actual_time == 0 || do_after(user, actual_time, target = src))
 		user.visible_message( \
-			"<span class='warning'>\The [user] has [anchored ? "un" : ""]secured \the [src].</span>", \
-			"<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+			SPAN_WARNING("\The [user] has [anchored ? "un" : ""]secured \the [src]."), \
+			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
 		anchored = !anchored
 		power_change() //Turn on or off the machine depending on the status of power in the new area.
 		update_appearance()
@@ -421,7 +421,7 @@
 		return 0
 	playsound(src, S.tool_sound, 50, 1)
 	panel_open = !panel_open
-	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
+	to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the maintenance hatch of [src]."))
 	update_appearance()
 	return 1
 
@@ -430,14 +430,14 @@
 		return 0
 	if(!circuit)
 		return 0
-	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
+	to_chat(user, SPAN_NOTICE("You start disconnecting the monitor."))
 	playsound(src, S.tool_sound, 50, 1)
 	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
-			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+			to_chat(user, SPAN_NOTICE("The broken glass falls out."))
 			new /obj/item/material/shard(src.loc)
 		else
-			to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+			to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
 		. = dismantle()
 
 /obj/machinery/proc/alarm_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
@@ -454,7 +454,7 @@
 		return 0
 	if(!panel_open)
 		return 0
-	user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
+	user.visible_message(SPAN_WARNING("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 	playsound(src.loc, W.tool_sound, 50, 1)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()

@@ -34,7 +34,7 @@
 		playsound(loc,custom_open_sound, rand(10,50), 1)
 	else
 		playsound(loc,"canopen", rand(10,50), 1)
-	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
+	to_chat(user, SPAN_NOTICE("You open [src] with an audible pop!"))
 	atom_flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -54,26 +54,26 @@
 
 /obj/item/reagent_containers/food/drinks/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You need to open [src]!"))
 		return 1
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You need to open [src]!"))
 		return 1
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/standard_pour_into(var/mob/user, var/atom/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You need to open [src]!"))
 		return 1
 	if(target == loc) //prevent filling a machine with a glass you just put into it.
 		return 1
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/self_feed_message(var/mob/user)
-	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You swallow a gulp from \the [src]."))
 
 /obj/item/reagent_containers/food/drinks/feed_sound(var/mob/user)
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
@@ -81,15 +81,15 @@
 /obj/item/reagent_containers/food/drinks/examine(mob/user)
 	. = ..()
 	if(!reagents || reagents.total_volume == 0)
-		. += "<span class='notice'>\The [src] is empty!</span>"
+		. += SPAN_NOTICE("\The [src] is empty!")
 	else if (reagents.total_volume <= volume * 0.25)
-		. += "<span class='notice'>\The [src] is almost empty!</span>"
+		. += SPAN_NOTICE("\The [src] is almost empty!")
 	else if (reagents.total_volume <= volume * 0.66)
-		. += "<span class='notice'>\The [src] is half full!</span>"
+		. += SPAN_NOTICE("\The [src] is half full!")
 	else if (reagents.total_volume <= volume * 0.90)
-		. += "<span class='notice'>\The [src] is almost full!</span>"
+		. += SPAN_NOTICE("\The [src] is almost full!")
 	else
-		. += "<span class='notice'>\The [src] is full!</span>"
+		. += SPAN_NOTICE("\The [src] is full!")
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -297,7 +297,7 @@
 			var/obj/structure/reagent_dispensers/water_cooler/W = over_object
 			if(W.cupholder && W.cups < 10)
 				W.cups++
-				to_chat(usr, "<span class='notice'>You put the [src] in the cup dispenser.</span>")
+				to_chat(usr, SPAN_NOTICE("You put the [src] in the cup dispenser."))
 				qdel(src)
 				W.update_icon()
 	else

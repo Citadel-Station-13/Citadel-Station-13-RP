@@ -31,7 +31,7 @@
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	check_owner()
-	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
+	to_chat(user, SPAN_NOTICE("The [name] glows pleasantly blue."))
 	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/proc/check_owner()

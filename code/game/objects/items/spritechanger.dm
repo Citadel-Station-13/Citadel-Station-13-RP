@@ -27,7 +27,7 @@ after the sprite has been set you can use it again to remove overlays that may h
 			if (newPath && newState)
 				path = newPath
 				state =  newState
-				to_chat(user, "<span class='notice'>You set the path to [newPath] and the state to [newState]</span>")
+				to_chat(user, SPAN_NOTICE("You set the path to [newPath] and the state to [newState]"))
 
 /obj/item/spritechanger/AltClick(mob/user)
 	path = ""

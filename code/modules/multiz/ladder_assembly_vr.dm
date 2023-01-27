@@ -38,14 +38,14 @@
 					"You hear a ratchet")
 				src.anchored = 0
 			if(CONSTRUCTION_WELDED)
-				to_chat(user, "<span class='warning'>\The [src] needs to be unwelded.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] needs to be unwelded."))
 		return
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 		switch(state)
 			if(CONSTRUCTION_UNANCHORED)
-				to_chat(user, "<span class='warning'>The refinforcing bolts need to be secured.</span>")
+				to_chat(user, SPAN_WARNING("The refinforcing bolts need to be secured."))
 			if(CONSTRUCTION_WRENCHED)
 				if(WT.remove_fuel(0, user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -58,7 +58,7 @@
 						to_chat(user, "You weld \the [src] to the floor.")
 						try_construct(user)
 				else
-					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			if(CONSTRUCTION_WELDED)
 				if(WT.remove_fuel(0, user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -70,7 +70,7 @@
 						state = CONSTRUCTION_WRENCHED
 						to_chat(user, "You cut \the [src] free from the floor.")
 				else
-					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 		return
 
 // Try to construct this into a real stairway.
@@ -87,7 +87,7 @@
 		var/obj/structure/ladder_assembly/LA = locate(/obj/structure/ladder_assembly, T)
 		if(!LA) continue
 		if(LA.state != CONSTRUCTION_WELDED)
-			to_chat(user, "<span class='warning'>\The [LA] [direction == UP ? "above" : "below"] must be secured and welded.</span>")
+			to_chat(user, SPAN_WARNING("\The [LA] [direction == UP ? "above" : "below"] must be secured and welded."))
 			return
 		if(direction == UP)
 			above = LA
@@ -95,7 +95,7 @@
 			below = LA
 
 	if(!above && !below)
-		to_chat(user, "<span class='notice'>\The [src] is ready to be connected to from above or below.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is ready to be connected to from above or below."))
 		return
 
 	// Construct them from bottom to top, because they initialize from top to bottom.

@@ -7,7 +7,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
 	if(world.time < usr.next_move)
-		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+		to_chat(usr, SPAN_WARNING("Don't spam character directory refresh."))
 		return
 	usr.setClickCooldown(10)
 
@@ -110,7 +110,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		if("refresh")
 			// This is primarily to stop malicious users from trying to lag the server by spamming this verb
 			if(world.time < usr.next_move)
-				to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+				to_chat(usr, SPAN_WARNING("Don't spam character directory refresh."))
 				return
 			usr.applyMoveCooldown(10)
 			update_static_data(usr, ui)
@@ -129,7 +129,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 			return TRUE
 		if("setVisible")
 			usr?.client?.prefs?.show_in_directory = !usr?.client?.prefs?.show_in_directory
-			to_chat(usr, "<span class='notice'>You are now [usr.client.prefs.show_in_directory ? "shown" : "not shown"] in the directory.</span>")
+			to_chat(usr, SPAN_NOTICE("You are now [usr.client.prefs.show_in_directory ? "shown" : "not shown"] in the directory."))
 			return TRUE
 		if("editAd")
 			if(!usr?.client?.prefs)

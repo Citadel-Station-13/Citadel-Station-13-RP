@@ -31,7 +31,7 @@
 
 /obj/item/implant/reagent_generator/post_implant(mob/living/carbon/source)
 	START_PROCESSING(SSobj, src)
-	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
+	to_chat(source, SPAN_NOTICE("You implant [source] with \the [src]."))
 	assigned_proc = new assigned_proc(source, verb_name, verb_desc)
 	return 1
 
@@ -50,9 +50,9 @@
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(imp_in, "<span class='notice'>[pick(empty_message)]</span>")
+			to_chat(imp_in, SPAN_NOTICE("[pick(empty_message)]"))
 		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(imp_in, "<span class='warning'>[pick(full_message)]</span>")
+			to_chat(imp_in, SPAN_WARNING("[pick(full_message)]"))
 
 /obj/item/implant/reagent_generator/proc/do_generation()
 	imp_in.nutrition -= gen_cost
@@ -76,7 +76,7 @@
 
 	var/obj/item/reagent_containers/container = user.get_active_held_item()
 	if(!container)
-		to_chat(user,"<span class='notice'>You need an open container to do this!</span>")
+		to_chat(user,SPAN_NOTICE("You need an open container to do this!"))
 		return
 
 
@@ -90,10 +90,10 @@
 		if(container.reagents.total_volume < container.volume)
 			var/container_name = container.name
 			if(rimplant.reagents.trans_to(container, amount = rimplant.transfer_amount))
-				user.visible_message("<span class='notice'>[usr] [pick(rimplant.emote_descriptor)] into \the [container_name].</span>",
-									"<span class='notice'>You [pick(rimplant.self_emote_descriptor)] some [rimplant.reagent_name] into \the [container_name].</span>")
+				user.visible_message(SPAN_NOTICE("[usr] [pick(rimplant.emote_descriptor)] into \the [container_name]."),
+									SPAN_NOTICE("You [pick(rimplant.self_emote_descriptor)] some [rimplant.reagent_name] into \the [container_name]."))
 				if(prob(5))
-					src.visible_message("<span class='notice'>[src] [pick(rimplant.random_emote)].</span>") // M-mlem.
+					src.visible_message(SPAN_NOTICE("[src] [pick(rimplant.random_emote)].")) // M-mlem.
 			if(rimplant.reagents.total_volume == rimplant.reagents.maximum_volume * 0.05)
-				to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
+				to_chat(src, SPAN_NOTICE("[pick(rimplant.empty_message)]"))
 

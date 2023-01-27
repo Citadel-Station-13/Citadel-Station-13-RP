@@ -29,7 +29,7 @@
 /obj/structure/closet/body_bag/cryobag/robobag/examine(mob/user)
 	. = ..()
 	if(Adjacent(user) && corptag)
-		. += "<span class='notice'>\The [src] has a [corptag] attached to it.</span>"
+		. += SPAN_NOTICE("\The [src] has a [corptag] attached to it.")
 
 /obj/structure/closet/body_bag/cryobag/robobag/update_icon()
 	cut_overlays()
@@ -53,7 +53,7 @@
 		..()
 	if(corptag)
 		corptag.forceMove(get_turf(user))
-		to_chat(user, "<span class='notice'>You remove \the [corptag] from \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove \the [corptag] from \the [src]."))
 		corptag = null
 		update_icon()
 		return
@@ -94,12 +94,12 @@
 				var/old_tag = corptag
 				corptag.forceMove(get_turf(src))
 				corptag = W
-				to_chat(user, "<span class='notice'>You swap \the [old_tag] for \the [corptag].</span>")
+				to_chat(user, SPAN_NOTICE("You swap \the [old_tag] for \the [corptag]."))
 			else
 				if(!user.attempt_void_item_for_installation(W))
 					return
 				corptag = W
-				to_chat(user, "<span class='notice'>You attach \the [corptag] to \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You attach \the [corptag] to \the [src]."))
 			update_icon()
 
 		else

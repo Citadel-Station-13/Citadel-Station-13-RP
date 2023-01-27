@@ -38,7 +38,7 @@
 	return FALSE
 
 /obj/machinery/mech_sensor/proc/give_feedback(O as obj)
-	var/block_message = "<span class='warning'>Movement control overridden. Area denial active.</span>"
+	var/block_message = SPAN_WARNING("Movement control overridden. Area denial active.")
 	var/feedback_timer = 0
 	if(feedback_timer)
 		return

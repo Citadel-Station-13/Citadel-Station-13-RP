@@ -10,7 +10,7 @@
 	. = ..()
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!reagents || reagents.total_volume == 0)
-			to_chat(user, "<span class='warning'>You pierce the [src] with the screwdriver.</span>")
+			to_chat(user, SPAN_WARNING("You pierce the [src] with the screwdriver."))
 			var/turf/T = get_turf(src)
 			new modified_type(T)
 			qdel(src)

@@ -45,13 +45,13 @@
 				accept = TRUE
 		for(var/atom/At in src.contents)
 			if(isliving(At))
-				to_chat(user, "<span class='notice'>Your net is already holding something!</span>")
+				to_chat(user, SPAN_NOTICE("Your net is already holding something!"))
 				accept = FALSE
 		if(!accept)
 			to_chat(user, "[A] can't be trapped in \the [src].")
 			return
 		var/mob/L = A
-		user.visible_message("<span class='notice'>[user] snatches [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] snatches [L] with \the [src]."), SPAN_NOTICE("You snatch [L] with \the [src]."))
 		L.forceMove(src)
 		update_icon()
 		update_weight()
@@ -61,10 +61,10 @@
 /obj/item/material/fishing_net/attack_self(var/mob/user)
 	for(var/mob/M in src)
 		M.forceMove(get_turf(src))
-		user.visible_message("<span class='notice'>[user] releases [M] from \the [src].</span>", "<span class='notice'>You release [M] from \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] releases [M] from \the [src]."), SPAN_NOTICE("You release [M] from \the [src]."))
 	for(var/obj/item/I in src)
 		I.forceMove(get_turf(src))
-		user.visible_message("<span class='notice'>[user] dumps \the [I] out of \the [src].</span>", "<span class='notice'>You dump \the [I] out of \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] dumps \the [I] out of \the [src]."), SPAN_NOTICE("You dump \the [I] out of \the [src]."))
 	update_icon()
 	update_weight()
 	return

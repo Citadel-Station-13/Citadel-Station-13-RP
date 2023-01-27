@@ -94,9 +94,9 @@
 
 /obj/item/surgical/scalpel/suicide_act(mob/user)
 		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		user.visible_message(pick(SPAN_DANGER("\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide."), \
+		                      SPAN_DANGER("\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide."), \
+		                      SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.")))
 		return (BRUTELOSS)
 
 /*
@@ -322,9 +322,9 @@
 
 /obj/item/surgical/scalpel_primitive/suicide_act(mob/user)
 		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		user.visible_message(pick(SPAN_DANGER("\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide."), \
+		                      SPAN_DANGER("\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide."), \
+		                      SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.")))
 		return (BRUTELOSS)
 
 /obj/item/surgical/saw_primitive

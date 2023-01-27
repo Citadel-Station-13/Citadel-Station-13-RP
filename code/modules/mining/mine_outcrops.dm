@@ -90,9 +90,9 @@
 
 /obj/structure/outcrop/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pickaxe))
-		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("[user] begins to hack away at \the [src]."))
 		if(do_after(user,40))
-			to_chat(user, "<span class='notice'>You have finished digging!</span>")
+			to_chat(user, SPAN_NOTICE("You have finished digging!"))
 			for(var/i=0;i<(rand(mindrop,upperdrop));i++)
 				new outcropdrop(get_turf(src))
 			qdel(src)

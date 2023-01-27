@@ -99,7 +99,7 @@
 		if(transfer_choice != "Yes" || QDELETED(src) || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERY, NO_TK))
 			return
 		log_game("[key_name(user)] golem-swapped into [src]")
-		user.visible_message("<span class='notice'>A faint light leaves [user], moving to [src] and animating it!</span>","<span class='notice'>You leave your old body behind, and transfer into [src]!</span>")
+		user.visible_message(SPAN_NOTICE("A faint light leaves [user], moving to [src] and animating it!"),SPAN_NOTICE("You leave your old body behind, and transfer into [src]!"))
 		var/mob/living/created = I.Run(user.client, loc, list(
 			"species" = golem_species_override,
 			"name" = user.real_name

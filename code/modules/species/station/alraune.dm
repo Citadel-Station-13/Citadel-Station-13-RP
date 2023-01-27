@@ -285,10 +285,10 @@
 
 		if(breath.temperature <= breath_cold_level_1)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel icicles forming on your skin!</span>")
+				to_chat(H, SPAN_DANGER("You feel icicles forming on your skin!"))
 		else if(breath.temperature >= breath_heat_level_1)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel yourself smouldering in the heat!</span>")
+				to_chat(H, SPAN_DANGER("You feel yourself smouldering in the heat!"))
 
 		var/bodypart = pick(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		if(breath.temperature >= breath_heat_level_1)

@@ -87,21 +87,21 @@
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(rigged)
-			to_chat(user, "<span class='notice'>[src] is already rigged!</span>")
+			to_chat(user, SPAN_NOTICE("[src] is already rigged!"))
 			return
 		if (C.use(1))
-			to_chat(user, "<span class='notice'>You rig [src].</span>")
+			to_chat(user, SPAN_NOTICE("You rig [src]."))
 			rigged = 1
 			return
 	else if(istype(W, /obj/item/radio/electropack))
 		if(rigged)
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
-			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You attach [W] to [src]."))
 			return
 	else if(W.is_wirecutter())
 		if(rigged)
-			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
+			to_chat(user, SPAN_NOTICE("You cut away the wiring."))
 			playsound(src.loc, W.tool_sound, 100, 1)
 			rigged = 0
 			return
@@ -158,15 +158,15 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		to_chat(user, "<span class='notice'>Close the crate first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the crate first."))
 		return
 	if(src.broken)
-		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
+		to_chat(user, SPAN_WARNING("The crate appears to be broken."))
 		return
 	if(src.allowed(user))
 		set_locked(!locked, user)
 	else
-		to_chat(user, "<span class='notice'>Access Denied</span>")
+		to_chat(user, SPAN_NOTICE("Access Denied"))
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
 	if(locked == newlocked)
@@ -175,7 +175,7 @@
 	locked = newlocked
 	if(user)
 		for(var/mob/O in viewers(user, 3))
-			O.show_message( "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>", 1)
+			O.show_message( SPAN_NOTICE("The crate has been [locked ? null : "un"]locked by [user]."), 1)
 
 	set_overlays(locked ? redlight : greenlight)
 
@@ -191,7 +191,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
@@ -224,7 +224,7 @@
 		playsound(src.loc, "sparks", 60, 1)
 		locked = 0
 		broken = 1
-		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You unlock \the [src]."))
 		return 1
 
 /obj/structure/closet/crate/secure/emp_act(severity)
@@ -408,12 +408,12 @@
 /obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && !src.opened)
 		if(anchored)
-			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			user.show_message(text(SPAN_NOTICE("[src] can now be moved.")))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
-			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			user.show_message(text(SPAN_NOTICE("[src] is now secured.")))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else

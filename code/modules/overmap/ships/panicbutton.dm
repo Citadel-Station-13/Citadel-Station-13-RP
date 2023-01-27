@@ -32,20 +32,20 @@
 
 	// Already launched
 	if(launched)
-		to_chat(user, "<span class='warning'>The button is already depressed; the beacon has been launched already.</span>")
+		to_chat(user, SPAN_WARNING("The button is already depressed; the beacon has been launched already."))
 	// Glass present
 	else if(glass)
 		if(user.a_intent == INTENT_HARM)
-			visible_message("<span class='warning'>smashes the glass on [src]!</span>")
+			visible_message(SPAN_WARNING("smashes the glass on [src]!"))
 			glass = FALSE
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg')
 			update_icon()
 		else
-			visible_message("<span class='notice'>pats [src] in a friendly manner.</span>")
-			to_chat(user, "<span class='warning'>If you're trying to break the glass, you'll have to hit it harder than that...</span>")
+			visible_message(SPAN_NOTICE("pats [src] in a friendly manner."))
+			to_chat(user, SPAN_WARNING("If you're trying to break the glass, you'll have to hit it harder than that..."))
 	// Must be !glass and !launched
 	else
-		user.custom_emote("<span class='warning'>pushes the button on [src]!</span>")
+		user.custom_emote(SPAN_WARNING("pushes the button on [src]!"))
 		launch(user)
 		playsound(src, get_sfx("button"))
 		update_icon()
@@ -56,7 +56,7 @@
 	launched = TRUE
 	var/obj/effect/overmap/visitable/S = get_overmap_sector(z)
 	if(!S)
-		visible_message("<span class='danger'>Distress button hit on z[z] but that's not an overmap sector...</span>")
+		visible_message(SPAN_DANGER("Distress button hit on z[z] but that's not an overmap sector..."))
 		return
 	S.distress(user)
 

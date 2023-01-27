@@ -33,7 +33,7 @@
 			if(player_to_ignore)
 				player_to_ignore = sanitize(ckey(player_to_ignore))
 				if(player_to_ignore == user.ckey)
-					to_chat(user, "<span class='notice'>You can't ignore yourself.</span>")
+					to_chat(user, SPAN_NOTICE("You can't ignore yourself."))
 					return PREFERENCES_REFRESH
 				pref.ignored_players |= player_to_ignore
 			return PREFERENCES_REFRESH

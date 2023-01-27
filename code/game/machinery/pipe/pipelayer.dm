@@ -62,16 +62,16 @@
 		var/answer = alert(user, "Do you want to eject all the metal in \the [src]?", , "Yes","No")
 		if(answer == "Yes")
 			var/amount_ejected = eject_metal()
-			user.visible_message("<span class='notice'>[user] removes [amount_ejected] sheet\s of [MAT_STEEL] from the \the [src].</span>",
-				"<span class='notice'>You remove [amount_ejected] sheet\s of [MAT_STEEL] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] removes [amount_ejected] sheet\s of [MAT_STEEL] from the \the [src]."),
+				SPAN_NOTICE("You remove [amount_ejected] sheet\s of [MAT_STEEL] from \the [src]."))
 		return
 	if(!metal && !on)
-		to_chat(user, "<span class='warning'>\The [src] doesn't work without metal.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] doesn't work without metal."))
 		return
 	on = !on
 	old_turf = get_turf(src)
 	old_dir = dir
-	user.visible_message("<span class='notice'>[user] has [!on?"de":""]activated \the [src].</span>", "<span class='notice'>You [!on?"de":""]activate \the [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has [!on?"de":""]activated \the [src]."), SPAN_NOTICE("You [!on?"de":""]activate \the [src]."))
 	return
 
 /obj/machinery/pipelayer/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -84,30 +84,30 @@
 	if (!panel_open && W.is_wrench())
 		P_type_t = input("Choose pipe type", "Pipe type") as null|anything in Pipes
 		P_type = Pipes[P_type_t]
-		user.visible_message("<span class='notice'>[user] has set \the [src] to manufacture [P_type_t].</span>", "<span class='notice'>You set \the [src] to manufacture [P_type_t].</span>")
+		user.visible_message(SPAN_NOTICE("[user] has set \the [src] to manufacture [P_type_t]."), SPAN_NOTICE("You set \the [src] to manufacture [P_type_t]."))
 		return
 	if(!panel_open && W.is_crowbar())
 		a_dis = !a_dis
-		user.visible_message("<span class='notice'>[user] has [!a_dis?"de":""]activated auto-dismantling.</span>", "<span class='notice'>You [!a_dis?"de":""]activate auto-dismantling.</span>")
+		user.visible_message(SPAN_NOTICE("[user] has [!a_dis?"de":""]activated auto-dismantling."), SPAN_NOTICE("You [!a_dis?"de":""]activate auto-dismantling."))
 		return
 	if(istype(W, /obj/item/pipe))
 		// NOTE - We must check for matter, otherwise the (free) pipe dispenser can be used to get infinite steel.
 		if(!W.matter || W.matter[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
-			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [MAT_STEEL] to recycle.</span>")
+			to_chat(user, SPAN_WARNING("\The [W] doesn't contain enough [MAT_STEEL] to recycle."))
 		else if(metal + pipe_cost > max_metal)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is full."))
 		else if(user.attempt_consume_item_for_construction(W))
 			metal += pipe_cost
-			to_chat(user, "<span class='notice'>You recycle \the [W].</span>")
+			to_chat(user, SPAN_NOTICE("You recycle \the [W]."))
 		return
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
 		var/result = load_metal(W)
 		if(isnull(result))
-			to_chat(user, "<span class='warning'>Unable to load [W] - no metal found.</span>")
+			to_chat(user, SPAN_WARNING("Unable to load [W] - no metal found."))
 		else if(!result)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is full."))
 		else
-			user.visible_message("<span class='notice'>[user] has loaded metal into \the [src].</span>", "<span class='notice'>You load metal into \the [src]</span>")
+			user.visible_message(SPAN_NOTICE("[user] has loaded metal into \the [src]."), SPAN_NOTICE("You load metal into \the [src]"))
 		return
 
 	..()

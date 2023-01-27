@@ -203,21 +203,21 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	else
 		if(percent_unstable > 0.1 && prob(percent_unstable*100))
 			if(plasma_temperature < 2000)
-				visible_message("<span class='danger'>\The [src] ripples uneasily, like a disturbed pond.</span>")
+				visible_message(SPAN_DANGER("\The [src] ripples uneasily, like a disturbed pond."))
 			else
 				var/flare
 				var/fuel_loss
 				var/rupture
 				if(percent_unstable > 0.2)
-					visible_message("<span class='danger'>\The [src] ripples uneasily, like a disturbed pond.</span>")
+					visible_message(SPAN_DANGER("\The [src] ripples uneasily, like a disturbed pond."))
 					flare = prob(25)
 				else if(percent_unstable > 0.5)
-					visible_message("<span class='danger'>\The [src] undulates violently, shedding plumes of plasma!</span>")
+					visible_message(SPAN_DANGER("\The [src] undulates violently, shedding plumes of plasma!"))
 					flare = prob(50)
 					fuel_loss = prob(20)
 					rupture = prob(5)
 				else if(percent_unstable > 0.8)
-					visible_message("<span class='danger'>\The [src] is wracked by a series of horrendous distortions, buckling and twisting like a living thing!</span>")
+					visible_message(SPAN_DANGER("\The [src] is wracked by a series of horrendous distortions, buckling and twisting like a living thing!"))
 					flare = 1
 					fuel_loss = prob(50)
 					rupture = prob(25)
@@ -257,11 +257,11 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		critical += 0.6
 	if(critical >= 25 && prob(percent_unstable*100))
 		if (critical >= 90)
-			visible_message("<span class='danger'>\The [src] rumbles and quivers violently, threatening to break free!</span>")
+			visible_message(SPAN_DANGER("\The [src] rumbles and quivers violently, threatening to break free!"))
 		else if(critical >= 50)
-			visible_message("<span class='danger'>\The [src] rumbles and quivers energetically, the walls distorting slightly.</span>")
+			visible_message(SPAN_DANGER("\The [src] rumbles and quivers energetically, the walls distorting slightly."))
 		else if(critical >= 25)
-			visible_message("<span class='danger'>\The [src] rumbles and quivers slightly, vibrating the deck.</span>")
+			visible_message(SPAN_DANGER("\The [src] rumbles and quivers slightly, vibrating the deck."))
 */
 /obj/effect/fusion_em_field/proc/ChangeFieldStrength(var/new_strength)
 	var/calc_size = 1
@@ -336,7 +336,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			if(!isobj(AM) && !ismob(AM))
 				continue
 
-			AM.visible_message("<span class='danger'>The field buckles visibly around \the [AM]!</span>")
+			AM.visible_message(SPAN_DANGER("The field buckles visibly around \the [AM]!"))
 			tick_instability += rand(30,50)
 			AM.emp_act(empsev)
 
@@ -554,7 +554,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		light_min_power = alpha
 		light_min_range = alpha
 		light_max_range = alpha
-		visible_message("<span class='danger'>\The [src] flares to eye-searing brightness!</span>")
+		visible_message(SPAN_DANGER("\The [src] flares to eye-searing brightness!"))
 		sleep(60)
 		temp_color()
 		//plasma_temperature -= lost_plasma
@@ -563,7 +563,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 
 /obj/effect/fusion_em_field/proc/Rupture()
-	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
+	visible_message(SPAN_DANGER("\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!"))
 	set_light(15, 15, "#CCCCFF")
 	empulse(get_turf(src), CEILING(plasma_temperature/1000, 1), CEILING(plasma_temperature/300, 1))
 	GLOB.global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")
@@ -591,7 +591,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	return
 
 /obj/effect/fusion_em_field/proc/MRC() //spews electromagnetic pulses in an area around the core.
-	visible_message("<span class='danger'>\The [src] glows an extremely bright pink and flares out of existance!</span>")
+	visible_message(SPAN_DANGER("\The [src] glows an extremely bright pink and flares out of existance!"))
 	GLOB.global_announcer.autosay("Warning! Magnetic Resonance Cascade detected! Brace for electronic system distruption.", "Field Stability Monitor")
 	set_light(15, 15, "#ff00d8")
 	var/list/things_in_range = range(15, owned_core)
@@ -644,7 +644,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	return
 
 /obj/effect/fusion_em_field/proc/BluespaceQuenchEvent() //!!FUN!! causes a number of explosions in an area around the core. Will likely destory or heavily damage the reactor.
-	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
+	visible_message(SPAN_DANGER("\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!"))
 	set_light(15, 15, "#CCCCFF")
 	empulse(get_turf(src), CEILING(plasma_temperature/1000, 1), CEILING(plasma_temperature/300, 1))
 	GLOB.global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")

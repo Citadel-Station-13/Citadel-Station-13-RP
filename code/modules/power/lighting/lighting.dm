@@ -75,14 +75,14 @@ var/global/list/light_type_cache = list()
 		else
 			to_chat(user, "The casing has no power cell for backup power.")
 	else
-		to_chat(user, "<span class='danger'>This casing doesn't support power cells for backup power.</span>")
+		to_chat(user, SPAN_DANGER("This casing doesn't support power cells for backup power."))
 
 /obj/machinery/light_construct/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return . // obj/machinery/attack_hand returns 1 if user can't use the machine
 	if(cell)
-		user.visible_message("[user] removes [cell] from [src]!","<span class='notice'>You remove [cell].</span>")
+		user.visible_message("[user] removes [cell] from [src]!",SPAN_NOTICE("You remove [cell]."))
 		user.put_in_hands(cell)
 		cell.update_icon()
 		cell = null
@@ -91,14 +91,14 @@ var/global/list/light_type_cache = list()
 	src.add_fingerprint(user)
 	if(istype(W, /obj/item/cell/emergency_light))
 		if(!cell_connectors)
-			to_chat(user, "<span class='warning'>This [name] can't support a power cell!</span>")
+			to_chat(user, SPAN_WARNING("This [name] can't support a power cell!"))
 			return
 		if(cell)
-			to_chat(user, "<span class='warning'>There is a power cell already installed!</span>")
+			to_chat(user, SPAN_WARNING("There is a power cell already installed!"))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
-		user.visible_message("<span class='notice'>[user] hooks up [W] to [src].</span>", \
-		"<span class='notice'>You add [W] to [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] hooks up [W] to [src]."), \
+		SPAN_NOTICE("You add [W] to [src]."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		cell = W
 		add_fingerprint(user)
@@ -532,7 +532,7 @@ var/global/list/light_type_cache = list()
 		return
 	if(!(status == LIGHT_OK||status == LIGHT_BURNED))
 		return
-	visible_message("<span class='danger'>[user] smashes the light!</span>")
+	visible_message(SPAN_DANGER("[user] smashes the light!"))
 	user.do_attack_animation(src)
 	broken()
 	return 1
@@ -683,7 +683,7 @@ var/global/list/light_type_cache = list()
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 
 	if(!lamp_shade)
 		if(istype(W, /obj/item/lampshade))
@@ -738,7 +738,7 @@ var/global/list/light_type_cache = list()
 	if(!has_emergency_power(pwr))
 		return FALSE
 	if(cell.charge > 300) //it's meant to handle 120 W, ya doofus
-		visible_message("<span class='warning'>[src] short-circuits from too powerful of a power cell!</span>")
+		visible_message(SPAN_WARNING("[src] short-circuits from too powerful of a power cell!"))
 		status = LIGHT_BURNED
 		return FALSE
 	cell.use(pwr)
@@ -763,7 +763,7 @@ var/global/list/light_type_cache = list()
 // ai attack - turn on/off emergency lighting for a specific fixture
 /obj/machinery/light/attack_ai(mob/user)
 	no_emergency = !no_emergency
-	to_chat(user, "<span class='notice'>Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"].</span>")
+	to_chat(user, SPAN_NOTICE("Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"]."))
 	update(FALSE)
 
 // ai alt click - Make light flicker.  Very important for atmosphere.

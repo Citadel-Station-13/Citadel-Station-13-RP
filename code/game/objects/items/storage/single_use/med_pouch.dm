@@ -56,7 +56,7 @@
 /*handled by single_use
 /obj/item/storage/single_use/med_pouch/open(mob/user)
 	if(!opened)
-		user.visible_message("<span class='notice'></span>", "<span class='notice'></span>")
+		user.visible_message(SPAN_NOTICE(""), SPAN_NOTICE(""))
 	. = ..()*/
 
 /obj/item/storage/single_use/med_pouch/trauma

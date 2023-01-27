@@ -78,27 +78,27 @@ AI MODULES
 	else if(istype(AM, /mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
 		if(R.stat == DEAD)
-			to_chat(user, "<span class='warning'>Law Upload Error: Unit is nonfunctional.</span>")
+			to_chat(user, SPAN_WARNING("Law Upload Error: Unit is nonfunctional."))
 			return
 		if(R.emagged)
-			to_chat(user, "<span class='warning'>Law Upload Error: Cannot obtain write access to laws.</span>")
-			to_chat(R, "<span class='danger'>Law modification attempt detected.  Blocking.</span>")
+			to_chat(user, SPAN_WARNING("Law Upload Error: Cannot obtain write access to laws."))
+			to_chat(R, SPAN_DANGER("Law modification attempt detected.  Blocking."))
 			return
 		if(R.connected_ai)
-			to_chat(user, "<span class='warning'>Law Upload Error: Unit is slaved to an AI.</span>")
+			to_chat(user, SPAN_WARNING("Law Upload Error: Unit is slaved to an AI."))
 			return
 
-		R.visible_message("<span class='danger'>\The [user] slides a law module into \the [R].</span>")
-		to_chat(R, "<span class='danger'>Local law upload in progress.</span>")
-		to_chat(user, "<span class='notice'>Uploading laws from board.  This will take a moment...</span>")
+		R.visible_message(SPAN_DANGER("\The [user] slides a law module into \the [R]."))
+		to_chat(R, SPAN_DANGER("Local law upload in progress."))
+		to_chat(user, SPAN_NOTICE("Uploading laws from board.  This will take a moment..."))
 		if(do_after(user, 10 SECONDS))
 			transmitInstructions(R, user)
 			to_chat(R, "These are your laws now:")
 			R.show_laws()
-			to_chat(user, "<span class='notice'>Law upload complete.  Unit's laws have been modified.</span>")
+			to_chat(user, SPAN_NOTICE("Law upload complete.  Unit's laws have been modified."))
 		else
-			to_chat(user, "<span class='warning'>Law Upload Error: Law board was removed before upload was complete.  Aborting.</span>")
-			to_chat(R, "<span class='notice'>Law upload aborted.</span>")
+			to_chat(user, SPAN_WARNING("Law Upload Error: Law board was removed before upload was complete.  Aborting."))
+			to_chat(R, SPAN_NOTICE("Law upload aborted."))
 
 
 /obj/item/aiModule/proc/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
@@ -389,7 +389,7 @@ AI MODULES
 	log_law_changes(target, sender)
 
 	lawchanges.Add("The law is '[newFreeFormLaw]'")
-	to_chat(target, "<span class='danger'>BZZZZT</span>")
+	to_chat(target, SPAN_DANGER("BZZZZT"))
 	var/law = "[newFreeFormLaw]"
 	target.add_ion_law(law)
 	target.show_laws()

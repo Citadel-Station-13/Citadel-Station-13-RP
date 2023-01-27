@@ -17,7 +17,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			return blocked
 		M.death(0)
 
@@ -32,12 +32,12 @@
 	. = ..()
 	if(isliving(target))
 		if(target.anti_magic_check())
-			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			target.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			return blocked
 		if(target.revive()) // full_heal = TRUE
-			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
+			to_chat(target, SPAN_NOTICE("You rise with a start, you're alive!!!"))
 		else if(target.stat != DEAD)
-			to_chat(target, "<span class='notice'>You feel great!</span>")
+			to_chat(target, SPAN_NOTICE("You feel great!"))
 
 /obj/item/projectile/magic/teleport
 	name = "bolt of teleportation"
@@ -53,7 +53,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] fizzles on contact with [target]!"))
 			return blocked
 	var/teleammount = 0
 	var/teleloc = target
@@ -108,7 +108,7 @@
 	if(ismob(change))
 		var/mob/M = change
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [M]!</span>")
+			M.visible_message(SPAN_WARNING("[src] fizzles on contact with [M]!"))
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	wabbajack(change)
@@ -234,7 +234,7 @@
 
 	M.wabbajack_act(new_mob)
 
-	to_chat(new_mob, "<span class='warning'>Your form morphs into that of a [randomize].</span>")
+	to_chat(new_mob, SPAN_WARNING("Your form morphs into that of a [randomize]."))
 
 	var/poly_msg = CONFIG_GET(keyed_list/policy)["polymorph"]
 	if(poly_msg)
@@ -274,7 +274,7 @@
 				if(L.mind)
 					L.mind.transfer_to(S)
 					if(owner)
-						to_chat(S, "<span class='userdanger'>You are an animated statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
+						to_chat(S, SPAN_USERDANGER("You are an animated statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator."))
 				P.forceMove(S)
 				return
 		else
@@ -302,7 +302,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			qdel(src)
 			return
 	. = ..()
@@ -321,7 +321,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			qdel(src)
 			return
 	. = ..()
@@ -341,7 +341,7 @@
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [A]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [A]!"))
 			qdel(src)
 			return
 		if(M.anchored)
@@ -433,7 +433,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] fizzles on contact with [target]!"))
 			qdel(src)
 		return blocked
 	tesla_zap(src, zap_range, zap_power)
@@ -461,7 +461,7 @@
 	if(ismob(target))
 		var/mob/living/M = target
 		if(M.anti_magic_check())
-			visible_message("<span class='warning'>[src] vanishes into smoke on contact with [target]!</span>")
+			visible_message(SPAN_WARNING("[src] vanishes into smoke on contact with [target]!"))
 			return
 		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, your at about 65 damage if you stop drop and roll immediately
 	var/turf/T = get_turf(target)
@@ -498,7 +498,7 @@
 		if(target == victim)
 			return
 		used = 1
-		visible_message("<span class='danger'>[victim] slams into [target] with explosive force!</span>")
+		visible_message(SPAN_DANGER("[victim] slams into [target] with explosive force!"))
 		explosion(src, 2, 3, 4, -1, TRUE, FALSE, 5)
 	else
 		used = 1
@@ -538,7 +538,7 @@
 	var/mob/living/carbon/M = target
 	if(ismob(target))
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			return
 
 	if(iscarbon(target))
@@ -564,10 +564,10 @@
 	var/mob/living/carbon/M = target
 	if(ismob(target))
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message(SPAN_WARNING("[src] vanishes on contact with [target]!"))
 			return
 	if(iscarbon(target))
-		M.visible_message("<span class='warning'>[src] mends [target]!</span>")
+		M.visible_message(SPAN_WARNING("[src] mends [target]!"))
 		M.adjustBruteLoss(-5) //HEALS
 		M.adjustOxyLoss(-5)
 		M.adjustBruteLoss(-5)

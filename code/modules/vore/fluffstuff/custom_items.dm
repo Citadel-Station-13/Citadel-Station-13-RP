@@ -50,17 +50,17 @@
 	else
 		return
 	if(!(parts & flag))
-		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
+		to_chat(user, SPAN_WARNING("This kit has no parts for this modification left."))
 		return
 	if(istype(O,to_type))
-		to_chat(user, "<span class='notice'>[O] is already modified.</span>")
+		to_chat(user, SPAN_NOTICE("[O] is already modified."))
 		return
 	if(!isturf(O.loc))
-		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
+		to_chat(user, SPAN_WARNING("[O] must be safely placed on the ground for modification."))
 		return
 	playsound(user.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 	var/N = new to_type(O.loc)
-	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [O] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [O] into \the [N].</span>")
+	user.visible_message(SPAN_WARNING("[user] opens \the [src] and modifies \the [O] into \the [N]."),SPAN_WARNING("You open \the [src] and modify \the [O] into \the [N]."))
 	qdel(O)
 	parts &= ~flag
 	if(!parts)
@@ -92,7 +92,7 @@
 /obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
@@ -106,7 +106,7 @@
 /obj/item/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
@@ -141,11 +141,11 @@
 
 /obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
+		user.visible_message(SPAN_WARNING("[user] flashes their golden security badge.\nIt reads:NT Security."),SPAN_WARNING("You display the faded badge.\nIt reads: NT Security."))
 
 /obj/item/card/id/centcom/station/fluff/joanbadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
+		user.visible_message(SPAN_WARNING("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_WARNING("You invade [M]'s personal space, thrusting [src] into their face insistently."))
 
 //JoanRisu:Joan Risu
 /obj/item/pda/heads/hos/joanpda
@@ -210,14 +210,14 @@
 
 /obj/item/flag/attack_self(mob/user as mob)
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
+		user.visible_message(SPAN_WARNING("[user] waves their Banner around!"),SPAN_WARNING("You wave your Banner around."))
 
 /obj/item/flag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
+		user.visible_message(SPAN_WARNING("[user] invades [target]'s personal space, thrusting [src] into their face insistently."),SPAN_WARNING("You invade [target]'s personal space, thrusting [src] into their face insistently."))
 
 /obj/item/flag/federation
 	name = "Federation Banner"
@@ -311,13 +311,13 @@
 		//O.icon = icon // just in case we're using custom sprite paths with fluff items.
 		O.icon_state = new_icon // Changes the icon without changing the access.
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
-		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
+		user.visible_message(SPAN_WARNING(" [user] reprints their ID."))
 		qdel(src)
 	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+		to_chat(user, SPAN_NOTICE("[O] already has been reprinted."))
 		return
 	else
-		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
+		to_chat(user, SPAN_WARNING("This isn't even an ID card you idiot."))
 		return
 
 //arokha:Aronai Sieyes - Centcom ID (Medical dept)
@@ -334,7 +334,7 @@
 	if(user.mind && user.mind.initial_account)
 		associated_account_number = user.mind.initial_account.account_number
 	configured = 1
-	to_chat(user, "<span class='notice'>Card settings set.</span>")
+	to_chat(user, SPAN_NOTICE("Card settings set."))
 
 //Swat43:Fortune Bloise
 /obj/item/storage/backpack/satchel/fluff/swat43bag
@@ -438,24 +438,24 @@
 
 /obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
-		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
+		to_chat(user, SPAN_NOTICE("The [name] doesn't do anything."))
 		return 0
 
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	update_state(1)
-	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
+	to_chat(user, SPAN_NOTICE("The [name] glows pleasantly blue."))
 	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/check_owner()
 	//He's dead, jim
 	if((state == 1) && owner && (owner.stat == DEAD))
 		update_state(2)
-		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
+		audible_message(SPAN_WARNING("The [name] begins flashing red."))
 		sleep(30)
-		visible_message("<span class='warning'>The [name] shatters into dust!</span>")
+		visible_message(SPAN_WARNING("The [name] shatters into dust!"))
 		if(owner_c)
-			to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")
+			to_chat(owner_c, SPAN_NOTICE("The HAVENS system is notified of your demise via \the [name]."))
 		update_state(3)
 		name = "broken [initial(name)]"
 		desc = "This seems like a necklace, but the actual pendant is missing."
@@ -559,7 +559,7 @@
 	if(last_use + cooldown >= world.time)
 		return
 	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
-	user.visible_message("<span class='warning'> [user] swings their wand.</span>")
+	user.visible_message(SPAN_WARNING(" [user] swings their wand."))
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(3, 1, src)
 	s.start()
@@ -580,13 +580,13 @@
 		O.icon_state = new_icon_state // Changes the icon without changing the access.
 		O.desc = new_desc
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
-		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
+		user.visible_message(SPAN_WARNING(" [user] reprints their ID."))
 		qdel(src)
 	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+		to_chat(user, SPAN_NOTICE("[O] already has been reprinted."))
 		return
 	else
-		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
+		to_chat(user, SPAN_WARNING("This isn't even an ID card you idiot."))
 		return
 
 /datum/looping_sound/ambulance
@@ -615,10 +615,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(user,"<span class='warning'>The egg refuses to take on this color!</span>")
+			to_chat(user,SPAN_WARNING("The egg refuses to take on this color!"))
 			return
 
-		to_chat(user,"<span class='notice'>You color \the [src] [clr]</span>")
+		to_chat(user,SPAN_NOTICE("You color \the [src] [clr]"))
 		icon_state = "egg_roiz_[clr]"
 		desc = "It's a large lizard egg. It has been colored [clr]!"
 		if (clr == "rainbow")
@@ -716,13 +716,13 @@
 	var/tempname = pick(title_strings)
 	name = tempname + " ([title])"
 	configured = 1
-	to_chat(user, "<span class='notice'>Card settings set.</span>")
+	to_chat(user, SPAN_NOTICE("Card settings set."))
 
 /obj/item/card/id/fluff/amaya/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/card/id) && !accessset)
 		var/obj/item/card/id/O = I
 		access |= O.access
-		to_chat(user, "<span class='notice'>You copy the access from \the [I] to \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You copy the access from \the [I] to \the [src]."))
 		qdel(I)
 		accessset = 1
 	..()
@@ -824,7 +824,7 @@
 
 /obj/item/perfect_tele/attack_hand(mob/user)
 	if(user.get_inactive_held_item() == src && power_source)
-		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
+		to_chat(user,SPAN_NOTICE("You eject \the [power_source] from \the [src]."))
 		user.put_in_hands(power_source)
 		power_source = null
 		update_icon()
@@ -867,12 +867,12 @@
 
 		if("Target Beacon")
 			if(!beacons.len)
-				to_chat(user,"<span class='warning'>\The [src] doesn't have any beacons!</span>")
+				to_chat(user,SPAN_WARNING("\The [src] doesn't have any beacons!"))
 			else
 				var/target = input("Which beacon do you target?","[src]") in beacons|null
 				if(target && (target in beacons))
 					destination = beacons[target]
-					to_chat(user,"<span class='notice'>Destination set to '[target]'.</span>")
+					to_chat(user,SPAN_NOTICE("Destination set to '[target]'."))
 		else
 			return
 
@@ -882,7 +882,7 @@
 			return
 		power_source = W
 		power_source.update_icon() //Why doesn't a cell do this already? :|
-		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
+		to_chat(user,SPAN_NOTICE("You insert \the [power_source] into \the [src]."))
 		update_icon()
 
 	else if(istype(W,/obj/item/perfect_tele_beacon))
@@ -890,11 +890,11 @@
 		if(tb.tele_name in beacons)
 			if(!user.attempt_consume_item_for_construction(tb))
 				return
-			to_chat(user,"<span class='notice'>You re-insert \the [tb] into \the [src].</span>")
+			to_chat(user,SPAN_NOTICE("You re-insert \the [tb] into \the [src]."))
 			beacons -= tb.tele_name
 			beacons_left++
 		else
-			to_chat(user,"<span class='notice'>\The [tb] doesn't belong to \the [src].</span>")
+			to_chat(user,SPAN_NOTICE("\The [tb] doesn't belong to \the [src]."))
 			return
 	else
 		..()
@@ -902,12 +902,12 @@
 /obj/item/perfect_tele/proc/teleport_checks(mob/living/target,mob/living/user)
 	//Uhhuh, need that power source
 	if(!power_source)
-		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] has no power source!"))
 		return FALSE
 
 	//Check for charge
 	if((!power_source.check_charge(charge_cost)) && (!power_source.fully_charged()))
-		to_chat(user,"<span class='warning'>\The [src] does not have enough power left!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] does not have enough power left!"))
 		return FALSE
 
 	//Only mob/living need apply.
@@ -916,22 +916,22 @@
 
 	//No, you can't teleport buckled people.
 	if(target.buckled)
-		to_chat(user,"<span class='warning'>The target appears to be attached to something...</span>")
+		to_chat(user,SPAN_WARNING("The target appears to be attached to something..."))
 		return FALSE
 
 	//No, you can't teleport if it's not ready yet.
 	if(!ready)
-		to_chat(user,"<span class='warning'>\The [src] is still recharging!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] is still recharging!"))
 		return FALSE
 
 	//No, you can't teleport if there's no destination.
 	if(!destination)
-		to_chat(user,"<span class='warning'>\The [src] doesn't have a current valid destination set!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] doesn't have a current valid destination set!"))
 		return FALSE
 
 	//No, you can't teleport if there's a jammer.
 	if(is_jammed(src) || is_jammed(destination))
-		to_chat(user,"<span class='warning'>\The [src] refuses to teleport you, due to strong interference!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] refuses to teleport you, due to strong interference!"))
 		return FALSE
 
 	//No, you can't port to or from away missions. Stupidly complicated check.
@@ -944,11 +944,11 @@
 		return FALSE
 
 	if( (uT.z != dT.z) && (!(dT.z in dat["z_level_detection"])) )
-		to_chat(user,"<span class='warning'>\The [src] can't teleport you that far!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] can't teleport you that far!"))
 		return FALSE
 
 	if(uT.block_tele || dT.block_tele)
-		to_chat(user,"<span class='warning'>Something is interfering with \the [src]!</span>")
+		to_chat(user,SPAN_WARNING("Something is interfering with \the [src]!"))
 		return FALSE
 
 	//Seems okay to me!
@@ -971,12 +971,12 @@
 		var/wrong_name = pick(wrong_choices)
 		destination = beacons[wrong_name]
 		if(!teleport_checks(target, user))	// no using this to bypass range checks
-			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
+			to_chat(user, SPAN_WARNING("[src] malfunctions and fizzles out uselessly!"))
 			// penalty: 10 second recharge, but no using charge.
 			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
 			return
 		else
-			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
+			to_chat(user,SPAN_WARNING("\The [src] malfunctions and sends you to the wrong beacon!"))
 
 	//Bzzt.
 	power_source.use(charge_cost)
@@ -1000,11 +1000,11 @@
 	if(isbelly(real_dest))
 		var/obj/belly/B = real_dest
 		if(!target.can_be_drop_prey && B.owner != user)
-			to_chat(target,"<span class='warning'>\The [src] narrowly avoids teleporting you right into \a [lowertext(real_dest.name)]!</span>")
+			to_chat(target,SPAN_WARNING("\The [src] narrowly avoids teleporting you right into \a [lowertext(real_dest.name)]!"))
 			real_dest = dT //Nevermind!
 		else
 			televored = TRUE
-			to_chat(target,"<span class='warning'>\The [src] teleports you right into \a [lowertext(real_dest.name)]!</span>")
+			to_chat(target,SPAN_WARNING("\The [src] teleports you right into \a [lowertext(real_dest.name)]!"))
 
 	//Phase-out effect
 	phase_out(target,get_turf(target))
@@ -1025,7 +1025,7 @@
 			//Move them, and televore if necessary
 			G.affecting.forceMove(real_dest)
 			if(televored)
-				to_chat(target,"<span class='warning'>\The [src] teleports you right into \a [lowertext(real_dest.name)]!</span>")
+				to_chat(target,SPAN_WARNING("\The [src] teleports you right into \a [lowertext(real_dest.name)]!"))
 
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
@@ -1098,11 +1098,11 @@
 	if(confirm == "Eat it!")
 		var/obj/belly/bellychoice = input("Which belly?","Select A Belly") as null|anything in L.vore_organs
 		if(bellychoice)
-			user.visible_message("<span class='warning'>[user] is trying to stuff \the [src] into [user.gender == MALE ? "his" : user.gender == FEMALE ? "her" : "their"] [bellychoice]!</span>","<span class='notice'>You begin putting \the [src] into your [bellychoice]!</span>")
+			user.visible_message(SPAN_WARNING("[user] is trying to stuff \the [src] into [user.gender == MALE ? "his" : user.gender == FEMALE ? "her" : "their"] [bellychoice]!"),SPAN_NOTICE("You begin putting \the [src] into your [bellychoice]!"))
 			if(do_after(user,5 SECONDS,src))
 				if(!user.attempt_insert_item_for_installation(src, bellychoice))
 					return
-				user.visible_message("<span class='warning'>[user] eats a telebeacon!</span>","You eat the the beacon!")
+				user.visible_message(SPAN_WARNING("[user] eats a telebeacon!"),"You eat the the beacon!")
 
 // A single-beacon variant for use by miners (or whatever)
 /obj/item/perfect_tele/one_beacon
@@ -1117,7 +1117,7 @@
 /obj/item/perfect_tele/one_beacon/teleport_checks(mob/living/target,mob/living/user)
 	var/turf/T = get_turf(destination)
 	if(T && user.z != T.z)
-		to_chat(user,"<span class='warning'>\The [src] is too far away from the beacon. Try getting closer first!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] is too far away from the beacon. Try getting closer first!"))
 		return FALSE
 	return ..()
 */
@@ -1134,12 +1134,12 @@
 /obj/item/perfect_tele/admin/teleport_checks(mob/living/target,mob/living/user)
 	//Uhhuh, need that power source
 	if(!power_source)
-		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] has no power source!"))
 		return FALSE
 
 	//Check for charge
 	if((!power_source.check_charge(charge_cost)) && (!power_source.fully_charged()))
-		to_chat(user,"<span class='warning'>\The [src] does not have enough power left!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] does not have enough power left!"))
 		return FALSE
 
 	//Only mob/living need apply.
@@ -1148,17 +1148,17 @@
 
 	//No, you can't teleport buckled people.
 	if(target.buckled)
-		to_chat(user,"<span class='warning'>The target appears to be attached to something...</span>")
+		to_chat(user,SPAN_WARNING("The target appears to be attached to something..."))
 		return FALSE
 
 	//No, you can't teleport if it's not ready yet.
 	if(!ready)
-		to_chat(user,"<span class='warning'>\The [src] is still recharging!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] is still recharging!"))
 		return FALSE
 
 	//No, you can't teleport if there's no destination.
 	if(!destination)
-		to_chat(user,"<span class='warning'>\The [src] doesn't have a current valid destination set!</span>")
+		to_chat(user,SPAN_WARNING("\The [src] doesn't have a current valid destination set!"))
 		return FALSE
 
 	//Seems okay to me!
@@ -1177,7 +1177,7 @@
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
+		user.visible_message(SPAN_DANGER("[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff."),SPAN_DANGER("You invade [target]'s personal space, thrusting [src] into their face with an insistent huff."))
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
@@ -1190,9 +1190,9 @@
 
 	if(isliving(user))
 		if(stored_name)
-			user.visible_message("<span class='notice'>[user] displays their [src].\nIt reads: [stored_name], [badge_string].</span>","<span class='notice'>You display your [src].\nIt reads: [stored_name], [badge_string].</span>")
+			user.visible_message(SPAN_NOTICE("[user] displays their [src].\nIt reads: [stored_name], [badge_string]."),SPAN_NOTICE("You display your [src].\nIt reads: [stored_name], [badge_string]."))
 		else
-			user.visible_message("<span class='notice'>[user] displays their [src].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src]. It reads: [badge_string].</span>")
+			user.visible_message(SPAN_NOTICE("[user] displays their [src].\nIt reads: [badge_string]."),SPAN_NOTICE("You display your [src]. It reads: [badge_string]."))
 
 /obj/item/card/id/fluff/xennith
 	name = "\improper Amy Lessen's Central Command ID (Xenobiology Director)"
@@ -1225,7 +1225,7 @@
 			H.monkeyize()
 			qdel(src) //One time use.
 	else //If not, do nothing.
-		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
+		to_chat(user,SPAN_WARNING("You are unable to inject other people."))
 
 /obj/item/fluff/injector/numb_bite
 	name = "Numbing Venom Injector"
@@ -1241,7 +1241,7 @@
 			H.species.give_numbing_bite() //This was annoying, but this is the easiest way of performing it.
 			qdel(src) //One time use.
 	else //If not, do nothing.
-		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
+		to_chat(user,SPAN_WARNING("You are unable to inject other people."))
 
 //For 2 handed fluff weapons.
 /obj/item/material/twohanded/fluff //Twohanded fluff items.
@@ -1286,7 +1286,7 @@
 
 /obj/item/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
 	START_PROCESSING(SSobj, src)
-	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
+	to_chat(source, SPAN_NOTICE("You implant [source] with \the [src]."))
 	add_verb(source, assigned_proc)
 	return 1
 
@@ -1314,7 +1314,7 @@
 				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
-			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
+			to_chat(src, SPAN_NOTICE("[pick(rimplant.empty_message)]"))
 			return
 
 		new /obj/item/reagent_containers/food/snacks/egg/roiz/evian(get_turf(src)) //Roiz/evian so it gets all the functionality
@@ -1325,13 +1325,13 @@
 			var/emote = rimplant.emote_descriptor[index]
 			var/verb_desc = rimplant.verb_descriptor[index]
 			var/self_verb_desc = rimplant.self_verb_descriptor[index]
-			usr.visible_message("<span class='notice'>[usr] [verb_desc] [emote]</span>",
-							"<span class='notice'>You [self_verb_desc] [emote]</span>")
+			usr.visible_message(SPAN_NOTICE("[usr] [verb_desc] [emote]"),
+							SPAN_NOTICE("You [self_verb_desc] [emote]"))
 		else
-			visible_message("<span class='notice'>[src] [pick(rimplant.short_emote_descriptor)] an egg.</span>",
-								"<span class='notice'>You [pick(rimplant.self_emote_descriptor)] an egg.</span>")
+			visible_message(SPAN_NOTICE("[src] [pick(rimplant.short_emote_descriptor)] an egg."),
+								SPAN_NOTICE("You [pick(rimplant.self_emote_descriptor)] an egg."))
 		if(prob(15))
-			visible_message("<span class='notice'>[src] [pick(rimplant.random_emote)].</span>") // M-mlem.
+			visible_message(SPAN_NOTICE("[src] [pick(rimplant.random_emote)].")) // M-mlem.
 
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
@@ -1390,7 +1390,7 @@
 
 /obj/item/melee/baton/fluff/stunstaff/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(30))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
@@ -1413,14 +1413,14 @@
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
 		if(status == 0)
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		else
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	else
 		status = 0
-		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
+		to_chat(user, SPAN_WARNING("[src] is out of charge."))
 	update_held_icon()
 	add_fingerprint(user)
 
@@ -1482,8 +1482,8 @@
 /obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
-			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
+			user.visible_message(SPAN_DANGER("\The [user] accidentally cuts \himself with \the [src]."),\
+			SPAN_DANGER("You accidentally cut yourself with \the [src]."))
 			user.take_organ_damage(5,5)
 		deactivate(user)
 	else
@@ -1500,8 +1500,8 @@
 /obj/item/melee/fluffstuff/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
 	if(active)
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku.</span>",\
-			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>"))
+		user.visible_message(pick(SPAN_DANGER("\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku."),\
+			SPAN_DANGER("\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.")))
 		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/fluffstuff/wolfgirlsword
@@ -1531,7 +1531,7 @@
 
 /obj/item/melee/fluffstuff/wolfgirlsword/activate(mob/living/user)
 	if(!active)
-		to_chat(user, "<span class='notice'>The [src] is now sharpened. It will cut!</span>")
+		to_chat(user, SPAN_NOTICE("The [src] is now sharpened. It will cut!"))
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1543,7 +1543,7 @@
 
 /obj/item/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
 	if(active)
-		to_chat(user, "<span class='notice'>The [src] grows dull!</span>")
+		to_chat(user, SPAN_NOTICE("The [src] grows dull!"))
 	..()
 	attack_verb = list("bapped", "thwapped", "bonked", "whacked")
 	icon_state = initial(icon_state)

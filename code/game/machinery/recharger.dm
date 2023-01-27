@@ -37,36 +37,36 @@
 
 	if(allowed)
 		if(charging)
-			to_chat(user, "<span class='warning'>\A [charging] is already charging here.</span>")
+			to_chat(user, SPAN_WARNING("\A [charging] is already charging here."))
 			return
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		if(!powered())
-			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [G]!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] blinks red as you try to insert [G]!"))
 			return
 		if(istype(G, /obj/item/gun/energy))
 			var/obj/item/gun/energy/E = G
 			if(E.self_recharge)
-				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
+				to_chat(user, SPAN_NOTICE("\The [E] has no recharge port."))
 				return
 		else if(istype(G, /obj/item/modular_computer))
 			var/obj/item/modular_computer/C = G
 			if(!C.battery_module)
-				to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
+				to_chat(user, SPAN_NOTICE("\The [C] does not have a battery installed. "))
 				return
 		else if(istype(G, /obj/item/melee/baton))
 			var/obj/item/melee/baton/B = G
 			if(B.use_external_power)
-				to_chat(user, "<span class='notice'>\The [B] has no recharge port.</span>")
+				to_chat(user, SPAN_NOTICE("\The [B] has no recharge port."))
 				return
 		else if(istype(G, /obj/item/flash))
 			var/obj/item/flash/F = G
 			if(F.use_external_power)
-				to_chat(user, "<span class='notice'>\The [F] has no recharge port.</span>")
+				to_chat(user, SPAN_NOTICE("\The [F] has no recharge port."))
 				return
 		else if(istype(G, /obj/item/weldingtool/electric))
 			var/obj/item/weldingtool/electric/EW = G
 			if(EW.use_external_power)
-				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
+				to_chat(user, SPAN_NOTICE("\The [EW] has no recharge port."))
 				return
 		else if(istype(G, /obj/item/ammo_magazine/cell_mag))
 			var/obj/item/ammo_magazine/cell_mag/maggy = G
@@ -92,7 +92,7 @@
 
 	else if(portable && G.is_wrench())
 		if(charging)
-			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
+			to_chat(user, SPAN_WARNING("Remove [charging] first!"))
 			return
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attached" : "detached"] [src].")

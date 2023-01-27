@@ -77,7 +77,7 @@ var/global/list/stool_cache = list() //haha stool
 
 	var/mob/living/L = user
 	if (prob(5) && istype(L) && istype(target, /mob/living))
-		L.visible_message("<span class='danger'>[L] breaks [src] over [target]'s back!</span>")
+		L.visible_message(SPAN_DANGER("[L] breaks [src] over [target]'s back!"))
 		L.setClickCooldown(L.get_attack_speed())
 		L.do_attack_animation(target)
 		L.drop_item_to_ground(src, INV_OP_FORCE)

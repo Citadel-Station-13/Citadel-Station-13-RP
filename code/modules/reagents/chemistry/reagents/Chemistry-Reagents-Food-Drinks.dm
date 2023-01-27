@@ -190,7 +190,7 @@
 /datum/reagent/nutriment/coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
@@ -351,7 +351,7 @@ End Citadel Change */
 /datum/reagent/nutriment/durian/touch_mob(var/mob/M, var/amount)
 	if(iscarbon(M) && !M.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
-		to_chat(M,"<span class='alien'>[message]</span>")
+		to_chat(M,SPAN_ALIEN("[message]"))
 		if(prob(clamp(amount, 5, 90)))
 			var/mob/living/L = M
 			L.vomit()
@@ -518,11 +518,11 @@ End Citadel Change */
 			return
 
 	if(dose < 5 && (dose == metabolism || prob(5)))
-		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
+		to_chat(M, SPAN_DANGER("Your insides feel uncomfortably hot!"))
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			M.visible_message(SPAN_WARNING("[M] [pick("dry heaves!","coughs!","splutters!")]"), SPAN_DANGER("You feel like your insides are burning!"))
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/condensedcapsaicin
@@ -605,11 +605,11 @@ End Citadel Change */
 				if(head_covered && chest_covered && groin_covered && legs_covered && arms_covered && hands_covered && feet_covered)
 					break
 	if(eyes_covered && mouth_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from the pepperspray!</span>")
+		to_chat(M, SPAN_WARNING("Your [safe_thing] protects you from the pepperspray!"))
 		if(alien != IS_SLIME)
 			return
 	else if(eyes_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
+		to_chat(M, SPAN_WARNING("Your [safe_thing] protects you from most of the pepperspray!"))
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
 		M.Stun(5)
@@ -617,12 +617,12 @@ End Citadel Change */
 		if(alien != IS_SLIME)
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects your face from the pepperspray!</span>")
+		to_chat(M, SPAN_WARNING("Your [safe_thing] protects your face from the pepperspray!"))
 		M.eye_blurry = max(M.eye_blurry, effective_strength)
 		if(alien != IS_SLIME)
 			return
 	else// Oh dear :D
-		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
+		to_chat(M, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 2)
 		M.Stun(5)
@@ -632,31 +632,31 @@ End Citadel Change */
 	if(alien == IS_SLIME)
 		if(!head_covered)
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your head burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your head burns!"))
 			M.apply_effect(5 * effective_strength, AGONY, 0)
 		if(!chest_covered)
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your chest burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your chest burns!"))
 			M.apply_effect(5 * effective_strength, AGONY, 0)
 		if(!groin_covered && prob(75))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your groin burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your groin burns!"))
 			M.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!arms_covered && prob(45))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your arms burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your arms burns!"))
 			M.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!legs_covered && prob(45))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your legs burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your legs burns!"))
 			M.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!hands_covered && prob(20))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your hands burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your hands burns!"))
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 		if(!feet_covered && prob(20))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your feet burns!</span>")
+				to_chat(M, SPAN_WARNING("The exposed flesh on your feet burns!"))
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -665,11 +665,11 @@ End Citadel Change */
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+		to_chat(M, SPAN_DANGER("You feel like your insides are burning!"))
 	else
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			M.visible_message(SPAN_WARNING("[M] [pick("dry heaves!","coughs!","splutters!")]"), SPAN_DANGER("You feel like your insides are burning!"))
 	holder.remove_reagent("frostoil", 5)
 
 /* Drinks */
@@ -938,7 +938,7 @@ End Citadel Change */
 /datum/reagent/drink/milk/chocolate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -946,7 +946,7 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
+		to_chat(M, SPAN_VOX("You feel nourished by the milk."))
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1133,7 +1133,7 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
+		to_chat(M, SPAN_VOX("You feel nourished by the milk tea."))
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1340,7 +1340,7 @@ End Citadel Change */
 /datum/reagent/drink/hot_coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1524,7 +1524,7 @@ End Citadel Change */
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
@@ -3831,7 +3831,7 @@ End Citadel Change */
 				return
 			var/adjust_liver = rand(-3, 2)
 			if(prob(L.damage))
-				to_chat(M, "<span class='cult'>You feel woozy...</span>")
+				to_chat(M, SPAN_CULT("You feel woozy..."))
 			L.damage = max(L.damage + (adjust_liver * removed), 0)
 	var/adjust_tox = rand(-4, 2)
 	M.adjustToxLoss(adjust_tox * removed)
@@ -4661,7 +4661,7 @@ End Citadel Change */
 			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
 			if (H.feral <=0) //check if they're unferalled
 				H.feral = 0
-				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
+				to_chat(H, SPAN_INFO("Your mind starts to clear, soothed into a state of clarity as your senses return."))
 				log_and_message_admins("is no longer feral.", H)
 
 /datum/reagent/ethanol/monstertamer/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)

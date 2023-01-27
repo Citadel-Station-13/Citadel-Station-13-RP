@@ -759,14 +759,14 @@ BLIND     // can't see anything
 
 	//Too difficult
 	if(target == user)
-		to_chat(user, "<span class='warning'>You can't use this on yourself. Get someone to help you.</span>")
+		to_chat(user, SPAN_WARNING("You can't use this on yourself. Get someone to help you."))
 		return
 
 	//We're applying a prescription
 	if(istype(target,/obj/item/clothing/glasses))
 		var/obj/item/clothing/glasses/G = target
 		if(!scrip_loaded)
-			to_chat(user, "<span class='warning'>You need to build a prescription from someone first! Use the kit on someone.</span>")
+			to_chat(user, SPAN_WARNING("You need to build a prescription from someone first! Use the kit on someone."))
 			return
 
 		if(do_after(user,5 SECONDS))
@@ -777,14 +777,14 @@ BLIND     // can't see anything
 	else if(ishuman(target))
 		var/mob/living/carbon/human/T = target
 		if(T.glasses || (T.head && T.head.flags_inv & HIDEEYES))
-			to_chat(user, "<span class='warning'>The person's eyes can't be covered!</span>")
+			to_chat(user, SPAN_WARNING("The person's eyes can't be covered!"))
 			return
 
 		T.visible_message("[user] begins making measurements for prescription lenses for [target].","[user] begins measuring your eyes. Hold still!")
 		if(do_after(user,5 SECONDS,T))
 			T.flash_eyes()
 			scrip_loaded = 1
-			T.visible_message("[user] finishes making prescription lenses for [target].","<span class='warning'>Gah, that's bright!</span>")
+			T.visible_message("[user] finishes making prescription lenses for [target].",SPAN_WARNING("Gah, that's bright!"))
 
 	else
 		..()

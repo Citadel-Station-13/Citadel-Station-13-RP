@@ -98,7 +98,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 	if(genetic_corruption && (species.breath_type != /datum/gas/phoron))
 		if(rand(1,10000) < genetic_corruption)
 			randmutb(src)
-			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")
+			to_chat(src, SPAN_DANGER("High levels of toxins cause you to spontaneously mutate!"))
 			domutcheck(src,null)
 
 /mob/living/carbon/human/proc/burn_eyes()
@@ -107,11 +107,11 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		if(isSynthetic())
 			return //robotic eyes are not affected
 		if(prob(20))
-			to_chat(src, "<span class='danger'>Your eyes burn!</span>")
+			to_chat(src, SPAN_DANGER("Your eyes burn!"))
 		E.damage += 2.5
 		eye_blurry = min(eye_blurry+1.5,50)
 		if (prob(max(0,E.damage - 15) + 1) &&!eye_blind)
-			to_chat(src, "<span class='danger'>You are blinded!</span>")
+			to_chat(src, SPAN_DANGER("You are blinded!"))
 			Blind(20)
 
 /mob/living/carbon/human/proc/pl_head_protected()

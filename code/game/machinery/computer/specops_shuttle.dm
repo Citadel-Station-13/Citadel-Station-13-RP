@@ -91,7 +91,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='notice'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>")
+		to_chat(M, SPAN_NOTICE("You have arrived at [GLOB.using_map.boss_name]. Operation has ended!"))
 
 	specops_shuttle_at_station = 0
 
@@ -139,7 +139,7 @@ var/specops_shuttle_timeleft = 0
 	if (specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
 
 	if (!specops_can_move())
-		to_chat(usr, "<span class='warning'>The Special Operations shuttle is unable to leave.</span>")
+		to_chat(usr, SPAN_WARNING("The Special Operations shuttle is unable to leave."))
 		return
 
 	//Begin Marauder launchpad.
@@ -234,7 +234,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='notice'>You have arrived to [station_name()]. Commence operation!</span>")
+		to_chat(M, SPAN_NOTICE("You have arrived to [station_name()]. Commence operation!"))
 
 	for(var/obj/machinery/computer/specops_shuttle/S in GLOB.machines)
 		S.specops_shuttle_timereset = world.time + SPECOPS_RETURN_DELAY
@@ -253,11 +253,11 @@ var/specops_shuttle_timeleft = 0
 	return attack_hand(user)
 
 /obj/machinery/computer/specops_shuttle/emag_act(var/remaining_charges, var/mob/user)
-	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
+	to_chat(user, SPAN_NOTICE("The electronic systems in this console are far too advanced for your primitive hacking peripherals."))
 
 /obj/machinery/computer/specops_shuttle/attack_hand(var/mob/user as mob)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access Denied.</span>")
+		to_chat(user, SPAN_WARNING("Access Denied."))
 		return
 
 	if(..())
@@ -288,14 +288,14 @@ var/specops_shuttle_timeleft = 0
 		if(!specops_shuttle_at_station|| specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
 
 		if (!specops_can_move())
-			to_chat(usr, "<span class='notice'>[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to return yet.</span>")
+			to_chat(usr, SPAN_NOTICE("[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to return yet."))
 			if(world.timeofday <= specops_shuttle_timereset)
 				if (((world.timeofday - specops_shuttle_timereset)/10) > 60)
-					to_chat(usr, "<span class='notice'>[-((world.timeofday - specops_shuttle_timereset)/10)/60] minutes remain!</span>")
-				to_chat(usr, "<span class='notice'>[-(world.timeofday - specops_shuttle_timereset)/10] seconds remain!</span>")
+					to_chat(usr, SPAN_NOTICE("[-((world.timeofday - specops_shuttle_timereset)/10)/60] minutes remain!"))
+				to_chat(usr, SPAN_NOTICE("[-(world.timeofday - specops_shuttle_timereset)/10] seconds remain!"))
 			return
 
-		to_chat(usr, "<span class='notice'>The Special Operations shuttle will arrive at [GLOB.using_map.boss_name] in [(SPECOPS_MOVETIME/10)] seconds.</span>")
+		to_chat(usr, SPAN_NOTICE("The Special Operations shuttle will arrive at [GLOB.using_map.boss_name] in [(SPECOPS_MOVETIME/10)] seconds."))
 
 		temp += "Shuttle departing.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 		updateUsrDialog()
@@ -309,10 +309,10 @@ var/specops_shuttle_timeleft = 0
 		if(specops_shuttle_at_station || specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
 
 		if (!specops_can_move())
-			to_chat(usr, "<span class='warning'>The Special Operations shuttle is unable to leave.</span>")
+			to_chat(usr, SPAN_WARNING("The Special Operations shuttle is unable to leave."))
 			return
 
-		to_chat(usr, "<span class='notice'>The Special Operations shuttle will arrive on [station_name()] in [(SPECOPS_MOVETIME/10)] seconds.</span>")
+		to_chat(usr, SPAN_NOTICE("The Special Operations shuttle will arrive on [station_name()] in [(SPECOPS_MOVETIME/10)] seconds."))
 
 		temp += "Shuttle departing.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 		updateUsrDialog()

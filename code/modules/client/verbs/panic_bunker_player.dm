@@ -17,7 +17,7 @@
 	message["auto_bunker_override"] = TRUE
 	var/list/servers = CONFIG_GET(keyed_list/cross_server_bunker_override)
 	if(!length(servers))
-		to_chat(C, "<span class='boldwarning'>AUTOBUNKER: No servers are configured to receive from this one.</span>")
+		to_chat(C, SPAN_BOLDWARNING("AUTOBUNKER: No servers are configured to receive from this one."))
 		return
 	var/logtext = "[key] ([key_name(C)]) has initiated an autobunker authentication with linked servers."
 	message_admins(logtext)
@@ -26,10 +26,10 @@
 		var/returned = world.Export("[servers[name]]?[list2params(message)]")
 		switch(returned)
 			if("Bad Key")
-				to_chat(C, "<span class='boldwarning'>AUTOBuNKER: [name] failed to authenticate with this server.</span>")
+				to_chat(C, SPAN_BOLDWARNING("AUTOBuNKER: [name] failed to authenticate with this server."))
 			if("Function Disabled")
-				to_chat(C, "<span class='boldwarning'>AUTOBUNKER: [name] has autobunker receive disabled.</span>")
+				to_chat(C, SPAN_BOLDWARNING("AUTOBUNKER: [name] has autobunker receive disabled."))
 			if("Success")
 				to_chat(C, "<span class='boldwarning'>AUTOBUNKER: Successfully authenticated with [name]. Panic bunker bypass granted to [key].</span>.")
 			else
-				to_chat(C, "<span class='boldwarning'>AUTOBUNKER: Unknown error ([name]).</span>")
+				to_chat(C, SPAN_BOLDWARNING("AUTOBUNKER: Unknown error ([name])."))

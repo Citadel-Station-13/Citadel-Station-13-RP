@@ -36,12 +36,12 @@
 	var/obj/item/reagent_containers/RG = O
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent(reagent_type, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return 1
 
 	else if(istype(O, /obj/item/mop))
 		O.reagents.add_reagent(reagent_type, 5)
-		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You wet \the [O] in \the [src]."))
 		playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 		return 1
 
@@ -76,7 +76,7 @@
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water))
-			to_chat(L, "<span class='warning'>You get drenched in water from entering \the [src]!</span>")
+			to_chat(L, SPAN_WARNING("You get drenched in water from entering \the [src]!"))
 	AM.water_act(5)
 	..()
 
@@ -87,7 +87,7 @@
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(newloc, /turf/simulated/floor/water))
-			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
+			to_chat(L, SPAN_WARNING("You climb out of \the [src]."))
 	..()
 
 /turf/simulated/floor/water/deep
@@ -292,7 +292,7 @@ var/list/shoreline_icon_cache = list()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/acid))
-			to_chat(L, "<span class='warning'>You get soaked in acid from entering \the [src]!</span>")
+			to_chat(L, SPAN_WARNING("You get soaked in acid from entering \the [src]!"))
 	AM.acid_act(5)
 
 /turf/simulated/floor/water/acid/Exited(atom/movable/AM, atom/newloc)
@@ -302,7 +302,7 @@ var/list/shoreline_icon_cache = list()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(newloc, /turf/simulated/floor/water/acid))
-			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
+			to_chat(L, SPAN_WARNING("You climb out of \the [src]."))
 	..()
 
 /turf/simulated/floor/water/acid/deep
@@ -388,7 +388,7 @@ var/list/shoreline_icon_cache = list()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/blood))
-			to_chat(L, "<span class='warning'>You get covered in blood from entering \the [src]!</span>")
+			to_chat(L, SPAN_WARNING("You get covered in blood from entering \the [src]!"))
 	AM.blood_act(1)
 
 /turf/simulated/floor/water/blood/Exited(atom/movable/AM, atom/newloc)
@@ -398,7 +398,7 @@ var/list/shoreline_icon_cache = list()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(newloc, /turf/simulated/floor/water/blood))
-			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
+			to_chat(L, SPAN_WARNING("You climb out of \the [src]."))
 	..()
 
 /turf/simulated/floor/water/blood/deep

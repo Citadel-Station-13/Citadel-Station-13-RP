@@ -27,7 +27,7 @@
 		user = usr
 		I = user.get_active_held_item()
 		if(!I || !istype(I))
-			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
+			to_chat(user, SPAN_WARNING("You need to have something in your active hand, to use this verb."))
 			return
 		var/weapon_attack_speed = user.get_attack_speed(I) / 10
 		var/weapon_damage = I.force
@@ -52,24 +52,24 @@
 				P = ammo.get_projectile()
 
 			else
-				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
+				to_chat(user, SPAN_WARNING("DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry."))
 
 			weapon_damage = P.damage
 			weapon_attack_speed = G.fire_delay / 10
 			qdel(P)
 
 		var/DPS = weapon_damage / weapon_attack_speed
-		to_chat(user, "<span class='notice'>Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]</span>")
-		to_chat(user, "<span class='notice'>Attack Speed: [weapon_attack_speed]/s</span>")
-		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
+		to_chat(user, SPAN_NOTICE("Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]"))
+		to_chat(user, SPAN_NOTICE("Attack Speed: [weapon_attack_speed]/s"))
+		to_chat(user, SPAN_NOTICE("\The [I] does <b>[DPS]</b> damage per second."))
 		if(DPS > 0)
-			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
+			to_chat(user, SPAN_NOTICE("At your maximum health ([user.getMaxHealth()]), it would take approximately;"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)"))
 
 	else
-		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
+		to_chat(user, SPAN_WARNING("You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb."))
 		return
 
 /client/proc/Cell()
@@ -159,7 +159,7 @@
 			M:Alienize()
 			feedback_add_details("admin_verb","MKAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		log_admin("[key_name(usr)] made [key_name(M)] into an alien.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] made [key_name(M)] into an alien.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
 		alert("Invalid mob")
 
@@ -712,15 +712,15 @@
 		return
 
 	if(!istype(H))
-		to_chat(usr,"<span class='warning'>That mob type ([H.type]) doesn't support NIFs, sorry.</span>")
+		to_chat(usr,SPAN_WARNING("That mob type ([H.type]) doesn't support NIFs, sorry."))
 		return
 
 	if(!H.get_organ(BP_HEAD))
-		to_chat(usr,"<span class='warning'>Target is unsuitable.</span>")
+		to_chat(usr,SPAN_WARNING("Target is unsuitable."))
 		return
 
 	if(H.nif)
-		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
+		to_chat(usr,SPAN_WARNING("Target already has a NIF."))
 		return
 
 	if(H.species.species_flags & NO_SCAN)

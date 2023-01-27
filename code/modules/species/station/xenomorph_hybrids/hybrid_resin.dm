@@ -46,7 +46,7 @@
 	if(!check_alien_ability(75,1,O_RESIN))
 		return
 
-	visible_message("<span class='warning'><B>[src] spits out a thick purple substance and begins to shape it!</B></span>", "<span class='green'>You shape a [choice].</span>")
+	visible_message(SPAN_WARNING("<B>[src] spits out a thick purple substance and begins to shape it!</B>"), SPAN_GREEN("You shape a [choice]."))
 
 	var/obj/O
 
@@ -86,9 +86,9 @@
 /obj/structure/bed/hybrid_nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		user.visible_message(\
-			"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
-			"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-			"<span class='notice'>You hear squelching...</span>")
+			SPAN_NOTICE("[user.name] pulls [M.name] free from the sticky nest!"),\
+			SPAN_NOTICE("[user.name] pulls you free from the gelatinous resin."),\
+			SPAN_NOTICE("You hear squelching..."))
 	else
 		user.visible_message(
 			SPAN_WARNING("[user] tears free of [src]."),
@@ -111,16 +111,16 @@
 
 /obj/structure/bed/hybrid_nest/user_buckle_feedback(mob/M, flags, mob/user, semantic)
 	user.visible_message(\
-		"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
-		"<span class='notice'>You hear squelching...</span>")
+		SPAN_NOTICE("[user.name] secretes a thick vile goo, securing [M.name] into [src]!"),\
+		SPAN_WARNING("[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!"),\
+		SPAN_NOTICE("You hear squelching..."))
 
 /obj/structure/bed/hybrid_nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))
-		M.show_message("<span class='warning'>[user] hits [src] with [W]!</span>", 1)
+		M.show_message(SPAN_WARNING("[user] hits [src] with [W]!"), 1)
 	healthcheck()
 
 /obj/structure/bed/hybrid_nest/proc/healthcheck()
@@ -179,7 +179,7 @@
 	return
 
 /obj/effect/alien/hybrid_resin/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
@@ -208,7 +208,7 @@
 /obj/effect/alien/hybrid_resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	for(var/mob/O in viewers(src, null))
-		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
+		O.show_message(SPAN_DANGER("[src] was hit by [AM]."), 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -221,9 +221,9 @@
 /obj/effect/alien/hybrid_resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (MUTATION_HULK in usr.mutations)
-		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
+		to_chat(usr, SPAN_NOTICE("You easily destroy the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] destroys the [name]!"), 1)
 		health = 0
 	else
 
@@ -232,14 +232,14 @@
 			var/mob/living/carbon/M = usr
 			if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 				for(var/mob/O in oviewers(src))
-					O.show_message("<span class='warning'>[usr] strokes the [name] and it melts away!</span>", 1)
+					O.show_message(SPAN_WARNING("[usr] strokes the [name] and it melts away!"), 1)
 				health = 0
 				healthcheck()
 				return
 
-		to_chat(usr, "<span class='notice'>You claw at the [name].</span>")
+		to_chat(usr, SPAN_NOTICE("You claw at the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] claws at the [name]!"), 1)
 		health -= rand(5,10)
 	healthcheck()
 	return

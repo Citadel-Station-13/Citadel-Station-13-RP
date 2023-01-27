@@ -35,7 +35,7 @@
 
 /obj/item/melee/baton/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='suicide'>\The [user] is putting the live [name] in [TU.his] mouth! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
+	user.visible_message(SPAN_SUICIDE("\The [user] is putting the live [name] in [TU.his] mouth! It looks like [TU.he] [TU.is] trying to commit suicide."))
 	return (FIRELOSS)
 
 /obj/item/melee/baton/loaded/Initialize(mapload)
@@ -74,9 +74,9 @@
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
 	if(bcell)
-		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"
+		. += SPAN_NOTICE("The [src] is [round(bcell.percent())]% charged.")
 	if(!bcell)
-		. += "<span class='warning'>The [src] does not have a power source installed.</span>"
+		. += SPAN_WARNING("The [src] does not have a power source installed.")
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user)
 	if(use_external_power)
@@ -87,12 +87,12 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bcell = W
-				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
 				update_icon()
 			else
-				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
+				to_chat(user, SPAN_NOTICE("[src] already has a cell."))
 		else
-			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
+			to_chat(user, SPAN_NOTICE("This cell is not fitted for [src]."))
 
 /obj/item/melee/baton/attack_hand(mob/user as mob)
 	if(user.get_inactive_held_item() == src)
@@ -100,7 +100,7 @@
 			bcell.update_icon()
 			user.put_in_hands(bcell)
 			bcell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			status = FALSE
 			update_icon()
 			return
@@ -116,20 +116,20 @@
 			bcell = R.cell
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
 		playsound(loc, "sparks", 75, 1, -1)
 		update_icon()
 	else
 		status = 0
 		if(!bcell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
+			to_chat(user, SPAN_WARNING("[src] does not have a power source!"))
 		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
+			to_chat(user, SPAN_WARNING("[src] is out of charge."))
 	add_fingerprint(user)
 
 /obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
+		to_chat(user, SPAN_DANGER("You accidentally hit yourself with the [src]!"))
 		user.Weaken(30)
 		deductcharge(hitcost)
 		return
@@ -157,14 +157,14 @@
 		stun *= 0.5
 	else if(!status)
 		if(affecting)
-			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message(SPAN_WARNING("[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off."))
 		else
-			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message(SPAN_WARNING("[L] has been prodded with [src] by [user]. Luckily it was off."))
 	else
 		if(affecting)
-			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
+			L.visible_message(SPAN_DANGER("[L] has been prodded in the [affecting.name] with [src] by [user]!"))
 		else
-			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
+			L.visible_message(SPAN_DANGER("[L] has been prodded with [src] by [user]!"))
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	//stun effects
@@ -210,12 +210,12 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bcell = W
-				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
 				update_icon()
 			else
-				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
+				to_chat(user, SPAN_NOTICE("[src] already has a cell."))
 		else
-			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
+			to_chat(user, SPAN_NOTICE("This cell is not fitted for [src]."))
 
 	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(!bcell)
@@ -224,9 +224,9 @@
 			qdel(src)
 			qdel(BSC)
 			user.put_in_hands(S)
-			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
+			to_chat(user, SPAN_NOTICE("You place the bluespace crystal firmly into the igniter."))
 		else
-			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
+			user.visible_message(SPAN_WARNING("You can't put the crystal onto the stunprod while it has a power cell installed!"))
 
 /obj/item/melee/baton/get_description_interaction(mob/user)
 	var/list/results = list()

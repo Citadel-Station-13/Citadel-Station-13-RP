@@ -303,7 +303,7 @@
 // Does actual poison injection, after all checks passed.
 /mob/living/simple_mob/animal/roach/seuche/proc/inject_poison(mob/living/L, target_zone)
 	if(prob(poison_chance))
-		to_chat(L, "<span class='warning'>The bite stings!</span>")
+		to_chat(L, SPAN_WARNING("The bite stings!"))
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 //If you think roaches are bad, imagine dragons.

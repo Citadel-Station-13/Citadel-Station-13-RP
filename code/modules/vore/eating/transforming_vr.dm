@@ -15,8 +15,8 @@
 	M.update_eyes()
 	M.update_icons_body()
 	if(message)
-		to_chat(M, "<span class='notice'>You feel lightheaded and drowsy...</span>")
-		to_chat(O, "<span class='notice'>You feel warm as you make subtle changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("You feel lightheaded and drowsy..."))
+		to_chat(O, SPAN_NOTICE("You feel warm as you make subtle changes to your captive's body."))
 
 /obj/belly/proc/check_hair(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -46,8 +46,8 @@
 	M.f_style = O.f_style
 	M.update_hair()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_skin(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -68,8 +68,8 @@
 		Z.sync_colour_to_human(M)
 	M.update_icons_body()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_gender(var/mob/living/carbon/human/M, target_gender)
 	var/mob/living/carbon/human/O = owner
@@ -97,8 +97,8 @@
 	M.sync_organ_dna()
 	M.update_icons_body()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body feels very strange...</span>")
-		to_chat(O, "<span class='notice'>You feel strange as you alter your captive's gender.</span>")
+		to_chat(M, SPAN_NOTICE("Your body feels very strange..."))
+		to_chat(O, SPAN_NOTICE("You feel strange as you alter your captive's gender."))
 
 /obj/belly/proc/check_tail(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -122,8 +122,8 @@
 	M.tail_style = O.tail_style
 	M.update_tail_showing()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_tail_nocolor(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -140,8 +140,8 @@
 	M.tail_style = O.tail_style
 	M.update_tail_showing()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_wing(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -165,8 +165,8 @@
 	M.wing_style = O.wing_style
 	M.update_wing_showing()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_wing_nocolor(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -183,8 +183,8 @@
 	M.wing_style = O.wing_style
 	M.update_wing_showing()
 	if(message)
-		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
-		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("Your body tingles all over..."))
+		to_chat(O, SPAN_NOTICE("You tingle as you make noticeable changes to your captive's body."))
 
 /obj/belly/proc/check_ears(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
@@ -243,8 +243,8 @@
 
 
 	if(message)
-		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth of everything around you... </span>")
-		to_chat(O, "<span class='notice'>Your body shifts as you make dramatic changes to your captive's body.</span>")
+		to_chat(M, SPAN_NOTICE("You lose sensation of your body, feeling only the warmth of everything around you... "))
+		to_chat(O, SPAN_NOTICE("Your body shifts as you make dramatic changes to your captive's body."))
 
 /obj/belly/proc/put_in_egg(var/atom/movable/M, message=0)
 	var/mob/living/carbon/human/O = owner
@@ -259,5 +259,5 @@
 	M.forceMove(egg)
 	egg.name = egg_name
 	if(message)
-		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth around you as you're encased in an egg.</span>")
-		to_chat(O, "<span class='notice'>Your body shifts as you encase [M] in an egg.</span>")
+		to_chat(M, SPAN_NOTICE("You lose sensation of your body, feeling only the warmth around you as you're encased in an egg."))
+		to_chat(O, SPAN_NOTICE("Your body shifts as you encase [M] in an egg."))

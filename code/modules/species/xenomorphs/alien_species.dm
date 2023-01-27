@@ -98,8 +98,8 @@
 	return 0
 
 /datum/species/xenos/hug(var/mob/living/carbon/human/H,var/mob/living/target)
-	H.visible_message("<span class='notice'>[H] caresses [target] with its scythe-like arm.</span>", \
-					"<span class='notice'>You caress [target] with your scythe-like arm.</span>")
+	H.visible_message(SPAN_NOTICE("[H] caresses [target] with its scythe-like arm."), \
+					SPAN_NOTICE("You caress [target] with your scythe-like arm."))
 
 /datum/species/xenos/handle_post_spawn(var/mob/living/carbon/human/H)
 
@@ -141,7 +141,7 @@
 		H.adjustOxyLoss(-heal_rate)
 		H.adjustToxLoss(-heal_rate)
 		if (prob(5))
-			to_chat(H, "<span class='alien'>You feel a soothing sensation come over you...</span>")
+			to_chat(H, SPAN_ALIEN("You feel a soothing sensation come over you..."))
 		return 1
 
 	//next internal organs
@@ -149,7 +149,7 @@
 		if(I.damage > 0)
 			I.heal_damage_i(heal_rate, can_revive = TRUE)
 			if (prob(5))
-				to_chat(H, "<span class='alien'>You feel a soothing sensation within your [I.parent_organ]...</span>")
+				to_chat(H, SPAN_ALIEN("You feel a soothing sensation within your [I.parent_organ]..."))
 			return 1
 
 	//next mend broken bones, approx 10 ticks each
@@ -157,7 +157,7 @@
 		if (E.status & ORGAN_BROKEN)
 			if (prob(mend_prob))
 				if (E.mend_fracture())
-					to_chat(H, "<span class='alien'>You feel something mend itself inside your [E.name].</span>")
+					to_chat(H, SPAN_ALIEN("You feel something mend itself inside your [E.name]."))
 			return 1
 
 	return 0

@@ -746,7 +746,7 @@ default behaviour is:
 		resisting++
 		G.handle_resist()
 	if(resisting)
-		visible_message("<span class='danger'>[src] resists!</span>")
+		visible_message(SPAN_DANGER("[src] resists!"))
 
 /mob/living/proc/resist_fire()
 	return
@@ -759,7 +759,7 @@ default behaviour is:
 	set category = "IC"
 
 	resting = !resting
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 	update_canmove()
 
 //called when the mob receives a bright flash
@@ -812,14 +812,14 @@ default behaviour is:
 	if(!lastpuke)
 		lastpuke = 1
 		if(isSynthetic())
-			to_chat(src, "<span class='danger'>A sudden, dizzying wave of internal feedback rushes over you!</span>")
+			to_chat(src, SPAN_DANGER("A sudden, dizzying wave of internal feedback rushes over you!"))
 			src.Weaken(5)
 		else
 			if (nutrition <= 100)
-				to_chat(src, "<span class='danger'>You gag as you want to throw up, but there's nothing in your stomach!</span>")
+				to_chat(src, SPAN_DANGER("You gag as you want to throw up, but there's nothing in your stomach!"))
 				src.Weaken(10)
 			else
-				to_chat(src, "<span class='warning'>You feel nauseous...</span>")
+				to_chat(src, SPAN_WARNING("You feel nauseous..."))
 
 				if(ishuman(src))
 					var/mob/living/carbon/human/Hu = src
@@ -832,7 +832,7 @@ default behaviour is:
 				spawn()
 					if(!skip_wait)
 						sleep(150)	//15 seconds until second warning
-						to_chat(src, "<span class='warning'>You feel like you are about to throw up!</span>")
+						to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
 						sleep(100)	//and you have 10 more for mad dash to the bucket
 
 					//Damaged livers cause you to vomit blood.
@@ -845,7 +845,7 @@ default behaviour is:
 									blood_vomit = 1
 
 					Stun(5)
-					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
+					src.visible_message(SPAN_WARNING("[src] throws up!"),SPAN_WARNING("You throw up!"))
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 					var/turf/simulated/T = get_turf(src)	//TODO: Make add_blood_floor remove blood from human mobs

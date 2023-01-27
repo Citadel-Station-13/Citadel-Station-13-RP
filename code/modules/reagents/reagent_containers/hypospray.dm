@@ -31,7 +31,7 @@
 
 /obj/item/reagent_containers/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty.</span>")
+		to_chat(user, SPAN_WARNING("[src] is empty."))
 		return
 	if (!ishuman(target))
 		return
@@ -40,23 +40,23 @@
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
-			to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
+			to_chat(user, SPAN_DANGER("\The [H] is missing that limb!"))
 			return
 		else if(affected.robotic >= ORGAN_ROBOT)
-			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
+			to_chat(user, SPAN_DANGER("You cannot inject a robotic limb."))
 			return
 
 		// Prototype Hypo functionality
 		if(H != user && prototype)
-			to_chat(user, "<span class='notice'>You begin injecting [H] with \the [src].</span>")
-			to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
+			to_chat(user, SPAN_NOTICE("You begin injecting [H] with \the [src]."))
+			to_chat(H, SPAN_DANGER(" [user] is trying to inject you with \the [src]!"))
 			if(!do_after(user, 30, H))
 				return
 		else if(!H.stat && !prototype)
 			if(H != user)
 				if(H.a_intent != INTENT_HELP)
-					to_chat(user, "<span class='notice'>[H] is resisting your attempt to inject them with \the [src].</span>")
-					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
+					to_chat(user, SPAN_NOTICE("[H] is resisting your attempt to inject them with \the [src]."))
+					to_chat(H, SPAN_DANGER(" [user] is trying to inject you with \the [src]!"))
 					if(!do_after(user, 30, H))
 						return
 	do_injection(H, user)
@@ -102,7 +102,7 @@
 			loaded_vial.update_icon()
 			user.put_in_hands(loaded_vial)
 			loaded_vial = null
-			to_chat(user, "<span class='notice'>You remove the vial from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the vial from the [src]."))
 			update_icon()
 			playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 			return
@@ -113,7 +113,7 @@
 /obj/item/reagent_containers/hypospray/vial/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/reagent_containers/glass/beaker/vial))
 		if(!loaded_vial)
-			user.visible_message("<span class='notice'>[user] begins loading [W] into \the [src].</span>","<span class='notice'>You start loading [W] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins loading [W] into \the [src]."),SPAN_NOTICE("You start loading [W] into \the [src]."))
 			if(!do_after(user,30) || loaded_vial || !(W in user))
 				return 0
 			if(!user.attempt_insert_item_for_installation(W, src))
@@ -124,11 +124,11 @@
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 			loaded_vial.reagents.trans_to_holder(reagents,volume)
-			user.visible_message("<span class='notice'>[user] has loaded [W] into \the [src].</span>","<span class='notice'>You have loaded [W] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] has loaded [W] into \the [src]."),SPAN_NOTICE("You have loaded [W] into \the [src]."))
 			update_icon()
 			playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		else
-			to_chat(user, "<span class='notice'>\The [src] already has a vial.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has a vial."))
 	else
 		..()
 
@@ -172,9 +172,9 @@
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		. += "<span class='notice'>It is currently loaded.</span>"
+		. += SPAN_NOTICE("It is currently loaded.")
 	else
-		. += "<span class='notice'>It is spent.</span>"
+		. += SPAN_NOTICE("It is spent.")
 
 /obj/item/reagent_containers/hypospray/autoinjector/detox
 	name = "autoinjector (antitox)"
@@ -397,17 +397,17 @@
 	if (closed)
 		closed = 0
 		playsound(loc,"canopen", rand(10,50), 1)
-		to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
+		to_chat(user, SPAN_NOTICE("You open [src] with an audible pop!"))
 		update_icon()
 	else
 		return
 
 /obj/item/reagent_containers/hypospray/glukoz/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(closed)
-		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
+		to_chat(user, SPAN_NOTICE("You can't use [src] until you open it!"))
 		return
 	if(!filled)
-		to_chat(user, "<span class='notice'>This [src] is empty!</span>")
+		to_chat(user, SPAN_NOTICE("This [src] is empty!"))
 		return
 	if(!closed)
 		do_injection(target, user)
@@ -417,7 +417,7 @@
 	. = ..()
 	if(.) // Will occur if successfully injected.
 		atom_flags &= ~OPENCONTAINER
-		to_chat(user, "<span class='notice'>You jab the [src] needle into your skin!</span>")
+		to_chat(user, SPAN_NOTICE("You jab the [src] needle into your skin!"))
 		icon_state = "[initial(icon_state)]_used"
 		filled = 0
 		filled_reagents = list()
@@ -431,9 +431,9 @@
 /obj/item/reagent_containers/hypospray/glukoz/examine(mob/user)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		. += "<span class='notice'>It is currently loaded.</span>"
+		. += SPAN_NOTICE("It is currently loaded.")
 	else
-		. += "<span class='notice'>It is spent.</span>"
+		. += SPAN_NOTICE("It is spent.")
 
 //Glukoz Brand Injectors:
 /obj/item/reagent_containers/hypospray/glukoz/viraplus

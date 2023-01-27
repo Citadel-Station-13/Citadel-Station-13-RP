@@ -85,7 +85,7 @@
 
 /obj/item/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
@@ -216,13 +216,13 @@
  // Does actual poison injection, after all checks passed.
 /obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)
 	if(prob(poison_chance))
-		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
+		to_chat(M, SPAN_WARNING("You feel nanites digging into your skin!"))
 		M.reagents.add_reagent(poison_type, poison_amount)
 
 /obj/item/melee/nanite_knife/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
-		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
+	user.visible_message(pick(SPAN_DANGER("\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide."),\
+		SPAN_DANGER("\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.")))
 	var/turf/T = get_turf(src)
 	user.gib()
 	new /mob/living/simple_mob/mechanical/cyber_horror(T)
@@ -287,16 +287,16 @@
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!active && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
-			to_chat(user, "<span class='notice'>You refill [src].</span>")
+			to_chat(user, SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if(!active)
-			to_chat(user, "<span class='notice'>[src] doesn't use fuel.</span>")
+			to_chat(user, SPAN_NOTICE("[src] doesn't use fuel."))
 			return
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a thermal cutter.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a thermal cutter.")
-			to_chat(user, "<span class='danger'>You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
+			to_chat(user, SPAN_DANGER("You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 			return
@@ -330,7 +330,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more fuel to complete this task.</span>")
+			to_chat(M, SPAN_NOTICE("You need more fuel to complete this task."))
 		update_icon()
 		return 0
 
@@ -362,9 +362,9 @@
 	if(!active)
 		if (get_fuel() > 0)
 			if(M)
-				to_chat(M, "<span class='notice'>You switch the [src] on.</span>")
+				to_chat(M, SPAN_NOTICE("You switch the [src] on."))
 			else if(T)
-				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
+				T.visible_message(SPAN_DANGER("\The [src] turns on."))
 			playsound(loc, acti_sound, 50, 1)
 			src.force = 15
 			src.damtype = "fire"
@@ -376,14 +376,14 @@
 			update_icon()
 		else
 			if(M)
-				to_chat(M, "<span class='notice'>You need more fuel to complete this task.</span>")
+				to_chat(M, SPAN_NOTICE("You need more fuel to complete this task."))
 			return
 	//Otherwise
 	else if(active)
 		if(M)
-			to_chat(M, "<span class='notice'>You switch \the [src] off.</span>")
+			to_chat(M, SPAN_NOTICE("You switch \the [src] off."))
 		else if(T)
-			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
+			T.visible_message(SPAN_WARNING("\The [src] turns off."))
 		playsound(loc, deac_sound, 50, 1)
 		src.force = 3
 		src.damtype = "brute"

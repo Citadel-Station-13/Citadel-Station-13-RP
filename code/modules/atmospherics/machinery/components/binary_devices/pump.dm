@@ -46,7 +46,7 @@ Thus, the two variables affect pump operation are set in New():
 			update_use_power(!use_power)
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/pump/CtrlShiftClick(mob/user)
 	if(Adjacent(user))
@@ -55,7 +55,7 @@ Thus, the two variables affect pump operation are set in New():
 			to_chat(user, "You set the pressure of the pump to default.")
 			target_pressure = ONE_ATMOSPHERE
 		else
-			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/pump/AltClick(mob/user)
 	if(Adjacent(user))
@@ -64,7 +64,7 @@ Thus, the two variables affect pump operation are set in New():
 			to_chat(user, "You set the pressure of the pump to max.")
 			target_pressure = max_pressure_setting
 		else
-			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/pump/Initialize(mapload)
 	. = ..()
@@ -277,16 +277,16 @@ Thus, the two variables affect pump operation are set in New():
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && use_power)
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench this [src], turn it off first."))
 		return 1
 	if(unsafe_pressure())
-		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+		to_chat(user, SPAN_WARNING("You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider.."))
 	add_fingerprint(user)
 	playsound(src, W.tool_sound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
 			"You hear ratchet.")
 		deconstruct()

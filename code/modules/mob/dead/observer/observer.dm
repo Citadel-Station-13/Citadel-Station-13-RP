@@ -266,13 +266,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!client)
 		return
 	if(!(mind && mind.current && can_reenter_corpse))
-		to_chat(src, "<span class='warning'>You have no body.</span>")
+		to_chat(src, SPAN_WARNING("You have no body."))
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
+		to_chat(usr, SPAN_WARNING("Another consciousness is in your body... it is resisting you."))
 		return
 	if(prevent_respawns.Find(mind.name))
-		to_chat(usr,"<span class='warning'>You already quit this round as this character, sorry!</span>")
+		to_chat(usr,SPAN_WARNING("You already quit this round as this character, sorry!"))
 		return
 	if(mind.current.ajourn && mind.current.stat != DEAD) //check if the corpse is astral-journeying (it's client ghosted using a cultist rune).
 		var/found_rune
@@ -281,7 +281,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				found_rune = 1
 				break
 		if(!found_rune)
-			to_chat(usr, "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>")
+			to_chat(usr, SPAN_WARNING("The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you."))
 			return
 	mind.current.ajourn=0
 	mind.current.key = key
@@ -470,7 +470,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 
 	if(config_legacy.disable_player_mice)
-		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+		to_chat(src, SPAN_WARNING("Spawning as a mouse is currently disabled."))
 		return
 
 	if(!MayRespawn(1))
@@ -478,14 +478,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/turf/T = get_turf(src)
 	if(!T || (T.z in GLOB.using_map.admin_levels))
-		to_chat(src, "<span class='warning'>You may not spawn as a mouse on this Z-level.</span>")
+		to_chat(src, SPAN_WARNING("You may not spawn as a mouse on this Z-level."))
 		return
 
 	var/timedifference = world.time - client.time_died_as_mouse
 	if(client.time_died_as_mouse && timedifference <= mouse_respawn_time * 600)
 		var/timedifference_text
 		timedifference_text = time2text(mouse_respawn_time * 600 - timedifference,"mm:ss")
-		to_chat(src, "<span class='warning'>You may only spawn again as a mouse more than [mouse_respawn_time] minutes after your death. You have [timedifference_text] left.</span>")
+		to_chat(src, SPAN_WARNING("You may only spawn again as a mouse more than [mouse_respawn_time] minutes after your death. You have [timedifference_text] left."))
 		return
 
 	var/response = alert(src, "Are you -sure- you want to become a mouse?","Are you sure you want to squeek?","Squeek!","Nope!")
@@ -503,7 +503,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		vent_found = pick(found_vents)
 		host = new /mob/living/simple_mob/animal/passive/mouse(vent_found)
 	else
-		to_chat(src, "<span class='warning'>Unable to find any unwelded vents to spawn mice at.</span>")
+		to_chat(src, SPAN_WARNING("Unable to find any unwelded vents to spawn mice at."))
 
 	if(host)
 		if(config_legacy.uneducated_mice)
@@ -512,7 +512,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		host.ckey = src.ckey
 		host.add_ventcrawl(vent_found)
 		host.update_perspective()
-		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
+		to_chat(host, SPAN_INFO("You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent."))
 
 /mob/observer/dead/verb/view_manfiest()
 	set name = "Show Crew Manifest"
@@ -576,7 +576,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		T = get_step(T,text2dir(direction))
 
 	if (!istype(T))
-		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
+		to_chat(src, SPAN_WARNING("You cannot doodle there."))
 		return
 
 	if(!choice || choice.amount == 0 || !(src.Adjacent(choice)))
@@ -588,7 +588,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for (var/obj/effect/debris/cleanable/blood/writing/W in T)
 		num_doodles++
 	if (num_doodles > 4)
-		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
+		to_chat(src, SPAN_WARNING("There is no space to write on!"))
 		return
 
 	var/max_length = 50
@@ -599,7 +599,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		if (length(message) > max_length)
 			message += "-"
-			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
+			to_chat(src, SPAN_WARNING("You ran out of blood to write with!"))
 
 		var/obj/effect/debris/cleanable/blood/writing/W = new(T)
 		W.basecolor = doodle_color
@@ -611,7 +611,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/pointed(atom/A as mob|obj|turf in view())
 	if(!..())
 		return 0
-	usr.visible_message("<span class='deadsay'><b>[src]</b> points to [A]</span>")
+	usr.visible_message(SPAN_DEADSAY("<b>[src]</b> points to [A]"))
 	return 1
 
 /mob/observer/dead/proc/manifest(mob/user)
@@ -621,15 +621,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src,"<font color='purple'>As you are now in the realm of the living, you can whisper to the living with the <b>Spectral Whisper</b> verb, inside the IC tab.</font>")
 	if(plane != PLANE_WORLD)
 		user.visible_message( \
-			"<span class='warning'>\The [user] drags ghost, [src], to our plane of reality!</span>", \
-			"<span class='warning'>You drag [src] to our plane of reality!</span>" \
+			SPAN_WARNING("\The [user] drags ghost, [src], to our plane of reality!"), \
+			SPAN_WARNING("You drag [src] to our plane of reality!") \
 		)
 		toggle_visibility(TRUE)
 	else
 		var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message ( \
-			"<span class='warning'>\The [user] just tried to smash [T.his] book into that ghost!  It's not very effective.</span>", \
-			"<span class='warning'>You get the feeling that the ghost can't become any more visible.</span>" \
+			SPAN_WARNING("\The [user] just tried to smash [T.his] book into that ghost!  It's not very effective."), \
+			SPAN_WARNING("You get the feeling that the ghost can't become any more visible.") \
 		)
 
 /mob/observer/dead/proc/toggle_icon(var/icon)
@@ -658,9 +658,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(plane == PLANE_WORLD)
 		toggled_invisible = world.time
-		visible_message("<span class='emote'>It fades from sight...</span>", "<span class='info'>You are now invisible.</span>")
+		visible_message("<span class='emote'>It fades from sight...</span>", SPAN_INFO("You are now invisible."))
 	else
-		to_chat(src, "<span class='info'>You are now visible!</span>")
+		to_chat(src, SPAN_INFO("You are now visible!"))
 
 	plane = (plane == PLANE_GHOSTS) ? PLANE_WORLD : PLANE_GHOSTS
 	invisibility = (plane == PLANE_WORLD) ? 0 : INVISIBILITY_OBSERVER
@@ -676,9 +676,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
 	SScharacters.queue_preferences_save(client.prefs)
 	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
-		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
+		to_chat(src, SPAN_INFO("Your key won't be shown when you speak in dead chat."))
 	else
-		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")
+		to_chat(src, SPAN_INFO("Your key will be publicly visible again."))
 
 /mob/observer/dead/canface()
 	return 1
@@ -711,11 +711,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse)
 		if(feedback)
-			to_chat(src, "<span class='warning'>Your non-dead body prevent you from respawning.</span>")
+			to_chat(src, SPAN_WARNING("Your non-dead body prevent you from respawning."))
 		return 0
 	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
 		if(feedback)
-			to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from respawning.</span>")
+			to_chat(src, SPAN_WARNING("antagHUD restrictions prevent you from respawning."))
 		return 0
 	return 1
 
@@ -751,13 +751,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/msg = sanitize(input(src, "Message:", "Spectral Whisper") as text|null)
 		if(msg)
 			log_say("(SPECWHISP to [key_name(M)]): [msg]", src)
-			to_chat(M, "<span class='warning'> You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font></span>")
-			to_chat(src, "<span class='warning'> You said: '[msg]' to [M].</span>")
+			to_chat(M, SPAN_WARNING(" You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font>"))
+			to_chat(src, SPAN_WARNING(" You said: '[msg]' to [M]."))
 		else
 			return
 		return 1
 	else
-		to_chat(src, "<span class='danger'>You have not been pulled past the veil!</span>")
+		to_chat(src, SPAN_DANGER("You have not been pulled past the veil!"))
 
 /mob/observer/dead/verb/choose_ghost_sprite()
 	set category = "Ghost"
@@ -808,9 +808,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				PP.add_overlay("pai-ghostalert")
 				spawn(54)
 					PP.cut_overlays()
-		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
+		to_chat(usr,SPAN_NOTICE("Flashing the displays of [count] unoccupied PAIs."))
 	else
-		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")
+		to_chat(usr,SPAN_WARNING("You have 'Be pAI' disabled in your character prefs, so we can't help you."))
 
 /mob/observer/dead/speech_bubble_appearance()
 	return "ghost"
@@ -826,8 +826,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(flashwindow)
 		window_flash(client)
 	if(message)
-		to_chat(src, "<span class='ghostalert'><font size=4>[message]</font></span>")
-	to_chat(src, "<span class='ghostalert'><a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a></span>")
+		to_chat(src, SPAN_GHOSTALERT("<font size=4>[message]</font>"))
+	to_chat(src, SPAN_GHOSTALERT("<a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a>"))
 	if(sound)
 		SEND_SOUND(src, sound(sound))
 

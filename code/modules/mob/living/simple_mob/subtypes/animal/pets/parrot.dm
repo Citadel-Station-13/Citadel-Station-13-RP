@@ -96,7 +96,7 @@
 
 /mob/living/simple_mob/animal/passive/bird/parrot/proc/remove_headset(mob/living/user)
 	if(!my_headset)
-		to_chat(user, "<span class='warning'>\The [src] doesn't have a headset to remove, thankfully.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have a headset to remove, thankfully."))
 	else
 		ISay("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
 		user.put_in_hands_or_drop(my_headset)

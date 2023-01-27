@@ -50,11 +50,11 @@
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
 /obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
-		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin to shorten the barrel and stock of \the [src]."))
 		if(loaded.len)
 			afterattack(user, user)
 			playsound(user, fire_sound, 50, 1)
-			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>The rifle goes off in your face!</span>")
+			user.visible_message(SPAN_DANGER("[src] goes off!"), SPAN_DANGER("The rifle goes off in your face!"))
 			return
 		if(do_after(user, 30))
 			icon_state = "sawnrifle"
@@ -66,7 +66,7 @@
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
 			name = "sawn-off rifle"
 			desc = "The firepower of a rifle, now the size of a pistol, with an effective combat range of about three feet. Uses 7.62mm rounds."
-			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
+			to_chat(user, SPAN_WARNING("You shorten the barrel and stock of \the [src]!"))
 	else
 		..()
 
@@ -90,11 +90,11 @@
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
-		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin to shorten the barrel and stock of \the [src]."))
 		if(loaded.len)
 			afterattack(user, user)
 			playsound(user, fire_sound, 50, 1)
-			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>The rifle goes off in your face!</span>")
+			user.visible_message(SPAN_DANGER("[src] goes off!"), SPAN_DANGER("The rifle goes off in your face!"))
 			return
 		if(do_after(user, 30))
 			item_state = "mareleg"
@@ -111,7 +111,7 @@
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
 			name = "Mare's Leg"
 			desc = "A traditional shortened lever action whose weight distribution makes it far better suited for its size than similar sawn off rifles but has less ammo capacity. Uses .44 rounds."
-			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
+			to_chat(user, SPAN_WARNING("You shorten the barrel and stock of \the [src]!"))
 	else
 		..()
 
@@ -134,11 +134,11 @@
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
-		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin to shorten the barrel and stock of \the [src]."))
 		if(loaded.len)
 			afterattack(user, user)
 			playsound(user, fire_sound, 50, 1)
-			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>The rifle goes off in your face!</span>")
+			user.visible_message(SPAN_DANGER("[src] goes off!"), SPAN_DANGER("The rifle goes off in your face!"))
 			return
 		if(do_after(user, 30))
 			item_state = "mareleg"
@@ -155,7 +155,7 @@
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
 			name = "Mare's Leg"
 			desc = "A traditional shortened lever action whose weight distribution makes it far better suited for its size than similar sawn off rifles but has less ammo capacity. Uses .44 rounds."
-			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
+			to_chat(user, SPAN_WARNING("You shorten the barrel and stock of \the [src]!"))
 	else
 		..()
 

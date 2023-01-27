@@ -61,9 +61,9 @@
 /obj/item/electronic_assembly/examine(mob/user)
 	. = ..()
 	if(can_anchor)
-		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
+		. += SPAN_NOTICE("The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.")
 	else
-		. += "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
+		. += SPAN_NOTICE("The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.")
 
 	// Not using internal examine? Why? TBI? Will test how horrible/spammy it is.
 	for(var/I in assembly_components)

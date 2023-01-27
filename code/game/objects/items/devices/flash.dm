@@ -40,18 +40,18 @@
 /obj/item/flash/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver() && broken)
 		if(repairing)
-			to_chat(user, "<span class='notice'>\The [src] is already being repaired!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is already being repaired!"))
 			return
-		user.visible_message("<span class='notice'>\The [user] starts trying to repair \the [src]'s bulb.</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] starts trying to repair \the [src]'s bulb."))
 		repairing = TRUE
 		if(do_after(user, (40 SECONDS + rand(0, 20 SECONDS)) * W.tool_speed) && can_repair)
 			if(prob(30))
-				user.visible_message("<span class='notice'>\The [user] successfully repairs \the [src]!</span>")
+				user.visible_message(SPAN_NOTICE("\The [user] successfully repairs \the [src]!"))
 				broken = FALSE
 				update_icon()
 			playsound(src.loc, W.tool_sound, 50, 1)
 		else
-			user.visible_message("<span class='notice'>\The [user] fails to repair \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] fails to repair \the [src]."))
 		repairing = FALSE
 	else
 		..()
@@ -87,7 +87,7 @@
 
 /obj/item/flash/proc/clown_check(var/mob/user)
 	if(user && (MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] slips out of your hand."))
 		user.drop_active_held_item()
 		return 0
 	return 1
@@ -128,7 +128,7 @@
 		if(prob( max(0, times_used - safe_flashes) * 2 + (times_used >= safe_flashes)) && can_break)	//if you use it 10 times in a minute it has a 30% chance to break.
 			broken = TRUE
 			if(user)
-				to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+				to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 			update_icon()
 			return FALSE
 		else
@@ -138,7 +138,7 @@
 	else if(!charge_only)	//can only use it 10 times a minute, unless it runs purely on charge.
 		if(user)
 			update_icon()
-			to_chat(user, "<span class='warning'><i>click</i></span>")
+			to_chat(user, SPAN_WARNING("<i>click</i>"))
 			playsound(src.loc, 'sound/weapons/empty.ogg', 80, 1)
 		return FALSE
 	else if(battery && battery.checked_use(charge_cost + (round(charge_cost / 4) * max(0, times_used - max_flashes)))) // Using over your maximum flashes starts taking more charge per added flash.
@@ -163,7 +163,7 @@
 	if(!clown_check(user))
 		return
 	if(broken)
-		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is broken."))
 		return
 
 	flash_recharge()
@@ -232,10 +232,10 @@
 		if(!issilicon(M))
 			user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
 		else
-			user.visible_message("<span class='notice'>[user] overloads [M]'s sensors with the flash!</span>")
+			user.visible_message(SPAN_NOTICE("[user] overloads [M]'s sensors with the flash!"))
 			M.Weaken(rand(5,10))
 	else
-		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
+		user.visible_message(SPAN_NOTICE("[user] fails to blind [M] with the flash!"))
 
 /obj/item/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	if(!user || !clown_check(user))
@@ -244,7 +244,7 @@
 	user.setClickCooldown(user.get_attack_speed(src))
 
 	if(broken)
-		user.show_message("<span class='warning'>The [src.name] is broken</span>", 2)
+		user.show_message(SPAN_WARNING("The [src.name] is broken"), 2)
 		return
 
 	flash_recharge()
@@ -303,14 +303,14 @@
 	. = ..()
 	if(!broken)
 		broken = 1
-		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+		to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 		update_icon()
 
 /obj/item/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()
 	if(!broken)
 		broken = 1
-		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+		to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 		update_icon()
 
 /obj/item/flash/robot

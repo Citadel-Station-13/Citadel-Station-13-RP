@@ -78,7 +78,7 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 
-	visible_message("<span class='notice'>[src] lands on [result]. [comment]</span>", "", "")
+	visible_message(SPAN_NOTICE("[src] lands on [result]. [comment]"), "", "")
 
 /obj/item/dice/proc/rollDice(mob/user as mob, var/silent = 0)
 	result = rand(1, sides)
@@ -91,9 +91,9 @@
 		else if(sides == 20 && result == 1)
 			comment = "Ouch, bad luck."
 
-		user.visible_message("<span class='notice'>[user] has thrown [src]. It lands on [result]. [comment]</span>", \
-							 "<span class='notice'>You throw [src]. It lands on a [result]. [comment]</span>", \
-							 "<span class='notice'>You hear [src] landing on a [result]. [comment]</span>")
+		user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
+							 SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+							 SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /*
  * Dice packs
@@ -146,9 +146,9 @@
 		)
 
 /obj/item/storage/dicecup/attack_self(mob/user as mob)
-	user.visible_message("<span class='notice'>[user] shakes [src].</span>", \
-							 "<span class='notice'>You shake [src].</span>", \
-							 "<span class='notice'>You hear dice rolling.</span>")
+	user.visible_message(SPAN_NOTICE("[user] shakes [src]."), \
+							 SPAN_NOTICE("You shake [src]."), \
+							 SPAN_NOTICE("You hear dice rolling."))
 	rollCup(user)
 
 /obj/item/storage/dicecup/proc/rollCup(mob/user as mob)

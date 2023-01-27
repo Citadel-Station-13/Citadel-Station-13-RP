@@ -1838,27 +1838,27 @@
 		return
 
 	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		to_chat(H,SPAN_WARNING("You must be WEARING the uniform to change your size."))
 		return
 
 	var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num|null
 
 	//Check AGAIN because we accepted user input which is blocking.
 	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		to_chat(H,SPAN_WARNING("You must be WEARING the uniform to change your size."))
 		return
 
 	if (H.stat || H.restrained())
 		return
 
 	if (isnull(H.size_multiplier))
-		to_chat(H,"<span class='warning'>The uniform panics and corrects your apparently microscopic size.</span>")
+		to_chat(H,SPAN_WARNING("The uniform panics and corrects your apparently microscopic size."))
 		H.resize(RESIZE_NORMAL)
 		H.update_icons() //Just want the matrix transform
 		return
 
 	if (!ISINRANGE(new_size,25,200))
-		to_chat(H,"<span class='notice'>The safety features of the uniform prevent you from choosing this size.</span>")
+		to_chat(H,SPAN_NOTICE("The safety features of the uniform prevent you from choosing this size."))
 		return
 
 	else if(new_size)
@@ -1866,7 +1866,7 @@
 			if(!original_size)
 				original_size = H.size_multiplier
 			H.resize(new_size/100)
-			H.visible_message("<span class='warning'>The space around [H] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
+			H.visible_message(SPAN_WARNING("The space around [H] distorts as they change size!"),SPAN_NOTICE("The space around you distorts as you change size!"))
 		else //They chose their current size.
 			return
 
@@ -1876,7 +1876,7 @@
 		var/mob/living/carbon/human/H = user
 		H.resize(original_size)
 		original_size = null
-		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+		H.visible_message(SPAN_WARNING("The space around [H] distorts as they return to their original size!"),SPAN_NOTICE("The space around you distorts as you return to your original size!"))
 
 //Same as Nanotrasen Security Uniforms
 /obj/item/clothing/under/ert

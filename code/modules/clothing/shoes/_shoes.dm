@@ -57,11 +57,11 @@
 		return
 
 	if(usr.put_in_hands(holding))
-		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
+		usr.visible_message(SPAN_DANGER("\The [usr] pulls a knife out of their boot!"))
 		holding = null
 		cut_overlay(image(icon, "[icon_state]_knife"))
 	else
-		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
+		to_chat(usr, SPAN_WARNING("Your need an empty, unbroken hand to do that."))
 	if(!holding)
 		remove_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
 
@@ -81,12 +81,12 @@
 	 istype(I, /obj/item/material/knife/stiletto) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
-			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is already holding \a [holding]."))
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		holding = I
-		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] shoves \the [I] into \the [src]."))
 		add_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
 		update_icon()
 	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
@@ -94,21 +94,21 @@
 		for(var/mob/M in src)
 			full++
 		if(full >= 2)
-			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
+			to_chat(user,SPAN_WARNING("You can't fit anyone else into \the [src]!"))
 		else
 			var/obj/item/holder/micro/holder = I
 			if(holder.held_mob && (holder.held_mob in holder))
-				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
+				to_chat(holder.held_mob,SPAN_WARNING("[user] stuffs you into \the [src]!"))
 				holder.held_mob.forceMove(src)
-				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
+				to_chat(user,SPAN_NOTICE("You stuff \the [holder.held_mob] into \the [src]!"))
 	else
 		return ..()
 
 /obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
-		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
-		to_chat(user,"<span class='notice'>You shake [M] out of \the [src]!</span>")
+		to_chat(M,SPAN_WARNING("[user] shakes you out of \the [src]!"))
+		to_chat(user,SPAN_NOTICE("You shake [M] out of \the [src]!"))
 
 	..()
 

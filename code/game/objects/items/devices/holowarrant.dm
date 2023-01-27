@@ -19,7 +19,7 @@
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(user)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
+		to_chat(user, SPAN_NOTICE("You have to go closer if you want to read it."))
 
 //hit yourself with it
 /obj/item/holowarrant/attack_self(mob/living/user as mob)
@@ -29,7 +29,7 @@
 		for(var/datum/data/record/warrant/W in data_core.warrants)
 			warrants += W.fields["namewarrant"]
 	if(warrants.len == 0)
-		to_chat(user,"<span class='notice'>There are no warrants available</span>")
+		to_chat(user,SPAN_NOTICE("There are no warrants available"))
 		return
 	var/temp
 	temp = input(user, "Which warrant would you like to load?") as null|anything in warrants
@@ -45,15 +45,15 @@
 			var/choice = alert(user, "Would you like to authorize this warrant?","Warrant authorization","Yes","No")
 			if(choice == "Yes")
 				active.fields["auth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
-			user.visible_message("<span class='notice'>You swipe \the [I] through the [src].</span>", \
-					"<span class='notice'>[user] swipes \the [I] through the [src].</span>")
+			user.visible_message(SPAN_NOTICE("You swipe \the [I] through the [src]."), \
+					SPAN_NOTICE("[user] swipes \the [I] through the [src]."))
 			return 1
 	..()
 
 //hit other people with it
 /obj/item/holowarrant/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	user.visible_message("<span class='notice'>You show the warrant to [target].</span>", \
-			"<span class='notice'>[user] holds up a warrant projector and shows the contents to [target].</span>")
+	user.visible_message(SPAN_NOTICE("You show the warrant to [target]."), \
+			SPAN_NOTICE("[user] holds up a warrant projector and shows the contents to [target]."))
 	target.examinate(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 

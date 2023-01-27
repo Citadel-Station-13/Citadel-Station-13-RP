@@ -55,7 +55,7 @@
 /obj/effect/energy_net/Destroy()
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
-			to_chat(A,"<span class='notice'>You are free of the net!</span>")
+			to_chat(A,SPAN_NOTICE("You are free of the net!"))
 			unbuckle_mob(A)
 
 	STOP_PROCESSING(SSobj, src)
@@ -82,10 +82,10 @@
 	if(!.)
 		return
 	M.setClickCooldown(M.get_attack_speed())
-	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
+	visible_message(SPAN_DANGER("[M] begins to tear at \the [src]!"))
 	if(!do_after(M, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
 		return FALSE
-	visible_message("<span class='danger'>[M] manages to tear \the [src] apart!</span>")
+	visible_message(SPAN_DANGER("[M] manages to tear \the [src] apart!"))
 	qdel(src)
 	return FALSE
 

@@ -475,7 +475,7 @@
 		return
 
 	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
+		to_chat(user, SPAN_NOTICE("Cannot establish a bluespace connection."))
 		return
 
 	if(deathsquad.deployed)

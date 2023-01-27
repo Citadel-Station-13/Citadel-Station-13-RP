@@ -114,7 +114,7 @@
 	if(buckled)
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
-		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		visible_message(SPAN_WARNING("[src] digs its tentacles under [target]"))
 		sleep(tentacle_warning)
 		new /obj/effect/temporary_effect/tentacle_warning/core(tturf, src)
 		pre_attack = 0
@@ -138,7 +138,7 @@
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
 	if(istype(O, /obj/item/seeds) && !breedable)
-		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")
+		to_chat(user, SPAN_DANGER("You feed the [O] to [src]! Its tendrils begin to thrash softly!"))
 		breedable = 1
 		qdel(O)
 	else
@@ -147,13 +147,13 @@
 /mob/living/simple_mob/animal/goliath/proc/find_mate(var/mob/living/simple_mob/animal/goliath/G)
 	for(var/mob/living/L in view(4,src))
 		if(istype(L, /mob/living/simple_mob/animal/goliath))
-			visible_message("<span class='warning'>The [src] seems to be performing some kind of dance using its tendrils.</span>")
+			visible_message(SPAN_WARNING("The [src] seems to be performing some kind of dance using its tendrils."))
 			mate()
 		else
 			return
 
 /mob/living/simple_mob/animal/goliath/proc/mate()
-	visible_message("<span class='warning'>The [src] intertwines its tendrils with the goliath!</span>")
+	visible_message(SPAN_WARNING("The [src] intertwines its tendrils with the goliath!"))
 	pregnant = 1
 	breedable = 0
 
@@ -166,7 +166,7 @@
 		calve()
 
 /mob/living/simple_mob/animal/goliath/proc/calve()
-	visible_message("<span class='warning'>The [src] disgorges a small calf from a large fissure in its back!</span>")
+	visible_message(SPAN_WARNING("The [src] disgorges a small calf from a large fissure in its back!"))
 	pregnant = 0
 	new child_type(get_turf(src))
 
@@ -246,7 +246,7 @@
 	for(var/mob/living/carbon/C in loc)
 		if(C.stat == DEAD)
 			continue
-		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
+		visible_message(SPAN_DANGER("[src] grabs hold of [C]!"))
 		tripanim()
 		C.Stun(2)
 		C.adjustBruteLoss(rand(5,10))
@@ -326,7 +326,7 @@
 	if(!isturf(tturf))
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
-		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		visible_message(SPAN_WARNING("[src] digs its tentacles under [target]"))
 		new /obj/effect/temporary_effect/tentacle_warning/core/weak(tturf, src)
 		pre_attack = 0
 

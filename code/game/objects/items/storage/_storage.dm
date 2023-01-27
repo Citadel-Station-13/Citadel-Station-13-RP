@@ -315,34 +315,34 @@
 
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0 //Storage item is full
 
 	if(can_hold.len && !is_type_in_list(W, can_hold))
 		if(!stop_messages)
 			if (istype(W, /obj/item/hand_labeler))
 				return 0
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return 0
 
 	if(cant_hold.len && is_type_in_list(W, cant_hold))
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return 0
 
 	if (max_w_class != null && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
+			to_chat(usr, SPAN_NOTICE("[W] is too long for \the [src]."))
 		return 0
 
 	if((storage_space_used() + W.get_storage_cost()) > max_storage_space) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] is too full, make some space."))
 		return 0
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
 		return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -361,11 +361,11 @@
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
 				if (M == usr)
-					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
+					to_chat(usr, SPAN_NOTICE("You put \the [W] into [src]."))
 				else if (M in range(1)) //If someone is standing close enough, they can tell what it is...
-					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
+					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
 				else if (W && W.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
+					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
 		if(user.s_active == src)
 			orient2hud(user)
 			show_to(user)
@@ -483,12 +483,12 @@
 		success = 1
 		handle_item_insertion(I, user, TRUE)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 	if(success && !failure)
-		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You put everything in [src]."))
 	else if(success)
-		to_chat(user, "<span class='notice'>You put some things in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You put some things in [src]."))
 	else
 		if(world.time >= last_message == 0)
-			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You fail to pick anything up with \the [src]."))
 			last_message = world.time + 200
 
 /obj/item/storage/verb/toggle_gathering_mode()
@@ -720,7 +720,7 @@
 	. = ..()
 	if(open && contents.len)
 		var/display_item = contents[1]
-		. += "<span class='notice'>\The [src] contains \the [display_item]!</span>"
+		. += SPAN_NOTICE("\The [src] contains \the [display_item]!")
 
 /obj/item/storage/AllowDrop()
 	return TRUE

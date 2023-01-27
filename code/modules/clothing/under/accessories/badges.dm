@@ -37,12 +37,12 @@
 
 	if(isliving(user))
 		if(stored_name)
-			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [stored_name], [badge_string].</span>","<span class='notice'>You display your [src.name].\nIt reads: [stored_name], [badge_string].</span>")
+			user.visible_message(SPAN_NOTICE("[user] displays their [src.name].\nIt reads: [stored_name], [badge_string]."),SPAN_NOTICE("You display your [src.name].\nIt reads: [stored_name], [badge_string]."))
 		else
-			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src.name]. It reads: [badge_string].</span>")
+			user.visible_message(SPAN_NOTICE("[user] displays their [src.name].\nIt reads: [badge_string]."),SPAN_NOTICE("You display your [src.name]. It reads: [badge_string]."))
 
 /obj/item/clothing/accessory/badge/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
+	user.visible_message(SPAN_DANGER("[user] invades [target]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [target]'s personal space, thrusting [src] into their face insistently."))
 	user.do_attack_animation(target)
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
@@ -58,7 +58,7 @@
 		"You flash the sheriff badge to everyone around you!")
 
 /obj/item/clothing/accessory/badge/sheriff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, shoving the sheriff badge into their face!.</span>","<span class='danger'>You invade [target]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
+	user.visible_message(SPAN_DANGER("[user] invades [target]'s personal space, shoving the sheriff badge into their face!."),SPAN_DANGER("You invade [target]'s personal space, thrusting the sheriff badge into their face insistently."))
 	user.do_attack_animation(target)
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
@@ -81,11 +81,11 @@
 
 /obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
-		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
+		to_chat(user, SPAN_DANGER("\The [src] is already cracked."))
 		return
 	else
 		emagged = 1
-		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
+		to_chat(user, SPAN_DANGER("You crack the holobadge security checks."))
 		return 1
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)

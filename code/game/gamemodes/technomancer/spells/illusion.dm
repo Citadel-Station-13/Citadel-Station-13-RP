@@ -22,7 +22,7 @@
 		if(pay_energy(100))
 			copied = AM
 			update_icon()
-			to_chat(user, "<span class='notice'>You've copied \the [AM]'s appearance.</span>")
+			to_chat(user, SPAN_NOTICE("You've copied \the [AM]'s appearance."))
 			SEND_SOUND(user, sound('sound/weapons/flash.ogg'))
 			return 1
 	else if(istype(hit_atom, /turf))
@@ -33,7 +33,7 @@
 			if(pay_energy(500))
 				illusion = new(T)
 				illusion.copy_appearance(copied)
-				to_chat(user, "<span class='notice'>An illusion of \the [copied] is made on \the [T].</span>")
+				to_chat(user, SPAN_NOTICE("An illusion of \the [copied] is made on \the [T]."))
 				SEND_SOUND(user, sound('sound/effects/pop.ogg'))
 				return 1
 		else

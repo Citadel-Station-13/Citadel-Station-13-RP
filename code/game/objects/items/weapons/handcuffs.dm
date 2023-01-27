@@ -28,7 +28,7 @@
 		return
 
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
+		to_chat(user, SPAN_WARNING("Uh ... how do those things work?!"))
 		place_handcuffs(user, user)
 		return
 
@@ -41,7 +41,7 @@
 		if(can_place(C, user))
 			place_handcuffs(C, user)
 		else
-			to_chat(user, "<span class='danger'>You need to have a firm grip on [C] before you can put \the [src] on!</span>")
+			to_chat(user, SPAN_DANGER("You need to have a firm grip on [C] before you can put \the [src] on!"))
 
 /obj/item/handcuffs/proc/can_place(var/mob/target, var/mob/user)
 	if(user == target)
@@ -67,10 +67,10 @@
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
-		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] won't fit around \the [H.gloves]!"))
 		return 0
 
-	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] is attempting to put [cuff_type] on \the [H]!"))
 
 	if(!do_after(user,use_time))
 		return 0
@@ -87,7 +87,7 @@
 	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(H)
 
-	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] has put [cuff_type] on \the [H]!"))
 
 	// Apply cuffs.
 	var/obj/item/handcuffs/cuffs = src
@@ -120,8 +120,8 @@ var/last_chew = 0
 
 	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 
-	var/s = "<span class='warning'>[H.name] chews on [T.his] [O.name]!</span>"
-	H.visible_message(s, "<span class='warning'>You chew on your [O.name]!</span>")
+	var/s = SPAN_WARNING("[H.name] chews on [T.his] [O.name]!")
+	H.visible_message(s, SPAN_WARNING("You chew on your [O.name]!"))
 	add_attack_logs(H,H,"chewed own [O.name]")
 
 	if(O.take_damage(3,0,1,1,"teeth marks"))
@@ -181,7 +181,7 @@ var/last_chew = 0
 		if (R.use(1))
 			var/obj/item/material/wirerod/W = new(get_turf(user))
 			user.put_in_hands(W)
-			to_chat(user, "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>")
+			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
 			qdel(src)
 			update_icon(user)
 
@@ -233,7 +233,7 @@ var/last_chew = 0
 		return
 
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
+		to_chat(user, SPAN_WARNING("Uh ... how do those things work?!"))
 		place_legcuffs(user, user)
 		return
 
@@ -246,7 +246,7 @@ var/last_chew = 0
 		if(can_place(C, user))
 			place_legcuffs(C, user)
 		else
-			to_chat(user, "<span class='danger'>You need to have a firm grip on [C] before you can put \the [src] on!</span>")
+			to_chat(user, SPAN_DANGER("You need to have a firm grip on [C] before you can put \the [src] on!"))
 
 /obj/item/handcuffs/legcuffs/proc/place_legcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
@@ -259,10 +259,10 @@ var/last_chew = 0
 		return FALSE
 
 	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
-		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] won't fit around \the [H.shoes]!"))
 		return 0
 
-	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] is attempting to put [cuff_type] on \the [H]!"))
 
 	if(!do_after(user,use_time))
 		return 0
@@ -279,7 +279,7 @@ var/last_chew = 0
 	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(H)
 
-	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] has put [cuff_type] on \the [H]!"))
 
 	// Apply cuffs.
 	var/obj/item/handcuffs/legcuffs/lcuffs = src
@@ -330,9 +330,9 @@ var/last_chew = 0
 		return FALSE
 
 	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, INV_OP_FLUFFLESS | INV_OP_SUPPRESS_WARNING))
-		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
+		H.visible_message(SPAN_NOTICE("\The [src] slams into [H], but slides off!"))
 
-	H.visible_message("<span class='danger'>\The [H] has been snared by \the [src]!</span>")
+	H.visible_message(SPAN_DANGER("\The [H] has been snared by \the [src]!"))
 
 	if(target.m_intent != "walk")
 		target.m_intent = "walk"
@@ -356,7 +356,7 @@ var/last_chew = 0
 /obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	if(!iscultist(user))
-		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
+		to_chat(user, SPAN_WARNING("The bola seems to take on a life of its own!"))
 		place_legcuffs(user)
 
 /obj/item/handcuffs/legcuffs/bola/cult/throw_impact(var/atom/target, var/mob/user, mob/living/carbon/human/H)

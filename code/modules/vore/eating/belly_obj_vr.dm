@@ -182,7 +182,7 @@
 		return //Someone dropping something (or being stripdigested)
 
 	//Generic entered message
-	to_chat(owner,"<span class='notice'>[thing] slides into your [lowertext(name)].</span>")
+	to_chat(owner,SPAN_NOTICE("[thing] slides into your [lowertext(name)]."))
 
 	//Sound w/ antispam flag setting
 	if(vore_sound && !recent_sound)
@@ -199,10 +199,10 @@
 	if(isliving(thing))
 		var/mob/living/M = thing
 		if(desc)
-			to_chat(M, "<span class='notice'><B>[desc]</B></span>")
+			to_chat(M, SPAN_NOTICE("<B>[desc]</B>"))
 		var/taste
 		if(can_taste && (taste = M.get_taste_message(FALSE)))
-			to_chat(owner, "<span class='notice'>[M] tastes of [taste].</span>")
+			to_chat(owner, SPAN_NOTICE("[M] tastes of [taste]."))
 
 // Release all contents of this belly into the owning mob's location.
 // If that location is another mob, contents are transferred into whichever of its bellies the owning mob is in.
@@ -452,8 +452,8 @@
 // Handle a mob being absorbed
 /obj/belly/proc/absorb_living(var/mob/living/M)
 	M.absorbed = 1
-	to_chat(M,"<span class='notice'>[owner]'s [lowertext(name)] absorbs your body, making you part of them.</span>")
-	to_chat(owner,"<span class='notice'>Your [lowertext(name)] absorbs [M]'s body, making them part of you.</span>")
+	to_chat(M,SPAN_NOTICE("[owner]'s [lowertext(name)] absorbs your body, making you part of them."))
+	to_chat(owner,SPAN_NOTICE("Your [lowertext(name)] absorbs [M]'s body, making them part of you."))
 	if(M.noisy) //Mute drained absorbee hunger if enabled.
 		M.noisy = FALSE
 
@@ -526,8 +526,8 @@
 	R.setClickCooldown(50)
 
 	if(owner.stat) //If owner is stat (dead, KO) we can actually escape
-		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
-		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
+		to_chat(R,SPAN_WARNING("You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)"))
+		to_chat(owner,SPAN_WARNING("Someone is attempting to climb out of your [lowertext(name)]!"))
 
 		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
 			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
@@ -536,8 +536,8 @@
 			else if(R.loc != src) //Aren't even in the belly. Quietly fail.
 				return
 			else //Belly became inescapable or mob revived
-				to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed!</span>")
-				to_chat(owner,"<span class='notice'>The attempt to escape from your [lowertext(name)] has failed!</span>")
+				to_chat(R,SPAN_WARNING("Your attempt to escape [lowertext(name)] has failed!"))
+				to_chat(owner,SPAN_NOTICE("The attempt to escape from your [lowertext(name)] has failed!"))
 				return
 	var/struggle_outer_message = pick(struggle_messages_outside)
 	var/struggle_user_message = pick(struggle_messages_inside)
@@ -550,8 +550,8 @@
 	struggle_user_message = replacetext(struggle_user_message,"%prey",R)
 	struggle_user_message = replacetext(struggle_user_message,"%belly",lowertext(name))
 
-	struggle_outer_message = "<span class='alert'>" + struggle_outer_message + "</span>"
-	struggle_user_message = "<span class='alert'>" + struggle_user_message + "</span>"
+	struggle_outer_message = SPAN_ALERT("" + struggle_outer_message + "")
+	struggle_user_message = SPAN_ALERT("" + struggle_user_message + "")
 
 	for(var/mob/M in hearers(4, owner))
 		M.show_message(struggle_outer_message, 2) // hearable
@@ -571,21 +571,21 @@
 
 	if(escapable) //If the stomach has escapable enabled.
 		if(prob(escapechance)) //Let's have it check to see if the prey escapes first.
-			to_chat(R,"<span class='warning'>You start to climb out of \the [lowertext(name)].</span>")
-			to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
+			to_chat(R,SPAN_WARNING("You start to climb out of \the [lowertext(name)]."))
+			to_chat(owner,SPAN_WARNING("Someone is attempting to climb out of your [lowertext(name)]!"))
 			if(do_after(R, escapetime))
 				if((escapable) && (R.loc == src) && !R.absorbed) //Does the owner still have escapable enabled?
 					release_specific_contents(R)
-					to_chat(R,"<span class='warning'>You climb out of \the [lowertext(name)].</span>")
-					to_chat(owner,"<span class='warning'>[R] climbs out of your [lowertext(name)]!</span>")
+					to_chat(R,SPAN_WARNING("You climb out of \the [lowertext(name)]."))
+					to_chat(owner,SPAN_WARNING("[R] climbs out of your [lowertext(name)]!"))
 					for(var/mob/M in hearers(4, owner))
-						M.show_message("<span class='warning'>[R] climbs out of [owner]'s [lowertext(name)]!</span>", 2)
+						M.show_message(SPAN_WARNING("[R] climbs out of [owner]'s [lowertext(name)]!"), 2)
 					return
 				else if(!(R.loc == src)) //Aren't even in the belly. Quietly fail.
 					return
 				else //Belly became inescapable.
-					to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed!</span>")
-					to_chat(owner,"<span class='notice'>The attempt to escape from your [lowertext(name)] has failed!</span>")
+					to_chat(R,SPAN_WARNING("Your attempt to escape [lowertext(name)] has failed!"))
+					to_chat(owner,SPAN_NOTICE("The attempt to escape from your [lowertext(name)] has failed!"))
 					return
 
 		else if(prob(transferchance) && transferlocation) //Next, let's have it see if they end up getting into an even bigger mess then when they started.
@@ -597,31 +597,31 @@
 					break
 
 			if(!dest_belly)
-				to_chat(owner, "<span class='warning'>Something went wrong with your belly transfer settings. Your <b>[lowertext(name)]</b> has had it's transfer chance and transfer location cleared as a precaution.</span>")
+				to_chat(owner, SPAN_WARNING("Something went wrong with your belly transfer settings. Your <b>[lowertext(name)]</b> has had it's transfer chance and transfer location cleared as a precaution."))
 				transferchance = 0
 				transferlocation = null
 				return
 
-			to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed and your struggles only results in you sliding into [owner]'s [transferlocation]!</span>")
-			to_chat(owner,"<span class='warning'>Someone slid into your [transferlocation] due to their struggling inside your [lowertext(name)]!</span>")
+			to_chat(R,SPAN_WARNING("Your attempt to escape [lowertext(name)] has failed and your struggles only results in you sliding into [owner]'s [transferlocation]!"))
+			to_chat(owner,SPAN_WARNING("Someone slid into your [transferlocation] due to their struggling inside your [lowertext(name)]!"))
 			transfer_contents(R, dest_belly)
 			return
 
 		else if(prob(absorbchance) && digest_mode != DM_ABSORB) //After that, let's have it run the absorb chance.
-			to_chat(R,"<span class='warning'>In response to your struggling, \the [lowertext(name)] begins to cling more tightly...</span>")
-			to_chat(owner,"<span class='warning'>You feel your [lowertext(name)] start to cling onto its contents...</span>")
+			to_chat(R,SPAN_WARNING("In response to your struggling, \the [lowertext(name)] begins to cling more tightly..."))
+			to_chat(owner,SPAN_WARNING("You feel your [lowertext(name)] start to cling onto its contents..."))
 			digest_mode = DM_ABSORB
 			return
 
 		else if(prob(digestchance) && digest_mode != DM_DIGEST) //Finally, let's see if it should run the digest chance.
-			to_chat(R,"<span class='warning'>In response to your struggling, \the [lowertext(name)] begins to get more active...</span>")
-			to_chat(owner,"<span class='warning'>You feel your [lowertext(name)] beginning to become active!</span>")
+			to_chat(R,SPAN_WARNING("In response to your struggling, \the [lowertext(name)] begins to get more active..."))
+			to_chat(owner,SPAN_WARNING("You feel your [lowertext(name)] beginning to become active!"))
 			digest_mode = DM_DIGEST
 			return
 
 		else //Nothing interesting happened.
-			to_chat(R,"<span class='warning'>You make no progress in escaping [owner]'s [lowertext(name)].</span>")
-			to_chat(owner,"<span class='warning'>Your prey appears to be unable to make any progress in escaping your [lowertext(name)].</span>")
+			to_chat(R,SPAN_WARNING("You make no progress in escaping [owner]'s [lowertext(name)]."))
+			to_chat(owner,SPAN_WARNING("Your prey appears to be unable to make any progress in escaping your [lowertext(name)]."))
 			return
 
 /obj/belly/proc/effective_emote_hearers()

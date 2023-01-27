@@ -22,9 +22,9 @@
 		return FALSE
 	L.last_special = world.time
 	L.visible_message(\
-		"<span class='warning'>[L.name] struggles to break free of the gelatinous resin...</span>",\
-		"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
-		"<span class='notice'>You hear squelching...</span>")
+		SPAN_WARNING("[L.name] struggles to break free of the gelatinous resin..."),\
+		SPAN_WARNING("You struggle to break free from the gelatinous resin..."),\
+		SPAN_NOTICE("You hear squelching..."))
 	add_fingerprint(L)
 	if(!do_after(L, NEST_RESIST_TIME, src, FALSE))
 		L.visible_message(
@@ -36,9 +36,9 @@
 /obj/structure/bed/nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		user.visible_message(\
-			"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
-			"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-			"<span class='notice'>You hear squelching...</span>")
+			SPAN_NOTICE("[user.name] pulls [M.name] free from the sticky nest!"),\
+			SPAN_NOTICE("[user.name] pulls you free from the gelatinous resin."),\
+			SPAN_NOTICE("You hear squelching..."))
 	else
 		user.visible_message(
 			SPAN_WARNING("[user] tears free of [src]."),
@@ -66,16 +66,16 @@
 
 /obj/structure/bed/nest/user_buckle_feedback(mob/M, flags, mob/user, semantic)
 	user.visible_message(\
-		"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
-		"<span class='notice'>You hear squelching...</span>")
+		SPAN_NOTICE("[user.name] secretes a thick vile goo, securing [M.name] into [src]!"),\
+		SPAN_WARNING("[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!"),\
+		SPAN_NOTICE("You hear squelching..."))
 
 /obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))
-		M.show_message("<span class='warning'>[user] hits [src] with [W]!</span>", 1)
+		M.show_message(SPAN_WARNING("[user] hits [src] with [W]!"), 1)
 	healthcheck()
 
 /obj/structure/bed/nest/proc/healthcheck()

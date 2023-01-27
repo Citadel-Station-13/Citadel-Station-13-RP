@@ -82,14 +82,14 @@
 		return ..()
 
 	if(unsafe_pressure())
-		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+		to_chat(user, SPAN_WARNING("You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider.."))
 	add_fingerprint(user)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 	playsound(src, W.tool_sound, 50, 1)
 	if(do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
 			"You hear a ratchet.")
 		deconstruct()
 

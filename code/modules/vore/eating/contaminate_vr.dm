@@ -73,7 +73,7 @@ var/list/gurgled_overlays = list(
 		var/obj/item/I = O
 		if(!I || !istype(I,/obj/item)) return
 
-		to_chat(usr, "<span class='notice'>You start washing \the [I].</span>")
+		to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
 
 		busy = TRUE
 		sleep(40)
@@ -85,8 +85,8 @@ var/list/gurgled_overlays = list(
 
 		O.clean_blood()
 		user.visible_message( \
-			"<span class='notice'>[user] washes \a [I] using \the [src].</span>", \
-			"<span class='notice'>You wash \a [I] using \the [src].</span>")
+			SPAN_NOTICE("[user] washes \a [I] using \the [src]."), \
+			SPAN_NOTICE("You wash \a [I] using \the [src]."))
 	else
 		..()
 

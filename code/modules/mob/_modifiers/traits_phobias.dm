@@ -564,7 +564,7 @@
 
 	if(xenos.len)
 		var/chosen_xeno = pick(xenos)
-		to_chat(holder, "<span class='warning'><font size='3'>[make_message(chosen_xeno)]</font></span>")
+		to_chat(holder, SPAN_WARNING("<font size='3'>[make_message(chosen_xeno)]</font>"))
 		return TRUE
 	else
 		return FALSE // No xenos in sight, so don't apply the cooldown.

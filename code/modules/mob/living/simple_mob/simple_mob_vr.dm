@@ -307,7 +307,7 @@
 	status_flags |= LEAPING
 	pixel_y = pixel_y + 10
 
-	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
+	src.visible_message(SPAN_DANGER("\The [src] leaps at [T]!"))
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/effects/bodyfall1.ogg', 50, 1)
 	pixel_y = base_pixel_y
@@ -317,7 +317,7 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		to_chat(src, "<span class='warning'>You miss!</span>")
+		to_chat(src, SPAN_WARNING("You miss!"))
 		return
 
 	if(ishuman(T))

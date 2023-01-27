@@ -22,29 +22,29 @@
 
 /obj/item/vertibore/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
+	. += SPAN_NOTICE("The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].")
 	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+		. += SPAN_NOTICE("The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.")
 
 /obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing, /obj/item/cell))
 		if(cell)
-			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] already has \a [cell] installed."))
 			return
 		if(!user.attempt_insert_item_for_installation(cell, src))
 			return
 		cell = thing
 		playsound(loc, 'sound/machines/click.ogg', 10, 1)
-		user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] slots \the [cell] into \the [src]."))
 		update_icon()
 		return
 	if(thing.is_screwdriver())
 		if(!cell)
-			to_chat(user, "<span class='warning'>\The [src] has no cell installed.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] has no cell installed."))
 			return
 		cell.forceMove(get_turf(src))
 		user.put_in_hands(cell)
-		user.visible_message("<span class='notice'>\The [user] unscrews \the [cell.name] from \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] unscrews \the [cell.name] from \the [src]."))
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		cell = null
 		update_icon()
@@ -55,7 +55,7 @@
 		if(!M.material || M.material.name != ammo_material)
 			return
 		if(mat_storage + 2000 > max_mat_storage)
-			to_chat(user, "<span class='warning'>\The [src] cannot hold more [ammo_material].</span>")
+			to_chat(user, SPAN_WARNING("\The [src] cannot hold more [ammo_material]."))
 			return
 		var/can_hold_val = 0
 		while(can_hold_val < round(max_mat_storage / 2000))
@@ -67,7 +67,7 @@
 				loading = FALSE
 				break
 		M.use(can_hold_val)
-		user.visible_message("<span class='notice'>\The [user] loads \the [src] with \the [M].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] loads \the [src] with \the [M]."))
 		playsound(loc, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return
@@ -75,10 +75,10 @@
 
 /obj/item/vertibore/attack_self(mob/user)
 	if(mat_cost > mat_storage)
-		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
+		to_chat(user, SPAN_NOTICE("The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there."))
 		return
 	if(power_cost > cell.charge)
-		to_chat(user, "<span class='notice'>The [src] flashes a warning light, it doesn't have enough charge to dig.</span>")
+		to_chat(user, SPAN_NOTICE("The [src] flashes a warning light, it doesn't have enough charge to dig."))
 		return
 	if(cell.use(power_cost) && do_after(user, 2.5 SECONDS))
 		var/turf/T = get_turf(user)

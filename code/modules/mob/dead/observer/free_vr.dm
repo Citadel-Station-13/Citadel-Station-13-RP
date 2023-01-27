@@ -2,7 +2,7 @@ var/global/list/prevent_respawns = list()
 
 /hook/death/proc/quit_notify(mob/dead)
 	if(ishuman(dead))
-		to_chat(dead,"<span class='notice'>You're dead! If you don't intend to continue playing this round as this character, please use the <b>Quit This Round</b> verb in the OOC tab to free your job slot.</span>")
+		to_chat(dead,SPAN_NOTICE("You're dead! If you don't intend to continue playing this round as this character, please use the <b>Quit This Round</b> verb in the OOC tab to free your job slot."))
 
 	return TRUE
 
@@ -18,7 +18,7 @@ var/global/list/prevent_respawns = list()
 
 	//Why are you clicking this button?
 	if(!mind || !mind.assigned_role)
-		to_chat(src,"<span class='warning'>Either you haven't played this round, or you already used this verb.</span>")
+		to_chat(src,SPAN_WARNING("Either you haven't played this round, or you already used this verb."))
 		return
 
 	//Add them to the nope list
@@ -28,7 +28,7 @@ var/global/list/prevent_respawns = list()
 	for(var/datum/objective/O in all_objectives)
 		if(O.target == src.mind)
 			if(O.owner && O.owner.current)
-				to_chat(O.owner.current,"<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
+				to_chat(O.owner.current,SPAN_WARNING("You get the feeling your target is no longer within your reach..."))
 			qdel(O)
 
 	//Resleeving cleanup
@@ -65,4 +65,4 @@ var/global/list/prevent_respawns = list()
 	src.mind.assigned_role = null
 
 	//Feedback
-	to_chat(src,"<span class='notice'>Your job has been free'd up, and you can rejoin as another character or quit. Thanks for using this verb, it helps the server!</span>")
+	to_chat(src,SPAN_NOTICE("Your job has been free'd up, and you can rejoin as another character or quit. Thanks for using this verb, it helps the server!"))

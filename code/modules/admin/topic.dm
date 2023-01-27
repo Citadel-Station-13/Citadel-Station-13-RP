@@ -370,14 +370,14 @@
 
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
-			to_chat(usr, "<span class='adminlog'>This can only be used on instances of type /mob</span>")
+			to_chat(usr, SPAN_ADMINLOG("This can only be used on instances of type /mob"))
 			return
 
 		if(!M.ckey)	//sanity
-			to_chat(usr, "<span class='adminlog'>This mob has no ckey</span>")
+			to_chat(usr, SPAN_ADMINLOG("This mob has no ckey"))
 			return
 		if(!SSjob)
-			to_chat(usr, "<span class='adminlog'>Job Master has not been setup!</span>")
+			to_chat(usr, SPAN_ADMINLOG("Job Master has not been setup!"))
 			return
 
 		var/dat = ""
@@ -638,7 +638,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "<span class='adminlog'>This can only be used on instances of type /mob</span>")
+			to_chat(usr, SPAN_ADMINLOG("This can only be used on instances of type /mob"))
 			return
 
 		if(M != usr)																//we can jobban ourselves
@@ -647,7 +647,7 @@
 				return
 
 		if(!SSjob)
-			to_chat(usr, "<span class='adminlog'>Job Master has not been setup!</span>")
+			to_chat(usr, SPAN_ADMINLOG("Job Master has not been setup!"))
 			return
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
@@ -751,9 +751,9 @@
 							msg += ", [job]"
 					notes_add(M.ckey, "Banned  from [msg] - [reason]", usr)
 					message_admins("<font color='blue'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</font>", 1)
-					to_chat(M, "<span class='system'><font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font></span>")
-					to_chat(M, "<span class='system'><font color='red'><B>The reason is: [reason]</B></font></span>")
-					to_chat(M, "<span class='system'><font color='red'>This jobban will be lifted in [mins] minutes.</font></span>")
+					to_chat(M, SPAN_SYSTEM("<font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font>"))
+					to_chat(M, SPAN_SYSTEM("<font color='red'><B>The reason is: [reason]</B></font>"))
+					to_chat(M, SPAN_SYSTEM("<font color='red'>This jobban will be lifted in [mins] minutes.</font>"))
 					href_list["jobban2"] = 1 // lets it fall through and refresh
 					return 1
 				if("No")
@@ -772,9 +772,9 @@
 							else		msg += ", [job]"
 						notes_add(M.ckey, "Banned  from [msg] - [reason]", usr)
 						message_admins("<font color='blue'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</font>", 1)
-						to_chat(M, "<span class='system'><font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font></span>")
-						to_chat(M, "<span class='system'><font color='red'><B>The reason is: [reason]</B></font></span>")
-						to_chat(M, "<span class='system'><font color='red'>Jobban can be lifted only upon request.</font></span>")
+						to_chat(M, SPAN_SYSTEM("<font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font>"))
+						to_chat(M, SPAN_SYSTEM("<font color='red'><B>The reason is: [reason]</B></font>"))
+						to_chat(M, SPAN_SYSTEM("<font color='red'>Jobban can be lifted only upon request.</font>"))
 						href_list["jobban2"] = 1 // lets it fall through and refresh
 						return 1
 				if("Cancel")
@@ -784,7 +784,7 @@
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
 		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
 			if(!config_legacy.ban_legacy_system)
-				to_chat(usr, "<span class='adminlog'>Unfortunately, database based unbanning cannot be done through this panel</span>")
+				to_chat(usr, SPAN_ADMINLOG("Unfortunately, database based unbanning cannot be done through this panel"))
 				DB_ban_panel(M.ckey)
 				return
 			var/msg
@@ -842,11 +842,11 @@
 
 	else if(href_list["newban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
-			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
+			to_chat(usr, SPAN_WARNING("You do not have the appropriate permissions to add bans!"))
 			return
 
 		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN, 0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
-			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
+			to_chat(usr, SPAN_WARNING("Mod jobbanning is disabled!"))
 			return
 
 		var/mob/M = locate(href_list["newban"])
@@ -860,7 +860,7 @@
 				if(!mins)
 					return
 				if(check_rights(R_MOD, 0) && !check_rights(R_BAN, 0) && mins > config_legacy.mod_tempban_max)
-					to_chat(usr, "<span class='warning'>Moderators can only job tempban up to [config_legacy.mod_tempban_max] minutes!</span>")
+					to_chat(usr, SPAN_WARNING("Moderators can only job tempban up to [config_legacy.mod_tempban_max] minutes!"))
 					return
 				if(mins >= 525600) mins = 525599
 				var/reason = sanitize(input(usr,"Reason?","reason","Griefer") as text|null)
@@ -1277,11 +1277,11 @@
 
 		var/mob/M = locate(href_list["take_question"])
 		if(ismob(M))
-			var/take_msg = "<span class='notice'><b>ADMINHELP</b>: <b>[key_name(usr.client)]</b> is attending to <b>[key_name(M)]'s</b> adminhelp, please don't dogpile them.</span>"
+			var/take_msg = SPAN_NOTICE("<b>ADMINHELP</b>: <b>[key_name(usr.client)]</b> is attending to <b>[key_name(M)]'s</b> adminhelp, please don't dogpile them.")
 			for(var/client/X in GLOB.admins)
 				if((R_ADMIN|R_MOD|R_EVENT|R_SERVER) & X.holder.rights)
 					to_chat(X, take_msg)
-			to_chat(M, "<span class='notice'><b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b></span>")
+			to_chat(M, SPAN_NOTICE("<b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b>"))
 			if (config_legacy.chat_webhook_url)
 				spawn(0)
 					var/query_string = "type=admintake"
@@ -1290,7 +1290,7 @@
 					query_string += "&user=[url_encode(key_name(M))]"
 					world.Export("[config_legacy.chat_webhook_url]?[query_string]")
 		else
-			to_chat(usr, "<span class='warning'>Unable to locate mob.</span>")
+			to_chat(usr, SPAN_WARNING("Unable to locate mob."))
 
 	else if(href_list["adminplayerobservecoodjump"])
 		if(!check_rights(R_ADMIN|R_SERVER|R_MOD|R_EVENT))
@@ -1439,11 +1439,11 @@
 			log_admin("[src.owner] replied to [key_name(L)]'s CentCom message with the message [input].")
 			message_admins("[src.owner] replied to [key_name(L)]'s CentCom message with: \"[input]\"")
 			if(!isAI(L))
-				to_chat(L, "<span class='info'>You hear something crackle in your headset for a moment before a voice speaks.</span>")
-			to_chat(L, "<span class='info'>Please stand by for a message from Central Command.</span>")
-			to_chat(L, "<span class='info'>Message as follows.</span>")
-			to_chat(L, "<span class='notice'>[input]</span>")
-			to_chat(L, "<span class='info'>Message ends.</span>")
+				to_chat(L, SPAN_INFO("You hear something crackle in your headset for a moment before a voice speaks."))
+			to_chat(L, SPAN_INFO("Please stand by for a message from Central Command."))
+			to_chat(L, SPAN_INFO("Message as follows."))
+			to_chat(L, SPAN_NOTICE("[input]"))
+			to_chat(L, SPAN_INFO("Message ends."))
 		else
 			to_chat(src.owner, "The person you are trying to contact does not have functional radio equipment.")
 
@@ -1919,7 +1919,7 @@
 
 		var/mob/living/carbon/M = locate(href_list["cryoplayer"])
 		if(!istype(M))
-			to_chat(usr,"<span class='warning'>Mob doesn't exist!</span>")
+			to_chat(usr,SPAN_WARNING("Mob doesn't exist!"))
 			return
 
 		var/client/C = usr.client
@@ -1928,7 +1928,7 @@
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
 		if(!istype(error_viewer))
-			to_chat(usr, "<span class='warning'>That runtime viewer no longer exists.</span>")
+			to_chat(usr, SPAN_WARNING("That runtime viewer no longer exists."))
 			return
 
 		if(href_list["viewruntime_backto"])

@@ -342,7 +342,7 @@
 /datum/reagent/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE)
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
 
@@ -357,7 +357,7 @@
 /datum/reagent/diethylamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE)
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
 

@@ -46,7 +46,7 @@
 
 /obj/machinery/computer/supplycomp/emag_act(var/remaining_charges, var/mob/user)
 	if(!can_order_contraband)
-		to_chat(user, "<span class='notice'>Special supplies unlocked.</span>")
+		to_chat(user, SPAN_NOTICE("Special supplies unlocked."))
 		authorization |= SUP_CONTRABAND
 		req_access = list()
 		return 1
@@ -231,13 +231,13 @@
 				return
 
 			if(world.time < reqtime)
-				visible_message("<span class='warning'>[src]'s monitor flashes, \"[reqtime - world.time] seconds remaining until another requisition form may be printed.\"</span>")
+				visible_message(SPAN_WARNING("[src]'s monitor flashes, \"[reqtime - world.time] seconds remaining until another requisition form may be printed.\""))
 				return
 
 			var/timeout = world.time + 600
 			var/reason = sanitize(input(user, "Reason:","Why do you require this item?","") as null|text)
 			if(world.time > timeout)
-				to_chat(user, "<span class='warning'>Error. Request timed out.</span>")
+				to_chat(user, SPAN_WARNING("Error. Request timed out."))
 				return
 			if(!reason)
 				return
@@ -395,14 +395,14 @@
 	switch(href_list["send_shuttle"])
 		if("send_away")
 			if (shuttle.forbidden_atoms_check())
-				to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
+				to_chat(usr, SPAN_WARNING("For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons."))
 			else
 				shuttle.launch(src)
-				to_chat(usr, "<span class='notice'>Initiating launch sequence.</span>")
+				to_chat(usr, SPAN_NOTICE("Initiating launch sequence."))
 
 		if("send_to_station")
 			shuttle.launch(src)
-			to_chat(usr, "<span class='notice'>The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes.</span>")
+			to_chat(usr, SPAN_NOTICE("The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes."))
 
 		if("cancel_shuttle")
 			shuttle.cancel_launch(src)

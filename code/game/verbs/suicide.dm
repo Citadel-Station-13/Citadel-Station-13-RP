@@ -77,12 +77,12 @@
 		var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 		var/suicidemsg
-		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is twisting [T.his] own neck! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is holding [T.his] breath! It looks like [T.he] [T.is] trying to commit suicide.</span>")
+		suicidemsg = pick(SPAN_DANGER("[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide."), \
+		                     SPAN_DANGER("[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide."), \
+		                     SPAN_DANGER("[src] is twisting [T.his] own neck! It looks like [T.he] [T.is] trying to commit suicide."), \
+		                     SPAN_DANGER("[src] is holding [T.his] breath! It looks like [T.he] [T.is] trying to commit suicide."))
 		if(isSynthetic())
-			suicidemsg = "<span class='danger'>[src] is attempting to switch [T.his] power off! It looks like [T.he] [T.is] trying to commit suicide.</span>"
+			suicidemsg = SPAN_DANGER("[src] is attempting to switch [T.his] power off! It looks like [T.he] [T.is] trying to commit suicide.")
 		visible_message(suicidemsg)
 
 		adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
@@ -107,7 +107,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>")
+		visible_message(SPAN_DANGER("[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live."))
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -127,7 +127,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
+		visible_message(SPAN_DANGER("[src] is powering down. It looks like they're trying to commit suicide."))
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -147,7 +147,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
+		visible_message(SPAN_DANGER("[src] is powering down. It looks like they're trying to commit suicide."))
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -162,7 +162,7 @@
 		card.removePersonality()
 		var/turf/T = get_turf_or_move(card.loc)
 		for (var/mob/M in viewers(T))
-			M.show_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", 3, "<span class='notice'>[src] bleeps electronically.</span>", 2)
+			M.show_message(SPAN_NOTICE("[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\""), 3, SPAN_NOTICE("[src] bleeps electronically."), 2)
 		death(0)
 	else
 		to_chat(src, "Aborting suicide attempt.")

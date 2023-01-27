@@ -219,12 +219,12 @@
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/rig/rig = target.get_rig(TRUE)
 	rig.reset()
-	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
-		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has cut through the support systems of \the [rig] on [target] with \the [tool]."), \
+		SPAN_NOTICE("You have cut through the support systems of \the [rig] on [target] with \the [tool]."))
 
 /datum/surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='danger'>[user]'s [tool] can't quite seem to get through the metal...</span>", \
-	"<span class='danger'>\The [tool] can't quite seem to get through the metal. It's weakening, though - try again.</span>")
+	user.visible_message(SPAN_DANGER("[user]'s [tool] can't quite seem to get through the metal..."), \
+	SPAN_DANGER("\The [tool] can't quite seem to get through the metal. It's weakening, though - try again."))
 
 /datum/surgery_status/
 	var/dehusk = 0
@@ -257,20 +257,20 @@
 	return ..() && target.op_stage.dehusk == 0
 
 /datum/surgery_step/dehusk/structinitial/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] begins to create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool].</span>", \
-	"<span class='notice'>You begin to create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool]."), \
+	SPAN_NOTICE("You begin to create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool]."))
 	..()
 
 /datum/surgery_step/dehusk/structinitial/end_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] creates a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool].</span>", \
-	"<span class='notice'>You create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] creates a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool]."), \
+	SPAN_NOTICE("You create a fleshy but rigid looking mesh over gaps in [target]'s flesh with \the [tool]."))
 	target.op_stage.dehusk = 1
 	..()
 
 /datum/surgery_step/dehusk/structinitial/fail_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>", \
-	"<span class='danger'>Your hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>")
+	user.visible_message(SPAN_DANGER("[user]'s hand slips, and the mesh falls, with \the [tool] scraping [target]'s body."), \
+	SPAN_DANGER("Your hand slips, and the mesh falls, with \the [tool] scraping [target]'s body."))
 	affected.createwound(CUT, 15)
 	affected.createwound(BRUISE, 10)
 	..()
@@ -289,20 +289,20 @@
 	return ..() && target.op_stage.dehusk == 1
 
 /datum/surgery_step/dehusk/relocateflesh/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] begins to relocate some of [target]'s flesh with \the [tool], using it to fill in gaps.</span>", \
-	"<span class='notice'>You begin to relocate some of [target]'s flesh with \the [tool], using it to fill in gaps.</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to relocate some of [target]'s flesh with \the [tool], using it to fill in gaps."), \
+	SPAN_NOTICE("You begin to relocate some of [target]'s flesh with \the [tool], using it to fill in gaps."))
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh/end_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] relocates some of [target]'s flesh with \the [tool], using it to fill in gaps.</span>", \
-	"<span class='notice'>You relocate some of [target]'s flesh with \the [tool], using it to fill in gaps.</span>")
+	user.visible_message(SPAN_NOTICE("[user] relocates some of [target]'s flesh with \the [tool], using it to fill in gaps."), \
+	SPAN_NOTICE("You relocate some of [target]'s flesh with \the [tool], using it to fill in gaps."))
 	target.op_stage.dehusk = 2
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh/fail_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user] accidentally rips a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>", \
-	"<span class='danger'>You accidentally rip a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>")
+	user.visible_message(SPAN_DANGER("[user] accidentally rips a massive chunk out of [target]'s flesh with \the [tool], causing massive damage."), \
+	SPAN_DANGER("You accidentally rip a massive chunk out of [target]'s flesh with \the [tool], causing massive damage."))
 	affected.createwound(CUT, 25)
 	affected.createwound(BRUISE, 10)
 	..()
@@ -320,16 +320,16 @@
 
 /datum/surgery_step/dehusk/structfinish/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(istype(tool,/obj/item/surgical/bioregen))
-		user.visible_message("<span class='notice'>[user] begins to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool].</span>", \
-	"<span class='notice'>You begin to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool]."), \
+	SPAN_NOTICE("You begin to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool]."))
 	else if(istype(tool,/obj/item/surgical/FixOVein))
-		user.visible_message("<span class='notice'>[user] attempts to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool].</span>", \
-	"<span class='notice'>You attempt to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] attempts to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool]."), \
+	SPAN_NOTICE("You attempt to recreate blood vessels and fill in the gaps in [target]'s flesh with \the [tool]."))
 	..()
 
 /datum/surgery_step/dehusk/structfinish/end_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] finishes recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>", \
-	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] finishes recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool]."), \
+	SPAN_NOTICE("You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool]."))
 	target.op_stage.dehusk = 0
 	target.mutations.Remove(MUTATION_HUSK)
 	target.status_flags &= ~DISFIGURED
@@ -339,11 +339,11 @@
 /datum/surgery_step/dehusk/structfinish/fail_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(istype(tool,/obj/item/surgical/bioregen))
-		user.visible_message("<span class='danger'>[user]'s hand slips, causing \the [tool] to scrape [target]'s body.</span>", \
-	"<span class='danger'>Your hand slips, causing \the [tool] to scrape [target]'s body.</span>")
+		user.visible_message(SPAN_DANGER("[user]'s hand slips, causing \the [tool] to scrape [target]'s body."), \
+	SPAN_DANGER("Your hand slips, causing \the [tool] to scrape [target]'s body."))
 	else if(istype(tool,/obj/item/surgical/FixOVein))
-		user.visible_message("<span class='danger'>[user] fails to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>", \
-	"<span class='danger'>You fail to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>")
+		user.visible_message(SPAN_DANGER("[user] fails to finish the structure over the gaps in [target]'s flesh, doing more damage than good."), \
+	SPAN_DANGER("You fail to finish the structure over the gaps in [target]'s flesh, doing more damage than good."))
 	affected.createwound(CUT, 15)
 	affected.createwound(BRUISE, 10)
 	..()
@@ -362,13 +362,13 @@
 	return ..() && target_zone == BP_TORSO && (target.toxloss > 25 || target.oxyloss > 25)
 
 /datum/surgery_step/internal/detoxify/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] begins to pull toxins from, and restore oxygen to [target]'s musculature and organs with \the [tool].</span>", \
-	"<span class='notice'>You begin to pull toxins from, and restore oxygen to [target]'s musculature and organs with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to pull toxins from, and restore oxygen to [target]'s musculature and organs with \the [tool]."), \
+	SPAN_NOTICE("You begin to pull toxins from, and restore oxygen to [target]'s musculature and organs with \the [tool]."))
 	..()
 
 /datum/surgery_step/internal/detoxify/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] finishes pulling toxins from, and restoring oxygen to [target]'s musculature and organs with \the [tool].</span>", \
-	"<span class='notice'>You finish pulling toxins from, and restoring oxygen to [target]'s musculature and organs with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] finishes pulling toxins from, and restoring oxygen to [target]'s musculature and organs with \the [tool]."), \
+	SPAN_NOTICE("You finish pulling toxins from, and restoring oxygen to [target]'s musculature and organs with \the [tool]."))
 	if(target.toxloss>25)
 		target.adjustToxLoss(-20)
 	if(target.oxyloss>25)
@@ -377,8 +377,8 @@
 
 /datum/surgery_step/internal/detoxify/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>", \
-	"<span class='danger'>Your hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>")
+	user.visible_message(SPAN_DANGER("[user]'s hand slips, failing to finish the surgery, and damaging [target] with \the [tool]."), \
+	SPAN_DANGER("Your hand slips, failing to finish the surgery, and damaging [target] with \the [tool]."))
 	affected.createwound(CUT, 15)
 	affected.createwound(BRUISE, 10)
 	..()

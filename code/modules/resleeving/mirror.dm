@@ -32,7 +32,7 @@
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
 	spawn(20)
 	if((H.client.prefs.organ_data[O_BRAIN] != null))
-		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		to_chat(usr, SPAN_WARNING("WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH."))
 		H.mirror = src
 		return
 	else
@@ -85,7 +85,7 @@
 		icon_state = "mirror_implant"
 		H.mirror = src
 	else
-		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		to_chat(usr, SPAN_WARNING("WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH."))
 		H.mirror = src
 
 /obj/item/mirrorscanner
@@ -123,13 +123,13 @@
 		return
 	if(target_zone == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
-			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
+			H.visible_message(SPAN_WARNING("[user] is attempting remove [H]'s mirror!"))
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))
 				if(user && H && (get_turf(H) == T1) && src)
-					H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+					H.visible_message(SPAN_WARNING("[user] has removed [H]'s mirror."))
 					add_attack_logs(user,H,"Mirror removed by [user]")
 					src.imp = H.mirror
 					H.mirror = null
@@ -146,13 +146,13 @@
 				to_chat(usr, "This person already has a mirror!")
 				return
 			if(!H.mirror)
-				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
+				H.visible_message(SPAN_WARNING("[user] is attempting to implant [H] with a mirror."))
 				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(H)
 				var/turf/T1 = get_turf(H)
 				if (T1 && ((H == user) || do_after(user, 20)))
 					if(user && H && (get_turf(H) == T1) && src && src.imp)
-						H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+						H.visible_message(SPAN_WARNING("[H] has been implanted by [user]."))
 						add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
 						if(imp.handle_implant(H))
 							imp.post_implant(H)

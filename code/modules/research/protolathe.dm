@@ -107,20 +107,20 @@
 	if(istype(O, /obj/item/gripper/no_use/loader))
 		return 0		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
 	if(panel_open)
-		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
+		to_chat(user, SPAN_NOTICE("You can't load \the [src] while it's opened."))
 		return 1
 	if(!linked_console)
-		to_chat(user, "<span class='notice'>\The [src] must be linked to an R&D console first!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] must be linked to an R&D console first!"))
 		return 1
 	if(!istype(O, /obj/item/stack/material))
-		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return 1
 	if(machine_stat)
 		return 1
 
 	var/obj/item/stack/material/S = O
 	if(!(S.material.name in materials))
-		to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
+		to_chat(user, SPAN_WARNING("The [src] doesn't accept [S.material]!"))
 		return
 
 	busy = 1

@@ -338,7 +338,7 @@
 	STOP_PROCESSING(SSobj, src)
 	shut_down()
 	if(chassis && chassis.occupant)
-		to_chat(chassis.occupant, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
+		to_chat(chassis.occupant, SPAN_NOTICE("\The [chassis] shudders as something jams!"))
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
@@ -429,7 +429,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/shut_down()
 	if(enabled)
-		chassis.visible_message("<span class='notice'>\The [chassis]'s [src] buzzes as its drone returns to port.</span>")
+		chassis.visible_message(SPAN_NOTICE("\The [chassis]'s [src] buzzes as its drone returns to port."))
 		toggle_drone()
 	if(!isnull(Target))
 		Target = null

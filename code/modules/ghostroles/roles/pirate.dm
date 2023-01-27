@@ -113,23 +113,23 @@
 	if(.)
 		return
 	if(user.mind.has_antag_datum(/datum/antagonist/pirate))
-		to_chat(user, "<span class='notice'>Your shipmate sails within their dreams for now. Perhaps they may wake up eventually.</span>")
+		to_chat(user, SPAN_NOTICE("Your shipmate sails within their dreams for now. Perhaps they may wake up eventually."))
 	else
-		to_chat(user, "<span class='notice'>If you want to kill the pirate off, something to pry open the sleeper might be the best way to do it.</span>")
+		to_chat(user, SPAN_NOTICE("If you want to kill the pirate off, something to pry open the sleeper might be the best way to do it."))
 
 /obj/structure/ghost_role_spawner/pirate/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_CROWBAR && user.a_intent != INTENT_HARM)
 		if(user.mind.has_antag_datum(/datum/antagonist/pirate))
-			to_chat(user,"<span class='warning'>Why would you want to do that to your shipmate? That'd kill them.</span>")
+			to_chat(user,SPAN_WARNING("Why would you want to do that to your shipmate? That'd kill them."))
 			return
-		user.visible_message("<span class='warning'>[user] start to pry open [src]...</span>",
-				"<span class='notice'>You start to pry open [src]...</span>",
-				"<span class='italics'>You hear prying...</span>")
+		user.visible_message(SPAN_WARNING("[user] start to pry open [src]..."),
+				SPAN_NOTICE("You start to pry open [src]..."),
+				SPAN_ITALICS("You hear prying..."))
 		W.play_tool_sound(src)
 		if(do_after(user, 100*W.tool_speed, target = src))
-			user.visible_message("<span class='warning'>[user] pries open [src], disrupting the sleep of the pirate within and killing them.</span>",
-				"<span class='notice'>You pry open [src], disrupting the sleep of the pirate within and killing them.</span>",
-				"<span class='italics'>You hear prying, followed by the death rattling of bones.</span>")
+			user.visible_message(SPAN_WARNING("[user] pries open [src], disrupting the sleep of the pirate within and killing them."),
+				SPAN_NOTICE("You pry open [src], disrupting the sleep of the pirate within and killing them."),
+				SPAN_ITALICS("You hear prying, followed by the death rattling of bones."))
 			log_game("[key_name(user)] has successfully pried open [src] and disabled a space pirate spawner.")
 			W.play_tool_sound(src)
 			playsound(src.loc, 'modular_citadel/sound/voice/scream_skeleton.ogg', 50, 1, 4, 1.2)

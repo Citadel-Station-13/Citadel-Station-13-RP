@@ -41,7 +41,7 @@
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	to_chat(user, SPAN_NOTICE("Alt-click to recolor it."))
 
 /obj/item/melee/energy/proc/deactivate(mob/living/user)
 	if(!active)
@@ -71,21 +71,21 @@
 	. = ..()
 	if(use_cell)
 		if(bcell)
-			. += "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>"
+			. += SPAN_NOTICE("The blade is [round(bcell.percent())]% charged.")
 		if(!bcell)
-			. += "<span class='warning'>The blade does not have a power source installed.</span>"
+			. += SPAN_WARNING("The blade does not have a power source installed.")
 
 /obj/item/melee/energy/attack_self(mob/living/user as mob)
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
-			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] does not seem to have power."))
 			return
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
-			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
+			user.visible_message(SPAN_DANGER("\The [user] accidentally cuts [TU.himself] with \the [src]."),\
+			SPAN_DANGER("You accidentally cut yourself with \the [src]."))
 			user.take_organ_damage(5,5)
 		deactivate(user)
 	else
@@ -102,8 +102,8 @@
 /obj/item/melee/energy/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(active)
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
-			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
+		user.visible_message(pick(SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku."),\
+			SPAN_DANGER("\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.")))
 		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/energy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -111,7 +111,7 @@
 	if(active && use_cell)
 		if(!use_charge(hitcost))
 			deactivate(user)
-			visible_message("<span class='notice'>\The [src]'s blade flickers, before deactivating.</span>")
+			visible_message(SPAN_NOTICE("\The [src]'s blade flickers, before deactivating."))
 
 /obj/item/melee/energy/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/multitool) && colorable && !active)
@@ -119,7 +119,7 @@
 			rainbow = TRUE
 		else
 			rainbow = FALSE
-		to_chat(user, "<span class='notice'>You manipulate the color controller in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You manipulate the color controller in [src]."))
 		update_icon()
 	if(use_cell)
 		if(istype(W, cell_type))
@@ -127,15 +127,15 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bcell = W
-				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
 				update_icon()
 			else
-				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
+				to_chat(user, SPAN_NOTICE("[src] already has a cell."))
 		else if(W.is_screwdriver() && bcell)
 			bcell.update_icon()
 			bcell.forceMove(get_turf(loc))
 			bcell = null
-			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from \the [src]."))
 			deactivate()
 			update_icon()
 			return
@@ -167,7 +167,7 @@
 	if(!in_range(src, user))	//Basic checks to prevent abuse
 		return
 	if(user.incapacitated() || !istype(user))
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
@@ -208,16 +208,16 @@
 /obj/item/melee/energy/axe/activate(mob/living/user)
 	..()
 	damtype = SEARING
-	to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+	to_chat(user, SPAN_NOTICE("\The [src] is now energised."))
 
 /obj/item/melee/energy/axe/deactivate(mob/living/user)
 	..()
 	damtype = BRUTE
-	to_chat(user, "<span class='notice'>\The [src] is de-energised. It's just a regular axe now.</span>")
+	to_chat(user, SPAN_NOTICE("\The [src] is de-energised. It's just a regular axe now."))
 
 /obj/item/melee/energy/axe/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message("<span class='warning'>\The [user] swings \the [src] towards [TU.his] head! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
+	visible_message(SPAN_WARNING("\The [user] swings \the [src] towards [TU.his] head! It looks like [TU.he] [TU.is] trying to commit suicide."))
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/energy/axe/charge
@@ -266,20 +266,20 @@
 
 /obj/item/melee/energy/sword/activate(mob/living/user)
 	if(!active)
-		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is now energised."))
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/melee/energy/sword/deactivate(mob/living/user)
 	if(active)
-		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] deactivates!"))
 	..()
 	attack_verb = list()
 
 /obj/item/melee/energy/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(60))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
@@ -287,7 +287,7 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 	if(active && unique_parry_check(user, attacker, damage_source) && prob(projectile_parry_chance))
-		user.visible_message("<span class='danger'>\The [user] deflects [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] deflects [attack_text] with \the [src]!"))
 
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
@@ -310,13 +310,13 @@
 /obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword))
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
+			to_chat(user, SPAN_WARNING("\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!"))
 			return
 		if(istype(W, /obj/item/melee/energy/sword/charge))
-			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
+			to_chat(user,SPAN_WARNING("These blades are incompatible, you can't attach them to each other!"))
 			return
 		else
-			to_chat(user, "<span class='notice'>You combine the two energy swords, making a single supermassive blade! You're cool.</span>")
+			to_chat(user, SPAN_NOTICE("You combine the two energy swords, making a single supermassive blade! You're cool."))
 			new /obj/item/melee/energy/sword/dualsaber(user.drop_location())
 			qdel(W)
 			qdel(src)
@@ -438,10 +438,10 @@
 /obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword/charge))
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
+			to_chat(user, SPAN_WARNING("\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!"))
 			return
 		else
-			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
+			to_chat(user, SPAN_NOTICE("You combine the two charge swords, making a single supermassive blade! You're cool."))
 			new /obj/item/melee/energy/sword/charge/dualsaber(user.drop_location())
 			qdel(W)
 			qdel(src)
@@ -538,7 +538,7 @@
 
 /obj/item/melee/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(60))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
@@ -546,7 +546,7 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 	if(unique_parry_check(user, attacker, damage_source) && prob(projectile_parry_chance))
-		user.visible_message("<span class='danger'>\The [user] deflects [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] deflects [attack_text] with \the [src]!"))
 
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
@@ -592,20 +592,20 @@
 
 /obj/item/melee/energy/spear/activate(mob/living/user)
 	if(!active)
-		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is now energised."))
 	..()
 	attack_verb = list("jabbed", "stabbed", "impaled")
 
 
 /obj/item/melee/energy/spear/deactivate(mob/living/user)
 	if(active)
-		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] deactivates!"))
 	..()
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
 
 /obj/item/melee/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
@@ -655,7 +655,7 @@
 		// sharpness = 1.7
 		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
 		armor_penetration = 100
-		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
+		to_chat(user, SPAN_WARNING(" [src] starts vibrating."))
 		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_BULKY
 		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
@@ -666,7 +666,7 @@
 		// sharpness = initial(sharpness)
 		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
 		armor_penetration = initial(armor_penetration)
-		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
+		to_chat(user, SPAN_NOTICE(" [src] stops vibrating."))
 		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_NORMAL
 		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
@@ -727,7 +727,7 @@
 /obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/melee/energy/hfmachete))
-		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
+		to_chat(user, SPAN_NOTICE("You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!"))
 		qdel(W)
 		W = null
 		qdel(src)

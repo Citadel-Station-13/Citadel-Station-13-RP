@@ -106,7 +106,7 @@
 	if(alien == IS_SLIME)
 		M.adjust_fire_stacks(removed * 10)
 		if(prob(10))
-			to_chat(M, "<span class='critical'>You feel something boiling within you!</span>")
+			to_chat(M, SPAN_CRITICAL("You feel something boiling within you!"))
 			spawn(rand(30, 60))
 				M.IgniteMob()
 
@@ -354,7 +354,7 @@
 /datum/reagent/toxin/fertilizer/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
 		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+			to_chat(M, SPAN_VOX("You feel a rush of nutrients fill your body."))
 		M.nutrition += removed * 5
 		return
 
@@ -385,7 +385,7 @@
 		if(locate(/obj/effect/overlay/wallrot) in W)
 			for(var/obj/effect/overlay/wallrot/E in W)
 				qdel(E)
-			W.visible_message("<span class='notice'>The fungi are completely dissolved by the solution!</span>")
+			W.visible_message(SPAN_NOTICE("The fungi are completely dissolved by the solution!"))
 
 /datum/reagent/toxin/plantbgone/touch_obj(var/obj/O, var/volume)
 	if(istype(O, /obj/effect/plant))
@@ -492,11 +492,11 @@
 	if(alien == IS_DIONA)
 		return
 	if(prob(10))
-		to_chat(M,"<span class='warning'>Your veins feel like they're on fire!</span>")
+		to_chat(M,SPAN_WARNING("Your veins feel like they're on fire!"))
 		M.adjust_fire_stacks(0.1)
 	else if(prob(5))
 		M.IgniteMob()
-		to_chat(M,"<span class='critical'>Some of your veins rupture, the exposed blood igniting!</span>")
+		to_chat(M,SPAN_CRITICAL("Some of your veins rupture, the exposed blood igniting!"))
 
 /datum/reagent/condensedcapsaicin/venom
 	name = "Irritant toxin"
@@ -514,9 +514,9 @@
 	if(prob(50))
 		M.apply_effect(4, AGONY, 0)
 		if(prob(20))
-			to_chat(M,"<span class='danger'>You feel like your insides are burning!</span>")
+			to_chat(M,SPAN_DANGER("You feel like your insides are burning!"))
 		else if(prob(20))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!","rubs at their eyes!")]</span>")
+			M.visible_message(SPAN_WARNING("[M] [pick("dry heaves!","coughs!","splutters!","rubs at their eyes!")]"))
 	else
 		M.eye_blurry = max(M.eye_blurry, 10)
 
@@ -536,7 +536,7 @@
 		M.apply_effect(5, AGONY, 0)
 		M.adjustToxLoss(3 * removed)
 		if(prob(10))
-			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
+			to_chat(M, SPAN_WARNING("Your cellular mass hardens for a moment."))
 			M.Stun(6)
 		return
 	if(alien == IS_SKRELL)
@@ -639,7 +639,7 @@
 			M.UpdateAppearance()
 		if(prob(removed * 40)) //Additionally, let's make it so there's an 8% chance per tick for a random cosmetic/not guranteed good/bad mutation.
 			randmuti(M)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
+			to_chat(M, SPAN_WARNING("You feel odd!"))
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed))
 
 /datum/reagent/slimejelly
@@ -662,7 +662,7 @@
 			M.add_chemical_effect(CE_PAINKILLER, 60)
 	else
 		if(prob(10))
-			to_chat(M, "<span class='danger'>Your insides are burning!</span>")
+			to_chat(M, SPAN_DANGER("Your insides are burning!"))
 			M.adjustToxLoss(rand(100, 300) * removed)
 		else if(prob(40))
 			M.heal_organ_damage(25 * removed, 0)
@@ -678,7 +678,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name != SPECIES_PROMETHEAN)
-			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
+			to_chat(M, SPAN_DANGER("Your flesh rapidly mutates!"))
 
 			var/list/backup_implants = list()
 			for(var/obj/item/organ/I in H.organs)
@@ -1048,7 +1048,7 @@
 			M.UpdateAppearance()
 		if(prob(removed * 40))
 			randmuti(M)
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
+			to_chat(M, SPAN_WARNING("You feel odd!"))
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed))
 
 /datum/reagent/aslimetoxin
@@ -1078,7 +1078,7 @@
 			M.UpdateAppearance()
 		if(prob(removed * 40))
 			randmuti(M)
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
+			to_chat(M, SPAN_WARNING("You feel odd!"))
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed))
 
 /*

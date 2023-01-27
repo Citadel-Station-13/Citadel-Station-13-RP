@@ -99,14 +99,14 @@
 	if(destination)
 		forceMove(destination)
 	else
-		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
+		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
 
 /mob/observer/eye/zMove(direction)
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
 	if(destination)
 		setLoc(destination)
 	else
-		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
+		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
 
 /mob/proc/can_ztravel()
 	return 0
@@ -211,17 +211,17 @@
 				H.stop_flying()
 				//Just here to see if the person is KO'd, stunned, etc. If so, it'll move onto can_fall.
 			else if (H.nutrition > 1000) //Eat too much while flying? Get fat and fall.
-				to_chat(H, "<span class='danger'>You're too heavy! Your wings give out and you plummit to the ground!</span>")
+				to_chat(H, SPAN_DANGER("You're too heavy! Your wings give out and you plummit to the ground!"))
 				H.stop_flying() //womp womp.
 			else if(H.nutrition < 300 && H.nutrition > 289) //290 would be risky, as metabolism could mess it up. Let's do 289.
-				to_chat(H, "<span class='danger'>You are starting to get fatigued... You probably have a good minute left in the air, if that. Even less if you continue to fly around! You should get to the ground soon!</span>") //Ticks are, on average, 3 seconds. So this would most likely be 90 seconds, but lets just say 60.
+				to_chat(H, SPAN_DANGER("You are starting to get fatigued... You probably have a good minute left in the air, if that. Even less if you continue to fly around! You should get to the ground soon!")) //Ticks are, on average, 3 seconds. So this would most likely be 90 seconds, but lets just say 60.
 				H.nutrition -= 0.5 //Fixed the evilness to have 10 nutrition drained per tick and tile below 300 nutrition too
 				return
 			else if(H.nutrition < 100 && H.nutrition > 89)
-				to_chat(H, "<span class='danger'>You're seriously fatigued! You need to get to the ground immediately and eat before you fall!</span>")
+				to_chat(H, SPAN_DANGER("You're seriously fatigued! You need to get to the ground immediately and eat before you fall!"))
 				return
 			else if(H.nutrition < 10) //Should have listened to the warnings!
-				to_chat(H, "<span class='danger'>You lack the strength to keep yourself up in the air...</span>")
+				to_chat(H, SPAN_DANGER("You lack the strength to keep yourself up in the air..."))
 				H.stop_flying()
 			else
 				return

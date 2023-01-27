@@ -21,60 +21,60 @@
 		if(anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is loosening the [name]'s bolts.", \
-								 "<span class='notice'>You are loosening the [name]'s bolts...</span>")
+								 SPAN_NOTICE("You are loosening the [name]'s bolts..."))
 			if(do_after(user,40/W.tool_speed, target = src))
 				if(!src.loc || !anchored)
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
-									 "<span class='notice'>You loosen the [name]'s bolts!</span>")
+									 SPAN_NOTICE("You loosen the [name]'s bolts!"))
 				anchored = 0
 		else
 			if (!istype(src.loc, /turf/simulated/floor))
-				user.visible_message("<span class='warning'>A floor must be present to secure the [name]!</span>")
+				user.visible_message(SPAN_WARNING("A floor must be present to secure the [name]!"))
 				return
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is securing the [name]'s bolts...", \
-								 "<span class='notice'>You are securing the [name]'s bolts...</span>")
+								 SPAN_NOTICE("You are securing the [name]'s bolts..."))
 			if(do_after(user, 40/W.tool_speed, target = src))
 				if(!src.loc || anchored)
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
-									 "<span class='notice'>You have secured the [name]'s bolts.</span>")
+									 SPAN_NOTICE("You have secured the [name]'s bolts."))
 				anchored = 1
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		playsound(src, 'sound/items/Welder.ogg', 100, 1)
 		user.visible_message("[user] is slicing apart the [name]...", \
-							 "<span class='notice'>You are slicing apart the [name]...</span>")
+							 SPAN_NOTICE("You are slicing apart the [name]..."))
 		if(do_after(user,30, target = src))
 			if(!src.loc)
 				return
 			user.visible_message("[user] slices apart the [name].", \
-								 "<span class='notice'>You slice apart the [name].</span>")
+								 SPAN_NOTICE("You slice apart the [name]."))
 			Dismantle(1)
 
 	else if(istype(W, /obj/item/pickaxe))
 		if(!src.loc)
 			return
 		user.visible_message("[user] destroys the [name]!", \
-							 "<span class='notice'>You are destroying the [name].</span>")
+							 SPAN_NOTICE("You are destroying the [name]."))
 		if(do_after(user,30, target = src))
 			if(!src.loc)
 				return
 			user.visible_message("[user] smashes the [name].", \
-								 "<span class='notice'>You destroy the [name].</span>")
+								 SPAN_NOTICE("You destroy the [name]."))
 			qdel(src)
 
 	else if(istype(W, /obj/item/weldingtool) && !anchored)
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
 		user.visible_message("[user] is slicing apart the [name].", \
-							 "<span class='notice'>You are slicing apart the [name]...</span>")
+							 SPAN_NOTICE("You are slicing apart the [name]..."))
 		if(do_after(user, 40/W.tool_speed, target = src))
 			if(!src.loc)
 				return
 			playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
 			user.visible_message("[user] slices apart the [name].", \
-								 "<span class='notice'>You slice apart the [name]!</span>")
+								 SPAN_NOTICE("You slice apart the [name]!"))
 			Dismantle(1)
 
 	else
@@ -85,7 +85,7 @@
 /obj/structure/statue/attack_hand(mob/living/user)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
-						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
+						 SPAN_NOTICE("You rub some dust off from the [name]'s surface."))
 
 /obj/structure/statue/bullet_act(obj/item/projectile/Proj)
 	hardness -= Proj.damage

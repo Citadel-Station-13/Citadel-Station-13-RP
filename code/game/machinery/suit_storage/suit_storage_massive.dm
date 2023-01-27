@@ -89,7 +89,7 @@
 		switch(selection)
 			if("Helmet")
 				if(helmet_amount <= 0)
-					to_chat(user, "<span class='warning'>There are no helmets stored in this storage unit</span>")
+					to_chat(user, SPAN_WARNING("There are no helmets stored in this storage unit"))
 				var/obj/item/clothing/head/helmet/space/helmet_selection = input(user, "Which Helmet would you like to remove?", "Remove Contents") as null|anything in helmets
 				if(istype(helmet_selection))
 					helmet_selection.loc = src.loc
@@ -97,7 +97,7 @@
 					update_amounts()
 			if("Suit")
 				if(suit_amount <= 0)
-					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+					to_chat(user, SPAN_WARNING("There are no suits stored in this storage unit"))
 				var/obj/item/clothing/suit/space/suit_selection = input(user, "Which Suit would you like to remove?", "Remove Contents") as null|anything in suits
 				if(istype(suit_selection))
 					suit_selection.loc = src.loc
@@ -105,7 +105,7 @@
 					update_amounts()
 			if("Boots")
 				if(boots_amount <= 0)
-					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+					to_chat(user, SPAN_WARNING("There are no suits stored in this storage unit"))
 				var/obj/item/clothing/shoes/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in boots
 				if(istype(boot_selection))
 					boot_selection.loc = src.loc
@@ -113,7 +113,7 @@
 					update_amounts()
 			if("Mask")
 				if(mask_amount <= 0)
-					to_chat(user, "<span class='warning'>There are no masks stored in this storage unit</span>")
+					to_chat(user, SPAN_WARNING("There are no masks stored in this storage unit"))
 				var/obj/item/clothing/mask/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
 				if(istype(mask_selection))
 					mask_selection.loc = src.loc

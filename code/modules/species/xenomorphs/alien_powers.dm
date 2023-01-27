@@ -22,20 +22,20 @@
 
 	var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
-		to_chat(src, "<span class='danger'>Your plasma vessel has been removed!</span>")
+		to_chat(src, SPAN_DANGER("Your plasma vessel has been removed!"))
 		return
 
 	if(needs_organ)
 		var/obj/item/organ/internal/I = internal_organs_by_name[needs_organ]
 		if(!I)
-			to_chat(src, "<span class='danger'>Your [needs_organ] has been removed!</span>")
+			to_chat(src, SPAN_DANGER("Your [needs_organ] has been removed!"))
 			return
 		else if((I.status & ORGAN_CUT_AWAY) || I.is_broken())
-			to_chat(src, "<span class='danger'>Your [needs_organ] is too damaged to function!</span>")
+			to_chat(src, SPAN_DANGER("Your [needs_organ] is too damaged to function!"))
 			return
 
 	if(P.stored_plasma < cost)
-		to_chat(src, "<span class='danger'>You don't have enough phoron stored to do that.</span>")
+		to_chat(src, SPAN_DANGER("You don't have enough phoron stored to do that."))
 		return 0
 
 	if(needs_foundation)
@@ -46,7 +46,7 @@
 			if(!(istype(T,/turf/space)))
 				has_foundation = 1
 		if(!has_foundation)
-			to_chat(src, "<span class='danger'>You need a solid foundation to do that on.</span>")
+			to_chat(src, SPAN_DANGER("You need a solid foundation to do that on."))
 			return 0
 
 	P.stored_plasma -= cost
@@ -59,12 +59,12 @@
 	set category = "Abilities"
 
 	if (get_dist(src,M) > 1)
-		to_chat(src, "<span class='green'>You need to be closer.</span>")
+		to_chat(src, SPAN_GREEN("You need to be closer."))
 		return
 
 	var/obj/item/organ/internal/xenos/plasmavessel/I = M.internal_organs_by_name[O_PLASMA]
 	if(!istype(I))
-		to_chat(src, "<span class='green'>Their plasma vessel is missing.</span>")
+		to_chat(src, SPAN_GREEN("Their plasma vessel is missing."))
 		return
 
 	var/amount = input("Amount:", "Transfer Plasma to [M]") as num
@@ -72,8 +72,8 @@
 		amount = abs(round(amount))
 		if(check_alien_ability(amount,0,O_PLASMA))
 			M.gain_plasma(amount)
-			to_chat(M, "<span class='green'>[src] has transfered [amount] plasma to you.</span>")
-			to_chat(src, "<span class='green'>You have transferred [amount] plasma to [M].</span>")
+			to_chat(M, SPAN_GREEN("[src] has transfered [amount] plasma to you."))
+			to_chat(src, SPAN_GREEN("You have transferred [amount] plasma to [M]."))
 	return
 
 // Queen verbs.
@@ -93,7 +93,7 @@
 		return
 
 	if(check_alien_ability(75,1,O_EGG))
-		visible_message("<span class='green'><B>[src] has laid an egg!</B></span>")
+		visible_message(SPAN_GREEN("<B>[src] has laid an egg!</B>"))
 		new /obj/effect/alien/egg(loc)
 
 	return
@@ -105,11 +105,11 @@
 	set category = "Abilities"
 
 	if(alien_queen_exists())
-		to_chat(src, "<span class='notice'>We already have an active queen.</span>")
+		to_chat(src, SPAN_NOTICE("We already have an active queen."))
 		return
 
 	if(check_alien_ability(500))
-		visible_message("<span class='green'><B>[src] begins to twist and contort!</B></span>", "<span class='green'>You begin to evolve!</span>")
+		visible_message(SPAN_GREEN("<B>[src] begins to twist and contort!</B>"), SPAN_GREEN("You begin to evolve!"))
 		src.set_species(/datum/species/xenos/queen)
 
 	return
@@ -120,7 +120,7 @@
 	set category = "Abilities"
 
 	if(check_alien_ability(50,1,O_RESIN))
-		visible_message("<span class='green'><B>[src] has planted some alien weeds!</B></span>")
+		visible_message(SPAN_GREEN("<B>[src] has planted some alien weeds!</B>"))
 		var/obj/O = new /obj/effect/alien/weeds/node(loc)
 		if(O)
 			O.color = "#321D37"
@@ -128,7 +128,7 @@
 
 /mob/living/carbon/human/proc/Spit(var/atom/A)
 	if((last_spit + 1 SECONDS) > world.time) //To prevent YATATATATATAT spitting.
-		to_chat(src, "<span class='warning'>You have not yet prepared your chemical glands. You must wait before spitting again.</span>")
+		to_chat(src, SPAN_WARNING("You have not yet prepared your chemical glands. You must wait before spitting again."))
 		return
 	else
 		last_spit = world.time
@@ -141,7 +141,7 @@
 		if(!check_alien_ability(20,0,O_ACID))
 			spitting = FALSE
 			return
-		visible_message("<span class='warning'>[src] spits [spit_name] at \the [A]!</span>", "<span class='green'>You spit [spit_name] at \the [A].</span>")
+		visible_message(SPAN_WARNING("[src] spits [spit_name] at \the [A]!"), SPAN_GREEN("You spit [spit_name] at \the [A]."))
 		var/obj/item/projectile/P = new spit_projectile(get_turf(src))
 		P.firer = src
 		P.old_style_target(A)
@@ -154,7 +154,7 @@
 	set category = "Abilities"
 
 	if(!(O in oview(1)))
-		to_chat(src, "<span class='green'>[O] is too far away.</span>")
+		to_chat(src, SPAN_GREEN("[O] is too far away."))
 		return
 
 	// OBJ CHECK
@@ -175,12 +175,12 @@
 			cannot_melt = 1
 
 	if(cannot_melt)
-		to_chat(src, "<span class='green'>You cannot dissolve this object.</span>")
+		to_chat(src, SPAN_GREEN("You cannot dissolve this object."))
 		return
 
 	if(check_alien_ability(200,0,O_ACID))
 		new /obj/effect/alien/acid(get_turf(O), O)
-		visible_message("<span class='green'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
+		visible_message(SPAN_GREEN("<B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B>"))
 
 	return
 
@@ -190,7 +190,7 @@
 	set category = "Abilities"
 
 	if(spitting)
-		to_chat(src, "<span class='green'>You stop preparing to spit.</span>")
+		to_chat(src, SPAN_GREEN("You stop preparing to spit."))
 		spitting = FALSE
 		return
 
@@ -203,7 +203,7 @@
 		spitting = TRUE
 		spit_projectile = /obj/item/projectile/energy/neurotoxin
 		spit_name = "neurotoxin"
-		to_chat(src, "<span class='green'>You prepare to spit neurotoxin.</span>")
+		to_chat(src, SPAN_GREEN("You prepare to spit neurotoxin."))
 
 /mob/living/carbon/human/proc/acidspit()
 	set name = "Toggle Acid Spit (50)"
@@ -211,7 +211,7 @@
 	set category = "Abilities"
 
 	if(spitting)
-		to_chat(src, "<span class='green'>You stop preparing to spit.</span>")
+		to_chat(src, SPAN_GREEN("You stop preparing to spit."))
 		spitting = FALSE
 		return
 
@@ -224,7 +224,7 @@
 		spitting = TRUE
 		spit_projectile = /obj/item/projectile/energy/acid
 		spit_name = "acid"
-		to_chat(src, "<span class='green'>You prepare to spit acid.</span>")
+		to_chat(src, SPAN_GREEN("You prepare to spit acid."))
 
 /mob/living/carbon/human/proc/resin()
 	set name = "Secrete Resin (75)"
@@ -238,7 +238,7 @@
 	if(!check_alien_ability(75,1,O_RESIN))
 		return
 
-	visible_message("<span class='warning'><B>[src] vomits up a thick purple substance and begins to shape it!</B></span>", "<span class='green'>You shape a [choice].</span>")
+	visible_message(SPAN_WARNING("<B>[src] vomits up a thick purple substance and begins to shape it!</B>"), SPAN_GREEN("You shape a [choice]."))
 
 	var/obj/O
 
@@ -293,7 +293,7 @@
 	last_special = world.time + 75
 	status_flags |= LEAPING
 
-	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
+	src.visible_message(SPAN_DANGER("\The [src] leaps at [T]!"))
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/voice/hiss5.ogg', 50, 1)
 
@@ -302,7 +302,7 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		to_chat(src, "<span class='warning'>You miss!</span>")
+		to_chat(src, SPAN_WARNING("You miss!"))
 		return
 
 	T.Weaken(3)
@@ -310,12 +310,12 @@
 	var/use_hand = "left"
 	if(l_hand)
 		if(r_hand)
-			to_chat(src, "<span class='danger'>You need to have one hand free to grab someone.</span>")
+			to_chat(src, SPAN_DANGER("You need to have one hand free to grab someone."))
 			return
 		else
 			use_hand = "right"
 
-	src.visible_message("<span class='warning'><b>\The [src]</b> seizes [T] aggressively!</span>")
+	src.visible_message(SPAN_WARNING("<b>\The [src]</b> seizes [T] aggressively!"))
 
 	var/obj/item/grab/G = new(src,T)
 	if(use_hand == "left")
@@ -336,21 +336,21 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying)
-		to_chat(src, "<span class='danger'>You cannot do that in your current state.</span>")
+		to_chat(src, SPAN_DANGER("You cannot do that in your current state."))
 		return
 
 	var/obj/item/grab/G = locate() in src
 	if(!G || !istype(G))
-		to_chat(src, "<span class='danger'>You are not grabbing anyone.</span>")
+		to_chat(src, SPAN_DANGER("You are not grabbing anyone."))
 		return
 
 	if(G.state < GRAB_AGGRESSIVE)
-		to_chat(src, "<span class='danger'>You must have an aggressive grab to gut your prey!</span>")
+		to_chat(src, SPAN_DANGER("You must have an aggressive grab to gut your prey!"))
 		return
 
 	last_special = world.time + 50
 
-	visible_message("<span class='warning'><b>\The [src]</b> rips viciously at \the [G.affecting]'s body with its claws!</span>")
+	visible_message(SPAN_WARNING("<b>\The [src]</b> rips viciously at \the [G.affecting]'s body with its claws!"))
 
 	if(istype(G.affecting,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = G.affecting

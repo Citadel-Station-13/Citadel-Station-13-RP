@@ -221,7 +221,7 @@
 		return
 	rabid = TRUE
 	update_mood()
-	visible_message("<span class='danger'>\The [src] enrages!</span>")
+	visible_message(SPAN_DANGER("\The [src] enrages!"))
 
 // Makes the slime safe and harmless.
 /mob/living/simple_animal/slime/proc/pacify()
@@ -308,31 +308,31 @@
 	set desc = "This will let you evolve from baby to adult slime."
 
 	if(stat)
-		to_chat(src, "<span class='notice'>I must be conscious to do this...</span>")
+		to_chat(src, SPAN_NOTICE("I must be conscious to do this..."))
 		return
 
 	if(docile)
-		to_chat(src, "<span class='notice'>I have been pacified.  I cannot evolve...</span>")
+		to_chat(src, SPAN_NOTICE("I have been pacified.  I cannot evolve..."))
 		return
 
 	if(!is_adult)
 		if(amount_grown >= 10)
 			make_adult()
 		else
-			to_chat(src, "<span class='notice'>I am not ready to evolve yet...</span>")
+			to_chat(src, SPAN_NOTICE("I am not ready to evolve yet..."))
 	else
-		to_chat(src, "<span class='notice'>I have already evolved...</span>")
+		to_chat(src, SPAN_NOTICE("I have already evolved..."))
 
 /mob/living/simple_animal/slime/verb/reproduce()
 	set category = "Slime"
 	set desc = "This will make you split into four Slimes."
 
 	if(stat)
-		to_chat(src, "<span class='notice'>I must be conscious to do this...</span>")
+		to_chat(src, SPAN_NOTICE("I must be conscious to do this..."))
 		return
 
 	if(docile)
-		to_chat(src, "<span class='notice'>I have been pacified.  I cannot reproduce...</span>")
+		to_chat(src, SPAN_NOTICE("I have been pacified.  I cannot reproduce..."))
 		return
 
 	if(is_adult)
@@ -353,7 +353,7 @@
 					free_tiles++
 
 			if(free_tiles < 3) // Three free tiles are needed, as four slimes are made and the 4th tile is from the center tile that the current slime occupies.
-				to_chat(src, "<span class='warning'>It is too cramped here to reproduce...</span>")
+				to_chat(src, SPAN_WARNING("It is too cramped here to reproduce..."))
 				return
 
 			var/list/babies = list()
@@ -368,9 +368,9 @@
 				new_slime.key = src.key
 			qdel(src)
 		else
-			to_chat(src, "<span class='notice'>I am not ready to reproduce yet...</span>")
+			to_chat(src, SPAN_NOTICE("I am not ready to reproduce yet..."))
 	else
-		to_chat(src, "<span class='notice'>I am not old enough to reproduce yet...</span>")
+		to_chat(src, SPAN_NOTICE("I am not old enough to reproduce yet..."))
 
 // Used for reproducing and dying.
 /mob/living/simple_animal/slime/proc/make_new_slime(var/desired_type)
@@ -426,26 +426,26 @@
 
 /mob/living/simple_animal/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
 	if(!istype(new_hat))
-		to_chat(user, "<span class='warning'>\The [new_hat] isn't a hat.</span>")
+		to_chat(user, SPAN_WARNING("\The [new_hat] isn't a hat."))
 		return
 	if(hat)
-		to_chat(user, "<span class='warning'>\The [src] is already wearing \a [hat].</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is already wearing \a [hat]."))
 		return
 	else
 		user.drop_item(new_hat)
 		hat = new_hat
 		new_hat.forceMove(src)
-		to_chat(user, "<span class='notice'>You place \a [new_hat] on \the [src].  How adorable!</span>")
+		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return
 
 /mob/living/simple_animal/slime/proc/remove_hat(var/mob/living/user)
 	if(!hat)
-		to_chat(user, "<span class='warning'>\The [src] doesn't have a hat to remove.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have a hat to remove."))
 	else
 		hat.forceMove(get_turf(src))
 		user.put_in_hands(hat)
-		to_chat(user, "<span class='warning'>You take away \the [src]'s [hat.name].  How mean.</span>")
+		to_chat(user, SPAN_WARNING("You take away \the [src]'s [hat.name].  How mean."))
 		hat = null
 		update_icon()
 

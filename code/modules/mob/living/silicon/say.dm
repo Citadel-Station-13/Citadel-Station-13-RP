@@ -5,7 +5,7 @@
 	..()
 	if(message_mode)
 		if(!is_component_functioning("radio"))
-			to_chat(src, "<span class='warning'>Your radio isn't functional at this time.</span>")
+			to_chat(src, SPAN_WARNING("Your radio isn't functional at this time."))
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -20,7 +20,7 @@
 		return holopad_talk(message, verb, speaking)
 	else if(message_mode)
 		if (aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, "<span class='danger'>System Error - Transceiver Disabled.</span>")
+			to_chat(src, SPAN_DANGER("System Error - Transceiver Disabled."))
 			return 0
 		if(message_mode == "general")
 			message_mode = null

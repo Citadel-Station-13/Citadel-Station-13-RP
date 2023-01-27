@@ -125,7 +125,7 @@
 		return FALSE
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
-		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
+		to_chat(user, SPAN_WARNING("You can't operate on this area while surgery is already in progress."))
 		return TRUE
 	. = FALSE
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)
@@ -153,7 +153,7 @@
 					var/calc_duration = rand(S.min_duration, S.max_duration)
 					if(!do_mob(user, M, calc_duration * tool_speed, zone))
 						success = FALSE
-						to_chat(user, "<span class='warning'>You must remain close to and keep focused on your patient to conduct surgery.</span>")
+						to_chat(user, SPAN_WARNING("You must remain close to and keep focused on your patient to conduct surgery."))
 
 				if(success)
 					S.end_step(user, M, zone, src)

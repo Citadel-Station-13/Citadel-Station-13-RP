@@ -101,9 +101,9 @@
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
 	if(active)
-		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
+		. += SPAN_NOTICE("[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].")
 	else
-		. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"</span>"
+		. += SPAN_NOTICE("<b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"")
 
 /obj/machinery/power/rad_collector/legacy_ex_act(severity)
 	switch(severity)
@@ -187,11 +187,11 @@
 		return 0 //not a borg or human
 
 	if(O.has_buckled_mobs())
-		to_chat(user, "<span class='warning'>\The [O] has other entities attached to it. Remove them first.</span>")
+		to_chat(user, SPAN_WARNING("\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)
-		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+		usr.visible_message(SPAN_WARNING("[user] starts climbing onto \the [src]!"))
 	else
 		visible_message("[user] puts [O] onto \the [src].")
 
@@ -200,4 +200,4 @@
 		O.forceMove(src.loc)
 
 	if (get_turf(user) == get_turf(src))
-		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
+		usr.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))

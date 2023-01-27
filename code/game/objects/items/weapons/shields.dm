@@ -49,7 +49,7 @@
 	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
-			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
+			user.visible_message(SPAN_DANGER("\The [user] blocks [attack_text] with \the [src]!"))
 			return 1
 	return 0
 
@@ -88,12 +88,12 @@
 					//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 					//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 					//useless.  Extremely penetrating projectiles will go through the shield without less damage.
-					user.visible_message("<span class='danger'>\The [user]'s [src.name] is pierced by [attack_text]!</span>")
+					user.visible_message(SPAN_DANGER("\The [user]'s [src.name] is pierced by [attack_text]!"))
 					if(P.armor_penetration < 30) //PTR bullets and x-rays will bypass this entirely.
 						P.damage = P.damage / 2
 					return 0
 			//Otherwise, if we're here, we're gonna stop the attack entirely.
-			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
+			user.visible_message(SPAN_DANGER("\The [user] blocks [attack_text] with \the [src]!"))
 			playsound(user.loc, 'sound/weapons/Genhit.ogg', 50, 1)
 			return 1
 	return 0
@@ -101,7 +101,7 @@
 /obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/melee/baton))
 		if(cooldown < world.time - 25)
-			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
+			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
 			cooldown = world.time
 	else
@@ -138,10 +138,10 @@
 	if(istype(W, /obj/item/flash))
 		var/obj/item/flash/flash = W
 		if(flashfail)
-			to_chat(user, "<span class='warning'>No sense replacing it with a broken bulb!</span>")
+			to_chat(user, SPAN_WARNING("No sense replacing it with a broken bulb!"))
 			return
 		else
-			to_chat(user, "<span class='notice'>You begin to replace the bulb...</span>")
+			to_chat(user, SPAN_NOTICE("You begin to replace the bulb..."))
 			if(do_after(user, 20, target = user))
 				if(flashfail || !flash || QDELETED(flash))
 					return
@@ -170,7 +170,7 @@
 /obj/item/shield/riot/flash/examine(mob/user)
 	. = ..()
 	if (embedded_flash?.broken)
-		. += "<span class='info'>The mounted bulb has burnt out. You can try replacing it with a new one.</span>"
+		. += SPAN_INFO("The mounted bulb has burnt out. You can try replacing it with a new one.")
 
 /obj/item/shield/makeshift
 	name = "metal shield"
@@ -222,7 +222,7 @@
 		if(ismob(loc))
 			var/mob/living/L = loc
 			playsound(src, "sparks", 100, TRUE)
-			L.visible_message("<span class='boldwarning'>[src] overloads from the damage sustained!</span>")
+			L.visible_message(SPAN_BOLDWARNING("[src] overloads from the damage sustained!"))
 			L.dropItemToGround(src)			//implant component catch hook will grab it.
 
 /obj/item/shield/riot/implant/Moved()
@@ -239,7 +239,7 @@
 		return
 	obj_integrity = max_integrity
 	if(ismob(loc.loc))		//cyberimplant.user
-		to_chat(loc, "<span class='notice'>[src] has recharged its reinforcement matrix and is ready for use!</span>")
+		to_chat(loc, SPAN_NOTICE("[src] has recharged its reinforcement matrix and is ready for use!"))
 */
 
 /obj/item/shield/riot/energy_proof
@@ -327,7 +327,7 @@
 
 /obj/item/shield/energy/attack_self(mob/living/user as mob)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
+		to_chat(user, SPAN_WARNING("You beat yourself in the head with [src]."))
 		user.take_organ_damage(5)
 	active = !active
 	if (active)
@@ -336,7 +336,7 @@
 		w_class = ITEMSIZE_LARGE
 		slot_flags = null
 		playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is now active."))
 
 	else
 		force = 3
@@ -344,7 +344,7 @@
 		w_class = ITEMSIZE_TINY
 		slot_flags = SLOT_EARS
 		playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -371,7 +371,7 @@
 	if(!in_range(src, user))	//Basic checks to prevent abuse
 		return
 	if(user.incapacitated() || !istype(user))
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 	if(alert("Are you sure you want to recolor your shield?", "Confirm Recolor", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",lcolor) as color|null
@@ -381,7 +381,7 @@
 
 /obj/item/shield/energy/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to recolor it.</span>"
+	. += SPAN_NOTICE("Alt-click to recolor it.")
 
 /obj/item/shield/riot/tele
 	name = "telescopic shield"
@@ -413,14 +413,14 @@
 		throw_speed = 2
 		w_class = ITEMSIZE_LARGE
 		slot_flags = SLOT_BACK
-		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You extend \the [src]."))
 	else
 		force = 3
 		throw_force = 3
 		throw_speed = 3
 		w_class = ITEMSIZE_NORMAL
 		slot_flags = null
-		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

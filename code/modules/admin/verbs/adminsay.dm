@@ -14,7 +14,7 @@
 	if(check_rights(R_ADMIN|R_MOD,0))
 		for(var/client/C in GLOB.admins)
 			if((R_ADMIN|R_MOD) & C.holder.rights)
-				to_chat(C, "<span class='adminsay'>" +  "ADMIN: " + " <span class='name'>[key_name(usr, 1)]</span>([admin_jump_link(mob, src)]): <span class='linkify'>[msg]</span></span>")
+				to_chat(C, SPAN_ADMINSAY("" +  "ADMIN: " + " <span class='name'>[key_name(usr, 1)]</span>([admin_jump_link(mob, src)]): <span class='linkify'>[msg]</span>"))
 
 	feedback_add_details("admin_verb","M") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -38,7 +38,7 @@
 
 	var/sender_name = key_name(usr, 1)
 	if(check_rights(R_ADMIN, 0))
-		sender_name = "<span class='admin'>[sender_name]</span>"
+		sender_name = SPAN_ADMIN("[sender_name]")
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_ADMIN|R_MOD|R_SERVER))
 			to_chat(C, "<span class='modsay'>" + "MOD: "+ " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='linkify'>[msg]</span></span>")
@@ -61,7 +61,7 @@
 
 	var/sender_name = key_name(usr, 1)
 	if(check_rights(R_ADMIN, 0))
-		sender_name = "<span class='admin'>[sender_name]</span>"
+		sender_name = SPAN_ADMIN("[sender_name]")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, "<span class='event_channel'>" +  "EVENT: " + " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='linkify'>[msg]</span></span>")
 

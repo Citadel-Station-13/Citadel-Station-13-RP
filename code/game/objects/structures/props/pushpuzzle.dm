@@ -23,27 +23,27 @@
 
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
-		to_chat(user, "<span class='notice'>You find no bolts to dissamble the pillar...</span>")
+		to_chat(user, SPAN_NOTICE("You find no bolts to dissamble the pillar..."))
 		return
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>No matter how much you heat it the pillar doesn't seem any weaker...</span>")
+		to_chat(user, SPAN_NOTICE("No matter how much you heat it the pillar doesn't seem any weaker..."))
 		return
 
 	else if(istype(W, /obj/item/pickaxe/diamonddrill))
-		to_chat(user, "<span class='notice'>Your drill grinds uselessly against the pillar...</span>")
+		to_chat(user, SPAN_NOTICE("Your drill grinds uselessly against the pillar..."))
 		return
 
 	else if(W.is_screwdriver())
-		to_chat(user, "<span class='notice'>You find no screws to unscrew on the pillar...</span>")
+		to_chat(user, SPAN_NOTICE("You find no screws to unscrew on the pillar..."))
 		return
 
 	else if(W.is_crowbar())
-		to_chat(user, "<span class='notice'>The pillar doesn't budge when you attempt to dislodge it...</span>")
+		to_chat(user, SPAN_NOTICE("The pillar doesn't budge when you attempt to dislodge it..."))
 		return
 
 	else if(istype(W, /obj/item/stack/material))
-		to_chat(user, "<span class='notice'>Why would you want to reinforce a pillar?</span>")
+		to_chat(user, SPAN_NOTICE("Why would you want to reinforce a pillar?"))
 		return
 
 	else

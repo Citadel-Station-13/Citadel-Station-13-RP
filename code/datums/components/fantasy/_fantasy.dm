@@ -103,7 +103,7 @@
 
 	if(canFail && prob((quality - 9)*10))
 		var/turf/place = get_turf(parent)
-		place.visible_message("<span class='danger'>[parent] <span class='inathneq_large'>violently glows blue</span> for a while, then evaporates.</span>")
+		place.visible_message(SPAN_DANGER("[parent] <span class='inathneq_large'>violently glows blue</span> for a while, then evaporates."))
 		master.burn()
 		return
 	else if(announce)
@@ -131,10 +131,10 @@
 	var/span
 	var/effect_description
 	if(quality >= 0)
-		span = "<span class='notice'></span>"
-		effect_description = "<span class='heavy_brass'>shimmering golden glow</span>"
+		span = SPAN_NOTICE("")
+		effect_description = SPAN_HEAVY_BRASS("shimmering golden glow")
 	else
-		span = "<span class='danger'></span>"
-		effect_description = "<span class='umbra_emphasis'>mottled black glow</span>"
+		span = SPAN_DANGER("")
+		effect_description = SPAN_UMBRA_EMPHASIS("mottled black glow")
 
 	location.visible_message("[span][originalName] is covered by a [effect_description] and then transforms into [parent]!")

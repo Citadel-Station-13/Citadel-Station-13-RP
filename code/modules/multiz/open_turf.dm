@@ -79,7 +79,7 @@
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
-			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
+			to_chat(user, SPAN_NOTICE("Constructing support lattice ..."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			new /obj/structure/lattice(src)
 		return
@@ -96,7 +96,7 @@
 			ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
+			to_chat(user, SPAN_WARNING("The plating is going to need some support."))
 
 	// To lay cable.
 	if(istype(C, /obj/item/stack/cable_coil))

@@ -197,7 +197,7 @@
 		if(ishuman(P.card.loc))
 			var/mob/living/carbon/human/H = P.card.loc
 			H.put_in_hands(P.cable)
-		T.visible_message("<span class='warning'>A port on \the [P] opens to reveal \the [P.cable].</span>")
+		T.visible_message(SPAN_WARNING("A port on \the [P] opens to reveal \the [P.cable]."))
 		return 1
 
 /mob/living/silicon/infomorph/proc/hackloop()
@@ -233,7 +233,7 @@
 			D.open()
 		sleep(10)			// Update every second
 
-	T.visible_message("<span class='warning'>\The [cable] whips back into \the [src] from \the [hackdoor].</span>")
+	T.visible_message(SPAN_WARNING("\The [cable] whips back into \the [src] from \the [hackdoor]."))
 	qdel(cable)
 	hackdoor = null
 

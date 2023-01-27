@@ -86,7 +86,7 @@
 			string += "-\a [CI.container.label(null, CI.combine_target)], [report_progress(CI)]</br>"
 		to_chat(user, string)
 	else
-		to_chat(user, "<span class='notice'>It is empty.</span>")
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
 /obj/machinery/appliance/proc/report_progress(var/datum/cooking_item/CI)
 	if (!CI || !CI.max_cookwork)
@@ -180,10 +180,10 @@
 			return
 		if(choice == "Default")
 			selected_option = null
-			to_chat(usr, "<span class='notice'>You decide not to make anything specific with \the [src].</span>")
+			to_chat(usr, SPAN_NOTICE("You decide not to make anything specific with \the [src]."))
 		else
 			selected_option = choice
-			to_chat(usr, "<span class='notice'>You prepare \the [src] to make \a [selected_option] with the next thing you put in. Try putting several ingredients in a container!</span>")
+			to_chat(usr, SPAN_NOTICE("You prepare \the [src] to make \a [selected_option] with the next thing you put in. Try putting several ingredients in a container!"))
 
 //Handles all validity checking and error messages for inserting things
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
@@ -197,18 +197,18 @@
 	if(istype(G))
 
 		if(!can_cook_mobs)
-			to_chat(user, "<span class='warning'>That's not going to fit.</span>")
+			to_chat(user, SPAN_WARNING("That's not going to fit."))
 			return 0
 
 		if(!isliving(G.affecting))
-			to_chat(user, "<span class='warning'>You can't cook that.</span>")
+			to_chat(user, SPAN_WARNING("You can't cook that."))
 			return 0
 
 		return 2
 
 
 	if (!has_space(I))
-		to_chat(user, "<span class='warning'>There's no room in [src] for that!</span>")
+		to_chat(user, SPAN_WARNING("There's no room in [src] for that!"))
 		return 0
 
 
@@ -218,16 +218,16 @@
 	// We're trying to cook something else. Check if it's valid.
 	var/obj/item/reagent_containers/food/snacks/check = I
 	if(istype(check) && LAZYLEN(check.cooked) && (cook_type in check.cooked))
-		to_chat(user, "<span class='warning'>\The [check] has already been [cook_type].</span>")
+		to_chat(user, SPAN_WARNING("\The [check] has already been [cook_type]."))
 		return 0
 	else if(istype(check, /obj/item/reagent_containers/glass))
-		to_chat(user, "<span class='warning'>That would probably break [src].</span>")
+		to_chat(user, SPAN_WARNING("That would probably break [src]."))
 		return 0
 	else if(istype(check, /obj/item/disk/nuclear))
-		to_chat(user, "<span class='warning'>You can't cook that.</span>")
+		to_chat(user, SPAN_WARNING("You can't cook that."))
 		return 0
 	else if(!istype(check) && !istype(check, /obj/item/holder))
-		to_chat(user, "<span class='warning'>That's not edible.</span>")
+		to_chat(user, SPAN_WARNING("That's not edible."))
 		return 0
 
 	return 1
@@ -242,7 +242,7 @@
 
 /obj/machinery/appliance/attackby(obj/item/I, mob/user)
 	if(!cook_type || (machine_stat & (BROKEN)))
-		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is not working."))
 		return
 
 	var/result = can_insert(I, user)
@@ -275,7 +275,7 @@
 		CI = new /datum/cooking_item/(CC)
 		I.forceMove(src)
 		cooking_objs.Add(CI)
-		user.visible_message("<span class='notice'>\The [user] puts \the [I] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] puts \the [I] into \the [src]."))
 		if (CC.check_contents() == 0)//If we're just putting an empty container in, then dont start any processing.
 			return
 	else
@@ -289,7 +289,7 @@
 		CI.combine_target = selected_option
 
 	// We can actually start cooking now.
-	user.visible_message("<span class='notice'>\The [user] puts \the [I] into \the [src].</span>")
+	user.visible_message(SPAN_NOTICE("\The [user] puts \the [I] into \the [src]."))
 
 	get_cooking_work(CI)
 	cooking = 1
@@ -383,7 +383,7 @@
 
 /obj/machinery/appliance/proc/finish_cooking(var/datum/cooking_item/CI)
 
-	src.visible_message("<span class='notice'>\The [src] pings!</span>")
+	src.visible_message(SPAN_NOTICE("\The [src] pings!"))
 	if(cooked_sound)
 		playsound(get_turf(src), cooked_sound, 50, 1)
 	//Check recipes first, a valid recipe overrides other options

@@ -32,14 +32,14 @@
 	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
 		if(do_after(user, 1 SECONDS, src) && use(1))
 			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+			to_chat(user, SPAN_NOTICE("You fill the sandbag."))
 			qdel(W)
 			new /obj/item/stack/sandbags(T)
 			return
 	else if(is_sharp(W))
-		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [W].</span>", "<span class='notice'>You begin cutting up [src] with [W].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] begins cutting up [src] with [W]."), SPAN_NOTICE("You begin cutting up [src] with [W]."))
 		if(do_after(user, 3 SECONDS, src) && use(1))
-			to_chat(user, "<span class='notice'>You cut [src] into pieces!</span>")
+			to_chat(user, SPAN_NOTICE("You cut [src] into pieces!"))
 			for(var/i in 1 to rand(1,2))
 				new /obj/item/stack/material/cloth(drop_location())
 		return
@@ -81,9 +81,9 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 
 /obj/item/stack/sandbags/attackby(var/obj/item/W, var/mob/user)
 	if(is_sharp(W))
-		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [W].</span>", "<span class='notice'>You begin cutting up [src] with [W].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] begins cutting up [src] with [W]."), SPAN_NOTICE("You begin cutting up [src] with [W]."))
 		if(do_after(user, 3 SECONDS, src) && use(1))
-			to_chat(user, "<span class='notice'>You cut [src] into pieces, causing sand to spill everywhere!</span>")
+			to_chat(user, SPAN_NOTICE("You cut [src] into pieces, causing sand to spill everywhere!"))
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/material/cloth(drop_location())
 				new /obj/item/ore/glass(drop_location())
@@ -91,7 +91,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	else
 		if(do_after(user, 1 SECONDS, src) && use(1))
 			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You cut the cords securing the sandbag, spilling sand everywhere!</span>")
+			to_chat(user, SPAN_NOTICE("You cut the cords securing the sandbag, spilling sand everywhere!"))
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/emptysandbag(T)
 				new /obj/item/ore/glass(T)
@@ -141,11 +141,11 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
+				. += SPAN_WARNING("It looks severely damaged!")
 			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
+				. += SPAN_WARNING("It looks damaged!")
 			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few nicks and holes.</span>"
+				. += SPAN_NOTICE("It has a few nicks and holes.")
 
 
 /obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
@@ -154,13 +154,13 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		var/obj/item/stack/sandbags/S = W
 		if(health < maxhealth)
 			if(S.get_amount() < 1)
-				to_chat(user, "<span class='warning'>You need one sandbag to repair \the [src].</span>")
+				to_chat(user, SPAN_WARNING("You need one sandbag to repair \the [src]."))
 				return
-			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
+			visible_message(SPAN_NOTICE("[user] begins to repair \the [src]."))
 			if(do_after(user,20) && health < maxhealth)
 				if(S.use(1))
 					health = maxhealth
-					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
+					visible_message(SPAN_NOTICE("[user] repairs \the [src]."))
 				return
 		return
 	else
@@ -184,7 +184,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	return
 
 /obj/structure/sandbag/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	playsound(src, 'sound/weapons/smash.ogg', 50, 1)
 	user.do_attack_animation(src)
 	health -= damage
@@ -192,7 +192,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	return
 
 /obj/structure/sandbag/proc/dismantle()
-	visible_message("<span class='danger'>\The [src] falls apart!</span>")
+	visible_message(SPAN_DANGER("\The [src] falls apart!"))
 	qdel(src)
 	//Make it drop materials? I dunno. For now it just disappears.
 	return

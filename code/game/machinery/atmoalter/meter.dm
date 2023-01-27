@@ -79,10 +79,10 @@
 /obj/machinery/meter/examine(mob/user)
 	. = ..()
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/observer/dead)))
-		. += "<span class='warning'>You are too far away to read it.</span>"
+		. += SPAN_WARNING("You are too far away to read it.")
 
 	else if(machine_stat & (NOPOWER|BROKEN))
-		. += "<span class='warning'>The display is off.</span>"
+		. += SPAN_WARNING("The display is off.")
 
 	else if(src.target)
 		var/datum/gas_mixture/environment = target.return_air()
@@ -96,11 +96,11 @@
 /obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+		to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 		if(do_after(user, 40 * W.tool_speed))
 			user.visible_message( \
-				"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-				"<span class='notice'>You have unfastened \the [src].</span>", \
+				SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+				SPAN_NOTICE("You have unfastened \the [src]."), \
 				"You hear ratchet.")
 			new /obj/item/pipe_meter(get_turf(src))
 			qdel(src)
@@ -114,7 +114,7 @@
 		target = pipes_on_turf[1]
 		pipes_on_turf.Remove(target)
 		pipes_on_turf.Add(target)
-		to_chat(user, "<span class='notice'>Pipe meter set to moniter \the [target].</span>")
+		to_chat(user, SPAN_NOTICE("Pipe meter set to moniter \the [target]."))
 		return
 
 	return ..()

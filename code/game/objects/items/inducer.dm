@@ -56,15 +56,15 @@
 
 /obj/item/inducer/proc/cantbeused(mob/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to use [src]!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
 		return TRUE
 
 	if(!cell)
-		to_chat(user, "<span class='warning'>[src] doesn't have a power cell installed!</span>")
+		to_chat(user, SPAN_WARNING("[src] doesn't have a power cell installed!"))
 		return TRUE
 
 	if(!cell.charge)
-		to_chat(user, "<span class='warning'>[src]'s battery is dead!</span>")
+		to_chat(user, SPAN_WARNING("[src]'s battery is dead!"))
 		return TRUE
 	return FALSE
 
@@ -73,12 +73,12 @@
 	if(W.is_screwdriver())
 		playsound(src, W.tool_sound, 50, 1)
 		if(!opened)
-			to_chat(user, "<span class='notice'>You open the battery compartment.</span>")
+			to_chat(user, SPAN_NOTICE("You open the battery compartment."))
 			opened = TRUE
 			update_icon()
 			return
 		else
-			to_chat(user, "<span class='notice'>You close the battery compartment.</span>")
+			to_chat(user, SPAN_NOTICE("You close the battery compartment."))
 			opened = FALSE
 			update_icon()
 			return
@@ -87,12 +87,12 @@
 			if(!cell)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
-				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
+				to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
 				cell = W
 				update_icon()
 				return
 			else
-				to_chat(user, "<span class='warning'>[src] already has \a [cell] installed!</span>")
+				to_chat(user, SPAN_WARNING("[src] already has \a [cell] installed!"))
 				return
 
 	if(cantbeused(user))
@@ -109,7 +109,7 @@
 	if(!isturf(A) && user.loc == A)
 		return FALSE
 	if(get_dist(user, A) > recharge_dist)
-		to_chat(user, "<span class='warning'>[src] can't reach that far!</span>")
+		to_chat(user, SPAN_WARNING("[src] can't reach that far!"))
 		return FALSE
 	var/list/targets = list()
 	var/result = A._inducer_scan(src, targets, inducer_flags)
@@ -163,7 +163,7 @@
 
 /obj/item/inducer/attack_self(mob/user)
 	if(opened && cell)
-		user.visible_message("<span class='notice'>[user] removes [cell] from [src]!</span>", "<span class='notice'>You remove [cell].</span>")
+		user.visible_message(SPAN_NOTICE("[user] removes [cell] from [src]!"), SPAN_NOTICE("You remove [cell]."))
 		cell.update_icon()
 		user.put_in_hands(cell)
 		cell = null

@@ -46,11 +46,11 @@
 		if("switch_uav")
 			var/obj/item/uav/U = locate(params["switch_uav"]) //This is a \ref to the UAV itself
 			if(!istype(U))
-				to_chat(usr,"<span class='warning'>Something is blocking the connection to that UAV. In-person investigation is required.</span>")
+				to_chat(usr,SPAN_WARNING("Something is blocking the connection to that UAV. In-person investigation is required."))
 				return FALSE
 
 			if(!get_signal_to(U))
-				to_chat(usr,"<span class='warning'>The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV.</span>")
+				to_chat(usr,SPAN_WARNING("The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV."))
 				return FALSE
 
 			set_current(U)
@@ -72,7 +72,7 @@
 				return FALSE
 
 			if(current_uav.check_eye(usr) < 0)
-				to_chat(usr,"<span class='warning'>The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV.</span>")
+				to_chat(usr,SPAN_WARNING("The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV."))
 			else
 				viewing_uav(usr) ? unlook(usr) : look(usr)
 			return TRUE
@@ -115,7 +115,7 @@
 		for(var/weakref/W in viewers)
 			var/M = W.resolve()
 			if(M)
-				to_chat(M, "<span class='warning'>You're disconnected from the UAV's camera!</span>")
+				to_chat(M, SPAN_WARNING("You're disconnected from the UAV's camera!"))
 				unlook(M)
 
 /datum/tgui_module/uav/proc/current_uav_changed_z(old_z, new_z)
@@ -197,7 +197,7 @@
 
 /datum/tgui_module/uav/proc/look(mob/user)
 	if(issilicon(user)) //Too complicated for me to want to mess with at the moment
-		to_chat(user, "<span class='warning'>Regulations prevent you from controlling several corporeal forms at the same time!</span>")
+		to_chat(user, SPAN_WARNING("Regulations prevent you from controlling several corporeal forms at the same time!"))
 		return
 
 	if(!current_uav)

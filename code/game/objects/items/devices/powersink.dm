@@ -46,7 +46,7 @@
 				else
 					anchored = 1
 					mode = 1
-					src.visible_message("<span class='notice'>[user] attaches [src] to the cable!</span>")
+					src.visible_message(SPAN_NOTICE("[user] attaches [src] to the cable!"))
 					playsound(src, I.tool_sound, 50, 1)
 					return
 			else
@@ -58,7 +58,7 @@
 				STOP_PROCESSING_POWER_OBJECT(src)
 			anchored = 0
 			mode = 0
-			src.visible_message("<span class='notice'>[user] detaches [src] from the cable!</span>")
+			src.visible_message(SPAN_NOTICE("[user] detaches [src] from the cable!"))
 			set_light(0)
 			playsound(src, I.tool_sound, 50, 1)
 			icon_state = "powersink0"
@@ -75,14 +75,14 @@
 		if(0)
 			..()
 		if(1)
-			src.visible_message("<span class='notice'>[user] activates [src]!</span>")
+			src.visible_message(SPAN_NOTICE("[user] activates [src]!"))
 			mode = 2
 			icon_state = "powersink1"
 			START_PROCESSING(SSobj, src)
 			datum_flags &= ~DF_ISPROCESSING // Have to reset this flag so that PROCESSING_POWER_OBJECT can re-add it. It fails if the flag is already present. - Ater
 			START_PROCESSING_POWER_OBJECT(src)
 		if(2)  //This switch option wasn't originally included. It exists now. --NeoFite
-			src.visible_message("<span class='notice'>[user] deactivates [src]!</span>")
+			src.visible_message(SPAN_NOTICE("[user] deactivates [src]!"))
 			mode = 1
 			set_light(0)
 			icon_state = "powersink0"

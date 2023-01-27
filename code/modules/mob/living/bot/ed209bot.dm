@@ -38,7 +38,7 @@
 		icon_state = "ed209[on]"
 
 /mob/living/bot/secbot/ed209/explode()
-	visible_message("<span class='warning'>[src] blows apart!</span>")
+	visible_message(SPAN_WARNING("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/secbot_assembly/ed209_assembly(Tsec)
@@ -112,7 +112,7 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You add the robot leg to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add the robot leg to [src]."))
 				name = "legs/frame assembly"
 				if(build_step == 1)
 					icon_state = "ed209_leg"
@@ -124,7 +124,7 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You add the armor to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add the armor to [src]."))
 				name = "vest/legs/frame assembly"
 				item_state = "ed209_shell"
 				icon_state = "ed209_shell"
@@ -135,13 +135,13 @@
 				if(WT.remove_fuel(0, user))
 					build_step++
 					name = "shielded frame assembly"
-					to_chat(user, "<span class='notice'>You welded the vest to [src].</span>")
+					to_chat(user, SPAN_NOTICE("You welded the vest to [src]."))
 		if(4)
 			if(istype(W, /obj/item/clothing/head/helmet))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You add the helmet to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add the helmet to [src]."))
 				name = "covered and shielded frame assembly"
 				item_state = "ed209_hat"
 				icon_state = "ed209_hat"
@@ -151,7 +151,7 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You add the prox sensor to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add the prox sensor to [src]."))
 				name = "covered, shielded and sensored frame assembly"
 				item_state = "ed209_prox"
 				icon_state = "ed209_prox"
@@ -160,13 +160,13 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = W
 				if (C.get_amount() < 1)
-					to_chat(user, "<span class='warning'>You need one coil of wire to wire [src].</span>")
+					to_chat(user, SPAN_WARNING("You need one coil of wire to wire [src]."))
 					return
-				to_chat(user, "<span class='notice'>You start to wire [src].</span>")
+				to_chat(user, SPAN_NOTICE("You start to wire [src]."))
 				if(do_after(user, 40) && build_step == 6)
 					if(C.use(1))
 						build_step++
-						to_chat(user, "<span class='notice'>You wire the ED-209 assembly.</span>")
+						to_chat(user, SPAN_NOTICE("You wire the ED-209 assembly."))
 						name = "wired ED-209 assembly"
 				return
 
@@ -178,7 +178,7 @@
 				item_state = "sled209_taser"
 				icon_state = "sled209_taser"
 				build_step++
-				to_chat(user, "<span class='notice'>You add [W] to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add [W] to [src]."))
 				var/turf/T = get_turf(src)
 				var/obj/item/secbot_assembly/ed209_assembly/slime/S = new /obj/item/secbot_assembly/ed209_assembly/slime(T)
 				S.name = name
@@ -195,25 +195,25 @@
 				item_state = "ed209_taser"
 				icon_state = "ed209_taser"
 				build_step++
-				to_chat(user, "<span class='notice'>You add [W] to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add [W] to [src]."))
 
 		if(8)
 			if(W.is_screwdriver())
 				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>Now attaching the gun to the frame...</span>")
+				to_chat(user, SPAN_NOTICE("Now attaching the gun to the frame..."))
 				sleep(40)
 				if(get_turf(user) == T && build_step == 8)
 					build_step++
 					name = "armed [name]"
-					to_chat(user, "<span class='notice'>Taser gun attached.</span>")
+					to_chat(user, SPAN_NOTICE("Taser gun attached."))
 
 		if(9)
 			if(istype(W, /obj/item/cell))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You complete the ED-209.</span>")
+				to_chat(user, SPAN_NOTICE("You complete the ED-209."))
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/secbot/ed209(T,created_name,lasercolor)
 				qdel(src)

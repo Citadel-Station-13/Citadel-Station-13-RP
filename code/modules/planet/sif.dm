@@ -265,7 +265,7 @@ var/datum/planet/sif/planet_sif = null
 	wind_high = 2
 	wind_low = 1
 	light_modifier = 0.5
-	effect_message = "<span class='warning'>Rain falls on you.</span>"
+	effect_message = SPAN_WARNING("Rain falls on you.")
 
 	transition_chances = list(
 		WEATHER_OVERCAST = 25,
@@ -294,13 +294,13 @@ var/datum/planet/sif/planet_sif = null
 				var/obj/item/melee/umbrella/U = L.get_active_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
+						to_chat(L, SPAN_NOTICE("Rain patters softly onto your umbrella."))
 					continue
 			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
+						to_chat(L, SPAN_NOTICE("Rain patters softly onto your umbrella."))
 					continue
 
 			L.water_act(1)
@@ -316,7 +316,7 @@ var/datum/planet/sif/planet_sif = null
 	wind_low = 2
 	light_modifier = 0.3
 	flight_failure_modifier = 10
-	effect_message = "<span class='warning'>Rain falls on you, drenching you in water.</span>"
+	effect_message = SPAN_WARNING("Rain falls on you, drenching you in water.")
 
 	var/next_lightning_strike = 0 // world.time when lightning will strike.
 	var/min_lightning_cooldown = 5 SECONDS
@@ -350,13 +350,13 @@ var/datum/planet/sif/planet_sif = null
 				var/obj/item/melee/umbrella/U = L.get_active_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+						to_chat(L, SPAN_NOTICE("Rain showers loudly onto your umbrella!"))
 					continue
 			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+						to_chat(L, SPAN_NOTICE("Rain showers loudly onto your umbrella!"))
 					continue
 
 
@@ -384,7 +384,7 @@ var/datum/planet/sif/planet_sif = null
 	flight_failure_modifier = 15
 	timer_low_bound = 2
 	timer_high_bound = 5
-	effect_message = "<span class='warning'>The hail smacks into you!</span>"
+	effect_message = SPAN_WARNING("The hail smacks into you!")
 
 	transition_chances = list(
 		WEATHER_RAIN = 45,
@@ -416,7 +416,7 @@ var/datum/planet/sif/planet_sif = null
 				U = H.get_inactive_held_item()
 			if(U && U.open)
 				if(show_message)
-					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
+					to_chat(H, SPAN_NOTICE("Hail patters onto your umbrella."))
 				continue
 
 			var/target_zone = pick(BP_ALL)

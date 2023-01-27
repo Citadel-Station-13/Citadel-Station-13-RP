@@ -55,7 +55,7 @@
 	if(w_type in allocated_gamma)
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
-		to_chat(user,"<span class='notice'>You feel \the [W] slip from your hand, and disappear into the trash pile.</span>")
+		to_chat(user,SPAN_NOTICE("You feel \the [W] slip from your hand, and disappear into the trash pile."))
 		allocated_gamma -= w_type
 		unique_gamma += w_type
 		qdel(W)
@@ -86,23 +86,23 @@
 	//Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		H.visible_message("[user] searches through \the [src].","<span class='notice'>You search through \the [src].</span>")
+		H.visible_message("[user] searches through \the [src].",SPAN_NOTICE("You search through \the [src]."))
 		if(hider)
-			to_chat(hider,"<span class='warning'>[user] is searching the trash pile you're in!</span>")
+			to_chat(hider,SPAN_WARNING("[user] is searching the trash pile you're in!"))
 
 		//Do the searching
 		if(do_after(user,rand(4 SECONDS,6 SECONDS),src))
 
 			//If there was a hider, chance to reveal them
 			if(hider && prob(50))
-				to_chat(hider,"<span class='danger'>You've been discovered!</span>")
+				to_chat(hider,SPAN_DANGER("You've been discovered!"))
 				hider.forceMove(get_turf(src))
 				hider = null
-				to_chat(user,"<span class='danger'>Some sort of creature leaps out of \the [src]!</span>")
+				to_chat(user,SPAN_DANGER("Some sort of creature leaps out of \the [src]!"))
 
 			//You already searched this one bruh
 			else if(user.ckey in searchedby)
-				to_chat(H,"<span class='warning'>There's nothing else for you in \the [src]!</span>")
+				to_chat(H,SPAN_WARNING("There's nothing else for you in \the [src]!"))
 
 			//You found an item!
 			else
@@ -119,7 +119,7 @@
 				if(I)
 					searchedby += user.ckey
 					I.forceMove(get_turf(src))
-					to_chat(H,"<span class='notice'>You found \a [I]!</span>")
+					to_chat(H,SPAN_NOTICE("You found \a [I]!"))
 
 	else
 		return ..()

@@ -73,7 +73,7 @@
 
 	var/respawn = 1
 	var/static/respawn_time = 3000		// time before a dead player is allowed to respawn (in ds, though the config file asks for minutes, and it's converted below)
-	var/static/respawn_message = "<span class='notice'><B>Make sure to play a different character, and please roleplay correctly!</B></span>"
+	var/static/respawn_message = SPAN_NOTICE("<B>Make sure to play a different character, and please roleplay correctly!</B>")
 
 	var/guest_jobban = 1
 	var/usewhitelist = 0

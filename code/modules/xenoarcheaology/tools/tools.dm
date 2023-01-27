@@ -111,7 +111,7 @@
 	var/material = "unknown"
 
 /obj/item/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
-	user.visible_message("<span class='notice'>\The [user] scans \the [A], the air around them humming gently.</span>")
+	user.visible_message(SPAN_NOTICE("\The [user] scans \the [A], the air around them humming gently."))
 
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
+			to_chat(user, SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] pings."))
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,7 +151,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!"))
 
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
 	ui_interact(user)

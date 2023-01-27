@@ -19,17 +19,17 @@
 			M.apply_damage(dam_force, BRUTE)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
-			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
+			occupant_message(SPAN_WARNING("You pierce [target] with [src.name]. The blade goes all the way through."))
 			playsound(src, 'sound/weapons/slice.ogg', 5, 1, -2) //Whisper quiet.
-			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
+			chassis.visible_message(SPAN_WARNING("[chassis] stabs [target]."))
 		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
 			M.apply_damage(dam_force/2, BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))
 			M.updatehealth()
-			occupant_message("<span class='warning'>You slaps [target] with the flat of [src.name]. Something cracks.</span>")
+			occupant_message(SPAN_WARNING("You slaps [target] with the flat of [src.name]. Something cracks."))
 			playsound(src, "fracture", 3, 1, -2) //CRACK 2
-			chassis.visible_message("<span class='warning'>[chassis] slaps [target].</span>")
+			chassis.visible_message(SPAN_WARNING("[chassis] slaps [target]."))
 			M.throw_at_old(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
 		else
 			step_away(M,chassis)
@@ -84,17 +84,17 @@
 			M.apply_damage(dam_force, BURN)
 			M.adjust_fire_stacks(1)
 			M.updatehealth()
-			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
+			occupant_message(SPAN_WARNING("You pierce [target] with [src.name]. The blade goes all the way through."))
 			playsound(src, 'sound/weapons/blade1.ogg', 5, 1, -2) //Whisper quiet.
-			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
+			chassis.visible_message(SPAN_WARNING("[chassis] stabs [target]."))
 		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
 			M.apply_damage(dam_force/2, BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))
 			M.updatehealth()
-			occupant_message("<span class='warning'>You slaps [target] with the flat of [src.name]. Something cracks.</span>")
+			occupant_message(SPAN_WARNING("You slaps [target] with the flat of [src.name]. Something cracks."))
 			playsound(src, "fracture", 3, 1, -2) //CRACK 2
-			chassis.visible_message("<span class='warning'>[chassis] slaps [target].</span>")
+			chassis.visible_message(SPAN_WARNING("[chassis] slaps [target]."))
 			M.throw_at_old(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
 		else
 			step_away(M,chassis)

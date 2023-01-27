@@ -53,11 +53,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			to_chat(user, "<span class='danger'><b>[src] is not moving.</b></span>")
+			to_chat(user, SPAN_DANGER("<b>[src] is not moving.</b>"))
 		if(CONSCIOUS)
-			to_chat(user, "<span class='danger'><b>[src] seems to be active.</b></span>")
+			to_chat(user, SPAN_DANGER("<b>[src] seems to be active.</b>"))
 	if (sterile)
-		to_chat(user, "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>")
+		to_chat(user, SPAN_DANGER("<b>It looks like the proboscis has been removed.</b>"))
 	return
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/I, mob/user)
@@ -135,7 +135,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(!sterile)
 		L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
 
-	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
+	L.visible_message(SPAN_DANGER("<b> [src] leaps at [L]'s face!</b>"))
 
 	if(iscarbon(M))
 		var/mob/living/carbon/target = L
@@ -156,11 +156,11 @@ var/const/MAX_ACTIVE_TIME = 400
 		if(target.wear_mask)
 			var/obj/item/clothing/W = target.wear_mask
 			if(!target.drop_item_to_ground(W))
-				visible_message("<span class='danger'><b> [src] crashes into [target]'s face, but bounces off!</b></span>")
+				visible_message(SPAN_DANGER("<b> [src] crashes into [target]'s face, but bounces off!</b>"))
 				Die()
 				return
 
-			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
+			target.visible_message(SPAN_DANGER("<b> [src] tears [W] off of [target]'s face!</b>"))
 
 		if(target.isSynthetic())
 			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
@@ -185,11 +185,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(!sterile)
 		new /obj/item/alien_embryo(target)
 		target.status_flags |= TRAIT_XENO_HOST
-		target.visible_message("<span class='danger'><b> [src] falls limp after violating [target]'s face!</b></span>")
+		target.visible_message(SPAN_DANGER("<b> [src] falls limp after violating [target]'s face!</b>"))
 		icon_state = "[initial(icon_state)]_impregnate"
 		Die()
 	else
-		target.visible_message("<span class='danger'><b> [src] violates [target]'s face!</b></span>")
+		target.visible_message(SPAN_DANGER("<b> [src] violates [target]'s face!</b>"))
 	return
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
@@ -213,7 +213,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return
 
 	stat = DEAD
-	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
+	src.visible_message(SPAN_DANGER("<b>[src] curls up into a ball!</b>"))
 	Die()
 	return
 
@@ -258,7 +258,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 /obj/item/clothing/mask/facehugger/proc/Die()
 	if(stat != DEAD)
-		visible_message("<span class='alert'>[src] dies!</span>")
+		visible_message(SPAN_ALERT("[src] dies!"))
 		stat = DEAD
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0)
@@ -284,7 +284,7 @@ var/const/MAX_ACTIVE_TIME = 400
 				var/target_atom = pick(nearby)
 				walk_to(src, target_atom, 5)
 				if(prob(25))
-					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
+					src.visible_message(SPAN_NOTICE("\The [src] skitters[pick(" away"," around","")]."))
 
 // Simple Mob Conversion. Leaving this commented out because I really don't want to actually have to convert this.
 /*
@@ -335,11 +335,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			to_chat(user, "<span class='danger'><b>[src] is not moving.</b></span>")
+			to_chat(user, SPAN_DANGER("<b>[src] is not moving.</b>"))
 		if(CONSCIOUS)
-			to_chat(user, "<span class='danger'><b>[src] seems to be active.</b></span>")
+			to_chat(user, SPAN_DANGER("<b>[src] seems to be active.</b>"))
 	if (sterile)
-		to_chat(user, "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>")
+		to_chat(user, SPAN_DANGER("<b>It looks like the proboscis has been removed.</b>"))
 	return
 
 /mob/living/simple_mob/animal/space/alien/facehugger/attackby(obj/item/I, mob/user)
@@ -414,7 +414,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat != CONSCIOUS)	return
 	if(!sterile) L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
 
-	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
+	L.visible_message(SPAN_DANGER("<b> [src] leaps at [L]'s face!</b>"))
 
 	if(iscarbon(M))
 		var/mob/living/carbon/target = L
@@ -425,7 +425,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			if(!W.canremove)	return
 			target.drop_from_inventory(W)
 
-			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
+			target.visible_message(SPAN_DANGER("<b> [src] tears [W] off of [target]'s face!</b>"))
 
 		target.equip_to_slot(src, SLOT_ID_MASK)
 		target.contents += src // Monkey sanity check - Snapshot
@@ -447,13 +447,13 @@ var/const/MAX_ACTIVE_TIME = 400
 		new /obj/item/alien_embryo(target)
 		target.status_flags |= TRAIT_XENO_HOST
 
-		target.visible_message("<span class='danger'><b> [src] falls limp after violating [target]'s face!</b></span>")
+		target.visible_message(SPAN_DANGER("<b> [src] falls limp after violating [target]'s face!</b>"))
 
 		Die()
 		icon_state = "[initial(icon_state)]_impregnated"
 
 	else
-		target.visible_message("<span class='danger'><b> [src] violates [target]'s face!</b></span>")
+		target.visible_message(SPAN_DANGER("<b> [src] violates [target]'s face!</b>"))
 	return
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
@@ -487,7 +487,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_state = "[initial(icon_state)]_dead"
 	set_stat(DEAD)
 
-	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
+	src.visible_message(SPAN_DANGER("<b>[src] curls up into a ball!</b>"))
 
 	return
 

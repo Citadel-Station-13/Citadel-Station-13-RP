@@ -27,16 +27,16 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/slime/xenobio/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The stabilizer only works on lab-grown slimes!</span>")
+		to_chat(user, SPAN_WARNING("The stabilizer only works on lab-grown slimes!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return
 	if(S.mutation_chance == 0)
-		to_chat(user, "<span class='warning'>The slime already has no chance of mutating!</span>")
+		to_chat(user, SPAN_WARNING("The slime already has no chance of mutating!"))
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the stabilizer. It is now less likely to mutate.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the stabilizer. It is now less likely to mutate."))
 	S.mutation_chance = clamp( S.mutation_chance - 15, 0,  100)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
@@ -54,16 +54,16 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/slime/xenobio/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The mutator only works on lab-grown slimes!</span>")
+		to_chat(user, SPAN_WARNING("The mutator only works on lab-grown slimes!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return
 	if(S.mutation_chance == 100)
-		to_chat(user, "<span class='warning'>The slime is already guaranteed to mutate!</span>")
+		to_chat(user, SPAN_WARNING("The slime is already guaranteed to mutate!"))
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the mutator. It is now more likely to mutate.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the mutator. It is now more likely to mutate."))
 	S.mutation_chance = clamp( S.mutation_chance + 12, 0,  100)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
@@ -82,10 +82,10 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The agent only works on creatures!</span>")
+		to_chat(user, SPAN_WARNING("The agent only works on creatures!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>\The [S] is dead!</span>")
+		to_chat(user, SPAN_WARNING("\The [S] is dead!"))
 		return
 	if(!S.has_AI())
 		to_chat(user, SPAN_WARNING( "\The [S] is too strongly willed for this to affect them.")) // Most likely player controlled.
@@ -97,27 +97,27 @@
 	if(istype(S, /mob/living/simple_mob/slime/xenobio))
 		var/mob/living/simple_mob/slime/xenobio/XS = S
 		if(XS.harmless)
-			to_chat(user, "<span class='warning'>The slime is already docile!</span>")
+			to_chat(user, SPAN_WARNING("The slime is already docile!"))
 			return
 
 		XS.pacify()
 		XS.nutrition = 700
-		to_chat(S, "<span class='warning'>You absorb the agent and feel your intense desire to feed melt away.</span>")
-		to_chat(user, "<span class='notice'>You feed the slime the agent, removing its hunger and calming it.</span>")
+		to_chat(S, SPAN_WARNING("You absorb the agent and feel your intense desire to feed melt away."))
+		to_chat(user, SPAN_NOTICE("You feed the slime the agent, removing its hunger and calming it."))
 
 	// Simple Mobs.
 	else if(istype(S, /mob/living/simple_mob))
 		var/mob/living/simple_mob/SM = S
 		if(!(SM.mob_class & MOB_CLASS_SLIME|MOB_CLASS_ANIMAL)) // So you can't use this on Russians/syndies/hivebots/etc.
-			to_chat(user, "<span class='warning'>\The [SM] only works on slimes and animals.</span>")
+			to_chat(user, SPAN_WARNING("\The [SM] only works on slimes and animals."))
 			return
 		if(!AI.hostile)
-			to_chat(user, "<span class='warning'>\The [SM] is already passive!</span>")
+			to_chat(user, SPAN_WARNING("\The [SM] is already passive!"))
 			return
 
 		AI.hostile = FALSE
-		to_chat(S, "<span class='warning'>You consume the agent and feel a serene sense of peace.</span>")
-		to_chat(user, "<span class='notice'>You feed \the [SM] the agent, calming it.</span>")
+		to_chat(S, SPAN_WARNING("You consume the agent and feel a serene sense of peace."))
+		to_chat(user, SPAN_NOTICE("You feed \the [SM] the agent, calming it."))
 
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	AI.lost_target() // So hostile things stop attacking people even if not hostile anymore.
@@ -143,19 +143,19 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/slime/xenobio/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The steroid only works on lab-grown slimes!</span>")
+		to_chat(user, SPAN_WARNING("The steroid only works on lab-grown slimes!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return
 	if(S.is_adult) //Can't steroidify adults
-		to_chat(user, "<span class='warning'>Only baby slimes can use the steroid!</span>")
+		to_chat(user, SPAN_WARNING("Only baby slimes can use the steroid!"))
 		return
 	if(S.cores >= 5)
-		to_chat(user, "<span class='warning'>The slime already has the maximum amount of extract!</span>")
+		to_chat(user, SPAN_WARNING("The slime already has the maximum amount of extract!"))
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the steroid. It will now produce one more extract.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the steroid. It will now produce one more extract."))
 	S.cores++
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
@@ -175,16 +175,16 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/slime/xenobio/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The agent only works on lab-grown slimes!</span>")
+		to_chat(user, SPAN_WARNING("The agent only works on lab-grown slimes!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return
 	if(S.unity == TRUE)
-		to_chat(user, "<span class='warning'>The slime is already unified!</span>")
+		to_chat(user, SPAN_WARNING("The slime is already unified!"))
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the agent. It will now be friendly to all other slimes.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the agent. It will now be friendly to all other slimes."))
 	to_chat(S, "<span class='notice'>\The [user] feeds you \the [src], and you suspect that all the other slimes will be \
 	your friends, at least if you don't attack them first.</span>")
 	S.unify()
@@ -205,16 +205,16 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The agent only works on creatures!</span>")
+		to_chat(user, SPAN_WARNING("The agent only works on creatures!"))
 		return
 	if(!(S.mob_class & MOB_CLASS_SLIME|MOB_CLASS_ANIMAL)) // So you can't use this on Russians/syndies/hivebots/etc.
-		to_chat(user, "<span class='warning'>\The [S] only works on slimes and animals.</span>")
+		to_chat(user, SPAN_WARNING("\The [S] only works on slimes and animals."))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The animal is dead!</span>")
+		to_chat(user, SPAN_WARNING("The animal is dead!"))
 		return
 	if(S.faction == user.faction)
-		to_chat(user, "<span class='warning'>\The [S] is already loyal to your species!</span>")
+		to_chat(user, SPAN_WARNING("\The [S] is already loyal to your species!"))
 		return
 	if(!S.has_AI())
 		to_chat(user, SPAN_WARNING( "\The [S] is too strong-willed for this to affect them."))
@@ -222,8 +222,8 @@
 
 	var/datum/ai_holder/AI = S.ai_holder
 
-	to_chat(user, "<span class='notice'>You feed \the [S] the agent. It will now try to murder things that want to murder you instead.</span>")
-	to_chat(S, "<span class='notice'>\The [user] feeds you \the [src], and feel that the others will regard you as an outsider now.</span>")
+	to_chat(user, SPAN_NOTICE("You feed \the [S] the agent. It will now try to murder things that want to murder you instead."))
+	to_chat(S, SPAN_NOTICE("\The [user] feeds you \the [src], and feel that the others will regard you as an outsider now."))
 	S.faction = user.faction
 	AI.lost_target() // So hostile things stop attacking people even if not hostile anymore.
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
@@ -244,16 +244,16 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The agent only works on creatures!</span>")
+		to_chat(user, SPAN_WARNING("The agent only works on creatures!"))
 		return
 	if(!(S.mob_class & MOB_CLASS_SLIME|MOB_CLASS_ANIMAL)) // So you can't use this on Russians/syndies/hivebots/etc.
-		to_chat(user, "<span class='warning'>\The [S] only works on slimes and animals.</span>")
+		to_chat(user, SPAN_WARNING("\The [S] only works on slimes and animals."))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>\The [S] is dead!</span>")
+		to_chat(user, SPAN_WARNING("\The [S] is dead!"))
 		return
 	if(user in S.friends)
-		to_chat(user, "<span class='warning'>\The [S] is already loyal to you!</span>")
+		to_chat(user, SPAN_WARNING("\The [S] is already loyal to you!"))
 		return
 	if(!S.has_AI())
 		to_chat(user, SPAN_WARNING( "\The [S] is too strong-willed for this to affect them."))
@@ -261,8 +261,8 @@
 
 	var/datum/ai_holder/AI = S.ai_holder
 
-	to_chat(user, "<span class='notice'>You feed \the [S] the agent. It will now be your best friend.</span>")
-	to_chat(S, "<span class='notice'>\The [user] feeds you \the [src], and feel that \the [user] wants to be best friends with you.</span>")
+	to_chat(user, SPAN_NOTICE("You feed \the [S] the agent. It will now be your best friend."))
+	to_chat(S, SPAN_NOTICE("\The [user] feeds you \the [src], and feel that \the [user] wants to be best friends with you."))
 	S.friends.Add(user)
 	AI.lost_target() // So hostile things stop attacking people even if not hostile anymore.
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
@@ -282,13 +282,13 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	var/mob/living/simple_mob/slime/xenobio/S = target
 	if(!istype(S))
-		to_chat(user, "<span class='warning'>The feeding agent only works on lab-grown slimes!</span>")
+		to_chat(user, SPAN_WARNING("The feeding agent only works on lab-grown slimes!"))
 		return
 	if(S.stat == DEAD)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the feeding agent. It will now instantly reproduce.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the feeding agent. It will now instantly reproduce."))
 	S.amount_grown = 10
 	S.make_adult()
 	S.amount_grown = 10

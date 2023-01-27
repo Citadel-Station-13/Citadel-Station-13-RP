@@ -50,10 +50,10 @@
 	var/choice = alert("What do you want to do with \the [src]?","Multitool Menu", "Switch Mode", "Clear Buffers", "Cancel")
 	switch(choice)
 		if("Cancel")
-			to_chat(user,"<span class='notice'>You lower \the [src].</span>")
+			to_chat(user,SPAN_NOTICE("You lower \the [src]."))
 			return
 		if("Clear Buffers")
-			to_chat(user,"<span class='notice'>You clear \the [src]'s memory.</span>")
+			to_chat(user,SPAN_NOTICE("You clear \the [src]'s memory."))
 			buffer = null
 			connecting = null
 			connectable = null
@@ -78,7 +78,7 @@
 		mode_index++
 
 	toolmode = modes[mode_index]
-	to_chat(user,"<span class='notice'>\The [src] is now set to [toolmode].</span>")
+	to_chat(user,SPAN_NOTICE("\The [src] is now set to [toolmode]."))
 
 	accepting_refs = (toolmode == MULTITOOL_MODE_INTCIRCUITS)
 

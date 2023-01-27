@@ -146,4 +146,4 @@
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
-	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+	to_chat(user, SPAN_NOTICE("You attach the pry jaws to [src]."))

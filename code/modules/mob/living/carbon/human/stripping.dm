@@ -35,7 +35,7 @@
 	if(istype(wear_suit,/obj/item/clothing/suit/space))
 		var/obj/item/clothing/suit/space/suit = wear_suit
 		if(suit.supporting_limbs && suit.supporting_limbs.len)
-			to_chat(user, "<span class='warning'>You cannot remove the splints - [src]'s [suit] is supporting some of the breaks.</span>")
+			to_chat(user, SPAN_WARNING("You cannot remove the splints - [src]'s [suit] is supporting some of the breaks."))
 			can_reach_splints = 0
 
 	if(can_reach_splints)
@@ -49,10 +49,10 @@
 						user.put_in_active_hand(S)
 						removed_splint = 1
 		if(removed_splint)
-			visible_message("<span class='danger'>\The [user] removes \the [src]'s splints!</span>")
+			visible_message(SPAN_DANGER("\The [user] removes \the [src]'s splints!"))
 			add_attack_logs(user, src, "removed splints")
 		else
-			to_chat(user, "<span class='warning'>\The [src] has no splints to remove.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] has no splints to remove."))
 
 /mob/living/carbon/human/proc/try_toggle_internals(mob/user)
 	visible_message(
@@ -84,13 +84,13 @@
 			internal = belt
 
 	if(internal)
-		visible_message("<span class='warning'>\The [src] is now running on internals!</span>")
+		visible_message(SPAN_WARNING("\The [src] is now running on internals!"))
 		internal.add_fingerprint(user)
 		if (internals)
 			internals.icon_state = "internal1"
 		add_attack_logs(user, src, "turned on internals")
 	else
-		visible_message("<span class='danger'>\The [user] disables \the [src]'s internals!</span>")
+		visible_message(SPAN_DANGER("\The [user] disables \the [src]'s internals!"))
 		add_attack_logs(user, src, "turned off internals")
 
 /mob/living/carbon/human/proc/strip_menu_check_valid_internals_items()

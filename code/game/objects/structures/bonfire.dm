@@ -305,24 +305,24 @@
 	if(get_fuel_amount())
 		var/atom/movable/AM = pop(contents)
 		AM.forceMove(get_turf(src))
-		to_chat(user, "<span class='notice'>You take \the [AM] out of \the [src] before it has a chance to burn away.</span>")
+		to_chat(user, SPAN_NOTICE("You take \the [AM] out of \the [src] before it has a chance to burn away."))
 		update_icon()
 
 /obj/structure/fireplace/proc/add_fuel(atom/movable/new_fuel, mob/user)
 	if(get_fuel_amount() >= 10)
-		to_chat(user, "<span class='warning'>\The [src] already has enough fuel!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] already has enough fuel!"))
 		return FALSE
 	if(istype(new_fuel, /obj/item/stack/material/wood) || istype(new_fuel, /obj/item/stack/material/log) )
 		var/obj/item/stack/F = new_fuel
 		var/obj/item/stack/S = F.split(1)
 		if(S)
 			S.forceMove(src)
-			to_chat(user, "<span class='warning'>You add \the [new_fuel] to \the [src].</span>")
+			to_chat(user, SPAN_WARNING("You add \the [new_fuel] to \the [src]."))
 			update_icon()
 			return TRUE
 		return FALSE
 	else
-		to_chat(user, "<span class='warning'>\The [src] needs raw wood to burn, \a [new_fuel] won't work.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] needs raw wood to burn, \a [new_fuel] won't work."))
 		return FALSE
 
 /obj/structure/fireplace/proc/consume_fuel(var/obj/item/stack/consumed_fuel)
@@ -352,14 +352,14 @@
 		burning = FALSE
 		update_icon()
 		STOP_PROCESSING(SSobj, src)
-		visible_message("<span class='notice'>\The [src] stops burning.</span>")
+		visible_message(SPAN_NOTICE("\The [src] stops burning."))
 
 /obj/structure/fireplace/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
 		START_PROCESSING(SSobj, src)
-		visible_message("<span class='warning'>\The [src] starts burning!</span>")
+		visible_message(SPAN_WARNING("\The [src] starts burning!"))
 
 /obj/structure/fireplace/proc/burn()
 	var/turf/current_location = get_turf(src)

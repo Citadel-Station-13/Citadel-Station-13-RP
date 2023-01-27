@@ -125,7 +125,7 @@
 			if(!user.attempt_insert_item_for_installation(src, H.vore_selected))
 				return
 			playsound(H,'sound/items/eatfood.ogg', rand(10,50), 1)
-			to_chat(H, "<span class='notice'>You can taste the flavor of garbage. Wait what?</span>")
+			to_chat(H, SPAN_NOTICE("You can taste the flavor of garbage. Wait what?"))
 			return
 
 	if(isrobot(target))
@@ -134,7 +134,7 @@
 			if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
 				return
 			playsound(R,'sound/items/eatfood.ogg', rand(10,50), 1)
-			R.visible_message("<span class='warning'>[user] feeds [R] with [src]!</span>")
+			R.visible_message(SPAN_WARNING("[user] feeds [R] with [src]!"))
 			return
 	return ..()
 

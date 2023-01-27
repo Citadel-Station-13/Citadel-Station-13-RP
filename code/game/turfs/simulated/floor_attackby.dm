@@ -28,17 +28,17 @@
 				if(!A)
 					A = locate(/turf/simulated/wall) in cardinalTurfs
 				if(!A)
-					to_chat(user, "<span class='warning'>There's nothing to attach the ceiling to!</span>")
+					to_chat(user, SPAN_WARNING("There's nothing to attach the ceiling to!"))
 					return
 
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
 					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
+					user.visible_message(SPAN_NOTICE("[user] patches a hole in the ceiling."), SPAN_NOTICE("You patch a hole in the ceiling."))
 					expended_tile = TRUE
 			else
-				to_chat(user, "<span class='warning'>There aren't any holes in the ceiling to patch here.</span>")
+				to_chat(user, SPAN_WARNING("There aren't any holes in the ceiling to patch here."))
 				return
 
 		// Create a ceiling to shield from the weather
@@ -49,7 +49,7 @@
 					if(expended_tile || R.use(1))
 						make_indoors()
 						playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-						user.visible_message("<span class='notice'>[user] roofs a tile, shielding it from the elements.</span>", "<span class='notice'>You roof this tile, shielding it from the elements.</span>")
+						user.visible_message(SPAN_NOTICE("[user] roofs a tile, shielding it from the elements."), SPAN_NOTICE("You roof this tile, shielding it from the elements."))
 					break
 		return
 
@@ -58,7 +58,7 @@
 			try_deconstruct_tile(C, user)
 			return
 		else if(istype(C, /obj/item/stack/cable_coil))
-			to_chat(user, "<span class='warning'>You must remove the [flooring.descriptor] first.</span>")
+			to_chat(user, SPAN_WARNING("You must remove the [flooring.descriptor] first."))
 			return
 		else if(istype(C, /obj/item/stack/tile))
 			try_replace_tile(C, user)
@@ -67,14 +67,14 @@
 
 		if(istype(C, /obj/item/stack/cable_coil))
 			if(broken || burnt)
-				to_chat(user, "<span class='warning'>This section is too damaged to support anything. Use a welder to fix the damage.</span>")
+				to_chat(user, SPAN_WARNING("This section is too damaged to support anything. Use a welder to fix the damage."))
 				return
 			var/obj/item/stack/cable_coil/coil = C
 			coil.turf_place(src, user)
 			return
 		else if(istype(C, /obj/item/stack))
 			if(broken || burnt)
-				to_chat(user, "<span class='warning'>This section is too damaged to support anything. Use a welder to fix the damage.</span>")
+				to_chat(user, SPAN_WARNING("This section is too damaged to support anything. Use a welder to fix the damage."))
 				return
 			var/obj/item/stack/S = C
 			var/singleton/flooring/use_flooring
@@ -89,7 +89,7 @@
 				return
 			// Do we have enough?
 			if(use_flooring.build_cost && S.amount < use_flooring.build_cost)
-				to_chat(user, "<span class='warning'>You require at least [use_flooring.build_cost] [S.name] to complete the [use_flooring.descriptor].</span>")
+				to_chat(user, SPAN_WARNING("You require at least [use_flooring.build_cost] [S.name] to complete the [use_flooring.descriptor]."))
 				return
 			// Stay still and focus...
 			if(use_flooring.build_time && !do_after(user, use_flooring.build_time))
@@ -106,24 +106,24 @@
 			if(welder.isOn() && (is_plating()))
 				if(broken || burnt)
 					if(welder.remove_fuel(0,user))
-						to_chat(user, "<span class='notice'>You fix some dents on the broken plating.</span>")
+						to_chat(user, SPAN_NOTICE("You fix some dents on the broken plating."))
 						playsound(src, welder.tool_sound, 80, 1)
 						icon_state = "plating"
 						burnt = null
 						broken = null
 					else
-						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+						to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 
 /turf/simulated/floor/proc/try_deconstruct_tile(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		if(broken || burnt)
-			to_chat(user, "<span class='notice'>You remove the broken [flooring.descriptor].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the broken [flooring.descriptor]."))
 			make_plating()
 		else if(flooring.flooring_flags & TURF_IS_FRAGILE)
-			to_chat(user, "<span class='danger'>You forcefully pry off the [flooring.descriptor], destroying them in the process.</span>")
+			to_chat(user, SPAN_DANGER("You forcefully pry off the [flooring.descriptor], destroying them in the process."))
 			make_plating()
 		else if(flooring.flooring_flags & TURF_REMOVE_CROWBAR)
-			to_chat(user, "<span class='notice'>You lever off the [flooring.descriptor].</span>")
+			to_chat(user, SPAN_NOTICE("You lever off the [flooring.descriptor]."))
 			make_plating(1)
 		else
 			return 0
@@ -132,17 +132,17 @@
 	else if(W.is_screwdriver() && (flooring.flooring_flags & TURF_REMOVE_SCREWDRIVER))
 		if(broken || burnt)
 			return 0
-		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
+		to_chat(user, SPAN_NOTICE("You unscrew and remove the [flooring.descriptor]."))
 		make_plating(1)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(W.is_wrench() && (flooring.flooring_flags & TURF_REMOVE_WRENCH))
-		to_chat(user, "<span class='notice'>You unwrench and remove the [flooring.descriptor].</span>")
+		to_chat(user, SPAN_NOTICE("You unwrench and remove the [flooring.descriptor]."))
 		make_plating(1)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(istype(W, /obj/item/shovel) && (flooring.flooring_flags & TURF_REMOVE_SHOVEL))
-		to_chat(user, "<span class='notice'>You shovel off the [flooring.descriptor].</span>")
+		to_chat(user, SPAN_NOTICE("You shovel off the [flooring.descriptor]."))
 		make_plating(1)
 		playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)
 		return 1

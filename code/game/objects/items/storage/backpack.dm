@@ -52,7 +52,7 @@
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
-		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
+		to_chat(user, SPAN_WARNING("The Bluespace interfaces of the two devices conflict and malfunction."))
 		//qdel(W) - fuck this holy shit
 		return
 	. = ..()
@@ -500,34 +500,34 @@
 	if(H.stat)
 		return
 	if(H.back == src)
-		to_chat(H, "<span class='warning'>How do you expect to work on \the [src] while it's on your back?</span>")
+		to_chat(H, SPAN_WARNING("How do you expect to work on \the [src] while it's on your back?"))
 		return
 
 	if(!parachute)	//This packs the parachute
-		H.visible_message("<span class='notice'>\The [H] starts to pack \the [src]!</span>", \
-					"<span class='notice'>You start to pack \the [src]!</span>", \
+		H.visible_message(SPAN_NOTICE("\The [H] starts to pack \the [src]!"), \
+					SPAN_NOTICE("You start to pack \the [src]!"), \
 					"You hear the shuffling of cloth.")
 		if(do_after(H, 50))
-			H.visible_message("<span class='notice'>\The [H] finishes packing \the [src]!</span>", \
-					"<span class='notice'>You finish packing \the [src]!</span>", \
+			H.visible_message(SPAN_NOTICE("\The [H] finishes packing \the [src]!"), \
+					SPAN_NOTICE("You finish packing \the [src]!"), \
 					"You hear the shuffling of cloth.")
 			parachute = TRUE
 		else
-			H.visible_message("<span class='notice'>\The [src] gives up on packing \the [src]!</span>", \
-					"<span class='notice'>You give up on packing \the [src]!</span>")
+			H.visible_message(SPAN_NOTICE("\The [src] gives up on packing \the [src]!"), \
+					SPAN_NOTICE("You give up on packing \the [src]!"))
 			return
 	else			//This unpacks the parachute
-		H.visible_message("<span class='notice'>\The [src] starts to unpack \the [src]!</span>", \
-					"<span class='notice'>You start to unpack \the [src]!</span>", \
+		H.visible_message(SPAN_NOTICE("\The [src] starts to unpack \the [src]!"), \
+					SPAN_NOTICE("You start to unpack \the [src]!"), \
 					"You hear the shuffling of cloth.")
 		if(do_after(H, 25))
-			H.visible_message("<span class='notice'>\The [src] finishes unpacking \the [src]!</span>", \
-					"<span class='notice'>You finish unpacking \the [src]!</span>", \
+			H.visible_message(SPAN_NOTICE("\The [src] finishes unpacking \the [src]!"), \
+					SPAN_NOTICE("You finish unpacking \the [src]!"), \
 					"You hear the shuffling of cloth.")
 			parachute = FALSE
 		else
-			H.visible_message("<span class='notice'>\The [src] decides not to unpack \the [src]!</span>", \
-					"<span class='notice'>You decide not to unpack \the [src]!</span>")
+			H.visible_message(SPAN_NOTICE("\The [src] decides not to unpack \the [src]!"), \
+					SPAN_NOTICE("You decide not to unpack \the [src]!"))
 	return
 
 /obj/item/storage/backpack/satchel/ranger
@@ -566,7 +566,7 @@
 			slowdown = initial(slowdown)
 		return 1
 	else
-		to_chat(H, "<span class='warning'>[no_message]</span>")
+		to_chat(H, SPAN_WARNING("[no_message]"))
 		return 0
 
 /* If anyone wants to make some... this is how you would.
@@ -652,7 +652,7 @@
 			slowdown = initial(slowdown)
 		return 1
 	else
-		to_chat(H, "<span class='warning'>[no_message]</span>")
+		to_chat(H, SPAN_WARNING("[no_message]"))
 		return 0
 
 /obj/item/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs

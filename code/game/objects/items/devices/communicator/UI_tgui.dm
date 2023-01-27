@@ -351,7 +351,7 @@
 
 		if("dial")
 			if(!get_connection_to_tcomms())
-				to_chat(usr, "<span class='danger'>Error: Cannot connect to Exonet node.</span>")
+				to_chat(usr, SPAN_DANGER("Error: Cannot connect to Exonet node."))
 				return FALSE
 			var/their_address = params["dial"]
 			exonet.send_message(their_address, "voice")
@@ -364,7 +364,7 @@
 
 		if("message")
 			if(!get_connection_to_tcomms())
-				to_chat(usr, "<span class='danger'>Error: Cannot connect to Exonet node.</span>")
+				to_chat(usr, SPAN_DANGER("Error: Cannot connect to Exonet node."))
 				return FALSE
 			var/their_address = params["message"]
 			var/text = sanitizeSafe(input(usr,"Enter your message.","Text Message"))

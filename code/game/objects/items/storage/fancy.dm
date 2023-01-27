@@ -264,7 +264,7 @@
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 
 		if(cig == null)
-			to_chat(user, "<span class='notice'>Looks like the packet is out of cigarettes.</span>")
+			to_chat(user, SPAN_NOTICE("Looks like the packet is out of cigarettes."))
 			return
 
 		// Instead of running equip_to_slot_if_possible() we check here first,
@@ -279,7 +279,7 @@
 			cig.forceMove(user.drop_location())
 
 		reagents.maximum_volume = 15 * contents.len
-		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
+		to_chat(user, SPAN_NOTICE("You take a cigarette out of the pack."))
 		update_icon()
 	else
 		..()

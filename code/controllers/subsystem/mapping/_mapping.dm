@@ -1,4 +1,4 @@
-#define INIT_ANNOUNCE(X) to_chat(world, "<span class='boldannounce'>[X]</span>"); log_world(X)
+#define INIT_ANNOUNCE(X) to_chat(world, SPAN_BOLDANNOUNCE("[X]")); log_world(X)
 
 GLOBAL_VAR_INIT(used_engine, "None")
 // Handles map-related tasks, mostly here to ensure it does so after the MC initializes.
@@ -355,8 +355,8 @@ SUBSYSTEM_DEF(mapping)
 				engine_types += MT
 		chosen_type = pick(engine_types)
 	subsystem_log("Chose Engine Map: [chosen_type.name]")
-	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
-	to_chat(world, "<span class='danger'>Engine loaded: [chosen_type.display_name]</span>")
+	admin_notice(SPAN_DANGER("Chose Engine Map: [chosen_type.name]"), R_DEBUG)
+	to_chat(world, SPAN_DANGER("Engine loaded: [chosen_type.display_name]"))
 	GLOB.used_engine = chosen_type.display_name
 
 	// Annihilate movable atoms

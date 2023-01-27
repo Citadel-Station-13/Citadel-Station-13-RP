@@ -16,10 +16,10 @@
 /obj/item/slime_extract/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/slimesteroid2))
 		if(enhanced == 1)
-			to_chat(user, "<span class='warning'> This extract has already been enhanced!</span>")
+			to_chat(user, SPAN_WARNING(" This extract has already been enhanced!"))
 			return ..()
 		if(Uses == 0)
-			to_chat(user, "<span class='warning'> You can't enhance a used extract!</span>")
+			to_chat(user, SPAN_WARNING(" You can't enhance a used extract!"))
 			return ..()
 		to_chat(user, "You apply the enhancer. It now has triple the amount of uses.")
 		Uses = 3
@@ -131,16 +131,16 @@
 
 /obj/item/slimepotion/docility/attack(mob/living/carbon/slime/M as mob, mob/user as mob)
 	if(!istype(M, /mob/living/carbon/slime))//If target is not a slime.
-		to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
+		to_chat(user, SPAN_WARNING(" The potion only works on slimes!"))
 		return ..()
 //	if(M.is_adult) //Can't tame adults
-//		to_chat(user, "<span class='warning'> Only baby slimes can be tamed!</span>")
+//		to_chat(user, SPAN_WARNING(" Only baby slimes can be tamed!"))
 //		return..()
 	if(M.stat)
-		to_chat(user, "<span class='warning'> The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING(" The slime is dead!"))
 		return..()
 	if(M.mind)
-		to_chat(user, "<span class='warning'> The slime resists!</span>")
+		to_chat(user, SPAN_WARNING(" The slime resists!"))
 		return ..()
 	var/mob/living/simple_mob/slime/pet = new /mob/living/simple_mob/slime(M.loc)
 	pet.icon_state = "[M.colour] [M.is_adult ? "adult" : "baby"] slime"
@@ -166,16 +166,16 @@
 
 /obj/item/slimepotion/stabilizer/attack(mob/living/carbon/slime/M, mob/user)
 	if(!isslime(M))
-		to_chat(user, "<span class='warning'>The stabilizer only works on slimes!</span>")
+		to_chat(user, SPAN_WARNING("The stabilizer only works on slimes!"))
 		return ..()
 	if(M.stat)
-		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		to_chat(user, SPAN_WARNING("The slime is dead!"))
 		return ..()
 	if(M.mutation_chance == 0)
-		to_chat(user, "<span class='warning'>The slime already has no chance of mutating!</span>")
+		to_chat(user, SPAN_WARNING("The slime already has no chance of mutating!"))
 		return ..()
 
-	to_chat(user, "<span class='notice'>You feed the slime the stabilizer. It is now less likely to mutate.</span>")
+	to_chat(user, SPAN_NOTICE("You feed the slime the stabilizer. It is now less likely to mutate."))
 	M.mutation_chance = clamp(M.mutation_chance-15,0,100)
 	qdel(src)
 
@@ -188,13 +188,13 @@
 
 	attack(mob/living/carbon/slime/M as mob, mob/user as mob)
 		if(!istype(M, /mob/living/carbon/slime/))//If target is not a slime.
-			to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
+			to_chat(user, SPAN_WARNING(" The potion only works on slimes!"))
 			return ..()
 		if(M.stat)
-			to_chat(user, "<span class='warning'> The slime is dead!</span>")
+			to_chat(user, SPAN_WARNING(" The slime is dead!"))
 			return..()
 		if(M.mind)
-			to_chat(user, "<span class='warning'> The slime resists!</span>")
+			to_chat(user, SPAN_WARNING(" The slime resists!"))
 			return ..()
 		var/mob/living/simple_mob/adultslime/pet = new /mob/living/simple_mob/adultslime(M.loc)
 		pet.icon_state = "[M.colour] adult slime"
@@ -220,16 +220,16 @@
 
 	attack(mob/living/carbon/slime/M as mob, mob/user as mob)
 		if(!istype(M, /mob/living/carbon/slime))//If target is not a slime.
-			to_chat(user, "<span class='warning'> The steroid only works on baby slimes!</span>")
+			to_chat(user, SPAN_WARNING(" The steroid only works on baby slimes!"))
 			return ..()
 		if(M.is_adult) //Can't tame adults
-			to_chat(user, "<span class='warning'> Only baby slimes can use the steroid!</span>")
+			to_chat(user, SPAN_WARNING(" Only baby slimes can use the steroid!"))
 			return..()
 		if(M.stat)
-			to_chat(user, "<span class='warning'> The slime is dead!</span>")
+			to_chat(user, SPAN_WARNING(" The slime is dead!"))
 			return..()
 		if(M.cores == 3)
-			to_chat(user, "<span class='warning'> The slime already has the maximum amount of extract!</span>")
+			to_chat(user, SPAN_WARNING(" The slime already has the maximum amount of extract!"))
 			return..()
 
 		to_chat(user, "You feed the slime the steroid. It now has triple the amount of extract.")
@@ -245,10 +245,10 @@
 	/*afterattack(obj/target, mob/user , flag)
 		if(istype(target, /obj/item/slime_extract))
 			if(target.enhanced == 1)
-				to_chat(user, "<span class='warning'> This extract has already been enhanced!</span>")
+				to_chat(user, SPAN_WARNING(" This extract has already been enhanced!"))
 				return ..()
 			if(target.Uses == 0)
-				to_chat(user, "<span class='warning'> You can't enhance a used extract!</span>")
+				to_chat(user, SPAN_WARNING(" You can't enhance a used extract!"))
 				return ..()
 			to_chat(user, "You apply the enhancer. It now has triple the amount of uses.")
 			target.Uses = 3

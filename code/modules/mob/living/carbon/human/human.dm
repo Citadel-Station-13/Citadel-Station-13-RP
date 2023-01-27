@@ -658,12 +658,12 @@
 
 /mob/living/carbon/human/IsAdvancedToolUser(silent)
 	if(feral)
-		to_chat(src, "<span class='warning'>Your primitive mind can't grasp the concept of that thing.</span>")
+		to_chat(src, SPAN_WARNING("Your primitive mind can't grasp the concept of that thing."))
 		return 0
 	if(species.has_fine_manipulation)
 		return 1
 	if(!silent)
-		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
+		to_chat(src, SPAN_WARNING("You don't have the dexterity to use that!"))
 	return 0
 
 /mob/living/carbon/human/abiotic(full_body)
@@ -1010,16 +1010,16 @@
 /mob/living/carbon/human/proc/embed_object_pain(var/obj/item/organ/external/organ, var/obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain(organ.organ_tag))
-		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
+		to_chat(src, SPAN_WARNING("You feel [O] moving inside your [organ.name]."))
 	else
 		var/msg = pick( \
-			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
+			SPAN_WARNING("A spike of pain jolts your [organ.name] as you bump [O] inside."), \
+			SPAN_WARNING("Your movement jostles [O] in your [organ.name] painfully."), \
+			SPAN_WARNING("Your movement jostles [O] in your [organ.name] painfully."))
 		custom_pain(msg, 40)
 	if(istype(O, /obj/item/melee/spike))
 		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
-		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
+		to_chat(src, SPAN_DANGER("The edges of [O] in your [organ.name] are not doing you any favors."))
 		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
 	organ.take_damage(rand(1,3), 0, 0)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
@@ -1040,23 +1040,23 @@
 	if(usr == src)
 		self = 1
 	if(!self)
-		usr.visible_message("<span class='notice'>[usr] kneels down, puts [TU.his] hand on [src]'s wrist and begins counting [T.his] pulse.</span>",\
+		usr.visible_message(SPAN_NOTICE("[usr] kneels down, puts [TU.his] hand on [src]'s wrist and begins counting [T.his] pulse."),\
 		"You begin counting [src]'s pulse")
 	else
-		usr.visible_message("<span class='notice'>[usr] begins counting [T.his] pulse.</span>",\
+		usr.visible_message(SPAN_NOTICE("[usr] begins counting [T.his] pulse."),\
 		"You begin counting your pulse.")
 
 	if(src.pulse)
-		to_chat(usr, "<span class='notice'>[self ? "You have a" : "[src] has a"] pulse! Counting...</span>")
+		to_chat(usr, SPAN_NOTICE("[self ? "You have a" : "[src] has a"] pulse! Counting..."))
 	else
-		to_chat(usr, "<span class='danger'>[src] has no pulse!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
+		to_chat(usr, SPAN_DANGER("[src] has no pulse!"))	//it is REALLY UNLIKELY that a dead person would check his own pulse
 		return
 
 	to_chat(usr, "You must[self ? "" : " both"] remain still until counting is finished.")
 	if(do_mob(usr, src, 60))
-		to_chat(usr, "<span class='notice'>[self ? "Your" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)].</span>")
+		to_chat(usr, SPAN_NOTICE("[self ? "Your" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)]."))
 	else
-		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
+		to_chat(usr, SPAN_WARNING("You failed to check the pulse. Try again."))
 
 /**
  * Sets a human mob's species.
@@ -1190,26 +1190,26 @@
 		remove_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 
 	if (src.gloves)
-		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")
+		to_chat(src, SPAN_WARNING("Your [src.gloves] are getting in the way."))
 		return
 
 	var/turf/simulated/T = src.loc
 	if (!istype(T)) //to prevent doodling out of mechs and lockers
-		to_chat(src, "<span class='warning'>You cannot reach the floor.</span>")
+		to_chat(src, SPAN_WARNING("You cannot reach the floor."))
 		return
 
 	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
 	if (direction != "Here")
 		T = get_step(T,text2dir(direction))
 	if (!istype(T))
-		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
+		to_chat(src, SPAN_WARNING("You cannot doodle there."))
 		return
 
 	var/num_doodles = 0
 	for (var/obj/effect/debris/cleanable/blood/writing/W in T)
 		num_doodles++
 	if (num_doodles > 4)
-		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
+		to_chat(src, SPAN_WARNING("There is no space to write on!"))
 		return
 
 	var/max_length = bloody_hands * 30 //tweeter style
@@ -1222,7 +1222,7 @@
 
 		if (length(message) > max_length)
 			message += "-"
-			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
+			to_chat(src, SPAN_WARNING("You ran out of blood to write with!"))
 
 		var/obj/effect/debris/cleanable/blood/writing/W = new(T)
 		W.basecolor = (hand_blood_color) ? hand_blood_color : "#A10808"
@@ -1282,7 +1282,7 @@
 	if(!. && error_msg && user)
 		if(!fail_msg)
 			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on their body"] to inject into."
-		to_chat(user, "<span class='alert'>[fail_msg]</span>")
+		to_chat(user, SPAN_ALERT("[fail_msg]"))
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
@@ -1400,9 +1400,9 @@
 		return
 
 	if(self)
-		to_chat(src, "<span class='warning'>You brace yourself to relocate your [current_limb.joint]...</span>")
+		to_chat(src, SPAN_WARNING("You brace yourself to relocate your [current_limb.joint]..."))
 	else
-		to_chat(U, "<span class='warning'>You begin to relocate [S]'s [current_limb.joint]...</span>")
+		to_chat(U, SPAN_WARNING("You begin to relocate [S]'s [current_limb.joint]..."))
 
 	if(!do_after(U, 30))
 		return
@@ -1410,10 +1410,10 @@
 		return
 
 	if(self)
-		to_chat(src, "<span class='danger'>You pop your [current_limb.joint] back in!</span>")
+		to_chat(src, SPAN_DANGER("You pop your [current_limb.joint] back in!"))
 	else
-		to_chat(U, "<span class='danger'>You pop [S]'s [current_limb.joint] back in!</span>")
-		to_chat(S, "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>")
+		to_chat(U, SPAN_DANGER("You pop [S]'s [current_limb.joint] back in!"))
+		to_chat(S, SPAN_DANGER("[U] pops your [current_limb.joint] back in!"))
 	current_limb.relocate()
 
 /mob/living/carbon/human/Check_Shoegrip()
@@ -1443,11 +1443,11 @@
 	if(!UWC) return
 	var/datum/category_item/underwear/UWI = all_underwear[UWC.name]
 	if(!UWI || UWI.name == "None")
-		to_chat(src, "<span class='notice'>You do not have [UWC.gender==PLURAL ? "[UWC.display_name]" : "a [UWC.display_name]"].</span>")
+		to_chat(src, SPAN_NOTICE("You do not have [UWC.gender==PLURAL ? "[UWC.display_name]" : "a [UWC.display_name]"]."))
 		return
 	hide_underwear[UWC.name] = !hide_underwear[UWC.name]
 	update_underwear(1)
-	to_chat(src, "<span class='notice'>You [hide_underwear[UWC.name] ? "take off" : "put on"] your [UWC.display_name].</span>")
+	to_chat(src, SPAN_NOTICE("You [hide_underwear[UWC.name] ? "take off" : "put on"] your [UWC.display_name]."))
 	return
 
 /mob/living/carbon/human/verb/pull_punches()
@@ -1457,7 +1457,7 @@
 
 	if(stat) return
 	pulling_punches = !pulling_punches
-	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
+	to_chat(src, SPAN_NOTICE("You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"]."))
 	return
 
 /mob/living/carbon/human/should_have_organ(var/organ_check)

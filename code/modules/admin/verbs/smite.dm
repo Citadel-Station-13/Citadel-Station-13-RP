@@ -49,13 +49,13 @@
 		if(SMITE_SPONTANEOUSCOMBUSTION)
 			target.adjust_fire_stacks(10)
 			target.IgniteMob()
-			target.visible_message("<span class='danger'>[target] bursts into flames!</span>")
+			target.visible_message(SPAN_DANGER("[target] bursts into flames!"))
 
 		if(SMITE_LIGHTNINGBOLT)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.electrocute_act(75,def_zone = BP_HEAD)
-			target.visible_message("<span class='danger'>[target] is struck by lightning!</span>")
+			target.visible_message(SPAN_DANGER("[target] is struck by lightning!"))
 
 		else
 			return //Injection? Don't print any messages.
@@ -69,7 +69,7 @@
 
 	if(BSACooldown)
 		if(user)
-			to_chat(user,"<span class='warning'>BSA is still cooling down, please wait!</span>")
+			to_chat(user,SPAN_WARNING("BSA is still cooling down, please wait!"))
 		return
 
 	BSACooldown = 1

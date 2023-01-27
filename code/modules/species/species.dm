@@ -695,19 +695,19 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				t_him = "her"
 	if(H.zone_sel.selecting == "head") // Headpats and Handshakes!
 		H.visible_message( \
-			"<span class='notice'>[H] pats [target] on the head.</span>", \
-			"<span class='notice'>You pat [target] on the head.</span>", )
+			SPAN_NOTICE("[H] pats [target] on the head."), \
+			SPAN_NOTICE("You pat [target] on the head."), )
 	else if(H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
 		H.visible_message( \
-			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
-			"<span class='notice'>You shake [target]'s hand.</span>", )
+			SPAN_NOTICE("[H] shakes [target]'s hand."), \
+			SPAN_NOTICE("You shake [target]'s hand."), )
 	//Ports nose booping
 	else if(H.zone_sel.selecting == "mouth")
 		H.visible_message( \
-			"<span class='notice'>[H] boops [target]'s nose.</span>", \
-			"<span class='notice'>You boop [target] on the nose.</span>", )
-	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
-					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
+			SPAN_NOTICE("[H] boops [target]'s nose."), \
+			SPAN_NOTICE("You boop [target] on the nose."), )
+	else H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
+					SPAN_NOTICE("You hug [target] to make [t_him] feel better!"))
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(!inherent_verbs)

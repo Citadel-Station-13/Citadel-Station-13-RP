@@ -20,11 +20,11 @@
 
 	if(H.wear_suit)
 		if(H.wear_suit.body_parts_covered & ARMS)
-			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit], it's in the way.</span>")
+			to_chat(H, SPAN_WARNING("You can't wear \the [src] with \the [H.wear_suit], it's in the way."))
 			return FALSE
 		for(var/obj/item/clothing/accessory/A in H.wear_suit)
 			if(A.body_parts_covered & ARMS)
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way.</span>")
+				to_chat(H, SPAN_WARNING("You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way."))
 				return FALSE
 	return TRUE
 

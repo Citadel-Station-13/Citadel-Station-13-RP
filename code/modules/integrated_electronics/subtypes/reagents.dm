@@ -136,14 +136,14 @@
 //Always log attemped injections for admins
 			var/contained = reagents.log_list()
 			log_attack(src, L, "attempted to inject [L] which had [contained]")
-			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
-								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
+			L.visible_message(SPAN_DANGER("[acting_object] is trying to inject [L]!"), \
+								SPAN_USERDANGER("[acting_object] is trying to inject you!"))
 			busy = TRUE
 			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
 				reagents.trans_to(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
-				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
-									"<span class='userdanger'>[acting_object] injects you with its needle!</span>")
+				L.visible_message(SPAN_DANGER("[acting_object] injects [L] with its needle!"), \
+									SPAN_USERDANGER("[acting_object] injects you with its needle!"))
 			else
 				busy = FALSE
 				activate_pin(3)
@@ -161,17 +161,17 @@
 
 		if(isliving(AM))
 			var/mob/living/L = AM
-			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
-								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
+			L.visible_message(SPAN_DANGER("[acting_object] is trying to take a blood sample from [L]!"), \
+								SPAN_USERDANGER("[acting_object] is trying to take a blood sample from you!"))
 			busy = TRUE
 			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
 				var/mob/living/carbon/LB = L
 				if(LB.take_blood(src, tramount))
-					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
-					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
+					L.visible_message(SPAN_DANGER("[acting_object] takes a blood sample from [L]!"), \
+					SPAN_USERDANGER("[acting_object] takes a blood sample from you!"))
 				else
-					L.visible_message("<span class='warning'>[acting_object] fails to take a blood sample from [L].</span>", \
-								"<span class='userdanger'>[acting_object] fails to take a blood sample from you!</span>")
+					L.visible_message(SPAN_WARNING("[acting_object] fails to take a blood sample from [L]."), \
+								SPAN_USERDANGER("[acting_object] fails to take a blood sample from you!"))
 					busy = FALSE
 					activate_pin(3)
 					return
@@ -179,7 +179,7 @@
 
 		else
 			if(!AM.reagents.total_volume)
-				acting_object.visible_message("<span class='notice'>[acting_object] tries to draw from [AM], but it is empty!</span>")
+				acting_object.visible_message(SPAN_NOTICE("[acting_object] tries to draw from [AM], but it is empty!"))
 				activate_pin(3)
 				return
 
@@ -281,12 +281,12 @@
 /obj/item/integrated_circuit/input/beaker_connector/attackby_react(var/obj/item/reagent_containers/I, var/mob/living/user)
 	//Check if it truly is a reagent container
 	if(!istype(I,/obj/item/reagent_containers/glass/beaker))
-		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
+		to_chat(user,SPAN_WARNING("The [I.name] doesn't seem to fit in here."))
 		return
 
 	//Check if there is no other beaker already inside
 	if(current_beaker)
-		to_chat(user,"<span class='notice'>There is already a reagent container inside.</span>")
+		to_chat(user,SPAN_NOTICE("There is already a reagent container inside."))
 		return
 
 	if(!user.attempt_insert_item_for_installation(I, src))
@@ -295,7 +295,7 @@
 	//The current beaker is the one we just attached, its location is inside the circuit
 	current_beaker = I
 
-	to_chat(user,"<span class='warning'>You put the [I.name] inside the beaker connector.</span>")
+	to_chat(user,SPAN_WARNING("You put the [I.name] inside the beaker connector."))
 
 	//Set the pin to a weak reference of the current beaker
 	push_vol()
@@ -312,11 +312,11 @@
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
 	//Check if no beaker attached
 	if(!current_beaker)
-		to_chat(user, "<span class='notice'>There is currently no beaker attached.</span>")
+		to_chat(user, SPAN_NOTICE("There is currently no beaker attached."))
 		return
 
 	//Remove beaker and put in user's hands/location
-	to_chat(user, "<span class='notice'>You take [current_beaker] out of the beaker connector.</span>")
+	to_chat(user, SPAN_NOTICE("You take [current_beaker] out of the beaker connector."))
 	user.put_in_hands(current_beaker)
 	current_beaker = null
 	//Remove beaker reference

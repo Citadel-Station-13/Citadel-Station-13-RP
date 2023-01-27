@@ -44,7 +44,7 @@
 			random = random / 10
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
-		to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
+		to_chat(src, SPAN_NOTICE("[icon2html(origin_atom, src)] Received text message from [origin_atom]: <b>\"[text]\"</b>"))
 		src << 'sound/machines/defib_safetyOff.ogg'
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
@@ -89,7 +89,7 @@
 		L = loc
 
 	if(L)
-		to_chat(L, "<span class='notice'>[icon2html(src, world)] Message from [who].</span>")
+		to_chat(L, SPAN_NOTICE("[icon2html(src, world)] Message from [who]."))
 
 // Verb: text_communicator()
 // Parameters: None
@@ -100,7 +100,7 @@
 	set desc = "If there is a communicator available, send a text message to it."
 
 	if(SSticker.current_state < GAME_STATE_PLAYING)
-		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
 	if (!src.stat)
@@ -111,7 +111,7 @@
 
 	for(var/mob/living/L in GLOB.mob_list) //Simple check so you don't have dead people calling.
 		if(src.client.prefs.real_name == L.real_name)
-			to_chat(src, "<span class='danger'>Your identity is already present in the game world.  Please load in a different character first.</span>")
+			to_chat(src, SPAN_DANGER("Your identity is already present in the game world.  Please load in a different character first."))
 			return
 
 	var/obj/machinery/exonet_node/E = get_exonet_node()
@@ -127,7 +127,7 @@
 		choices.Add(comm)
 
 	if(!choices.len)
-		to_chat(src, "<span class='danger'>There are no available communicators, sorry.</span>")
+		to_chat(src, SPAN_DANGER("There are no available communicators, sorry."))
 		return
 
 	var/choice = input(src,"Send a text message to whom?") as null|anything in choices
@@ -138,7 +138,7 @@
 		if(text_message && O.exonet)
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
-			to_chat(src, "<span class='notice'>You have sent '[text_message]' to [chosen_communicator].</span>")
+			to_chat(src, SPAN_NOTICE("You have sent '[text_message]' to [chosen_communicator]."))
 			exonet_messages.Add("<b>To [chosen_communicator]:</b><br>[text_message]")
 			log_pda("(DCOMM: [src]) sent \"[text_message]\" to [chosen_communicator]", src)
 			for(var/mob/M in GLOB.player_list)

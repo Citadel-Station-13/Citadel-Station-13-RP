@@ -61,7 +61,7 @@
 /mob/living/simple_mob/animal/gutshank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = shank_gland.trans_id_to(G, "water", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, "<font color='red'>The [O] is full.</font>")
@@ -91,5 +91,5 @@
 
 /mob/living/simple_mob/animal/gutshank/proc/blood_drink(var/mob/living/carbon/human/M)
 	if(istype(M))
-		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
+		to_chat(M, SPAN_WARNING("The [src] pierces your flesh! You feel a sickening suction!"))
 		M.vessel.remove_reagent("blood",rand(10,20))

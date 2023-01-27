@@ -72,12 +72,12 @@
 		var/pressure =  environment ? environment.return_pressure() : 0
 
 		if (!power_supply || power_supply.charge < charge_cost)
-			user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>*click*</span>")
+			user.visible_message(SPAN_WARNING("*click*"), SPAN_DANGER("*click*"))
 			playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 			return 0
 		if(pressure >= 10)
 			if (safetycatch) //weapons with a pressure regulator simply won't fire
-				user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>The pressure-interlock prevents you from firing \the [src].</span>")
+				user.visible_message(SPAN_WARNING("*click*"), SPAN_DANGER("The pressure-interlock prevents you from firing \the [src]."))
 				playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 				return 0
 			else if (prob(min(pressure, 100))) //pressure% chance of failing
@@ -89,10 +89,10 @@
 
 /obj/item/gun/energy/particle/proc/pressuremalfunction(severity, var/mob/user, var/turf/T)
 	if (severity <= 10) // just doesn't fire. 10% chance in 100 atmo.
-		user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>\The [src] jams.</span>")
+		user.visible_message(SPAN_WARNING("*click*"), SPAN_DANGER("\The [src] jams."))
 		playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 	else if (severity <= 60) //50% chance of fizzling and wasting a shot
-		user.visible_message("<span class='warning'>\The [user] fires \the [src], but the shot fizzles in the air!</span>", "<span class='danger'>You fire \the [src], but the shot fizzles in the air!</span>")
+		user.visible_message(SPAN_WARNING("\The [user] fires \the [src], but the shot fizzles in the air!"), SPAN_DANGER("You fire \the [src], but the shot fizzles in the air!"))
 		power_supply.charge -= charge_cost
 		playsound(src.loc, fire_sound, 100, 1)
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
@@ -100,14 +100,14 @@
 		sparks.start()
 		update_icon()
 	else if (severity <= 80) //20% chance of shorting out and emptying the cell
-		user.visible_message("<span class='warning'>\The [user] pulls the trigger, but \the [src] shorts out!</span>", "<span class='danger'>You pull the trigger, but \the [src] shorts out!</span>")
+		user.visible_message(SPAN_WARNING("\The [user] pulls the trigger, but \the [src] shorts out!"), SPAN_DANGER("You pull the trigger, but \the [src] shorts out!"))
 		power_supply.charge = 0
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(2, 1, T)
 		sparks.start()
 		update_icon()
 	else if (severity <= 90) //10% chance of breaking the gun
-		user.visible_message("<span class='warning'>\The [user] pulls the trigger, but \the [src] erupts in a shower of sparks!</span>", "<span class='danger'>You pull the trigger, but \the [src] bursts into a shower of sparks!</span>")
+		user.visible_message(SPAN_WARNING("\The [user] pulls the trigger, but \the [src] erupts in a shower of sparks!"), SPAN_DANGER("You pull the trigger, but \the [src] bursts into a shower of sparks!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(2, 1, T)
 		sparks.start()
@@ -119,12 +119,12 @@
 		charge_cost += charge_cost
 		update_icon()
 	else if (severity <= 150) // 10% chance of exploding
-		user.visible_message("<span class='danger'>\The [user] pulls the trigger, but \the [src] explodes!</span>", "<span class='danger'>The [src] explodes!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] pulls the trigger, but \the [src] explodes!"), SPAN_DANGER("The [src] explodes!"))
 		log_and_message_admins("blew themself up with a particle gun.", user)
 		explosion(T, -1, -1, 1, 1)
 		qdel(src)
 	else //can only possibly happen if you're dumb enough to fire it in an OVER pressure environment, over 150kPa
-		user.visible_message("<span class='danger'>\The [user] pulls the trigger, but \the [src] explodes!</span>", "<span class='danger'>The [src] explodes catastrophically!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] pulls the trigger, but \the [src] explodes!"), SPAN_DANGER("The [src] explodes catastrophically!"))
 		log_and_message_admins("blew their dumb ass up with a particle gun.", user)
 		explosion(T, -1, 1, 2, 2)
 		qdel(src)
@@ -136,20 +136,20 @@
 /obj/item/gun/energy/particle/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/pressurelock))
 		if(safetycatch)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_safety].</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has a [attached_safety]."))
 			return
 		if(!user.attempt_insert_item_for_installation(A, src))
 			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert \the [A] into \the [src]."))
 		attached_safety = A
 		safetycatch = 1
 		return
 
 	if(istype(A, /obj/item/tool/screwdriver))
 		if(safetycatch && attached_safety)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_safety] from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You begin removing \the [attached_safety] from \the [src]."))
 			if(do_after(user, 25))
-				to_chat(user, "<span class='notice'>You remove \the [attached_safety] from \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You remove \the [attached_safety] from \the [src]."))
 				user.put_in_hands_or_drop(attached_safety)
 				safetycatch = 0
 				attached_safety = null

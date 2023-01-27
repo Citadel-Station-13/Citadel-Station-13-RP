@@ -22,7 +22,7 @@
 	power_channel = ENVIRON
 
 /obj/machinery/keycard_auth/attack_ai(mob/user as mob)
-	to_chat (user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
+	to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)

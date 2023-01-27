@@ -91,7 +91,7 @@ Protectiveness | Armor %
 	if(!material)
 		return
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	T.visible_message(SPAN_DANGER("\The [src] [material.destruction_desc]!"))
 	if(istype(loc, /mob/living))
 		var/mob/living/M = loc
 		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
@@ -107,11 +107,11 @@ Protectiveness | Armor %
 		return ..()
 
 	if(material.negation && prob(material.negation)) // Strange and Alien materials, or just really strong materials.
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
+		user.visible_message(SPAN_DANGER("\The [src] completely absorbs [attack_text]!"))
 		return TRUE
 
 	if(material.spatial_instability && prob(material.spatial_instability))
-		user.visible_message("<span class='danger'>\The [src] flashes [user] clear of [attack_text]!</span>")
+		user.visible_message(SPAN_DANGER("\The [src] flashes [user] clear of [attack_text]!"))
 		var/list/turfs = new/list()
 		for(var/turf/T in orange(round(material.spatial_instability / 10) + 1, user))
 			if(istype(T,/turf/space)) continue
@@ -143,7 +143,7 @@ Protectiveness | Armor %
 			if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 				reflectchance /= 2
 			if(P.starting && prob(reflectchance))
-				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+				visible_message(SPAN_DANGER("\The [user]'s [src.name] reflects [attack_text]!"))
 
 				// Find a turf near or on the original location to bounce to
 				var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
@@ -223,23 +223,23 @@ Protectiveness | Armor %
 	if(istype(O, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/S = O
 		if(wired)
-			to_chat(user, "<span class='warning'>This already has enough wires on it.</span>")
+			to_chat(user, SPAN_WARNING("This already has enough wires on it."))
 			return
 		if(S.use(20))
-			to_chat(user, "<span class='notice'>You attach several wires to \the [src].  Now it needs another plate.</span>")
+			to_chat(user, SPAN_NOTICE("You attach several wires to \the [src].  Now it needs another plate."))
 			wired = TRUE
 			icon_state = "[initial(icon_state)]_wired"
 			return
 		else
-			to_chat(user, "<span class='notice'>You need more wire for that.</span>")
+			to_chat(user, SPAN_NOTICE("You need more wire for that."))
 			return
 	if(istype(O, /obj/item/material/armor_plating))
 		var/obj/item/material/armor_plating/second_plate = O
 		if(!wired && !second_plate.wired)
-			to_chat(user, "<span class='warning'>You need something to hold the two pieces of plating together.</span>")
+			to_chat(user, SPAN_WARNING("You need something to hold the two pieces of plating together."))
 			return
 		if(second_plate.material != src.material)
-			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
+			to_chat(user, SPAN_WARNING("Both plates need to be the same type of material."))
 			return
 		if(!user.attempt_void_item_for_installation(src))
 			return
@@ -271,14 +271,14 @@ Protectiveness | Armor %
 	if(istype(O, /obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
-			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
+			to_chat(user, SPAN_NOTICE("You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger."))
 			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(loc, S.material.name)
 			user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SILENT | INV_OP_DELETING)
 			user.put_in_hands_or_drop(helmet)
 			qdel(src)
 			return
 		else
-			to_chat(user, "<span class='warning'>You don't have enough material to build a helmet!</span>")
+			to_chat(user, SPAN_WARNING("You don't have enough material to build a helmet!"))
 	else
 		..()
 

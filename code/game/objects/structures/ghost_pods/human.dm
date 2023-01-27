@@ -44,11 +44,11 @@
 	H.adjustCloneLoss(rand(1,5))
 	if(M.mind)
 		M.mind.transfer_to(H)
-	to_chat(M, "<span class='notice'>You are a [occupant_type]!</span>")
+	to_chat(M, SPAN_NOTICE("You are a [occupant_type]!"))
 	if(make_antag)
-		to_chat(M, "<span class='warning'>Your intent may not be completely beneficial.</span>")
+		to_chat(M, SPAN_WARNING("Your intent may not be completely beneficial."))
 	H.ckey = M.ckey
-	visible_message("<span class='warning'>As \the [src] opens, the pipes on \the [src] surge, before it grows dark.</span>")
+	visible_message(SPAN_WARNING("As \the [src] opens, the pipes on \the [src] surge, before it grows dark."))
 	log_and_message_admins("successfully opened \a [src] and became a [occupant_type].")
 
 	var/list/uniform_options
@@ -170,11 +170,11 @@
 	H.adjustCloneLoss(rand(1,5))
 	if(M.mind)
 		M.mind.transfer_to(H)
-	to_chat(M, "<span class='notice'>You are a [occupant_type]!</span>")
+	to_chat(M, SPAN_NOTICE("You are a [occupant_type]!"))
 	if(make_antag)
-		to_chat(M, "<span class='warning'>Your intent may not be completely beneficial.</span>")
+		to_chat(M, SPAN_WARNING("Your intent may not be completely beneficial."))
 	H.ckey = M.ckey
-	visible_message("<span class='warning'>As \the [src] opens, the pipes on \the [src] surge, before it grows dark.</span>")
+	visible_message(SPAN_WARNING("As \the [src] opens, the pipes on \the [src] surge, before it grows dark."))
 	log_and_message_admins("successfully opened \a [src] and got a [occupant_type].")
 
 	var/list/uniform_options

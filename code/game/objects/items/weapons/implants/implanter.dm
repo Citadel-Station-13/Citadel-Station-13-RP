@@ -12,7 +12,7 @@
 
 /obj/item/implanter/attack_self(var/mob/user)
 	active = !active
-	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You [active ? "" : "de"]activate \the [src]."))
 	update()
 
 /obj/item/implanter/verb/remove_implant(var/mob/user)
@@ -24,7 +24,7 @@
 		return
 	imp.loc = get_turf(src)
 	user.put_in_hands(imp)
-	to_chat(user, "<span class='notice'>You remove \the [imp] from \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You remove \the [imp] from \the [src]."))
 	name = "implanter"
 	imp = null
 	update()
@@ -44,7 +44,7 @@
 		return ..()
 	if(active)
 		if (imp)
-			target.visible_message("<span class='warning'>[user] is attempting to implant [target].</span>")
+			target.visible_message(SPAN_WARNING("[user] is attempting to implant [target]."))
 
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(target)
@@ -52,7 +52,7 @@
 			var/turf/T1 = get_turf(target)
 			if (T1 && ((target == user) || do_after(user, 50)))
 				if(user && target && (get_turf(target) == T1) && src && src.imp)
-					target.visible_message("<span class='warning'>[target] has been implanted by [user].</span>")
+					target.visible_message(SPAN_WARNING("[target] has been implanted by [user]."))
 
 					add_attack_logs(user,target,"Implanted with [imp.name] using [name]")
 
@@ -65,7 +65,7 @@
 					src.imp = null
 					update()
 	else
-		to_chat(user, "<span class='warning'>You need to activate \the [src.name] first.</span>")
+		to_chat(user, SPAN_WARNING("You need to activate \the [src.name] first."))
 
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"
@@ -120,15 +120,15 @@
 	if(!proximity)
 		return
 	if(!active)
-		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
+		to_chat(user, SPAN_WARNING("Activate \the [src.name] first."))
 		return
 	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
-			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
+			to_chat(user, SPAN_WARNING("Something is already scanned inside the implant!"))
 			return
 		if(istype(I, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
+			to_chat(user, SPAN_WARNING("You can't store [I] in this!"))
 			return
 		c.scanned = I
 		I.forceMove(src)

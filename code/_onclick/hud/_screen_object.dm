@@ -212,7 +212,7 @@
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
 					if(C.legcuffed)
-						to_chat(C, "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
+						to_chat(C, SPAN_NOTICE("You are legcuffed! You cannot run until you get [C.legcuffed] removed!"))
 						C.m_intent = "walk"	//Just incase
 						C.hud_used.move_intent.icon_state = "walking"
 						return 1
@@ -246,7 +246,7 @@
 				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
 					if(C.internal)
 						C.internal = null
-						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
+						to_chat(C, SPAN_NOTICE("No longer running on internals."))
 						if(C.internals)
 							C.internals.icon_state = "internal0"
 					else
@@ -258,7 +258,7 @@
 								no_mask = 1
 
 						if(no_mask)
-							to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
+							to_chat(C, SPAN_NOTICE("You are not wearing a suitable mask or helmet."))
 							return 1
 						else
 							// groan. lazy time.
@@ -312,11 +312,11 @@
 								if(!istype(tanks[index], /obj/item/tank))
 									continue
 								C.internal = tanks[index]
-								to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] on your [locnames[index]]</span>")
+								to_chat(C, SPAN_NOTICE("You are now running on internals from [tanks[index]] on your [locnames[index]]"))
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 								return
-							to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
+							to_chat(C, SPAN_WARNING("You don't have an internals tank."))
 							return
 		if("act_intent")
 			usr.a_intent_change(INTENT_HOTKEY_RIGHT)
@@ -469,46 +469,46 @@
 		if("darkness")
 			var/turf/T = get_turf(usr)
 			var/darkness = round(1 - T.get_lumcount(),0.1)
-			to_chat(usr,"<span class='notice'><b>Darkness:</b> [darkness]</span>")
+			to_chat(usr,SPAN_NOTICE("<b>Darkness:</b> [darkness]"))
 		if("energy")
 			var/mob/living/simple_mob/shadekin/SK = usr
 			if(istype(SK))
-				to_chat(usr,"<span class='notice'><b>Energy:</b> [SK.energy] ([SK.dark_gains])</span>")
+				to_chat(usr,SPAN_NOTICE("<b>Energy:</b> [SK.energy] ([SK.dark_gains])"))
 			var/mob/living/carbon/human/H = usr
 			if(istype(H) && istype(H.species, /datum/species/shadekin))
-				to_chat(usr,"<span class='notice'><b>Energy:</b> [H.shadekin_get_energy(H)]</span>")
+				to_chat(usr,SPAN_NOTICE("<b>Energy:</b> [H.shadekin_get_energy(H)]"))
 
 		if("danger level")
 			var/mob/living/carbon/human/H = usr
 			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
 				if(H.feral > 50)
-					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
+					to_chat(usr, SPAN_WARNING("You are currently <b>completely feral.</b>"))
 				else if(H.feral > 10)
-					to_chat(usr, "<span class='warning'>You are currently <b>crazed and confused.</b></span>")
+					to_chat(usr, SPAN_WARNING("You are currently <b>crazed and confused.</b>"))
 				else if(H.feral > 0)
-					to_chat(usr, "<span class='warning'>You are currently <b>acting on instinct.</b></span>")
+					to_chat(usr, SPAN_WARNING("You are currently <b>acting on instinct.</b>"))
 				else
-					to_chat(usr, "<span class='notice'>You are currently <b>calm and collected.</b></span>")
+					to_chat(usr, SPAN_NOTICE("You are currently <b>calm and collected.</b>"))
 				if(H.feral > 0)
 					var/feral_passing = TRUE
 					if(H.traumatic_shock > min(60, H.nutrition/10))
-						to_chat(usr, "<span class='warning'>Your pain prevents you from regaining focus.</span>")
+						to_chat(usr, SPAN_WARNING("Your pain prevents you from regaining focus."))
 						feral_passing = FALSE
 					if(H.feral + H.nutrition < 150)
-						to_chat(usr, "<span class='warning'>Your hunger prevents you from regaining focus.</span>")
+						to_chat(usr, SPAN_WARNING("Your hunger prevents you from regaining focus."))
 						feral_passing = FALSE
 					if(H.jitteriness >= 100)
-						to_chat(usr, "<span class='warning'>Your jitterness prevents you from regaining focus.</span>")
+						to_chat(usr, SPAN_WARNING("Your jitterness prevents you from regaining focus."))
 						feral_passing = FALSE
 					if(feral_passing)
 						var/turf/T = get_turf(H)
 						if(T.get_lumcount() <= 0.1)
-							to_chat(usr, "<span class='notice'>You are slowly calming down in darkness' safety...</span>")
+							to_chat(usr, SPAN_NOTICE("You are slowly calming down in darkness' safety..."))
 						else
-							to_chat(usr, "<span class='notice'>You are slowly calming down... But safety of darkness is much preferred.</span>")
+							to_chat(usr, SPAN_NOTICE("You are slowly calming down... But safety of darkness is much preferred."))
 				else
 					if(H.nutrition < 150)
-						to_chat(usr, "<span class='warning'>Your hunger is slowly making you unstable.</span>")
+						to_chat(usr, SPAN_WARNING("Your hunger is slowly making you unstable."))
 
 		else
 			return 0

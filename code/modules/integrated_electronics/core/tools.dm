@@ -21,28 +21,28 @@
 
 /obj/item/integrated_electronics/wirer/proc/wire(var/datum/integrated_io/io, mob/user)
 	if(!io.holder.assembly)
-		to_chat(user, "<span class='warning'>\The [io.holder] needs to be secured inside an assembly first.</span>")
+		to_chat(user, SPAN_WARNING("\The [io.holder] needs to be secured inside an assembly first."))
 		return
 	switch(mode)
 		if(WIRE)
 			selected_io = io
-			to_chat(user, "<span class='notice'>You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
+			to_chat(user, SPAN_NOTICE("You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel."))
 			mode = WIRING
 			update_icon()
 		if(WIRING)
 			if(io == selected_io)
-				to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
+				to_chat(user, SPAN_WARNING("Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless."))
 				return
 			if(io.io_type != selected_io.io_type)
 				to_chat(user, "<span class='warning'>Those two types of channels are incompatible.  The first is a [selected_io.io_type], \
 				while the second is a [io.io_type].</span>")
 				return
 			if(io.holder.assembly && io.holder.assembly != selected_io.holder.assembly)
-				to_chat(user, "<span class='warning'>Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly.</span>")
+				to_chat(user, SPAN_WARNING("Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly."))
 				return
 			selected_io.connect_pin(io)
 
-			to_chat(user, "<span class='notice'>You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name].</span>")
+			to_chat(user, SPAN_NOTICE("You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name]."))
 			mode = WIRE
 			update_icon()
 			selected_io.holder.interact(user) // This is to update the UI.
@@ -51,10 +51,10 @@
 		if(UNWIRE)
 			selected_io = io
 			if(!io.linked.len)
-				to_chat(user, "<span class='warning'>There is nothing connected to \the [selected_io] data channel.</span>")
+				to_chat(user, SPAN_WARNING("There is nothing connected to \the [selected_io] data channel."))
 				selected_io = null
 				return
-			to_chat(user, "<span class='notice'>You prepare to detach a data wire from \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
+			to_chat(user, SPAN_NOTICE("You prepare to detach a data wire from \the [selected_io.holder]'s [selected_io.name] data channel."))
 			mode = UNWIRING
 			update_icon()
 			return
@@ -83,18 +83,18 @@
 			mode = UNWIRE
 		if(WIRING)
 			if(selected_io)
-				to_chat(user, "<span class='notice'>You decide not to wire the data channel.</span>")
+				to_chat(user, SPAN_NOTICE("You decide not to wire the data channel."))
 			selected_io = null
 			mode = WIRE
 		if(UNWIRE)
 			mode = WIRE
 		if(UNWIRING)
 			if(selected_io)
-				to_chat(user, "<span class='notice'>You decide not to disconnect the data channel.</span>")
+				to_chat(user, SPAN_NOTICE("You decide not to disconnect the data channel."))
 			selected_io = null
 			mode = UNWIRE
 	update_icon()
-	to_chat(user, "<span class='notice'>You set \the [src] to [mode].</span>")
+	to_chat(user, SPAN_NOTICE("You set \the [src] to [mode]."))
 
 #undef WIRE
 #undef WIRING
@@ -126,14 +126,14 @@
 			new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
 			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
-				to_chat(user, "<span class='notice'>You set \the [src]'s memory to \"[new_data]\".</span>")
+				to_chat(user, SPAN_NOTICE("You set \the [src]'s memory to \"[new_data]\"."))
 		if("number")
 			accepting_refs = FALSE
 			copy_values = FALSE
 			new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
 			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
-				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
+				to_chat(user, SPAN_NOTICE("You set \the [src]'s memory to [new_data]."))
 		if("ref")
 			accepting_refs = TRUE
 			copy_values = FALSE
@@ -148,12 +148,12 @@
 			data_to_write = null
 			accepting_refs = FALSE
 			copy_values = FALSE
-			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
+			to_chat(user, SPAN_NOTICE("You set \the [src]'s memory to absolutely nothing."))
 
 /obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
 	if(accepting_refs && proximity)
 		data_to_write = WEAKREF(target)
-		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
+		visible_message(SPAN_NOTICE("[user] slides \a [src]'s over \the [target]."))
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
 		accepting_refs = FALSE
@@ -164,7 +164,7 @@
 		//If the debugger is set to copy, copy the data in the pin onto it
 		if(copy_values)
 			data_to_write = io.data
-			to_chat(user, "<span class='notice'>You let the debugger copy the data.</span>")
+			to_chat(user, SPAN_NOTICE("You let the debugger copy the data."))
 			copy_values = FALSE
 			return
 
@@ -176,12 +176,12 @@
 			var/datum/weakref/w = data_to_write
 			var/atom/A = w.resolve()
 			data_to_show = A.name
-		to_chat(user, "<span class='notice'>You write '[data_to_write ? data_to_show : "NULL"]' to the '[io]' pin of \the [io.holder].</span>")
+		to_chat(user, SPAN_NOTICE("You write '[data_to_write ? data_to_show : "NULL"]' to the '[io]' pin of \the [io.holder]."))
 
 	//If the pin can only be pulsed
 	else if(io.io_type == PULSE_CHANNEL)
 		io.holder.check_then_do_work(io.ord, ignore_power = TRUE)
-		to_chat(user, "<span class='notice'>You pulse \the [io.holder]'s [io].</span>")
+		to_chat(user, SPAN_NOTICE("You pulse \the [io.holder]'s [io]."))
 
 	io.holder.interact(user) // This is to update the UI.
 
@@ -200,7 +200,7 @@
 /obj/item/multitool/attack_self(mob/user)
 	if(selected_io)
 		selected_io = null
-		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
+		to_chat(user, SPAN_NOTICE("You clear the wired connection from the multitool."))
 	else
 		..()
 	update_icon()
@@ -223,41 +223,41 @@
 
 /obj/item/multitool/proc/wire(var/datum/integrated_io/io, mob/user)
 	if(!io.holder.assembly)
-		to_chat(user, "<span class='warning'>\The [io.holder] needs to be secured inside an assembly first.</span>")
+		to_chat(user, SPAN_WARNING("\The [io.holder] needs to be secured inside an assembly first."))
 		return
 
 	if(selected_io)
 		if(io == selected_io)
-			to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
+			to_chat(user, SPAN_WARNING("Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless."))
 			return
 		if(io.io_type != selected_io.io_type)
 			to_chat(user, "<span class='warning'>Those two types of channels are incompatable.  The first is a [selected_io.io_type], \
 			while the second is a [io.io_type].</span>")
 			return
 		if(io.holder.assembly && io.holder.assembly != selected_io.holder.assembly)
-			to_chat(user, "<span class='warning'>Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly.</span>")
+			to_chat(user, SPAN_WARNING("Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly."))
 			return
 		selected_io.linked |= io
 		io.linked |= selected_io
 
-		to_chat(user, "<span class='notice'>You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name].</span>")
+		to_chat(user, SPAN_NOTICE("You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name]."))
 		selected_io.holder.interact(user) // This is to update the UI.
 		selected_io = null
 
 	else
 		selected_io = io
-		to_chat(user, "<span class='notice'>You link \the multitool to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
+		to_chat(user, SPAN_NOTICE("You link \the multitool to \the [selected_io.holder]'s [selected_io.name] data channel."))
 
 	update_icon()
 
 
 /obj/item/multitool/proc/unwire(var/datum/integrated_io/io1, var/datum/integrated_io/io2, mob/user)
 	if(!io1.linked.len || !io2.linked.len)
-		to_chat(user, "<span class='warning'>There is nothing connected to the data channel.</span>")
+		to_chat(user, SPAN_WARNING("There is nothing connected to the data channel."))
 		return
 
 	if(!(io1 in io2.linked) || !(io2 in io1.linked) )
-		to_chat(user, "<span class='warning'>These data pins aren't connected!</span>")
+		to_chat(user, SPAN_WARNING("These data pins aren't connected!"))
 		return
 	else
 		io1.linked.Remove(io2)
@@ -270,7 +270,7 @@
 /obj/item/multitool/afterattack(atom/target, mob/living/user, proximity)
 	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && proximity)
 		weakref_wiring = WEAKREF(target)
-		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
+		visible_message(SPAN_NOTICE("[user] slides \a [src]'s over \the [target]."))
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
 		accepting_refs = 0

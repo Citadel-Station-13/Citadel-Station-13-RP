@@ -30,7 +30,7 @@
 		to_chat(user,"<span class = 'warning'>You can't fire while \the [src] transforming!</span>")
 		return
 	if(!((wallhack && (get_dist(A, get_turf(user)) <= range)) || (A in view(get_turf(user), range))))
-		to_chat(user, "<span class='warning'>The target is either out of range, or you couldn't see it clearly enough to lock on!</span>")
+		to_chat(user, SPAN_WARNING("The target is either out of range, or you couldn't see it clearly enough to lock on!"))
 		return
 	if((current_fire - last_fire) <= cooldown)
 		to_chat(user,"<span class = 'warning'>\The [src] is recharging...</span>")
@@ -45,13 +45,13 @@
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
 	if(get_area(A).area_flags & AREA_FLAG_BLUE_SHIELDED)
-		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
+		to_chat(user, SPAN_WARNING("The target area protected by bluespace shielding!"))
 		return
 
 	last_fire = current_fire
 	playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 
-	user.visible_message("<span class='warning'>[user] fires \the [src]!</span>","<span class='warning'>You fire \the [src]!</span>")
+	user.visible_message(SPAN_WARNING("[user] fires \the [src]!"),SPAN_WARNING("You fire \the [src]!"))
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(4, 1, A)

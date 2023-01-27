@@ -281,5 +281,5 @@
 
 /obj/item/cell/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
+	user.visible_message(SPAN_DANGER("\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide."))
 	return (FIRELOSS)

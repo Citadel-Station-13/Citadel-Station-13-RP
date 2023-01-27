@@ -30,7 +30,7 @@
 	if(user.next_move > world.time)
 		return
 	user.setClickCooldown(1 SECOND)
-	to_chat(user, "<span class='notice'>Click.</span>")
+	to_chat(user, SPAN_NOTICE("Click."))
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
 /obj/item/pen/blue
@@ -53,7 +53,7 @@
 	var/colors = list("black","blue","red")
 
 /obj/item/pen/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>Click.</span>")
+	to_chat(user, SPAN_NOTICE("Click."))
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 	return
 
@@ -68,22 +68,22 @@
 	else
 		icon_state = "pen_[colour]"
 
-	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
+	to_chat(user, SPAN_NOTICE("Changed color to '[colour].'"))
 
 /obj/item/pen/click
 	name = "clicker pen"
 
 /obj/item/pen/click/attack_self(mob/user as mob)
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> clicks [src] idly."),SPAN_NOTICE("You click [src] idly."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
 	else if (user.a_intent == INTENT_HARM)
-		user.visible_message("<span class='warning'><b>\The [user]</b> clicks [src] angrily!</span>","<span class='warning'>You click [src] angrily!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> clicks [src] angrily!"),SPAN_WARNING("You click [src] angrily!"))
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
 	else if (user.a_intent == INTENT_GRAB)
-		user.visible_message("<span class='warning'><b>\The [user]</b> spins [src] in their fingers!</span>","<span class='warning'>You spin [src] in your fingers!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> spins [src] in their fingers!"),SPAN_WARNING("You spin [src] in your fingers!"))
 	else
-		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] rhythmically.</span>","<span class='notice'>You click [src] rhythmically.</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> clicks [src] rhythmically."),SPAN_NOTICE("You click [src] rhythmically."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
 
 /obj/item/pen/invisible
@@ -154,7 +154,7 @@
 	else
 		activate(user)
 
-	to_chat(user, "<span class='notice'>You [active ? "de" : ""]activate \the [src]'s blade.</span>")
+	to_chat(user, SPAN_NOTICE("You [active ? "de" : ""]activate \the [src]'s blade."))
 
 /obj/item/pen/blade/proc/activate(mob/living/user)
 	if(active)
@@ -287,7 +287,7 @@
 				colour = COLOR_WHITE
 			else
 				colour = COLOR_BLACK
-		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
+		to_chat(usr, SPAN_INFO("You select the [lowertext(selected_type)] ink container."))
 
 
 /*

@@ -128,7 +128,7 @@ var/list/wrapped_species_by_ref = list()
 		valid_facialhairstyles += facialhairstyle
 
 
-	visible_message("<span class='notice'>\The [src]'s form contorts subtly.</span>")
+	visible_message(SPAN_NOTICE("\The [src]'s form contorts subtly."))
 	if(valid_hairstyles.len)
 		var/new_hair = input("Select a hairstyle.", "Shapeshifter Hair") as null|anything in valid_hairstyles
 		if(!new_hair)
@@ -163,7 +163,7 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_gender_identity)
 		return
 
-	visible_message("<span class='notice'>\The [src]'s form contorts subtly.</span>")
+	visible_message(SPAN_NOTICE("\The [src]'s form contorts subtly."))
 	change_gender(new_gender)
 	change_gender_identity(new_gender_identity)
 
@@ -189,7 +189,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	wrapped_species_by_ref["\ref[src]"] = new_species
-	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a [new_species]!</span>")
+	visible_message(SPAN_NOTICE("\The [src] shifts and contorts, taking the form of \a [new_species]!"))
 	regenerate_icons()
 
 /mob/living/carbon/human/proc/shapeshifter_select_colour()

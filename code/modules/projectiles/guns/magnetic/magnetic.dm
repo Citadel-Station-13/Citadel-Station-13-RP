@@ -68,46 +68,46 @@
 
 /obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
 	if(loaded)
-		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
+		to_chat(user, SPAN_NOTICE("It has \a [loaded] loaded."))
 
 /obj/item/gun/magnetic/examine(var/mob/user)
 	. = ..()
 	show_ammo(user)
 
 	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+		. += SPAN_NOTICE("The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.")
 	if(capacitor)
-		. += "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>"
+		. += SPAN_NOTICE("The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.")
 
 	if(!cell || !capacitor)
-		. += "<span class='notice'>The capacitor charge indicator is blinking <font color ='[COLOR_RED]'>red</font>. Maybe you should check the cell or capacitor.</span>"
+		. += SPAN_NOTICE("The capacitor charge indicator is blinking <font color ='[COLOR_RED]'>red</font>. Maybe you should check the cell or capacitor.")
 	else
 		if(capacitor.charge < power_cost)
-			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_ORANGE]'>amber</font>.</span>"
+			. += SPAN_NOTICE("The capacitor charge indicator is <font color ='[COLOR_ORANGE]'>amber</font>.")
 		else
-			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
+			. += SPAN_NOTICE("The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.")
 
 /obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
 
 	if(removable_components)
 		if(istype(thing, /obj/item/cell))
 			if(cell)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has \a [cell] installed."))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			cell = thing
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
-			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] slots \the [cell] into \the [src]."))
 			update_icon()
 			return
 
 		if(thing.is_screwdriver())
 			if(!capacitor)
-				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] has no capacitor installed."))
 				return
 			user.grab_item_from_interacted_with(capacitor, src)
-			user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] unscrews \the [capacitor] from \the [src]."))
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 			capacitor = null
 			update_icon()
@@ -115,21 +115,21 @@
 
 		if(istype(thing, /obj/item/stock_parts/capacitor))
 			if(capacitor)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [capacitor] installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has \a [capacitor] installed."))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			capacitor = thing
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			power_per_tick = (power_cost*0.15) * capacitor.rating
-			user.visible_message("<span class='notice'>\The [user] slots \the [capacitor] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] slots \the [capacitor] into \the [src]."))
 			update_icon()
 			return
 
 	if(istype(thing, load_type))
 
 		if(loaded)
-			to_chat(user, "<span class='warning'>\The [src] already has \a [loaded] loaded.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] already has \a [loaded] loaded."))
 			return
 
 		// This is not strictly necessary for the magnetic gun but something using
@@ -143,7 +143,7 @@
 			loaded = new load_type(src, 1)
 			ammo.use(1)
 
-		user.visible_message("<span class='notice'>\The [user] loads \the [src] with \the [loaded].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] loads \the [src] with \the [loaded]."))
 		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return
@@ -163,7 +163,7 @@
 		if(removing)
 			removing.forceMove(get_turf(src))
 			user.put_in_hands(removing)
-			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] removes \the [removing] from \the [src]."))
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			update_icon()
 			return
@@ -187,7 +187,7 @@
 
 	if(gun_unreliable && prob(gun_unreliable))
 		spawn(3) // So that it will still fire - considered modifying Fire() to return a value but burst fire makes that annoying.
-			visible_message("<span class='danger'>\The [src] explodes with the force of the shot!</span>")
+			visible_message(SPAN_DANGER("\The [src] explodes with the force of the shot!"))
 			explosion(get_turf(src), -1, 0, 2)
 			qdel(src)
 
@@ -227,19 +227,19 @@
 				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/phoron
 			else if(rod.fuel_type == "supermatter")
 				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/supermatter
-				visible_message("<span class='danger'>The barrel of \the [src] glows a blinding white!</span>")
+				visible_message(SPAN_DANGER("The barrel of \the [src] glows a blinding white!"))
 				spawn(5)
-					visible_message("<span class='danger'>\The [src] begins to rattle, its acceleration chamber collapsing in on itself!</span>")
+					visible_message(SPAN_DANGER("\The [src] begins to rattle, its acceleration chamber collapsing in on itself!"))
 					removable_components = FALSE
 					spawn(15)
-						audible_message("<span class='critical'>\The [src]'s power supply begins to overload as the device crumples!</span>") //Why are you still holding this?
+						audible_message(SPAN_CRITICAL("\The [src]'s power supply begins to overload as the device crumples!")) //Why are you still holding this?
 						playsound(src, 'sound/effects/grillehit.ogg', 10, 1)
 						var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 						var/turf/T = get_turf(src)
 						sparks.set_up(2, 1, T)
 						sparks.start()
 						spawn(15)
-							visible_message("<span class='critical'>\The [src] explodes in a blinding white light!</span>")
+							visible_message(SPAN_CRITICAL("\The [src] explodes in a blinding white light!"))
 							explosion(src.loc, -1, 1, 2, 3)
 							qdel(src)
 			else

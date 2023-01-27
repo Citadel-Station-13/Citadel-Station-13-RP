@@ -2,7 +2,7 @@
 /mob/living/simple_mob/shadekin/proc/phase_shift()
 	var/turf/T = get_turf(src)
 	if(!T.CanPass(src,T) || loc != T)
-		to_chat(src,"<span class='warning'>You can't use that here!</span>")
+		to_chat(src,SPAN_WARNING("You can't use that here!"))
 		return FALSE
 
 	forceMove(T)
@@ -46,7 +46,7 @@
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
 					target.forceMove(vore_selected)
-					to_chat(target,"<span class='warning'>\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
+					to_chat(target,SPAN_WARNING("\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
 
 		// Do this after the potential vore, so we get the belly
 		update_icon()
@@ -122,7 +122,7 @@
 	for(var/mob/living/L in viewed)
 		targets += L
 	if(!targets.len)
-		to_chat(src,"<span class='warning'>Nobody nearby to mend!</span>")
+		to_chat(src,SPAN_WARNING("Nobody nearby to mend!"))
 		return FALSE
 
 	var/mob/living/target = input(src,"Pick someone to mend:","Mend Other") as null|anything in targets
@@ -130,6 +130,6 @@
 		return FALSE
 
 	target.add_modifier(/datum/modifier/shadekin/heal_boop,1 MINUTE)
-	visible_message("<span class='notice'>\The [src] gently places a hand on \the [target]...</span>")
+	visible_message(SPAN_NOTICE("\The [src] gently places a hand on \the [target]..."))
 	face_atom(target)
 	return TRUE

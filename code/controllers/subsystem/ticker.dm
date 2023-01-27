@@ -127,7 +127,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
-	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
+	to_chat(world, SPAN_BOLDNOTICE("Welcome to the pregame lobby!"))
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
 	SEND_SOUND(world, sound('sound/misc/server-ready.ogg', volume = 100))
 	current_state = GAME_STATE_PREGAME
@@ -218,7 +218,7 @@ SUBSYSTEM_DEF(ticker)
 		timeLeft = newtime
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Starting game..."))
 	var/init_start = world.timeofday
 
 	//Create and announce mode
@@ -510,7 +510,7 @@ SUBSYSTEM_DEF(ticker)
 		//call a transfer shuttle vote
 		spawn(50)
 			if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-				to_chat(world, "<span class='danger'>The round has ended!</span>")
+				to_chat(world, SPAN_DANGER("The round has ended!"))
 				round_end_announced = 1
 		if(!SSemergencyshuttle.departed)
 			SSvote.autotransfer()
@@ -520,7 +520,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
-	to_chat(world, "<span class='infoplain'><BR><BR><BR><span class='big bold'>The round has ended.</span></span>")
+	to_chat(world, SPAN_INFOPLAIN("<BR><BR><BR><span class='big bold'>The round has ended.</span>"))
 	log_game("The round has ended.")
 
 	for(var/datum/callback/roundend_callbacks as anything in round_end_events)

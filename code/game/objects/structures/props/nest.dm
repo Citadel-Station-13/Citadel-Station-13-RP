@@ -54,7 +54,7 @@
 		var/mob/living/L = new spawn_choice(spawnpoint)
 		if(den_faction)
 			L.faction = den_faction
-		visible_message("<span class='warning'>\The [L] crawls out of \the [src].</span>")
+		visible_message(SPAN_WARNING("\The [L] crawls out of \the [src]."))
 		den_mobs += L
 		tally++
 

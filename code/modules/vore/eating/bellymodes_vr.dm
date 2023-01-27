@@ -28,7 +28,7 @@
 		if(LAZYLEN(EL))
 			for(var/mob/living/M in contents)
 				if(M.digestable || digest_mode != DM_DIGEST) // don't give digesty messages to indigestible people
-					to_chat(M,"<span class='notice'>[pick(EL)]</span>")
+					to_chat(M,SPAN_NOTICE("[pick(EL)]"))
 
 ///////////////////// Prey Loop Refresh/hack //////////////////////
 	for(var/mob/living/M in contents)
@@ -204,8 +204,8 @@
 				digest_alert_prey = replacetext(digest_alert_prey,"%belly",lowertext(name))
 
 				//Send messages
-				to_chat(owner,"<span class='notice'>" + digest_alert_owner + "</span>")
-				to_chat(M,"<span class='notice'>" + digest_alert_prey + "</span>")
+				to_chat(owner,SPAN_NOTICE("" + digest_alert_owner + ""))
+				to_chat(M,SPAN_NOTICE("" + digest_alert_prey + ""))
 
 				play_sound = pick(pred_death)
 				if(M && M.client && M.is_preference_enabled(/datum/client_preference/digestion_noises))
@@ -276,8 +276,8 @@
 
 			if(M.absorbed && owner.nutrition >= 100)
 				M.absorbed = 0
-				to_chat(M,"<span class='notice'>You suddenly feel solid again </span>")
-				to_chat(owner,"<span class='notice'>You feel like a part of you is missing.</span>")
+				to_chat(M,SPAN_NOTICE("You suddenly feel solid again "))
+				to_chat(owner,SPAN_NOTICE("You feel like a part of you is missing."))
 				owner.nutrition -= 100
 				to_update = TRUE
 

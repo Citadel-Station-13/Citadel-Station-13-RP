@@ -88,7 +88,7 @@
 		part_list += "\a [I]"
 	. += "\The [src] has [english_list(part_list)] installed."
 	if(tank && in_range(src,user))
-		. += "<span class='notice'>The wrist-mounted pressure gauge reads [max(round(tank.air_contents.return_pressure()),0)] kPa remaining in \the [tank].</span>"
+		. += SPAN_NOTICE("The wrist-mounted pressure gauge reads [max(round(tank.air_contents.return_pressure()),0)] kPa remaining in \the [tank].")
 
 /obj/item/clothing/suit/space/void/refit_for_species(var/target_species)
 	..()
@@ -178,17 +178,17 @@
 		return
 
 	if(H.head == helmet)
-		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
+		to_chat(H, SPAN_NOTICE("You retract your suit helmet."))
 		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 		helmet.forceMove(src)
 		REMOVE_TRAIT(helmet, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 	else
 		if(H.head)
-			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
+			to_chat(H, SPAN_DANGER("You cannot deploy your helmet while wearing \the [H.head]."))
 			return
 		if(H.equip_to_slot_if_possible(helmet, SLOT_ID_HEAD))
 			ADD_TRAIT(helmet, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
-			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
+			to_chat(H, SPAN_INFO("You deploy your suit helmet, sealing you off from the world."))
 			playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
 
@@ -214,13 +214,13 @@
 		return
 
 	if(H.shoes == boots)
-		to_chat(H, "<span class='notice'>You retract your magboots.</span>")
+		to_chat(H, SPAN_NOTICE("You retract your magboots."))
 		REMOVE_TRAIT(boots, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 		boots.forceMove(src)
 	else
 		if(H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
 			ADD_TRAIT(boots, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
-			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
+			to_chat(H, SPAN_INFO("You deploy your magboots."))
 
 // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
 /obj/item/clothing/suit/space/void/attack_self(mob/user)
@@ -255,7 +255,7 @@
 	else
 		removing = cooler
 		cooler = null
-	to_chat(H, "<span class='info'>You press the emergency release, ejecting \the [removing] from your suit.</span>")
+	to_chat(H, SPAN_INFO("You press the emergency release, ejecting \the [removing] from your suit."))
 	REMOVE_TRAIT(removing, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 	removing.forceMove(drop_location())
 
@@ -267,7 +267,7 @@
 		return ..()
 
 	if(is_being_worn())
-		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
+		to_chat(user, SPAN_WARNING("You cannot modify \the [src] while it is being worn."))
 		return
 
 	if(W.is_screwdriver())

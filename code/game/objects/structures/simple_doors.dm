@@ -128,13 +128,13 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(W,/obj/item/pickaxe))
 		var/obj/item/pickaxe/digTool = W
-		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
+		visible_message(SPAN_DANGER("[user] starts digging [src]!"))
 		if(do_after(user,digTool.digspeed*hardness) && src)
-			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
+			visible_message(SPAN_DANGER("[user] finished digging [src]!"))
 			Dismantle()
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
-		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
+		visible_message(SPAN_DANGER("[user] hits [src] with [W]!"))
 		if(material == get_material_by_name("resin"))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
@@ -159,7 +159,7 @@
 	CheckHardness()
 
 /obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	if(material == get_material_by_name("resin"))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
@@ -176,7 +176,7 @@
 
 /obj/structure/simple_door/proc/Dismantle(devastated = 0)
 	material.place_dismantled_product(get_turf(src))
-	visible_message("<span class='danger'>The [src] is destroyed!</span>")
+	visible_message(SPAN_DANGER("The [src] is destroyed!"))
 	qdel(src)
 
 /obj/structure/simple_door/legacy_ex_act(severity = 1)

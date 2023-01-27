@@ -222,14 +222,14 @@
 	var/mob/living/carbon/human/Hu = user
 
 	if(!Ht.nif || Ht.nif.stat != NIF_WORKING)
-		to_chat(user,"<span class='warning'>Either they don't have a NIF, or the uploader can't connect.</span>")
+		to_chat(user,SPAN_WARNING("Either they don't have a NIF, or the uploader can't connect."))
 		return
 
 	var/extra = extra_params()
 	if(target == user)
-		to_chat(user,"<span class='notice'>You upload [src] into your NIF.</span>")
+		to_chat(user,SPAN_NOTICE("You upload [src] into your NIF."))
 	else
-		Ht.visible_message("<span class='warning'>[Hu] begins uploading [src] into [Ht]!</span>","<span class='danger'>[Hu] is uploading [src] into you!</span>")
+		Ht.visible_message(SPAN_WARNING("[Hu] begins uploading [src] into [Ht]!"),SPAN_DANGER("[Hu] is uploading [src] into you!"))
 
 	icon_state = "[initial(icon_state)]-animate"	//makes it play the item animation upon using on a valid target
 	update_icon()
@@ -265,7 +265,7 @@
 	if(!ishuman(target))
 		return
 	if(!laws)
-		to_chat(user,"<span class='warning'>You haven't set any laws yet. Use the disk in-hand first.</span>")
+		to_chat(user,SPAN_WARNING("You haven't set any laws yet. Use the disk in-hand first."))
 		return
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)

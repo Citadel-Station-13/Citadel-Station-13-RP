@@ -45,11 +45,11 @@
 
 	if(!src.client.holder)
 		if(!config_legacy.dsay_allowed)
-			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
+			to_chat(src, SPAN_DANGER("Deadchat is globally muted."))
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(usr, SPAN_DANGER("You have deadchat muted."))
 		return
 
 	message = emoji_parse(say_emphasis(message))

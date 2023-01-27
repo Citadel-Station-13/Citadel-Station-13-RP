@@ -111,7 +111,7 @@
 			M.emote(pick("twitch", "blink_r", "shiver"))
 		if(world.time > (data + (60*10)))
 			data = world.time
-			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
+			to_chat(M, SPAN_WARNING("You feel like all your nerves are itching."))
 
 /datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
@@ -164,7 +164,7 @@
 		M.add_chemical_effect(CE_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(world.time > (data + (5*60*10)))
 			data = world.time
-			to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
+			to_chat(M, SPAN_NOTICE("Your skin feels refreshed and sooth."))
 
 //Remove before merge
 /obj/item/storage/box/touch_bottles

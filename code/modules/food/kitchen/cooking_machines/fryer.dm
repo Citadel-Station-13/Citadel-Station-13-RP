@@ -145,7 +145,7 @@
 	if(!istype(victim))
 		return
 
-	//user.visible_message("<span class='danger'>\The [user] starts pushing \the [victim] into \the [src]!</span>")
+	//user.visible_message(SPAN_DANGER("\The [user] starts pushing \the [victim] into \the [src]!"))
 
 
 	//Removed delay on this action in favour of a cooldown after it
@@ -155,7 +155,7 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*3)
 
 	if(!victim || !victim.Adjacent(user))
-		to_chat(user, "<span class='danger'>Your victim slipped free!</span>")
+		to_chat(user, SPAN_DANGER("Your victim slipped free!"))
 		return
 
 	var/damage = rand(7,13)
@@ -174,7 +174,7 @@
 		else if(E.robotic >= ORGAN_ROBOT)
 			nopain = 1
 
-	user.visible_message("<span class='danger'>\The [user] shoves \the [victim][E ? "'s [E.name]" : ""] into \the [src]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] shoves \the [victim][E ? "'s [E.name]" : ""] into \the [src]!"))
 	if (damage > 0)
 		if(E)
 
@@ -191,10 +191,10 @@
 
 
 		if(!nopain)
-			to_chat(victim, "<span class='danger'>Agony consumes you as searing hot oil scorches your [E ? E.name : "flesh"] horribly!</span>")
+			to_chat(victim, SPAN_DANGER("Agony consumes you as searing hot oil scorches your [E ? E.name : "flesh"] horribly!"))
 			victim.emote("scream")
 		else
-			to_chat(victim, "<span class='danger'>Searing hot oil scorches your [E ? E.name : "flesh"]!</span>")
+			to_chat(victim, SPAN_DANGER("Searing hot oil scorches your [E ? E.name : "flesh"]!"))
 
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has [cook_type] \the [victim] ([victim.ckey]) in \a [src]</font>")
@@ -225,7 +225,7 @@
 					I.reagents.remove_reagent(R.id, delta)
 					amount += delta
 			if (amount > 0)
-				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
+				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), SPAN_NOTICE("You hear something viscous being poured into a metal container."))
 				return 1
 	//If neither of the above returned, then call parent as normal
 	..()

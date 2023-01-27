@@ -9,13 +9,13 @@
 	set hidden = TRUE
 
 	if(stat)
-		to_chat(src,"<span class='warning'>You must be awake and standing to perform this action!</span>")
+		to_chat(src,SPAN_WARNING("You must be awake and standing to perform this action!"))
 		return
 
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(src,SPAN_WARNING("You don't have a working refactory module!"))
 		return
 
 
@@ -26,7 +26,7 @@
 	//Organ is missing, needs restoring
 	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //allows limb stumps to regenerate like removed limbs.
 		if(refactory.get_stored_material(MAT_STEEL) < PER_LIMB_STEEL_COST)
-			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
+			to_chat(src,SPAN_WARNING("You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it."))
 			return
 		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
 		if(regen != "Yes")
@@ -89,18 +89,18 @@
 	set hidden = TRUE
 
 	if(stat)
-		to_chat(src,"<span class='warning'>You must be awake and standing to perform this action!</span>")
+		to_chat(src,SPAN_WARNING("You must be awake and standing to perform this action!"))
 		return
 
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(src,SPAN_WARNING("You don't have a working refactory module!"))
 		return
 
 	//Already regenerating
 	if(active_regen)
-		to_chat(src, "<span class='warning'>You are already refactoring!</span>")
+		to_chat(src, SPAN_WARNING("You are already refactoring!"))
 		return
 
 	var/swap_not_rebuild = alert(src,"Do you want to rebuild, or reshape?","Rebuild or Reshape","Reshape","Cancel","Rebuild")
@@ -127,7 +127,7 @@
 			return //Ain't got a torso!
 
 		var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-		to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
+		to_chat(src, SPAN_DANGER("Remain still while the process takes place! It will take 5 seconds."))
 		visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
 
 		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
@@ -143,11 +143,11 @@
 
 	//Not enough resources (AND spends the resources, should be the last check)
 	if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
-		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+		to_chat(src, SPAN_WARNING("You need to be maxed out on normal metal to do this!"))
 		return
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take [delay_length/10] seconds.</span>")
+	to_chat(src, SPAN_DANGER("Remain still while the process takes place! It will take [delay_length/10] seconds."))
 	visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
 	active_regen = TRUE
 
@@ -156,7 +156,7 @@
 		if(stat != DEAD && refactory)
 			//Not enough resources (AND spends the resources, should be the last check)
 			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
-				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+				to_chat(src, SPAN_WARNING("You need to be maxed out on normal metal to do this!"))
 				return
 			var/list/holder = refactory.materials
 			species.create_organs(src)
@@ -172,14 +172,14 @@
 				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
 			else
 				new_refactory.materials = holder
-			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
-			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
+			to_chat(src, SPAN_NOTICE("Your refactoring is complete.")) //Guarantees the message shows no matter how bad the timing.
+			to_chat(blob, SPAN_NOTICE("Your refactoring is complete!"))
 		else
-			to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
-			to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
+			to_chat(src,  SPAN_CRITICAL("Your refactoring has failed."))
+			to_chat(blob, SPAN_CRITICAL("Your refactoring has failed!"))
 	else
-		to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
-		to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
+		to_chat(src,  SPAN_CRITICAL("Your refactoring is interrupted."))
+		to_chat(blob, SPAN_CRITICAL("Your refactoring is interrupted!"))
 	active_regen = FALSE
 	nano_outofblob()
 
@@ -196,12 +196,12 @@
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(src,SPAN_WARNING("You don't have a working refactory module!"))
 		return
 
 	var/held = get_active_held_item()
 	if(!istype(held,/obj/item/stack/material))
-		to_chat(src,"<span class='warning'>You aren't holding a stack of materials in your active hand...!</span>")
+		to_chat(src,SPAN_WARNING("You aren't holding a stack of materials in your active hand...!"))
 		return
 
 	var/obj/item/stack/material/matstack = held
@@ -211,7 +211,7 @@
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
 	if(!allowed)
-		to_chat(src,"<span class='warning'>You can't process [substance]!</span>")
+		to_chat(src,SPAN_WARNING("You can't process [substance]!"))
 		return //Only a few things matter, the rest are best not cluttering the lists.
 
 	var/howmuch = input(src,"How much do you want to store? (0-[matstack.amount])","Select amount") as null|num
@@ -221,13 +221,13 @@
 	var/actually_added = refactory.add_stored_material(substance,howmuch*matstack.perunit)
 	matstack.use(CEILING((actually_added/matstack.perunit), 1))
 	if(actually_added && actually_added < howmuch)
-		to_chat(src,"<span class='warning'>Your refactory module is now full, so only [actually_added] units were stored.</span>")
-		visible_message("<span class='notice'>[src] nibbles some of the [substance] right off the stack!</span>")
+		to_chat(src,SPAN_WARNING("Your refactory module is now full, so only [actually_added] units were stored."))
+		visible_message(SPAN_NOTICE("[src] nibbles some of the [substance] right off the stack!"))
 	else if(actually_added)
-		to_chat(src,"<span class='notice'>You store [actually_added] units of [substance].</span>")
-		visible_message("<span class='notice'>[src] devours some of the [substance] right off the stack!</span>")
+		to_chat(src,SPAN_NOTICE("You store [actually_added] units of [substance]."))
+		visible_message(SPAN_NOTICE("[src] devours some of the [substance] right off the stack!"))
 	else
-		to_chat(src,"<span class='notice'>You're completely capped out on [substance]!</span>")
+		to_chat(src,SPAN_NOTICE("You're completely capped out on [substance]!"))
 // toggling buffs
 /mob/living/carbon/human/proc/nano_togglebuff()
 	set name = "Ref - Toggle Material Augment"
@@ -238,14 +238,14 @@
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(temporary_form? temporary_form : src, SPAN_WARNING("You don't have a working refactory module!"))
 		return
 	if(refactory.processingbuffs)
-		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption off.</span>")
+		to_chat(temporary_form? temporary_form : src, SPAN_WARNING("You toggle material consumption off."))
 		refactory.processingbuffs = FALSE
 	else
 		refactory.processingbuffs = TRUE
-		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption on.</span>")
+		to_chat(temporary_form? temporary_form : src, SPAN_WARNING("You toggle material consumption on."))
 
 ////
 //  Blob Form
@@ -261,18 +261,18 @@
 		var/datum/species/protean/P = species
 		ASSERT(istype(P))
 		if(P.getActualDamage(src) > P.damage_to_blob) //Reforming HP threshold.
-			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
+			to_chat(temporary_form,SPAN_WARNING("You need to regenerate more nanites first!"))
 		else if(temporary_form.stat)
-			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")
+			to_chat(temporary_form,SPAN_WARNING("You can only do this while not stunned."))
 		else
 			nano_outofblob(temporary_form)
 
 	//Human form
 	else if(stat)
-		to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
+		to_chat(src,SPAN_WARNING("You can only do this while not stunned."))
 		return
 	else if(HAS_TRAIT(src, TRAIT_DISRUPTED))
-		to_chat(src,"<span class='warning'>You can't do this while disrupted!</span>")
+		to_chat(src,SPAN_WARNING("You can't do this while disrupted!"))
 		return
 	else
 		nano_intoblob()
@@ -286,7 +286,7 @@
 	set category = "Abilities"
 
 	if(stat)
-		to_chat(src,"<span class='warning'>You must be awake and standing to perform this action!</span>")
+		to_chat(src,SPAN_WARNING("You must be awake and standing to perform this action!"))
 		return
 
 	var/new_species_name = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in SScharacters.playable_species
@@ -309,7 +309,7 @@
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(user,SPAN_WARNING("You don't have a working refactory module!"))
 		return
 
 	var/nagmessage = "Adjust your mass to be a size between 75 to 200%. Up-sizing consumes metal, downsizing returns metal."
@@ -332,16 +332,16 @@
 		if(refactory.use_stored_material(MAT_STEEL,cost))
 			user.resize(size_factor, TRUE)
 		else
-			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
+			to_chat(user,SPAN_WARNING("That size change would cost [cost] steel, which you don't have."))
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
 		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
 		user.resize(size_factor, TRUE)
 		if(actually_added != cost)
-			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
+			to_chat(user,SPAN_WARNING("Unfortunately, [cost-actually_added] steel was lost due to lack of storage space."))
 
-	user.visible_message("<span class='notice'>Black mist swirls around [user] as they change size.</span>")
+	user.visible_message(SPAN_NOTICE("Black mist swirls around [user] as they change size."))
 
 /// /// /// A helper to reuse
 /mob/living/proc/nano_get_refactory(obj/item/organ/internal/nano/refactory/R)
@@ -380,7 +380,7 @@
 	var/opts = clickprops["shift"]
 
 	if(opts)
-		to_chat(usr,"<span class='notice'><b>[ability_name]</b> - [desc]</span>")
+		to_chat(usr,SPAN_NOTICE("<b>[ability_name]</b> - [desc]"))
 	else
 		//Humanform using it
 		if(ishuman(usr))

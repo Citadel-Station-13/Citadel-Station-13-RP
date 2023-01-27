@@ -291,9 +291,9 @@
 
 		var/time_till_respawn = time_till_respawn()
 		if(time_till_respawn == -1)	// Special case, never allowed to respawn
-			to_chat(usr, "<span class='warning'>Respawning is not allowed!</span>")
+			to_chat(usr, SPAN_WARNING("Respawning is not allowed!"))
 		else if(time_till_respawn)	// Nonzero time to respawn
-			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
+			to_chat(usr, SPAN_WARNING("You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes."))
 			return
 /*
 		if(client.prefs.species != SPECIES_HUMAN && !check_rights(R_ADMIN, 0))
@@ -466,7 +466,7 @@
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
 	if(!config_legacy.enter_allowed)
-		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game!"))
 		return 0
 	var/datum/job/J = SSjob.job_by_title(rank)
 	var/reason
@@ -692,17 +692,17 @@
 
 	//No Flavor Text
 	if (config_legacy.require_flavor && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
-		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
+		to_chat(src,SPAN_WARNING("Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category."))
 		pass = FALSE
 
 	//No OOC notes
 	if (config_legacy.allow_Metadata && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
-		to_chat(src,"<span class='warning'>Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup.</span>")
+		to_chat(src,SPAN_WARNING("Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup."))
 		pass = FALSE
 
 	//Are they on the VERBOTEN LIST?
 	if (prevent_respawns.Find(client.prefs.real_name))
-		to_chat(src,"<span class='warning'>You've already quit the round as this character. You can't go back now that you've free'd your job slot. Play another character, or wait for the next round.</span>")
+		to_chat(src,SPAN_WARNING("You've already quit the round as this character. You can't go back now that you've free'd your job slot. Play another character, or wait for the next round."))
 		pass = FALSE
 
 	//Do they have their scale properly setup?
@@ -731,7 +731,7 @@
 			//A trait was removed from the game
 			if(isnull(cost))
 				pass = FALSE
-				to_chat(src,"<span class='warning'>Your custom species is not playable. One or more traits appear to have been removed from the game or renamed. Enter character setup to correct this.</span>")
+				to_chat(src,SPAN_WARNING("Your custom species is not playable. One or more traits appear to have been removed from the game or renamed. Enter character setup to correct this."))
 				break
 			else
 				points_left -= traits_costs[T]

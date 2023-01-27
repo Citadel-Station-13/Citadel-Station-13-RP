@@ -12,6 +12,6 @@
 
 	if(ai_holder && !ai_holder.autopilot)
 		ai_holder.go_sleep()
-		to_chat(src,"<span class='notice'>Mob AI disabled while you are controlling the mob.</span>")
+		to_chat(src,SPAN_NOTICE("Mob AI disabled while you are controlling the mob."))
 
 	return .

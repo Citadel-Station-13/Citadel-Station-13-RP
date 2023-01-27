@@ -194,13 +194,13 @@
 	if(istype(O, /obj/item/stack/wetleather/))
 		var/obj/item/stack/wetleather/WL = O
 		if(WL.amount > 2)
-			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
+			to_chat(SPAN_NOTICE("The rack can only fit one sheet at a time!"))
 			return 1
 		else
 			if(!user.attempt_insert_item_for_installation(WL, src))
 				return
 			stock(WL)
-			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] has added \the [WL] to \the [src]."), SPAN_NOTICE("You add \the [WL] to \the [src]."))
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)
@@ -268,14 +268,14 @@
 		return
 
 	if(machine_stat & NOPOWER)
-		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is unpowered and useless."))
 		return
 
 	if(accept_check(O))
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
 		stock(O)
-		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 
 	else if(istype(O, /obj/item/storage/bag))
@@ -287,9 +287,9 @@
 				stock(G)
 				plants_loaded = 1
 		if(plants_loaded)
-			user.visible_message("<span class='notice'>[user] loads \the [src] with \the [P].</span>", "<span class='notice'>You load \the [src] with \the [P].</span>")
+			user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \the [P]."), SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(P.contents.len > 0)
-				to_chat(user, "<span class='notice'>Some items are refused.</span>")
+				to_chat(user, SPAN_NOTICE("Some items are refused."))
 
 	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
 		var/obj/item/gripper/B = O	//B, for Borg.
@@ -303,7 +303,7 @@
 		return
 
 	else
-		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
 		return 1
 
 /obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, var/mob/user)
@@ -414,7 +414,7 @@
 		return 0
 	spawn(0)
 		throw_item.throw_at_old(target,16,3,src)
-	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
+	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target.name]!"))
 	return 1
 
 /************************
@@ -426,6 +426,6 @@
 		return 0
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])
-			to_chat(usr, "<span class='warning'>Access denied.</span>")
+			to_chat(usr, SPAN_WARNING("Access denied."))
 			return 0
 	return ..()

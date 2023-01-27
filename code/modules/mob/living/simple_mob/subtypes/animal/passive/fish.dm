@@ -114,7 +114,7 @@
 	..()
 	if(isliving(L) && Adjacent(L))
 		var/mob/living/M = L
-		visible_message("<span class='warning'>\The [src][is_dead()?"'s corpse":""] flails at [M]!</span>")
+		visible_message(SPAN_WARNING("\The [src][is_dead()?"'s corpse":""] flails at [M]!"))
 		SpinAnimation(7,1)
 		if(prob(75))
 			if(sting(M))

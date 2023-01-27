@@ -111,7 +111,7 @@
 	if(spawning_types.len && powered())
 		spawn_progress_time += world.time - last_process_time
 		if(spawn_progress_time > max_spawn_time)
-			visible_message("<span class='notice'>[icon2html(thing = src, target = world)] [src] pings!</span>")
+			visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] pings!"))
 
 			var/obj/source_material = pop(stored_materials)
 			var/spawn_type = pop(spawning_types)

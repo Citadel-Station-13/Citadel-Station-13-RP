@@ -21,7 +21,7 @@
 		if(WT.remove_fuel(0, user))
 			playsound(src, WT.tool_sound, 25, 1)
 			for (var/mob/M in viewers(src))
-				M.show_message("<span class='notice'>[user.name] deconstructed \the [src].</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
+				M.show_message(SPAN_NOTICE("[user.name] deconstructed \the [src]."), 3, SPAN_NOTICE("You hear welding."), 2)
 			new /obj/item/stack/material/steel(loc)
 			qdel(src)
 

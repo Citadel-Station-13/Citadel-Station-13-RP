@@ -66,9 +66,9 @@
 	for(var/mob/M in GLOB.player_list)
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
 			to_chat(M, "<h2 class='alert'>[title]</h2>")
-			to_chat(M, "<span class='alert'>[message]</span>")
+			to_chat(M, SPAN_ALERT("[message]"))
 			if (announcer)
-				to_chat(M, "<span class='alert'> -[html_encode(announcer)]</span>")
+				to_chat(M, SPAN_ALERT(" -[html_encode(announcer)]"))
 
 /datum/legacy_announcement/minor/Message(message as text, message_title as text, list/zlevels)
 	GLOB.global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)

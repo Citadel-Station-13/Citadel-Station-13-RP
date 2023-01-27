@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		else
 			H.AdjustStunned(3)
 			H.AdjustWeakened(3)
-		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
+		to_chat(mob, SPAN_NOTICE("The sudden appearance of gravity makes you fall to the floor!"))
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()

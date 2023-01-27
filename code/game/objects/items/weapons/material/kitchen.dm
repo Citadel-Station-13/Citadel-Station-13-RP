@@ -41,17 +41,17 @@
 		if(target == user)
 			if(!target.can_eat(loaded))
 				return
-			target.visible_message("<span class='notice'>\The [user] eats some [loaded] from \the [src].</span>")
+			target.visible_message(SPAN_NOTICE("\The [user] eats some [loaded] from \the [src]."))
 		else
-			user.visible_message("<span class='warning'>\The [user] begins to feed \the [target]!</span>")
+			user.visible_message(SPAN_WARNING("\The [user] begins to feed \the [target]!"))
 			if(!(target.can_force_feed(user, loaded) && do_mob(user, target, 5 SECONDS)))
 				return
-			target.visible_message("<span class='notice'>\The [user] feeds some [loaded] to \the [target] with \the [src].</span>")
+			target.visible_message(SPAN_NOTICE("\The [user] feeds some [loaded] to \the [target] with \the [src]."))
 		playsound(target,'sound/items/eatfood.ogg', rand(10,40), 1)
 		cut_overlays()
 		return
 	else
-		to_chat(user, "<span class='warning'>You don't have anything on \the [src].</span>")	//if we have help intent and no food scooped up DON'T STAB OURSELVES WITH THE FORK
+		to_chat(user, SPAN_WARNING("You don't have anything on \the [src]."))	//if we have help intent and no food scooped up DON'T STAB OURSELVES WITH THE FORK
 		return
 
 /obj/item/material/kitchen/utensil/fork
@@ -107,7 +107,7 @@
 /* From the time of Clowns. Commented out for posterity, and sanity.
 /obj/item/material/knife/attack(target as mob, mob/living/user as mob)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>You accidentally cut yourself with \the [src].</span>")
+		to_chat(user, SPAN_WARNING("You accidentally cut yourself with \the [src]."))
 		user.take_organ_damage(20)
 		return
 	return ..()
@@ -136,7 +136,7 @@
 	if(!istype(L))
 		return ..()
 	if ((MUTATION_CLUMSY in L.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] slips out of your hand and hits your head."))
 		L.take_organ_damage(10)
 		L.Unconscious(2)
 		return CLICKCHAIN_DO_NOT_PROPAGATE

@@ -81,7 +81,7 @@
 /obj/structure/ghost_pod/ghost_activated/attack_ghost(var/mob/observer/dead/user)
 	. = ..()
 	if(used)
-		to_chat(user, "<span class='warning'>Another spirit appears to have gotten to \the [src] before you.  Sorry.</span>")
+		to_chat(user, SPAN_WARNING("Another spirit appears to have gotten to \the [src] before you.  Sorry."))
 		return
 
 	var/choice = input(user, "Are you certain you wish to activate this pod?", "Control Pod") as null|anything in list("Yes", "No")
@@ -90,7 +90,7 @@
 		return
 
 	else if(used)
-		to_chat(user, "<span class='warning'>Another spirit appears to have gotten to \the [src] before you.  Sorry.</span>")
+		to_chat(user, SPAN_WARNING("Another spirit appears to have gotten to \the [src] before you.  Sorry."))
 		return
 
 	create_occupant(user)

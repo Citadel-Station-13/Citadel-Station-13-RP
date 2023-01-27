@@ -35,7 +35,7 @@
 
 			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
 			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
-				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				to_chat(src, SPAN_WARNING("You are not a synthetic."))
 				return
 
 			var/M = null
@@ -114,7 +114,7 @@
 		//Promethean-only emotes
 		if("squish")
 			if(species.bump_flag != SLIME) //This should definitely do it.
-				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
+				to_chat(src, SPAN_WARNING("You are not a slime thing!"))
 				return
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
@@ -123,7 +123,7 @@
 		// SHRIEK VOXXY ONLY
 		if ("shriekloud")
 			if(src.species.name != SPECIES_VOX)
-				to_chat(src, "<span class='warning'>You aren't ear piercingly vocal enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't ear piercingly vocal enough!"))
 				return
 			playsound(src.loc, 'sound/voice/shrieksneeze.ogg', 50, 0)
 			message = "gives a short sharp shriek!"
@@ -131,7 +131,7 @@
 
 		if ("shriekshort")
 			if(src.species.name != SPECIES_VOX)
-				to_chat(src, "<span class='warning'>You aren't noisy enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't noisy enough!"))
 				return
 			playsound(src.loc, 'sound/voice/shriekcough.ogg', 50, 0)
 			message = "gives a short, quieter shriek!"
@@ -140,7 +140,7 @@
 		// SQUID GAMES
 		if ("achime")
 			if(src.species.name != SPECIES_ADHERENT)
-				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't floaty enough!"))
 				return
 			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
 			message = "chimes!"
@@ -149,7 +149,7 @@
 		//Xenomorph Hybrid
 		if("xhiss")
 			if(src.species.name != SPECIES_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't alien enough!"))
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
 			message = "hisses!"
@@ -157,7 +157,7 @@
 
 		if("xroar")
 			if(src.species.name != SPECIES_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't alien enough!"))
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
 			message = "roars!"
@@ -165,7 +165,7 @@
 
 		if("xgrowl")
 			if(src.species.name != SPECIES_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't alien enough!"))
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
 			message = "growls!"
@@ -173,7 +173,7 @@
 
 		if("xkiss")
 			if(src.species.name != SPECIES_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				to_chat(src, SPAN_WARNING("You aren't alien enough!"))
 				return
 			var/M = null
 			if (param)
@@ -833,14 +833,14 @@
 							M = A
 							break
 				if(M)
-					message = "<span class='danger'>slaps [M] across the face. Ouch!</span>"
+					message = SPAN_DANGER("slaps [M] across the face. Ouch!")
 					playsound(src, 'sound/effects/snap.ogg', 50, 1)
 					if(ishuman(M)) //Snowflakey!
 						var/mob/living/carbon/human/H = M
 						if(istype(H.wear_mask,/obj/item/clothing/mask/smokable))
 							H.drop_item_to_ground(H.wear_mask)
 				else
-					message = "<span class='danger'>slaps [T.himself]!</span>"
+					message = SPAN_DANGER("slaps [T.himself]!")
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
 //Citadel changes starts here
@@ -871,11 +871,11 @@
 							M = A
 							break
 				if(M)
-					message = "<span class='danger'>slaps [M]'s butt.</span>"
+					message = SPAN_DANGER("slaps [M]'s butt.")
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,M,"Buttslap")
 				else
-					message = "<span class='danger'>slaps [T.his] own butt!</span>"
+					message = SPAN_DANGER("slaps [T.his] own butt!")
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,src,"Slapped own butt")
 					//adding damage for aslaps to stop the spam
@@ -955,7 +955,7 @@
 
 		if("vomit")
 			if(isSynthetic())
-				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")
+				to_chat(src, SPAN_WARNING("You are unable to vomit."))
 				return
 			vomit()
 			return
@@ -1139,7 +1139,7 @@
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained() || involved_parts.len < 2)
-				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
+				to_chat(src, SPAN_WARNING("You can't *flip in your current state!"))
 				return 1
 			else
 				m_type = 1
@@ -1187,7 +1187,7 @@
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)
 		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
+			to_chat(src, SPAN_WARNING("You don't have a tail that supports this."))
 		return 0
 
 	var/new_wagging = isnull(setting) ? !wagging : setting
@@ -1199,7 +1199,7 @@
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+			to_chat(src, SPAN_WARNING("You don't have wings that support this."))
 		return 0
 
 	var/new_flapping = isnull(setting) ? !flapping : setting
@@ -1211,7 +1211,7 @@
 /mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
 	if(!wing_style || !wing_style.spr_state)
 		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+			to_chat(src, SPAN_WARNING("You don't have wings that support this."))
 		return 0
 
 	var/new_spread = isnull(folded) ? !spread : folded

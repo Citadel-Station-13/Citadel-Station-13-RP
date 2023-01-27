@@ -18,12 +18,12 @@
 		playsound(src, I.tool_sound, 50, 1)
 		var/actual_time = I.tool_speed * 170
 		user.visible_message( \
-			"<span class='notice'>\The [user] begins salvaging from \the [src].</span>", \
-			"<span class='notice'>You start salvaging from \the [src].</span>")
+			SPAN_NOTICE("\The [user] begins salvaging from \the [src]."), \
+			SPAN_NOTICE("You start salvaging from \the [src]."))
 		if(do_after(user, actual_time, target = src))
 			user.visible_message( \
-				"<span class='notice'>\The [user] has salvaged \the [src].</span>", \
-				"<span class='notice'>You salvage \the [src].</span>")
+				SPAN_NOTICE("\The [user] has salvaged \the [src]."), \
+				SPAN_NOTICE("You salvage \the [src]."))
 			dismantle()
 			qdel(src)
 			return TRUE

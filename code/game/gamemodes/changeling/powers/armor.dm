@@ -43,9 +43,9 @@
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)
 	. = ..()
 	if(ismob(loc))
-		loc.visible_message("<span class='warning'>[loc.name]\'s flesh rapidly inflates, forming a bloated mass around their body!</span>",
-		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
-		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		loc.visible_message(SPAN_WARNING("[loc.name]\'s flesh rapidly inflates, forming a bloated mass around their body!"),
+		SPAN_WARNING("We inflate our flesh, creating a spaceproof suit!"),
+		SPAN_ITALICS("You hear organic matter ripping and tearing!"))
 
 /obj/item/clothing/head/helmet/space/changeling
 	name = "flesh mass"
@@ -99,9 +99,9 @@
 /obj/item/clothing/suit/space/changeling/armored/Initialize(mapload)
 	. = ..()
 	if(ismob(loc))
-		loc.visible_message("<span class='warning'>[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!</span>",
-		"<span class='warning'>We harden our flesh, creating a suit of armor!</span>",
-		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		loc.visible_message(SPAN_WARNING("[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!"),
+		SPAN_WARNING("We harden our flesh, creating a suit of armor!"),
+		SPAN_ITALICS("You hear organic matter ripping and tearing!"))
 
 /obj/item/clothing/head/helmet/space/changeling/armored
 	name = "chitinous mass"

@@ -8,7 +8,7 @@
 					var/reagent_to_remove = reagents.get_master_reagent_id()
 					switch(reagents.get_master_reagent_id())
 						if("blood")
-							user.show_message("<span class='warning'>You sink your fangs into \the [src] and suck the blood out of it!</span>")
+							user.show_message(SPAN_WARNING("You sink your fangs into \the [src] and suck the blood out of it!"))
 							user.visible_message("<font color='red'>[user] sinks their fangs into \the [src] and drains it!</font>")
 							user.nutrition += remove_volume*4
 							reagents.remove_reagent(reagent_to_remove, remove_volume)
@@ -18,10 +18,10 @@
 								bitten_state = TRUE
 							return
 						else
-							user.show_message("<span class='warning'>You take a look at \the [src] and notice that it is not filled with blood!</span>")
+							user.show_message(SPAN_WARNING("You take a look at \the [src] and notice that it is not filled with blood!"))
 							return
 				else
-					user.show_message("<span class='warning'>You take a look at \the [src] and notice it has nothing in it!</span>")
+					user.show_message(SPAN_WARNING("You take a look at \the [src] and notice it has nothing in it!"))
 					return
 			else
 				return

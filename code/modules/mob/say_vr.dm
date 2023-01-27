@@ -135,11 +135,11 @@
 
 /proc/fail_to_chat(user,message)
 	if(!message)
-		to_chat(user,"<span class='danger'>Your message was NOT SENT, either because it was FAR too long, or sanitized to nothing at all.</span>")
+		to_chat(user,SPAN_DANGER("Your message was NOT SENT, either because it was FAR too long, or sanitized to nothing at all."))
 		return
 
 	var/length = length_char(message)
 	var/posts = CEILING((length/MAX_MESSAGE_LEN), 1)
 	to_chat(user,message)
-	to_chat(user,"<span class='danger'>^ This message was NOT SENT ^ -- It was [length] characters, and the limit is [MAX_MESSAGE_LEN]. It would fit in [posts] separate messages.</span>")
+	to_chat(user,SPAN_DANGER("^ This message was NOT SENT ^ -- It was [length] characters, and the limit is [MAX_MESSAGE_LEN]. It would fit in [posts] separate messages."))
 #undef MAX_HUGE_MESSAGE_LEN

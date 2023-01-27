@@ -100,7 +100,7 @@
 	has_suit.add_overlay(get_inv_overlay())
 
 	if(user)
-		to_chat(user, "<span class='notice'>You attach \the [src] to \the [has_suit].</span>")
+		to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		add_fingerprint(user)
 
 /obj/item/clothing/accessory/proc/on_removed(mob/user)
@@ -550,9 +550,9 @@
 		name = "[design] [material] [type]"
 		desc = "A [type], made of [material]. It's rather [design]."
 		customized = 1
-		to_chat(usr,"<span class='notice'>[src] has now been customized.</span>")
+		to_chat(usr,SPAN_NOTICE("[src] has now been customized."))
 	else
-		to_chat(usr,"<span class='notice'>[src] has already been customized!</span>")
+		to_chat(usr,SPAN_NOTICE("[src] has already been customized!"))
 
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
@@ -667,11 +667,11 @@
 		if(href_list["tag"])
 			var/str = copytext(reject_bad_text(input(usr,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 			if(!str || !length(str))
-				to_chat(usr,"<span class='notice'>[name]'s tag set to be blank.</span>")
+				to_chat(usr,SPAN_NOTICE("[name]'s tag set to be blank."))
 				name = initial(name)
 				desc = initial(desc)
 			else
-				to_chat(usr,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
+				to_chat(usr,SPAN_NOTICE("You set the [name]'s tag to '[str]'."))
 				name = initial(name) + " ([str])"
 				desc = initial(desc) + " The tag says \"[str]\"."
 		else
@@ -713,7 +713,7 @@
 			M = loc
 		if(ismob(loc.loc))
 			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
-		to_chat(M,"<span class='danger'>You feel a sharp shock!</span>")
+		to_chat(M,SPAN_DANGER("You feel a sharp shock!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
@@ -795,21 +795,21 @@
 
 /obj/item/clothing/accessory/collar/attack_self(mob/user as mob)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
-		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
+		to_chat(user,SPAN_NOTICE("[name]'s interface is projected onto your hand."))
 	else
 		if(writtenon)
-			to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+			to_chat(user,SPAN_NOTICE("You need a pen or a screwdriver to edit the tag on this collar."))
 			return
-		to_chat(user,"<span class='notice'>You adjust the [name]'s tag.</span>")
+		to_chat(user,SPAN_NOTICE("You adjust the [name]'s tag."))
 
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 
 	if(!str || !length(str))
-		to_chat(user,"<span class='notice'>[name]'s tag set to be blank.</span>")
+		to_chat(user,SPAN_NOTICE("[name]'s tag set to be blank."))
 		name = initial(name)
 		desc = initial(desc)
 	else
-		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
+		to_chat(user,SPAN_NOTICE("You set the [name]'s tag to '[str]'."))
 		initialize_tag(str)
 
 /obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag)
@@ -833,7 +833,7 @@
 		update_collartag(user, I, "crossed out", "cross out", "written")
 		return
 
-	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+	to_chat(user,SPAN_NOTICE("You need a pen or a screwdriver to edit the tag on this collar."))
 
 /obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
 	if(!(istype(user.get_active_held_item(),I)) || !(istype(user.get_inactive_held_item(),src)) || (user.stat))
@@ -843,19 +843,19 @@
 
 	if(!str || !length(str))
 		if(!writtenon)
-			to_chat(user,"<span class='notice'>You don't write anything.</span>")
+			to_chat(user,SPAN_NOTICE("You don't write anything."))
 		else
-			to_chat(user,"<span class='notice'>You [erasing] the words with the [I].</span>")
+			to_chat(user,SPAN_NOTICE("You [erasing] the words with the [I]."))
 			name = initial(name)
 			desc = initial(desc) + " The tag has had the words [erasemethod]."
 	else
 		if(!writtenon)
-			to_chat(user,"<span class='notice'>You write '[str]' on the tag with the [I].</span>")
+			to_chat(user,SPAN_NOTICE("You write '[str]' on the tag with the [I]."))
 			name = initial(name) + " ([str])"
 			desc = initial(desc) + " \"[str]\" has been [writemethod] on the tag."
 			writtenon = 1
 		else
-			to_chat(user,"<span class='notice'>You [erasing] the words on the tag with the [I], and write '[str]'.</span>")
+			to_chat(user,SPAN_NOTICE("You [erasing] the words on the tag with the [I], and write '[str]'."))
 			name = initial(name) + " ([str])"
 			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
 

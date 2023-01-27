@@ -92,7 +92,7 @@
 		I.loc = src
 		loaded_item = I
 		for(var/mob/M in viewers())
-			M.show_message(text("<span class='notice'>[user] adds the [I] to the [src].</span>"), 1)
+			M.show_message(text(SPAN_NOTICE("[user] adds the [I] to the [src].")), 1)
 		desc = initial(desc) + "<br>It is holding \the [loaded_item]."
 		flick("portable_analyzer_load", src)
 		icon_state = "portable_analyzer_full"
@@ -112,13 +112,13 @@
 		var/obj/item/I = target
 		if(do_after(src, 5 SECONDS * I.w_class))
 			for(var/mob/M in viewers())
-				M.show_message(text("<span class='notice'>[user] sweeps \the [src] over \the [I].</span>"), 1)
+				M.show_message(text(SPAN_NOTICE("[user] sweeps \the [src] over \the [I].")), 1)
 			flick("[initial(icon_state)]-scan", src)
 			if(I.origin_tech && I.origin_tech.len)
 				for(var/T in I.origin_tech)
-					to_chat(user, "<span class='notice'>\The [I] had level [I.origin_tech[T]] in [CallTechName(T)].</span>")
+					to_chat(user, SPAN_NOTICE("\The [I] had level [I.origin_tech[T]] in [CallTechName(T)]."))
 			else
-				to_chat(user, "<span class='notice'>\The [I] cannot be scanned by \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("\The [I] cannot be scanned by \the [src]."))
 
 //This is used to unlock other borg covers.
 /obj/item/card/robot //This is not a child of id cards, as to avoid dumb typechecks on computers.
@@ -373,7 +373,7 @@
 		overload_time = 0
 
 		var/mob/living/user = src.loc
-		user.visible_message("<span class='danger'>[user]'s shield reactivates!</span>", "<span class='danger'>Your shield reactivates!.</span>")
+		user.visible_message(SPAN_DANGER("[user]'s shield reactivates!"), SPAN_DANGER("Your shield reactivates!."))
 		user.update_icon()
 
 /obj/item/borg/combat/shield/proc/adjust_flash_count(var/mob/living/user, amount)
@@ -387,7 +387,7 @@
 
 /obj/item/borg/combat/shield/proc/overload(var/mob/living/user)
 	active = 0
-	user.visible_message("<span class='danger'>[user]'s shield destabilizes!</span>", "<span class='danger'>Your shield destabilizes!.</span>")
+	user.visible_message(SPAN_DANGER("[user]'s shield destabilizes!"), SPAN_DANGER("Your shield destabilizes!."))
 	user.update_icon()
 	overload_time = world.time
 

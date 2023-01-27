@@ -10,11 +10,11 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 	if(!src.mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='warning'>You cannot send DSAY messages (muted).</span>")
+		to_chat(src, SPAN_WARNING("You cannot send DSAY messages (muted)."))
 		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(src, "<span class='warning'>You have deadchat muted.</span>")
+		to_chat(src, SPAN_WARNING("You have deadchat muted."))
 		return
 
 	var/stafftype = holder.rank
@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 
 	msg = emoji_parse(msg)
 
-	say_dead_direct("<span class='name'>[stafftype]([key])</span> says, <span class='message'>\"<span class='linkify'>[msg]</span>\"</span>")
+	say_dead_direct(SPAN_NAME("[stafftype]([key])</span> says, <span class='message'>\"<span class='linkify'>[msg]</span>\""))
 
 	feedback_add_details("admin_verb","D") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

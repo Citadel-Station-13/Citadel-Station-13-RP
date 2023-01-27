@@ -44,15 +44,15 @@
 
 	var/size_select = input("Put the desired size (25-200%)", "Set Size", size_set_to*100) as num
 	if(size_select>200 || size_select<25)
-		to_chat(usr, "<span class='notice'>Invalid size.</span>")
+		to_chat(usr, SPAN_NOTICE("Invalid size."))
 		return
 	size_set_to = (size_select/100)
-	to_chat(usr, "<span class='notice'>You set the size to [size_select]%</span>")
+	to_chat(usr, SPAN_NOTICE("You set the size to [size_select]%"))
 
 /obj/item/gun/energy/sizegun/examine(mob/user)
 	. = ..()
 	var/size_examine = (size_set_to*100)
-	. += "<span class='info'>It is currently set at [size_examine]%</span>"
+	. += SPAN_INFO("It is currently set at [size_examine]%")
 
 //
 // Beams for size gun
@@ -73,7 +73,7 @@
 /obj/item/projectile/beam/sizelaser/on_hit(var/atom/target)
 	var/mob/living/M = target
 	if(!M.permit_sizegun)
-		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
+		M.visible_message(SPAN_WARNING("[src] has no effect on [M]."))
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M

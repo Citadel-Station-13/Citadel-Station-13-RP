@@ -371,11 +371,11 @@
 			spawn(2)
 				busy = FALSE
 				update_icons()
-			visible_message("<span class='warning'>\The [H] was prodded by \the [src] with a stun baton!</span>")
+			visible_message(SPAN_WARNING("\The [H] was prodded by \the [src] with a stun baton!"))
 			insult(H)
 		else
 			playsound(loc, 'sound/weapons/handcuffs.ogg', 30, 1, -2)
-			visible_message("<span class='warning'>\The [src] is trying to put handcuffs on \the [H]!</span>")
+			visible_message(SPAN_WARNING("\The [src] is trying to put handcuffs on \the [H]!"))
 			busy = TRUE
 			if(do_mob(src, H, 60))
 				if(!H.handcuffed)
@@ -398,7 +398,7 @@
 		spawn(2)
 			busy = FALSE
 			update_icons()
-		visible_message("<span class='warning'>\The [M] was beaten by \the [src] with a stun baton!</span>")
+		visible_message(SPAN_WARNING("\The [M] was beaten by \the [src] with a stun baton!"))
 		insult(L)
 
 /mob/living/bot/secbot/slime/UnarmedAttack(var/mob/living/L, var/proximity)
@@ -409,7 +409,7 @@
 		S.slimebatoned(src, xeno_stun_strength)
 
 /mob/living/bot/secbot/explode()
-	visible_message("<span class='warning'>[src] blows apart!</span>")
+	visible_message(SPAN_WARNING("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/secbot_assembly/Sa = new /obj/item/secbot_assembly(Tsec)

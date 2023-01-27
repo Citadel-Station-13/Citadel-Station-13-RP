@@ -37,7 +37,7 @@
 	set_pin_data(IC_OUTPUT, 1, !get_pin_data(IC_OUTPUT, 1))
 	push_data()
 	activate_pin(1)
-	to_chat(user, "<span class='notice'>You toggle the button labeled '[src.displayed_name]' [get_pin_data(IC_OUTPUT, 1) ? "on" : "off"].</span>")
+	to_chat(user, SPAN_NOTICE("You toggle the button labeled '[src.displayed_name]' [get_pin_data(IC_OUTPUT, 1) ? "on" : "off"]."))
 
 /obj/item/integrated_circuit/input/numberpad
 	name = "number pad"
@@ -1093,7 +1093,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		return FALSE
 	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
-	to_chat(user, "<span class='notice'>You scan [A] with [assembly].</span>")
+	to_chat(user, SPAN_NOTICE("You scan [A] with [assembly]."))
 	activate_pin(1)
 	return TRUE
 
@@ -1126,7 +1126,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			return FALSE
 	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
-	to_chat(user, "<span class='notice'>You scan [A] with [assembly].</span>")
+	to_chat(user, SPAN_NOTICE("You scan [A] with [assembly]."))
 	activate_pin(1)
 	return TRUE
 
@@ -1157,7 +1157,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		user.transfer_item_to_loc(I, drop_location())
 	set_pin_data(IC_OUTPUT, 1, WEAKREF(I))
 	push_data()
-	to_chat(user, "<span class='notice'>You let [assembly] scan [I].</span>")
+	to_chat(user, SPAN_NOTICE("You let [assembly] scan [I]."))
 	activate_pin(1)
 	return TRUE
 

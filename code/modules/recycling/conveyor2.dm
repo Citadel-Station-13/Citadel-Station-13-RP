@@ -257,7 +257,7 @@
 // attack with hand, switch position
 /obj/machinery/conveyor_switch/attack_hand(mob/user)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
 	if(position == 0)
@@ -293,7 +293,7 @@
 			playsound(src, WT.tool_sound, 50, 1)
 			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
-				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
+				to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
 				new /obj/item/stack/material/steel( src.loc, 2 )
 				qdel(src)
 				return

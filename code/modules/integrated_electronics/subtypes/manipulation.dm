@@ -77,9 +77,9 @@
 
 		visible_message(
 			assembly.anchored ? \
-			"<span class='notice'>\The [get_object()] deploys a set of anchoring bolts!</span>" \
+			SPAN_NOTICE("\The [get_object()] deploys a set of anchoring bolts!") \
 			: \
-			"<span class='notice'>\The [get_object()] retracts its anchoring bolts</span>"
+			SPAN_NOTICE("\The [get_object()] retracts its anchoring bolts")
 		)
 
 		set_pin_data(IC_OUTPUT, 1, assembly.anchored)
@@ -190,7 +190,7 @@
 
 							if(istype(O, /obj/item/seeds/kudzuseed))
 								investigate_log("had Kudzu planted in it by [acting_object] at [AREACOORD(src)]","kudzu")
-							acting_object.visible_message("<span class='notice'>[acting_object] plants [O].</span>")
+							acting_object.visible_message(SPAN_NOTICE("[acting_object] plants [O]."))
 							TR.plant_seeds(O)
 		activate_pin(2)
 
@@ -428,7 +428,7 @@
 		var/range = round(clamp(sqrt(target_x_rel*target_x_rel+target_y_rel*target_y_rel),0,8),1)
 
 		//throw it
-		assembly.visible_message("<span class='danger'>[assembly] has thrown [A]!</span>")
+		assembly.visible_message(SPAN_DANGER("[assembly] has thrown [A]!"))
 		log_attack("[assembly] [REF(assembly)] has thrown [A] with non-lethal force.")
 		A.forceMove(drop_location())
 		A.throw_at_old(locate(x_abs, y_abs, T.z), range, 3, src)
@@ -840,13 +840,13 @@
 	if(istype(O, /obj/item/gun))
 		var/obj/item/gun/gun = O
 		if(installed_gun)
-			to_chat(user, "<span class='warning'>There's already a weapon installed.</span>")
+			to_chat(user, SPAN_WARNING("There's already a weapon installed."))
 			return
 		if(!user.attempt_insert_item_for_installation(gun, src))
 			return
 		installed_gun = gun
 		size += gun.w_class
-		to_chat(user, "<span class='notice'>You slide \the [gun] into the firing mechanism.</span>")
+		to_chat(user, SPAN_NOTICE("You slide \the [gun] into the firing mechanism."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	else
 		..()
@@ -854,12 +854,12 @@
 /obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(var/mob/user)
 	if(installed_gun)
 		user.put_in_hands_or_drop(installed_gun)
-		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
+		to_chat(user, SPAN_NOTICE("You slide \the [installed_gun] out of the firing mechanism."))
 		size = initial(size)
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 		installed_gun = null
 	else
-		to_chat(user, "<span class='notice'>There's no weapon to remove from the mechanism.</span>")
+		to_chat(user, SPAN_NOTICE("There's no weapon to remove from the mechanism."))
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/do_work()
 	if(!installed_gun)
@@ -948,11 +948,11 @@
 	if(istype(G))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
-			to_chat(user, "<span class='warning'>There is already a grenade attached!</span>")
+			to_chat(user, SPAN_WARNING("There is already a grenade attached!"))
 		else
 			if(!user.attempt_insert_item_for_installation(G, src))
 				return
-			user.visible_message("<span class='warning'>\The [user] attaches \a [G] to \the [src]!</span>", "<span class='notice'>You attach \the [G] to \the [src].</span>")
+			user.visible_message(SPAN_WARNING("\The [user] attaches \a [G] to \the [src]!"), SPAN_NOTICE("You attach \the [G] to \the [src]."))
 			attach_grenade(G)
 		return
 	else
@@ -960,7 +960,7 @@
 
 /obj/item/integrated_circuit/manipulation/grenade/attack_self(var/mob/user)
 	if(attached_grenade)
-		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
+		user.visible_message(SPAN_WARNING("\The [user] removes \an [attached_grenade] from \the [src]!"), SPAN_NOTICE("You remove \the [attached_grenade] from \the [src]."))
 		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)
 		detach_grenade()
 		return CLICKCHAIN_DO_NOT_PROPAGATE

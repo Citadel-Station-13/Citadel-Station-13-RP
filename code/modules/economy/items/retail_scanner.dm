@@ -165,7 +165,7 @@
 		var/obj/item/spacecash/ewallet/E = O
 		scan_wallet(E)
 	else if (istype(O, /obj/item/spacecash))
-		to_chat(usr, "<span class='warning'>This device does not accept cash.</span>")
+		to_chat(usr, SPAN_WARNING("This device does not accept cash."))
 
 	else if(istype(O, /obj/item/card/emag))
 		return ..()
@@ -390,7 +390,7 @@
 
 /obj/item/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>")
+		to_chat(user, SPAN_DANGER("You stealthily swipe the cryptographic sequencer through \the [src]."))
 		playsound(src, "sparks", 50, 1)
 		req_access = list()
 		emagged = 1

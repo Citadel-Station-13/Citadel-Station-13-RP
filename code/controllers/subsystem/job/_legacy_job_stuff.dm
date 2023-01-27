@@ -340,7 +340,7 @@
 				spawn_in_storage[thing] = custom_equip_leftovers[thing]
 			else
 				if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
-					to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
+					to_chat(H, SPAN_NOTICE("Equipping you with \the [G.display_name]!"))
 					custom_equip_slots.Add(G.slot)
 				else
 					spawn_in_storage[thing] = custom_equip_leftovers[thing]

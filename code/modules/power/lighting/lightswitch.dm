@@ -86,17 +86,17 @@
 		if(stage == FRAME_UNFASTENED)
 			var/obj/item/weldingtool/WT = W
 			if(!WT.remove_fuel(0, user))
-				to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
 				return
 			playsound(src.loc, WT.tool_sound, 50, 1)
 			user.visible_message( \
-				"<span class='warning'>\The [user] begins deconstructing \the [src].</span>", \
-				"<span class='notice'>You start deconstructing \the [src].</span>")
+				SPAN_WARNING("\The [user] begins deconstructing \the [src]."), \
+				SPAN_NOTICE("You start deconstructing \the [src]."))
 			if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 				new /obj/item/stack/material/steel(get_turf(src), 2)
 				user.visible_message( \
-					"<span class='warning'>\The [user] has deconstructed \the [src].</span>", \
-					"<span class='notice'>You deconstruct \the [src].</span>")
+					SPAN_WARNING("\The [user] has deconstructed \the [src]."), \
+					SPAN_NOTICE("You deconstruct \the [src]."))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 75, 1)
 				qdel(src)
 		else if (stage == FRAME_FASTENED)

@@ -105,15 +105,15 @@
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && use_power)
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench this [src], turn it off first."))
 		return 1
 	add_fingerprint(user)
 	playsound(src, W.tool_sound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
 			"You hear ratchet.")
 		deconstruct()
 

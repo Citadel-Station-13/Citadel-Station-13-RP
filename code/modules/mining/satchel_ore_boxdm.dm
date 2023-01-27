@@ -69,7 +69,7 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human) && !istype(usr, /mob/living/silicon/robot)) //Only living, intelligent creatures with gripping aparatti can empty ore boxes.
-		to_chat(usr,"<span class='warning'>You are physically incapable of emptying the ore box.</span>")
+		to_chat(usr,SPAN_WARNING("You are physically incapable of emptying the ore box."))
 		return
 
 	if( usr.stat || usr.restrained() )
@@ -82,20 +82,20 @@
 	add_fingerprint(usr)
 
 	if(isEmpty())
-		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
+		to_chat(usr,SPAN_WARNING("The ore box is empty."))
 		return
 
 	var/mob/living/user = usr
-	to_chat(user, "<span class='notice'>You begin emptying the ore box.</span>")
+	to_chat(user, SPAN_NOTICE("You begin emptying the ore box."))
 
 	if(do_after(usr,15,src))
 		while(!isEmpty())
 			if(!do_after(user, 5, src))
-				to_chat(user,"<span class='notice'>You stop emptying the ore box.</span>")
+				to_chat(user,SPAN_NOTICE("You stop emptying the ore box."))
 				return
 			var/atom/A = drop_location()
 			if(!A || (length(A.contents) > 1000))
-				to_chat(user, "<span class='warning'>The area under the box is too full.</span>")
+				to_chat(user, SPAN_WARNING("The area under the box is too full."))
 				return
 			for(var/i in 1 to 20)
 				deposit(A)

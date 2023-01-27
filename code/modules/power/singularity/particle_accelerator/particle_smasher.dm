@@ -39,17 +39,17 @@
 
 /obj/machinery/particle_smasher/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] contains:</span>"
+	. += SPAN_NOTICE("\The [src] contains:")
 	for(var/obj/item/I in contents)
-		. += "<span class='notice'>\the [I]</span>"
+		. += SPAN_NOTICE("\the [I]")
 
 /obj/machinery/particle_smasher/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.type == /obj/item/analyzer)
-		to_chat(user, "<span class='notice'>\The [src] reads an energy level of [energy].</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] reads an energy level of [energy]."))
 	else if(istype(W, /obj/item/stack/material) && !target)
 		var/obj/item/stack/material/M = W
 		if(M.uses_charge)
-			to_chat(user, "<span class='notice'>You cannot fill \the [src] with a synthesizer!</span>")
+			to_chat(user, SPAN_NOTICE("You cannot fill \the [src] with a synthesizer!"))
 			return
 		if(!user.attempt_insert_item_for_installation(M, src))
 			return
@@ -58,12 +58,12 @@
 		update_icon()
 	else if(istype(W, beaker_type))
 		if(reagent_container)
-			to_chat(user, "<span class='notice'>\The [src] already has a container attached.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has a container attached."))
 			return
 		if(!user.transfer_item_to_loc(W, src))
 			return
 		reagent_container = W
-		to_chat(user, "<span class='notice'>You add \the [reagent_container] to \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You add \the [reagent_container] to \the [src]."))
 		update_icon()
 		return
 	else if(W.is_wrench())
@@ -80,7 +80,7 @@
 		update_icon()
 		return
 	else if(istype(W, /obj/item/card/id))
-		to_chat(user, "<span class='notice'>Swiping \the [W] on \the [src] doesn't seem to do anything...</span>")
+		to_chat(user, SPAN_NOTICE("Swiping \the [W] on \the [src] doesn't seem to do anything..."))
 		return ..()
 	else if(storage.len < max_storage)
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -162,7 +162,7 @@
 		recipes = typesof(/datum/particle_smasher_recipe)
 
 	if(!target)	// You are just blasting an empty machine.
-		visible_message("<span class='notice'>\The [src] shudders.</span>")
+		visible_message(SPAN_NOTICE("\The [src] shudders."))
 		update_icon()
 		return
 

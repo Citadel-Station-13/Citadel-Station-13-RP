@@ -58,12 +58,12 @@
 /obj/item/deskbell/proc/ring(mob/user)
 	if(user.a_intent == "harm")
 		playsound(user.loc, 'sound/effects/deskbell_rude.ogg', 50, 1)
-		to_chat(user,"<span class='notice'>You hammer [src] rudely!</span>")
+		to_chat(user,SPAN_NOTICE("You hammer [src] rudely!"))
 		if (prob(2))
 			break_bell(user)
 	else
 		playsound(user.loc, 'sound/effects/deskbell.ogg', 50, 1)
-		to_chat(user,"<span class='notice'>You gracefully ring [src].</span>")
+		to_chat(user,SPAN_NOTICE("You gracefully ring [src]."))
 
 /obj/item/deskbell/proc/check_ability(mob/user)
 	if (ishuman(user))
@@ -72,11 +72,11 @@
 		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
-			to_chat(H,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			to_chat(H,SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
 			return 0
 		return 1
 	else
-		to_chat(user,"<span class='notice'>You are not able to ring [src].</span>")
+		to_chat(user,SPAN_NOTICE("You are not able to ring [src]."))
 	return 0
 
 /obj/item/deskbell/attackby(obj/item/W, mob/user, params)
@@ -85,7 +85,7 @@
 	if(W.is_wrench() && isturf(loc))
 		if(do_after(5))
 			if(!src) return
-			to_chat(user, "<span class='notice'>You dissasemble the desk bell</span>")
+			to_chat(user, SPAN_NOTICE("You dissasemble the desk bell"))
 			new /obj/item/stack/material/steel(get_turf(src), 1)
 			qdel(src)
 			return
@@ -94,5 +94,5 @@
 
 
 /obj/item/deskbell/proc/break_bell(mob/user)
-	to_chat(user,"<span class='notice'>The ringing abruptly stops as [src]'s ringer gets jammed inside!</span>")
+	to_chat(user,SPAN_NOTICE("The ringing abruptly stops as [src]'s ringer gets jammed inside!"))
 	broken = 1

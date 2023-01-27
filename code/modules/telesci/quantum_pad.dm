@@ -54,13 +54,13 @@
 		if(panel_open)
 			var/obj/item/multitool/M = I
 			M.buffer = src
-			to_chat(user, "<span class='notice'>You save the data in [I]'s buffer.</span>")
+			to_chat(user, SPAN_NOTICE("You save the data in [I]'s buffer."))
 			return 1
 		else
 			var/obj/item/multitool/M = I
 			if(istype(M.buffer, /obj/machinery/power/quantumpad))
 				linked_pad = M.buffer
-				to_chat(user, "<span class='notice'>You link [src] to the one in [I]'s buffer.</span>")
+				to_chat(user, SPAN_NOTICE("You link [src] to the one in [I]'s buffer."))
 				return 1
 
 	if(default_part_replacement(user, I))
@@ -84,32 +84,32 @@
 	if(.)
 		return
 	if(panel_open)
-		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
+		to_chat(user, SPAN_WARNING("The panel must be closed before operating this machine!"))
 		return
 
 	if(!powernet)
-		to_chat(user, "<span class='warning'>[src] is not attached to a powernet!</span>")
+		to_chat(user, SPAN_WARNING("[src] is not attached to a powernet!"))
 		return
 
 	if(!linked_pad || QDELETED(linked_pad))
 		if(!map_pad_link_id || !initMappedLink())
-			to_chat(user, "<span class='warning'>There is no linked pad!</span>")
+			to_chat(user, SPAN_WARNING("There is no linked pad!"))
 			return
 
 	if(world.time < last_teleport + teleport_cooldown)
-		to_chat(user, "<span class='warning'>[src] is recharging power. Please wait [round((last_teleport + teleport_cooldown - world.time)/10)] seconds.</span>")
+		to_chat(user, SPAN_WARNING("[src] is recharging power. Please wait [round((last_teleport + teleport_cooldown - world.time)/10)] seconds."))
 		return
 
 	if(teleporting)
-		to_chat(user, "<span class='warning'>[src] is charging up. Please wait.</span>")
+		to_chat(user, SPAN_WARNING("[src] is charging up. Please wait."))
 		return
 
 	if(linked_pad.teleporting)
-		to_chat(user, "<span class='warning'>Linked pad is busy. Please wait.</span>")
+		to_chat(user, SPAN_WARNING("Linked pad is busy. Please wait."))
 		return
 
 	if(linked_pad.inoperable())
-		to_chat(user, "<span class='warning'>Linked pad is not responding to ping.</span>")
+		to_chat(user, SPAN_WARNING("Linked pad is not responding to ping."))
 		return
 	src.add_fingerprint(user)
 	doteleport(user)
@@ -134,11 +134,11 @@
 			teleporting = 0
 			return
 		if(inoperable())
-			to_chat(user, "<span class='warning'>[src] is nonfunctional!</span>")
+			to_chat(user, SPAN_WARNING("[src] is nonfunctional!"))
 			teleporting = 0
 			return
 		if(!linked_pad || QDELETED(linked_pad) || linked_pad.inoperable())
-			to_chat(user, "<span class='warning'>Linked pad is not responding to ping. Teleport aborted.</span>")
+			to_chat(user, SPAN_WARNING("Linked pad is not responding to ping. Teleport aborted."))
 			teleporting = 0
 			return
 
@@ -148,7 +148,7 @@
 		// use a lot of power
 		var/power_to_use = 10 / power_efficiency
 		if((draw_power(power_to_use)) != power_to_use)
-			to_chat(user, "<span class='warning'>Power is not sufficient to complete a teleport. Teleport aborted.</span>")
+			to_chat(user, SPAN_WARNING("Power is not sufficient to complete a teleport. Teleport aborted."))
 			return
 
 		flick("qpad-beam", src)

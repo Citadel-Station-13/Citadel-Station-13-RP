@@ -52,20 +52,20 @@
 		if(aug && aug.integrated_object == glasses)
 			aug.integrated_object.forceMove(aug)
 			if(!glasses)
-				to_chat(src, "<span class='alien'>Your [aug.integrated_object] retract into your skull.</span>")
+				to_chat(src, SPAN_ALIEN("Your [aug.integrated_object] retract into your skull."))
 		else if(!istype(glasses, /obj/item/clothing/glasses/hud/security/jensenshades))
-			to_chat(src, "<span class='notice'>\The [glasses] block your shades from deploying.</span>")
+			to_chat(src, SPAN_NOTICE("\The [glasses] block your shades from deploying."))
 		else if(istype(glasses, /obj/item/clothing/glasses/hud/security/jensenshades))
 			var/obj/item/G = glasses
 			if(!HAS_TRAIT_FROM(G, TRAIT_ITEM_NODROP, AUGMENT_TRAIT))
-				to_chat(src, "<span class='notice'>\The [G] are not your integrated shades.</span>")
+				to_chat(src, SPAN_NOTICE("\The [G] are not your integrated shades."))
 			else
-				to_chat(src, "<span class='notice'>\The [G] retract into your skull.</span>")
+				to_chat(src, SPAN_NOTICE("\The [G] retract into your skull."))
 				qdel(G)
 
 	else
 		if(aug)
-			to_chat(src, "<span class='alien'>Your [aug.integrated_object] deploy.</span>")
+			to_chat(src, SPAN_ALIEN("Your [aug.integrated_object] deploy."))
 			force_equip_to_slot(aug.integrated_object, SLOT_ID_GLASSES)
 			if(!glasses || glasses != aug.integrated_object)
 				aug.integrated_object.forceMove(aug)

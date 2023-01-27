@@ -51,7 +51,7 @@ var/list/fuel_injectors = list()
 	if(istype(W, /obj/item/fuel_assembly))
 
 		if(injecting)
-			to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")
+			to_chat(user, SPAN_WARNING("Shut \the [src] off before playing with the fuel rod!"))
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -59,15 +59,15 @@ var/list/fuel_injectors = list()
 		if(cur_assembly)
 			cur_assembly.forceMove(get_turf(src))
 			user.put_in_hands(cur_assembly)
-			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
+			visible_message(SPAN_NOTICE("\The [user] swaps \the [src]'s [cur_assembly] for \a [W]."))
 		else
-			visible_message("<span class='notice'>\The [user] inserts \a [W] into \the [src].</span>")
+			visible_message(SPAN_NOTICE("\The [user] inserts \a [W] into \the [src]."))
 		cur_assembly = W
 		return
 
 	if(W.is_wrench() || W.is_screwdriver() || W.is_crowbar() || istype(W, /obj/item/storage/part_replacer))
 		if(injecting)
-			to_chat(user, "<span class='warning'>Shut \the [src] off first!</span>")
+			to_chat(user, SPAN_WARNING("Shut \the [src] off first!"))
 			return
 		if(default_unfasten_wrench(user, W))
 			return
@@ -83,17 +83,17 @@ var/list/fuel_injectors = list()
 /obj/machinery/fusion_fuel_injector/attack_hand(mob/user)
 
 	if(injecting)
-		to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")
+		to_chat(user, SPAN_WARNING("Shut \the [src] off before playing with the fuel rod!"))
 		return
 
 	if(cur_assembly)
 		cur_assembly.forceMove(get_turf(src))
 		user.put_in_hands(cur_assembly)
-		visible_message("<span class='notice'>\The [user] removes \the [cur_assembly] from \the [src].</span>")
+		visible_message(SPAN_NOTICE("\The [user] removes \the [cur_assembly] from \the [src]."))
 		cur_assembly = null
 		return
 	else
-		to_chat(user, "<span class='warning'>There is no fuel rod in \the [src].</span>")
+		to_chat(user, SPAN_WARNING("There is no fuel rod in \the [src]."))
 		return
 
 /obj/machinery/fusion_fuel_injector/proc/BeginInjecting()

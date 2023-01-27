@@ -221,7 +221,7 @@
 					else
 						var/datum/job/jobdatum = SSjob.get_job(t1)
 						if(!jobdatum)
-							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
+							to_chat(usr, SPAN_WARNING("No log exists for this job: [t1]"))
 							return
 						access = jobdatum.get_access()
 
@@ -239,7 +239,7 @@
 				if(temp_name)
 					modify.registered_name = temp_name
 				else
-					visible_message("<span class='notice'>[src] buzzes rudely.</span>")
+					visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 			. = TRUE
 
 		if("account")

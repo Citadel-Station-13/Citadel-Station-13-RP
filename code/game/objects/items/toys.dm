@@ -46,7 +46,7 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
-		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
+		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -63,14 +63,14 @@
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, "<span class='notice'>You fill the balloon with the contents of [O].</span>")
+					to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [O]."))
 					O.reagents.trans_to_obj(src, 10)
 	src.update_icon()
 	return
 
 /obj/item/toy/balloon/throw_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
+		src.visible_message(SPAN_WARNING("\The [src] bursts!"),"You hear a pop and a splash.")
 		src.reagents.touch_turf(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.touch(A)
@@ -151,7 +151,7 @@
 
 /obj/item/toy/crossbow/examine(mob/user)
 	if(..(user, 2) && bullets)
-		to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
+		to_chat(user, SPAN_NOTICE("It is loaded with [bullets] foam darts!"))
 
 /obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/ammo/crossbow))
@@ -159,9 +159,9 @@
 			if(!user.attempt_consume_item_for_construction(I))
 				return
 			bullets++
-			to_chat(user, "<span class='notice'>You load the foam dart into the crossbow.</span>")
+			to_chat(user, SPAN_NOTICE("You load the foam dart into the crossbow."))
 		else
-			to_chat(user, "<span class='warning'>It's already fully loaded.</span>")
+			to_chat(user, SPAN_WARNING("It's already fully loaded."))
 
 /obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(!isturf(target.loc) || target == user) return
@@ -186,7 +186,7 @@
 					if(!istype(M,/mob/living)) continue
 					if(M == user) continue
 					for(var/mob/O in viewers(world.view, D))
-						O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
+						O.show_message(SPAN_WARNING("\The [M] was hit by the foam dart!"), 1)
 					new /obj/item/toy/ammo/crossbow(M.loc)
 					qdel(D)
 					return
@@ -208,7 +208,7 @@
 	else if (bullets == 0)
 		user.Weaken(5)
 		for(var/mob/O in viewers(world.view, user))
-			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
+			O.show_message(SPAN_WARNING("\The [user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
 /obj/item/toy/crossbow/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -221,8 +221,8 @@
 
 		for(var/mob/O in viewers(target, null))
 			if(O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, target), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
-				O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", target), 1)
+				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head and pulls the trigger!"), 1, SPAN_WARNING("You hear the sound of foam against skull"), 2)
+				O.show_message(SPAN_WARNING("\The [target] was hit in the head by the foam dart!"), 1)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 		new /obj/item/toy/ammo/crossbow(target.loc)
@@ -230,7 +230,7 @@
 	else if (target.lying && src.bullets == 0)
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
+				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!"), 1, SPAN_WARNING("You hear someone fall"), 2)
 		user.Weaken(5)
 
 /obj/item/toy/ammo/crossbow
@@ -334,13 +334,13 @@
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
-			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
+			to_chat(M, SPAN_WARNING("You step on the snap pop!"))
 
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
 			new /obj/effect/debris/cleanable/ash(src.loc)
-			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
+			src.visible_message(SPAN_WARNING("The [src.name] explodes!"),SPAN_WARNING("You hear a snap!"))
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
 			qdel(src)
 
@@ -372,12 +372,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'>You refill your flower!</span>")
+		to_chat(user, SPAN_NOTICE("You refill your flower!"))
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, "<span class='notice'>Your flower has run dry!</span>")
+		to_chat(user, SPAN_NOTICE("Your flower has run dry!"))
 		return
 
 	else
@@ -399,7 +399,7 @@
 				for(var/atom/T in get_turf(D))
 					D.reagents.touch(T)
 					if(ismob(T))
-						to_chat(T, "<span class='warning'>\The [user] has sprayed you with water!</span>")
+						to_chat(T, SPAN_WARNING("\The [user] has sprayed you with water!"))
 				sleep(4)
 			qdel(D)
 
@@ -424,7 +424,7 @@
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user as mob)
 	if(cooldown < world.time - 35)
-		to_chat(user, "<span class='notice'>You blow on [src], creating an ear-splitting noise!</span>")
+		to_chat(user, SPAN_NOTICE("You blow on [src], creating an ear-splitting noise!"))
 		playsound(user, 'sound/misc/boatswain.ogg', 20, 1)
 		cooldown = world.time
 
@@ -439,14 +439,14 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		to_chat(user, "<span class='notice'>You play with [src].</span>")
+		to_chat(user, SPAN_NOTICE("You play with [src]."))
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user as mob)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, "<span class='notice'>You play with [src].</span>")
+			to_chat(user, SPAN_NOTICE("You play with [src]."))
 			playsound(user, 'sound/mecha/mechturn.ogg', 20, 1)
 			cooldown = world.time
 			return
@@ -524,7 +524,7 @@
 /obj/item/toy/figure/attack_self(mob/user as mob)
 	if(cooldown < world.time)
 		cooldown = (world.time + 30) //3 second cooldown
-		user.visible_message("<span class='notice'>The [src] says \"[toysay]\".</span>")
+		user.visible_message(SPAN_NOTICE("The [src] says \"[toysay]\"."))
 		playsound(user, 'sound/machines/click.ogg', 20, 1)
 
 /obj/item/toy/figure/cmo
@@ -849,13 +849,13 @@
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> hugs [src]!"),SPAN_NOTICE("You hug [src]!"))
 	else if (user.a_intent == INTENT_HARM)
-		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> punches [src]!"),SPAN_WARNING("You punch [src]!"))
 	else if (user.a_intent == INTENT_GRAB)
-		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> attempts to strangle [src]!"),SPAN_WARNING("You attempt to strangle [src]!"))
 	else
-		user.visible_message("<span class='notice'><b>\The [user]</b> pokes the [src].</span>","<span class='notice'>You poke the [src].</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> pokes the [src]."),SPAN_NOTICE("You poke the [src]."))
 		visible_message("[src] says, \"[phrase]\"")
 
 
@@ -897,13 +897,13 @@
 	if(world.time - last_message <= 1 SECOND)
 		return
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> hugs [src]!"),SPAN_NOTICE("You hug [src]!"))
 	else if (user.a_intent == INTENT_HARM)
-		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> punches [src]!"),SPAN_WARNING("You punch [src]!"))
 	else if (user.a_intent == INTENT_GRAB)
-		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
+		user.visible_message(SPAN_WARNING("<b>\The [user]</b> attempts to strangle [src]!"),SPAN_WARNING("You attempt to strangle [src]!"))
 	else
-		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src].</span>","<span class='notice'>You poke [src].</span>")
+		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> pokes [src]."),SPAN_NOTICE("You poke [src]."))
 		visible_message("[src] says, \"[pokephrase]\"")
 	last_message = world.time
 
@@ -924,8 +924,8 @@
 
 /obj/item/toy/plushie/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
-		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
-		"<span class='notice'>You make \the [I] kiss \the [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] makes \the [I] kiss \the [src]!."), \
+		SPAN_NOTICE("You make \the [I] kiss \the [src]!"))
 	return ..()
 
 /obj/item/toy/plushie/nymph
@@ -1345,8 +1345,8 @@
 /obj/item/toy/eight_ball/attack_self(mob/user as mob)
 	if(!cooldown)
 		var/answer = pick(possible_answers)
-		user.visible_message("<span class='notice'>[user] focuses on their question and [use_action]...</span>")
-		user.visible_message("<span class='notice'>The [src] says \"[answer]\"</span>")
+		user.visible_message(SPAN_NOTICE("[user] focuses on their question and [use_action]..."))
+		user.visible_message(SPAN_NOTICE("The [src] says \"[answer]\""))
 		spawn(30)
 			cooldown = 0
 		return
@@ -1417,9 +1417,9 @@
 /obj/item/toy/AI/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
 		var/message = generate_ion_law()
-		to_chat(user, "<span class='notice'>You press the button on [src].</span>")
+		to_chat(user, SPAN_NOTICE("You press the button on [src]."))
 		playsound(user, 'sound/machines/click.ogg', 20, 1)
-		visible_message("<span class='danger'>[message]</span>")
+		visible_message(SPAN_DANGER("[message]"))
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
@@ -1436,9 +1436,9 @@
 /obj/item/toy/owl/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("You won't get away this time, Griffin!", "Stop right there, criminal!", "Hoot! Hoot!", "I am the night!")
-		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You pull the string on the [src]."))
 		//playsound(user, 'sound/misc/hoot.ogg', 25, 1)
-		visible_message("<span class='danger'>[message]</span>")
+		visible_message(SPAN_DANGER("[message]"))
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
@@ -1455,9 +1455,9 @@
 /obj/item/toy/griffin/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("You can't stop me, Owl!", "My plan is flawless! The vault is mine!", "Caaaawwww!", "You will never catch me!")
-		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You pull the string on the [src]."))
 		//playsound(user, 'sound/misc/caw.ogg', 25, 1)
-		visible_message("<span class='danger'>[message]</span>")
+		visible_message(SPAN_DANGER("[message]"))
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
@@ -1474,9 +1474,9 @@
 /obj/item/toy/cowgirlprize/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("Yee haw!", "Enjoy my signature CC Root Beer, y'all!", "Shuck 'em up!", "What in tarnation?")
-		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You pull the string on the [src]."))
 		//playsound(user, 'sound/misc/click.ogg', 20, 1)
-		visible_message("<span class='danger'>[message]</span>")
+		visible_message(SPAN_DANGER("[message]"))
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
@@ -1493,9 +1493,9 @@
 /obj/item/toy/snakeoilprize/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("Mwahahaha!", "Try my snake oil! Guaranteed to solve all problems!", "Time to skedaddle.", "Money money money!")
-		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You pull the string on the [src]."))
 		//playsound(user, 'sound/misc/click.ogg', 20, 1)
-		visible_message("<span class='danger'>[message]</span>")
+		visible_message(SPAN_DANGER("[message]"))
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
@@ -1553,7 +1553,7 @@
 		icon_state = "daki_[body_choice]"
 		custom_name = stripped_input(user, "What's her name?")
 		if(length(custom_name) > MAX_NAME_LEN)
-			to_chat(user,"<span class='danger'>Name is too long!</span>")
+			to_chat(user,SPAN_DANGER("Name is too long!"))
 			return FALSE
 		if(custom_name)
 			name = custom_name
@@ -1562,16 +1562,16 @@
 		if(world.time - last_message <= 1 SECOND)
 			return
 		if(user.a_intent == INTENT_HELP)
-			user.visible_message("<span class='notice'>[user] hugs the [name].</span>")
+			user.visible_message(SPAN_NOTICE("[user] hugs the [name]."))
 			playsound(src, "rustle", 50, 1, -5)
 		else if(user.a_intent == INTENT_DISARM)
-			user.visible_message("<span class='notice'>[user] kisses the [name].</span>")
+			user.visible_message(SPAN_NOTICE("[user] kisses the [name]."))
 			playsound(src, "rustle", 50, 1, -5)
 		else if(user.a_intent == INTENT_GRAB)
-			user.visible_message("<span class='warning'>[user] holds the [name]!</span>")
+			user.visible_message(SPAN_WARNING("[user] holds the [name]!"))
 			playsound(src, 'sound/items/bikehorn.ogg', 50, 1)
 		else if(user.a_intent == INTENT_HARM)
-			user.visible_message("<span class='danger'>[user] punches the [name]!</span>")
+			user.visible_message(SPAN_DANGER("[user] punches the [name]!"))
 			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
 		last_message = world.time
 

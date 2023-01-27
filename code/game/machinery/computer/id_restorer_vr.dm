@@ -23,7 +23,7 @@
 				return
 			inserted = I
 		else if(inserted)
-			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
+			to_chat(user, SPAN_WARNING("There is already ID card inside."))
 		return
 	..()
 
@@ -39,38 +39,38 @@
 	switch(choice)
 		if("Restore ID access")
 			if(!inserted)
-				to_chat(user, "<span class='notice'>No ID is inserted.</span>")
+				to_chat(user, SPAN_NOTICE("No ID is inserted."))
 				return
 			var/mob/living/carbon/human/H = user
 			if(!(istype(H)))
-				to_chat(user, "<span class='warning'>Invalid user detected. Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Invalid user detected. Access denied."))
 				flick(icon_fail, src)
 				return
 			else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
-				to_chat(user, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Facial recognition scan failed due to physical obstructions. Access denied."))
 				flick(icon_fail, src)
 				return
 			else if(H.get_face_name() == "Unknown" || !(H.real_name == inserted.registered_name))
-				to_chat(user, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Facial recognition scan failed. Access denied."))
 				flick(icon_fail, src)
 				return
 			else if(LAZYLEN(inserted.lost_access) && !(LAZYLEN(inserted.access)))
 				inserted.access = inserted.lost_access
 				inserted.lost_access = list()
 				inserted.desc = "A partially digested card that has seen better days. The damage to access codes, however, appears to have been mitigated."
-				to_chat(user, "<span class='notice'>ID access codes successfully restored.</span>")
+				to_chat(user, SPAN_NOTICE("ID access codes successfully restored."))
 				flick(icon_success, src)
 				return
 			else if(!(LAZYLEN(inserted.lost_access)))
-				to_chat(user, "<span class='notice'>No recent access codes damage detected. Restoration cancelled.</span>")
+				to_chat(user, SPAN_NOTICE("No recent access codes damage detected. Restoration cancelled."))
 				return
 			else
-				to_chat(user, "<span class='warning'>Terminal encountered unknown error. Contact system administrator or try again.</span>")
+				to_chat(user, SPAN_WARNING("Terminal encountered unknown error. Contact system administrator or try again."))
 				flick(icon_fail, src)
 				return
 		if("Eject ID")
 			if(!inserted)
-				to_chat(user, "<span class='notice'>No ID is inserted.</span>")
+				to_chat(user, SPAN_NOTICE("No ID is inserted."))
 				return
 			if(ishuman(user))
 				inserted.forceMove(get_turf(src))

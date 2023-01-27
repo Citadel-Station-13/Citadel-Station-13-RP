@@ -45,17 +45,17 @@
 	..()
 
 	if(rotation_lock)
-		to_chat(user, "<span class='warning'>\The [src] is locked at its current bearing.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is locked at its current bearing."))
 		return
 	if(external_control_lock)
-		to_chat(user, "<span class='warning'>\The [src]'s motors resist your efforts to rotate it. You may need to find some form of controller.</span>")
+		to_chat(user, SPAN_WARNING("\The [src]'s motors resist your efforts to rotate it. You may need to find some form of controller."))
 		return
 
 	var/confirm = input("Do you want to try to rotate \the [src]?", "[name]") in list("Yes", "No")
 	if(confirm == "No")
 		visible_message(\
-			"<span class='notice'>[user.name] decides not to try turning \the [src].</span>",\
-			"<span class='notice'>You decide not to try turning \the [src].</span>")
+			SPAN_NOTICE("[user.name] decides not to try turning \the [src]."),\
+			SPAN_NOTICE("You decide not to try turning \the [src]."))
 		return
 
 	var/new_bearing
@@ -63,7 +63,7 @@
 		new_bearing = input("What bearing do you want to rotate \the [src] to?", "[name]") as num
 		new_bearing = round(new_bearing)
 		if(new_bearing <= -1 || new_bearing > 360)
-			to_chat(user, "<span class='warning'>Rotating \the [src] [new_bearing] degrees would be a waste of time.</span>")
+			to_chat(user, SPAN_WARNING("Rotating \the [src] [new_bearing] degrees would be a waste of time."))
 			return
 	else
 		var/choice = input("What point do you want to set \the [src] to?", "[name]") as null|anything in compass_directions
@@ -91,11 +91,11 @@
 
 /obj/structure/prop/prism/proc/rotate_auto(var/new_bearing)
 	if(rotation_lock)
-		visible_message("<span class='notice'>\The [src] shudders.</span>")
+		visible_message(SPAN_NOTICE("\The [src] shudders."))
 		playsound(src, 'sound/effects/clang.ogg', 50, 1)
 		return
 
-	visible_message("<span class='notice'>\The [src] rotates to a bearing of [new_bearing].</span>")
+	visible_message(SPAN_NOTICE("\The [src] rotates to a bearing of [new_bearing]."))
 
 	var/rotate_degrees = new_bearing - degrees_from_north
 
@@ -119,7 +119,7 @@
 
 /obj/structure/prop/prism/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj, redirect_type))
-		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
+		visible_message(SPAN_DANGER("\The [src] redirects \the [Proj]!"))
 		flick("[initial(icon_state)]+glow", src)
 
 		var/new_x = (1 * round(10 * cos(degrees_from_north - 90))) + x //Vectors vectors vectors.
@@ -160,12 +160,12 @@
 	var/confirm = input("Do you want to try to rotate \the [src]?", "[name]") in list("Yes", "No")
 	if(confirm == "No")
 		visible_message(\
-			"<span class='notice'>[user.name] decides not to try turning \the [src].</span>",\
-			"<span class='notice'>You decide not to try turning \the [src].</span>")
+			SPAN_NOTICE("[user.name] decides not to try turning \the [src]."),\
+			SPAN_NOTICE("You decide not to try turning \the [src]."))
 		return
 
 	if(!my_turrets || !my_turrets.len)
-		to_chat(user, "<span class='notice'>\The [src] doesn't seem to do anything.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] doesn't seem to do anything."))
 		return
 
 	var/free_rotate = 1
@@ -180,7 +180,7 @@
 		new_bearing = input("What bearing do you want to rotate \the [src] to?", "[name]") as num
 		new_bearing = round(new_bearing)
 		if(new_bearing <= -1 || new_bearing > 360)
-			to_chat(user, "<span class='warning'>Rotating \the [src] [new_bearing] degrees would be a waste of time.</span>")
+			to_chat(user, SPAN_WARNING("Rotating \the [src] [new_bearing] degrees would be a waste of time."))
 			return
 	else
 		var/choice = input("What point do you want to set \the [src] to?", "[name]") as null|anything in compass_directions
@@ -189,11 +189,11 @@
 	confirm = input("Are you certain you want to rotate \the [src]?", "[name]") in list("Yes", "No")
 	if(confirm == "No")
 		visible_message(\
-			"<span class='notice'>[user.name] decides not to try turning \the [src].</span>",\
-			"<span class='notice'>You decide not to try turning \the [src].</span>")
+			SPAN_NOTICE("[user.name] decides not to try turning \the [src]."),\
+			SPAN_NOTICE("You decide not to try turning \the [src]."))
 		return
 
-	to_chat(user, "<span class='notice'>\The [src] clicks into place.</span>")
+	to_chat(user, SPAN_NOTICE("\The [src] clicks into place."))
 	for(var/obj/structure/prop/prism/P in my_turrets)
 		P.rotate_auto(new_bearing)
 

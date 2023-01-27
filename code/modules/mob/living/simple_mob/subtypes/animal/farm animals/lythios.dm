@@ -88,7 +88,7 @@
 /mob/living/simple_mob/animal/icegoat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(4,8))
 		transfered = udder.trans_id_to(G, "frostoil", rand(1,2))
 		if(G.reagents.total_volume >= G.volume)
@@ -164,7 +164,7 @@
 		if(coat_amount == 0)
 			to_chat(user, "<font color='red'>There is not enough wool to shear from the [src].</font>")
 		else
-			user.visible_message("<span class='notice'>[user] shears [src] using \the [O].</span>")
+			user.visible_message(SPAN_NOTICE("[user] shears [src] using \the [O]."))
 			new coat_mat(get_turf(loc), coat_amount)
 			coat_amount = 0
 	else

@@ -351,16 +351,16 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 			reason = "You ran out of food and starved."
 			if(obj_flags & EMAGGED)
 				gamer.set_nutrition(0) //yeah you pretty hongry
-				to_chat(gamer, "<span class='userdanger'>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</span>")
+				to_chat(gamer, SPAN_USERDANGER("Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor."))
 		if(fuel <= 0)
 			reason = "You ran out of fuel, and drift, slowly, into a star."
 			if(obj_flags & EMAGGED)
 				gamer.adjust_fire_stacks(5)
 				gamer.IgniteMob() //flew into a star, so you're on fire
-				to_chat(gamer, "<span class='userdanger'>You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames.</span>")
+				to_chat(gamer, SPAN_USERDANGER("You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames."))
 
 	if(obj_flags & EMAGGED)
-		to_chat(gamer, "<span class='userdanger'>You're never going to make it to Orion...</span>")
+		to_chat(gamer, SPAN_USERDANGER("You're never going to make it to Orion..."))
 		gamer.death()
 		obj_flags &= ~EMAGGED //removes the emagged status after you lose
 		gameStatus = ORION_STATUS_START

@@ -463,7 +463,7 @@ var/list/admin_verbs_event_manager = list(
 	remove_verb(src, list(/client/proc/hide_most_verbs, admin_verbs_hideable))
 	add_verb(src, /client/proc/show_verbs)
 
-	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
+	to_chat(src, SPAN_INTERFACE("Most of your adminverbs have been hidden."))
 	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -474,7 +474,7 @@ var/list/admin_verbs_event_manager = list(
 	remove_admin_verbs()
 	add_verb(src, /client/proc/show_verbs)
 
-	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
+	to_chat(src, SPAN_INTERFACE("Almost all of your adminverbs have been hidden."))
 	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -485,7 +485,7 @@ var/list/admin_verbs_event_manager = list(
 	remove_verb(src, /client/proc/show_verbs)
 	add_admin_verbs()
 
-	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
+	to_chat(src, SPAN_INTERFACE("All of your adminverbs are now visible."))
 	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -760,7 +760,7 @@ var/list/admin_verbs_event_manager = list(
 	set popup_menu = FALSE
 
 	if(!L)
-		to_chat(usr, "<span class='warning'>Looks like you didn't select a mob.</span>")
+		to_chat(usr, SPAN_WARNING("Looks like you didn't select a mob."))
 		return
 
 	var/list/possible_modifiers = typesof(/datum/modifier) - /datum/modifier
@@ -832,7 +832,7 @@ var/list/admin_verbs_event_manager = list(
 		deadmin_holder.reassociate()
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
-		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
+		to_chat(src, SPAN_INTERFACE("You now have the keys to control the planet, or atleast a small space station"))
 		remove_verb(src, /client/proc/readmin_self)
 
 /client/proc/deadmin_self()
@@ -843,7 +843,7 @@ var/list/admin_verbs_event_manager = list(
 		log_admin("[src] deadmined themself.")
 		message_admins("[src] deadmined themself.", 1)
 		deadmin()
-		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		to_chat(src, SPAN_INTERFACE("You are now a normal player."))
 		add_verb(src, /client/proc/readmin_self)
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1069,8 +1069,8 @@ var/list/admin_verbs_event_manager = list(
 
 	if(alert("Are you sure you want to tell them to man up?","Confirmation","Deal with it","No")=="No") return
 
-	to_chat(T, "<span class='notice'><b><font size=3>Man up and deal with it.</font></b></span>")
-	to_chat(T, "<span class='notice'>Move along.</span>")
+	to_chat(T, SPAN_NOTICE("<b><font size=3>Man up and deal with it.</font></b>"))
+	to_chat(T, SPAN_NOTICE("Move along."))
 
 	log_admin("[key_name(usr)] told [key_name(T)] to man up and deal with it.")
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.</font>", 1)

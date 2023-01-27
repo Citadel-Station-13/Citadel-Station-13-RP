@@ -37,7 +37,7 @@
 		if(user==pulling_along)
 			pulling_along = null
 			user.pulledby = null
-			to_chat(user, "<span class='warning'>You lost your grip!</span>")
+			to_chat(user, SPAN_WARNING("You lost your grip!"))
 		return
 	if(has_buckled_mobs() && pulling_along && (user in buckled_mobs))
 		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
@@ -56,10 +56,10 @@
 			if(user == pulling_along)
 				return
 		if(get_dir(src.loc, pulling_along.loc) == direction)
-			to_chat(user, "<span class='warning'>You cannot go there.</span>")
+			to_chat(user, SPAN_WARNING("You cannot go there."))
 			return
 		if(has_buckled_mobs() && (user in buckled_mobs))
-			to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
+			to_chat(user, SPAN_WARNING("You cannot drive while being pushed."))
 			return
 
 	// Let's roll
@@ -105,7 +105,7 @@
 	if(in_range(src, user))
 		if(!ishuman(user))	return
 		if(has_buckled_mobs() && (user in buckled_mobs))
-			to_chat(user, "<span class='warning'>You realize you are unable to push the wheelchair you sit in.</span>")
+			to_chat(user, SPAN_WARNING("You realize you are unable to push the wheelchair you sit in."))
 			return
 		if(!pulling_along)
 			pulling_along = user
@@ -151,11 +151,11 @@
 			victim.apply_effect(6, STUTTER, blocked)
 			victim.apply_damage(10, BRUTE, def_zone, soaked)
 		if(pulling_along)
-			occupant.visible_message("<span class='danger'>[pulling_along] has thrusted \the [name] into \the [A], throwing \the [occupant] out of it!</span>")
+			occupant.visible_message(SPAN_DANGER("[pulling_along] has thrusted \the [name] into \the [A], throwing \the [occupant] out of it!"))
 
 			add_attack_logs(pulling_along,occupant,"Crashed their [name] into [A]")
 		else
-			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
+			occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
 	var/obj/effect/debris/cleanable/blood/tracks/B = new(loc)

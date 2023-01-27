@@ -9,7 +9,7 @@
 
 /obj/item/slime_cube/attack_self(mob/user as mob)
 	if(!searching)
-		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
+		to_chat(user, SPAN_WARNING("You stare at the slimy cube, watching as some activity occurs."))
 		icon_state = "slime cube active"
 		searching = 1
 		request_player()
@@ -45,7 +45,7 @@
 		searching = 0
 		var/turf/T = get_turf_or_move(src.loc)
 		for (var/mob/M in viewers(T))
-			M.show_message("<span class='warning'>The activity in the cube dies down. Maybe it will spark another time.</span>")
+			M.show_message(SPAN_WARNING("The activity in the cube dies down. Maybe it will spark another time."))
 
 /obj/item/slime_cube/proc/transfer_personality(var/mob/candidate)
 	announce_ghost_joinleave(candidate, 0, "They are a promethean now.")
@@ -56,7 +56,7 @@
 	S.mind.assigned_role = SPECIES_PROMETHEAN
 	S.set_species(/datum/species/shapeshifter/promethean)
 	S.shapeshifter_set_colour("#2398FF")
-	visible_message("<span class='warning'>The monkey cube suddenly takes the shape of a humanoid!</span>")
+	visible_message(SPAN_WARNING("The monkey cube suddenly takes the shape of a humanoid!"))
 	var/newname = sanitize(input(S, "You are a Promethean. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
 	if(newname)
 		S.real_name = newname
@@ -85,13 +85,13 @@
 	var/mob/living/L = target
 	if(!istype(L))
 		return
-	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [user]!</span>")
+	L.visible_message(SPAN_WARNING("\The [L] has been teleported with \the [src] by \the [user]!"))
 	safe_blink(L, 14)
 	qdel(src)
 	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
-	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
+	user.visible_message(SPAN_WARNING("\The [user] teleports themselves with \the [src]!"))
 	safe_blink(user, 14)
 	qdel(src)
 
@@ -102,7 +102,7 @@
 	if(AM.anchored)
 		return
 
-	AM.visible_message("<span class='warning'>\The [AM] has been teleported with \the [src]!</span>")
+	AM.visible_message(SPAN_WARNING("\The [AM] has been teleported with \the [src]!"))
 	safe_blink(AM, 14)
 	qdel(src)
 

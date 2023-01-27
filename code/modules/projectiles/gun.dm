@@ -193,11 +193,11 @@
 	if(dna_lock && attached_lock.stored_dna)
 		if(!authorized_user(user))
 			if(attached_lock.safety_level == 0)
-				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapointment and displays an invalid DNA symbol.</span>")
+				to_chat(M, SPAN_DANGER("\The [src] buzzes in dissapointment and displays an invalid DNA symbol."))
 				return 0
 			if(!attached_lock.exploding)
 				if(attached_lock.safety_level == 1)
-					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
+					to_chat(M, SPAN_DANGER("\The [src] hisses in dissapointment."))
 					visible_message("<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>", "<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>")
 					attached_lock.exploding = 1
 					spawn(100)
@@ -206,7 +206,7 @@
 						qdel(src)
 					return 0
 	if(MUTATION_HULK in M.mutations)
-		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
+		to_chat(M, SPAN_DANGER("Your fingers are much too large for the trigger guard!"))
 		return 0
 	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
@@ -215,8 +215,8 @@
 				handle_post_fire(user, user)
 				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message(
-					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
+					SPAN_DANGER("\The [user] shoots [TU.himself] in the foot with \the [src]!"),
+					SPAN_DANGER("You shoot yourself in the foot with \the [src]!")
 					)
 				M.drop_item_to_ground(src)
 		else
@@ -269,11 +269,11 @@
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has a [attached_lock]."))
 			return
 		if(!user.attempt_insert_item_for_installation(A, src))
 			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert \the [A] into \the [src]."))
 		attached_lock = A
 		dna_lock = 1
 		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
@@ -283,10 +283,10 @@
 
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You begin removing \the [attached_lock] from \the [src]."))
 			playsound(src, A.tool_sound, 50, 1)
 			if(do_after(user, 25 * A.tool_speed))
-				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You remove \the [attached_lock] from \the [src]."))
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
@@ -294,56 +294,56 @@
 				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
 				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		else
-			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is not accepting modifications at this time."))
 
 	if(A.is_multitool())
 		if(!scrambled)
-			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
+			to_chat(user, SPAN_NOTICE("You begin scrambling \the [src]'s electronic pins."))
 			playsound(src, A.tool_sound, 50, 1)
 			if(do_after(user, 60 * A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
-						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
+						to_chat(user, SPAN_DANGER("The electronic pin suite detects the intrusion and explodes!"))
 						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
 						explosion(get_turf(src), -1, 0, 2, 3)
 						qdel(src)
 					if(11 to 49)
-						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						to_chat(user, SPAN_NOTICE("You fail to disrupt \the electronic warfare suite."))
 						return
 					if(50 to 100)
-						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						to_chat(user, SPAN_NOTICE("You disrupt \the electronic warfare suite."))
 						scrambled = 1
 		else
-			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] does not have an active electronic warfare suite!"))
 
 	if(A.is_wirecutter())
 		if(pin && scrambled)
-			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You attempt to remove \the firing pin from \the [src]."))
 			playsound(src, A.tool_sound, 50, 1)
 			if(do_after(user, 60* A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
-						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						to_chat(user, SPAN_DANGER("You twist \the firing pin as you tug, destroying the firing pin."))
 						pin = null
 					if(11 to 74)
-						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
+						to_chat(user, SPAN_NOTICE("You grasp the firing pin, but it slips free!"))
 						return
 					if(75 to 100)
-						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
+						to_chat(user, SPAN_NOTICE("You remove \the firing pin from \the [src]."))
 						user.put_in_hands(src.pin)
 						pin = null
 			else if(!do_after())
 				return
 		else if(pin && !scrambled)
-			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("The \the firing pin is firmly locked into \the [src]."))
 		else
-			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] does not have a firing pin installed!"))
 
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
 	if(dna_lock && attached_lock.controller_lock)
-		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You short circuit the internal locking mechanisms of \the [src]!"))
 		attached_lock.controller_dna = null
 		attached_lock.controller_lock = 0
 		attached_lock.stored_dna = list()
@@ -364,7 +364,7 @@
 
 	if(world.time < next_fire_time)
 		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return
 
 	if(check_safety())
@@ -422,7 +422,7 @@
 	// We do this down here, so we don't get the message if we fire an empty gun.
 	if(user.is_holding(src) && user.hands_full())
 		if(one_handed_penalty >= 20)
-			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
+			to_chat(user, SPAN_WARNING("You struggle to keep \the [src] pointed at the correct position with just one hand!"))
 
 	var/target_for_log
 	if(ismob(target))
@@ -535,7 +535,7 @@
 //called if there was no projectile to shoot
 /obj/item/gun/proc/handle_click_empty(mob/user)
 	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
+		user.visible_message("*click click*", SPAN_DANGER("*click*"))
 	else
 		visible_message("*click click*")
 	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
@@ -549,18 +549,18 @@
 		flick(fire_anim, src)
 
 	if(silenced)
-		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
+		to_chat(user, SPAN_WARNING("You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]"))
 		for(var/mob/living/L in oview(2,user))
 			if(L.stat)
 				continue
 			if(L.blinded)
 				to_chat(L, "You hear a [fire_sound_text]!")
 				continue
-			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
+			to_chat(L, 	SPAN_DANGER("\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!"))
 	else
 		user.visible_message(
-			"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
-			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
+			SPAN_DANGER("\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!"),
+			SPAN_WARNING("You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!"),
 			"You hear a [fire_sound_text]!"
 			)
 
@@ -572,24 +572,24 @@
 			switch(one_handed_penalty)
 				if(1 to 15)
 					if(prob(50)) //don't need to tell them every single time
-						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
+						to_chat(user, SPAN_WARNING("Your aim wavers slightly."))
 				if(16 to 30)
-					to_chat(user, "<span class='warning'>Your aim wavers as you fire \the [src] with just one hand.</span>")
+					to_chat(user, SPAN_WARNING("Your aim wavers as you fire \the [src] with just one hand."))
 				if(31 to 45)
-					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
+					to_chat(user, SPAN_WARNING("You have trouble keeping \the [src] on target with just one hand."))
 				if(46 to INFINITY)
-					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
+					to_chat(user, SPAN_WARNING("You struggle to keep \the [src] on target with just one hand!"))
 		else if(!user.can_wield_item(src))
 			switch(one_handed_penalty)
 				if(1 to 15)
 					if(prob(50)) //don't need to tell them every single time
-						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
+						to_chat(user, SPAN_WARNING("Your aim wavers slightly."))
 				if(16 to 30)
-					to_chat(user, "<span class='warning'>Your aim wavers as you try to hold \the [src] steady.</span>")
+					to_chat(user, SPAN_WARNING("Your aim wavers as you try to hold \the [src] steady."))
 				if(31 to 45)
-					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
+					to_chat(user, SPAN_WARNING("You have trouble holding \the [src] steady."))
 				if(46 to INFINITY)
-					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
+					to_chat(user, SPAN_WARNING("You struggle to hold \the [src] steady!"))
 
 	if(recoil)
 		spawn()
@@ -765,7 +765,7 @@
 		sel_mode = 1
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
-	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+	to_chat(user, SPAN_NOTICE("\The [src] is now set to [new_mode.name]."))
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
@@ -782,7 +782,7 @@
 			pin.auth_fail(user)
 			return 0
 	else
-		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
+		to_chat(user, SPAN_WARNING("[src]'s trigger is locked. This weapon doesn't have a firing pin installed!"))
 	return 0
 
 /obj/item/gun/update_overlays()

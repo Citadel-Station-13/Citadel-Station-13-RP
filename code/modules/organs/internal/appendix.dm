@@ -28,11 +28,11 @@
 
 	if(inflamed)
 		if(prob(5))
-			to_chat(owner, "<span class='warning'>You feel a stinging pain in your abdomen!</span>")
+			to_chat(owner, SPAN_WARNING("You feel a stinging pain in your abdomen!"))
 			owner.emote("me", 1, "winces slightly.")
 	if(inflamed > 1)
 		if(prob(3))
-			to_chat(owner, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
+			to_chat(owner, SPAN_WARNING("You feel a stabbing pain in your abdomen!"))
 			owner.emote("me", 1, "winces painfully.")
 			owner.adjustToxLoss(1)
 	if(inflamed > 2)
@@ -40,7 +40,7 @@
 			owner.vomit()
 	if(inflamed > 3)
 		if(prob(1))
-			to_chat(owner, "<span class='danger'>Your abdomen is a world of pain!</span>")
+			to_chat(owner, SPAN_DANGER("Your abdomen is a world of pain!"))
 			owner.Weaken(10)
 
 			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)

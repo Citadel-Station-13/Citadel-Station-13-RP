@@ -181,7 +181,7 @@
 /obj/machinery/oxygen_pump/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = TRUE)
 	var/data[0]
 	if(!tank)
-		to_chat(usr, "<span class='warning'>It is missing a tank!</span>")
+		to_chat(usr, SPAN_WARNING("It is missing a tank!"))
 		data["tankPressure"] = 0
 		data["releasePressure"] = 0
 		data["defaultReleasePressure"] = 0

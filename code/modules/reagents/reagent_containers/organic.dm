@@ -86,14 +86,14 @@
 
 /obj/item/reagent_containers/organic/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to peeol open \the [src] first.</span>")
+		to_chat(user, SPAN_NOTICE("You need to peeol open \the [src] first."))
 		return 1
 	if(user.a_intent == INTENT_HARM)
 		return 1
 	return ..()
 
 /obj/item/reagent_containers/organic/self_feed_message(var/mob/user)
-	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You swallow a gulp from \the [src]."))
 
 /obj/item/reagent_containers/organic/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
@@ -109,7 +109,7 @@
 		if(standard_splash_mob(user,target))
 			return 1
 		if(reagents && reagents.total_volume)
-			to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>") //They are on harm intent, aka wanting to spill it.
+			to_chat(user, SPAN_NOTICE("You splash the solution onto [target].")) //They are on harm intent, aka wanting to spill it.
 			reagents.splash(target, reagents.total_volume)
 			return 1
 	..()
@@ -118,13 +118,13 @@
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
 		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)
-			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
+			to_chat(user, SPAN_NOTICE("The label can be at most 50 characters long."))
 		else if(length(tmp_label) > 10)
-			to_chat(user, "<span class='notice'>You set the label.</span>")
+			to_chat(user, SPAN_NOTICE("You set the label."))
 			label_text = tmp_label
 			update_name_label()
 		else
-			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			to_chat(user, SPAN_NOTICE("You set the label to \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
 	if(istype(W,/obj/item/storage/bag))
@@ -132,7 +132,7 @@
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
 	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
-		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You dip \the [W] into \the [src]."))
 		reagents.touch_obj(W, reagents.total_volume)
 
 /obj/item/reagent_containers/organic/proc/update_name_label()

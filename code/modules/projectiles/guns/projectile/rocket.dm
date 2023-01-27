@@ -20,24 +20,24 @@
 /obj/item/gun/ballistic/rocket/proc/load(obj/item/ammo_casing/rocket/R, mob/user)
 	if(R.loadable)
 		if(rockets.len >= max_rockets)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
 		user.remove_from_mob(R)
 		R.loc = src
 		rockets.Insert(1, R) //add to the head of the list, so that it is loaded on the next pump
-		user.visible_message("[user] inserts \a [R] into [src].", "<span class='notice'>You insert \a [R] into [src].</span>")
+		user.visible_message("[user] inserts \a [R] into [src].", SPAN_NOTICE("You insert \a [R] into [src]."))
 		return
-	to_chat(user, "<span class='warning'>[R] doesn't seem to fit in the [src]!</span>")
+	to_chat(user, SPAN_WARNING("[R] doesn't seem to fit in the [src]!"))
 
 /obj/item/gun/ballistic/rocket/proc/unload(mob/user)
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/R = rockets[rockets.len]
 		rockets.len--
 		user.put_in_hands(R)
-		user.visible_message("[user] removes \a [R] from [src].", "<span class='notice'>You remove \a [R] from [src].</span>")
+		user.visible_message("[user] removes \a [R] from [src].", SPAN_NOTICE("You remove \a [R] from [src]."))
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='warning'>[src] is empty.</span>")
+		to_chat(user, SPAN_WARNING("[src] is empty."))
 
 /obj/item/gun/ballistic/rocket/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/rocket)))
@@ -78,32 +78,32 @@
 
 /obj/item/gun/ballistic/rocket/collapsible/special_check(mob/user)
 	if(collapsed)
-		to_chat(user, "<span class='warning'>[src] is collapsed! You must extend it before firing!</span>")
+		to_chat(user, SPAN_WARNING("[src] is collapsed! You must extend it before firing!"))
 		return 0
 	return ..()
 
 /obj/item/gun/ballistic/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
-	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
+	to_chat(user, SPAN_DANGER("You cannot reload the [src]!"))
 	return
 
 /obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user as mob)
 	if(user.get_inactive_held_item() == src)
-		to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
+		to_chat(user, SPAN_DANGER("You cannot unload the [src]'s munition!"))
 		return
 	else
 		return ..()
 
 /obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
 	if(collapsed)
-		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
+		to_chat(user, SPAN_NOTICE("You pull out the tube on the [src], readying the weapon to be fired."))
 		icon_state = "[initial(icon_state)]-extended"
 		item_state = "[initial(item_state)]-extended"
 		collapsed = 0
 	else if(!collapsed && empty)
-		to_chat(user, "<span class='danger'>You cannot collapse the [src] after it has been fired!</span>")
+		to_chat(user, SPAN_DANGER("You cannot collapse the [src] after it has been fired!"))
 		return
 	else
-		to_chat(user, "<span class='notice'>You push the tube back into the [src], collapsing the weapon.</span>")
+		to_chat(user, SPAN_NOTICE("You push the tube back into the [src], collapsing the weapon."))
 		icon_state = "[initial(icon_state)]"
 		item_state = "[initial(item_state)]"
 		collapsed = 1
@@ -136,18 +136,18 @@
 		if(unstable)
 			switch(rand(1,100))
 				if(1 to 10)
-					to_chat(user, "<span class='danger'>The rocket primer activates early!</span>")
+					to_chat(user, SPAN_DANGER("The rocket primer activates early!"))
 					icon_state = "rokkitlauncher-malfunction"
 					spawn(rand(1,5))
 						if(src && !jammed)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
+							visible_message(SPAN_CRITICAL("\The [src] detonates!"))
 							jammed = 1
 							explosion(get_turf(src), -1, 0, 2, 3)
 							qdel(chambered)
 							qdel(src)
 					return ..()
 				if(11 to 29)
-					to_chat(user, "<span class='notice'>The rocket flares out in the tube!</span>")
+					to_chat(user, SPAN_NOTICE("The rocket flares out in the tube!"))
 					playsound(src, 'sound/machines/button.ogg', 25)
 					icon_state = "rokkitlauncher-broken"
 					jammed = 1
@@ -159,6 +159,6 @@
 				if(30 to 100)
 					return 1
 		if(jammed)
-			to_chat(user, "<span class='notice'>The [src] is jammed!</span>")
+			to_chat(user, SPAN_NOTICE("The [src] is jammed!"))
 			handle_click_empty()
 			return

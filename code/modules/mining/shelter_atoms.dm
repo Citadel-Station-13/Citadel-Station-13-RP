@@ -39,7 +39,7 @@
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
-		loc.visible_message("<span class='warning'>\The [src] begins to shake. Stand back!</span>")
+		loc.visible_message(SPAN_WARNING("\The [src] begins to shake. Stand back!"))
 		used = TRUE
 
 		sleep(5 SECONDS)
@@ -53,13 +53,13 @@
 		switch(status)
 			//Not allowed due to /area technical reasons
 			if(SHELTER_DEPLOY_BAD_AREA)
-				src.loc.visible_message("<span class='warning'>\The [src] will not function in this area.</span>")
+				src.loc.visible_message(SPAN_WARNING("\The [src] will not function in this area."))
 
 			//Anchored objects or no space
 			if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS)
 				var/width = template.width
 				var/height = template.height
-				src.loc.visible_message("<span class='warning'>\The [src] doesn't have room to deploy! You need to clear a [width]x[height] area!</span>")
+				src.loc.visible_message(SPAN_WARNING("\The [src] doesn't have room to deploy! You need to clear a [width]x[height] area!"))
 
 		if(status != SHELTER_DEPLOY_ALLOWED)
 			used = FALSE
@@ -172,7 +172,7 @@
 	return ..()
 
 /obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You cannot dismantle \the [src]."))
 	return
 
 //Sleeper
@@ -201,8 +201,8 @@
 
 /obj/item/gps/computer/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())
-		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
-			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")
+		user.visible_message(SPAN_WARNING("[user] disassembles [src]."),
+			SPAN_NOTICE("You start to disassemble [src]..."), "You hear clanking and banging noises.")
 		if(do_after(user,4 SECONDS,src))
 			new /obj/item/gps(loc)
 			qdel(src)
@@ -266,8 +266,8 @@
 
 /obj/structure/fans/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())
-		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
-			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")
+		user.visible_message(SPAN_WARNING("[user] disassembles [src]."),
+			SPAN_NOTICE("You start to disassemble [src]..."), "You hear clanking and banging noises.")
 		if(do_after(user,4 SECONDS,src))
 			deconstruct()
 			return TRUE

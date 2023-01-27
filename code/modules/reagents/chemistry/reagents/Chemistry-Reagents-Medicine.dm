@@ -264,7 +264,7 @@
 	else if(alien == IS_SLIME && dose >= 15)
 		M.add_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
-			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
+			to_chat(M, SPAN_NOTICE("You have a moment of clarity as you collapse."))
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
 			M.Weaken(6)
 	else if(alien != IS_DIONA)
@@ -290,7 +290,7 @@
 	else if(alien == IS_SLIME && dose >= 10)
 		M.add_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
-			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
+			to_chat(M, SPAN_NOTICE("You have a moment of clarity, as you feel your tubes lose pressure rapidly."))
 			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
 			M.Weaken(3)
 	else if(alien != IS_DIONA)
@@ -352,7 +352,7 @@
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)//Upgrades bruise packs into advanced trauma kits
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			holder.my_atom.visible_message(SPAN_NOTICE("\The [packname] bubbles."))
 			remove_self(to_produce * 5)
 */
 //Cryo chems
@@ -372,7 +372,7 @@
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			chem_effective = 0.25
-			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
+			to_chat(M, SPAN_DANGER("It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration."))
 			M.Weaken(10)
 			M.silent = max(M.silent, 10)
 			M.make_jittery(4)
@@ -397,7 +397,7 @@
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(M, SPAN_DANGER("It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching."))
 			chem_effective = 0.5
 			M.Weaken(20)
 			M.silent = max(M.silent, 20)
@@ -431,7 +431,7 @@
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(M, SPAN_DANGER("It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching."))
 			chem_effective = 0.5
 			M.Weaken(20)
 			M.silent = max(M.silent, 20)
@@ -530,7 +530,7 @@
 /datum/reagent/numbing_enzyme/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
-		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
+		to_chat(M,SPAN_WARNING("Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth."))
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
 
 /datum/reagent/numbing_enzyme/overdose(var/mob/living/carbon/M, var/alien)
@@ -538,24 +538,24 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(prob(1))
-			to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
+			to_chat(H,SPAN_WARNING("Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!"))
 			H.AdjustWeakened(5) //Fall onto the floor for a few moments.
 			H.Confuse(15) //Be unable to walk correctly for a bit longer.
 		if(prob(1))
 			if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
-				to_chat(H,"<span class='warning'>You feel a sharp stabbing pain in your chest and quickly realize that your lungs have stopped functioning!</span>") //Let's scare them a bit.
+				to_chat(H,SPAN_WARNING("You feel a sharp stabbing pain in your chest and quickly realize that your lungs have stopped functioning!")) //Let's scare them a bit.
 				H.losebreath = 10
 				H.adjustOxyLoss(5)
 		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
+			to_chat(H,SPAN_WARNING("You feel a dull pain behind your eyes and at thee back of your head..."))
 			H.hallucination += 20 //It messes with your mind for some reason.
 			H.eye_blurry += 20 //Groggy vision for a small bit.
 		if(prob(3))
-			to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
+			to_chat(H,SPAN_WARNING("You shiver, your body continually being assaulted by the sensation of pins and needles."))
 			H.emote("shiver")
 			H.make_jittery(10)
 		if(prob(3))
-			to_chat(H,"<span class='warning'>Your tongue feels numb and unresponsive.</span>")
+			to_chat(H,SPAN_WARNING("Your tongue feels numb and unresponsive."))
 			H.stuttering += 20
 
 /* Other medicine */
@@ -852,7 +852,7 @@
 			if(prob(5))
 				H.vomit(1)
 			else if(prob(5))
-				to_chat(H,"<span class='danger'>Something churns inside you.</span>")
+				to_chat(H,SPAN_DANGER("Something churns inside you."))
 				H.adjustToxLoss(10 * removed)
 				H.vomit(0, 1)
 		else
@@ -1112,12 +1112,12 @@
 	if(alien == IS_SLIME)
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>You regain focus...</span>")
+			to_chat(M, SPAN_NOTICE("You regain focus..."))
 		else
 			var/delay = (5 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
+				to_chat(M, SPAN_WARNING("Your senses feel unfocused, and divided."))
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/spaceacillin/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1144,12 +1144,12 @@
 	if(ishuman(M) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>Your body ceases its revolt.</span>")
+			to_chat(M, SPAN_NOTICE("Your body ceases its revolt."))
 		else
 			var/delay = (3 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='critical'>It feels like your body is revolting!</span>")
+				to_chat(M, SPAN_CRITICAL("It feels like your body is revolting!"))
 		M.Confuse(7)
 		M.adjustFireLoss(removed * 2)
 		M.adjustToxLoss(removed * 2)
@@ -1158,7 +1158,7 @@
 			M.eye_blurry = min(20, max(0, M.eye_blurry + 10))
 			if(prob(25))
 				if(prob(25))
-					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
+					to_chat(M, SPAN_DANGER("Your pneumatic fluids seize for a moment."))
 				M.Stun(2)
 				spawn(30)
 					M.Weaken(2)
@@ -1171,7 +1171,7 @@
 		if(M.bruteloss >= 60 && M.toxloss >= 60 && M.brainloss >= 30) //Total Structural Failure. Limbs start splattering.
 			var/obj/item/organ/external/O = pick(H.organs)
 			if(prob(20) && !istype(O, /obj/item/organ/external/chest/unbreakable/slime) && !istype(O, /obj/item/organ/external/groin/unbreakable/slime))
-				to_chat(M, "<span class='critical'>You feel your [O] begin to dissolve, before it sloughs from your body.</span>")
+				to_chat(M, SPAN_CRITICAL("You feel your [O] begin to dissolve, before it sloughs from your body."))
 				O.droplimb() //Splat.
 		return
 
@@ -1216,12 +1216,12 @@
 	if(alien == IS_SLIME)
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>The itching fades...</span>")
+			to_chat(M, SPAN_NOTICE("The itching fades..."))
 		else
 			var/delay = (2 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='warning'>Your skin itches.</span>")
+				to_chat(M, SPAN_WARNING("Your skin itches."))
 
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 	M.add_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
@@ -1235,7 +1235,7 @@
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			holder.my_atom.visible_message(SPAN_NOTICE("\The [packname] bubbles."))
 			remove_self(to_produce)
 
 /datum/reagent/sterilizine
@@ -1278,7 +1278,7 @@
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
 			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+			S.visible_message(SPAN_WARNING("[S]'s flesh sizzles where the fluid touches it!"), SPAN_DANGER("Your flesh burns in the fluid!"))
 		remove_self(amount)
 
 /datum/reagent/leporazine
@@ -1366,11 +1366,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You lose focus...</span>")
+		to_chat(M, SPAN_WARNING("You lose focus..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
+			to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))
 
 /datum/reagent/citalopram
 	name = "Citalopram"
@@ -1389,11 +1389,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
+		to_chat(M, SPAN_WARNING("Your mind feels a little less stable..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
+			to_chat(M, SPAN_NOTICE("Your mind feels stable... a little stable."))
 
 /datum/reagent/paroxetine
 	name = "Paroxetine"
@@ -1412,14 +1412,14 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
+		to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
+				to_chat(M, SPAN_NOTICE("Your mind feels much more stable."))
 			else
-				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
+				to_chat(M, SPAN_WARNING("Your mind breaks apart..."))
 				M.hallucination += 200
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
@@ -1457,11 +1457,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
+		to_chat(M, SPAN_WARNING("You feel antsy, your concentration wavers..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+			to_chat(M, SPAN_NOTICE("You feel invigorated and calm."))
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
 /datum/reagent/healing_nanites
@@ -1585,7 +1585,7 @@
 		var/removed_heat = between(0, volume * 19000, -environment.get_thermal_energy_change(min_temperature))
 		environment.adjust_thermal_energy(-removed_heat)
 		if(prob(5))
-			T.visible_message("<span class='warning'>The foam sizzles as it lands on \the [T]!</span>")
+			T.visible_message(SPAN_WARNING("The foam sizzles as it lands on \the [T]!"))
 
 /datum/reagent/firefighting_foam/touch_obj(var/obj/O, reac_volume)
 	O.water_act(reac_volume / 5)
@@ -1594,7 +1594,7 @@
 	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = M
 		S.adjustToxLoss(15 * reac_volume)
-		S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
+		S.visible_message(SPAN_WARNING("[S]'s flesh sizzles where the foam touches it!"), SPAN_DANGER("Your flesh burns in the foam!"))
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
@@ -1615,7 +1615,7 @@
 
 /datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
 	remove_self(30)
-	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
+	to_chat(M, SPAN_WARNING("It feels like there's a pile of knives in your stomach!"))
 	M.druggy += 10
 	M.vomit()
 

@@ -137,19 +137,19 @@
 				desc = "A paper sack with a crude smile etched onto the side."
 			else
 				return FALSE
-		to_chat(user, "<span class='notice'>You make some modifications to [src] using your pen.</span>")
+		to_chat(user, SPAN_NOTICE("You make some modifications to [src] using your pen."))
 		icon_state = "paperbag_[choice]"
 		item_state = "paperbag_[choice]"
 		return FALSE
 	else if(is_sharp())
 		if(!contents.len)
 			if(item_state == "paperbag_None")
-				to_chat("<span class='notice'>You cut eyeholes into [src].</span>")
+				to_chat(SPAN_NOTICE("You cut eyeholes into [src]."))
 				new /obj/item/clothing/head/papersack(user.loc)
 				qdel(src)
 				return FALSE
 			else if(item_state == "paperbag_SmileyFace")
-				to_chat("<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
+				to_chat(SPAN_NOTICE("You cut eyeholes into [src] and modify the design."))
 				new /obj/item/clothing/head/papersack/smiley(user.loc)
 				qdel(src)
 				return FALSE
@@ -168,10 +168,10 @@
 	if(user.incapacitated())
 		return FALSE
 	if(contents.len)
-		to_chat(user, "<span class='warning'>You can't modify [src] with items still inside!</span>")
+		to_chat(user, SPAN_WARNING("You can't modify [src] with items still inside!"))
 		return FALSE
 	if(!P)
-		to_chat(user, "<span class='warning'>You need a pen to modify [src]!</span>")
+		to_chat(user, SPAN_WARNING("You need a pen to modify [src]!"))
 		return FALSE
 	return TRUE
 

@@ -97,8 +97,8 @@
 			src.take_organ_damage(0,5,emp=1)
 			Confuse(2)
 	flash_eyes(affect_silicon = 1)
-	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
-	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
+	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
+	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
@@ -112,9 +112,9 @@
 
 		shock_damage *= siemens_coeff	//take reduced damage
 		take_overall_damage(0, shock_damage)
-		visible_message("<span class='warning'>[src] was shocked by \the [source]!</span>", \
-			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear an electrical crack.</span>")
+		visible_message(SPAN_WARNING("[src] was shocked by \the [source]!"), \
+			SPAN_DANGER("Energy pulse detected, system damaged!"), \
+			SPAN_WARNING("You hear an electrical crack."))
 		if(prob(20))
 			Stun(2)
 		return
@@ -172,7 +172,7 @@
 /mob/living/silicon/proc/show_station_manifest()
 	var/dat = "<div align='center'>"
 	if(!data_core)
-		to_chat(src,"<span class='notice'>There is no data to form a manifest with. Contact your Nanotrasen administrator.</span>")
+		to_chat(src,SPAN_NOTICE("There is no data to form a manifest with. Contact your Nanotrasen administrator."))
 		return
 	dat += data_core.get_manifest(1) //The 1 makes it monochrome.
 
@@ -183,7 +183,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	if(error_msg)
-		to_chat(user, "<span class='alert'>The armoured plating is too tough.</span>")
+		to_chat(user, SPAN_ALERT("The armoured plating is too tough."))
 	return 0
 
 //Silicon mob language procs
@@ -245,10 +245,10 @@
 	switch(sensor_type)
 		if ("Security")
 			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(src)
-			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
+			to_chat(src,SPAN_NOTICE("Security records overlay enabled."))
 		if ("Medical")
 			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
-			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
+			to_chat(src,SPAN_NOTICE("Life signs monitor overlay enabled."))
 		if ("Disable")
 			to_chat(src,"Sensor augmentations disabled.")
 
@@ -323,7 +323,7 @@
 					alarm_raised = 1
 					if(!reported)
 						reported = 1
-						to_chat(src, "<span class='warning'>--- [AH.category] Detected ---</span>")
+						to_chat(src, SPAN_WARNING("--- [AH.category] Detected ---"))
 					raised_alarm(A)
 
 		for(var/datum/alarm_handler/AH in queued_alarms)
@@ -333,7 +333,7 @@
 				if(alarms[A] == -1)
 					if(!reported)
 						reported = 1
-						to_chat(src, "<span class='notice'>--- [AH.category] Cleared ---</span>")
+						to_chat(src, SPAN_NOTICE("--- [AH.category] Cleared ---"))
 					to_chat(src, "\The [A.alarm_name()].")
 
 		if(alarm_raised)

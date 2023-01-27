@@ -288,7 +288,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 	..()
 
@@ -329,9 +329,9 @@
 /obj/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/airlock_electronics) && istype(src, /obj/machinery/atmospherics/tvalve/digital))
 		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, SPAN_WARNING("Access denied."))
 			return 1
-		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
+		to_chat(user, SPAN_NOTICE("You begin to upload access data to \the [src]..."))
 		if (do_after(user, 20))
 			var/obj/item/airlock_electronics/E = W
 			if(E.one_access)
@@ -341,25 +341,25 @@
 				req_access = E.conf_access
 				req_one_access = null
 			user.visible_message( \
-				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
-				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
+				SPAN_NOTICE("\The [user] uploads access data to \the [src]."), \
+				SPAN_NOTICE("You copied access data from \the [W] to \the [src]."), \
 				"You hear a faint beep.")
 		return 0
 
 	if (!W.is_wrench())
 		return ..()
 	if (istype(src, /obj/machinery/atmospherics/tvalve/digital) && !src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 	if(unsafe_pressure())
-		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+		to_chat(user, SPAN_WARNING("You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider.."))
 	add_fingerprint(user)
 	playsound(src, W.tool_sound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
 			"You hear a ratchet.")
 		deconstruct()
 

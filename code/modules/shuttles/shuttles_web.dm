@@ -118,7 +118,7 @@
 			continue
 		if(!H.shuttle_comp || !(get_area(H) in shuttle_area))
 			H.shuttle_comp = null
-			H.audible_message("<span class='warning'>\The [H] pings as it loses it's connection with the ship.</span>")
+			H.audible_message(SPAN_WARNING("\The [H] pings as it loses it's connection with the ship."))
 			H.update_hud("discon")
 			helmets -= H
 		else
@@ -147,16 +147,16 @@
 
 /datum/shuttle/autodock/web_shuttle/proc/rename_shuttle(mob/user)
 	if(!can_rename)
-		to_chat(user, "<span class='warning'>You can't rename this vessel.</span>")
+		to_chat(user, SPAN_WARNING("You can't rename this vessel."))
 		return
 	var/new_name = input(user, "Please enter a new name for this vessel. Note that you can only set its name once, so choose wisely.", "Rename Shuttle", visible_name) as null|text
 	var/sanitized_name = sanitizeName(new_name, MAX_NAME_LEN, TRUE)
 	if(sanitized_name)
-		to_chat(user, "<span class='notice'>You've renamed the vessel to '[sanitized_name]'.</span>")
+		to_chat(user, SPAN_NOTICE("You've renamed the vessel to '[sanitized_name]'."))
 		message_admins("[key_name_admin(user)] renamed shuttle '[visible_name]' to '[sanitized_name]'.")
 		visible_name = sanitized_name
 	else
-		to_chat(user, "<span class='warning'>The name you supplied was invalid. Try another name.</span>")
+		to_chat(user, SPAN_WARNING("The name you supplied was invalid. Try another name."))
 
 /obj/machinery/computer/shuttle_control/web
 	name = "flight computer"
@@ -199,7 +199,7 @@
 		var/obj/item/clothing/head/pilot/H = I
 		H.shuttle_comp = src
 		shuttle.helmets |= I
-		to_chat(user, "<span class='notice'>You register the helmet with the ship's console.</span>")
+		to_chat(user, SPAN_NOTICE("You register the helmet with the ship's console."))
 		shuttle.update_helmets()
 		return
 
@@ -211,7 +211,7 @@
 	var/list/routes[0]
 	var/datum/shuttle/autodock/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(shuttle))
-		to_chat(user, "<span class='warning'>Unable to establish link with the shuttle.</span>")
+		to_chat(user, SPAN_WARNING("Unable to establish link with the shuttle."))
 		return
 
 	var/list/R = shuttle.web_master.get_available_routes()
@@ -308,13 +308,13 @@
 
 		if("dock_command")
 			if(WS.autopilot)
-				to_chat(usr, "<span class='warning'>The autopilot must be disabled before you can control the vessel manually.</span>")
+				to_chat(usr, SPAN_WARNING("The autopilot must be disabled before you can control the vessel manually."))
 				return
 			WS.dock()
 
 		if("undock_command")
 			if(WS.autopilot)
-				to_chat(usr, "<span class='warning'>The autopilot must be disabled before you can control the vessel manually.</span>")
+				to_chat(usr, SPAN_WARNING("The autopilot must be disabled before you can control the vessel manually."))
 				return
 			WS.undock()
 
@@ -323,16 +323,16 @@
 				return
 			WS.cloaked = !WS.cloaked
 			if(WS.cloaked)
-				to_chat(usr, "<span class='danger'>Ship stealth systems have been activated. The station will not be warned of our arrival.</span>")
+				to_chat(usr, SPAN_DANGER("Ship stealth systems have been activated. The station will not be warned of our arrival."))
 			else
-				to_chat(usr, "<span class='danger'>Ship stealth systems have been deactivated. The station will be warned of our arrival.</span>")
+				to_chat(usr, SPAN_DANGER("Ship stealth systems have been deactivated. The station will be warned of our arrival."))
 
 		if("toggle_autopilot")
 			WS.adjust_autopilot(!WS.autopilot)
 
 		if("traverse")
 			if(WS.autopilot)
-				to_chat(usr, "<span class='warning'>The autopilot must be disabled before you can control the vessel manually.</span>")
+				to_chat(usr, SPAN_WARNING("The autopilot must be disabled before you can control the vessel manually."))
 				return
 
 			if((WS.last_move + WS.cooldown) > world.time)
@@ -358,7 +358,7 @@
 				return
 
 			WS.web_master.future_destination = target_destination
-			to_chat(usr, "<span class='notice'>[WS.visible_name] flight computer received command.</span>")
+			to_chat(usr, SPAN_NOTICE("[WS.visible_name] flight computer received command."))
 			WS.web_master.reset_autopath() // Deviating from the path will almost certainly confuse the autopilot, so lets just reset its memory.
 
 			var/travel_time = new_route.travel_time * WS.flight_time_modifier

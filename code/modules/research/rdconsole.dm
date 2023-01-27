@@ -125,11 +125,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		else if (istype(D, /obj/item/disk/design_disk))
 			d_disk = D
 		else
-			to_chat(user, "<span class='notice'>Machine cannot accept disks in that format.</span>")
+			to_chat(user, SPAN_NOTICE("Machine cannot accept disks in that format."))
 			return
 		if(!user.attempt_insert_item_for_installation(D, src))
 			return
-		to_chat(user, "<span class='notice'>You add \the [D] to the machine.</span>")
+		to_chat(user, SPAN_NOTICE("You add \the [D] to the machine."))
 		SStgui.update_uis(src)
 	else
 		//The construction/deconstruction of the console code.
@@ -139,7 +139,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	if(!emagged)
 		playsound(src, 'sound/effects/sparks4.ogg', 75, 1)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
+		to_chat(user, SPAN_NOTICE("You you disable the security protocols."))
 		return 1
 
 /obj/machinery/computer/rdconsole/proc/GetResearchLevelsInfo()

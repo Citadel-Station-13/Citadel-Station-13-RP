@@ -39,13 +39,13 @@
 			name = ("bookcase ([newname])")
 	else if(O.is_wrench())
 		playsound(loc, O.tool_sound, 100, 1)
-		to_chat(user, (anchored ? "<span class='notice'>You unfasten \the [src] from the floor.</span>" : "<span class='notice'>You secure \the [src] to the floor.</span>"))
+		to_chat(user, (anchored ? SPAN_NOTICE("You unfasten \the [src] from the floor.") : SPAN_NOTICE("You secure \the [src] to the floor.")))
 		anchored = !anchored
 	else if(O.is_screwdriver())
 		playsound(loc, O.tool_sound, 75, 1)
-		to_chat(user, "<span class='notice'>You begin dismantling \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin dismantling \the [src]."))
 		if(do_after(user,25 * O.tool_speed))
-			to_chat(user, "<span class='notice'>You dismantle \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You dismantle \the [src]."))
 			new /obj/item/stack/material/wood(get_turf(src), 3)
 			for(var/obj/item/book/b in contents)
 				b.loc = (get_turf(src))
@@ -221,12 +221,12 @@
 /obj/item/book/attack_self(var/mob/user as mob)
 	if(carved)
 		if(store)
-			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
+			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
 			store.forceMove(drop_location())
 			store = null
 			return
 		else
-			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
+			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
 			return
 	if(src.dat)
 		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
@@ -242,13 +242,13 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				store = W
-				to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
+				to_chat(user, SPAN_NOTICE("You put [W] in [title]."))
 				return
 			else
-				to_chat(user, "<span class='notice'>[W] won't fit in [title].</span>")
+				to_chat(user, SPAN_NOTICE("[W] won't fit in [title]."))
 				return
 		else
-			to_chat(user, "<span class='notice'>There's already something in [title]!</span>")
+			to_chat(user, SPAN_NOTICE("There's already something in [title]!"))
 			return
 	if(istype(W, /obj/item/pen))
 		if(unique)
@@ -311,9 +311,9 @@
 					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Title added to general inventory.'")
 	else if(istype(W, /obj/item/material/knife) || W.is_wirecutter())
 		if(carved)	return
-		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
+		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
 		if(do_after(user, 30))
-			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
+			to_chat(user, SPAN_NOTICE("You carve out the pages from [title]! You didn't want to read it anyway."))
 			carved = 1
 			return
 	else
@@ -323,8 +323,8 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting == O_EYES)
-		user.visible_message("<span class='notice'>You open up the book and show it to [target]. </span>", \
-			"<span class='notice'> [user] opens up a book and shows it to [target]. </span>")
+		user.visible_message(SPAN_NOTICE("You open up the book and show it to [target]. "), \
+			SPAN_NOTICE(" [user] opens up a book and shows it to [target]. "))
 		target << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
@@ -395,7 +395,7 @@
 		src.attack_self(usr)
 		updateUsrDialog()
 	else
-		to_chat(usr, "<span class='notice'>You need to hold it in your hands!</span>")
+		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
 /*
  * Barcode Scanner

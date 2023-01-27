@@ -72,20 +72,20 @@
 			pods += P
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
-			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You connect [P] to [src]."))
 	else if(istype(W, /obj/item/disk/transcore) && SStranscore && !SStranscore.core_dumped)
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		disk = W
-		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
 	// if(istype(W, /obj/item/disk/body_record))
 	// 	var/obj/item/disk/body_record/brDisk = W
 	// 	if(!brDisk.stored)
-	// 		to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
+	// 		to_chat(user, SPAN_WARNING("\The [W] does not contain a stored body record."))
 	// 		return
 	// 	active_br = new /datum/transhuman/body_record(brDisk.stored) // Loads a COPY!
 	// 	menu = 4
-	// 	to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
+	// 	to_chat(user, SPAN_NOTICE("\The [src] loads the body record from \the [W] before ejecting it."))
 	// 	attack_hand(user)
 	if(istype(W, /obj/item/implant/mirror))
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -277,7 +277,7 @@
 		if(disk)
 			SStranscore.core_dump(disk)
 			sleep(5)
-			visible_message("<span class='warning'>\The [src] spits out \the [disk].</span>")
+			visible_message(SPAN_WARNING("\The [src] spits out \the [disk]."))
 			disk.forceMove(get_turf(src))
 			disk = null
 
@@ -430,7 +430,7 @@
 
 /obj/item/cmo_disk_holder/attack_self(var/mob/attacker)
 	playsound(src, 'sound/items/poster_ripped.ogg', 50)
-	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
+	to_chat(attacker, SPAN_WARNING("You tear open \the [name]."))
 	attacker.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	var/obj/item/disk/transcore/newdisk = new(get_turf(src))
 	attacker.put_in_hands_or_drop(newdisk)

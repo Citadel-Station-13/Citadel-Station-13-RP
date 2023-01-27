@@ -26,7 +26,7 @@
 	bellied = prey
 	prey.forceMove(src)
 	visible_message("[src] entirely engulfs [prey] in hardlight holograms!")
-	to_chat(usr, "<span class='notice'>You completely engulf [prey] in hardlight holograms!</span>") //Can't be part of the above, because the above is from the hologram.
+	to_chat(usr, SPAN_NOTICE("You completely engulf [prey] in hardlight holograms!")) //Can't be part of the above, because the above is from the hologram.
 
 	desc = "[initial(desc)] It seems to have hardlight mode enabled and someone inside."
 	pass_flags = 0
@@ -54,7 +54,7 @@
 
 	// Wrong state
 	if (!eyeobj || !holo)
-		to_chat(usr, "<span class='warning'>You can only use this when holo-projecting!</span>")
+		to_chat(usr, SPAN_WARNING("You can only use this when holo-projecting!"))
 		return
 
 	//Holopads have this 'masters' list where the keys are AI names and the values are the hologram effects

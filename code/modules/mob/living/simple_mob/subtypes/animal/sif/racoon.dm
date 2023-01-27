@@ -86,14 +86,14 @@
 		hat = null
 		update_icon()
 		if(user == src)
-			to_chat(user, "<span class='notice'>You removed your hat.</span>")
+			to_chat(user, SPAN_NOTICE("You removed your hat."))
 			return
-		to_chat(user, "<span class='warning'>You removed \the [src]'s hat. You monster.</span>")
+		to_chat(user, SPAN_WARNING("You removed \the [src]'s hat. You monster."))
 	else
 		if(user == src)
-			to_chat(user, "<span class='notice'>You are not wearing a hat!</span>")
+			to_chat(user, SPAN_NOTICE("You are not wearing a hat!"))
 			return
-		to_chat(user, "<span class='notice'>\The [src] is not wearing a hat!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is not wearing a hat!"))
 
 /mob/living/simple_mob/animal/sif/sakimm/verb/give_hat()
 	set name = "Give Hat"
@@ -106,15 +106,15 @@
 /mob/living/simple_mob/animal/sif/sakimm/proc/take_hat(var/mob/user)
 	if(hat)
 		if(user == src)
-			to_chat(user, "<span class='notice'>You already have a hat!</span>")
+			to_chat(user, SPAN_NOTICE("You already have a hat!"))
 			return
-		to_chat(user, "<span class='notice'>\The [src] already has a hat!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] already has a hat!"))
 	else
 		if(user == src)
 			if(istype(get_active_held_item(), /obj/item/clothing/head))
 				hat = get_active_held_item()
 				transfer_item_to_loc(hat, src, INV_OP_FORCE)
-				to_chat(src, "<span class='notice'>You put on the hat.</span>")
+				to_chat(src, SPAN_NOTICE("You put on the hat."))
 				update_icon()
 			return
 		else if(ishuman(user))
@@ -128,10 +128,10 @@
 					a_intent = INTENT_HELP
 					newhat.attack_hand(src)
 			else if(src.get_active_held_item())
-				to_chat(user, "<span class='notice'>\The [src] seems busy with \the [get_active_held_item()] already!</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] seems busy with \the [get_active_held_item()] already!"))
 
 			else
-				to_chat(user, "<span class='warning'>You aren't holding a hat...</span>")
+				to_chat(user, SPAN_WARNING("You aren't holding a hat..."))
 
 /datum/say_list/sakimm
 	speak = list("Shurr.", "|R|rr?", "Hss.")
@@ -183,7 +183,7 @@
 	if(holder.get_active_held_item() && istype(holder.get_active_held_item(), /obj/item/clothing/head) && !S.hat)
 		var/obj/item/I = holder.get_active_held_item()
 		S.take_hat(S)
-		holder.visible_message("<span class='notice'>\The [holder] wears \the [I]</span>")
+		holder.visible_message(SPAN_NOTICE("\The [holder] wears \the [I]"))
 
 /mob/living/simple_mob/animal/sif/sakimm/intelligent
 	desc = "What appears to be an oversized rodent with hands. This one has a curious look in its eyes."
@@ -332,7 +332,7 @@
 		if(istype(holder) && istype(holder.get_active_held_item(), /obj/item/clothing/head) && !S.hat)
 			var/obj/item/I = holder.get_active_held_item()
 			S.take_hat(S)
-			holder.visible_message("<span class='notice'>\The [holder] wears \the [I]</span>")
+			holder.visible_message(SPAN_NOTICE("\The [holder] wears \the [I]"))
 		carrying_item = TRUE
 
 	if(istype(holder) && S.hat)		// Do we have a hat? Hats are loot.

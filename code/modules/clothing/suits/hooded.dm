@@ -52,10 +52,10 @@
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = src.loc
 			if(H.wear_suit != src)
-				to_chat(H, "<span class='warning'>You must be wearing [src] to put up the hood!</span>")
+				to_chat(H, SPAN_WARNING("You must be wearing [src] to put up the hood!"))
 				return
 			if(H.head)
-				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
+				to_chat(H, SPAN_WARNING("You're already wearing something on your head!"))
 				return
 			else
 				if(atom_flags & PHORONGUARD)
@@ -372,8 +372,8 @@
 		return
 	else
 		user.dropItemToGround(src)
-		to_chat(user,"<span class='large_brass'>\"Amusing that you think you are fit to wear this.\"</span>")
-		to_chat(user,"<span class='userdanger'>Your skin burns where the coat touched your skin!</span>")
+		to_chat(user,SPAN_LARGE_BRASS("\"Amusing that you think you are fit to wear this.\""))
+		to_chat(user,SPAN_USERDANGER("Your skin burns where the coat touched your skin!"))
 		user.adjustFireLoss(rand(10,16))
 */
 
@@ -394,8 +394,8 @@
 		return
 	else
 		user.dropItemToGround(src)
-		to_chat(user,"<span class='cultlarge'>\"You are not fit to wear my follower's coat!\"</span>")
-		to_chat(user,"<span class='userdanger'>Sharp spines jab you from within the coat!</span>")
+		to_chat(user,SPAN_CULTLARGE("\"You are not fit to wear my follower's coat!\""))
+		to_chat(user,SPAN_USERDANGER("Sharp spines jab you from within the coat!"))
 		user.adjustBruteLoss(rand(10,16))
 */
 

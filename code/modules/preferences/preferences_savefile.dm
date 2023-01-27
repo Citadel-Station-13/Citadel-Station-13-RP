@@ -14,7 +14,7 @@
 	// check DOS guard
 	if(initialized && world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
+			to_chat(client, SPAN_WARNING("You're attempting to load your preferences a little too fast. Wait half a second, then try again."))
 		return FALSE
 	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	// get savefile
@@ -54,7 +54,7 @@
 	// check DOS guard
 	if(initialized && world.time < saveprefcooldown)
 		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
+			to_chat(client, SPAN_WARNING("You're attempting to save your preferences a little too fast. Wait half a second, then try again."))
 		return FALSE
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	// get saveflie
@@ -111,7 +111,7 @@
 	// check DOS guard
 	if(initialized && world.time < loadcharcooldown)
 		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
+			to_chat(client, SPAN_WARNING("You're attempting to load your character a little too fast. Wait half a second, then try again."))
 		return FALSE
 	loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	// get savefile
@@ -171,7 +171,7 @@
 	// check DOS guard
 	if(initialized && world.time < savecharcooldown)
 		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
+			to_chat(client, SPAN_WARNING("You're attempting to save your character a little too fast. Wait half a second, then try again."))
 		return FALSE
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	// get saveflie

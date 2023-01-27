@@ -157,7 +157,7 @@
 /*
 	var/mob/mo = locate(/mob) in src
 	if(mo)
-		var/rendered = "<span class='game say'><span class='name'>[M.name]: </span> <span class='message'>[text]</span></span>"
+		var/rendered = SPAN_GAME SAY("<span class='name'>[M.name]: </span> <span class='message'>[text]</span>")
 		mo.show_message(rendered, 2)
 		*/
 	return

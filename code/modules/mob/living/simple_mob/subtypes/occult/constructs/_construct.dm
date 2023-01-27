@@ -113,7 +113,7 @@
 			if(l_spell.aspect == ASPECT_CHROMATIC) //Check the other hand too.
 				l_spell.on_combine_cast(S, src)
 		else //Welp
-			to_chat(src, "<span class='warning'>You require a free manipulator to use this power.</span>")
+			to_chat(src, SPAN_WARNING("You require a free manipulator to use this power."))
 			return 0
 
 	if(S.run_checks())
@@ -155,9 +155,9 @@
 			var/repair_upper_bound = A.melee_damage_upper * -1
 			adjustBruteLoss(rand(repair_lower_bound, repair_upper_bound))
 			adjustFireLoss(rand(repair_lower_bound, repair_upper_bound))
-			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] mends some of \the [src]'s wounds."))
 		else
-			to_chat(user, "<span class='notice'>\The [src] is undamaged.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is undamaged."))
 		return
 	return ..()
 

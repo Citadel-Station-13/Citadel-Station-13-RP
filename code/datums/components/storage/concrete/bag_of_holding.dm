@@ -10,10 +10,10 @@
 			return
 		var/turf/loccheck = get_turf(A)
 		if(is_reebe(loccheck.z))
-			user.visible_message("<span class='warning'>An unseen force knocks [user] to the ground!</span>", "<span class='big_brass'>\"I think not!\"</span>")
+			user.visible_message(SPAN_WARNING("An unseen force knocks [user] to the ground!"), SPAN_BIG_BRASS("\"I think not!\""))
 			user.Paralyze(60)
 			return
-		to_chat(user, "<span class='danger'>The Bluespace interfaces of the two devices catastrophically malfunction!</span>")
+		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices catastrophically malfunction!"))
 		qdel(W)
 		playsound(loccheck,'sound/effects/supermatter.ogg', 200, TRUE)
 

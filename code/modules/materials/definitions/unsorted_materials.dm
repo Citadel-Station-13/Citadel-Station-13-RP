@@ -294,7 +294,7 @@
 		return 0
 
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
+		to_chat(user, SPAN_WARNING("This task is too complex for your clumsy hands."))
 		return 1
 
 	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
@@ -310,7 +310,7 @@
 		build_path = created_window
 
 	if(used_stack.get_amount() < sheets_needed)
-		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
+		to_chat(user, SPAN_WARNING("You need at least [sheets_needed] sheets to build this."))
 		return 1
 
 	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
@@ -318,7 +318,7 @@
 
 	var/turf/T = user.loc
 	if(!istype(T))
-		to_chat(user, "<span class='warning'>You must be standing on open flooring to build a window.</span>")
+		to_chat(user, SPAN_WARNING("You must be standing on open flooring to build a window."))
 		return 1
 
 	// Get data for building windows here.
@@ -353,7 +353,7 @@
 			else
 				failed_to_build = 1
 	if(failed_to_build)
-		to_chat(user, "<span class='warning'>There is no room in this location.</span>")
+		to_chat(user, SPAN_WARNING("There is no room in this location."))
 		return 1
 
 	// Build the structure and update sheet count etc.
@@ -657,7 +657,7 @@
 /datum/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
-		to_chat(M, "<span class='alien'>\The [W] shudders under your touch, starting to become porous.</span>")
+		to_chat(M, SPAN_ALIEN("\The [W] shudders under your touch, starting to become porous."))
 		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
 		if(do_after(L, 5 SECONDS))
 			spawn(2)

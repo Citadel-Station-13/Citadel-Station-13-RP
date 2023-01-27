@@ -352,7 +352,7 @@
 	pestlevel = 0
 	sampled = 0
 	update_icon()
-	visible_message("<span class='notice'>[src] has been overtaken by [seed.display_name].</span>")
+	visible_message(SPAN_NOTICE("[src] has been overtaken by [seed.display_name]."))
 
 	return
 
@@ -440,7 +440,7 @@
 	weedlevel = 0
 
 	update_icon()
-	visible_message("<span class='danger'>The </span><span class='notice'>[previous_plant]</span><span class='danger'> has suddenly mutated into </span><span class='notice'>[seed.display_name]!</span>")
+	visible_message(SPAN_DANGER("The </span><span class='notice'>[previous_plant]</span><span class='danger'> has suddenly mutated into </span><span class='notice'>[seed.display_name]!"))
 
 	return
 
@@ -510,16 +510,16 @@
 			plant_seeds(S)
 
 		else
-			to_chat(user, "<span class='danger'>\The [src] already has seeds in it!</span>")
+			to_chat(user, SPAN_DANGER("\The [src] already has seeds in it!"))
 
 	else if (istype(O, /obj/item/material/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message("<span class='danger'>[user] starts uprooting the weeds.</span>", "<span class='danger'>You remove the weeds from the [src].</span>")
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
 			weedlevel = 0
 			update_icon()
 		else
-			to_chat(user, "<span class='danger'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>")
+			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
 
 	else if (istype(O, /obj/item/storage/bag/plants))
 
@@ -555,19 +555,19 @@
 
 	else if(istype(O,/obj/item/multitool))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>Anchor it first!</span>")
+			to_chat(user, SPAN_WARNING("Anchor it first!"))
 			return
 		if(frozen == -1)
-			to_chat(user, "<span class='warning'>You see no way to use \the [O] on [src].</span>")
+			to_chat(user, SPAN_WARNING("You see no way to use \the [O] on [src]."))
 			return
-		to_chat(user, "<span class='notice'>You [frozen ? "disable" : "enable"] the cryogenic freezing.</span>")
+		to_chat(user, SPAN_NOTICE("You [frozen ? "disable" : "enable"] the cryogenic freezing."))
 		frozen = !frozen
 		update_icon()
 		return
 
 	else if(O.force && seed)
 		user.setClickCooldown(user.get_attack_speed(O))
-		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
+		user.visible_message(SPAN_DANGER("\The [seed.display_name] has been attacked by [user] with \the [O]!"))
 		if(!dead)
 			health -= O.force
 			check_health()
@@ -585,7 +585,7 @@
 	if(istype(usr,/mob/living/silicon))
 		return
 	if(frozen == 1)
-		to_chat(user, "<span class='warning'>Disable the cryogenic freezing first!</span>")
+		to_chat(user, SPAN_WARNING("Disable the cryogenic freezing first!"))
 	if(harvest)
 		harvest(user)
 	else if(dead)
@@ -594,7 +594,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/examine(mob/user)
 	. = ..()
 	if(seed)
-		. += "<span class='notice'>[seed.display_name] are growing here.</span>"
+		. += SPAN_NOTICE("[seed.display_name] are growing here.")
 	else
 		. += "[src] is empty."
 
@@ -610,11 +610,11 @@
 		if(pestlevel >= 5)
 			. += "\The [src] is <span class='danger'>infested with tiny worms</span>!"
 		if(dead)
-			. += "<span class='danger'>The plant is dead.</span>"
+			. += SPAN_DANGER("The plant is dead.")
 		else if(health <= (seed.get_trait(TRAIT_ENDURANCE)/ 2))
 			. += "The plant looks <span class='danger'>unhealthy</span>."
 	if(frozen == 1)
-		. += "<span class='notice'>It is cryogenically frozen.</span>"
+		. += SPAN_NOTICE("It is cryogenically frozen.")
 	if(mechanical)
 		var/turf/T = loc
 		var/datum/gas_mixture/environment

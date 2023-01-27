@@ -140,22 +140,22 @@
 		if("use")
 			if(powered())
 				on = !on
-				to_chat(user, "<span class='notice'>You turn \the [src] [on ? "on" : "off"].</span>")
+				to_chat(user, SPAN_NOTICE("You turn \the [src] [on ? "on" : "off"]."))
 
 		if("inspect gauges")
-			to_chat(user, "<span class='notice'>\The [src]'s gauges read:</span>")
+			to_chat(user, SPAN_NOTICE("\The [src]'s gauges read:"))
 			if(!use_atmos)
-				to_chat(user, "<span class='notice'>- Target Temperature:</span> <span class='warning'>[target_temp]</span>")
-			to_chat(user, "<span class='notice'>- Temperature:</span> <span class='warning'>[current_temp]</span>")
+				to_chat(user, SPAN_NOTICE("- Target Temperature:</span> <span class='warning'>[target_temp]"))
+			to_chat(user, SPAN_NOTICE("- Temperature:</span> <span class='warning'>[current_temp]"))
 
 		if("pulse agitator")
-			to_chat(user, "<span class='notice'>You press \the [src]'s chamber agitator button.</span>")
+			to_chat(user, SPAN_NOTICE("You press \the [src]'s chamber agitator button."))
 			if(on)
-				visible_message("<span class='notice'>\The [src] rattles to life.</span>")
+				visible_message(SPAN_NOTICE("\The [src] rattles to life."))
 				Reservoir.reagents.handle_reactions()
 			else
 				spawn(1 SECOND)
-					to_chat(user, "<span class='notice'>Nothing happens..</span>")
+					to_chat(user, SPAN_NOTICE("Nothing happens.."))
 
 		if("eject input")
 			if(InputBeaker)
@@ -265,7 +265,7 @@
 		else if(connected_port && avg_pressure > 1000)
 			current_temp = round((current_temp + avg_temp) / 2)
 		else if(!run_pump)
-			visible_message("<span class='notice'>\The [src]'s motors wind down.</span>")
+			visible_message(SPAN_NOTICE("\The [src]'s motors wind down."))
 			on = FALSE
 
 		if(InputBeaker && Reservoir.reagents.total_volume < Reservoir.reagents.maximum_volume)

@@ -198,7 +198,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 	if(is_preference_enabled(/datum/client_preference/play_lobby_music))
 		var/datum/track/T = pick(all_lobby_tracks)
 		media.push_music(T.url, world.time, 0.85)
-		to_chat(src,"<span class='notice'>Lobby music: <b>[T.title]</b> by <b>[T.artist]</b>.</span>")
+		to_chat(src,SPAN_NOTICE("Lobby music: <b>[T.title]</b> by <b>[T.artist]</b>."))
 
 /**
  * Directly returns an ogg for a given id.

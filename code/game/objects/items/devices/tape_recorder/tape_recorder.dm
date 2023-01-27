@@ -47,12 +47,12 @@
 /obj/item/tape_recorder/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/cassette_tape))
 		if(tape)
-			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")
+			to_chat(user, SPAN_NOTICE("There's already a tape inside."))
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		tape = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 		update_icon()
 		return
 	..()
@@ -259,12 +259,12 @@
 	if(usr.incapacitated())
 		return
 	if(!tape)
-		to_chat(usr, "<span class='notice'>There's no tape in \the [src].</span>")
+		to_chat(usr, SPAN_NOTICE("There's no tape in \the [src]."))
 		return
 	if(obj_flags & EMAGGED)
-		to_chat(usr, "<span class='notice'>The tape seems to be stuck inside.</span>")
+		to_chat(usr, SPAN_NOTICE("The tape seems to be stuck inside."))
 		return
-	to_chat(usr, "<span class='notice'>You remove [tape] from [src].</span>")
+	to_chat(usr, SPAN_NOTICE("You remove [tape] from [src]."))
 	stop_everything()
 	usr.grab_item_from_interacted_with(tape, src)
 	tape = null
@@ -316,17 +316,17 @@
 	if(obj_flags & EMAGGED)
 		obj_flags |= EMAGGED
 		recording = 0
-		to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
+		to_chat(user, SPAN_WARNING("PZZTTPFFFT"))
 		update_icon()
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>It is already emagged!</span>")
+		to_chat(user, SPAN_WARNING("It is already emagged!"))
 
 /obj/item/tape_recorder/proc/explode()
 	var/turf/T = get_turf(loc)
 	if(ismob(loc))
 		var/mob/M = loc
-		to_chat(M, "<span class='danger'>\The [src] explodes!</span>")
+		to_chat(M, SPAN_DANGER("\The [src] explodes!"))
 	if(T)
 		T.hotspot_expose(700,125)
 		explosion(T, light_impact_range = 3)
@@ -357,13 +357,13 @@
 	if(usr.incapacitated())
 		return
 	if(obj_flags & EMAGGED)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_WARNING("The tape recorder makes a scratchy noise."))
 		return
 	if(!tape)
 		to_chat(usr, SPAN_WARNING("The tape recorder has no tape inside."))
 		return
 	if(tape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_WARNING("The tape recorder makes a scratchy noise."))
 		return
 	if(is_busy())
 		to_chat(usr, SPAN_WARNING("The tape recorder is busy!"))
@@ -378,25 +378,25 @@
 	if(usr.incapacitated())
 		return
 	if(!tape)
-		to_chat(usr, "<span class='notice'>There's no tape!</span>")
+		to_chat(usr, SPAN_NOTICE("There's no tape!"))
 		return
 	if(tape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_WARNING("The tape recorder makes a scratchy noise."))
 		return
 	if(obj_flags & EMAGGED)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_WARNING("The tape recorder makes a scratchy noise."))
 		return
 	if(!print_ready())
-		to_chat(usr, "<span class='notice'>The recorder can't print that fast!</span>")
+		to_chat(usr, SPAN_NOTICE("The recorder can't print that fast!"))
 		return
 	if(is_busy())
-		to_chat(usr, "<span class='notice'>You can't print the transcript while playing or recording!</span>")
+		to_chat(usr, SPAN_NOTICE("You can't print the transcript while playing or recording!"))
 		return
 	if(!_read_lock())
 		to_chat(usr, SPAN_WARNING("The tape is busy!"))
 		return
 
-	to_chat(usr, "<span class='notice'>Transcript printed.</span>")
+	to_chat(usr, SPAN_NOTICE("Transcript printed."))
 	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	var/list/constructed = list()
 	constructed += "<center><b>Transcript:</b></center><hr>"

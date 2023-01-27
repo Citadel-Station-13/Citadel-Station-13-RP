@@ -69,7 +69,7 @@
 	//We'll load our client's organs if we have one
 	if(client && client.prefs_vr)
 		if(!copy_from_prefs_vr())
-			to_chat(src,"<span class='warning'>ERROR: You seem to have saved VOREStation prefs, but they couldn't be loaded.</span>")
+			to_chat(src,SPAN_WARNING("ERROR: You seem to have saved VOREStation prefs, but they couldn't be loaded."))
 			return FALSE
 		if(LAZYLEN(vore_organs))
 			vore_selected = vore_organs[1]
@@ -112,7 +112,7 @@
 			///// If user clicked on themselves
 			if((src == G.assailant) && (is_vore_predator(src)))
 				if(!(G.affecting.devourable))
-					to_chat(user, "<span class='notice'>They aren't able to be devoured.</span>")
+					to_chat(user, SPAN_NOTICE("They aren't able to be devoured."))
 					return FALSE
 				if(src.feed_grabbed_to_self(src, G.affecting))
 					qdel(G)
@@ -123,7 +123,7 @@
 			///// If user clicked on their grabbed target
 			else if((src == G.affecting) && (attacker.a_intent == INTENT_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
 				if(!(G.affecting.feeding))
-					to_chat(user, "<span class='notice'>[G.affecting] isn't willing to be fed.</span>")
+					to_chat(user, SPAN_NOTICE("[G.affecting] isn't willing to be fed."))
 					return FALSE
 				if (attacker.feed_self_to_grabbed(attacker, G.affecting))
 					qdel(G)
@@ -134,13 +134,13 @@
 			///// If user clicked on anyone else but their grabbed target
 			else if((src != G.affecting) && (src != G.assailant) && (is_vore_predator(src)))
 				if(!(src.feeding))
-					to_chat(user, "<span class='notice'>[src] isn't willing to be fed.</span>")
+					to_chat(user, SPAN_NOTICE("[src] isn't willing to be fed."))
 					return FALSE
 				if(!(G.affecting.devourable))
-					to_chat(user, "<span class='notice'>[G.affecting] isn't able to be devoured.</span>")
+					to_chat(user, SPAN_NOTICE("[G.affecting] isn't able to be devoured."))
 					return FALSE
 				if(!(G.affecting.feeding))
-					to_chat(user, "<span class='notice'>[src] isn't able to be fed to someone.</span>")
+					to_chat(user, SPAN_NOTICE("[src] isn't able to be fed to someone."))
 					return FALSE
 
 				if (attacker.feed_grabbed_to_other(attacker, G.affecting, src))
@@ -172,7 +172,7 @@
 			var/obj/belly/B = input("Which belly?","Select A Belly") as null|anything in vore_organs
 			if(!istype(B))
 				return TRUE
-			visible_message("<span class='warning'>[user] is trying to stuff a beacon into [src]'s [lowertext(B.name)]!</span>","<span class='warning'>[user] is trying to stuff a beacon into you!</span>")
+			visible_message(SPAN_WARNING("[user] is trying to stuff a beacon into [src]'s [lowertext(B.name)]!"),SPAN_WARNING("[user] is trying to stuff a beacon into you!"))
 			if(do_after(user, 30, src))
 				if(!user.attempt_insert_item_for_installation(I, B))
 					return
@@ -222,7 +222,7 @@
 
 /mob/living/proc/copy_to_prefs_vr()
 	if(!client || !client.prefs_vr)
-		to_chat(src,"<span class='warning'>You attempted to save your vore prefs but somehow you're in this character without a client.prefs_vr variable. Tell a dev.</span>")
+		to_chat(src,SPAN_WARNING("You attempted to save your vore prefs but somehow you're in this character without a client.prefs_vr variable. Tell a dev."))
 		return FALSE
 
 	var/datum/vore_preferences/P = client.prefs_vr
@@ -256,7 +256,7 @@
 //
 /mob/living/proc/copy_from_prefs_vr()
 	if(!client || !client.prefs_vr)
-		to_chat(src,"<span class='warning'>You attempted to apply your vore prefs but somehow you're in this character without a client.prefs_vr variable. Tell a dev.</span>")
+		to_chat(src,SPAN_WARNING("You attempted to apply your vore prefs but somehow you're in this character without a client.prefs_vr variable. Tell a dev."))
 		return FALSE
 
 	var/datum/vore_preferences/P = client.prefs_vr
@@ -344,7 +344,7 @@
 
 	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
-	visible_message("<span class='warning'>[src] licks [tasted]!</span>","<span class='notice'>You lick [tasted]. They taste rather like [tasted.get_taste_message()].</span>","<b>Slurp!</b>")
+	visible_message(SPAN_WARNING("[src] licks [tasted]!"),SPAN_NOTICE("You lick [tasted]. They taste rather like [tasted.get_taste_message()]."),"<b>Slurp!</b>")
 
 
 /mob/living/proc/get_taste_message(allow_generic = 1)
@@ -381,7 +381,7 @@
 		return
 
 	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	visible_message("<span class='warning'>[src] smells [smelled]!</span>","<span class='notice'>You smell [smelled]. They smell like [smelled.get_smell_message()].</span>","<b>Sniff!</b>")
+	visible_message(SPAN_WARNING("[src] smells [smelled]!"),SPAN_NOTICE("You smell [smelled]. They smell like [smelled.get_smell_message()]."),"<b>Sniff!</b>")
 
 /mob/living/proc/get_smell_message(allow_generic = 1)
 	if(!vore_smell && !allow_generic)
@@ -444,7 +444,7 @@
 
 	//Don't appear to be in a vore situation
 	else
-		to_chat(src,"<span class='alert'>You aren't inside anyone, though, is the thing.</span>")
+		to_chat(src,SPAN_ALERT("You aren't inside anyone, though, is the thing."))
 
 //
 // Eating procs depending on who clicked what
@@ -489,13 +489,15 @@
 	if(user_to_pred > 1 || user_to_prey > 1)
 		return FALSE
 
-	// Prepare messages
+	// Prepare messages, madlibs style.
+	var/voreverb = lowertext(belly.vore_verb)
+	var/bellyname = lowertext(belly.name)
 	if(user == pred) //Feeding someone to yourself
-		attempt_msg = text("<span class='warning'>[] is attempting to [] [] into their []!</span>",pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
-		success_msg = text("<span class='warning'>[] manages to [] [] into their []!</span>",pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
+		attempt_msg =SPAN_WARNING("[pred] is attempting to [voreverb] [prey] into their [bellyname]!")
+		success_msg =SPAN_WARNING("[pred] manages to [voreverb] [prey] into their [bellyname]!")
 	else //Feeding someone to another person
-		attempt_msg = text("<span class='warning'>[] is attempting to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
-		success_msg = text("<span class='warning'>[] manages to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
+		attempt_msg = SPAN_WARNING("[user] is attempting to make [pred] [voreverb] [prey] into their [bellyname]!")
+		success_msg = SPAN_WARNING("[user] manages to make [pred] [voreverb] [prey] into their [bellyname]!")
 
 	// Announce that we start the attempt!
 	user.visible_message(attempt_msg)
@@ -521,7 +523,7 @@
 
 	// Flavor handling
 	if(belly.can_taste && prey.get_taste_message(FALSE))
-		to_chat(belly.owner, "<span class='notice'>[prey] tastes of [prey.get_taste_message(FALSE)].</span>")
+		to_chat(belly.owner, SPAN_NOTICE("[prey] tastes of [prey.get_taste_message(FALSE)]."))
 
 	// Inform Admins
 	if (pred == user)
@@ -613,7 +615,7 @@
 	//If they're passed out, the light won't help them. Same with buckled. Really, I think it's fine to do this whenever.
 	glow_toggle = !glow_toggle
 
-	to_chat(src,"<span class='notice'>You <b>[glow_toggle ? "en" : "dis"]</b>able your body's glow.</span>")
+	to_chat(src,SPAN_NOTICE("You <b>[glow_toggle ? "en" : "dis"]</b>able your body's glow."))
 
 /mob/living/proc/glow_color()
 	set name = "Glow (Set Color)"
@@ -632,21 +634,21 @@
 	set desc = "Consume held garbage."
 
 	if(!vore_selected)
-		to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+		to_chat(src,SPAN_WARNING("You either don't have a belly selected, or don't have a belly!"))
 		return
 
 	var/obj/item/I = get_active_held_item()
 	if(!I)
-		to_chat(src, "<span class='notice'>You are not holding anything.</span>")
+		to_chat(src, SPAN_NOTICE("You are not holding anything."))
 		return
 
 	if(is_type_in_list(I,GLOB.item_vore_blacklist))
-		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
+		to_chat(src, SPAN_WARNING("You are not allowed to eat this."))
 		return
 
 	if(is_type_in_list(I,edible_trash) || adminbus_trash)
 		if(I.hidden_uplink)
-			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+			to_chat(src, SPAN_WARNING("You really should not be eating this."))
 			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 			return
 		if(istype(I,/obj/item/pda))
@@ -660,22 +662,22 @@
 				if(!watching)
 					return
 				else
-					visible_message("<span class='warning'>[src] is threatening to make [P] disappear!</span>")
+					visible_message(SPAN_WARNING("[src] is threatening to make [P] disappear!"))
 					if(P.id)
 						var/confirm = alert(src, "The PDA you're holding contains a vulnerable ID card. Will you risk it?", "Confirmation", "Definitely", "Cancel")
 						if(confirm != "Definitely")
 							return
 					if(!do_after(src, 100, P))
 						return
-					visible_message("<span class='warning'>[src] successfully makes [P] disappear!</span>")
-			to_chat(src, "<span class='notice'>You can taste the sweet flavor of delicious technology.</span>")
+					visible_message(SPAN_WARNING("[src] successfully makes [P] disappear!"))
+			to_chat(src, SPAN_NOTICE("You can taste the sweet flavor of delicious technology."))
 			I.forceMove(vore_selected)
 			updateVRPanel()
 			return
 		if(istype(I,/obj/item/clothing/shoes))
 			var/obj/item/clothing/shoes/S = I
 			if(S.holding)
-				to_chat(src, "<span class='warning'>There's something inside!</span>")
+				to_chat(src, SPAN_WARNING("There's something inside!"))
 				return
 
 		if(!attempt_insert_item_for_installation(I, vore_selected))
@@ -686,54 +688,54 @@
 		log_admin("LOG: [src] used Eat Trash to swallow [I].")
 
 		if(istype(I,/obj/item/flashlight/flare) || istype(I,/obj/item/flame/match) || istype(I,/obj/item/storage/box/matches))
-			to_chat(src, "<span class='notice'>You can taste the flavor of spicy cardboard.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of spicy cardboard."))
 		else if(istype(I,/obj/item/flashlight/glowstick))
-			to_chat(src, "<span class='notice'>You found out the glowy juice only tastes like regret.</span>")
+			to_chat(src, SPAN_NOTICE("You found out the glowy juice only tastes like regret."))
 		else if(istype(I,/obj/item/cigbutt))
-			to_chat(src, "<span class='notice'>You can taste the flavor of bitter ash. Classy.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of bitter ash. Classy."))
 		else if(istype(I,/obj/item/clothing/mask/smokable))
 			var/obj/item/clothing/mask/smokable/C = I
 			if(C.lit)
-				to_chat(src, "<span class='notice'>You can taste the flavor of burning ash. Spicy!</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of burning ash. Spicy!"))
 			else
-				to_chat(src, "<span class='notice'>You can taste the flavor of aromatic rolling paper and funny looks.</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of aromatic rolling paper and funny looks."))
 		else if(istype(I,/obj/item/paper))
-			to_chat(src, "<span class='notice'>You can taste the dry flavor of bureaucracy.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the dry flavor of bureaucracy."))
 		else if(istype(I,/obj/item/dice))
-			to_chat(src, "<span class='notice'>You can taste the bitter flavor of cheating.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the bitter flavor of cheating."))
 		else if(istype(I,/obj/item/lipstick))
-			to_chat(src, "<span class='notice'>You can taste the flavor of couture and style. Toddler at the make-up bag style.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of couture and style. Toddler at the make-up bag style."))
 		else if(istype(I,/obj/item/soap))
-			to_chat(src, "<span class='notice'>You can taste the bitter flavor of verbal purification.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the bitter flavor of verbal purification."))
 		else if(istype(I,/obj/item/spacecash) || istype(I,/obj/item/storage/wallet))
-			to_chat(src, "<span class='notice'>You can taste the flavor of wealth and reckless waste.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of wealth and reckless waste."))
 		else if(istype(I,/obj/item/broken_bottle) || istype(I,/obj/item/material/shard))
-			to_chat(src, "<span class='notice'>You can taste the flavor of pain. This can't possibly be healthy for your guts.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of pain. This can't possibly be healthy for your guts."))
 		else if(istype(I,/obj/item/light))
 			var/obj/item/light/L = I
 			if(L.status == LIGHT_BROKEN)
-				to_chat(src, "<span class='notice'>You can taste the flavor of pain. This can't possibly be healthy for your guts.</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of pain. This can't possibly be healthy for your guts."))
 			else
-				to_chat(src, "<span class='notice'>You can taste the flavor of really bad ideas.</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of really bad ideas."))
 		else if(istype(I,/obj/item/toy))
-			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")
+			visible_message(SPAN_WARNING("[src] demonstrates their voracious capabilities by swallowing [I] whole!"))
 		else if(istype(I,/obj/item/paicard) || istype(I,/obj/item/mmi/digital/posibrain) || istype(I,/obj/item/aicard))
-			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")
-			to_chat(src, "<span class='notice'>You can taste the sweet flavor of digital friendship. Or maybe it is something else.</span>")
+			visible_message(SPAN_WARNING("[src] demonstrates their voracious capabilities by swallowing [I] whole!"))
+			to_chat(src, SPAN_NOTICE("You can taste the sweet flavor of digital friendship. Or maybe it is something else."))
 		else if(istype(I,/obj/item/reagent_containers/food))
 			var/obj/item/reagent_containers/food/F = I
 			if(!F.reagents.total_volume)
-				to_chat(src, "<span class='notice'>You can taste the flavor of garbage and leftovers. Delicious?</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of garbage and leftovers. Delicious?"))
 			else
-				to_chat(src, "<span class='notice'>You can taste the flavor of gluttonous waste of food.</span>")
+				to_chat(src, SPAN_NOTICE("You can taste the flavor of gluttonous waste of food."))
 		//TFF 10/7/19 - Add custom flavour for collars for trash can trait.
 		else if (istype(I,/obj/item/clothing/accessory/collar))
-			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")
-			to_chat(src, "<span class='notice'>You can taste the submissiveness in the wearer of [I]!</span>")
+			visible_message(SPAN_WARNING("[src] demonstrates their voracious capabilities by swallowing [I] whole!"))
+			to_chat(src, SPAN_NOTICE("You can taste the submissiveness in the wearer of [I]!"))
 		else
-			to_chat(src, "<span class='notice'>You can taste the flavor of garbage. Delicious.</span>")
+			to_chat(src, SPAN_NOTICE("You can taste the flavor of garbage. Delicious."))
 		return
-	to_chat(src, "<span class='notice'>This item is not appropriate for ethical consumption.</span>")
+	to_chat(src, SPAN_NOTICE("This item is not appropriate for ethical consumption."))
 	return
 
 /mob/living/proc/switch_scaling()

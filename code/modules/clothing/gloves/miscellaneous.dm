@@ -69,7 +69,7 @@
 
 //TODO: Make inflating gloves a thing
 /*/obj/item/clothing/gloves/sterile/proc/Inflate(/mob/living/carbon/human/user)
-	user.visible_message("<span class='notice'>\The [src] expands!</span>")
+	user.visible_message(SPAN_NOTICE("\The [src] expands!"))
 	qdel(src)*/
 
 /obj/item/clothing/gloves/sterile/latex
@@ -229,7 +229,7 @@
 	if(slot == SLOT_GLOVES)
 		wornonce = TRUE
 		if((HAS_TRAIT(user, TRAIT_NOPUGILIST)))
-			to_chat(user, "<span class='danger'>What purpose is there to don the weapons of pugilism if you're already well-practiced in martial arts? Mixing arts is blasphemous!</span>")
+			to_chat(user, SPAN_DANGER("What purpose is there to don the weapons of pugilism if you're already well-practiced in martial arts? Mixing arts is blasphemous!"))
 			return
 		use_buffs(user, TRUE)
 
@@ -252,7 +252,7 @@
 			H.dna.species.punchdamagelow += enhancement
 			H.dna.species.punchwoundbonus += wound_enhancement
 			if(!silent)
-				to_chat(H, "<span class='notice'>With [src] on your arms, you feel ready to punch things.</span>")
+				to_chat(H, SPAN_NOTICE("With [src] on your arms, you feel ready to punch things."))
 	else // dekaja
 		REMOVE_TRAIT(user, TRAIT_PUGILIST, GLOVE_TRAIT)
 		REMOVE_TRAIT(user, inherited_trait, GLOVE_TRAIT)
@@ -264,7 +264,7 @@
 			H.dna.species.punchwoundbonus -= wound_enhancement
 			H.dna?.species?.attack_sound_override = null
 		if(!silent)
-			to_chat(user, "<span class='warning'>With [src] off of your arms, you feel less ready to punch things.</span>")
+			to_chat(user, SPAN_WARNING("With [src] off of your arms, you feel less ready to punch things."))
 
 /obj/item/clothing/gloves/fingerless/pugilist/crafted
 	unique_reskin = list("Short" = "armwraps",
@@ -404,7 +404,7 @@
 /obj/item/clothing/gloves/fingerless/ablative/on_active_parry(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/block_return, parry_efficiency, parry_time)
 	. = ..()
 	if(parry_efficiency > 0)
-		owner.visible_message("<span class='warning'>[owner] deflects \the [object] with their armwraps!</span>")
+		owner.visible_message(SPAN_WARNING("[owner] deflects \the [object] with their armwraps!"))
 
 /datum/block_parry_data/ablative_armwraps
 	parry_stamina_cost = 4
@@ -472,7 +472,7 @@
 			var/mob/living/carbon/human/H = user
 			H.dna?.species?.attack_sound_override = 'sound/weapons/mauler_punch.ogg'
 			if(silent)
-				to_chat(H, "<span class='danger'>You feel prickles around your wrists as [src] cling to them - strength courses through your veins!</span>")
+				to_chat(H, SPAN_DANGER("You feel prickles around your wrists as [src] cling to them - strength courses through your veins!"))
 
 /obj/item/clothing/gloves/tackler
 	name = "gripper gloves"

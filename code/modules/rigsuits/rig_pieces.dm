@@ -182,7 +182,7 @@
 		if(!M.attempt_insert_item_for_installation(I, src))
 			return
 		tacknife = I
-		to_chat(M, "<span class='notice'>You slide the [I] into [src].</span>")
+		to_chat(M, SPAN_NOTICE("You slide the [I] into [src]."))
 		playsound(M, 'sound/weapons/flipblade.ogg', 40, TRUE)
 		update_icon()
 	..()

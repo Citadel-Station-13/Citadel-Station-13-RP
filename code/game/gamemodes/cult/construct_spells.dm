@@ -274,9 +274,9 @@
 				M.forceMove(destination)
 				if(M != user)
 					prey = 1
-		to_chat(user, "<span class='sinister'>You warp back to Nar-Sie[prey ? " along with your prey":""].</span>")
+		to_chat(user, SPAN_SINISTER("You warp back to Nar-Sie[prey ? " along with your prey":""]."))
 	else
-		to_chat(user, "<span class='danger'>...something's wrong!</span>")//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
+		to_chat(user, SPAN_DANGER("...something's wrong!"))//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
 */
 
 /spell/targeted/fortify
@@ -549,7 +549,7 @@
 	var/turf/T = get_turf(hit_atom)
 	if(T)
 		new spawner_type(T)
-		to_chat(user, "<span class='cult'>You shift \the [src] onto \the [T].</span>")
+		to_chat(user, SPAN_CULT("You shift \the [src] onto \the [T]."))
 		log_and_message_admins("has casted [src] at [T.x],[T.y],[T.z].")
 		qdel(src)
 
@@ -617,7 +617,7 @@
 		if(!iscultist(L) && !istype(L, /mob/living/simple_mob/construct))
 			L.add_modifier(/datum/modifier/agonize, 2 SECONDS)
 			if(L.isSynthetic())
-				to_chat(L, "<span class='cult'>Your chassis warps as the [src] pulses!</span>")
+				to_chat(L, SPAN_CULT("Your chassis warps as the [src] pulses!"))
 				L.adjustFireLoss(4)
 
 //Artificer Heal
@@ -655,7 +655,7 @@
 		attack_message = pick(S.attacktext)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
-		L.visible_message("<span class='danger'>\The [user] [attack_message] \the [L], sending them flying!</span>")
+		L.visible_message(SPAN_DANGER("\The [user] [attack_message] \the [L], sending them flying!"))
 		playsound(src, "punch", 50, 1)
 		L.Weaken(2)
 		L.adjustBruteLoss(rand(30, 50))
@@ -663,14 +663,14 @@
 		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 	if(istype(hit_atom, /turf/simulated/wall))
 		var/turf/simulated/wall/W = hit_atom
-		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")
+		user.visible_message(SPAN_WARNING("\The [user] rears its fist, preparing to hit \the [W]!"))
 		var/windup = cooldown
 		if(W.reinf_material)
 			windup = cooldown * 2
 		if(do_after(user, windup))
-			W.visible_message("<span class='danger'>\The [user] [attack_message] \the [W], obliterating it!</span>")
+			W.visible_message(SPAN_DANGER("\The [user] [attack_message] \the [W], obliterating it!"))
 			W.dismantle_wall(1)
 		else
-			user.visible_message("<span class='notice'>\The [user] lowers its fist.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] lowers its fist."))
 			return
 	qdel(src)

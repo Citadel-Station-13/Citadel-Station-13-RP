@@ -212,7 +212,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (M.getCloneLoss())
 		dat += SPAN_WARNING("\nSubject appears to have been imperfectly cloned.")
 //	if (M.reagents && M.reagents.get_reagent_amount("inaprovaline"))
-//		user.show_message("<span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals.</span>")
+//		user.show_message(SPAN_NOTICE("Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals."))
 	if (M.has_brain_worms())
 		dat += SPAN_WARNING("\nSubject suffering from aberrant brain activity.  Recommend further scanning.")
 	else if (M.getBrainLoss() >= 60 || !M.has_brain())
@@ -381,7 +381,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	analyze_gases(src, user)
@@ -434,14 +434,14 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.id != "blood")
 				reagents.clear_reagents()
-				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
+				to_chat(user, SPAN_WARNING("The sample was contaminated! Please insert another sample"))
 				return
 			else
 				blood_traces = params2list(R.data["trace_chem"])
@@ -542,17 +542,17 @@ HALOGEN COUNTER	- Radcount on mobs
 	user.show_message("Potental to mutate into [english_list(mutations)] colors.<br>Extract potential: [S.cores]<br>Nutrition: [S.nutrition]/[S.get_max_nutrition()]")
 
 	if (S.nutrition < S.get_starve_nutrition())
-		user.show_message("<span class='alert'>Warning: Subject is starving!</span>")
+		user.show_message(SPAN_ALERT("Warning: Subject is starving!"))
 	else if (S.nutrition < S.get_hunger_nutrition())
-		user.show_message("<span class='warning'>Warning: Subject is hungry.</span>")
+		user.show_message(SPAN_WARNING("Warning: Subject is hungry."))
 	user.show_message("Electric change strength: [S.power_charge]")
 
 	if(S.has_AI())
 		var/datum/ai_holder/simple_mob/xenobio_slime/AI = S.ai_holder
 		if(AI.resentment)
-			user.show_message("<span class='warning'>Warning: Subject is harboring resentment.</span>")
+			user.show_message(SPAN_WARNING("Warning: Subject is harboring resentment."))
 		if(AI.rabid)
-			user.show_message("<span class='danger'>Subject is enraged and extremely dangerous!</span>")
+			user.show_message(SPAN_DANGER("Subject is enraged and extremely dangerous!"))
 	if(S.harmless)
 		user.show_message("Subject has been pacified.")
 	if(S.unity)

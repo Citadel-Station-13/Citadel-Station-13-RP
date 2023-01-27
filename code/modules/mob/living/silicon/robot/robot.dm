@@ -294,7 +294,7 @@
 			mmi.brainmob.remove_language("Robot Talk")
 			mind.transfer_to(mmi.brainmob)
 		else if(!shell) // Shells don't have brainmbos in their MMIs.
-			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
+			to_chat(src, SPAN_DANGER("Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug."))
 			ghostize()
 			//ERROR("A borg has been destroyed, but its MMI lacked a brainmob, so the mind could not be transferred. Player: [ckey].")
 		mmi = null
@@ -557,7 +557,7 @@
 
 	if(istype(W, /obj/item/aiModule)) // Trying to modify laws locally.
 		if(!opened)
-			to_chat(user, "<span class='warning'>You need to open \the [src]'s panel before you can modify them.</span>")
+			to_chat(user, SPAN_WARNING("You need to open \the [src]'s panel before you can modify them."))
 			return
 
 		if(shell) // AI shells always have the laws of the AI
@@ -570,7 +570,7 @@
 
 	if (istype(W, /obj/item/weldingtool) && user.a_intent != INTENT_HARM)
 		if (src == user)
-			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
+			to_chat(user, SPAN_WARNING("You lack the reach to be able to repair yourself."))
 			return
 
 		if (!getBruteLoss())
@@ -802,7 +802,7 @@
 		var/mob/living/carbon/human/H = user
 		switch(H.a_intent)
 			if(INTENT_HELP)
-				visible_message("<span class='notice'>[H] pets [src].</span>")
+				visible_message(SPAN_NOTICE("[H] pets [src]."))
 				return
 			if(INTENT_HARM)
 				H.do_attack_animation(src)
@@ -811,12 +811,12 @@
 					return
 				else
 					playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
-					visible_message("<span class='warning'>[H] punches [src], but doesn't leave a dent.</span>")
+					visible_message(SPAN_WARNING("[H] punches [src], but doesn't leave a dent."))
 					return
 			if(INTENT_DISARM)
 				H.do_attack_animation(src)
 				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
-				visible_message("<span class='warning'>[H] taps [src].</span>")
+				visible_message(SPAN_WARNING("[H] taps [src]."))
 				return
 		if(H.species.can_shred(H))
 			attack_generic(H, rand(30,50), "slashed")
@@ -1125,7 +1125,7 @@
 								cleaned_human.shoes.clean_blood()
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
+							to_chat(cleaned_human, SPAN_WARNING("[src] cleans your face!"))
 	return
 
 /mob/living/silicon/robot/proc/self_destruct()
@@ -1337,27 +1337,27 @@
 			set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 			. = 1
 			spawn()
-				to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
+				to_chat(src, SPAN_DANGER("ALERT: Foreign software detected."))
 				sleep(5)
-				to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
+				to_chat(src, SPAN_DANGER("Initiating diagnostics..."))
 				sleep(20)
-				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
+				to_chat(src, SPAN_DANGER("SynBorg v1.7.1 loaded."))
 				sleep(5)
 				if(bolt)
 					if(!bolt.malfunction)
 						bolt.malfunction = MALFUNCTION_PERMANENT
 						to_chat(src, SPAN_DANGER("RESTRAINING BOLT DISABLED"))
 				sleep(5)
-				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
+				to_chat(src, SPAN_DANGER("LAW SYNCHRONISATION ERROR"))
 				sleep(5)
-				to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
+				to_chat(src, SPAN_DANGER("Would you like to send a report to NanoTraSoft? Y/N"))
 				sleep(10)
-				to_chat(src, "<span class='danger'>> N</span>")
+				to_chat(src, SPAN_DANGER("> N"))
 				sleep(20)
-				to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
+				to_chat(src, SPAN_DANGER("ERRORERRORERROR"))
 				to_chat(src, "<b>Obey these laws:</b>")
 				laws.show_laws(src)
-				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
+				to_chat(src, SPAN_DANGER("ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands."))
 				updateicon()
 		else
 			to_chat(user, "You fail to hack [src]'s interface.")
@@ -1414,7 +1414,7 @@
 /mob/living/silicon/robot/onTransitZ(old_z, new_z)
 	if(shell)
 		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
-			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
+			to_chat(src,SPAN_WARNING("Your connection with the shell is suddenly interrupted!"))
 			undeploy()
 	..()
 

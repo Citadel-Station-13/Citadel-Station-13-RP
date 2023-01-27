@@ -73,7 +73,7 @@
 		return 1
 
 	if(href_list["PRG_taghelp"])
-		to_chat(usr, "<span class='notice'>The hologram of a googly-eyed paper clip helpfully tells you:</span>")
+		to_chat(usr, SPAN_NOTICE("The hologram of a googly-eyed paper clip helpfully tells you:"))
 		var/help = {"
 		\[br\] : Creates a linebreak.
 		\[center\] - \[/center\] : Centers the text.

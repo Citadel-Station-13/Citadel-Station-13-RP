@@ -25,7 +25,7 @@
 	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
 	switch(res)
 		if("Yes")
-			to_chat(world, "<span class='boldannounce'>An admin played: [S]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [S]"))
 		if("Cancel")
 			return
 
@@ -59,7 +59,7 @@
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>") //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable")) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_input = input("Enter content URL (supported sites only, leave blank to stop playing)", "Play Internet Sound via youtube-dl") as text|null
@@ -71,8 +71,8 @@
 
 			web_sound_input = trim(web_sound_input)
 			if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-				to_chat(src, "<span class='boldwarning'>Non-http(s) URIs are not allowed.</span>")
-				to_chat(src, "<span class='warning'>For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website.</span>")
+				to_chat(src, SPAN_BOLDWARNING("Non-http(s) URIs are not allowed."))
+				to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
 				return
 			var/shell_scrubbed_input = shell_url_scrub(web_sound_input)
 			var/list/output = world.shelleo("[ytdl] --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height<=360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_scrubbed_input]\"")
@@ -84,8 +84,8 @@
 				try
 					data = json_decode(stdout)
 				catch(var/exception/e)
-					to_chat(src, "<span class='boldwarning'>Youtube-dl JSON parsing FAILED:</span>")
-					to_chat(src, "<span class='warning'>[e]: [stdout]</span>")
+					to_chat(src, SPAN_BOLDWARNING("Youtube-dl JSON parsing FAILED:"))
+					to_chat(src, SPAN_WARNING("[e]: [stdout]"))
 					return
 
 				if (data["url"])
@@ -102,15 +102,15 @@
 					var/res = alert(usr, "Show the title of and link to this song to the players?\n[title]",, "No", "Yes", "Cancel")
 					switch(res)
 						if("Yes")
-							to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>")
+							to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [webpage_url]"))
 						if("Cancel")
 							return
 					// SSblackbox.record_feedback("nested tally", "played_url", 1, list("[ckey]", "[web_sound_input]"))
 					log_admin("[key_name(src)] played web sound: [web_sound_input]")
 					message_admins("[key_name(src)] played web sound: [web_sound_input]")
 			else
-				to_chat(src, "<span class='boldwarning'>Youtube-dl URL retrieval FAILED:</span>")
-				to_chat(src, "<span class='warning'>[stderr]</span>")
+				to_chat(src, SPAN_BOLDWARNING("Youtube-dl URL retrieval FAILED:"))
+				to_chat(src, SPAN_WARNING("[stderr]"))
 
 		else //pressed ok with blank
 			log_admin("[key_name(src)] stopped web sound")
@@ -119,8 +119,8 @@
 			stop_web_sounds = TRUE
 
 		if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-			to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>")
-			to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
+			to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"))
+			to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"))
 			return
 		if(web_sound_url || stop_web_sounds)
 			for(var/m in GLOB.player_list)
@@ -155,14 +155,14 @@
 		var/list/music_extra_data = list()
 		web_sound_input = trim(web_sound_input)
 		if(web_sound_input && (findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol)))
-			to_chat(src, "<span class='boldwarning'>Non-http(s) URIs are not allowed.</span>", confidential = TRUE)
+			to_chat(src, SPAN_BOLDWARNING("Non-http(s) URIs are not allowed."), confidential = TRUE)
 			return
 
 		var/list/explode = splittext(web_sound_input, "/") //if url=="https://fixthisshit.com/pogchamp.ogg"then title="pogchamp.ogg"
 		var/title = "[explode[explode.len]]"
 
 		if(!findtext(title, ".mp3") && !findtext(title, ".mp4")) // IE sucks.
-			to_chat(src, "<span class='warning'>The format is not .mp3/.mp4, IE 8 and above can only support the .mp3/.mp4 format, the music might not play.</span>", confidential = TRUE)
+			to_chat(src, SPAN_WARNING("The format is not .mp3/.mp4, IE 8 and above can only support the .mp3/.mp4 format, the music might not play."), confidential = TRUE)
 
 		if(length(title) > 50) //kev no.
 			title = "Unknown.mp3"

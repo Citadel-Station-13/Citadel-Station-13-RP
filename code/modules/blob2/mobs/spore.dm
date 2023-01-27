@@ -42,7 +42,7 @@
 	factory = null
 	if(infested)
 		infested.forceMove(get_turf(src))
-		visible_message("<span class='warning'>\The [infested] falls to the ground as the blob spore bursts.</span>")
+		visible_message(SPAN_WARNING("\The [infested] falls to the ground as the blob spore bursts."))
 		infested = null
 	return ..()
 
@@ -105,7 +105,7 @@
 	infested = H
 
 	update_icons()
-	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	visible_message(SPAN_WARNING("The corpse of [H.name] suddenly rises!"))
 
 /mob/living/simple_mob/hostile/blob/spore/GetIdCard()
 	if(infested) // If we've infested someone, use their ID.

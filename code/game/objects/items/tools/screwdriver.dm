@@ -26,8 +26,8 @@
 
 /obj/item/tool/screwdriver/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
+	user.visible_message(pick(SPAN_DANGER("\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide."), \
+						SPAN_DANGER("\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.")))
 	return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/Initialize(mapload)
@@ -172,4 +172,4 @@
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)
-	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+	to_chat(user, SPAN_NOTICE("You attach the bolt driver bit to [src]."))

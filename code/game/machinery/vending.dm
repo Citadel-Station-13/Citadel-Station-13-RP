@@ -230,7 +230,7 @@
 			return
 		coin = W
 		categories |= CAT_COIN
-		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
 		SSnanoui.update_uis(src)
 		return
 	else if(W.is_wrench())
@@ -242,7 +242,7 @@
 
 		if(do_after(user, 20 * W.tool_speed))
 			if(!src) return
-			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
+			to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]secured \the [src]!"))
 			anchored = !anchored
 		return
 	else
@@ -355,14 +355,14 @@
 		coin.forceMove(src.loc)
 		if(!usr.get_active_held_item())
 			usr.put_in_hands(coin)
-		to_chat(usr, "<span class='notice'>You remove \the [coin] from \the [src]</span>")
+		to_chat(usr, SPAN_NOTICE("You remove \the [coin] from \the [src]"))
 		coin = null
 		categories &= ~CAT_COIN
 
 	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
-				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
+				to_chat(usr, SPAN_WARNING("Access denied."))	//Unless emagged of course
 				flick(icon_deny,src)
 				playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 				return
@@ -377,7 +377,7 @@
 			if((R.price <= 0) || IsAdminGhost(usr))
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
-				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
+				to_chat(usr, SPAN_DANGER("Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled."))
 				return
 			else
 				currently_vending = R
@@ -398,7 +398,7 @@
 
 /obj/machinery/vending/proc/vend(datum/stored_item/vending_product/R, mob/user)
 	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
-		to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
+		to_chat(usr, SPAN_WARNING("Access denied."))	//Unless emagged of course
 		flick(icon_deny,src)
 		playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 		return
@@ -409,13 +409,13 @@
 
 	if(R.category & CAT_COIN)
 		if(!coin)
-			to_chat(user, "<span class='notice'>You need to insert a coin to get this item.</span>")
+			to_chat(user, SPAN_NOTICE("You need to insert a coin to get this item."))
 			return
 		if(coin.string_attached)
 			if(prob(50))
-				to_chat(user, "<span class='notice'>You successfully pull the coin out before \the [src] could swallow it.</span>")
+				to_chat(user, SPAN_NOTICE("You successfully pull the coin out before \the [src] could swallow it."))
 			else
-				to_chat(user, "<span class='notice'>You weren't able to pull the coin out fast enough, the machine ate it, string and all.</span>")
+				to_chat(user, SPAN_NOTICE("You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
 				qdel(coin)
 				coin = null
 				categories &= ~CAT_COIN
@@ -439,7 +439,7 @@
 		if(prob(1))
 			sleep(3)
 			if(R.get_product(get_turf(src)))
-				visible_message("<span class='notice'>\The [src] clunks as it vends an additional item.</span>")
+				visible_message(SPAN_NOTICE("\The [src] clunks as it vends an additional item."))
 
 		playsound(src, 'sound/items/vending.ogg', 50, 1, 1)
 
@@ -479,7 +479,7 @@
 			popup.set_content(dat)
 			popup.open()
 	else
-		to_chat(user,"<span class='warning'>You do not have the required access to view the vending logs for this machine.</span>")
+		to_chat(user,SPAN_WARNING("You do not have the required access to view the vending logs for this machine."))
 
 /obj/machinery/vending/verb/check_logs()
 	set name = "Check Vending Logs"
@@ -498,7 +498,7 @@
 	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 
-	to_chat(user, "<span class='notice'>You insert \the [W] in the product receptor.</span>")
+	to_chat(user, SPAN_NOTICE("You insert \the [W] in the product receptor."))
 	R.add_product(W)
 	if(has_logs)
 		do_logging(R, user)
@@ -575,7 +575,7 @@
 		return 0
 	spawn(0)
 		throw_item.throw_at_old(target, 16, 3, src)
-	visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")
+	visible_message(SPAN_WARNING("\The [src] launches \a [throw_item] at \the [target]!"))
 	return 1
 
 /*

@@ -69,17 +69,17 @@
 	var/total_moles = environment.total_moles
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	user.visible_message("<span class='notice'>[user] sniffs the air.</span>", "<span class='notice'>You sniff the air...</span>")
+	user.visible_message(SPAN_NOTICE("[user] sniffs the air."), SPAN_NOTICE("You sniff the air..."))
 
-	to_chat(user, "<span class='notice'><B>Smells like:</B></span>")
+	to_chat(user, SPAN_NOTICE("<B>Smells like:</B>"))
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(user, "<span class='notice'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
 	else
-		to_chat(user, "<span class='warning'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(user, SPAN_WARNING("Pressure: [round(pressure,0.1)] kPa"))
 	if(total_moles)
 		for(var/g in environment.gas)
-			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
-		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
+			to_chat(user, SPAN_NOTICE("[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%"))
+		to_chat(user, SPAN_NOTICE("Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)"))
 
 /obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
@@ -93,24 +93,24 @@
 
 
 	if(ismob(target))
-		user.visible_message("<span class='notice'>\the [user] boops \the [target.name]!</span>", "<span class='notice'>You boop \the [target.name]!</span>")
+		user.visible_message(SPAN_NOTICE("\the [user] boops \the [target.name]!"), SPAN_NOTICE("You boop \the [target.name]!"))
 		playsound(src, 'sound/weapons/thudswoosh.ogg', 25, 1, -1)
 	else
-		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
+		user.visible_message(SPAN_NOTICE("[user] sniffs at \the [target.name]."), SPAN_NOTICE("You sniff \the [target.name]..."))
 		if(!isnull(target.reagents))
 			var/dat = ""
 			if(target.reagents.reagent_list.len > 0)
 				for (var/datum/reagent/R in target.reagents.reagent_list)
 					dat += "\n \t <span class='notice'>[R]</span>"
 			if(dat)
-				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
+				to_chat(user, SPAN_NOTICE("Your BOOP module indicates: [dat]"))
 			else
-				to_chat(user, "<span class='notice'>No active chemical agents smelled in [target].</span>")
+				to_chat(user, SPAN_NOTICE("No active chemical agents smelled in [target]."))
 		else
 			if(istype(target, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 				analyze_gases(target, user)
 			else
-				to_chat(user, "<span class='notice'>No significant chemical agents smelled in [target].</span>")
+				to_chat(user, SPAN_NOTICE("No significant chemical agents smelled in [target]."))
 	return
 
 
@@ -182,9 +182,9 @@
 /obj/item/dogborg/tongue/examine(user)
 	. = ..()
 	if(water.energy)
-		. += "<span class='notice'>[src] is wet.</span>"
+		. += SPAN_NOTICE("[src] is wet.")
 	if(water.energy < 5)
-		. += "<span class='notice'>[src] is dry.</span>"
+		. += SPAN_NOTICE("[src] is dry.")
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user
@@ -208,47 +208,47 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
-		to_chat(user, "<span class='warning'>You need to take \the [target.name] off before cleaning it!</span>")
+		to_chat(user, SPAN_WARNING("You need to take \the [target.name] off before cleaning it!"))
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
-		user.visible_message("[user] begins to lap up water from [target.name].", "<span class='notice'>You begin to lap up water from [target.name].</span>")
+		user.visible_message("[user] begins to lap up water from [target.name].", SPAN_NOTICE("You begin to lap up water from [target.name]."))
 		if(do_after (user, 50))
 			water.add_charge(500)
 	else if(water.energy < 5)
-		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
+		to_chat(user, SPAN_NOTICE("Your mouth feels dry. You should drink some water.")) //fixed annoying grammar and needless space
 		return
 	else if(istype(target,/obj/effect/debris/cleanable))
-		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")
+		user.visible_message("[user] begins to lick off \the [target.name].", SPAN_NOTICE("You begin to lick off \the [target.name]..."))
 		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
+			to_chat(user, SPAN_NOTICE("You finish licking off \the [target.name]."))
 			water.use_charge(5)
 			qdel(target)
 			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
 	else if(istype(target,/obj/item))
 		if(istype(target,/obj/item/trash))
-			user.visible_message("[user] nibbles away at \the [target.name].", "<span class='notice'>You begin to nibble away at \the [target.name]...</span>")
+			user.visible_message("[user] nibbles away at \the [target.name].", SPAN_NOTICE("You begin to nibble away at \the [target.name]..."))
 			if(do_after (user, 50))
-				user.visible_message("[user] finishes eating \the [target.name].", "<span class='notice'>You finish eating \the [target.name].</span>")
-				to_chat(user, "<span class='notice'>You finish off \the [target.name].</span>")
+				user.visible_message("[user] finishes eating \the [target.name].", SPAN_NOTICE("You finish eating \the [target.name]."))
+				to_chat(user, SPAN_NOTICE("You finish off \the [target.name]."))
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
 				R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))
-			user.visible_message("[user] begins cramming \the [target.name] down its throat.", "<span class='notice'>You begin cramming \the [target.name] down your throat...</span>")
+			user.visible_message("[user] begins cramming \the [target.name] down its throat.", SPAN_NOTICE("You begin cramming \the [target.name] down your throat..."))
 			if(do_after (user, 50))
-				user.visible_message("[user] finishes gulping down \the [target.name].", "<span class='notice'>You finish swallowing \the [target.name].</span>")
-				to_chat(user, "<span class='notice'>You finish off \the [target.name], and gain some charge!</span>")
+				user.visible_message("[user] finishes gulping down \the [target.name].", SPAN_NOTICE("You finish swallowing \the [target.name]."))
+				to_chat(user, SPAN_NOTICE("You finish off \the [target.name], and gain some charge!"))
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
 				water.use_charge(5)
 				qdel(target)
 			return
-		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		user.visible_message("[user] begins to lick \the [target.name] clean...", SPAN_NOTICE("You begin to lick \the [target.name] clean..."))
 		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
 			water.use_charge(5)
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
@@ -262,21 +262,21 @@
 			L.Stun(1)
 			L.Weaken(1)
 			L.apply_effect(STUTTER, 1)
-			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \
-								"<span class='userdanger'>[user] has shocked you with its tongue! You can feel the betrayal.</span>")
+			L.visible_message(SPAN_DANGER("[user] has shocked [L] with its tongue!"), \
+								SPAN_USERDANGER("[user] has shocked you with its tongue! You can feel the betrayal."))
 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 			R.cell.charge -= 666
 		else
-			user.visible_message("<span class='notice'>\the [user] affectionally licks all over \the [target]'s face!</span>", "<span class='notice'>You affectionally lick all over \the [target]'s face!</span>")
+			user.visible_message(SPAN_NOTICE("\the [user] affectionally licks all over \the [target]'s face!"), SPAN_NOTICE("You affectionally lick all over \the [target]'s face!"))
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
 				H.Weaken(3)
 	else
-		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		user.visible_message("[user] begins to lick \the [target.name] clean...", SPAN_NOTICE("You begin to lick \the [target.name] clean..."))
 		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
@@ -339,11 +339,11 @@
 
 /obj/item/lightreplacer/dogborg/attack_self(mob/user)//Recharger refill is so last season. Now we recycle without magic!
 	if(uses >= max_uses)
-		to_chat(user, "<span class='warning'>[src.name] is full.</span>")
+		to_chat(user, SPAN_WARNING("[src.name] is full."))
 		return
 	if(uses < max_uses && cooldown == 0)
 		if(glass.energy < 125)
-			to_chat(user, "<span class='warning'>Insufficient material reserves.</span>")
+			to_chat(user, SPAN_WARNING("Insufficient material reserves."))
 			return
 		to_chat(user, "It has [uses] lights remaining. Attempting to fabricate a replacement. Please stand still.")
 		cooldown = 1
@@ -407,7 +407,7 @@
 	status_flags |= LEAPING
 	pixel_y = pixel_y + 10
 
-	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
+	src.visible_message(SPAN_DANGER("\The [src] leaps at [T]!"))
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
 	pixel_y = base_pixel_y
@@ -418,7 +418,7 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		to_chat(src, "<span class='warning'>You miss!</span>")
+		to_chat(src, SPAN_WARNING("You miss!"))
 		return
 
 	if(ishuman(T))
@@ -449,25 +449,25 @@
 		for(var/obj/item/organ/I in H.organs)
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				if(imp == null)
-					H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
+					H.visible_message(SPAN_WARNING("[user] is attempting remove [H]'s mirror!"))
 					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 					user.do_attack_animation(H)
 					var/turf/T1 = get_turf(H)
 					if (T1 && ((H == user) || do_after(user, 20)))
 						if(user && H && (get_turf(H) == T1) && src)
-							H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+							H.visible_message(SPAN_WARNING("[user] has removed [H]'s mirror."))
 							add_attack_logs(user,H,"Mirror removed by [user]")
 							src.imp = MI
 							qdel(MI)
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
+			H.visible_message(SPAN_WARNING("[user] is attempting to implant [H] with a mirror."))
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))
 				if(user && H && (get_turf(H) == T1) && src && src.imp)
-					H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+					H.visible_message(SPAN_WARNING("[H] has been implanted by [user]."))
 					add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
 					if(imp.handle_implant(H))
 						imp.post_implant(H)

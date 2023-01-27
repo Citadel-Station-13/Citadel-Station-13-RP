@@ -111,11 +111,11 @@
 			if(H.nutrition <= amount)
 				use(user,H)
 			else
-				to_chat(user,"<span class='warning'>The difference in potential is too great. [user == target ? "You have" : "[H] has"] too much charge to use such a small battery.</span>")
+				to_chat(user,SPAN_WARNING("The difference in potential is too great. [user == target ? "You have" : "[H] has"] too much charge to use such a small battery."))
 		else if(target == user)
-			to_chat(user,"<span class='warning'>You lick the cell, and your tongue tingles slightly.</span>")
+			to_chat(user,SPAN_WARNING("You lick the cell, and your tongue tingles slightly."))
 		else
-			to_chat(user,"<span class='warning'>This cell is meant for use on humanoid synthetics only.</span>")
+			to_chat(user,SPAN_WARNING("This cell is meant for use on humanoid synthetics only."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 

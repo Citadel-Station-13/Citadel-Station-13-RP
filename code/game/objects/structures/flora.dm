@@ -38,7 +38,7 @@
 /obj/structure/flora/examine(mob/user)
 	. = ..()
 	if(harvest_count < max_harvests)
-		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
+		. += SPAN_NOTICE("\The [src] seems to have something hanging from it.")
 
 /obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
@@ -46,10 +46,10 @@
 		var/atom/movable/AM = spawn_harvest(harvest_spawn, user)
 
 		if(!AM)
-			to_chat(user, "<span class='notice'>You fail to harvest anything from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You fail to harvest anything from \the [src]."))
 
 		else
-			to_chat(user, "<span class='notice'>You harvest \the [AM] from \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You harvest \the [AM] from \the [src]."))
 			return
 
 	..(W, user)
@@ -102,7 +102,7 @@
 	if(istype(W, /obj/item/shovel))
 		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
-			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] digs up \the [src]."), SPAN_NOTICE("You dig up \the [src]."))
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)
 			qdel(src)
 			return

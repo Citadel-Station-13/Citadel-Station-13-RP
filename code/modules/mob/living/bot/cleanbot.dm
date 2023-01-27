@@ -242,7 +242,7 @@
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
-		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
+		to_chat(user, SPAN_NOTICE("You add the robot arm to the bucket and sensor assembly. Beep boop!"))
 		qdel(src)
 
 	else if(istype(W, /obj/item/stack/material/steel))
@@ -252,10 +252,10 @@
 			var/turf/T = get_turf(loc)
 			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
 			A.name = created_name
-			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
+			to_chat(user, SPAN_NOTICE("You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!"))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")
+			to_chat(user, SPAN_WARNING("You need five sheets of metal to encase the sensor."))
 
 	else if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
@@ -278,14 +278,14 @@
 /mob/living/bot/cleanbot/roomba/attackby(var/obj/item/W, mob/user)
 	if(istype(W, /obj/item/material/kitchen/utensil/fork) && !armed && user.a_intent != INTENT_HARM)
 		qdel(W)
-		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation.</span>")
+		to_chat(user, SPAN_NOTICE("You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation."))
 		armed++
 		icon_state = "roombot_battle[on]"
 		update_icon_state(src)
 
 	else if(istype(W, /obj/item/flame/lighter) && !armed && user.a_intent != INTENT_HARM)
 		qdel(W)
-		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It appears to roll its sensor in disappointment before carrying on with its work.</span>")
+		to_chat(user, SPAN_NOTICE("You attach \the [W] to \the [src]. It appears to roll its sensor in disappointment before carrying on with its work."))
 		armed++
 		icon_state = "roombot_battle[on]"
 		update_icon_state(src)
@@ -341,14 +341,14 @@
 
 /mob/living/bot/cleanbot/roomba/meido/attackby(var/obj/item/W, mob/user)
 	if(istype(W, /obj/item/material/kitchen/utensil/fork) || istype(W, /obj/item/flame/lighter))
-		to_chat(user, "<span class='notice'>\The [src] buzzes and recoils at \the [W]. Perhaps it would prefer something more refined?</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] buzzes and recoils at \the [W]. Perhaps it would prefer something more refined?"))
 		return
 	else if (istype(W, /obj/item/clothing/head/headband/maid))
-		to_chat(user, "<span class='notice'>\The [src] is already wearing one of those!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already wearing one of those!"))
 		return
 	else if(W.type == /obj/item/material/knife && !armed && user.a_intent != INTENT_HARM)
 		qdel(W)
-		to_chat(user, "<span class='notice'>\the [src] extends a tiny arm from a hidden compartment and grasps \the [W]. Its light blinks excitedly for a moment before returning to normal.</span>")
+		to_chat(user, SPAN_NOTICE("\the [src] extends a tiny arm from a hidden compartment and grasps \the [W]. Its light blinks excitedly for a moment before returning to normal."))
 		armed++
 		icon_state = "maidbot_battle[on]"
 		update_icon_state(src)

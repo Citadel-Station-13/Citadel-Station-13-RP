@@ -77,7 +77,7 @@
 	if(!istype(W)) return
 
 	if (can_puncture(W))
-		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
+		visible_message(SPAN_DANGER("[user] pierces [src] with [W]!"))
 		puncture()
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
@@ -96,7 +96,7 @@
 
 /obj/item/inflatable/proc/inflate(var/mob/user,var/location)
 	playsound(location, 'sound/items/zip.ogg', 75, 1)
-	to_chat(user,"<span class='notice'>You inflate [src].</span>")
+	to_chat(user,SPAN_NOTICE("You inflate [src]."))
 	var/obj/structure/inflatable/R = new deploy_path(location)
 	src.transfer_fingerprints_to(R)
 	R.add_fingerprint(user)
@@ -104,7 +104,7 @@
 
 /obj/structure/inflatable/proc/deflate()
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
+	//to_chat(user, SPAN_NOTICE("You slowly deflate the inflatable wall."))
 	visible_message("[src] slowly deflates.")
 	spawn(50)
 		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
@@ -133,16 +133,16 @@
 	health -= damage
 	user.do_attack_animation(src)
 	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] [attack_verb] open the [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] [attack_verb] open the [src]!"))
 		spawn(1) puncture()
 	else
-		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] [attack_verb] at [src]!"))
 	return 1
 
 /obj/structure/inflatable/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		visible_message("<span class='danger'>The [src] deflates!</span>")
+		visible_message(SPAN_DANGER("The [src] deflates!"))
 		spawn(1) puncture()
 	return 1
 
@@ -250,7 +250,7 @@
 	icon_state = "folded_wall_torn"
 
 /obj/item/inflatable/torn/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
+	to_chat(user, SPAN_NOTICE("The inflatable wall is too torn to be inflated!"))
 	add_fingerprint(user)
 
 /obj/item/inflatable/door/torn
@@ -260,7 +260,7 @@
 	icon_state = "folded_door_torn"
 
 /obj/item/inflatable/door/torn/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
+	to_chat(user, SPAN_NOTICE("The inflatable door is too torn to be inflated!"))
 	add_fingerprint(user)
 
 /obj/item/storage/briefcase/inflatable

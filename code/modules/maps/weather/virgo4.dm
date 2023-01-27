@@ -257,7 +257,7 @@
 
 			if(istype(U) && U.open)
 				if(show_message)
-					to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
+					to_chat(L, SPAN_NOTICE("Rain patters softly onto your umbrella."))
 				continue
 
 			L.water_act(1)
@@ -303,7 +303,7 @@
 
 			if(istype(U) && U.open)
 				if(show_message)
-					to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+					to_chat(L, SPAN_NOTICE("Rain showers loudly onto your umbrella!"))
 				continue
 
 
@@ -356,7 +356,7 @@
 
 			if(istype(U) && U.open)
 				if(show_message)
-					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
+					to_chat(H, SPAN_NOTICE("Hail patters onto your umbrella."))
 				continue
 
 			var/target_zone = pick(BP_ALL)

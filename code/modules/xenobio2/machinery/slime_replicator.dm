@@ -43,10 +43,10 @@
 		return ..()
 
 	if(core)
-		to_chat(user, "<span class='warning'>[src] is already filled!</span>")
+		to_chat(user, SPAN_WARNING("[src] is already filled!"))
 		return
 	if(panel_open)
-		to_chat(user, "<span class='warning'>Close the panel first!</span>")
+		to_chat(user, SPAN_WARNING("Close the panel first!"))
 	core = G
 	user.drop_from_inventory(G)
 	G.forceMove(src)

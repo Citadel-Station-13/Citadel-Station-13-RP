@@ -139,10 +139,10 @@
 
 	if(world.time < time_maw_opened + maw_cooldown)
 		if(open_maw)
-			to_chat(src, "<span class='notice'>You retract your teeth.</span>")
+			to_chat(src, SPAN_NOTICE("You retract your teeth."))
 			time_maw_opened -= maw_cooldown / 2	// Recovers half cooldown if you end it early manually.
 		else
-			to_chat(src, "<span class='notice'>You are too tired to do this..</span>")
+			to_chat(src, SPAN_NOTICE("You are too tired to do this.."))
 		set_maw(FALSE)
 	else
 		set_maw(!open_maw)
@@ -169,7 +169,7 @@
 
 	if(world.time > time_maw_opened + maw_cooldown)	// Auto-stop eating.
 		if(open_maw)
-			to_chat(src, "<span class='notice'>Your jaws cannot remain open..</span>")
+			to_chat(src, SPAN_NOTICE("Your jaws cannot remain open.."))
 			set_maw(FALSE)
 
 	if(next && !(next in view(src,1)) && !z_transitioning)
@@ -285,7 +285,7 @@
 						break
 
 					if(do_after(src, 5))
-						D.visible_message("<span class='danger'>Something crashes against \the [D]!</span>")
+						D.visible_message(SPAN_DANGER("Something crashes against \the [D]!"))
 						D.take_damage(2 * melee_damage_upper)
 					else
 						objectOrMob = null
@@ -299,14 +299,14 @@
 				var/obj/effect/energy_field/EF = objectOrMob
 				objectOrMob = null	// No eating shields.
 				if(EF.opacity)
-					EF.visible_message("<span class='danger'>Something begins forcing itself through \the [EF]!</span>")
+					EF.visible_message(SPAN_DANGER("Something begins forcing itself through \the [EF]!"))
 				else
-					EF.visible_message("<span class='danger'>\The [src] begins forcing itself through \the [EF]!</span>")
+					EF.visible_message(SPAN_DANGER("\The [src] begins forcing itself through \the [EF]!"))
 				if(do_after(src, EF.strength * 5))
 					EF.adjust_strength(rand(-8, -10))
-					EF.visible_message("<span class='danger'>\The [src] crashes through \the [EF]!</span>")
+					EF.visible_message(SPAN_DANGER("\The [src] crashes through \the [EF]!"))
 				else
-					EF.visible_message("<span class='danger'>\The [EF] reverberates as it returns to normal.</span>")
+					EF.visible_message(SPAN_DANGER("\The [EF] reverberates as it returns to normal."))
 
 			if(objectOrMob)
 				objectOrMob.update_nearby_tiles()
@@ -434,8 +434,8 @@
 		new to_spawn(get_turf(src))
 
 		if(prob(20))
-			user.visible_message("<span class='alien'>Something oozes out of \the [src] as it is cut.</span>")
+			user.visible_message(SPAN_ALIEN("Something oozes out of \the [src] as it is cut."))
 
-		to_chat(user, "<span class='alien'>You cut the tissue holding the chunks together.</span>")
+		to_chat(user, SPAN_ALIEN("You cut the tissue holding the chunks together."))
 
 	..()

@@ -51,9 +51,9 @@
 /obj/machinery/power/port_gen/examine(mob/user)
 	. = ..()
 	if(active)
-		. += "<span class='notice'>The generator is on.</span>"
+		. += SPAN_NOTICE("The generator is on.")
 	else
-		. += "<span class='notice'>The generator is off.</span>"
+		. += SPAN_NOTICE("The generator is off.")
 
 /obj/machinery/power/port_gen/emp_act(severity)
 	if(!active)
@@ -158,9 +158,9 @@
 	. += "\The [src] appears to be producing [power_gen*power_output] W."
 	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
 	if(IsBroken())
-		. += "<span class='warning'>\The [src] seems to have broken down.</span>"
+		. += SPAN_WARNING("\The [src] seems to have broken down.")
 	if(overheating)
-		. += "<span class='danger'>\The [src] is overheating!</span>"
+		. += SPAN_DANGER("\The [src] is overheating!")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	var/needed_sheets = power_output / time_per_sheet
@@ -275,9 +275,9 @@
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			to_chat(user, "<span class='warning'>The [src.name] is full!</span>")
+			to_chat(user, SPAN_WARNING("The [src.name] is full!"))
 			return
-		to_chat(user, "<span class='notice'>You add [amount] sheet\s to the [src.name].</span>")
+		to_chat(user, SPAN_NOTICE("You add [amount] sheet\s to the [src.name]."))
 		sheets += amount
 		addstack.use(amount)
 		updateUsrDialog()
@@ -286,10 +286,10 @@
 		if(O.is_wrench())
 			if(!anchored)
 				connect_to_network()
-				to_chat(user, "<span class='notice'>You secure the generator to the floor.</span>")
+				to_chat(user, SPAN_NOTICE("You secure the generator to the floor."))
 			else
 				disconnect_from_network()
-				to_chat(user, "<span class='notice'>You unsecure the generator from the floor.</span>")
+				to_chat(user, SPAN_NOTICE("You unsecure the generator from the floor."))
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			anchored = !anchored
 			return
@@ -429,7 +429,7 @@
 	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
 
 	var/tempstr = "Temperature: [temperature]&deg;C<br>"
-	dat += (overheating)? "<span class='danger'>[tempstr]</span>" : tempstr
+	dat += (overheating)? SPAN_DANGER("[tempstr]") : tempstr
 	dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
 	user << browse("[dat]", "window=port_gen")
 	onclose(user, "port_gen")
@@ -538,7 +538,7 @@
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()
 	if(Adjacent(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"
+		. += SPAN_NOTICE("The status display reads: Power generation now at <b>[power_gen]</b>kW.")
 
 /obj/machinery/power/rtg/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
@@ -600,8 +600,8 @@
 	if(going_kaboom)
 		return
 	going_kaboom = TRUE
-	visible_message("<span class='danger'>\The [src] lets out an shower of sparks as it starts to lose stability!</span>",\
-		"<span class='italics'>You hear a loud electrical crack!</span>")
+	visible_message(SPAN_DANGER("\The [src] lets out an shower of sparks as it starts to lose stability!"),\
+		SPAN_ITALICS("You hear a loud electrical crack!"))
 	playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 5, power_gen * 50)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.

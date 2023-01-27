@@ -13,15 +13,15 @@
 /obj/item/megaphone/proc/can_broadcast(var/mob/living/user)
 	if (user.client)
 		if(user.client.prefs.muted & MUTE_IC)
-			to_chat(user, "<span class='warning'>You cannot speak in IC (muted).</span>")
+			to_chat(user, SPAN_WARNING("You cannot speak in IC (muted)."))
 			return 0
 	if(!(ishuman(user) || user.isSynthetic()))
-		to_chat(user, "<span class='warning'>You don't know how to use this!</span>")
+		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
 		return 0
 	if(user.silent)
 		return 0
 	if(spamcheck)
-		to_chat(user, "<span class='warning'>\The [src] needs to recharge!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] needs to recharge!"))
 		return 0
 	return 1
 
@@ -32,7 +32,7 @@
 				user.audible_message("<B>[user]</B> broadcasts, <FONT size=3>\"[pick(insultmsg)]\"</FONT>")
 				insults--
 			else
-				to_chat(user, "<span class='warning'>*BZZZZzzzzzt*</span>")
+				to_chat(user, SPAN_WARNING("*BZZZZzzzzzt*"))
 		else
 			user.audible_message("<B>[user]</B> broadcasts, <FONT size=3>\"[message]\"</FONT>")
 
@@ -54,7 +54,7 @@
 
 /obj/item/megaphone/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
+		to_chat(user, SPAN_WARNING("You overload \the [src]'s voice synthesizer."))
 		emagged = 1
 		insults = rand(1, 3)//to prevent caps spam.
 		return 1
@@ -82,13 +82,13 @@
 		if(!("comic sans ms" in font_options))
 			font_options = list("comic sans ms")
 			broadcast_font = "comic sans ms"
-			to_chat(user, "<span class='notice'>\The [src] emits a <font face='comic sans ms' color='#ff69b4'>silly</font> sound.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] emits a <font face='comic sans ms' color='#ff69b4'>silly</font> sound."))
 		if(!("#ff69b4" in color_options))
 			color_options = list("#ff69b4")
 			broadcast_color = "#ff69b4"
 		if(insults <= 0)
 			insults = rand(1,3)
-			to_chat(user, "<span class='warning'>You re-scramble \the [src]'s voice synthesizer.</span>")
+			to_chat(user, SPAN_WARNING("You re-scramble \the [src]'s voice synthesizer."))
 		return 1
 
 /obj/item/megaphone/super/verb/turn_volume_dial()
@@ -152,12 +152,12 @@
 							M.make_jittery(50)
 				insults--
 			else
-				user.audible_message("<span class='critical'>*BZZZZzzzzzt*</span>")
+				user.audible_message(SPAN_CRITICAL("*BZZZZzzzzzt*"))
 				if(prob(40) && insults <= 0)
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, get_turf(user))
 					s.start()
-					user.visible_message("<span class='warning'>\The [src] sparks violently!</span>")
+					user.visible_message(SPAN_WARNING("\The [src] sparks violently!"))
 					spawn(30)
 						explosion(get_turf(src), -1, -1, 1, 3, adminlog = 1)
 						qdel(src)

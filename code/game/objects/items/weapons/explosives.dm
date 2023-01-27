@@ -31,7 +31,7 @@
 /obj/item/plastique/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_screwdriver())
 		open_panel = !open_panel
-		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
+		to_chat(user, SPAN_NOTICE("You [open_panel ? "open" : "close"] the wire panel."))
 		playsound(src, I.tool_sound, 50, 1)
 	else if(I.is_wirecutter() || istype(I, /obj/item/multitool) || istype(I, /obj/item/assembly/signaler ))
 		wires.Interact(user)
@@ -60,7 +60,7 @@
 
 		if (ismob(target))
 			add_attack_logs(user, target, "planted [name] on with [timer] second fuse")
-			user.visible_message("<span class='danger'>[user.name] finished planting an explosive on [target.name]!</span>")
+			user.visible_message(SPAN_DANGER("[user.name] finished planting an explosive on [target.name]!"))
 		else
 			message_admins("[key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse",0,1)
 			log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
@@ -107,12 +107,12 @@
 			if(new_blast_power > blast_heavy)
 				if(!user.attempt_consume_item_for_construction(I))
 					return
-				to_chat(user, "<span class='notice'>You install \the [I] into \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install \the [I] into \the [src]."))
 				blast_heavy = new_blast_power
 				blast_light = blast_heavy + round(new_blast_power * 0.5)
 				blast_flash = blast_light + round(new_blast_power * 0.75)
 			else
-				to_chat(user, "<span class='notice'>The [I] is not any better than the component already installed into this charge!</span>")
+				to_chat(user, SPAN_NOTICE("The [I] is not any better than the component already installed into this charge!"))
 	return .
 
 /obj/item/plastique/seismic/locked
@@ -126,7 +126,7 @@
 
 	var/turf/T = get_turf(target)
 	if(onstation_weapon_locked(T.z))
-		target.visible_message("<span class='danger'>\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart.</span>")
+		target.visible_message(SPAN_DANGER("\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart."))
 		target.cut_overlay(image_overlay)
 		qdel(src)
 		return 0

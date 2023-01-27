@@ -12,7 +12,7 @@
 	if(!I)
 		I = src.get_inactive_held_item()
 	if(!I)
-		to_chat(src, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
+		to_chat(src, SPAN_WARNING("You don't have anything in your hands to give to \the [target]."))
 		return
 
 	if(alert(target,"[src] wants to give you \a [I]. Will you accept it?","Item Offer","Yes","No") == "No")
@@ -23,23 +23,23 @@
 	if(!I) return
 
 	if(!Adjacent(target))
-		to_chat(src, "<span class='warning'>You need to stay in reaching distance while giving an object.</span>")
-		to_chat(target, "<span class='warning'>\The [src] moved too far away.</span>")
+		to_chat(src, SPAN_WARNING("You need to stay in reaching distance while giving an object."))
+		to_chat(target, SPAN_WARNING("\The [src] moved too far away."))
 		return
 
 	if(I.loc != src || !is_holding(I))
-		to_chat(src, "<span class='warning'>You need to keep the item in your hands.</span>")
-		to_chat(target, "<span class='warning'>\The [src] seems to have given up on passing \the [I] to you.</span>")
+		to_chat(src, SPAN_WARNING("You need to keep the item in your hands."))
+		to_chat(target, SPAN_WARNING("\The [src] seems to have given up on passing \the [I] to you."))
 		return
 
 	if(target.hands_full())
-		to_chat(target, "<span class='warning'>Your hands are full.</span>")
-		to_chat(src, "<span class='warning'>Their hands are full.</span>")
+		to_chat(target, SPAN_WARNING("Your hands are full."))
+		to_chat(src, SPAN_WARNING("Their hands are full."))
 		return
 
 	if(transfer_item_to_loc(I, target))
 		target.put_in_hands_or_drop(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
-		target.visible_message("<span class='notice'>\The [src] handed \the [I] to \the [target].</span>")
+		target.visible_message(SPAN_NOTICE("\The [src] handed \the [I] to \the [target]."))
 
 /mob/living/carbon/human/proc/valid_give_mobs()
 	var/static/list/living_typecache = typecacheof(/mob/living)

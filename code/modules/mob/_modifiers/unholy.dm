@@ -93,7 +93,7 @@
 			var/mob/living/carbon/human/H = holder
 			H.apply_effect(20, AGONY)
 			if(prob(10))
-				to_chat(H, "<span class='warning'>Just make it stop!</span>")
+				to_chat(H, SPAN_WARNING("Just make it stop!"))
 
 ////////// Target Modifier
 /datum/modifier/mend_occult
@@ -144,7 +144,7 @@
 				if(!iscultist(H))
 					H.apply_effect(2, AGONY)
 				if(prob(10))
-					to_chat(H, "<span class='danger'>It feels as though your body is being torn apart!</span>")
+					to_chat(H, SPAN_DANGER("It feels as though your body is being torn apart!"))
 			L.updatehealth()
 
 /datum/modifier/gluttonyregeneration
@@ -158,14 +158,14 @@
 
 /datum/modifier/gluttonyregeneration/can_apply(var/mob/living/L)
 	if(L.stat == DEAD)
-		to_chat(L, "<span class='warning'>You can't be dead to consume.</span>")
+		to_chat(L, SPAN_WARNING("You can't be dead to consume."))
 		return FALSE
 
 	if(!L.is_sentient())
 		return FALSE // Drones don't feel anything, not even hunger.
 
 	if(L.has_modifier_of_type(/datum/modifier/berserk_exhaustion))
-		to_chat(L, "<span class='warning'>You recently berserked, so you are too tired to consume.</span>")
+		to_chat(L, SPAN_WARNING("You recently berserked, so you are too tired to consume."))
 		return FALSE
 
 	if(!ishuman(L)) // Only humanoids feel hunger. Totally.
@@ -174,7 +174,7 @@
 	else
 		var/mob/living/carbon/human/H = L
 		if(H.species.name == SPECIES_DIONA)
-			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
+			to_chat(L, SPAN_WARNING("You feel strange for a moment, but it passes."))
 			return FALSE // Happy trees aren't affected by incredible hunger.
 
 	return ..()

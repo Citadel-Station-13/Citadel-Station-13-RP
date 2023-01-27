@@ -231,7 +231,7 @@ emp_act
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if (!affecting || affecting.is_stump())
-		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
+		to_chat(user, SPAN_DANGER("They are missing that limb!"))
 		return null
 
 	return hit_zone
@@ -301,7 +301,7 @@ emp_act
 				if("head")//Harder to score a stun but if you do it lasts a bit longer
 					if(prob(effective_force))
 						apply_effect(20, PARALYZE, blocked, soaked)
-						visible_message("<span class='danger'>\The [src] has been knocked unconscious!</span>")
+						visible_message(SPAN_DANGER("\The [src] has been knocked unconscious!"))
 					if(bloody)//Apply blood
 						if(wear_mask)
 							wear_mask.add_blood(src)
@@ -315,7 +315,7 @@ emp_act
 				if("chest")//Easier to score a stun but lasts less time
 					if(prob(effective_force + 10))
 						apply_effect(6, WEAKEN, blocked, soaked)
-						visible_message("<span class='danger'>\The [src] has been knocked down!</span>")
+						visible_message(SPAN_DANGER("\The [src] has been knocked down!"))
 					if(bloody)
 						bloody_body(src)
 
@@ -334,7 +334,7 @@ emp_act
 	//want the dislocation chance to be such that the limb is expected to dislocate after dealing a fraction of the damage needed to break the limb
 	var/dislocate_chance = effective_force/(dislocate_mult * organ.min_broken_damage * config_legacy.organ_health_multiplier)*100
 	if(prob(dislocate_chance * (100 - blocked)/100))
-		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		visible_message(SPAN_DANGER("[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!"))
 		organ.dislocate(1)
 		return 1
 	return 0
@@ -342,12 +342,12 @@ emp_act
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
-		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
+		to_chat(user, SPAN_WARNING("That limb isn't robotic."))
 		return -1
 	if(affecting.sabotaged)
-		to_chat(user, "<span class='warning'>[src]'s [affecting.name] is already sabotaged!</span>")
+		to_chat(user, SPAN_WARNING("[src]'s [affecting.name] is already sabotaged!"))
 		return -1
-	to_chat(user, "<span class='notice'>You sneakily slide [emag_source] into the dataport on [src]'s [affecting.name] and short out the safeties.</span>")
+	to_chat(user, SPAN_NOTICE("You sneakily slide [emag_source] into the dataport on [src]'s [affecting.name] and short out the safeties."))
 	affecting.sabotaged = 1
 	return 1
 
@@ -364,7 +364,7 @@ emp_act
 				if(isturf(O.loc))
 					if(can_catch(O))
 						put_in_active_hand(O)
-						visible_message("<span class='warning'>[src] catches [O]!</span>")
+						visible_message(SPAN_WARNING("[src] catches [O]!"))
 						throw_mode_off()
 						return
 
@@ -391,7 +391,7 @@ emp_act
 				return
 
 		if(!zone)
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
+			visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"))
 			return COMPONENT_THROW_HIT_NEVERMIND | COMPONENT_THROW_HIT_PIERCE
 
 		var/obj/item/organ/external/affecting = get_organ(zone)
@@ -452,7 +452,7 @@ emp_act
 				var/turf/T = near_wall(dir,2)
 				if(T)
 					forceMove(T)
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+					visible_message(SPAN_WARNING("[src] is pinned to the wall by [O]!"),SPAN_WARNING("You are pinned to the wall by [O]!"))
 					anchored = TRUE
 					pinned += O
 
@@ -590,13 +590,13 @@ emp_act
 	if(W.edge)
 		organ_chance = 75
 	user.next_move = world.time + 20
-	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")
+	user.visible_message(SPAN_DANGER("\The [user] begins to twist \the [W] around inside [src]'s [chest]!"))
 	if(!do_after(user, 20))
 		return 0
 	if(!(G && G.assailant == user && G.affecting == src)) //check that we still have a grab
 		return 0
 
-	user.visible_message("<span class='danger'>\The x[user] twists \the [W] around inside [src]'s [chest]!</span>")
+	user.visible_message(SPAN_DANGER("\The x[user] twists \the [W] around inside [src]'s [chest]!"))
 	var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
 	if(istype(W,/obj/item/material/knife/stiletto))
 		selected_organ.take_damage(damage * 5)

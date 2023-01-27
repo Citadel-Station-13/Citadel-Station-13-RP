@@ -32,9 +32,9 @@
 /obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the plastic flaps.</span>")
+		to_chat(user, SPAN_NOTICE("You start to cut the plastic flaps."))
 		if(do_after(user, 10 * P.tool_speed))
-			to_chat(user, "<span class='notice'>You cut the plastic flaps.</span>")
+			to_chat(user, SPAN_NOTICE("You cut the plastic flaps."))
 			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
 			A.amount = 4
 			qdel(src)

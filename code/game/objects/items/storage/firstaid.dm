@@ -192,13 +192,13 @@
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
 		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)
-			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
+			to_chat(user, SPAN_NOTICE("The label can be at most 50 characters long."))
 		else if(length(tmp_label) > 10)
-			to_chat(user, "<span class='notice'>You set the label.</span>")
+			to_chat(user, SPAN_NOTICE("You set the label."))
 			label_text = tmp_label
 			update_name_label()
 		else
-			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			to_chat(user, SPAN_NOTICE("You set the label to \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
 			labeled = 1
@@ -237,7 +237,7 @@
 	var/choice = input(M,"Choose a color!","Recolor Bottle") in options
 	if(src && choice && !M.stat && in_range(M,src))
 		bottle_color = "[choice]"
-		to_chat(usr,"<span class='notice'>The bottle is now [choice]. How [pick("pretty","professional","informative","creative","appropriate","bold")]!</span>")
+		to_chat(usr,SPAN_NOTICE("The bottle is now [choice]. How [pick("pretty","professional","informative","creative","appropriate","bold")]!"))
 		update_icon()
 		return 1
 

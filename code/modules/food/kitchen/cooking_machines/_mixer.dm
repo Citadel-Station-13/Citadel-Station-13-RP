@@ -44,7 +44,7 @@ fundamental differences
 		return
 
 	if (!usr.IsAdvancedToolUser())
-		to_chat(usr, "<span class='notice'>You can't operate [src].</span>")
+		to_chat(usr, SPAN_NOTICE("You can't operate [src]."))
 		return
 
 	if(output_options.len)
@@ -53,7 +53,7 @@ fundamental differences
 			return
 		else
 			selected_option = choice
-			to_chat(usr, "<span class='notice'>You prepare \the [src] to make \a [selected_option].</span>")
+			to_chat(usr, SPAN_NOTICE("You prepare \the [src] to make \a [selected_option]."))
 			var/datum/cooking_item/CI = cooking_objs[1]
 			CI.combine_target = selected_option
 

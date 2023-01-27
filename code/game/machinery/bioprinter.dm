@@ -361,22 +361,22 @@
 	O.robotize()
 	O.status |= ORGAN_CUT_AWAY  // robotize() resets status to 0
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
-	audible_message("<span class='info'>\The [src] dings, then spits out \a [O].</span>")
+	audible_message(SPAN_INFO("\The [src] dings, then spits out \a [O]."))
 	return O
 
 /obj/machinery/organ_printer/robot/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == matter_type)
 		if((max_stored_matter-stored_matter) < matter_amount_per_sheet)
-			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is too full."))
 			return
 		var/obj/item/stack/S = W
 		var/space_left = max_stored_matter - stored_matter
 		var/sheets_to_take = min(S.amount, FLOOR(space_left/matter_amount_per_sheet, 1))
 		if(sheets_to_take <= 0)
-			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is too full."))
 			return
 		stored_matter = min(max_stored_matter, stored_matter + (sheets_to_take*matter_amount_per_sheet))
-		to_chat(user, "<span class='info'>\The [src] processes \the [W]. Levels of stored matter now: [stored_matter]</span>")
+		to_chat(user, SPAN_INFO("\The [src] processes \the [W]. Levels of stored matter now: [stored_matter]"))
 		S.use(sheets_to_take)
 		return
 	else if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actuall empty the syringe
@@ -384,7 +384,7 @@
 		var/datum/reagent/blood/injected = locate() in S.reagents.reagent_list //Grab some blood
 		if(injected && injected.data)
 			loaded_dna = injected.data
-			to_chat(user, "<span class='info'>You scan the blood sample into the bioprinter.</span>")
+			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return
 	return ..()
 // END ROBOT ORGAN PRINTER

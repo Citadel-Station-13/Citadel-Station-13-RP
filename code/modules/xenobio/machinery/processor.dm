@@ -22,17 +22,17 @@
 
 /obj/machinery/processor/examine(mob/user)
 	. = ..()
-	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
+	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
 
 /obj/machinery/processor/attack_hand(mob/living/user)
 	if(processing)
-		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
+		to_chat(user, SPAN_WARNING("The processor is in the process of processing!"))
 		return
 	if(to_be_processed.len)
 		spawn(1)
 			begin_processing()
 	else
-		to_chat(user, "<span class='warning'>The processor is empty.</span>")
+		to_chat(user, SPAN_WARNING("The processor is empty."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
@@ -58,7 +58,7 @@
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !Adjacent(user))
 		return
 	auto_mode = !auto_mode
-	to_chat(user, "<span class='notice'>You turn the automatic intake [auto_mode? "On" : "Off"].</span>")
+	to_chat(user, SPAN_NOTICE("You turn the automatic intake [auto_mode? "On" : "Off"]."))
 	if(auto_mode)
 		START_PROCESSING(SSobj, src)
 	else
@@ -75,19 +75,19 @@
 	if((!Adjacent(user) && !Adjacent(AM)) || !user.Adjacent(AM))
 		return
 	if(!can_insert(AM))
-		to_chat(user, "<span class='warning'>\The [src] cannot process \the [AM] at this time.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] cannot process \the [AM] at this time."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
+	visible_message(SPAN_NOTICE("\the [user] places [AM] inside \the [src]."))
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
 	if(!can_insert(AM) || !isturf(AM.loc))
 		return
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message("<span class='notice'>[src] sucks up [AM].</span>")
+	visible_message(SPAN_NOTICE("[src] sucks up [AM]."))
 
 /obj/machinery/processor/process(delta_time)
 	if(!auto_mode)

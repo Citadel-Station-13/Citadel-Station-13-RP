@@ -205,12 +205,12 @@
 	grabber.put_in_hands(H)
 
 	if(self_grab)
-		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
-		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
+		to_chat(grabber, SPAN_NOTICE("\The [src] clambers onto you!"))
+		to_chat(src, SPAN_NOTICE("You climb up onto \the [grabber]!"))
 		grabber.equip_to_slot_if_possible(H, SLOT_ID_BACK, INV_OP_SILENT)
 	else
-		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
-		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")
+		to_chat(grabber, SPAN_NOTICE("You scoop up \the [src]!"))
+		to_chat(src, SPAN_NOTICE("\The [grabber] scoops you up!"))
 
 	H.sync(src)
 	return H

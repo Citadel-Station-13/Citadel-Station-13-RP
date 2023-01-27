@@ -108,7 +108,7 @@
 
 
 	if(config_legacy.admin_irc)
-		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
+		to_chat(src, SPAN_INFO("Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond."))
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
 	to_chat(src, msg)

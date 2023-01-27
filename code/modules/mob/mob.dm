@@ -464,7 +464,7 @@
 /mob/proc/warn_flavor_changed()
 	if(flavor_text && flavor_text != "") // don't spam people that don't use it!
 		to_chat(src, "<h2 class='alert'>OOC Warning:</h2>")
-		to_chat(src, "<span class='alert'>Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a></span>")
+		to_chat(src, SPAN_ALERT("Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a>"))
 
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
@@ -816,9 +816,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
 	if(self)
-		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
+		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
 	else
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
+		to_chat(U, SPAN_WARNING("You attempt to get a good grip on [selection] in [S]'s body."))
 
 	if(!do_after(U, 30))
 		return
@@ -826,9 +826,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		return
 
 	if(self)
-		visible_message("<span class='warning'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'><b>You rip [selection] out of your body.</b></span>")
+		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"))
 	else
-		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
+		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"))
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)
@@ -1063,10 +1063,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)
-		to_chat(src, "<span class='warning'>[n] must be 2 or above, otherwise why are you rolling?</span>")
+		to_chat(src, SPAN_WARNING("[n] must be 2 or above, otherwise why are you rolling?"))
 		return
 
-	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
+	to_chat(src, SPAN_NOTICE("Diceroll result: <b>[rand(1, n)]</b>"))
 
 /**
  * Checks for anti magic sources.

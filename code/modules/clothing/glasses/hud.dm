@@ -100,7 +100,7 @@
 
 /obj/item/clothing/glasses/omnihud/proc/flashed()
 	if(flash_prot && ishuman(loc))
-		to_chat(loc, "<span class='warning'>Your [src.name] darken to try and protect your eyes!</span>")
+		to_chat(loc, SPAN_WARNING("Your [src.name] darken to try and protect your eyes!"))
 
 /obj/item/clothing/glasses/omnihud/prescribe(var/mob/user)
 	prescription = !prescription
@@ -118,10 +118,10 @@
 
 	var/mob/living/carbon/human/H = user
 	if(!H.glasses || !(H.glasses == src))
-		to_chat(user, "<span class='warning'>You must be wearing the [src] to see the display.</span>")
+		to_chat(user, SPAN_WARNING("You must be wearing the [src] to see the display."))
 	else
 		if(!ar_interact(H))
-			to_chat(user, "<span class='warning'>The [src] does not have any kind of special display.</span>")
+			to_chat(user, SPAN_WARNING("The [src] does not have any kind of special display."))
 
 /obj/item/clothing/glasses/omnihud/proc/ar_interact(var/mob/living/carbon/human/user)
 	return 0 //The base models do nothing.

@@ -19,7 +19,7 @@
 
 /turf/simulated/floor/trap/proc/trigger()
 	tripped = TRUE
-	visible_message("<span class='danger'>You hear a click nearby!</span>")
+	visible_message(SPAN_DANGER("You hear a click nearby!"))
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
 	SimpleNetworkSend(id, "trip")
@@ -33,11 +33,11 @@
 
 /turf/simulated/floor/trap/attack_hand()
 	if(tripped)
-		to_chat(usr, "<span class='notice'>You reset the triggered mechanism.</span>")
+		to_chat(usr, SPAN_NOTICE("You reset the triggered mechanism."))
 		tripped = 0
 		update_icon()
 	else if(!tripped)
-		to_chat(usr, "<span class='danger'>You trigger the hidden mechanism!</span>")
+		to_chat(usr, SPAN_DANGER("You trigger the hidden mechanism!"))
 		trigger()
 
 /turf/simulated/floor/trap/delayed
@@ -47,7 +47,7 @@
 /turf/simulated/floor/trap/delayed/trigger()
 	spawn(src.delay)
 		tripped = TRUE
-		visible_message("<span class='danger'>You hear a click nearby!</span>")
+		visible_message(SPAN_DANGER("You hear a click nearby!"))
 		update_icon()
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		SimpleNetworkSend(id, "trip")

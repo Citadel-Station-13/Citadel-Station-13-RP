@@ -11,15 +11,15 @@
 		var/mob/M = AM
 
 		if(!can_pull_mobs || !can_pull_size)
-			to_chat(src, "<span class='warning'>They won't budge!</span>")
+			to_chat(src, SPAN_WARNING("They won't budge!"))
 			return
 
 		if((mob_size < M.mob_size) && (can_pull_mobs != MOB_PULL_LARGER))
-			to_chat(src, "<span class='warning'>[M] is too large for you to move!</span>")
+			to_chat(src, SPAN_WARNING("[M] is too large for you to move!"))
 			return
 
 		if((mob_size == M.mob_size) && (can_pull_mobs == MOB_PULL_SMALLER))
-			to_chat(src, "<span class='warning'>[M] is too heavy for you to move!</span>")
+			to_chat(src, SPAN_WARNING("[M] is too heavy for you to move!"))
 			return
 
 		// If your size is larger than theirs and you have some
@@ -35,7 +35,7 @@
 				else
 					qdel(G)
 			if(!.)
-				to_chat(src, "<span class='warning'>Somebody has a grip on them!</span>")
+				to_chat(src, SPAN_WARNING("Somebody has a grip on them!"))
 				return
 
 		if(!iscarbon(src))
@@ -46,7 +46,7 @@
 	else if(isobj(AM))
 		var/obj/I = AM
 		if(!can_pull_size || can_pull_size < I.w_class)
-			to_chat(src, "<span class='warning'>It won't budge!</span>")
+			to_chat(src, SPAN_WARNING("It won't budge!"))
 			return
 	// vorecode end
 
@@ -64,9 +64,9 @@
 
 	if(AM.pulledby)
 		if(!suppress_message)
-			AM.visible_message("<span class='danger'>[src] pulls [AM] from [AM.pulledby]'s grip.</span>", \
-							"<span class='danger'>[src] pulls you from [AM.pulledby]'s grip.</span>", null, null, src)
-			to_chat(src, "<span class='notice'>You pull [AM] from [AM.pulledby]'s grip!</span>")
+			AM.visible_message(SPAN_DANGER("[src] pulls [AM] from [AM.pulledby]'s grip."), \
+							SPAN_DANGER("[src] pulls you from [AM.pulledby]'s grip."), null, null, src)
+			to_chat(src, SPAN_NOTICE("You pull [AM] from [AM.pulledby]'s grip!"))
 		log_attack("[src] pulled [AM] from [AM.pulledby].")
 		//log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
@@ -95,9 +95,9 @@
 
 		log_attack("[src] started to passively pull [AM].")
 		if(!suppress_message)	// && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			M.visible_message("<span class='warning'>[src] starts to pull [M] [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] starts to pull you [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by your hands":"passively"]!</span>")//, null, null, src)
-			//to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
+			M.visible_message(SPAN_WARNING("[src] starts to pull [M] [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by their hands":"passively"]!"), \
+							SPAN_WARNING("[src] starts to pull you [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by your hands":"passively"]!"))//, null, null, src)
+			//to_chat(src, SPAN_NOTICE("You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!"))
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else

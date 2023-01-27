@@ -58,7 +58,7 @@
 	if(is_deaf())
 		if(!language || !(language.language_flags & LANGUAGE_INNATE)) // LANGUAGE_INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
 			if(speaker == src)
-				to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
+				to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
 			else
 				to_chat(src, "<span class='name'>[speaker_name]</span>[alt_name] talks but you cannot hear.")
 	else
@@ -261,7 +261,7 @@
 
 	if((sdisabilities & SDISABILITY_DEAF) || ear_deaf)
 		if(prob(20))
-			to_chat(src, "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>")
+			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"))
 	else
 		on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 

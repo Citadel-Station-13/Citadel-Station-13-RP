@@ -97,7 +97,7 @@
 
 /datum/minimap_group/proc/show(mob/user)
 	if(!length(minimaps))
-		to_chat(user, "<span class='boldwarning'>ERROR: Attempted to access an empty datum/minimap_group. This should probably not happen.</span>")
+		to_chat(user, SPAN_BOLDWARNING("ERROR: Attempted to access an empty datum/minimap_group. This should probably not happen."))
 		return
 
 	var/list/datas = list()

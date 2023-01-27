@@ -32,14 +32,14 @@
 			add_fingerprint(user)
 			notices++
 			icon_state = "nboard0[notices]"	//update sprite
-			to_chat(user, "<span class='notice'>You pin the paper to the noticeboard.</span>")
+			to_chat(user, SPAN_NOTICE("You pin the paper to the noticeboard."))
 		else
-			to_chat(user, "<span class='notice'>You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached.</span>")
+			to_chat(user, SPAN_NOTICE("You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached."))
 	if(O.is_wrench())
-		to_chat(user, "<span class='notice'>You start to unwrench the noticeboard.</span>")
+		to_chat(user, SPAN_NOTICE("You start to unwrench the noticeboard."))
 		playsound(src.loc, O.tool_sound, 50, 1)
 		if(do_after(user, 15 * O.tool_speed))
-			to_chat(user, "<span class='notice'>You unwrench the noticeboard.</span>")
+			to_chat(user, SPAN_NOTICE("You unwrench the noticeboard."))
 			new /obj/item/frame/noticeboard( src.loc )
 			qdel(src)
 
@@ -85,7 +85,7 @@
 					add_fingerprint(M)
 					P.attackby(E, usr)
 				else
-					to_chat(M, "<span class='notice'>You'll need something to write with!</span>")
+					to_chat(M, SPAN_NOTICE("You'll need something to write with!"))
 	if(href_list["read"])
 		var/obj/item/paper/P = locate(href_list["read"])
 		if((P && P.loc == src))

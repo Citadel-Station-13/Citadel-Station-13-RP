@@ -188,11 +188,11 @@
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
 	if(resting)
-		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
+		to_chat(src, SPAN_WARNING("You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b>"))
 		animate(src,alpha = 40,time = 1 SECOND)
 		mouse_opacity = 0
 	else
-		to_chat(src, "<span class='warning'>You get up from the floor.</span>")
+		to_chat(src, SPAN_WARNING("You get up from the floor."))
 		mouse_opacity = 1
 		icon_state = "wake"
 		animate(src,alpha = 255,time = 1 SECOND)
@@ -210,7 +210,7 @@
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, BUCKLE_OP_FORCE)
 					target.forceMove(vore_selected)
-					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
+					to_chat(target,SPAN_WARNING("\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
 
 /mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
 	if(refactory && istype(A,/obj/item/stack/material))
@@ -228,15 +228,15 @@
 	else if(isitem(A) && a_intent == "grab")
 		var/obj/item/I = A
 		if(!vore_selected)
-			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			to_chat(src,SPAN_WARNING("You either don't have a belly selected, or don't have a belly!"))
 			return FALSE
 		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
-			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			to_chat(src, SPAN_WARNING("You can't eat this."))
 			return
 
 		if(is_type_in_list(I,edible_trash) | adminbus_trash)
 			if(I.hidden_uplink)
-				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				to_chat(src, SPAN_WARNING("You really should not be eating this."))
 				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 				return
 		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")

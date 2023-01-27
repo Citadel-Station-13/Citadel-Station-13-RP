@@ -37,13 +37,13 @@
 		return FALSE
 
 	if(occupant)
-		to_chat(user, "<span class='warning'>\The [src] is occupied.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is occupied."))
 		return FALSE
 
 	if(self_drop)
-		user.visible_message("<span class='notice'>\The [user] begins climbing into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] begins climbing into \the [src]."))
 	else
-		user.visible_message("<span class='notice'>\The [user] begins pushing \the [patient] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] begins pushing \the [patient] into \the [src]."))
 
 	if(!do_after(user, 3 SECONDS, src))
 		return FALSE
@@ -52,13 +52,13 @@
 		return FALSE
 
 	if(occupant)
-		to_chat(user, "<span class='warning'>\The [src] is occupied.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is occupied."))
 		return FALSE
 
 	if(self_drop)
-		user.visible_message("<span class='notice'>\The [user] climbs into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] climbs into \the [src]."))
 	else
-		user.visible_message("<span class='notice'>\The [user] pushes \the [patient] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] pushes \the [patient] into \the [src]."))
 
 	playsound(loc, 'sound/effects/slosh.ogg', 50, 1)
 	patient.forceMove(src)
@@ -124,7 +124,7 @@
 			organ_data["descriptor"] = O.name
 			patient.species.post_organ_rejuvenate(O, patient)
 			O.status = 0
-			to_chat(occupant, "<span class='notice'>You feel your [O.name] reform in the crystal bath.</span>")
+			to_chat(occupant, SPAN_NOTICE("You feel your [O.name] reform in the crystal bath."))
 			patient.update_icons()
 			return TRUE//return true to end the healing chain for this process call
 
@@ -133,7 +133,7 @@
 		var/obj/item/organ/internal/I = thing
 		if(BP_IS_CRYSTAL(I) && I.damage)
 			I.heal_damage_i(rand(3,5))
-			to_chat(patient, "<span class='notice'>The mineral-rich bath mends your [I.name].</span>")
+			to_chat(patient, SPAN_NOTICE("The mineral-rich bath mends your [I.name]."))
 			return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_heal_damage(mob/living/carbon/human/patient)
@@ -146,7 +146,7 @@
 				if(E.brute_dam <= 0)
 					E.status &= ~ORGAN_BROKEN
 					E.status &= ~ORGAN_BLEEDING
-				to_chat(patient, "<span class='notice'>The mineral-rich bath mends your [E.name].</span>")
+				to_chat(patient, SPAN_NOTICE("The mineral-rich bath mends your [E.name]."))
 				return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_remove_shrapn(mob/living/carbon/human/patient)
@@ -156,7 +156,7 @@
 			for(var/obj/implanted_object in E.implants)
 				if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/organ/internal/augment) && prob(25))	// We don't want to remove REAL implants. Just shrapnel etc.
 					E.implants -= implanted_object
-					to_chat(patient, "<span class='notice'>The mineral-rich bath dissolves the [implanted_object.name] in your [E.name].</span>")
+					to_chat(patient, SPAN_NOTICE("The mineral-rich bath dissolves the [implanted_object.name] in your [E.name]."))
 					qdel(implanted_object)
 					return TRUE
 
@@ -168,14 +168,14 @@
 			if(O.status & ORGAN_BRITTLE)
 				if(prob(50))
 					O.status &= (~ORGAN_BRITTLE)
-					to_chat(patient, "<span class='notice'>The mineral-rich bath strengthens your [O] makeing it less brittle.</span>")
+					to_chat(patient, SPAN_NOTICE("The mineral-rich bath strengthens your [O] makeing it less brittle."))
 					return TRUE
 
 /* TODO: Add variants that heal robots, but make them brittle
 check if shrapnel removal works
 if(prob(50))//The mineral rich bath soaked into you to dissolve the implanted object, higher chance to become brittle
 	if(!BP_IS_CRYSTAL(E) && !BP_IS_BRITTLE(E))
-		to_chat(patient, "<span class='warning'>It feels a bit brittle, though...</span>")
+		to_chat(patient, SPAN_WARNING("It feels a bit brittle, though..."))
 		E.status |= ORGAN_BRITTLE
 
 */

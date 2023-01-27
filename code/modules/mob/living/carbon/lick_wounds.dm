@@ -4,12 +4,12 @@
 	set desc = "Disinfect and heal small wounds with your saliva."
 
 	if(nutrition < 50)
-		to_chat(src, "<span class='warning'>You need more energy to produce antiseptic enzymes. Eat something and try again.</span>")
+		to_chat(src, SPAN_WARNING("You need more energy to produce antiseptic enzymes. Eat something and try again."))
 		return
 
 	if ( ! (istype(src, /mob/living/carbon/human) || \
 			istype(src, /mob/living/silicon)) )
-		to_chat(src, "<span class='warning'>If you even have a tongue, it doesn't work that way.</span>")
+		to_chat(src, SPAN_WARNING("If you even have a tongue, it doesn't work that way."))
 		return
 
 	if (istype(M, /mob/living/carbon/human))
@@ -17,42 +17,42 @@
 		var/obj/item/organ/external/affecting = H.get_organ(src.zone_sel.selecting)
 
 		if(!affecting)
-			to_chat(src, "<span class='warning'>No body part there to work on!</span>")
+			to_chat(src, SPAN_WARNING("No body part there to work on!"))
 			return
 
 		if(affecting.organ_tag == BP_HEAD)
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-				to_chat(src, "<span class='warning'>You can't seem to lick through [H.head]!</span>")
+				to_chat(src, SPAN_WARNING("You can't seem to lick through [H.head]!"))
 				return
 
 		else
 			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-				to_chat(src, "<span class='warning'>You can't lick your way through [H.wear_suit]!</span>")
+				to_chat(src, SPAN_WARNING("You can't lick your way through [H.wear_suit]!"))
 				return
 
 		if(affecting.robotic == ORGAN_ROBOT)
-			to_chat(src, "<span class='warning'>You don't think your spit will help a robotic limb.</span>")
+			to_chat(src, SPAN_WARNING("You don't think your spit will help a robotic limb."))
 			return
 
 		if(affecting.robotic >= ORGAN_LIFELIKE)
-			to_chat(src, "<span class='warning'>You lick [M]'s [affecting.name], but it seems to have no effect...</span>")
+			to_chat(src, SPAN_WARNING("You lick [M]'s [affecting.name], but it seems to have no effect..."))
 			return
 
 		if(affecting.open)
-			to_chat(src, "<span class='notice'>The [affecting.name] is cut open, you don't think your spit will help them!</span>")
+			to_chat(src, SPAN_NOTICE("The [affecting.name] is cut open, you don't think your spit will help them!"))
 			return
 
 		if(affecting.is_bandaged() && affecting.is_salved())
-			to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been treated.</span>")
+			to_chat(src, SPAN_WARNING("The wounds on [M]'s [affecting.name] have already been treated."))
 			return
 
 		if(affecting.brute_dam > 20 || affecting.burn_dam > 20)
-			to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] are too severe to treat with just licking.</span>")
+			to_chat(src, SPAN_WARNING("The wounds on [M]'s [affecting.name] are too severe to treat with just licking."))
 			return
            
 		else
-			visible_message("<span class='notice'>\The [src] starts licking the wounds on [M]'s [affecting.name] clean.</span>", \
-					             "<span class='notice'>You start licking the wounds on [M]'s [affecting.name] clean.</span>" )
+			visible_message(SPAN_NOTICE("\The [src] starts licking the wounds on [M]'s [affecting.name] clean."), \
+					             SPAN_NOTICE("You start licking the wounds on [M]'s [affecting.name] clean.") )
 
 			for (var/datum/wound/W in affecting.wounds)
 
@@ -60,11 +60,11 @@
 					continue
 
 				if(!do_mob(src, M, W.damage/5))
-					to_chat(src, "<span class='notice'>You must stand still to clean wounds.</span>")
+					to_chat(src, SPAN_NOTICE("You must stand still to clean wounds."))
 					break
 
 				if(affecting.is_bandaged() && affecting.is_salved()) // We do a second check after the delay, in case it was bandaged after the first check.
-					to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been treated.</span>")
+					to_chat(src, SPAN_WARNING("The wounds on [M]'s [affecting.name] have already been treated."))
 					return 
 
 				else
@@ -73,7 +73,7 @@
 																			   "drips saliva onto \a [W.desc] on [M]'s [affecting.name].",
 																			   "uses their tongue to disinfect \a [W.desc] on [M]'s [affecting.name].",
 																			   "licks \a [W.desc] on [M]'s [affecting.name], cleaning it.")]</span>", \
-					                        	"<span class='notice'>You treat \a [W.desc] on [M]'s [affecting.name] with your antiseptic saliva.</span>" )
+					                        	SPAN_NOTICE("You treat \a [W.desc] on [M]'s [affecting.name] with your antiseptic saliva.") )
 					nutrition -= 20
 					W.salve()
 					W.bandage()

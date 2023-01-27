@@ -121,7 +121,7 @@
 	if (istype(AM, /obj))
 		var/obj/O = AM
 		if (O.throw_force >= src.toughness)
-			visible_message("<span class='warning'><B>[src] was hit by [O].</B></span>")
+			visible_message(SPAN_WARNING("<B>[src] was hit by [O].</B>"))
 		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
@@ -136,7 +136,7 @@
 		set_status(0)
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		visible_message(SPAN_WARNING("\The [user] slashes at [src]!"))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 		add_hiddenprint(user)
 		destroy()
@@ -147,7 +147,7 @@
 		set_status(0)
 		S.do_attack_animation(src)
 		S.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] [pick(S.attacktext)] \the [src]!</span>")
+		visible_message(SPAN_WARNING("\The [user] [pick(S.attacktext)] \the [src]!"))
 		playsound(src.loc, S.attack_sound, 100, 1)
 		add_hiddenprint(user)
 		destroy()
@@ -157,11 +157,11 @@
 	update_coverage()
 	// DECONSTRUCTION
 	if(W.is_screwdriver())
-		//to_chat(user, "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>")
+		//to_chat(user, SPAN_NOTICE("You start to [panel_open ? "close" : "open"] the camera's panel."))
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
-		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
-		"<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
+		user.visible_message(SPAN_WARNING("[user] screws the camera's panel [panel_open ? "open" : "closed"]!"),
+		SPAN_NOTICE("You screw the camera's panel [panel_open ? "open" : "closed"]."))
 		playsound(src.loc, W.tool_sound, 50, 1)
 
 	else if((W.is_wirecutter() || istype(W, /obj/item/multitool)) && panel_open)
@@ -178,10 +178,10 @@
 				assembly.dir = src.dir
 				if(machine_stat & BROKEN)
 					assembly.state = 2
-					to_chat(user, "<span class='notice'>You repaired \the [src] frame.</span>")
+					to_chat(user, SPAN_NOTICE("You repaired \the [src] frame."))
 				else
 					assembly.state = 1
-					to_chat(user, "<span class='notice'>You cut \the [src] free from the wall.</span>")
+					to_chat(user, SPAN_NOTICE("You cut \the [src] free from the wall."))
 					new /obj/item/stack/cable_coil(drop_location(), 2)
 				assembly = null //so qdel doesn't eat it.
 			qdel(src)
@@ -213,7 +213,7 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if (W.force >= src.toughness)
 			user.do_attack_animation(src)
-			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
+			visible_message(SPAN_WARNING("<b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b>"))
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
 				if (I.hitsound)
@@ -234,17 +234,17 @@
 	set_status(!src.status)
 	if (!(src.status))
 		if(user)
-			visible_message("<span class='notice'> [user] has deactivated [src]!</span>")
+			visible_message(SPAN_NOTICE(" [user] has deactivated [src]!"))
 		else
-			visible_message("<span class='notice'> [src] clicks and shuts down. </span>")
+			visible_message(SPAN_NOTICE(" [src] clicks and shuts down. "))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		icon_state = "[initial(icon_state)]1"
 		add_hiddenprint(user)
 	else
 		if(user)
-			visible_message("<span class='notice'> [user] has reactivated [src]!</span>")
+			visible_message(SPAN_NOTICE(" [user] has reactivated [src]!"))
 		else
-			visible_message("<span class='notice'> [src] clicks and reactivates itself. </span>")
+			visible_message(SPAN_NOTICE(" [src] clicks and reactivates itself. "))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		icon_state = initial(icon_state)
 		add_hiddenprint(user)
@@ -362,7 +362,7 @@
 		return 0
 
 	// Do after stuff here
-	to_chat(user, "<span class='notice'>You start to weld [src]..</span>")
+	to_chat(user, SPAN_NOTICE("You start to weld [src].."))
 	playsound(src.loc, WT.tool_sound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
@@ -379,7 +379,7 @@
 		return
 
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is broken."))
 		return
 
 	user.set_machine(src)

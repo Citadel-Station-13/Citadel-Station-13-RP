@@ -76,14 +76,14 @@
 				return 0
 			for(var/obj/item/grab/G in src.grabbed_by)
 				if(G.assailant == M)
-					to_chat(M, "<span class='notice'>You already grabbed [src].</span>")
+					to_chat(M, SPAN_NOTICE("You already grabbed [src]."))
 					return
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
 
 			var/obj/item/grab/G = new /obj/item/grab(M, src)
 			if(buckled)
-				to_chat(M, "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>")
+				to_chat(M, SPAN_NOTICE("You cannot grab [src], [TT.he] is buckled in!"))
 				return
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
@@ -93,7 +93,7 @@
 
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
+			visible_message(SPAN_WARNING("[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!"))
 
 			return TRUE
 
@@ -102,11 +102,11 @@
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
 				var/obj/item/grenade/G = wear_mask
 				if(!G.active)
-					visible_message("<span class='danger'>\The [M] pulls the pin from \the [src]'s [G.name]!</span>")
+					visible_message(SPAN_DANGER("\The [M] pulls the pin from \the [src]'s [G.name]!"))
 					G.activate(M)
 					update_inv_wear_mask()
 				else
-					to_chat(M, "<span class='warning'>\The [G] is already primed! Run!</span>")
+					to_chat(M, SPAN_WARNING("\The [G] is already primed! Run!"))
 				return
 
 			if(!istype(H))
@@ -120,7 +120,7 @@
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
-				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
+				to_chat(M, SPAN_DANGER("They are missing that limb!"))
 				return TRUE
 
 			switch(src.a_intent)
@@ -200,7 +200,7 @@
 			if(!attack_message)
 				attack.show_attack(H, src, hit_zone, rand_damage)
 			else
-				H.visible_message("<span class='danger'>[attack_message]</span>")
+				H.visible_message(SPAN_DANGER("[attack_message]"))
 
 			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
 
@@ -253,11 +253,11 @@
 						turfs += T
 					if(turfs.len)
 						var/turf/target = pick(turfs)
-						visible_message("<span class='danger'>[src]'s [W] goes off during the struggle!</span>")
+						visible_message(SPAN_DANGER("[src]'s [W] goes off during the struggle!"))
 						return W.afterattack(target,src)
 
 			if(last_push_time + 30 > world.time)
-				visible_message("<span class='warning'>[M] has weakly pushed [src]!</span>")
+				visible_message(SPAN_WARNING("[M] has weakly pushed [src]!"))
 				return
 
 			var/randn = rand(1, 100)
@@ -268,11 +268,11 @@
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
 					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
-						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
+						visible_message(SPAN_DANGER("[M] has leg swept [src]!"))
 					else
-						visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+						visible_message(SPAN_DANGER("[M] has pushed [src]!"))
 				else
-					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
+					visible_message(SPAN_WARNING("[M] attempted to push [src]!"))
 				return
 
 			if(randn <= 60)
@@ -284,7 +284,7 @@
 				//Actually disarm them
 				drop_all_held_items()
 
-				visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
+				visible_message(SPAN_DANGER("[M] has disarmed [src]!"))
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
@@ -301,7 +301,7 @@
 		return
 
 	add_attack_logs(user,src,"Melee attacked with fists (miss/block)",admin_notify = FALSE) //No admin notice since this is usually fighting simple animals
-	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
+	src.visible_message(SPAN_DANGER("[user] has [attack_message] [src]!"))
 	user.do_attack_animation(src)
 
 	var/dam_zone = pick(organs_by_name)
@@ -331,10 +331,10 @@
 	if(!organ || organ.dislocated > 0 || organ.dislocated == -1) //don't use is_dislocated() here, that checks parent
 		return FALSE
 
-	user.visible_message("<span class='warning'>[user] begins to dislocate [src]'s [organ.joint]!</span>")
+	user.visible_message(SPAN_WARNING("[user] begins to dislocate [src]'s [organ.joint]!"))
 	if(do_after(user, 100))
 		organ.dislocate(1)
-		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		src.visible_message(SPAN_DANGER("[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!"))
 		return TRUE
 	return FALSE
 
@@ -342,21 +342,21 @@
 /mob/living/carbon/human/proc/break_all_grabs(mob/living/carbon/user)
 	var/success = FALSE
 	if(pulling)
-		visible_message("<span class='danger'>[user] has broken [src]'s grip on [pulling]!</span>")
+		visible_message(SPAN_DANGER("[user] has broken [src]'s grip on [pulling]!"))
 		success = TRUE
 		stop_pulling()
 
 	if(istype(l_hand, /obj/item/grab))
 		var/obj/item/grab/lgrab = l_hand
 		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+			visible_message(SPAN_DANGER("[user] has broken [src]'s grip on [lgrab.affecting]!"))
 			success = TRUE
 		spawn(1)
 			qdel(lgrab)
 	if(istype(r_hand, /obj/item/grab))
 		var/obj/item/grab/rgrab = r_hand
 		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
+			visible_message(SPAN_DANGER("[user] has broken [src]'s grip on [rgrab.affecting]!"))
 			success = TRUE
 		spawn(1)
 			qdel(rgrab)
@@ -375,7 +375,7 @@
 		return FALSE
 
 	if(organ.applied_pressure)
-		to_chat(user, "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>")
+		to_chat(user, SPAN_WARNING("Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"]."))
 		return FALSE
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]

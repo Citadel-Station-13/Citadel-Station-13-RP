@@ -31,7 +31,7 @@
 			h_user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			h_user.temporarily_remove_from_inventory(SC, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			h_user.put_in_hands(SC)
-		to_chat(user, "<span class='notice'>You combine the Thalers to a bundle of [SC.worth] Thalers.</span>")
+		to_chat(user, SPAN_NOTICE("You combine the Thalers to a bundle of [SC.worth] Thalers."))
 		qdel(src)
 
 /obj/item/spacecash/update_icon()

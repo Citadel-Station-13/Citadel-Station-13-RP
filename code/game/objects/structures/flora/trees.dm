@@ -47,11 +47,11 @@
 	if(is_stump)
 		if(istype(W,/obj/item/shovel))
 			if(do_after(user, 5 SECONDS))
-				visible_message("<span class='notice'>\The [user] digs up \the [src] stump with \the [W].</span>")
+				visible_message(SPAN_NOTICE("\The [user] digs up \the [src] stump with \the [W]."))
 				qdel(src)
 		return
 
-	visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W]!</span>")
+	visible_message(SPAN_DANGER("\The [user] hits \the [src] with \the [W]!"))
 
 	var/damage_to_do = W.force
 	if(!W.sharp && !W.edge)
@@ -64,7 +64,7 @@
 		if(damage_to_do > 5 && !indestructable)
 			adjust_health(-damage_to_do)
 		else
-			to_chat(user, "<span class='warning'>\The [W] is ineffective at harming \the [src].</span>")
+			to_chat(user, SPAN_WARNING("\The [W] is ineffective at harming \the [src]."))
 
 	hit_animation()
 	user.setClickCooldown(user.get_attack_speed(W))
@@ -104,7 +104,7 @@
 		var/obj/item/stack/material/M = new product(get_turf(src))
 		M.amount = product_amount
 		M.update_icon()
-	visible_message("<span class='danger'>\The [src] is felled!</span>")
+	visible_message(SPAN_DANGER("\The [src] is felled!"))
 	stump()
 
 // Makes the tree into a mostly non-interactive stump.

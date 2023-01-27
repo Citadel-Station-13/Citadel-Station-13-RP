@@ -44,11 +44,11 @@
 	if(!sleeper)
 		findsleeper()
 		if(!sleeper)
-			to_chat(user, "<span class='notice'>Sleeper not found!</span>")
+			to_chat(user, SPAN_NOTICE("Sleeper not found!"))
 			return
 
 	if(panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 		return
 
 	if(sleeper)

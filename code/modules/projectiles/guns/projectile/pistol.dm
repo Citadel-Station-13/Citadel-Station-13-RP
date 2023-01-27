@@ -36,7 +36,7 @@
 	if(!M.mind)	return 0
 	var/job = M.mind.assigned_role
 	if(job != "Detective" && job != "Security Officer" && job != "Warden" && job != "Head of Security")
-		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
+		to_chat(M, SPAN_NOTICE("You don't feel cool enough to name this gun, chump."))
 		return 0
 
 	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
@@ -217,7 +217,7 @@
 			if(!user.is_holding(src))
 				..()
 				return
-			to_chat(user, "<span class='notice'>You unscrew [silenced] from [src].</span>")
+			to_chat(user, SPAN_NOTICE("You unscrew [silenced] from [src]."))
 			user.put_in_hands(silenced)
 			silenced = 0
 			w_class = ITEMSIZE_SMALL
@@ -228,11 +228,11 @@
 /obj/item/gun/ballistic/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/silencer))
 		if(!user.is_holding(src))	//if we're not in his hands
-			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
+			to_chat(user, SPAN_NOTICE("You'll need [src] in your hands to do that."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		to_chat(user, "<span class='notice'>You screw [I] onto [src].</span>")
+		to_chat(user, SPAN_NOTICE("You screw [I] onto [src]."))
 		silenced = I	//dodgy?
 		w_class = ITEMSIZE_NORMAL
 		update_icon()
@@ -491,16 +491,16 @@
 
 /obj/item/gun/ballistic/fnseven/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
-		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
+		to_chat(user, SPAN_NOTICE("You pull out the stock on the [src], steadying the weapon."))
 		w_class = ITEMSIZE_LARGE
 		one_handed_penalty = 10
 		extended = 1
 		update_icon()
 	else if(!collapsible)
-		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
+		to_chat(user, SPAN_DANGER("The [src] doesn't have a stock!"))
 		return
 	else
-		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
+		to_chat(user, SPAN_NOTICE("You push the stock back into the [src], making it more compact."))
 		w_class = ITEMSIZE_NORMAL
 		one_handed_penalty = 30
 		extended = 0

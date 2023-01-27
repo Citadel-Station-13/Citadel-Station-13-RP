@@ -91,7 +91,7 @@
 
 		// NTOS Path
 		if(!sync_linked())
-			to_chat(user, "<span class='warning'>You don't appear to be on a spaceship...</span>")
+			to_chat(user, SPAN_WARNING("You don't appear to be on a spaceship..."))
 			if(ui)
 				ui.close(can_be_suspended = FALSE)
 			if(ntos)
@@ -307,7 +307,7 @@
 				sec_name = "Sector #[known_sectors.len]"
 			R.fields["name"] = sec_name
 			if(sec_name in known_sectors)
-				to_chat(usr, "<span class='warning'>Sector with that name already exists, please input a different name.</span>")
+				to_chat(usr, SPAN_WARNING("Sector with that name already exists, please input a different name."))
 				return TRUE
 			switch(params["add"])
 				if("current")

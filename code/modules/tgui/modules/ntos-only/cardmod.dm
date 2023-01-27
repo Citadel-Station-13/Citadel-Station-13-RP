@@ -149,20 +149,20 @@
 								contents += "  [get_access_desc(A)]"
 
 						if(!computer.nano_printer.print_text(contents,"access report"))
-							to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+							to_chat(usr, SPAN_NOTICE("Hardware error: Printer was unable to print the file. It may be out of paper."))
 							return
 						else
-							computer.visible_message("<span class='notice'>\The [computer] prints out paper.</span>")
+							computer.visible_message(SPAN_NOTICE("\The [computer] prints out paper."))
 				else
 					var/contents = {"<h4>Crew Manifest</h4>
 									<br>
 									[data_core ? data_core.get_manifest(0) : ""]
 									"}
 					if(!computer.nano_printer.print_text(contents,text("crew manifest ([])", stationtime2text())))
-						to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+						to_chat(usr, SPAN_NOTICE("Hardware error: Printer was unable to print the file. It may be out of paper."))
 						return
 					else
-						computer.visible_message("<span class='notice'>\The [computer] prints out paper.</span>")
+						computer.visible_message(SPAN_NOTICE("\The [computer] prints out paper."))
 			. = TRUE
 		if("modify")
 			if(computer && computer.card_slot)
@@ -182,7 +182,7 @@
 				if(temp_name)
 					id_card.registered_name = temp_name
 				else
-					computer.visible_message("<span class='notice'>[computer] buzzes rudely.</span>")
+					computer.visible_message(SPAN_NOTICE("[computer] buzzes rudely."))
 			. = TRUE
 		if("account")
 			if(computer && program.can_run(usr, 1))
@@ -209,7 +209,7 @@
 								jobdatum = J
 								break
 						if(!jobdatum)
-							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
+							to_chat(usr, SPAN_WARNING("No log exists for this job: [t1]"))
 							return
 
 						access = jobdatum.get_access()

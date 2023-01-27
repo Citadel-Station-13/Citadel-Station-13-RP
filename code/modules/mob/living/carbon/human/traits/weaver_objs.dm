@@ -19,7 +19,7 @@ var/global/list/weavable_items = list()
 	user.setClickCooldown(user.get_attack_speed(W))
 
 	if(W.force)
-		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+		visible_message(SPAN_WARNING("\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]"))
 		qdel(src)
 
 /obj/effect/weaversilk/bullet_act(var/obj/item/projectile/Proj)
@@ -37,7 +37,7 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/attack_hand(mob/user as mob)
 	..()
 	if(user.a_intent == INTENT_HARM)
-		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
+		to_chat(user,SPAN_WARNING("You easily tear down [name]."))
 		qdel(src)
 
 /obj/effect/weaversilk/floor
@@ -83,7 +83,7 @@ var/global/list/weavable_items = list()
 /obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user as mob)
 	..()
 	if(user.a_intent == INTENT_HARM && !has_buckled_mobs())
-		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
+		to_chat(user,SPAN_WARNING("You easily tear down [name]."))
 		qdel(src)
 
 /obj/effect/weaversilk/trap
@@ -104,13 +104,13 @@ var/global/list/weavable_items = list()
 		var/mob/living/L = AM
 		if(L.m_intent == MOVE_INTENT_RUN)
 			L.visible_message(
-				"<span class='danger'>[L] steps on \the [src].</span>",
-				"<span class='danger'>You step on \the [src]!</span>",
+				SPAN_DANGER("[L] steps on \the [src]."),
+				SPAN_DANGER("You step on \the [src]!"),
 				"<b>You hear a squishy noise!</b>"
 				)
 			buckle_mob(L, BUCKLE_OP_FORCE)
 			L.Stun(1)
-			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
+			to_chat(L, SPAN_DANGER("The sticky fibers of \the [src] ensnare, trapping you in place!"))
 			trap_active = FALSE
 			desc += " Actually, it looks like it's been all spent."
 	..()

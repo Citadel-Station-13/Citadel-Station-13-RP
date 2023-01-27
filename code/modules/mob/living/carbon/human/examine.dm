@@ -265,7 +265,7 @@
 			var/obj/item/card/id/idcard = wear_id
 			id = idcard.registered_name
 		if(id && (id != real_name) && (get_dist(src, usr) <= 1) && prob(10))
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...</span>"
+			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...")
 		else*/
 		. += SPAN_INFO("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
 
@@ -555,9 +555,9 @@
 			t_His 	= "Hir"
 	switch(nutrition_examine)
 		if(0 to 49)
-			message = "<span class='warning'>[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!</span>"
+			message = SPAN_WARNING("[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!")
 		if(50 to 99)
-			message = "<span class='warning'>[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.</span>"
+			message = SPAN_WARNING("[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.")
 		if(100 to 499)
 			return null //Well that's pretty normal, really.
 		if(500 to 999) // range that vampires hit nutrition wise, best to not have vore kink messages forced on them.
@@ -565,13 +565,13 @@
 		if(1000 to 1399)
 			message = "[t_He] [t_has] a rotund, thick gut. It bulges from their body obscenely, close to sagging under its own weight."
 		if(1400 to 1934) // One person fully digested.
-			message = "<span class='warning'>[t_He] [t_is] sporting a large, round, sagging stomach. It's contains at least their body weight worth of glorping slush.</span>"
+			message = SPAN_WARNING("[t_He] [t_is] sporting a large, round, sagging stomach. It's contains at least their body weight worth of glorping slush.")
 		if(1935 to 3004) // Two people.
-			message = "<span class='warning'>[t_He] [t_is] engorged with a huge stomach that sags and wobbles as they move. [t_He] must have consumed at least twice their body weight. It looks incredibly soft.</span>"
+			message = SPAN_WARNING("[t_He] [t_is] engorged with a huge stomach that sags and wobbles as they move. [t_He] must have consumed at least twice their body weight. It looks incredibly soft.")
 		if(3005 to 4074) // Three people.
-			message = "<span class='warning'>[t_His] stomach is firmly packed with digesting slop. [t_He] must have eaten at least a few times worth their body weight! It looks hard for them to stand, and [t_his] gut jiggles when they move.</span>"
+			message = SPAN_WARNING("[t_His] stomach is firmly packed with digesting slop. [t_He] must have eaten at least a few times worth their body weight! It looks hard for them to stand, and [t_his] gut jiggles when they move.")
 		if(4075 to INFINITY) // Four or more people.
-			message = "<span class='warning'>[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!</span>"
+			message = SPAN_WARNING("[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!")
 	return message
 */
 
@@ -648,13 +648,13 @@
 			t_his 	= "hir"
 	if(revive_ready == REVIVING_NOW || revive_ready == REVIVING_DONE)
 		if(stat == DEAD)
-			return "<span class='warning'>[t_His] body is twitching subtly.</span>"
+			return SPAN_WARNING("[t_His] body is twitching subtly.")
 		else
-			return "<span class='notice'>[t_He] [t_appear] to be in some sort of torpor.</span>"
+			return SPAN_NOTICE("[t_He] [t_appear] to be in some sort of torpor.")
 	if(feral)
-		return "<span class='warning'>[t_He] [t_has] a crazed, wild look in [t_his] eyes!</span>"
+		return SPAN_WARNING("[t_He] [t_has] a crazed, wild look in [t_his] eyes!")
 	if(bitten)
-		return "<span class='notice'>[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.</span>"
+		return SPAN_NOTICE("[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.")
 
 /*
 /// You can include this in any mob's examine() to show the examine texts of status effects!

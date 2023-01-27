@@ -127,7 +127,7 @@
 		if(damage > 0)
 			var/reinforce_probability = min(damage, 70)
 			if(prob(reinforce_probability))
-				B.visible_message("<span class='danger'>The [name] quakes, before rapidly hardening!</span>")
+				B.visible_message(SPAN_DANGER("The [name] quakes, before rapidly hardening!"))
 				new/obj/structure/blob/shield(get_turf(B), B.overmind)
 				qdel(B)
 	return ..()
@@ -238,7 +238,7 @@
 		B.adjust_integrity(10)
 	else
 		B = new /obj/structure/blob/normal(T, S.overmind) // Otherwise spread it.
-		B.visible_message("<span class='danger'>\A [B] forms on \the [T] as \the [S] bursts!</span>")
+		B.visible_message(SPAN_DANGER("\A [B] forms on \the [T] as \the [S] bursts!"))
 
 // Makes tons of weak spores whenever it spreads.
 /datum/blob_type/fulminant_organism
@@ -273,7 +273,7 @@
 /datum/blob_type/fulminant_organism/on_death(obj/structure/blob/B)
 	if(prob(33)) // 33% chance to make a spore when dying.
 		var/mob/living/simple_mob/blob/spore/S = new spore_type(get_turf(B))
-		B.visible_message("<span class='danger'>\The [S] floats free from the [name]!</span>")
+		B.visible_message(SPAN_DANGER("\The [S] floats free from the [name]!"))
 		if(istype(S))
 			S.overmind = B.overmind
 			B.overmind.blob_mobs.Add(S)
@@ -308,7 +308,7 @@
 // Even if the melee attack is enough to one-shot this blob, it gets to retaliate at least once.
 /datum/blob_type/reactive_spines/on_received_damage(var/obj/structure/blob/B, damage, damage_type, mob/living/attacker)
 	if(damage > 0 && attacker && get_dist(B, attacker) <= 1)
-		B.visible_message("<span class='danger'>The [name] retaliates, lashing out at \the [attacker]!</span>")
+		B.visible_message(SPAN_DANGER("The [name] retaliates, lashing out at \the [attacker]!"))
 		B.blob_attack_animation(attacker, B.overmind)
 		attacker.blob_act(B)
 	return ..()
@@ -559,7 +559,7 @@
 	T.wet_floor()
 
 /datum/blob_type/pressurized_slime/on_death(obj/structure/blob/B)
-	B.visible_message("<span class='danger'>The blob ruptures, spraying the area with liquid!</span>")
+	B.visible_message(SPAN_DANGER("The blob ruptures, spraying the area with liquid!"))
 	wet_surroundings(B, 50)
 
 /datum/blob_type/pressurized_slime/proc/wet_surroundings(var/obj/structure/blob/B, var/probability = 50)
@@ -633,10 +633,10 @@
 			return ..()
 		if((I.sharp || I.edge) && !istype(I, /obj/item/gun))
 			I.forceMove(get_turf(B)) // Disarmed entirely.
-			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
+			B.visible_message(SPAN_DANGER("The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!"))
 		else
 			I.throw_at_old(B, 2, 4) // Just yoinked.
-			B.visible_message("<span class='danger'>The [name] heaves, pulling \the [attacker]'s weapon from their hands!</span>")
+			B.visible_message(SPAN_DANGER("The [name] heaves, pulling \the [attacker]'s weapon from their hands!"))
 	return ..()
 
 /datum/blob_type/volatile_alluvium/on_water(obj/structure/blob/B, amount)
@@ -644,4 +644,4 @@
 		var/damage = amount * 2
 		B.adjust_integrity(-(damage))
 		if(B && prob(damage))
-			B.visible_message("<span class='danger'>The [name] begins to crumble!</span>")
+			B.visible_message(SPAN_DANGER("The [name] begins to crumble!"))

@@ -26,7 +26,7 @@
 	if(..())
 		return
 	if(!check_rights())
-		to_chat(usr, "<span class='boldwarning'>You must be an admin to modify this.</span>")
+		to_chat(usr, SPAN_BOLDWARNING("You must be an admin to modify this."))
 		var/logline = "[key_name(usr)] attempted to modify [src] without permissions."
 		message_admins(logline)
 		log_admin(logline)
@@ -94,7 +94,7 @@
 	if(announce == "Cancel")
 		return
 	else if(announce == "Yes")
-		to_chat(world, "<span class='boldnotice'>[user?.client?.holder?.fakekey? "Administrator" : user.key] applied preset [input] to [src].</span>")
+		to_chat(world, SPAN_BOLDNOTICE("[user?.client?.holder?.fakekey? "Administrator" : user.key] applied preset [input] to [src]."))
 	message_admins(logstr)
 	log_admin(logstr)
 	if(input == initial_preset_name)

@@ -90,7 +90,7 @@ Barricades
 
 /obj/structure/barricade/proc/dismantle()
 	material.place_dismantled_product(get_turf(src))
-	visible_message("<span class='danger'>\The [src] falls apart!</span>")
+	visible_message(SPAN_DANGER("\The [src] falls apart!"))
 	qdel(src)
 	return
 

@@ -69,16 +69,16 @@
 		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
 		if(!(S.melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
-			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
+			to_chat(user, SPAN_NOTICE("You bounce against the wall."))
 			return FALSE
 		damage_lower = S.melee_damage_lower
 		damage_upper = S.melee_damage_upper
-	to_chat(user, "<span class='danger'>You smash against the wall!</span>")
+	to_chat(user, SPAN_DANGER("You smash against the wall!"))
 	user.do_attack_animation(src)
 	take_damage(rand(damage_lower,damage_upper))
 
 /turf/simulated/wall/proc/success_smash(var/mob/user)
-	to_chat(user, "<span class='danger'>You smash through the wall!</span>")
+	to_chat(user, SPAN_DANGER("You smash through the wall!"))
 	user.do_attack_animation(src)
 	if(isanimal(user))
 		var/mob/living/simple_mob/S = user
@@ -90,15 +90,15 @@
 
 	if(rotting)
 		if(reinf_material)
-			to_chat(user, "<span class='danger'>\The [reinf_material.display_name] feels porous and crumbly.</span>")
+			to_chat(user, SPAN_DANGER("\The [reinf_material.display_name] feels porous and crumbly."))
 		else
-			to_chat(user, "<span class='danger'>\The [material.display_name] crumbles under your touch!</span>")
+			to_chat(user, SPAN_DANGER("\The [material.display_name] crumbles under your touch!"))
 			dismantle_wall()
 			return 1
 
 	if(!can_open)
 		if(!material.wall_touch_special(src, user))
-			to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
+			to_chat(user, SPAN_NOTICE("You push the wall, but nothing happens."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 		return 0
 
@@ -169,7 +169,7 @@
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	if (!user)
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//get the user's location
@@ -197,10 +197,10 @@
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ChangeTurf(/turf/simulated/floor/plating, flags = CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
+					user.visible_message(SPAN_NOTICE("[user] patches a hole in the ceiling."), SPAN_NOTICE("You patch a hole in the ceiling."))
 					expended_tile = TRUE
 			else
-				to_chat(user, "<span class='warning'>There aren't any holes in the ceiling to patch here.</span>")
+				to_chat(user, SPAN_WARNING("There aren't any holes in the ceiling to patch here."))
 				return
 
 		// Create a ceiling to shield from the weather
@@ -209,7 +209,7 @@
 				make_indoors()
 				if(!expended_tile) // Would've already played a sound
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-				user.visible_message("<span class='notice'>[user] roofs \the [src], shielding it from the elements.</span>", "<span class='notice'>You roof \the [src] tile, shielding it from the elements.</span>")
+				user.visible_message(SPAN_NOTICE("[user] roofs \the [src], shielding it from the elements."), SPAN_NOTICE("You roof \the [src] tile, shielding it from the elements."))
 		return
 
 
@@ -217,13 +217,13 @@
 		if(istype(W, /obj/item/weldingtool) )
 			var/obj/item/weldingtool/WT = W
 			if( WT.remove_fuel(0,user) )
-				to_chat(user, "<span class='notice'>You burn away the fungi with \the [WT].</span>")
+				to_chat(user, SPAN_NOTICE("You burn away the fungi with \the [WT]."))
 				playsound(src, WT.tool_sound, 10, 1)
 				for(var/obj/effect/overlay/wallrot/WR in src)
 					qdel(WR)
 				return
 		else if(!is_sharp(W) && W.force >= 10 || W.force >= 20)
-			to_chat(user, "<span class='notice'>\The [src] crumbles away under the force of your [W.name].</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] crumbles away under the force of your [W.name]."))
 			src.dismantle_wall(1)
 			return
 
@@ -249,7 +249,7 @@
 			var/obj/item/melee/energy/blade/EB = W
 
 			EB.spark_system.start()
-			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
+			to_chat(user, SPAN_NOTICE("You slash \the [src] with \the [EB]; the thermite ignites!"))
 			playsound(src, "sparks", 50, 1)
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
 
@@ -266,13 +266,13 @@
 			return
 
 		if(WT.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You start repairing the damage to [src]."))
 			playsound(src.loc, WT.tool_sound, 100, 1)
 			if(do_after(user, max(5, damage / 5) * WT.tool_speed) && WT && WT.isOn())
-				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You finish repairing the damage to [src]."))
 				take_damage(-damage)
 		else
-			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return
 		user.update_examine_panel(src)
 		return
@@ -289,7 +289,7 @@
 			if(!WT.isOn())
 				return
 			if(!WT.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 				return
 			dismantle_verb = "cutting"
 			dismantle_sound = W.tool_sound
@@ -303,7 +303,7 @@
 			if(!TC.isOn())
 				return
 			if(!TC.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
+				to_chat(user, SPAN_NOTICE("You need more fuel to complete this task."))
 				return
 			dismantle_sound = 'sound/items/Welder.ogg'
 			dismantle_verb = "slicing"
@@ -319,7 +319,7 @@
 
 		if(dismantle_verb)
 
-			to_chat(user, "<span class='notice'>You begin [dismantle_verb] through the outer plating.</span>")
+			to_chat(user, SPAN_NOTICE("You begin [dismantle_verb] through the outer plating."))
 			if(dismantle_sound)
 				playsound(src, dismantle_sound, 100, 1)
 
@@ -329,9 +329,9 @@
 			if(!do_after(user,cut_delay * W.tool_speed))
 				return
 
-			to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
+			to_chat(user, SPAN_NOTICE("You remove the outer plating."))
 			dismantle_wall()
-			user.visible_message("<span class='warning'>The wall was torn open by [user]!</span>")
+			user.visible_message(SPAN_WARNING("The wall was torn open by [user]!"))
 			return
 
 	//Reinforced dismantling.
@@ -342,24 +342,24 @@
 					playsound(src, W.tool_sound, 100, 1)
 					construction_stage = 5
 					user.update_examine_panel(src)
-					to_chat(user, "<span class='notice'>You cut through the outer grille.</span>")
+					to_chat(user, SPAN_NOTICE("You cut through the outer grille."))
 					update_appearance()
 					return
 			if(5)
 				if (W.is_screwdriver())
-					to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
+					to_chat(user, SPAN_NOTICE("You begin removing the support lines."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 5)
 						return
 					construction_stage = 4
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>You unscrew the support lines.</span>")
+					to_chat(user, SPAN_NOTICE("You unscrew the support lines."))
 					return
 				else if (W.is_wirecutter())
 					construction_stage = 6
 					user.update_examine_panel(src)
-					to_chat(user, "<span class='notice'>You mend the outer grille.</span>")
+					to_chat(user, SPAN_NOTICE("You mend the outer grille."))
 					playsound(src, W.tool_sound, 100, 1)
 					update_appearance()
 					return
@@ -372,7 +372,7 @@
 					if(WT.remove_fuel(0,user))
 						cut_cover=1
 					else
-						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 						return
 				else if (istype(W, /obj/item/pickaxe/plasmacutter))
 					if(!active)
@@ -386,49 +386,49 @@
 					if(TC.remove_fuel(0,user))
 						cut_cover = 1
 					else
-						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 						return
 				if(cut_cover)
-					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
+					to_chat(user, SPAN_NOTICE("You begin slicing through the metal cover."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user, 60 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
 						return
 					construction_stage = 3
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
+					to_chat(user, SPAN_NOTICE("You press firmly on the cover, dislodging it."))
 					return
 				else if (W.is_screwdriver())
-					to_chat(user, "<span class='notice'>You begin screwing down the support lines.</span>")
+					to_chat(user, SPAN_NOTICE("You begin screwing down the support lines."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
 						return
 					construction_stage = 5
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>You screw down the support lines.</span>")
+					to_chat(user, SPAN_NOTICE("You screw down the support lines."))
 					return
 			if(3)
 				if (W.is_crowbar())
-					to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
+					to_chat(user, SPAN_NOTICE("You struggle to pry off the cover."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,100 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
 						return
 					construction_stage = 2
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>You pry off the cover.</span>")
+					to_chat(user, SPAN_NOTICE("You pry off the cover."))
 					return
 			if(2)
 				if (W.is_wrench())
-					to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
+					to_chat(user, SPAN_NOTICE("You start loosening the anchoring bolts which secure the support rods to their frame."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
 						return
 					construction_stage = 1
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
+					to_chat(user, SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 					return
 			if(1)
 				var/cut_cover
@@ -437,7 +437,7 @@
 					if( WT.remove_fuel(0,user) )
 						cut_cover=1
 					else
-						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 						return
 				else if(istype(W, /obj/item/pickaxe/plasmacutter))
 					if(!active)
@@ -445,23 +445,23 @@
 					else
 						cut_cover = 1
 				if(cut_cover)
-					to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
+					to_chat(user, SPAN_NOTICE("You begin slicing through the support rods."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,70 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 1)
 						return
 					construction_stage = 0
 					user.update_examine_panel(src)
 					update_appearance()
-					to_chat(user, "<span class='notice'>The slice through the support rods.</span>")
+					to_chat(user, SPAN_NOTICE("The slice through the support rods."))
 					return
 			if(0)
 				if(W.is_crowbar())
-					to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
+					to_chat(user, SPAN_NOTICE("You struggle to pry off the outer sheath."))
 					playsound(src, W.tool_sound, 100, 1)
 					if(!do_after(user,100 * W.tool_speed) || !istype(src, /turf/simulated/wall) || !user || !W || !T )
 						return
 					if(user.loc == T && user.get_active_held_item() == W )
-						to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
+						to_chat(user, SPAN_NOTICE("You pry off the outer sheath."))
 						dismantle_wall()
 					return
 

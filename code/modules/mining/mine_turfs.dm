@@ -348,7 +348,7 @@
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
 
 	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	if(!density)
@@ -376,20 +376,20 @@
 
 		if(valid_tool)
 			if(sand_dug)
-				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
+				to_chat(user, SPAN_WARNING("This area has already been dug."))
 				return
 
 			var/turf/T = user.loc
 			if(!(istype(T)))
 				return
 
-			// to_chat(user, "<span class='notice'>You start digging.</span>")
+			// to_chat(user, SPAN_NOTICE("You start digging."))
 			playsound(user.loc, 'sound/effects/rustle1.ogg', 50, 1)
 
 			if(!do_after(user,digspeed))
 				return
 
-			// to_chat(user, "<span class='notice'>You dug a hole.</span>")
+			// to_chat(user, SPAN_NOTICE("You dug a hole."))
 			GetDrilled()
 
 		else if(istype(W,/obj/item/storage/bag/ore))
@@ -412,7 +412,7 @@
 				return
 			var/obj/item/stack/rods/R = W
 			if (R.use(1))
-				to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
+				to_chat(user, SPAN_NOTICE("Constructing support lattice ..."))
 				playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 				new /obj/structure/lattice(get_turf(src))
 
@@ -428,7 +428,7 @@
 				S.use(1)
 				return
 			else
-				to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
+				to_chat(user, SPAN_WARNING("The plating is going to need some support."))
 				return
 
 	else
@@ -445,9 +445,9 @@
 
 		if (istype(W, /obj/item/measuring_tape))
 			var/obj/item/measuring_tape/P = W
-			user.visible_message("<span class='notice'>\The [user] extends \a [P] towards \the [src].</span>","<span class='notice'>You extend \the [P] towards \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] extends \a [P] towards \the [src]."),SPAN_NOTICE("You extend \the [P] towards \the [src]."))
 			if(do_after(user, 15))
-				to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] has been excavated to a depth of [excavation_level]cm."))
 			return
 
 		if(istype(W, /obj/item/xenoarch_multi_tool))
@@ -455,9 +455,9 @@
 			if(C.mode) //Mode means scanning
 				C.depth_scanner.scan_atom(user, src)
 			else
-				user.visible_message("<span class='notice'>\The [user] extends \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>", "<span class='notice'>You extend \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>")
+				user.visible_message(SPAN_NOTICE("\The [user] extends \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!"), SPAN_NOTICE("You extend \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!"))
 				if(do_after(user, 15))
-					to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
+					to_chat(user, SPAN_NOTICE("\The [src] has been excavated to a depth of [excavation_level]cm."))
 			return
 
 		if (istype(W, /obj/item/pickaxe))
@@ -481,7 +481,7 @@
 						fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
 					wreckfinds(P.destroy_artefacts)
 				if(fail_message)
-					to_chat(user, "<span class='notice'>[fail_message].</span>")
+					to_chat(user, SPAN_NOTICE("[fail_message]."))
 
 				if(do_after(user,P.digspeed))
 
@@ -492,7 +492,7 @@
 						else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
 							excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
 
-					//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+					//to_chat(user, SPAN_NOTICE("You finish [P.drill_verb] \the [src]."))
 
 					if(newDepth >= 200) // This means the rock is mined out fully
 						if(P.destroy_artefacts)
@@ -536,7 +536,7 @@
 						fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
 					wreckfinds(T.destroy_artefacts)
 				if(fail_message)
-					to_chat(user, "<span class='notice'>[fail_message].</span>")
+					to_chat(user, SPAN_NOTICE("[fail_message]."))
 
 				if(do_after(user,T.digspeed))
 
@@ -547,7 +547,7 @@
 						else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
 							excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
 
-					//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+					//to_chat(user, SPAN_NOTICE("You finish [P.drill_verb] \the [src]."))
 
 					if(newDepth >= 200) // This means the rock is mined out fully
 						if(T.destroy_artefacts)
@@ -677,7 +677,7 @@
 		if(prob(50))
 			pain = 1
 		for(var/mob/living/M in range(src, 200))
-			to_chat(M, "<span class='danger'>[pick("A high-pitched [pick("keening","wailing","whistle")]","A rumbling noise like [pick("thunder","heavy machinery")]")] somehow penetrates your mind before fading away!</span>")
+			to_chat(M, SPAN_DANGER("[pick("A high-pitched [pick("keening","wailing","whistle")]","A rumbling noise like [pick("thunder","heavy machinery")]")] somehow penetrates your mind before fading away!"))
 			if(pain)
 				flick("pain",M.pain)
 				if(prob(50))
@@ -690,7 +690,7 @@
 		if(prob(25))
 			excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
-		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
+		visible_message(SPAN_NOTICE("An old dusty crate was buried within!"))
 		new /obj/structure/closet/crate/secure/loot(src)
 
 	make_floor()
@@ -730,7 +730,7 @@
 		var/obj/effect/suspension_field/S = locate() in src
 		if(!S)
 			if(X)
-				visible_message("<span class='danger'>\The [pick("[display_name] crumbles away into dust","[display_name] breaks apart")].</span>")
+				visible_message(SPAN_DANGER("\The [pick("[display_name] crumbles away into dust","[display_name] breaks apart")]."))
 				qdel(X)
 
 	finds.Remove(F)

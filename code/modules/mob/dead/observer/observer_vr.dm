@@ -20,27 +20,27 @@
 
 	//Good choice testing and some instance-grabbing
 	if(!ishuman(picked))
-		to_chat(src,"<span class='warning'>[picked] isn't in a humanoid mob at the moment.</span>")
+		to_chat(src,SPAN_WARNING("[picked] isn't in a humanoid mob at the moment."))
 		return
 
 	var/mob/living/carbon/human/H = picked
 
 	if(H.stat || !H.client)
-		to_chat(src,"<span class='warning'>[H] isn't awake/alive at the moment.</span>")
+		to_chat(src,SPAN_WARNING("[H] isn't awake/alive at the moment."))
 		return
 
 	if(!H.nif)
-		to_chat(src,"<span class='warning'>[H] doesn't have a NIF installed.</span>")
+		to_chat(src,SPAN_WARNING("[H] doesn't have a NIF installed."))
 		return
 
 	var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
 	if(!SC?.visibility_check(ckey))
-		to_chat(src,"<span class='warning'>[H] doesn't have the Soulcatcher NIFSoft installed, or their NIF is unpowered.</span>")
+		to_chat(src,SPAN_WARNING("[H] doesn't have the Soulcatcher NIFSoft installed, or their NIF is unpowered."))
 		return
 
 	//Fine fine, we can ask.
 	var/obj/item/nif/nif = H.nif
-	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+	to_chat(src,SPAN_NOTICE("Request sent to [H]."))
 
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")
@@ -48,11 +48,11 @@
 	var/response = tgui_alert(H,"[src] ([src.key]) wants to join into your Soulcatcher.","Soulcatcher Request",list("Deny","Allow"))
 
 	if(response == "Deny")
-		to_chat(src,"<span class='warning'>[H] denied your request.</span>")
+		to_chat(src,SPAN_WARNING("[H] denied your request."))
 		return
 
 	if((world.time - req_time) > 1 MINUTES)
-		to_chat(H,"<span class='warning'>The request had already expired. (1 minute waiting max)</span>")
+		to_chat(H,SPAN_WARNING("The request had already expired. (1 minute waiting max)"))
 		return
 
 	//Final check since we waited for input a couple times.
@@ -74,12 +74,12 @@
 	if(src.mind.name in SStranscore.backed_up)
 		var/datum/transhuman/mind_record/record = SStranscore.backed_up[src.mind.name]
 		if(!(record.dead_state == MR_DEAD))
-			to_chat(src, "<span class='warning'>Your backup is not past-due yet.</span>")
+			to_chat(src, SPAN_WARNING("Your backup is not past-due yet."))
 		else if((world.time - record.last_notification) < 10 MINUTES)
-			to_chat(src, "<span class='warning'>Too little time has passed since your last notification.</span>")
+			to_chat(src, SPAN_WARNING("Too little time has passed since your last notification."))
 		else
 			SStranscore.notify(record.mindname, TRUE)
 			record.last_notification = world.time
-			to_chat(src, "<span class='notice'>New notification has been sent.</span>")
+			to_chat(src, SPAN_NOTICE("New notification has been sent."))
 	else
-		to_chat(src, "<span class='warning'>No mind record found!</span>")
+		to_chat(src, SPAN_WARNING("No mind record found!"))

@@ -95,14 +95,14 @@
 
 					if(do_after(user, 40 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
-						to_chat(user,"<span class='notice'>You disassembled the windoor assembly!</span>")
+						to_chat(user,SPAN_NOTICE("You disassembled the windoor assembly!"))
 						if(secure)
 							new /obj/item/stack/material/glass/reinforced(get_turf(src), 2)
 						else
 							new /obj/item/stack/material/glass(get_turf(src), 2)
 						qdel(src)
 				else
-					to_chat(user,"<span class='notice'>You need more welding fuel to disassemble the windoor assembly.</span>")
+					to_chat(user,SPAN_NOTICE("You need more welding fuel to disassemble the windoor assembly."))
 					return
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
@@ -112,7 +112,7 @@
 
 				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
-					to_chat(user,"<span class='notice'>You've secured the windoor assembly!</span>")
+					to_chat(user,SPAN_NOTICE("You've secured the windoor assembly!"))
 					src.anchored = 1
 					step = 0
 
@@ -123,7 +123,7 @@
 
 				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
-					to_chat(user,"<span class='notice'>You've unsecured the windoor assembly!</span>")
+					to_chat(user,SPAN_NOTICE("You've unsecured the windoor assembly!"))
 					src.anchored = 0
 					step = null
 
@@ -134,7 +134,7 @@
 				var/obj/item/stack/cable_coil/CC = W
 				if(do_after(user, 40))
 					if (CC.use(1))
-						to_chat(user,"<span class='notice'>You wire the windoor!</span>")
+						to_chat(user,SPAN_NOTICE("You wire the windoor!"))
 						src.state = "02"
 						step = 1
 			else
@@ -150,7 +150,7 @@
 				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 
-					to_chat(user,"<span class='notice'>You cut the windoor wires.!</span>")
+					to_chat(user,SPAN_NOTICE("You cut the windoor wires.!"))
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					src.state = "01"
 					step = 0
@@ -165,7 +165,7 @@
 						return
 					if(!user.attempt_insert_item_for_installation(W, src))
 						return
-					to_chat(user,"<span class='notice'>You've installed the airlock electronics!</span>")
+					to_chat(user,SPAN_NOTICE("You've installed the airlock electronics!"))
 					step = 2
 					src.electronics = W
 				else
@@ -178,7 +178,7 @@
 
 				if(do_after(user, 40 * W.tool_speed))
 					if(!src || !src.electronics) return
-					to_chat(user,"<span class='notice'>You've removed the airlock electronics!</span>")
+					to_chat(user,SPAN_NOTICE("You've removed the airlock electronics!"))
 					step = 1
 					var/obj/item/airlock_electronics/ae = electronics
 					electronics = null
@@ -187,10 +187,10 @@
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(W.is_crowbar())
 				if(!src.electronics)
-					to_chat(usr,"<span class='warning'>The assembly is missing electronics.</span>")
+					to_chat(usr,SPAN_WARNING("The assembly is missing electronics."))
 					return
 				if(src.electronics && istype(src.electronics, /obj/item/circuitboard/broken))
-					to_chat(usr,"<span class='warning'>The assembly has broken airlock electronics.</span>")
+					to_chat(usr,SPAN_WARNING("The assembly has broken airlock electronics."))
 					return
 				user << browse(null, "window=windoor_access") //Not sure what this actually does... -Ner
 				playsound(src, W.tool_sound, 100, 1)
@@ -201,7 +201,7 @@
 					if(!src) return
 
 					density = 1 //Shouldn't matter but just incase
-					to_chat(user,"<span class='notice'>You finish the windoor!</span>")
+					to_chat(user,SPAN_NOTICE("You finish the windoor!"))
 
 					if(secure)
 						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)

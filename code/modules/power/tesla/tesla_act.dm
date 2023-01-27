@@ -52,7 +52,7 @@
 
 /obj/structure/closet/tesla_act(var/power)
 	..() //extend the zap
-	visible_message("<span class='danger'>[src] is blown apart by the bolt of electricity!</span>", "<span class='danger'>You hear a metallic screeching sound.</span>")
+	visible_message(SPAN_DANGER("[src] is blown apart by the bolt of electricity!"), SPAN_DANGER("You hear a metallic screeching sound."))
 	dump_contents()
 	qdel(src)
 

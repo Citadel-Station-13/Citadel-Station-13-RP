@@ -537,12 +537,12 @@
 /atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent)
 	. = AM.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>You forcefully push against [AM]!</span>")
+		visible_message(SPAN_WARNING("[src] forcefully pushes against [AM]!"), SPAN_WARNING("You forcefully push against [AM]!"))
 
 /atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent)
 	. = AM.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
+		visible_message(SPAN_DANGER("[src] crushes past [AM]!"), SPAN_DANGER("You crush [AM]!"))
 
 /**
  * for regexing

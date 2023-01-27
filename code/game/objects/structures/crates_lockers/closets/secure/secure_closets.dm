@@ -46,23 +46,23 @@
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		to_chat(user, "<span class='notice'>Close the locker first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the locker first."))
 		return
 	if(src.broken)
-		to_chat(user, "<span class='warning'>The locker appears to be broken.</span>")
+		to_chat(user, SPAN_WARNING("The locker appears to be broken."))
 		return
 	if(user.loc == src)
-		to_chat(user, "<span class='notice'>You can't reach the lock from inside.</span>")
+		to_chat(user, SPAN_NOTICE("You can't reach the lock from inside."))
 		return
 	if(src.allowed(user))
 		src.locked = !src.locked
 		playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 		for(var/mob/O in viewers(user, 3))
 			if((O.client && !( O.blinded )))
-				to_chat(O, "<span class='notice'>The locker has been [locked ? null : "un"]locked by [user].</span>")
+				to_chat(O, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>Access Denied</span>")
+		to_chat(user, SPAN_NOTICE("Access Denied"))
 
 /obj/structure/closet/secure_closet/attackby(obj/item/W as obj, mob/user as mob)
 	if(src.opened)
@@ -73,14 +73,14 @@
 			if(src.large)
 				src.MouseDroppedOn(G.affecting, user)	//act like they were dragged onto the closet
 			else
-				to_chat(user, "<span class='notice'>The locker is too small to stuff [G.affecting] into!</span>")
+				to_chat(user, SPAN_NOTICE("The locker is too small to stuff [G.affecting] into!"))
 		if(isrobot(user))
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
 		user.transfer_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/melee/energy/blade))
-		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [W]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
+		if(emag_act(INFINITY, user, SPAN_DANGER("The locker has been sliced open by [user] with \an [W]"), SPAN_DANGER("You hear metal being sliced and sparks flying.")))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
@@ -94,7 +94,7 @@
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 			if(do_after(user, 20 * W.tool_speed))
 				if(!src) return
-				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
+				to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]secured \the [src]!"))
 				anchored = !anchored
 				return
 	else if(istype(W,/obj/item/packageWrap) || istype(W,/obj/item/weldingtool))
@@ -113,9 +113,9 @@
 		if(visual_feedback)
 			visible_message(visual_feedback, audible_feedback)
 		else if(user && emag_source)
-			visible_message("<span class='warning'>\The [src] has been broken by \the [user] with \an [emag_source]!</span>", "You hear a faint electrical spark.")
+			visible_message(SPAN_WARNING("\The [src] has been broken by \the [user] with \an [emag_source]!"), "You hear a faint electrical spark.")
 		else
-			visible_message("<span class='warning'>\The [src] sparks and breaks open!</span>", "You hear a faint electrical spark.")
+			visible_message(SPAN_WARNING("\The [src] sparks and breaks open!"), "You hear a faint electrical spark.")
 		return 1
 
 /obj/structure/closet/secure_closet/attack_hand(mob/user as mob)
@@ -141,7 +141,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/secure_closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	cut_overlays()

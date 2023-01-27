@@ -76,7 +76,7 @@
 					turfs += T
 				if(turfs.len)
 					var/turf/target = pick(turfs)
-					visible_message("<span class='danger'>[H]'s [W] goes off due to \the [src]!</span>")
+					visible_message(SPAN_DANGER("[H]'s [W] goes off due to \the [src]!"))
 					return W.afterattack(target,H)
 
 		if(!(H.species.species_flags & NO_SLIP) && prob(50))
@@ -84,9 +84,9 @@
 			H.apply_effect(3, WEAKEN, armor_check)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			if(armor_check < 60)
-				visible_message("<span class='danger'>\The [src] has pushed [H]!</span>")
+				visible_message(SPAN_DANGER("\The [src] has pushed [H]!"))
 			else
-				visible_message("<span class='warning'>\The [src] attempted to push [H]!</span>")
+				visible_message(SPAN_WARNING("\The [src] attempted to push [H]!"))
 			return
 
 		else
@@ -95,7 +95,7 @@
 				return
 
 			H.drop_all_held_items()
-			visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
+			visible_message(SPAN_DANGER("\The [src] has disarmed [H]!"))
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			return
 
@@ -134,7 +134,7 @@
 
 				spawn(2)
 					playsound(target, crack_sound, 40, 1)
-				visible_message("<span class='notice'>\The [T] is snatched by \the [src]!</span>")
+				visible_message(SPAN_NOTICE("\The [T] is snatched by \the [src]!"))
 				T.throw_at_old(get_turf(firer), 7, 1, src)
 				success = TRUE
 	else if(isliving(target) && !done_mob_unique)
@@ -146,12 +146,12 @@
 					if(message == "slaps")
 						spawn(1)
 							playsound(loc, 'sound/effects/snap.ogg', 50, 1)
-					visible_message("<span class='notice'>\The [src] [message] [target].</span>")
+					visible_message(SPAN_NOTICE("\The [src] [message] [target]."))
 					done_mob_unique = TRUE
 					success = TRUE
 				if(INTENT_HARM)
 					if(prob(10) && istype(L, /mob/living/carbon/human))
-						to_chat(L, "<span class='warning'>\The [src] rips at your hands!</span>")
+						to_chat(L, SPAN_WARNING("\The [src] rips at your hands!"))
 						ranged_disarm(L)
 					success = TRUE
 					done_mob_unique = TRUE
@@ -159,7 +159,7 @@
 					if(prob(disarm_chance) && istype(L, /mob/living/carbon/human))
 						ranged_disarm(L)
 					else
-						L.visible_message("<span class='danger'>\The [src] sends \the [L] stumbling backwards.</span>")
+						L.visible_message(SPAN_DANGER("\The [src] sends \the [L] stumbling backwards."))
 						L.throw_at_old(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
@@ -167,7 +167,7 @@
 					var/turf/STurf = get_turf(L)
 					spawn(2)
 						playsound(STurf, crack_sound, 60, 1)
-					L.visible_message("<span class='critical'>\The [src] rips [L] towards \the [firer]!</span>")
+					L.visible_message(SPAN_CRITICAL("\The [src] rips [L] towards \the [firer]!"))
 					L.throw_at_old(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE

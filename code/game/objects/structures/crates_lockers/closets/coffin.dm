@@ -32,15 +32,15 @@
 
 /obj/structure/closet/grave/attack_hand(mob/user as mob)
 	if(opened)
-		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
-						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
+		visible_message(SPAN_NOTICE("[user] starts to climb into \the [src.name]."), \
+						SPAN_NOTICE("You start to lower yourself into \the [src.name]."))
 		if(do_after(user, 50))
 			user.forceMove(src.loc)
-			visible_message("<span class='notice'>[user] climbs into \the [src.name].</span>", \
-							"<span class='notice'>You climb into \the [src.name].</span>")
+			visible_message(SPAN_NOTICE("[user] climbs into \the [src.name]."), \
+							SPAN_NOTICE("You climb into \the [src.name]."))
 		else
-			visible_message("<span class='notice'>[user] decides not to climb into \the [src.name].</span>", \
-							"<span class='notice'>You stop climbing into \the [src.name].</span>")
+			visible_message(SPAN_NOTICE("[user] decides not to climb into \the [src.name]."), \
+							SPAN_NOTICE("You stop climbing into \the [src.name]."))
 	return
 
 /obj/structure/closet/grave/CanAllowThrough(atom/movable/mover, turf/target)
@@ -51,19 +51,19 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.m_intent == "walk")
-				to_chat(H, "<span class='warning'>You stop at the edge of \the [src.name].</span>")
+				to_chat(H, SPAN_WARNING("You stop at the edge of \the [src.name]."))
 				return FALSE
 			else
-				to_chat(H, "<span class='warning'>You fall into \the [src.name]!</span>")
+				to_chat(H, SPAN_WARNING("You fall into \the [src.name]!"))
 				fall_in(H)
 				return TRUE
 		if(isrobot(M))
 			var/mob/living/silicon/robot/R = M
 			if(R.a_intent == INTENT_HELP)
-				to_chat(R, "<span class='warning'>You stop at the edge of \the [src.name].</span>")
+				to_chat(R, SPAN_WARNING("You stop at the edge of \the [src.name]."))
 				return FALSE
 			else
-				to_chat(R, "<span class='warning'>You enter \the [src.name].</span>")
+				to_chat(R, SPAN_WARNING("You enter \the [src.name]."))
 				return TRUE
 	return TRUE	//Everything else can move over the graves
 
@@ -77,17 +77,17 @@
 /obj/structure/closet/grave/attackby(obj/item/W as obj, mob/user as mob)
 	if(src.opened)
 		if(istype(W, /obj/item/shovel))
-			user.visible_message("<span class='notice'>[user] piles dirt into \the [src.name].</span>", \
-								 "<span class='notice'>You start to pile dirt into \the [src.name].</span>", \
-								 "<span class='notice'>You hear dirt being moved.</span>")
+			user.visible_message(SPAN_NOTICE("[user] piles dirt into \the [src.name]."), \
+								 SPAN_NOTICE("You start to pile dirt into \the [src.name]."), \
+								 SPAN_NOTICE("You hear dirt being moved."))
 			if(do_after(user, 40 * W.tool_speed))
-				user.visible_message("<span class='notice'>[user] pats down the dirt on top of \the [src.name].</span>", \
-								 "<span class='notice'>You finish filling in \the [src.name].</span>")
+				user.visible_message(SPAN_NOTICE("[user] pats down the dirt on top of \the [src.name]."), \
+								 SPAN_NOTICE("You finish filling in \the [src.name]."))
 				close()
 				return
 			else
-				user.visible_message("<span class='notice'>[user] stops filling in \the [src.name].</span>", \
-								 "<span class='notice'>You change your mind and stop filling in \the [src.name].</span>")
+				user.visible_message(SPAN_NOTICE("[user] stops filling in \the [src.name]."), \
+								 SPAN_NOTICE("You change your mind and stop filling in \the [src.name]."))
 				return
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
@@ -100,9 +100,9 @@
 			var/turf/T = get_turf(src)
 			for(var/obj/item/I in LB.contents)
 				LB.remove_from_storage(I, T)
-			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
+			user.visible_message(SPAN_NOTICE("[user] empties \the [LB] into \the [src]."), \
+								 SPAN_NOTICE("You empty \the [LB] into \the [src]."), \
+								 SPAN_NOTICE("You hear rustling of clothes."))
 			return
 		if(isrobot(user))
 			return
@@ -113,33 +113,33 @@
 	else
 		if(istype(W, /obj/item/shovel))
 			if(user.a_intent == INTENT_HARM)	// Hurt intent means you're trying to kill someone, or just get rid of the grave
-				user.visible_message("<span class='notice'>[user] begins to smoothe out the dirt of \the [src.name].</span>", \
-									 "<span class='notice'>You start to smoothe out the dirt of \the [src.name].</span>", \
-									 "<span class='notice'>You hear dirt being moved.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins to smoothe out the dirt of \the [src.name]."), \
+									 SPAN_NOTICE("You start to smoothe out the dirt of \the [src.name]."), \
+									 SPAN_NOTICE("You hear dirt being moved."))
 				if(do_after(user, 40 * W.tool_speed))
-					user.visible_message("<span class='notice'>[user] finishes smoothing out \the [src.name].</span>", \
-										 "<span class='notice'>You finish smoothing out \the [src.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] finishes smoothing out \the [src.name]."), \
+										 SPAN_NOTICE("You finish smoothing out \the [src.name]."))
 					if(LAZYLEN(contents))
 						alpha = 40	// If we've got stuff inside, like maybe a person, just make it hard to see us
 					else
 						qdel(src)	// Else, go away
 					return
 				else
-					user.visible_message("<span class='notice'>[user] stops concealing \the [src.name].</span>", \
-										 "<span class='notice'>You stop concealing \the [src.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] stops concealing \the [src.name]."), \
+										 SPAN_NOTICE("You stop concealing \the [src.name]."))
 					return
 			else
-				user.visible_message("<span class='notice'>[user] begins to unearth \the [src.name].</span>", \
-									 "<span class='notice'>You start to unearth \the [src.name].</span>", \
-									 "<span class='notice'>You hear dirt being moved.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins to unearth \the [src.name]."), \
+									 SPAN_NOTICE("You start to unearth \the [src.name]."), \
+									 SPAN_NOTICE("You hear dirt being moved."))
 				if(do_after(user, 40 * W.tool_speed))
-					user.visible_message("<span class='notice'>[user] reaches the bottom of \the [src.name].</span>", \
-										 "<span class='notice'>You finish digging out \the [src.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] reaches the bottom of \the [src.name]."), \
+										 SPAN_NOTICE("You finish digging out \the [src.name]."))
 					break_open()
 					return
 				else
-					user.visible_message("<span class='notice'>[user] stops digging out \the [src.name].</span>", \
-										 "<span class='notice'>You stop digging out \the [src.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] stops digging out \the [src.name]."), \
+										 SPAN_NOTICE("You stop digging out \the [src.name]."))
 					return
 	return
 

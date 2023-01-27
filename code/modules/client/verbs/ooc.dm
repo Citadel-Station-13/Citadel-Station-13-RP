@@ -7,7 +7,7 @@
 	if(motd)
 		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
 	else
-		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
+		to_chat(src, SPAN_NOTICE("The Message of the Day has not been set."))
 	to_chat(src, getAlertDesc())
 
 /client/proc/getAlertDesc()
@@ -52,7 +52,7 @@
 		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
-		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		to_chat(src, SPAN_WARNING("You have OOC muted."))
 		return
 
 
@@ -62,16 +62,16 @@
 
 	if(!holder)
 		if(!config_legacy.ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+			to_chat(src, SPAN_DANGER("OOC is globally muted."))
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
 			return
 	// if(is_banned_from(ckey, "OOC"))
-	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
+	// 	to_chat(src, SPAN_DANGER("You have been banned from OOC."))
 	// 	return
 	if(QDELETED(src))
 		return
@@ -99,7 +99,7 @@
 
 
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
-		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		to_chat(src, SPAN_WARNING("You have OOC muted."))
 		return
 
 	log_ooc(raw_msg, src)
@@ -130,7 +130,7 @@
 			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
 				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
-				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+				to_chat(target, SPAN_OOC("<span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span>"))
 
 /client/proc/looc_wrapper()
 	var/message = input("","looc (text)") as text|null
@@ -154,18 +154,18 @@
 		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_looc))
-		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
+		to_chat(src, SPAN_DANGER("You have LOOC muted."))
 		return
 
 	if(!holder)
 		if(!config_legacy.looc_allowed)
-			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
+			to_chat(src, SPAN_DANGER("LOOC is globally muted."))
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
 			return
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
@@ -221,12 +221,12 @@
 		if(target in GLOB.admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		to_chat(target, SPAN_LOOC("" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span>"))
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'><span class='linkify'>[msg]</span></span></span>")
+		to_chat(target, SPAN_LOOC("" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'><span class='linkify'>[msg]</span></span>"))
 
 /mob/proc/get_looc_source()
 	return src

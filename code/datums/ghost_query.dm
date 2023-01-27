@@ -53,7 +53,7 @@
 			return
 		if(response == "Yes")
 			if(finished || (cutoff_number && candidates.len >= cutoff_number) )
-				to_chat(C, "<span class='warning'>Unfortunately, you were not fast enough, and there are no more available roles.  Sorry.</span>")
+				to_chat(C, SPAN_WARNING("Unfortunately, you were not fast enough, and there are no more available roles.  Sorry."))
 				return
 			candidates.Add(C.mob)
 			if(cutoff_number && candidates.len >= cutoff_number)

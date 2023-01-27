@@ -246,21 +246,21 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	else if(open == 1 && istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.get_amount() < 3)
-			to_chat(user,"<span class='warning'>You need at least three coils of wire to add them to \the [src].</span>")
+			to_chat(user,SPAN_WARNING("You need at least three coils of wire to add them to \the [src]."))
 			return
 		if(do_after(user, 6 SECONDS, src) && open == 1 && C.use(3))
-			user.visible_message("[user] replaces some wiring in \the [src].","<span class='notice'>You replace any burned out wiring in \the [src].</span>")
+			user.visible_message("[user] replaces some wiring in \the [src].",SPAN_NOTICE("You replace any burned out wiring in \the [src]."))
 			playsound(user, 'sound/items/Deconstruct.ogg', 50, 1)
 			open = 2
 			update_icon()
 	else if(open == 2 && istype(W,/obj/item/multitool))
 		if(do_after(user, 8 SECONDS, src) && open == 2)
-			user.visible_message("[user] resets several circuits in \the [src].","<span class='notice'>You find and repair any faulty circuits in \the [src].</span>")
+			user.visible_message("[user] resets several circuits in \the [src].",SPAN_NOTICE("You find and repair any faulty circuits in \the [src]."))
 			open = 3
 			update_icon()
 	else if(open == 3 && W.is_screwdriver())
 		if(do_after(user, 3 SECONDS, src) && open == 3)
-			user.visible_message("[user] closes up \the [src].","<span class='notice'>You re-seal \the [src] for use once more.</span>")
+			user.visible_message("[user] closes up \the [src].",SPAN_NOTICE("You re-seal \the [src] for use once more."))
 			playsound(user, 'sound/items/Screwdriver.ogg', 50, 1)
 			open = FALSE
 			durability = initial(durability)
@@ -333,10 +333,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					human.custom_pain(message,35)
 				if(2)
 					human.Weaken(5)
-					to_chat(human,"<span class='danger'>A wave of weakness rolls over you.</span>")
+					to_chat(human,SPAN_DANGER("A wave of weakness rolls over you."))
 				if(3)
 					human.Sleeping(5)
-					to_chat(human,"<span class='danger'>You suddenly black out!</span>")
+					to_chat(human,SPAN_DANGER("You suddenly black out!"))
 
 		//Finishing up
 		if(1.0 to INFINITY)
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(stat != NIF_WORKING) return FALSE
 
 	if(human)
-		if(prob(5)) human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
+		if(prob(5)) human.visible_message(SPAN_NOTICE("\The [human.real_name] [pick(look_messages)]."))
 		var/applies_to = soft.applies_to
 		var/synth = human.isSynthetic()
 		if(synth && !(applies_to & NIF_SYNTHETIC))
@@ -517,7 +517,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/deactivate(var/datum/nifsoft/soft)
 	if(human)
 		if(prob(5))
-			human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
+			human.visible_message(SPAN_NOTICE("\The [human.real_name] [pick(look_messages)]."))
 		SEND_SOUND(human, click_sound)
 
 	if(soft.tick_flags == NIF_ACTIVETICK)
@@ -654,14 +654,14 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
-			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
+			to_chat(user,SPAN_WARNING("Remove any clothing they have on, as it might interfere!"))
 			return
 		var/obj/item/organ/external/eo = T.get_organ(BP_TORSO)
 		if(!T)
-			to_chat(user,"<span class='warning'>They should probably regrow their torso first.</span>")
+			to_chat(user,SPAN_WARNING("They should probably regrow their torso first."))
 			return
-		U.visible_message("<span class='notice'>[U] begins installing [src] into [T]'s chest by just stuffing it in.</span>",
-		"<span class='notice'>You begin installing [src] into [T]'s chest by just stuffing it in.</span>",
+		U.visible_message(SPAN_NOTICE("[U] begins installing [src] into [T]'s chest by just stuffing it in."),
+		SPAN_NOTICE("You begin installing [src] into [T]'s chest by just stuffing it in."),
 		"There's a wet SQUISH noise.")
 		if(do_mob(user = user, target = T, time = 200, target_zone = BP_TORSO))
 			if(!user.attempt_insert_item_for_installation(src, eo))
@@ -679,7 +679,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	if(!nif)
 		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
-		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
+		to_chat(src,SPAN_WARNING("You don't have a NIF, not sure why this was here."))
 		return
 
 	var/new_flavor = sanitize(input(src,"Describe how your NIF alters your appearance, like glowy eyes or metal plate on your head, etc. Be sensible. Clear this for no examine text. 128ch max.","Describe NIF", nif.examine_msg) as null|text, max_length = 128)

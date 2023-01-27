@@ -18,7 +18,7 @@
 	var/list/data = json_decode(jsontext)
 	var/datum/element/persistence/P = SSdcs.GetElement(list(/datum/element/persistence))
 	if(!P)
-		to_chat(world, "<span class='boldwarning'>Persistence subsystem failed to grab the persistence element. !!ALL DATA WILL BE LOST AT ROUND END!!</span>")
+		to_chat(world, SPAN_BOLDWARNING("Persistence subsystem failed to grab the persistence element. !!ALL DATA WILL BE LOST AT ROUND END!!"))
 		CRASH("FATAL: COULD NOT GRAB PERSISTENCE ELEMENT FOR OBJECT LOAD.")
 	P.DeserializeAndInstantiateAll(data)
 
@@ -28,7 +28,7 @@
 	var/jsonfile = file("[current_map_directory]/[PERSISTENCE_FILENAME_OBJECTS]")
 	var/list/data = GetObjectData()
 	if(!islist(data))
-		to_chat(world, "<span class='boldwarning'>Persistence subsystem failed to save objects! Object data not modified. ERROR: [data || "!UNKNOWN!"]</span>")
+		to_chat(world, SPAN_BOLDWARNING("Persistence subsystem failed to save objects! Object data not modified. ERROR: [data || "!UNKNOWN!"]"))
 		CRASH("Unable to get valid object data. [data]")
 	fdel(jsonfile)
 	WRITE_FILE(jsonfile, json_encode(data))

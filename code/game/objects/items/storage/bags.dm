@@ -87,7 +87,7 @@
 
 /obj/item/storage/bag/trash/bluespace/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding) || istype(W, /obj/item/storage/bag/trash/bluespace))
-		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
+		to_chat(user, SPAN_WARNING("The Bluespace interfaces of the two devices conflict and malfunction."))
 		qdel(W)
 		return 1
 	return ..()
@@ -143,14 +143,14 @@
 		success = 1
 	if(success && !failure && !silent)
 		if(world.time >= last_message == 0)
-			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You put everything in [src]."))
 			last_message = world.time + 10
 	else if(success && (!silent || (silent && contents.len >= max_storage_space)))
-		to_chat(user, "<span class='notice'>You fill the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You fill the [src]."))
 		last_message = world.time + 10
 	else if(!silent)
 		if(world.time >= last_message == 0)
-			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You fail to pick anything up with \the [src]."))
 			last_message = world.time + 90
 	if(istype(user.pulling, /obj/structure/ore_box)) // buffy fix with last_message, no more spam
 		var/obj/structure/ore_box/O = user.pulling
@@ -183,9 +183,9 @@
 		update_ore_count()
 		last_update = world.time
 
-	. += "<span class='notice'>It holds:</span>"
+	. += SPAN_NOTICE("It holds:")
 	for(var/ore in stored_ore)
-		. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
+		. += SPAN_NOTICE("- [stored_ore[ore]] [ore]")
 
 /obj/item/storage/bag/ore/open(mob/user as mob) //No opening it for the weird UI of having shit-tons of ore inside it.
 	if(world.time > last_update + 10)
@@ -249,7 +249,7 @@
 		current += S.amount
 	if(capacity == current)//If it's full, you're done
 		if(!stop_messages)
-			to_chat(usr, "<span class='warning'>The snatcher is full.</span>")
+			to_chat(usr, SPAN_WARNING("The snatcher is full."))
 		return 0
 	return 1
 

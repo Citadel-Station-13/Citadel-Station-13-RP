@@ -60,7 +60,7 @@
 			var/mob/A = src.mob
 			var/turf/T = locate(tx, ty, tz)
 			if(!T)
-				to_chat(src, "<span class='warning'>[tx], [ty], [tz] does not exist!</span>")
+				to_chat(src, SPAN_WARNING("[tx], [ty], [tz] does not exist!"))
 				return
 			A.forceMove(T)
 			feedback_add_details("admin_verb","JC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

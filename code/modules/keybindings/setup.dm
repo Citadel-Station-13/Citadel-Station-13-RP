@@ -24,10 +24,10 @@
 	set desc = "Re-assert all your macros/keybindings."
 	set category = "OOC"
 	if(!SSinput.initialized)
-		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
+		to_chat(src, SPAN_WARNING("Input hasn't been initialized yet. Wait a while."))
 		return
 	log_debug(SPAN_DEBUG("[src] reset their keybindings."))
-	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
+	to_chat(src, SPAN_DANGER("Force-reasserting all macros."))
 	set_macros(prefs)
 
 // removes all the existing macros

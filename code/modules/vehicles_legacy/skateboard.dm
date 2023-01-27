@@ -43,7 +43,7 @@
 
 /obj/vehicle_old/skateboard/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
-		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
+		to_chat(user, SPAN_WARNING(" You were unable to load \the [C] onto \the [src]."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -91,7 +91,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else if (rough_terrain)
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
@@ -102,7 +102,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
@@ -130,7 +130,7 @@
 			unbuckle_mob(L)
 			var/atom/throw_target = get_edge_target_turf(src)
 			L.throw_at_old(throw_target, 2, 2)
-			visible_message("<span class='danger'>[L] loses their footing and slams on the ground!</span>")
+			visible_message(SPAN_DANGER("[L] loses their footing and slams on the ground!"))
 			L.Weaken(40)
 			grinding = FALSE
 			icon_state = board_icon
@@ -151,7 +151,7 @@
 	if(!istype(M) || M.incapacitated() || !Adjacent(M))
 		return
 	if(has_buckled_mobs() && over_object == M)
-		to_chat(M, "<span class='warning'>You can't lift this up when somebody's on it.</span>")
+		to_chat(M, SPAN_WARNING("You can't lift this up when somebody's on it."))
 		return
 	if(over_object == M)
 		var/board = new board_item_type(get_turf(M))
@@ -180,7 +180,7 @@
 			V.unbuckle_mob(L)
 			L.throw_at_old(landing_turf, 2, 2)
 			L.Knockdown(40)
-			V.visible_message("<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
+			V.visible_message(SPAN_DANGER("[L] misses the landing and falls on [L.p_their()] face!"))
 		else
 			L.spin(4, 1)
 			animate(L, pixel_y = -6, time = 4)
@@ -236,7 +236,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else if (rough_terrain || prob(70))
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
@@ -247,7 +247,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
@@ -297,7 +297,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
@@ -326,7 +326,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
 				H.updatehealth()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+			visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
@@ -377,7 +377,7 @@
 				if(M.amount >= 10)
 					M.use(10)
 					build_step++
-					to_chat(user, "<span class='notice'>You use \the [W] to fashion trucks for \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You use \the [W] to fashion trucks for \the [src]."))
 					name = "skateboard frame (loose trucks)"
 					icon_state = "skate_assembly1"
 
@@ -385,7 +385,7 @@
 			if(istype(W, /obj/item/tool/wrench))
 				build_step++
 				name = "skateboard frame (tight trucks)"
-				to_chat(user, "<span class='notice'>You tighten the trucks onto \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You tighten the trucks onto \the [src]."))
 				playsound(src, 'sound/items/ratchet.ogg', 40, TRUE)
 
 		if(2)
@@ -394,7 +394,7 @@
 				if(M.amount >= 5)
 					M.use(5)
 					build_step++
-					to_chat(user, "<span class='notice'>You secure the plastic grip sheeting to \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You secure the plastic grip sheeting to \the [src]."))
 					name = "skateboard frame (grip sheeting)"
 					icon_state = "skate_assembly2"
 
@@ -403,7 +403,7 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
+				to_chat(user, SPAN_NOTICE("You mount \the [W] on \the [src] trucks."))
 				name = "skateboard frame (loose wheels)"
 				icon_state = "skate_assembly3"
 
@@ -411,13 +411,13 @@
 			if(istype(W, /obj/item/tool/wrench))
 				build_step++
 				name = "skateboard frame (tight wheels)"
-				to_chat(user, "<span class='notice'>You tighten the wheels onto \the [src] trucks.</span>")
+				to_chat(user, SPAN_NOTICE("You tighten the wheels onto \the [src] trucks."))
 				playsound(src, 'sound/items/ratchet.ogg', 40, TRUE)
 
 		if(5)
 			if(istype(W, /obj/item/tool/screwdriver))
 				build_step++
-				to_chat(user, "<span class='notice'>You complete the skateboard assembly.</span>")
+				to_chat(user, SPAN_NOTICE("You complete the skateboard assembly."))
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle_old/skateboard/improv(T)
@@ -435,7 +435,7 @@
 				if(M.amount >= 10)
 					M.use(10)
 					build_step++
-					to_chat(user, "<span class='notice'>You use \the [W] to fashion trucks for \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You use \the [W] to fashion trucks for \the [src]."))
 					name = "skateboard frame (loose trucks)"
 					icon_state = "skate_assembly1"
 
@@ -443,7 +443,7 @@
 			if(istype(W, /obj/item/tool/wrench))
 				build_step++
 				name = "skateboard frame (tight trucks)"
-				to_chat(user, "<span class='notice'>You tighten the trucks onto \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You tighten the trucks onto \the [src]."))
 				playsound(src, 'sound/items/ratchet.ogg', 40, TRUE)
 
 		if(2)
@@ -452,7 +452,7 @@
 				if(M.amount >= 10)
 					M.use(10)
 					build_step++
-					to_chat(user, "<span class='notice'>You use \the [W] to enhance \the [src] frame.</span>")
+					to_chat(user, SPAN_NOTICE("You use \the [W] to enhance \the [src] frame."))
 					name = "skateboard frame (enhanced frame)"
 
 		if(3)
@@ -461,7 +461,7 @@
 				if(M.amount >= 5)
 					M.use(5)
 					build_step++
-					to_chat(user, "<span class='notice'>You secure the reinforced plastic grip sheeting to \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You secure the reinforced plastic grip sheeting to \the [src]."))
 					name = "skateboard frame (grip sheeting)"
 					icon_state = "skate_rassembly2"
 
@@ -470,7 +470,7 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
+				to_chat(user, SPAN_NOTICE("You mount \the [W] on \the [src] trucks."))
 				name = "skateboard frame (loose wheels)"
 				icon_state = "skate_rassembly3"
 
@@ -478,13 +478,13 @@
 			if(istype(W, /obj/item/tool/wrench))
 				build_step++
 				name = "skateboard frame (tight wheels)"
-				to_chat(user, "<span class='notice'>You tighten the wheels onto \the [src] trucks.</span>")
+				to_chat(user, SPAN_NOTICE("You tighten the wheels onto \the [src] trucks."))
 				playsound(src, 'sound/items/ratchet.ogg', 40, TRUE)
 
 		if(6)
 			if(istype(W, /obj/item/tool/screwdriver))
 				build_step++
-				to_chat(user, "<span class='notice'>You complete the skateboard assembly.</span>")
+				to_chat(user, SPAN_NOTICE("You complete the skateboard assembly."))
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle_old/skateboard/pro(T)
@@ -503,10 +503,10 @@
 
 /obj/vehicle_old/skateboard/scooter/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/wrench))
-		to_chat(user, "<span class='notice'>You begin to remove the handlebars...</span>")
+		to_chat(user, SPAN_NOTICE("You begin to remove the handlebars..."))
 		var/obj/vehicle_old/skateboard/S = new(drop_location())
 		new /obj/item/stack/rods(drop_location(), 2)
-		to_chat(user, "<span class='notice'>You remove the handlebars from [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove the handlebars from [src]."))
 		if(has_buckled_mobs())
 			var/mob/living/carbon/H = buckled_mobs[1]
 			unbuckle_mob(H)
@@ -536,7 +536,7 @@
 				if(M.amount >= 2)
 					M.use(2)
 					build_step++
-					to_chat(user, "<span class='notice'>You attach handlebars to \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You attach handlebars to \the [src]."))
 					name = "scooter frame (handlebars)"
 
 		if(1)
@@ -544,13 +544,13 @@
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++
-				to_chat(user, "<span class='notice'>You install \the [W] on \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install \the [W] on \the [src]."))
 				name = "scooter frame (loose wheels)"
 
 		if(2)
 			if(istype(W, /obj/item/tool/screwdriver))
 				build_step++
-				to_chat(user, "<span class='notice'>You complete the skateboard assembly.</span>")
+				to_chat(user, SPAN_NOTICE("You complete the skateboard assembly."))
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle_old/skateboard/scooter(T)
@@ -561,7 +561,7 @@
 /obj/item/scooter_frame/attackby(obj/item/W, mob/user)
 	. = ..()
 	if(istype(W, /obj/item/tool/wrench))
-		to_chat(user, "<span class='notice'>You deconstruct \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 		new /obj/item/stack/rods(drop_location(), 10)
 		playsound(src, 'sound/items/ratchet.ogg', 40, TRUE)
 		qdel(src)
@@ -569,7 +569,7 @@
 
 /obj/vehicle_old/skateboard/scooter/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/screwdriver))
-		to_chat(user, "<span class='notice'>You uninstall the wheels and handlebars from \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You uninstall the wheels and handlebars from \the [src]."))
 		new /obj/item/stack/rods(drop_location(), 2)
 		new /obj/item/stack/material/plastic(drop_location(), 6)
 		var/turf/T = get_turf(src)
@@ -601,12 +601,12 @@
 
 /obj/vehicle_old/ridden/scooter/wheelys/post_unbuckle_mob(mob/living/M)
 	if(!has_buckled_mobs())
-		to_chat(M, "<span class='notice'>You pop the Wheely-Heel's wheels back into place.</span>")
+		to_chat(M, SPAN_NOTICE("You pop the Wheely-Heel's wheels back into place."))
 		moveToNullspace()
 	return ..()
 
 /obj/vehicle_old/ridden/scooter/wheelys/post_buckle_mob(mob/living/M)
-	to_chat(M, "<span class='notice'>You pop out the Wheely-Heel's wheels.</span>")
+	to_chat(M, SPAN_NOTICE("You pop out the Wheely-Heel's wheels."))
 	return ..()
 
 /obj/vehicle_old/ridden/scooter/wheelys/Bump(atom/A)
@@ -622,6 +622,6 @@
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 			H.updatehealth()
-		visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
+		visible_message(SPAN_DANGER("[src] crashes into [A], sending [H] flying!"))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 */

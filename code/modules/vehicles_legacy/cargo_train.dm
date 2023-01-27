@@ -70,7 +70,7 @@
 /obj/vehicle_old/train/trolley/attackby(obj/item/W as obj, mob/user as mob)
 	if(open && W.is_wirecutter())
 		passenger_allowed = !passenger_allowed
-		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
+		user.visible_message(SPAN_NOTICE("[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src]."),SPAN_NOTICE("You [passenger_allowed ? "cut" : "mend"] the load limiter cable."))
 	else
 		..()
 

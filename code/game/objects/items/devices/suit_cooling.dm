@@ -142,7 +142,7 @@
 		turn_off()
 	else
 		turn_on()
-	to_chat(user, "<span class='notice'>You switch \the [src] [on ? "on" : "off"].</span>")
+	to_chat(user, SPAN_NOTICE("You switch \the [src] [on ? "on" : "off"]."))
 
 /obj/item/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
 	if (W.is_screwdriver())
@@ -218,7 +218,7 @@
 
 /obj/item/suit_cooling_unit/emergency/attackby(obj/item/W as obj, mob/user as mob)
 	if (W.is_screwdriver())
-		to_chat(user, "<span class='warning'>This model has the cell permanently installed!</span>")
+		to_chat(user, SPAN_WARNING("This model has the cell permanently installed!"))
 		return
 
 	return ..()

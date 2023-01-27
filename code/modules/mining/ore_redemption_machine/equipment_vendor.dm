@@ -112,7 +112,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 	if(inserted_id && !powered())
-		visible_message("<span class='notice'>The ID slot indicator light flickers on \the [src] as it spits out a card before powering down.</span>")
+		visible_message(SPAN_NOTICE("The ID slot indicator light flickers on \the [src] as it spits out a card before powering down."))
 		inserted_id.forceMove(get_turf(src))
 
 /obj/machinery/mineral/equipment_vendor/update_icon()
@@ -158,7 +158,7 @@
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
-				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
+				to_chat(usr, SPAN_NOTICE("You eject the ID from [src]'s card slot."))
 				if(ishuman(usr))
 					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
@@ -172,27 +172,27 @@
 					return
 				inserted_id = I
 				interact(usr)
-				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
+				to_chat(usr, SPAN_NOTICE("You insert the ID into [src]'s card slot."))
 			else
-				to_chat(usr, "<span class='warning'>No valid ID.</span>")
+				to_chat(usr, SPAN_WARNING("No valid ID."))
 				flick(icon_deny, src)
 
 	if(href_list["purchase"])
 		if(istype(inserted_id))
 			var/datum/data/mining_equipment/prize = locate(href_list["purchase"])
 			if (!prize || !(prize in prize_list))
-				to_chat(usr, "<span class='warning'>Error: Invalid choice!</span>")
+				to_chat(usr, SPAN_WARNING("Error: Invalid choice!"))
 				flick(icon_deny, src)
 				return
 			if(prize.cost > inserted_id.mining_points)
-				to_chat(usr, "<span class='warning'>Error: Insufficent points for [prize.equipment_name]!</span>")
+				to_chat(usr, SPAN_WARNING("Error: Insufficent points for [prize.equipment_name]!"))
 				flick(icon_deny, src)
 			else
 				inserted_id.mining_points -= prize.cost
-				to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
+				to_chat(usr, SPAN_NOTICE("[src] clanks to life briefly before vending [prize.equipment_name]!"))
 				new prize.equipment_path(drop_location())
 		else
-			to_chat(usr, "<span class='warning'>Error: Please insert a valid ID!</span>")
+			to_chat(usr, SPAN_WARNING("Error: Please insert a valid ID!"))
 			flick(icon_deny, src)
 	updateUsrDialog()
 

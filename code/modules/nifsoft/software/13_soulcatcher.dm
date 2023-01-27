@@ -673,11 +673,11 @@
 	set category = "Soulcatcher"
 
 	if(eyeobj)
-		to_chat(src,"<span class='warning'>You're already projecting in AR!</span>")
+		to_chat(src,SPAN_WARNING("You're already projecting in AR!"))
 		return
 
 	if(!(soulcatcher.setting_flags & NIF_SC_PROJECTING))
-		to_chat(src,"<span class='warning'>Projecting from this NIF has been disabled!</span>")
+		to_chat(src,SPAN_WARNING("Projecting from this NIF has been disabled!"))
 		return
 
 	if(!client || !client.prefs)
@@ -692,7 +692,7 @@
 	set category = "Soulcatcher"
 
 	if(!eyeobj)
-		to_chat(src,"<span class='warning'>You're not projecting into AR!</span>")
+		to_chat(src,SPAN_WARNING("You're not projecting into AR!"))
 		return
 
 	eyeobj.forceMove(get_turf(nif))
@@ -703,7 +703,7 @@
 	set category = "Soulcatcher"
 
 	if(!eyeobj)
-		to_chat(src,"<span class='warning'>You're not projecting into AR!</span>")
+		to_chat(src,SPAN_WARNING("You're not projecting into AR!"))
 		return
 
 	QDEL_NULL(eyeobj)

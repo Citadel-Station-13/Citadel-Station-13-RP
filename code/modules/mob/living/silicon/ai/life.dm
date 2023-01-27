@@ -41,7 +41,7 @@
 		malf_process()
 
 		if(APU_power && (hardware_integrity() < 50))
-			to_chat(src, "<span class='notice'><b>APU GENERATOR FAILURE! (System Damaged)</b></span>")
+			to_chat(src, SPAN_NOTICE("<b>APU GENERATOR FAILURE! (System Damaged)</b>"))
 			stop_apu(1)
 
 		var/blind = 0

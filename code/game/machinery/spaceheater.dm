@@ -57,7 +57,7 @@
 				return
 			cell = I
 			I.add_fingerprint(usr)
-			user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 			power_change()
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
@@ -65,7 +65,7 @@
 	else if(I.is_screwdriver())
 		panel_open = !panel_open
 		playsound(src, I.tool_sound, 50, 1)
-		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] [panel_open ? "opens" : "closes"] the hatch on the [src]."), SPAN_NOTICE("You [panel_open ? "open" : "close"] the hatch on the [src]."))
 		update_icon()
 		if(!panel_open && user.machine == src)
 			user << browse(null, "window=spaceheater")
@@ -101,7 +101,7 @@
 		onclose(user, "spaceheater")
 	else
 		on = !on
-		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] the [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] the [src]."))
 		update_icon()
 
 
@@ -121,7 +121,7 @@
 
 			if("cellremove")
 				if(panel_open && cell && !usr.get_active_held_item())
-					usr.visible_message("<span class='notice'>\The [usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
+					usr.visible_message(SPAN_NOTICE("\The [usr] removes \the [cell] from \the [src]."), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
 					cell.update_icon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
@@ -138,7 +138,7 @@
 						cell = C
 						C.add_fingerprint(usr)
 						power_change()
-						usr.visible_message("<span class='notice'>[usr] inserts \the [C] into \the [src].</span>", "<span class='notice'>You insert \the [C] into \the [src].</span>")
+						usr.visible_message(SPAN_NOTICE("[usr] inserts \the [C] into \the [src]."), SPAN_NOTICE("You insert \the [C] into \the [src]."))
 
 		updateDialog()
 	else
@@ -217,7 +217,7 @@
 			return
 	if(I.is_wrench())
 		anchored = !anchored
-		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
+		visible_message(SPAN_NOTICE("\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user]."))
 		playsound(src, I.tool_sound, 75, 1)
 		if(anchored)
 			connect_to_network()
@@ -242,7 +242,7 @@
 	if(!anchored)
 		return
 	on = !on
-	user.visible_message("<span class='notice'>[user] [on ? "activates" : "deactivates"] \the [src].</span>","<span class='notice'>You [on ? "activate" : "deactivate"] \the [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] [on ? "activates" : "deactivates"] \the [src]."),SPAN_NOTICE("You [on ? "activate" : "deactivate"] \the [src]."))
 	if(!on)
 		change_mode(MODE_IDLE)
 	update_icon()
@@ -255,7 +255,7 @@
 		return
 
 	if((draw_power(idle_power_usage * 0.001) * 1000) < idle_power_usage)
-		visible_message("<span class='notice'>\The [src] shuts down.</span>")
+		visible_message(SPAN_NOTICE("\The [src] shuts down."))
 		turn_off()
 		return
 
@@ -336,7 +336,7 @@
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(5, 0, T)
 	s.start()
-	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
+	visible_message(SPAN_WARNING("\The [src] bursts into flame!"))
 
 #undef MODE_IDLE
 #undef MODE_HEATING

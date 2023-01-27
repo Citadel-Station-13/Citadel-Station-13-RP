@@ -18,7 +18,7 @@
 	var/obj/item/ammo_casing/C = loaded[loaded.len]
 	loaded.len--
 	user.put_in_hands(C)
-	user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You gently release the bowstring, removing the [C] from [src].</span>")
+	user.visible_message("[user] removes \a [C] from [src].", SPAN_NOTICE("You gently release the bowstring, removing the [C] from [src]."))
 	src.ready = 0
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	update_icon()
@@ -29,12 +29,12 @@
 		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
 			return //incompatible
 		if(loaded.len >= max_shells)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
 		if(!user.attempt_insert_item_for_installation(C, src))
 			return
 		loaded.Insert(1, C) //add to the head of the list
-		user.visible_message("[user] notches \the [C] into [src].", "<span class='notice'>You nock \the [C] into [src].</span>")
+		user.visible_message("[user] notches \the [C] into [src].", SPAN_NOTICE("You nock \the [C] into [src]."))
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
 		return
@@ -43,7 +43,7 @@
 /obj/item/gun/ballistic/bow/attack_self(mob/living/user)
 	if(loaded.len)
 		src.ready = 1
-		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
+		to_chat(user, SPAN_NOTICE("You draw back the bowstring."))
 		playsound(src, 'sound/weapons/bowdraw.wav', 75, 0) //gets way too high pitched if the freq varies
 		consume_next_projectile()
 		update_icon()

@@ -59,7 +59,7 @@
 		if(removing)
 			removing.forceMove(get_turf(src))
 			user.put_in_hands(removing)
-			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] removes \the [removing] from \the [src]."))
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			update_icon()
 			return
@@ -77,31 +77,31 @@
 	if(removable_components)
 		if(istype(thing, /obj/item/cell))
 			if(cell)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has \a [cell] installed."))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			cell = thing
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
-			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] slots \the [cell] into \the [src]."))
 			update_icon()
 			return
 		if(thing.is_crowbar())
 			if(!manipulator)
-				to_chat(user, "<span class='warning'>\The [src] has no manipulator installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] has no manipulator installed."))
 				return
 			user.put_in_hands_or_drop(manipulator)
-			user.visible_message("<span class='notice'>\The [user] levers \the [manipulator] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] levers \the [manipulator] from \the [src]."))
 			playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 			manipulator = null
 			update_icon()
 			return
 		if(thing.is_screwdriver())
 			if(!capacitor)
-				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] has no capacitor installed."))
 				return
 			user.put_in_hands_or_drop(capacitor)
-			user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] unscrews \the [capacitor] from \the [src]."))
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 			capacitor = null
 			update_icon()
@@ -109,27 +109,27 @@
 
 		if(istype(thing, /obj/item/stock_parts/capacitor))
 			if(capacitor)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [capacitor] installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has \a [capacitor] installed."))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			capacitor = thing
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			power_per_tick = (power_cost*0.15) * capacitor.rating
-			user.visible_message("<span class='notice'>\The [user] slots \the [capacitor] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] slots \the [capacitor] into \the [src]."))
 			update_icon()
 			return
 
 		if(istype(thing, /obj/item/stock_parts/manipulator))
 			if(manipulator)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [manipulator] installed.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has \a [manipulator] installed."))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			manipulator = thing
 			playsound(src, 'sound/machines/click.ogg', 10,1)
 			mat_cost = initial(mat_cost) % (2*manipulator.rating)
-			user.visible_message("<span class='notice'>\The [user] slots \the [manipulator] into \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] slots \the [manipulator] into \the [src]."))
 			update_icon()
 			return
 
@@ -142,7 +142,7 @@
 			return
 
 		if(mat_storage + 2000 > max_mat_storage)
-			to_chat(user, "<span class='warning'>\The [src] cannot hold more [ammo_material].</span>")
+			to_chat(user, SPAN_WARNING("\The [src] cannot hold more [ammo_material]."))
 			return
 
 		var/can_hold_val = 0
@@ -156,7 +156,7 @@
 				break
 		M.use(can_hold_val)
 
-		user.visible_message("<span class='notice'>\The [user] loads \the [src] with \the [M].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] loads \the [src] with \the [M]."))
 		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return

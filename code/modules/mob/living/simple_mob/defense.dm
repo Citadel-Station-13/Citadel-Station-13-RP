@@ -5,10 +5,10 @@
 	switch(L.a_intent)
 		if(INTENT_HELP)
 			if(health > 0)
-				L.visible_message("<span class='notice'>\The [L] [response_help] \the [src].</span>")
+				L.visible_message(SPAN_NOTICE("\The [L] [response_help] \the [src]."))
 
 		if(INTENT_DISARM)
-			L.visible_message("<span class='notice'>\The [L] [response_disarm] \the [src].</span>")
+			L.visible_message(SPAN_NOTICE("\The [L] [response_disarm] \the [src]."))
 			L.do_attack_animation(src)
 			//TODO: Push the mob away or something
 
@@ -18,7 +18,7 @@
 			if (!(status_flags & CANPUSH))
 				return
 			if(!incapacitated(INCAPACITATION_ALL) && prob(grab_resist))
-				L.visible_message("<span class='warning'>\The [L] tries to grab \the [src] but fails!</span>")
+				L.visible_message(SPAN_WARNING("\The [L] tries to grab \the [src] but fails!"))
 				return
 
 			var/obj/item/grab/G = new /obj/item/grab(L, src)
@@ -29,13 +29,13 @@
 			G.affecting = src
 			LAssailant = L
 
-			L.visible_message("<span class='warning'>\The [L] has grabbed [src] passively!</span>")
+			L.visible_message(SPAN_WARNING("\The [L] has grabbed [src] passively!"))
 			L.do_attack_animation(src)
 
 		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
 			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-			L.visible_message("<span class='warning'>\The [L] [response_harm] \the [src]!</span>")
+			L.visible_message(SPAN_WARNING("\The [L] [response_harm] \the [src]!"))
 			L.do_attack_animation(src)
 
 	return
@@ -53,11 +53,11 @@
 					MED.amount -= 1
 					if(MED.amount <= 0)
 						qdel(MED)
-					visible_message("<span class='notice'>\The [user] applies the [MED] on [src].</span>")
+					visible_message(SPAN_NOTICE("\The [user] applies the [MED] on [src]."))
 		else
 			var/datum/gender/T = GLOB.gender_datums[src.get_visible_gender()]
 			// the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
-			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is dead, medical items won't bring [T.him] back to life."))
 	if(can_butcher(user, O))	//if the animal can be butchered, do so and return. It's likely to be gibbed.
 		harvest(user, O)
 		return
@@ -76,7 +76,7 @@
 		effective_force *= 2
 		purge = 3
 	if(O.force <= resistance)
-		to_chat(user,"<span class='danger'>This weapon is ineffective, it does no damage.</span>")
+		to_chat(user,SPAN_DANGER("This weapon is ineffective, it does no damage."))
 		return 2 //???
 
 	. = ..()

@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(inactivity)
 		for(var/i in GLOB.clients)
 			var/client/C = i
 			if(C.is_afk(config_legacy.kick_inactive MINUTES) && !C.holder) // Allow admins to idle
-				to_chat(C,"<span class='warning'>You have been inactive for more than [config_legacy.kick_inactive] minute\s and have been disconnected.</span>")
+				to_chat(C,SPAN_WARNING("You have been inactive for more than [config_legacy.kick_inactive] minute\s and have been disconnected."))
 				var/information
 
 				if(C.mob)

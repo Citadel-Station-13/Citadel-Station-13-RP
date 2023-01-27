@@ -33,10 +33,10 @@
 	. = ..()
 	if(victim)
 		if(machine_stat & NOPOWER)
-			. += "<span class='notice'>It's unpowered.</span>"
+			. += SPAN_NOTICE("It's unpowered.")
 			return
-		. += "<span class='notice'>Vitals of [victim]:</span>"
-		. += "<span class='notice'>Pulse: [victim.get_pulse(GETPULSE_TOOL)]</span>"
+		. += SPAN_NOTICE("Vitals of [victim]:")
+		. += SPAN_NOTICE("Pulse: [victim.get_pulse(GETPULSE_TOOL)]")
 
 		var/brain_activity = "none"
 		var/breathing = "none"
@@ -61,8 +61,8 @@
 				else
 					breathing = "normal"
 
-		. += "<span class='notice'>Brain activity: [brain_activity]</span>"
-		. += "<span class='notice'>Breathing: [breathing]</span>"
+		. += SPAN_NOTICE("Brain activity: [brain_activity]")
+		. += SPAN_NOTICE("Breathing: [breathing]")
 
 /obj/machinery/vitals_monitor/process()
 	if(QDELETED(victim))
@@ -87,7 +87,7 @@
 	else if(ishuman(over_object))
 		victim = over_object
 		update_use_power(USE_POWER_ACTIVE)
-		visible_message("<span class='notice'>\The [src] is now showing data for [victim].</span>")
+		visible_message(SPAN_NOTICE("\The [src] is now showing data for [victim]."))
 
 /obj/machinery/vitals_monitor/update_icon()
 	cut_overlays()
@@ -146,4 +146,4 @@
 
 	if(CanInteract(user, GLOB.physical_state))
 		beep = !beep
-		to_chat(user, "<span class='notice'>You turn the sound on \the [src] [beep ? "on" : "off"].</span>")
+		to_chat(user, SPAN_NOTICE("You turn the sound on \the [src] [beep ? "on" : "off"]."))

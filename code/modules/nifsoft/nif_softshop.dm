@@ -106,7 +106,7 @@
 
 	var/mob/living/carbon/human/H = user
 	if(!H.nif || !H.nif.stat == NIF_WORKING)
-		to_chat(H,"<span class='warning'>[src] seems unable to connect to your NIF...</span>")
+		to_chat(H,SPAN_WARNING("[src] seems unable to connect to your NIF..."))
 		flick(icon_deny, ar_image_holder)
 		return FALSE
 
@@ -127,14 +127,14 @@
 		coin.forceMove(src.loc)
 		if(!usr.get_active_held_item())
 			usr.put_in_hands(coin)
-		to_chat(usr, "<span class='notice'>You remove \the [coin] from \the [src]</span>")
+		to_chat(usr, SPAN_NOTICE("You remove \the [coin] from \the [src]"))
 		coin = null
 		categories &= ~CAT_COIN
 
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
-				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
+				to_chat(usr, SPAN_WARNING("Access denied."))	//Unless emagged of course
 				flick(icon_deny, ar_image_holder)
 				return
 
@@ -151,14 +151,14 @@
 				var/list/soft_access = list(initial(path.access))
 				var/list/usr_access = usr.GetAccess()
 				if(scan_id && !has_access(soft_access, list(), usr_access) && !emagged)
-					to_chat(usr, "<span class='warning'>You aren't authorized to buy [initial(path.name)].</span>")
+					to_chat(usr, SPAN_WARNING("You aren't authorized to buy [initial(path.name)]."))
 					flick(icon_deny, ar_image_holder)
 					return
 
 			if(R.price <= 0)
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
-				to_chat(usr, "<span class='danger'>Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled.</span>")
+				to_chat(usr, SPAN_DANGER("Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled."))
 				return
 			else
 				currently_vending = R
@@ -182,7 +182,7 @@
 /obj/machinery/vending/nifsoft_shop/vend(datum/stored_item/vending_product/R, mob/user)
 	var/mob/living/carbon/human/H = user
 	if((!allowed(usr)) && !emagged && scan_id && istype(H))	//For SECURE VENDING MACHINES YEAH
-		to_chat(usr, "<span class='warning'>Purchase not allowed.</span>")	//Unless emagged of course
+		to_chat(usr, SPAN_WARNING("Purchase not allowed."))	//Unless emagged of course
 		flick(icon_deny, ar_image_holder)
 		return
 	vend_ready = 0 //One thing at a time!!
@@ -192,13 +192,13 @@
 
 	if(R.category & CAT_COIN)
 		if(!coin)
-			to_chat(user, "<span class='notice'>You need to insert a coin to get this item.</span>")
+			to_chat(user, SPAN_NOTICE("You need to insert a coin to get this item."))
 			return
 		if(coin.string_attached)
 			if(prob(50))
-				to_chat(user, "<span class='notice'>You successfully pull the coin out before \the [src] could swallow it.</span>")
+				to_chat(user, SPAN_NOTICE("You successfully pull the coin out before \the [src] could swallow it."))
 			else
-				to_chat(user, "<span class='notice'>You weren't able to pull the coin out fast enough, the machine ate it, string and all.</span>")
+				to_chat(user, SPAN_NOTICE("You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
 				qdel(coin)
 				coin = null
 				categories &= ~CAT_COIN

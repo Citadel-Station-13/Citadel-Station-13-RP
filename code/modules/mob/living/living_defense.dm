@@ -29,15 +29,15 @@
 		armor = max(armor - armour_pen, 0)			//Armor pen makes armor less effective.
 		if(armor >= 100)
 			if(absorb_text)
-				to_chat(src, "<span class='danger'>[absorb_text]</span>")
+				to_chat(src, SPAN_DANGER("[absorb_text]"))
 			else
-				to_chat(src, "<span class='danger'>Your armor absorbs the blow!</span>")
+				to_chat(src, SPAN_DANGER("Your armor absorbs the blow!"))
 
 		else if(armor > 0)
 			if(soften_text)
-				to_chat(src, "<span class='danger'>[soften_text]</span>")
+				to_chat(src, SPAN_DANGER("[soften_text]"))
 			else
-				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
+				to_chat(src, SPAN_DANGER("Your armor softens the blow!"))
 		if(GLOB.Debug2)
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
@@ -66,13 +66,13 @@
 		if(absorb_text)
 			show_message("[absorb_text]")
 		else
-			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
+			show_message(SPAN_WARNING("Your armor absorbs the blow!"))
 		return 2
 	if(absorb == 1)
 		if(absorb_text)
 			show_message("[soften_text]",4)
 		else
-			show_message("<span class='warning'>Your armor softens the blow!</span>")
+			show_message(SPAN_WARNING("Your armor softens the blow!"))
 		return 1
 	return 0
 */
@@ -215,7 +215,7 @@
 		damage_type = BRUTE
 		damage *= 0.66 // Take 2/3s as much damage.
 
-	visible_message("<span class='danger'>\The [B] [attack_verb] \the [src]!</span>", "<span class='danger'>[attack_message]!</span>")
+	visible_message(SPAN_DANGER("\The [B] [attack_verb] \the [src]!"), SPAN_DANGER("[attack_message]!"))
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 
 	//Armor
@@ -320,7 +320,7 @@
 
 				if(T)
 					src.loc = T
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+					visible_message(SPAN_WARNING("[src] is pinned to the wall by [O]!"),SPAN_WARNING("You are pinned to the wall by [O]!"))
 					src.anchored = 1
 					src.pinned += O
 
@@ -357,7 +357,7 @@
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
 	if(ai_holder)
 		ai_holder.react_to_attack(user)
-	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
+	src.visible_message(SPAN_DANGER("[user] has [attack_message] [src]!"))
 	user.do_attack_animation(src)
 	spawn(1) updatehealth()
 	return 1

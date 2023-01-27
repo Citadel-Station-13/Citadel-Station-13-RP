@@ -63,12 +63,12 @@
 
 /spell/targeted/chimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
 	if(!active)
-		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
+		to_chat(H, SPAN_NOTICE("We focus outward, gaining a keen sense of all those around us."))
 		H.species.vision_flags |= SEE_MOBS
 		H.species.has_glowing_eyes = TRUE
 		active = TRUE
 	else
-		to_chat(H, "<span class='notice'>Our senses dull.</span>")
+		to_chat(H, SPAN_NOTICE("Our senses dull."))
 		H.species.vision_flags &= ~SEE_MOBS
 		H.species.has_glowing_eyes = FALSE
 		active = FALSE
@@ -101,12 +101,12 @@
 				if(!mimic_voice)
 					return
 
-				to_chat(user, "<span class='notice'>We shift and morph our tongues, ready to reverberate as: <b>[mimic_voice]</b>.</span>")
+				to_chat(user, SPAN_NOTICE("We shift and morph our tongues, ready to reverberate as: <b>[mimic_voice]</b>."))
 				H.SetSpecialVoice(mimic_voice)
 				active = TRUE
 				..()	//Processes nutriment cost
 			else
-				to_chat(user, "<span class='notice'>We return our voice to our normal identity.</span>")
+				to_chat(user, SPAN_NOTICE("We return our voice to our normal identity."))
 				H.UnsetSpecialVoice()
 				active = FALSE
 		else
@@ -166,9 +166,9 @@
 			playsound(H, 'sound/effects/blobattack.ogg', 30, 1)
 			var/T = get_turf(src)
 			new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
-			H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
-			"<span class='notice'>We reform our body.  We are whole once more.</span>",
-			"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+			H.visible_message(SPAN_WARNING("With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!"),
+			SPAN_NOTICE("We reform our body.  We are whole once more."),
+			SPAN_ITALICS("You hear organic matter ripping and tearing!"))
 			..()
 		else
 			to_chat(user,"<span class = 'warning'>We were interrupted!</span>")
@@ -308,11 +308,11 @@
 
 /spell/targeted/chimera/no_breathe/proc/toggle_breath(mob/living/carbon/human/H)
 	if(!active)
-		to_chat(H, "<span class='notice'>We preserve the air we have, no longer needing to breathe.</span>")
+		to_chat(H, SPAN_NOTICE("We preserve the air we have, no longer needing to breathe."))
 		H.does_not_breathe = TRUE
 		active = TRUE
 	else
-		to_chat(H, "<span class='notice'>Our reserves are drained.</span>")
+		to_chat(H, SPAN_NOTICE("Our reserves are drained."))
 		H.does_not_breathe = FALSE
 		active = FALSE
 
@@ -346,15 +346,15 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.is_muzzled())
-			to_chat(src, "<span class='danger'>Mmmf mrrfff!</span>")
+			to_chat(src, SPAN_DANGER("Mmmf mrrfff!"))
 			return
 
 		if(H.silent)
-			to_chat(src, "<span class='danger'>You can't speak!</span>")
+			to_chat(src, SPAN_DANGER("You can't speak!"))
 			return
 
 		if(!isturf(H.loc))
-			to_chat(src, "<span class='warning'>Shrieking here would be a bad idea.</span>")
+			to_chat(src, SPAN_WARNING("Shrieking here would be a bad idea."))
 			return
 		..()
 	else
@@ -373,7 +373,7 @@
 
 	empulse(get_turf(user), emp_heavy, emp_med, emp_light, emp_long)
 
-	user.visible_message("<span class='danger'>[user] vibrates and bubbles, letting out an inhuman shriek, reverberating through your ears!</span>")
+	user.visible_message(SPAN_DANGER("[user] vibrates and bubbles, letting out an inhuman shriek, reverberating through your ears!"))
 
 	add_attack_logs(user,null,"Used dissonant shriek (Xenochimera) ")
 

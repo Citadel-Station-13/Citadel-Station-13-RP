@@ -102,7 +102,7 @@
 	if(user.a_intent != INTENT_HARM)
 		return
 	if(!ruined)
-		to_chat(user, "<span class='notice'>You pull out all the tape!</span>")
+		to_chat(user, SPAN_NOTICE("You pull out all the tape!"))
 		ruin()
 
 /obj/item/cassette_tape/proc/ruin()
@@ -115,10 +115,10 @@
 
 /obj/item/cassette_tape/attackby(obj/item/I, mob/user, params)
 	if(ruined && I.is_screwdriver())
-		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
+		to_chat(user, SPAN_NOTICE("You start winding the tape back in..."))
 		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 120 * I.tool_speed, target = src))
-			to_chat(user, "<span class='notice'>You wound the tape back in.</span>")
+			to_chat(user, SPAN_NOTICE("You wound the tape back in."))
 			fix()
 		return
 	else if(istype(I, /obj/item/pen))
@@ -129,11 +129,11 @@
 			new_name = sanitizeSafe(new_name)
 			if(new_name)
 				name = "tape - '[new_name]'"
-				to_chat(user, "<span class='notice'>You label the tape '[new_name]'.</span>")
+				to_chat(user, SPAN_NOTICE("You label the tape '[new_name]'."))
 			else
 				var/old_name = name
 				name = "tape"
-				to_chat(user, "<span class='notice'>You scratch off '[old_name]' from the label.</span>")
+				to_chat(user, SPAN_NOTICE("You scratch off '[old_name]' from the label."))
 		return
 	..()
 

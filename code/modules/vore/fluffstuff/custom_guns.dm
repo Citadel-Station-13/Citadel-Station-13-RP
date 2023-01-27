@@ -133,7 +133,7 @@
 	consume_next_projectile()
 		if(chambered)
 			return chambered.BB
-		to_chat(usr, "<span class='warning'>It's a single action revolver, pull the hammer back!</span>")
+		to_chat(usr, SPAN_WARNING("It's a single action revolver, pull the hammer back!"))
 		return null
 	attack_self(mob/living/user as mob)
 		if(world.time >= recentpump + 10)
@@ -732,8 +732,8 @@ END OF CITADEL CHANGES */
 		return
 	recharging = 1
 	update_icon()
-	user.visible_message("<span class='notice'>[user] opens \the [src] and starts pumping the handle.</span>", \
-						"<span class='notice'>You open \the [src] and start pumping the handle.</span>")
+	user.visible_message(SPAN_NOTICE("[user] opens \the [src] and starts pumping the handle."), \
+						SPAN_NOTICE("You open \the [src] and start pumping the handle."))
 	while(recharging)
 		if(!do_after(user, 10, src))
 			break
@@ -820,8 +820,8 @@ END OF CITADEL CHANGES */
 		return
 	recharging = 1
 	update_icon()
-	user.visible_message("<span class='notice'>[user] begins to turn the crank of \the [src].</span>", \
-						"<span class='notice'>You begins to turn the crank of \the [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to turn the crank of \the [src]."), \
+						SPAN_NOTICE("You begins to turn the crank of \the [src]."))
 	while(recharging)
 		if(!do_after(user, 10, src))
 			break

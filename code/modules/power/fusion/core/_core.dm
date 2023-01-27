@@ -102,14 +102,14 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/attack_hand(var/mob/user)
 	if(!Adjacent(user)) // As funny as it was for the AI to hug-kill the tokamak field from a distance...
 		return
-	visible_message("<span class='notice'>\The [user] hugs \the [src] to make it feel better!</span>")
+	visible_message(SPAN_NOTICE("\The [user] hugs \the [src] to make it feel better!"))
 	if(owned_field)
 		Shutdown()
 
 /obj/machinery/power/fusion_core/attackby(var/obj/item/W, var/mob/user)
 
 	if(owned_field)
-		to_chat(user,"<span class='warning'>Shut \the [src] off first!</span>")
+		to_chat(user,SPAN_WARNING("Shut \the [src] off first!"))
 		return
 
 	if(default_deconstruction_screwdriver(user, W))

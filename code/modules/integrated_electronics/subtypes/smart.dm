@@ -155,28 +155,28 @@
 
 /obj/item/integrated_circuit/input/mmi_tank/attackby_react(var/obj/item/mmi/O, var/mob/user)
 	if(!istype(O,/obj/item/mmi))
-		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
+		to_chat(user,SPAN_WARNING("You can't put that inside."))
 		return
 	if(installed_brain)
-		to_chat(user,"<span class='warning'>There's already a brain inside.</span>")
+		to_chat(user,SPAN_WARNING("There's already a brain inside."))
 		return
 	user.transferItemToLoc(O,src)
 	installed_brain = O
 	can_be_asked_input = FALSE
-	to_chat(user, "<span class='notice'>You gently place \the man-machine interface inside the tank.</span>")
-	to_chat(O, "<span class='notice'>You are slowly being placed inside the man-machine-interface tank.</span>")
+	to_chat(user, SPAN_NOTICE("You gently place \the man-machine interface inside the tank."))
+	to_chat(O, SPAN_NOTICE("You are slowly being placed inside the man-machine-interface tank."))
 	O.brainmob.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
 /obj/item/integrated_circuit/input/mmi_tank/attack_self(var/mob/user)
 	if(installed_brain)
 		RemoveBrain()
-		to_chat(user, "<span class='notice'>You slowly lift [installed_brain] out of the MMI tank.</span>")
+		to_chat(user, SPAN_NOTICE("You slowly lift [installed_brain] out of the MMI tank."))
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		installed_brain = null
 		push_data()
 	else
-		to_chat(user, "<span class='notice'>You don't see any brain swimming in the tank.</span>")
+		to_chat(user, SPAN_NOTICE("You don't see any brain swimming in the tank."))
 
 /obj/item/integrated_circuit/input/mmi_tank/Destroy()
 	RemoveBrain()
@@ -279,28 +279,28 @@
 
 /obj/item/integrated_circuit/input/pAI_connector/attackby_react(var/obj/item/paicard/O, var/mob/user)
 	if(!istype(O,/obj/item/paicard))
-		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
+		to_chat(user,SPAN_WARNING("You can't put that inside."))
 		return
 	if(installed_pai)
-		to_chat(user,"<span class='warning'>There's already a pAI connected to this.</span>")
+		to_chat(user,SPAN_WARNING("There's already a pAI connected to this."))
 		return
 	user.transferItemToLoc(O,src)
 	installed_pai = O
 	can_be_asked_input = FALSE
-	to_chat(user, "<span class='notice'>You slowly connect the circuit's pins to the [installed_pai].</span>")
-	to_chat(O, "<span class='notice'>You are slowly being connected to the pAI connector.</span>")
+	to_chat(user, SPAN_NOTICE("You slowly connect the circuit's pins to the [installed_pai]."))
+	to_chat(O, SPAN_NOTICE("You are slowly being connected to the pAI connector."))
 	O.pai.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
 /obj/item/integrated_circuit/input/pAI_connector/attack_self(var/mob/user)
 	if(installed_pai)
 		RemovepAI()
-		to_chat(user, "<span class='notice'>You slowly disconnect the circuit's pins from the [installed_pai].</span>")
+		to_chat(user, SPAN_NOTICE("You slowly disconnect the circuit's pins from the [installed_pai]."))
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		installed_pai = null
 		push_data()
 	else
-		to_chat(user, "<span class='notice'>The connection port is empty.</span>")
+		to_chat(user, SPAN_NOTICE("The connection port is empty."))
 
 /obj/item/integrated_circuit/input/pAI_connector/relaymove(var/n,var/dir)
 	set_pin_data(IC_OUTPUT, 2, dir)

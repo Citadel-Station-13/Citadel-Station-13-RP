@@ -166,39 +166,39 @@
 /obj/item/gun/energy/modular/special_check(mob/user)
 	. = ..()
 	if(!circuit)
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, SPAN_WARNING("The gun is missing parts!"))
 		return FALSE
 	if(!primarycore)
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, SPAN_WARNING("The gun is missing parts!"))
 		return FALSE
 	if(!laserlens)
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, SPAN_WARNING("The gun is missing parts!"))
 		return FALSE
 	if(!lasercooler)
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, SPAN_WARNING("The gun is missing parts!"))
 		return FALSE
 	if(!lasercap)
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, SPAN_WARNING("The gun is missing parts!"))
 		return FALSE
 	if(!assembled)
-		to_chat(user, "<span class='warning'>The gun is open!</span>")
+		to_chat(user, SPAN_WARNING("The gun is open!"))
 		return FALSE
 	if(projectile_type == /obj/item/projectile)
-		to_chat(user, "<span class='warning'>The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in.</span>")
+		to_chat(user, SPAN_WARNING("The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in."))
 		var/datum/firemode/new_mode = firemodes[1]
 		new_mode.apply_to(src)
 		return FALSE
 
 /obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
-		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
+		to_chat(user, SPAN_NOTICE("You [assembled ? "disassemble" : "assemble"] the gun."))
 		assembled = !assembled
 		playsound(src, I.tool_sound, 50, 1)
 		generatefiremodes()
 		return
 	if(I.is_crowbar())
 		if(assembled == TRUE)
-			to_chat(user, "<span class='warning'>Open [src] first!</span>")
+			to_chat(user, SPAN_WARNING("Open [src] first!"))
 			return
 		var/turf/T = get_turf(src)
 		if(primarycore && primarycore.removable == TRUE)
@@ -225,7 +225,7 @@
 		generatefiremodes()
 	if(istype(I, /obj/item/modularlaser))
 		if(assembled == TRUE)
-			to_chat(user, "<span class='warning'>Open [src] first!</span>")
+			to_chat(user, SPAN_WARNING("Open [src] first!"))
 			return
 		var/obj/item/modularlaser/ML = I
 		if(istype(ML,/obj/item/modularlaser/lasermedium))
@@ -234,21 +234,21 @@
 				if(!user.attempt_insert_item_for_installation(med, src))
 					return
 				primarycore = med
-				to_chat(user, "<span class='notice'>You install the [med.name] in the primary core slot.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [med.name] in the primary core slot."))
 				generatefiremodes()
 				return
 			if(!secondarycore && cores >= 2)
 				if(!user.attempt_insert_item_for_installation(med, src))
 					return
 				secondarycore = med
-				to_chat(user, "<span class='notice'>You install the [med.name] in the secondary core slot.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [med.name] in the secondary core slot."))
 				generatefiremodes()
 				return
 			if(!tertiarycore && cores == 3)
 				if(!user.attempt_insert_item_for_installation(med, src))
 					return
 				tertiarycore = med
-				to_chat(user, "<span class='notice'>You install the [med.name] in the tertiary core slot.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [med.name] in the tertiary core slot."))
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/lens))
@@ -257,7 +257,7 @@
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				laserlens = L
-				to_chat(user, "<span class='notice'>You install the [L.name] in the lens holder.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [L.name] in the lens holder."))
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/capacitor))
@@ -266,7 +266,7 @@
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				lasercap = C
-				to_chat(user, "<span class='notice'>You install the [C.name] in the power supply slot.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [C.name] in the power supply slot."))
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/cooling))
@@ -275,7 +275,7 @@
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				lasercooler = CO
-				to_chat(user, "<span class='notice'>You install the [CO.name] in the cooling system mount.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [CO.name] in the cooling system mount."))
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/controller))
@@ -284,7 +284,7 @@
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				circuit = CON
-				to_chat(user, "<span class='notice'>You install the [CON.name] in the fire control unit mount and connect it.</span>")
+				to_chat(user, SPAN_NOTICE("You install the [CON.name] in the fire control unit mount and connect it."))
 				generatefiremodes()
 				return
 	return ..()

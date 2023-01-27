@@ -53,7 +53,7 @@
 	charging = 1
 	movement_shake_radius = 3
 	movement_sound = 'sound/effects/mob_effects/snowbull_charge.ogg'
-	visible_message("<span class='warning'>\The [src] prepares to charge at \the [A]!</span>")
+	visible_message(SPAN_WARNING("\The [src] prepares to charge at \the [A]!"))
 	update_icon()
 	sleep(charging_warning)
 	var/chargeturf = get_turf(A)
@@ -67,7 +67,7 @@
 		movement_shake_radius = null
 		movement_sound = null
 		update_icon()
-		visible_message("<span class='warning'>\The [src] desists from charging at \the [A]</span>")
+		visible_message(SPAN_WARNING("\The [src] desists from charging at \the [A]"))
 		return
 	for(var/distance = get_dist(src.loc, T), src.loc!=T && distance>0, distance--)
 		var/movedir = get_dir(src.loc, T)
@@ -85,7 +85,7 @@
 	if(charging)
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
-			visible_message("<span class='warning'>[src] rams [AM]!</span>")
+			visible_message(SPAN_WARNING("[src] rams [AM]!"))
 			M.Stun(5)
 			M.Weaken(3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
@@ -116,7 +116,7 @@
 
 /mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)
 	if(istype(M))
-		visible_message("<span class='warning'>[src] rams [M] over!</span>")
+		visible_message(SPAN_WARNING("[src] rams [M] over!"))
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
 		var/damage = rand(3,4)
 		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
@@ -200,7 +200,7 @@
 	if(!threatening) // First tick.
 		threatening = TRUE
 		last_threaten_time = world.time
-		holder.visible_emote("<span class='warning'>huffs, reacting to the threat of [target]!</span>")
+		holder.visible_emote(SPAN_WARNING("huffs, reacting to the threat of [target]!"))
 		//playsound(holder, holder.say_list.threaten_sound, 50, 1) // We do this twice to make the sound -very- noticable to the target.
 		//playsound(target, holder.say_list.threaten_sound, 50, 1) // Actual aim-mode also does that so at least it's consistant.
 	else // Otherwise we are waiting for them to go away or to wait long enough for escalate.
@@ -215,7 +215,7 @@
 				threatening = FALSE
 				set_stance(STANCE_APPROACH)
 				if(holder.say_list)
-					holder.visible_emote("<span class='notice'>gets irritated, going after [target]!</span>")
+					holder.visible_emote(SPAN_NOTICE("gets irritated, going after [target]!"))
 			else
 				return // Wait a bit.
 
@@ -223,7 +223,7 @@
 			if(last_threaten_time + threaten_timeout < world.time)	// They've been gone long enough, probably safe to stand down
 				threatening = FALSE
 			set_stance(STANCE_IDLE)
-			holder.visible_emote("<span class='notice'>calms down, lowering its horn</span>")
+			holder.visible_emote(SPAN_NOTICE("calms down, lowering its horn"))
 			if(holder.say_list)
 				holder.ISay(SAFEPICK(holder.say_list.say_stand_down))
 				playsound(holder, holder.say_list.stand_down_sound, 50, 1) // We do this twice to make the sound -very- noticable to the target.

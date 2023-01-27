@@ -79,7 +79,7 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
-	visible_message("<span class='warning'>\The [src] has been [I.get_attack_verb(src, user)] with \the [I] by [user].</span>")
+	visible_message(SPAN_WARNING("\The [src] has been [I.get_attack_verb(src, user)] with \the [I] by [user]."))
 	take_damage(I.force)
 
 /obj/structure/mob_spawner/bullet_act(var/obj/item/projectile/Proj)
@@ -90,7 +90,7 @@
 /obj/structure/mob_spawner/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks apart!</span>")
+		visible_message(SPAN_WARNING("\The [src] breaks apart!"))
 		qdel(src)
 
 /obj/structure/mob_spawner/clear_zlevel/can_spawn()

@@ -48,10 +48,10 @@
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
 		if(C.caliber != caliber)
-			to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
+			to_chat(user, SPAN_WARNING("[C] does not fit into [src]."))
 			return
 		if(stored_ammo.len >= max_ammo)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			to_chat(user, SPAN_WARNING("[src] is full!"))
 			return
 		if(!user.attempt_insert_item_for_installation(C, src))
 			return
@@ -60,13 +60,13 @@
 	if(istype(W, /obj/item/ammo_magazine/clip))
 		var/obj/item/ammo_magazine/clip/L = W
 		if(L.caliber != caliber)
-			to_chat(user, "<span class='warning'>The ammo in [L] does not fit into [src].</span>")
+			to_chat(user, SPAN_WARNING("The ammo in [L] does not fit into [src]."))
 			return
 		if(!L.stored_ammo.len)
-			to_chat(user, "<span class='warning'>There's no more ammo [L]!</span>")
+			to_chat(user, SPAN_WARNING("There's no more ammo [L]!"))
 			return
 		if(stored_ammo.len >= max_ammo)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			to_chat(user, SPAN_WARNING("[src] is full!"))
 			return
 		var/obj/item/ammo_casing/AC = L.stored_ammo[1] //select the next casing.
 		L.stored_ammo -= AC //Remove this casing from loaded list of the clip.
@@ -80,9 +80,9 @@
 /obj/item/ammo_magazine/attack_self(mob/user)
 	if(can_remove_ammo)
 		if(!stored_ammo.len)
-			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
+			to_chat(user, SPAN_NOTICE("[src] is already empty!"))
 			return
-		to_chat(user, "<span class='notice'>You empty [src].</span>")
+		to_chat(user, SPAN_NOTICE("You empty [src]."))
 		playsound(user.loc, "casing_sound", 50, 1)
 		spawn(7)
 			playsound(user.loc, "casing_sound", 50, 1)
@@ -94,7 +94,7 @@
 		stored_ammo.Cut()
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>\The [src] is not designed to be unloaded.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is not designed to be unloaded."))
 		return
 
 // This puts one bullet from the magazine into your hand
@@ -105,7 +105,7 @@
 				var/obj/item/ammo_casing/C = stored_ammo[stored_ammo.len]
 				stored_ammo-=C
 				user.put_in_hands(C)
-				user.visible_message("\The [user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
+				user.visible_message("\The [user] removes \a [C] from [src].", SPAN_NOTICE("You remove \a [C] from [src]."))
 				update_icon()
 				return
 	..()

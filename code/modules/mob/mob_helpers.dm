@@ -329,7 +329,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 					else										// Everyone else (dead people who didn't ghost yet, etc.)
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
-			to_chat(M, "<span class='deadsay'>" + "<b>DEAD:</b> "+ "[lname][follow][message]</span>")
+			to_chat(M, SPAN_DEADSAY("" + "<b>DEAD:</b> "+ "[lname][follow][message]"))
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
@@ -343,7 +343,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				lname = "[subject.name] ([subject.x],[subject.y],[subject.z])"
 
 			lname = "<span class='name'>[lname]</span> "
-			to_chat(M, "<span class='deadsay'>" + "EVENT:"+ " [lname][follow][message]</span>")
+			to_chat(M, SPAN_DEADSAY("" + "EVENT:"+ " [lname][follow][message]"))
 
 //Announces that a ghost has joined/left, mainly for use with wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
@@ -394,7 +394,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.client)
 			continue
-		to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>")
+		to_chat(O, SPAN_GHOSTALERT("[message][(enter_link) ? " [enter_link]" : ""]"))
 		if(ghost_sound)
 			SEND_SOUND(O, sound(ghost_sound))
 		if(flashwindow)

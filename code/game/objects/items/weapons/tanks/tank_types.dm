@@ -26,7 +26,7 @@
 /obj/item/tank/oxygen/examine(mob/user)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 10)
-		. += "<span class='warning'>The meter on the [src] indicates you are almost out of oxygen!</span>"
+		. += SPAN_WARNING("The meter on the [src] indicates you are almost out of oxygen!")
 		playsound(usr, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/oxygen/yellow
@@ -67,7 +67,7 @@
 /obj/item/tank/air/examine(mob/user)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 1 && loc==user)
-		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
+		. += SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!")
 		//user.playsound('sound/effects/alert.ogg')
 
 /obj/item/tank/air/Initialize(mapload)
@@ -159,7 +159,7 @@
 /obj/item/tank/emergency/oxygen/examine(mob/user)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 0.2 && loc==user)
-		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
+		. += SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!")
 		//user.playsound('sound/effects/alert.ogg')
 
 /obj/item/tank/emergency/oxygen/engi
@@ -246,7 +246,7 @@
 
 /obj/item/tank/nitrogen/examine(mob/user)
 	if(air_contents.gas[/datum/gas/nitrogen] < 10)
-		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of nitrogen!</span>"
+		. += SPAN_DANGER("The meter on \the [src] indicates you are almost out of nitrogen!")
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/stasis/nitro_cryo // Synthmorph bags need to have initial pressure within safe bounds for human atmospheric pressure, but low temperature to stop unwanted degredation.
@@ -289,5 +289,5 @@
 
 /obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
 	if(air_contents.gas[/datum/gas/carbon_dioxide] < 0.2 && loc==user)
-		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
+		. += SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!")
 	//	user.playsound('sound/effects/alert.ogg')

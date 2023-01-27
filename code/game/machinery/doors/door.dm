@@ -44,11 +44,11 @@
 	if(isanimal(user))
 		var/mob/living/simple_mob/S = user
 		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
-			visible_message("<span class='danger'>\The [user] smashes into the [src]!</span>")
+			visible_message(SPAN_DANGER("\The [user] smashes into the [src]!"))
 			playsound(src, S.attack_sound, 75, 1)
 			take_damage(damage)
 		else
-			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
+			visible_message(SPAN_NOTICE("\The [user] bonks \the [src] harmlessly."))
 	user.do_attack_animation(src)
 
 /obj/machinery/door/Initialize(mapload, newdir)
@@ -175,7 +175,7 @@
 	if (damage > 90)
 		destroy_hits--
 		if (destroy_hits <= 0)
-			visible_message("<span class='danger'>\The [src.name] disintegrates!</span>")
+			visible_message(SPAN_DANGER("\The [src.name] disintegrates!"))
 			switch (Proj.damage_type)
 				if(BRUTE)
 					new /obj/item/stack/material/steel(src.loc, 2)
@@ -192,7 +192,7 @@
 
 /obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
+	visible_message(SPAN_DANGER("[src.name] was hit by [AM]."))
 	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	playsound(src, hitsound, 100, 1)
 	take_damage(tforce)
@@ -216,13 +216,13 @@
 			return
 		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
 			if(machine_stat & BROKEN)
-				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
+				to_chat(user, SPAN_NOTICE("It looks like \the [src] is pretty busted. It's going to need more than just patching up now."))
 				return
 			if(health >= maxhealth)
-				to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+				to_chat(user, SPAN_NOTICE("Nothing to fix!"))
 				return
 			if(!density)
-				to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] must be closed before you can repair it."))
 				return
 
 			//figure out how much metal we need
@@ -233,7 +233,7 @@
 			var/amount_given = amount_needed - repairing
 			var/mats_given = stack.get_amount()
 			if(repairing && amount_given <= 0)
-				to_chat(user, "<span class='warning'>You must weld or remove \the [get_material_name()] from \the [src] before you can add anything else.</span>")
+				to_chat(user, SPAN_WARNING("You must weld or remove \the [get_material_name()] from \the [src] before you can add anything else."))
 			else
 				if(mats_given >= amount_given)
 					if(stack.use(amount_given))
@@ -243,21 +243,21 @@
 						repairing += mats_given
 						amount_given = mats_given
 			if(amount_given)
-				to_chat(user, "<span class='notice'>You fit [amount_given] [stack.singular_name]\s to damaged and broken parts on \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You fit [amount_given] [stack.singular_name]\s to damaged and broken parts on \the [src]."))
 
 			return
 
 		if(repairing && istype(I, /obj/item/weldingtool))
 			if(!density)
-				to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] must be closed before you can repair it."))
 				return
 
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
+				to_chat(user, SPAN_NOTICE("You start to fix dents and weld \the [get_material_name()] into place."))
 				playsound(src, welder.tool_sound, 50, 1)
 				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
-					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You finish repairing the damage to \the [src]."))
 					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
 					update_icon()
 					repairing = 0
@@ -268,7 +268,7 @@
 			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
-			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
+			to_chat(user, SPAN_NOTICE("You remove \the [repairing_sheet]."))
 			playsound(src, I.tool_sound, 100, 1)
 			return
 
@@ -279,9 +279,9 @@
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
 				if(W.force < min_force)
-					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
+					user.visible_message(SPAN_DANGER("\The [user] hits \the [src] with \the [W] with no visible effect."))
 				else
-					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
+					user.visible_message(SPAN_DANGER("\The [user] forcefully strikes \the [src] with \the [W]!"))
 					playsound(src.loc, hitsound, 100, 1)
 					take_damage(W.force)
 			return

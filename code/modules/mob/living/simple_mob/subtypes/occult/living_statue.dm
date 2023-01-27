@@ -94,14 +94,14 @@
 /mob/living/simple_mob/living_statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
+			to_chat(src, SPAN_WARNING("You cannot move, there are eyes on you!"))
 		return 0
 	return ..()
 
 /mob/living/simple_mob/living_statue/attack_target()
 	if(can_be_seen(get_turf(loc)))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot attack, there are eyes on you!</span>")
+			to_chat(src, SPAN_WARNING("You cannot attack, there are eyes on you!"))
 		return FALSE
 	else
 		return ..()
@@ -180,7 +180,7 @@
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
 
-	message = "<span class='notice'>You glare your eyes.</span>"
+	message = SPAN_NOTICE("You glare your eyes.")
 	range = 10
 
 /spell/aoe_turf/blindness/cast(list/targets,mob/user = usr)

@@ -113,7 +113,7 @@
 				shadekin.ckey = ckey
 
 			else //Permakin'd
-				to_chat(target,"<span class='danger'>You're carried off into The Dark by the [shadekin]. Who knows if you'll find your way back?</span>")
+				to_chat(target,SPAN_DANGER("You're carried off into The Dark by the [shadekin]. Who knows if you'll find your way back?"))
 				target.ghostize()
 				qdel(target)
 				qdel(shadekin)
@@ -140,11 +140,11 @@ var/darkspace_abduction_z
 
 /proc/darkspace_abduction(mob/living/target, user)
 	if(darkspace_abduction_z < 0)
-		to_chat(user,"<span class='warning'>The abduction z-level is already being created. Please wait.</span>")
+		to_chat(user,SPAN_WARNING("The abduction z-level is already being created. Please wait."))
 		return
 	if(!darkspace_abduction_z)
 		darkspace_abduction_z = -1
-		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
+		to_chat(user,SPAN_WARNING("This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1]."))
 		var/z = world.increment_max_z()
 		var/area/areaInstance = new /area/darkspace_abduction(null)
 		areaInstance.addSorted()
@@ -163,8 +163,8 @@ var/darkspace_abduction_z
 	var/size_of_square = 26
 	var/halfbox = round(size_of_square*0.5)
 	target.transforming = TRUE
-	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in momentarily...</span>")
-	to_chat(user,"<span class='notice'>Beginning vis_contents copy to abduction site, player mob is frozen.</span>")
+	to_chat(target,SPAN_DANGER("You feel a strange tug, deep inside. You're frozen in momentarily..."))
+	to_chat(user,SPAN_NOTICE("Beginning vis_contents copy to abduction site, player mob is frozen."))
 	sleep(1 SECOND)
 	//Lower left corner of a working box
 	var/llc_x = max(0,halfbox-target.x) + min(target.x+halfbox, world.maxx) - size_of_square
@@ -215,14 +215,14 @@ var/darkspace_abduction_z
 				T.vis_contents.Cut()
 
 	target.forceMove(locate(target.x,target.y,darkspace_abduction_z))
-	to_chat(target,"<span class='danger'>The tug relaxes, but everything around you looks... slightly off.</span>")
-	to_chat(user,"<span class='notice'>The mob has been moved. ([admin_jump_link(target,usr.client.holder)])</span>")
+	to_chat(target,SPAN_DANGER("The tug relaxes, but everything around you looks... slightly off."))
+	to_chat(user,SPAN_NOTICE("The mob has been moved. ([admin_jump_link(target,usr.client.holder)])"))
 
 	target.transforming = FALSE
 
 /proc/fake_autosave(var/mob/living/target, var/client/user, var/wide)
 	if(!istype(target) || !target.client)
-		to_chat(user, "<span class='warning'>Skipping [target] because they are not a /mob/living or have no client.</span>")
+		to_chat(user, SPAN_WARNING("Skipping [target] because they are not a /mob/living or have no client."))
 		return
 
 	if(wide)

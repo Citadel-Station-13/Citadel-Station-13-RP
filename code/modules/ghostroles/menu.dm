@@ -43,14 +43,14 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 	switch(action)
 		if("jump")
 			if(role.spawnerless)
-				to_chat(usr, "<span class='warning'>[role] is spawnerless! You won't be able to find out where you spawn until you actually spawn in!</span>")
+				to_chat(usr, SPAN_WARNING("[role] is spawnerless! You won't be able to find out where you spawn until you actually spawn in!"))
 				return
 			var/atom/A = role.GetSpawnLoc(usr.client, role.GetSpawnpoint(usr.client))
 			if(!A)
-				to_chat(usr, "<span class='warning'>Could not find a spawnpoint for [role]. This sometimes mean it isn't loaded in until someone attempts to spawn. Alternatively, you didn't pick one!</span>")
+				to_chat(usr, SPAN_WARNING("Could not find a spawnpoint for [role]. This sometimes mean it isn't loaded in until someone attempts to spawn. Alternatively, you didn't pick one!"))
 				return
 			if(!A.loc)
-				to_chat(usr, "<span class='danger'>BUG: Spawnpoint was nullspace.</span>")
+				to_chat(usr, SPAN_DANGER("BUG: Spawnpoint was nullspace."))
 				return
 			usr.forceMove(get_turf(A))
 		if("spawn")

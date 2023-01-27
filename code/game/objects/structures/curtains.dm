@@ -15,7 +15,7 @@
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
 	if(!P.nodamage)
-		visible_message("<span class='warning'>[P] tears [src] down!</span>")
+		visible_message(SPAN_WARNING("[P] tears [src] down!"))
 		qdel(src)
 	else
 		..(P, def_zone)
@@ -39,9 +39,9 @@
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the shower curtains.</span>")
+		to_chat(user, SPAN_NOTICE("You start to cut the shower curtains."))
 		if(do_after(user, 10))
-			to_chat(user, "<span class='notice'>You cut the shower curtains.</span>")
+			to_chat(user, SPAN_NOTICE("You cut the shower curtains."))
 			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
 			A.amount = 3
 			qdel(src)

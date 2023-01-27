@@ -123,17 +123,17 @@
 		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
-			to_chat(user, "<span class='notice'>\The [src] already has someone buckled to it.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has someone buckled to it."))
 			return
-		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] attempts to buckle [affecting] into \the [src]!"))
 		if(do_after(user, 20, G.affecting))
 			affecting.forceMove(loc)
 			spawn(0)
 				if(buckle_mob(affecting))
 					affecting.visible_message(\
-						"<span class='danger'>[affecting.name] is buckled to [src] by [user.name]!</span>",\
-						"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
-						"<span class='notice'>You hear metal clanking.</span>")
+						SPAN_DANGER("[affecting.name] is buckled to [src] by [user.name]!"),\
+						SPAN_DANGER("You are buckled to [src] by [user.name]!"),\
+						SPAN_NOTICE("You hear metal clanking."))
 			qdel(W)
 	else
 		..()
@@ -288,7 +288,7 @@
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
-			to_chat(user, "<span class='notice'>You collect the roller bed.</span>")
+			to_chat(user, SPAN_NOTICE("You collect the roller bed."))
 			forceMove(RH)
 			RH.held = src
 			return
@@ -317,10 +317,10 @@
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		to_chat(user, "<span class='notice'>The rack is empty.</span>")
+		to_chat(user, SPAN_NOTICE("The rack is empty."))
 		return
 
-	to_chat(user, "<span class='notice'>You deploy the roller bed.</span>")
+	to_chat(user, SPAN_NOTICE("You deploy the roller bed."))
 	var/obj/structure/bed/roller/R = new held.bedtype(user.loc)
 	R.add_fingerprint(user)
 	qdel(held)

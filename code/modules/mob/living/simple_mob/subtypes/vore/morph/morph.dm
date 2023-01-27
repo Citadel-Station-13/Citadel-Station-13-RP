@@ -67,7 +67,7 @@
 		form.examine(user)
 		if(get_dist(user,src)<=3)
 			. = ..()
-			. += "<span class='warning'>It doesn't look quite right...</span>"
+			. += SPAN_WARNING("It doesn't look quite right...")
 	return
 
 /mob/living/simple_mob/vore/hostile/morph/ShiftClickOn(atom/movable/A)
@@ -79,18 +79,18 @@
 			if(istype(A) && allowed(A))
 				assume(A)
 		else
-			to_chat(src, "<span class='warning'>Your chameleon skin is still repairing itself!</span>")
+			to_chat(src, SPAN_WARNING("Your chameleon skin is still repairing itself!"))
 	else
 		..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/assume(atom/movable/target)
 	if(morphed)
-		to_chat(src, "<span class='warning'>You must restore to your original form first!</span>")
+		to_chat(src, SPAN_WARNING("You must restore to your original form first!"))
 		return
 	morphed = TRUE
 	form = target
 
-	visible_message("<span class='warning'>[src] suddenly twists and changes shape, becoming a copy of [target]!</span>")
+	visible_message(SPAN_WARNING("[src] suddenly twists and changes shape, becoming a copy of [target]!"))
 	appearance = target.appearance
 	copy_overlays(target)
 	alpha = max(alpha, 150)	//fucking chameleons
@@ -118,7 +118,7 @@
 
 /mob/living/simple_mob/vore/hostile/morph/proc/restore()
 	if(!morphed)
-		to_chat(src, "<span class='warning'>You're already in your normal form!</span>")
+		to_chat(src, SPAN_WARNING("You're already in your normal form!"))
 		return
 	morphed = FALSE
 	form = null
@@ -128,7 +128,7 @@
 	plane = initial(plane)
 	maptext = null
 
-	visible_message("<span class='warning'>[src] suddenly collapses in on itself, dissolving into a pile of green flesh!</span>")
+	visible_message(SPAN_WARNING("[src] suddenly collapses in on itself, dissolving into a pile of green flesh!"))
 	name = initial(name)
 	desc = initial(desc)
 	icon = initial(icon)
@@ -147,7 +147,7 @@
 
 /mob/living/simple_mob/vore/hostile/morph/death(gibbed)
 	if(morphed)
-		visible_message("<span class='warning'>[src] twists and dissolves into a pile of green flesh!</span>")
+		visible_message(SPAN_WARNING("[src] twists and dissolves into a pile of green flesh!"))
 		restore()
 	..()
 

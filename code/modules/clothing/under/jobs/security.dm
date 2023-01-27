@@ -142,7 +142,7 @@
 	item_state_slots[SLOT_ID_UNIFORM] = unrolled ? "[snowflake_worn_state]_r" : initial(snowflake_worn_state)
 	var/mob/living/carbon/human/H = loc
 	H.update_inv_w_uniform(1)
-	to_chat(H, "<span class='notice'>You roll the sleeves of your shirt [unrolled ? "up" : "down"]</span>")
+	to_chat(H, SPAN_NOTICE("You roll the sleeves of your shirt [unrolled ? "up" : "down"]"))
 */
 /obj/item/clothing/under/det/grey
 	name = "detective's tan suit"

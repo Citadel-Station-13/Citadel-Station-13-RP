@@ -227,7 +227,7 @@
 
 	//! SIKE, MORE
 	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
-		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+		to_chat(src, SPAN_WARNING("You're restrained! You can't move!"))
 		mob.move_delay = world.time + 5 // 5 ds delay
 		return FALSE
 	if(length(mob.pinned))

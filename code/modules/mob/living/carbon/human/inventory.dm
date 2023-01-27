@@ -285,7 +285,7 @@
 	var/obj/item/equipped_back = item_by_slot(SLOT_ID_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
-			to_chat(src, "<span class='warning'>You have no backpack to take something out of!</span>")
+			to_chat(src, SPAN_WARNING("You have no backpack to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, SLOT_ID_BACK))
 			update_inv_hands()
@@ -294,17 +294,17 @@
 		if(!thing)
 			equipped_back.attack_hand(src)
 		else
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			to_chat(src, SPAN_WARNING("You can't fit anything in!"))
 		return
 	if(thing) // put thing in backpack
 		var/obj/item/storage/S = equipped_back
 		if(!S.can_be_inserted(thing))
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			to_chat(src, SPAN_WARNING("You can't fit anything in!"))
 			return
 		S.handle_item_insertion(thing, src)
 		return
 	if(!equipped_back.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your backpack to take out!</span>")
+		to_chat(src, SPAN_WARNING("There's nothing in your backpack to take out!"))
 		return
 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
 	if(!stored || stored.on_found(src))
@@ -318,7 +318,7 @@
 	var/obj/item/equipped_belt = item_by_slot(SLOT_ID_BELT)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
-			to_chat(src, "<span class='warning'>You have no belt to take something out of!</span>")
+			to_chat(src, SPAN_WARNING("You have no belt to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, SLOT_ID_BELT))
 			update_inv_hands()
@@ -327,17 +327,17 @@
 		if(!thing)
 			equipped_belt.attack_hand(src)
 		else
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			to_chat(src, SPAN_WARNING("You can't fit anything in!"))
 		return
 	if(thing) // put thing in belt
 		var/obj/item/storage/S = equipped_belt
 		if(!S.can_be_inserted(thing))
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			to_chat(src, SPAN_WARNING("You can't fit anything in!"))
 			return
 		S.handle_item_insertion(thing, src)
 		return
 	if(!equipped_belt.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your belt to take out!</span>")
+		to_chat(src, SPAN_WARNING("There's nothing in your belt to take out!"))
 		return
 	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
 	if(!stored || stored.on_found(src))

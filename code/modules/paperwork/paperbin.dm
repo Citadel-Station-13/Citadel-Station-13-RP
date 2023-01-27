@@ -30,10 +30,10 @@
 				if (H.hand)
 					temp = H.organs_by_name["l_hand"]
 				if(temp && !temp.is_usable())
-					to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+					to_chat(user, SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
 					return
 
-				to_chat(user, "<span class='notice'>You pick up the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You pick up the [src]."))
 				user.put_in_hands(src)
 
 	return
@@ -45,7 +45,7 @@
 		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			to_chat(user, SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
 			return
 	var/response = ""
 	if(!papers.len)
@@ -75,9 +75,9 @@
 			else if (response == "Carbon-Copy")
 				P = new /obj/item/paper/carbon
 		user.put_in_hands_or_drop(P)
-		to_chat(user, "<span class='notice'>You take [P] out of the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You take [P] out of the [src]."))
 	else
-		to_chat(user, "<span class='notice'>[src] is empty!</span>")
+		to_chat(user, SPAN_NOTICE("[src] is empty!"))
 
 	add_fingerprint(user)
 	return
@@ -90,7 +90,7 @@
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
-	to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+	to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
 	papers.Add(I)
 	update_icon()
 	amount++
@@ -100,9 +100,9 @@
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(amount)
-			. += "<span class='notice'>There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.</span>"
+			. += SPAN_NOTICE("There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.")
 		else
-			. += "<span class='notice'>There are no papers in the bin.</span>"
+			. += SPAN_NOTICE("There are no papers in the bin.")
 
 /obj/item/paper_bin/update_icon()
 	if(amount < 1)

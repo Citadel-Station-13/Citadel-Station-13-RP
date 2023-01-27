@@ -65,7 +65,7 @@
 	return
 
 /obj/effect/alien/resin/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
@@ -94,7 +94,7 @@
 /obj/effect/alien/resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	for(var/mob/O in viewers(src, null))
-		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
+		O.show_message(SPAN_DANGER("[src] was hit by [AM]."), 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -107,9 +107,9 @@
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (MUTATION_HULK in usr.mutations)
-		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
+		to_chat(usr, SPAN_NOTICE("You easily destroy the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] destroys the [name]!"), 1)
 		health = 0
 	else
 
@@ -118,14 +118,14 @@
 			var/mob/living/carbon/M = usr
 			if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 				for(var/mob/O in oviewers(src))
-					O.show_message("<span class='warning'>[usr] strokes the [name] and it melts away!</span>", 1)
+					O.show_message(SPAN_WARNING("[usr] strokes the [name] and it melts away!"), 1)
 				health = 0
 				healthcheck()
 				return
 
-		to_chat(usr, "<span class='notice'>You claw at the [name].</span>")
+		to_chat(usr, SPAN_NOTICE("You claw at the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] claws at the [name]!"), 1)
 		health -= rand(5,10)
 	healthcheck()
 	return
@@ -324,7 +324,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message(SPAN_DANGER("\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]"))
 
 	var/damage = W.force / 4.0
 
@@ -339,7 +339,7 @@ Alien plants should do something if theres a lot of poison
 	healthcheck()
 
 /obj/effect/alien/weeds/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	user.do_attack_animation(src)
 	health -= damage
 	healthcheck()
@@ -403,7 +403,7 @@ Alien plants should do something if theres a lot of poison
 	if(ticks >= target_strength)
 
 		for(var/mob/O in hearers(src, null))
-			O.show_message("<span class='green'>[src.target] collapses under its own weight into a puddle of goop and undigested debris!</span>", 1)
+			O.show_message(SPAN_GREEN("[src.target] collapses under its own weight into a puddle of goop and undigested debris!"), 1)
 
 		if(istype(target, /turf/simulated/wall)) // I hate turf code.
 			var/turf/simulated/wall/W = target
@@ -415,13 +415,13 @@ Alien plants should do something if theres a lot of poison
 
 	switch(target_strength - ticks)
 		if(6)
-			visible_message("<span class='green'>[src.target] is holding up against the acid!</span>")
+			visible_message(SPAN_GREEN("[src.target] is holding up against the acid!"))
 		if(4)
-			visible_message("<span class='green'>[src.target]\s structure is being melted by the acid!</span>")
+			visible_message(SPAN_GREEN("[src.target]\s structure is being melted by the acid!"))
 		if(2)
-			visible_message("<span class='green'>[src.target] is struggling to withstand the acid!</span>")
+			visible_message(SPAN_GREEN("[src.target] is struggling to withstand the acid!"))
 		if(0 to 1)
-			visible_message("<span class='green'>[src.target] begins to crumble under the acid!</span>")
+			visible_message(SPAN_GREEN("[src.target] begins to crumble under the acid!"))
 	spawn(rand(150, 200)) tick()
 
 /*
@@ -462,14 +462,14 @@ Alien plants should do something if theres a lot of poison
 
 	switch(status)
 		if(BURST)
-			to_chat(user, "<span class='warning'>You clear the hatched egg.</span>")
+			to_chat(user, SPAN_WARNING("You clear the hatched egg."))
 			qdel(src)
 			return
 		if(GROWING)
-			to_chat(user, "<span class='warning'>The child is not developed yet.</span>")
+			to_chat(user, SPAN_WARNING("The child is not developed yet."))
 			return
 		if(GROWN)
-			to_chat(user, "<span class='warning'>You retrieve the child.</span>")
+			to_chat(user, SPAN_WARNING("You retrieve the child."))
 			Burst(0)
 			return
 
@@ -509,7 +509,7 @@ Alien plants should do something if theres a lot of poison
 	return
 
 /obj/effect/alien/egg/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
 	playsound(src.loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
@@ -526,7 +526,7 @@ Alien plants should do something if theres a lot of poison
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
-	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message(SPAN_DANGER("\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]"))
 	var/damage = W.force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))

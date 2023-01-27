@@ -58,10 +58,10 @@
 /obj/item/material/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
-		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You flip out \the [src]."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 	else
-		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] can now be concealed."))
 	update_force()
 	add_fingerprint(user)
 
@@ -82,9 +82,9 @@
 
 /obj/item/material/knife/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
-	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
-	                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+	user.visible_message(pick(SPAN_DANGER("\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide."), \
+	                      SPAN_DANGER("\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide."), \
+	                      SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.")))
 	return (BRUTELOSS)
 
 // These no longer inherit from hatchets.
@@ -175,7 +175,7 @@
 
 /obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(33))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return TRUE
 	return FALSE
@@ -189,9 +189,9 @@
 	if(storing_module)
 		src.forceMove(storing_module)
 		user.visible_message(
-			"<span class='notice'>[user] retracts [src], folding it away with a click and a hiss.</span>",
-			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
-			"<span class='notice'>You hear a threatening click and a hiss.</span>"
+			SPAN_NOTICE("[user] retracts [src], folding it away with a click and a hiss."),
+			SPAN_NOTICE("You retract [src], folding it away with a click and a hiss."),
+			SPAN_NOTICE("You hear a threatening click and a hiss.")
 			)
 		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	else

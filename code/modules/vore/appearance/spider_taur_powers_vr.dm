@@ -26,7 +26,7 @@
 	set name = "Weave Web"
 	set category = "Species Powers"
 	if(nutrition >= 500) //People decided to abuse it. Sorry. It was asked to be made so it couldn't be spammed, and what do ya know, people are spamming it everywhere.
-		src.visible_message("<span class='notice'>\the [src] weaves a web from their spinneret silk.</span>")
+		src.visible_message(SPAN_NOTICE("\the [src] weaves a web from their spinneret silk."))
 		nutrition -= 500
 		spawn(30) //3 seconds to form
 		new /obj/effect/spider/stickyweb(src.loc)
@@ -38,7 +38,7 @@
 	set name = "Weave Web Bindings"
 	set category = "Species Powers"
 	if(nutrition >= 30) //This isn't a huge problem. This is so you can bind people up.
-		src.visible_message("<span class='notice'>\the [src] pulls silk from their manibles and delicately weaves it into bindings.</span>")
+		src.visible_message(SPAN_NOTICE("\the [src] pulls silk from their manibles and delicately weaves it into bindings."))
 		nutrition -= 30
 		spawn(30) //5 seconds to weave the bindings~
 			var/obj/item/clothing/suit/web_bindings/bindings = new() //This sprite is amazing, I must say.

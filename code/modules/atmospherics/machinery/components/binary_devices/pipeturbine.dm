@@ -90,7 +90,7 @@
 	if(W.is_wrench())
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor.</span>")
+		to_chat(user, SPAN_NOTICE("You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor."))
 
 		if(anchored)
 			if(dir & (NORTH|SOUTH))
@@ -269,7 +269,7 @@
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, 1)
 		turbine = null
-		to_chat(user, "<span class='notice'>You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor.</span>")
+		to_chat(user, SPAN_NOTICE("You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor."))
 		updateConnection()
 	else
 		..()

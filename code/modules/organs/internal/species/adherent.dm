@@ -186,12 +186,12 @@
 		to_chat(C, "You cannot fly in this state!")
 		return
 	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
-		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
+		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
 		return
 	owner.pass_flags ^= ATOM_PASS_TABLE
 	C.flying = !C.flying
 	C.update_floating()
-	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")*/
+	to_chat(C, SPAN_NOTICE("You have [C.flying?"started":"stopped"] flying."))*/
 
 /obj/item/organ/internal/powered/float/proc/hover()
 	set name = "Hover"

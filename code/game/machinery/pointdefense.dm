@@ -63,7 +63,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			return FALSE
 
 		if(!(get_z(PD) in GetConnectedZlevels(get_z(src))))
-			to_chat(usr, "<span class='warning'>[PD] is not within control range.</span>")
+			to_chat(usr, SPAN_WARNING("[PD] is not within control range."))
 			return FALSE
 
 		if(!PD.Activate()) //Activate() whilst the device is active will return false.
@@ -101,9 +101,9 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			for(var/thing in GLOB.pointdefense_controllers)
 				var/obj/machinery/pointdefense_control/PC = thing
 				if(PC != src && PC.id_tag == id_tag)
-					to_chat(user, "<span class='warning'>The [new_ident] network already has a controller.</span>")
+					to_chat(user, SPAN_WARNING("The [new_ident] network already has a controller."))
 					return
-			to_chat(user, "<span class='notice'>You register [src] with the [new_ident] network.</span>")
+			to_chat(user, SPAN_NOTICE("You register [src] with the [new_ident] network."))
 			id_tag = new_ident
 		return
 	if(default_deconstruction_screwdriver(user, W))

@@ -11,7 +11,7 @@
 /obj/structure/vehiclecage/examine(mob/user)
 	. = ..()
 	if(my_vehicle)
-		. += "<span class='notice'>It seems to contain \the [my_vehicle].</span>"
+		. += SPAN_NOTICE("It seems to contain \the [my_vehicle].")
 
 /obj/structure/vehiclecage/Initialize(mapload)
 	. = ..()
@@ -24,21 +24,21 @@
 	update_icon()
 
 /obj/structure/vehiclecage/attack_hand(mob/user as mob)
-	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
+	to_chat(user, SPAN_NOTICE("You need a wrench to take this apart!"))
 	return
 
 /obj/structure/vehiclecage/attackby(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(!T)
-		to_chat(user, "<span class='notice'>You can't open this here!</span>")
+		to_chat(user, SPAN_NOTICE("You can't open this here!"))
 	if(W.is_wrench() && do_after(user, 60 * W.tool_speed, src))
 		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
-		user.visible_message("<span class='notice'>[user] begins loosening \the [src]'s bolts.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins loosening \the [src]'s bolts."))
 	if(W.is_wirecutter() && do_after(user, 70 * W.tool_speed, src))
 		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
-		user.visible_message("<span class='notice'>[user] begins cutting \the [src]'s bolts.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins cutting \the [src]'s bolts."))
 	else
 		return attack_hand(user)
 
@@ -72,9 +72,9 @@
 
 /obj/structure/vehiclecage/proc/load_vehicle(var/obj/vehicle_old/V, mob/user as mob)
 	if(user)
-		user.visible_message("<span class='notice'>[user] loads \the [V] into \the [src].</span>", \
-							 "<span class='notice'>You load \the [V] into \the [src].</span>", \
-							 "<span class='notice'>You hear creaking metal.</span>")
+		user.visible_message(SPAN_NOTICE("[user] loads \the [V] into \the [src]."), \
+							 SPAN_NOTICE("You load \the [V] into \the [src]."), \
+							 SPAN_NOTICE("You hear creaking metal."))
 
 	V.forceMove(src)
 
@@ -91,9 +91,9 @@
 			AM.forceMove(T)
 
 	my_vehicle = null
-	user.visible_message("<span class='notice'>[user] release \the [src].</span>", \
-						 "<span class='notice'>You finally release \the [src].</span>", \
-						 "<span class='notice'>You hear creaking metal.</span>")
+	user.visible_message(SPAN_NOTICE("[user] release \the [src]."), \
+						 SPAN_NOTICE("You finally release \the [src]."), \
+						 SPAN_NOTICE("You hear creaking metal."))
 	qdel(src)
 
 /obj/structure/vehiclecage/spacebike

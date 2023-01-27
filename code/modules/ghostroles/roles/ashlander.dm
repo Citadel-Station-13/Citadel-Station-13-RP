@@ -106,7 +106,7 @@
 		to_chat(created, "<b>Drag the corpses of men and beasts to your yurt. The bounty may attract more of your tribe. Glory to the Buried Ones!</b>")
 		to_chat(created, "<b>You can expand the weather proof area provided by your shelters by using the 'New Area' key near the bottom right of your HUD.</b>")
 	else
-		to_chat(created, "<span class='userdanger'>You have awoken outside of your natural home! Whether you decide to return below the surface, or make due with your current surroundings is your own decision.</span>")
+		to_chat(created, SPAN_USERDANGER("You have awoken outside of your natural home! Whether you decide to return below the surface, or make due with your current surroundings is your own decision."))
 
 /datum/ghostrole/ashlander/AllowSpawn(client/C, list/params)
 	if(params && params["team"])

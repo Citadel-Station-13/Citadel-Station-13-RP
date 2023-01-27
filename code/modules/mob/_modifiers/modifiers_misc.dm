@@ -84,7 +84,7 @@ the artifact triggers the rage.
 /datum/modifier/berserk/on_applied()
 	if(ishuman(holder)) // Most other mobs don't really use nutrition and can't get it back.
 		holder.nutrition = max(0, holder.nutrition - nutrition_cost)
-	holder.visible_message("<span class='critical'>\The [holder] descends into an all consuming rage!</span>")
+	holder.visible_message(SPAN_CRITICAL("\The [holder] descends into an all consuming rage!"))
 
 	// End all stuns.
 	holder.SetUnconscious(0)
@@ -105,7 +105,7 @@ the artifact triggers the rage.
 		holder.add_modifier(/datum/modifier/berserk_exhaustion, exhaustion_duration)
 
 		if(prob(last_shock_stage))
-			to_chat(holder, "<span class='warning'>You pass out from the pain you were suppressing.</span>")
+			to_chat(holder, SPAN_WARNING("You pass out from the pain you were suppressing."))
 			holder.Unconscious(5)
 
 		if(ishuman(holder))
@@ -114,14 +114,14 @@ the artifact triggers the rage.
 
 /datum/modifier/berserk/can_apply(var/mob/living/L)
 	if(L.stat)
-		to_chat(L, "<span class='warning'>You can't be unconscious or dead to berserk.</span>")
+		to_chat(L, SPAN_WARNING("You can't be unconscious or dead to berserk."))
 		return FALSE // It would be weird to see a dead body get angry all of a sudden.
 
 	if(!L.is_sentient())
 		return FALSE // Drones don't feel anything.
 
 	if(L.has_modifier_of_type(/datum/modifier/berserk_exhaustion))
-		to_chat(L, "<span class='warning'>You recently berserked, and cannot do so again while exhausted.</span>")
+		to_chat(L, SPAN_WARNING("You recently berserked, and cannot do so again while exhausted."))
 		return FALSE // On cooldown.
 
 	if(L.isSynthetic())
@@ -131,11 +131,11 @@ the artifact triggers the rage.
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species.name == SPECIES_DIONA)
-			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
+			to_chat(L, SPAN_WARNING("You feel strange for a moment, but it passes."))
 			return FALSE // Happy trees aren't affected by blood rages.
 
 	if(L.nutrition < nutrition_cost)
-		to_chat(L, "<span class='warning'>You are too hungry to berserk.</span>")
+		to_chat(L, SPAN_WARNING("You are too hungry to berserk."))
 		return FALSE // Too hungry to enrage.
 
 	return ..()
@@ -161,7 +161,7 @@ the artifact triggers the rage.
 	evasion = -30
 
 /datum/modifier/berserk_exhaustion/on_applied()
-	holder.visible_message("<span class='warning'>\The [holder] looks exhausted.</span>")
+	holder.visible_message(SPAN_WARNING("\The [holder] looks exhausted."))
 
 
 // Synth version with no benefits due to a loss of focus inside a metal shell, which can't be pushed harder just be being mad.

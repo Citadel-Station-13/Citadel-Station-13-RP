@@ -83,13 +83,13 @@
 			var/obj/effect/plant/P = A
 			qdel(P) //Plant isn't surviving that. At all
 	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
-		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
+		to_chat(usr, SPAN_NOTICE("You begin filling the tank on the [src]."))
 		if(do_after(usr, 15))
 			A.reagents.trans_to_obj(src, max_fuel)
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
-			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] succesfully refueled."))
 		else
-			to_chat(usr, "<span class='notice'>Don't move while you're refilling the [src].</span>")
+			to_chat(usr, SPAN_NOTICE("Don't move while you're refilling the [src]."))
 
 /obj/item/chainsaw/process(delta_time)
 	if(!on)
@@ -112,7 +112,7 @@
 
 /obj/item/chainsaw/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	to_chat(viewers(user), "<span class='danger'>[user] is lying down and pulling the chainsaw into [TU.him], it looks like [TU.he] [TU.is] trying to commit suicide!</span>")
+	to_chat(viewers(user), SPAN_DANGER("[user] is lying down and pulling the chainsaw into [TU.him], it looks like [TU.he] [TU.is] trying to commit suicide!"))
 	return(BRUTELOSS)
 
 /obj/item/chainsaw/update_icon()

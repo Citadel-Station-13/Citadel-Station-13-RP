@@ -87,27 +87,27 @@
 		lit = 1
 		icon_state = "[base_state]1"
 		//item_state = "[base_state]on"
-		user.visible_message("<span class='rose'>Without even breaking stride, \the [user] flips open \the [src] in one smooth movement.</span>")
+		user.visible_message(SPAN_ROSE("Without even breaking stride, \the [user] flips open \the [src] in one smooth movement."))
 
 	else if(lit && detonator_mode)
 		switch(alert(user, "What would you like to do?", "Lighter", "Press the button.", "Close the lighter."))
 			if("Press the button.")
-				to_chat(user, "<span class='warning'>You press the button.</span>")
+				to_chat(user, SPAN_WARNING("You press the button."))
 				icon_state = "[base_state]click"
 				if(src.bomb)
 					src.bomb.detonate()
 					log_admin("[key_name(user)] has triggered [src.bomb] with [src].")
-					message_admins("<span class='danger'>[key_name_admin(user)] has triggered [src.bomb] with [src].</span>")
+					message_admins(SPAN_DANGER("[key_name_admin(user)] has triggered [src.bomb] with [src]."))
 
 			if("Close the lighter.")
 				lit = 0
 				icon_state = "[base_state]"
 				//item_state = "[base_state]"
-				user.visible_message("<span class='rose'>You hear a quiet click, as \the [user] shuts off \the [src] without even looking at what they're doing.</span>")
+				user.visible_message(SPAN_ROSE("You hear a quiet click, as \the [user] shuts off \the [src] without even looking at what they're doing."))
 
 
 /obj/item/flame/lighter/zippo/c4detonator/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
 		detonator_mode = !detonator_mode
 		playsound(src, W.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You unscrew the top panel of \the [src] revealing a button.</span>")
+		to_chat(user, SPAN_NOTICE("You unscrew the top panel of \the [src] revealing a button."))

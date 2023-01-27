@@ -254,7 +254,7 @@
 	if(!istype(S))
 		return 0
 	if(!(S.material.name in stored_material))
-		to_chat(user, "<span class='warning'>\The [src] doesn't accept [material_display_name(S.material)]!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] doesn't accept [material_display_name(S.material)]!"))
 		return 1
 	var/max_res_amount = storage_capacity[S.material.name]
 	if(stored_material[S.material.name] + S.perunit <= max_res_amount)
@@ -263,10 +263,10 @@
 			stored_material[S.material.name] += S.perunit
 			S.use(1)
 			count++
-		user.visible_message("\The [user] inserts [S.name] into \the [src].", "<span class='notice'>You insert [count] [S.name] into \the [src].</span>")
+		user.visible_message("\The [user] inserts [S.name] into \the [src].", SPAN_NOTICE("You insert [count] [S.name] into \the [src]."))
 		updateUsrDialog()
 	else
-		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")
+		to_chat(user, SPAN_WARNING("\The [src] cannot hold more [S.name]."))
 	return 1
 
 /datum/material/algae

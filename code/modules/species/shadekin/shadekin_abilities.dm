@@ -199,23 +199,23 @@
 
 	//var/datum/species/shadekin/SK = species
 	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
-		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
+		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
-		to_chat(src, "<span class='warning'>Can't use that ability in your state!</span>")
+		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
 		return FALSE
 	else if(shadekin_get_energy() < ability_cost)
-		to_chat(src, "<span class='warning'>Not enough energy for that ability!</span>")
+		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
 		return FALSE
 	else if(ability_flags & AB_PHASE_SHIFTED)
-		to_chat(src, "<span class='warning'>You can't use that while phase shifted!</span>")
+		to_chat(src, SPAN_WARNING("You can't use that while phase shifted!"))
 		return FALSE
 
 	var/list/targets = list()
 	for(var/mob/living/L in view(1))
 		targets += L
 	if(!targets.len)
-		to_chat(src,"<span class='warning'>Nobody nearby to mend!</span>")
+		to_chat(src,SPAN_WARNING("Nobody nearby to mend!"))
 		return FALSE
 
 	var/mob/living/target = input(src,"Pick someone to mend:","Mend Other") as null|anything in targets
@@ -225,7 +225,7 @@
 	target.add_modifier(/datum/modifier/shadekin/heal_boop,1 MINUTE)
 	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)
 	shadekin_adjust_energy(-ability_cost)
-	visible_message("<span class='notice'>\The [src] gently places a hand on \the [target]...</span>")
+	visible_message(SPAN_NOTICE("\The [src] gently places a hand on \the [target]..."))
 	face_atom(target)
 	return TRUE
 
@@ -267,16 +267,16 @@
 
 	//var/datum/species/shadekin/SK = species
 	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
-		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
+		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
-		to_chat(src, "<span class='warning'>Can't use that ability in your state!</span>")
+		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
 		return FALSE
 	else if(shadekin_get_energy() < ability_cost)
-		to_chat(src, "<span class='warning'>Not enough energy for that ability!</span>")
+		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
 		return FALSE
 	else if(ability_flags & AB_PHASE_SHIFTED)
-		to_chat(src, "<span class='warning'>You can't use that while phase shifted!</span>")
+		to_chat(src, SPAN_WARNING("You can't use that while phase shifted!"))
 		return FALSE
 
 	playsound(src, 'sound/effects/bamf.ogg', 75, 1)

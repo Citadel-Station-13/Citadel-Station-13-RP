@@ -237,12 +237,12 @@
 		busy = 1
 		update_icons()
 		if(F.flooring)
-			visible_message("<span class='warning'>\The [src] begins to tear the floor tile from the floor!</span>")
+			visible_message(SPAN_WARNING("\The [src] begins to tear the floor tile from the floor!"))
 			if(do_after(src, 50))
 				F.break_tile_to_plating()
 				addTiles(1)
 		else
-			visible_message("<span class='danger'>\The [src] begins to tear through the floor!</span>")
+			visible_message(SPAN_DANGER("\The [src] begins to tear through the floor!"))
 			if(do_after(src, 150)) // Extra time because this can and will kill.
 				F.ReplaceWithLattice()
 				addTiles(1)
@@ -257,7 +257,7 @@
 			return
 		busy = 1
 		update_icons()
-		visible_message("<span class='notice'>\The [src] begins to repair the hole.</span>")
+		visible_message(SPAN_NOTICE("\The [src] begins to repair the hole."))
 		if(do_after(src, 50))
 			if(A && (locate(/obj/structure/lattice, A) && building == 1 || !locate(/obj/structure/lattice, A) && building == 2)) // Make sure that it still needs repairs
 				var/obj/item/I
@@ -274,7 +274,7 @@
 		if(F.broken || F.burnt)
 			busy = 1
 			update_icons()
-			visible_message("<span class='notice'>\The [src] begins to remove the broken floor.</span>")
+			visible_message(SPAN_NOTICE("\The [src] begins to remove the broken floor."))
 			if(do_after(src, 50, F))
 				if(F.broken || F.burnt)
 					F.make_plating()
@@ -284,7 +284,7 @@
 		else if(!F.flooring && amount)
 			busy = 1
 			update_icons()
-			visible_message("<span class='notice'>\The [src] begins to improve the floor.</span>")
+			visible_message(SPAN_NOTICE("\The [src] begins to improve the floor."))
 			if(do_after(src, 50))
 				if(!F.flooring)
 					F.set_flooring(get_flooring_data(floor_build_type))
@@ -294,7 +294,7 @@
 			update_icons()
 	else if(istype(A, /obj/item/stack/tile/floor) && amount < maxAmount)
 		var/obj/item/stack/tile/floor/T = A
-		visible_message("<span class='notice'>\The [src] begins to collect tiles.</span>")
+		visible_message(SPAN_NOTICE("\The [src] begins to collect tiles."))
 		busy = 1
 		update_icons()
 		if(do_after(src, 20))
@@ -308,7 +308,7 @@
 	else if(istype(A, /obj/item/stack/material) && amount + 4 <= maxAmount)
 		var/obj/item/stack/material/M = A
 		if(M.get_material_name() == MAT_STEEL)
-			visible_message("<span class='notice'>\The [src] begins to make tiles.</span>")
+			visible_message(SPAN_NOTICE("\The [src] begins to make tiles."))
 			busy = 1
 			update_icons()
 			if(do_after(50))
@@ -318,7 +318,7 @@
 
 /mob/living/bot/floorbot/explode()
 	turn_off()
-	visible_message("<span class='danger'>\The [src] blows apart!</span>")
+	visible_message(SPAN_DANGER("\The [src] blows apart!"))
 	playsound(src.loc, "sparks", 50, 1)
 	var/turf/Tsec = get_turf(src)
 

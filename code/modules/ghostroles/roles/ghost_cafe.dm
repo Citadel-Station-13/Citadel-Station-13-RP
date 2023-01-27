@@ -26,10 +26,10 @@
 	var/mob/M = target
 	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT))
 		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
-		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
+		to_chat(M,SPAN_NOTICE("You're no longer hearing deadchat."))
 	else
 		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
-		to_chat(M,"<span class='notice'>You're once again longer hearing deadchat.</span>")
+		to_chat(M,SPAN_NOTICE("You're once again longer hearing deadchat."))
 
 /datum/action/disguise
 	name = "Disguise"
@@ -99,7 +99,7 @@
 
 /datum/ghostrole/ghost_cafe/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
-	to_chat(created,"<span class='boldwarning'>Ghosting is free!</span>")
+	to_chat(created,SPAN_BOLDWARNING("Ghosting is free!"))
 
 /datum/ghostrole_instantiator/human/player_static/ghost_cafe
 	equip_outfit = /datum/outfit/ghostcafe

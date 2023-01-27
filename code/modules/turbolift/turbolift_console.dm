@@ -24,9 +24,9 @@
 /obj/structure/lift/proc/pressed(var/mob/user)
 	if(!istype(user, /mob/living/silicon))
 		if(user.a_intent == INTENT_HARM)
-			user.visible_message("<span class='danger'>\The [user] hammers on the lift button!</span>")
+			user.visible_message(SPAN_DANGER("\The [user] hammers on the lift button!"))
 		else
-			user.visible_message("<span class='notice'>\The [user] presses the lift button.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] presses the lift button."))
 
 
 /obj/structure/lift/New(var/newloc, var/datum/turbolift/_lift)
@@ -129,10 +129,10 @@
 			return
 		lift.update_fire_mode(!lift.fire_mode)
 		if(lift.fire_mode)
-			audible_message("<span class='danger'>Firefighter Mode Activated.  Door safeties disabled.  Manual control engaged.</span>")
+			audible_message(SPAN_DANGER("Firefighter Mode Activated.  Door safeties disabled.  Manual control engaged."))
 			playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 		else
-			audible_message("<span class='warning'>Firefighter Mode Deactivated. Door safeties enabled.  Automatic control engaged.</span>")
+			audible_message(SPAN_WARNING("Firefighter Mode Deactivated. Door safeties enabled.  Automatic control engaged."))
 		return
 	. = ..()
 

@@ -35,7 +35,7 @@
 		return TRUE
 
 	if(usr == occupant)
-		to_chat(usr, "<span class='warning'>You can't reach the controls from the inside.</span>")
+		to_chat(usr, SPAN_WARNING("You can't reach the controls from the inside."))
 		return
 
 	add_fingerprint(usr)
@@ -122,9 +122,9 @@
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
-		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] rejects [M] with a sharp beep."))
 	if(occupant)
-		to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 		return
 
 	if(M == user)
@@ -134,7 +134,7 @@
 
 	if(do_after(user, 20))
 		if(occupant)
-			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 			return
 		M.stop_pulling()
 		if(M.client)

@@ -101,19 +101,19 @@ var/list/trait_categories = list() // The categories available for the trait men
 
 	for(var/trait_name in pref.traits)
 		if(!trait_datums[trait_name])
-			to_chat(preference_mob, "<span class='warning'>You cannot have more than one of trait: [trait_name]</span>")
+			to_chat(preference_mob, SPAN_WARNING("You cannot have more than one of trait: [trait_name]"))
 			pref.traits -= trait_name
 		else
 			var/datum/trait/T = trait_datums[trait_name]
 			var/invalidity = T.test_for_invalidity(src)
 			if(invalidity)
 				pref.traits -= trait_name
-				to_chat(preference_mob, "<span class='warning'>You cannot take the [trait_name] trait.  Reason: [invalidity]</span>")
+				to_chat(preference_mob, SPAN_WARNING("You cannot take the [trait_name] trait.  Reason: [invalidity]"))
 
 			var/conflicts = T.test_for_trait_conflict(pref.traits)
 			if(conflicts)
 				pref.traits -= trait_name
-				to_chat(preference_mob, "<span class='warning'>The [trait_name] trait is mutually exclusive with [conflicts].</span>")
+				to_chat(preference_mob, SPAN_WARNING("The [trait_name] trait is mutually exclusive with [conflicts]."))
 
 /datum/category_item/player_setup_item/traits/OnTopic(href, href_list, user)
 	if(href_list["toggle_trait"])
@@ -123,12 +123,12 @@ var/list/trait_categories = list() // The categories available for the trait men
 		else
 			var/invalidity = T.test_for_invalidity(src)
 			if(invalidity)
-				to_chat(user, "<span class='warning'>You cannot take the [T.name] trait.  Reason: [invalidity]</span>")
+				to_chat(user, SPAN_WARNING("You cannot take the [T.name] trait.  Reason: [invalidity]"))
 				return PREFERENCES_NOACTION
 
 			var/conflicts = T.test_for_trait_conflict(pref.traits)
 			if(conflicts)
-				to_chat(user, "<span class='warning'>The [T.name] trait is mutually exclusive with [conflicts].</span>")
+				to_chat(user, SPAN_WARNING("The [T.name] trait is mutually exclusive with [conflicts]."))
 				return PREFERENCES_NOACTION
 
 			pref.traits += T.name

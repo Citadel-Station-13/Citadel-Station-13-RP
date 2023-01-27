@@ -211,7 +211,7 @@
 	set popup_menu = 0
 	if(usr!=src.occupant || usr.stat == 2)
 		return
-	to_chat(usr,"<span class='notice'>Release sequence activated. This will take one minute.</span>")
+	to_chat(usr,SPAN_NOTICE("Release sequence activated. This will take one minute."))
 	sleep(600)
 	if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 		return

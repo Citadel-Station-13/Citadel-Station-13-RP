@@ -34,13 +34,13 @@
 		if(65 to 85)
 			. += "It's slightly damaged."
 		if(45 to 65)
-			. += "<span class='notice'>It's badly damaged.</span>"
+			. += SPAN_NOTICE("It's badly damaged.")
 		if(25 to 45)
-			. += "<span class='warning'>It's heavily damaged.</span>"
+			. += SPAN_WARNING("It's heavily damaged.")
 		if(2 to 25)
-			. += "<span class='warning'><b>It's falling apart.</b></span>"
+			. += SPAN_WARNING("<b>It's falling apart.</b>")
 		if(0 to 1)
-			. += "<span class='warning'><b>It is completely destroyed.</b></span>"
+			. += SPAN_WARNING("<b>It is completely destroyed.</b>")
 
 /obj/item/mecha_parts/component/Initialize(mapload)
 	. = ..()
@@ -95,11 +95,11 @@
 	if(target)
 		if(!(component_type in target.internal_components))
 			if(user)
-				to_chat(user, "<span class='notice'>\The [target] doesn't seem to have anywhere to put \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("\The [target] doesn't seem to have anywhere to put \the [src]."))
 			return FALSE
 		if(target.internal_components[component_type])
 			if(user)
-				to_chat(user, "<span class='notice'>\The [target] already has a [component_type] installed!</span>")
+				to_chat(user, SPAN_NOTICE("\The [target] already has a [component_type] installed!"))
 			return FALSE
 		if(user)
 			if(!user.attempt_insert_item_for_installation(src, target))
@@ -119,7 +119,7 @@
 		chassis.internal_components[component_type] = src
 
 		if(user)
-			chassis.visible_message("<span class='notice'>[user] installs \the [src] in \the [chassis].</span>")
+			chassis.visible_message(SPAN_NOTICE("[user] installs \the [src] in \the [chassis]."))
 		return TRUE
 	return FALSE
 

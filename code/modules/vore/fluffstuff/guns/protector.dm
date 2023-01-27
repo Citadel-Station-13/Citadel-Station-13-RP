@@ -38,7 +38,7 @@
 
 /obj/item/gun/energy/protector/special_check(mob/user)
 	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
-		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
+		to_chat(user,SPAN_WARNING("The trigger refuses to depress while on the lethal setting under security level green!"))
 		return FALSE
 
 	return ..()
@@ -48,7 +48,7 @@
 	..()
 	if(!emagged)
 		emagged = TRUE
-		to_chat(user,"<span class='warning'>You disable the alert level locking mechanism on \the [src]!</span>")
+		to_chat(user,SPAN_WARNING("You disable the alert level locking mechanism on \the [src]!"))
 
 	return TRUE
 

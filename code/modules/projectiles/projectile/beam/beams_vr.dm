@@ -69,7 +69,7 @@
 			pulse.anchored = 1
 			spawn(20)
 				qdel(pulse)
-			to_chat(target, "<span class='notice'>As the beam strikes you, your injuries close up!</span>")
+			to_chat(target, SPAN_NOTICE("As the beam strikes you, your injuries close up!"))
 			M.adjustBruteLoss(-15)
 			M.adjustFireLoss(-15)
 			M.adjustToxLoss(-5)

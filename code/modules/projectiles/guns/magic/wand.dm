@@ -37,7 +37,7 @@
 		if(no_den_usage)
 			var/area/A = get_area(user)
 			if(istype(A, /area/wizard_station))
-				to_chat(user, "<span class='warning'>You know better than to violate the security of The Den, best wait until you leave to use [src].</span>")
+				to_chat(user, SPAN_WARNING("You know better than to violate the security of The Den, best wait until you leave to use [src]."))
 				return
 			else
 				no_den_usage = 0
@@ -48,7 +48,7 @@
 
 
 /obj/item/gun/magic/wand/proc/zap_self(mob/living/user)
-	user.visible_message("<span class='danger'>[user] zaps themself with [src].</span>")
+	user.visible_message(SPAN_DANGER("[user] zaps themself with [src]."))
 	playsound(user, fire_sound, 50, 1)
 
 /////////////////////////////////////
@@ -95,14 +95,14 @@
 	..()
 	charges--
 	if(antimagic)
-		user.visible_message("<span class='warning'>[src] has no effect on [user]!</span>")
+		user.visible_message(SPAN_WARNING("[src] has no effect on [user]!"))
 		return
 	user.revive(full_heal = 1)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.regenerate_limbs()
 		C.regenerate_organs()
-	to_chat(user, "<span class='notice'>You feel great!</span>")
+	to_chat(user, SPAN_NOTICE("You feel great!"))
 
 /obj/item/gun/magic/wand/resurrection/debug //for testing
 	name = "debug wand of healing"
@@ -162,7 +162,7 @@
 	no_den_usage = 1
 
 /obj/item/gun/magic/wand/door/zap_self(mob/living/user)
-	to_chat(user, "<span class='notice'>You feel vaguely more open with your feelings.</span>")
+	to_chat(user, SPAN_NOTICE("You feel vaguely more open with your feelings."))
 	charges--
 	..()
 
@@ -199,4 +199,4 @@
 	..()
 	charges--
 	user.take_overall_damage(0,30)
-	to_chat(user, "<span class='warning'>You zap yourself. Why?</span>")
+	to_chat(user, SPAN_WARNING("You zap yourself. Why?"))

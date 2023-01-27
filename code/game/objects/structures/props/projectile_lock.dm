@@ -45,7 +45,7 @@
 
 	if(istype(Proj, /obj/item/projectile/beam/heavylaser/cannon) || istype(Proj, /obj/item/projectile/beam/emitter) || (Proj.damage >= 80 && Proj.damtype == BURN))
 		toggle_lock()
-		visible_message("<span class='notice'>\The [src] [enabled ? "disengages" : "engages"] its locking mechanism.</span>")
+		visible_message(SPAN_NOTICE("\The [src] [enabled ? "disengages" : "engages"] its locking mechanism."))
 
 		if(timed)
 			timing = 1

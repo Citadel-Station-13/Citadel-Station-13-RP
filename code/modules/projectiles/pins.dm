@@ -61,7 +61,7 @@
 	if(selfdestruct)
 		if(user)
 			user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
-			to_chat(user, "<span class='userdanger'>[gun] explodes!</span>")
+			to_chat(user, SPAN_USERDANGER("[gun] explodes!"))
 		explosion(get_turf(gun), -1, 0, 2, 3)
 		if(gun)
 			qdel(gun)
@@ -122,7 +122,7 @@
 		var/mob/living/carbon/M = target
 		if(M.dna && M.dna.unique_enzymes)
 			unique_enzymes = M.dna.unique_enzymes
-			to_chat(user, "<span class='notice'>DNA-LOCK SET.</span>")
+			to_chat(user, SPAN_NOTICE("DNA-LOCK SET."))
 
 /obj/item/firing_pin/dna/pin_auth(mob/living/carbon/user)
 	if(user && user.dna && user.dna.unique_enzymes)
@@ -134,7 +134,7 @@
 	if(!unique_enzymes)
 		if(user && user.dna && user.dna.unique_enzymes)
 			unique_enzymes = user.dna.unique_enzymes
-			to_chat(user, "<span class='notice'>DNA-LOCK SET.</span>")
+			to_chat(user, SPAN_NOTICE("DNA-LOCK SET."))
 	else
 		..()
 
@@ -155,7 +155,7 @@
 		var/mob/living/carbon/human/M = user
 		if(istype(M.wear_suit, suit_requirement))
 			return TRUE
-	to_chat(user, "<span class='warning'>You need to be wearing [tagcolor] laser tag armor!</span>")
+	to_chat(user, SPAN_WARNING("You need to be wearing [tagcolor] laser tag armor!"))
 	return FALSE
 
 /obj/item/firing_pin/tag/red
@@ -206,15 +206,15 @@
 	..()
 	if(check_access(ID))
 		locked = !locked
-		to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
+		to_chat(user, SPAN_WARNING("You [locked ? "enable" : "disable"] the safety lock on \the [src]."))
 	else
-		to_chat(user, "<span class='warning'>Access denied.</span>")
-	user.visible_message("<span class='notice'>[user] swipes \the [ID] against \the [src].</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
+	user.visible_message(SPAN_NOTICE("[user] swipes \the [ID] against \the [src]."))
 
 /obj/item/firing_pin/emag_act(var/remaining_charges, var/mob/user)
 	if(emagged)
-		to_chat(user, "<span class='notice'>It's already emagged.</span>")
+		to_chat(user, SPAN_NOTICE("It's already emagged."))
 		return
 	emagged = 1
-	to_chat(user, "<span class='notice'>You override the authentication mechanism.</span>")
+	to_chat(user, SPAN_NOTICE("You override the authentication mechanism."))
 	return TRUE

@@ -111,7 +111,7 @@
 		SSticker.mode.check_win()
 
 	if(wearing_rig)
-		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")
+		wearing_rig.notify_ai(SPAN_DANGER("Warning: user death event. Mobility control passed to integrated intelligence system."))
 
 	// If the body is in VR, move the mind back to the real world
 	if(vr_holder)
@@ -125,7 +125,7 @@
 		vr_link.exit_vr()
 		vr_link.vr_holder = null
 		vr_link = null
-		to_chat(src, "<span class='danger'>Everything abruptly stops.</span>")
+		to_chat(src, SPAN_DANGER("Everything abruptly stops."))
 
 	return ..(gibbed,species.get_death_message(src))
 

@@ -72,7 +72,7 @@
 			return NONE
 
 		if(!welding)
-			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
+			to_chat(user, SPAN_WARNING("You'll need to turn [src] on to patch the damage on [H]'s [S.name]!"))
 			return NONE
 
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
@@ -83,13 +83,13 @@
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W,/obj/item/tool/screwdriver))
 		if(welding)
-			to_chat(user, "<span class='danger'>Stop welding first!</span>")
+			to_chat(user, SPAN_DANGER("Stop welding first!"))
 			return
 		status = !status
 		if(status)
-			to_chat(user, "<span class='notice'>You secure the welder.</span>")
+			to_chat(user, SPAN_NOTICE("You secure the welder."))
 		else
-			to_chat(user, "<span class='notice'>The welder can now be attached and modified.</span>")
+			to_chat(user, SPAN_NOTICE("The welder can now be attached and modified."))
 		add_fingerprint(user)
 		return
 
@@ -127,16 +127,16 @@
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
-			to_chat(user, "<span class='notice'>You refill [src].</span>")
+			to_chat(user, SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if(!welding)
-			to_chat(user, "<span class='notice'>[src] doesn't use fuel.</span>")
+			to_chat(user, SPAN_NOTICE("[src] doesn't use fuel."))
 			return
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a welding tool.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a welding tool.")
-			to_chat(user, "<span class='danger'>You begin welding on the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
+			to_chat(user, SPAN_DANGER("You begin welding on the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 			return
@@ -192,7 +192,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(M, SPAN_NOTICE("You need more welding fuel to complete this task."))
 		update_icon()
 		return 0
 
@@ -243,9 +243,9 @@
 	if(set_welding && !welding)
 		if (get_fuel() > 0)
 			if(M)
-				to_chat(M, "<span class='notice'>You switch the [src] on.</span>")
+				to_chat(M, SPAN_NOTICE("You switch the [src] on."))
 			else if(T)
-				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
+				T.visible_message(SPAN_DANGER("\The [src] turns on."))
 			playsound(loc, acti_sound, 50, 1)
 			src.force = 15
 			src.damtype = "fire"
@@ -258,16 +258,16 @@
 		else
 			if(M)
 				var/msg = max_fuel ? "welding fuel" : "charge"
-				to_chat(M, "<span class='notice'>You need more [msg] to complete this task.</span>")
+				to_chat(M, SPAN_NOTICE("You need more [msg] to complete this task."))
 			return
 	//Otherwise
 	else if(!set_welding && welding)
 		if(!always_process)
 			STOP_PROCESSING(SSobj, src)
 		if(M)
-			to_chat(M, "<span class='notice'>You switch \the [src] off.</span>")
+			to_chat(M, SPAN_NOTICE("You switch \the [src] off."))
 		else if(T)
-			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
+			T.visible_message(SPAN_WARNING("\The [src] turns off."))
 		playsound(loc, deac_sound, 50, 1)
 		src.force = 3
 		src.damtype = "brute"
@@ -292,29 +292,29 @@
 			return
 		switch(safety)
 			if(1)
-				to_chat(usr, "<span class='warning'>Your eyes sting a little.</span>")
+				to_chat(usr, SPAN_WARNING("Your eyes sting a little."))
 				E.damage += rand(1, 2)
 				if(E.damage > 12)
 					user.eye_blurry += rand(3,6)
 			if(0)
-				to_chat(usr, "<span class='warning'>Your eyes burn.</span>")
+				to_chat(usr, SPAN_WARNING("Your eyes burn."))
 				E.damage += rand(2, 4)
 				if(E.damage > 10)
 					E.damage += rand(4,10)
 			if(-1)
-				to_chat(usr, "<span class='danger'>Your thermals intensify the welder's glow. Your eyes itch and burn severely.</span>")
+				to_chat(usr, SPAN_DANGER("Your thermals intensify the welder's glow. Your eyes itch and burn severely."))
 				user.eye_blurry += rand(12,20)
 				E.damage += rand(12, 16)
 		if(safety<2)
 
 			if(E.damage > 10)
-				to_chat(user, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(user, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 
 			if (E.damage >= E.min_broken_damage)
-				to_chat(user, "<span class='danger'>You go blind!</span>")
+				to_chat(user, SPAN_DANGER("You go blind!"))
 				user.sdisabilities |= SDISABILITY_NERVOUS
 			else if (E.damage >= E.min_bruised_damage)
-				to_chat(user, "<span class='danger'>You go blind!</span>")
+				to_chat(user, SPAN_DANGER("You go blind!"))
 				user.Blind(5)
 				user.eye_blurry = 5
 				user.disabilities |= DISABILITY_NEARSIGHTED
@@ -492,7 +492,7 @@
 
 	if(mounted_pack.loc != src.loc && src.loc != mounted_pack)
 		mounted_pack.return_nozzle()
-		visible_message("<span class='notice'>\The [src] retracts to its fueltank.</span>")
+		visible_message(SPAN_NOTICE("\The [src] retracts to its fueltank."))
 
 	if(get_fuel() <= get_max_fuel())
 		mounted_pack.reagents.trans_to_obj(src, 1)
@@ -503,7 +503,7 @@
 	..()
 	if(src.loc != user)
 		mounted_pack.return_nozzle()
-		to_chat(user, "<span class='notice'>\The [src] retracts to its fueltank.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] retracts to its fueltank."))
 
 /obj/item/weldingtool/tubefed/survival
 	name = "tube-fed emergency welding tool"
@@ -603,7 +603,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more energy to complete this task.</span>")
+			to_chat(M, SPAN_NOTICE("You need more energy to complete this task."))
 		update_icon()
 		return 0
 
@@ -613,7 +613,7 @@
 			power_supply.update_icon()
 			user.put_in_hands(power_supply)
 			power_supply = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			setWelding(0)
 			update_icon()
 			return
@@ -628,12 +628,12 @@
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				power_supply = W
-				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in \the [src]."))
 				update_icon()
 			else
-				to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] already has a cell."))
 		else
-			to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] cannot use that type of cell."))
 	else
 		..()
 

@@ -158,7 +158,7 @@
 	return ..()
 
 /obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You cannot dismantle \the [src]."))
 	return
 
 /obj/structure/table/bananium

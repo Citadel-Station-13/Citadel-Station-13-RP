@@ -75,7 +75,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	if(!C.holder)
 		if(show_msg)
-			to_chat(C, "<span class='warning'>Error: You are not an admin.</span>")
+			to_chat(C, SPAN_WARNING("Error: You are not an admin."))
 		return FALSE
 
 	if(rights_required)
@@ -83,7 +83,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 			return TRUE
 		else
 			if(show_msg)
-				to_chat(C, "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>")
+				to_chat(C, SPAN_WARNING("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
 			return FALSE
 	else
 		return TRUE

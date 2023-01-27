@@ -19,6 +19,6 @@
 	var/turf/MT = get_turf(chassis)
 	var/turf/TT = get_turf(target)
 	if(!MT.outdoors || !TT.outdoors)
-		to_chat(chassis.occupant, "<span class='notice'>\The [src]'s control system prevents you from firing due to a blocked firing arc.</span>")
+		to_chat(chassis.occupant, SPAN_NOTICE("\The [src]'s control system prevents you from firing due to a blocked firing arc."))
 		return 0
 	return ..()

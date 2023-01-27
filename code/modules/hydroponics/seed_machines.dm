@@ -98,7 +98,7 @@
 		return
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 100, 1)
-		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
 		anchored = !anchored
 		return
 //	if(default_deconstruction_crowbar(user, W))	//No circuit boards to give.

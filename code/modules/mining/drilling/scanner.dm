@@ -28,7 +28,7 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
+	to_chat(user, SPAN_NOTICE("You begin sweeping \the [src] about, scanning for metal deposits."))
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
 	if(!do_after(user, scan_time))

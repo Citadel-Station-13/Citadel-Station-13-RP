@@ -125,7 +125,7 @@
 			walk_to(src, movement_target, 0, 5)
 			spawn(10)
 				if(Adjacent(movement_target))
-					visible_message("<span class='notice'>[src] swallows the [movement_target] whole!</span>")
+					visible_message(SPAN_NOTICE("[src] swallows the [movement_target] whole!"))
 					qdel(movement_target)
 					walk(src,0)
 				else if(ishuman(movement_target.loc) && prob(20))
@@ -143,7 +143,7 @@
 
 /mob/living/simple_mob/animal/passive/snake/noodle/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/reagent_containers/food/snacks/snakesnack))
-		visible_message("<span class='notice'>[user] feeds \the [O] to [src].</span>")
+		visible_message(SPAN_NOTICE("[user] feeds \the [O] to [src]."))
 		qdel(O)
 	else
 		return ..()

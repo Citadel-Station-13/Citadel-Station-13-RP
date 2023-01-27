@@ -9,10 +9,10 @@ var/can_call_traders = 1
 	set desc = "Invite players to work at the local Nebula Gas station."
 
 	if(!holder)
-		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
+		to_chat(usr, SPAN_DANGER("Only administrators may use this command."))
 		return
 	if(SSticker.current_state == 1)
-		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
+		to_chat(usr, SPAN_DANGER("The round hasn't started yet!"))
 		return
 	if(alert("Do you want to hire Nebula Gas attendants?",,"Yes","No") != "Yes")
 		return
@@ -21,7 +21,7 @@ var/can_call_traders = 1
 			if("No")
 				return
 	if(hire_nebula)
-		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
+		to_chat(usr, SPAN_DANGER("Looks like somebody beat you to it!"))
 		return
 
 	message_admins("[key_name_admin(usr)] is hiring Nebula Gas attendants.", 1)
@@ -34,7 +34,7 @@ var/can_call_traders = 1
 	set category = "IC"
 
 	if(!MayRespawn(1))
-		to_chat(usr, "<span class='warning'>You cannot join the traders.</span>")
+		to_chat(usr, SPAN_WARNING("You cannot join the traders."))
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))

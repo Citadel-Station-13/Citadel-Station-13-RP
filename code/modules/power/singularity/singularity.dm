@@ -133,7 +133,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			dissipate_strength = 1
 			if(chained)
 				add_overlay("chain_s1")
-			visible_message("<span class='notice'>The singularity has shrunk to a rather pitiful size.</span>")
+			visible_message(SPAN_NOTICE("The singularity has shrunk to a rather pitiful size."))
 		if (STAGE_TWO)
 			if(check_cardinals_range(1, TRUE))
 				name = "gravitational singularity"
@@ -151,9 +151,9 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				if(chained)
 					add_overlay("chain_s3")
 				if(growing)
-					visible_message("<span class='notice'>The singularity noticeably grows in size.</span>")
+					visible_message(SPAN_NOTICE("The singularity noticeably grows in size."))
 				else
-					visible_message("<span class='notice'>The singularity has shrunk to a less powerful size.</span>")
+					visible_message(SPAN_NOTICE("The singularity has shrunk to a less powerful size."))
 		if (STAGE_THREE)
 			if(check_cardinals_range(2, TRUE))
 				name = "gravitational singularity"
@@ -171,9 +171,9 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				if(chained)
 					add_overlay("chain_s5")
 				if(growing)
-					visible_message("<span class='notice'>The singularity expands to a reasonable size.</span>")
+					visible_message(SPAN_NOTICE("The singularity expands to a reasonable size."))
 				else
-					visible_message("<span class='notice'>The singularity has returned to a safe size.</span>")
+					visible_message(SPAN_NOTICE("The singularity has returned to a safe size."))
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				name = "gravitational singularity"
@@ -191,9 +191,9 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				if(chained)
 					add_overlay("chain_s7")
 				if(growing)
-					visible_message("<span class='warning'>The singularity expands to a dangerous size.</span>")
+					visible_message(SPAN_WARNING("The singularity expands to a dangerous size."))
 				else
-					visible_message("<span class='notice'>Miraculously, the singularity reduces in size, and can be contained.</span>")
+					visible_message(SPAN_NOTICE("Miraculously, the singularity reduces in size, and can be contained."))
 		if(STAGE_FIVE) //This one also lacks a check for gens because it eats everything.
 			name = "gravitational singularity"
 			desc = "A gravitational singularity."
@@ -208,9 +208,9 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			if(chained)
 				add_overlay("chain_s9")
 			if(growing)
-				visible_message("<span class='danger'><font size='2'>The singularity has grown out of control!</font></span>")
+				visible_message(SPAN_DANGER("<font size='2'>The singularity has grown out of control!</font>"))
 			else
-				visible_message("<span class='warning'>The singularity miraculously reduces in size and loses its supermatter properties.</span>")
+				visible_message(SPAN_WARNING("The singularity miraculously reduces in size and loses its supermatter properties."))
 		if(STAGE_SUPER)//SUPERSINGULO
 			name = "super gravitational singularity"
 			desc = "A gravitational singularity with the properties of supermatter. <b>It has the power to destroy worlds.</b>"
@@ -225,7 +225,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			event_chance = 25 //Events will fire off more often.
 			if(chained)
 				add_overlay("chain_s9")
-			visible_message("<span class='sinister'><font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font></span>")
+			visible_message(SPAN_SINISTER("<font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font>"))
 
 	if (current_size == allowed_size)
 		investigate_log("<font color='red'>grew to size [current_size].</font>", INVESTIGATE_SINGULO)
@@ -411,10 +411,10 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 					return
 				else
 					to_chat(H, "<span class=\"warning\">You look directly into The [src.name], but your eyewear does absolutely nothing to protect you from it!</span>")
-		to_chat(M, "<span class='danger'>You look directly into The [src.name] and feel [current_size == STAGE_SUPER ? "helpless" : "weak"].</span>")
+		to_chat(M, SPAN_DANGER("You look directly into The [src.name] and feel [current_size == STAGE_SUPER ? "helpless" : "weak"]."))
 		M.apply_effect(3, STUN)
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] stares blankly at The []!</span>", M, src), 1)
+			O.show_message(SPAN_DANGER("[M] stares blankly at The [src]!"), 1)
 
 /obj/singularity/proc/emp_area()
 	if(current_size != STAGE_SUPER)

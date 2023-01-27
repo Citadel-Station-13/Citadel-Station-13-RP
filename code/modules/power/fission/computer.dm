@@ -27,10 +27,10 @@
 		var/obj/item/multitool/M = W
 		if (!isnull(M.connectable) && istype(M.connectable, /obj/machinery/power/fission))
 			linked = M.connectable
-			to_chat(user, "<span class='notice'>You link \the [M.connectable] to \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You link \the [M.connectable] to \the [src]."))
 			M.connectable = null
 		else
-			to_chat(user, "<span class='notice'>There's nothing to link.</span>")
+			to_chat(user, SPAN_NOTICE("There's nothing to link."))
 		return
 	return ..()
 

@@ -14,7 +14,7 @@
 				if(!playkey_synth(key))
 					if(!warned)
 						warned = TRUE
-						to_chat(user, "<span class='boldwarning'>Your instrument has ran out of channels. You might be playing your song too fast or be setting sustain to too high of a value. This warning will be suppressed for the rest of this cycle.</span>")
+						to_chat(user, SPAN_BOLDWARNING("Your instrument has ran out of channels. You might be playing your song too fast or be setting sustain to too high of a value. This warning will be suppressed for the rest of this cycle."))
 			sleep(sanitize_tempo(tempo / (tempodiv || 1)))
 		repeat--
 		updateDialog()

@@ -76,13 +76,13 @@
 				atmos_machines += A
 	atoms |= areas
 
-	admin_notice("<span class='danger'>Initializing newly created atom(s) in submap.</span>", R_DEBUG)
+	admin_notice(SPAN_DANGER("Initializing newly created atom(s) in submap."), R_DEBUG)
 	SSatoms.InitializeAtoms(atoms)
 
-	admin_notice("<span class='danger'>Initializing atmos pipenets and machinery in submap.</span>", R_DEBUG)
+	admin_notice(SPAN_DANGER("Initializing atmos pipenets and machinery in submap."), R_DEBUG)
 	SSmachines.setup_atmos_machinery(atmos_machines)
 
-	admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
+	admin_notice(SPAN_DANGER("Rebuilding powernets due to submap creation."), R_DEBUG)
 	SSmachines.setup_powernets_for_cables(cables)
 
 	// Ensure all machines in loaded areas get notified of power status
@@ -93,7 +93,7 @@
 	SSshuttle.block_init_queue = prev_shuttle_queue_state
 	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
 
-	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
+	admin_notice(SPAN_DANGER("Submap initializations finished."), R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
 	var/x = 1

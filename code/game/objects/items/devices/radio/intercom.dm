@@ -144,7 +144,7 @@
 			icon_state = "intercom"
 		return
 	if(wiresexposed && W.is_wirecutter())
-		user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
+		user.visible_message(SPAN_WARNING("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 		playsound(src, W.tool_sound, 50, 1)
 		new/obj/item/stack/cable_coil(get_turf(src), 5)
 		var/obj/structure/frame/A = new /obj/structure/frame(src.loc)

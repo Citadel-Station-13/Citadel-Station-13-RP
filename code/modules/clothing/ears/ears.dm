@@ -30,11 +30,11 @@
 	if(headphones_on)
 		icon_state = "[base_icon]_off"
 		headphones_on = 0
-		to_chat(usr, "<span class='notice'>You turn the music off.</span>")
+		to_chat(usr, SPAN_NOTICE("You turn the music off."))
 	else
 		icon_state = "[base_icon]_on"
 		headphones_on = 1
-		to_chat(usr, "<span class='notice'>You turn the music on.</span>")
+		to_chat(usr, SPAN_NOTICE("You turn the music on."))
 
 	update_worn_icon()
 

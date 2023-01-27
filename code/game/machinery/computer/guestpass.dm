@@ -21,34 +21,34 @@
 /obj/item/card/id/guest/examine(mob/user)
 	. = ..()
 	if (world.time < expiration_time)
-		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
+		. += SPAN_NOTICE("This pass expires at [worldtime2stationtime(expiration_time)].")
 	else
-		. += "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>"
+		. += SPAN_WARNING("It expired at [worldtime2stationtime(expiration_time)].")
 
 /obj/item/card/id/guest/read()
 	if(!Adjacent(usr))
 		return //Too far to read
 	if (world.time > expiration_time)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, SPAN_NOTICE("This pass expired at [worldtime2stationtime(expiration_time)]."))
 	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, SPAN_NOTICE("This pass expires at [worldtime2stationtime(expiration_time)]."))
 
-	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
+	to_chat(usr, SPAN_NOTICE("It grants access to following areas:"))
 	for (var/A in temp_access)
-		to_chat(usr, "<span class='notice'>[get_access_desc(A)].</span>")
-	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
+		to_chat(usr, SPAN_NOTICE("[get_access_desc(A)]."))
+	to_chat(usr, SPAN_NOTICE("Issuing reason: [reason]."))
 	return
 
 /obj/item/card/id/guest/attack_self(mob/living/user as mob)
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "guest_invalid")
-			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
+			to_chat(user, SPAN_WARNING("This guest pass is already deactivated!"))
 			return
 
 		var/confirm = alert("Do you really want to deactivate this guest pass? (you can't reactivate it)", "Confirm Deactivation", "Yes", "No")
 		if(confirm == "Yes")
 			//rip guest pass </3
-			user.visible_message("<span class='notice'>\The [user] deactivates \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] deactivates \the [src]."))
 			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
@@ -65,7 +65,7 @@
 
 /obj/item/card/id/guest/process(delta_time)
 	if(expired == 0 && world.time >= expiration_time)
-		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
+		visible_message(SPAN_WARNING("\The [src] flashes a few times before turning red."))
 		icon_state = "guest_invalid"
 		expired = 1
 		world.time = expiration_time
@@ -106,7 +106,7 @@
 			giver = I
 			SSnanoui.update_uis(src)
 		else if(giver)
-			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
+			to_chat(user, SPAN_WARNING("There is already ID card inside."))
 		return
 	..()
 
@@ -180,7 +180,7 @@
 					if (dur > 0 && dur <= 120)
 						duration = dur
 					else
-						to_chat(usr, "<span class='warning'>Invalid duration.</span>")
+						to_chat(usr, SPAN_WARNING("Invalid duration."))
 			if ("access")
 				var/A = text2num(href_list["access"])
 				if (A in accesses)
@@ -189,7 +189,7 @@
 					if(A in giver.access)	//Let's make sure the ID card actually has the access.
 						accesses.Add(A)
 					else
-						to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
+						to_chat(usr, SPAN_WARNING("Invalid selection, please consult technical support if there are any issues."))
 						log_debug(SPAN_DEBUG("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option."))
 	if (href_list["action"])
 		switch(href_list["action"])
@@ -240,7 +240,7 @@
 					pass.reason = reason
 					pass.name = "guest pass #[number]"
 				else
-					to_chat(usr, "<span class='warning'>Cannot issue pass without issuing ID.</span>")
+					to_chat(usr, SPAN_WARNING("Cannot issue pass without issuing ID."))
 
 	src.add_fingerprint(usr)
 	SSnanoui.update_uis(src)

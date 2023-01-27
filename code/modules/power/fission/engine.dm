@@ -204,22 +204,22 @@
 		return ..()
 
 	if(repairing)
-		to_chat(user, "<span class='warning'>\The [src] is being repaired!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is being repaired!"))
 		return
 
 	if(istype(W, /obj/item/multitool))
-		to_chat(user, "<span class='notice'>You connect \the [src] to \the [W].</span>")
+		to_chat(user, SPAN_NOTICE("You connect \the [src] to \the [W]."))
 		var/obj/item/multitool/M = W
 		M.connectable = src
 		return
 
 	if(istype(W, /obj/item/fuelrod))
 		if(rods.len >= rod_capacity)
-			to_chat(user, "<span class='notice'>Looks like \the [src] is full.</span>")
+			to_chat(user, SPAN_NOTICE("Looks like \the [src] is full."))
 		else
 			var/obj/item/fuelrod/rod = W
 			if(rod.is_melted())
-				to_chat(user, "<span class='notice'>That's probably a bad idea.</span>")
+				to_chat(user, SPAN_NOTICE("That's probably a bad idea."))
 				return
 			user.visible_message("[user.name] carefully starts to load \the [W] into to \the [src].", \
 				"You carefully start loading \the [W] into to \the [src].", \
@@ -233,16 +233,16 @@
 
 	if(W.is_wirecutter()) // Wirecutters? Sort of like prongs, for removing a rod. Good luck getting a 20kg fuel rod out with wirecutters though.
 		if(rods.len == 0)
-			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
+			to_chat(user, SPAN_NOTICE("There's nothing left to remove."))
 			return
 		for(var/obj/item/fuelrod/rod in rods)
 			if(rod.health == 0 || rod.life == 0)
-				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You carefully start removing \the [rod] from \the [src]."))
 				if(do_after(user, 40))
 					eject_rod(rod)
 				return
 		var/obj/item/fuelrod/rod = rods[rods.len]
-		to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You carefully start removing \the [rod] from \the [src]."))
 		if(do_after(user, 40))
 			eject_rod(rod)
 		return
@@ -250,12 +250,12 @@
 	if(istype(W, /obj/item/weldingtool) && health < max_health)
 		var/obj/item/weldingtool/WT = W
 		if(!WT.remove_fuel(0, user))
-			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
+			to_chat(user, SPAN_WARNING("\The [WT] must be on to complete this task."))
 			return
 		repairing = 1
 		playsound(src.loc, WT.tool_sound, 50, 1)
-		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
-			"<span class='notice'>You start repairing \the [src].</span>")
+		user.visible_message(SPAN_WARNING("\The [user.name] begins repairing \the [src]."), \
+			SPAN_NOTICE("You start repairing \the [src]."))
 		if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
@@ -265,7 +265,7 @@
 		return ..()
 
 	if(anchored && rods.len > 0)
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench \the [src], while it contains fuel rods."))
 		return 1
 
 	playsound(src, W.tool_sound, 75, 1)

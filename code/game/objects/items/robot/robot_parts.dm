@@ -102,10 +102,10 @@
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
 			new /obj/item/secbot_assembly/ed209_assembly(get_turf(src))
-			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
+			to_chat(user, SPAN_NOTICE("You armed the robot frame."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")
+			to_chat(user, SPAN_WARNING("You need one sheet of metal to arm the robot frame."))
 	if(istype(W, /obj/item/robot_parts/l_leg))
 		if(l_leg)
 			return
@@ -147,9 +147,9 @@
 			chest = W
 			updateicon()
 		else if(!W:wires)
-			to_chat(user, "<span class='warning'>You need to attach wires to it first!</span>")
+			to_chat(user, SPAN_WARNING("You need to attach wires to it first!"))
 		else
-			to_chat(user, "<span class='warning'>You need to attach a cell to it first!</span>")
+			to_chat(user, SPAN_WARNING("You need to attach a cell to it first!"))
 
 	if(istype(W, /obj/item/robot_parts/head))
 		if(head)
@@ -160,17 +160,17 @@
 			head = W
 			updateicon()
 		else
-			to_chat(user, "<span class='warning'>You need to attach a flash to it first!</span>")
+			to_chat(user, SPAN_WARNING("You need to attach a flash to it first!"))
 
 	if(istype(W, /obj/item/mmi))
 		var/obj/item/mmi/M = W
 		if(check_completion())
 			if(!istype(loc,/turf))
-				to_chat(user, "<span class='warning'>You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
+				to_chat(user, SPAN_WARNING("You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise."))
 				return
 			if(!istype(W, /obj/item/mmi/inert))
 				if(!M.brainmob)
-					to_chat(user, "<span class='warning'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
+					to_chat(user, SPAN_WARNING("Sticking an empty [W] into the frame would sort of defeat the purpose."))
 					return
 				if(!M.brainmob.key)
 					var/ghost_can_reenter = 0
@@ -178,18 +178,18 @@
 						for(var/mob/observer/dead/G in GLOB.player_list)
 							if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
 								ghost_can_reenter = 1 //May come in use again at another point.
-								to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; though it may be able to auto-resuscitate.</span>") //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
+								to_chat(user, SPAN_NOTICE("\The [W] is completely unresponsive; though it may be able to auto-resuscitate.")) //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
 								return
 					if(!ghost_can_reenter)
-						to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
+						to_chat(user, SPAN_NOTICE("\The [W] is completely unresponsive; there's no point."))
 						return
 
 				if(M.brainmob.stat == DEAD)
-					to_chat(user, "<span class='warning'>Sticking a dead [W] into the frame would sort of defeat the purpose.</span>")
+					to_chat(user, SPAN_WARNING("Sticking a dead [W] into the frame would sort of defeat the purpose."))
 					return
 
 				if(jobban_isbanned(M.brainmob, "Cyborg"))
-					to_chat(user, "<span class='warning'>This [W] does not seem to fit.</span>")
+					to_chat(user, SPAN_WARNING("This [W] does not seem to fit."))
 					return
 			if(!user.temporarily_remove_from_inventory(W))
 				return
@@ -226,7 +226,7 @@
 
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")
+			to_chat(user, SPAN_WARNING("The MMI must go in after everything else!"))
 
 	if (istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", src.name, src.created_name), MAX_NAME_LEN)
@@ -243,22 +243,22 @@
 	..()
 	if(istype(W, /obj/item/cell))
 		if(cell)
-			to_chat(user, "<span class='warning'>You have already inserted a cell!</span>")
+			to_chat(user, SPAN_WARNING("You have already inserted a cell!"))
 			return
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			cell = W
-			to_chat(user, "<span class='notice'>You insert the cell!</span>")
+			to_chat(user, SPAN_NOTICE("You insert the cell!"))
 	if(istype(W, /obj/item/stack/cable_coil))
 		if(wires)
-			to_chat(user, "<span class='warning'>You have already inserted wire!</span>")
+			to_chat(user, SPAN_WARNING("You have already inserted wire!"))
 			return
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
 			wires = 1.0
-			to_chat(user, "<span class='notice'>You insert the wire!</span>")
+			to_chat(user, SPAN_NOTICE("You insert the wire!"))
 	return
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
@@ -267,7 +267,7 @@
 		if(istype(user,/mob/living/silicon/robot))
 			var/current_module = user.get_active_held_item()
 			if(current_module == W)
-				to_chat(user, "<span class='warning'>How do you propose to do that?</span>")
+				to_chat(user, SPAN_WARNING("How do you propose to do that?"))
 				return
 			else
 				add_flashes(W,user)
@@ -277,24 +277,24 @@
 
 /obj/item/robot_parts/head/proc/add_flashes(obj/item/W as obj, mob/user as mob) //Made into a seperate proc to avoid copypasta
 	if(flash1 && flash2)
-		to_chat(user, "<span class='notice'>You have already inserted the eyes!</span>")
+		to_chat(user, SPAN_NOTICE("You have already inserted the eyes!"))
 		return
 	else if(src.flash1)
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		flash2 = W
-		to_chat(user, "<span class='notice'>You insert the flash into the eye socket!</span>")
+		to_chat(user, SPAN_NOTICE("You insert the flash into the eye socket!"))
 	else
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		flash1 = W
-		to_chat(user, "<span class='notice'>You insert the flash into the eye socket!</span>")
+		to_chat(user, SPAN_NOTICE("You insert the flash into the eye socket!"))
 
 
 /obj/item/robot_parts/emag_act(var/remaining_charges, var/mob/user)
 	if(sabotaged)
-		to_chat(user, "<span class='warning'>[src] is already sabotaged!</span>")
+		to_chat(user, SPAN_WARNING("[src] is already sabotaged!"))
 	else
-		to_chat(user, "<span class='warning'>You short out the safeties.</span>")
+		to_chat(user, SPAN_WARNING("You short out the safeties."))
 		sabotaged = 1
 		return 1

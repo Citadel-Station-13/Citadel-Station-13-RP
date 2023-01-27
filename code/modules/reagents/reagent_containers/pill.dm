@@ -36,12 +36,12 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			var/obj/item/blocked = H.check_mouth_coverage()
 			if(blocked)
-				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+				to_chat(user, SPAN_WARNING("\The [blocked] is in the way!"))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_void_item_for_installation(src))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 
-			to_chat(target, "<span class='notice'>You swallow \the [src].</span>")
+			to_chat(target, SPAN_NOTICE("You swallow \the [src]."))
 			if(reagents.total_volume)
 				reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
 			qdel(src)
@@ -55,17 +55,17 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
-			to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+			to_chat(user, SPAN_WARNING("\The [blocked] is in the way!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
-		user.visible_message("<span class='warning'>[user] attempts to force [target] to swallow \the [src].</span>")
+		user.visible_message(SPAN_WARNING("[user] attempts to force [target] to swallow \the [src]."))
 
 		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, target))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_void_item_for_installation(src))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_message("<span class='warning'>[user] forces [target] to swallow \the [src].</span>")
+		user.visible_message(SPAN_WARNING("[user] forces [target] to swallow \the [src]."))
 		var/contained = reagentlist()
 		add_attack_logs(user,target,"Fed a pill containing [contained]")
 		if(reagents && reagents.total_volume)
@@ -78,15 +78,15 @@
 
 	if(target.is_open_container() && target.reagents)
 		if(!target.reagents.total_volume)
-			to_chat(user, "<span class='notice'>[target] is empty. Can't dissolve \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("[target] is empty. Can't dissolve \the [src]."))
 			return
-		to_chat(user, "<span class='notice'>You dissolve \the [src] in [target].</span>")
+		to_chat(user, SPAN_NOTICE("You dissolve \the [src] in [target]."))
 
 		add_attack_logs(user,null,"Spiked [target.name] with a pill containing [reagentlist()]")
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
-			O.show_message("<span class='warning'>[user] puts something in \the [target].</span>", 1)
+			O.show_message(SPAN_WARNING("[user] puts something in \the [target]."), 1)
 
 		qdel(src)
 

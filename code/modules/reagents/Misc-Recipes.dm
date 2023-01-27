@@ -458,7 +458,7 @@
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
-		to_chat(M, "<span class='warning'>The solution spews out foam!</span>")
+		to_chat(M, SPAN_WARNING("The solution spews out foam!"))
 
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, 0)
@@ -478,7 +478,7 @@
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
-		to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+		to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
 
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, 1)
@@ -496,7 +496,7 @@
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
-		to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+		to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
 
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, 2)
@@ -794,11 +794,11 @@
 	var/fail_chance = rand(1,1000)
 	if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
+			O.show_message(text(SPAN_WARNING("The solution begins to vibrate violently!")), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
 		sleep(30)
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
+			O.show_message(text(SPAN_WARNING("The reaction begins to rapidly sizzle and swell outwards!")), 1)
 		sleep(20)
 		explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
 		empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
@@ -807,7 +807,7 @@
 	if(fail_chance < 101) // 10% chance of it not working at all.
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
+			O.show_message(text(SPAN_WARNING("The slime core fizzles disappointingly.")), 1)
 		return
 
 	var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
@@ -886,7 +886,7 @@
 
 /datum/chemical_reaction/slimefire/on_reaction(datum/reagents/holder)
 	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-		O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
+		O.show_message(text(SPAN_WARNING("The slime extract begins to vibrate violently!")), 1)
 	sleep(50)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))
@@ -940,16 +940,16 @@
 			if(H.hasnutriment()) // make sure it actually has the conditions to revive
 				if(H.revive_ready >= 1) // if it's not reviving, start doing so
 					H.revive_ready = REVIVING_READY // overrides the normal cooldown
-					H.visible_message("<span class='info'>[H] shudders briefly, then relaxes, faint movements stirring within.</span>")
+					H.visible_message(SPAN_INFO("[H] shudders briefly, then relaxes, faint movements stirring within."))
 					H.chimera_regenerate()
 				else if (/mob/living/carbon/human/proc/hatch in H.verbs)// already reviving, check if they're ready to hatch
 					H.chimera_hatch()
-					H.visible_message("<span class='danger'><p><font size=4>[H] violently convulses and then bursts open, revealing a new, intact copy in the pool of viscera.</font></p></span>") // Hope you were wearing waterproofs, doc...
+					H.visible_message(SPAN_DANGER("<p><font size=4>[H] violently convulses and then bursts open, revealing a new, intact copy in the pool of viscera.</font></p>")) // Hope you were wearing waterproofs, doc...
 					H.adjustBrainLoss(10) // they're reviving from dead, so take 10 brainloss
 				else //they're already reviving but haven't hatched. Give a little message to tell them to wait.
-					H.visible_message("<span class='info'>[H] stirs faintly, but doesn't appear to be ready to wake up yet.</span>")
+					H.visible_message(SPAN_INFO("[H] stirs faintly, but doesn't appear to be ready to wake up yet."))
 			else
-				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
+				H.visible_message(SPAN_INFO("[H] twitches for a moment, but remains still.")) // no nutriment
 
 
 /datum/chemical_reaction/sizeoxadone

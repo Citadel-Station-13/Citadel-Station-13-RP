@@ -11,14 +11,14 @@
 		return
 
 	if(chambered)
-		to_chat(user, "<span class='warning'>You need to empty the rifle to break it down.</span>")
+		to_chat(user, SPAN_WARNING("You need to empty the rifle to break it down."))
 	else
 		collapse_rifle(user)
 
 /obj/item/gun/ballistic/heavysniper/proc/collapse_rifle(mob/user)
-	to_chat(user, "<span class='warning'>You begin removing \the [src]'s barrel.</span>")
+	to_chat(user, SPAN_WARNING("You begin removing \the [src]'s barrel."))
 	if(do_after(user, 40))
-		to_chat(user, "<span class='warning'>You remove \the [src]'s barrel.</span>")
+		to_chat(user, SPAN_WARNING("You remove \the [src]'s barrel."))
 		qdel(src)
 		var/obj/item/barrel = new /obj/item/sniper_rifle_part/barrel(user)
 		var/obj/item/sniper_rifle_part/assembly = new /obj/item/sniper_rifle_part/trigger_group(user)
@@ -70,14 +70,14 @@
 
 /obj/item/sniper_rifle_part/attack_self(mob/user as mob)
 	if(part_count == 1)
-		to_chat(user, "<span class='warning'>You can't disassemble this further!</span>")
+		to_chat(user, SPAN_WARNING("You can't disassemble this further!"))
 		return
 
-	to_chat(user, "<span class='notice'>You start disassembling \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You start disassembling \the [src]."))
 	if(!do_after(user, 40))
 		return
 
-	to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You disassemble \the [src]."))
 	for(var/obj/item/sniper_rifle_part/P in list(barrel, stock, trigger_group))
 		if(P.barrel != P)
 			P.barrel = null
@@ -93,13 +93,13 @@
 
 /obj/item/sniper_rifle_part/attackby(var/obj/item/sniper_rifle_part/A as obj, mob/user as mob)
 
-	to_chat(user, "<span class='notice'>You begin adding \the [A] to \the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You begin adding \the [A] to \the [src]."))
 	if(!do_after(user, 30))
 		return
 
 	if(istype(A, /obj/item/sniper_rifle_part/trigger_group))
 		if(A.part_count > 1 && src.part_count > 1)
-			to_chat(user, "<span class='warning'>Disassemble one of these parts first!</span>")
+			to_chat(user, SPAN_WARNING("Disassemble one of these parts first!"))
 			return
 
 		if(!trigger_group)
@@ -107,7 +107,7 @@
 				return
 			trigger_group = A
 		else
-			to_chat(user, "<span class='warning'>There's already a trigger group!</span>")
+			to_chat(user, SPAN_WARNING("There's already a trigger group!"))
 			return
 
 	else if(istype(A, /obj/item/sniper_rifle_part/barrel))
@@ -116,7 +116,7 @@
 				return
 			barrel = A
 		else
-			to_chat(user, "<span class='warning'>There's already a barrel!</span>")
+			to_chat(user, SPAN_WARNING("There's already a barrel!"))
 			return
 
 	else if(istype(A, /obj/item/sniper_rifle_part/stock))
@@ -125,11 +125,11 @@
 				return
 			stock = A
 		else
-			to_chat(user, "<span class='warning'>There's already a stock!</span>")
+			to_chat(user, SPAN_WARNING("There's already a stock!"))
 			return
 
 	A.forceMove(src)
-	to_chat(user, "<span class='notice'>You install \the [A].</span>")
+	to_chat(user, SPAN_NOTICE("You install \the [A]."))
 
 	if(A.barrel && !src.barrel)
 		src.barrel = A.barrel

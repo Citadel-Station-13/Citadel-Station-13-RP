@@ -21,11 +21,11 @@
 		if(!AM.loc) //Don't teleport HUD telements to us.
 			return
 		if(AM.anchored)
-			to_chat(user, "<span class='warning'>\The [hit_atom] is firmly secured and anchored, you can't move it!</span>")
+			to_chat(user, SPAN_WARNING("\The [hit_atom] is firmly secured and anchored, you can't move it!"))
 			return
 
 		if(!within_range(hit_atom) && !check_for_scepter())
-			to_chat(user, "<span class='warning'>\The [hit_atom] is too far away.</span>")
+			to_chat(user, SPAN_WARNING("\The [hit_atom] is too far away."))
 			return
 
 		//Teleporting an item.
@@ -38,17 +38,17 @@
 			s2.set_up(2, 1, I)
 			s1.start()
 			s2.start()
-			I.visible_message("<span class='danger'>\The [I] vanishes into thin air!</span>")
+			I.visible_message(SPAN_DANGER("\The [I] vanishes into thin air!"))
 			I.forceMove(get_turf(user))
 			user.transfer_item_to_nullspace(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			user.put_in_hands(I)
-			user.visible_message("<span class='notice'>\A [I] appears in \the [user]'s hand!</span>")
+			user.visible_message(SPAN_NOTICE("\A [I] appears in \the [user]'s hand!"))
 			log_and_message_admins("has stolen [I] with [src].")
 			qdel(src)
 		//Now let's try to teleport a living mob.
 		else if(istype(hit_atom, /mob/living))
 			var/mob/living/L = hit_atom
-			to_chat(L, "<span class='danger'>You are teleported towards \the [user].</span>")
+			to_chat(L, SPAN_DANGER("You are teleported towards \the [user]."))
 			var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
 			var/datum/effect_system/spark_spread/s2 = new /datum/effect_system/spark_spread
 			s1.set_up(2, 1, user)
@@ -60,12 +60,12 @@
 
 			spawn(1 SECOND)
 				if(!user.Adjacent(L))
-					to_chat(user, "<span class='warning'>\The [L] is out of your reach.</span>")
+					to_chat(user, SPAN_WARNING("\The [L] is out of your reach."))
 					qdel(src)
 					return
 
 				L.Weaken(3)
-				user.visible_message("<span class='warning'><b>\The [user]</b> seizes [L]!</span>")
+				user.visible_message(SPAN_WARNING("<b>\The [user]</b> seizes [L]!"))
 
 				var/obj/item/grab/G = new(user,L)
 

@@ -1,27 +1,27 @@
 /obj/proc/analyze_gases(var/atom/A, var/mob/user)
 	if(src != A)
-		user.visible_message("<span class='notice'>\The [user] has used \an [src] on \the [A]</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] has used \an [src] on \the [A]"))
 
 	A.add_fingerprint(user)
 	var/list/result = A.atmosanalyze(user)
 	if(result && result.len)
-		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
+		to_chat(user, SPAN_NOTICE("Results of the analysis[src == A ? "" : " of \the [A]"]"))
 		for(var/line in result)
-			to_chat(user, "<span class='notice'>[line]</span>")
+			to_chat(user, SPAN_NOTICE("[line]"))
 		return 1
 
-	to_chat(user, "<span class='warning'>Your [src] flashes a red light as it fails to analyze \the [A].</span>")
+	to_chat(user, SPAN_WARNING("Your [src] flashes a red light as it fails to analyze \the [A]."))
 	return 0
 
 /obj/proc/analyze_gases_ghost(var/atom/A, var/mob/user)
 	var/list/result = A.atmosanalyze(user)
 	if(result && result.len)
-		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
+		to_chat(user, SPAN_NOTICE("Results of the analysis[src == A ? "" : " of \the [A]"]"))
 		for(var/line in result)
-			to_chat(user, "<span class='notice'>[line]</span>")
+			to_chat(user, SPAN_NOTICE("[line]"))
 		return 1
 
-	to_chat(user, "<span class='warning'>That [A] does not contain atmosphere.</span>")
+	to_chat(user, SPAN_WARNING("That [A] does not contain atmosphere."))
 	return 0
 
 /proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, var/mob/user)
@@ -30,13 +30,13 @@
 	if (mixture && mixture.total_moles > 0)
 		var/pressure = mixture.return_pressure()
 		var/total_moles = mixture.total_moles
-		results += "<span class='notice'>Pressure: [QUANTIZE(pressure)] kPa</span>"
+		results += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)] kPa")
 		for(var/mix in mixture.gas)
-			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%</span>"
-		results += "<span class='notice'>Temperature: [QUANTIZE(mixture.temperature-T0C)]&deg;C</span>"
-		results += "<span class='notice'>Total Moles: [QUANTIZE(total_moles)]</span>"
+			results += SPAN_NOTICE("[GLOB.meta_gas_names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%")
+		results += SPAN_NOTICE("Temperature: [QUANTIZE(mixture.temperature-T0C)]&deg;C")
+		results += SPAN_NOTICE("Total Moles: [QUANTIZE(total_moles)]")
 	else
-		results += "<span class='notice'>\The [target] is empty!</span>"
+		results += SPAN_NOTICE("\The [target] is empty!")
 
 	return results
 

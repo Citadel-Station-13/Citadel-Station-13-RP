@@ -27,7 +27,7 @@
 		if(!istype(L))
 			return
 		if(L.can_feel_pain())
-			to_chat(L, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
+			to_chat(L, SPAN_DANGER("You feel a stabbing sensation in your hands as you slide \the [src] on!"))
 			L.custom_pain("You feel a sharp pain in your hands!",1)
 
 /obj/item/clothing/gloves/regen/unequipped(mob/user, slot, flags)
@@ -37,7 +37,7 @@
 		if(!istype(L))
 			return
 		if(L.can_feel_pain())
-			to_chat(user, "<span class='danger'>You feel the hypodermic needles as you slide \the [src] off!</span>")
+			to_chat(user, SPAN_DANGER("You feel the hypodermic needles as you slide \the [src] off!"))
 			L.custom_pain("Your hands hurt like hell!",1)
 
 /obj/item/clothing/gloves/regen/Initialize(mapload)

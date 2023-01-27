@@ -125,10 +125,10 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	if(istype(P, /obj/item/material/fishing_rod) && !being_fished)
 		var/obj/item/material/fishing_rod/R = P
 		if(!R.strung)
-			to_chat(user, "<span class='notice'>It is hard to go fishing without any line!</span>")
+			to_chat(user, SPAN_NOTICE("It is hard to go fishing without any line!"))
 			return
 		if(R.cast)
-			to_chat(user, "<span class='notice'>You can only cast one line at a time!</span>")
+			to_chat(user, SPAN_NOTICE("You can only cast one line at a time!"))
 			return
 		playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
 		to_chat(user,"You cast \the [P.name] into \the [src].")
@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		var/fishing_time = rand(min_fishing_time SECONDS,max_fishing_time SECONDS) * R.tool_speed
 		if(do_after(user,fishing_time,user))
 			playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
-			to_chat(user,"<span class='notice'>You feel a tug and begin pulling!</span>")
+			to_chat(user,SPAN_NOTICE("You feel a tug and begin pulling!"))
 			if(world.time >= last_fished + fishing_cooldown)
 				pick_fish()
 				last_fished = world.time
@@ -156,10 +156,10 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 					if(prob(rand(L.mob_size) + 10) && R.line_break)
 						R.strung = FALSE
 						R.update_icon()
-						user.visible_message("<span class='danger'>\The [R]'s string snaps!</span>")
+						user.visible_message(SPAN_DANGER("\The [R]'s string snaps!"))
 					if(prob(33))	// Dead on hook. Good for food, not so much for live catch.
 						L.death()
-				to_chat(user,"<span class='notice'>You fish out \the [fished] from the water with [P.name]!</span>")
+				to_chat(user,SPAN_NOTICE("You fish out \the [fished] from the water with [P.name]!"))
 		R.cast = FALSE
 		being_fished = FALSE
 	else ..()

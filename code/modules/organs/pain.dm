@@ -14,7 +14,7 @@
 /mob/living/carbon/custom_pain(message, power, force)
 	if(!message || stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)
 		return 0
-	message = "<span class='danger'>[message]</span>"
+	message = SPAN_DANGER("[message]")
 	if(power >= 50)
 		message = "<font size=3>[message]</font>"
 
@@ -88,7 +88,7 @@
 /obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
 	return
 	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
-		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
+		owner.visible_message(SPAN_WARNING("[owner] reels in pain!"))
 		if(has_genitals() || get_pain() + agony_amount > max_damage)
 			owner.Weaken(6)
 		else

@@ -121,8 +121,8 @@
 		if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
-	chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
-	occupant_message("<span class='danger'>You start to drill [target]</span>")
+	chassis.visible_message(SPAN_DANGER("[chassis] starts to drill [target]"), SPAN_WARNING("You hear the drill."))
+	occupant_message(SPAN_DANGER("You start to drill [target]"))
 	var/T = chassis.loc
 	var/C = target.loc	//why are these backwards? we may never know -Pete
 	if(do_after_cooldown(target))
@@ -130,7 +130,7 @@
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
 				if(W.reinf_material)
-					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
+					occupant_message(SPAN_WARNING("[target] is too durable to drill through."))
 				else
 					log_message("Drilled through [target]")
 					LEGACY_EX_ACT(target, 2, null)
@@ -144,7 +144,7 @@
 					for(var/obj/item/ore/ore in range(chassis,1))
 						if(get_dir(chassis,ore)&chassis.dir)
 							if (ore_box.contents.len >= ore_box.orecapacity)
-								occupant_message("<span class='warning'>The ore compartment is full.</span>")
+								occupant_message(SPAN_WARNING("The ore compartment is full."))
 								return 1
 							else
 								ore.forceMove(ore_box)
@@ -171,8 +171,8 @@
 		return
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
-	chassis.visible_message("<span class='info'>[chassis] sweeps around with its ore scoop.</span>")
-	occupant_message("<span class='info'>You sweep around the area with the scoop.</span>")
+	chassis.visible_message(SPAN_INFO("[chassis] sweeps around with its ore scoop."))
+	occupant_message(SPAN_INFO("You sweep around the area with the scoop."))
 	var/T = chassis.loc
 	//var/C = target.loc	//why are these backwards? we may never know -Pete
 	if(do_after_cooldown(target))
@@ -180,7 +180,7 @@
 			for(var/obj/item/ore/ore in range(chassis,1))
 				if(get_dir(chassis,ore)&chassis.dir)
 					if (contents.len >= orecapacity)
-						occupant_message("<span class='warning'>The ore compartment is full.</span>")
+						occupant_message(SPAN_WARNING("The ore compartment is full."))
 						return 1
 					else
 						ore.forceMove(src)
@@ -206,7 +206,7 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human)) //Only living, intelligent creatures with hands can empty ore boxes.
-		to_chat(usr, "<span class='warning'>You are physically incapable of emptying the ore box.</span>")
+		to_chat(usr, SPAN_WARNING("You are physically incapable of emptying the ore box."))
 		return
 
 	if( usr.stat || usr.restrained() )
@@ -219,12 +219,12 @@
 	add_fingerprint(usr)
 
 	if(contents.len < 1)
-		to_chat(usr, "<span class='warning'>The ore box is empty</span>")
+		to_chat(usr, SPAN_WARNING("The ore box is empty"))
 		return
 
 	for (var/obj/item/ore/O in contents)
 		contents -= O
 		O.loc = src.loc
-	to_chat(usr, "<span class='info'>You empty the ore box</span>")
+	to_chat(usr, SPAN_INFO("You empty the ore box"))
 
 	return

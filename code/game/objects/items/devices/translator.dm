@@ -107,13 +107,13 @@
 		listening_objects |= src
 		if(mult_icons)
 			icon_state = "[initial(icon_state)]1"
-		to_chat(user, "<span class='notice'>You enable \the [src], translating into [langset.name].</span>")
+		to_chat(user, SPAN_NOTICE("You enable \the [src], translating into [langset.name]."))
 	else	//Turning OFF
 		listening = 0
 		listening_objects -= src
 		langset = null
 		icon_state = "[initial(icon_state)]"
-		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You disable \the [src]."))
 
 /obj/item/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/language/language)
 	if(!listening || !istype(speaker))

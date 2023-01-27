@@ -72,14 +72,14 @@
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "glass")
 		var/obj/item/stack/G = W
 		if(uses >= max_uses)
-			to_chat(user, "<span class='warning'>[src.name] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src.name] is full."))
 			return
 		else if(G.use(1))
 			add_uses(16) //Autolathe converts 1 sheet into 16 lights.
-			to_chat(user, "<span class='notice'>You insert a piece of glass into \the [src.name]. You have [uses] light\s remaining.</span>")
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into \the [src.name]. You have [uses] light\s remaining."))
 			return
 		else
-			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
+			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
 
 	if(istype(W, /obj/item/light))
 		var/obj/item/light/L = W
@@ -92,12 +92,12 @@
 				return
 		else if(L.status == 2)
 			if(uses >= max_uses)
-				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
+				to_chat(user, SPAN_WARNING("[src.name] is full."))
 				return
 			if(!user.attempt_consume_item_for_construction(W))
 				return
 			AddShards(1, user)
-			to_chat(user, "<span class='notice'>You insert a shard of glass into the [src.name]. You have [uses] light\s remaining.</span>")
+			to_chat(user, SPAN_NOTICE("You insert a shard of glass into the [src.name]. You have [uses] light\s remaining."))
 			return
 /*		else
 			to_chat(user, "You need a working light.")
@@ -126,11 +126,11 @@
 					qdel(L)
 
 		if(!found_lightbulbs)
-			to_chat(user, "<span class='warning'>\The [S] contains no bulbs.</span>")
+			to_chat(user, SPAN_WARNING("\The [S] contains no bulbs."))
 			return
 
 		if(!replaced_something && src.uses == max_uses)
-			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is full!"))
 			return
 
 
@@ -152,7 +152,7 @@
 		uses += 1
 	bulb_shards = bulb_shards % shards_required
 	if(new_bulbs != 0)
-		to_chat(user, "<span class='notice'>\The [src] has fabricated a new bulb from the broken glass it has stored. It now has [uses] uses.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] has fabricated a new bulb from the broken glass it has stored. It now has [uses] uses."))
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 	return new_bulbs
 
@@ -183,7 +183,7 @@
 	else if(!CanUse(U))
 		to_chat(U, failmsg)
 	else if(Use(U))
-		to_chat(U, "<span class='notice'>You replace the [target.get_fitting_name()] with the [src].</span>")
+		to_chat(U, SPAN_NOTICE("You replace the [target.get_fitting_name()] with the [src]."))
 
 		if(target.status != LIGHT_EMPTY)
 			AddShards(1, U)

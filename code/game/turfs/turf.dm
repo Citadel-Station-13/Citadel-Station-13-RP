@@ -288,7 +288,7 @@
 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
 	if(!success)	// Nothing got hit.
-		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
+		user.visible_message(SPAN_WARNING("\The [user] swipes \the [W] over \the [src]."))
 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	return success
 
@@ -382,7 +382,7 @@
 			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/debris/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
-		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
+		to_chat(user, SPAN_WARNING("\The [source] is too dry to wash that."))
 	source.reagents.trans_to_turf(src, 1, 10)	// 10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/update_blood_overlays()

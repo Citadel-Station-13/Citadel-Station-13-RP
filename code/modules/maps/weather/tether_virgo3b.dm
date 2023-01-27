@@ -309,13 +309,13 @@
 				var/obj/item/melee/umbrella/U = L.get_active_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
+						to_chat(L, SPAN_NOTICE("Rain patters softly onto your umbrella."))
 					continue
 			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
+						to_chat(L, SPAN_NOTICE("Rain patters softly onto your umbrella."))
 					continue
 
 			L.water_act(1)
@@ -364,19 +364,19 @@
 				if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_active_held_item()
 					if(U.open)
-						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
+						to_chat(L, SPAN_DANGER("You struggle to keep hold of your umbrella!"))
 						L.Stun(20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
 				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 					if(U.open)
 						if(L.drop_item_to_ground(U))
-							to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
+							to_chat(L, SPAN_DANGER("A gust of wind yanks the umbrella from your hand!"))
 							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 							U.toggle_umbrella()
 							U.throw_at_old(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 						else
-							to_chat(L, "<span class='notice'>A gust of wind nearly yanks the umbrella from your hand.</span>")
+							to_chat(L, SPAN_NOTICE("A gust of wind nearly yanks the umbrella from your hand."))
 							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 
 			// If they have an open umbrella, it'll guard from rain

@@ -34,15 +34,15 @@
 	bolt_open = !bolt_open
 	if(bolt_open)
 		if(chambered)
-			to_chat(user, "<span class='notice'>You work the bolt open, ejecting [chambered]!</span>")
+			to_chat(user, SPAN_NOTICE("You work the bolt open, ejecting [chambered]!"))
 			chambered.loc = get_turf(src)
 			loaded -= chambered
 			chambered = null
 		else
-			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
+			to_chat(user, SPAN_NOTICE("You work the bolt open."))
 		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
+		to_chat(user, SPAN_NOTICE("You work the bolt closed."))
 		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
 		bolt_open = 0
 	add_fingerprint(user)
@@ -50,7 +50,7 @@
 
 /obj/item/gun/ballistic/heavysniper/special_check(mob/user)
 	if(bolt_open)
-		to_chat(user, "<span class='warning'>You can't fire [src] while the bolt is open!</span>")
+		to_chat(user, SPAN_WARNING("You can't fire [src] while the bolt is open!"))
 		return 0
 	return ..()
 

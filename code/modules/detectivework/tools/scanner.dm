@@ -24,20 +24,20 @@
 
 	if(reveal_fingerprints)
 		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot(SLOT_ID_GLOVES)))
-			to_chat(user, "<span class='notice'>No fingerprints found on [target]</span>")
+			to_chat(user, SPAN_NOTICE("No fingerprints found on [target]"))
 			flick("[icon_state]0",src)
 			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
 			P.melee_attack_chain(target, user)
-			to_chat(user,"<span class='notice'>Done printing.</span>")
-	//		to_chat(user, "<span class='notice'>[target]'s Fingerprints: [md5(target.dna.uni_identity)]</span>")
+			to_chat(user,SPAN_NOTICE("Done printing."))
+	//		to_chat(user, SPAN_NOTICE("[target]'s Fingerprints: [md5(target.dna.uni_identity)]"))
 
 	if(reveal_blood && target.blood_DNA && target.blood_DNA.len)
-		to_chat(user,"<span class='notice'>Blood found on [target]. Analysing...</span>")
+		to_chat(user,SPAN_NOTICE("Blood found on [target]. Analysing..."))
 		spawn(15)
 			for(var/blood in target.blood_DNA)
-				to_chat(user,"<span class='notice'>Blood type: [target.blood_DNA[blood]]\nDNA: [blood]</span>")
+				to_chat(user,SPAN_NOTICE("Blood type: [target.blood_DNA[blood]]\nDNA: [blood]"))
 
 /obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
 	if(!proximity) return
@@ -47,7 +47,7 @@
 /*
 	if(istype(A,/obj/machinery/computer/forensic_scanning))
 		user.visible_message("[user] takes a cord out of [src] and hooks its end into [A]" ,\
-		"<span class='notice'>You download data from [src] to [A]</span>")
+		SPAN_NOTICE("You download data from [src] to [A]"))
 		var/obj/machinery/computer/forensic_scanning/F = A
 		F.sync_data(stored)
 		return

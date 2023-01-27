@@ -213,7 +213,7 @@
 	// todo: proper weapon sound ranges/rework
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	// feedback
-	visible_message("<span class='danger'>\The [user] misses [L] with \the [src]!</span>")
+	visible_message(SPAN_DANGER("\The [user] misses [L] with \the [src]!"))
 	return NONE
 
 /**

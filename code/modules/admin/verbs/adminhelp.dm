@@ -197,13 +197,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		MessageNoRecipient(parsed_message)
 
 		//show it to the person adminhelping too
-		to_chat(C, "<span class='adminnotice'>PM to-<b>Admins</b>: [name]</span>")
+		to_chat(C, SPAN_ADMINNOTICE("PM to-<b>Admins</b>: [name]"))
 
 		//send it to irc if nobody is on and tell us how many were on
 		var/admin_number_present = send2irc_adminless_only(initiator_ckey, name)
 		log_admin("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
-			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin irc.</span>")
+			to_chat(C, SPAN_NOTICE("No active admins are online, your adminhelp was sent to the admin irc."))
 	send2adminchat()
 	GLOB.ahelp_tickets.active_tickets += src
 
@@ -260,11 +260,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
 	if(state == AHELP_ACTIVE)
-		to_chat(usr, "<span class='warning'>This ticket is already open.</span>")
+		to_chat(usr, SPAN_WARNING("This ticket is already open."))
 		return
 
 	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
-		to_chat(usr, "<span class='warning'>This user already has an active ticket, cannot reopen this one.</span>")
+		to_chat(usr, SPAN_WARNING("This user already has an active ticket, cannot reopen this one."))
 		return
 
 	statclick = new(null, src)
@@ -284,7 +284,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>")
 	if(initiator)
 		to_chat(initiator, "<font color='purple'>Ticket [TicketHref("#[id]")] was reopened by [key_name(usr,FALSE,FALSE)].</font>")
-	var/msg = "<span class='adminhelp'>Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].</span>"
+	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
 	message_admins(msg)
 	log_admin(msg)
 	feedback_inc("ahelp_reopen")
@@ -495,7 +495,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You cannot send adminhelps (Muted).</span>")
+		to_chat(src, SPAN_DANGER("Error: Admin-PM: You cannot send adminhelps (Muted)."))
 		return
 	if(handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
@@ -514,10 +514,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
 			if(current_ticket)
 				current_ticket.MessageNoRecipient(msg)
-				to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")
+				to_chat(usr, SPAN_ADMINNOTICE("PM to-<b>Admins</b>: [msg]"))
 				return
 			else
-				to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")
+				to_chat(usr, SPAN_WARNING("Ticket not found, creating new one..."))
 		else
 			current_ticket.AddInteraction("[key_name_admin(usr)] opened a new ticket.")
 			current_ticket.Close()

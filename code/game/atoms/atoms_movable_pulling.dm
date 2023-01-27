@@ -48,7 +48,7 @@
 		log_attack("[src] started to pull [M].")
 		//log_combat(src, M, "grabbed", addition="passive grab")
 		if(!suppress_message)
-			visible_message("<span class='warning'>[src] has started to pull [M] passively!</span>")
+			visible_message(SPAN_WARNING("[src] has started to pull [M] passively!"))
 	return TRUE
 
 /**
@@ -122,11 +122,11 @@
 			//pull damage with injured people
 				if(prob(25))
 					M.adjustBruteLoss(1)
-					visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
+					visible_message(SPAN_DANGER("\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!"))
 			if(M.pull_damage())
 				if(prob(25))
 					M.adjustBruteLoss(2)
-					visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
+					visible_message(SPAN_DANGER("\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!"))
 					var/turf/location = M.loc
 					if (istype(location, /turf/simulated))
 						var/bloodtrail = 1	//Checks if it's possible to even spill blood

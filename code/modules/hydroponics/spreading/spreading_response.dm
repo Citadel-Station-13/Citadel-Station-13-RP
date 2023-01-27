@@ -51,7 +51,7 @@
 	if(has_buckled_mobs())
 		return
 	else if(!is_mature())
-		to_chat(victim, "<span class='danger'>You push through the vines and feel some minor numbness in your body!</span>")
+		to_chat(victim, SPAN_DANGER("You push through the vines and feel some minor numbness in your body!"))
 		victim.adjustToxLoss(1)
 		attack_mob(victim,1)
 	else
@@ -59,11 +59,11 @@
 		seed.do_thorns(victim,src)
 		seed.do_sting(victim,pick("r_foot","l_foot","r_leg","l_leg"))
 		if(prob(25))
-			to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
+			to_chat(victim, SPAN_DANGER("You push through the vines and feel some of the thorns rip through your clothing!"))
 			victim.adjustToxLoss(rand(2,2.5))
 			attack_mob(victim,rand(3,5))
 		else
-			to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
+			to_chat(victim, SPAN_DANGER("You push through the mess of vines and feel a bit of numbness in your body!"))
 			victim.adjustToxLoss(rand(1,1.5))
 			attack_mob(victim,rand(1,3))
 
@@ -89,23 +89,23 @@
 				var/mob/living/L = A
 				if(!(user in buckled_mobs))
 					L.visible_message(\
-					"<span class='notice'>\The [user] frees \the [L] from \the [src].</span>",\
-					"<span class='notice'>\The [user] frees you from \the [src].</span>",\
-					"<span class='warning'>You hear shredding and ripping.</span>")
+					SPAN_NOTICE("\The [user] frees \the [L] from \the [src]."),\
+					SPAN_NOTICE("\The [user] frees you from \the [src]."),\
+					SPAN_WARNING("You hear shredding and ripping."))
 				else
 					L.visible_message(\
-					"<span class='notice'>\The [L] struggles free of \the [src].</span>",\
-					"<span class='notice'>You untangle \the [src] from around yourself.</span>",\
-					"<span class='warning'>You hear shredding and ripping.</span>")
+					SPAN_NOTICE("\The [L] struggles free of \the [src]."),\
+					SPAN_NOTICE("You untangle \the [src] from around yourself."),\
+					SPAN_WARNING("You hear shredding and ripping."))
 				unbuckle()
 		else
 			user.setClickCooldown(user.get_attack_speed())
 			health -= rand(1,5)
 			var/text = pick("rip","tear","pull", "bite", "tug")
 			user.visible_message(\
-			"<span class='warning'>\The [user] [text]s at \the [src].</span>",\
-			"<span class='warning'>You [text] at \the [src].</span>",\
-			"<span class='warning'>You hear shredding and ripping.</span>")
+			SPAN_WARNING("\The [user] [text]s at \the [src]."),\
+			SPAN_WARNING("You [text] at \the [src]."),\
+			SPAN_WARNING("You hear shredding and ripping."))
 			check_health()
 			return
 
@@ -126,16 +126,16 @@
 				can_grab = 0
 		if(can_grab)
 			if(prob(TRAIT_POTENCY))
-				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
+				src.visible_message(SPAN_DANGER("Tendrils lash out from \the [src] and drag \the [victim] in!"))
 				victim.forceMove(src.loc)
 				buckle_mob(victim)
 				victim.setDir(pick(GLOB.cardinal))
-				to_chat(victim, "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>")
+				to_chat(victim, SPAN_DANGER("Tendrils [pick("wind", "tangle", "tighten")] around you!"))
 				victim.Weaken(1)
 				victim.adjustToxLoss(rand(0.5,1.25))
 				seed.do_thorns(victim,src)
 			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
-				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
+				src.visible_message(SPAN_DANGER("Tendrils lash out from \the [src] and swipe across [victim]!"))
 				victim.Weaken(1.5)
 				victim.adjustToxLoss(rand(1,3.5))
 				attack_mob(victim,rand(2,3.5))

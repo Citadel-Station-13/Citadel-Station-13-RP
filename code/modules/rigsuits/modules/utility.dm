@@ -203,7 +203,7 @@
 	if(total_transferred)
 		to_chat(user, "<font color=#4F49AF>You transfer [total_transferred] units into the suit reservoir.</font>")
 	else
-		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
+		to_chat(user, SPAN_DANGER("None of the reagents seem suitable."))
 	return 1
 
 /obj/item/rig_module/chem_dispenser/engage(atom/target)
@@ -214,7 +214,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		to_chat(H, "<span class='danger'>You have not selected a chemical type.</span>")
+		to_chat(H, SPAN_DANGER("You have not selected a chemical type."))
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -224,7 +224,7 @@
 
 	var/chems_to_use = 10
 	if(charge.charges <= 0)
-		to_chat(H, "<span class='danger'>Insufficient chems!</span>")
+		to_chat(H, SPAN_DANGER("Insufficient chems!"))
 		return 0
 	else if(charge.charges < chems_to_use)
 		chems_to_use = charge.charges
@@ -239,8 +239,8 @@
 		target_mob = H
 
 	if(target_mob != H)
-		to_chat(H, "<span class='danger'>You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name].</span>")
-	to_chat(target_mob, "<span class='danger'>You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected.</span>")
+		to_chat(H, SPAN_DANGER("You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name]."))
+	to_chat(target_mob, SPAN_DANGER("You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected."))
 	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use
@@ -467,7 +467,7 @@
 	var/mob/living/M = holder.wearer
 
 	if(M.l_hand && M.r_hand)
-		to_chat(M, "<span class='danger'>Your hands are full.</span>")
+		to_chat(M, SPAN_DANGER("Your hands are full."))
 		deactivate()
 		return
 
@@ -522,7 +522,7 @@
 		return 0
 
 	if(accepted_item.charges >= 5)
-		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
+		to_chat(user, SPAN_DANGER("Another grenade of that type will not fit into the module."))
 		return 0
 	if(!user.attempt_consume_item_for_construction(input_device))
 		return
@@ -542,7 +542,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		to_chat(H, "<span class='danger'>You have not selected a grenade type.</span>")
+		to_chat(H, SPAN_DANGER("You have not selected a grenade type."))
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -551,12 +551,12 @@
 		return 0
 
 	if(charge.charges <= 0)
-		to_chat(H, "<span class='danger'>Insufficient grenades!</span>")
+		to_chat(H, SPAN_DANGER("Insufficient grenades!"))
 		return 0
 
 	charge.charges--
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
-	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
+	H.visible_message(SPAN_DANGER("[H] launches \a [new_grenade]!"))
 	new_grenade.activate(H)
 	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
@@ -614,10 +614,10 @@
 	if(!target)
 		if(device == iastamp)
 			device = deniedstamp
-			to_chat(holder.wearer, "<span class='notice'>Switched to denied stamp.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Switched to denied stamp."))
 		else if(device == deniedstamp)
 			device = iastamp
-			to_chat(holder.wearer, "<span class='notice'>Switched to internal affairs stamp.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Switched to internal affairs stamp."))
 		return 1
 
 /obj/item/rig_module/sprinter
@@ -660,7 +660,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
+	to_chat(H, SPAN_DANGER("Your hardsuit returns to normal speed."))
 
 	holder.slowdown += sprint_speed
 
@@ -705,16 +705,16 @@
 	if(!target)
 		if(device == intcrowbar)
 			device = intwrench
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic wrench engaged.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Hydraulic wrench engaged."))
 		else if(device == intwrench)
 			device = intcutter
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic cutters engaged.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Hydraulic cutters engaged."))
 		else if(device == intcutter)
 			device = intdriver
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic driver engaged.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Hydraulic driver engaged."))
 		else if(device == intdriver) // I'm tired and can't think of anything better
 			device = intcrowbar // Feel free to improve this mess
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic crowbar engaged.</span>")
+			to_chat(holder.wearer, SPAN_NOTICE("Hydraulic crowbar engaged."))
 	interface_name = "[initial(interface_name)] - [device]"
 	return 1
 

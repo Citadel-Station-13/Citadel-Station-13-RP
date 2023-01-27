@@ -216,7 +216,7 @@
 	var/ruptured = FALSE
 
 /mob/living/simple_mob/animal/space/mouse_army/pyro/death()
-	visible_message("<span class='critical'>\The [src]'s tank groans!</span>")
+	visible_message(SPAN_CRITICAL("\The [src]'s tank groans!"))
 	var/delay = rand(1, 3)
 	spawn(0)
 		// Flash black and red as a warning.
@@ -234,10 +234,10 @@
 	var/datum/gas_mixture/GM = new
 	if(prob(10))
 		T.assume_gas(/datum/gas/phoron, 100, 1500+T0C)
-		T.visible_message("<span class='critical'>\The [src]'s tank vents a cloud of heated gas!</span>")
+		T.visible_message(SPAN_CRITICAL("\The [src]'s tank vents a cloud of heated gas!"))
 	else
 		T.assume_gas(/datum/gas/phoron, 5, istype(T) ? T.air.temperature : T20C)
-		visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
+		visible_message(SPAN_CRITICAL("\The [src]'s tank ruptures!"))
 	T.assume_air(GM)
 	return
 
@@ -291,7 +291,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 /mob/living/simple_mob/animal/space/mouse_army/ammo/death()
-	visible_message("<span class='critical'>\The [src]'s body begins to rupture!</span>")
+	visible_message(SPAN_CRITICAL("\The [src]'s body begins to rupture!"))
 	var/delay = rand(1, 3)
 	spawn(0)
 		// Flash black and red as a warning.
@@ -304,7 +304,7 @@
 
 	spawn(rand(1,5))
 		if(src && !exploded)
-			visible_message("<span class='critical'>\The [src]'s body detonates!</span>")
+			visible_message(SPAN_CRITICAL("\The [src]'s body detonates!"))
 			exploded = 1
 			explosion(src.loc, 0, 0, 2, 4)
 			qdel(src)

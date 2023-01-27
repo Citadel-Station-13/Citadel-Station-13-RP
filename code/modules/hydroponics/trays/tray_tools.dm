@@ -92,18 +92,18 @@
 
 		var/obj/machinery/portable_atmospherics/hydroponics/H = target
 		if(H.frozen == 1)
-			to_chat(user, "<span class='warning'>Disable the cryogenic freezing first!</span>")
+			to_chat(user, SPAN_WARNING("Disable the cryogenic freezing first!"))
 			return
 		grown_seed = H.seed
 		grown_reagents = H.reagents
 
 	if(!grown_seed)
-		to_chat(user, "<span class='danger'>[src] can tell you nothing about \the [target].</span>")
+		to_chat(user, SPAN_DANGER("[src] can tell you nothing about \the [target]."))
 		return
 
 	last_seed = REF(grown_seed)
 
-	user.visible_message("<span class='notice'>[user] runs the scanner over \the [target].</span>")
+	user.visible_message(SPAN_NOTICE("[user] runs the scanner over \the [target]."))
 
 	last_reagents = list()
 	if(grown_reagents && grown_reagents.reagent_list && grown_reagents.reagent_list.len)

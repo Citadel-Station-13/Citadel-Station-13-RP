@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(blood_content < 4) //Are we drinking real blood or something else?
 			if(M.nutrition <= 0.333 * M.species.max_nutrition || M.nutrition > 0.778 * M.species.max_nutrition) //Vampires who are starving or peckish get nothing from fake blood.
 				if(M.last_blood_warn + blud_warn_timer < world.time)
-					to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.</span>")
+					to_chat(M, SPAN_WARNING("This isn't enough. You need something stronger."))
 					M.last_blood_warn = world.time //If we're drinking fake blood, make sure we're warned appropriately.
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.

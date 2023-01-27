@@ -481,11 +481,11 @@
 		if(65 to 85)
 			. += "It's slightly damaged."
 		if(45 to 65)
-			. += "<span class='notice'>It's badly damaged.</span>"
+			. += SPAN_NOTICE("It's badly damaged.")
 		if(25 to 45)
-			. += "<span class='warning'>It's heavily damaged.</span>"
+			. += SPAN_WARNING("It's heavily damaged.")
 		else
-			. += "<span class='warning'><b> It's falling apart.</b> </span>"
+			. += SPAN_WARNING("<b> It's falling apart.</b> ")
 	if(equipment?.len)
 		. += "It's equipped with:"
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
@@ -607,7 +607,7 @@
 
 /obj/mecha/proc/interface_action(obj/machinery/target)
 	if(istype(target, /obj/machinery/access_button))
-		src.occupant_message("<span class='notice'>Interfacing with [target].</span>")
+		src.occupant_message(SPAN_NOTICE("Interfacing with [target]."))
 		src.log_message("Interfaced with [target].")
 		target.attack_hand(src.occupant)
 		return 1
@@ -623,7 +623,7 @@
 		if(src_object == src || (src_object in src))
 			return UI_INTERACTIVE
 		if(src.Adjacent(src_object))
-			src.occupant_message("<span class='notice'>Interfacing with [src_object]...</span>")
+			src.occupant_message(SPAN_NOTICE("Interfacing with [src_object]..."))
 			src.log_message("Interfaced with [src_object].")
 			return UI_INTERACTIVE
 		if(src_object in view(2, src))
@@ -654,7 +654,7 @@
 /obj/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		if(istype(user,/mob/living/carbon/brain))
-			to_chat(user, "<span class='warning'>You try to move, but you are not the pilot! The exosuit doesn't respond.</span>")
+			to_chat(user, SPAN_WARNING("You try to move, but you are not the pilot! The exosuit doesn't respond."))
 			return 0
 		user.forceMove(get_turf(src))
 		to_chat(user, "You climb out from [src]")
@@ -662,16 +662,16 @@
 
 	var/obj/item/mecha_parts/component/hull/HC = internal_components[MECH_HULL]
 	if(!HC)
-		occupant_message("<span class='notice'>You can't operate an exosuit that doesn't have a hull!</span>")
+		occupant_message(SPAN_NOTICE("You can't operate an exosuit that doesn't have a hull!"))
 		return
 
 	if(connected_port)
 		if(world.time - last_message > 20)
-			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port</span>")
+			src.occupant_message(SPAN_WARNING("Unable to move while connected to the air system port"))
 			last_message = world.time
 		return 0
 	if(state)
-		occupant_message("<span class='warning'>Maintenance protocols in effect</span>")
+		occupant_message(SPAN_WARNING("Maintenance protocols in effect"))
 		return
 /*
 	if(zoom)
@@ -782,7 +782,7 @@
 	//Up/down zmove
 	else if(direction & UP || direction & DOWN)
 		if(!can_ztravel())
-			occupant_message("<span class='warning'>Your vehicle lacks the capacity to move in that direction!</span>")
+			occupant_message(SPAN_WARNING("Your vehicle lacks the capacity to move in that direction!"))
 			return FALSE
 
 		//We're using locs because some mecha are 2x2 turfs. So thicc!
@@ -790,7 +790,7 @@
 
 		for(var/turf/T in locs)
 			if(!T.z_exit_check(src, direction))
-				occupant_message("<span class='warning'>There's something blocking your movement in that direction!</span>")
+				occupant_message(SPAN_WARNING("There's something blocking your movement in that direction!"))
 				result = FALSE
 				break
 		if(result)
@@ -816,7 +816,7 @@
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
-				src.log_message("<span class='warning'>Movement control lost. Inertial movement started.</span>")
+				src.log_message(SPAN_WARNING("Movement control lost. Inertial movement started."))
 		if(do_after(get_step_delay()))
 			can_move = 1
 		return 1
@@ -1038,16 +1038,16 @@
 				if(prob(25))	//Why would they get free internal damage. At least make it a bit RNG.
 					src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
-				to_chat(user, "<span class='danger'>You slash at the armored suit!</span>")
-				visible_message("<span class='danger'>\The [user] slashes at [src.name]'s armor!</span>")
+				to_chat(user, SPAN_DANGER("You slash at the armored suit!"))
+				visible_message(SPAN_DANGER("\The [user] slashes at [src.name]'s armor!"))
 			else
 				src.log_append_to_last("Armor saved.")
 				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
-				to_chat(user, "<span class='danger'>Your claws had no effect!</span>")
-				src.occupant_message("<span class='notice'>\The [user]'s claws are stopped by the armor.</span>")
-				visible_message("<span class='warning'>\The [user] rebounds off [src.name]'s armor!</span>")
+				to_chat(user, SPAN_DANGER("Your claws had no effect!"))
+				src.occupant_message(SPAN_NOTICE("\The [user]'s claws are stopped by the armor."))
+				visible_message(SPAN_WARNING("\The [user] rebounds off [src.name]'s armor!"))
 		else
-			user.visible_message("<span class='danger'>\The [user] hits \the [src]. Nothing happens.</span>","<span class='danger'>You hit \the [src] with no visible effect.</span>")
+			user.visible_message(SPAN_DANGER("\The [user] hits \the [src]. Nothing happens."),SPAN_DANGER("You hit \the [src] with no visible effect."))
 			src.log_append_to_last("Armor saved.")
 		return
 	else if ((MUTATION_HULK in user.mutations) && !prob(temp_deflect_chance))
@@ -1091,7 +1091,7 @@
 		src.visible_message("The [A] fastens firmly to [src].")
 		return
 	if(prob(temp_deflect_chance) || istype(A, /mob))
-		src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")
+		src.occupant_message(SPAN_NOTICE("\The [A] bounces off the armor."))
 		src.visible_message("\The [A] bounces off \the [src] armor")
 		src.log_append_to_last("Armor saved.")
 		if(istype(A, /mob/living))
@@ -1104,16 +1104,16 @@
 			var/pass_damage = O.throw_force
 			var/pass_damage_reduc_mod
 			if(pass_damage <= temp_damage_minimum)//Too little to go through.
-				src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")
+				src.occupant_message(SPAN_NOTICE("\The [A] bounces off the armor."))
 				src.visible_message("\The [A] bounces off \the [src] armor")
 				return
 
 			else if(O.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-				src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
+				src.occupant_message(SPAN_NOTICE("\The [A] struggles to bypass \the [src] armor."))
 				src.visible_message("\The [A] struggles to bypass \the [src] armor")
 				pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
 			else
-				src.occupant_message("<span class='notice'>\The [A] manages to pierce \the [src] armor.</span>")
+				src.occupant_message(SPAN_NOTICE("\The [A] manages to pierce \the [src] armor."))
 //				src.visible_message("\The [A] manages to pierce \the [src] armor")
 				pass_damage_reduc_mod = 1
 
@@ -1161,7 +1161,7 @@
 		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
 
 	if(prob(temp_deflect_chance))
-		src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
+		src.occupant_message(SPAN_NOTICE("The armor deflects incoming projectile."))
 		src.visible_message("The [src.name] armor deflects the projectile")
 		src.log_append_to_last("Armor saved.")
 		return
@@ -1180,17 +1180,17 @@
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
 
 		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
-			src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
+			src.occupant_message(SPAN_NOTICE("The armor deflects incoming projectile."))
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return
 
 		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
+			src.occupant_message(SPAN_NOTICE("\The [Proj] struggles to pierce \the [src] armor."))
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
 
 		else	//You go through completely because you use AP. Nice.
-			src.occupant_message("<span class='notice'>\The [Proj] manages to pierce \the [src] armor.</span>")
+			src.occupant_message(SPAN_NOTICE("\The [Proj] manages to pierce \the [src] armor."))
 //			src.visible_message("\The [Proj] manages to pierce \the [src] armor")
 			pass_damage_reduc_mod = 1
 
@@ -1261,18 +1261,18 @@
 		src.take_damage(6)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='danger'>You smash at the armored suit!</span>")
+		to_chat(user, SPAN_DANGER("You smash at the armored suit!"))
 		for (var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
-				V.show_message("<span class='danger'>\The [user] smashes against [src.name]'s armor!</span>", 1)
+				V.show_message(SPAN_DANGER("\The [user] smashes against [src.name]'s armor!"), 1)
 	else
 		src.log_append_to_last("Armor saved.")
 		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='warning'>Your attack had no effect!</span>")
-		src.occupant_message("<span class='warning'>\The [user]'s attack is stopped by the armor.</span>")
+		to_chat(user, SPAN_WARNING("Your attack had no effect!"))
+		src.occupant_message(SPAN_WARNING("\The [user]'s attack is stopped by the armor."))
 		for (var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
-				V.show_message("<span class='warning'>\The [user] rebounds off the [src.name] armor!</span>", 1)
+				V.show_message(SPAN_WARNING("\The [user] rebounds off the [src.name] armor!"), 1)
 	return
 */
 
@@ -1320,17 +1320,17 @@
 		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
 
 	if(prob(temp_deflect_chance))		//Does your attack get deflected outright.
-		src.occupant_message("<span class='notice'>\The [W] bounces off [src.name].</span>")
-		to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
+		src.occupant_message(SPAN_NOTICE("\The [W] bounces off [src.name]."))
+		to_chat(user, SPAN_DANGER("\The [W] bounces off [src.name]."))
 		src.log_append_to_last("Armor saved.")
 
 	else if(W.force < temp_damage_minimum)	//Is your attack too PATHETIC to do anything. 3 damage to a person shouldn't do anything to a mech.
-		src.occupant_message("<span class='notice'>\The [W] bounces off the armor.</span>")
+		src.occupant_message(SPAN_NOTICE("\The [W] bounces off the armor."))
 		src.visible_message("\The [W] bounces off \the [src] armor")
 		return
 
 	else if(W.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-		src.occupant_message("<span class='notice'>\The [W] struggles to bypass \the [src] armor.</span>")
+		src.occupant_message(SPAN_NOTICE("\The [W] struggles to bypass \the [src] armor."))
 		src.visible_message("\The [W] struggles to bypass \the [src] armor")
 		pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
 
@@ -1400,9 +1400,9 @@
 				output_maintenance_dialog(id_card, user)
 				return
 			else
-				to_chat(user, "<span class='warning'>Invalid ID: Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Invalid ID: Access denied."))
 		else
-			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
+			to_chat(user, SPAN_WARNING("Maintenance protocols disabled by operator."))
 	else if(W.is_wrench())
 		if(state==MECHA_BOLTS_SECURED)
 			state = MECHA_PANEL_LOOSE
@@ -1425,7 +1425,7 @@
 				if(istype(MC))
 					removable_components[MC.name] = MC
 				else
-					to_chat(user, "<span class='notice'>\The [src] appears to be missing \the [slot].</span>")
+					to_chat(user, SPAN_NOTICE("\The [src] appears to be missing \the [slot]."))
 
 			var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
 			if(!remove)
@@ -1466,8 +1466,8 @@
 				src.go_out()
 				src.log_message("[src.occupant] was ejected using the maintenance controls.")
 			else
-				to_chat(user, "<span class='warning'>Your attempt is rejected.</span>")
-				src.occupant_message("<span class='warning'>An attempt to eject you was made using the maintenance controls.</span>")
+				to_chat(user, SPAN_WARNING("Your attempt is rejected."))
+				src.occupant_message(SPAN_WARNING("An attempt to eject you was made using the maintenance controls."))
 				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
 
@@ -1488,11 +1488,11 @@
 		if (WT.remove_fuel(0,user))
 			if (hasInternalDamage(MECHA_INT_TANK_BREACH))
 				clearInternalDamage(MECHA_INT_TANK_BREACH)
-				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
+				to_chat(user, SPAN_NOTICE("You repair the damaged gas tank."))
 		else
 			return
 		if(src.health<initial(src.health))
-			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
+			to_chat(user, SPAN_NOTICE("You repair some damage to [src.name]."))
 			src.health += min(10, initial(src.health)-src.health)
 			update_damage_alerts()
 		else
@@ -1519,12 +1519,12 @@
 							if(NP.use(1))
 								C.adjust_integrity(10)
 
-						to_chat(user, "<span class='notice'>You repair damage to \the [C].</span>")
+						to_chat(user, SPAN_NOTICE("You repair damage to \the [C]."))
 
 			return
 
 		else
-			to_chat(user, "<span class='notice'>You can't reach \the [src]'s internal components.</span>")
+			to_chat(user, SPAN_NOTICE("You can't reach \the [src]'s internal components."))
 			return
 
 	else
@@ -1532,7 +1532,7 @@
 /*
 		src.log_message("Attacked by [W]. Attacker - [user]")
 		if(prob(src.deflect_chance))
-			to_chat(user, "<span class='warning'>\The [W] bounces off [src.name] armor.</span>")
+			to_chat(user, SPAN_WARNING("\The [W] bounces off [src.name] armor."))
 			src.log_append_to_last("Armor saved.")
 /*
 			for (var/mob/V in viewers(src))
@@ -1580,7 +1580,7 @@
 	//Added a message here since people assume their first click failed or something./N
 //	to_chat(user, "Installing MMI, please stand by.")
 
-	visible_message("<span class='notice'>[usr] starts to insert a brain into [src.name]</span>")
+	visible_message(SPAN_NOTICE("[usr] starts to insert a brain into [src.name]"))
 
 	if(enter_after(40,user))
 		if(!occupant)
@@ -1698,12 +1698,12 @@
 		var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector) in T
 		if(possible_port)
 			if(connect(possible_port))
-				occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
+				occupant_message(SPAN_NOTICE("\The [name] connects to the port."))
 				add_obj_verb(src, /obj/mecha/verb/disconnect_from_port)
 				remove_obj_verb(src, /obj/mecha/verb/connect_to_port)
 				return
 			else
-				occupant_message("<span class='danger'>\The [name] failed to connect to the port.</span>")
+				occupant_message(SPAN_DANGER("\The [name] failed to connect to the port."))
 				return
 		else
 			occupant_message("Nothing happens")
@@ -1722,11 +1722,11 @@
 		return
 
 	if(disconnect())
-		occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
+		occupant_message(SPAN_NOTICE("[name] disconnects from the port."))
 		remove_obj_verb(src, /obj/mecha/verb/disconnect_from_port)
 		add_obj_verb(src, /obj/mecha/verb/connect_to_port)
 	else
-		occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
+		occupant_message(SPAN_DANGER("[name] is not connected to the port at the moment."))
 
 /obj/mecha/verb/toggle_lights()
 	set name = "Toggle Lights"
@@ -1759,11 +1759,11 @@
 
 	var/obj/item/mecha_parts/component/gas/GC = internal_components[MECH_GAS]
 	if(!GC)
-		to_chat(occupant, "<span class='warning'>The life support systems don't seem to respond.</span>")
+		to_chat(occupant, SPAN_WARNING("The life support systems don't seem to respond."))
 		return
 
 	if(!prob(GC.get_efficiency() * 100))
-		to_chat(occupant, "<span class='warning'>\The [GC] shudders and barks, before returning to how it was before.</span>")
+		to_chat(occupant, SPAN_WARNING("\The [GC] shudders and barks, before returning to how it was before."))
 		return
 
 	use_internal_tank = !use_internal_tank
@@ -1818,22 +1818,22 @@
 		return
 
 	if (usr.buckled)
-		to_chat(usr, "<span class='warning'>You can't climb into the exosuit while buckled!</span>")
+		to_chat(usr, SPAN_WARNING("You can't climb into the exosuit while buckled!"))
 		return
 
 	src.log_message("[usr] tries to move in.")
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			to_chat(usr, "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>")
+			to_chat(usr, SPAN_DANGER("Kinda hard to climb in while handcuffed don't you think?"))
 			return
 	if (src.occupant)
-		to_chat(usr, "<span class='danger'>The [src.name] is already occupied!</span>")
+		to_chat(usr, SPAN_DANGER("The [src.name] is already occupied!"))
 		src.log_append_to_last("Permission denied.")
 		return
 /*
 	if (usr.abiotic())
-		to_chat(usr, "<span class='notice'>Subject cannot have abiotic items on.</span>")
+		to_chat(usr, SPAN_NOTICE("Subject cannot have abiotic items on."))
 		return
 */
 	var/passed
@@ -1843,7 +1843,7 @@
 	else if(src.operation_allowed(usr))
 		passed = 1
 	if(!passed)
-		to_chat(usr, "<span class='warning'>Access denied</span>")
+		to_chat(usr, SPAN_WARNING("Access denied"))
 		src.log_append_to_last("Permission denied.")
 		return
 	if(isliving(usr))
@@ -1854,12 +1854,12 @@
 
 //	to_chat(usr, "You start climbing into [src.name]")
 	if(get_equipment(/obj/item/mecha_parts/mecha_equipment/runningboard))
-		visible_message("<span class='notice'>\The [usr] is instantly lifted into [src.name] by the running board!</span>")
+		visible_message(SPAN_NOTICE("\The [usr] is instantly lifted into [src.name] by the running board!"))
 		moved_inside(usr)
 		if(ishuman(occupant))
 			GrantActions(occupant, 1)
 	else
-		visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
+		visible_message(SPAN_NOTICE("\The [usr] starts to climb into [src.name]"))
 		if(enter_after(40,usr))
 			if(!src.occupant)
 				moved_inside(usr)
@@ -2133,8 +2133,8 @@
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
 	var/output = {"[report_internal_damage()]
-						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.max_integrity * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
-						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.max_integrity * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
+						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.max_integrity * 100, 0.1)]%":SPAN_WARNING("ARMOR MISSING")]<br>
+						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.max_integrity * 100, 0.1)]%":SPAN_WARNING("HULL MISSING")]<br>
 						[integrity<30?"<font color='red'><b>DAMAGE LEVEL CRITICAL</b></font><br>":null]
 						<b>Chassis Integrity: </b> [integrity]%<br>
 						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>
@@ -2478,7 +2478,7 @@
 				passengers["[P.occupant]"] = P
 
 		if (!passengers)
-			to_chat(user, "<span class='warning'>There are no passengers to remove.</span>")
+			to_chat(user, SPAN_WARNING("There are no passengers to remove."))
 			return
 
 		var/pname = input(user, "Choose a passenger to forcibly remove.", "Forcibly Remove Passenger") as null|anything in passengers
@@ -2489,11 +2489,11 @@
 		var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P = passengers[pname]
 		var/mob/occupant = P.occupant
 
-		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] begins opening the hatch on \the [P]..."), SPAN_NOTICE("You begin opening the hatch on \the [P]..."))
 		if (!do_after(user, 40))
 			return
 
-		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant]!</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] opens the hatch on \the [P] and removes [occupant]!"), SPAN_NOTICE("You open the hatch on \the [P] and remove [occupant]!"))
 		P.go_out()
 		P.log_message("[occupant] was removed.")
 		return
@@ -2541,7 +2541,7 @@
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in src.cargo))
-			src.occupant_message("<span class='notice'>You unload [O].</span>")
+			src.occupant_message(SPAN_NOTICE("You unload [O]."))
 			O.forceMove(get_turf(src))
 			src.cargo -= O
 			var/turf/T = get_turf(O)
@@ -2679,13 +2679,13 @@
 
 	if(prob(temp_deflect_chance))//Deflected
 		src.log_append_to_last("Armor saved.")
-		src.occupant_message("<span class='notice'>\The [user]'s attack is stopped by the armor.</span>")
-		visible_message("<span class='notice'>\The [user] rebounds off [src.name]'s armor!</span>")
+		src.occupant_message(SPAN_NOTICE("\The [user]'s attack is stopped by the armor."))
+		visible_message(SPAN_NOTICE("\The [user] rebounds off [src.name]'s armor!"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 		playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
 
 	else if(damage < temp_damage_minimum)//Pathetic damage levels just don't harm MECH.
-		src.occupant_message("<span class='notice'>\The [user]'s doesn't dent \the [src] paint.</span>")
+		src.occupant_message(SPAN_NOTICE("\The [user]'s doesn't dent \the [src] paint."))
 		src.visible_message("\The [user]'s attack doesn't dent \the [src] armor")
 		src.log_append_to_last("Armor saved.")
 		playsound(src, 'sound/effects/Glasshit.ogg', 50, 1)
@@ -2695,7 +2695,7 @@
 		src.take_damage(damage)	//Apply damage - The take_damage() proc handles armor values
 		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
+		visible_message(SPAN_DANGER("[user] [attack_message] [src]!"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 
 	return 1

@@ -99,9 +99,9 @@
 	if((istype(O,/obj/item/card/id)||istype(O,/obj/item/pda)) && brainmob)
 		if(allowed(user))
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the brain holder.</span>")
+			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] the brain holder."))
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, SPAN_WARNING("Access denied."))
 		return
 	if(brainmob)
 		O.melee_attack_chain(brainmob, user)//Oh noooeeeee
@@ -111,11 +111,11 @@
 //TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
 /obj/item/mmi/attack_self(mob/user as mob)
 	if(!brainmob)
-		to_chat(user, "<span class='warning'>You upend the MMI, but there's nothing in it.</span>")
+		to_chat(user, SPAN_WARNING("You upend the MMI, but there's nothing in it."))
 	else if(locked)
-		to_chat(user, "<span class='warning'>You upend the MMI, but the brain is clamped into place.</span>")
+		to_chat(user, SPAN_WARNING("You upend the MMI, but the brain is clamped into place."))
 	else
-		to_chat(user, "<span class='notice'>You upend the MMI, spilling the brain onto the floor.</span>")
+		to_chat(user, SPAN_NOTICE("You upend the MMI, spilling the brain onto the floor."))
 		var/obj/item/organ/internal/brain/brain
 		if (brainobj)	//Pull brain organ out of MMI.
 			brainobj.loc = user.loc

@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(config_legacy.forumurl)
 			user << link(config_legacy.forumurl)
 		else
-			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
+			to_chat(user, SPAN_DANGER("The forum URL is not set in the server configuration."))
 			return
 	ShowChoices(usr)
 	return 1

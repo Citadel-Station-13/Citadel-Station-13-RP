@@ -13,15 +13,15 @@
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
-		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
+		to_chat(user, SPAN_WARNING("There is already \a [holstered] holstered here!"))
 		return
 	if (LAZYLEN(can_hold))
 		if(!is_type_in_list(I, can_hold) && !is_type_in_list(I, cant_hold))
-			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+			to_chat(user, SPAN_WARNING("[I] won't fit in [src]!"))
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
-		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+		to_chat(user, SPAN_WARNING("[I] won't fit in [src]!"))
 		return
 
 	if(istype(user))
@@ -33,7 +33,7 @@
 	holstered = I
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
+	user.visible_message(SPAN_NOTICE("[user] [holster_verb]s \the [holstered]."), SPAN_NOTICE("You [holster_verb] \the [holstered]."))
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
 
@@ -46,19 +46,19 @@
 		return
 
 	if(istype(user.get_active_held_item(),/obj) && istype(user.get_inactive_held_item(),/obj))
-		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
+		to_chat(user, SPAN_WARNING("You need an empty hand to draw \the [holstered]!"))
 	else
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>",				"<span class='warning'>You draw \the [holstered], ready to go!</span>"				)
+				SPAN_DANGER("[user] draws \the [holstered], ready to go!"),				SPAN_WARNING("You draw \the [holstered], ready to go!")				)
 			if(istype(holstered, /obj/item/gun))
 				var/obj/item/gun/G = holstered
 				if(G.check_safety()) //Reflex un-safetying if we are drawing our gun with intent to harm
 					G.toggle_safety(user)
 		else
 			user.visible_message(
-				"<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>",
-				"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>"
+				SPAN_NOTICE("[user] draws \the [holstered], pointing it at the ground."),
+				SPAN_NOTICE("You draw \the [holstered], pointing it at the ground.")
 				)
 		user.put_in_hands(holstered)
 		playsound(user, "[sound_out]", 75, 0)
@@ -115,12 +115,12 @@
 			H = locate() in S.accessories
 
 	if (!H)
-		to_chat(usr, "<span class='warning'>Something is very wrong.</span>")
+		to_chat(usr, SPAN_WARNING("Something is very wrong."))
 
 	if(!H.holstered)
 		var/obj/item/W = usr.get_active_held_item()
 		if(!istype(W, /obj/item))
-			to_chat(usr, "<span class='warning'>You need your weapon equipped to holster it.</span>")
+			to_chat(usr, SPAN_WARNING("You need your weapon equipped to holster it."))
 			return
 		H.holster(W, usr)
 	else

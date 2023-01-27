@@ -138,7 +138,7 @@
 					return
 				inserted_id = I
 			else
-				to_chat(usr, "<span class='warning'>No valid ID.</span>")
+				to_chat(usr, SPAN_WARNING("No valid ID."))
 
 	src.updateUsrDialog()
 

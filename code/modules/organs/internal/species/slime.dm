@@ -12,7 +12,7 @@
 /obj/item/organ/internal/heart/grey/colormatch/slime/process(delta_time)
 	..()
 	if(!(QDELETED(src)) && src.loc != owner)
-		visible_message("<span class='notice'>\The [src] splatters!</span>")
+		visible_message(SPAN_NOTICE("\The [src] splatters!"))
 		var/turf/T = get_turf(src)
 		var/obj/effect/debris/cleanable/blood/B = new (T)
 
@@ -61,7 +61,7 @@
 	..()
 
 	if(!(QDELETED(src)) && src.loc != owner)
-		visible_message("<span class='notice'>\The [src] splatters!</span>")
+		visible_message(SPAN_NOTICE("\The [src] splatters!"))
 		var/turf/T = get_turf(src)
 		var/obj/effect/debris/cleanable/blood/B = new (T)
 

@@ -23,13 +23,13 @@
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
-		to_chat(user, "<span class='notice'>You begin to remove \the [src] with your [W].</span>")
+		to_chat(user, SPAN_NOTICE("You begin to remove \the [src] with your [W]."))
 		if(do_after(user, 4 SECONDS * W.tool_speed))
-			to_chat(user, "<span class='notice'>\The [src] has been dug up, and now lies in a pile nearby.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] has been dug up, and now lies in a pile nearby."))
 			new /obj/item/stack/material/snow(src)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		else
-			to_chat(user, "<span class='notice'>You decide to not finish removing \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You decide to not finish removing \the [src]."))
 	else
 		..()
 
@@ -56,7 +56,7 @@
 	. = ..()
 	if(istype(M, /mob/living))
 		if(M.stunned == 0)
-			to_chat(M, "<span class='warning'>You slide across the ice!</span>")
+			to_chat(M, SPAN_WARNING("You slide across the ice!"))
 		M.SetStunned(1)
 		step(M,M.dir)
 

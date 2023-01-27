@@ -87,7 +87,7 @@
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return 0
 	user.do_attack_animation(src)
-	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))
 	spawn(1) dismantle()
 	return 1
 
@@ -109,7 +109,7 @@
 		damage = round(new_damage)
 		Proj.damage = outgoing_damage
 
-		visible_message("<span class='danger'>\The [src] reflects \the [Proj]!</span>")
+		visible_message(SPAN_DANGER("\The [src] reflects \the [Proj]!"))
 
 		// Find a turf near or on the original location to bounce to
 		var/new_x = Proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
@@ -147,58 +147,58 @@
 	if(W.is_wrench() && state == 0)
 		if(anchored && !reinf_material)
 			playsound(src, W.tool_sound, 100, 1)
-			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
+			to_chat(user, SPAN_NOTICE("Now disassembling the girder..."))
 			if(do_after(user,(35 + round(max_health/50)) * W.tool_speed))
 				if(!src) return
-				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
+				to_chat(user, SPAN_NOTICE("You dissasembled the girder!"))
 				dismantle()
 		else if(!anchored)
 			playsound(src, W.tool_sound, 100, 1)
-			to_chat(user, "<span class='notice'>Now securing the girder...</span>")
+			to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 			if(do_after(user, 40 * W.tool_speed, src))
-				to_chat(user, "<span class='notice'>You secured the girder!</span>")
+				to_chat(user, SPAN_NOTICE("You secured the girder!"))
 				reset_girder()
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
+		to_chat(user, SPAN_NOTICE("Now slicing apart the girder..."))
 		if(do_after(user,30 * W.tool_speed))
 			if(!src) return
-			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
+			to_chat(user, SPAN_NOTICE("You slice apart the girder!"))
 			dismantle()
 
 	else if(istype(W, /obj/item/pickaxe/diamonddrill))
-		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
+		to_chat(user, SPAN_NOTICE("You drill through the girder!"))
 		dismantle()
 
 	else if(W.is_screwdriver())
 		if(state == 2)
 			playsound(src, W.tool_sound, 100, 1)
-			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
+			to_chat(user, SPAN_NOTICE("Now unsecuring support struts..."))
 			if(do_after(user,40 * W.tool_speed))
 				if(!src) return
-				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
+				to_chat(user, SPAN_NOTICE("You unsecured the support struts!"))
 				state = 1
 		else if(anchored && !reinf_material)
 			playsound(src, W.tool_sound, 100, 1)
 			reinforcing = !reinforcing
-			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] can now be [reinforcing? "reinforced" : "constructed"]!"))
 
 	else if(W.is_wirecutter() && state == 1)
 		playsound(src, W.tool_sound, 100, 1)
-		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
+		to_chat(user, SPAN_NOTICE("Now removing support struts..."))
 		if(do_after(user,40 * W.tool_speed))
 			if(!src) return
-			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
+			to_chat(user, SPAN_NOTICE("You removed the support struts!"))
 			reinf_material.place_dismantled_product(get_turf(src), 2)
 			reinf_material = null
 			reset_girder()
 
 	else if(W.is_crowbar() && state == 0 && anchored)
 		playsound(src, W.tool_sound, 100, 1)
-		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
+		to_chat(user, SPAN_NOTICE("Now dislodging the girder..."))
 		if(do_after(user, 40 * W.tool_speed))
 			if(!src) return
-			to_chat(user, "<span class='notice'>You dislodged the girder!</span>")
+			to_chat(user, SPAN_NOTICE("You dislodged the girder!"))
 			displace()
 
 	else if(istype(W, /obj/item/stack/material))
@@ -223,7 +223,7 @@
 /obj/structure/girder/proc/construct_wall(obj/item/stack/material/S, mob/user)
 	var/amount_to_use = reinf_material ? 1 : 2
 	if(S.get_amount() < amount_to_use)
-		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
+		to_chat(user, SPAN_NOTICE("There isn't enough material here to construct a wall."))
 		return 0
 
 	var/datum/material/M = get_material_by_name(S.default_type)
@@ -234,18 +234,18 @@
 	add_hiddenprint(usr)
 
 	if(M.integrity < 50)
-		to_chat(user, "<span class='notice'>This material is too soft for use in wall construction.</span>")
+		to_chat(user, SPAN_NOTICE("This material is too soft for use in wall construction."))
 		return 0
 
-	to_chat(user, "<span class='notice'>You begin adding the plating...</span>")
+	to_chat(user, SPAN_NOTICE("You begin adding the plating..."))
 
 	if(!do_after(user,40) || !S.use(amount_to_use))
 		return 1 //once we've gotten this far don't call parent attackby()
 
 	if(anchored)
-		to_chat(user, "<span class='notice'>You added the plating!</span>")
+		to_chat(user, SPAN_NOTICE("You added the plating!"))
 	else
-		to_chat(user, "<span class='notice'>You create a false wall! Push on it to open or close the passage.</span>")
+		to_chat(user, SPAN_NOTICE("You create a false wall! Push on it to open or close the passage."))
 		wall_fake = 1
 
 	var/turf/Tsrc = get_turf(src)
@@ -260,11 +260,11 @@
 
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
 	if(reinf_material)
-		to_chat(user, "<span class='notice'>\The [src] is already reinforced.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already reinforced."))
 		return 0
 
 	if(S.get_amount() < 1)
-		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
+		to_chat(user, SPAN_NOTICE("There isn't enough material here to reinforce the girder."))
 		return 0
 
 	var/datum/material/M = get_material_by_name(S.default_type)
@@ -272,10 +272,10 @@
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0
 
-	to_chat(user, "<span class='notice'>Now reinforcing...</span>")
+	to_chat(user, SPAN_NOTICE("Now reinforcing..."))
 	if (!do_after(user,40) || !S.use(1))
 		return 1 //don't call parent attackby() past this point
-	to_chat(user, "<span class='notice'>You added reinforcement!</span>")
+	to_chat(user, SPAN_NOTICE("You added reinforcement!"))
 
 	reinf_material = M
 	reinforce_girder()
@@ -294,7 +294,7 @@
 
 /obj/structure/girder/attack_hand(mob/user as mob)
 	if (MUTATION_HULK in user.mutations)
-		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
+		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 		dismantle()
 		return
 	return ..()
@@ -339,19 +339,19 @@
 /obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 100, 1)
-		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
+		to_chat(user, SPAN_NOTICE("Now disassembling the girder..."))
 		if(do_after(user,40 * W.tool_speed))
-			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
+			to_chat(user, SPAN_NOTICE("You dissasembled the girder!"))
 			dismantle()
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
+		to_chat(user, SPAN_NOTICE("Now slicing apart the girder..."))
 		if(do_after(user,30 * W.tool_speed))
-			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
+			to_chat(user, SPAN_NOTICE("You slice apart the girder!"))
 		dismantle()
 
 	else if(istype(W, /obj/item/pickaxe/diamonddrill))
-		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
+		to_chat(user, SPAN_NOTICE("You drill through the girder!"))
 		new /obj/effect/decal/remains/human(get_turf(src))
 		dismantle()
 

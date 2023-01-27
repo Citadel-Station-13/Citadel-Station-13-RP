@@ -152,7 +152,7 @@
 
 	if(!.)
 		if(user)
-			to_chat(user, "<span class='warning'>You can't do that while [nickname] is in this state.</span>")
+			to_chat(user, SPAN_WARNING("You can't do that while [nickname] is in this state."))
 		return FALSE
 
 /obj/item/uav/update_icon()
@@ -170,7 +170,7 @@
 
 /obj/item/uav/process()
 	if(cell?.use(power_per_process) != power_per_process)
-		visible_message("<span class='warning'>[src] sputters and thuds to the ground, inert.</span>")
+		visible_message(SPAN_WARNING("[src] sputters and thuds to the ground, inert."))
 		playsound(src, 'sound/items/drop/metalboots.ogg', 75, 1)
 		power_down()
 		health -= initial(health)*0.25 //Lose 25% of your original health

@@ -63,7 +63,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		but this may help administrators decide on candidates when necessary.</span>")
 		return
 	if(href_list["event_role_help_flag"])
-		var/text = GLOB.event_role_descs[href_list["event_role_help_flag"]] || "<span class='warning'>ERROR: No help text defined.</span>"
+		var/text = GLOB.event_role_descs[href_list["event_role_help_flag"]] || SPAN_WARNING("ERROR: No help text defined.")
 		to_chat(user, text)
 		return
 	if(href_list["event_role_toggle"])

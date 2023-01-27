@@ -50,8 +50,8 @@
 		if (BREAKER_SLAT_RAISED)
 			if (LAZYLEN(buckled_mobs))
 				if (user.a_intent == INTENT_HARM)
-					user.visible_message("<span class='warning'>[user] begins to pull the lever!</span>",
-						                 "<span class='warning'>You begin to the pull the lever.</span>")
+					user.visible_message(SPAN_WARNING("[user] begins to pull the lever!"),
+						                 SPAN_WARNING("You begin to the pull the lever."))
 					current_action = BREAKER_ACTION_INUSE
 
 					if (do_after(user, BREAKER_ACTIVATE_DELAY, target = src) && slat_status == BREAKER_SLAT_RAISED)
@@ -103,15 +103,15 @@
 
 /obj/structure/femur_breaker/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if (!anchored)
-		to_chat(usr, "<span class='warning'>The [src] needs to be wrenched to the floor!</span>")
+		to_chat(usr, SPAN_WARNING("The [src] needs to be wrenched to the floor!"))
 		return FALSE
 
 	if (!istype(M, /mob/living/carbon/human))
-		to_chat(usr, "<span class='warning'>It doesn't look like [M.p_they()] can fit into this properly!</span>")
+		to_chat(usr, SPAN_WARNING("It doesn't look like [M.p_they()] can fit into this properly!"))
 		return FALSE
 
 	if (slat_status != BREAKER_SLAT_RAISED)
-		to_chat(usr, "<span class='warning'>The femur breaker must be in its neutral position before buckling someone in!</span>")
+		to_chat(usr, SPAN_WARNING("The femur breaker must be in its neutral position before buckling someone in!"))
 		return FALSE
 
 	return ..(M, force, FALSE)
@@ -138,7 +138,7 @@
 /obj/structure/femur_breaker/can_be_unfasten_wrench(mob/user, silent)
 	if (LAZYLEN(buckled_mobs))
 		if (!silent)
-			to_chat(user, "<span class='warning'>Can't unfasten, someone's strapped in!</span>")
+			to_chat(user, SPAN_WARNING("Can't unfasten, someone's strapped in!"))
 		return FAILED_UNFASTEN
 
 	if (current_action)

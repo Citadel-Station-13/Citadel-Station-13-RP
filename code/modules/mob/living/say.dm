@@ -152,7 +152,7 @@ var/list/channel_to_radio_key = new
 		if(message)
 			client.handle_spam_prevention(MUTE_IC)
 			if((client.prefs.muted & MUTE_IC))
-				to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
+				to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
 				return
 
 	//Redirect to say_dead if talker is dead
@@ -215,12 +215,12 @@ var/list/channel_to_radio_key = new
 		return 1
 
 	if(HAS_TRAIT(GLOB, TRAIT_MUTE))
-		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
+		to_chat(src, SPAN_DANGER("You are not capable of speech!"))
 		return
 
 	//Self explanatory.
 	if(is_muzzled() && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
-		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
+		to_chat(src, SPAN_DANGER("You're muzzled and cannot speak!"))
 		return
 
 	//Clean up any remaining junk on the left like spaces.
@@ -290,7 +290,7 @@ var/list/channel_to_radio_key = new
 			message_range = speaking.get_talkinto_msg_range(message)
 		var/msg
 		if(!speaking || !(speaking.language_flags & LANGUAGE_NO_TALK_MSG))
-			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
+			msg = SPAN_NOTICE("\The [src] talks into \the [used_radios[1]]")
 		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
 				M.show_message(msg)

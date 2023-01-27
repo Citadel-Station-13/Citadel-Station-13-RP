@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(smeses)
 //Will return 1 on failure
 /obj/machinery/power/smes/proc/make_terminal(const/mob/user)
 	if (user.loc == loc)
-		to_chat(user, "<span class='warning'>You must not be on the same tile as the [src].</span>")
+		to_chat(user, SPAN_WARNING("You must not be on the same tile as the [src]."))
 		return 1
 
 	//Direction the terminal will face to
@@ -216,13 +216,13 @@ GLOBAL_LIST_EMPTY(smeses)
 			tempDir = WEST
 	var/turf/tempLoc = get_step(src, REVERSE_DIR(tempDir))
 	if (istype(tempLoc, /turf/space))
-		to_chat(user, "<span class='warning'>You can't build a terminal on space.</span>")
+		to_chat(user, SPAN_WARNING("You can't build a terminal on space."))
 		return 1
 	else if (istype(tempLoc))
 		if(!tempLoc.is_plating())
-			to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
+			to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			return 1
-	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You start adding cable to the [src]."))
 	if(do_after(user, 50))
 		terminal = new /obj/machinery/power/terminal(tempLoc)
 		terminal.setDir(tempDir)
@@ -248,24 +248,24 @@ GLOBAL_LIST_EMPTY(smeses)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1
-			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
 			playsound(src, W.tool_sound, 50, 1)
 			return 0
 		else
 			open_hatch = 0
-			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
 			playsound(src, W.tool_sound, 50, 1)
 			return 0
 
 	if (!open_hatch)
-		to_chat(user, "<span class='warning'>You need to open access hatch on [src] first!</span>")
+		to_chat(user, SPAN_WARNING("You need to open access hatch on [src] first!"))
 		return 0
 
 	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
 		building_terminal = 1
 		var/obj/item/stack/cable_coil/CC = W
 		if (CC.get_amount() < 10)
-			to_chat(user, "<span class='warning'>You need more cables.</span>")
+			to_chat(user, SPAN_WARNING("You need more cables."))
 			building_terminal = 0
 			return 0
 		if (make_terminal(user))
@@ -274,8 +274,8 @@ GLOBAL_LIST_EMPTY(smeses)
 		building_terminal = 0
 		CC.use(10)
 		user.visible_message(\
-				"<span class='notice'>[user.name] has added cables to the [src].</span>",\
-				"<span class='notice'>You added cables to the [src].</span>")
+				SPAN_NOTICE("[user.name] has added cables to the [src]."),\
+				SPAN_NOTICE("You added cables to the [src]."))
 		machine_stat = NONE
 		return 0
 
@@ -284,9 +284,9 @@ GLOBAL_LIST_EMPTY(smeses)
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))
 			if(!tempTDir.is_plating())
-				to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
+				to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			else
-				to_chat(user, "<span class='notice'>You begin to cut the cables...</span>")
+				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, 50 * W.tool_speed))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
@@ -298,8 +298,8 @@ GLOBAL_LIST_EMPTY(smeses)
 							return 0
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\
-						"<span class='notice'>[user.name] cut the cables and dismantled the power terminal.</span>",\
-						"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
+						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),\
+						SPAN_NOTICE("You cut the cables and dismantle the power terminal."))
 					qdel(terminal)
 		building_terminal = 0
 		return 0

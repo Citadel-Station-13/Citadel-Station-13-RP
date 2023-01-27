@@ -20,7 +20,7 @@
 	if(!owner.canClick())
 		return
 	owner.setClickCooldown(5) // Spam prevention, essentially.
-	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
+	owner.visible_message(SPAN_DANGER("\The [owner] pulls the trigger reflexively!"))
 	var/obj/item/gun/G = aiming_with
 	if(istype(G))
 		INVOKE_ASYNC(G, /obj/item/gun/proc/Fire, aiming_at, owner, null, null, TRUE)

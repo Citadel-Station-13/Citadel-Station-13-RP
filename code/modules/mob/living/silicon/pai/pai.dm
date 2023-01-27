@@ -207,7 +207,7 @@
 	medicalActive2 = null
 	medical_cannotfind = 0
 	SSnanoui.update_uis(src)
-	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
+	to_chat(usr, SPAN_NOTICE("You reset your record-viewing software."))
 
 /mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
@@ -277,7 +277,7 @@
 		var/mob/holder = card.loc
 		var/datum/belly/inside_belly = check_belly(card)
 		if(inside_belly)
-			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
+			to_chat(src, SPAN_NOTICE("There is no room to unfold in here. You're good and stuck."))
 			return 0
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
@@ -285,7 +285,7 @@
 				if(card in affecting.implants)
 					affecting.take_damage(rand(30,50))
 					affecting.implants -= card
-					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
+					H.visible_message(SPAN_DANGER("\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!"))
 					break
 		holder.drop_item_to_ground(card, INV_OP_FORCE)
 	else if(istype(card.loc,/obj/item/pda))
@@ -371,20 +371,20 @@
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.force)
-		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
+		visible_message(SPAN_DANGER("[user.name] attacks [src] with [W]!"))
 		src.adjustBruteLoss(W.force)
 		src.updatehealth()
 	else
-		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
+		visible_message(SPAN_WARNING("[user.name] bonks [src] harmlessly with [W]."))
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
 /mob/living/silicon/pai/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HELP)
-		visible_message("<span class='notice'>[user.name] pats [src].</span>")
+		visible_message(SPAN_NOTICE("[user.name] pats [src]."))
 	else
-		visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
+		visible_message(SPAN_DANGER("[user.name] boops [src] on the head."))
 		close_up()
 
 //I'm not sure how much of this is necessary, but I would rather avoid issues.
@@ -443,16 +443,16 @@
 			switch(alert(user, "Do you wish to add access to [src] or remove access from [src]?",,"Add Access","Remove Access", "Cancel"))
 				if("Add Access")
 					idcard.access |= ID.access
-					to_chat(user, "<span class='notice'>You add the access from the [W] to [src].</span>")
+					to_chat(user, SPAN_NOTICE("You add the access from the [W] to [src]."))
 					return
 				if("Remove Access")
 					idcard.access = list()
-					to_chat(user, "<span class='notice'>You remove the access from [src].</span>")
+					to_chat(user, SPAN_NOTICE("You remove the access from [src]."))
 					return
 				if("Cancel")
 					return
 		else if (istype(W, /obj/item/card/id) && idaccessible == 0)
-			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
+			to_chat(user, SPAN_NOTICE("[src] is not accepting access modifcations at this time."))
 			return
 
 /mob/living/silicon/pai/verb/allowmodification()
@@ -462,11 +462,11 @@
 
 	if(idaccessible == 0)
 		idaccessible = 1
-		to_chat(src, "<span class='notice'>You allow access modifications.</span>")
+		to_chat(src, SPAN_NOTICE("You allow access modifications."))
 
 	else
 		idaccessible = 0
-		to_chat(src, "<span class='notice'>You block access modfications.</span>")
+		to_chat(src, SPAN_NOTICE("You block access modfications."))
 
 /mob/living/silicon/pai/verb/wipe_software()
 	set name = "Wipe Software"

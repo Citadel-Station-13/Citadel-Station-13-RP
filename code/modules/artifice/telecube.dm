@@ -116,7 +116,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(mate)
 		var/turf/T = get_turf(mate)
-		mate.visible_message("<span class='critical'>\The [mate] collapses into itself!</span>")
+		mate.visible_message(SPAN_CRITICAL("\The [mate] collapses into itself!"))
 		mate.mate = null
 		mate = null
 		explosion(T,1,3,7)
@@ -138,7 +138,7 @@
 		return .
 
 	if(A == src || A == mate)
-		A.visible_message("<span class='alien'>\The [A] distorts and fades, before popping back into existence.</span>")
+		A.visible_message(SPAN_ALIEN("\The [A] distorts and fades, before popping back into existence."))
 		return .
 
 	var/mob/living/L = src.loc
@@ -150,7 +150,7 @@
 		return .
 
 	if((A.anchored && !omniteleport) || !mate)
-		A.visible_message("<span class='alien'>\The [A] distorts for a moment, before reforming in the same position.</span>")
+		A.visible_message(SPAN_ALIEN("\The [A] distorts for a moment, before reforming in the same position."))
 		return .
 
 	var/turf/TLocate = get_turf(mate)
@@ -158,10 +158,10 @@
 	var/turf/T1 = get_turf(locate(TLocate.x + (A.x - x), TLocate.y + (A.y - y), TLocate.z))
 
 	if(T1)
-		A.visible_message("<span class='alien'>\The [A] fades out of existence.</span>")
+		A.visible_message(SPAN_ALIEN("\The [A] fades out of existence."))
 		A.forceMove(T1)
 		. = TRUE
-		A.visible_message("<span class='alien'>\The [A] fades into existence.</span>")
+		A.visible_message(SPAN_ALIEN("\The [A] fades into existence."))
 	else
 		return .
 
