@@ -27,7 +27,8 @@
 		return FALSE
 	if(!AM.can_be_pulled(src, force))
 		return FALSE
-	if(AM == pulling)
+	if(AM == pulling) // If we try to pull something we're pulling, stop pulling it.
+		stop_pulling()
 		return FALSE
 
 	// If we're pulling something then drop what we're currently pulling and pull this instead.

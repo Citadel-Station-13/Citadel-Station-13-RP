@@ -126,7 +126,10 @@
 		climbers -= user
 		return
 
-	usr.forceMove(get_turf(src))
+	var/old = pass_flags & (ATOM_PASS_BUCKLED)
+	pass_flags |= ATOM_PASS_BUCKLED
+	usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
+	pass_flags = (pass_flags & ~(ATOM_PASS_BUCKLED)) | (old & ATOM_PASS_BUCKLED)
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")

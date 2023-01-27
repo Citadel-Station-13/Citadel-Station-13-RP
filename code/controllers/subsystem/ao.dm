@@ -3,38 +3,43 @@ SUBSYSTEM_DEF(ao)
 	init_order = INIT_ORDER_MISC_LATE
 	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
-	subsystem_flags = SS_NO_INIT
 
-	var/static/list/image_cache = list()
-	var/static/list/turf/queue  = list()
-
+	var/idex = 1
+	var/list/image_cache = list()
+	var/list/turf/queue = list()
 
 /datum/controller/subsystem/ao/stat_entry()
 	return ..() + "Queue: [queue.len]"
 
-/datum/controller/subsystem/ao/fire(resume = FALSE, no_mc_tick = FALSE)
-	if (!queue.len)
-		return
+/datum/controller/subsystem/ao/Initialize(start_timeofday)
+	fire(FALSE, TRUE)
+	..()
 
-	var/cut_until = 1
-	for (var/turf/turf as anything in queue)
-		++cut_until
+/datum/controller/subsystem/ao/fire(resumed = 0, no_mc_tick = FALSE)
+	if (!resumed)
+		idex = 1
 
-		if(QDELETED(turf))
-			continue
+	var/list/curr = queue
+	while (idex <= curr.len)
+		var/turf/target = curr[idex]
+		idex += 1
 
-		if (turf.ao_queued == AO_UPDATE_REBUILD)
-			var/previous_neighbours = turf.ao_junction
-			turf.calculate_ao_junction()
-			if (previous_neighbours != turf.ao_junction)
-				turf.update_ao()
-
-		turf.ao_queued = AO_UPDATE_NONE
+		if (!QDELETED(target))
+			if (target.ao_queued == AO_UPDATE_REBUILD)
+				var/old_n = target.ao_junction
+				var/old_z = target.ao_junction_mimic
+				target.calculate_ao_junction()
+				if (old_n != target.ao_junction || old_z != target.ao_junction_mimic)
+					target.update_ao()
+			else
+				target.update_ao()
+			target.ao_queued = AO_UPDATE_NONE
 
 		if (no_mc_tick)
 			CHECK_TICK
 		else if (MC_TICK_CHECK)
-			queue.Cut(1, cut_until)
-			return
+			break
 
-	queue.len = 0
+	if (idex > 1)
+		curr.Cut(1, idex)
+		idex = 1

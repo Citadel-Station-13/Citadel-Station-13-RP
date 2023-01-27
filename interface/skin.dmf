@@ -216,7 +216,7 @@ window "outputwindow"
 		anchor2 = -1,-1
 		saved-params = ""
 		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		command = "Toggle-Hotkeys"
 		button-type = pushbox
 	elem "output"
 		type = OUTPUT
