@@ -81,14 +81,14 @@
 		/datum/crafting_recipe/primalretractor, /datum/crafting_recipe/primalhemostat, /datum/crafting_recipe/primalcautery, /datum/crafting_recipe/primalscalpel, /datum/crafting_recipe/primalsaw,
 		/datum/crafting_recipe/primalsetter, /datum/crafting_recipe/bone_crowbar, /datum/crafting_recipe/bone_screwdriver, /datum/crafting_recipe/bone_wrench, /datum/crafting_recipe/bone_wirecutters,
 		/datum/crafting_recipe/bone_welder, /datum/crafting_recipe/munition_box, /datum/crafting_recipe/powder_horn, /datum/crafting_recipe/bonesword, /datum/crafting_recipe/bonesword_elder,
-		/datum/crafting_recipe/saddle
+		/datum/crafting_recipe/saddle, /obj/item/pickaxe/bone
 	)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
 		if("nomad")
-			return /datum/outfit/ashlander
+			return /datum/outfit/ashlander/nomad
 		if("craftsman")
 			return /datum/outfit/ashlander/craftsman
 		if("farmer")

@@ -53,7 +53,7 @@
 	M.faction = "pirate"
 	switch(params["fluff"])
 		if("immigrant")
-			return /datum/outfit/pirate
+			return /datum/outfit/pirate/immigrant
 		if("dilettante")
 			return /datum/outfit/pirate/dilettante
 		if("professional")

@@ -5,7 +5,7 @@
 	category = SPECIES_CATEGORY_RESTRICTED
 	default_language = LANGUAGE_ID_EVENT_1
 	intrinsic_languages = LANGUAGE_ID_EVENT_1
-	max_additional_languages = 2
+	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	rarity_value = 4
 
@@ -48,7 +48,7 @@
 	exhale_type = /datum/gas/oxygen
 	minimum_breath_pressure = 11
 	oxy_mod = 0.25
-	heat_discomfort_level = T0C+10
+	heat_discomfort_level = T0C+20
 	warning_low_pressure = 10
 	hazard_low_pressure  = 5
 	safe_pressure = 18
