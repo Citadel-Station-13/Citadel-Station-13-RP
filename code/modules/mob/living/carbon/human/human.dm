@@ -4,6 +4,8 @@
  * specieslike resolver = species datum, id, path, or name.
  */
 /mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
+	// todo: rework this entire init sequence, dna/species shouldn't be entirely in conjunction and it's probably dumb to set dna then species
+	// todo: init_dna?? reset_dna??
 	. = ..()
 
 	if(!dna)
@@ -13,7 +15,7 @@
 	if(specieslike)
 		set_species(specieslike, force = TRUE, regen_icons = FALSE)
 	else
-		reset_species(force = TRUE)
+		reset_species(force = TRUE, initializing = TRUE)
 
 	if(!species)
 		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
@@ -1195,7 +1197,9 @@
  * 2. species var (aka prototype species)
  * 3. human
  */
-/mob/living/carbon/human/proc/reset_species(force)
+/mob/living/carbon/human/proc/reset_species(force, initializing)
+	if(initializing && ispath(species))
+		return set_species(species, force = force)
 	if(dna?.species)
 		return set_species(dna.species, force = force)
 	else if(ispath(species))
