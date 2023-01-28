@@ -67,7 +67,6 @@
 #include "code\__DEFINES\movespeed_modification.dm"
 #include "code\__DEFINES\objects.dm"
 #include "code\__DEFINES\parameters_world.dm"
-#include "code\__DEFINES\persistence.dm"
 #include "code\__DEFINES\planets.dm"
 #include "code\__DEFINES\plants.dm"
 #include "code\__DEFINES\qdel.dm"
