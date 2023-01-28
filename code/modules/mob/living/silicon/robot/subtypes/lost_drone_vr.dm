@@ -22,7 +22,7 @@
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
 
 	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	module = new /obj/item/robot_module/robot/stray(src)
+	module = new /obj/item/robot_module/robot/quad/stray(src)
 	cut_overlays()
 	init_id()
 

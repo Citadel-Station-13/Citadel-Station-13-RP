@@ -780,13 +780,22 @@
 	return
 
 /mob/living/silicon/robot/proc/module_reset()
+	shown_robot_modules = FALSE
+	if (client)
+		hud_used.update_robot_modules_display()
 	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
 
+	lights_on = FALSE
+	radio.set_light(0)
+
 	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
 	module.Reset(src)
+
+	choose_icon(0, set_module_sprites(list("Default" = "robot")))
+
 	qdel(module)
 	module = null
 	updatename("Default")
@@ -872,6 +881,10 @@
 		if(req in access_found) //have one of the required accesses
 			return 1
 	return 0
+
+/mob/living/silicon/robot/update_canmove()
+	. = ..()
+	updateicon()
 
 /mob/living/silicon/robot/updateicon()
 	if (wideborg)
