@@ -1936,10 +1936,6 @@
 /area/tether_away/beach/jungle)
 "oF" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/paper{
-	name = "Engineer's Note";
-	info = "TO-DO LIST: [br]1. Fix the Ripley (Not happening without special parts the leg hydraulics are snapped in two) [br]2. Fix the Mine Train (I swear something new is stripped from it everytime I move away just order a new one.) [br]3. Check the RTG at the tunnel (They will be fine)[br]4. Check Pumps at Desalination plant (Still broke) [br]5. Spray Insectiside on old industrial equipment (Later) [br]6. Drink and swim and beg to S'rendarr that I get off this cursed rock."
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/mineyard)
 "oK" = (
