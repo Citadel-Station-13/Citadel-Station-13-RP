@@ -280,13 +280,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
 
-	if(GLOB.player_details[ckey])
-		player_details = GLOB.player_details[ckey]
-		player_details.byond_version = full_version
-	else
-		player_details = new(ckey)
-		player_details.byond_version = full_version
-		GLOB.player_details[ckey] = player_details
 	*/
 
 	//! WARNING: mob.login is always called async, aka immediately returns on sleep.
