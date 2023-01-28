@@ -3,9 +3,10 @@
 /obj/effect/overmap/visitable/sector/miaphus
 	name = "Miaphus'irra"
 	desc = "A former Tajaran penal colony turned NT client state."
-	scanner_desc = @{"[i]Stellar Body[/i]: Virgo 4
+	scanner_desc = @{"[i]Stellar Body[/i]: Miaphus'iurra
 [i]Class[/i]: H-Class Planet
 [i]Habitability[/i]: Moderate (High Temperature)
+[i]Population[/i]: 60,000
 [i]Controlling Goverment[/i]: Hadii's Folly Confederation of Freeholds
 [b]Relationship with NT[/b]: Nanotrasen Client Goverment.
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control (Natrik Region), System Self Defence Assistance."}
