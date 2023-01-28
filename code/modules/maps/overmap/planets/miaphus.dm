@@ -3,7 +3,7 @@
 /obj/effect/overmap/visitable/sector/miaphus
 	name = "Miaphus'irra"
 	desc = "A former Tajaran penal colony turned NT client state."
-	scanner_desc = @{"[i]Stellar Body[/i]: Miaphus'iurra
+	scanner_desc = @{"[i]Stellar Body[/i]: Miaphus'irra
 [i]Class[/i]: H-Class Planet
 [i]Habitability[/i]: Moderate (High Temperature)
 [i]Population[/i]: 60,000
