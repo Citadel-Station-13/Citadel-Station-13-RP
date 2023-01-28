@@ -4,6 +4,7 @@
 		if(!category.spawn_checks(src, flags, errors, warnings))
 			. = FALSE
 	#warn "ARE YOU SURE ABOUT THAT?" usage for warnings
+	#warn  prefs "ARE YOU ABSOLUTELY SURE" for: 1. ooc notes, 2. flavor text, 3. skills, 4. background options being defaulted
 
 // todo: at some point we should support nonhuman copy to's better.
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags)

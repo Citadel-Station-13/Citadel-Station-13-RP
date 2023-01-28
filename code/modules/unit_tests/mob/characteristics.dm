@@ -1,5 +1,2 @@
-
-#warn test ids
-#warn test datatypes on stats and default values
-#warn test default values on skills
-#warn etc
+/datum/unit_test/characteristics/Run()
+	// todo: uniqueness on ids, but not yet
