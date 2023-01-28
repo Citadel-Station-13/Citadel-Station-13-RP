@@ -8,7 +8,7 @@
 [i]Habitability[/i]: Moderate (High Temperature)
 [i]Population[/i]: 60,000
 [i]Controlling Goverment[/i]: Hadii's Folly Confederation of Freeholds
-[b]Relationship with NT[/b]: Nanotrasen Client Goverment.
+[b]Relationship with NT[/b]: Nanotrasen Client Government.
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control (Natrik Region), System Self Defence Assistance."}
 
 	icon_state = "globe"
