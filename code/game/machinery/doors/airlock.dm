@@ -613,7 +613,7 @@
 	//color = ""
 
 /obj/machinery/door/airlock/security/armory/allowed(mob/user)
-	if(get_security_level() in list("green","blue"))
+	if(SSsecurity_level.get_current_level_as_text() in list("green","blue"))
 		return FALSE
 
 	return ..(user)

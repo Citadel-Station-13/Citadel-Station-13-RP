@@ -1,4 +1,3 @@
-GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 //0 = code green
 //1 = code blue
 //2 = code yellow

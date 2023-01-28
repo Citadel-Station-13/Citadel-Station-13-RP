@@ -265,7 +265,7 @@
 
 /// Speed modification based on alert level.
 /mob/living/bot/proc/handlePanic()
-	switch(get_security_level())
+	switch(SSsecurity_level.get_current_level_as_number())
 		if(SEC_LEVEL_GREEN)
 			return 0
 

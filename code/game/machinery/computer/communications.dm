@@ -81,16 +81,16 @@
 
 		if("swipeidseclevel")
 			if(src.authenticated) //Let heads change the alert level.
-				var/old_level = GLOB.security_level
+				var/old_level = SSsecurity_level.get_current_level_as_number()
 				if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel > SEC_LEVEL_RED) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
-				set_security_level(tmp_alertlevel)
-				if(GLOB.security_level != old_level)
+				SSsecurity_level.set_level(tmp_alertlevel)
+				if(SSsecurity_level.get_current_level_as_number() != old_level)
 					//Only notify the admins if an actual change happened
-					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-					message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-					switch(GLOB.security_level)
+					log_game("[key_name(usr)] has changed the security level to [SSsecurity_level.get_current_level_as_text()].")
+					message_admins("[key_name_admin(usr)] has changed the security level to [SSsecurity_level.get_current_level_as_text()].")
+					switch(SSsecurity_level.get_current_level_as_number())
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
 						if(SEC_LEVEL_BLUE)
@@ -396,8 +396,8 @@
 				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
 				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
 		if(STATE_ALERT_LEVEL)
-			dat += "Current alert level: [get_security_level()]<BR>"
-			if(GLOB.security_level == SEC_LEVEL_DELTA)
+			dat += "Current alert level: [SSsecurity_level.get_current_level_as_text()]<BR>"
+			if(SSsecurity_level.get_current_level_as_number() == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The ship is in immediate danger of destruction. Find a way to neutralize the threat to lower the alert level or evacuate.</b></font>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
@@ -406,8 +406,8 @@
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 		if(STATE_CONFIRM_LEVEL)
-			dat += "Current alert level: [get_security_level()]<BR>"
-			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
+			dat += "Current alert level: [SSsecurity_level.get_current_level_as_text()]<BR>"
+			dat += "Confirm the change to: [SSsecurity_level.number_level_to_text(tmp_alertlevel)]<BR>"
 			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>OK</A> to confirm change.<BR>"
 
 	dat += "<BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"

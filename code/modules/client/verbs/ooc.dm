@@ -14,7 +14,7 @@
 	var/color
 	var/desc
 	//borrow the same colors from the fire alarms
-	switch(get_security_level())
+	switch(SSsecurity_level.get_current_level_as_text())
 		if("green")
 			color = "#00ff00"
 			desc = "" //no special description if nothing special is going on
@@ -36,7 +36,7 @@
 		if("delta")
 			color = "#FF6633"
 			desc = CONFIG_GET(string/alert_desc_delta)
-	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")
+	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(SSsecurity_level.get_current_level_as_text())]</font>. [desc]")
 
 /client/proc/ooc_wrapper()
 	var/message = input("","ooc (text)") as text|null

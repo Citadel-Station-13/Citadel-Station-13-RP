@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(vote)
 				gamemode_names["secret"] = "Secret"
 			if(VOTE_CREW_TRANSFER)
 				if(!check_rights(R_ADMIN|R_MOD, 0)) // The gods care not for the affairs of the mortals
-					if(get_security_level() == "red" || get_security_level() == "delta")
+					if(SSsecurity_level.get_current_level_as_text() == "red" || SSsecurity_level.get_current_level_as_text() == "delta")
 						to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
 						return 0
 					if(SSticker.current_state <= GAME_STATE_SETTING_UP)

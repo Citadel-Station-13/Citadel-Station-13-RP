@@ -16,7 +16,7 @@ var/can_call_traders = 1
 		return
 	if(alert("Do you want to hire Nebula Gas attendants?",,"Yes","No") != "Yes")
 		return
-	if(get_security_level() == "red") // Allow admins to reconsider if the alert level is Red
+	if(SSsecurity_level.get_current_level_as_text() == "red") // Allow admins to reconsider if the alert level is Red
 		switch(alert("The station is in red alert. Do you still want to hire traders?",,"Yes","No"))
 			if("No")
 				return

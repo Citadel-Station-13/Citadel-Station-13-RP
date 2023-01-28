@@ -403,7 +403,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(GLOB.using_map)
 		. += "[GLOB.using_map.station_short], "
 
-	. += "[get_security_level()] alert, "
+	. += "[SSsecurity_level.get_current_level_as_text()] alert, "
 
 	. += "[GLOB.clients.len] players"
 

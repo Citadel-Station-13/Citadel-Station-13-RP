@@ -62,8 +62,8 @@
 	data["state"] = current_status
 	data["isAI"] = issilicon(usr)
 	data["authenticated"] = get_authentication_level(user)
-	data["current_security_level"] = GLOB.security_level
-	data["current_security_level_title"] = num2seclevel(GLOB.security_level)
+	data["current_security_level"] = SSsecurity_level.get_current_level_as_number()
+	data["current_security_level_title"] = SSsecurity_level.get_current_level_as_text()
 
 	data["def_SEC_LEVEL_DELTA"] = SEC_LEVEL_DELTA
 	data["def_SEC_LEVEL_YELLOW"] = SEC_LEVEL_YELLOW
@@ -208,17 +208,17 @@
 			. = 1
 			if(get_authentication_level(user) && !issilicon(usr) && ntn_cont && ntn_comm)
 				var/current_level = text2num(href_list["target"])
-				var/confirm = alert("Are you sure you want to change alert level to [num2seclevel(current_level)]?", name, "No", "Yes")
+				var/confirm = alert("Are you sure you want to change alert level to [SSsecurity_level.number_level_to_text(current_level)]?", name, "No", "Yes")
 				if(confirm == "Yes" && can_still_topic())
-					var/old_level = GLOB.security_level
+					var/old_level = SSsecurity_level.get_current_level_as_number()
 					if(!current_level) current_level = SEC_LEVEL_GREEN
 					if(current_level < SEC_LEVEL_GREEN) current_level = SEC_LEVEL_GREEN
 					if(current_level > SEC_LEVEL_BLUE) current_level = SEC_LEVEL_BLUE //Cannot engage delta with this
-					set_security_level(current_level)
-					if(GLOB.security_level != old_level)
-						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-						switch(GLOB.security_level)
+					SSsecurity_level.set_level(current_level)
+					if(SSsecurity_level.get_current_level_as_number() != old_level)
+						log_game("[key_name(usr)] has changed the security level to [SSsecurity_level.get_current_level_as_text()].")
+						message_admins("[key_name_admin(usr)] has changed the security level to [SSsecurity_level.get_current_level_as_text()].")
+						switch(SSsecurity_level.get_current_level_as_number())
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
 							if(SEC_LEVEL_YELLOW)

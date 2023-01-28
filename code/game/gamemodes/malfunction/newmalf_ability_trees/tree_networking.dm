@@ -131,7 +131,7 @@
 			user.hack_fails ++
 			announce_hack_failure(user, "alert control system")
 		return
-	set_security_level(alert_target)
+	SSsecurity_level.set_level(alert_target)
 
 
 /datum/game_mode/malfunction/verb/system_override()

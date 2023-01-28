@@ -81,6 +81,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CHARACTERS      98
 #define INIT_ORDER_SOUNDS          95
 #define INIT_ORDER_VIS             80
+#define INIT_ORDER_SECURITY_LEVEL  75
 #define INIT_ORDER_GARBAGE         70
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_TIMER           60

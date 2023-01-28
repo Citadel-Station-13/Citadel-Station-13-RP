@@ -25,7 +25,7 @@ var/silent_ert = 0
 		return
 	if(alert("Do you want this Response Team to be announced?",,"Yes","No") != "Yes")
 		silent_ert = 1
-	if(get_security_level() != "red") // Allow admins to reconsider if the alert level isn't Red
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED) // Allow admins to reconsider if the alert level isn't Red
 		switch(alert("The station is not in red alert. Do you still want to dispatch a response team?",,"Yes","No"))
 			if("No")
 				return
@@ -88,21 +88,23 @@ var/silent_ert = 0
 // the more likely an ERT is to be able to be called.
 /proc/increment_ert_chance()
 	while(send_emergency_team == 0) // There is no ERT at the time.
-		if(get_security_level() == "green")
-			ert_base_chance += 1
-		if(get_security_level() == "yellow")
-			ert_base_chance += 1
-		if(get_security_level() == "violet")
-			ert_base_chance += 2
-		if(get_security_level() == "orange")
-			ert_base_chance += 2
-		if(get_security_level() == "blue")
-			ert_base_chance += 2
-		if(get_security_level() == "red")
-			ert_base_chance += 3
-		if(get_security_level() == "delta")
-			ert_base_chance += 10           // Need those big guns
-		sleep(600 * 3) // Minute * Number of Minutes
+		var/security_level = SSsecurity_level.get_current_level_as_text()
+		switch(security_level)
+			if("green")
+				ert_base_chance += 1
+			if("yellow")
+				ert_base_chance += 1
+			if("violet")
+				ert_base_chance += 2
+			if("orange")
+				ert_base_chance += 2
+			if("blue")
+				ert_base_chance += 2
+			if("red")
+				ert_base_chance += 3
+			if("delta")
+				ert_base_chance += 10           // Need those big guns
+		sleep(3 MINUTES) // Minute * Number of Minutes
 
 
 /proc/trigger_armed_response_team(var/force = 0)

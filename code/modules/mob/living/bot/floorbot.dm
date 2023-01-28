@@ -343,7 +343,7 @@
 
 /mob/living/bot/floorbot/handlePanic()	// Speed modification based on alert level.
 	. = 0
-	switch(get_security_level())
+	switch(SSsecurity_level.get_current_level_as_number())
 		if("green")
 			. = 0
 

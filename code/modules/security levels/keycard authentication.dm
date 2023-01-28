@@ -163,7 +163,7 @@
 /obj/machinery/keycard_auth/proc/trigger_event()
 	switch(event)
 		if("Red alert")
-			set_security_level(SEC_LEVEL_RED)
+			SSsecurity_level.set_level(SEC_LEVEL_RED)
 			feedback_inc("alert_keycard_auth_red",1)
 		if("Grant Emergency Maintenance Access")
 			make_maint_all_access()

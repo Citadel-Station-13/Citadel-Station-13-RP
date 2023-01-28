@@ -925,9 +925,9 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(!check_rights(R_ADMIN))	return
-	var sec_level = input(usr, "It's currently code [get_security_level()].", "Select Security Level")  as null|anything in (list("green","blue", "yellow","violet","orange","red","delta")-get_security_level())
-	if(alert("Switch from code [get_security_level()] to code [sec_level]?","Change security level?","Yes","No") == "Yes")
-		set_security_level(sec_level)
+	var sec_level = input(usr, "It's currently code [SSsecurity_level.get_current_level_as_text()].", "Select Security Level")  as null|anything in (list("green","blue", "yellow","violet","orange","red","delta")-SSsecurity_level.get_current_level_as_text())
+	if(alert("Switch from code [SSsecurity_level.get_current_level_as_text()] to code [sec_level]?","Change security level?","Yes","No") == "Yes")
+		SSsecurity_level.set_level(sec_level)
 		log_admin("[key_name(usr)] changed the security level to code [sec_level].")
 
 

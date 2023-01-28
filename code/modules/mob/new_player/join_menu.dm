@@ -92,23 +92,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/ui_data(mob/user)
 	var/list/data = ..()
 	// common info goes into ui data
-	var/level = "green"
-	switch(GLOB.security_level)
-		if(SEC_LEVEL_BLUE)
-			level = "blue";
-		if(SEC_LEVEL_ORANGE)
-			level = "orange";
-		if(SEC_LEVEL_VIOLET)
-			level = "violet";
-		if(SEC_LEVEL_YELLOW)
-			level = "yellow";
-		if(SEC_LEVEL_GREEN)
-			level = "green";
-		if(SEC_LEVEL_RED)
-			level = "red";
-		else
-			level = "delta";
-	data["security_level"] = level
+	data["security_level"] = SSsecurity_level.get_current_level_as_text()
 	// todo: have js render this, not us
 	data["duration"] = DisplayTimeText(round(world.time - SSticker.round_start_time, 10))
 	// 0 = not evaccing, 1 = evacuating, 2 = crew transfer, 3 = evacuated
