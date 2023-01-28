@@ -38,7 +38,7 @@
 //**Species-Specific Datum Declarations
 //*Tajaran
 /datum/gear/xeno/tajaran
-	legacy_species_lock = SPECIES_TAJ
+	// legacy_species_lock = SPECIES_TAJ
 
 /datum/gear/xeno/tajaran/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -63,7 +63,7 @@
 
 //*Promethean
 /datum/gear/xeno/promethean
-	legacy_species_lock = SPECIES_PROMETHEAN
+	// legacy_species_lock = SPECIES_PROMETHEAN
 
 /datum/gear/xeno/promethean/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -187,7 +187,7 @@
 
 //*Unathi
 /datum/gear/xeno/unathi
-	legacy_species_lock = SPECIES_UNATHI
+	// legacy_species_lock = SPECIES_UNATHI
 
 /datum/gear/xeno/unathi/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
