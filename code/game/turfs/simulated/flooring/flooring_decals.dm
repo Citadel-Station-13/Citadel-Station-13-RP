@@ -17,8 +17,7 @@ var/list/floor_decals = list()
 	// Our actual layer ingame.
 	layer = FLOOR_DECAL_LAYER
 	#endif
-	
-	layer = TURF_DETAIL_LAYER
+
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
