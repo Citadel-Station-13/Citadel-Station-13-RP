@@ -614,6 +614,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/canteen)
+"du" = (
+/obj/structure/bed/chair/bay,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/station/terminal)
 "dx" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1675,12 +1679,6 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/mineshaft)
-"mw" = (
-/obj/structure/bed/chair/bay{
-	dir = 1
-	},
-/turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
 "mx" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood/broken,
@@ -1940,7 +1938,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/paper{
 	name = "Engineer's Note";
-	info = "TO-DO LIST: /[br]1. Fix the Ripley (Not happening without special parts the leg hydraulics are snapped in two) /[br]2. Fix the Mine Train (I swear something new is stripped from it everytime I move away just order a new one.) /[br]3. Check the RTG at the tunnel (They will be fine)/[br]4. Check Pumps at Desalination plant (Still broke) /[br]5. Spray Insectiside on old industrial equipment (Later) /[br]6. Drink and swim and beg to S'rendarr that I get off this cursed rock."
+	info = "TO-DO LIST: [br]1. Fix the Ripley (Not happening without special parts the leg hydraulics are snapped in two) [br]2. Fix the Mine Train (I swear something new is stripped from it everytime I move away just order a new one.) [br]3. Check the RTG at the tunnel (They will be fine)[br]4. Check Pumps at Desalination plant (Still broke) [br]5. Spray Insectiside on old industrial equipment (Later) [br]6. Drink and swim and beg to S'rendarr that I get off this cursed rock."
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/mineyard)
@@ -2298,7 +2296,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/jungle)
+/area/tether_away/beach/resort)
 "rP" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -2444,6 +2442,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/canteen)
+"ta" = (
+/obj/mecha/working/ripley/mining/old,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "tc" = (
 /obj/machinery/power/rtg/fake_gen,
 /obj/structure/cable,
@@ -2745,6 +2749,12 @@
 "vm" = (
 /turf/simulated/wall/rthull,
 /area/tether_away/beach/station)
+"vo" = (
+/obj/structure/bed/chair/bay{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether_away/beach/station/terminal)
 "vp" = (
 /obj/structure/salvageable/autolathe,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2865,10 +2875,6 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
-"ww" = (
-/obj/structure/bed/chair/bay,
-/turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
 "wy" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 8
@@ -3850,10 +3856,6 @@
 /obj/item/flashlight/color,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
-"FZ" = (
-/obj/structure/sign/warning/high_voltage,
-/turf/simulated/wall,
-/area/tether_away/beach/station/tunnel)
 "Gi" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack3"
@@ -4111,10 +4113,6 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand,
 /area/tether_away/beach/jungle)
-"IH" = (
-/obj/structure/bed/chair/bay,
-/turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
 "IK" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
@@ -4258,6 +4256,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
+"Kg" = (
+/obj/structure/bed/chair/bay{
+	dir = 1
+	},
+/turf/simulated/floor/wood/broken,
+/area/tether_away/beach/station/terminal)
 "Ki" = (
 /obj/structure/railing{
 	dir = 1
@@ -4326,6 +4330,10 @@
 "KN" = (
 /turf/simulated/wall/wood,
 /area/tether_away/beach/coast)
+"KR" = (
+/obj/structure/bed/chair/bay,
+/turf/simulated/floor/wood/broken,
+/area/tether_away/beach/station/terminal)
 "KT" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4361,6 +4369,10 @@
 "Lj" = (
 /turf/unsimulated/mineral,
 /area/tether_away/beach/coast)
+"Lo" = (
+/obj/structure/sign/warning/high_voltage,
+/turf/simulated/wall,
+/area/tether_away/beach/station/tunnel)
 "Lp" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -4533,6 +4545,15 @@
 	dir = 10
 	},
 /area/tether_away/beach/coast)
+"ML" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/structure/sign/warning/high_voltage,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/station)
 "MN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	name = "water pipe";
@@ -4932,12 +4953,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station/tram)
-"QF" = (
-/obj/structure/bed/chair/bay{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
 "QH" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/salvageable/personal,
@@ -5592,12 +5607,6 @@
 /obj/machinery/scale,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
-"WW" = (
-/obj/mecha/working/ripley/mining/old,
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
-	},
-/area/tether_away/beach/mineshaft)
 "WX" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	name = "water pipe";
@@ -5905,15 +5914,6 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
-"ZY" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/structure/sign/warning/high_voltage,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/tether_away/beach/station)
 
 (1,1,1) = {"
 zV
@@ -10041,7 +10041,7 @@ xy
 hK
 xy
 xy
-WW
+ta
 ZC
 ZC
 zV
@@ -30275,7 +30275,7 @@ zw
 lI
 lI
 lI
-aa
+lI
 CC
 uO
 ak
@@ -30466,10 +30466,10 @@ qU
 UR
 zw
 zw
-aa
-aa
-aa
-aa
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -30659,11 +30659,11 @@ vm
 qU
 UR
 zw
-SK
-aa
-aa
-aa
-aa
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -30852,12 +30852,12 @@ HP
 Lh
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -31037,7 +31037,7 @@ Nv
 Nv
 Nv
 Nv
-ZY
+ML
 qU
 RF
 HP
@@ -31045,13 +31045,13 @@ HP
 HP
 Lh
 qU
-ZY
-SK
-SK
-aa
-aa
-ab
-bh
+ML
+zw
+zw
+lI
+lI
+hg
+us
 CC
 uO
 ak
@@ -31240,12 +31240,12 @@ HP
 vm
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -31434,12 +31434,12 @@ CO
 vm
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -31628,12 +31628,12 @@ cf
 vm
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -31822,12 +31822,12 @@ vm
 vm
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -32016,12 +32016,12 @@ qU
 Zj
 qU
 UR
-SK
-SK
-aa
-aa
-aa
-aa
+zw
+zw
+lI
+lI
+lI
+lI
 CC
 uO
 ak
@@ -32210,12 +32210,12 @@ Ox
 hZ
 qU
 UR
-SK
-SK
-ab
-aa
-aa
-aa
+zw
+zw
+hg
+lI
+lI
+lI
 CC
 uO
 ak
@@ -32404,12 +32404,12 @@ dx
 wO
 qU
 UR
-SK
-SK
-SK
-aa
-aa
-aa
+zw
+zw
+zw
+lI
+lI
+lI
 jh
 gM
 oW
@@ -32598,11 +32598,11 @@ Ch
 wO
 qU
 UR
-SK
-SK
-SK
-SK
-SK
+zw
+zw
+zw
+zw
+zw
 rM
 aK
 aK
@@ -32792,11 +32792,11 @@ eF
 wO
 qU
 UR
-SK
-SK
-SK
-SK
-SK
+zw
+zw
+zw
+zw
+zw
 rM
 aK
 aK
@@ -32977,7 +32977,7 @@ Nv
 Nv
 Nv
 Nv
-ZY
+ML
 qU
 wO
 wO
@@ -33375,8 +33375,8 @@ dx
 fW
 ra
 tq
-mw
-IH
+Kg
+du
 qC
 ra
 iH
@@ -34733,8 +34733,8 @@ wO
 fW
 ra
 qC
-QF
-ww
+vo
+KR
 qC
 ra
 iH
@@ -35111,7 +35111,7 @@ bq
 bq
 bq
 bq
-FZ
+Lo
 qd
 wO
 dx
@@ -35119,7 +35119,7 @@ dx
 dx
 wO
 qd
-FZ
+Lo
 fT
 fT
 fT
