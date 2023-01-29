@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!mouseover)
 		return FALSE
 	// Verify if we should be showing a highlight at all.
-	if(!istype(object, /atom/movable) || istype(object, /mob) || (check_adjacency && !mob.Adjacent(object)))
+	if(!istype(object, /atom/movable) || istype(object, /mob) || istype(object, /obj/structure) || (check_adjacency && !mob.Adjacent(object)))
 		addtimer(CALLBACK(PROC_REF(delete_mouseover_images)), 1 SECOND, TIMER_UNIQUE | TIMER_OVERRIDE)
 		return FALSE
 //	var/list/modifiers = params2list(params)
