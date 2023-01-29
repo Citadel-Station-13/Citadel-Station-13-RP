@@ -155,5 +155,12 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 /datum/character/proc/read_persist_data(list/data)
 	return
 
+/**
+ * changes the name of this character
+ * only ever change names this way, this'll handle the necessary updates, within the subsystem and on /datum/player's.
+ */
+/datum/character/proc/immediate_rename(new_name)
+	#warn impl
+
 /datum/character/human
 	character_type = "human"
