@@ -45,7 +45,7 @@
 	var/turf/T = get_turf(nano_host())
 	var/list/levels = list()
 	if(T)
-		levels += using_map_legacy().get_map_levels(T.z, FALSE)
+		levels += SSmapping.get_connected_levels(T.z, long_range = FALSE)
 	for(var/obj/machinery/power/sensor/S in GLOB.machines)
 		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!

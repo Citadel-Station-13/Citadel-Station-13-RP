@@ -312,7 +312,7 @@
 		return 1
 
 	//Where can we hear?
-	var/list/listening_levels = using_map_legacy().get_map_levels(listening_level, TRUE, overmap_range)
+	var/list/listening_levels = SSmapping.get_connected_levels(listening_level, overmap_range, TRUE)
 
 	// We couldn't 'hear' it, maybe a relay linked to our hub can 'hear' it
 	if(!(signal.data["level"] in listening_levels))
@@ -696,4 +696,4 @@
 	if(ad_hoc && src_z == dst_z)
 		return TRUE
 
-	return src_z in using_map_legacy().get_map_levels(dst_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	return src_z in SSmapping.get_connected_levels(dst_z, long_range = TRUE)
