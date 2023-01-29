@@ -101,9 +101,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			color = mouseover_rainbow ? rgb(rand(0,255),rand(0,255),rand(0,255)) : "#0082c6",
 			size = 4,
 			offset = 2, x = 0, y = 0
-			)
 		)
-	animate(mouseover_highlight_dummy, pixel_y = 24, time = 0.5 SECONDS, easing = ELASTIC_EASING, alpha = 180)
+	)
+	animate(mouseover_highlight_dummy, pixel_y = 24, time = 0.5 SECONDS, easing = ELASTIC_EASING, alpha = 180, maptext_y = 24)
+
+
 	// Replanes the overlays to avoid explicit plane/layer setting (such as
 	// computer overlays) interfering with the ordering of the highlight.
 	if(length(mouseover_highlight_dummy.overlays))
@@ -122,7 +124,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			MA.layer = FLOAT_LAYER
 			LAZYADD(replaned_underlays, MA)
 		mouseover_highlight_dummy.underlays = replaned_underlays
-
+	mouseover_highlight_dummy.maptext_width = 128
+	mouseover_highlight_dummy.maptext_x = -48
+	mouseover_highlight_dummy.maptext = MAPTEXT_CENTER(AM)
 	// Finally update our highlight's vis contents and location .
 	clear_vis_contents(current_highlight)
 	add_vis_contents(current_highlight, mouseover_highlight_dummy)
