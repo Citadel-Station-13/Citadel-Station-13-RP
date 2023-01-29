@@ -3,11 +3,16 @@
  */
 /datum/controller/subsystem/persistence
 	/// loaded characters - "[id]" = /datum/character instance
-	var/list/loaded = list()
+	var/list/character_cache = list()
 
-#warn impl
-
-/datum/controller/subsystem/persistence/proc/save(datum/character/char)
+/**
+ * flushes a character to db
+ * a new character is valid to save this way.
+ *
+ * @params
+ * * char - character datum
+ */
+/datum/controller/subsystem/persistence/proc/save_character(datum/character/char)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -18,7 +23,15 @@
 	// resume admin proccall guard
 	usr = __oldusr
 
-/datum/controller/subsystem/persistence/proc/load_all(playerid)
+/**
+ * fetches a character datum
+ * you should not hold references to it yourself
+ * refetch when you need it!
+ *
+ * @params
+ * * id - character id
+ */
+/datum/controller/subsystem/persistence/proc/fetch_character(id)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -29,7 +42,14 @@
 	// resume admin proccall guard
 	usr = __oldusr
 
-/datum/controller/subsystem/persistence/proc/load_id(char_id)
+/**
+ * returns a list of character ids for a player
+ *
+ * @params
+ * * playerid - player id
+ * * fetch - fetch the character datums in the process
+ */
+/datum/controller/subsystem/persistence/proc/query_characters(playerid, fetch = FALSE)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -40,7 +60,13 @@
 	// resume admin proccall guard
 	usr = __oldusr
 
-/datum/controller/subsystem/persistence/proc/load_dynamic(playerid, cname, ctype)
+/**
+ * mark a character as having played
+ *
+ * @params
+ * * id - character id
+ */
+/datum/controller/subsystem/persistence/proc/character_played(id)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -50,30 +76,6 @@
 
 	// resume admin proccall guard
 	usr = __oldusr
-
-/datum/controller/subsystem/persistence/proc/fetch_id(char_id)
-	// pause admin proccall guard
-	var/__oldusr = usr
-	usr = null
-	// section below can never be allowed to runtime
-
-	#warn impl
-
-	// resume admin proccall guard
-	usr = __oldusr
-
-/datum/controller/subsystem/persistence/proc/fetch_dynamic(playerid, cname, ctype)
-	// pause admin proccall guard
-	var/__oldusr = usr
-	usr = null
-	// section below can never be allowed to runtime
-
-	#warn impl
-
-	// resume admin proccall guard
-	usr = __oldusr
-
-
 
 
 /**

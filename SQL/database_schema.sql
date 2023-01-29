@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   `last_persisted` DATETIME NULL,
   `playerid` INT(11) NOT NULL,
   `canonical_name` INT(11) NOT NULL,
-  `persist_data` MEDIUMTEXT NULL,
+  `persist_data` JSON NULL,
   `character_type` VARCHAR(64) NOT NULL,
   PRIMARY KEY(`id`),
   CONSTRAINT `character_has_player` FOREIGN KEY (`playerid`)
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   ON DELETE CASCADE
   ON UPDATE CASCADE,
   UNIQUE (`playerid`, `canonical_name`, `character_type`)
-) ENIGNE=InnoDB DEFAULT CHARSET=utf8m4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8m4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
