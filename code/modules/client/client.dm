@@ -210,4 +210,5 @@
 	var/mouseover_refresh_timer             // Holds an ID to the timer used to update the mouseover highlight.
 	var/last_mouseover_params               // Stores mouse/keyboard params as of last mouseover, to check for shift being held.
 	var/last_mouseover_highlight_time       // Stores last world.time we mouseover'd, to prevent it happening more than once per world.tick_lag.
-
+	var/mouseover
+	var/mouseover_rainbow

@@ -292,12 +292,32 @@ var/list/_client_preferences_by_type
 /datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
 	. = ..()
 	preference_mob?.client?.parallax_holder?.Reset()
+
 /datum/client_preference/overhead_chat
 	description = "Overhead Chat"
 	key = "OVERHEAD_CHAT"
 	enabled_description = "Show"
 	disabled_description = "Hide"
 	enabled_by_default = TRUE
+
+/datum/client_preference/mouse_highlight
+	description = "Mouse Highlights"
+	key = "MOUSE_HIGHLIGHT"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+	enabled_by_default = TRUE
+
+/datum/client_preference/mouse_highlights/toggled(mob/preference_mob, enabled)
+	preference_mob.client.mouseover = enabled
+
+/datum/client_preference/mouse_highlight_rainbow // I WANT NONBINARY PREFS
+	description = "Mouse Highlight Rainbow"
+	key = "MOUSE_HIGHLIGHT_RAINBOW"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+	enabled_by_default = FALSE
+/datum/client_preference/mouse_highlights/toggled(mob/preference_mob, enabled)
+	preference_mob.client.mouseover_rainbow = enabled
 
 /********************
 * Staff Preferences *

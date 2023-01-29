@@ -20,32 +20,45 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 #define ADMINSWARNED_AT	5
 
 /client/New()
-	// Cache our callback as we will potentially be using it (10 / ticklag) times per second,
 	mouseover_callback = CALLBACK(src, .proc/refresh_mouseover_highlight_timer)
+	mouseover = is_preference_enabled(/datum/client_preference/mouse_highlight)
+	mouseover_rainbow = is_preference_enabled(/datum/client_preference/mouse_highlight_rainbow)
 	. = ..()
-// This proc iterates constantly whenever something is being mouseover'd, so that it
-// can update appearance to match any changes in the base icon. I considered using
-// some kind of hook in update_icon() and set_dir() but this seemed much more robust.
-/client/proc/refresh_mouseover_highlight_timer()
-	if(!current_highlight_atom || !refresh_mouseover_highlight(current_highlight_atom?.resolve(), last_mouseover_params))
-		// If refresh_mouseover_highlight() returns false we need to end our iteration and kill the highlight.
-		if(current_highlight)
-			images -= current_highlight
-			qdel(current_highlight)
-			current_highlight = null
-		current_highlight_atom = null
-		deltimer(mouseover_refresh_timer)
-		mouseover_refresh_timer = null
 
+/client/proc/refresh_mouseover_highlight_timer(atom/movable/current_atom, object)
+
+	animate(
+		mouseover_highlight_dummy,
+		pixel_y = 0,
+		pixel_x = 0,
+		pixel_w = 0,
+		pixel_z = 0,
+		time = 0.5 SECONDS,
+		easing = BACK_EASING,
+		alpha = 0,
+	)
+
+/client/proc/delete_mouseover_images()
+	QDEL_NULL(current_highlight_atom)
+	images -= current_highlight
+	qdel(current_highlight)
+	current_highlight = null
+//			current_highlight_atom = null
+	deltimer(mouseover_refresh_timer)
+	mouseover_refresh_timer = null
 // Main body of work happens in this proc.
 /client/proc/refresh_mouseover_highlight(object, params, check_adjacency = FALSE)
 
+	if(!mouseover)
+		return FALSE
 	// Verify if we should be showing a highlight at all.
-	if(!istype(object, /atom/movable) || (check_adjacency && !mob.Adjacent(object)))
+	if(!istype(object, /atom/movable) || istype(object, /mob) || (check_adjacency && !mob.Adjacent(object)))
+		addtimer(CALLBACK(PROC_REF(delete_mouseover_images)), 1 SECOND, TIMER_UNIQUE | TIMER_OVERRIDE)
 		return FALSE
 //	var/list/modifiers = params2list(params)
 	var/atom/movable/AM = object
-	if(get_dist(mob, object) > 1)
+	if(get_dist(mob, object) > 1 || AM.anchored)
+		addtimer(CALLBACK(PROC_REF(delete_mouseover_images)), 1 SECOND, TIMER_UNIQUE | TIMER_OVERRIDE)
 		return FALSE
 
 	// Generate our dummy objects if they got nulled/discarded.
@@ -85,12 +98,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		1,
 		list(
 			type = "drop_shadow",
-			color = rgb(rand(0,255),rand(0,255),rand(0,255)),
+			color = mouseover_rainbow ? rgb(rand(0,255),rand(0,255),rand(0,255)) : "#0082c6",
 			size = 4,
 			offset = 2, x = 0, y = 0
 			)
 		)
-
+	animate(mouseover_highlight_dummy, pixel_y = 24, time = 0.5 SECONDS, easing = ELASTIC_EASING, alpha = 180)
 	// Replanes the overlays to avoid explicit plane/layer setting (such as
 	// computer overlays) interfering with the ordering of the highlight.
 	if(length(mouseover_highlight_dummy.overlays))
@@ -125,12 +138,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/MouseEntered(object, location, control, params)
 	if(world.time > last_mouseover_highlight_time && refresh_mouseover_highlight(object, params, check_adjacency = TRUE) && !mouseover_refresh_timer)
 		last_mouseover_highlight_time = world.time
-		mouseover_refresh_timer = addtimer(mouseover_callback, 1, (TIMER_UNIQUE | TIMER_LOOP | TIMER_STOPPABLE))
+		mouseover_refresh_timer = addtimer(mouseover_callback, 1 SECONDS, (TIMER_OVERRIDE | TIMER_UNIQUE | TIMER_STOPPABLE))
 	. = ..()
 /client/MouseExited(object, location, control, params)
-	if(current_highlight_atom?.resolve() == object)
-		current_highlight_atom = null
-		refresh_mouseover_highlight_timer()
+	var/initalpha = initial(mouseover_highlight_dummy.alpha)
+	var/atom/movable/current_atom = current_highlight_atom?.resolve()
+	if(current_atom != object && mouseover_highlight_dummy)
+		animate(mouseover_highlight_dummy, pixel_y = 0, time = 0.2 SECONDS, easing = BOUNCE_EASING, alpha = initalpha)
+		refresh_mouseover_highlight_timer(current_atom, object)
+
 	. = ..()
 
 
