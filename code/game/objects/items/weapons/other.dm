@@ -53,6 +53,10 @@
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
 
+/obj/item/soap/primitive
+	desc = "Lye and fat processed into a solid state. This hand crafted bar is unscented and uneven."
+	icon_state = "soapprim"
+
 /obj/item/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."

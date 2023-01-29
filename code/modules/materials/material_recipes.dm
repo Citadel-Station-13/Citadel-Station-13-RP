@@ -126,6 +126,7 @@
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("sandstone floor tile", /obj/item/stack/tile/floor/sandstone, 1, 4, 20)
+	recipes += new/datum/stack_recipe("sandstone jar", /obj/item/reagent_containers/glass/bucket/sandstone, 2, time = 4, one_per_turf = 0, on_floor = 0, pass_stack_color = FALSE)
 
 /datum/material/sandstone/marble/generate_recipes()
 	..()
@@ -191,6 +192,13 @@
 	recipes += new/datum/stack_recipe("wakibokken blade", /obj/item/wakibokken_blade, 10, time = 5)
 	recipes += new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 5, time = 5)
 	recipes += new/datum/stack_recipe("wooden panel", /obj/structure/window/wooden, 1, time = 10, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe_list("wooden fencing", list( \
+		new/datum/stack_recipe("fence", /obj/structure/fence/wooden, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence end", /obj/structure/fence/wooden/end, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fencepost", /obj/structure/fence/wooden/post, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence corner", /obj/structure/fence/wooden/corner, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("gate", /obj/structure/fence/door/wooden, 5, one_per_turf = 1, on_floor = 1), \
+		))
 
 /datum/material/wood/hardwood/generate_recipes()
 	//we're not going to ..() since we want to override the list entirely, to cut out all the stuff it'd inherit from wood - important, or else we'd have to fuss around with more subtypes to stop people turning hardwood into regular wood
@@ -431,6 +439,9 @@
 	recipes += new/datum/stack_recipe("voyager satchel", /obj/item/storage/backpack/satchel/voyager, 10)
 	recipes += new/datum/stack_recipe("voyager backpack", /obj/item/storage/backpack/voyager, 10)
 	recipes += new/datum/stack_recipe("voyager harness", /obj/item/clothing/accessory/storage/voyager, 8)
+
+/datum/material/bone/generate_recipes()
+	..()
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("bone statue", /obj/structure/statue/bone, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("skull statue", /obj/structure/statue/bone/skull, 20, time = 5, one_per_turf = 1, on_floor = 1), \

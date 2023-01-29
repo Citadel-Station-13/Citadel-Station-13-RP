@@ -750,6 +750,51 @@
 	if(istype(T)) new /obj/item/stack/material/deuterium(T, created_volume)
 	return
 
+//Ashlander Chemistry!
+/datum/chemical_reaction/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	result = "alchemybase"
+	required_reagents = list("ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+//This reaction creates tallow, just like /datum/chemical_reaction/food/tallow, but by a different vector.
+/datum/chemical_reaction/tallow
+	name = "Tallow"
+	id = "tallow"
+	result = "tallow"
+	required_reagents = list("triglyceride" = 1, "protein" = 1, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/soap
+	name = "Soap"
+	id = "soap"
+	result = null
+	required_reagents = list("tallow" = 1, "water" = 1, "ash" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/soap/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/soap/primitive(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/charcoal
+	name = "Charcoal"
+	id = "charcoal"
+	result = null
+	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/charcoal/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/pen/charcoal(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/fertilizer
+	name = "Fertilizer"
+	id = "fertilizer"
+	result = "fertilizer"
+	required_reagents = list("tallow" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 3
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////

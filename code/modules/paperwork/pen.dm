@@ -3,6 +3,10 @@
  *		Pens
  *		Sleepy Pens
  *		Parapens
+ *		Crayons
+ *		Markers
+ *		Ritual Chalk
+ *		Charcoal
  */
 
 
@@ -338,3 +342,9 @@
 
 /obj/item/pen/crayon/chalk/attack_self()
 	return
+
+/obj/item/pen/charcoal
+	name = "charcoal stick"
+	desc = "Carefully burnt carbon, compacted and held together with a binding agent. One of the oldest common implements for writing across the galaxy."
+	icon_state = "charcoal"
+	matter = list(MAT_CARBON = 10)

@@ -32,7 +32,7 @@
 		var/turf/T = get_turf(src)
 		new /obj/item/stack/rods(T)
 	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! It starts melt in the crucible.</span>")
+		to_chat(user, "<span class='danger'>You pour [O] into the [src]! It starts to melt in the crucible.</span>")
 		qdel(O)
 		var/turf/T = get_turf(src)
 		new /obj/item/ore/slag(T)
@@ -62,7 +62,6 @@
 //This is a child of the juicer/all-in-one grinder/reagent grinder. Just for some fun alchemy.
 
 /obj/machinery/reagentgrinder/ashlander
-
 	name = "basic alchemical station"
 	desc = "A primitive assembly designed to hold a mortar and pestle."
 	icon = 'icons/obj/lavaland.dmi'
@@ -187,3 +186,142 @@
 				qdel(O)
 			if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
+
+//Calcinator
+//"A very basic implement that burns things down into ash. Pretty simple. Almost a waste to create it."
+//The above is the note I wrote for this when I started. Obviously now it's gigantic.
+/obj/structure/ashlander/calcinator
+	name = "calcinator"
+	desc = "This carved basin is used in alchemy to reduce an item down to ashes, thereby releasing its inner properties."
+	icon_state = "calcinator1"
+	var/obj/item/reagent_containers/beaker
+
+/obj/structure/ashlander/calcinator/Initialize(mapload, newdir)
+	. = ..()
+	beaker = new /obj/item/reagent_containers/glass/stone(src)
+
+/obj/structure/ashlander/calcinator/update_icon()
+	icon_state = "calcinator"+num2text(!isnull(beaker))
+	return
+
+/obj/structure/ashlander/calcinator/attackby(obj/item/I as obj, mob/user as mob)
+	if(!istype(I))
+		return
+	if (beaker && beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
+		return
+	if(istype(I,/obj/item/reagent_containers/glass/stone))
+		if(beaker)
+			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
+		else
+			beaker = I
+			update_icon()
+			updateUsrDialog()
+			return 0
+
+	if(istype(I,/obj/item/stack/material/wood))
+		if(!beaker)
+			return
+		else
+			var/obj/item/stack/material/wood/W = I
+			if(W.get_amount() < 1)
+				return
+			else if(do_after(user, 10))
+				W.use(1)
+				user.visible_message("<span class='notice'>[user] feeds \the [W] into \the [src].</span>","<span class='notice'>You reduce \the [W] using \the [src].</span>")
+				playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
+				beaker.reagents.add_reagent("ash", 10)
+
+	if(istype(I,/obj/item/stack/material/bone))
+		if(!beaker)
+			return
+		else
+			var/obj/item/stack/material/bone/W = I
+			if(W.get_amount() < 1)
+				return
+			else if(do_after(user, 10))
+				W.use(1)
+				user.visible_message("<span class='notice'>[user] feeds \the [W] into \the [src].</span>","<span class='notice'>You reduce \the [W] using \the [src].</span>")
+				playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
+				beaker.reagents.add_reagent("ash", 10)
+
+	src.updateUsrDialog()
+	return 0
+
+/obj/structure/ashlander/calcinator/attack_hand(mob/user as mob)
+	interact(user)
+
+/obj/structure/ashlander/calcinator/AltClick(mob/user)
+	. = ..()
+	if(user.incapacitated() || !Adjacent(user))
+		return
+	replace_beaker(user)
+
+/obj/structure/ashlander/calcinator/interact(mob/user)
+	if(user.incapacitated())
+		return
+	if(beaker)
+		replace_beaker(user)
+
+/obj/structure/ashlander/calcinator/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
+	if(!user)
+		return FALSE
+	if(beaker)
+		if(!user.incapacitated() && Adjacent(user) && !isrobot(user))
+			user.put_in_hands(beaker)
+		else
+			beaker.forceMove(drop_location())
+		beaker = null
+	if(new_beaker)
+		beaker = new_beaker
+	update_icon()
+	return TRUE
+
+//Ashies gotta eat.
+/obj/machinery/appliance/cooker/grill/spit
+	name = "cooking spit"
+	desc = "Primitive structures such as these have been used to cook raw meat for as long as the benefits of such a practice have been known."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "spitgrill_off"
+	food_color = "#630905"
+	on_icon = "spitgrill_on"
+	off_icon = "spitgrill_off"
+	max_contents = 1
+	container_type = /obj/item/reagent_containers/cooking_container/grill/spit
+	use_power = USE_POWER_OFF
+	var/lit = 0
+
+/obj/machinery/appliance/cooker/grill/spit/attempt_toggle_power(mob/user)
+	if (!isliving(user))
+		return
+
+	if (!user.IsAdvancedToolUser())
+		to_chat(user, "You lack the dexterity to do that!")
+		return
+
+	if (user.stat || user.restrained() || user.incapacitated())
+		return
+
+	if (!Adjacent(user) && !issilicon(user))
+		to_chat(user, "You can't reach [src] from here.")
+		return
+
+	if (!lit) //It's not lit.
+		machine_stat &= ~POWEROFF
+		lit = 1
+		user.visible_message("[user] ignites the flame beneath the [src].", "You ignite the flame under the [src].")
+
+	else //Its on, turn it off.
+		lit = 0
+		user.visible_message("[user] douses the flame of the [src].", "You douse the flame.")
+
+	playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 40, 1)
+	update_icon()
+
+/obj/machinery/appliance/cooker/grill/spit/update_icon()
+	. = ..()
+	if(lit)
+		set_light(3, 2, "#FF9933")
+	else
+		set_light(0)

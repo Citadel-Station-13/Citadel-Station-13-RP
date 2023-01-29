@@ -25,6 +25,7 @@
 	no_pin_required = 1
 
 	ammo_type = /obj/item/ammo_casing/musket
+	safety_state = GUN_SAFETY_OFF
 
 	var/has_powder = FALSE
 

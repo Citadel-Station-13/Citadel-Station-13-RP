@@ -30,7 +30,7 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "fV" = (
-/obj/structure/table/bench/wooden,
+/obj/structure/table/bench/bone,
 /turf/simulated/floor/bone/lavaland,
 /area/lavaland/east/ashlander_village)
 "ik" = (
@@ -63,10 +63,21 @@
 /obj/structure/fence/door/wooden,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
+"mY" = (
+/obj/item/reagent_containers/glass/bucket/sandstone,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/east/ashlander_village)
 "oC" = (
 /obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
+"pT" = (
+/obj/structure/ashlander/calcinator{
+	pixel_y = 8
+	},
+/obj/structure/table/bone,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/east/ashlander_village)
 "pY" = (
 /turf/simulated/wall/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
@@ -75,7 +86,7 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "rm" = (
-/obj/structure/table/bench/wooden,
+/obj/structure/table/bench/sandstone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "sk" = (
@@ -96,7 +107,6 @@
 /turf/simulated/floor/outdoors/lava/indoors/lavaland,
 /area/lavaland/east/ashlander_village)
 "tk" = (
-/obj/structure/table/hardwoodtable,
 /obj/item/shovel/spade/bone{
 	pixel_x = -2
 	},
@@ -115,6 +125,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "uE" = (
@@ -176,9 +187,9 @@
 /turf/simulated/wall/bone,
 /area/lavaland/east/ashlander_village)
 "Fe" = (
-/obj/structure/table/hardwoodtable,
 /obj/item/pickaxe/bone,
 /obj/item/pickaxe/bone,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Fi" = (
@@ -189,16 +200,15 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "JG" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/reagent_containers/glass/stone,
+/obj/item/reagent_containers/dropper/ashlander,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "KA" = (
-/obj/structure/bonfire,
+/obj/machinery/appliance/cooker/grill/spit,
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/ashlander_village)
 "LQ" = (
-/obj/structure/table/hardwoodtable,
 /obj/item/seeds/ashlander/bentars,
 /obj/item/seeds/ashlander/bentars,
 /obj/item/seeds/ashlander/bentars,
@@ -211,6 +221,11 @@
 /obj/item/seeds/ashlander,
 /obj/item/seeds/ashlander,
 /obj/item/seeds/ashlander,
+/obj/item/seeds/ashlander/cersut,
+/obj/item/seeds/ashlander/cersut,
+/obj/item/seeds/ashlander/cersut,
+/obj/item/seeds/ashlander/cersut,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Mn" = (
@@ -244,17 +259,17 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "Qg" = (
-/obj/structure/table/hardwoodtable,
 /obj/item/elderstone,
+/obj/structure/table/bone,
 /turf/simulated/floor/bone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Qh" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/unexplored)
 "RD" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/sandstone,
+/obj/item/reagent_containers/glass/bucket/sandstone,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "SK" = (
@@ -270,7 +285,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "ST" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "To" = (
@@ -288,18 +303,20 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "XQ" = (
-/obj/structure/table/hardwoodtable,
 /obj/item/oar/ashlander,
 /obj/item/oar/ashlander,
 /obj/item/oar/ashlander,
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Zq" = (
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/ashlander_village)
 "ZU" = (
-/obj/machinery/reagentgrinder/ashlander,
-/obj/structure/table/hardwoodtable,
+/obj/machinery/reagentgrinder/ashlander{
+	pixel_y = 7
+	},
+/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 
@@ -21794,7 +21811,7 @@ DP
 DP
 kV
 kV
-xw
+kV
 Zq
 Zq
 KA
@@ -25288,7 +25305,7 @@ DP
 DP
 kV
 pY
-ST
+pT
 uE
 uE
 pY
@@ -25677,8 +25694,8 @@ DP
 DP
 pY
 JG
-uE
-uE
+ST
+mY
 pY
 DP
 kV
