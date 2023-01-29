@@ -148,13 +148,14 @@
 		Entered(AM)
 
 	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
 
-	SSambient_lighting.queued += src
+	if (!mapload)
+		SSambient_lighting.queued += src
 
 	if (opacity)
 		has_opaque_atom = TRUE

@@ -41,6 +41,10 @@
 #define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 
+// Note: this does not imply the above, a turf can have ambient light without being dynamically lit.
+#define TURF_IS_AMBIENT_LIT_UNSAFE(T) (T:ambient_active)
+#define TURF_IS_AMBIENT_LIT(T) (isturf(T) && TURF_IS_AMBIENT_LIT_UNSAFE(T))
+
 //! If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
 	list            \

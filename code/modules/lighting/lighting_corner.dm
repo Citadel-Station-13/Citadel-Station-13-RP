@@ -65,7 +65,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/update_gen = 0
 
 /datum/lighting_corner/New(turf/new_turf, diagonal, oi)
-	SSlighting.lighting_corners += src
+	SSlighting.total_lighting_corners += 1
 
 	var/has_ambience = FALSE
 
@@ -73,7 +73,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	z = new_turf.z
 	t1i = oi
 
-	if (new_turf.ambient_light)
+	if (TURF_IS_AMBIENT_LIT_UNSAFE(new_turf))
 		has_ambience = TRUE
 
 	var/vertical   = diagonal & ~(diagonal - 1) // The horizontal directions (4 and 8) are bigger than the vertical ones (1 and 2), so we can reliably say the lsb is the horizontal direction.
@@ -97,7 +97,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		t2 = T
 		t2i = REVERSE_LIGHTING_CORNER_DIAGONAL[diagonal]
 		T.corners[t2i] = src
-		if (T.ambient_light)
+		if (TURF_IS_AMBIENT_LIT_UNSAFE(T))
 			has_ambience = TRUE
 
 	// Now the horizontal one.
@@ -109,7 +109,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		t3 = T
 		t3i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		T.corners[t3i] = src
-		if (T.ambient_light)
+		if (TURF_IS_AMBIENT_LIT_UNSAFE(T))
 			has_ambience = TRUE
 
 	// And finally the vertical one.
@@ -121,7 +121,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		t4 = T
 		t4i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		T.corners[t4i] = src
-		if (T.ambient_light)
+		if (TURF_IS_AMBIENT_LIT_UNSAFE(T))
 			has_ambience = TRUE
 
 	update_active()
@@ -186,13 +186,13 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/turf/T
 	var/Ti
 	// Grab the first master that's a Z-turf, if one exists.
-	if (t1 && (T = t1.above || GET_ABOVE(t1)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	if ((T = t1?.above) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t1i
-	else if (t2 && (T = t2.above || GET_ABOVE(t2)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if ((T = t2?.above) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t2i
-	else if (t3 && (T = t3.above || GET_ABOVE(t3)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if ((T = t3?.above) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t3i
-	else if (t4 && (T = t4.above || GET_ABOVE(t4)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if ((T = t4?.above) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t4i
 	else // Nothing above us that cares about below light.
 		T = null
@@ -268,7 +268,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/turf/lasT
 
 	// We init before Z-Mimic, cannot rely on above/below.
-	while ((lasT = T) && (T = GET_BELOW(T)) && (lasT.mz_flags & MZ_ALLOW_LIGHTING) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+	while ((lasT = T) && (T = T.below || GET_BELOW(T)) && (lasT.mz_flags & MZ_ALLOW_LIGHTING) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 		T.ambient_has_indirect = TRUE
 
 		if (!T.corners || !T.corners[Ti])
@@ -349,7 +349,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	if (!force)
 		return QDEL_HINT_LETMELIVE
 
-	SSlighting.lighting_corners -= src
+	SSlighting.total_lighting_corners -= 1
 	return ..()
 
 /datum/lighting_corner/dummy/New()
