@@ -1,5 +1,6 @@
 /datum/species/human/gravworlder
 	uid = SPECIES_ID_HUMAN_GRAV
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 
@@ -51,6 +52,7 @@
 
 /datum/species/human/spacer
 	uid = SPECIES_ID_HUMAN_SPACE
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 
@@ -98,6 +100,7 @@
 
 /datum/species/human/vatgrown
 	uid = SPECIES_ID_HUMAN_VAT
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_VATBORN
 	name_plural = SPECIES_HUMAN_VATBORN
 

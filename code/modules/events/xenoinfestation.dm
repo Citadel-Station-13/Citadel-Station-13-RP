@@ -27,9 +27,12 @@
 							SENTINEL = 0,
 							DRONE = 0,
 							HUNTER = 0)
-	var/const/strength = 1
-	var/const/debug_players = 0
+	var/strength = 2//one player = 2 points
+	var/additional_players = 3//adds three points of aliens independent of player count
 
+/datum/event/xeno_infestation/extreme
+	strength = 4
+	additional_players = 10
 
 /datum/event/xeno_infestation/setup()
 	// make sure startWhen doesn't go to 0 or below!
@@ -117,8 +120,8 @@
 
 /datum/event/xeno_infestation/proc/fill_spawn_type()
 	var/player_value = get_player_count() * strength
-	if(debug_players)
-		player_value += debug_players
+	if(additional_players)
+		player_value += additional_players
 	var/queen_spawning = FALSE
 	/**
 	 * 20 /mob/living/simple_mob/animal/space/alien/queen/empress/mother
