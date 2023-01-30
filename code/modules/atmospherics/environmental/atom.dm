@@ -12,6 +12,36 @@
 			return CanAtmosPass
 
 /**
+ * call when we ourselves need to update our air pass
+ * acts on all locs we currently occupy - this means that you must call this before and after move
+ * in some cases
+ *
+ * if you're an one tile object calling from Moved(), consider just calling air_update_self()
+ * on old and new locs; it's cheaper.
+ *
+ * works for multi-tile objects
+ */
+/atom/proc/air_update_turf()
+
+/turf/air_update_turf()
+	queue_zone_update()
+
+/atom/movable/air_update_turf()
+	update_nearby_tiles()
+
+
+/**
+ * call on oldloc and newloc when moving a potentially air-blocking obj
+ *
+ * *warning*: only works for non-multi-tile objects!
+ */
+/atom/proc/air_update_self()
+	return
+
+/turf/air_update_self()
+	queue_zone_update()
+
+/**
  * superconduction - not yet implemented
  */
 
@@ -19,7 +49,7 @@
 
 /**
  * do we block thermal conduction?
- * 
+ *
  * @params
  * a - temperature of one side
  * b - temperature of other side

@@ -7,7 +7,7 @@
 /area/submap/virgo2/ButcherShack)
 "d" = (
 /obj/structure/closet,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/beartrap,
 /obj/item/beartrap,
 /obj/item/packageWrap,
@@ -20,7 +20,7 @@
 /area/submap/virgo2/ButcherShack)
 "f" = (
 /obj/structure/closet/crate/freezer,
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /obj/random/meat,
 /obj/random/meat,
 /obj/random/meat,
@@ -54,16 +54,16 @@
 /area/submap/virgo2/ButcherShack)
 "m" = (
 /obj/structure/kitchenspike,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)
 "n" = (
 /obj/structure/kitchenspike,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)
 "o" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)
 "p" = (
@@ -73,7 +73,7 @@
 /area/submap/virgo2/ButcherShack)
 "q" = (
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)
@@ -95,7 +95,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)
 "u" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)

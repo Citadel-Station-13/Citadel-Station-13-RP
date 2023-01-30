@@ -22,7 +22,7 @@
 	uniform = /obj/item/clothing/under/det
 	suit_store = /obj/item/clothing/suit/storage/det_trench
 	glasses = /obj/item/clothing/glasses/thermal/plain/monocle
-	r_hand = /obj/item/gun/projectile/revolver
+	r_hand = /obj/item/gun/ballistic/revolver
 	l_pocket = /obj/item/ammo_magazine/s357
 
 /datum/outfit/tournament_gear/chef

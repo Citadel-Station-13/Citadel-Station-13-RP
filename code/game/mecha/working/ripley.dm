@@ -136,3 +136,10 @@
 	health = 25
 	maxhealth = 190	//Just slightly worse.
 	cell.charge = rand(0, cell.charge)
+
+/// Moved here from underdark_things.dm (cleaning up files)
+//Mechbay
+/obj/mecha/working/ripley/abandoned/Initialize(mapload)
+	. = ..()
+	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)	//Deletes the beacon so it can't be found easily
+		qdel(B)

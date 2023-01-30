@@ -58,8 +58,8 @@ var/list/ai_verbs_default = list(
 	density = TRUE
 	can_be_antagged = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
-	shouldnt_see = list(/obj/effect/rune)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
+	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
 
 	/// The network we have access to.
 	var/list/network = list(NETWORK_DEFAULT)
@@ -68,7 +68,7 @@ var/list/ai_verbs_default = list(
 	var/viewalerts = FALSE
 	/// Default is assigned when AI is created.
 	var/icon/holo_icon
-	var/list/connected_robots = list()
+	var/list/mob/living/silicon/robot/connected_robots = list()
 	var/obj/item/pda/ai/aiPDA = null
 	var/obj/item/communicator/aiCommunicator = null
 	var/obj/item/multitool/aiMulti = null
@@ -126,12 +126,12 @@ var/list/ai_verbs_default = list(
 	var/carded
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	src.verbs |= ai_verbs_default
-	src.verbs |= silicon_subsystems
+	add_verb(src, ai_verbs_default)
+	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
-	src.verbs -= silicon_subsystems
+	remove_verb(src, ai_verbs_default)
+	remove_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
@@ -139,11 +139,11 @@ var/list/ai_verbs_default = list(
 	announcement.announcement_type = "A.I. Announcement"
 	announcement.newscast = 1
 
-	var/list/possibleNames = ai_names
+	var/list/possibleNames = GLOB.ai_names
 
 	var/pickedName = null
 	while(!pickedName)
-		pickedName = pick(ai_names)
+		pickedName = pick(GLOB.ai_names)
 		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
@@ -160,8 +160,6 @@ var/list/ai_verbs_default = list(
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
-
-	proc_holder_list = new()
 
 	if(L)
 		if (istype(L, /datum/ai_laws))
@@ -183,33 +181,10 @@ var/list/ai_verbs_default = list(
 
 	//Languages
 	add_language("Robot Talk", 1)
-	add_language(LANGUAGE_GALCOM, 1)
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_UNATHI, 1)
-	add_language(LANGUAGE_SIIK, 1)
-	add_language(LANGUAGE_AKHANI, 1)
-	add_language(LANGUAGE_SKRELLIAN, 1)
-	add_language(LANGUAGE_SKRELLIANFAR, 0)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_SCHECHI, 1)
-	add_language(LANGUAGE_SIGN, 1)
-	add_language(LANGUAGE_ROOTLOCAL, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_ZADDAT, 1)
-	add_language(LANGUAGE_BIRDSONG,		1)
-	add_language(LANGUAGE_SAGARU,		1)
-	add_language(LANGUAGE_CANILUNZT,	1)
-	add_language(LANGUAGE_ECUREUILIAN,	1)
-	add_language(LANGUAGE_DAEMON,		1)
-	add_language(LANGUAGE_ENOCHIAN,		1)
-	add_language(LANGUAGE_SQUEAKISH,	1)
-	add_language(LANGUAGE_AKULA,		1)
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
-			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
+			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
 			return
 		else
@@ -219,7 +194,7 @@ var/list/ai_verbs_default = list(
 			on_mob_init()
 
 	if(config_legacy.allow_ai_shells)
-		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
+		add_verb(src, /mob/living/silicon/ai/proc/deploy_to_shell_act)
 
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
@@ -273,12 +248,13 @@ var/list/ai_verbs_default = list(
 
 	return ..()
 
-/mob/living/silicon/ai/Stat()
-	..()
-	if(statpanel("Status"))
+/mob/living/silicon/ai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
 		if(!stat) // Make sure we're not unconscious/dead.
-			stat(null, text("System integrity: [(health+100)/2]%"))
-			stat(null, text("Connected synthetics: [connected_robots.len]"))
+			STATPANEL_DATA_LINE(text("System integrity: [(health+100)/2]%"))
+			STATPANEL_DATA_LINE(text("Connected synthetics: [connected_robots.len]"))
 			for(var/mob/living/silicon/robot/R in connected_robots)
 				var/robot_status = "Nominal"
 				if(R.shell)
@@ -288,11 +264,11 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				stat(null, text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				STATPANEL_DATA_LINE(text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
 				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]"))
-			stat(null, text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
+			STATPANEL_DATA_LINE(text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
 		else
-			stat(null, text("Systems nonfunctional"))
+			STATPANEL_DATA_LINE(text("Systems nonfunctional"))
 
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -468,7 +444,7 @@ var/list/ai_verbs_default = list(
 	var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 	if(!input)
 		return
-	CentCom_announce(input, usr)
+	message_centcom(input, usr)
 	to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 	log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 	emergency_message_cooldown = 1
@@ -555,7 +531,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = sortTim(cameralist, /proc/cmp_text_asc, TRUE)
+	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())
@@ -610,7 +586,7 @@ var/list/ai_verbs_default = list(
 				input = input("Select a crew member:") as null|anything in targets //The definition of "crew member" is a little loose...
 				//This is torture, I know. If someone knows a better way...
 				if(!input) return
-				var/new_holo = getHologramIcon(getCompoundIcon(targets[input]))
+				var/new_holo = getHologramIcon(get_compound_icon(targets[input]))
 				qdel(holo_icon)
 				holo_icon = new_holo
 
@@ -625,7 +601,7 @@ var/list/ai_verbs_default = list(
 			sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
 			dummy.regenerate_icons()
 
-			var/new_holo = getHologramIcon(getCompoundIcon(dummy))
+			var/new_holo = getHologramIcon(get_compound_icon(dummy))
 			qdel(holo_icon)
 			qdel(dummy)
 			holo_icon = new_holo
@@ -792,18 +768,18 @@ var/list/ai_verbs_default = list(
 			to_chat(user, "<span class='notice'>The shell's subsystems resist your efforts to tamper with your bolts.</span>")
 			return
 		if(anchored)
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to unbolt \the [src] from the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to unbolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes unfastening \the [src]!</font>")
 			anchored = 0
 			return
 		else
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to bolt \the [src] to the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to bolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes fastening down \the [src]!</font>")
@@ -868,7 +844,7 @@ var/list/ai_verbs_default = list(
 	return istype(loc, /turf)
 
 
-/mob/living/silicon/ai/ex_act(var/severity)
+/mob/living/silicon/ai/legacy_ex_act(var/severity)
 	if(severity == 1.0)
 		qdel(src)
 		return
@@ -920,3 +896,9 @@ var/list/ai_verbs_default = list(
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO
+
+/mob/living/silicon/ai/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	if(control_disabled)
+		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	return can_see(M) && ..() //stop AIs from leaving windows open and using then after they lose vision

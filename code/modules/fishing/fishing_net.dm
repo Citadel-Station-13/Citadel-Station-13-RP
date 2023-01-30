@@ -12,7 +12,7 @@
 	var/contain_state = "net_full"
 
 	w_class = ITEMSIZE_SMALL
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 
 	slowdown = 0.25
 
@@ -78,7 +78,7 @@
 
 /obj/item/material/fishing_net/update_icon() // Also updates name and desc
 	underlays.Cut()
-	overlays.Cut()
+	cut_overlays()
 
 	..()
 

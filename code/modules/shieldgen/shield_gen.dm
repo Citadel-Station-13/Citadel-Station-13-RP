@@ -69,7 +69,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
 
 		if(active)
@@ -230,7 +230,7 @@
 
 	updateDialog()
 
-/obj/machinery/shield_gen/ex_act(var/severity)
+/obj/machinery/shield_gen/legacy_ex_act(var/severity)
 
 	if(active)
 		toggle()

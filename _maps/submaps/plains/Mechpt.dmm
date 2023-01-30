@@ -60,11 +60,11 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mechpt)
 "m" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mechpt)
 "n" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/debris/cleanable/blood/oil/streak,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mechpt)
 "o" = (

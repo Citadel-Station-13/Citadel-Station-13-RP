@@ -4,7 +4,7 @@
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
@@ -62,7 +62,7 @@
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."
 	icon_state = "riot"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
@@ -75,13 +75,13 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the riot helmet.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/helmet/laserproof
 	name = "ablative helmet"
 	desc = "It's a helmet specifically designed to protect against energy projectiles."
 	icon_state = "helmet_reflec"
-	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 10, bullet = 10, laser = 80 ,energy = 50, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.1
 	valid_accessory_slots = null
@@ -90,7 +90,7 @@
 	name = "bullet-resistant helmet"
 	desc = "It's a helmet specifically designed to protect against ballistic projectiles."
 	icon_state = "helmet_bulletproof"
-	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
@@ -99,7 +99,7 @@
 	name = "combat helmet"
 	desc = "It's a general purpose combat helmet, designed to protect against typical dangers to your head."
 	icon_state = "helmet_combat"
-	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 50, bullet = 50, laser = 50 ,energy = 30, bomb = 30, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
@@ -152,20 +152,21 @@
 	name = "gladiator helmet"
 	desc = "Ave, Imperator, morituri te salutant."
 	icon_state = "gladiator"
-	item_state_slots = list(slot_r_hand_str = "vhelmet", slot_l_hand_str = "vhelmet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "vhelmet", SLOT_ID_LEFT_HAND = "vhelmet")
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	siemens_coefficient = 1
 	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/gladiator/ashlander
+	name = "ashlander kranos"
+	desc = "This weathered helmet bears a collection of acidic pits and claw marks."
+	armor = list(melee = 5, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
 	icon_state = "swathelm"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
-	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|BLOCKHAIR
@@ -176,7 +177,7 @@
 	name = "Augment Array"
 	desc = "A helmet with optical and cranial augments coupled to it."
 	icon_state = "v62"
-	item_state_slots = list(slot_r_hand_str = "head_m", slot_l_hand_str = "head_m")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
@@ -188,7 +189,7 @@
 	name = "Eraticator Head"
 	desc = "The 'head' of an Eraticator Artillery Platform, ripped off of the chassis. May be worn for totemic purposes."
 	icon_state = "eraticator-head"
-	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.7
@@ -215,7 +216,7 @@
 	name = "emergency response team helmet"
 	desc = "An in-atmosphere helmet worn by members of the NanoTrasen Emergency Response Team. Protects the head from impacts."
 	icon_state = "erthelmet_cmd"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-green", slot_l_hand_str = "syndicate-helm-green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
 	valid_accessory_slots = null
 
@@ -248,7 +249,7 @@
 	name = "Oculus Malum visor"
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-green", slot_l_hand_str = "syndicate-helm-green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor = list(melee = 60, bullet = 60, laser = 60,energy = 60, bomb = 20, bio = 0, rad = 0)
 	valid_accessory_slots = null
 	action_button_name = "Cycle MAW"
@@ -268,7 +269,7 @@
 		flash_protection = FLASH_PROTECTION_MAJOR
 		src.icon_state = initial(icon_state)
 		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil glows as you lower the OM visor.</font>")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE
@@ -279,7 +280,7 @@
 	name = "PMD Inquistor's Hat"
 	desc = "This wide brimmed hat projects authority and a vaguely mystical presence. It also grants its bearer the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "witchhunterhat"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 10, bio = 0, rad = 0)
 	action_button_name = "Enable Wards"
 

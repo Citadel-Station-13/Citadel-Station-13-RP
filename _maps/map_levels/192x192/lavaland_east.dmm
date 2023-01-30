@@ -50,7 +50,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -61,8 +60,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -187,7 +184,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -243,18 +239,12 @@
 /area/lavaland/east/colony)
 "gh" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -264,7 +254,7 @@
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "gm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "gF" = (
@@ -294,7 +284,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -306,24 +295,18 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "hk" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "hm" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -377,18 +360,18 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"ik" = (
+/obj/structure/mob_spawner/gutshank,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/explored)
 "il" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -412,24 +395,17 @@
 "jd" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jg" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/obj/structure/mob_spawner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/unexplored)
 "jr" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -449,7 +425,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "jK" = (
@@ -493,7 +469,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "lf" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/trap/delayed/wood/lavaland{
 	id = "temple_trap"
 	},
@@ -512,7 +488,6 @@
 "ln" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -534,7 +509,7 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "lt" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
@@ -556,8 +531,6 @@
 /area/lavaland/east/colony)
 "mb" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance,
@@ -566,13 +539,9 @@
 "mF" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -650,9 +619,9 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "oC" = (
-/mob/living/simple_mob/animal/space/bats/surt,
+/obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/explored)
+/area/lavaland/east/unexplored)
 "oI" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -730,8 +699,6 @@
 /area/lavaland/east/colony)
 "rb" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -816,18 +783,12 @@
 /area/lavaland/east/colony)
 "sI" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -855,7 +816,6 @@
 	},
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -944,13 +904,9 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -960,13 +916,9 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1016,15 +968,12 @@
 	dir = 5
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vK" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
@@ -1035,18 +984,12 @@
 /area/lavaland/east/colony)
 "vT" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/rust,
@@ -1232,12 +1175,14 @@
 	dir = 10
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
+"zx" = (
+/obj/structure/mob_spawner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/explored)
 "Aj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -1390,7 +1335,6 @@
 "CA" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -1489,7 +1433,7 @@
 "DT" = (
 /obj/effect/decal/remains/human,
 /obj/item/pickaxe/plasmacutter,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -1544,13 +1488,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1600,15 +1540,12 @@
 	dir = 9
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Gm" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -1616,7 +1553,6 @@
 /area/lavaland/east/colony)
 "Gt" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -1644,8 +1580,6 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1665,13 +1599,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1694,7 +1624,6 @@
 "Id" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1710,8 +1639,6 @@
 /area/lavaland/east/colony)
 "IB" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1751,8 +1678,6 @@
 /area/lavaland/east/colony)
 "Jw" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1795,8 +1720,6 @@
 	dir = 6
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1839,8 +1762,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1980,7 +1901,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "NF" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/decal/remains/human,
 /obj/structure/boulder,
 /obj/effect/gibspawner/human,
@@ -2300,7 +2221,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -2393,7 +2313,7 @@
 	dir = 4
 	},
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2482,18 +2402,12 @@
 /area/lavaland/east/colony)
 "XO" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/rust,
@@ -2656,8 +2570,6 @@
 /area/lavaland/east/colony)
 "Zg" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -5147,7 +5059,7 @@ kx
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -6312,7 +6224,7 @@ ix
 ix
 ix
 ix
-ix
+ik
 kx
 kx
 kx
@@ -8237,7 +8149,7 @@ Qh
 Qh
 Qh
 kx
-ix
+zx
 ix
 ix
 ix
@@ -8965,7 +8877,7 @@ ww
 wP
 wP
 wP
-wP
+jg
 Qh
 Qh
 Qh
@@ -10903,7 +10815,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -12502,7 +12414,7 @@ ix
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -13632,7 +13544,7 @@ wP
 wP
 Am
 Am
-wP
+jg
 wP
 wP
 wP
@@ -14038,7 +13950,7 @@ Qh
 Qh
 kx
 kx
-ix
+ik
 ix
 ix
 ix
@@ -14218,7 +14130,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 Qh
 Qh
@@ -14589,7 +14501,7 @@ wP
 wP
 wP
 wP
-wP
+jg
 Am
 Am
 wP
@@ -14823,7 +14735,7 @@ ix
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -15581,7 +15493,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -15993,16 +15905,16 @@ MG
 ix
 ix
 wP
-cs
-wP
-Am
-Am
-Am
-Am
-Am
 wP
 wP
+Am
+Am
+Am
+Am
+Am
 wP
+wP
+oC
 Qh
 Qh
 Qh
@@ -16316,7 +16228,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 ww
 ww
 ww
@@ -16343,7 +16255,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -16742,7 +16654,7 @@ wP
 wP
 wP
 wP
-wP
+oC
 Am
 Am
 Am
@@ -17926,7 +17838,7 @@ ww
 kx
 kx
 ix
-oC
+ix
 ix
 ix
 wP
@@ -21936,7 +21848,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -22705,7 +22617,7 @@ Qh
 wP
 wP
 wP
-wP
+oC
 Am
 Am
 wP
@@ -23703,7 +23615,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 ww
@@ -32322,7 +32234,7 @@ rS
 aP
 Gt
 jr
-jg
+jr
 To
 Zg
 WQ

@@ -1,4 +1,4 @@
-/turf/simulated/floor/ex_act(severity)
+/turf/simulated/floor/legacy_ex_act(severity)
 	//set src in oview(1)
 	switch(severity)
 		if(1.0)

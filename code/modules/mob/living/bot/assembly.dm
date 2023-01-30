@@ -4,10 +4,13 @@
 	force = 3
 	throw_speed = 2
 	throw_range = 5
+
 	var/created_name
 	var/build_step = ASSEMBLY_FIRST_STEP
 	var/robot_arm = /obj/item/robot_parts/l_arm
-	var/skin = null //Same as medibot, set to tox or ointment for the respective kits.
+
+	/// Same as medibot, set to tox or ointment for the respective kits.
+	var/skin = null
 
 /obj/item/bot_assembly/attackby(obj/item/I, mob/user, params)
 	..()
@@ -27,7 +30,6 @@
 	if(contents.len >= 1)
 		to_chat(user, SPAN_WARNING("You need to empty [src] out first."))
 		return FALSE
-	user.drop_item()
 	return TRUE
 
 /obj/item/bot_assembly/proc/is_valid_arm(obj/item/I, mob/user)

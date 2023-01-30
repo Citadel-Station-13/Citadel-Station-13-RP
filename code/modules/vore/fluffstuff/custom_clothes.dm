@@ -48,9 +48,7 @@
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "wolfgirluni"
-	worn_state = "wolfgirluni_mob"
-	rolled_sleeves = 0
-	rolled_down = 0
+	snowflake_worn_state = "wolfgirluni_mob"
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
@@ -349,7 +347,7 @@
 		)
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
 
-/obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot)
+/obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
@@ -357,7 +355,7 @@
 			icon_override = 'icons/mob/clothing/species/vox/suits.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/trek/ds9/admiral // Only for adminuz
 	name = "Admiral Overcoat"
@@ -372,7 +370,7 @@
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
-/obj/item/clothing/under/rank/trek/command/ds9/equipped(mob/user, slot) // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
+/obj/item/clothing/under/rank/trek/command/ds9/equipped(mob/user, slot, flags) // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
@@ -380,14 +378,14 @@
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/rank/trek/engsec/ds9
 	desc = "The uniform worn by operations officers of the 2380s."
 	icon_state = "trek_engsec"
 	item_state = "trek_ds9_engsec"
 
-/obj/item/clothing/under/rank/trek/engsec/ds9/equipped(mob/user, slot) // Cit change, ditto
+/obj/item/clothing/under/rank/trek/engsec/ds9/equipped(mob/user, slot, flags) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
@@ -395,14 +393,14 @@
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/rank/trek/medsci/ds9
 	desc = "The uniform undershit worn by medsci officers of the 2380s."
 	icon_state = "trek_medsci"
 	item_state = "trek_ds9_medsci"
 
-/obj/item/clothing/under/rank/trek/medsci/ds9/equipped(mob/user, slot) // Cit change, ditto
+/obj/item/clothing/under/rank/trek/medsci/ds9/equipped(mob/user, slot, flags) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
@@ -410,7 +408,7 @@
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 //For general use maybe
 /obj/item/clothing/under/batter //I guess we're going OFF limits.
@@ -427,14 +425,6 @@
 	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "jessiecoat"
 	item_state = "jessiecoat"
-
-/obj/item/clothing/suit/storage/hooded/wintercoat/jessie/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..())
-		if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-			return ..()
-		else
-			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-			return 0
 
 //Jackets For General Use. Sprited by Joji.
 /obj/item/clothing/suit/storage/fluff/jacket //Not the toggle version since it uses custom toggle code to update the on-mob icon.
@@ -563,14 +553,11 @@
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
-	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/vore/custom_clothes_vr.dmi')
+	item_icons = list(SLOT_ID_UNIFORM = 'icons/vore/custom_clothes_vr.dmi')
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"
 
-	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/vore/custom_clothes_tesh_vr.dmi'
-			)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 //Aztectornado:Tron inspired Siren outfit
@@ -582,9 +569,8 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tronsiren"
-	worn_state = "tronsiren_mob"
+	snowflake_worn_state = "tronsiren_mob"
 	item_state = "tronsiren_mob"
-	rolled_sleeves = 0
 
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
@@ -668,10 +654,10 @@
 	flags_inv = HIDEJUMPSUIT | HIDETIE
 
 	item_icons = list(
-		slot_l_hand_str = 'icons/vore/custom_clothes_vr.dmi',
-		slot_r_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
 		)
-	item_state_slots = list(slot_r_hand_str = "aika_coat_mob_r", slot_l_hand_str = "aika_coat_mob_l")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
 
 //Burrito Justice: Jayda Wilson
 /obj/item/clothing/under/oricon/utility/sysguard/medical/fluff
@@ -681,11 +667,9 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 
 	icon_state = "blackutility_med"
-	worn_state = "blackutility_med"
+	snowflake_worn_state = "blackutility_med"
 	item_state = "blackutility_med"
 
-	rolled_down = 0
-	rolled_sleeves = 0
 	starting_accessories = null
 	item_icons = list()
 
@@ -700,20 +684,9 @@
 	icon_state = "melanie_skeleton"
 	item_state = "melanie_skeleton_mob"
 
-	body_parts_covered = 0
+	body_parts_covered = NONE
 
 	species_restricted = list("exclude", SPECIES_TESHARI)
 
-/obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(M as mob, slot)
-	if(!..())
-		return 0
-
-	if(istype(M,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(!(H.get_species_id() == SPECIES_ID_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
-			return 0
-
-	return 1
-
-/obj/item/clothing/under/fluff/slime_skeleton/digest_act(var/atom/movable/item_storage = null)
-	return FALSE	//Indigestible
+/obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
+	return FALSE //Indigestible

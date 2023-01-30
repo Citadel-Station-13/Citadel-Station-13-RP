@@ -20,11 +20,8 @@
 			x--
 	Moved(oldloc, direct, FALSE)
 
-/mob/observer/dead/movement_delay()
-	return 0
-
 /mob/observer/dead/Process_Spacemove(dir)
 	return TRUE		//we don't drift.
 
-/mob/dead/observer/canface()
+/mob/observer/dead/canface()
 	return TRUE

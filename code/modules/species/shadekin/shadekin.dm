@@ -1,31 +1,38 @@
 /datum/species/shadekin
+	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
-	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
-	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	category = SPECIES_CATEGORY_RESTRICTED
+
+	icobase      = 'icons/mob/species/shadekin/body.dmi'
+	deform       = 'icons/mob/species/shadekin/body.dmi'
+	preview_icon = 'icons/mob/species/shadekin/preview.dmi'
+	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
 	tail = "tail"
 	icobase_tail = TRUE
-	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
-	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \
-	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
-	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
-	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something that's not wiki copypaste
+
+	//TODO: Something that's not wiki copypaste
+	blurb = {"
+	Very little is known about these creatures. They appear to be largely mammalian in appearance.
+	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over,
+	but next to no verifiable evidence to their existence. However, they have recently been more verifiably
+	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have
+	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread.
+	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
+	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
-	num_alternate_languages = 3
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
+
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
 		/datum/unarmed_attack/kick,
 		/datum/unarmed_attack/claws/shadekin,
-		/datum/unarmed_attack/bite/sharp/shadekin
-		)
-
-	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
+		/datum/unarmed_attack/bite/sharp/shadekin,
+	)
 
 	siemens_coefficient = 1
 	darksight = 10
@@ -50,22 +57,22 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
+	color_mult  = 1
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
-	base_color = "#f0f0f0"
-	color_mult = 1
+	base_color  = "#f0f0f0"
 
 	has_glowing_eyes = TRUE
 
 	death_message = "phases to somewhere far away!"
-	male_cough_sounds = null
+	male_cough_sounds   = null
 	female_cough_sounds = null
-	male_sneeze_sound = null
+	male_sneeze_sound   = null
 	female_sneeze_sound = null
 
 	speech_bubble_appearance = "ghost"
@@ -80,7 +87,7 @@
 	vision_flags = SEE_SELF|SEE_MOBS
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -90,7 +97,7 @@
 		O_BRAIN     = /obj/item/organ/internal/brain/shadekin,
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine
+		O_INTESTINE = /obj/item/organ/internal/intestine,
 	)
 
 	has_limbs = list(
@@ -104,7 +111,7 @@
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
 	//SHADEKIN-UNIQUE STUFF GOES HERE
@@ -113,6 +120,7 @@
 		/datum/power/shadekin/regenerate_other,
 		/datum/power/shadekin/create_shade,
 	)
+
 	var/list/shadekin_ability_datums = list()
 	var/kin_type
 	var/energy_light = 0.25
@@ -124,14 +132,13 @@
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
 
+/datum/species/shadekin/get_bodytype_legacy()
+	return SPECIES_SHADEKIN
+
 /datum/species/shadekin/handle_death(mob/living/carbon/human/H)
 	spawn(1)
-		for(var/obj/item/W in H)
-			H.drop_from_inventory(W)
+		H.drop_inventory(TRUE, TRUE, TRUE)
 		qdel(H)
-
-/datum/species/shadekin/get_bodytype()
-	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
@@ -152,7 +159,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,
@@ -173,7 +180,7 @@
 
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
-	var/is_dark = (darkness <= 0.5)
+	var/is_dark = (darkness >= 0.5)
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0

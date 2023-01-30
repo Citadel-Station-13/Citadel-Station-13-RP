@@ -92,16 +92,17 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		if (scan)
 			if(ishuman(usr))
 				scan.loc = usr.loc
-				if(!usr.get_active_hand())
-					usr.put_in_hands(scan)
+				if(!usr.get_active_held_item())
+					usr.put_in_hands_or_drop(scan)
 				scan = null
 			else
 				scan.loc = src.loc
 				scan = null
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-				I.loc = src
+			var/obj/item/I = usr.get_active_held_item()
+			if (istype(I, /obj/item/card/id))
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				scan = I
 		authenticated = 0
 
@@ -205,7 +206,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	msg += "(<a href='?_src_=holder;FaxReply=\ref[sender];originfax=\ref[src];replyorigin=[reply_type]'>REPLY</a>)</b>: "
 	msg += "Receiving '[sent.name]' via secure connection ... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a></span>"
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
 			to_chat(C, msg)
 			SEND_SOUND(C, sound('sound/machines/printer.ogg'))

@@ -58,11 +58,7 @@
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi'
-		)
-
-/obj/item/clothing/accessory/poncho/equipped(mob/user, slot) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/poncho/equipped(mob/user, slot, flags) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
@@ -72,7 +68,7 @@
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/poncho/green
 	name = "green poncho"
@@ -136,7 +132,7 @@
 	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	action_button_name = "Adjust Cloak"
 
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
@@ -150,7 +146,7 @@
 		src.item_state = initial(item_state)
 		flags_inv = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
 	icon_state = "roughcloak_tan"
@@ -304,7 +300,7 @@
 	icon_state = "vest"
 	item_state = "vest"
 	icon_override = 'icons/mob/clothing/ties.dmi'
-	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
@@ -356,7 +352,7 @@
 	icon_state = "button_tucked"
 	item_state = "button_tucked"
 	icon_override = 'icons/mob/clothing/ties.dmi'
-	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
@@ -384,20 +380,20 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 		)
 
-/obj/item/clothing/accessory/sweater/equipped(mob/user, slot) // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/sweater/equipped(mob/user, slot, flags) // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
-		else if(H.species.name == SPECIES_VOX)
+		else if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"

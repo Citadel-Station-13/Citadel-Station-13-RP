@@ -64,31 +64,30 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/lipstick/attack(mob/M as mob, mob/user as mob)
-	if(!open)	return
-
-	if(!istype(M, /mob))	return
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.lip_style)	//if they already have lipstick on
-			to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
-			return
-		if(H == user)
-			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
-								 "<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
+/obj/item/lipstick/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!open)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!ishuman(target))
+		to_chat(user, "<span class='notice'>Where are the lips on that?</span>")
+		return
+	var/mob/living/carbon/human/H = target
+	if(H.lip_style)	//if they already have lipstick on
+		to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
+		return
+	if(H == user)
+		user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
+								"<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
+		H.lip_style = colour
+		H.update_icons_body()
+	else
+		user.visible_message("<span class='warning'>[user] begins to do [H]'s lips with \the [src].</span>", \
+								"<span class='notice'>You begin to apply \the [src].</span>")
+		if(do_after(user, 20) && do_after(H, 20, 5, 0))	//user needs to keep their active hand, H does not.
+			user.visible_message("<span class='notice'>[user] does [H]'s lips with \the [src].</span>", \
+									"<span class='notice'>You apply \the [src].</span>")
 			H.lip_style = colour
 			H.update_icons_body()
-		else
-			user.visible_message("<span class='warning'>[user] begins to do [H]'s lips with \the [src].</span>", \
-								 "<span class='notice'>You begin to apply \the [src].</span>")
-			if(do_after(user, 20) && do_after(H, 20, 5, 0))	//user needs to keep their active hand, H does not.
-				user.visible_message("<span class='notice'>[user] does [H]'s lips with \the [src].</span>", \
-									 "<span class='notice'>You apply \the [src].</span>")
-				H.lip_style = colour
-				H.update_icons_body()
-	else
-		to_chat(user, "<span class='notice'>Where are the lips on that?</span>")
 
 //you can wipe off lipstick with paper! see code/modules/paperwork/paper.dm, paper/attack()
 

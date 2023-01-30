@@ -9,6 +9,9 @@
 
 
 /datum/proc/find_references(skip_alert)
+	UNLINT(_find_references(skip_alert))
+
+/datum/proc/_find_references(skip_alert)
 	running_find_references = type
 	if(usr?.client)
 		if(usr.client.running_find_references)

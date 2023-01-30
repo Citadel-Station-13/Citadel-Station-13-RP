@@ -120,3 +120,37 @@
 	name = "Bandage Wrapping"
 	icon_state = "bandages"
 	has_color = TRUE
+
+/datum/category_item/underwear/top/bra_beekini
+	name = "Bee Bra"
+	icon_state = "bra_beekini"
+
+/datum/category_item/underwear/top/bra_uk
+	name = "UK Bra"
+	icon_state = "bra_uk"
+
+/datum/category_item/underwear/top/bra_assblastusa
+	name = "USA Bra"
+	icon_state = "bra_assblastusa"
+
+/datum/category_item/underwear/top/bra_commie
+	name = "Communist Bra"
+	icon_state = "bra_commie"
+
+/datum/category_item/underwear/top/bra_strapless
+	name = "Strapless Bra"
+	icon_state = "bra_strapless"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/bra_strapless_alt
+	name = "Alt, Strapless Bra"
+	icon_state = "bra_strapless_alt"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/bra_neko
+	name = "Neko Bra"
+	icon_state = "bra_neko"
+
+/datum/category_item/underwear/top/bra_thin
+	name = "Thin Bra"
+	icon_state = "bra_thin"

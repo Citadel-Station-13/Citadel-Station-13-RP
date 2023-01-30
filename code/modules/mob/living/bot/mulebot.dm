@@ -61,7 +61,7 @@
 
 	name = "Mulebot #[suffix]"
 
-/mob/living/bot/mulebot/MouseDrop_T(var/atom/movable/C, var/mob/user)
+/mob/living/bot/mulebot/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user)
 	if(user.stat)
 		return
 
@@ -273,7 +273,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(Tsec)
+	new /obj/effect/debris/cleanable/blood/oil(Tsec)
 	..()
 
 /mob/living/bot/mulebot/proc/GetBeaconList()
@@ -314,7 +314,7 @@
 	C.pixel_y += 9
 	if(C.layer < layer)
 		C.layer = layer + 0.1
-	overlays += C
+	add_overlay(C)
 
 	busy = 0
 

@@ -9,7 +9,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
-	flags = NOREACT
+	atom_flags = NOREACT
+	pass_flags = NONE
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
@@ -29,17 +31,23 @@
 
 /obj/machinery/smartfridge/Initialize(mapload)
 	. = ..()
+	AIR_UPDATE_ON_INITIALIZE_AUTO
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
 		wires = new/datum/wires/smartfridge(src)
 
 /obj/machinery/smartfridge/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
 	qdel(wires)
 	for(var/A in item_records)	//Get rid of item records.
 		qdel(A)
 	wires = null
 	return ..()
+
+/obj/machinery/smartfridge/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -163,7 +171,8 @@
 		update_icon()
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
@@ -175,9 +184,10 @@
 			hasItems = 1
 			break
 	if(hasItems)
-		overlays += "drying_rack_filled"
+		overlays_to_add += "drying_rack_filled"
 		if(!not_working)
-			overlays += "drying_rack_drying"
+			overlays_to_add += "drying_rack_drying"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
 	. = ..()
@@ -187,7 +197,8 @@
 			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
 			return 1
 		else
-			user.remove_from_mob(WL)
+			if(!user.attempt_insert_item_for_installation(WL, src))
+				return
 			stock(WL)
 			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
 
@@ -237,14 +248,14 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/smartfridge/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		playsound(src, O.usesound, 50, 1)
-		overlays.Cut()
+		playsound(src, O.tool_sound, 50, 1)
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, icon_panel)
+			add_overlay(image(icon, icon_panel))
 		SSnanoui.update_uis(src)
 		return
 
@@ -261,7 +272,8 @@
 		return
 
 	if(accept_check(O))
-		user.remove_from_mob(O)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		stock(O)
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
 
@@ -281,12 +293,13 @@
 
 	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to put \the [B_held] into \the [src].")
+			attackby(B_held, user)
 		return
 
 	else
@@ -400,7 +413,7 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target,16,3,src)
+		throw_item.throw_at_old(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
 	return 1
 

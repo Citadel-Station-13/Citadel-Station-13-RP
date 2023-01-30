@@ -27,7 +27,7 @@
 	var/burst_delay = 2
 	var/initial_fire_delay = 100
 
-	var/integrity = 80
+	integrity = 80
 
 
 /obj/machinery/power/emitter/verb/rotate_clockwise()
@@ -154,14 +154,14 @@
 		switch(state)
 			if(0)
 				state = 1
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] secures [src] to the floor.", \
 					"You secure the external reinforcing bolts to the floor.", \
 					"You hear a ratchet.")
 				src.anchored = 1
 			if(1)
 				state = 0
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] unsecures [src] reinforcing bolts from the floor.", \
 					"You undo the external reinforcing bolts.", \
 					"You hear a ratchet.")
@@ -181,11 +181,11 @@
 				to_chat(user, "<span class='warning'>\The [src] needs to be wrenched to the floor.</span>")
 			if(1)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to weld [src] to the floor.", \
 						"You start to weld [src] to the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 2
 						to_chat(user, "You weld [src] to the floor.")
@@ -194,11 +194,11 @@
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			if(2)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to cut [src] free from the floor.", \
 						"You start to cut [src] free from the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 1
 						to_chat(user, "You cut [src] free from the floor.")

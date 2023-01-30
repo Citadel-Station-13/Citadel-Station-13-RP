@@ -9,18 +9,25 @@
 
 
 /area/triumph/surfacebase
-	icon = 'icons/turf/areas.dmi'
+	name = "Surface Base"
+
 /area/triumph/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/triumph/surfacebase/outside/outside1
 	icon_state = "outside1"
+
 /area/triumph/surfacebase/outside/outside2
 	icon_state = "outside2"
+
 /area/triumph/surfacebase/outside/outside3
 	icon_state = "outside3"
+
 /area/triumph/surfacebase/outside/empty
 	name = "Outside - Empty Area"
+
 /area/triumph/surfacebase/outside/wilderness
 	name = "Outside - Wilderness"
 	icon_state = "invi"
@@ -118,6 +125,7 @@
 // Solars map areas
 /area/triumph/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/triumph/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 //Surface med
@@ -318,6 +326,7 @@
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
 	icon_state = "yellow"
+	is_outside = OUTSIDE_YES
 
 // Frozen planet world areas
 /area/class_p
@@ -401,14 +410,58 @@
 	name = "\improper Excursion Shuttle - Pirate Base"
 
 /area/piratebase
-	name = "Away Mission - Pirate Base"
+	name = "Pirate Base"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
-
-/area/piratebase/facility
-	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-	requires_power = FALSE
+
+/area/piratebase/dock
+	name = "Pirate Base - Dock"
+	icon_state = "debrisexplored"
+
+/area/piratebase/sickbay
+	name = "Pirate Base - Sickbay"
+	icon_state = "debrisexplored"
+
+/area/piratebase/mess
+	name = "Pirate Base - Mess Hall"
+	icon_state = "debrisexplored"
+
+/area/piratebase/bunks
+	name = "Pirate Base - Bunks"
+	icon_state = "debrisexplored"
+
+/area/piratebase/captain
+	name = "Pirate Base - Captain's Quarters"
+	icon_state = "debrisexplored"
+
+/area/piratebase/vault
+	name = "Pirate Base - Vault"
+	icon_state = "debrisexplored"
+
+/area/piratebase/atmospherics
+	name = "Pirate Base - Atmospherics"
+	icon_state = "debrisexplored"
+
+/area/piratebase/construction
+	name = "Pirate Base - Construction Zone"
+	icon_state = "debrisexplored"
+
+/area/piratebase/mining
+	name = "Pirate Base - Mining Operations"
+	icon_state = "debrisexplored"
+
+/area/piratebase/power
+	name = "Pirate Base - Power Management"
+	icon_state = "debrisexplored"
+
+/area/piratebase/halls
+	name = "Pirate Base - Halls"
+	icon_state = "debrisexplored"
+
+/area/piratebase/brig
+	name = "Pirate Base - Brig"
+	icon_state = "debrisexplored"
 
 ////////////////////////////////////
 //// END TRIUMPH SPECIFIC AREAS ////
@@ -434,23 +487,29 @@
 	name = "Away Mission - Trade Port"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 1
+	ambience = AMBIENCE_GENERIC
 
 /area/tradeport/facility
 	icon_state = "red"
 
 /area/tradeport/engineering
 	icon_state = "yellow"
+	ambience = AMBIENCE_ENGINEERING
 
 /area/tradeport/commons
 	icon_state = "green"
 
 /area/tradeport/dock
 	icon_state = "blue"
+	ambience = AMBIENCE_HANGAR
+	sound_env = LARGE_ENCLOSED
 
 /area/tradeport/pads
 	icon_state = "purple"
+	ambience = AMBIENCE_HANGAR
+	sound_env = LARGE_ENCLOSED
 
 /area/tradeport/spine
 	name = "\improper Commerce Spine"
@@ -478,9 +537,11 @@
 
 /area/tradeport/medical
 	icon_state = "blue"
+	sound_env = SMALL_ENCLOSED
 
 /area/tradeport/atmospherics
 	icon_state = "yellow"
+	ambience = AMBIENCE_ATMOS
 
 /area/tradeport/exterior
 
@@ -493,7 +554,7 @@
 //////// Mothership areas ////////
 /area/mothership
 	requires_power = 1
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "blue-red2"
 /area/mothership/breakroom
 	name = "Warship - Breakroom"
@@ -525,7 +586,7 @@
 	name = "Warship - Surgery"
 /area/mothership/vault
 	name = "Warship - Vault"
-	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/teleporter
 	name = "Warship - Teleporter Room"
 /area/mothership/security
@@ -550,7 +611,7 @@
 	name = "Warship - Warden"
 /area/mothership/armory
 	name = "Warship - Armory"
-	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/bridge
 	name = "Warship - Bridge"
 /area/mothership/holodeck
@@ -576,7 +637,7 @@
 	icon_state = "yellow"
 	requires_power = 0
 	dynamic_lighting = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/skipjack_station/transit
 	name = "transit"
@@ -594,7 +655,7 @@
 	name = "\improper Ninja Base"
 	icon_state = "green"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/ninja_dojo/dojo
 	name = "\improper Clan Dojo"
@@ -617,7 +678,7 @@
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/lavaland
 	name = "Lava Land"
@@ -634,6 +695,9 @@
 /area/lavaland/idleruins
 	name = "Lava Land - Idle Ruins"
 
+/area/lavaland/ashlander_camp
+	name = "Lava Land - Ashlander Camp"
+
 /area/lavaland/bosses
 	name = "Lava Land - Boss"
 	requires_power = 0
@@ -649,10 +713,12 @@
 /area/lavaland/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/unexplored
 	name = "Lava Land (Center) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/transit
 	name = "Lava Land (Center) - Transit"
@@ -661,26 +727,32 @@
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/north/unexplored
 	name = "Lava Land (North) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/explored
 	name = "Lava Land (South) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/unexplored
 	name = "Lava Land (South) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/explored
 	name = "Lava Land (East) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/unexplored
 	name = "Lava Land (East) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/colony
 	name = "Lava Land (East) - Colony"
@@ -708,10 +780,13 @@
 /area/lavaland/west/explored
 	name = "Lava Land (West) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
+
 
 /area/lavaland/west/unexplored
 	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/dungeon/exterior
 	name = "Lava Land (Dungeon) - Unknown"
@@ -738,6 +813,7 @@
 	icon_state = "away"
 	requires_power = FALSE
 	dynamic_lighting = FALSE
+	is_outside = OUTSIDE_YES
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
@@ -745,14 +821,16 @@
 	requires_power = TRUE
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	dynamic_lighting = TRUE
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/surface
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 
 /area/aerostat/surface/explored
@@ -893,6 +971,7 @@
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -931,6 +1010,7 @@
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

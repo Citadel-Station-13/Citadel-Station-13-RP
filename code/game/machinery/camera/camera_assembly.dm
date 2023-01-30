@@ -30,7 +30,7 @@
 		if(0)
 			// State 0
 			if(W.is_wrench() && isturf(src.loc))
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				to_chat(user, "You wrench the assembly into place.")
 				anchored = 1
 				state = 1
@@ -48,7 +48,7 @@
 				return
 
 			else if(W.is_wrench())
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				to_chat(user, "You unattach the assembly from its place.")
 				anchored = 0
 				update_icon()
@@ -78,7 +78,7 @@
 		if(3)
 			// State 3
 			if(W.is_screwdriver())
-				playsound(src.loc, W.usesound, 50, 1)
+				playsound(src.loc, W.tool_sound, 50, 1)
 
 				var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: "+GLOB.using_map.station_short+",Security,Secret ", "Set Network", camera_network ? camera_network : NETWORK_DEFAULT))
 				if(!input)
@@ -118,17 +118,17 @@
 			else if(W.is_wirecutter())
 
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
-				playsound(src.loc, W.usesound, 50, 1)
+				playsound(src.loc, W.tool_sound, 50, 1)
 				to_chat(user, "You cut the wires from the circuits.")
 				state = 2
 				return
 
 	// Upgrades!
 	if(is_type_in_list(W, possible_upgrades) && !is_type_in_list(W, upgrades)) // Is a possible upgrade and isn't in the camera already.
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "You attach \the [W] into the assembly inner circuits.")
 		upgrades += W
-		user.remove_from_mob(W)
-		W.loc = src
 		return
 
 	// Taking out upgrades
@@ -136,8 +136,8 @@
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
 			to_chat(user, "You unattach an upgrade from the assembly.")
-			playsound(src, W.usesound, 50, 1)
-			U.loc = get_turf(src)
+			playsound(src, W.tool_sound, 50, 1)
+			user.grab_item_from_interacted_with(U, src)
 			upgrades -= U
 		return
 
@@ -161,10 +161,10 @@
 		return 0
 
 	to_chat(user, "<span class='notice'>You start to weld the [src]..</span>")
-	playsound(src.loc, WT.usesound, 50, 1)
+	playsound(src.loc, WT.tool_sound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
-	if(do_after(user, 20 * WT.toolspeed))
+	if(do_after(user, 20 * WT.tool_speed))
 		busy = 0
 		if(!WT.isOn())
 			return 0

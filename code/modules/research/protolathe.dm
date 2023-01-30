@@ -3,7 +3,7 @@
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
 	base_icon_state = "protolathe"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/protolathe
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
@@ -42,8 +42,6 @@
 			build(D)
 			progress = 0
 			removeFromQueue(1)
-			if(linked_console)
-				linked_console.updateUsrDialog()
 		update_appearance()
 	else
 		if(busy)
@@ -135,9 +133,9 @@
 	if(materials[S.material.name] + amnt <= max_res_amount)
 		if(S && S.get_amount() >= 1)
 			var/count = 0
-			overlays += "fab-load-metal"
+			add_overlay("fab-load-metal")
 			spawn(10)
-				overlays -= "fab-load-metal"
+				cut_overlay("fab-load-metal")
 			while(materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
 				materials[S.material.name] += amnt
 				S.use(1)
@@ -149,9 +147,9 @@
 
 	var/stacktype = S.type
 	var/t = getMaterialName(stacktype)
-	overlays += "protolathe_[t]"
+	add_overlay("protolathe_[t]")
 	spawn(10)
-		overlays -= "protolathe_[t]"
+		cut_overlay("protolathe_[t]")
 
 	updateUsrDialog()
 	return

@@ -2,7 +2,7 @@
 	desc = "A close-fitting mask that can be connected to an air supply."
 	name = "breath mask"
 	icon_state = "breath"
-	item_state_slots = list(slot_r_hand_str = "breath", slot_l_hand_str = "breath")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "breath", SLOT_ID_LEFT_HAND = "breath")
 	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
@@ -27,7 +27,7 @@
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
 	adjust_mask(user)
@@ -43,7 +43,7 @@
 	desc = "A close-fitting sterile mask that can be connected to an air supply."
 	name = "medical mask"
 	icon_state = "medical"
-	item_state_slots = list(slot_r_hand_str = "medical", slot_l_hand_str = "medical")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medical", SLOT_ID_LEFT_HAND = "medical")
 	permeability_coefficient = 0.01
 
 /obj/item/clothing/mask/breath/emergency

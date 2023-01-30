@@ -9,66 +9,78 @@ var/list/wrapped_species_by_ref = list()
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_gender
-		)
+		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+	)
 
 	var/list/valid_transform_species = list()
 	var/monochromatic = FALSE
 	var/default_form = SPECIES_HUMAN
 	var/heal_rate = 0
 
-/datum/species/shapeshifter/get_valid_shapeshifter_forms(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
+/datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_icobase(H, get_deform)
 
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
-/datum/species/shapeshifter/get_bodytype(var/mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
-	return S.get_bodytype(H)
+/datum/species/shapeshifter/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	if(!H) return ..(H, I, slot_id)
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	return S.get_effective_bodytype(H, I, slot_id)
 
-/datum/species/shapeshifter/get_worn_legacy_bodytype(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	return S.get_bodytype_legacy(H)
+
+/datum/species/shapeshifter/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_worn_legacy_bodytype(H)
 
-/datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_blood_mask(H)
 
-/datum/species/shapeshifter/get_damage_mask(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_damage_mask(H)
 
-/datum/species/shapeshifter/get_damage_overlays(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_damage_overlays(H)
 
-/datum/species/shapeshifter/get_tail(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail(H)
 
-/datum/species/shapeshifter/get_tail_animation(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail_animation(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail_animation(H)
 
-/datum/species/shapeshifter/get_tail_hair(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail_hair(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail_hair(H)
 
-/datum/species/shapeshifter/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
+	if(H)
+		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+		if(S)
+			return S.get_husk_icon(H)
+	 return ..()
+
+/datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	wrapped_species_by_ref["\ref[H]"] = default_form
 	if(monochromatic)
@@ -96,22 +108,22 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_hairstyles = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+	for(var/hairstyle in GLOB.legacy_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_facialhairstyles += facialhairstyle
 
@@ -168,7 +180,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_species = null
 	new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in species.get_valid_shapeshifter_forms(src)
 
-	if(!new_species || !name_static_species_meta(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
+	if(!new_species || !SScharacters.resolve_species_name(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
 		return
 	shapeshifter_change_shape(new_species)
 
@@ -195,7 +207,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_set_colour(new_skin)
 
-/mob/living/carbon/human/proc/shapeshifter_set_colour(var/new_skin)
+/mob/living/carbon/human/proc/shapeshifter_set_colour(new_skin)
 
 	r_skin =   hex2num(copytext(new_skin, 2, 4))
 	g_skin =   hex2num(copytext(new_skin, 4, 6))
@@ -241,20 +253,16 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_set_facial_color(new_fhair)
 
-/mob/living/carbon/human/proc/shapeshifter_set_hair_color(var/new_hair)
-
+/mob/living/carbon/human/proc/shapeshifter_set_hair_color(new_hair)
 	change_hair_color(hex2num(copytext(new_hair, 2, 4)), hex2num(copytext(new_hair, 4, 6)), hex2num(copytext(new_hair, 6, 8)))
 
-/mob/living/carbon/human/proc/shapeshifter_set_grad_color(var/new_grad)
-
+/mob/living/carbon/human/proc/shapeshifter_set_grad_color(new_grad)
 	change_grad_color(hex2num(copytext(new_grad, 2, 4)), hex2num(copytext(new_grad, 4, 6)), hex2num(copytext(new_grad, 6, 8)))
 
-/mob/living/carbon/human/proc/shapeshifter_set_facial_color(var/new_fhair)
-
+/mob/living/carbon/human/proc/shapeshifter_set_facial_color(new_fhair)
 	change_facial_hair_color(hex2num(copytext(new_fhair, 2, 4)), hex2num(copytext(new_fhair, 4, 6)), hex2num(copytext(new_fhair, 6, 8)))
 
 /mob/living/carbon/human/proc/shapeshifter_select_eye_colour()
-
 	set name = "Select Eye Color"
 	set category = "Abilities"
 
@@ -270,7 +278,7 @@ var/list/wrapped_species_by_ref = list()
 
 	shapeshifter_set_eye_color(new_eyes)
 
-/mob/living/carbon/human/proc/shapeshifter_set_eye_color(var/new_eyes)
+/mob/living/carbon/human/proc/shapeshifter_set_eye_color(new_eyes)
 
 	var/list/new_color_rgb_list = hex2rgb(new_eyes)
 	// First, update mob vars.
@@ -295,8 +303,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
-	for(var/path in ear_styles_list)
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+	for(var/path in GLOB.legacy_ears_lookup)
+		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_ear_styles[instance.name] = path
 
@@ -306,7 +314,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	ear_style = ear_styles_list[pretty_ear_styles[new_ear_style]]
+	ear_style = GLOB.legacy_ears_lookup[pretty_ear_styles[new_ear_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_ears,g_ears,b_ears)
@@ -339,6 +347,60 @@ var/list/wrapped_species_by_ref = list()
 
 	update_hair() //Includes Virgo ears
 
+/mob/living/carbon/human/proc/shapeshifter_select_horns()
+	set name = "Select Secondary Ears"
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 10
+	// Construct the list of names allowed for this user.
+	var/list/pretty_horn_styles = list("Normal" = null)
+	for(var/path in GLOB.legacy_ears_lookup)
+		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
+			pretty_horn_styles[instance.name] = path
+
+	// Present choice to user
+	var/new_horn_style = tgui_input_list(src, "Pick some secondary ears!", "Character Preference", pretty_horn_styles)
+	if(!new_horn_style)
+		return
+
+	//Set new style
+	horn_style = GLOB.legacy_ears_lookup[pretty_horn_styles[new_horn_style]]
+
+	//Allow color picks
+	var/current_pri_color = rgb(r_horn,g_horn,b_horn)
+
+	var/new_pri_color = input("Pick primary ear color:","Ear Color (Pri)", current_pri_color) as null|color
+	if(new_pri_color)
+		var/list/new_color_rgb_list = hex2rgb(new_pri_color)
+		r_horn = new_color_rgb_list[1]
+		g_horn = new_color_rgb_list[2]
+		b_horn = new_color_rgb_list[3]
+
+		//Indented inside positive primary color choice, don't bother if they clicked cancel
+		var/current_sec_color = rgb(r_horn2,g_horn2,b_horn2)
+
+		var/new_sec_color = input("Pick secondary ear color (only applies to some ears):","Ear Color (sec)", current_sec_color) as null|color
+		if(new_sec_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn2 = new_color_rgb_list[1]
+			g_horn2 = new_color_rgb_list[2]
+			b_horn2 = new_color_rgb_list[3]
+
+		var/current_ter_color = rgb(r_horn3,g_horn3,b_horn3)
+
+		var/new_ter_color = input("Pick tertiary ear color (only applies to some ears):","Ear Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn3 = new_color_rgb_list[1]
+			g_horn3 = new_color_rgb_list[2]
+			b_horn3 = new_color_rgb_list[3]
+
+	update_hair() //Includes Virgo ears
+
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"
 	set category = "Abilities"
@@ -349,8 +411,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
-	for(var/path in tail_styles_list)
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+	for(var/path in GLOB.legacy_tail_lookup)
+		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_tail_styles[instance.name] = path
 
@@ -360,7 +422,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	tail_style = tail_styles_list[pretty_tail_styles[new_tail_style]]
+	tail_style = GLOB.legacy_tail_lookup[pretty_tail_styles[new_tail_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_tail,g_tail,b_tail)
@@ -403,8 +465,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
-	for(var/path in wing_styles_list)
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
+	for(var/path in GLOB.legacy_wing_lookup)
+		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_wing_styles[instance.name] = path
 
@@ -414,7 +476,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	wing_style = wing_styles_list[pretty_wing_styles[new_wing_style]]
+	wing_style = GLOB.legacy_wing_lookup[pretty_wing_styles[new_wing_style]]
 
 	//Allow color picks
 	var/current_color = rgb(r_wing,g_wing,b_wing)
@@ -463,7 +525,7 @@ var/list/wrapped_species_by_ref = list()
 	visible_message(SPAN_NOTICE("\The [src]'s interal composition seems to change."))
 	update_icons_body()
 
-/datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H)
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

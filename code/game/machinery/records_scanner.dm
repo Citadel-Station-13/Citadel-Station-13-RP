@@ -52,7 +52,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	var/age = user.age
 	var/gender = user.gender
 	/* no dbstuff yet
-	var/DBQuery/cquery = dbcon.NewQuery("SELECT * from jobban WHERE ckey='[user.ckey]'")
+	var/datum/db_query/cquery = dbcon.NewQuery("SELECT * from jobban WHERE ckey='[user.ckey]'")
 	if(!cquery.Execute()) return
 	else
 		while(cquery.NextRow())
@@ -131,7 +131,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	L.fields["b_dna"] = dna
 	L.fields["enzymes"] = user.dna.struc_enzymes
 	L.fields["identity"] = user.dna.uni_identity
-	L.fields["image"] = getFlatIcon(user,0)//What the person looks like. Naked, in this case.
+	L.fields["image"] = get_flat_icon(user,0)//What the person looks like. Naked, in this case.
 	//End locked reporting
 
 	data_core.general += G

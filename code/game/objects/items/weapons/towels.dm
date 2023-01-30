@@ -4,6 +4,7 @@
 	icon_state = "towel"
 	slot_flags = SLOT_HEAD | SLOT_BELT | SLOT_OCLOTHING
 	force = 3.0
+	clothing_flags = EQUIP_IGNORE_BELTLINK
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("whipped")
 	hitsound = 'sound/weapons/towelwhip.ogg'
@@ -14,11 +15,11 @@
 /obj/item/towel/equipped(var/M, var/slot)
 	..()
 	switch(slot)
-		if(slot_head)
+		if(SLOT_ID_HEAD)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi')
-		if(slot_wear_suit)
+		if(SLOT_ID_SUIT)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi')
-		if(slot_belt)
+		if(SLOT_ID_BELT)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi')
 
 /obj/item/towel/attack_self(mob/living/user as mob)

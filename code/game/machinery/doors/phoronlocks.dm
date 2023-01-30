@@ -13,13 +13,13 @@
 // Pumps: (obj/machinery/atmospherics/component/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
 //
 
-obj/machinery/airlock_sensor/phoron
+/obj/machinery/airlock_sensor/phoron
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "phoronlock sensor"
 	var/previousPhoron
 
-obj/machinery/airlock_sensor/phoron/process()
+/obj/machinery/airlock_sensor/phoron/process()
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
@@ -38,10 +38,10 @@ obj/machinery/airlock_sensor/phoron/process()
 			alert = (pressure < ONE_ATMOSPHERE*0.8) || (phoron > 0.5)
 			update_icon()
 
-obj/machinery/airlock_sensor/phoron/airlock_interior
+/obj/machinery/airlock_sensor/phoron/airlock_interior
 	command = "cycle_interior"
 
-obj/machinery/airlock_sensor/phoron/airlock_exterior
+/obj/machinery/airlock_sensor/phoron/airlock_exterior
 	command = "cycle_exterior"
 
 
@@ -97,6 +97,10 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/target_temp = T20C
 	var/heating_power = 150000
 
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater //Variant for use on rift
+	name = "Stationary Air Heater"
+	active_power_usage = 1000
+
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/process()
 	..()
 
@@ -106,12 +110,13 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 			var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 			if(removed)
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
-				removed.add_thermal_energy(clamp(heat_transfer,-heating_power,heating_power))
+				removed.adjust_thermal_energy(clamp(heat_transfer,-heating_power,heating_power))
 				env.merge(removed)
 
 		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
 		for(var/i=1 to 3)	//Scrubs 4 times as fast
 			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
+
 
 //
 // PHORON LOCK CONTROLLER

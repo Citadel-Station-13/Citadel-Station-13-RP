@@ -214,19 +214,18 @@
 	add_overlay(tailimage)
 	add_overlay(eye_icon_state)
 
-/mob/living/simple_mob/shadekin/Stat()
+/mob/living/simple_mob/shadekin/statpanel_data(client/C)
 	. = ..()
-	if(statpanel("Shadekin"))
-		abilities_stat()
-
-/mob/living/simple_mob/shadekin/proc/abilities_stat()
-	for(var/A in shadekin_abilities)
-		var/obj/effect/shadekin_ability/ability = A
-		stat("[ability.ability_name]",ability.atom_button_text())
+	if(C.statpanel_tab("Shadekin"))
+		STATPANEL_DATA_LINE("")
+		for(var/A in shadekin_abilities)
+			var/obj/effect/shadekin_ability/ability = A
+			ability.atom_button_text()
+			STATPANEL_DATA_CLICK("[ability.ability_name]", "[ability.name]", "\ref[ability]")
 
 //They phase back to the dark when killed
 /mob/living/simple_mob/shadekin/death(gibbed, deathmessage = "phases to somewhere far away!")
-	overlays = list()
+	cut_overlays()
 	icon_state = ""
 	flick("tp_out",src)
 	spawn(1 SECOND)

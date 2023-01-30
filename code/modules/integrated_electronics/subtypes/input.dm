@@ -393,7 +393,7 @@
 			set_pin_data(IC_OUTPUT, 1, turf_contents)
 			set_pin_data(IC_OUTPUT, 3, area_name)
 			var/list/St = new()
-			for(var/obj/effect/decal/cleanable/crayon/I in scanned_turf)
+			for(var/obj/effect/debris/cleanable/crayon/I in scanned_turf)
 				St.Add(I.icon_state)
 			if(St.len)
 				set_pin_data(IC_OUTPUT, 2, jointext(St, ",", 1, 0))
@@ -468,7 +468,7 @@
 					cont += WEAKREF(U)
 			set_pin_data(IC_OUTPUT, 1, cont)
 			var/list/St = new()
-			for(var/obj/effect/decal/cleanable/crayon/I in E.contents)
+			for(var/obj/effect/debris/cleanable/crayon/I in E.contents)
 				St.Add(I.icon_state)
 			if(St.len)
 				set_pin_data(IC_OUTPUT, 2, jointext(St, ",", 1, 0))
@@ -942,6 +942,11 @@
 		push_data()
 		activate_pin(2)
 
+GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple/integrated_circuit, new)
+
+/datum/translation_context/simple/integrated_circuit
+	translation_class = TRANSLATION_CLASS_LEVEL_1
+
 /obj/item/integrated_circuit/input/microphone
 	name = "microphone"
 	desc = "Useful for spying on people, or for voice-activated machines."
@@ -951,7 +956,7 @@
 	icon_state = "recorder"
 	complexity = 8
 	inputs = list()
-	flags = HEAR
+	atom_flags = ATOM_HEAR
 	outputs = list(
 	"speaker" = IC_PINTYPE_STRING,
 	"message" = IC_PINTYPE_STRING
@@ -959,8 +964,11 @@
 	activators = list("on message received" = IC_PINTYPE_PULSE_OUT, "on translation" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 5
+	/// translation context
+	var/datum/translation_context/translation_context
 
 /obj/item/integrated_circuit/input/microphone/Initialize(mapload)
+	translation_context = GLOB.circuit_translation_context
 	. = ..()
 	listening_objects |= src
 
@@ -972,8 +980,10 @@
 	var/translated = FALSE
 	if(M && msg)
 		if(speaking)
-			if(!speaking.machine_understands)
+			if(!translation_context.can_translate(speaking, M))
 				msg = speaking.scramble(msg)
+			else
+				msg = translation_context.attempt_translation(speaking, M, msg)
 			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
@@ -1014,14 +1024,14 @@
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	. = ..()
 	for(var/lang in readable_langs)
-		var/datum/language/newlang = GLOB.all_languages[lang]
+		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
 		my_langs |= newlang
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
-			if(!((speaking.flags & NONVERBAL) || (speaking.flags & SIGNLANG)))
+			if(!((speaking.language_flags & LANGUAGE_NONVERBAL) || (speaking.language_flags & LANGUAGE_SIGNLANG)))
 				signlang = FALSE
 				msg = speaking.scramble(msg, my_langs)
 			else
@@ -1144,7 +1154,7 @@
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
 	if(pu)
-		user.transferItemToLoc(I,drop_location())
+		user.transfer_item_to_loc(I, drop_location())
 	set_pin_data(IC_OUTPUT, 1, WEAKREF(I))
 	push_data()
 	to_chat(user, "<span class='notice'>You let [assembly] scan [I].</span>")

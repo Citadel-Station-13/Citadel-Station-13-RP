@@ -66,8 +66,8 @@
 	dir = 8
 	},
 /obj/structure/loot_pile/surface/bones,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
@@ -87,10 +87,10 @@
 	pixel_y = 28
 	},
 /obj/machinery/light,
-/obj/effect/decal/cleanable/vomit,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/vomit,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/item/reagent_containers/hypospray/autoinjector/empty,
 /turf/simulated/shuttle/floor,
 /area/submap/Epod2)
@@ -102,12 +102,12 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = 28
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor,
 /area/submap/Epod2)
 "o" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/machinery/door/airlock/external{
 	icon_state = "door_locked";
 	locked = 1;

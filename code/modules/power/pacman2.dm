@@ -88,13 +88,13 @@
 				SSmachines.makepowernets()
 			else if(O.is_screwdriver())
 				open = !open
-				playsound(loc, O.usesound, 50, 1)
+				playsound(loc, O.tool_sound, 50, 1)
 				if(open)
 					to_chat(user, "<font color=#4F49AF>You open the access panel.</font>")
 				else
 					to_chat(user, "<font color=#4F49AF>You close the access panel.</font>")
 			else if(O.is_crowbar() && !open)
-				playsound(loc, O.usesound, 50, 1)
+				playsound(loc, O.tool_sound, 50, 1)
 				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 				for(var/obj/item/I in component_parts)
 					I.loc = src.loc

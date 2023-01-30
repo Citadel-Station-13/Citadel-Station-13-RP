@@ -8,9 +8,9 @@
 		return
 
 	var/list/keys = list()
-	for(var/mob/playerMob in player_list)
-		keys += playerMob.client
-	var/client/selection = input("Please, select a player!", "Set CKey", null, null) as null|anything in sortKey(keys)
+	for(var/client/C as anything in GLOB.clients)
+		keys += C
+	var/client/selection = input("Please, select a player!", "Set ckey", null, null) as null|anything in tim_sort(keys, /proc/cmp_ckey_asc)
 	if(!selection || !istype(selection))
 		return
 

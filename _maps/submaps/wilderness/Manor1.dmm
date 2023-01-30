@@ -47,7 +47,7 @@
 /area/submap/Manor1)
 "ak" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "am" = (
@@ -56,12 +56,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "an" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ao" = (
 /obj/structure/mopbucket,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ap" = (
@@ -72,7 +72,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Manor1)
 "ar" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Manor1)
 "as" = (
@@ -82,13 +82,13 @@
 "at" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp,
-/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "au" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "av" = (
@@ -106,7 +106,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ay" = (
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
+/obj/effect/debris/cleanable/blood/gibs/robot/limb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "az" = (
@@ -115,12 +115,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aB" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
@@ -137,7 +137,7 @@
 /area/submap/Manor1)
 "aE" = (
 /obj/structure/closet/cabinet,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/item/clothing/head/hood/winter,
 /obj/item/clothing/shoes/boots/winter,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
@@ -145,7 +145,7 @@
 /area/submap/Manor1)
 "aF" = (
 /obj/structure/table/woodentable,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aG" = (
@@ -181,7 +181,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aN" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aO" = (
@@ -284,13 +284,13 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bi" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood{
 	icon_state = "wood_broken0"
 	},
 /area/submap/Manor1)
 "bj" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bk" = (
@@ -314,11 +314,11 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/submap/Manor1)
 "bp" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/blucarpet,
 /area/submap/Manor1)
 "bq" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "br" = (
@@ -339,7 +339,7 @@
 	icon_state = "wooden_chair";
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bu" = (
@@ -347,7 +347,7 @@
 	icon_state = "wooden_chair";
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bv" = (
@@ -356,7 +356,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bw" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/carpet/blucarpet,
 /area/submap/Manor1)
 "bx" = (
@@ -375,7 +375,7 @@
 /area/submap/Manor1)
 "bz" = (
 /obj/structure/table/woodentable,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bA" = (
@@ -399,7 +399,7 @@
 	icon_state = "wooden_chair";
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bE" = (
@@ -422,12 +422,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/flora/pottedplant/drooping,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bI" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
@@ -460,15 +460,15 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bP" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/blucarpet,
 /area/submap/Manor1)
 "bQ" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bR" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
@@ -481,7 +481,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/submap/Manor1)
 "bU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/purcarpet,
 /area/submap/Manor1)
 "bV" = (
@@ -496,7 +496,7 @@
 "bX" = (
 /obj/structure/table/woodentable,
 /obj/structure/bedsheetbin,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bY" = (
@@ -544,7 +544,7 @@
 /area/submap/Manor1)
 "cg" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ch" = (
@@ -566,14 +566,14 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ck" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "cl" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Manor1)
 "cm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/structure/bed/chair/comfy/purp{
 	icon_state = "comfychair_preview";
 	dir = 4
@@ -603,7 +603,7 @@
 /area/submap/Manor1)
 "cr" = (
 /obj/structure/simple_door/wood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/purcarpet,
 /area/submap/Manor1)
 "cs" = (
@@ -632,7 +632,7 @@
 /area/submap/Manor1)
 "cx" = (
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Manor1)
 "cy" = (
@@ -642,7 +642,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Manor1)
 "cz" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
@@ -656,7 +656,7 @@
 	},
 /area/submap/Manor1)
 "cC" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)

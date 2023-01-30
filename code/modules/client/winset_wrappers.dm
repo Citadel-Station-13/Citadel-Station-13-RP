@@ -12,3 +12,9 @@
 
 /client/proc/_winshow(window, show)
 	winshow(src, window, show)
+
+/client/proc/_command(str)
+	winset(src, null, "command=[str]")
+
+/client/proc/_browse(data, window)
+	src << browse(data, window)

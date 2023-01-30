@@ -82,8 +82,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Initialize(mapload)
 	. = ..()
 	all_communicators += src
-	sortTim(all_communicators, /proc/cmp_name_asc)
-	node = get_exonet_node()
+	tim_sort(all_communicators, /proc/cmp_name_asc)
+	node = get_exonet_node(src)
 	START_PROCESSING(SSobj, src)
 	camera = new(src)
 	camera.name = "[src] #[rand(100,999)]"
@@ -120,7 +120,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	if(!exonet.address)
 		exonet.make_address("communicator-[user.client]-[user.name]")
 	if(!node)
-		node = get_exonet_node()
+		node = get_exonet_node(src)
 	populate_known_devices()
 
 // Proc: examine()
@@ -193,7 +193,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	update_ticks++
 	if(update_ticks % 5)
 		if(!get_connection_to_tcomms())
-			node = get_exonet_node()
+			node = get_exonet_node(src)
 		if(!get_connection_to_tcomms())
 			close_connection(reason = "Connection timed out")
 
@@ -229,7 +229,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 
 // Proc: MouseDrop()
 //Same thing PDAs do
-/obj/item/communicator/MouseDrop(obj/over_object as obj)
+/obj/item/communicator/OnMouseDropLegacy(obj/over_object as obj)
 	var/mob/M = usr
 	if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 		return
@@ -347,6 +347,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems. You can wear this one on your wrist!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "commwatch"
+	item_flags = EQUIP_ALLOW_SINGLE_LIMB
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()

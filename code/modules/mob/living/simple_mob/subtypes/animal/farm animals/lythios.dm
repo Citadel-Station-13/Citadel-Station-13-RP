@@ -3,7 +3,7 @@
 
 /datum/category_item/catalogue/fauna/livestock/icegoat
 	name = "Experimental Livestock - Glacicorn"
-	desc = "A genetically engineered lifeform distantly related to the domesitcated goat.\
+	desc = "A genetically engineered lifeform distantly related to the domesticated goat.\
 	It is currently being developed by NT as part of an independent initiative to slowly\
 	ween itself off reliance on Centauri Provisions for its food. It is capable of surviving\
 	in the harshest colds, and survives off of chemical processes only possible in extreme cold.\
@@ -24,8 +24,8 @@
 
 	faction = "goat"
 
-	minbodytemp = 100
-	maxbodytemp = 250
+	minbodytemp = 180
+	maxbodytemp = 275
 
 	health = 40
 	maxHealth = 40
@@ -110,7 +110,7 @@
 
 /mob/living/simple_mob/animal/passive/woolie
 	name = "woolie"
-	desc = "A ball of wool that hides a peculiar peaceful creature. Its thick coat protectsit from even the harshest weather."
+	desc = "A ball of wool that hides a peculiar but peaceful creature. Its thick coat protects it from even the harshest weather."
 	tt_desc = "E Lanovis absonulla"
 	icon_state = "woolie"
 	icon_living = "woolie"
@@ -119,7 +119,7 @@
 
 	faction = "goat"
 
-	minbodytemp = 100
+	minbodytemp = 180
 	maxbodytemp = 300
 
 	health = 40
@@ -173,20 +173,20 @@
 /datum/category_item/catalogue/fauna/livestock/furnacegrub
 	name = "Experimental Livestock - Furnace Grub"
 	desc = "After years of study by NT xenobiologists, the genes that allowed solar moths\
-	to produce heat was extracted and engineered into a docile and mostly safe living furnace.\
-	The Furnace Grub as it has been dubbed could provide passive heating even without power systems,\
+	to produce heat were extracted and engineered into a docile and mostly safe living furnace.\
+	The 'Furnace Grub' as it has been dubbed could provide passive heating even without power systems,\
 	which NT hopes can be sold to prospective colonists seeking to colonize the most icy planets."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/simple_mob/animal/passive/furnacegrub
 	name = "furnace grub"
-	desc = "This grub glows with a powerful heat. "
+	desc = "This grub glows with a powerful heat."
 	icon_state = "furnacegrub"
 	icon_living = "furnacegrub"
 	icon_dead = "furnacegrub_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/furnacegrub)
 
-	minbodytemp = 100
+	minbodytemp = 180
 	maxbodytemp = 350
 
 	faction = "grubs"
@@ -222,12 +222,12 @@
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature < T0C)	//This should start heating the room at a moderate pace up to 0 celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 450 degrees celsius. Heating rate should increase between 200 and 450 C.
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return
@@ -250,12 +250,12 @@
 
 ///Lythios Livesotck Crates
 /obj/structure/largecrate/animal/icegoat
-	name = "glacicorn crate carrier"
+	name = "glacicorn carrier"
 	desc = "Contains a pair of glacicorns, ill tempered ice goats. Warning glaicorns will die in enviroment with temperatures exceeding zero degress celcius."
 	starts_with = list(/mob/living/simple_mob/animal/icegoat = 2)
 
 /obj/structure/largecrate/animal/woolie
-	name = "woolie Crate"
+	name = "woolie carrier"
 	desc = "Contains a pair of woolies, a sheep like animal designed to live in extreme cold."
 	starts_with = list(/mob/living/simple_mob/animal/passive/woolie = 2)
 

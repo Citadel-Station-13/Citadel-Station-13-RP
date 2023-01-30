@@ -17,7 +17,7 @@
 			/obj/item/reagent_containers/food/snacks/meat = 4
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "Food crate"
 
 /datum/supply_pack/supply/toner
@@ -88,7 +88,7 @@
 /datum/supply_pack/supply/spare_pda
 	name = "Spare PDAs"
 	cost = 10
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/thinktronic
 	container_name = "Spare PDA crate"
 	contains = list(/obj/item/pda = 3)
 
@@ -112,7 +112,7 @@
 			/obj/item/clothing/glasses/meson
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/secure
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Shaft miner equipment"
 	access = access_mining
 
@@ -125,19 +125,6 @@
 	container_name = "Mulebot Crate"
 */
 
-/datum/supply_pack/supply/cargotrain
-	name = "Cargo Train Tug"
-	contains = list(/obj/vehicle/train/engine)
-	cost = 35
-	container_type = /obj/structure/largecrate
-	container_name = "Cargo Train Tug Crate"
-
-/datum/supply_pack/supply/cargotrailer
-	name = "Cargo Train Trolley"
-	contains = list(/obj/vehicle/train/trolley)
-	cost = 15
-	container_type = /obj/structure/largecrate
-	container_name = "Cargo Train Trolley Crate"
 
 //Culture Update
 /datum/supply_pack/misc/mining_tyrmalin
@@ -145,10 +132,9 @@
 	contains = list(
 			/obj/item/melee/thermalcutter = 1,
 			/obj/item/pickaxe/tyrmalin = 2,
-			/obj/item/grenade/explosive/ied/tyrmalin/large = 1,
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
-	cost = 120
+	cost = 300
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
 	access = access_mining

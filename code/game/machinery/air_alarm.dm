@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(air_alarms)
+
 #define DECLARE_TLV_VALUES var/red_min; var/yel_min; var/yel_max; var/red_max; var/tlv_comparitor;
 #define LOAD_TLV_VALUES(x, y) red_min = x[1]; yel_min = x[2]; yel_max = x[3]; red_max = x[4]; tlv_comparitor = y;
 #define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
@@ -122,11 +124,13 @@
 
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
+	GLOB.air_alarms += src
 	if(!pixel_x && !pixel_y)
 		offset_airalarm()
 	first_run()
 
 /obj/machinery/alarm/Destroy()
+	GLOB.air_alarms -= src
 	unregister_radio(src, frequency)
 	qdel(wires)
 	wires = null
@@ -241,7 +245,7 @@
 			if(gas.temperature <= target_temperature)	//gas heating
 				var/energy_used = min(gas.get_thermal_energy_change(target_temperature) , active_power_usage)
 
-				gas.add_thermal_energy(energy_used)
+				gas.adjust_thermal_energy(energy_used)
 				//use_power(energy_used, ENVIRON) //handle by update_use_power instead
 			else	//gas cooling
 				var/heat_transfer = min(abs(gas.get_thermal_energy_change(target_temperature)), active_power_usage)
@@ -253,7 +257,7 @@
 
 				heat_transfer = min(heat_transfer, cop * active_power_usage)	//this ensures that we don't use more than active_power_usage amount of power
 
-				heat_transfer = -gas.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
+				heat_transfer = -gas.adjust_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 				//use_power(heat_transfer / cop, ENVIRON)	//handle by update_use_power instead
 
@@ -431,7 +435,7 @@
 	signal.data["sigtype"] = "command"
 
 	radio_connection.post_signal(src, signal, RADIO_FROM_AIRALARM)
-//			to_world("Signal [command] Broadcasted to [target]")
+//			TO_WORLD("Signal [command] Broadcasted to [target]")
 
 	return 1
 

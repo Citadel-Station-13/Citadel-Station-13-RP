@@ -24,7 +24,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
-	overlays += "pai-off"
+	add_overlay("pai-off")
 
 /obj/item/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn
@@ -279,35 +279,54 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 //		WIRE_TRANSMIT = 4
 
 /obj/item/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
-	src.pai = personality
-	src.overlays += "pai-happy"
+	pai = personality
+	cut_overlays()
+	add_overlay("pai-happy")
 
 /obj/item/paicard/proc/removePersonality()
-	src.pai = null
-	src.overlays.Cut()
-	src.overlays += "pai-off"
+	pai = null
+	cut_overlays()
+	add_overlay("pai-off")
 
 /obj/item/paicard
 	var/current_emotion = 1
-/obj/item/paicard/proc/setEmotion(var/emotion)
+
+//! WHAT THE FUCK
+/obj/item/paicard/proc/setEmotion(emotion)
 	if(pai)
-		src.overlays.Cut()
+		cut_overlays()
 		switch(emotion)
-			if(1) src.overlays += "pai-happy"
-			if(2) src.overlays += "pai-cat"
-			if(3) src.overlays += "pai-extremely-happy"
-			if(4) src.overlays += "pai-face"
-			if(5) src.overlays += "pai-laugh"
-			if(6) src.overlays += "pai-off"
-			if(7) src.overlays += "pai-sad"
-			if(8) src.overlays += "pai-angry"
-			if(9) src.overlays += "pai-what"
-			if(10) src.overlays += "pai-neutral"
-			if(11) src.overlays += "pai-silly"
-			if(12) src.overlays += "pai-nose"
-			if(13) src.overlays += "pai-smirk"
-			if(14) src.overlays += "pai-exclamation"
-			if(15) src.overlays += "pai-question"
+			if(1)
+				add_overlay("pai-happy")
+			if(2)
+				add_overlay("pai-cat")
+			if(3)
+				add_overlay("pai-extremely-happy")
+			if(4)
+				add_overlay("pai-face")
+			if(5)
+				add_overlay("pai-laugh")
+			if(6)
+				add_overlay("pai-off")
+			if(7)
+				add_overlay("pai-sad")
+			if(8)
+				add_overlay("pai-angry")
+			if(9)
+				add_overlay("pai-what")
+			if(10)
+				add_overlay("pai-neutral")
+			if(11)
+				add_overlay("pai-silly")
+			if(12)
+				add_overlay("pai-nose")
+			if(13)
+				add_overlay("pai-smirk")
+			if(14)
+				add_overlay("pai-exclamation")
+			if(15)
+				add_overlay("pai-question")
+
 		current_emotion = emotion
 
 /obj/item/paicard/proc/alertUpdate()
@@ -319,9 +338,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	for(var/mob/M in src)
 		M.emp_act(severity)
 
-/obj/item/paicard/ex_act(severity)
+/obj/item/paicard/legacy_ex_act(severity)
 	if(pai)
-		pai.ex_act(severity)
+		LEGACY_EX_ACT(pai, severity, null)
 	else
 		qdel(src)
 

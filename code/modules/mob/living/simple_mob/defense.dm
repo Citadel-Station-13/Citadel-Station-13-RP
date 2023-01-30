@@ -55,7 +55,7 @@
 						qdel(MED)
 					visible_message("<span class='notice'>\The [user] applies the [MED] on [src].</span>")
 		else
-			var/datum/gender/T = gender_datums[src.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[src.get_visible_gender()]
 			// the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
 			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>")
 	if(can_butcher(user, O))	//if the animal can be butchered, do so and return. It's likely to be gibbed.
@@ -83,7 +83,7 @@
 
 
 // Exploding.
-/mob/living/simple_mob/ex_act(severity)
+/mob/living/simple_mob/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 	var/armor = run_armor_check(def_zone = null, attack_flag = "bomb")
@@ -179,14 +179,14 @@
 	return poison_resist
 
 // Armor
-/mob/living/simple_mob/getarmor(def_zone, type)
+/mob/living/simple_mob/run_mob_armor(def_zone, type)
 	var/armorval = armor[type]
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
-/mob/living/simple_mob/getsoak(def_zone, attack_flag)
+/mob/living/simple_mob/run_mob_soak(def_zone, attack_flag)
 	var/armorval = armor_soak[attack_flag]
 	if(!armorval)
 		return 0

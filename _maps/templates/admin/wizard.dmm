@@ -317,7 +317,7 @@
 /obj/item/clothing/head/wizard/magus,
 /obj/item/staff,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -361,7 +361,7 @@
 /obj/item/clothing/suit/wizrobe/psypurple,
 /obj/item/clothing/head/wizard/amp,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -416,7 +416,7 @@
 /obj/item/clothing/head/wizard/cap,
 /obj/item/staff/gentcane,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -426,7 +426,7 @@
 /obj/item/clothing/head/wizard/magus,
 /obj/item/staff,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -437,7 +437,7 @@
 /obj/item/clothing/head/wizard/marisa,
 /obj/item/staff/broom,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -448,14 +448,14 @@
 /obj/item/clothing/head/wizard/red,
 /obj/item/staff,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
 "bc" = (
 /obj/machinery/the_singularitygen,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -467,7 +467,7 @@
 /area/wizard_station)
 "be" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -482,7 +482,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/stock_parts/matter_bin/super,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -503,7 +503,7 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -512,21 +512,21 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
 "bl" = (
 /obj/machinery/computer/message_monitor,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
 "bm" = (
 /obj/machinery/computer/security,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -555,7 +555,7 @@
 	syndie = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -571,7 +571,7 @@
 	icon_state = "plant-04"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -616,7 +616,7 @@
 "bx" = (
 /obj/machinery/computer/power_monitor,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -631,7 +631,7 @@
 	},
 /obj/machinery/computer/station_alert/all,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -662,7 +662,7 @@
 	syndie = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -684,7 +684,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/xenos_claw,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -706,7 +706,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/organ/internal/stack,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -725,7 +725,7 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -733,7 +733,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -741,7 +741,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/book/manual/ripley_build_and_repair,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -754,7 +754,7 @@
 	pixel_y = 30
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -767,7 +767,7 @@
 /obj/item/target,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -775,7 +775,7 @@
 /obj/item/target/syndicate,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -783,7 +783,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/toy/sword,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -796,7 +796,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/gun/energy/laser/practice,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -818,14 +818,14 @@
 	syndie = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
 "bT" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -841,7 +841,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -857,7 +857,7 @@
 /obj/item/target,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -879,7 +879,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/book/manual/robotics_cyborgs,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -889,7 +889,7 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -908,7 +908,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -1023,7 +1023,7 @@
 	icon_state = "plant-20"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -1069,7 +1069,7 @@
 "cw" = (
 /obj/item/bot_assembly/medibot,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
@@ -1082,14 +1082,14 @@
 "cy" = (
 /obj/item/farmbot_arm_assembly,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)
 "cz" = (
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
-	icon_state = "vault";
+	icon_state = "dark";
 	dir = 5
 	},
 /area/wizard_station)

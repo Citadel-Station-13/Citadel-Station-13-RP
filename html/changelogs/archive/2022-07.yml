@@ -1,0 +1,50 @@
+2022-07-01:
+  Zandario:
+  - rscadd: Throwing subsystem.
+2022-07-09:
+  Captain277:
+  - rscdel: Removes toxin from fish meat.
+  - bugfix: Fixes incorrectly sized landing pads.
+  CharlesWedge:
+  - bugfix: Old Lore Removed, New Lore Added
+  MediHound:
+  - rscdel: Removed old Alina sprites
+  - rscadd: Added new Alina sprites
+  Zandario:
+  - bugfix: Corrects the tajaran spritesheets being used.
+2022-07-16:
+  Captain277:
+  - rscadd: Adds the Thrumbo.
+2022-07-25:
+  Captain277:
+  - tweak: Wing icon sheets
+  - tweak: Moves wing, horn, and tail icon sheets.
+  - tweak: 'Adjusts wing offsets. feature: Lays groundwork for Wing Spreading.'
+  - tweak: Alphabetizes all wings, tails, and ears/horns.
+2022-07-26:
+  TheLordME:
+  - tweak: Tweaked Xenohybrids lose the healing verb, because its passive now
+  Zandario:
+  - tweak: Tweaked chat blockquote formatting.
+2022-07-27:
+  FreeStylaLT:
+  - rscadd: Tech storage
+  - tweak: Map changes
+  racobio:
+  - rscadd: the cludge fighter
+  - imageadd: cludge fighter sprites
+2022-07-28:
+  FreeStylaLT:
+  - tweak: every species can now wear skrelltacles
+2022-07-29:
+  TheLordME:
+  - rscadd: Adds diona bodymarkings we already had sprites for
+  - bugfix: Second heterochromia works now
+  - refactor: Refactors parts of the body marking code
+2022-07-30:
+  TheLordME:
+  - bugfix: fixed a few of my mistakes
+  - bugfix: fixed Distress signals being way to loud
+2022-07-31:
+  Captain277:
+  - bugfix: Fixes icon state naming.

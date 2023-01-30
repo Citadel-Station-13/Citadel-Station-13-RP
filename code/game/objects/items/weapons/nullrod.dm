@@ -8,7 +8,7 @@
 	force = 15
 	throw_speed = 1
 	throw_range = 4
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -18,8 +18,8 @@
 	var/projectile_parry_chance = 0	// The base chance for a projectile to be deflected.
 
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.
@@ -111,7 +111,7 @@
 
 /obj/item/nullrod/godhand/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/staff
 	icon_state = "godstaff-red"
@@ -180,9 +180,9 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	force = rand(1, 30)
-	..()
+	return ..()
 
 /obj/item/nullrod/claymore/saber
 	name = "light energy sword"
@@ -211,7 +211,7 @@
 	item_state = "sord"
 	slot_flags = SLOT_BELT
 	force = 4.13
-	throwforce = 1
+	throw_force = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -261,7 +261,7 @@
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/clown
 	icon = 'icons/obj/wizard.dmi'
@@ -279,7 +279,7 @@
 	name = "Pride-struck Hammer"
 	desc = "It resonates an aura of Pride."
 	force = 16
-	throwforce = 15
+	throw_force = 15
 	w_class = 4
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
@@ -316,7 +316,7 @@
 	force = 0
 	throw_speed = 4
 	throw_range = 7
-	throwforce = 30
+	throw_force = 30
 	sharp = 1
 	attack_verb = list("enlightened", "redpilled")
 
@@ -330,7 +330,7 @@
 
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/armblade/claw
 	name = "profane blessing"
@@ -372,7 +372,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack(mob/target, mob/living/user)
+/obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -430,7 +430,7 @@
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	force = 4
-	throwforce = 0
+	throw_force = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'
@@ -442,9 +442,12 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack(mob/living/M, mob/living/user)
+/obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(!isliving(target))
+		return ..()
+	var/mob/living/L = target
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
@@ -454,17 +457,17 @@
 		to_chat(user, "<span class='notice'>You are already using [src].</span>")
 		return
 
-	user.visible_message("<span class='info'>[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [deity_name].</span>", \
-		"<span class='info'>You kneel[M == user ? null : " next to [M]"] and begin a prayer to [deity_name].</span>")
+	user.visible_message("<span class='info'>[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name].</span>", \
+		"<span class='info'>You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name].</span>")
 
 	praying = TRUE
-	if(do_after(user, 20, target = M))
-		M.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(M, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
-		M.adjustToxLoss(-5, TRUE, TRUE)
-		M.adjustOxyLoss(-5)
-		M.adjustBruteLoss(-5)
-		M.adjustFireLoss(-5)
+	if(do_after(user, 20, target = L))
+		L.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
+		to_chat(L, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
+		L.adjustToxLoss(-5, TRUE, TRUE)
+		L.adjustOxyLoss(-5)
+		L.adjustBruteLoss(-5)
+		L.adjustFireLoss(-5)
 		praying = FALSE
 	else
 		to_chat(user, "<span class='notice'>Your prayer to [deity_name] was interrupted.</span>")

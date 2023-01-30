@@ -16,9 +16,9 @@
 	/// Filename of cover.
 	var/cover
 
-/datum/computer_file/data/news_article/New(var/load_from_file = 0)
+/datum/computer_file/data/news_article/New(var/load_FROM_FILE = 0)
 	..()
-	if(server_file_path && load_from_file)
+	if(server_file_path && load_FROM_FILE)
 		stored_data = file2text(server_file_path)
 	calculate_size()
 

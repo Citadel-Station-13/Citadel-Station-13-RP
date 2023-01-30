@@ -22,7 +22,7 @@
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,			150),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									200),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,										900),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											750),
+		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,											750),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,												300),
 		new /datum/data/mining_equipment("GPS Device",					/obj/item/gps/mining,										100),
 		new /datum/data/mining_equipment("Portable Fuel Can",			/obj/item/reagent_containers/portable_fuelcan,		250),
@@ -47,7 +47,8 @@
 		//new /datum/data/mining_equipment("Mining Conscription Kit",	/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
 		new /datum/data/mining_equipment("Diamond Pickaxe",				/obj/item/pickaxe/diamond,									2000),
 		new /datum/data/mining_equipment("Advanced Ore Scanner",				/obj/item/mining_scanner/advanced,										2000),
-		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									1000),
+		new /datum/data/mining_equipment("100 Thalers",					/obj/item/spacecash/c100,									1000),
+		new /datum/data/mining_equipment("1000 Thalers",					/obj/item/spacecash/c1000,									10000),
 		new /datum/data/mining_equipment("Hardsuit - Control Module",	/obj/item/rig/industrial,									2000),
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",		/obj/item/rig_module/device/plasmacutter,						800),
 		new /datum/data/mining_equipment("Hardsuit - Drill",				/obj/item/rig_module/device/drill,								5000),
@@ -159,15 +160,16 @@
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
 				if(ishuman(usr))
-					usr.put_in_hands(inserted_id)
+					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
 				else
 					inserted_id.forceMove(get_turf(src))
 					inserted_id = null
 		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
-			if(istype(I) && !inserted_id && usr.unEquip(I))
-				I.forceMove(src)
+			var/obj/item/card/id/I = usr.get_active_held_item()
+			if(istype(I) && !inserted_id)
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				inserted_id = I
 				interact(usr)
 				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
@@ -197,24 +199,25 @@
 /obj/machinery/mineral/equipment_vendor/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		updateUsrDialog()
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_part_replacement(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(I, /obj/item/mining_voucher))
 		if(!powered())
 			return
 		RedeemVoucher(I, user)
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(I,/obj/item/card/id))
 		if(!powered())
-			return
-		else if(!inserted_id && user.unEquip(I))
-			I.forceMove(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(!inserted_id)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			inserted_id = I
 			interact(user)
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
 /obj/machinery/mineral/equipment_vendor/dismantle()
@@ -243,7 +246,7 @@
 		name = "Generic Entry"
 	prize_list += new /datum/data/mining_equipment(name, path, cost)
 
-/obj/machinery/mineral/equipment_vendor/ex_act(severity, target)
+/obj/machinery/mineral/equipment_vendor/legacy_ex_act(severity, target)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()

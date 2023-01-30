@@ -46,7 +46,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 	RefreshParts()
 
-/obj/machinery/magma_pump/ex_act(severity)
+/obj/machinery/magma_pump/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			//SN src = null
@@ -92,13 +92,13 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_pump/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(on)
 		set_light(3, 3, "#FFCC00")
-		src.icon_state = "[icon_state]_1"
+		icon_state = "[icon_state]_1"
 	else
 		set_light(0)
-		src.icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/structure/broken_pump
 	name = "broken pump"
@@ -192,7 +192,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 	RefreshParts()
 
-/obj/machinery/magma_reservoir/ex_act(severity)
+/obj/machinery/magma_reservoir/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			//SN src = null
@@ -240,13 +240,13 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_reservoir/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(on)
 		set_light(3, 3, "#FFCC00")
-		src.icon_state = "[icon_state]_1"
+		icon_state = "[icon_state]_1"
 	else
 		set_light(0)
-		src.icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/structure/broken_reservoir
 	name = "broken reservoir"

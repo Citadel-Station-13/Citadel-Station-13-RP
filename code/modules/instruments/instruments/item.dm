@@ -6,8 +6,8 @@
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
 		)
 	var/datum/song/handheld/song
 	var/list/allowed_instrument_ids
@@ -165,9 +165,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trumpet/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
@@ -190,9 +190,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/saxophone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/trombone
 	name = "trombone"
@@ -215,9 +215,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trombone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 
 /obj/item/instrument/recorder
 	name = "recorder"
@@ -248,7 +248,7 @@
 	. = ..()
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 
-/obj/item/instrument/harmonica/dropped(mob/M)
+/obj/item/instrument/harmonica/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_SAY)
 */
@@ -259,8 +259,8 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
 	attack_verb = list("beautifully honks")
 	allowed_instrument_ids = list("honk", "bikehorn")

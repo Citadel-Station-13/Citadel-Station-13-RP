@@ -61,8 +61,7 @@
 				legcuffed = null
 				update_inv_legcuffed()
 
-			if(buckled && buckled.buckle_require_restraints)
-				buckled.unbuckle_mob()
+			buckled?.buckled_reconsider_restraints()
 
 			qdel(I)
 		else
@@ -76,27 +75,8 @@
 		visible_message(
 			SPAN_DANGER("[src] manages to remove [I]!"),
 			SPAN_NOTICE("You successfully remove [I]."))
-		drop_from_inventory(I)
-
-/mob/living/carbon/resist_buckle()
-	if(!buckled)
-		return
-
-	if(!restrained())
-		return ..()
-
-	setClickCooldown(100)
-	visible_message(
-		SPAN_DANGER("[src] attempts to unbuckle themself!"),
-		SPAN_WARNING("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
-
-	if(do_after(src, 2 MINUTES, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
-		if(!buckled)
-			return
-		visible_message(SPAN_DANGER("[src] manages to unbuckle themself!"),
-						SPAN_NOTICE("You successfully unbuckle yourself."))
-		buckled.user_unbuckle_mob(src, src)
+		drop_item_to_ground(I, INV_OP_FORCE)
 
 /mob/living/carbon/proc/can_break_cuffs()
-	if(HULK in mutations)
+	if(MUTATION_HULK in mutations)
 		return TRUE

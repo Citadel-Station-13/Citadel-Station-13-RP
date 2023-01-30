@@ -83,6 +83,9 @@ GLOBAL_LIST_EMPTY(solargrubs)
 /mob/living/simple_mob/vore/solargrub/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
 		return
+	
+	if(stat != CONSCIOUS)
+		return
 
 	if(!ai_holder.target)
 			//first, check for potential cables nearby to powersink

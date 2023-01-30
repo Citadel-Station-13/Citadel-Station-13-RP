@@ -40,8 +40,7 @@
 			s2.start()
 			I.visible_message("<span class='danger'>\The [I] vanishes into thin air!</span>")
 			I.forceMove(get_turf(user))
-			user.drop_item(src)
-			src.loc = null
+			user.transfer_item_to_nullspace(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			user.put_in_hands(I)
 			user.visible_message("<span class='notice'>\A [I] appears in \the [user]'s hand!</span>")
 			log_and_message_admins("has stolen [I] with [src].")
@@ -56,9 +55,8 @@
 			s2.set_up(2, 1, L)
 			s1.start()
 			s2.start()
-			L.throw_at(get_step(get_turf(src),get_turf(L)), 4, 1, src)
-			user.drop_item(src)
-			src.loc = null
+			L.throw_at_old(get_step(get_turf(src),get_turf(L)), 4, 1, src)
+			user.transfer_item_to_nullspace(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 			spawn(1 SECOND)
 				if(!user.Adjacent(L))

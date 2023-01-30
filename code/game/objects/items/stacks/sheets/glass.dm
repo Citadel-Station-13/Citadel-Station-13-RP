@@ -45,7 +45,7 @@
 			RG.add_to_stacks(user)
 			var/obj/item/stack/material/glass/G = src
 			src = null
-			var/replace = (user.get_inactive_hand()==G)
+			var/replace = (user.get_inactive_held_item()==G)
 			V.use(1)
 			G.use(1)
 			if (!G && replace)
@@ -79,7 +79,7 @@
 		V.use(1)
 		var/obj/item/stack/material/glass/G = src
 		src = null
-		var/replace = (user.get_inactive_hand()==G)
+		var/replace = (user.get_inactive_held_item()==G)
 		G.use(1)
 		if (!G && !RG && replace)
 			user.put_in_hands(RG)

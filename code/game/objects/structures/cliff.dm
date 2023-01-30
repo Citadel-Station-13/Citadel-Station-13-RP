@@ -185,8 +185,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 		// Do the actual hurting. Double cliffs do halved damage due to them most likely hitting twice.
 		var/harm = !is_double_cliff ? 1 : 0.5
-		if(istype(L.buckled, /obj/vehicle)) // People falling off in vehicles will take less damage, but will damage the vehicle severely.
-			var/obj/vehicle/vehicle = L.buckled
+		if(istype(L.buckled, /obj/vehicle_old)) // People falling off in vehicles will take less damage, but will damage the vehicle severely.
+			var/obj/vehicle_old/vehicle = L.buckled
 			vehicle.adjust_health(40 * harm)
 			to_chat(L, SPAN_WARNING( "\The [vehicle] absorbs some of the impact, damaging it."))
 			harm /= 2
@@ -226,7 +226,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		var/obj/item/clothing/shoes/shoes = H.shoes
 		if(shoes && shoes.rock_climbing)
 			return ..() // Do the other checks too.
-		var/obj/item/held = H.get_active_hand()
+		var/obj/item/held = H.get_active_held_item()
 		if(held && istype(held, /obj/item/pickaxe/icepick))
 			return ..() //climb rock wall with ice pick. Makes sense.
 

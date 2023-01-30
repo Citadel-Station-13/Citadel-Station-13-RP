@@ -10,6 +10,9 @@
 	density = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
+	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: rad_insulation_open/closed
+	pass_flags_self = NONE
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
@@ -70,7 +73,7 @@
 	health = maxhealth
 	update_icon()
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/machinery/door/Destroy()
 	density = FALSE
@@ -137,9 +140,9 @@
 				do_animate("deny")
 
 /obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
+	return ..()
 
 /obj/machinery/door/CanAtmosPass(turf/T, d)
 	if(density)
@@ -178,7 +181,7 @@
 					new /obj/item/stack/material/steel(src.loc, 2)
 					new /obj/item/stack/rods(src.loc, 3)
 				if(BURN)
-					new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+					new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 			qdel(src)
 
 	if(damage)
@@ -187,18 +190,12 @@
 
 
 
-/obj/machinery/door/hitby(AM as mob|obj, var/speed=5)
-
-	..()
+/obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
-	var/tforce = 0
-	if(ismob(AM))
-		tforce = 15 * (speed/5)
-	else
-		tforce = AM:throwforce * (speed/5)
-	playsound(src.loc, hitsound, 100, 1)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
+	playsound(src, hitsound, 100, 1)
 	take_damage(tforce)
-	return
 
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
@@ -258,8 +255,8 @@
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
-				playsound(src, welder.usesound, 50, 1)
-				if(do_after(user, (5 * repairing) * welder.toolspeed) && welder && welder.isOn())
+				playsound(src, welder.tool_sound, 50, 1)
+				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
 					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
 					update_icon()
@@ -272,7 +269,7 @@
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
-			playsound(src, I.usesound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			return
 
 		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
@@ -357,7 +354,7 @@
 	..()
 
 
-/obj/machinery/door/ex_act(severity)
+/obj/machinery/door/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -388,9 +385,6 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
-
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -433,6 +427,7 @@
 	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
+	rad_insulation = RAD_INSULATION_NONE
 	operating = 0
 
 	if(autoclose)
@@ -459,6 +454,7 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(1)	//caaaaarn!
+	rad_insulation = initial(rad_insulation)
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
@@ -483,14 +479,9 @@
 	return ..(M)
 
 /obj/machinery/door/update_nearby_tiles(need_rebuild)
-	if(!air_master)
-		return 0
-
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)
 		turf.queue_zone_update()
-
-	return 1
 
 /obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
 	if(istype(source))

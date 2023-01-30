@@ -56,7 +56,7 @@
 /datum/component/squeak/proc/play_squeak_crossed(datum/source, atom/movable/AM)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.item_flags & ABSTRACT)
+		if(I.item_flags & ITEM_ABSTRACT)
 			return
 		else if(istype(AM, /obj/item/projectile))
 			var/obj/item/projectile/P = AM

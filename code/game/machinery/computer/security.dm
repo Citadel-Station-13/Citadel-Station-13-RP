@@ -67,7 +67,7 @@
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
 		scan.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
@@ -75,8 +75,9 @@
 	return
 
 /obj/machinery/computer/secure_data/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/card/id) && !scan && user.unEquip(O))
-		O.loc = src
+	if(istype(O, /obj/item/card/id) && !scan)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		scan = O
 		to_chat(user, "You insert \the [O].")
 		ui_interact(user)
@@ -173,9 +174,9 @@
 					fields[++fields.len] = FIELD("Details", active2.fields["mi_crim_d"], "mi_crim_d")
 					fields[++fields.len] = FIELD("Major Crimes", active2.fields["ma_crim"], "ma_crim")
 					fields[++fields.len] = FIELD("Details", active2.fields["ma_crim_d"], "ma_crim_d")
-					fields[++fields.len] = FIELD("Important Notes", active2.fields["notes"], "notes")
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
+					security["notes"] = active2.fields["notes"]
 					security["comments"] = active2.fields["comments"]
 					security["empty"] = FALSE
 				else
@@ -203,14 +204,14 @@
 		if("scan")
 			if(scan)
 				scan.forceMove(loc)
-				if(ishuman(usr) && !usr.get_active_hand())
+				if(ishuman(usr) && !usr.get_active_held_item())
 					usr.put_in_hands(scan)
 				scan = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/card/id))
-					usr.drop_item()
-					I.forceMove(src)
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					scan = I
 		if("login")
 			var/login_type = text2num(params["login_type"])
@@ -241,7 +242,7 @@
 			if("logout")
 				if(scan)
 					scan.forceMove(loc)
-					if(ishuman(usr) && !usr.get_active_hand())
+					if(ishuman(usr) && !usr.get_active_held_item())
 						usr.put_in_hands(scan)
 					scan = null
 				authenticated = null
@@ -296,8 +297,6 @@
 					R.fields["mi_crim_d"]	= "No minor crime convictions."
 					R.fields["ma_crim"]		= "None"
 					R.fields["ma_crim_d"]	= "No major crime convictions."
-					R.fields["notes"]		= "No notes."
-					R.fields["notes"]		= "No notes."
 					data_core.security += R
 					active2 = R
 					screen = SEC_DATA_RECORD
@@ -392,11 +391,11 @@
 						answer = text2num(answer)
 
 					if(field == "rank")
-						if(answer in joblist)
+						if(answer in SSjob.all_job_titles())
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")
-						for(var/mob/living/carbon/human/H in player_list)
+						for(var/mob/living/carbon/human/H in GLOB.player_list)
 							H.update_hud_sec_status()
 
 					if(istype(active2) && (field in active2.fields))
@@ -438,7 +437,7 @@
 		<br>\nDetails: [active2.fields["mi_crim_d"]]<br>\n
 		<br>\nMajor Crimes: [active2.fields["ma_crim"]]
 		<br>\nDetails: [active2.fields["ma_crim_d"]]<br>\n
-		<br>\nImportant Notes:
+		<br>\nSecurity Notes Summary:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}
@@ -470,8 +469,8 @@
 	return !src.authenticated || user.stat || user.restrained() || (!in_range(src, user) && (!istype(user, /mob/living/silicon)))
 
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
-	if(istype(user.get_active_hand(), /obj/item/photo))
-		var/obj/item/photo/photo = user.get_active_hand()
+	if(istype(user.get_active_held_item(), /obj/item/photo))
+		var/obj/item/photo/photo = user.get_active_held_item()
 		return photo.img
 	if(istype(user, /mob/living/silicon))
 		var/mob/living/silicon/tempAI = usr
@@ -488,7 +487,7 @@
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"]	= pick("Male", "Female")
 				if(3)

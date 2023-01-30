@@ -66,17 +66,17 @@
 	else
 		current_location = SSshuttle.get_landmark(current_location)
 	if(!istype(current_location))
-		log_debug("UM whoops, no initial? [src]")
+		log_debug(SPAN_DEBUGERROR("UM whoops, no initial? [src]"))
 		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
 
 	if(src.name in SSshuttle.shuttles)
-		CRASH("A shuttle with the name '[name]' is already defined.")
+		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
 	SSshuttle.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
 		SSshuttle.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(SSsupply.shuttle)
-			CRASH("A supply shuttle is already defined.")
+			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))
 		SSsupply.shuttle = src
 
 /datum/shuttle/Destroy()
@@ -158,7 +158,7 @@
 
 // TODO - Far Future - Would be great if this was driven by process too.
 /datum/shuttle/proc/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
-	//to_world("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
+	//TO_WORLD("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -314,7 +314,7 @@
 				//if(AM.movable_flags & MOVABLE_FLAG_DEL_SHUTTLE)
 				//	qdel(AM)
 				//	continue
-				if((AM.flags & AF_ABSTRACT))
+				if((AM.atom_flags & ATOM_ABSTRACT))
 					continue
 				if(isliving(AM))
 					var/mob/living/bug = AM

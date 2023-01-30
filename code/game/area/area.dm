@@ -4,20 +4,38 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	/// area flags
-	var/area_flags = NONE
-
-	var/fire = null
-	var/atmos = 1
-	var/atmosalm = 0
-	var/poweralm = 1
-	var/party = null
 	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	//! intrinsics
+	/// area flags
+	var/area_flags = NONE
+	/// stores the next uid to use
+	var/global/global_uid = 0
+	/// our uid
+	var/uid
+	/**
+	 * If false, loading multiple maps with this area type will create multiple instances.
+	 * This is not a flag because you probably should not be touching this at runtime!
+	 */
+	var/unique = TRUE
+
+	//! defaults
+	/// outdoors by default?
+	var/initial_outdoors = FALSE
+	/// default initial gas mix
+	var/initial_gas_mix = GAS_STRING_STP
+
+	//! unsorted
+	var/fire = null
+	var/atmos = 1
+	var/atmosalm = 0
+	var/poweralm = 1
+	var/party = null
 	var/lightswitch = 1
 
 	var/eject = null
@@ -53,9 +71,8 @@
 
 	var/music = null
 
-	var/has_gravity = 1
+	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
-	var/no_air = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
@@ -66,17 +83,14 @@
 	var/list/forced_ambience = null
 	/// Used to decide what kind of reverb the area makes sound have
 	var/sound_env = STANDARD_STATION
-	var/global/global_uid = 0
-	var/uid
-
-	/// If false, loading multiple maps with this area type will create multiple instances.
-	var/unique = TRUE
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
 	var/area/area_limited_icon_smoothing
+
+	var/tmp/is_outside = OUTSIDE_NO
 
 /**
  * Called when an area loads
@@ -125,7 +139,7 @@
 		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
 			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = CONFIG_GET(number/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
 
 	. = ..()
 
@@ -190,9 +204,11 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-// Changes the area of T to A. Do not do this manually.
-// Area is expected to be a non-null instance.
-/proc/ChangeArea(var/turf/T, var/area/A)
+/**
+ * Changes the area of T to A. Do not do this manually.
+ * Area is expected to be a non-null instance.
+ */
+/proc/ChangeArea(turf/T, area/A)
 	if(!istype(A))
 		CRASH("Area change attempt failed: invalid area supplied.")
 	var/area/old_area = get_area(T)
@@ -210,10 +226,15 @@
 				T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
+
 	for(var/atom/movable/AM in T)
 		A.Entered(AM, old_area)
+
 	for(var/obj/machinery/M in T)
 		M.power_change()
+
+	// if(T.is_outside == OUTSIDE_AREA && T.is_outside() != old_outside)
+	// 	T.update_weather()
 
 // compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
 /area/has_gravity()
@@ -239,7 +260,9 @@
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA in src)
+	for (var/obj/machinery/alarm/AA as anything in GLOB.air_alarms)
+		if(AA.loc?.loc != src)
+			continue
 		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
 			danger_level = max(danger_level, AA.danger_level)
 
@@ -559,7 +582,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.clothing_flags & NOSLIP))
 			return
-		if(H.species.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
 			H.AdjustStunned(6)
@@ -621,7 +644,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
 
@@ -638,6 +661,6 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1

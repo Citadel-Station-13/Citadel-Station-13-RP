@@ -10,7 +10,7 @@
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "hd" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "hv" = (
@@ -20,15 +20,15 @@
 /area/lavaland/idleruins)
 "hH" = (
 /obj/structure/table/rack,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "jd" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "kt" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "nr" = (
@@ -58,7 +58,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "rG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "sI" = (
@@ -66,12 +66,12 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "uc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "uO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/firstaid,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
@@ -82,7 +82,7 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "xU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "yQ" = (
@@ -92,14 +92,14 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "zE" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/frame,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "Cr" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "DM" = (
@@ -113,7 +113,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "IJ" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "IO" = (
@@ -139,7 +139,7 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "Of" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard/shrapnel,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
@@ -154,15 +154,9 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "Qu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/molten_item,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
-"Qv" = (
-/obj/structure/ghost_pod/manual/human{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "Re" = (
 /turf/template_noop,
@@ -180,17 +174,17 @@
 /turf/simulated/shuttle/wall/hard_corner,
 /area/lavaland/idleruins)
 "Wd" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/stack/material/steel,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "WH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "WM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/decal/remains/posi,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
@@ -199,7 +193,7 @@
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "XA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/storage/firstaid/adv,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
@@ -211,11 +205,11 @@
 /turf/simulated/shuttle/wall/lavaland,
 /area/lavaland/idleruins)
 "Zb" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "ZP" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/stack/rods,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
@@ -395,7 +389,7 @@ or
 or
 or
 YZ
-Qv
+Sk
 Sk
 IO
 YZ

@@ -17,7 +17,7 @@
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
 
-	var/obj/held_item = get_active_hand()
+	var/obj/held_item = get_active_held_item()
 
 	if(!changeling)
 		return 0
@@ -122,7 +122,7 @@
 		var/T = get_turf(src)
 		new /obj/effect/particle_effect/sparks(T)
 
-/obj/item/electric_hand/dropped(mob/user)
+/obj/item/electric_hand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

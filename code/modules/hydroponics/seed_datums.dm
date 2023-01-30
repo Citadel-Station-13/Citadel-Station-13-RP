@@ -170,7 +170,7 @@
 	display_name = "blood tomato plant"
 	mutants = list("killer")
 	chems = list("nutriment" = list(1,10), "blood" = list(1,5))
-	splat_type = /obj/effect/decal/cleanable/blood/splatter
+	splat_type = /obj/effect/debris/cleanable/blood/splatter
 
 /datum/seed/tomato/blood/New()
 	..()
@@ -1112,6 +1112,26 @@
 	set_trait(TRAIT_WATER_CONSUMPTION, 8)
 	set_trait(TRAIT_STINGS,1)
 
+/datum/seed/peas
+	name = "peas"
+	seed_name = "peas"
+	display_name = "loose peas"
+	kitchen_tag = "peas"
+	chems = list("nutriment" = list(1,10))
+
+/datum/seed/peas/New()
+	..()
+	set_trait(TRAIT_MATURATION,8)
+	set_trait(TRAIT_PRODUCTION,6)
+	set_trait(TRAIT_YIELD,3)
+	set_trait(TRAIT_POTENCY,20)
+	set_trait(TRAIT_PRODUCT_ICON,"berry")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#0e9415")
+	set_trait(TRAIT_PLANT_COLOUR,"#87C969")
+	set_trait(TRAIT_PLANT_ICON,"bush")
+	set_trait(TRAIT_IDEAL_LIGHT, 6)
+	set_trait(TRAIT_WATER_CONSUMPTION, 6)
+
 /datum/seed/durian
 	name = "durian"
 	seed_name = "durian"
@@ -1620,3 +1640,69 @@
 	set_trait(TRAIT_PLANT_ICON,"carrot")
 	set_trait(TRAIT_IDEAL_HEAT, 334)
 	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+//Ashlander Plants
+/datum/seed/flower/pyrrhlea
+	name = "pyrrhlea"
+	seed_name = "pyrrhlea"
+	display_name = "pyrrhlea"
+	kitchen_tag = "pyrrhlea"
+	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inapprovaline" = list(1,10))
+
+/datum/seed/flower/pyrrhlea/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,3)
+	set_trait(TRAIT_YIELD,5)
+	set_trait(TRAIT_PRODUCT_ICON,"flowers")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#f0d74c")
+	set_trait(TRAIT_PLANT_COLOUR,"#75581a")
+	set_trait(TRAIT_PLANT_ICON,"bush6")
+	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+/datum/seed/bentars
+	name = "bentars"
+	seed_name = "bentar"
+	display_name = "bentars"
+	kitchen_tag = "bentars"
+	chems = list("sugar" = list(1,5), "dylovene" = list(1,10))
+
+/datum/seed/bentars/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,3)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"bean")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#9d23aa")
+	set_trait(TRAIT_PLANT_COLOUR,"#53391b")
+	set_trait(TRAIT_PLANT_ICON,"bush5")
+	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+/datum/seed/juhtak
+	name = "juhtak"
+	seed_name = "juhtak"
+	display_name = "juhtak"
+	kitchen_tag = "juhtak"
+	chems = list("nutriment" = list(1,5), "bicardine" = list(1,10))
+
+/datum/seed/juhtak/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,15)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,6)
+	set_trait(TRAIT_PRODUCT_ICON,"vine")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#7c260c")
+	set_trait(TRAIT_PLANT_COLOUR,"#684f32")
+	set_trait(TRAIT_PLANT_ICON,"bush7")
+	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)

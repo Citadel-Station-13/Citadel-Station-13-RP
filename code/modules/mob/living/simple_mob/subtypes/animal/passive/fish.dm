@@ -7,7 +7,7 @@
 
 /mob/living/simple_mob/animal/passive/fish
 	name = "fish"
-	desc = "Its a fishy.  No touchy fishy."
+	desc = "Its a fishy. No touchy fishy."
 	icon = 'icons/mob/fish.dmi'
 	item_state = "fish"
 
@@ -21,7 +21,7 @@
 
 	holder_type = /obj/item/holder/fish
 
-	meat_amount = 1
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 	bone_amount = 1
 
@@ -118,7 +118,7 @@
 		SpinAnimation(7,1)
 		if(prob(75))
 			if(sting(M))
-				to_chat(M, "<span class='warning'>You feel a tiny prick.</span>")
+				M.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 		if(is_dead())
 			return
 		for(var/i = 1 to 3)
@@ -212,7 +212,7 @@
 	update_icon()
 
 /mob/living/simple_mob/animal/passive/fish/icebass/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(!dorsal_image)
 		dorsal_image = image(icon, "[icon_state]_mask-body")
@@ -221,9 +221,10 @@
 
 	dorsal_image.color = dorsal_color
 	belly_image.color = belly_color
-
-	overlays += dorsal_image
-	overlays += belly_image
+	var/list/overlays_to_add = list()
+	overlays_to_add += dorsal_image
+	overlays_to_add += belly_image
+	add_overlay(overlays_to_add)
 
 /datum/category_item/catalogue/fauna/rockfish
 	name = "Sivian Fauna - Rock Puffer"
@@ -280,14 +281,14 @@
 	head_color = rgb(rand(min_red,max_red), rand(min_green,max_green), rand(min_blue,max_blue))
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(!head_image)
 		head_image = image(icon, "[icon_state]_mask")
 
 	head_image.color = head_color
 
-	overlays += head_image
+	add_overlay(head_image)
 
 /datum/category_item/catalogue/fauna/solarfish
 	name = "Sivian Fauna - Solar Fin"

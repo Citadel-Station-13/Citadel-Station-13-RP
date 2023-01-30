@@ -9,9 +9,9 @@ would spawn and follow the beaker, even if it is carried or thrown.
 /obj/effect/particle_effect
 	name = "effect"
 	icon = 'icons/effects/effects.dmi'
-	mouse_opacity = 0
-	unacidable = 1//So effect are not targeted by alien acid.
-	pass_flags = PASSTABLE | PASSGRILLE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	unacidable = TRUE //So effect are not targeted by alien acid.
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 
 /datum/effect_system
 	var/number = 3
@@ -20,18 +20,18 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/atom/holder
 	var/setup = 0
 
-	proc/set_up(n = 3, c = 0, turf/loc)
-		if(n > 10)
-			n = 10
-		number = n
-		cardinals = c
-		location = loc
-		setup = 1
+/datum/effect_system/proc/set_up(n = 3, c = 0, turf/loc)
+	if(n > 10)
+		n = 10
+	number = n
+	cardinals = c
+	location = loc
+	setup = 1
 
-	proc/attach(atom/atom)
-		holder = atom
+/datum/effect_system/proc/attach(atom/atom)
+	holder = atom
 
-	proc/start()
+/datum/effect_system/proc/start()
 
 
 /////////////////////////////////////////////
@@ -57,30 +57,30 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/steam_spread
 
-	set_up(n = 3, c = 0, turf/loc)
-		if(n > 10)
-			n = 10
-		number = n
-		cardinals = c
-		location = loc
+/datum/effect_system/steam_spread/set_up(n = 3, c = 0, turf/loc)
+	if(n > 10)
+		n = 10
+	number = n
+	cardinals = c
+	location = loc
 
-	start()
-		var/i = 0
-		for(i=0, i<src.number, i++)
-			spawn(0)
-				if(holder)
-					src.location = get_turf(holder)
-				var/obj/effect/particle_effect/steam/steam = new /obj/effect/particle_effect/steam(src.location)
-				var/direction
-				if(src.cardinals)
-					direction = pick(GLOB.cardinal)
-				else
-					direction = pick(GLOB.alldirs)
-				for(i=0, i<pick(1,2,3), i++)
-					sleep(5)
-					step(steam,direction)
-				spawn(20)
-					qdel(steam)
+/datum/effect_system/steam_spread/start()
+	var/i = 0
+	for(i=0, i<src.number, i++)
+		spawn(0)
+			if(holder)
+				src.location = get_turf(holder)
+			var/obj/effect/particle_effect/steam/steam = new /obj/effect/particle_effect/steam(src.location)
+			var/direction
+			if(src.cardinals)
+				direction = pick(GLOB.cardinal)
+			else
+				direction = pick(GLOB.alldirs)
+			for(i=0, i<pick(1,2,3), i++)
+				sleep(5)
+				step(steam,direction)
+			spawn(20)
+				qdel(steam)
 
 /////////////////////////////////////////////
 //SPARK SYSTEM (like steam system)
@@ -121,36 +121,36 @@ steam.start() -- spawns the effect
 /datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
 
-	set_up(n = 3, c = 0, loca)
-		if(n > 10)
-			n = 10
-		number = n
-		cardinals = c
-		if(istype(loca, /turf/))
-			location = loca
-		else
-			location = get_turf(loca)
+/datum/effect_system/spark_spread/set_up(n = 3, c = 0, loca)
+	if(n > 10)
+		n = 10
+	number = n
+	cardinals = c
+	if(istype(loca, /turf/))
+		location = loca
+	else
+		location = get_turf(loca)
 
-	start()
-		var/i = 0
-		for(i=0, i<src.number, i++)
-			if(src.total_sparks > 20)
-				return
-			spawn(0)
-				if(holder)
-					src.location = get_turf(holder)
-				var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(src.location)
-				src.total_sparks++
-				var/direction
-				if(src.cardinals)
-					direction = pick(GLOB.cardinal)
-				else
-					direction = pick(GLOB.alldirs)
-				for(i=0, i<pick(1,2,3), i++)
-					sleep(5)
-					step(sparks,direction)
-				spawn(20)
-					src.total_sparks--
+/datum/effect_system/spark_spread/start()
+	var/i = 0
+	for(i=0, i<src.number, i++)
+		if(src.total_sparks > 20)
+			return
+		spawn(0)
+			if(holder)
+				src.location = get_turf(holder)
+			var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(src.location)
+			src.total_sparks++
+			var/direction
+			if(src.cardinals)
+				direction = pick(GLOB.cardinal)
+			else
+				direction = pick(GLOB.alldirs)
+			for(i=0, i<pick(1,2,3), i++)
+				sleep(5)
+				step(sparks,direction)
+			spawn(20)
+				src.total_sparks--
 
 
 
@@ -417,7 +417,7 @@ steam.start() -- spawns the effect
 			oldposition = current
 			I.setDir(src.holder.dir)
 			flick("ion_fade", I)
-			I.icon_state = "blank"
+			I.icon_state = null
 			QDEL_IN(I, 20)
 
 /datum/effect_system/ion_trail_follow/proc/stop()
@@ -437,98 +437,101 @@ steam.start() -- spawns the effect
 	var/processing = 1
 	var/on = 1
 
-	set_up(atom/atom)
-		attach(atom)
-		oldposition = get_turf(atom)
+/datum/effect_system/steam_trail_follow/set_up(atom/atom)
+	attach(atom)
+	oldposition = get_turf(atom)
 
-	start()
-		if(!src.on)
-			src.on = 1
-			src.processing = 1
-		if(src.processing)
-			src.processing = 0
-			spawn(0)
-				if(src.number < 3)
-					var/obj/effect/particle_effect/steam/I = new /obj/effect/particle_effect/steam(src.oldposition)
-					src.number++
-					src.oldposition = get_turf(holder)
-					I.setDir(src.holder.dir)
-					spawn(10)
-						qdel(I)
-						src.number--
-					spawn(2)
-						if(src.on)
-							src.processing = 1
-							src.start()
-				else
-					spawn(2)
-						if(src.on)
-							src.processing = 1
-							src.start()
-
-	proc/stop()
+/datum/effect_system/steam_trail_follow/start()
+	if(!src.on)
+		src.on = 1
+		src.processing = 1
+	if(src.processing)
 		src.processing = 0
-		src.on = 0
+		spawn(0)
+			if(src.number < 3)
+				var/obj/effect/particle_effect/steam/I = new /obj/effect/particle_effect/steam(src.oldposition)
+				src.number++
+				src.oldposition = get_turf(holder)
+				I.setDir(src.holder.dir)
+				spawn(10)
+					qdel(I)
+					src.number--
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
+			else
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
+
+/datum/effect_system/steam_trail_follow/proc/stop()
+	src.processing = 0
+	src.on = 0
 
 /datum/effect_system/reagents_explosion
-	var/amount 						// TNT equivalent
-	var/flashing = 0			// does explosion creates flash effect?
-	var/flashing_factor = 0		// factor of how powerful the flash effect relatively to the explosion
+	/// TNT equivalent.
+	var/amount
+	/// Does explosion creates flash effect?
+	var/flashing = 0
+	/// Factor of how powerful the flash effect relatively to the explosion.
+	var/flashing_factor = 0
 
-	set_up (amt, loc, flash = 0, flash_fact = 0)
-		amount = amt
-		if(istype(loc, /turf/))
-			location = loc
-		else
-			location = get_turf(loc)
+/datum/effect_system/reagents_explosion/set_up (amt, loc, flash = 0, flash_fact = 0)
+	amount = amt
+	if(istype(loc, /turf/))
+		location = loc
+	else
+		location = get_turf(loc)
 
-		flashing = flash
-		flashing_factor = flash_fact
+	flashing = flash
+	flashing_factor = flash_fact
 
+	return
+
+/datum/effect_system/reagents_explosion/start()
+	if (amount <= 2)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
+		s.set_up(2, 1, location)
+		s.start()
+
+		for(var/mob/M in viewers(5, location))
+			to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
+		for(var/mob/M in viewers(1, location))
+			if (prob (50 * amount))
+				to_chat(M, "<span class='warning'>The explosion knocks you down.</span>")
+				M.Weaken(rand(1,5))
 		return
+	else
+		var/devst = -1
+		var/heavy = -1
+		var/light = -1
+		var/flash = -1
 
-	start()
-		if (amount <= 2)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-			s.set_up(2, 1, location)
-			s.start()
+		// Clamp all values to fractions of max_explosion_range, following the same pattern as for tank transfer bombs
+		if (round(amount/12) > 0)
+			devst = devst + amount/12
 
-			for(var/mob/M in viewers(5, location))
-				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
-			for(var/mob/M in viewers(1, location))
-				if (prob (50 * amount))
-					to_chat(M, "<span class='warning'>The explosion knocks you down.</span>")
-					M.Weaken(rand(1,5))
-			return
-		else
-			var/devst = -1
-			var/heavy = -1
-			var/light = -1
-			var/flash = -1
+		if (round(amount/6) > 0)
+			heavy = heavy + amount/6
 
-			// Clamp all values to fractions of max_explosion_range, following the same pattern as for tank transfer bombs
-			if (round(amount/12) > 0)
-				devst = devst + amount/12
+		if (round(amount/3) > 0)
+			light = light + amount/3
 
-			if (round(amount/6) > 0)
-				heavy = heavy + amount/6
+		if (flashing && flashing_factor)
+			flash = (amount/4) * flashing_factor
 
-			if (round(amount/3) > 0)
-				light = light + amount/3
+		for(var/mob/M in viewers(8, location))
+			to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
 
-			if (flashing && flashing_factor)
-				flash = (amount/4) * flashing_factor
-
-			for(var/mob/M in viewers(8, location))
-				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
-
-			explosion(
-				location,
-				round(min(devst, BOMBCAP_DVSTN_RADIUS)),
-				round(min(heavy, BOMBCAP_HEAVY_RADIUS)),
-				round(min(light, BOMBCAP_LIGHT_RADIUS)),
-				round(min(flash, BOMBCAP_FLASH_RADIUS))
-				)
+		explosion(
+			location,
+			round(min(devst, BOMBCAP_DVSTN_RADIUS)),
+			round(min(heavy, BOMBCAP_HEAVY_RADIUS)),
+			round(min(light, BOMBCAP_LIGHT_RADIUS)),
+			round(min(flash, BOMBCAP_FLASH_RADIUS)),
+		)
 
 /obj/effect/teleport_greyscale
 	name = "teleportation"
@@ -545,13 +548,13 @@ steam.start() -- spawns the effect
 /datum/effect_system/teleport_greyscale
 	var/color = "#FFFFFF"
 
-	set_up(cl, loca)
-		if(istype(loca, /turf/))
-			location = loca
-		else
-			location = get_turf(loca)
-		color = cl
+/datum/effect_system/teleport_greyscale/set_up(cl, loca)
+	if(istype(loca, /turf/))
+		location = loca
+	else
+		location = get_turf(loca)
+	color = cl
 
-	start()
-		var/obj/effect/teleport_greyscale/tele = new /obj/effect/teleport_greyscale(src.location)
-		tele.color = color
+/datum/effect_system/teleport_greyscale/start()
+	var/obj/effect/teleport_greyscale/tele = new /obj/effect/teleport_greyscale(src.location)
+	tele.color = color

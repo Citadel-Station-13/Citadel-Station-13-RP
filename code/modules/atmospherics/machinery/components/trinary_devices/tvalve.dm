@@ -28,10 +28,10 @@
 	state = 1
 
 /obj/machinery/atmospherics/tvalve/update_icon(animation)
-	if(animation)
-		flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
-	else
-		icon_state = "tvalve[mirrored ? "m" : ""][state]"
+	icon_state = "tvalve[mirrored ? "m" : ""][state]"
+
+/obj/machinery/atmospherics/tvalve/proc/animation()
+	flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
 
 /obj/machinery/atmospherics/tvalve/update_underlays()
 	if(..())
@@ -162,7 +162,7 @@
 
 /obj/machinery/atmospherics/tvalve/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
-	update_icon(1)
+	animation()
 	sleep(10)
 	if (src.state)
 		src.go_straight()
@@ -354,9 +354,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

@@ -135,23 +135,6 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/fauna
 
-/datum/category_item/catalogue/fauna/humans
-	name = "Sapients - Humans"
-	desc = "Humans are a space-faring species hailing originally from the planet Earth in the Sol system. \
-	They are currently among the most numerous known species in the galaxy, in both population and holdings, \
-	and are relatively technologically advanced. With good healthcare and a reasonable lifestyle, \
-	they can live to around 110 years. The oldest humans are around 150 years old.\
-	<br><br>\
-	Humanity is the primary driving force for rapid space expansion, owing to their strong, expansionist central \
-	government and opportunistic Trans-Stellar Corporations. The prejudices of the 21st century have mostly \
-	given way to bitter divides on the most important issue of the times� technological expansionism, \
-	with the major human factions squabbling over their approach to technology in the face of a \
-	looming singularity.\
-	<br><br>\
-	While most humans have accepted the existence of aliens in their communities and workplaces as a \
-	fact of life, exceptions abound. While more culturally diverse than most species, humans are \
-	generally regarded as somewhat technophobic and isolationist by members of other species."
-	value = CATALOGUER_REWARD_TRIVIAL
 
 /datum/category_item/catalogue/fauna/skrell
 	name = "Sapients - Skrell"
@@ -259,6 +242,14 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	an assumption which is at odds with their ramshackle technological level."
 	value = CATALOGUER_REWARD_MEDIUM // Since Vox are much rarer.
 
+/datum/category_item/catalogue/fauna/ashlander
+	name = "Sapients - Ashlanders"
+	desc = "The native inhabitants of Surt. Much of their history has been lost, save for artistic \
+	depictions sometimes recovered on archaeological digs. Insular and deeply xenophobic, Ashlanders \
+	were believed to have gone extinct some tens of thousands of years ago following an as yet \
+	unknown cataclysm. Dwelling deep underground in caves, or travelling across the planet's surface \
+	in nomadic caravans, Ashlanders are to be treated with caution."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/category_item/catalogue/technology
 
@@ -519,16 +510,6 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	name = "Sapients - Apidaen"
 	desc = ""
 	value = CATALOGUER_REWARD_EASY
-
-/datum/category_item/catalogue/fauna/vetala_ruddy
-	name = "Sapients - Ruddy Vetalan"
-	desc = ""
-	value = CATALOGUER_REWARD_MEDIUM
-
-/datum/category_item/catalogue/fauna/vetala_pale
-	name = "Sapients - Pale Vetalan"
-	desc = ""
-	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/category_item/catalogue/fauna/auril
 	name = "Sapients - Auril"

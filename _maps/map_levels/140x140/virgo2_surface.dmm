@@ -11,7 +11,6 @@
 /area/tether_away/aerostat/surface/explored)
 "n" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /obj/structure/metal_edge,
@@ -23,7 +22,6 @@
 /area/tether_away/aerostat/surface/explored)
 "A" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -40,12 +38,7 @@
 /area/tether_away/aerostat/surface/explored)
 "Q" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/shuttle_landmark{
-	base_area = /area/tether_away/aerostat/surface/explored;
-	base_turf = /turf/simulated/floor/tiled/techfloor/virgo2;
-	landmark_tag = "aerostat_surface";
-	name = "Virgo 2 Surface"
-	},
+/obj/effect/shuttle_landmark/premade/virgo2_surface,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/surface/explored)
 "V" = (
@@ -54,7 +47,6 @@
 /area/tether_away/aerostat/surface/explored)
 "X" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,

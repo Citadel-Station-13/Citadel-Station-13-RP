@@ -20,7 +20,7 @@
 			/obj/item/storage/box/flashbangs = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security equipment crate"
 	access = access_security
 
@@ -35,7 +35,7 @@
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
-			/obj/item/gun/projectile/shotgun/flare = 2,
+			/obj/item/gun/ballistic/shotgun/flare = 2,
 			/obj/item/storage/box/flashshells = 2
 			)
 	cost = 25
@@ -49,7 +49,7 @@
 			/obj/item/gun/energy/xray = 2,
 			/obj/item/shield/energy = 2)
 	cost = 100
-	container_type = /obj/structure/closet/crate/secure/science
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Experimental weapons crate"
 	access = access_armory
 
@@ -57,7 +57,7 @@
 	name = "Weapons - Laser rifle crate"
 	contains = list(/obj/item/gun/energy/laser = 2)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Energy weapons crate"
 	access = access_armory
 
@@ -66,10 +66,10 @@
 	contains = list(
 			/obj/item/storage/box/shotgunammo,
 			/obj/item/storage/box/shotgunshells,
-			/obj/item/gun/projectile/shotgun/pump/combat = 2
+			/obj/item/gun/ballistic/shotgun/pump/combat = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Shotgun crate"
 	access = access_armory
 
@@ -77,7 +77,7 @@
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/gun/energy/sniperrifle = 2)
 	cost = 100
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/heph
 	container_name = "Energy marksman crate"
 	access = access_armory
 
@@ -96,7 +96,7 @@
 			/obj/item/storage/box/empslite
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 	access = access_armory
 
@@ -107,21 +107,21 @@
 			/obj/item/storage/box/empslite
 			)
 	cost = 30
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 	access = access_armory
 
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
-	contains = list(/obj/item/gun/projectile/automatic/wt550 = 2)
+	contains = list(/obj/item/gun/ballistic/automatic/wt550 = 2)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/weapon
+	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Ballistic weapon crate"
 	access = access_armory
 
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
-	contains = list(/obj/item/gun/projectile/automatic/z8 = 2)
+	contains = list(/obj/item/gun/ballistic/automatic/z8 = 2)
 	cost = 80
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Ballistic weapon crate"
@@ -131,7 +131,7 @@
  	name = "Weapons - Competitive shooting rifles"
  	contains = list(
  			/obj/item/assembly/timer,
- 			/obj/item/gun/projectile/shotgun/pump/rifle/practice = 2,
+ 			/obj/item/gun/ballistic/shotgun/pump/rifle/practice = 2,
  			/obj/item/ammo_magazine/clip/c762/practice = 4,
  			/obj/item/target = 2,
  			/obj/item/target/alien = 2,
@@ -213,7 +213,7 @@
 	name = "Ammunition - Power cell"
 	contains = list(/obj/item/cell/device/weapon = 3)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure
+	container_type = /obj/structure/closet/crate/secure/einstein
 	container_name = "Energy ammunition crate"
 	access = access_security
 
@@ -232,7 +232,7 @@
 			/obj/item/gun/energy/frontier/locked/holdout = 1,
 			)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "frontier phaser crate"
 	access = access_explorer
 
@@ -240,8 +240,8 @@
 /datum/supply_pack/munitions/weaponry_apidean
 	name = "Apidean Weaponry Crate"
 	contains = list(
-			/obj/item/gun/projectile/apinae_stinger = 1,
-			/obj/item/gun/projectile/apinae_pistol = 2,
+			/obj/item/gun/ballistic/apinae_stinger = 1,
+			/obj/item/gun/ballistic/apinae_pistol = 2,
 			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
 			)
 	cost = 150
@@ -253,9 +253,9 @@
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 			/obj/item/gun/energy/ermitter = 1,
-			/obj/item/gun/projectile/rocket/tyrmalin = 1,
+			/obj/item/gun/ballistic/rocket/tyrmalin = 1,
 			/obj/item/ammo_casing/rocket/weak = 2,
-			/obj/item/gun/projectile/pirate/junker_pistol = 2,
+			/obj/item/gun/ballistic/pirate/junker_pistol = 2,
 			/obj/item/gun/energy/ionrifle/pistol/tyrmalin = 1
 			)
 	cost = 175

@@ -81,15 +81,17 @@
 	if(node4)
 		node4.update_underlays()
 
-/obj/machinery/atmospherics/pipe/manifold4w/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/pipe/manifold4w/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
 	alpha = 255
 
-	overlays.Cut()
-	overlays += icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type)
-	overlays += icon_manager.get_atmos_icon("manifold", , , "clamps_4way" + icon_connect_type)
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	overlays_to_add += icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type)
+	overlays_to_add += icon_manager.get_atmos_icon("manifold", , , "clamps_4way" + icon_connect_type)
+	add_overlay(overlays_to_add)
 	underlays.Cut()
 
 	/*
@@ -226,7 +228,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden
 	icon_state = "map_4way"
 	level = 1
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers
 	name="4-way scrubbers pipe manifold"

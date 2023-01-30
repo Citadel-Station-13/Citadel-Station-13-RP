@@ -8,17 +8,17 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	matter = list(MAT_STEEL = 50000)
+	matter = list(MAT_STEEL = 24000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -88,9 +88,8 @@
 		cartridge.remaining -= can_store
 		if(!cartridge.remaining)
 			to_chat(user, SPAN_WARNING( "\The [cartridge] dissolves as it empties of compressed matter."))
-			user.drop_from_inventory(W)
 			qdel(W)
-		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("The RCD now holds [stored_matter]/[max_stored_matter] matter-units."))
 		update_icon()
 		return TRUE
@@ -203,7 +202,7 @@
 
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 
-	var/true_delay = rcd_results[RCD_VALUE_DELAY] * toolspeed
+	var/true_delay = rcd_results[RCD_VALUE_DELAY] * tool_speed
 
 	var/datum/beam/rcd_beam = null
 	if(ranged)
@@ -259,7 +258,7 @@
 	Reload with compressed matter cartridges."
 	icon_state = "adv_rcd"
 	ranged = TRUE
-	toolspeed = 0.5 // Twice as fast.
+	tool_speed = 0.5 // Twice as fast.
 	max_stored_matter = RCD_MAX_CAPACITY * 3 // Three times capacity.
 
 /obj/item/rcd/advanced/loaded/Initialize(mapload)
@@ -344,13 +343,13 @@
 	can_remove_rwalls = TRUE
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity, drawing directly from your cell."
 	electric_cost_coefficent = 41.66 // Twice as efficent, out of pity.
-	toolspeed = 0.5 // Twice as fast, since borg versions typically have this.
+	tool_speed = 0.5 // Twice as fast, since borg versions typically have this.
 
 /obj/item/rcd/electric/mounted/borg/swarm
 	can_remove_rwalls = FALSE
 	name = "Rapid Assimilation Device"
 	ranged = TRUE
-	toolspeed = 0.7
+	tool_speed = 0.7
 	material_to_use = MAT_STEELHULL
 
 /obj/item/rcd/electric/mounted/borg/lesser
@@ -376,7 +375,7 @@
 // RCDs for Mechs.
 /obj/item/rcd/electric/mounted/mecha
 	ranged = TRUE
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
@@ -387,7 +386,7 @@
 	ranged = TRUE
 	can_remove_rwalls = TRUE
 	allow_concurrent_building = TRUE
-	toolspeed = 0.25 // Four times as fast.
+	tool_speed = 0.25 // Four times as fast.
 
 /obj/item/rcd/debug/can_afford(amount)
 	return TRUE
@@ -411,20 +410,20 @@
 	icon_state = "rcdammo"
 	item_state = "rcdammo"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 
 
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MAT_STEEL = 30000, MAT_GLASS = 15000)
+	matter = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	matter = list(MAT_STEEL = 45000, MAT_GLASS = 22500)
+	matter = list(MAT_STEEL = 60000, MAT_GLASS = 12000)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 

@@ -53,7 +53,7 @@
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else
-		if((CLUMSY in user.mutations) && prob(50))
+		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
 			if(!user.hand)
 				which_hand = "r_hand"
@@ -70,7 +70,7 @@
 
 /obj/item/assembly/mousetrap/attack_hand(var/mob/living/user)
 	if(armed)
-		if((CLUMSY in user.mutations) && prob(50))
+		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
 			if(!user.hand)
 				which_hand = "r_hand"
@@ -105,10 +105,11 @@
 	return 0
 
 
-/obj/item/assembly/mousetrap/hitby(var/atom/movable/A)
+/obj/item/assembly/mousetrap/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(!armed)
-		return ..()
-	visible_message("<span class='warning'>[src] is triggered by [A].</span>")
+		return
+	visible_message("<span class='warning'>[src] is triggered by [AM].</span>")
 	triggered(null)
 
 /obj/item/assembly/mousetrap/armed

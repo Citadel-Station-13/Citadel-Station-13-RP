@@ -9,12 +9,13 @@
  */
 
 
-obj/structure/windoor_assembly
+/obj/structure/windoor_assembly
 	name = "windoor assembly"
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "l_windoor_assembly01"
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
+	pass_flags_self = ATOM_PASS_GLASS
 	dir = NORTH
 	w_class = ITEMSIZE_NORMAL
 
@@ -27,12 +28,12 @@ obj/structure/windoor_assembly
 	var/state = "01"	//How far the door assembly has progressed in terms of sprites
 	var/step = null		//How far the door assembly has progressed in terms of steps
 
-obj/structure/windoor_assembly/secure
+/obj/structure/windoor_assembly/secure
 	name = "secure windoor assembly"
 	secure = "secure_"
 	icon_state = "l_secure_windoor_assembly01"
 
-obj/structure/windoor_assembly/Initialize(mapload, start_dir = NORTH, constructed = FALSE)
+/obj/structure/windoor_assembly/Initialize(mapload, start_dir = NORTH, constructed = FALSE)
 	. = ..()
 	if(constructed)
 		state = "01"
@@ -44,9 +45,9 @@ obj/structure/windoor_assembly/Initialize(mapload, start_dir = NORTH, constructe
 			setDir(NORTH)
 	update_state()
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
-obj/structure/windoor_assembly/Destroy()
+/obj/structure/windoor_assembly/Destroy()
 	density = 0
 	update_nearby_tiles()
 	..()
@@ -55,19 +56,18 @@ obj/structure/windoor_assembly/Destroy()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
 /obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(!(get_dir(loc, mover) & dir))
+		// if it isn't our side we don't care
 		return TRUE
-	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
-		return !density
-	return TRUE
+	return ..()
 
-/obj/structure/windoor_assembly/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+/obj/structure/windoor_assembly/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(src, newLoc) & dir))
+		// ditto
+		return TRUE
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	return !density
 
 /obj/structure/windoor_assembly/proc/rename_door(mob/living/user)
 	var/t = sanitizeSafe(input(user, "Enter the name for the windoor.", src.name, src.created_name), MAX_NAME_LEN)
@@ -91,9 +91,9 @@ obj/structure/windoor_assembly/Destroy()
 				var/obj/item/weldingtool/WT = W
 				if (WT.remove_fuel(0,user))
 					user.visible_message("[user] disassembles the windoor assembly.", "You start to disassemble the windoor assembly.")
-					playsound(src.loc, WT.usesound, 50, 1)
+					playsound(src.loc, WT.tool_sound, 50, 1)
 
-					if(do_after(user, 40 * WT.toolspeed))
+					if(do_after(user, 40 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						to_chat(user,"<span class='notice'>You disassembled the windoor assembly!</span>")
 						if(secure)
@@ -107,10 +107,10 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(W.is_wrench() && !anchored)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 					to_chat(user,"<span class='notice'>You've secured the windoor assembly!</span>")
 					src.anchored = 1
@@ -118,10 +118,10 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Unwrenching an unsecure assembly un-anchors it. Step 4 undone
 			else if(W.is_wrench() && anchored)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 					to_chat(user,"<span class='notice'>You've unsecured the windoor assembly!</span>")
 					src.anchored = 0
@@ -144,10 +144,10 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Removing wire from the assembly. Step 5 undone.
 			if(W.is_wirecutter() && !src.electronics)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 
 					to_chat(user,"<span class='notice'>You cut the windoor wires.!</span>")
@@ -161,10 +161,10 @@ obj/structure/windoor_assembly/Destroy()
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 				if(do_after(user, 40))
-					if(!src) return
-
-					user.drop_item()
-					W.loc = src
+					if(!src)
+						return
+					if(!user.attempt_insert_item_for_installation(W, src))
+						return
 					to_chat(user,"<span class='notice'>You've installed the airlock electronics!</span>")
 					step = 2
 					src.electronics = W
@@ -173,10 +173,10 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Screwdriver to remove airlock electronics. Step 6 undone.
 			else if(W.is_screwdriver() && src.electronics)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src || !src.electronics) return
 					to_chat(user,"<span class='notice'>You've removed the airlock electronics!</span>")
 					step = 1
@@ -193,10 +193,10 @@ obj/structure/windoor_assembly/Destroy()
 					to_chat(usr,"<span class='warning'>The assembly has broken airlock electronics.</span>")
 					return
 				user << browse(null, "window=windoor_access") //Not sure what this actually does... -Ner
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 
 					if(!src) return
 
@@ -280,12 +280,12 @@ obj/structure/windoor_assembly/Destroy()
 		to_chat(usr,"It is fastened to the floor; therefore, you can't rotate it!")
 		return 0
 	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1) //Compel updates before
+		update_nearby_tiles() //Compel updates before
 
 	src.setDir(turn(src.dir, 270))
 
 	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1)
+		update_nearby_tiles()
 
 	update_icon()
 	return

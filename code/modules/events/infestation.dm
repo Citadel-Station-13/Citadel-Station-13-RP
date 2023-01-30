@@ -35,7 +35,8 @@
 	return res
 
 /datum/event/infestation/setup()
-	announceWhen = rand(announceWhen, announceWhen + 3)
+	// make sure startWhen doesn't go to 0 or below!
+	announceWhen = rand(2, 5)
 	startWhen = announceWhen - 1
 	endWhen = 30
 
@@ -78,7 +79,7 @@
 			locstring = "hydroponics"
 			spawncount = rand(3,15)
 		if(LOC_ENGINEERING)
-			spawn_area_type = /area/engineering/
+			spawn_area_type = /area/engineering/hallway //To make sure that we don't have roaches suicide bomb the SME
 			locstring = "engineering"
 			spawncount = rand(3,15)
 	if(!locstring)
@@ -108,11 +109,12 @@
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
-
+	if (vents.len <= 0)
+		return
 	spawn(0)
 		var/num = spawncount
 		var/spawn_type = pick(spawn_types)
-		while(vents.len > 0 && num > 0)
+		while(num > 0)
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 			num--
 			new spawn_type(V.loc)

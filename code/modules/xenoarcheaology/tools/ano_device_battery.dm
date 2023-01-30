@@ -40,9 +40,9 @@
 /obj/item/anodevice/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/anobattery))
 		if(!inserted_battery)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			to_chat(user, "<font color=#4F49AF>You insert the battery.</font>")
-			user.drop_item()
-			I.loc = src
 			inserted_battery = I
 			UpdateSprite()
 	else
@@ -197,20 +197,24 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/anodevice/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
-	if (!istype(M))
+/obj/item/anodevice/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if (!isliving(target))
 		return
+	var/mob/living/L = target
 
 	if(activated && inserted_battery?.battery_effect?.effect == EFFECT_TOUCH && !isnull(inserted_battery))
-		inserted_battery?.battery_effect?.DoEffectTouch(M)
+		inserted_battery?.battery_effect?.DoEffectTouch(L)
 		inserted_battery.use_power(energy_consumed_on_touch)
-		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], and it shudders on contact.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [L] with [src], and it shudders on contact.</font>")
 	else
-		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], but nothing happens.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [L] with [src], but nothing happens.</font>")
 
 	//admin logging
-	user.lastattacked = M
-	M.lastattacker = user
+	user.lastattacked = L
+	L.lastattacker = user
 
 	if(inserted_battery?.battery_effect)
-		add_attack_logs(user,M,"Anobattery tap ([inserted_battery?.battery_effect?.name])")
+		add_attack_logs(user,L,"Anobattery tap ([inserted_battery?.battery_effect?.name])")

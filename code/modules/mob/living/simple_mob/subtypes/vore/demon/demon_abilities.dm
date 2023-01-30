@@ -12,7 +12,7 @@
 		to_chat(src,"<span class='warning'>You can't do a shift while actively shifting!</span>")
 		return FALSE
 
-	if(!(locate(/obj/effect/decal/cleanable/blood) in src.loc))
+	if(!(locate(/obj/effect/debris/cleanable/blood) in src.loc))
 		to_chat(src,"<span class='warning'>You need blood to shift between realities!</span>")
 		return FALSE
 
@@ -36,7 +36,7 @@
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		overlays.Cut()
+		cut_overlays()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)
@@ -93,7 +93,7 @@
 			var/obj/belly/B = belly
 			B.escapable = FALSE
 
-		overlays.Cut()
+		cut_overlays()
 		flick("phaseout",src)
 		sleep(30)
 		invisibility = INVISIBILITY_LEVEL_TWO
@@ -149,7 +149,7 @@
 		var/obj/belly/B = belly
 		B.escapable = FALSE
 
-	overlays.Cut()
+	cut_overlays()
 	flick("phaseout",src)
 	sleep(30)
 	invisibility = INVISIBILITY_LEVEL_TWO
@@ -170,7 +170,7 @@
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		overlays.Cut()
+		cut_overlays()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)

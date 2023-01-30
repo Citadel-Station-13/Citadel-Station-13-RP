@@ -6,14 +6,18 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth
 	name = SPECIES_MOTH
-	id = "moth"
+	uid = SPECIES_ID_MOTH
+	id = SPECIES_ID_MOTH
+	category = "Dnin-Nepid (Moth)"
 	abstract_type = /datum/species/moth
-	name_plural = "Dnin-Nepids"
-	examine_name = "Dnin-Nepid"
+	name_plural   = "Dnin-Nepids"
+	examine_name  = "Dnin-Nepid"
 	override_worn_legacy_bodytype = SPECIES_HUMAN
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
-	icobase = 'icons/mob/human_races/moth.dmi'
+
+	icobase = 'icons/mob/species/moth/body.dmi'
+	deform  = 'icons/mob/species/moth/body.dmi'
 
 	wing = "moth_plain"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -23,15 +27,13 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	water_movement = 0.3
 	// TODO: slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun
 	brute_mod = 1
-	burn_mod =  1
+	burn_mod  = 1
 	metabolic_rate = 0.5
 	gluttonous = 0
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	rarity_value = 2
-	species_language = list(
-		LANGUAGE_LUINIMMA
-	)
-	name_language = LANGUAGE_LUINIMMA
+	intrinsic_languages = LANGUAGE_ID_LUINIMMA
+	name_language = LANGUAGE_ID_LUINIMMA
 	// sensitive
 	health_hud_intensity = 1.5
 
@@ -45,12 +47,12 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	// see defines - as of right now, detects reagents at 7% instead of 15%
 	taste_sensitivity = TASTE_SENSITIVE
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
 	blurb = "A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively \
 	new contender to the galaxy's state of affairs. They are a peaceful, innovative people with fragile, yet nimble bodies. \
 	Their appearance is not dissimilar to what certain Sol insects look like, earning them the moniker of '<b>moths</b>' by the majority. \
 	While most of their kind stick to the city-ships of their fleet, more and more have migrated to the frontiers of Orion and Jargon space - \
 	whether to see the world, or to pursue a new life."
-	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
 
 	// slightly cooler than average
 	body_temperature = 307.15
@@ -106,34 +108,35 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	reagent_tag = IS_MOTH
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart,
-		O_LUNGS =		/obj/item/organ/internal/lungs,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =		/obj/item/organ/internal/liver,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
-		O_BRAIN =		/obj/item/organ/internal/brain,
-		O_APPENDIX = 	/obj/item/organ/internal/appendix,
-		O_SPLEEN = 		/obj/item/organ/internal/spleen,
-		O_EYES =		/obj/item/organ/internal/eyes,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
-		)
+		O_HEART     = /obj/item/organ/internal/heart,
+		O_LUNGS     = /obj/item/organ/internal/lungs,
+		O_VOICE     = /obj/item/organ/internal/voicebox,
+		O_LIVER     = /obj/item/organ/internal/liver,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
+		O_BRAIN     = /obj/item/organ/internal/brain,
+		O_APPENDIX  = /obj/item/organ/internal/appendix,
+		O_SPLEEN    = /obj/item/organ/internal/spleen,
+		O_EYES      = /obj/item/organ/internal/eyes,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+	)
+
+	inherent_verbs = list(
+		/mob/living/proc/flying_toggle,
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/carbon/human/proc/tie_hair,
+	)
 
 	color_mult = 1
 	// todo: replace with proper name
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"
-	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
-		/mob/living/carbon/human/proc/tie_hair
- 		)
 
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople
@@ -153,8 +156,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
-	id = SPECIES_ID_MOTH_DARK
-	spawn_flags = SPECIES_CAN_JOIN
+	uid = SPECIES_ID_MOTH_DARK
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// darksight, but weak to light
 	darksight = 7
@@ -163,8 +166,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
-	id = SPECIES_ID_MOTH_LIGHT
-	spawn_flags = SPECIES_CAN_JOIN
+	uid = SPECIES_ID_MOTH_LIGHT
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// hardy, but no darksight
 	darksight = 2

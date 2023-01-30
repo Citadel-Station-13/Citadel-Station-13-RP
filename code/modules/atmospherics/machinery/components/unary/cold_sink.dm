@@ -2,7 +2,7 @@
 /obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "freezer_0"
 	density = 1
 	anchored = 1
@@ -119,13 +119,13 @@
 		cooling = 1
 
 		var/heat_transfer = max( -air_contents.get_thermal_energy_change(set_temperature - 5), 0 )
-
 		//Assume the heat is being pumped into the hull which is fixed at heatsink_temperature
 		//not /really/ proper thermodynamics but whatever
-		var/cop = THERMOMACHINE_CHEAT_FACTOR * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
+		CACHE_VSC_PROP(atmos_vsc, /atmos/thermomachine_cheat_factor, cheat_factor)
+		var/cop = cheat_factor * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 		heat_transfer = min(heat_transfer, cop * power_rating)	//limit heat transfer by available power
 
-		var/removed = -air_contents.add_thermal_energy(-heat_transfer)		//remove the heat
+		var/removed = -air_contents.adjust_thermal_energy(-heat_transfer)		//remove the heat
 		if(debug)
 			visible_message("[src]: Removing [removed] W.")
 

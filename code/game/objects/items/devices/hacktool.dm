@@ -26,20 +26,20 @@
 /obj/item/multitool/hacktool/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver())
 		in_hack_mode = !in_hack_mode
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 	else
 		..()
 
-/obj/item/multitool/hacktool/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
+/obj/item/multitool/hacktool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	sanity_check()
 
 	if(!in_hack_mode)
 		return ..()
 
-	if(!attempt_hack(user, W))
+	if(!attempt_hack(user, A))
 		return 0
 
-	W.nano_ui_interact(user, state = hack_state)
+	A.nano_ui_interact(user, state = hack_state)
 	return 1
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)

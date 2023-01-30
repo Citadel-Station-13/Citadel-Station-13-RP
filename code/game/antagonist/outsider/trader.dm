@@ -42,12 +42,12 @@ var/datum/antagonist/trader/traders
 	to_chat(player.current, "You may want to discuss a collective story with the rest of your crew. More members may be joining, so don't move out straight away!")
 
 /datum/antagonist/trader/equip(var/mob/living/carbon/human/player)
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/trader_coveralls(src), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(src), slot_shoes)
-	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(src), slot_gloves)
-	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(src), slot_glasses)
-	player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(src), slot_back)
-	player.equip_to_slot_or_del(new /obj/item/radio/headset/trader(src), slot_l_ear)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/trader_coveralls(src), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(src), SLOT_ID_SHOES)
+	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(src), SLOT_ID_GLOVES)
+	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(src), SLOT_ID_GLASSES)
+	player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(src), SLOT_ID_BACK)
+	player.equip_to_slot_or_del(new /obj/item/radio/headset/trader(src), SLOT_ID_LEFT_EAR)
 
 	create_radio(PUB_FREQ, player) //Assume they tune their headsets into the station's public radio as they approach
 
@@ -57,7 +57,7 @@ var/datum/antagonist/trader/traders
 	id.access |= access_trader
 	var/obj/item/storage/wallet/W = new(player)
 	W.handle_item_insertion(id)
-	player.equip_to_slot_or_del(W, slot_wear_id)
+	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	spawn_money(rand(50,150)*10,W)
 
 	return 1

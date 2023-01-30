@@ -32,11 +32,18 @@
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
+	/**
+	 * original save data
+	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
+	 */
+	var/list/original_save_data
 
 	var/memory
 	var/list/learned_recipes
 
+	// todo: id, not title
 	var/assigned_role
+	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
 	var/special_role
 
 	var/role_alt_title
@@ -86,7 +93,7 @@
 	if(current)					//remove ourself from our old body's mind variable
 		if(changeling)
 			current.remove_changeling_powers()
-			current.verbs -= /datum/changeling/proc/EvolutionMenu
+			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 		current.mind = null
 
 		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
@@ -187,7 +194,7 @@
 		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in joblist
+		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in SSjob.all_job_titles()
 		if (!new_role) return
 		assigned_role = new_role
 
@@ -399,8 +406,7 @@
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
-				for(var/obj/item/W in current)
-					current.drop_from_inventory(W)
+				current.drop_inventory(TRUE, TRUE)
 			if("takeuplink")
 				take_uplink()
 				memory = null//Remove any memory they may have had.
@@ -500,7 +506,7 @@
 		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
-		src.client.verbs += /client/proc/aooc
+		add_verb(client, /client/proc/aooc)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

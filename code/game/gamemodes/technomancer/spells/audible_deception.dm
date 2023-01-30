@@ -89,7 +89,7 @@
 				M.Weaken(3)
 				if(prob(30))
 					M.Stun(10)
-					M.Paralyse(4)
+					M.Unconscious(4)
 				else
 					M.make_jittery(50)
 				to_chat(M, "<font color='red' size='7'><b>HONK</b></font>")

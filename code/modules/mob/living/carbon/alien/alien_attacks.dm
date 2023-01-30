@@ -33,10 +33,10 @@
 		else
 			var/damage = rand(1, 9)
 			if (prob(90))
-				if (HULK in M.mutations)
+				if (MUTATION_HULK in M.mutations)
 					damage += 5
 					spawn(0)
-						Paralyse(1)
+						Unconscious(1)
 						step_away(src,M,15)
 						sleep(3)
 						step_away(src,M,15)

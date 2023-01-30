@@ -33,10 +33,9 @@
 	desc = "A patch of grass like they often use on golf courses."
 	icon_state = "tile_grass"
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/herb.ogg'
@@ -74,10 +73,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "An easy to fit wooden floor tile."
 	icon_state = "tile-wood"
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -105,10 +103,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "A piece of carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet"
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
@@ -168,7 +165,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	icon_state = "tile"
 	force = 6.0
 	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	no_variants = FALSE
@@ -250,10 +247,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "A piece of linoleum. It is the same size as a normal floor tile!"
 	icon_state = "tile-linoleum"
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/wmarble
@@ -262,10 +258,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "Some white marble tiles used for flooring."
 	icon_state = "tile-wmarble"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/bmarble
@@ -274,10 +269,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "Some black marble tiles used for flooring."
 	icon_state = "tile-bmarble"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/roofing
@@ -300,10 +294,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "The pinnacle of trolling."
 	icon_state = "tile-bananium"
 	force = 6.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/silencium
@@ -312,10 +305,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "If a tear falls off a mime, and no one's around to see it, does it still not make a sound?"
 	icon_state = "tile-silencium"
 	force = 6.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/plasteel
@@ -323,10 +315,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "plasteel tile"
 	icon_state = "tile-plasteel"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/durasteel
@@ -334,10 +325,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "durasteel tile"
 	icon_state = "tile-durasteel"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/silver
@@ -345,10 +335,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "silver tile"
 	icon_state = "tile-silver"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/gold
@@ -356,10 +345,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "gold tile"
 	icon_state = "tile-gold"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/phoron
@@ -367,10 +355,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "phoron tile"
 	icon_state = "tile-phoron"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/uranium
@@ -378,10 +365,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "uranium tile"
 	icon_state = "tile-uranium"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/diamond
@@ -389,10 +375,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "diamond tile"
 	icon_state = "tile-diamond"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/brass
@@ -400,10 +385,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "brass tile"
 	icon_state = "tile-brass"
 	force = 6.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/wax
@@ -411,10 +395,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "wax tile"
 	icon_state = "tile-wax"
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/honeycomb
@@ -422,8 +405,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "honeycomb tile"
 	icon_state = "tile-honeycomb"
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE

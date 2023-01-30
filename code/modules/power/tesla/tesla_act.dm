@@ -34,7 +34,7 @@
 	else if(prob(50))
 		emp_act(2)
 	else
-		ex_act(2)
+		legacy_ex_act(2)
 
 /obj/machinery/camera/tesla_act(var/power)//EMP proof upgrade also makes it tesla immune
 	if(isEmpProof())

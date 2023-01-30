@@ -201,7 +201,7 @@
 		return list()
 	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/dark_purple/legacy_ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
 	ignite()
 
@@ -261,7 +261,7 @@
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(-10 * 1000)
+		env.adjust_thermal_energy(-10 * 1000)
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/apply_melee_effects(atom/A)
 	..()
@@ -417,7 +417,7 @@
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
 
@@ -510,7 +510,7 @@
 	coretype = /obj/item/slime_extract/green
 	glow_toggle = TRUE
 	reagent_injected = "radium"
-	var/rads = 25
+	var/rads = RAD_INTENSITY_GREEN_SLIME_TICK
 
 	description_info = "This slime will irradiate anything nearby passively, and will inject radium on attack.  \
 	A radsuit or other thick and radiation-hardened armor can protect from this.  It will only radiate while alive."
@@ -530,9 +530,7 @@
 	..()
 
 /mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
-	SSradiation.radiate(src, rads)
-
-
+	radiation_pulse(src, RAD_INTENSITY_GREEN_SLIME_TICK)
 
 /mob/living/simple_mob/slime/xenobio/pink
 	desc = "This slime has regenerative properties."
@@ -608,7 +606,7 @@
 /mob/living/simple_mob/slime/xenobio/gold/slimebatoned(mob/living/user, amount)
 	power_charge = between(0, power_charge + amount, 10)
 
-/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction() // So it doesn't say to use a baton on them.
+/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction(mob/user) // So it doesn't say to use a baton on them.
 	return list()
 
 
@@ -658,7 +656,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/slime/xenobio/oil/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/oil/legacy_ex_act(severity)
 	log_and_message_admins("[src] exploded due to a chain reaction with another explosion.")
 	explode()
 

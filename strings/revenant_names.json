@@ -1,24 +1,24 @@
 {
-    "spirit_type": [
-        "Spirit",
-        "Ghost",
-        "Spectre",
-        "Phantom",
-        "Revenant",
-        "Essence",
-        "Soul"
-    ],
+	"spirit_type": [
+		"Spirit",
+		"Ghost",
+		"Spectre",
+		"Phantom",
+		"Revenant",
+		"Essence",
+		"Soul"
+	],
 
-    "adverb": [
+	"adverb": [
 	"",
-        "abysmal ",
-        "dark ",
-        "eternal ",
-        "endless ",
-        "searing ",
-        "abyssal ",
-        "vicious ",
-        "hateful ",
+	"abysmal ",
+	"dark ",
+	"eternal ",
+	"endless ",
+	"searing ",
+	"abyssal ",
+	"vicious ",
+	"hateful ",
 	"hideous ",
 	"malevolent ",
 	"fiery ",
@@ -27,13 +27,13 @@
 	"peaceful ",
 	"indifferent ",
 	"brutal "
-    ],
+	],
 
-    "theme": [
-        "despair",
-        "agony",
-        "screams",
-        "vengeance",
+	"theme": [
+	"despair",
+	"agony",
+	"screams",
+	"vengeance",
 	"hellfire",
 	"anger",
 	"suffering",
@@ -48,5 +48,5 @@
 	"salt",
 	"grief",
 	"laughter"
-    ]
+	]
 }

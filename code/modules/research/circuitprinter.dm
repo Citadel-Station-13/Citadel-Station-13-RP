@@ -9,7 +9,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	icon = 'icons/obj/machines/fabricators/imprinter.dmi'
 	icon_state = "imprinter"
 	base_icon_state = "imprinter"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/circuit_imprinter
 	var/list/datum/design/queue = list()
 	var/progress = 0
@@ -72,8 +72,6 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			build(D)
 			progress = 0
 			removeFromQueue(1)
-			if(linked_console)
-				linked_console.updateUsrDialog()
 		update_appearance()
 	else
 		if(busy)
@@ -176,9 +174,9 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(materials[S.material.name] + amnt <= max_res_amount)
 		if(S && S.get_amount() >= 1)
 			var/count = 0
-			overlays += "fab-load-metal"
+			add_overlay("fab-load-metal")
 			spawn(10)
-				overlays -= "fab-load-metal"
+				cut_overlay("fab-load-metal")
 			while(materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
 				materials[S.material.name] += amnt
 				S.use(1)

@@ -6,12 +6,13 @@
 	density = TRUE
 	anchored = TRUE
 
-obj/machinery/seed_extractor/attackby(obj/item/O, mob/user)
+/obj/machinery/seed_extractor/attackby(obj/item/O, mob/user)
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/reagent_containers/food/snacks/grown) || istype(O, /obj/item/grown))
-
-		user.remove_from_mob(O)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 
 		var/datum/seed/new_seed_type
 		if(istype(O, /obj/item/grown))
@@ -35,11 +36,21 @@ obj/machinery/seed_extractor/attackby(obj/item/O, mob/user)
 
 	//Grass.
 	else if(istype(O, /obj/item/stack/tile/grass))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/stack/tile/grass/S = O
 		if(S.use(1))
 			to_chat(user, SPAN_NOTICE("You extract some seeds from the grass tile."))
 			new /obj/item/seeds/grassseed(loc)
+		return
 
 	else if(default_unfasten_wrench(user, O, 20))
-		return
-	return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/machinery/seed_extractor/press
+	name = "primitive press"
+	desc = "A hand crafted press and sieve designed to extract seeds from fruit."
+	icon_state = "press"
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_OFF

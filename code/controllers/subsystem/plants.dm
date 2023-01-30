@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(plants)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/plants/stat_entry()
-	..("P:[processing.len]|S:[seeds.len]")
+	return ..() + " P:[processing.len]|S:[seeds.len]"
 
 /datum/controller/subsystem/plants/Initialize(timeofday)
 	setup()
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(plants)
 		S.update_seed()
 
 	//Might as well mask the gene types while we're at it.
-	var/list/gene_datums = decls_repository.decls_of_subtype(/decl/plantgene)
+	var/list/gene_datums = GET_SINGLETON_SUBTYPE_MAP(/singleton/plantgene)
 	var/list/used_masks = list()
 	var/list/plant_traits = ALL_GENES
 	while(plant_traits && plant_traits.len)
@@ -88,10 +88,10 @@ SUBSYSTEM_DEF(plants)
 		while(gene_mask in used_masks)
 			gene_mask = "[uppertext(num2hex(rand(0,255), 2))]"
 
-		var/decl/plantgene/G
+		var/singleton/plantgene/G
 
 		for(var/D in gene_datums)
-			var/decl/plantgene/P = gene_datums[D]
+			var/singleton/plantgene/P = gene_datums[D]
 			if(gene_tag == P.gene_tag)
 				G = P
 				gene_datums -= D

@@ -34,7 +34,7 @@ var/global/universe_has_ended = 0
 
 	SEND_SOUND(world, sound('sound/effects/cascade.ogg'))
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		M.flash_eyes()
 
 	if(SSemergencyshuttle.can_recall())
@@ -96,7 +96,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
 	for (var/obj/machinery/firealarm/alm in GLOB.machines)
 		if (!(alm.machine_stat & BROKEN))
-			alm.ex_act(2)
+			LEGACY_EX_ACT(alm, 2, null)
 
 /datum/universal_state/supermatter_cascade/proc/APCSet()
 	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
@@ -108,7 +108,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 			APC.update_icon()
 
 /datum/universal_state/supermatter_cascade/proc/PlayerSet()
-	for(var/datum/mind/M in player_list)
+	for(var/datum/mind/M in GLOB.player_list)
 		if(!istype(M.current,/mob/living))
 			continue
 		if(M.current.stat!=2)

@@ -43,7 +43,7 @@
 	sparks.set_up(2, 1, T)
 	sparks.start()
 
-	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
+	new /obj/effect/debris/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
 	new /obj/effect/particle_effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
@@ -196,7 +196,7 @@
 		to_chat(M, "<span class='danger'>Your ears start to ring badly!</span>")
 		if (prob(M.ear_damage - 5))
 			to_chat(M, "<span class='danger'>You can't hear anything!</span>")
-			M.sdisabilities |= DEAF
+			M.sdisabilities |= SDISABILITY_DEAF
 	else
 		if (M.ear_damage >= 5)
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
@@ -212,7 +212,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage = 5
 	armor_penetration = 75
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = BURN
 	check_armour = "energy"
 	light_color = "#0000FF"

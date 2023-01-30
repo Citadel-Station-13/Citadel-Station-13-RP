@@ -1,10 +1,11 @@
 /datum/job/station/librarian
+	id = JOB_ID_LIBRARIAN
 	title = "Librarian"
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	pto_type = PTO_CIVILIAN
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"

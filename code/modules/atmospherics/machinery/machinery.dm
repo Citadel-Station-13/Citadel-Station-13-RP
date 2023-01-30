@@ -14,9 +14,11 @@ Pipelines + Other Objects -> Pipe network
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
-	layer = ATMOS_LAYER
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
+	layer = EXPOSED_PIPE_LAYER
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
+	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	///The color of the pipe
 	var/pipe_color
@@ -170,14 +172,11 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 // Deconstruct into a pipe item.
-/obj/machinery/atmospherics/proc/deconstruct()
-	if(QDELETED(src))
-		return
+/obj/machinery/atmospherics/drop_products(method)
 	if(construction_type)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
-	qdel(src)
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()
@@ -233,3 +232,9 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
+
+/obj/machinery/atmospherics/hide(do_hide)
+	if(do_hide && level == 1)
+		layer = PIPE_LAYER
+	else
+		reset_plane_and_layer()

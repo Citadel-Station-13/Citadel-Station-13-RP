@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  * Ghostrole datums
  */
 /datum/ghostrole
+	/// Abstract type.
+	abstract_type = /datum/ghostrole
+
 	/// name
 	var/name = "Unnamed Role"
 	/// **short** description - use spawntext for long one.
@@ -33,8 +36,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/lazy_init = TRUE
 	/// allow selecting the spawner, or random? **If the spawner gets clicked by a player, they can still spawn from it!**
 	var/allow_pick_spawner = FALSE
-	/// abstract type
-	var/abstract_type = /datum/ghostrole
 	/// /datum/ghostrole_instantiator - handles mob creation, equip, and transfer. DOES NOT greet the ghostrole with role information.
 	var/datum/ghostrole_instantiator/instantiator
 	/// spawn count
@@ -67,17 +68,15 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 
 /datum/ghostrole/proc/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	if(show_standard_greeting)
-		to_chat(created, {"<center><b><font size='16px'>You have spawned as a ghostrole.</font></b></center>
-		These roles are usually more roleplay oriented than standard hard-defined antagonist roles - besure to follow spawntext (if any), as well as server rules.
-		Spawntext as follows;"})
+		to_chat(created, "<blockquote class='info'>You have spawned as a ghostrole. These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit! Spawntext as follows;</blockquote>")
 	if(spawntext)
-		to_chat(created, spawntext)
+		to_chat(created, "<blockquote class='info'>[spawntext]</blockquote>")
 	if(spawnpoint.spawntext)
-		to_chat(created, spawntext)
+		to_chat(created, "<blockquote class='info'>[spawntext]</blockquote>")
 
-/datum/ghostrole/proc/ImportantInfo()
-	// todo: policyconfig
-	return important_info
+/datum/ghostrole/proc/ImportantInfo(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+	if(important_info)
+		to_chat(created, "<blockquote class='info'>[important_info]</blockquote>")
 
 /**
  * Master proc for spawning someone as this role.
@@ -181,10 +180,12 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  */
 /datum/ghostrole/proc/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	Greet(created, spawnpoint, params)
+	ImportantInfo(created, spawnpoint, params)
 	if(automatic_objective)
 		GiveCustomObjective(created, automatic_objective)
 	spawns++
 	spawnpoint?.OnSpawn(created, src)
+	instantiator.AfterSpawn(created, params)
 
 /**
  * Ban check.

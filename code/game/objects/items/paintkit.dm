@@ -17,8 +17,7 @@
 /obj/item/kit/proc/use(var/amt, var/mob/user)
 	uses -= amt
 	playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-	if(uses<1)
-		user.drop_item()
+	if(uses < 1)
 		qdel(src)
 
 /obj/item/kit/proc/can_customize(var/obj/item/I)
@@ -44,8 +43,8 @@
 			I.icon_state = new_icon
 		var/obj/item/clothing/under/U = I
 		if(istype(U))
-			U.worn_state = I.icon_state
-			U.update_rolldown_status()
+			U.snowflake_worn_state = I.icon_state
+			U.update_rolldown()
 		use(1, user)
 
 // Generic use
@@ -91,7 +90,7 @@
 			to_chat(user, "You set about modifying the helmet into [helmet].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				helmet.species_restricted = list(H.species.get_bodytype(H))
+				helmet.species_restricted = list(H.species.get_bodytype_legacy(H))
 		else if(istype(I, /obj/item/clothing/suit/storage/hooded))
 			var/obj/item/clothing/suit/storage/hooded/suit = I
 			suit.name = "[new_name] suit"
@@ -111,7 +110,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 //			var/mob/living/carbon/human/H = user
 //			if(istype(H))
-//				suit.species_restricted = list(H.species.get_bodytype(H)) Does not quite make sense for something usually very pliable.
+//				suit.species_restricted = list(H.species.get_bodytype_legacy(H)) Does not quite make sense for something usually very pliable.
 		else
 			var/obj/item/clothing/suit/space/void/suit = I
 			suit.name = "[new_name] voidsuit"
@@ -125,7 +124,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				suit.species_restricted = list(H.species.get_bodytype(H))
+				suit.species_restricted = list(H.species.get_bodytype_legacy(H))
 		use(1,user)
 
 /obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/O, var/mob/user)

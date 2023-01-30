@@ -29,32 +29,33 @@
 	update_icon()
 
 /obj/structure/medical_stand/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
+	var/list/overlays_to_add = list()
 	if (tank)
 		if (breather)
-			overlays += "tube_active"
+			overlays_to_add += "tube_active"
 		else
-			overlays += "tube"
+			overlays_to_add += "tube"
 		if(istype(tank,/obj/item/tank/anesthetic))
-			overlays += "tank_anest"
+			overlays_to_add += "tank_anest"
 		else if(istype(tank,/obj/item/tank/nitrogen))
-			overlays += "tank_nitro"
+			overlays_to_add += "tank_nitro"
 		else if(istype(tank,/obj/item/tank/oxygen))
-			overlays += "tank_oxyg"
+			overlays_to_add += "tank_oxyg"
 		else if(istype(tank,/obj/item/tank/phoron))
-			overlays += "tank_plasma"
+			overlays_to_add += "tank_plasma"
 		//else if(istype(tank,/obj/item/tank/hydrogen))
-		//	overlays += "tank_hydro"
+		//	overlays_to_add += "tank_hydro"
 		else
-			overlays += "tank_other"
+			overlays_to_add += "tank_other"
 
 	if(beaker)
-		overlays += "beaker"
+		overlays_to_add += "beaker"
 		if(attached)
-			overlays += "line_active"
+			overlays_to_add += "line_active"
 		else
-			overlays += "line"
+			overlays_to_add += "line"
 		var/datum/reagents/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
@@ -69,32 +70,30 @@
 				if(91 to INFINITY)	filling.icon_state = "reagent100"
 			if (filling.icon)
 				filling.icon += reagents.get_color()
-				overlays += filling
+				overlays_to_add += filling
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/medical_stand/Destroy()
 	STOP_PROCESSING(SSobj,src)
 	if(breather)
 		breather.internal = null
 		breather.internals?.icon_state = "internal0"
-	if(tank)
-		qdel(tank)
-	if(breather)
-		breather.remove_from_mob(contained)
-		src.visible_message(SPAN_NOTICE("The mask rapidly retracts just before \the [src] is destroyed!"))
-	qdel(contained)
-	contained = null
-	breather = null
-
+		breather = null
 	attached = null
-	qdel(beaker)
-	beaker = null
+	if(tank)
+		QDEL_NULL(tank)
+	if(contained)
+		QDEL_NULL(contained)
+	if(beaker)
+		QDEL_NULL(beaker)
 	return ..()
 
 /obj/structure/medical_stand/attack_robot(var/mob/user)
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/medical_stand/MouseDrop(var/mob/living/carbon/human/target, src_location, over_location)
+/obj/structure/medical_stand/OnMouseDropLegacy(var/mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target))
 		if(usr.stat == DEAD || !CanMouseDrop(target))
@@ -123,7 +122,7 @@
 					if(tank)
 						tank.forceMove(src)
 					if (breather.wear_mask == contained)
-						breather.remove_from_mob(contained)
+						breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 						contained.forceMove(src)
 					else
 						qdel(contained)
@@ -246,7 +245,7 @@
 
 /obj/structure/medical_stand/proc/attach_mask(var/mob/living/carbon/C)
 	if(C && istype(C))
-		if(C.equip_to_slot_if_possible(contained, slot_wear_mask))
+		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			if(tank)
 				tank.forceMove(C)
 			breather = C
@@ -316,8 +315,8 @@
 		else if(!is_loosen)
 			to_chat(user, "<span class='warning'>Loosen the nut with a wrench first.</span>")
 		else
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			tank = W
 			user.visible_message("<span class='notice'>\The [user] attaches \the [tank] to \the [src].</span>", "<span class='notice'>You attach \the [tank] to \the [src].</span>")
 			src.add_fingerprint(user)
@@ -327,8 +326,8 @@
 		if(!isnull(src.beaker))
 			to_chat(user, "There is already a reagent container loaded!")
 			return
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		beaker = W
 		to_chat(user, "You attach \the [W] to \the [src].")
 		update_icon()
@@ -368,7 +367,7 @@
 			if(tank)
 				tank.forceMove(src)
 			if (breather.wear_mask == contained)
-				breather.remove_from_mob(contained)
+				breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 				contained.forceMove(src)
 			else
 				qdel(contained)
@@ -416,9 +415,9 @@
 				return
 			if(!H.dna)
 				return
-			if(NOCLONE in H.mutations)
+			if(MUTATION_NOCLONE in H.mutations)
 				return
-			if(H.species.flags & NO_BLOOD)
+			if(H.species.species_flags & NO_BLOOD)
 				return
 			if(!H.should_have_organ(O_HEART))
 				return

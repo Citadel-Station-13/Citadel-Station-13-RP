@@ -37,8 +37,8 @@
 	var/base_block_chance = 50
 	preserve_item = 1
 	item_icons = list(
-				slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-				slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+				SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+				SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 				)
 
 /obj/item/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -63,7 +63,7 @@
 	icon_state = "riot"
 	slot_flags = SLOT_BACK
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
@@ -119,9 +119,10 @@
 	. = ..()
 	embedded_flash = new(src)
 
-/obj/item/shield/riot/flash/attack(mob/living/M, mob/user)
-	. =  embedded_flash.attack(M, user)
-	update_icon()
+/obj/item/shield/riot/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	return embedded_flash.attack_mob(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/living/carbon/user)
 	. = embedded_flash.attack_self(user)
@@ -130,7 +131,7 @@
 /obj/item/shield/riot/flash/handle_shield(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
 	if (. && damage && !embedded_flash.broken)
-		embedded_flash.attack()
+		embedded_flash.melee_attack_chain()
 		update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
@@ -180,7 +181,7 @@
 	item_state = "metal"
 	slot_flags = null
 	force = 10
-	throwforce = 7
+	throw_force = 7
 
 /obj/item/shield/riot/tower
 	name = "tower shield"
@@ -190,7 +191,7 @@
 	icon_state = "metal"
 	force = 16
 	slowdown = 2
-	throwforce = 15 //Massive piece of metal
+	throw_force = 15 //Massive piece of metal
 	w_class = ITEMSIZE_HUGE
 
 /obj/item/shield/riot/tower/swat
@@ -262,8 +263,8 @@
 	slot_flags = SLOT_BACK
 	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/shield/riot/buckler
@@ -274,8 +275,8 @@
 	slot_flags = SLOT_BACK | SLOT_BELT
 	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /*
@@ -289,9 +290,9 @@
 	icon_state = "eshield"
 	item_state = "eshield"
 	slot_flags = SLOT_EARS
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	force = 3.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEMSIZE_SMALL
@@ -302,8 +303,8 @@
 	attack_verb = list("shoved", "bashed")
 	var/active = 0
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/shield/energy/handle_shield(mob/user)
@@ -325,7 +326,7 @@
 	return base_block_chance
 
 /obj/item/shield/energy/attack_self(mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		user.take_organ_damage(5)
 	active = !active
@@ -389,7 +390,7 @@
 	icon_state = "teleriot0"
 	slot_flags = null
 	force = 3
-	throwforce = 3
+	throw_force = 3
 	throw_speed = 3
 	throw_range = 4
 	w_class = ITEMSIZE_NORMAL
@@ -408,14 +409,14 @@
 
 	if(active)
 		force = 8
-		throwforce = 5
+		throw_force = 5
 		throw_speed = 2
 		w_class = ITEMSIZE_LARGE
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		force = 3
-		throwforce = 3
+		throw_force = 3
 		throw_speed = 3
 		w_class = ITEMSIZE_NORMAL
 		slot_flags = null
@@ -434,7 +435,7 @@
 	desc = "It's really easy to mispronounce the name of this shield if you've only read it in books."
 	icon = 'icons/obj/weapons_vr.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/shield/fluff/wolfgirlshield
 	name = "Autumn Shield"
@@ -443,10 +444,10 @@
 	icon_state = "wolfgirlshield"
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', /datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_items_vr.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	allowed = list(/obj/item/melee/fluffstuff/wolfgirlsword)
@@ -458,11 +459,11 @@
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
 
@@ -475,11 +476,11 @@
 	slot_flags = SLOT_BACK
 	base_block_chance = 5
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
 	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)

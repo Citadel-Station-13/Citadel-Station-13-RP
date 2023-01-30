@@ -46,7 +46,7 @@
 	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
 	battery_lock = 1
-	var/decl/plantgene/gene = null
+	var/singleton/plantgene/gene = null
 
 	firemodes = list(
 		list(mode_name="induce mutations", projectile_type=/obj/item/projectile/energy/floramut, modifystate="floramut"),
@@ -164,7 +164,7 @@
 	projectile_type = /obj/item/projectile/animate
 	charge_cost = 240
 */
-obj/item/gun/energy/staff/focus
+/obj/item/gun/energy/staff/focus
 	name = "mental focus"
 	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
 	icon = 'icons/obj/wizard.dmi'
@@ -239,10 +239,11 @@ obj/item/gun/energy/staff/focus
 		return return_target
 	return FALSE
 
-/obj/item/gun/energy/maghowitzer/attack(atom/A, mob/living/user, def_zone)
+/obj/item/gun/energy/maghowitzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/atom/A = target
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
-		return 0
+		return
 	var/turf/target_turf = get_turf(A)
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
 	if(beameffect)
@@ -251,19 +252,19 @@ obj/item/gun/energy/staff/focus
 		power_cycle = TRUE
 		if(do_after(user, 30))
 			if(A.loc == target_turf)
-				..(A, user, def_zone)
+				return ..()
 			else
 				var/rand_target = pick_random_target(target_turf)
 				if(rand_target)
-					..(rand_target, user, def_zone)
+					return ..()
 				else
-					..(target_turf, user, def_zone)
+					return ..()
 		else
 			if(beameffect)
 				qdel(beameffect)
 		power_cycle = FALSE
 	else
-		..(A, user, def_zone) //If it can't fire, just bash with no delay.
+		return ..()
 
 /obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(power_cycle)
@@ -334,6 +335,7 @@ obj/item/gun/energy/staff/focus
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
 
 /obj/item/gun/energy/service/attack_self(mob/user)
 	cycle_weapon(user)

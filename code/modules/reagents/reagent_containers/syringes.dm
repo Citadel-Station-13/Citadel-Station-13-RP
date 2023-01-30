@@ -5,7 +5,7 @@
 /obj/item/reagent_containers/syringe
 	name = "syringe"
 	desc = "A syringe."
-	icon = 'icons/obj/syringe.dmi'
+	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list(MAT_GLASS = 150)
@@ -16,6 +16,8 @@
 	slot_flags = SLOT_EARS
 	sharp = 1
 	unacidable = 1 //glass
+	rad_flags = RAD_NO_CONTAMINATE
+	item_flags = ITEM_NOBLUDGEON
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -27,12 +29,12 @@
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/pickup(mob/user)
-	..()
+/obj/item/reagent_containers/syringe/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/dropped(mob/user)
-	..()
+/obj/item/reagent_containers/syringe/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
@@ -61,7 +63,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM && ismob(target))
-		if((CLUMSY in user.mutations) && prob(50))
+		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			target = user
 		syringestab(target, user)
 		return
@@ -85,7 +87,7 @@
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
 						return
-					if(NOCLONE in T.mutations) //target done been et, no more blood in him
+					if(MUTATION_NOCLONE in T.mutations) //target done been et, no more blood in him
 						to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 						return
 
@@ -125,6 +127,7 @@
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
+						T.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
@@ -220,10 +223,12 @@
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))
 					add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
+					H.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
+			if(ismob(target) && affected)
+				dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
 
@@ -244,14 +249,11 @@
 		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
 			return
 
-		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
+		if (target != user && H.run_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
-			user.remove_from_mob(src)
 			qdel(src)
-
 			add_attack_logs(user,target,"Syringe harmclick")
-
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
@@ -262,8 +264,6 @@
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
-
-
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()

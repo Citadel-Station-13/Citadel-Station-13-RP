@@ -6,7 +6,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "missile"
 	damage = 30	//Meaty whack. *Chuckles*
-	does_spin = 0
+	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 
 /obj/item/projectile/bullet/srmrocket/on_hit(atom/target, blocked=0)
 	..()

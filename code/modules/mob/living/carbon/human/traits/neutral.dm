@@ -70,7 +70,7 @@
 
 /datum/trait/neutral/bloodsucker/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 
 /datum/trait/neutral/succubus_drain
 	name = "Succubus Drain"
@@ -79,9 +79,9 @@
 
 /datum/trait/neutral/succubus_drain/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_finalize
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_lethal
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_finalize)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_lethal)
 
 /datum/trait/neutral/vampire
 	name = "Vetalan / Vampiric"
@@ -98,8 +98,8 @@
 
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/hard_vore
 	name = "Brutal Predation"
@@ -109,7 +109,7 @@
 
 /datum/trait/neutral/hard_vore/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/shred_limb
+	add_verb(H, /mob/living/proc/shred_limb)
 
 /datum/trait/neutral/trashcan
 	name = "Trash Can"
@@ -120,7 +120,7 @@
 
 /datum/trait/neutral/trashcan/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/eat_trash
+	add_verb(H, /mob/living/proc/eat_trash)
 
 /datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
@@ -137,8 +137,8 @@
 
 /datum/trait/neutral/glowing_body/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/glow_toggle
-	H.verbs |= /mob/living/proc/glow_color
+	add_verb(H, /mob/living/proc/glow_toggle)
+	add_verb(H, /mob/living/proc/glow_color)
 
 //! ## Body shape traits
 /datum/trait/neutral/taller
@@ -245,7 +245,7 @@
 
 /datum/trait/neutral/antiseptic_saliva/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/size_change
 	name = "Sizeshift"
@@ -254,4 +254,17 @@
 
 /datum/trait/neutral/size_change/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/set_size
+	add_verb(H, /mob/living/proc/set_size)
+
+/datum/trait/neutral/cyberpsycho
+	name = "Cybernetic Rejection Syndrome"
+	desc = "In a transhuman society there are always those few who lack the ability to interface safely with cybernetics. Whether it exhibits itself as an allergy during their first implant, or as gradual mental degradation, those who are poorly adapted to cybernetics have only two futures to look forward to."
+	cost = 0
+	custom_only = FALSE
+	var_changes = list(
+		"is_cyberpsycho" = TRUE
+	)
+
+/datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
+	..(S,H)
+	H.AddComponent(/datum/component/cyberpsychosis)

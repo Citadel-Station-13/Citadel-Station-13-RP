@@ -5,7 +5,7 @@
 	name = "Money bag"
 	icon_state = "moneybag"
 	force = 10.0
-	throwforce = 2.0
+	throw_force = 2.0
 	w_class = ITEMSIZE_LARGE
 
 /obj/item/moneybag/attack_hand(user as mob)
@@ -75,19 +75,18 @@
 		dat += text("Iron coins: [amt_iron] <A href='?src=\ref[src];remove=iron'>Remove one</A><br>")
 	user << browse("[dat]", "window=moneybag")
 
-/obj/item/moneybag/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/moneybag/attackby(obj/item/W, mob/user)
 	..()
 	if (istype(W, /obj/item/coin))
 		var/obj/item/coin/C = W
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		to_chat(user, "<font color=#4F49AF>You add the [C.name] into the bag.</font>")
-		usr.drop_item()
-		contents += C
 	if (istype(W, /obj/item/moneybag))
 		var/obj/item/moneybag/C = W
 		for (var/obj/O in C.contents)
-			contents += O;
+			O.forceMove(src)
 		to_chat(user, "<font color=#4F49AF>You empty the [C.name] into the bag.</font>")
-	return
 
 /obj/item/moneybag/Topic(href, href_list)
 	if(..())

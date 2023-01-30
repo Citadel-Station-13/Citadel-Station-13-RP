@@ -109,8 +109,8 @@
 	if you're feeling optimistic."
 	can_fire_equipped = TRUE
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 
 /obj/item/electronic_assembly/medium/radio
@@ -235,13 +235,15 @@
 	if(!istype(T, /turf/simulated/floor))
 		to_chat(user, "<span class='warning'>You cannot place \the [src] on this spot!</span>")
 		return
-	playsound(src.loc, 'sound/machines/click.ogg', 75, 1)
+	if(istype(user, /mob/living/silicon/robot)) //Robots cannot unequip/drop items, for Safety Reasons.
+		forceMove(T)
+	else if(!user.attempt_insert_item_for_installation(src, T))
+		return
+	playsound(src, 'sound/machines/click.ogg', 75, 1)
 	user.visible_message("\The [user] attaches \the [src] to the wall.",
 		"<span class='notice'>You attach \the [src] to the wall.</span>",
 		"<span class='italics'>You hear clicking.</span>")
-	if(istype(user, /mob/living/silicon/robot)) //Robots cannot unequip/drop items, for Safety Reasons.
-		forceMove(T)
-	user.drop_item(T)
+
 	anchored = TRUE
 	on_anchored()
 	switch(ndir)

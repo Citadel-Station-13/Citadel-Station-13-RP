@@ -11,7 +11,7 @@
 	name = "headscarf"
 	desc = "A scarf of coarse fabric. Seems to have ear-holes."
 	icon_state = "zhan_scarf"
-	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 	body_parts_covered = HEAD|FACE
 	body_parts_covered = HEAD|FACE
 	drop_sound = 'sound/items/drop/leather.ogg'

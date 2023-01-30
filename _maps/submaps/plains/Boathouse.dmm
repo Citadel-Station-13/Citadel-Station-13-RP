@@ -49,7 +49,7 @@
 	icon_opened = "cabinet_open";
 	icon_state = "cabinet_closed"
 	},
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -131,7 +131,7 @@
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aE" = (
-/obj/vehicle/boat/sifwood,
+/obj/vehicle/ridden/boat/sifwood,
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aF" = (

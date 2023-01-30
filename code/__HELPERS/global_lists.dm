@@ -1,13 +1,8 @@
 //? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
-/// List of all clients whom are admins
-var/list/admins = list()
-
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-/// List of all mobs **with clients attached**. Excludes /mob/new_player
-var/global/list/player_list = list()
 /// List of all human mobs and sub-types, including clientless.
 var/global/list/human_mob_list = list()
 /// List of all silicon mobs, including clientless.
@@ -27,8 +22,6 @@ var/global/list/cable_list = list()
 var/global/list/side_effects = list()
 /// List of all mechs. Used by hostile mobs target tracking.
 var/global/list/mechas_list = list()
-/// List of all jobstypes, minus borg and AI
-var/global/list/joblist = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -44,29 +37,10 @@ var/global/list/NT_poster_designs = list()
 var/list/obj/item/uplink/world_uplinks = list()
 
 //* Preferences stuff *//
-//!Hairstyles
-/// Stores /datum/sprite_accessory/hair indexed by name
-var/global/list/hair_styles_list = list()
-var/global/list/hair_styles_male_list = list()
-var/global/list/hair_styles_female_list = list()
-/// Stores /datum/sprite_accessory/facial_hair indexed by name
-var/global/list/facial_hair_styles_list = list()
-var/global/list/facial_hair_styles_male_list = list()
-var/global/list/facial_hair_styles_female_list = list()
-//!Misc styles
-var/global/list/skin_styles_female_list = list() //unused
-/// Stores /datum/sprite_accessory/marking indexed by name
-var/global/list/body_marking_styles_list = list()
-/// Stores /datum/sprite_accessory/ears indexed by type
-var/global/list/ear_styles_list = list()
-/// Stores /datum/sprite_accessory/tail indexed by type
-var/global/list/tail_styles_list = list()
-/// Stores /datum/sprite_accessory/wing indexed by type
-var/global/list/wing_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
-//!Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag","Duffle Bag", "RIG")
+//!Backpacks - The load order here is important to maintain. Don't go swapping these around.
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
 var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
 
@@ -141,92 +115,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 	var/list/paths
 
-	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
-	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
-	hair_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/hair/H = new path
-		if(!istext(H.name))
-			qdel(H)
-			continue
-		if(hair_styles_list[H.name])
-			stack_trace("Duplicate name [H.name] detected - [hair_styles_list[H.name]] vs [H]")
-			continue
-		hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	hair_styles_male_list += H.name
-			if(FEMALE)	hair_styles_female_list += H.name
-			else
-				hair_styles_male_list += H.name
-				hair_styles_female_list += H.name
-	sortTim(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
-	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
-	facial_hair_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/facial_hair/H = new path()
-		if(!istext(H.name))
-			qdel(H)
-			continue
-		if(facial_hair_styles_list[H.name])
-			stack_trace("Duplicate name [H.name] detected - [facial_hair_styles_list[H.name]] vs [H]")
-			continue
-		facial_hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	facial_hair_styles_male_list += H.name
-			if(FEMALE)	facial_hair_styles_female_list += H.name
-			else
-				facial_hair_styles_male_list += H.name
-				facial_hair_styles_female_list += H.name
-	sortTim(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
-	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
-	body_marking_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/marking/M = new path()
-		if(!istext(M.name))
-			qdel(M)
-			continue
-		if(body_marking_styles_list[M.name])
-			stack_trace("Duplicate name [M.name] detected - [body_marking_styles_list[M.name]] vs [M]")
-			continue
-
-		body_marking_styles_list[M.name] = M
-	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
-	for(var/T in paths)
-		var/datum/job/J = new T
-		joblist[J.title] = J
-
-	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
-		initialize_static_species_cache()
-	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
-
-	//Languages and species.
-	paths = subtypesof(/datum/language)
-	for(var/T in paths)
-		var/datum/language/L = T
-		if(initial(L.abstract_type) == T)
-			continue
-		L = new T
-		GLOB.all_languages[L.name] = L
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[L.key] = L
-
-	for(var/datum/species/S as anything in all_static_species_meta())
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			GLOB.playable_species += S.name
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			GLOB.whitelisted_species += S.name
-
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
 	paths -= typesof(/datum/poster/nanotrasen)
@@ -238,24 +126,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/T in paths)
 		var/datum/poster/P = new T
 		NT_poster_designs += P
-
-	//Custom Ears
-	paths = typesof(/datum/sprite_accessory/ears) - /datum/sprite_accessory/ears
-	for(var/path in paths)
-		var/obj/item/clothing/head/instance = new path()
-		ear_styles_list[path] = instance
-
-	//Custom Tails
-	paths = typesof(/datum/sprite_accessory/tail) - /datum/sprite_accessory/tail - /datum/sprite_accessory/tail/taur
-	for(var/path in paths)
-		var/datum/sprite_accessory/tail/instance = new path()
-		tail_styles_list[path] = instance
-
-	//Custom Wings
-	paths = typesof(/datum/sprite_accessory/wing) - /datum/sprite_accessory/wing
-	for(var/path in paths)
-		var/datum/sprite_accessory/wing/instance = new path()
-		wing_styles_list[path] = instance
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
@@ -274,19 +144,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	// Custom species icon bases
-	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
-	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
-	for(var/species_name in GLOB.playable_species)
-		if(species_name in blacklisted_icons)
-			continue
-		var/datum/species/S = name_static_species_meta(species_name)
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			continue
-		GLOB.custom_species_bases += species_name
-	for(var/species_name in whitelisted_icons)
-		GLOB.custom_species_bases += species_name
-
 	return 1 // Hooks must return 1
 
 /* // Uncomment to debug chemical reaction list.
@@ -302,9 +159,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 */
 ///Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-
-//* Custom Species Lists *//
-GLOBAL_LIST_EMPTY(custom_species_bases)
 
 //! ## Traits
 /// Negative custom species traits, indexed by path.
@@ -415,6 +269,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -428,6 +283,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,

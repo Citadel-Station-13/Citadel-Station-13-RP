@@ -1,7 +1,7 @@
 /obj/item/reagent_containers
 	name = "Container"
 	desc = "..."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	w_class = ITEMSIZE_SMALL
 	var/amount_per_transfer_from_this = 5
@@ -19,7 +19,7 @@
 /obj/item/reagent_containers/Initialize(mapload)
 	. = ..()
 	if(!possible_transfer_amounts)
-		src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
+		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 	create_reagents(volume)
 
 /obj/item/reagent_containers/attack_self(mob/user as mob)
@@ -104,7 +104,7 @@
 		feed_sound(user)
 		return 1
 	else
-		if(istype(user, /mob/living/carbon/human))
+		if(istype(target, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target
 			if(!H.check_has_mouth())
 				to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")

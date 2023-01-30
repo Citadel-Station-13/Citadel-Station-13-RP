@@ -3,6 +3,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table
@@ -10,7 +11,6 @@
 	idle_power_usage = 1
 	active_power_usage = 5
 	surgery_odds = 100
-	throwpass = TRUE
 	var/mob/living/carbon/human/victim = null
 	var/strapped = FALSE
 	var/obj/machinery/computer/operating/computer = null
@@ -30,7 +30,7 @@
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
-/obj/machinery/optable/ex_act(severity)
+/obj/machinery/optable/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null
@@ -44,29 +44,12 @@
 		if(3.0)
 			if(prob(25))
 				density = 0
-		else
-	return
 
 /obj/machinery/optable/attack_hand(mob/user)
-	if(HULK in usr.mutations)
+	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
 		qdel(src)
-	return
-
-/obj/machinery/optable/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-
-/obj/machinery/optable/MouseDrop_T(obj/O, mob/user)
-	. = ..()
-	if((!(istype(O, /obj/item)) || user.get_active_hand() != O))
-		return
-	user.drop_item()
-	if(O.loc != src.loc)
-		step(O, get_dir(O, src))
-	return
 
 /obj/machinery/optable/proc/check_victim()
 	if(locate(/mob/living/carbon/human, src.loc))
@@ -101,7 +84,7 @@
 	else
 		icon_state = "table2-idle"
 
-/obj/machinery/optable/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/optable/MouseDroppedOnLegacy(mob/target, mob/user)
 
 	var/mob/living/M = user
 	if(user.stat || user.restrained() || !check_table(user) || !iscarbon(target))

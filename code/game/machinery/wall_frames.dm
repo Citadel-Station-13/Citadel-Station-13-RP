@@ -47,8 +47,6 @@
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
-		user.drop_item()
 	qdel(src)
 
 /obj/item/frame/proc/try_build(turf/on_wall, mob/user as mob)
@@ -96,8 +94,6 @@
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
-		user.drop_item()
 	qdel(src)
 
 /obj/item/frame/light
@@ -113,6 +109,12 @@
 	icon_state = "bulb-construct-item"
 	refund_amt = 1
 	build_machine_type = /obj/machinery/light_construct/small
+
+/obj/item/frame/light/fairy
+	name = "fairy light fixture frame"
+	icon_state = "fairy-construct-item"
+	refund_amt = 1
+	build_machine_type = /obj/machinery/light_construct/fairy
 
 /obj/item/frame/extinguisher_cabinet
 	name = "extinguisher cabinet frame"

@@ -87,7 +87,7 @@
 	if(loc != L.loc)
 		return
 
-	if(L.buckle_mob(src, forced = TRUE))
+	if(L.buckle_mob(src, BUCKLE_OP_FORCE))
 		victim = L
 		update_icon()
 		set_AI_busy(TRUE) // Don't want the AI to interfere with eatting.
@@ -99,7 +99,7 @@
 /mob/living/simple_mob/slime/xenobio/proc/stop_consumption(mob/living/L)
 	if(!victim)
 		return
-	victim.unbuckle_mob()
+	victim.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	victim.visible_message(
 		SPAN_NOTICE("\The [src] slides off of [victim]!"),
 		SPAN_NOTICE("\The [src] slides off of you!")
@@ -121,7 +121,7 @@
 	if(L.isSynthetic())
 		to_chat(src, "This subject is not biological...")
 		return FALSE
-	if(L.getarmor(null, "bio") >= 75)
+	if(L.run_mob_armor(null, "bio") >= 75)
 		to_chat(src, "I cannot reach this subject's biological matter...")
 		return FALSE
 	if(!Adjacent(L))
@@ -132,7 +132,7 @@
 		return FALSE
 	if(istype(L, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.species.flags & NO_SCAN)
+		if(H.species.species_flags & NO_SCAN)
 			to_chat(src, "This subject's life energy is beyond my reach...")
 			return FALSE
 	if(L.has_buckled_mobs())
@@ -152,7 +152,7 @@
 // 50% of giving +1 charge to the slime (same as above).
 /mob/living/simple_mob/slime/xenobio/proc/consume(mob/living/victim, amount)
 	if(can_consume(victim))
-		var/armor_modifier = abs((victim.getarmor(null, "bio") / 100) - 1)
+		var/armor_modifier = abs((victim.run_mob_armor(null, "bio") / 100) - 1)
 		var/damage_done = amount * armor_modifier
 		if(damage_done > 0)
 			victim.adjustCloneLoss(damage_done * 0.6)

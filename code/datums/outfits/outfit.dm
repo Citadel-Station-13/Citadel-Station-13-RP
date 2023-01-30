@@ -5,13 +5,14 @@
 		if(initial(O.abstract_type) == path)
 			continue
 		. += new path
-	sortTim(., /proc/cmp_name_asc)
+	tim_sort(., /proc/cmp_name_asc)
 
 /datum/outfit
+	/// Abstract type - set to self type for abstract outfits.
+	abstract_type = /datum/outfit
+
 	/// the outfit's name
 	var/name = "Naked"
-	/// abstract type - set to self type for abstract outfits.
-	var/abstract_type = /datum/outfit
 
 	var/uniform = null
 	var/suit = null
@@ -31,7 +32,7 @@
 	var/r_hand = null
 	var/l_hand = null
 	// In the list(path=count,otherpath=count) format
-	var/list/uniform_accessories = list() // webbing, armbands etc - fits in slot_tie
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory_slot_meta/abstract/attach_as_accessory
 	var/list/backpack_contents = list()
 
 	var/id_type
@@ -87,7 +88,7 @@
 	for(var/path in backpack_contents)
 		var/number = backpack_contents[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), slot_in_backpack)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 	post_equip(H)
 
@@ -100,45 +101,45 @@
 
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H),slot_w_uniform)
+		H.equip_to_slot_or_del(new uniform(H),SLOT_ID_UNIFORM, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(suit)
-		H.equip_to_slot_or_del(new suit(H),slot_wear_suit)
+		H.equip_to_slot_or_del(new suit(H),SLOT_ID_SUIT, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(back)
-		H.equip_to_slot_or_del(new back(H),slot_back)
+		H.equip_to_slot_or_del(new back(H),SLOT_ID_BACK, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(belt)
-		H.equip_to_slot_or_del(new belt(H),slot_belt)
+		H.equip_to_slot_or_del(new belt(H),SLOT_ID_BELT, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H),slot_gloves)
+		H.equip_to_slot_or_del(new gloves(H),SLOT_ID_GLOVES, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H),slot_shoes)
+		H.equip_to_slot_or_del(new shoes(H),SLOT_ID_SHOES, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(mask)
-		H.equip_to_slot_or_del(new mask(H),slot_wear_mask)
+		H.equip_to_slot_or_del(new mask(H),SLOT_ID_MASK, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(head)
-		H.equip_to_slot_or_del(new head(H),slot_head)
+		H.equip_to_slot_or_del(new head(H),SLOT_ID_HEAD, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(l_ear)
-		H.equip_to_slot_or_del(new l_ear(H),slot_l_ear)
+		H.equip_to_slot_or_del(new l_ear(H),SLOT_ID_LEFT_EAR, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(r_ear)
-		H.equip_to_slot_or_del(new r_ear(H),slot_r_ear)
+		H.equip_to_slot_or_del(new r_ear(H),SLOT_ID_RIGHT_EAR, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
+		H.equip_to_slot_or_del(new glasses(H),SLOT_ID_GLASSES, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(id)
-		H.equip_to_slot_or_del(new id(H),slot_wear_id)
+		H.equip_to_slot_or_del(new id(H),SLOT_ID_WORN_ID, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(l_pocket)
-		H.equip_to_slot_or_del(new l_pocket(H),slot_l_store)
+		H.equip_to_slot_or_del(new l_pocket(H),SLOT_ID_LEFT_POCKET, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(r_pocket)
-		H.equip_to_slot_or_del(new r_pocket(H),slot_r_store)
+		H.equip_to_slot_or_del(new r_pocket(H),SLOT_ID_RIGHT_POCKET, INV_OP_FLUFFLESS | INV_OP_SILENT)
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),slot_s_store)
+		H.equip_to_slot_or_del(new suit_store(H),SLOT_ID_SUIT_STORAGE, INV_OP_FLUFFLESS | INV_OP_SILENT)
 
 	if(l_hand)
-		H.put_in_l_hand(new l_hand(H))
+		H.put_in_left_hand(new l_hand(H), INV_OP_FORCE)
 	if(r_hand)
-		H.put_in_r_hand(new r_hand(H))
+		H.put_in_right_hand(new r_hand(H), INV_OP_FORCE)
 
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), slot_tie)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot_meta/abstract/attach_as_accessory, INV_OP_FLUFFLESS | INV_OP_SILENT)
 
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
@@ -167,7 +168,7 @@
 		pda.name = "PDA-[H.real_name] ([assignment])"
 		if(H.client.prefs.ringtone) // if null we use the job default
 			pda.ringtone = H.client.prefs.ringtone
-		sortTim(GLOB.PDAs, /proc/cmp_name_asc)
+		tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
 		return pda
 
 /datum/outfit/dd_SortValue()
@@ -186,7 +187,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/gun/projectile/automatic/battlerifle
+	back = /obj/item/gun/ballistic/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF
@@ -195,7 +196,7 @@
 
 /datum/outfit/JSDF/Marine/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
-	C.name = "[H.real_name]'s military ID Card"
+	C.name = "[H?.real_name]'s military ID Card"
 	C.icon_state = "lifetime"
 	C.assignment = "JSDF"
 	C.registered_name = H.real_name
@@ -207,7 +208,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/projectile/revolver/consul
+	belt = /obj/item/gun/ballistic/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/s44
 	r_pocket = /obj/item/ammo_magazine/s44
 	r_hand = /obj/item/clothing/accessory/holster/hip

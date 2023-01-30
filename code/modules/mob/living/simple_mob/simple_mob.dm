@@ -20,8 +20,6 @@
 	//* Settings for played mobs *//
 	/// Does the percentage health show in the stat panel for the mob
 	var/show_stat_health = TRUE
-	/// Set to TRUE to enable the use of hands and the hands hud
-	var/has_hands = FALSE
 	/// Can a player in this mob use things like guns or AI cards?
 	var/humanoid_hands = FALSE
 	/// Used in IsHumanoidToolUser. 'Your X are not fit-'.
@@ -200,7 +198,7 @@
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
-	/// Values for normal getarmor() checks
+	/// Values for normal run_mob_armor() checks
 	var/list/armor = list(
 				"melee" = 0,
 				"bullet" = 0,
@@ -210,7 +208,7 @@
 				"bio" = 100,
 				"rad" = 100
 				)
-	/// Values for getsoak() checks.
+	/// Values for run_mob_soak() checks.
 	var/list/armor_soak = list(
 				"melee" = 0,
 				"bullet" = 0,
@@ -250,6 +248,9 @@
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
+	///Does the simple mob drop organs when butchered?
+	butchery_drops_organs = FALSE
+
 //* randomization code. *//
 /mob/living/simple_mob/proc/randomize()
 	if(randomized == TRUE)
@@ -264,12 +265,12 @@
 		update_icons()
 
 /mob/living/simple_mob/Initialize(mapload)
-	verbs -= /mob/verb/observe
+	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
 
 	for(var/L in has_langs)
-		languages |= GLOB.all_languages[L]
+		languages |= SScharacters.resolve_language_name(L)
 	if(languages.len)
 		default_language = languages[1]
 
@@ -340,11 +341,11 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	if(T && T.movement_cost && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
+	if(T && T.slowdown && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
 		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
-			tally += T.movement_cost
+			tally += T.slowdown
 
 	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
 		if(tally <= 0)
@@ -357,10 +358,10 @@
 	return . + tally + config_legacy.animal_delay
 
 
-/mob/living/simple_mob/Stat()
-	..()
-	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / getMaxHealth()) * 100)]%")
+/mob/living/simple_mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status") && show_stat_health)
+		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
 
 /mob/living/simple_mob/lay_down()
 	..()
@@ -409,7 +410,7 @@
 			new exotic_type(drop_location())
 	if(issmall(src))
 		user?.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
-		new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+		new /obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 		qdel(src)
 	else
 		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")

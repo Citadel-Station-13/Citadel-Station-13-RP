@@ -18,16 +18,16 @@
 /area/submap/Oldhouse)
 "af" = (
 /obj/structure/table/woodentable,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "ag" = (
 /obj/item/stack/material/wood,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "ah" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "ai" = (
@@ -39,8 +39,8 @@
 	},
 /area/submap/Oldhouse)
 "ak" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "al" = (
@@ -52,11 +52,11 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "an" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "ao" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken4"
 	},
@@ -81,7 +81,7 @@
 "at" = (
 /obj/structure/table/woodentable,
 /obj/item/paper,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "au" = (
@@ -97,11 +97,11 @@
 /area/submap/Oldhouse)
 "aw" = (
 /obj/item/stack/material/wood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "ax" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken6"
 	},
@@ -194,8 +194,8 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aP" = (
@@ -208,7 +208,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aR" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aS" = (

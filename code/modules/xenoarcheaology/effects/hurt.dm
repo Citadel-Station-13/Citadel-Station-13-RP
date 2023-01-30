@@ -13,6 +13,7 @@
 			C.adjustBruteLoss(rand(5,25) * weakness)
 			C.adjustFireLoss(rand(5,25) * weakness)
 			C.adjustBrainLoss(rand(1,5) * weakness)
+			C.afflict_radiation(RAD_MOB_AFFLICT_ANOMALY_BURST)
 			C.apply_effect(25 * weakness, IRRADIATE)
 			C.nutrition -= min(50 * weakness, C.nutrition)
 			C.make_dizzy(6 * weakness)

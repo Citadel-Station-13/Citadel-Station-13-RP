@@ -115,10 +115,10 @@
 	is_stump = TRUE
 	density = FALSE
 	icon_state = "[base_state]_stump"
-	overlays.Cut() // For the Sif tree and other future glowy trees.
+	cut_overlays() // For the Sif tree and other future glowy trees.
 	set_light(0)
 
-/obj/structure/flora/tree/ex_act(var/severity)
+/obj/structure/flora/tree/legacy_ex_act(var/severity)
 	adjust_health(-(max_health / severity), TRUE)
 
 /obj/structure/flora/tree/bullet_act(var/obj/item/projectile/Proj)
@@ -129,11 +129,11 @@
 	adjust_health(-power / 100, TRUE) // Kills most trees in one lightning strike.
 	..()
 
-/obj/structure/flora/tree/get_description_interaction()
+/obj/structure/flora/tree/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!is_stump)
-		results += "[desc_panel_image("hatchet")]to cut down this tree into logs.  Any sharp and strong weapon will do."
+		results += "[desc_panel_image("hatchet", user)]to cut down this tree into logs.  Any sharp and strong weapon will do."
 
 	results += ..()
 
@@ -290,4 +290,4 @@
 	set_light(5 - light_shift, 1, "#33ccff")	// 5 variants, missing bulbs. 5th has no bulbs, so no glow.
 	var/image/glow = image(icon = icon, icon_state = "[base_state][light_shift]_glow")
 	glow.plane = ABOVE_LIGHTING_PLANE
-	overlays = list(glow)
+	add_overlay(glow)

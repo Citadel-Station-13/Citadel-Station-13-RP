@@ -10,7 +10,7 @@
 /mob/living/voice/Initialize(mapload)
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(GLOB.all_languages[LANGUAGE_GALCOM])
+	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
 
 	if(istype(loc, /obj/item/communicator))
 		comm = loc
@@ -22,7 +22,7 @@
 	if(ismob(speaker))
 		icon = speaker.icon
 		icon_state = speaker.icon_state
-		overlays = speaker.overlays
+		copy_overlays(speaker)
 		timeofdeath = speaker.timeofdeath
 
 		alpha = 127 //Maybe we'll have hologram calls later.
@@ -31,9 +31,9 @@
 			name = p.real_name
 			real_name = name
 			gender = p.identifying_gender
-
-			for(var/language in p.alternate_languages)
-				add_language(language)
+			// we don't check if they're above max because fuck you
+			for(var/id in p.all_language_ids())
+				add_language(id)
 
 // Proc: Login()
 // Parameters: None

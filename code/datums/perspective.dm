@@ -3,6 +3,25 @@
  *
  * allows managed control of client viewport/eye changes
  *
+ * !  - - - ATTENTION - - -
+ * ! These datums will modify mob variables.
+ * ! This can result in AI mobs having inconsistent sight/whatevers
+ * ! from what they'd usually have after a player enters, and
+ * ! leaves them.
+ * ! Mob reset_perspective() should handle most of these cases, but be wary.
+ *
+ * ! - - - ATTENTION - - -
+ * ! View sizes should only be for clients.
+ * ! Do not read off this for stuff like AI view/target tracking.
+ *
+ * ? - - - ATTENTION - - -
+ * ? We track MAXIMUM view sizes.
+ * ? Client can resize up/down as needed.
+ * ? If you want to force a client to a specific size,
+ * ? regardless of their widescreen setting,
+ * ? use client.set_temporary_view.
+ * ? Augmented view will also ignore client prefs on widescreen, *kinda.*
+ *
  * as of right now, perspectives will **trample** the following on every set:
  * client.eye
  * client.lazy_eye (unimplemented)
@@ -40,19 +59,33 @@
 	/// screen objects
 	var/list/atom/movable/screens = list()
 	/// sight var
-	var/sight = SEE_SELF
+	var/sight = SIGHT_FLAGS_DEFAULT
 	/// active clients - this is not the same as mobs because a client can be looking somewhere that isn't their mob
-	var/list/client/clients = list()
+	var/list/client/clients
 	/// mobs that are using this - required for clean gcs
 	var/list/mob/mobs = list()
-	/// view size
-	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE
 	/// see in dark
 	var/see_in_dark = 2
 	/// see_invisible
 	var/see_invisible = SEE_INVISIBLE_LIVING
+
+	//! view size
+	/// default view; if null, world.view
+	var/default_view_size
+	/// view size increase x
+	var/augment_view_width = 0
+	/// view size increase y
+	var/augment_view_height = 0
+	/// suppression sources
+	var/list/view_suppression
+	/// cached view x
+	var/cached_view_width
+	/// cached view y
+	var/cached_view_height
+	/// view cache needs recompute
+	var/view_dirty = TRUE
 
 /datum/perspective/Destroy()
 	KickAll()
@@ -73,7 +106,7 @@
 		return
 	if(C.using_perspective)
 		CRASH("client already had perspective")
-	clients += C
+	LAZYADD(clients, C)
 	C.using_perspective = src
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_REGISTER, C)
 	Apply(C)
@@ -85,7 +118,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(C in clients))
 		return
-	clients -= C
+	LAZYREMOVE(clients, C)
 	Remove(C)
 	// if we're not doing this as part of a switch have them immediately switch to the mob
 	// oh and make sure they unregister
@@ -100,7 +133,7 @@
  * gets all clients viewing us
  */
 /datum/perspective/proc/GetClients()
-	return clients.Copy()
+	return isnull(clients)? list() : clients.Copy()
 
 /**
  * kicks all clients off us
@@ -118,6 +151,7 @@
 
 /**
  * registers as a mob's current perspective
+ * sets mob vars as necessary
  */
 /datum/perspective/proc/AddMob(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
@@ -127,13 +161,20 @@
 		return
 	mobs += M
 	M.using_perspective = src
+	M.sight = sight
+	M.see_in_dark = see_in_dark
+	M.see_invisible = see_invisible
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_ADD, M)
 
 /**
  * unregisters as a mob's current perspective
+ * resets mob vars to initial() values
  */
 /datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	M.sight = initial(M.sight)
+	M.see_in_dark = initial(M.see_in_dark)
+	M.see_invisible = initial(M.see_invisible)
 	mobs -= M
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_REMOVE, M, switching)
 	if(M.using_perspective == src)
@@ -184,11 +225,7 @@
 	if(changed != C.eye)
 		C.parallax_holder?.Reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
-	C.mob.sight = sight
-	C.mob.see_in_dark = see_in_dark
-	C.mob.see_invisible = see_invisible
-	if(view_size)
-		C.change_view(view_size)
+	update_view_size(C)
 
 /**
  * update all viewers
@@ -294,13 +331,94 @@
 		for(var/client/C as anything in clients)
 			C.mob.see_invisible = see_invisible
 
-/datum/perspective/proc/SetViewSize(new_size)
-	var/change = view_size == new_size
-	view_size = new_size
-	if(change)
-		for(var/client/C as anything in clients)
-			C.change_view(new_size)
+//! view size
+/**
+ * Sets our default size.
+ *
+ * DO NOT use this in place of augmented.
+ * User widescreen preferences WILL override this!
+ *
+ * Ideally this shouldn't be used at all.
+ */
+/datum/perspective/proc/set_default_view(size)
+	if(size == default_view_size)
+		return
+	// assert it y'know, works
+	if(isnum(size))
+		default_view_size = size
+	else if(isnull(size))
+		default_view_size = size
+	else if(istext(size))
+		var/list/split = splittext(size, "x")
+		ASSERT(split.len == 2)
+		// if the above runtimes, let it so we know who fucked up
+		default_view_size = size
+	else
+		CRASH("What?")
+	view_dirty = TRUE
+	update_view_size()
 
+/**
+ * Sets augmented size ontop of default size.
+ *
+ * Currently only supports positive numbers. Numbers apply equally
+ * to both directions of a dimension.
+ */
+/datum/perspective/proc/set_augmented_view(width, height)
+	if(!isnum(height) || !isnum(width))
+		CRASH("invalid")
+	// no negative augment values for now
+	augment_view_height = max(0, height)
+	augment_view_width = max(0, width)
+	view_dirty = TRUE
+	update_view_size()
+
+/datum/perspective/proc/update_view_size(client/C)
+	if(view_dirty)
+		recompute_view_size()
+	if(C)
+		C.request_viewport_update()
+	else
+		for(var/client/_C as anything in clients)
+			update_view_size(_C)
+
+/datum/perspective/proc/recompute_view_size()
+	view_dirty = FALSE
+	if(isnum(default_view_size))
+		cached_view_height = default_view_size + augment_view_width
+		cached_view_width = default_view_size + augment_view_height
+		return
+	else if(isnull(default_view_size))
+		cached_view_width = GLOB.max_client_view_x + augment_view_width
+		cached_view_height = GLOB.max_client_view_y + augment_view_height
+		return
+	var/list/parsed = splittext(default_view_size, "x")
+	if(length(parsed) != 2)
+		cached_view_width = GLOB.max_client_view_x + augment_view_width
+		cached_view_height = GLOB.max_client_view_y + augment_view_height
+		return
+	cached_view_width = parsed[1] + augment_view_width
+	cached_view_height = parsed[2] + augment_view_height
+
+/datum/perspective/proc/suppress_view(source)
+	var/was = LAZYLEN(view_suppression)
+	LAZYOR(view_suppression, source)
+	if(!was && LAZYLEN(view_suppression))
+		view_dirty = TRUE
+		update_view_size()
+
+/datum/perspective/proc/unsuppress_view(source)
+	var/was = LAZYLEN(view_suppression)
+	LAZYREMOVE(view_suppression, source)
+	if(was && !LAZYLEN(view_suppression))
+		view_dirty = TRUE
+		update_view_size()
+
+/datum/perspective/proc/ensure_view_cached()
+	if(view_dirty)
+		recompute_view_size()
+
+//! remotes
 /datum/perspective/proc/considered_remote(mob/M)
 	return eye == M
 

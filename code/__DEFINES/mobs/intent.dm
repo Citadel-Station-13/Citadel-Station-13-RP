@@ -9,3 +9,11 @@
 // move_intent
 #define MOVE_INTENT_WALK			"walk"
 #define MOVE_INTENT_RUN				"run"
+
+// in_throw_mode
+/// not in throw mode
+#define THROW_MODE_OFF				0
+/// in regular throw mode
+#define THROW_MODE_ON				1
+/// in overhand throw mode
+#define THROW_MODE_OVERHAND			2

@@ -4,6 +4,7 @@
 //			Geneticist
 //////////////////////////////////
 /datum/job/station/geneticist
+	id = "geneticist"
 	title = "Geneticist"
 	flag = GENETICIST
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH)
@@ -30,8 +31,8 @@
 	r_pocket = /obj/item/flashlight/pen
 	l_ear = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/white
+	pda_slot = SLOT_ID_LEFT_POCKET
 
-	pda_slot = slot_l_store
 	id_type = /obj/item/card/id/medical/geneticist
 	pda_type = /obj/item/pda/geneticist
 

@@ -471,13 +471,13 @@
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
 	if (prob(2*power_output))
-		SSradiation.radiate(src, 4)
+		radiation_pulse(src, RAD_INTENSITY_SUPERPACMAN)
 	..()
 
 /obj/machinery/power/port_gen/pacman/super/explode()
 	//a nice burst of radiation
-	var/rads = 50 + (sheets + sheet_left)*1.5
-	SSradiation.radiate(src, (max(20, rads)))
+	var/rads = (sheets + sheet_left) * RAD_INTENSITY_SUPERPACMAN_BOOM_FACTOR
+	radiation_pulse(src, rads)
 
 	explosion(src.loc, 3, 3, 5, 3)
 	qdel(src)
@@ -516,8 +516,8 @@
 	circuit = /obj/item/circuitboard/machine/rtg
 
 	// You can buckle someone to RTG, then open its panel. Fun stuff.
-	can_buckle = TRUE
-	buckle_lying = FALSE
+	buckle_allowed = TRUE
+	buckle_lying = 0
 
 	var/power_gen = 1 // Enough to power a single APC. 4000 output with T4 capacitor.
 	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
@@ -533,7 +533,7 @@
 	..()
 	add_avail(power_gen)
 	if(panel_open && irradiate)
-		SSradiation.radiate(src, 60)
+		radiation_pulse(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()
@@ -564,7 +564,7 @@
 	icon_state = "rtg_gen"
 	power_gen = 6
 	circuit = /obj/item/circuitboard/machine/rtg
-	can_buckle = FALSE
+	buckle_allowed = FALSE
 
 /obj/machinery/power/rtg/fake_gen/RefreshParts()
 	return
@@ -583,7 +583,7 @@
 	circuit = /obj/item/circuitboard/machine/abductor/core
 	power_gen = 10
 	irradiate = FALSE // Green energy!
-	can_buckle = FALSE
+	buckle_allowed = FALSE
 	pixel_y = 7
 	var/going_kaboom = FALSE // Is it about to explode?
 	var/obj/item/cell/device/weapon/recharge/alien
@@ -629,8 +629,8 @@
 /obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
 	state_change = TRUE //Can't tell if parent did something
 	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
-		user.remove_from_mob(I)
-		I.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		alien = I
 		RefreshParts()
 		update_icon()
@@ -655,7 +655,7 @@
 /obj/machinery/power/rtg/abductor/blob_act(obj/structure/blob/B)
 	asplod()
 
-/obj/machinery/power/rtg/abductor/ex_act()
+/obj/machinery/power/rtg/abductor/legacy_ex_act()
 	if(going_kaboom)
 		qdel(src)
 	else

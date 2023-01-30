@@ -117,6 +117,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this circuit?", "Rename", src.name, MAX_NAME_LEN)
@@ -215,7 +216,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(params["link"])
 		linked = locate(params["link"]) in pin.linked
 
-	var/obj/held_item = usr.get_active_hand()
+	var/obj/held_item = usr.get_active_held_item()
 
 	. = TRUE
 	switch(action)
@@ -398,7 +399,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			return FALSE
 	if(!exclude_outside && target.Adjacent(acting_object) && isturf(target.loc))
 		return TRUE
-	if(!exclude_contents && (target in acting_object.GetAllContents()))
+	if(!exclude_contents && (target in acting_object.get_all_contents()))
 		return TRUE
 	if(target in acting_object.loc)
 		return TRUE

@@ -11,7 +11,7 @@
 /*
  * Borrowbook datum
  */
-datum/borrowbook // Datum used to keep track of who has borrowed what when and for how long.
+/datum/borrowbook // Datum used to keep track of who has borrowed what when and for how long.
 	var/bookname
 	var/mobname
 	var/getdate
@@ -30,7 +30,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	var/title
 	var/category = "Any"
 	var/author
-	var/SQLquery
 
 /obj/machinery/librarypubliccomp/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
@@ -43,17 +42,16 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];setauthor=1'>Filter by Author: [author]</A><BR>
 			<A href='?src=\ref[src];search=1'>\[Start Search\]</A><BR>"}
 		if(1)
-			establish_old_db_connection()
-			if(!dbcon_old.IsConnected())
+			if(!SSdbcore.Connect())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><BR>"
-			else if(!SQLquery)
-				dat += "<font color=red><b>ERROR</b>: Malformed search request. Please contact your system administrator for assistance.</font><BR>"
 			else
 				dat += {"<table>
 				<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"}
 
-				var/DBQuery/query = dbcon_old.NewQuery(SQLquery)
-				query.Execute()
+				var/datum/db_query/query = SSdbcore.RunQuery(
+					"SELECT author, title, category, id FROM [format_table_name("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
+					category == "Any"? list("author" = author, "title" = title) : list("author" = author, "title" = title, "category" = category)
+				)
 
 				while(query.NextRow())
 					var/author = query.item[1]
@@ -94,11 +92,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			author = null
 		author = sanitizeSQL(author)
 	if(href_list["search"])
-		SQLquery = "SELECT author, title, category, id FROM library WHERE "
-		if(category == "Any")
-			SQLquery += "author LIKE '%[author]%' AND title LIKE '%[title]%'"
-		else
-			SQLquery += "author LIKE '%[author]%' AND title LIKE '%[title]%' AND category='[category]'"
 		screenstate = 1
 
 	if(href_list["back"])
@@ -184,7 +177,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += "<A href='?src=\ref[src];switchscreen=7'>7. Access the Forbidden Lore Vault</A><BR>"
 			if(src.arcanecheckout)
 				new /obj/item/book/tome(src.loc)
-				var/datum/gender/T = gender_datums[user.get_visible_gender()]
+				var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 				to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>")
 				user.visible_message("<span class='notice'>\The [user] stares at the blank screen for a few moments, [T.his] expression frozen in fear. When [T.he] finally awakens from it, [T.he] looks a lot older.</span>", 2)
 				src.arcanecheckout = 0
@@ -226,18 +219,21 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"}
 		if(4)
 			dat += "<h3>External Archive</h3>"
-			establish_old_db_connection()
 
 			dat += "<h3><font color=red>Warning: System Administrator has slated this archive for removal. Personal uploads should be taken to the NT board of internal literature.</font></h3>"
 
-			if(!dbcon_old.IsConnected())
+			if(!SSdbcore.Connect())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
 			else
 				dat += {"<A href='?src=\ref[src];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title>TITLE</A></td><td><A href='?src=\ref[src];sort=category>CATEGORY</A></td><td></td></tr>"}
-				var/DBQuery/query = dbcon_old.NewQuery("SELECT id, author, title, category FROM library ORDER BY [sortby]")
-				query.Execute()
+				var/datum/db_query/query = SSdbcore.RunQuery(
+					"SELECT id, author, title, category FROM [format_table_name("library")] ORDER BY :sortby",
+					list(
+						"sortby" = sortby
+					)
+				)
 
 				while(query.NextRow())
 					var/id = query.item[1]
@@ -394,25 +390,32 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 					if(scanner.cache.unique)
 						alert("This book has been rejected from the database. Aborting!")
 					else
-						establish_old_db_connection()
-						if(!dbcon_old.IsConnected())
+						if(!SSdbcore.Connect())
 							alert("Connection to Archive has been severed. Aborting.")
 						else
 							var/sqltitle = sanitizeSQL(scanner.cache.name)
 							var/sqlauthor = sanitizeSQL(scanner.cache.author)
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
 							var/sqlcategory = sanitizeSQL(upload_category)
-							var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
+							var/datum/db_query/query = SSdbcore.NewQuery(
+								"INSERT INTO [format_table_name("library")] (author, title, content, category) VALUES (:author, :title, :content, :category)",
+								list(
+									"author" = sqlauthor,
+									"title" = sqltitle,
+									"content" = sqlcontent,
+									"category" = sqlcategory
+								)
+							)
 							if(!query.Execute())
 								to_chat(usr, query.ErrorMsg())
 							else
 								log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 								alert("Upload Complete.")
+							qdel(query)
 
 	if(href_list["targetid"])
 		var/sqlid = sanitizeSQL(href_list["targetid"])
-		establish_old_db_connection()
-		if(!dbcon_old.IsConnected())
+		if(!SSdbcore.Connect())
 			alert("Connection to Archive has been severed. Aborting.")
 		if(bibledelay)
 			for (var/mob/V in hearers(src))
@@ -421,8 +424,12 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			bibledelay = 1
 			spawn(6)
 				bibledelay = 0
-			var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
-			query.Execute()
+			var/datum/db_query/query = SSdbcore.RunQuery(
+				"SELECT * FROM [format_table_name("library")] WHERE id = :id",
+				list(
+					"id" = sqlid
+				)
+			)
 
 			while(query.NextRow())
 				var/author = query.item[2]
@@ -436,6 +443,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				B.icon_state = "book[rand(1,7)]"
 				src.visible_message("[src]'s printer hums as it produces a completely bound book. How did it do that?")
 				break
+
 	if(href_list["orderbyid"])
 		var/orderid = input("Enter your order:") as num|null
 		if(orderid)
@@ -463,10 +471,10 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	density = 1
 	var/obj/item/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/book))
-		user.drop_item()
-		O.loc = src
+/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/book))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 /obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
@@ -527,20 +535,20 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	if(panel_open)
 		add_overlay("[base_icon_state]-panel")
 
-/obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/paper))
-		user.drop_item()
-		O.loc = src
+/obj/machinery/bookbinder/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/paper))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
 		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
 		flick_overlay_view("[base_icon_state]-active", src, 12)
-		src.visible_message("[src] begins to hum as it warms up its printing drums.")
+		visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
-		src.visible_message("[src] whirs as it prints and binds a new book.")
-		var/obj/item/book/b = new(src.loc)
-		b.dat = O:info
+		visible_message("[src] whirs as it prints and binds a new book.")
+		var/obj/item/book/b = new(loc)
+		b.dat = I:info
 		b.name = "Print Job #" + "[rand(100, 999)]"
 		b.icon_state = "book[rand(1,7)]"
-		qdel(O)
+		qdel(I)
 	else
 		..()

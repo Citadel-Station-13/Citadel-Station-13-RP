@@ -16,6 +16,7 @@
 	var/diffused_for = 0
 	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
 	var/enabled_icon_state
+	var/list/pending_overlays
 
 /obj/effect/shield/proc/update_visuals()
 	update_iconstate()
@@ -27,13 +28,18 @@
 	if(!enabled_icon_state)
 		enabled_icon_state = icon_state
 
+	// This logic is attempting to toggle visibility of overlays.
 	if(disabled_for || diffused_for)
 		icon_state = "shield_broken"
-		overlays.Cut() //NOT ssoverlays
+		// Not cutting priority overlays, so only grab the main list.
+		if (our_overlays)
+			pending_overlays = our_overlays.Copy()
+		cut_overlays()
 	else
 		icon_state = enabled_icon_state
-		flags |= OVERLAY_QUEUED //Trick SSoverlays
-		SSoverlays.queue += src
+		if (pending_overlays)
+			set_overlays(pending_overlays)
+			pending_overlays = null
 
 /obj/effect/shield/proc/update_color()
 	if(disabled_for || diffused_for)
@@ -221,7 +227,7 @@
 
 
 // Explosions
-/obj/effect/shield/ex_act(var/severity)
+/obj/effect/shield/legacy_ex_act(var/severity)
 	if(!disabled_for)
 		take_damage(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 

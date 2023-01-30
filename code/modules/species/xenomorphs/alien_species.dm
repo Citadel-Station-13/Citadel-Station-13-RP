@@ -1,10 +1,15 @@
 //Stand-in until this is made more lore-friendly.
 /datum/species/xenos
+	id = SPECIES_ID_XENOMORPH
+	uid = SPECIES_ID_XENOMORPH
 	name = SPECIES_XENO
 	name_plural = "Xenomorphs"
 
-	default_language = LANGUAGE_XENO
-	language = "Hivemind"
+	default_language = LANGUAGE_ID_XENOMORPH
+	intrinsic_languages = list(
+		LANGUAGE_ID_XENOMORPH,
+		LANGUAGE_ID_XENOMORPH_HIVEMIND
+	)
 	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
@@ -24,8 +29,8 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	reagent_tag = IS_XENOS
 
@@ -79,7 +84,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable/xeno)
 		)
 
-/datum/species/xenos/get_bodytype()
+/datum/species/xenos/get_bodytype_legacy()
 	return SPECIES_XENO
 
 /datum/species/xenos/get_random_name()
@@ -142,7 +147,7 @@
 	//next internal organs
 	for(var/obj/item/organ/I in H.internal_organs)
 		if(I.damage > 0)
-			I.damage = max(I.damage - heal_rate, 0)
+			I.heal_damage_i(heal_rate, can_revive = TRUE)
 			if (prob(5))
 				to_chat(H, "<span class='alien'>You feel a soothing sensation within your [I.parent_organ]...</span>")
 			return 1
@@ -167,6 +172,7 @@
 */
 
 /datum/species/xenos/drone
+	uid = SPECIES_ID_XENOMORPH_DRONE
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
 	weeds_plasma_rate = 15
@@ -174,8 +180,8 @@
 	tail = "xenos_drone_tail"
 	rarity_value = 5
 
-	icobase = 'icons/mob/human_races/xenos/r_xenos_drone.dmi'
-	deform =  'icons/mob/human_races/xenos/r_xenos_drone.dmi'
+	icobase = 'icons/mob/species/xenomorph/drone.dmi'
+	deform =  'icons/mob/species/xenomorph/drone.dmi'
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
@@ -207,6 +213,7 @@
 	..()
 
 /datum/species/xenos/hunter
+	uid = SPECIES_ID_XENOMORPH_HUNTER
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
@@ -214,8 +221,8 @@
 	total_health = 150
 	tail = "xenos_hunter_tail"
 
-	icobase = 'icons/mob/human_races/xenos/r_xenos_hunter.dmi'
-	deform =  'icons/mob/human_races/xenos/r_xenos_hunter.dmi'
+	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
+	deform =  'icons/mob/species/xenomorph/hunter.dmi'
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -237,6 +244,7 @@
 		)
 
 /datum/species/xenos/sentinel
+	uid = SPECIES_ID_XENOMORPH_SENTINEL
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
 	caste_name = "sentinel"
@@ -244,8 +252,8 @@
 	total_health = 200
 	tail = "xenos_sentinel_tail"
 
-	icobase = 'icons/mob/human_races/xenos/r_xenos_sentinel.dmi'
-	deform =  'icons/mob/human_races/xenos/r_xenos_sentinel.dmi'
+	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
+	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -269,7 +277,7 @@
 		)
 
 /datum/species/xenos/queen
-
+	uid = SPECIES_ID_XENOMORPH_QUEEN
 	name = SPECIES_XENO_QUEEN
 	total_health = 250
 	weeds_heal_rate = 5
@@ -279,8 +287,8 @@
 	tail = "xenos_queen_tail"
 	rarity_value = 10
 
-	icobase = 'icons/mob/human_races/xenos/r_xenos_queen.dmi'
-	deform =  'icons/mob/human_races/xenos/r_xenos_queen.dmi'
+	icobase = 'icons/mob/species/xenomorph/queen.dmi'
+	deform =  'icons/mob/species/xenomorph/queen.dmi'
 
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno/queen, /datum/unarmed_attack/bite/strong/xeno)
 
@@ -336,8 +344,8 @@
 	has_internals = 0
 
 	gear = list(
-		"o_clothing" =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = slot_wear_suit, "state" = "equip",  "dir" = SOUTH),
-		"head" =         list("loc" = ui_id,        "name" = "Hat",          "slot" = slot_head,      "state" = "hair"),
-		"storage1" =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = slot_l_store,   "state" = "pocket"),
-		"storage2" =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = slot_r_store,   "state" = "pocket"),
+		SLOT_ID_SUIT =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "equip",  "dir" = SOUTH),
+		SLOT_ID_HEAD =         list("loc" = ui_id,        "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair"),
+		SLOT_ID_LEFT_POCKET =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
+		SLOT_ID_RIGHT_POCKET =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
 		)

@@ -3,7 +3,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pass_flags = PASSTABLE | PASSGRILLE | PASSBLOB
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE | ATOM_PASS_BLOB
 	var/list/touched
 
 /obj/effect/water/Initialize(mapload)
@@ -17,7 +17,7 @@
 	if(!target)
 		return
 	touched = list()
-	QDEL_IN(src, 10)
+	QDEL_IN(src, step_count * delay + 10)
 	for(var/i = 1 to step_count)
 		if(!loc)
 			return
@@ -48,5 +48,6 @@
 //Used by spraybottles.
 /obj/effect/water/chempuff
 	name = "chemicals"
-	icon = 'icons/obj/chempuff.dmi'
+	icon = 'icons/obj/medical/chempuff.dmi'
 	icon_state = ""
+	layer = FLY_LAYER

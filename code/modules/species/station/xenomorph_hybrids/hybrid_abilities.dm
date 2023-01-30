@@ -1,14 +1,3 @@
-/mob/living/carbon/human/proc/active_heal()
-    set name = "Focused Healing"
-    set desc = "You focus on regenerating your wounds."
-    set category = "Abilities"
-
-    src.healing = !src.healing
-    if(healing)
-        to_chat(src, "<span class='notice'>You begin to heal faster.</span>")
-    else
-        to_chat(src, "<span class='notice'>You stop healing faster.</span>")
-
 /mob/living/carbon/human/proc/hybrid_plant()
 	set name = "Plant Weed (10)"
 	set desc = "Plants some alien weeds"

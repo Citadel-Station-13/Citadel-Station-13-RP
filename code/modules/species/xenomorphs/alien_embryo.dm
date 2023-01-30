@@ -89,9 +89,9 @@
 		return
 
 	if(affected_mob.lying)
-		affected_mob.overlays += image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_lie")
+		affected_mob.add_overlay(image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_lie"))
 	else
-		affected_mob.overlays += image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_stand")
+		affected_mob.add_overlay(image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_stand"))
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
 		new_xeno.key = picked
@@ -106,7 +106,7 @@ Des: Removes all infection images from aliens and places an infection image on a
 ----------------------------------------*/
 /obj/item/alien_embryo/proc/RefreshInfectionImage()
 
-	for(var/mob/living/carbon/alien in player_list)
+	for(var/mob/living/carbon/alien in GLOB.player_list)
 
 		if(!locate(/obj/item/organ/internal/xenos/hivenode) in alien.internal_organs)
 			continue
@@ -128,7 +128,7 @@ Des: Checks if the passed mob (C) is infected with the alien egg, then gives eac
 /obj/item/alien_embryo/proc/AddInfectionImages(var/mob/living/C)
 	if(C)
 
-		for(var/mob/living/carbon/alien in player_list)
+		for(var/mob/living/carbon/alien in GLOB.player_list)
 
 			if(!locate(/obj/item/organ/internal/xenos/hivenode) in alien.internal_organs)
 				continue
@@ -147,7 +147,7 @@ Des: Removes the alien infection image from all aliens in the world located in p
 
 	if(C)
 
-		for(var/mob/living/carbon/alien in player_list)
+		for(var/mob/living/carbon/alien in GLOB.player_list)
 
 			if(!locate(/obj/item/organ/internal/xenos/hivenode) in alien.internal_organs)
 				continue

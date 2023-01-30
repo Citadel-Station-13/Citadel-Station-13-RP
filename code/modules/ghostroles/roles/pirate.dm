@@ -1,36 +1,103 @@
 /datum/ghostrole/pirate
-	name = "Space Pirate"
-	desc = "The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot."
-
+	name = "Pirate"
+	assigned_role = "Pirate"
+	desc = "You are a pirate! A legendary, if oft maligned, profession."
+	spawntext = "There are countless roving gangs of pirates across the Frontier. A constant menace to honest traders and Corporate convoys alike, pirates are part of a never ending conflict with local SDF and private security forces from system to system."
+	important_info = "You are a member of a pirate crew. You pillage, kidnap, and steal for profit and pleasure. Although you recently moved into this system, it is owned by NanoTrasen. A Corporate presence provides plenty of opportunities for plunder, but beware! Certain areas are considered off limits, even to pirates. Only a fool would anger Nebula Gas by raiding their station, although NebGas vessels in transit are fair game. Attempting to visit NanoTrasen's primary facility is equally dangerous and ill-advised. Focusing on isolated vessels in flight or expeditions on planets may be the most reliable way to score precious booty. Proteans and Xenochimerae are currently excluded from being Pirates, if you own either Whitelist."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/pirate
+
+/datum/ghostrole/pirate/Instantiate(client/C, atom/loc, list/params)
+	var/rp = rand(1, 3)
+	switch(rp)
+		if(1)
+			params["fluff"] = "immigrant"
+		if(2)
+			params["fluff"] = "dilettante"
+		if(3)
+			params["fluff"] = "professional"
+	return ..()
+
+/datum/ghostrole/pirate/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+	. = ..()
+	var/flavour_text = "<i>The sound of something dripping on the top of your bunk unit wakes you up. Spears of light shine in through old \
+	bullet holes. The unit's door slides back with the push of a button, letting stale recycled air rush out. A yellowed poster on the wall \
+	flutters momentarily in the artificial breeze. You climb out of the unit and stand up. Just another day in paradise, right? As you look \
+	over your rusty bunk, your mind drifts to how you came to be here...</i>"
+	switch(params["fluff"])
+		if("immigrant")
+			flavour_text += "<i>You came to the Frontier seeking riches and success, just like in all the films and games. Unfortunately, you quickly learned \
+			that the Corporations weren't interested in your talents as a [pick("line cook","security guard","fashion model","actor","veterinarian","competitive VR-athlete","laborer")]. \
+			Unfortunately, you were so convinced that you could make it that you only bought a one-way ticket. Without any way to afford the basic necessities of life, \
+			you quickly fell in with a bad crowd. Whether you're still with that same band of pirates or not, adjusting to your new life has been difficult.</i>"
+		if("dilettante")
+			flavour_text += "<i>You've never been afraid of rough trade. Whenever needs have risen and there's no honest work to be had, you've been happy to be \
+			less than honest. Unfortunately, this tendency to bend the rules of polite society has resulted in much persecution from the stodgier elements of the \
+			law. You came out to the Frontier for one simple reason: no extradition. Even then, your history has had a way of haunting you, but that's alright. \
+			This band of misfits has been more than welcoming, and they never even thought of running a background check. Whether these pirates are the same band \
+			that you first started out with or not, one thing's for sure: the trade is as rough as ever, but it pays much better.</i>"
+		if("professional")
+			flavour_text += "<i>You always knew what you wanted to be in life, from the first time you heard a swashbuckling adventure story. You dedicated your life \
+			to it. Sure, your time in [pick("the SDF","merchant security","corporate security")] wasn't so bad, but you never planned on staying. You were just there to \
+			learn the skills that you still use to this day. Some people join an outfit for necessity's sake, or because they think they're hard. Tourists. You're here \
+			because you were born to be here, whether this is the band you started out with or not doesn't matter. All that matters to you is the job.</i>"
+	to_chat(created, flavour_text)
 
 /datum/ghostrole_instantiator/human/random/species/pirate
 	possible_species = list(
-		/datum/species/skeleton/space
+		/datum/species/human
 	)
-	equip_outfit = /datum/outfit/pirate/space
 
 /datum/ghostrole_instantiator/human/random/species/pirate/GetOutfit(client/C, mob/M, list/params)
-	. = ..()
-	switch(params["rank"])
-		if("Mate", "Gunner")
-			return /datum/outfit/pirate/space
-		if("Captain")
-			return /datum/outfit/pirate/space/captain
+	var/datum/outfit/outfit = ..()
+	//var/mob/M = /mob/living/carbon/human/H
+	M.faction = "pirate"
+	switch(params["fluff"])
+		if("immigrant")
+			outfit.uniform = /obj/item/clothing/under/surplus/desert
+			outfit.suit = /obj/item/clothing/suit/storage/vest/tactical/pirate
+			outfit.shoes = /obj/item/clothing/shoes/boots/workboots
+			outfit.belt = /obj/item/gun/ballistic/pirate
+			outfit.back = /obj/item/storage/backpack/rebel
+			outfit.l_ear = /obj/item/radio/headset/raider
+			outfit.id_slot = SLOT_ID_WORN_ID
+			outfit.id_type = /obj/item/card/id/external/pirate
+			outfit.r_pocket = /obj/item/melee/energy/sword/pirate
+		if("dilettante")
+			outfit.uniform = /obj/item/clothing/under/surplus
+			outfit.suit = /obj/item/clothing/suit/storage/vest/tactical/pirate
+			outfit.shoes = /obj/item/clothing/shoes/boots/jackboots
+			outfit.belt = /obj/item/melee/energy/sword/pirate
+			outfit.back = /obj/item/storage/backpack/rebel
+			outfit.l_ear = /obj/item/radio/headset/raider
+			outfit.id_slot = SLOT_ID_WORN_ID
+			outfit.id_type = /obj/item/card/id/external/pirate
+			outfit.l_hand = /obj/item/shield/makeshift
+		if("professional")
+			outfit.uniform = /obj/item/clothing/under/surplus/russoblue
+			outfit.suit = /obj/item/clothing/suit/armor/tactical/pirate
+			outfit.shoes = /obj/item/clothing/shoes/boots/jackboots
+			outfit.mask = /obj/item/clothing/mask/balaclava
+			outfit.belt = /obj/item/gun/energy/zip
+			outfit.back = /obj/item/storage/backpack/rebel
+			outfit.l_ear = /obj/item/radio/headset/raider
+			outfit.id_slot = SLOT_ID_WORN_ID
+			outfit.id_type = /obj/item/card/id/external/pirate
+			outfit.r_pocket = /obj/item/melee/energy/sword/pirate
+			outfit.r_hand = /obj/item/shield/makeshift
+	return outfit
 
-/datum/ghostrole_instantiator/human/random/species/pirate/Randomize(mob/living/carbon/human/H, list/params)
-	. = ..()
-	H.fully_replace_character_name(H.real_name,generate_pirate_name(params["rank"]))
+/obj/structure/ghost_role_spawner/pirate
+	name = "pirate bunk"
+	desc = "An aged personal bunk unit. Prized in communal living areas for their enclosed nature, units like this can be locked from the inside and outside, allowing the relatively safe storage of personal effects."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "piratebunk"
+	anchored = TRUE
+	density = TRUE
+	role_type = /datum/ghostrole/pirate
+	role_spawns = 1
 
-/datum/ghostrole/pirate/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
-	. = ..()
-	created.mind.add_antag_datum(/datum/antagonist/pirate)
-
-/proc/generate_pirate_name(rank)
-	var/beggings = strings(PIRATE_NAMES_FILE, "beginnings")
-	var/endings = strings(PIRATE_NAMES_FILE, "endings")
-	return "[rank] [pick(beggings)][pick(endings)]"
-
+//This is from the original untranslated DM. It still isn't translated, but this is neat and maybe we should use it sometime? It seems worth retaining for now.
+/*
 /obj/structure/ghost_role_spawner/pirate
 	name = "space pirate sleeper"
 	desc = "A cryo sleeper smelling faintly of rum. The sleeper looks unstable. <i>Perhaps the pirate within can be killed with the right tools...</i>"
@@ -59,7 +126,7 @@
 				"<span class='notice'>You start to pry open [src]...</span>",
 				"<span class='italics'>You hear prying...</span>")
 		W.play_tool_sound(src)
-		if(do_after(user, 100*W.toolspeed, target = src))
+		if(do_after(user, 100*W.tool_speed, target = src))
 			user.visible_message("<span class='warning'>[user] pries open [src], disrupting the sleep of the pirate within and killing them.</span>",
 				"<span class='notice'>You pry open [src], disrupting the sleep of the pirate within and killing them.</span>",
 				"<span class='italics'>You hear prying, followed by the death rattling of bones.</span>")
@@ -101,3 +168,4 @@
 	role_params = list(
 		"rank" = "Gunner"
 	)
+*/

@@ -257,7 +257,7 @@
 
 /obj/machinery/xenobio/editor
 	name = "biological genetic bombarder"
-	icon = 'icons/obj/cryogenics.dmi'
+	icon = 'icons/obj/medical/cryogenics.dmi'
 	icon_state = "cellold0"
 	disk_needs_genes = 1
 	circuit = /obj/item/circuitboard/biobombarder
@@ -365,7 +365,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/xenobio/editor/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/xenobio/editor/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_editor(user,target)

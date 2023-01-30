@@ -42,49 +42,49 @@
 	h_style = to_wear_hair
 
 	if(to_wear_uniform)
-		equip_to_slot_or_del(new to_wear_uniform(src), slot_w_uniform)
+		equip_to_slot_or_del(new to_wear_uniform(src), SLOT_ID_UNIFORM)
 
 	if(to_wear_suit)
-		equip_to_slot_or_del(new to_wear_suit(src), slot_wear_suit)
+		equip_to_slot_or_del(new to_wear_suit(src), SLOT_ID_SUIT)
 
 	if(to_wear_shoes)
-		equip_to_slot_or_del(new to_wear_shoes(src), slot_shoes)
+		equip_to_slot_or_del(new to_wear_shoes(src), SLOT_ID_SHOES)
 
 	if(to_wear_gloves)
-		equip_to_slot_or_del(new to_wear_gloves(src), slot_gloves)
+		equip_to_slot_or_del(new to_wear_gloves(src), SLOT_ID_GLOVES)
 
 	if(to_wear_l_radio)
-		equip_to_slot_or_del(new to_wear_l_radio(src), slot_l_ear)
+		equip_to_slot_or_del(new to_wear_l_radio(src), SLOT_ID_LEFT_EAR)
 
 	if(to_wear_r_radio)
-		equip_to_slot_or_del(new to_wear_r_radio(src), slot_r_ear)
+		equip_to_slot_or_del(new to_wear_r_radio(src), SLOT_ID_RIGHT_EAR)
 
 	if(to_wear_glasses)
-		equip_to_slot_or_del(new to_wear_glasses(src), slot_glasses)
+		equip_to_slot_or_del(new to_wear_glasses(src), SLOT_ID_GLASSES)
 
 	if(to_wear_mask)
-		equip_to_slot_or_del(new to_wear_mask(src), slot_wear_mask)
+		equip_to_slot_or_del(new to_wear_mask(src), SLOT_ID_MASK)
 
 	if(to_wear_helmet)
-		equip_to_slot_or_del(new to_wear_helmet(src), slot_head)
+		equip_to_slot_or_del(new to_wear_helmet(src), SLOT_ID_HEAD)
 
 	if(to_wear_belt)
-		equip_to_slot_or_del(new to_wear_belt(src), slot_belt)
+		equip_to_slot_or_del(new to_wear_belt(src), SLOT_ID_BELT)
 
 	if(to_wear_r_pocket)
-		equip_to_slot_or_del(new to_wear_r_pocket(src), slot_r_store)
+		equip_to_slot_or_del(new to_wear_r_pocket(src), SLOT_ID_RIGHT_POCKET)
 
 	if(to_wear_l_pocket)
-		equip_to_slot_or_del(new to_wear_l_pocket(src), slot_l_store)
+		equip_to_slot_or_del(new to_wear_l_pocket(src), SLOT_ID_LEFT_POCKET)
 
 	if(to_wear_back)
-		equip_to_slot_or_del(new to_wear_back(src), slot_back)
+		equip_to_slot_or_del(new to_wear_back(src), SLOT_ID_BACK)
 
 	if(to_wear_l_hand)
-		equip_to_slot_or_del(new to_wear_l_hand(src), slot_l_hand)
+		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot_meta/abstract/hand/left)
 
 	if(to_wear_r_hand)
-		equip_to_slot_or_del(new to_wear_r_hand(src), slot_r_hand)
+		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot_meta/abstract/hand/right)
 
 	if(to_wear_id_type)
 		var/obj/item/card/id/W = new to_wear_id_type(src)
@@ -102,7 +102,7 @@
 		if(to_wear_id_job)
 			W.assignment = to_wear_id_job
 		W.registered_name = real_name
-		equip_to_slot_or_del(W, slot_wear_id)
+		equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 
 	if(generate_dead)
 		death()

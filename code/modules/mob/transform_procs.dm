@@ -1,10 +1,7 @@
 /mob/living/carbon/human/proc/monkeyize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		if (W==w_uniform) // will be torn
-			continue
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -30,11 +27,9 @@
 		gib()
 		return
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
-	set_species(species_type_by_name(species.primitive_form))
-	dna.SetSEState(MONKEYBLOCK,1)
-	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
+	set_species(species.primitive_form)
+	dna.SetSEState(DNABLOCK_MONKEY,1)
+	dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
 	qdel(animation)
@@ -56,8 +51,7 @@
 /mob/living/carbon/AIize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	transforming = 1
 	canmove = 0
 	icon = null
@@ -79,30 +73,15 @@
 
 	//Languages
 	add_language("Robot Talk", 1)
-	add_language(LANGUAGE_GALCOM, 1)
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_UNATHI, 1)
-	add_language(LANGUAGE_SIIK, 1)
-	add_language(LANGUAGE_AKHANI, 1)
-	add_language(LANGUAGE_SKRELLIAN, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_SCHECHI, 1)
-	add_language(LANGUAGE_SIGN, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_ZADDAT, 0)
 
 	// Lorefolks say it may be so.
-	if(O.client && O.client.prefs)
-		var/datum/preferences/B = O.client.prefs
-		if(LANGUAGE_ROOTGLOBAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTGLOBAL, 1)
-		if(LANGUAGE_ROOTLOCAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTLOCAL, 1)
+	if(LANGUAGE_ROOTGLOBAL in languages)
+		O.add_language(LANGUAGE_ROOTGLOBAL, 1)
+	if(LANGUAGE_ROOTLOCAL in languages)
+		O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/job/station/ai)
 		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
@@ -110,17 +89,19 @@
 
 	O.add_ai_verbs()
 
-	O.rename_self("ai",1)
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
+	O.view_core()
+
+	O.rename_self("ai")
+	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
+	spawn(0)
 		qdel(src)
 	return O
 
-//human -> robot
+/// Human -> Robot
 /mob/living/carbon/human/proc/Robotize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -156,13 +137,14 @@
 	else
 		O.key = key
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Cyborg"
+
+	for(var/i in languages)
+		O.add_language(i)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
-		for(var/language in B.alternate_languages)
-			O.add_language(language)
 		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
 		O.fuzzy = B.fuzzy								// Ditto
 
@@ -176,8 +158,7 @@
 /mob/living/carbon/human/proc/Alienize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -200,8 +181,7 @@
 /mob/living/carbon/human/proc/corgize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -229,8 +209,8 @@
 
 	if(transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
 	transforming = 1
@@ -305,6 +285,3 @@
 
 	//Not in here? Must be untested!
 	return 0
-
-
-

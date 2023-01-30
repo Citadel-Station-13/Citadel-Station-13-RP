@@ -43,16 +43,14 @@
 				to_chat(user, "<span class ='notice'>This firearm already has a firing pin installed.</span>")
 
 /obj/item/firing_pin/proc/gun_insert(mob/living/user, obj/item/gun/G)
-	user.drop_item()
-	forceMove(G)
+	if(!user.attempt_insert_item_for_installation(src, G))
+		return
 	G.pin = src
 	to_chat(user, "<span class ='notice'>You insert [src] into [G].</span>")
-	return
 
 /obj/item/firing_pin/proc/gun_remove(obj/item/gun/G)
 	G.pin = null
 	qdel(src)
-	return
 
 /obj/item/firing_pin/proc/pin_auth(mob/living/user)
 	return TRUE

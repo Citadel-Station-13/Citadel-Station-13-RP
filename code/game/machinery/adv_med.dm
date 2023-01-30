@@ -4,7 +4,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
@@ -66,7 +66,7 @@
 		if(default_deconstruction_crowbar(user, G))
 			return
 
-/obj/machinery/bodyscanner/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/bodyscanner/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return FALSE //not a mob
 	if(user.incapacitated())
@@ -128,12 +128,12 @@
 	update_icon() //Health display for consoles with light and such.
 	return
 
-/obj/machinery/bodyscanner/ex_act(severity)
+/obj/machinery/bodyscanner/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				ex_act(severity)
+				legacy_ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
 			qdel(src)
@@ -142,7 +142,7 @@
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
 				qdel(src)
@@ -151,7 +151,7 @@
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
 				qdel(src)
@@ -166,7 +166,7 @@
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_terminal_off"
 	dir = 8
 	density = 1
@@ -210,7 +210,7 @@
 /obj/machinery/body_scanconsole/power_change()
 	update_icon() //Health display for consoles with light and such.
 
-/obj/machinery/body_scanconsole/ex_act(severity)
+/obj/machinery/body_scanconsole/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null
@@ -390,8 +390,8 @@
 
 			occupantData["intOrgan"] = intOrganData
 
-			occupantData["blind"] = (H.sdisabilities & BLIND)
-			occupantData["nearsighted"] = (H.disabilities & NEARSIGHTED)
+			occupantData["blind"] = (H.sdisabilities & SDISABILITY_NERVOUS)
+			occupantData["nearsighted"] = (H.disabilities & DISABILITY_NEARSIGHTED)
 			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H))
 		data["occupant"] = occupantData
 
@@ -467,7 +467,7 @@
 			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
 
-			extra_font = "<font color=[occupant.radiation < 10 ? "blue" : "red"]>"
+			extra_font = "<font color=[occupant.radiation < 400 ? "blue" : "red"]>"
 			dat += "[extra_font]\tRadiation Level %: [occupant.radiation]</font><br>"
 
 			extra_font = "<font color=[occupant.getCloneLoss() < 1 ? "blue" : "red"]>"
@@ -600,9 +600,9 @@
 				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
 				dat += "</tr>"
 			dat += "</table>"
-			if(occupant.sdisabilities & BLIND)
+			if(occupant.sdisabilities & SDISABILITY_NERVOUS)
 				dat += "<font color='red'>Cataracts detected.</font><BR>"
-			if(occupant.disabilities & NEARSIGHTED)
+			if(occupant.disabilities & DISABILITY_NEARSIGHTED)
 				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
 		else
 			dat += "\The [src] is empty."

@@ -79,7 +79,7 @@
 	occupant = null
 	STOP_PROCESSING(SSobj, src)
 
-/obj/structure/adherent_bath/MouseDrop_T(var/atom/movable/O, var/mob/user)
+/obj/structure/adherent_bath/MouseDroppedOnLegacy(var/atom/movable/O, var/mob/user)
 	enter_bath(O, user)
 
 /obj/structure/adherent_bath/relaymove(var/mob/user)
@@ -132,13 +132,12 @@
 	for(var/thing in patient.internal_organs)
 		var/obj/item/organ/internal/I = thing
 		if(BP_IS_CRYSTAL(I) && I.damage)
-			I.heal_damage_a(rand(3,5))
+			I.heal_damage_i(rand(3,5))
 			to_chat(patient, "<span class='notice'>The mineral-rich bath mends your [I.name].</span>")
 			return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_heal_damage(mob/living/carbon/human/patient)
-	if(patient.radiation > 0)
-		patient.radiation = max(patient.radiation - rand(5, 15), 0)
+	patient.cure_radiation(RAD_MOB_CURE_ADHERENT_BATH)
 	for(var/thing in patient.organs)
 		var/obj/item/organ/external/E = thing
 		if(BP_IS_CRYSTAL(E))

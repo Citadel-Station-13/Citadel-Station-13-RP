@@ -10,9 +10,6 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
-		)
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
@@ -24,14 +21,14 @@ var/list/global/tank_gauge_cache = list()
 	w_class = ITEMSIZE_NORMAL
 
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
-	var/integrity = 20
-	var/max_integrity = 20
+	integrity = 20
+	max_integrity = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -113,10 +110,10 @@ var/list/global/tank_gauge_cache = list()
 		. += "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>"
 
 
-/obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/tank/attackby(obj/item/W, mob/user)
 	..()
-	if (istype(src.loc, /obj/item/assembly))
-		icon = src.loc
+	if (istype(loc, /obj/item/assembly))
+		icon = loc
 
 	if ((istype(W, /obj/item/analyzer)) && get_dist(user, src) <= 1)
 		var/obj/item/analyzer/A = W
@@ -124,50 +121,50 @@ var/list/global/tank_gauge_cache = list()
 	else if (istype(W,/obj/item/latexballon))
 		var/obj/item/latexballon/LB = W
 		LB.blow(src)
-		src.add_fingerprint(user)
+		add_fingerprint(user)
 
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.use(1))
 			wired = 1
 			to_chat(user, "<span class='notice'>You attach the wires to the tank.</span>")
-			src.add_bomb_overlay()
+			add_bomb_overlay()
 
 	if(W.is_wirecutter())
-		if(wired && src.proxyassembly.assembly)
+		if(wired && proxyassembly.assembly)
 
 			to_chat(user, "<span class='notice'>You carefully begin clipping the wires that attach to the tank.</span>")
-			if(do_after(user, 100,src))
+			if(do_after(user, 100, src))
 				wired = 0
-				src.overlays -= "bomb_assembly"
+				cut_overlay("bomb_assembly")
 				to_chat(user, "<span class='notice'>You cut the wire and remove the device.</span>")
 
-				var/obj/item/assembly_holder/assy = src.proxyassembly.assembly
+				var/obj/item/assembly_holder/assy = proxyassembly.assembly
 				if(assy.a_left && assy.a_right)
 					assy.dropInto(usr.loc)
 					assy.master = null
-					src.proxyassembly.assembly = null
+					proxyassembly.assembly = null
 				else
-					if(!src.proxyassembly.assembly.a_left)
+					if(!proxyassembly.assembly.a_left)
 						assy.a_right.dropInto(usr.loc)
 						assy.a_right.holder = null
 						assy.a_right = null
-						src.proxyassembly.assembly = null
+						proxyassembly.assembly = null
 						qdel(assy)
-				src.overlays.Cut()
+				cut_overlays()
 				last_gauge_pressure = 0
 				update_gauge()
 
 			else
 				to_chat(user, "<span class='danger'>You slip and bump the igniter!</span>")
 				if(prob(85))
-					src.proxyassembly.receive_signal()
+					proxyassembly.receive_signal()
 
 		else if(wired)
 			if(do_after(user, 10, src))
 				to_chat(user, "<span class='notice'>You quickly clip the wire from the tank.</span>")
 				wired = 0
-				src.overlays -= "bomb_assembly"
+				cut_overlay("bomb_assembly")
 
 		else
 			to_chat(user, "<span class='notice'>There are no wires to cut!</span>")
@@ -179,8 +176,8 @@ var/list/global/tank_gauge_cache = list()
 			to_chat(user, "<span class='notice'>You begin attaching the assembly to \the [src].</span>")
 			if(do_after(user, 50, src))
 				to_chat(user, "<span class='notice'>You finish attaching the assembly to \the [src].</span>")
-				bombers += "[key_name(user)] attached an assembly to a wired [src]. Temp: [src.air_contents.temperature-T0C]"
-				message_admins("[key_name_admin(user)] attached an assembly to a wired [src]. Temp: [src.air_contents.temperature-T0C]")
+				bombers += "[key_name(user)] attached an assembly to a wired [src]. Temp: [air_contents.temperature-T0C]"
+				message_admins("[key_name_admin(user)] attached an assembly to a wired [src]. Temp: [air_contents.temperature-T0C]")
 				assemble_bomb(W,user)
 			else
 				to_chat(user, "<span class='notice'>You stop attaching the assembly.</span>")
@@ -195,16 +192,16 @@ var/list/global/tank_gauge_cache = list()
 				to_chat(user, "<span class='notice'>You begin welding the \the [src] emergency pressure relief valve.</span>")
 				if(do_after(user, 40,src))
 					to_chat(user, "<span class='notice'>You carefully weld \the [src] emergency pressure relief valve shut.</span><span class='warning'> \The [src] may now rupture under pressure!</span>")
-					src.valve_welded = 1
-					src.leaking = 0
+					valve_welded = 1
+					leaking = 0
 				else
-					bombers += "[key_name(user)] attempted to weld a [src]. [src.air_contents.temperature-T0C]"
-					message_admins("[key_name_admin(user)] attempted to weld a [src]. [src.air_contents.temperature-T0C]")
+					bombers += "[key_name(user)] attempted to weld a [src]. [air_contents.temperature-T0C]"
+					message_admins("[key_name_admin(user)] attempted to weld a [src]. [air_contents.temperature-T0C]")
 					if(WT.welding)
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
 						max_integrity -= rand(2,6)
 						integrity = min(integrity,max_integrity)
-						src.air_contents.add_thermal_energy(rand(2000,50000))
+						air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
 				to_chat(user, "<span class='notice'>The emergency pressure relief valve has already been welded.</span>")
@@ -329,7 +326,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/tank/add_thermal_energy(joules)
+/obj/item/tank/adjust_thermal_energy(joules)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -362,13 +359,16 @@ var/list/global/tank_gauge_cache = list()
 
 
 /obj/item/tank/proc/add_bomb_overlay()
-	if(src.wired)
-		src.overlays += "bomb_assembly"
-		if(src.proxyassembly.assembly)
-			var/icon/test = getFlatIcon(src.proxyassembly.assembly)
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	if(wired)
+		overlays_to_add += "bomb_assembly"
+		if(proxyassembly.assembly)
+			var/icon/test = get_flat_icon(proxyassembly.assembly)
 			test.Shift(SOUTH,1)
 			test.Shift(WEST,3)
-			overlays += test
+			overlays_to_add += test
+	add_overlay(overlays_to_add)
 
 
 /obj/item/tank/proc/update_gauge()
@@ -384,16 +384,11 @@ var/list/global/tank_gauge_cache = list()
 		return
 
 	last_gauge_pressure = gauge_pressure
-	overlays.Cut()
 	add_bomb_overlay()
 	var/indicator = "[gauge_icon][(gauge_pressure == -1) ? "overload" : gauge_pressure]"
 	if(!tank_gauge_cache[indicator])
 		tank_gauge_cache[indicator] = image(icon, indicator)
-	overlays += tank_gauge_cache[indicator]
-
-
-
-
+	add_overlay(tank_gauge_cache[indicator])
 
 
 /obj/item/tank/proc/check_status()
@@ -457,7 +452,7 @@ var/list/global/tank_gauge_cache = list()
 
 	else if(pressure > TANK_RUPTURE_PRESSURE)
 		#ifdef FIREDBG
-		log_debug("<span class='warning'>[x],[y] tank is rupturing: [pressure] kPa, integrity [integrity]</span>")
+		log_debug(SPAN_DEBUGWARNING("[x],[y] tank is rupturing: [pressure] kPa, integrity [integrity]"))
 		#endif
 
 		air_contents.react()
@@ -517,7 +512,7 @@ var/list/global/tank_gauge_cache = list()
 				playsound(src.loc, 'sound/effects/spray.ogg', 10, 1, -3)
 				leaking = 1
 				#ifdef FIREDBG
-				log_debug("<span class='warning'>[x],[y] tank is leaking: [pressure] kPa, integrity [integrity]</span>")
+				log_debug(SPAN_DEBUG("<span class='warning'>[x],[y] tank is leaking: [pressure] kPa, integrity [integrity]</span>"))
 				#endif
 		else
 			integrity-= 1
@@ -543,7 +538,7 @@ var/list/global/tank_gauge_cache = list()
 ///Onetankbombs (added as actual items)
 /////////////////////////////////
 
-/obj/item/tank/proc/onetankbomb(var/fill = 1)
+/obj/item/tank/proc/onetankbomb(fill = 1)
 	var/phoron_amt = 4 + rand(4)
 	var/oxygen_amt = 6 + rand(8)
 
@@ -555,21 +550,21 @@ var/list/global/tank_gauge_cache = list()
 		oxygen_amt = 4.5
 
 
-	src.air_contents.gas[/datum/gas/phoron] = phoron_amt
-	src.air_contents.gas[/datum/gas/oxygen] = oxygen_amt
-	src.air_contents.update_values()
-	src.valve_welded = 1
-	src.air_contents.temperature = PHORON_MINIMUM_BURN_TEMPERATURE-1
+	air_contents.gas[/datum/gas/phoron] = phoron_amt
+	air_contents.gas[/datum/gas/oxygen] = oxygen_amt
+	air_contents.update_values()
+	valve_welded = 1
+	air_contents.temperature = PHORON_MINIMUM_BURN_TEMPERATURE-1
 
-	src.wired = 1
+	wired = 1
 
 	var/obj/item/assembly_holder/H = new(src)
-	src.proxyassembly.assembly = H
-	H.master = src.proxyassembly
+	proxyassembly.assembly = H
+	H.master = proxyassembly
 
 	H.update_icon()
 
-	src.overlays += "bomb_assembly"
+	add_overlay("bomb_assembly")
 
 
 /obj/item/tank/phoron/onetankbomb/Initialize(mapload)
@@ -616,7 +611,7 @@ var/list/global/tank_gauge_cache = list()
 	tank = null
 	assembly = null
 
-/obj/item/tank/proc/assemble_bomb(W,user)	//Bomb assembly proc. This turns assembly+tank into a bomb
+/obj/item/tank/proc/assemble_bomb(W, user)	//Bomb assembly proc. This turns assembly+tank into a bomb
 	var/obj/item/assembly_holder/S = W
 	var/mob/M = user
 	if(!S.secured)										//Check if the assembly is secured
@@ -624,25 +619,24 @@ var/list/global/tank_gauge_cache = list()
 	if(isigniter(S.a_left) == isigniter(S.a_right))		//Check if either part of the assembly has an igniter, but if both parts are igniters, then fuck it
 		return
 
+	M.temporarily_remove_from_inventory(S, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	if(!M.put_in_active_hand(src))		//Equips the bomb if possible, or puts it on the floor.
+		forceMove(M.drop_location())
 
-	M.drop_item()			//Remove the assembly from your hands
-	M.remove_from_mob(src)	//Remove the tank from your character,in case you were holding it
-	M.put_in_hands(src)		//Equips the bomb if possible, or puts it on the floor.
-
-	src.proxyassembly.assembly = S	//Tell the bomb about its assembly part
-	S.master = src.proxyassembly		//Tell the assembly about its new owner
+	proxyassembly.assembly = S	//Tell the bomb about its assembly part
+	S.master = proxyassembly		//Tell the assembly about its new owner
 	S.forceMove(src)			//Move the assembly
 
-	src.update_icon()
+	update_icon()
 
 
-	src.add_bomb_overlay()
+	add_bomb_overlay()
 
 	return
 
 ///This happens when a bomb is told to explode
 /obj/item/tank/proc/ignite()
-	var/obj/item/assembly_holder/assy = src.proxyassembly.assembly
+	var/obj/item/assembly_holder/assy = proxyassembly.assembly
 	var/ign = assy.a_right
 	var/obj/item/other = assy.a_left
 
@@ -653,22 +647,22 @@ var/list/global/tank_gauge_cache = list()
 	other.dropInto(get_turf(src))
 	qdel(ign)
 	assy.master = null
-	src.proxyassembly.assembly = null
+	proxyassembly.assembly = null
 	qdel(assy)
-	src.update_icon()
-	src.update_gauge()
+	update_icon()
+	update_gauge()
 
-	air_contents.add_thermal_energy(15000)
+	air_contents.adjust_thermal_energy(15000)
 
 
 /obj/item/tankassemblyproxy/update_icon()
 	if(assembly)
 		tank.update_icon()
-		tank.overlays += "bomb_assembly"
+		tank.add_overlay("bomb_assembly")
 	else
 		tank.update_icon()
-		tank.overlays -= "bomb_assembly"
+		tank.cut_overlay("bomb_assembly")
 
-/obj/item/tankassemblyproxy/HasProximity(atom/movable/AM as mob|obj)
-	if(src.assembly)
-		src.assembly.HasProximity(AM)
+/obj/item/tankassemblyproxy/HasProximity(atom/movable/AM)
+	if(assembly)
+		assembly.HasProximity(AM)

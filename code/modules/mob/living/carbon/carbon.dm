@@ -6,7 +6,7 @@
 	touching = new/datum/reagents/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
-		default_language = GLOB.all_languages[species_language]
+		default_language = SScharacters.resolve_language_name(species_language)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -45,7 +45,7 @@
 	..()
 
 /mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+	if(!istype(M, /mob/living/carbon)) return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -54,13 +54,14 @@
 		if(temp && !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
 			return
+	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= config_legacy.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 			var/to_send = "<blockquote class ='notice'>"
 			src.visible_message("[src] examines [T.himself].", \
 				SPAN_NOTICE("You check yourself for injuries."))
@@ -109,7 +110,7 @@
 			to_send += "</blockquote>"
 			to_chat(src, to_send)
 
-			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
+			if((MUTATION_SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
@@ -141,21 +142,20 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
-			if(istype(H)) show_ssd = H.species.show_ssd
-			if(show_ssd && !client && !teleop)
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			if(istype(H))
+				show_ssd = H.species.show_ssd
+			if(show_ssd && !client && !teleop && (!istype(H) || !H.override_ssd))
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
 			else if(lying || src.sleeping)
 				AdjustSleeping(-5)
-				if(src.sleeping == 0)
-					src.resting = 0
 				if(H) H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
 					M.visible_message(SPAN_NOTICE("[M] grabs onto [src] and pulls [TM.himself] up."),
 						SPAN_NOTICE("You grip onto [src] and pull yourself up off the ground!"))
@@ -176,7 +176,7 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustParalysis(-3)
+			AdjustUnconscious(-3)
 			AdjustStunned(-3)
 			AdjustWeakened(-3)
 
@@ -217,23 +217,6 @@
 		return 1
 	return
 
-/mob/living/carbon/u_equip(obj/item/W as obj)
-	if(!W)	return 0
-
-	else if (W == handcuffed)
-		handcuffed = null
-		update_handcuffed()
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
-
-	else if (W == legcuffed)
-		legcuffed = null
-		update_inv_legcuffed()
-	else
-	 ..()
-
-	return
-
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0								//see setup.dm:694
@@ -267,9 +250,7 @@
 		usr.AdjustSleeping(20)
 
 /mob/living/carbon/Bump(atom/A)
-	if(now_pushing)
-		return
-	..()
+	. = ..()
 	if(istype(A, /mob/living/carbon) && prob(10))
 		spread_disease_to(A, "Contact")
 
@@ -296,12 +277,12 @@
 		if(can_speak(default_language))
 			return default_language
 		else
-			return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 
 	if(!species)
 		return null
 
-	return species.default_language ? GLOB.all_languages[species.default_language] : null
+	return species.default_language ? SScharacters.resolve_language_id(species.default_language) : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0
@@ -309,7 +290,7 @@
 /mob/living/carbon/can_feel_pain(var/check_organ)
 	if(isSynthetic())
 		return 0
-	return !(species.flags & NO_PAIN)
+	return !(species.species_flags & NO_PAIN)
 
 /mob/living/carbon/needs_to_breathe()
 	if(does_not_breathe)
@@ -330,8 +311,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_l_hand()
-		drop_r_hand()
+		drop_all_held_items()
 		stop_pulling()
 	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()

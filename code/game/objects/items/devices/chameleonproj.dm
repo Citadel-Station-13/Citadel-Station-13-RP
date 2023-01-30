@@ -4,7 +4,7 @@
 	icon_state = "shield0"
 	slot_flags = SLOT_BELT
 	item_state = "electronic"
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -16,14 +16,13 @@
 	var/saved_icon_state = "cigbutt"
 	var/saved_overlays
 
-/obj/item/chameleon/dropped()
+/obj/item/chameleon/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	disrupt()
-	..()
 
-/obj/item/chameleon/equipped(mob/user, slot)
-	..()
+/obj/item/chameleon/equipped(mob/user, slot, flags)
+	. = ..()
 	disrupt()
-	..()
 
 /obj/item/chameleon/attack_self()
 	toggle()
@@ -37,7 +36,7 @@
 			saved_item = target.type
 			saved_icon = target.icon
 			saved_icon_state = target.icon_state
-			saved_overlays = target.overlays
+			saved_overlays = copy_overlays(target)
 
 /obj/item/chameleon/proc/toggle()
 	if(!can_use || !saved_item) return
@@ -113,7 +112,7 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/ex_act()
+/obj/effect/dummy/chameleon/legacy_ex_act()
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

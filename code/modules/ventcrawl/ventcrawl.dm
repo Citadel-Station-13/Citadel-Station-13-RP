@@ -57,7 +57,7 @@ var/list/ventcrawl_machinery = list(
 			break
 
 	//Only allow it if it's "IN" the mob, not equipped on/being held
-	if(listed && !get_inventory_slot(carried_item))
+	if((listed && !is_holding(carried_item)) || !is_in_inventory(carried_item))
 		return 1
 
 /mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)

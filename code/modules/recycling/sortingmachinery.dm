@@ -6,7 +6,6 @@
 	var/obj/wrapped = null
 	density = 1
 	var/sortTag = null
-	flags = NOBLUDGEON
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	var/examtext = null
 	var/nameset = 0
@@ -70,7 +69,7 @@
 	return
 
 /obj/structure/bigDelivery/update_icon()
-	overlays = new()
+	cut_overlays()
 	if(nameset || examtext)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
 		if(icon_state == "deliverycloset")
@@ -83,8 +82,8 @@
 				label_x = rand(-8, 6)
 			I.pixel_x = label_x
 			I.pixel_y = -3
-		overlays += I
-	if(src.sortTag)
+		add_overlay(I)
+	if(sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		if(icon_state == "deliverycloset")
 			if(tag_x == null)
@@ -96,15 +95,14 @@
 				tag_x = rand(-8, 6)
 			I.pixel_x = tag_x
 			I.pixel_y = -3
-		overlays += I
+		add_overlay(I)
 
 /obj/structure/bigDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/structure/bigDelivery/Destroy()
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -192,13 +190,13 @@
 	return
 
 /obj/item/smallDelivery/update_icon()
-	overlays = new()
+	cut_overlays()
 	if((nameset || examtext) && icon_state != "deliverycrate1")
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
 		if(icon_state == "deliverycrate5")
 			I.pixel_y = -1
-		overlays += I
-	if(src.sortTag)
+		add_overlay(I)
+	if(sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		switch(icon_state)
 			if("deliverycrate1")
@@ -214,15 +212,14 @@
 				I.pixel_y = 3
 			if("deliverycrate5")
 				I.pixel_y = -3
-		overlays += I
+		add_overlay(I)
 
 /obj/item/smallDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -315,10 +312,8 @@
 	return
 
 /obj/item/packageWrap/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, "<font color=#4F49AF>There are [amount] units of package wrap left!</font>")
-
-	return
+	. = ..()
+	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 
 /obj/item/destTagger
 	name = "destination tagger"
@@ -396,6 +391,8 @@
 		if(WEST)
 			if(AM.loc.x != src.loc.x-1) return
 
+//	if(istype(AM, has_buckled_mobs()) return // I dont know what im doing @ktoma36
+
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		O.loc = src
@@ -433,20 +430,20 @@
 	if(I.is_screwdriver())
 		if(c_mode==0)
 			c_mode=1
-			playsound(src.loc, I.usesound, 50, 1)
+			playsound(src.loc, I.tool_sound, 50, 1)
 			to_chat(user, "You remove the screws around the power connection.")
 			return
 		else if(c_mode==1)
 			c_mode=0
-			playsound(src.loc, I.usesound, 50, 1)
+			playsound(src.loc, I.tool_sound, 50, 1)
 			to_chat(user, "You attach the screws around the power connection.")
 			return
 	else if(istype(I, /obj/item/weldingtool) && c_mode==1)
 		var/obj/item/weldingtool/W = I
 		if(W.remove_fuel(0,user))
-			playsound(src.loc, W.usesound, 50, 1)
+			playsound(src.loc, W.tool_sound, 50, 1)
 			to_chat(user, "You start slicing the floorweld off the delivery chute.")
-			if(do_after(user,20 * W.toolspeed))
+			if(do_after(user,20 * W.tool_speed))
 				if(!src || !W.isOn()) return
 				to_chat(user, "You sliced the floorweld off the delivery chute.")
 				var/obj/structure/disposalconstruct/C = new (src.loc)

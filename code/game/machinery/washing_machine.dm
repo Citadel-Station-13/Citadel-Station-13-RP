@@ -50,6 +50,7 @@
 	sleep(200)
 	for(var/atom/A in washing)
 		A.clean_blood()
+		A.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER_WASHING_MACHINE, RAD_CONTAMINATION_CLEANSE_FACTOR_WASHING_MACHINE)
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
@@ -87,9 +88,9 @@
 	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)
-				user.drop_item()
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				crayon = W
-				crayon.loc = src
 			else
 				..()
 		else
@@ -111,8 +112,8 @@
 	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
 		if(washing.len < 5)
 			if(state in list(1, 3))
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				washing += W
 				state = 3
 			else

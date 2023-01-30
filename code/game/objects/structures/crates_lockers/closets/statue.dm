@@ -20,7 +20,7 @@
 			L.anchored = 0
 		L.forceMove(src)
 		L.update_perspective()
-		L.sdisabilities |= MUTE
+		L.sdisabilities |= SDISABILITY_MUTE
 		health = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
 		intialTox = L.getToxLoss()
 		intialFire = L.getFireLoss()
@@ -64,7 +64,7 @@
 	for(var/mob/living/M in src)
 		M.forceMove(loc)
 		M.update_perspective()
-		M.sdisabilities &= ~MUTE
+		M.sdisabilities &= ~SDISABILITY_MUTE
 		M.take_overall_damage((M.health - health - 100),0) //any new damage the statue incurred is transfered to the mob
 
 /obj/structure/closet/statue/open()
@@ -92,9 +92,9 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/ex_act(severity)
+/obj/structure/closet/statue/legacy_ex_act(severity)
 	for(var/mob/M in src)
-		M.ex_act(severity)
+		LEGACY_EX_ACT(M, severity, null)
 		health -= 60 / severity
 		check_health()
 
@@ -104,7 +104,7 @@
 	visible_message("<span class='danger'>[user] strikes [src] with [I].</span>")
 	check_health()
 
-/obj/structure/closet/statue/MouseDrop_T()
+/obj/structure/closet/statue/MouseDroppedOnLegacy()
 	return
 
 /obj/structure/closet/statue/relaymove()

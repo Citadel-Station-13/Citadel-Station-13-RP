@@ -3,7 +3,7 @@
 	desc = "HOME RUN!"
 	icon_state = "metalbat0"
 	base_icon = "metalbat"
-	throwforce = 7
+	throw_force = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	default_material = "wood"
@@ -39,10 +39,8 @@
 	desc = "The letter E has been lovingly engraved into the handle. When this wobbles, it sounds exactly like shame."
 	icon_state = "penbat0"
 	base_icon = "penbat"
-	force = 0
-	throwforce = 0
+	force = 10
+	throw_force = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
 	default_material = "plastic"
-	force_divisor = 0
-	unwielded_force_divisor = 0
-	dulled_divisor = 0
+	no_force_calculations = TRUE

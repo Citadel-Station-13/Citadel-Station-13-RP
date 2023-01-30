@@ -19,7 +19,7 @@
 /turf/simulated/mineral/ignore_mapgen/virgo2,
 /area/submap/virgo2/MHR)
 "f" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2{
 	outdoors = 0
 	},
@@ -51,7 +51,7 @@
 	},
 /area/submap/virgo2/MHR)
 "k" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2{
 	outdoors = 0
 	},
@@ -63,21 +63,21 @@
 	},
 /area/submap/virgo2/MHR)
 "n" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /obj/tether_away_spawner/aerostat_surface,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2{
 	outdoors = 0
 	},
 /area/submap/virgo2/MHR)
 "o" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2{
 	outdoors = 0
 	},
 /area/submap/virgo2/MHR)
 "p" = (
-/obj/effect/decal/cleanable/spiderling_remains,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2{
 	outdoors = 0
 	},

@@ -114,12 +114,12 @@
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature < T0C + 200)	//This should start heating the room at a moderate pace up to 200 degrees celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 450 degrees celsius. Heating rate should increase between 200 and 450 C.
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return
@@ -182,12 +182,12 @@
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature > T0C - 275)
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer < 0 && env.temperature > set_temperature)
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return

@@ -14,7 +14,6 @@
 "d" = (
 /obj/machinery/power/rtg,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
@@ -78,7 +77,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/airless,
@@ -191,7 +189,7 @@
 	},
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)

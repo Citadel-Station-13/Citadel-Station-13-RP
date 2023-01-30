@@ -99,12 +99,12 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	if(machine_stat & BROKEN)
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER)
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER))
 	else
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER)
-		src.setDir(angle2dir(adir))
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER))
+		setDir(angle2dir(adir))
 	return
 
 //calculates the fraction of the SSsun.sunlight that the panel recieves
@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/ex_act(severity)
+/obj/machinery/power/solar/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(15))
@@ -235,13 +235,13 @@ GLOBAL_LIST_EMPTY(solars_list)
 		if(W.is_wrench())
 			anchored = 1
 			user.visible_message("<span class='notice'>[user] wrenches the solar assembly into place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 	else
 		if(W.is_wrench())
 			anchored = 0
 			user.visible_message("<span class='notice'>[user] unwrenches the solar assembly from it's place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 
 		if(istype(W, /obj/item/stack/material) && (W.get_material_name() == "glass" || W.get_material_name() == "rglass"))
@@ -262,9 +262,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	if(!tracker)
 		if(istype(W, /obj/item/tracker_electronics))
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			tracker = 1
-			user.drop_item()
-			qdel(W)
 			user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 			return 1
 	else
@@ -385,18 +385,16 @@ GLOBAL_LIST_EMPTY(solars_list)
 	updateDialog()
 
 /obj/machinery/power/solar_control/update_icon()
+	cut_overlays()
 	if(machine_stat & BROKEN)
 		icon_state = "broken"
-		overlays.Cut()
 		return
 	if(machine_stat & NOPOWER)
 		icon_state = "c_unpowered"
-		overlays.Cut()
 		return
 	icon_state = "solar"
-	overlays.Cut()
 	if(cdir > -1)
-		overlays += image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir))
+		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
 /obj/machinery/power/solar_control/attack_hand(mob/user)
@@ -435,7 +433,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar_control/attackby(obj/item/I, user as mob)
 	if(I.is_screwdriver())
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 20))
 			if (src.machine_stat & BROKEN)
 				to_chat(user, "<font color=#4F49AF>The broken glass falls out.</font>")
@@ -545,7 +543,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	update_icon()
 
 
-/obj/machinery/power/solar_control/ex_act(severity)
+/obj/machinery/power/solar_control/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null

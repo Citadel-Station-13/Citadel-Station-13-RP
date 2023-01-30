@@ -7,7 +7,7 @@
 	density = TRUE
 
 	// Executing a traitor caught releasing tesla was never this fun!
-	can_buckle = TRUE
+	buckle_allowed = TRUE
 	buckle_lying = FALSE
 
 	circuit = /obj/item/circuitboard/tesla_coil
@@ -102,9 +102,8 @@
 	icon_state = "grounding_rod0"
 	anchored = FALSE
 	density = TRUE
-
-	can_buckle = TRUE
-	buckle_lying = FALSE
+	buckle_allowed = TRUE
+	buckle_lying = 0
 	circuit = /obj/item/circuitboard/grounding_rod
 
 /obj/machinery/power/grounding_rod/pre_mapped

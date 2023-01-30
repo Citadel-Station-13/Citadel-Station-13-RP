@@ -31,6 +31,9 @@
 /obj/item/reagent_containers/food/snacks/cheesiehonkers
   description_fluff = "Cheesie Honkers, a previously niche line of cheese puffs from a subsidiary of a subsidiary of Centauri Provisions, rose to household-name status when their tell-tale orange dust was used as evidence to convict notorious positronic serial killer Etoid in 2404."
 
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+  description_fluff = "Hot Cheesie Honkers, a once discontinued spinoff of the brand classic Cheesie Honkers; renewed deregulatory waves in OriCon politics regarding the usage of tear gas derivatives inside foods allowed a limited re-launch of the product in certain sectors."
+
 /obj/item/reagent_containers/food/snacks/syndicake
   description_fluff = "Due to ongoing litigation concerning the business practices of the Cakemakers' Syndicate, access to this product has been removed from all Centauri and Getmore vending machines. This is a shame, because Syndi-Cakes are generally regarded as the most appetizing thing in them."
 
