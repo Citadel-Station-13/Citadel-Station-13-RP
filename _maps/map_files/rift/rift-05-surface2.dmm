@@ -10399,8 +10399,7 @@
 	name = "Pen 9 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/research{
-	id_tag = "phoroncelldoor9";
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 9";
 	req_one_access = list(47,55)
 	},
@@ -13967,7 +13966,7 @@
 /area/hallway/primary/surfacetwo)
 "kpD" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/research{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 1";
 	req_one_access = list(47,55)
 	},
@@ -20343,7 +20342,7 @@
 /area/medical/surgeryprep)
 "pfn" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/research{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 2";
 	req_one_access = list(47,55)
 	},
@@ -25880,8 +25879,7 @@
 	name = "Pen 10 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/research{
-	id_tag = "phoroncelldoor10";
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 10";
 	req_one_access = list(47,55)
 	},
