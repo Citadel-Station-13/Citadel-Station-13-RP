@@ -52,3 +52,5 @@
 #define CHARACTER_STAT_UNKNOWN "unkw"
 
 //! Talents
+
+// none yet
