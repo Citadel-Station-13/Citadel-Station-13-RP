@@ -44,8 +44,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	qdel(current_highlight)
 	current_highlight = null
 //			current_highlight_atom = null
-	deltimer(mouseover_refresh_timer)
-	mouseover_refresh_timer = null
+//	deltimer(mouseover_refresh_timer)
+//	mouseover_refresh_timer = null
 // Main body of work happens in this proc.
 /client/proc/refresh_mouseover_highlight(object, params, check_adjacency = FALSE)
 
@@ -53,12 +53,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return FALSE
 	// Verify if we should be showing a highlight at all.
 	if(!istype(object, /atom/movable) || istype(object, /mob) || istype(object, /obj/structure) || (check_adjacency && !mob.Adjacent(object)))
-		addtimer(CALLBACK(PROC_REF(delete_mouseover_images)), 1 SECOND, TIMER_UNIQUE | TIMER_OVERRIDE)
 		return FALSE
 //	var/list/modifiers = params2list(params)
 	var/atom/movable/AM = object
 	if(get_dist(mob, object) > 1 || AM.anchored)
-		addtimer(CALLBACK(PROC_REF(delete_mouseover_images)), 1 SECOND, TIMER_UNIQUE | TIMER_OVERRIDE)
 		return FALSE
 
 	// Generate our dummy objects if they got nulled/discarded.
