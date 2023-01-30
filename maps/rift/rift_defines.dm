@@ -128,7 +128,8 @@
 							NETWORK_ROBOTS,
 							NETWORK_SECURITY,
 							NETWORK_TCOMMS,
-							NETWORK_LYTHIOS
+							NETWORK_LYTHIOS,
+							NETWORK_EXPLO_HELMETS
 							)
 	secondary_networks = list(
 							NETWORK_ERT,

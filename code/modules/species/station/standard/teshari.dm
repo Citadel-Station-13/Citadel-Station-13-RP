@@ -1,5 +1,6 @@
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI
+	id = SPECIES_ID_TESHARI
 	name = SPECIES_TESHARI
 	default_bodytype = BODYTYPE_TESHARI
 	category = "Teshari"

@@ -1,5 +1,6 @@
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
+	id = SPECIES_ID_TAJARAN
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
 	category = "Tajaran"

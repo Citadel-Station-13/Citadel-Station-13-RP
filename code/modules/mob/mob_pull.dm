@@ -54,8 +54,9 @@
 
 	// If we're pulling something then drop what we're currently pulling and pull this instead.
 	if(pulling)
-		// Are we trying to pull something we are already pulling? Then just stop here, no need to continue.
+		// Are we trying to pull something we are already pulling? Then just stop pulling, no need to continue.
 		if(AM == pulling)
+			stop_pulling()
 			return
 		stop_pulling()
 

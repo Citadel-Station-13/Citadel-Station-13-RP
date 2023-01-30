@@ -43,7 +43,7 @@
  * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  * - params - params as list.
  */
-/obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
 	. = clickchain_flags
 
 	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?

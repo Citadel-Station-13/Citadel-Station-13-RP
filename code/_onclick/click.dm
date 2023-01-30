@@ -147,9 +147,9 @@
 	else if(ranged_generics_allowed)
 		//? attempt ranged attack chain
 		if(I)
-			I.ranged_attack_chain(A, src, clickchain_flags , params)
+			I.ranged_attack_chain(A, src, clickchain_flags, unpacked_params)
 		else
-			ranged_attack_chain(A, clickchain_flags , unpacked_params)
+			ranged_attack_chain(A, clickchain_flags, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return

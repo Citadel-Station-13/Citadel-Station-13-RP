@@ -289,8 +289,8 @@
 		to_chat(src,"<span class='warning'>You must be awake and standing to perform this action!</span>")
 		return
 
-	var/new_species_name = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in SScharacters.playable_species
-	var/datum/species/new_species = SScharacters.resolve_species_name(new_species_name)
+	var/new_species_id = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in SScharacters.playable_species
+	var/datum/species/new_species = SScharacters.resolve_species_id(new_species_id)
 	if(new_species)
 		impersonate_bodytype_legacy = new_species.get_bodytype_legacy()
 		impersonate_bodytype = new_species.default_bodytype

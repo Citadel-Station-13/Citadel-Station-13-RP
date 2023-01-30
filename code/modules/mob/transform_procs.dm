@@ -89,6 +89,8 @@
 
 	O.add_ai_verbs()
 
+	O.view_core()
+
 	O.rename_self("ai")
 	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
 	spawn(0)
