@@ -663,7 +663,7 @@
 			/obj/item/ammo_magazine/m95 = 4
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/secure/heph
 	access = access_armory
 
 /datum/supply_pack/security/quadshot
@@ -674,5 +674,5 @@
 			/obj/item/storage/belt/security/tactical/bandolier = 2,
 			)
 	cost = 70
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/secure/heph
 	access = access_armory

@@ -110,6 +110,7 @@
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,		list(ASSIGNMENT_ENGINEER = 60), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Supply Demand",		/datum/event/supply_demand,		0,		list(ASSIGNMENT_ANY = 5, ASSIGNMENT_SCIENCE = 15, ASSIGNMENT_GARDENER = 10, ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_MEDICAL = 15), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation", /datum/event/xeno_infestation, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation (Extreme)", /datum/event/xeno_infestation/extreme, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
 	))
 
 #undef ASSIGNMENT_ANY

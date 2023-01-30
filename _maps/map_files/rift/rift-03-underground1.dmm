@@ -644,9 +644,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
-"bG" = (
-/turf/simulated/wall,
-/area/hallway/secondary/engineering_hallway)
 "bH" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
@@ -2111,7 +2108,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "ft" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -2128,7 +2125,7 @@
 	},
 /obj/item/pen/blue,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "fu" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -2196,7 +2193,7 @@
 	},
 /obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "fH" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -2214,7 +2211,7 @@
 	pixel_x = -17
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "fI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled,
@@ -2236,7 +2233,7 @@
 /obj/item/barrier_tape_roll/atmos,
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "fL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2326,7 +2323,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "fW" = (
 /obj/item/beach_ball,
 /turf/simulated/floor/water/deep/pool,
@@ -2334,7 +2331,7 @@
 "fZ" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "ga" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -2366,13 +2363,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "gf" = (
 /obj/structure/table/reinforced,
 /obj/random/medical,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/monofloor,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "gi" = (
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
@@ -2388,7 +2385,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "gk" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2420,7 +2417,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "gu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled,
@@ -2693,13 +2690,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "if" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "ig" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2834,7 +2831,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "iE" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/wood/broken,
@@ -2945,7 +2942,7 @@
 	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "jn" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -2971,14 +2968,14 @@
 /obj/structure/window/reinforced,
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "js" = (
 /obj/machinery/door/window/northright{
 	dir = 2;
 	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "jt" = (
 /obj/structure/railing{
 	dir = 8
@@ -3043,7 +3040,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "jC" = (
 /obj/structure/railing{
 	dir = 8
@@ -3156,7 +3153,7 @@
 /obj/machinery/door/airlock/glass_engineering,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "jU" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Underground One"
@@ -3491,10 +3488,7 @@
 "lS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
-"lV" = (
-/turf/simulated/open,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "lZ" = (
 /turf/simulated/floor/outdoors/rocks/caves/geothermal,
 /area/rift/surfacebase/underground/under1)
@@ -3687,7 +3681,7 @@
 /area/engineering/atmos)
 "mQ" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "na" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
@@ -3721,7 +3715,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "ni" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -3816,7 +3810,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "nG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -4076,7 +4070,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "pj" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/window/reinforced,
@@ -4234,7 +4228,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "qi" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 9
@@ -4307,7 +4301,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "qY" = (
 /obj/structure/railing,
 /obj/machinery/alarm{
@@ -4687,7 +4681,7 @@
 	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/plating,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "sK" = (
 /obj/structure/table/steel,
 /obj/random/toolbox,
@@ -5061,7 +5055,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "tO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -5085,7 +5079,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "tU" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/plating,
@@ -5462,7 +5456,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "vJ" = (
 /obj/machinery/telecomms/bus/preset_four,
 /turf/simulated/floor/tiled/dark,
@@ -5592,7 +5586,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "wn" = (
 /obj/structure/table/steel,
 /obj/random/maintenance/clean,
@@ -6058,7 +6052,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "xS" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
@@ -6198,7 +6192,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "ym" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -6973,7 +6967,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "Bx" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
@@ -7269,7 +7263,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "CK" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
@@ -7719,7 +7713,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "EK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -8691,7 +8685,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "Ik" = (
 /obj/machinery/telecomms/server/presets/medical,
 /turf/simulated/floor/tiled/dark,
@@ -9499,7 +9493,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "Lr" = (
 /obj/structure/railing{
 	dir = 4
@@ -9696,7 +9690,7 @@
 	dir = 8
 	},
 /turf/simulated/open,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "Mw" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall{
@@ -10511,7 +10505,7 @@
 "Pa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "Pb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -11658,7 +11652,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "TO" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -12812,7 +12806,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/atmos/hallway)
 "YD" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/steel,
@@ -29222,7 +29216,7 @@ cG
 ez
 fL
 gl
-bG
+Zq
 TN
 YC
 hN
@@ -29998,7 +29992,7 @@ bA
 bA
 bA
 bA
-bG
+Zq
 Bv
 mQ
 eT
@@ -30192,7 +30186,7 @@ qK
 Ao
 kF
 ns
-bG
+Zq
 yl
 CJ
 ow
@@ -30580,7 +30574,7 @@ qK
 BI
 BI
 BI
-bG
+Zq
 mQ
 if
 eT
@@ -30774,7 +30768,7 @@ oA
 re
 re
 re
-bG
+Zq
 mQ
 if
 eT
@@ -30968,7 +30962,7 @@ qK
 Gg
 Gg
 Gg
-bG
+Zq
 mQ
 if
 eT
@@ -31356,9 +31350,9 @@ qK
 Bs
 sy
 Bs
-bG
+Zq
 Mv
-lV
+gL
 eT
 Ot
 Kh
@@ -31550,8 +31544,8 @@ au
 au
 au
 au
-bG
-bG
+Zq
+Zq
 sJ
 eT
 eT
