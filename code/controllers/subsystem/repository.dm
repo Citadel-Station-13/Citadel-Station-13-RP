@@ -17,14 +17,22 @@ SUBSYSTEM_DEF(repository)
 	var/list/subtype_lists
 
 /datum/controller/subsystem/repository/Initialize()
-	uid_lookup = type_lookup = null
+	uid_lookup = list()
+	type_lookup = list()
+	subtype_lists = list()
 	generate()
 	return ..()
 
 /datum/controller/subsystem/repository/Recover()
+	. = ..()
 	src.type_lookup = SSrepository.type_lookup
+	if(!islist(src.type_lookup))
+		src.type_lookup = list()
+		. = FALSE
 	src.uid_lookup = SSrepository.uid_lookup
-	return ..()
+	if(!islist(src.uid_lookup))
+		src.uid_lookup = list()
+		. = FALSE
 
 /**
  * prototypes returned should generally not be modified.
@@ -64,7 +72,12 @@ SUBSYSTEM_DEF(repository)
 
 /datum/controller/subsystem/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
 	PRIVATE_PROC(TRUE)
-	#warn impl
+	if(uid_lookup[instance] && !force)
+		return FALSE
+	uid_lookup[instance] = instance
+	if(hardcoded)
+		type_lookup[instance.type] = instance
+	return TRUE
 
 /datum/controller/subsystem/repository/proc/unregister(datum/prototype/instance)
 	if(type_lookup[instance.type] == instance)
