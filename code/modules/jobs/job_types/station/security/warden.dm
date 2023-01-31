@@ -1,5 +1,6 @@
 /datum/job/station/warden
 	id = JOB_ID_WARDEN
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	title = "Warden"
 	flag = WARDEN
 	departments = list(DEPARTMENT_SECURITY)

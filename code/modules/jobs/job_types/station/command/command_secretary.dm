@@ -1,6 +1,7 @@
 /datum/job/station/command_secretary
 	id = JOB_ID_COMMAND_SECRETARY
 	title = "Command Secretary"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
 	department_accounts = list(DEPARTMENT_COMMAND)

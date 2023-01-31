@@ -1,5 +1,6 @@
 /datum/job/station/senior_researcher
 	title = "Senior Researcher"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	id = JOB_ID_SENIOR_RESEARCHER
 	flag = SENIOR_RESEARCHER
 	departments = list(DEPARTMENT_RESEARCH)

@@ -1,6 +1,7 @@
 /datum/job/station/pilot
 	id = JOB_ID_PILOT
 	title = "Pilot"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM
 	flag = PILOT
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN

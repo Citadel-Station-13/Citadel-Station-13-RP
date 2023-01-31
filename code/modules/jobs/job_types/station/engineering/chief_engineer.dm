@@ -1,6 +1,7 @@
 /datum/job/station/chief_engineer
 	id = JOB_ID_CHIEF_ENGINEER
 	title = "Chief Engineer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CHIEF
 	departments_managed = list(DEPARTMENT_ENGINEERING)
 	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_COMMAND)

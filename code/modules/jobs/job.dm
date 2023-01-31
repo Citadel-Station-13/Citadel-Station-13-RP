@@ -2,7 +2,7 @@
 	/// Abstract type.
 	abstract_type = /datum/job
 
-	//! Intrinsics
+	//? Intrinsics
 	/// ID of the job, used for save/load
 	var/id
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
@@ -13,6 +13,10 @@
 	var/faction
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
+
+	//? Economy
+	/// starting money multiplier
+	var/economy_payscale = ECONOMY_PAYSCALE_JOB_DEFAULT
 
 	// Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 
@@ -58,8 +62,6 @@
 
 	/// Does this job type come with a station account?
 	var/account_allowed = 1
-	/// With how much does this job modify the initial account amount?
-	var/economic_modifier = 2
 
 	/// What outfit datum does this job use in its default title?
 	var/outfit_type

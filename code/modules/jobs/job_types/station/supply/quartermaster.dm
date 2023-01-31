@@ -1,6 +1,7 @@
 /datum/job/station/quartermaster
 	id = JOB_ID_QUARTERMASTER
 	title = "Quartermaster"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = QUARTERMASTER
 	departments = list(DEPARTMENT_CARGO)
 	sorting_order = 1 // QM is above the cargo techs, but below the HoP.

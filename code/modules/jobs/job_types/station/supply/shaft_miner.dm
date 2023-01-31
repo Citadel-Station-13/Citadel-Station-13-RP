@@ -2,6 +2,7 @@
 	id = JOB_ID_SHAFT_MINER
 	title = "Shaft Miner"
 	flag = MINER
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	pto_type = PTO_CARGO

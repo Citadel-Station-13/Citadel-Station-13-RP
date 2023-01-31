@@ -3,6 +3,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/station/captain
 	id = JOB_ID_CAPTAIN
 	title = "Facility Director"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_CAPTAIN
 	flag = CAPTAIN
 	disallow_jobhop = TRUE
 	departments = list(DEPARTMENT_COMMAND)

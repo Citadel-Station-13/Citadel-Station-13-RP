@@ -1,6 +1,7 @@
 /datum/job/station/field_medic
 	id = JOB_ID_FIELD_MEDIC
 	title = "Field Medic"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI

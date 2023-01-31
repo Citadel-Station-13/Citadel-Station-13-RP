@@ -1,5 +1,6 @@
 /datum/job/station/head_of_security
 	id = JOB_ID_HEAD_OF_SECURITY
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"
 	flag = HOS
 	departments_managed = list(DEPARTMENT_SECURITY)

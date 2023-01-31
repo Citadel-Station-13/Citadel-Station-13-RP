@@ -2,6 +2,7 @@
 	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
 	sorting_order = 2 // Above the QM, below captain.
 	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)

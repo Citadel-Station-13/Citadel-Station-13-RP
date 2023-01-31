@@ -2,6 +2,7 @@
 	title = "Head Nurse"
 	id = JOB_ID_HEAD_NURSE
 	flag = HEAD_NURSE
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	total_positions = 1

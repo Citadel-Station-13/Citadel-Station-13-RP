@@ -1,6 +1,7 @@
 /datum/job/station/research_director
 	id = JOB_ID_RESEARCH_DIRECTOR
 	title = "Research Director"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = RD
 	departments_managed = list(DEPARTMENT_RESEARCH)
 	departments = list(DEPARTMENT_RESEARCH, DEPARTMENT_COMMAND)

@@ -1,6 +1,7 @@
 /datum/job/station/pathfinder
 	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
 	departments_managed = list(DEPARTMENT_PLANET)

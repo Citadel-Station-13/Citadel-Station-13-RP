@@ -1,6 +1,7 @@
 /datum/job/station/explorer
 	id = JOB_ID_EXPLORER
 	title = "Explorer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
