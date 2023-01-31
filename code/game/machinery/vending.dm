@@ -1263,8 +1263,12 @@
 	desc = "An old sweet water vending machine,how did this end up here?"
 	icon_state = "sovietsoda"
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
-	products = list(/obj/item/reagent_containers/food/drinks/bottle/space_up = 30) // TODO Russian soda can
-	contraband = list(/obj/item/reagent_containers/food/drinks/bottle/cola = 20) // TODO Russian cola can
+	products = list(
+		/obj/item/reagent_containers/food/drinks/bottle/space_up = 30,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/food/drinks/bottle/cola = 20,
+	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/tool
@@ -1273,19 +1277,29 @@
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	//req_access = list(access_maint_tunnels) //Maintenance access
-	products = list(/obj/item/stack/cable_coil/random = 10,
-/obj/item/tool/crowbar = 5,
-/obj/item/weldingtool = 3,
-/obj/item/tool/wirecutters = 5,
-					/obj/item/tool/wrench = 5,
-/obj/item/analyzer = 5,
-/obj/item/t_scanner = 5,
-/obj/item/tool/screwdriver = 5,
-					/obj/item/flashlight/glowstick = 3, /obj/item/flashlight/glowstick/red = 3, /obj/item/flashlight/glowstick/blue = 3,
-					/obj/item/flashlight/glowstick/orange =3, /obj/item/flashlight/glowstick/yellow = 3, /obj/item/reagent_containers/spray/windowsealant = 5)
-	contraband = list(/obj/item/weldingtool/hugetank = 2,
-/obj/item/clothing/gloves/fyellow = 2,)
-	premium = list(/obj/item/clothing/gloves/yellow = 1)
+	products = list(
+		/obj/item/stack/cable_coil/random = 10,
+		/obj/item/tool/crowbar = 5,
+		/obj/item/weldingtool = 3,
+		/obj/item/tool/wirecutters = 5,
+		/obj/item/tool/wrench = 5,
+		/obj/item/analyzer = 5,
+		/obj/item/t_scanner = 5,
+		/obj/item/tool/screwdriver = 5,
+		/obj/item/flashlight/glowstick = 3,
+		/obj/item/flashlight/glowstick/red = 3,
+		/obj/item/flashlight/glowstick/blue = 3,
+		/obj/item/flashlight/glowstick/orange = 3,
+		/obj/item/flashlight/glowstick/yellow = 3,
+		/obj/item/reagent_containers/spray/windowsealant = 5,
+	)
+	contraband = list(
+		/obj/item/weldingtool/hugetank = 2,
+		/obj/item/clothing/gloves/fyellow = 2,
+	)
+	premium = list(
+		/obj/item/clothing/gloves/yellow = 1,
+	)
 	req_log_access = access_ce
 	has_logs = 1
 
@@ -1295,38 +1309,45 @@
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/geiger_counter = 4,
-/obj/item/clothing/glasses/meson = 2,
-/obj/item/multitool = 4,
-/obj/item/cell/high = 10,
-					/obj/item/airlock_electronics = 10,
-/obj/item/module/power_control = 10,
-					/obj/item/circuitboard/airalarm = 10,
-/obj/item/circuitboard/firealarm = 10,
-/obj/item/circuitboard/status_display = 2,
-					/obj/item/circuitboard/ai_status_display = 2,
-/obj/item/circuitboard/newscaster = 2,
-/obj/item/circuitboard/holopad = 2,
-					/obj/item/circuitboard/intercom = 4,
-/obj/item/circuitboard/security/telescreen/entertainment = 4,
-					/obj/item/stock_parts/motor = 2,
-/obj/item/stock_parts/spring = 2,
-/obj/item/stock_parts/gear = 2,
-					/obj/item/circuitboard/atm,
-/obj/item/circuitboard/guestpass,
-/obj/item/circuitboard/keycard_auth,
-					/obj/item/circuitboard/photocopier,
-/obj/item/circuitboard/fax,
-/obj/item/circuitboard/request,
-					/obj/item/circuitboard/microwave,
-/obj/item/circuitboard/washing,
-/obj/item/circuitboard/scanner_console,
-					/obj/item/circuitboard/sleeper_console,
-/obj/item/circuitboard/body_scanner,
-/obj/item/circuitboard/sleeper,
-					/obj/item/circuitboard/dna_analyzer, /obj/item/clothing/glasses/omnihud/eng = 6)
-	contraband = list(/obj/item/cell/potato = 3)
-	premium = list(/obj/item/storage/belt/utility = 3)
+	products = list(
+		/obj/item/geiger_counter = 4,
+		/obj/item/clothing/glasses/meson = 2,
+		/obj/item/multitool = 4,
+		/obj/item/cell/high = 10,
+		/obj/item/airlock_electronics = 10,
+		/obj/item/module/power_control = 10,
+		/obj/item/circuitboard/airalarm = 10,
+		/obj/item/circuitboard/firealarm = 10,
+		/obj/item/circuitboard/status_display = 2,
+		/obj/item/circuitboard/ai_status_display = 2,
+		/obj/item/circuitboard/newscaster = 2,
+		/obj/item/circuitboard/holopad = 2,
+		/obj/item/circuitboard/intercom = 4,
+		/obj/item/circuitboard/security/telescreen/entertainment = 4,
+		/obj/item/stock_parts/motor = 2,
+		/obj/item/stock_parts/spring = 2,
+		/obj/item/stock_parts/gear = 2,
+		/obj/item/circuitboard/atm,
+		/obj/item/circuitboard/guestpass,
+		/obj/item/circuitboard/keycard_auth,
+		/obj/item/circuitboard/photocopier,
+		/obj/item/circuitboard/fax,
+		/obj/item/circuitboard/request,
+		/obj/item/circuitboard/microwave,
+		/obj/item/circuitboard/washing,
+		/obj/item/circuitboard/scanner_console,
+		/obj/item/circuitboard/sleeper_console,
+		/obj/item/circuitboard/body_scanner,
+		/obj/item/circuitboard/sleeper,
+		/obj/item/circuitboard/dna_analyzer,
+		/obj/item/clothing/glasses/omnihud/eng = 6,
+	)
+	contraband = list(
+		/obj/item/cell/potato = 3,
+	)
+	premium = list(
+		/obj/item/storage/belt/utility = 3,
+	)
 	product_records = list()
 	req_log_access = access_ce
 	has_logs = 1
@@ -1337,26 +1358,32 @@
 	icon_state = "engi"
 	icon_deny = "engi-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/clothing/under/rank/chief_engineer = 4,
-/obj/item/clothing/under/rank/engineer = 4,
-/obj/item/clothing/shoes/orange = 4,
-/obj/item/clothing/head/hardhat = 4,
-					/obj/item/storage/belt/utility = 4,
-/obj/item/clothing/glasses/meson = 4,
-/obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12,
-					/obj/item/tool/crowbar = 12,
-/obj/item/tool/wirecutters = 12,
-/obj/item/multitool = 12,
-/obj/item/tool/wrench = 12,
-/obj/item/t_scanner = 12,
-					/obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/weldingtool = 8,
-/obj/item/clothing/head/welding = 8,
-					/obj/item/light/tube = 10,
-/obj/item/clothing/suit/fire = 4, /obj/item/stock_parts/scanning_module = 5,
-/obj/item/stock_parts/micro_laser = 5,
-					/obj/item/stock_parts/matter_bin = 5,
-/obj/item/stock_parts/manipulator = 5,
-/obj/item/stock_parts/console_screen = 5)
+	products = list(
+		/obj/item/clothing/under/rank/chief_engineer = 4,
+		/obj/item/clothing/under/rank/engineer = 4,
+		/obj/item/clothing/shoes/orange = 4,
+		/obj/item/clothing/head/hardhat = 4,
+		/obj/item/storage/belt/utility = 4,
+		/obj/item/clothing/glasses/meson = 4,
+		/obj/item/clothing/gloves/yellow = 4,
+		/obj/item/tool/screwdriver = 12,
+		/obj/item/tool/crowbar = 12,
+		/obj/item/tool/wirecutters = 12,
+		/obj/item/multitool = 12,
+		/obj/item/tool/wrench = 12,
+		/obj/item/t_scanner = 12,
+		/obj/item/stack/cable_coil/heavyduty = 8,
+		/obj/item/cell = 8,
+		/obj/item/weldingtool = 8,
+		/obj/item/clothing/head/welding = 8,
+		/obj/item/light/tube = 10,
+		/obj/item/clothing/suit/fire = 4,
+		/obj/item/stock_parts/scanning_module = 5,
+		/obj/item/stock_parts/micro_laser = 5,
+		/obj/item/stock_parts/matter_bin = 5,
+		/obj/item/stock_parts/manipulator = 5,
+		/obj/item/stock_parts/console_screen = 5,
+	)
 	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
 	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
@@ -1369,19 +1396,22 @@
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	req_access = list(access_robotics)
-	products = list(/obj/item/clothing/suit/storage/toggle/labcoat = 4,
-/obj/item/clothing/under/rank/roboticist = 4,
-/obj/item/stack/cable_coil = 4,
-/obj/item/flash = 4,
-					/obj/item/cell/high = 12, /obj/item/assembly/prox_sensor = 3,
-/obj/item/assembly/signaler = 3,
-/obj/item/healthanalyzer = 3,
-					/obj/item/surgical/scalpel = 2,
-/obj/item/surgical/circular_saw = 2,
-/obj/item/tank/anesthetic = 2,
-/obj/item/clothing/mask/breath/medical = 5,
-					/obj/item/tool/screwdriver = 5,
-/obj/item/tool/crowbar = 5)
+	products = list(
+		/obj/item/clothing/suit/storage/toggle/labcoat = 4,
+		/obj/item/clothing/under/rank/roboticist = 4,
+		/obj/item/stack/cable_coil = 4,
+		/obj/item/flash = 4,
+		/obj/item/cell/high = 12,
+		/obj/item/assembly/prox_sensor = 3,
+		/obj/item/assembly/signaler = 3,
+		/obj/item/healthanalyzer = 3,
+		/obj/item/surgical/scalpel = 2,
+		/obj/item/surgical/circular_saw = 2,
+		/obj/item/tank/anesthetic = 2,
+		/obj/item/clothing/mask/breath/medical = 5,
+		/obj/item/tool/screwdriver = 5,
+		/obj/item/tool/crowbar = 5,
+	)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 	req_log_access = access_rd
 	has_logs = 1
@@ -1391,80 +1421,86 @@
 	desc = "For that special someone!"
 	icon_state = "giftvendor"
 	vend_delay = 15
-	products = list(/obj/item/storage/fancy/heartbox = 5,
-					/obj/item/toy/bouquet = 5,
-					/obj/item/toy/bouquet/fake = 4,
-					/obj/item/paper/card/smile = 3,
-					/obj/item/paper/card/heart = 3,
-					/obj/item/paper/card/cat = 3,
-					/obj/item/paper/card/flower = 3,
-					/obj/item/clothing/accessory/bracelet/friendship = 5,
-					/obj/item/toy/plushie/therapy/red = 2,
-					/obj/item/toy/plushie/therapy/purple = 2,
-					/obj/item/toy/plushie/therapy/blue = 2,
-					/obj/item/toy/plushie/therapy/yellow = 2,
-					/obj/item/toy/plushie/therapy/orange = 2,
-					/obj/item/toy/plushie/therapy/green = 2,
-					/obj/item/toy/plushie/nymph = 2,
-					/obj/item/toy/plushie/mouse = 2,
-					/obj/item/toy/plushie/kitten = 2,
-					/obj/item/toy/plushie/lizard = 2,
-					/obj/item/toy/plushie/spider = 2,
-					/obj/item/toy/plushie/farwa = 2,
-					/obj/item/toy/plushie/corgi = 1,
-					/obj/item/toy/plushie/octopus = 1,
-					/obj/item/toy/plushie/face_hugger = 1,
-					/obj/item/toy/plushie/voxie = 1,
-					/obj/item/toy/plushie/carp = 1,
-					/obj/item/toy/plushie/deer = 1,
-					/obj/item/toy/plushie/tabby_cat = 1,
-					/obj/item/toy/plushie/cyancowgirl = 1,
-					/obj/item/toy/plushie/bear_grizzly = 2,
-					/obj/item/toy/plushie/bear_polar = 2,
-					/obj/item/toy/plushie/bear_panda = 2,
-					/obj/item/toy/plushie/bear_soda = 2,
-					/obj/item/toy/plushie/bear_bloody = 2,
-					/obj/item/toy/plushie/bear_space = 1,
-					/obj/item/toy/plushie/doll = 3,
-					/obj/item/storage/daki = 10)
-	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
-					/obj/item/storage/trinketbox = 2)
-	prices = list(/obj/item/storage/fancy/heartbox = 15,
-					/obj/item/toy/bouquet = 10,
-					/obj/item/toy/bouquet/fake = 3,
-					/obj/item/paper/card/smile = 1,
-					/obj/item/paper/card/heart = 1,
-					/obj/item/paper/card/cat = 1,
-					/obj/item/paper/card/flower = 1,
-					/obj/item/clothing/accessory/bracelet/friendship = 5,
-					/obj/item/toy/plushie/therapy/red = 20,
-					/obj/item/toy/plushie/therapy/purple = 20,
-					/obj/item/toy/plushie/therapy/blue = 20,
-					/obj/item/toy/plushie/therapy/yellow = 20,
-					/obj/item/toy/plushie/therapy/orange = 20,
-					/obj/item/toy/plushie/therapy/green = 20,
-					/obj/item/toy/plushie/nymph = 35,
-					/obj/item/toy/plushie/mouse = 35,
-					/obj/item/toy/plushie/kitten = 35,
-					/obj/item/toy/plushie/lizard = 35,
-					/obj/item/toy/plushie/spider = 35,
-					/obj/item/toy/plushie/farwa = 35,
-					/obj/item/toy/plushie/corgi = 50,
-					/obj/item/toy/plushie/octopus = 50,
-					/obj/item/toy/plushie/face_hugger = 50,
-					/obj/item/toy/plushie/voxie = 50,
-					/obj/item/toy/plushie/carp = 50,
-					/obj/item/toy/plushie/deer = 50,
-					/obj/item/toy/plushie/tabby_cat = 50,
-					/obj/item/toy/plushie/cyancowgirl = 50,
-					/obj/item/toy/plushie/bear_grizzly = 20,
-					/obj/item/toy/plushie/bear_polar = 20,
-					/obj/item/toy/plushie/bear_panda = 20,
-					/obj/item/toy/plushie/bear_soda = 35,
-					/obj/item/toy/plushie/bear_bloody = 35,
-					/obj/item/toy/plushie/bear_space = 50,
-					/obj/item/toy/plushie/doll = 50,
-					/obj/item/storage/daki = 100)
+	products = list(
+		/obj/item/storage/fancy/heartbox = 5,
+		/obj/item/toy/bouquet = 5,
+		/obj/item/toy/bouquet/fake = 4,
+		/obj/item/paper/card/smile = 3,
+		/obj/item/paper/card/heart = 3,
+		/obj/item/paper/card/cat = 3,
+		/obj/item/paper/card/flower = 3,
+		/obj/item/clothing/accessory/bracelet/friendship = 5,
+		/obj/item/toy/plushie/therapy/red = 2,
+		/obj/item/toy/plushie/therapy/purple = 2,
+		/obj/item/toy/plushie/therapy/blue = 2,
+		/obj/item/toy/plushie/therapy/yellow = 2,
+		/obj/item/toy/plushie/therapy/orange = 2,
+		/obj/item/toy/plushie/therapy/green = 2,
+		/obj/item/toy/plushie/nymph = 2,
+		/obj/item/toy/plushie/mouse = 2,
+		/obj/item/toy/plushie/kitten = 2,
+		/obj/item/toy/plushie/lizard = 2,
+		/obj/item/toy/plushie/spider = 2,
+		/obj/item/toy/plushie/farwa = 2,
+		/obj/item/toy/plushie/corgi = 1,
+		/obj/item/toy/plushie/octopus = 1,
+		/obj/item/toy/plushie/face_hugger = 1,
+		/obj/item/toy/plushie/voxie = 1,
+		/obj/item/toy/plushie/carp = 1,
+		/obj/item/toy/plushie/deer = 1,
+		/obj/item/toy/plushie/tabby_cat = 1,
+		/obj/item/toy/plushie/cyancowgirl = 1,
+		/obj/item/toy/plushie/bear_grizzly = 2,
+		/obj/item/toy/plushie/bear_polar = 2,
+		/obj/item/toy/plushie/bear_panda = 2,
+		/obj/item/toy/plushie/bear_soda = 2,
+		/obj/item/toy/plushie/bear_bloody = 2,
+		/obj/item/toy/plushie/bear_space = 1,
+		/obj/item/toy/plushie/doll = 3,
+		/obj/item/storage/daki = 10,
+	)
+	premium = list(
+		/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
+		/obj/item/storage/trinketbox = 2,
+	)
+	prices = list(
+		/obj/item/storage/fancy/heartbox = 15,
+		/obj/item/toy/bouquet = 10,
+		/obj/item/toy/bouquet/fake = 3,
+		/obj/item/paper/card/smile = 1,
+		/obj/item/paper/card/heart = 1,
+		/obj/item/paper/card/cat = 1,
+		/obj/item/paper/card/flower = 1,
+		/obj/item/clothing/accessory/bracelet/friendship = 5,
+		/obj/item/toy/plushie/therapy/red = 20,
+		/obj/item/toy/plushie/therapy/purple = 20,
+		/obj/item/toy/plushie/therapy/blue = 20,
+		/obj/item/toy/plushie/therapy/yellow = 20,
+		/obj/item/toy/plushie/therapy/orange = 20,
+		/obj/item/toy/plushie/therapy/green = 20,
+		/obj/item/toy/plushie/nymph = 35,
+		/obj/item/toy/plushie/mouse = 35,
+		/obj/item/toy/plushie/kitten = 35,
+		/obj/item/toy/plushie/lizard = 35,
+		/obj/item/toy/plushie/spider = 35,
+		/obj/item/toy/plushie/farwa = 35,
+		/obj/item/toy/plushie/corgi = 50,
+		/obj/item/toy/plushie/octopus = 50,
+		/obj/item/toy/plushie/face_hugger = 50,
+		/obj/item/toy/plushie/voxie = 50,
+		/obj/item/toy/plushie/carp = 50,
+		/obj/item/toy/plushie/deer = 50,
+		/obj/item/toy/plushie/tabby_cat = 50,
+		/obj/item/toy/plushie/cyancowgirl = 50,
+		/obj/item/toy/plushie/bear_grizzly = 20,
+		/obj/item/toy/plushie/bear_polar = 20,
+		/obj/item/toy/plushie/bear_panda = 20,
+		/obj/item/toy/plushie/bear_soda = 35,
+		/obj/item/toy/plushie/bear_bloody = 35,
+		/obj/item/toy/plushie/bear_space = 50,
+		/obj/item/toy/plushie/doll = 50,
+		/obj/item/storage/daki = 100,
+	)
 
 /obj/machinery/vending/fishing
 	name = "Loot Trawler"
