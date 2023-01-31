@@ -57,5 +57,13 @@
 	id = "biotech"
 	name = "Biotechnology"
 	desc = "How well you understand biology, genetics, xeno-lifeform research, nanoswarms, and anything else relating to weird life sciences."
-
-	#warn impl
+	desc_untrained = "You really shouldn't be anywhere near xenobiology, let alone aliens, without a full biosuit."
+	desc_novice = "You have had some training with biohazardous protocol. Biosuits now slow you down less. Radsuits now slow you down less."
+	desc_trained = "You have been working exotic organisms and/or other exotic biotechnologies as an assistant. Genetics scanners are less harmful to you. Slimes deal slightly less damage to you, and find you less threatening."
+	desc_experienced = "You are a trained xenobiologist, geneticist, or bioengineer. You gain innate resistance to virus spread, and now have a slight global stat boost to resistances. Furthermore, you may analyze the function of certain genes faster, at a random chance, and can read information about slimes with a glance."
+	desc_professional = "You are a master biologist-engineer. Slimes rarely attack you. Global speed modifier increased. You can now operate xenobio-botanical and genetics machinery at maximum speed."
+	// pretty busted skill once released
+	cost_novice = SKILLCOST_INCREMENT_MODERATE
+	cost_trained = SKILLCOST_INCREMENT_MODERATE
+	cost_trained = SKILLCOST_INCREMENT_MAJOR
+	cost_experienced = SKILLCOST_INCREMENT_MAJOR

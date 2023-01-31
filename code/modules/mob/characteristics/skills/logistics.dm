@@ -30,5 +30,10 @@
 	id = "cargo"
 	name = "Logistics"
 	desc = "How experienced you are running logistics, deck supply, etc."
-
-	#warn impl
+	desc_untrained = "Surely pushing crates and signing off on orders is easy. Right? Right?!"
+	desc_novice = "You've been doing logistics for a while. Crates can now be moved at full speed."
+	desc_trained = "You have been trained in logistics. Crates can now fit more when you pack them. Price scanners and other scanners may now be used at range."
+	desc_experienced = "You're a master at running a shipyard, or logistics deck. You now automatically negate certain penalties for not labelling crates when exporting. Work mechas now move and operates faster for you. You can intuit the prices of most objects at a glance."
+	cost_novice = SKILLCOST_INCREMENT_MODERATE
+	cost_trained = SKILLCOST_INCREMENT_MODERATE
+	cost_experienced = SKILLCOST_INCREMENT_MAJOR
