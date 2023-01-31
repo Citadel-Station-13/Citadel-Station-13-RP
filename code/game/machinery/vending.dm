@@ -980,14 +980,16 @@
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
-	products = list(/obj/item/clothing/under/rank/scientist = 6,
-/obj/item/clothing/suit/bio_suit = 6,
-/obj/item/clothing/head/bio_hood = 6,
-					/obj/item/transfer_valve = 6,
-/obj/item/assembly/timer = 6,
-/obj/item/assembly/signaler = 6,
-					/obj/item/assembly/prox_sensor = 6,
-/obj/item/assembly/igniter = 6)
+	products = list(
+		/obj/item/clothing/under/rank/scientist = 6,
+		/obj/item/clothing/suit/bio_suit = 6,
+		/obj/item/clothing/head/bio_hood = 6,
+		/obj/item/transfer_valve = 6,
+		/obj/item/assembly/timer = 6,
+		/obj/item/assembly/signaler = 6,
+		/obj/item/assembly/prox_sensor = 6,
+		/obj/item/assembly/igniter = 6,
+	)
 	req_log_access = access_rd
 	has_logs = 1
 
@@ -1057,10 +1059,12 @@
 		/obj/item/storage/single_use/med_pouch/toxin = 1,
 		/obj/item/storage/single_use/med_pouch/radiation = 1,
 		/obj/item/storage/single_use/med_pouch/overdose = 1,
-		/obj/item/stack/medical/ointment =3,
-/obj/item/healthanalyzer = 3
-		)
-	contraband = list(/obj/item/reagent_containers/pill/tox = 3)
+		/obj/item/stack/medical/ointment = 3,
+		/obj/item/healthanalyzer = 3,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/pill/tox = 3,
+	)
 	req_log_access = access_cmo
 	has_logs = 1
 
@@ -1071,13 +1075,25 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
-	products = list(/obj/item/handcuffs = 8,
-/obj/item/grenade/flashbang = 4, /obj/item/flash = 5, /obj/item/reagent_containers/spray/pepper = 6,
-					/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/storage/box/evidence = 6,
-					/obj/item/gun/ballistic/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
-					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/hailer = 6, /obj/item/barrier_tape_roll/police = 6, /obj/item/flashlight/glowstick = 6)
-	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
-/obj/item/storage/box/donut = 2)
+	products = list(
+		/obj/item/handcuffs = 8,
+		/obj/item/grenade/flashbang = 4,
+		/obj/item/flash = 5,
+		/obj/item/reagent_containers/spray/pepper = 6,
+		/obj/item/reagent_containers/food/snacks/donut/normal = 12,
+		/obj/item/storage/box/evidence = 6,
+		/obj/item/gun/ballistic/sec = 2,
+		/obj/item/ammo_magazine/m45/rubber = 6,
+		/obj/item/clothing/mask/gas/half = 6,
+		/obj/item/clothing/glasses/omnihud/sec = 6,
+		/obj/item/hailer = 6,
+		/obj/item/barrier_tape_roll/police = 6,
+		/obj/item/flashlight/glowstick = 6,
+	)
+	contraband = list(
+		/obj/item/clothing/glasses/sunglasses = 2,
+		/obj/item/storage/box/donut = 2,
+	)
 	req_log_access = access_armory
 	has_logs = 1
 
