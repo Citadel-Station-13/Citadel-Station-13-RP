@@ -261,7 +261,7 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user as mob)
+/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user)
 	if(isliving(A))
 		var/mob/living/tm = A // targeted mob
 		if(SA_vulnerability & tm.mob_class)
