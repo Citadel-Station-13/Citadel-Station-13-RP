@@ -686,9 +686,17 @@
 	has_logs = 1
 
 /obj/machinery/vending/assist
-	products = list(	/obj/item/assembly/prox_sensor = 5,/obj/item/assembly/igniter = 3,/obj/item/assembly/signaler = 4,
-						/obj/item/tool/wirecutters = 1, /obj/item/cartridge/signal = 4)
-	contraband = list(/obj/item/flashlight = 5,/obj/item/assembly/timer = 2)
+	products = list(
+		/obj/item/assembly/prox_sensor = 5,
+		/obj/item/assembly/igniter = 3,
+		/obj/item/assembly/signaler = 4,
+		/obj/item/tool/wirecutters = 1,
+		/obj/item/cartridge/signal = 4,
+	)
+	contraband = list(
+		/obj/item/flashlight = 5,
+		/obj/item/assembly/timer = 2,
+	)
 	product_ads = "Only the finest!;Have some tools.;The most robust equipment.;The finest gear in space!"
 
 /obj/machinery/vending/coffee
