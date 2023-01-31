@@ -289,6 +289,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 70, rad = 70)
 	light_overlay = "helmet_light_dual" //explorer_light
+	camera_networks = list(NETWORK_EXPLO_HELMETS)
 
 /obj/item/clothing/suit/space/void/exploration
 	name = "exploration voidsuit"
@@ -336,6 +337,7 @@
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 15, bio = 100, rad = 50)
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	light_overlay = "helmet_light_dual"
+	camera_networks = list(NETWORK_EXPLO_HELMETS)
 
 /obj/item/clothing/suit/space/void/pilot
 	desc = "An atmos resistant voidsuit for space and planet exploration."

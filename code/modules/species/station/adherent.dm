@@ -1,7 +1,8 @@
 /datum/species/adherent
+	uid = SPECIES_ID_ADHERENT
+	id = SPECIES_ID_ADHERENT
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
-	uid = SPECIES_ID_ADHERENT
 	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \

@@ -802,6 +802,7 @@
 	id = "cloth"
 	name = "cloth"
 	stack_origin_tech = list(TECH_MATERIAL = 2)
+	stack_type = /obj/item/stack/material/cloth
 	door_icon_base = "wood"
 	ignition_point = T0C+232
 	melting_point = T0C+300
@@ -902,6 +903,7 @@
 	id = "leather"
 	name = "leather"
 	icon_colour = "#5C4831"
+	stack_type = /obj/item/stack/material/leather
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+300

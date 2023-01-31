@@ -7,7 +7,7 @@
 	var/list/job_whitelist = list()
 
 /**
- * name, ckey must be CKEY()'d.
+ * name and ckey must be CKEY()'d.
  */
 /datum/controller/configuration/proc/check_alien_whitelist(name, ckey)
 	if(!config_legacy.usealienwhitelist)

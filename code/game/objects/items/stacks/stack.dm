@@ -46,7 +46,7 @@
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
-			if(S.stacktype == stacktype)
+			if(can_merge(S))
 				merge(S)
 	update_icon()
 

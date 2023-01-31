@@ -1,6 +1,7 @@
 /datum/species/monkey
-	name = SPECIES_MONKEY
 	uid = SPECIES_ID_MONKEY
+	id = SPECIES_ID_MONKEY
+	name = SPECIES_MONKEY
 	name_plural = "Monkeys"
 	greater_form = SPECIES_HUMAN
 

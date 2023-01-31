@@ -12,7 +12,7 @@
 	return ..()
 
 /mob/living/silicon/robot/movement_delay()
-	. = speed
+	. = ..() + speed
 	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
 		. -= 2
 
@@ -20,8 +20,6 @@
 		. += 1
 
 	. += config_legacy.robot_delay
-
-	. = ..()
 
 // NEW: Use power while moving.
 /mob/living/silicon/robot/SelfMove(turf/n, direct)

@@ -52,7 +52,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
 
-	mz_flags = ZMM_MANGLE_PLANES
+	zmm_flags = ZMM_MANGLE_PLANES
 
 	// Wideborgs are offset, but their light shouldn't be. This disables offset because of how the math works (1 is less than 16).
 	light_offset_x = 1
@@ -780,13 +780,22 @@
 	return
 
 /mob/living/silicon/robot/proc/module_reset()
+	shown_robot_modules = FALSE
+	if (client)
+		hud_used.update_robot_modules_display()
 	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
 
+	lights_on = FALSE
+	radio.set_light(0)
+
 	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
 	module.Reset(src)
+
+	choose_icon(0, set_module_sprites(list("Default" = "robot")))
+
 	qdel(module)
 	module = null
 	updatename("Default")
@@ -873,11 +882,15 @@
 			return 1
 	return 0
 
+/mob/living/silicon/robot/update_canmove()
+	. = ..()
+	updateicon()
+
 /mob/living/silicon/robot/updateicon()
 	if (wideborg)
-		mz_flags |= ZMM_LOOKAHEAD
+		zmm_flags |= ZMM_LOOKAHEAD
 	else
-		mz_flags &= ~ZMM_LOOKAHEAD
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	cut_overlays()
 	if(stat == CONSCIOUS)

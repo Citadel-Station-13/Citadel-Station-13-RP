@@ -1,5 +1,6 @@
 /datum/species/nevrean
 	uid = SPECIES_ID_NEVREAN
+	id = SPECIES_ID_NEVREAN
 	name = SPECIES_NEVREAN
 	name_plural = "Nevreans"
 	primitive_form = SPECIES_MONKEY_NEVREAN

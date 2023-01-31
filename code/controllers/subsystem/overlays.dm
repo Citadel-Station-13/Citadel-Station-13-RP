@@ -13,6 +13,10 @@ SUBSYSTEM_DEF(overlays)
 	var/list/overlay_icon_cache = list()
 	var/overlays_initialized = FALSE
 
+	// If the overlay set currently being considered contains a manglable overlay.
+	// This is only safe because SSoverlays can only ever consider one overlay list at a time with no interior sleeps. Professional on closed course, do not attempt.
+	var/context_needs_automangle
+
 /datum/controller/subsystem/overlays/stat_entry()
 	return ..() + " Ov:[processing.len - (idex - 1)]"
 
@@ -171,6 +175,9 @@ SUBSYSTEM_DEF(overlays)
 		target = appearance_bro.appearance; \
 	}
 
+// If the overlay has a planeset (e.g., emissive), mark for ZM mangle. This won't catch overlays on overlays, but the flag can just manually be set in that case.
+#define ZM_AUTOMANGLE(target) if ((target):plane != FLOAT_PLANE) { SSoverlays.context_needs_automangle = TRUE; }
+
 /atom/proc/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
 	if (islist(new_overlays))
@@ -185,6 +192,21 @@ SUBSYSTEM_DEF(overlays)
 		return new_overlays
 	else
 		APPEARANCEIFY(new_overlays, .)
+
+// The same as the above, but with ZM_AUTOMANGLE.
+/atom/movable/build_appearance_list(atom/new_overlays)
+	var/static/image/appearance_bro = new
+	if (islist(new_overlays))
+		new_overlays = new_overlays:Copy()
+		listclearnulls(new_overlays)
+		for (var/i in 1 to length(new_overlays))
+			var/image/cached_overlay = new_overlays[i]
+			APPEARANCEIFY(cached_overlay, new_overlays[i])
+			ZM_AUTOMANGLE(new_overlays[i])
+		return new_overlays
+	else
+		APPEARANCEIFY(new_overlays, .)
+		ZM_AUTOMANGLE(.)
 
 #undef APPEARANCEIFY
 #define NOT_QUEUED_ALREADY (!(atom_flags & ATOM_OVERLAY_QUEUED))
@@ -208,11 +230,17 @@ SUBSYSTEM_DEF(overlays)
 	if(NOT_QUEUED_ALREADY && need_compile)
 		QUEUE_FOR_COMPILE
 
-/// Remove one or more overlays from this atom. This mutates passed lists.
+// This one gets to be done the sane way because it shouldn't be as hot as the others.
+/atom/movable/cut_overlays(priority = FALSE)
+	..()
+	zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_NRML
+
+/// Remove one or more overlays from this atom.
 /atom/proc/cut_overlay(list/overlays, priority)
 	if(!overlays)
 		return
 
+	SSoverlays.context_needs_automangle = FALSE
 	overlays = build_appearance_list(overlays)
 
 	var/list/cached_overlays = our_overlays	//sanic
@@ -220,19 +248,66 @@ SUBSYSTEM_DEF(overlays)
 	var/init_o_len = LAZYLEN(cached_overlays)
 	var/init_p_len = LAZYLEN(cached_priority)  //starter pokemon
 
-	LAZYREMOVE(cached_overlays, overlays)
+
 	if(priority)
 		LAZYREMOVE(cached_priority, overlays)
+	else
+		LAZYREMOVE(cached_overlays, overlays)
 
 	if(NOT_QUEUED_ALREADY && ((init_o_len != LAZYLEN(cached_priority)) || (init_p_len != LAZYLEN(cached_overlays))))
 		QUEUE_FOR_COMPILE
 
-/// Add one or more overlays to this atom. This mutates passed lists.
+// This one also gets to be done sanely because it shouldn't be too hot.
+/atom/movable/cut_overlay(list/overlays, priority)
+	..()
+	// If we removed an automangle-eligible overlay and have automangle enabled, reevaluate automangling.
+	if (!SSoverlays.context_needs_automangle || !(zmm_flags && ZMM_AUTOMANGLE))
+		return
+
+	var/list/cached_overlays = our_overlays
+	var/list/cached_priority = priority_overlays
+
+	// If we cut some non-priority overlays but some are still left, we need to scan for AUTOMANGLE_STD.
+	if (!priority && LAZYLEN(cached_overlays))
+		// need to scan overlays
+		var/found = FALSE
+		for (var/i in 1 to length(cached_overlays))
+			var/image/I = cached_overlays[i]
+			if (I.plane != FLOAT_PLANE)
+				found = TRUE
+				break
+		if (!found)
+			zmm_flags &= ~ZMM_AUTOMANGLE_NRML
+
+	// Likewise, but now for priority and AUTOMANGLE_PRI.
+	else if (priority && LAZYLEN(cached_priority))
+		// need to scan priority overlays
+		var/found = FALSE
+		for (var/i in 1 to length(cached_priority))
+			var/image/I = cached_priority[i]
+			if (I.plane != FLOAT_PLANE)
+				found = TRUE
+				break
+		if (!found)
+			zmm_flags &= ~ZMM_AUTOMANGLE_PRI
+
+	// None left, just unset the bit.
+	else
+		zmm_flags &= priority ? ~ZMM_AUTOMANGLE_PRI : ~ZMM_AUTOMANGLE_NRML
+
+/// Add one or more overlays to this atom.
 /atom/proc/add_overlay(list/overlays, priority = FALSE)
 	if(!overlays)
 		return
 
+	// the things I do for performance
+	var/is_movable = istype(src, /atom/movable)
+
+	SSoverlays.context_needs_automangle = FALSE
 	overlays = build_appearance_list(overlays)
+	if (SSoverlays.context_needs_automangle && is_movable)
+		// This is a movable flag.
+		src:zmm_flags |= priority ? ZMM_AUTOMANGLE_PRI : ZMM_AUTOMANGLE_NRML
 
 	if (!overlays || (islist(overlays) && !overlays.len))
 		// No point trying to compile if we don't have any overlays.
@@ -251,13 +326,22 @@ SUBSYSTEM_DEF(overlays)
 	if (!overlays)
 		return
 
+	var/is_movable = istype(src, /atom/movable)
+
+	SSoverlays.context_needs_automangle = FALSE
 	overlays = build_appearance_list(overlays)
 
 	if (priority)
+		if (!SSoverlays.context_needs_automangle && is_movable)
+			src:zmm_flags &= ~ZMM_AUTOMANGLE_PRI
+
 		LAZYCLEARLIST(priority_overlays)
 		if (overlays)
 			LAZYADD(priority_overlays, overlays)
 	else
+		if (!SSoverlays.context_needs_automangle && is_movable)
+			src:zmm_flags &= ~ZMM_AUTOMANGLE_NRML
+
 		LAZYCLEARLIST(our_overlays)
 		if (overlays)
 			LAZYADD(our_overlays, overlays)
@@ -274,6 +358,13 @@ SUBSYSTEM_DEF(overlays)
 
 	var/list/cached_other = other.our_overlays
 	if(cached_other)
+		if (istype(src, /atom/movable))
+			for (var/i in 1 to length(cached_other))
+				var/image/I = cached_other[i]
+				if (I.plane != FLOAT_PLANE)
+					src:zmm_flags |= ZMM_AUTOMANGLE_NRML
+					break
+
 		if(cut_old)
 			our_overlays = cached_other.Copy()
 		else

@@ -2602,36 +2602,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
-"io" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/brook,
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/holodeck/source_chess)
 "ip" = (
 /obj/item/chess/bknight,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iq" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/bbishop,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/bpawn,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "ir" = (
-/obj/item/chess/bqueen,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/bking,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "is" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/bking,
+/obj/item/chess/bqueen,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "it" = (
@@ -2639,27 +2623,19 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iu" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/bknight,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/wknight,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "iv" = (
 /obj/item/chess/brook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iw" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_checker)
 "ix" = (
 /obj/item/checker/red,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_checker)
 "iy" = (
 /obj/structure/lattice,
@@ -2820,12 +2796,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iZ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/bpawn,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/wpawn,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "ja" = (
 /obj/structure/railing{
@@ -3109,11 +3081,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jG" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "jH" = (
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -3607,7 +3575,7 @@
 /area/holodeck/source_checker)
 "lf" = (
 /obj/item/checker/black,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_checker)
 "lg" = (
 /obj/structure/railing{
@@ -3819,12 +3787,8 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "lD" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wpawn,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/bknight,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "lE" = (
 /obj/item/chess/wpawn,
@@ -3954,48 +3918,28 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lX" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wknight,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/wbishop,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "lY" = (
 /obj/item/chess/wbishop,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lZ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wqueen,
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/holodeck/source_chess)
-"ma" = (
 /obj/item/chess/wking,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
-"mb" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wbishop,
-/turf/simulated/floor/holofloor/tiled/dark,
+"ma" = (
+/obj/item/chess/wqueen,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "mc" = (
 /obj/item/chess/wknight,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "md" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wrook,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/item/chess/brook,
+/turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "me" = (
 /obj/effect/floor_decal/sign/dock/one,
@@ -6404,6 +6348,10 @@
 /obj/machinery/computer/teleporter,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"vd" = (
+/obj/item/chess/bbishop,
+/turf/simulated/floor/tiled/white,
+/area/holodeck/source_chess)
 "vh" = (
 /obj/machinery/computer/pod{
 	id = "thunderdome";
@@ -7945,6 +7893,10 @@
 /obj/machinery/power/rtg/fake_gen,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
+"DM" = (
+/obj/item/chess/wrook,
+/turf/simulated/floor/tiled/white,
+/area/holodeck/source_chess)
 "DO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -32461,14 +32413,14 @@ dP
 ds
 dh
 hD
-io
-iY
-jG
+iv
+iq
 jH
 jG
 jH
-lD
-lW
+jG
+lE
+DM
 mw
 hg
 hP
@@ -32655,14 +32607,14 @@ ds
 ds
 dh
 hD
-ip
+lD
+iY
+jG
+jH
+jG
+jH
 iZ
-jH
-jG
-jH
-jG
-lE
-lX
+mc
 mx
 hg
 hP
@@ -32849,14 +32801,14 @@ ds
 ds
 dh
 hD
+it
 iq
-iY
-jG
 jH
 jG
 jH
-lD
-lY
+jG
+lE
+lX
 my
 hg
 hP
@@ -33044,12 +32996,12 @@ ds
 dh
 hD
 ir
+iY
+jG
+jH
+jG
+jH
 iZ
-jH
-jG
-jH
-jG
-lE
 lZ
 hD
 hg
@@ -33238,12 +33190,12 @@ ds
 dh
 hD
 is
-iY
-jG
+iq
 jH
 jG
 jH
-lD
+jG
+lE
 ma
 hD
 hg
@@ -33431,14 +33383,14 @@ dP
 ds
 dh
 hD
-it
+vd
+iY
+jG
+jH
+jG
+jH
 iZ
-jH
-jG
-jH
-jG
-lE
-mb
+lY
 hD
 hg
 hP
@@ -33625,14 +33577,14 @@ ds
 ds
 dh
 hD
+ip
+iq
+jH
+jG
+jH
+jG
+lE
 iu
-iY
-jG
-jH
-jG
-jH
-lD
-mc
 hD
 hg
 hP
@@ -33819,14 +33771,14 @@ ds
 ds
 dh
 hD
-iv
-iZ
-jH
-jG
-jH
-jG
-lE
 md
+iY
+jG
+jH
+jG
+jH
+iZ
+lW
 hD
 hg
 hP
@@ -34595,13 +34547,13 @@ eE
 dt
 dh
 hE
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 lf
 mz
 hg
@@ -34790,13 +34742,13 @@ dt
 dh
 hE
 ix
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 mA
 hg
 hP
@@ -34983,13 +34935,13 @@ et
 dt
 dh
 hE
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 lf
 mB
 hg
@@ -35178,13 +35130,13 @@ fV
 dh
 hE
 ix
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 hE
 hg
 hP
@@ -35371,13 +35323,13 @@ dt
 dt
 dh
 hE
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 lf
 hE
 hg
@@ -35566,13 +35518,13 @@ dt
 dh
 hE
 ix
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 hE
 hg
 hP
@@ -35759,13 +35711,13 @@ dt
 dt
 dh
 hE
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 lf
 hE
 hg
@@ -35954,13 +35906,13 @@ dt
 dh
 hE
 ix
-iw
+ki
 ix
-iw
 ki
 iw
+ki
 lf
-iw
+ki
 hE
 hg
 hP
