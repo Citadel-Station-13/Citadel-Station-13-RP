@@ -1464,14 +1464,14 @@
 		/obj/item/storage/trinketbox = 2,
 	)
 	prices = list(
-		/obj/item/storage/fancy/heartbox = 15,
-		/obj/item/toy/bouquet = 10,
-		/obj/item/toy/bouquet/fake = 3,
+		/obj/item/storage/fancy/heartbox = 25,
+		/obj/item/toy/bouquet = 25,
+		/obj/item/toy/bouquet/fake = 15,
 		/obj/item/paper/card/smile = 1,
 		/obj/item/paper/card/heart = 1,
 		/obj/item/paper/card/cat = 1,
 		/obj/item/paper/card/flower = 1,
-		/obj/item/clothing/accessory/bracelet/friendship = 5,
+		/obj/item/clothing/accessory/bracelet/friendship = 10,
 		/obj/item/toy/plushie/therapy/red = 20,
 		/obj/item/toy/plushie/therapy/purple = 20,
 		/obj/item/toy/plushie/therapy/blue = 20,
@@ -1507,14 +1507,18 @@
 	desc = "A special vendor for fishing equipment."
 	product_ads = "Tired of trawling across the ocean floor? Get our loot!;Chum and rods.;Don't get baited into fishing without us!;Baby is your star-sign pisces? We'd make a perfect match.;Do not fear, plenty to catch around here.;Don't get reeled in helplessly, get your own rod today!"
 	icon_state = "fishvendor"
-	products = list(/obj/item/material/fishing_rod/modern/cheap = 10,
-					/obj/item/storage/box/wormcan = 20,
-					/obj/item/material/fishing_net = 2,
-					/obj/item/stack/cable_coil/random = 10)
-	prices = list(/obj/item/material/fishing_rod/modern/cheap = 50,
-					/obj/item/storage/box/wormcan = 12,
-					/obj/item/material/fishing_net = 40,
-					/obj/item/stack/cable_coil/random = 4)
+	products = list(
+		/obj/item/material/fishing_rod/modern/cheap = 10,
+		/obj/item/storage/box/wormcan = 20,
+		/obj/item/material/fishing_net = 2,
+		/obj/item/stack/cable_coil/random = 10,
+	)
+	prices = list(
+		/obj/item/material/fishing_rod/modern/cheap = 30,
+		/obj/item/storage/box/wormcan = 12,
+		/obj/item/material/fishing_net = 30,
+		/obj/item/stack/cable_coil/random = 4,
+	)
 
 //Custom vendors
 
@@ -1525,34 +1529,37 @@
 	desc = "A technological marvel, supposedly able to cook or mix a large variety of food or drink."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
-	products = list(/obj/item/tray = 8,
-					/obj/item/material/kitchen/utensil/fork = 6,
-					/obj/item/material/knife/plastic = 6,
-					/obj/item/material/kitchen/utensil/spoon = 6,
-					/obj/item/reagent_containers/food/snacks/tomatosoup = 8,
-					/obj/item/reagent_containers/food/snacks/mushroomsoup = 8,
-					/obj/item/reagent_containers/food/snacks/jellysandwich = 8,
-					/obj/item/reagent_containers/food/snacks/taco = 8,
-					/obj/item/reagent_containers/food/snacks/cheeseburger = 8,
-					/obj/item/reagent_containers/food/snacks/grilledcheese = 8,
-					/obj/item/reagent_containers/food/snacks/hotdog = 8,
-					/obj/item/reagent_containers/food/snacks/loadedbakedpotato = 8,
-					/obj/item/reagent_containers/food/snacks/omelette = 8,
-					/obj/item/reagent_containers/food/snacks/pastatomato = 8,
-					/obj/item/reagent_containers/food/snacks/tofuburger = 8,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 2,
-					/obj/item/reagent_containers/food/snacks/waffles = 4,
-					/obj/item/reagent_containers/food/snacks/muffin = 4,
-					/obj/item/reagent_containers/food/snacks/appletart = 4,
-					/obj/item/reagent_containers/food/snacks/sliceable/applecake = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2,
-					/obj/item/reagent_containers/food/snacks/brainsnax = 5
-					)
-	contraband = list(/obj/item/reagent_containers/food/snacks/mysterysoup = 10)
+	products = list(
+		/obj/item/tray = 8,
+		/obj/item/material/kitchen/utensil/fork = 6,
+		/obj/item/material/knife/plastic = 6,
+		/obj/item/material/kitchen/utensil/spoon = 6,
+		/obj/item/reagent_containers/food/snacks/tomatosoup = 8,
+		/obj/item/reagent_containers/food/snacks/mushroomsoup = 8,
+		/obj/item/reagent_containers/food/snacks/jellysandwich = 8,
+		/obj/item/reagent_containers/food/snacks/taco = 8,
+		/obj/item/reagent_containers/food/snacks/cheeseburger = 8,
+		/obj/item/reagent_containers/food/snacks/grilledcheese = 8,
+		/obj/item/reagent_containers/food/snacks/hotdog = 8,
+		/obj/item/reagent_containers/food/snacks/loadedbakedpotato = 8,
+		/obj/item/reagent_containers/food/snacks/omelette = 8,
+		/obj/item/reagent_containers/food/snacks/pastatomato = 8,
+		/obj/item/reagent_containers/food/snacks/tofuburger = 8,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 2,
+		/obj/item/reagent_containers/food/snacks/waffles = 4,
+		/obj/item/reagent_containers/food/snacks/muffin = 4,
+		/obj/item/reagent_containers/food/snacks/appletart = 4,
+		/obj/item/reagent_containers/food/snacks/sliceable/applecake = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2,
+		/obj/item/reagent_containers/food/snacks/brainsnax = 5,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/food/snacks/mysterysoup = 10,
+	)
 	vend_delay = 15
 
 /obj/machinery/vending/food/arojoan //Fluff vendor for the lewd houseboat.
@@ -1560,29 +1567,32 @@
 	desc = "Do you think Joan cooks? Of course not. Lazy squirrel!"
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
-	products = list(/obj/item/tray = 6,
-					/obj/item/material/kitchen/utensil/fork = 6,
-					/obj/item/material/knife/plastic = 6,
-					/obj/item/material/kitchen/utensil/spoon = 6,
-					/obj/item/reagent_containers/food/snacks/hotandsoursoup = 3,
-					/obj/item/reagent_containers/food/snacks/kitsuneudon = 3,
-					/obj/item/reagent_containers/food/snacks/generalschicken = 3,
-					/obj/item/reagent_containers/food/snacks/sliceable/sushi = 2,
-					/obj/item/reagent_containers/food/snacks/jellysandwich = 3,
-					/obj/item/reagent_containers/food/snacks/grilledcheese = 3,
-					/obj/item/reagent_containers/food/snacks/hotdog = 3,
-					/obj/item/storage/box/wings = 2,
-					/obj/item/reagent_containers/food/snacks/loadedbakedpotato = 3,
-					/obj/item/reagent_containers/food/snacks/omelette = 3,
-					/obj/item/reagent_containers/food/snacks/waffles = 3,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 1,
-					/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 1,
-					/obj/item/reagent_containers/food/snacks/appletart = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/applecake = 1,
-					/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2
-					)
-	contraband = list(/obj/item/reagent_containers/food/snacks/mysterysoup = 10)
+	products = list(
+		/obj/item/tray = 6,
+		/obj/item/material/kitchen/utensil/fork = 6,
+		/obj/item/material/knife/plastic = 6,
+		/obj/item/material/kitchen/utensil/spoon = 6,
+		/obj/item/reagent_containers/food/snacks/hotandsoursoup = 3,
+		/obj/item/reagent_containers/food/snacks/kitsuneudon = 3,
+		/obj/item/reagent_containers/food/snacks/generalschicken = 3,
+		/obj/item/reagent_containers/food/snacks/sliceable/sushi = 2,
+		/obj/item/reagent_containers/food/snacks/jellysandwich = 3,
+		/obj/item/reagent_containers/food/snacks/grilledcheese = 3,
+		/obj/item/reagent_containers/food/snacks/hotdog = 3,
+		/obj/item/storage/box/wings = 2,
+		/obj/item/reagent_containers/food/snacks/loadedbakedpotato = 3,
+		/obj/item/reagent_containers/food/snacks/omelette = 3,
+		/obj/item/reagent_containers/food/snacks/waffles = 3,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 1,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 1,
+		/obj/item/reagent_containers/food/snacks/appletart = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/applecake = 1,
+		/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
+		/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/food/snacks/mysterysoup = 10,
+	)
 	vend_delay = 15
 /* For later, then
 /obj/machinery/vending/weapon_machine
