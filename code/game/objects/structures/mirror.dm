@@ -114,34 +114,12 @@
 		user.visible_message(SPAN_DANGER("[user] hits [src] and bounces off!"))
 	return 1
 
-// The following mirror is ~special~.
+/// TODO: retype this one, I dont wanna touch maps in a Whitelist rework
 /obj/structure/mirror/raider
 	name = "cracked mirror"
-	desc = "Something seems strange about this old, dirty mirror. Your reflection doesn't look like you remember it."
+	desc = "Oh no, seven years of bad luck!"
 	icon_state = "mirror_broke"
 	shattered = 1
-
-/obj/structure/mirror/raider/attack_hand(var/mob/living/carbon/human/user)
-	if(istype(get_area(src),/area/syndicate_mothership))
-		if(istype(user) && user.mind && user.mind.special_role == "Raider" && user.species.name != SPECIES_VOX && config.check_alien_whitelist(ckey(SPECIES_VOX), user.ckey))
-			var/choice = input("Do you wish to become a true Vox of the Shoal? This is not reversible.") as null|anything in list("No","Yes")
-			if(choice && choice == "Yes")
-				var/mob/living/carbon/human/vox/vox = new(get_turf(src),SPECIES_VOX)
-				vox.gender = user.gender
-				raiders.equip(vox)
-				if(user.mind)
-					user.mind.transfer_to(vox)
-				spawn(1)
-					var/newname = sanitizeSafe(input(vox,"Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
-					if(!newname || newname == "")
-						var/datum/language/L = SScharacters.resolve_language_id(vox.species.default_language)
-						newname = L.get_random_name()
-					vox.real_name = newname
-					vox.name = vox.real_name
-					raiders.update_access(vox)
-				qdel(user)
-	..()
-
 
 //Long mirrors.
 /obj/structure/mirror/long

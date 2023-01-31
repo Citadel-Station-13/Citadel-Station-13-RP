@@ -50,6 +50,8 @@
 	QDEL_NULL(closer)
 	return ..()
 
+
+
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
@@ -601,6 +603,13 @@
 		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
 			src.quick_empty()
 			return 1
+
+	if(user in is_seeing)
+		src.close(user)
+	else if(isliving(user) && user.Reachability(src))
+		src.open(user)
+	else
+		return ..()
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.

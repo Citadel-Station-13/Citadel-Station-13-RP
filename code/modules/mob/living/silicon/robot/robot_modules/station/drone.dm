@@ -6,88 +6,63 @@
 	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
-/obj/item/robot_module/drone/Initialize(mapload)
+/obj/item/robot_module/drone/get_modules()
 	. = ..()
-	var/mob/living/silicon/robot/robot = loc
-	src.modules += new /obj/item/borg/sight/meson(src)
-	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/tool/crowbar/cyborg(src)
-	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/multitool(src)
-	src.modules += new /obj/item/lightreplacer(src)
-	src.modules += new /obj/item/gripper(src)
-	src.modules += new /obj/item/mop(src)
-	src.modules += new /obj/item/gripper/no_use/loader(src)
-	src.modules += new /obj/item/extinguisher(src)
-	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
-	src.modules += new /obj/item/t_scanner(src)
-	src.modules += new /obj/item/analyzer(src)
-	src.modules += new /obj/item/inflatable_dispenser/robot(src)
-	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
-	src.modules += new /obj/item/pipe_dispenser(src)
+	. |= list(
+		/obj/item/borg/sight/meson,
+		/obj/item/weldingtool/electric/mounted/cyborg,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
+		/obj/item/tool/crowbar/cyborg,
+		/obj/item/tool/wirecutters/cyborg,
+		/obj/item/multitool,
+		/obj/item/lightreplacer,
+		/obj/item/gripper,
+		/obj/item/mop,
+		/obj/item/gripper/no_use/loader,
+		/obj/item/extinguisher,
+		/obj/item/pipe_painter,
+		/obj/item/floor_painter,
+		/obj/item/t_scanner,
+		/obj/item/analyzer,
+		/obj/item/inflatable_dispenser/robot,
+		/obj/item/barrier_tape_roll/engineering,
+		/obj/item/pipe_dispenser
+	)
 
-	robot.internals = new/obj/item/tank/jetpack/carbondioxide(src)
-	src.modules += robot.internals
+/obj/item/robot_module/drone/get_synths(mob/living/silicon/robot/R)
+	. = ..()
+	MATTER_SYNTH(MATSYN_METAL, metal, 25000)
+	MATTER_SYNTH(MATSYN_GLASS, glass, 25000)
+	MATTER_SYNTH(MATSYN_WOOD, wood, 25000)
+	MATTER_SYNTH(MATSYN_PLASTIC, plastic, 25000)
+	MATTER_SYNTH(MATSYN_WIRE, wire, 30)
+
+/obj/item/robot_module/drone/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
+
+	R.internals = new/obj/item/tank/jetpack/carbondioxide(src)
+	. += R.internals
 
 	src.emag = new /obj/item/pickaxe/plasmacutter(src)
 	src.emag.name = "Plasma Cutter"
 
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal(25000)
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass(25000)
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood(25000)
-	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic(25000)
-	var/datum/matter_synth/wire = new /datum/matter_synth/wire(30)
-	synths += metal
-	synths += glass
-	synths += wood
-	synths += plastic
-	synths += wire
-
 	var/obj/item/matter_decompiler/MD = new /obj/item/matter_decompiler(src)
-	MD.metal = metal
-	MD.glass = glass
-	MD.wood = wood
-	MD.plastic = plastic
-	src.modules += MD
+	MD.metal = synths_by_kind[MATSYN_METAL]
+	MD.glass = synths_by_kind[MATSYN_GLASS]
+	MD.wood = synths_by_kind[MATSYN_WOOD]
+	MD.plastic = synths_by_kind[MATSYN_PLASTIC]
+	. += MD
 
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(metal)
-	src.modules += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.synths = list(glass)
-	src.modules += G
-
-	var/obj/item/stack/rods/cyborg/R = new /obj/item/stack/rods/cyborg(src)
-	R.synths = list(metal)
-	src.modules += R
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(wire)
-	src.modules += C
-
-	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
-	S.synths = list(metal)
-	src.modules += S
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(metal, glass)
-	src.modules += RG
-
-	var/obj/item/stack/tile/wood/cyborg/WT = new /obj/item/stack/tile/wood/cyborg(src)
-	WT.synths = list(wood)
-	src.modules += WT
-
-	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(wood)
-	src.modules += W
-
-	var/obj/item/stack/material/cyborg/plastic/P = new (src)
-	P.synths = list(plastic)
-	src.modules += P
+	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
+	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
+	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
+	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
+	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
+	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
+	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
 
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"
@@ -95,9 +70,9 @@
 	channels = list("Engineering" = 1)
 	languages = list()
 
-/obj/item/robot_module/drone/construction/Initialize(mapload)
+/obj/item/robot_module/drone/construction/get_modules()
 	. = ..()
-	src.modules += new /obj/item/rcd/electric/mounted/borg/lesser(src)
+	. |= /obj/item/rcd/electric/mounted/borg/lesser
 
 /obj/item/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/lightreplacer/LR = locate() in src.modules
@@ -110,13 +85,18 @@
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)
 
-/obj/item/robot_module/drone/mining/Initialize(mapload)
+/obj/item/robot_module/drone/mining/get_modules()
 	. = ..()
-	src.modules += new /obj/item/borg/sight/material(src)
-	src.modules += new /obj/item/pickaxe/borgdrill(src)
-	src.modules += new /obj/item/gun/energy/kinetic_accelerator/cyborg(src)
-	src.modules += new /obj/item/storage/bag/ore(src)
-	src.modules += new /obj/item/storage/bag/sheetsnatcher/borg(src)
+	. |= list(
+		/obj/item/borg/sight/material,
+		/obj/item/pickaxe/borgdrill,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
+		/obj/item/storage/bag/ore,
+		/obj/item/storage/bag/sheetsnatcher/borg
+	)
+
+/obj/item/robot_module/drone/mining/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)
 
 /obj/item/robot_module/drone/construction/matriarch

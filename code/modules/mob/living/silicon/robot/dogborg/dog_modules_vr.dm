@@ -208,47 +208,47 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
-		to_chat(user, SPAN_WARNING("You need to take \the [target.name] off before cleaning it!"))
+		to_chat(user, SPAN_WARNING("You need to take [target] off before cleaning it!"))
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
-		user.visible_message("[user] begins to lap up water from [target.name].", SPAN_NOTICE("You begin to lap up water from [target.name]."))
-		if(do_after (user, 50))
+		user.visible_message("[user] begins to lap up water from [target].", SPAN_NOTICE("You begin to lap up water from [target]."))
+		if(do_after(user, 50, target = target))
 			water.add_charge(500)
 	else if(water.energy < 5)
 		to_chat(user, SPAN_NOTICE("Your mouth feels dry. You should drink some water.")) //fixed annoying grammar and needless space
 		return
 	else if(istype(target,/obj/effect/debris/cleanable))
-		user.visible_message("[user] begins to lick off \the [target.name].", SPAN_NOTICE("You begin to lick off \the [target.name]..."))
-		if(do_after (user, 50))
-			to_chat(user, SPAN_NOTICE("You finish licking off \the [target.name]."))
+		user.visible_message("[user] begins to lick off [target].", SPAN_NOTICE("You begin to lick off [target]..."))
+		if(do_after(user, 50, target = target))
+			to_chat(user, SPAN_NOTICE("You finish licking off [target]."))
 			water.use_charge(5)
 			qdel(target)
 			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
 	else if(istype(target,/obj/item))
 		if(istype(target,/obj/item/trash))
-			user.visible_message("[user] nibbles away at \the [target.name].", SPAN_NOTICE("You begin to nibble away at \the [target.name]..."))
-			if(do_after (user, 50))
-				user.visible_message("[user] finishes eating \the [target.name].", SPAN_NOTICE("You finish eating \the [target.name]."))
-				to_chat(user, SPAN_NOTICE("You finish off \the [target.name]."))
+			user.visible_message("[user] nibbles away at [target].", SPAN_NOTICE("You begin to nibble away at [target]..."))
+			if(do_after(user, 50, target = target))
+				user.visible_message("[user] finishes eating [target].", SPAN_NOTICE("You finish eating [target]."))
+				to_chat(user, SPAN_NOTICE("You finish off [target]."))
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
 				R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))
-			user.visible_message("[user] begins cramming \the [target.name] down its throat.", SPAN_NOTICE("You begin cramming \the [target.name] down your throat..."))
-			if(do_after (user, 50))
-				user.visible_message("[user] finishes gulping down \the [target.name].", SPAN_NOTICE("You finish swallowing \the [target.name]."))
-				to_chat(user, SPAN_NOTICE("You finish off \the [target.name], and gain some charge!"))
+			user.visible_message("[user] begins cramming [target] down its throat.", SPAN_NOTICE("You begin cramming \the [target.name] down your throat..."))
+			if(do_after(user, 50, target = target))
+				user.visible_message("[user] finishes gulping down [target].", SPAN_NOTICE("You finish swallowing [target]."))
+				to_chat(user, SPAN_NOTICE("You finish off [target], and gain some charge!"))
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
 				water.use_charge(5)
 				qdel(target)
 			return
-		user.visible_message("[user] begins to lick \the [target.name] clean...", SPAN_NOTICE("You begin to lick \the [target.name] clean..."))
-		if(do_after (user, 50))
-			to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
+		user.visible_message("[user] begins to lick [target] clean...", SPAN_NOTICE("You begin to lick [target] clean..."))
+		if(do_after(user, 50, target = target))
+			to_chat(user, SPAN_NOTICE("You clean [target]."))
 			water.use_charge(5)
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
@@ -267,16 +267,16 @@
 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 			R.cell.charge -= 666
 		else
-			user.visible_message(SPAN_NOTICE("\the [user] affectionally licks all over \the [target]'s face!"), SPAN_NOTICE("You affectionally lick all over \the [target]'s face!"))
+			user.visible_message(SPAN_NOTICE("\The [user] affectionally licks all over [target]'s face!"), SPAN_NOTICE("You affectionally lick all over [target]'s face!"))
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
 				H.Weaken(3)
 	else
-		user.visible_message("[user] begins to lick \the [target.name] clean...", SPAN_NOTICE("You begin to lick \the [target.name] clean..."))
-		if(do_after (user, 50))
-			to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
+		user.visible_message("[user] begins to lick [target] clean...", SPAN_NOTICE("You begin to lick [target] clean..."))
+		if(do_after(user, 50, target = target))
+			to_chat(user, SPAN_NOTICE("You clean [target]."))
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()

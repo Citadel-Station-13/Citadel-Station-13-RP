@@ -15,7 +15,7 @@ var/silent_ert = 0
 	if(!holder)
 		to_chat(usr, SPAN_DANGER("Only administrators may use this command."))
 		return
-	if(SSticker.current_state <= GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_DANGER("The round hasn't started yet!"))
 		return
 	if(send_emergency_team)

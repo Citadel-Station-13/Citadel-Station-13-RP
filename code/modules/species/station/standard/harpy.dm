@@ -1,5 +1,6 @@
 /datum/species/harpy
 	uid = SPECIES_ID_HARPY
+	id = SPECIES_ID_HARPY
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
 	icobase = 'icons/mob/human_races/r_harpy_vr.dmi'

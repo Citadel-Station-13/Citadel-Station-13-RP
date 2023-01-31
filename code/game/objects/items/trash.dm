@@ -130,7 +130,7 @@
 
 	if(isrobot(target))
 		var/mob/living/silicon/robot/R = target
-		if(R.module.type == /obj/item/robot_module/robot/quad_jani) // You can now feed the trash borg yay.
+		if(R.module.type == /obj/item/robot_module/robot/quad/jani) // You can now feed the trash borg yay.
 			if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
 				return
 			playsound(R,'sound/items/eatfood.ogg', rand(10,50), 1)

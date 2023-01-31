@@ -104,22 +104,23 @@
 	)
 
 /datum/trait/kintype/apply(datum/species/shadekin/S, mob/living/carbon/human/H)
-	..(S,H)
-	if(color && istype(S)) //Sanity check to see if they're actually a shadekin, otherwise just don't do anything. They shouldn't be able to spawn with the trait.
-		S.kin_type = color
-		switch(color)
-			if(BLUE_EYES)
-				H.shapeshifter_set_eye_color("0000FF")
-			if(RED_EYES)
-				H.shapeshifter_set_eye_color("FF0000")
-			if(GREEN_EYES)
-				H.shapeshifter_set_eye_color("00FF00")
-			if(PURPLE_EYES)
-				H.shapeshifter_set_eye_color("FF00FF")
-			if(YELLOW_EYES)
-				H.shapeshifter_set_eye_color("FFFF00")
-			if(ORANGE_EYES)
-				H.shapeshifter_set_eye_color("FFA500")
+	if (istype(S))
+		..(S,H)
+		if(color) //Sanity check to see if they're actually a shadekin, otherwise just don't do anything. They shouldn't be able to spawn with the trait.
+			S.kin_type = color
+			switch(color)
+				if(BLUE_EYES)
+					H.shapeshifter_set_eye_color("0000FF")
+				if(RED_EYES)
+					H.shapeshifter_set_eye_color("FF0000")
+				if(GREEN_EYES)
+					H.shapeshifter_set_eye_color("00FF00")
+				if(PURPLE_EYES)
+					H.shapeshifter_set_eye_color("FF00FF")
+				if(YELLOW_EYES)
+					H.shapeshifter_set_eye_color("FFFF00")
+				if(ORANGE_EYES)
+					H.shapeshifter_set_eye_color("FFA500")
 
 
 /datum/unarmed_attack/shadekinharmbap

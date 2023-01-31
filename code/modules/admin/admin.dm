@@ -1093,6 +1093,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	if(!check_rights(R_SPAWN))	return
 
+	if(!object)
+		var/choice = alert(src, "You haven't specified anything to match -- this will lock your game up and take a while! \
+		It will also return the entire spawn list.", "WARNING!", "Cancel", "Continue")
+		if(choice == "Cancel")
+			return
+
 	var/list/types = typesof(/atom)
 	var/list/matches = new()
 

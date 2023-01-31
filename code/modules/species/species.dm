@@ -22,9 +22,9 @@
 	abstract_type = /datum/species
 
 	//! Intrinsics
-	/// uid - **must be unique**
+	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
-	/// if we're a subspecies, real id
+	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 

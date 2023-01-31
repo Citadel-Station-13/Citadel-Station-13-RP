@@ -474,6 +474,8 @@
 		. += SPAN_BOLDNOTICE("Physical status: <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>")
 		. += SPAN_BOLDNOTICE("Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
+	if(hasHUD(user,"best"))
+		. += SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>")
 
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
@@ -594,6 +596,9 @@
 					return TRUE
 			if("medical")
 				if(omni.mode == "med" || omni.mode == "best")
+					return TRUE
+			if("best")
+				if(omni.mode == "best")
 					return TRUE
 
 	return FALSE

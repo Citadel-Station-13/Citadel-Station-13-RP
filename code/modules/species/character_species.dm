@@ -5,7 +5,7 @@
 	template.uid = uid
 	if(id != uid)
 		template.is_subspecies = TRUE
-		template.superspecies_id = id
+	template.superspecies_id = src.get_species_id()//Now its always safe to do
 	template.category = category
 	template.desc = blurb
 	template.species_spawn_flags = species_spawn_flags
