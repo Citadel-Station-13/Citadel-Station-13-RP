@@ -20,8 +20,6 @@
 #define LIGHTING_DARKNESS_ICON_STATE "black"
 #define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
-/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
-#define LIGHTING_SOFT_THRESHOLD 0.001
 /// How much the range of a directional light will be reduced while facing a wall.
 #define LIGHTING_BLOCKED_FACTOR 0.5
 

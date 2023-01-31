@@ -56,9 +56,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	var/needs_update = FALSE
 
-	var/cache_r  = LIGHTING_SOFT_THRESHOLD
-	var/cache_g  = LIGHTING_SOFT_THRESHOLD
-	var/cache_b  = LIGHTING_SOFT_THRESHOLD
+	var/cache_r  = 0
+	var/cache_g  = 0
+	var/cache_b  = 0
 	var/cache_mx = 0
 
 	/// Used for planet lighting. Probably needs a better system to prevent over-updating when not needed at some point.
@@ -316,16 +316,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	if (mx > 1)
 		. = 1 / mx
 
-	else if (mx < LIGHTING_SOFT_THRESHOLD)
-		. = 0 // 0 means soft lighting.
-
-
-	if (.)
-		cache_r = round(lr * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_g = round(lg * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_b = round(lb * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-	else
-		cache_r = cache_g = cache_b = LIGHTING_SOFT_THRESHOLD
+	cache_r = round(lr * ., LIGHTING_ROUND_VALUE)
+	cache_g = round(lg * ., LIGHTING_ROUND_VALUE)
+	cache_b = round(lb * ., LIGHTING_ROUND_VALUE)
 
 	cache_mx = round(mx, LIGHTING_ROUND_VALUE)
 
