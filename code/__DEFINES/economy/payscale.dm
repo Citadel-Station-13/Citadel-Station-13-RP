@@ -9,8 +9,8 @@
 #define ECONOMY_PAYSCALE_BASE 500
 #define ECONOMY_PAYSCALE_MULT 1
 
-#define ECONOMY_PAYSCALE_RANDOM_MEAN 0
-#define ECONOMY_PAYSCALE_RANDOM_DEV 100
+#define ECONOMY_PAYSCALE_RANDOM_MEAN 5
+#define ECONOMY_PAYSCALE_RANDOM_DEV 45
 
 #define ECONOMY_PAYSCALE_DEPT_DEFAULT 1
 #define ECONOMY_PAYSCALE_DEPT_SCI 3
@@ -41,10 +41,10 @@
 
 //? Economic Class (Legacy)
 
-var/list/economic_class_payscale_lookup = list(
+GLOBAL_LIST_INIT(economic_class_payscale_lookup, list(
 	CLASS_UPPER = 1.1,
 	CLASS_MIDDLE = 1,
 	CLASS_LOWMID = 0.75,
 	CLASS_LOWISH = 0.5,
 	CLASS_LOW = 1/3,
-)
+))
