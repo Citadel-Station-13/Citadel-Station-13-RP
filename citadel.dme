@@ -4061,6 +4061,7 @@
 #include "code\modules\sprite_accessories\ears\antenna.dm"
 #include "code\modules\sprite_accessories\ears\horns.dm"
 #include "code\modules\sprite_accessories\ears\misc.dm"
+#include "code\modules\sprite_accessories\ears\xenomorph.dm"
 #include "code\modules\sprite_accessories\ears\animal\avian.dm"
 #include "code\modules\sprite_accessories\ears\animal\bee.dm"
 #include "code\modules\sprite_accessories\ears\animal\bovine.dm"
