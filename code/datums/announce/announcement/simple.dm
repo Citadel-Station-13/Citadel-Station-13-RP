@@ -10,7 +10,7 @@
  * - sound_preamble - preamble sound, if any - either a sound datum, soundbyte, or soundbyte alias
  * - sound_main - ditto
  */
-/proc/simple_announcement(datum/announcer/announcer, source = "Installation Annoucement", name = "General Alert", message = "Test message, please ignore.", sound_preamble = /datum/soundbyte/announcer/preamble, sound_main = /datum/soundbyte/announcer/notice)
+/proc/simple_announcement(datum/announcer/announcer, source = "Installation Annoucement", name = "General Alert", message = "Test message, please ignore.", datum/soundbyte/announcer/sound_preamble, datum/soundbyte/announcer/sound_main)
 	var/datum/announcement/simple/A = new(source, name, message, sound_preamble, sound_main)
 	A.Announce(announcer)
 	qdel(A)
@@ -36,7 +36,7 @@
 	/// main soundbyte - synced to message
 	var/datum/soundbyte/sound_main
 	/// volume to play sounds at, if any
-	var/sound_volume
+	var/sound_volume = 50
 	/// enable sound environments?
 	var/sound_allow_environment = TRUE
 
