@@ -1774,26 +1774,29 @@
 	icon_state = "loadout"
 	icon_vend = "loadout-purchase"
 	vend_delay = 16
-	products = list(/obj/item/pda = 25,
-					/obj/item/radio/headset = 25,
-					/obj/item/storage/backpack/ = 10,
-					/obj/item/storage/backpack/messenger = 10,
-					/obj/item/storage/backpack/satchel = 10,
-					/obj/item/clothing/under/color = 5,
-					/obj/item/clothing/under/color/aqua = 5,
-					/obj/item/clothing/under/color/black = 5,
-					/obj/item/clothing/under/color/blackjumpskirt = 5,
-					/obj/item/clothing/under/color/blue = 5,
-					/obj/item/clothing/under/color/brown = 5,
-					/obj/item/clothing/under/color/green = 5,
-					/obj/item/clothing/under/color/grey = 5,
-					/obj/item/clothing/under/color/orange = 5,
-					/obj/item/clothing/under/color/pink = 5,
-					/obj/item/clothing/under/color/red = 5,
-					/obj/item/clothing/under/color/white = 5,
-					/obj/item/clothing/under/color/yellow = 5,
-					/obj/item/clothing/shoes/black = 20,
-					/obj/item/clothing/shoes/white = 20)
+	products = list(
+		/obj/item/pda = 25,
+		/obj/item/radio/headset = 25,
+		/obj/item/storage/backpack/ = 10,
+		/obj/item/storage/backpack/messenger = 10,
+		/obj/item/storage/backpack/satchel = 10,
+		/obj/item/clothing/under/color = 5,
+		/obj/item/clothing/under/color/aqua = 5,
+		/obj/item/clothing/under/color/black = 5,
+		/obj/item/clothing/under/color/blackjumpskirt = 5,
+		/obj/item/clothing/under/color/blue = 5,
+		/obj/item/clothing/under/color/brown = 5,
+		/obj/item/clothing/under/color/green = 5,
+		/obj/item/clothing/under/color/grey = 5,
+		/obj/item/clothing/under/color/orange = 5,
+		/obj/item/clothing/under/color/pink = 5,
+		/obj/item/clothing/under/color/red = 5,
+		/obj/item/clothing/under/color/white = 5,
+		/obj/item/clothing/under/color/yellow = 5,
+		/obj/item/clothing/shoes/black = 20,
+		/obj/item/clothing/shoes/white = 20,
+	)
+
 /obj/machinery/vending/loadout/accessory
 	name = "Looty Inc."
 	desc = "A special vendor for accessories."
