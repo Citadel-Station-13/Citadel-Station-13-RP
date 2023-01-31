@@ -358,12 +358,14 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
 /// know. This will need to be looked into at some point soon
 /turf/simulated/mineral/triumph/lavaland
 	outdoors = TRUE
+	edge_blending_priority = 2
 
 /turf/simulated/mineral/triumph/rich/lavaland
 	outdoors = TRUE
 
 /turf/simulated/mineral/rich/triumph/lavaland
 	outdoors = TRUE
+	edge_blending_priority = 2
 
 // Lava Land turfs
 

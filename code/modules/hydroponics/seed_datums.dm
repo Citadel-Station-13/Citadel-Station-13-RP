@@ -1724,7 +1724,7 @@
 	set_trait(TRAIT_PRODUCT_ICON,"leafy")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#e0f569")
 	set_trait(TRAIT_PLANT_COLOUR,"#42222a")
-	set_trait(TRAIT_PLANT_ICON,"bush2")
+	set_trait(TRAIT_PLANT_ICON,"vine2")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)

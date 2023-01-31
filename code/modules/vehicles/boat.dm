@@ -59,8 +59,8 @@
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small/ashlander
 
-/obj/vehicle/ridden/boat/ashlander/Initialize()
-	. = ..()
+/obj/vehicle/ridden/boat/ashlander/Initialize(mapload, material_name)
+	return ..(mapload, "bone")
 
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
@@ -91,8 +91,8 @@
 	icon_state = "oar_ashlander"
 	item_state = "oar_ashlander"
 
-/obj/item/oar/sifwood/Initialize()
-	. = ..()
+/obj/item/oar/ashlander/Initialize(mapload, material_name)
+	return ..(mapload, "bone")
 
 /datum/component/riding_handler/vehicle/boat
 	vehicle_move_delay = 3.5

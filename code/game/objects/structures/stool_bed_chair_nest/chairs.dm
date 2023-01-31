@@ -446,4 +446,4 @@
 	..()
 
 /obj/structure/bed/chair/post/Initialize(mapload, new_material)
-	. = ..(mapload, "wood", null)
+	. = ..(mapload, "bone", null)

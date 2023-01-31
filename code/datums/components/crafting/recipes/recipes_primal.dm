@@ -444,3 +444,12 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/goliath_gloves
+	name = "goliath hide gloves"
+	result = /obj/item/clothing/gloves/goliath
+	time = 20
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE

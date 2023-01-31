@@ -19,6 +19,7 @@
 /datum/outfit/ashlander/farmer
 	name = "Ashlander - Farmer"
 	shoes = /obj/item/clothing/shoes/ashwalker
+	gloves = /obj/item/clothing/gloves/goliath
 	l_pocket = /obj/item/material/knife/machete/hatchet/bone
 	r_hand = /obj/item/reagent_containers/glass/stone
 

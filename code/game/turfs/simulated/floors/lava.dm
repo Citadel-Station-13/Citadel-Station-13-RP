@@ -6,7 +6,7 @@
 	gender = PLURAL // So it says "That's some lava." on examine.
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
-	edge_blending_priority = 1
+	edge_blending_priority = 0
 	// flags = TURF_HAS_EDGES
 	// todo: THE ABOVE FLAGS DOESNT WORK BECAUSE ITS ON FLOORING!
 	slowdown = 2

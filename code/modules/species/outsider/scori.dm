@@ -34,8 +34,8 @@
 	max_age = 200
 
 	//Adapted to overcast skies and caverns.
-	darksight = 5
-	flash_mod = 2.0
+	darksight = 7
+	flash_mod = 3.0
 
 	//Physical resistances and weaknesses.
 	brute_mod = 0.85
