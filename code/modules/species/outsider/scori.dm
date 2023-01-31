@@ -34,7 +34,7 @@
 	max_age = 200
 
 	//Adapted to overcast skies and caverns.
-	darksight = 7
+	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
 	flash_mod = 3.0
 
 	//Physical resistances and weaknesses.
