@@ -934,17 +934,23 @@
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
-	products = list(/obj/item/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/reagent_containers/glass/bottle/stoxin = 4,/obj/item/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/reagent_containers/syringe/antiviral = 4,/obj/item/reagent_containers/syringe = 30,
-					/obj/item/healthanalyzer = 5,/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
+	products = list(/obj/item/reagent_containers/glass/bottle/antitoxin = 4,
+/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
+					/obj/item/reagent_containers/glass/bottle/stoxin = 4,
+/obj/item/reagent_containers/glass/bottle/toxin = 4,
+					/obj/item/reagent_containers/syringe/antiviral = 4,
+/obj/item/reagent_containers/syringe = 30,
+					/obj/item/healthanalyzer = 5,
+/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
 					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3, /obj/item/storage/box/vmcrystal = 4,
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4,
 					/obj/item/storage/single_use/med_pouch/overdose = 3, /obj/item/storage/single_use/med_pouch/radiation = 3,
 					/obj/item/storage/single_use/med_pouch/toxin = 3, /obj/item/storage/single_use/med_pouch/oxyloss = 3,
 					/obj/item/storage/single_use/med_pouch/burn = 3, /obj/item/storage/single_use/med_pouch/trauma = 3)
-	contraband = list(/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6)
+	contraband = list(/obj/item/reagent_containers/pill/tox = 3,
+/obj/item/reagent_containers/pill/stox = 4,
+/obj/item/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
 	has_logs = 1
@@ -952,9 +958,14 @@
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
-	products = list(/obj/item/clothing/under/rank/scientist = 6,/obj/item/clothing/suit/bio_suit = 6,/obj/item/clothing/head/bio_hood = 6,
-					/obj/item/transfer_valve = 6,/obj/item/assembly/timer = 6,/obj/item/assembly/signaler = 6,
-					/obj/item/assembly/prox_sensor = 6,/obj/item/assembly/igniter = 6)
+	products = list(/obj/item/clothing/under/rank/scientist = 6,
+/obj/item/clothing/suit/bio_suit = 6,
+/obj/item/clothing/head/bio_hood = 6,
+					/obj/item/transfer_valve = 6,
+/obj/item/assembly/timer = 6,
+/obj/item/assembly/signaler = 6,
+					/obj/item/assembly/prox_sensor = 6,
+/obj/item/assembly/igniter = 6)
 	req_log_access = access_rd
 	has_logs = 1
 
@@ -1024,7 +1035,8 @@
 		/obj/item/storage/single_use/med_pouch/toxin = 1,
 		/obj/item/storage/single_use/med_pouch/radiation = 1,
 		/obj/item/storage/single_use/med_pouch/overdose = 1,
-		/obj/item/stack/medical/ointment =3,/obj/item/healthanalyzer = 3
+		/obj/item/stack/medical/ointment =3,
+/obj/item/healthanalyzer = 3
 		)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
@@ -1037,11 +1049,13 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
-	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4, /obj/item/flash = 5, /obj/item/reagent_containers/spray/pepper = 6,
+	products = list(/obj/item/handcuffs = 8,
+/obj/item/grenade/flashbang = 4, /obj/item/flash = 5, /obj/item/reagent_containers/spray/pepper = 6,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/storage/box/evidence = 6,
 					/obj/item/gun/ballistic/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
 					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/hailer = 6, /obj/item/barrier_tape_roll/police = 6, /obj/item/flashlight/glowstick = 6)
-	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
+	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
+/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
 	has_logs = 1
 
@@ -1052,9 +1066,15 @@
 	product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
 	icon_state = "nutri"
 	icon_deny = "nutri-deny"
-	products = list(/obj/item/reagent_containers/glass/bottle/eznutrient = 6,/obj/item/reagent_containers/glass/bottle/left4zed = 4,/obj/item/reagent_containers/glass/bottle/robustharvest = 3,/obj/item/plantspray/pests = 20,
-					/obj/item/reagent_containers/syringe = 5,/obj/item/reagent_containers/glass/beaker = 4,/obj/item/storage/bag/plants = 5)
-	premium = list(/obj/item/reagent_containers/glass/bottle/ammonia = 10,/obj/item/reagent_containers/glass/bottle/diethylamine = 5)
+	products = list(/obj/item/reagent_containers/glass/bottle/eznutrient = 6,
+/obj/item/reagent_containers/glass/bottle/left4zed = 4,
+/obj/item/reagent_containers/glass/bottle/robustharvest = 3,
+/obj/item/plantspray/pests = 20,
+					/obj/item/reagent_containers/syringe = 5,
+/obj/item/reagent_containers/glass/beaker = 4,
+/obj/item/storage/bag/plants = 5)
+	premium = list(/obj/item/reagent_containers/glass/bottle/ammonia = 10,
+/obj/item/reagent_containers/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/hydroseeds
@@ -1064,15 +1084,50 @@
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
 
-	products = list(/obj/item/seeds/bananaseed = 3,/obj/item/seeds/berryseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/coconutseed = 3,/obj/item/seeds/chantermycelium = 3,/obj/item/seeds/chiliseed = 3,
-					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,/obj/item/seeds/soyaseed = 3,
-					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/taroseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
-					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/ambrosiavulgarisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
-					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
-					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3,
-					/obj/item/seeds/shrinkshroom = 3,/obj/item/seeds/megashroom = 3,/obj/item/seeds/peaseed = 3)
-	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2)
+	products = list(/obj/item/seeds/bananaseed = 3,
+/obj/item/seeds/berryseed = 3,
+/obj/item/seeds/carrotseed = 3,
+/obj/item/seeds/coconutseed = 3,
+/obj/item/seeds/chantermycelium = 3,
+/obj/item/seeds/chiliseed = 3,
+					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,
+/obj/item/seeds/soyaseed = 3,
+					/obj/item/seeds/sunflowerseed = 3,
+/obj/item/seeds/taroseed = 3,
+/obj/item/seeds/tomatoseed = 3,
+/obj/item/seeds/towermycelium = 3,
+/obj/item/seeds/wheatseed = 3,
+/obj/item/seeds/appleseed = 3,
+					/obj/item/seeds/poppyseed = 3,
+/obj/item/seeds/sugarcaneseed = 3,
+/obj/item/seeds/ambrosiavulgarisseed = 3,
+/obj/item/seeds/peanutseed = 3,
+/obj/item/seeds/whitebeetseed = 3,
+/obj/item/seeds/watermelonseed = 3,
+/obj/item/seeds/lavenderseed = 3,
+/obj/item/seeds/limeseed = 3,
+					/obj/item/seeds/lemonseed = 3,
+/obj/item/seeds/orangeseed = 3,
+/obj/item/seeds/grassseed = 3,
+/obj/item/seeds/cocoapodseed = 3,
+/obj/item/seeds/plumpmycelium = 2,
+					/obj/item/seeds/cabbageseed = 3,
+/obj/item/seeds/grapeseed = 3,
+/obj/item/seeds/pumpkinseed = 3,
+/obj/item/seeds/cherryseed = 3,
+/obj/item/seeds/plastiseed = 3,
+/obj/item/seeds/riceseed = 3,
+					/obj/item/seeds/shrinkshroom = 3,
+/obj/item/seeds/megashroom = 3,
+/obj/item/seeds/peaseed = 3)
+	contraband = list(/obj/item/seeds/amanitamycelium = 2,
+/obj/item/seeds/glowshroom = 2,
+/obj/item/seeds/libertymycelium = 2,
+/obj/item/seeds/mtearseed = 2,
+					  /obj/item/seeds/nettleseed = 2,
+/obj/item/seeds/reishimycelium = 2,
+/obj/item/seeds/reishimycelium = 2,
+/obj/item/seeds/shandseed = 2)
 	premium = list(/obj/item/toy/waterflower = 1)
 
 /**
@@ -1109,7 +1164,12 @@
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
 	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
-	products = list(/obj/item/clothing/head/wizard = 1,/obj/item/clothing/suit/wizrobe = 1,/obj/item/clothing/head/wizard/red = 1,/obj/item/clothing/suit/wizrobe/red = 1,/obj/item/clothing/shoes/sandal = 1,/obj/item/staff = 2)
+	products = list(/obj/item/clothing/head/wizard = 1,
+/obj/item/clothing/suit/wizrobe = 1,
+/obj/item/clothing/head/wizard/red = 1,
+/obj/item/clothing/suit/wizrobe/red = 1,
+/obj/item/clothing/shoes/sandal = 1,
+/obj/item/staff = 2)
 
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"
@@ -1159,11 +1219,18 @@
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	//req_access = list(access_maint_tunnels) //Maintenance access
-	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/tool/crowbar = 5,/obj/item/weldingtool = 3,/obj/item/tool/wirecutters = 5,
-					/obj/item/tool/wrench = 5,/obj/item/analyzer = 5,/obj/item/t_scanner = 5,/obj/item/tool/screwdriver = 5,
+	products = list(/obj/item/stack/cable_coil/random = 10,
+/obj/item/tool/crowbar = 5,
+/obj/item/weldingtool = 3,
+/obj/item/tool/wirecutters = 5,
+					/obj/item/tool/wrench = 5,
+/obj/item/analyzer = 5,
+/obj/item/t_scanner = 5,
+/obj/item/tool/screwdriver = 5,
 					/obj/item/flashlight/glowstick = 3, /obj/item/flashlight/glowstick/red = 3, /obj/item/flashlight/glowstick/blue = 3,
 					/obj/item/flashlight/glowstick/orange =3, /obj/item/flashlight/glowstick/yellow = 3, /obj/item/reagent_containers/spray/windowsealant = 5)
-	contraband = list(/obj/item/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2,)
+	contraband = list(/obj/item/weldingtool/hugetank = 2,
+/obj/item/clothing/gloves/fyellow = 2,)
 	premium = list(/obj/item/clothing/gloves/yellow = 1)
 	req_log_access = access_ce
 	has_logs = 1
@@ -1174,16 +1241,35 @@
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/geiger_counter = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
-					/obj/item/airlock_electronics = 10,/obj/item/module/power_control = 10,
-					/obj/item/circuitboard/airalarm = 10,/obj/item/circuitboard/firealarm = 10,/obj/item/circuitboard/status_display = 2,
-					/obj/item/circuitboard/ai_status_display = 2,/obj/item/circuitboard/newscaster = 2,/obj/item/circuitboard/holopad = 2,
-					/obj/item/circuitboard/intercom = 4,/obj/item/circuitboard/security/telescreen/entertainment = 4,
-					/obj/item/stock_parts/motor = 2,/obj/item/stock_parts/spring = 2,/obj/item/stock_parts/gear = 2,
-					/obj/item/circuitboard/atm,/obj/item/circuitboard/guestpass,/obj/item/circuitboard/keycard_auth,
-					/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,
-					/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,
-					/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,
+	products = list(/obj/item/geiger_counter = 4,
+/obj/item/clothing/glasses/meson = 2,
+/obj/item/multitool = 4,
+/obj/item/cell/high = 10,
+					/obj/item/airlock_electronics = 10,
+/obj/item/module/power_control = 10,
+					/obj/item/circuitboard/airalarm = 10,
+/obj/item/circuitboard/firealarm = 10,
+/obj/item/circuitboard/status_display = 2,
+					/obj/item/circuitboard/ai_status_display = 2,
+/obj/item/circuitboard/newscaster = 2,
+/obj/item/circuitboard/holopad = 2,
+					/obj/item/circuitboard/intercom = 4,
+/obj/item/circuitboard/security/telescreen/entertainment = 4,
+					/obj/item/stock_parts/motor = 2,
+/obj/item/stock_parts/spring = 2,
+/obj/item/stock_parts/gear = 2,
+					/obj/item/circuitboard/atm,
+/obj/item/circuitboard/guestpass,
+/obj/item/circuitboard/keycard_auth,
+					/obj/item/circuitboard/photocopier,
+/obj/item/circuitboard/fax,
+/obj/item/circuitboard/request,
+					/obj/item/circuitboard/microwave,
+/obj/item/circuitboard/washing,
+/obj/item/circuitboard/scanner_console,
+					/obj/item/circuitboard/sleeper_console,
+/obj/item/circuitboard/body_scanner,
+/obj/item/circuitboard/sleeper,
 					/obj/item/circuitboard/dna_analyzer, /obj/item/clothing/glasses/omnihud/eng = 6)
 	contraband = list(/obj/item/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3)
@@ -1197,12 +1283,26 @@
 	icon_state = "engi"
 	icon_deny = "engi-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/clothing/under/rank/chief_engineer = 4,/obj/item/clothing/under/rank/engineer = 4,/obj/item/clothing/shoes/orange = 4,/obj/item/clothing/head/hardhat = 4,
-					/obj/item/storage/belt/utility = 4,/obj/item/clothing/glasses/meson = 4,/obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12,
-					/obj/item/tool/crowbar = 12,/obj/item/tool/wirecutters = 12,/obj/item/multitool = 12,/obj/item/tool/wrench = 12,/obj/item/t_scanner = 12,
-					/obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/weldingtool = 8,/obj/item/clothing/head/welding = 8,
-					/obj/item/light/tube = 10,/obj/item/clothing/suit/fire = 4, /obj/item/stock_parts/scanning_module = 5,/obj/item/stock_parts/micro_laser = 5,
-					/obj/item/stock_parts/matter_bin = 5,/obj/item/stock_parts/manipulator = 5,/obj/item/stock_parts/console_screen = 5)
+	products = list(/obj/item/clothing/under/rank/chief_engineer = 4,
+/obj/item/clothing/under/rank/engineer = 4,
+/obj/item/clothing/shoes/orange = 4,
+/obj/item/clothing/head/hardhat = 4,
+					/obj/item/storage/belt/utility = 4,
+/obj/item/clothing/glasses/meson = 4,
+/obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12,
+					/obj/item/tool/crowbar = 12,
+/obj/item/tool/wirecutters = 12,
+/obj/item/multitool = 12,
+/obj/item/tool/wrench = 12,
+/obj/item/t_scanner = 12,
+					/obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/weldingtool = 8,
+/obj/item/clothing/head/welding = 8,
+					/obj/item/light/tube = 10,
+/obj/item/clothing/suit/fire = 4, /obj/item/stock_parts/scanning_module = 5,
+/obj/item/stock_parts/micro_laser = 5,
+					/obj/item/stock_parts/matter_bin = 5,
+/obj/item/stock_parts/manipulator = 5,
+/obj/item/stock_parts/console_screen = 5)
 	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
 	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
@@ -1215,10 +1315,19 @@
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	req_access = list(access_robotics)
-	products = list(/obj/item/clothing/suit/storage/toggle/labcoat = 4,/obj/item/clothing/under/rank/roboticist = 4,/obj/item/stack/cable_coil = 4,/obj/item/flash = 4,
-					/obj/item/cell/high = 12, /obj/item/assembly/prox_sensor = 3,/obj/item/assembly/signaler = 3,/obj/item/healthanalyzer = 3,
-					/obj/item/surgical/scalpel = 2,/obj/item/surgical/circular_saw = 2,/obj/item/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,
-					/obj/item/tool/screwdriver = 5,/obj/item/tool/crowbar = 5)
+	products = list(/obj/item/clothing/suit/storage/toggle/labcoat = 4,
+/obj/item/clothing/under/rank/roboticist = 4,
+/obj/item/stack/cable_coil = 4,
+/obj/item/flash = 4,
+					/obj/item/cell/high = 12, /obj/item/assembly/prox_sensor = 3,
+/obj/item/assembly/signaler = 3,
+/obj/item/healthanalyzer = 3,
+					/obj/item/surgical/scalpel = 2,
+/obj/item/surgical/circular_saw = 2,
+/obj/item/tank/anesthetic = 2,
+/obj/item/clothing/mask/breath/medical = 5,
+					/obj/item/tool/screwdriver = 5,
+/obj/item/tool/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 	req_log_access = access_rd
 	has_logs = 1
@@ -1392,9 +1501,11 @@
 	product_slogans = "The best defense is good offense!;Buy for your whole family today!;Nobody can outsmart bullet!;God created man - Frozen Star made them EQUAL!;Nobody can outsmart bullet!;Stupidity can be cured! By LEAD.;Dead kids can't bully your children!"
 	product_ads = "Stunning!;Take justice in your own hands!;LEADearship!"
 	icon_state = "weapon"
-	products = list(/obj/item/flash = 6,/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
+	products = list(/obj/item/flash = 6,
+/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
-	prices = list(/obj/item/flash = 600,/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
+	prices = list(/obj/item/flash = 600,
+/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
 /obj/machinery/vending/blood
@@ -1404,10 +1515,14 @@
 	icon_state = "blood"
 	idle_power_usage = 211
 	req_access = list(access_medical)
-	products = list(/obj/item/reagent_containers/blood/prelabeled/APlus = 3,/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,
-					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
-					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
-					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
+	products = list(/obj/item/reagent_containers/blood/prelabeled/APlus = 3,
+/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,
+					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,
+/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
+					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,
+/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
+					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,
+/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
 					/obj/item/reagent_containers/blood/empty = 5,
 					/obj/item/reagent_containers/food/drinks/bludboxmax = 5,
 					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 5)
