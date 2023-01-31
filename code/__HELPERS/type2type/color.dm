@@ -1,21 +1,28 @@
 
-// Like rgb() but for each color space.
+/// HSV counterpart to rgb(), this takes the values you input and converts them to a color string.
 /proc/hsv(H, S, V, A)
 	return rgb(h=H, s=S, v=V, A=A, space=COLORSPACE_HSV)
 
+/// HSL counterpart to rgb(), this takes the values you input and converts them to a color string.
 /proc/hsl(H, S, L, A)
 	return rgb(h=H, s=S, l=L, A=A, space=COLORSPACE_HSL)
 
+/// HCY counterpart to rgb(), this takes the values you input and converts them to a color string.
 /proc/hcy(H, C, Y, A)
 	return rgb(h=H, c=C, y=Y, A=A, space=COLORSPACE_HCY)
 
+// Like rgb2num() but for each color space.
+/proc/hsv2num(H, S, V, A)
+	return rgb2num(hsv(H, S, V, A), COLORSPACE_HSV)
+
+/proc/hsl2num(H, S, L, A)
+	return rgb2num(hsl(H, S, L, A), COLORSPACE_HSL)
+
+/proc/hcy2num(H, C, Y, A)
+	return rgb2num(hcy(H, C, Y, A), COLORSPACE_HCY)
+
 /// Legacy support macro
 #define hex2rgb(HEX) (rgb2num(HEX))
-
-// Like rgb2num() but for each color space.
-#define hsv2num(H, S, V, A...) (rgb2num(hsv(H, S, V, A), COLORSPACE_HSV))
-#define hsl2num(H, S, L, A...) (rgb2num(hsl(H, S, L, A), COLORSPACE_HSL))
-#define hcy2num(H, C, Y, A...) (rgb2num(hcy(H, C, Y, A), COLORSPACE_HCY))
 
 // Converting Color to a list of channel values.
 #define color2rgb(HEX) (rgb2num(HEX, COLORSPACE_RGB)) // COLORSPACE_RGB is irrelevent but there for consistency.

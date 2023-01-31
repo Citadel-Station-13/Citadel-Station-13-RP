@@ -80,9 +80,6 @@ Here are some procs you can use for color management:
 ReadRGB(rgb)
     Takes an RGB string like "#ffaa55" and converts it to a list such as list(255,170,85). If an RGBA format is used
     that includes alpha, the list will have a fourth item for the alpha value.
-hsv(hue, sat, val, apha)
-    Counterpart to rgb(), this takes the values you input and converts them to a string in "#hhhssvv" or "#hhhssvvaa"
-    format. Alpha is not included in the result if null.
 ReadHSV(rgb)
     Takes an HSV string like "#100FF80" and converts it to a list such as list(256,255,128). If an HSVA format is used that
     includes alpha, the list will have a fourth item for the alpha value.

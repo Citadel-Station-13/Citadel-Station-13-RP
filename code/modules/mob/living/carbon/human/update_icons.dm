@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(husk)
 				base_icon.ColorTone(husk_color_mod)
 			else if(hulk)
-				var/list/tone = ReadRGB(hulk_color_mod)
+				var/list/tone = rgb2num(hulk_color_mod)
 				base_icon.MapColors(rgb(tone[1],0,0),rgb(0,tone[2],0),rgb(0,0,tone[3]))
 
 		// Handle husk overlay.

@@ -231,7 +231,7 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
  */
 /proc/rgba_auto_greyscale_matrix(rgba_string)
 	// process rgb(a)
-	var/list/L1 = ReadRGB(rgba_string)
+	var/list/L1 = rgb2num(rgba_string)
 	ASSERT(L1.len)
 	if(L1.len == 3)
 		return rgba_construct_color_matrix(0.39, 0.39, 0.39, 0, 0.5, 0.5, 0.5, 0, 0.11, 0.11, 0.11, 0, 0, 0, 0, 1, max(-0.5, (L1[1] - 255) / 255), max(-0.5, (L1[2] - 255) / 255), max(-0.5, (L1[3] - 255) / 255), 0)
