@@ -1104,15 +1104,19 @@
 	product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
 	icon_state = "nutri"
 	icon_deny = "nutri-deny"
-	products = list(/obj/item/reagent_containers/glass/bottle/eznutrient = 6,
-/obj/item/reagent_containers/glass/bottle/left4zed = 4,
-/obj/item/reagent_containers/glass/bottle/robustharvest = 3,
-/obj/item/plantspray/pests = 20,
-					/obj/item/reagent_containers/syringe = 5,
-/obj/item/reagent_containers/glass/beaker = 4,
-/obj/item/storage/bag/plants = 5)
-	premium = list(/obj/item/reagent_containers/glass/bottle/ammonia = 10,
-/obj/item/reagent_containers/glass/bottle/diethylamine = 5)
+	products = list(
+		/obj/item/reagent_containers/glass/bottle/eznutrient = 6,
+		/obj/item/reagent_containers/glass/bottle/left4zed = 4,
+		/obj/item/reagent_containers/glass/bottle/robustharvest = 3,
+		/obj/item/plantspray/pests = 20,
+		/obj/item/reagent_containers/syringe = 5,
+		/obj/item/reagent_containers/glass/beaker = 4,
+		/obj/item/storage/bag/plants = 5,
+	)
+	premium = list(
+		/obj/item/reagent_containers/glass/bottle/ammonia = 10,
+		/obj/item/reagent_containers/glass/bottle/diethylamine = 5,
+	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/hydroseeds
@@ -1122,51 +1126,60 @@
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
 
-	products = list(/obj/item/seeds/bananaseed = 3,
-/obj/item/seeds/berryseed = 3,
-/obj/item/seeds/carrotseed = 3,
-/obj/item/seeds/coconutseed = 3,
-/obj/item/seeds/chantermycelium = 3,
-/obj/item/seeds/chiliseed = 3,
-					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,
-/obj/item/seeds/soyaseed = 3,
-					/obj/item/seeds/sunflowerseed = 3,
-/obj/item/seeds/taroseed = 3,
-/obj/item/seeds/tomatoseed = 3,
-/obj/item/seeds/towermycelium = 3,
-/obj/item/seeds/wheatseed = 3,
-/obj/item/seeds/appleseed = 3,
-					/obj/item/seeds/poppyseed = 3,
-/obj/item/seeds/sugarcaneseed = 3,
-/obj/item/seeds/ambrosiavulgarisseed = 3,
-/obj/item/seeds/peanutseed = 3,
-/obj/item/seeds/whitebeetseed = 3,
-/obj/item/seeds/watermelonseed = 3,
-/obj/item/seeds/lavenderseed = 3,
-/obj/item/seeds/limeseed = 3,
-					/obj/item/seeds/lemonseed = 3,
-/obj/item/seeds/orangeseed = 3,
-/obj/item/seeds/grassseed = 3,
-/obj/item/seeds/cocoapodseed = 3,
-/obj/item/seeds/plumpmycelium = 2,
-					/obj/item/seeds/cabbageseed = 3,
-/obj/item/seeds/grapeseed = 3,
-/obj/item/seeds/pumpkinseed = 3,
-/obj/item/seeds/cherryseed = 3,
-/obj/item/seeds/plastiseed = 3,
-/obj/item/seeds/riceseed = 3,
-					/obj/item/seeds/shrinkshroom = 3,
-/obj/item/seeds/megashroom = 3,
-/obj/item/seeds/peaseed = 3)
-	contraband = list(/obj/item/seeds/amanitamycelium = 2,
-/obj/item/seeds/glowshroom = 2,
-/obj/item/seeds/libertymycelium = 2,
-/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,
-/obj/item/seeds/reishimycelium = 2,
-/obj/item/seeds/reishimycelium = 2,
-/obj/item/seeds/shandseed = 2)
-	premium = list(/obj/item/toy/waterflower = 1)
+	products = list(
+		/obj/item/seeds/bananaseed = 3,
+		/obj/item/seeds/berryseed = 3,
+		/obj/item/seeds/carrotseed = 3,
+		/obj/item/seeds/coconutseed = 3,
+		/obj/item/seeds/chantermycelium = 3,
+		/obj/item/seeds/chiliseed = 3,
+		/obj/item/seeds/cornseed = 3,
+		/obj/item/seeds/eggplantseed = 3,
+		/obj/item/seeds/potatoseed = 3,
+		/obj/item/seeds/replicapod = 3,
+		/obj/item/seeds/soyaseed = 3,
+		/obj/item/seeds/sunflowerseed = 3,
+		/obj/item/seeds/taroseed = 3,
+		/obj/item/seeds/tomatoseed = 3,
+		/obj/item/seeds/towermycelium = 3,
+		/obj/item/seeds/wheatseed = 3,
+		/obj/item/seeds/appleseed = 3,
+		/obj/item/seeds/poppyseed = 3,
+		/obj/item/seeds/sugarcaneseed = 3,
+		/obj/item/seeds/ambrosiavulgarisseed = 3,
+		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/whitebeetseed = 3,
+		/obj/item/seeds/watermelonseed = 3,
+		/obj/item/seeds/lavenderseed = 3,
+		/obj/item/seeds/limeseed = 3,
+		/obj/item/seeds/lemonseed = 3,
+		/obj/item/seeds/orangeseed = 3,
+		/obj/item/seeds/grassseed = 3,
+		/obj/item/seeds/cocoapodseed = 3,
+		/obj/item/seeds/plumpmycelium = 2,
+		/obj/item/seeds/cabbageseed = 3,
+		/obj/item/seeds/grapeseed = 3,
+		/obj/item/seeds/pumpkinseed = 3,
+		/obj/item/seeds/cherryseed = 3,
+		/obj/item/seeds/plastiseed = 3,
+		/obj/item/seeds/riceseed = 3,
+		/obj/item/seeds/shrinkshroom = 3,
+		/obj/item/seeds/megashroom = 3,
+		/obj/item/seeds/peaseed = 3,
+	)
+	contraband = list(
+		/obj/item/seeds/amanitamycelium = 2,
+		/obj/item/seeds/glowshroom = 2,
+		/obj/item/seeds/libertymycelium = 2,
+		/obj/item/seeds/mtearseed = 2,
+		/obj/item/seeds/nettleseed = 2,
+		/obj/item/seeds/reishimycelium = 2,
+		/obj/item/seeds/reishimycelium = 2,
+		/obj/item/seeds/shandseed = 2,
+	)
+	premium = list(
+		/obj/item/toy/waterflower = 1,
+	)
 
 /**
  *  Populate hydroseeds product_records
@@ -1202,12 +1215,14 @@
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
 	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
-	products = list(/obj/item/clothing/head/wizard = 1,
-/obj/item/clothing/suit/wizrobe = 1,
-/obj/item/clothing/head/wizard/red = 1,
-/obj/item/clothing/suit/wizrobe/red = 1,
-/obj/item/clothing/shoes/sandal = 1,
-/obj/item/staff = 2)
+	products = list(
+		/obj/item/clothing/head/wizard = 1,
+		/obj/item/clothing/suit/wizrobe = 1,
+		/obj/item/clothing/head/wizard/red = 1,
+		/obj/item/clothing/suit/wizrobe/red = 1,
+		/obj/item/clothing/shoes/sandal = 1,
+		/obj/item/staff = 2,
+	)
 
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"
@@ -1215,32 +1230,33 @@
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
 	products = list(
-	/obj/item/tray = 8,
-	/obj/item/material/kitchen/utensil/fork = 6,
-	/obj/item/material/knife/plastic = 6,
-	/obj/item/material/kitchen/utensil/spoon = 6,
-	/obj/item/material/knife = 3,
-	/obj/item/material/kitchen/rollingpin = 2,
-	/obj/item/reagent_containers/food/drinks/glass2/square = 8,
-	/obj/item/reagent_containers/food/drinks/glass2/shake = 8,
-	/obj/item/glass_extra/stick = 15,
-	/obj/item/glass_extra/straw = 15,
-	/obj/item/clothing/suit/chef/classic = 2,
-	/obj/item/storage/toolbox/lunchbox = 3,
-	/obj/item/storage/toolbox/lunchbox/heart = 3,
-	/obj/item/storage/toolbox/lunchbox/cat = 3,
-	/obj/item/storage/toolbox/lunchbox/nt = 3,
-	/obj/item/storage/toolbox/lunchbox/mars = 3,
-	/obj/item/storage/toolbox/lunchbox/cti = 3,
-	/obj/item/storage/toolbox/lunchbox/nymph = 3,
-	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
-	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
-	/obj/item/trash/bowl = 30,
-	/obj/item/reagent_containers/cooking_container/oven = 5,
-	/obj/item/reagent_containers/cooking_container/fryer = 4
+		/obj/item/tray = 8,
+		/obj/item/material/kitchen/utensil/fork = 6,
+		/obj/item/material/knife/plastic = 6,
+		/obj/item/material/kitchen/utensil/spoon = 6,
+		/obj/item/material/knife = 3,
+		/obj/item/material/kitchen/rollingpin = 2,
+		/obj/item/reagent_containers/food/drinks/glass2/square = 8,
+		/obj/item/reagent_containers/food/drinks/glass2/shake = 8,
+		/obj/item/glass_extra/stick = 15,
+		/obj/item/glass_extra/straw = 15,
+		/obj/item/clothing/suit/chef/classic = 2,
+		/obj/item/storage/toolbox/lunchbox = 3,
+		/obj/item/storage/toolbox/lunchbox/heart = 3,
+		/obj/item/storage/toolbox/lunchbox/cat = 3,
+		/obj/item/storage/toolbox/lunchbox/nt = 3,
+		/obj/item/storage/toolbox/lunchbox/mars = 3,
+		/obj/item/storage/toolbox/lunchbox/cti = 3,
+		/obj/item/storage/toolbox/lunchbox/nymph = 3,
+		/obj/item/storage/toolbox/lunchbox/syndicate = 3,
+		/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
+		/obj/item/trash/bowl = 30,
+		/obj/item/reagent_containers/cooking_container/oven = 5,
+		/obj/item/reagent_containers/cooking_container/fryer = 4,
 	)
-
-	contraband = list(/obj/item/material/knife/butch = 2)
+	contraband = list(
+		/obj/item/material/knife/butch = 2,
+	)
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
