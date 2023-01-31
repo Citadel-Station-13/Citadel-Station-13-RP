@@ -16,8 +16,8 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "ec" = (
-/obj/structure/fence/wooden{
-	dir = 8
+/obj/structure/fence/bone{
+	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
@@ -26,7 +26,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/unexplored)
 "fi" = (
-/obj/structure/fence/wooden/post,
+/obj/structure/fence/bone/post,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "fV" = (
@@ -48,7 +48,7 @@
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/ashlander_village)
 "jW" = (
-/obj/structure/fence/wooden/corner{
+/obj/structure/fence/bone/corner{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -60,7 +60,7 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "la" = (
-/obj/structure/fence/door/wooden,
+/obj/structure/fence/door/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "mY" = (
@@ -152,7 +152,7 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "yC" = (
-/obj/structure/fence/wooden,
+/obj/structure/fence/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "yG" = (
@@ -175,7 +175,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Cw" = (
-/obj/structure/fence/wooden/corner{
+/obj/structure/fence/bone/corner{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -229,7 +229,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Mn" = (
-/obj/structure/fence/wooden/corner{
+/obj/structure/fence/bone/corner{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -253,7 +253,7 @@
 /turf/simulated/floor/outdoors/lava/indoors/noblend/lavaland,
 /area/lavaland/east/ashlander_village)
 "OR" = (
-/obj/structure/fence/wooden/post{
+/obj/structure/fence/bone/post{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -273,7 +273,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "SK" = (
-/obj/structure/fence/wooden/corner,
+/obj/structure/fence/bone/corner,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "SS" = (

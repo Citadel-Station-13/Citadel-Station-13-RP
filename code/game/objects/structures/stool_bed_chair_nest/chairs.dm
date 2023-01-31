@@ -435,7 +435,7 @@
 
 /obj/structure/bed/chair/post
 	name = "tying post"
-	desc = "A primitive wooden post used to leash "
+	desc = "A primitive post used to leash beasts of burden or riding mounts to one place."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "horsepost"
 	base_icon = "horsepost"
