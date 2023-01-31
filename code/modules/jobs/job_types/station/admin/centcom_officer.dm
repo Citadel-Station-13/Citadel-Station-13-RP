@@ -12,8 +12,6 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	economic_modifier = 20
-	whitelist_only = 1
 	join_types = JOB_LATEJOIN
 	outfit_type = /datum/outfit/job/station/centcom_officer
 	desc = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."

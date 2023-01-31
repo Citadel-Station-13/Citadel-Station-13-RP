@@ -10,7 +10,6 @@
 	supervisors = "the Pathfinder and the Chief Medical Officer"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/medical/sar
-	economic_modifier = 6
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)

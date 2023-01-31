@@ -13,7 +13,6 @@
 	supervisors = "command staff"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
-	economic_modifier = 7
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)

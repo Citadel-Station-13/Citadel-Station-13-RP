@@ -11,7 +11,6 @@
 	idtype = /obj/item/card/id/security/detective
 	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig)
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	economic_modifier = 5
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective

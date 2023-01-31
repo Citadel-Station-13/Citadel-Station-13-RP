@@ -16,7 +16,6 @@
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	economic_modifier = 10
 
 	minimum_character_age = 25
 	ideal_character_age = 50

@@ -16,3 +16,24 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
+
+/datum/preferences/proc/get_background_lore_datums()
+	. = list()
+	var/datum/lore/character_background/bglore
+	bglore = SScharacters.resolve_citizenship(get_preference(/datum/category_item/player_setup_item/background/citizenship))
+	if(bglore)
+		. += bglore
+	bglore = SScharacters.resolve_faction(get_preference(/datum/category_item/player_setup_item/background/faction))
+	if(bglore)
+		. += bglore
+	bglore = SScharacters.resolve_origin(get_preference(/datum/category_item/player_setup_item/background/origin))
+	if(bglore)
+		. += bglore
+	bglore = SScharacters.resolve_religion(get_preference(/datum/category_item/player_setup_item/background/religion))
+	if(bglore)
+		. += bglore
+
+/datum/preferences/proc/tally_background_economic_factor()
+	. = 1
+	for(var/datum/lore/character_background/bglore as anything in get_background_lore_datums())
+		. *= bglore.economy_payscale

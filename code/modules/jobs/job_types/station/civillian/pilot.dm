@@ -10,7 +10,6 @@
 	supervisors = "the Pathfinder and the Head of Personnel"
 	idtype = /obj/item/card/id/explorer/pilot
 	selection_color = "#515151"
-	economic_modifier = 5
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
 	access = list(access_pilot, access_external_airlocks)

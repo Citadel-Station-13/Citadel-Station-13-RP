@@ -13,7 +13,6 @@
 	idtype = /obj/item/card/id/cargo/head
 	supervisors = "the Head of Personnel"
 	selection_color = "#9b633e"
-	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 

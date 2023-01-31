@@ -9,7 +9,6 @@
 	spawn_positions = -1
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
-	economic_modifier = 1
 	access = list()			//See /datum/job/station/assistant/get_access()
 	minimal_access = list()	//See /datum/job/station/assistant/get_access()
 	timeoff_factor = 0

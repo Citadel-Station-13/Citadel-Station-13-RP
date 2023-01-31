@@ -1,4 +1,10 @@
-//* economy payscale: round(max(0, STARTING_BASE * MULT * /datum/department/var/economy_payscale * /datum/job/var/economy_payscale + gaussian(RANDOM_MEAN, RANDOM_DEV)))
+//* economy payscale:
+//* round(max(0,
+//* STARTING_BASE * MULT *
+//* /datum/department/var/economy_payscale * /datum/job/var/economy_payscale *
+//* (multiply together background lore modifiers here) *
+//* economic_status +
+//* gaussian(RANDOM_MEAN, RANDOM_DEV)))
 
 #define ECONOMY_PAYSCALE_BASE 500
 #define ECONOMY_PAYSCALE_MULT 1

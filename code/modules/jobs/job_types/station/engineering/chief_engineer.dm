@@ -14,7 +14,6 @@
 	selection_color = "#7F6E2C"
 	idtype = /obj/item/card/id/engineering/head
 	req_admin_notify = 1
-	economic_modifier = 10
 	pto_type = PTO_ENGINEERING
 
 	minimum_character_age = 25

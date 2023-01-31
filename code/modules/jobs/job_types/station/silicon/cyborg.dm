@@ -10,7 +10,6 @@
 	selection_color = "#254C25"
 	minimal_player_age = 3		// 1 day is a little too little time
 	account_allowed = 0
-	economic_modifier = 0
 	pto_type = PTO_CYBORG
 	has_headset = FALSE
 	assignable = FALSE

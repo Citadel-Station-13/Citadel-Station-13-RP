@@ -11,7 +11,6 @@
 	spawn_positions = 2
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
-	economic_modifier = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobotany, access_hydroponics)
 	minimal_access = list(access_research, access_xenobotany, access_hydroponics, access_tox_storage)
 	pto_type = PTO_SCIENCE
