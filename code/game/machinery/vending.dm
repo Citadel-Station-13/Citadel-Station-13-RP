@@ -901,31 +901,39 @@
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs.;Feeling temperamental? Try a Temperamento!;Carcinoma Angels - go fuck yerself!;Don't be so hard on yourself, kid. Smoke a Lucky Star!"
 	vend_delay = 34
 	icon_state = "cigs"
-	products = list(/obj/item/storage/fancy/cigarettes = 5,
-					/obj/item/storage/fancy/cigarettes/dromedaryco = 5,
-					/obj/item/storage/fancy/cigarettes/killthroat = 5,
-					/obj/item/storage/fancy/cigarettes/luckystars = 5,
-					/obj/item/storage/fancy/cigarettes/jerichos = 5,
-					/obj/item/storage/fancy/cigarettes/menthols = 5,
-					/obj/item/storage/rollingpapers = 5,
-					/obj/item/storage/rollingblunts = 5,
-					/obj/item/storage/box/matches = 10,
-					/obj/item/flame/lighter/random = 4)
-	contraband = list(/obj/item/flame/lighter/zippo = 4)
-	premium = list(/obj/item/storage/fancy/cigar = 5,
-					/obj/item/storage/fancy/cigarettes/carcinomas = 5,
-					/obj/item/storage/fancy/cigarettes/professionals = 5,
-					/obj/item/storage/fancy/cigarettes/blackstars = 5)
-	prices = list(/obj/item/storage/fancy/cigarettes = 12,
-					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
-					/obj/item/storage/fancy/cigarettes/killthroat = 17,
-					/obj/item/storage/fancy/cigarettes/luckystars = 17,
-					/obj/item/storage/fancy/cigarettes/jerichos = 22,
-					/obj/item/storage/fancy/cigarettes/menthols = 18,
-					/obj/item/storage/rollingpapers = 10,
-					/obj/item/storage/rollingblunts = 17,
-					/obj/item/storage/box/matches = 1,
-					/obj/item/flame/lighter/random = 2)
+	products = list(
+		/obj/item/storage/fancy/cigarettes = 5,
+		/obj/item/storage/fancy/cigarettes/dromedaryco = 5,
+		/obj/item/storage/fancy/cigarettes/killthroat = 5,
+		/obj/item/storage/fancy/cigarettes/luckystars = 5,
+		/obj/item/storage/fancy/cigarettes/jerichos = 5,
+		/obj/item/storage/fancy/cigarettes/menthols = 5,
+		/obj/item/storage/rollingpapers = 5,
+		/obj/item/storage/rollingblunts = 5,
+		/obj/item/storage/box/matches = 10,
+		/obj/item/flame/lighter/random = 4,
+	)
+	contraband = list(
+		/obj/item/flame/lighter/zippo = 4,
+	)
+	premium = list(
+		/obj/item/storage/fancy/cigar = 5,
+		/obj/item/storage/fancy/cigarettes/carcinomas = 5,
+		/obj/item/storage/fancy/cigarettes/professionals = 5,
+		/obj/item/storage/fancy/cigarettes/blackstars = 5,
+	)
+	prices = list(
+		/obj/item/storage/fancy/cigarettes = 12,
+		/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
+		/obj/item/storage/fancy/cigarettes/killthroat = 17,
+		/obj/item/storage/fancy/cigarettes/luckystars = 17,
+		/obj/item/storage/fancy/cigarettes/jerichos = 22,
+		/obj/item/storage/fancy/cigarettes/menthols = 18,
+		/obj/item/storage/rollingpapers = 15,
+		/obj/item/storage/rollingblunts = 25,
+		/obj/item/storage/box/matches = 3,
+		/obj/item/flame/lighter/random = 5,
+	)
 
 /obj/machinery/vending/medical
 	name = "NanoMed Plus"
