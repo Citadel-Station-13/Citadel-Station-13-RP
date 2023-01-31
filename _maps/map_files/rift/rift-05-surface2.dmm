@@ -1739,11 +1739,6 @@
 /area/security/briefing_room)
 "bkq" = (
 /obj/machinery/disposal,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -6984,11 +6979,16 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
 "fik" = (
-/obj/machinery/door/window/brigdoor/westright{
-	name = "Slime Pen 8";
-	req_access = list(55)
+/obj/machinery/light,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
+	scrub_id = s
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/alarm/monitor/isolation{
+	alarm_id = "slime_pens";
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "fil" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8333,13 +8333,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
-"ggC" = (
-/obj/machinery/door/window/brigdoor/westright{
-	name = "Slime Pen 6";
-	req_access = list(55)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "ghf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -8410,18 +8403,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"gkl" = (
-/obj/machinery/disposal,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "gks" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -10955,9 +10936,9 @@
 	name = "Pen 4 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/eastleft{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 4";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -12004,10 +11985,6 @@
 /area/crew_quarters/showers)
 "iOD" = (
 /obj/machinery/disposal,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -18515,6 +18492,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "nLm" = (
@@ -19741,13 +19719,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"oPI" = (
-/obj/machinery/door/window/brigdoor/westright{
-	name = "Slime Pen 4";
-	req_access = list(55)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "oQa" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -20976,13 +20947,6 @@
 "pBj" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"pBD" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	name = "Slime Pen 7";
-	req_access = list(55)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "pCD" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21396,9 +21360,9 @@
 	name = "Pen 5 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/westright{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 5";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -21541,9 +21505,9 @@
 	name = "Pen 3 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/westright{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 3";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -21967,9 +21931,9 @@
 	name = "Pen 8 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/eastleft{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 8";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -25977,9 +25941,9 @@
 	name = "Pen 6 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/eastleft{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 6";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -26247,13 +26211,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"tVw" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	name = "Slime Pen 5";
-	req_access = list(55)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "tVG" = (
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
@@ -28712,13 +28669,6 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/pool)
-"vKo" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	name = "Slime Pen 3";
-	req_access = list(55)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "vKu" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -30082,9 +30032,9 @@
 	name = "Pen 7 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/window/brigdoor/westright{
+/obj/machinery/door/airlock/glass_research{
 	name = "Slime Pen 7";
-	req_access = list(55)
+	req_one_access = list(47,55)
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -37992,7 +37942,7 @@ cJR
 tui
 tui
 tui
-smn
+fik
 kPi
 uIZ
 uIZ
@@ -38948,16 +38898,16 @@ sUg
 jdp
 oNU
 bkq
-vKo
-uWP
+cuM
+cuM
 gJf
 bkq
-tVw
-uWP
+cuM
+cuM
 rRW
-gkl
-pBD
-uWP
+bkq
+cuM
+cuM
 iqI
 bTa
 bcO
@@ -39724,16 +39674,16 @@ sUg
 bHB
 qbw
 iOD
-oPI
-uWP
+cuM
+cuM
 osc
 iOD
-ggC
-uWP
+cuM
+cuM
 bRL
 iOD
-fik
-uWP
+cuM
+cuM
 iqI
 fne
 vzC
