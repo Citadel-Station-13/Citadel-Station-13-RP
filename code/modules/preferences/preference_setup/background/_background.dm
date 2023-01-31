@@ -37,3 +37,7 @@
 	. = 1
 	for(var/datum/lore/character_background/bglore as anything in get_background_lore_datums())
 		. *= bglore.economy_payscale
+	// todo: character species when *necessary*
+	var/datum/species/S = real_species_datum()
+	. *= S.economy_payscale
+	. *= economic_class_payscale_lookup[economic_status] || 1

@@ -38,3 +38,13 @@
 #define ECONOMY_PAYSCALE_JOB_CAPTAIN 3
 // centcom
 #define ECONOMY_PAYSCALE_JOB_ADMIN 10
+
+//? Economic Class (Legacy)
+
+var/list/economic_class_payscale_lookup = list(
+	CLASS_UPPER = 1.1,
+	CLASS_MIDDLE = 1,
+	CLASS_LOWMID = 0.75,
+	CLASS_LOWISH = 0.5,
+	CLASS_LOW = 1/3,
+)
