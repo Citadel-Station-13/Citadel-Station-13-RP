@@ -6,9 +6,9 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals.dmi'
-
+	
 	plane = TURF_PLANE
-
+	
 	#ifdef IN_MAP_EDITOR
 	// Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_DECAL_LAYER
@@ -1302,3 +1302,22 @@ var/list/floor_decals = list()
 /obj/effect/transit/light
 	icon = 'icons/turf/transit_128.dmi'
 	icon_state = "tube1-2"
+
+/obj/effect/floor_decal/tracks
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "rail"
+
+/obj/effect/floor_decal/tracks/intersection
+	icon_state = "rail_intersection"
+
+/obj/effect/floor_decal/tracks/t_north
+	icon_state = "rail_intersection_NEW"
+
+/obj/effect/floor_decal/tracks/t_south
+	icon_state = "rail_intersection_SEW"
+
+/obj/effect/floor_decal/tracks/t_west
+	icon_state = "rail_intersection_NSW"
+
+/obj/effect/floor_decal/tracks/t_east
+	icon_state = "rail_intersection_NSE"
