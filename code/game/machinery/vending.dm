@@ -835,30 +835,34 @@
 	name = "SweatMAX"
 	desc = "Fueled by your inner inadequacy!"
 	icon_state = "fitness"
-	products = list(/obj/item/reagent_containers/food/drinks/smallmilk = 8,
-					/obj/item/reagent_containers/food/drinks/smallchocmilk = 8,
-					/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 8,
-					/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 8,
-					/obj/item/reagent_containers/food/snacks/candy/proteinbar = 8,
-					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
-					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
-					/obj/item/reagent_containers/pill/diet = 8,
-					/obj/item/towel/random = 8,
-					/obj/item/reagent_containers/food/snacks/brainsnax = 5)
-
-	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
-					/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
-					/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 35,
-					/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 5,
-					/obj/item/reagent_containers/food/snacks/candy/proteinbar = 5,
-					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
-					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
-					/obj/item/reagent_containers/pill/diet = 25,
-					/obj/item/towel/random = 40,
-					/obj/item/reagent_containers/food/snacks/brainsnax = 20
-					)
-
-	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
+	products = list(
+		/obj/item/reagent_containers/food/drinks/smallmilk = 8,
+		/obj/item/reagent_containers/food/drinks/smallchocmilk = 8,
+		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 8,
+		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 8,
+		/obj/item/reagent_containers/food/snacks/candy/proteinbar = 8,
+		/obj/item/reagent_containers/food/snacks/liquidfood = 10,
+		/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
+		/obj/item/reagent_containers/pill/diet = 8,
+		/obj/item/towel/random = 8,
+		/obj/item/reagent_containers/food/snacks/brainsnax = 5,
+	)
+	// yes, it's a ripoff, much like real sports food.
+	prices = list(
+		/obj/item/reagent_containers/food/drinks/smallmilk = 3,
+		/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
+		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 15,
+		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 5,
+		/obj/item/reagent_containers/food/snacks/candy/proteinbar = 10,
+		/obj/item/reagent_containers/food/snacks/liquidfood = 15,
+		/obj/item/reagent_containers/food/snacks/liquidprotein = 15,
+		/obj/item/reagent_containers/pill/diet = 10,
+		/obj/item/towel/random = 15,
+		/obj/item/reagent_containers/food/snacks/brainsnax = 10,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/syringe/steroid = 4
+	)
 
 /obj/machinery/vending/cart
 	name = "PTech"
@@ -867,9 +871,16 @@
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	req_access = list(access_hop)
-	products = list(/obj/item/cartridge/medical = 10,/obj/item/cartridge/engineering = 10,/obj/item/cartridge/security = 10,
-					/obj/item/cartridge/janitor = 10,/obj/item/cartridge/signal/science = 10,/obj/item/pda/heads = 10,
-					/obj/item/cartridge/captain = 3,/obj/item/cartridge/quartermaster = 10)
+	products = list(
+		/obj/item/cartridge/medical = 10,
+		/obj/item/cartridge/engineering = 10,
+		/obj/item/cartridge/security = 10,
+		/obj/item/cartridge/janitor = 10,
+		/obj/item/cartridge/signal/science = 10,
+		/obj/item/pda/heads = 10,
+		/obj/item/cartridge/captain = 3,
+		/obj/item/cartridge/quartermaster = 10,
+	)
 	req_log_access = access_hop
 	has_logs = 1
 
