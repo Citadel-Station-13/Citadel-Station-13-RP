@@ -722,17 +722,46 @@
 	product_slogans = "Try our new nougat bar!;Twice the calories for half the price!"
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
-	products = list(/obj/item/reagent_containers/food/snacks/candy = 6,/obj/item/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/reagent_containers/food/snacks/chips =6,
-					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
-					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
-	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
-	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
-					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
-					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1, /obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3)
+	products = list(
+		/obj/item/reagent_containers/food/snacks/candy = 6,
+		/obj/item/reagent_containers/food/drinks/dry_ramen = 6,
+		/obj/item/reagent_containers/food/snacks/chips =6,
+		/obj/item/reagent_containers/food/snacks/sosjerky = 6,
+		/obj/item/reagent_containers/food/snacks/no_raisin = 6,
+		/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
+		/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6,
+		/obj/item/reagent_containers/food/snacks/tastybread = 6,
+		/obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
+		/obj/item/reagent_containers/food/snacks/baschbeans = 6,
+		/obj/item/reagent_containers/food/snacks/creamcorn = 6,
+		/obj/item/reagent_containers/hard_candy/lollipop = 6,
+		/obj/item/reagent_containers/food/snacks/spunow = 6,
+		/obj/item/reagent_containers/food/snacks/glad2nut = 6,
+		/obj/item/reagent_containers/food/snacks/natkat = 6,
+		/obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/food/snacks/syndicake = 6,
+		/obj/item/reagent_containers/food/snacks/unajerky = 6,
+	)
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/candy = 2,
+		/obj/item/reagent_containers/food/drinks/dry_ramen = 5,
+		/obj/item/reagent_containers/food/snacks/chips = 3,
+		/obj/item/reagent_containers/food/snacks/sosjerky = 3,
+		/obj/item/reagent_containers/food/snacks/no_raisin = 2,
+		/obj/item/reagent_containers/food/snacks/spacetwinkie = 2,
+		/obj/item/reagent_containers/food/snacks/cheesiehonkers = 3,
+		/obj/item/reagent_containers/food/snacks/tastybread = 3,
+		/obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
+		/obj/item/reagent_containers/food/snacks/baschbeans = 6,
+		/obj/item/reagent_containers/food/snacks/creamcorn = 6,
+		/obj/item/reagent_containers/hard_candy/lollipop = 2,
+		/obj/item/reagent_containers/food/snacks/spunow = 4,
+		/obj/item/reagent_containers/food/snacks/glad2nut = 4,
+		/obj/item/reagent_containers/food/snacks/natkat = 4,
+		/obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 6
+	)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
