@@ -502,39 +502,6 @@ world
 
 	return hsv(hue, sat, val, (RGB.len>3 ? RGB[4] : null))
 
-/proc/hsv(hue, sat, val, alpha)
-	if(hue < 0 || hue >= 1536)
-		hue %= 1536
-	if(hue < 0)
-		hue += 1536
-	if((hue & 0xFF) == 0xFF)
-		++hue
-		if(hue >= 1536)
-			hue = 0
-	if(sat < 0)
-		sat = 0
-	if(sat > 255)
-		sat = 255
-	if(val < 0)
-		val = 0
-	if(val > 255)
-		val = 255
-	. = "#"
-	. += TO_HEX_DIGIT(hue >> 8)
-	. += TO_HEX_DIGIT(hue >> 4)
-	. += TO_HEX_DIGIT(hue)
-	. += TO_HEX_DIGIT(sat >> 4)
-	. += TO_HEX_DIGIT(sat)
-	. += TO_HEX_DIGIT(val >> 4)
-	. += TO_HEX_DIGIT(val)
-	if(!isnull(alpha))
-		if(alpha < 0)
-			alpha = 0
-		if(alpha > 255)
-			alpha = 255
-		. += TO_HEX_DIGIT(alpha >> 4)
-		. += TO_HEX_DIGIT(alpha)
-
 /*
 	Smooth blend between HSV colors
 

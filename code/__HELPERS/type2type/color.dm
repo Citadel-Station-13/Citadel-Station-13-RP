@@ -1,67 +1,58 @@
+
+// Like rgb() but for each color space.
+/proc/hsv(H, S, V, A)
+	return rgb(h=H, s=S, v=V, A=A, space=COLORSPACE_HSV)
+
+/proc/hsl(H, S, L, A)
+	return rgb(h=H, s=S, l=L, A=A, space=COLORSPACE_HSL)
+
+/proc/hcy(H, C, Y, A)
+	return rgb(h=H, c=C, y=Y, A=A, space=COLORSPACE_HCY)
+
+/// Legacy support macro
+#define hex2rgb(HEX) (rgb2num(HEX))
+
+// Like rgb2num() but for each color space.
+#define hsv2num(H, S, V, A...) (rgb2num(hsv(H, S, V, A), COLORSPACE_HSV))
+#define hsl2num(H, S, L, A...) (rgb2num(hsl(H, S, L, A), COLORSPACE_HSL))
+#define hcy2num(H, C, Y, A...) (rgb2num(hcy(H, C, Y, A), COLORSPACE_HCY))
+
+// Converting Color to a list of channel values.
+#define color2rgb(HEX) (rgb2num(HEX, COLORSPACE_RGB)) // COLORSPACE_RGB is irrelevent but there for consistency.
+#define color2hsv(HEX) (rgb2num(HEX, COLORSPACE_HSV))
+#define color2shl(HEX) (rgb2num(HEX, COLORSPACE_HSL))
+#define color2hcy(HEX) (rgb2num(HEX, COLORSPACE_HCY))
+
+
 /**
- * Convert RBG to HSL
+ * Color Channel getters
+ *
+ * ? Luckily color format designers were smart enough to make the channels mostly share the same index if possible.
  */
-/proc/rgb2hsl(red, green, blue)
-	red   /= 255
-	green /= 255
-	blue  /= 255
 
-	var/max   = max(red, green, blue)
-	var/min   = min(red, green, blue)
-	var/range = max - min
+// Use this preferably but if you want to be more explicit in some obtuse code, use the ones below this one.
+#define GET_COLOR_CHANNEL(COLOR, CHANNEL) (rgb2num(COLOR)[CHANNEL])
 
-	var/hue        = 0
-	var/saturation = 0
-	var/lightness  = 0
+// ! RGB
+#define rgb2r(COLOR) (GET_COLOR_CHANNEL(COLOR, 1))
+#define rgb2b(COLOR) (GET_COLOR_CHANNEL(COLOR, 2))
+#define rgb2g(COLOR) (GET_COLOR_CHANNEL(COLOR, 3))
 
-	lightness = (max + min) / 2
-	if(range != 0)
-		if(lightness < 0.5)
-			saturation = range / (max + min)
-		else
-			saturation = range / (2 - max - min)
+// ! HSV
+#define hsv2h(COLOR) (GET_COLOR_CHANNEL(COLOR, 1), COLORSPACE_HSV)
+#define hsv2s(COLOR) (GET_COLOR_CHANNEL(COLOR, 2), COLORSPACE_HSV)
+#define hsv2v(COLOR) (GET_COLOR_CHANNEL(COLOR, 3), COLORSPACE_HSV)
 
-		var/dred   = ((max - red)   / (6 * max)) + 0.5
-		var/dgreen = ((max - green) / (6 * max)) + 0.5
-		var/dblue  = ((max - blue)  / (6 * max)) + 0.5
+// ! HSL
+#define hsl2h(COLOR) (GET_COLOR_CHANNEL(COLOR, 1), COLORSPACE_HSL)
+#define hsl2s(COLOR) (GET_COLOR_CHANNEL(COLOR, 2), COLORSPACE_HSL)
+#define hsl2l(COLOR) (GET_COLOR_CHANNEL(COLOR, 3), COLORSPACE_HSL)
 
-		if(max == red)
-			hue = dblue - dgreen
-		else if(max == green)
-			hue = dred - dblue + (1 / 3)
-		else
-			hue = dgreen - dred + (2 / 3)
-		if(hue < 0)
-			hue++
-		else if(hue > 1)
-			hue--
+// ! HCY
+#define hcy2h(COLOR) (GET_COLOR_CHANNEL(COLOR, 1), COLORSPACE_HCY)
+#define hcy2c(COLOR) (GET_COLOR_CHANNEL(COLOR, 2), COLORSPACE_HCY)
+#define hcy2y(COLOR) (GET_COLOR_CHANNEL(COLOR, 3), COLORSPACE_HCY)
 
-	return list(hue, saturation, lightness)
-/**
- * Convert HSL to RGB
- */
-/proc/hsl2rgb(hue, saturation, lightness)
-	var/red
-	var/green
-	var/blue
-
-	if(saturation == 0)
-		red   = lightness * 255
-		green = red
-		blue  = red
-	else
-		var/a;var/b;
-		if(lightness < 0.5)
-			b = lightness * (1 + saturation)
-		else
-			b = (lightness + saturation) - (saturation * lightness)
-		a = 2 * lightness - b
-
-		red   = round(255 * hue2rgb(a, b, hue + (1/3)), 1)
-		green = round(255 * hue2rgb(a, b, hue),         1)
-		blue  = round(255 * hue2rgb(a, b, hue - (1/3)), 1)
-
-	return list(red, green, blue)
 
 /**
  * Convert hue to RGB
@@ -125,17 +116,6 @@
 			. = max(0, min(255, 138.5177312231 * log(temp - 10) - 305.0447927307))
 
 /**
- * Assumes format #RRGGBB #rrggbb
- */
-/proc/color_hex2num(A)
-	if(!A || length(A) != length_char(A))
-		return 0
-	var/R = hex2num(copytext(A, 2, 4))
-	var/G = hex2num(copytext(A, 4, 6))
-	var/B = hex2num(copytext(A, 6, 8))
-	return R+G+B
-
-/**
  *! Word of warning:
  *  Using a matrix like this as a color value will simplify it back to a string after being set.
  */
@@ -170,25 +150,3 @@
 		the_matrix[11] * 255, // B
 		the_matrix[16] * 255, // A
 	)
-
-/**
- * Converts a hexadecimal color (e.g. #FF0050) to a list of numbers for red, green, and blue (e.g. list(255,0,80) ).
- */
-/proc/hex2rgb(hex)
-	// Strips the starting #, in case this is ever supplied without one, so everything doesn't break.
-	if(findtext(hex,"#",1,2))
-		hex = copytext(hex, 2)
-	return list(hex2rgb_r(hex), hex2rgb_g(hex), hex2rgb_b(hex))
-
-//! The three procs below require that the '#' part of the hex be stripped, which hex2rgb() does automatically.
-/proc/hex2rgb_r(hex)
-	var/hex_to_work_on = copytext(hex,1,3)
-	return hex2num(hex_to_work_on)
-
-/proc/hex2rgb_g(hex)
-	var/hex_to_work_on = copytext(hex,3,5)
-	return hex2num(hex_to_work_on)
-
-/proc/hex2rgb_b(hex)
-	var/hex_to_work_on = copytext(hex,5,7)
-	return hex2num(hex_to_work_on)
