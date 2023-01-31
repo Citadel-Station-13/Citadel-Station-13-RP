@@ -15,7 +15,7 @@ var/silent_ert = 0
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
-	if(SSticker.current_state <= GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
 	if(send_emergency_team)
