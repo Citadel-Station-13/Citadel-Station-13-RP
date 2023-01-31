@@ -78,7 +78,6 @@
 //? todo why tf is this relaymove
 /obj/effect/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
 	accelerate(direction, accel_limit)
-	operator_skill = user.get_skill_value(/datum/skill/pilot)
 
 /obj/effect/overmap/visitable/ship/get_scan_data(mob/user)
 	. = ..()
@@ -284,9 +283,6 @@
 /obj/effect/overmap/visitable/ship/proc/unhalt()
 	if(!SSshuttle.overmap_halted)
 		halted = 0
-
-/obj/effect/overmap/visitable/ship/proc/get_helm_skill()	// Delete this mover operator skill to overmap obj
-	return operator_skill
 
 /obj/effect/overmap/visitable/ship/populate_sector_objects()
 	..()
