@@ -2055,13 +2055,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologyaccess)
-"bRp" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
-	},
-/obj/machinery/holoplant,
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "bRt" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
@@ -2353,6 +2346,15 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"cgI" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "chE" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/theatre)
@@ -2366,6 +2368,15 @@
 /obj/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"cie" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "cik" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -2812,6 +2823,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"cDU" = (
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "cFj" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/gravity_gen)
@@ -4911,6 +4926,12 @@
 /obj/structure/morgue,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
+"eHY" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "eIf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -9785,6 +9806,10 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
+"iKt" = (
+/obj/item/flame/candle/candelabra,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "iKw" = (
 /obj/structure/sign/deck3{
 	pixel_y = -32
@@ -13724,6 +13749,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
+"maF" = (
+/obj/item/storage/fancy/whitecandle_box,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "maO" = (
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 4;
@@ -15110,6 +15139,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"nkZ" = (
+/turf/simulated/open,
+/area/chapel/main)
 "nlf" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/plating,
@@ -21580,6 +21612,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
+"tdl" = (
+/obj/item/storage/fancy/blackcandle_box,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "tdA" = (
 /obj/machinery/door/airlock/maintenance/medical,
 /obj/machinery/door/firedoor/glass,
@@ -24654,6 +24690,12 @@
 	},
 /turf/simulated/open,
 /area/rnd/research)
+"vYD" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "vZb" = (
 /obj/structure/musician/piano,
 /obj/effect/floor_decal/spline/plain{
@@ -26987,6 +27029,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
+"xZe" = (
+/obj/item/storage/fancy/candle_box,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "xZj" = (
 /obj/structure/closet/crate/nanotrasen,
 /turf/simulated/floor/tiled/techmaint,
@@ -49094,8 +49140,8 @@ skn
 aKn
 lyN
 lyN
-fDN
 lyN
+fDN
 lzL
 lzL
 tWL
@@ -49286,9 +49332,9 @@ dNe
 dNe
 dNe
 aKn
-bRp
-qKn
-qKn
+nkZ
+nkZ
+eHY
 qKn
 dbk
 cPf
@@ -49480,9 +49526,9 @@ aKn
 aKn
 aKn
 aKn
+nkZ
+nkZ
 afh
-mvj
-mvj
 mvj
 cvA
 jRZ
@@ -49670,13 +49716,13 @@ soB
 aKn
 qag
 aKn
-asI
-asI
-asI
-eSO
-afh
-mvj
-mvj
+tdl
+xZe
+maF
+cPf
+cgI
+cie
+vYD
 mvj
 cvA
 afU
@@ -49867,7 +49913,7 @@ aKn
 asI
 asI
 asI
-cPf
+eSO
 afh
 mvj
 mvj
@@ -50059,8 +50105,8 @@ aKn
 aKn
 aKn
 asI
-asI
-asI
+iKt
+cDU
 cPf
 oJb
 mHS
