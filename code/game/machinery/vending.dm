@@ -2436,4 +2436,3 @@
 		/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 50,
 		/obj/item/reagent_containers/hypospray/glukoz/viraplus = 25,
 	)
-	idle_power_usage = 211
