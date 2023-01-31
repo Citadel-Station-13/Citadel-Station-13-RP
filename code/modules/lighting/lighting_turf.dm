@@ -63,9 +63,12 @@
 	old_color ||= COLOR_WHITE
 	new_color ||= COLOR_WHITE
 
-	var/dr = (HEX_RED  (new_color) / 255) * new_multiplier - (HEX_RED  (old_color) / 255) * old_multiplier
-	var/dg = (HEX_GREEN(new_color) / 255) * new_multiplier - (HEX_GREEN(old_color) / 255) * old_multiplier
-	var/db = (HEX_BLUE (new_color) / 255) * new_multiplier - (HEX_BLUE (old_color) / 255) * old_multiplier
+	var/list/old_parts = rgb2num(old_color)
+	var/list/new_parts = rgb2num(new_color)
+
+	var/dr = (new_parts[1] / 255) * new_multiplier - (old_parts[1] / 255) * old_multiplier
+	var/dg = (new_parts[2] / 255) * new_multiplier - (old_parts[2] / 255) * old_multiplier
+	var/db = (new_parts[3] / 255) * new_multiplier - (old_parts[3] / 255) * old_multiplier
 
 	if (!dr && !dg && !db)
 		return
@@ -78,9 +81,11 @@
 
 	multiplier ||= ambient_light_multiplier
 
-	var/ambient_r = (HEX_RED  (color) / 255) * multiplier
-	var/ambient_g = (HEX_GREEN(color) / 255) * multiplier
-	var/ambient_b = (HEX_BLUE (color) / 255) * multiplier
+	var/list/ambient_parts = rgb2num(color)
+
+	var/ambient_r = (ambient_parts[1] / 255) * multiplier
+	var/ambient_g = (ambient_parts[2] / 255) * multiplier
+	var/ambient_b = (ambient_parts[3] / 255) * multiplier
 
 	add_ambient_light_raw(ambient_r, ambient_g, ambient_b, update)
 
@@ -132,9 +137,10 @@
 	var/ambient_b = 0
 
 	if (ambient_light)
-		ambient_r = ((HEX_RED  (ambient_light) / 255) * ambient_light_multiplier) - ambient_light_old_r
-		ambient_g = ((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier) - ambient_light_old_g
-		ambient_b = ((HEX_BLUE (ambient_light) / 255) * ambient_light_multiplier) - ambient_light_old_b
+		var/list/parts = rgb2num(ambient_light)
+		ambient_r = ((parts[1] / 255) * ambient_light_multiplier) - ambient_light_old_r
+		ambient_g = ((parts[2] / 255) * ambient_light_multiplier) - ambient_light_old_g
+		ambient_b = ((parts[3] / 255) * ambient_light_multiplier) - ambient_light_old_b
 	else
 		ambient_r = -ambient_light_old_r
 		ambient_g = -ambient_light_old_g

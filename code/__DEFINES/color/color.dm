@@ -1,8 +1,3 @@
-#define HEX_RED(COLOR)   text2num(copytext(COLOR, 2, 4), 16)
-#define HEX_GREEN(COLOR) text2num(copytext(COLOR, 4, 6), 16)
-#define HEX_BLUE(COLOR)  text2num(copytext(COLOR, 6, 8), 16)
-#define HEX_ALPHA(COLOR) text2num(copytext(COLOR, 8, 10), 16)
-
 //GENERAL
 #define COLOR_WHITE						"#FFFFFF"
 #define COLOR_VERY_LIGHT_GRAY			"#EEEEEE"

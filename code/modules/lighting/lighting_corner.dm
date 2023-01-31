@@ -160,9 +160,11 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		if (!T || !T.ambient_light)
 			continue
 
-		sum_r += (HEX_RED(T.ambient_light) / 255) * T.ambient_light_multiplier
-		sum_g += (HEX_GREEN(T.ambient_light) / 255) * T.ambient_light_multiplier
-		sum_b += (HEX_BLUE(T.ambient_light) / 255) * T.ambient_light_multiplier
+		var/list/parts = rgb2num(T.ambient_light)
+
+		sum_r += (parts[1] / 255) * T.ambient_light_multiplier
+		sum_g += (parts[2] / 255) * T.ambient_light_multiplier
+		sum_b += (parts[3] / 255) * T.ambient_light_multiplier
 
 	sum_r /= 4
 	sum_g /= 4
