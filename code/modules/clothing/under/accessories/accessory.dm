@@ -871,12 +871,14 @@
 	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
 	icon_state = "talisman"
 	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	slot = ACCESSORY_SLOT_TIE
 
 /obj/item/clothing/accessory/skullcodpiece
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
 	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/skullcodpiece/fake
 	name = "false codpiece"

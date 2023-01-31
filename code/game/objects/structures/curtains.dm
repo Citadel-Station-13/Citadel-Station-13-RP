@@ -80,3 +80,35 @@
 
 /obj/structure/curtain/open/shower/security
 	color = "#AA0000"
+
+/obj/structure/curtain/ashlander
+	name = "hide curtains"
+	desc = "A curtain fasioned out of Goliath hide - frequently used to keep flying ash out of a building."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "goliath_closed"
+
+/obj/structure/curtain/ashlander/toggle()
+	set_opacity(!opacity)
+	if(opacity)
+		icon_state = "goliath_closed"
+		plane = MOB_PLANE
+		layer = ABOVE_MOB_LAYER
+	else
+		icon_state = "goliath_open"
+		plane = OBJ_PLANE
+		layer = 3.3
+
+/obj/structure/curtain/ashlander/attackby(obj/item/P, mob/user)
+	if(P.is_wirecutter())
+		playsound(src, P.tool_sound, 50, 1)
+		to_chat(user, "<span class='notice'>You start to cut the hide curtain.</span>")
+		if(do_after(user, 10))
+			to_chat(user, "<span class='notice'>You cut the hide curtain.</span>")
+			var/obj/item/stack/animalhide/goliath_hide/A = new /obj/item/stack/animalhide/goliath_hide( src.loc )
+			A.amount = 3
+			qdel(src)
+		return
+	else
+		src.attack_hand(user)
+	return
+

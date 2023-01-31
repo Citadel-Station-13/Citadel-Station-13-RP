@@ -16,9 +16,14 @@
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_LAVA)
 
+/turf/simulated/floor/outdoors/lava/noblend
+	edge_blending_priority = 0
+
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE
 
+/turf/simulated/floor/outdoors/lava/indoors/noblend
+	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
 	ambient_light = LIGHT_COLOR_LAVA
@@ -72,20 +77,11 @@
 	if(AM)
 		thing_to_check = list(AM)
 
-	for(var/thing in thing_to_check)
-		if(isobj(thing))
-			var/obj/O = thing
-			if(O.throwing)
-				continue
-			. = TRUE
-			O.lava_act()
-
-		else if(isliving(thing))
-			var/mob/living/L = thing
-			if(L.hovering || L.throwing) // Flying over the lava. We're just gonna pretend convection doesn't exist.
-				continue
-			. = TRUE
-			L.lava_act()
+	for(var/atom/movable/thing as anything in thing_to_check)
+		if(thing.is_avoiding_ground()) // Flying/riding over the lava. We're just gonna pretend convection doesn't exist.
+			continue
+		. = TRUE
+		thing.lava_act()
 
 // Lava that does nothing at all.
 /turf/simulated/floor/outdoors/lava/harmless/burn_stuff(atom/movable/AM)
@@ -107,3 +103,10 @@
 		else if(do_after(user, 4))
 			material.use(2)
 			new /obj/structure/catwalk(src)
+	else if(istype(W,/obj/item/stack/tile/floor/sandstone))
+		var/obj/item/stack/tile/floor/sandstone/material = W
+		if(material.get_amount() < 2)
+			return 0
+		else if(do_after(user, 4))
+			material.use(2)
+			new /obj/structure/catwalk/ashlander(src)
