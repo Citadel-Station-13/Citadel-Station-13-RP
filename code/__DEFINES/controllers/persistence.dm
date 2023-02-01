@@ -1,8 +1,14 @@
 //? Object Storage System - Groups
+
 /// default group for null groups
 #define OBJECT_PERSISTENCE_GROUP_NONE ""
 /// group for map persistence key
 #define OBJECT_PERSISTENCE_GROUP_FOR_MAP_KEY(_key) "map_[_key]"
+
+//? Object Storage System - Character Types
+
+/// /datum/character/human
+#define OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN "human"
 
 //? legacy below
 

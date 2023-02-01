@@ -98,6 +98,14 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 
  */
 
+/**
+ * hardcoded switch: what character type string corrosponds to what /datum/character
+ */
+/datum/controller/subsystem/persistence/proc/character_type_to_datum_path(what)
+	switch(what)
+		if(OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN)
+			return /datum/character/human
+
 /datum/character
 	abstract_type = /datum/character
 	/// our character id, if we're already in the sql database
@@ -108,6 +116,10 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 	var/player_id
 	/// our ckey(name) - used to avoid spaces/whatever getting in the way
 	var/canonical_name
+	/// created - SQL datetime - not modifiable
+	var/created_at
+	/// last played SQL datetime - not modifiable directly, use proc
+	var/played_at
 
 /**
  * reads from a given mob
@@ -127,11 +139,24 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 
 /**
  * reads data out of a database query
+ *
+ * @params
+ * * id - character id - number
+ * * playerid - player id - number
+ * * canonical_name - ckey(name) of character - string
+ * * created_at - created SQL timestamp - string
+ * * played_at - last played SQL timestamp - string
+ * * persist_data - persistence JSON - string
  */
-/datum/character/proc/load_from_query(datum/db_query/query)
+/datum/character/proc/load_from_query(id, playerid, canonical_name, created_at, played_at, persist_data)
 	if(IsAdminAdvancedProcCall())
 		CRASH("no proccalls allowed")
-	#warn impl
+	src.character_id = id
+	src.player_id = playerid
+	src.canonical_name = canonical_name
+	src.created_at = created_at
+	src.played_at = played_at
+	read_persist_data(safe_json_decode(persist_data) || list())
 
 /**
  * creates a database query to write our data
@@ -139,6 +164,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 /datum/character/proc/create_save_query()
 	if(IsAdminAdvancedProcCall())
 		CRASH("no proccalls allowed")
+	var/datum/db_query/query = SSdbcore.NewQuery(
+
+	)
 	#warn impl
 
 /**
@@ -163,4 +191,4 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
 	#warn impl
 
 /datum/character/human
-	character_type = "human"
+	character_type = OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN
