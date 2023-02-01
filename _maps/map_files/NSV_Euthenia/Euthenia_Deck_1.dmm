@@ -585,7 +585,7 @@
 	pixel_y = -2
 	},
 /obj/item/stamp/internalaffairs,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
 "awd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5082,6 +5082,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/space)
+"dUW" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/security/iaa/officeb)
 "dVR" = (
 /obj/structure/closet/crate/solar,
 /turf/simulated/floor/airless/ceiling,
@@ -6286,6 +6292,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
+"eKu" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "eKy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6986,6 +7002,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
+"fjW" = (
+/turf/simulated/floor/carpet/oracarpet,
+/area/tether/surfacebase/security/iaa/officea)
 "fmf" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_2)
@@ -8276,6 +8295,10 @@
 "ghR" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/holodeck_control)
+"ghU" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/security/iaa/officeb)
 "gir" = (
 /obj/machinery/computer/prisoner{
 	dir = 1
@@ -8588,7 +8611,7 @@
 /area/medical/reception)
 "gvh" = (
 /obj/structure/table/hardwoodtable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
 "gvz" = (
 /obj/structure/shuttle/engine/heater,
@@ -11913,6 +11936,16 @@
 	},
 /turf/simulated/open,
 /area/bridge/bunker)
+"iZQ" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "bar";
+	name = "Bar counter shutters";
+	pixel_x = -24;
+	pixel_y = 10
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar_backroom)
 "jbj" = (
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/plating,
@@ -13172,7 +13205,7 @@
 	pixel_y = 7
 	},
 /obj/landmark/spawnpoint/job/lawyer,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
 "kfl" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -17390,7 +17423,7 @@
 "nqz" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/computer/skills,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
 "nqG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17671,6 +17704,10 @@
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"nBE" = (
+/obj/structure/flora/pottedplant/bamboo,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/security/iaa/officea)
 "nBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17792,7 +17829,7 @@
 	pixel_y = -2
 	},
 /obj/item/stamp/internalaffairs,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
 "nHb" = (
 /obj/structure/shuttle/window,
@@ -19317,6 +19354,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"pcd" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/security/iaa/officea)
 "pcR" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -20493,7 +20536,7 @@
 /area/rnd/anomaly_lab)
 "qek" = (
 /obj/structure/table/hardwoodtable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
 "qeY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -21104,16 +21147,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
-"qHQ" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "qIc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -21167,6 +21200,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/space)
+"qKB" = (
+/turf/simulated/floor/carpet/purcarpet,
+/area/tether/surfacebase/security/iaa/officeb)
 "qLP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -24600,7 +24636,7 @@
 /obj/item/flashlight/lamp{
 	pixel_y = 12
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
 "tFK" = (
 /obj/structure/closet/crate{
@@ -25430,7 +25466,7 @@
 "umH" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
 "umM" = (
 /obj/structure/railing{
@@ -25481,7 +25517,7 @@
 "uoe" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/computer/skills,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
 "uoJ" = (
 /obj/structure/cable/green{
@@ -30376,7 +30412,7 @@
 	pixel_y = 7
 	},
 /obj/landmark/spawnpoint/job/lawyer,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
 "ygp" = (
 /turf/simulated/wall/r_wall,
@@ -38234,9 +38270,9 @@ xKi
 tim
 owQ
 umB
-umB
-umB
-umB
+fjW
+fjW
+fjW
 egZ
 fDP
 fDP
@@ -38430,7 +38466,7 @@ spk
 umB
 uoe
 yga
-umB
+fjW
 egZ
 fDP
 fDP
@@ -38817,7 +38853,7 @@ tim
 umB
 umB
 umB
-umB
+pcd
 umB
 egZ
 fDP
@@ -39008,7 +39044,7 @@ eEc
 xKi
 xKi
 tim
-umB
+nBE
 umB
 umB
 umB
@@ -40172,7 +40208,7 @@ lBm
 lBm
 aVt
 nLu
-oWl
+ghU
 oWl
 oWl
 oWl
@@ -40369,7 +40405,7 @@ nLu
 oWl
 oWl
 oWl
-oWl
+dUW
 oWl
 nLu
 fDP
@@ -40758,7 +40794,7 @@ emJ
 oWl
 nqz
 keY
-oWl
+qKB
 nLu
 fDP
 fDP
@@ -40950,9 +40986,9 @@ eZw
 nLu
 aTE
 oWl
-oWl
-oWl
-oWl
+qKB
+qKB
+qKB
 nLu
 fDP
 fDP
@@ -49310,7 +49346,7 @@ oAf
 oAf
 oAf
 hin
-qHQ
+tUc
 izy
 izy
 dzJ
@@ -49504,7 +49540,7 @@ oAf
 oAf
 oAf
 hin
-tUc
+eKu
 izy
 izy
 dzJ
@@ -54544,7 +54580,7 @@ lLO
 lLO
 sim
 uBX
-lQn
+iZQ
 lQn
 rha
 nfj

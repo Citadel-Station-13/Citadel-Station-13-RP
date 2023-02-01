@@ -28028,14 +28028,6 @@
 /obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"uMR" = (
-/obj/structure/stairs/spawner/east,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/deck_two)
 "uNG" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Robotics Lab";
@@ -32035,6 +32027,14 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/central_two)
+"xwJ" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/stairs/spawner/west,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two)
 "xwX" = (
 /obj/structure/noticeboard,
 /turf/simulated/wall,
@@ -51503,7 +51503,7 @@ iCP
 iCP
 iCP
 vnd
-dUX
+sDc
 dUX
 lUu
 dUX
@@ -51697,7 +51697,7 @@ seW
 seW
 seW
 vnd
-sDc
+uGI
 dUX
 lUu
 dUX
@@ -51891,7 +51891,7 @@ vnd
 vnd
 vnd
 vnd
-oNS
+xwJ
 dUX
 lUu
 dUX
@@ -52085,7 +52085,7 @@ wDS
 wDS
 otN
 uGI
-uMR
+oNS
 dUX
 lUu
 dUX
