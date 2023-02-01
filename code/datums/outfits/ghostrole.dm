@@ -15,6 +15,7 @@
 	name = "Ashlander - Craftsman"
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/pickaxe/bone
+	r_hand = /obj/item/storage/bag/ore/ashlander
 
 /datum/outfit/ashlander/farmer
 	name = "Ashlander - Farmer"
@@ -37,13 +38,13 @@
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/gun/ballistic/musket/pistol/tribal
 	l_hand = /obj/item/storage/box/munition_box
-	r_hand = /obj/item/reagent_containers/glass/powder_horn/tribal
+	r_hand = /obj/item/reagent_containers/glass/powder_horn/tribal/filled
 
 /datum/outfit/ashlander/sentry
 	name = "Ashlander - Sentry"
 	uniform = /obj/item/clothing/under/gladiator/ashlander
 	shoes = /obj/item/clothing/shoes/ashwalker
-	belt = /obj/item/reagent_containers/glass/powder_horn/tribal
+	belt = /obj/item/reagent_containers/glass/powder_horn/tribal/filled
 	r_hand = /obj/item/gun/ballistic/musket/tribal
 	l_hand = /obj/item/storage/box/munition_box
 

@@ -203,6 +203,12 @@
 		else
 			stored_ore[O.name] = 1
 
+//Ashlander variant!
+/obj/item/storage/bag/ore/ashlander
+	name = "goliath hide mining satchel"
+	desc = "This hide bag can be used to store and transport ores."
+	icon_state = "golisatchel"
+
 // -----------------------------
 //          Plant bag
 // -----------------------------

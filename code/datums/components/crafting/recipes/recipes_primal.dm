@@ -327,7 +327,7 @@
 
 /datum/crafting_recipe/munition_box
 	name = "Primitive Munitions Box"
-	result = /obj/item/storage/box/munition_box
+	result = /obj/item/storage/box/munition_box/empty
 	time = 40
 	reqs = list(/obj/item/stack/material/bone = 2,
 				/obj/item/stack/sinew = 2,
@@ -460,6 +460,17 @@
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/goliath_mining_satchel
+	name = "goliath hide mining satchel"
+	result = /obj/item/storage/bag/ore/ashlander
+	time = 20
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 6,
+				/obj/item/stack/sinew = 1,
+				/obj/item/stack/material/bone = 1
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
