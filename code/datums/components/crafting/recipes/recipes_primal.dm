@@ -453,3 +453,13 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/tying_post
+	name = "bone tying post"
+	result = /obj/structure/bed/chair/post
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 5,
+				/obj/item/stack/sinew = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE

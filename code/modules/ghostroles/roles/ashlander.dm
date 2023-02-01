@@ -82,7 +82,7 @@
 		/datum/crafting_recipe/primalsetter, /datum/crafting_recipe/bone_crowbar, /datum/crafting_recipe/bone_screwdriver, /datum/crafting_recipe/bone_wrench, /datum/crafting_recipe/bone_wirecutters,
 		/datum/crafting_recipe/bone_welder, /datum/crafting_recipe/munition_box, /datum/crafting_recipe/powder_horn, /datum/crafting_recipe/bonesword, /datum/crafting_recipe/bonesword_elder,
 		/datum/crafting_recipe/saddle, /datum/crafting_recipe/bonepickaxe, /datum/crafting_recipe/alchemy_station, /datum/crafting_recipe/calcinator, /datum/crafting_recipe/cooking_spit,
-		/datum/crafting_recipe/stone_dropper, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/stone_mortar
+		/datum/crafting_recipe/stone_dropper, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/stone_mortar, /datum/crafting_recipe/bone_arrow, /datum/crafting_recipe/hard_bone_arrow
 	)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
