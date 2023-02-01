@@ -115,6 +115,12 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashdropper0"
 
+/obj/item/reagent_containers/dropper/ashlander/update_icon()
+	if(reagents.total_volume)
+		icon_state = "ashdropper1"
+	else
+		icon_state = "ashdropper0"
+
 ////////////////////////////////////////////////////////////////////////////////
 /// Droppers. END
 ////////////////////////////////////////////////////////////////////////////////

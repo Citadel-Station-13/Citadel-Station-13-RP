@@ -323,5 +323,7 @@
 	. = ..()
 	if(lit)
 		set_light(3, 2, "#FF9933")
+		icon_state = "[on_icon]"
 	else
 		set_light(0)
+		icon_state = "[off_icon]"
