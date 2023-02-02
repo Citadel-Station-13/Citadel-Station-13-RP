@@ -53,6 +53,7 @@
 	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
+	taser_kill = FALSE
 	movement_cooldown = 10
 	movement_sound = 'sound/weapons/heavysmash.ogg'
 	special_attack_min_range = 2

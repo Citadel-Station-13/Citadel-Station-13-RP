@@ -40,6 +40,10 @@
 "ix" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
+"iE" = (
+/obj/structure/mob_spawner/stormdrifter,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/unexplored)
 "jg" = (
 /obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
@@ -7560,7 +7564,7 @@ wP
 Am
 Am
 Am
-wP
+iE
 Am
 Am
 wP
@@ -11430,7 +11434,7 @@ ww
 wP
 wP
 wP
-wP
+iE
 wP
 wP
 wP
@@ -12023,7 +12027,7 @@ ww
 ww
 wP
 wP
-wP
+iE
 wP
 wP
 wP
@@ -13157,7 +13161,7 @@ Qh
 Qh
 wP
 wP
-wP
+iE
 wP
 ww
 ww
@@ -14347,7 +14351,7 @@ ww
 wP
 wP
 wP
-wP
+iE
 wP
 wP
 wP
@@ -21682,7 +21686,7 @@ Qh
 Qh
 wP
 wP
-wP
+iE
 wP
 wP
 wP
@@ -24588,7 +24592,7 @@ wP
 wP
 wP
 wP
-wP
+iE
 wP
 wP
 ww

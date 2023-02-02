@@ -55,6 +55,7 @@
 	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
+	taser_kill = FALSE
 	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	melee_damage_lower = 5
@@ -176,6 +177,7 @@
 	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
+	taser_kill = FALSE
 	movement_cooldown = 4
 	melee_damage_lower = 10
 	melee_damage_upper = 15
