@@ -857,4 +857,5 @@
 /obj/item/clothing/suit/armor/ashlander
 	name = "ashen lamellar panoply"
 	desc = "This worn armor is fashioned out of bronze plates connected by dried sinew. The hammered plates are scuffed by ash and soot."
+	icon_state = "lamellar"
 	armor = list(melee = 20, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0, rad = 0)

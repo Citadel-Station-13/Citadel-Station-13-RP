@@ -168,6 +168,7 @@
 /obj/item/clothing/head/helmet/ashlander
 	name = "ashen lamellar helmet"
 	desc = "This bronze helmet is wrapped in Goliath hide. Dull bronze plates connected by dry sinew are mounted to the exterior for protection."
+	icon_state = "lamellar"
 	armor = list(melee = 15, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/helmet/tactical
