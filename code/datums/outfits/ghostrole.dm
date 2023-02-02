@@ -26,8 +26,8 @@
 
 /datum/outfit/ashlander/hunter
 	name = "Ashlander - Hunter"
-	uniform = /obj/item/clothing/under/gladiator/ashlander
-	head = /obj/item/clothing/head/helmet/gladiator/ashlander
+	suit = /obj/item/clothing/suit/armor/ashlander
+	head = /obj/item/clothing/head/helmet/ashlander
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/storage/belt/quiver/full/ash
 	back = /obj/item/gun/ballistic/bow/ashen
@@ -42,7 +42,7 @@
 
 /datum/outfit/ashlander/sentry
 	name = "Ashlander - Sentry"
-	uniform = /obj/item/clothing/under/gladiator/ashlander
+	suit = /obj/item/clothing/suit/armor/ashlander
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/reagent_containers/glass/powder_horn/tribal/filled
 	r_hand = /obj/item/gun/ballistic/musket/tribal

@@ -303,11 +303,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "yellow", SLOT_ID_LEFT_HAND = "yellow")
 	body_parts_covered = LOWER_TORSO
 
+//Obsolete, but retained for posterity.
+/*
 /obj/item/clothing/under/gladiator/ashlander
 	name = "ashlander panoply"
 	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
+*/
 
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"

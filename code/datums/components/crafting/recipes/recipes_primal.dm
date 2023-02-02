@@ -128,6 +128,15 @@
 	reqs = list(/obj/item/stack/material/leather = 3,
 				 /obj/item/stack/sinew = 4)
 	category = CAT_PRIMAL
+	always_available = TRUE
+
+/datum/crafting_recipe/quiver_ashlander
+	name = "Ashlander Quiver"
+	result = /obj/item/storage/belt/quiver
+	time = 80
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 3,
+				 /obj/item/stack/sinew = 4)
+	category = CAT_PRIMAL
 	always_available = FALSE
 
 /datum/crafting_recipe/bone_bow
@@ -471,6 +480,46 @@
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 6,
 				/obj/item/stack/sinew = 1,
 				/obj/item/stack/material/bone = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_armor
+	name = "ashen lamellar panoply"
+	result = /obj/item/clothing/suit/armor/ashlander
+	time = 120
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 10,
+				/obj/item/stack/sinew = 5,
+				/obj/item/stack/material/copper = 10
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_helmet
+	name = "ashen lamellar helmet"
+	result = /obj/item/clothing/head/helmet/ashlander
+	time = 100
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/copper = 5
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_tunic
+	name = "coarse tunic"
+	result = /obj/item/clothing/under/tribal_tunic/ashlander
+	time = 60
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_tunic_fem
+	name = "coarse tunic (female)"
+	result = /obj/item/clothing/under/tribal_tunic_fem/ashlander
+	time = 60
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
