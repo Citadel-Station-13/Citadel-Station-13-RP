@@ -39,6 +39,8 @@ SUBSYSTEM_DEF(repository)
  * prototypes returned from a typepath input should never, ever be modified.
  */
 /datum/controller/subsystem/repository/proc/fetch(datum/prototype/type_or_id)
+	if(isnull(type_or_id))
+		return
 	if(istext(type_or_id))
 		return uid_lookup[type_or_id]
 	. = type_lookup[type_or_id]

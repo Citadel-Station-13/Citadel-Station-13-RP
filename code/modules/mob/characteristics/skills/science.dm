@@ -11,7 +11,15 @@
 	id = "devices"
 	name = "Complex Devices"
 	desc = "Your ability to fabricate, utilize, maintain, and analyze complex machinery."
-	#warn impl
+	desc_untrained = "You can follow the on screen instructions of most consoles. Cool, I guess."
+	desc_novice = "You are a hobbyist gizmo enthusiast. You can probably figure out how to use some machines decently well, even without an interface. Some global speed bonuses are buffed, including lathe speed, to a small extent."
+	desc_trained = "You are a tinkerer by trade, perhaps even a scientist. Bonuses increased. You now have an easier time figuring out truly alien contraptions."
+	desc_experienced = "You've been a scientist or engineer for a long time. Complicated mechanisms are now second nature to you, and you can even overclock some things much like an engineer can."
+	desc_professional = "You are a professional reverse engineer. You can intuit things about alien machinery and technology, and things just <i>work</i> for you."
+	cost_novice = SKILLCOST_INCREMENT_MODERATE
+	cost_trained = SKILLCOST_INCREMENT_MODERATE
+	cost_experienced = SKILLCOST_INCREMENT_MAJOR
+	cost_professional = SKILLCOST_INCREMENT_MAJOR
 
 /**
  * Robolimbs / Cyborgs / Cybernetics

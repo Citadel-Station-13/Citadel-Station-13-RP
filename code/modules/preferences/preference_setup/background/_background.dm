@@ -16,4 +16,18 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
+	// do job titles after
 	sanitize_preference(/datum/category_item/player_setup_item/occupation/alt_titles)
+
+/datum/preferences/proc/all_background_datums()
+	return list(
+		lore_faction_datum(),
+		lore_citizenship_datum(),
+		lore_origin_datum(),
+		lore_religion_datum(),
+	)
+
+/datum/preferences/proc/all_background_ids()
+	. = list()
+	for(var/datum/lore/character_background/bg as anything in all_background_datums())
+		. += bg.id

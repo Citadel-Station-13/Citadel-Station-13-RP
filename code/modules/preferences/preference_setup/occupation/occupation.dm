@@ -167,7 +167,7 @@
 			var/datum/role/job/J = SSjob.job_by_id(params["title"])
 			if(!J)
 				return PREFERENCES_NOACTION
-			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in available_alt_titles(J)
+			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in prefs.available_alt_titles(J)
 			if(!title)
 				return PREFERENCES_NOACTION
 			prefs.set_job_title(params["title"], title)
@@ -177,7 +177,7 @@
 			var/list/built = list("<blockquote class='info'>")
 			built += "<center><b><h3>[J.title]</h3></b></center>"
 			built += "<b>Purpose:</b> [J.desc]"
-			built += "<b>Alternative titles:</b> [english_list(J.alt_titles)]"
+			built += "<b>Alternative titles (faction):</b> [english_list(prefs.available_alt_titles(J))]"
 			if(J.supervisors)
 				built += "You answer to [J.supervisors], normally."
 			if(J.departments)
@@ -205,10 +205,54 @@
 /datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
 	return list()
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/available_alt_titles(datum/role/job/J)
-	if(J.alt_titles | J.title)
-	#warn shitcode shim for "strict" mode
-	#warn impl
+/datum/preferences/proc/available_alt_titles(datum/role/job/J)
+	if(!J.strict_titles)
+		. = list(J.title)
+		for(var/title in J.alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])
+			if(!alt_datum)
+				continue
+			if(!alt_datum.background_restricted)
+				. |= alt_datum.title
+				continue
+			if(!(alt_datum.background_restricted | all_background_ids()))
+				continue
+			. |= alt_datum.title
+	else
+		. = list()
+		for(var/title in J.alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])
+			if(!alt_datum)
+				continue
+			if(!(alt_datum.background_restricted | all_background_ids()))
+				continue
+			. |= alt_datum.title
+		if(!length(.))
+			. += J.title
+
+/datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
+	if(!J.strict_titles)
+		if(alt_title == J.title)
+			return TRUE
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
+		if(!alt_datum)
+			return FALSE
+		return !alt_datum.background_restricted || (all_background_ids() & alt_datum.background_restricted)
+	else
+		var/found = FALSE
+		var/list/all_background_ids = all_background_ids()
+		for(var/other_title in J.alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[other_title])
+			if(alt_datum.background_restricted & all_background_ids)
+				found = TRUE
+				break
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
+		if(isnull(alt_datum))
+			if(alt_title == J.title)
+				return !found
+			else
+				return FALSE
+		return (alt_datum.background_restricted & all_background_ids) || (!found && !alt_datum.background_restricted)
 
 /**
  * display is done by jobs; this datum only handles data filtering
@@ -227,14 +271,8 @@
 			jobs -= id
 			continue
 		var/title = jobs[id]
-		if(!J.alt_titles[title])
+		if(!prefs.check_alt_title(J, title))
 			jobs -= id
-			continue
-		var/datum/prototype/alt_title/instance = SSrepository.fetch(J.alt_titles[title])
-		if(instance.background_restricted && !check_background(instance.background_restricted))
-			jobs -= id
-			#warn shitcode shim for "strict" mode
-			continue
 	return jobs
 
 /datum/category_item/player_setup_item/occupation/alt_titles/default_value(randomizing)

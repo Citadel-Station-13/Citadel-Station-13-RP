@@ -14,4 +14,11 @@
 	/// restricted: require these hardcoded lore datums to be associated with the characters by typepath or id.
 	/// null for anything/anyone
 	var/list/background_restricted
-	#warn impl
+
+/datum/prototype/alt_title/New()
+	for(var/i in 1 to length(background_restricted))
+		var/thing = background_restricted[i]
+		if(ispath(thing))
+			var/datum/lore/character_background/bg = thing
+			background_restricted[i] = initial(bg.id)
+	return ..()
