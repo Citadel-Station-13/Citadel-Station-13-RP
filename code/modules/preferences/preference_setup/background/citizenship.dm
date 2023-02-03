@@ -86,4 +86,5 @@
 	return get_character_data(CHARACTER_DATA_CITIZENSHIP)
 
 /datum/preferences/proc/lore_citizenship_datum()
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
 	return SScharacters.resolve_citizenship(lore_citizenship_id())

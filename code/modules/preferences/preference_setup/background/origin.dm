@@ -85,4 +85,5 @@
 	return get_character_data(CHARACTER_DATA_ORIGIN)
 
 /datum/preferences/proc/lore_origin_datum()
+	RETURN_TYPE(/datum/lore/character_background/origin)
 	return SScharacters.resolve_origin(lore_origin_id())

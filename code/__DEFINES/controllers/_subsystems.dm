@@ -156,12 +156,13 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_AIRFLOW      30
 #define FIRE_PRIORITY_OBJ          40
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_LIGHTING     50
-#define FIRE_PRIORITY_INSTRUMENTS  90
-#define FIRE_PRIORITY_MACHINES     100
-#define FIRE_PRIORITY_TGUI         110
-#define FIRE_PRIORITY_STATPANELS   400
-#define FIRE_PRIORITY_OVERLAYS     500
+#define FIRE_PRIORITY_LIGHTING         50
+#define FIRE_PRIORITY_INSTRUMENTS      90
+#define FIRE_PRIORITY_ASSET_LOADING    100
+#define FIRE_PRIORITY_MACHINES         100
+#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_STATPANELS       400
+#define FIRE_PRIORITY_OVERLAYS         500
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!

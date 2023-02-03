@@ -85,4 +85,6 @@
 	return get_character_data(CHARACTER_DATA_RELIGION)
 
 /datum/preferences/proc/lore_religion_datum()
+	RETURN_TYPE(/datum/lore/character_background/religion)
 	return SScharacters.resolve_religion(lore_religion_id())
+
