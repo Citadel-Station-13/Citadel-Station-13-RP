@@ -100,7 +100,7 @@
 
 /mob/living/simple_mob/animal/stormdrifter/bull
 	name = "stormdrifter bull"
-	desc = "Unlike the more passive Polyp, Stormdrifter Bulls are hardy and formidableo. Fiercely territorial, Bulls will aggressively protect Stormdrifter pods."
+	desc = "Unlike the more passive Polyp, Stormdrifter Bulls are hardy and formidable. Fiercely territorial, Bulls will aggressively protect Stormdrifter pods."
 	icon_state = "bulldrifter"
 	icon_living = "bulldrifter"
 	icon_dead = "bulldrifter_dead"

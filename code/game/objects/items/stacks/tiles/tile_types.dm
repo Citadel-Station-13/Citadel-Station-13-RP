@@ -301,6 +301,11 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "wood roofing"
 	icon_state = "tile-wood"
 
+/obj/item/stack/tile/roofing/bone
+	name = "bone roofing"
+	singular_name = "bone roofing"
+	icon_state = "tile-white"
+
 /obj/item/stack/tile/bananium
 	name = "bananium tile"
 	singular_name = "bananium tile"
