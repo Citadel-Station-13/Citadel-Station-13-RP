@@ -114,6 +114,7 @@
 	desc = "A hand-carved dropper. Roughly hewn out of softened volcanic stone, it still allows for precise measurement of fluids."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashdropper0"
+	unacidable = 1
 
 /obj/item/reagent_containers/dropper/ashlander/update_icon()
 	if(reagents.total_volume)

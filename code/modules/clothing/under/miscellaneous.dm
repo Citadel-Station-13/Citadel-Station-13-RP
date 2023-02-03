@@ -1774,7 +1774,7 @@
 /obj/item/clothing/under/tribal_tunic_fem/ashlander
 	name = "coarse tunic"
 	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
-	icon_state = "tribal_tunic"
+	icon_state = "tribal_tunic_fem"
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 
 /obj/item/clothing/under/skirt/pleated

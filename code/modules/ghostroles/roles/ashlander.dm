@@ -85,7 +85,7 @@
 		/datum/crafting_recipe/stone_dropper, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/stone_mortar, /datum/crafting_recipe/bone_arrow, /datum/crafting_recipe/hard_bone_arrow,
 		/datum/crafting_recipe/goliath_mining_satchel, /datum/crafting_recipe/ashlander_armor, /datum/crafting_recipe/ashlander_helmet, /datum/crafting_recipe/ashlander_tunic,
 		/datum/crafting_recipe/ashlander_tunic_fem, /datum/crafting_recipe/tying_post
-	)
+		)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
@@ -110,6 +110,7 @@
 	. = ..()
 	created.faction = "lavaland"
 	created.mind.teach_crafting_recipe(ashlander_crafting)
+	created.remove_language(/datum/language/common)
 
 /obj/structure/ghost_role_spawner/ashlander
 	name = "ashlander yurt"

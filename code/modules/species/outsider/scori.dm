@@ -3,6 +3,7 @@
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
 	category = SPECIES_CATEGORY_RESTRICTED
+	galactic_language = FALSE
 	default_language = LANGUAGE_ID_EVENT_1
 	intrinsic_languages = LANGUAGE_ID_EVENT_1
 	max_additional_languages = 0
