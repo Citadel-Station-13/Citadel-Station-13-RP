@@ -115,8 +115,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_corners          = corners
 	var/old_ao_neighbors     = ao_neighbors
 	// var/old_is_open          = is_open()
-	var/old_ambience =         ambient_light
-	var/old_ambience_mult =    ambient_light_multiplier
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
@@ -193,11 +191,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
-
-		if (old_ambience != ambient_light || old_ambience_mult != ambient_light_multiplier)
-			update_ambient_light(FALSE)
-
-
 
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)

@@ -120,8 +120,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	spawn(1)
-		update_sun_deferred(2, new_brightness, new_color)
+	update_sun_deferred(new_brightness, new_color)
 
 
 /datum/weather_holder/lythios43c
@@ -430,7 +429,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 			if(show_message)
 				to_chat(H, pick(effect_message))
-				
+
 /datum/weather/lythios43c/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5

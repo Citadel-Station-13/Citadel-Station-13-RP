@@ -147,7 +147,8 @@ SUBSYSTEM_DEF(planets)
 	while(needs_sun_update.len)
 		var/datum/planet/P = needs_sun_update[needs_sun_update.len]
 		needs_sun_update.len--
-		updateSunlight(P)
+		P.update_sunlight()
+
 		if(MC_TICK_CHECK)
 			return
 
@@ -179,14 +180,6 @@ SUBSYSTEM_DEF(planets)
 
 		if(MC_TICK_CHECK)
 			return
-
-/datum/controller/subsystem/planets/proc/updateSunlight(datum/planet/P)
-	// Calculate new values to apply
-	var/new_brightness = P.sun["brightness"] * (P.sun_position * P.sun_brightness_modifier)
-	var/new_color = P.sun["color"]
-	for(var/turf/simulated/T as anything in P.planet_floors)
-		T.set_ambient_light(new_color, new_brightness)
-		CHECK_TICK
 
 /datum/controller/subsystem/planets/proc/updateTemp(datum/planet/P)
 	//Set new temperatures
