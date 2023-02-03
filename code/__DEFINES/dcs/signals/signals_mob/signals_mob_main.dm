@@ -163,3 +163,6 @@
 
 /// called when we update lying: (new_lying)
 #define COMSIG_MOB_UPDATE_LYING		"mob_update_lying"
+
+/// Called when a mab has set_stat() called on them: (new_stat)
+#define COMSIG_MOB_STAT_CHANGE "mob_stat_change"

@@ -408,10 +408,10 @@
 
 /obj/shuttle_connector/Initialize(mapload)
 	. = ..()
-	GLOB.shuttle_added.register_global(src, .proc/setup_routes)
+	RegisterSignal(src, COMSIG_SHUTTLE_INITIALIZED, .proc/setup_routes)
 
 /obj/shuttle_connector/Destroy()
-	GLOB.shuttle_added.unregister_global(src, .proc/setup_routes)
+	UnregisterSignal(src, COMSIG_SHUTTLE_INITIALIZED)
 	. = ..()
 
 // This is called whenever a shuttle is initialized.  If its our shuttle, do our thing!

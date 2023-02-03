@@ -265,7 +265,7 @@
 
 	// Observer pattern pre-move
 	var/old_location = current_location
-	GLOB.shuttle_pre_move_event.raise_event(src, old_location, destination)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_PRE_MOVE, src, old_location, destination)
 	current_location.shuttle_departed(src)
 
 	log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
@@ -279,7 +279,7 @@
 
 	// Observer pattern post-move
 	destination.shuttle_arrived(src)
-	GLOB.shuttle_moved_event.raise_event(src, old_location, destination)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_MOVED, src, old_location, destination)
 
 	return TRUE
 

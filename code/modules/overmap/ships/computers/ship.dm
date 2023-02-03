@@ -74,7 +74,6 @@
 	if(WR in viewers)
 		return
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
-	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYDISTINCTADD(viewers, WR)
 	if(linked)
 		user.reset_perspective(linked)
@@ -95,7 +94,6 @@
 		L.looking_elsewhere = 0
 		if(!vis_update)
 			L.handle_vision()
-	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
 /obj/machinery/computer/ship/proc/viewing_overmap(mob/user)

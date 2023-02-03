@@ -11,8 +11,7 @@
 	moving_state = "shuttle_moving"
 
 /obj/effect/overmap/visitable/ship/landable/Destroy()
-	GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
-	GLOB.shuttle_moved_event.unregister(SSshuttle.shuttles[shuttle], src)
+	UnregisterSignal(SSshuttle.shuttles[shuttle], list(COMSIG_SHUTTLE_PRE_MOVE, COMSIG_SHUTTLE_MOVED))
 	return ..()
 
 /obj/effect/overmap/visitable/ship/landable/can_burn()
@@ -72,10 +71,9 @@
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src
-	GLOB.shuttle_pre_move_event.register(shuttle_datum, src, .proc/pre_shuttle_jump)
-	GLOB.shuttle_moved_event.register(shuttle_datum, src, .proc/on_shuttle_jump)
+	RegisterSignal(shuttle_datum, COMSIG_SHUTTLE_PRE_MOVE, .proc/pre_shuttle_jump)
+	RegisterSignal(shuttle_datum, COMSIG_SHUTTLE_MOVED, .proc/on_shuttle_jump)
 	on_landing(landmark, shuttle_datum.current_location) // We "land" at round start to properly place ourselves on the overmap.
-
 
 //
 // Center Landmark
@@ -146,11 +144,11 @@
 
 /obj/effect/shuttle_landmark/visiting_shuttle/shuttle_arrived(datum/shuttle/shuttle)
 	LAZYSET(core_landmark.visitors, src, shuttle)
-	GLOB.shuttle_moved_event.register(shuttle, src, .proc/shuttle_left)
+	RegisterSignal(shuttle, COMSIG_SHUTTLE_MOVED, .proc/shuttle_left)
 
 /obj/effect/shuttle_landmark/visiting_shuttle/proc/shuttle_left(datum/shuttle/shuttle, obj/effect/shuttle_landmark/old_landmark, obj/effect/shuttle_landmark/new_landmark)
 	if(old_landmark == src)
-		GLOB.shuttle_moved_event.unregister(shuttle, src)
+		UnregisterSignal(shuttle, COMSIG_SHUTTLE_MOVED)
 		LAZYREMOVE(core_landmark.visitors, src)
 
 //
@@ -162,7 +160,7 @@
 		return
 	if(into == landmark)
 		setup_overmap_location() // They're coming boys, better actually exist!
-		GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
+		UnregisterSignal(SSshuttle.shuttles[shuttle], COMSIG_SHUTTLE_PRE_MOVE)
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(given_shuttle != SSshuttle.shuttles[shuttle])

@@ -884,9 +884,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return
 
 /// Please always use this proc, never just set the var directly.
-/mob/proc/set_stat(var/new_stat)
+/mob/proc/set_stat(new_stat)
 	. = (stat != new_stat)
 	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STAT_CHANGE, new_stat)
 
 /mob/verb/face_direction()
 
