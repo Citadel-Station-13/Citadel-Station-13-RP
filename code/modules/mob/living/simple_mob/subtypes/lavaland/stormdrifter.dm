@@ -122,3 +122,4 @@
 /datum/ai_holder/simple_mob/stormdrifter/bull
 	hostile = TRUE
 	cooperative = TRUE
+	can_flee = FALSE
