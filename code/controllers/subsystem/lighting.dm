@@ -8,8 +8,7 @@ SUBSYSTEM_DEF(lighting)
 	var/total_lighting_overlays = 0
 	var/total_lighting_sources = 0
 	var/total_ambient_turfs = 0
-	/// List of all lighting corners in the world.
-	var/list/lighting_corners = list()
+	var/total_lighting_corners = 0
 
 	/// lighting sources  queued for update.
 	var/list/light_queue   = list()
@@ -41,9 +40,9 @@ SUBSYSTEM_DEF(lighting)
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 		"IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]% Instant: [force_queued ? "Disabled" : "Allowed"] <br>",
 #endif
-		"&emsp;T:{L:[total_lighting_sources] C:[lighting_corners.len] O:[total_lighting_overlays]}<br>",
-		"&emsp;P:{L:[light_queue.len - (lq_idex - 1)]|C:[corner_queue.len - (cq_idex - 1)]|O:[overlay_queue.len - (oq_idex - 1)]}<br>",
-		"&emsp;L:{L:[processed_lights]|C:[processed_corners]|O:[processed_overlays]}<br>"
+		"&emsp;T: { L: [total_lighting_sources] C: [total_lighting_corners] O:[total_lighting_overlays] A: [total_ambient_turfs] }<br>",
+		"&emsp;P: { L: [light_queue.len - (lq_idex - 1)] C: [corner_queue.len - (cq_idex - 1)] O: [overlay_queue.len - (oq_idex - 1)] }<br>",
+		"&emsp;L: { L: [processed_lights] C: [processed_corners] O: [processed_overlays]}<br>"
 	)
 	return ..() + out.Join()
 
@@ -120,7 +119,7 @@ SUBSYSTEM_DEF(lighting)
 			else
 				new /atom/movable/lighting_overlay(T)
 				. += 1
-			if (T.ambient_light)
+			if (TURF_IS_AMBIENT_LIT_UNSAFE(T))
 				T.generate_missing_corners()	// Forcibly generate corners.
 
 		CHECK_TICK
@@ -212,7 +211,7 @@ SUBSYSTEM_DEF(lighting)
 		oq_idex = 1
 
 /datum/controller/subsystem/lighting/Recover()
-	lighting_corners = SSlighting.lighting_corners
+	total_lighting_corners = SSlighting.total_lighting_corners
 	total_lighting_overlays = SSlighting.total_lighting_overlays
 	total_lighting_sources = SSlighting.total_lighting_sources
 

@@ -60,15 +60,15 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		holder.remove_reagent(id, amount)
 
 /// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
-/datum/reagent/proc/touch_mob(var/mob/M, var/amount)
+/datum/reagent/proc/touch_mob(mob/M, amount)
 	return
 
 /// Acid melting, cleaner cleaning, etc
-/datum/reagent/proc/touch_obj(var/obj/O, var/amount)
+/datum/reagent/proc/touch_obj(obj/O, amount)
 	return
 
 /// Cleaner cleaning, lube lubbing, etc, all go here
-/datum/reagent/proc/touch_turf(var/turf/T, var/amount)
+/datum/reagent/proc/touch_turf(turf/T, amount)
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
@@ -188,10 +188,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	remove_self(removed)
 	return
 
-/datum/reagent/proc/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return
 
-/datum/reagent/proc/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
 	return
 
 /datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose_mod *= H.species.chemOD_mod
 	M.adjustToxLoss(removed * overdose_mod)
 
-/datum/reagent/proc/initialize_data(var/newdata) // Called when the reagent is created.
+/datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
 	if(!isnull(newdata))
 		data = newdata
 	return

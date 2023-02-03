@@ -12,6 +12,9 @@
 	slowdown = 2
 	special_temperature = T0C + 2200
 
+	ambient_light = LIGHT_COLOR_LAVA
+	ambient_light_multiplier = 1
+
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_LAVA)
@@ -26,8 +29,6 @@
 	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
-	ambient_light = LIGHT_COLOR_LAVA
-	ambient_light_multiplier = 0.6
 
 	// For maximum pedantry.
 	if(!outdoors)
