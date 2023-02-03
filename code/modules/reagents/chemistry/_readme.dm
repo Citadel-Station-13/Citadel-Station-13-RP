@@ -57,34 +57,34 @@ About the Holder:
 		handle_reactions()
 			Checks reagents and triggers any reactions that happen. Usually called automatically.
 
-		add_reagent(var/id, var/amount, var/data = null, var/safety = 0)
+		add_reagent(id, amount, data = null, safety = 0)
 			Adds [amount] units of [id] reagent. [data] will be passed to reagent's mix_data() or initialize_data(). If [safety] is 0, handle_reactions() will be called. Returns 1 if successful, 0 otherwise.
 
-		remove_reagent(var/id, var/amount, var/safety = 0)
+		remove_reagent(id, amount, safety = 0)
 			Ditto, but removes reagent. Returns 1 if successful, 0 otherwise.
 
-		del_reagent(var/id)
+		del_reagent(id)
 			Removes all of the reagent.
 
-		has_reagent(var/id, var/amount = 0)
+		has_reagent(id, amount = 0)
 			Checks if holder has at least [amount] of [id] reagent. Returns 1 if the reagent is found and volume is above [amount]. Returns 0 otherwise.
 
 		clear_reagents()
 			Removes all reagents.
 
-		get_reagent_amount(var/id)
+		get_reagent_amount(id)
 			Returns reagent volume. Returns 0 if reagent is not found.
 
-		get_data(var/id)
+		get_data(id)
 			Returns get_data() of the reagent.
 
 		get_reagents()
 			Returns a string containing all reagent ids and volumes, e.g. "carbon(4),nittrogen(5)".
 
-		remove_any(var/amount = 1)
+		remove_any(amount = 1)
 			Removes up to [amount] of reagents from [src]. Returns actual amount removed.
 
-		trans_to_holder(var/datum/reagents/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
+		trans_to_holder(datum/reagents/target, amount = 1, multiplier = 1, copy = 0)
 			Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]). If [copy] is 1, copies reagents instead.
 
 		touch(var/atom/target)
@@ -95,7 +95,7 @@ About the Holder:
 			Basically just defers to touch_mob(target), touch_turf(target), or touch_obj(target), depending on target's type.
 			Not recommended to use this directly, since trans_to() calls it before attempting to transfer.
 
-		touch_mob(var/mob/target)
+		touch_mob(mob/target)
 			Calls each reagent's touch_mob(target).
 
 		touch_turf(var/turf/target)
@@ -111,17 +111,17 @@ About the Holder:
 
 			Calls touch() before checking the type of [target], calling splash_mob(target, amount), trans_to_turf(target, amount, multiplier, copy), or trans_to_obj(target, amount, multiplier, copy).
 
-		trans_id_to(var/atom/target, var/id, var/amount = 1)
+		trans_id_to(atom/target, id, amount = 1)
 			Transfers [amount] of [id] to [target]. Returns amount transferred.
 
 		splash_mob(var/mob/target, var/amount = 1, var/clothes = 1)
 			Checks mob's clothing if [clothes] is 1 and transfers [amount] reagents to mob's skin.
 			Don't call this directly. Call apply_to() instead.
 
-		trans_to_mob(var/mob/target, var/amount = 1, var/type = CHEM_BLOOD, var/multiplier = 1, var/copy = 0)
+		trans_to_mob(mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0)
 			Transfers [amount] reagents to the mob's appropriate holder, depending on [type]. Ignores protection.
 
-		trans_to_turf(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
+		trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0)
 			Turfs don't currently have any reagents. Puts [amount] reagents into a temporary holder, calls touch_turf(target) from it, and deletes it.
 
 		trans_to_obj(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
@@ -208,28 +208,28 @@ About Reagents:
 		touch_mob(var/mob/M)
 			Called when reagent is in another holder and not splashing the mob. Can be used with noncarbons.
 
-		touch_obj(var/obj/O)
+		touch_obj(obj/O)
 			How reagent reacts with objects.
 
-		touch_turf(var/turf/T)
+		touch_turf(turf/T)
 			How reagent reacts with turfs.
 
 		on_mob_life(var/mob/living/carbon/M, var/alien, var/location)
 			Makes necessary checks and calls one of affect procs.
 
-		affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+		affect_blood(mob/living/carbon/M, alien, removed)
 			How reagent affects mob when injected. [removed] is the amount of reagent that has been removed this tick. [alien] is the mob's reagent flag.
 
-		affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+		affect_ingest(mob/living/carbon/M, alien, removed)
 			Ditto, ingested. Defaults to affect_blood with halved dose.
 
-		affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+		affect_touch(mob/living/carbon/M, alien, removed)
 			Ditto, touching.
 
-		overdose(var/mob/living/carbon/M, var/alien)
+		overdose(mob/living/carbon/M, alien)
 			Called when dose is above overdose. Defaults to M.adjustToxLoss(REM).
 
-		initialize_data(var/newdata)
+		initialize_data(newdata)
 			Called when reagent is created. Defaults to setting [data] to [newdata].
 
 		mix_data(var/newdata, var/newamount)
@@ -274,7 +274,7 @@ About Recipes:
 		can_happen(var/datum/reagents/holder)
 			Customizable. If it returns 0, reaction will not happen. Defaults to always returning 1. Used by slime core reactions.
 
-		on_reaction(var/datum/reagents/holder, var/created_volume)
+		on_reaction(datum/reagents/holder, created_volume)
 			Called when reaction happens. Used by explosives.
 
 		send_data(var/datum/reagents/T)
