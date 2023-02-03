@@ -219,16 +219,19 @@
 				continue
 			. |= alt_datum.title
 	else
-		. = list()
+		var/list/normal_list = list()
+		var/list/restricted_list = list()
 		for(var/title in J.alt_titles)
 			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])
 			if(!alt_datum)
 				continue
+			if(!alt_datum.background_restricted)
+				normal_list |= alt_datum.title
+				continue
 			if(!(alt_datum.background_restricted | all_background_ids()))
 				continue
-			. |= alt_datum.title
-		if(!length(.))
-			. += J.title
+			restricted_list |= alt_datum.title
+		return length(restricted_list)? restricted_list : normal_list
 
 /datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
 	if(!J.strict_titles)
