@@ -233,7 +233,7 @@
 	if(href_list["ready"])
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
 			var/list/warnings = list()
-			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART | PREF_COPY_TO_IS_SPAWNING, warnings = warnings)
+			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
 			if(length(warnings) && tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up?<br>[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]", "Spawn Checks", list("Yes", "No")) != "Yes")
 				return
 			ready = text2num(href_list["ready"])
