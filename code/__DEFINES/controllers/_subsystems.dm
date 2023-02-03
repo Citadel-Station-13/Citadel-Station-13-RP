@@ -127,18 +127,21 @@ DEFINE_BITFIELD(runlevels, list(
  *? If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
  */
 
-//? Ticker Subsystems
+//? Background Subsystems - Below normal
+// Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
+// This means by default, ../subsystem/processing/.. is here!
 
-#define FIRE_PRIORITY_AI           10	 // WHY IS THIS SSTICKER???
+#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_GARBAGE      15
+#define FIRE_PRIORITY_CHARACTERS   25
+#define FIRE_PRIORITY_PARALLAX     30
+#define FIRE_PRIORITY_AIR          35
+#define FIRE_PRIORITY_PROCESS      45
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PROJECTILES  150
-#define FIRE_PRIORITY_THROWING     150
-#define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_SMOOTHING    500
-#define FIRE_PRIORITY_TIMER        700
-#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
+#define FIRE_PRIORITY_PLANETS      75
 
-//? Normal Subsystems
+//? Normal Subsystems - Above background, below ticker
+// Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
 
 #define FIRE_PRIORITY_PING         5
 #define FIRE_PRIORITY_SHUTTLES     5
@@ -160,17 +163,20 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_STATPANELS   400
 #define FIRE_PRIORITY_OVERLAYS     500
 
-//? Background Subsystems
+//? Ticker Subsystems - Highest priority
+// Any subsystem flagged with SS_TICKER is here!
+// Do not unnecessarily set your subsystem as TICKER.
+// Is your feature as important as movement, chat, or timers?
+// Probably not! Go to normal bracket instead!
 
-#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
-#define FIRE_PRIORITY_GARBAGE      15
-#define FIRE_PRIORITY_CHARACTERS   25
-#define FIRE_PRIORITY_PARALLAX     30
-#define FIRE_PRIORITY_AIR          35
-#define FIRE_PRIORITY_PROCESS      45
+#define FIRE_PRIORITY_AI           10	 //! WHY IS THIS SSTICKER???
 // DEFAULT PRIORITY IS HERE
-// Any ../subsystem/processing/.. is here unless specified otherwise!
-#define FIRE_PRIORITY_PLANETS      75
+#define FIRE_PRIORITY_PROJECTILES  150   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_THROWING     150   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_CHAT         400
+#define FIRE_PRIORITY_SMOOTHING    500   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_TIMER        700
+#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
 
 //? Special
 
