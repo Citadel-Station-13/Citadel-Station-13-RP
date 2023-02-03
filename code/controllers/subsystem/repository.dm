@@ -64,8 +64,8 @@ SUBSYSTEM_DEF(repository)
 		return subtype_lists[path]
 	var/list/generating = list()
 	subtype_lists[path] = generating
-	for(var/path as anything in subtypesof(path))
-		var/datum/prototype/instance = fetch(path)
+	for(var/fetching as anything in subtypesof(path))
+		var/datum/prototype/instance = fetch(fetching)
 		generating += instance
 	return generating
 

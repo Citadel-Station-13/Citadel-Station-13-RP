@@ -127,39 +127,55 @@ DEFINE_BITFIELD(runlevels, list(
  *? If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
  */
 
-#define FIRE_PRIORITY_PING         5
-#define FIRE_PRIORITY_SHUTTLES     5
-#define FIRE_PRIORITY_NIGHTSHIFT   6
-#define FIRE_PRIORITY_PLANTS       5
-#define FIRE_PRIORITY_VOTE         9
-#define FIRE_PRIORITY_AI           10
-#define FIRE_PRIORITY_VIS          10
-#define FIRE_PRIORITY_SERVER_MAINT 10
-#define FIRE_PRIORITY_ZMIMIC       10
-#define FIRE_PRIORITY_GARBAGE      15
-#define FIRE_PRIORITY_ALARMS       20
-#define FIRE_PRIORITY_CHARSETUP    25
-#define FIRE_PRIORITY_SPACEDRIFT   25
-#define FIRE_PRIORITY_AIRFLOW      30
-#define FIRE_PRIORITY_PARALLAX     30
-#define FIRE_PRIORITY_AIR          35
-#define FIRE_PRIORITY_OBJ          40
-#define FIRE_PRIORITY_PROCESS      45
-#define FIRE_PRIORITY_DEFAULT      50
-#define FIRE_PRIORITY_LIGHTING     50
-#define FIRE_PRIORITY_PLANETS      75
-#define FIRE_PRIORITY_INSTRUMENTS  90
-#define FIRE_PRIORITY_MACHINES     100
-#define FIRE_PRIORITY_ASSETS       105
-#define FIRE_PRIORITY_TGUI         110
+//? Ticker Subsystems
+
+#define FIRE_PRIORITY_AI           10	 // WHY IS THIS SSTICKER???
+// DEFAULT PRIORITY IS HERE
 #define FIRE_PRIORITY_PROJECTILES  150
 #define FIRE_PRIORITY_THROWING     150
 #define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_STATPANELS   400
-#define FIRE_PRIORITY_OVERLAYS     500
 #define FIRE_PRIORITY_SMOOTHING    500
 #define FIRE_PRIORITY_TIMER        700
 #define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
+
+//? Normal Subsystems
+
+#define FIRE_PRIORITY_PING         5
+#define FIRE_PRIORITY_SHUTTLES     5
+#define FIRE_PRIORITY_PLANTS       5
+#define FIRE_PRIORITY_NIGHTSHIFT   6
+#define FIRE_PRIORITY_VOTE         9
+#define FIRE_PRIORITY_VIS          10
+#define FIRE_PRIORITY_SERVER_MAINT 10
+#define FIRE_PRIORITY_ZMIMIC       10
+#define FIRE_PRIORITY_ALARMS       20
+#define FIRE_PRIORITY_SPACEDRIFT   25
+#define FIRE_PRIORITY_AIRFLOW      30
+#define FIRE_PRIORITY_OBJ          40
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_LIGHTING     50
+#define FIRE_PRIORITY_INSTRUMENTS  90
+#define FIRE_PRIORITY_MACHINES     100
+#define FIRE_PRIORITY_TGUI         110
+#define FIRE_PRIORITY_STATPANELS   400
+#define FIRE_PRIORITY_OVERLAYS     500
+
+//? Background Subsystems
+
+#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_GARBAGE      15
+#define FIRE_PRIORITY_CHARACTERS   25
+#define FIRE_PRIORITY_PARALLAX     30
+#define FIRE_PRIORITY_AIR          35
+#define FIRE_PRIORITY_PROCESS      45
+// DEFAULT PRIORITY IS HERE
+// Any ../subsystem/processing/.. is here unless specified otherwise!
+#define FIRE_PRIORITY_PLANETS      75
+
+//? Special
+
+/// This is used as the default regardless of bucket. Check above.
+#define FIRE_PRIORITY_DEFAULT      50
 
 /**
  * Create a new timer and add it to the queue.
