@@ -795,6 +795,28 @@
 	required_reagents = list("tallow" = 1, "ash" = 1, "alchemybase" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/poultice_brute
+	name = "Poultice (Juhtak)"
+	id = "poulticebrute"
+	result = null
+	required_reagents = list("alchemybase" = 10, "bicaridine" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_brute/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_brute(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/poultice_burn
+	name = "Poultice (Pyrrhlea)"
+	id = "poulticeburn"
+	result = null
+	required_reagents = list("alchemybase" = 10, "kelotane" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_burn/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////
