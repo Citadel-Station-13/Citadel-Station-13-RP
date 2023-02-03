@@ -81,9 +81,8 @@
 	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	if(config_legacy.allow_Metadata)
-		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
-	. = jointext(.,null)
+	. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+	. = jointext(., null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
@@ -152,6 +151,10 @@
 			return PREFERENCES_REFRESH
 
 	return ..()
+
+/datum/category_item/player_setup_item/general/basic/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+	. = ..()
+
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
 	var/datum/species/S = pref.real_species_datum()

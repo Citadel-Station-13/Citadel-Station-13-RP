@@ -232,6 +232,10 @@
 
 	if(href_list["ready"])
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
+			var/list/warnings = list()
+			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART | PREF_COPY_TO_IS_SPAWNING, warnings = warnings)
+			if(length(warnings) && tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up?<br>[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]", "Spawn Checks", list("Yes", "No")) != "Yes")
+				return
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
@@ -476,9 +480,12 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors))
+	var/list/warnings = list()
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors, warnings))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
+	if(length(warnings) && tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?<br>[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]", "Spawn Checks", list("Yes", "No")) != "Yes")
+		return
 
 	//Find our spawning point.
 	var/list/join_props = SSjob.LateSpawn(client, rank)
@@ -558,6 +565,7 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
+	// warnings ignored for now.
 	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
@@ -689,16 +697,6 @@
 
 /mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
-
-	//No Flavor Text
-	if (config_legacy.require_flavor && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
-		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
-		pass = FALSE
-
-	//No OOC notes
-	if (config_legacy.allow_Metadata && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
-		to_chat(src,"<span class='warning'>Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup.</span>")
-		pass = FALSE
 
 	//Are they on the VERBOTEN LIST?
 	if (prevent_respawns.Find(client.prefs.real_name))
