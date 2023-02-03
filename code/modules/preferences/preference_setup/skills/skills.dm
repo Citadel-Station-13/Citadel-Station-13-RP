@@ -1,3 +1,5 @@
+// TODO: this file is still commented out, because we will not even *SHOW* it until skills implementation is near critical mass.
+
 /datum/category_group/player_setup_category/skills
 	name = "Skills"
 	sort_order = 3.5
