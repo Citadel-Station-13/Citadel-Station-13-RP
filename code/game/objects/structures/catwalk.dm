@@ -225,7 +225,7 @@
 //Ashlander Catwalks, for bridges?
 /obj/structure/catwalk/ashlander
 	name = "sandstone bridge"
-	desc = "Sandstone tiles, bound together by hardy sinew and anchored to a wooden frame."
+	desc = "Sandstone tiles, bound together by hardy sinew and anchored to a blessed bone frame."
 	plane = TURF_PLANE
 	layer = CATWALK_LAYER
 	icon = 'icons/turf/catwalks.dmi'

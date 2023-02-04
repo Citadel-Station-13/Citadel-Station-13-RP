@@ -70,9 +70,9 @@
 	hide_type = /obj/item/stack/animalhide/goliath_hide
 	exotic_type = /obj/item/stack/sinew
 	meat_amount = 5
-	bone_amount = 5
-	hide_amount = 5
-	exotic_amount = 5
+	bone_amount = 10
+	hide_amount = 10
+	exotic_amount = 10
 
 	faction = "lavaland"
 	speak_emote = list("bellows")
