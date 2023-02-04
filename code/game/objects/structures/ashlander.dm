@@ -337,13 +337,43 @@
 /obj/structure/ashlander/statue/attack_hand(mob/user)
 	if(!active)
 		active = 1
-	else
-		active = 0
+
 	user.visible_message("[user] prays before the [src].", "You pray before the [src].")
 	update_icon()
+	Bless()
 
 /obj/structure/ashlander/statue/update_icon()
 	if(active)
 		set_light(3, 2, "#9463bb")
 	else
 		set_light(0)
+
+/obj/structure/ashlander/statue/verb/dim_statue(mob/user)
+	set name = "Dim Light"
+	set category = "Object"
+	set desc = "Disable the statue's glow."
+
+	if(!active)
+		to_chat(user, "<span class='danger'>The statue's light is already dimmed!</span>")
+	else
+		active = 0
+		update_icon()
+
+/obj/structure/ashlander/statue/proc/Bless(mob/user)
+	var/mob/living/carbon/human/H = usr
+	if(!H.faction == "lavaland")
+		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
+	else
+		H.add_modifier(/datum/modifier/ashlander_blessing, 5 MINUTES)
+
+/datum/modifier/ashlander_blessing
+	name = "The Mother's Blessing"
+	desc = "You feel as if a higher power is protecting you."
+	mob_overlay_state = "cyan_sparkles"
+	stacks = MODIFIER_STACK_FORBID
+	pain_immunity = TRUE
+	incoming_tox_damage_percent = 0.25
+	incoming_fire_damage_percent = 0.75
+	evasion = 5
+	on_created_text = "<span class='warning'>You feel safe and content. There is a sense that someone is watching over you.</span>"
+	on_expired_text = "<span class='notice'>The feeling that you are being protected fades, but the sense of contentment lingers.</span>"
