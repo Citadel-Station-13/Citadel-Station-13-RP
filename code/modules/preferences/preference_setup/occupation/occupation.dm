@@ -219,7 +219,7 @@
 				continue
 			. |= alt_datum.title
 	else
-		var/list/normal_list = list()
+		var/list/normal_list = list(J.title)
 		var/list/restricted_list = list()
 		for(var/title in J.alt_titles)
 			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])

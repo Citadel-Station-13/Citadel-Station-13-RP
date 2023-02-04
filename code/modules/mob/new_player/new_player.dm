@@ -235,7 +235,7 @@
 			var/list/warnings = list()
 			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
 			if(length(warnings))
-				to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br>[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]")
+				to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
 				if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up? Check the chat panel for details.", "Spawn Checks", list("Yes", "No")) != "Yes")
 					return
 			ready = text2num(href_list["ready"])
@@ -487,7 +487,7 @@
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
 	if(length(warnings))
-		to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br>[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]")
+		to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
 		if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
 			return
 
