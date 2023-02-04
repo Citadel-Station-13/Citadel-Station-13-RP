@@ -523,3 +523,23 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/goliath_plant_bag
+	name = "goliath hide plant bag"
+	result = /obj/item/storage/bag/plants/ashlander
+	time = 20
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4,
+				/obj/item/stack/sinew = 1,
+				/obj/item/stack/material/bone = 2
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/goliath_halfcloak
+	name = "goliath hide half cloak"
+	result = /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
+	time = 50
+	reqs = list(/obj/item/stack/sinew = 1,
+				/obj/item/stack/animalhide/goliath_hide = 2)
+	category = CAT_PRIMAL
+	always_available = FALSE

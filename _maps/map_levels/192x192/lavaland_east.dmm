@@ -274,6 +274,13 @@
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
+"PF" = (
+/obj/structure/table/bone,
+/obj/structure/ashlander/statue{
+	pixel_y = 10
+	},
+/turf/simulated/floor/bone/lavaland,
+/area/lavaland/east/ashlander_village)
 "Qg" = (
 /obj/item/elderstone,
 /obj/structure/table/bone,
@@ -22593,7 +22600,7 @@ DP
 DP
 DP
 EA
-Qg
+PF
 Vj
 Vj
 Vj

@@ -212,7 +212,23 @@
 		DelComponent(/datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/shank(T)
+	if(istype(O, /obj/item/pen/charcoal) && rideable)
+		RenameMount()
 	update_icon()
+
+/mob/living/simple_mob/animal/shank/proc/RenameMount()
+	var/mob/M = usr
+	if(!M.mind)	return 0
+	if(!M.faction == src.faction)
+		to_chat(M, "<span class='notice'>You don't feel familiar enough with this beast to name it.</span>")
+		return 0
+
+	var/input = sanitizeSafe(input("What do you want to name your mount?", ,""), MAX_NAME_LEN)
+
+	if(src && input && !M.stat && in_range(M,src))
+		name = input
+		to_chat(M, "You name this mount [input]. Ride together.")
+		return 1
 
 /datum/component/riding_handler/shank
 	rider_offsets = list(0, 11, 1, null)

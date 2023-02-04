@@ -23,6 +23,7 @@
 	gloves = /obj/item/clothing/gloves/goliath
 	l_pocket = /obj/item/material/knife/machete/hatchet/bone
 	r_hand = /obj/item/reagent_containers/glass/stone
+	l_hand = /obj/item/storage/bag/plants/ashlander
 
 /datum/outfit/ashlander/hunter
 	name = "Ashlander - Hunter"

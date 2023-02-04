@@ -327,3 +327,23 @@
 	else
 		set_light(0)
 		icon_state = "[off_icon]"
+
+/obj/structure/ashlander/statue
+	name = "religious statue"
+	desc = "This statue depicts the Mother, one of the Buried Ones. It has been carved from one giant piece of elderstone. It seems to glow faintly, and the distant ring of the chiming stone fills the air around it. The Mother can be seen standing proudly, one arm outstretched. Floating above her open hand somehow is a small, polished sphere of pure elderstone."
+	icon_state = "mother_statue"
+	var/active = 0
+
+/obj/structure/ashlander/statue/attack_hand(mob/user)
+	if(!active)
+		active = 1
+	else
+		active = 0
+	user.visible_message("[user] prays before the [src].", "You pray before the [src].")
+	update_icon()
+
+/obj/structure/ashlander/statue/update_icon()
+	if(active)
+		set_light(3, 2, "#9463bb")
+	else
+		set_light(0)
