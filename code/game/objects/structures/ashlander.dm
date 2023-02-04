@@ -332,32 +332,18 @@
 	name = "religious statue"
 	desc = "This statue depicts the Mother, one of the Buried Ones. It has been carved from one giant piece of elderstone. It seems to glow faintly, and the distant ring of the chiming stone fills the air around it. The Mother can be seen standing proudly, one arm outstretched. Floating above her open hand somehow is a small, polished sphere of pure elderstone."
 	icon_state = "mother_statue"
-	var/active = 0
+
+/obj/structure/ashlander/statue/Initialize(mapload)
+	. = ..()
+	set_light(3, 2, "#9463bb")
 
 /obj/structure/ashlander/statue/attack_hand(mob/user)
-	if(!active)
-		active = 1
-
-	user.visible_message("[user] prays before the [src].", "You pray before the [src].")
-	update_icon()
-	Bless()
-
-/obj/structure/ashlander/statue/update_icon()
-	if(active)
-		set_light(3, 2, "#9463bb")
+	var/choice = tgui_alert(user, "Do you wish to pray to the statue?", "Interact With the Statue", list("Yes", "No"))
+	if(choice != "Yes")
+		return
 	else
-		set_light(0)
-
-/obj/structure/ashlander/statue/verb/dim_statue(mob/user)
-	set name = "Dim Light"
-	set category = "Object"
-	set desc = "Disable the statue's glow."
-
-	if(!active)
-		to_chat(user, "<span class='danger'>The statue's light is already dimmed!</span>")
-	else
-		active = 0
-		update_icon()
+		user.visible_message("[user] prays before the [src].", "You pray before the [src].")
+		Bless()
 
 /obj/structure/ashlander/statue/proc/Bless(mob/user)
 	var/mob/living/carbon/human/H = usr
@@ -375,5 +361,5 @@
 	incoming_tox_damage_percent = 0.25
 	incoming_fire_damage_percent = 0.75
 	evasion = 5
-	on_created_text = "<span class='warning'>You feel safe and content. There is a sense that someone is watching over you.</span>"
+	on_created_text = "<span class='notice'>You feel safe and content. There is a sense that someone is watching over you.</span>"
 	on_expired_text = "<span class='notice'>The feeling that you are being protected fades, but the sense of contentment lingers.</span>"
