@@ -355,7 +355,6 @@
 /datum/modifier/ashlander_blessing
 	name = "The Mother's Blessing"
 	desc = "You feel as if a higher power is protecting you."
-	mob_overlay_state = "cyan_sparkles"
 	stacks = MODIFIER_STACK_FORBID
 	pain_immunity = TRUE
 	incoming_tox_damage_percent = 0.25
