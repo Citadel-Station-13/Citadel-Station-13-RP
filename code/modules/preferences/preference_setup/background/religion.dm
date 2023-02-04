@@ -39,6 +39,7 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this religion."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
+			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
 		if("category")
 			var/cat = params["category"]

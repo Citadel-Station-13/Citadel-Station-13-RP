@@ -228,7 +228,10 @@
 			if(!alt_datum.background_restricted)
 				normal_list |= alt_datum.title
 				continue
-			if(!(alt_datum.background_restricted | all_background_ids()))
+			if(!length(alt_datum.background_restricted & all_background_ids()))
+				normal_list -= alt_datum.title
+				// allows us to forcefully register the "main" title under alt title system
+				// so it can be removed
 				continue
 			restricted_list |= alt_datum.title
 		return length(restricted_list)? restricted_list : normal_list
@@ -240,13 +243,13 @@
 		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
 		if(!alt_datum)
 			return FALSE
-		return !alt_datum.background_restricted || (all_background_ids() & alt_datum.background_restricted)
+		return !alt_datum.background_restricted || length(all_background_ids() & alt_datum.background_restricted)
 	else
 		var/found = FALSE
 		var/list/all_background_ids = all_background_ids()
 		for(var/other_title in J.alt_titles)
 			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[other_title])
-			if(alt_datum.background_restricted & all_background_ids)
+			if(length(alt_datum.background_restricted & all_background_ids))
 				found = TRUE
 				break
 		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
@@ -255,7 +258,7 @@
 				return !found
 			else
 				return FALSE
-		return (alt_datum.background_restricted & all_background_ids) || (!found && !alt_datum.background_restricted)
+		return length(alt_datum.background_restricted & all_background_ids) || (!found && !alt_datum.background_restricted)
 
 /**
  * display is done by jobs; this datum only handles data filtering
