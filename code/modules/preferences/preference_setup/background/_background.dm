@@ -16,7 +16,7 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
-	// do job titles after
+	// lastly, do general job titles after
 	sanitize_preference(/datum/category_item/player_setup_item/occupation/alt_titles)
 
 /datum/preferences/proc/all_background_datums()

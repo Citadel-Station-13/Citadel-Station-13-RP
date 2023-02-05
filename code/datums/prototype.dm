@@ -18,15 +18,7 @@ candidates for conversion:
 /datum/prototype
 	abstract_type = /datum/prototype
 
-	/// our id - must be unique for a given namespace. automatically generated.
-	var/uid
-	/// uid next global on /datum/prototype
-	var/static/uid_next = 0
-	/// anonymous? if true, we should not have a coded identifier.
-	var/anonymous = FALSE
-	/// should this be saved?
-	//  todo: not yet implemented
-	var/savable = FALSE
+	//? Identity
 	/// namespace - should be unique to a given domain or kind of prototype, e.g. /datum/prototype/lore, /datum/prototype/outfit, etc
 	/// this should NEVER be changed at runtime!
 	/// changing this may cause persistent data to be thrown out.
@@ -34,6 +26,17 @@ candidates for conversion:
 	var/namespace
 	/// identifier - must be unique within a namespace
 	var/identifier
+	/// anonymous? if true, we should not have a coded identifier.
+	var/anonymous = FALSE
+
+	/// our id - must be unique globally. DO NOT EDIT THIS, EDIT [identifier].
+	var/uid
+	/// uid next global on /datum/prototype
+	var/static/uid_next = 0
+
+	/// should this be saved?
+	//  todo: not yet implemented
+	var/savable = FALSE
 	/// lazyloaded
 	var/lazy = FALSE
 

@@ -41,17 +41,20 @@
 		var/datum/db_query/insert_query = SSdbcore.NewQuery(
 			"INSERT INTO [format_table_name("character")] \
 			(`created`, `last_played`, `last_persisted`, `playerid`, `canonical_name`, \
-			`persist_data`) \
-			VALUES (NOW(), NULL, [persisting? "NOW" : "NULL"], :pid, :name, :data)",
+			`persist_data`, `character_type`) \
+			VALUES (NOW(), NULL, [persisting? "NOW" : "NULL"], :pid, :name, :data, :type)",
 			list(
 				"pid" = char.player_id,
 				"name" = ckey(char.canonical_name),
 				"data" = persisting? json_encode(char.make_persist_data(persisting)) : json_encode(list()),
+				"type" = char.character_type,
 			),
 		)
 		insert_query.Execute(async = FALSE)
 		char.character_id = isnum(insert_query.last_insert_id)? insert_query.last_insert_id : text2num(insert_query.last_insert_id)
 		qdel(insert_query)
+	// fetch our ID immediately to repopulate
+	fetch_character(char.character_id, TRUE)
 
 	// resume admin proccall guard
 	usr = __oldusr

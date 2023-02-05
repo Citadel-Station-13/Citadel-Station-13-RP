@@ -206,6 +206,8 @@
 	return list()
 
 /datum/preferences/proc/available_alt_titles(datum/role/job/J)
+	RETURN_TYPE(/list)
+	// This proc should always return at *least* one.
 	if(!J.strict_titles)
 		. = list(J.title)
 		for(var/title in J.alt_titles)
@@ -234,7 +236,10 @@
 				// so it can be removed
 				continue
 			restricted_list |= alt_datum.title
-		return length(restricted_list)? restricted_list : normal_list
+		. = length(restricted_list)? restricted_list : normal_list
+		// safety check
+		if(!length(.))
+			return list(J.title)
 
 /datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
 	if(!J.strict_titles)
@@ -271,6 +276,7 @@
 
 /datum/category_item/player_setup_item/occupation/alt_titles/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
+	// check the ones we have to ensure compliance
 	for(var/id in jobs)
 		var/datum/role/job/J = SSjob.job_by_id(id)
 		if(!J)
@@ -279,6 +285,12 @@
 		var/title = jobs[id]
 		if(!prefs.check_alt_title(J, title))
 			jobs -= id
+	// check the ones we don't and are strict titles
+	for(var/datum/job/J as anything in SSjob.all_jobs())
+		if(!J.strict_titles || !isnull(jobs[J.id]))
+			continue
+		// this will always have atleast one
+		jobs[J.id] = available_alt_titles(J)[1]
 	return jobs
 
 /datum/category_item/player_setup_item/occupation/alt_titles/default_value(randomizing)
