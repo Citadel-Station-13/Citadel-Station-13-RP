@@ -767,7 +767,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
 	if(!no_runechat)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+		send_runechat_to_atom_movable(message = (message ? message : deaf_message), speaking = null, small = FALSE, show_to = heard_to_floating_message, duration = 3 SECONDS)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -824,18 +824,18 @@
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, null, FALSE, speech_bubble_hearers, 30)
+		send_runechat_to_atom_movable(message = message, speaking = null, small = FALSE, show_to = speech_bubble_hearers, duration = 3 SECONDS)
 
 /atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
 	var/list/speech_bubble_hearers = list()
-	var/italics
-	if(whispering)
-		italics = TRUE
 	for(var/mob/M in get_mobs_in_view(message_range, src))
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+		send_runechat_to_atom_movable(message = message, speaking = speaking, small = whispering, show_to = speech_bubble_hearers, duration = 3 SECONDS)
+
+/atom/proc/send_runechat_to_atom_movable(message, speaking, small, list/show_to, duration = 3 SECONDS)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, speaking, small, show_to, duration)
 
 /proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
 	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
