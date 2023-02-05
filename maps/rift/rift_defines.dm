@@ -223,7 +223,7 @@
 		/datum/planet/classh,
 		/datum/planet/classp,
 		/datum/planet/classm,
-		/datum/planet/virgo4
+		/datum/planet/miaphus
 		)
 
 // Overmap stuff. Main file is under code/modules/maps/overmap/_lythios43c.dm
