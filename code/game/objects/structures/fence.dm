@@ -201,7 +201,7 @@
 	hole_size = LARGE_HOLE
 
 /obj/structure/fence/door/wooden
-	name = "wooden fence gate"
+	name = "wooden gate"
 	icon_state = "door_wood-closed"
 	color = "#824B28"
 
@@ -211,6 +211,53 @@
 	density = TRUE
 
 /obj/structure/fence/door/wooden/update_door_status()
+	switch(open)
+		if(FALSE)
+			density = TRUE
+			icon_state = "door_wood-closed"
+		if(TRUE)
+			density = FALSE
+			icon_state = "door_wood-opened"
+
+
+//Bone Fence! (Icons Coming Shortly.)
+/obj/structure/fence/bone
+	name = "bone fence"
+	desc = "A fence made from the carved bones of a giant creature. Not as effective as a wall, but generally it keeps people out."
+	icon_state = "straight_wood"
+	color = "#e6dfc8"
+
+/obj/structure/fence/bone/end
+	icon_state = "end_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/corner
+	icon_state = "corner_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/post
+	icon_state = "post_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/cut/medium
+	icon_state = "straight_wood-cut2"
+	hole_size = MEDIUM_HOLE
+
+/obj/structure/fence/bone/cut/large
+	icon_state = "straight_wood-cut3"
+	hole_size = LARGE_HOLE
+
+/obj/structure/fence/door/bone
+	name = "bone gate"
+	icon_state = "door_wood-closed"
+	color = "#e6dfc8"
+
+/obj/structure/fence/door/bone/opened
+	icon_state = "door_wood-opened"
+	open = TRUE
+	density = TRUE
+
+/obj/structure/fence/door/bone/update_door_status()
 	switch(open)
 		if(FALSE)
 			density = TRUE

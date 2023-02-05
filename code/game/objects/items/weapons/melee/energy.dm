@@ -586,8 +586,6 @@
 	active_throwforce = 30
 	active_w_class = ITEMSIZE_HUGE
 	colorable = TRUE
-
-
 	lcolor = "#800080"
 
 /obj/item/melee/energy/spear/activate(mob/living/user)
@@ -595,6 +593,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
 	..()
 	attack_verb = list("jabbed", "stabbed", "impaled")
+	AddComponent(/datum/component/jousting)
 
 
 /obj/item/melee/energy/spear/deactivate(mob/living/user)
@@ -602,6 +601,7 @@
 		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
 	..()
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
+	DelComponent(/datum/component/jousting)
 
 /obj/item/melee/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))

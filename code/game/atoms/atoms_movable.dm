@@ -534,3 +534,9 @@
 	em_render = null
 
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/atom/movable/proc/is_avoiding_ground()
+    return (movement_type != GROUND) || throwing

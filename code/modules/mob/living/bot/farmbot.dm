@@ -7,7 +7,7 @@
 	name = "Bot - Farmbot"
 	desc = "Farmbots are the fusion of mobile water tanks with sophisticated \
 	cultivation routines. Designed to ease the burden of maintaining Hydroponics \
-	gardens - often a vital face of life in space - these bots are always in demand."
+	gardens - often a vital facet of life in space - these bots are always in demand."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/bot/farmbot

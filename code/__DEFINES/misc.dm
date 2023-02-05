@@ -115,8 +115,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
 
-#define ECO_MODIFIER 10
-
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
 #ifndef CUSTOM_ITEM_OBJ

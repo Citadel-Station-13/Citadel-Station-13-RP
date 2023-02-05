@@ -20,8 +20,6 @@
 #define LIGHTING_DARKNESS_ICON_STATE "black"
 #define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
-/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
-#define LIGHTING_SOFT_THRESHOLD 0.001
 /// How much the range of a directional light will be reduced while facing a wall.
 #define LIGHTING_BLOCKED_FACTOR 0.5
 
@@ -40,6 +38,10 @@
  */
 #define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+
+// Note: this does not imply the above, a turf can have ambient light without being dynamically lit.
+#define TURF_IS_AMBIENT_LIT_UNSAFE(T) (T:ambient_active)
+#define TURF_IS_AMBIENT_LIT(T) (isturf(T) && TURF_IS_AMBIENT_LIT_UNSAFE(T))
 
 //! If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \

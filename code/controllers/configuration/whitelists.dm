@@ -2,9 +2,9 @@
 /datum/controller/configuration
 	/// alien whitelist: list() of species **NAME** (not uid because headmins don't read code) = list(ckeys)
 	///     language whitelists also go in here because what the fuck i hate this.
-	var/list/alien_whitelist = list()
+	var/list/cached_alien_whitelist = list()
 	/// job whitelist: list() of job **TITLE** (not uid because headmins don't read code) = list(ckeys)
-	var/list/job_whitelist = list()
+	var/list/cached_job_whitelist = list()
 
 /**
  * name and ckey must be CKEY()'d.
@@ -16,7 +16,7 @@
 	if(admin_datums[ckey])
 		// bypass
 		return TRUE
-	var/list/relevant = alien_whitelist[name]
+	var/list/relevant = cached_alien_whitelist[name]
 	return relevant?.Find(ckey)
 
 /**
@@ -25,8 +25,8 @@
  */
 /datum/controller/configuration/proc/all_alien_whitelists_for(ckey)
 	. = list()
-	for(var/ayy in alien_whitelist)
-		if(!(ckey in alien_whitelist[ayy]))
+	for(var/ayy in cached_alien_whitelist)
+		if(!(ckey in cached_alien_whitelist[ayy]))
 			continue
 		. += ayy
 
@@ -37,7 +37,7 @@
 	if(admin_datums[ckey])
 		// bypass
 		return TRUE
-	var/list/relevant = job_whitelist[name]
+	var/list/relevant = cached_job_whitelist[name]
 	return relevant?.Find(ckey)
 
 /datum/controller/configuration/proc/LoadWhitelists()
@@ -45,7 +45,7 @@
 	reload_job_whitelist()
 
 /datum/controller/configuration/proc/reload_job_whitelist()
-	job_whitelist = list()
+	cached_job_whitelist = list()
 	var/fname = "config/jobwhitelist.txt"
 	if(!fexists(fname))
 		log_config("Failed to load [fname]")
@@ -63,15 +63,15 @@
 			continue
 		var/title = ckey(parts[2])
 		var/ckey = ckey(parts[1])
-		LAZYINITLIST(job_whitelist[title])
-		if(ckey in job_whitelist[title])
+		LAZYINITLIST(cached_job_whitelist[title])
+		if(ckey in cached_job_whitelist[title])
 			log_config("jobwhitelist - duplicate ckey [ckey] for [title]")
 			continue
-		LAZYADD(job_whitelist[title], ckey)
+		LAZYADD(cached_job_whitelist[title], ckey)
 	return TRUE
 
 /datum/controller/configuration/proc/reload_alien_whitelist()
-	alien_whitelist = list()
+	cached_alien_whitelist = list()
 	var/fname = "config/alienwhitelist.txt"
 	if(!fexists(fname))
 		log_config("Failed to load [fname]")
@@ -89,9 +89,9 @@
 			continue
 		var/alien = ckey(parts[2])
 		var/ckey = ckey(parts[1])
-		LAZYINITLIST(alien_whitelist[alien])
-		if(ckey in alien_whitelist[alien])
+		LAZYINITLIST(cached_alien_whitelist[alien])
+		if(ckey in cached_alien_whitelist[alien])
 			log_config("alienwhitelist - duplicate ckey [ckey] for [alien]")
 			continue
-		LAZYADD(alien_whitelist[alien], ckey)
+		LAZYADD(cached_alien_whitelist[alien], ckey)
 	return TRUE

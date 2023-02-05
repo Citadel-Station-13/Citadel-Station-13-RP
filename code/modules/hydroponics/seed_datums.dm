@@ -1647,7 +1647,7 @@
 	seed_name = "pyrrhlea"
 	display_name = "pyrrhlea"
 	kitchen_tag = "pyrrhlea"
-	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inapprovaline" = list(1,10))
+	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inaprovaline" = list(1,10))
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
@@ -1668,7 +1668,7 @@
 	seed_name = "bentar"
 	display_name = "bentars"
 	kitchen_tag = "bentars"
-	chems = list("sugar" = list(1,5), "dylovene" = list(1,10))
+	chems = list("sugar" = list(1,5), "anti_toxin" = list(1,10))
 
 /datum/seed/bentars/New()
 	..()
@@ -1690,7 +1690,7 @@
 	seed_name = "juhtak"
 	display_name = "juhtak"
 	kitchen_tag = "juhtak"
-	chems = list("nutriment" = list(1,5), "bicardine" = list(1,10))
+	chems = list("nutriment" = list(1,5), "bicaridine" = list(1,10))
 
 /datum/seed/juhtak/New()
 	..()
@@ -1703,6 +1703,28 @@
 	set_trait(TRAIT_PRODUCT_COLOUR,"#7c260c")
 	set_trait(TRAIT_PLANT_COLOUR,"#684f32")
 	set_trait(TRAIT_PLANT_ICON,"bush7")
+	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+/datum/seed/cersut
+	name = "cersut"
+	seed_name = "cersut"
+	display_name = "cersut"
+	kitchen_tag = "cersut"
+	chems = list("sacid" = list(5,10))
+
+/datum/seed/cersut/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,8)
+	set_trait(TRAIT_PRODUCTION,4)
+	set_trait(TRAIT_YIELD,6)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"leafy")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#e0f569")
+	set_trait(TRAIT_PLANT_COLOUR,"#42222a")
+	set_trait(TRAIT_PLANT_ICON,"vine2")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
