@@ -351,7 +351,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/suits.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -374,7 +374,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -389,7 +389,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -404,7 +404,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'

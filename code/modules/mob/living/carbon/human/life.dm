@@ -666,10 +666,10 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == SPECIES_PROTEAN)
+		if(H.species.get_species_id() == SPECIES_ID_PROTEAN)
 			return // dont modify protean heat levels
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
-		if(H.species.name == SPECIES_ADHERENT)
+		if(H.species.get_species_id() == SPECIES_ID_ADHERENT)
 			return // Don't modify Adherent heat levels ffs
 
 		else
