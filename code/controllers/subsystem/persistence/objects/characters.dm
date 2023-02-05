@@ -81,7 +81,7 @@
 		return loaded
 
 	var/datum/db_query/load_query = SSdbcore.NewQuery(
-		"SELECT created, last_played, last_persisted, playerid, canonical_name, persist_data FROM \
+		"SELECT `created`, `last_played`, `last_persisted`, `playerid`, `canonical_name`, `persist_data`, `character_type` FROM \
 		[format_table_name("character")] WHERE id = :id",
 		list(
 			"id" = id,
@@ -94,9 +94,16 @@
 		qdel(load_query)
 		return null
 
+	var/char_type = load_query.item[7]
+	var/datum_type = character_type_to_datum_path(char_type)
+
+	if(!datum_type)
+		. = null
+		CRASH("unexpected char_type: [char_type]")
+
 	// one's there, make one if it isn't already there
-	if(!loaded)
-		character_cache[num2text(id, 16)] = (loaded = new /datum/character)
+	if(!istype(loaded, datum_type))
+		character_cache[num2text(id, 16)] = (loaded = new datum_type)
 
 	loaded.character_id = id
 	loaded.player_id = text2num(load_query.item[4])
@@ -104,7 +111,9 @@
 	loaded.played_at = load_query.item[2]
 	loaded.persisted_at = load_query.item[3]
 	loaded.canonical_name = load_query.item[5]
-	loaded.read_persist_data(safe_json_decode(load_query.item[6], list()))
+	loaded.read_persist_data(load_query.item[6]? safe_json_decode(load_query.item[6], list()) : list())
+
+	. = loaded
 
 	qdel(load_query)
 
