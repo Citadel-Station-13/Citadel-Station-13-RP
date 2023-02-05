@@ -38,9 +38,9 @@
 		if(25 to 45)
 			. += SPAN_WARNING("It's heavily damaged.")
 		if(2 to 25)
-			. += SPAN_WARNING("<b>It's falling apart.</b>")
+			. += SPAN_BOLDWARNING("It's falling apart.")
 		if(0 to 1)
-			. += SPAN_WARNING("<b>It is completely destroyed.</b>")
+			. += SPAN_BOLDWARNING("It is completely destroyed.")
 
 /obj/item/mecha_parts/component/Initialize(mapload)
 	. = ..()
