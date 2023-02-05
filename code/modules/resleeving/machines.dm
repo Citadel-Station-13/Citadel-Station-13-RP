@@ -585,7 +585,7 @@
 	occupant.confused   = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
 
-	if(occupant.mind && occupant.original_player && ckey(occupant.mind.key) != occupant.original_player)
+	if(occupant.mind && occupant.original_player && occupant.mind.ckey != occupant.original_player)
 		log_and_message_admins("is now a cross-sleeved character. Body originally belonged to [occupant.real_name]. Mind is now [occupant.mind.name].",occupant)
 
 	if(original_occupant)

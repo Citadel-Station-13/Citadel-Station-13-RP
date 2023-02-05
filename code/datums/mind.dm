@@ -26,7 +26,8 @@
  */
 
 /datum/mind
-	var/key
+	/// ckey of mind
+	var/ckey
 	/// Replaces mob/var/original_name
 	var/name
 	var/mob/living/current
@@ -127,7 +128,7 @@
 		new_character.make_changeling()
 
 	if(active)
-		new_character.key = key //now transfer the key to link the client to our new body
+		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
 	// if(new_character.client) //TODO: Eye Contact
 	// 	LAZYCLEARLIST(new_character.client.recent_examines)
 
@@ -157,7 +158,7 @@
 		return
 
 	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
+	out += "Mind currently owned by ckey: [ckey] [active?"(synced)":"(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "<hr>"
 	out += "Factions and special roles:<br><table>"
@@ -435,7 +436,7 @@
 				//	var/obj/item/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind
 					var/crystals
 					crystals = tcrystals
-					crystals = input("Amount of telecrystals for [key]", crystals) as null|num
+					crystals = input("Amount of telecrystals for [ckey]", crystals) as null|num
 					if (!isnull(crystals))
 						tcrystals = crystals
 
@@ -514,9 +515,9 @@
 //Initialisation procs
 /mob/proc/mind_initialize()
 	if(mind)
-		mind.key = key
+		mind.ckey = ckey
 	else
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(ckey)
 		mind.original = src
 		if(SSticker)
 			SSticker.minds += mind
