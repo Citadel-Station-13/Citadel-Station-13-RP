@@ -58,7 +58,7 @@
 	hitsound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
-	..(mapload,"foam")
+	return ..(mapload,"foam")
 
 /obj/item/material/twohanded/fireaxe/foam/afterattack()
 	return

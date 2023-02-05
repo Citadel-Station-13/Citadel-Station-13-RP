@@ -109,6 +109,19 @@
 	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
 	volume = 10
 
+/obj/item/reagent_containers/dropper/ashlander
+	name = "stone dropper"
+	desc = "A hand-carved dropper. Roughly hewn out of softened volcanic stone, it still allows for precise measurement of fluids."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "ashdropper0"
+	unacidable = 1
+
+/obj/item/reagent_containers/dropper/ashlander/update_icon()
+	if(reagents.total_volume)
+		icon_state = "ashdropper1"
+	else
+		icon_state = "ashdropper0"
+
 ////////////////////////////////////////////////////////////////////////////////
 /// Droppers. END
 ////////////////////////////////////////////////////////////////////////////////

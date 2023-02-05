@@ -27,6 +27,27 @@
 		else
 			to_chat(user, "You need 5 [src] to refine it into a sharpening kit.")
 
+/obj/item/whetstone/ashlander
+	name = "ashen whetstone"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "sandwhetstone"
+
+/obj/item/whetstone/ashlander/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/stack/material/bone))
+		var/obj/item/stack/material/bone/B = I
+		if(B.amount >= 5)
+			to_chat(user, "You begin to refine the [src] with [B]...")
+			if(do_after(user, 70))
+				B.use(5)
+				var/obj/item/SK
+				SK = new /obj/item/material/sharpeningkit(get_turf(user), B.material.name)
+				to_chat(user, "You sharpen and refine the [src] into \a [SK].")
+				qdel(src)
+				if(SK)
+					user.put_in_hands(SK)
+		else
+			to_chat(user, "You need 5 [src] to refine it into a sharpening kit.")
+
 /obj/item/material/sharpeningkit
 	name = "sharpening kit"
 	desc = "A refined, fine grit whetstone, useful for sharpening dull edges, polishing out dents, and, with extra material, replacing an edge."
