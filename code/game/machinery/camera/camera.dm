@@ -121,7 +121,7 @@
 	if (istype(AM, /obj))
 		var/obj/O = AM
 		if (O.throw_force >= src.toughness)
-			visible_message(SPAN_WARNING("<B>[src] was hit by [O].</B>"))
+			visible_message(SPAN_BOLDWARNING("[src] was hit by [O]."))
 		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
@@ -213,7 +213,7 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if (W.force >= src.toughness)
 			user.do_attack_animation(src)
-			visible_message(SPAN_WARNING("<b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b>"))
+			visible_message(SPAN_BOLDWARNING("[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!"))
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
 				if (I.hitsound)
