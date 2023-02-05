@@ -6,7 +6,6 @@
 	department_flag = MEDSCI
 	total_positions = 2
 	spawn_positions = 2
-	economic_modifier = 5
 	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL

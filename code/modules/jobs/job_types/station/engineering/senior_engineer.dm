@@ -1,6 +1,7 @@
 /datum/role/job/station/senior_engineer
 	title = "Senior Engineer"
 	id = JOB_ID_SENIOR_ENGINEER
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = SENIOR_ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
@@ -9,7 +10,6 @@
 	supervisors = "the Chief Engineer"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/card/id/engineering/engineer
-	economic_modifier = 5
 	pto_type = PTO_ENGINEERING
 
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)

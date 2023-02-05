@@ -2,6 +2,7 @@
 	title = "Head Nurse"
 	id = JOB_ID_HEAD_NURSE
 	flag = HEAD_NURSE
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	total_positions = 1
@@ -10,7 +11,6 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	economic_modifier = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
 	outfit_type = /datum/outfit/job/station/medical_doctor/head_nurse

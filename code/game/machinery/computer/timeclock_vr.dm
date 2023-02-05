@@ -98,7 +98,7 @@
 				"title" = job.title,
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
-				"economic_modifier" = job.economic_modifier,
+				"economic_modifier" = job.get_economic_payscale(),
 				"timeoff_factor" = job.timeoff_factor,
 				"pto_department" = job.pto_type
 			)

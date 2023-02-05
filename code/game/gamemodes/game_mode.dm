@@ -521,9 +521,9 @@ var/global/list/additional_antag_types = list()
 	var/list/dudes = list()
 	for(var/mob/living/carbon/human/man in GLOB.player_list)
 		if(man.client)
-			if(man.client.prefs.economic_status == CLASS_LOWER)
+			if(man.client.prefs.economic_status == CLASS_LOW)
 				dudes += man
-			else if(man.client.prefs.economic_status == CLASS_LOWMID && prob(50))
+			else if(man.client.prefs.economic_status == CLASS_LOWISH && prob(50))
 				dudes += man
 	if(dudes.len == 0) return null
 	return pick(dudes)

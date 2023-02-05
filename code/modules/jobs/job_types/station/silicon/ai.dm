@@ -12,7 +12,6 @@
 	req_admin_notify = 1
 	minimal_player_age = 7
 	account_allowed = 0
-	economic_modifier = 0
 	pto_type = PTO_CIVILIAN
 	has_headset = FALSE
 	assignable = FALSE

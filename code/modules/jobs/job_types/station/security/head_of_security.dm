@@ -1,5 +1,6 @@
 /datum/role/job/station/head_of_security
 	id = JOB_ID_HEAD_OF_SECURITY
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"
 	flag = HOS
 	departments_managed = list(DEPARTMENT_SECURITY)
@@ -15,7 +16,6 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
-	economic_modifier = 10
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
 						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,

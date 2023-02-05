@@ -53,3 +53,4 @@
  */
 /datum/preferences/proc/imprint_mind(datum/mind/M)
 	M.original_save_data = deep_copy_list(character)
+	M.original_pref_economic_modifier = tally_background_economic_factor()

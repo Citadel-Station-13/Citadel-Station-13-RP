@@ -31,3 +31,12 @@
 	. = list()
 	for(var/datum/lore/character_background/bg as anything in all_background_datums())
 		. += bg.id
+
+/datum/preferences/proc/tally_background_economic_factor()
+	. = 1
+	for(var/datum/lore/character_background/bglore as anything in all_background_datums())
+		. *= bglore.economy_payscale
+	// todo: character species when *necessary*
+	var/datum/species/S = real_species_datum()
+	. *= S.economy_payscale
+	. *= GLOB.economic_class_payscale_lookup[economic_status] || 1

@@ -10,7 +10,6 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /datum/outfit/job/station/paramedic

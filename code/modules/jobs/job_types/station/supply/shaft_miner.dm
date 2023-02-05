@@ -2,6 +2,7 @@
 	id = JOB_ID_SHAFT_MINER
 	title = "Shaft Miner"
 	flag = MINER
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	pto_type = PTO_CARGO
@@ -10,7 +11,6 @@
 	spawn_positions = 3
 	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
-	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 

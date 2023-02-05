@@ -14,10 +14,12 @@
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
 
+	//? Economy
+	/// starting money multiplier
+	var/economy_payscale = ECONOMY_PAYSCALE_JOB_DEFAULT
 
 	//? unsorted
 	// Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
-
 	/// Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population).
 	var/list/minimal_access = list()
 	/// Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!).
@@ -63,8 +65,6 @@
 
 	/// Does this job type come with a station account?
 	var/account_allowed = 1
-	/// With how much does this job modify the initial account amount?
-	var/economic_modifier = 2
 
 	/// What outfit datum does this job use in its default title?
 	var/outfit_type
@@ -235,21 +235,17 @@
 
 	// TODO: job refactor
 
+/datum/role/job/proc/get_economic_payscale()
+	var/datum/department/D = SSjob.get_primary_department_of_job(src)
+	return economy_payscale * (istype(D)? D.economy_payscale : 1)
+
 /datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/income = 1
-	if(H.client)
-		switch(H.client.prefs.economic_status)
-			if(CLASS_UPPER)		income = 1.30
-			if(CLASS_UPMID)		income = 1.15
-			if(CLASS_MIDDLE)	income = 1
-			if(CLASS_LOWMID)	income = 0.75
-			if(CLASS_LOWER)		income = 0.50
-
 	// Give them an account in the station database
-	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER // Smoothed peaks, ECO_MODIFIER rather than per-species ones.
+	var/money_amount = round(get_economic_payscale() * ECONOMY_PAYSCALE_BASE * ECONOMY_PAYSCALE_MULT * \
+	H.mind.original_pref_economic_modifier + gaussian(ECONOMY_PAYSCALE_RANDOM_MEAN, ECONOMY_PAYSCALE_RANDOM_DEV))
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""

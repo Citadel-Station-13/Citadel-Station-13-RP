@@ -8,7 +8,6 @@
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
-	economic_modifier = 1
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
 	desc = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"

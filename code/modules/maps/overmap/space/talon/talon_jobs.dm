@@ -33,7 +33,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#999999"
-	economic_modifier = 7
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
@@ -57,7 +56,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
@@ -82,7 +80,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
@@ -107,7 +104,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
@@ -132,7 +128,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)

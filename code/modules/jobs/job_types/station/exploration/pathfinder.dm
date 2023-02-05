@@ -1,6 +1,7 @@
 /datum/role/job/station/pathfinder
 	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
 	departments_managed = list(DEPARTMENT_PLANET)
@@ -11,7 +12,6 @@
 	supervisors = "the Facility Director"
 	selection_color = "#d6d05c"
 	idtype = /obj/item/card/id/explorer/head/pathfinder
-	economic_modifier = 8
 	minimal_player_age = 7
 	pto_type = PTO_EXPLORATION
 

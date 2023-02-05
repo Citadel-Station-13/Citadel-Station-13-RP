@@ -1,6 +1,7 @@
 /datum/role/job/station/chief_engineer
 	id = JOB_ID_CHIEF_ENGINEER
 	title = "Chief Engineer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CHIEF
 	departments_managed = list(DEPARTMENT_ENGINEERING)
 	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_COMMAND)
@@ -13,7 +14,6 @@
 	selection_color = "#7F6E2C"
 	idtype = /obj/item/card/id/engineering/head
 	req_admin_notify = 1
-	economic_modifier = 10
 	pto_type = PTO_ENGINEERING
 
 	minimum_character_age = 25

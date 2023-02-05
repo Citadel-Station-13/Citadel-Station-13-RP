@@ -1,6 +1,7 @@
 /datum/role/job/station/field_medic
 	id = JOB_ID_FIELD_MEDIC
 	title = "Field Medic"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -9,7 +10,6 @@
 	supervisors = "the Pathfinder and the Chief Medical Officer"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/medical/sar
-	economic_modifier = 6
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)
