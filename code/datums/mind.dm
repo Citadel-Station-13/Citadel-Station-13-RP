@@ -90,8 +90,8 @@
 	/// Used to store what traits the player had picked out in their preferences before joining, in text form.
 	var/list/traits = list()
 
-/datum/mind/New(var/key)
-	src.key = key
+/datum/mind/New(ckey)
+	src.ckey = ckey
 
 /datum/mind/Destroy()
 	QDEL_NULL(characteristics)
