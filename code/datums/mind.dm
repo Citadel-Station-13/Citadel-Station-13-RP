@@ -590,3 +590,42 @@
 	. = ..()
 	mind.assigned_role = "Juggernaut"
 	mind.special_role = "Cultist"
+
+//? Preferences Checks
+
+/datum/mind/proc/original_background_religion()
+	RETURN_TYPE(/datum/lore/character_background/religion)
+	var/id = original_save_data?[CHARACTER_DATA_RELIGION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_religion(id)
+
+/datum/mind/proc/original_background_citizenship()
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
+	var/id = original_save_data?[CHARACTER_DATA_CITIZENSHIP]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_citizenship(id)
+
+/datum/mind/proc/original_background_origin()
+	RETURN_TYPE(/datum/lore/character_background/origin)
+	var/id = original_save_data?[CHARACTER_DATA_ORIGIN]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_origin(id)
+
+/datum/mind/proc/original_background_faction()
+	RETURN_TYPE(/datum/lore/character_background/faction)
+	var/id = original_save_data?[CHARACTER_DATA_FACTION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_faction(id)
+
+/datum/mind/proc/original_background_datums()
+	. = list(
+		original_background_citizenship(),
+		original_background_faction(),
+		original_background_origin(),
+		original_background_religion(),
+	)
+	listclearnulls(.)

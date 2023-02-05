@@ -85,28 +85,28 @@
 		if(L.check_species_id(species_id))
 			. += L
 
-/datum/controller/subsystem/characters/proc/resolve_citizenship(id)
+/datum/controller/subsystem/characters/proc/resolve_citizenship(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/citizenship)
 	if(ispath(id))
 		var/datum/lore/character_background/bg = id
 		id = initial(bg.id)
 	return character_citizenships[id]
 
-/datum/controller/subsystem/characters/proc/resolve_faction(id)
+/datum/controller/subsystem/characters/proc/resolve_faction(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/faction)
 	if(ispath(id))
 		var/datum/lore/character_background/bg = id
 		id = initial(bg.id)
 	return character_factions[id]
 
-/datum/controller/subsystem/characters/proc/resolve_religion(id)
+/datum/controller/subsystem/characters/proc/resolve_religion(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/religion)
 	if(ispath(id))
 		var/datum/lore/character_background/bg = id
 		id = initial(bg.id)
 	return character_religions[id]
 
-/datum/controller/subsystem/characters/proc/resolve_origin(id)
+/datum/controller/subsystem/characters/proc/resolve_origin(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/origin)
 	if(ispath(id))
 		var/datum/lore/character_background/bg = id

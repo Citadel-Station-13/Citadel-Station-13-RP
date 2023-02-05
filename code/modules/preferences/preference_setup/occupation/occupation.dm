@@ -207,63 +207,10 @@
 
 /datum/preferences/proc/available_alt_titles(datum/role/job/J)
 	RETURN_TYPE(/list)
-	// This proc should always return at *least* one.
-	if(!J.strict_titles)
-		. = list(J.title)
-		for(var/title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[title])
-			if(!alt_datum)
-				continue
-			if(!alt_datum.background_restricted)
-				. |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted | all_background_ids()))
-				continue
-			. |= alt_datum.title
-	else
-		var/list/normal_list = list(J.title)
-		var/list/restricted_list = list()
-		for(var/title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[title])
-			if(!alt_datum)
-				continue
-			if(!alt_datum.background_restricted)
-				normal_list |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted & all_background_ids()))
-				normal_list -= alt_datum.title
-				// allows us to forcefully register the "main" title under alt title system
-				// so it can be removed
-				continue
-			restricted_list |= alt_datum.title
-		. = length(restricted_list)? restricted_list : normal_list
-		// safety check
-		if(!length(.))
-			return list(J.title)
+	return J.alt_title_query(all_background_datums())
 
 /datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
-	if(!J.strict_titles)
-		if(alt_title == J.title)
-			return TRUE
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[alt_title])
-		if(!alt_datum)
-			return FALSE
-		return !alt_datum.background_restricted || length(all_background_ids() & alt_datum.background_restricted)
-	else
-		var/found = FALSE
-		var/list/all_background_ids = all_background_ids()
-		for(var/other_title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[other_title])
-			if(length(alt_datum.background_restricted & all_background_ids))
-				found = TRUE
-				break
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[alt_title])
-		if(isnull(alt_datum))
-			if(alt_title == J.title)
-				return !found
-			else
-				return FALSE
-		return length(alt_datum.background_restricted & all_background_ids) || (!found && !alt_datum.background_restricted)
+	return J.alt_title_check(alt_title, all_background_datums())
 
 /**
  * display is done by jobs; this datum only handles data filtering

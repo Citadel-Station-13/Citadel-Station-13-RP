@@ -145,17 +145,19 @@
 			update_icon()
 			return TRUE
 
-
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
 	for(var/datum/role/job/job in SSjob.occupations)
 		if(isOpenOnDutyJob(user, department, job))
-			available_jobs[job.title] = list(job.title)
-			if(job.alt_titles)
-				for(var/alt_job in job.alt_titles)
-					if(alt_job != job.title)
-						available_jobs[job.title] += alt_job
+			var/list/titles = available_titles(user, job)
+			if(!length(titles))
+				continue
+			available_jobs[job.title] = titles
 	return available_jobs
+
+/obj/machinery/computer/timeclock/proc/available_titles(mob/user, var/datum/role/job/job)
+	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_datums()
+	return job.alt_title_query(backgrounds)
 
 /obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
 	return job \
@@ -165,7 +167,8 @@
 		   && job.player_old_enough(user.client) \
 		   && job.pto_type == department \
 		   && !job.disallow_jobhop \
-		   && job.timeoff_factor > 0
+		   && job.timeoff_factor > 0 \
+		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
 	var/datum/role/job/oldjob = SSjob.get_job(card.rank)
@@ -173,6 +176,8 @@
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
+		return
+	if(!newjob.alt_title_check(usr.mind?.original_background_datums()))
 		return
 	if(newjob)
 		card.access = newjob.get_access()

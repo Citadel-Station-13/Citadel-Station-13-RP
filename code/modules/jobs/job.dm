@@ -90,6 +90,8 @@
 	. = ..()
 	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
+//? Availability
+
 /**
  * checks slots remaining
  *
@@ -169,6 +171,26 @@
 
 	// todo: JEXP/ROLE-EXP hours system
 
+// todo: this entire system is hellish and needs redone i hate preferences code
+/**
+ * checks if we're available for a given *mob*, but short circuits with the most common
+ * checks first.
+ *
+ * this is used for stuff like jobswitch code
+ */
+/datum/role/job/proc/check_mob_availability_one(mob/M)
+	. = NONE
+	if(whitelist_only)	// don't even bother checking mind
+		return ROLE_UNAVAILABLE_WHITELIST
+	else if(!slots_remaining(TRUE))
+		return ROLE_UNAVAILABLE_SLOTS_FULL
+	else if(!jobban_isbanned(M, title))
+		return ROLE_UNAVAILABLE_BANNED
+	if(M.mind)
+		var/datum/lore/character_background/faction/fact = M.mind.original_background_faction()
+		if(fact && !fact.check_job_id(id))
+			return ROLE_UNAVAILABLE_CHAR_FACTION
+		// todo: species check
 /**
  * get an user-friendly reason of why they can't spawn as us
  */
@@ -208,7 +230,7 @@
 	if(reason & ROLE_UNAVAILABLE_WHITELIST)
 		return "WHITELISTED"
 	if(reason & ROLE_UNAVAILABLE_CONNECT_TIME)
-		return "IN [available_in_days(C)] DAYS"
+		return C? "IN [available_in_days(C)] DAYS" : "MIN ACCOUNT AGE"
 	if(reason & ROLE_UNAVAILABLE_CHAR_AGE)
 		return "MIN AGE: [minimum_character_age]"
 	if(reason & ROLE_UNAVAILABLE_CHAR_FACTION)
@@ -216,6 +238,74 @@
 	if(reason & ROLE_UNAVAILABLE_CHAR_SPECIES)
 		return "SPECIES"
 	return "UNKNOWN (BUG)"
+
+//? Alt Titles
+
+/**
+ * get available alt title names for a given set of character backgrounds
+ */
+/datum/role/job/proc/alt_title_query(list/datum/lore/character_background/backgrounds = list())
+	RETURN_TYPE(/list)
+	if(strict_titles)
+		var/list/normal = list(title)
+		var/list/restricted = list()
+		for(var/title in alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+			if(isnull(alt_datum))
+				continue
+			if(isnull(alt_datum.background_restricted))
+				normal |= alt_datum.title
+				continue
+			if(!length(alt_datum.background_restricted & backgrounds))
+				normal -= alt_datum.title
+				// allow us to forcefully register the "main" title under alt title system
+				continue
+			restricted |= alt_datum.title
+		. = length(restricted)? restricted : normal
+	else
+		var/list/found = list(title)
+		for(var/title in alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+			if(isnull(alt_datum))
+				continue
+			if(isnull(alt_datum.background_restricted))
+				found |= alt_datum.title
+				continue
+			if(!length(alt_datum.background_restricted & backgrounds))
+				found -= alt_datum.title
+				// allow us to forcefully register the "main" title under alt title system
+				continue
+			found |= alt_datum.title
+		. = found
+	return length(.)? . : list(title)
+
+/**
+ * chcek if an alt title is available for a given set of backgrounds
+ */
+/datum/role/job/proc/alt_title_check(alt_title, list/datum/lore/character_background/backgrounds = list())
+	if(strict_titles)
+		var/found = FALSE
+		for(var/other_title in alt_titles)
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[other_title])
+			if(length(alt_datum.background_restricted & backgrounds))
+				found = TRUE
+				break
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
+		if(isnull(alt_datum))
+			if(alt_title == J.title)
+				return !found
+			else
+				return FALSE
+		return length(alt_datum.background_restricted & backgrounds) || (!found && !alt_datum.background_restricted)
+	else
+		if(alt_title == title)
+			return TRUE
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[title])
+		if(isnull(alt_datum))
+			return FALSE
+		return isnull(alt_datum.background_restricted) || length(backgrounds & alt_datum.background_restricted)
+
+//? Unsorted
 
 /datum/role/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
