@@ -16,9 +16,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
----           Player lookup table                   ---
---- Used to look up player ID from ckey, as well as ---
---- store last computerid/ip for a ckey.            ---
+--           Player lookup table                   --
+-- Used to look up player ID from ckey, as well as --
+-- store last computerid/ip for a ckey.            --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
----              Primary player table               ---
---- Allows for one-to-many player-ckey association. ---
+--              Primary player table               --
+-- Allows for one-to-many player-ckey association. --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `flags` int(24) NOT NULL DEFAULT 0,
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%round` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
----            Connection log           ---
---- Logs all connections to the server. ---
+--            Connection log           --
+-- Logs all connections to the server. --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---- Persistence - Object Storage: Strings ---
+-- Persistence - Object Storage: Strings --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `modified` DATETIME NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
   PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---- /datum/character - Character Table ---
+-- /datum/character - Character Table --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `created` DATETIME NOT NULL DEFAULT Now(),
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   ON DELETE CASCADE
   ON UPDATE CASCADE,
   UNIQUE (`playerid`, `canonical_name`, `character_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8m4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
