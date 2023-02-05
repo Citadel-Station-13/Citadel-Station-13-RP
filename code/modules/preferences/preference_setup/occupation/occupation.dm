@@ -211,7 +211,7 @@
 	if(!J.strict_titles)
 		. = list(J.title)
 		for(var/title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[title])
 			if(!alt_datum)
 				continue
 			if(!alt_datum.background_restricted)
@@ -224,7 +224,7 @@
 		var/list/normal_list = list(J.title)
 		var/list/restricted_list = list()
 		for(var/title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[title])
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[title])
 			if(!alt_datum)
 				continue
 			if(!alt_datum.background_restricted)
@@ -245,7 +245,7 @@
 	if(!J.strict_titles)
 		if(alt_title == J.title)
 			return TRUE
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[alt_title])
 		if(!alt_datum)
 			return FALSE
 		return !alt_datum.background_restricted || length(all_background_ids() & alt_datum.background_restricted)
@@ -253,11 +253,11 @@
 		var/found = FALSE
 		var/list/all_background_ids = all_background_ids()
 		for(var/other_title in J.alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[other_title])
+			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[other_title])
 			if(length(alt_datum.background_restricted & all_background_ids))
 				found = TRUE
 				break
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles[alt_title])
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(J.alt_titles?[alt_title])
 		if(isnull(alt_datum))
 			if(alt_title == J.title)
 				return !found
@@ -290,7 +290,7 @@
 		if(!J.strict_titles || !isnull(jobs[J.id]))
 			continue
 		// this will always have atleast one
-		jobs[J.id] = available_alt_titles(J)[1]
+		jobs[J.id] = prefs.available_alt_titles(J)[1]
 	return jobs
 
 /datum/category_item/player_setup_item/occupation/alt_titles/default_value(randomizing)
@@ -419,7 +419,7 @@
 		// reset
 		current -= id
 	else
-		if(!J.alt_titles[title])
+		if(!J.alt_titles?[title])
 			return
 		current[id] = title
 	set_character_data(CHARACTER_DATA_ALT_TITLES, current)
