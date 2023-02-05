@@ -246,6 +246,9 @@
  */
 /datum/role/job/proc/alt_title_query(list/datum/lore/character_background/backgrounds = list())
 	RETURN_TYPE(/list)
+	var/list/transformed = list()
+	for(var/datum/lore/character_background/bg as anything in backgrounds)
+		transformed += bg.id
 	if(strict_titles)
 		var/list/normal = list(title)
 		var/list/restricted = list()
@@ -256,7 +259,7 @@
 			if(isnull(alt_datum.background_restricted))
 				normal |= alt_datum.title
 				continue
-			if(!length(alt_datum.background_restricted & backgrounds))
+			if(!length(alt_datum.background_restricted & transformed))
 				normal -= alt_datum.title
 				// allow us to forcefully register the "main" title under alt title system
 				continue
@@ -271,7 +274,7 @@
 			if(isnull(alt_datum.background_restricted))
 				found |= alt_datum.title
 				continue
-			if(!length(alt_datum.background_restricted & backgrounds))
+			if(!length(alt_datum.background_restricted & transformed))
 				found -= alt_datum.title
 				// allow us to forcefully register the "main" title under alt title system
 				continue
@@ -283,11 +286,14 @@
  * chcek if an alt title is available for a given set of backgrounds
  */
 /datum/role/job/proc/alt_title_check(alt_title, list/datum/lore/character_background/backgrounds = list())
+	var/list/transformed = list()
+	for(var/datum/lore/character_background/bg as anything in backgrounds)
+		transformed += bg.id
 	if(strict_titles)
 		var/found = FALSE
 		for(var/other_title in alt_titles)
 			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[other_title])
-			if(length(alt_datum.background_restricted & backgrounds))
+			if(length(alt_datum.background_restricted & transformed))
 				found = TRUE
 				break
 		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
@@ -296,14 +302,14 @@
 				return !found
 			else
 				return FALSE
-		return length(alt_datum.background_restricted & backgrounds) || (!found && !alt_datum.background_restricted)
+		return length(alt_datum.background_restricted & trasnformed) || (!found && !alt_datum.background_restricted)
 	else
 		if(alt_title == title)
 			return TRUE
 		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[title])
 		if(isnull(alt_datum))
 			return FALSE
-		return isnull(alt_datum.background_restricted) || length(backgrounds & alt_datum.background_restricted)
+		return isnull(alt_datum.background_restricted) || length(transformed & alt_datum.background_restricted)
 
 //? Unsorted
 
