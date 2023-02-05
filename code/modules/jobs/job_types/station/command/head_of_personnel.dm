@@ -2,6 +2,7 @@
 	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
 	sorting_order = 2 // Above the QM, below captain.
 	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
@@ -15,7 +16,6 @@
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	economic_modifier = 10
 
 	minimum_character_age = 25
 	ideal_character_age = 50

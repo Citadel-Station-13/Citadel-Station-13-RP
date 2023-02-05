@@ -1,6 +1,7 @@
 /datum/job/station/research_director
 	id = JOB_ID_RESEARCH_DIRECTOR
 	title = "Research Director"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = RD
 	departments_managed = list(DEPARTMENT_RESEARCH)
 	departments = list(DEPARTMENT_RESEARCH, DEPARTMENT_COMMAND)
@@ -14,7 +15,6 @@
 	selection_color = "#AD6BAD"
 	idtype = /obj/item/card/id/science/head
 	req_admin_notify = 1
-	economic_modifier = 15
 	access = list(access_rd, access_heads, access_tox, access_genetics, access_morgue,
 						access_tox_storage, access_teleporter, access_sec_doors,
 						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,

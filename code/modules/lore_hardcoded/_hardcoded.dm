@@ -21,6 +21,8 @@
 	var/list/innate_languages
 	/// modify max custom language amount
 	var/language_amount_mod = 0
+	/// economic background modfiier for starting pay
+	var/economy_payscale = 1
 
 /datum/lore/character_background/New()
 	// resolve typepaths

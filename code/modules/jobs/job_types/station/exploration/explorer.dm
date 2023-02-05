@@ -1,6 +1,7 @@
 /datum/job/station/explorer
 	id = JOB_ID_EXPLORER
 	title = "Explorer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
@@ -8,7 +9,6 @@
 	spawn_positions = 4
 	supervisors = "the Pathfinder and the Research Director"
 	selection_color = "#999440"
-	economic_modifier = 6
 	pto_type = PTO_EXPLORATION
 	idtype = /obj/item/card/id/explorer/explorer
 	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)

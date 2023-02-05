@@ -1,6 +1,7 @@
 /datum/job/station/command_secretary
 	id = JOB_ID_COMMAND_SECRETARY
 	title = "Command Secretary"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
 	department_accounts = list(DEPARTMENT_COMMAND)
@@ -12,7 +13,6 @@
 	supervisors = "command staff"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
-	economic_modifier = 7
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)

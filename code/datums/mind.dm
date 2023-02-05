@@ -32,11 +32,15 @@
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
+
+	//? Original Character Data
 	/**
 	 * original save data
 	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
 	 */
 	var/list/original_save_data
+	/// original economic modifier from backgrounds
+	var/original_pref_economic_modifier = 1
 
 	var/memory
 	var/list/learned_recipes

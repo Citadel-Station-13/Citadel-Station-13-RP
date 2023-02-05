@@ -37,7 +37,6 @@
 
 	max_age = 130
 
-	economic_modifier = 10
 
 	darksight  = 4
 	flash_mod  = 1.2
