@@ -44,7 +44,7 @@
 	spawn(rand(2 MINUTES, 4 MINUTES))
 		//The ling will now be able to choose when to revive
 		add_verb(src, /mob/proc/changeling_revive)
-		to_chat(src, SPAN_NOTICE("<font size='5'>We are ready to rise.  Use the <b>Revive</b> verb when you are ready.</font>"))
+		to_chat(src, SPAN_USERDANGER("We are ready to rise.  Use the <b>Revive</b> verb when you are ready."))
 
 	feedback_add_details("changeling_powers","FD")
 	return 1
