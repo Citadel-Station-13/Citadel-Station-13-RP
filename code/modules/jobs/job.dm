@@ -302,7 +302,7 @@
 				return !found
 			else
 				return FALSE
-		return length(alt_datum.background_restricted & trasnformed) || (!found && !alt_datum.background_restricted)
+		return length(alt_datum.background_restricted & transformed) || (!found && !alt_datum.background_restricted)
 	else
 		if(alt_title == title)
 			return TRUE
