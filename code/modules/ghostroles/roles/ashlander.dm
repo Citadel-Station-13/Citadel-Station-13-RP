@@ -120,7 +120,7 @@
 	icon_state = "yurt"
 	anchored = TRUE
 	density = TRUE
-	role_type = /datum/ghostrole/ashlander
+	role_type = /datum/role/ghostrole/ashlander
 	role_spawns = 1
 	//var/datum/team/ashlanders/team
 

@@ -87,28 +87,28 @@
 
 /datum/controller/subsystem/characters/proc/resolve_citizenship(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/citizenship)
-	if(ispath(id))
-		var/datum/lore/character_background/bg = id
-		id = initial(bg.id)
-	return character_citizenships[id]
+	if(ispath(id_or_typepath))
+		var/datum/lore/character_background/bg = id_or_typepath
+		id_or_typepath = initial(bg.id_or_typepath)
+	return character_citizenships[id_or_typepath]
 
 /datum/controller/subsystem/characters/proc/resolve_faction(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/faction)
-	if(ispath(id))
-		var/datum/lore/character_background/bg = id
-		id = initial(bg.id)
-	return character_factions[id]
+	if(ispath(id_or_typepath))
+		var/datum/lore/character_background/bg = id_or_typepath
+		id_or_typepath = initial(bg.id_or_typepath)
+	return character_factions[id_or_typepath]
 
 /datum/controller/subsystem/characters/proc/resolve_religion(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/religion)
-	if(ispath(id))
-		var/datum/lore/character_background/bg = id
-		id = initial(bg.id)
-	return character_religions[id]
+	if(ispath(id_or_typepath))
+		var/datum/lore/character_background/bg = id_or_typepath
+		id_or_typepath = initial(bg.id_or_typepath)
+	return character_religions[id_or_typepath]
 
 /datum/controller/subsystem/characters/proc/resolve_origin(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/origin)
-	if(ispath(id))
-		var/datum/lore/character_background/bg = id
-		id = initial(bg.id)
-	return character_origins[id]
+	if(ispath(id_or_typepath))
+		var/datum/lore/character_background/bg = id_or_typepath
+		id_or_typepath = initial(bg.id_or_typepath)
+	return character_origins[id_or_typepath]

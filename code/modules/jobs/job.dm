@@ -292,7 +292,7 @@
 				break
 		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
 		if(isnull(alt_datum))
-			if(alt_title == J.title)
+			if(alt_title == title)
 				return !found
 			else
 				return FALSE
