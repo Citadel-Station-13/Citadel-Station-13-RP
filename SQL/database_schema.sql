@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   `last_played` DATETIME NULL,
   `last_persisted` DATETIME NULL,
   `playerid` INT(11) NOT NULL,
-  `canonical_name` INT(11) NOT NULL,
+  `canonical_name` VARCHAR(128) NOT NULL,
   `persist_data` JSON NULL,
   `character_type` VARCHAR(64) NOT NULL,
   PRIMARY KEY(`id`),
