@@ -102,8 +102,8 @@
 	loaded.player_id = text2num(load_query.item[4])
 	loaded.created_at = load_query.item[1]
 	loaded.played_at = load_query.item[2]
-	loaded.persisted_at = load_query[3]
-	loaded.canonical_name = load_query[5]
+	loaded.persisted_at = load_query.item[3]
+	loaded.canonical_name = load_query.item[5]
 	loaded.read_persist_data(safe_json_decode(load_query.item[6], list()))
 
 	qdel(load_query)

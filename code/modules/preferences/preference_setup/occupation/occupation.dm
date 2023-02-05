@@ -217,7 +217,7 @@
 			if(!alt_datum.background_restricted)
 				. |= alt_datum.title
 				continue
-			if(!(alt_datum.background_restricted | all_background_ids()))
+			if(!length(alt_datum.background_restricted | all_background_ids()))
 				continue
 			. |= alt_datum.title
 	else
