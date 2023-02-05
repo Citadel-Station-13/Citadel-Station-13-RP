@@ -40,11 +40,11 @@
 				if (src.auth_need - src.authorized.len > 0)
 					message_admins("[key_name_admin(user)] has authorized early shuttle launch")
 					log_game("[user.ckey] has authorized early shuttle launch")
-					to_chat(world, SPAN_NOTICE("<b>Alert: [auth_need - authorized.len] authorizations needed until shuttle is launched early</b>"))
+					to_chat(world, SPAN_BOLDNOTICE("Alert: [auth_need - authorized.len] authorizations needed until shuttle is launched early"))
 				else
 					message_admins("[key_name_admin(user)] has launched the shuttle")
 					log_game("[user.ckey] has launched the shuttle early")
-					to_chat(world, SPAN_NOTICE("<b>Alert: Shuttle launch time shortened to 10 seconds!</b>"))
+					to_chat(world, SPAN_BOLDNOTICE("Alert: Shuttle launch time shortened to 10 seconds!"))
 					SSemergencyshuttle.set_launch_countdown(10)
 					//src.authorized = null
 					qdel(src.authorized)
@@ -52,10 +52,10 @@
 
 			if("Repeal")
 				src.authorized -= W:registered_name
-				to_chat(world, text(SPAN_NOTICE(SPAN_BOLD("Alert: [src.auth_need - src.authorized.len] authorizations needed until shuttle is launched early"))))
+				to_chat(world, SPAN_BOLDNOTICE("Alert: [src.auth_need - src.authorized.len] authorizations needed until shuttle is launched early"))
 
 			if("Abort")
-				to_chat(world, SPAN_NOTICE("<b>All authorizations to shortening time for shuttle launch have been revoked!</b>"))
+				to_chat(world, SPAN_BOLDNOTICE("All authorizations to shortening time for shuttle launch have been revoked!"))
 				src.authorized.len = 0
 				src.authorized = list(  )
 
@@ -65,7 +65,7 @@
 		if(!emagged && !SSemergencyshuttle.location() && user.get_active_held_item() == W)
 			switch(choice)
 				if("Launch")
-					to_chat(world, SPAN_NOTICE("<b>Alert: Shuttle launch time shortened to 10 seconds!</b>"))
+					to_chat(world, SPAN_BOLDNOTICE("Alert: Shuttle launch time shortened to 10 seconds!"))
 					SSemergencyshuttle.set_launch_countdown(10)
 					emagged = 1
 				if("Cancel")
