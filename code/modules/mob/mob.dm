@@ -1207,3 +1207,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/mob/is_avoiding_ground()
+	return ..() || hovering || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST)

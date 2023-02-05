@@ -152,6 +152,17 @@
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
 
+//Just a little extra aesthetic for Goliath armor.
+/obj/item/clothing/accessory/poncho/rough_cloak/ashlander
+	name = "goliath hide half cloak"
+	desc = "Thinner and more lightweight than a hooded Goliath cloak, the half-cloak is more comfortable to wear over armor. However, as a result it does not provide the same protection from heat."
+	color = "#870606"
+	allowed = list(
+		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
+		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
+		/obj/item/gun/ballistic/musket/pistol)
+	action_button_name = "Adjust Cloak"
+
 /*
  * Cloak
  */

@@ -112,7 +112,3 @@
 		var/datum/lore/character_background/bg = id
 		id = initial(bg.id)
 	return character_origins[id]
-
-/datum/controller/subsystem/characters/proc/job_locks_for_faction(id)
-	var/datum/lore/character_background/faction/F = resolve_faction(id)
-	return F.job_whitelist

@@ -7584,7 +7584,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "fnO" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/appliance/cooker/grill/stand,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "foq" = (

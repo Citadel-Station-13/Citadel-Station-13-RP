@@ -595,3 +595,12 @@
 	reagent_state = REAGENT_SOLID
 	color = "#464650"
 	taste_description = "salt"
+
+//Ashlander Alchemy!
+/datum/reagent/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	description = "A compound of ash and sulphuric acid, used on Surt as a base for alchemical processes."
+	reagent_state = REAGENT_LIQUID
+	color = "#5a5e3c"
+	taste_description = "sour ash"

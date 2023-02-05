@@ -3,9 +3,10 @@
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
 	category = SPECIES_CATEGORY_RESTRICTED
-	default_language = LANGUAGE_ID_EVENT_1
-	intrinsic_languages = LANGUAGE_ID_EVENT_1
-	max_additional_languages = 2
+	galactic_language = FALSE
+	default_language = LANGUAGE_ID_SCORI
+	intrinsic_languages = LANGUAGE_ID_SCORI
+	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	rarity_value = 4
 
@@ -34,8 +35,8 @@
 	max_age = 200
 
 	//Adapted to overcast skies and caverns.
-	darksight = 5
-	flash_mod = 2.0
+	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
+	flash_mod = 3.0
 
 	//Physical resistances and weaknesses.
 	brute_mod = 0.85
@@ -48,7 +49,7 @@
 	exhale_type = /datum/gas/oxygen
 	minimum_breath_pressure = 11
 	oxy_mod = 0.25
-	heat_discomfort_level = T0C+10
+	heat_discomfort_level = T0C+20
 	warning_low_pressure = 10
 	hazard_low_pressure  = 5
 	safe_pressure = 18

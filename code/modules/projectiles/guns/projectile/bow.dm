@@ -12,6 +12,7 @@
 	slot_flags = SLOT_BACK
 	pin = null
 	no_pin_required = TRUE
+	safety_state = GUN_SAFETY_OFF
 	var/ready = 0
 
 /obj/item/gun/ballistic/bow/unload_ammo(mob/user, var/allow_dump =0)
