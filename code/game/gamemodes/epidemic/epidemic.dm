@@ -169,10 +169,10 @@
 	for(var/mob/M in world)
 		if(M.client)
 			SEND_SOUND(M, sound('sound/machines/Alarm.ogg'))
-	to_chat(world, SPAN_NOTICE("<b>Incoming missile detected.. Impact in 10..</b>"))
+	to_chat(world, SPAN_BOLDNOTICE("Incoming missile detected. Impact in 10..."))
 	for (var/i=9 to 1 step -1)
 		sleep(10)
-		to_chat(world, SPAN_NOTICE("<b>[i]..</b>"))
+		to_chat(world, SPAN_BOLDNOTICE("[i]..."))
 	sleep(10)
 	enter_allowed = 0
 	if(SSticker)

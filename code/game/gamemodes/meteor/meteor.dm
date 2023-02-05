@@ -38,7 +38,7 @@
 	if(survivors)
 		to_chat(world, "<span class='notice'><B>The following survived the meteor storm</B></span>:[text]")
 	else
-		to_chat(world, SPAN_NOTICE("<B>Nobody survived the meteor storm!</B>"))
+		to_chat(world, SPAN_BOLDNOTICE("Nobody survived the meteor storm!"))
 
 	feedback_set_details("round_end_result","end - evacuation")
 	feedback_set("round_end_result",survivors)

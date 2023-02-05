@@ -144,7 +144,7 @@
 	if(!istype(player))
 		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
-	to_chat(player.current, SPAN_DANGER("<i>You have been selected this round as an antagonist!</i>"))
+	to_chat(player.current, SPAN_DANGER(SPAN_ITALICS("You have been selected this round as an antagonist!")))
 	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)

@@ -356,10 +356,10 @@
 						if(I in organs.implants)
 							qdel(I)
 							break
-				to_chat(H, SPAN_NOTICE("<font size =3><B>Your loyalty implant has been deactivated.</B></font>"))
+				to_chat(H, SPAN_BOLDNOTICE("Your loyalty implant has been deactivated."))
 				log_admin("[key_name_admin(usr)] has de-loyalty implanted [current].")
 			if("add")
-				to_chat(H, SPAN_DANGER("<font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font>"))
+				to_chat(H, SPAN_BOLDDANGER("You somehow have become the recepient of a loyalty transplant, and it just activated!"))
 				H.implant_loyalty(override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
 		H.update_hud_sec_implants()

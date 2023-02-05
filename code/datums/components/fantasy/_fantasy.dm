@@ -128,13 +128,12 @@
 
 /datum/component/fantasy/proc/announce()
 	var/turf/location = get_turf(parent)
-	var/span
 	var/effect_description
 	if(quality >= 0)
-		span = SPAN_NOTICE("")
 		effect_description = SPAN_HEAVY_BRASS("shimmering golden glow")
+		location.visible_message(SPAN_NOTICE("[originalName] is covered by a [effect_description] and then transforms into [parent]!"))
 	else
-		span = SPAN_DANGER("")
 		effect_description = SPAN_UMBRA_EMPHASIS("mottled black glow")
+		location.visible_message(SPAN_DANGER("[originalName] is covered by a [effect_description] and then transforms into [parent]!"))
 
-	location.visible_message("[span][originalName] is covered by a [effect_description] and then transforms into [parent]!")
+	location.visible_message("[originalName] is covered by a [effect_description] and then transforms into [parent]!") // Just in case...

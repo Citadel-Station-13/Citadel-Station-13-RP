@@ -313,7 +313,7 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/proc/acquire(const/mob/food)
 	var/capname = uppertext(name)
 
-	to_chat(target, SPAN_NOTICE("<b>[capname] HAS LOST INTEREST IN YOU.</b>"))
+	to_chat(target, SPAN_BOLDNOTICE("[capname] HAS LOST INTEREST IN YOU."))
 	target = food
 
 	if (ishuman(target))

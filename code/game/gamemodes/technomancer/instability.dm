@@ -283,7 +283,7 @@
 	amount = amount * armor_factor
 	if(amount && prob(10))
 		if(isSynthetic())
-			to_chat(src, SPAN_CULT("<font size='4'>Warning: Anomalous field detected.</font>"))
+			to_chat(src, SPAN_CULTLARGE("Warning: Anomalous field detected."))
 		else
-			to_chat(src, SPAN_CULT("<font size='4'>The purple glow makes you feel strange...</font>"))
+			to_chat(src, SPAN_CULTLARGE("The purple glow makes you feel strange..."))
 	adjust_instability(amount)
