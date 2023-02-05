@@ -485,7 +485,7 @@
 		if(25 to 45)
 			. += SPAN_WARNING("It's heavily damaged.")
 		else
-			. += SPAN_WARNING("<b> It's falling apart.</b> ")
+			. += SPAN_BOLDWARNING("It's falling apart.")
 	if(equipment?.len)
 		. += "It's equipped with:"
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
