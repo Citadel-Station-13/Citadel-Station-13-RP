@@ -543,3 +543,12 @@
 				/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/sand_whetstone
+	name = "ashen whetstone"
+	result = /obj/item/whetstone/ashlander
+	time = 30
+	reqs = list(/obj/item/stack/material/sandstone = 2,
+				/obj/item/ore/slag = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
