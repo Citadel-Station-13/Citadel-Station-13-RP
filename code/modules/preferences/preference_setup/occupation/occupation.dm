@@ -286,7 +286,7 @@
 		if(!prefs.check_alt_title(J, title))
 			jobs -= id
 	// check the ones we don't and are strict titles
-	for(var/datum/job/J as anything in SSjob.all_jobs())
+	for(var/datum/role/job/J as anything in SSjob.all_jobs())
 		if(!J.strict_titles || !isnull(jobs[J.id]))
 			continue
 		// this will always have atleast one
