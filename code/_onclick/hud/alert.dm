@@ -488,7 +488,7 @@ so as to remain in compliance with the most up-to-date laws."
 	var/paramslist = params2list(params)
 	if(paramslist["shift"]) // screen objects don't do the normal Click() stuff so we'll cheat
 		to_chat(usr,SPAN_BOLDNOTICE("[name]</span> - <span class='info'>[desc]"))
-		return
+		to_chat(usr, "[SPAN_BOLDNOTICE(name)] - [SPAN_INFO(desc)]")
 	if(master)
 		return usr.client.Click(master, location, control, params)
 
