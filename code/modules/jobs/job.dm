@@ -184,7 +184,7 @@
 		return ROLE_UNAVAILABLE_WHITELIST
 	else if(!slots_remaining(TRUE))
 		return ROLE_UNAVAILABLE_SLOTS_FULL
-	else if(!jobban_isbanned(M, title))
+	else if(jobban_isbanned(M, title))
 		return ROLE_UNAVAILABLE_BANNED
 	if(M.mind)
 		var/datum/lore/character_background/faction/fact = M.mind.original_background_faction()
