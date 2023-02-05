@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `rp_character` (
   `last_persisted` DATETIME NULL,
   `playerid` INT(11) NOT NULL,
   `canonical_name` VARCHAR(128) NOT NULL,
-  `persist_data` JSON NULL,
+  `persist_data` MEDIUMTEXT NULL,
   `character_type` VARCHAR(64) NOT NULL,
   PRIMARY KEY(`id`),
   CONSTRAINT `character_has_player` FOREIGN KEY (`playerid`)
