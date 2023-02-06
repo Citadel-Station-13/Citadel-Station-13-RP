@@ -10,11 +10,6 @@
 /*****************
 * Station access *
 *****************/
-/var/const/ACCESS_ENGINEERING_MAINT = 12
-/datum/access/maint_tunnels
-	id = ACCESS_ENGINEERING_MAINT
-	desc = "Maintenance"
-	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_external_airlocks = 13
 /datum/access/external_airlocks
