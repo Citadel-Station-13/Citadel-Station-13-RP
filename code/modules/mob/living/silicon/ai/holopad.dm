@@ -10,7 +10,26 @@
  * get something we can feed into from_appearance() on a hologram
  */
 /mob/living/silicon/ai/proc/hologram_appearance()
-	#warn impl
+	// pre transform
+	if(ispath(holomodel, /datum/hologram))
+		var/datum/hologram/model = holomodel
+		holomodel = GLOB.holograms[initial(model.name)]
+	else if(istext(holomodel))
+		holomodel = GLOB.holograms[holomodel]
+
+	// process
+	if(istype(holomodel, /datum/hologram))
+		var/datum/hologram/model = holomodel
+		return model.get_image()
+	if(isicon(holomodel))
+		return image(icon = holomodel)
+	else if(isimage(holomodel))
+		return holomodel
+	else if(IS_APPEARANCE(holomodel))
+		return holomodel
+	else
+		var/static/datum/hologram/fallback_hologram = new /datum/hologram/general/holo_female
+		return fallback_hologram.get_image()
 
 //I am the icon meister. Bow fefore me.	//>fefore
 /mob/living/silicon/ai/proc/ai_hologram_change()

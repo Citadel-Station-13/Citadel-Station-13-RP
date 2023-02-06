@@ -66,8 +66,6 @@ var/list/ai_verbs_default = list(
 	var/obj/machinery/camera/camera = null
 	var/aiRestorePowerRoutine = 0 //? ENUM
 	var/viewalerts = FALSE
-	/// Default is assigned when AI is created.
-	var/icon/holo_icon
 	var/list/mob/living/silicon/robot/connected_robots = list()
 	var/obj/item/pda/ai/aiPDA = null
 	var/obj/item/communicator/aiCommunicator = null
@@ -130,8 +128,8 @@ var/list/ai_verbs_default = list(
 	var/obj/machinery/holopad/holopad
 	/// current hologram
 	var/obj/effect/overlay/hologram/holopad/ai/hologram
-	/// hologram setting - either an id of a hologram datum, an icon, an appearancelike we can clone, etc
-	var/holomodel = "holo-female"
+	/// hologram setting - either an id/path of a hologram datum, an icon, an appearancelike we can clone, etc
+	var/holomodel = /datum/hologram/general/holo_female
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	add_verb(src, ai_verbs_default)

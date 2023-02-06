@@ -11,6 +11,7 @@
 	cloned.appearance = appearancelike
 	cloned.color = GLOB.emissive_color
 	cloned.plane = EMISSIVE_PLANE
+	cloned.appearance_flags |= KEEP_APART
 	if(layer_override)
 		cloned.layer = layer_override
 	if(alpha_override)
@@ -22,6 +23,7 @@
 	cloned.appearance = appearancelike
 	cloned.color = GLOB.em_block_color
 	cloned.plane = EMISSIVE_PLANE
+	cloned.appearance_flags |= KEEP_APART
 	if(layer_override)
 		cloned.layer = layer_override
 	if(alpha_override)

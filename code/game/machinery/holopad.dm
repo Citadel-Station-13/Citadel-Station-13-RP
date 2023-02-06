@@ -712,7 +712,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
  *   e.g. atom, mutable appearance, etc.
  * * process_appearance - automatically use required procs to render it into a hologram icon
  *   set to false if it's already processed
- *   value is ignored if string as the dautm contains this information
+ *   value is ignored if string as the datum contains this information
  * * cheap - use appearance rendering instead of icon rendering
  */
 /obj/effect/overlay/hologram/proc/from_appearance(appearance/appearancelike, process_appearance = TRUE, cheap = TRUE)
@@ -720,13 +720,31 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		var/datum/hologram/holo = GLOB.holograms[appearancelike]
 		if(!holo)
 			return FALSE
+		appearancelike = holo.get_image()
 	else if(isicon(appearancelike))
+		var/image/I = image(icon = appearancelike)
+		if(process_appearance)
+			#warn process
+		appearancelike = I
+	else if(IS_APPEARANCE(appearancelike) || istype(appearancelike, /mutable_appearance))
+		var/image/I = image()
+		I.appearance = appearancelike
+		if(process_appearance)
+			#warn process
+		appearancelike = I
+	else if(isatom(appearancelike))
+		appearancelike = cheap? make_hologram_appearance(appearancelike) : render_hologram_icon(appearancelike)
 
-	else
+	src.appearance = appearancelike
+	src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// mangle layer
+	src.layer = MANGLE_PLANE_AND_LAYER(src.plane, src.layer)
+	// revert plane
+	src.plane = initial(src.plane)
+	// emissive-fy
+	cheap_become_emissive()
 
 	#warn impl
-
-#warn emissives :D
 
 #warn icons/screen/actions/generic.dmi hang_up, swap_cam
 #warn background icon set to icons/screen/actions/backgrounds too!!
