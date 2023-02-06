@@ -130,6 +130,8 @@ var/list/ai_verbs_default = list(
 	var/obj/machinery/holopad/holopad
 	/// current hologram
 	var/obj/effect/overlay/hologram/holopad/ai/hologram
+	/// hologram setting - either an id of a hologram datum, an icon, an appearancelike we can clone, etc
+	var/holomodel = "holo-female"
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	add_verb(src, ai_verbs_default)

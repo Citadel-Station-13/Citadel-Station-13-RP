@@ -6,6 +6,11 @@
 #warn impl
 
 
+/**
+ * get something we can feed into from_appearance() on a hologram
+ */
+/mob/living/silicon/ai/proc/hologram_appearance()
+	#warn impl
 
 //I am the icon meister. Bow fefore me.	//>fefore
 /mob/living/silicon/ai/proc/ai_hologram_change()
@@ -17,51 +22,33 @@
 		return
 
 	var/input
-	var/choice = alert("Would you like to select a hologram based on a (visible) crew member, switch to unique avatar, or load your character from your character slot?",,"Crew Member","Unique","My Character")
+	var/choice = alert(src, "Would you like to select a hologram based on a (visible) crew member, switch to unique avatar, or load your character from your character slot?", "Hologram Change", "Crew Member", "Unique", "My Character")
 
 	switch(choice)
 		if("Crew Member") //A seeable crew member (or a dog)
 			var/list/targets = trackable_mobs()
-			if(targets.len)
-				input = input("Select a crew member:") as null|anything in targets //The definition of "crew member" is a little loose...
-				//This is torture, I know. If someone knows a better way...
-				if(!input) return
-				var/new_holo = getHologramIcon(get_compound_icon(targets[input]))
-				qdel(holo_icon)
-				holo_icon = new_holo
-
-			else
-				alert("No suitable records found. Aborting.")
-
-		if("My Character") //Loaded character slot
+			if(!length(targets))
+				alert("No suitable crew on tracking list.")
+				return
+			var/mob/gottem = tgui_input_list(src, "Select a trackable crew member:", "Holoclone", targets, timeout = 1 MINUTE)
+			if(!gottem)
+				return
+			holomodel = make_hologram_appearance(gottem)
+			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
+		if("My Character")
 			var/appearance/looks = client?.prefs.render_to_appearance(
 				PREF_COPY_TO_UNRESTRICTED_LOADOUT |
 				PREF_COPY_TO_FOR_RENDER |
 				PREF_COPY_TO_NO_CHECK_SPECIES
 			)
-			#warn impl
-			if(!client || !client.prefs) return
-			var/mob/living/carbon/human/dummy/dummy = new ()
-			// bypass restrictions
-			client.prefs.dress_preview_mob(dummy,
-				PREF_COPY_TO_UNRESTRICTED_LOADOUT |
-				PREF_COPY_TO_FOR_RENDER |
-				PREF_COPY_TO_NO_CHECK_SPECIES
-			)
-			sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
-			dummy.regenerate_icons()
-
-			var/new_holo = getHologramIcon(get_compound_icon(dummy))
-			qdel(holo_icon)
-			qdel(dummy)
-			holo_icon = new_holo
-
-		else //A premade list from the dmi
-			var/icon_list[] = list(
-
-			)
-			input = input("Please select a hologram:") as null|anything in icon_list //Holoprojection list
-			if(input)
-				qdel(holo_icon)
-				// switch(input)
-		#warn convert above
+			if(!looks)
+				to_chat(src, SPAN_WARNING("Slot load-clone errored. Please report this to a coder.", type = MESSAGE_TYPE_WARNING))
+				return
+			holomodel = looks
+			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
+		if("Unique")
+			var/model = tgui_input_list(src, "Select a hologram:", "Hologram Model", GLOB.holograms)
+			if(!model)
+				return
+			holomodel = model
+			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)

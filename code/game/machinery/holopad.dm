@@ -371,6 +371,7 @@ GLOBAL_LIST_EMPTY(holopads)
 	if(the_ai.holopad)
 		CRASH("already had holopad")
 
+
 /**
  * stops all AI presence
  */
@@ -610,10 +611,10 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	QDEL_LIST(holograms)
 
 /obj/machinery/holopad/proc/register_hologram(obj/effect/overlay/hologram/holopad/holo)
-	holograms += holo
+	LAZYADD(holograms, holo)
 
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
-	holograms -= holo
+	LAZYREMOVE(holograms, holo)
 
 /obj/machinery/holopad/ship
 	name = "Command Holopad"
