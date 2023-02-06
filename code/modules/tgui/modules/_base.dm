@@ -6,6 +6,10 @@ This is useful for things such as the power monitor, which needs to exist on a p
 
 Code is pretty much ripped verbatim from nano modules, but with un-needed stuff removed
 */
+
+#warn rename this
+#warn better interface, callbacks?
+
 /datum/tgui_module
 	var/name
 	var/datum/host
