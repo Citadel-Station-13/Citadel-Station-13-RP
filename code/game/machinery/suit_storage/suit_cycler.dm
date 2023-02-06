@@ -53,7 +53,7 @@
 /obj/machinery/suit_cycler/engineering
 	name = "Engineering suit cycler"
 	model_text = "Engineering"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 	departments = list("Engineering","Atmos","HAZMAT","Construction", "No Change")
 
 /obj/machinery/suit_cycler/mining

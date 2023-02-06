@@ -77,7 +77,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengweldbroken"
 	icon_off = "secureengweldoff"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 
 	starts_with = list(
 		/obj/item/clothing/head/welding = 3,

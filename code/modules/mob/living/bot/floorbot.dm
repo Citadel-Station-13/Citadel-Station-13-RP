@@ -18,7 +18,7 @@
 	icon = 'icons/obj/bots/floorbots.dmi'
 	icon_state = "floorbot"
 	base_icon_state = "toolbox"
-	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, access_construction)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_ENGINEERING_CONSTRUCTION)
 
 	wait_if_pulled = TRUE
 	min_target_dist = 0

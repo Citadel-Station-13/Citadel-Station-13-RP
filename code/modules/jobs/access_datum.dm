@@ -125,9 +125,9 @@
 	desc = "Cargo Bay"
 	region = ACCESS_REGION_SUPPLY
 
-#define access_construction 32
+#define ACCESS_ENGINEERING_CONSTRUCTION 32
 /datum/access/construction
-	id = access_construction
+	id = ACCESS_ENGINEERING_CONSTRUCTION
 	desc = "Construction Areas"
 	region = ACCESS_REGION_ENGINEERING
 
