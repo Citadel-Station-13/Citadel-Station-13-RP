@@ -9,9 +9,6 @@ SUBSYSTEM_DEF(planets)
 	var/static/list/new_outdoor_turfs = list()
 	var/static/list/new_outdoor_walls = list()
 
-	var/static/list/planets = list()
-	var/static/list/z_to_planet = list()
-
 	var/static/list/currentrun = list()
 
 	var/static/list/needs_sun_update = list()

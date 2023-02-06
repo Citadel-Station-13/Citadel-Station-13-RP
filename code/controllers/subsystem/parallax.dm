@@ -77,6 +77,7 @@ SUBSYSTEM_DEF(parallax)
 		var/atom/movable/overmap_skybox_holder/holder = new
 		holder.overlays = event_images
 		. += holder
+	#warn UH OH LETS GO SECTOR TIME
 
 /**
  * Gets parallax motion for a zlevel

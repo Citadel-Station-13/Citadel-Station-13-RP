@@ -13,6 +13,8 @@
 //! Core
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
+	/// mob flags bitmask
+	var/mob_flags = NONE
 
 //! Rendering
 	/// Fullscreen objects

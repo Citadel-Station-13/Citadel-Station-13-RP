@@ -17,7 +17,6 @@
 	name = "Lythios-43c"
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
-	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
 
 
 /* // These need to be defined in your map's define folders

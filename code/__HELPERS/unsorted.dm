@@ -506,13 +506,6 @@
 //		GLOB.mob_list.Add(M)
 	return moblist
 
-/// Forces a variable to be positive.
-/proc/modulus(variable)
-	if(variable >= 0)
-		return variable
-	if(variable < 0)
-		return -variable
-
 /// Returns the turf located at the map edge in the specified direction relative to A.
 /proc/get_edge_target_turf(atom/A, direction) //Used for mass driver
 
@@ -1514,3 +1507,8 @@ var/list/WALLITEMS = list(
 	// Augmented reality.
 	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}
 	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
+
+	//! AAAAAAAA REFACTOR THIS SHIT WHEN I DONT WANT TO ADD ANY MORE MANUALLY THIS IS A CRY FOR HELP
+	. += new /atom/movable/screen/plane_master/sector_graphics
+	. += new /atom/movable/screen/plane_master/sector_occlusion
+	. += new /atom/movable/screen/plane_master/sector_particles

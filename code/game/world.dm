@@ -36,7 +36,7 @@ GLOBAL_LIST(topic_status_cache)
 	#warn USE_BYOND_TRACY is enabled
 	init_byond_tracy()
 #endif
-	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
+	log_world("World loaded at [time_stamp()]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	// citadel edit: world runtime log removed due to world.log shunt doing that for us

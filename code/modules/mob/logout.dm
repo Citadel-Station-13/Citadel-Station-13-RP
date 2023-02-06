@@ -20,6 +20,8 @@
 	// gc perspectives
 	if(using_perspective?.reset_on_logout)
 		reset_perspective()
+	// world sectors hook
+	reconsider_sector_relevance()
 
 	..()
 	return 1

@@ -1,8 +1,4 @@
 /datum/weather_holder
-	/// Reference to the planet datum that holds this datum.
-	var/datum/planet/our_planet = null
-	/// The current weather that is affecting the planet.
-	var/datum/weather/current_weather = null
 	/// The temperature to set planetary walls to.
 	var/temperature = T20C
 	/// The direction the wind is blowing. Moving against the wind slows you down, while moving with it speeds you up.

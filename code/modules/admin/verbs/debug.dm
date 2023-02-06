@@ -650,6 +650,8 @@
 	if(!check_rights(R_DEBUG))
 		return
 
+	#warn make sure all, not just instanced weather is allowed; tgui input list
+
 	var/datum/planet/planet = input(usr, "Which planet do you want to modify the weather on?", "Change Weather") in SSplanets.planets
 	var/datum/weather/new_weather = input(usr, "What weather do you want to change to?", "Change Weather") as null|anything in planet.weather_holder.allowed_weather_types
 	if(new_weather)

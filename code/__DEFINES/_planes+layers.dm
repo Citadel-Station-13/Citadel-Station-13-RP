@@ -197,12 +197,29 @@
  */
 #define CLOAKED_PLANE -15
 
+/**
+ * ! -- Weather Plane
+ * ? What weather / planets renders to
+ */
+#define WEATHER_PLANE -12
+
+/**
+ * ! -- Weather Occlusion Plane
+ * ? A mask used to block particles from indoors areas.
+ */
+#define WEATHER_OCCLUSION_PLANE -11
+
+/**
+ * ! -- Weather Particle Plane
+ * ? What particle weather renders to
+ */
+#define WEATHER_PARTICLE_PLANE -10
 
 /**
  *! -- Above Plane
  *? In the sense that it's the highest in 'the world' and not a UI element.
  */
-#define ABOVE_PLANE -10
+#define ABOVE_PLANE -5
 
 
 /**
@@ -229,14 +246,6 @@
  * TODO: Probably remove this. @Zandario
  */
 #define PLANE_ADMIN1 3
-
-
-/**
- *! -- Planet Lighting Plane
- *? Lighting on planets.
- */
-#define PLANE_PLANETLIGHTING 4
-
 
 /**
  *! -- Emissive Blocker Plane
