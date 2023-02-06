@@ -11,6 +11,8 @@
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
 
+#warn configurator
+
 /obj/item/airlock_electronics/attack_self(mob/user)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)

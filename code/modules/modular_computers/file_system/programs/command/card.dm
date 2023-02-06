@@ -7,6 +7,7 @@
 	program_menu_icon = "key"
 	extended_desc = "Program for programming crew ID cards."
 	required_access = ACCESS_COMMAND_CARDMOD
+	#warn make this piece of shit support lists and add all
 	requires_ntnet = 0
 	size = 8
 
