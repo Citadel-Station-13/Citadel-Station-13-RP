@@ -6,6 +6,7 @@
 
 /datum/category_item/player_setup_item/occupation
 	is_global = FALSE
+	load_order = PREFERENCE_LOAD_ORDER_OCCUPATIONS
 
 /**
  * save format: list(job id = priority)
