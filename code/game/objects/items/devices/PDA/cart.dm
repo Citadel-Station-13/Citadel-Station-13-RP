@@ -59,8 +59,8 @@ var/list/civilian_cartridges = list(
 	var/access_engine = 0
 	var/access_atmos = 0
 	var/access_medical = 0
-	var/ACCESS_GENERAL_CLOWN = 0
-	var/ACCESS_GENERAL_MIME = 0
+	var/access_clown = 0
+	var/access_mime = 0
 	var/access_janitor = 0
 //	var/access_flora = 0
 	var/access_reagent_scanner = 0
@@ -136,13 +136,13 @@ var/list/civilian_cartridges = list(
 /obj/item/cartridge/clown
 	name = "\improper Honkworks 5.0 cartridge"
 	icon_state = "cart-clown"
-	ACCESS_GENERAL_CLOWN = 1
+	access_clown = 1
 	charges = 5
 
 /obj/item/cartridge/mime
 	name = "\improper Gestur-O 1000 cartridge"
 	icon_state = "cart-mi"
-	ACCESS_GENERAL_MIME = 1
+	access_mime = 1
 	charges = 5
 /*
 /obj/item/cartridge/botanist
