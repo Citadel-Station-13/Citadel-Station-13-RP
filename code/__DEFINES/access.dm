@@ -79,13 +79,42 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //? Security
 
 #define ACCESS_SECURITY_EQUIPMENT 1
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EQUIPMENT, security/equipment, "Security Equipment")
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EQUIPMENT, station/security/equipment, "Security Equipment")
 
 #define ACCESS_SECURITY_BRIG 2
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY_BRIG, security/brig, "Brig")
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_BRIG, station/security/brig, "Brig")
 
 #define ACCESS_SECURITY_ARMORY 3
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY_ARMORY, security/armory, "Armory")
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_ARMORY, station/security/armory, "Armory")
 
 #define ACCESS_SECURITY_FORENSICS 4
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY_FORENSICS, security/forensics, "Forensics")
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_FORENSICS, station/security/forensics, "Forensics")
+
+//? Engineering
+
+#define ACCESS_ENGINEERING_MAIN 10
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_BAY, station/engineering/main, "Engineering")
+
+#define ACCESS_ENGINEERING_ENGINE 11
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ENGINE, station/engineering/engine, "Engine Room")
+
+//? Medical
+
+#define ACCESS_MEDICAL_MAIN 5
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_BAY, station/medical/main, "Medical")
+
+#define ACCESS_MEDICAL_MORGUE 6
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_MORGUE, station/medical/morgue, "Morgue")
+
+//? Science
+
+#define ACCESS_SCIENCE_FABRICATION 7
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_FABRICATION, station/science/fabrication, "Fabrication")
+
+#define ACCESS_SCIENCE_TOXINS 8
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_TOXINS, station/science/toxins, "Toxins Lab")
+
+#define ACCESS_SCIENCE_GENETICS 9
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Genetics Lab")
+
+
