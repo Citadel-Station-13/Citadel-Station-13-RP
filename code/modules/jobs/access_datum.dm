@@ -17,9 +17,9 @@
 	desc = "External Airlocks"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_emergency_storage = 14
+/var/const/ACCESS_ENGINEERING_TRIAGE = 14
 /datum/access/emergency_storage
-	id = access_emergency_storage
+	id = ACCESS_ENGINEERING_TRIAGE
 	desc = "Emergency Storage"
 	region = ACCESS_REGION_ENGINEERING
 
