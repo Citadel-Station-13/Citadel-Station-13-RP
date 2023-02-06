@@ -17,7 +17,7 @@
 			return access_cent_specops
 
 	if(network in GLOB.using_map.station_networks)
-		return access_security // Default for all other station networks
+		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
 

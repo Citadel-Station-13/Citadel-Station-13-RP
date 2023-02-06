@@ -396,7 +396,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/posters
 	name = "morale storage"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	anchored = 1
 
 	starts_with = list(
@@ -427,7 +427,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "wall-lockeropen"
 	icon_broken = "wall-lockerbroken"
 	icon_off = "wall-lockeroff"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	density = 1
 
 	//too small to put a man in

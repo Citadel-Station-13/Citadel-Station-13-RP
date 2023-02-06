@@ -74,7 +74,7 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "lockbox of loyalty implants"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	starts_with = list(
 		/obj/item/implantcase/loyalty = 3,
 		/obj/item/implanter/loyalty,
@@ -83,7 +83,7 @@
 /obj/item/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	starts_with = list(/obj/item/grenade/flashbang/clusterbang)
 
 /obj/item/storage/lockbox/medal
@@ -208,7 +208,7 @@
 /obj/item/storage/lockbox/limb_plate
 	name = "Lightweight Plating Kit"
 	desc = "A lockbox filled with a plate harness and modular limb armor."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	storage_slots = 5
 	starts_with = list(
 		/obj/item/clothing/suit/armor/plate_harness,

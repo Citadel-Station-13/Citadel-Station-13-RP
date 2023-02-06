@@ -48,7 +48,7 @@
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
 	power_channel = EQUIP
-	req_one_access = list(access_security, access_heads)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, access_heads)
 
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE

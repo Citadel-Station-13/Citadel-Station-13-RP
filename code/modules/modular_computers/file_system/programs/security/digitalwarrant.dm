@@ -18,7 +18,7 @@ var/warrant_uid = 0
 	program_menu_icon = "star"
 	requires_ntnet = 1
 	available_on_ntnet = 1
-	required_access = access_security
+	required_access = ACCESS_SECURITY_EQUIPMENT
 	usage_flags = PROGRAM_ALL
 	nanomodule_path = /datum/nano_module/program/digitalwarrant/
 
@@ -75,7 +75,7 @@ var/warrant_uid = 0
 	if(!istype(user))
 		return
 	var/obj/item/card/id/I = user.GetIdCard()
-	if(!istype(I) || !I.registered_name || !(access_security in I.access))
+	if(!istype(I) || !I.registered_name || !(ACCESS_SECURITY_EQUIPMENT in I.access))
 		to_chat(user, "Authentication error: Unable to locate ID with apropriate access to allow this operation.")
 		return
 

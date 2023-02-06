@@ -22,7 +22,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security equipment crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
@@ -199,7 +199,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
@@ -215,7 +215,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/einstein
 	container_name = "Energy ammunition crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/firingpins
 	name = "Weapons - Standard firing pins"
@@ -247,7 +247,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Apidean Weaponry crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/misc/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
@@ -261,4 +261,4 @@
 	cost = 175
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Weaponry crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT

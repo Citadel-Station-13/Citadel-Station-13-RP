@@ -139,7 +139,7 @@
 /obj/machinery/door/airlock/security
 	name = "Security Airlock"
 	icon = 'icons/obj/doors/Doorsec.dmi'
-	req_one_access = list(access_security)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
@@ -208,7 +208,7 @@
 
 /obj/machinery/door/airlock/maintenance/sec
 	icon = 'icons/obj/doors/Doormaint_sec.dmi'
-	req_one_access = list(access_security)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 
 /obj/machinery/door/airlock/external
 	name = "External Airlock"
@@ -354,7 +354,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	glass = 1
-	req_one_access = list(access_security)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
 

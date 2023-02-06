@@ -47,7 +47,7 @@
 	desc = "Like the civilian model, but provides access to arrest status and security records."
 	list_pos = NIF_SECURITY_AR
 	cost = 150
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -113,7 +113,7 @@
 	desc = "Enables a high-speed shielding response to intense light, such as flashes, to block them."
 	list_pos = NIF_FLASHPROT
 	cost = 250
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	a_drain = 0.05
 	vision_flags = (NIF_V_FLASHPROT)
 
@@ -168,7 +168,7 @@
 	list_pos = NIF_NIGHTVIS
 	cost = 300 // op as shit
 	a_drain = 0.1
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)

@@ -6,11 +6,11 @@
 
 /datum/supply_pack/security
 	group = "Security"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/randomised/security
 	group = "Security"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/randomised/security/armor
 	name = "Armor - Security armor"
@@ -576,7 +576,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security biohazard gear"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/posters
 	name = "Gear - Morale Posters"
@@ -620,7 +620,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Kevlar Upgrade Kits"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/pcarriers/merc
 	name = "Armor - heavy plate carrier equipment"
@@ -633,7 +633,7 @@
 	cost = 65
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Plate carrier heavy crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	contraband = 1
 
 /datum/supply_pack/security/helmets
@@ -645,7 +645,7 @@
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/wardengear
 	name = "Tracking Implants"

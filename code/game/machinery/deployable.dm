@@ -107,7 +107,7 @@ Barricades
 	name = "deployable"
 	desc = "deployable"
 	icon = 'icons/obj/objects.dmi'
-	req_access = list(access_security)//I'm changing this until these are properly tested./N
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)//I'm changing this until these are properly tested./N
 
 /obj/machinery/deployable/barrier
 	name = "deployable barrier"
@@ -155,12 +155,12 @@ Barricades
 		if(health < maxhealth)
 			health = maxhealth
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		else if(emagged > 0)
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		return

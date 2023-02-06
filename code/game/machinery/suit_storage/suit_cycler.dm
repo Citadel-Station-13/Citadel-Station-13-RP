@@ -65,7 +65,7 @@
 /obj/machinery/suit_cycler/security
 	name = "Security suit cycler"
 	model_text = "Security"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	departments = list("Security","Crowd Control", "No Change")
 
 /obj/machinery/suit_cycler/medical
