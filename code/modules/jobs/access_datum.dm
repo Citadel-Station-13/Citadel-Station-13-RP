@@ -10,30 +10,6 @@
 /*****************
 * Station access *
 *****************/
-/var/const/access_security = 1
-/datum/access/security
-	id = access_security
-	desc = "Security Equipment"
-	region = ACCESS_REGION_SECURITY
-
-/var/const/access_brig = 2 // Brig timers and permabrig
-/datum/access/holding
-	id = access_brig
-	desc = "Holding Cells"
-	region = ACCESS_REGION_SECURITY
-
-/var/const/access_armory = 3
-/datum/access/armory
-	id = access_armory
-	desc = "Armory"
-	region = ACCESS_REGION_SECURITY
-
-/var/const/access_forensics_lockers = 4
-/datum/access/forensics_lockers
-	id = access_forensics_lockers
-	desc = "Forensics"
-	region = ACCESS_REGION_SECURITY
-
 /var/const/access_medical = 5
 /datum/access/medical
 	id = access_medical

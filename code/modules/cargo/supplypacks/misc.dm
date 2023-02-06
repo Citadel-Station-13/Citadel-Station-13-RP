@@ -251,7 +251,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "hazard hardsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/misc/science_rig
 	name = "ami hardsuit (empty)"

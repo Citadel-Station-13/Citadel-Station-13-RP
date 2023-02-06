@@ -10,8 +10,8 @@
 	supervisors = "the Head of Security"
 	idtype = /obj/item/card/id/security/officer
 	selection_color = "#601C1C"
-	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
+	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, access_maint_tunnels, access_morgue, access_external_airlocks)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/security_officer

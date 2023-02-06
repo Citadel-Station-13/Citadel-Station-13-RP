@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_LARGE
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1
 	var/locked = 1
 	var/broken = 0

@@ -1095,7 +1095,7 @@
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/box/donut = 2,
 	)
-	req_log_access = access_armory
+	req_log_access = ACCESS_SECURITY_ARMORY
 	has_logs = 1
 
 /obj/machinery/vending/hydronutrients

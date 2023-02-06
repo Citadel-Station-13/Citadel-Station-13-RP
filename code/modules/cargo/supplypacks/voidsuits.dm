@@ -186,7 +186,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security Crowd Control voidsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/voidsuits/security/alt
 	name = "Security EVA Riot voidsuits"
@@ -200,7 +200,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security EVA Riot voidsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/voidsuits/supply
 	name = "Mining voidsuits"

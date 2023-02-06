@@ -217,7 +217,7 @@
 	icon_opened = "wardensecureopen"
 	icon_broken = "wardensecurebroken"
 	icon_off = "wardensecureoff"
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 
 	starts_with = list(
 		/obj/item/clothing/suit/storage/vest/warden,
@@ -269,7 +269,7 @@
 	icon_opened = "secopen"
 	icon_broken = "secbroken"
 	icon_off = "secoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
 		/obj/item/clothing/suit/storage/vest/officer,
@@ -337,7 +337,7 @@
 	icon_opened = "cabinetdetective_open"
 	icon_broken = "cabinetdetective_broken"
 	icon_off = "cabinetdetective_broken"
-	req_access = list(access_forensics_lockers)
+	req_access = list(ACCESS_SECURITY_FORENSICS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
@@ -386,7 +386,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	anchored = 1
 	var/id = null
 
@@ -455,7 +455,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -503,7 +503,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -557,7 +557,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(

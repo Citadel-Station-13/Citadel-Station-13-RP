@@ -67,6 +67,8 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //! DEFINE NUMBERS MUST NEVER CHANGE !//
 //* Otherwise all maps break.        *//
 
+//* MAPPERS: This is also where you find your values! *//
+
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
 /datum/prototype/access/##type { \
 	access_name = desc; \
@@ -74,7 +76,16 @@ GLOBAL_LIST_INIT(access_type_names, list(
 } \
 /datum/prototype/access/##type
 
-#define ACCESS_SECURITY 1
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY, security/equipment, "Security Equipment")
+//? Security
 
-#define ACCESS_
+#define ACCESS_SECURITY_EQUIPMENT 1
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EQUIPMENT, security/equipment, "Security Equipment")
+
+#define ACCESS_SECURITY_BRIG 2
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_BRIG, security/brig, "Brig")
+
+#define ACCESS_SECURITY_ARMORY 3
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_ARMORY, security/armory, "Armory")
+
+#define ACCESS_SECURITY_FORENSICS 4
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_FORENSICS, security/forensics, "Forensics")

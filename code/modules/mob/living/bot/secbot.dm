@@ -20,8 +20,8 @@
 	icon_state = "secbot0"
 	maxHealth = 100
 	health = 100
-	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, access_forensics_lockers)
-	botcard_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, access_forensics_lockers, access_maint_tunnels)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS)
+	botcard_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, access_maint_tunnels)
 	patrol_speed = 2
 	target_speed = 3
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)

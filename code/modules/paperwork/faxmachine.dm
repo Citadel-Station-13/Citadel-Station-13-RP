@@ -9,7 +9,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
-	req_one_access = list(access_lawyer, access_heads, access_armory, access_qm)
+	req_one_access = list(access_lawyer, access_heads, ACCESS_SECURITY_ARMORY, access_qm)
 
 	density = 0
 	use_power = USE_POWER_IDLE

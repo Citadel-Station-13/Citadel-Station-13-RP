@@ -29,13 +29,13 @@
 		"Deputy Director" = /datum/alt_title/hop/deputy
 	)
 
-	access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, access_brig, access_forensics_lockers,
+	access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_FORENSICS,
 						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
 						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
 						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
 						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
 						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, access_brig, access_forensics_lockers,
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_FORENSICS,
 						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
 						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
 						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
