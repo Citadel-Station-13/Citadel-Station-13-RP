@@ -147,7 +147,7 @@
 /obj/machinery/door/airlock/engineering
 	name = "Engineering Airlock"
 	icon = 'icons/obj/doors/Dooreng.dmi'
-	req_one_access = list(access_engine)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
@@ -163,7 +163,7 @@
 /obj/machinery/door/airlock/medical
 	name = "Medical Airlock"
 	icon = 'icons/obj/doors/Doormed.dmi'
-	req_one_access = list(access_medical)
+	req_one_access = list(ACCESS_MEDICAL_MAIN)
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
@@ -193,14 +193,14 @@
 
 /obj/machinery/door/airlock/maintenance/engi
 	icon = 'icons/obj/doors/Doormaint_engi.dmi'
-	req_one_access = list(access_engine)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 
 /obj/machinery/door/airlock/maintenance/int
 	icon = 'icons/obj/doors/Doormaint_int.dmi'
 
 /obj/machinery/door/airlock/maintenance/medical
 	icon = 'icons/obj/doors/Doormaint_med.dmi'
-	req_one_access = list(access_medical)
+	req_one_access = list(ACCESS_MEDICAL_MAIN)
 
 /obj/machinery/door/airlock/maintenance/rnd
 	icon = 'icons/obj/doors/Doormaint_rnd.dmi'
@@ -328,7 +328,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	glass = 1
-	req_one_access = list(access_engine)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 
@@ -367,7 +367,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	glass = 1
-	req_one_access = list(access_medical)
+	req_one_access = list(ACCESS_MEDICAL_MAIN)
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 

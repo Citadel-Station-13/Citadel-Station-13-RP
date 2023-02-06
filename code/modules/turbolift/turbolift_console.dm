@@ -118,7 +118,7 @@
 	name = "elevator control panel"
 	icon_state = "panel"
 	req_access = list(access_eva)
-	req_one_access = list(access_heads, access_atmospherics, access_medical)
+	req_one_access = list(access_heads, access_atmospherics, ACCESS_MEDICAL_MAIN)
 
 // Hit it with a PDA or ID to enable priority call mode
 /obj/structure/lift/panel/attackby(obj/item/W as obj, mob/user as mob)

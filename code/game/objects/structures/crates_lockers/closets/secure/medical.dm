@@ -7,7 +7,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 
 	starts_with = list(
 		/obj/item/storage/box/autoinjectors,

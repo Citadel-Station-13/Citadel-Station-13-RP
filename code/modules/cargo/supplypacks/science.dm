@@ -34,7 +34,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Phoron assembly crate"
-	access = access_tox_storage
+	access = ACCESS_SCIENCE_TOXINS
 
 /datum/supply_pack/sci/exoticseeds
 	name = "Exotic seeds crate"

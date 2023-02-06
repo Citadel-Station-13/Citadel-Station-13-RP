@@ -58,7 +58,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengelecbroken"
 	icon_off = "secureengelecoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow = 2,
@@ -93,7 +93,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -173,7 +173,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,

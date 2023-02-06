@@ -10,7 +10,7 @@
 
 //Access restriction and seal delay, plus pat_module and rescue_pharm for medical suit
 /obj/item/rig/medical/equipped
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	seal_delay = 5
 
 	initial_modules = list(

@@ -10,8 +10,8 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/psychiatrist
-	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_chemistry)
+	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, access_psychiatrist)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, access_psychiatrist, access_chemistry)
 	outfit_type = /datum/outfit/job/station/psychiatrist
 	desc = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."

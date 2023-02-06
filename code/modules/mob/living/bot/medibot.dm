@@ -29,8 +29,8 @@
 	icon = 'icons/obj/bots/medibots.dmi'
 	icon_state = "medibot"
 	base_icon_state = "medkit"
-	req_one_access = list(access_robotics, access_medical)
-	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	req_one_access = list(access_robotics, ACCESS_MEDICAL_MAIN)
+	botcard_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, access_surgery, access_chemistry, access_virology, ACCESS_SCIENCE_GENETICS)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medibot)
 
 	var/healthanalyzer = /obj/item/healthanalyzer

@@ -10,8 +10,8 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /datum/outfit/job/station/paramedic
 	desc = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."

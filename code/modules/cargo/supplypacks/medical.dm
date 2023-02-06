@@ -64,7 +64,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/nanomed
 	container_name = "Surgery crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/med/deathalarm
 	name = "Death Alarm crate"
@@ -75,7 +75,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/veymed
 	container_name = "Death Alarm crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/med/clotting
 	name = "Clotting Medicine crate"
@@ -85,7 +85,7 @@
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/zenghu
 	container_name = "Clotting Medicine crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/med/sterile
 	name = "Sterile equipment crate"
@@ -111,7 +111,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/nanomed
 	container_name = "Medical surplus equipment"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/med/cmogear
 	name = "Chief medical officer equipment"
@@ -266,7 +266,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed
 	container_name = "Autopsy equipment crate"
-	access = access_morgue
+	access = ACCESS_MEDICAL_MORGUE
 
 /datum/supply_pack/med/medicaluniforms
 	name = "Medical uniforms"

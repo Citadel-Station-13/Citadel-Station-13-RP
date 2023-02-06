@@ -116,7 +116,7 @@
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
 	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
-	
+
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/eva
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
@@ -141,7 +141,7 @@
 
 /obj/item/rig/eva/equipped
 
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
@@ -281,7 +281,7 @@
 
 /obj/item/rig/medical/equipped
 
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 
 	initial_modules = list(
 		/obj/item/rig_module/sprinter,

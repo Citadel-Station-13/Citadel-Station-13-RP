@@ -15,10 +15,10 @@
 	selection_color = "#026865"
 	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
-	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
+	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
+	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
 

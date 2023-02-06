@@ -9,8 +9,8 @@
 	supervisors = "the Head of Security"
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
-	access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, ACCESS_SECURITY_BRIG)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
+	access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, access_maint_tunnels, access_eva, access_external_airlocks, ACCESS_SECURITY_BRIG)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, access_maint_tunnels, access_eva, access_external_airlocks)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective

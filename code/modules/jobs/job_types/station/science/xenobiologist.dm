@@ -13,8 +13,8 @@
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/xenobiologist
 	pto_type = PTO_SCIENCE
-	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_hydroponics, access_tox)
-	minimal_access = list(access_research, access_xenobiology, access_hydroponics, access_tox_storage,access_tox)
+	access = list(access_robotics, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, access_research, access_xenobiology, access_hydroponics, ACCESS_SCIENCE_FABRICATION)
+	minimal_access = list(access_research, access_xenobiology, access_hydroponics, ACCESS_SCIENCE_TOXINS,ACCESS_SCIENCE_FABRICATION)
 
 	minimal_player_age = 14
 

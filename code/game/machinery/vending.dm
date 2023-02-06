@@ -942,7 +942,7 @@
 	icon_state = "med"
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 4,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -1309,7 +1309,7 @@
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/geiger_counter = 4,
 		/obj/item/clothing/glasses/meson = 2,
@@ -1358,7 +1358,7 @@
 	desc = "Everything you need for do-it-yourself station repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/clothing/under/rank/chief_engineer = 4,
 		/obj/item/clothing/under/rank/engineer = 4,
@@ -1615,7 +1615,7 @@
 	product_ads = "The true life juice!;Vampire's choice!;Home-grown blood only!;Donate today, be saved tomorrow!;Approved by Zeng-Hu Pharmaceuticals Incorporated!; Curse you, Vey-Med artificial blood!"
 	icon_state = "blood"
 	idle_power_usage = 211
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/blood/prelabeled/APlus = 3,
 		/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,

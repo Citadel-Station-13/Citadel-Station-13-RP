@@ -10,7 +10,7 @@
 		if(NETWORK_THUNDER)
 			return 0
 		if(NETWORK_ENGINE,NETWORK_ALARM_ATMOS,NETWORK_ALARM_FIRE,NETWORK_ALARM_POWER)
-			return access_engine
+			return ACCESS_ENGINEERING_MAIN
 		if(NETWORK_CIRCUITS)
 			return access_research
 		if(NETWORK_ERT)

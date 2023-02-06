@@ -10,48 +10,6 @@
 /*****************
 * Station access *
 *****************/
-/var/const/access_medical = 5
-/datum/access/medical
-	id = access_medical
-	desc = "Medical"
-	region = ACCESS_REGION_MEDBAY
-
-/var/const/access_morgue = 6
-/datum/access/morgue
-	id = access_morgue
-	desc = "Morgue"
-	region = ACCESS_REGION_MEDBAY
-
-/var/const/access_tox = 7
-/datum/access/tox
-	id = access_tox
-	desc = "R&D Lab"
-	region = ACCESS_REGION_RESEARCH
-
-/var/const/access_tox_storage = 8
-/datum/access/tox_storage
-	id = access_tox_storage
-	desc = "Toxins Lab"
-	region = ACCESS_REGION_RESEARCH
-
-/var/const/access_genetics = 9
-/datum/access/genetics
-	id = access_genetics
-	desc = "Genetics Lab"
-	region = ACCESS_REGION_MEDBAY
-
-/var/const/access_engine = 10
-/datum/access/engine
-	id = access_engine
-	desc = "Engineering"
-	region = ACCESS_REGION_ENGINEERING
-
-/var/const/access_engine_equip = 11
-/datum/access/engine_equip
-	id = access_engine_equip
-	desc = "Engine Room"
-	region = ACCESS_REGION_ENGINEERING
-
 /var/const/access_maint_tunnels = 12
 /datum/access/maint_tunnels
 	id = access_maint_tunnels

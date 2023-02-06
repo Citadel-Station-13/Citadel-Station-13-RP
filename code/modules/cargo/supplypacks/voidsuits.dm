@@ -47,7 +47,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Engineering voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/construction
 	name = "Engineering Construction voidsuits"
@@ -61,7 +61,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Engineering Construction voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/hazmat
 	name = "Engineering Hazmat voidsuits"
@@ -75,7 +75,7 @@
 	cost = 45
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Engineering Hazmat voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/alt
 	name = "Reinforced Engineering voidsuits"
@@ -89,7 +89,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Reinforced Engineering voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/medical
 	name = "Medical voidsuits"

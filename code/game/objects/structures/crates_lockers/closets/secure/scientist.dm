@@ -6,7 +6,7 @@
 	icon_opened = "secureresopen"
 	icon_broken = "secureresbroken"
 	icon_off = "secureresoff"
-	req_access = list(access_tox_storage)
+	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist,

@@ -230,7 +230,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "medical hardsuit crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"

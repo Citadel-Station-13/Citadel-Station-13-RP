@@ -15,12 +15,12 @@
 	selection_color = "#AD6BAD"
 	idtype = /obj/item/card/id/science/head
 	req_admin_notify = 1
-	access = list(access_rd, access_heads, access_tox, access_genetics, access_morgue,
-						access_tox_storage, access_teleporter, access_sec_doors,
+	access = list(access_rd, access_heads, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_GENETICS, ACCESS_MEDICAL_MORGUE,
+						ACCESS_SCIENCE_TOXINS, access_teleporter, access_sec_doors,
 						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
 						access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network)
-	minimal_access = list(access_rd, access_heads, access_tox, access_genetics, access_morgue,
-						access_tox_storage, access_teleporter, access_sec_doors,
+	minimal_access = list(access_rd, access_heads, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_GENETICS, ACCESS_MEDICAL_MORGUE,
+						ACCESS_SCIENCE_TOXINS, access_teleporter, access_sec_doors,
 						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
 						access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network)
 

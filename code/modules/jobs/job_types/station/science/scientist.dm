@@ -9,8 +9,8 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/scientist
-	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_xenobotany)
-	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_xenobiology, access_xenobotany)
+	access = list(access_robotics, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, access_research, access_xenobiology, access_xenoarch, access_xenobotany)
+	minimal_access = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, access_research, access_xenoarch, access_xenobiology, access_xenobotany)
 
 	minimal_player_age = 14
 

@@ -11,8 +11,8 @@
 	idtype = /obj/item/card/id/engineering/engineer
 	pto_type = PTO_ENGINEERING
 
-	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
+	access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
+	minimal_access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
 
 	alt_titles = list(
 		"Maintenance Technician" = /datum/alt_title/maint_tech,

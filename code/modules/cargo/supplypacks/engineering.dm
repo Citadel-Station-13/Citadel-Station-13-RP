@@ -93,7 +93,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Emitter crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 
 /datum/supply_pack/eng/engine/field_gen
 	name = "Field Generator crate"
@@ -114,7 +114,7 @@
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "collector crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 
 /datum/supply_pack/eng/engine/PA
 	name = "Particle Accelerator crate"
@@ -146,7 +146,7 @@
 	cost = 80
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "shield generator construction kit crate"
-	
+
 /datum/supply_pack/eng/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
@@ -163,7 +163,7 @@
 	cost = 35
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Mk1 TEG crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 /*
 /datum/supply_pack/eng/circulator
 	contains = list(/obj/machinery/atmospherics/component/binary/circulator = 2)
@@ -171,7 +171,7 @@
 	cost = 15
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Atmospheric circulators crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 */
 /datum/supply_pack/eng/radsuit
 	contains = list(
@@ -214,7 +214,7 @@
 	cost = 50
 	container_name = "R-UST Mk. 8 Tokamak Fusion Core crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/item/book/manual/rust_engine,
 			/obj/machinery/power/fusion_core,
@@ -226,7 +226,7 @@
 	cost = 30
 	container_name = "R-UST Mk. 8 fuel injector crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/machinery/fusion_fuel_injector,
 			/obj/machinery/fusion_fuel_injector,
@@ -238,7 +238,7 @@
 	cost = 15
 	container_name = "Gyrotron Crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/machinery/power/emitter/gyrotron,
 			/obj/item/circuitboard/gyrotron_control

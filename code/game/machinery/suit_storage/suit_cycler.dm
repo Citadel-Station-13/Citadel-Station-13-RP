@@ -71,7 +71,7 @@
 /obj/machinery/suit_cycler/medical
 	name = "Medical suit cycler"
 	model_text = "Medical"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	departments = list("Medical","Biohazard","Emergency Medical Response", "No Change")
 
 /obj/machinery/suit_cycler/syndicate
