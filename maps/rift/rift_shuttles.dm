@@ -57,7 +57,7 @@
 /obj/machinery/computer/shuttle_control/multi/trade
 	name = "vessel control console"
 	shuttle_tag = "Trade"
-	req_one_access = list(ACCESS_FACTION_TRADER_MAIN)
+	req_one_access = list(ACCESS_FACTION_TRADER)
 
 /*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle

@@ -75,6 +75,9 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //--------------------------------------------------------------------------------------------------//
 
 // When oh when will we escape the tyranny of number enums?
+// todo: eventually we'll want a script for "migrating" access in .dmms. if that's, y'know, even possible
+//       when we do this however it has to be a "do this once and never again" deal
+//       as it's bound to break stuff.
 
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
 /datum/prototype/access/##type { \
@@ -102,6 +105,29 @@ STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CREMATOR, station/general/crematorium, "Cre
 #define ACCESS_GENERAL_KITCHEN 28
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_KITCHEN, station/general/kitchen, "Kitchen")
 
+#define ACCESS_GENERAL_BOTANY 35
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_BOTANY, station/general/hydroponics, "Hydroponics")
+
+#define ACCESS_GENERAL_LIBRARY 37
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_LIBRARY, station/general/library, "Library")
+
+#define ACCESS_GENERAL_EXPLORER 43
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_EXPLORER, station/general/explorer, "Explorer")
+
+#define ACCESS_GENERAL_PATHFINDER 44
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_PATHFINDER, station/general/pathfinder, "Pathfinder")
+
+#warn make sure sci can edit expl/path/pilot
+
+#define ACCESS_GENERAL_GATEWAY 62
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_GATEWAY, station/general/gateway, "Gateway")
+
+#define ACCESS_GENERAL_PILOT 67
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_PILOT, station/general/pilot, "Pilot")
+
+#define ACCESS_GENERAL_ENTERTAINMENT 72
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_ENTERTAINMENT, station/general/entertainment, "Entertainment Backstage")
+
 #define ACCESS_GENERAL_CLOWN 136
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CLOWN, station/general/clown, "Clown Office")
 
@@ -118,6 +144,18 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_CARDMOD, station/command/cardmod, "ID Modif
 	access_edit_type = ACCESS_TYPE_STATION
 	access_edit_region = ACCESS_REGION_ALL
 
+#define ACCESS_COMMAND_UPLOAD 16
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_UPLOAD, station/command/upload, "AI Upload")
+
+#define ACCESS_COMMAND_TELEPORTER 17
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_TELEPORTER, station/command/teleporter, "Teleporter")
+
+#define ACCESS_COMMAND_EVA 18
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_EVA, station/command/eva, "EVA")
+
+#define ACCESS_COMMAND_BRIDGE 19
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_BRIDGE, station/command/bridge, "Bridge")
+
 #define ACCESS_COMMAND_CAPTAIN 20
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_CAPTAIN, station/command/captain, "Facility Director")
 
@@ -126,6 +164,18 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_LOCKERS, station/command/lockers, "Personal
 
 #define ACCESS_COMMAND_IAA 38
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_IAA, station/command/iaa, "Internal Affairs")
+
+#define ACCESS_COMMAND_ANNOUNCE 59
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_ANNOUNCE, station/command/announce, "RC Announcements")
+
+#define ACCESS_COMMAND_KEYAUTH 60 //Used for events which require at least two people to confirm them
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_KEYAUTH, station/command/keyauth, "Keycard Authentication")
+
+#define ACCESS_COMMAND_HOP 57
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_HOP, station/command/hop, "Head of Personnel")
+
+#define ACCESS_COMMAND_VAULT 53
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_VAULT, station/command/vault, "Main Vault")
 
 //? Security
 
@@ -140,6 +190,12 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_ARMORY, station/security/armory, "Armory")
 
 #define ACCESS_SECURITY_FORENSICS 4
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_FORENSICS, station/security/forensics, "Forensics")
+
+#define ACCESS_SECURITY_MAIN 63 // Security front doors
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_MAIN, station/security/main, "Security")
+
+#define ACCESS_SECURITY_HOS 58
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_HOS, station/security/hos, "Head of Security")
 
 //? Engineering
 
@@ -164,6 +220,15 @@ STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_TECHSTORAGE, station/engineering/techst
 #define ACCESS_ENGINEERING_ATMOS 24
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ATMOS, station/engineering/atmos, "Atmospherics")
 
+#define ACCESS_ENGINEERING_CONSTRUCTION 32
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_CONSTRUCTION, station/engineering/construction, "Construction Areas")
+
+#define ACCESS_ENGINEERING_TELECOMMS 61 // has access to the entire telecomms satellite / machinery
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_TELECOMMS, station/engineering/tcomsat, "Telecomms")
+
+#define ACCESS_ENGINEERING_CE 56
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_CE, station/engineering/ce, "Chief Engineer")
+
 //? Medical
 
 #define ACCESS_MEDICAL_MAIN 5
@@ -171,6 +236,27 @@ STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_MAIN, station/medical/main, "Medical")
 
 #define ACCESS_MEDICAL_MORGUE 6
 STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_MORGUE, station/medical/morgue, "Morgue")
+
+#define ACCESS_MEDICAL_CHEMISTRY 33
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_CHEMISTRY, station/medical/chemistry, "Chemistry Lab")
+
+#define ACCESS_MEDICAL_VIROLOGY 39
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_VIROLOGY, station/medical/virology, "Virology")
+
+#define ACCESS_MEDICAL_CMO 40
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_CMO, station/medical/cmo, "Chief Medical Officer")
+
+#define ACCESS_MEDICAL_SURGERY 45
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_SURGERY, station/medical/surgery, "Surgery")
+
+#define ACCESS_MEDICAL_PSYCH 64 // Psychiatrist's office
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_PSYCH, station/medical/psych, "Phychiatrist's Office")
+
+#define ACCESS_SCIENCE_XENOARCH 65
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOARCH, station/science/xenoarch, "Xenoarchaeology")
+
+#define ACCESS_MEDICAL_EQUIPMENT 66
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_EQUIPMENT, station/medical/equipment, "Medical Equipment")
 
 //? Science
 
@@ -189,10 +275,37 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_ROBOTICS, station/science/robotics, "Roboti
 #define ACCESS_SCIENCE_RD 30
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_RD, station/science/rd, "Research Director")
 
+#define ACCESS_SCIENCE_EXONET 42
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_EXONET, station/science/exonet, "Station Network")
+
+#define ACCESS_SCIENCE_MAIN 47
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_MAIN, station/science/main, "Science")
+
+#define ACCESS_SCIENCE_XENOBIO 55
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBIO, station/science/xenobiology, "Xenobiology Lab")
+
+#define ACCESS_SCIENCE_XENOBOTANY 77
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBOTANY, station/science/xenobotany, "Xenobotany Garden")
+
 //? Supply
 
 #define ACCESS_SUPPLY_BAY 31
 STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_BAY, station/supply/cargo, "Cargo Bay")
+
+#define ACCESS_SUPPLY_MULEBOT 34
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_MULEBOT, station/supply/mulebot, "Mulebot Access")
+
+#define ACCESS_SUPPLY_QM 41
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_QM, station/supply/qm, "Quartermaster")
+
+#define ACCESS_SUPPLY_MINE 48
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_MINE, station/supply/mining, "Mining")
+
+#define ACCESS_SUPPLY_MAIN 50
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_MAIN, station/supply/main, "Cargo Office")
+
+#define ACCESS_SUPPLY_MINE_OUTPOST 54
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_MINE_OUTPOST, station/supply/mining_outpost, "Mining EVA")
 
 #warn id mod access for departments, shim onto heads
 #warn add bank uplink access tbd name
@@ -229,3 +342,42 @@ STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ERT_LEAD, centcom/ert_lead, "ERT Administra
 STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ADMIRAL, centcom/admiral, "Admiral")
 	access_edit_region = ACCESS_REGION_ALL
 	access_edit_type = ACCESS_TYPE_CENTCOM | ACCESS_TYPE_STATION
+
+//* FACTIONS *//
+
+//? Syndicate
+
+#define ACCESS_FACTION_SYNDICATE 150//General Syndicate Access
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_SYNDICATE, faction/syndicate, "Syndicate")
+
+//? Pirate
+
+#define ACCESS_FACTION_PIRATE 168//Pirate Crew Access (Blackbeard was born in 1680.)
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_SYNDICATE, faction/pirate, "Pirate")
+
+//? Trader
+
+#define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
+
+//? Alien
+
+#define ACCESS_FACTION_ALIEN 300 // For things like crashed ships.
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_ALIEN, faction/alien, "Alien")
+
+//? Talon
+
+#define ACCESS_FACTION_TALON 301
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_TALON, faction/talon, "Talon")
+
+//? Misc
+
+#define ACCESS_MISC_CASHCRATE 200
+STANDARD_ACCESS_DATUM(ACCESS_MISC_CASHCRATE, misc/cashcrate, "Cash Crates")
+
+//* SPECIAL *//
+
+//? Silicons
+
+#define ACCESS_SPECIAL_SILICONS 199
+STANDARD_ACCESS_DATUM(ACCESS_SPECIAL_SILICONS, special/silicons, "Synthetic")

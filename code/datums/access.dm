@@ -33,6 +33,9 @@
 	/// a single access category that's set to allow easily setting categorical edit without edit_list
 	var/access_edit_category
 
+#warn make sure this is sorted by name within its category.
+#warn see if it's possible to unregister prototypes on destroy
+
 /datum/prototype/access/register()
 	#warn impl and check params from root on merge
 
@@ -40,31 +43,53 @@
 	#warn ditto
 
 /datum/prototype/access/station
+	abstract_type = /datum/prototype/access/station
 	access_type = ACCESS_TYPE_STATION
 
 /datum/prototype/access/station/security
+	abstract_type = /datum/prototype/access/station/security
 	access_region = ACCESS_REGION_SECURITY
 
 /datum/prototype/access/station/general
+	abstract_type = /datum/prototype/access/station/general
 	access_region = ACCESS_REGION_GENERAL
 
 /datum/prototype/access/station/command
+	abstract_type = /datum/prototype/access/station/command
 	access_region = ACCESS_REGION_COMMAND
 
 /datum/prototype/access/station/medical
+	abstract_type = /datum/prototype/access/station/medical
 	access_region = ACCESS_REGION_MEDBAY
 
 /datum/prototype/access/station/supply
+	abstract_type = /datum/prototype/access/station/supply
 	access_region = ACCESS_REGION_SUPPLY
 
 /datum/prototype/access/station/engineering
+	abstract_type = /datum/prototype/access/station/engineering
 	access_region = ACCESS_REGION_ENGINEERING
 
-/datum/prototype/access/station/research
+/datum/prototype/access/station/science
+	abstract_type = /datum/prototype/access/station/science
 	access_region = ACCESS_REGION_RESEARCH
 
 /datum/prototype/access/centcom
+	abstract_type = /datum/prototype/access/centcom
 	access_type = ACCESS_TYPE_CENTCOM
 
 /datum/prototype/access/syndicate
+	abstract_type = /datum/prototype/access/syndicate
 	access_type = ACCESS_TYPE_SYNDICATE
+
+/datum/prototype/access/faction
+	abstract_type = /datum/prototype/access/faction
+	access_type = ACCESS_TYPE_PRIVATE
+
+/datum/prototype/access/misc
+	abstract_type = /datum/prototype/access/misc
+	access_type = ACCESS_TYPE_NONE
+
+/datum/prototype/access/special
+	abstract_type = /datum/prototype/access/special
+	access_type = ACCESS_TYPE_NONE

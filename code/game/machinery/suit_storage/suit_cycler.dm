@@ -694,5 +694,5 @@
 /obj/machinery/suit_cycler/pirate
 	name = "Black Market suit cycler"
 	model_text = "Pirate"
-	req_access = list(ACCESS_FACTION_PIRATE_MAIN)
+	req_access = list(ACCESS_FACTION_PIRATE)
 	departments = list("No Change")

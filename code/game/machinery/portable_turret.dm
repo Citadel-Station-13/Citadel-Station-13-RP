@@ -165,7 +165,7 @@
 /obj/machinery/porta_turret/ai_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
-	req_one_access = list(ACCESS_SILICON_MAIN) // Just in case.
+	req_one_access = list(ACCESS_SPECIAL_SILICONS) // Just in case.
 	installation = /obj/item/gun/energy/xray // For the armor pen.
 	health = 250 // Since lasers do 40 each.
 	maxhealth = 250

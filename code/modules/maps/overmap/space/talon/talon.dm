@@ -162,7 +162,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/item/card/id/synthetic/talon/Initialize(mapload)
 	. = ..()
-	access = list(ACCESS_FACTION_TALON, ACCESS_SILICON_MAIN)
+	access = list(ACCESS_FACTION_TALON, ACCESS_SPECIAL_SILICONS)
 
 /obj/machinery/power/smes/buildable/offmap_spawn/Initialize(mapload, install_coils)
 	. = ..()
