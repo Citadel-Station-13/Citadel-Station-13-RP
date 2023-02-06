@@ -298,7 +298,7 @@
 /obj/machinery/computer/card/centcom
 	name = "\improper CentCom ID card modification console"
 	circuit = /obj/item/circuitboard/card/centcom
-	req_access = list(access_cent_captain)
+	req_access = list(ACCESS_CENTCOM_ADMIRAL)
 
 
 /obj/machinery/computer/card/centcom/is_centcom()

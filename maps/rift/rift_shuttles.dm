@@ -51,7 +51,7 @@
 /obj/machinery/computer/shuttle_control/multi/specops
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
-	req_one_access = list(access_cent_specops)
+	req_one_access = list(ACCESS_CENTCOM_ERT)
 */
 
 /obj/machinery/computer/shuttle_control/multi/trade

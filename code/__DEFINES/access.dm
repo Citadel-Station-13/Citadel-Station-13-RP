@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(access_type_names, list(
 } \
 /datum/prototype/access/##type
 
+//* STATION *//
+
 //? General
 
 #define ACCESS_GENERAL_CLOWN 136
@@ -143,3 +145,34 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Geneti
 
 
 #warn unit test this shit by for'ing through the types to ensure no colliding defines.
+
+//* CENTCOM *//
+
+#define ACCESS_CENTCOM_GENERAL 101
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_GENERAL, centcom/general, "General Facilities")
+
+#define ACCESS_CENTCOM_THUNDERDOME 102
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_THUNDERDOME, centcom/thunderdome, "Entertainment Facilities")
+
+#define ACCESS_CENTCOM_ERT 103
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ERT, centcom/ert, "Emergency Response Team")
+
+#define ACCESS_CENTCOM_MEDICAL 104
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_MEDICAL, centcom/medical, "Medical Facilities")
+
+#define ACCESS_CENTCOM_DORMS 105
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_DORMS, centcom/dorms, "Dormitories")
+
+#define ACCESS_CENTCOM_STORAGE 106
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_STORAGE, centcom/storage, "Storage")
+
+#define ACCESS_CENTCOM_TELEPORTER 107
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_TELEPORTER, centcom/teleporter, "Teleporter")
+
+#define ACCESS_CENTCOM_ERT_LEAD 108
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ERT_LEAD, centcom/ert_lead, "ERT Administration")
+
+#define ACCESS_CENTCOM_ADMIRAL 109
+STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ADMIRAL, centcom/admiral, "Admiral")
+	access_edit_region = ACCESS_REGION_ALL
+	access_edit_type = ACCESS_TYPE_CENTCOM | ACCESS_TYPE_STATION

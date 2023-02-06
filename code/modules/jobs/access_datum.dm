@@ -340,63 +340,6 @@ var/const/access_pilot = 67
 	desc = "Xenobotany Garden"
 	region = ACCESS_REGION_RESEARCH
 
-/******************
-* Central Command *
-******************/
-/var/const/access_cent_general = 101//General facilities.
-/datum/access/cent_general
-	id = access_cent_general
-	desc = "General Facilities"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_thunder = 102//Thunderdome.
-/datum/access/cent_thunder
-	id = access_cent_thunder
-	desc = "Entertainment Facilities"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_specops = 103//Special Ops.
-/datum/access/cent_specops
-	id = access_cent_specops
-	desc = "Emergency Response Team Prep"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_medical = 104//Medical/Research
-/datum/access/cent_medical
-	id = access_cent_medical
-	desc = "Medical Facilities"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_living = 105//Living quarters.
-/datum/access/cent_living
-	id = access_cent_living
-	desc = "Dormitories"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_storage = 106//Generic storage areas.
-/datum/access/cent_storage
-	id = access_cent_storage
-	desc = "Storage"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_teleporter = 107//Teleporter.
-/datum/access/cent_teleporter
-	id = access_cent_teleporter
-	desc = "Central Command Teleporter"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_creed = 108//Creed's office.
-/datum/access/cent_creed
-	id = access_cent_creed
-	desc = "Emergency Response Team Administration"
-	access_type = ACCESS_TYPE_CENTCOM
-
-/var/const/access_cent_captain = 109//Captain's office/ID comp/AI.
-/datum/access/cent_captain
-	id = access_cent_captain
-	desc = "Central Command Administration"
-	access_type = ACCESS_TYPE_CENTCOM
-
 /***************
 * Antag access *
 ***************/

@@ -14,7 +14,7 @@
 		if(NETWORK_CIRCUITS)
 			return access_research
 		if(NETWORK_ERT)
-			return access_cent_specops
+			return ACCESS_CENTCOM_ERT
 
 	if(network in GLOB.using_map.station_networks)
 		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks

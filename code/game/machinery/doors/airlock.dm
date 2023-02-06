@@ -249,7 +249,7 @@
 /obj/machinery/door/airlock/centcom
 	name = "Centcom Airlock"
 	icon = 'icons/obj/doors/Doorele.dmi'
-	req_one_access = list(access_cent_general)
+	req_one_access = list(ACCESS_CENTCOM_GENERAL)
 	opacity = 1
 	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
 	close_sound_powered = 'sound/machines/door/cmd3c.ogg'

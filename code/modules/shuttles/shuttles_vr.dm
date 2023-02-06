@@ -22,7 +22,7 @@
 
 /obj/machinery/computer/shuttle_control/multi/admin
 	name = "centcom shuttle control console"
-	req_access = list(access_cent_general)
+	req_access = list(ACCESS_CENTCOM_GENERAL)
 	shuttle_tag = "Administration"
 
 /obj/machinery/computer/shuttle_control/multi/awaymission

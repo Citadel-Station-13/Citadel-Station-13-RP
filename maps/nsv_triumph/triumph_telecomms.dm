@@ -95,7 +95,7 @@
 		num2text(PUB_FREQ) = list(),
 		num2text(AI_FREQ)  = list(access_synth),
 		num2text(ENT_FREQ) = list(),
-		num2text(ERT_FREQ) = list(access_cent_specops),
+		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
 		num2text(COMM_FREQ)= list(access_heads),
 		num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, access_atmospherics),
 		num2text(MED_FREQ) = list(access_medical_equip),

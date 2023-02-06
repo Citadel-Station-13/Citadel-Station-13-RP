@@ -133,7 +133,7 @@
 	var/can_salvage = TRUE
 
 /obj/machinery/porta_turret/crescent
-	req_one_access = list(access_cent_specops)
+	req_one_access = list(ACCESS_CENTCOM_ERT)
 	enabled = FALSE
 	ailock = TRUE
 	check_synth = FALSE
