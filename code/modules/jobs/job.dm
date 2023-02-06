@@ -306,7 +306,7 @@
 	else
 		if(alt_title == title)
 			return TRUE
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[title])
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
 		if(isnull(alt_datum))
 			return FALSE
 		return isnull(alt_datum.background_restricted) || length(transformed & alt_datum.background_restricted)
