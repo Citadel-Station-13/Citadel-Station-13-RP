@@ -12,7 +12,7 @@
 	icon = 'icons/obj/suitstorage.dmi'
 	icon_state = "suitstorage000000100"
 
-	req_access = list(access_captain,access_heads)
+	req_access = list(ACCESS_COMMAND_CAPTAIN,ACCESS_COMMAND_BRIDGE)
 
 	var/active = 0          // PLEASE HOLD.
 	var/safeties = 1        // The cycler won't start with a living thing inside it unless safeties are off.
@@ -102,7 +102,7 @@
 /obj/machinery/suit_cycler/director
 	name = "Director suit cycler"
 	model_text = "Director"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 	departments = list("Director", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 

@@ -11,8 +11,8 @@
 	idtype = /obj/item/card/id/engineering/atmos
 	pto_type = PTO_ENGINEERING
 
-	access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT, access_external_airlocks, access_construction, access_atmospherics, access_external_airlocks)
-	minimal_access = list(access_eva, ACCESS_ENGINEERING_MAIN, access_atmospherics, ACCESS_ENGINEERING_MAINT, access_emergency_storage, access_construction, access_external_airlocks)
+	access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, access_construction, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_AIRLOCK)
+	minimal_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_MAINT, access_emergency_storage, access_construction, ACCESS_ENGINEERING_AIRLOCK)
 
 	minimal_player_age = 3
 

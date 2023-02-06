@@ -29,7 +29,7 @@
 /obj/machinery/computer/shuttle_control/triumph_backup
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
-	req_one_access = list(access_heads,ACCESS_GENERAL_PILOT)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 */
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
@@ -63,7 +63,7 @@
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 */
 
 //

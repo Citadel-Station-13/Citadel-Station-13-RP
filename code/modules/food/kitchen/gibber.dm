@@ -6,7 +6,7 @@
 	icon_state = "grinder"
 	density = 1
 	anchored = 1
-	req_access = list(access_kitchen,ACCESS_MEDICAL_MORGUE)
+	req_access = list(ACCESS_GENERAL_KITCHEN,ACCESS_MEDICAL_MORGUE)
 
 	var/operating = 0 //Is it on?
 	var/dirty = 0 // Does it need cleaning?

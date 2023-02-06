@@ -49,7 +49,7 @@
 	cost = 15
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Exotic Seeds crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"

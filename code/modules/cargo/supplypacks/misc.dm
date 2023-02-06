@@ -205,7 +205,7 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "eva hardsuit crate"
 	access = list(ACCESS_SUPPLY_MINE,
-				  access_eva,
+				  ACCESS_COMMAND_EVA,
 				  ACCESS_GENERAL_EXPLORER,
 				  ACCESS_GENERAL_PILOT)
 	one_access = TRUE
@@ -219,7 +219,7 @@
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "industrial hardsuit crate"
 	access = list(ACCESS_SUPPLY_MINE,
-				  access_eva)
+				  ACCESS_COMMAND_EVA)
 	one_access = TRUE
 
 /datum/supply_pack/misc/medical_rig
@@ -261,7 +261,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "ami hardsuit crate"
-	access = access_rd
+	access = ACCESS_SCIENCE_RD
 
 /datum/supply_pack/misc/ce_rig
 	name = "advanced voidsuit (empty)"

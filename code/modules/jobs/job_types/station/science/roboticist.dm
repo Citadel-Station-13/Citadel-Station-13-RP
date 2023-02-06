@@ -9,8 +9,8 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	pto_type = PTO_SCIENCE
-	access = list(access_robotics, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, access_tech_storage, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
-	minimal_access = list(access_robotics, access_tech_storage, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	minimal_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/roboticist

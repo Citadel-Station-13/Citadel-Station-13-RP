@@ -216,9 +216,9 @@
 			setMenuState(usr, COMM_SCREEN_MAIN)
 			return
 		// Login function.
-		if(check_access(usr, access_heads))
+		if(check_access(usr, ACCESS_COMMAND_BRIDGE))
 			authenticated = COMM_AUTHENTICATION_MIN
-		if(check_access(usr, access_captain))
+		if(check_access(usr, ACCESS_COMMAND_CAPTAIN))
 			authenticated = COMM_AUTHENTICATION_MAX
 			var/mob/M = usr
 			var/obj/item/card/id = M.GetIdCard()

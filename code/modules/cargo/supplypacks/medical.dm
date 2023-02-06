@@ -181,7 +181,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed
 	container_name = "Chemist equipment"
-	access = access_chemistry
+	access = ACCESS_MEDICAL_CHEMISTRY
 
 /datum/supply_pack/med/paramedicgear
 	name = "Paramedic equipment"

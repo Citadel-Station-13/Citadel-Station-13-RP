@@ -6,7 +6,7 @@
 	icon_opened = "capsecureopen"
 	icon_broken = "capsecurebroken"
 	icon_off = "capsecureoff"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
@@ -377,7 +377,7 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/reagent_containers/syringe/ld50_syringe/choral = 2)

@@ -5,7 +5,7 @@
 	icon_keyboard = "id_key"
 	icon_screen = "id"
 	light_color = "#0099ff"
-	req_access = list(access_change_ids)
+	req_access = list(ACCESS_COMMAND_CARDMOD)
 	circuit = /obj/item/circuitboard/card
 	var/obj/item/card/id/scan = null
 	var/obj/item/card/id/modify = null
@@ -58,7 +58,7 @@
 	if(!istype(id_card))
 		return ..()
 
-	if(!scan && (access_change_ids in id_card.access))
+	if(!scan && (ACCESS_COMMAND_CARDMOD in id_card.access))
 		if(!user.attempt_insert_item_for_installation(id_card, src))
 			return
 		scan = id_card

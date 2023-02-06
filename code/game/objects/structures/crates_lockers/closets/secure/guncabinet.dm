@@ -59,7 +59,7 @@
 //SC Guncabinet files
 /obj/structure/closet/secure_closet/guncabinet/sidearm
 	name = "emergency weapon cabinet"
-	req_one_access = list(ACCESS_SECURITY_ARMORY,access_captain)
+	req_one_access = list(ACCESS_SECURITY_ARMORY,ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/gun/energy/gun = 4)
@@ -91,7 +91,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/robotics
 	name = "exosuit equipment cabinet"
-	req_one_access = list(access_robotics,ACCESS_SCIENCE_MAIN)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_MAIN)
 
 /obj/structure/closet/secure_closet/guncabinet/excursion
 	name = "expedition weaponry cabinet"

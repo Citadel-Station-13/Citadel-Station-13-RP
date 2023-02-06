@@ -131,7 +131,7 @@
 /obj/machinery/door/airlock/command
 	name = "Command Airlock"
 	icon = 'icons/obj/doors/Doorcom.dmi'
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
 	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
@@ -155,7 +155,7 @@
 /obj/machinery/door/airlock/engineeringatmos
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Doorengatmos.dmi'
-	req_one_access = list(access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	assembly_type = /obj/structure/door_assembly/door_assembly_eat
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
@@ -178,13 +178,13 @@
 
 /obj/machinery/door/airlock/maintenance/cargo
 	icon = 'icons/obj/doors/Doormaint_cargo.dmi'
-	req_one_access = list(access_cargo)
+	req_one_access = list(ACCESS_SUPPLY_BAY)
 	open_sound_powered = 'sound/machines/door/door2o.ogg'
 	close_sound_powered = 'sound/machines/door/door2c.ogg'
 
 /obj/machinery/door/airlock/maintenance/command
 	icon = 'icons/obj/doors/Doormaint_command.dmi'
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 
 /obj/machinery/door/airlock/maintenance/common
 	icon = 'icons/obj/doors/Doormaint_common.dmi'
@@ -231,7 +231,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 	opacity = 0
 	glass = 1
-	req_one_access = list(access_external_airlocks)
+	req_one_access = list(ACCESS_ENGINEERING_AIRLOCK)
 	open_sound_powered = 'sound/machines/door/space1o.ogg'
 	close_sound_powered = 'sound/machines/door/space1c.ogg'
 
@@ -314,7 +314,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	open_sound_powered = 'sound/machines/door/cmd1o.ogg'
 	close_sound_powered = 'sound/machines/door/cmd1c.ogg'
 
@@ -341,7 +341,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eat
 	glass = 1
-	req_one_access = list(access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 
@@ -383,7 +383,7 @@
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Dooratmo.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
-	req_one_access = list(access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 
@@ -429,7 +429,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
 	glass = 1
-	req_one_access = list(access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 

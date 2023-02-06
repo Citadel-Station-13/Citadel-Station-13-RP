@@ -240,7 +240,7 @@
 		return 1
 
 	if(station_network)
-		return check_access(user, network_access) || check_access(user, ACCESS_SECURITY_EQUIPMENT) || check_access(user, access_heads)
+		return check_access(user, network_access) || check_access(user, ACCESS_SECURITY_EQUIPMENT) || check_access(user, ACCESS_COMMAND_BRIDGE)
 	else
 		return check_access(user, network_access)
 

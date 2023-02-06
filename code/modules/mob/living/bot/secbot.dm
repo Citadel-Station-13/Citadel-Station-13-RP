@@ -101,8 +101,8 @@
 
 	xeno_harm_strength = 9 // Weaker than regular slimesky but they can stun.
 	baton_glow = "#33CCFF"
-	req_one_access = list(ACCESS_SCIENCE_MAIN, access_robotics)
-	botcard_access = list(ACCESS_SCIENCE_MAIN, access_robotics, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS)
+	botcard_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 

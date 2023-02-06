@@ -123,7 +123,7 @@
 	var/wiresexposed = FALSE
 	var/locked = TRUE
 	var/has_power = TRUE
-	var/list/req_access = list(access_robotics)
+	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	var/ident = 0
 	//var/list/laws = list()
 	var/viewalerts = FALSE

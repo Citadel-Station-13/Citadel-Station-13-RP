@@ -11,8 +11,8 @@
 	name = "ED-CLN Cleaning Robot"
 	desc = "A large cleaning robot. It looks rather efficient."
 	icon_state = "edCLN0"
-	req_one_access = list(access_robotics, access_janitor)
-	botcard_access = list(access_janitor, ACCESS_ENGINEERING_MAINT)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_GENERAL_JANITOR)
+	botcard_access = list(ACCESS_GENERAL_JANITOR, ACCESS_ENGINEERING_MAINT)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot/edCLN)
 
 	locked = FALSE //Starts unlocked so roboticist can set them to patrol.

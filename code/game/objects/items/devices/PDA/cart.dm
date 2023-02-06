@@ -69,7 +69,7 @@ var/list/civilian_cartridges = list(
 	var/access_status_display = 0
 	var/access_quartermaster = 0
 	var/access_detonate_pda = 0
-	var/access_hydroponics = 0
+	var/ACCESS_GENERAL_BOTANY = 0
 	var/charges = 0
 	var/mode = null
 	var/menu

@@ -243,7 +243,7 @@
 
 /obj/item/rig/hazmat/equipped
 
-	req_access = list(access_rd)
+	req_access = list(ACCESS_SCIENCE_RD)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,

@@ -86,7 +86,7 @@
 	var/list/log = list()
 
 	/// Default access for checking logs is cargo.
-	var/req_log_access = access_cargo
+	var/req_log_access = ACCESS_SUPPLY_BAY
 	/// Defaults to 0, set to anything else for vendor to have logs.
 	var/has_logs = NONE
 
@@ -682,8 +682,8 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
-	req_access = list(access_bar)
-	req_log_access = access_bar
+	req_access = list(ACCESS_GENERAL_BAR)
+	req_log_access = ACCESS_GENERAL_BAR
 	has_logs = 1
 
 /obj/machinery/vending/assist
@@ -991,7 +991,7 @@
 		/obj/item/assembly/prox_sensor = 6,
 		/obj/item/assembly/igniter = 6,
 	)
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/wallmed1
@@ -1396,7 +1396,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	products = list(
 		/obj/item/clothing/suit/storage/toggle/labcoat = 4,
 		/obj/item/clothing/under/rank/roboticist = 4,
@@ -1414,7 +1414,7 @@
 		/obj/item/tool/crowbar = 5,
 	)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/giftvendor

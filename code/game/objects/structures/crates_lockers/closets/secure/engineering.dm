@@ -133,7 +133,7 @@
 	icon_opened = "secureatmopen"
 	icon_broken = "secureatmbroken"
 	icon_off = "secureatmoff"
-	req_access = list(access_atmospherics)
+	req_access = list(ACCESS_ENGINEERING_ATMOS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,

@@ -89,7 +89,7 @@
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"
 	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	storage_slots = 7
 	starts_with = list(
 		/obj/item/clothing/accessory/medal/conduct,

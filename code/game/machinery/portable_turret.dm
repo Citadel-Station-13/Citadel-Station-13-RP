@@ -48,7 +48,7 @@
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
 	power_channel = EQUIP
-	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, access_heads)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE
@@ -207,7 +207,7 @@
 /obj/machinery/porta_turret/industrial
 	name = "industrial turret"
 	desc = "This variant appears to be much more rugged."
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	icon_state = "turret_cover_industrial"
 	installation = /obj/item/gun/energy/phasegun
 	health = 200
@@ -235,7 +235,7 @@
 /obj/machinery/porta_turret/industrial/teleport_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable, with a rugged outer coating."
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	installation = /obj/item/gun/energy/gun/burst
 	health = 250
 	maxhealth = 250

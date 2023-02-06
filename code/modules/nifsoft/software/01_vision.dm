@@ -83,7 +83,7 @@
 	desc = "Like the civilian model, but provides most of the features of the medical and security overlays as well."
 	list_pos = NIF_OMNI_AR
 	cost = 250
-	access = access_captain
+	access = ACCESS_COMMAND_CAPTAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL)
 	planes_enabled = list(VIS_AUGMENTED)

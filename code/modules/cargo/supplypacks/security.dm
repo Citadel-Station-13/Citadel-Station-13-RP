@@ -327,7 +327,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Wall shield generators crate"
-	access = access_teleporter
+	access = ACCESS_COMMAND_TELEPORTER
 
 /datum/supply_pack/randomised/security/holster
 	name = "Gear - Holsters"

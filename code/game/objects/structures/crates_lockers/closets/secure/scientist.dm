@@ -35,7 +35,7 @@
 	icon_opened = "rdsecureopen"
 	icon_broken = "rdsecurebroken"
 	icon_off = "rdsecureoff"
-	req_access = list(access_rd)
+	req_access = list(ACCESS_SCIENCE_RD)
 
 	starts_with = list(
 		/obj/item/clothing/suit/bio_suit/scientist,

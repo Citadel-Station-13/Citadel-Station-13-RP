@@ -188,7 +188,7 @@
 	cost = 25
 	container_name = "P.A.C.M.A.N. Portable Generator Construction Kit"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_tech_storage
+	access = ACCESS_ENGINEERING_TECHSTORAGE
 	contains = list(
 			/obj/item/stock_parts/micro_laser,
 			/obj/item/stock_parts/capacitor,
@@ -201,7 +201,7 @@
 	cost = 35
 	container_name = "Super P.A.C.M.A.N. portable generator construction kit"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_tech_storage
+	access = ACCESS_ENGINEERING_TECHSTORAGE
 	contains = list(
 			/obj/item/stock_parts/micro_laser,
 			/obj/item/stock_parts/capacitor,

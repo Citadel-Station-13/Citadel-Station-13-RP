@@ -19,7 +19,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Atmospheric voidsuit crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/voidsuits/atmos/alt
 	name = "Heavy Duty Atmospheric voidsuits"
@@ -33,7 +33,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Heavy Duty Atmospheric voidsuit crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/voidsuits/engineering
 	name = "Engineering voidsuits"

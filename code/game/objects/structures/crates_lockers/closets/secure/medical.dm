@@ -226,7 +226,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_chemistry)
+	req_access = list(ACCESS_MEDICAL_CHEMISTRY)
 
 	starts_with = list(
 		/obj/item/storage/box/pillbottles = 2,
@@ -316,7 +316,7 @@
 /obj/structure/closet/secure_closet/medical_wall/synth_anesthetics
 	name = "robotics anesthetics wall closet"
 	desc = "Used to knock people out."
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 
 	starts_with = list(
 		/obj/item/tank/anesthetic = 3,

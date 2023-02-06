@@ -11,9 +11,9 @@
 * Station access *
 *****************/
 
-/var/const/access_external_airlocks = 13
+/var/const/ACCESS_ENGINEERING_AIRLOCK = 13
 /datum/access/external_airlocks
-	id = access_external_airlocks
+	id = ACCESS_ENGINEERING_AIRLOCK
 	desc = "External Airlocks"
 	region = ACCESS_REGION_ENGINEERING
 
@@ -23,105 +23,105 @@
 	desc = "Emergency Storage"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_change_ids = 15
+/var/const/ACCESS_COMMAND_CARDMOD = 15
 /datum/access/change_ids
-	id = access_change_ids
+	id = ACCESS_COMMAND_CARDMOD
 	desc = "ID Computer"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_ai_upload = 16
+/var/const/ACCESS_COMMAND_UPLOAD = 16
 /datum/access/ai_upload
-	id = access_ai_upload
+	id = ACCESS_COMMAND_UPLOAD
 	desc = "AI Upload"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_teleporter = 17
+/var/const/ACCESS_COMMAND_TELEPORTER = 17
 /datum/access/teleporter
-	id = access_teleporter
+	id = ACCESS_COMMAND_TELEPORTER
 	desc = "Teleporter"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_eva = 18
+/var/const/ACCESS_COMMAND_EVA = 18
 /datum/access/eva
-	id = access_eva
+	id = ACCESS_COMMAND_EVA
 	desc = "EVA"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_heads = 19
+/var/const/ACCESS_COMMAND_BRIDGE = 19
 /datum/access/heads
-	id = access_heads
+	id = ACCESS_COMMAND_BRIDGE
 	desc = "Bridge"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_captain = 20
+/var/const/ACCESS_COMMAND_CAPTAIN = 20
 /datum/access/captain
-	id = access_captain
+	id = ACCESS_COMMAND_CAPTAIN
 	desc = "Facility Director"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_all_personal_lockers = 21
+/var/const/ACCESS_COMMAND_LOCKERS = 21
 /datum/access/all_personal_lockers
-	id = access_all_personal_lockers
+	id = ACCESS_COMMAND_LOCKERS
 	desc = "Personal Lockers"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_chapel_office = 22
+/var/const/ACCESS_GENERAL_CHAPEL = 22
 /datum/access/chapel_office
-	id = access_chapel_office
+	id = ACCESS_GENERAL_CHAPEL
 	desc = "Chapel Office"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_tech_storage = 23
+/var/const/ACCESS_ENGINEERING_TECHSTORAGE = 23
 /datum/access/tech_storage
-	id = access_tech_storage
+	id = ACCESS_ENGINEERING_TECHSTORAGE
 	desc = "Technical Storage"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_atmospherics = 24
+/var/const/ACCESS_ENGINEERING_ATMOS = 24
 /datum/access/atmospherics
-	id = access_atmospherics
+	id = ACCESS_ENGINEERING_ATMOS
 	desc = "Atmospherics"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_bar = 25
+/var/const/ACCESS_GENERAL_BAR = 25
 /datum/access/bar
-	id = access_bar
+	id = ACCESS_GENERAL_BAR
 	desc = "Bar"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_janitor = 26
+/var/const/ACCESS_GENERAL_JANITOR = 26
 /datum/access/janitor
-	id = access_janitor
+	id = ACCESS_GENERAL_JANITOR
 	desc = "Custodial Closet"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_crematorium = 27
+/var/const/ACCESS_GENERAL_CREMATOR = 27
 /datum/access/crematorium
-	id = access_crematorium
+	id = ACCESS_GENERAL_CREMATOR
 	desc = "Crematorium"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_kitchen = 28
+/var/const/ACCESS_GENERAL_KITCHEN = 28
 /datum/access/kitchen
-	id = access_kitchen
+	id = ACCESS_GENERAL_KITCHEN
 	desc = "Kitchen"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_robotics = 29
+/var/const/ACCESS_SCIENCE_ROBOTICS = 29
 /datum/access/robotics
-	id = access_robotics
+	id = ACCESS_SCIENCE_ROBOTICS
 	desc = "Robotics"
 	region = ACCESS_REGION_RESEARCH
 
-/var/const/access_rd = 30
+/var/const/ACCESS_SCIENCE_RD = 30
 /datum/access/rd
-	id = access_rd
+	id = ACCESS_SCIENCE_RD
 	desc = "Research Director"
 	region = ACCESS_REGION_RESEARCH
 
-/var/const/access_cargo = 31
+/var/const/ACCESS_SUPPLY_BAY = 31
 /datum/access/cargo
-	id = access_cargo
+	id = ACCESS_SUPPLY_BAY
 	desc = "Cargo Bay"
 	region = ACCESS_REGION_SUPPLY
 
@@ -131,21 +131,21 @@
 	desc = "Construction Areas"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_chemistry = 33
+/var/const/ACCESS_MEDICAL_CHEMISTRY = 33
 /datum/access/chemistry
-	id = access_chemistry
+	id = ACCESS_MEDICAL_CHEMISTRY
 	desc = "Chemistry Lab"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_cargo_bot = 34
+/var/const/ACCESS_SUPPLY_MULEBOT = 34
 /datum/access/cargo_bot
-	id = access_cargo_bot
+	id = ACCESS_SUPPLY_MULEBOT
 	desc = "Cargo Bot Delivery"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_hydroponics = 35
+/var/const/ACCESS_GENERAL_BOTANY = 35
 /datum/access/hydroponics
-	id = access_hydroponics
+	id = ACCESS_GENERAL_BOTANY
 	desc = "Hydroponics"
 	region = ACCESS_REGION_GENERAL
 
@@ -161,9 +161,9 @@
 	desc = "Internal Affairs"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_virology = 39
+/var/const/ACCESS_MEDICAL_VIROLOGY = 39
 /datum/access/virology
-	id = access_virology
+	id = ACCESS_MEDICAL_VIROLOGY
 	desc = "Virology"
 	region = ACCESS_REGION_MEDBAY
 
