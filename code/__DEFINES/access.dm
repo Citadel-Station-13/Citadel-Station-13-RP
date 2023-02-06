@@ -78,7 +78,21 @@ GLOBAL_LIST_INIT(access_type_names, list(
 
 //? General
 
+#define ACCESS_GENERAL_CLOWN 136
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CLOWN, station/general/clown, "Clown Office")
+
+#define ACCESS_GENERAL_MIME 138
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_MIME, station/general/mime, "Mime Office")
+
+#define ACCESS_GENERAL_TOMFOOLERY 137
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_TOMFOOLERY, station/general/tomfoolery, "Tomfoolery Closet")
+
 //? Command
+
+#define ACCESS_COMMAND_CARDMOD 15
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_CARDMOD, station/command/cardmod, "ID Modification")
+	access_edit_type = ACCESS_TYPE_STATION
+	access_edit_region = ACCESS_REGION_ALL
 
 //? Security
 
@@ -125,3 +139,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_TOXINS, station/science/toxins, "Toxins Lab
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Genetics Lab")
 
 //? Supply
+
+
+
+#warn unit test this shit by for'ing through the types to ensure no colliding defines.

@@ -24,9 +24,9 @@
 
 /datum/job/station/clown/get_access()
 	if(config_legacy.assistant_maint)
-		return list(ACCESS_ENGINEERING_MAINT, access_entertainment, access_clown, access_tomfoolery)
+		return list(ACCESS_ENGINEERING_MAINT, access_entertainment, ACCESS_GENERAL_CLOWN, ACCESS_GENERAL_TOMFOOLERY)
 	else
-		return list(access_entertainment, access_clown, access_tomfoolery)
+		return list(access_entertainment, ACCESS_GENERAL_CLOWN, ACCESS_GENERAL_TOMFOOLERY)
 
 /datum/outfit/job/station/clown
 	name = OUTFIT_JOB_NAME("Clown")
