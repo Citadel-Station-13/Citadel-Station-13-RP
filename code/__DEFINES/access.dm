@@ -63,11 +63,18 @@ GLOBAL_LIST_INIT(access_type_names, list(
 	ACCESS_TYPE_PRIVATE = "Unknown",
 ))
 
-//? Access Values - constants & datums
-//! DEFINE NUMBERS MUST NEVER CHANGE !//
-//* Otherwise all maps break.        *//
-
+//? Access Values - constants & datums                ?//
+//! DEFINE NUMBERS MUST NEVER CHANGE                  !//
+//* Otherwise all maps break.                         *//
 //* MAPPERS: This is also where you find your values! *//
+
+//--------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
+//? THE CURRENT HIGHEST IS 301. UPDATE THIS VALUE AS NEEDED. ADD CONTINUOUSLY, DO NOT SKIP VALUES. ?//
+//--------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
+
+// When oh when will we escape the tyranny of number enums?
 
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
 /datum/prototype/access/##type { \
@@ -79,6 +86,21 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //* STATION *//
 
 //? General
+
+#define ACCESS_GENERAL_CHAPEL 22
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CHAPEL, station/general/chapel, "Chapel Office")
+
+#define ACCESS_GENERAL_BAR 25
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_BAR, station/general/bar, "Bar")
+
+#define ACCESS_GENERAL_JANITOR 26
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_JANITOR, station/general/janitor, "Custodial Closet")
+
+#define ACCESS_GENERAL_CREMATOR 27
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CREMATOR, station/general/crematorium, "Crematorium")
+
+#define ACCESS_GENERAL_KITCHEN 28
+STANDARD_ACCESS_DATUM(ACCESS_GENERAL_KITCHEN, station/general/kitchen, "Kitchen")
 
 #define ACCESS_GENERAL_CLOWN 136
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_CLOWN, station/general/clown, "Clown Office")
@@ -95,6 +117,15 @@ STANDARD_ACCESS_DATUM(ACCESS_GENERAL_TOMFOOLERY, station/general/tomfoolery, "To
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_CARDMOD, station/command/cardmod, "ID Modification")
 	access_edit_type = ACCESS_TYPE_STATION
 	access_edit_region = ACCESS_REGION_ALL
+
+#define ACCESS_COMMAND_CAPTAIN 20
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_CAPTAIN, station/command/captain, "Facility Director")
+
+#define ACCESS_COMMAND_LOCKERS 21
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_LOCKERS, station/command/lockers, "Personal Lockers")
+
+#define ACCESS_COMMAND_IAA 38
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_IAA, station/command/iaa, "Internal Affairs")
 
 //? Security
 
@@ -121,6 +152,18 @@ STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ENGINE, station/engineering/engine, "En
 #define ACCESS_ENGINEERING_MAINT 12
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_MAINT, station/engineering/maint, "Maintenance")
 
+#define ACCESS_ENGINEERING_AIRLOCK 13
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_AIRLOCK, station/engineering/airlock, "External Airlocks")
+
+#define ACCESS_ENGINEERING_TRIAGE 14
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_TRIAGE, station/engineering/triage, "Engineering Triage")
+
+#define ACCESS_ENGINEERING_TECHSTORAGE 23
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_TECHSTORAGE, station/engineering/techstorage, "Technical Storage")
+
+#define ACCESS_ENGINEERING_ATMOS 24
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ATMOS, station/engineering/atmos, "Atmospherics")
+
 //? Medical
 
 #define ACCESS_MEDICAL_MAIN 5
@@ -140,8 +183,16 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_TOXINS, station/science/toxins, "Toxins Lab
 #define ACCESS_SCIENCE_GENETICS 9
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Genetics Lab")
 
+#define ACCESS_SCIENCE_ROBOTICS 29
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_ROBOTICS, station/science/robotics, "Robotics")
+
+#define ACCESS_SCIENCE_RD 30
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_RD, station/science/rd, "Research Director")
+
 //? Supply
 
+#define ACCESS_SUPPLY_BAY 31
+STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_BAY, station/supply/cargo, "Cargo Bay")
 
 #warn id mod access for departments, shim onto heads
 #warn add bank uplink access tbd name
