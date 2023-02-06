@@ -13,8 +13,8 @@
 	idtype = /obj/item/card/id/cargo/head
 	supervisors = "the Head of Personnel"
 	selection_color = "#9b633e"
-	access = list(ACCESS_ENGINEERING_MAINT, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
-	minimal_access = list(ACCESS_ENGINEERING_MAINT, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, access_cargo, access_cargo_bot, ACCESS_SUPPLY_QM, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
+	minimal_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, access_cargo, access_cargo_bot, ACCESS_SUPPLY_QM, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
 
 	ideal_character_age = 40
 

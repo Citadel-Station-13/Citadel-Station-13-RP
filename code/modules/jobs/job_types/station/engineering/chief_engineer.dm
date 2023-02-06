@@ -21,12 +21,12 @@
 
 	access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT,
 						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-						access_heads, access_construction, access_sec_doors,
-						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+						access_heads, access_construction, ACCESS_SECURITY_MAIN,
+						ACCESS_ENGINEERING_CE, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_ENGINEERING_TELECOMMS, access_ai_upload)
 	minimal_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT,
 						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-						access_heads, access_construction, access_sec_doors,
-						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+						access_heads, access_construction, ACCESS_SECURITY_MAIN,
+						ACCESS_ENGINEERING_CE, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_ENGINEERING_TELECOMMS, access_ai_upload)
 	minimal_player_age = 7
 	alt_titles = list(
 		"Head Engineer" = /datum/alt_title/head_engineer,

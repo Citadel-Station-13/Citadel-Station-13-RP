@@ -193,7 +193,7 @@
 
 /obj/item/rig/ce/equipped
 
-	req_access = list(access_ce)
+	req_access = list(ACCESS_ENGINEERING_CE)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,

@@ -5,7 +5,7 @@
 /obj/machinery/computer/shuttle_control/triumph_backup
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
-	req_one_access = list(access_heads,access_pilot)
+	req_one_access = list(access_heads,ACCESS_GENERAL_PILOT)
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
 	name = "vessel control console"
@@ -114,7 +114,7 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 //Courser Scout Vessel
 /datum/shuttle/autodock/overmap/courser
@@ -154,7 +154,7 @@
 /obj/machinery/computer/shuttle_control/explore/courser
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // Public Civilian Shuttle
 
@@ -257,5 +257,5 @@
 /obj/machinery/computer/shuttle_control/explore/tourbus
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 */

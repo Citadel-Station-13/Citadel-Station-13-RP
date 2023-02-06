@@ -16,13 +16,13 @@
 	idtype = /obj/item/card/id/science/head
 	req_admin_notify = 1
 	access = list(access_rd, access_heads, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_GENETICS, ACCESS_MEDICAL_MORGUE,
-						ACCESS_SCIENCE_TOXINS, access_teleporter, access_sec_doors,
-						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
-						access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network)
+						ACCESS_SCIENCE_TOXINS, access_teleporter, ACCESS_SECURITY_MAIN,
+						ACCESS_SCIENCE_MAIN, access_robotics, ACCESS_SCIENCE_XENOBIO, access_ai_upload, access_tech_storage,
+						ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_ENGINEERING_TELECOMMS, ACCESS_GENERAL_GATEWAY, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_EXONET)
 	minimal_access = list(access_rd, access_heads, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_GENETICS, ACCESS_MEDICAL_MORGUE,
-						ACCESS_SCIENCE_TOXINS, access_teleporter, access_sec_doors,
-						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
-						access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network)
+						ACCESS_SCIENCE_TOXINS, access_teleporter, ACCESS_SECURITY_MAIN,
+						ACCESS_SCIENCE_MAIN, access_robotics, ACCESS_SCIENCE_XENOBIO, access_ai_upload, access_tech_storage,
+						ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_ENGINEERING_TELECOMMS, ACCESS_GENERAL_GATEWAY, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_EXONET)
 
 	minimum_character_age = 25
 	minimal_player_age = 14

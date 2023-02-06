@@ -234,7 +234,7 @@
 	cost = 35
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "frontier phaser crate"
-	access = access_explorer
+	access = ACCESS_GENERAL_EXPLORER
 
 //Culture Update
 /datum/supply_pack/munitions/weaponry_apidean

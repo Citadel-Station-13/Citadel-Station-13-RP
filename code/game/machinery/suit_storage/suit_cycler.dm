@@ -59,7 +59,7 @@
 /obj/machinery/suit_cycler/mining
 	name = "Mining suit cycler"
 	model_text = "Mining"
-	req_access = list(access_mining)
+	req_access = list(ACCESS_SUPPLY_MINE)
 	departments = list("Mining", "No Change")
 
 /obj/machinery/suit_cycler/security
@@ -84,19 +84,19 @@
 /obj/machinery/suit_cycler/exploration
 	name = "Explorer suit cycler"
 	model_text = "Exploration"
-	req_access = list(access_explorer) //Old Exploration needs fixing up
+	req_access = list(ACCESS_GENERAL_EXPLORER) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
 /obj/machinery/suit_cycler/pathfinder
 	name = "Pathfinder suit cycler"
 	model_text = "Pathfinder"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	departments = list("Pathfinder", "No Change")
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
 	model_text = "Pilot"
-	req_access = list(access_pilot)
+	req_access = list(ACCESS_GENERAL_PILOT)
 	departments = list("Pilot", "No Change") //Pilot Blue needs fixing up
 
 /obj/machinery/suit_cycler/director
@@ -109,7 +109,7 @@
 /obj/machinery/suit_cycler/headofsecurity
 	name = "Head of Security suit cycler"
 	model_text = "Head of Security"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	departments = list("Head of Security", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 

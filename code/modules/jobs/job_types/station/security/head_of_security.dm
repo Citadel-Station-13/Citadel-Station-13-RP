@@ -16,14 +16,14 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
-	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY,
+	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY,
 						ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, access_all_personal_lockers,
-						access_research, ACCESS_ENGINEERING_MAIN, access_mining, ACCESS_MEDICAL_MAIN, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY,
+						ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_MAIN, ACCESS_SUPPLY_MINE, ACCESS_MEDICAL_MAIN, access_construction, ACCESS_SUPPLY_MAIN,
+						access_heads, ACCESS_SECURITY_HOS, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_GENERAL_GATEWAY, access_external_airlocks)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY,
 						ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, access_all_personal_lockers,
-						access_research, ACCESS_ENGINEERING_MAIN, access_mining, ACCESS_MEDICAL_MAIN, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
+						ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_MAIN, ACCESS_SUPPLY_MINE, ACCESS_MEDICAL_MAIN, access_construction, ACCESS_SUPPLY_MAIN,
+						access_heads, ACCESS_SECURITY_HOS, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_GENERAL_GATEWAY, access_external_airlocks)
 	minimum_character_age = 25
 	minimal_player_age = 14
 

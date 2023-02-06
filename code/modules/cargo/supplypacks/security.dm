@@ -500,7 +500,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Head of security equipment"
-	access = access_hos
+	access = ACCESS_SECURITY_HOS
 
 /datum/supply_pack/security/securityclothing
 	name = "Misc - Security uniform red"

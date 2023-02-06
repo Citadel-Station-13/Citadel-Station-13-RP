@@ -28,8 +28,8 @@
 
 	stun_strength = 10
 	xeno_harm_strength = 9
-	req_one_access = list(access_research, access_robotics)
-	botcard_access = list(access_research, access_robotics, access_xenobiology, access_xenoarch, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, access_robotics)
+	botcard_access = list(ACCESS_SCIENCE_MAIN, access_robotics, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	var/xeno_stun_strength = 6
 
 /mob/living/bot/secbot/ed209/slime/update_icons()

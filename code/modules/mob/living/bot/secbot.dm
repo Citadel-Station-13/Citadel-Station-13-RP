@@ -21,7 +21,7 @@
 	maxHealth = 100
 	health = 100
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS)
-	botcard_access = list(ACCESS_SECURITY_EQUIPMENT, access_sec_doors, ACCESS_SECURITY_FORENSICS, ACCESS_ENGINEERING_MAINT)
+	botcard_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_ENGINEERING_MAINT)
 	patrol_speed = 2
 	target_speed = 3
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)
@@ -101,8 +101,8 @@
 
 	xeno_harm_strength = 9 // Weaker than regular slimesky but they can stun.
 	baton_glow = "#33CCFF"
-	req_one_access = list(access_research, access_robotics)
-	botcard_access = list(access_research, access_robotics, access_xenobiology, access_xenoarch, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, access_robotics)
+	botcard_access = list(ACCESS_SCIENCE_MAIN, access_robotics, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 

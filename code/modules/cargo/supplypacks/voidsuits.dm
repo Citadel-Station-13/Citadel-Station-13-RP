@@ -103,7 +103,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/emt
 	name = "Medical EMT voidsuits"
@@ -117,7 +117,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Medical EMT voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/bio
 	name = "Medical Biohazard voidsuits"
@@ -131,7 +131,7 @@
 	cost = 45
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Medical Biohazard voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/alt
 	name = "Vey-Med Medical voidsuits"
@@ -145,7 +145,7 @@
 	cost = 60
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/alt2
 	name = "Vey-Med Plated Medical voidsuits"
@@ -159,7 +159,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/security
 	name = "Security voidsuits"
@@ -213,7 +213,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Mining voidsuit crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/voidsuits/supply/alt
 	name = "Frontier Mining voidsuits"
@@ -226,7 +226,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Frontier Mining voidsuit crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/voidsuits/zaddat
 	name = "Zaddat Shroud"
@@ -323,7 +323,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Exploration voidsuit crate"
-	access = access_explorer
+	access = ACCESS_GENERAL_EXPLORER
 
 /datum/supply_pack/voidsuits/pilot
 	name = "Pilot voidsuits"
@@ -337,4 +337,4 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Pilot voidsuit crate"
-	access = access_pilot
+	access = ACCESS_GENERAL_PILOT

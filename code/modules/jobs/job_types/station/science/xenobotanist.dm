@@ -11,8 +11,8 @@
 	spawn_positions = 2
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
-	access = list(access_robotics, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, access_research, access_xenobotany, access_hydroponics)
-	minimal_access = list(access_research, access_xenobotany, access_hydroponics, ACCESS_SCIENCE_TOXINS)
+	access = list(access_robotics, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_XENOBOTANY, access_hydroponics)
+	minimal_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_XENOBOTANY, access_hydroponics, ACCESS_SCIENCE_TOXINS)
 	pto_type = PTO_SCIENCE
 
 	minimal_player_age = 14

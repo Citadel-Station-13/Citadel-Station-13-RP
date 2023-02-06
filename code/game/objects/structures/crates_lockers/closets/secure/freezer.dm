@@ -61,7 +61,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
-	req_access = list(access_heads_vault)
+	req_access = list(ACCESS_COMMAND_VAULT)
 
 
 	starts_with = list(

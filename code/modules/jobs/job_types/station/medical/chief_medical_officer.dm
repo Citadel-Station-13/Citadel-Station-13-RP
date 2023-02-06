@@ -15,12 +15,12 @@
 	selection_color = "#026865"
 	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
-	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
+	access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
+			access_chemistry, access_virology, ACCESS_MEDICAL_CMO, ACCESS_MEDICAL_SURGERY, ACCESS_COMMAND_ANNOUNCE,
+			ACCESS_COMMAND_KEYAUTH, ACCESS_SECURITY_MAIN, ACCESS_MEDICAL_PSYCH, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
+			access_chemistry, access_virology, ACCESS_MEDICAL_CMO, ACCESS_MEDICAL_SURGERY, ACCESS_COMMAND_ANNOUNCE,
+			ACCESS_COMMAND_KEYAUTH, ACCESS_SECURITY_MAIN, ACCESS_MEDICAL_PSYCH, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
 
 	minimum_character_age = 25
 	minimal_player_age = 10

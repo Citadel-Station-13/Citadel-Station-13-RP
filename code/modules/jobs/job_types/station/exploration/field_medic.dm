@@ -12,8 +12,8 @@
 	idtype = /obj/item/card/id/medical/sar
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
-	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, access_surgery, access_chemistry, access_eva, ACCESS_ENGINEERING_MAINT, access_external_airlocks, access_pilot)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, access_pilot)
+	access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, access_chemistry, access_eva, ACCESS_ENGINEERING_MAINT, access_external_airlocks, ACCESS_GENERAL_PILOT)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_GENERAL_PILOT)
 	outfit_type = /datum/outfit/job/station/sar
 	desc = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(

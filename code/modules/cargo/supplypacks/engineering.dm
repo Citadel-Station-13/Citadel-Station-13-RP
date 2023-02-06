@@ -100,14 +100,14 @@
 	contains = list(/obj/machinery/field_generator = 2)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Field Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Singularity Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/collector
 	name = "Collector crate"
@@ -131,7 +131,7 @@
 			)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Particle Accelerator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/shield_generator
 	name = "Shield Generator Construction Kit"
@@ -153,7 +153,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Supermatter crate (CAUTION)"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/teg
 	contains = list(
@@ -268,7 +268,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "fission core crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/fission/expansion
 	name = "Fission Expansion crate"
@@ -279,7 +279,7 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "fission expansion crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/thermoregulator
 	contains = list(/obj/machinery/power/thermoregulator)
@@ -306,7 +306,7 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Tesla Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/point_defense_cannon_circuit
 	name = "Point Defense Turret Circuit"

@@ -12,8 +12,8 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/warden
 	pto_type = PTO_SECURITY
-	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, ACCESS_MEDICAL_MORGUE, access_external_airlocks)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, access_sec_doors, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, access_external_airlocks)
+	access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, ACCESS_MEDICAL_MORGUE, access_external_airlocks)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, access_eva, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, access_external_airlocks)
 	minimal_player_age = 5
 
 	outfit_type = /datum/outfit/job/station/warden

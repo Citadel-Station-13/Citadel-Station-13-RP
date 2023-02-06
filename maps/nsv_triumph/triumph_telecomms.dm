@@ -98,14 +98,14 @@
 		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
 		num2text(COMM_FREQ)= list(access_heads),
 		num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, access_atmospherics),
-		num2text(MED_FREQ) = list(access_medical_equip),
-		num2text(MED_I_FREQ)=list(access_medical_equip),
+		num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
 		num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
 		num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
-		num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION,access_robotics,access_xenobiology),
+		num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION,access_robotics,ACCESS_SCIENCE_XENOBIO),
 		num2text(SUP_FREQ) = list(access_cargo),
 		num2text(SRV_FREQ) = list(access_janitor, access_hydroponics),
-		num2text(EXP_FREQ) = list(access_explorer)
+		num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER)
 	)
 
 /obj/item/multitool/triumph_buffered

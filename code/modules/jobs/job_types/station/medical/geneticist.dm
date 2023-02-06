@@ -15,8 +15,8 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/geneticist
-	access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, access_surgery, access_chemistry, access_virology, ACCESS_SCIENCE_GENETICS, access_research)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_research)
+	access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, access_chemistry, access_virology, ACCESS_SCIENCE_GENETICS, ACCESS_SCIENCE_MAIN)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, ACCESS_SCIENCE_MAIN)
 
 	outfit_type = /datum/outfit/job/station/geneticist
 	desc = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \

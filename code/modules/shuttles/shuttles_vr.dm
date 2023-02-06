@@ -27,12 +27,12 @@
 
 /obj/machinery/computer/shuttle_control/multi/awaymission
 	name = "exploration shuttle control console"
-	req_access = list(access_gateway)
+	req_access = list(ACCESS_GENERAL_GATEWAY)
 	shuttle_tag = "AwayMission"
 
 /obj/machinery/computer/shuttle_control/belter
 	name = "belter control console"
-	req_one_access = list(access_research, access_mining, access_medical_equip) //Allows xenoarch, miners AND doctors to use it.
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SUPPLY_MINE, ACCESS_MEDICAL_EQUIPMENT) //Allows xenoarch, miners AND doctors to use it.
 	shuttle_tag = "Belter" //The scanning console needs to enable/disable this at will.
 
 /obj/machinery/computer/shuttle_control/mining

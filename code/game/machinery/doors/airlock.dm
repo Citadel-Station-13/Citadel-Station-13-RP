@@ -204,7 +204,7 @@
 
 /obj/machinery/door/airlock/maintenance/rnd
 	icon = 'icons/obj/doors/Doormaint_rnd.dmi'
-	req_one_access = list(access_research)
+	req_one_access = list(ACCESS_SCIENCE_MAIN)
 
 /obj/machinery/door/airlock/maintenance/sec
 	icon = 'icons/obj/doors/Doormaint_sec.dmi'
@@ -269,7 +269,7 @@
 	opacity = 1
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
-	req_one_access = list(access_heads_vault)
+	req_one_access = list(ACCESS_COMMAND_VAULT)
 	open_sound_powered = 'sound/machines/door/vault1o.ogg'
 	close_sound_powered = 'sound/machines/door/vault1c.ogg'
 
@@ -375,7 +375,7 @@
 	name = "Mining Airlock"
 	icon = 'icons/obj/doors/Doormining.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
-	req_one_access = list(access_mining)
+	req_one_access = list(ACCESS_SUPPLY_MINE)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 
@@ -403,7 +403,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
 	glass = 1
-	req_one_access = list(access_research)
+	req_one_access = list(ACCESS_SCIENCE_MAIN)
 	open_sound_powered = 'sound/machines/door/sci1o.ogg'
 	close_sound_powered = 'sound/machines/door/sci1c.ogg'
 
@@ -416,7 +416,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
 	glass = 1
-	req_one_access = list(access_mining)
+	req_one_access = list(ACCESS_SUPPLY_MINE)
 	open_sound_powered = 'sound/machines/door/cgo1o.ogg'
 	close_sound_powered = 'sound/machines/door/cgo1c.ogg'
 
@@ -528,7 +528,7 @@
 	name = "Research Airlock"
 	icon = 'icons/obj/doors/Doorsci.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_science
-	req_one_access = list(access_research)
+	req_one_access = list(ACCESS_SCIENCE_MAIN)
 	open_sound_powered = 'sound/machines/door/sci1o.ogg'
 	close_sound_powered = 'sound/machines/door/sci1c.ogg'
 
@@ -538,7 +538,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_science
 	glass = 1
-	req_one_access = list(access_research)
+	req_one_access = list(ACCESS_SCIENCE_MAIN)
 	open_sound_powered = 'sound/machines/door/sci1o.ogg'
 	close_sound_powered = 'sound/machines/door/sci1c.ogg'
 
@@ -548,7 +548,7 @@
 	explosion_resistance = 20
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
-	req_one_access = list(access_heads_vault)
+	req_one_access = list(ACCESS_COMMAND_VAULT)
 	open_sound_powered = 'sound/machines/door/secure1o.ogg'
 	close_sound_powered = 'sound/machines/door/secure1c.ogg'
 

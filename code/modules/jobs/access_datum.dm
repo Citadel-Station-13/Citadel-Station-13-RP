@@ -173,170 +173,172 @@
 	desc = "Virology"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_cmo = 40
+/var/const/ACCESS_MEDICAL_CMO = 40
 /datum/access/cmo
-	id = access_cmo
+	id = ACCESS_MEDICAL_CMO
 	desc = "Chief Medical Officer"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_qm = 41
+/var/const/ACCESS_SUPPLY_QM = 41
 /datum/access/qm
-	id = access_qm
+	id = ACCESS_SUPPLY_QM
 	desc = "Quartermaster"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_network = 42
+/var/const/ACCESS_SCIENCE_EXONET = 42
 /datum/access/network
-	id = access_network
+	id = ACCESS_SCIENCE_EXONET
 	desc = "Station Network"
 	region = ACCESS_REGION_RESEARCH
 
-var/const/access_explorer = 43
+var/const/ACCESS_GENERAL_EXPLORER = 43
 /datum/access/explorer
-	id = access_explorer
+	id = ACCESS_GENERAL_EXPLORER
 	desc = "Explorer"
 	region = ACCESS_REGION_GENERAL
 
-var/const/access_pathfinder = 44
+var/const/ACCESS_GENERAL_PATHFINDER = 44
 /datum/access/pathfinder
-	id = access_pathfinder
+	id = ACCESS_GENERAL_PATHFINDER
 	desc = "Pathfinder"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_surgery = 45
+#warn make sure sci can edit these
+
+/var/const/ACCESS_MEDICAL_SURGERY = 45
 /datum/access/surgery
-	id = access_surgery
+	id = ACCESS_MEDICAL_SURGERY
 	desc = "Surgery"
 	region = ACCESS_REGION_MEDBAY
 
 // /var/const/free_access_id = 46
 
-/var/const/access_research = 47
+/var/const/ACCESS_SCIENCE_MAIN = 47
 /datum/access/research
-	id = access_research
+	id = ACCESS_SCIENCE_MAIN
 	desc = "Science"
 	region = ACCESS_REGION_RESEARCH
 
-/var/const/access_mining = 48
+/var/const/ACCESS_SUPPLY_MINE = 48
 /datum/access/mining
-	id = access_mining
+	id = ACCESS_SUPPLY_MINE
 	desc = "Mining"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_mining_office = 49
+/var/const/ACCESS_SUPPLY_MINE_OFFICE = 49
 /datum/access/mining_office
-	id = access_mining_office
+	id = ACCESS_SUPPLY_MINE_OFFICE
 	desc = "Mining Office"
 	access_type = ACCESS_TYPE_NONE
 
-/var/const/access_mailsorting = 50
+/var/const/ACCESS_SUPPLY_MAIN = 50
 /datum/access/mailsorting
-	id = access_mailsorting
+	id = ACCESS_SUPPLY_MAIN
 	desc = "Cargo Office"
 	region = ACCESS_REGION_SUPPLY
 
 // /var/const/free_access_id = 51
 // /var/const/free_access_id = 52
 
-/var/const/access_heads_vault = 53
+/var/const/ACCESS_COMMAND_VAULT = 53
 /datum/access/heads_vault
-	id = access_heads_vault
+	id = ACCESS_COMMAND_VAULT
 	desc = "Main Vault"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_mining_station = 54
+/var/const/ACCESS_SUPPLY_MINE_OUTPOST = 54
 /datum/access/mining_station
-	id = access_mining_station
+	id = ACCESS_SUPPLY_MINE_OUTPOST
 	desc = "Mining EVA"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_xenobiology = 55
+/var/const/ACCESS_SCIENCE_XENOBIO = 55
 /datum/access/xenobiology
-	id = access_xenobiology
+	id = ACCESS_SCIENCE_XENOBIO
 	desc = "Xenobiology Lab"
 	region = ACCESS_REGION_RESEARCH
 
-/var/const/access_ce = 56
+/var/const/ACCESS_ENGINEERING_CE = 56
 /datum/access/ce
-	id = access_ce
+	id = ACCESS_ENGINEERING_CE
 	desc = "Chief Engineer"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_hop = 57
+/var/const/ACCESS_COMMAND_HOP = 57
 /datum/access/hop
-	id = access_hop
+	id = ACCESS_COMMAND_HOP
 	desc = "Head of Personnel"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_hos = 58
+/var/const/ACCESS_SECURITY_HOS = 58
 /datum/access/hos
-	id = access_hos
+	id = ACCESS_SECURITY_HOS
 	desc = "Head of Security"
 	region = ACCESS_REGION_SECURITY
 
-/var/const/access_RC_announce = 59 //Request console announcements
+/var/const/ACCESS_COMMAND_ANNOUNCE = 59 //Request console announcements
 /datum/access/RC_announce
-	id = access_RC_announce
+	id = ACCESS_COMMAND_ANNOUNCE
 	desc = "RC Announcements"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_keycard_auth = 60 //Used for events which require at least two people to confirm them
+/var/const/ACCESS_COMMAND_KEYAUTH = 60 //Used for events which require at least two people to confirm them
 /datum/access/keycard_auth
-	id = access_keycard_auth
+	id = ACCESS_COMMAND_KEYAUTH
 	desc = "Keycode Auth. Device"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_tcomsat = 61 // has access to the entire telecomms satellite / machinery
+/var/const/ACCESS_ENGINEERING_TELECOMMS = 61 // has access to the entire telecomms satellite / machinery
 /datum/access/tcomsat
-	id = access_tcomsat
+	id = ACCESS_ENGINEERING_TELECOMMS
 	desc = "Telecommunications"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_gateway = 62
+/var/const/ACCESS_GENERAL_GATEWAY = 62
 /datum/access/gateway
-	id = access_gateway
+	id = ACCESS_GENERAL_GATEWAY
 	desc = "Gateway"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_sec_doors = 63 // Security front doors
+/var/const/ACCESS_SECURITY_MAIN = 63 // Security front doors
 /datum/access/sec_doors
-	id = access_sec_doors
+	id = ACCESS_SECURITY_MAIN
 	desc = "Security"
 	region = ACCESS_REGION_SECURITY
 
-/var/const/access_psychiatrist = 64 // Psychiatrist's office
+/var/const/ACCESS_MEDICAL_PSYCH = 64 // Psychiatrist's office
 /datum/access/psychiatrist
-	id = access_psychiatrist
+	id = ACCESS_MEDICAL_PSYCH
 	desc = "Psychiatrist's Office"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_xenoarch = 65
+/var/const/ACCESS_SCIENCE_XENOARCH = 65
 /datum/access/xenoarch
-	id = access_xenoarch
+	id = ACCESS_SCIENCE_XENOARCH
 	desc = "Xenoarchaeology"
 	region = ACCESS_REGION_RESEARCH
 
-/var/const/access_medical_equip = 66
+/var/const/ACCESS_MEDICAL_EQUIPMENT = 66
 /datum/access/medical_equip
-	id = access_medical_equip
+	id = ACCESS_MEDICAL_EQUIPMENT
 	desc = "Medical Equipment"
 	region = ACCESS_REGION_MEDBAY
 
-var/const/access_pilot = 67
+var/const/ACCESS_GENERAL_PILOT = 67
 /datum/access/pilot
-	id = access_pilot
+	id = ACCESS_GENERAL_PILOT
 	desc = "Pilot"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_entertainment = 72
+/var/const/ACCESS_GENERAL_ENTERTAINMENT = 72
 /datum/access/entertainment
-	id = access_entertainment
+	id = ACCESS_GENERAL_ENTERTAINMENT
 	desc = "Entertainment Backstage"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_xenobotany = 77
+/var/const/ACCESS_SCIENCE_XENOBOTANY = 77
 /datum/access/xenobotany
-	id = access_xenobotany
+	id = ACCESS_SCIENCE_XENOBOTANY
 	desc = "Xenobotany Garden"
 	region = ACCESS_REGION_RESEARCH
 

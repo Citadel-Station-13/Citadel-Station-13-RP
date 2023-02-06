@@ -6,7 +6,7 @@
 	icon_opened = "secureceopen"
 	icon_broken = "securecebroken"
 	icon_off = "secureceoff"
-	req_access = list(access_ce)
+	req_access = list(ACCESS_ENGINEERING_CE)
 
 	starts_with = list(
 		/obj/item/clothing/shoes/magboots/advanced,

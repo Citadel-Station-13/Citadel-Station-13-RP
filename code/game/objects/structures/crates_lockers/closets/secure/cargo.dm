@@ -36,7 +36,7 @@
 
 /obj/structure/closet/secure_closet/quartermaster
 	name = "quartermaster's locker"
-	req_access = list(access_qm)
+	req_access = list(ACCESS_SUPPLY_QM)
 	icon_state = "secureqm1"
 	icon_closed = "secureqm"
 	icon_locked = "secureqm1"
@@ -82,7 +82,7 @@
 	icon_opened = "miningsecopen"
 	icon_broken = "miningsecbroken"
 	icon_off = "miningsecoff"
-	req_access = list(access_mining)
+	req_access = list(ACCESS_SUPPLY_MINE)
 
 	starts_with = list(
 		/obj/item/radio/headset/headset_mine,

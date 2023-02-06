@@ -1,7 +1,7 @@
 /obj/machinery/computer/shuttle_control/mining
 	name = "mining shuttle control console"
 	shuttle_tag = "Mining"
-	//req_access = list(access_mining)
+	//req_access = list(ACCESS_SUPPLY_MINE)
 	circuit = /obj/item/circuitboard/mining_shuttle
 
 /obj/machinery/computer/shuttle_control/engineering
@@ -13,5 +13,5 @@
 /obj/machinery/computer/shuttle_control/research
 	name = "research shuttle control console"
 	shuttle_tag = "Research"
-	//req_access = list(access_research)
+	//req_access = list(ACCESS_SCIENCE_MAIN)
 	circuit = /obj/item/circuitboard/research_shuttle

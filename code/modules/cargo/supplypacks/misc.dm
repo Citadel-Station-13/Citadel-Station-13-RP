@@ -194,7 +194,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Belt-miner gear crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/misc/eva_rig
 	name = "eva hardsuit (empty)"
@@ -204,10 +204,10 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "eva hardsuit crate"
-	access = list(access_mining,
+	access = list(ACCESS_SUPPLY_MINE,
 				  access_eva,
-				  access_explorer,
-				  access_pilot)
+				  ACCESS_GENERAL_EXPLORER,
+				  ACCESS_GENERAL_PILOT)
 	one_access = TRUE
 
 /datum/supply_pack/misc/mining_rig
@@ -218,7 +218,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "industrial hardsuit crate"
-	access = list(access_mining,
+	access = list(ACCESS_SUPPLY_MINE,
 				  access_eva)
 	one_access = TRUE
 
@@ -271,7 +271,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "advanced voidsuit crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 
 /datum/supply_pack/misc/colored_lights

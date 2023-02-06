@@ -881,7 +881,7 @@
 	product_slogans = "Carts to go!"
 	icon_state = "cart"
 	icon_deny = "cart-deny"
-	req_access = list(access_hop)
+	req_access = list(ACCESS_COMMAND_HOP)
 	products = list(
 		/obj/item/cartridge/medical = 10,
 		/obj/item/cartridge/engineering = 10,
@@ -892,7 +892,7 @@
 		/obj/item/cartridge/captain = 3,
 		/obj/item/cartridge/quartermaster = 10,
 	)
-	req_log_access = access_hop
+	req_log_access = ACCESS_COMMAND_HOP
 	has_logs = 1
 
 /obj/machinery/vending/cigarette
@@ -975,7 +975,7 @@
 		/obj/item/reagent_containers/pill/antitox = 6,
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/phoronresearch
@@ -1014,7 +1014,7 @@
 		/obj/item/reagent_containers/syringe/antiviral = 4,
 		/obj/item/reagent_containers/pill/tox = 1,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 // Modified version from tether_things.dm
@@ -1041,7 +1041,7 @@
 		/obj/item/healthanalyzer = 1,
 	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/wallmed2
@@ -1066,7 +1066,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/pill/tox = 3,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/security
@@ -1301,7 +1301,7 @@
 	premium = list(
 		/obj/item/clothing/gloves/yellow = 1,
 	)
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engivend
@@ -1350,7 +1350,7 @@
 		/obj/item/storage/belt/utility = 3,
 	)
 	product_records = list()
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engineering
@@ -1388,7 +1388,7 @@
 	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
 	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/robotics
@@ -1632,7 +1632,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/glass/bottle/stoxin = 2,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/loadout

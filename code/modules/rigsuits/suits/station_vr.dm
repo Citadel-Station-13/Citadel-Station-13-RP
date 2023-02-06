@@ -1,6 +1,6 @@
 //Drill added for hazmat suit
 /obj/item/rig/hazmat/equipped
-	req_access = list(access_xenoarch)
+	req_access = list(ACCESS_SCIENCE_XENOARCH)
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
