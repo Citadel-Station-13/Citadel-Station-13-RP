@@ -49,7 +49,7 @@
 
 /obj/item/rig/internalaffairs/equipped
 
-	req_access = list(access_lawyer)
+	req_access = list(ACCESS_COMMAND_IAA)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,

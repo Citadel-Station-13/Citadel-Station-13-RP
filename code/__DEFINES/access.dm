@@ -143,6 +143,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Geneti
 //? Supply
 
 
+#warn id mod access for departments, shim onto heads
 
 #warn unit test this shit by for'ing through the types to ensure no colliding defines.
 

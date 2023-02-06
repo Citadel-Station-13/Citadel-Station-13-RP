@@ -149,21 +149,15 @@
 	desc = "Hydroponics"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_manufacturing = 36
-/datum/access/manufacturing
-	id = access_manufacturing
-	desc = "Manufacturing"
-	access_type = ACCESS_TYPE_NONE
-
-/var/const/access_library = 37
+/var/const/ACCESS_GENERAL_LIBRARY = 37
 /datum/access/library
-	id = access_library
+	id = ACCESS_GENERAL_LIBRARY
 	desc = "Library"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_lawyer = 38
+/var/const/ACCESS_COMMAND_IAA = 38
 /datum/access/lawyer
-	id = access_lawyer
+	id = ACCESS_COMMAND_IAA
 	desc = "Internal Affairs"
 	region = ACCESS_REGION_COMMAND
 
@@ -224,12 +218,6 @@ var/const/ACCESS_GENERAL_PATHFINDER = 44
 	id = ACCESS_SUPPLY_MINE
 	desc = "Mining"
 	region = ACCESS_REGION_SUPPLY
-
-/var/const/ACCESS_SUPPLY_MINE_OFFICE = 49
-/datum/access/mining_office
-	id = ACCESS_SUPPLY_MINE_OFFICE
-	desc = "Mining Office"
-	access_type = ACCESS_TYPE_NONE
 
 /var/const/ACCESS_SUPPLY_MAIN = 50
 /datum/access/mailsorting

@@ -32,14 +32,14 @@
 	access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_FORENSICS,
 						ACCESS_MEDICAL_MAIN, ACCESS_ENGINEERING_MAIN, access_change_ids, access_ai_upload, access_eva, access_heads,
 						access_all_personal_lockers, ACCESS_ENGINEERING_MAINT, access_bar, access_janitor, access_construction, ACCESS_MEDICAL_MORGUE,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_QM, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, ACCESS_SCIENCE_MAIN, ACCESS_SUPPLY_MINE, ACCESS_COMMAND_VAULT, ACCESS_SUPPLY_MINE_OUTPOST,
+						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_QM, access_hydroponics, ACCESS_COMMAND_IAA,
+						access_chapel_office, ACCESS_GENERAL_LIBRARY, ACCESS_SCIENCE_MAIN, ACCESS_SUPPLY_MINE, ACCESS_COMMAND_VAULT, ACCESS_SUPPLY_MINE_OUTPOST,
 						ACCESS_COMMAND_HOP, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_GENERAL_GATEWAY)
 	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_FORENSICS,
 						ACCESS_MEDICAL_MAIN, ACCESS_ENGINEERING_MAIN, access_change_ids, access_ai_upload, access_eva, access_heads,
 						access_all_personal_lockers, ACCESS_ENGINEERING_MAINT, access_bar, access_janitor, access_construction, ACCESS_MEDICAL_MORGUE,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_QM, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, ACCESS_SCIENCE_MAIN, ACCESS_SUPPLY_MINE, ACCESS_COMMAND_VAULT, ACCESS_SUPPLY_MINE_OUTPOST,
+						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_QM, access_hydroponics, ACCESS_COMMAND_IAA,
+						access_chapel_office, ACCESS_GENERAL_LIBRARY, ACCESS_SCIENCE_MAIN, ACCESS_SUPPLY_MINE, ACCESS_COMMAND_VAULT, ACCESS_SUPPLY_MINE_OUTPOST,
 						ACCESS_COMMAND_HOP, ACCESS_COMMAND_ANNOUNCE, ACCESS_COMMAND_KEYAUTH, ACCESS_GENERAL_GATEWAY)
 
 /datum/alt_title/cro

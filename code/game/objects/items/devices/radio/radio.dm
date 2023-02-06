@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
 	num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION, access_robotics, ACCESS_SCIENCE_XENOBIO, ACCESS_GENERAL_EXPLORER),
 	num2text(SUP_FREQ) = list(access_cargo, ACCESS_SUPPLY_MINE_OUTPOST),
-	num2text(SRV_FREQ) = list(access_janitor, access_library, access_hydroponics, access_bar, access_kitchen),
+	num2text(SRV_FREQ) = list(access_janitor, ACCESS_GENERAL_LIBRARY, access_hydroponics, access_bar, access_kitchen),
 	num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER, ACCESS_GENERAL_PILOT, access_rd)
 ))
 

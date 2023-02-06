@@ -408,7 +408,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
-	req_access = list(access_lawyer)
+	req_access = list(ACCESS_COMMAND_IAA)
 
 	starts_with = list(
 		/obj/item/clothing/shoes/brown,
