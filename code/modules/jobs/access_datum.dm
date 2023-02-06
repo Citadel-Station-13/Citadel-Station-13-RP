@@ -351,23 +351,6 @@ var/const/ACCESS_GENERAL_PILOT = 67
 	id = access_trader
 	access_type = ACCESS_TYPE_PRIVATE
 
-/var/const/access_synth = 199
-/datum/access/synthetic
-	id = access_synth
-	desc = "Synthetic"
-	access_type = ACCESS_TYPE_NONE
-
-/var/const/access_crate_cash = 200
-/datum/access/crate_cash
-	id = access_crate_cash
-	access_type = ACCESS_TYPE_NONE
-
-/var/const/access_alien = 300 // For things like crashed ships.
-/datum/access/alien
-	id = access_alien
-	desc = "#%_^&*@!"
-	access_type = ACCESS_TYPE_PRIVATE
-
 /var/const/access_talon = 301
 /datum/access/talon
 	id = access_talon
