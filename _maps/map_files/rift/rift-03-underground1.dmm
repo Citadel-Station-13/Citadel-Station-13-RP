@@ -9975,7 +9975,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
 "Nt" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},

@@ -11,7 +11,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//! intrinsics
+	//? intrinsics
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -24,13 +24,17 @@
 	 */
 	var/unique = TRUE
 
-	//! defaults
+	//? defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
-	//! unsorted
+	//? tracking lists for machinery
+	/// holopads - lazyinit'd
+	var/list/obj/machinery/holopad/holopads
+
+	//? unsorted
 	var/fire = null
 	var/atmos = 1
 	var/atmosalm = 0

@@ -17,6 +17,8 @@
 		if(cancel_tracking)
 			ai.ai_cancel_tracking()
 
+
+
 		//Holopad
 		if(ai.holo)
 			if(ai.hologram_follow)
@@ -26,8 +28,6 @@
 // AI MOVEMENT
 
 // The AI's "eye". Described on the top of the page.
-
-/mob/living/silicon/ai/var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
 	if(!eyeobj)

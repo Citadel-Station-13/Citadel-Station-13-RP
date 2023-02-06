@@ -8,14 +8,27 @@
  	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
 
-// Set a client's focus to an object and override these procs on that object to let it handle keypresses
-/datum/proc/key_down(key, client/user) // Called when a key is pressed down initially
+/**
+ * called when a key is pressed down initially
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/key_down(key, client/user)
 	return
 
+/**
+ * called when a key is released
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
 /datum/proc/key_up(key, client/user) // Called when a key is released
 	return
-
-/datum/proc/keyLoop(client/user) // Called once every frame
+/**
+ * called every frame
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/keyLoop(client/user)
 	set waitfor = FALSE
 	return
 

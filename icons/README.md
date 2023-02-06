@@ -19,6 +19,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /job - basic job uniforms
     - /misc - unsorted things
     - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
+  - /machinery - machine sprites go here; subdivisions TBD.
   - /mapping - used for sprites for in-map-editor objects that are   invisible in game world
     - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
     - /landmarks - landmark icons

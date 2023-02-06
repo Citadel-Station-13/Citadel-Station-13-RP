@@ -5,7 +5,6 @@
 	//Status updates, death etc.
 	clamp_values()
 	handle_regular_UI_updates()
-	handle_actions()
 
 /mob/living/silicon/robot/PhysicalLife(seconds, times_fired)
 	if((. = ..()))

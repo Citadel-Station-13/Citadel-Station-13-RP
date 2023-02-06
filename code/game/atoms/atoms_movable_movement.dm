@@ -210,18 +210,66 @@
 	return TRUE
 
 /// Called after a successful Move(). By this point, we've already moved
-/atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, dir, forced)
+
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
-		newtonian_move(Dir)
+		newtonian_move(movement_dir)
+
+/*
+	if (!inertia_moving && momentum_change)
+		newtonian_move(movement_dir)
+ */
+
 /*
 	if (length(client_mobs_in_contents))
 		update_parallax_contents()
-*/
+ */
+
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(src)
+
+/*
+	if(old_loc)
+		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src, movement_dir)
+	if(loc)
+		SEND_SIGNAL(loc, COMSIG_ATOM_ABSTRACT_ENTERED, src, old_loc, old_locs)
+ */
+
+	if (old_turf?.z != new_turf?.z)
+		on_changed_z_level(old_turf, new_turf)
+
+/*
+	if(HAS_SPATIAL_GRID_CONTENTS(src))
+		if(old_turf && new_turf && (old_turf.z != new_turf.z \
+			|| GET_SPATIAL_INDEX(old_turf.x) != GET_SPATIAL_INDEX(new_turf.x) \
+			|| GET_SPATIAL_INDEX(old_turf.y) != GET_SPATIAL_INDEX(new_turf.y)))
+
+			SSspatial_grid.exit_cell(src, old_turf)
+			SSspatial_grid.enter_cell(src, new_turf)
+
+		else if(old_turf && !new_turf)
+			SSspatial_grid.exit_cell(src, old_turf)
+
+		else if(new_turf && !old_turf)
+			SSspatial_grid.enter_cell(src, new_turf)
+ */
 
 	return TRUE
+
+
+/**
+ * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
+ * if you want something to move onto a tile with a beartrap or recycler or tripmine or mouse without that object knowing about it at all, use this
+ * most of the time you want forceMove()
+ */
+/atom/movable/proc/abstract_move(atom/new_loc)
+	var/atom/old_loc = loc
+	var/direction = get_dir(old_loc, new_loc)
+	loc = new_loc
+	Moved(old_loc, direction, TRUE)
 
 /// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
 /// You probably want CanPass()
@@ -362,8 +410,8 @@
 
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
+	var/atom/oldloc = loc
 	if(destination)
-		var/atom/oldloc = loc
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
@@ -380,10 +428,6 @@
 				AM.Uncrossed(src)
 			var/turf/oldturf = get_turf(oldloc)
 			var/turf/destturf = get_turf(destination)
-			var/old_z = (oldturf ? oldturf.z : null)
-			var/dest_z = (destturf ? destturf.z : null)
-			if (old_z != dest_z)
-				onTransitZ(old_z, dest_z)
 			destination.Entered(src, oldloc)
 			if(destarea && old_area != destarea)
 				destarea.Entered(src, oldloc)
@@ -392,7 +436,6 @@
 				if(AM == src)
 					continue
 				AM.Crossed(src, oldloc)
-		Moved(oldloc, NONE, TRUE)
 		if(pulling)
 			check_pulling()
 		if(pulledby)
@@ -400,6 +443,7 @@
 		if(buckled_mobs)
 			handle_buckled_mob_movement(destination, dir, glide_size, TRUE)
 		. = TRUE
+
 
 	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
 	else
@@ -411,7 +455,6 @@
 			stop_pulling()
 		var/old_z
 		if (loc)
-			var/atom/oldloc = loc
 			var/area/old_area = get_area(oldloc)
 			var/turf/oldturf = get_turf(oldloc)
 			oldloc.Exited(src, null)
@@ -420,22 +463,14 @@
 			if(oldturf)
 				old_z = oldturf.z
 		loc = null
-		// guh - hate that this is needed
-		if(old_z)
-			onTransitZ(old_z, null)	// GUH, THIS HURTS
 
-/**
- * called recursively to anything that changes zlevels
- *
- * @params
- * - old_z - real z index; null if coming from nullspace
- * - new_z - real z index; null if going to nullspace
- */
-/atom/movable/proc/onTransitZ(old_z,new_z)
+	Moved(oldloc, NONE, TRUE)
+
+/atom/movable/proc/on_changed_z_level(old_z,new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		var/atom/movable/AM = item
-		AM.onTransitZ(old_z,new_z)
+		AM.on_changed_z_level(old_z,new_z)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()

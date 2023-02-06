@@ -1,3 +1,39 @@
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
+
+type HolpadContext = {
+
+  calling: null | "source" | "destination";
+  calldata: null | OutgoingCallContext | IncomingCallsContext;
+}
+
+interface ReachableHolopad {
+  name: string;
+  category: string;
+  sector: string;
+}
+
+interface OutgoingCallContext {
+
+}
+
+interface IncomingCallsContext {
+
+}
+
+export const Holopad = (props, context) => {
+  const { act, data } = useBackend<HolpadContext>(context);
+
+  return (
+    <Window
+      width={600}
+      height={600}>
+      test
+    </Window>
+  );
+};
+
+/*
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, Modal, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
@@ -164,3 +200,5 @@ const HolopadContent = (props, context) => {
     </>
   );
 };
+
+*/

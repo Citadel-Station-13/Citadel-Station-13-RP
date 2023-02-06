@@ -77,6 +77,7 @@
 
 	var/next_move = null // For click delay, despite the misleading name.
 
+	var/list/datum/action/actions = list()
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
 	var/atom/movable/screen/purged = null

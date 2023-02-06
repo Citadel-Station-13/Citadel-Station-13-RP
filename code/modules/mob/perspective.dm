@@ -118,7 +118,42 @@
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
 
-////////// ALL OF THESE SHOULD BE REGEXED LATER /////////////
+/**
+ * wrapper for things like holocalls and overmaps that shunt our view
+ * returns TRUE or FALSE based on if we moved their perspective
+ * will refuse to if the mob was already shunted
+ * *USE THE RETURN VALUE*
+ *
+ * @params
+ * - perspective - this must be a /datum/perspective or an /atom.
+ */
+/mob/proc/shunt_perspective(datum/perspective/perspective)
+	if(perspective_shunted())
+		return FALSE
+	if(ismovable(perspective))
+		var/atom/movable/AM = perspective
+		perspective = AM.temporary_perspective()
+	reset_perspective(perspective)
+	return TRUE
+
+/**
+ * wrapper for when we want to un-shunt our perspective
+ * from a shunt_perspective call.
+ */
+/mob/proc/unshunt_perspective()
+	if(!perspective_shunted())
+		return FALSE
+	reset_perspective()
+	return TRUE
+
+/**
+ * returns if our perspective is shunted elsewhere
+ */
+/mob/proc/perspective_shunted()
+	return self_perspective == using_perspective
+
+//? wrappers for modifying our own sight/perspective stuff so they apply to perspective too
+
 // However, there is currently no way to deal with the getters due to them requiring self_perspective be set, but
 // we don't necessarily want all mobs to have it, as perspectives are generally for client'd mobs
 // We'll decide later, the setters/getters work for now.

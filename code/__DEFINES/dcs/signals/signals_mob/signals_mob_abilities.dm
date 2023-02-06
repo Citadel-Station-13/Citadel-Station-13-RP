@@ -4,6 +4,8 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
+// todo: this is all needing a redo
+
 /// From base of /datum/action/cooldown/proc/PreActivate(): (datum/action/cooldown/activated)
 ////#define COMSIG_ABILITY_STARTED "mob_ability_base_started"
 	////#define COMPONENT_BLOCK_ABILITY_START (1<<0)

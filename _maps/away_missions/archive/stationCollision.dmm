@@ -1006,7 +1006,7 @@
 /turf/simulated/floor/greengrid,
 /area/awaymission/research)
 "eE" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/greengrid,
 /area/awaymission/research)
 "eF" = (

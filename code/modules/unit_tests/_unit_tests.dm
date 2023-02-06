@@ -75,6 +75,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 #include "core/_core.dm"
+#include "elements/_elements.dm"
 #include "human/_human.dm"
 #include "language/_language.dm"
 #include "mob/_mob.dm"

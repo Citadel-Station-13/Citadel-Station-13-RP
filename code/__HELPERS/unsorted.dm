@@ -748,7 +748,7 @@
 						O.loc = X
 						O.update_light()
 						if(z_level_change) // The objects still need to know if their z-level changed.
-							O.onTransitZ(T.z, X.z)
+							O.on_changed_z_level(T.z, X.z)
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
@@ -757,7 +757,7 @@
 						M.loc = X
 
 						if(z_level_change) // Same goes for mobs.
-							M.onTransitZ(T.z, X.z)
+							M.on_changed_z_level(T.z, X.z)
 
 					if(turftoleave)
 						T.ChangeTurf(turftoleave)

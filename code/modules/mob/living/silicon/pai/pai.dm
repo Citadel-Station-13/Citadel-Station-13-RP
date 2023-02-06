@@ -336,6 +336,7 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
+	#warn allow custom
 	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
