@@ -1,7 +1,7 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(PUB_FREQ) = list(),
-	num2text(AI_FREQ)  = list(access_synth),
+	num2text(AI_FREQ)  = list(ACCESS_SILICON_MAIN),
 	num2text(ENT_FREQ) = list(),
 	num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
 	num2text(COMM_FREQ)= list(access_heads),

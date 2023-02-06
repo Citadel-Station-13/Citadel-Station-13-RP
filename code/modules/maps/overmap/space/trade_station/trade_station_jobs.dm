@@ -32,8 +32,8 @@
 	selection_color = "#afccb8"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_trader)
-	minimal_access = list(access_trader)
+	access = list(ACCESS_FACTION_TRADER_MAIN)
+	minimal_access = list(ACCESS_FACTION_TRADER_MAIN)
 	alt_titles = list(
 		"Trade Manager" = /datum/alt_title/trade_manager,
 		"Merchant" = /datum/alt_title/merchant

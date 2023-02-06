@@ -157,7 +157,7 @@
 	installation = /obj/item/gun/energy/laser
 
 /obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
-	req_one_access = list(access_syndicate)
+	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 	enabled = TRUE
 	check_all = TRUE
 	faction = "syndicate" // Make sure this equals the faction that the mobs in the POI have or they will fight each other.
@@ -165,7 +165,7 @@
 /obj/machinery/porta_turret/ai_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
-	req_one_access = list(access_synth) // Just in case.
+	req_one_access = list(ACCESS_SILICON_MAIN) // Just in case.
 	installation = /obj/item/gun/energy/xray // For the armor pen.
 	health = 250 // Since lasers do 40 each.
 	maxhealth = 250
@@ -187,7 +187,7 @@
 	desc = "A very tough looking turret made by alien hands."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_turret)
 	icon_state = "turret_cover_alien"
-	req_one_access = list(access_alien)
+	req_one_access = list(ACCESS_FACTION_ALIEN)
 	installation = /obj/item/gun/energy/alien
 	enabled = TRUE
 	lethal = TRUE

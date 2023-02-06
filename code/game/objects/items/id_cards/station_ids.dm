@@ -176,7 +176,7 @@
 
 /obj/item/card/id/synthetic/Initialize(mapload)
 	. = ..()
-	access = get_all_station_access().Copy() + access_synth
+	access = get_all_station_access().Copy() + ACCESS_SILICON_MAIN
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"

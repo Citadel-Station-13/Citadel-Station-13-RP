@@ -35,8 +35,8 @@
 	selection_color = "#999999"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Commander" = /datum/alt_title/talon_commander)
 
 /datum/alt_title/talon_commander
@@ -58,8 +58,8 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Medic" = /datum/alt_title/talon_medic)
 
 /datum/alt_title/talon_medic
@@ -82,8 +82,8 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Technician" = /datum/alt_title/talon_tech)
 
 /datum/alt_title/talon_tech
@@ -106,8 +106,8 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Helmsman" = /datum/alt_title/talon_helmsman)
 
 /datum/alt_title/talon_helmsman
@@ -130,8 +130,8 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Security" = /datum/alt_title/talon_security)
 
 /datum/alt_title/talon_security

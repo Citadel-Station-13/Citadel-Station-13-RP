@@ -333,43 +333,43 @@ var/const/ACCESS_GENERAL_PILOT = 67
 /***************
 * Antag access *
 ***************/
-/var/const/access_syndicate = 150//General Syndicate Access
+/var/const/ACCESS_FACTION_SYNDICATE = 150//General Syndicate Access
 /datum/access/syndicate
-	id = access_syndicate
+	id = ACCESS_FACTION_SYNDICATE
 	access_type = ACCESS_TYPE_SYNDICATE
 
-/var/const/access_pirate = 168//Pirate Crew Access (Blackbeard was born in 1680.)
+/var/const/ACCESS_FACTION_PIRATE_MAIN = 168//Pirate Crew Access (Blackbeard was born in 1680.)
 /datum/access/pirate
-	id = access_pirate
+	id = ACCESS_FACTION_PIRATE_MAIN
 	access_type = ACCESS_TYPE_PRIVATE
 
 /*******
 * Misc *
 *******/
-/var/const/access_trader = 160//General Beruang Trader Access
+/var/const/ACCESS_FACTION_TRADER_MAIN = 160//General Beruang Trader Access
 /datum/access/trader
-	id = access_trader
+	id = ACCESS_FACTION_TRADER_MAIN
 	access_type = ACCESS_TYPE_PRIVATE
 
-/var/const/access_synth = 199
+/var/const/ACCESS_SILICON_MAIN = 199
 /datum/access/synthetic
-	id = access_synth
+	id = ACCESS_SILICON_MAIN
 	desc = "Synthetic"
 	access_type = ACCESS_TYPE_NONE
 
-/var/const/access_crate_cash = 200
+/var/const/ACCESS_MISC_CASHCRATE = 200
 /datum/access/crate_cash
-	id = access_crate_cash
+	id = ACCESS_MISC_CASHCRATE
 	access_type = ACCESS_TYPE_NONE
 
-/var/const/access_alien = 300 // For things like crashed ships.
+/var/const/ACCESS_FACTION_ALIEN = 300 // For things like crashed ships.
 /datum/access/alien
-	id = access_alien
+	id = ACCESS_FACTION_ALIEN
 	desc = "#%_^&*@!"
 	access_type = ACCESS_TYPE_PRIVATE
 
-/var/const/access_talon = 301
+/var/const/ACCESS_FACTION_TALON = 301
 /datum/access/talon
-	id = access_talon
+	id = ACCESS_FACTION_TALON
 	desc = "Talon"
 	access_type = ACCESS_TYPE_PRIVATE

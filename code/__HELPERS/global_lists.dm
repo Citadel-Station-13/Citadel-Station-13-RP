@@ -58,7 +58,7 @@ var/global/list/endgame_safespawns = list()
 var/global/list/lavaland_entry = list()
 var/global/list/lavaland_exit = list()
 
-var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, access_syndicate, access_external_airlocks)
+var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_FACTION_SYNDICATE, access_external_airlocks)
 
 /// Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(

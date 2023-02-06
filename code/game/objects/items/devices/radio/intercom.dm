@@ -91,7 +91,7 @@
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
@@ -102,7 +102,7 @@
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_pirate)
+	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE_MAIN)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
@@ -113,7 +113,7 @@
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(access_trader)
+	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER_MAIN)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)

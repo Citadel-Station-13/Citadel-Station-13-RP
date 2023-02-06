@@ -596,7 +596,7 @@
 	secured_wires = TRUE
 	hackProof = TRUE
 	assembly_type = /obj/structure/door_assembly/door_assembly_alien
-	req_one_access = list(access_alien)
+	req_one_access = list(ACCESS_FACTION_ALIEN)
 
 /obj/machinery/door/airlock/alien/locked
 	icon_state = "door_locked"

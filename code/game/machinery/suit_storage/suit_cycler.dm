@@ -77,7 +77,7 @@
 /obj/machinery/suit_cycler/syndicate
 	name = "Nonstandard suit cycler"
 	model_text = "Nonstandard"
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 	departments = list("Mercenary", "Charring", "No Change")
 	can_repair = 1
 
@@ -657,42 +657,42 @@
 /obj/machinery/suit_cycler/vintage/tcrew
 	name = "Talon crew suit cycler"
 	model_text = "Talon crew"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Crew","No Change")
 
 /obj/machinery/suit_cycler/vintage/tpilot
 	name = "Talon pilot suit cycler"
 	model_text = "Talon pilot"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Pilot (Bubble Helm)","Talon Pilot (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tengi
 	name = "Talon engineer suit cycler"
 	model_text = "Talon engineer"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Engineering","No Change")
 
 /obj/machinery/suit_cycler/vintage/tguard
 	name = "Talon guard suit cycler"
 	model_text = "Talon guard"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Marine","Talon Mercenary","No Change")
 
 /obj/machinery/suit_cycler/vintage/tmedic
 	name = "Talon doctor suit cycler"
 	model_text = "Talon doctor"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Medical (Bubble Helm)","Talon Medical (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tcaptain
 	name = "Talon captain suit cycler"
 	model_text = "Talon captain"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Officer","No Change")
 
 //Pirate
 /obj/machinery/suit_cycler/pirate
 	name = "Black Market suit cycler"
 	model_text = "Pirate"
-	req_access = list(access_pirate)
+	req_access = list(ACCESS_FACTION_PIRATE_MAIN)
 	departments = list("No Change")

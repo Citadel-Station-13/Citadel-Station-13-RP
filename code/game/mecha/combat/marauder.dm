@@ -75,7 +75,7 @@
 	name = "Mauler"
 	icon_state = "mauler"
 	initial_icon = "mauler"
-	operation_req_access = list(access_syndicate)
+	operation_req_access = list(ACCESS_FACTION_SYNDICATE)
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
 	mech_faction = MECH_FACTION_SYNDI
 

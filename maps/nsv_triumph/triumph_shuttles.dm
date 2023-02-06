@@ -10,7 +10,7 @@
 /obj/machinery/computer/shuttle_control/multi/mercenary
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
-	req_one_access = list(access_syndicate)
+	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/machinery/computer/shuttle_control/multi/ninja
 	name = "vessel control console"
@@ -30,7 +30,7 @@
 /obj/machinery/computer/shuttle_control/multi/trade
 	name = "vessel control console"
 	shuttle_tag = "Trade"
-	req_one_access = list(access_trader)
+	req_one_access = list(ACCESS_FACTION_TRADER_MAIN)
 
 /*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle

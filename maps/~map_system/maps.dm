@@ -239,7 +239,7 @@ var/list/all_maps = list()
 /datum/map/proc/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ)   = list(),
-		num2text(AI_FREQ)    = list(access_synth),
+		num2text(AI_FREQ)    = list(ACCESS_SILICON_MAIN),
 		num2text(ENT_FREQ)   = list(),
 		num2text(ERT_FREQ)   = list(ACCESS_CENTCOM_ERT),
 		num2text(COMM_FREQ)  = list(access_heads),
