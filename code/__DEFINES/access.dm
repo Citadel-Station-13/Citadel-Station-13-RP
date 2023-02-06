@@ -76,6 +76,10 @@ GLOBAL_LIST_INIT(access_type_names, list(
 } \
 /datum/prototype/access/##type
 
+//? General
+
+//? Command
+
 //? Security
 
 #define ACCESS_SECURITY_EQUIPMENT 1
@@ -93,7 +97,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_FORENSICS, station/security/forensics, "Fo
 //? Engineering
 
 #define ACCESS_ENGINEERING_MAIN 10
-STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_BAY, station/engineering/main, "Engineering")
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_MAIN, station/engineering/main, "Engineering")
 
 #define ACCESS_ENGINEERING_ENGINE 11
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ENGINE, station/engineering/engine, "Engine Room")
@@ -104,7 +108,7 @@ STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_MAINT, station/engineering/maint, "Main
 //? Medical
 
 #define ACCESS_MEDICAL_MAIN 5
-STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_BAY, station/medical/main, "Medical")
+STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_MAIN, station/medical/main, "Medical")
 
 #define ACCESS_MEDICAL_MORGUE 6
 STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_MORGUE, station/medical/morgue, "Morgue")
@@ -120,4 +124,4 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_TOXINS, station/science/toxins, "Toxins Lab
 #define ACCESS_SCIENCE_GENETICS 9
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Genetics Lab")
 
-
+//? Supply
