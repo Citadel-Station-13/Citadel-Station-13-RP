@@ -14,6 +14,10 @@
 	data["manifest"] = GLOB.PDA_Manifest
 	return data
 
+#warn demote function if not global cardmod
+#warn better tgui
+#warn bank account check
+
 /datum/tgui_module/cardmod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/datum/computer_file/program/card_mod/program = host
 	if(!istype(program))

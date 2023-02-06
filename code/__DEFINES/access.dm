@@ -144,6 +144,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_GENETICS, station/science/genetics, "Geneti
 
 
 #warn id mod access for departments, shim onto heads
+#warn add bank uplink access tbd name
 
 #warn unit test this shit by for'ing through the types to ensure no colliding defines.
 
