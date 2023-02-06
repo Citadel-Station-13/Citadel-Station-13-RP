@@ -25,7 +25,7 @@
 	title = "Drill Technician"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
-/datum/prototype/alt_title/miner/belt
+/datum/prototype/alt_title/belt
 	title = "Belt Miner"
 
 /datum/outfit/job/station/shaft_miner

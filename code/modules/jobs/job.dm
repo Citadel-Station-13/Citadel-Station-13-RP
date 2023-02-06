@@ -43,7 +43,7 @@
 	var/list/alt_titles = null
 	// todo: optimize this, it's very non-performant.
 	/// Strict title mode: If an alt title is available for a specific background someone has, only that and other alt titles with that background can be chosen.
-	var/strict_titles = TRUE
+	var/strict_titles = FALSE
 	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 	/// If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
