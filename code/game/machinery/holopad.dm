@@ -51,6 +51,8 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/tile_range = 5
 
 	//? holocalls
+	/// pad name override, otherwise use location + area name
+	var/holopad_name
 	/// holocall capable
 	var/call_receiver = TRUE
 	/// visibility
@@ -366,16 +368,22 @@ GLOBAL_LIST_EMPTY(holopads)
  * starts AI presence
  */
 /obj/machinery/holopad/proc/initiate_ai_hologram(mob/living/silicon/ai/the_ai)
+	if(the_ai.holopad)
+		CRASH("already had holopad")
 
 /**
  * stops all AI presence
  */
 /obj/machinery/holopad/proc/kill_all_ai_holograms()
+	for(var/mob/living/silicon/ai/the_ai as anything in ais_projecting)
+		kill_ai_hologram(the_ai)
 
 /**
  * stops AI presence
  */
 /obj/machinery/holopad/proc/kill_ai_hologram(mob/living/silicon/ai/the_ai)
+	if(the_ai.holopad != src)
+		STACK_TRACE("wrong holopad")
 
 
 #warn parse below
@@ -523,9 +531,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 #warn parse above
 
-//? AI
-
-#warn ai stuff
 
 //? Say / Emote
 

@@ -63,5 +63,5 @@
 			input = input("Please select a hologram:") as null|anything in icon_list //Holoprojection list
 			if(input)
 				qdel(holo_icon)
-				switch(input)
+				// switch(input)
 		#warn convert above
