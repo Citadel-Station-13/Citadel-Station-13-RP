@@ -586,7 +586,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Morale Posters"
-	access = access_maint_tunnels
+	access = ACCESS_ENGINEERING_MAINT
 
 /datum/supply_pack/security/biosuit
 	contains = list(

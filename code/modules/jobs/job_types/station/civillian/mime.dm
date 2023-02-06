@@ -21,7 +21,7 @@
 
 /datum/job/station/mime/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels, access_entertainment, access_tomfoolery, access_mime)
+		return list(ACCESS_ENGINEERING_MAINT, access_entertainment, access_tomfoolery, access_mime)
 	else
 		return list(access_entertainment, access_tomfoolery, access_mime)
 

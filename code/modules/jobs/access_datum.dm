@@ -10,9 +10,9 @@
 /*****************
 * Station access *
 *****************/
-/var/const/access_maint_tunnels = 12
+/var/const/ACCESS_ENGINEERING_MAINT = 12
 /datum/access/maint_tunnels
-	id = access_maint_tunnels
+	id = ACCESS_ENGINEERING_MAINT
 	desc = "Maintenance"
 	region = ACCESS_REGION_ENGINEERING
 

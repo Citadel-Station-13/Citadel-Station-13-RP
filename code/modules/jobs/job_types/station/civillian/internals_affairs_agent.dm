@@ -9,7 +9,7 @@
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/internal_affairs_agent
-	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
+	access = list(access_lawyer, access_sec_doors, ACCESS_ENGINEERING_MAINT, access_heads)
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
 

@@ -23,7 +23,7 @@
 
 /datum/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels)
+		return list(ACCESS_ENGINEERING_MAINT)
 	else
 		return list()
 

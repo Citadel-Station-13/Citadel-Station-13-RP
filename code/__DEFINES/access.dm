@@ -98,6 +98,9 @@ STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_BAY, station/engineering/main, "Enginee
 #define ACCESS_ENGINEERING_ENGINE 11
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_ENGINE, station/engineering/engine, "Engine Room")
 
+#define ACCESS_ENGINEERING_MAINT 12
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_MAINT, station/engineering/maint, "Maintenance")
+
 //? Medical
 
 #define ACCESS_MEDICAL_MAIN 5

@@ -24,7 +24,7 @@
 
 /datum/job/station/clown/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels, access_entertainment, access_clown, access_tomfoolery)
+		return list(ACCESS_ENGINEERING_MAINT, access_entertainment, access_clown, access_tomfoolery)
 	else
 		return list(access_entertainment, access_clown, access_tomfoolery)
 

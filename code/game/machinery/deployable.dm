@@ -120,7 +120,7 @@ Barricades
 	var/health = 100
 	var/maxhealth = 100
 	var/locked = FALSE
-//	req_access = list(access_maint_tunnels)
+//	req_access = list(ACCESS_ENGINEERING_MAINT)
 
 /obj/machinery/deployable/barrier/Initialize(mapload, newdir)
 	. = ..()

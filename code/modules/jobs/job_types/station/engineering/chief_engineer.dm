@@ -19,11 +19,11 @@
 	minimum_character_age = 25
 	ideal_character_age = 50
 
-	access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels,
+	access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT,
 						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 						access_heads, access_construction, access_sec_doors,
 						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
-	minimal_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels,
+	minimal_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT,
 						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 						access_heads, access_construction, access_sec_doors,
 						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)

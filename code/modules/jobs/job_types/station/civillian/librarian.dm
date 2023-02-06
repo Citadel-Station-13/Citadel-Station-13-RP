@@ -10,7 +10,7 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/librarian
-	access = list(access_library, access_maint_tunnels)
+	access = list(access_library, ACCESS_ENGINEERING_MAINT)
 	minimal_access = list(access_library)
 
 	outfit_type = /datum/outfit/job/station/librarian

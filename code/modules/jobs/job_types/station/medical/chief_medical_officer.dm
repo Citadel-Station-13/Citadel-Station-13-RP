@@ -17,10 +17,10 @@
 	req_admin_notify = 1
 	access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
 	minimal_access = list(ACCESS_MEDICAL_MAIN, access_medical_equip, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_GENETICS, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, ACCESS_ENGINEERING_MAINT)
 
 	minimum_character_age = 25
 	minimal_player_age = 10

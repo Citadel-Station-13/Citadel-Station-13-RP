@@ -1277,7 +1277,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
-	//req_access = list(access_maint_tunnels) //Maintenance access
+	//req_access = list(ACCESS_ENGINEERING_MAINT) //Maintenance access
 	products = list(
 		/obj/item/stack/cable_coil/random = 10,
 		/obj/item/tool/crowbar = 5,

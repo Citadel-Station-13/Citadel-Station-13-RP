@@ -12,8 +12,8 @@
 	idtype = /obj/item/card/id/engineering/engineer
 	pto_type = PTO_ENGINEERING
 
-	access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
+	access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT, access_external_airlocks, access_construction, access_atmospherics)
+	minimal_access = list(access_eva, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, access_tech_storage, ACCESS_ENGINEERING_MAINT, access_external_airlocks, access_construction)
 
 	minimal_player_age = 14
 
