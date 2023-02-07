@@ -3,9 +3,13 @@
 	title = "Chief Engineer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CHIEF
-	departments_managed = list(DEPARTMENT_ENGINEERING)
-	departments = list(DEPARTMENT_ENGINEERING,
-DEPARTMENT_COMMAND)
+	departments_managed = list(
+		DEPARTMENT_ENGINEERING,
+	)
+	departments = list(
+		DEPARTMENT_ENGINEERING,
+		DEPARTMENT_COMMAND,
+	)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE
@@ -49,9 +53,7 @@ DEPARTMENT_COMMAND)
 		)
 
 	outfit_type = /datum/outfit/job/station/chief_engineer
-	desc = "The Chief Engineer manages the Engineering Department,
-ensuring that the Engineers work on what needs to be done,
-handling distribution \
+	desc = "The Chief Engineer manages the Engineering Department, ensuring that the Engineers work on what needs to be done, handling distribution \
 						of manpower as much as they handle hands-on operations and repairs. They are also expected to keep the rest of the station informed of \
 						any structural threats to the station that may be hazardous to health or disruptive to work."
 
