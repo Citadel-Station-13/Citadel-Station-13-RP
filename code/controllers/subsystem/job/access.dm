@@ -13,7 +13,9 @@
 	var/tmp/list/datum/access/access_category_lists
 
 /datum/controller/subsystem/job/proc/init_access()
-	access_types = list()
+	access_datums = list()
+	access_path_lookup = list()
+	access_id_lookup = list()
 	for(var/path in subtypesof(/datum/access))
 		if(is_abstract(path))
 			continue
@@ -21,6 +23,7 @@
 		access_datums += A
 		access_path_lookup[A.type] = A
 		access_id_lookup["[A.access_value]"] = A
+	tim_sort(access_datum, /proc/cmp_auto_compare)
 
 /**
  * get all access datums with given type bits
@@ -84,6 +87,7 @@
 
 /datum/controller/subsystem/job/proc/access_type_list(access_type)
 	PRIVATE_PROC(TRUE)
+	RETURN_TYPE(/list)
 	. = access_type_lists?["[access_type]"]
 	if(isnull(.))
 		var/list/generating = list()
@@ -92,9 +96,11 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_type & access_type)
 				. += A
+		tim_sort(generating, /proc/cmp_auto_compare)
 
 /datum/controller/subsystem/job/proc/access_region_list(access_region)
 	PRIVATE_PROC(TRUE)
+	RETURN_TYPE(/list)
 	. = access_region_lists?["[access_region]"]
 	if(isnull(.))
 		var/list/generating = list()
@@ -103,9 +109,11 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_region & access_region)
 				. += A
+		tim_sort(generating, /proc/cmp_auto_compare)
 
 /datum/controller/subsystem/job/proc/access_category_list(access_category)
 	PRIVATE_PROC(TRUE)
+	RETURN_TYPE(/list)
 	. = access_category_lists?["[access_category]"]
 	if(isnull(.))
 		var/list/generating = list()
@@ -114,6 +122,23 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_category == access_category)
 				. += A
+		tim_sort(generating, /proc/cmp_auto_compare)
 
+/**
+ * looks up an access datum by id or typepath
+ */
 /datum/controller/subsystem/job/proc/access_datum(id_or_path)
 	return ispath(id_or_path)? access_path_lookup[id_or_path] : access_id_lookup["[id_or_path]"]
+
+/**
+ * generates tgui access data usable by AccessList and anything else compliant with its interface
+ */
+/datum/controller/subsystem/job/proc/tgui_access_data()
+	var/list/data = list()
+	for(var/datum/access/A as anything in access_datums)
+		data[++data.len] = list(
+			"value" = A.access_value,
+			"name" = A.access_name,
+			"category" = A.access_category,
+		)
+	return data

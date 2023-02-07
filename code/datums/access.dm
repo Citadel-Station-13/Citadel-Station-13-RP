@@ -36,9 +36,6 @@
 	/// a single access category that's set to allow easily setting categorical edit without edit_list
 	var/access_edit_category
 
-#warn make sure this is sorted by name within its category.
-#warn see if it's possible to unregister prototypes on destroy
-
 /datum/access/compare_to(datum/access/D)
 	return (src.sort_order == D.sort_order)? (sorttext(D.access_name, src.access_name)) : (D.sort_order - src.sort_order)
 
@@ -49,7 +46,7 @@
 /datum/access/station/security
 	abstract_type = /datum/access/station/security
 	access_region = ACCESS_REGION_SECURITY
-	category = "Security"
+	access_category = "Security"
 
 /datum/access/station/general
 	abstract_type = /datum/access/station/general
