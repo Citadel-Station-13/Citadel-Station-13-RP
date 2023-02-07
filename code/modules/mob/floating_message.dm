@@ -79,14 +79,23 @@ var/list/floating_chat_colors = list()
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
+//	animate(I, alpha = 0, pixel_y = 12 * ((X?.size_multiplier * 1.1) || 1), easing = BOUNCE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+
 	if(expression & STATING)
-		animate(I, 1, alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = BOUNCE_EASING, time = 2 SECONDS)
+		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
 	if(expression & WHISPERING)
-		style += "font-weight: lighter; font-style: italic;"
+		style += "font-weight: lighter; font-style: italic; "
+//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
 	if(expression & YELLING)
-		style += "font-weight: bold;"
+		style += "font-weight: bold; "
+//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+//		animate(pixel_x = 24, easing = BOUNCE_EASING, time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
+//		animate(pixel_x = -24, easing = BOUNCE_EASING, time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
+//		animate(pixel_x = -round(I.maptext_width/2) + 16, easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
 	if(expression & ASKING)
-		style += "font-style: italic;"
+		style += "font-style: oblique; "
+//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+
 	I.maptext = MAPTEXT_CENTER("<span style=\"[style]\">[message]</span>") // whoa calm down!!
 
 	for(var/image/old in holder.stored_chat_text)
