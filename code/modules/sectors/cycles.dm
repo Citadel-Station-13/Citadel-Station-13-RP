@@ -62,6 +62,17 @@
 	/// what we're seen as in the sky
 	var/sky_desc = "Some kind of orbiting body."
 
+/**
+ * called to do special effects
+ * make sure you know exactly what you are doing.
+ *
+ * * old_power - null if we're applying for the first time
+ * * new_power - null if we're being removed
+ */
+/datum/sector_cycle/proc/apply(datum/world_sector/sector, old_power, new_power)
+	return
+	#warn hook
+
 /datum/sector_cycle/proc/update(timeofday_ratio)
 	#warn impl
 
