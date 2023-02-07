@@ -1,3 +1,26 @@
+import { BooleanLike } from "common/react";
+
+interface AccessListProps {
+  access: [Access],
+  selected: [Number],
+  writable: BooleanLike,
+  toggleId: Function,
+  grantAll: Function,
+  denyAll: Function,
+  grantCategory: Function,
+  denyCategory: Function,
+}
+
+interface Access {
+  value: Number,
+  name: String,
+  category: String,
+}
+
+export const AccessList = (props, context) => {
+
+};
+
 /*
 import { sortBy } from 'common/collections';
 import { Fragment } from 'inferno';
