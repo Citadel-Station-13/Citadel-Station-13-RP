@@ -46,7 +46,7 @@
 	var/particle_graphics = FALSE
 	/// if existent, default behavior is to add this particle. can be a particle or typepath, or a list of particles or typepaths.
 	var/particle_instances
-	#warn
+	#warn impl
 
 	//? wind
 	/// current wind - if wind low and high aren't set we just use this

@@ -22,19 +22,17 @@
 
 	//? time
 	/// do we canonically go off galactic time? this has nothing to do with our actual ticking
-	var/use_galactic_time = TRUE
-	/// do we tick time at all? or just fix at a point?
-	var/ticking_time = TRUE
+	var/use_galactic_time =
 	/// seconds in a day
 	var/seconds_in_day = HOURS_TO_SECONDS(24)
 	/// arbitrary seconds to offset by
 	var/seconds_to_offset = 0
 	/// seconds into the day that world.time = 0 is. is automatically computed from seconds in day and seconds to offset.
-	var/seconds_at_start
+	var/tmp/seconds_at_start
 	/// arbitrary days to offset by
 	var/days_to_offset = 0
 	/// days since 2000 at world.time = 0. automatically computed from days_to_offset and seconds_in_day.
-	var/days_at_start
+	var/tmp/days_at_start
 	/// days in a year
 	var/days_in_year = 356
 	/// months in year - we will calculate month and moon phase automatically
@@ -53,29 +51,41 @@
 	var/tmp/light_applied_power
 
 	//? weather
-	/// our weather holder
+	/// our weather holder - inits into an instance, initially a type
 	var/datum/weather_holder/weather_holder
 	/// current weather if any just for quick referencing
-	var/datum/weather/weather
+	var/tmp/datum/weather/weather
 	/// how relatively extreme weather is here. WARNING: CHANGE THIS VALUE SPARINGLY OR SO GOD HELP YOU. range: [0, infinity] as multiplier
 	var/weather_eccentricity = 1
-	/// cloud cover from regular cycle/season lighting
-	var/weather_light_covering = 0
-	/// weather light strength
-	var/weather_light_power = 0
-	/// weather light color
-	var/weather_light_color = "#ff0000"
+	/// cached cloud cover from regular cycle/season lighting
+	var/tmp/weather_light_covering = 0
+	/// cached weather light strength
+	var/tmp/weather_light_power = 0
+	/// cached weather light color
+	var/tmp/weather_light_color = "#ffffff"
+	/// cached weather temperatuer adjust
+	var/tmp/weather_temp_adjust = 0
 	#warn impl / hook / whatever
 
 	//? cycles & seasons
 	/// our season holder - inits into an instance, initially a type
 	var/datum/season_holder/season_holder = /datum/season_holder/earth
 	/// current season - computed at init
-	var/datum/season/season_cached
+	var/tmp/datum/season/season_cached
 	/// cycle datums - list of typepaths created in init
 	var/list/datum/sector_cycle/cycles = list(
 		/datum/sector_cycle/main/day
 	)
+	/// cached strength of main cycle
+	var/tmp/wycle_strength_main = 0
+	/// cached strengths of cycles with registration
+	var/tmp/list/cycle_strengths
+	/// cached cycle light color
+	var/tmp/cycle_light_color = "#ffffff"
+	/// cached cycle light power
+	var/tmp/cycle_light_power = 0
+	/// cached cycle temp adjust
+	var/tmp/cycle_temp_adjust = 0
 
 	//? atmospherics
 	// todo: no gas mixture apply-to-level support yet
