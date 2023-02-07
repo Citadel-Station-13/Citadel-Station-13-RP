@@ -14,6 +14,7 @@
 	var/display_name
 	/// transient thing created by admin/debug purposes; delete at end
 	var/transient = FALSE
+	#warn hook
 
 	//? duration
 	#warn impl
@@ -25,15 +26,42 @@
 	var/temp_low
 	/// temperature high - uniform random
 	var/temp_high
+	#warn hook
 
 	//? lighting
-	#warn impl
+	/// cloud cover - if light cover low/high aren't set we use this. this is ratio of incoming light we block
+	var/light_cover = 0
+	/// cloud cover
+	var/light_cover_low
+	/// cloud cover
+	var/light_cover_high
+	/// intrinsic light power - if light power low/high aren't set we use this. this is how much light we *emit*
+	var/light_power = 0
+	/// intrinsic light power
+	var/light_power_low
+	/// intrinsic light power
+	var/light_power_high
+	/// intrinsic light color - if intrinsic light color left/right aren't set we use this. this is color of light we *emit*
+	var/light_color = "#ffffff"
+	/// intrinsic light color for interpolation
+	var/light_color_left
+	/// intrinsic light color for interpolation
+	var/light_color_right
+	/// color to "bend" incoming light from sector cycles towards with interpolation
+	var/light_filter_color = "#ff0000"
+	/// color interpolation strength for filtering
+	var/light_filter_strength = 0
+	#warn hook
 
 	//? fluff
 	#warn impl
 
 	//? sounds
-	#warn impl
+	/// our soundloop - typepath, inits into instance when needed
+	var/datum/looping_sound/sound_holder
+	/// volume ratio when indoors
+	var/sound_indoors = 0.66
+	#warn hook
 
 	//? graphics
 	/// has tile graphics

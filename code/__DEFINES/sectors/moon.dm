@@ -30,3 +30,5 @@ GLOBAL_LIST_INIT(moon_phase_strengths, list(
 	MOON_PHASE_LAST_QUARTER = 0.5,
 	MOON_PHASE_WANING_CRESCENT = 0.25,
 ))
+
+#warn how to do this with cycles
