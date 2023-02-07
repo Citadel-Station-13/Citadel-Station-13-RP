@@ -1,12 +1,12 @@
-/datum/prototype/access
-	abstract_type = /datum/prototype/access
+/datum/access
+	abstract_type = /datum/access
 
 	/// access constnat
 	var/access_value
 	/// access region
 	var/access_region = ACCESS_REGION_NONE
-	/// access category - *overrides* region if set; this is for "minor accesses" like factional stuff
-	var/access_category
+	/// access category
+	var/access_category = "Misc"
 	/// access type
 	var/access_type = ACCESS_TYPE_NONE
 	/// access name
@@ -39,60 +39,69 @@
 #warn make sure this is sorted by name within its category.
 #warn see if it's possible to unregister prototypes on destroy
 
-/datum/prototype/access/register()
-	#warn impl and check params from root on merge
+/datum/access/compare_to(datum/access/D)
+	return (src.sort_order == D.sort_order)? (sorttext(D.access_name, src.access_name)) : (D.sort_order - src.sort_order)
 
-/datum/prototype/access/unregister()
-	#warn ditto
-
-/datum/prototype/access/station
-	abstract_type = /datum/prototype/access/station
+/datum/access/station
+	abstract_type = /datum/access/station
 	access_type = ACCESS_TYPE_STATION
 
-/datum/prototype/access/station/security
-	abstract_type = /datum/prototype/access/station/security
+/datum/access/station/security
+	abstract_type = /datum/access/station/security
 	access_region = ACCESS_REGION_SECURITY
+	category = "Security"
 
-/datum/prototype/access/station/general
-	abstract_type = /datum/prototype/access/station/general
+/datum/access/station/general
+	abstract_type = /datum/access/station/general
 	access_region = ACCESS_REGION_GENERAL
+	access_category = "General"
 
-/datum/prototype/access/station/command
-	abstract_type = /datum/prototype/access/station/command
+/datum/access/station/command
+	abstract_type = /datum/access/station/command
 	access_region = ACCESS_REGION_COMMAND
+	access_category = "Command"
 
-/datum/prototype/access/station/medical
-	abstract_type = /datum/prototype/access/station/medical
+/datum/access/station/medical
+	abstract_type = /datum/access/station/medical
 	access_region = ACCESS_REGION_MEDBAY
+	access_category = "Medical"
 
-/datum/prototype/access/station/supply
-	abstract_type = /datum/prototype/access/station/supply
+/datum/access/station/supply
+	abstract_type = /datum/access/station/supply
 	access_region = ACCESS_REGION_SUPPLY
+	access_category = "Supply"
 
-/datum/prototype/access/station/engineering
-	abstract_type = /datum/prototype/access/station/engineering
+/datum/access/station/engineering
+	abstract_type = /datum/access/station/engineering
 	access_region = ACCESS_REGION_ENGINEERING
+	access_category = "Engineering"
 
-/datum/prototype/access/station/science
-	abstract_type = /datum/prototype/access/station/science
+/datum/access/station/science
+	abstract_type = /datum/access/station/science
 	access_region = ACCESS_REGION_RESEARCH
+	access_category = "Science"
 
-/datum/prototype/access/centcom
-	abstract_type = /datum/prototype/access/centcom
+/datum/access/centcom
+	abstract_type = /datum/access/centcom
 	access_type = ACCESS_TYPE_CENTCOM
+	access_category = "Centcom"
 
-/datum/prototype/access/syndicate
-	abstract_type = /datum/prototype/access/syndicate
+/datum/access/syndicate
+	abstract_type = /datum/access/syndicate
 	access_type = ACCESS_TYPE_SYNDICATE
+	access_category = "Syndicate"
 
-/datum/prototype/access/faction
-	abstract_type = /datum/prototype/access/faction
+/datum/access/faction
+	abstract_type = /datum/access/faction
 	access_type = ACCESS_TYPE_PRIVATE
+	access_category = "Faction"
 
-/datum/prototype/access/misc
-	abstract_type = /datum/prototype/access/misc
+/datum/access/misc
+	abstract_type = /datum/access/misc
 	access_type = ACCESS_TYPE_NONE
+	access_category = "Unknown"
 
-/datum/prototype/access/special
-	abstract_type = /datum/prototype/access/special
+/datum/access/special
+	abstract_type = /datum/access/special
 	access_type = ACCESS_TYPE_NONE
+	access_category = "Special"

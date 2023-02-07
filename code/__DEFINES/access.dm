@@ -80,11 +80,11 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //       as it's bound to break stuff.
 
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
-/datum/prototype/access/##type { \
+/datum/access/##type { \
 	access_name = desc; \
 	access_value = value; \
 } \
-/datum/prototype/access/##type
+/datum/access/##type
 
 //* STATION *//
 
@@ -117,9 +117,9 @@ STANDARD_ACCESS_DATUM(ACCESS_GENERAL_EXPLORER, station/general/explorer, "Explor
 #define ACCESS_GENERAL_PATHFINDER 44
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_PATHFINDER, station/general/pathfinder, "Pathfinder")
 	access_edit_list = list(
-		/datum/prototype/access/station/general/explorer,
-		/datum/prototype/access/station/general/pilot,
-		/datum/prototype/access/station/general/pilot,
+		/datum/access/station/general/explorer,
+		/datum/access/station/general/pilot,
+		/datum/access/station/general/pilot,
 	)
 
 #define ACCESS_GENERAL_GATEWAY 62
