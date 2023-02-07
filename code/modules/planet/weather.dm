@@ -184,24 +184,8 @@
 	var/icon = 'icons/effects/weather.dmi'
 	/// Icon to apply to turf undergoing weather.
 	var/icon_state = null
-	/// Temperature to apply when at noon.
-	var/temp_high = T20C
-	/// Temperature to apply when at midnight.
-	var/temp_low = T0C
-	/// Upper bound for mob slowdown when walking against the wind, and speedup when walking with it. Randomized between this and wind_low.
-	var/wind_high = 0
-	/// Lower bound for above.
-	var/wind_low = 0
-	/// Lower numbers means more darkness.
-	var/light_modifier = 1.0
-	/// If set, changes how the day/night light looks.
-	var/light_color = null
-	/// Some types of weather make flying harder, and therefore make crashes more likely. (This is not implemented)
-	var/flight_failure_modifier = 0
 	/// Assoc list of weather identifiers and the odds to shift to a specific type of weather. Can contain its own identifier to prolong it.
 	var/transition_chances = list()
-	/// Reference to the datum that manages the planet's weather.
-	var/datum/weather_holder/holder = null
 	/// How long this weather must run before it tries to change, in minutes
 	var/timer_low_bound = 5
 	/// How long this weather can run before it tries to change, in minutes
@@ -209,8 +193,6 @@
 	/// If the sky can be clearly seen while this is occuring, used for flavor text when looking up.
 	var/sky_visible = FALSE
 
-	/// We are a list now! yay variety!
-	var/list/effect_message = list()
 	/// Keeps track of when the weather last tells EVERY player it's hitting them
 	var/last_message = 0
 	/// Delay in between weather hit messages
@@ -218,16 +200,8 @@
 	/// Is set to TRUE and plays the messsage every [message_delay]
 	var/show_message = FALSE
 
-	/// List of messages shown to all outdoor mobs when this weather is transitioned to, for flavor. Not shown if already this weather.
-	var/list/transition_messages = list()
 	/// What is shown to a player 'examining' the weather.
 	var/observed_message = null
-
-	// Looping sound datums for weather sounds, both inside and outside.
-	var/datum/looping_sound/outdoor_sounds = null
-	var/datum/looping_sound/indoor_sounds = null
-	var/outdoor_sounds_type = null
-	var/indoor_sounds_type = null
 
 
 /datum/weather/New()

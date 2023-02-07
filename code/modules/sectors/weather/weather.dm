@@ -19,6 +19,9 @@
 	//? duration
 	#warn impl
 
+	//? transition / procgen
+	#warn impl
+
 	//? temperature
 	/// current temperature mod - if temp low/high aren't set we use this
 	var/temp_mod = 0
@@ -53,14 +56,11 @@
 	var/light_filter_strength = 0
 	#warn hook
 
-	//? fluff
-	#warn impl
-
 	//? sounds
 	/// our soundloop - typepath, inits into instance when needed
-	var/datum/looping_sound/sound_holder
-	/// volume ratio when indoors
-	var/sound_indoors = 0.66
+	var/datum/looping_sound/outdoors_sound
+	/// our soundloop - typepath, inits into instance when needed
+	var/datum/looping_sound/indoors_sound
 	#warn hook
 
 	//? graphics
@@ -84,8 +84,22 @@
 	/// wind strength in slowdown amount
 	var/wind_high
 
-	//? misc mechaincs
+	//? ticking
 	#warn impl
+
+	//? sky cover
+	#warn impl
+
+	//? messages
+	/// outdoors messages, key = string, value = weight
+	var/list/outdoors_messages
+	/// indoors messages, key = string, value = weight
+	var/list/indoors_messages
+	/// transition messages, key = string, value = weight
+	var/list/transition_messages_outdoors
+	/// transition messages, key = string, value = weight
+	var/list/transition_messages_indoors
+	#warn hook
 
 /**
  * what to do on start
