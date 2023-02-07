@@ -353,6 +353,7 @@
 	.["tag"] = gps_tag
 	.["visible"] = !hide_signal
 	.["long_range"] = !!long_range
+	.["local_mode"] = !!local_mode
 	.["has_stealth"] = !!can_hide_signal
 	.["updating"] = ui? ui.autoupdate : FALSE
 	.["tracking"] = isnull(tracking)? "" : ref(tracking)
