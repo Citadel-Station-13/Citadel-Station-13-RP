@@ -8,7 +8,7 @@
 	spawn_positions = 4
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
-	access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	pto_type = PTO_CIVILIAN
 

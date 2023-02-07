@@ -9,7 +9,7 @@
 	spawn_positions = -1
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
-	access = list()			//See /datum/job/station/assistant/get_access()
+	additional_access = list()			//See /datum/job/station/assistant/get_access()
 	minimal_access = list()	//See /datum/job/station/assistant/get_access()
 	timeoff_factor = 0
 

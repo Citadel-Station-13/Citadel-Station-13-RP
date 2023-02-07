@@ -11,7 +11,7 @@
 	pto_type = PTO_CIVILIAN
 	pto_type = PTO_CIVILIAN
 	idtype = /obj/item/card/id/civilian/botanist
-	access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
+	additional_access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
 	minimal_access = list(ACCESS_GENERAL_BOTANY)
 
 	outfit_type = /datum/outfit/job/station/botanist/gardener

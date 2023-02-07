@@ -9,7 +9,7 @@
 	spawn_positions = 2
 	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
-	access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
+	additional_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
 	minimal_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MAIN)
 
 	outfit_type = /datum/outfit/job/station/cargo_technician

@@ -14,7 +14,7 @@
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 
-	access = list(ACCESS_COMMAND_BRIDGE, ACCESS_COMMAND_KEYAUTH)
+	additional_access = list(ACCESS_COMMAND_BRIDGE, ACCESS_COMMAND_KEYAUTH)
 	minimal_access = list(ACCESS_COMMAND_BRIDGE, ACCESS_COMMAND_KEYAUTH)
 
 	outfit_type = /datum/outfit/job/station/command_secretary

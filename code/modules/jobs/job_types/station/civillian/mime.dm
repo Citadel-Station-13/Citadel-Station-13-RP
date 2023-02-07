@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
-	access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	desc = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
 	alt_titles = list("Poseur" = /datum/alt_title/mime/poseur)

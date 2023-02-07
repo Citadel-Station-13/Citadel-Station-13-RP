@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	supervisors = "the spirit of laughter"
 	selection_color = "#515151"
-	access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	desc = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
