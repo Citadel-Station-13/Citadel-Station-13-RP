@@ -67,33 +67,7 @@
 		if("Supreme Commander")
 			return get_all_centcom_access()
 
-/var/list/datum/access/priv_all_access_datums
-/proc/get_all_access_datums()
-	if(!priv_all_access_datums)
-		priv_all_access_datums = init_subtypes(/datum/access)
-		priv_all_access_datums = dd_sortedObjectList(priv_all_access_datums)
-
-	return priv_all_access_datums
-
-/var/list/datum/access/priv_all_access_datums_id
-/proc/get_all_access_datums_by_id()
-	if(!priv_all_access_datums_id)
-		priv_all_access_datums_id = list()
-		for(var/datum/access/A in get_all_access_datums())
-			priv_all_access_datums_id["[A.id]"] = A
-
-	return priv_all_access_datums_id
-
-/var/list/datum/access/priv_all_access_datums_region
-/proc/get_all_access_datums_by_region()
-	if(!priv_all_access_datums_region)
-		priv_all_access_datums_region = list()
-		for(var/datum/access/A in get_all_access_datums())
-			if(!priv_all_access_datums_region[A.region])
-				priv_all_access_datums_region[A.region] = list()
-			priv_all_access_datums_region[A.region] += A
-
-	return priv_all_access_datums_region
+#warn rid below
 
 /proc/get_access_ids(var/access_types = ACCESS_TYPE_ALL)
 	var/list/L = new()
@@ -189,16 +163,6 @@
 /proc/get_access_by_id(id)
 	var/list/AS = get_all_access_datums_by_id()
 	return AS[id]
-
-/proc/get_all_jobs()
-	var/list/all_jobs = list()
-	var/list/all_datums = typesof(/datum/job)
-	all_datums -= exclude_jobs
-	var/datum/job/jobdatum
-	for(var/jobtype in all_datums)
-		jobdatum = new jobtype
-		all_jobs.Add(jobdatum.title)
-	return all_jobs
 
 /proc/get_all_centcom_jobs()
 	return list("VIP Guest",

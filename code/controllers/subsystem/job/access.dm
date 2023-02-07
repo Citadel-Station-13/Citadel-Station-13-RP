@@ -2,7 +2,9 @@
 	/// all access datums
 	var/tmp/list/datum/access/access_datums
 	/// access datums by path
-	var/tmp/list/access_lookup
+	var/tmp/list/access_path_lookup
+	/// access datum by "[id]"
+	var/tmp/list/access_id_lookup
 	/// access datum by string'd region
 	var/tmp/list/datum/access/access_region_lists
 	/// access datum by string'd type
@@ -17,12 +19,101 @@
 			continue
 		var/datum/access/A = new path
 		access_datums += A
-		access_lookup[A.type] = A
+		access_path_lookup[A.type] = A
+		access_id_lookup["[A.access_value]"] = A
 
+/**
+ * get all access datums with given type bits
+ *
+ * @params
+ * * access_type - type flags
+ */
 /datum/controller/subsystem/job/proc/access_datums_of_type(access_type)
+	return access_type_list(access_type).Copy()
 
+/**
+ * get all access datums with given region bits
+ *
+ * @params
+ * * access_region - region flags
+ */
 /datum/controller/subsystem/job/proc/access_datums_of_region(access_region)
+	return access_region_list(access_region).Copy()
 
+/**
+ * get access datums of a certain category
+ *
+ * @params
+ * * access_category - category enum
+ */
 /datum/controller/subsystem/job/proc/access_datums_of_category(access_category)
+	return access_category_list(access_category).Copy()
 
-#warn impl all
+/**
+ * get all access ids with given type bits
+ *
+ * @params
+ * * access_type - type flags
+ */
+/datum/controller/subsystem/job/proc/access_ids_of_type(access_type)
+	. = list()
+	for(var/datum/access/A as anything in access_type_list(access_type))
+		. += A.access_value
+
+/**
+ * get all access ids with given region bits
+ *
+ * @params
+ * * access_region - region flags
+ */
+/datum/controller/subsystem/job/proc/access_ids_of_region(access_region)
+	. = list()
+	for(var/datum/access/A as anything in access_region_list(access_region))
+		. += A.access_value
+
+/**
+ * get access ids of a certain category
+ *
+ * @params
+ * * access_category - category enum
+ */
+/datum/controller/subsystem/job/proc/access_ids_of_category(access_category)
+	. = list()
+	for(var/datum/access/A as anything in access_category_list(access_category))
+		. += A.access_value
+
+/datum/controller/subsystem/job/proc/access_type_list(access_type)
+	PRIVATE_PROC(TRUE)
+	. = access_type_lists?["[access_type]"]
+	if(isnull(.))
+		var/list/generating = list()
+		. = generating
+		LAZYSET(access_type_lists, "[access_type]", generating)
+		for(var/datum/access/A as anything in access_datums)
+			if(A.access_type & access_type)
+				. += A
+
+/datum/controller/subsystem/job/proc/access_region_list(access_region)
+	PRIVATE_PROC(TRUE)
+	. = access_region_lists?["[access_region]"]
+	if(isnull(.))
+		var/list/generating = list()
+		. = generating
+		LAZYSET(access_region_lists, "[access_region]", generating)
+		for(var/datum/access/A as anything in access_datums)
+			if(A.access_region & access_region)
+				. += A
+
+/datum/controller/subsystem/job/proc/access_category_list(access_category)
+	PRIVATE_PROC(TRUE)
+	. = access_category_lists?["[access_category]"]
+	if(isnull(.))
+		var/list/generating = list()
+		. = generating
+		LAZYSET(access_category_lists, "[access_category]", generating)
+		for(var/datum/access/A as anything in access_datums)
+			if(A.access_category == access_category)
+				. += A
+
+/datum/controller/subsystem/job/proc/access_datum(id_or_path)
+	return ispath(id_or_path)? access_path_lookup[id_or_path] : access_id_lookup["[id_or_path]"]
