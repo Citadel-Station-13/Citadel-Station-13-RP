@@ -267,10 +267,7 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/job/proc/get_access()
-	if(!config || config_legacy.jobs_have_minimal_access)
-		return src.minimal_access.Copy()
-	else
-		return src.access.Copy()
+	return minimal_access | (config_legacy.jobs_have_minimal_access? list() : access)
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)

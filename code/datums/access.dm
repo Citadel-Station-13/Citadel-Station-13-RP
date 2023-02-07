@@ -12,6 +12,9 @@
 	/// access name
 	var/access_name = "Unknown"
 
+	/// Sort order; if the same, we go by name. Higher first.
+	var/sort_order = 0
+
 	//? it's weird to have region and type without a 2d array huh
 	//? explanation:
 	//? there's almost no cases where you want to grant type edit
