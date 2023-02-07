@@ -185,6 +185,17 @@
 /datum/world_sector/proc/update_cycles()
 	#warn
 
+/**
+ * gets cycle power
+ *
+ * @params
+ * * key - enum of cycle key. null to get main cycle power.
+ *
+ * @return power from -1 to 1. the main cycle usually should have -1 to 1.
+ */
+/datum/world_sector/proc/query_cycle_power(key)
+	return key? cycle_strengths?[key] || 0 : cycle_strength_main
+
 //? seasons
 
 /**

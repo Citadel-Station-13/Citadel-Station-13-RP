@@ -23,6 +23,8 @@
 	var/name = "Cycle"
 	/// description of this cycle
 	var/desc = "Some sort of natural cycle."
+	/// enum key to "push" our phase power with, if any. you usually don't need this.
+	var/key
 
 	//? main / sync
 	/// this is the main cycle of a sector
@@ -131,4 +133,6 @@
 	var/override_skyset_msg
 	/// temperature adjust
 	var/temperature_adjust = 0
+	/// phase poewr
+	var/phase_power = 1
 
