@@ -46,23 +46,11 @@
 	#warn impl - daytime update
 	#warn impl - weather update
 
-	//? sun & moon
-	/// moon brightness at max strength (100% moon phase power & 100% night strength)
-	var/moonlight_max = 0.2
-	/// moon brightness at min strength (0% moon phase power & 100% night strength)
-	var/moonlight_min = 0.05
-	/// moon color
-	var/moonlight_color = "#ffffff"
-	/// sun brightness at max strength (0% cloud cover & 100% day strength) todo: season sunlight
-	var/sunlight_max = 0.8
-	/// sun color
-	var/sunlight_color = "#e7ff6d"
+	//? lighting
 	/// last applied light color
 	var/tmp/light_applied_color
 	/// last applied light strength
 	var/tmp/light_applied_power
-
-	#warn colors for phases of day
 
 	//? weather
 	/// our weather holder
@@ -71,16 +59,23 @@
 	var/datum/weather/weather
 	/// how relatively extreme weather is here. WARNING: CHANGE THIS VALUE SPARINGLY OR SO GOD HELP YOU. range: [0, infinity] as multiplier
 	var/weather_eccentricity = 1
+	/// cloud cover from regular cycle/season lighting
+	var/weather_light_covering = 0
+	/// weather light strength
+	var/weather_light_power = 0
+	/// weather light color
+	var/weather_light_color = "#ff0000"
 	#warn impl / hook / whatever
 
-	//? days & seasons
+	//? cycles & seasons
 	/// our season holder - inits into an instance, initially a type
 	var/datum/season_holder/season_holder = /datum/season_holder/earth
 	/// current season - computed at init
 	var/datum/season/season_cached
-	/// our day data holder - inits after season, can be modified by season
-	var/datum/day_holder/day_holder = /datum/day_holder/earth
-	#warn day holder
+	/// cycle datums - list of typepaths created in init
+	var/list/datum/sector_cycle/cycles = list(
+		/datum/sector_cycle/main/day
+	)
 
 	//? atmospherics
 	// todo: no gas mixture apply-to-level support yet
@@ -92,7 +87,7 @@
 	var/daynight_temperature_min = 0
 	/// forced temperature adjust
 	var/temperature_adjust = 0
-	/// cached current effective temperature (atmosphere, daynight, weather) todo: season temp
+	/// cached current effective temperature (atmosphere, cycles, weather) todo: season temp
 	var/temperature_cached
 	#warn impl
 
@@ -128,6 +123,7 @@
 
 /datum/world_sector/proc/init_atmos()
 	init_atmosphere()
+	update_cached_temperature()
 	#warn impl
 
 /datum/world_sector/proc/init_atmosphere()
@@ -135,12 +131,19 @@
 		atmosphere = new atmosphere
 
 /datum/world_sector/proc/update_cached_temperature()
+	var/old = temperature_cached
+	#warn impl
+	if(old == temperature_cached)
+		return
+	update_turf_temperatures()
 
 /datum/world_sector/proc/update_turf_temperatures()
+	for(var/turf/unsimulated/wall/planetary/border as anything in level_borders)
+		border.set_temperature(temperature_cached)
 
 /datum/world_sector/proc/set_temperature_adjust(val)
-
-#warn impl
+	temperature_adjust = val
+	update_cached_temperature()
 
 //? sun, moon, sunlight, moonlight
 
@@ -157,11 +160,20 @@
 
 #warn impl all
 
-//? days
+//? cycles
 
-/datum/world_sector/proc/init_day()
-	if(ispath(day_holder, /datum/day_holder))
-		day_holder = new day_holder
+/**
+ * inits our cycle datums
+ */
+/datum/world_sector/proc/init_cycles()
+	#warn impl
+	#warn check that no more than one main, and main exists if any sync
+
+/**
+ * pushes cycle ratios / powers / statuses. doesn't update anything by itself.
+ */
+/datum/world_sector/proc/update_cycles()
+	#warn
 
 //? seasons
 
@@ -178,7 +190,7 @@
  */
 /datum/world_sector/proc/compute_season()
 	var/our_ratio = days_at_start % days_in_year
-	our_ratio -= season_holder.ratio_offset
+	our_ratio -= season_holder.offset_ratio
 	if(our_ratio < 0)
 		our_ratio += 1
 	for(var/datum/season/S as anything in season_holder.seasons)
@@ -227,14 +239,18 @@
  */
 /datum/world_sector/proc/init_empty()
 	z_indices = list()
-	#warn impl
+	init()
 
 /**
  * inits us to a set of zlevels
  */
 /datum/world_sector/proc/init_levels(list/indices)
-	#warn check for index conflict
-	#warn impl
+	for(var/i in indices)
+		if(!add_level(i))
+			teardown()
+			. = FALSE
+			CRASH("Failed to init levels.")
+	return TRUE
 
 /**
  * general init
@@ -245,14 +261,21 @@
 	init_time()
 	// 2. compute season
 	init_season()
-	// 3. init day holder
-	init_day()
-	// 4. init moon phase
-	init_moon_phase()
-	// 5. init weather
+	// 3. init cycles
+	init_cycles()
+	// 4. init weather
 	#warn impl
-	// 6. init atmos
+	// 5. init atmos
 	init_atmos()
+
+/**
+ * tears down for destruction
+ * usually a horrible idea but hey
+ */
+/datum/world_sector/proc/teardown()
+	for(var/i in z_indices)
+		remove_level(i)
+	#warn impl
 
 /**
  * removes us from a zlevel
@@ -262,8 +285,11 @@
 
 /**
  * adds us to a zlevel
+ *
+ * @return TRUE / FALSE on success / failure
  */
 /datum/world_sector/proc/add_level(index)
+	#warn impl - check index conflict / dupe
 
 /**
  * returns list of levels
@@ -305,7 +331,7 @@
  * ensure a mob still has stuff like rendering overlays and whatnot
  */
 /datum/world_sector/proc/reassert_mob(mob/M)
-	#warn impl
+	return isliving(M) || isEye(M)
 
 /**
  * checks if a mob is relevant to us

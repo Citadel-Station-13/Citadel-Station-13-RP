@@ -3944,7 +3944,7 @@
 #include "code\modules\rogueminer_vr\wrappers.dm"
 #include "code\modules\rogueminer_vr\zone_console.dm"
 #include "code\modules\rogueminer_vr\zonemaster.dm"
-#include "code\modules\sectors\days.dm"
+#include "code\modules\sectors\cycles.dm"
 #include "code\modules\sectors\seasons.dm"
 #include "code\modules\sectors\visuals.dm"
 #include "code\modules\sectors\world_sector.dm"
