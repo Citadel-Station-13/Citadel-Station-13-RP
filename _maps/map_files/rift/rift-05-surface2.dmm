@@ -6978,18 +6978,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
-"fik" = (
-/obj/machinery/light,
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
-	scrub_id = s
-	},
-/obj/machinery/alarm/monitor/isolation{
-	alarm_id = "slime_pens";
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "fil" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -37942,7 +37930,7 @@ cJR
 tui
 tui
 tui
-fik
+smn
 kPi
 uIZ
 uIZ
