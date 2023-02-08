@@ -2,23 +2,29 @@ import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
 
+export enum AccessListMode {
+  AuthMode = "auth",
+  SelectMode = "select",
+  ModMode = "modify",
+  ReadMode = "read",
+}
+
 interface AccessListProps {
   access: [Access],
-  authMode: BooleanLike, // on authMode, we're setting auth, meaning we read req/req_one
-  setAccess: Function, // called to toggle access
-  grantAll: Function, // non-auth mode
-  denyAll: Function, // non-auth mode
+  mode: AccessListMode, // operation mode
+  setAccess: Function, // called to toggle / select access
+  grantAll: Function, // modify mode
+  denyAll: Function, // modify  mode
   wipeAll: Function, // auth mode
-  grantCategory: Function, // non-auth mode
-  denyCategory: Function, // non-auth mode
+  grantCategory: Function, // modify mode
+  denyCategory: Function, // modify mode
   wipeCategory: Function, // auth mode
 }
 
 interface AccessListData {
-  selected: [Number], // non-auth mode
-  req_access: [Number], // auth mode
-  req_one_access: [Number], // auth mode
-  writable: BooleanLike,
+  selected?: [Number], // mod mode
+  req_access?: [Number], // auth mode
+  req_one_access?: [Number], // auth mode
 }
 
 interface Access {
@@ -34,13 +40,13 @@ export const AccessList = (props: AccessListProps, context) => {
   return (
     <Section
       title="Access List"
-      buttons={!!data.writable && props.authMode? (
+      buttons={props.mode == AccessListMode.AuthMode? (
         <Button
           icon="undo"
           content="Reset"
           color="bad"
           onClick={() => props.wipeAll()} />
-      ) : (
+      ) : (props.mode == AccessListMode.ModMode? (
         <>
           <Button
             icon="check-double"
@@ -53,7 +59,7 @@ export const AccessList = (props: AccessListProps, context) => {
             color="bad"
             onClick={() => props.denyAll()} />
         </>
-      )}>
+      ) : null)}>
       <Flex>
         <Flex.Item>
           <Tabs vertical>
@@ -66,14 +72,14 @@ export const AccessList = (props: AccessListProps, context) => {
           <Flex>
             <Flex.Item>
               {
-                !!data.writable && props.authMode? (
+                props.mode == AccessListMode.AuthMode? (
                   <Button
                     fluid
                     icon="times"
                     content="Wipe Category"
                     color="times"
                     onClick={() => props.wipeCategory(selectedCategory)} />
-                ) : (
+                ) : (props.mode == AccessListMode.ModMode? (
                   <>
                     <Button
                       fluid
@@ -88,7 +94,7 @@ export const AccessList = (props: AccessListProps, context) => {
                       color="bad"
                       onClick={() => props.denyCategory(selectedCategory)} />
                   </>
-                )
+                ) : null)
               }
             </Flex.Item>
           </Flex>
