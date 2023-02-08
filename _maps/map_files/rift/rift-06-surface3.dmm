@@ -9157,11 +9157,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
-"rJ" = (
-/obj/effect/spider/eggcluster,
-/obj/random/maintenance/security,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "rK" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -18811,10 +18806,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
-"KZ" = (
-/obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "La" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -22606,7 +22597,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "Sr" = (
-/obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -23521,10 +23511,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
-"Up" = (
-/obj/effect/spider/eggcluster,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Uq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -23902,7 +23888,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Vb" = (
-/obj/effect/spider/eggcluster/small,
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vc" = (
@@ -45794,7 +45780,7 @@ fq
 fq
 fq
 qn
-GO
+Vb
 fq
 fq
 fq
@@ -49286,7 +49272,7 @@ fq
 fq
 fq
 fq
-uw
+GO
 fq
 fq
 fq
@@ -49490,7 +49476,7 @@ GO
 GO
 GO
 GO
-uw
+GO
 GO
 GO
 GO
@@ -50066,7 +50052,7 @@ GO
 GO
 GO
 GO
-As
+GO
 fq
 fq
 fq
@@ -50256,7 +50242,7 @@ fq
 fq
 GO
 GO
-uw
+GO
 Xh
 GO
 fq
@@ -50449,7 +50435,7 @@ fq
 fq
 fq
 sH
-xR
+GO
 GO
 GO
 GO
@@ -51629,7 +51615,7 @@ fq
 fq
 fq
 GO
-As
+GO
 fq
 fq
 fq
@@ -52035,7 +52021,7 @@ fq
 fq
 fq
 sH
-KZ
+GO
 sH
 nO
 fq
@@ -53007,7 +52993,7 @@ fq
 xR
 nO
 uw
-Vb
+GO
 GO
 GO
 GO
@@ -53199,7 +53185,7 @@ fq
 fq
 fq
 fq
-Vb
+GO
 As
 sH
 Ws
@@ -56322,7 +56308,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 fq
 fq
 fq
@@ -56907,7 +56893,7 @@ GO
 GO
 As
 GO
-Up
+GO
 fq
 fq
 fq
@@ -57677,7 +57663,7 @@ fq
 fq
 fq
 sH
-rJ
+nO
 xA
 GO
 GO
@@ -58262,7 +58248,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 Ub
 fq
 fq

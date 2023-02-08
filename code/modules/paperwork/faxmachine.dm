@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply")
+var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Hadii's Folly Governmental Authority", "Supply")
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins

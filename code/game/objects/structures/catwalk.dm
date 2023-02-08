@@ -221,3 +221,41 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	if(health < 25)
 		icon_state = "[initial(icon_state)]_dangerous"
+
+//Ashlander Catwalks, for bridges?
+/obj/structure/catwalk/ashlander
+	name = "sandstone bridge"
+	desc = "Sandstone tiles, bound together by hardy sinew and anchored to a blessed bone frame."
+	plane = TURF_PLANE
+	layer = CATWALK_LAYER
+	icon = 'icons/turf/catwalks.dmi'
+	icon_state = "ashlanderwalk"
+	density = 0
+	anchored = 1.0
+
+/obj/structure/catwalk/ashlander/update_icon()
+	var/connectdir = 0
+	for(var/direction in GLOB.cardinal)
+		if(locate(/obj/structure/catwalk/ashlander, get_step(src, direction)))
+			connectdir |= direction
+
+	//Check the diagonal connections for corners, where you have, for example, connections both north and east. In this case it checks for a north-east connection to determine whether to add a corner marker or not.
+	var/diagonalconnect = 0 //1 = NE; 2 = SE; 4 = NW; 8 = SW
+	//NORTHEAST
+	if(connectdir & NORTH && connectdir & EAST)
+		if(locate(/obj/structure/catwalk/ashlander, get_step(src, NORTHEAST)))
+			diagonalconnect |= 1
+	//SOUTHEAST
+	if(connectdir & SOUTH && connectdir & EAST)
+		if(locate(/obj/structure/catwalk/ashlander, get_step(src, SOUTHEAST)))
+			diagonalconnect |= 2
+	//NORTHWEST
+	if(connectdir & NORTH && connectdir & WEST)
+		if(locate(/obj/structure/catwalk/ashlander, get_step(src, NORTHWEST)))
+			diagonalconnect |= 4
+	//SOUTHWEST
+	if(connectdir & SOUTH && connectdir & WEST)
+		if(locate(/obj/structure/catwalk/ashlander, get_step(src, SOUTHWEST)))
+			diagonalconnect |= 8
+
+	icon_state = "lavaland[connectdir]-[diagonalconnect]"

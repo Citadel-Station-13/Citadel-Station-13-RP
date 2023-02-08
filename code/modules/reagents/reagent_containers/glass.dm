@@ -339,6 +339,32 @@
 	else
 		return ..()
 
+/obj/item/reagent_containers/glass/bucket/sandstone
+	name = "sandstone jar"
+	desc = "A hand carved sandstone jar, used for storing liquids or dry goods alike!"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "sandbucket"
+	base_icon_state = "sandbucket"
+	item_state = "woodbucket"
+	matter = list("sandstone" = 50)
+	w_class = ITEMSIZE_LARGE
+	unacidable = 1
+
+/obj/item/reagent_containers/glass/bucket/sandstone/attackby(var/obj/D, mob/user as mob)
+	if(isprox(D))
+		to_chat(user, "This wooden bucket doesn't play well with electronics.")
+		return
+	else if(istype(D, /obj/item/mop))
+		if(reagents.total_volume < 1)
+			to_chat(user, "<span class='warning'>\The [src] is empty!</span>")
+		else
+			reagents.trans_to_obj(D, 5)
+			to_chat(user, "<span class='notice'>You wet \the [D] in \the [src].</span>")
+			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
+		return
+	else
+		return ..()
+
 /obj/item/reagent_containers/glass/cooler_bottle
 	desc = "A bottle for a water-cooler."
 	name = "water-cooler bottle"
@@ -390,11 +416,25 @@
 	w_class = ITEMSIZE_TINY
 	volume = 20
 
-/obj/item/reagent_containers/stone
+/obj/item/reagent_containers/glass/stone
 	name = "stone mortar"
 	desc = "A hand-crafted stone mortar, designed to hold ground up herbs and reagents."
-	icon_state = "stonebeaker"
-	base_icon_state = "stonebeaker"
+	icon_state = "stonemortar"
+	base_icon_state = "stonemortar"
+
+/obj/item/reagent_containers/glass/stone/update_icon()
+	cut_overlays()
+	if (!is_open_container())
+		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
+		add_overlay(lid)
+
+/obj/item/reagent_containers/glass/stone/examine(mob/user)
+	. = ..()
+	if(reagents && reagents.reagent_list.len)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	else
+		. += "<span class='notice'>It is empty.</span>"
 
 //Vials
 /obj/item/reagent_containers/glass/beaker/vial/bicaridine

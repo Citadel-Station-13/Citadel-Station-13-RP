@@ -401,3 +401,7 @@
 /datum/gear/accessory/armsock_right
 	name = "Fingerless Sleeve (Right)"
 	path = /obj/item/clothing/accessory/armsock_right
+
+/datum/gear/accessory/disenchanted_talisman
+	name = "Disenchanted Bone Talisman"
+	path = /obj/item/clothing/accessory/disenchanted_talisman

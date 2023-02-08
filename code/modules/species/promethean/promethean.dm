@@ -57,7 +57,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	max_age = 80
 
-	economic_modifier = 3
 
 	gluttonous = 0
 	virus_immune = TRUE
