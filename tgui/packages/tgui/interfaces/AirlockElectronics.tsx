@@ -2,7 +2,7 @@
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
-import { AccessList } from './common/AccessList';
+import { AcecssList } from './common/AccessList';
 
 export const AirlockElectronics = (props, context) => {
   const { act, data } = useBackend(context);

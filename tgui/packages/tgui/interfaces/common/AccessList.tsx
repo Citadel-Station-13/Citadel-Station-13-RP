@@ -1,14 +1,24 @@
 import { BooleanLike } from "common/react";
+import { useBackend, useLocalState } from "../../backend";
+import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
 
 interface AccessListProps {
   access: [Access],
-  selected: [Number],
+  authMode: BooleanLike, // on authMode, we're setting auth, meaning we read req/req_one
+  setAccess: Function, // called to toggle access
+  grantAll: Function, // non-auth mode
+  denyAll: Function, // non-auth mode
+  wipeAll: Function, // auth mode
+  grantCategory: Function, // non-auth mode
+  denyCategory: Function, // non-auth mode
+  wipeCategory: Function, // auth mode
+}
+
+interface AccessListData {
+  selected: [Number], // non-auth mode
+  req_access: [Number], // auth mode
+  req_one_access: [Number], // auth mode
   writable: BooleanLike,
-  toggleId: Function,
-  grantAll: Function,
-  denyAll: Function,
-  grantCategory: Function,
-  denyCategory: Function,
 }
 
 interface Access {
@@ -17,8 +27,80 @@ interface Access {
   category: String,
 }
 
-export const AccessList = (props, context) => {
+export const AccessList = (props: AccessListProps, context) => {
+  const { act, data } = useBackend<AccessListData>(context);
+  const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
 
+  return (
+    <Section
+      title="Access List"
+      buttons={!!data.writable && props.authMode? (
+        <Button
+          icon="undo"
+          content="Reset"
+          color="bad"
+          onClick={() => props.wipeAll()} />
+      ) : (
+        <>
+          <Button
+            icon="check-double"
+            content="Grant All"
+            color="good"
+            onClick={() => props.grantAll()} />
+          <Button
+            icon="undo"
+            content="Deny All"
+            color="bad"
+            onClick={() => props.denyAll()} />
+        </>
+      )}>
+      <Flex>
+        <Flex.Item>
+          <Tabs vertical>
+            {
+              warn impl
+            }
+          </Tabs>
+        </Flex.Item>
+        <Flex.Item grow={1}>
+          <Flex>
+            <Flex.Item>
+              {
+                !!data.writable && props.authMode? (
+                  <Button
+                    fluid
+                    icon="times"
+                    content="Wipe Category"
+                    color="times"
+                    onClick={() => props.wipeCategory(selectedCategory)} />
+                ) : (
+                  <>
+                    <Button
+                      fluid
+                      icon="check"
+                      content="Grant Category"
+                      color="good"
+                      onClick={() => props.grantCategory(selectedCategory)} />
+                    <Button
+                      fluid
+                      icon="times"
+                      content="Deny Category"
+                      color="bad"
+                      onClick={() => props.denyCategory(selectedCategory)} />
+                  </>
+                )
+              }
+            </Flex.Item>
+          </Flex>
+          <LabeledList>
+            {
+              warn impl
+            }
+          </LabeledList>
+        </Flex.Item>
+      </Flex>
+    </Section>
+  );
 };
 
 /*
