@@ -128,6 +128,7 @@
  * looks up an access datum by id or typepath
  */
 /datum/controller/subsystem/job/proc/access_datum(id_or_path)
+	RETURN_TYPE(/datum/access)
 	return ispath(id_or_path)? access_path_lookup[id_or_path] : access_id_lookup["[id_or_path]"]
 
 /**
