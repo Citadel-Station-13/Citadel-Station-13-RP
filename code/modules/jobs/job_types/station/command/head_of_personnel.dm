@@ -1,4 +1,4 @@
-/datum/job/station/head_of_personnel
+/datum/role/job/station/head_of_personnel
 	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
@@ -32,8 +32,8 @@
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(
-		"Crew Resources Officer" = /datum/alt_title/cro,
-		"Deputy Director" = /datum/alt_title/hop/deputy
+		"Crew Resources Officer" = /datum/prototype/alt_title/cro,
+		"Deputy Director" = /datum/prototype/alt_title/hop/deputy
 	)
 
 	minimal_access = list(
@@ -74,10 +74,10 @@
 		ACCESS_SUPPLY_QM,
 	)
 
-/datum/alt_title/cro
+/datum/prototype/alt_title/cro
 	title = "Crew Resources Officer"
 
-/datum/alt_title/hop/deputy
+/datum/prototype/alt_title/hop/deputy
 	title = "Deputy Director"
 
 /datum/outfit/job/station/head_of_personnel

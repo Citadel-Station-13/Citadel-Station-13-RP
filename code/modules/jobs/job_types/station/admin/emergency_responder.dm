@@ -1,4 +1,4 @@
-/datum/job/station/emergency_responder //For staff managing/leading ERTs
+/datum/role/job/station/emergency_responder //For staff managing/leading ERTs
 	id = JOB_ID_EMERGENCY_RESPONDER
 	title = "Emergency Responder"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_ADMIN
@@ -21,7 +21,7 @@
 
 	pto_type = PTO_CIVILIAN
 
-/datum/job/station/emergency_responder/get_access()
+/datum/role/job/station/emergency_responder/get_access()
 	return get_all_accesses().Copy()
 
 /datum/outfit/job/station/emergency_responder

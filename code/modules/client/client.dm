@@ -42,7 +42,7 @@
 	/// Persistent round-by-round data holder
 	var/datum/client_data/persistent
 	/// Database data
-	var/datum/client_dbdata/database
+	var/datum/player_data/player
 
 	//! Rendering
 	/// Click catcher

@@ -1,4 +1,4 @@
-/datum/job/station/head_of_security
+/datum/role/job/station/head_of_security
 	id = JOB_ID_HEAD_OF_SECURITY
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"
@@ -53,18 +53,18 @@
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
 	alt_titles = list(
-		"Security Commander" = /datum/alt_title/hos/commander,
-		"Chief of Security" = /datum/alt_title/hos/chief,
-		"Defense Director" = /datum/alt_title/hos/director
+		"Security Commander" = /datum/prototype/alt_title/hos/commander,
+		"Chief of Security" = /datum/prototype/alt_title/hos/chief,
+		"Defense Director" = /datum/prototype/alt_title/hos/director
 		)
 
-/datum/alt_title/hos/commander
+/datum/prototype/alt_title/hos/commander
 	title = "Security Commander"
 
-/datum/alt_title/hos/chief
+/datum/prototype/alt_title/hos/chief
 	title = "Chief of Security"
 
-/datum/alt_title/hos/director
+/datum/prototype/alt_title/hos/director
 	title = "Defense Director"
 
 /datum/outfit/job/station/head_of_security

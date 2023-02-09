@@ -1,4 +1,4 @@
-/datum/job/station/off_duty/command
+/datum/role/job/station/off_duty/command
 	id = JOB_ID_OFFDUTY_COMMAND
 	title = "Off-duty Command"
 	timeoff_factor = -1

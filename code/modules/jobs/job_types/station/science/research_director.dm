@@ -1,4 +1,4 @@
-/datum/job/station/research_director
+/datum/role/job/station/research_director
 	id = JOB_ID_RESEARCH_DIRECTOR
 	title = "Research Director"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
@@ -53,18 +53,18 @@
 						might originate from Research. The Research Director often has at least passing knowledge of most of the Research department, but \
 						are encouraged to allow their staff to perform their own duties."
 	alt_titles = list(
-		"Research Supervisor" = /datum/alt_title/research_supervisor,
-		"Head of Development" = /datum/alt_title/head_of_development,
-		"Head Scientist" = /datum/alt_title/head_scientist
+		"Research Supervisor" = /datum/prototype/alt_title/research_supervisor,
+		"Head of Development" = /datum/prototype/alt_title/head_of_development,
+		"Head Scientist" = /datum/prototype/alt_title/head_scientist
 		)
 
-/datum/alt_title/research_supervisor
+/datum/prototype/alt_title/research_supervisor
 	title = "Research Supervisor"
 
-/datum/alt_title/head_of_development
+/datum/prototype/alt_title/head_of_development
 	title = "Head of Development"
 
-/datum/alt_title/head_scientist
+/datum/prototype/alt_title/head_scientist
 	title = "Head Scientist"
 
 /datum/outfit/job/station/research_director

@@ -80,7 +80,7 @@
 	if(clonemind.current && clonemind.current.stat != DEAD) // Mind is associated with a non-dead body.
 		return FALSE
 	if(clonemind.active) // Somebody is using that mind.
-		if(ckey(clonemind.key) != R.ckey)
+		if(clonemind.ckey != R.ckey)
 			return FALSE
 	else
 		for(var/mob/observer/dead/G in GLOB.player_list)

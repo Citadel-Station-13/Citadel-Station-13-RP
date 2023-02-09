@@ -197,9 +197,9 @@
 	if(!equip_preview_mob)
 		return
 
-	var/datum/job/previewJob = SSjob.job_by_id(preview_job_id())
+	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]

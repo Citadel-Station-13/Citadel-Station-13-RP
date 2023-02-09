@@ -1,4 +1,4 @@
-/datum/job/station/warden
+/datum/role/job/station/warden
 	id = JOB_ID_WARDEN
 	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	title = "Warden"
@@ -22,14 +22,14 @@
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
 	alt_titles = list(
-		"Jailor" = /datum/alt_title/warden/jailor,
-		"Dispatch Officer" = /datum/alt_title/warden/dispatch_officer
+		"Jailor" = /datum/prototype/alt_title/warden/jailor,
+		"Dispatch Officer" = /datum/prototype/alt_title/warden/dispatch_officer
 		)
 
-/datum/alt_title/warden/jailor
+/datum/prototype/alt_title/warden/jailor
 	title = "Jailor"
 
-/datum/alt_title/warden/dispatch_officer
+/datum/prototype/alt_title/warden/dispatch_officer
 	title = "Dispatch Officer"
 
 /datum/outfit/job/station/warden

@@ -16,26 +16,25 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
+	// lastly, do general job titles after
+	sanitize_preference(/datum/category_item/player_setup_item/occupation/alt_titles)
 
-/datum/preferences/proc/get_background_lore_datums()
+/datum/preferences/proc/all_background_datums()
+	return list(
+		lore_faction_datum(),
+		lore_citizenship_datum(),
+		lore_origin_datum(),
+		lore_religion_datum(),
+	)
+
+/datum/preferences/proc/all_background_ids()
 	. = list()
-	var/datum/lore/character_background/bglore
-	bglore = SScharacters.resolve_citizenship(get_preference(/datum/category_item/player_setup_item/background/citizenship))
-	if(bglore)
-		. += bglore
-	bglore = SScharacters.resolve_faction(get_preference(/datum/category_item/player_setup_item/background/faction))
-	if(bglore)
-		. += bglore
-	bglore = SScharacters.resolve_origin(get_preference(/datum/category_item/player_setup_item/background/origin))
-	if(bglore)
-		. += bglore
-	bglore = SScharacters.resolve_religion(get_preference(/datum/category_item/player_setup_item/background/religion))
-	if(bglore)
-		. += bglore
+	for(var/datum/lore/character_background/bg as anything in all_background_datums())
+		. += bg.id
 
 /datum/preferences/proc/tally_background_economic_factor()
 	. = 1
-	for(var/datum/lore/character_background/bglore as anything in get_background_lore_datums())
+	for(var/datum/lore/character_background/bglore as anything in all_background_datums())
 		. *= bglore.economy_payscale
 	// todo: character species when *necessary*
 	var/datum/species/S = real_species_datum()

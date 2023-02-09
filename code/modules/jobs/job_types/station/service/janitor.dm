@@ -1,4 +1,4 @@
-/datum/job/station/janitor
+/datum/role/job/station/janitor
 	id = JOB_ID_JANITOR
 	title = "Janitor"
 	flag = JANITOR
@@ -16,22 +16,22 @@
 	outfit_type = /datum/outfit/job/station/janitor
 	desc = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list(
-		"Custodian" = /datum/alt_title/janitor/custodian,
-		"Sanitation Technician" = /datum/alt_title/janitor/tech,
-		"Viscera Cleaner" = /datum/alt_title/janitor/gorecleaner,
-		"Maid" = /datum/alt_title/janitor/maid
+		"Custodian" = /datum/prototype/alt_title/janitor/custodian,
+		"Sanitation Technician" = /datum/prototype/alt_title/janitor/tech,
+		"Viscera Cleaner" = /datum/prototype/alt_title/janitor/gorecleaner,
+		"Maid" = /datum/prototype/alt_title/janitor/maid
 		)
 
-/datum/alt_title/janitor/custodian
+/datum/prototype/alt_title/janitor/custodian
 	title = "Custodian"
 
-/datum/alt_title/janitor/tech
+/datum/prototype/alt_title/janitor/tech
 	title = "Sanitation Technician"
 
-/datum/alt_title/janitor/gorecleaner
+/datum/prototype/alt_title/janitor/gorecleaner
 	title = "Viscera Cleaner"
 
-/datum/alt_title/janitor/maid
+/datum/prototype/alt_title/janitor/maid
 	title = "Maid"
 	title_outfit = /datum/outfit/job/station/janitor/maid
 

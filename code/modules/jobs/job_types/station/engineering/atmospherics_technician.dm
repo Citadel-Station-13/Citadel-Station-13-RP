@@ -1,4 +1,4 @@
-/datum/job/station/atmos
+/datum/role/job/station/atmos
 	id = JOB_ID_ATMOSPHERIC_TECHNICIAN
 	title = "Atmospheric Technician"
 	flag = ATMOSTECH
@@ -21,19 +21,19 @@
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
 	alt_titles = list(
-		"Atmospherics Maintainer" = /datum/alt_title/atmos_maint,
-		"Pipe Network Specialist" = /datum/alt_title/pipe_spec,
-		"Disposals Technician" = /datum/alt_title/disposals_tech
+		"Atmospherics Maintainer" = /datum/prototype/alt_title/atmos_maint,
+		"Pipe Network Specialist" = /datum/prototype/alt_title/pipe_spec,
+		"Disposals Technician" = /datum/prototype/alt_title/disposals_tech
 		)
 
 // Atmos Tech Alt Titles
-/datum/alt_title/atmos_maint
+/datum/prototype/alt_title/atmos_maint
 	title = "Atmospherics Maintainer"
 
-/datum/alt_title/pipe_spec
+/datum/prototype/alt_title/pipe_spec
 	title = "Pipe Network Specialist"
 
-/datum/alt_title/disposals_tech
+/datum/prototype/alt_title/disposals_tech
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
 
