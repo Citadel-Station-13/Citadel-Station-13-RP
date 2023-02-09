@@ -26,6 +26,26 @@
 	icon_state = "knight_orange"
 	item_state = "knight_orange"
 
+/obj/item/clothing/head/helmet/medieval/alt
+	icon_state = "knight_helmet"
+	item_state = "knight_helmet"
+
+/obj/item/clothing/head/helmet/medieval/paladin
+	name = "elite paladin helm"
+	desc = "This tarnished helmet has clearly done its job well for many years of service."
+	icon_state = "paladin"
+	item_state = "paladin"
+	action_button_name = "Toggle Visor"
+
+/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]1"
+		to_chat(user, "You raise the helmet's visor.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You lower the helmet's visor.")
+	update_worn_icon()	//so our mob-overlays update"
+
 //Armours
 /obj/item/clothing/suit/armor/medieval
 	name = "plate armour"
@@ -54,6 +74,30 @@
 /obj/item/clothing/suit/armor/medieval/orange
 	icon_state = "knight_orange"
 	item_state = "knight_orange"
+
+/obj/item/clothing/suit/armor/medieval/crimson
+	icon_state = "knight_suit"
+	item_state = "knight_suit"
+
+/obj/item/clothing/suit/armor/medieval/forest
+	icon_state = "rhodok"
+	item_state = "rhodok"
+
+/obj/item/clothing/suit/armor/medieval/hauberk
+	name = "hauberk"
+	desc = "A chainmail hauberk worn beneath a dark leather jerkin. Although it grants less protection, it provides greater mobility."
+	armor = list(melee = 30, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	icon_state = "bastard"
+	item_state = "bastard"
+	slowdown = 0
+
+/obj/item/clothing/suit/armor/medieval/paladin
+	name = "elite paladin plate"
+	desc = "This armor is worn from years of use. A fusion of chainmail and plate, it serves to provide supreme mobility without sacrificing much protection."
+	armor = list(melee = 40, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	icon_state = "paladin"
+	item_state = "paladin"
+	slowdown = 0
 
 //Crusader stuff
 //Helmets
@@ -142,6 +186,26 @@
 	icon_state = "knight_red"
 	item_state = "knight_red"
 
+/obj/item/clothing/head/medievalfake/alt
+	icon_state = "knight_helmet"
+	item_state = "knight_helmet"
+
+/obj/item/clothing/head/medievalfake/paladin
+	name = "elite paladin helm"
+	desc = "This tarnished helmet has clearly done its job well for many years of service."
+	icon_state = "paladin"
+	item_state = "paladin"
+	action_button_name = "Toggle Visor"
+
+/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]1"
+		to_chat(user, "You raise the helmet's visor.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You lower the helmet's visor.")
+	update_worn_icon()	//so our mob-overlays update"
+
 //Armours
 /obj/item/clothing/suit/medievalfake
 	name = "plate armour replica"
@@ -168,6 +232,26 @@
 /obj/item/clothing/suit/medievalfake/red
 	icon_state = "knight_red"
 	item_state = "knight_red"
+
+/obj/item/clothing/suit/medievalfake/crimson
+	icon_state = "knight_suit"
+	item_state = "knight_suit"
+
+/obj/item/clothing/suit/medievalfake/forest
+	icon_state = "rhodok"
+	item_state = "rhodok"
+
+/obj/item/clothing/suit/medievalfake/hauberk
+	name = "hauberk"
+	desc = "A chainmail hauberk worn beneath a dark leather jerkin. Although it grants less protection, it provides greater mobility."
+	icon_state = "bastard"
+	item_state = "bastard"
+
+/obj/item/clothing/suit/medievalfake/paladin
+	name = "elite paladin plate"
+	desc = "This armor is worn from years of use. A fusion of chainmail and plate, it serves to provide supreme mobility without sacrificing much protection."
+	icon_state = "paladin"
+	item_state = "paladin"
 
 //Crusader stuff
 //Helmets

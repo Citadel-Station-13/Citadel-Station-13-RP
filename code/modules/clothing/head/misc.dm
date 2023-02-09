@@ -681,3 +681,8 @@
 	desc = "A simple metal headband with cosmetic lights. It seems like it's meant to accompany an outfit."
 	icon_state = "half_pint"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/bard
+	name = "audacious wide brimmed hat"
+	desc = "A bold leather hat with a brim so wide that it droops. The bright feather of an unknown bird has been stuck into the brim."
+	icon_state = "bard"

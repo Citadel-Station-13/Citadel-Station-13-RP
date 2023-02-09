@@ -760,3 +760,39 @@ Swimsuits
 /datum/gear/uniform/halfmoon
 	name = "Half Moon Outfit"
 	path = /obj/item/clothing/under/half_moon
+
+/datum/gear/uniform/toga
+	name = "Toga"
+	path = /obj/item/clothing/under/toga
+
+/datum/gear/uniform/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/countess
+
+/datum/gear/uniform/baroness
+	name = "Baroness Dress"
+	path = /obj/item/clothing/under/baroness
+
+/datum/gear/uniform/yoko
+	name = "Scavenging Sniper Set"
+	path = /obj/item/clothing/under/yoko
+
+/datum/gear/uniform/kamina
+	name = "Spiral Hero Outfit"
+	path = /obj/item/clothing/under/kamina
+
+/datum/gear/uniform/tape
+	name = "Body Tape Wrapping"
+	path = /obj/item/clothing/under/tape
+
+/datum/gear/uniform/revealing
+	name = "Revealing Cocktail Dress"
+	path = /obj/item/clothing/under/revealing
+
+/datum/gear/uniform/belial
+	name = "Belial Striped Shirt and Shorts"
+	path = /obj/item/clothing/under/belial
+
+/datum/gear/uniform/lilin
+	name = "Lilin Sash Dress"
+	path = /obj/item/clothing/under/lilin

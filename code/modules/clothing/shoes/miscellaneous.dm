@@ -265,3 +265,9 @@
 	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
 	icon_state = "galoshes_sc"
 	slowdown = SHOES_SLOWDOWN
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/utilitarian
+	name = "utilitarian shoes"
+	desc = "These shoes seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon_state = "tau"

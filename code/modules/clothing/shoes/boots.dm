@@ -234,3 +234,27 @@
 	name = "Half Moon boots"
 	desc = "Perfect boots for crossing Mare Serenitatis. Flexible and tight, these boots ensure the wearer will be leaving a solid impression without sacrificing mobility."
 	icon_state = "half_moon"
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/boots/utilitarian
+	name = "utilitarian military boots"
+	desc = "These boots seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon_state = "tauboots"
+	armor = list(melee = 10, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+
+/obj/item/clothing/shoes/boots/paladin
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon_state = "paladin"
+	armor = list(melee = 20, bullet = 10, laser = 10, energy = 10, bomb = 20, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+
+/obj/item/clothing/shoes/boots/paladin_fake
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon_state = "paladin"

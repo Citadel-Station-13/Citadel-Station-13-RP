@@ -1699,6 +1699,7 @@
 		/obj/item/clothing/shoes/boots/winter = 5,
 		/obj/item/clothing/shoes/boots/workboots = 5,
 		/obj/item/clothing/shoes/footwraps = 5,
+		/obj/item/clothing/shoes/utilitarian = 5,
 	)
 	premium = list(
 		/obj/item/clothing/gloves/rainbow = 1,
@@ -2072,6 +2073,12 @@
 		/obj/item/clothing/under/redcoatformal = 2,
 		/obj/item/clothing/under/leotardcolor = 5,
 		/obj/item/clothing/under/leotard = 5,
+		/obj/item/clothing/under/toga = 5,
+		/obj/item/clothing/under/countess = 5,
+		/obj/item/clothing/under/baroness = 5,
+		/obj/item/clothing/under/revealing = 5,
+		/obj/item/clothing/under/belial = 5,
+		/obj/item/clothing/under/lilin = 5,
 		/obj/item/storage/backpack/ = 5,
 		/obj/item/storage/backpack/messenger = 5,
 		/obj/item/storage/backpack/satchel = 5,
@@ -2244,6 +2251,9 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 5,
 		/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5,
 		/obj/item/clothing/suit/storage/gothcoat = 3,
+		/obj/item/clothing/suit/storage/hobo = 3,
+		/obj/item/clothing/suit/storage/kamina = 3,
+		/obj/item/clothing/suit/nerdshirt = 3,
 	)
 	premium = list(
 		/obj/item/clothing/suit/imperium_monk = 3,
@@ -2390,6 +2400,17 @@
 		/obj/item/clothing/shoes/boots/ysing = 1,
 		/obj/item/clothing/suit/hevsuit = 3,
 		/obj/item/clothing/head/hevhelm = 3,
+		/obj/item/clothing/suit/banana = 3,
+		/obj/item/clothing/suit/assassin = 3,
+		/obj/item/clothing/head/bard = 3,
+		/obj/item/clothing/under/aquiline_enforcer = 3,
+		/obj/item/clothing/under/yoko = 3,
+		/obj/item/clothing/under/kamina = 3,
+		/obj/item/clothing/under/tape = 3,
+		/obj/item/clothing/under/redcoat = 3,
+		/obj/item/clothing/under/general = 3,
+		/obj/item/clothing/under/american = 3,
+		/obj/item/clothing/under/prussian = 3,
 	)
 	premium = list(
 		/obj/item/clothing/suit/imperium_monk = 3,

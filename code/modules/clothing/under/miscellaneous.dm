@@ -276,6 +276,24 @@
 	icon_state = "redcoat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
+/obj/item/clothing/under/general
+	name = "despotic general uniform"
+	desc = "Looks old."
+	icon_state = "general"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
+
+/obj/item/clothing/under/american
+	name = "post-revolutionary american uniform"
+	desc = "Looks old."
+	icon_state = "american"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
+
+/obj/item/clothing/under/prussian
+	name = "prussian uniform"
+	desc = "Looks old."
+	icon_state = "prussian"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
+
 /obj/item/clothing/under/kilt
 	icon = 'icons/clothing/uniform/costume/kilt.dmi'
 	name = "kilt"
@@ -1974,3 +1992,53 @@
 
 /obj/item/clothing/under/surplus/russoblue
 	icon_state = "bdu_russoblue"
+
+/obj/item/clothing/under/toga
+	name = "toga"
+	desc = "A length of white wool, wrapped carefully around the wearer. Sometimes bound by a belt or sash, in some cultures the way the toga was wrapped and worn denoted social status."
+	icon_state = "toga"
+
+/obj/item/clothing/under/aquiline_enforcer
+	name = "aquiline enforcer uniform"
+	desc = "Prior to the Final War issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. Ornate uniforms such as this one purport to be based on accounts of those times."
+	icon_state = "dredd"
+
+/obj/item/clothing/under/countess
+	name = "countess dress"
+	desc = "This flowing dress radiates a dark authority. Its wide skirt and daring color palette bring to mind the feeling of movement in shadows, or a rush of blood."
+	icon_state = "countess"
+
+/obj/item/clothing/under/baroness
+	name = "baroness dress"
+	desc = "With its imposing train and sanguine color palette, this dress aims to menace. Some day the designer sought to evoke the downfall of Vetala in its design."
+	icon_state = "baroness"
+
+/obj/item/clothing/under/yoko
+	name = "scavenging sniper set"
+	desc = "This outfit seems to favor tight materials and lots of open skin. It's likely that its previous owner hailed from an arid environment. It remains stylish, regardless of climate."
+	icon_state = "yoko"
+
+/obj/item/clothing/under/kamina
+	name = "spiral hero outfit"
+	desc = "An outfit that radiates pure authority. Yours is the drill that will pierce the heavens."
+	icon_state = "kamina"
+
+/obj/item/clothing/under/tape
+	name = "body tape wrapping"
+	desc = "Several layers of flexible body tape may be placed in a skintight arrangement that protects the user's modesty while still allowing them to dazzle. Odds of winning a Multipass increase when wearing this attire."
+	icon_state = "tape"
+
+/obj/item/clothing/under/revealing
+	name = "revealing cocktail dress"
+	desc = "A dress this daring requires certain amounts of confidence that few possess. Show off what you've got without too much of a scandal."
+	icon_state = "revealingdress"
+
+/obj/item/clothing/under/belial
+	name = "Belial striped shirt and shorts"
+	desc = "A comfortable cotton shirt in a mix of blazing red, white and blue hues, combined with a pair of white shorts and accompanying, crisscrossing black lace along it's sides. Its tag marks it as belonging to the Lindenoak clothing line."
+	icon_state = "belial"
+
+/obj/item/clothing/under/lilin
+	name = "Lilin sash dress"
+	desc = "An exotic shoulderless dress that plunges into an open-hipped sash-like silk skirt. Its fading dyework seems to evoke a sense of bleeding. A small tag marks it as belonging to the Lindenoak line."
+	icon_state = "lilin"

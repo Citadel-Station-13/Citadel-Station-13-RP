@@ -368,3 +368,17 @@
 
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
+
+//More Warhammer Fun
+/obj/item/clothing/head/helmet/utilitarian
+	name = "utilitarian military helmet"
+	desc = "This high tech helmet provides plenty of battlefield telemetry and aim assistance. It is designed to protect the wearer almost exclusively from ranged attacks."
+	icon_state = "tau"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
+	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+
+/obj/item/clothing/head/helmet/duraskull
+	name = "durasteel skull mask"
+	desc = "The process of working durasteel into such a shape is no small feat. Whoever commissioned this wanted to send a serious message."
+	icon_state = "ahelm"
+	armor = list(melee = 40, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)

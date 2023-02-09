@@ -255,6 +255,20 @@
 	desc = "A fur lined green coat. Wearing this makes you feel slightly more charitable."
 	icon_state = "christmascoatg"
 
+/obj/item/clothing/suit/banana
+	name = "banana suit"
+	desc = "There was a period in Old Earth history where this costume was seen as the peak of comedy."
+	icon_state = "bananasuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/assassin
+	name = "hashashin costume"
+	desc = "Much like their namesake, modern wearers of this outfit tend to overindulge on hashish."
+	icon_state = "assassin"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
 /*
  * Misc
  */
@@ -290,6 +304,14 @@
 	name = "worn shirt"
 	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian. You wouldn't go so far as to say it feels like being hugged when you wear it but it's pretty close. Good for sleeping in."
 	icon_state = "ianshirt"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat") //placeholder -S2-
+	body_parts_covered = UPPER_TORSO|ARMS
+	flags_inv = HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/nerdshirt
+	name = "nerdy shirt"
+	desc = "A comfy white t-shirt with a picture of a cartoon hedgehog on it. Although clean, it still seems like the wearer should be embarrassed for owning it."
+	icon_state = "nerdshirt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat") //placeholder -S2-
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDETIE|HIDEHOLSTER
@@ -1173,6 +1195,16 @@
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_UTILITY)
 
+/obj/item/clothing/suit/ashen_vestment
+	name = "ashen vestments"
+	desc = "These flowing red robes mark the wearer as a member of the Scori Priesthood. Lightweight and well ventilated, the edges of the fabric are stained with ash."
+	icon_state = "archon_robe"
+
+/obj/item/clothing/suit/ashen_tabard
+	name = "ashen tabard"
+	desc = "This style of tabard is sometimes worn by Scori Guardians when not on duty. Other unidentified Scori have been seen wearing them, making the tabard's true significance unclear."
+	icon_state = "crimson_tabard"
+
 //Main's Formal Coats
 /obj/item/clothing/suit/storage/parade_coat
 	name = "captain's formal jerkin"
@@ -1251,3 +1283,13 @@
 	name = "Half Moon Jacket"
 	desc = "Lightweight and fashionable, this low-profile jacket blends in while still making a statement. Its stark coloration is reminiscent of Luna."
 	icon_state = "half_moon"
+
+/obj/item/clothing/suit/storage/hobo
+	name = "ragged coat"
+	desc = "Although hopping trains is no longer en vogue, the Frontier has its fill of vagabonds and drifters. Many are stuck wearing the clothes they first brought with them."
+	icon_state = "hobocoat"
+
+/obj/item/clothing/suit/storage/kamina
+	name = "spiral hero cloak"
+	desc = "Don't believe in yourself. Believe in the me that believes in you."
+	icon_state = "kaminacape"

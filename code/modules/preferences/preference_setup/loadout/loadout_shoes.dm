@@ -226,3 +226,7 @@
 /datum/gear/shoes/halfmoon
 	name = "Half Moon boots"
 	path = /obj/item/clothing/shoes/boots/half_moon
+
+/datum/gear/shoes/utilitarian
+	name = "Utilitarian Shoes"
+	path = /obj/item/clothing/shoes/utilitarian
