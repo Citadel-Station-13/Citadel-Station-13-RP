@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(holopads)
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
+	light_range = 1.5
+	light_power = 0
 
 	//? balancing
 	/// base power used to project at all
@@ -30,6 +32,10 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/power_for_sector_call = 2000
 	/// power used per hologram
 	var/power_per_hologram = 150
+	/// light power when on
+	var/active_light_power = 1.5
+	/// light power when off
+	var/inactive_light_power = 0
 
 	//? ai's
 	/// last world.time we requested AI
@@ -344,6 +350,7 @@ GLOBAL_LIST_EMPTY(holopads)
 	else if(!active && active_emissive_overlay)
 		cut_overlay(active_emissive_overlay)
 		active_emissive_overlay = null
+	set_light(l_power = active? active_light_power : inactive_light_poewr)
 	update_activity_hologram(active)
 
 /**
@@ -368,9 +375,15 @@ GLOBAL_LIST_EMPTY(holopads)
  * starts AI presence
  */
 /obj/machinery/holopad/proc/initiate_ai_hologram(mob/living/silicon/ai/the_ai)
+	. = FALSE
 	if(the_ai.holopad)
 		CRASH("already had holopad")
-
+	the_ai.holopad = src
+	the_ai.hologram = create_hologram(the_ai.hologram_appearance())
+	the_ai.hologram.owner = the_ai
+	update_icon()
+	visible_message("A holographic image of [the_ai] flicks to life right before your eyes!")
+	return TRUE
 
 /**
  * stops all AI presence
@@ -383,18 +396,24 @@ GLOBAL_LIST_EMPTY(holopads)
  * stops AI presence
  */
 /obj/machinery/holopad/proc/kill_ai_hologram(mob/living/silicon/ai/the_ai)
+	. = FALSE
 	if(the_ai.holopad != src)
 		STACK_TRACE("wrong holopad")
+	var/obj/effect/overlay/hologram/holo = the_ai.hologram
+	if(!QDELETED(holo))
+		qdel(holo)
+	the_ai.holopad = null
+	update_icon()
+	return TRUE
 
-
-#warn parse below
-
+//? Legacy - Attack Handling
 /obj/machinery/holopad/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
 		attack_hand(user)
-	return
+
+#warn parse below
 
 /obj/machinery/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
@@ -423,17 +442,6 @@ GLOBAL_LIST_EMPTY(holopads)
 	else//If there is a hologram, remove it.
 		clear_holo(user)
 	return
-
-/obj/machinery/holopad/proc/activate_holo(mob/living/silicon/ai/user)
-	if(!(machine_stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it
-		if(user.holo)
-			to_chat(user, "<span class='danger'>ERROR:</span> Image feed in progress.")
-			return
-		create_holo(user)//Create one.
-		visible_message("A holographic image of [user] flicks to life right before your eyes!")
-	else
-		to_chat(user, "[SPAN_DANGER("ERROR:")] Unable to project hologram.")
-
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
@@ -470,31 +478,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/holopad/proc/request_ai_hologram(mob/living/silicon/ai/requesting, turf/T = get_turf(src))
 
-/obj/machinery/holopad/proc/clear_ai_hologram(mob/liivng/silicon/ai/clearing)
-
 /obj/machinery/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
-	var/obj/effect/overlay/aiholo/hologram = new(T)//Spawn a blank effect at the location.
-	hologram.master = A // So you can reference the master AI from in the hologram procs
-	hologram.icon = A.holo_icon
-	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
-	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
 	hologram.set_light(2)	//hologram lighting
-	hologram.color = color //painted holopad gives coloured holograms
-	masters[A] = hologram
-	set_light(2)			//pad lighting
-	icon_state = "holopad1"
-	A.holo = src
-	return TRUE
-
-/obj/machinery/holopad/proc/clear_holo(mob/living/silicon/ai/user)
-	if(user.holo == src)
-		user.holo = null
-	qdel(masters[user])//Get rid of user's hologram
-	masters -= user //Discard AI from the list of those who use holopad
-	if(!masters.len)//If no users left
-		set_light(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
-		icon_state = "holopad0"
 	return TRUE
 
 /obj/machinery/holopad/process(delta_time)
@@ -691,6 +677,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	desc = "Some kind of hologram."
 	alpha = HOLO_NORMAL_ALPHA
 	color = HOLO_NORMAL_COLOR
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	pass_flags = ATOM_PASS_ALL
@@ -784,7 +771,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	var/mob/living/vored
 
 /obj/effect/overlay/hologram/holopad/ai/Destroy()
-	#warn handle owner somehow
+	if(owner?.hologram == src)
+		owner.hologram = null
+		owner.terminate_holopad_connection()
 	// handle fetish content
 	drop_vored()
 	// dump shit out just in case

@@ -1,23 +1,37 @@
+import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
+// window data
 type HolpadContext = {
-
-  calling: null | "source" | "destination";
-  calldata: null | OutgoingCallContext | IncomingCallsContext;
+  isAI: BooleanLike; // ai user?
+  aiRequested: BooleanLike; // recently requested ai?
+  canCall: BooleanLike; // if we can call at all
+  sectorCall: BooleanLike; // if we can go across sectors
+  reachablePads: [ReachableHolopad]; // reachable holopads
+  calling: null | "source" | "destination"; // call status
+  calldata: null | OutgoingCallContext | IncomingCallsContext; // call data
 }
 
+// reachable holopads
 interface ReachableHolopad {
   name: string;
   category: string;
   sector: string;
 }
 
-interface OutgoingCallContext {
+// all calls have this
+interface BaseCallContext {
 
 }
 
-interface IncomingCallsContext {
+// outgoing calls have this
+interface OutgoingCallContext extends BaseCallContext {
+
+}
+
+// incoming calls have this
+interface IncomingCallsContext extends BaseCallContext {
 
 }
 
