@@ -1,5 +1,5 @@
 /**
- * Handes mob creation, equip, and ckey transfer.
+ * Handles mob creation, equip, and ckey transfer.
  */
 /datum/ghostrole_instantiator
 	/// traits to add to mob : will be made with GHOSTROLE_TRAIT source
