@@ -192,9 +192,9 @@
 
 /proc/get_all_jobs()
 	var/list/all_jobs = list()
-	var/list/all_datums = typesof(/datum/job)
+	var/list/all_datums = typesof(/datum/role/job)
 	all_datums -= exclude_jobs
-	var/datum/job/jobdatum
+	var/datum/role/job/jobdatum
 	for(var/jobtype in all_datums)
 		jobdatum = new jobtype
 		all_jobs.Add(jobdatum.title)

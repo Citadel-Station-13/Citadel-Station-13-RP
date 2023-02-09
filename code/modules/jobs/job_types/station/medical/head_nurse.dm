@@ -1,4 +1,4 @@
-/datum/job/station/head_nurse
+/datum/role/job/station/head_nurse
 	title = "Head Nurse"
 	id = JOB_ID_HEAD_NURSE
 	flag = HEAD_NURSE
@@ -23,18 +23,18 @@
 	ideal_character_age = 45
 
 	alt_titles = list (
-		"Medical Specialist" = /datum/alt_title/medical_specialist,
-		"Consultant Physician" = /datum/alt_title/consultant_physician,
+		"Medical Specialist" = /datum/prototype/alt_title/medical_specialist,
+		"Consultant Physician" = /datum/prototype/alt_title/consultant_physician,
 	)
 
-/datum/alt_title/medical_specialist
+/datum/prototype/alt_title/medical_specialist
 	title = "Medical Specialist"
 	title_blurb = "A Medical Specialist is a senior medical professional with extensive knowledge within a particular field of medicine which \
 	is expected to perform the standard duties of a medical doctor, as well as offer training, guidance and oversight to both resident \
 	and attending physicians in all matters, especially when presented with difficult situations within their field of expertise."
 	title_outfit = /datum/outfit/job/station/medical_doctor
 
-/datum/alt_title/consultant_physician
+/datum/prototype/alt_title/consultant_physician
 	title = "Consultant Physician"
 	title_blurb = "A Consultant Physician is a senior medical professional with extensive training in general medical practice which is expected to perform the \
 	standard duties of a medical doctor, as well as offer training, guidance and oversight to resident and attending physicians, especially when presented with difficult \

@@ -315,8 +315,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
+		ckey = mind.ckey
 		if(mind.current)
 			M = mind.current
 			if(M.client)

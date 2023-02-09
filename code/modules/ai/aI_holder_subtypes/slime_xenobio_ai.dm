@@ -174,7 +174,7 @@
 			var/mob/living/carbon/human/H = AM
 			if(istype(H.species, /datum/species/monkey)) // istype() is so they'll eat the alien monkeys too.
 				return TRUE // Monkeys are always food (sorry Pun Pun).
-			else if(H.species && H.species.name == SPECIES_PROMETHEAN) // Prometheans are always our friends.
+			else if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN) // Prometheans are always our friends.
 				if(!(REF(H) in grudges)) // Unless they're an ass.
 					return FALSE
 		if(discipline && !rabid)
@@ -185,7 +185,7 @@
 
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/H = attacker
-		if(H.species && H.species.name == SPECIES_PROMETHEAN)	// They're a jerk.
+		if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)	// They're a jerk.
 			grudges |= REF(H)
 
 // Commands, reactions, etc

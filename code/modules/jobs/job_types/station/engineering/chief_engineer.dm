@@ -1,4 +1,4 @@
-/datum/job/station/chief_engineer
+/datum/role/job/station/chief_engineer
 	id = JOB_ID_CHIEF_ENGINEER
 	title = "Chief Engineer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
@@ -29,9 +29,9 @@
 						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
 	minimal_player_age = 7
 	alt_titles = list(
-		"Head Engineer" = /datum/alt_title/head_engineer,
-		"Maintenance Manager" = /datum/alt_title/maintenance_manager,
-		"Engineering Director" = /datum/alt_title/engineering_director
+		"Head Engineer" = /datum/prototype/alt_title/head_engineer,
+		"Maintenance Manager" = /datum/prototype/alt_title/maintenance_manager,
+		"Engineering Director" = /datum/prototype/alt_title/engineering_director
 		)
 
 	outfit_type = /datum/outfit/job/station/chief_engineer
@@ -39,13 +39,13 @@
 						of manpower as much as they handle hands-on operations and repairs. They are also expected to keep the rest of the station informed of \
 						any structural threats to the station that may be hazardous to health or disruptive to work."
 
-/datum/alt_title/engineering_director
+/datum/prototype/alt_title/engineering_director
 	title = "Engineering Director"
 
-/datum/alt_title/head_engineer
+/datum/prototype/alt_title/head_engineer
 	title = "Head Engineer"
 
-/datum/alt_title/maintenance_manager
+/datum/prototype/alt_title/maintenance_manager
 	title = "Maintenance Manager"
 
 /datum/outfit/job/station/chief_engineer
