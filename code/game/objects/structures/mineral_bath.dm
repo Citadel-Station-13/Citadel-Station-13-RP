@@ -102,7 +102,7 @@
 		//var/repaired_organ
 
 		// Replace limbs for crystalline species.
-		if((H.species.name == SPECIES_ADHERENT || H.species.name == SPECIES_GOLEM) && prob(30))
+		if((H.species.get_species_id() == SPECIES_ID_ADHERENT || H.species.get_species_id() == SPECIES_ID_GOLEM) && prob(30))
 			if(!crystal_heal_damage(H))
 				if(!crystal_restore_limbs(H))
 					if(!crystal_heal_internal_organs(H))
