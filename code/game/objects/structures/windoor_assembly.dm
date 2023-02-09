@@ -203,8 +203,9 @@
 					density = 1 //Shouldn't matter but just incase
 					to_chat(user,"<span class='notice'>You finish the windoor!</span>")
 
+					var/obj/machinery/door/window/windoor
 					if(secure)
-						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)
+						windoor = new /obj/machinery/door/window/brigdoor(loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftsecureopen"
 							windoor.base_state = "leftsecure"
@@ -212,7 +213,7 @@
 							windoor.icon_state = "rightsecureopen"
 							windoor.base_state = "rightsecure"
 					else
-						var/obj/machinery/door/window/windoor = new /obj/machinery/door/window(src.loc)
+						windoor = new /obj/machinery/door/window(loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftopen"
 							windoor.base_state = "left"

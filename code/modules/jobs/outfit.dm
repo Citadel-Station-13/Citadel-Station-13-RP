@@ -19,7 +19,7 @@
 		return
 	var/datum/job/J = SSjob.get_job(rank)
 	if(J)
-		C.additional_access = J.get_access()
+		C.access = J.get_access()
 	if(H.mind)
 		var/datum/mind/M = H.mind
 		if(M.initial_account)

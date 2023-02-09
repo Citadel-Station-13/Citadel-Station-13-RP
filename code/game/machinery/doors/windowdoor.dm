@@ -238,11 +238,8 @@
 						wa.electronics = new/obj/item/airlock_electronics()
 						if(!src.req_access)
 							src.check_access()
-						if(src.req_access.len)
-							wa.electronics.conf_access = src.req_access
-						else if (src.req_one_access.len)
-							wa.electronics.conf_access = src.req_one_access
-							wa.electronics.one_access = 1
+						wa.electronics.conf_req_access = req_access?.Copy()
+						wa.electronics.conf_req_one_access = req_one_access?.Copy()
 					else
 						wa.electronics = electronics
 						electronics = null

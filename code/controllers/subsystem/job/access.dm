@@ -23,7 +23,7 @@
 		access_datums += A
 		access_path_lookup[A.type] = A
 		access_id_lookup["[A.access_value]"] = A
-	tim_sort(access_datum, /proc/cmp_auto_compare)
+	tim_sort(access_datums, /proc/cmp_auto_compare)
 
 /**
  * get all access datums with given type bits
