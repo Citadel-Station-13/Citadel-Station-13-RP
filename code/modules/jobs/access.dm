@@ -69,30 +69,37 @@
 
 /proc/get_access_ids(access_types = ACCESS_TYPE_ALL)
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(access_types)
 
 /proc/get_all_accesses()
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(ACCESS_TYPE_ALL)
 
 /proc/get_all_station_access()
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /proc/get_all_centcom_access()
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(ACCESS_TYPE_CENTCOM)
 
 /proc/get_all_syndicate_access()
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(ACCESS_TYPE_SYNDICATE)
 
 /proc/get_all_private_access()
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_type(ACCESS_TYPE_PRIVATE)
 
 /proc/get_region_accesses(region)
 	// todo: remove this proc
+	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_region(region)
 
 /proc/get_region_accesses_name(var/code)
