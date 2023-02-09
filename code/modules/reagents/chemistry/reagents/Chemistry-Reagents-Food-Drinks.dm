@@ -567,6 +567,9 @@ End Citadel Change */
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
+		if(!H.internal_organs_by_name[O_EYES])
+			eyes_covered = TRUE
+			safe_thing = "Lack of eyes"
 		if(H.head)
 			if(H.head.body_parts_covered & EYES)
 				eyes_covered = 1
