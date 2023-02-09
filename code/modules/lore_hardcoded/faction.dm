@@ -1,6 +1,6 @@
 /datum/lore/character_background/faction
 	abstract_type = /datum/lore/character_background/faction
-	/// station job types you can play as under this - **typepaths** e.g. /datum/job/station/security_officer, etc
+	/// station job types you can play as under this - **typepaths** e.g. /datum/role/job/station/security_officer, etc
 	/// if null, you can play as everything
 	var/list/job_whitelist = list()
 	/// job blacklist

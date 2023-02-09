@@ -17,7 +17,7 @@
 	var/obj/item/card/id/C = ..()
 	if(!C)
 		return
-	var/datum/job/J = SSjob.get_job(rank)
+	var/datum/role/job/J = SSjob.get_job(rank)
 	if(J)
 		C.access = J.get_access()
 	if(H.mind)

@@ -22,4 +22,8 @@ Database migrated to DBCore. Schema will start at MAJOR 1, MINOR 1.
 
 ### 11/21/22 - 1.2 - silicons
 
-persist_keyed_strings added.
+`persist_keyed_strings` added.
+
+### 2/4/23 - 1.3 - silicons
+
+`character` table added.

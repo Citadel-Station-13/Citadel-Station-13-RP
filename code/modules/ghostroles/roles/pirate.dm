@@ -1,4 +1,4 @@
-/datum/ghostrole/pirate
+/datum/role/ghostrole/pirate
 	name = "Pirate"
 	assigned_role = "Pirate"
 	desc = "You are a pirate! A legendary, if oft maligned, profession."
@@ -6,7 +6,7 @@
 	important_info = "You are a member of a pirate crew. You pillage, kidnap, and steal for profit and pleasure. Although you recently moved into this system, it is owned by NanoTrasen. A Corporate presence provides plenty of opportunities for plunder, but beware! Certain areas are considered off limits, even to pirates. Only a fool would anger Nebula Gas by raiding their station, although NebGas vessels in transit are fair game. Attempting to visit NanoTrasen's primary facility is equally dangerous and ill-advised. Focusing on isolated vessels in flight or expeditions on planets may be the most reliable way to score precious booty. Proteans and Xenochimerae are currently excluded from being Pirates, if you own either Whitelist."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/pirate
 
-/datum/ghostrole/pirate/Instantiate(client/C, atom/loc, list/params)
+/datum/role/ghostrole/pirate/Instantiate(client/C, atom/loc, list/params)
 	var/rp = rand(1, 3)
 	switch(rp)
 		if(1)
@@ -17,7 +17,7 @@
 			params["fluff"] = "professional"
 	return ..()
 
-/datum/ghostrole/pirate/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/pirate/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/flavour_text = "<i>The sound of something dripping on the top of your bunk unit wakes you up. Spears of light shine in through old \
 	bullet holes. The unit's door slides back with the push of a button, letting stale recycled air rush out. A yellowed poster on the wall \
@@ -67,7 +67,7 @@
 	icon_state = "piratebunk"
 	anchored = TRUE
 	density = TRUE
-	role_type = /datum/ghostrole/pirate
+	role_type = /datum/role/ghostrole/pirate
 	role_spawns = 1
 
 //This is from the original untranslated DM. It still isn't translated, but this is neat and maybe we should use it sometime? It seems worth retaining for now.
@@ -77,7 +77,7 @@
 	desc = "A cryo sleeper smelling faintly of rum. The sleeper looks unstable. <i>Perhaps the pirate within can be killed with the right tools...</i>"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	role_type = /datum/ghostrole/pirate
+	role_type = /datum/role/ghostrole/pirate
 	role_params = list(
 		"rank" = "Mate"
 	)

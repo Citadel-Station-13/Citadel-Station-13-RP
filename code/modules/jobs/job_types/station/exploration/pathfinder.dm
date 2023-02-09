@@ -1,4 +1,4 @@
-/datum/job/station/pathfinder
+/datum/role/job/station/pathfinder
 	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
@@ -20,18 +20,18 @@
 	outfit_type = /datum/outfit/job/station/pathfinder
 	desc = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
-		"Expedition Lead" = /datum/alt_title/expedition_lead,
-		"Exploration Manager" = /datum/alt_title/exploration_manager,
-		"Lead Pioneer" = /datum/alt_title/pathfinder/pioneer
+		"Expedition Lead" = /datum/prototype/alt_title/expedition_lead,
+		"Exploration Manager" = /datum/prototype/alt_title/exploration_manager,
+		"Lead Pioneer" = /datum/prototype/alt_title/pathfinder/pioneer
 		)
 
-/datum/alt_title/expedition_lead
+/datum/prototype/alt_title/expedition_lead
 	title = "Expedition Lead"
 
-/datum/alt_title/exploration_manager
+/datum/prototype/alt_title/exploration_manager
 	title = "Exploration Manager"
 
-/datum/alt_title/pathfinder/pioneer
+/datum/prototype/alt_title/pathfinder/pioneer
 	title = "Lead Pioneer"
 
 /datum/outfit/job/station/pathfinder

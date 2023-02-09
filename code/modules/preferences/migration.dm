@@ -63,7 +63,7 @@
 		var/list/assembled_titles = list()
 		if(!islist(player_alt_titles))
 			player_alt_titles = list()
-		for(var/datum/job/J as anything in SSjob.occupations)
+		for(var/datum/role/job/J as anything in SSjob.occupations)
 			switch(J.department_flag)
 				if(CIVILIAN)
 					if(job_civilian_high & J.flag)
