@@ -35,9 +35,8 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 		"Captain" = /datum/alt_title/captain/captain
 	)
 
-
 /datum/job/station/captain/get_access()
-	return get_all_station_access().Copy()
+	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /datum/alt_title/overseer
 	title = "Overseer"

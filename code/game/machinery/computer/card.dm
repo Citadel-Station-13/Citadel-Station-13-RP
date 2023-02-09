@@ -134,7 +134,8 @@
 				"ref" = access,
 				"allowed" = (access in modify.access) ? 1 : 0)))
 	else if(modify)
-		for(var/i in ACCESS_REGION_SECURITY to ACCESS_REGION_SUPPLY)
+		#warn nuke this from orbit
+		for(var/i in DUMB_OLD_ACCESS_REGION_LIST)
 			var/list/accesses = list()
 			for(var/access in get_region_accesses(i))
 				if (get_access_desc(access))

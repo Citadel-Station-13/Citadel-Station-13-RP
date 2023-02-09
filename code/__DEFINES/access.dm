@@ -1,8 +1,6 @@
 //? Access Regions
 //* For custom accesses, use none.
 
-#warn check make sure they're used as flags
-
 #define ACCESS_REGION_NONE (0)
 #define ACCESS_REGION_ALL (~0)
 #define ACCESS_REGION_SECURITY (1<<0)
@@ -12,6 +10,9 @@
 #define ACCESS_REGION_COMMAND (1<<4)
 #define ACCESS_REGION_GENERAL (1<<5)
 #define ACCESS_REGION_SUPPLY (1<<6)
+
+// todo: nuke this from orbit
+#define DUMB_OLD_ACCESS_REGION_LIST list(ACCESS_REGION_SECURITY, ACCESS_REGION_MEDBAY, ACCESS_REGION_RESEARCH, ACCESS_REGION_ENGINEERING, ACCESS_REGION_COMMAND, ACCESS_REGION_GENERAL, ACCESS_REGION_SUPPLY)
 
 DEFINE_SHARED_BITFIELD(access_region, list(
 	"access_region",
@@ -186,6 +187,9 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_HOP, station/command/hop, "Head of Personne
 #define ACCESS_COMMAND_VAULT 53
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_VAULT, station/command/vault, "Main Vault")
 
+#define ACCESS_COMMAND_BANKING 68
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_BANKING, station/command/bank_manage, "Account Uplink")
+
 //? Security
 
 #define ACCESS_SECURITY_EQUIPMENT 1
@@ -345,11 +349,6 @@ STANDARD_ACCESS_DATUM(ACCESS_SUPPLY_EDIT, station/supply/edit, "Supply - Access 
 	sort_order = -1000
 	access_edit_region = ACCESS_REGION_SUPPLY
 	access_edit_type = ACCESS_TYPE_STATION
-
-
-#warn add bank uplink access tbd name
-
-#warn unit test this shit by for'ing through the types to ensure no colliding defines.
 
 //* CENTCOM *//
 

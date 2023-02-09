@@ -78,7 +78,7 @@
 					"allowed" = (access in id_card.access) ? 1 : 0)))
 			data["all_centcom_access"] = all_centcom_access
 		else
-			for(var/i in ACCESS_REGION_SECURITY to ACCESS_REGION_SUPPLY)
+			for(var/i in DUMB_OLD_ACCESS_REGION_LIST)
 				var/list/accesses = list()
 				for(var/access in get_region_accesses(i))
 					if(get_access_desc(access))

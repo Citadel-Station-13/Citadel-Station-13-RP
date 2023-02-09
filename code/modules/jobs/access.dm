@@ -69,7 +69,7 @@
 
 /proc/get_access_ids(access_types = ACCESS_TYPE_ALL)
 	// todo: remove this proc
-	return SSjob.access_ids_of_type(access_Types)
+	return SSjob.access_ids_of_type(access_types)
 
 /proc/get_all_accesses()
 	// todo: remove this proc
@@ -96,6 +96,7 @@
 	return SSjob.access_ids_of_region(region)
 
 /proc/get_region_accesses_name(var/code)
+	// todo: remove this proc
 	switch(code)
 		if(ACCESS_REGION_ALL)
 			return "All"
@@ -115,15 +116,19 @@
 			return "Supply"
 
 /proc/get_access_desc(id)
+	// todo: remove this proc
 	return SSjob.access_datum(id)?.access_name
 
 /proc/get_centcom_access_desc(A)
+	// todo: remove this proc
 	return get_access_desc(A)
 
 /proc/get_access_by_id(id)
+	// todo: remove this proc
 	return SSjob.access_datum(id)
 
 /proc/get_all_centcom_jobs()
+	// todo: remove this proc
 	return list("VIP Guest",
 		"Custodian",
 		"Thunderdome Overseer",
