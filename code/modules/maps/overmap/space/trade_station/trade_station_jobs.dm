@@ -7,7 +7,7 @@
 	assignable = FALSE
 	visible = FALSE
 
-/datum/job/trader
+/datum/role/job/trader
 	title = "Trader"
 	flag = TRADER
 	id = JOB_ID_TRADER
@@ -35,15 +35,15 @@
 	access = list(access_trader)
 	minimal_access = list(access_trader)
 	alt_titles = list(
-		"Trade Manager" = /datum/alt_title/trade_manager,
-		"Merchant" = /datum/alt_title/merchant
+		"Trade Manager" = /datum/prototype/alt_title/trade_manager,
+		"Merchant" = /datum/prototype/alt_title/merchant
 		)
 
-/datum/alt_title/trade_manager
+/datum/prototype/alt_title/trade_manager
 	title = "Trade Manager"
 //	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
-/datum/alt_title/merchant
+/datum/prototype/alt_title/merchant
 	title = "Merchant"
 
 /datum/outfit/trade

@@ -16,3 +16,6 @@
 #define CHARACTER_DATA_JOBS "jobs"
 #define CHARACTER_DATA_ALT_TITLES "alt_titles"
 #define CHARACTER_DATA_OVERFLOW_MODE "overflow_mode"
+
+//? Skills
+#define CHARACTER_DATA_SKILLS "skills"

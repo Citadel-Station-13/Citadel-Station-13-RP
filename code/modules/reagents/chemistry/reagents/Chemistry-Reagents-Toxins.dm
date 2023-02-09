@@ -677,7 +677,7 @@
 /datum/reagent/advmutationtoxin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name != SPECIES_PROMETHEAN)
+		if(H.species.get_species_id() != SPECIES_ID_PROMETHEAN)
 			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
 
 			var/list/backup_implants = list()

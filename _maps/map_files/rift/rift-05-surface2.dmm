@@ -9748,17 +9748,8 @@
 "hiK" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
 /obj/item/ammo_magazine/m9mmt,
 /obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/wt550,
 /obj/item/gun/ballistic/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -16185,9 +16176,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/gun/ballistic/automatic/z8,
-/obj/item/gun/ballistic/automatic/z8,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /turf/simulated/floor/tiled/dark,
@@ -25577,13 +25565,13 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "trS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = 6;
-	pixel_y = -6
-	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = -4;
-	pixel_y = -6
+	pixel_y = 6
 	},
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = 6;
@@ -25591,7 +25579,11 @@
 	},
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = -4;
-	pixel_y = 6
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_equiptment_storage)
@@ -28865,23 +28857,12 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/item/storage/box/flashshells,
-/obj/item/storage/box/stunshells,
-/obj/item/storage/box/shotgunammo,
-/obj/item/storage/box/shotgunammo,
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/gun/ballistic/automatic/as24,
-/obj/item/gun/ballistic/automatic/as24,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/gun/ballistic/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vTi" = (
@@ -29114,6 +29095,38 @@
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
 	pixel_x = -3;
 	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)

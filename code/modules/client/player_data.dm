@@ -2,7 +2,7 @@
  * holds db-related data
  * loaded every connect
  */
-/datum/client_dbdata
+/datum/player_data
 	//! intrinsics
 	/// our ckey
 	var/ckey
@@ -23,7 +23,7 @@
 	/// player age
 	var/player_age
 
-/datum/client_dbdata/New(ckey)
+/datum/player_data/New(ckey)
 	src.ckey = ckey
 	if(!src.ckey)
 		return
@@ -32,7 +32,7 @@
 /**
  * async
  */
-/datum/client_dbdata/proc/load()
+/datum/player_data/proc/load()
 	if(!SSdbcore.Connect())
 		if(isnull(available))
 			available = FALSE
@@ -40,7 +40,7 @@
 	INVOKE_ASYNC(src, .proc/load_blocking)
 	return TRUE
 
-/datum/client_dbdata/proc/load_blocking()
+/datum/player_data/proc/load_blocking()
 	// allow admin proccalls - there's no args here.
 	var/was_proccall = !!IsAdminAdvancedProcCall()
 	var/old_usr = usr
@@ -48,7 +48,7 @@
 	_load_lock(was_proccall)
 	usr = old_usr
 
-/datum/client_dbdata/proc/_load_lock(was_proccall)
+/datum/player_data/proc/_load_lock(was_proccall)
 	if(IsAdminAdvancedProcCall())
 		return
 	if(loading)
@@ -59,7 +59,7 @@
 	_load()
 	loading = FALSE
 
-/datum/client_dbdata/proc/_load()
+/datum/player_data/proc/_load()
 	if(IsAdminAdvancedProcCall())
 		return
 	var/datum/db_query/lookup
@@ -105,7 +105,7 @@
 		qdel(lookup)
 		register_new_player(lookup_firstseen, lookup_id)
 
-/datum/client_dbdata/proc/register_new_player(migrate_firstseen, lookup_id)
+/datum/player_data/proc/register_new_player(migrate_firstseen, lookup_id)
 	if(IsAdminAdvancedProcCall())
 		return
 	// new person!
@@ -149,7 +149,7 @@
 /**
  * async
  */
-/datum/client_dbdata/proc/save()
+/datum/player_data/proc/save()
 	set waitfor = FALSE
 	// why are we in here if we're write locked?
 	if(saving)
@@ -168,7 +168,7 @@
 	saving = FALSE
 	usr = old_usr
 
-/datum/client_dbdata/proc/_save()
+/datum/player_data/proc/_save()
 	qdel(SSdbcore.ExecuteQuery(
 		"UPDATE [format_table_name("player")] SET flags = :flags WHERE id = :id",
 		list(
@@ -180,11 +180,11 @@
 /**
  * async
  */
-/datum/client_dbdata/proc/log_connect()
+/datum/player_data/proc/log_connect()
 	set waitfor = FALSE
 	update_last_seen()
 
-/datum/client_dbdata/proc/update_last_seen()
+/datum/player_data/proc/update_last_seen()
 	// don't interrupt
 	if(!block_on_available())
 		return FALSE
@@ -199,7 +199,7 @@
 /**
  * sync
  */
-/datum/client_dbdata/proc/player_age()
+/datum/player_data/proc/player_age()
 	UNTIL(!loading)
 	return player_age
 
@@ -207,7 +207,7 @@
  * block until we know if we're available
  * then return if we are
  */
-/datum/client_dbdata/proc/block_on_available()
+/datum/player_data/proc/block_on_available()
 	UNTIL(!isnull(available))
 	return available
 
@@ -215,5 +215,5 @@
  * returns if we're available
  * if we don't know yet, return false
  */
-/datum/client_dbdata/proc/immediately_available()
+/datum/player_data/proc/immediately_available()
 	return !!available

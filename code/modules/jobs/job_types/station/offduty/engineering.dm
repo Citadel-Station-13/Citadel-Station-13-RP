@@ -1,4 +1,4 @@
-/datum/job/station/off_duty/engineering
+/datum/role/job/station/off_duty/engineering
 	id = JOB_ID_OFFDUTY_ENGINEER
 	title = "Off-duty Engineer"
 	selection_color = "#5B4D20"

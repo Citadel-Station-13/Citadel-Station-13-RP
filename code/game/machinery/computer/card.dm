@@ -219,7 +219,7 @@
 					if(is_centcom())
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum = SSjob.get_job(t1)
+						var/datum/role/job/jobdatum = SSjob.get_job(t1)
 						if(!jobdatum)
 							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
 							return

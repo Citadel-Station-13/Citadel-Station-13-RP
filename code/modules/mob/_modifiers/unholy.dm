@@ -173,7 +173,7 @@
 
 	else
 		var/mob/living/carbon/human/H = L
-		if(H.species.name == SPECIES_DIONA)
+		if(H.species.get_species_id() == SPECIES_ID_DIONA)
 			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
 			return FALSE // Happy trees aren't affected by incredible hunger.
 

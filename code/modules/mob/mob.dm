@@ -505,8 +505,8 @@
 	// Try harder to find a key to use
 	if(!keytouse && key)
 		keytouse = ckey(key)
-	else if(!keytouse && mind?.key)
-		keytouse = ckey(mind.key)
+	else if(!keytouse && mind?.ckey)
+		keytouse = mind.ckey
 
 	GLOB.respawn_timers[keytouse] = world.time + time
 

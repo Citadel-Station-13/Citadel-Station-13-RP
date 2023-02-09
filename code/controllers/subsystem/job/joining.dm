@@ -1,5 +1,5 @@
 /*
-/datum/controller/subsystem/job/proc/ProcessRoundstartPlayer(mob/M, datum/job/J, loadout = TRUE, client/C)
+/datum/controller/subsystem/job/proc/ProcessRoundstartPlayer(mob/M, datum/role/job/J, loadout = TRUE, client/C)
 	// autodetect
 	if(!C)
 		C = M.client
@@ -16,7 +16,7 @@
 		SendToRoundstart(M, C, J)
 	PostJoin(M, J, C, FALSE)
 
-/datum/controller/subsystem/job/proc/ProcessLatejoinPlayer(mob/M, datum/job/J, loadout = TRUE, client/C)
+/datum/controller/subsystem/job/proc/ProcessLatejoinPlayer(mob/M, datum/role/job/J, loadout = TRUE, client/C)
 	// autodetect
 	if(!C)
 		C = M.client
@@ -33,7 +33,7 @@
 		SendToLatejoin(M, C, job = J)
 	PostJoin(M, J, C, TRUE)
 
-/datum/controller/subsystem/job/proc/GreetPlayer(mob/M, datum/job/J, latejoin, client/C)
+/datum/controller/subsystem/job/proc/GreetPlayer(mob/M, datum/role/job/J, latejoin, client/C)
 	var/client/output = C || M.client
 	if(!J)
 		return
@@ -52,7 +52,7 @@
 		to_chat(output, "<b><span class = 'big'>Your account ID is [wageslave.account_id].</span></b>")
 		M.add_memory("Your account ID is [wageslave.account_id].")
 
-/datum/controller/subsystem/job/proc/EquipPlayer(mob/M, datum/job/J, loadout = TRUE, datum/preferences/prefs, announce, latejoin, client/C)
+/datum/controller/subsystem/job/proc/EquipPlayer(mob/M, datum/role/job/J, loadout = TRUE, datum/preferences/prefs, announce, latejoin, client/C)
 	if(!istype(J))
 		J = GetJobAuto(J)
 	ASSERT(istype(J))
@@ -73,7 +73,7 @@
 
 	HandleLoadoutLeftovers(M, leftovers, null, C)
 
-/datum/controller/subsystem/job/proc/PostJoin(mob/M, datum/job/J, client/C, latejoin)
+/datum/controller/subsystem/job/proc/PostJoin(mob/M, datum/role/job/J, client/C, latejoin)
 	// job handling
 	if(J)
 		SSpersistence.antag_rep_change[M.client.ckey] += J.GetAntagRep()
@@ -110,7 +110,7 @@
 	if(latejoin)
 		AnnounceJoin(M, J, C)
 
-/datum/controller/subsystem/job/proc/AnnounceJoin(mob/M, datum/job/J, client/C)
+/datum/controller/subsystem/job/proc/AnnounceJoin(mob/M, datum/role/job/J, client/C)
 	if(istype(get_area(M), /area/shuttle/arrival) && SSshuttle.arrivals)
 		SSshuttle.arrivals.QueueAnnounce(M, J.title)
 	else
@@ -123,7 +123,7 @@
  * - latejoin - latejoining mob?
  * - force - bypass checks
  */
-/datum/controller/subsystem/job/proc/Assign(datum/mind/M, datum/job/J, latejoin = FALSE, force = FALSE)
+/datum/controller/subsystem/job/proc/Assign(datum/mind/M, datum/role/job/J, latejoin = FALSE, force = FALSE)
 	if(ismob(M))
 		var/mob/_M = M
 		M = _M.mind
@@ -145,7 +145,7 @@
 	J.current_positions++
 	return TRUE
 
-/datum/controller/subsystem/job/proc/CanAssign(M, datum/job/J, latejoin)
+/datum/controller/subsystem/job/proc/CanAssign(M, datum/role/job/J, latejoin)
 	var/mob/checking = ismob(M) && M
 	if(!checking)
 		if(istype(M, /datum/mind))
@@ -175,7 +175,7 @@
  */
 /datum/controller/subsystem/job/proc/SendToLatejoin(mob/M, client/C = M.client, faction, job, method, override)
 	if(!override && M.mind?.assigned_role)
-		var/datum/job/J = SSjob.GetJobName(M.mind.assigned_role)
+		var/datum/role/job/J = SSjob.GetJobName(M.mind.assigned_role)
 		if(J)
 			faction = J.faction
 			job = J.GetID()
@@ -193,7 +193,7 @@
 		subsystem_log(error_message)
 		CRASH(error_message)		// this is serious.
 
-/datum/controller/subsystem/job/proc/SendToRoundstart(mob/M, client/C, datum/job/J)
+/datum/controller/subsystem/job/proc/SendToRoundstart(mob/M, client/C, datum/role/job/J)
 	var/atom/movable/landmark/spawnpoint/S = GetRoundstartSpawnpoint(M, C, J.GetID(), J.faction)
 	if(!S)
 		stack_trace("Couldn't find a roundstart spawnpoint for [M] ([C]) - [J.type] ([J.faction]).")
@@ -206,7 +206,7 @@
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
 		return TRUE
-	var/datum/job/job = GetJobAuto(rank)
+	var/datum/role/job/job = GetJobAuto(rank)
 	if(!job)
 		return
 	if((job.auto_deadmin_role_flags & DEADMIN_POSITION_HEAD) && (CONFIG_GET(flag/auto_deadmin_heads) || (C.prefs?.deadmin & DEADMIN_POSITION_HEAD)))

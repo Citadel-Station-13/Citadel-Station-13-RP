@@ -77,9 +77,9 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	output += "<b>Sleeve Pair:</b> "
 	if(!H.ckey)
 		output += "<span class='warning'>No mind in that body</span> [stored_mind != null ? "\[<a href='?src=\ref[src];target=\ref[H];mindupload=1'>Upload</a>\]" : null]<br>"
-	else if(H.mind && ckey(H.mind.key) != H.ckey)
+	else if(H.mind && H.mind.ckey != H.ckey)
 		output += "<span class='warning'>May not be correct body</span><br>"
-	else if(H.mind && ckey(H.mind.key) == H.ckey)
+	else if(H.mind && H.mind.ckey == H.ckey)
 		output += "Appears to be correct mind in body<br>"
 	else
 		output += "Unable to perform comparison<br>"

@@ -2,7 +2,7 @@
 	for(var/mob/living/carbon/human/Q in living_mob_list)
 		if(self && ignore_self && self == Q)
 			continue
-		if(Q.species.name != SPECIES_XENO_QUEEN)
+		if(Q.species.get_species_id() != SPECIES_ID_XENOMORPH_QUEEN)
 			continue
 		if(!Q.key || !Q.client || Q.stat)
 			continue

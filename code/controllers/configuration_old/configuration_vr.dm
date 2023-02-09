@@ -6,7 +6,6 @@
 	var/time_off = FALSE
 	var/pto_job_change = FALSE
 	var/pto_cap = 100 //Hours
-	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
 	var/list/Lines = world.file2list("config/legacy/config.txt")
@@ -45,6 +44,4 @@
 				config_legacy.time_off = TRUE
 			if ("pto_job_change")
 				config_legacy.pto_job_change = TRUE
-			if ("require_flavor")
-				config_legacy.require_flavor = TRUE
 	return 1

@@ -1,7 +1,7 @@
-/datum/ghostrole/golem
+/datum/role/ghostrole/golem
 	instantiator = /datum/ghostrole_instantiator/human/random/species/golem
 
-/datum/ghostrole/golem/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/golem/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/mob/living/carbon/human/H = created
 	if(!istype(H))
@@ -11,18 +11,18 @@
 		return
 	to_chat(created, G.info_text)
 
-/datum/ghostrole/golem/free
+/datum/role/ghostrole/golem/free
 	name = "Free Golem"
 	desc = "You are a Free Golem. Your family worships The Liberator."
 	spawntext = "In his infinite and divine wisdom, he set your clan free to \
 	travel the stars with a single declaration: \"Yeah go do whatever.\" Though you are bound to the one who created you, it is customary in your society to repeat those same words to newborn \
 	golems, so that no golem may ever be forced to serve again."
 
-/datum/ghostrole/golem/free/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/golem/free/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, span_boldwarning("Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked."))
 
-/datum/ghostrole/golem/servant
+/datum/role/ghostrole/golem/servant
 	name = "Servant Golem"
 	desc = "You are a golem."
 	spawntext = "You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools."
@@ -30,7 +30,7 @@
 		"servant" = TRUE
 	)
 
-/datum/ghostrole/golem/servant/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/golem/servant/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/datum/mind/creator_mind = params["creator"]
 	if(!creator_mind)
@@ -85,13 +85,13 @@
 	return ..(mapload, list(
 		"species" = species,
 		"creator" = creator && (istype(creator, /datum/mind)? creator : creator.mind)
-	), (has_owner && creator)? /datum/ghostrole/golem/servant : /datum/ghostrole/golem/free)
+	), (has_owner && creator)? /datum/role/ghostrole/golem/servant : /datum/role/ghostrole/golem/free)
 
 /obj/structure/ghost_role_spawner/golem/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	if(isgolem(user) && can_transfer)
 		// this is a bit special
 		// we want them to keep their mind, so....
-		var/datum/ghostrole/G = get_ghostrole_datum(/datum/ghostrole/golem/free)
+		var/datum/role/ghostrole/G = get_ghostrole_datum(/datum/role/ghostrole/golem/free)
 		if(!G?.instantiator)
 			CRASH("Couldn't locate freegolem instantiator")
 		var/datum/ghostrole_instantiator/I = G.instantiator

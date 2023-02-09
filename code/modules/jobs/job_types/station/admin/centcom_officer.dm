@@ -1,4 +1,4 @@
-/datum/job/station/centcom_officer //For Business
+/datum/role/job/station/centcom_officer //For Business
 	id = JOB_ID_CENTCOM_OFFICER
 	title = "CentCom Officer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_ADMIN
@@ -22,7 +22,7 @@
 
 	pto_type = PTO_CIVILIAN
 
-/datum/job/station/centcom_officer/get_access()
+/datum/role/job/station/centcom_officer/get_access()
 	return get_all_accesses().Copy()
 
 /datum/outfit/job/station/centcom_officer
