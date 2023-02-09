@@ -1,119 +1,47 @@
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
+import { useLocalState } from "../../backend";
 import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
 
 export enum AccessListMode {
-  AuthMode = "auth",
-  SelectMode = "select",
-  ModMode = "modify",
-  ReadMode = "read",
+  AuthMode = "auth", // req, req_one
+  SelectMode = "select", // select one
+  ModMode = "modify", // modify all
 }
 
-interface AccessListProps {
-  access: [Access],
-  mode: AccessListMode, // operation mode
-  setAccess: Function, // called to toggle / select access
-  grantAll: Function, // modify mode
-  denyAll: Function, // modify  mode
-  wipeAll: Function, // auth mode
-  grantCategory: Function, // modify mode
-  denyCategory: Function, // modify mode
-  wipeCategory: Function, // auth mode
+export enum AccessListSet {
+  All = "all",
+  One = "one",
 }
 
-interface AccessListData {
-  selected?: [Number], // mod mode
-  req_access?: [Number], // auth mode
-  req_one_access?: [Number], // auth mode
+export interface AccessListProps {
+  access: [Access], // all available accesses
 }
 
-interface Access {
-  value: Number,
-  name: String,
-  category: String,
+interface AccessListSelectProps extends AccessListProps {
+  select?(id: AccessId): void,
+  selected: AccessId,
 }
 
-export const AccessList = (props: AccessListProps, context) => {
-  const { act, data } = useBackend<AccessListData>(context);
-  const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
+interface AccessListModProps extends AccessListProps {
+  selected: [AccessId],
+  set?(id: AccessId): void,
+  grant?(category?: string): void,
+  deny?(category?: string): void,
+}
 
-  return (
-    <Section
-      title="Access List"
-      buttons={props.mode == AccessListMode.AuthMode? (
-        <Button
-          icon="undo"
-          content="Reset"
-          color="bad"
-          onClick={() => props.wipeAll()} />
-      ) : (props.mode == AccessListMode.ModMode? (
-        <>
-          <Button
-            icon="check-double"
-            content="Grant All"
-            color="good"
-            onClick={() => props.grantAll()} />
-          <Button
-            icon="undo"
-            content="Deny All"
-            color="bad"
-            onClick={() => props.denyAll()} />
-        </>
-      ) : null)}>
-      <Flex>
-        <Flex.Item>
-          <Tabs vertical>
-            {
-              warn impl
-            }
-          </Tabs>
-        </Flex.Item>
-        <Flex.Item grow={1}>
-          <Flex>
-            <Flex.Item>
-              {
-                props.mode == AccessListMode.AuthMode? (
-                  <Button
-                    fluid
-                    icon="times"
-                    content="Wipe Category"
-                    color="times"
-                    onClick={() => props.wipeCategory(selectedCategory)} />
-                ) : (props.mode == AccessListMode.ModMode? (
-                  <>
-                    <Button
-                      fluid
-                      icon="check"
-                      content="Grant Category"
-                      color="good"
-                      onClick={() => props.grantCategory(selectedCategory)} />
-                    <Button
-                      fluid
-                      icon="times"
-                      content="Deny Category"
-                      color="bad"
-                      onClick={() => props.denyCategory(selectedCategory)} />
-                  </>
-                ) : null)
-              }
-            </Flex.Item>
-          </Flex>
-          <LabeledList>
-            {
-              warn impl
-            }
-          </LabeledList>
-        </Flex.Item>
-      </Flex>
-    </Section>
-  );
-};
+interface AccessListAuthProps extends AccessListProps {
+  set?(id: AccessId, mode: AccessListSet): void,
+  wipe?(category?: string): void,
+  req_access?: [AccessId],
+  req_one_access?: [AccessId],
+}
 
-/*
-import { sortBy } from 'common/collections';
-import { Fragment } from 'inferno';
-import { useLocalState } from '../../backend';
-import { Button, Flex, Grid, Section, Tabs } from '../../components';
+export type AccessId = number;
+
+export interface Access {
+  value: number,
+  name: string,
+  category: string,
+}
 
 const diffMap = {
   0: {
@@ -130,116 +58,232 @@ const diffMap = {
   },
 };
 
-export const AccessList = (props, context) => {
-  const {
-    accesses = [],
-    selectedList = [],
-    accessMod,
-    grantAll,
-    denyAll,
-    grantDep,
-    denyDep,
-  } = props;
-  const [
-    selectedAccessName,
-    setSelectedAccessName,
-  ] = useLocalState(context, 'accessName', accesses[0]?.name);
-  const selectedAccess = accesses
-    .find(access => access.name === selectedAccessName);
-  const selectedAccessEntries = sortBy(
-    entry => entry.desc,
-  )(selectedAccess?.accesses || []);
-
-  const checkAccessIcon = accesses => {
-    let oneAccess = false;
-    let oneInaccess = false;
-    for (let element of accesses) {
-      if (selectedList.includes(element.ref)) {
-        oneAccess = true;
+export const AccessListMod = (props: AccessListModProps, context) => {
+  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let categories: string[] = [];
+  let lookup = new Map<number, Access>();
+  props.access.forEach((a) => {
+    if (!categories.includes(a.category)) {
+      categories.push(a.category);
+    }
+    lookup.set(a.value, a);
+  });
+  categories.sort();
+  const checkCategory = (cat: string) => {
+    let needed: number[] = [];
+    props.access.forEach((a) => {
+      if (a.category === cat) {
+        needed.push(a.value);
+      }
+    });
+    let any = false;
+    needed.forEach((n) => {
+      if (props.selected.find((_n) => _n === n)) {
+        any = true;
       }
       else {
-        oneInaccess = true;
+        return any? 1 : 0;
       }
-    }
-    if (!oneAccess && oneInaccess) {
-      return 0;
-    }
-    else if (oneAccess && oneInaccess) {
-      return 1;
-    }
-    else {
-      return 2;
-    }
+    });
+    return 2;
   };
-
   return (
-    <Section
-      title="Access"
-      buttons={(
-        <Fragment>
-          <Button
-            icon="check-double"
-            content="Grant All"
-            color="good"
-            onClick={() => grantAll()} />
-          <Button
-            icon="undo"
-            content="Deny All"
-            color="bad"
-            onClick={() => denyAll()} />
-        </Fragment>
-      )}>
+    <Section>
       <Flex>
         <Flex.Item>
-          <Tabs vertical>
-            {accesses.map(access => {
-              const entries = access.accesses || [];
-              const icon = diffMap[checkAccessIcon(entries)].icon;
-              const color = diffMap[checkAccessIcon(entries)].color;
+          <Tabs vertical />
+          {
+            categories.map((cat) => {
+              const { icon, color } = diffMap[checkCategory(cat)];
               return (
                 <Tabs.Tab
-                  key={access.name}
+                  key={cat}
                   altSelection
                   color={color}
                   icon={icon}
-                  selected={access.name === selectedAccessName}
-                  onClick={() => setSelectedAccessName(access.name)}>
-                  {access.name}
+                  selected={cat === selectedCategory}
+                  onClick={() => setSelectedCategory(cat)}>
+                  {cat}
                 </Tabs.Tab>
               );
-            })}
-          </Tabs>
+            })
+          }
         </Flex.Item>
         <Flex.Item grow={1}>
-          <Grid>
-            <Grid.Column mr={0}>
-              <Button
-                fluid
-                icon="check"
-                content="Grant Region"
-                color="good"
-                onClick={() => grantDep(selectedAccess.regid)} />
-            </Grid.Column>
-            <Grid.Column ml={0}>
-              <Button
-                fluid
-                icon="times"
-                content="Deny Region"
-                color="bad"
-                onClick={() => denyDep(selectedAccess.regid)} />
-            </Grid.Column>
-          </Grid>
-          {selectedAccessEntries.map(entry => (
-            <Button.Checkbox
-              fluid
-              key={entry.desc}
-              content={entry.desc}
-              checked={selectedList.includes(entry.ref)}
-              onClick={() => accessMod(entry.ref)} />
-          ))}
+          {
+            !!selectedCategory && (
+              <Flex>
+                <Flex.Item>
+                  <Button
+                    icon="check"
+                    content="Grant Category"
+                    color="bad"
+                    onClick={() => props.grant && props.grant(selectedCategory)}
+                    fluid />
+                  <Button
+                    icon="times"
+                    content="Deny Category"
+                    color="bad"
+                    onClick={() => props.deny && props.deny(selectedCategory)}
+                    fluid />
+                </Flex.Item>
+              </Flex>
+            )
+          }
+          {
+            props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+              return (
+                <Button
+                  key={a.value}
+                  selected={props.selected.includes(a.value)}
+                  content={a.name}
+                  onClick={() => props.set && props.set(a.value)} />
+              );
+            })
+          }
         </Flex.Item>
       </Flex>
     </Section>
   );
 };
-*/
+
+export const AccessListAuth = (props: AccessListAuthProps, context) => {
+  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let categories: string[] = [];
+  let lookup = new Map<number, Access>();
+  props.access.forEach((a) => {
+    if (!categories.includes(a.category)) {
+      categories.push(a.category);
+    }
+    lookup.set(a.value, a);
+  });
+  categories.sort();
+  const checkCategory = (cat: string) => {
+    if (props.req_access) {
+      for (let a of props.req_access) {
+        if (lookup.get(a)?.category === cat) {
+          return 2;
+        }
+      }
+    }
+    if (props.req_one_access) {
+      for (let a of props.req_one_access) {
+        if (lookup.get(a)?.category === cat) {
+          return 2;
+        }
+      }
+    }
+    return 0;
+  };
+  return (
+    <Section>
+      <Flex>
+        <Flex.Item>
+          <Tabs vertical />
+          {
+            categories.map((cat) => {
+              const { icon, color } = diffMap[checkCategory(cat)];
+              return (
+                <Tabs.Tab
+                  key={cat}
+                  altSelection
+                  color={color}
+                  icon={icon}
+                  selected={cat === selectedCategory}
+                  onClick={() => setSelectedCategory(cat)}>
+                  {cat}
+                </Tabs.Tab>
+              );
+            })
+          }
+        </Flex.Item>
+        <Flex.Item grow={1}>
+          {
+            !!selectedCategory && (
+              <Button
+                icon="times"
+                content="Wipe Category"
+                color="bad"
+                onClick={() => props.wipe && props.wipe(selectedCategory)}
+                fluid />
+            )
+          }
+          <LabeledList>
+            {
+              props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+                return (
+                  <LabeledList.Item
+                    key={a.value}
+                    buttons={
+                      <>
+                        <Button
+                          selected={props.req_access?.includes(a.value)}
+                          onClick={() => props.set && props.set(a.value, AccessListSet.All)}
+                          content="All" />
+                        <Button
+                          selected={props.req_one_access?.includes(a.value)}
+                          onClick={() => props.set && props.set(a.value, AccessListSet.One)}
+                          content="All" />
+                      </>
+                    }>
+                    {a.name}
+                  </LabeledList.Item>
+                );
+              })
+            }
+          </LabeledList>
+        </Flex.Item>
+      </Flex>
+    </Section>
+  );
+};
+
+export const AccessListSelect = (props: AccessListSelectProps, context) => {
+  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let categories: string[] = [];
+  props.access.forEach((a) => {
+    if (!categories.includes(a.category)) {
+      categories.push(a.category);
+    }
+  });
+  categories.sort();
+
+  return (
+    <Section>
+      <Flex>
+        <Flex.Item>
+          <Tabs vertical />
+          {
+            categories.map((cat) => {
+              const { icon, color } = diffMap[
+                props.selected && (props.access.find((a) => a.value === props.selected))?2 : 0];
+              return (
+                <Tabs.Tab
+                  key={cat}
+                  altSelection
+                  color={color}
+                  icon={icon}
+                  selected={cat === selectedCategory}
+                  onClick={() => setSelectedCategory(cat)}>
+                  {cat}
+                </Tabs.Tab>
+              );
+            })
+          }
+        </Flex.Item>
+        <Flex.Item grow={1}>
+          {props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+            return (
+              <Button
+                fluid
+                key={a.value}
+                content={a.name}
+                color={props.selected === a.value? "good" : "transparent"}
+                onClick={() => props.select && props.select(a.value)} />
+            );
+          })}
+        </Flex.Item>
+      </Flex>
+    </Section>
+  );
+};
