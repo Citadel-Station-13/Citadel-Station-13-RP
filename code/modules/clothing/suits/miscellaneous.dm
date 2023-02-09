@@ -260,7 +260,7 @@
 	desc = "There was a period in Old Earth history where this costume was seen as the peak of comedy."
 	icon_state = "bananasuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/assassin
 	name = "hashashin costume"
