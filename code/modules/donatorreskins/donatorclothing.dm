@@ -161,14 +161,6 @@
 	icon_state = "chaospriesth"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 
-/obj/item/clothing/under/skirt/donator/doopytoots
-	name = "high-waisted business skirt"
-	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
-	icon_state = "hueyskirt"
-	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
-
 /obj/item/clothing/under/donator/mikubikini
 	name = "starlight singer bikini"
 	desc = " "

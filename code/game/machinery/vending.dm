@@ -2079,6 +2079,7 @@
 		/obj/item/clothing/under/revealing = 5,
 		/obj/item/clothing/under/belial = 5,
 		/obj/item/clothing/under/lilin = 5,
+		/obj/item/clothing/under/asmodai = 5,
 		/obj/item/storage/backpack/ = 5,
 		/obj/item/storage/backpack/messenger = 5,
 		/obj/item/storage/backpack/satchel = 5,

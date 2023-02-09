@@ -796,3 +796,7 @@ Swimsuits
 /datum/gear/uniform/lilin
 	name = "Lilin Sash Dress"
 	path = /obj/item/clothing/under/lilin
+
+/datum/gear/uniform/asmodai
+	name = "Asmodai Laced Blouse"
+	path = /obj/item/clothing/under/asmodai

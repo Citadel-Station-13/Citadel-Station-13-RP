@@ -2042,3 +2042,13 @@
 	name = "Lilin sash dress"
 	desc = "An exotic shoulderless dress that plunges into an open-hipped sash-like silk skirt. Its fading dyework seems to evoke a sense of bleeding. A small tag marks it as belonging to the Lindenoak line."
 	icon_state = "lilin"
+
+/obj/item/clothing/under/asmodai
+	name = "Asmodai laced blouse"
+	desc = "An open chest blouse held together by black lacing and coupled with a pair side pre-ripped jeans. It's an outfit that's as much comfortable as it is fashionable. A small tag marks it as belonging to the Lindenoak line."
+	icon_state = "asmodai"
+
+/obj/item/clothing/under/skirt/highwaisted
+	name = "high-waisted business skirt"
+	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
+	icon_state = "hueyskirt"
