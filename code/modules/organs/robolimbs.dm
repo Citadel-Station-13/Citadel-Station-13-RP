@@ -611,7 +611,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/spectre
 	company = "Hoffman Tech - RACS Spectre "
 	desc = "A simple robotic limb design used for the Hoffman Tech RASC Spectre. A lightweight robotic chassis ideal for exploration and security duties."
-	icon = 'icons/mob/cyberlimbs/_fluff_vr/spectre.dmi'
+	icon = 'icons/mob/cyberlimbs/hoffman_tech/spectre.dmi'
 	unavailable_to_build = TRUE
 
 
