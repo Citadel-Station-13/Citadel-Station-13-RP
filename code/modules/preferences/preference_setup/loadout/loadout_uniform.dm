@@ -800,3 +800,72 @@ Swimsuits
 /datum/gear/uniform/asmodai
 	name = "Asmodai Laced Blouse"
 	path = /obj/item/clothing/under/asmodai
+
+/datum/gear/uniform/summerdress_selection
+	name = "Summer Dress Selection"
+	path = /obj/item/clothing/under/dress/summer
+
+/datum/gear/uniform/summerdress_selection/New()
+	..()
+	var/list/summerdress_selection = list()
+	for(var/summerdress in typesof(/obj/item/clothing/under/dress/summer))
+		var/obj/item/clothing/under/summerdress_type = summerdress
+		summerdress_selection[initial(summerdress_type.name)] = summerdress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summerdress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/skinsuit
+	name = "Skinsuit"
+	path = /obj/item/clothing/under/skinsuit
+
+/datum/gear/uniform/skinsuit_fem
+	name = "Skinsuit - Female"
+	path = /obj/item/clothing/under/skinsuit/fem
+
+
+/datum/gear/uniform/skinsuitgray
+	name = "Skinsuit (Gray)"
+	path = /obj/item/clothing/under/skinsuit/gray
+
+/datum/gear/uniform/skinsuitgray_fem
+	name = "Skinsuit (Gray) - Female"
+	path = /obj/item/clothing/under/skinsuit/gray/fem
+
+/datum/gear/uniform/skinsuitleo
+	name = "Skinsuit Leotard"
+	path = /obj/item/clothing/under/skinsuit/leotard
+
+/datum/gear/uniform/skinsuitleo_fem
+	name = "Skinsuit Leotard - Female"
+	path = /obj/item/clothing/under/skinsuit/leotard/fem
+
+/datum/gear/uniform/skinsuitgrayleo
+	name = "Skinsuit Leotard (Gray)"
+	path = /obj/item/clothing/under/skinsuit/leotard/gray
+
+/datum/gear/uniform/skinsuitgrayleo_fem
+	name = "Skinsuit Leotard (Gray) - Female"
+	path = /obj/item/clothing/under/skinsuit/leotard/gray/fem
+
+/datum/gear/uniform/bodysuitalt
+	name = "Alternate Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/alt
+
+/datum/gear/uniform/bodysuitalt_fem
+	name = "Alternate Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/alt/fem
+
+/datum/gear/uniform/bodysuitaltsleeve
+	name = "Sleeveless Alternate Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/alt/sleeveless
+
+/datum/gear/uniform/bodysuitaltsleeve_fem
+	name = "Sleeveless Alternate Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/alt/sleeveless/fem
+
+/datum/gear/uniform/bodysuitaltpants
+	name = "Alternate Bodysuit Pants"
+	path = /obj/item/clothing/under/bodysuit/alt/pants
+
+/datum/gear/uniform/bodysuitaltpants_fem
+	name = "Alternate Bodysuit Pants - Female"
+	path = /obj/item/clothing/under/bodysuit/alt/pants/fem

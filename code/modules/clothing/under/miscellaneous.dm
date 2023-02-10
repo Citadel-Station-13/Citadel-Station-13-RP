@@ -2052,3 +2052,82 @@
 	name = "high-waisted business skirt"
 	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
 	icon_state = "hueyskirt"
+
+/obj/item/clothing/under/dress/summer
+	name = "summer dress"
+	desc = "A light and breezy dress designed to keep its wearer comfortable on hot summer days."
+	icon_state = "summerdress"
+
+/obj/item/clothing/under/dress/summer/blue
+	name = "blue summer dress"
+	icon_state = "summerdress2"
+
+/obj/item/clothing/under/dress/summer/red
+	name = "red summer dress"
+	icon_state = "summerdress3"
+
+/obj/item/clothing/under/dress/summer/gold
+	name = "golden summer dress"
+	desc = "A light and breezy dress designed to keep its wearer comfortable on hot summer days. This one features an especially daring side cut."
+	icon_state = "summerdress_nt"
+
+/obj/item/clothing/under/skinsuit
+	name = "skinsuit"
+	desc = "Similar to other form-fitting latex bodysuits in design and function, skinsuits typically feature integrated hardpoints around common wear areas."
+	icon_state = "skinsuit"
+
+/obj/item/clothing/under/skinsuit/fem
+	//name = "skinsuit (female)"
+	icon_state = "skinsuitfem"
+
+/obj/item/clothing/under/skinsuit/gray
+	name = "gray skinsuit"
+	icon_state = "skinsuit_g"
+
+/obj/item/clothing/under/skinsuit/gray/fem
+	//name = "gray skinsuit (female)"
+	icon_state = "skinsuitfem_g"
+
+/obj/item/clothing/under/skinsuit/leotard
+	name = "leotard skinsuit"
+	desc = "The skinsuit's leotard variant has long since eclipsed its initial function as a breathable undersuit for submersible hardsuits. Although still utilized in this role, it has become rather fashionable to wear outside of deep water operations."
+	icon_state = "skinsuitleo"
+
+/obj/item/clothing/under/skinsuit/leotard/fem
+	//name = "leotard skinsuit (female)"
+	icon_state = "skinsuitfemleo"
+
+/obj/item/clothing/under/skinsuit/leotard/gray
+	name = "gray leotard skinsuit"
+	icon_state = "skinsuitleo_g"
+
+/obj/item/clothing/under/skinsuit/leotard/gray/fem
+	//name = "gray leotard skinsuit (female)"
+	icon_state = "skinsuitfemleo_g"
+
+/obj/item/clothing/under/bodysuit/alt
+	name = "alternate bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
+	icon_state = "altbodysuit"
+
+/obj/item/clothing/under/bodysuit/alt/fem
+	//name = "alternate bodysuit (female)"
+	icon_state = "altbodysuitfem"
+
+/obj/item/clothing/under/bodysuit/alt/sleeveless
+	name = "sleeveless alternate bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one is designed to stop at the mid-bicep, allowing total freedom to the wearer's forearms."
+	icon_state = "altbodysuit_sleeve"
+
+/obj/item/clothing/under/bodysuit/alt/sleeveless/fem
+	//name = "sleeveless alternate bodysuit (female)"
+	icon_state = "altbodysuitfem_sleeve"
+
+/obj/item/clothing/under/bodysuit/alt/pants
+	name = "alternate bodysuit pants"
+	desc = "Following complaints that bodysuits were too tight to roll down to the waist, production of bodysuit pants as singular items grew in popularity."
+	icon_state = "altbodysuit_pants"
+
+/obj/item/clothing/under/bodysuit/alt/pants/fem
+	//name = "bodysuit pants (female)"
+	icon_state = "altbodysuitfem_pants"

@@ -258,3 +258,16 @@
 	name = "elite paladin boots"
 	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
 	icon_state = "paladin"
+
+/obj/item/clothing/shoes/boots/duty/alt
+	icon_state = "altduty"
+
+/obj/item/clothing/shoes/boots/duty/alt/knee
+	name = "knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones come up to just below the knee."
+	icon_state = "altduty_long"
+
+/obj/item/clothing/shoes/boots/duty/alt/heel
+	name = "heeled knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones feature a pronounced heel and stop just below the knee."
+	icon_state = "altduty_heel"
