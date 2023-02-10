@@ -24,7 +24,7 @@
 /datum/computer_file/program/camera_monitor
 	filename = "cammon"
 	filedesc = "Camera Monitoring"
-	tguimodule_path = /datum/tgui_module/camera/ntos
+	tguimodule_path = /datum/tgui_module_old/camera/ntos
 	program_icon_state = "cameras"
 	program_key_state = "generic_key"
 	program_menu_icon = "search"
@@ -39,5 +39,5 @@
 	filedesc = "Advanced Camera Monitoring"
 	extended_desc = "This program allows remote access to the camera system. Some camera networks may have additional access requirements. This version has an integrated database with additional encrypted keys."
 	size = 14
-	tguimodule_path = /datum/tgui_module/camera/ntos/ert
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/ert
 	available_on_ntnet = 0

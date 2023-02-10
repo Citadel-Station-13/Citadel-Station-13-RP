@@ -1,13 +1,13 @@
-/datum/tgui_module/crew_monitor
+/datum/tgui_module_old/crew_monitor
 	name = "Crew monitor"
 	tgui_id = "CrewMonitor"
 
-/datum/tgui_module/crew_monitor/ui_assets(mob/user)
+/datum/tgui_module_old/crew_monitor/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/simple/nanomaps),
 	)
 
-/datum/tgui_module/crew_monitor/ui_act(action, params, datum/tgui/ui)
+/datum/tgui_module_old/crew_monitor/ui_act(action, params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -31,7 +31,7 @@
 			ui.set_map_z_level(params["mapZLevel"])
 			return TRUE
 
-/datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
+/datum/tgui_module_old/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)
 	var/list/map_levels = GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
@@ -48,7 +48,7 @@
 		ui.open()
 
 
-/datum/tgui_module/crew_monitor/ui_data(mob/user)
+/datum/tgui_module_old/crew_monitor/ui_data(mob/user)
 	var/data[0]
 
 	data["isAI"] = isAI(user)
@@ -69,20 +69,20 @@
 
 	return data
 
-/datum/tgui_module/crew_monitor/ntos
+/datum/tgui_module_old/crew_monitor/ntos
 	ntos = TRUE
 
 // Subtype for glasses_state
-/datum/tgui_module/crew_monitor/glasses
-/datum/tgui_module/crew_monitor/glasses/ui_state(mob/user)
+/datum/tgui_module_old/crew_monitor/glasses
+/datum/tgui_module_old/crew_monitor/glasses/ui_state(mob/user)
 	return GLOB.glasses_state
 
 // Subtype for self_state
-/datum/tgui_module/crew_monitor/robot
-/datum/tgui_module/crew_monitor/robot/ui_state(mob/user)
+/datum/tgui_module_old/crew_monitor/robot
+/datum/tgui_module_old/crew_monitor/robot/ui_state(mob/user)
 	return GLOB.self_state
 
 // Subtype for nif_state
-/datum/tgui_module/crew_monitor/nif
-/datum/tgui_module/crew_monitor/nif/ui_state(mob/user)
+/datum/tgui_module_old/crew_monitor/nif
+/datum/tgui_module_old/crew_monitor/nif/ui_state(mob/user)
 	return GLOB.nif_state

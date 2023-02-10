@@ -1,7 +1,7 @@
 /datum/computer_file/program/atmos_control
 	filename = "atmoscontrol"
 	filedesc = "Atmosphere Control"
-	tguimodule_path = /datum/tgui_module/atmos_control/ntos
+	tguimodule_path = /datum/tgui_module_old/atmos_control/ntos
 	program_icon_state = "atmos_control"
 	program_key_state = "atmos_key"
 	program_menu_icon = "shuffle"

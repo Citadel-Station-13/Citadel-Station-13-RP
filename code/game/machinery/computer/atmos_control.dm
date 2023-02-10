@@ -13,7 +13,7 @@
 	circuit = /obj/item/circuitboard/atmoscontrol
 	req_access = list(ACCESS_ENGINEERING_ATMOS)
 	var/list/monitored_alarm_ids = null
-	var/datum/tgui_module/atmos_control/atmos_control
+	var/datum/tgui_module_old/atmos_control/atmos_control
 
 /obj/machinery/computer/atmoscontrol/Initialize(mapload)
 	. = ..()

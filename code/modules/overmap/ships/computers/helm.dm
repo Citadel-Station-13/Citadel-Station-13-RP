@@ -260,7 +260,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	icon_keyboard = "generic_key"
 	icon_screen = "helm"
 	circuit = /obj/item/circuitboard/nav
-	var/datum/tgui_module/ship/nav/nav_tgui
+	var/datum/tgui_module_old/ship/nav/nav_tgui
 
 /obj/machinery/computer/ship/navigation/Initialize(mapload)
 	. = ..()

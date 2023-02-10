@@ -1,13 +1,13 @@
 // This really should be used for both regular ID computers and NTOS, but
 // the data structures are just different enough right now that I can't be assed
-/datum/tgui_module/cardmod
+/datum/tgui_module_old/cardmod
 	name = "ID card modification program"
 	ntos = TRUE
 	tgui_id = "IdentificationComputer"
 	var/mod_mode = 1
 	var/is_centcom = 0
 
-/datum/tgui_module/cardmod/ui_static_data(mob/user)
+/datum/tgui_module_old/cardmod/ui_static_data(mob/user)
 	var/list/data =  ..()
 	if(data_core)
 		data_core.get_manifest_list()
@@ -18,7 +18,7 @@
 #warn better tgui
 #warn bank account check
 
-/datum/tgui_module/cardmod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/cardmod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/datum/computer_file/program/card_mod/program = host
 	if(!istype(program))
 		return 0
@@ -97,7 +97,7 @@
 
 	return data
 
-/datum/tgui_module/cardmod/proc/format_jobs(list/jobs)
+/datum/tgui_module_old/cardmod/proc/format_jobs(list/jobs)
 	var/datum/computer_file/program/card_mod/program = host
 	if(!istype(program))
 		return null
@@ -112,7 +112,7 @@
 
 	return formatted
 
-/datum/tgui_module/cardmod/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module_old/cardmod/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

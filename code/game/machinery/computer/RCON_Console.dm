@@ -13,7 +13,7 @@
 	circuit = /obj/item/circuitboard/rcon_console
 	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 	var/current_tag = null
-	var/datum/tgui_module/rcon/rcon
+	var/datum/tgui_module_old/rcon/rcon
 
 /obj/machinery/computer/rcon/Initialize(mapload)
 	. = ..()

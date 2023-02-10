@@ -1,7 +1,7 @@
 /datum/computer_file/program/suit_sensors
 	filename = "sensormonitor"
 	filedesc = "Suit Sensors Monitoring"
-	tguimodule_path = /datum/tgui_module/crew_monitor/ntos
+	tguimodule_path = /datum/tgui_module_old/crew_monitor/ntos
 	program_icon_state = "crew"
 	program_key_state = "med_key"
 	program_menu_icon = "heart"

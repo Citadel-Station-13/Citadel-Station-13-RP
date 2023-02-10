@@ -5,7 +5,7 @@
 	access = ACCESS_MEDICAL_MAIN
 	cost = 250
 	p_drain = 0.025
-	var/datum/tgui_module/crew_monitor/nif/arscreen
+	var/datum/tgui_module_old/crew_monitor/nif/arscreen
 
 /datum/nifsoft/crewmonitor/New()
 	..()
