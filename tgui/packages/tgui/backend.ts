@@ -241,7 +241,7 @@ export const sendAct = (action: string, payload: object = {}) => {
   Byond.sendMessage('act/' + action, payload);
 };
 
-type BackendState<TData> = {
+export type BackendState<TData> = {
   config: BackendConfig,
   data: TData,
   shared: Record<string, any>,
@@ -249,7 +249,7 @@ type BackendState<TData> = {
   suspended: boolean,
 }
 
-type BackendConfig = {
+export type BackendConfig = {
   title: string,
   status: number,
   interface: string,
