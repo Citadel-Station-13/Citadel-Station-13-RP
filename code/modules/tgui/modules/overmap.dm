@@ -25,7 +25,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/ship/ui_close(mob/user)
+/datum/tgui_module_old/ship/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
@@ -153,7 +153,7 @@
 	// SENSORS
 	var/obj/machinery/shipsensors/sensors
 
-/datum/tgui_module_old/ship/fullmonty/ui_state(mob/user)
+/datum/tgui_module_old/ship/fullmonty/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
 /datum/tgui_module_old/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)

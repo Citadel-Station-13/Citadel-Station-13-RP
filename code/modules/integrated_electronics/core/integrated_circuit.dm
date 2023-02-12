@@ -125,7 +125,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
 		displayed_name = input
 
-/obj/item/integrated_circuit/ui_state(mob/user)
+/obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/integrated_circuit/ui_host(mob/user)

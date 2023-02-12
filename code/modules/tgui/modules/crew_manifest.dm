@@ -10,5 +10,5 @@
 	return data
 
 /datum/tgui_module_old/crew_manifest/robot
-/datum/tgui_module_old/crew_manifest/robot/ui_state(mob/user)
+/datum/tgui_module_old/crew_manifest/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state

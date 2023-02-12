@@ -35,7 +35,7 @@
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
 
-/obj/item/integrated_electronics/detailer/ui_state(mob/user)
+/obj/item/integrated_electronics/detailer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/integrated_electronics/detailer/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

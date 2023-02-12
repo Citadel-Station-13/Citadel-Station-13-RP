@@ -154,7 +154,7 @@
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user)
+/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

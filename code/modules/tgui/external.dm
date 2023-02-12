@@ -131,7 +131,7 @@
  * The UI's state controller to be used for created uis
  * This is a proc over a var for memory reasons
  */
-/datum/proc/ui_state(mob/user)
+/datum/proc/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.default_state
 
 /**
@@ -168,8 +168,12 @@
  *
  * Called on a UI's object when the UI is closed, not to be confused with
  * client/verb/uiclose(), which closes the ui window
+ *
+ * @params
+ * * user - closing mob
+ * * module - (optional) the module it came from, if any
  */
-/datum/proc/ui_close(mob/user)
+/datum/proc/ui_close(mob/user, datum/tgui_module/module)
 	SIGNAL_HANDLER
 
 /**

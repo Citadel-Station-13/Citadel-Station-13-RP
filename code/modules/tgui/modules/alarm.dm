@@ -17,11 +17,11 @@
 
 // Subtype for glasses_state
 /datum/tgui_module_old/alarm_monitor/all/glasses
-/datum/tgui_module_old/alarm_monitor/all/glasses/ui_state(mob/user)
+/datum/tgui_module_old/alarm_monitor/all/glasses/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.glasses_state
 
 /datum/tgui_module_old/alarm_monitor/all/robot
-/datum/tgui_module_old/alarm_monitor/all/robot/ui_state(mob/user)
+/datum/tgui_module_old/alarm_monitor/all/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state
 
 /datum/tgui_module_old/alarm_monitor/engineering
@@ -31,12 +31,12 @@
 
 // Subtype for glasses_state
 /datum/tgui_module_old/alarm_monitor/engineering/glasses
-/datum/tgui_module_old/alarm_monitor/engineering/glasses/ui_state(mob/user)
+/datum/tgui_module_old/alarm_monitor/engineering/glasses/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.glasses_state
 
 // Subtype for nif_state
 /datum/tgui_module_old/alarm_monitor/engineering/nif
-/datum/tgui_module_old/alarm_monitor/engineering/nif/ui_state(mob/user)
+/datum/tgui_module_old/alarm_monitor/engineering/nif/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.nif_state
 
 // Subtype for NTOS
@@ -50,7 +50,7 @@
 
 // Subtype for glasses_state
 /datum/tgui_module_old/alarm_monitor/security/glasses
-/datum/tgui_module_old/alarm_monitor/security/glasses/ui_state(mob/user)
+/datum/tgui_module_old/alarm_monitor/security/glasses/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.glasses_state
 
 // Subtype for NTOS

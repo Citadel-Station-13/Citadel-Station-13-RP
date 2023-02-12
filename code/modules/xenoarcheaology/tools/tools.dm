@@ -156,7 +156,7 @@
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
 	ui_interact(user)
 
-/obj/item/depth_scanner/ui_state(mob/user)
+/obj/item/depth_scanner/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -280,7 +280,7 @@
 /obj/item/beacon_locator/attack_self(mob/user)
 	return ui_interact(user)
 
-/obj/item/beacon_locator/ui_state(mob/user)
+/obj/item/beacon_locator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/beacon_locator/ui_interact(mob/user, datum/tgui/ui)

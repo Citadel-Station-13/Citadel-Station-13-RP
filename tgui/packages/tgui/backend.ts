@@ -242,31 +242,33 @@ export const sendAct = (action: string, payload: object = {}) => {
 };
 
 type BackendState<TData> = {
-  config: {
-    title: string,
-    status: number,
-    interface: string,
-    refreshing: boolean,
-    window: {
-      key: string,
-      size: [number, number],
-      fancy: boolean,
-      locked: boolean,
-    },
-    client: {
-      ckey: string,
-      address: string,
-      computer_id: string,
-    },
-    user: {
-      name: string,
-      observer: number,
-    },
-  },
+  config: BackendConfig,
   data: TData,
   shared: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
+}
+
+type BackendConfig = {
+  title: string,
+  status: number,
+  interface: string,
+  refreshing: boolean,
+  window: {
+    key: string,
+    size: [number, number],
+    fancy: boolean,
+    locked: boolean,
+  },
+  client: {
+    ckey: string,
+    address: string,
+    computer_id: string,
+  },
+  user: {
+    name: string,
+    observer: number,
+  },
 }
 
 /**
@@ -274,6 +276,13 @@ type BackendState<TData> = {
  */
 export const selectBackend = <TData>(state: any): BackendState<TData> => (
   state.backend || {}
+);
+
+/**
+ * Selects the current UI config from Redux state
+ */
+export const selectConfig = (state: any): BackendConfig => (
+  state.config || {}
 );
 
 /**
@@ -291,6 +300,14 @@ export const useBackend = <TData>(context: any) => {
     ...state,
     act: sendAct,
   };
+};
+
+/**
+ * Only usable in functional components. Gets the config from context.
+ */
+export const useConfig = (context: any): BackendConfig => {
+  const { store } = context;
+  return selectConfig(store.getState());
 };
 
 /**

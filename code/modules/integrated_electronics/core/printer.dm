@@ -173,7 +173,7 @@
 /obj/item/integrated_circuit_printer/attack_self(var/mob/user)
 	ui_interact(user)
 
-/obj/item/integrated_circuit_printer/ui_state(mob/user)
+/obj/item/integrated_circuit_printer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/integrated_circuit_printer/ui_interact(mob/user, datum/tgui/ui)

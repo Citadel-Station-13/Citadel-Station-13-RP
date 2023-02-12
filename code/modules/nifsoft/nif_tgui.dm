@@ -96,7 +96,7 @@
 /**
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
-/obj/item/nif/ui_state(mob/user)
+/obj/item/nif/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.ui_nif_main_state
 
 /**

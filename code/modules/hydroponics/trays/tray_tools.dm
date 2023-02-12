@@ -34,7 +34,7 @@
 		ui = new(user, src, "PlantAnalyzer", name)
 		ui.open()
 
-/obj/item/analyzer/plant_analyzer/ui_state(mob/user)
+/obj/item/analyzer/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/analyzer/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)

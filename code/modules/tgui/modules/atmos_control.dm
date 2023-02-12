@@ -113,5 +113,5 @@
 	ntos = TRUE
 
 /datum/tgui_module_old/atmos_control/robot
-/datum/tgui_module_old/atmos_control/robot/ui_state(mob/user)
+/datum/tgui_module_old/atmos_control/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state

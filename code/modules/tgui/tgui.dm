@@ -15,10 +15,10 @@
 	var/title
 	/// The window_id for browse() and onclose().
 	var/datum/tgui_window/window
+	/// are we a /datum/tgui_module?
+	var/module = FALSE
 	/// Key that is used for remembering the window geometry.
 	var/window_key
-	/// Deprecated: Window size.
-	var/window_size
 	/// The interface (template) to be used for this UI.
 	var/interface
 	/// Update the UI every MC tick.
@@ -55,12 +55,9 @@
  * optional title string The title of the UI.
  * optional parent_ui datum/tgui The parent of this UI.
  *
- * optional ui_x int Deprecated: Window width.
- * optional ui_y int Deprecated: Window height.
- *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
@@ -74,9 +71,6 @@
 	src.parent_ui = parent_ui
 	if(parent_ui)
 		parent_ui.children += src
-	// Deprecated
-	if(ui_x && ui_y)
-		src.window_size = list(ui_x, ui_y)
 
 /datum/tgui/Destroy()
 	user = null
@@ -259,9 +253,10 @@
 		"status" = status,
 		"interface" = interface,
 		"refreshing" = refreshing,
+		"module" = module, // citadel-edit: are we a module?
 		"window" = list(
 			"key" = window_key,
-			"size" = window_size,
+			"size" = null, // used to be list(x, y) but we don't need it anymore.
 			"fancy" = user.client.prefs.tgui_fancy,
 			"locked" = user.client.prefs.tgui_lock,
 		),
