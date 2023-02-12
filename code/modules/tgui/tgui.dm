@@ -187,11 +187,10 @@
  *
  * Send a full update to the client (includes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
-/datum/tgui/proc/send_full_update(custom_data, force, hard_refresh)
+/datum/tgui/proc/send_full_update(force, hard_refresh)
 	if(!initialized || closing || !user.client)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
@@ -201,9 +200,9 @@
 	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
-		custom_data,
 		with_data = should_update_data,
-		with_static_data = TRUE))
+		with_static_data = TRUE),
+	)
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
 
 /**
@@ -211,16 +210,15 @@
  *
  * Send a partial update to the client (excludes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_update(custom_data, force)
+/datum/tgui/proc/send_update(force)
 	if(!user.client || !initialized || closing)
 		return
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
-		custom_data,
-		with_data = should_update_data))
+		with_data = should_update_data,
+	))
 
 /**
  * public
@@ -246,7 +244,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(custom_data, with_data, with_static_data)
+/datum/tgui/proc/get_payload(with_data, with_static_data, with_modules)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -270,12 +268,15 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = custom_data || with_data && src_object.ui_data(user, src, state)
+	var/data = with_data && src_object.ui_data(user, src, state)
 	if(data)
 		json_data["data"] = data
 	var/static_data = with_static_data && src_object.ui_static_data(user)
 	if(static_data)
 		json_data["static_data"] = static_data
+	var/module_data = with_modules && src_object.ui_module_data(user)
+	if(module_data)
+		json_data["module_data"] = module_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	return json_data
@@ -351,6 +352,7 @@
 		if(src_object.ui_act(act_type, payload, src, state))
 			SStgui.update_uis(src_object)
 		return FALSE
+	#warn module act
 	switch(type)
 		if("ready")
 			// Send a full update when the user manually refreshes the UI

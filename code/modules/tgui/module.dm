@@ -43,17 +43,14 @@
 		ui.module = TRUE
 		ui.open()
 
-// todo: "better" (more expensive) reducer that allows one-layer-deep-nested, for now we send ui data too
-
+/**
+ * gets ui static module data; this will always contain
+ * list("tgui" = interfaceID, "src" = module ref).
+ */
 /datum/tgui_module/ui_static_data(mob/user)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	. = ui_module_data(user)
+	. = list()
 	.["tgui"] = tgui_id
 	.["src"] = REF(src)
-
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	return ui_static_data(user)
 
 /**
  * gets ui module data; parameters are variadic
@@ -62,7 +59,7 @@
  * * user - accessing user
  * * ... - rest of parameters as determined by module
  */
-/datum/tgui_module/proc/ui_module_data(mob/user, ...)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state, ...)
 	return list()
 
 /**
@@ -84,3 +81,12 @@
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!module?.ui_status(usr) != UI_INTERACTIVE)
 		return TRUE
+
+/**
+ * called to inject ui module data.
+ * they will be handled by a separate reducer to make static data work.
+ * you can technically use this for things other than tgui_module's
+ * for example, for RIG/other "modular items-in-items" to hold data.
+ */
+/datum/proc/ui_module_data(mob/user)
+	return list()
