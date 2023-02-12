@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 			if(skeletal)
 				mob_icon = new /icon('icons/mob/species/human/skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
-				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
+				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""][s_base ? "[LAZYACCESS(species.base_skin_colours,s_base)]" : ""]")
 			else
-				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
+				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][gender ? "_[gender]" : ""][s_base ? "[LAZYACCESS(species.base_skin_colours,s_base)]" : ""]")
 			apply_colouration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.

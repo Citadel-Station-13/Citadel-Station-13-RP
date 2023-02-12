@@ -8,6 +8,11 @@
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
 
+	base_skin_colours = list(
+		"Standard"="",
+		"Alternate" = "_alt"
+	)
+
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -30,7 +35,7 @@
 
 	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_BASE_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
