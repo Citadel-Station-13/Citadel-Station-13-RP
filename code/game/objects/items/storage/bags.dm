@@ -47,10 +47,6 @@
 	for(var/obj/item/I in contents)
 		w_class = max(w_class, I.w_class)
 
-	var/cur_storage_space = storage_space_used()
-	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
-		w_class++
-
 // -----------------------------
 //          Trash bag
 // -----------------------------
