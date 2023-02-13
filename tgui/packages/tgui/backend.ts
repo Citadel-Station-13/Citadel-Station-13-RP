@@ -15,6 +15,7 @@ import { perf } from 'common/perf';
 import { createAction } from 'common/redux';
 import { setupDrag } from './drag';
 import { focusMap } from './focus';
+import { ModuleData } from './modules';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 
@@ -283,41 +284,43 @@ export const sendAct: actFunctionType = (action: string, payload: object = {}) =
   Byond.sendMessage('act/' + action, payload);
 };
 
-export type BackendState<TData> = {
-  config: BackendConfig,
-  data: TData,
-  modules: Record<string, Object>,
+type BackendContext = {
+  config: {
+    title: string,
+    status: number,
+    interface: string,
+    refreshing: boolean,
+    window: {
+      key: string,
+      size: [number, number],
+      fancy: boolean,
+      locked: boolean,
+    },
+    client: {
+      ckey: string,
+      address: string,
+      computer_id: string,
+    },
+    user: {
+      name: string,
+      observer: number,
+    },
+  },
+  modules: Record<string, ModuleData>,
   shared: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
-}
+};
 
-export type BackendConfig = {
-  title: string,
-  status: number,
-  interface: string,
-  refreshing: boolean,
-  window: {
-    key: string,
-    size: [number, number],
-    fancy: boolean,
-    locked: boolean,
-  },
-  client: {
-    ckey: string,
-    address: string,
-    computer_id: string,
-  },
-  user: {
-    name: string,
-    observer: number,
-  },
+export type Backend<TData> = BackendContext & {
+  data: TData,
+  act: actFunctionType,
 }
 
 /**
  * Selects a backend-related slice of Redux state
  */
-export const selectBackend = <TData>(state: any): BackendState<TData> => (
+export const selectBackend = <TData>(state: any): Backend<TData> => (
   state.backend || {}
 );
 
@@ -329,7 +332,7 @@ export const selectBackend = <TData>(state: any): BackendState<TData> => (
  *
  * You can make
  */
-export const useBackend = <TData>(context: any) => {
+export const useBackend = <TData>(context: any): Backend<TData> => {
   const { store } = context;
   const state = selectBackend<TData>(store.getState());
   return {
