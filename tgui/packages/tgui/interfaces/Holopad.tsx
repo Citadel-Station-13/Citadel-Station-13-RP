@@ -1,38 +1,54 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
+import { Flex, Section } from "../components";
 import { Window } from "../layouts";
+
+enum HolopadCalling {
+  Source = "source",
+  Destination = "destination",
+}
+
+// holopad_uid
+type HolopadId = string;
 
 // window data
 type HolpadContext = {
-  isAI: BooleanLike; // ai user?
-  aiRequested: BooleanLike; // recently requested ai?
-  canCall: BooleanLike; // if we can call at all
-  sectorCall: BooleanLike; // if we can go across sectors
-  reachablePads: [ReachableHolopad]; // reachable holopads
-  calling: null | "source" | "destination"; // call status
-  calldata: null | OutgoingCallContext | IncomingCallsContext; // call data
+  isAI: BooleanLike, // ai user?
+  isAIProjecting: BooleanLike, // we are currently projecting at this pad
+  aiRequested: BooleanLike, // recently requested ai?
+  aiEnabled: BooleanLike, // are ais allowed to use this?
+  canCall: BooleanLike, // if we can call at all
+  sectorCall: BooleanLike, // if we can go across sectors
+  reachablePads: [ReachableHolopad], // reachable holopads
+  calling: null | HolopadCalling, // call status
+  calldata: null | OutgoingCallContext | IncomingCallsContext, // call data
+  videoEnabled: BooleanLike, // if inbound video calling is enabled
+  ringing: [HolopadId], // ringing holopads
 }
 
 // reachable holopads
 interface ReachableHolopad {
-  name: string;
-  category: string;
-  sector: string;
+  id: HolopadId,
+  name: string,
+  category: string,
+  sector: string,
 }
 
 // all calls have this
 interface BaseCallContext {
-
+  // nothing right now
 }
 
 // outgoing calls have this
 interface OutgoingCallContext extends BaseCallContext {
-
+  target: HolopadId, // calling to id
+  remoting: BooleanLike, // are we projecting to the other side?
 }
 
 // incoming calls have this
 interface IncomingCallsContext extends BaseCallContext {
-
+  callers: [HolopadId], // calling ids
+  projecting: [HolopadId], // who's projecting over here right now
 }
 
 export const Holopad = (props, context) => {
@@ -41,8 +57,40 @@ export const Holopad = (props, context) => {
   return (
     <Window
       width={600}
-      height={600}>
-      test
+      height={300}>
+      <Section
+        title="Holopad"
+        buttons={
+          data.isAI? (
+
+          ) : (
+
+          )
+        }>
+        test
+      </Section>
+      <Flex>
+        <Flex.Item>
+          <Section title="AI">
+            {
+              data.isAI? (
+                data.isAIProjecting? (
+                  <div />
+                ) : (
+                  <div />
+                )
+              ) : (
+                test
+              )
+            }
+          </Section>
+        </Flex.Item>
+        <Flex.Item grow={1}>
+          <Section title="Call">
+            test
+          </Section>
+        </Flex.Item>
+      </Flex>
     </Window>
   );
 };

@@ -57,6 +57,10 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/tile_range = 5
 
 	//? holocalls
+	/// unique id string: we have this for ui purposes
+	var/holopad_uid
+	/// next uid number
+	var/static/holopad_uid_next
 	/// pad name override, otherwise use location + area name
 	var/holopad_name
 	/// holocall capable
@@ -93,6 +97,7 @@ GLOBAL_LIST_EMPTY(holopads)
 
 /obj/machinery/holopad/Initialize(mapload)
 	. = ..()
+	holopad_uid = "[num2text(++holopad_uid_next, 16)]"
 	holograms = list()
 	GLOB.holopads += src
 	var/area/our_area = isturf(loc)? loc.loc : null
