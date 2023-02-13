@@ -24,7 +24,9 @@
 		"Medical Resident" = /datum/prototype/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/alt_title/doctor/intern,
 		"Orderly" = /datum/prototype/alt_title/orderly
+		"Biotechnician" = /datum/prototype/alt_title/biotechnician
 		)
+	strict_titles = TRUE
 
 // Medical Doctor Alt Titles
 /datum/prototype/alt_title/surgeon
@@ -64,6 +66,12 @@
 
 /datum/prototype/alt_title/doctor/intern
 	title = "Medical Intern"
+
+/datum/prototype/alt_title/biotechnician
+	title = "Biotechnician"
+	background_restricted = list(
+		/datum/lore/character_background/faction/onkhera_necropolis,
+	)
 
 /datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
