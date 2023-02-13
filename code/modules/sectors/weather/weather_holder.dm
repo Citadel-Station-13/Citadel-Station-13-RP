@@ -22,15 +22,21 @@
 	/// you should *not* use this for mobs/turfs, there's almost no reason to.
 	var/list/tick_data
 	//* general ticks have priority 1
+	/// last true time we started tick. do not use this for timing "catchup".
 	var/tick_last
 	//* mob ticks have priority 2
-	/// last mob tick start
+	/// last mob tick start. do not use this for timing "catchup".
 	var/tick_mobs_last
 	/// tracks mob ticking - simple, this is basically our currentrun list
 	var/list/tick_mobs_left
-	/// last turf tick start
+	//* turf ticks have priority 3
+	/// last turf tick start. do not use this for timing "catchup".
 	var/tick_turfs_last
-	/// tracks
+	//* turf ticks: randomly-pick-one mode.
+	/// tracks turfs we're 'owed' in ticks_turfs_per mode.
+	var/tick_turfs_left = 0
+	//* turf ticks: tick every turf mode.
+
 
 /**
  * set current weather

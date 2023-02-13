@@ -104,12 +104,14 @@
 	//? ticking - definitions
 	/// do we need to tick at all? if so, set this to delay, and tick() will be called every that much time-ish.
 	var/ticks = FALSE
-	/// do we need to tick turfs?
+	/// do we need to tick turfs? you must set ticks_turfs_every or ticks_turfs_per if this is set.
 	var/ticks_turfs = FALSE
 	/// do we need to tick indoor turfs? or just outdoors?
 	var/ticks_all_turfs = FALSE
-	/// turf tick rate: roughly time for all turfs
-	var/ticks_turfs_per = 20 MINUTES
+	/// turf tick rate: roughly time for all turfs. overridden by ticks_turfs_per.
+	var/ticks_turfs_every
+	/// instead of ticking all turfs, instead tick a random turf every. overrides ticks_turfs_every.
+	var/ticks_turfs_per
 	/// do we need to tick mobs?
 	var/ticks_mobs = FALSE
 	/// mob tick rate: roughly time per tick for all mobs
