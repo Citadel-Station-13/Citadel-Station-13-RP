@@ -23,8 +23,8 @@
 		"Virologist" = /datum/prototype/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/alt_title/orderly
-		"Biotechnician" = /datum/prototype/alt_title/biotechnician
+		"Orderly" = /datum/prototype/alt_title/orderly,
+		"Biotechnician" = /datum/prototype/alt_title/biotechnician,
 		)
 	strict_titles = TRUE
 
