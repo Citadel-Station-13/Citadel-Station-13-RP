@@ -61,6 +61,8 @@
 	var/sky_visible = FALSE
 	/// what we're seen as in the sky
 	var/sky_desc = "Some kind of orbiting body."
+	/// level - if above obscuration, obscuring thing obscures us from view
+	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT
 
 /**
  * called to do special effects

@@ -186,10 +186,6 @@
 	var/icon_state = null
 	/// Assoc list of weather identifiers and the odds to shift to a specific type of weather. Can contain its own identifier to prolong it.
 	var/transition_chances = list()
-	/// How long this weather must run before it tries to change, in minutes
-	var/timer_low_bound = 5
-	/// How long this weather can run before it tries to change, in minutes
-	var/timer_high_bound = 10
 	/// If the sky can be clearly seen while this is occuring, used for flavor text when looking up.
 	var/sky_visible = FALSE
 

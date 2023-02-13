@@ -239,6 +239,7 @@
 #include "code\__DEFINES\research\research.dm"
 #include "code\__DEFINES\research\xenoarcheaology.dm"
 #include "code\__DEFINES\rigs\rig.dm"
+#include "code\__DEFINES\sectors\cycle.dm"
 #include "code\__DEFINES\sectors\moon.dm"
 #include "code\__DEFINES\sectors\planets.dm"
 #include "code\__DEFINES\sectors\weather.dm"

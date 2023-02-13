@@ -17,7 +17,19 @@
 	#warn hook
 
 	//? duration
-	#warn impl
+	/// use gaussian?
+	var/duration_gaussian = FALSE
+	/// duration if not randomizing / randomizing vars are still null
+	var/duration = 5 MINUTES
+	/// duration high if not gaussian
+	var/duration_high
+	/// duration low if not gaussian
+	var/duration_low
+	/// duration center if gaussian
+	var/duration_center
+	/// duration stddev if gaussian
+	var/duration_deviation
+	#warn hook
 
 	//? transition / procgen
 	#warn impl
@@ -74,7 +86,7 @@
 	var/particle_graphics = FALSE
 	/// if existent, default behavior is to add this particle. can be a particle or typepath, or a list of particles or typepaths.
 	var/particle_instances
-	#warn impl
+	#warn hook
 
 	//? wind
 	/// current wind - if wind low and high aren't set we just use this
@@ -88,7 +100,13 @@
 	#warn impl
 
 	//? sky cover
-	#warn impl
+	/// do we obscure sky?
+	var/sky_cover = FALSE
+	/// obscuration level - if below sector cycle level, anything above us is obscured.
+	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT_OBSCURE
+	/// what the person sees when we're obscuring sky
+	var/sky_cover_message = "Some unknown meteorological phenomenom is obscuring your view."
+	#warn hook
 
 	//? messages
 	/// outdoors messages, key = string, value = weight
