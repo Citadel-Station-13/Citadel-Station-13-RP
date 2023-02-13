@@ -106,8 +106,6 @@
 	var/ticks = FALSE
 	/// do we need to tick turfs? you must set ticks_turfs_every or ticks_turfs_per if this is set.
 	var/ticks_turfs = FALSE
-	/// do we need to tick indoor turfs? or just outdoors?
-	var/ticks_all_turfs = FALSE
 	/// turf tick rate: roughly time for all turfs. overridden by ticks_turfs_per.
 	var/ticks_turfs_every
 	/// instead of ticking all turfs, instead tick a random turf every. overrides ticks_turfs_every.

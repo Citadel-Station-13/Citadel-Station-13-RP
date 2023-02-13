@@ -12,31 +12,30 @@
 	var/datum/weather/active
 
 	//? transitions
+	/// next weather transition
+	var/next_transition
 	/// weather instances
 
 	//? visuals
 
 	//? ticking
+	//* general ticks have priority 1
 	/// ticking blackboard for general ticking - wiped on weather switch.
 	/// it wouldn't be hard to retain it on switch but we choose not to.
 	/// you should *not* use this for mobs/turfs, there's almost no reason to.
 	var/list/tick_data
-	//* general ticks have priority 1
-	/// last true time we started tick. do not use this for timing "catchup".
-	var/tick_last
 	//* mob ticks have priority 2
-	/// last mob tick start. do not use this for timing "catchup".
-	var/tick_mobs_last
 	/// tracks mob ticking - simple, this is basically our currentrun list
-	var/list/tick_mobs_left
+	var/list/tick_mobs_cached
 	//* turf ticks have priority 3
-	/// last turf tick start. do not use this for timing "catchup".
-	var/tick_turfs_last
-	//* turf ticks: randomly-pick-one mode.
-	/// tracks turfs we're 'owed' in ticks_turfs_per mode.
+	/// smoothing - about how many we want to tick, per decisecond
+	var/tick_turfs_speed
+	/// smoothing - how many we want to tick (this is also how we do catchup and provides an upper bound to catchup)
 	var/tick_turfs_left = 0
-	//* turf ticks: tick every turf mode.
+	/// tracks turf ticking - simple, this is basically our currentrun list
+	var/list/tick_turfs_cached
 
+	#warn impl all
 
 /**
  * set current weather
