@@ -155,20 +155,11 @@
 	temperature_adjust = val
 	update_cached_temperature()
 
-//? sun, moon, sunlight, moonlight
-
-/datum/world_sector/proc/init_moon_phase()
-
-/datum/world_sector/proc/sun_power()
-
-/datum/world_sector/proc/moon_power()
+//? light
 
 /datum/world_sector/proc/update_light()
 
-
-
-
-#warn impl all
+#warn impl
 
 //? cycles
 
@@ -183,7 +174,9 @@
  * pushes cycle ratios / powers / statuses. doesn't update anything by itself.
  */
 /datum/world_sector/proc/update_cycles()
-	#warn
+	#warn impl
+
+#warn moon phase?
 
 /**
  * gets cycle power

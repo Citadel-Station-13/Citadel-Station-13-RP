@@ -3,8 +3,13 @@
  * it's what the name implies
  * instanced per holder for editing purposes
  * try not to allocate anything expensive in here
+ *
+ * even if these are instanced, we try not to back-reference weather holders.
+ * instead, it is provided as an argument in procs.
+ * this does incur a speed loss, but is overall better for modularity.
  */
 /datum/weather
+	abstract_type = /datum/weather
 	//? identity
 	/// name
 	var/name = "unknown weather"
@@ -96,15 +101,19 @@
 	/// wind strength in slowdown amount
 	var/wind_high
 
-	//? ticking
+	//? ticking - definitions
+	/// do we need to tick at all? if so, set this to delay, and tick() will be called every that much time-ish.
+	var/ticks = FALSE
 	/// do we need to tick turfs?
 	var/ticks_turfs = FALSE
 	/// do we need to tick indoor turfs? or just outdoors?
 	var/ticks_all_turfs = FALSE
+	/// turf tick rate: roughly time for all turfs
+	var/ticks_turfs_per = 20 MINUTES
 	/// do we need to tick mobs?
 	var/ticks_mobs = FALSE
-	/// mob ticking: this is the easiest; we
-	#warn impl
+	/// mob tick rate: roughly time per tick for all mobs
+	var/ticks_mobs_every = 10 SECONDS
 	#warn hook & make sure mobs / turfs get removed on, well, remove.
 
 	//? sky cover
@@ -130,25 +139,50 @@
 /**
  * what to do on start
  */
-/datum/weather/proc/start(datum/world_sector/sector)
+/datum/weather/proc/start(datum/weather_holder/holder)
 
 /**
  * what to do on end
  */
-/datum/weather/proc/end(datum/world_sector/sector)
+/datum/weather/proc/end(datum/weather_holder/holder)
 
 /**
  * called when a mob enters us and on begin for all mobs in sector
  */
-/datum/weather/proc/mob_enter(mob/M)
+/datum/weather/proc/mob_enter(datum/weather_holder/holder, mob/M)
 
 /**
  * called when a mob exits us and on end for all mobs in sector
  */
-/datum/weather/proc/mob_exit(mob/M)
-
+/datum/weather/proc/mob_exit(datum/weather_holder/holder, mob/M)
 
 #warn impl all
+
+/**
+ * called to init blackboard
+ *
+ * @params
+ * * last_data - unimplemented: the last data that was on us before we were switched to another weather.
+ */
+/datum/weather/proc/tick_init_data(list/last_data)
+	return list()
+
+/**
+ * called to tick general
+ */
+/datum/weather/proc/tick(datum/weather_holder/holder)
+
+/**
+ * called to tick a mob
+ */
+/datum/weather/proc/tick_mob(datum/weather_holder/holder, mob/M)
+
+/**
+ * called to tick a turf
+ */
+/datum/weather/proc/tick_turf(datum/weather_holder/holder, turf/T)
+
+#warn hook all
 
 /**
  * checks if we have any visuals whatsoever
