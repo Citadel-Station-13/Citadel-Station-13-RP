@@ -18,7 +18,7 @@
 	/// null for anything/anyone
 	var/list/background_forbid
 	/// strictness: if a title has this on and someone is able to choose it, they can only choose jobs they're allowed to in background_allow
-	var/background_strict = FALSE
+	var/background_enforce = FALSE
 
 /datum/prototype/alt_title/New()
 	for(var/i in 1 to length(background_allow))
@@ -33,5 +33,19 @@
 			background_forbid[i] = initial(bg.id)
 	return ..()
 
-/datum/prototype/alt_title/proc/check_background_ids(list/background_ids)
-	return isnull(background_allow)? !length(background_forbid & background_ids) : length(background_allow & background_ids)
+/**
+ * checks if a list of background ids is valid to use us as a title
+ *
+ * note: this technically returns any number from 0 to inf,
+ * so, use !! on your side to trample to 0 or 1 if you really need that.
+ *
+ * @params
+ * * background_ids - background ids as list
+ * * strict - if enabled, only returns true if an id has an exact match with allow.
+ */
+/datum/prototype/alt_title/proc/check_background_ids(list/background_ids, strict)
+	if(strict)
+		return length(background_allow & background_ids)
+	if(isnull(background_allow))
+		return !length(background_forbid & background_ids)
+	return length(background_allow & background_ids)

@@ -256,15 +256,27 @@
 /datum/role/job/proc/alt_title_query(list/background_ids)
 	RETURN_TYPE(/list)
 	var/strict = FALSE
-	. = list()
+	var/list/strict_titles = list()
+	var/list/all_titles = list()
 	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
-		if(!alt_datum.check_background_ids(background_ids))
+		// check if we can be picked at all
+		if(!alt_datum.check_background_ids(background_ids, FALSE))
 			continue
-		. |= alt_datum.title
-		if(alt_datum.background_strict)
-			strict = TRUE
-	if(!strict)
-		. |= title
+		// yes? add to all titles
+		all_titles |= alt_datum.title
+		// check if we can be picked under enforcement
+		if(alt_datum.check_background_ids(background_ids, TRUE))
+			strict_titles |= alt_datum.title
+			// are we enforcing? if so, flip it so we choose from strict_titles after
+			// this is only valid if we're valid under enforcement
+			if(alt_datum.background_enforce)
+				strict = TRUE
+	// return list, always ensuring there's atleast one title
+	// if we're enforcing strictness there should already be one so we don't check
+	// if we're not we always add our own title regardless of what alt datums say so there's one title
+	if(strict)
+		return strict_titles
+	return all_titles | title
 
 /**
  * check if an alt title is available for a given set of backgrounds
@@ -276,14 +288,18 @@
 /**
  * check if we enforce an alt title that isn't root for a list of backgrounds.
  *
- * @return enforced title as string
+ * @return enforced title as string, or null for none
  */
 /datum/role/job/proc/alt_title_enforcement(list/background_ids)
 	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
-		if(!alt_datum.check_background_ids(background_ids))
+		// don't need to potentially enforce
+		if(!alt_datum.background_enforce)
 			continue
-		if(alt_datum.background_strict)
-			return alt_datum.title
+		// we perform a strict check, as enforcement only happens against strict checks
+		if(!alt_datum.check_background_ids(background_ids, TRUE))
+			continue
+		// both enforcing and strictly avail, this is a valid title for someone without one
+		return alt_datum.title
 
 //? Unsorted
 
