@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 
-/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_species_picker/ui_static_data(mob/user)

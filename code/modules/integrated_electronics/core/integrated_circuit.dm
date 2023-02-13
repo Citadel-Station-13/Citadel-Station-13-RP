@@ -128,7 +128,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
-/obj/item/integrated_circuit/ui_host(mob/user)
+/obj/item/integrated_circuit/ui_host(mob/user, datum/tgui_module/module)
 	if(istype(loc, /obj/item/electronic_assembly))
 		return loc.ui_host()
 	return ..()

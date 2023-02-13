@@ -1,10 +1,22 @@
 /**
+ *! SPDX-License-Identifier: MIT
+ */
+
+/**
  * new, more-modular tgui_module system
  *
  * allows for generic interfaces that attach to .. really, whatever, and can even be embedded
  * without having to deal with copypaste code
  *
  * todo: for now, we just use expected_type and typecast. we want to use pointers in the future.
+ *
+ * warning: the tgui module system is inherently not cheap to run.
+ * you should not expect including too many modules to bode well for performance.
+ * if you want fast modules, please, design your own modules, and minimize per-tick data sent.
+ * the module system actually allows for full control over sent data.
+ *
+ * if you're doing anything that will require more than a few modules (hello rigsuits/cyborgs/species),
+ * *DO NOT* use the module system as is. make your own synchronization and update system ontop.
  */
 /datum/tgui_module
 	/// root datum - only one for the moment, sorry
@@ -23,8 +35,8 @@
 	src.host = null
 	return ..()
 
-/datum/tgui_module/ui_host(mob/user)
-	return isnull(host)? src : host
+/datum/tgui_module/ui_host(mob/user, datum/tgui_module/module)
+	return isnull(host)? src : host.ui_host(user, src)
 
 /datum/tgui_module/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
@@ -33,7 +45,8 @@
 /datum/tgui_module/ui_state(mob/user, datum/tgui_module/module)
 	return isnull(host)? ..() : host.ui_state(user, src)
 
-//? ui status does not need to be overridden.
+/datum/tgui_module/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+	return isnull(host)? ..() : host.ui_status(user, state, src)
 
 /datum/tgui_module/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	SHOULD_NOT_OVERRIDE(TRUE) // nuh uh you do not get to mess with this call on subtypes
@@ -89,6 +102,34 @@
  * for example, for RIG/other "modular items-in-items" to hold data.
  *
  * this will be sent into data.modules.* instead of just data.*
+ *
+ * @params
+ * * user - user
+ * * ui - root tgui module is in
+ * * state - ui state
+ * * with_static - push static update too?
  */
-/datum/proc/ui_module_data(mob/user)
+/datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state, with_static)
 	return list()
+
+
+/**
+ * public
+ *
+ * Send an update to module data.
+ * As with normal data, this will be combined by a reducer
+ * to overwrite only where necessary, so partial pushes
+ * can work fine.
+ *
+ * WARNING: Do not use this unless you know what you are doing.
+ *
+ * @params
+ * * updates - list(id = list(data...), ...) of modules to update.
+ * * force - (optional) send update even if UI is not interactive
+ */
+/datum/tgui/proc/push_modules(list/updates, force)
+	if(isnull(user.client) || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("modules", updates)

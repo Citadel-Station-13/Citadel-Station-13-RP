@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating language data??
 		ui.open()
 
-/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_language_picker/ui_static_data(mob/user)

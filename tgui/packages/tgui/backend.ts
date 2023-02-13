@@ -36,6 +36,7 @@ export const backendSuspendSuccess = () => ({
 const initialState = {
   config: {},
   data: {},
+  modules: {},
   shared: {},
   // Start as suspended
   suspended: Date.now(),
@@ -57,6 +58,19 @@ export const backendReducer = (state = initialState, action) => {
       ...payload.static_data,
       ...payload.data,
     };
+    // Merge module data
+    // Merge modules
+    const modules = {
+      ...state.modules,
+    };
+    for (let id of Object.keys(payload)) {
+      const data = payload[id];
+      const merged = {
+        ...modules[data],
+        ...data,
+      };
+      modules[id] = merged;
+    }
     // Merge shared states
     const shared = { ...state.shared };
     if (payload.shared) {
@@ -75,6 +89,7 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       config,
       data,
+      modules,
       shared,
       suspended: false,
     };
@@ -94,7 +109,23 @@ export const backendReducer = (state = initialState, action) => {
   }
 
   if (type === 'backend/modules') {
-
+    // Merge modules
+    const modules = {
+      ...state.modules,
+    };
+    for (let id of Object.keys(payload)) {
+      const data = payload[id];
+      const merged = {
+        ...modules[data],
+        ...data,
+      };
+      modules[id] = merged;
+    }
+    // Return new state
+    return {
+      ...state,
+      modules,
+    };
   }
 
   if (type === 'backend/setSharedState') {
@@ -253,6 +284,7 @@ export const sendAct = (action: string, payload: object = {}) => {
 export type BackendState<TData> = {
   config: BackendConfig,
   data: TData,
+  modules: Record<string, Object>,
   shared: Record<string, any>,
   suspending: boolean,
   suspended: boolean,

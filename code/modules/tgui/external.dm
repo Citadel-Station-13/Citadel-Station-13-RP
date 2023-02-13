@@ -47,7 +47,7 @@
  *
  * return list Statuic Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list()
 
 /**
@@ -144,7 +144,7 @@
  * This allows modules/datums to have the UI attached to them,
  * and be a part of another object.
  */
-/datum/proc/ui_host(mob/user)
+/datum/proc/ui_host(mob/user, datum/tgui_module/module)
 	return src // Default src.
 
 /**
