@@ -31,12 +31,6 @@ export interface ModuleData {
   $ref: string, // byond ref to self
 }
 
-export interface ModuleBackend<TData> {
-  ref: string | undefined, // ref to our module
-  id: string | undefined, // our id if we're not in standalone mode
-  data: TData, // our data
-}
-
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
     let { id } = this.props;
@@ -74,10 +68,10 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
  * }
  */
 export const useModule = <TData extends ModuleData>(context) => {
-  let backend = useBackend(context);
+  let backend = useBackend<TData>(context);
   let { modules } = backend;
   return {
-    backend = useBackend(context),
+    backend: backend,
     data: (modules && modules[context.m_id]) || {},
     act: constructModuleAct(context.m_id, context.m_ref),
   };
