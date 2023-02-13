@@ -45,9 +45,6 @@
 	title = "Prosthetists"
 	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
 					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
-	background_restricted = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
 
 /datum/outfit/job/station/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist")
