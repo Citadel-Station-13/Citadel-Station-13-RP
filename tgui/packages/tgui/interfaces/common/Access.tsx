@@ -1,5 +1,13 @@
+/**
+ * Generic helpers for accesses.
+ *
+ * @file
+ * @license MIT
+ */
+
 import { useLocalState } from "../../backend";
 import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
+import { AccessRegions, AccessTypes } from "../../constants/access";
 
 export enum AccessListMode {
   AuthMode = "auth", // req, req_one
@@ -41,6 +49,8 @@ export interface Access {
   value: number,
   name: string,
   category: string,
+  region: AccessRegions,
+  type: AccessTypes,
 }
 
 const diffMap = {

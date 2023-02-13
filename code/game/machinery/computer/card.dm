@@ -7,13 +7,22 @@
 	light_color = "#0099ff"
 	req_access = list(ACCESS_COMMAND_CARDMOD)
 	circuit = /obj/item/circuitboard/card
+	/// modification module
+	var/datum/tgui_module/card_mod/tgui_cardmod
 	var/obj/item/card/id/scan = null
 	var/obj/item/card/id/modify = null
 	var/mode = 0.0
 	var/printing = null
 
-/obj/machinery/computer/card/proc/is_centcom()
-	return 0
+/obj/machinery/computer/card/Initialize(mapload)
+	. = ..()
+	tgui_cardmod = new(src)
+
+/obj/machinery/computer/card/Destroy()
+	QDEL_NULL(tgui_cardmod)
+	return ..()
+
+#warn impl all
 
 /obj/machinery/computer/card/proc/is_authenticated()
 	return scan ? check_access(scan) : 0

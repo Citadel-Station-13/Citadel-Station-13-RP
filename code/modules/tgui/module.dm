@@ -21,19 +21,30 @@
 /datum/tgui_module
 	/// root datum - only one for the moment, sorry
 	var/datum/host
+	/// autodel - register signal to delete with parent, usually used for standalones / modules that behave like components.
+	var/autodel = FALSE
+	/// ephemeral - qdel on close. *MUST* have autodel to use this.
+	var/ephemeral = FALSE
 	/// tgui module id
 	var/tgui_id
 	/// expected type
-	var/expected_type = /datum
+	var/expected_type
 
 /datum/tgui_module/New(datum/host)
 	src.host = host
-	if(!istype(host, expected_type))
+	if(expected_type && !istype(host, expected_type))
 		CRASH("bad host: [host] not [expected_type] instead [isdatum(host)? host.type : "(not datum)"]")
+	if(autodel && host)
+		RegisterSignal(host, COMSIG_PARENT_QDELETING, .proc/on_host_del)
+	ASSERT(!ephemeral || autodel)
 
 /datum/tgui_module/Destroy()
 	src.host = null
 	return ..()
+
+/datum/tgui_model/proc/on_host_del(datum/source)
+	SIGNAL_HANDLER
+	qdel(src)
 
 /datum/tgui_module/ui_host(mob/user, datum/tgui_module/module)
 	return isnull(host)? src : host.ui_host(user, src)
@@ -41,6 +52,8 @@
 /datum/tgui_module/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	host?.ui_close(user, src)
+	if(ephemeral)
+		qdel(src)
 
 /datum/tgui_module/ui_state(mob/user, datum/tgui_module/module)
 	return isnull(host)? ..() : host.ui_state(user, src)

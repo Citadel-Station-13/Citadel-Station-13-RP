@@ -332,6 +332,7 @@
  */
 /datum/tgui/proc/on_message(type, list/payload, list/href_list)
 	if(type)
+		// micro opt in that these routes are same length so we only copytext once
 		switch(copytext(type, 1, 5))
 			if("act/")	// normal act
 				var/action = copytext(type, 5)

@@ -141,5 +141,7 @@
 			"value" = A.access_value,
 			"name" = A.access_name,
 			"category" = A.access_category,
+			"region" = A.access_region,
+			"type" = A.access_type,
 		)
 	return data

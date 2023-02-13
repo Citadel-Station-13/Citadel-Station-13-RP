@@ -1,5 +1,6 @@
 //? Access Regions
 //* For custom accesses, use none.
+//* Keep this synced with [tgui/packages/tgui/constants/access.ts]
 
 #define ACCESS_REGION_NONE (0)
 #define ACCESS_REGION_ALL (~0)
@@ -39,6 +40,7 @@ GLOBAL_LIST_INIT(access_region_names, list(
 
 //? Access Types
 //* For custom accesses, use none.
+//* Keep this synced with [tgui/packages/tgui/constants/access.ts]
 
 #define ACCESS_TYPE_NONE (0)
 #define ACCESS_TYPE_ALL (~0)

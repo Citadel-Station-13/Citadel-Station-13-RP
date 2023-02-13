@@ -211,6 +211,8 @@
 		if(!adding)
 			continue
 
+		#warn fix size handling
+
 		// detect adding size, taking into account copying overlay's pixel offsets
 		add_size[INDEX_X_LOW] = min(flatX1, copying.pixel_x + 1)
 		add_size[INDEX_X_HIGH] = max(flatX2, copying.pixel_x + adding.Width())

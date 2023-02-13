@@ -35,6 +35,12 @@
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 	var/engineer_points = 0	// For redeeming at engineering equipment vendors
 
+/obj/item/card/id/Initialize(mapload)
+	. = ..()
+	var/datum/role/job/J = SSjob.get_job(rank)
+	if(J)
+		access = J.get_access()
+
 /obj/item/card/id/examine(mob/user)
 	. = ..()
 	show(user)
@@ -122,11 +128,15 @@
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 
-/obj/item/card/id/Initialize(mapload)
+/obj/item/card/id/vv_get_dropdown()
 	. = ..()
-	var/datum/role/job/J = SSjob.get_job(rank)
-	if(J)
-		access = J.get_access()
+	VV_DROPDOWN_OPTION(VV_HK_ID_MOD, "Modify ID")
+
+/obj/item/card/id/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ID_MOD])
+		var/datum/tgui_module/card_mod/admin/A = new(src)
+		A.ui_interact(usr)
 
 /obj/item/card/id/silver
 	name = "command identification card"

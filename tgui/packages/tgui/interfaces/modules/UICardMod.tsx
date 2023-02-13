@@ -1,11 +1,23 @@
+import { BooleanLike } from "common/react";
 import { ModuleData, ModuleProps } from "../../components/Module";
+import { AccessRegions, AccessTypes } from "../../constants/access";
+import { Access, AccessId } from "../common/Access";
+
 
 interface CardModContext extends ModuleData {
-
+  access: [Access], // all avail access
+  rank: [string], // all avail rank
+  granted: [AccessId], // access ids on card
+  modify_account: BooleanLike, // can modify card bank account id
+  card_account: number, // card bank account id
+  modify_region: AccessRegions, // what we can modify
+  modify_type: AccessTypes, // what we can modify
+  card_name: string, // card name as string
+  card_rank: string, // card rakn as string
 }
 
 interface CardModProps extends ModuleProps {
-
+  // nothing
 }
 
 export const UICardMod = (props: CardModProps, context) => {

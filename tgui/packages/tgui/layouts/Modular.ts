@@ -4,6 +4,7 @@
  */
 
 import { actFunctionType, useBackend } from "../backend";
+import { ModuleData } from "../components/Module";
 
 /**
  * A modular window.
