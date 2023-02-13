@@ -25,6 +25,7 @@
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
+	var/ignore_weight = FALSE
 
 /obj/item/storage/bag/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
 	. = ..()
@@ -48,8 +49,9 @@
 		w_class = max(w_class, I.w_class)
 
 	var/cur_storage_space = storage_space_used()
-	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
-		w_class++
+	if(!ignore_weight)
+		while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
+			w_class++
 
 // -----------------------------
 //          Trash bag
@@ -214,6 +216,7 @@
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
+	ignore_weight = TRUE
 	can_hold = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
 
 /obj/item/storage/bag/plants/large
