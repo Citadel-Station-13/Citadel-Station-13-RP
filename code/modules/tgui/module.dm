@@ -35,14 +35,14 @@
 	if(expected_type && !istype(host, expected_type))
 		CRASH("bad host: [host] not [expected_type] instead [isdatum(host)? host.type : "(not datum)"]")
 	if(autodel && host)
-		RegisterSignal(host, COMSIG_PARENT_QDELETING, .proc/on_host_del)
+		RegisterSignal(host, COMSIG_PARENT_QDELETING, /datum/tgui_module/proc/on_host_del)
 	ASSERT(!ephemeral || autodel)
 
 /datum/tgui_module/Destroy()
 	src.host = null
 	return ..()
 
-/datum/tgui_model/proc/on_host_del(datum/source)
+/datum/tgui_module/proc/on_host_del(datum/source)
 	SIGNAL_HANDLER
 	qdel(src)
 

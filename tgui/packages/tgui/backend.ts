@@ -292,7 +292,6 @@ type BackendContext = {
     refreshing: boolean,
     window: {
       key: string,
-      size: [number, number],
       fancy: boolean,
       locked: boolean,
     },

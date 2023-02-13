@@ -253,7 +253,6 @@
 		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
-			"size" = null, // used to be list(x, y) but we don't need it anymore.
 			"fancy" = user.client.prefs.tgui_fancy,
 			"locked" = user.client.prefs.tgui_lock,
 		),

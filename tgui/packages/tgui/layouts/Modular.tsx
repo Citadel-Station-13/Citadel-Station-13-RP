@@ -5,6 +5,11 @@
 
 import { actFunctionType, useBackend } from "../backend";
 import { ModuleData } from "../components/Module";
+import { WindowProps } from "./Window";
+
+export interface ModularProps extends WindowProps{
+
+}
 
 /**
  * A modular window.
