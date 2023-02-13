@@ -15,7 +15,7 @@ import { perf } from 'common/perf';
 import { createAction } from 'common/redux';
 import { setupDrag } from './drag';
 import { focusMap } from './focus';
-import { ModuleData } from './modules';
+import { ModuleData } from './components/Module';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 

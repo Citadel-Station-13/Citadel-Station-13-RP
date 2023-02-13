@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { Access, AccessId, AccessListAuth } from "./common/AccessList";
+import { Access, AccessId, AccessListAuth } from "./common/Access";
 
 interface AirlockElectronicsData {
   access: [Access],

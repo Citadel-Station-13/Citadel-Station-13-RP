@@ -1,3 +1,16 @@
+import { ModuleData, ModuleProps } from "../../components/Module";
+
+interface CardModContext extends ModuleData {
+
+}
+
+interface CardModProps extends ModuleProps {
+
+}
+
+export const UICardMod = (props: CardModProps, context) => {
+
+};
 /*
 
 import { Fragment } from 'inferno';

@@ -73,6 +73,8 @@
 /datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state, ...)
 	return list()
 
+#warn this data system is also shit
+
 /**
  * called on module act only when a module **is** operating in standalone mode
  *
@@ -111,7 +113,6 @@
  */
 /datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state, with_static)
 	return list()
-
 
 /**
  * public
