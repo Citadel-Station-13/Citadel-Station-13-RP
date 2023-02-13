@@ -15,6 +15,9 @@
  *
  * You should use the provided act instead of the one from useBackend().
  * useBackend() still works fine to grab the overall non-module context.
+ *
+ * @file
+ * @license MIT
  */
 
 import { Component } from "inferno";
@@ -76,20 +79,6 @@ export const useModule = <TData extends ModuleData>(context) => {
     act: constructModuleAct(context.m_id, context.m_ref),
   };
 };
-
-/**
- * Basically, grabs data & act for a module in a way that makes it work
- * whether or not it's standalone or embedded.
- */
-// export const useModule = <TData>(props: any, context: any) => {
-//   const { store } = context;
-//   let state = selectBackend(context);
-//   return {
-//     ...state,
-//     act: prepareSendModuleAct(config, state),
-//   };
-// };
-
 
 export const constructModuleAct = (id: string, ref: string): actFunctionType => {
   return (action: string, payload: object = {}) => {

@@ -74,8 +74,7 @@ export const getRoutedComponent = store => {
   return directlyRouteComponent(config?.interface);
 };
 
-export const directlyRouteComponent = (interface) => {
-  const name = interface;
+export const directlyRouteComponent = (name) => {
   const interfacePathBuilders = [
     name => `./${name}.tsx`,
     name => `./${name}.js`,

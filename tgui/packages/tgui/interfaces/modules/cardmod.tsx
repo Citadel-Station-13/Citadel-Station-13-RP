@@ -1,5 +1,4 @@
 /*
-/*
 
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
@@ -161,6 +160,4 @@ export const NtosCardContent = (props, context) => {
     </Fragment>
   );
 };
-*/
-
 */
