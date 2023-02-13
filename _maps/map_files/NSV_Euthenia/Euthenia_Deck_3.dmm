@@ -6434,6 +6434,9 @@
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall/r_wall,
 /area/rnd/storage)
+"fOF" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/medical/medbay3)
 "fOJ" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -13986,6 +13989,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"mnd" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/maintenance/deck_three/forward/starboard)
 "mnq" = (
 /obj/effect/mist,
 /obj/effect/floor_decal/spline/plain{
@@ -20517,6 +20523,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
+"sms" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/maintenance/deck_three/forward/starboard)
 "smy" = (
 /obj/structure/table/woodentable,
 /obj/item/folder/yellow{
@@ -45877,8 +45886,8 @@ vdM
 dJS
 vNt
 vNt
-dJS
-vRa
+pAF
+fOF
 vRa
 vRa
 vRa
@@ -46069,10 +46078,10 @@ fsG
 oAd
 vdM
 rGn
-rGn
-rGn
-pAF
-kew
+jMZ
+jMZ
+jMZ
+mnd
 abH
 oZE
 oZE
@@ -46263,10 +46272,10 @@ vdM
 ius
 kUM
 rGn
-rGn
-rGn
-pAF
-kew
+jMZ
+jMZ
+jMZ
+mnd
 qcU
 hzm
 hzm
@@ -46457,10 +46466,10 @@ vdM
 vdM
 vdM
 rGn
-rGn
-rGn
-pAF
-kew
+jMZ
+jMZ
+jMZ
+mnd
 qcU
 hzm
 hzm
@@ -46653,8 +46662,8 @@ vdM
 dJS
 pAF
 pAF
-dJS
-kew
+pAF
+sms
 qcU
 wJl
 wJl

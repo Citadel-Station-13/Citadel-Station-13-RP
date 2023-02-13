@@ -6618,6 +6618,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_two)
+"eMP" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/maintenance/deck_two/forward/starboard)
 "eMR" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /obj/machinery/meter,
@@ -11477,6 +11480,9 @@
 "iIk" = (
 /turf/simulated/wall,
 /area/rnd/robotics/mechbay)
+"iIs" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/maintenance/deck_two/forward/starboard)
 "iIR" = (
 /obj/structure/sign/warning/radioactive,
 /turf/simulated/wall/r_wall,
@@ -51727,10 +51733,10 @@ ton
 mBg
 ado
 tqn
-jUq
-jUq
-tqn
-kPj
+nnS
+nnS
+kqG
+eMP
 kPj
 kPj
 vUq
@@ -51923,8 +51929,8 @@ tcJ
 ggs
 bRO
 bRO
-kqG
-kPj
+bRO
+iIs
 vUq
 vUq
 xoe
@@ -52117,8 +52123,8 @@ rjC
 ggs
 bRO
 bRO
-kqG
-kPj
+bRO
+iIs
 vUq
 vUq
 xoe
@@ -52311,8 +52317,8 @@ wwF
 ggs
 bRO
 bRO
-kqG
-kPj
+bRO
+iIs
 vUq
 vUq
 xoe
@@ -52505,8 +52511,8 @@ xrU
 tqn
 kqG
 kqG
-tqn
-kPj
+kqG
+eMP
 vUq
 vUq
 xoe

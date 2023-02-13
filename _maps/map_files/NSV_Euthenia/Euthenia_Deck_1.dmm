@@ -3609,6 +3609,9 @@
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/solars)
+"cAw" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/medical/medbay_emt_bay)
 "cBe" = (
 /obj/item/clothing/suit/space/void,
 /obj/item/clothing/head/helmet/space/void,
@@ -29297,6 +29300,9 @@
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/tiled,
 /area/space)
+"xnh" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/medical/medbay_emt_bay)
 "xnn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -49184,8 +49190,8 @@ vfV
 hjR
 xpP
 xpP
-hjR
-bLk
+lZd
+xnh
 mvG
 jHC
 fQC
@@ -49378,8 +49384,8 @@ wkU
 rVt
 nPU
 nPU
-lZd
-bLk
+nPU
+cAw
 jWO
 jHC
 jHC
@@ -49572,8 +49578,8 @@ bIO
 rVt
 nPU
 nPU
-lZd
-bLk
+nPU
+cAw
 twi
 fQC
 jHC
@@ -49766,8 +49772,8 @@ nww
 rVt
 nPU
 nPU
-lZd
-bLk
+nPU
+cAw
 baa
 jHC
 jHC
@@ -49960,8 +49966,8 @@ hpg
 hjR
 aSs
 aSs
-hjR
-bLk
+lZd
+xnh
 kkN
 jHC
 fQC
