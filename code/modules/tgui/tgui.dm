@@ -37,8 +37,6 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
-	/// The map z-level to display.
-	var/map_z_level = 1
 	/// The Parent UI
 	var/datum/tgui/parent_ui
 	/// Children of this UI
@@ -116,9 +114,11 @@
 		user.client.browse_queue_flush()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
-		with_static_data = TRUE))
+		with_static_data = TRUE,
+		with_modules = TRUE,
+		with_static_modules = TRUE,
+	))
 	SStgui.on_open(src)
-
 	return TRUE
 
 /**
@@ -199,9 +199,14 @@
 		return
 	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE
-	window.send_message("update", get_payload(
+	window.send_message(
+		"update",
+		get_payload(
 		with_data = should_update_data,
-		with_static_data = TRUE),
+		with_static_data = TRUE,
+		with_modules = should_update_data,
+		with_static_modules = TRUE
+		),
 	)
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
 
@@ -218,6 +223,7 @@
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
 		with_data = should_update_data,
+		with_modules = should_update_data,
 	))
 
 /**
@@ -225,17 +231,39 @@
  *
  * Send a partial update to the client of only the provided data lists
  * Does not update config at all
- * WARNING: Do not use this unless you know what you're doing
+ *
+ * WARNING: Do not use this unless you know what you are doing
  *
  * required data The data to send
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_custom_update(data, force)
+/datum/tgui/proc/push_data(data, force)
 	if(!user.client || !initialized || closing)
 		return
 	if(!force && status < UI_UPDATE)
 		return
-	window.send_message("data", list("data" = data))
+	window.send_message("data", data)
+
+/**
+ * public
+ *
+ * Send an update to module data.
+ * As with normal data, this will be combined by a reducer
+ * to overwrite only where necessary, so partial pushes
+ * can work fine.
+ *
+ * WARNING: Do not use this unless you know what you are doing.
+ *
+ * @params
+ * * updates - list(id = list(data...), ...) of modules to update.
+ * * force - (optional) send update even if UI is not interactive
+ */
+/datum/tgui/proc/push_modules(list/updates, force)
+	if(isnull(user.client) || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("modules", updates)
 
 /**
  * private
@@ -244,7 +272,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(with_data, with_static_data, with_modules)
+/datum/tgui/proc/get_payload(with_data, with_static_data, with_modules, with_static_modules)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -273,10 +301,12 @@
 		json_data["data"] = data
 	var/static_data = with_static_data && src_object.ui_static_data(user)
 	if(static_data)
-		json_data["static_data"] = static_data
-	var/module_data = with_modules && src_object.ui_module_data(user)
-	if(module_data)
-		json_data["module_data"] = module_data
+		json_data["static"] = static_data
+	var/list/module_data = with_modules && src_object.ui_module_data(user, FALSE)
+	var/list/module_static_data = with_static_modules && src_object.ui_module_data(user, TRUE)
+	var/list/modules = islist(module_data)? (islist(module_static_data)? module_static_data | module_data : module_data) : (islist(module_static_data)? module_static_data : null)
+	if(modules)
+		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	return json_data
@@ -314,16 +344,6 @@
 	if(needs_update)
 		window.send_message("update", get_payload())
 
-
-/**
- * public
- *
- * Sets the current map z level of the tgui window (so we know which Z we need to be interacting with.)
- */
-/datum/tgui/proc/set_map_z_level(nz)
-	map_z_level = nz
-
-
 /**
  * private
  *
@@ -342,6 +362,13 @@
  * Callback for handling incoming tgui messages.
  */
 /datum/tgui/proc/on_message(type, list/payload, list/href_list)
+	if(type)
+		switch(copytext(type, 1, 5))
+			if("act/")	// normal act
+				var/action = copytext(type, 5)
+			if("mod/")	// module act
+				var/action = copytext(type, 5)
+	switch(copytext())
 	// Pass act type messages to ui_act
 	if(type && copytext(type, 1, 5) == "act/")
 		var/act_type = copytext(type, 5)

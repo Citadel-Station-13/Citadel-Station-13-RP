@@ -318,7 +318,7 @@
 	switch(action)
 		if("search")
 			search = params["search"]
-			send_tgui_data_immediate(data = list(
+			push_ui_data(data = list(
 				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
 				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
 			))
@@ -328,14 +328,14 @@
 				design_page = 0
 			else
 				design_page = max(design_page + (1 * params["reverse"]), 0)
-			send_tgui_data_immediate(data = list("designs" = tgui_GetDesignInfo(design_page)))
+			push_ui_data(data = list("designs" = tgui_GetDesignInfo(design_page)))
 			return TRUE
 		if("builder_page")
 			if(params["reset"])
 				builder_page = 0
 			else
 				builder_page = max(builder_page + (1 * params["reverse"]), 0)
-			send_tgui_data_immediate(data = list(
+			push_ui_data(data = list(
 				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
 				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
 			))

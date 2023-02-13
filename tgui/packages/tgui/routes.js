@@ -71,7 +71,11 @@ export const getRoutedComponent = store => {
       return require('./debug').KitchenSink;
     }
   }
-  const name = config?.interface;
+  return directlyRouteComponent(config?.interface);
+};
+
+export const directlyRouteComponent = (interface) => {
+  const name = interface;
   const interfacePathBuilders = [
     name => `./${name}.tsx`,
     name => `./${name}.js`,

@@ -30,9 +30,6 @@
 					var/datum/ui_state/TS = generate_state(alarm)
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
 			return 1
-		if("setZLevel")
-			ui.set_map_z_level(params["mapZLevel"])
-			return TRUE
 
 /datum/tgui_module_old/atmos_control/ui_assets(mob/user)
 	return list(

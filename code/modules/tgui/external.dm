@@ -74,17 +74,39 @@
 
 /**
  * immediately shunts this data to either an user, an ui, or all users.
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
  */
-/datum/proc/send_tgui_data_immediate(mob/user, datum/tgui/ui, list/data)
-	ASSERT(data)
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
 	if(!user)
 		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.send_custom_update(data)
+			window.push_data(data)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_custom_update(data)
+		ui.push_data(data)
+
+/**
+ * immediately pushes module updates to user, an ui, or all users
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ */
+/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.push_modules(updates)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.push_modules(updates)
 
 /**
  * public

@@ -77,7 +77,7 @@
  */
 /datum/proc/ui_module_act(action, list/params, datum/tgui_module/module, datum/ui_state/state)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, action, params, ui, state)
+	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, action, params, module, state)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!module?.ui_status(usr) != UI_INTERACTIVE)
 		return TRUE
@@ -87,6 +87,8 @@
  * they will be handled by a separate reducer to make static data work.
  * you can technically use this for things other than tgui_module's
  * for example, for RIG/other "modular items-in-items" to hold data.
+ *
+ * this will be sent into data.modules.* instead of just data.*
  */
 /datum/proc/ui_module_data(mob/user)
 	return list()
