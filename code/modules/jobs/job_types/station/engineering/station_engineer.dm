@@ -19,8 +19,11 @@
 		"Engine Technician" = /datum/prototype/alt_title/engine_tech,
 		"Electrician" = /datum/prototype/alt_title/electrician,
 		"Apprentice Engineer" = /datum/prototype/alt_title/apprentice_engineer,
-		"Construction Engineer" = /datum/prototype/alt_title/construction_engi
+		"Construction Engineer" = /datum/prototype/alt_title/construction_engi,
+		"Artificer-Apprentice" = /datum/prototype/alt_title/artificer_apprentice,
+		"Artificer" = /datum/prototype/alt_title/artificer
 		)
+	strict_titles = TRUE
 
 	minimal_player_age = 3
 
@@ -49,6 +52,18 @@
 	title = "Construction Engineer"
 	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
 					as additions to station layout."
+
+/datum/prototype/alt_title/artificer_apprentice
+	title = "Artificer-Apprentice"
+	background_restricted = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
+
+/datum/prototype/alt_title/artificer
+	title = "Artificer"
+	background_restricted = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
 
 /datum/outfit/job/station/station_engineer
 	name = OUTFIT_JOB_NAME("Engineer")

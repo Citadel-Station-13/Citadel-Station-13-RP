@@ -23,8 +23,10 @@
 	alt_titles = list(
 		"Atmospherics Maintainer" = /datum/prototype/alt_title/atmos_maint,
 		"Pipe Network Specialist" = /datum/prototype/alt_title/pipe_spec,
-		"Disposals Technician" = /datum/prototype/alt_title/disposals_tech
+		"Disposals Technician" = /datum/prototype/alt_title/disposals_tech,
+		"Artificer" = /datum/prototype/alt_title/atmos_artificer
 		)
+	strict_titles = TRUE
 
 // Atmos Tech Alt Titles
 /datum/prototype/alt_title/atmos_maint
@@ -36,6 +38,12 @@
 /datum/prototype/alt_title/disposals_tech
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
+
+/datum/prototype/alt_title/atmos_artificer
+	title = "Artificer"
+	background_restricted = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
 
 /datum/outfit/job/station/atmospherics_technician
 	name = OUTFIT_JOB_NAME("Atmospheric technician")

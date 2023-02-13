@@ -19,8 +19,17 @@
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/prototype/alt_title/biomech,
 		"Mechatronic Engineer" = /datum/prototype/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/alt_title/prosthetists
+		"Prosthetists" = /datum/prototype/alt_title/prosthetists,
+		"Artificer-Specialist" = /datum/prototype/alt_title/artificer_specialist
 		)
+
+	strict_titles = TRUE
+
+/datum/prototype/alt_title/artificer_specialist
+	title = "Artificer-Specialist"
+	background_restricted = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
 
 /datum/prototype/alt_title/biomech
 	title = "Biomechanical Engineer"
@@ -36,6 +45,9 @@
 	title = "Prosthetists"
 	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
 					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
+	background_restricted = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
 
 /datum/outfit/job/station/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist")

@@ -18,7 +18,17 @@
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/alt_title/emt,
 		"Medical Responder" = /datum/prototype/alt_title/medical_responder
+		"Biotechnical Responder" = /datum/prototype/alt_title/biotech_responder
 		)
+	strict_titles = TRUE
+
+
+/datum/prototype/alt_title/biotech_responder
+	title = "Biotechnical Responder"
+	title_outfit = /datum/outfit/job/station/paramedic/emt  //TODO: add OSSNECRO outfits.
+	background_restricted = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
 
 /datum/prototype/alt_title/emt
 	title = "Emergency Medical Technician"

@@ -19,8 +19,17 @@
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
 		"Pharmacist" = /datum/prototype/alt_title/pharmacist,
-		"Pharmacologist" = /datum/prototype/alt_title/pharmacologist
+		"Pharmacologist" = /datum/prototype/alt_title/pharmacologist,
+		"Biochemist" = /datum/prototype/alt_title/biochemist
 		)
+	strict_titles = TRUE
+
+/datum/prototype/alt_title/biochemist
+	title = "Biochemist"
+	background_restricted = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+
 /datum/prototype/alt_title/pharmacist
 	title = "Pharmacist"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."

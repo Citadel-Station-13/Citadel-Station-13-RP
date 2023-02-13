@@ -18,8 +18,16 @@
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
 		"Forensic Technician" = /datum/prototype/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi
+		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi,
+		"Investigatory Specialist" = /datum/prototype/alt_title/detective/inv_spec
 		)
+	strict_titles = TRUE
+
+/datum/prototype/alt_title/detective/inv_spec
+	title = "Investigatory Specialist"
+	background_restricted = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
 
 /datum/prototype/alt_title/detective/csi
 	title = "Crime Scene Investigator"
