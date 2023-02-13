@@ -17,7 +17,7 @@
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/alt_title/emt,
-		"Medical Responder" = /datum/prototype/alt_title/medical_responder
+		"Medical Responder" = /datum/prototype/alt_title/medical_responder,
 		"Biotechnical Responder" = /datum/prototype/alt_title/biotech_responder
 		)
 	strict_titles = TRUE
