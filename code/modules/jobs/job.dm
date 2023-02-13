@@ -41,9 +41,6 @@
 	var/selection_color = COLOR_WHITE
 	/// List of alternate titles; There is no need for an alt-title datum for the base job title.
 	var/list/alt_titles = null
-	// todo: optimize this, it's very non-performant.
-	/// Strict title mode: If an alt title is available for a specific background someone has, only that and other alt titles with that background can be chosen.
-	var/strict_titles = FALSE
 	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 	/// If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
@@ -242,74 +239,51 @@
 //? Alt Titles
 
 /**
- * get available alt title names for a given set of character backgrounds
+ * all alt title datums
  */
-/datum/role/job/proc/alt_title_query(list/datum/lore/character_background/backgrounds = list())
-	RETURN_TYPE(/list)
-	var/list/transformed = list()
-	for(var/datum/lore/character_background/bg as anything in backgrounds)
-		transformed += bg.id
-	if(strict_titles)
-		var/list/normal = list(title)
-		var/list/restricted = list()
-		for(var/title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
-			if(isnull(alt_datum))
-				continue
-			if(isnull(alt_datum.background_restricted))
-				normal |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted & transformed))
-				normal -= alt_datum.title
-				// allow us to forcefully register the "main" title under alt title system
-				continue
-			restricted |= alt_datum.title
-		. = length(restricted)? restricted : normal
-	else
-		var/list/found = list(title)
-		for(var/title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
-			if(isnull(alt_datum))
-				continue
-			if(isnull(alt_datum.background_restricted))
-				found |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted & transformed))
-				found -= alt_datum.title
-				// allow us to forcefully register the "main" title under alt title system
-				continue
-			found |= alt_datum.title
-		. = found
-	return length(.)? . : list(title)
+/datum/role/job/proc/alt_title_datums()
+	. = list()
+	// todo: why do we do assoc list? why don't we just cache? why why why????
+	for(var/title in alt_titles)
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+		if(!alt_datum)
+			continue
+		. += alt_datum
 
 /**
- * chcek if an alt title is available for a given set of backgrounds
+ * get available alt title names for a given set of character backgrounds
  */
-/datum/role/job/proc/alt_title_check(alt_title, list/datum/lore/character_background/backgrounds = list())
-	var/list/transformed = list()
-	for(var/datum/lore/character_background/bg as anything in backgrounds)
-		transformed += bg.id
-	if(strict_titles)
-		var/found = FALSE
-		for(var/other_title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[other_title])
-			if(length(alt_datum.background_restricted & transformed))
-				found = TRUE
-				break
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
-		if(isnull(alt_datum))
-			if(alt_title == title)
-				return !found
-			else
-				return FALSE
-		return length(alt_datum.background_restricted & transformed) || (!found && !alt_datum.background_restricted)
-	else
-		if(alt_title == title)
-			return TRUE
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
-		if(isnull(alt_datum))
-			return FALSE
-		return isnull(alt_datum.background_restricted) || length(transformed & alt_datum.background_restricted)
+/datum/role/job/proc/alt_title_query(list/background_ids)
+	RETURN_TYPE(/list)
+	var/strict = FALSE
+	. = list()
+	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+		if(!alt_datum.check_background_ids(background_ids))
+			continue
+		. |= alt_datum.title
+		if(alt_datum.background_strict)
+			strict = TRUE
+	if(!strict)
+		. |= title
+
+/**
+ * check if an alt title is available for a given set of backgrounds
+ */
+/datum/role/job/proc/alt_title_check(alt_title, list/background_ids)
+	var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
+	return alt_datum?.check_background_ids(background_ids)
+
+/**
+ * check if we enforce an alt title that isn't root for a list of backgrounds.
+ *
+ * @return enforced title as string
+ */
+/datum/role/job/proc/alt_title_enforcement(list/background_ids)
+	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+		if(!alt_datum.check_background_ids(background_ids))
+			continue
+		if(alt_datum.background_strict)
+			return alt_datum.title
 
 //? Unsorted
 

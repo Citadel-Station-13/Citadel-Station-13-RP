@@ -156,7 +156,7 @@
 	return available_jobs
 
 /obj/machinery/computer/timeclock/proc/available_titles(mob/user, var/datum/role/job/job)
-	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_datums()
+	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_ids()
 	return job.alt_title_query(backgrounds)
 
 /obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
