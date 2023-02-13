@@ -39,6 +39,7 @@ Make sure to add new items to this list if you document new components.
     - [`LabeledList.Item`](#labeledlistitem)
     - [`LabeledList.Divider`](#labeledlistdivider)
     - [`Modal`](#modal)
+    - [`Module`](#module)
     - [`NoticeBox`](#noticebox)
     - [`NumberInput`](#numberinput)
     - [`Popper`](#popper)
@@ -716,6 +717,15 @@ Must be a direct child of a layout component (e.g. [Window](#window)).
 
 - See inherited props: [Box](#box)
 
+### `Module`
+
+A TGUI module. Data is pushed via ui_module_data(), and modules have their own
+systems for rendering. Modules are automatically centered within themselves.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+
 ### `NoticeBox`
 
 A notice box, which warns you about something very important.
@@ -1181,3 +1191,13 @@ Can be scrollable.
 - `fitted: boolean` - If true, removes all padding.
 - `scrollable: boolean` - Shows or hides the scrollbar.
 - `children: any` - Main content of your window.
+
+### `Modular`
+
+Automatically renders as either a centered box, or a full window.
+Used for /datum/tgui_module's, which are interfaces that can act both as standalone and as embedded..
+
+**Props:**
+
+- See inherited props: [Box](#box)
+- See inherited props: [Window](#window)
