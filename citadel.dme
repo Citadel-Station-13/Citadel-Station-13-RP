@@ -67,7 +67,6 @@
 #include "code\__DEFINES\movespeed_modification.dm"
 #include "code\__DEFINES\objects.dm"
 #include "code\__DEFINES\parameters_world.dm"
-#include "code\__DEFINES\persistence.dm"
 #include "code\__DEFINES\plants.dm"
 #include "code\__DEFINES\qdel.dm"
 #include "code\__DEFINES\robots.dm"
@@ -3965,7 +3964,7 @@
 #include "code\modules\rogueminer_vr\wrappers.dm"
 #include "code\modules\rogueminer_vr\zone_console.dm"
 #include "code\modules\rogueminer_vr\zonemaster.dm"
-<<<<<<< HEAD
+#include "code\modules\roles\role.dm"
 #include "code\modules\sectors\cycles.dm"
 #include "code\modules\sectors\seasons.dm"
 #include "code\modules\sectors\sectors.dm"
@@ -3974,9 +3973,6 @@
 #include "code\modules\sectors\weather\particles.dm"
 #include "code\modules\sectors\weather\weather.dm"
 #include "code\modules\sectors\weather\weather_holder.dm"
-=======
-#include "code\modules\roles\role.dm"
->>>>>>> citrp/master
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
 #include "code\modules\shieldgen\directional_shield.dm"

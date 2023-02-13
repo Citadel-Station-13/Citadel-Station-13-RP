@@ -97,7 +97,15 @@
 	var/wind_high
 
 	//? ticking
+	/// do we need to tick turfs?
+	var/ticks_turfs = FALSE
+	/// do we need to tick indoor turfs? or just outdoors?
+	var/ticks_all_turfs = FALSE
+	/// do we need to tick mobs?
+	var/ticks_mobs = FALSE
+	/// mob ticking: this is the easiest; we
 	#warn impl
+	#warn hook & make sure mobs / turfs get removed on, well, remove.
 
 	//? sky cover
 	/// do we obscure sky?

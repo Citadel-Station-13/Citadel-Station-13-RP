@@ -313,6 +313,29 @@
 	#warn impl - check index conflict / dupe
 
 /**
+ * register turf
+ */
+/datum/world_sector/proc/register_floor(turf/simulated/floor/F)
+	#warn impl
+
+/**
+ * unregister turf
+ */
+/datum/world_sector/proc/unregister_floor(turf/simulated/floor/F)
+	#warn impl
+
+/**
+ * register turf
+ */
+/datum/world_sector/proc/register_edge(turf/unsimulated/wall/planetary/E)
+	#warn impl
+
+/**
+ * unregister turf
+ */
+/datum/world_sector/proc/unregister_floor(turf/unsimulated/wall/planetary/E)
+	#warn impl
+/**
  * returns list of levels
  */
 /datum/world_sector/proc/get_levels()
