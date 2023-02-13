@@ -18,13 +18,20 @@
  */
 
 import { Component } from "inferno"
-import { directlyRouteComponent, getRoutedComponent } from "../../routes";
+import { actFunctionType, sendAct } from "../../backend";
+import { logger } from "../../logging";
+import { directlyRouteComponent } from "../../routes";
 
-export interface TguiModuleProps {
+export interface ModuleProps {
   id: string, // module id, this lets it autoload from context
 }
 
-export class Module<T extends TguiModuleProps> extends Component<T, {}> {
+export interface ModuleData {
+  $tgui: string, // module interface
+  $ref: string, // byond ref to self
+}
+
+export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
     let {id} = this.props;
     let ref = ;
@@ -50,31 +57,38 @@ export class Module<T extends TguiModuleProps> extends Component<T, {}> {
   }
 }
 
-export const TguiModule = (props:)
+export const useModule = <TData extends ModuleData>(context) => {
 
+}
 
-export const sendModuleAct = <TData>(context: BackendState<TData>, action: string, payload: object = {}) => {
-  // todo: dejank this shit
-  const isObject = typeof payload === 'object'
-    && payload !== null
-    && !Array.isArray(payload);
-  if (!isObject) {
-    logger.error(`Payload for module act() must be an object, got instead: `, payload);
-    return;
-  }
-  Byond.sendMessage('act/' + action, { ...payload, __module_ref: ref });
-};
+export const constructModuleAct = (id: string, ref: string): actFunctionType => {
+  return (action: string, payload: object = {}) => {
+    let sent = {
+      ...payload,
+      $m_id: id,
+      $m_ref: ref,
+    }
+    // Validate that payload is an object
+    const isObject = typeof payload === 'object'
+      && payload !== null
+      && !Array.isArray(payload);
+    if (!isObject) {
+      logger.error(`Payload for module act() must be an object, got this:`, payload);
+      return;
+    }
+    Byond.sendMessage('mod/' + action, payload);
+  };
+}
 
 /**
  * Basically, grabs data & act for a module in a way that makes it work
  * whether or not it's standalone or embedded.
  */
-export const useModule = <TData>(props: any, context: any) => {
-  const { store } = context;
-  let state = selectBackend(context);
-  let config = selectConfig(context);
-  return {
-    ...state,
-    act: prepareSendModuleAct(config, state),
-  };
-};
+// export const useModule = <TData>(props: any, context: any) => {
+//   const { store } = context;
+//   let state = selectBackend(context);
+//   return {
+//     ...state,
+//     act: prepareSendModuleAct(config, state),
+//   };
+// };

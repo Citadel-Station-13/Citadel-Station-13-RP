@@ -49,21 +49,19 @@
 	return isnull(host)? ..() : host.ui_status(user, state, src)
 
 /datum/tgui_module/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	SHOULD_NOT_OVERRIDE(TRUE) // nuh uh you do not get to mess with this call on subtypes
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, tgui_id)
-		ui.module = TRUE
 		ui.open()
 
 /**
  * gets ui static module data; this will always contain
- * list("tgui" = interfaceID, "src" = module ref).
+ * list("$tgui" = interfaceID, "$src" = module ref).
  */
 /datum/tgui_module/ui_static_data(mob/user)
 	. = list()
-	.["tgui"] = tgui_id
-	.["src"] = REF(src)
+	.["$tgui"] = tgui_id
+	.["$src"] = REF(src)
 
 /**
  * gets ui module data; parameters are variadic
@@ -94,6 +92,8 @@
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!module?.ui_status(usr) != UI_INTERACTIVE)
 		return TRUE
+
+#warn this is shit
 
 /**
  * called to inject ui module data.

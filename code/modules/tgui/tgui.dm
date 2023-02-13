@@ -15,8 +15,6 @@
 	var/title
 	/// The window_id for browse() and onclose().
 	var/datum/tgui_window/window
-	/// are we a /datum/tgui_module?
-	var/module = FALSE
 	/// Key that is used for remembering the window geometry.
 	var/window_key
 	/// The interface (template) to be used for this UI.
@@ -253,7 +251,6 @@
 		"status" = status,
 		"interface" = interface,
 		"refreshing" = refreshing,
-		"module" = module, // citadel-edit: are we a module?
 		"window" = list(
 			"key" = window_key,
 			"size" = null, // used to be list(x, y) but we don't need it anymore.
@@ -338,19 +335,26 @@
 		switch(copytext(type, 1, 5))
 			if("act/")	// normal act
 				var/action = copytext(type, 5)
+				log_tgui(user, "Action: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				if(src_object.ui_act(action, payload, src, state))
+					SStgui.update_uis(src_object)
+				return FALSE
 			if("mod/")	// module act
 				var/action = copytext(type, 5)
-	// Pass act type messages to ui_act
-	if(type && copytext(type, 1, 5) == "act/")
-		var/act_type = copytext(type, 5)
-		log_tgui(user, "Action: [act_type] [href_list["payload"]]",
-			window = window,
-			src_object = src_object)
-		process_status()
-		if(src_object.ui_act(act_type, payload, src, state))
-			SStgui.update_uis(src_object)
-		return FALSE
-	#warn module act
+				var/ref = payload["$m_ref"]
+				var/id = payload["$m_id"]
+				var/datum/tgui_module/module = locate(ref)
+				#warn this is shit
+				log_tgui(user, "Action: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				if(src_object.ui_module_act(action, payload, module, state))
+					SStgui.update_uis(src_object)
+				return FALSE
 	switch(type)
 		if("ready")
 			// Send a full update when the user manually refreshes the UI

@@ -265,11 +265,13 @@ export const backendMiddleware = store => {
   };
 };
 
+export type actFunctionType = (action: string, payload: object) => void;
+
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
  */
-export const sendAct = (action: string, payload: object = {}) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null
@@ -295,7 +297,6 @@ export type BackendConfig = {
   status: number,
   interface: string,
   refreshing: boolean,
-  module: boolean,
   window: {
     key: string,
     size: [number, number],
