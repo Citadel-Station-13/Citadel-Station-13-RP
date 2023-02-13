@@ -177,7 +177,7 @@
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
 		return
-	if(!newjob.alt_title_check(newassignment, usr.mind?.original_background_datums()))
+	if(!newjob.alt_title_check(newassignment, usr.mind?.original_background_ids()))
 		return
 	if(newjob)
 		card.access = newjob.get_access()
