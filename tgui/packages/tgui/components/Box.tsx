@@ -5,7 +5,7 @@
  */
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
-import { createVNode, SFC } from 'inferno';
+import { createVNode } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
 import { ComponentProps } from './Component';
@@ -208,7 +208,7 @@ const styleMapperByPropName = {
 };
 
 export const computeBoxProps = (props: BoxProps) => {
-  const computedProps: HTMLAttributes<any> = {};
+  const computedProps: any = {};
   const computedStyles = {};
   // Compute props
   for (let propName of Object.keys(props)) {
@@ -256,7 +256,7 @@ export const computeBoxClassName = (props: BoxProps) => {
   ]);
 };
 
-export const Box: SFC<BoxProps> = (props: BoxProps) => {
+export const Box = (props: BoxProps) => {
   const {
     as = 'div',
     className,

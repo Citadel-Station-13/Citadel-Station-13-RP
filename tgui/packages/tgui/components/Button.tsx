@@ -7,7 +7,7 @@
 import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
-import { Component, createRef, SFC } from 'inferno';
+import { Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -153,7 +153,7 @@ interface ButtonCheckboxProps extends ButtonProps {
   checked?: BooleanLike;
 }
 
-export const ButtonCheckbox: SFC<ButtonCheckboxProps> = (props: ButtonCheckboxProps) => {
+export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
   const { checked, ...rest } = props;
   return (
     <Button

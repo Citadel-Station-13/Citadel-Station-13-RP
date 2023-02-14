@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, Flex, Section } from "../../components";
+import { Button, Section } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -62,8 +62,9 @@ export const Holopad = (props, context) => {
         <Section
           title="Holopad"
           buttons={data.isAI? (
+            <Button />
           ) : (
-
+            <Button />
           )}>
           `test`
         </Section>
