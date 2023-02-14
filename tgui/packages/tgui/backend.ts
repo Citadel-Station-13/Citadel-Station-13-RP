@@ -64,13 +64,14 @@ export const backendReducer = (state = initialState, action) => {
     const modules = {
       ...state.modules,
     };
-    for (let id of Object.keys(payload)) {
-      const data = payload[id];
-      const merged = {
-        ...modules[data],
-        ...data,
-      };
-      modules[id] = merged;
+    if (payload.modules) {
+      const merging = payload.modules;
+      for (let id of Object.keys(merging)) {
+        modules[id] = {
+          ...modules[data],
+          ...merging[id],
+        };
+      }
     }
     // Merge shared states
     const shared = { ...state.shared };
