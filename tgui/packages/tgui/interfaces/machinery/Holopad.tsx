@@ -62,9 +62,23 @@ export const Holopad = (props, context) => {
         <Section
           title="Holopad"
           buttons={data.isAI? (
-            <Button />
+            <Button
+              title={data.aiEnabled
+                ?(data.isAIProjecting? "Start Projecting" : "Stop Projecting")
+                : "AI Disabled"}
+              disabled={!data.aiEnabled}
+              icon={data.aiEnabled && (data.isAIProjecting? `phone` : `phone-xmark`)}
+              selected={data.aiEnabled && data.isAIProjecting}
+              onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (
-            <Button />
+            <Button
+              title={data.aiEnabled
+                ?(data.aiRequested? "AI Requested" : "Request AI")
+                : "AI Disabled"}
+              disabled={data.aiRequested}
+              icon={`megaphone`}
+              selected={data.aiRequested}
+              onClick={() => act('ai_request')} />
           )}>
           `test`
         </Section>

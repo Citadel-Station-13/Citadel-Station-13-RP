@@ -292,10 +292,12 @@ GLOBAL_LIST_EMPTY(holopads)
 	. = ..()
 	switch(action)
 		// user requesting ai
-		if("request_ai")
+		if("ai_request")
 
 		// ai requesting project
 		if("ai_project")
+			/// do they want to start or end
+			var/mode = text2num(params["mode"])
 
 		// user requesting to hang up all calls
 		if("disconnect_all")

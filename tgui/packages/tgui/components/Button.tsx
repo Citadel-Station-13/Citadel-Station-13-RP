@@ -17,8 +17,8 @@ const logger = createLogger('Button');
 
 type ButtonProps = BoxProps & {
   fluid?: BooleanLike;
-  icon?: string;
-  color?: string;
+  icon?: string | BooleanLike;
+  color?: string | BooleanLike;
   disabled?: BooleanLike;
   selected?: BooleanLike;
   tooltip?: string;
