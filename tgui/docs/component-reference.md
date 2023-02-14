@@ -1199,5 +1199,4 @@ Used for /datum/tgui_module's, which are interfaces that can act both as standal
 
 **Props:**
 
-- See inherited props: [Box](#box)
 - See inherited props: [Window](#window)
