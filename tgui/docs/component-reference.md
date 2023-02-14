@@ -58,6 +58,7 @@ Make sure to add new items to this list if you document new components.
   - [`tgui/layouts`](#tguilayouts)
     - [`Window`](#window)
     - [`Window.Content`](#windowcontent)
+    - [`Modular`](#modular)
 
 ## General Concepts
 
@@ -1200,3 +1201,5 @@ Used for /datum/tgui_module's, which are interfaces that can act both as standal
 **Props:**
 
 - See inherited props: [Window](#window)
+- `direct: InfernoNode` - Child elements that are rendered directly inside the window
+when in standalone mode, and at the same level as other child elements when in embedded mode.

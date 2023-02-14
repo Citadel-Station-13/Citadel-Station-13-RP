@@ -3,6 +3,7 @@
  * @license MIT
  */
 
+import { InfernoNode } from "inferno";
 import { actFunctionType, useBackend } from "../backend";
 import { Section } from "../components";
 import { ModuleData } from "../components/Module";
@@ -10,7 +11,7 @@ import { logger } from "../logging";
 import { Window, WindowProps } from "./Window";
 
 export interface ModularProps extends WindowProps{
-
+  direct?: InfernoNode,
 }
 
 /**
@@ -19,22 +20,20 @@ export interface ModularProps extends WindowProps{
  * depending on if it's loaded directly, or included using a
  * <Module>.
  *
- * Downside: Window.Content is implicit, meaning you can't use proper modals.
- *
- * todo: modal support with new property?
- *
  * If not rendering directly, it will act like a <Box>.
  */
 export const Modular = (props: ModularProps, context: any) => {
   return (
     props.tgui_root? (
       <Window {...props}>
+        {props.direct}
         <Window.Content>
           {props.children}
         </Window.Content>
       </Window>
     ) : (
       <Section {...props}>
+        {props.direct}
         {props.children}
       </Section>
     )

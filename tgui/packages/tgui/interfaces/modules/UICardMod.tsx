@@ -1,6 +1,7 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, ModuleProps } from "../../components/Module";
 import { AccessRegions, AccessTypes } from "../../constants/access";
+import { Modular } from "../../layouts/Modular";
 import { Access, AccessId } from "../common/Access";
 
 
@@ -21,7 +22,11 @@ interface CardModProps extends ModuleProps {
 }
 
 export const UICardMod = (props: CardModProps, context) => {
-
+  return (
+    <Modular width={250} height={500}>
+      `test`
+    </Modular>
+  );
 };
 /*
 
