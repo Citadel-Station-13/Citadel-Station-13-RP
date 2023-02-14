@@ -266,7 +266,7 @@ export const backendMiddleware = store => {
   };
 };
 
-export type actFunctionType = (action: string, payload: object) => void;
+export type actFunctionType = (action: string, payload?: object) => void;
 
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
