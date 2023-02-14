@@ -9,7 +9,7 @@ import { Component, createRef, InfernoNode, RefObject } from 'inferno';
 import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-interface SectionProps extends BoxProps {
+type SectionProps = BoxProps & {
   className?: string;
   title?: InfernoNode;
   buttons?: InfernoNode;

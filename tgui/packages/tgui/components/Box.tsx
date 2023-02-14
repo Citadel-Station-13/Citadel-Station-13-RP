@@ -5,15 +5,15 @@
  */
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
-import { createVNode, InfernoNode, SFC } from 'inferno';
+import { createVNode, SFC } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
+import { ComponentProps } from './Component';
 
-export interface BoxProps {
+export type BoxProps = ComponentProps & {
   [key: string]: any;
   as?: string;
   className?: string | BooleanLike;
-  children?: InfernoNode;
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;
@@ -56,7 +56,7 @@ export interface BoxProps {
   color?: string | BooleanLike;
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
-  fillPositionedParent?: boolean;
+  fillPositionedParent?: BooleanLike;
 }
 
 /**

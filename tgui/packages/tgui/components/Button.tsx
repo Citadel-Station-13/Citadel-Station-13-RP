@@ -4,17 +4,32 @@
  * @license MIT
  */
 
+import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
-import { classes, pureComponentHooks } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { Component, createRef, SFC } from 'inferno';
 import { createLogger } from '../logging';
-import { Box, computeBoxClassName, computeBoxProps } from './Box';
+import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 import { Tooltip } from './Tooltip';
 
 const logger = createLogger('Button');
 
-export const Button = props => {
+type ButtonProps = BoxProps & {
+  fluid?: BooleanLike;
+  icon?: string;
+  color?: string;
+  disabled?: BooleanLike;
+  selected?: BooleanLike;
+  tooltip?: string;
+  tooltipPosition?: Placement;
+  ellipsis?: BooleanLike;
+  title?: string;
+  onClick?: (e) => void;
+  verticalAlignContent?: 'top' | 'middle' | 'bottom';
+}
+
+export const Button = (props: ButtonProps) => {
   const {
     className,
     fluid,
@@ -77,7 +92,7 @@ export const Button = props => {
         className,
         computeBoxClassName(rest),
       ])}
-      tabIndex={!disabled && '0'}
+      tabIndex={0}
       onKeyDown={e => {
         if (props.captureKeys === false) {
           return;
@@ -134,7 +149,11 @@ export const Button = props => {
 
 Button.defaultHooks = pureComponentHooks;
 
-export const ButtonCheckbox = props => {
+interface ButtonCheckboxProps extends ButtonProps {
+  checked?: BooleanLike;
+}
+
+export const ButtonCheckbox: SFC<ButtonCheckboxProps> = (props: ButtonCheckboxProps) => {
   const { checked, ...rest } = props;
   return (
     <Button
@@ -147,23 +166,22 @@ export const ButtonCheckbox = props => {
 
 Button.Checkbox = ButtonCheckbox;
 
-export class ButtonConfirm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      clickedOnce: false,
-    };
-    this.handleClick = () => {
-      if (this.state.clickedOnce) {
-        this.setClickedOnce(false);
-      }
-    };
+type ButtonConfirmProps = ButtonProps & {
+  confirmContent?: string;
+  confirmColor?: string;
+}
+
+export class ButtonConfirm<T extends ButtonConfirmProps> extends Component<T, {}> {
+  clicked: boolean = false;
+
+  handleClick = () => {
+    if (this.clicked) {
+      this.clicked = false;
+    }
   }
 
   setClickedOnce(clickedOnce) {
-    this.setState({
-      clickedOnce,
-    });
+    this.clicked = clickedOnce;
     if (clickedOnce) {
       setTimeout(() => window.addEventListener('click', this.handleClick));
     }
@@ -185,11 +203,11 @@ export class ButtonConfirm extends Component {
     } = this.props;
     return (
       <Button
-        content={this.state.clickedOnce ? confirmContent : content}
-        icon={this.state.clickedOnce ? confirmIcon : icon}
-        color={this.state.clickedOnce ? confirmColor : color}
-        onClick={() => this.state.clickedOnce
-          ? onClick()
+        content={this.clicked ? confirmContent : content}
+        icon={this.clicked ? confirmIcon : icon}
+        color={this.clicked ? confirmColor : color}
+        onClick={(e) => this.clicked
+          ? onClick?.(e)
           : this.setClickedOnce(true)}
         {...rest}
       />
@@ -199,19 +217,24 @@ export class ButtonConfirm extends Component {
 
 Button.Confirm = ButtonConfirm;
 
-export class ButtonInput extends Component {
+type ButtonInputProps = BoxProps & {
+  fluid?: BooleanLike;
+  onCommit?: (e, value) => void;
+  currentValue: string;
+  defaultValue: string;
+}
+
+export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
+  inputRef: any;
+  inputting: boolean = false;
+
   constructor() {
     super();
     this.inputRef = createRef();
-    this.state = {
-      inInput: false,
-    };
   }
 
-  setInInput(inInput) {
-    this.setState({
-      inInput,
-    });
+  setInInput(inInput: boolean) {
+    this.inputting = inInput;
     if (this.inputRef) {
       const input = this.inputRef.current;
       if (inInput) {
@@ -230,13 +253,13 @@ export class ButtonInput extends Component {
       const input = this.inputRef.current;
       const hasValue = (input.value !== "");
       if (hasValue) {
-        this.props.onCommit(e, input.value);
+        this.props.onCommit?.(e, input.value);
         return;
       } else {
         if (!this.props.defaultValue) {
           return;
         }
-        this.props.onCommit(e, this.props.defaultValue);
+        this.props.onCommit?.(e, this.props.defaultValue);
       }
     }
   }
@@ -275,11 +298,11 @@ export class ButtonInput extends Component {
           ref={this.inputRef}
           className="NumberInput__input"
           style={{
-            'display': !this.state.inInput ? 'none' : undefined,
+            'display': !this.inputting ? 'none' : undefined,
             'text-align': 'left',
           }}
           onBlur={e => {
-            if (!this.state.inInput) {
+            if (!this.inputting) {
               return;
             }
             this.setInInput(false);
