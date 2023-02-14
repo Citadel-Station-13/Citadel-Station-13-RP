@@ -156,7 +156,7 @@
 	return available_jobs
 
 /obj/machinery/computer/timeclock/proc/available_titles(mob/user, var/datum/role/job/job)
-	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_datums()
+	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_ids()
 	return job.alt_title_query(backgrounds)
 
 /obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
@@ -177,7 +177,7 @@
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
 		return
-	if(!newjob.alt_title_check(newassignment, usr.mind?.original_background_datums()))
+	if(!newjob.alt_title_check(newassignment, usr.mind?.original_background_ids()))
 		return
 	if(newjob)
 		card.access = newjob.get_access()
