@@ -95,6 +95,11 @@
 		ui = new(user, src, "IdentificationComputer", name)
 		ui.open()
 
+/obj/machinery/computer/card/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state, with_static)
+	. = ..()
+	#warn props?
+	.["modify"] = tgui_cardmod.ui_data(user, ui, state)
+
 /obj/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data =  ..()
 	if(data_core)

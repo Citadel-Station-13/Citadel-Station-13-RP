@@ -1,10 +1,32 @@
+/**
+ * @file
+ * @license MIT
+ */
+
+import { Module } from "../../components/Module";
+import { Window } from "../../layouts";
+
+export const IdentificationComputer = (props, context) => {
+  return (
+    <Window width={250} height={700}>
+      `test`
+      <Window.Content>
+        <Module id="modify" />
+      </Window.Content>
+    </Window>
+  );
+};
+
+
+
+/*
 import { sortBy } from 'common/collections';
 import { Fragment } from 'inferno';
-import { useBackend } from "../backend";
-import { Box, Button, Flex, Input, LabeledList, Section, Table, Tabs } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from "../../backend";
+import { Box, Button, Flex, Input, LabeledList, Section, Table, Tabs } from "../../components";
+import { Window } from "../../layouts";
 import { decodeHtmlEntities } from 'common/string';
-import { CrewManifestContent } from './CrewManifest';
+import { CrewManifestContent } from '../CrewManifest';
 
 export const IdentificationComputer = (props, context) => {
   const { act, data } = useBackend(context);
@@ -235,3 +257,4 @@ export const IdentificationComputerRegions = (props, context) => {
     </Flex>
   );
 };
+*/

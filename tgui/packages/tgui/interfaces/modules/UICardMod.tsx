@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { BooleanLike } from "common/react";
 import { ModuleData, ModuleProps } from "../../components/Module";
 import { AccessRegions, AccessTypes } from "../../constants/access";
