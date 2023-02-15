@@ -1,6 +1,6 @@
 /datum/lore/character_background/faction
 	abstract_type = /datum/lore/character_background/faction
-	/// station job types you can play as under this - **typepaths** e.g. /datum/job/station/security_officer, etc
+	/// station job types you can play as under this - **typepaths** e.g. /datum/role/job/station/security_officer, etc
 	/// if null, you can play as everything
 	var/list/job_whitelist = list()
 	/// job blacklist
@@ -176,6 +176,8 @@
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
 		JOB_ID_ASSISTANT,
+		JOB_ID_DETECTIVE,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_CIVILLIAN,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER
@@ -286,8 +288,10 @@
 		JOB_ID_SHAFT_MINER,
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_ROBOTICIST,
+		JOB_ID_DETECTIVE,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
 	origin_whitelist = list(
@@ -312,9 +316,9 @@
 		JOB_ID_PARAMEDIC,
 		JOB_ID_CHEMIST,
 		JOB_ID_ROBOTICIST,
-		JOB_ID_SCIENTIST,
-		JOB_ID_SENIOR_RESEARCHER,
+		JOB_ID_DETECTIVE,
 		JOB_ID_OFFDUTY_MEDBAY,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
 

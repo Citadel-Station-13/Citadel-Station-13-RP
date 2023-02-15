@@ -110,12 +110,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/job/station/assistant
+#define DEFAULT_JOB_TYPE /datum/role/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
-
-#define ECO_MODIFIER 10
 
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.

@@ -365,7 +365,14 @@
 	max_fuel = 20
 	matter = list(MAT_METAL = 30, MAT_BONE = 10)
 	tool_speed = 1.5
-	eye_safety_modifier = 1 // Safer on eyes.
+	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
+	always_process = TRUE
+
+//I can't currently think of a good vector for welding fuel. Plus these welders are like, magic anyways, so.
+/obj/item/weldingtool/bone/process(delta_time)
+	if(get_fuel() <= get_max_fuel())
+		reagents.add_reagent("fuel", 1)
+	..()
 
 /obj/item/weldingtool/brass
 	name = "brass welding tool"
@@ -524,6 +531,10 @@
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
+
+/obj/item/weldingtool/welder_spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /*
  * Electric/Arc Welder

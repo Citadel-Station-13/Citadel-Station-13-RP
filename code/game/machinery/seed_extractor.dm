@@ -46,11 +46,3 @@
 	else if(default_unfasten_wrench(user, O, 20))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
-
-/obj/machinery/seed_extractor/press
-	name = "primitive press"
-	desc = "A hand crafted press and sieve designed to extract seeds from fruit."
-	icon_state = "press"
-	density = TRUE
-	anchored = TRUE
-	use_power = USE_POWER_OFF

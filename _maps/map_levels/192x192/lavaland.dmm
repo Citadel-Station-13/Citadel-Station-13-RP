@@ -20,23 +20,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
-"bM" = (
-/turf/simulated/wall/lavaland,
-/area/lavaland/central/transit)
 "ce" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
-"ch" = (
-/obj/structure/sign/warning{
-	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
-	name = "\improper MEMETIC HAZARD";
-	pixel_x = 32
-	},
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/central/explored)
 "ci" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -45,9 +34,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"cj" = (
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "cF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -59,12 +45,6 @@
 /obj/item/bedsheet/purpledouble,
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
-"cY" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "da" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -79,14 +59,6 @@
 "db" = (
 /turf/simulated/wall,
 /area/lavaland/central/base/common)
-"dk" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "to_east";
-	portal_id = "eaststep"
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "dl" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -111,14 +83,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"dU" = (
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "ll_cent_shutter_east";
-	name = "East Transit Shutter"
-	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/central/transit)
 "dX" = (
 /obj/machinery/shower{
 	dir = 8
@@ -131,12 +95,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
-"eb" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "ew" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -147,35 +105,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"eU" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "ll_cent_shutter_east";
-	pixel_x = 25
-	},
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/central/explored)
 "eY" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
-"fg" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "ll_cent_shutter_east";
-	pixel_x = -25;
-	pixel_y = -1
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
-"fh" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/infinite;
-	name = "south bump";
-	pixel_y = -28
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "fj" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
@@ -542,6 +475,12 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"lT" = (
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 8
+	},
+/turf/simulated/mineral/triumph/lavaland,
+/area/lavaland/central/explored)
 "lX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/airlock_sensor{
@@ -1134,6 +1073,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"tV" = (
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/central/explored)
 "ub" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -2682,6 +2627,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/central/explored)
+"ZK" = (
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 8;
+	name = "to_east";
+	portal_id = "eaststep"
+	},
+/turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "ZO" = (
 /obj/structure/curtain/open/shower/engineering,
@@ -37741,7 +37694,7 @@ RX
 RX
 MX
 MX
-RL
+MX
 RL
 RL
 gy
@@ -37935,8 +37888,8 @@ RX
 MX
 MX
 RL
-RL
-gy
+MX
+MX
 gy
 gy
 gy
@@ -38129,8 +38082,8 @@ MX
 MX
 RL
 RL
-gy
-gy
+MX
+MX
 gy
 gy
 gy
@@ -38322,8 +38275,8 @@ xd
 MX
 RL
 RL
-gy
-gy
+MX
+MX
 gy
 gy
 gy
@@ -38514,9 +38467,9 @@ xd
 RX
 RL
 MX
-RL
-gy
-gy
+MX
+MX
+MX
 gy
 gy
 RL
@@ -38708,13 +38661,13 @@ RX
 MX
 MX
 RL
-gy
-gy
-gy
-gy
 MX
-RL
-RL
+MX
+MX
+MX
+MX
+MX
+MX
 RL
 RL
 xd
@@ -38901,14 +38854,14 @@ RX
 RX
 MX
 RL
-gy
-gy
-gy
-gy
-gy
-gy
-RL
-RL
+MX
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 xd
 xd
 xd
@@ -39094,12 +39047,12 @@ RX
 RX
 MX
 MX
-ch
-gy
-gy
-gy
-eU
-gy
+MX
+MX
+MX
+MX
+MX
+MX
 MX
 MX
 RX
@@ -39287,13 +39240,13 @@ RX
 RX
 MX
 MX
-bM
-bM
-dU
-dU
-dU
-bM
-bM
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 MX
 MX
 RX
@@ -39481,13 +39434,13 @@ MX
 MX
 MX
 MX
-bM
-cj
-cj
-cj
-cj
-fg
-bM
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 MX
 MX
 MX
@@ -39675,13 +39628,13 @@ MX
 MX
 RL
 MX
-bM
-cY
-cj
-cj
-cj
-fh
-bM
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 MX
 MX
 MX
@@ -39753,195 +39706,195 @@ Md
 "}
 (192,1,1) = {"
 Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-bM
-dk
-eb
-eb
-eb
-eb
-bM
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
-Md
+ZK
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+lT
+tV
+lT
+lT
+tV
+lT
 Md
 "}

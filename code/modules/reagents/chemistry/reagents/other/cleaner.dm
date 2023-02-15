@@ -14,7 +14,7 @@
 /datum/reagent/space_cleaner/touch_mob(mob/M, amount)
 	M.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
 
-/datum/reagent/space_cleaner/touch_turf(var/turf/T)
+/datum/reagent/space_cleaner/touch_turf(turf/T)
 	if(volume >= 1)
 		if(istype(T, /turf/simulated))
 			var/turf/simulated/S = T
@@ -24,7 +24,7 @@
 		for(var/mob/living/simple_mob/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
-/datum/reagent/space_cleaner/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/space_cleaner/affect_touch(mob/living/carbon/M, alien, removed)
 	if(M.r_hand)
 		M.r_hand.clean_blood()
 	if(M.l_hand)
@@ -53,7 +53,7 @@
 			return
 	M.clean_blood()
 
-/datum/reagent/space_cleaner/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/space_cleaner/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_SLIME)
 		M.adjustToxLoss(6 * removed)
 	else

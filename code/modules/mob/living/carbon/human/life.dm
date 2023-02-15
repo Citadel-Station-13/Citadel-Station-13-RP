@@ -666,10 +666,10 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == SPECIES_PROTEAN)
+		if(H.species.get_species_id() == SPECIES_ID_PROTEAN)
 			return // dont modify protean heat levels
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
-		if(H.species.name == SPECIES_ADHERENT)
+		if(H.species.get_species_id() == SPECIES_ID_ADHERENT)
 			return // Don't modify Adherent heat levels ffs
 
 		else
@@ -1621,7 +1621,7 @@
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
-		if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD)
+		if(T.get_lumcount() <= 0)
 			playsound_local(src,pick(scarySounds),50, 1, -1)
 
 /mob/living/carbon/human/handle_stomach()

@@ -144,6 +144,12 @@
 	id = "tail_taur_naga_colorable"
 	icon_state = "naga_s"
 	extra_overlay = "naga_markings"
+	
+/datum/sprite_accessory/tail/taur/naga/naga_2c_alt
+	name = "Naga dual-color alt (Taur)"
+	id = "tail_taur_naga_colorable_alt"
+	icon_state = "altnaga_s"
+	extra_overlay = "altnaga_markings"
 
 /datum/sprite_accessory/tail/taur/horse
 	name = "Horse (Taur)"

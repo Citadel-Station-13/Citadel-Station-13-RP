@@ -532,7 +532,11 @@
 	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
 	icon_state = "goliath_cloak"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone, /obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone)
+	allowed = list(
+		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
+		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
+		/obj/item/gun/ballistic/musket/pistol
+		)
 	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hood/goliath
 	body_parts_covered = UPPER_TORSO|ARMS|LEGS

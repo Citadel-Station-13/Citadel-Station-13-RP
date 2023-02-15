@@ -244,16 +244,20 @@ function set_style_sheet(sheet) {
 
 	.grid-item-text {
 		display: inline-block;
-		width: calc(98%);
+		width: calc(100%);
 		background-color: #F0F0F0;
 		margin: 0 -6px;
-		padding: 0 6px;
+		padding: 0px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		pointer-events: none;
 	}
 
+	.grid-item-text:hover {
+		padding: 0 3px;
+	}
+	
 	.dark .grid-item-text {
 		background-color: #222222;
 	}

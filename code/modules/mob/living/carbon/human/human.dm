@@ -622,6 +622,8 @@
 				return
 	..()
 	return
+/mob/living/carbon/human/needs_to_breathe()
+	return !!organs_by_name[O_LUNGS] || ..()
 
 ///eyecheck()
 ///Returns a number between -1 to 2

@@ -49,6 +49,19 @@
 /obj/vehicle/ridden/boat/dragon/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
 
+/obj/vehicle/ridden/boat/ashlander
+	name = "blessed boat"
+	desc = "This vessel has been blessed by the priesthood to grant safe passage. Lined with goliath hide and studded with elderstone, these vessels are rarely seen outside of seafaring convoys."
+	icon = 'icons/obj/vehicles_36x32.dmi'
+	icon_state = "boat_older"
+	integrity = 150
+	max_integrity = 150
+	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
+	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small/ashlander
+
+/obj/vehicle/ridden/boat/ashlander/Initialize(mapload, material_name)
+	return ..(mapload, "bone")
+
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"
@@ -72,6 +85,15 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
+/obj/item/oar/ashlander
+	name = "blessed oar"
+	desc = "An oar carved from bone. It has been studded with elder stone and baffled with Goliath hide to protect it from lava while still providing propulsion to a boat."
+	icon_state = "oar_ashlander"
+	item_state = "oar_ashlander"
+
+/obj/item/oar/ashlander/Initialize(mapload, material_name)
+	return ..(mapload, "bone")
+
 /datum/component/riding_handler/vehicle/boat
 	vehicle_move_delay = 3.5
 	allowed_turf_types = list(
@@ -92,16 +114,36 @@
 			list(0, 7, 0.1, null),
 			list(7, 2, -0.1, null),
 			list(0, 2, -0.1, null),
-			list(-7, 2, -0.1, null)
+			list(-7, 2, 0.1, null)
 		),
 		list(
 			list(0, 2, 0.2, null),
 			list(-7, 2, -0.2, null),
 			list(0, 9, -0.2, null),
-			list(7, 2, -0.2, null)
+			list(7, 2, 0.2, null)
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
+
+/datum/component/riding_handler/vehicle/boat/small/ashlander
+	allowed_turf_types = list(
+		/turf/simulated/floor/water,
+		/turf/simulated/floor/outdoors/lava
+	)
+	rider_offsets = list(
+		list(
+			list(1, 4, 0.1, null),
+			list(6, 4, -0.1, null),
+			list(1, 4, -0.1, null),
+			list(-4, 4, -0.1, null)
+		),
+		list(
+			list(1, 4, 0.2, null),
+			list(-7, 4, -0.2, null),
+			list(1, 9, -0.2, null),
+			list(7, 4, -0.2, null)
+		)
+	)
 
 /datum/component/riding_handler/vehicle/boat/big
 	rider_offsets = list(

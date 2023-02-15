@@ -133,7 +133,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		if(brainmob.mind)
 			brainmob.mind.transfer_to(target)
 		else
-			target.key = brainmob.key
+			target.ckey = brainmob.ckey
 	..()
 
 /obj/item/organ/internal/brain/proc/get_control_efficiency()
@@ -223,7 +223,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		return FALSE
 	/// Somebody is using that mind.
 	if(clonemind.active)
-		if(ckey(clonemind.key) != R.ckey)
+		if(clonemind.ckey != R.ckey)
 			return FALSE
 	else
 		for(var/mob/observer/dead/G in GLOB.player_list)

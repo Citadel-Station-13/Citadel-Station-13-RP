@@ -1,4 +1,4 @@
-/datum/job/station/hydro
+/datum/role/job/station/hydro
 	id = JOB_ID_BOTANIST
 	title = "Botanist"
 	flag = BOTANIST
@@ -16,9 +16,9 @@
 
 	outfit_type = /datum/outfit/job/station/botanist/gardener
 	desc = "A Botanist grows plants for the Chef and Bartender."
-	alt_titles = list("Gardener" = /datum/alt_title/gardener)
+	alt_titles = list("Gardener" = /datum/prototype/alt_title/gardener)
 
-/datum/alt_title/gardener
+/datum/prototype/alt_title/gardener
 	title = "Gardener"
 	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
 

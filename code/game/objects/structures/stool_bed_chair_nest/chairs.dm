@@ -432,3 +432,18 @@
 
 /obj/structure/bed/chair/apidean_stool/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
+
+/obj/structure/bed/chair/post
+	name = "tying post"
+	desc = "A primitive post used to leash beasts of burden or riding mounts to one place."
+	icon = 'icons/obj/furniture.dmi'
+	icon_state = "horsepost"
+	base_icon = "horsepost"
+
+/obj/structure/bed/chair/post/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/stack) || W.is_wirecutter())
+		return
+	..()
+
+/obj/structure/bed/chair/post/Initialize(mapload, new_material)
+	. = ..(mapload, "bone", null)
