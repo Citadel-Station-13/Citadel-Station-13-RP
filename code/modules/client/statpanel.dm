@@ -15,7 +15,7 @@
  * the listed turf, however, gets sent to native Stat() so it supports native mouse
  * handling among other things.
  */
-
+#warn just going to put here to REWRITE STATPANEL to use MOUSEDOWN/MOUSEUP events!
 //! external - state
 
 /client/proc/statpanel_init()

@@ -67,23 +67,25 @@
 		ui = new(user, src, tgui_id)
 		ui.open()
 
-/**
- * gets ui static module data; this will always contain
- * list("$tgui" = interfaceID, "$src" = module ref).
- */
 /datum/tgui_module/ui_static_data(mob/user)
-	. = list()
-	.["$tgui"] = tgui_id
-	.["$src"] = REF(src)
+	return static_data(user)
+
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	return data(user)
 
 /**
- * gets ui module data; parameters are variadic
- *
- * @params
- * * user - accessing user
- * * ... - rest of parameters as determined by module
+ * returns static module data
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state, ...)
+/datum/tgui_module/proc/static_data(mob/user, ...)
+	return list(
+		"$tgui" = tgui_id,
+		"$src" = REF(src),
+	)
+
+/**
+ * returns module data
+ */
+/datum/tgui_module/proc/data(mob/user, ...)
 	return list()
 
 #warn this data system is also shit
@@ -122,9 +124,24 @@
  * * user - user
  * * ui - root tgui module is in
  * * state - ui state
- * * with_static - push static update too?
  */
-/datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state, with_static)
+/datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	return list()
+
+/**
+ * called to inject ui module static data.
+ * they will be handled by a separate reducer to make static data work.
+ * you can technically use this for things other than tgui_module's
+ * for example, for RIG/other "modular items-in-items" to hold data.
+ *
+ * this will be sent into data.modules[id].* instead of just data.*
+ *
+ * @params
+ * * user - user
+ * * ui - root tgui module is in
+ * * state - ui state
+ */
+/datum/proc/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list()
 
 /**

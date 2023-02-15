@@ -266,13 +266,14 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = with_data && src_object.ui_data(user, src, state)
-	if(data)
-		json_data["data"] = data
-	var/static_data = with_static_data && src_object.ui_static_data(user, src, state)
-	if(static_data)
-		json_data["static"] = static_data
-	var/modules = (with_data || with_static_data) && src_object.ui_module_data(user, src, state, with_static_data)
+	var/list/modules
+	// static first
+	if(with_static_data)
+		json_data["static"] = src_object.ui_static_data(user, src, state)
+		modules = src_object.ui_module_static(user, src, state)
+	if(with_data)
+		json_data["data"] = src_object.ui_data(user, src, state)
+		modules = (modules || list()) | src_object.ui_module_data(user, src, state)
 	if(modules)
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)

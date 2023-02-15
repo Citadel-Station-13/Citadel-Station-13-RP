@@ -56,7 +56,7 @@ export const backendReducer = (state = initialState, action) => {
     // Merge data
     const data = {
       ...state.data,
-      ...payload.static_data,
+      ...payload.static,
       ...payload.data,
     };
     // Merge module data
