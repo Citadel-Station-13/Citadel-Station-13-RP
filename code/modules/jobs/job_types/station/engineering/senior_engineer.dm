@@ -27,13 +27,13 @@
 	alt_titles = list(
 		"Artificer-Adept" = /datum/prototype/alt_title/artificer_adept
 		)
-	strict_titles = TRUE
 
 /datum/prototype/alt_title/artificer_adept
 	title = "Artificer-Adept"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")
