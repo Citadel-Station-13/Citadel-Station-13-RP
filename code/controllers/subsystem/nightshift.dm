@@ -63,11 +63,11 @@ SUBSYSTEM_DEF(nightshift)
 	SSlighting.pause_instant()
 
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
-<<<<<<< HEAD
-		if(!SSmapping.level_trait(apc.z, ZTRAIT_STATION))
-			continue
-		apc.set_nightshift(active, TRUE)
-		CHECK_TICK
+		if(apc.z in GLOB.using_map.station_levels)
+			apc.set_nightshift(active, TRUE)
+			CHECK_TICK
+
+	SSlighting.resume_instant()
 
 // TODO: WORLD SECTOR TIME SYSTEM
 
@@ -103,11 +103,3 @@ SUBSYSTEM_DEF(nightshift)
 // Boolean for if we should use SSnightshift night hours
 /proc/get_nightshift()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
-
-=======
-		if(apc.z in GLOB.using_map.station_levels)
-			apc.set_nightshift(active, TRUE)
-			CHECK_TICK
-
-	SSlighting.resume_instant()
->>>>>>> citrp/master
