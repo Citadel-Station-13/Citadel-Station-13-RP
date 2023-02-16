@@ -108,7 +108,7 @@
 	switch(action)
 		if("species")
 			var/new_species = input(usr, "Select a new species", "Prosfab Species Selection", SPECIES_HUMAN) as null|anything in species_types
-			if(new_species && ui_status(usr, state) == UI_INTERACTIVE)
+			if(new_species && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				species = new_species
 			return
 		if("manufacturer")
@@ -122,7 +122,7 @@
 				new_manufacturers += A
 
 			var/new_manufacturer = input(usr, "Select a new manufacturer", "Prosfab Species Selection", "Unbranded") as null|anything in new_manufacturers
-			if(new_manufacturer && ui_status(usr, state) == UI_INTERACTIVE)
+			if(new_manufacturer && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				manufacturer = new_manufacturer
 			return
 	return FALSE

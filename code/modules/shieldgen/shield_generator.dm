@@ -459,7 +459,7 @@
 			if(running < SHIELD_RUNNING) // Discharging or off
 				return
 			var/alert = alert(usr, "Are you sure you wish to do this? It will drain the power inside the internal storage rapidly.", "Are you sure?", "Yes", "No")
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return
 			if(running < SHIELD_RUNNING)
 				return

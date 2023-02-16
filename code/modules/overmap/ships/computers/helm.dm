@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		if("add")
 			var/datum/computer_file/data/waypoint/R = new()
 			var/sec_name = input("Input navigation entry name", "New navigation entry", "Sector #[known_sectors.len]") as text
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return FALSE
 			if(!sec_name)
 				sec_name = "Sector #[known_sectors.len]"
@@ -170,10 +170,10 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 					R.fields["y"] = linked.y
 				if("new")
 					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.x) as num
-					if(ui_status(usr, state) != UI_INTERACTIVE)
+					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return TRUE
 					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.y) as num
-					if(ui_status(usr, state) != UI_INTERACTIVE)
+					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return FALSE
 					R.fields["x"] = clamp(newx, 1, world.maxx)
 					R.fields["y"] = clamp(newy, 1, world.maxy)
@@ -190,14 +190,14 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		if("setcoord")
 			if(params["setx"])
 				var/newx = input("Input new destiniation x coordinate", "Coordinate input", dx) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return
 				if(newx)
 					dx = clamp(newx, 1, world.maxx)
 
 			if(params["sety"])
 				var/newy = input("Input new destiniation y coordinate", "Coordinate input", dy) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return
 				if(newy)
 					dy = clamp(newy, 1, world.maxy)

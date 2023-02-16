@@ -53,6 +53,14 @@
 	return access_category_list(access_category).Copy()
 
 /**
+ * get all access ids in the game
+ */
+/datum/controller/subsystem/job/proc/access_ids()
+	. = list()
+	for(var/datum/access/A as anything in access_datums)
+		. += A.access_value
+
+/**
  * get all access ids with given type bits
  *
  * @params

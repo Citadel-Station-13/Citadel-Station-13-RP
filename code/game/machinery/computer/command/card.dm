@@ -8,9 +8,12 @@
 	req_access = list(ACCESS_COMMAND_CARDMOD)
 	circuit = /obj/item/circuitboard/card
 	/// modification module
-	var/datum/tgui_module/card_mod/tgui_cardmod
-	var/obj/item/card/id/scan = null
-	var/obj/item/card/id/modify = null
+	var/datum/tgui_module/card_mod/standard/tgui_cardmod
+	/// authing ID
+	var/obj/item/card/id/authing
+	/// editing ID
+	var/obj/item/card/id/editing
+
 	var/mode = 0.0
 	var/printing = null
 
@@ -21,6 +24,14 @@
 /obj/machinery/computer/card/Destroy()
 	QDEL_NULL(tgui_cardmod)
 	return ..()
+
+/obj/machinery/computer/card/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["modify"] = tgui_cardmod.data(user, editing, authing)
+
+/obj/machinery/computer/card/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["modify"] = tgui_cardmod.static_data(user, editing, authing)
 
 #warn impl all
 

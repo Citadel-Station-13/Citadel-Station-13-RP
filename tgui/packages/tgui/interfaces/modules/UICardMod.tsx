@@ -13,13 +13,16 @@ import { Access, AccessId } from "../common/Access";
 interface CardModContext extends ModuleData {
   access: [Access], // all avail access
   rank: [string], // all avail rank
+  can_demote: BooleanLike, // can we demote?
+  can_rename: BooleanLike, // can we rename?
   granted: [AccessId], // access ids on card
   modify_account: BooleanLike, // can modify card bank account id
   card_account: number, // card bank account id
   modify_region: AccessRegions, // what we can modify
   modify_type: AccessTypes, // what we can modify
+  modify_ids: [AccessId], // what we can specifically edit regardless of region / type
   card_name: string, // card name as string
-  card_rank: string, // card rakn as string
+  card_rank: string, // card rank as string
 }
 
 interface CardModProps extends ModuleProps {

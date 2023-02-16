@@ -97,7 +97,7 @@
 	if(module == src)
 		// i know that guy!
 		// it's me!
-		return ui_act(action, params, ui, state)
+		return ui_act(action, params, ui)
 	// it's not us, respect overrides that wish to hook module behavior
 	if(ui_module_act(module, action, params, ui))
 		return TRUE
