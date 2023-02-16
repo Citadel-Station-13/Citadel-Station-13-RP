@@ -25,7 +25,7 @@
 	.["req_access"] = conf_req_access || list()
 	.["req_one_access"] = conf_req_one_access || list()
 
-/obj/item/airlock_electronics/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/airlock_electronics/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

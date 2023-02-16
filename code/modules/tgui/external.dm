@@ -119,9 +119,9 @@
  *
  * return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui, state)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE

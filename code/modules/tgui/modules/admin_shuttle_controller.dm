@@ -32,7 +32,7 @@
 /datum/tgui_module_old/admin_shuttle_controller/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.tgui_admin_state
 
-/datum/tgui_module_old/admin_shuttle_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/admin_shuttle_controller/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 

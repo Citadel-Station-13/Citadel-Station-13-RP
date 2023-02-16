@@ -18,9 +18,9 @@
 /// Handler for vv_do_topic (usr, href_list)
 ////#define COMSIG_VV_TOPIC "vv_topic"
 	////#define COMPONENT_VV_HANDLED (1<<0)
-/// From datum ui_act (usr, action, list/params, datum/tgui/ui, datum/ui_state/state)
+/// From datum ui_act (usr, action, list/params, datum/tgui/ui)
 #define COMSIG_UI_ACT "ui_act"
-/// From datum ui_module_act (usr, action, list/params, datum/tgui_module/module, datum/ui_state/state)
+/// From datum ui_module_act (usr, datum/module, action, list/params, datum/tgui/ui)
 #define COMSIG_UI_MODULE_ACT "ui_module_act"
 
 /// Fires on the target datum when an element is attached to it (/datum/element)

@@ -101,7 +101,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	return data
 
 
-/datum/character_directory/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/character_directory/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

@@ -88,29 +88,32 @@
 /datum/tgui_module/proc/data(mob/user, ...)
 	return list()
 
-#warn this data system is also shit
-
 /**
- * called on module act only when a module **is** operating in standalone mode
+ * route a received ui_act for module handling
  *
- * return TRUE for ui update
+ * this proc is somewhat weird, it's best to not override it unnecessarily.
  */
-/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	return ..()
-
-/**
- * called on module act only when a module **is not** operating in standalone mode
- *
- * return TRUE for ui update
- */
-/datum/proc/ui_module_act(action, list/params, datum/tgui_module/module, datum/ui_state/state)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, action, params, module, state)
-	// If UI is not interactive or usr calling Topic is not the UI user, bail.
-	if(!module?.ui_status(usr) != UI_INTERACTIVE)
+/datum/proc/ui_module_route(action, list/params, datum/tgui/ui, datum/module)
+	if(module == src)
+		// i know that guy!
+		// it's me!
+		return ui_act(action, params, ui, state)
+	// it's not us, respect overrides that wish to hook module behavior
+	if(ui_module_act(module, action, params, ui))
 		return TRUE
+	// didn't override, send to module
+	return module.ui_act(action, params, ui)
 
-#warn this is shit
+/**
+ * called as a hook for intercepting ui acts from a module
+ *
+ * return TRUE for ui update + prevent propagation to the module
+ */
+/datum/proc/ui_module_act(datum/module, action, list/params, datum/tgui/ui)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, module, action, params, ui)
+	if(!(module?.ui_status(usr) != UI_INTERACTIVE))
+		return TRUE
 
 /**
  * called to inject ui module data.

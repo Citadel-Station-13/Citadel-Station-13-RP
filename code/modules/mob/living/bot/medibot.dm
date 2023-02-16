@@ -304,7 +304,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

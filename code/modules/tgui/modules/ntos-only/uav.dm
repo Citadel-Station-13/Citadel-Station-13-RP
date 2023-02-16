@@ -38,7 +38,7 @@
 	data["paired_uavs"] = paired_map
 	return data
 
-/datum/tgui_module_old/uav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

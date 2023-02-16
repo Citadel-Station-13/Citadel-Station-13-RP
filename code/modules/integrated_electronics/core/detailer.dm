@@ -50,7 +50,7 @@
 	data["color_list"] = color_list
 	return data
 
-/obj/item/integrated_electronics/detailer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_electronics/detailer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

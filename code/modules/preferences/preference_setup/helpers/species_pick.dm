@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

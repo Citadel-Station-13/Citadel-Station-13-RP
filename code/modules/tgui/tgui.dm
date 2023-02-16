@@ -340,20 +340,30 @@
 					window = window,
 					src_object = src_object)
 				process_status()
-				if(src_object.ui_act(action, payload, src, state))
+				if(src_object.ui_act(action, payload, src))
 					SStgui.update_uis(src_object)
 				return FALSE
 			if("mod/")	// module act
 				var/action = copytext(type, 5)
 				var/ref = payload["$m_ref"]
 				var/id = payload["$m_id"]
-				var/datum/tgui_module/module = locate(ref)
-				#warn this is shit
+				// get the datum
+				var/datum/module = locate(ref)
+				if(QDELETED(module))
+					return
+				// log, update status
 				log_tgui(user, "Action: [action] [href_list["payload"]]",
 					window = window,
 					src_object = src_object)
 				process_status()
-				if(src_object.ui_module_act(action, payload, module, state))
+				// tell it to route the call
+				// note: this is pretty awful code because raw locate()'s are
+				// almost never a good idea
+				// however given we don't have a way of just tracking a ui module list (yet)
+				// we're kind of stuck doing this
+				// maybe in the future we'll just have ui modules list but for now
+				// eh.
+				if(src_object.ui_module_route(action, payload, src, module))
 					SStgui.update_uis(src_object)
 				return FALSE
 	switch(type)

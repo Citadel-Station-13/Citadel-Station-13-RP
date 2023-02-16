@@ -196,7 +196,7 @@
 
 	return data
 
-/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -303,7 +303,7 @@
 
 	return data
 
-/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

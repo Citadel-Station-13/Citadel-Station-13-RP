@@ -450,7 +450,7 @@
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

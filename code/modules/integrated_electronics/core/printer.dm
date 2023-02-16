@@ -252,7 +252,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit_printer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -34,7 +34,7 @@
 		return UI_CLOSE
 	return ..()
 
-/datum/tgui_module_old/agentcard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/agentcard/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

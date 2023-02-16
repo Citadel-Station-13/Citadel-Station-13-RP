@@ -165,7 +165,7 @@
 /mob/living/bot/secbot/attack_hand(var/mob/user)
 	ui_interact(user)
 
-/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
