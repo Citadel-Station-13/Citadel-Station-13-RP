@@ -24,13 +24,14 @@
 		"Supply Chief" = /datum/prototype/alt_title/supply_chief,
 		"Logisticai-Adept" = /datum/prototype/alt_title/logisticai_adept
 		)
-	strict_titles = TRUE
 
 /datum/prototype/alt_title/logisticai_adept
 	title = "Logisticai Adept"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
+
 /datum/prototype/alt_title/supply_chief
 	title = "Supply Chief"
 
