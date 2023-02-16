@@ -1,9 +1,9 @@
-/datum/ghostrole/fugitive_hunter
+/datum/role/ghostrole/fugitive_hunter
 	name = "Fugitive Hunter"
 	desc = "Independent bounty hunters sent after fugitives"
 	instantiator = /datum/ghostrole_instantiator/human/random/fugitive_hunter
 
-/datum/ghostrole/fugitive_hunter/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/fugitive_hunter/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/datum/antagonist/fugitive_hunter/fughunter = new
 	fughunter.backstory = params["bcakstory"]
@@ -31,7 +31,7 @@
 	return ..()
 
 /obj/structure/ghost_role_spawner/fugitive_hunter
-	role_type = /datum/ghostrole/fugitive_hunter
+	role_type = /datum/role/ghostrole/fugitive_hunter
 	var/backstory
 	var/outfit
 

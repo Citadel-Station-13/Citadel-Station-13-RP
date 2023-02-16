@@ -682,23 +682,18 @@ default behaviour is:
 /mob/living/proc/UpdateDamageIcon()
 	return
 
-
 /mob/living/proc/Examine_OOC()
 	set name = "Examine Meta-Info (OOC)"
 	set category = "OOC"
 	set src in view()
-	// Making it so SSD people have prefs with fallback to original style.
-	if(config_legacy.allow_Metadata)
-		if(ooc_notes)
-			to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
-		else if(client)
-			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
-		else
-			to_chat(usr, "[src] does not have any stored infomation!")
-	else
-		to_chat(usr, "OOC Metadata is not supported by this server!")
-	return
 
+	// Making it so SSD people have prefs with fallback to original style.
+	if(ooc_notes)
+		to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
+	else if(client)
+		to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
+	else
+		to_chat(usr, "[src] does not have any stored infomation!")
 
 /mob/living/proc/handle_footstep(turf/T)
 	return FALSE

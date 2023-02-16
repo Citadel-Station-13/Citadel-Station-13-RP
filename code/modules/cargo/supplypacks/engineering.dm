@@ -321,3 +321,11 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/heph
 	container_name = "point defense mainframe circuit crate"
+
+/datum/supply_pack/eng/portable_pump
+	name = "Portable Pump (2x)"
+	contains = list(
+		/obj/machinery/portable_atmospherics/powered/pump = 2
+	)
+	cost = 10
+	container_name = "portable pumps crate"

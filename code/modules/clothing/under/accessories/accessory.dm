@@ -578,7 +578,7 @@
 		if(istype(has_suit) && ishuman(has_suit.loc))
 			H = has_suit.loc
 	if(istype(H))
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_species_id() == SPECIES_ID_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
 		update_worn_icon()
 

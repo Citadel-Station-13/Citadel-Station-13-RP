@@ -1,4 +1,4 @@
-/datum/job/station/senior_researcher
+/datum/role/job/station/senior_researcher
 	title = "Senior Researcher"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	id = JOB_ID_SENIOR_RESEARCHER
