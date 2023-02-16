@@ -26,7 +26,7 @@
 		)
 
 /datum/prototype/alt_title/logisticai_adept
-	title = "Logisticai Adept"
+	title = "Logisticai-Adept"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
