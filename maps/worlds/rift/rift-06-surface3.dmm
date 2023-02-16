@@ -301,14 +301,6 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "hop_office"
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "hop_office"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "hop_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -422,15 +414,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/emt/cockpit)
 "aN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "aO" = (
@@ -951,6 +935,10 @@
 	dir = 4
 	},
 /obj/structure/table/marble,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "bB" = (
@@ -1337,9 +1325,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "ck" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "cl" = (
@@ -1575,13 +1561,6 @@
 	layer = 3.1;
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	id = "bridge_tint"
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -2048,14 +2027,6 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
 	id = "bridge_tint"
 	},
 /turf/simulated/floor/plating,
@@ -2576,14 +2547,6 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "hop_office"
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "hop_office"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "hop_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -2700,6 +2663,10 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/item/storage/single_use/med_pouch/overdose,
 /obj/item/storage/single_use/med_pouch/toxin,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "eL" = (
@@ -2852,9 +2819,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "fc" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	icon_state = "shutter0";
@@ -2862,13 +2826,10 @@
 	name = "Arrivals Checkpoint Shutter";
 	opacity = 0
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "fd" = (
@@ -3008,15 +2969,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "fs" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -3026,6 +2978,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "ft" = (
@@ -3072,7 +3025,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3240,6 +3192,15 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
+"fN" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "fO" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/minitree{
@@ -3514,16 +3475,6 @@
 "gm" = (
 /turf/simulated/wall/r_wall,
 /area/hallway/secondary/docking_hallway)
-"gn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/emt/cockpit)
 "go" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -3644,15 +3595,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
-"gz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cockpit)
 "gA" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -3673,15 +3615,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "gC" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/cockpit)
 "gD" = (
@@ -3888,9 +3822,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/railing{
-	dir = 1
-	},
+/obj/structure/railing,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "hb" = (
@@ -5128,9 +5061,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "jB" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "jC" = (
@@ -5619,13 +5550,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "kw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "kx" = (
@@ -6040,14 +5965,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"lk" = (
-/obj/machinery/light/flamp,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "ll" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -6545,16 +6462,15 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"mp" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
+"mo" = (
+/obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
+"mp" = (
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
 "mq" = (
@@ -6793,9 +6709,6 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "mM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -6804,10 +6717,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "mN" = (
@@ -6998,9 +6908,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "nh" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "ni" = (
@@ -7030,13 +6938,6 @@
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "nl" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7044,6 +6945,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "nm" = (
@@ -7384,14 +7286,16 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "nP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
-/area/exploration/excursion_dock)
+/obj/structure/bed/chair/sofa/black/right,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/bar)
 "nQ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -7440,9 +7344,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "nV" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "nW" = (
@@ -7594,6 +7496,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
+"om" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "on" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -7806,15 +7718,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "oL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "oM" = (
@@ -8906,6 +8810,16 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
+"qY" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "qZ" = (
 /obj/machinery/ai_slipper,
 /obj/structure/cable/cyan{
@@ -9072,18 +8986,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "rs" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "rt" = (
@@ -9254,11 +9157,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
-"rJ" = (
-/obj/effect/spider/eggcluster,
-/obj/random/maintenance/security,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "rK" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -9351,6 +9249,10 @@
 /obj/item/flame/candle,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/bar)
@@ -9903,10 +9805,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "tc" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "td" = (
@@ -10677,6 +10576,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"uD" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uE" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -10757,12 +10663,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "uN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
 "uO" = (
@@ -11137,13 +11038,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "vz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "vA" = (
@@ -12135,16 +12030,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
-"xj" = (
-/obj/machinery/light/flamp{
-	layer = 4;
-	pixel_y = 21
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -12198,8 +12083,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/smartfridge,
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/glass{
+	name = "Hydroponics";
+	req_one_access = list(35,28)
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "xq" = (
 /obj/machinery/door/airlock/glass_external,
@@ -12446,9 +12334,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "xQ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -12457,10 +12342,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "xR" = (
@@ -12486,16 +12368,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"xV" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/civvie/cockpit)
 "xW" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -12742,6 +12614,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
+"ys" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "yt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12782,15 +12664,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/shuttle/excursion/cargo)
 "yw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway2)
 "yx" = (
@@ -12922,7 +12796,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13861,13 +13734,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
 "AM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "AN" = (
@@ -13925,10 +13792,11 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "AS" = (
-/obj/machinery/light/flamp,
-/obj/structure/railing,
 /obj/structure/railing{
-	dir = 4
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
@@ -14417,6 +14285,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "arv_check_hall_shutter";
+	name = "Arrivals Hallway Shutter";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "BO" = (
@@ -14427,10 +14303,7 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "BP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
 "BQ" = (
@@ -14551,6 +14424,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"Cc" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/excursion/cargo)
 "Cd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15028,6 +14905,10 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"De" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/stairwell/primary/surfacethree)
 "Df" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/cyan{
@@ -15482,9 +15363,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Ec" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "Ed" = (
@@ -15671,13 +15550,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "Eu" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "Ev" = (
@@ -16573,6 +16446,14 @@
 "Gi" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/bar_backroom)
+"Gj" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Gk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17543,15 +17424,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "Io" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar_backroom)
 "Ip" = (
@@ -17628,16 +17501,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
-"Iw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/commandmaint)
 "Ix" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/portables_connector{
@@ -17791,14 +17654,11 @@
 /area/security/nuke_storage)
 "IM" = (
 /obj/structure/railing{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/light/flamp{
-	layer = 4;
-	pixel_y = 21
-	},
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/shuttle)
+/area/rift/surfacebase/outside/outside3)
 "IN" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
@@ -17990,12 +17850,6 @@
 "Jf" = (
 /turf/simulated/wall,
 /area/exploration/showers)
-"Jg" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacethree)
 "Jh" = (
 /obj/machinery/door/airlock/maintenance/command,
 /turf/simulated/floor/plating,
@@ -18211,6 +18065,10 @@
 /obj/item/stool/padded,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -18702,7 +18560,7 @@
 	},
 /obj/item/ammo_magazine/s357,
 /obj/item/ammo_magazine/s357,
-/obj/item/gun/projectile/revolver/mateba,
+/obj/item/gun/ballistic/revolver/mateba,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/dark,
@@ -18945,15 +18803,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "KY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
-"KZ" = (
-/obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "La" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -19156,14 +19008,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Ly" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "shuttle blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
@@ -19195,7 +19047,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/light/flamp,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "LE" = (
@@ -19365,16 +19217,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
-"LW" = (
-/obj/machinery/light/flamp{
-	layer = 4;
-	pixel_y = 21
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "LX" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
@@ -19544,6 +19386,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Mn" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Mo" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
@@ -19768,6 +19617,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "MI" = (
@@ -19848,9 +19701,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "MT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/cafeteria)
 "MU" = (
@@ -19924,6 +19775,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Nd" = (
+/obj/effect/shuttle_landmark/rift/deck3/pirate,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ne" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -20070,7 +19925,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Nu" = (
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -20078,7 +19933,7 @@
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"
 	},
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/clothing/suit/armor/vest/alt{
 	name = "armor vest"
 	},
@@ -20468,14 +20323,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Of" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
+/obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cockpit)
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
 "Og" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20725,7 +20578,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "OH" = (
-/obj/item/gun/projectile/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/item/duct_tape_roll,
 /obj/structure/closet/hydrant{
@@ -20787,13 +20640,6 @@
 	layer = 3.1;
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
-	},
-/obj/structure/window/reinforced/polarized{
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "bridge_tint"
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -20908,9 +20754,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "OV" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "OW" = (
@@ -20992,6 +20836,14 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "arv_check_hall_shutter";
+	name = "Arrivals Hallway Shutter";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Pe" = (
@@ -21033,6 +20885,14 @@
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
+"Pj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Pk" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rsurface/level3)
@@ -21213,28 +21073,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "PE" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"PF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/holosign/bar{
-	id = "bar_sign";
-	layer = 4.9;
-	pixel_y = -1
-	},
-/turf/simulated/floor/plating,
-/area/crew_quarters/bar)
 "PG" = (
 /obj/structure/bed/chair/wood,
 /obj/machinery/light{
@@ -21250,7 +21091,6 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
 "PH" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -21261,17 +21101,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "bridge_tint"
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "PI" = (
@@ -21357,14 +21187,6 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "bridge_tint"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "PQ" = (
@@ -21444,6 +21266,13 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"PZ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Qa" = (
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 5
@@ -22002,6 +21831,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"QZ" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ra" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -22092,6 +21928,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
+"Rk" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/shuttle)
 "Rl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -22757,7 +22597,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "Sr" = (
-/obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -22929,15 +22768,7 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "SL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/cockpit)
 "SM" = (
@@ -23033,6 +22864,14 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
+"SW" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/red,
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "SX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -23173,7 +23012,6 @@
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -23375,6 +23213,21 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
+"TK" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "arv_check_shutter";
+	name = "Arrivals Checkpoint Shutter";
+	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/security/checkpoint2)
 "TL" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -23412,13 +23265,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "TP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside3)
 "TQ" = (
@@ -23640,9 +23487,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Un" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -23652,14 +23496,12 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "Uo" = (
@@ -23669,10 +23511,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
-"Up" = (
-/obj/effect/spider/eggcluster,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Uq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -23723,15 +23561,6 @@
 "Uu" = (
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
-"Uv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cockpit)
 "Uw" = (
 /obj/structure/cable/green{
 	icon_state = "32-4"
@@ -23850,16 +23679,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
-"UE" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/flamp{
-	layer = 4;
-	pixel_y = 21
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/shuttle)
 "UF" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -23884,6 +23703,17 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"UI" = (
+/obj/structure/window/reinforced,
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/bar)
 "UJ" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/corner/lightgrey{
@@ -23969,7 +23799,7 @@
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
-/obj/item/gun/projectile/SVD,
+/obj/item/gun/ballistic/SVD,
 /obj/item/ammo_magazine/m762svd,
 /obj/item/ammo_magazine/m762svd,
 /obj/item/clothing/suit/space/void/merc/soviet,
@@ -24058,7 +23888,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Vb" = (
-/obj/effect/spider/eggcluster/small,
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vc" = (
@@ -24309,13 +24139,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "VB" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -24327,6 +24150,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "VC" = (
@@ -24684,14 +24508,6 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "hop_office"
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "hop_office"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "hop_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -24769,9 +24585,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/smartfridge,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Ww" = (
@@ -24808,7 +24623,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/obj/machinery/light/flamp,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "WB" = (
@@ -24846,6 +24661,16 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"WE" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "WF" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -24995,6 +24820,10 @@
 /obj/item/clothing/head/helmet/space/void/exploration/alt,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
+"WR" = (
+/obj/effect/shuttle_landmark/rift/deck3/specops,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "WS" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue{
@@ -25688,12 +25517,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"Yo" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cargo)
 "Yp" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -25774,6 +25597,14 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
+"Yz" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "YA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -32205,7 +32036,7 @@ us
 us
 us
 us
-us
+Nd
 us
 us
 us
@@ -33718,7 +33549,7 @@ Oi
 Oi
 Oi
 Oi
-ha
+AS
 UZ
 UZ
 UZ
@@ -33911,7 +33742,7 @@ Oi
 Oi
 Oi
 Oi
-aC
+WE
 us
 us
 us
@@ -33932,7 +33763,7 @@ us
 us
 us
 us
-mj
+Yz
 vM
 IA
 IA
@@ -37309,9 +37140,9 @@ MH
 JY
 JC
 Mt
-jF
+nP
 rV
-QH
+UI
 Aj
 cO
 bx
@@ -37843,7 +37674,7 @@ cH
 cH
 cH
 fk
-xj
+PZ
 UZ
 UZ
 UZ
@@ -37858,7 +37689,7 @@ UZ
 UZ
 UZ
 UZ
-lk
+ha
 ej
 cH
 cH
@@ -38814,7 +38645,7 @@ cH
 dx
 us
 us
-xV
+SL
 et
 zT
 lQ
@@ -39008,7 +38839,7 @@ cH
 dx
 us
 us
-xV
+SL
 xT
 Pv
 jt
@@ -39441,7 +39272,7 @@ Po
 Po
 kx
 Sd
-PF
+rs
 RO
 eW
 Fm
@@ -39578,14 +39409,14 @@ Ad
 Ad
 Ad
 Ad
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 dx
 us
@@ -39777,10 +39608,10 @@ Ad
 Ad
 Ad
 Ad
-cH
-cH
-cH
-cH
+Ad
+Ad
+Ad
+Ad
 dx
 us
 us
@@ -39960,24 +39791,24 @@ kr
 ej
 Ad
 Ad
+QK
+AS
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+fQ
+ej
 cH
-cH
-cH
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
 Ad
 Ad
 cH
 iL
-LW
+IM
 TN
 TN
 TN
@@ -39992,7 +39823,7 @@ TN
 TN
 TN
 TN
-AS
+Gj
 cF
 IA
 IA
@@ -40057,7 +39888,7 @@ oo
 oo
 JI
 cT
-Yo
+Cc
 Ur
 uZ
 Jk
@@ -40154,20 +39985,20 @@ kr
 ej
 Ad
 Ad
+qY
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+Pj
+ej
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-Ad
-Ad
-Ad
-Ad
-Ad
-Ad
 Ad
 Ad
 Ad
@@ -40348,19 +40179,19 @@ Ad
 Ad
 Ad
 Ad
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+Mn
 Ad
 Ad
 Ad
@@ -40368,7 +40199,7 @@ Ad
 Ad
 cc
 mX
-IM
+Of
 gP
 gP
 gP
@@ -40447,7 +40278,7 @@ yk
 YY
 LA
 Lo
-Yo
+Cc
 LA
 LA
 mn
@@ -40541,21 +40372,21 @@ Ad
 Ad
 Ad
 Ad
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+QZ
+Ad
 Ad
 Ad
 cH
@@ -40634,10 +40465,10 @@ Hg
 gH
 CM
 CM
-Of
-Of
-Of
-Of
+BP
+BP
+BP
+BP
 CM
 CM
 Li
@@ -40735,20 +40566,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 Ad
@@ -40826,7 +40657,7 @@ vE
 xQ
 dc
 uf
-gz
+BP
 Jb
 Od
 Lc
@@ -40895,7 +40726,7 @@ cH
 cH
 cH
 QK
-fo
+om
 us
 us
 us
@@ -40916,7 +40747,7 @@ us
 us
 us
 jy
-tI
+Gj
 pX
 cH
 cH
@@ -40929,20 +40760,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 Ad
@@ -40978,19 +40809,19 @@ SJ
 cZ
 Ez
 ET
-Un
-Un
+TK
+TK
 Un
 cZ
 cZ
 aZ
 bC
-Jg
+De
 TZ
 Kx
 Cu
 Cu
-Jg
+De
 Yc
 Wg
 aQ
@@ -41020,7 +40851,7 @@ vE
 xQ
 bn
 oo
-gz
+BP
 Lk
 hE
 yR
@@ -41123,24 +40954,24 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
-Uu
+Rk
 Uu
 Uu
 Uu
@@ -41179,12 +41010,12 @@ dp
 cZ
 bc
 bE
-Jg
+De
 Bc
 UG
 Cu
 Cu
-Jg
+De
 YO
 Wg
 aQ
@@ -41216,10 +41047,10 @@ Uo
 OB
 CM
 Tm
-Uv
+BP
 CM
 CM
-Uv
+BP
 CM
 CM
 fV
@@ -41317,20 +41148,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -41417,7 +41248,7 @@ wY
 xn
 LA
 TS
-Yo
+Cc
 LA
 zE
 mn
@@ -41511,20 +41342,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -41705,20 +41536,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -41899,20 +41730,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -42093,20 +41924,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -42287,20 +42118,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -42481,20 +42312,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 dx
@@ -42675,24 +42506,24 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 Id
-Uu
+Rk
 Uu
 Uu
 Uu
@@ -42731,12 +42562,12 @@ kG
 js
 PD
 bK
-Jg
+De
 kz
 hl
 Cu
 Cu
-Jg
+De
 Yc
 Wg
 aQ
@@ -42869,20 +42700,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+ej
 Ad
 Ad
 Ad
@@ -42925,12 +42756,12 @@ js
 js
 bt
 ZH
-Jg
+De
 zo
 jb
 Cu
 Cu
-Jg
+De
 YO
 Wg
 aQ
@@ -42956,7 +42787,7 @@ kA
 kD
 Yg
 me
-nP
+tc
 PU
 dw
 Vm
@@ -43063,20 +42894,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+WR
+us
+us
+us
+us
+us
+us
+mn
+ej
 cH
 Ad
 Ad
@@ -43257,20 +43088,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+Mn
 cH
 Ad
 Ad
@@ -43344,7 +43175,7 @@ km
 jo
 Yg
 cH
-nP
+tc
 Rw
 WX
 EZ
@@ -43451,28 +43282,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+QZ
+Ad
 Ad
 Ad
 Ad
 Ad
 Hx
 SZ
-UE
+mo
 yc
 yc
 yc
@@ -43645,20 +43476,20 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+ys
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+SW
+ej
 Ad
 Ad
 Ad
@@ -43840,24 +43671,24 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+fN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+uD
+ej
 cH
 Ad
 Ad
 cH
 fk
-xj
+PZ
 UZ
 UZ
 UZ
@@ -43872,7 +43703,7 @@ UZ
 UZ
 UZ
 UZ
-lk
+ha
 cF
 IA
 IA
@@ -44035,16 +43866,16 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
 cH
 cH
 Ad
@@ -44828,7 +44659,7 @@ Ad
 dx
 us
 us
-gn
+gC
 hI
 kV
 mk
@@ -45022,7 +44853,7 @@ cH
 dx
 us
 us
-gn
+gC
 ss
 lq
 mm
@@ -45047,7 +44878,7 @@ fq
 cH
 TP
 Gw
-Iw
+PE
 tK
 tK
 Pg
@@ -45241,7 +45072,7 @@ cH
 cH
 TP
 Gw
-Iw
+PE
 tK
 tK
 Pg
@@ -45949,7 +45780,7 @@ fq
 fq
 fq
 qn
-GO
+Vb
 fq
 fq
 fq
@@ -45991,7 +45822,7 @@ cH
 cH
 cH
 iL
-LW
+IM
 TN
 TN
 TN
@@ -46006,7 +45837,7 @@ TN
 TN
 TN
 TN
-AS
+Gj
 ej
 cH
 cH
@@ -49441,7 +49272,7 @@ fq
 fq
 fq
 fq
-uw
+GO
 fq
 fq
 fq
@@ -49645,7 +49476,7 @@ GO
 GO
 GO
 GO
-uw
+GO
 GO
 GO
 GO
@@ -50221,7 +50052,7 @@ GO
 GO
 GO
 GO
-As
+GO
 fq
 fq
 fq
@@ -50411,7 +50242,7 @@ fq
 fq
 GO
 GO
-uw
+GO
 Xh
 GO
 fq
@@ -50604,7 +50435,7 @@ fq
 fq
 fq
 sH
-xR
+GO
 GO
 GO
 GO
@@ -51784,7 +51615,7 @@ fq
 fq
 fq
 GO
-As
+GO
 fq
 fq
 fq
@@ -52190,7 +52021,7 @@ fq
 fq
 fq
 sH
-KZ
+GO
 sH
 nO
 fq
@@ -53162,7 +52993,7 @@ fq
 xR
 nO
 uw
-Vb
+GO
 GO
 GO
 GO
@@ -53354,7 +53185,7 @@ fq
 fq
 fq
 fq
-Vb
+GO
 As
 sH
 Ws
@@ -56477,7 +56308,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 fq
 fq
 fq
@@ -57062,7 +56893,7 @@ GO
 GO
 As
 GO
-Up
+GO
 fq
 fq
 fq
@@ -57832,7 +57663,7 @@ fq
 fq
 fq
 sH
-rJ
+nO
 xA
 GO
 GO
@@ -58417,7 +58248,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 Ub
 fq
 fq

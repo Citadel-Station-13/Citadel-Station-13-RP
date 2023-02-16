@@ -92,7 +92,7 @@
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
 				if(ishuman(usr))
-					usr.put_in_hands(inserted_id)
+					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
 				else
 					inserted_id.forceMove(get_turf(src))

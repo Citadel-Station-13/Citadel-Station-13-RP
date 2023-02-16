@@ -35,7 +35,7 @@
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
-			/obj/item/gun/projectile/shotgun/flare = 2,
+			/obj/item/gun/ballistic/shotgun/flare = 2,
 			/obj/item/storage/box/flashshells = 2
 			)
 	cost = 25
@@ -66,7 +66,7 @@
 	contains = list(
 			/obj/item/storage/box/shotgunammo,
 			/obj/item/storage/box/shotgunshells,
-			/obj/item/gun/projectile/shotgun/pump/combat = 2
+			/obj/item/gun/ballistic/shotgun/pump/combat = 2
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/ward
@@ -113,7 +113,7 @@
 
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
-	contains = list(/obj/item/gun/projectile/automatic/wt550 = 2)
+	contains = list(/obj/item/gun/ballistic/automatic/wt550 = 2)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Ballistic weapon crate"
@@ -121,7 +121,7 @@
 
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
-	contains = list(/obj/item/gun/projectile/automatic/z8 = 2)
+	contains = list(/obj/item/gun/ballistic/automatic/z8 = 2)
 	cost = 80
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Ballistic weapon crate"
@@ -131,7 +131,7 @@
  	name = "Weapons - Competitive shooting rifles"
  	contains = list(
  			/obj/item/assembly/timer,
- 			/obj/item/gun/projectile/shotgun/pump/rifle/practice = 2,
+ 			/obj/item/gun/ballistic/shotgun/pump/rifle/practice = 2,
  			/obj/item/ammo_magazine/clip/c762/practice = 4,
  			/obj/item/target = 2,
  			/obj/item/target/alien = 2,
@@ -240,8 +240,8 @@
 /datum/supply_pack/munitions/weaponry_apidean
 	name = "Apidean Weaponry Crate"
 	contains = list(
-			/obj/item/gun/projectile/apinae_stinger = 1,
-			/obj/item/gun/projectile/apinae_pistol = 2,
+			/obj/item/gun/ballistic/apinae_stinger = 1,
+			/obj/item/gun/ballistic/apinae_pistol = 2,
 			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
 			)
 	cost = 150
@@ -253,9 +253,9 @@
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 			/obj/item/gun/energy/ermitter = 1,
-			/obj/item/gun/projectile/rocket/tyrmalin = 1,
+			/obj/item/gun/ballistic/rocket/tyrmalin = 1,
 			/obj/item/ammo_casing/rocket/weak = 2,
-			/obj/item/gun/projectile/pirate/junker_pistol = 2,
+			/obj/item/gun/ballistic/pirate/junker_pistol = 2,
 			/obj/item/gun/energy/ionrifle/pistol/tyrmalin = 1
 			)
 	cost = 175

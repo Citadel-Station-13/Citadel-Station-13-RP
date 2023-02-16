@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
+	item_flags = ITEM_NOBLUDGEON
 
 	//Main variables
 	var/pdachoice = 1
@@ -1339,7 +1340,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 
-/obj/item/pda/attack(mob/living/C as mob, mob/living/user as mob)
+/obj/item/pda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/C = target
 	if (istype(C, /mob/living/carbon))
 		switch(scanmode)
 			if(1)
@@ -1409,7 +1411,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significantchemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significant chemical agents found in [A].</span>")
 
 		if(5)
 			analyze_gases(A, user)
@@ -1594,7 +1596,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/pathfinder
 	default_cartridge = /obj/item/cartridge/signal/science
-	icon_state = "pda-lawyer-old"
+	icon_state = "pda-lawyer"
 
 /obj/item/pda/explorer
 	default_cartridge = /obj/item/cartridge/signal/science

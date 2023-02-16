@@ -160,8 +160,6 @@
 				if(istype(AM, /mob/living))
 					var/mob/living/M = AM
 					M.gib()
-				else if(istype(AM, /mob/zshadow))
-					qdel(AM)
 				else if(!(AM.atom_flags & ATOM_ABSTRACT) && !(istype(AM, /mob/observer)))
 					qdel(AM)
 

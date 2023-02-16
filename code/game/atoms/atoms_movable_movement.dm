@@ -1,14 +1,24 @@
 /**
-  * Hook for running code when a dir change occurs
-  *
-  * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
-  */
+ * Hook for running code when a dir change occurs
+ *
+ * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ */
 /atom/proc/setDir(newdir)
 	if(dir == newdir)
 		return FALSE
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
+
+	if (light_source_solo)
+		if (light_source_solo.light_angle)
+			light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		for (var/thing in light_source_multi)
+			L = thing
+			if (L.light_angle)
+				L.source_atom.update_light()
 	return TRUE
 
 ////////////////////////////////////////
@@ -285,7 +295,7 @@
 			else
 				M.doLocationTransitForceMove(destination)
 			if(!(M.buckled == src))
-				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, oldbuckled[M])
+				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, null, oldbuckled[M])
 
 	if(oldpulling)
 		if(recurse_levels)

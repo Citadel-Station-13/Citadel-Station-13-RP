@@ -1,7 +1,7 @@
-/datum/preferences/proc/spawn_checks(flags, list/errors)
+/datum/preferences/proc/spawn_checks(flags, list/errors, list/warnings)
 	. = TRUE
 	for(var/datum/category_group/player_setup_category/category in player_setup.categories)
-		if(!category.spawn_checks(src, flags, errors))
+		if(!category.spawn_checks(src, flags, errors, warnings))
 			. = FALSE
 
 // todo: at some point we should support nonhuman copy to's better.
@@ -53,3 +53,4 @@
  */
 /datum/preferences/proc/imprint_mind(datum/mind/M)
 	M.original_save_data = deep_copy_list(character)
+	M.original_pref_economic_modifier = tally_background_economic_factor()

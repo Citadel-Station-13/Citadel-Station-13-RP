@@ -70,7 +70,7 @@
 /area/awaymission/spacebattle/syndicate2)
 "au" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "av" = (
@@ -85,7 +85,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "aA" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/projectile/silenced,
+/obj/item/gun/ballistic/silenced,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "aB" = (
@@ -125,7 +125,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "aL" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/projectile/deagle,
+/obj/item/gun/ballistic/deagle,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate3)
 "aM" = (
@@ -840,7 +840,7 @@
 	mobname = "Davis Hume";
 	name = "Davis Hume"
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eC" = (
@@ -939,7 +939,7 @@
 	mobname = "Kurt Kliest";
 	name = "Kurt Kliest"
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/ammo_casing/a12g/pellet,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -996,7 +996,7 @@
 /area/awaymission/spacebattle/cruiser)
 "ft" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/effect/debris/cleanable/blood,
@@ -1007,7 +1007,7 @@
 	mobname = "Walter Strider";
 	name = "Walter Strider"
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/effect/debris/cleanable/blood,
@@ -1016,7 +1016,7 @@
 "fx" = (
 /obj/item/ammo_casing/a357,
 /obj/item/ammo_casing/a357,
-/obj/item/gun/projectile/revolver/mateba,
+/obj/item/gun/ballistic/revolver/mateba,
 /obj/spawner/corpse/commander{
 	mobname = "Aaron Bowden";
 	name = "Aaron Bowden"
@@ -1125,7 +1125,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "gE" = (
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gH" = (
@@ -1539,7 +1539,7 @@
 /area/awaymission/spacebattle/cruiser)
 "iy" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iA" = (

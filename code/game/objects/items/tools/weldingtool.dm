@@ -62,22 +62,22 @@
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
-/obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
-	if(ishuman(A) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = A
+/obj/item/weldingtool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(ishuman(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			return ..()
+			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			return NONE
 
 		if(!welding)
 			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
-			return 1
+			return NONE
 
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
-			return 1
-
+		return NONE
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -365,7 +365,14 @@
 	max_fuel = 20
 	matter = list(MAT_METAL = 30, MAT_BONE = 10)
 	tool_speed = 1.5
-	eye_safety_modifier = 1 // Safer on eyes.
+	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
+	always_process = TRUE
+
+//I can't currently think of a good vector for welding fuel. Plus these welders are like, magic anyways, so.
+/obj/item/weldingtool/bone/process(delta_time)
+	if(get_fuel() <= get_max_fuel())
+		reagents.add_reagent("fuel", 1)
+	..()
 
 /obj/item/weldingtool/brass
 	name = "brass welding tool"
@@ -524,6 +531,10 @@
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
+
+/obj/item/weldingtool/welder_spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /*
  * Electric/Arc Welder

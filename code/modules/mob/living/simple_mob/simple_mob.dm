@@ -265,7 +265,7 @@
 		update_icons()
 
 /mob/living/simple_mob/Initialize(mapload)
-	verbs -= /mob/verb/observe
+	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
 
@@ -341,11 +341,11 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	if(T && T.movement_cost && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
+	if(T && T.slowdown && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
 		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
-			tally += T.movement_cost
+			tally += T.slowdown
 
 	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
 		if(tally <= 0)
@@ -358,10 +358,10 @@
 	return . + tally + config_legacy.animal_delay
 
 
-/mob/living/simple_mob/Stat()
-	..()
-	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / getMaxHealth()) * 100)]%")
+/mob/living/simple_mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status") && show_stat_health)
+		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
 
 /mob/living/simple_mob/lay_down()
 	..()

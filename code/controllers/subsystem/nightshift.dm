@@ -59,7 +59,11 @@ SUBSYSTEM_DEF(nightshift)
 			announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
 		else
 			announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+
+	SSlighting.pause_instant()
+
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+<<<<<<< HEAD
 		if(!SSmapping.level_trait(apc.z, ZTRAIT_STATION))
 			continue
 		apc.set_nightshift(active, TRUE)
@@ -100,3 +104,10 @@ SUBSYSTEM_DEF(nightshift)
 /proc/get_nightshift()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
+=======
+		if(apc.z in GLOB.using_map.station_levels)
+			apc.set_nightshift(active, TRUE)
+			CHECK_TICK
+
+	SSlighting.resume_instant()
+>>>>>>> citrp/master

@@ -271,7 +271,7 @@
 "P" = (
 /obj/structure/table/rack,
 /obj/item/ammo_magazine/clip/c762/hunter,
-/obj/item/gun/projectile/shotgun/pump/rifle,
+/obj/item/gun/ballistic/shotgun/pump/rifle,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "Q" = (

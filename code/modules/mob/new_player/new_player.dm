@@ -150,28 +150,28 @@
 
 
 
-/mob/new_player/Stat()
-	..()
-
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		if(statpanel("Status"))
+/mob/new_player/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		if(SSticker.current_state == GAME_STATE_PREGAME)
 			if(SSticker.hide_mode)
-				stat("Game Mode:", "Secret")
+				STATPANEL_DATA_ENTRY("Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
+					STATPANEL_DATA_ENTRY("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
-				stat(null, "Time To Start: [round(time_remaining/10)]s")
+				STATPANEL_DATA_LINE("Time To Start: [round(time_remaining/10)]s")
 			else if(time_remaining == -10)
-				stat(null, "Time To Start: DELAYED")
+				STATPANEL_DATA_LINE("Time To Start: DELAYED")
 			else
-				stat(null, "Time To Start: SOON")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				STATPANEL_DATA_LINE("Time To Start: SOON")
+			STATPANEL_DATA_ENTRY("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
+				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
@@ -232,6 +232,12 @@
 
 	if(href_list["ready"])
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
+			var/list/warnings = list()
+			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
+			if(length(warnings))
+				to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+				if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up? Check the chat panel for details.", "Spawn Checks", list("Yes", "No")) != "Yes")
+					return
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
@@ -275,7 +281,7 @@
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
 			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+				remove_verb(observer, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
 			observer.key = key
 			observer.client?.holder?.update_stealth_ghost()
 			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults
@@ -468,7 +474,7 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
-	var/datum/job/J = SSjob.job_by_title(rank)
+	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
 		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
@@ -476,9 +482,14 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors))
+	var/list/warnings = list()
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors, warnings))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
+	if(length(warnings))
+		to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+		if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
+			return
 
 	//Find our spawning point.
 	var/list/join_props = SSjob.LateSpawn(client, rank)
@@ -558,6 +569,7 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
+	// warnings ignored for now.
 	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
@@ -571,7 +583,7 @@
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
+		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? chosen_species.id : chosen_species.uid), ckey))
 			new_character = new(T, use_species_name)
 
 	if(!new_character)
@@ -661,7 +673,7 @@
 	if(!chosen_species)
 		return SPECIES_HUMAN
 
-	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
+	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.id), ckey))
 		return chosen_species.name
 
 	return SPECIES_HUMAN
@@ -689,16 +701,6 @@
 
 /mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
-
-	//No Flavor Text
-	if (config_legacy.require_flavor && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
-		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
-		pass = FALSE
-
-	//No OOC notes
-	if (config_legacy.allow_Metadata && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
-		to_chat(src,"<span class='warning'>Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup.</span>")
-		pass = FALSE
 
 	//Are they on the VERBOTEN LIST?
 	if (prevent_respawns.Find(client.prefs.real_name))

@@ -229,8 +229,6 @@
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] with [I.name] by [user]!</span>")
-
 	if(ai_holder)
 		ai_holder.react_to_attack(user)
 
@@ -329,7 +327,7 @@
 /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 	O.loc = src
 	src.embedded += O
-	src.verbs += /mob/proc/yank_out_object
+	add_verb(src, /mob/proc/yank_out_object)
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)

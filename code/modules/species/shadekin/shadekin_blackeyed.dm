@@ -40,6 +40,7 @@
 	total_health = 75   // Fragile
 	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
+	radiation_mod = 0
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
 	hunger_factor = 0.2 // Gets hungrier faster than human baseline.
@@ -149,7 +150,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/crew_shadekin(H)
 	for(var/datum/power/crew_shadekin/P in crew_shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_crew_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,

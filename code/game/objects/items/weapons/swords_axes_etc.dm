@@ -19,15 +19,16 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
+/obj/item/melee/classic_baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
+		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*force, BRUTE, BP_HEAD)
 		else
-			user.take_organ_damage(2*force)
+			L.take_organ_damage(2*force)
 		return
 	return ..()
 
@@ -91,7 +92,7 @@
 		add_overlay(blood_overlay)
 	return
 
-/obj/item/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
+/obj/item/melee/telebaton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
@@ -99,8 +100,9 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(2*force, BRUTE, BP_HEAD)
-			else
-				user.take_organ_damage(2*force)
+			else if(isliving(user))
+				var/mob/living/L = user
+				L.take_organ_damage(2*force)
 			return
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb
@@ -312,26 +314,23 @@
 			user.emote("flip")
 		sleep(1)
 
-/obj/item/bo_staff/attack(mob/target, mob/living/user)
-	add_fingerprint(user)
-	if(!ishuman(target))
+/obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/L = target
+	if(!istype(L))
 		return
-	if(user.a_intent != INTENT_DISARM)
-		return
-	else
-		var/mob/living/carbon/human/H = target
-		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
-									  "[user] smacks [H] with the butt of [src]!", \
-									  "[user] broadsides [H] with [src]!", \
-									  "[user] smashes [H]'s head with [src]!", \
-									  "[user] beats [H] with front of [src]!", \
-									  "[user] twirls and slams [H] with [src]!")
-		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
-							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
-		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
-		if(prob(25))
-			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
-			return ..()
+	var/mob/living/carbon/human/H = L
+	var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
+									"[user] smacks [H] with the butt of [src]!", \
+									"[user] broadsides [H] with [src]!", \
+									"[user] smashes [H]'s head with [src]!", \
+									"[user] beats [H] with front of [src]!", \
+									"[user] twirls and slams [H] with [src]!")
+	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
+							"<span class='userdanger'>[pick(fluffmessages)]</span>")
+	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+	if(prob(25))
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
 
 //Kanabo
 /obj/item/melee/kanabo // parrying stick

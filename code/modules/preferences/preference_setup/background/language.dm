@@ -58,7 +58,7 @@
 	for(var/id in data)
 		H.add_language(id)
 
-/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
@@ -100,7 +100,16 @@
  * returns max amounts we can have. doesn't take into account what we do have.
  */
 /datum/preferences/proc/extraneous_languages_max()
-	return max(character_species_datum().max_additional_languages, 0)
+	var/list/datum/lore/character_background/backgrounds = list(
+		lore_citizenship_datum(),
+		lore_origin_datum(),
+		lore_religion_datum(),
+		lore_faction_datum()
+	)
+	var/tally = character_species_datum().max_additional_languages
+	for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
+		tally += B.language_amount_mod
+	return max(tally, 0)
 
 /**
  * returns ids of languages that aren't innate to our species/background

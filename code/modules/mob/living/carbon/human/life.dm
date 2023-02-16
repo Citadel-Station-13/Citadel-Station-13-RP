@@ -666,10 +666,10 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == SPECIES_PROTEAN)
+		if(H.species.get_species_id() == SPECIES_ID_PROTEAN)
 			return // dont modify protean heat levels
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
-		if(H.species.name == SPECIES_ADHERENT)
+		if(H.species.get_species_id() == SPECIES_ID_ADHERENT)
 			return // Don't modify Adherent heat levels ffs
 
 		else
@@ -1048,8 +1048,10 @@
 	if(status_flags & GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
+	var/was_ssd = FALSE
 	if(species.get_ssd(src) && !client && !teleop && !override_ssd && !temporary_form)
 		Sleeping(2)
+		was_ssd = TRUE
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
 		silent = 0
@@ -1072,10 +1074,6 @@
 					fake_attack(src)
 				if(!handling_hal)
 					spawn handle_hallucinations() //The not boring kind!
-				if(client && prob(5))
-					client.dir = pick(2,4,8)
-					spawn(rand(20,50))
-						client.dir = 1
 
 			hallucination = max(0, hallucination - 2)
 		else
@@ -1106,7 +1104,7 @@
 				handle_dreams()
 				if (mind)
 					//Are they SSD? If so we'll keep them asleep but work off some of that sleep var in case of stoxin or similar.
-					if(client || sleeping > 3)
+					if(!was_ssd || sleeping > 3)
 						AdjustSleeping(-1)
 				if( prob(2) && health && !hal_crit )
 					spawn(0)
@@ -1557,7 +1555,7 @@
 			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
-			var/viewflags = machine.check_eye(src)
+			var/viewflags = machine.check_eye(src, TRUE)
 			if(viewflags < 0)
 				reset_perspective()
 			else if(viewflags && !looking_elsewhere)
@@ -1623,7 +1621,7 @@
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
-		if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD)
+		if(T.get_lumcount() <= 0)
 			playsound_local(src,pick(scarySounds),50, 1, -1)
 
 /mob/living/carbon/human/handle_stomach()

@@ -5,6 +5,7 @@
 	name = SPECIES_HUMAN
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
+	override_worn_legacy_bodytype = SPECIES_HUMAN
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
@@ -28,7 +29,6 @@
 
 	max_age = 130
 
-	economic_modifier = 10
 
 	health_hud_intensity = 1.5
 

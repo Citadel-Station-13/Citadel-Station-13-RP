@@ -6,6 +6,7 @@
 	force = 2
 	throw_force = 2
 	w_class = 2.0
+	hitsound = 'sound/effects/deskbell.ogg'
 	var/broken
 	attack_verb = list("annoyed")
 	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
@@ -16,11 +17,6 @@
 	. = ..()
 	if(broken)
 		. += "<span class = 'danger'>It looks damaged, the ringer is stuck firmly inside.</span>"
-
-/obj/item/deskbell/attack(mob/target as mob, mob/living/user as mob)
-	if(!broken)
-		playsound(user.loc, 'sound/effects/deskbell.ogg', 50, 1)
-	..()
 
 /obj/item/deskbell/attack_hand(mob/user)
 
@@ -49,7 +45,7 @@
 	// Once the player has decided their option, choose the behaviour that will happen under said option.
 	switch(choice)
 		if("examine")
-			examine(user)
+			user.do_examinate(src)
 
 		if("use")
 			if(check_ability(user))

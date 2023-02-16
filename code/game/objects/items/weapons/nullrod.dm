@@ -180,9 +180,9 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	force = rand(1, 30)
-	..()
+	return ..()
 
 /obj/item/nullrod/claymore/saber
 	name = "light energy sword"
@@ -372,7 +372,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack(mob/target, mob/living/user)
+/obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -392,7 +392,7 @@
 							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		if(prob(25))
-			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+			jedi_spin(usr)
 	else
 		return ..()
 
@@ -442,9 +442,12 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack(mob/living/M, mob/living/user)
+/obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(!isliving(target))
+		return ..()
+	var/mob/living/L = target
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
@@ -454,17 +457,17 @@
 		to_chat(user, "<span class='notice'>You are already using [src].</span>")
 		return
 
-	user.visible_message("<span class='info'>[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [deity_name].</span>", \
-		"<span class='info'>You kneel[M == user ? null : " next to [M]"] and begin a prayer to [deity_name].</span>")
+	user.visible_message("<span class='info'>[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name].</span>", \
+		"<span class='info'>You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name].</span>")
 
 	praying = TRUE
-	if(do_after(user, 20, target = M))
-		M.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(M, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
-		M.adjustToxLoss(-5, TRUE, TRUE)
-		M.adjustOxyLoss(-5)
-		M.adjustBruteLoss(-5)
-		M.adjustFireLoss(-5)
+	if(do_after(user, 20, target = L))
+		L.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
+		to_chat(L, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
+		L.adjustToxLoss(-5, TRUE, TRUE)
+		L.adjustOxyLoss(-5)
+		L.adjustBruteLoss(-5)
+		L.adjustFireLoss(-5)
 		praying = FALSE
 	else
 		to_chat(user, "<span class='notice'>Your prayer to [deity_name] was interrupted.</span>")

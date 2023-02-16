@@ -45,7 +45,7 @@
 		else
 			return
 	else
-		imp_in.verbs -= assigned_proc
+		remove_verb(imp_in, assigned_proc)
 		return
 
 	if(reagents)

@@ -24,11 +24,6 @@ SUBSYSTEM_DEF(xenoarch)
 	if (istype(SSxenoarch.digsite_spawning_turfs))
 		digsite_spawning_turfs = SSxenoarch.digsite_spawning_turfs
 
-/datum/controller/subsystem/xenoarch/stat_entry(msg)
-	if (!GLOB.Debug2)
-		return // Only show up in stat panel if debugging is enabled.
-	. = ..()
-
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
 	var/list/faster = list()
 	var/start

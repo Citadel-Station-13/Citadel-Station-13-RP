@@ -194,9 +194,9 @@
 					if(module.is_centcom)
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum
-						for(var/jobtype in typesof(/datum/job))
-							var/datum/job/J = new jobtype
+						var/datum/role/job/jobdatum
+						for(var/jobtype in typesof(/datum/role/job))
+							var/datum/role/job/J = new jobtype
 							if(ckey(J.title) == ckey(t1))
 								jobdatum = J
 								break

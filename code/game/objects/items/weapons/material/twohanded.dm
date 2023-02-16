@@ -163,9 +163,9 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
-	icon_state = "fireaxe_mask0"
-	base_icon = "fireaxe_mask"
-	applies_material_colour = 1
+	icon_state = "bone_axe0"
+	base_icon = "bone_axe"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -190,6 +190,10 @@
 	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
+
+/obj/item/material/twohanded/fireaxe/scythe/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 //spears, bay edition
 /obj/item/material/twohanded/spear
@@ -218,6 +222,10 @@
 	slowdown = 1.05
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /obj/item/material/twohanded/spear/examine(mob/user)
 	. = ..()
@@ -269,9 +277,9 @@
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
-	icon_state = "spear_mask0"
-	base_icon = "spear_mask"
-	applies_material_colour = 1
+	icon_state = "bone_spear0"
+	base_icon = "bone_spear"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
 	..(mapload,"bone")
@@ -333,39 +341,7 @@
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/twohanded/sledgehammer/pre_attack(var/mob/living/target, var/mob/living/user)
-	if(istype(target))
+/obj/item/material/twohanded/sledgehammer/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+	if(isliving(target))
 		cleave(user, target)
-
-/obj/item/material/twohanded/sledgehammer/mjollnir
-	icon_state = "mjollnir0"
-	base_icon = "mjollnir0"
-	name = "Mjollnir"
-	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
-	force_divisor = 2
-	hitsound = 'sound/effects/lightningbolt.ogg'
-	force = 50
-	throw_force = 15
-	force_wielded = 75
-	slowdown = 0
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(mob/living/G, mob/user)
-	..()
-
-	if(wielded)
-		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
-			return
-		if(prob(10))
-			G.dust()
-			return
-		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
-			G.take_organ_damage(10)
-			G.Unconscious(20)
-			playsound(src.loc, "sparks", 50, 1)
-			return
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/update_icon()  //Currently only here to fuck with the on-mob icons.
-	icon_state = "mjollnir[wielded]"
-	return
+	return ..()

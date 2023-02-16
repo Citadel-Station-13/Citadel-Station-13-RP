@@ -4,7 +4,7 @@
 	desc = "A perfectly generic plant."
 
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
+	plane = TURF_PLANE
 	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE

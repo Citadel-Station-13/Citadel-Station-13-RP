@@ -1,5 +1,6 @@
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI
+	id = SPECIES_ID_TESHARI
 	name = SPECIES_TESHARI
 	default_bodytype = BODYTYPE_TESHARI
 	category = "Teshari"
@@ -41,7 +42,6 @@
 	female_scream_sound = 'sound/effects/mob_effects/teshariscream.ogg'
 
 	max_age = 75
-	economic_modifier = 6
 	health_hud_intensity = 3
 
 	color_mult   = 1

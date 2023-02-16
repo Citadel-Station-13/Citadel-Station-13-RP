@@ -1088,12 +1088,12 @@
 /area/ship/ert/atmos)
 "kf" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/pdw,
-/obj/item/gun/projectile/automatic/pdw,
-/obj/item/gun/projectile/automatic/pdw,
-/obj/item/gun/projectile/automatic/pdw,
-/obj/item/gun/projectile/automatic/pdw,
-/obj/item/gun/projectile/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
+/obj/item/gun/ballistic/automatic/pdw,
 /obj/item/ammo_magazine/m9mml,
 /obj/item/ammo_magazine/m9mml,
 /obj/item/ammo_magazine/m9mml,
@@ -2956,12 +2956,12 @@
 	pixel_y = 23
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
+/obj/item/gun/ballistic/p92x,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/ammo_magazine/m9mm/large/licensed,
@@ -2979,8 +2979,8 @@
 "xi" = (
 /obj/structure/table/rack/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
@@ -3579,8 +3579,8 @@
 /area/ship/ert/barracks)
 "Bp" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/gun/projectile/automatic/z8,
+/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/ballistic/automatic/z8,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
@@ -4240,7 +4240,7 @@
 /area/ship/ert/armoury_st)
 "Gl" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/ballistic/heavysniper,
 /obj/item/storage/box/sniperammo,
 /obj/item/storage/box/sniperammo,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -4782,8 +4782,8 @@
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/gun/projectile/automatic/z8,
+/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/ballistic/automatic/z8,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
@@ -5026,8 +5026,8 @@
 /area/ship/ert/armoury_st)
 "LA" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunammo/large,
@@ -5127,8 +5127,8 @@
 /area/ship/ert/armoury_st)
 "Me" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/as24,
-/obj/item/gun/projectile/automatic/as24,
+/obj/item/gun/ballistic/automatic/as24,
+/obj/item/gun/ballistic/automatic/as24,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunammo/large,
@@ -5151,9 +5151,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
+/obj/item/gun/energy/sniperrifle,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "Mv" = (
@@ -5539,12 +5537,8 @@
 /area/ship/ert/engineering)
 "OO" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
-/obj/item/gun/energy/sniperrifle{
-	battery_lock = 0
-	},
+/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)
@@ -6046,16 +6040,16 @@
 /area/ship/ert/hallways)
 "Sx" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/p90,
-/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/gun/projectile/automatic/p90,
-/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/p90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/ammo_magazine/m57x28mmp90,
@@ -6067,8 +6061,8 @@
 /area/ship/ert/armoury_dl)
 "Sy" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/projectile/automatic/l6_saw,
-/obj/item/gun/projectile/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -6104,7 +6098,7 @@
 /area/ship/ert/med_surg)
 "SD" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/deagle,
+/obj/item/gun/ballistic/deagle,
 /obj/item/ammo_magazine/m44,
 /obj/item/ammo_magazine/m44,
 /turf/simulated/floor/wood,

@@ -284,8 +284,8 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_VOX | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX, BODYTYPE_TESHARI)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
 
 /obj/item/clothing/under/sexymime
@@ -303,11 +303,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "yellow", SLOT_ID_LEFT_HAND = "yellow")
 	body_parts_covered = LOWER_TORSO
 
+//Obsolete, but retained for posterity.
+/*
 /obj/item/clothing/under/gladiator/ashlander
 	name = "ashlander panoply"
 	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
+*/
 
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
@@ -1771,7 +1774,7 @@
 /obj/item/clothing/under/tribal_tunic_fem/ashlander
 	name = "coarse tunic"
 	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
-	icon_state = "tribal_tunic"
+	icon_state = "tribal_tunic_fem"
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 
 /obj/item/clothing/under/skirt/pleated
@@ -1959,3 +1962,15 @@
 	name = "Half Moon outfit"
 	desc = "This eminently fashionable outfit evokes memories of Luna. It consists of a tailored latex leotard and daringly cut white shorts. Paired with plunging off-color stockings, it's to die for."
 	icon_state = "half_moon"
+
+//Military Surplus
+/obj/item/clothing/under/surplus
+	name = "surplus fatigues"
+	desc = "Old military fatigues like these are very common across the Frontier. Sturdy and somewhat comfortable, they hold up to the harsh working environments many colonists face, while also adding a little flair - regardless of prior military service."
+	icon_state = "bdu_olive"
+
+/obj/item/clothing/under/surplus/desert
+	icon_state = "bdu_desert"
+
+/obj/item/clothing/under/surplus/russoblue
+	icon_state = "bdu_russoblue"

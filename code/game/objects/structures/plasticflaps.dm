@@ -5,6 +5,7 @@
 	icon_state = "plasticflaps"
 	density = 0
 	anchored = 1
+	pass_flags = NONE
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	explosion_resistance = 5
@@ -15,6 +16,18 @@
 		/mob/living/simple_mob/animal/passive/mouse,
 		/mob/living/silicon/robot/drone
 		)
+
+/obj/structure/plasticflaps/Initialize(mapload)
+	. = ..()
+	AIR_UPDATE_ON_INITIALIZE_AUTO
+
+/obj/structure/plasticflaps/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
+	return ..()
+
+/obj/structure/plasticflaps/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())

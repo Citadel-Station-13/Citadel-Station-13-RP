@@ -56,6 +56,7 @@
 	if(using_map_legacy().use_overmap)
 		var/obj/effect/overmap/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
+
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()

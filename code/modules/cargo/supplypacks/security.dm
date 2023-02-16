@@ -659,20 +659,20 @@
 /datum/supply_pack/security/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
-			/obj/item/gun/projectile/automatic/battlerifle = 2,
+			/obj/item/gun/ballistic/automatic/battlerifle = 2,
 			/obj/item/ammo_magazine/m95 = 4
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/secure/heph
 	access = access_armory
 
 /datum/supply_pack/security/quadshot
 	name = "Quad Shotgun Pack"
 	contains = list(
-			/obj/item/gun/projectile/shotgun/doublebarrel/quad = 2,
+			/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
 			/obj/item/storage/box/shotgunshells = 2,
 			/obj/item/storage/belt/security/tactical/bandolier = 2,
 			)
 	cost = 70
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/secure/heph
 	access = access_armory

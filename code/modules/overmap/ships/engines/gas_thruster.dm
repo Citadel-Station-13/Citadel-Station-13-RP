@@ -120,6 +120,9 @@
 	.+= "Propellant used per burn: [round(air_contents.get_mass() * volume_per_burn * thrust_limit / air_contents.volume,0.01)] kg."
 	.+= "Propellant pressure: [round(air_contents.return_pressure()/1000,0.1)] MPa."
 
+/obj/machinery/atmospherics/component/unary/engine/legacy_ex_act()
+	return
+
 /obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
 	if(machine_stat & NOPOWER)
@@ -141,7 +144,7 @@
 /obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
 	var/exhaust_dir = REVERSE_DIR(dir)
 	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
-	while(!(isspaceturf(T) || (T.z_flags & (Z_AIR_UP | Z_AIR_DOWN))))
+	while(!(isspaceturf(T) || (T.mz_flags & (MZ_ATMOS_BOTH))))
 		var/turf/next = get_step(T, exhaust_dir)
 		if(!next)
 			// not found

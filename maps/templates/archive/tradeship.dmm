@@ -55,8 +55,7 @@
 "ak" = (
 /obj/structure/closet/crate,
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/syndicate_mothership)
 "al" = (
@@ -80,12 +79,6 @@
 /obj/item/stool/padded,
 /turf/unsimulated/floor{
 	icon_state = "dark"
-	},
-/area/syndicate_mothership)
-"ap" = (
-/turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "vault"
 	},
 /area/syndicate_mothership)
 "aq" = (
@@ -113,8 +106,7 @@
 	name = "Warehouse Shutters"
 	},
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "vault"
+	icon_state = "dark"
 	},
 /area/syndicate_mothership)
 "av" = (
@@ -3213,12 +3205,12 @@ aa
 aa
 ab
 ak
-ap
 al
 al
 al
 al
-ap
+al
+al
 ak
 ab
 aa
@@ -3297,7 +3289,7 @@ aa
 aa
 ab
 ak
-ap
+al
 al
 al
 al
@@ -3381,12 +3373,12 @@ aa
 aa
 ab
 ak
-ap
 al
 al
 al
 al
-ap
+al
+al
 ak
 ab
 aa

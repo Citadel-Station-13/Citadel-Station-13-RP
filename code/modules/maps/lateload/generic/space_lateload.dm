@@ -4,7 +4,7 @@
  */
 
 //////////////////
-/// Tradepord  ///
+/// Tradeport  ///
 //////////////////
 
 /datum/map_template/lateload/space/away_tradeport
@@ -18,9 +18,8 @@
 	name = "Away Mission - Trade Port"
 	base_turf = /turf/space
 
-
 //////////////////
-/// Debri Field///
+///Debris Field///
 //////////////////
 
 /datum/map_template/lateload/space/away_debrisfield
@@ -39,12 +38,12 @@
 	base_turf = /turf/space
 
 ///////////////////////
-/// Vox Pirate Base ///
+/// Pirate Base ///
 ///////////////////////
 
 /datum/map_template/lateload/space/away_piratebase
 	name = "Away Mission - Pirate Base"
-	desc = "A Vox Marauder Base, oh no!"
+	desc = "A Pirate Base, oh no!"
 	mappath = "maps/map_levels/192x192/piratebase.dmm"
 	associated_map_datum = /datum/map_z_level/space_lateload/away_piratebase
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
@@ -163,3 +162,23 @@ Not sure if this will work properly but no reason to get rid of it right now
 	flags = MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/open
 
+/*
+//This one might be unnecessary. Commenting out for now, just in case we use it later.
+////////////////////////////
+/// Specialty Facilities ///
+////////////////////////////
+/*
+To try and make the ERT shuttle work, and also to do stuff like custom off-site facilities and all that, I guess we need this now.
+*/
+
+/datum/map_template/lateload/space/specialty
+	name = "Away Mission - Specialty"
+	desc = "An emergency response cruiser patrolling the local sector."
+	mappath = '_maps/map_levels/192x192/specialty_facilities.dmm'
+	associated_map_datum = /datum/map_z_level/space_lateload/specialty
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/space_lateload/specialty
+	name = "Away Mission - Specialty"
+	base_turf = /turf/space
+*/

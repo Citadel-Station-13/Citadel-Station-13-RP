@@ -306,6 +306,19 @@
 
 	feedback_add_details("admin_verb","TOHChat")
 
+
+/client/verb/toggle_subtle_emotes()
+	set name = "Toggle Subtle Emotes"
+	set category = "Preferences"
+	set desc = "Toggle seeing subtle emotes as a ghost."
+
+	var/pref_path = /datum/client_preference/subtle_see
+	toggle_preference(pref_path)
+	SScharacters.queue_preferences_save(prefs)
+
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] subtle emotes.")
+
+	feedback_add_details("admin_verb","TSubtleEmote")
 //Toggles for Staff
 //Developers
 
@@ -358,6 +371,7 @@
 	set name = "Toggle Pain Messages"
 	set category = "Preferences"
 	set desc = "Toggles pain messages."
+	set src = usr
 
 	if(painmsg)
 		src.painmsg = 0
@@ -366,11 +380,11 @@
 	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
 	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
 /mob/living/carbon/human/verb/acting()
 	set name = "Feign Impairment"
 	set category = "IC"
 	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
+	set src = usr
 
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
 	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)

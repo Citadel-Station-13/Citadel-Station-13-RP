@@ -611,6 +611,14 @@
 	skill_mod = -1
 */
 
+/obj/item/clothing/gloves/goliath
+	name = "goliath hide gloves"
+	desc = "Goliath hide is well recognized among the Scori for its resistance to heat and durability. Items fashioned out of it, like these hide gloves, are frequently used by craftsmen."
+	icon_state = "goligloves"
+	permeability_coefficient = 0.05
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
+
 /obj/item/clothing/gloves/bracer
 	name = "bone bracers"
 	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."

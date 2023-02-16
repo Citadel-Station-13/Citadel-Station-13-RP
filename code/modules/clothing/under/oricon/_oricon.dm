@@ -8,4 +8,4 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	// default to no inhand; until someone gets generic inhands
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_bodytypes = BODYTYPE_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)

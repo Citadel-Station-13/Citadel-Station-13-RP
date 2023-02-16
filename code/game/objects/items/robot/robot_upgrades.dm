@@ -208,10 +208,7 @@
 	if(..())
 		return FALSE
 
-	if(istype(R.translation_context, /datum/translation_context/simple/silicons))
-		qdel(R.translation_context)
-		R.translation_context = new /datum/translation_context/variable/learning/silicons
-		R.sync_translation_context()
+	R.create_translation_context(/datum/translation_context/variable/learning/silicons)
 
 	return TRUE
 
@@ -229,5 +226,5 @@
 	if(/mob/living/proc/set_size in R.verbs)
 		return FALSE
 
-	R.verbs += /mob/living/proc/set_size
+	add_verb(R, /mob/living/proc/set_size)
 	return TRUE

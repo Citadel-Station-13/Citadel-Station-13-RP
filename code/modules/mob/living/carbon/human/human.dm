@@ -4,6 +4,8 @@
  * specieslike resolver = species datum, id, path, or name.
  */
 /mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
+	// todo: rework this entire init sequence, dna/species shouldn't be entirely in conjunction and it's probably dumb to set dna then species
+	// todo: init_dna?? reset_dna??
 	. = ..()
 
 	if(!dna)
@@ -13,7 +15,7 @@
 	if(specieslike)
 		set_species(specieslike, force = TRUE, regen_icons = FALSE)
 	else
-		reset_species(force = TRUE)
+		reset_species(force = TRUE, initializing = TRUE)
 
 	if(!species)
 		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
@@ -74,42 +76,43 @@
 	//...and display them.
 	add_to_all_human_data_huds()
 
-/mob/living/carbon/human/Stat()
-	..()
-	if(statpanel("Status"))
-		stat("Intent:", "[a_intent]")
-		stat("Move Mode:", "[m_intent]")
+/mob/living/carbon/human/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Intent:", "[a_intent]")
+		STATPANEL_DATA_ENTRY("Move Mode:", "[m_intent]")
 		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
-				stat(null, eta_status)
+				STATPANEL_DATA_LINE(eta_status)
 
 		if (internal)
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
+				STATPANEL_DATA_ENTRY("Internal Atmosphere Info", internal.name)
+				STATPANEL_DATA_ENTRY("Tank Pressure", internal.air_contents.return_pressure())
+				STATPANEL_DATA_ENTRY("Distribution Pressure", internal.distribute_pressure)
 
 		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
 		if(P)
-			stat(null, "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
+			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
 		if(back && istype(back,/obj/item/rig))
 			var/obj/item/rig/suit = back
 			var/cell_status = "ERROR"
-			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			stat(null, "Suit charge: [cell_status]")
+			if(suit.cell)
+				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
+			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
 
 		if(mind)
 			if(mind.changeling)
-				stat("Chemical Storage", mind.changeling.chem_charges)
-				stat("Genetic Damage Time", mind.changeling.geneticdamage)
-				stat("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
-	if(species)
-		species.Stat(src)
+				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
+				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
+				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
+	if(C.statpanel_tab("Species", species?.species_statpanel))
+		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
 /mob/living/carbon/human/legacy_ex_act(severity)
 	if(!blinded)
@@ -554,6 +557,34 @@
 									var/mob/living/silicon/robot/U = usr
 									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
 
+	if (href_list["emprecord"])
+		if(hasHUD(usr,"best"))
+			var/perpname = "wot"
+			var/read = 0
+
+			var/obj/item/card/id/I = GetIdCard()
+			if(I)
+				perpname = I.registered_name
+			else
+				perpname = name
+			for (var/datum/data/record/E in data_core.general)
+				if (E.fields["name"] == perpname)
+					for (var/datum/data/record/R in data_core.general)
+						if (R.fields["id"] == E.fields["id"])
+							if(hasHUD(usr,"best"))
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]")
+								to_chat(usr, "<b>Assignment:</b> [R.fields["real_rank"]] ([R.fields["rank"]])")
+								to_chat(usr, "<b>Home System:</b> [R.fields["home_system"]]")
+								to_chat(usr, "<b>Citizenship:</b> [R.fields["citizenship"]]")
+								to_chat(usr, "<b>Primary Employer:</b> [R.fields["personal_faction"]]")
+								to_chat(usr, "<b>Religious Beliefs:</b> [R.fields["religion"]]")
+								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
+								to_chat(usr, "<a href='?src=\ref[src];emprecordComment=`'>\[View Comment Log\]</a>")
+								read = 1
+
+			if(!read)
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(get_dist(src, get_turf(I)) > 7)
@@ -591,6 +622,8 @@
 				return
 	..()
 	return
+/mob/living/carbon/human/needs_to_breathe()
+	return !!organs_by_name[O_LUNGS] || ..()
 
 ///eyecheck()
 ///Returns a number between -1 to 2
@@ -719,7 +752,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_MORPH in mutations))
-		src.verbs -= /mob/living/carbon/human/proc/morph
+		remove_verb(src, /mob/living/carbon/human/proc/morph)
 		return
 
 	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
@@ -789,7 +822,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_REMOTE_TALK in src.mutations))
-		src.verbs -= /mob/living/carbon/human/proc/remotesay
+		remove_verb(src, /mob/living/carbon/human/proc/remotesay)
 		return
 
 	var/list/creatures = list()
@@ -821,7 +854,7 @@
 	if(!(MUTATION_REMOTE_VIEW in src.mutations))
 		remoteview_target = null
 		reset_perspective()
-		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
+		remove_verb(src, /mob/living/carbon/human/proc/remoteobserve)
 		return
 
 	if(IsRemoteViewing())
@@ -944,7 +977,7 @@
 			blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	hand_blood_color = blood_color
 	update_bloodied()
-	verbs += /mob/living/carbon/human/proc/bloody_doodle
+	add_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 	return 1 //we applied blood to the item
 
 /mob/living/carbon/human/proc/get_full_print()
@@ -1166,7 +1199,9 @@
  * 2. species var (aka prototype species)
  * 3. human
  */
-/mob/living/carbon/human/proc/reset_species(force)
+/mob/living/carbon/human/proc/reset_species(force, initializing)
+	if(initializing && ispath(species))
+		return set_species(species, force = force)
 	if(dna?.species)
 		return set_species(dna.species, force = force)
 	else if(ispath(species))
@@ -1186,7 +1221,7 @@
 		return 0 //something is terribly wrong
 
 	if (!bloody_hands)
-		verbs -= /mob/living/carbon/human/proc/bloody_doodle
+		remove_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 
 	if (src.gloves)
 		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")

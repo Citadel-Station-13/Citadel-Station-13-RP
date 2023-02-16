@@ -120,8 +120,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	spawn(1)
-		update_sun_deferred(2, new_brightness, new_color)
+	update_sun_deferred(new_brightness, new_color)
 
 
 /datum/weather_holder/lythios43c
@@ -133,6 +132,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_SNOW		= new /datum/weather/lythios43c/snow(),
 		WEATHER_BLIZZARD	= new /datum/weather/lythios43c/blizzard(),
 		WEATHER_HAIL		= new /datum/weather/lythios43c/hail(),
+		WEATHER_FALLOUT		= new /datum/weather/lythios43c/fallout(),
+		WEATHER_BLOODMOON	= new /datum/weather/lythios43c/blood_moon()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 27.5,
@@ -428,3 +429,64 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 			if(show_message)
 				to_chat(H, pick(effect_message))
+
+/datum/weather/lythios43c/blood_moon
+	name = "blood moon"
+	light_modifier = 0.5
+	light_color = "#FF0000"
+	flight_failure_modifier = 25
+	transition_chances = list(
+		WEATHER_BLOODMOON = 100
+		)
+	observed_message = "Everything is red. Something really ominous is going on."
+	transition_messages = list(
+		"The sky turns blood red!"
+	)
+
+/datum/weather/lythios43c/fallout
+	name = "fallout"
+	icon_state = "fallout"
+	light_modifier = 0.7
+	light_color = "#CCFFCC"
+	flight_failure_modifier = 30
+	transition_chances = list(
+		WEATHER_FALLOUT = 100
+		)
+	observed_message = "Radioactive soot and ash rains down from the heavens."
+	transition_messages = list(
+		"Radioactive soot and ash start to float down around you, contaminating whatever they touch."
+	)
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+	// How much radiation a mob gets while on an outside tile.
+	var/direct_rad_low = RAD_INTENSITY_FALLOUT_DIRECT_LOW
+	var/direct_rad_high = RAD_INTENSITY_FALLOUT_DIRECT_HIGH
+
+	// How much radiation is bursted onto a random tile near a mob.
+	var/fallout_rad_low = RAD_INTENSITY_FALLOUT_INDIRECT_LOW
+	var/fallout_rad_high = RAD_INTENSITY_FALLOUT_INDIRECT_HIGH
+
+/datum/weather/lythios43c/fallout/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			irradiate_nearby_turf(L)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to irradiate them with fallout.
+
+			L.rad_act(rand(direct_rad_low, direct_rad_high))
+
+// This makes random tiles near people radioactive for awhile.
+// Tiles far away from people are left alone, for performance.
+/datum/weather/lythios43c/fallout/proc/irradiate_nearby_turf(mob/living/L)
+	if(!istype(L))
+		return
+	var/list/turfs = RANGE_TURFS(world.view, L)
+	var/turf/T = pick(turfs) // We get one try per tick.
+	if(!istype(T))
+		return
+	if(T.outdoors)
+		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))

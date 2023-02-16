@@ -22,6 +22,7 @@
 	hitscan = TRUE
 	nodamage = TRUE
 	damage = 0
+	has_tracer = FALSE
 	var/list/hit = list()
 
 /obj/item/projectile/test/process_hitscan()
@@ -35,5 +36,5 @@
 		hit |= A
 	return ..()
 
-/obj/item/projectile/test/attack_mob()
+/obj/item/projectile/test/projectile_attack_mob()
 	return

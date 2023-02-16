@@ -242,33 +242,25 @@
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
-//used to initialize the subsystem AFTER the map has loaded
+/// Used to initialize the subsystem AFTER the map has loaded.
 /datum/controller/subsystem/Initialize(start_timeofday)
 	initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 	log_subsystem("INIT", msg)
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
-/datum/controller/subsystem/stat_entry(msg)
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-
-
+/datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
-		msg = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]\t[msg]"
+		. = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]&emsp;"
 	else
-		msg = "OFFLINE\t[msg]"
+		. = "OFFLINE&emsp;"
 
-	var/title = name
-	if (can_fire)
-		title = "\[[state_letter()]][title]"
-
-	stat(title, statclick.update(msg))
+/datum/controller/subsystem/stat_key()
+	return can_fire? "\[[state_letter()]\][name]" : name
 
 /datum/controller/subsystem/proc/state_letter()
 	switch (state)
@@ -292,7 +284,7 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
-	return
+	return TRUE
 
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)

@@ -119,7 +119,7 @@
 
 /atom/movable/screen/fullscreen/scaled/SetView(client_view)
 	if(view_current != client_view)
-		var/list/actualview = getviewsize(client_view)
+		var/list/actualview = decode_view_size(client_view)
 		view_current = client_view
 		transform = matrix(actualview[1] / size_x, 0, 0, 0, actualview[2] / size_y, 0)
 	return ..()

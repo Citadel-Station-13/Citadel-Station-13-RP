@@ -3,12 +3,14 @@
 	AddElement(/datum/element/z_radiation_listener)
 
 	//I'll just hang my coat up over here
-	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
-	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
-	dsma.alpha = 0
-	dsma.plane = LIGHTING_PLANE
-	dsma.blend_mode = BLEND_ADD
-	dsoverlay.appearance = dsma
+	// TODO: REFACTOR
+	if(!isAI(src))
+		dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
+		var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
+		dsma.alpha = 0
+		dsma.plane = LIGHTING_PLANE
+		dsma.blend_mode = BLEND_ADD
+		dsoverlay.appearance = dsma
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
@@ -680,23 +682,18 @@ default behaviour is:
 /mob/living/proc/UpdateDamageIcon()
 	return
 
-
 /mob/living/proc/Examine_OOC()
 	set name = "Examine Meta-Info (OOC)"
 	set category = "OOC"
 	set src in view()
-	// Making it so SSD people have prefs with fallback to original style.
-	if(config_legacy.allow_Metadata)
-		if(ooc_notes)
-			to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
-		else if(client)
-			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
-		else
-			to_chat(usr, "[src] does not have any stored infomation!")
-	else
-		to_chat(usr, "OOC Metadata is not supported by this server!")
-	return
 
+	// Making it so SSD people have prefs with fallback to original style.
+	if(ooc_notes)
+		to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
+	else if(client)
+		to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
+	else
+		to_chat(usr, "[src] does not have any stored infomation!")
 
 /mob/living/proc/handle_footstep(turf/T)
 	return FALSE

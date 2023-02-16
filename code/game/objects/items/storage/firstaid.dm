@@ -244,7 +244,7 @@
 /obj/item/storage/pill_bottle/update_icon()
 	..()
 	if(labeled == 1)
-		add_overlay(image(icon = 'icons/obj/medical/chemical.dmi', icon_state = "pill_canister_label"))
+		add_overlay("pill_canister_label")
 	if(base_icon == "pill_canister")
 		if(bottle_color == "orange")
 			icon_state = "[base_icon]"
@@ -254,7 +254,7 @@
 /obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	if(base_icon == "pill_canister")
-		verbs += /obj/item/storage/pill_bottle/proc/choose_color
+		add_obj_verb(src, /obj/item/storage/pill_bottle/proc/choose_color)
 	update_icon()
 
 /obj/item/storage/pill_bottle/antitox

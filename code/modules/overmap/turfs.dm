@@ -4,17 +4,18 @@ var/global/list/map_sectors = list()
 /area/overmap
 	name = "System Map"
 	icon_state = "start"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /turf/unsimulated/map
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
+	permit_ao = FALSE
 //	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
 
 /turf/unsimulated/map/edge
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	var/map_is_to_my
 	var/turf/unsimulated/map/edge/wrap_buddy
 

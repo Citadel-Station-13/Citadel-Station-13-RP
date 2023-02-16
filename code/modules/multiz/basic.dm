@@ -1,6 +1,4 @@
 // If you add a more comprehensive system, just untick this file.
-var/list/z_levels = list()// Each bit re... haha just kidding this is a list of bools now
-
 #warn nuke this file from orbit except for the basic procs used everywhere
 
 // If the height is more than 1, we mark all contained levels as connected.
@@ -26,13 +24,13 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	return z_levels[z - 1]
 
 // Thankfully, no bitwise magic is needed here.
-/proc/GetAbove(var/atom/atom)
+/proc/GetAbove(atom/atom)
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
 	return HasAbove(turf.z) ? get_step(turf, UP) : null
 
-/proc/GetBelow(var/atom/atom)
+/proc/GetBelow(atom/atom)
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
@@ -44,15 +42,45 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 /turf/proc/Below()
 	return HasBelow(z)? get_step(src, DOWN) : null
 
+
+
+GLOBAL_LIST_EMPTY(connected_z_cache)
+
 /proc/GetConnectedZlevels(z)
 	. = list(z)
+<<<<<<< HEAD
 	for(var/level = z, HasBelow(level), level)
 		. |= level1
+=======
+	// Traverse up and down to get the multiz stack.
+	for(var/level = z, HasBelow(level), level--)
+		. |= level-1
+>>>>>>> citrp/master
 	for(var/level = z, HasAbove(level), level++)
 		. |= level+1
 
-/proc/AreConnectedZLevels(var/zA, var/zB)
-	return zA == zB || (zB in GetConnectedZlevels(zA))
+	// Check stack for any laterally connected neighbors.
+	for(var/tz in .)
+		var/obj/level_data/level = GLOB.levels_by_z["[tz]"]
+		if(level)
+			level.find_connected_levels(.)
+
+
+/proc/AreConnectedZLevels(zA, zB)
+	if (zA <= 0 || zB <= 0 || zA > world.maxz || zB > world.maxz)
+		return FALSE
+	if (zA == zB)
+		return TRUE
+	if (length(GLOB.connected_z_cache) >= zA && length(GLOB.connected_z_cache[zA]) >= zB)
+		return GLOB.connected_z_cache[zA][zB]
+	var/list/levels = GetConnectedZlevels(zA)
+	var/list/new_entry = new(world.maxz)
+	for (var/entry in levels)
+		new_entry[entry] = TRUE
+	if (GLOB.connected_z_cache.len < zA)
+		GLOB.connected_z_cache.len = zA
+	GLOB.connected_z_cache[zA] = new_entry
+	return new_entry[zB]
 
 /proc/get_zstep(ref, dir)
 	if(dir == UP)

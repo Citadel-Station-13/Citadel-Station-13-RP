@@ -97,12 +97,12 @@
 	name = "illicit intercom"
 	desc = "Pirate radio, but not in the usual sense of the word."
 	frequency = RAID_FREQ
-	subspace_transmission = 1
-	syndie = 1
+	subspace_transmission = 0
+	syndie = 0
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(RAID_FREQ)] = list(access_pirate)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"

@@ -26,7 +26,7 @@
 	health = 90
 	projectilesound = 'sound/weapons/thudswoosh.ogg'
 	projectiletype = /obj/item/projectile/webball
-	base_attack_cooldown = 10
+	base_attack_cooldown = 15
 	melee_damage_lower = 8
 	melee_damage_upper = 15
 	poison_per_bite = 2

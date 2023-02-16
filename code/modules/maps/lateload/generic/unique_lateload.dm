@@ -71,4 +71,4 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4)
 
 /obj/landmark/map_data/lavaland_east
-    height = 1
+	height = 1
