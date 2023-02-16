@@ -54,14 +54,14 @@
 
 /datum/prototype/alt_title/artificer_apprentice
 	title = "Artificer-Apprentice"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
 /datum/prototype/alt_title/artificer
 	title = "Artificer"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
