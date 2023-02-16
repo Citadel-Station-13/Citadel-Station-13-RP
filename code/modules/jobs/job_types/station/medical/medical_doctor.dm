@@ -27,17 +27,15 @@
 		"Biotechnician" = /datum/prototype/alt_title/biotechnician
 		)
 
-	strict_titles = TRUE
-
 // Medical Doctor Alt Titles
 
 /datum/prototype/alt_title/biotechnician
 	title = "Biotechnician"
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/onkhera_necropolis
 	)
-
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/surgeon
 	title = "Surgeon"
