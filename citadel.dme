@@ -527,15 +527,11 @@
 #include "code\controllers\subsystem\job\roundstart.dm"
 #include "code\controllers\subsystem\job\spawnpoints.dm"
 #include "code\controllers\subsystem\mapping\_mapping.dm"
-<<<<<<< HEAD
 #include "code\controllers\subsystem\mapping\clearing.dm"
 #include "code\controllers\subsystem\mapping\generation.dm"
 #include "code\controllers\subsystem\mapping\init.dm"
 #include "code\controllers\subsystem\mapping\levels.dm"
 #include "code\controllers\subsystem\mapping\manager.dm"
-=======
-#include "code\controllers\subsystem\mapping\_shims.dm"
->>>>>>> citrp/master
 #include "code\controllers\subsystem\mapping\misc.dm"
 #include "code\controllers\subsystem\mapping\obfuscation.dm"
 #include "code\controllers\subsystem\mapping\reservations.dm"
