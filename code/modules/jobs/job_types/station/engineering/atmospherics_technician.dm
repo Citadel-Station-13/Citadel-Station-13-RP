@@ -40,7 +40,7 @@
 
 /datum/prototype/alt_title/atmos_artificer
 	title = "Artificer"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
