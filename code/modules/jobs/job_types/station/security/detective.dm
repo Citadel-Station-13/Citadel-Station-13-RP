@@ -21,13 +21,13 @@
 		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi,
 		"Investigatory Specialist" = /datum/prototype/alt_title/detective/inv_spec
 		)
-	strict_titles = TRUE
 
 /datum/prototype/alt_title/detective/inv_spec
 	title = "Investigatory Specialist"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/onkhera_necropolis
 	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/detective/csi
 	title = "Crime Scene Investigator"
