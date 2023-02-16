@@ -21,19 +21,19 @@
 		"Logisticai" = /datum/prototype/alt_title/logisticai
 		)
 
-	strict_titles = TRUE
-
 /datum/prototype/alt_title/logisticai_apprentice
 	title = "Logisticai-Apprentice"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/logisticai
 	title = "Logisticai"
-	background_restricted = list(
+	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/logi_spec
 	title = "Logistics Specialist"
