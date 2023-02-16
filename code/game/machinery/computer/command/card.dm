@@ -33,6 +33,7 @@
 	. = ..()
 	.["modify"] = tgui_cardmod.static_data(user, editing, authing)
 
+#warn update static modules when card is swapped
 #warn impl all
 
 /obj/machinery/computer/card/proc/is_authenticated()

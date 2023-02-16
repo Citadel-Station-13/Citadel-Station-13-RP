@@ -12,10 +12,16 @@
 	/// access datum by string'd category
 	var/tmp/list/datum/access/access_category_lists
 
+	/// cached accesses that can edit lookup by "[id]" associated to list of access ids it can edit
+	var/tmp/list/cached_access_edit_lookup
+
 /datum/controller/subsystem/job/proc/init_access()
 	access_datums = list()
 	access_path_lookup = list()
 	access_id_lookup = list()
+
+	cached_access_edit_lookup = list()
+
 	for(var/path in subtypesof(/datum/access))
 		if(is_abstract(path))
 			continue
@@ -23,7 +29,10 @@
 		access_datums += A
 		access_path_lookup[A.type] = A
 		access_id_lookup["[A.access_value]"] = A
+
 	tim_sort(access_datums, /proc/cmp_auto_compare)
+
+// todo: register access; maybe mandate custom access to start at -1? databaes query? haha?
 
 /**
  * get all access datums with given type bits
@@ -135,9 +144,20 @@
 /**
  * looks up an access datum by id or typepath
  */
-/datum/controller/subsystem/job/proc/access_datum(id_or_path)
+/datum/controller/subsystem/job/proc/access_lookup(id_or_path)
 	RETURN_TYPE(/datum/access)
 	return ispath(id_or_path)? access_path_lookup[id_or_path] : access_id_lookup["[id_or_path]"]
+
+/**
+ * lookup multiple access datums from ids
+ */
+/datum/controller/subsystem/job/proc/access_lookup_multiple(list/ids_or_paths)
+	. = list()
+	for(var/i in ids_or_paths)
+		if(ispath(i))
+			. += access_path_lookup[i]
+		else
+			. += access_id_lookup["[i]"]
 
 /**
  * generates tgui access data usable by AccessList and anything else compliant with its interface
@@ -153,3 +173,29 @@
 			"type" = A.access_type,
 		)
 	return data
+
+/**
+ * Return list of access ids a given access can edit
+ *
+ * This list is *not* mutable! Do not edit it!
+ */
+/datum/controller/subsystem/job/proc/editable_access_ids_by_id(id)
+	if((. = cached_access_edit_lookup["[id]"]))
+		return
+	var/datum/access/A = access_lookup(id)
+	if(!A)
+		cached_access_edit_lookup["[id]"] = list()
+		return
+	var/list/all = list()
+	. = list()
+	// special
+	for(var/datum/access/other as anything in A.access_edit_list)
+		. |= initial(other.access_value)
+	// categories
+	for(var/cat in A.access_edit_category)
+		. |= access_ids_of_category(cat)
+	// types
+	. |= access_ids_of_type(A.access_edit_type)
+	// regions
+	. |= access_ids_of_region(A.access_edit_region)
+	cached_access_edit_lookup["[id]"] = .

@@ -10,13 +10,15 @@
  *
  * todo: for now, we just use expected_type and typecast. we want to use pointers in the future.
  *
+ * todo: there's no way to push custom data at the moment, which makes modules not too advantageous in certain cases.
+ *
  * warning: the tgui module system is inherently not cheap to run.
  * you should not expect including too many modules to bode well for performance.
  * if you want fast modules, please, design your own modules, and minimize per-tick data sent.
- * the module system actually allows for full control over sent data.
+ * the module system actually allows for full control over sent data, and non /datum/tgui_module modules
  *
  * if you're doing anything that will require more than a few modules (hello rigsuits/cyborgs/species),
- * *DO NOT* use the module system as is. make your own synchronization and update system ontop.
+ * do not use the module system as is. make your own synchronization and update system ontop.
  */
 /datum/tgui_module
 	/// root datum - only one for the moment, sorry

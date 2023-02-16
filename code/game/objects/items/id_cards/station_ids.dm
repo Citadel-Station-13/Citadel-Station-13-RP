@@ -135,8 +135,8 @@
 /obj/item/card/id/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_ID_MOD])
-		var/datum/tgui_module/card_mod/admin/A = new(src)
-		A.ui_interact(usr)
+		var/datum/tgui_module/card_mod/admin/card_vv/mod = new(src)
+		mod.ui_interact(usr)
 
 /obj/item/card/id/silver
 	name = "command identification card"

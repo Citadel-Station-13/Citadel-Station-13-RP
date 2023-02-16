@@ -124,7 +124,7 @@
 
 /proc/get_access_desc(id)
 	// todo: remove this proc
-	return SSjob.access_datum(id)?.access_name
+	return SSjob.access_lookup(id)?.access_name
 
 /proc/get_centcom_access_desc(A)
 	// todo: remove this proc
@@ -132,7 +132,7 @@
 
 /proc/get_access_by_id(id)
 	// todo: remove this proc
-	return SSjob.access_datum(id)
+	return SSjob.access_lookup(id)
 
 /proc/get_all_centcom_jobs()
 	// todo: remove this proc

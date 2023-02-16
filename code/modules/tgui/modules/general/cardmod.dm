@@ -16,6 +16,7 @@
  * You should update UI static data when:
  * * When the editing or authing ID is being switched
  * * When the authing ID has its access or rank change
+ * * When the editing ID has its access or rank change
  *
  * Additional params for static data:
  * * editing - /obj/item/card/id that's being edited
@@ -36,6 +37,8 @@
  * * editing - (optional) card being edited
  * * authing - (optional) card authorizing the edit
  * * accesses - (optional) accesses being edited as list
+ *
+ * @return values we were allowed to edit
  */
 /datum/tgui_module/card_mod/proc/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
 	return FALSE
@@ -150,7 +153,6 @@
 	.["modify_region"] = query_access_regions(user, editing, authing)
 	.["modify_ids"] = query_access_ids(user, editing, authing)
 	.["modify_account"] = auth_account_edit(user, editing, authing)
-	.["can_demote"] = auth_demote(user, editing, authing)
 	.["can_rename"] = auth_rename(user, editing, authing)
 	.["rank"] = query_ranks(user, editing, authing)
 
@@ -160,32 +162,101 @@
 	.["card_name"] = editing.registered_name
 	.["card_rank"] = editing.rank
 	.["granted"] = editing.access
+	.["can_demote"] = auth_demote(user, editing, authing)
 
+/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	#warn impl
+
+/**
+ * standard implementation of card_mod modules
+ * uses standard checks for ID edit auth.
+ */
 /datum/tgui_module/card_mod/standard
 
 /datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	. = ..()
+	. = list()
+	for(var/id in authing.access)
+		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
+		if(isnull(A))
+			continue
+		if(A.access_edit_list)
+			. |= A.access_edit_list
+		if(A.access_edit_category)
+			. |= SSjob.access_ids_of_category(A.access_edit_category)
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	. = ..()
+	. = NONE
+	for(var/id in authing.access)
+		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
+		if(isnull(A))
+			continue
+		if(A.access_edit_type)
+			. |= A.access_edit_type
 
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	. = ..()
+	. = NONE
+	for(var/id in authing.access)
+		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
+		if(isnull(A))
+			continue
+		if(A.access_edit_type)
+			. |= A.access_edit_region
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = ..()
+	#warn impl
 
 /datum/tgui_module/card_mod/standard/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
-	. = ..()
+	. = list()
+	var/list/left = accesses.Copy()
+	for(var/id in authing.access)
+		var/list/allowed = SSjob.editable_access_ids_by_id(id)
+		if(isnull(allowed))
+			continue
+		var/list/got = allowed & accesses
+		if(!length(got))
+			continue
+		left -= got
+		. += got
 
 /datum/tgui_module/card_mod/standard/auth_account_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_number, new_number)
-	. = ..()
+	return (ACCESS_COMMAND_BANKING in authing?.access)
+
+/datum/tgui_module/card_mod/standard/auth_rename(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_name, new_name)
+	return (ACCESS_COMMAND_CARDMOD in authing?.access)
 
 /datum/tgui_module/card_mod/standard/auth_demote(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank)
-	. = ..()
+	if(isnull(authing))
+		return FALSE
+	if(ACCESS_COMMAND_CARDMOD in authing.access)
+		return TRUE
+	var/datum/job/authing_job = SSjob.job_by_title(authing.rank)
+	if(isnull(authing_job))
+		return FALSE
+	var/datum/job/victim_job = SSjob.job_by_title(old_rank)
+	if(isnull(victim_job))
+		return FALSE
+	return victim_job.departments & authing_job.departments_managed
 
 /datum/tgui_module/card_mod/standard/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank)
-	. = ..()
+	if(isnull(authing))
+		return FALSE
+	if(ACCESS_COMMAND_CARDMOD in authing.access)
+		return TRUE
+	var/datum/job/authing_job = SSjob.job_by_title(authing.rank)
+	if(isnull(authing_job))
+		return FALSE
+	var/datum/job/old_job = SSjob.job_by_title(old_rank)
+	if(isnull(old_job))
+		return FALSE
+	if(!length(old_job.departments & authing_job.departments_managed))
+		return FALSE
+	var/datum/job/new_job = SSjob.job_by_title(new_rank)
+	if(isnull(new_job))
+		return FALSE
+	if(!length(new_job.departments & authing_job.departments_managed))
+		return FALSE
 
 /datum/tgui_module/card_mod/standard/id_computer
 	expected_type = /obj/machinery/computer/card
@@ -194,6 +265,10 @@
 	var/obj/machinery/computer/card/target = host
 	return target.editing
 
+/**
+ * admin implementation of card_mod modules
+ * allows editing of anything.
+ */
 /datum/tgui_module/card_mod/admin
 
 /datum/tgui_module/card_mod/admin/ui_state(mob/user, datum/tgui_module/module)
@@ -213,7 +288,7 @@
 	#warn impl
 
 /datum/tgui_module/card_mod/admin/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
-	return TRUE
+	return accesses
 
 /datum/tgui_module/card_mod/admin/auth_account_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_number, new_number)
 	return TRUE
@@ -224,10 +299,16 @@
 /datum/tgui_module/card_mod/admin/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank)
 	return TRUE
 
-/datum/tgui_module/card_mod/admin/vv
+/datum/tgui_module/card_mod/admin/auth_rename(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_name, new_name)
+	return TRUE
+
+/**
+ * used for vv on id cards
+ */
+/datum/tgui_module/card_mod/admin/card_vv
 	ephemeral = TRUE
 	autodel = TRUE
 	expected_type = /obj/item/card/id
 
-/datum/tgui_module/card_mod/admin/vv/edit_target()
+/datum/tgui_module/card_mod/admin/card_vv/edit_target()
 	return host
