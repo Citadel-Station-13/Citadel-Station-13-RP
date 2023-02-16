@@ -26,7 +26,6 @@
 		"Disposals Technician" = /datum/prototype/alt_title/disposals_tech,
 		"Artificer" = /datum/prototype/alt_title/atmos_artificer
 		)
-	strict_titles = TRUE
 
 // Atmos Tech Alt Titles
 /datum/prototype/alt_title/atmos_maint
@@ -44,6 +43,7 @@
 	background_restricted = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/outfit/job/station/atmospherics_technician
 	name = OUTFIT_JOB_NAME("Atmospheric technician")
