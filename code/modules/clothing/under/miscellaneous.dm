@@ -2164,12 +2164,12 @@
 	icon_state = "altbodysuit"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/bodysuit/alt/sleeveless
 	name = "sleeveless alternate bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one is designed to stop at the mid-bicep, allowing total freedom to the wearer's forearms."
-	icon_state = "altbodysuit_sleeve"
+	icon_state = "altbodysuit_sleeves"
 
 /obj/item/clothing/under/bodysuit/alt/pants
 	name = "alternate bodysuit pants"
@@ -2186,12 +2186,12 @@
 	icon_state = "altbodysuitfem"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/bodysuit/alt_fem/sleeveless
 	name = "sleeveless alternate bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one is designed to stop at the mid-bicep, allowing total freedom to the wearer's forearms."
-	icon_state = "altbodysuitfem_sleeve"
+	icon_state = "altbodysuitfem_sleeves"
 
 /obj/item/clothing/under/bodysuit/alt_fem/pants
 	name = "bodysuit pants"
