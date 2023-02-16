@@ -258,16 +258,20 @@
 /obj/item/clothing/suit/banana
 	name = "banana suit"
 	desc = "There was a period in Old Earth history where this costume was seen as the peak of comedy."
+	icon = 'icons/clothing/suit/costume/banana.dmi'
 	icon_state = "bananasuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/assassin
 	name = "hashashin costume"
 	desc = "Much like their namesake, modern wearers of this outfit tend to overindulge on hashish."
+	icon = 'icons/clothing/suit/costume/assassin.dmi'
 	icon_state = "assassin"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*
  * Misc
@@ -311,10 +315,12 @@
 /obj/item/clothing/suit/nerdshirt
 	name = "nerdy shirt"
 	desc = "A comfy white t-shirt with a picture of a cartoon hedgehog on it. Although clean, it still seems like the wearer should be embarrassed for owning it."
+	icon = 'icons/clothing/suit/misc/nerdshirt.dmi'
 	icon_state = "nerdshirt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat") //placeholder -S2-
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/kimono
 	name = "kimono"
@@ -1198,12 +1204,16 @@
 /obj/item/clothing/suit/ashen_vestment
 	name = "ashen vestments"
 	desc = "These flowing red robes mark the wearer as a member of the Scori Priesthood. Lightweight and well ventilated, the edges of the fabric are stained with ash."
+	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "archon_robe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/ashen_tabard
 	name = "ashen tabard"
 	desc = "This style of tabard is sometimes worn by Scori Guardians when not on duty. Other unidentified Scori have been seen wearing them, making the tabard's true significance unclear."
+	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "crimson_tabard"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Main's Formal Coats
 /obj/item/clothing/suit/storage/parade_coat
@@ -1287,9 +1297,13 @@
 /obj/item/clothing/suit/storage/hobo
 	name = "ragged coat"
 	desc = "Although hopping trains is no longer en vogue, the Frontier has its fill of vagabonds and drifters. Many are stuck wearing the clothes they first brought with them."
+	icon = 'icons/clothing/suit/misc/hobo.dmi'
 	icon_state = "hobocoat"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/kamina
 	name = "spiral hero cloak"
 	desc = "Don't believe in yourself. Believe in the me that believes in you."
+	icon = 'icons/clothing/uniform/costume/spiral.dmi'
 	icon_state = "kaminacape"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

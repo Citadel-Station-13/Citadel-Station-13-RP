@@ -270,4 +270,6 @@
 /obj/item/clothing/shoes/utilitarian
 	name = "utilitarian shoes"
 	desc = "These shoes seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
-	icon_state = "tau"
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "taushoe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

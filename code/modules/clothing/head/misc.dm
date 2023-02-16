@@ -685,4 +685,6 @@
 /obj/item/clothing/head/bard
 	name = "audacious wide brimmed hat"
 	desc = "A bold leather hat with a brim so wide that it droops. The bright feather of an unknown bird has been stuck into the brim."
+	icon = 'icons/clothing/head/bard.dmi'
 	icon_state = "bardhat"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

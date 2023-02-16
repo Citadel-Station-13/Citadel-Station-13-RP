@@ -438,42 +438,58 @@
 /obj/item/clothing/head/helmet/space/void/security/cryo
 	name = "security cryosuit helmet"
 	desc = "A reinforced helmet designed for work in especially cold environments. Has an additional layer of armor."
-	icon_state = "cryo_sec"
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
+	icon_state = "cryohelm_sec"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/space/void/security/cryo
 	name = "security cryosuit"
 	desc = "A fur-lined suit with built-in heating systems, designed for work in dangerously cold environments. Has an additional layer of armor."
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
 	icon_state = "cryo_sec"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Engi
 /obj/item/clothing/head/helmet/space/void/engineering/cryo
 	name = "engineering cryosuit helmet"
 	desc = "A reinforced helmet designed for work in especially cold environments. Has radiation shielding"
-	icon_state = "cryo_engi"
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
+	icon_state = "cryohelm_engi"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/space/void/engineering/cryo
 	name = "engineering cryosuit"
 	desc = "A fur-lined suit with built-in heating systems, designed for work in dangerously cold environments. Has radiation shielding."
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
 	icon_state = "cryo_engi"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Atmospherics
 /obj/item/clothing/head/helmet/space/void/atmos/cryo
 	name = "atmospherics cryosuit helmet"
 	desc = "A reinforced helmet designed for work in especially cold environments. Has improved thermal protection and minor radiation shielding."
-	icon_state = "cryo_atmos"
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
+	icon_state = "cryohelm_atmos"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/space/void/atmos/cryo
 	name = "atmos cryosuit"
 	desc = "A fur-lined suit with built-in heating systems, designed for work in dangerously cold environments. Has improved thermal protection and minor radiation shielding."
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
 	icon_state = "cryo_atmos"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Mining
 /obj/item/clothing/head/helmet/space/void/mining/cryo
 	name = "mining cryosuit helmet"
 	desc = "A reinforced helmet designed for work in especially cold environments. Has reinforced plating."
-	icon_state = "cryo_mining"
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
+	icon_state = "cryohelm_mining"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/space/void/mining/cryo
 	name = "mining cryosuit"
 	desc = "A fur-lined suit with built-in heating systems, designed for work in dangerously cold environments. Has reinforced plating."
+	icon = 'icons/clothing/suit/space/cryosuit.dmi'
 	icon_state = "cryo_mining"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
