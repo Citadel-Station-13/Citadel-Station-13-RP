@@ -23,7 +23,6 @@
 		"Artificer-Apprentice" = /datum/prototype/alt_title/artificer_apprentice,
 		"Artificer" = /datum/prototype/alt_title/artificer
 		)
-	strict_titles = TRUE
 
 	minimal_player_age = 3
 
@@ -58,12 +57,14 @@
 	background_restricted = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/artificer
 	title = "Artificer"
 	background_restricted = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
+	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer
 	name = OUTFIT_JOB_NAME("Engineer")
