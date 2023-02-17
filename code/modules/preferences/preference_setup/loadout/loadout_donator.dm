@@ -186,12 +186,6 @@
 	path = /obj/item/faketvcamera
 	ckeywhitelist = list("fauxmagician")
 
-/datum/gear/donator/hueyskirt
-	name = "High-Waisted Business Skirt"
-	slot = SLOT_ID_SUIT
-	path = /obj/item/clothing/under/skirt/donator/doopytoots
-	ckeywhitelist = list("doopytoots")
-
 /datum/gear/donator/mikubikini
 	name = "starlight singer bikini"
 	path = /obj/item/clothing/under/donator/mikubikini
