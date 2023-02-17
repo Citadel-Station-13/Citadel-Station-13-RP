@@ -282,7 +282,7 @@ GLOBAL_LIST_EMPTY(holopads)
 		.["calling"] = "destination"
 		#warn impl
 	else
-		.["calling"] = null
+		.["calling"] = "none"
 		.["calldata"] = null
 
 /obj/machinery/holopad/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -321,12 +321,12 @@ GLOBAL_LIST_EMPTY(holopads)
 	switch(action)
 		// user requesting ai
 		if("ai_request")
-
+			#warn impl
 		// ai requesting project
 		if("ai_project")
 			/// do they want to start or end
 			var/mode = text2num(params["mode"])
-
+			#warn
 		// user requesting to hang up all calls
 		if("disconnect_all")
 
@@ -344,14 +344,17 @@ GLOBAL_LIST_EMPTY(holopads)
 		if("connect_all")
 
 		// user toggling holocall ringer
-		if("ringer")
-
+		if("toggle_ringer")
+			#warn impl
 		// user toggling holocall visibility
-		if("visibility")
-
+		if("toggle_visibility")
+			#warn impl
 		// user toggling video being allowed
 		if("toggle_video")
-
+			#warn impl
+		// user toggling auto pickup
+		if("toggle_auto")
+			#warn impl
 		// user requesting or confirming side swap - must be singular 1:1 call.
 		if("request_swap")
 

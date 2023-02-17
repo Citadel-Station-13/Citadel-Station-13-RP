@@ -4,6 +4,7 @@ import { Button, Flex, LabeledList, Section } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
+  None = "none",
   Source = "source",
   Destination = "destination",
 }
@@ -100,9 +101,37 @@ export const Holopad = (props, context) => {
                     label="Ringer"
                     buttons={
                       <Button
-                        title="test"
-                        selected={false}
-                        onClick={() => act('test')} />
+                        title={data.ringerEnabled? "Enabled" : "Disabled"}
+                        selected={data.ringerEnabled}
+                        disabled={data.ringerToggle}
+                        onClick={() => act('toggle_ringer')} />
+                    } />
+                  <LabeledList.Item
+                    label="Visibility"
+                    buttons={
+                      <Button
+                        title={data.callVisibility? "Visible" : "Invisible"}
+                        selected={data.callVisibility}
+                        disabled={data.toggleVisibility}
+                        onClick={() => act('toggle_visibility')} />
+                    } />
+                  <LabeledList.Item
+                    label="Auto Pickup"
+                    buttons={
+                      <Button
+                        title={data.autoPickup? "Enabled" : "Disabled"}
+                        selected={data.autoPickup}
+                        disabled={data.autoToggle}
+                        onClick={() => act('toggle_auto')} />
+                    } />
+                  <LabeledList.Item
+                    label="Inbound Video"
+                    buttons={
+                      <Button
+                        title={data.videoEnabled? "Enabled" : "Disabled"}
+                        selected={data.videoEnabled}
+                        disabled={data.videoToggle}
+                        onClick={() => act('toggle_video')} />
                     } />
                 </LabeledList>
               </Section>
@@ -114,6 +143,7 @@ export const Holopad = (props, context) => {
     </Window>
   );
 };
+
 
 /*
 import { useBackend } from '../backend';
