@@ -5,7 +5,6 @@
 	icon_keyboard = "id_key"
 	icon_screen = "id"
 	light_color = "#0099ff"
-	req_access = list(ACCESS_COMMAND_CARDMOD)
 	circuit = /obj/item/circuitboard/card
 	/// modification module
 	var/datum/tgui_module/card_mod/standard/tgui_cardmod
@@ -36,18 +35,6 @@
 /obj/machinery/computer/card/proc/is_authenticated()
 	return scan ? check_access(scan) : 0
 
-/obj/machinery/computer/card/proc/get_target_rank()
-	return modify && modify.assignment ? modify.assignment : "Unassigned"
-
-/obj/machinery/computer/card/proc/format_jobs(list/jobs)
-	var/list/formatted = list()
-	for(var/job in jobs)
-		formatted.Add(list(list(
-			"display_name" = replacetext(job, " ", "&nbsp;"),
-			"target_rank" = get_target_rank(),
-			"job" = job)))
-
-	return formatted
 
 /obj/machinery/computer/card/verb/eject_id()
 	set category = "Object"
@@ -104,27 +91,18 @@
 		ui = new(user, src, "IdentificationComputer", name)
 		ui.open()
 
-/obj/machinery/computer/card/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state, with_static)
-	. = ..()
-	#warn props?
-	.["modify"] = tgui_cardmod.ui_data(user, ui, state)
-
 /obj/machinery/computer/card/ui_static_data(mob/user)
-	var/list/data =  ..()
-	if(data_core)
-		data_core.get_manifest_list()
-	data["manifest"] = GLOB.PDA_Manifest
-	return data
+	. = ..()
+	//? manifest
+	// todo: refactor PDA_Manifest and CrewManifest.js
+	data_core.get_manifest_list()
+	.["manifest"] = GLOB.PDA_Manifest
 
 /obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
 	//? general
 	.["printing"] = TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT)
-
-	//? manifest
-	// todo: refactor PDA_Manifest and CrewManifest.js
-	.["manifest"] = GLOB.PDA_Manifest
 
 	//? card modification
 	.["auth_card"] = authing? list(
@@ -138,52 +116,7 @@
 		"rank" = editing.rank || "Unassigned",
 	) : null
 
-	var/list/data = ..()
-
-	data["station_name"] = station_name()
 	data["authenticated"] = is_authenticated()
-	data["has_modify"] = !!modify
-
-	var/list/departments = list()
-	for(var/D in SSjob.get_all_department_datums())
-		var/datum/department/dept = D
-		if(!dept.assignable) // No AI ID cards for you.
-			continue
-		if(dept.centcom_only && !is_centcom())
-			continue
-		departments.Add(list(list(
-			"department_name" = dept.name,
-			"jobs" = format_jobs(SSjob.get_job_titles_in_department(dept.name))
-		)))
-	data["departments"] = departments
-
-	var/list/all_centcom_access = list()
-	var/list/regions = list()
-	if(modify && is_centcom())
-		for(var/access in get_all_centcom_access())
-			all_centcom_access.Add(list(list(
-				"desc" = replacetext(get_centcom_access_desc(access), " ", "&nbsp;"),
-				"ref" = access,
-				"allowed" = (access in modify.access) ? 1 : 0)))
-	else if(modify)
-		#warn nuke this from orbit
-		for(var/i in DUMB_OLD_ACCESS_REGION_LIST)
-			var/list/accesses = list()
-			for(var/access in get_region_accesses(i))
-				if (get_access_desc(access))
-					accesses.Add(list(list(
-						"desc" = replacetext(get_access_desc(access), " ", "&nbsp;"),
-						"ref" = access,
-						"allowed" = (access in modify.access) ? 1 : 0)))
-
-			regions.Add(list(list(
-				"name" = get_region_accesses_name(i),
-				"accesses" = accesses)))
-
-	data["regions"] = regions
-	data["all_centcom_access"] = all_centcom_access
-
-	return data
 
 /obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui)
 	if(..())

@@ -239,7 +239,7 @@
 						max_sheets = 0
 				//Build list of multipliers for sheets.
 				multiplier = input(usr, "How many do you want to print? (0-[max_sheets])") as num|null
-				if(!multiplier || multiplier <= 0 || multiplier > max_sheets || ui_status(usr, state) != UI_INTERACTIVE)
+				if(!multiplier || multiplier <= 0 || multiplier > max_sheets || ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return FALSE
 
 			busy = making.name
