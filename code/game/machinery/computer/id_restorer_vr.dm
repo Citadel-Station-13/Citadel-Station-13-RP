@@ -46,7 +46,7 @@
 				to_chat(user, "<span class='warning'>Invalid user detected. Access denied.</span>")
 				flick(icon_fail, src)
 				return
-			else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
+			else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 				to_chat(user, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
 				flick(icon_fail, src)
 				return

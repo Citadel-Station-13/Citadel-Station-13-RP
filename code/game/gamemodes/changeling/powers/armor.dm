@@ -52,10 +52,10 @@
 	icon_state = "lingspacehelmet"
 	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
 	clothing_flags = NONE
-	flags_inv = BLOCKHAIR
+	inv_hide_flags = BLOCKHAIR
 	item_flags = ITEM_DROPDEL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	body_parts_covered = HEAD|FACE|EYES
+	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/shoes/magboots/changeling
 	desc = "A suction cupped mass of flesh, shaped like a foot."
@@ -90,7 +90,7 @@
 	name = "chitinous mass"
 	desc = "A tough, hard covering of black chitin."
 	icon_state = "lingarmor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 75, bullet = 60, laser = 60, energy = 60, bomb = 60, bio = 0, rad = 0) //It costs 3 points, so it should be very protective.
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE

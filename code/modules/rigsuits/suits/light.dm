@@ -62,7 +62,7 @@
 /obj/item/clothing/head/helmet/space/rig/light/hacker
 	name = "headgear"
 	siemens_coefficient = 0.4
-	flags_inv = HIDEEARS
+	inv_hide_flags = HIDEEARS
 
 /obj/item/clothing/suit/space/rig/light/hacker
 	siemens_coefficient = 0.4

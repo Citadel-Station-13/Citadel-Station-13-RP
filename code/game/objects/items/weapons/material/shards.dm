@@ -85,7 +85,7 @@
 	if(prob(75))
 		will_break = TRUE
 
-	if(user.gloves && (user.gloves.body_parts_covered & HANDS) && istype(user.gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
+	if(user.gloves && (user.gloves.body_cover_flags & HANDS) && istype(user.gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
 		protected_hands = TRUE // If we're wearing gloves we can probably handle it just fine
 		for(var/I in forbidden_gloves)
 			if(istype(user.gloves, I)) // forbidden_gloves is a blacklist, so if we match anything in there, our hands are not protected
@@ -123,7 +123,7 @@
 			if(H.species.siemens_coefficient<0.5) //Thick skin.
 				return
 
-			if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
+			if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 				return
 
 			if(H.species.species_flags & NO_MINOR_CUT)

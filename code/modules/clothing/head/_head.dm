@@ -6,7 +6,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_hats.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_hats.dmi',
 		)
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	slot_flags = SLOT_HEAD
 	w_class = ITEMSIZE_SMALL
 	blood_sprite_state = "helmetblood"

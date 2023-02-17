@@ -1329,11 +1329,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(owner)
 		var/list/protective_gear = list(owner.head, owner.wear_mask, owner.wear_suit, owner.w_uniform, owner.gloves, owner.shoes, owner.glasses)
 		for(var/obj/item/clothing/gear in protective_gear)
-			if(gear.body_parts_covered & target_covering)
+			if(gear.body_cover_flags & target_covering)
 				covering_clothing |= gear
 			if(LAZYLEN(gear.accessories))
 				for(var/obj/item/clothing/accessory/bling in gear.accessories)
-					if(bling.body_parts_covered & src.body_part)
+					if(bling.body_cover_flags & src.body_part)
 						covering_clothing |= bling
 
 	return covering_clothing

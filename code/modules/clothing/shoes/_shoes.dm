@@ -9,7 +9,7 @@
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	slot_flags = SLOT_FEET
 	blood_sprite_state = "shoeblood"
 

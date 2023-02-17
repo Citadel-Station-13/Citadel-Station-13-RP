@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	if(owner.h_style)
 		var/style = owner.h_style
 		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[style]
-		if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
+		if(owner.head && (owner.head.inv_hide_flags & BLOCKHEADHAIR))
 			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
 				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
 		if(hair_style && (!hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in hair_style.species_allowed)))

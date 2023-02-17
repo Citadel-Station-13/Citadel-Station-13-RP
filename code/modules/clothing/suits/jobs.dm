@@ -9,7 +9,7 @@
 	icon_state = "apron"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "overalls", SLOT_ID_LEFT_HAND = "overalls")
 	blood_overlay_type = "armor"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/analyzer/plant_analyzer, /obj/item/seeds,
 	/obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
@@ -24,15 +24,15 @@
 	name = "Facility Director's parade tunic"
 	desc = "Worn by a Facility Director to show their class."
 	icon_state = "captunic"
-	body_parts_covered = UPPER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/captunic/capjacket
 	name = "Facility Director's uniform jacket"
 	desc = "A less formal jacket for everyday Facility Director use."
 	icon_state = "capjacket"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	inv_hide_flags = HIDEHOLSTER
 
 //Chaplain
 /obj/item/clothing/suit/storage/hooded/chaplain_hoodie
@@ -40,8 +40,8 @@
 	desc = "This suit says to you \"Hush\"!"
 	icon_state = "chaplain_hoodie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/chaplain_hood
 	allowed = list (/obj/item/storage/bible)
 
@@ -51,7 +51,7 @@
 	desc = "A long, flowing white robe. It looks comfortable, but not very warm."
 	icon_state = "whiteout_robe"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_white", SLOT_ID_LEFT_HAND = "suit_white")
-	flags_inv = HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/chaplain_hood/whiteout
 
 //Chaplain
@@ -59,8 +59,8 @@
 	name = "nun robe"
 	desc = "Maximum piety in this star system."
 	icon_state = "nun"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	inv_hide_flags = HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 //Chef
 /obj/item/clothing/suit/chef
@@ -69,8 +69,8 @@
 	icon_state = "chef"
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	allowed = list (/obj/item/material/knife)
 
 //Chef
@@ -79,8 +79,8 @@
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	blood_overlay_type = "armor"
-	body_parts_covered = 0
-	flags_inv = 0
+	body_cover_flags = 0
+	inv_hide_flags = 0
 
 //Security
 /obj/item/clothing/suit/security/navyofficer
@@ -88,24 +88,24 @@
 	desc = "This jacket is for those special occasions when a security officer actually feels safe."
 	icon_state = "officerbluejacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_navy", SLOT_ID_LEFT_HAND = "suit_navy")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/security/navywarden
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
 	icon_state = "wardenbluejacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_navy", SLOT_ID_LEFT_HAND = "suit_navy")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/security/navyhos
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon_state = "hosbluejacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_navy", SLOT_ID_LEFT_HAND = "suit_navy")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 
 //Detective
 /obj/item/clothing/suit/storage/det_trench
@@ -113,8 +113,8 @@
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat is externally impact resistant - perfect for your next act of autodefenestration!"
 	icon_state = "detective"
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
@@ -124,14 +124,14 @@
 	name = "grey trenchcoat"
 	icon_state = "detective2"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_jacket", SLOT_ID_LEFT_HAND = "leather_jacket")
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 
 //Forensics
 /obj/item/clothing/suit/storage/forensics
 	name = "jacket"
 	desc = "A forensics technician jacket."
-	body_parts_covered = UPPER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
@@ -168,7 +168,7 @@
 	allowed = list (/obj/item/analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
-	body_parts_covered = UPPER_TORSO
+	body_cover_flags = UPPER_TORSO
 
 //Lawyer
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
@@ -177,7 +177,7 @@
 	icon_state = "suitjacket_blue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_blue", SLOT_ID_LEFT_HAND = "suit_blue")
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/storage/toggle/lawyer/purpjacket
 	name = "purple suit jacket"
@@ -185,7 +185,7 @@
 	icon_state = "suitjacket_purp"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_purple", SLOT_ID_LEFT_HAND = "suit_purple")
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 //Internal Affairs
 /obj/item/clothing/suit/storage/toggle/internalaffairs
@@ -194,7 +194,7 @@
 	icon_state = "ia_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 //Medical
 /obj/item/clothing/suit/storage/toggle/fr_jacket
@@ -205,7 +205,7 @@
 	blood_overlay_type = "armor"
 	allowed = list(/obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe,
 	/obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/radio, /obj/item/tank/emergency/oxygen)
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/storage/toggle/fr_jacket/ems
 	name = "\improper EMS jacket"
@@ -218,7 +218,7 @@
 	desc = "A sterile blue apron for performing surgery."
 	icon_state = "surgical"
 	blood_overlay_type = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	allowed = list(/obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe, \
 	/obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/radio, /obj/item/tank/emergency/oxygen,/obj/item/surgical/scalpel,/obj/item/surgical/retractor,/obj/item/surgical/hemostat, \
 	/obj/item/surgical/cautery,/obj/item/surgical/bonegel,/obj/item/surgical/FixOVein)
@@ -241,7 +241,7 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor" //it's the less thing that I can put here
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Pilot
 /obj/item/clothing/suit/storage/toggle/bomber/pilot

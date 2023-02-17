@@ -2,7 +2,7 @@
 	name = "muzzle"
 	desc = "To stop that awful noise."
 	icon_state = "muzzle"
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 	voicechange = 1
@@ -31,7 +31,7 @@
 	icon_state = "sterile"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sterile", SLOT_ID_LEFT_HAND = "sterile")
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
@@ -43,13 +43,13 @@
 		src.hanging = !src.hanging
 		if (src.hanging)
 			gas_transfer_coefficient = 1
-			body_parts_covered = body_parts_covered & ~FACE
+			body_cover_flags = body_cover_flags & ~FACE
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "steriledown"
 			to_chat(usr, "You pull the mask below your chin.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
-			body_parts_covered = initial(body_parts_covered)
+			body_cover_flags = initial(body_cover_flags)
 			icon_state = initial(icon_state)
 			armor = initial(armor)
 			to_chat(usr, "You pull the mask up to cover your face.")
@@ -66,15 +66,15 @@
 	name = "fake moustache"
 	desc = "Warning: moustache is fake."
 	icon_state = "fake-moustache"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
+	inv_hide_flags = HIDEFACE
+	body_cover_flags = 0
 
 /obj/item/clothing/mask/snorkel
 	name = "Snorkel"
 	desc = "For the Swimming Savant."
 	icon_state = "snorkel"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
+	inv_hide_flags = HIDEFACE
+	body_cover_flags = 0
 
 //scarves (fit in in mask slot)
 //None of these actually have on-mob sprites...
@@ -82,7 +82,7 @@
 	name = "blue neck scarf"
 	desc = "A blue neck scarf."
 	icon_state = "blueneckscarf"
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
@@ -91,7 +91,7 @@
 	name = "red scarf"
 	desc = "A red and white checkered neck scarf."
 	icon_state = "redwhite_scarf"
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
@@ -100,7 +100,7 @@
 	name = "green scarf"
 	desc = "A green neck scarf."
 	icon_state = "green_scarf"
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
@@ -109,7 +109,7 @@
 	name = "ninja scarf"
 	desc = "A stealthy, dark scarf."
 	icon_state = "ninja_scarf"
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
@@ -121,28 +121,28 @@
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_scarab"
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = HEAD|FACE
+	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_demon
 	name = "nock mask (purple, demon)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_demon"
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = HEAD|FACE
+	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_life
 	name = "nock mask (green, life)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_life"
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = HEAD|FACE
+	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_ornate
 	name = "nock mask (red, ornate)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_ornate"
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = HEAD|FACE
+	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/horsehead/Initialize(mapload)
 	. = ..()
@@ -155,8 +155,8 @@
 	desc = "Allows for direct mental connection to accessible camera networks."
 	icon_state = "s-ninja"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
+	inv_hide_flags = HIDEFACE
+	body_cover_flags = 0
 	var/mob/observer/eye/aiEye/eye
 
 /obj/item/clothing/mask/ai/Initialize(mapload)
@@ -189,7 +189,7 @@
 	icon_state = "menpo"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
@@ -203,22 +203,22 @@
 	name = "black bandana"
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
 	w_class = ITEMSIZE_TINY
-	flags_inv = HIDEFACE
+	inv_hide_flags = HIDEFACE
 	slot_flags = SLOT_MASK|SLOT_HEAD
-	body_parts_covered = FACE
+	body_cover_flags = FACE
 	icon_state = "bandblack"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
 		if(SLOT_ID_MASK) //Mask is the default for all the settings
-			flags_inv = initial(flags_inv)
-			body_parts_covered = initial(body_parts_covered)
+			inv_hide_flags = initial(inv_hide_flags)
+			body_cover_flags = initial(body_cover_flags)
 			icon_state = initial(icon_state)
 
 		if(SLOT_ID_HEAD)
-			flags_inv = 0
-			body_parts_covered = HEAD
+			inv_hide_flags = 0
+			body_cover_flags = HEAD
 			icon_state = "[initial(icon_state)]_up"
 
 	return ..()
@@ -257,7 +257,7 @@
 	name = "paper mask"
 	desc = "A neat, circular mask made out of paper."
 	icon_state = "plainmask"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
+	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 
 /obj/item/clothing/mask/paper/attack_self(mob/user)
 	reskin_paper_mask(user)

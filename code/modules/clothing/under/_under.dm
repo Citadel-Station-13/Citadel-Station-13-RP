@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
 	name = "under"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -192,12 +192,12 @@
 		if(UNIFORM_ROLL_FALSE)
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(UPPER_TORSO | ARMS)
+			body_cover_flags &= ~(UPPER_TORSO | ARMS)
 			to_chat(user, SPAN_NOTICE("You roll [src] down."))
 		if(UNIFORM_ROLL_TRUE)
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered = initial(body_parts_covered)
+			body_cover_flags = initial(body_cover_flags)
 			to_chat(user, SPAN_NOTICE("You roll [src] up."))
 
 	update_worn_icon()
@@ -221,12 +221,12 @@
 		if(UNIFORM_ROLL_FALSE)
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(ARMS)
+			body_cover_flags &= ~(ARMS)
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
 		if(UNIFORM_ROLL_TRUE)
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered = initial(body_parts_covered)
+			body_cover_flags = initial(body_cover_flags)
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves back down."))
 
 	update_worn_icon()
