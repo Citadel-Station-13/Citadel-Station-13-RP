@@ -42,6 +42,8 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/last_ai_request = 0
 	/// cooldown between AI requests
 	var/ai_request_cooldown = 60 SECONDS
+	/// allow AI requesting?
+	var/ai_request_allowed = TRUE
 	/// AIs currently using us
 	var/list/mob/living/silicon/ai/ais_projecting
 	/// AI presence enabled
@@ -66,15 +68,25 @@ GLOBAL_LIST_EMPTY(holopads)
 	/// holocall capable
 	var/call_receiver = TRUE
 	/// visibility
-	var/visibility = TRUE
+	var/call_visibility = TRUE
+	/// visibility toggleable
+	var/call_toggleable = FALSE
 	/// video enabled
 	var/video_enabled = TRUE
+	/// video toggleable?
+	var/video_toggleable = TRUE
 	/// ringer enabled
 	var/ringer_enabled = TRUE
+	/// ringer toggleable
+	var/ringer_toggleable = TRUE
 	/// cross overmap capable
 	var/long_range = FALSE
 	/// ONLY allow communications to other long-range holopads
 	var/sector_only = FALSE
+	/// auto accept incoming call?
+	var/call_auto_pickup = FALSE
+	/// can toggle call auto pickup?
+	var/call_auto_toggle = TRUE
 	/// active holocall - outgoing
 	var/datum/holocall/outgoing_call
 	/// active holocalls - inbound
@@ -282,10 +294,26 @@ GLOBAL_LIST_EMPTY(holopads)
 /obj/machinery/holopad/ui_static_data(mob/user)
 	. = ..()
 	.["connectivity"] = ui_connectivity_data()
-	.["is_ai"] = isAI(user)
+	.["isAI"] = isAI(user)
+	.["aiEnabled"] = allow_ai
+	.["aiRequestAllowed"] = ai_request_allowed
+	.["canCall"] = call_allowed
+	.["toggleVisibility"] = call_toggleable
+	.["sectorCall"] = long_range
+	.["videoToggle"] = video_toggleable
+	.["ringerToggle"] = ringer_toggleable
+	.["autoToggle"] = call_auto_toggle
 
 /obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["aiRequested"] = last_ai_request && ((world.time - last_ai_request) >= ai_request_cooldown)
+	.["callVisibility"] = call_visibility
+	.["videoEnabled"] = video_enabled
+	.["ringerEnabled"] = ringer_enabled
+	.["autoPickup"] = call_auto_pickup
+	. |= ui_call_data()
+	.["ringing"] = list()
+	#warn impl ringing for ids
 	#warn impl
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

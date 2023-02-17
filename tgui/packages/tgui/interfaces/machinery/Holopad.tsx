@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, Section } from "../../components";
+import { Button, Flex, LabeledList, Section } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -13,25 +13,33 @@ type HolopadId = string;
 
 // window data
 type HolpadContext = {
-  isAI: BooleanLike, // ai user?
-  isAIProjecting: BooleanLike, // we are currently projecting at this pad
-  aiRequested: BooleanLike, // recently requested ai?
-  aiEnabled: BooleanLike, // are ais allowed to use this?
-  canCall: BooleanLike, // if we can call at all
-  sectorCall: BooleanLike, // if we can go across sectors
-  reachablePads: [ReachableHolopad], // reachable holopads
-  calling: null | HolopadCalling, // call status
-  calldata: null | OutgoingCallContext | IncomingCallsContext, // call data
-  videoEnabled: BooleanLike, // if inbound video calling is enabled
-  ringing: [HolopadId], // ringing holopads
+  isAI: BooleanLike; // ai user?
+  isAIProjecting: BooleanLike; // we are currently projecting at this pad
+  aiRequested: BooleanLike; // recently requested ai?
+  aiEnabled: BooleanLike; // are ais allowed to use this?
+  aiRequestAllowed: BooleanLike;
+  canCall: BooleanLike; // if we can call at all
+  toggleVisibility: BooleanLike; // if we can toggle call visibility
+  callVisibility: BooleanLike; // are we visible in call list?
+  sectorCall: BooleanLike; // if we can go across sectors
+  reachablePads: [ReachableHolopad]; // reachable holopads
+  calling: null | HolopadCalling; // call status
+  calldata: null | OutgoingCallContext | IncomingCallsContext; // call data
+  videoEnabled: BooleanLike; // if inbound video calling is enabled
+  videoToggle: BooleanLike; // if we can toggle inbound video calling
+  ringerEnabled: BooleanLike; // if audio ringer is enabled
+  ringerToggle: BooleanLike; // if audio ringer is toggleable
+  autoPickup: BooleanLike; // if we auto accept calls
+  autoToggle: BooleanLike; // if we can toggle auto accepting calls
+  ringing: [HolopadId]; // ringing holopads
 }
 
 // reachable holopads
 interface ReachableHolopad {
-  id: HolopadId,
-  name: string,
-  category: string,
-  sector: string,
+  id: HolopadId;
+  name: string;
+  category: string;
+  sector: string;
 }
 
 // all calls have this
@@ -41,14 +49,14 @@ interface BaseCallContext {
 
 // outgoing calls have this
 interface OutgoingCallContext extends BaseCallContext {
-  target: HolopadId, // calling to id
-  remoting: BooleanLike, // are we projecting to the other side?
+  target: HolopadId; // calling to id
+  remoting: BooleanLike; // are we projecting to the other side?
 }
 
 // incoming calls have this
 interface IncomingCallsContext extends BaseCallContext {
-  callers: [HolopadId], // calling ids
-  projecting: [HolopadId], // who's projecting over here right now
+  callers: [HolopadId]; // calling ids
+  projecting: [HolopadId]; // who's projecting over here right now
 }
 
 export const Holopad = (props, context) => {
@@ -71,15 +79,35 @@ export const Holopad = (props, context) => {
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (
-            <Button
+            !!data.aiRequestAllowed && <Button
               title={data.aiEnabled
                 ?(data.aiRequested? "AI Requested" : "Request AI")
                 : "AI Disabled"}
               disabled={data.aiRequested}
-              icon={`megaphone`}
+              icon={data.aiRequested? `arrows-spin` : `megaphone`}
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
+          <Flex
+            direction="row">
+            <Flex.Item grow={1}>
+              test
+            </Flex.Item>
+            <Flex.Item>
+              <Section title="System">
+                <LabeledList>
+                  <LabeledList.Item
+                    label="Ringer"
+                    buttons={
+                      <Button
+                        title="test"
+                        selected={false}
+                        onClick={() => act('test')} />
+                    } />
+                </LabeledList>
+              </Section>
+            </Flex.Item>
+          </Flex>
           `test`
         </Section>
       </Window.Content>
