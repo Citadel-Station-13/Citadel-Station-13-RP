@@ -14,9 +14,6 @@
 	/// editing ID
 	var/obj/item/card/id/editing
 
-	var/mode = 0.0
-	var/printing = null
-
 /obj/machinery/computer/card/Initialize(mapload)
 	. = ..()
 	tgui_cardmod = new(src)
@@ -120,23 +117,32 @@
 	return data
 
 /obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	//? general
+	.["printing"] = TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT)
+
+	//? manifest
+	// todo: refactor PDA_Manifest and CrewManifest.js
+	.["manifest"] = GLOB.PDA_Manifest
+
+	//? card modification
+	.["auth_card"] = authing? list(
+		"name" = authing.name || "-----",
+		"owner" = authing.owner || "-----",
+		"rank" = authing.rank || "Unassigned",
+	) : null
+	.["modify_card"] = editing? list(
+		"name" = editing.name || "-----",
+		"owner" = editing.registered_name || "-----",
+		"rank" = editing.rank || "Unassigned",
+	) : null
+
 	var/list/data = ..()
 
 	data["station_name"] = station_name()
-	data["mode"] = mode
-	data["printing"] = printing
-	data["manifest"] = GLOB.PDA_Manifest
-	data["target_name"] = modify ? modify.name : "-----"
-	data["target_owner"] = modify && modify.registered_name ? modify.registered_name : "-----"
-	data["target_rank"] = get_target_rank()
-	data["scan_name"] = scan ? scan.name : "-----"
 	data["authenticated"] = is_authenticated()
 	data["has_modify"] = !!modify
-	data["account_number"] = modify ? modify.associated_account_number : null
-	data["centcom_access"] = is_centcom()
-	data["all_centcom_access"] = null
-	data["regions"] = null
-	data["id_rank"] = modify && modify.assignment ? modify.assignment : "Unassigned"
 
 	var/list/departments = list()
 	for(var/D in SSjob.get_all_department_datums())
@@ -321,12 +327,3 @@
 
 	if(modify)
 		modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
-
-/obj/machinery/computer/card/centcom
-	name = "\improper CentCom ID card modification console"
-	circuit = /obj/item/circuitboard/card/centcom
-	req_access = list(ACCESS_CENTCOM_ADMIRAL)
-
-
-/obj/machinery/computer/card/centcom/is_centcom()
-	return 1
