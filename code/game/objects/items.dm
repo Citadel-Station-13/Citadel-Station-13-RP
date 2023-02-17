@@ -22,6 +22,9 @@
 	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
 	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
 	var/slot_flags = NONE
+	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/item_persist_flags = NONE
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null

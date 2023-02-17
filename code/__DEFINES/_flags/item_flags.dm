@@ -157,3 +157,18 @@ DEFINE_BITFIELD(body_cover_flags, list(
 	BITFIELD(HAND_RIGHT),
 ))
 
+//? Bitflags for /obj/item/var/item_persist_flags
+/// consider this item for loadout at all
+#define ITEM_PERSIST_LOADOUT (1<<0)
+/// item can survive a loadout reset - great for reward items you want someone to keep.
+#define ITEM_PERSIST_LOADOUT_PERMANENT (1<<1)
+
+/// these flags are persisted with the item when item is being stored into generic obj storage system.
+#define ITEM_PERSIST_FLAGS_STICKY (ITEM_PERSIST_LOADOUT | ITEM_PERSIST_LOADOUT_PERMANENT)
+
+DEFINE_BITFIELD(item_persist_flags, list(
+	BITFIELD(ITEM_PERSIST_LOADOUT),
+	BITFIELD(ITEM_PERSIST_LOADOUT_PERMANENT),
+))
+
+
