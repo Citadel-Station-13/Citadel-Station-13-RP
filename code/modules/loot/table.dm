@@ -106,11 +106,11 @@
 	var/list/got = draw(amt)
 	var/safety = 75 // there's no way you need more than this
 	for(var/path in got)
-		var/amt = got[path]
+		var/making = got[path]
 		if(ispath(path, /obj/item/stack))
-			new path(location, amt)
+			new path(location, making)
 		else
-			for(var/i in 1 to amt)
+			for(var/i in 1 to making)
 				if(!--safety)
 					CRASH("attempted to spawn more than 75 objects")
 				new path(location)

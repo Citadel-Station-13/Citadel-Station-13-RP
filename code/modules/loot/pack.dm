@@ -117,11 +117,11 @@
 	var/safety = 25 // no way you ever need more than this. if you think you do, rethink.
 	var/list/got = flatten(amount)
 	for(var/path in got)
-		var/amount = got[path] || 1
+		var/making = got[path] || 1
 		if(ispath(path, /obj/item/stack))
-			new path(location, amount)
+			new path(location, making)
 		else
-			for(var/i in 1 to amount)
+			for(var/i in 1 to making)
 				if(!--safety)
 					CRASH("attempted to spawn more than 25 objects")
 				new path(location)
