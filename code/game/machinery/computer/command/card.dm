@@ -29,12 +29,20 @@
 	. = ..()
 	.["modify"] = tgui_cardmod.static_data(user, editing, authing)
 
+/**
+ * for later use: authorized to change slots
+ */
+/obj/machinery/computer/card/proc/authed_for_slotmod(obj/item/card/id/checking = authing)
+	return ACCESS_COMMAND_CARDMOD in checking?.access
+
+/**
+ * authed for at least one possible access change OR rank change
+ */
+/obj/machinery/computer/card/proc/authed_for_edit(obj/item/card/id/checking = authing)
+	return checking?.access && (SSjob.cached_access_edit_relevant & checking.access)
+
 #warn update static modules when card is swapped
 #warn impl all
-
-/obj/machinery/computer/card/proc/is_authenticated()
-	return scan ? check_access(scan) : 0
-
 
 /obj/machinery/computer/card/verb/eject_id()
 	set category = "Object"

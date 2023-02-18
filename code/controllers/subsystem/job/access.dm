@@ -14,6 +14,8 @@
 
 	/// cached accesses that can edit lookup by "[id]" associated to list of access ids it can edit
 	var/tmp/list/cached_access_edit_lookup
+	/// cached accesses that can edit
+	var/tmp/list/cached_access_edit_relevant
 
 /datum/controller/subsystem/job/proc/init_access()
 	access_datums = list()
@@ -21,6 +23,7 @@
 	access_id_lookup = list()
 
 	cached_access_edit_lookup = list()
+	cached_access_edit_relevant = list()
 
 	for(var/path in subtypesof(/datum/access))
 		if(is_abstract(path))
@@ -29,6 +32,9 @@
 		access_datums += A
 		access_path_lookup[A.type] = A
 		access_id_lookup["[A.access_value]"] = A
+
+		if(A.is_edit_relevant())
+			cached_access_edit_relevant += A.access_value
 
 	tim_sort(access_datums, /proc/cmp_auto_compare)
 

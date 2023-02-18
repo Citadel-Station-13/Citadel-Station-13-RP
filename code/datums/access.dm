@@ -39,6 +39,12 @@
 /datum/access/compare_to(datum/access/D)
 	return (src.sort_order == D.sort_order)? (sorttext(D.access_name, src.access_name)) : (D.sort_order - src.sort_order)
 
+/**
+ * check if we're able to grant permission to edit atleast one other access
+ */
+/datum/access/proc/is_edit_relevant()
+	return access_edit_region || access_edit_type || access_edit_category || length(access_edit_list)
+
 /datum/access/station
 	abstract_type = /datum/access/station
 	access_type = ACCESS_TYPE_STATION
