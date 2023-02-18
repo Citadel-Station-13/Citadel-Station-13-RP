@@ -2633,6 +2633,7 @@
 #include "code\modules\language\languages\species\celestial.dm"
 #include "code\modules\language\languages\species\diona.dm"
 #include "code\modules\language\languages\species\human.dm"
+#include "code\modules\language\languages\species\keisani.dm"
 #include "code\modules\language\languages\species\moth.dm"
 #include "code\modules\language\languages\species\naramadi.dm"
 #include "code\modules\language\languages\species\phoronoid.dm"
