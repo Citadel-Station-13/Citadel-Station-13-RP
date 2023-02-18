@@ -105,12 +105,20 @@
 /datum/prototype/loot_table/proc/instantiate(atom/location, amt)
 	var/list/got = draw(amt)
 	var/safety = 75 // there's no way you need more than this
-	for(var/path in got)
-		var/making = got[path]
-		if(ispath(path, /obj/item/stack))
-			new path(location, making)
+	for(var/thing in got)
+		var/making = got[thing]
+		if(ispath(thing, /obj/item/stack))
+			new thing(location, making)
+		else if(ispath(thing, /datum/prototype/loot_pack) || istext(thing))
+			var/datum/prototype/loot_pack/pack = SSrepository.fetch(thing)
+			if(!pack)
+				stack_trace("failed to fetch pack for [thing]")
+				continue
+			if(!--safety)
+				CRASH("attempted to spawn more than 75 objects")
+			pack.instantiate(location)
 		else
 			for(var/i in 1 to making)
 				if(!--safety)
 					CRASH("attempted to spawn more than 75 objects")
-				new path(location)
+				new thing(location)
