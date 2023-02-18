@@ -8,10 +8,13 @@
 	abstract_type = /datum/prototype/loot_pack
 	/// items that always spawn associated to amount (defaulting to 1)
 	var/list/always
-	/// items that are associated to chance
+	/// items that are associated to chance; nulls are allowed.
 	var/list/some
 	/// standard amount for the "some" list when none is provided
 	var/amt = 0
+
+	// todo: amt high, amt low
+
 	/// cached tally of some
 	var/cached_tally
 
@@ -23,7 +26,11 @@
  */
 /datum/prototype/loot_pack/proc/flatten(amount = amt)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return (always?.Copy() || list()) + draw(amount)
+	var/list/intrinsic = always?.Copy() || list()
+	var/list/extra = draw(amount)
+	for(var/thing in extra)
+		intrinsic[thing] = extra[thing] + intrinsic[thing]
+	return intrinsic
 
 /datum/prototype/loot_pack/proc/cache_tally()
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -37,7 +44,8 @@
  */
 /datum/prototype/loot_pack/proc/draw(amount)
 	if(amount == 1)
-		return list(draw_single() = 1)
+		var/got = draw_single()
+		return got? list(got = 1) : list()
 	return draw_multi(amount)
 
 /datum/prototype/loot_pack/proc/draw_single()
@@ -55,7 +63,9 @@
 		// too small to justify the binary insert
 		. = list()
 		for(var/i in 1 to amt)
-			. += draw_single()
+			var/got = draw_single()
+			if(got)
+				. += got
 		return
 	var/total = cached_tally || cache_tally()
 	var/list/to_pick = list()
@@ -82,12 +92,13 @@
 	// pick algorithm: go from low to high, tallying; anything above something = spawn.
 	var/current = 0
 	. = list()
-	var/to_pick_current = 1
+	var/to_pick_pointer = 1
 	for(var/thing in some)
 		current += some[thing] || 1
 		for(var/i in to_pick_pointer to to_pick_len)
 			if(to_pick[i] <= current)
-				.[thing] += 1
+				if(thing)
+					.[thing] += 1
 				// move past
 				++to_pick_pointer
 				continue

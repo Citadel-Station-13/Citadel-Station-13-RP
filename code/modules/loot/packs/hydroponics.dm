@@ -11,3 +11,10 @@
 		/obj/item/flame/lighter/zippo = 1,
 		/obj/item/seeds/ambrosiadeusseed = 3,
 	)
+
+/datum/prototype/loot_pack/hydroponics/random_seeds
+	identifier = "SeedsRandom"
+	amt = 10
+
+/datum/prototype/loot_pack/hydroponics/random_seeds/draw(amount = amt)
+	return list(/obj/item/seeds/random = amount)

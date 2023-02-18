@@ -87,7 +87,7 @@
 	// pick algorithm: go from low to high, tallying; anything above something = spawn.
 	var/current = 0
 	. = list()
-	var/to_pick_current = 1
+	var/to_pick_pointer = 1
 	for(var/thing in contents)
 		current += contents[thing] || 1
 		for(var/i in to_pick_pointer to to_pick_len)

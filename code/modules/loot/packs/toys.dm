@@ -4,7 +4,7 @@
 /datum/prototype/loot_pack/toys/chaotic
 	amt = 20
 
-/datum/prototype/loot_pack/toys/chaotic/draw(amount)
+/datum/prototype/loot_pack/toys/chaotic/draw(amount = amt)
 	. = list()
 	var/list/toy_types = subtypesof(/obj/item/toy)
 	for(var/i in 1 to amount)
