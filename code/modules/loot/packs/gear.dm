@@ -1,7 +1,7 @@
 /datum/prototype/loot_pack/gear
 	abstract_type = /datum/prototype/loot_pack/gear
 
-/datum/prototype/loot_pack/gear/space_miner/basic
+/datum/prototype/loot_pack/gear/space_miner
 	some = list(
 		/obj/item/pickaxe/silver,
 		/obj/item/pickaxe/gold,

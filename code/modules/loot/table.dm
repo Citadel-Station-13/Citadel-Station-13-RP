@@ -64,11 +64,13 @@
 		return
 	var/total = cached_tally || cache_tally()
 	var/list/to_pick = list()
-	var/to_pick_len = 0
 	var/left
 	var/right
 	var/mid
-	for(var/i in 1 to amt)
+	// insert first
+	to_pick += rand(1, total)
+	var/to_pick_len = 1
+	for(var/i in 2 to amt)
 		var/rng = rand(1, total)
 		// binary insert
 		left = 1
