@@ -120,6 +120,8 @@
 		if(ishuman(L) || issilicon(L))
 			if(L.key && !L.client)	// SSD players get a pass
 				return FALSE
+		if(holder.IIsAlly(L))
+			return FALSE
 		if(L.stat)
 			if(L.stat == DEAD && !handle_corpse) // Leave dead things alone
 				return FALSE
@@ -128,8 +130,6 @@
 					return TRUE
 				else
 					return FALSE
-		if(holder.IIsAlly(L))
-			return FALSE
 		return TRUE
 
 	if(istype(the_target, /obj/mecha))
