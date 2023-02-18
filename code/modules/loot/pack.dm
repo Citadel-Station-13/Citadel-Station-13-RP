@@ -22,9 +22,11 @@
  * this is not deterministic unless the pack itself is deterministic
  */
 /datum/prototype/loot_pack/proc/flatten(amount = amt)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return (always?.Copy() || list()) + draw(amount)
 
 /datum/prototype/loot_pack/proc/cache_tally()
+	SHOULD_NOT_OVERRIDE(TRUE)
 	. = 0
 	for(var/thing in some)
 		. += some[thing] || 1
@@ -39,6 +41,7 @@
 	return draw_multi(amount)
 
 /datum/prototype/loot_pack/proc/draw_single()
+	SHOULD_NOT_OVERRIDE(TRUE)
 	var/total = cached_tally || cache_tally()
 	var/rng = rand(1, total)
 	for(var/thing in some)
@@ -47,6 +50,7 @@
 			return thing
 
 /datum/prototype/loot_pack/proc/draw_multi(amt)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(amt <= 5)
 		// too small to justify the binary insert
 		. = list()
@@ -103,7 +107,10 @@
 	var/list/got = flatten(amount)
 	for(var/path in got)
 		var/amount = got[path] || 1
-		for(var/i in 1 to amount)
-			if(!--safety)
-				CRASH("attempted to spawn more than 25 objects")
-			new path(location)
+		if(ispath(path, /obj/item/stack))
+			new path(location, amount)
+		else
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("attempted to spawn more than 25 objects")
+				new path(location)

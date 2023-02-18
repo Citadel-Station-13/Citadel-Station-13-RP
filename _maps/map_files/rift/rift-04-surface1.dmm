@@ -10114,7 +10114,9 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/rig/medical/equipped,
+/obj/item/rig/medical/equipped{
+	req_access = list(5)
+},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},

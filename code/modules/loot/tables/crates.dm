@@ -6,4 +6,8 @@
 		/datum/prototype/loot_pack/hydroponics/drug_kit = 5,
 		/datum/prototype/loot_pack/money/medium = 5,
 		/datum/prototype/loot_pack/gear/space_miner/advanced = 2,
+		/datum/prototype/loot_pack/toys/chaotic = 2,
+		/datum/prototype/loot_pack/misc/wrestlemania = 1,
+		/obj/item/dnainjector/xraymut = 0.5,
+		/obj/item/dnainjector/firemut = 0.5,
 	)

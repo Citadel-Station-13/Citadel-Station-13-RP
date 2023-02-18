@@ -104,10 +104,13 @@
  */
 /datum/prototype/loot_table/proc/instantiate(atom/location, amt)
 	var/list/got = draw(amt)
-	var/safety = 25 // there's no way you need more than this
+	var/safety = 75 // there's no way you need more than this
 	for(var/path in got)
 		var/amt = got[path]
-		for(var/i in 1 to amt)
-			if(!--safety)
-				CRASH("attempted to spawn more than 25 objects")
-			new path(location)
+		if(ispath(path, /obj/item/stack))
+			new path(location, amt)
+		else
+			for(var/i in 1 to amt)
+				if(!--safety)
+					CRASH("attempted to spawn more than 75 objects")
+				new path(location)
