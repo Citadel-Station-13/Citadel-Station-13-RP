@@ -462,7 +462,6 @@
 #include "code\controllers\subsystem\chat.dm"
 #include "code\controllers\subsystem\dcs.dm"
 #include "code\controllers\subsystem\early_assets.dm"
-#include "code\controllers\subsystem\early_lookups.dm"
 #include "code\controllers\subsystem\emergency_shuttle.dm"
 #include "code\controllers\subsystem\events.dm"
 #include "code\controllers\subsystem\fail2topic.dm"
