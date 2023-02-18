@@ -26,11 +26,6 @@
 	var/loot = rand(1, 99)
 	#warn get rid of rest
 	switch(loot)
-		if(11 to 15)
-			new/obj/item/reagent_containers/glass/beaker/bluespace(src)
-		if(26 to 30)
-			for(var/i = 0, i < 3, i++)
-				new/obj/item/reagent_containers/glass/beaker/noreact(src)
 		if(36 to 40)
 			new/obj/item/melee/baton(src)
 		if(51 to 52) // Uncommon, 2% each
