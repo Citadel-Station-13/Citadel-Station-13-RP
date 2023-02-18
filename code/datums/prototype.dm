@@ -23,10 +23,12 @@ candidates for conversion:
 	/// this should NEVER be changed at runtime!
 	/// changing this may cause persistent data to be thrown out.
 	/// you have been warned.
+	/// Should be in CamelCase.
 	var/namespace
 	/// identifier - must be unique within a namespace
+	/// Should be in CamelCase
 	var/identifier
-	/// anonymous? if true, we should not have a coded identifier.
+	/// anonymous? if true, coded identifier is ignored.
 	var/anonymous = FALSE
 
 	/// our id - must be unique globally. DO NOT EDIT THIS, EDIT [identifier].
@@ -44,10 +46,11 @@ candidates for conversion:
 	if(anonymous)
 		generate_anonymous_uid()
 	else
-		uid = "[namespace]_[identifier]"
+		uid = "[namespace]-[identifier]"
 
 /datum/prototype/proc/generate_anonymous_uid()
-	uid = "[namespace]_[num2text(world.realtime, 16)]_[++uid_next]"
+	// unique always, even across rounds
+	uid = "[namespace]-[num2text(world.realtime, 16)]-[++uid_next]"
 
 /**
  * called on register

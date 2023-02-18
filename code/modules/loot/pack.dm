@@ -1,0 +1,109 @@
+/**
+ * holder datum for loot packs
+ * can be used alone or in loot tables
+ */
+/datum/prototype/loot_pack
+	anonymous = TRUE
+	namespace = "LootPack"
+	abstract_type = /datum/prototype/loot_pack
+	/// items that always spawn associated to amount (defaulting to 1)
+	var/list/always
+	/// items that are associated to chance
+	var/list/some
+	/// standard amount for the "some" list when none is provided
+	var/amt = 0
+	/// cached tally of some
+	var/cached_tally
+
+/**
+ * get list of paths associated to amounts
+ * association can be 0 or null, in that case, process it on *YOUR END* to be 1!
+ *
+ * this is not deterministic unless the pack itself is deterministic
+ */
+/datum/prototype/loot_pack/proc/flatten(amount = amt)
+	return (always?.Copy() || list()) + draw(amount)
+
+/datum/prototype/loot_pack/proc/cache_tally()
+	. = 0
+	for(var/thing in some)
+		. += some[thing] || 1
+	cached_tally = .
+
+/**
+ * get x random amount of "some"
+ */
+/datum/prototype/loot_pack/proc/draw(amount)
+	if(amount == 1)
+		return list(draw_single() = 1)
+	return draw_multi(amount)
+
+/datum/prototype/loot_pack/proc/draw_single()
+	var/total = cached_tally || cache_tally()
+	var/rng = rand(1, total)
+	for(var/thing in some)
+		rng -= some[thing] || 1
+		if(rng <= 0)
+			return thing
+
+/datum/prototype/loot_pack/proc/draw_multi(amt)
+	if(amt <= 5)
+		// too small to justify the binary insert
+		. = list()
+		for(var/i in 1 to amt)
+			. += draw_single()
+		return
+	var/total = cached_tally || cache_tally()
+	var/list/to_pick = list()
+	var/to_pick_len = 0
+	var/left
+	var/right
+	var/mid
+	for(var/i in 1 to amt)
+		var/rng = rand(1, total)
+		// binary insert
+		left = 1
+		right = to_pick_len
+		mid = (left + right) >> 1
+		while(left < right)
+			if(to_pick[mid] <= rng)
+				left = mid + 1
+			else
+				right = mid
+			mid = (left + right) >> 1
+		mid = to_pick[mid] > rng? mid : mid + 1
+		to_pick.Insert(mid, rng)
+		to_pick_len++
+	// to_pick is low to high
+	// pick algorithm: go from low to high, tallying; anything above something = spawn.
+	var/current = 0
+	. = list()
+	var/to_pick_current = 1
+	for(var/thing in some)
+		current += some[thing] || 1
+		for(var/i in to_pick_pointer to to_pick_len)
+			if(to_pick[i] <= current)
+				.[thing] += 1
+				// move past
+				++to_pick_pointer
+				continue
+			// too big, break and tick up
+			break
+/**
+ * are we deterministic?
+ */
+/datum/prototype/loot_pack/proc/is_deterministic()
+	return !amt
+
+/**
+ * spawn always at
+ */
+/datum/prototype/loot_pack/proc/instantiate(atom/location, amount = amt)
+	var/safety = 25 // no way you ever need more than this. if you think you do, rethink.
+	var/list/got = flatten(amount)
+	for(var/path in got)
+		var/amount = got[path] || 1
+		for(var/i in 1 to amount)
+			if(!--safety)
+				CRASH("attempted to spawn more than 25 objects")
+			new path(location)
