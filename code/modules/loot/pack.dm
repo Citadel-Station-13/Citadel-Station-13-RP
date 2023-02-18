@@ -120,7 +120,7 @@
  * spawn always at
  */
 /datum/prototype/loot_pack/proc/instantiate(atom/location, amount = amt)
-	var/safety = 25 // no way you ever need more than this. if you think you do, rethink.
+	var/safety = 50 // no way you ever need more than this. if you think you do, rethink.
 	var/list/got = flatten(amount)
 	for(var/path in got)
 		var/making = got[path] || 1
@@ -129,7 +129,7 @@
 		else
 			for(var/i in 1 to making)
 				if(!--safety)
-					CRASH("attempted to spawn more than 25 objects")
+					CRASH("attempted to spawn more than 50 objects")
 				new path(location)
 
 /**
