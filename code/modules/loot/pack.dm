@@ -125,3 +125,17 @@
 				if(!--safety)
 					CRASH("attempted to spawn more than 25 objects")
 				new path(location)
+
+/**
+ * with a list of types, does a no-holds-barred drawing from them
+ *
+ * the only restriction is not spawning abstract_type objets.
+ * if an abstract type is picked, this just goes forwards without refunding.
+ */
+/datum/prototype/loot_pack/proc/chaotic_draw(list/paths, amount = 1)
+	. = list()
+	for(var/i in 1 to amount)
+		var/datum/got = pick(paths)
+		if(initial(got.abstract_type) == got)
+			continue // just skip
+		.[got] += 1

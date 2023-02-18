@@ -10,6 +10,8 @@
 		/datum/prototype/loot_pack/hydroponics/random_seeds = 2,
 		/datum/prototype/loot_pack/archeology/dangerous = 2,
 		/datum/prototype/loot_pack/chemistry/advanced = 2,
+		/datum/prototype/loot_pack/science/stock_parts/chaotic = 2,
+		/datum/prototype/loot_pack/weapons/melee1 = 2,
 		/datum/prototype/loot_pack/clothing/chaotic = 2,
 		/datum/prototype/loot_pack/misc/wrestlemania = 1,
 		/datum/prototype/loot_pack/misc/clown = 1,
