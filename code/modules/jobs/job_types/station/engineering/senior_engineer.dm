@@ -24,6 +24,16 @@
 	desc = "A Senior Engineer fulfills similar duties to other engineers, but usually occupies spare time with with training of other, newer Engineers \
 					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
 
+	alt_titles = list(
+		"Artificer-Adept" = /datum/prototype/alt_title/artificer_adept
+		)
+
+/datum/prototype/alt_title/artificer_adept
+	title = "Artificer-Adept"
+	background_allow = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
+	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")
