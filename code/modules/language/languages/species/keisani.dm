@@ -6,7 +6,7 @@
 	speech_verb = "utters"
 	ask_verb = "drawls"
 	exclaim_verb = "snarl"
-	colour = "admin_ooc" //Only brown span in existence
+	colour = "keisani" //so sandy
 	key = "K"
 	syllables = list("⊏","⊂","⨀","⩊","⨰","⫙","⊏","⊏⊂","⊏⋌","⊏⫙","⪰","⪰⊂","⪰⫙","⊂" ,"⩊" ,"⫙","⫝","⫝⊂","⫝⩊","⩊","⊂","⪰","⫝","⊂⊏","⊂⪰",
 	"⊂⫙","⊂⩊","⫝⫑","⫑⫝","⫑⫝⊂⋌","⊂⋌⫝⫑","⩪⊂","⩪⊂⊏", "⩪⊂⩪","⋌⩞⪰↽","◡↽⫝⋌","↽⩞⫑",
