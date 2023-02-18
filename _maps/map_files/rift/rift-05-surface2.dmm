@@ -914,6 +914,9 @@
 /area/crew_quarters/recreation_area)
 "aJH" = (
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "aJW" = (
@@ -1949,7 +1952,8 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "brw" = (
-/obj/machinery/suit_cycler/security,
+/obj/structure/table/steel,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "brD" = (
@@ -4164,9 +4168,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "dmx" = (
@@ -5311,9 +5313,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "dVi" = (
@@ -6620,20 +6620,6 @@
 /obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
-"eZB" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/dark,
-/area/security/armory/blue)
 "eZQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -8016,9 +8002,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "fXu" = (
@@ -10019,10 +10003,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hwE" = (
-/obj/structure/table/bench/steel,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
+/obj/machinery/suit_cycler/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "hwT" = (
@@ -12654,7 +12635,13 @@
 /area/security/hallway)
 "jqk" = (
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/suit_storage_unit/cryosuit/security,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/phasegun/rifle{
+	pixel_y = 4
+	},
+/obj/item/gun/energy/phasegun/rifle{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "jqM" = (
@@ -13460,6 +13447,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -14349,7 +14339,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "kAr" = (
-/obj/structure/table/bench/steel,
+/obj/machinery/suit_storage_unit/cryosuit/security,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kAC" = (
@@ -14402,6 +14393,9 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 9
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -14464,6 +14458,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"kIW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
 "kKd" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
@@ -14695,6 +14698,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"kUn" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/table/steel,
+/obj/item/storage/box/teargas{
+	pixel_y = 7
+	},
+/obj/item/storage/box/teargas,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "kUJ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -16483,6 +16495,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -21749,23 +21764,13 @@
 "qkd" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/flashbangs{
-	pixel_x = 4;
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
-/obj/item/storage/box/teargas{
-	pixel_x = -4;
-	pixel_y = 7
-	},
-/obj/item/storage/box/teargas{
-	pixel_x = -4
-	},
-/obj/item/storage/box/flashbangs{
-	pixel_x = 4
-	},
+/obj/item/storage/box/flashbangs,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "qmd" = (
@@ -26844,6 +26849,20 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"uBg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
 "uCF" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -29636,12 +29655,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "wux" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle,
-/obj/item/gun/energy/phasegun/rifle,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/suit_storage_unit/cryosuit/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "wvJ" = (
@@ -50339,10 +50354,10 @@ nWU
 cml
 hKO
 iUz
-bXx
+uBg
 mFW
 bXx
-eZB
+bXx
 bXx
 dmj
 fXh
@@ -50729,7 +50744,7 @@ tRt
 iub
 jZz
 mib
-gqo
+kIW
 dUW
 gqo
 mED
@@ -50919,7 +50934,7 @@ eIB
 xRX
 fsv
 aPX
-vSe
+kUn
 rVp
 kjQ
 xsA
@@ -51305,7 +51320,7 @@ ieS
 rYl
 qXW
 vjT
-jqk
+vSe
 aPX
 wjW
 rVp
