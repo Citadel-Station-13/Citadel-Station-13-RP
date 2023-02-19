@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		g = "female"
 	*/
 
-	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
+	var/icon_key = "[species.get_race_key(src)][g][s_base][s_tone][r_skin][g_skin][b_skin]"
 	if(lip_style)
 		icon_key += "[lip_style]"
 	else
