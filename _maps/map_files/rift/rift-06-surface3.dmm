@@ -6225,7 +6225,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "lQ" = (
-/obj/structure/panic_button,
+/obj/structure/distress_beacon,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/cockpit)
 "lR" = (
@@ -7102,7 +7102,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "nz" = (
-/obj/structure/panic_button,
+/obj/structure/distress_beacon,
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/cockpit)
 "nA" = (
@@ -17813,7 +17813,7 @@
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot{
 	pixel_y = 3
 	},
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_x = -32
 	},
 /obj/machinery/light{
@@ -23373,7 +23373,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "Ua" = (
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_x = -32
 	},
 /obj/structure/cable/cyan{

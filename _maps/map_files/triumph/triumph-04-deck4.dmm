@@ -142,7 +142,7 @@
 /area/security/detectives_office)
 "agp" = (
 /obj/structure/table/reinforced,
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/old_tile/green,
@@ -28600,7 +28600,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "uxl" = (
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_x = -32
 	},
 /obj/structure/cable/cyan{
@@ -33901,7 +33901,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,

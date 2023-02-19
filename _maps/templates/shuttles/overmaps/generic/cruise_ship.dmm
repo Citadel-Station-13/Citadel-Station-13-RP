@@ -216,7 +216,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "wg" = (
-/obj/structure/panic_button{
+/obj/structure/distress_beacon{
 	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
