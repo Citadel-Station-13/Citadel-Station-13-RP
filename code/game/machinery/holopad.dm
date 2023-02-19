@@ -5,6 +5,8 @@ GLOBAL_LIST_EMPTY(holopads)
 #define HOLO_NORMAL_ALPHA 120
 #define HOLO_VORE_ALPHA 200
 
+#warn add sector calls to all shuttles, maps
+
 /obj/machinery/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
