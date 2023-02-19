@@ -178,7 +178,6 @@
 			if(computer && program.can_run(usr, 1))
 				id_card.assignment = "Dismissed"
 				id_card.access = list()
-				callHook("terminate_employee", list(id_card))
 			. = TRUE
 		if("reg")
 			if(computer && program.can_run(usr, 1))

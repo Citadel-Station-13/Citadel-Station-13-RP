@@ -170,7 +170,6 @@
 			if(computer && can_run(user, 1))
 				id_card.assignment = "Dismissed"
 				id_card.access = list()
-				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(computer && can_run(user, 1))
 				if(href_list["name"])

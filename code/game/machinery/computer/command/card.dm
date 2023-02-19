@@ -138,7 +138,19 @@
 		if("modify")
 			#warn impl
 		if("print_manifest")
-			#warn impl
+			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
+				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
+				return
+			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
+			addtimer(CALLBACK(src, /obj/machinery/computer/card/proc/print_manifest), 5 SECONDS)
+			return TRUE
+		if("print_card_report")
+			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
+				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
+				return
+			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
+			addtimer(CALLBACK(src, /obj/machinery/computer/card/proc/print_card_report), 5 SECONDS)
+			return TRUE
 		if("modify")
 			if(modify)
 				data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
@@ -230,49 +242,47 @@
 				modify.associated_account_number = account_num
 			. = TRUE
 
-		if("mode")
-			mode = text2num(params["mode_target"])
-			. = TRUE
-
-		if("print")
-			if(!printing)
-				printing = 1
-				spawn(50)
-					printing = null
-					SStgui.update_uis(src)
-
-					var/obj/item/paper/P = new(loc)
-					if(mode)
-						P.name = text("crew manifest ([])", stationtime2text())
-						P.info = {"<h4>Crew Manifest</h4>
-							<br>
-							[data_core ? data_core.get_manifest(0) : ""]
-						"}
-					else if(modify)
-						P.name = "access report"
-						P.info = {"<h4>Access Report</h4>
-							<u>Prepared By:</u> [scan.registered_name ? scan.registered_name : "Unknown"]<br>
-							<u>For:</u> [modify.registered_name ? modify.registered_name : "Unregistered"]<br>
-							<hr>
-							<u>Assignment:</u> [modify.assignment]<br>
-							<u>Account Number:</u> #[modify.associated_account_number]<br>
-							<u>Blood Type:</u> [modify.blood_type]<br><br>
-							<u>Access:</u><br>
-						"}
-
-						for(var/A in modify.access)
-							P.info += "  [get_access_desc(A)]"
-				. = TRUE
-
 		if("terminate")
 			if(is_authenticated())
 				modify.assignment = "Dismissed"
 				modify.access = list()
 				modify.lost_access = list() // Reset the lost access upon any modifications
 
-				callHook("terminate_employee", list(modify))
-
 			. = TRUE
 
 	if(modify)
 		modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
+
+/obj/machinery/computer/card/proc/print_manifest()
+	var/obj/item/paper/P = new(loc)
+	P.name = text("crew manifest ([])", stationtime2text())
+	P.info = {"<h4>Crew Manifest</h4>
+		<br>
+		[data_core ? data_core.get_manifest(0) : ""]
+	"}
+
+/obj/machinery/computer/card/proc/print_card_report()
+	if(!editing || !authing)
+		visible_message(SPAN_NOTICE("Printing failed: Target or authenticating card removed."))
+		return
+	var/obj/item/card/id/scanning = editing
+	var/obj/item/paper/P = new(loc)
+	P.name = "access report - [scanning.name]"
+	P.info = {"<h4>Access Report</h4>
+		<u>Prepared By:</u> [authing.registered_name ? authing.registered_name : "Unknown"]<br>
+		<u>For:</u> [editing.registered_name ? editing.registered_name : "Unregistered"]<br>
+		<hr>
+		<u>Assignment:</u> [editing.assignment]<br>
+		<u>Account Number:</u> #[editing.associated_account_number]<br>
+		<u>Access:</u><br>
+	"}
+	var/list/by_cat = list()
+	var/list/joining = list()
+	for(var/datum/access/A in SSjob.access_lookup_multiple(editing.access))
+		LAZYADD(by_cat[A.access_category], A)
+	for(var/category in by_cat)
+		joining += "<b>[category]:</b><br>"
+		for(var/datum/access/A as anything in by_cat[category])
+			joining += "- [A.access_name]<br>"
+	P.info += jointext(joining, "")
+
