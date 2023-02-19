@@ -22,6 +22,13 @@
 
 	if(old != health)
 		update_hud_med_all()
+	
+// todo: sort file and move to damage_procs
+
+/mob/living/carbon/human/afflict_radiation(amt, run_armor, damage_zone)
+	if(species)
+		amt = amt * species.radiation_mod
+	return ..()
 
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 

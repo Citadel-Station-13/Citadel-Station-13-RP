@@ -168,8 +168,10 @@
 /obj/item/clothing/head/helmet/ashlander
 	name = "ashen lamellar helmet"
 	desc = "This bronze helmet is wrapped in Goliath hide. Dull bronze plates connected by dry sinew are mounted to the exterior for protection."
-	icon_state = "lamellar"
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "lamellarhelm"
 	armor = list(melee = 15, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -368,3 +370,21 @@
 
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
+
+//More Warhammer Fun
+/obj/item/clothing/head/helmet/utilitarian
+	name = "utilitarian military helmet"
+	desc = "This high tech helmet provides plenty of battlefield telemetry and aim assistance. It is designed to protect the wearer almost exclusively from ranged attacks."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tauhelm"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
+	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/helmet/duraskull
+	name = "durasteel skull mask"
+	desc = "The process of working durasteel into such a shape is no small feat. Whoever commissioned this wanted to send a serious message."
+	icon = 'icons/clothing/head/duraskull.dmi'
+	icon_state = "ahelm"
+	armor = list(melee = 40, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
