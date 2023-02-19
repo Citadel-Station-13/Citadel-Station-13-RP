@@ -124,13 +124,21 @@
 		"rank" = editing.rank || "Unassigned",
 	) : null
 
-	data["authenticated"] = is_authenticated()
+	//? auth
+	.["authed_cardmod"] = authed_for_edit()
+	.["authed_slotmod"] = authed_for_slotmod()
 
 /obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
 	switch(action)
+		if("auth")
+			#warn impl
+		if("modify")
+			#warn impl
+		if("print_manifest")
+			#warn impl
 		if("modify")
 			if(modify)
 				data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
