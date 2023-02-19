@@ -145,6 +145,9 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 /obj/item/organ/external/proc/get_icon(var/skeletal)
 
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		s_base = H.s_base
 	var/gender = "f"
 	if(owner && owner.gender == MALE)
 		gender = "m"

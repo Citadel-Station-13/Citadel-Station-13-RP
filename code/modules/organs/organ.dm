@@ -32,6 +32,9 @@
 		if(owner.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species
+			if(ishuman(C))
+				var/mob/living/carbon/human/H = C
+				s_base = H.s_base
 		else
 			stack_trace("[src] at [loc] spawned without a proper DNA.")
 		var/mob/living/carbon/human/H = C
