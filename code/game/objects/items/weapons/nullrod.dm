@@ -392,7 +392,7 @@
 							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		if(prob(25))
-			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+			jedi_spin(usr)
 	else
 		return ..()
 

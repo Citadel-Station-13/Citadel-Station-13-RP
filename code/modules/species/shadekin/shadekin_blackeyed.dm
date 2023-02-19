@@ -40,6 +40,7 @@
 	total_health = 75   // Fragile
 	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
+	radiation_mod = 0
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
 	hunger_factor = 0.2 // Gets hungrier faster than human baseline.

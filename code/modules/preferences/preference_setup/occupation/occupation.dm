@@ -208,10 +208,10 @@
 
 /datum/preferences/proc/available_alt_titles(datum/role/job/J)
 	RETURN_TYPE(/list)
-	return J.alt_title_query(all_background_datums())
+	return J.alt_title_query(all_background_ids())
 
 /datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
-	return J.alt_title_check(alt_title, all_background_datums())
+	return J.alt_title_check(alt_title, all_background_ids())
 
 /**
  * display is done by jobs; this datum only handles data filtering
@@ -224,6 +224,7 @@
 
 /datum/category_item/player_setup_item/occupation/alt_titles/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
+	var/list/background_ids_cached = prefs.all_background_ids()
 	// check the ones we have to ensure compliance
 	for(var/id in jobs)
 		var/datum/role/job/J = SSjob.job_by_id(id)
@@ -231,14 +232,16 @@
 			jobs -= id
 			continue
 		var/title = jobs[id]
-		if(!prefs.check_alt_title(J, title))
+		if(!J.alt_title_check(title, background_ids_cached))
 			jobs -= id
 	// check the ones we don't and are strict titles
 	for(var/datum/role/job/J as anything in SSjob.all_jobs())
-		if(!J.strict_titles || !isnull(jobs[J.id]))
+		if(!isnull(jobs[J.id]))
 			continue
-		// this will always have atleast one
-		jobs[J.id] = prefs.available_alt_titles(J)[1]
+		var/forced = J.alt_title_enforcement(background_ids_cached)
+		if(isnull(forced))
+			continue
+		jobs[J.id] = forced
 	return jobs
 
 /datum/category_item/player_setup_item/occupation/alt_titles/default_value(randomizing)

@@ -629,3 +629,8 @@
 		original_background_religion(),
 	)
 	listclearnulls(.)
+
+/datum/mind/proc/original_background_ids()
+	. = list()
+	for(var/datum/lore/character_background/bg as anything in original_background_datums())
+		. += bg.id
