@@ -4,10 +4,10 @@
  */
 
 import { BooleanLike } from "common/react";
-import { ModuleData, ModuleProps } from "../../components/Module";
+import { ModuleProps, ModuleData, useModule } from "../../backend";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
-import { Access, AccessId } from "../common/Access";
+import { Access, AccessId, AccessListMod } from "../common/Access";
 
 
 interface CardModContext extends ModuleData {
@@ -30,9 +30,16 @@ interface CardModProps extends ModuleProps {
 }
 
 export const UICardMod = (props: CardModProps, context) => {
+  const { data, act } = useModule<CardModContext>(context);
   return (
     <Modular width={250} height={500}>
-      `test`
+
+      <AccessListMod
+        access={data.access}
+        selected={data.granted}
+        set={(id) => {}}
+        grant={(cat) => {}}
+        deny={(cat) => {}} />
     </Modular>
   );
 };

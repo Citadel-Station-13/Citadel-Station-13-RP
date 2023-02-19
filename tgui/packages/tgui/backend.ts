@@ -15,7 +15,6 @@ import { perf } from 'common/perf';
 import { createAction } from 'common/redux';
 import { setupDrag } from './drag';
 import { focusMap } from './focus';
-import { ModuleData } from './components/Module';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 
@@ -306,7 +305,7 @@ type BackendContext = {
       observer: number,
     },
   },
-  modules: Record<string, ModuleData>,
+  modules: Record<string, any>,
   shared: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
@@ -426,3 +425,61 @@ export const useSharedState = <T>(
   ];
 };
 
+//* TGUI Module Backend
+
+export interface ModuleProps {
+  id: string, // module id, this lets it autoload from context
+}
+
+export interface ModuleData {
+  $tgui: string, // module interface
+  $ref: string, // byond ref to self
+}
+
+export type ModuleBackend<TData extends ModuleData> = {
+  data: TData;
+  act: actFunctionType;
+  backend: Backend<{}>;
+}
+
+/**
+ * a hook for getting the module state
+ *
+ * id is not provided in returned object because it's in props.
+ *
+ * returns:
+ * {
+ *    backend - what useBackend usually sends; you usually don't want to use this.
+ *    data - our module's id
+ *    act - a pre-bound module act function that works the same from the UI side
+ *        whether or not we're in a module, or being used as a root UI
+ * }
+ */
+export const useModule = <TData extends ModuleData>(context): ModuleBackend<TData> => {
+  let backend = useBackend<TData>(context);
+  let { modules } = backend;
+  return {
+    backend: backend,
+    data: (modules && modules[context.m_id]) || {},
+    act: constructModuleAct(context.m_id, context.m_ref),
+  };
+};
+
+export const constructModuleAct = (id: string, ref: string): actFunctionType => {
+  return (action: string, payload: object = {}) => {
+    let sent = {
+      ...payload,
+      $m_id: id,
+      $m_ref: ref,
+    };
+    // Validate that payload is an object
+    const isObject = typeof payload === 'object'
+      && payload !== null
+      && !Array.isArray(payload);
+    if (!isObject) {
+      logger.error(`Payload for module act() must be an object, got this:`, payload);
+      return;
+    }
+    Byond.sendMessage('mod/' + action, payload);
+  };
+};

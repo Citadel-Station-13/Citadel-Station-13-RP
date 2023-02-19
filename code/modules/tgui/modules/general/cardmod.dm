@@ -231,10 +231,10 @@
 		return FALSE
 	if(ACCESS_COMMAND_CARDMOD in authing.access)
 		return TRUE
-	var/datum/job/authing_job = SSjob.job_by_title(authing.rank)
+	var/datum/role/job/authing_job = SSjob.job_by_title(authing.rank)
 	if(isnull(authing_job))
 		return FALSE
-	var/datum/job/victim_job = SSjob.job_by_title(old_rank)
+	var/datum/role/job/victim_job = SSjob.job_by_title(old_rank)
 	if(isnull(victim_job))
 		return FALSE
 	return victim_job.departments & authing_job.departments_managed
@@ -244,15 +244,15 @@
 		return FALSE
 	if(ACCESS_COMMAND_CARDMOD in authing.access)
 		return TRUE
-	var/datum/job/authing_job = SSjob.job_by_title(authing.rank)
+	var/datum/role/job/authing_job = SSjob.job_by_title(authing.rank)
 	if(isnull(authing_job))
 		return FALSE
-	var/datum/job/old_job = SSjob.job_by_title(old_rank)
+	var/datum/role/job/old_job = SSjob.job_by_title(old_rank)
 	if(isnull(old_job))
 		return FALSE
 	if(!length(old_job.departments & authing_job.departments_managed))
 		return FALSE
-	var/datum/job/new_job = SSjob.job_by_title(new_rank)
+	var/datum/role/job/new_job = SSjob.job_by_title(new_rank)
 	if(isnull(new_job))
 		return FALSE
 	if(!length(new_job.departments & authing_job.departments_managed))

@@ -21,17 +21,8 @@
  */
 
 import { Component } from "inferno";
-import { useBackend } from "../backend";
+import { ModuleProps, useBackend } from "../backend";
 import { directlyRouteComponent } from "../routes";
-
-export interface ModuleProps {
-  id: string, // module id, this lets it autoload from context
-}
-
-export interface ModuleData {
-  $tgui: string, // module interface
-  $ref: string, // byond ref to self
-}
 
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
