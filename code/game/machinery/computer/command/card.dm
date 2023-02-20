@@ -67,21 +67,32 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
-	if(!istype(id_card))
+/obj/machinery/computer/card/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	if(!istype(I, /obj/item/card/id))
 		return ..()
-
-	if(!scan && (ACCESS_COMMAND_CARDMOD in id_card.access))
-		if(!user.attempt_insert_item_for_installation(id_card, src))
+	var/obj/item/card/id/id_card = I
+	if(!authing && authed_for_edit(id_card))
+		if(!user.transfer_item_to_loc(id_card, src))
+			user.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
 			return
-		scan = id_card
-	else if(!modify)
-		if(!user.attempt_insert_item_for_installation(id_card, src))
+		authing = id_card
+		user.action_feedback(SPAN_NOTICE("You insert [id_card] into [src]."))
+		update_static_data()
+	else
+		if(!user.transfer_item_to_loc(id_card, src))
+			user.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
 			return
-		modify = id_card
-
-	SStgui.update_uis(src)
-	attack_hand(user)
+		if(isnull(editing))
+			// insert
+			editing = id_card
+			user.action_feedback(SPAN_NOTICE("You insert [id_card] into [src]."))
+		else
+			// swap
+			user.grab_item_from_interacted_with(editing, src)
+			user.action_feedback(SPAN_NOTICE("You swap out [editing] for [id_card]."))
+			editing = id_card
+		update_static_data()
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
@@ -143,6 +154,7 @@
 				if(!istype(inserting))
 					return TRUE
 				if(!usr.transfer_item_to_loc(inserting, src))
+					usr.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
 					return TRUE
 				authing = inserting
 				usr.action_feedback(SPAN_NOTICE("You insert [authing] into [src]."))
@@ -158,6 +170,7 @@
 				if(!istype(inserting))
 					return TRUE
 				if(!usr.transfer_item_to_loc(inserting, src))
+					usr.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
 					return TRUE
 				editing = inserting
 				usr.action_feedback(SPAN_NOTICE("You insert [editing] into [src]."))
