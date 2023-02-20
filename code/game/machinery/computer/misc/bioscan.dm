@@ -24,16 +24,28 @@
 
 /obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["scan_ready"] = (world.time - last_scan) > scan_delay
+	.["scan_ready"] = on_cooldown()
 	.["network"] = network_key
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	switch(action)
 		if("scan")
-			#warn impl
-		if("network")
-			#warn impl
+			if(!network_key)
+				visible_message(SPAN_WARNING("[icon2html(src)] flashes a message, \"No network set.\""))
+			if(on_cooldown())
+				visible_message(SPAN_WARNING("[icon2html(src)] flashes a message, \"Bioscan still on cooldown.\""))
+			last_scan = world.time
+			atom_say("Commencing signature scan and updating buffers...")
+			scan()
+			return TRUE
+		if("set_network")
+			var/what = params["network"] || null
+			set_network(what)
+			return TRUE
+
+/obj/machinery/computer/bioscan/proc/on_cooldown()
+	return (world.time - last_scan) <= scan_delay
 
 /obj/machinery/computer/bioscan/proc/set_network(key)
 	network_key = key
@@ -41,11 +53,11 @@
 
 /obj/machinery/computer/bioscan/proc/void_scan()
 	buffer = list()
-	#warn impl
+	send_tgui_data_immediate(data = list("scan" = list()))
 
 /obj/machinery/computer/bioscan/proc/scan()
 	var/list/new_data = list()
 	#warn generate data
 
 	buffer = new_data
-	#warn update data
+	send_tgui_data_immediate(data = list("scan" = buffer))

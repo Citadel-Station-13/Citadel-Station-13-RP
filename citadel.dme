@@ -809,6 +809,7 @@
 #include "code\game\atoms\atoms_vv.dm"
 #include "code\game\atoms\buckling.dm"
 #include "code\game\atoms\defense.dm"
+#include "code\game\atoms\say.dm"
 #include "code\game\dna\dna2.dm"
 #include "code\game\dna\dna2_domutcheck.dm"
 #include "code\game\dna\dna2_helpers.dm"
