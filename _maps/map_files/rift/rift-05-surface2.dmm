@@ -7766,7 +7766,10 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/showers)
 "fMU" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass_research{
+	name = "Research Lobby";
+	req_one_access = list(29,47)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28693,7 +28696,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "vJU" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass_research{
+	name = "Research Lobby";
+	req_one_access = list(29,47)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -30069,8 +30075,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "wLN" = (
 /obj/machinery/door/airlock/glass_research{
-	name = "Research Lobby";
-	req_one_access = list(29,47)
+	name = "RnD Lab"
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
