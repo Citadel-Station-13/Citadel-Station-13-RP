@@ -92,6 +92,7 @@
 
 /**
  * route a received ui_act for module handling
+ * remember that $id, $ref in params corrosponds to module id, module ref.
  *
  * this proc is somewhat weird, it's best to not override it unnecessarily.
  */
@@ -108,6 +109,7 @@
 
 /**
  * called as a hook for intercepting ui acts from a module
+ * remember that $id, $ref in params corrosponds to module id, module ref.
  *
  * return TRUE for ui update + prevent propagation to the module
  */

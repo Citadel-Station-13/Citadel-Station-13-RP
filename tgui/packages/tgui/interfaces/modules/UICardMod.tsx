@@ -24,6 +24,7 @@ interface CardModContext extends ModuleData {
   modify_ids: [AccessId], // what we can specifically edit regardless of region / type
   card_name: string, // card name as string
   card_rank: string, // card rank as string
+  card_assignment: string,
 }
 
 interface Department {
@@ -44,15 +45,23 @@ export const UICardMod = (props: CardModProps, context) => {
       <LabeledList>
         <LabeledList.Item
           label="Owner">
-          <Input
-            value={data.card_name}
-            onEnter={(e, val) => { act('name', { set: val }); }} />
+          {data.can_rename? (
+            <Input
+              value={data.card_name}
+              onEnter={(e, val) => { act('name', { set: val }); }} />
+          ) : (
+            data.card_name
+          )}
         </LabeledList.Item>
         <LabeledList.Item
           label="Account Number">
-          <Input
-            value={data.card_account}
-            onEnter={(e, val) => { act('account', { set: val }); }} />
+          {data.modify_account? (
+            <Input
+              value={data.card_account}
+              onEnter={(e, val) => { act('account', { set: val }); }} />
+          ) : (
+            data.card_account
+          )}
         </LabeledList.Item>
       </LabeledList>
       <Tabs>
@@ -73,30 +82,61 @@ export const UICardMod = (props: CardModProps, context) => {
       )}
       {mode === 1 && (
         <Section>
-          <Input
-            value={data.card_rank}
-            onEnter={(e, val) => { act('rank', { rank: val }); }} />
-          <Flex
-            direction="column">
-            <Flex.Item>
-              <Tabs>
-                {data.ranks.forEach((dept) => {
-                  return (
-                    <Tabs.Tab onClick={setDepartment(dept.name)}>
-                      {dept}
-                    </Tabs.Tab>
-                  );
+          <LabeledList>
+            <LabeledList.Item
+              label="Rank">
+              <Flex
+                direction="column">
+                <Flex.Item grow={1}>
+                  <Input
+                    value={data.card_rank}
+                    onEnter={(e, val) => { act('rank_custom', { rank: val }); }} />
+                </Flex.Item>
+                {data.can_demote && (
+                  <Flex.Item>
+                    <Button.Confirm
+                      content="Demote"
+                      className="bad"
+                      onClick={() => act('demote')} />
+                  </Flex.Item>
+                )}
+              </Flex>
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Assignment / Title">
+              <Flex
+                direction="column">
+                <Flex.Item grow={1}>
+                  <Input
+                    value={data.card_assignment}
+                    onEnter={(e, val) => { act('assignment', { rank: val }); }} />
+                </Flex.Item>
+              </Flex>
+            </LabeledList.Item>
+          </LabeledList>
+          <Section title="Reassign Rank">
+            <Flex
+              direction="column">
+              <Flex.Item>
+                <Tabs>
+                  {data.ranks.forEach((dept) => {
+                    return (
+                      <Tabs.Tab onClick={setDepartment(dept.name)}>
+                        {dept}
+                      </Tabs.Tab>
+                    );
+                  })}
+                </Tabs>
+              </Flex.Item>
+              <Flex.Item grow={1}>
+                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.forEach((rank) => {
+                  <Button.Confirm
+                    content={rank}
+                    onClick={() => { act('rank', { rank: rank }); }} />;
                 })}
-              </Tabs>
-            </Flex.Item>
-            <Flex.Item grow={1}>
-              {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.forEach((rank) => {
-                <Button
-                  content={rank}
-                  onClick={() => { act('rank', { rank: rank }); }} />;
-              })}
-            </Flex.Item>
-          </Flex>
+              </Flex.Item>
+            </Flex>
+          </Section>
         </Section>
       )}
     </Modular>

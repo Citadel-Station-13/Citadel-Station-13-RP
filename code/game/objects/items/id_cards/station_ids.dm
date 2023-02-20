@@ -47,12 +47,35 @@
 
 /obj/item/card/id/examine_more(mob/user)
 	. = ..()
-	var/list/msg = list(SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>"))
+	. += SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>")
 
 	if(mining_points)
-		msg += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
-	return msg
+		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
 
+/obj/item/card/id/update_name()
+	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"
+
+/**
+ * Sets our registered name
+ *
+ * @params
+ * * name - What name to set to.
+ */
+/obj/item/card/id/proc/set_registered_name(name)
+	src.registered_name = name
+	update_name()
+
+/**
+ * Sets our registered rank / assignment
+ *
+ * @params
+ * * rank - what rank to set to. This is the job title. Defaults to unchanged.
+ * * assignment - what assignment to set to. This is the job alt title, if any. Defaults to the rank.
+ */
+/obj/item/card/id/proc/set_registered_rank(rank = src.rank, assignment)
+	src.rank = rank
+	src.assignment = assignment || rank
+	update_name()
 
 /obj/item/card/id/proc/prevent_tracking()
 	return 0
@@ -65,10 +88,6 @@
 	popup.set_content(dat())
 	popup.open()
 	return
-
-/obj/item/card/id/update_name()
-	. = ..()
-	name = "[src.registered_name]'s ID Card ([src.assignment])"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
 	var/icon/charicon = cached_character_icon(M)

@@ -52,8 +52,10 @@
  * * authing - (optional) card authorizing the edit
  * * old_rank - (optional) old rank to edit from
  * * new_rank - (optional) new rank to edit to
+ * * old_assignment - (optional) old assignment to edit from
+ * * new_assignment - (optional) new assignment to edit to
  */
-/datum/tgui_module/card_mod/proc/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank)
+/datum/tgui_module/card_mod/proc/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank, old_assignment, new_assignment)
 	return FALSE
 
 /**
@@ -146,6 +148,12 @@
 /datum/tgui_module/cardmod/proc/edit_target()
 	return null
 
+/**
+ * return source id to auth with
+ */
+/datum/tgui_module/cardmod/proc/auth_source()
+	return null
+
 /datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
@@ -168,25 +176,73 @@
 	.["card_account"] = editing.associated_account_number
 	.["card_name"] = editing.registered_name
 	.["card_rank"] = editing.rank
+	.["card_assignment"] = editing.assignment
 	.["granted"] = editing.access
 	.["can_demote"] = auth_demote(user, editing, authing)
 
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	var/obj/item/card/id/target = edit_target()
+	var/obj/item/card/id/source = auth_source()
 	switch(action)
 		if("account")
 			var/number = text2num(params["set"])
+			if(auth_account_edit(usr, target, source, target.associated_account_number, number))
+				target.associated_account_number = number
+			return TRUE
 		if("name")
 			var/new_name = params["set"]
+			if(auth_rename(usr, target, source, target.registered_name, new_name))
+				reassign_name(target, target.registered_name, new_name)
+			return TRUE
+		if("demote")
+			if(auth_demote(usr, target, source, target.rank))
+				reassign_rank(target, "Unassigned", "Unassigned", target.registered_name)
+				target.access = list()
+			return TRUE
 		if("rank")
 			var/rank = params["rank"]
+			if(auth_rank(usr, target, source, old_rank = target.rank, new_rank = rank))
+				reassign_rank(target, rank, rank, target.registered_name)
+				target.access = SSjob.job_by_title(rank)?.get_access() || list()
+			return TRUE
+		if("rank_custom")
+			var/rank = params["rank"]
+			if(auth_rank(usr, target, source, old_rank = target.rank, new_rank = rank))
+				reassign_rank(target, rank, rank, target.registered_name)
+			return TRUE
+		if("assignment")
+			var/assignment = params["set"]
+			if(auth_rank(usr, target, source, old_assignment = target.assignment, new_assignment = assignment))
+				reassign_rank(target, rank, assignment, target.registered_name)
+			return TRUE
 		if("grant")
 			var/cat = params["cat"]
+			var/list/resultant = auth_access_edit(usr, target, source, list(SSjob.access_ids_of_category(cat)))
+			LAZYINITLIST(target.access)
+			target.access |= resultant
+			return TRUE
 		if("deny")
 			var/cat = params["cat"]
+			var/list/resultant = auth_access_edit(usr, target, source, list(SSjob.access_ids_of_category(cat)))
+			LAZYINITLIST(target.access)
+			target.access -= resultant
+			return TRUE
 		if("toggle")
 			var/id = text2num(params["access"])
-	#warn impl
+			if(!id)
+				return TRUE
+			var/list/resultant = auth_access_edit(usr, target, source, list(id))
+			LAZYINITLIST(target.access)
+			target.access ^= resultant
+			return TRUE
+
+/datum/tgui_module/card_mod/proc/reassign_rank(obj/item/card/id/the_card, new_rank, new_assignment, their_name)
+	data_core.manifest_modify(their_name, new_assignment, new_rank)
+	the_card.set_registered_rank(new_rank, new_assignment)
+
+/datum/tgui_module/card_mod/proc/reassign_name(obj/item/card/id/the_card, old_name, new_name)
+	the_card.set_registered_name(new_name)
 
 /**
  * standard implementation of card_mod modules
@@ -259,7 +315,7 @@
 		return FALSE
 	return victim_job.departments & authing_job.departments_managed
 
-/datum/tgui_module/card_mod/standard/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank)
+/datum/tgui_module/card_mod/standard/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank, old_assignment, new_assignment)
 	if(isnull(authing))
 		return FALSE
 	if(ACCESS_COMMAND_CARDMOD in authing.access)
@@ -277,13 +333,16 @@
 		return FALSE
 	if(!length(new_job.departments & authing_job.departments_managed))
 		return FALSE
-
 /datum/tgui_module/card_mod/standard/id_computer
 	expected_type = /obj/machinery/computer/card
 
 /datum/tgui_module/card_mod/standard/id_computer/edit_target()
 	var/obj/machinery/computer/card/target = host
 	return target.editing
+
+/datum/tgui_module/card_mod/standard/id_computer/auth_source()
+	var/obj/machinery/computer/card/target = host
+	return target.authing
 
 /**
  * admin implementation of card_mod modules
@@ -316,7 +375,7 @@
 /datum/tgui_module/card_mod/admin/auth_demote(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank)
 	return TRUE
 
-/datum/tgui_module/card_mod/admin/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank)
+/datum/tgui_module/card_mod/admin/auth_rank(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_rank, new_rank, old_assignment, new_assignment)
 	return TRUE
 
 /datum/tgui_module/card_mod/admin/auth_rename(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_name, new_name)

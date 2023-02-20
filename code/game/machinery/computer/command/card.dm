@@ -187,71 +187,7 @@
 					if(!usr.attempt_insert_item_for_installation(I, src))
 						return
 					scan = I
-			. = TRUE
-
-		if("access")
-			if(is_authenticated())
-				var/access_type = text2num(params["access_target"])
-				var/access_allowed = text2num(params["allowed"])
-				if(access_type in (is_centcom() ? get_all_centcom_access() : get_all_station_access()))
-					modify.access -= access_type
-					if(!access_allowed)
-						modify.access += access_type
-				modify.lost_access = list()
-			. = TRUE
-
-		if("assign")
-			if(is_authenticated() && modify)
-				var/t1 = params["assign_target"]
-				if(t1 == "Custom")
-					var/temp_t = sanitize(input("Enter a custom job assignment.","Assignment"), 45)
-					//let custom jobs function as an impromptu alt title, mainly for sechuds
-					if(temp_t && modify)
-						modify.assignment = temp_t
-				else
-					var/list/access = list()
-					if(is_centcom())
-						access = get_centcom_access(t1)
-					else
-						var/datum/role/job/jobdatum = SSjob.get_job(t1)
-						if(!jobdatum)
-							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
-							return
-						access = jobdatum.get_access()
-
-					modify.access = access
-					modify.assignment = t1
-					modify.rank = t1
-					modify.lost_access = list()
-
-				callHook("reassign_employee", list(modify))
-			. = TRUE
-
-		if("reg")
-			if(is_authenticated())
-				var/temp_name = sanitizeName(params["reg"])
-				if(temp_name)
-					modify.registered_name = temp_name
-				else
-					visible_message("<span class='notice'>[src] buzzes rudely.</span>")
-			. = TRUE
-
-		if("account")
-			if(is_authenticated())
-				var/account_num = text2num(params["account"])
-				modify.associated_account_number = account_num
-			. = TRUE
-
-		if("terminate")
-			if(is_authenticated())
-				modify.assignment = "Dismissed"
-				modify.access = list()
-				modify.lost_access = list() // Reset the lost access upon any modifications
-
-			. = TRUE
-
-	if(modify)
-		modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
+			. =
 
 /obj/machinery/computer/card/proc/print_manifest()
 	var/obj/item/paper/P = new(loc)
