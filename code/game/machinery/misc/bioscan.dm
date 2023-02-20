@@ -9,9 +9,17 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 	var/network_key
 	/// can be reprogrammed
 	var/network_mutable = TRUE
+	/// id
+	var/id
+	/// next id
+	var/static/id_next = 0
+
+	// todo: scaling levels of how accurate they are
+	// todo: multiz / world-sector functionality; for now one must be there for each zlevel
 
 /obj/machinery/bioscan_antenna/Initialize(mapload)
 	. = ..()
+	id = "[++id_next]"
 	change_network(network_key)
 
 /obj/machinery/bioscan_antenna/Destroy()
@@ -39,3 +47,5 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 /obj/machinery/bioscan_anntena/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."
 	can_be_unanchored = FALSE
+
+#warn map into atlas
