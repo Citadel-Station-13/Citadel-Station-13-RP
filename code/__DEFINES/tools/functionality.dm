@@ -40,10 +40,6 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 
 //! Tool hints - make these human readable!
 
-//? These have default images
-#define TOOL_HINT_WRENCH_GENERIC_FASTEN "fasten / anchor"
-#define TOOL_HINT_WRENCH_GENERIC_UNFASTEN "unfasten / unanchor"
-
 #define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unsecure frame"
 #define TOOL_HINT_SCREWING_WINDOW_FRAME "secure frame"
 #define TOOL_HINT_UNSCREWING_WINDOW_PANE "unfasten pane"

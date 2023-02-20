@@ -26,20 +26,58 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 	change_network(null)
 	return ..()
 
-/obj/machinery/bioscan_antenna/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/bioscan_antenna/crowbar_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_deconstruct || !panel_open)
+		return ..()
+	if(default_deconstruction_crowbar(user, I))
+		user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
+
+/obj/machinery/bioscan_antenna/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_deconstruct)
+		return ..()
+	if(default_deconstruction_screwdriver(user, I))
+		user.visible_message(SPAN_NOTICE("[user] [panel_open? "opens" : "closes"] the panel on [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
 
 /obj/machinery/bioscan_antenna/wrench_act(obj/item/I, mob/user, flags, hint)
-	#warn impl
+	if(!allow_unanchor)
+		return ..()
+	if(default_unfasten_wrench(user, I, 4 SECONDS))
+		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
 
 /obj/machinery/bioscan_antenna/multitool_act(obj/item/I, mob/user, flags, hint)
-	#warn impl
+	if(!network_mutable)
+		return ..()
+	. = TRUE
+	var/new_network = default_input_text(user, "What do you want to set the network key to?", "Modify Network", network_key)
+	if(!user.Reachability(src) || isnull(new_network))
+		return
+	user.visible_message(SPAN_NOTICE("[user] reprograms the network on [src]."), range = MESSAGE_RANGE_CONFIGURATION)
+	change_network(new_network)
 
 /obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, mob/user)
 	. = list()
 	if(network_mutable)
-		. += TOOL_MULTITOOL
+		.[TOOL_MULTITOOL] = "change network"
 	if(can_be_unanchored)
-		.[TOOL_WRENCH] = anchored? TOOL_HINT_WRENCH_GENERIC_UNFASTEN : TOOL_HINT_WRENCH_GENERIC_FASTEN
+		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+	if(allow_deconstruct)
+		.[TOOL_SCREWDRIVER] = panel_open? "close panel" : "open panel"
+		if(panel_open)
+			.[TOOL_CROWBAR] = "deconstruct"
+
+/obj/machinery/bioscan_antenna/dynamic_tool_image(function, hint)
+	switch(function)
+		if(TOOL_WRENCH)
+			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
+		if(TOOL_SCREWDRIVER)
+			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
+	return ..()
 
 /obj/machinery/bioscan_antenna/proc/change_network(key)
 	#warn impl

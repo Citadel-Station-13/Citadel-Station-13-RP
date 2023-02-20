@@ -298,11 +298,6 @@
  * - hint - the context provided when you want to implement multiple actions for a tool
  */
 /atom/proc/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_HINT_WRENCH_GENERIC_FASTEN)
-			return dyntool_image_forward(TOOL_WRENCH)
-		if(TOOL_HINT_WRENCH_GENERIC_UNFASTEN)
-			return dyntool_image_backward(TOOL_WRENCH)
 	return dyntool_image_neutral(function)
 
 //! Dynamic Tools - default images
