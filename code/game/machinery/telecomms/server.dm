@@ -17,18 +17,9 @@
 	machinetype = 4
 	circuit = /obj/item/circuitboard/telecomms/server
 	var/list/log_entries = list()
-	var/list/stored_names = list()
-	var/list/TrafficActions = list()
 	var/logs = 0 // number of logs
 	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
 
-	var/list/memory = list()	// stored memory
-	var/rawcode = ""	// the code to compile (raw text)
-	var/autoruncode = 0		// 1 if the code is set to run every time a signal is picked up
-
-	var/encryption = "null" // encryption key: ie "password"
-	var/salt = "null"		// encryption salt: ie "123comsat"
-							// would add up to md5("password123comsat")
 	var/obj/item/radio/headset/server_radio = null
 
 /obj/machinery/telecomms/server/Initialize(mapload)
@@ -105,8 +96,6 @@
 
 				// Log and store everything that needs to be logged
 				log_entries.Add(log)
-				if(!(signal.data["name"] in stored_names))
-					stored_names.Add(signal.data["name"])
 				logs++
 				signal.data["server"] = src
 
@@ -117,12 +106,6 @@
 			var/can_send = relay_information(signal, "/obj/machinery/telecomms/hub")
 			if(!can_send)
 				relay_information(signal, "/obj/machinery/telecomms/broadcaster")
-
-
-/obj/machinery/telecomms/server/proc/setcode(var/t)
-	if(t)
-		if(istext(t))
-			rawcode = t
 
 /obj/machinery/telecomms/server/proc/update_logs()
 	// start deleting the very first log entry
