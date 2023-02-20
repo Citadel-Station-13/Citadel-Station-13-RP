@@ -27,6 +27,10 @@
 	var/triangulating = FALSE
 	/// tracking source tags to /datum/network_triangulation
 	var/list/triangulation
+	/// accuracy loss per decisecond
+	var/triangulation_falloff = 0.01
+	/// triangulation efficiency multiplier
+	var/triangulation_efficiency = 1
 
 /obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
@@ -139,19 +143,35 @@
 	if(isnull(triangulation))
 		triangulation = list()
 
-	/// generate tag
+	reduction_factor *= triangulation_efficiency
+
+	// if victim isn't even on a turf...
+	var/turf/location = get_turf(victim)
+	if(isnull(location))
+		return
+
+	// generate tag
 	var/triangulation_tag = ismob(victim)? victim.tag : ref(victim)
 
-	/// grab or make entry, update location
+	// grab or make entry, update location
 	var/datum/network_triangulation/entry = triangulation[triangulation_tag]
 	if(!entry)
 		triangulation[triangulation_tag] = (entry = new)
+		// starting at..
+		entry.accuracy = round(max(world.maxx, world.maxy) / reduction_factor, 1)
+	else
+		// narrow down
+		entry.accuracy = min(
+			round(max(world.maxx, world.maxy) / reduction_factor, 1), // don't get worse than a first attempt
+			(entry.accuracy + (max(world.time - entry.last_updated, 0) * triangulation_falloff)) / reduction_factor
+		)
 
-	/// update name
+	// update name
 	if(update_name)
-		entry.name = update_name
+		entry.scan_name = update_name
 
-	#warn impl
+	entry.last_updated = world.time
+	entry.randomize(location)
 
 /obj/machinery/telecomms/server/proc/set_triangulating(state)
 	triangulating = state
@@ -168,14 +188,21 @@
 
 /datum/network_triangulation
 	/// name of target
-	var/target_name
+	var/scan_name
 	/// last x
-	var/x
+	var/random_x
 	/// last y
-	var/y
+	var/random_y
 	/// last real z index
-	var/z
+	var/random_z
 	/// last accuracy
 	var/accuracy
 	/// last update time
 	var/last_updated
+
+/datum/network_triangulation/proc/randomize(turf/real_loc)
+	var/angle = rand(0, 360)
+	var/dist = rand(0, accuracy)
+	random_x = round(cos(angle) * dist, 1)
+	random_y = round(sin(angle) * dist, 1)
+	random_z = real_loc.z
