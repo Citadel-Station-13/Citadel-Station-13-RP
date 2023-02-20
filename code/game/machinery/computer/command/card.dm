@@ -134,9 +134,35 @@
 
 	switch(action)
 		if("auth")
-			#warn impl
+			if(authing)
+				usr.grab_item_from_interacted_with(authing, src)
+				usr.action_feedback(SPAN_NOTICE("You remove [authing] from [src]."), src)
+				authing = null
+			else
+				var/obj/item/card/id/inserting = usr.get_active_held_item()
+				if(!istype(inserting))
+					return TRUE
+				if(!usr.transfer_item_to_loc(inserting, src))
+					return TRUE
+				authing = inserting
+				usr.action_feedback(SPAN_NOTICE("You insert [authing] into [src]."))
+			update_static_data()
+			return TRUE
 		if("modify")
-			#warn impl
+			if(editing)
+				usr.grab_item_from_interacted_with(editing, src)
+				usr.action_feedback(SPAN_NOTICE("You remove [editing] from [src]."), src)
+				editing = null
+			else
+				var/obj/item/card/id/inserting = usr.get_active_held_item()
+				if(!istype(inserting))
+					return TRUE
+				if(!usr.transfer_item_to_loc(inserting, src))
+					return TRUE
+				editing = inserting
+				usr.action_feedback(SPAN_NOTICE("You insert [editing] into [src]."))
+			update_static_data()
+			return TRUE
 		if("print_manifest")
 			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
 				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
@@ -151,43 +177,6 @@
 			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
 			addtimer(CALLBACK(src, /obj/machinery/computer/card/proc/print_card_report), 5 SECONDS)
 			return TRUE
-		if("modify")
-			if(modify)
-				data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
-				modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
-				if(ishuman(usr))
-					modify.forceMove(get_turf(src))
-					if(!usr.get_active_held_item())
-						usr.put_in_hands(modify)
-					modify = null
-				else
-					modify.forceMove(get_turf(src))
-					modify = null
-			else
-				var/obj/item/I = usr.get_active_held_item()
-				if(istype(I, /obj/item/card/id))
-					if(!usr.attempt_insert_item_for_installation(I, src))
-						return
-					modify = I
-			. = TRUE
-
-		if("scan")
-			if(scan)
-				if(ishuman(usr))
-					scan.forceMove(get_turf(src))
-					if(!usr.get_active_held_item())
-						usr.put_in_hands(scan)
-					scan = null
-				else
-					scan.forceMove(get_turf(src))
-					scan = null
-			else
-				var/obj/item/I = usr.get_active_held_item()
-				if(istype(I, /obj/item/card/id))
-					if(!usr.attempt_insert_item_for_installation(I, src))
-						return
-					scan = I
-			. =
 
 /obj/machinery/computer/card/proc/print_manifest()
 	var/obj/item/paper/P = new(loc)
