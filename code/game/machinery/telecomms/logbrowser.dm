@@ -60,6 +60,8 @@
 
 	return data
 
+#warn impl triangulation
+
 /obj/machinery/computer/telecomms/server/attack_hand(mob/user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

@@ -84,7 +84,9 @@
 		var/mobs_complex_dead = 0
 		for(var/mob/M as anything in indices[z_str])
 			++mobs_all
-			if(iscarbon(M))
+			if(!isliving(M))
+				continue	// don't care didn't ask
+			if(!issimple(M))
 				++mobs_complex
 				if(IS_DEAD(M))
 					++mobs_complex_dead
