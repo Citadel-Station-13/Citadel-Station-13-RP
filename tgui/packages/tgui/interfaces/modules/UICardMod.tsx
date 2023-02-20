@@ -4,7 +4,8 @@
  */
 
 import { BooleanLike } from "common/react";
-import { ModuleProps, ModuleData, useModule } from "../../backend";
+import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
+import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { Access, AccessId, AccessListMod } from "../common/Access";
@@ -12,7 +13,7 @@ import { Access, AccessId, AccessListMod } from "../common/Access";
 
 interface CardModContext extends ModuleData {
   access: [Access], // all avail access
-  rank: [string], // all avail rank
+  ranks: [Department], // all avail rank
   can_demote: BooleanLike, // can we demote?
   can_rename: BooleanLike, // can we rename?
   granted: [AccessId], // access ids on card
@@ -25,184 +26,79 @@ interface CardModContext extends ModuleData {
   card_rank: string, // card rank as string
 }
 
+interface Department {
+  name: string;
+  ranks: [string];
+}
+
 interface CardModProps extends ModuleProps {
   // nothing
 }
 
 export const UICardMod = (props: CardModProps, context) => {
   const { data, act } = useModule<CardModContext>(context);
+  const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
+  const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
   return (
     <Modular width={250} height={500}>
-
-      <AccessListMod
-        access={data.access}
-        selected={data.granted}
-        set={(id) => {}}
-        grant={(cat) => {}}
-        deny={(cat) => {}} />
+      <LabeledList>
+        <LabeledList.Item
+          label="Owner">
+          <Input
+            value={data.card_name}
+            onEnter={(e, val) => { act('name', { set: val }); }} />
+        </LabeledList.Item>
+        <LabeledList.Item
+          label="Account Number">
+          <Input
+            value={data.card_account}
+            onEnter={(e, val) => { act('account', { set: val }); }} />
+        </LabeledList.Item>
+      </LabeledList>
+      <Tabs>
+        <Tabs.Tab onClick={setMode(0)}>
+          Access
+        </Tabs.Tab>
+        <Tabs.Tab onClick={setMode(1)}>
+          Rank
+        </Tabs.Tab>
+      </Tabs>
+      {mode === 0 && (
+        <AccessListMod
+          access={data.access}
+          selected={data.granted}
+          set={(id) => { act('toggle', { access: id }); }}
+          grant={(cat) => { act('grant', { cat: cat }); }}
+          deny={(cat) => { act('deny', { cat: cat }); }} />
+      )}
+      {mode === 1 && (
+        <Section>
+          <Input
+            value={data.card_rank}
+            onEnter={(e, val) => { act('rank', { rank: val }); }} />
+          <Flex
+            direction="column">
+            <Flex.Item>
+              <Tabs>
+                {data.ranks.forEach((dept) => {
+                  return (
+                    <Tabs.Tab onClick={setDepartment(dept.name)}>
+                      {dept}
+                    </Tabs.Tab>
+                  );
+                })}
+              </Tabs>
+            </Flex.Item>
+            <Flex.Item grow={1}>
+              {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.forEach((rank) => {
+                <Button
+                  content={rank}
+                  onClick={() => { act('rank', { rank: rank }); }} />;
+              })}
+            </Flex.Item>
+          </Flex>
+        </Section>
+      )}
     </Modular>
   );
 };
-/*
-
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Input, NoticeBox, Section, Tabs } from '../components';
-import { NtosWindow } from '../layouts';
-import { AccessList } from './common/AccessList';
-
-export const NtosCard = (props, context) => {
-  return (
-    <NtosWindow
-      width={450}
-      height={520}
-      resizable>
-      <NtosWindow.Content scrollable>
-        <NtosCardContent />
-      </NtosWindow.Content>
-    </NtosWindow>
-  );
-};
-
-export const NtosCardContent = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const {
-    authenticated,
-    regions = [],
-    access_on_card = [],
-    jobs = {},
-    id_rank,
-    id_owner,
-    has_id,
-    have_printer,
-    have_id_slot,
-    id_name,
-  } = data;
-  const [
-    selectedDepartment,
-    setSelectedDepartment,
-  ] = useLocalState(context, 'department', Object.keys(jobs)[0]);
-  if (!have_id_slot) {
-    return (
-      <NoticeBox>
-        This program requires an ID slot in order to function
-      </NoticeBox>
-    );
-  }
-  const departmentJobs = jobs[selectedDepartment] || [];
-  return (
-    <Fragment>
-      <Section
-        title={has_id && authenticated
-          ? (
-            <Input
-              value={id_owner}
-              width="250px"
-              onInput={(e, value) => act('PRG_edit', {
-                name: value,
-              })} />
-          )
-          : (id_owner || 'No Card Inserted')}
-        buttons={(
-          <Fragment>
-            <Button
-              icon="print"
-              content="Print"
-              disabled={!have_printer || !has_id}
-              onClick={() => act('PRG_print')} />
-            <Button
-              icon={authenticated ? "sign-out-alt" : "sign-in-alt"}
-              content={authenticated ? "Log Out" : "Log In"}
-              color={authenticated ? "bad" : "good"}
-              onClick={() => {
-                act(authenticated ? 'PRG_logout' : 'PRG_authenticate');
-              }} />
-          </Fragment>
-        )}>
-        <Button
-          fluid
-          icon="eject"
-          content={id_name}
-          onClick={() => act('PRG_eject')} />
-      </Section>
-      {(!!has_id && !!authenticated) && (
-        <Box>
-          <Tabs>
-            <Tabs.Tab
-              selected={tab === 1}
-              onClick={() => setTab(1)}>
-              Access
-            </Tabs.Tab>
-            <Tabs.Tab
-              selected={tab === 2}
-              onClick={() => setTab(2)}>
-              Jobs
-            </Tabs.Tab>
-          </Tabs>
-          {tab === 1 && (
-            <AccessList
-              accesses={regions}
-              selectedList={access_on_card}
-              accessMod={ref => act('PRG_access', {
-                access_target: ref,
-              })}
-              grantAll={() => act('PRG_grantall')}
-              denyAll={() => act('PRG_denyall')}
-              grantDep={dep => act('PRG_grantregion', {
-                region: dep,
-              })}
-              denyDep={dep => act('PRG_denyregion', {
-                region: dep,
-              })} />
-          )}
-          {tab === 2 && (
-            <Section
-              title={id_rank}
-              buttons={(
-                <Button.Confirm
-                  icon="exclamation-triangle"
-                  content="Terminate"
-                  color="bad"
-                  onClick={() => act('PRG_terminate')} />
-              )}>
-              <Button.Input
-                fluid
-                content="Custom..."
-                onCommit={(e, value) => act('PRG_assign', {
-                  assign_target: 'Custom',
-                  custom_name: value,
-                })} />
-              <Flex>
-                <Flex.Item>
-                  <Tabs vertical>
-                    {Object.keys(jobs).map(department => (
-                      <Tabs.Tab
-                        key={department}
-                        selected={department === selectedDepartment}
-                        onClick={() => setSelectedDepartment(department)}>
-                        {department}
-                      </Tabs.Tab>
-                    ))}
-                  </Tabs>
-                </Flex.Item>
-                <Flex.Item grow={1}>
-                  {departmentJobs.map(job => (
-                    <Button
-                      fluid
-                      key={job.job}
-                      content={job.display_name}
-                      onClick={() => act('PRG_assign', {
-                        assign_target: job.job,
-                      })} />
-                  ))}
-                </Flex.Item>
-              </Flex>
-            </Section>
-          )}
-        </Box>
-      )}
-    </Fragment>
-  );
-};
-*/

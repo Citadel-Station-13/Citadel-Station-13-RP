@@ -154,7 +154,14 @@
 	.["modify_ids"] = query_access_ids(user, editing, authing)
 	.["modify_account"] = auth_account_edit(user, editing, authing)
 	.["can_rename"] = auth_rename(user, editing, authing)
-	.["rank"] = query_ranks(user, editing, authing)
+	var/list/ranks_by_department = query_ranks(user, editing, authing)
+	var/list/built_department = list()
+	.["ranks"] = built_department
+	for(var/department in ranks_by_department)
+		built_department += list(
+			"name" = department,
+			"ranks" = ranks_by_department[department],
+		)
 
 /datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = ..()
@@ -166,6 +173,19 @@
 
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	switch(action)
+		if("account")
+			var/number = text2num(params["set"])
+		if("name")
+			var/new_name = params["set"]
+		if("rank")
+			var/rank = params["rank"]
+		if("grant")
+			var/cat = params["cat"]
+		if("deny")
+			var/cat = params["cat"]
+		if("toggle")
+			var/id = text2num(params["access"])
 	#warn impl
 
 /**
