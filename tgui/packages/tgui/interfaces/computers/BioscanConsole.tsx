@@ -25,5 +25,6 @@ export const BioscanConsole = (props, context) => {
 
         </Section>
       </Window>
+
   )
 }

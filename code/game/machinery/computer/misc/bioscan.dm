@@ -25,7 +25,7 @@
 /obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["scan_ready"] = on_cooldown()
-	.["network"] = network_key
+	.["network"] = network_key || ""
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
