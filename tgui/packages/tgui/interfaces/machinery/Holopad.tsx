@@ -13,7 +13,7 @@ enum HolopadCalling {
 type HolopadId = string;
 
 // window data
-type HolpadContext = {
+type HolopadContext = {
   isAI: BooleanLike; // ai user?
   isAIProjecting: BooleanLike; // we are currently projecting at this pad
   aiRequested: BooleanLike; // recently requested ai?
@@ -62,19 +62,7 @@ interface IncomingCallsContext extends BaseCallContext {
 }
 
 export const Holopad = (props, context) => {
-  const { act, data } = useBackend<HolpadContext>(context);
-  const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
-  const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
-  let padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
-  data.reachablePads.forEach((pad: ReachableHolopad) => {
-    if (padMap[pad.sector] === undefined) {
-      padMap[pad.sector] = {};
-    }
-    if (padMap[pad.sector][pad.category] === undefined) {
-      padMap[pad.sector][pad.category] = new Array<ReachableHolopad>();
-    }
-    padMap[pad.sector][pad.category].push(pad);
-  });
+  const { act, data } = useBackend<HolopadContext>(context);
 
   return (
     <Window
@@ -107,101 +95,17 @@ export const Holopad = (props, context) => {
             {!!data.canCall && (
               <Flex.Item grow={1}>
                 {data.calling === HolopadCalling.None? (
-                  <Flex
-                    direction="column">
-                    <Flex.Item grow={1}>
-                      <Section title="Call">
-                        <Tabs>
-                          {
-                            Object.keys(padMap).forEach((key: string) => {
-                              <Tabs.Tab
-                                selected={sector === key}
-                                onClick={() => setSector(key)}>
-                                {key}
-                              </Tabs.Tab>;
-                            })
-                          }
-                        </Tabs>
-                        <Flex
-                          direction="row">
-                          <Flex.Item>
-                            <Tabs>
-                              {sector && Object.keys(padMap[sector]).forEach((cat) => {
-                                <Tabs.Tab
-                                  selected={cat === category}
-                                  onClick={() => setCategory(cat)}>
-                                  {cat}
-                                </Tabs.Tab>;
-                              })}
-                            </Tabs>
-                          </Flex.Item>
-                          <Flex.Item grow={1}>
-                            <LabeledList>
-                              {(sector && category && padMap[sector][category].forEach((pad) => {
-                                <LabeledList.Item
-                                  label={pad.name}
-                                  buttons={
-                                    <Button.Confirm
-                                      content="Call"
-                                      onClick={() => act('call', { id: pad.id })} />
-                                  }
-                                />;
-                              })) || undefined}
-                            </LabeledList>
-                          </Flex.Item>
-                        </Flex>
-                        test
-                      </Section>
-                    </Flex.Item>
-                  </Flex>
+                  <HolopadDirectory />
                 ) : (
                   <Section title="Active Call">
+
                     test
                   </Section>
                 )}
               </Flex.Item>
             )}
             <Flex.Item>
-              <Section title="System">
-                <LabeledList>
-                  <LabeledList.Item
-                    label="Ringer"
-                    buttons={
-                      <Button
-                        title={data.ringerEnabled? "Enabled" : "Disabled"}
-                        selected={data.ringerEnabled}
-                        disabled={data.ringerToggle}
-                        onClick={() => act('toggle_ringer')} />
-                    } />
-                  <LabeledList.Item
-                    label="Visibility"
-                    buttons={
-                      <Button
-                        title={data.callVisibility? "Visible" : "Invisible"}
-                        selected={data.callVisibility}
-                        disabled={data.toggleVisibility}
-                        onClick={() => act('toggle_visibility')} />
-                    } />
-                  <LabeledList.Item
-                    label="Auto Pickup"
-                    buttons={
-                      <Button
-                        title={data.autoPickup? "Enabled" : "Disabled"}
-                        selected={data.autoPickup}
-                        disabled={data.autoToggle}
-                        onClick={() => act('toggle_auto')} />
-                    } />
-                  <LabeledList.Item
-                    label="Inbound Video"
-                    buttons={
-                      <Button
-                        title={data.videoEnabled? "Enabled" : "Disabled"}
-                        selected={data.videoEnabled}
-                        disabled={data.videoToggle}
-                        onClick={() => act('toggle_video')} />
-                    } />
-                </LabeledList>
-              </Section>
+              <HolopadSettings />
             </Flex.Item>
           </Flex>
         </Section>
@@ -210,173 +114,112 @@ export const Holopad = (props, context) => {
   );
 };
 
-
-/*
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, Modal, NoticeBox, Section } from '../components';
-import { Window } from '../layouts';
-
-export const Holopad = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    calling,
-  } = data;
+const HolopadDirectory = (props, context) => {
+  const { data, act } = useBackend<HolopadContext>(context);
+  const padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
+  data.reachablePads.forEach((pad: ReachableHolopad) => {
+    if (padMap[pad.sector] === undefined) {
+      padMap[pad.sector] = {};
+    }
+    if (padMap[pad.sector][pad.category] === undefined) {
+      padMap[pad.sector][pad.category] = new Array<ReachableHolopad>();
+    }
+    padMap[pad.sector][pad.category].push(pad);
+  });
+  const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
+  const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
   return (
-    <Window
-      width={440}
-      height={245}>
-      {!!calling && (
-        <Modal
-          fontSize="36px"
-          fontFamily="monospace">
-          <Flex align="center">
-            <Flex.Item mr={2} mt={2}>
-              <Icon
-                name="phone-alt"
-                rotation={25} />
+    <Flex
+      direction="column">
+      <Flex.Item grow={1}>
+        <Section title="Call">
+          <Tabs>
+            {
+              Object.keys(padMap).forEach((key: string) => {
+                <Tabs.Tab
+                  selected={sector === key}
+                  onClick={() => setSector(key)}>
+                  {key}
+                </Tabs.Tab>;
+              })
+            }
+          </Tabs>
+          <Flex
+            direction="row">
+            <Flex.Item>
+              <Tabs>
+                {sector && Object.keys(padMap[sector]).forEach((cat) => {
+                  <Tabs.Tab
+                    selected={cat === category}
+                    onClick={() => setCategory(cat)}>
+                    {cat}
+                  </Tabs.Tab>;
+                })}
+              </Tabs>
             </Flex.Item>
-            <Flex.Item mr={2}>
-              {'Dialing...'}
+            <Flex.Item grow={1}>
+              <LabeledList>
+                {(sector && category && padMap[sector][category].forEach((pad) => {
+                  <LabeledList.Item
+                    label={pad.name}
+                    buttons={
+                      <Button.Confirm
+                        content="Call"
+                        onClick={() => act('call', { id: pad.id })} />
+                    }
+                  />;
+                })) || undefined}
+              </LabeledList>
             </Flex.Item>
           </Flex>
-          <Box
-            mt={2}
-            textAlign="center"
-            fontSize="24px">
-            <Button
-              lineHeight="40px"
-              icon="times"
-              content="Hang Up"
-              color="bad"
-              onClick={() => act('hang_up')} />
-          </Box>
-        </Modal>
-      )}
-      <Window.Content scrollable>
-        <HolopadContent />
-      </Window.Content>
-    </Window>
+        </Section>
+      </Flex.Item>
+    </Flex>
   );
 };
 
-const HolopadContent = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    on_network,
-    on_cooldown,
-    allowed,
-    disk,
-    disk_record,
-    replay_mode,
-    loop_mode,
-    record_mode,
-    holo_calls = [],
-  } = data;
+const HolopadSettings = (props, context) => {
+  let { data, act } = useBackend<HolopadContext>(context);
   return (
-    <>
-      <Section
-        title="Holopad"
-        buttons={(
-          <Button
-            icon="bell"
-            content={on_cooldown
-              ? "AI's Presence Requested"
-              : "Request AI's Presence"}
-            disabled={!on_network || on_cooldown}
-            onClick={() => act('AIrequest')} />
-        )} >
-        <LabeledList>
-          <LabeledList.Item label="Communicator">
+    <Section title="System">
+      <LabeledList>
+        <LabeledList.Item
+          label="Ringer"
+          buttons={
             <Button
-              icon="phone-alt"
-              content={allowed ? "Connect To Holopad" : "Call Holopad"}
-              disabled={!on_network}
-              onClick={() => act('holocall', { headcall: allowed })} />
-          </LabeledList.Item>
-          {holo_calls.map((call => {
-            return (
-              <LabeledList.Item
-                label={call.connected
-                  ? "Current Call"
-                  : "Incoming Call"}
-                key={call.ref}>
-                <Button
-                  icon={call.connected ? 'phone-slash' : 'phone-alt'}
-                  content={call.connected
-                    ? "Disconnect call from " + call.caller
-                    : "Answer call from " + call.caller}
-                  color={call.connected ? 'bad' : 'good'}
-                  disabled={!on_network}
-                  onClick={() => act(call.connected
-                    ? 'disconnectcall'
-                    : 'connectcall', { holopad: call.ref })} />
-              </LabeledList.Item>
-            );
-          }))}
-          {holo_calls.filter(call => !call.connected).length > 0 && (
-            <LabeledList.Item key="reject">
-              <Button
-                icon="phone-slash"
-                content="Reject incoming call(s)"
-                color="bad"
-                onClick={() => act('rejectall')} />
-            </LabeledList.Item>
-          )}
-        </LabeledList>
-      </Section>
-      <Section
-        title="Holodisk"
-        buttons={
-          <Button
-            icon="eject"
-            content="Eject"
-            disabled={!disk || replay_mode || record_mode}
-            onClick={() => act('disk_eject')} />
-        }>
-        {!disk && (
-          <NoticeBox>
-            No holodisk
-          </NoticeBox>
-        ) || (
-          <LabeledList>
-            <LabeledList.Item label="Disk Player">
-              <Button
-                icon={replay_mode ? 'pause' : 'play'}
-                content={replay_mode ? 'Stop' : 'Replay'}
-                selected={replay_mode}
-                disabled={record_mode || !disk_record}
-                onClick={() => act('replay_mode')} />
-              <Button
-                icon={'sync'}
-                content={loop_mode ? 'Looping' : 'Loop'}
-                selected={loop_mode}
-                disabled={record_mode || !disk_record}
-                onClick={() => act('loop_mode')} />
-              <Button
-                icon="exchange-alt"
-                content="Change Offset"
-                disabled={!replay_mode}
-                onClick={() => act('offset')} />
-            </LabeledList.Item>
-            <LabeledList.Item label="Recorder">
-              <Button
-                icon={record_mode ? 'pause' : 'video'}
-                content={record_mode ? 'End Recording' : 'Record'}
-                selected={record_mode}
-                disabled={(disk_record && !record_mode) || replay_mode}
-                onClick={() => act('record_mode')} />
-              <Button
-                icon="trash"
-                content="Clear Recording"
-                color="bad"
-                disabled={!disk_record || replay_mode || record_mode}
-                onClick={() => act('record_clear')} />
-            </LabeledList.Item>
-          </LabeledList>
-        )}
-      </Section>
-    </>
+              title={data.ringerEnabled? "Enabled" : "Disabled"}
+              selected={data.ringerEnabled}
+              disabled={data.ringerToggle}
+              onClick={() => act('toggle_ringer')} />
+          } />
+        <LabeledList.Item
+          label="Visibility"
+          buttons={
+            <Button
+              title={data.callVisibility? "Visible" : "Invisible"}
+              selected={data.callVisibility}
+              disabled={data.toggleVisibility}
+              onClick={() => act('toggle_visibility')} />
+          } />
+        <LabeledList.Item
+          label="Auto Pickup"
+          buttons={
+            <Button
+              title={data.autoPickup? "Enabled" : "Disabled"}
+              selected={data.autoPickup}
+              disabled={data.autoToggle}
+              onClick={() => act('toggle_auto')} />
+          } />
+        <LabeledList.Item
+          label="Inbound Video"
+          buttons={
+            <Button
+              title={data.videoEnabled? "Enabled" : "Disabled"}
+              selected={data.videoEnabled}
+              disabled={data.videoToggle}
+              onClick={() => act('toggle_video')} />
+          } />
+      </LabeledList>
+    </Section>
   );
 };
-
-*/
