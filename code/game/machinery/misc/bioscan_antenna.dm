@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 /obj/machinery/bioscan_antenna/proc/change_network(key)
 	#warn impl
 
-/obj/machinery/bioscan_anntena/permanent
+/obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."
 	can_be_unanchored = FALSE
 

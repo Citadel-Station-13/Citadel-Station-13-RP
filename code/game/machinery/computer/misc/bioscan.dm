@@ -26,6 +26,7 @@
 	. = ..()
 	.["scan_ready"] = on_cooldown()
 	.["network"] = network_key || ""
+	#warn finish ui
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -57,7 +58,43 @@
 
 /obj/machinery/computer/bioscan/proc/scan()
 	var/list/new_data = list()
-	#warn generate data
-
+	/// get relevant antennas
+	var/list/antennas = network_key && GLOB.bioscan_anntena_list[network_key]
+	if(!antennas)
+		// abort
+		void_scan()
+		return
+	/// build list of levels
+	var/list/indices = list()
+	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
+		indices["[A.z]"] = list()
+	/// get mobs
+	for(var/mob/M as anything in GLOB.mob_list)
+		if(!indices[num2text(M.z)])
+			continue
+		indices[M.z] += M
+	/// process mobs
+	var/list/assembled = list()
+	for(var/z_str in indices)
+		var/list/gottem = list()
+		gottem["id"] = SSmapping.level_id(text2num(z_str))
+		var/mobs_all = 0
+		var/mobs_complex = 0
+		var/mobs_complex_alive = 0
+		var/mobs_complex_dead = 0
+		for(var/mob/M as anything in indices[z_str])
+			++mobs_all
+			if(iscarbon(M))
+				++mobs_complex
+				if(IS_DEAD(M))
+					++mobs_complex_dead
+				else
+					++mobs_complex_alive
+		gottem["all"] = mobs_all
+		gottem["complex"] = mobs_complex
+		gottem["complex_alive"] = mobs_complex_alive
+		gottem["complex_dead"] = mobs_complex_dead
+		assembled[++assembled.len] = gottem
+	new_data["levels"] = assembled
 	buffer = new_data
 	send_tgui_data_immediate(data = list("scan" = buffer))

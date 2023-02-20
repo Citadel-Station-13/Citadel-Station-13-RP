@@ -9,8 +9,17 @@ interface BioscanConsoleData {
 }
 
 interface BioscanResults {
-
+  levels: [BioscanLevel];
 }
+
+interface BioscanLevel {
+  id: string;
+  all: number;
+  complex: number;
+  complex_alive: number;
+  complex_dead: number;
+}
+
 
 export const BioscanConsole = (props, context) => {
   let {act, data} = useBackend<BioscanConsoleData>(context);
