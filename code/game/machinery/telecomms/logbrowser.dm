@@ -4,7 +4,7 @@
 
 /obj/machinery/computer/telecomms/server
 	name = "Telecommunications Server Monitor"
-	desc = "View communication logs here. Translation not guaranteed."
+	desc = "View communication logs and operate triangulation systems here. Translation not guaranteed."
 	icon_screen = "comm_logs"
 
 	var/list/servers = list()	// the servers located by the computer

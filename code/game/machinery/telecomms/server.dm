@@ -22,6 +22,12 @@
 
 	var/obj/item/radio/headset/server_radio = null
 
+	//? triangulation
+	/// enabled?
+	var/triangulating = FALSE
+	/// tracking source tags to /datum/network_triangulation
+	var/list/triangulation
+
 /obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 	server_radio = new()
@@ -41,6 +47,8 @@
 
 			//Is this a test signal? Bypass logging
 			if(signal.data["type"] != SIGNAL_TEST)
+				if(signal.data["radio"] && triangulating)
+					triangulate(signal.data["radio"], update_name = signal.data["name"])
 
 				// If signal has a message and appropriate frequency
 
@@ -127,6 +135,29 @@
 	log_entries.Add(log)
 	update_logs()
 
+/obj/machinery/telecomms/server/proc/triangulate(atom/movable/victim, reduction_factor = 2, update_name)
+	if(isnull(triangulation))
+		triangulation = list()
+
+	/// generate tag
+	var/triangulation_tag = ismob(victim)? victim.tag : ref(victim)
+
+	/// grab or make entry, update location
+	var/datum/network_triangulation/entry = triangulation[triangulation_tag]
+	if(!entry)
+		triangulation[triangulation_tag] = (entry = new)
+
+	/// update name
+	if(update_name)
+		entry.name = update_name
+
+	#warn impl
+
+/obj/machinery/telecomms/server/proc/set_triangulating(state)
+	triangulating = state
+	if(!state)
+		triangulation = null
+
 // Simple log entry datum
 
 /datum/comm_log_entry
@@ -134,3 +165,17 @@
 	var/name = "data packet (#)"
 	var/garbage_collector = 1 // if set to 0, will not be garbage collected
 	var/input_type = "Speech File"
+
+/datum/network_triangulation
+	/// name of target
+	var/target_name
+	/// last x
+	var/x
+	/// last y
+	var/y
+	/// last real z index
+	var/z
+	/// last accuracy
+	var/accuracy
+	/// last update time
+	var/last_updated
