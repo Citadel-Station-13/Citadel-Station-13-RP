@@ -145,13 +145,13 @@
 /**
  * returns target id to edit
  */
-/datum/tgui_module/cardmod/proc/edit_target()
+/datum/tgui_module/card_mod/proc/edit_target()
 	return null
 
 /**
  * return source id to auth with
  */
-/datum/tgui_module/cardmod/proc/auth_source()
+/datum/tgui_module/card_mod/proc/auth_source()
 	return null
 
 /datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
