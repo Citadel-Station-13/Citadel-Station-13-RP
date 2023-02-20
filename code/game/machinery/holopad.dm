@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(holopads)
 	. = ..()
 	holopad_uid = "[num2text(++holopad_uid_next, 16)]"
 	holograms = list()
-	GLOB.holopads += src
+	GLOB.holopad_lookup[holopad_uid] = src
 	var/area/our_area = isturf(loc)? loc.loc : null
 	if(our_area)
 		LAZYADD(our_area.holopads, src)
@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(holopads)
 /obj/machinery/holopad/Destroy()
 	#warn impl rest like disconnect
 	destroy_holograms()
-	GLOB.holopads -= src
+	GLOB.holopad_lookup -= holopad_uid
 	return ..()
 
 //? movement hooks
@@ -156,7 +156,8 @@ GLOBAL_LIST_EMPTY(holopads)
 		if(pad.turf_in_range(T))
 			return pad
 	// global check
-	for(var/obj/machinery/holopad/pad as anything in GLOB.holopads)
+	for(id as anything in GLOB.holopad_lookup)
+		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(pad.turf_in_range(T))
 			return pad
 
@@ -180,7 +181,8 @@ GLOBAL_LIST_EMPTY(holopads)
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
 	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(src)
-	for(var/obj/machinery/holopad/pad as anything in GLOB.holopads)
+	for(id in GLOB.holopad_lookup)
+		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(pad)
 		if(!our_sector || !their_sector)
 			if((sector_only || pad.sector_only) || (get_z(src) != get_z(pad)))
@@ -337,6 +339,7 @@ GLOBAL_LIST_EMPTY(holopads)
 
 		// user requesting to call
 		if("call")
+			var/id = params["id"]
 			#warn 30 second per unique holopad cooldown for ringing
 
 		// user requesting to connect an incoming/ringing call

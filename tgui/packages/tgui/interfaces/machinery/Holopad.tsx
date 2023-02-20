@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
-import { useBackend } from "../../backend";
-import { Button, Flex, LabeledList, Section } from "../../components";
+import { useBackend, useLocalState } from "../../backend";
+import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -32,7 +32,7 @@ type HolpadContext = {
   ringerToggle: BooleanLike; // if audio ringer is toggleable
   autoPickup: BooleanLike; // if we auto accept calls
   autoToggle: BooleanLike; // if we can toggle auto accepting calls
-  ringing: [HolopadId]; // ringing holopads
+  ringing: [HolopadId]; // incoming rings
 }
 
 // reachable holopads
@@ -52,6 +52,7 @@ interface BaseCallContext {
 interface OutgoingCallContext extends BaseCallContext {
   target: HolopadId; // calling to id
   remoting: BooleanLike; // are we projecting to the other side?
+  connected: BooleanLike; // are we connected or still ringing
 }
 
 // incoming calls have this
@@ -62,6 +63,18 @@ interface IncomingCallsContext extends BaseCallContext {
 
 export const Holopad = (props, context) => {
   const { act, data } = useBackend<HolpadContext>(context);
+  const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
+  const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
+  let padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
+  data.reachablePads.forEach((pad: ReachableHolopad) => {
+    if (padMap[pad.sector] === undefined) {
+      padMap[pad.sector] = {};
+    }
+    if (padMap[pad.sector][pad.category] === undefined) {
+      padMap[pad.sector][pad.category] = new Array<ReachableHolopad>();
+    }
+    padMap[pad.sector][pad.category].push(pad);
+  });
 
   return (
     <Window
@@ -91,9 +104,63 @@ export const Holopad = (props, context) => {
           )}>
           <Flex
             direction="row">
-            <Flex.Item grow={1}>
-              test
-            </Flex.Item>
+            {!!data.canCall && (
+              <Flex.Item grow={1}>
+                {data.calling === HolopadCalling.None? (
+                  <Flex
+                    direction="column">
+                    <Flex.Item grow={1}>
+                      <Section title="Call">
+                        <Tabs>
+                          {
+                            Object.keys(padMap).forEach((key: string) => {
+                              <Tabs.Tab
+                                selected={sector === key}
+                                onClick={() => setSector(key)}>
+                                {key}
+                              </Tabs.Tab>;
+                            })
+                          }
+                        </Tabs>
+                        <Flex
+                          direction="row">
+                          <Flex.Item>
+                            <Tabs>
+                              {sector && Object.keys(padMap[sector]).forEach((cat) => {
+                                <Tabs.Tab
+                                  selected={cat === category}
+                                  onClick={() => setCategory(cat)}>
+                                  {cat}
+                                </Tabs.Tab>;
+                              })}
+                            </Tabs>
+                          </Flex.Item>
+                          <Flex.Item grow={1}>
+                            <LabeledList>
+                              {(sector && category && padMap[sector][category].forEach((pad) => {
+                                <LabeledList.Item
+                                  label={pad.name}
+                                  buttons={
+                                    <Button.Confirm
+                                      content="Call"
+                                      onClick={() => act('call', { id: pad.id })} />
+                                  }
+                                />;
+                              })) || undefined}
+                            </LabeledList>
+                          </Flex.Item>
+                        </Flex>
+                        test
+                      </Section>
+                    </Flex.Item>
+                  </Flex>
+                ) : (
+                  <Section title="Active Call">
+                    test
+                  </Section>
+                )}
+              </Flex.Item>
+            )}
             <Flex.Item>
               <Section title="System">
                 <LabeledList>
@@ -137,7 +204,6 @@ export const Holopad = (props, context) => {
               </Section>
             </Flex.Item>
           </Flex>
-          `test`
         </Section>
       </Window.Content>
     </Window>
