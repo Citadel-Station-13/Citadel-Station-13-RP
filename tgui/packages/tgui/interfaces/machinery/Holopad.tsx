@@ -13,7 +13,7 @@ enum HolopadCalling {
 type HolopadId = string;
 
 // window data
-type HolopadContext = {
+interface HolopadContext {
   isAI: BooleanLike; // ai user?
   isAIProjecting: BooleanLike; // we are currently projecting at this pad
   aiRequested: BooleanLike; // recently requested ai?
@@ -36,7 +36,7 @@ type HolopadContext = {
 }
 
 // reachable holopads
-interface ReachableHolopad {
+type ReachableHolopad = {
   id: HolopadId;
   name: string;
   category: string;
@@ -44,19 +44,19 @@ interface ReachableHolopad {
 }
 
 // all calls have this
-interface BaseCallContext {
+type BaseCallContext = {
   // nothing right now
 }
 
 // outgoing calls have this
-interface OutgoingCallContext extends BaseCallContext {
+type OutgoingCallContext = BaseCallContext & {
   target: HolopadId; // calling to id
   remoting: BooleanLike; // are we projecting to the other side?
   connected: BooleanLike; // are we connected or still ringing
 }
 
 // incoming calls have this
-interface IncomingCallsContext extends BaseCallContext {
+type IncomingCallsContext = BaseCallContext & {
   callers: [HolopadId]; // calling ids
   projecting: [HolopadId]; // who's projecting over here right now
 }
@@ -97,10 +97,11 @@ export const Holopad = (props, context) => {
                 {data.calling === HolopadCalling.None? (
                   <HolopadDirectory />
                 ) : (
-                  <Section title="Active Call">
-
-                    test
-                  </Section>
+                  data.calling === HolopadCalling.Destination? (
+                    <HolopadCallIncoming />
+                  ) : (
+                    <HolopadCallOutgoing />
+                  )
                 )}
               </Flex.Item>
             )}
@@ -111,6 +112,26 @@ export const Holopad = (props, context) => {
         </Section>
       </Window.Content>
     </Window>
+  );
+};
+
+const HolopadCallOutgoing = (props, context) => {
+  const { data, act } = useBackend<HolopadContext>(context);
+  const callContext: OutgoingCallContext = data.calldata as OutgoingCallContext;
+  return (
+    <Section title="Outgoing Call">
+      test
+    </Section>
+  );
+};
+
+const HolopadCallIncoming = (props, context) => {
+  const { data, act } = useBackend<HolopadContext>(context);
+  const callContext: IncomingCallsContext = data.calldata as IncomingCallsContext;
+  return (
+    <Section title="Active Calls">
+      test
+    </Section>
   );
 };
 
