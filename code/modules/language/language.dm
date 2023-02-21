@@ -58,7 +58,7 @@
 	var/uses_replace = FALSE
 	//list of letters to exclude from the symbol replacement above (IE, you don't want the ciphered language to have the letter "a")
 	var/list/exclude_letters = list()
-	//list of symbols to replace with
+	//list of symbols to replace with, formatted as "a" = "<symbol>"
 	var/list/replace_letters = list()
 
 /datum/language/New()
