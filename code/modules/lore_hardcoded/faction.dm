@@ -199,13 +199,13 @@
 	resulting in what is functionally considered an alliance."
 	contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
 	job_whitelist = list(
+		JOB_ID_FIELD_MEDIC,
 		JOB_ID_HEAD_NURSE,
 		JOB_ID_MEDICAL_DOCTOR,
 		JOB_ID_ROBOTICIST,
 		JOB_ID_PARAMEDIC,
 		JOB_ID_CHEMIST,
 		JOB_ID_PSYCHIATRIST,
-		JOB_ID_FIELD_MEDIC,
 		JOB_ID_ASSISTANT,
 		JOB_ID_OFFDUTY_CIVILLIAN,
 		JOB_ID_OFFDUTY_MEDBAY,
