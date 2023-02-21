@@ -85,7 +85,7 @@
 
 /datum/language/proc/replacesymbols(input)
 	var/list/transformed = splittext_char(input,"")
-	if(LAZYLEN(excluded_letters))
+	if(LAZYLEN(exclude_letters))
 		for(var/l in transformed)
 			for(var/excluded in exclude_letters)
 				if(l == excluded)
