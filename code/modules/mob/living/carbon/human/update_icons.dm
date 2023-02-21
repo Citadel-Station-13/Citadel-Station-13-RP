@@ -208,8 +208,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			icon_key += "0"
 			continue
 		if(part)
-			icon_key += "[part.species.get_race_key(part.owner)]"
-			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]"
+			icon_key += "[part.name]_"
+			icon_key += "[part.species.get_race_key(part.owner)]_"
+			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]_"
 			icon_key += "[part.s_tone]"
 			if(part.s_col && part.s_col.len >= 3)
 				icon_key += "[rgb(part.s_col[1],part.s_col[2],part.s_col[3])]"
