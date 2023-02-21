@@ -26,7 +26,6 @@
 	. = ..()
 	.["scan_ready"] = on_cooldown()
 	.["network"] = network_key || ""
-	#warn finish ui
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
