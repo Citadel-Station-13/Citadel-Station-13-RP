@@ -140,8 +140,18 @@ const HolopadCallOutgoing = (props, context) => {
           icon="phone-xmark"
           onClick={() => act('disconnect')} />
       }>
-
-      test
+      <Section title="Remote Presence">
+        test
+      </Section>
+      <Section title="Connected Pads">
+        <LabeledList>
+          {callContext.connected.map((pad) => {
+            <LabeledList.Item
+              label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
+              key={pad.id} />;
+          })}
+        </LabeledList>
+      </Section>
     </Section>
   );
 };
