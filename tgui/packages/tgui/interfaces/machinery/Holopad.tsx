@@ -32,7 +32,7 @@ interface HolopadContext {
   ringerToggle: BooleanLike; // if audio ringer is toggleable
   autoPickup: BooleanLike; // if we auto accept calls
   autoToggle: BooleanLike; // if we can toggle auto accepting calls
-  ringing: [HolopadId]; // incoming rings
+  ringing: [TargetHolopad]; // incoming rings
 }
 
 // reachable holopads
@@ -41,6 +41,12 @@ type ReachableHolopad = {
   name: string;
   category: string;
   sector: string;
+}
+
+type TargetHolopad = {
+  name: string;
+  sector: string;
+  id: HolopadId;
 }
 
 // all calls have this
@@ -52,12 +58,13 @@ type BaseCallContext = {
 type OutgoingCallContext = BaseCallContext & {
   target: HolopadId; // calling to id
   remoting: BooleanLike; // are we projecting to the other side?
-  connected: BooleanLike; // are we connected or still ringing
+  ringing: BooleanLike; // are we connected or still ringing
+  connected: [TargetHolopad]; // all pads connected
 }
 
 // incoming calls have this
 type IncomingCallsContext = BaseCallContext & {
-  callers: [HolopadId]; // calling ids
+  callers: [TargetHolopad]; // calling ids
   projecting: [HolopadId]; // who's projecting over here right now
 }
 
@@ -125,7 +132,15 @@ const HolopadCallOutgoing = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const callContext: OutgoingCallContext = data.calldata as OutgoingCallContext;
   return (
-    <Section title="Outgoing Call">
+    <Section
+      title="Outgoing Call"
+      buttons={
+        <Button.Confirm
+          title="Disconnect"
+          icon="phone-xmark"
+          onClick={() => act('disconnect')} />
+      }>
+
       test
     </Section>
   );
@@ -137,19 +152,32 @@ const HolopadCallIncoming = (props, context) => {
   return (
     <Section title="Active Calls"
       buttons={
-        <Button
+        <Button.Confirm
           title="Disconnect All"
           icon="phone-xmark"
           onClick={() => act('disconnect')} />
       }>
       <LabeledList>
         <>
-          {callContext.callers.map((id) => {
-            "test";
+          {callContext.callers.map((pad) => {
+            <LabeledList.Item
+              key={pad.id}
+              label={`${pad.name} - ${pad.sector}`}
+              buttons={
+                <>
+                  <Button
+                    title="Projecting"
+                    disabled
+                    selected={callContext.projecting.includes(pad.id)} />
+                  <Button.Confirm
+                    title="Disconnect"
+                    icon="phone-hangup"
+                    onClick={() => act('disconnect', { id: pad.id })} />
+                </>
+              } />;
           })}
         </>
       </LabeledList>
-      test
     </Section>
   );
 };
@@ -160,19 +188,13 @@ const HolopadRinging = (props, context) => {
     <Flex.Item>
       <LabeledList>
         <>
-          {data.ringing.map((id) => {
-            let found = data.reachablePads.find((pad) => { pad.id === id; }) || {
-              id: id,
-              name: "Unknown Pad",
-              sector: "Unknown Sector",
-              category: "Unknown",
-            };
-            return found && (<LabeledList.Item label={`${found.name} - ${found.sector}`}
+          {data.ringing.map((pad) => {
+            <LabeledList.Item label={`${pad.name} - ${pad.sector}`}
               buttons={
                 <Button.Confirm
                   content="Connect"
-                  onClick={() => act('connect', { id: found?.id })} />
-              } />);
+                  onClick={() => act('connect', { id: pad?.id })} />
+              } />;
           })}
         </>
       </LabeledList>

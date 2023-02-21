@@ -317,8 +317,9 @@ GLOBAL_LIST_EMPTY(holopads)
 	.["autoPickup"] = call_auto_pickup
 	. |= ui_call_data()
 	.["ringing"] = list()
-	#warn impl ringing for ids
+	#warn impl ringing
 	#warn impl
+	#warn anonymous dial
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
