@@ -41,31 +41,31 @@
 /obj/machinery/computer/card/proc/authed_for_edit(obj/item/card/id/checking = authing)
 	return checking?.access && (SSjob.cached_access_edit_relevant & checking.access)
 
-#warn update static modules when card is swapped
-#warn impl all
+/obj/machinery/computer/card/AltClick(mob/user)
+	. = ..()
+	if(.)
+		return
+	// todo: mobility flags
+	if(user.stat || user.lying)
+		return
+	if(attempt_grab_authing(user) || attempt_grab_editing(user))
+		return TRUE
 
-/obj/machinery/computer/card/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in oview(1)
+/obj/machinery/computer/card/proc/attempt_grab_authing(mob/user)
+	if(!authing)
+		return FALSE
+	user.grab_item_from_interacted_with(authing, src)
+	user.action_feedback(SPAN_NOTICE("You remove [authing] from [src]."), src)
+	authing = null
+	return TRUE
 
-	if(!usr || usr.stat || usr.lying)	return
-
-	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.forceMove(get_turf(src))
-		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(scan)
-		scan = null
-	else if(modify)
-		to_chat(usr, "You remove \the [modify] from \the [src].")
-		modify.forceMove(get_turf(src))
-		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(modify)
-		modify = null
-	else
-		to_chat(usr, "There is nothing to remove from the console.")
-	return
+/obj/machinery/computer/card/proc/attempt_grab_editing(mob/user)
+	if(!editing)
+		return FALSE
+	user.grab_item_from_interacted_with(editing, src)
+	user.action_feedback(SPAN_NOTICE("You remove [editing] from [src]."), src)
+	editing = null
+	return TRUE
 
 /obj/machinery/computer/card/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!istype(I, /obj/item/card/id))
@@ -73,14 +73,14 @@
 	var/obj/item/card/id/id_card = I
 	if(!authing && authed_for_edit(id_card))
 		if(!user.transfer_item_to_loc(id_card, src))
-			user.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
+			user.action_feedback(SPAN_WARNING("[id_card] is stuck to your hand!"))
 			return
 		authing = id_card
 		user.action_feedback(SPAN_NOTICE("You insert [id_card] into [src]."))
 		update_static_data()
 	else
 		if(!user.transfer_item_to_loc(id_card, src))
-			user.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
+			user.action_feedback(SPAN_WARNING("[id_card] is stuck to your hand!"))
 			return
 		if(isnull(editing))
 			// insert
@@ -126,7 +126,7 @@
 	//? card modification
 	.["auth_card"] = authing? list(
 		"name" = authing.name || "-----",
-		"owner" = authing.owner || "-----",
+		"owner" = authing.registered_name || "-----",
 		"rank" = authing.rank || "Unassigned",
 	) : null
 	.["modify_card"] = editing? list(

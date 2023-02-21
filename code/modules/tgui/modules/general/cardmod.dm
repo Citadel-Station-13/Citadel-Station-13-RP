@@ -214,7 +214,7 @@
 		if("assignment")
 			var/assignment = params["set"]
 			if(auth_rank(usr, target, source, old_assignment = target.assignment, new_assignment = assignment))
-				reassign_rank(target, rank, assignment, target.registered_name)
+				reassign_rank(target, target.rank, assignment, target.registered_name)
 			return TRUE
 		if("grant")
 			var/cat = params["cat"]

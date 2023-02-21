@@ -43,6 +43,14 @@
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
 
+/**
+ * @params
+ * * A - the appearance-like object to render
+ * * defdir - direction we treat it as
+ * * no_anim - (optional) trample animations to first frame
+ * * deficon - (optional) default icon to use instead of using the host appearance's
+ * * start - is this the first call in the recurse? this is important
+ */
 /proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
@@ -189,6 +197,10 @@
 	var/list/add_size[4]
 	// blend mode
 	var/blend_mode
+	// shift amounts if we resized our flat to accomodate add
+	// so the rest of the added / blended overlays apply properly
+	var/shift_x = 0
+	var/shift_y = 0
 
 	// blend in layers
 	for(copying as anything in gathered)
