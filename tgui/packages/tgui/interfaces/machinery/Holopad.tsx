@@ -91,20 +91,26 @@ export const Holopad = (props, context) => {
               onClick={() => act('ai_request')} />
           )}>
           <Flex
-            direction="row">
-            {!!data.canCall && (
-              <Flex.Item grow={1}>
-                {data.calling === HolopadCalling.None? (
-                  <HolopadDirectory />
-                ) : (
-                  data.calling === HolopadCalling.Destination? (
-                    <HolopadCallIncoming />
-                  ) : (
-                    <HolopadCallOutgoing />
-                  )
+            direction="column">
+            <Flex.Item grow={1}>
+              <Flex direction="row">
+                {!!data.canCall && (
+                  <Flex.Item grow={1}>
+                    {data.calling === HolopadCalling.None? (
+                      <HolopadDirectory />
+                    ) : (
+                      data.calling === HolopadCalling.Destination? (
+                        <HolopadCallIncoming />
+                      ) : (
+                        <HolopadCallOutgoing />
+                      )
+                    )}
+                  </Flex.Item>
                 )}
-              </Flex.Item>
-            )}
+                {!!data.ringing.length
+                  && <HolopadRinging />}
+              </Flex>
+            </Flex.Item>
             <Flex.Item>
               <HolopadSettings />
             </Flex.Item>
@@ -129,16 +135,55 @@ const HolopadCallIncoming = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const callContext: IncomingCallsContext = data.calldata as IncomingCallsContext;
   return (
-    <Section title="Active Calls">
+    <Section title="Active Calls"
+      buttons={
+        <Button
+          title="Disconnect All"
+          icon="phone-xmark"
+          onClick={() => act('disconnect')} />
+      }>
+      <LabeledList>
+        <>
+          {callContext.callers.map((id) => {
+            "test";
+          })}
+        </>
+      </LabeledList>
       test
     </Section>
   );
 };
 
+const HolopadRinging = (props, context) => {
+  const { data, act } = useBackend<HolopadContext>(context);
+  return ((
+    <Flex.Item>
+      <LabeledList>
+        <>
+          {data.ringing.map((id) => {
+            let found = data.reachablePads.find((pad) => { pad.id === id; }) || {
+              id: id,
+              name: "Unknown Pad",
+              sector: "Unknown Sector",
+              category: "Unknown",
+            };
+            return found && (<LabeledList.Item label={`${found.name} - ${found.sector}`}
+              buttons={
+                <Button.Confirm
+                  content="Connect"
+                  onClick={() => act('connect', { id: found?.id })} />
+              } />);
+          })}
+        </>
+      </LabeledList>
+    </Flex.Item>
+  ));
+};
+
 const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
-  data.reachablePads.forEach((pad: ReachableHolopad) => {
+  data.reachablePads.map((pad: ReachableHolopad) => {
     if (padMap[pad.sector] === undefined) {
       padMap[pad.sector] = {};
     }
@@ -156,7 +201,7 @@ const HolopadDirectory = (props, context) => {
         <Section title="Call">
           <Tabs>
             {
-              Object.keys(padMap).forEach((key: string) => {
+              Object.keys(padMap).map((key: string) => {
                 <Tabs.Tab
                   selected={sector === key}
                   onClick={() => setSector(key)}>
@@ -169,7 +214,7 @@ const HolopadDirectory = (props, context) => {
             direction="row">
             <Flex.Item>
               <Tabs>
-                {sector && Object.keys(padMap[sector]).forEach((cat) => {
+                {sector && Object.keys(padMap[sector]).map((cat) => {
                   <Tabs.Tab
                     selected={cat === category}
                     onClick={() => setCategory(cat)}>
@@ -180,7 +225,7 @@ const HolopadDirectory = (props, context) => {
             </Flex.Item>
             <Flex.Item grow={1}>
               <LabeledList>
-                {(sector && category && padMap[sector][category].forEach((pad) => {
+                {(sector && category && padMap[sector][category].map((pad) => {
                   <LabeledList.Item
                     label={pad.name}
                     buttons={

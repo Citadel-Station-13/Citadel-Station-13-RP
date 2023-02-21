@@ -13,7 +13,7 @@ import { ComponentProps } from './Component';
 export type BoxProps = ComponentProps & {
   [key: string]: any;
   as?: string;
-  className?: string | BooleanLike;
+  className?: string | undefined;
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;

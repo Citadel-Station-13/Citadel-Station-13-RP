@@ -330,24 +330,20 @@ GLOBAL_LIST_EMPTY(holopads)
 		if("ai_project")
 			/// do they want to start or end
 			var/mode = text2num(params["mode"])
-			#warn
-		// user requesting to hang up all calls
-		if("disconnect_all")
-
-		// user requesting to hang up a call
+			#warn impl
+		// user requesting to hang up a call, or all calls
 		if("disconnect")
-
+			// id, null for all
+			var/id = params["id"]
+			#warn impl
 		// user requesting to call
 		if("call")
 			var/id = params["id"]
 			#warn 30 second per unique holopad cooldown for ringing
-
 		// user requesting to connect an incoming/ringing call
 		if("connect")
-
-		// user requesting to connect all incoming/ringing calls
-		if("connect_all")
-
+			var/id = params["id"]
+			#warn impl
 		// user toggling holocall ringer
 		if("toggle_ringer")
 			#warn impl
@@ -360,9 +356,6 @@ GLOBAL_LIST_EMPTY(holopads)
 		// user toggling auto pickup
 		if("toggle_auto")
 			#warn impl
-		// user requesting or confirming side swap - must be singular 1:1 call.
-		if("request_swap")
-
 		// user requesting to use remote presence
 		if("remote_presence")
 
