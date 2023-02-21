@@ -17,8 +17,17 @@
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/alt_title/emt,
-		"Medical Responder" = /datum/prototype/alt_title/medical_responder
+		"Medical Responder" = /datum/prototype/alt_title/medical_responder,
+		"Biotechnical Responder" = /datum/prototype/alt_title/biotech_responder
 		)
+		
+/datum/prototype/alt_title/biotech_responder
+	title = "Biotechnical Responder"
+	title_outfit = /datum/outfit/job/station/paramedic/emt  //TODO: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/emt
 	title = "Emergency Medical Technician"

@@ -25,7 +25,16 @@
 	alt_titles = list (
 		"Medical Specialist" = /datum/prototype/alt_title/medical_specialist,
 		"Consultant Physician" = /datum/prototype/alt_title/consultant_physician,
+		"Biotechnical Advisor" = /datum/prototype/alt_title/biotechnical_advisor
 	)
+
+/datum/prototype/alt_title/biotechnical_advisor
+	title = "Biotechnical Advisor"
+	title_outfit = /datum/outfit/job/station/medical_doctor // todo: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/medical_specialist
 	title = "Medical Specialist"
