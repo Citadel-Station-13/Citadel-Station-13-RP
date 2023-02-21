@@ -352,7 +352,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security cryosuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/voidsuits/cryoengi
 	name = "Engineering cryosuits"
@@ -366,7 +366,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Engineering cryosuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_MAIN
 
 /datum/supply_pack/voidsuits/cryoatmos
 	name = "Atmospherics cryosuits"
@@ -380,7 +380,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Atmospherics cryosuit crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/voidsuits/cryomining
 	name = "Mining cryosuits"
@@ -394,4 +394,4 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Mining cryosuit crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
