@@ -2,8 +2,10 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 /obj/machinery/bioscan_antenna
 	name = "Bioscan Antenna"
 	desc = "A fragile antenna used to locate nearby biosignatures."
-	can_be_unanchored = TRUE
-	#warn sprite
+	allow_deconstruct = TRUE
+	allow_unanchor = TRUE
+	icon = 'icons/machinery/bioscan.dmi'
+	icon_state = "antenna"
 
 	/// network key
 	var/network_key
@@ -68,7 +70,7 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 	. = list()
 	if(network_mutable)
 		.[TOOL_MULTITOOL] = "change network"
-	if(can_be_unanchored)
+	if(allow_unanchor)
 		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
 	if(allow_deconstruct)
 		.[TOOL_SCREWDRIVER] = panel_open? "close panel" : "open panel"
@@ -97,6 +99,5 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 
 /obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."
-	can_be_unanchored = FALSE
-
-#warn map into atlas
+	allow_deconstruct = FALSE
+	allow_unanchor = FALSE
