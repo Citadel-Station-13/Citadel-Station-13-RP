@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 
 	/// network key
 	var/network_key
+	/// automatically generate an obfuscated key - used by mappers
+	var/network_key_obfuscated
 	/// can be reprogrammed
 	var/network_mutable = TRUE
 	/// id
@@ -20,6 +22,8 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 /obj/machinery/bioscan_antenna/Initialize(mapload)
 	. = ..()
 	id = "[++id_next]"
+	if(network_key_obfuscated)
+		network_key = SSmapping.get_obfuscated_id(network_key_obfuscated, "bioscan_network")
 	change_network(network_key)
 
 /obj/machinery/bioscan_antenna/Destroy()
@@ -80,7 +84,16 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 	return ..()
 
 /obj/machinery/bioscan_antenna/proc/change_network(key)
-	#warn impl
+	if(src.network_key)
+		if(GLOB.bioscan_anntena_list[src.network_key])
+			GLOB.bioscan_anntena_list[src.network_key] -= src
+			if(!length(GLOB.bioscan_anntena_list[src.network_key]))
+				GLOB.bioscan_anntena_list -= src.network_key
+	src.network_key = key
+	if(src.network_key)
+		if(!GLOB.bioscan_anntena_list[src.network_key])
+			GLOB.bioscan_anntena_list[src.network_key] = list()
+		GLOB.bioscan_anntena_list[src.network_key] += src
 
 /obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."

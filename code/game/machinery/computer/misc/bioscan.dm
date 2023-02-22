@@ -5,12 +5,18 @@
 
 	/// network key
 	var/network_key
+	/// automatically generate an obfuscated key - used by mappers
 	/// buffer - quite literally just holds a copy of generated ui data
 	var/list/buffer
 	/// last scan at
 	var/last_scan
 	/// scan cooldown
 	var/scan_delay = 10 SECONDS
+
+/obj/machinery/computer/bioscan/Initialize(mapload)
+	. = ..()
+	if(network_key_obfuscated)
+		network_key = SSmapping.get_obfuscated_id(network_key_obfuscated, "bioscan_network")
 
 /obj/machinery/computer/bioscan/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -21,6 +27,17 @@
 /obj/machinery/computer/bioscan/ui_static_data(mob/user)
 	. = ..()
 	.["scan"] = buffer || list()
+	.["antennas"] = ui_antenna_data()
+
+/obj/machinery/computer/bioscan/proc/ui_antenna_data()
+	var/list/antennas = network_key && GLOB.bioscan_anntena_list[network_key]
+	. = list()
+	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
+		. += list(
+			"level" = SSmapping.level_id(get_z(A)),
+			"id" = A.id,
+			"anchor" = A.anchored,
+		)
 
 /obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -59,7 +76,7 @@
 	var/list/new_data = list()
 	/// get relevant antennas
 	var/list/antennas = network_key && GLOB.bioscan_anntena_list[network_key]
-	if(!antennas)
+	if(!length(antennas))
 		// abort
 		void_scan()
 		return

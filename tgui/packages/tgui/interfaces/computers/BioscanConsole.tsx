@@ -7,6 +7,13 @@ interface BioscanConsoleData {
   network: string;
   scan_ready: BooleanLike;
   scan: BioscanResults;
+  antennas: [BioscanAntenna]
+}
+
+interface BioscanAntenna {
+  level: string;
+  id: string;
+  anchor: BooleanLike;
 }
 
 interface BioscanResults {
@@ -42,15 +49,29 @@ export const BioscanConsole = (props, context) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
+      <Section title="Antennas">
+        {
+          data.antennas.map((antenna) => {
+            <Collapsible title={antenna.id} key={atenna.id}>
+              Sector / Level: {antenna.level}
+              Floor Bolts: {antenna.anchor? "Anchored" : "Unanchored"}
+            </Collapsible>;
+          })
+        }
+      </Section>
       <Section title="Results">
-        {data.scan.levels.map((level) => {
-          <Collapsible title={level.id}>
-            Lifesigns - Total: {level.all}
-            Lifesigns - Complex: {level.complex}
-            Lifesigns - Complex / Alive: {level.complex_alive}
-            Lifesigns - Complex / Dead: {level.complex_dead}
-          </Collapsible>;
-        })}
+        {data.scan? (
+          data.scan.levels.map((level) => {
+            <Collapsible title={level.id}>
+              Lifesigns - Total: {level.all}
+              Lifesigns - Complex: {level.complex}
+              Lifesigns - Complex / Alive: {level.complex_alive}
+              Lifesigns - Complex / Dead: {level.complex_dead}
+            </Collapsible>;
+          })
+        ) : (
+          "No scan data."
+        )}
       </Section>
     </Window>
   );
