@@ -38,6 +38,8 @@
 			"id" = SelectedServer.id,
 			"totalTraffic" = SelectedServer.totaltraffic,
 			"logs" = list(),
+			"triangulating" = SelectedServer.triangulating,
+			"triangulation" = SelectedServer.triangulation_data(),
 		)
 
 		var/i = 0
@@ -59,9 +61,6 @@
 			))
 
 	return data
-
-#warn impl triangulation
-#warn ui
 
 /obj/machinery/computer/telecomms/server/attack_hand(mob/user)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -140,6 +139,10 @@
 		if("cleartemp")
 			temp = null
 			. = TRUE
+
+		if("toggle_triangulation")
+			SelectedServer.set_triangulating(!SelectedServer.triangulating)
+			return TRUE
 
 /obj/machinery/computer/telecomms/server/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)

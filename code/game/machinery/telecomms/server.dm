@@ -139,6 +139,22 @@
 	log_entries.Add(log)
 	update_logs()
 
+/obj/machinery/telecomms/server/proc/triangulation_data()
+	. = list()
+	if(!triangulation)
+		return
+	for(var/key in triangulation)
+		var/datum/network_triangulation/T = triangulation[key]
+		. += list(
+			"name" = T.scan_name,
+			"x" = T.random_x,
+			"y" = T.random_y,
+			"z" = SSmapping.level_id(T.random_z),
+			"accuracy" = T.accuracy,
+			"last" = world.time - T.last_updated,
+			"tag" = key,
+		)
+
 /obj/machinery/telecomms/server/proc/triangulate(atom/movable/victim, reduction_factor = 2, update_name)
 	if(isnull(triangulation))
 		triangulation = list()
