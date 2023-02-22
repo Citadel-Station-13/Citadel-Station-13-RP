@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(bioscan_anntena_list)
+GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 /obj/machinery/bioscan_antenna
 	name = "Bioscan Antenna"
 	desc = "A fragile antenna used to locate nearby biosignatures."
@@ -101,15 +101,15 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 
 /obj/machinery/bioscan_antenna/proc/change_network(key)
 	if(src.network_key)
-		if(GLOB.bioscan_anntena_list[src.network_key])
-			GLOB.bioscan_anntena_list[src.network_key] -= src
-			if(!length(GLOB.bioscan_anntena_list[src.network_key]))
-				GLOB.bioscan_anntena_list -= src.network_key
+		if(GLOB.bioscan_antenna_list[src.network_key])
+			GLOB.bioscan_antenna_list[src.network_key] -= src
+			if(!length(GLOB.bioscan_antenna_list[src.network_key]))
+				GLOB.bioscan_antenna_list -= src.network_key
 	src.network_key = key
 	if(src.network_key)
-		if(!GLOB.bioscan_anntena_list[src.network_key])
-			GLOB.bioscan_anntena_list[src.network_key] = list()
-		GLOB.bioscan_anntena_list[src.network_key] += src
+		if(!GLOB.bioscan_antenna_list[src.network_key])
+			GLOB.bioscan_antenna_list[src.network_key] = list()
+		GLOB.bioscan_antenna_list[src.network_key] += src
 	update_icon()
 
 /obj/machinery/bioscan_antenna/update_icon_state()

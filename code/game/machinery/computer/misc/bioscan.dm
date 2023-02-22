@@ -31,7 +31,7 @@
 	.["antennas"] = ui_antenna_data()
 
 /obj/machinery/computer/bioscan/proc/ui_antenna_data()
-	var/list/antennas = network_key && GLOB.bioscan_anntena_list[network_key]
+	var/list/antennas = network_key && GLOB.bioscan_antenna_list[network_key]
 	. = list()
 	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
 		. += list(
@@ -76,7 +76,7 @@
 /obj/machinery/computer/bioscan/proc/scan()
 	var/list/new_data = list()
 	/// get relevant antennas
-	var/list/antennas = network_key && GLOB.bioscan_anntena_list[network_key]
+	var/list/antennas = network_key && GLOB.bioscan_antenna_list[network_key]
 	if(!length(antennas))
 		// abort
 		void_scan()
