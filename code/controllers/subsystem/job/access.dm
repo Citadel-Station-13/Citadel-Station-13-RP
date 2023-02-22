@@ -192,7 +192,6 @@
 	if(!A)
 		cached_access_edit_lookup["[id]"] = list()
 		return
-	var/list/all = list()
 	. = list()
 	// special
 	for(var/datum/access/other as anything in A.access_edit_list)
