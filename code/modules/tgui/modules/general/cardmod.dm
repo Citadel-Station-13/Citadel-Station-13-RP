@@ -263,7 +263,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = NONE
-	for(var/id in authing.access)
+	for(var/id in authing?.access)
 		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
 		if(isnull(A))
 			continue
@@ -272,7 +272,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = NONE
-	for(var/id in authing.access)
+	for(var/id in authing?.access)
 		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
 		if(isnull(A))
 			continue
@@ -280,13 +280,21 @@
 			. |= A.access_edit_region
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	. = ..()
-	#warn impl
+	. = list()
+	var/datum/role/job/J = SSjob.job_by_title(authing?.rank)
+	for(var/dep_name in J?.departments_managed)
+		var/datum/department/D = SSjob.department_datums[dep_name]
+		if(isnull(D))
+			continue
+		var/list/ranks = list()
+		.[D.name] = ranks
+		for(var/title in D.primary_jobs)
+			ranks += title
 
 /datum/tgui_module/card_mod/standard/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
 	. = list()
 	var/list/left = accesses.Copy()
-	for(var/id in authing.access)
+	for(var/id in authing?.access)
 		var/list/allowed = SSjob.editable_access_ids_by_id(id)
 		if(isnull(allowed))
 			continue
@@ -364,7 +372,11 @@
 	return ACCESS_REGION_ALL
 
 /datum/tgui_module/card_mod/admin/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	#warn impl
+	. = list()
+	for(var/datum/role/job/J as anything in SSjob.all_jobs())
+		var/dep_name = (length(J.departments) && J.departments[1]) || "Miscellaneous"
+		LAZYINITLIST(.[dep_name])
+		.[dep_name] += J.title
 
 /datum/tgui_module/card_mod/admin/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
 	return accesses

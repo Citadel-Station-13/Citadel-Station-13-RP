@@ -119,9 +119,9 @@ export const UICardMod = (props: CardModProps, context) => {
               direction="column">
               <Flex.Item>
                 <Tabs>
-                  {data.ranks.forEach((dept) => {
+                  {data.ranks.map((dept) => {
                     return (
-                      <Tabs.Tab onClick={setDepartment(dept.name)}>
+                      <Tabs.Tab key={dept} onClick={setDepartment(dept.name)}>
                         {dept}
                       </Tabs.Tab>
                     );
@@ -129,7 +129,7 @@ export const UICardMod = (props: CardModProps, context) => {
                 </Tabs>
               </Flex.Item>
               <Flex.Item grow={1}>
-                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.forEach((rank) => {
+                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => {
                   <Button.Confirm
                     content={rank}
                     onClick={() => { act('rank', { rank: rank }); }} />;
