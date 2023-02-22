@@ -238,7 +238,7 @@
 				addY2 - flatY1 + 1
 			)
 			shift_x += flatX1 - addX1
-			shift_Y += flatY1 - addY1
+			shift_y += flatY1 - addY1
 			flat_size = list(
 				1,
 				flat.Width(),
