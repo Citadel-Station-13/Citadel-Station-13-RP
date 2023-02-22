@@ -5537,6 +5537,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "pW" = (
@@ -8139,6 +8142,9 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/assistant,
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "BD" = (

@@ -5,6 +5,7 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 	allow_deconstruct = TRUE
 	allow_unanchor = TRUE
 	icon = 'icons/machinery/bioscan.dmi'
+	base_icon_state = "antenna"
 	icon_state = "antenna"
 
 	/// network key
@@ -85,6 +86,19 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
 	return ..()
 
+/obj/machinery/bioscan_antenna/attack_hand(mob/user)
+	// todo: better xenomorphs
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(istype(H.species, /datum/species/xenos))
+			if(!network_key)
+				to_chat(H, SPAN_WARNING("[src] is already de-programmed."))
+			else
+				change_network(null)
+				H.visible_message(SPAN_WARNING("[H] violently tears apart [src]'s wires."))
+			return
+	return ..()
+
 /obj/machinery/bioscan_antenna/proc/change_network(key)
 	if(src.network_key)
 		if(GLOB.bioscan_anntena_list[src.network_key])
@@ -96,6 +110,11 @@ GLOBAL_LIST_EMPTY(bioscan_anntena_list)
 		if(!GLOB.bioscan_anntena_list[src.network_key])
 			GLOB.bioscan_anntena_list[src.network_key] = list()
 		GLOB.bioscan_anntena_list[src.network_key] += src
+	update_icon()
+
+/obj/machinery/bioscan_antenna/update_icon_state()
+	icon_state = "[base_icon_state][network_key? "_active" : ""]"
+	return ..()
 
 /obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."

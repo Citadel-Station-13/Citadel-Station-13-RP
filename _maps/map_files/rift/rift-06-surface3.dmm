@@ -7733,6 +7733,9 @@
 /obj/structure/sign/deck3{
 	pixel_y = 32
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "oO" = (
@@ -20600,7 +20603,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "OJ" = (
-/obj/machinery/computer/robotics,
 /obj/structure/table/reinforced,
 /obj/machinery/alarm{
 	desc = " ";
@@ -20614,6 +20616,9 @@
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
+	},
+/obj/machinery/computer/bioscan{
+	network_key_obfuscated = "rift_bioscanners"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)

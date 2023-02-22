@@ -6,6 +6,7 @@
 	/// network key
 	var/network_key
 	/// automatically generate an obfuscated key - used by mappers
+	var/network_key_obfuscated
 	/// buffer - quite literally just holds a copy of generated ui data
 	var/list/buffer
 	/// last scan at
@@ -35,7 +36,7 @@
 	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
 		. += list(
 			"level" = SSmapping.level_id(get_z(A)),
-			"id" = A.id,
+			"id" = "[A.id]",
 			"anchor" = A.anchored,
 		)
 
