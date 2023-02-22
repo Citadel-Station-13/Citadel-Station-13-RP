@@ -1,19 +1,43 @@
 import { round } from 'common/math';
+import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, NoticeBox, LabeledList, Section } from "../components";
 import { Window } from "../layouts";
 
-export const TelecommsLogBrowser = (props, context) => {
-  const { act, data } = useBackend(context);
+interface TelecommsLogBrowserContext {
+  universal_translate: BooleanLike;
+  network: string;
+  temp: UITemporaryMessage;
+  servers: [TelecommsServer];
+  selectedServer: TelecommsServerSelected;
+}
 
-  const {
-    universal_translate,
-    network,
-    temp,
-    servers,
-    selectedServer,
-  } = data;
+interface TelecommsServer {
+  id: string;
+  name: string;
+}
+
+interface TelecommsServerSelected {
+  id: string;
+  totalTraffic: number;
+  logs: [MessageLog];
+}
+
+interface MessageLog {
+  name: string;
+  input_type: string;
+  id: number;
+  parameters: [Record<string, string>];
+}
+
+interface UITemporaryMessage {
+  color: string;
+  text: string;
+}
+
+export const TelecommsLogBrowser = (props, context) => {
+  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
 
   return (
     <Window
@@ -21,10 +45,10 @@ export const TelecommsLogBrowser = (props, context) => {
       height={450}
       resizable>
       <Window.Content scrollable>
-        {(temp && temp.length) ? (
+        {!!data.temp && (
           <NoticeBox warning>
             <Box display="inline-box" verticalAlign="middle">
-              {temp}
+              {data.temp.text}
             </Box>
             <Button
               icon="times-circle"
@@ -32,7 +56,7 @@ export const TelecommsLogBrowser = (props, context) => {
               onClick={() => act('cleartemp')} />
             <Box clear="both" />
           </NoticeBox>
-        ) : null}
+        )}
         <Section title="Network Control">
           <LabeledList>
             <LabeledList.Item
@@ -47,27 +71,26 @@ export const TelecommsLogBrowser = (props, context) => {
                     color="bad"
                     icon="exclamation-triangle"
                     content="Flush Buffer"
-                    disabled={servers.length === 0}
+                    disabled={!!data.servers.length}
                     onClick={() => act('release')} />
                 </Fragment>
               )}>
               <Button
-                content={network}
+                content={data.network}
                 icon="pen"
                 onClick={() => act('network')} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        {selectedServer
+        {data.selectedServer
           ? (
             <TelecommsSelectedServer
-              network={network}
-              server={selectedServer}
-              universal_translate={universal_translate} />
+              server={data.selectedServer}
+              universal_translate={data.universal_translate} />
           ) : (
             <TelecommsServerSelection
-              network={network}
-              servers={servers} />
+              network={data.network}
+              servers={data.servers} />
           )}
       </Window.Content>
     </Window>
@@ -114,17 +137,17 @@ const TelecommsServerSelection = (props, context) => {
   );
 };
 
-const TelecommsSelectedServer = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    network,
-    server,
-    universal_translate,
-  } = props;
+interface TelecommsSelectedServerProps {
+  server: TelecommsServerSelected;
+  universal_translate: BooleanLike;
+}
+
+const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) => {
+  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
 
   return (
     <Section
-      title={"Server (" + server.id + ")"}
+      title={"Server (" + props.server.id + ")"}
       buttons={
         <Button
           content="Return"
@@ -133,19 +156,19 @@ const TelecommsSelectedServer = (props, context) => {
       }>
       <LabeledList>
         <LabeledList.Item label="Total Recorded Traffic">
-          {server.totalTraffic >= 1024
-            ? round(server.totalTraffic / 1024) + " Terrabytes"
-            : server.totalTraffic + " Gigabytes"}
+          {props.server.totalTraffic >= 1024
+            ? round(props.server.totalTraffic / 1024, 1) + " Terrabytes"
+            : props.server.totalTraffic + " Gigabytes"}
         </LabeledList.Item>
       </LabeledList>
       <Section title="Stored Logs" mt="4px">
         <Flex wrap="wrap">
-          {(!server.logs || !server.logs.length)
+          {(!props.server.logs || !props.server.logs.length)
             ? "No Logs Detected."
-            : server.logs.map(log => (
+            : props.server.logs.map(log => (
               <Flex.Item m="2px" key={log.id} basis="49%" grow={log.id % 2}>
                 <Section
-                  title={(universal_translate
+                  title={(props.universal_translate
                       || log.parameters["uspeech"]
                       || log.parameters["intelligible"]
                       || log.input_type === "Execution Error")
@@ -173,7 +196,7 @@ const TelecommsSelectedServer = (props, context) => {
                           onClick={() => act('delete', { id: log.id })} />
                       </LabeledList.Item>
                     </LabeledList>
-                  ) : (universal_translate
+                  ) : (props.universal_translate
                       || log.parameters["uspeech"]
                       || log.parameters["intelligible"])
                     ? <TelecommsLog log={log} />
@@ -189,7 +212,7 @@ const TelecommsSelectedServer = (props, context) => {
 
 
 const TelecommsLog = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
   const {
     log,
     error,

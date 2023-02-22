@@ -37,7 +37,7 @@
 		data["selectedServer"] = list(
 			"id" = SelectedServer.id,
 			"totalTraffic" = SelectedServer.totaltraffic,
-			"logs" = list()
+			"logs" = list(),
 		)
 
 		var/i = 0
