@@ -5276,7 +5276,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
 	},
-/obj/machinery/vending/hydroseeds,
+/obj/machinery/seed_storage/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "dFP" = (
