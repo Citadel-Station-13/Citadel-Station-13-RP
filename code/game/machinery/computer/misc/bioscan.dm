@@ -89,7 +89,7 @@
 	for(var/mob/M as anything in GLOB.mob_list)
 		if(!indices[num2text(M.z)])
 			continue
-		indices[M.z] += M
+		indices[num2text(M.z)] += M
 	/// process mobs
 	var/list/assembled = list()
 	for(var/z_str in indices)

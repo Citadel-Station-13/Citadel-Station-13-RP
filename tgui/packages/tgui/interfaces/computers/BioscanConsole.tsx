@@ -32,46 +32,49 @@ export const BioscanConsole = (props, context) => {
   let { act, data } = useBackend<BioscanConsoleData>(context);
   return (
     <Window
+      title="Bioscan Control Console"
       width={300}
       height={600}>
-      <Section title="Controls">
-        <LabeledList>
-          <LabeledList.Item label="Network Key">
-            <Input value={data.network} onEnter={(_, val) => act('set_network', { network: val })} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Scan">
-            <Button
-              title={data.scan_ready? "Scan" : "Charging"}
-              icon="magnifying-glass"
-              disabled={!data.scan_ready}
-              onClick={() => act('scan')} />
-          </LabeledList.Item>
-        </LabeledList>
-      </Section>
-      <Section title="Antennas">
-        {
-          data.antennas.map((antenna) => {
-            <Collapsible title={antenna.id} key={antenna.id}>
-              Sector / Level: {antenna.level}
-              Floor Bolts: {antenna.anchor? "Anchored" : "Unanchored"}
-            </Collapsible>;
-          })
-        }
-      </Section>
-      <Section title="Results">
-        {data.scan? (
-          data.scan.levels.map((level) => {
-            <Collapsible title={level.id}>
-              Lifesigns - Total: {level.all}
-              Lifesigns - Complex: {level.complex}
-              Lifesigns - Complex / Alive: {level.complex_alive}
-              Lifesigns - Complex / Dead: {level.complex_dead}
-            </Collapsible>;
-          })
-        ) : (
-          "No scan data."
-        )}
-      </Section>
+      <Window.Content>
+        <Section title="Controls">
+          <LabeledList>
+            <LabeledList.Item label="Network Key">
+              <Input value={data.network} onEnter={(_, val) => act('set_network', { network: val })} />
+            </LabeledList.Item>
+            <LabeledList.Item label="Scan">
+              <Button
+                title={data.scan_ready? "Scan" : "Charging"}
+                icon="magnifying-glass"
+                disabled={!data.scan_ready}
+                onClick={() => act('scan')} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+        <Section title="Antennas">
+          {
+            data.antennas.map((antenna) => {
+              <Collapsible title={antenna.id} key={antenna.id}>
+                Sector / Level: {antenna.level}
+                Floor Bolts: {antenna.anchor? "Anchored" : "Unanchored"}
+              </Collapsible>;
+            })
+          }
+        </Section>
+        <Section title="Results">
+          {data.scan? (
+            data.scan.levels.map((level) => {
+              <Collapsible title={level.id}>
+                Lifesigns - Total: {level.all}
+                Lifesigns - Complex: {level.complex}
+                Lifesigns - Complex / Alive: {level.complex_alive}
+                Lifesigns - Complex / Dead: {level.complex_dead}
+              </Collapsible>;
+            })
+          ) : (
+            "No scan data."
+          )}
+        </Section>
+      </Window.Content>
     </Window>
   );
 };
