@@ -225,7 +225,7 @@
 
 /datum/network_triangulation/proc/randomize(turf/real_loc)
 	var/angle = rand(0, 360)
-	var/dist = rand(0, accuracy)
-	random_x = round(cos(angle) * dist, 1)
-	random_y = round(sin(angle) * dist, 1)
+	var/dist = accuracy * sqrt(rand(1, 10000) * 0.0001)
+	random_x = round(cos(angle) * dist, 1) + real_loc.x
+	random_y = round(sin(angle) * dist, 1) + real_loc.y
 	random_z = real_loc.z
