@@ -157,7 +157,7 @@
 			"tag" = key,
 		))
 
-/obj/machinery/telecomms/server/proc/triangulate(atom/movable/victim, reduction_factor = 2, update_name)
+/obj/machinery/telecomms/server/proc/triangulate(atom/movable/victim, reduction_factor = 1.8, update_name)
 	if(isnull(triangulation))
 		triangulation = list()
 
