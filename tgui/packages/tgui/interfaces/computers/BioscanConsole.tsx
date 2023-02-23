@@ -28,7 +28,6 @@ interface BioscanLevel {
   complex_dead: number;
 }
 
-
 export const BioscanConsole = (props, context) => {
   let { act, data } = useBackend<BioscanConsoleData>(context);
   return (
@@ -52,7 +51,7 @@ export const BioscanConsole = (props, context) => {
       <Section title="Antennas">
         {
           data.antennas.map((antenna) => {
-            <Collapsible title={antenna.id} key={atenna.id}>
+            <Collapsible title={antenna.id} key={antenna.id}>
               Sector / Level: {antenna.level}
               Floor Bolts: {antenna.anchor? "Anchored" : "Unanchored"}
             </Collapsible>;

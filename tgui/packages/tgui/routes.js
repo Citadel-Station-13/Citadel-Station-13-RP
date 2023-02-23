@@ -36,7 +36,6 @@ const SuspendedWindow = () => {
 };
 
 const RefreshingWindow = () => {
-
   return (
     <Window title="Loading">
       <Window.Content>
@@ -53,6 +52,25 @@ const RefreshingWindow = () => {
       </Window.Content>
     </Window>
   );
+};
+
+const interfaceSubdirectories = [
+  `.`,
+  `./computers`,
+  `./items`,
+  `./machines`,
+  `./modules`,
+  `./ui`,
+];
+
+const interfacePath = function* (name) {
+  for (let i = 0; i < interfaceSubdirectories.length; i++) {
+    let dir = interfaceSubdirectories[i];
+    yield `${dir}/${name}.js`;
+    yield `${dir}/${name}.tsx`;
+    yield `${dir}/${name}/index.js`;
+    yield `${dir}/${name}/index.tsx`;
+  }
 };
 
 export const getRoutedComponent = store => {
@@ -72,23 +90,19 @@ export const getRoutedComponent = store => {
     }
   }
   const name = config?.interface;
-  const interfacePathBuilders = [
-    name => `./${name}.tsx`,
-    name => `./${name}.js`,
-    name => `./${name}/index.tsx`,
-    name => `./${name}/index.js`,
-  ];
+
   let esModule;
-  while (!esModule && interfacePathBuilders.length > 0) {
-    const interfacePathBuilder = interfacePathBuilders.shift();
-    const interfacePath = interfacePathBuilder(name);
+  for (let path in interfacePath(name)) {
     try {
-      esModule = requireInterface(interfacePath);
+      esModule = requireInterface(path);
     }
     catch (err) {
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw err;
       }
+    }
+    if (esModule) {
+      break;
     }
   }
   if (!esModule) {
