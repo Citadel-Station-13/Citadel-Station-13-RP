@@ -226,3 +226,20 @@
 /datum/gear/shoes/halfmoon
 	name = "Half Moon boots"
 	path = /obj/item/clothing/shoes/boots/half_moon
+
+/datum/gear/shoes/utilitarian
+	name = "Utilitarian Shoes"
+	path = /obj/item/clothing/shoes/utilitarian
+
+/datum/gear/shoes/duty_alt
+	name = "Duty Boots (Alternate)"
+	path = /obj/item/clothing/shoes/boots/duty/alt
+	cost = 2
+
+/datum/gear/shoes/duty_alt/knee
+	name = "Duty Boots (Alternate), Knee-High"
+	path = /obj/item/clothing/shoes/boots/duty/alt/knee
+
+/datum/gear/shoes/duty_alt/heel
+	name = "Duty Boots (Alternate), Heels"
+	path = /obj/item/clothing/shoes/boots/duty/alt/heel

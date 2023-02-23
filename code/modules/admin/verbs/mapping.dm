@@ -137,48 +137,50 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	feedback_add_details("admin_verb","mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 var/list/debug_verbs = list (
-        /client/proc/do_not_use_these
-        ,/client/proc/camera_view
-        ,/client/proc/sec_camera_report
-        ,/client/proc/intercom_view
-        ,/client/proc/Cell
-        ,/client/proc/atmosscan
-        ,/client/proc/powerdebug
-        ,/client/proc/count_objects_on_z_level
-        ,/client/proc/count_objects_all
-        ,/client/proc/cmd_assume_direct_control
-        ,/client/proc/jump_to_dead_group
-        ,/client/proc/startSinglo
-        ,/client/proc/ticklag
-        ,/client/proc/cmd_admin_grantfullaccess
-        ,/client/proc/kaboom
-        ,/client/proc/cmd_admin_areatest
-        ,/client/proc/cmd_admin_rejuvenate
-        ,/datum/admins/proc/show_traitor_panel
-        ,/client/proc/print_jobban_old
-        ,/client/proc/print_jobban_old_filter
-        ,/client/proc/forceEvent
-        ,/client/proc/Zone_Info
-        ,/client/proc/Test_ZAS_Connection
-        ,/client/proc/ZoneTick
-        ,/client/proc/rebootAirMaster
-        ,/client/proc/hide_debug_verbs
-        ,/client/proc/testZAScolors
-        ,/client/proc/testZAScolors_remove
-        ,/datum/admins/proc/setup_supermatter
-		,/client/proc/atmos_toggle_debug
-		,/client/proc/spawn_tanktransferbomb
-		,/client/proc/take_picture
-	)
+	/client/proc/analyze_openturf,
+	/client/proc/atmos_toggle_debug,
+	/client/proc/atmosscan,
+	/client/proc/camera_view,
+	/client/proc/Cell,
+	/client/proc/cmd_admin_areatest,
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_rejuvenate,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/count_objects_all,
+	/client/proc/count_objects_on_z_level,
+	/client/proc/do_not_use_these,
+	/client/proc/forceEvent,
+	/client/proc/hide_debug_verbs,
+	/client/proc/intercom_view,
+	/client/proc/jump_to_dead_group,
+	/client/proc/kaboom,
+	/client/proc/powerdebug,
+	/client/proc/print_jobban_old_filter,
+	/client/proc/print_jobban_old,
+	/client/proc/rebootAirMaster,
+	/client/proc/sec_camera_report,
+	/client/proc/spawn_tanktransferbomb,
+	/client/proc/startSinglo,
+	/client/proc/take_picture,
+	/client/proc/Test_ZAS_Connection,
+	/client/proc/testZAScolors_remove,
+	/client/proc/testZAScolors,
+	/client/proc/ticklag,
+	/client/proc/Zone_Info,
+	/client/proc/ZoneTick,
+	/datum/admins/proc/setup_supermatter,
+	/datum/admins/proc/show_traitor_panel,
+)
 
 
 /client/proc/enable_debug_verbs()
 	set category = "Debug"
 	set name = "Debug verbs"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
 
-	verbs += debug_verbs
+	add_verb(src, debug_verbs)
 
 	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -186,9 +188,10 @@ var/list/debug_verbs = list (
 	set category = "Debug"
 	set name = "Hide Debug verbs"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
 
-	verbs -= debug_verbs
+	remove_verb(src, debug_verbs)
 
 	feedback_add_details("admin_verb","hDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

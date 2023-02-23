@@ -861,7 +861,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	return 0
 /*
 //For creating consistent icons for human looking simple animals
-/proc/get_flat_human_icon(icon_id, datum/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+/proc/get_flat_human_icon(icon_id, datum/role/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
 	var/static/list/humanoid_icon_cache = list()
 	if(!icon_id || !humanoid_icon_cache[icon_id])
 		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
@@ -877,7 +877,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 		for(var/D in showDirs)
 			body.setDir(D)
-			COMPILE_OVERLAYS(body)
+			body.compile_overlays()
 			var/icon/partial = get_flat_icon(body)
 			out_icon.Insert(partial,dir=D)
 
@@ -1173,11 +1173,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	//Animate it growing
 	animate(img, alpha = 0, transform = matrix()*grow_to, time = anim_duration, loop = loops)
-
-// DEPRICATED SOON
-/proc/downloadImage(atom/A, dir) //this is expensive and dumb
-	var/icon/this_icon = get_flat_icon(A, dir=dir)
-	usr << ftp(this_icon,"[A.name].png")
 
 /*
  * * Accurate - Use more accurate color averaging, usually has better results and prevents muddied or overly dark colors. Mad thanks to wwjnc.

@@ -85,8 +85,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
 
-	//Logs all hrefs
+	//? Normal HREF handling go below
+
+	// Log
 	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
+
+	// Route statpanel
+	if(href_list["statpanel"])
+		_statpanel_act(href_list["statpanel"], href_list)
+		return
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
@@ -126,6 +133,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return prefs.process_link(usr,href_list)
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
+		if("stat")
+			return _statpanel_act(href_list["act"], href_list)
 
 	switch(href_list["action"])
 		if("openLink")
@@ -178,6 +187,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//! Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
+	// Instantiate statpanel
+	statpanel_boot()
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
@@ -196,7 +207,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			debug_tools_allowed = TRUE
 	/*
 	else if(GLOB.deadmins[ckey])
-		verbs += /client/proc/readmin
+		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
@@ -269,13 +280,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
 
-	if(GLOB.player_details[ckey])
-		player_details = GLOB.player_details[ckey]
-		player_details.byond_version = full_version
-	else
-		player_details = new(ckey)
-		player_details.byond_version = full_version
-		GLOB.player_details[ckey] = player_details
 	*/
 
 	//! WARNING: mob.login is always called async, aka immediately returns on sleep.
@@ -292,8 +296,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// resolve database data
 	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
-	database = new(ckey)
-	database.log_connect()
+	player = new(ckey)
+	player.log_connect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -324,6 +328,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// 	inline_css = file2text('html/statbrowser.css'),
 	// )
 
+	//! Initialize UI
+	// initialize statbrowser
+	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
 
@@ -436,7 +443,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
 	persistent = null
-	database = null
+	player = null
 	if(prefs)
 		prefs.client = null
 		prefs = null
@@ -449,6 +456,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	active_mousedown_item = null
 	SSping.currentrun -= src
+
+	//! cleanup UI
+	/// cleanup statbrowser
+	statpanel_dispose()
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
@@ -763,7 +774,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 /client/proc/change_view(new_size, forced, translocate)
 	set waitfor = FALSE	// to async temporary view
 	// todo: refactor this, client view changes should be ephemeral.
-	var/list/L = getviewsize(new_size)
+	var/list/L = decode_view_size(new_size)
 	set_temporary_view(L[1], L[2])
 
 /**

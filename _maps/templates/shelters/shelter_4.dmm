@@ -113,7 +113,7 @@
 /obj/item/ammo_magazine/m9mm/compact,
 /obj/item/ammo_magazine/m9mm/compact/flash,
 /obj/item/ammo_magazine/m9mm/compact/flash,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/material/knife/tacknife/survival,
 /obj/item/storage/box/survival/comp,
@@ -239,7 +239,7 @@
 /obj/item/ammo_magazine/m9mm/compact,
 /obj/item/ammo_magazine/m9mm/compact/flash,
 /obj/item/ammo_magazine/m9mm/compact/flash,
-/obj/item/gun/projectile/pistol,
+/obj/item/gun/ballistic/pistol,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/material/knife/tacknife/survival,
 /obj/item/storage/box/survival/comp{
@@ -371,10 +371,10 @@
 /area/survivalpod)
 "L" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
-/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,

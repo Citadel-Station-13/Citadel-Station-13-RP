@@ -21,6 +21,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/processing = TRUE
 	// How many times have we ran
 	var/iteration = 0
+	/// initialized?
+	var/initialized = FALSE
 
 	// world.time of last fire, for tracking lag outside of the mc
 	var/last_run
@@ -165,7 +167,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, "<span class='boldannounce'>[msg]</span>")
+			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -173,9 +175,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			Master.subsystems += new BadBoy.type	//NEW_SS_GLOBAL will remove the old one
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
+		initialized = TRUE
 		StartProcessing(10)
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE)
 
 
@@ -193,7 +196,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	tim_sort(subsystems, /proc/cmp_subsystem_init)
@@ -210,7 +213,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 
 	if (!current_runlevel)
@@ -231,6 +234,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(sleep_offline_after_initializations)// && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
+
+	initialized = TRUE
 
 	// Loop.
 	Master.StartProcessing(0)
@@ -283,7 +288,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SS.state = SS_IDLE
 		if (SS.subsystem_flags & SS_TICKER)
 			SStickersubsystems += SS
-			timer += world.tick_lag * rand(1, 5)
+			// Timer subsystems aren't allowed to bunch up, so we offset them a bit.
+			timer += world.tick_lag * rand(0, 1)
 			SS.next_fire = timer
 			continue
 
@@ -358,14 +364,16 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			var/checking_runlevel = current_runlevel
 			if(cached_runlevel != checking_runlevel)
 				//resechedule subsystems
+				var/list/old_subsystems = current_runlevel_subsystems
 				cached_runlevel = checking_runlevel
 				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
-				var/stagger = world.time
-				for(var/I in current_runlevel_subsystems)
-					var/datum/controller/subsystem/SS = I
-					if(SS.next_fire <= world.time)
-						stagger += world.tick_lag * rand(1, 5)
-						SS.next_fire = stagger
+
+				// Now we'll go through all the subsystems we want to offset and give them a next_fire.
+				for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
+					// We only want to offset it if it's new and also behind.
+					if(SS.next_fire > world.time || (SS in old_subsystems))
+						continue
+					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
 			subsystems_to_check = current_runlevel_subsystems
 		else
@@ -604,11 +612,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	. = 1
 
 /datum/controller/master/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
-	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (Iteration:[Master.iteration])"))
+	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration])"
 
 /datum/controller/master/StartLoadingMap()
 	//disallow more than one map to load at once, multithreading it will just cause race conditions

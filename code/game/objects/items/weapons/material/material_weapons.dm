@@ -27,6 +27,8 @@
 	var/default_material = MAT_STEEL
 	var/datum/material/material
 	var/drops_debris = 1
+	// todo: proper material opt-out system on /atom level or something, this is trash
+	var/no_force_calculations = FALSE
 
 /obj/item/material/Initialize(mapload, material_key)
 	. = ..()
@@ -50,6 +52,8 @@
 	return material
 
 /obj/item/material/proc/update_force()
+	if(no_force_calculations)
+		return
 	if(edge || sharp)
 		force = material.get_edge_damage()
 	else
@@ -58,6 +62,7 @@
 	if(dulled)
 		force = round(force*dulled_divisor)
 	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
+	// todo: remove, shitcode
 	if(material.name == "supermatter")
 		damtype = BURN //its hot
 		force = 150 //double the force of a durasteel claymore.
@@ -84,8 +89,8 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/material/apply_hit_effect()
-	..()
+/obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	if(!unbreakable)
 		if(material.is_brittle())
 			health = 0

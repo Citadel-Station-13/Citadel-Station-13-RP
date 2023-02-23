@@ -31,6 +31,10 @@
 	},
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"cW" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
 "cZ" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
@@ -38,7 +42,6 @@
 /area/class_h/POIs/saloon)
 "dc" = (
 /obj/structure/bed/chair/wood,
-/mob/living/simple_mob/humanoid/merc/ranged,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -48,8 +51,16 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"eY" = (
+/mob/living/simple_mob/animal/giant_spider/pepper,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
 "gn" = (
 /obj/machinery/vending/loadout/costume,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
+"gD" = (
+/mob/living/simple_mob/animal/giant_spider/ion,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "io" = (
@@ -64,7 +75,6 @@
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/mob/living/simple_mob/humanoid/merc/ranged,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "kG" = (
@@ -78,14 +88,8 @@
 	dir = 1
 	},
 /obj/random/cash,
+/mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/floor/carpet/blucarpet,
-/area/class_h/POIs/saloon)
-"lb" = (
-/obj/structure/bed/chair/wood{
-	dir = 8
-	},
-/mob/living/simple_mob/humanoid/merc/melee,
-/turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "ln" = (
 /obj/structure/table/wooden_reinforced,
@@ -94,6 +98,10 @@
 /area/class_h/POIs/saloon)
 "lo" = (
 /turf/simulated/floor/carpet/bcarpet,
+/area/class_h/POIs/saloon)
+"lL" = (
+/mob/living/simple_mob/animal/giant_spider/webslinger,
+/turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "lW" = (
 /obj/structure/sink/kitchen{
@@ -141,6 +149,16 @@
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"td" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/mob/living/simple_mob/animal/giant_spider/hunter,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
 "tl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -159,7 +177,6 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
 /turf/simulated/floor/carpet/blucarpet,
 /area/class_h/POIs/saloon)
 "ur" = (
@@ -181,7 +198,6 @@
 	pixel_x = -2;
 	pixel_y = 7
 	},
-/mob/living/simple_mob/humanoid/merc/ranged/deagle,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "wV" = (
@@ -284,6 +300,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"Jp" = (
+/mob/living/simple_mob/animal/giant_spider/nurse,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
 "JY" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -314,6 +334,16 @@
 /obj/item/storage/box/glasses/mug,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"Mg" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/mob/living/simple_mob/animal/giant_spider/nurse,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
 "NB" = (
 /obj/random/cash,
 /obj/machinery/light/small{
@@ -329,6 +359,14 @@
 	dir = 4
 	},
 /obj/machinery/light/small/flicker,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
+"PE" = (
+/obj/structure/girder,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/saloon)
+"PG" = (
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "PU" = (
@@ -356,10 +394,14 @@
 	},
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
-"UP" = (
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
+"UZ" = (
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
+"Vw" = (
+/mob/living/simple_mob/animal/giant_spider/tunneler,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
 "WE" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -407,13 +449,13 @@ io
 wV
 wV
 xI
+td
 Up
 Up
 Up
 Up
 Up
-Up
-Up
+Mg
 xI
 wV
 wV
@@ -440,7 +482,7 @@ io
 "}
 (4,1,1) = {"
 wV
-TY
+PE
 TY
 TY
 TY
@@ -463,14 +505,14 @@ lW
 Fm
 xI
 xI
-xI
+eY
 rL
 Zt
 pU
 xI
 Lw
 EY
-xI
+PG
 xI
 wV
 "}
@@ -483,7 +525,7 @@ ln
 dM
 xI
 xI
-lb
+jW
 xI
 xI
 xI
@@ -496,15 +538,15 @@ wV
 wV
 TY
 sl
-UP
+xI
 iQ
 dM
 xI
 xI
 xI
+Jp
 xI
-xI
-xI
+UZ
 TY
 Fd
 PU
@@ -514,7 +556,7 @@ wV
 wV
 TY
 bF
-xI
+lL
 zO
 dM
 xI
@@ -529,7 +571,7 @@ PU
 wV
 "}
 (9,1,1) = {"
-wV
+cW
 TY
 LV
 xI
@@ -552,7 +594,7 @@ TY
 TY
 Lw
 TY
-TY
+PE
 TY
 TY
 cR
@@ -570,7 +612,7 @@ TY
 Kd
 xI
 xI
-UP
+xI
 zg
 TY
 xI
@@ -588,7 +630,7 @@ TY
 Fd
 xI
 xI
-xI
+gD
 Fd
 TY
 xI
@@ -602,7 +644,7 @@ wV
 "}
 (13,1,1) = {"
 wV
-TY
+PE
 TY
 Lw
 TY
@@ -622,7 +664,7 @@ wV
 wV
 xI
 IU
-xI
+UZ
 TY
 gn
 Zm
@@ -634,7 +676,7 @@ bd
 TY
 xI
 xI
-wV
+cW
 "}
 (15,1,1) = {"
 wV
@@ -644,12 +686,12 @@ OS
 TY
 TY
 TY
+PE
 TY
 TY
 TY
 TY
-TY
-TY
+PE
 xI
 wV
 wV
@@ -664,7 +706,7 @@ wV
 wV
 wV
 wV
-wV
+Vw
 wV
 wV
 wV

@@ -126,7 +126,7 @@
 	if(isobserver(usr) || usr.restrained() || !usr.Adjacent(src))
 		return
 
-	verbs -= /obj/structure/inflatable/verb/hand_deflate
+	remove_obj_verb(src, /obj/structure/inflatable/verb/hand_deflate)
 	deflate()
 
 /obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)

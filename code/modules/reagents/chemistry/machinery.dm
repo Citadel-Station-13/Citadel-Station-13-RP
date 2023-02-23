@@ -35,6 +35,7 @@
 	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
 	var/static/radial_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
 	var/static/radial_grind = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_grind")
+	var/no_panel = FALSE
 
 /obj/machinery/reagentgrinder/Initialize(mapload, newdir)
 	. = ..()
@@ -59,7 +60,7 @@
 			var/obj/item/O = i
 			. += "<span class='notice'>- \A [O.name].</span>"
 
-	if(!(machine_stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)) && (!no_panel))
 		. += "<span class='notice'>The status display reads:</span>\n"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)

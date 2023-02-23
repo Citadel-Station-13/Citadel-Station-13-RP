@@ -36,13 +36,11 @@
 	desc = "A translucent balloon. There's nothing in it."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
+	force = 0
 
 /obj/item/toy/balloon/Initialize(mapload)
 	. = ..()
 	create_reagents(10)
-
-/obj/item/toy/balloon/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(!proximity) return
@@ -213,25 +211,26 @@
 			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 
-/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+/obj/item/toy/crossbow/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	src.add_fingerprint(user)
 
 // ******* Check
 
-	if (src.bullets > 0 && M.lying)
+	if (src.bullets > 0 && target.lying)
 
-		for(var/mob/O in viewers(M, null))
+		for(var/mob/O in viewers(target, null))
 			if(O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, M), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
-				O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", M), 1)
+				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, target), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
+				O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", target), 1)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
-		new /obj/item/toy/ammo/crossbow(M.loc)
+		new /obj/item/toy/ammo/crossbow(target.loc)
 		src.bullets--
-	else if (M.lying && src.bullets == 0)
-		for(var/mob/O in viewers(M, null))
+	else if (target.lying && src.bullets == 0)
+		for(var/mob/O in viewers(target, null))
 			if (O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, M), 1, "<span class='warning'>You hear someone fall</span>", 2)
+				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
 		user.Weaken(5)
 
 /obj/item/toy/ammo/crossbow
@@ -326,6 +325,7 @@
 	)
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
+	return COMPONENT_THROW_HIT_TERMINATE
 
 /obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
@@ -355,14 +355,12 @@
 	item_state = "sunflower"
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
+	force = 0
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
 	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
-
-/obj/item/toy/waterflower/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	return
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
 
@@ -780,15 +778,14 @@
 	var/bitesound = 'sound/weapons/bite.ogg'
 
 // Attack mob
-/obj/item/toy/plushie/carp/attack(mob/M as mob, mob/user as mob)
-	playsound(loc, bitesound, 20, 1)	// Play bite sound in local area
-	return ..()
+/obj/item/toy/plushie/carp/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
 // Attack self
 /obj/item/toy/plushie/carp/attack_self(mob/user as mob)
-	playsound(src.loc, bitesound, 20, 1)
+	playsound(src, bitesound, 20, 1)
 	return ..()
-
 
 /obj/random/carp_plushie
 	name = "Random Carp Plushie"

@@ -327,13 +327,13 @@
 	///? Prevents click from happening.
 	////#define COMPONENT_CANCEL_EQUIPMENT_CLICK (1<<0)
 
-////#define COMSIG_ITEM_ATTACK "item_attack"
+#define COMSIG_ITEM_ATTACK "item_attack"
 /// From base of obj/item/attack_self(): (/mob)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 /// From base of obj/item/attack_self_secondary(): (/mob)
 ////#define COMSIG_ITEM_ATTACK_SELF_SECONDARY "item_attack_self_secondary"
 /// From base of obj/item/attack_atom(): (/obj, /mob)
-////#define COMSIG_ITEM_ATTACK_OBJ "item_attack_obj"
+////#define COMSIG_ITEM_ATTACK_OBJ "item_attack_object"
 /// From base of obj/item/pre_attack(): (atom/target, mob/user, params)
 ////#define COMSIG_ITEM_PRE_ATTACK "item_pre_attack"
 /// From base of [/obj/item/proc/pre_attack_secondary()]: (atom/target, mob/user, params)

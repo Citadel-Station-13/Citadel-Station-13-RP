@@ -22,6 +22,13 @@
 		F.dirt += 4
 	qdel(src)
 
+/obj/effect/debris/cleanable/ash/attackby(obj/item/O as obj, mob/user as mob)
+	var/obj/item/reagent_containers/RG = O
+	if (istype(RG) && RG.is_open_container())
+		RG.reagents.add_reagent("ash", 10)
+		user.visible_message("<span class='notice'>[user] sweeps \the [src] into \the [RG].</span>","<span class='notice'>You collect \the [src] with \the [RG].</span>")
+		//return 1
+	qdel(src)
 
 /obj/effect/debris/cleanable/greenglow/New()
 	..()

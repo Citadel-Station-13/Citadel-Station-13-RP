@@ -58,18 +58,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
-"adw" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "aeF" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
@@ -167,22 +155,10 @@
 /turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "ajF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "ajW" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -190,7 +166,7 @@
 	name = "Pen 9 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "akm" = (
@@ -400,12 +376,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green,
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "asl" = (
@@ -448,23 +418,10 @@
 	name = "Pen 6 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "atX" = (
@@ -957,6 +914,9 @@
 /area/crew_quarters/recreation_area)
 "aJH" = (
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "aJW" = (
@@ -1695,16 +1655,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "bgr" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -1712,7 +1662,7 @@
 	name = "Pen 10 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bgB" = (
@@ -1732,13 +1682,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "bgJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "bhS" = (
@@ -2010,7 +1954,6 @@
 "brw" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger,
-/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "brD" = (
@@ -2843,12 +2786,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "ccW" = (
@@ -3310,26 +3247,14 @@
 /turf/simulated/wall,
 /area/crew_quarters/heads/hos)
 "cwe" = (
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
 /obj/structure/disposalpipe/up,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/grille,
 /obj/structure/cable/green{
 	icon_state = "32-2"
 	},
 /obj/structure/lattice,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "cwg" = (
@@ -3375,15 +3300,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "cwR" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "cwV" = (
@@ -3826,9 +3743,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "cND" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "cPy" = (
@@ -3874,9 +3789,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "cRn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "cRt" = (
@@ -4048,20 +3961,6 @@
 /obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
-"cYq" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
-/area/security/brig)
 "daF" = (
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/borderfloorblack/cee,
@@ -4269,9 +4168,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "dmx" = (
@@ -4826,6 +4723,9 @@
 "dEA" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
@@ -5413,9 +5313,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "dVi" = (
@@ -5677,9 +5575,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "eiq" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "eiA" = (
@@ -5713,23 +5609,10 @@
 	name = "Pen 3 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "ejD" = (
@@ -6737,20 +6620,6 @@
 /obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
-"eZB" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/dark,
-/area/security/armory/blue)
 "eZQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7006,19 +6875,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "feU" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -7029,6 +6885,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "fff" = (
@@ -7287,24 +7144,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"fnD" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/security/lobby)
 "fnK" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -7492,18 +7331,7 @@
 	name = "Pen 5 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/grille,
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "fwK" = (
@@ -7527,22 +7355,6 @@
 "fyx" = (
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
-"fyy" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/armory/red)
 "fzc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /turf/simulated/floor/plating,
@@ -7579,11 +7391,11 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
@@ -7605,16 +7417,7 @@
 	name = "Pen 4 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "fBD" = (
@@ -7934,7 +7737,10 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/showers)
 "fMU" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass_research{
+	name = "Research Lobby";
+	req_one_access = list(29,47)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8199,9 +8005,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "fXu" = (
@@ -8234,17 +8038,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/security_equiptment_storage)
 "fYM" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "fYX" = (
@@ -8420,19 +8214,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "gdk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "gdS" = (
@@ -8461,9 +8243,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "gek" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "geu" = (
@@ -8703,19 +8483,6 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "gmw" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -8723,6 +8490,7 @@
 	name = "Pen 2 Blast Doors";
 	opacity = 0
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "gmz" = (
@@ -8760,23 +8528,10 @@
 	name = "Pen 5 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "gns" = (
@@ -9845,29 +9600,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"hdL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "xenobiopen9";
-	name = "Pen 9 Blast Doors";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/reinforced,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "hfz" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -9988,18 +9720,9 @@
 "hiK" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
 /obj/item/ammo_magazine/m9mmt,
 /obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/gun/projectile/automatic/wt550,
-/obj/item/gun/projectile/automatic/wt550,
-/obj/item/gun/projectile/automatic/wt550,
-/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/ballistic/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "hkI" = (
@@ -10166,6 +9889,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "hrw" = (
@@ -10280,10 +10006,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hwE" = (
-/obj/structure/table/bench/steel,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
+/obj/machinery/suit_cycler/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "hwT" = (
@@ -10307,12 +10030,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "hyJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "hyN" = (
@@ -11010,9 +10731,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hTs" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "hTW" = (
@@ -11573,19 +11292,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/workshop)
 "iqI" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iru" = (
@@ -11877,9 +11584,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "iBZ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
 "iCs" = (
@@ -11906,12 +11611,10 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "iDq" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "iDO" = (
@@ -12934,12 +12637,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "jqk" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/phasegun/rifle{
+	pixel_y = 4
+	},
+/obj/item/gun/energy/phasegun/rifle{
+	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
@@ -13045,8 +12749,8 @@
 /area/rift/station/public_garden/stairwell)
 "jtH" = (
 /obj/structure/table/steel,
-/obj/item/gun/projectile/shotgun/pump/rifle/practice,
-/obj/item/gun/projectile/shotgun/pump/rifle/practice,
+/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
@@ -13702,20 +13406,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"jXU" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/industrial/loading{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "4"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/security/brig)
 "jYd" = (
 /obj/structure/railing{
 	dir = 1
@@ -13761,6 +13451,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "jZN" = (
@@ -13788,6 +13481,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
@@ -13913,15 +13609,7 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kfP" = (
@@ -14185,6 +13873,10 @@
 /obj/item/melee/baton,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"kmy" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/stairwell/primary/surfacetwo)
 "kmQ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -14269,20 +13961,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "kqv" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -14293,6 +13971,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kqN" = (
@@ -14551,23 +14230,10 @@
 	name = "Pen 4 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kxb" = (
@@ -14676,7 +14342,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "kAr" = (
-/obj/structure/table/bench/steel,
+/obj/machinery/suit_storage_unit/cryosuit/security,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kAC" = (
@@ -14729,6 +14396,9 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 9
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -14791,6 +14461,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"kIW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
 "kKd" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
@@ -15022,6 +14701,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"kUn" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/table/steel,
+/obj/item/storage/box/teargas{
+	pixel_y = 7
+	},
+/obj/item/storage/box/teargas,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "kUJ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -15692,9 +15380,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "lsM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "lti" = (
@@ -16490,10 +16176,7 @@
 "lVi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/gun/projectile/automatic/z8,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
+/obj/item/gun/ballistic/automatic/z8,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /turf/simulated/floor/tiled/dark,
@@ -16630,23 +16313,10 @@
 	name = "Pen 7 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "maJ" = (
@@ -16828,6 +16498,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -17435,19 +17108,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
-"mEH" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "mFW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -17790,7 +17450,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/m44,
 /obj/item/ammo_magazine/m44,
-/obj/item/gun/projectile/deagle/taj,
+/obj/item/gun/ballistic/deagle/taj,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "mWL" = (
@@ -17877,31 +17537,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_lockerroom)
-"mZs" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gunbox/lethal{
-	pixel_y = 8
-	},
-/obj/item/gunbox/lethal{
-	pixel_y = 4
-	},
-/obj/item/gunbox/lethal,
-/obj/item/gunbox/lethal{
-	pixel_y = -4
-	},
-/obj/item/gunbox/lethal{
-	pixel_y = 8
-	},
-/obj/item/gunbox/lethal{
-	pixel_y = 4
-	},
-/obj/item/gunbox/lethal,
-/obj/item/gunbox/lethal{
-	pixel_y = -4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/armory/red)
 "mZy" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/floor_decal/borderfloorblack{
@@ -18367,17 +18002,7 @@
 	name = "Pen 7 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "nsn" = (
@@ -19014,29 +18639,6 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
-"nRN" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "xenobiopen10";
-	name = "Pen 10 Blast Doors";
-	opacity = 0
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/reinforced,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "nSn" = (
 /obj/structure/table/steel,
 /obj/item/clothing/accessory/badge/holo,
@@ -19161,15 +18763,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/wall/r_wall,
 /area/medical/chemistry)
-"nWu" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/effect/debris/cleanable/vomit{
-	icon_state = "vomit_3"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/brig)
 "nWU" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
@@ -19325,13 +18918,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "odk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "odu" = (
@@ -19986,12 +19573,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "oJU" = (
@@ -20262,9 +19843,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/testingrange)
 "oSw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "oSM" = (
@@ -20522,9 +20101,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "oZr" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "oZw" = (
@@ -21640,15 +21217,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "pQT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "chemistry";
 	layer = 3.1;
 	name = "Chemistry Shutters"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "pRj" = (
@@ -22094,9 +21669,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "qic" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/recreation_area)
 "qiJ" = (
@@ -22180,11 +21753,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/breakroom)
 "qjD" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "rd_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -22193,6 +21761,7 @@
 	name = "Research Director Office shutter";
 	opacity = 0
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/lockers)
 "qkd" = (
@@ -22200,11 +21769,11 @@
 /obj/item/storage/box/flashbangs{
 	pixel_y = 7
 	},
-/obj/item/storage/box/flashbangs,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
+/obj/item/storage/box/flashbangs,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "qmd" = (
@@ -23153,20 +22722,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
 "raH" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -23174,6 +22729,7 @@
 	name = "Pen 1 Blast Doors";
 	opacity = 0
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rba" = (
@@ -24156,19 +23712,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rOZ" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "rd_office"
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "rd_shutter";
-	name = "Research Director Office shutter";
-	opacity = 0
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "rPk" = (
@@ -24373,9 +23917,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "rZr" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -24384,7 +23925,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "rZC" = (
@@ -25009,12 +24550,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
 "sCL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
 "sDx" = (
@@ -25490,9 +25026,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sZj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "tav" = (
@@ -25771,12 +25305,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"tiN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacetwo)
 "tjO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -26016,13 +25544,13 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "trS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = 6;
-	pixel_y = -6
-	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = -4;
-	pixel_y = -6
+	pixel_y = 6
 	},
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = 6;
@@ -26030,7 +25558,11 @@
 	},
 /obj/item/clothing/suit/armor/vest/alt{
 	pixel_x = -4;
-	pixel_y = 6
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_equiptment_storage)
@@ -26493,22 +26025,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"tJI" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
-/area/medical/resleeving)
 "tLc" = (
 /obj/structure/ladder/up,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26995,9 +26511,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "ujx" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -27006,10 +26519,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "uks" = (
@@ -27342,6 +26852,20 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"uBg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
 "uCF" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -27479,10 +27003,10 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
-/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "uIz" = (
@@ -28145,13 +27669,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "uWP" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "uWS" = (
@@ -28559,6 +28077,19 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"vjT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "vkb" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
@@ -29012,23 +28543,10 @@
 	name = "Pen 8 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "vCQ" = (
@@ -29181,7 +28699,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "vJU" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass_research{
+	name = "Research Lobby";
+	req_one_access = list(29,47)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -29216,13 +28737,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "vKw" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/sign/department/medbay{
 	pixel_x = -32
 	},
-/obj/structure/window/reinforced/polarized/full,
 /obj/structure/disposalpipe/segment,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "vKN" = (
@@ -29333,12 +28852,28 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "vSe" = (
-/obj/structure/table/steel,
-/obj/item/storage/box/teargas{
-	pixel_y = 7
-	},
-/obj/item/storage/box/teargas,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gunbox/lethal{
+	pixel_y = 8
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 4
+	},
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal{
+	pixel_y = -4
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 8
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 4
+	},
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "vSi" = (
@@ -29347,23 +28882,12 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/item/storage/box/flashshells,
-/obj/item/storage/box/stunshells,
-/obj/item/storage/box/shotgunammo,
-/obj/item/storage/box/shotgunammo,
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/gun/projectile/automatic/as24,
-/obj/item/gun/projectile/automatic/as24,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/gun/ballistic/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vTi" = (
@@ -29413,9 +28937,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "vVt" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "vVE" = (
@@ -29484,16 +29006,7 @@
 	name = "Pen 6 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "vYh" = (
@@ -29607,6 +29120,38 @@
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
 	pixel_x = -3;
 	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/nt{
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -29797,23 +29342,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/hos)
-"wiB" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/industrial/loading{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "2"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "5"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/security/brig)
 "wja" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -29860,15 +29388,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
 "wkK" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "wla" = (
@@ -30141,12 +29661,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "wux" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle,
-/obj/item/gun/energy/phasegun/rifle,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/suit_storage_unit/cryosuit/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "wvJ" = (
@@ -30209,12 +29725,14 @@
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "wxk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -30572,8 +30090,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "wLN" = (
 /obj/machinery/door/airlock/glass_research{
-	name = "Research Lobby";
-	req_one_access = list(29,47)
+	name = "RnD Lab"
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -31013,17 +30530,7 @@
 	name = "Pen 3 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xdO" = (
@@ -31245,15 +30752,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "xpv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "chemistry";
 	layer = 3.1;
 	name = "Chemistry Shutters"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "xpI" = (
@@ -31841,9 +31346,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "xNj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "xNm" = (
@@ -32157,12 +31660,10 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "xXn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/sign/department/operational{
 	pixel_x = -32
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
 "xXV" = (
@@ -39107,7 +38608,7 @@ tui
 kPi
 kPi
 hKb
-hdL
+ajW
 ajW
 kPi
 kPi
@@ -39483,15 +38984,15 @@ jdp
 oNU
 bkq
 vKo
-adw
+uWP
 gJf
 bkq
 tVw
-adw
+uWP
 rRW
 gkl
 pBD
-adw
+uWP
 iqI
 bTa
 bcO
@@ -40259,15 +39760,15 @@ bHB
 qbw
 iOD
 oPI
-mEH
+uWP
 osc
 iOD
 ggC
-mEH
+uWP
 bRL
 iOD
 fik
-mEH
+uWP
 iqI
 fne
 vzC
@@ -40659,7 +40160,7 @@ tui
 kPi
 kPi
 tEi
-nRN
+bgr
 bgr
 kPi
 kPi
@@ -42922,8 +42423,8 @@ oLJ
 oLJ
 wJl
 wJl
-tJI
-tJI
+jTS
+jTS
 wJl
 wJl
 wJl
@@ -46428,7 +45929,7 @@ ndb
 gwp
 cMV
 rVC
-tiN
+kmy
 cno
 cno
 ppg
@@ -46622,7 +46123,7 @@ rRs
 gwp
 cMV
 wqh
-tiN
+kmy
 cno
 cno
 bSg
@@ -47015,7 +46516,7 @@ ktB
 hhA
 vzn
 gjf
-tiN
+kmy
 hPU
 ngb
 vKN
@@ -47209,7 +46710,7 @@ ktB
 aoF
 nTp
 kYq
-tiN
+kmy
 grW
 ngb
 vKN
@@ -47402,7 +46903,7 @@ rab
 rab
 rab
 rab
-tiN
+kmy
 rab
 qIm
 ngb
@@ -48566,7 +48067,7 @@ rab
 rab
 rab
 rab
-tiN
+kmy
 rab
 fGJ
 kQY
@@ -48761,7 +48262,7 @@ ktB
 wHt
 ngX
 jpg
-tiN
+kmy
 hPU
 ngb
 vKN
@@ -48955,7 +48456,7 @@ ktB
 hhA
 sRF
 gjf
-tiN
+kmy
 grW
 ngb
 fre
@@ -49140,7 +48641,7 @@ fhH
 cxh
 jQM
 biL
-rZr
+iGT
 sLu
 oWC
 sLu
@@ -49338,7 +48839,7 @@ rZr
 djg
 riA
 fZA
-tiN
+kmy
 cno
 cno
 vQP
@@ -49532,7 +49033,7 @@ dRG
 jNi
 lQY
 fPA
-tiN
+kmy
 cno
 cno
 czJ
@@ -49722,7 +49223,7 @@ ajF
 fzv
 ajF
 iGT
-fnD
+rZr
 obA
 pyL
 jmh
@@ -50101,7 +49602,7 @@ nGW
 mfE
 bFC
 weU
-cYq
+ujx
 nxD
 reL
 dPC
@@ -50858,10 +50359,10 @@ nWU
 cml
 hKO
 iUz
-bXx
+uBg
 mFW
 bXx
-eZB
+bXx
 bXx
 dmj
 fXh
@@ -50878,10 +50379,10 @@ tiu
 bhS
 nuH
 bgJ
-wiB
+dBB
 yeT
 bgJ
-jXU
+dBB
 yeT
 bgJ
 dBB
@@ -51078,7 +50579,7 @@ gmC
 lNl
 oji
 gmC
-nWu
+lNl
 oji
 gmC
 lEX
@@ -51248,7 +50749,7 @@ tRt
 iub
 jZz
 mib
-gqo
+kIW
 dUW
 gqo
 mED
@@ -51438,7 +50939,7 @@ eIB
 xRX
 fsv
 aPX
-vSe
+kUn
 rVp
 kjQ
 xsA
@@ -51631,7 +51132,7 @@ rYl
 fmV
 fzK
 jqk
-fyy
+aPX
 qkd
 rVp
 jBb
@@ -51823,8 +51324,8 @@ hAg
 ieS
 rYl
 qXW
-xRX
-mZs
+vjT
+vSe
 aPX
 wjW
 rVp

@@ -159,10 +159,16 @@
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
 	full_update_riders(force = TRUE)
+	if(isliving(parent))
+		var/mob/living/L = parent
+		L.ai_holder?.pause_automated_movement()
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
 	full_update_riders(force = TRUE)
+	if(isliving(parent))
+		var/mob/living/L = parent
+		L.ai_holder?.resume_automated_movement()
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()

@@ -110,12 +110,6 @@
 	/// contamination insulation; null defaults to rad_insulation
 	var/rad_stickiness
 
-	//! ## Overlays
-	/// a very temporary list of overlays to remove
-	var/list/remove_overlays
-	/// a very temporary list of overlays to add
-	var/list/add_overlays
-
 	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
 	var/list/managed_vis_overlays
 	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
@@ -448,77 +442,6 @@
 	. = list()
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
 
-/**
- * Updates the appearence of the icon
- *
- * Mostly delegates to update_name, update_desc, and update_icon
- *
- * Arguments:
- * - updates: A set of bitflags dictating what should be updated. Defaults to [ALL]
- */
-/atom/proc/update_appearance(updates=ALL)
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-
-	. = NONE
-	updates &= ~SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_APPEARANCE, updates)
-	if(updates & UPDATE_NAME)
-		. |= update_name(updates)
-	if(updates & UPDATE_DESC)
-		. |= update_desc(updates)
-	if(updates & UPDATE_ICON)
-		. |= update_icon(updates)
-
-/// Updates the name of the atom
-/atom/proc/update_name(updates=ALL)
-	// SHOULD_CALL_PARENT(TRUE)
-	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_NAME, updates)
-
-/// Updates the description of the atom
-/atom/proc/update_desc(updates=ALL)
-	// SHOULD_CALL_PARENT(TRUE)
-	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_DESC, updates)
-
-/// Updates the icon of the atom
-/atom/proc/update_icon(updates=ALL)
-	SIGNAL_HANDLER
-	// SHOULD_CALL_PARENT(TRUE)
-
-	. = NONE
-	updates &= ~SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON, updates)
-
-	if(updates & UPDATE_ICON_STATE)
-		update_icon_state()
-		. |= UPDATE_ICON_STATE
-
-	if(updates & UPDATE_OVERLAYS)
-		if(LAZYLEN(managed_vis_overlays))
-			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-
-		var/list/new_overlays = update_overlays(updates)
-		if(managed_overlays)
-			cut_overlay(managed_overlays)
-			managed_overlays = null
-		if(length(new_overlays))
-			if (length(new_overlays) == 1)
-				managed_overlays = new_overlays[1]
-			else
-				managed_overlays = new_overlays
-			add_overlay(new_overlays)
-		. |= UPDATE_OVERLAYS
-
-	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
-
-/// Updates the icon state of the atom
-/atom/proc/update_icon_state()
-	SHOULD_CALL_PARENT(TRUE)
-	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON_STATE)
-
-/// Updates the overlays of the atom
-/atom/proc/update_overlays()
-	SHOULD_CALL_PARENT(TRUE)
-	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -573,6 +496,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
 	return power
 
+// todo: this really needs to be refactored
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 
@@ -793,29 +717,29 @@
 /// Use for objects performing visible actions
 /// message is output to anyone who can see, e.g. "The [src] does something!"
 /// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
-
 	var/list/see
 	if(isbelly(loc))
 		var/obj/belly/B = loc
-		see = B.get_mobs_and_objs_in_belly()
+		see = B.effective_emote_hearers()
 	else
-		see = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
+		see = get_hearers_in_view(range, src)
+	for(var/atom/movable/AM as anything in see)
+		if(ismob(AM))
+			var/mob/M = AM
+			if(self_message && (M == src))
+				M.show_message(self_message, 1, blind_message, 2)
+			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+				M.show_message(message, 1, blind_message, 2)
+			else if(blind_message)
+				M.show_message(blind_message, 2)
+		else
+			AM.show_message(message, 1, blind_message, 2)
 
-	var/list/seeing_mobs = see["mobs"]
-	var/list/seeing_objs = see["objs"]
-
-	for(var/obj in seeing_objs)
-		var/obj/O = obj
-		O.show_message(message, 1, blind_message, 2)
-	for(var/mob in seeing_mobs)
-		var/mob/M = mob
-		if(self_message && (M == src))
-			M.show_message(self_message, 1, blind_message, 2)
-		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
-			M.show_message(message, 1, blind_message, 2)
-		else if(blind_message)
-			M.show_message(blind_message, 2)
+// todo: refactor
+/atom/movable/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+	return
 
 /// Show a message to all mobs and objects in earshot of this atom
 /// Use for objects performing audible actions
@@ -1197,3 +1121,8 @@
 	base_pixel_y = new_value
 
 	pixel_y = pixel_y + base_pixel_y - .
+
+/// forcefully center us
+/atom/proc/auto_pixel_offset_to_center()
+	set_base_pixel_y(get_centering_pixel_y_offset())
+	set_base_pixel_x(get_centering_pixel_x_offset())

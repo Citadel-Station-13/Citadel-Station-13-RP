@@ -18,7 +18,7 @@
 	assignable = FALSE
 	visible = FALSE
 
-/datum/job/talon_captain
+/datum/role/job/talon_captain
 	title = "Talon Captain"
 	flag = TALCAP
 	department_flag = TALON
@@ -33,17 +33,16 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#999999"
-	economic_modifier = 7
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Commander" = /datum/alt_title/talon_commander)
+	alt_titles = list("Talon Commander" = /datum/prototype/alt_title/talon_commander)
 
-/datum/alt_title/talon_commander
+/datum/prototype/alt_title/talon_commander
 	title = "Talon Commander"
 
-/datum/job/talon_doctor
+/datum/role/job/talon_doctor
 	title = "Talon Doctor"
 	flag = TALDOC
 	department_flag = TALON
@@ -57,18 +56,17 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Medic" = /datum/alt_title/talon_medic)
+	alt_titles = list("Talon Medic" = /datum/prototype/alt_title/talon_medic)
 
-/datum/alt_title/talon_medic
+/datum/prototype/alt_title/talon_medic
 	title = "Talon Medic"
 
 
-/datum/job/talon_engineer
+/datum/role/job/talon_engineer
 	title = "Talon Engineer"
 	flag = TALENG
 	department_flag = TALON
@@ -82,18 +80,17 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Technician" = /datum/alt_title/talon_tech)
+	alt_titles = list("Talon Technician" = /datum/prototype/alt_title/talon_tech)
 
-/datum/alt_title/talon_tech
+/datum/prototype/alt_title/talon_tech
 	title = "Talon Technician"
 
 
-/datum/job/talon_pilot
+/datum/role/job/talon_pilot
 	title = "Talon Pilot"
 	flag = TALPIL
 	department_flag = TALON
@@ -107,18 +104,17 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Helmsman" = /datum/alt_title/talon_helmsman)
+	alt_titles = list("Talon Helmsman" = /datum/prototype/alt_title/talon_helmsman)
 
-/datum/alt_title/talon_helmsman
+/datum/prototype/alt_title/talon_helmsman
 	title = "Talon Helmsman"
 
 
-/datum/job/talon_guard
+/datum/role/job/talon_guard
 	title = "Talon Guard"
 	flag = TALSEC
 	department_flag = TALON
@@ -132,14 +128,13 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aaaaaa"
-	economic_modifier = 5
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Security" = /datum/alt_title/talon_security)
+	alt_titles = list("Talon Security" = /datum/prototype/alt_title/talon_security)
 
-/datum/alt_title/talon_security
+/datum/prototype/alt_title/talon_security
 	title = "Talon Security"
 
 

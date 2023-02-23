@@ -102,7 +102,7 @@
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 
-			var/datum/job/J = SSjob.get_job(real_rank)
+			var/datum/role/job/J = SSjob.get_job(real_rank)
 			if(J?.offmap_spawn)
 				off[name] = rank
 
@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	var/list/all_jobs = get_job_datums()
 
-	for(var/datum/job/J in all_jobs)
+	for(var/datum/role/job/J in all_jobs)
 		if(J.title == rank)					//If we have a rank, just default to using that.
 			real_title = rank
 			break
@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
 		var/assignment = GetAssignment(H)
 		var/hidden
-		var/datum/job/J = SSjob.get_job(H.mind.assigned_role)
+		var/datum/role/job/J = SSjob.get_job(H.mind.assigned_role)
 		hidden = J?.offmap_spawn
 
 		/* Note: Due to cached_character_icon, a number of emergent properties occur due to the initialization
@@ -341,10 +341,10 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		* they ever get their equipment, and so it can't get a picture of them in their equipment.
 		* Latejoiners do not have this problem, because /mob/new_player/proc/AttemptLateSpawn calls EquipRank() before it calls
 		* this proc, which means that they're already clothed by the time they get their picture taken here.
-		* The COMPILE_OVERLAYS() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
+		* The compile_overlays() here is just to bypass SSoverlays taking for-fucking-ever to update the mob, since we're about to
 		* take a picture of them, we want all the overlays.
 		*/
-		COMPILE_OVERLAYS(H)
+		H.compile_overlays()
 
 		var/id = generate_record_id()
 		//General Record

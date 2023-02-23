@@ -51,6 +51,15 @@
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
+
+	zmm_flags = ZMM_MANGLE_PLANES
+
+	// Wideborgs are offset, but their light shouldn't be. This disables offset because of how the math works (1 is less than 16).
+	light_offset_x = 1
+	light_offset_y = 1
+
+	can_be_antagged = TRUE
+
 	/// Is our integrated light on?
 	var/lights_on = 0
 	var/used_power_this_tick = 0
@@ -65,8 +74,6 @@
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
-
-	can_be_antagged = TRUE
 
 //! ## Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates
@@ -171,7 +178,8 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	add_language("Robot Talk", 1)
+	add_language("Robot Talk", TRUE)
+	add_language(LANGUAGE_EAL, TRUE)
 	// todo: translation contexts on language holder?
 	// this is messy
 	for(var/datum/language/L as anything in SScharacters.all_languages())
@@ -425,7 +433,12 @@
 
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
-	handle_light()
+
+	if (lights_on)
+		radio.set_light(integrated_light_power)
+	else
+		radio.set_light(0)
+
 	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
@@ -471,42 +484,33 @@
 	set name = "Emit Sparks"
 	spark_system.start()
 
-// this function displays jetpack pressure in the stat panel
-/mob/living/silicon/robot/proc/show_jetpack_pressure()
-	// if you have a jetpack, show the internal tank pressure
-	var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
-	if (current_jetpack)
-		stat("Internal Atmosphere Info", current_jetpack.name)
-		stat("Tank Pressure", current_jetpack.air_contents.return_pressure())
-
-
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
 		return (locate(/obj/item/tank/jetpack) in module.modules)
 	return 0
 
-
-// this function displays the cyborgs current cell charge in the stat panel
-/mob/living/silicon/robot/proc/show_cell_power()
-	if(cell)
-		stat(null, text("Charge Left: [round(cell.percent())]%"))
-		stat(null, text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-		stat(null, text("Power Cell Load: [round(used_power_this_tick)]W"))
-	else
-		stat(null, text("No Cell Inserted!"))
-
-
 // update the status screen display
-/mob/living/silicon/robot/Stat()
-	..()
-	if (statpanel("Status"))
-		show_cell_power()
-		show_jetpack_pressure()
-		stat(null, text("Lights: [lights_on ? "ON" : "OFF"]"))
+/mob/living/silicon/robot/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		if(cell)
+			STATPANEL_DATA_LINE( text("Charge Left: [round(cell.percent())]%"))
+			STATPANEL_DATA_LINE( text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE( text("Power Cell Load: [round(used_power_this_tick)]W"))
+		else
+			STATPANEL_DATA_LINE( text("No Cell Inserted!"))
+		STATPANEL_DATA_LINE( text("Lights: [lights_on ? "ON" : "OFF"]"))
+		STATPANEL_DATA_LINE("")
+		// if you have a jetpack, show the internal tank pressure
+		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
+		if (current_jetpack)
+			STATPANEL_DATA_ENTRY("Internal Atmosphere Info", current_jetpack.name)
+			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
 		if(module)
 			for(var/datum/matter_synth/ms in module.synths)
-				stat("[ms.name]: [ms.energy]/[ms.max_energy]")
+				STATPANEL_DATA_LINE("[ms.name]: [ms.energy]/[ms.max_energy]")
 
 /mob/living/silicon/robot/restrained()
 	return 0
@@ -776,13 +780,22 @@
 	return
 
 /mob/living/silicon/robot/proc/module_reset()
+	shown_robot_modules = FALSE
+	if (client)
+		hud_used.update_robot_modules_display()
 	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
 
+	lights_on = FALSE
+	radio.set_light(0)
+
 	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
 	module.Reset(src)
+
+	choose_icon(0, set_module_sprites(list("Default" = "robot")))
+
 	qdel(module)
 	module = null
 	updatename("Default")
@@ -869,7 +882,16 @@
 			return 1
 	return 0
 
+/mob/living/silicon/robot/update_canmove()
+	. = ..()
+	updateicon()
+
 /mob/living/silicon/robot/updateicon()
+	if (wideborg)
+		zmm_flags |= ZMM_LOOKAHEAD
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
+
 	cut_overlays()
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
@@ -1145,7 +1167,7 @@
 	if(R)
 		R.UnlinkSelf()
 		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
-		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
+		remove_verb(src, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
 	// They stay locked down if their wire is cut.
@@ -1214,12 +1236,12 @@
 	toggle_sensor_mode()
 
 /mob/living/silicon/robot/proc/add_robot_verbs()
-	src.verbs |= robot_verbs_default
-	src.verbs |= silicon_subsystems
+	add_verb(src, robot_verbs_default)
+	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/proc/remove_robot_verbs()
-	src.verbs -= robot_verbs_default
-	src.verbs -= silicon_subsystems
+	remove_verb(src, robot_verbs_default)
+	remove_verb(src, silicon_subsystems)
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.

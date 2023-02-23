@@ -1,4 +1,4 @@
-//* Core settings
+//## Core settings
 //! Fastboot flags - useful for debugging
 /// Disable automatic roundstart icon smoothing.
 // #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
@@ -57,15 +57,6 @@
 	 * ! Not implemented yet.
 	 */
 	// #define REAGENTS_TESTING
-
-
-	/**
-	 * Displays static object lighting updates.
-	 *
-	 * Also enables some debug vars on sslighting that can be used to modify
-	 * how extensively we prune lighting corners to update.
-	 */
-	#define VISUALIZE_LIGHT_UPDATES
 
 
 	/// Highlights atmos active turfs in green.
@@ -139,7 +130,7 @@
 #endif
 
 
-//! CBT BUILD DEFINES
+// ## CBT BUILD DEFINES
 
 #ifdef CIBUILDING
 	#define UNIT_TESTS
@@ -150,21 +141,34 @@
 #endif
 
 
-//! LEGACY WARNING
+#ifdef TGS
+// TGS performs its own build of dm.exe, but includes a prepended TGS define.
+#define CBT
+#endif
+
+// ## LEGACY WARNING
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
 	#warn Building with Dream Maker is no longer supported and will result in errors.
 	#warn In order to build, run BUILD.bat in the root directory.
 	#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
 
+/**
+ * ## MAPPING
+ * IN_MAP_EDITOR macro is used to make some things appear visually more clearly in the map editor
+ * this handles StrongDMM (and other editors using SpacemanDMM parser), toggle it manually if using a different editor
+ */
+#if (defined(SPACEMAN_DMM) || defined(FASTDMM))
+#define IN_MAP_EDITOR
+#endif
 
 
 /**
- ** Modules follow
+ * ## Modules follow
  */
 
 
-//! Atmospherics
+// ## Atmospherics
 
 //? Gasmixtures
 /// Enable general assertions.
@@ -194,7 +198,7 @@
 
 
 
-//! Overlays
+// ## Overlays
 /**
  * A reasonable number of maximum overlays an object needs.
  * If you think you need more, rethink it.
@@ -202,6 +206,11 @@
 #define MAX_ATOM_OVERLAYS 100
 
 
+// ## Timers
 
-//! Timers
 // #define TIMER_LOOP_DEBUGGING
+
+
+// ## Lighting
+
+// #define AO_USE_LIGHTING_OPACITY

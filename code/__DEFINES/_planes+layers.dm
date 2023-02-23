@@ -56,6 +56,8 @@
  * BACKGROUND_LAYER 20000
  */
 
+//TODO: Deplanify. @Zandario
+
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
 /// smallest reasonable base layer resolution - YOU SHOULD NOT VIOLATE THIS
@@ -101,35 +103,9 @@
 #define PLANE_LOOKINGGLASS_IMG -76
 
 
+// Openspace uses planes -80 through -70.
+#define OVER_OPENSPACE_PLANE -50
 
-/**
- *! -- Openspace Planes
- *? OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
- *? /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
- */
-#define OPENSPACE_PLANE       -75
-#define OPENSPACE_PLANE_START -73
-#define OPENSPACE_PLANE_END   -58
-#define OVER_OPENSPACE_PLANE  -57
-
-
-/**
- *! -- Plating Plane
- * TODO: kill these too because frankly, fuck off.
- */
-#define PLATING_PLANE -44 //! Notice how Plating is above turfs. :) @Zandario
-
-#define DISPOSAL_LAYER (TURF_LAYER+0.1) /// Under objects, even when planeswapped.
-#define PIPES_LAYER    (TURF_LAYER+0.2) /// Under objects, even when planeswapped.
-#define WIRES_LAYER    (TURF_LAYER+0.3) /// Under objects, even when planeswapped.
-#define ATMOS_LAYER    (TURF_LAYER+0.4) /// Pipe-like atmos machinery that goes on the floor, like filters.
-#define ABOVE_UTILITY  (TURF_LAYER+0.5) /// Above stuff like pipes and wires.
-
-/**
- *! Decal Plane (secretly just PLATING_PLANE for now) as this is to be removed.
- * TODO: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
- */
-#define DECAL_PLANE -44
 
 /**
  *! -- Turfs Plane
@@ -137,13 +113,53 @@
  */
 #define TURF_PLANE -45
 
-#define WATER_FLOOR_LAYER   (TURF_LAYER)      /// The 'bottom' of water tiles.
-#define BUILTIN_DECAL_LAYER (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
-#define MAPPER_DECAL_LAYER  (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
-#define UNDERWATER_LAYER    (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
+#define PLATING_LAYER               (AREA_LAYER)
+#define PLATING_DECAL_LAYER         (AREA_LAYER+0.01) //! Used for decals on plating and for map editors.
+#define DISPOSAL_LAYER              (AREA_LAYER+0.1)
+#define DECAL_PLATING_LAYER         (AREA_LAYER+0.2)
+#define DISPOSALS_PIPE_LAYER        (AREA_LAYER+0.3)
+#define LATTICE_LAYER               (AREA_LAYER+0.4)
+#define HEAVYDUTY_WIRE_LAYER        (AREA_LAYER+0.45)
+#define PIPE_LAYER                  (AREA_LAYER+0.5)
+#define WIRE_LAYER                  (AREA_LAYER+0.6)
+#define WIRE_TERMINAL_LAYER         (AREA_LAYER+0.7)
+#define ATMOS_LAYER                 (AREA_LAYER+0.8)  /// Pipe-like atmos machinery that goes on the floor, like filters.
+#define BELOW_TURF_LAYER            (AREA_LAYER+0.9)  /// Above stuff like pipes and wires.
+
+//? ABOVE PLATING
+
+#define WATER_FLOOR_LAYER           (TURF_LAYER)      /// The 'bottom' of water tiles.
+#define FLOOR_DECAL_LAYER           (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
+
+//? ABOVE FLOOR
+
+#define DECAL_LAYER                 (TURF_LAYER+0.03)  /// For intentionally placed floor decal overlays.
+#define TURF_DAMAGE_LAYER           (TURF_LAYER+0.035) /// Layer at which turf damage overlays are placed.
+#define TURF_AO_LAYER               (TURF_LAYER+0.04)  /// Ambient Occlusion layer.
+#define EDGE_LAYER                  (TURF_LAYER+0.05)  /// Floor edge overlay layer.
+#define EXPOSED_PIPE_LAYER          (TURF_LAYER+0.06)
+#define EXPOSED_WIRE_LAYER          (TURF_LAYER+0.07)
+#define EXPOSED_WIRE_TERMINAL_LAYER (TURF_LAYER+0.08)
+#define EXPOSED_ATMOS_LAYER         (TURF_LAYER+0.09)  /// Pipe-like atmos machinery that goes on the floor, like filters.
+#define CATWALK_LAYER               (TURF_LAYER+0.10)
+#define PLANT_LAYER                 (TURF_LAYER+0.12)
+
+//? HIDING MOB
+
+#define HIDING_LAYER                (TURF_LAYER+0.14) /// Layer at which mobs hide to be under things like tables.
+#define UNDERWATER_LAYER            (TURF_LAYER+0.15) /// Anything on this layer will render under the water layer.
+
+#define BELOW_OBJ_LAYER             (TURF_LAYER+0.90)
+
 //! Turf/Obj layer boundary
-#define WATER_LAYER         (OBJ_LAYER)       /// Layer for water overlays.
-#define ABOVE_TURF_LAYER    (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
+
+#define WATER_LAYER                 (OBJ_LAYER)      /// Layer for water overlays.
+#define ABOVE_TURF_LAYER            (OBJ_LAYER+0.1)  /// Snow and wallmounted/floormounted equipment.
+
+//! Obj/Mob layer boundary
+
+#define MIMICED_LIGHTING_LAYER      (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
+
 
 /**
  *! -- Obj Plane
@@ -152,12 +168,13 @@
 
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
-#define HIDING_LAYER       (TURF_LAYER+0.6) /// Layer at which mobs hide to be under things like tables.
 #define DOOR_OPEN_LAYER    (TURF_LAYER+0.7) /// Under all objects if opened. 2.7 due to tables being at 2.6.
 #define TABLE_LAYER        (TURF_LAYER+0.8) /// Just under stuff that wants to be slightly below common objects.
 #define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
 #define UNDER_JUNK_LAYER   (TURF_LAYER+0.9) /// Things that want to be slightly below common objects.
+
 //! Turf/Obj layer boundary
+
 #define ABOVE_JUNK_LAYER   (OBJ_LAYER+0.1) /// Things that want to be slightly above common objects.
 #define DOOR_CLOSED_LAYER  (OBJ_LAYER+0.1) /// Doors when closed.
 #define WINDOW_LAYER       (OBJ_LAYER+0.2) /// Windows.
@@ -220,21 +237,36 @@
  */
 #define PLANE_PLANETLIGHTING 4
 
+
 /**
- * Emissives
+ *! -- Emissive Blocker Plane
  */
 #define EMISSIVE_BLOCKER_PLANE 7
-#define EMISSIVE_BLOCKER_LAYER 12
+
 #define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
 
+#define EMISSIVE_BLOCKER_LAYER 12
+
+
+/**
+ *! -- Emissives Plane
+ */
 #define EMISSIVE_PLANE 8
+
 #define EMISSIVE_LAYER 13
 
+
+/**
+ *! -- Unblockable Emissives Plane
+ */
 #define EMISSIVE_UNBLOCKABLE_PLANE 9
-#define EMISSIVE_UNBLOCKABLE_LAYER 14
-#define EMISSIVE_LAYER_UNBLOCKABLE 14
+
 #define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
 #define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+
+#define EMISSIVE_UNBLOCKABLE_LAYER 14
+#define EMISSIVE_LAYER_UNBLOCKABLE 14
+
 
 /**
  *! -- Lighting Plane

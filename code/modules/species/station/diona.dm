@@ -1,8 +1,9 @@
 
 /datum/species/diona
+	uid = SPECIES_ID_DIONA
+	id = SPECIES_ID_DIONA
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
-	uid = SPECIES_ID_DIONA
 	//primitive_form = "Nymph"
 
 	icobase      = 'icons/mob/species/diona/body.dmi'
@@ -28,7 +29,6 @@
 
 	max_age = 300
 
-	economic_modifier = 4
 
 	blurb = {"
 	Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective
@@ -133,8 +133,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		H.verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		H.verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(H, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(H, /mob/living/carbon/human/proc/regenerate)
 
 		return
 

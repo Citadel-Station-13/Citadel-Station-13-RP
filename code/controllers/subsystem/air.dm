@@ -35,6 +35,27 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
+/datum/controller/subsystem/air/stat_entry()
+	var/list/msg = list()
+	msg += "S:[current_step ? part_names[current_step] : ""] "
+	msg += "C:{"
+	msg += "T [round(cost_turfs, 1)] | "
+	msg += "E [round(cost_edges, 1)] | "
+	msg += "F [round(cost_firezones, 1)] | "
+	msg += "H [round(cost_hotspots, 1)] | "
+	msg += "Z [round(cost_zones, 1)] "
+	msg += "}"
+	msg += "Z: [zones.len] "
+	msg += "E: [edges.len] "
+	msg += "Cycle: [current_cycle] {"
+	msg += "T [tiles_to_update.len] | "
+	msg += "E [active_edges.len] | "
+	msg += "F [active_fire_zones.len] | "
+	msg += "H [active_hotspots.len] | "
+	msg += "Z [zones_to_update.len] "
+	msg += "}"
+	return ..() + " [msg.Join()]"
+
 /datum/controller/subsystem/air/PreInit(recovering)
 	air_master = src
 
@@ -52,7 +73,7 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/Initialize(timeofday)
 #ifndef FASTBOOT_DISABLE_ZONES
-	report_progress("Processing Geometry...")
+	report_progress("Initializing [name] subsystem...")
 
 	current_cycle = 0
 	var/simulated_turf_count = 0
@@ -60,20 +81,6 @@ SUBSYSTEM_DEF(air)
 		simulated_turf_count++
 		S.update_air_properties()
 		CHECK_TICK
-
-	// var/to_send = "<blockquote class ='info'>"
-	var/to_send = ""
-	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
-	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
-	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
-	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
-	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
-	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
-	// to_send += SPAN_DEBUGINFO("</blockquote>")
-
-	to_send = SPAN_BLOCKQUOTE(JOINTEXT(to_send), "info")
-
-	admin_notice(to_send, R_DEBUG)
 
 	// Note - Baystation settles the air by running for one tick.  We prefer to not have active edges.
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
@@ -87,10 +94,28 @@ SUBSYSTEM_DEF(air)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
 		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 		startup_active_edge_log = edge_log.Copy()
+
+	//! Fancy blockquote of data.
+	var/time = (REALTIMEOFDAY - timeofday) / 10
+	var/list/blockquote_data = list(
+		SPAN_BOLDANNOUNCE("Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!<hr>"),
+		SPAN_DEBUGINFO("<b>Total Zones:</b> [zones.len]"),
+		SPAN_DEBUGINFO("\n<b>Total Edges:</b> [edges.len]"),
+		SPAN_DEBUGINFO("\n<b>Total Active Edges:</b> [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]"),
+		SPAN_DEBUGINFO("\n<b>Total Simulated Turfs:</b> [simulated_turf_count]"),
+		SPAN_DEBUGINFO("\n<b>Total Unsimulated Turfs:</b> [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+	)
+
+	to_chat(
+		target = world,
+		html   = SPAN_BLOCKQUOTE(JOINTEXT(blockquote_data), "info"),
+		type   = MESSAGE_TYPE_DEBUG,
+	)
+
 #endif
 	return ..()
 
-/datum/controller/subsystem/air/fire(resumed = 0)
+/datum/controller/subsystem/air/fire(resumed = FALSE)
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
@@ -237,27 +262,6 @@ SUBSYSTEM_DEF(air)
 			zone.needs_update = 0
 		if(MC_TICK_CHECK)
 			return
-
-/datum/controller/subsystem/air/stat_entry(msg_prefix)
-	var/list/msg = list(msg_prefix)
-	msg += "S:[current_step ? part_names[current_step] : ""] "
-	msg += "C:{"
-	msg += "T [round(cost_turfs, 1)] | "
-	msg += "E [round(cost_edges, 1)] | "
-	msg += "F [round(cost_firezones, 1)] | "
-	msg += "H [round(cost_hotspots, 1)] | "
-	msg += "Z [round(cost_zones, 1)] "
-	msg += "}"
-	msg += "Z: [zones.len] "
-	msg += "E: [edges.len] "
-	msg += "Cycle: [current_cycle] {"
-	msg += "T [tiles_to_update.len] | "
-	msg += "E [active_edges.len] | "
-	msg += "F [active_fire_zones.len] | "
-	msg += "H [active_hotspots.len] | "
-	msg += "Z [zones_to_update.len] "
-	msg += "}"
-	..(msg.Join())
 
 // ZAS might displace objects as the map loads if an air tick is processed mid-load.
 /datum/controller/subsystem/air/StartLoadingMap(var/quiet = TRUE)

@@ -10,21 +10,21 @@
 
 //? Only defaults are defined for the above reasons.
 /// default falloff
-#define RAD_FALLOFF_NORMAL 0.5
+#define RAD_FALLOFF_NORMAL 0.75
 /// default falloff for contaminated objects
-#define RAD_FALLOFF_CONTAMINATION_NORMAL 2
+#define RAD_FALLOFF_CONTAMINATION_NORMAL 1.25
 /// default falloff for anomalies
-#define RAD_FALLOFF_ANOMALY 0.33
+#define RAD_FALLOFF_ANOMALY 0.5
 /// default falloff for smashed anomalies
-#define RAD_FALLOFF_ANOMALY_SHARDS 0.25
+#define RAD_FALLOFF_ANOMALY_SHARDS 0.33
 /// fission engine
-#define RAD_FALLOFF_ENGINE_FISSION 0.5
+#define RAD_FALLOFF_ENGINE_FISSION 0.75
 /// fusion engine
-#define RAD_FALLOFF_ENGINE_FUSION 0.5
+#define RAD_FALLOFF_ENGINE_FUSION 0.75
 /// supermatter
-#define RAD_FALLOFF_ENGINE_SUPERMATTER 0.5
+#define RAD_FALLOFF_ENGINE_SUPERMATTER 0.75
 /// singulo
-#define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
+#define RAD_FALLOFF_ENGINE_SINGULARITY 0.75
 
 //! Pulse - Z Falloff
 //* Keep in mind that these are low because things are usually really far away and the point of Z rad is to hit most things.

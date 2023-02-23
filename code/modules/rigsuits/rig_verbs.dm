@@ -1,3 +1,11 @@
+/obj/item/rig/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	user?.client?.queue_legacy_verb_update()
+
+/obj/item/rig/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	user?.client?.queue_legacy_verb_update()
+
 // Interface for humans.
 /obj/item/rig/verb/hardsuit_interface()
 

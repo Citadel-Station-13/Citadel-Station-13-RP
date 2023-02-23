@@ -327,7 +327,7 @@
 	icon_state = "1-4"
 	},
 /obj/item/storage/box/beanbags/large,
-/obj/item/gun/projectile/shotgun/pump/combat{
+/obj/item/gun/ballistic/shotgun/pump/combat{
 	desc = "When words don't strike hard enough.";
 	name = "Solid Argument"
 	},

@@ -65,7 +65,7 @@
 	floor_markings = image('icons/obj/machines/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
-	// floor_markings.layer = DECAL_LAYER
+	// floor_markings.layer = FLOOR_DECAL_LAYER
 	update_icon()
 
 /obj/machinery/station_map/attack_hand(var/mob/user)

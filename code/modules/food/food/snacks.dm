@@ -47,7 +47,15 @@
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	attempt_feed(target, user)
+
+/obj/item/reagent_containers/food/snacks/proc/attempt_feed(mob/living/M, mob/living/user)
+	if(!istype(M) || !istype(user))
+		return
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
@@ -1395,6 +1403,20 @@
 
 /obj/item/reagent_containers/food/snacks/cheesiehonkers/Initialize(mapload)
 	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+	name = "Hot Cheesie Honkers"
+	icon_state = "hot_cheesie_honkers"
+	desc = "Explosively spicy cheesie honkers! Warning, don't eat more than two bags in one go, we are not responsible for tongue-melting incidents."
+	trash = /obj/item/trash/hot_cheesie
+	filling_color = "#ff6905"
+	nutriment_amt = 6
+	nutriment_desc = list("cheese" = 5, "chips" = 2, "chilli peppers" = 2)
+
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("capsaicin", 2)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/syndicake // Buff 4 >> 5 (Contains Dr.'s Delight already

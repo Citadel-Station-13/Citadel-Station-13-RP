@@ -19,7 +19,7 @@
 
 	var/toxicity = 1//factor of toxin damage dealt by improper application
 
-/datum/reagent/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/topical/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
@@ -123,7 +123,7 @@
 		M.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
 
-/datum/reagent/topical/neurolaze/overdose(var/mob/living/carbon/M, var/alien)
+/datum/reagent/topical/neurolaze/overdose(mob/living/carbon/M, alien)
 	if(alien != IS_DIONA)
 		M.adjustBrainLoss(0.1)//deals braindamage on overdose
 

@@ -1,101 +1,98 @@
 /**
  * generates damage overlays
  */
-/proc/generate_wall_damage_overlays()
-	// arbitrary, hardcoded number for now: 16
-	var/amt = 16
-	var/alpha_inc = 256 / 16
-	var/list/generated = list()
-	generated.len = amt
-	. = generated
-	for(var/i in 1 to 16)
-		var/image/I = image(icon = 'icons/turf/wall/damage_masks.dmi', icon_state = "overlay_damage")
-		I.blend_mode = BLEND_MULTIPLY
-		I.alpha = (i * alpha_inc) - 1
-		generated[i] = I
+/turf/simulated/wall/proc/generate_wall_damage_overlays()
+	var/alpha_inc = 256 / damage_overlays.len
 
-// funny thing
-// we nowadays hijack tg's smoothing for our own purposes.
-// we can be faster with entirely our own code but this is more generic.
+	for(var/i = 1; i <= damage_overlays.len; i++)
+		var/image/img = image(icon = 'icons/turf/walls/damage_masks.dmi', icon_state = "overlay_damage")
+		img.blend_mode = BLEND_MULTIPLY
+		img.alpha = (i * alpha_inc) - 1
+		damage_overlays[i] = img
 
-// overridden find type
-/turf/simulated/wall/find_type_in_direction(direction)
-	if(!material)
-		return NO_ADJ_FOUND
-	var/turf/simulated/wall/T = get_step(src, direction)
-	if(!T)
-		return NULLTURF_BORDER
-	return (istype(T) && (material.icon_base == T.material?.icon_base))? ADJ_FOUND : NO_ADJ_FOUND
 
-/turf/simulated/wall/custom_smooth(dirs)
-	smoothing_junction = dirs
-	update_icon()
+/turf/simulated/wall/proc/get_wall_icon()
+	. = (istype(material) && material.icon_base) || 'icons/turf/walls/solid.dmi'
 
-/turf/simulated/wall/update_overlays()
-	// materrialless walls don't use this system.
-	if(!material)
-		return ..()
 
-	cut_overlays()
+/turf/simulated/wall/proc/apply_reinf_overlay()
+	. = istype(reinf_material)
 
-	var/image/I
+
+/turf/simulated/wall/update_appearance(updates)
+	. = ..()
+	if(!istype(material))
+		return
+
+	color = material.icon_colour
+
+
+/turf/simulated/wall/update_icon()
+	. = ..()
+
+	if(icon == initial(icon))
+		icon = get_wall_icon()
+
+
+/turf/simulated/wall/update_icon_state()
+	. = ..()
 
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
-		I = image('icons/turf/wall_masks.dmi', "[material.icon_base]fwall_open")
-		I.color = material.icon_colour
-		add_overlay(I)
-		return ..()
+		cached_wall_state = icon_state
+		icon_state = "fwall_open"
+	else if(icon_state == "fwall_open")
+		icon_state = cached_wall_state
 
-	// modern smoothiing when
-	// sigh
-	// i need to learn how to use the icon cutter
-	// anyways, 1 to 4 means NORTH SOUTH EAST WEST
-	var/dir
-	var/state
-	if(reinf_material)
-		// normal and reinf
-		if(construction_stage != null && construction_stage < 6)
-			I = image('icons/turf/wall_masks.dmi', "reinf_construct-[construction_stage]")
-			I.color = reinf_material.icon_colour
-			add_overlay(I)
-		if(reinf_material.icon_reinf_directionals)
-			for(var/i in 0 to 3)
-				state = get_corner_state_using_junctions(i)
-				dir = (1<<i)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][state]", dir = dir)
-				I.color = material.icon_colour
-				add_overlay(I)
-				I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][state]", dir = dir)
-				I.color = material.icon_colour
-				add_overlay(I)
+
+/turf/simulated/wall/update_overlays()
+	. = ..()
+
+	if(!damage_overlays[1]) // Our list hasn't been populated yet.
+		generate_wall_damage_overlays()
+
+	if(!istype(reinf_material))
+		return
+
+	// handle fakewalls
+	// TODO: MAKE FAKEWALLS NOT TURFS WTF
+	if(!density)
+		return
+
+
+	//! Wall Overlays
+	if (apply_reinf_overlay())
+		// Reinforcement Construction
+		if (construction_stage != null && construction_stage < 6)
+			var/image/appearance = image('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]")
+			appearance.appearance_flags = RESET_COLOR
+			appearance.color = reinf_material.icon_colour
+			. += appearance
+
+		// Directional Reinforcements.
+		else if(reinf_material.icon_reinf_directionals)
+			var/image/appearance = image(reinf_material.icon_reinf, icon_state)
+			appearance.appearance_flags = RESET_COLOR
+			appearance.color = reinf_material.icon_colour
+			. += appearance
+
+		// Standard Reinforcements.
 		else
-			for(var/i in 0 to 3)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
-				I.color = material.icon_colour
-				add_overlay(I)
-		I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
-		I.color = reinf_material.icon_colour
-		add_overlay(I)
-	else
-		// just normal
-		for(var/i in 0 to 3)
-			I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
-			I.color = material.icon_colour
-			add_overlay(I)
+			var/image/appearance = image(reinf_material.icon_reinf, "reinforced")
+			appearance.appearance_flags = RESET_COLOR
+			appearance.color = reinf_material.icon_colour
+			. += appearance
 
 	// handle damage overlays
-	if(damage != 0)
+	if (damage != 0)
 		var/integrity = material.integrity
-		if(reinf_material)
+		if (reinf_material)
 			integrity += reinf_material.integrity
 
 		var/overlay = round(damage / integrity * damage_overlays.len) + 1
-		if(overlay > damage_overlays.len)
+		if (overlay > damage_overlays.len)
 			overlay = damage_overlays.len
 
-		add_overlay(damage_overlays[overlay])
-
-	// ..() has to be last to prevent trampling managed overlays
-	return ..()
+		damage_overlay = damage_overlays[overlay]
+		. += damage_overlay

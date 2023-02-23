@@ -255,6 +255,24 @@
 	desc = "A fur lined green coat. Wearing this makes you feel slightly more charitable."
 	icon_state = "christmascoatg"
 
+/obj/item/clothing/suit/banana
+	name = "banana suit"
+	desc = "There was a period in Old Earth history where this costume was seen as the peak of comedy."
+	icon = 'icons/clothing/suit/costume/banana.dmi'
+	icon_state = "bananasuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/assassin
+	name = "hashashin costume"
+	desc = "Much like their namesake, modern wearers of this outfit tend to overindulge on hashish."
+	icon = 'icons/clothing/suit/costume/assassin.dmi'
+	icon_state = "assassin"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /*
  * Misc
  */
@@ -293,6 +311,16 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat") //placeholder -S2-
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/nerdshirt
+	name = "nerdy shirt"
+	desc = "A comfy white t-shirt with a picture of a cartoon hedgehog on it. Although clean, it still seems like the wearer should be embarrassed for owning it."
+	icon = 'icons/clothing/suit/misc/nerdshirt.dmi'
+	icon_state = "nerdshirt"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat") //placeholder -S2-
+	body_parts_covered = UPPER_TORSO|ARMS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/kimono
 	name = "kimono"
@@ -367,7 +395,7 @@
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat appears to have its kevlar lining removed."
 	icon_state = "detective"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/trench/grey
@@ -389,7 +417,7 @@
 	desc = "A duster commonly seen on cowboys from Earth's late 1800's."
 	icon_state = "duster"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/cardigan
@@ -412,7 +440,7 @@
 	desc = "A sleek black trenchcoat, paired with a stylish red scarf. Worn either by the coolest, or the weirdest."
 	icon_state = "gothcoat"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_blue
@@ -420,7 +448,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is blue, which is not what the ocean's color is anymore."
 	icon_state = "blue_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_brown
@@ -428,7 +456,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is brown, which makes you feel like you're back in the rust-colored oceans."
 	icon_state = "brown_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/navy_coat_green
@@ -436,7 +464,7 @@
 	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is green, like the 'vegan rations' you were dared to eat. It was actually bottom-deck gunk. It smelled nicer than this coat."
 	icon_state = "green_navy_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/stripe_jacket
@@ -444,7 +472,7 @@
 	desc = "A high collar, a gaudy stripe, clasps that don't actually work. All the ingredients to a fashionable clown! Trust me, they are /definitely/ laughing at your jokes, and not you."
 	icon_state = "stripe_jacket"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 /*
  * stripper
@@ -551,7 +579,7 @@
 	desc = "A thick, well-worn WW2 leather bomber jacket."
 	icon_state = "bomber"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|ARMS
@@ -573,7 +601,7 @@
 	name = "leather jacket"
 	desc = "A black leather coat."
 	icon_state = "leather_jacket"
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 
@@ -956,7 +984,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	allowed = list (/obj/item/gun/projectile/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 
 /obj/item/clothing/suit/storage/snowsuit/command
 	name = "command snowsuit"
@@ -1041,7 +1069,7 @@
 				/obj/item/tank/emergency/oxygen,
 				/obj/item/flashlight,
 				/obj/item/gun/energy,
-				/obj/item/gun/projectile,
+				/obj/item/gun/ballistic,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/storage/fancy/shotgun_ammo,
@@ -1099,7 +1127,7 @@
 				/obj/item/tank/emergency/oxygen,
 				/obj/item/flashlight,
 				/obj/item/gun/energy,
-				/obj/item/gun/projectile,
+				/obj/item/gun/ballistic,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/storage/fancy/shotgun_ammo,
@@ -1172,6 +1200,20 @@
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_UTILITY)
+
+/obj/item/clothing/suit/ashen_vestment
+	name = "ashen vestments"
+	desc = "These flowing red robes mark the wearer as a member of the Scori Priesthood. Lightweight and well ventilated, the edges of the fabric are stained with ash."
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "archon_robe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/ashen_tabard
+	name = "ashen tabard"
+	desc = "This style of tabard is sometimes worn by Scori Guardians when not on duty. Other unidentified Scori have been seen wearing them, making the tabard's true significance unclear."
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "crimson_tabard"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Main's Formal Coats
 /obj/item/clothing/suit/storage/parade_coat
@@ -1251,3 +1293,17 @@
 	name = "Half Moon Jacket"
 	desc = "Lightweight and fashionable, this low-profile jacket blends in while still making a statement. Its stark coloration is reminiscent of Luna."
 	icon_state = "half_moon"
+
+/obj/item/clothing/suit/storage/hobo
+	name = "ragged coat"
+	desc = "Although hopping trains is no longer en vogue, the Frontier has its fill of vagabonds and drifters. Many are stuck wearing the clothes they first brought with them."
+	icon = 'icons/clothing/suit/misc/hobo.dmi'
+	icon_state = "hobocoat"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/kamina
+	name = "spiral hero cloak"
+	desc = "Don't believe in yourself. Believe in the me that believes in you."
+	icon = 'icons/clothing/uniform/costume/spiral.dmi'
+	icon_state = "kaminacape"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

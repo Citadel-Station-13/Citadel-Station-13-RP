@@ -29696,8 +29696,8 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/obj/item/gun/projectile/revolver/capgun,
-/obj/item/gun/projectile/revolver/capgun,
+/obj/item/gun/ballistic/revolver/capgun,
+/obj/item/gun/ballistic/revolver/capgun,
 /obj/item/toy/cultsword,
 /obj/item/toy/cultsword,
 /obj/item/bikehorn/rubberducky,
@@ -30420,7 +30420,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/storage/box/beanbags,
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/paper{
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"

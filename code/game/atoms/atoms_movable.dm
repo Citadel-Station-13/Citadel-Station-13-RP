@@ -141,13 +141,15 @@
 
 /atom/movable/Initialize(mapload)
 	. = ..()
+	if (!mapload && loc)
+		loc.Entered(src, null)
 	switch(blocks_emissive)
 		if(EMISSIVE_BLOCK_GENERIC)
 			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
 			gen_emissive_blocker.color = GLOB.em_block_color
 			gen_emissive_blocker.dir = dir
 			gen_emissive_blocker.appearance_flags |= appearance_flags
-			add_overlay(list(gen_emissive_blocker))
+			add_overlay(gen_emissive_blocker)
 		if(EMISSIVE_BLOCK_UNIQUE)
 			add_emissive_blocker()
 
@@ -163,10 +165,16 @@
 	// kick perspectives before moving
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
+
 	throwing?.terminate()
 	if(pulling)
 		stop_pulling()
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
 	. = ..()
+
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
@@ -404,6 +412,7 @@
 	// no mouse opacity
 	name = ""
 	var/atom/movable/master
+	SET_APPEARANCE_FLAGS(RESET_COLOR | RESET_ALPHA | PIXEL_SCALE | TILE_BOUND)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()
@@ -525,3 +534,9 @@
 	em_render = null
 
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/atom/movable/proc/is_avoiding_ground()
+    return (movement_type != GROUND) || throwing

@@ -123,10 +123,6 @@ var/const/tk_maxrange = 15
 		last_throw = world.time
 	return
 
-/obj/item/tk_grab/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
-	return
-
-
 /obj/item/tk_grab/proc/focus_object(var/obj/target, var/mob/living/user)
 	if(!istype(target,/obj))	return//Cant throw non objects atm might let it do mobs later
 	if(target.anchored || !isturf(target.loc))
@@ -155,5 +151,4 @@ var/const/tk_maxrange = 15
 /obj/item/tk_grab/update_icon()
 	cut_overlays()
 	if(focus && focus.icon && focus.icon_state)
-		add_overlay(icon(focus.icon,focus.icon_state))
-	return
+		add_overlay(image(focus.icon,focus.icon_state))

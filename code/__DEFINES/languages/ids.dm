@@ -70,6 +70,8 @@
 #define LANGUAGE_ID_VULPKANIN "vulpkanin"
 /// zaddat
 #define LANGUAGE_ID_ZADDAT "zaddat"
+/// scori
+#define LANGUAGE_ID_SCORI "scori"
 
 //? Antagonist
 #define LANGUAGE_ID_CHANGELING "changeling"

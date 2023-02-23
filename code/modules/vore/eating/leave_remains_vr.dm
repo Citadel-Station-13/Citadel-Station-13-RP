@@ -3,7 +3,7 @@
 	if(istype(M,/mob/living/carbon/human))	//Are we even humanoid?
 		var/mob/living/carbon/human/H = M
 
-		if((H.species.name in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
+		if((H.species.get_species_id() in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
 			return
 
 		else

@@ -1,5 +1,5 @@
 /datum/outfit/spec_op_officer
-	name = "Special ops - Officer"
+	name = "Special Ops - Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	suit = /obj/item/clothing/suit/armor/swat/officer
 	l_ear = /obj/item/radio/headset/ert
@@ -17,7 +17,7 @@
 	id_pda_assignment = "Special Operations Officer"
 
 /datum/outfit/spec_op_officer/space
-	name = "Special ops - Officer in space"
+	name = "Special Ops - Officer in Space"
 	suit = /obj/item/clothing/suit/armor/swat	//obj/item/clothing/suit/space/void/swat
 	back = /obj/item/tank/jetpack/oxygen
 	mask = /obj/item/clothing/mask/gas/swat
@@ -25,12 +25,12 @@
 	flags = OUTFIT_HAS_JETPACK
 
 /datum/outfit/ert
-	name = "Spec ops - Emergency response team"
+	name = "Spec Ops - Emergency Response Team"
 	uniform = /obj/item/clothing/under/ert
 	shoes = /obj/item/clothing/shoes/boots/swat
 	gloves = /obj/item/clothing/gloves/swat
 	l_ear = /obj/item/radio/headset/ert
-	belt = /obj/item/gun/energy/gun
+	belt = /obj/item/gun/energy/gun/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	back = /obj/item/storage/backpack/satchel
 
@@ -38,21 +38,21 @@
 	id_type = /obj/item/card/id/centcom/ERT
 
 /datum/outfit/death_command
-	name = "Spec ops - Death commando"
+	name = "Spec Ops - Death Commando"
 
 /datum/outfit/death_command/equip(var/mob/living/carbon/human/H)
 	deathsquad.equip(H)
 	return 1
 
 /datum/outfit/syndicate_command
-	name = "Spec ops - Syndicate commando"
+	name = "Spec ops - Syndicate Commando"
 
 /datum/outfit/syndicate_command/equip(var/mob/living/carbon/human/H)
 	commandos.equip(H)
 	return 1
 
 /datum/outfit/mercenary
-	name = "Spec ops - Mercenary"
+	name = "Spec Ops - Mercenary"
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/boots/combat
 	l_ear = /obj/item/radio/headset/syndicate
@@ -69,7 +69,7 @@
 	flags = OUTFIT_HAS_BACKPACK
 
 /datum/outfit/PARA
-	name = "Spec ops - PARA"
+	name = "Spec Ops - PARA"
 	uniform = /obj/item/clothing/under/para
 	suit = /obj/item/clothing/suit/armor/vest/para
 	shoes = /obj/item/clothing/shoes/boots/swat/para

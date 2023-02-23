@@ -11,6 +11,8 @@
 		LANGUAGE_ID_UNATHI,
 		LANGUAGE_ID_NARAMADI
 	)
+	language_amount_mod = -1
+	economy_payscale = 1.2
 
 /datum/lore/character_background/origin/hegemony/naramadi/nameless
 	name = "Nameless"
@@ -22,6 +24,8 @@
 		LANGUAGE_ID_NARAMADI,
 		LANGUAGE_ID_UNATHI
 	)
+	language_amount_mod = -1
+	economy_payscale = 1.05
 
 /datum/lore/character_background/origin/hegemony/naramadi/exiles
 	name = "Naramadi Exiles"
@@ -36,3 +40,4 @@
 	innate_languages = list(
 		LANGUAGE_ID_NARAMADI
 	)
+	economy_payscale = 0.95

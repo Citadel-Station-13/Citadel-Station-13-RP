@@ -1,6 +1,7 @@
 /datum/species/alraune
-	name = SPECIES_ALRAUNE
 	uid = SPECIES_ID_ALRAUNE
+	id = SPECIES_ID_ALRAUNE
+	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
@@ -342,6 +343,7 @@
 	set name = "Select Fruit"
 	set desc = "Select what fruit/vegetable you wish to grow."
 	set category = "Abilities"
+
 	var/obj/item/organ/internal/fruitgland/fruit_gland
 	for(var/F in contents)
 		if(istype(F, /obj/item/organ/internal/fruitgland))
@@ -352,13 +354,11 @@
 		var/selection = input(src, "Choose your character's fruit type. Choosing nothing will result in a default of apples.", "Fruit Type", fruit_gland.fruit_type) as null|anything in acceptable_fruit_types
 		if(selection)
 			fruit_gland.fruit_type = selection
-		verbs |= /mob/living/carbon/human/proc/alraune_fruit_pick
-		verbs -= /mob/living/carbon/human/proc/alraune_fruit_select
+		add_verb(src, /mob/living/carbon/human/proc/alraune_fruit_pick)
+		remove_verb(src, /mob/living/carbon/human/proc/alraune_fruit_select)
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
-
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))
-		return
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"

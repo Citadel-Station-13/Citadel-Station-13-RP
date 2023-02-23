@@ -1,5 +1,6 @@
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
+	id = SPECIES_ID_TAJARAN
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
 	category = "Tajaran"
@@ -37,7 +38,6 @@
 
 	max_age = 80
 
-	economic_modifier = 10
 
 	blurb = {"
 	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.

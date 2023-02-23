@@ -178,7 +178,7 @@
 
 //Note: external organs have their own version of this proc
 /obj/item/organ/take_damage(amount, var/silent=0)
-	ASSERT(amount > 0)
+	ASSERT(amount >= 0)
 	if(src.robotic >= ORGAN_ROBOT)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
 	else
@@ -631,11 +631,11 @@
 
 	if(!removed && organ_verbs && check_verb_compatability())
 		for(var/verb_path in organ_verbs)
-			owner.verbs |= verb_path
+			add_verb(owner, verb_path)
 	else if(organ_verbs)
 		for(var/verb_path in organ_verbs)
 			if(!(verb_path in save_verbs))
-				owner.verbs -= verb_path
+				remove_verb(owner, verb_path)
 	return
 
 /// Called when processed.

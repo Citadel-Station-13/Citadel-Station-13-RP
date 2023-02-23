@@ -122,7 +122,7 @@
 
 		// SHRIEK VOXXY ONLY
 		if ("shriekloud")
-			if(src.species.name != SPECIES_VOX)
+			if(src.species.get_species_id() != SPECIES_ID_VOX)
 				to_chat(src, "<span class='warning'>You aren't ear piercingly vocal enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/shrieksneeze.ogg', 50, 0)
@@ -130,7 +130,7 @@
 			m_type = 1
 
 		if ("shriekshort")
-			if(src.species.name != SPECIES_VOX)
+			if(src.species.get_species_id() != SPECIES_ID_VOX)
 				to_chat(src, "<span class='warning'>You aren't noisy enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/shriekcough.ogg', 50, 0)
@@ -139,7 +139,7 @@
 
 		// SQUID GAMES
 		if ("achime")
-			if(src.species.name != SPECIES_ADHERENT)
+			if(src.species.get_species_id() != SPECIES_ID_ADHERENT)
 				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
 				return
 			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
@@ -148,7 +148,7 @@
 
 		//Xenomorph Hybrid
 		if("xhiss")
-			if(src.species.name != SPECIES_XENOHYBRID)
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
@@ -156,7 +156,7 @@
 			m_type = 2
 
 		if("xroar")
-			if(src.species.name != SPECIES_XENOHYBRID)
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
@@ -164,7 +164,7 @@
 			m_type = 2
 
 		if("xgrowl")
-			if(src.species.name != SPECIES_XENOHYBRID)
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
@@ -172,7 +172,7 @@
 			m_type = 2
 
 		if("xkiss")
-			if(src.species.name != SPECIES_XENOHYBRID)
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			var/M = null

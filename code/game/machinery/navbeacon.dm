@@ -8,7 +8,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	icon_state = "navbeacon0-f"
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
