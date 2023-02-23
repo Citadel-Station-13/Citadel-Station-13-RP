@@ -4983,7 +4983,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "ajF" = (
-/obj/item/material/ashtray/glass,
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -15488,13 +15487,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
-"aFr" = (
-/obj/item/material/ashtray/glass,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "aFs" = (
 /turf/simulated/wall/r_wall,
 /area/ai_cyborg_station)
@@ -16044,7 +16036,6 @@
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
 "aGB" = (
-/obj/item/material/ashtray/glass,
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle{
 	pixel_x = -16
@@ -20564,6 +20555,12 @@
 /obj/item/flame/lighter/zippo,
 /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
 /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
+/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aQb" = (
@@ -37677,7 +37674,7 @@ aZx
 aSR
 aPR
 aPR
-aFr
+aPR
 aPR
 adN
 aZm
