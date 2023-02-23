@@ -22,7 +22,7 @@
 
 	//? time
 	/// do we canonically go off galactic time? this has nothing to do with our actual ticking
-	var/use_galactic_time =
+	var/use_galactic_time = TRUE
 	/// seconds in a day
 	var/seconds_in_day = HOURS_TO_SECONDS(24)
 	/// arbitrary seconds to offset by

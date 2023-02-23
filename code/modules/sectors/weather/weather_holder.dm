@@ -14,7 +14,13 @@
 	//? transitions
 	/// next weather transition
 	var/next_transition
-	/// weather instances
+	/// weather instances by path - these are typepaths, init'd on holder init.
+	/// we don't globally cache weather so vv and modifications are easy.
+	var/list/weather_datums
+	/// transition chances: path = list(otherpath = chance, otherpath = chance), ...
+	/// this must work with pickweight
+	//  todo: unit test that weather_datums contains everything in here.
+	var/list/weather_transitions
 
 	//? visuals
 

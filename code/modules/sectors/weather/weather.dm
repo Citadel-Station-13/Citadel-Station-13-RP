@@ -36,9 +36,6 @@
 	var/duration_deviation
 	#warn hook
 
-	//? transition / procgen
-	#warn impl
-
 	//? temperature
 	/// current temperature mod - if temp low/high aren't set we use this
 	var/temp_mod = 0
@@ -121,7 +118,7 @@
 	var/sky_cover = FALSE
 	/// obscuration level - if below sector cycle level, anything above us is obscured.
 	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT_OBSCURE
-	/// what the person sees when we're obscuring sky
+	/// what the person sees when they look up; this is if we're not blocked.
 	var/sky_cover_message = "Some unknown meteorological phenomenom is obscuring your view."
 	#warn hook
 

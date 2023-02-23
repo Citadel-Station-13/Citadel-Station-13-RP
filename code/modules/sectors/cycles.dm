@@ -122,7 +122,7 @@
 		}
 	)
 	sky_visible = TRUE
-	sky_desc = "Some sort of horrible entity hangs in the sky."
+	sky_desc = "[SPAN_DANGER("Run.")]"
 
 /**
  * cycle stages

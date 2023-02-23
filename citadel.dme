@@ -241,7 +241,7 @@
 #include "code\__DEFINES\sectors\cycle.dm"
 #include "code\__DEFINES\sectors\moon.dm"
 #include "code\__DEFINES\sectors\planets.dm"
-#include "code\__DEFINES\sectors\weather.dm"
+#include "code\__DEFINES\sectors\sectors.dm"
 #include "code\__DEFINES\sound\alias.dm"
 #include "code\__DEFINES\sound\ambience.dm"
 #include "code\__DEFINES\sound\channels.dm"
