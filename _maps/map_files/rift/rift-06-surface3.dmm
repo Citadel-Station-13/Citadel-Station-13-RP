@@ -3652,6 +3652,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/landmark/observer_spawn,
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "agP" = (
@@ -4086,6 +4088,9 @@
 	dir = 4;
 	name = "Bar";
 	sortType = "Bar"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -7057,7 +7062,9 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "anM" = (
@@ -7333,7 +7340,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -12062,9 +12068,14 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "axY" = (
-/obj/landmark/observer_spawn,
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/wood,
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/crew_quarters/bar)
 "axZ" = (
 /obj/structure/closet/chefcloset,
@@ -17437,7 +17448,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/machinery/holoplant,
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aJD" = (
@@ -20224,15 +20235,6 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
-"aPr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "aPs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -23142,14 +23144,16 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "aVu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aVv" = (
@@ -24729,9 +24733,14 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "aYK" = (
-/obj/machinery/media/jukebox,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/crew_quarters/bar)
 "aYL" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -25497,6 +25506,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
+"ehI" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/crew_quarters/bar)
 "els" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -25878,6 +25894,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
+"ltt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "lAm" = (
 /obj/structure/closet/gmcloset{
 	name = "formal wardrobe"
@@ -38643,8 +38668,8 @@ kkA
 aEp
 cSf
 aZm
-aZP
-aZm
+ltt
+ehI
 aZP
 aKI
 aFm
@@ -38837,7 +38862,7 @@ kkA
 aeJ
 kIf
 aZm
-aPr
+ltt
 aYK
 aoq
 anL
