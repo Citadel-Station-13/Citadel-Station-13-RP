@@ -28,7 +28,9 @@
 	/// tracking source tags to /datum/network_triangulation
 	var/list/triangulation
 	/// accuracy loss per decisecond
-	var/triangulation_falloff = 0.01
+	var/triangulation_falloff = 1 / 60
+	/// accuracy loss per tile
+	var/triangulation_stickyness = 5 / 20
 	/// triangulation efficiency multiplier
 	var/triangulation_efficiency = 1
 
@@ -177,15 +179,18 @@
 		entry.accuracy = round(max(world.maxx, world.maxy) / reduction_factor, 1)
 	else
 		// narrow down
+		var/time_falloff = max(world.time - entry.last_updated, 0) * triangulation_falloff
+		var/dist_falloff = entry.last_turf ? get_dist(entry.last_turf, location) * triangulation_stickyness : 0
 		entry.accuracy = min(
 			round(max(world.maxx, world.maxy) / reduction_factor, 1), // don't get worse than a first attempt
-			(entry.accuracy + (max(world.time - entry.last_updated, 0) * triangulation_falloff)) / reduction_factor
+			(entry.accuracy + time_falloff + dist_falloff) / reduction_factor
 		)
 
 	// update name
 	if(update_name)
 		entry.scan_name = update_name
 
+	entry.last_turf = location
 	entry.last_updated = world.time
 	entry.randomize(location)
 
@@ -215,6 +220,8 @@
 	var/accuracy
 	/// last update time
 	var/last_updated
+	/// last turf
+	var/turf/last_turf
 
 /datum/network_triangulation/proc/randomize(turf/real_loc)
 	var/angle = rand(0, 360)

@@ -186,14 +186,24 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
               selected={!!props.server.triangulating}
               onClick={() => act('toggle_triangulation')} />
           }>
-          {props.server.triangulation.sort((a, b) => { return a.last - b.last; }).map((data) => {
-            <Collapsible key={data.tag}>
-              Estimated location: {data.z} - {data.x} / {data.y}
-              Accuracy: ~{data.accuracy}m
-              Last voice pattern: {data.name}
-              Last response: {formatTime(data.last)}
-            </Collapsible>;
-          })}
+          {props.server.triangulation.sort((a, b) => (a.last - b.last)).map((data) => (
+            <Collapsible key={data.tag} title={data.name}>
+              <LabeledList>
+                <LabeledList.Item label="Estimated Location">
+                  {data.z} - {data.x} / {data.y}
+                </LabeledList.Item>
+                <LabeledList.Item label="Accuracy">
+                  ~{data.accuracy}m
+                </LabeledList.Item>
+                <LabeledList.Item label="Last Voice Pattern">
+                  {data.name}
+                </LabeledList.Item>
+                <LabeledList.Item label="Last Detected">
+                  {formatTime(data.last)} ago.
+                </LabeledList.Item>
+              </LabeledList>
+            </Collapsible>
+          ))}
         </Collapsible>
       </Section>
       <Section title="Stored Logs" mt="4px">

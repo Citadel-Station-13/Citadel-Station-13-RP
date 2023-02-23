@@ -47,7 +47,7 @@ export const BioscanConsole = (props, context) => {
             <LabeledList.Item label="Scan">
               <Button
                 content={data.scan_ready? "Scan" : "Charging"}
-                icon="radar"
+                icon="undo"
                 disabled={!data.scan_ready}
                 onClick={() => act('scan')} />
             </LabeledList.Item>

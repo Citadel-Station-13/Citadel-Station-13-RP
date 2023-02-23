@@ -38,4 +38,4 @@
 	if(isnull(obfuscation_cache[id_type]?[original]))
 		LAZYINITLIST(obfuscation_cache[id_type])
 		obfuscation_cache[id_type][original] = "[original]_[num2text(rand(0, (16 ** 4) - 1), 4, 16)]"
-	return obfuscation_cache[original]
+	return obfuscation_cache[id_type][original]
