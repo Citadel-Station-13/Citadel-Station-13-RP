@@ -2697,7 +2697,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/space/basic,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "aeT" = (
 /obj/structure/cable{
@@ -25461,7 +25461,7 @@
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "cSf" = (
 /obj/item/stool/padded,
@@ -26300,7 +26300,7 @@
 	name = "Bar Backroom";
 	req_access = list(25)
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lino,
 /area/maintenance/bar)
 
 (1,1,1) = {"
