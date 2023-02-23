@@ -23,10 +23,20 @@
 		"Virologist" = /datum/prototype/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/alt_title/orderly
+		"Orderly" = /datum/prototype/alt_title/orderly,
+		"Biotechnician" = /datum/prototype/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles
+
+/datum/prototype/alt_title/biotechnician
+	title = "Biotechnician"
+	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
+
 /datum/prototype/alt_title/surgeon
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
