@@ -17,7 +17,7 @@
 /obj/machinery/computer/bioscan/Initialize(mapload)
 	. = ..()
 	if(network_key_obfuscated)
-		network_key = SSmapping.get_obfuscated_id(network_key_obfuscated, "bioscan_network")
+		network_key = SSmapping.subtly_obfuscated_id(network_key_obfuscated, "bioscan_network")
 
 /obj/machinery/computer/bioscan/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -34,15 +34,21 @@
 	var/list/antennas = network_key && GLOB.bioscan_antenna_list[network_key]
 	. = list()
 	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
+		var/turf/T = get_turf(A)
+		if(!T)
+			continue
 		. += list(list(
 			"level" = SSmapping.level_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
+			"name" = A.name,
+			"x" = T.x,
+			"y" = T.y,
 		))
 
 /obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["scan_ready"] = on_cooldown()
+	.["scan_ready"] = !on_cooldown()
 	.["network"] = network_key || ""
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -50,9 +56,11 @@
 	switch(action)
 		if("scan")
 			if(!network_key)
-				visible_message(SPAN_WARNING("[icon2html(src)] flashes a message, \"No network set.\""))
+				visible_message(SPAN_WARNING("[icon2html(src, world)] flashes a message, \"No network set.\""))
+				return
 			if(on_cooldown())
-				visible_message(SPAN_WARNING("[icon2html(src)] flashes a message, \"Bioscan still on cooldown.\""))
+				visible_message(SPAN_WARNING("[icon2html(src, world)] flashes a message, \"Bioscan still on cooldown.\""))
+				return
 			last_scan = world.time
 			atom_say("Commencing signature scan and updating buffers...")
 			scan()
@@ -63,7 +71,7 @@
 			return TRUE
 
 /obj/machinery/computer/bioscan/proc/on_cooldown()
-	return (world.time - last_scan) > scan_delay
+	return (world.time - last_scan) <= scan_delay
 
 /obj/machinery/computer/bioscan/proc/set_network(key)
 	network_key = key

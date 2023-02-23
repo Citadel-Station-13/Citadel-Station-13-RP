@@ -14,6 +14,9 @@ interface BioscanAntenna {
   level: string;
   id: string;
   anchor: BooleanLike;
+  x: number;
+  y: number;
+  name: string;
 }
 
 interface BioscanResults {
@@ -33,8 +36,8 @@ export const BioscanConsole = (props, context) => {
   return (
     <Window
       title="Bioscan Control Console"
-      width={300}
-      height={600}>
+      width={400}
+      height={750}>
       <Window.Content>
         <Section title="Controls">
           <LabeledList>
@@ -43,33 +46,54 @@ export const BioscanConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Scan">
               <Button
-                title={data.scan_ready? "Scan" : "Charging"}
-                icon="magnifying-glass"
+                content={data.scan_ready? "Scan" : "Charging"}
+                icon="radar"
                 disabled={!data.scan_ready}
                 onClick={() => act('scan')} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Antennas">
-          {
-            data.antennas.map((antenna) => {
-              <Collapsible title={antenna.id} key={antenna.id}>
-                Sector / Level: {antenna.level}
-                Floor Bolts: {antenna.anchor? "Anchored" : "Unanchored"}
-              </Collapsible>;
-            })
-          }
+        <Section>
+          <Collapsible color="transparent" title="Antennas">
+            {
+              data.antennas.sort((a, b) => (a.level.localeCompare(b.level))).map((antenna) => (
+                <Collapsible title={`${antenna.name} - ${antenna.level}`} key={antenna.id} color="transparent">
+                  <LabeledList>
+                    <LabeledList.Item label="Coordinates">
+                      {antenna.x} / {antenna.y}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Sector / Level">
+                      {antenna.level}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Floor Bolts">
+                      {antenna.anchor? "Anchored" : "Unanchored"}
+                    </LabeledList.Item>
+                  </LabeledList>
+                </Collapsible>
+              ))
+            }
+          </Collapsible>
         </Section>
         <Section title="Results">
           {data.scan? (
-            data.scan.levels.map((level) => {
-              <Collapsible title={level.id}>
-                Lifesigns - Total: {level.all}
-                Lifesigns - Complex: {level.complex}
-                Lifesigns - Complex / Alive: {level.complex_alive}
-                Lifesigns - Complex / Dead: {level.complex_dead}
-              </Collapsible>;
-            })
+            data.scan.levels.map((level) => (
+              <Collapsible title={level.id} key={level.id} color="transparent">
+                <LabeledList>
+                  <LabeledList.Item label="Lifesigns - Total">
+                    {level.all}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Lifesigns - Complex">
+                    {level.complex}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Lifesigns - Complex / Alive">
+                    {level.complex_alive}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Lifesigns - Complex / Dead">
+                    {level.complex_dead}
+                  </LabeledList.Item>
+                </LabeledList>
+              </Collapsible>
+            ))
           ) : (
             "No scan data."
           )}

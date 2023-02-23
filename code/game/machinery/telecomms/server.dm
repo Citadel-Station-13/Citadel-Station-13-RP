@@ -145,7 +145,7 @@
 		return
 	for(var/key in triangulation)
 		var/datum/network_triangulation/T = triangulation[key]
-		. += list(
+		. += list(list(
 			"name" = T.scan_name,
 			"x" = T.random_x,
 			"y" = T.random_y,
@@ -153,7 +153,7 @@
 			"accuracy" = T.accuracy,
 			"last" = world.time - T.last_updated,
 			"tag" = key,
-		)
+		))
 
 /obj/machinery/telecomms/server/proc/triangulate(atom/movable/victim, reduction_factor = 2, update_name)
 	if(isnull(triangulation))

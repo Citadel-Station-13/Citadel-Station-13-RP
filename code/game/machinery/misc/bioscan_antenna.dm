@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	. = ..()
 	id = "[++id_next]"
 	if(network_key_obfuscated)
-		network_key = SSmapping.get_obfuscated_id(network_key_obfuscated, "bioscan_network")
+		network_key = SSmapping.subtly_obfuscated_id(network_key_obfuscated, "bioscan_network")
 	change_network(network_key)
 
 /obj/machinery/bioscan_antenna/Destroy()

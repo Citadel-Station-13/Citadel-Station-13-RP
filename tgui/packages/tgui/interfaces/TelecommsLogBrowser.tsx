@@ -167,29 +167,35 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
           icon="undo"
           onClick={() => act("mainmenu")} />
       }>
-      <LabeledList>
-        <LabeledList.Item label="Total Recorded Traffic">
-          {props.server.totalTraffic >= 1024
-            ? round(props.server.totalTraffic / 1024, 1) + " Terrabytes"
-            : props.server.totalTraffic + " Gigabytes"}
-        </LabeledList.Item>
-      </LabeledList>
-      <Collapsible title="Triangulation"
-        buttons={
-          <Button
-            content={props.server.triangulating? "Enabled" : "Disabled"}
-            selected={!!props.server.triangulating}
-            onClick={() => act('toggle_triangulatio')} />
-        }>
-        {props.server.triangulation.sort((a, b) => { return a.last - b.last; }).map((data) => {
-          <Collapsible key={data.tag}>
-            Estimated location: {data.z} - {data.x} / {data.y}
-            Accuracy: ~{data.accuracy}m
-            Last voice pattern: {data.name}
-            Last response: {formatTime(data.last)}
-          </Collapsible>;
-        })}
-      </Collapsible>
+      <Section title="System">
+        <LabeledList>
+          <LabeledList.Item label="Total Recorded Traffic">
+            {props.server.totalTraffic >= 1024
+              ? round(props.server.totalTraffic / 1024, 1) + " Terrabytes"
+              : props.server.totalTraffic + " Gigabytes"}
+          </LabeledList.Item>
+        </LabeledList>
+      </Section>
+      <Section>
+        <Collapsible
+          title="Triangulation"
+          color="transparent"
+          buttons={
+            <Button
+              content={props.server.triangulating? "Enabled" : "Disabled"}
+              selected={!!props.server.triangulating}
+              onClick={() => act('toggle_triangulation')} />
+          }>
+          {props.server.triangulation.sort((a, b) => { return a.last - b.last; }).map((data) => {
+            <Collapsible key={data.tag}>
+              Estimated location: {data.z} - {data.x} / {data.y}
+              Accuracy: ~{data.accuracy}m
+              Last voice pattern: {data.name}
+              Last response: {formatTime(data.last)}
+            </Collapsible>;
+          })}
+        </Collapsible>
+      </Section>
       <Section title="Stored Logs" mt="4px">
         <Flex wrap="wrap">
           {(!props.server.logs || !props.server.logs.length)
