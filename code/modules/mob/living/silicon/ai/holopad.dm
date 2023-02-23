@@ -61,7 +61,7 @@
 				PREF_COPY_TO_NO_CHECK_SPECIES
 			)
 			if(!looks)
-				to_chat(src, SPAN_WARNING("Slot load-clone errored. Please report this to a coder.", type = MESSAGE_TYPE_WARNING))
+				to_chat(src, SPAN_WARNING("Slot load-clone errored. Please report this to a coder."), type = MESSAGE_TYPE_WARNING)
 				return
 			holomodel = looks
 			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
