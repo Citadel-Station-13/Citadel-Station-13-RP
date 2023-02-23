@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(holopads)
+GLOBAL_LIST_EMPTY(holopad_lookup)
 
 #define HOLO_NORMAL_COLOR null
 #define HOLO_VORE_COLOR "#d97de0"
@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(holopads)
 		if(pad.turf_in_range(T))
 			return pad
 	// global check
-	for(id as anything in GLOB.holopad_lookup)
+	for(var/id as anything in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(pad.turf_in_range(T))
 			return pad
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(holopads)
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
 	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(src)
-	for(id in GLOB.holopad_lookup)
+	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(pad)
 		if(!our_sector || !their_sector)
