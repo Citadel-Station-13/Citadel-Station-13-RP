@@ -17,7 +17,6 @@
 						because Central Command gives a partial refund."
 	alt_titles = list(
 		"Logistics Specialist" = /datum/prototype/alt_title/logi_spec,
-		"Logisticai-Apprentice" = /datum/prototype/alt_title/logisticai_apprentice,
 		"Logisticai" = /datum/prototype/alt_title/logisticai
 		)
 

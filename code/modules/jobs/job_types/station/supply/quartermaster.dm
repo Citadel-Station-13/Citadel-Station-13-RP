@@ -22,7 +22,6 @@
 	desc = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list(
 		"Supply Chief" = /datum/prototype/alt_title/supply_chief,
-		"Logisticai-Adept" = /datum/prototype/alt_title/logisticai_adept
 		)
 
 /datum/prototype/alt_title/logisticai_adept

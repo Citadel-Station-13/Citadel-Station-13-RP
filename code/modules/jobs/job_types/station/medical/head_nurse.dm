@@ -24,8 +24,7 @@
 
 	alt_titles = list (
 		"Medical Specialist" = /datum/prototype/alt_title/medical_specialist,
-		"Consultant Physician" = /datum/prototype/alt_title/consultant_physician,
-		"Biotechnical Advisor" = /datum/prototype/alt_title/biotechnical_advisor
+		"Consultant Physician" = /datum/prototype/alt_title/consultant_physician
 	)
 
 /datum/prototype/alt_title/biotechnical_advisor

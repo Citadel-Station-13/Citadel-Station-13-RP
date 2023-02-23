@@ -25,10 +25,6 @@
 
 /datum/prototype/alt_title/biochemist
 	title = "Biochemist"
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/alt_title/pharmacist
 	title = "Pharmacist"
