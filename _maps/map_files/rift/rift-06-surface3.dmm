@@ -7331,17 +7331,17 @@
 /area/bridge/bridge_hallway)
 "nX" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/deck/tarot{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/deck/cards{
-	pixel_x = -2;
-	pixel_y = -2
-	},
 /obj/machinery/computer/security/telescreen{
 	pixel_x = -64;
 	pixel_y = -3
+	},
+/obj/item/storage/pill_bottle/dice_nerd{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/pill_bottle/dice{
+	pixel_x = -2;
+	pixel_y = -2
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -16413,11 +16413,11 @@
 /obj/item/flame/candle{
 	pixel_x = -16
 	},
-/obj/item/storage/pill_bottle/dice_nerd{
+/obj/item/deck/tarot{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/storage/pill_bottle/dice{
+/obj/item/deck/cards{
 	pixel_x = -2;
 	pixel_y = -2
 	},
