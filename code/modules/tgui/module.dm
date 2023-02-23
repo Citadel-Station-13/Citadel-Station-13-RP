@@ -27,7 +27,7 @@
 	var/autodel = FALSE
 	/// ephemeral - qdel on close. *MUST* have autodel to use this.
 	var/ephemeral = FALSE
-	/// tgui module id
+	/// tgui module id - this *must* begin with `TGUI`, e.g. `TGUICardMod`.
 	var/tgui_id
 	/// expected type
 	var/expected_type
