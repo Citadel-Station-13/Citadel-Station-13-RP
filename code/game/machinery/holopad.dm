@@ -73,6 +73,10 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/call_visibility = TRUE
 	/// visibility toggleable
 	var/call_toggleable = FALSE
+	/// anonymous sector calls?
+	var/call_anonymous_sector = FALSE
+	/// anonymous sector calls toggleable
+	var/call_anonymous_sector_toggle = TRUE
 	/// video enabled
 	var/video_enabled = TRUE
 	/// video toggleable?
@@ -280,10 +284,15 @@ GLOBAL_LIST_EMPTY(holopads)
 	if(outgoing_call_connected())
 		// SOURCE MODE
 		.["calling"] = "source"
+		.["connected"] = list()
+		.["remoting"] = FALSE
+		.["ringing"] = FALSE
 		#warn impl
 	else if(incoming_calls_connected())
 		// DESITNATION MODE
 		.["calling"] = "destination"
+		.["callers"] = list()
+		.["projecting"] = list()
 		#warn impl
 	else
 		.["calling"] = "none"
@@ -301,7 +310,8 @@ GLOBAL_LIST_EMPTY(holopads)
 	.["isAI"] = isAI(user)
 	.["aiEnabled"] = allow_ai
 	.["aiRequestAllowed"] = ai_request_allowed
-	.["canCall"] = call_allowed
+	.["canCall"] = call_receiver
+	.["sectorAnonymousToggle"] = call_anonymous_sector_toggle
 	.["toggleVisibility"] = call_toggleable
 	.["sectorCall"] = long_range
 	.["videoToggle"] = video_toggleable
@@ -312,6 +322,7 @@ GLOBAL_LIST_EMPTY(holopads)
 	. = ..()
 	.["aiRequested"] = last_ai_request && ((world.time - last_ai_request) >= ai_request_cooldown)
 	.["callVisibility"] = call_visibility
+	.["sectorAnonymous"] = call_anonymous_sector
 	.["videoEnabled"] = video_enabled
 	.["ringerEnabled"] = ringer_enabled
 	.["autoPickup"] = call_auto_pickup
@@ -348,6 +359,9 @@ GLOBAL_LIST_EMPTY(holopads)
 		// user toggling holocall ringer
 		if("toggle_ringer")
 			#warn impl
+		// user toggling sector anonymous mode
+		if("toggle_anonymous_sector")
+			#warn impl
 		// user toggling holocall visibility
 		if("toggle_visibility")
 			#warn impl
@@ -358,9 +372,11 @@ GLOBAL_LIST_EMPTY(holopads)
 		if("toggle_auto")
 			#warn impl
 		// user requesting to use remote presence
-		if("remote_presence")
-
-	#warn impl
+		if("start_remote")
+			#warn impl
+		// user requesting to stop remote presence
+		if("stop_remote")
+			#warn impl
 
 /obj/machinery/holopad/ui_close(mob/user)
 	. = ..()

@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
+import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -32,6 +32,8 @@ interface HolopadContext {
   ringerToggle: BooleanLike; // if audio ringer is toggleable
   autoPickup: BooleanLike; // if we auto accept calls
   autoToggle: BooleanLike; // if we can toggle auto accepting calls
+  sectorAnonymous: BooleanLike;
+  sectorAnonymousToggle: BooleanLike;
   ringing: [TargetHolopad]; // incoming rings
 }
 
@@ -133,25 +135,40 @@ const HolopadCallOutgoing = (props, context) => {
   const callContext: OutgoingCallContext = data.calldata as OutgoingCallContext;
   return (
     <Section
-      title="Outgoing Call"
+      title={`Outgoing Call${data.sectorAnonymous? " (Anonymous)" : ""}`}
       buttons={
         <Button.Confirm
           title="Disconnect"
           icon="phone-xmark"
           onClick={() => act('disconnect')} />
       }>
-      <Section title="Remote Presence">
-        test
-      </Section>
-      <Section title="Connected Pads">
-        <LabeledList>
-          {callContext.connected.map((pad) => {
-            <LabeledList.Item
-              label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
-              key={pad.id} />;
-          })}
-        </LabeledList>
-      </Section>
+      {
+        callContext.ringing? (
+          <NoticeBox>
+            Ringing...
+          </NoticeBox>
+        ) : (
+          <>
+            <Section title="Remote Presence">
+              {
+                <Button
+                  title={callContext.remoting? "Projecting" : "Not Projecting"}
+                  selected={callContext.remoting}
+                  onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
+              }
+            </Section>
+            <Section title="Connected Pads">
+              <LabeledList>
+                {callContext.connected.map((pad) => {
+                  <LabeledList.Item
+                    label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
+                    key={pad.id} />;
+                })}
+              </LabeledList>
+            </Section>
+          </>
+        )
+      }
     </Section>
   );
 };
@@ -298,6 +315,15 @@ const HolopadSettings = (props, context) => {
               selected={data.callVisibility}
               disabled={data.toggleVisibility}
               onClick={() => act('toggle_visibility')} />
+          } />
+        <LabeledList.Item
+          label="Hide Identity (Sector)"
+          buttons={
+            <Button
+              title={data.sectorAnonymous? "Broadcast Identity" : "Mask Identity"}
+              selected={data.sectorAnonymous}
+              disabled={data.sectorAnonymousToggle}
+              onClick={() => act('toggle_anonymous_sector')} />
           } />
         <LabeledList.Item
           label="Auto Pickup"
