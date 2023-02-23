@@ -92,7 +92,7 @@ export const getRoutedComponent = store => {
   const name = config?.interface;
 
   let esModule;
-  for (let path in interfacePath(name)) {
+  for (let path of interfacePath(name)) {
     try {
       esModule = requireInterface(path);
     }

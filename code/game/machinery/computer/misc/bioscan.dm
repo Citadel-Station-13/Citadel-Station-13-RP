@@ -27,18 +27,18 @@
 
 /obj/machinery/computer/bioscan/ui_static_data(mob/user)
 	. = ..()
-	.["scan"] = buffer || list()
+	.["scan"] = buffer
 	.["antennas"] = ui_antenna_data()
 
 /obj/machinery/computer/bioscan/proc/ui_antenna_data()
 	var/list/antennas = network_key && GLOB.bioscan_antenna_list[network_key]
 	. = list()
 	for(var/obj/machinery/bioscan_antenna/A as anything in antennas)
-		. += list(
+		. += list(list(
 			"level" = SSmapping.level_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
-		)
+		))
 
 /obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -63,15 +63,15 @@
 			return TRUE
 
 /obj/machinery/computer/bioscan/proc/on_cooldown()
-	return (world.time - last_scan) <= scan_delay
+	return (world.time - last_scan) > scan_delay
 
 /obj/machinery/computer/bioscan/proc/set_network(key)
 	network_key = key
 	void_scan()
 
 /obj/machinery/computer/bioscan/proc/void_scan()
-	buffer = list()
-	send_tgui_data_immediate(data = list("scan" = list()))
+	buffer = null
+	send_tgui_data_immediate(data = list("scan" = null))
 
 /obj/machinery/computer/bioscan/proc/scan()
 	var/list/new_data = list()

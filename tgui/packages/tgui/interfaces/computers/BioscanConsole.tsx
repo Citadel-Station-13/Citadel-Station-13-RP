@@ -7,7 +7,7 @@ interface BioscanConsoleData {
   network: string;
   scan_ready: BooleanLike;
   scan: BioscanResults;
-  antennas: [BioscanAntenna]
+  antennas: [BioscanAntenna];
 }
 
 interface BioscanAntenna {
