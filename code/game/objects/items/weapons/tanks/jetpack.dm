@@ -7,10 +7,10 @@
 	gauge_icon = null
 	w_class = ITEMSIZE_LARGE
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 			)
-	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jetpack", SLOT_ID_LEFT_HAND = "jetpack")
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/on = 0.0
@@ -81,7 +81,7 @@
 	name = "void jetpack (oxygen)"
 	desc = "It works well in a void."
 	icon_state = "jetpack-void"
-	item_state_slots = list(slot_r_hand_str = "jetpack-void", slot_l_hand_str = "jetpack-void")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jetpack-void", SLOT_ID_LEFT_HAND = "jetpack-void")
 
 /obj/item/tank/jetpack/void/Initialize(mapload)
 	. = ..()
@@ -91,7 +91,7 @@
 	name = "jetpack (oxygen)"
 	desc = "A tank of compressed oxygen for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
-	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jetpack", SLOT_ID_LEFT_HAND = "jetpack")
 
 /obj/item/tank/jetpack/oxygen/Initialize(mapload)
 	. = ..()
@@ -102,7 +102,7 @@
 	desc = "A tank of compressed carbon dioxide for use as propulsion in zero-gravity areas. Painted black to indicate that it should not be used as a source for internals."
 	distribute_pressure = 0
 	icon_state = "jetpack-black"
-	item_state_slots = list(slot_r_hand_str = "jetpack-black", slot_l_hand_str = "jetpack-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jetpack-black", SLOT_ID_LEFT_HAND = "jetpack-black")
 
 /obj/item/tank/jetpack/carbondioxide/Initialize(mapload)
 	. = ..()

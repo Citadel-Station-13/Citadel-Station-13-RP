@@ -43,11 +43,6 @@
 						else
 							H.ear_damage += rand(0, 5)
 							H.ear_deaf = max(H.ear_deaf,15)
-					if(H.client)
-						if(prob(50))
-							H.client.spinleft()
-						else
-							H.client.spinright()
 
 				else if(get_dist(H, T) <= round(radius * 0.5 * bang_effectiveness))
 					if(!ear_safety)
@@ -55,11 +50,6 @@
 						H.ear_damage += rand(0, 3)
 						H.ear_deaf = max(H.ear_deaf,10)
 
-					if(H.client)
-						if(prob(50))
-							H.client.spinleft()
-						else
-							H.client.spinright()
 
 				else if(!ear_safety && get_dist(H, T) <= (radius * bang_effectiveness))
 					H.Confuse(4)
@@ -71,17 +61,15 @@
 
 					if(prob(H.ear_damage - 5))
 						to_chat(H, "<span class='danger'>You can't hear anything!</span>")
-						H.sdisabilities |= DEAF
+						H.sdisabilities |= SDISABILITY_DEAF
 				else if(H.ear_damage >= 5)
 					to_chat(H, "<span class='danger'>Your ears start to ring!</span>")
+			/* Until someone can come up with a better thing to have happen to borgs like a stun or something this is getting commented out
 			if(istype(L, /mob/living/silicon/robot))
 				var/mob/living/silicon/robot/R = L
 				if(L.client)
-					if(prob(50))
-						L.client.spinleft()
-					else
-						L.client.spinright()
 				to_chat(R, "<span class='critical'>Gyroscopic failure.</span>")
+			*/
 	return
 
 /obj/item/grenade/concussion/frag

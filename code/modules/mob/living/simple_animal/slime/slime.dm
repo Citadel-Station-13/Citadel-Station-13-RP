@@ -5,9 +5,9 @@
 	icon = 'icons/mob/slime2.dmi'
 	icon_state = "grey baby slime"
 	intelligence_level = SA_ANIMAL
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	speak_emote = list("chirps")
 
@@ -125,7 +125,7 @@
 
 /mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
 	. = ..()
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	if(start_as_adult)
 		make_adult()
 	health = maxHealth
@@ -167,20 +167,21 @@
 		else
 			icon_state = "[icon_state_override ? "[icon_state_override] slime" : "slime"] [is_adult ? "adult" : "baby"][victim ? " eating":""]"
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(stat != DEAD)
 		var/image/I = image(icon, src, "slime light")
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 		if(shiny)
 			I = image(icon, src, "slime shiny")
 			I.appearance_flags = RESET_COLOR
-			overlays += I
+			overlays_to_add += I
 
 		I = image(icon, src, "aslime-[mood]")
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 		if(glows)
 			set_light(3, 2, color)
@@ -190,10 +191,12 @@
 		var/image/I = image('icons/mob/head.dmi', src, hat_state)
 		I.pixel_y = -7 // Slimes are small.
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 	if(modifier_overlay) // Restore our modifier overlay.
-		overlays += modifier_overlay
+		overlays_to_add += modifier_overlay
+
+	add_overlay(overlays_to_add)
 
 /mob/living/simple_animal/slime/proc/update_mood()
 	var/old_mood = mood
@@ -466,11 +469,11 @@
 	return FALSE
 
 
-/mob/living/simple_animal/slime/get_description_interaction()
+/mob/living/simple_animal/slime/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!stat)
-		results += "[desc_panel_image("slimebaton")]to stun the slime, if it's being bad."
+		results += "[desc_panel_image("slimebaton", user)]to stun the slime, if it's being bad."
 
 	results += ..()
 

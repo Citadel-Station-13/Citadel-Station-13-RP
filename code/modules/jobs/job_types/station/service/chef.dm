@@ -1,4 +1,5 @@
-/datum/job/station/chef
+/datum/role/job/station/chef
+	id = JOB_ID_CHEF
 	title = "Chef"
 	flag = CHEF
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -15,24 +16,24 @@
 	outfit_type = /datum/outfit/job/station/chef
 	desc = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
-		"Cook" = /datum/alt_title/chef/cook,
-		"Sous-chef" = /datum/alt_title/chef/souschef,
-		"Kitchen Worker" = /datum/alt_title/chef/kitchen_worker,
-		"Line Cook" = /datum/alt_title/chef/line
+		"Cook" = /datum/prototype/alt_title/chef/cook,
+		"Sous-chef" = /datum/prototype/alt_title/chef/souschef,
+		"Kitchen Worker" = /datum/prototype/alt_title/chef/kitchen_worker,
+		"Line Cook" = /datum/prototype/alt_title/chef/line
 	)
 
-/datum/alt_title/chef/souschef
+/datum/prototype/alt_title/chef/souschef
 	title = "Sous-chef"
 
-/datum/alt_title/chef/kitchen_worker
+/datum/prototype/alt_title/chef/kitchen_worker
 	title = "Kitchen Worker"
 	title_blurb = "A Kitchen Worker has the same duties, though they may be less experienced."
 
-/datum/alt_title/chef/line
+/datum/prototype/alt_title/chef/line
 	title = "Line Cook"
 
 // Chef Alt Titles
-/datum/alt_title/chef/cook
+/datum/prototype/alt_title/chef/cook
 	title = "Cook"
 	title_blurb = "A Cook has the same duties, though they may be less experienced."
 

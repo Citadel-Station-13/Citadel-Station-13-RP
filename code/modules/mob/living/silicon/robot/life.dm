@@ -29,7 +29,7 @@
 /mob/living/silicon/robot/proc/clamp_values()
 
 //	SetStunned(min(stunned, 30))
-	SetParalysis(min(paralysis, 30))
+	SetUnconscious(min(paralysis, 30))
 //	SetWeakened(min(weakened, 20))
 	SetSleeping(0)
 	adjustBruteLoss(0)
@@ -76,7 +76,7 @@
 	updatehealth()
 
 	if(src.sleeping)
-		Paralyse(3)
+		Unconscious(3)
 		AdjustSleeping(-1)
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
@@ -90,7 +90,7 @@
 			if (src.weakened > 0)
 				AdjustWeakened(-1)
 			if (src.paralysis > 0)
-				AdjustParalysis(-1)
+				AdjustUnconscious(-1)
 				src.blinded = 1
 			else
 				src.blinded = 0
@@ -116,9 +116,9 @@
 
 	src.density = !( src.lying )
 
-	if (src.sdisabilities & BLIND)
+	if (src.sdisabilities & SDISABILITY_NERVOUS)
 		src.blinded = 1
-	if (src.sdisabilities & DEAF)
+	if (src.sdisabilities & SDISABILITY_DEAF)
 		src.ear_deaf = 1
 
 	if (src.eye_blurry > 0)
@@ -151,10 +151,11 @@
 	var/seemeson = FALSE
 	SetSeeInDarkSelf(8)
 	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
+	SetSightSelf(SIGHT_FLAGS_DEFAULT)
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
-	if((XRAY in src.mutations) || (sight_mode & BORGXRAY))
+	if((MUTATION_XRAY in src.mutations) || (sight_mode & BORGXRAY))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		fullbright = TRUE
 	if(sight_mode & BORGMESON)
@@ -166,8 +167,8 @@
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
 
-	plane_holder.set_vis(VIS_FULLBRIGHT, fullbright)
-	plane_holder.set_vis(VIS_MESONS, seemeson)
+	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
+	plane_holder?.set_vis(VIS_MESONS, seemeson)
 	..()
 
 	if (src.healths)
@@ -259,7 +260,7 @@
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-		if(disabilities & NEARSIGHTED)
+		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else
 			clear_fullscreen("impaired")
@@ -318,17 +319,10 @@
 	return canmove
 
 /mob/living/silicon/robot/update_fire()
-	overlays -= image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state())
+	cut_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state()))
 	if(on_fire)
-		overlays += image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state())
+		add_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state()))
 
 /mob/living/silicon/robot/fire_act()
 	if(!on_fire) //Silicons don't gain stacks from hotspots, but hotspots can ignite them
 		IgniteMob()
-
-/mob/living/silicon/robot/handle_light()
-	. = ..()
-	if(. == FALSE) // If no other light sources are on.
-		if(lights_on)
-			set_light(integrated_light_power, 1, "#FFFFFF")
-			return TRUE

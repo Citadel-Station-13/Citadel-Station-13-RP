@@ -5,76 +5,86 @@
 	name = "lost robot module"
 	hide_on_manifest = 1
 	sprites = list(
-					"Drone" = "drone-lost"
-				)
+		"Drone" = "drone-lost"
+	)
 
-/obj/item/robot_module/robot/lost/Initialize(mapload)
+/obj/item/robot_module/robot/lost/get_modules()
 	. = ..()
-	// Sec
-	modules += new /obj/item/melee/baton/shocker/robot(src)
-	modules += new /obj/item/handcuffs/cyborg(src)
-	modules += new /obj/item/borg/combat/shield(src)
+	. |= list(
+		// Sec
+		/obj/item/melee/baton/shocker/robot,
+		/obj/item/handcuffs/cyborg,
+		/obj/item/borg/combat/shield,
 
-	// Med
-	modules += new /obj/item/healthanalyzer(src)
-	modules += new /obj/item/reagent_containers/borghypo/lost(src)
+		// Med
+		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/borghypo/lost,
 
-	// Engi
-	modules += new /obj/item/weldingtool/electric/mounted(src)
-	modules += new /obj/item/tool/screwdriver/cyborg(src)
-	modules += new /obj/item/tool/wrench/cyborg(src)
-	modules += new /obj/item/tool/wirecutters/cyborg(src)
-	modules += new /obj/item/multitool(src)
+		// Engi
+		/obj/item/weldingtool/electric/mounted,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
+		/obj/item/tool/wirecutters/cyborg,
+		/obj/item/multitool,
 
-	// Sci
-	modules += new /obj/item/robotanalyzer(src)
+		// Sci
+		/obj/item/robotanalyzer
+	)
 
+/obj/item/robot_module/robot/lost/get_synths(mob/living/silicon/robot/R)
+	. = ..()
+	MATTER_SYNTH(MATSYN_WIRE, wire)
+
+/obj/item/robot_module/robot/lost/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
 	// Potato
 	emag = new /obj/item/gun/energy/retro/mounted(src)
 
-	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
-	synths += wire
-
 	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(wire)
-	modules += C
+	C.synths = list(synths_by_kind[MATSYN_WIRE])
+	. += C
 
 /obj/item/robot_module/robot/gravekeeper
 	name = "gravekeeper robot module"
 	hide_on_manifest = 1
 	sprites = list(
-					"Drone" = "drone-gravekeeper",
-					"Sleek" = "sleek-gravekeeper"
-				)
+		"Drone" = "drone-gravekeeper",
+		"Sleek" = "sleek-gravekeeper"
+	)
 
-/obj/item/robot_module/robot/gravekeeper/Initialize(mapload)
+/obj/item/robot_module/robot/gravekeeper/get_modules()
 	. = ..()
-	// For fending off animals and looters
-	modules += new /obj/item/melee/baton/shocker/robot(src)
-	modules += new /obj/item/borg/combat/shield(src)
+	. |= list(
+		// For fending off animals and looters
+		/obj/item/melee/baton/shocker/robot,
+		/obj/item/borg/combat/shield,
 
-	// For repairing gravemarkers
-	modules += new /obj/item/weldingtool/electric/mounted(src)
-	modules += new /obj/item/tool/screwdriver/cyborg(src)
-	modules += new /obj/item/tool/wrench/cyborg(src)
+		// For repairing gravemarkers
+		/obj/item/weldingtool/electric/mounted,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
 
-	// For growing flowers
-	modules += new /obj/item/material/minihoe(src)
-	modules += new /obj/item/material/knife/machete/hatchet(src)
-	modules += new /obj/item/analyzer/plant_analyzer(src)
-	modules += new /obj/item/storage/bag/plants(src)
-	modules += new /obj/item/robot_harvester(src)
+		// For growing flowers
+		/obj/item/material/minihoe,
+		/obj/item/material/knife/machete/hatchet,
+		/obj/item/analyzer/plant_analyzer,
+		/obj/item/storage/bag/plants,
+		/obj/item/robot_harvester,
 
-	// For digging and beautifying graves
-	modules += new /obj/item/shovel(src)
-	modules += new /obj/item/gripper/gravekeeper(src)
+		// For digging and beautifying graves
+		/obj/item/shovel,
+		/obj/item/gripper/gravekeeper
+	)
 
+/obj/item/robot_module/robot/gravekeeper/get_synths(mob/living/silicon/robot/R)
+	. = ..()
+	MATTER_SYNTH(MATSYN_WOOD, wood, 25000)
+
+/obj/item/robot_module/robot/gravekeeper/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
 	// For really persistent looters
 	emag = new /obj/item/gun/energy/retro/mounted(src)
 
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood(25000)
-	synths += wood
-
 	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(wood)
-	modules += W
+	W.synths = list(synths_by_kind[MATSYN_WOOD])
+	. += W

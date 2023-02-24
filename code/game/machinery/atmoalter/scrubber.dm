@@ -185,7 +185,7 @@
 		to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
-	src.overlays = 0
+	cut_overlays()
 
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "scrubber:1"
@@ -232,7 +232,7 @@
 			return
 
 		anchored = !anchored
-		playsound(src.loc, I.usesound, 50, 1)
+		playsound(src.loc, I.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 
 		return

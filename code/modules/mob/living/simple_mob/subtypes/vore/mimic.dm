@@ -42,7 +42,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -175,7 +175,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/airlock/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/airlock/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -266,7 +266,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/closet/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/closet/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -372,7 +372,7 @@
 	else
 		return ..()
 
-/obj/effect/floormimic/ex_act(severity)
+/obj/effect/floormimic/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/effect/floormimic/safe

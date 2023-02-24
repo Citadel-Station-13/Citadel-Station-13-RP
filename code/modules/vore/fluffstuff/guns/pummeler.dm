@@ -43,6 +43,6 @@
 		if(prob(40) && !blocked)
 			L.Stun(1)
 			L.Confuse(1)
-		L.throw_at(get_edge_target_turf(L, throwdir), rand(3,6), 10)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 
 		return 1

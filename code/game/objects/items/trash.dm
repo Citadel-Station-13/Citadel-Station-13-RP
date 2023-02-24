@@ -5,6 +5,7 @@
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
+	force = 0
 	desc = "This is rubbish."
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
@@ -24,6 +25,10 @@
 /obj/item/trash/cheesie
 	name = "\improper Cheesie Honkers"
 	icon_state = "cheesie_honkers"
+
+/obj/item/trash/hot_cheesie
+	name = "Hot Cheesie Honkers"
+	icon_state = "hot_cheesie_honkers"
 
 /obj/item/trash/chips
 	name = "chips"
@@ -96,9 +101,6 @@
 	name = "Basch's Baked Beans"
 	icon_state = "baschbeans"
 
-/obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
-	return
-
 /obj/item/trash/creamcorn
 	name = "Garm n' Bozia's Cream Corn"
 	icon_state = "creamcorn"
@@ -108,9 +110,6 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "lollipop_stick"
 
-/obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
-	return
-
 // Custom garbage or whatever
 
 /obj/item/trash/rkibble
@@ -119,25 +118,25 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "kibble"
 
-/obj/item/trash/attack(mob/living/M as mob, mob/living/user as mob)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+/obj/item/trash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(H.species.trashcan == 1)
-			playsound(H.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
-			user.drop_item()
-			forceMove(H.vore_selected)
+			if(!user.attempt_insert_item_for_installation(src, H.vore_selected))
+				return
+			playsound(H,'sound/items/eatfood.ogg', rand(10,50), 1)
 			to_chat(H, "<span class='notice'>You can taste the flavor of garbage. Wait what?</span>")
 			return
 
-	if(isrobot(M))
-		var/mob/living/silicon/robot/R = M
-		if(R.module.type == /obj/item/robot_module/robot/scrubpup) // You can now feed the trash borg yay.
-			playsound(R.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
-			user.drop_item()
-			forceMove(R.vore_selected)
+	if(isrobot(target))
+		var/mob/living/silicon/robot/R = target
+		if(R.module.type == /obj/item/robot_module/robot/quad/jani) // You can now feed the trash borg yay.
+			if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
+				return
+			playsound(R,'sound/items/eatfood.ogg', rand(10,50), 1)
 			R.visible_message("<span class='warning'>[user] feeds [R] with [src]!</span>")
 			return
-	..()
+	return ..()
 
 /obj/item/trash/fancyplate
 	name = "dirty fancy plate"
@@ -197,3 +196,7 @@
 /obj/item/trash/bugsnacks
 	name = "Bugsnacks"
 	icon_state = "bugsnacks"
+
+/obj/item/trash/brainsnaxtrash
+	name = "\improper BrainSnax can"
+	icon_state = "brainsnaxtrash"

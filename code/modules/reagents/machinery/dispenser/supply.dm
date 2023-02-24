@@ -148,28 +148,25 @@
 	group = "Reagents"
 
 #define SEC_PACK(_tname, _type, _name, _cname, _cost, _access)\
-	datum/supply_pack/dispenser_cartridges{\
-		_tname {\
-			name = _name ;\
-			container_name = _cname ;\
-			container_type = /obj/structure/closet/crate/secure;\
-			access = list( _access );\
-			cost = _cost ;\
-			contains = list( _type , _type );\
-			group = "Reagent Cartridges"\
-		}\
-	}
+/datum/supply_pack/dispenser_cartridges/_tname{\
+	name = _name ;\
+	container_name = _cname ;\
+	container_type = /obj/structure/closet/crate/secure;\
+	access = list( _access );\
+	cost = _cost ;\
+	contains = list( _type , _type );\
+	group = "Reagent Cartridges"\
+}\
+
 #define PACK(_tname, _type, _name, _cname, _cost)\
-	datum/supply_pack/dispenser_cartridges{\
-		_tname {\
-			name = _name ;\
-			container_name = _cname ;\
-			container_type = /obj/structure/closet/crate;\
-			cost = _cost ;\
-			contains = list( _type , _type );\
-			group = "Reagent Cartridges"\
-		}\
-	}
+/datum/supply_pack/dispenser_cartridges/_tname{\
+	name = _name ;\
+	container_name = _cname ;\
+	container_type = /obj/structure/closet/crate;\
+	cost = _cost ;\
+	contains = list( _type , _type );\
+	group = "Reagent Cartridges"\
+}\
 
 // Chemistry-restricted (raw reagents excluding sugar/water)
 //      Datum path  Contents type                                                       Supply pack name                  Container name                         Cost  Container access
@@ -234,6 +231,8 @@ PACK(soy_latte,  /obj/item/reagent_containers/chem_disp_cartridge/soy_latte,  "R
 PACK(hot_coco,   /obj/item/reagent_containers/chem_disp_cartridge/hot_coco,   "Reagent refill - Hot Coco",            "hot coco reagent cartridge crate",                      15)
 PACK(milk,       /obj/item/reagent_containers/chem_disp_cartridge/milk,       "Reagent refill - Milk",                "milk reagent cartridge crate",                          15)
 PACK(cream,      /obj/item/reagent_containers/chem_disp_cartridge/cream,      "Reagent refill - Cream",               "cream reagent cartridge crate",                         15)
+
+/datum/silly_datum_to_block_byond_bug_2072419
 
 #undef SEC_PACK
 #undef PACK

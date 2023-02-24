@@ -14,12 +14,12 @@
 	icon_state = "rpd"
 	item_state = "rpd"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -81,7 +81,7 @@
 	return ..()
 /*
 /obj/item/pipe_dispenser/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_SUICIDE("[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -92,14 +92,14 @@
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 
-/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+/obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
-	if(slot == slot_r_hand || slot_l_hand)
+	if(slot == SLOT_ID_HANDS)
 		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 
-/obj/item/pipe_dispenser/dropped(mob/user)
+/obj/item/pipe_dispenser/unequipped(mob/user, slot, flags)
 	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 	return ..()
 

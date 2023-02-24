@@ -54,7 +54,7 @@
 		ispowered = 0
 		//Todo: add lockdown
 
-/obj/machinery/suit_storage_closet/ex_act(severity)
+/obj/machinery/suit_storage_closet/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(50))
@@ -200,7 +200,7 @@
 		return
 	/*if(I.is_screwdriver())
 		panelopen = !panelopen
-		playsound(src, I.usesound, 100, 1)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return*/
@@ -241,9 +241,9 @@
 		if(suit_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [S] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(S, src))
+			return
 		to_chat(user, "You load the [S.name] into [src].")
-		user.drop_item()
-		S.loc = src
 		LAZYADD(suits, S)
 		update_amounts()
 		return
@@ -252,9 +252,9 @@
 		if(helmet_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [H] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(H, src))
+			return
 		to_chat(user, "You load the [H.name] into [src].")
-		user.drop_item()
-		H.loc = src
 		LAZYADD(helmets, H)
 		update_amounts()
 		return
@@ -263,9 +263,9 @@
 		if(mask_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [M] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(M, src))
+			return
 		to_chat(user, "You load the [M.name] into [src].")
-		user.drop_item()
-		M.loc = src
 		LAZYADD(masks, M)
 		update_amounts()
 		return
@@ -274,10 +274,10 @@
 		if(mask_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [B] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		to_chat(user, "You load the [B.name] into [src].")
-		user.drop_item()
-		B.loc = src
 		LAZYADD(boots, B)
 		update_amounts()
 		return
-	return
+	return ..()

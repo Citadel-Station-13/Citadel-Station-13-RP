@@ -1,5 +1,7 @@
-/datum/job/station/chief_medical_officer
+/datum/role/job/station/chief_medical_officer
+	id = JOB_ID_CHIEF_MEDICAL_OFFICER
 	title = "Chief Medical Officer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_COMMAND)
@@ -13,7 +15,6 @@
 	selection_color = "#026865"
 	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
-	economic_modifier = 10
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -31,18 +32,18 @@
 						transported to Medical for treatment. They are expected to keep the crew informed about threats to their health and safety, and \
 						about the importance of Suit Sensors."
 	alt_titles = list (
-		"Chief Physician" = /datum/alt_title/cmo/physician,
-		"Director of Medicine" = /datum/alt_title/cmo/director,
-		"Chief Surgeon" = /datum/alt_title/cmo/surgeon
+		"Chief Physician" = /datum/prototype/alt_title/cmo/physician,
+		"Director of Medicine" = /datum/prototype/alt_title/cmo/director,
+		"Chief Surgeon" = /datum/prototype/alt_title/cmo/surgeon
 	)
 
-/datum/alt_title/cmo/physician
+/datum/prototype/alt_title/cmo/physician
 	title = "Chief Physician"
 
-/datum/alt_title/cmo/director
+/datum/prototype/alt_title/cmo/director
 	title = "Director of Medicine"
 
-/datum/alt_title/cmo/surgeon
+/datum/prototype/alt_title/cmo/surgeon
 	title = "Chief Surgeon"
 
 /datum/outfit/job/station/chief_medical_officer
@@ -56,8 +57,7 @@
 
 	id_type = /obj/item/card/id/medical/head
 	pda_type = /obj/item/pda/heads/cmo
-	pda_slot = slot_l_store
-
+	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med

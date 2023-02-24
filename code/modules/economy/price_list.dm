@@ -87,6 +87,11 @@
 /obj/item/reagent_containers/food/drinks/h_chocolate
 	price_tag = 3
 
+/obj/item/reagent_containers/food/drinks/cans/robustexpress
+	price_tag = 1
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte
+	price_tag = 1
 
 // Spirituous liquors //
 
@@ -117,7 +122,7 @@
 /datum/reagent/ethanol/whiterum
 	price_tag = 5
 
-/datum/reagent/ethanol/tequilla
+/datum/reagent/ethanol/tequila
 	price_tag = 5
 
 /datum/reagent/ethanol/thirteenloko
@@ -207,10 +212,10 @@
 /datum/reagent/ethanol/booger
 	price_tag = 4
 
-/datum/reagent/ethanol/brave_bull
+/datum/reagent/ethanol/coffee/brave_bull
 	price_tag = 4
 
-/datum/reagent/ethanol/changeling_sting
+/datum/reagent/ethanol/changelingsting
 	price_tag = 4
 
 /datum/reagent/ethanol/martini
@@ -303,7 +308,7 @@
 /datum/reagent/ethanol/syndicatebomb
 	price_tag = 4
 
-/datum/reagent/ethanol/tequillasunrise
+/datum/reagent/ethanol/tequila_sunrise
 	price_tag = 4
 
 /datum/reagent/ethanol/threemileisland
@@ -405,6 +410,15 @@
 /obj/item/reagent_containers/food/drinks/cans/gingerale
 	price_tag = 1
 
+/obj/item/reagent_containers/food/drinks/cans/nicola
+	price_tag = 1
+
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee
+	price_tag = 1
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpressiced
+	price_tag = 1
+
 //***************//
 //----Bottles----//
 //***************//
@@ -474,7 +488,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/rum
 	price_tag = 15
 
-/obj/item/reagent_containers/food/drinks/bottle/tequilla
+/obj/item/reagent_containers/food/drinks/bottle/tequila
 	price_tag = 15
 
 /obj/item/reagent_containers/food/drinks/bottle/vodka
@@ -533,6 +547,9 @@
 
 /obj/item/reagent_containers/food/snacks/cheesiehonkers
 	price_tag = 1
+
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+	price_tag = 3
 
 /obj/item/reagent_containers/food/snacks/tastybread
 	price_tag = 2

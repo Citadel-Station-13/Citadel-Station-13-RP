@@ -29,7 +29,7 @@
 	if(W.is_screwdriver())
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "secured" : "unsecured"]!</span>")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 	add_fingerprint(user)
 	return
 

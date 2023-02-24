@@ -36,7 +36,7 @@
 			meteor_impact()
 			return
 		for(var/atom/movable/A in current)
-			A.ex_act(3) //Let's have it be heavy, but not devistation in case it hits walls or something.
+			LEGACY_EX_ACT(A, 3, null) //Let's have it be heavy, but not devistation in case it hits walls or something.
 		forceMove(below)
 		meteor_fall()
 		return
@@ -63,7 +63,7 @@
 				continue
 			if(!L.buckled && !issilicon(L))
 				if(!L.Check_Shoegrip())
-					L.throw_at(get_step_rand(L),1,5)
+					L.throw_at_old(get_step_rand(L),1,5)
 				L.Weaken(5)
 			if(L.client)
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
@@ -96,7 +96,7 @@
 		if(91 to 100)
 			new /obj/machinery/artifact(src)
 
-/obj/structure/meteorite/ex_act()
+/obj/structure/meteorite/legacy_ex_act()
 	return
 
 /obj/structure/meteorite/attackby(var/obj/item/I, var/mob/M)

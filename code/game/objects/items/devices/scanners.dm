@@ -18,7 +18,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon_state = "health"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -31,7 +31,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/healthanalyzer/Initialize(mapload)
 	. = ..()
 	if(advscan >= 1)
-		verbs += /obj/item/healthanalyzer/proc/toggle_adv
+		add_obj_verb(src, /obj/item/healthanalyzer/proc/toggle_adv)
 
 /obj/item/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool
@@ -39,12 +39,13 @@ HALOGEN COUNTER	- Radcount on mobs
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/healthanalyzer/attack(mob/living/M, mob/living/user)
-	scan_mob(M, user)
+/obj/item/healthanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	scan_mob(target, user)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
 	var/dat = ""
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		user.visible_message(SPAN_WARNING("\The [user] has analyzed the floor's vitals!"), SPAN_WARNING("You try to analyze the floor's vitals!"))
 
 		dat += "<span class='info'>Analyzing results for the floor:\n<blockquote class='notice'>Overall status: Healthy"
@@ -85,7 +86,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	dat += "\nKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
 	dat += "\nDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 	dat += "\nBody Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
-	dat +=		"Species: <b>[M.get_species_name()]</b><br>"
+	dat += "\nSpecies: <b>[M.get_species_name()]</b>"
 
 	if(M.timeofdeath && (M.stat == DEAD || (M.status_flags & FAKEDEATH)))
 		dat += 	SPAN_NOTICE("\nTime of Death: [worldtime2stationtime(M.timeofdeath)]")
@@ -342,7 +343,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 
@@ -363,7 +364,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
@@ -405,9 +406,9 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
 	w_class = ITEMSIZE_SMALL
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 
@@ -469,7 +470,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
@@ -485,7 +486,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		return
 
 	if(!isnull(O.reagents))
-		if(!(O.flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
+		if(!(O.atom_flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
 			to_chat(user, SPAN_WARNING( "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
 			return
 
@@ -521,16 +522,17 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon = 'icons/obj/device.dmi'
 	origin_tech = list(TECH_BIO = 1)
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/obj/item/slime_scanner/attack(mob/living/M as mob, mob/living/user as mob)
-	if(!istype(M, /mob/living/simple_mob/slime/xenobio))
+/obj/item/slime_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!istype(target, /mob/living/simple_mob/slime/xenobio))
 		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")
 		return
-	var/mob/living/simple_mob/slime/xenobio/S = M
+	var/mob/living/simple_mob/slime/xenobio/S = target
 	user.show_message("Slime scan results:<br>[S.slime_color] [S.is_adult ? "adult" : "baby"] slime<br>Health: [S.health]<br>Mutation Probability: [S.mutation_chance]")
 
 	var/list/mutations = list()
@@ -557,27 +559,5 @@ HALOGEN COUNTER	- Radcount on mobs
 		user.show_message("Subject is friendly to other slime colors.")
 
 	user.show_message("Growth progress: [S.amount_grown]/10")
-
-/obj/item/halogen_counter
-	name = "halogen counter"
-	icon_state = "eftpos"
-	icon = 'icons/obj/device.dmi'
-	desc = "A hand-held halogen counter, used to detect the level of irradiation of living beings."
-	w_class = ITEMSIZE_SMALL
-	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 2)
-	throwforce = 0
-	throw_speed = 3
-	throw_range = 7
-
-/obj/item/halogen_counter/attack(mob/living/M as mob, mob/living/user as mob)
-	if(!iscarbon(M))
-		to_chat(user, "<span class='warning'>This device can only scan organic beings!</span>")
-		return
-	user.visible_message("<span class='warning'>\The [user] has analyzed [M]'s radiation levels!</span>", "<span class='notice'>Analyzing Results for [M]:</span>")
-	if(M.radiation)
-		to_chat(user, "<span class='notice'>Radiation Level: [M.radiation]</span>")
-	else
-		to_chat(user, "<span class='notice'>No radiation detected.</span>")
-	return
 
 #undef DEFIB_TIME_LIMIT

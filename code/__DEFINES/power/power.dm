@@ -98,6 +98,7 @@
 
 /**
  * renders power unit
+ * expensive!
  */
 /proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, accuracy = POWER_ACCURACY, conversion = TRUE)
 	if(!conversion)
@@ -198,7 +199,7 @@ GLOBAL_VAR_INIT(cellefficiency, 1)
  * misc
  */
 
-#define THERMOMACHINE_CHEAT_FACTOR						2.5
+//#define THERMOMACHINE_CHEAT_FACTOR						1
 #define RECHARGER_CHEAT_FACTOR							5
 #define SYNTHETIC_NUTRITION_KJ_PER_UNIT					10
 #define SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR		2

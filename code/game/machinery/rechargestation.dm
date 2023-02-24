@@ -90,6 +90,14 @@
 			R.adjustBruteLoss(-weld_rate)
 		if(wire_rate && R.getFireLoss() && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(wire_power_use * wire_rate, 1)))
 			R.adjustFireLoss(-wire_rate)
+
+	//Handles drone matrix upgrades
+	if(isDrone(occupant))
+		var/mob/living/silicon/robot/drone/D = occupant
+		if(D.master_matrix && D.upgrade_cooldown < world.time && D.cell.fully_charged())
+			D.upgrade_cooldown = world.time + 1 MINUTE
+			D.master_matrix.apply_upgrades(D)
+
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
@@ -105,26 +113,24 @@
 				H.adjustBrainLoss(-(rand(1,3)))
 
 			// Also recharge their internal battery.
-			if(H.isSynthetic() && H.nutrition < H.species.max_nutrition)
+			if(H.nutrition < H.species.max_nutrition)
 				var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
 				var/drained = cell.use(DYNAMIC_KJ_TO_CELL_UNITS(needed * SYNTHETIC_NUTRITION_KJ_PER_UNIT))
 				H.nutrition += DYNAMIC_CELL_UNITS_TO_KJ(drained) / SYNTHETIC_NUTRITION_KJ_PER_UNIT
 
 			// And clear up radiation
-			if(H.radiation > 0)
-				H.radiation = max(H.radiation - rand(5, 15), 0)
-		if(H.wearing_rig) // stepping into a borg charger to charge your rig and fix your shit
-			var/obj/item/rig/wornrig = H.get_rig()
-			if(wornrig) // just to make sure
-				for(var/obj/item/rig_module/storedmod in wornrig)
-					if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
-						to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
-						storedmod.damage = 0
-				var/obj/item/cell/rigcell = wornrig.get_cell()
-				if(rigcell)
-					var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
-					var/charge_used = cell.use(diff)
-					rigcell.give(charge_used)
+			H.cure_radiation(RAD_MOB_CURE_SYNTH_CHARGER)
+		var/obj/item/rig/wornrig = H.get_rig()
+		if(wornrig) // just to make sure
+			for(var/obj/item/rig_module/storedmod in wornrig)
+				if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
+					to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
+					storedmod.damage = 0
+			var/obj/item/cell/rigcell = wornrig.get_cell()
+			if(rigcell)
+				var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+				var/charge_used = cell.use(diff)
+				rigcell.give(charge_used)
 
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
@@ -166,7 +172,7 @@
 
 	..()
 
-/obj/machinery/recharge_station/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/recharge_station/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 
@@ -198,20 +204,20 @@
 		desc += "<br>It is capable of repairing burn damage."
 
 /obj/machinery/recharge_station/proc/build_overlays()
-	overlays.Cut()
+	cut_overlays()
 	switch(round(chargepercentage()))
 		if(1 to 20)
-			overlays += image('icons/obj/objects.dmi', "statn_c0")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c0"))
 		if(21 to 40)
-			overlays += image('icons/obj/objects.dmi', "statn_c20")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c20"))
 		if(41 to 60)
-			overlays += image('icons/obj/objects.dmi', "statn_c40")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c40"))
 		if(61 to 80)
-			overlays += image('icons/obj/objects.dmi', "statn_c60")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c60"))
 		if(81 to 98)
-			overlays += image('icons/obj/objects.dmi', "statn_c80")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c80"))
 		if(99 to 110)
-			overlays += image('icons/obj/objects.dmi', "statn_c100")
+			add_overlay(image('icons/obj/objects.dmi', "statn_c100"))
 
 /obj/machinery/recharge_station/update_icon()
 	..()
@@ -234,8 +240,9 @@
 	go_in(L)
 
 /obj/machinery/recharge_station/proc/go_in(mob/living/L)
-
-	if(occupant)
+	if(!istype(L))
+		return
+	if(occupant || L.buckled)
 		return
 
 	if(istype(L, /mob/living/silicon/robot))

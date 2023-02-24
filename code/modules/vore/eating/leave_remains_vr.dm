@@ -3,7 +3,7 @@
 	if(istype(M,/mob/living/carbon/human))	//Are we even humanoid?
 		var/mob/living/carbon/human/H = M
 
-		if((H.species.name in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
+		if((H.species.get_species_id() in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
 			return
 
 		else
@@ -77,7 +77,7 @@
 	icon = 'icons/obj/bones_vr.dmi'
 	icon_state = "generic"
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL
 	var/pred_ckey

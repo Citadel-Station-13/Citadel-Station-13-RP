@@ -49,15 +49,13 @@
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
 	if(machine_stat & NOPOWER)
-		overlays = overlays_off
+		set_overlays(overlays_off.Copy())
 	else if(error_check())
-		overlays = overlays_error
+		set_overlays(overlays_error.Copy())
 	else
-		overlays = use_power ? (overlays_on) : (overlays_off)
+		set_overlays(use_power ? overlays_on.Copy() : overlays_off.Copy())
 
 	underlays = underlays_current
-
-	return
 
 /obj/machinery/atmospherics/component/quaternary/proc/error_check()
 	return
@@ -87,8 +85,8 @@
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	playsound(src, W.usesound, 50, 1)
-	if(do_after(user, 40 * W.toolspeed))
+	playsound(src, W.tool_sound, 50, 1)
+	if(do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

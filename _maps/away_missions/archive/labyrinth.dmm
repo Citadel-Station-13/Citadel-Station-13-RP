@@ -44,47 +44,40 @@
 /area/awaymission/labyrinth/temple/north_east)
 "ag" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north)
 "ah" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north)
 "aj" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ak" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "al" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "an" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "ao" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north)
@@ -96,49 +89,43 @@
 "at" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "au" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "av" = (
-/atom/movable/spawner/corpse/scientist,
+/obj/spawner/corpse/scientist,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "ax" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood,
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ay" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "gibmid3"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "az" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mfloor5"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
@@ -149,24 +136,21 @@
 /area/awaymission/labyrinth/temple/center)
 "aB" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/center)
 "aC" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/center)
 "aD" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
@@ -178,13 +162,11 @@
 "aF" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/east)
 "aH" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/east)
@@ -194,53 +176,46 @@
 	},
 /area/awaymission/labyrinth/temple/west)
 "aJ" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "aK" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/west)
 "aL" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/west)
 "aO" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/west)
 "aQ" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/east)
 "aT" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/center)
 "aU" = (
-/atom/movable/spawner/corpse/scientist,
+/obj/spawner/corpse/scientist,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/east)
@@ -252,20 +227,17 @@
 "aW" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "aX" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "aZ" = (
-/atom/movable/spawner/corpse/scientist,
+/obj/spawner/corpse/scientist,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_east)
@@ -277,27 +249,23 @@
 "bb" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south)
 "bc" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south)
 "bd" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "be" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south)
@@ -309,20 +277,17 @@
 "bg" = (
 /obj/machinery/door/airlock/vault,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_west)
 "bh" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_west)
 "bk" = (
 /obj/landmark/loot_spawn,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_west)
@@ -433,7 +398,6 @@
 /area/awaymission/labyrinth/arrival)
 "bw" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -957,7 +921,6 @@
 "cR" = (
 /obj/structure/closet/crate/trashcart,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -965,7 +928,6 @@
 "cS" = (
 /obj/item/bananapeel,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -994,7 +956,6 @@
 	name = "Blocker"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1030,14 +991,12 @@
 "cY" = (
 /obj/item/storage/box,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
 /area/awaymission/labyrinth/arrival)
 "cZ" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1058,7 +1017,6 @@
 	name = "Blocker"
 	},
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1071,7 +1029,6 @@
 /area/awaymission/labyrinth/arrival)
 "dc" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1084,7 +1041,6 @@
 "dd" = (
 /obj/item/measuring_tape,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1097,7 +1053,6 @@
 "de" = (
 /obj/item/shovel/spade,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1105,7 +1060,6 @@
 "df" = (
 /obj/item/shovel,
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1224,7 +1178,6 @@
 /area/awaymission/labyrinth/cave)
 "dx" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1241,7 +1194,6 @@
 /area/awaymission/labyrinth/cave)
 "dy" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1253,7 +1205,6 @@
 /area/awaymission/labyrinth/cave)
 "dz" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1307,7 +1258,6 @@
 /area/awaymission/labyrinth/cave)
 "dD" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1323,7 +1273,6 @@
 /area/awaymission/labyrinth/arrival)
 "dI" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1335,7 +1284,6 @@
 /area/awaymission/labyrinth/cave)
 "dJ" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1347,7 +1295,6 @@
 /area/awaymission/labyrinth/cave)
 "dK" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1359,7 +1306,6 @@
 /area/awaymission/labyrinth/cave)
 "dL" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1376,7 +1322,6 @@
 /area/awaymission/labyrinth/cave)
 "dM" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1407,7 +1352,7 @@
 	},
 /area/awaymission/labyrinth/cave)
 "dP" = (
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
 /turf/unsimulated/floor{
@@ -1417,7 +1362,6 @@
 /area/awaymission/labyrinth/boss)
 "dQ" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1439,7 +1383,6 @@
 /area/awaymission/labyrinth/cave)
 "dR" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1461,7 +1404,6 @@
 /area/awaymission/labyrinth/cave)
 "dS" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1483,7 +1425,6 @@
 /area/awaymission/labyrinth/cave)
 "dT" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},
@@ -1504,8 +1445,8 @@
 	},
 /area/awaymission/labyrinth/cave)
 "dU" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mfloor5"
 	},
 /turf/unsimulated/floor{
@@ -1514,7 +1455,7 @@
 	},
 /area/awaymission/labyrinth/boss)
 "dV" = (
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
 /turf/unsimulated/floor{
@@ -1523,7 +1464,7 @@
 	},
 /area/awaymission/labyrinth/boss)
 "dW" = (
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mfloor5"
 	},
 /turf/unsimulated/floor{
@@ -1532,7 +1473,7 @@
 	},
 /area/awaymission/labyrinth/boss)
 "dX" = (
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "gib6"
 	},
 /turf/unsimulated/floor{
@@ -1552,15 +1493,15 @@
 	},
 /area/awaymission/labyrinth/boss)
 "dZ" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
 	},
 /area/awaymission/labyrinth/boss)
 "ea" = (
-/atom/movable/spawner/corpse/scientist,
-/obj/effect/decal/cleanable/blood{
+/obj/spawner/corpse/scientist,
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mgibbl1"
 	},
 /turf/unsimulated/floor{
@@ -1596,7 +1537,7 @@
 	},
 /area/awaymission/labyrinth/cave)
 "ec" = (
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "gibmid3"
 	},
 /turf/unsimulated/floor{
@@ -1606,7 +1547,6 @@
 /area/awaymission/labyrinth/boss)
 "ed" = (
 /turf/unsimulated/floor{
-	dir = 8;
 	icon_state = "asteroid";
 	name = "dirt"
 	},

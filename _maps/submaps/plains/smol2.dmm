@@ -32,7 +32,7 @@
 /turf/template_noop,
 /area/submap/smol2)
 "h" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/template_noop,
 /area/submap/smol2)
 

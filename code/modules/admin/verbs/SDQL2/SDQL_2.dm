@@ -164,6 +164,7 @@
 
 */
 
+// todo: set_state(state) proc so this is less of a snowflake mess
 
 #define SDQL2_STATE_ERROR 0
 #define SDQL2_STATE_IDLE 1
@@ -184,16 +185,18 @@
 
 #define SDQL2_OPTIONS_DEFAULT		(SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
 
-#define SDQL2_IS_RUNNING (state == SDQL2_STATE_EXECUTING || state == SDQL2_STATE_SEARCHING || state == SDQL2_STATE_SWITCHING || state == SDQL2_STATE_PRESEARCH)
-#define SDQL2_HALT_CHECK if(!SDQL2_IS_RUNNING) {state = SDQL2_STATE_HALTING; return FALSE;};
+#define SDQL2_IS_RUNNING (running == TRUE)
+#define SDQL2_HALT_CHECK if(running == FALSE) {state = SDQL2_STATE_HALTING; running = FALSE; return FALSE;};
 
-#define SDQL2_TICK_CHECK ((options & SDQL2_OPTION_HIGH_PRIORITY)? CHECK_TICK_HIGH_PRIORITY : CHECK_TICK)
+#define SDQL2_TICK_CHECK ((high_priority == TRUE)? CHECK_TICK_HIGH_PRIORITY : CHECK_TICK)
 
 #define SDQL2_STAGE_SWITCH_CHECK if(state != SDQL2_STATE_SWITCHING){\
 		if(state == SDQL2_STATE_HALTING){\
 			state = SDQL2_STATE_IDLE;\
+			running = FALSE;\
 			return FALSE}\
 		state = SDQL2_STATE_ERROR;\
+		running = FALSE;\
 		CRASH("SDQL2 fatal error");};
 
 /client/proc/SDQL2_query(query_text as message)
@@ -264,7 +267,7 @@
 					selectors_used |= query.where_switched
 					combined_refs |= query.select_refs
 					running -= query
-					if(!CHECK_BITFIELD(query.options, SDQL2_OPTION_DO_NOT_AUTOGC))
+					if(!(query.options & SDQL2_OPTION_DO_NOT_AUTOGC))
 						QDEL_IN(query, 50)
 				else
 					if(usr)
@@ -282,8 +285,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 /datum/SDQL2_query
 	var/list/query_tree
+	/// is running? separate for fast-ness
+	var/running = FALSE
 	var/state = SDQL2_STATE_IDLE
 	var/options = SDQL2_OPTIONS_DEFAULT
+	/// high priority? separate for fast-ness
+	var/high_priority = FALSE
 	var/superuser = FALSE		//Run things like proccalls without using admin protections
 	var/allow_admin_interact = TRUE		//Allow admins to do things to this excluding varedit these two vars
 	var/static/id_assign = 1
@@ -325,6 +332,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 /datum/SDQL2_query/Destroy()
 	state = SDQL2_STATE_HALTING
+	running = FALSE
 	query_tree = null
 	obj_count_all = null
 	obj_count_eligible = null
@@ -393,17 +401,15 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			return "##HALTING"
 
 /datum/SDQL2_query/proc/generate_stat()
+	. = list()
 	if(!allow_admin_interact)
 		return
-	if(!delete_click)
-		delete_click = new(null, "INITIALIZING", src)
-	if(!action_click)
-		action_click = new(null, "INITIALIZNG", src)
-	stat("[id]		", delete_click.update("DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
+	STATPANEL_DATA_CLICK("[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
-	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]"))
-	stat("			", action_click.update("[SDQL2_IS_RUNNING? "HALT" : "RUN"]"))
+	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]", \
+	"\ref[delete_click]")
+	STATPANEL_DATA_CLICK("", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
 
 /datum/SDQL2_query/proc/delete_click()
 	admin_del(usr)
@@ -421,6 +427,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	message_admins(msg)
 	log_admin(msg)
 	state = SDQL2_STATE_HALTING
+	running = FALSE
 
 /datum/SDQL2_query/proc/admin_run(mob/user = usr)
 	if(SDQL2_IS_RUNNING)
@@ -442,19 +449,20 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		if("select")
 			switch(value)
 				if("force_nulls")
-					DISABLE_BITFIELD(options, SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
+					options &= ~SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS
 		if("proccall")
 			switch(value)
 				if("blocking")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_BLOCKING_CALLS)
+					options |= SDQL2_OPTION_BLOCKING_CALLS
 		if("priority")
 			switch(value)
 				if("high")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_HIGH_PRIORITY)
+					options |= SDQL2_OPTION_HIGH_PRIORITY
+					high_priority = TRUE
 		if("autogc")
 			switch(value)
 				if("keep_alive")
-					ENABLE_BITFIELD(options, SDQL2_OPTION_DO_NOT_AUTOGC)
+					options |= SDQL2_OPTION_DO_NOT_AUTOGC
 
 /datum/SDQL2_query/proc/ARun()
 	INVOKE_ASYNC(src, .proc/Run)
@@ -472,6 +480,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	obj_count_eligible = 0
 	obj_count_finished = 0
 	start_time = REALTIMEOFDAY
+	running = TRUE
 
 	state = SDQL2_STATE_PRESEARCH
 	var/list/search_tree = PreSearch()
@@ -487,6 +496,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 	end_time = REALTIMEOFDAY
 	state = SDQL2_STATE_IDLE
+	running = FALSE
 	finished = TRUE
 	. = TRUE
 	if(show_next_to_key)
@@ -511,6 +521,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		if("explain")
 			SDQL_testout(query_tree["explain"])
 			state = SDQL2_STATE_HALTING
+			running = FALSE
 			return
 		if("call")
 			. = query_tree["on"]

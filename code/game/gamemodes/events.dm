@@ -48,9 +48,9 @@ var/hadevent    = 0
 		if(isNotStationLevel(T.z))
 			continue
 		if(istype(H,/mob/living/carbon/human))
-			H.apply_effect((rand(15,75)),IRRADIATE,0)
+			H.afflict_radiation(rand(200, 1000))
 			if (prob(5))
-				H.apply_effect((rand(90,150)),IRRADIATE,0)
+				H.afflict_radiation(rand(200, 1000))
 			if (prob(25))
 				if (prob(75))
 					randmutb(H)
@@ -167,7 +167,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 			var/allergysev = pick("deathly", "mildly", "severely", "contagiously")
 			var/crew
 			var/list/pos_crew = list()
-			for(var/mob/living/carbon/human/pos in player_list)
+			for(var/mob/living/carbon/human/pos in GLOB.player_list)
 				pos_crew += pos.real_name
 			if(pos_crew.len)
 				crew = pick(pos_crew)

@@ -29,7 +29,7 @@
 	if(!is_miniball)
 		set_light(10, 7, "#EEEEFF")
 
-/obj/singularity/energy_ball/ex_act(severity, target)
+/obj/singularity/energy_ball/legacy_ex_act(severity, target)
 	return
 
 /obj/singularity/energy_ball/Destroy()
@@ -94,7 +94,7 @@
 
 /obj/singularity/energy_ball/proc/handle_energy()
 	if (energy <= 0)
-		investigate_log("collapsed.", I_SINGULO)
+		investigate_log("collapsed.", INVESTIGATE_SINGULO)
 		qdel(src)
 		return TRUE
 	if(energy >= energy_to_raise)

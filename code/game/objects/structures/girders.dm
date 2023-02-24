@@ -2,7 +2,7 @@
 	icon_state = "girder"
 	anchored = 1
 	density = 1
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
 	var/state = 0
 	var/health = 200
@@ -38,7 +38,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 
@@ -146,22 +146,22 @@
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
 		if(anchored && !reinf_material)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
-			if(do_after(user,(35 + round(max_health/50)) * W.toolspeed))
+			if(do_after(user,(35 + round(max_health/50)) * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 				dismantle()
 		else if(!anchored)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now securing the girder...</span>")
-			if(do_after(user, 40 * W.toolspeed, src))
+			if(do_after(user, 40 * W.tool_speed, src))
 				to_chat(user, "<span class='notice'>You secured the girder!</span>")
 				reset_girder()
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
-		if(do_after(user,30 * W.toolspeed))
+		if(do_after(user,30 * W.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 			dismantle()
@@ -172,21 +172,21 @@
 
 	else if(W.is_screwdriver())
 		if(state == 2)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
-			if(do_after(user,40 * W.toolspeed))
+			if(do_after(user,40 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
 				state = 1
 		else if(anchored && !reinf_material)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			reinforcing = !reinforcing
 			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
 
 	else if(W.is_wirecutter() && state == 1)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
-		if(do_after(user,40 * W.toolspeed))
+		if(do_after(user,40 * W.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
 			reinf_material.place_dismantled_product(get_turf(src), 2)
@@ -194,9 +194,9 @@
 			reset_girder()
 
 	else if(W.is_crowbar() && state == 0 && anchored)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
-		if(do_after(user, 40 * W.toolspeed))
+		if(do_after(user, 40 * W.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You dislodged the girder!</span>")
 			displace()
@@ -226,7 +226,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M))
 		return 0
 
@@ -251,7 +251,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.set_materials(M, reinf_material, girder_material)
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -267,7 +267,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0
@@ -292,20 +292,15 @@
 	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
-/obj/structure/girder/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	. = !density
-	if(istype(caller))
-		. = . || (caller.pass_flags & PASSGRILLE)
-
 /obj/structure/girder/attack_hand(mob/user as mob)
-	if (HULK in user.mutations)
+	if (MUTATION_HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		dismantle()
 		return
 	return ..()
 
 
-/obj/structure/girder/ex_act(severity)
+/obj/structure/girder/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -343,15 +338,15 @@
 
 /obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
-		if(do_after(user,40 * W.toolspeed))
+		if(do_after(user,40 * W.tool_speed))
 			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 			dismantle()
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
-		if(do_after(user,30 * W.toolspeed))
+		if(do_after(user,30 * W.tool_speed))
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 		dismantle()
 
@@ -406,8 +401,8 @@
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

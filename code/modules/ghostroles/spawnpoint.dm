@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 	src.spawntext = spawntext
 	src.proc_to_call_or_callback = proc_to_call_or_callback
 	if(notify_ghosts)
-		var/datum/ghostrole/role = get_ghostrole_datum(role_type)
+		var/datum/role/ghostrole/role = get_ghostrole_datum(role_type)
 		if(!role)
 			return
 		notify_ghosts("Ghostrole spawner created: [role.name] - [parent] - [get_area(parent)]", source = parent, ignore_mapload = TRUE, flashwindow = FALSE)
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 /datum/component/ghostrole_spawnpoint/proc/SpawnsLeft(client/C)
 	return max(0, max_spawns - spawns)
 
-/datum/component/ghostrole_spawnpoint/proc/OnSpawn(mob/created, datum/ghostrole/role)
+/datum/component/ghostrole_spawnpoint/proc/OnSpawn(mob/created, datum/role/ghostrole/role)
 	if(istype(proc_to_call_or_callback))
 		proc_to_call_or_callback.Invoke(created, role, params, src)
 	spawns++
@@ -89,20 +89,25 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 
 /datum/component/ghostrole_spawnpoint/proc/Examine(datum/source, list/examine_list)
 	if(isobserver(source))
-		var/datum/ghostrole/role = get_ghostrole_datum(role_type)
+		var/datum/role/ghostrole/role = get_ghostrole_datum(role_type)
 		if(!role)
 			return
 		examine_list += "<b>Click</> this ghostrole spawner to become a [role.name]!"
 
 /datum/component/ghostrole_spawnpoint/proc/GhostInteract(datum/source, mob/user)
-	var/datum/ghostrole/role = get_ghostrole_datum(role_type)
+	var/datum/role/ghostrole/role = get_ghostrole_datum(role_type)
 	if(!role)
 		to_chat(user, SPAN_DANGER("No ghostrole datum found: [role_type]. Contact a coder!"))
 		if(!(datum_flags & DF_VAR_EDITED))
 			stack_trace("Couldn't find role. Deleting self.")
 			qdel(src)
 		return
-	role.AttemptSpawn(user.client, src)
+	else
+		var/choice = tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "Ghost Role Selection", list("Yes", "No"))
+		if(choice != "Yes")
+			return
+		else
+			role.AttemptSpawn(user.client, src)
 
 /datum/component/ghostrole_spawnpoint/vv_edit_var(var_name, var_value, massedit)
 	. = ..()

@@ -2,11 +2,6 @@
 /// Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 
-/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
-#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
-
-/// Macro from Lummox used to get height from a MeasureText proc
-#define WXH_TO_HEIGHT(x) text2num(copytext(x, findtextEx(x, "x") + 1))
 */
 /// Removes characters incompatible with file names.
 #define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
@@ -25,11 +20,11 @@
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"
 /// Takes an atom and formats it with a hyperlink to "lookitem" for the usr. Intended for 'examine' text.
-#define FORMAT_TEXT_LOOKITEM(item) "<a HREF=?src=\ref[usr];lookitem=\ref[item]>[item]<a/>"
+#define FORMAT_TEXT_LOOKITEM(item) "<a HREF=?src=\ref[usr];lookitem=\ref[item]>[item]</a>"
 /*
 // JSON text files found in the tgstation/strings folder
 /// File location for brain damage traumas
-#define BRAIN_DAMAGE_FILE "traumas.json"
+#define BRAIN_DAMAGE_FILE "pick/traumas.json"
 /// File location for AI ion laws
 #define ION_FILE "ion_laws.json"
 /// File location for pirate names
@@ -41,7 +36,7 @@
 #define ARCADE_FILE "arcade.json"
 /*
 /// File location for boomer meme catchphrases
-#define BOOMER_FILE "boomer.json"
+#define BOOMER_FILE "pick/boomer.json"
 /// File location for locations on the station
 #define LOCATIONS_FILE "locations.json"
 /// File location for wanted posters messages
@@ -61,3 +56,11 @@
 /// File location for cult shuttle curse descriptions
 #define CULT_SHUTTLE_CURSE "cult_shuttle_curse.json"
 */
+
+//! Maptext
+/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
+#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
+/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
+#define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}
+/// Macro from Lummox used to get height from a MeasureText proc
+#define WXH_TO_HEIGHT(x) text2num(copytext(x, findtextEx(x, "x") + 1))

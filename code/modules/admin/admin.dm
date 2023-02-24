@@ -13,13 +13,13 @@ var/global/floorIsLava = 0
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
 				var/msg = rendered
 				to_chat(C, msg)
 
-proc/admin_notice(var/message, var/rights)
+/proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
@@ -191,15 +191,14 @@ proc/admin_notice(var/message, var/rights)
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[k]
-		if(!(L.flags & INNATE))
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(!(L.language_flags & LANGUAGE_INNATE))
 			if(!f) body += " | "
 			else f = 0
 			if(L in M.languages)
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#006600'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#006600'>[L.name]</a>"
 			else
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#ff0000'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#ff0000'>[L.name]</a>"
 
 	body += {"<br>
 		</body></html>
@@ -837,18 +836,17 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!SSticker)
-		alert("Unable to start the game as it is not set up.")
-		return
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		SSticker.current_state = GAME_STATE_SETTING_UP
-		Master.SetRunLevel(RUNLEVEL_SETUP)
+	if(SSticker.current_state <= GAME_STATE_PREGAME)
+		SSticker.start_immediately = TRUE
 		log_admin("[usr.key] has started the game.")
-		message_admins("<font color=#4F49AF>[usr.key] has started the game.</font>")
+		var/msg = ""
+		if(SSticker.current_state == GAME_STATE_INIT)
+			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
-		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
+		to_chat(usr, SPAN_WARNING("Error: Start Now: Game has already started."))
 		return 0
 
 /datum/admins/proc/toggleenter()
@@ -912,17 +910,31 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/delay_end()
 	set category = "Server"
-	set desc="Delay the game end"
-	set name="Delay reboot"
+	set desc = "Prevent the server from restarting"
+	set name = "Delay Reboot"
 
 	if(!check_rights(R_SERVER))
 		return
-	SSticker.delay_end = !SSticker.delay_end
-	var/msg = "[SSticker.delay_end ? "delayed" : "undelayed"] the round end"
-	log_admin("[key_name(usr)] [msg]")
-	message_admins("[key_name_admin(usr)] [msg]")
-	if(SSticker.ready_for_reboot && !SSticker.delay_end) //we undelayed after standard reboot would occur
-		SSticker.standard_reboot()
+
+	if(SSticker.delay_end)
+		tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
+		return
+
+	var/delay_reason = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
+
+	if(isnull(delay_reason))
+		return
+
+	if(SSticker.delay_end)
+		tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
+		return
+
+	SSticker.delay_end = TRUE
+	SSticker.admin_delay_notice = delay_reason
+
+	log_admin("[key_name(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
+	message_admins("[key_name_admin(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
+	// SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Delay Round End", "Reason: [delay_reason]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/delay_start()
 	set category = "Server"
@@ -973,7 +985,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set name = "Unprison"
 	if (M.z == 2)
 		if (config_legacy.allow_admin_jump)
-			M.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
+			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else
@@ -1080,6 +1092,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set name = "Spawn"
 
 	if(!check_rights(R_SPAWN))	return
+
+	if(!object)
+		var/choice = alert(src, "You haven't specified anything to match -- this will lock your game up and take a while! \
+		It will also return the entire spawn list.", "WARNING!", "Cancel", "Continue")
+		if(choice == "Cancel")
+			return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()
@@ -1408,12 +1426,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	if(check_rights(R_ADMIN|R_MOD))
 		if (H.paralysis == 0)
-			H.SetParalysis(8000)
+			H.SetUnconscious(8000)
 			msg = "has paralyzed [key_name(H)]."
 			log_and_message_admins(msg)
 		else
 			if(alert(src, "[key_name(H)] is paralyzed, would you like to unparalyze them?",,"Yes","No") == "Yes")
-				H.SetParalysis(0)
+				H.SetUnconscious(0)
 				msg = "has unparalyzed [key_name(H)]."
 				log_and_message_admins(msg)
 
@@ -1511,7 +1529,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		if(!P.stamped)
 			P.stamped = new
 		P.stamped += /obj/item/stamp/centcomm
-		P.overlays += stampoverlay
+		P.add_overlay(stampoverlay)
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)
@@ -1524,12 +1542,12 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 

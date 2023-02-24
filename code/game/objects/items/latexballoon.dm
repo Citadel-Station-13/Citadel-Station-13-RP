@@ -3,12 +3,12 @@
 	desc = "A latex glove, usually used as a balloon."
 	icon_state = "latexballon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "lgloves"
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 1
 	throw_range = 15
@@ -30,7 +30,7 @@
 	item_state = "lgloves"
 	loc.assume_air(air_contents)
 
-/obj/item/latexballon/ex_act(severity)
+/obj/item/latexballon/legacy_ex_act(severity)
 	burst()
 	switch(severity)
 		if (1)

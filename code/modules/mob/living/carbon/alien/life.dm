@@ -15,7 +15,7 @@
 	if(stat != DEAD)
 		update_progression()
 
-/mob/living/carbon/alien/handle_mutations_and_radiation()
+/mob/living/carbon/alien/handle_mutations_and_radiation(seconds)
 
 	// Currently both Dionaea and larvae like to eat radiation, so I'm defining the
 	// rad absorbtion here. This will need to be changed if other baby aliens are added.
@@ -84,7 +84,7 @@
 	return 1
 
 /mob/living/carbon/alien/handle_regular_hud_updates()
-	if (stat == 2 || (XRAY in src.mutations))
+	if (stat == 2 || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInDarkSelf(8)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
@@ -118,7 +118,7 @@
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-		if(disabilities & NEARSIGHTED)
+		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else
 			clear_fullscreen("impaired")

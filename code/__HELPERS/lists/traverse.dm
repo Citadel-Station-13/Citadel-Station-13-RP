@@ -1,4 +1,6 @@
-// Returns the next item in a list
+/**
+ * Returns the next item in a list.
+ */
 /proc/next_list_item(item, list/L)
 	var/i
 	i = L.Find(item)
@@ -8,10 +10,40 @@
 		i++
 	return L[i]
 
-// Returns the previous item in a list
+/**
+ * Returns the previous item in a list.
+ */
 /proc/previous_list_item(item, list/L)
 	var/i
 	i = L.Find(item)
+	if(i == 1)
+		i = L.len
+	else
+		i--
+	return L[i]
+
+/**
+ * Returns the next item in a list.
+ */
+/proc/next_list_item_safe(item, list/L)
+	var/i
+	i = L.Find(item)
+	if(!i)
+		return
+	if(i == L.len)
+		i = 1
+	else
+		i++
+	return L[i]
+
+/**
+ * Returns the previous item in a list.
+ */
+/proc/previous_list_item_safe(item, list/L)
+	var/i
+	i = L.Find(item)
+	if(!i)
+		return
 	if(i == 1)
 		i = L.len
 	else

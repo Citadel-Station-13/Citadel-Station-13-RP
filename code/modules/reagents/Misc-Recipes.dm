@@ -239,7 +239,7 @@
 	result_amount = 1
 	var/sheet_to_give = /obj/item/stack/material/iron
 
-/datum/chemical_reaction/solidification/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/solidification/on_reaction(datum/reagents/holder, created_volume)
 	new sheet_to_give(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -308,7 +308,7 @@
 	required_reagents = list("pacid" = 1, "plasticide" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/plastication/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/plastication/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/material/plastic(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -318,7 +318,7 @@
 	required_reagents = list("hydrogen" = 1, MAT_CARBON = 1, "tallow" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/wax/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/wax/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/material/wax(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -331,7 +331,7 @@
 	result_amount = 2
 	mix_message = null
 
-/datum/chemical_reaction/explosion_potassium/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/explosion_potassium/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/effect_system/reagents_explosion/e = new()
 	e.set_up(round (created_volume/10, 1), holder.my_atom, 0, 0)
 	if(isliving(holder.my_atom))
@@ -351,7 +351,7 @@
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = null
 
-/datum/chemical_reaction/flash_powder/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(2, 1, location)
@@ -381,7 +381,7 @@
 	required_reagents = list(MAT_URANIUM = 1, MAT_IRON = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
 	result_amount = 2
 
-/datum/chemical_reaction/emp_pulse/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
@@ -398,7 +398,7 @@
 	result_amount = 2
 	log_is_important = 1
 
-/datum/chemical_reaction/nitroglycerin/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/nitroglycerin/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/effect_system/reagents_explosion/e = new()
 	e.set_up(round (created_volume/2, 1), holder.my_atom, 0, 0)
 	if(isliving(holder.my_atom))
@@ -419,7 +419,7 @@
 	required_reagents = list("aluminum" = 1, MAT_PHORON = 1, "sacid" = 1 )
 	result_amount = 1
 
-/datum/chemical_reaction/napalm/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/napalm/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))
 		target_tile.assume_gas(/datum/gas/volatile_fuel, created_volume, 400+T0C)
@@ -434,7 +434,7 @@
 	required_reagents = list("potassium" = 1, "sugar" = 1, "phosphorus" = 1)
 	result_amount = 0.4
 
-/datum/chemical_reaction/chemsmoke/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/chemsmoke/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
 	S.attach(location)
@@ -454,7 +454,7 @@
 	result_amount = 2
 	mix_message = "The solution violently bubbles!"
 
-/datum/chemical_reaction/foam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -474,7 +474,7 @@
 	required_reagents = list("aluminum" = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/metalfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -492,7 +492,7 @@
 	required_reagents = list(MAT_IRON = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/ironfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -745,9 +745,76 @@
 	required_reagents = list("hydrophoron" = 5, "water" = 10)
 	result_amount = 15
 
-/datum/chemical_reaction/deuterium/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/deuterium/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/T = get_turf(holder.my_atom)
 	if(istype(T)) new /obj/item/stack/material/deuterium(T, created_volume)
+	return
+
+//Ashlander Chemistry!
+/datum/chemical_reaction/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	result = "alchemybase"
+	required_reagents = list("ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+//This reaction creates tallow, just like /datum/chemical_reaction/food/tallow, but by a different vector.
+/datum/chemical_reaction/tallow
+	name = "Tallow"
+	id = "tallow"
+	result = "tallow"
+	required_reagents = list("triglyceride" = 1, "protein" = 1, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/soap
+	name = "Soap"
+	id = "soap"
+	result = null
+	required_reagents = list("tallow" = 1, "water" = 1, "ash" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/soap/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/soap/primitive(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/charcoal
+	name = "Charcoal"
+	id = "charcoal"
+	result = null
+	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/charcoal/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/pen/charcoal(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/fertilizer
+	name = "Fertilizer"
+	id = "fertilizer"
+	result = "fertilizer"
+	required_reagents = list("tallow" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/poultice_brute
+	name = "Poultice (Juhtak)"
+	id = "poulticebrute"
+	result = null
+	required_reagents = list("alchemybase" = 10, "bicaridine" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_brute/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_brute(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/poultice_burn
+	name = "Poultice (Pyrrhlea)"
+	id = "poulticeburn"
+	result = null
+	required_reagents = list("alchemybase" = 10, "kelotane" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_burn/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
 	return
 
 ///////////////////////////////
@@ -760,24 +827,25 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 10, "slimejelly" = 5, "nutriment" = 20)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
 
-		var/list/borks = typesof(/obj/item/reagent_containers/food/snacks) - /obj/item/reagent_containers/food/snacks // BORK BORK BORK
+/datum/chemical_reaction/slime_food/on_reaction(datum/reagents/holder)
 
-		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+	var/list/borks = typesof(/obj/item/reagent_containers/food/snacks) - /obj/item/reagent_containers/food/snacks // BORK BORK BORK
+
+	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 /* Removed at some point, unsure what to replace with
-		for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
-			if(M:eyecheck() <= 0)
-				flick("e_flash", M.flash)
+	for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
+		if(M:eyecheck() <= 0)
+			flick("e_flash", M.flash)
 */
-		for(var/i = 1, i <= 4 + rand(1,2), i++)
-			var/chosen = pick(borks)
-			var/obj/B = new chosen
-			if(B)
-				B.loc = get_turf(holder.my_atom)
-				if(prob(50))
-					for(var/j = 1, j <= rand(1, 3), j++)
-						step(B, pick(NORTH,SOUTH,EAST,WEST))
+	for(var/i = 1, i <= 4 + rand(1,2), i++)
+		var/chosen = pick(borks)
+		var/obj/B = new chosen
+		if(B)
+			B.loc = get_turf(holder.my_atom)
+			if(prob(50))
+				for(var/j = 1, j <= rand(1, 3), j++)
+					step(B, pick(NORTH,SOUTH,EAST,WEST))
 
 
 
@@ -788,40 +856,41 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 20, "slimejelly" = 40, "aluminum" = 20) //Woah there! You have the possibility of making diamonds! 8 ground up slimes required for one of these, and you still have a 10% chance for it to fail.
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		var/fail_chance = rand(1,1000)
-		if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
-			for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-				O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
-			sleep(30)
-			playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
-			for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-				O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
-			sleep(20)
-			explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
-			empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
-			return
 
-		if(fail_chance < 101) // 10% chance of it not working at all.
-			playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
-			for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-				O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
-			return
+/datum/chemical_reaction/materials/on_reaction(datum/reagents/holder)
+	var/fail_chance = rand(1,1000)
+	if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
+		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+			O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
+		sleep(30)
+		playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
+		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+			O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
+		sleep(20)
+		explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
+		empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
+		return
 
-		var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
-		var/list/material = typesof(/obj/item/stack/material) - blocked
+	if(fail_chance < 101) // 10% chance of it not working at all.
+		playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
+		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+			O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
+		return
 
-		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+	var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
+	var/list/material = typesof(/obj/item/stack/material) - blocked
+
+	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 /* Removed at some point, unsure what to replace with
-		for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
-			if(M:eyecheck() <= 0)
-				flick("e_flash", M.flash)
+	for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
+		if(M:eyecheck() <= 0)
+			flick("e_flash", M.flash)
 */
-		var/spawn_amount = rand(1,50)
-		var/chosen = pick(material)
-		var/obj/item/stack/material/C = new chosen
-		C.amount = spawn_amount
-		C.loc = get_turf(holder.my_atom)
+	var/spawn_amount = rand(1,50)
+	var/chosen = pick(material)
+	var/obj/item/stack/material/C = new chosen
+	C.amount = spawn_amount
+	C.loc = get_turf(holder.my_atom)
 
 
 /datum/chemical_reaction/slimelight
@@ -830,11 +899,12 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 5, "slimejelly" = 5, "water" = 10) //Takes 10 water so it doesn't mess with the frost oil.
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'> The contents of the slime core harden and begin to emit a warm, bright light.</span>"), 1)
-		var/obj/item/flashlight/slime/F = new /obj/item/flashlight/slime
-		F.loc = get_turf(holder.my_atom)
+
+/datum/chemical_reaction/slimelight/on_reaction(datum/reagents/holder)
+	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+		O.show_message(SPAN_WARNING("The contents of the slime core harden and begin to emit a warm, bright light."))
+	var/obj/item/flashlight/slime/F = new /obj/item/flashlight/slime
+	F.loc = get_turf(holder.my_atom)
 
 
 /datum/chemical_reaction/slimephoron
@@ -843,10 +913,11 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 20, MAT_URANIUM = 20, "slimejelly" = 20)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		var/obj/item/stack/material/phoron/P = new /obj/item/stack/material/phoron
-		P.amount = 10
-		P.loc = get_turf(holder.my_atom)
+
+/datum/chemical_reaction/slimephoron/on_reaction(datum/reagents/holder)
+	var/obj/item/stack/material/phoron/P = new /obj/item/stack/material/phoron
+	P.amount = 10
+	P.loc = get_turf(holder.my_atom)
 
 /datum/chemical_reaction/slimefreeze
 	name = "Slime Freeze"
@@ -854,14 +925,15 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 10, "coolant" = 10, "slimejelly" = 10)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
-		sleep(50)
-		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
-		for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
-			M.bodytemperature -= 140
-			to_chat(M, "<span class='notice'> You suddenly feel a chill!</span>")
+
+/datum/chemical_reaction/slimefreeze/on_reaction(datum/reagents/holder)
+	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+		O.show_message(SPAN_WARNING("The slime extract begins to vibrate violently!"))
+	sleep(50)
+	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+	for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
+		M.bodytemperature -= 140
+		to_chat(M, SPAN_NOTICE("You suddenly feel a chill!"))
 
 
 /datum/chemical_reaction/slimefrost
@@ -878,14 +950,15 @@
 	result = null
 	required_reagents = list(MAT_PHORON = 60, "slimejelly" = 30, "potassium" = 30)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
-		sleep(50)
-		var/turf/location = get_turf(holder.my_atom.loc)
-		for(var/turf/simulated/floor/target_tile in range(0,location))
-			target_tile.assume_gas(/datum/gas/phoron, 25, 1400)
-			spawn (0) target_tile.hotspot_expose(700, 400)
+
+/datum/chemical_reaction/slimefire/on_reaction(datum/reagents/holder)
+	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+		O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
+	sleep(50)
+	var/turf/location = get_turf(holder.my_atom.loc)
+	for(var/turf/simulated/floor/target_tile in range(0,location))
+		target_tile.assume_gas(/datum/gas/phoron, 25, 1400)
+		spawn (0) target_tile.hotspot_expose(700, 400)
 
 
 /datum/chemical_reaction/slimeify
@@ -901,16 +974,17 @@
 	id = "slimeheal"
 	result = "null"
 	required_reagents = list(MAT_PHORON = 10, "bicaridine" = 10, "kelotane" = 10, "inaprovaline" = 10, "slimejelly" = 10)
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		for (var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
-			to_chat(C, "<span class='notice'>A wave of energy suddenly invigorates you.</span>")
-			C.adjustBruteLoss(-25)
-			C.adjustFireLoss(-25)
-			C.adjustToxLoss(-25)
-			C.adjustOxyLoss(-25)
-			C.adjustBrainLoss(-25)
-			C.adjustCloneLoss(-25)
-			C.updatehealth()
+
+/datum/chemical_reaction/slimeheal/on_reaction(datum/reagents/holder, created_volume)
+	for (var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
+		to_chat(C, SPAN_NOTICE("A wave of energy suddenly invigorates you."))
+		C.adjustBruteLoss(-25)
+		C.adjustFireLoss(-25)
+		C.adjustToxLoss(-25)
+		C.adjustOxyLoss(-25)
+		C.adjustBrainLoss(-25)
+		C.adjustCloneLoss(-25)
+		C.updatehealth()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"
@@ -926,7 +1000,7 @@
 	result = null
 	required_reagents = list("monstertamer" = 5, "clonexadone" = 5)
 
-/datum/chemical_reaction/xenolazarus/on_reaction(var/datum/reagents/holder, var/created_volume) //literally all this does is mash the regenerate button
+/datum/chemical_reaction/xenolazarus/on_reaction(datum/reagents/holder, created_volume) //literally all this does is mash the regenerate button
 	if(ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
 		if(H.stat == DEAD && (/mob/living/carbon/human/proc/reconstitute_form in H.verbs)) //no magical regen for non-regenners, and can't force the reaction on live ones
@@ -966,3 +1040,10 @@
 	result = "microcillin"
 	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
 	result_amount = 1
+
+/datum/chemical_reaction/gunpowder
+	name = "Gunpowder"
+	id = "gunpowder"
+	result = "gunpowder"
+	result_amount = 1
+	required_reagents = list("sulfur" = 1, "carbon" = 1, "potassium" = 1)

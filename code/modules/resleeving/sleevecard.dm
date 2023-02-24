@@ -80,22 +80,21 @@
 /obj/item/sleevecard/proc/turnOff()
 	if(infomorph)
 		infomorph.close_up()
-	overlays.Cut()
+	cut_overlays()
 	name = "[initial(name)]"
 
-/obj/item/sleevecard/proc/setEmotion(var/emotion)
+/obj/item/sleevecard/proc/setEmotion(emotion)
 	if(infomorph && emotion)
-		overlays.Cut()
-		overlays += emotion
+		set_overlays(emotion)
 		current_emotion = emotion
 
 /obj/item/sleevecard/emp_act(severity)
 	for(var/mob/M in src)
 		M.emp_act(severity)
 
-/obj/item/sleevecard/ex_act(severity)
+/obj/item/sleevecard/legacy_ex_act(severity)
 	if(infomorph)
-		infomorph.ex_act(severity)
+		LEGACY_EX_ACT(infomorph, severity, null)
 	else
 		qdel(src)
 

@@ -190,19 +190,19 @@
 		var/amplitude = 2 //maximum displacement from original position
 		var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
 
-		var/top = old_y + amplitude
-		var/bottom = old_y - amplitude
+		var/top = get_standard_pixel_y_offset() + amplitude
+		var/bottom = get_standard_pixel_y_offset() - amplitude
 		var/half_period = period / 2
 		var/quarter_period = period / 4
 
 		animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
 		animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-		animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+		animate(pixel_y = get_standard_pixel_y_offset(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
 
 /obj/mecha/combat/fighter/proc/stop_hover()
 	if(ion_trail.on)
 		ion_trail.stop()
-		animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/mecha/combat/fighter/check_for_support()
 	if (has_charge(step_energy_drain) && stabilization_enabled)
@@ -221,6 +221,19 @@
 		who << sound('sound/mecha/fighter_entered_bad.ogg',volume=50)
 	else
 		who << sound('sound/mecha/fighter_entered.ogg',volume=50)
+
+//causes damage when running into objects
+/obj/mecha/combat/fighter/Bump(atom/obstacle)
+	. = ..()
+	// this isn't defined becuase this is shitcode anyways and i'm just patching it
+	// todo: why the fuck are you guys doing snowflake collision code??
+	if(TIMER_COOLDOWN_CHECK(src, "fighter_collision"))
+		return
+	if(istype(obstacle, /obj) || istype(obstacle, /turf))
+		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
+		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
+		take_damage(20, "brute")
+		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 ////////////// Gunpod //////////////
 

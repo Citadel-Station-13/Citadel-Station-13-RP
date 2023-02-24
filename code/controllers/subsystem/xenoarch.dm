@@ -24,11 +24,6 @@ SUBSYSTEM_DEF(xenoarch)
 	if (istype(SSxenoarch.digsite_spawning_turfs))
 		digsite_spawning_turfs = SSxenoarch.digsite_spawning_turfs
 
-/datum/controller/subsystem/xenoarch/stat_entry(msg)
-	if (!GLOB.Debug2)
-		return // Only show up in stat panel if debugging is enabled.
-	. = ..()
-
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
 	var/list/faster = list()
 	var/start
@@ -109,6 +104,8 @@ SUBSYSTEM_DEF(xenoarch)
 		to_make += pick_n_take(artifact_spawning_turfs)
 
 	var/list/artifacts_spawnturf_temp = to_make.Copy()
+	LAZYCLEARLIST(artifact_spawning_turfs)
+	artifact_spawning_turfs = LAZYCOPY(to_make)
 	while(artifacts_spawnturf_temp.len)
 		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
 		--artifacts_spawnturf_temp.len

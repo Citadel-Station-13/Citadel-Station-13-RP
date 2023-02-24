@@ -19,7 +19,7 @@
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,	15),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									20),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,									90),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											75),
+		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,											75),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,										30),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Pack",		/obj/item/extraction_pack,						125),
@@ -35,8 +35,9 @@
 		new /datum/data/mining_equipment("Nanopaste Tube",				/obj/item/stack/nanopaste,									100),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							120),
 		//new /datum/data/mining_equipment("UAV - Recon Skimmer",			/obj/item/uav,												400),
-		new /datum/data/mining_equipment("AR-V Glasses",				/obj/item/clothing/glasses/omnihud/exp,						350),
-		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									100),
+		new /datum/data/mining_equipment("Binoculars",					/obj/item/binoculars,										100),
+		new /datum/data/mining_equipment("100 Thalers",					/obj/item/spacecash/c100,									100),
+		new /datum/data/mining_equipment("1000 Thalers",					/obj/item/spacecash/c1000,									1000),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,								250),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),
 		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						300),
@@ -87,12 +88,13 @@
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				usr.put_in_hands(inserted_id)
+				usr.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
 		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
-			if(istype(I) && !inserted_id && usr.unEquip(I))
-				I.forceMove(src)
+			var/obj/item/card/id/I = usr.get_active_held_item()
+			if(istype(I) && !inserted_id)
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				inserted_id = I
 				interact(usr)
 				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")

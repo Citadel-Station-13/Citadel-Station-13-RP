@@ -126,9 +126,9 @@
 
 	src.density = !( src.lying )
 
-	if (src.sdisabilities & BLIND)
+	if (src.sdisabilities & SDISABILITY_NERVOUS)
 		src.blinded = 1
-	if (src.sdisabilities & DEAF)
+	if (src.sdisabilities & SDISABILITY_DEAF)
 		src.ear_deaf = 1
 
 	if (src.eye_blurry > 0)
@@ -212,7 +212,7 @@
 
 				if(istype(L, /mob/living/carbon/human) && dna) //Ignore slime(wo)men
 					var/mob/living/carbon/human/H = L
-					if(H.species.name == SPECIES_PROMETHEAN)
+					if(H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 						continue
 
 				if(!L.canmove) // Only one slime can latch on at a time.

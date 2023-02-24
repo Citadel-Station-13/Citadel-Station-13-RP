@@ -310,5 +310,5 @@
 	else if (possible_recipes.len == 1)
 		return possible_recipes[1]
 	else //okay, let's select the most complicated recipe
-		sortTim(possible_recipes, /proc/cmp_recipe_complexity_dsc)
+		tim_sort(possible_recipes, /proc/cmp_recipe_complexity_dsc)
 		return possible_recipes[1]

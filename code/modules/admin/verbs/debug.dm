@@ -25,7 +25,7 @@
 	var/mob/living/user = null
 	if(isliving(usr))
 		user = usr
-		I = user.get_active_hand()
+		I = user.get_active_held_item()
 		if(!I || !istype(I))
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
@@ -46,10 +46,10 @@
 				var/obj/item/gun/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/gun/projectile))
-				var/obj/item/gun/projectile/projectile_gun = G
+			else if(istype(I, /obj/item/gun/ballistic))
+				var/obj/item/gun/ballistic/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.BB
+				P = ammo.get_projectile()
 
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
@@ -97,9 +97,6 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
 		spawn(10)
@@ -111,10 +108,6 @@
 /client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
-
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -160,9 +153,6 @@
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
@@ -245,7 +235,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	sortTim(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -292,7 +282,7 @@
 
 // Render stats list for round-end statistics.
 /proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
-	sortTim(stats, sort, TRUE)
+	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
 	for (var/entry in stats)
@@ -327,7 +317,7 @@
 			id.registered_name = H.real_name
 			id.assignment = "Facility Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
-			H.equip_to_slot_or_del(id, slot_wear_id)
+			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")
@@ -355,7 +345,7 @@
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/take_picture(var/atom/A in world)
+/client/proc/take_picture(atom/A in world)
 	set name = "Save PNG"
 	set category = "Debug"
 	set desc = "Opens a dialog to save a PNG of any object in the game."
@@ -363,7 +353,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	downloadImage(A)
+	download_icon(A)
 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
@@ -521,10 +511,10 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[/datum/gas/phoron] = 70
-				Rad.drainratio = 0
+				/// supercooled so we don't just maxcap the engine lol
+				Phoron.air_contents.adjust_gas_temp(/datum/gas/phoron, 350, 25)
+				Phoron.forceMove(Rad)
 				Rad.P = Phoron
-				Phoron.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()
@@ -617,9 +607,9 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			to_chat(usr, jointext(player_list,","))
+			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
-			to_chat(usr, jointext(admins,","))
+			to_chat(usr, jointext(GLOB.admins,","))
 		if("Mobs")
 			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
@@ -631,9 +621,6 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)
@@ -719,7 +706,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in player_list
+	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in GLOB.player_list
 
 	if(!H)
 		return
@@ -736,7 +723,7 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.flags & NO_SCAN)
+	if(H.species.species_flags & NO_SCAN)
 		var/obj/item/nif/S = /obj/item/nif/bioadap
 		input_NIF = initial(S.name)
 		new /obj/item/nif/bioadap(H)

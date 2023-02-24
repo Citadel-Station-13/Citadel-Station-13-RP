@@ -28,8 +28,8 @@
 		set_light(0)
 
 	if(festive)
-		var/image/bow = image(icon_state = "[icon_state]-festive")
-		add_overlay(bow)
+		// bow
+		add_overlay("[icon_state]-festive")
 
 /obj/structure/lightpost/unlit
 	lit = FALSE

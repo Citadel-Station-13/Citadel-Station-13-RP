@@ -1,10 +1,10 @@
 /obj/item/modular_computer/proc/update_verbs()
 	verbs.Cut()
 	if(portable_drive)
-		verbs |= /obj/item/modular_computer/verb/eject_usb
+		add_obj_verb(src, /obj/item/modular_computer/verb/eject_usb)
 	if(card_slot)
-		verbs |= /obj/item/modular_computer/verb/eject_id
-	verbs |= /obj/item/modular_computer/verb/emergency_shutdown
+		add_obj_verb(src, /obj/item/modular_computer/verb/eject_id)
+	add_obj_verb(src, /obj/item/modular_computer/verb/emergency_shutdown)
 
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
@@ -131,9 +131,9 @@
 		if(card_slot.stored_card)
 			to_chat(user, "You try to insert \the [I] into \the [src], but it's ID card slot is occupied.")
 			return
-		user.drop_from_inventory(I)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		card_slot.stored_card = I
-		I.forceMove(src)
 		update_uis()
 		to_chat(user, "You insert \the [I] into \the [src].")
 		return

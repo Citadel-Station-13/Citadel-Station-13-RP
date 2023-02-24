@@ -15,6 +15,8 @@
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
 
+	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_AUX
+
 	use_power = USE_POWER_OFF
 	//Internal circuitry, friction losses and stuff
 	idle_power_usage = 150
@@ -106,9 +108,9 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \
@@ -146,7 +148,7 @@
 	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
 
 	var/power_draw = abs(energy_transfered/performance_factor)
-	air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 		use_power(power_draw)

@@ -1,7 +1,78 @@
-// /mob/var/stat things.
-#define CONSCIOUS   0
-#define UNCONSCIOUS 1
-#define DEAD        2
+
+// These are used as the layers for the icons, as well as indexes in a list that holds onto them.
+// Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
+//! Human Overlays Indexes/////////
+/// Mutations like fat, and lasereyes
+#define MUTATIONS_LAYER			1
+/// Skin things added by a call on species
+#define SKIN_LAYER				2
+/// Bloodied hands/feet/anything else
+#define BLOOD_LAYER				3
+/// Injury overlay sprites like open wounds
+#define DAMAGE_LAYER			4
+/// Overlays for open surgical sites
+#define SURGERY_LAYER			5
+/// Underwear/bras/etc
+#define UNDERWEAR_LAYER  		6
+/// Shoe-slot item (when set to be under uniform via verb)
+#define SHOES_LAYER_ALT			7
+/// Uniform-slot item
+#define UNIFORM_LAYER			8
+/// ID-slot item
+#define ID_LAYER				9
+/// Shoe-slot item
+#define SHOES_LAYER				10
+/// Glove-slot item
+#define GLOVES_LAYER			11
+/// Belt-slot item
+#define BELT_LAYER				12
+/// Suit-slot item
+#define SUIT_LAYER				13
+/// Some species have tails to render
+#define TAIL_LAYER				14
+/// Eye-slot item
+#define GLASSES_LAYER			15
+/// Belt-slot item (when set to be above suit via verb)
+#define BELT_LAYER_ALT			16
+/// Suit storage-slot item
+#define SUIT_STORE_LAYER		17
+/// Back-slot item
+#define BACK_LAYER				18
+/// The human's hair
+#define HAIR_LAYER				19
+/// Both ear-slot items (combined image)
+#define EARS_LAYER				20
+/// Mob's eyes (used for glowing eyes)
+#define EYES_LAYER				21
+/// Mask-slot item
+#define FACEMASK_LAYER			22
+/// Head-slot item
+#define HEAD_LAYER				23
+/// Handcuffs, if the human is handcuffed, in a secret inv slot
+#define HANDCUFF_LAYER			24
+/// Same as handcuffs, for legcuffs
+#define LEGCUFF_LAYER			25
+/// Left-hand item
+#define L_HAND_LAYER			26
+/// Right-hand item
+#define R_HAND_LAYER			27
+/// Wing overlay layer.
+#define WING_LAYER				28
+/// Tail alt. overlay layer for fixing overlay issues.
+#define TAIL_LAYER_ALT			29
+/// Effects drawn by modifiers
+#define MODIFIER_EFFECTS_LAYER	30
+/// 'Mob on fire' overlay layer
+#define FIRE_LAYER				31
+/// 'Mob submerged' overlay layer
+#define MOB_WATER_LAYER			32
+/// 'Aimed at' overlay layer
+#define TARGETED_LAYER			33
+//! KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
+#define TOTAL_LAYERS			33
+//! the offset used
+#define BODY_LAYER		-100
+//////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
 #define CANSTUN     0x1
@@ -17,12 +88,6 @@
 #define FAKEDEATH   0x2000
 /// Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
 #define DISFIGURED  0x4000
-// Grab levels.
-#define GRAB_PASSIVE    1
-#define GRAB_AGGRESSIVE 2
-#define GRAB_NECK       3
-#define GRAB_UPGRADING  4
-#define GRAB_KILL       5
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2
@@ -134,34 +199,16 @@
 #define MAX_SUPPLIED_LAW_NUMBER 50
 
 //default item on-mob icons
-#define INV_HEAD_DEF_ICON 'icons/mob/clothing/head.dmi'
-#define INV_BACK_DEF_ICON 'icons/mob/clothing/back.dmi'
-#define INV_L_HAND_DEF_ICON 'icons/mob/items/lefthand.dmi'
-#define INV_R_HAND_DEF_ICON 'icons/mob/items/righthand.dmi'
-#define INV_W_UNIFORM_DEF_ICON 'icons/mob/clothing/uniform.dmi'
 #define INV_ACCESSORIES_DEF_ICON 'icons/mob/clothing/ties.dmi'
-#define INV_TIE_DEF_ICON 'icons/mob/clothing/ties.dmi'
-#define INV_SUIT_DEF_ICON 'icons/mob/clothing/suits.dmi'
-#define INV_SPACESUIT_DEF_ICON 'icons/mob/clothing/spacesuits.dmi'
-#define INV_WEAR_ID_DEF_ICON 'icons/mob/mob.dmi'
-#define INV_GLOVES_DEF_ICON 'icons/mob/clothing/hands.dmi'
-#define INV_EYES_DEF_ICON 'icons/mob/clothing/eyes.dmi'
-#define INV_EARS_DEF_ICON 'icons/mob/clothing/ears.dmi'
-#define INV_FEET_DEF_ICON 'icons/mob/clothing/feet.dmi'
-#define INV_BELT_DEF_ICON 'icons/mob/clothing/belt.dmi'
-#define INV_MASK_DEF_ICON 'icons/mob/clothing/mask.dmi'
-#define INV_HCUFF_DEF_ICON 'icons/mob/mob.dmi'
-#define INV_LCUFF_DEF_ICON 'icons/mob/mob.dmi'
 
 // Character's economic class
-#define CLASS_UPPER  "Wealthy"
-#define CLASS_UPMID  "Well-off"
-#define CLASS_MIDDLE "Average"
+#define CLASS_UPPER  "Well-Off"
+#define CLASS_MIDDLE  "Average"
 #define CLASS_LOWMID "Underpaid"
-#define CLASS_LOWER  "Poor"
+#define CLASS_LOWISH "Poor"
+#define CLASS_LOW  "Impoverished"
 
-#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
-
+#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWISH,CLASS_LOW)
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
 #define MOB_HUGE  		40
@@ -266,6 +313,7 @@
 #define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
 //Vision flags, for dealing with plane visibility
+// todo: kill this shit, why are we using ordered indexed lists for something only on players and therefore cheap to spam?
 #define VIS_FULLBRIGHT		1
 #define VIS_LIGHTING		2
 #define VIS_GHOSTS			3
@@ -287,10 +335,9 @@
 #define VIS_STATUS			15
 #define VIS_SPACE			16
 #define VIS_SONAR			17
+#define VIS_EMISSIVE		18
 ///Must be highest number from above.
-#define VIS_COUNT			17
-//Some mob icon layering defines
-#define BODY_LAYER		-100
+#define VIS_COUNT			18
 
 // Clothing flags, organized in roughly top-bottom
 #define EXAMINE_SKIPHELMET			0x0001
@@ -322,3 +369,16 @@
 
 /// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
 #define EXAMINE_MORE_TIME 1 SECONDS
+
+#define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
+
+//! Blood levels
+#define BLOOD_VOLUME_MAX_LETHAL  2150
+#define BLOOD_VOLUME_EXCESS      2100
+#define BLOOD_VOLUME_MAXIMUM     2000
+#define BLOOD_VOLUME_SLIME_SPLIT 1120
+#define BLOOD_VOLUME_NORMAL      560
+#define BLOOD_VOLUME_SAFE        475
+#define BLOOD_VOLUME_OKAY        336
+#define BLOOD_VOLUME_BAD         224
+#define BLOOD_VOLUME_SURVIVE     122

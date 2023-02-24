@@ -40,7 +40,7 @@
 	else
 		AddComponent(/datum/component/ghostrole_spawnpoint, role_type, role_spawns, role_params, /obj/structure/ghost_role_spawner/proc/on_spawn, null, special_spawntext)
 
-/obj/structure/ghost_role_spawner/proc/on_spawn(mob/created, datum/ghostrole/role, list/params, datum/component/ghostrole_spawnpoint/spawnpoint)
+/obj/structure/ghost_role_spawner/proc/on_spawn(mob/created, datum/role/ghostrole/role, list/params, datum/component/ghostrole_spawnpoint/spawnpoint)
 	if(qdel_on_deplete && !spawnpoint.SpawnsLeft())
 		qdel(src)
 
@@ -66,7 +66,7 @@
 	return ..()
 
 /obj/structure/ghost_role_spawner/custom/proc/GenerateRole(id = role_type, mob_path = src.mob_path)
-	var/datum/ghostrole/G = get_ghostrole_datum(id)
+	var/datum/role/ghostrole/G = get_ghostrole_datum(id)
 	if(G)
 		return
 	G = new(id)

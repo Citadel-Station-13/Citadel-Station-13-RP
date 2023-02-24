@@ -3,7 +3,7 @@
 	if(desc)
 		. += "[desc]"
 
-	var/obj/act_module = get_active_hand()
+	var/obj/act_module = get_active_held_item()
 	if(act_module)
 		. += "It is holding [icon2html(act_module, user)] \a [act_module]."
 	// var/effects_exam = status_effect_examines()
@@ -53,6 +53,9 @@
 	if(ooc_notes)
 		. += SPAN_BOLDNOTICE("\nOOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
 
+	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
+		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
+
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]\n"
 
@@ -61,9 +64,10 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		. += "\nIt is [pose]"
 
+	if(laws && isobserver(user))
+		user.showLaws(src)
+
 	if(LAZYLEN(.) > 1)
 		.[2] = "<hr>[.[2]]"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, usr, .)
-
-	. += ..()

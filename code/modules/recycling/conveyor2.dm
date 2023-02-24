@@ -109,7 +109,7 @@
 	var/turf/T = get_step(src, movedir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
 	var/items_moved = 0
@@ -127,28 +127,27 @@
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
-	if(isrobot(user))	return //Carn: fix for borgs dropping their modules on conveyor belts
-	if(I.loc != user)	return // This should stop mounted modules ending up outside the module.
-
 	if(default_deconstruction_screwdriver(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/multitool))
 		if(panel_open)
 			var/input = sanitize(input(usr, "What id would you like to give this conveyor?", "Multitool-Conveyor interface", id))
 			if(!input)
 				to_chat(user, "No input found. Please hang up and try your call again.")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			id = input
 			for(var/obj/machinery/conveyor_switch/C in GLOB.machines)
 				if(C.id == id)
 					C.conveyors |= src
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	user.drop_item(get_turf(src))
-	return
+	if(user.a_intent == INTENT_HELP)
+		user.transfer_item_to_loc(I, loc)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 // attack with hand, move pulled object onto conveyor
 /obj/machinery/conveyor/attack_hand(mob/user as mob)
@@ -167,7 +166,6 @@
 		step(user.pulling, get_dir(user.pulling.loc, src))
 		user.stop_pulling()
 	return
-
 
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
@@ -292,8 +290,8 @@
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
-			playsound(src, WT.usesound, 50, 1)
-			if(do_after(user, 20 * WT.toolspeed))
+			playsound(src, WT.tool_sound, 50, 1)
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 				new /obj/item/stack/material/steel( src.loc, 2 )

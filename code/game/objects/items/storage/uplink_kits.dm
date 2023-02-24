@@ -21,7 +21,7 @@
 			new /obj/item/tank/emergency/oxygen/double(src)
 
 		if("guns")
-			new /obj/item/gun/projectile/revolver(src)
+			new /obj/item/gun/ballistic/revolver(src)
 			new /obj/item/ammo_magazine/s357(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
@@ -177,7 +177,7 @@
 	name = "\improper Smooth operator"
 	desc = "Compact 9mm with silencer kit."
 	starts_with = list(
-		/obj/item/gun/projectile/pistol,
+		/obj/item/gun/ballistic/pistol,
 		/obj/item/silencer
 	)
 

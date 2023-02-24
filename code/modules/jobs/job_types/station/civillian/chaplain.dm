@@ -1,4 +1,5 @@
-/datum/job/station/chaplain
+/datum/role/job/station/chaplain
+	id = JOB_ID_CHAPLAIN
 	title = "Chaplain"
 	flag = CHAPLAIN
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -14,27 +15,23 @@
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
-		"Counselor" = /datum/alt_title/counselor,
-		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor,
-		"Paracausal Scholar" = /datum/alt_title/chaplain/scholar
+		"Counselor" = /datum/prototype/alt_title/counselor,
+		"Religious Affairs Advisor" = /datum/prototype/alt_title/chaplain/advisor
 		)
 
 // Chaplain Alt Titles
-/datum/alt_title/counselor
+/datum/prototype/alt_title/counselor
 	title = "Counselor"
 	title_blurb = "The Counselor attends to the emotional needs of the crew, without a specific medicinal or spiritual focus."
 
-/datum/alt_title/chaplain/advisor
+/datum/prototype/alt_title/chaplain/advisor
 	title = "Religious Affairs Advisor"
 
-/datum/alt_title/chaplain/scholar
-	title = "Paracausal Scholar"
-
-/datum/job/station/chaplain/equip(mob/living/carbon/human/H, src)
+/datum/role/job/station/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE
-/datum/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
+/datum/role/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)
 		return

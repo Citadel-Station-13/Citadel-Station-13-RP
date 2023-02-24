@@ -28,20 +28,20 @@
 	for(var/i in 1 to 10)
 		var/area/A = pick(grand_list_of_areas)
 		if(is_area_occupied(A))
-			log_debug("Blob infestation event: Rejected [A] because it is occupied.")
+			log_debug(SPAN_DEBUGWARNING("Blob infestation event: Rejected [A] because it is occupied."))
 			continue
 		var/list/turfs = list()
 		for(var/turf/simulated/floor/F in A)
 			if(turf_clear(F))
 				turfs += F
 		if(turfs.len == 0)
-			log_debug("Blob infestation event: Rejected [A] because it has no clear turfs.")
+			log_debug(SPAN_DEBUGWARNING("Blob infestation event: Rejected [A] because it has no clear turfs."))
 			continue
 		target_area = A
 		target_turf = pick(turfs)
 
 	if(!target_area)
-		log_debug("Blob infestation event: Giving up after too many failures to pick target area")
+		log_debug(SPAN_DEBUGWARNING("Blob infestation event: Giving up after too many failures to pick target area"))
 
 /datum/gm_action/blob/start()
 	..()

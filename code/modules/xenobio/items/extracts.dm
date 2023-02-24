@@ -6,13 +6,13 @@
 	icon_state = "grey slime extract"
 	force = 1
 	w_class = ITEMSIZE_TINY
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 6
 	origin_tech = list(TECH_BIO = 4)
 	var/uses = 1 // uses before it goes inert
 	var/enhanced = FALSE
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 
 /obj/item/slime_extract/Initialize(mapload)
@@ -140,7 +140,7 @@
 /obj/item/reagent_containers/glass/bottle/metamorphic
 	name = "Metamorphic Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("metamorphic" = 60)
 
@@ -211,7 +211,7 @@
 /obj/item/reagent_containers/glass/bottle/binding
 	name = "Binding Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("binding" = 60)
 
@@ -526,7 +526,7 @@
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		// This is most likely physically impossible but when has that stopped slimes before?
-		env.add_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
+		env.adjust_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
 
 	playsound(T, 'sound/effects/phasein.ogg', 75, 1)
 
@@ -570,7 +570,7 @@
 			to_chat(S, "<span class='warning'>An intense wave of rage is felt from inside, but you remain in control of yourself.</span>")
 
 	for(var/mob/living/carbon/human/H in view(get_turf(holder.my_atom)))
-		if(H.species.name == SPECIES_PROMETHEAN)
+		if(H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 			H.add_modifier(/datum/modifier/berserk, 30 SECONDS)
 			to_chat(H, "<span class='warning'>An intense wave of rage is felt from inside, but you remain in control of yourself.</span>")
 
@@ -677,7 +677,7 @@
 /obj/item/slime_extract/oil
 	name = "oil slime extract"
 	icon_state = "oil slime extract"
-	description_info = "This extract cause a moderately sized delayed explosion if injected with phoron.  The delay is five seconds.  Extract enhancers will \
+	description_info = "This extract cause a moderately sized delayed explosion if injected with blood.  The delay is five seconds.  Extract enhancers will \
 	increase the power of the explosion instead of allowing for multiple explosions."
 
 

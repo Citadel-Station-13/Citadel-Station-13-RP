@@ -1,19 +1,19 @@
-var/list/grass_types = list(
-
-)
-
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
 	icon_state = "grass"
-	edge_blending_priority = 4
-	initial_flooring = /decl/flooring/outdoors/grass
+	initial_flooring = /singleton/flooring/outdoors/grass
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_GRASS)
+	canSmoothWith = (SMOOTH_GROUP_FLOOR_GRASS + SMOOTH_GROUP_CLOSED_TURFS)
+
 	var/grass_chance = 20
 
 	var/list/grass_types = list(
 		/obj/structure/flora/ausbushes/sparsegrass,
-		/obj/structure/flora/ausbushes/fullgrass
-		)
+		/obj/structure/flora/ausbushes/fullgrass,
+	)
 
 /datum/category_item/catalogue/flora/sif_grass
 	name = "Sivian Flora - Moss"
@@ -26,8 +26,7 @@ var/list/grass_types = list(
 /turf/simulated/floor/outdoors/grass/sif
 	name = "growth"
 	icon_state = "grass_sif"
-	initial_flooring = /decl/flooring/outdoors/grass/sif
-	edge_blending_priority = 4
+	initial_flooring = /singleton/flooring/outdoors/grass/sif
 	grass_chance = 5
 	var/tree_chance = 2
 
@@ -59,12 +58,9 @@ var/list/grass_types = list(
 	icon_state = "grass-dark"
 	grass_chance = 80
 	//tree_chance = 20
-	edge_blending_priority = 5
 
 /turf/simulated/floor/outdoors/grass/sif/forest
 	name = "thick growth"
 	icon_state = "grass_sif_dark"
-	edge_blending_priority = 5
 	tree_chance = 10
 	grass_chance = 0
-

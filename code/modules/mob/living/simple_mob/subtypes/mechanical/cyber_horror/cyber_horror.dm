@@ -162,7 +162,7 @@
  // Lets us pass over everything.
 	status_flags |= LEAPING
 	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
-	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
+	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
  // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
 	sleep(5)
@@ -357,7 +357,7 @@
 	movement_cooldown = 0
 	movement_sound = 'sound/effects/servostep.ogg'
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
@@ -498,12 +498,12 @@
 /obj/item/projectile/arc/radioactive/priest
 	name  = "superheated plama discharge"
 	icon_state = "plasma3"
-	rad_power = 10
+	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
 /obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
+	. = ..()
 	new /obj/effect/explosion(T)
-	SSradiation.radiate(T, rad_power)
-	explosion(T, 0, 1, 4, adminlog = FALSE)
+	explosion(T, 0, 1, 4)
 
 ////////////////////////
 //Lavaland Cyber_Horrors

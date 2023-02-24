@@ -39,34 +39,33 @@
 	src.icon_state += "_[active]"
 	return
 
-/obj/item/implanter/attack(mob/M as mob, mob/user as mob)
-	if (!istype(M, /mob/living/carbon))
-		return
+/obj/item/implanter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if (!istype(target, /mob/living/carbon))
+		return ..()
 	if(active)
 		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>")
+			target.visible_message("<span class='warning'>[user] is attempting to implant [target].</span>")
 
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
+			user.do_attack_animation(target)
 
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 50)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+			var/turf/T1 = get_turf(target)
+			if (T1 && ((target == user) || do_after(user, 50)))
+				if(user && target && (get_turf(target) == T1) && src && src.imp)
+					target.visible_message("<span class='warning'>[target] has been implanted by [user].</span>")
 
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+					add_attack_logs(user,target,"Implanted with [imp.name] using [name]")
 
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
+					if(imp.handle_implant(target))
+						imp.post_implant(target)
 
-						if(ishuman(M))
-							var/mob/living/carbon/human/H = M
+						if(ishuman(target))
+							var/mob/living/carbon/human/H = target
 							H.update_hud_sec_implants()
 					src.imp = null
 					update()
 	else
 		to_chat(user, "<span class='warning'>You need to activate \the [src.name] first.</span>")
-	return
 
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"
@@ -108,37 +107,31 @@
 		icon_state = "cimplanter0"
 	return
 
-/obj/item/implanter/compressed/attack(mob/M as mob, mob/user as mob)
+/obj/item/implanter/compressed/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/obj/item/implant/compressed/c = imp
-	if (!c)	return
+	if (!c)
+		return
 	if (c.scanned == null)
 		to_chat(user, "Please scan an object with the implanter first.")
 		return
-	..()
+	return ..()
 
-/obj/item/implanter/compressed/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(A,/obj/item) && imp)
+	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
 			return
-		c.scanned = A
-		if(istype(A, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store \the [A.name] in this!</span>")
-			c.scanned = null
+		if(istype(I, /obj/item/storage))
+			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
-		if(istype(A.loc,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = A.loc
-			H.remove_from_mob(A)
-		else if(istype(A.loc,/obj/item/storage))
-			var/obj/item/storage/S = A.loc
-			S.remove_from_storage(A)
-		A.loc.contents.Remove(A)
+		c.scanned = I
+		I.forceMove(src)
 		update()
 
 /// Universal translator implant.

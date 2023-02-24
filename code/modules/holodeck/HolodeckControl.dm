@@ -196,7 +196,7 @@
 	emergencyShutdown()
 	..()
 
-/obj/machinery/computer/HolodeckControl/ex_act(severity)
+/obj/machinery/computer/HolodeckControl/legacy_ex_act(severity)
 	emergencyShutdown()
 	..()
 
@@ -236,30 +236,25 @@
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, T)
 					s.start()
-				T.ex_act(3)
+				LEGACY_EX_ACT(T, 3, null)
 				T.hotspot_expose(1000,500,1)
 
 /obj/machinery/computer/HolodeckControl/proc/derez(var/obj/obj , var/silent = 1)
-	holographic_objs.Remove(obj)
-
-	if(obj == null)
+	if(!obj)
 		return
 
-	if(isobj(obj))
-		var/mob/M = obj.loc
-		if(ismob(M))
-			M.remove_from_mob(obj)
+	holographic_objs -=obj
 
 	if(!silent)
 		var/obj/oldobj = obj
 		visible_message("The [oldobj.name] fades away!")
+
 	qdel(obj)
 
 /obj/machinery/computer/HolodeckControl/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
 		if(istype(T, /turf/space))
 			return 0
-
 	return 1
 
 //Why is it called toggle if it doesn't toggle?
@@ -312,7 +307,7 @@
 		holographic_mobs -= C
 		C.derez()
 
-	for(var/obj/effect/decal/cleanable/blood/B in linkedholodeck)
+	for(var/obj/effect/debris/cleanable/blood/B in linkedholodeck)
 		qdel(B)
 
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)

@@ -11,17 +11,17 @@
 
 	var/range = 25
 
-	//Simple variable to prevent me from doing attack_hand in both this and the child computer
+	/// Simple variable to prevent me from doing attack_hand in both this and the child computer.
 	var/zone = "This computer is working on a wireless range, the range is currently limited to "
 
 /obj/machinery/computer/area_atmos/Initialize(mapload)
 	. = ..()
 	scanscrubbers()
 
-/obj/machinery/computer/area_atmos/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/area_atmos/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/area_atmos/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/area_atmos/attack_hand(mob/user)
 	if(..(user))
 		return
 	ui_interact(user)
@@ -87,7 +87,7 @@
 		S.update_icon()
 		CHECK_TICK
 
-/obj/machinery/computer/area_atmos/proc/validscrubber(obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj)
+/obj/machinery/computer/area_atmos/proc/validscrubber(obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
 	if(!isobj(scrubber) || get_dist(scrubber.loc, src.loc) > src.range || scrubber.loc.z != src.loc.z)
 		return FALSE
 	return TRUE
@@ -103,7 +103,7 @@
 	if(!found)
 		status = "ERROR: No scrubber found!"
 
-	updateUsrDialog()
+	SStgui.update_uis(src)
 
 // The one that only works in the same map area
 /obj/machinery/computer/area_atmos/area
@@ -121,9 +121,9 @@
 	if(!found)
 		status = "ERROR: No scrubber found!"
 
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
-/obj/machinery/computer/area_atmos/area/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
+/obj/machinery/computer/area_atmos/area/validscrubber(obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
 	if(!istype(scrubber))
 		return FALSE
 	if(get_area(scrubber) == get_area(src))
@@ -153,7 +153,7 @@
 
 	SStgui.update_uis(src)
 
-/obj/machinery/computer/area_atmos/tag/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
+/obj/machinery/computer/area_atmos/tag/validscrubber(obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
 	if(!istype(scrubber))
 		return FALSE
 	if(scrubber.scrub_id == src.scrub_id)

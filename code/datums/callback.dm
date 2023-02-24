@@ -50,13 +50,13 @@
  */
 /datum/callback
 
-	///The object we will be calling the proc on
+	/// The object we will be calling the proc on.
 	var/datum/object = GLOBAL_PROC
-	///The proc we will be calling on the object
+	/// The proc we will be calling on the object.
 	var/delegate
-	///A list of arguments to pass into the proc
+	/// A list of arguments to pass into the proc.
 	var/list/arguments
-	///A weak reference to the user who triggered this callback
+	/// A weak reference to the user who triggered this callback.
 	var/datum/weakref/user
 
 /**
@@ -75,26 +75,6 @@
 		arguments = args.Copy(3)
 	if(usr)
 		user = WEAKREF(usr)
-/**
- * Immediately Invoke proctocall on thingtocall, with waitfor set to false
- *
- * Arguments:
- * * thingtocall Object to call on
- * * proctocall Proc to call on that object
- * * ... optional list of arguments to pass as arguments to the proc being called
- */
-/world/proc/ImmediateInvokeAsync(thingtocall, proctocall, ...)
-	set waitfor = FALSE
-
-	if(!thingtocall)
-		return
-
-	var/list/calling_arguments = length(args) > 2 ? args.Copy(3) : null
-
-	if(thingtocall == GLOBAL_PROC)
-		call(proctocall)(arglist(calling_arguments))
-	else
-		call(thingtocall, proctocall)(arglist(calling_arguments))
 
 /**
  * Invoke this callback

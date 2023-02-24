@@ -45,13 +45,13 @@ SUBSYSTEM_DEF(gamemaster)
 		adjust_staleness(global_afk) // Staleness increases faster if more people are less active.
 
 		if(world.time < next_action && prob(staleness * 2) )
-			log_debug("Game Master going to start something.")
+			log_debug(SPAN_DEBUG("Game Master going to start something."))
 			start_action()
 
 // This is run before committing to an action/event.
 /datum/controller/subsystem/gamemaster/proc/pre_action_checks()
 	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-		log_debug("Game Master unable to start event: SSticker is nonexistant, or the game is not ongoing.")
+		log_debug(SPAN_DEBUG("Game Master unable to start event: SSticker is nonexistant, or the game is not ongoing."))
 		return FALSE
 	if(suspended)
 		return FALSE
@@ -63,17 +63,17 @@ SUBSYSTEM_DEF(gamemaster)
 	var/hours = round(mills / 36000)
 
 	if(hours < 1 && mins <= 20) // Don't do anything for the first twenty minutes of the round.
-		log_debug("Game Master unable to start event: It is too early.")
+		log_debug(SPAN_DEBUG("Game Master unable to start event: It is too early."))
 		return FALSE
 	if(hours >= 2 && mins >= 40) // Don't do anything in the last twenty minutes of the round, as well.
-		log_debug("Game Master unable to start event: It is too late.")
+		log_debug(SPAN_DEBUG("Game Master unable to start event: It is too late."))
 		return FALSE
 	return TRUE
 
 /datum/controller/subsystem/gamemaster/proc/start_action()
 	if(!pre_action_checks()) // Make sure we're not doing last minute events, or early events.
 		return
-	log_debug("Game Master now starting action decision.")
+	log_debug(SPAN_DEBUG("Game Master now starting action decision."))
 	var/list/most_active_departments = metric.assess_all_departments(3, list(last_department_used))
 	var/list/best_actions = decide_best_action(most_active_departments)
 
@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(gamemaster)
 
 		var/datum/gm_action/choice = pickweight(weighted_actions)
 		if(choice)
-			log_debug("[choice.name] was chosen by the Game Master, and is now being ran.")
+			log_debug(SPAN_DEBUG("[choice.name] was chosen by the Game Master, and is now being ran."))
 			INVOKE_ASYNC(src, .proc/run_action, choice)
 
 /datum/controller/subsystem/gamemaster/proc/run_action(var/datum/gm_action/action)
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(gamemaster)
 
 /datum/controller/subsystem/gamemaster/proc/decide_best_action(var/list/most_active_departments)
 	if(!most_active_departments.len) // Server's empty?
-		log_debug("Game Master failed to find any active departments.")
+		log_debug(SPAN_DEBUG("Game Master failed to find any active departments."))
 		return list()
 
 	var/list/best_actions = list() // List of actions which involve the most active departments.
@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(gamemaster)
 			// Try to incorporate an action with the top two departments first.
 			if((most_active_departments[1] in action.departments) && (most_active_departments[2] in action.departments))
 				best_actions.Add(action)
-				log_debug("[action.name] is being considered because both most active departments are involved.")
+				log_debug(SPAN_DEBUG("[action.name] is being considered because both most active departments are involved."))
 
 		if(best_actions.len) // We found something for those two, let's do it.
 			return best_actions
@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(gamemaster)
 			continue
 		if(most_active_departments[1] in action.departments)
 			best_actions.Add(action)
-			log_debug("[action.name] is being considered because the most active department is involved.")
+			log_debug(SPAN_DEBUG("[action.name] is being considered because the most active department is involved."))
 
 	if(best_actions.len) // Found something for the one guy.
 		return best_actions
@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(gamemaster)
 			continue
 		if(DEPARTMENT_EVERYONE in action.departments)
 			best_actions.Add(action)
-			log_debug("[action.name] is being considered because it involves everyone.")
+			log_debug(SPAN_DEBUG("[action.name] is being considered because it involves everyone."))
 
 	if(best_actions.len) // Finally, perhaps?
 		return best_actions
@@ -147,9 +147,9 @@ SUBSYSTEM_DEF(gamemaster)
 		if(!action.enabled)
 			continue
 		best_actions.Add(action)
-		log_debug("[action.name] is being considered because everything else failed.")
+		log_debug(SPAN_DEBUG("[action.name] is being considered because everything else failed."))
 
 	if(best_actions.len) // Finally, perhaps?
 		return best_actions
 	else
-		log_debug("Game Master failed to find a suitable event, something very wrong is going on.")
+		log_debug(SPAN_DEBUG("Game Master failed to find a suitable event, something very wrong is going on."))

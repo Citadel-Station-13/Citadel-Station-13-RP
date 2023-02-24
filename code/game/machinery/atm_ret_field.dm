@@ -73,8 +73,8 @@
 			to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 			return
 		user.visible_message("[user] starts to disassemble \the [src].", "You start to disassemble \the [src].")
-		playsound(src, WT.usesound, 50, 1)
-		if(do_after(user,15 * W.toolspeed))
+		playsound(src, WT.tool_sound, 50, 1)
+		if(do_after(user,15 * W.tool_speed))
 			if(!src || !user || !WT.remove_fuel(5, user)) return
 			to_chat(user, "<span class='notice'>You fully disassemble \the [src]. There were no salvageable parts.</span>")
 			qdel(src)
@@ -116,7 +116,7 @@
 		spawn(rand(reboot_delay_min,reboot_delay_max))
 			generate_field()
 
-/obj/machinery/atmospheric_field_generator/ex_act(severity)
+/obj/machinery/atmospheric_field_generator/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			disable_field()
@@ -157,7 +157,7 @@
 	//Delete ourselves if we find extra mapped in arfgs
 	for(var/obj/machinery/atmospheric_field_generator/F in loc)
 		if(F != src)
-			log_debug("Duplicate ARFGS at [x],[y],[z]")
+			log_debug(SPAN_DEBUG("Duplicate ARFGS at [x],[y],[z]"))
 			return INITIALIZE_HINT_QDEL
 
 	var/area/A = get_area(src)
@@ -192,7 +192,7 @@
 	//light_on = TRUE
 
 /obj/structure/atmospheric_retention_field/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -202,7 +202,7 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
+		add_overlay(I)
 
 	return
 
@@ -224,7 +224,7 @@
 	else
 		visible_message("You try to touch the retention field, but pass through it like it isn't even there.")
 
-/obj/structure/atmospheric_retention_field/ex_act()
+/obj/structure/atmospheric_retention_field/legacy_ex_act()
 	return
 
 /obj/structure/atmospheric_retention_field/impassable

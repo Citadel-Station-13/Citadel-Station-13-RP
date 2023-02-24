@@ -47,10 +47,6 @@
 	for(var/obj/item/I in contents)
 		w_class = max(w_class, I.w_class)
 
-	var/cur_storage_space = storage_space_used()
-	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
-		w_class++
-
 // -----------------------------
 //          Trash bag
 // -----------------------------
@@ -59,7 +55,7 @@
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trashbag"
-	item_state_slots = list(slot_r_hand_str = "trashbag", slot_l_hand_str = "trashbag")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "trashbag", SLOT_ID_LEFT_HAND = "trashbag")
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
@@ -129,23 +125,8 @@
 	var/stored_ore = list()
 	var/last_update = 0
 
-/obj/item/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
-
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
-		if(ismob(new_location))
-			W.hud_layerise()
-		else
-			W.reset_plane_and_layer()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
-
-	W.on_exit_storage(src)
-	update_icon()
-	return 1
+/obj/item/storage/bag/ore/update_w_class()
+	return
 
 /obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
 	var/success = 0
@@ -171,11 +152,11 @@
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 
-/obj/item/storage/bag/ore/equipped(mob/user, slot)
+/obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
 
-/obj/item/storage/bag/ore/dropped(mob/user)
+/obj/item/storage/bag/ore/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
@@ -201,13 +182,12 @@
 	. += "<span class='notice'>It holds:</span>"
 	for(var/ore in stored_ore)
 		. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
-	return
 
 /obj/item/storage/bag/ore/open(mob/user as mob) //No opening it for the weird UI of having shit-tons of ore inside it.
 	if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
-		examine(user)
+		user.do_examinate(src)
 
 /obj/item/storage/bag/ore/proc/update_ore_count() //Stolen from ore boxes.
 
@@ -218,6 +198,13 @@
 			stored_ore[O.name]++
 		else
 			stored_ore[O.name] = 1
+
+//Ashlander variant!
+/obj/item/storage/bag/ore/ashlander
+	name = "goliath hide mining satchel"
+	desc = "This hide bag can be used to store and transport ores."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "golisatchel"
 
 // -----------------------------
 //          Plant bag
@@ -236,6 +223,11 @@
 	name = "large plant bag"
 	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 45
+
+/obj/item/storage/bag/plants/ashlander
+	name = "goliath hide plant bag"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "golisatchel_plant"
 
 // -----------------------------
 //        Sheet Snatcher
@@ -293,15 +285,10 @@
 			break
 
 	if(!inserted || !S.amount)
-		usr.remove_from_mob(S)
-		usr.update_icons()	//update our overlays
-		if (usr.client && usr.s_active != src)
-			usr.client.screen -= S
-		S.dropped(usr)
 		if(!S.amount)
 			qdel(S)
 		else
-			S.loc = src
+			S.forceMove(src)
 
 	orient2hud(usr)
 	if(usr.s_active)

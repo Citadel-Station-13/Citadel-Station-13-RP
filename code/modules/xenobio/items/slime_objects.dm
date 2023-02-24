@@ -18,7 +18,7 @@
 
 // Sometime down the road it would be great to make all of these 'ask ghosts if they want to be X' procs into a generic datum.
 /obj/item/slime_cube/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.MayRespawn())
 			continue
 		if(O.client)
@@ -80,10 +80,15 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
-/obj/item/slime_crystal/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	target.visible_message("<span class='warning'>\The [target] has been teleported with \the [src] by \the [user]!</span>")
-	safe_blink(target, 14)
+/obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [user]!</span>")
+	safe_blink(L, 14)
 	qdel(src)
+	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")

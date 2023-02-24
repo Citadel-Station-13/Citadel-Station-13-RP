@@ -29,34 +29,13 @@
 
 	to_chat(C,"<span class='notice'>We contort our extremities and slip our cuffs.</span>")
 	playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
-	if(C.handcuffed)
-		var/obj/item/W = C.handcuffed
-		C.handcuffed = null
-		if(C.buckled && C.buckled.buckle_require_restraints)
-			C.buckled.unbuckle_mob()
-		C.update_handcuffed()
-		if (C.client)
-			C.client.screen -= W
-		W.forceMove(C.loc)
-		W.dropped(C)
-		if(W)
-			W.layer = initial(W.layer)
-	if(C.legcuffed)
-		var/obj/item/W = C.legcuffed
-		C.legcuffed = null
-		C.update_inv_legcuffed()
-		if(C.client)
-			C.client.screen -= W
-		W.forceMove(C.loc)
-		W.dropped(C)
-		if(W)
-			W.layer = initial(W.layer)
-	if(istype(C.wear_suit, /obj/item/clothing/suit/straight_jacket))
-		var/obj/item/clothing/suit/straight_jacket/SJ = C.wear_suit
-		SJ.forceMove(C.loc)
-		SJ.dropped(C)
-		C.wear_suit = null
-		escape_cooldown *= 1.5	// Straight jackets are tedious compared to cuffs.
+
+	var/mob/living/carbon/human/H = C
+
+	H.handcuffed?.forceMove(drop_location())
+	H.legcuffed?.forceMove(drop_location())
+	if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket))
+		H.wear_suit.forceMove(drop_location())
 
 	if(src.mind.changeling.recursive_enhancement)
 		escape_cooldown *= 0.5

@@ -27,7 +27,7 @@
 	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
 		..(user)
 
-/obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
+/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
 	if (has_suit)
 		return
 
@@ -110,7 +110,7 @@
 	desc = "Sturdy mess of black synthcotton belts and buckles."
 	icon_state = "pilot_webbing2"
 	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 			)
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)

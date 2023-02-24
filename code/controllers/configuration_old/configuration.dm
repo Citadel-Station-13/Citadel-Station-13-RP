@@ -2,8 +2,6 @@
 	config_legacy = new /datum/configuration_legacy()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
-	config_legacy.loadsql("config/legacy/dbconfig.txt")
-	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")
 
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
@@ -50,7 +48,6 @@
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
-	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
@@ -142,7 +139,6 @@
 
 	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 1
-	var/organs_decay
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
 
@@ -251,6 +247,11 @@
 	var/autostart_solars = FALSE // If true, specifically mapped in solar control computers will set themselves up when the round starts.
 
 	var/list/gamemode_cache = list()
+
+	var/lock_client_view_x
+	var/lock_client_view_y
+	var/max_client_view_x
+	var/max_client_view_y
 
 
 /datum/configuration_legacy/New()
@@ -513,9 +514,6 @@
 
 				if ("feature_object_spell_system")
 					config_legacy.feature_object_spell_system = 1
-
-				if ("allow_metadata")
-					config_legacy.allow_Metadata = 1
 
 				if ("traitor_scaling")
 					config_legacy.traitor_scaling = 1
@@ -852,8 +850,6 @@
 					config_legacy.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
 					config_legacy.organ_damage_spillover_multiplier = value / 100
-				if("organs_can_decay")
-					config_legacy.organs_decay = 1
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
@@ -891,94 +887,6 @@
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				sqladdress = value
-			if ("port")
-				sqlport = value
-			if ("database")
-				sqldb = value
-			if ("login")
-				sqllogin = value
-			if ("password")
-				sqlpass = value
-			if ("feedback_database")
-				sqlfdbkdb = value
-			if ("feedback_login")
-				sqlfdbklogin = value
-			if ("feedback_password")
-				sqlfdbkpass = value
-			if ("enable_stat_tracking")
-				sqllogging = 1
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				forumsqladdress = value
-			if ("port")
-				forumsqlport = value
-			if ("database")
-				forumsqldb = value
-			if ("login")
-				forumsqllogin = value
-			if ("password")
-				forumsqlpass = value
-			if ("activatedgroup")
-				forum_activated_group = value
-			if ("authenticatedgroup")
-				forum_authenticated_group = value
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up

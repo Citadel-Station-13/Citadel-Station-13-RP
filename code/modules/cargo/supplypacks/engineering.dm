@@ -84,7 +84,7 @@
 			/obj/item/paper/solar
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/engineering
+	container_type = /obj/structure/closet/crate/focalpoint
 	container_name = "Solar pack crate"
 
 /datum/supply_pack/eng/engine
@@ -146,6 +146,7 @@
 	cost = 80
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "shield generator construction kit crate"
+	
 /datum/supply_pack/eng/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
@@ -320,3 +321,11 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/heph
 	container_name = "point defense mainframe circuit crate"
+
+/datum/supply_pack/eng/portable_pump
+	name = "Portable Pump (2x)"
+	contains = list(
+		/obj/machinery/portable_atmospherics/powered/pump = 2
+	)
+	cost = 10
+	container_name = "portable pumps crate"

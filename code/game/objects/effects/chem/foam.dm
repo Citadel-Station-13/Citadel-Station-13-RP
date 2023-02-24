@@ -137,20 +137,22 @@
 /obj/structure/foamedmetal
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "metalfoam"
-	density = 1
-	opacity = 1 // changed in New()
-	anchored = 1
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+	rad_insulation = RAD_INSULATION_MEDIUM
+	rad_stickiness = 0.5
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
-	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
-/obj/structure/foamedmetal/New()
-	..()
+/obj/structure/foamedmetal/Initialize(mapload)
+	. = ..()
 	update_nearby_tiles(1)
 
 /obj/structure/foamedmetal/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_tiles(1)
 	return ..()
 
@@ -160,7 +162,7 @@
 	else
 		icon_state = "ironfoam"
 
-/obj/structure/foamedmetal/ex_act(severity)
+/obj/structure/foamedmetal/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/P)
@@ -170,7 +172,7 @@
 		qdel(src)
 
 /obj/structure/foamedmetal/attack_hand(var/mob/user)
-	if ((HULK in user.mutations) || (prob(75 - metal * 25)))
+	if ((MUTATION_HULK in user.mutations) || (prob(75 - metal * 25)))
 		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the metal foam wall.</span>")
 		qdel(src)
 	else

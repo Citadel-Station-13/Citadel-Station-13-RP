@@ -13,12 +13,12 @@
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
-		log_world("## DEBUG: getarmor() was called.")
+		log_world("## DEBUG: run_mob_armor() was called.")
 
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = getarmor(def_zone, attack_flag)
+	var/armor = run_mob_armor(def_zone, attack_flag)
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
@@ -47,7 +47,7 @@
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = getarmor(def_zone, attack_flag)
+	var/armor = run_mob_armor(def_zone, attack_flag)
 	var/absorb = 0
 
 	//Roll armour
@@ -79,17 +79,17 @@
 
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
-	var/soaked = getsoak(def_zone, attack_flag)
+	var/soaked = run_mob_soak(def_zone, attack_flag)
 	//5 points of armor pen negate one point of soak
 	if(armour_pen)
 		soaked = max(soaked - (armour_pen/5), 0)
 	return soaked
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/getarmor(var/def_zone, var/type)
+/mob/living/proc/run_mob_armor(var/def_zone, var/type)
 	return 0
 
-/mob/living/proc/getsoak(var/def_zone, var/type)
+/mob/living/proc/run_mob_soak(var/def_zone, var/type)
 	return 0
 
 // Clicking with an empty hand
@@ -99,11 +99,18 @@
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
 
+/mob/living/rad_act(strength, datum/radiation_wave/wave)
+	. = ..()
+	if(wave)
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count, TRUE)
+	else
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
+
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/assembly/signaler))
-		var/obj/item/assembly/signaler/signaler = get_active_hand()
+	if(istype(get_active_held_item(),/obj/item/assembly/signaler))
+		var/obj/item/assembly/signaler/signaler = get_active_held_item()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
@@ -123,7 +130,7 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	if ((proj_sharp || proj_edge) && prob(getarmor(def_zone, P.check_armour)))
+	if ((proj_sharp || proj_edge) && prob(run_mob_armor(def_zone, P.check_armour)))
 		proj_sharp = 0
 		proj_edge = 0
 
@@ -222,8 +229,6 @@
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] with [I.name] by [user]!</span>")
-
 	if(ai_holder)
 		ai_holder.react_to_attack(user)
 
@@ -246,11 +251,11 @@
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 
-	if(getsoak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
+	if(run_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	if(prob(max(getarmor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+	if(prob(max(run_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
@@ -259,20 +264,19 @@
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)//Standardization and logging -Sieve
-	if(istype(AM,/obj/))
+/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	if(istype(AM, /obj))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+		var/distance = get_dist(TT.initial_turf, loc)
+		miss_chance = max(5 * (distance - 2), 0)
 
 		if (prob(miss_chance))
 			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
-			return
+			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
 		var/armor = run_armor_check(null, "melee")
@@ -281,30 +285,29 @@
 
 		apply_damage(throw_damage, dtype, null, armor, soaked, is_sharp(O), has_edge(O), O)
 
-		O.throwing = 0		//it hit, so stop moving
-
-		if(ismob(O.thrower))
-			var/mob/M = O.thrower
-			var/client/assailant = M.client
-			if(assailant)
+		if(ismob(TT.thrower))
+			var/mob/M = TT.thrower
+			// we log only if one party is a player
+			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(O.thrower)
+				ai_holder.react_to_attack(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
 		if(istype(O, /obj/item))
 			var/obj/item/I = O
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
+		var/momentum = TT.speed * mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(TT.initial_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
 
-			if(!O || !src) return
+			if(!O || !src)
+				return
 
 			if(O.sharp) //Projectile is suitable for pinning.
 				if(soaked >= round(throw_damage*0.8))
@@ -324,7 +327,7 @@
 /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 	O.loc = src
 	src.embedded += O
-	src.verbs += /mob/proc/yank_out_object
+	add_verb(src, /mob/proc/yank_out_object)
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
@@ -391,8 +394,8 @@
 		ExtinguishMob() //Fire's been put out.
 		return 1
 
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas[/datum/gas/oxygen] < 1)
+	var/datum/gas_mixture/G = loc?.return_air() // Check if we're standing in an oxygenless environment
+	if(!G || (G.gas[/datum/gas/oxygen] < 1))
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
@@ -440,7 +443,7 @@
 // Called when struck by lightning.
 /mob/living/proc/lightning_act()
 	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
-	Paralyse(5)
+	Unconscious(5)
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
@@ -491,8 +494,10 @@
 	return
 
 /mob/living/update_action_buttons()
-	if(!hud_used) return
-	if(!client) return
+	if(!hud_used)
+		return
+	if(!client)
+		return
 
 	if(hud_used.hud_shown != 1)	//Hud toggled to minimal
 		return

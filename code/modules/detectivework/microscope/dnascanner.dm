@@ -41,9 +41,9 @@
 
 	var/obj/item/forensics/swab/swab = W
 	if(istype(swab) && swab.is_used())
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		bloodsamp = swab
-		swab.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
 		update_icon()
 	else
@@ -121,7 +121,8 @@
 		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [bloodsamp.name]"
 		P.stamped = list(/obj/item/stamp)
-		P.overlays = list("paper_stamped")
+		P.cut_overlays()
+		P.add_overlay("paper_stamped")
 		//dna data itself
 		var/data = "No scan information available."
 		if(bloodsamp.dna != null)

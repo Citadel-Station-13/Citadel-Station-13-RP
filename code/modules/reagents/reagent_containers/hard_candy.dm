@@ -20,43 +20,37 @@
 	var/mob/living/carbon/owner
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
-	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
-/obj/item/reagent_containers/hard_candy/Initialize(mapload)
-	. = ..()
-
-/obj/item/reagent_containers/hard_candy/proc/On_Consume(var/mob/M)
-	if(!usr)
-		usr = M
+/obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M, mob/user)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		usr.drop_from_inventory(src)	//so icons update :[
-
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		if(trash)
 			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(usr)
-				usr.put_in_hands(TrashItem)
+				var/obj/item/TrashItem = new trash(user)
+				user.put_in_hands(TrashItem)
 			else if(istype(trash,/obj/item))
-				usr.put_in_hands(trash)
+				user.put_in_hands(trash)
 		qdel(src)
-	return
 
 /obj/item/reagent_containers/hard_candy/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/hard_candy/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/hard_candy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
-		return 0
+		return
 
-	if(istype(M, /mob/living/carbon))
-		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
-		if(M == user)								//If you're eating it yourself
-			if(istype(M,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
+	if(istype(target, /mob/living/carbon))
+		var/fullness = target.nutrition + (target.reagents.get_reagent_amount("nutriment") * 25)
+		if(target == user)								//If you're eating it yourself
+			if(istype(target,/mob/living/carbon/human))
+				var/mob/living/carbon/human/H = target
 				if(!H.check_has_mouth())
 					to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
 					return
@@ -71,33 +65,33 @@
 
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
-				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
+				to_chat(target, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 100 && fullness <= 300)
-				to_chat(M, "<span class='notice'>You hungrily begin to eat [src].</span>")
+				to_chat(target, "<span class='notice'>You hungrily begin to eat [src].</span>")
 			if (fullness > 300 && fullness <= 700)
-				to_chat(M, "<span class='notice'>You take a bite of [src].</span>")
+				to_chat(target, "<span class='notice'>You take a bite of [src].</span>")
 			if (fullness > 700 && fullness <= 1100)
-				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
+				to_chat(target, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
 			if (fullness > 1100 && fullness <= 1300)
-				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
+				to_chat(target, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
 			if (fullness > 1300 && fullness <= 1500)
-				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
+				to_chat(target, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
 			if (fullness > 1500 && fullness <= 1700)
-				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
+				to_chat(target, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
 			if (fullness > 1700 && fullness <= 1900)
-				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
+				to_chat(target, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
 			if (fullness > 1900 && fullness <= 2100)
-				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
+				to_chat(target, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
 			if (fullness > 2100) // There has to be a limit eventually.
-				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
+				to_chat(target, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
 				return 0
-			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				to_chat(M, "<span class='danger'>You cannot force any more of [src] to go down your throat.</span>")
+			/*if (fullness > (550 * (1 + target.overeatduration / 2000)))	// The more you eat - the more you can eat
+				to_chat(target, "<span class='danger'>You cannot force any more of [src] to go down your throat.</span>")
 				return 0*/
 
 		else
-			if(istype(M,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
+			if(istype(target,/mob/living/carbon/human))
+				var/mob/living/carbon/human/H = target
 				if(!H.check_has_mouth())
 					to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
 					return
@@ -106,34 +100,24 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
-
-				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-
-				user.setClickCooldown(user.get_attack_speed(src))
-				if(!do_mob(user, M)) return
-
-				//Do we really care about this
-				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
-
-				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
-
-			else
-				to_chat(user, "This creature does not seem to have a mouth!")
+			user.visible_message(SPAN_DANGER("[user] attempts to feed [target] [src]."))
+			user.setClickCooldown(user.get_attack_speed(src))
+			if(!do_mob(user, target, 3 SECONDS))
 				return
+			//Do we really care about this
+			// yes we do you idiot
+			add_attack_logs(user,target,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
+			user.visible_message("<span class='danger'>[user] feeds [target] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
-			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
+			playsound(target.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
-					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)
+					reagents.trans_to_mob(target, bitesize, CHEM_INGEST)
 				else
-					reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
+					reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
 				bitecount++
-				On_Consume(M)
-			return 1
-
-	return 0
+				On_Consume(target, user)
 
 /obj/item/reagent_containers/hard_candy/process()
 	if(!owner)
@@ -152,7 +136,7 @@
 	. = ..()
 	if(!iscarbon(user))
 		return
-	if(slot != slot_wear_mask)
+	if(slot != SLOT_ID_MASK)
 		owner = null
 		STOP_PROCESSING(SSobj, src) //equipped is triggered when moving from hands to mouth and vice versa
 		return
@@ -166,7 +150,7 @@
 		else
 			reagents.trans_to_mob(owner, reagents.total_volume, CHEM_INGEST)
 		succcount++
-		On_Consume(owner)
+		On_Consume(owner, owner)
 
 /obj/item/reagent_containers/hard_candy/Destroy()
 	STOP_PROCESSING(SSobj, src)

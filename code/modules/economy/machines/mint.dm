@@ -346,7 +346,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
-	flags = NOREACT
+	atom_flags = NOREACT
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "coinvend"
 	var/icon_off = "coinvent-off"
@@ -397,14 +397,14 @@
 	else
 		icon_state = icon_on
 
-/obj/machinery/coinbank/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/coinbank/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		playsound(src, O.usesound, 50, 1)
-		overlays.Cut()
+		playsound(src, O.tool_sound, 50, 1)
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, icon_panel)
+			add_overlay(image(icon, icon_panel))
 		SSnanoui.update_uis(src)
 		return
 
@@ -421,10 +421,10 @@
 		return
 
 	if(accept_check(O))
-		user.remove_from_mob(O)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		stock(O)
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
-
 
 	else if(istype(O, /obj/item/storage/bag))
 		var/obj/item/storage/bag/P = O
@@ -441,12 +441,13 @@
 
 	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to put \the [B_held] into \the [src] slot.")
+			attackby(B_held, user)
 		return
 
 	else
@@ -551,6 +552,6 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target,16,3,src)
+		throw_item.throw_at_old(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
 	return 1

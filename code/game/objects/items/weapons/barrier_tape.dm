@@ -5,7 +5,7 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
 
-	toolspeed = 3 //You can use it in surgery. It's stupid, but you can.
+	tool_speed = 3 //You can use it in surgery. It's stupid, but you can.
 
 	var/turf/start
 	var/turf/end
@@ -114,7 +114,7 @@ var/list/tape_roll_applications = list()
 	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/barrier_tape_roll/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/image/overlay = image(icon = src.icon)
 	overlay.appearance_flags = RESET_COLOR
 	if(ismob(loc))
@@ -122,14 +122,14 @@ var/list/tape_roll_applications = list()
 			overlay.icon_state = "start"
 		else
 			overlay.icon_state = "stop"
-		overlays += overlay
+		add_overlay(overlay)
 
 
-/obj/item/barrier_tape_roll/dropped(mob/user)
+/obj/item/barrier_tape_roll/dropped(mob/user, flags, atom/newLoc)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/pickup(mob/user)
+/obj/item/barrier_tape_roll/pickup(mob/user, flags, atom/oldLoc)
 	update_icon()
 	return ..()
 
@@ -303,11 +303,11 @@ var/list/tape_roll_applications = list()
 
 		if(tape_roll_applications[F] & direction) // hazard_overlay in F.overlays wouldn't work.
 			user.visible_message("\The [user] uses the adhesive of \the [src] to remove area markings from \the [F].", "You use the adhesive of \the [src] to remove area markings from \the [F].")
-			F.overlays -= hazard_overlay
+			F.cut_overlay(hazard_overlay)
 			tape_roll_applications[F] &= ~direction
 		else
 			user.visible_message("\The [user] applied \the [src] on \the [F] to create area markings.", "You apply \the [src] on \the [F] to create area markings.")
-			F.overlays |= hazard_overlay
+			F.add_overlay(hazard_overlay)
 			tape_roll_applications[F] |= direction
 		return
 

@@ -51,7 +51,7 @@
 		force_wielded = 150 //double the force of a durasteel claymore.
 		force_unwielded = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
-		throwforce = 150
+		throw_force = 150
 		force = force_unwielded
 		return
 	if(sharp || edge)
@@ -61,8 +61,8 @@
 	force_wielded = round(force_wielded*force_divisor)
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
 	force = force_unwielded
-	throwforce = round(force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
+	throw_force = round(force*thrown_force_divisor)
+	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -80,7 +80,7 @@
 	icon_state = "[base_icon][wielded]"
 	item_state = icon_state
 
-/obj/item/material/twohanded/dropped()
+/obj/item/material/twohanded/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(wielded)
 		spawn(0)
@@ -112,7 +112,7 @@
 
 /obj/item/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded
@@ -145,8 +145,8 @@
 	force_divisor = 0
 	force = 0
 	applies_material_colour = 1
-	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
 	unbreakable = 1
 	sharp = 0
 	edge = 0
@@ -163,6 +163,9 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
+	icon_state = "bone_axe0"
+	base_icon = "bone_axe"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -172,9 +175,6 @@
 
 /obj/item/material/twohanded/fireaxe/durasteel
 	default_material = "durasteel"
-
-/obj/item/material/twohanded/fireaxe/foam
-	default_material = "foam"
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
 	default_material = "plasteel"
@@ -190,6 +190,10 @@
 	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
+
+/obj/item/material/twohanded/fireaxe/scythe/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 //spears, bay edition
 /obj/item/material/twohanded/spear
@@ -218,6 +222,10 @@
 	slowdown = 1.05
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /obj/item/material/twohanded/spear/examine(mob/user)
 	. = ..()
@@ -269,6 +277,12 @@
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
+	icon_state = "bone_spear0"
+	base_icon = "bone_spear"
+	applies_material_colour = 0
+
+/obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
+	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
 	default_material = "plasteel"
@@ -299,7 +313,7 @@
 
 /obj/item/material/twohanded/sledgehammer/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded
@@ -327,39 +341,7 @@
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/twohanded/sledgehammer/pre_attack(var/mob/living/target, var/mob/living/user)
-	if(istype(target))
+/obj/item/material/twohanded/sledgehammer/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+	if(isliving(target))
 		cleave(user, target)
-
-/obj/item/material/twohanded/sledgehammer/mjollnir
-	icon_state = "mjollnir0"
-	base_icon = "mjollnir"
-	name = "Mjollnir"
-	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
-	force_divisor = 2
-	hitsound = 'sound/effects/lightningbolt.ogg'
-	force = 50
-	throwforce = 15
-	force_wielded = 75
-	slowdown = 0
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(mob/living/G, mob/user)
-	..()
-
-	if(wielded)
-		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
-			return
-		if(prob(10))
-			G.dust()
-			return
-		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
-			G.take_organ_damage(10)
-			G.Paralyse(20)
-			playsound(src.loc, "sparks", 50, 1)
-			return
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/update_icon()  //Currently only here to fuck with the on-mob icons.
-	icon_state = "mjollnir[wielded]"
-	return
+	return ..()

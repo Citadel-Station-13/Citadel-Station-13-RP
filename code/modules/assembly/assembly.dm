@@ -12,12 +12,13 @@
 	icon_state = ""
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 100)
-	throwforce = 2
+	throw_force = 2
 	throw_speed = 3
 	throw_range = 10
 	drop_sound = 'sound/items/drop/component.ogg'
 	pickup_sound =  'sound/items/pickup/component.ogg'
 	origin_tech = list(TECH_MAGNET = 1)
+	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER | WORN_RENDER_INHAND_NO_RENDER
 
 	var/secured = 1
 	var/list/attached_overlays = null

@@ -3,8 +3,11 @@
 
 //A single piece of NIF software
 /datum/nifsoft
+	abstract_type = /datum/nifsoft
+
 	var/name = "Prototype"
 	var/desc = "Contact a dev!"
+
 
 	/// The NIF that the software is stored in
 	var/obj/item/nif/nif
@@ -202,20 +205,20 @@
 	icon_state = "medical"
 	item_state = "nanomod"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	w_class = ITEMSIZE_SMALL
 	var/datum/nifsoft/stored = null
 
-/obj/item/disk/nifsoft/afterattack(var/A, mob/user, flag, params)
-	if(!in_range(user, A))
+/obj/item/disk/nifsoft/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!in_range(user, target))
 		return
 
-	if(!ishuman(user) || !ishuman(A))
+	if(!ishuman(user) || !ishuman(target))
 		return
 
-	var/mob/living/carbon/human/Ht = A
+	var/mob/living/carbon/human/Ht = target
 	var/mob/living/carbon/human/Hu = user
 
 	if(!Ht.nif || Ht.nif.stat != NIF_WORKING)
@@ -223,7 +226,7 @@
 		return
 
 	var/extra = extra_params()
-	if(A == user)
+	if(target == user)
 		to_chat(user,"<span class='notice'>You upload [src] into your NIF.</span>")
 	else
 		Ht.visible_message("<span class='warning'>[Hu] begins uploading [src] into [Ht]!</span>","<span class='danger'>[Hu] is uploading [src] into you!</span>")
@@ -231,10 +234,10 @@
 	icon_state = "[initial(icon_state)]-animate"	//makes it play the item animation upon using on a valid target
 	update_icon()
 
-	if(A == user && do_after(Hu,1 SECONDS,Ht))
+	if(target == user && do_after(Hu,1 SECONDS,Ht))
 		new stored(Ht.nif,extra)
 		qdel(src)
-	else if(A != user && do_after(Hu,10 SECONDS,Ht))
+	else if(target != user && do_after(Hu,10 SECONDS,Ht))
 		new stored(Ht.nif,extra)
 		qdel(src)
 	else
@@ -245,7 +248,6 @@
 /obj/item/disk/nifsoft/proc/extra_params()
 	return null
 
-
 // Compliance Disk //
 /obj/item/disk/nifsoft/compliance
 	name = "NIFSoft Uploader (Compliance)"
@@ -253,19 +255,18 @@
 	icon_state = "compliance"
 	item_state = "healthanalyzer"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	stored = /datum/nifsoft/compliance
 	var/laws
 
-/obj/item/disk/nifsoft/compliance/afterattack(var/A, mob/user, flag, params)
-	if(!ishuman(A))
+/obj/item/disk/nifsoft/compliance/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target))
 		return
 	if(!laws)
 		to_chat(user,"<span class='warning'>You haven't set any laws yet. Use the disk in-hand first.</span>")
 		return
-	..(A,user,flag,params)
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)
 	var/newlaws = input(user,"Please Input Laws","Compliance Laws",laws) as message

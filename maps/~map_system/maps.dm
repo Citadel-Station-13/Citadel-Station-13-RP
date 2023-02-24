@@ -12,7 +12,7 @@ var/list/all_maps = list()
 		else
 			M = new type
 		if(!M.path)
-			log_debug("Map '[M]' does not have a defined path, not adding to map list!")
+			log_debug(SPAN_DEBUGERROR("Map '[M]' does not have a defined path, not adding to map list!"))
 		else
 			all_maps[M.path] = M
 	return 1
@@ -137,7 +137,7 @@ var/list/all_maps = list()
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
-		allowed_jobs = subtypesof(/datum/job)
+		allowed_jobs = subtypesof(/datum/role/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/proc/get_zlevel_time(var/z)
@@ -262,6 +262,7 @@ var/list/all_maps = list()
 	var/name				// Friendly name of the zlevel
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
 	var/turf/base_turf = /turf/space // Type path of the base turf for this z
+
 	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
 
 // Holomaps

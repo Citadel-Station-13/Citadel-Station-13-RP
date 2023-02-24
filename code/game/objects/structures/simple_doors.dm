@@ -38,7 +38,7 @@
 		set_opacity(1)
 	if(material.products_need_process())
 		START_PROCESSING(SSobj, src)
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/structure/simple_door/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -179,7 +179,7 @@
 	visible_message("<span class='danger'>The [src] is destroyed!</span>")
 	qdel(src)
 
-/obj/structure/simple_door/ex_act(severity = 1)
+/obj/structure/simple_door/legacy_ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)
@@ -197,7 +197,7 @@
 /obj/structure/simple_door/process(delta_time)
 	if(!material.radioactivity)
 		return
-	SSradiation.radiate(src, round(material.radioactivity/3))
+	radiation_pulse(src, round(material.radioactivity / RAD_INTENSITY_DIVISOR_SIMPLE_DOOR))
 
 /obj/structure/simple_door/iron/Initialize(mapload, material_name)
 	return ..(mapload, "iron")

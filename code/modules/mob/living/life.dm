@@ -5,13 +5,14 @@
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
-	handle_regular_hud_updates()
-	handle_vision()
-	handle_light()
-
 	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
+
+	handle_regular_hud_updates()
+
+	handle_vision()
+	handle_light()
 
 	handle_actions()
 	update_canmove()
@@ -22,7 +23,7 @@
 
 	handle_instability()
 
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture/environment = loc?.return_air()
 	//Handle temperature/pressure differences between body and environment
 	if(environment)
 		handle_environment(environment)
@@ -45,7 +46,7 @@
 		handle_breathing()
 
 		//Mutations and radiation
-		handle_mutations_and_radiation()
+		handle_mutations_and_radiation(seconds)
 
 		//Blood
 		handle_blood()
@@ -59,7 +60,7 @@
 /mob/living/proc/handle_breathing()
 	return
 
-/mob/living/proc/handle_mutations_and_radiation()
+/mob/living/proc/handle_mutations_and_radiation(seconds)
 	return
 
 /mob/living/proc/handle_chemicals_in_body()
@@ -136,7 +137,7 @@
 
 /mob/living/proc/handle_paralysed()
 	if(paralysis)
-		AdjustParalysis(-1)
+		AdjustUnconscious(-1)
 	return paralysis
 
 /mob/living/proc/handle_confused()
@@ -146,7 +147,7 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & BLIND || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
+	if(sdisabilities & SDISABILITY_NERVOUS || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
 		SetBlinded(1)
 	else if(eye_blind)			//blindness, heals slowly over time
 		AdjustBlinded(-1)
@@ -154,7 +155,7 @@
 		eye_blurry = max(eye_blurry-1, 0)
 
 	//Ears
-	if(sdisabilities & DEAF)		//disabled-deaf, doesn't get better on its own
+	if(sdisabilities & SDISABILITY_DEAF)		//disabled-deaf, doesn't get better on its own
 		setEarDamage(-1, max(ear_deaf, 1))
 	else
 		// deafness heals slowly over time, unless ear_damage is over 100
@@ -221,10 +222,16 @@
 		set_light(glow_range, glow_intensity, glow_color)
 
 	else
+		if(istype(src, /mob/living/carbon))
+			var/mob/living/carbon/C = src
+			if(C.species?.species_appearance_flags & RADIATION_GLOWS)
+				return FALSE//When we glow with rads this is handled in handle_mutations_and_radiation()
 		set_light(0)
 		return FALSE
 
 /mob/living/proc/handle_darksight()
+	if(!dsoverlay)
+		return
 	if(!seedarkness) //Cheap 'always darksight' var
 		dsoverlay.alpha = 255
 		return

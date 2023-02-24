@@ -60,7 +60,7 @@
 			return TRUE
 	return FALSE
 
-obj/machinery/computer/ship/disperser/proc/is_valid_setup()
+/obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 	if(front && middle && back)
 		var/everything_in_range = (get_dist(src, front) < link_range) && (get_dist(src, middle) < link_range) && (get_dist(src, back) < link_range)
 		var/everything_in_order = (middle.Adjacent(front) && middle.Adjacent(back)) && (front.dir == middle.dir && middle.dir == back.dir)
@@ -150,7 +150,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 		data["range"] = range
 		data["next_shot"] = round(get_next_shot_seconds())
 		data["nopower"] = !data["faillink"] && (!front.powered() || !middle.powered() || !back.powered())
-		data["skill"] = user.get_skill_value(core_skill) > skill_offset
+		data["skill"] = TRUE // todo: skills
 
 		var/charge = "UNKNOWN ERROR"
 		if(get_charge_type() == OVERMAP_WEAKNESS_NONE)
@@ -183,7 +183,8 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 			. = TRUE
 
 		if("skill_calibration")
-			for(var/i = 1 to min(caldigit, usr.get_skill_value(core_skill) - skill_offset))
+			// todo: skills
+			for(var/i in 1 to 2)
 				calibration[i] = calexpected[i]
 			. = TRUE
 

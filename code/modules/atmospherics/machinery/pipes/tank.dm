@@ -9,14 +9,15 @@
 	desc = "A large vessel containing pressurized gas."
 
 	volume = 10000 //in liters, 1 meters by 1 meters by 2 meters ~tweaked it a little to simulate a pressure tank without needing to recode them yet
-	var/start_pressure = 75*ONE_ATMOSPHERE
 
-	layer = ATMOS_LAYER
+	layer = EXPOSED_PIPE_LAYER
 	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
-	density = 1
+	density = TRUE
+
+	var/start_pressure = 75*ONE_ATMOSPHERE
 
 /obj/machinery/atmospherics/pipe/tank/Initialize(mapload, newdir)
 	. = ..()
@@ -159,3 +160,18 @@
 
 	. = ..()
 	icon_state = "n2o"
+
+//Big tanks of hazardous gases can be put here.
+/obj/machinery/atmospherics/pipe/tank/chlorine
+	name = "Pressure Tank (Chlorine)"
+	icon_state = "hazard_map"
+
+/obj/machinery/atmospherics/pipe/tank/chlorine/Initialize(mapload, newdir)
+	air_temporary = new
+	air_temporary.volume = volume
+	air_temporary.temperature = T20C
+
+	air_temporary.adjust_gas(/datum/gas/chlorine, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+
+	. = ..()
+	icon_state = "hazard"

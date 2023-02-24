@@ -7,6 +7,7 @@
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
+	icon_dimension_y = 32
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 
 /obj/structure/bed/chair/Initialize(mapload)
@@ -24,12 +25,13 @@
 		if(!SK.status)
 			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
-		user.drop_item()
-		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
+		if(!user.attempt_void_item_for_installation(SK))
+			return
+		var/obj/structure/bed/chair/e_chair/E = new (loc, material.name)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		E.setDir(dir)
 		E.part = SK
-		SK.loc = E
+		SK.forceMove(E)
 		SK.master = E
 		qdel(src)
 
@@ -40,7 +42,12 @@
 		rotate_clockwise()
 	return
 
-/obj/structure/bed/chair/post_buckle_mob()
+/obj/structure/bed/chair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	update_icon()
+
+/obj/structure/bed/chair/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	update_icon()
 
 /obj/structure/bed/chair/update_icon()
@@ -53,7 +60,7 @@
 			I.plane = MOB_PLANE
 			I.color = padding_material.icon_colour
 			stool_cache[cache_key] = I
-		overlays |= stool_cache[cache_key]
+		add_overlay(stool_cache[cache_key])
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
@@ -128,8 +135,7 @@
 	return ..(mapload, "steel", "orange")
 
 /obj/structure/bed/chair/office
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 /obj/structure/bed/chair/office/update_icon()
 	return
@@ -139,25 +145,10 @@
 		return
 	..()
 
-/obj/structure/bed/chair/office/Move()
-	..()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/occupant = A
-			occupant.buckled = null
-			occupant.Move(src.loc)
-			occupant.buckled = src
-			if (occupant && (src.loc != occupant.loc))
-				if (propelled)
-					for (var/mob/O in src.loc)
-						if (O != occupant)
-							Bump(O)
-				else
-					unbuckle_mob()
-
 /obj/structure/bed/chair/office/Bump(atom/A)
 	..()
-	if(!has_buckled_mobs())	return
+	if(!has_buckled_mobs())
+		return
 
 	if(propelled)
 		for(var/a in buckled_mobs)
@@ -166,7 +157,7 @@
 			var/def_zone = ran_zone()
 			var/blocked = occupant.run_armor_check(def_zone, "melee")
 			var/soaked = occupant.get_armor_soak(def_zone, "melee")
-			occupant.throw_at(A, 3, propelled)
+			occupant.throw_at_old(A, 3, propelled)
 			occupant.apply_effect(6, STUN, blocked)
 			occupant.apply_effect(6, WEAKEN, blocked)
 			occupant.apply_effect(6, STUTTER, blocked)
@@ -441,3 +432,18 @@
 
 /obj/structure/bed/chair/apidean_stool/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
+
+/obj/structure/bed/chair/post
+	name = "tying post"
+	desc = "A primitive post used to leash beasts of burden or riding mounts to one place."
+	icon = 'icons/obj/furniture.dmi'
+	icon_state = "horsepost"
+	base_icon = "horsepost"
+
+/obj/structure/bed/chair/post/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/stack) || W.is_wirecutter())
+		return
+	..()
+
+/obj/structure/bed/chair/post/Initialize(mapload, new_material)
+	. = ..(mapload, "bone", null)

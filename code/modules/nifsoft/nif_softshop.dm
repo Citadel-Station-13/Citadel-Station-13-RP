@@ -63,6 +63,8 @@
 		starting_illegal_nifsoft = list()
 		for(var/P in (subtypesof(/datum/nifsoft) - typesof(/datum/nifsoft/package)))
 			var/datum/nifsoft/NS = P
+			if(initial(NS.abstract_type) == P)
+				continue
 			if(initial(NS.vended))
 				switch(initial(NS.illegal))
 					if(TRUE)
@@ -123,7 +125,7 @@
 			return
 
 		coin.forceMove(src.loc)
-		if(!usr.get_active_hand())
+		if(!usr.get_active_held_item())
 			usr.put_in_hands(coin)
 		to_chat(usr, "<span class='notice'>You remove \the [coin] from \the [src]</span>")
 		coin = null
@@ -160,7 +162,7 @@
 				return
 			else
 				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
 					status_message = "This machine is currently unable to process payments due to problems with the associated account."
 					status_error = 1
 				else

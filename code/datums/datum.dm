@@ -124,7 +124,6 @@
 
 	clear_signal_refs()
 	//END: ECS SHIT
-
 	return QDEL_HINT_QUEUE
 
 ///Only override this if you know what you're doing. You do not know what you're doing
@@ -144,12 +143,6 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
-
-	//END: ECS SHIT
-
-	SSnanoui.close_uis(src)
-
-	return QDEL_HINT_QUEUE
 
 #ifdef DATUMVAR_DEBUGGING_MODE
 /datum/proc/save_vars()
@@ -271,3 +264,45 @@
 		return
 	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
 	TIMER_COOLDOWN_END(source, index)
+
+//? simple serialize/deserialize; it's expected to use this for simple datums only.
+//? do not use this for /atoms, SSpersistence handles that!
+
+/**
+ * serializes us to a list
+ * note that *everything* will be trampled down to a number or text.
+ * do not store raw types.
+ *
+ * reserved:
+ * "type" - this is always the type at time of saving. this is for current limitations, DO NOT use this if at all possible.
+ */
+/datum/proc/serialize()
+	return list("type" = "[type]")
+
+/**
+ * deserializes from a list
+ *
+ * @params
+ * * data - json_decode()'d list.
+ */
+/datum/proc/deserialize(list/data)
+	return
+
+/**
+ * make a datum from a serialized list
+ * you are responsible for knowing what datums this is valid for.
+ * you are responsible for sanitizing the input.
+ */
+/proc/deserialize_datum(list/data)
+	if(istext(data))
+		data = json_decode(data)
+	var/path = text2path(data["type"])
+	ASSERT(ispath(path, /datum))
+	return (new path):deserialize(data)
+
+/**
+ * serializes a datum into a json text string
+ */
+/proc/serialize_datum(datum/D)
+	ASSERT(isdatum(D))
+	return json_encode(D.serialize())

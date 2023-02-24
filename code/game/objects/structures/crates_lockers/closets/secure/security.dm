@@ -165,7 +165,7 @@
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
 		/obj/item/clothing/under/rank/head_of_security/turtleneck,
-		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
+		/obj/item/clothing/under/oricon/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
 		/obj/item/clothing/suit/storage/vest/hos_overcoat,
@@ -250,7 +250,7 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/gun/projectile/shotgun/pump/combat/warden)
+		/obj/item/gun/ballistic/shotgun/pump/combat/warden)
 
 /obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))
@@ -342,7 +342,7 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/forensic,
-		/obj/item/gun/projectile/revolver/detective45,
+		/obj/item/gun/ballistic/revolver/detective45,
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/reagent_containers/spray/pepper,

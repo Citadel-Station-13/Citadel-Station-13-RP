@@ -74,7 +74,7 @@
 	griefProtection()
 	..()
 
-/obj/machinery/r_n_d/server/ex_act(severity)
+/obj/machinery/r_n_d/server/legacy_ex_act(severity)
 	griefProtection()
 	..()
 
@@ -106,7 +106,7 @@
 			if(removed)
 				var/heat_produced = idle_power_usage	//obviously can't produce more heat than the machine draws from it's power source
 
-				removed.add_thermal_energy(heat_produced)
+				removed.adjust_thermal_energy(heat_produced)
 
 			env.merge(removed)
 

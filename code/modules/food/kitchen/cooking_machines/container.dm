@@ -7,7 +7,7 @@
 	var/shortname
 	var/max_space = 20//Maximum sum of w-classes of foods in this container at once
 	var/max_reagents = 80//Maximum units of reagents
-	flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER | NOREACT
 	var/list/insertable = list(
 		/obj/item/reagent_containers/food/snacks,
 		/obj/item/holder,
@@ -18,7 +18,7 @@
 /obj/item/reagent_containers/cooking_container/Initialize(mapload)
 	. = ..()
 	create_reagents(max_reagents)
-	flags |= OPENCONTAINER | NOREACT
+	atom_flags |= OPENCONTAINER | NOREACT
 
 
 /obj/item/reagent_containers/cooking_container/examine(var/mob/user)
@@ -31,19 +31,18 @@
 	if (reagents.total_volume)
 		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
 
-
 /obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))
 				to_chat(user, SPAN_WARNING("There's no more space in the [src] for that!"))
 				return 0
-
-			if(!user.unEquip(I))
+			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			I.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/reagent_containers/cooking_container/verb/empty()
 	set src in view(1)
@@ -162,3 +161,10 @@
 	shortname = "rack"
 	desc = "Put ingredients 'in'/on this; designed for use with a grill. Warranty void if used incorrectly. Alt click to remove contents."
 	icon_state = "grillrack"
+
+/obj/item/reagent_containers/cooking_container/grill/spit
+	name = "bone skewer"
+	shortname = "skewer"
+	desc = "A pointed stick designed for use with a rotisserie spit. Alt click to remove contents."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "spit"

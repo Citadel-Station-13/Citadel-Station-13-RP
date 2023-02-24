@@ -35,33 +35,33 @@
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digiboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/jackboots/knee
 	name = "knee-length jackboots"
 	desc = "Taller synthleather boots with an artificial shine."
 	icon_state = "kneeboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 
 /obj/item/clothing/shoes/boots/jackboots/toeless/knee
 	name = "toe-less knee-length jackboots"
 	desc = "Modified pair of taller boots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digikneeboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/jackboots/thigh
 	name = "thigh-length jackboots"
 	desc = "Even taller synthleather boots with an artificial shine."
 	icon_state = "thighboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 
 /obj/item/clothing/shoes/boots/jackboots/toeless/thigh
 	name = "toe-less thigh-length jackboots"
 	desc = "Modified pair of even taller boots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digithighboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/workboots
@@ -75,7 +75,7 @@
 	name = "toe-less workboots"
 	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
 	icon_state = "workbootstoeless"
-	item_state_slots = list(slot_r_hand_str = "workboots", slot_l_hand_str = "workboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "workboots", SLOT_ID_LEFT_HAND = "workboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/winter
@@ -229,3 +229,53 @@
 	name = "laconic field boots"
 	desc = "These flexible boots cover the wearer's calves. An additional protective kneepad is integrated, perhaps to assist in collecting specimens in the field."
 	icon_state = "laconic"
+
+/obj/item/clothing/shoes/boots/half_moon
+	name = "Half Moon boots"
+	desc = "Perfect boots for crossing Mare Serenitatis. Flexible and tight, these boots ensure the wearer will be leaving a solid impression without sacrificing mobility."
+	icon_state = "half_moon"
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/boots/utilitarian
+	name = "utilitarian military boots"
+	desc = "These boots seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tauboots"
+	armor = list(melee = 10, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/paladin
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
+	icon_state = "paladinboot"
+	armor = list(melee = 20, bullet = 10, laser = 10, energy = 10, bomb = 20, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/paladin_fake
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
+	icon_state = "paladinboot"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/duty/alt
+	icon = 'icons/clothing/shoes/boots/duty.dmi'
+	icon_state = "altduty"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/duty/alt/knee
+	name = "knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones come up to just below the knee."
+	icon_state = "altduty_long"
+
+/obj/item/clothing/shoes/boots/duty/alt/heel
+	name = "heeled knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones feature a pronounced heel and stop just below the knee."
+	icon_state = "altduty_heel"

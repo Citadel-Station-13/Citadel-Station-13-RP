@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/food/drinks/cans
 	volume = 40 //just over one and a half cups
 	amount_per_transfer_from_this = 5
-	flags = 0 //starts closed
+	atom_flags = NONE //starts closed
 	drop_sound = 'sound/items/drop/soda.ogg'
 	pickup_sound = 'sound/items/pickup/soda.ogg'
 	var/modified_type = /obj/item/trash/punctured_can
@@ -27,9 +27,29 @@
 	. = ..()
 	reagents.add_reagent("cola", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/cola_cherry
+	name = "\improper Space Cola Cherry"
+	desc = "Cherry cola. In space!"
+	icon_state = "cherrycola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cherry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cherrycola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee
+	name = "\improper Space Cola Coffee"
+	desc = "Coffee cola. In space!"
+	icon_state = "coffeecola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coffeecola", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
-	desc = "Introduced to the vending machines by Skrellian request, this water comes straight from the Martian poles."
+	desc = "Introduced to the vending machines by Skrellian request, this water probably came from some icy comet in deep space!"
 	icon_state = "waterbottle"
 	center_of_mass = list("x"=15, "y"=8)
 	drop_sound = 'sound/items/drop/disk.ogg'
@@ -88,6 +108,17 @@
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dr_gibb", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry
+	name = "\improper Dr. Gibb Cherry"
+	desc = "A delicious blend of 42 different flavors, but mostly cherry."
+	icon_state = "dr_gibbcherry"
+	center_of_mass = list("x"=16, "y"=10)
+
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dr_gibbcherry", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/crystalgibb
 	name = "Crystal Dr. Gibb"
@@ -186,8 +217,6 @@
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
-
-
 /obj/item/reagent_containers/food/drinks/cans/gingerale/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gingerale", 30)
@@ -197,7 +226,6 @@
 	desc = "A tall can of...what one could assume to be a type of soda? There's a very confused looking female vulp on the front."
 	icon_state = "dumbjuice"
 	center_of_mass = list("x"=16, "y"=10)
-
 
 /obj/item/reagent_containers/food/drinks/cans/dumbjuice/Initialize(mapload)
 	. = ..()
@@ -237,6 +265,55 @@
 	. = ..()
 	reagents.add_reagent("coconutwater", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/nicola
+	name = "\improper NiCola Classic"
+	desc = "A can of crisp NiCola, imported directly from Osaka IV."
+	icon_state = "nicola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola_sakura
+	name = "\improper NiCola Sakura"
+	desc = "A can of crisp NiCola, subtly flavored with cherry."
+	icon_state = "nicolasakura"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola_sakura/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicolacherry", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpress
+	name = "\improper Robust Express"
+	desc = "Delicious caffeine awaits inside. It's pleasantly warm to the touch."
+	icon_state = "robustexpress"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpress/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coffee", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpressiced
+	name = "\improper Robust Express Iced"
+	desc = "Delicious caffeine awaits inside. It's refreshingly cool to the touch."
+	icon_state = "robustexpressiced"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpressiced/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("icecoffee", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte
+	name = "\improper Robust Express Latte"
+	desc = "Delicious caffeine awaits inside, now with milk! It's pleasantly warm to the touch."
+	icon_state = "robustexpresslatte"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cafe_latte", 30)
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune

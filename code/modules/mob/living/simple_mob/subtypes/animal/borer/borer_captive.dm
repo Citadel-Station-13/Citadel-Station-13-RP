@@ -25,7 +25,7 @@
 		to_chat(src, "You whisper silently, \"[message]\"")
 		to_chat(B.host, "The captive mind of [src] whispers, \"[message]\"")
 
-		for (var/mob/M in player_list)
+		for (var/mob/M in GLOB.player_list)
 			if (istype(M, /mob/new_player))
 				continue
 			else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
@@ -50,9 +50,9 @@
 			to_chat(H, "<span class='danger'>With an immense exertion of will, you regain control of your body!</span>")
 			to_chat(B.host, "<span class='danger'>You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you.</span>")
 			B.detatch()
-			verbs -= /mob/living/carbon/proc/release_control
-			verbs -= /mob/living/carbon/proc/punish_host
-			verbs -= /mob/living/carbon/proc/spawn_larvae
+			remove_verb(src, /mob/living/carbon/proc/release_control)
+			remove_verb(src, /mob/living/carbon/proc/punish_host)
+			remove_verb(src, /mob/living/carbon/proc/spawn_larvae)
 
 		return
 

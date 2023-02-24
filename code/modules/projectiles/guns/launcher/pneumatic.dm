@@ -60,19 +60,20 @@
 		to_chat(user, "There is nothing to remove in \the [src].")
 
 /obj/item/gun/launcher/pneumatic/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload_hopper(user)
 	else
 		return ..()
 
 /obj/item/gun/launcher/pneumatic/attackby(obj/item/W as obj, mob/user as mob)
 	if(!tank && istype(W,/obj/item/tank))
-		user.drop_from_inventory(W, src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		tank = W
 		user.visible_message("[user] jams [W] into [src]'s valve and twists it closed.","You jam [W] into [src]'s valve and twist it closed.")
 		update_icon()
 	else if(istype(W) && item_storage.can_be_inserted(W))
-		item_storage.handle_item_insertion(W)
+		item_storage.handle_item_insertion(W, user)
 
 /obj/item/gun/launcher/pneumatic/attack_self(mob/user as mob)
 	eject_tank(user)
@@ -170,8 +171,8 @@
 /obj/item/cannonframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pipe))
 		if(buildstate == 0)
-			user.drop_from_inventory(W)
-			qdel(W)
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			to_chat(user, "<span class='notice'>You secure the piping inside the frame.</span>")
 			buildstate++
 			update_icon()
@@ -188,8 +189,8 @@
 			return
 	else if(istype(W,/obj/item/transfer_valve))
 		if(buildstate == 4)
-			user.drop_from_inventory(W)
-			qdel(W)
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			to_chat(user, "<span class='notice'>You install the transfer valve and connect it to the piping.</span>")
 			buildstate++
 			update_icon()
@@ -199,7 +200,7 @@
 			var/obj/item/weldingtool/T = W
 			if(T.remove_fuel(0,user))
 				if(!src || !T.isOn()) return
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You weld the pipe into place.</span>")
 				buildstate++
 				update_icon()
@@ -207,7 +208,7 @@
 			var/obj/item/weldingtool/T = W
 			if(T.remove_fuel(0,user))
 				if(!src || !T.isOn()) return
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You weld the metal chassis together.</span>")
 				buildstate++
 				update_icon()
@@ -215,10 +216,10 @@
 			var/obj/item/weldingtool/T = W
 			if(T.remove_fuel(0,user))
 				if(!src || !T.isOn()) return
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You weld the valve into place.</span>")
 				new /obj/item/gun/launcher/pneumatic(get_turf(src))
 				qdel(src)
 		return
 	else
-		..()
+		return ..()

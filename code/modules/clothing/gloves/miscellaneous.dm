@@ -2,7 +2,7 @@
 	desc = "Regal blue gloves, with a nice gold trim. Swanky."
 	name = "Facility Director's gloves"
 	icon_state = "captain"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 
 /obj/item/clothing/gloves/cyborg
 	desc = "beep boop borp"
@@ -58,7 +58,7 @@
 	name = "sterile gloves"
 	desc = "Sterile gloves."
 	icon_state = "latex"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	siemens_coefficient = 1.0 //thin latex gloves, much more conductive than fabric gloves (basically a capacitor for AC)
 	permeability_coefficient = 0.01
 	germ_level = 0
@@ -86,7 +86,7 @@
 	desc = "These leather work gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
 	name = "botanist's leather gloves"
 	icon_state = "leather"
-	item_state_slots = list(slot_r_hand_str = "lightbrown", slot_l_hand_str = "lightbrown")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lightbrown", SLOT_ID_LEFT_HAND = "lightbrown")
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0.75 //thick work gloves
 	drop_sound = 'sound/items/drop/leather.ogg'
@@ -115,7 +115,7 @@
 	name = "insulated gauntlets"
 	icon_state = "gloves-vox"
 	item_state = "gloves-vox"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	species_restricted = list(SPECIES_VOX)
@@ -133,7 +133,7 @@
 	icon_state = "knuckledusters"
 	matter = list("brass" = 500)
 	attack_verb = list("punched", "beaten", "struck")
-	flags = THICKMATERIAL	// Stops rings from increasing hit strength
+	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 1
 	fingerprint_chance = 100
 	overgloves = 1
@@ -224,7 +224,7 @@
 	///Secondary trait added by the gloves to the user on wear.
 	var/secondary_trait = TRAIT_FEARLESS //what are you, a coward?
 
-/obj/item/clothing/gloves/fingerless/pugilist/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/pugilist/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		wornonce = TRUE
@@ -233,7 +233,7 @@
 			return
 		use_buffs(user, TRUE)
 
-/obj/item/clothing/gloves/fingerless/pugilist/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/pugilist/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		wornonce = FALSE
@@ -328,7 +328,7 @@
 
 /obj/item/clothing/gloves/fingerless/pugilist/rapid/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, GLOVE_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, GLOVE_TRAIT)
 
 /obj/item/clothing/gloves/fingerless/pugilist/rapid/Touch(atom/target, proximity = TRUE)
 	if(!isliving(target))
@@ -383,13 +383,13 @@
 		return
 	override[src] = ITEM_PARRY
 
-/obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot, flags)
 	. = ..()
-	if(current_equipped_slot == SLOT_GLOVES)
+	if(worn_slot == SLOT_GLOVES)
 		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, .proc/get_component_parry_data)
 		wornonce = TRUE
 
-/obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		UnregisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START)
@@ -450,7 +450,7 @@
 	inherited_trait = TRAIT_CHUNKYFINGERS // your fingers are fat because the gloves are
 	secondary_trait = TRAIT_MAULER // commit table slam
 
-/obj/item/clothing/gloves/fingerless/pugilist/mauler/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/pugilist/mauler/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		wornonce = TRUE
@@ -458,7 +458,7 @@
 			return
 		use_mauls(user, TRUE)
 
-/obj/item/clothing/gloves/fingerless/pugilist/mauler/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/pugilist/mauler/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		wornonce = FALSE
@@ -499,7 +499,7 @@
 	/// See: [/datum/component/tackler/var/skill_mod]
 	var/skill_mod = 1
 
-/obj/item/clothing/gloves/tackler/equipped(mob/user, slot)
+/obj/item/clothing/gloves/tackler/equipped(mob/user, slot, flags)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -510,7 +510,7 @@
 		else
 			qdel(tackler) // Only wearing it!
 
-/obj/item/clothing/gloves/tackler/dropped(mob/user)
+/obj/item/clothing/gloves/tackler/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(tackler)
 		qdel(tackler)
@@ -577,12 +577,12 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/carrytrait = TRAIT_QUICKER_CARRY
 
-/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/equipped(mob/user, slot)
+/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		ADD_TRAIT(user, carrytrait, GLOVE_TRAIT)
 
-/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/dropped(mob/user)
+/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	REMOVE_TRAIT(user, carrytrait, GLOVE_TRAIT)
 
@@ -610,6 +610,14 @@
 	min_distance = 2
 	skill_mod = -1
 */
+
+/obj/item/clothing/gloves/goliath
+	name = "goliath hide gloves"
+	desc = "Goliath hide is well recognized among the Scori for its resistance to heat and durability. Items fashioned out of it, like these hide gloves, are frequently used by craftsmen."
+	icon_state = "goligloves"
+	permeability_coefficient = 0.05
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/clothing/gloves/bracer
 	name = "bone bracers"

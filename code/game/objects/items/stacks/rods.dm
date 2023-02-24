@@ -5,7 +5,7 @@
 	icon_state = "rods"
 	w_class = ITEMSIZE_NORMAL
 	force = 9.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
@@ -55,7 +55,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 				M.show_message("<span class='notice'>[src] is shaped into metal by [user.name] with the weldingtool.</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
 			var/obj/item/stack/rods/R = src
 			src = null
-			var/replace = (user.get_inactive_hand()==R)
+			var/replace = (user.get_inactive_held_item()==R)
 			R.use(2)
 			if (!R && replace)
 				user.put_in_hands(new_item)

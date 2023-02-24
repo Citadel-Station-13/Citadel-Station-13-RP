@@ -10,7 +10,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 0
 
 	use_submunitions = TRUE
@@ -27,6 +27,45 @@
 		/obj/item/projectile/bullet/pellet/shotgun/flak = 3
 		)
 
+//Spread Shot
+/obj/item/projectile/scatter/heavy_shotgun
+	damage = 15
+
+	submunition_spread_max = 100
+	submunition_spread_min = 30
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun = 5
+		)
+
+/obj/item/projectile/scatter/heavy_shotgun/accurized
+	damage = 15
+
+	submunition_spread_max = 30
+	submunition_spread_min = 10
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun = 5
+		)
+
+/obj/item/projectile/scatter/heavy_shotgun/silver
+	damage = 15
+
+	submunition_spread_max = 30
+	submunition_spread_min = 10
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun/silver = 5
+		)
+
+//Custom knockback buckshot variant for Grit.
+/obj/item/projectile/scatter/heavy_shotgun/grit
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun/grit = 5
+		)
+
+//Energy Scatter
 /obj/item/projectile/scatter/laser
 	submunition_spread_max = 30
 	spread_submunition_damage = FALSE

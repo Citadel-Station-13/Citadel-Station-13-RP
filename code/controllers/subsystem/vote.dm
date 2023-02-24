@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(vote)
 	// Before doing the vote, see if anyone is playing.
 	// If not, just do the transfer.
 	var/players_are_in_round = FALSE
-	for(var/a in player_list) // Mobs with clients attached.
+	for(var/a in GLOB.player_list) // Mobs with clients attached.
 		var/mob/living/L = a
 		if(!istype(L)) // Exclude ghosts and other weird things.
 			continue
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(vote)
 		break
 
 	if(!players_are_in_round)
-		log_debug("The crew transfer shuttle was automatically called at vote time due to no players being present.")
+		log_debug(SPAN_DEBUG("The crew transfer shuttle was automatically called at vote time due to no players being present."))
 		init_shift_change(null, 1)
 		return
 

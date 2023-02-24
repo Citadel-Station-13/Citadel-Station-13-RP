@@ -118,29 +118,29 @@
 			if(O_AUG_R_HAND)
 				I.organ_tag = O_AUG_R_HAND
 				I.parent_organ = BP_R_HAND
-				I.target_slot = slot_r_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/right
 			if(O_AUG_L_HAND)
 				I.organ_tag = O_AUG_L_HAND
 				I.parent_organ = BP_L_HAND
-				I.target_slot = slot_l_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/left
 
 			if(O_AUG_R_FOREARM)
 				I.organ_tag = O_AUG_R_FOREARM
 				I.parent_organ = BP_R_ARM
-				I.target_slot = slot_r_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/right
 			if(O_AUG_L_FOREARM)
 				I.organ_tag = O_AUG_L_FOREARM
 				I.parent_organ = BP_L_ARM
-				I.target_slot = slot_l_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/left
 
 			if(O_AUG_R_UPPERARM)
 				I.organ_tag = O_AUG_R_UPPERARM
 				I.parent_organ = BP_R_ARM
-				I.target_slot = slot_r_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/right
 			if(O_AUG_L_UPPERARM)
 				I.organ_tag = O_AUG_L_UPPERARM
 				I.parent_organ = BP_L_ARM
-				I.target_slot = slot_l_hand
+				I.target_slot = /datum/inventory_slot_meta/abstract/hand/left
 
 		. = H.get_organ(I.parent_organ)
 

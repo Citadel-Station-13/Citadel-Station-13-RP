@@ -1,5 +1,8 @@
-/datum/job/station/centcom_officer //For Business
+/datum/role/job/station/centcom_officer //For Business
+	id = JOB_ID_CENTCOM_OFFICER
 	title = "CentCom Officer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_ADMIN
+	whitelist_only = 1
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
 	total_positions = 2
@@ -10,9 +13,7 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	economic_modifier = 20
-	whitelist_only = 1
-	latejoin_only = 1
+	join_types = JOB_LATEJOIN
 	outfit_type = /datum/outfit/job/station/centcom_officer
 	desc = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
 
@@ -21,8 +22,8 @@
 
 	pto_type = PTO_CIVILIAN
 
-	get_access()
-		return get_all_accesses().Copy()
+/datum/role/job/station/centcom_officer/get_access()
+	return get_all_accesses().Copy()
 
 /datum/outfit/job/station/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
@@ -36,4 +37,3 @@
 	head = /obj/item/clothing/head/beret/centcom/officer
 	r_pocket = /obj/item/pda/centcom
 	id_pda_assignment = "CentCom Officer"
-

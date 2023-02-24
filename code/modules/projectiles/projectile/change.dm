@@ -23,16 +23,12 @@
 			if(Robot.mmi)
 				qdel(Robot.mmi)
 		else
-			for(var/obj/item/W in M)
-				if(istype(W, /obj/item/implant))	//TODO: Carn. give implants a dropped() or something
-					qdel(W)
-					continue
-				M.drop_from_inventory(W)
+			M.drop_inventory(TRUE, TRUE, TRUE)
 
 		var/mob/living/new_mob
 
 		var/options = list("robot", "slime")
-		for(var/t in all_species_names())
+		for(var/t in SScharacters.all_species_names())
 			options += t
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -66,18 +62,18 @@
 
 				if(M.gender == MALE)
 					H.gender = MALE
-					H.name = pick(first_names_male)
+					H.name = pick(GLOB.first_names_male)
 				else if(M.gender == FEMALE)
 					H.gender = FEMALE
-					H.name = pick(first_names_female)
+					H.name = pick(GLOB.first_names_female)
 				else
 					H.gender = NEUTER
-					H.name = pick(first_names_female|first_names_male)
+					H.name = pick(GLOB.first_names_female | GLOB.first_names_male)
 
-				H.name += " [pick(last_names)]"
+				H.name += " [pick(GLOB.last_names)]"
 				H.real_name = H.name
 
-				H.set_species(species_type_by_name(randomize))
+				H.set_species(randomize)
 				H.universal_speak = 1
 				var/datum/preferences/A = new() //Randomize appearance for the human
 				A.randomize_appearance_and_body_for(H)

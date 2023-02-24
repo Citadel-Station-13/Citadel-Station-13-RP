@@ -31,7 +31,8 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		/datum/variable_setting_entry/atmos/phoron/hallucination = FALSE,
 		/datum/variable_setting_entry/atmos/n2o/hallucination = TRUE,
 		/datum/variable_setting_entry/atmos/hepipes/thermal_conductivity = 23500,
-		/datum/variable_setting_entry/atmos/heatpump/performance_factor = 8
+		/datum/variable_setting_entry/atmos/heatpump/performance_factor = 8,
+		/datum/variable_setting_entry/atmos/thermomachine_cheat_factor = 1
 	)
 	presets = list(
 	"ZAS - Standard" = list(
@@ -297,3 +298,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/heatpump/performance_factor
 	name = "Heat pump performance factor"
 	desc = "The Amount of thermal energy moved per electric energy expanded."
+
+/datum/variable_setting_entry/atmos/thermomachine_cheat_factor
+	name = "Cheat factor for Gas Coolers and Gas Heaters"
+	desc = "A factor by which the piped heat exchanger multiply their normal yields"

@@ -60,7 +60,7 @@
 		return
 	if(user.a_intent != INTENT_HELP)
 		return
-	if(I.item_flags & ABSTRACT)
+	if(I.item_flags & ITEM_ABSTRACT)
 		return
 	if((I.flags_1 & HOLOGRAM_1) || (I.item_flags & NO_MAT_REDEMPTION) || (tc && !is_type_in_typecache(I, tc)))
 		to_chat(user, "<span class='warning'>[parent] won't accept [I]!</span>")
@@ -82,7 +82,7 @@
 /datum/component/material_container/proc/user_insert(obj/item/I, mob/living/user)
 	set waitfor = FALSE
 	var/requested_amount
-	var/active_held = user.get_active_held_item()  // differs from I when using TK
+	var/active_held = user.get_active_held_item()  // differs from I when using MUTATION_TELEKINESIS
 	if(istype(I, /obj/item/stack) && precise_insertion)
 		var/atom/current_parent = parent
 		var/obj/item/stack/S = I

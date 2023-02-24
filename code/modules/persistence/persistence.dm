@@ -1,26 +1,3 @@
-/*
-* Returns a byond list that can be passed to the "deserialize" proc
-* to bring a new instance of this atom to its original state
-*
-* If we want to store this info, we can pass it to `json_encode` or some other
-* interface that suits our fancy, to make it into an easily-handled string
-*/
-/datum/proc/serialize()
-	var/data = list("type" = "[type]")
-	return data
-
-/*
-* This is given the byond list from above, to bring this atom to the state
-* described in the list.
-* This will be called after `New` but before `initialize`, so linking and stuff
-* would probably be handled in `initialize`
-*
-* Also, this should only be called by `list_to_object` in persistence.dm - at least
-* with current plans - that way it can actually initialize the type from the list
-*/
-/datum/proc/deserialize(var/list/data)
-	return
-
 /atom
 	// This var isn't actually used for anything, but is present so that
 	// DM's map reader doesn't forfeit on reading a JSON-serialized map

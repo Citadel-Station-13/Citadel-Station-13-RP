@@ -11,7 +11,7 @@
 	icon_dead = "morph_dead"
 	movement_cooldown = 1
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
 
 	min_oxy = 0
@@ -56,7 +56,7 @@
 	/obj/effect))
 
 /mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)
@@ -135,7 +135,7 @@
 	icon_state = initial(icon_state)
 	size_multiplier = 0
 	resize(our_size_multiplier)
-	overlays.Cut()
+	cut_overlays()
 	density = initial(density)
 
 	//Baseline stats

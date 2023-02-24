@@ -9,7 +9,7 @@
 		return
 
 	if(istype(src.loc,/mob/living/carbon))
-		src.verbs -= /mob/living/carbon/alien/diona/proc/merge
+		remove_verb(src, /mob/living/carbon/alien/diona/proc/merge)
 		return
 
 	var/list/choices = list()
@@ -19,7 +19,7 @@
 
 		if(istype(C,/mob/living/carbon/human))
 			var/mob/living/carbon/human/D = C
-			if(D.species && D.species.name == SPECIES_DIONA)
+			if(D.species && D.species.get_species_id() == SPECIES_ID_DIONA)
 				choices += C
 
 	var/mob/living/M = input(src,"Who do you wish to merge with?") in null|choices
@@ -35,8 +35,8 @@
 	to_chat(H, "You feel your being twine with that of \the [src] as it merges with your biomass.")
 	to_chat(src, "You feel your being twine with that of \the [H] as you merge with its biomass.")
 	loc = H
-	verbs += /mob/living/carbon/alien/diona/proc/split
-	verbs -= /mob/living/carbon/alien/diona/proc/merge
+	add_verb(src, /mob/living/carbon/alien/diona/proc/split)
+	remove_verb(src, /mob/living/carbon/alien/diona/proc/merge)
 	return 1
 
 /mob/living/carbon/alien/diona/proc/split()
@@ -49,7 +49,7 @@
 		return
 
 	if(!(istype(src.loc,/mob/living/carbon)))
-		src.verbs -= /mob/living/carbon/alien/diona/proc/split
+		remove_verb(src, /mob/living/carbon/alien/diona/proc/split)
 		return
 
 	to_chat(src.loc, "You feel a pang of loss as [src] splits away from your biomass.")
@@ -58,8 +58,8 @@
 	var/mob/living/M = src.loc
 
 	src.loc = get_turf(src)
-	src.verbs -= /mob/living/carbon/alien/diona/proc/split
-	src.verbs += /mob/living/carbon/alien/diona/proc/merge
+	remove_verb(src, /mob/living/carbon/alien/diona/proc/split)
+	add_verb(src, /mob/living/carbon/alien/diona/proc/merge)
 
 	if(istype(M))
 		for(var/atom/A in M.contents)

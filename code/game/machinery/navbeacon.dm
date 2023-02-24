@@ -8,7 +8,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	icon_state = "navbeacon0-f"
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
@@ -80,7 +80,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 
 	if(I.is_screwdriver())
 		open = !open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")
 
 		updateicon()

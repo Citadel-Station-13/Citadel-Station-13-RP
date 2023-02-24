@@ -1,5 +1,7 @@
-/datum/job/station/pathfinder
+/datum/role/job/station/pathfinder
+	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
 	departments_managed = list(DEPARTMENT_PLANET)
@@ -10,7 +12,6 @@
 	supervisors = "the Facility Director"
 	selection_color = "#d6d05c"
 	idtype = /obj/item/card/id/explorer/head/pathfinder
-	economic_modifier = 8
 	minimal_player_age = 7
 	pto_type = PTO_EXPLORATION
 
@@ -19,18 +20,18 @@
 	outfit_type = /datum/outfit/job/station/pathfinder
 	desc = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
-		"Expedition Lead" = /datum/alt_title/expedition_lead,
-		"Exploration Manager" = /datum/alt_title/exploration_manager,
-		"Lead Pioneer" = /datum/alt_title/pathfinder/pioneer
+		"Expedition Lead" = /datum/prototype/alt_title/expedition_lead,
+		"Exploration Manager" = /datum/prototype/alt_title/exploration_manager,
+		"Lead Pioneer" = /datum/prototype/alt_title/pathfinder/pioneer
 		)
 
-/datum/alt_title/expedition_lead
+/datum/prototype/alt_title/expedition_lead
 	title = "Expedition Lead"
 
-/datum/alt_title/exploration_manager
+/datum/prototype/alt_title/exploration_manager
 	title = "Exploration Manager"
 
-/datum/alt_title/pathfinder/pioneer
+/datum/prototype/alt_title/pathfinder/pioneer
 	title = "Lead Pioneer"
 
 /datum/outfit/job/station/pathfinder
@@ -38,9 +39,8 @@
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer //TODO: Uniforms.
 	l_ear = /obj/item/radio/headset/pathfinder
-	id_slot = slot_wear_id
-
-	pda_slot = slot_l_store
+	id_slot = SLOT_ID_WORN_ID
+	pda_slot = SLOT_ID_LEFT_POCKET
 	pda_type = /obj/item/pda/pathfinder
 	id_type = /obj/item/card/id/explorer/head/pathfinder
 	id_pda_assignment = "Pathfinder"

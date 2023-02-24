@@ -90,29 +90,27 @@ var/list/ai_status_emotions = list(
 	return
 
 /obj/machinery/ai_status_display/proc/update()
-	if(mode==0) //Blank
-		overlays.Cut()
-		return
+	switch (mode)
+		if (0) //Blank
+			cut_overlays()
 
-	if(mode==1)	// AI emoticon
-		var/datum/ai_emotion/ai_emotion = ai_status_emotions[emotion]
-		set_picture(ai_emotion.overlay)
-		return
+		if (1)	// AI emoticon
+			var/datum/ai_emotion/ai_emotion = ai_status_emotions[emotion]
+			set_picture(ai_emotion.overlay)
 
-	if(mode==2)	// BSOD
-		set_picture("ai_bsod")
-		return
+		if (2)	// BSOD
+			set_picture("ai_bsod")
 
 /obj/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
 	if(overlays.len)
-		overlays.Cut()
-	overlays += image('icons/obj/status_display.dmi', icon_state=picture_state)
+		cut_overlays()
+	add_overlay(picture_state)
 
 /obj/machinery/ai_status_display/power_change()
 	..()
 	if(machine_stat & NOPOWER)
 		if(overlays.len)
-			overlays.Cut()
+			cut_overlays()
 	else
 		update()

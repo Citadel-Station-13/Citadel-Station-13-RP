@@ -5,7 +5,7 @@
 	origin_tech = list(TECH_COMBAT = 1, TECH_ARCANE = 1)
 	w_class = ITEMSIZE_LARGE
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -16,32 +16,35 @@
 /obj/item/melee/cultblade/cultify()
 	return
 
-/obj/item/melee/cultblade/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/melee/cultblade/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		return ..()
+	if(!isliving(user))
+		return ..()
+	var/mob/living/L = user
 
-	var/zone = (user.hand ? "l_arm":"r_arm")
+	var/zone = (L.hand ? "l_arm":"r_arm")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/affecting = H.get_organ(zone)
 		to_chat(user, "<span class='danger'>An inexplicable force rips through your [affecting.name], tearing the sword from your grasp!</span>")
 		//random amount of damage between half of the blade's force and the full force of the blade.
-		user.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
-		user.Weaken(5)
+		H.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
+		H.Weaken(5)
 	else if(!istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='danger'>An inexplicable force rips through you, tearing the sword from your grasp!</span>")
 	else
 		to_chat(user, "<span class='critical'>The blade hisses, forcing itself from your manipulators. \The [src] will only allow mortals to wield it against foes, not kin.</span>")
 
-	user.drop_from_inventory(src, src.loc)
-	throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)
+	user.drop_item_to_ground(src)
+	throw_at_old(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)
 
 	var/spooky = pick('sound/hallucinations/growl1.ogg', 'sound/hallucinations/growl2.ogg', 'sound/hallucinations/growl3.ogg', 'sound/hallucinations/wail.ogg')
 	playsound(loc, spooky, 50, 1)
 
-	return 1
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/melee/cultblade/pickup(mob/user)
+/obj/item/melee/cultblade/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	if(!iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='warning'>An overwhelming feeling of dread comes over you as you pick up the cultist's sword. It would be wise to be rid of this blade quickly.</span>")

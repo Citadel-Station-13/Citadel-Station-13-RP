@@ -23,6 +23,7 @@
 	gender = NEUTER
 	voice_name = "synthesized voice"
 	silicon_privileges = PRIVILEGES_SILICON
+	rad_flags = RAD_BLOCK_CONTENTS
 	var/syndicate = 0
 	var/const/MAIN_CHANNEL = "Main Frequency"
 	var/lawchannel = MAIN_CHANNEL // Default channel on which to state laws
@@ -48,11 +49,17 @@
 
 	var/hudmode = null
 
+	/// our translation context
+	var/datum/translation_context/translation_context
+	/// default translation context type
+	var/translation_context_type = /datum/translation_context/simple/silicons
+
 /mob/living/silicon/Initialize(mapload)
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(GLOB.all_languages[LANGUAGE_GALCOM])
+	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	create_translation_context()
 	init_id()
 	init_subsystems()
 
@@ -73,9 +80,6 @@
 	name = real_name
 
 /mob/living/silicon/proc/show_laws()
-	return
-
-/mob/living/silicon/drop_item()
 	return
 
 /mob/living/silicon/emp_act(severity)
@@ -137,7 +141,6 @@
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
 
-
 /proc/islinked(var/mob/living/silicon/robot/bot, var/mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
 		return 0
@@ -145,34 +148,25 @@
 		return 1
 	return 0
 
-
 // this function shows the health of the AI in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
+	. = list()
 	if(!src.stat)
-		stat(null, text("System integrity: [round((health/getMaxHealth())*100)]%"))
+		STATPANEL_DATA_LINE("System integrity: [round((health/getMaxHealth())*100)]%")
 	else
-		stat(null, text("Systems nonfunctional"))
-
+		STATPANEL_DATA_LINE("Systems nonfunctional")
 
 // This is a pure virtual function, it should be overwritten by all subclasses
 /mob/living/silicon/proc/show_malf_ai()
-	return 0
-
-// this function displays the shuttles ETA in the status panel if the shuttle has been called
-/mob/living/silicon/proc/show_emergency_shuttle_eta()
-	if(SSemergencyshuttle)
-		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-		if(eta_status)
-			stat(null, eta_status)
-
+	return list()
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms
-/mob/living/silicon/Stat()
-	if(statpanel("Status"))
-		show_emergency_shuttle_eta()
-		show_system_integrity()
-		show_malf_ai()
-	..()
+/mob/living/silicon/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		. += show_system_integrity()
+		. += show_malf_ai()
 
 // this function displays the stations manifest in a separate window
 /mob/living/silicon/proc/show_station_manifest()
@@ -198,7 +192,7 @@
 	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	var/datum/language/added_language = GLOB.all_languages[language]
+	var/datum/language/added_language = SScharacters.resolve_language_name(language)
 	if(!added_language)
 		return
 
@@ -208,7 +202,7 @@
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
-	var/datum/language/removed_language = GLOB.all_languages[rem_language]
+	var/datum/language/removed_language = SScharacters.resolve_language_name(rem_language)
 	if(!removed_language)
 		return
 
@@ -226,7 +220,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			var/default_str
 			if(L == default_language)
 				default_str = " - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a>"
@@ -277,7 +271,7 @@
 /mob/living/silicon/binarycheck()
 	return 1
 
-/mob/living/silicon/ex_act(severity)
+/mob/living/silicon/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 
@@ -386,7 +380,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	job_master.FreeRole(job)
+	SSjob.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)
@@ -402,3 +396,12 @@
 
 /mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_METAL
+
+//! Topic
+/mob/living/silicon/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["ooc_notes"])
+		src.Examine_OOC()
+		return TRUE

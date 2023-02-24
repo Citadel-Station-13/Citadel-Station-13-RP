@@ -23,6 +23,7 @@
 	var/obj/item/integrated_object
 	/// Object type the organ will spawn.
 	var/integrated_object_type
+
 	var/target_slot = null
 
 	var/silent_deploy = FALSE
@@ -37,17 +38,84 @@
 	/// Icon state for the augment's radial icon.
 	var/radial_state = null
 
-	var/aug_cooldown = 30 SECONDS
+	var/aug_cooldown = 0 SECONDS
 	var/last_activate = null
 
 /obj/item/organ/internal/augment/Initialize(mapload)
 	. = ..()
-
 	setup_radial_icon()
-
 	if(integrated_object_type)
-		integrated_object = new integrated_object_type(src)
-		integrated_object.canremove = FALSE
+		set_item(integrated_object_type)
+
+/obj/item/organ/internal/augment/proc/set_item(obj/item/item_or_type)
+	if(ispath(item_or_type))
+		item_or_type = new item_or_type
+	register_item(item_or_type)
+
+/obj/item/organ/internal/augment/proc/register_item(obj/item/I)
+	if(!I)
+		return
+	if(integrated_object)
+		unregister_item(integrated_object)
+	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
+	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
+	if(I.loc != src)
+		I.forceMove(src)
+	integrated_object = I
+
+/obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
+	UnregisterSignal(I, list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_ITEM_DROPPED
+	))
+	if(I == integrated_object)
+		integrated_object = null
+
+/obj/item/organ/internal/augment/proc/on_item_moved(datum/source, atom/old)
+	SIGNAL_HANDLER
+
+	// gives a chance for dropped to fire
+	addtimer(CALLBACK(src, .proc/check_item_yank, source), 0)
+
+/obj/item/organ/internal/augment/proc/on_item_dropped(datum/source)
+	SIGNAL_HANDLER
+
+	var/obj/item/I = source
+	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
+	I.forceMove(src)
+	. = COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
+
+/obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
+	if(I.loc != src && I.loc != owner)
+		unregister_item(I)
+
+// todo: multi-item
+/*
+/obj/item/organ/cyberimp/arm/proc/add_item(obj/item/I)
+	if(I in items_list)
+		return
+	I.forceMove(src)
+	items_list += I
+	// ayy only dropped signal for performance, we can't possibly have shitcode that doesn't call it when removing items from a mob, right?
+	// .. right??!
+	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/magnetic_catch)
+
+/obj/item/organ/cyberimp/arm/proc/magnetic_catch(datum/source, mob/user)
+	. = COMPONENT_DROPPED_RELOCATION
+	var/obj/item/I = source			//if someone is misusing the signal, just runtime
+	if(I in items_list)
+		if(I in contents)		//already in us somehow? i probably shouldn't catch this so it's easier to spot bugs but eh..
+			return
+		I.visible_message("<span class='notice'>[I] snaps back into [src]!</span>")
+		I.forceMove(src)
+		if(I == holder)
+			holder = nul
+*/
+
+/obj/item/organ/internal/augment/Destroy()
+	if(integrated_object)
+		QDEL_NULL(integrated_object)
+	return ..()
 
 /obj/item/organ/internal/augment/proc/setup_radial_icon()
 	if(!radial_icon)
@@ -60,9 +128,6 @@
 
 /obj/item/organ/internal/augment/handle_organ_mod_special(var/removed = FALSE)
 	if(removed && integrated_object && integrated_object.loc != src)
-		if(isliving(integrated_object.loc))
-			var/mob/living/L = integrated_object.loc
-			L.drop_from_inventory(integrated_object)
 		integrated_object.forceMove(src)
 	..(removed)
 
@@ -80,35 +145,19 @@
 		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
 		return
 
-	var/item_to_equip = integrated_object
-	if(!item_to_equip && integrated_object_type)
-		item_to_equip = integrated_object_type
+	//! todo: re fucking factor.
 
-	if(ispath(item_to_equip))
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE)
-	else if(item_to_equip)
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE, src)
+	if(owner.is_in_inventory(integrated_object))
+		// retracting
+		integrated_object.forceMove(src)
+		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
+		return
 
-/*
- * The delicate handling of augment-controlled items.
- */
-
-// Attaches to the end of dropped items' code.
-
-/obj/item
-/// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
-	var/destroy_on_drop = FALSE
-	/// Used to reference the object's host organ.
-	var/obj/item/organ/my_augment = null
-
-/obj/item/dropped(mob/user)
-	. = ..()
-	if(src)
-		if(destroy_on_drop && !QDELETED(src))
-			qdel(src)
-			return
-		if(my_augment)
-			forceMove(my_augment)
+	// extending
+	if(ispath(integrated_object))
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE)
+	else if(integrated_object)
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE, src)
 
 /*
  * Human-specific mob procs.
@@ -123,12 +172,12 @@
 
 	enable_augments(usr)
 
-/mob/living/carbon/human/proc/enable_augments(var/mob/living/user)
+/mob/living/carbon/human/proc/enable_augments(mob/living/L)
 	var/list/options = list()
 
 	var/list/present_augs = list()
 
-	for(var/obj/item/organ/internal/augment/Aug in internal_organs)
+	for(var/obj/item/organ/internal/augment/Aug in organs)
 		if(Aug.my_radial_icon && !Aug.is_broken() && Aug.check_verb_compatability())
 			present_augs[Aug.radial_name] = Aug
 
@@ -141,11 +190,11 @@
 		for(var/key in options)
 			choice = key
 	else
-		choice = show_radial_menu(user, src, options)
+		choice = show_radial_menu(L, src, options)
 
 	if(!isnull(choice) && options[choice])
 		var/obj/item/organ/internal/augment/A = present_augs[choice]
-		A.augment_action(user)
+		A.augment_action(L)
 
 /* equip_augment_item
  * Used to equip an organ's augment items when possible.
@@ -165,11 +214,11 @@
 
 	if(buckled)
 		var/obj/Ob = buckled
-		if(Ob.buckle_lying)
+		if(Ob.buckle_lying(src))
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 
-	if((slot == slot_l_hand && l_hand) || (slot == slot_r_hand && r_hand))
+	if((slot == /datum/inventory_slot_meta/abstract/hand/left && l_hand) || (slot == /datum/inventory_slot_meta/abstract/hand/right && r_hand))
 		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
 		return FALSE
 
@@ -180,22 +229,16 @@
 		equipping = new equipping(src)
 
 	if(!slot)
-		put_in_any_hand_if_possible(equipping, del_if_failure)
+		if(!put_in_hands(equipping) && del_if_failure)
+			qdel(equipping)
 
 	else
-		if(slot_is_accessible(slot, equipping, src))
-			equip_to_slot(equipping, slot, 1, 1)
-		else if(destroy_on_drop || del_if_failure)
-			qdel(equipping)
+		if(!equip_to_slot_if_possible(equipping, slot, INV_OP_FLUFFLESS))
+			if(destroy_on_drop || del_if_failure)
+				qdel(equipping)
 			return FALSE
-
-	if(cling_to_organ) // Does the object automatically return to the organ?
-		equipping.my_augment = cling_to_organ
 
 	if(make_sound)
 		playsound(src, 'sound/items/change_jaws.ogg', 30, TRUE)
-
-	if(equipping.loc != src)
-		equipping.dropped()
 
 	return TRUE

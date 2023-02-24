@@ -3,10 +3,10 @@
 	desc = "An object used in marking graves."
 	icon_state = "gravemarker"
 
-	density = 1
-	anchored = 1
-	throwpass = 1
-	climbable = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE
+	anchored = TRUE
 
 	layer = ABOVE_JUNK_LAYER
 
@@ -39,39 +39,37 @@
 			. += epitaph
 
 /obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(!(get_dir(loc, target) & dir))
 		return TRUE
-	if(get_dir(loc, target) & dir)
-		return !density
-	return TRUE
+	return ..()
 
-/obj/structure/gravemarker/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/gravemarker/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(src, newLoc) & dir))
+		return TRUE
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	return FALSE
 
 /obj/structure/gravemarker/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, material.hardness * W.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				grave_name += carving_1
 				update_icon()
 		var/carving_2 = sanitizeSafe(input(user, "What message should \the [src.name] have?", "Epitaph Carving", null)  as text, MAX_NAME_LEN)
 		if(carving_2)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, material.hardness * W.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				epitaph += carving_2
 				update_icon()
 		return
 	if(W.is_wrench())
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
-		if(do_after(user, material.hardness * W.toolspeed))
+		if(do_after(user, material.hardness * W.tool_speed))
 			user.visible_message("[user] takes down \the [src.name].", "You take down \the [src.name].")
 			dismantle()
 	..()
@@ -86,7 +84,7 @@
 
 	return
 
-/obj/structure/gravemarker/ex_act(severity)
+/obj/structure/gravemarker/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			visible_message("<span class='danger'>\The [src] is blown apart!</span>")

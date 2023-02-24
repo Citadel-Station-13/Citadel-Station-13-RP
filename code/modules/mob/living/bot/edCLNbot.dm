@@ -144,8 +144,8 @@
 	switch(build_step)
 		if(0, 1)
 			if(istype(W, /obj/item/robot_parts/l_leg) || istype(W, /obj/item/robot_parts/r_leg) || (istype(W, /obj/item/organ/external/leg) && ((W.name == "robotic right leg") || (W.name == "robotic left leg"))))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "legs/frame assembly"
@@ -156,8 +156,8 @@
 
 		if(2)
 			if(istype(W, /obj/item/reagent_containers/glass/bucket))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "bucket/legs/frame assembly"
@@ -173,8 +173,8 @@
 					to_chat(user, "<span class='notice'>You welded the bucket to \the [src].</span>")
 		if(4)
 			if(isprox(W))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "proximity bucket ED assembly"
@@ -197,17 +197,17 @@
 
 		if(6)
 			if(istype(W, /obj/item/mop))
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				name = "mop ED-CLN assembly"
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				item_state = "edCLN_mop"
 				icon_state = "edCLN_mop"
-				user.drop_item()
-				qdel(W)
 
 		if(7)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
 				to_chat(user, "<span class='notice'>Attatching the mop to the frame...</span>")
 				if(do_after(user, 40) && get_turf(user) == T)
@@ -217,11 +217,10 @@
 
 		if(8)
 			if(istype(W, /obj/item/cell))
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You complete the ED-CLN.</span>")
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/cleanbot/edCLN(T,created_name)
-				user.drop_item()
-				qdel(W)
-				user.drop_from_inventory(src)
 				qdel(src)

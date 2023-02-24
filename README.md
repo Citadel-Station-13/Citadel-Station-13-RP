@@ -1,4 +1,4 @@
-## Citadel Station 13 RP
+# Citadel Station 13 RP
 
 [![Build Status](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/workflows/CI%20Suite/badge.svg)](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Percentage of issues still open")
@@ -18,21 +18,23 @@ This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
 Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019.
 
 ## DOWNLOADING
+
 [Downloading](.github/guides/DOWNLOADING.md)
 
-## :exclamation: How to compile :exclamation:
+## :exclamation: How to compile :exclamation
 
 On **May 9, 2022** we have changed the way to compile the codebase.
 
 **The quick way**. Find `bin/server.cmd` in this folder and double click it to automatically build and host the server on port 1337.
 
-**The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+**The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `citadel.dmb` in DreamDaemon.
 
 **Building CitadelRP in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
 ## Contributors
+
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
 [CitadelRP HACKMD account](https://hackmd.io/@CitadelStation13RP)
@@ -45,7 +47,7 @@ More detailed setup instructions arecoming soon, for now ask in our Discord.
 
 ## LICENSE
 
-The code for VOREStation is licensed under the [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
+The code for Citadel-Station-13-RP is licensed under the [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
 
 All code with a git authorship date after `1420675200 +0000` (2015/01/08 00:00) is assumed to be licensed under [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
 

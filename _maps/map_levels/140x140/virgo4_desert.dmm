@@ -13,6 +13,9 @@
 /obj/item/bone/skull,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
+"gz" = (
+/turf/unsimulated/mineral,
+/area/tether_away/beach/desert/explored)
 "hw" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -64,7 +67,7 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/desert/explored)
 "pc" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
@@ -94,12 +97,15 @@
 /area/tether_away/beach/desert/explored)
 "vr" = (
 /obj/random/humanoidremains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/external,
 /area/tether_away/beach/desert/explored)
 "wb" = (
 /obj/item/pickaxe,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/explored)
+"wg" = (
+/turf/unsimulated/wall/planetary/desert/standard_temp,
 /area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/machinery/light/small/flicker{
@@ -269,7 +275,7 @@
 /area/tether_away/beach/desert/explored)
 "OI" = (
 /obj/random/humanoidremains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "OO" = (
@@ -300,7 +306,7 @@
 /turf/simulated/floor/wood/classh,
 /area/tether_away/beach/desert/explored)
 "ST" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/classh,
 /area/tether_away/beach/desert/explored)
 "UP" = (
@@ -318,149 +324,149 @@
 /area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+wg
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
 "}
 (2,1,1) = {"
-kK
+wg
 kK
 kK
 kK
@@ -599,11 +605,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (3,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -741,11 +747,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (4,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -883,11 +889,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (5,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1025,11 +1031,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (6,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1167,11 +1173,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (7,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1309,11 +1315,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (8,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1451,11 +1457,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (9,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1593,11 +1599,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (10,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1735,11 +1741,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (11,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -1877,11 +1883,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (12,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2019,11 +2025,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (13,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2161,11 +2167,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (14,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2303,11 +2309,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (15,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2445,11 +2451,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (16,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2587,11 +2593,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (17,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2729,11 +2735,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (18,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -2871,11 +2877,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (19,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3013,11 +3019,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (20,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3155,11 +3161,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (21,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3297,11 +3303,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (22,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3439,11 +3445,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (23,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3581,11 +3587,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (24,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3723,11 +3729,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (25,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -3865,11 +3871,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (26,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4007,11 +4013,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (27,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4149,11 +4155,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (28,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4291,11 +4297,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (29,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4433,11 +4439,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (30,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4575,11 +4581,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (31,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4717,11 +4723,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (32,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -4859,11 +4865,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (33,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5001,11 +5007,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (34,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5143,11 +5149,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (35,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5285,11 +5291,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (36,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5427,11 +5433,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (37,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5569,11 +5575,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (38,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5711,11 +5717,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (39,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5853,11 +5859,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (40,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -5995,11 +6001,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (41,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6137,11 +6143,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (42,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6279,11 +6285,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (43,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6421,11 +6427,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (44,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6563,11 +6569,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (45,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6705,11 +6711,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (46,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6847,11 +6853,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (47,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -6989,11 +6995,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (48,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7131,11 +7137,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (49,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7273,11 +7279,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (50,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7415,11 +7421,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (51,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7557,11 +7563,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (52,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7699,11 +7705,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (53,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7841,11 +7847,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (54,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -7983,11 +7989,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (55,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8125,11 +8131,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (56,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8267,11 +8273,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (57,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8409,11 +8415,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (58,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8551,11 +8557,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (59,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8693,11 +8699,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (60,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8835,11 +8841,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (61,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -8977,11 +8983,11 @@ JW
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (62,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9119,11 +9125,11 @@ JW
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (63,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9261,11 +9267,11 @@ JW
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (64,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9403,11 +9409,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (65,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9545,11 +9551,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (66,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9687,11 +9693,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (67,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9829,11 +9835,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (68,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -9971,11 +9977,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (69,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10113,11 +10119,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (70,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10255,11 +10261,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (71,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10397,11 +10403,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (72,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10539,11 +10545,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (73,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10681,11 +10687,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (74,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10823,11 +10829,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (75,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -10965,11 +10971,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (76,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11107,11 +11113,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (77,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11249,11 +11255,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (78,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11391,11 +11397,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (79,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11533,11 +11539,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (80,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11675,11 +11681,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (81,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11817,11 +11823,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (82,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -11959,11 +11965,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (83,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12101,11 +12107,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (84,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12243,11 +12249,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (85,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12385,11 +12391,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (86,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12527,11 +12533,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (87,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12669,11 +12675,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (88,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12811,11 +12817,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (89,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -12953,11 +12959,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (90,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13095,11 +13101,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (91,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13237,11 +13243,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (92,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13379,11 +13385,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (93,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13521,11 +13527,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (94,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13663,11 +13669,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (95,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13805,11 +13811,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (96,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -13947,11 +13953,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (97,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14089,11 +14095,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (98,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14231,11 +14237,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (99,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14373,11 +14379,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (100,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14515,11 +14521,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (101,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14657,11 +14663,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (102,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14799,11 +14805,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (103,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -14941,11 +14947,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (104,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15083,11 +15089,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (105,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15225,11 +15231,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (106,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15367,11 +15373,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (107,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15489,13 +15495,12 @@ JW
 JW
 JW
 JW
-kK
-XZ
-kK
-kK
-kK
 kK
 XZ
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -15510,10 +15515,11 @@ XZ
 XZ
 XZ
 XZ
+gz
 "}
 (108,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15631,15 +15637,13 @@ JW
 JW
 JW
 JW
-kK
-XZ
-XZ
-kK
-kK
-kK
 kK
 XZ
 XZ
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -15652,10 +15656,12 @@ XZ
 XZ
 XZ
 XZ
+XZ
+gz
 "}
 (109,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15773,15 +15779,13 @@ JW
 JW
 JW
 JW
-kK
-XZ
-XZ
-kK
-kK
-kK
 kK
 XZ
 XZ
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -15794,10 +15798,12 @@ XZ
 XZ
 XZ
 XZ
+XZ
+gz
 "}
 (110,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -15915,14 +15921,14 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
 kK
 kK
 kK
 kK
 kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -15935,11 +15941,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (111,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16057,14 +16063,14 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
 kK
 kK
 kK
 kK
 kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16077,11 +16083,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (112,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16199,13 +16205,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
 kK
 kK
 kK
 kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16219,11 +16225,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (113,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16341,14 +16347,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-XZ
-kK
-kK
 kK
 kK
 XZ
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16362,10 +16367,11 @@ XZ
 XZ
 XZ
 XZ
+gz
 "}
 (114,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16483,15 +16489,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-XZ
-XZ
-kK
 kK
 kK
 XZ
 XZ
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16504,10 +16508,12 @@ XZ
 XZ
 XZ
 XZ
+XZ
+gz
 "}
 (115,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16625,15 +16631,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-XZ
-XZ
-kK
 kK
 kK
 XZ
 XZ
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16646,10 +16650,12 @@ XZ
 XZ
 XZ
 XZ
+XZ
+gz
 "}
 (116,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16767,13 +16773,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
 kK
 kK
 kK
 kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16787,11 +16793,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (117,1,1) = {"
+wg
 kK
-kK
 JW
 JW
 JW
@@ -16909,13 +16915,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
 kK
 kK
 kK
 kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -16929,10 +16935,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (118,1,1) = {"
-kK
+wg
 kK
 kK
 kK
@@ -17071,10 +17077,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (119,1,1) = {"
-kK
+wg
 kK
 kK
 kK
@@ -17213,10 +17219,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (120,1,1) = {"
-kK
+wg
 kK
 kK
 kK
@@ -17355,10 +17361,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (121,1,1) = {"
-kK
+wg
 kK
 kK
 kK
@@ -17497,10 +17503,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (122,1,1) = {"
-kK
+wg
 kK
 kK
 hw
@@ -17639,10 +17645,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (123,1,1) = {"
-kK
+wg
 kK
 hw
 uY
@@ -17781,10 +17787,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (124,1,1) = {"
-XZ
+gz
 XZ
 EJ
 zN
@@ -17923,10 +17929,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (125,1,1) = {"
-XZ
+gz
 XZ
 of
 of
@@ -18065,10 +18071,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (126,1,1) = {"
-XZ
+gz
 XZ
 XZ
 of
@@ -18207,10 +18213,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (127,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -18349,10 +18355,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (128,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -18491,10 +18497,10 @@ kK
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (129,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -18632,11 +18638,11 @@ eN
 kK
 kK
 kK
-XZ
-XZ
+gz
+gz
 "}
 (130,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -18774,11 +18780,11 @@ FM
 kK
 kK
 kK
-kK
 vn
+wg
 "}
 (131,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -18916,11 +18922,11 @@ kK
 kK
 kK
 kK
-kK
 yj
+wg
 "}
 (132,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -19058,11 +19064,11 @@ kK
 kK
 FM
 kK
-kK
 yj
+wg
 "}
 (133,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -19200,11 +19206,11 @@ kK
 kK
 FM
 FM
-kK
 yj
+wg
 "}
 (134,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -19342,11 +19348,11 @@ kK
 kK
 kK
 kK
-kK
 yj
+wg
 "}
 (135,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -19480,15 +19486,15 @@ XZ
 XZ
 XZ
 XZ
-kK
 kK
 kK
 kK
 kK
 Df
+wg
 "}
 (136,1,1) = {"
-XZ
+gz
 XZ
 XZ
 XZ
@@ -19626,15 +19632,15 @@ XZ
 XZ
 XZ
 kK
-kK
 yj
+wg
 "}
 (137,1,1) = {"
+gz
 XZ
 XZ
 XZ
-XZ
-XZ
+Js
 Js
 Js
 JR
@@ -19768,15 +19774,15 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
+gz
+gz
 "}
 (138,1,1) = {"
+gz
 XZ
 XZ
 XZ
-XZ
-XZ
+Js
 yo
 Js
 Js
@@ -19911,160 +19917,19 @@ XZ
 XZ
 XZ
 XZ
-XZ
+gz
 "}
 (139,1,1) = {"
+gz
 XZ
 XZ
-XZ
-XZ
-Js
-Js
-Js
-Js
-Js
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-"}
-(140,1,1) = {"
-XZ
-XZ
-XZ
-XZ
+gz
 yc
 yc
 yc
 yc
 xw
+gz
 XZ
 XZ
 XZ
@@ -20194,6 +20059,147 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
+gz
+"}
+(140,1,1) = {"
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
 "}

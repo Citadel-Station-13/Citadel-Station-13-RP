@@ -45,7 +45,7 @@ var/global/list/sparring_attack_cache = list()
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
 	var/stun_chance = rand(0, 100)
-	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
+	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 
 	if(attack_damage >= 5 && armour < 2 && !(target == user) && stun_chance <= attack_damage * 5) // 25% standard chance
 		switch(zone) // strong punches can have effects depending on where they hit
@@ -58,12 +58,12 @@ var/global/list/sparring_attack_cache = list()
 					// Disarm left hand
 					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
 					target.visible_message("<span class='danger'>\The [target.l_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_l_hand()
+					target.drop_left_held_item()
 			if(BP_R_ARM, BP_R_HAND)
 				if (target.r_hand)
 					// Disarm right hand
 					target.visible_message("<span class='danger'>\The [target.r_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_r_hand()
+					target.drop_right_held_item()
 			if(BP_TORSO)
 				if(!target.lying)
 					var/turf/T = get_step(get_turf(target), get_dir(get_turf(user), get_turf(target)))
@@ -121,8 +121,8 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[O_EYES]
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	if(eyes)
 		eyes.take_damage(rand(3,4), 1)
 		user.visible_message("<span class='danger'>[user] presses [TU.his] [eye_attack_text] into [target]'s [eyes.name]!</span>")
@@ -165,8 +165,8 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 
 	attack_damage = clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
@@ -239,7 +239,7 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
+	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 
 	attack_damage = clamp(attack_damage, 1, 5)
@@ -286,7 +286,7 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	attack_damage = clamp(attack_damage, 1, 5)
 

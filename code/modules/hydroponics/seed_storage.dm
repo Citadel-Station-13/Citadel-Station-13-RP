@@ -121,6 +121,7 @@
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/onionseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/peaseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
 		/obj/item/seeds/potatoseed = 3,
@@ -401,16 +402,16 @@
 			to_chat(user, "<span class='notice'>There are no seeds in \the [O.name].</span>")
 		return
 	else if(O.is_wrench())
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 	else if(O.is_screwdriver())
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
-		playsound(src, O.usesound, 50, 1)
-		overlays.Cut()
+		playsound(src, O.tool_sound, 50, 1)
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, "[initial(icon_state)]-panel")
+			add_overlay(image(icon, "[initial(icon_state)]-panel"))
 	else if((O.is_wirecutter() || istype(O, /obj/item/multitool)) && panel_open)
 		wires.Interact(user)
 
@@ -432,14 +433,7 @@
 		return 1
 
 /obj/machinery/seed_storage/proc/add(var/obj/item/seeds/O as obj, var/contraband = 0)
-	if (istype(O.loc, /mob))
-		var/mob/user = O.loc
-		user.remove_from_mob(O)
-	else if(istype(O.loc,/obj/item/storage))
-		var/obj/item/storage/S = O.loc
-		S.remove_from_storage(O, src)
-
-	O.loc = src
+	O.forceMove(src)
 	var/newID = 0
 
 	if(contraband)

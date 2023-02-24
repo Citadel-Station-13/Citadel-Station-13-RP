@@ -29,8 +29,8 @@
 
 		// Regular ghosts can always at least view if in range.
 		if(user.client)
-			var/clientviewlist = getviewsize(user.client.view)
-			if(get_dist(src_object, user) < max(clientviewlist[1], clientviewlist[2]))
+			// todo: in view range for zooming
+			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
 				. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction
@@ -120,7 +120,7 @@
 	return UI_CLOSE
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
-	if(allow_tk && (TK in mutations))
+	if(allow_tk && (MUTATION_TELEKINESIS in mutations))
 	// if(allow_tk && dna.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, src_object))
 		return UI_INTERACTIVE
 	return ..()

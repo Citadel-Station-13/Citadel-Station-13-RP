@@ -1,7 +1,6 @@
+//! Construct Spells
 
-//////////////////////////////Construct Spells/////////////////////////
-
-proc/findNullRod(var/atom/target)
+/proc/findNullRod(atom/target)
 	if(istype(target,/obj/item/nullrod))
 		return 1
 	else if(target.contents)
@@ -427,10 +426,10 @@ proc/findNullRod(var/atom/target)
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_magic.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
-	throwforce = 0
+	throw_force = 0
 	force = 0
 	show_examine = FALSE
 	owner = null
@@ -661,7 +660,7 @@ proc/findNullRod(var/atom/target)
 		L.Weaken(2)
 		L.adjustBruteLoss(rand(30, 50))
 		var/throwdir = get_dir(src, L)
-		L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 	if(istype(hit_atom, /turf/simulated/wall))
 		var/turf/simulated/wall/W = hit_atom
 		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")

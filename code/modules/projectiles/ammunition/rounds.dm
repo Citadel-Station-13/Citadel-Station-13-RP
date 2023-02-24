@@ -296,10 +296,6 @@
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
 	matter = list(MAT_STEEL = 360, MAT_GLASS = 720)
 
-/obj/item/ammo_casing/a12g/stunshell/emp_act(severity)
-	if(prob(100/severity)) BB = null
-	update_icon()
-
 //Does not stun, only blinds, but has area of effect.
 /obj/item/ammo_casing/a12g/flare
 	name = "flare shell"
@@ -484,7 +480,7 @@
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	matter = list(MAT_STEEL = 180)
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a10x24mmcaseless/ap
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
@@ -510,7 +506,7 @@
 	icon_state = "casing" // Placeholder. Should probably be purple.
 	projectile_type = /obj/item/projectile/bullet/pistol // Close enough to be comparable.
 	matter = list(MAT_STEEL = 180)
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a5mmcaseless/stun
 	desc = "A 5mm solid phoron caseless stun round."
@@ -544,7 +540,6 @@
 
 /obj/item/ammo_casing/spent // For simple hostile mobs only, so they don't cough up usable bullets when firing. This is for literally nothing else.
 	icon_state = "s-casing-spent"
-	BB = null
 	projectile_type = null
 
 /obj/item/ammo_casing/organic
@@ -565,6 +560,68 @@
 	projectile_type = /obj/item/projectile/bullet/organic/wax
 	matter = list("wax" = 100)
 
+/obj/item/ammo_casing/musket
+	name = "musket ball"
+	desc = "A solid ball made of lead."
+	icon_state = "musketball"
+	caliber = "musket"
+	projectile_type = /obj/item/projectile/bullet/musket
+	matter = list("lead" = 100)
+	casing_flags = CASING_DELETE
+
+/obj/item/ammo_casing/musket/silver
+	name = "silver musket ball"
+	desc = "A solid ball made of a lead-silver alloy."
+	icon_state = "silverball"
+	projectile_type = /obj/item/projectile/bullet/musket/silver
+	matter = list("lead" = 100, "silver" = 100)
+
+/obj/item/ammo_casing/musket/blunderbuss
+	name = "shot"
+	desc = "A bundle of lead balls and other assorted shrapnel."
+	icon_state = "blunderbuss"
+	caliber = "blunderbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss
+	matter = list("lead" = 500)
+
+/obj/item/ammo_casing/musket/blunderbuss/silver
+	name = "sliver shot"
+	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
+	icon_state = "silverbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss/silver
+	matter = list("lead" = 500, "silver" = 500)
+
+//Ten Gauge Rounds for Exotic Shotguns
+/obj/item/ammo_casing/a10g
+	name = "heavy shotgun slug"
+	desc = "A brass jacketed 10 gauge slug shell."
+	icon_state = "brshell"
+	caliber = "10g"
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun
+	matter = list(MAT_STEEL = 300, "brass" = 200)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
+
+/obj/item/ammo_casing/a10g/pellet //Spread variant.
+	name = "heavy shotgun shell"
+	desc = "A brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun
+
+/obj/item/ammo_casing/a10g/silver
+	name = "heavy silver shotgun shell"
+	desc = "A brass jacketed 10 gauge filled with blessed silver shot."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/silver
+
+//Related to the above, knockback specific variants for Grit.
+/obj/item/ammo_casing/a10g/grit
+	name = "tooled heavy shotgun slug"
+	desc = "A custom brass jacketed 10 gauge slug shell."
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun/grit
+
+/obj/item/ammo_casing/a10g/pellet/grit
+	name = "tooled heavy shotgun shell"
+	desc = "A custom brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/grit
+
 //Arrows
 /obj/item/ammo_casing/arrow
 	name = "arrow of questionable material"
@@ -572,13 +629,19 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow
 	caliber = "arrow"
 	icon_state = "arrow"
-	throwforce = 3 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
-	caseless = 1
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/arrow/wood
 	name = "wooden arrow"
 	desc = "An arrow made of wood, typically fired from a bow."
+
+/obj/item/ammo_casing/arrow/bone
+	name = "bone arrow"
+	desc = "An arrow made of bone, knapped to a piercing tip."
+	icon_state = "ashenarrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
 
 /obj/item/ammo_casing/arrow/ash
 	name = "ashen arrow"
@@ -586,11 +649,11 @@
 	icon_state = "ashenarrow"
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow/ash
 
-/obj/item/ammo_casing/arrow/bone
-	name = "bone arrow"
+/obj/item/ammo_casing/arrow/bone_ap
+	name = "hardened bone arrow"
 	desc = "An arrow made of bone and sinew. The tip is sharp enough to pierce through a goliath plate."
 	icon_state = "bonearrow"
-	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone_ap
 
 /obj/item/ammo_casing/arrow/bronze
 	name = "bronze arrow"
@@ -612,9 +675,9 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	caliber = "foamdart"
 	icon_state = "foamdart"
-	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
-	caseless = 1
+	casing_flags = CASING_DELETE
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 

@@ -4,9 +4,10 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	flags = OPENCONTAINER|NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
@@ -19,7 +20,7 @@
 
 /obj/item/reagent_containers/spray/Initialize(mapload)
 	. = ..()
-	src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
+	remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 
 /obj/item/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart))
@@ -64,7 +65,7 @@
 			if(!src)
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
-			D.set_color()
+			D.color = mix_color_from_reagents(D.reagents.reagent_list)
 			D.set_up(my_target, spray_size, 10)
 	return
 
@@ -164,7 +165,7 @@
 	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	possible_transfer_amounts = null
 	volume = 600

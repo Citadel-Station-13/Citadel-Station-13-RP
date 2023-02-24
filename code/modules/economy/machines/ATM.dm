@@ -39,7 +39,7 @@ log transactions
 
 /obj/machinery/atm/Initialize(mapload)
 	. = ..()
-	machine_id = "ATM Terminal #[num_financial_terminals++]"
+	machine_id = "ATM Terminal #[GLOB.num_financial_terminals++]"
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -81,7 +81,7 @@ log transactions
 	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
 	return TRUE
 
-/obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/atm/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	if(istype(I, /obj/item/card))
@@ -95,8 +95,8 @@ log transactions
 
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
-			usr.drop_item()
-			idcard.loc = src
+			if(!user.attempt_insert_item_for_installation(idcard, src))
+				return
 			held_card = idcard
 			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_number)
 				authenticated_account = null
@@ -118,7 +118,7 @@ log transactions
 			T.purpose = "Credit deposit"
 			T.amount = amount
 			T.source_terminal = machine_id
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = stationtime2text()
 			authenticated_account.transaction_log.Add(T)
 			attack_hand(user)
@@ -246,7 +246,7 @@ log transactions
 							T.target_name = "Account #[target_account_number]"
 							T.purpose = transfer_purpose
 							T.source_terminal = machine_id
-							T.date = current_date_string
+							T.date = GLOB.current_date_string
 							T.time = stationtime2text()
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
@@ -288,7 +288,7 @@ log transactions
 									T.target_name = failed_account.owner_name
 									T.purpose = "Unauthorised login attempt"
 									T.source_terminal = machine_id
-									T.date = current_date_string
+									T.date = GLOB.current_date_string
 									T.time = stationtime2text()
 									failed_account.transaction_log.Add(T)
 							else
@@ -308,7 +308,7 @@ log transactions
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Remote terminal access"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 
@@ -336,7 +336,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
@@ -361,7 +361,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
@@ -374,7 +374,7 @@ log transactions
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
 					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
 					//stamp the paper
@@ -383,7 +383,7 @@ log transactions
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
-					R.overlays += stampoverlay
+					R.add_overlay(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
@@ -397,7 +397,7 @@ log transactions
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"
@@ -425,7 +425,7 @@ log transactions
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
-					R.overlays += stampoverlay
+					R.add_overlay(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
@@ -439,10 +439,10 @@ log transactions
 					if(emagged > 0)
 						to_chat(usr, "<font color='red'>[icon2html(thing = src, target = usr)] The ATM card reader rejected your ID because this machine has been sabotaged!</font>")
 					else
-						var/obj/item/I = usr.get_active_hand()
+						var/obj/item/I = usr.get_active_held_item()
 						if (istype(I, /obj/item/card/id))
-							usr.drop_item()
-							I.loc = src
+							if(!usr.attempt_insert_item_for_installation(I, src))
+								return
 							held_card = I
 				else
 					release_held_id(usr)
@@ -472,7 +472,7 @@ log transactions
 					T.target_name = authenticated_account.owner_name
 					T.purpose = "Remote terminal access"
 					T.source_terminal = machine_id
-					T.date = current_date_string
+					T.date = GLOB.current_date_string
 					T.time = stationtime2text()
 					authenticated_account.transaction_log.Add(T)
 
@@ -486,14 +486,14 @@ log transactions
 	held_card.loc = src.loc
 	authenticated_account = null
 
-	if(ishuman(human_user) && !human_user.get_active_hand())
+	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(held_card)
 	held_card = null
 
 
 /obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
-	if(ishuman(human_user) && !human_user.get_active_hand())
+	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(E)
 	E.worth = sum
 	E.owner_name = authenticated_account.owner_name

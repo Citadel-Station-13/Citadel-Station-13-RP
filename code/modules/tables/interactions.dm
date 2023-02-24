@@ -1,19 +1,26 @@
 /obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(.)
+		return
 	if(istype(mover,/obj/item/projectile))
-		return (check_cover(mover,target))
-	if (flipped == 1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return TRUE
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+		return check_cover(mover,target)
+	if(flipped == 1)
+		if(get_dir(mover, target) & turn(dir, 180))
+			return FALSE
 		return TRUE
-	if(locate(/obj/structure/table/bench) in get_turf(mover))
-		return FALSE
-	var/obj/structure/table/table = locate(/obj/structure/table) in get_turf(mover)
-	if(table && !table.flipped)
+	for(var/obj/structure/table/T in get_turf(mover))
+		if(istype(T, /obj/structure/table/bench))
+			continue
+		if(T.flipped == 1)
+			continue
 		return TRUE
-	return FALSE
+
+/obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	if(flipped == -1 || !flipped)
+		return TRUE
+	return !density || !(get_dir(loc, newLoc) & dir)
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
@@ -48,33 +55,7 @@
 				return 1
 	return 1
 
-/obj/structure/table/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if (flipped==1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return 1
-	return 1
-
-
-/obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
-
-	if ((!( istype(O, /obj/item) ) || user.get_active_hand() != O))
-		return ..()
-	if(isrobot(user))
-		return
-	user.drop_item()
-	if (O.loc != src.loc)
-		step(O, get_dir(O, src))
-	return
-
-
 /obj/structure/table/attackby(obj/item/W, mob/user, params)
-	if (!W)
-		return
-
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
@@ -114,34 +95,27 @@
 			qdel(W)
 			return
 
-	// Handle dismantling or placing things on the table from here on.
-	if(isrobot(user))
-		return
-
-	if(W.loc != user) // This should stop mounted modules ending up outside the module.
-		return
-
 	if(istype(W, /obj/item/melee/energy/blade))
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
 		spark_system.start()
-		playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		playsound(src.loc, "sparks", 50, 1)
+		playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
+		playsound(src, "sparks", 50, 1)
 		user.visible_message("<span class='danger'>\The [src] was sliced apart by [user]!</span>")
 		break_to_parts()
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(W, /obj/item/melee/changeling/arm_blade))
 		user.visible_message("<span class='danger'>\The [src] was sliced apart by [user]!</span>")
 		break_to_parts()
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(can_plate && !material)
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /*
-	if(user.a_intent != INTENT_HARM && !(I.clothing_flags & ABSTRACT))
+	if(user.a_intent != INTENT_HARM && !(I.clothing_flags & ITEM_ABSTRACT))
 		if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
 			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
@@ -157,7 +131,9 @@
 */
 
 	if(item_place && (user.a_intent != INTENT_HARM))
-		user.drop_item(src.loc)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.transfer_item_to_loc(W, loc))
+			return
 		if(item_pixel_place)
 			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
@@ -166,7 +142,7 @@
 			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
 			W.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
 			W.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
-		return TRUE
+		return
 	return ..()
 
 /obj/structure/table/attack_tk() // no telehulk sorry

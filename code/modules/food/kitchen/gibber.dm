@@ -108,7 +108,7 @@
 	move_into_gibber(user,G.affecting)
 	// Grab() process should clean up the grab item, no need to del it.
 
-/obj/machinery/gibber/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/gibber/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_gibber(user,target)
@@ -131,8 +131,7 @@
 		to_chat(user, "<span class='danger'>The gibber safety guard is engaged!</span>")
 		return
 
-
-	if(victim.abiotic(1))
+	if(victim.abiotic(TRUE))
 		to_chat(user, "<span class='danger'>Subject may not have abiotic items on.</span>")
 		return
 
@@ -227,6 +226,6 @@
 				qdel(thing)
 				continue
 			thing.forceMove(get_turf(thing)) // Drop it onto the turf for throwing.
-			thing.throw_at(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
+			thing.throw_at_old(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
 
 		update_icon()

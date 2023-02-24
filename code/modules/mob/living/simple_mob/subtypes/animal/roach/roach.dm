@@ -63,7 +63,7 @@
 	faction = "roaches"
 
 	mob_size = MOB_SMALL
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -92,8 +92,8 @@
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(name == initial(name))
 		name = "[name] ([rand(1, 1000)])"
@@ -445,7 +445,7 @@
 	tt_desc = "Periplaneta intervallum"
 	icon_state = "zeitraum"
 	item_state = "zeitraum"
-	icon_living = "zeitraun"
+	icon_living = "zeitraum"
 	icon_dead = "zeitraum_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/zeitraum)
 
