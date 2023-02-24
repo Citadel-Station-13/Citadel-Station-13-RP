@@ -24952,7 +24952,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
-/obj/item/material/ashtray/glass,
 /obj/machinery/alarm{
 	desc = " ";
 	pixel_y = 24
@@ -25371,17 +25370,18 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "bFp" = (
-/obj/machinery/door/airlock{
-	id_tag = "barbackdoor";
-	name = "Bar Backroom";
-	req_access = list(25)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/door/airlock{
+	id_tag = "barbackdoor";
+	name = "Bar Backroom";
+	req_access = list(25)
+	},
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar_backroom)
 "bIN" = (
 /obj/structure/disposalpipe/segment,
@@ -25419,7 +25419,7 @@
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/crew_quarters/barrestroom)
 "cSf" = (
 /obj/item/stool/padded,
@@ -25721,7 +25721,6 @@
 "hSS" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
@@ -25730,6 +25729,7 @@
 	},
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "idS" = (
@@ -26337,7 +26337,7 @@
 	name = "Bar Backroom";
 	req_access = list(25)
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/plating,
 /area/maintenance/bar)
 
 (1,1,1) = {"
