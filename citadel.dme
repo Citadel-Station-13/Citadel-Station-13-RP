@@ -2741,7 +2741,6 @@
 #include "code\modules\maps\level\class_p\sector.dm"
 #include "code\modules\maps\misc_maps\geothermal_vent\geothermal_vent.dm"
 #include "code\modules\maps\misc_maps\lavaland\_lavaland.dm"
-#include "code\modules\maps\overmap\planets\classh.dm"
 #include "code\modules\maps\overmap\planets\miaphus.dm"
 #include "code\modules\maps\overmap\planets\virgo2.dm"
 #include "code\modules\maps\overmap\space\alienship.dm"
