@@ -407,7 +407,7 @@
 #include "code\_onclick\hud\rigmech.dm"
 #include "code\_onclick\hud\robot.dm"
 #include "code\_onclick\hud\spell_screen_objects.dm"
-#include "code\_onclick\hud\actions\_action.dm"
+#include "code\_onclick\hud\actions\action.dm"
 #include "code\_onclick\hud\intents\throwing.dm"
 #include "code\_onclick\hud\inventory\inventory.dm"
 #include "code\_onclick\hud\objects\waypoint_tracker.dm"

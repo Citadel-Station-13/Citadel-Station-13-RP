@@ -417,6 +417,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	else if(!needed && activity_hologram)
 		QDEL_NULL(activity_hologram)
 
+//? Ticking
+
+/obj/machinery/holopad/process(delta_time)
+	outgoing_call.validate()
+	#warn impl - ai?
+
 //? AI holograms
 
 /**
@@ -683,15 +689,16 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	var/datum/action/holocall/swap_view/action_swap_view
 	/// our hologram
 	var/obj/effect/overlay/holographic
-	/// is video/remote presence allowed?
-	var/video_enabled = FALSE
 
 /datum/holocall/New(obj/machinery/holopad/sender, obj/machinery/holopad/receiver)
+	action_hang_up = new(src)
+	action_swap_view = new(src)
 	#warn impl
 
 /datum/holocall/Destroy()
 	disconnect()
-	update_activity_hologram(FALSE)
+	QDEL_NULL(action_hang_up)
+	QDEL_NULL(action_swap_view)
 	#warn impl
 	return ..()
 
@@ -699,13 +706,24 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /datum/holocall/proc/cleanup_remote_presence()
 
-/datum/holocall/proc/swap_sides()
-
 /datum/holocall/proc/connect()
+
+/datum/holocall/proc/register()
+
+/datum/holocall/proc/cleanup()
 
 /datum/holocall/proc/ring()
 
 /datum/holocall/proc/disconnect()
+
+/datum/holocall/proc/validate()
+	if(!check())
+		disconnect()
+		return FALSE
+	. = TRUE
+	if(remoting && !destination.video_enabled)
+		cleanup_remote_presence()
+
 
 /datum/holocall/proc/check()
 	// check bidirectional connectivity
@@ -714,11 +732,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(!destination.holocall_connectivity(source))
 		return FALSE
 	return TRUE
-
-/datum/holocall/process()
-	if(!check())
-		disconnect()
-		return
 
 #warn relay procs too
 
