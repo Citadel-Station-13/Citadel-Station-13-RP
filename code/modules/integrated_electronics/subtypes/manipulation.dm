@@ -103,7 +103,7 @@
 	complexity = 4
 	cooldown_per_use = 2 SECOND
 	power_draw_per_use = 50
-	spawn_flags = IC_SPAWN_DEFAULT
+	spawn_flags = NONE
 	origin_tech = list(TECH_ENGINEERING = 2)
 	var/lock_enabled = -1
 

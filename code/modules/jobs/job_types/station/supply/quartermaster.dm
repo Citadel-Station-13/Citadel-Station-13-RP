@@ -20,7 +20,17 @@
 
 	outfit_type = /datum/outfit/job/station/quartermaster
 	desc = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
-	alt_titles = list("Supply Chief" = /datum/prototype/alt_title/supply_chief)
+	alt_titles = list(
+		"Supply Chief" = /datum/prototype/alt_title/supply_chief,
+		"Logisticai-Adept" = /datum/prototype/alt_title/logisticai_adept
+		)
+
+/datum/prototype/alt_title/logisticai_adept
+	title = "Logisticai-Adept"
+	background_allow = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/supply_chief
 	title = "Supply Chief"
