@@ -7534,6 +7534,9 @@
 /obj/structure/sign/deck3{
 	pixel_y = 32
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "aoO" = (
@@ -19896,6 +19899,9 @@
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
+	},
+/obj/machinery/computer/bioscan{
+	network_key_obfuscated = "rift_bioscanners"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)

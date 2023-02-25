@@ -20923,6 +20923,9 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/lower)
 "nzE" = (
