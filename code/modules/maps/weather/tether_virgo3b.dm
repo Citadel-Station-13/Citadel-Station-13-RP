@@ -103,41 +103,7 @@
 		)
 
 /datum/weather/virgo3b
-	name = "virgo3b base"
-	temp_high = 243.15 // -20c
-	temp_low = 233.15  // -30c
-
-/datum/weather/virgo3b/clear
-	name = "clear"
-	transition_chances = list(
-		WEATHER_CLEAR = 60,
-		WEATHER_OVERCAST = 40
-		)
-	transition_messages = list(
-		"The sky clears up.",
-		"The sky is visible.",
-		"The weather is calm."
-		)
-	sky_visible = TRUE
-	observed_message = "The sky is clear."
-
-/datum/weather/virgo3b/overcast
-	name = "overcast"
-	light_modifier = 0.8
-	transition_chances = list(
-		WEATHER_CLEAR = 25,
-		WEATHER_OVERCAST = 50,
-		WEATHER_LIGHT_SNOW = 10,
-		WEATHER_SNOW = 5,
-		WEATHER_RAIN = 5,
-		WEATHER_HAIL = 5
-		)
-	observed_message = "It is overcast, all you can see are clouds."
-	transition_messages = list(
-		"All you can see above are clouds.",
-		"Clouds cut off your view of the sky.",
-		"It's very cloudy."
-		)
+	abstract_type = /datum/weather/virgo3b
 
 /datum/weather/virgo3b/light_snow
 	name = "light snow"

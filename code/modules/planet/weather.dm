@@ -180,25 +180,6 @@
 	message_all_outdoor_players(message)
 
 /datum/weather
-	var/name = "weather base"
-	var/icon = 'icons/effects/weather.dmi'
-	/// Icon to apply to turf undergoing weather.
-	var/icon_state = null
-	/// Assoc list of weather identifiers and the odds to shift to a specific type of weather. Can contain its own identifier to prolong it.
-	var/transition_chances = list()
-	/// If the sky can be clearly seen while this is occuring, used for flavor text when looking up.
-	var/sky_visible = FALSE
-
-	/// Keeps track of when the weather last tells EVERY player it's hitting them
-	var/last_message = 0
-	/// Delay in between weather hit messages
-	var/message_delay = 900
-	/// Is set to TRUE and plays the messsage every [message_delay]
-	var/show_message = FALSE
-
-	/// What is shown to a player 'examining' the weather.
-	var/observed_message = null
-
 
 /datum/weather/New()
 	if(outdoor_sounds_type)
