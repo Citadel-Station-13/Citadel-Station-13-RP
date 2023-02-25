@@ -20,6 +20,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 	dead_mob_list -= src
 	delete_inventory()
 
+/mob/living/carbon/human/dummy/mannequin/proc/wipe_state()
+	delete_inventory(TRUE, TRUE)
+	set_species(/datum/species/human, TRUE, TRUE)
+
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
 GLOBAL_LIST_EMPTY(dummy_mob_list)

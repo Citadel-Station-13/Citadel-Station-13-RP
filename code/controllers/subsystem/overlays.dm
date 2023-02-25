@@ -160,21 +160,6 @@ SUBSYSTEM_DEF(overlays)
 		. = iconbro.appearance
 		icon_cache[icon] = .
 
-#define APPEARANCEIFY(origin, target) \
-	if (istext(origin)) { \
-		target = iconstate2appearance(icon, origin); \
-	} \
-	else if (isicon(origin)) { \
-		target = icon2appearance(origin); \
-	} \
-	else { \
-		appearance_bro.appearance = origin; \
-		if (!ispath(origin)) { \
-			appearance_bro.dir = origin.dir; \
-		} \
-		target = appearance_bro.appearance; \
-	}
-
 // If the overlay has a planeset (e.g., emissive), mark for ZM mangle. This won't catch overlays on overlays, but the flag can just manually be set in that case.
 #define ZM_AUTOMANGLE(target) if ((target):plane != FLOAT_PLANE) { SSoverlays.context_needs_automangle = TRUE; }
 

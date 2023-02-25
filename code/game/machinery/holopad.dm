@@ -358,19 +358,34 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			#warn impl
 		// user toggling holocall ringer
 		if("toggle_ringer")
-			#warn impl
+			if(!ringer_toggleable)
+				return TRUE
+			ringer_enabled = !ringer_enabled
+			return TRUE
 		// user toggling sector anonymous mode
 		if("toggle_anonymous_sector")
-			#warn impl
+			if(!call_anonymous_sector_toggle)
+				return TRUE
+			call_anonymous_sector = !call_anonymous_sector
+			return TRUE
 		// user toggling holocall visibility
 		if("toggle_visibility")
-			#warn impl
+			if(!call_toggleable)
+				return TRUE
+			call_visibility = !call_visibility
+			return TRUE
 		// user toggling video being allowed
 		if("toggle_video")
-			#warn impl
+			if(!video_toggleable)
+				return TRUE
+			video_enabled = !video_enabled
+			return TRUE
 		// user toggling auto pickup
 		if("toggle_auto")
-			#warn impl
+			if(!call_auto_toggle)
+				return TRUE
+			call_auto_pickup = !call_auto_pickup
+			return TRUE
 		// user requesting to use remote presence
 		if("start_remote")
 			#warn impl
@@ -786,7 +801,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			#warn process
 		appearancelike = I
 	else if(isatom(appearancelike))
-		appearancelike = cheap? make_hologram_appearance(appearancelike) : render_hologram_icon(appearancelike)
+		appearancelike = cheap? make_hologram_appearance(appearancelike, 255) : render_hologram_icon(appearancelike, 255)
 
 	src.appearance = appearancelike
 	src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT

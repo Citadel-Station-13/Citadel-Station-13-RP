@@ -6,9 +6,10 @@
  * @params
  * * rendering - what to render; must be /atom, /appearance, /mutable_appearance, or /icon.
  *     if you use an /icon it should only have one state if at all possible.
+ * * use_alpha - what alpha to render it as
  * * no_anim - kill any animations.
  */
-/proc/render_hologram_icon(rendering, no_anim)
+/proc/render_hologram_icon(rendering, use_alpha = (140 / 255), no_anim)
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
@@ -18,7 +19,10 @@
 			processing = icon(rendering, frame = 1)
 		else
 			processing = icon(rendering)
-	#warn impl
+	#warn render in scanlines
+	if(!isnull(use_alpha))
+		processing.MapColors(arglist(rgba_construct_color_matrix(aa = use_alpha)))
+	return processing
 
 /**
  * cheap way of just rendering an appearance for a hologram
@@ -27,14 +31,13 @@
  *
  * @params
  * * rendering - what to render; must be /atom, /appearance, /mutable_appearance, or /icon
+ * * use_alpha - what alpha to render it as
  */
-/proc/make_hologram_appearance(rendering)
-
-
-	var/mutable_appearance/rendering
-	if(isicon(rendering))
-
-	else
-
-	#warn impl
+/proc/make_hologram_appearance(rendering, use_alpha = (140 / 255))
+	var/mutable_appearance/rendered
+	APPEARANCEIFY(rendering, rendered)
+	if(!isnull(use_alpha))
+		rendered.alpha = use_alpha
+	#warn alpha mask scanlines
+	return rendered
 
