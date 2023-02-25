@@ -73,9 +73,7 @@
 	/// current season - computed at init
 	var/tmp/datum/season/season_cached
 	/// cycle datums - list of typepaths created in init
-	var/list/datum/sector_cycle/cycles = list(
-		/datum/sector_cycle/main/day
-	)
+	var/list/datum/sector_cycle/cycles
 	/// cached strength of main cycle
 	var/tmp/wycle_strength_main = 0
 	/// cached strengths of cycles with registration
@@ -167,6 +165,7 @@
  * inits our cycle datums
  */
 /datum/world_sector/proc/init_cycles()
+	LAZYINITLIST(cycles)
 	#warn impl
 	#warn check that no more than one main, and main exists if any sync
 

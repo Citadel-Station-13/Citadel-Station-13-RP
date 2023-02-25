@@ -1,16 +1,3 @@
-
-/datum/atmosphere/planet/virgo3b
-	base_gases = list(
-	/datum/gas/nitrogen = 0.16,
-	/datum/gas/phoron = 0.72,
-	/datum/gas/carbon_dioxide = 0.12
-	)
-	base_target_pressure = 82.4
-	minimum_pressure = 82.4
-	maximum_pressure = 82.4
-	minimum_temp = 234
-	maximum_temp = 234
-
 /obj/effect/overmap/visitable/sector/virgo3b
 	name = "Virgo 3B"
 	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
@@ -34,8 +21,6 @@
 		"tether_medivac_dock", //Medical shuttle dock,
 		"tourbus_dock" //Surface large hangar
 		)
-
-
 
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
