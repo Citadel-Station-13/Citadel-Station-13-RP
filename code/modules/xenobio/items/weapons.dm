@@ -14,6 +14,8 @@
 /obj/item/melee/baton/slime/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
 	if(istype(L) && status) // Is it on?
+		// do the usuals - might work might not who knows
+		..()
 		if(L.mob_class & MOB_CLASS_SLIME) // Are they some kind of slime? (Prommies might pass this check someday).
 			if(isslime(L))
 				var/mob/living/simple_mob/slime/S = L
