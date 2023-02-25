@@ -47,6 +47,8 @@
 
 /****
 	* Binary search sorted insert
+	* Sorts low to high.
+	*
 	* INPUT: Object to be inserted
 	* LIST: List to insert object into
 	* TYPECONT: The typepath of the contents of the list
