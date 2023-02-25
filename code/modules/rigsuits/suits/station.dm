@@ -128,12 +128,6 @@
 	siemens_coefficient = 0
 
 /obj/item/rig/eva/equipped
-<<<<<<< HEAD
-
-	req_access = list(ACCESS_ENGINEERING_MAIN)
-
-=======
->>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/maneuvering_jets,
@@ -180,12 +174,6 @@
 	slowdown_on = 0
 
 /obj/item/rig/ce/equipped
-<<<<<<< HEAD
-
-	req_access = list(ACCESS_ENGINEERING_CE)
-
-=======
->>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
@@ -230,12 +218,6 @@
 		/obj/item/storage/bag/fossils)
 
 /obj/item/rig/hazmat/equipped
-<<<<<<< HEAD
-
-	req_access = list(ACCESS_SCIENCE_RD)
-
-=======
->>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
@@ -268,12 +250,6 @@
 		)
 
 /obj/item/rig/medical/equipped
-<<<<<<< HEAD
-
-	req_access = list(ACCESS_MEDICAL_MAIN)
-
-=======
->>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/sprinter,
 		/obj/item/rig_module/chem_dispenser/injector,
