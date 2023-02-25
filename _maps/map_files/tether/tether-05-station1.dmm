@@ -14258,7 +14258,9 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aQh" = (
