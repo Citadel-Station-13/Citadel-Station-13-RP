@@ -13,7 +13,11 @@
 
 	//? transitions
 	/// next weather transition
-	var/next_transition
+	var/transition_next
+	/// weather transition rate - please don't set this too low. this is added to the datum's speed.
+	var/transition_speed = 8 MINUTES
+	/// obey weather-specific transition multipliers
+	var/transition_override = FALSE
 	/// weather instances by path - these are typepaths, init'd on holder init.
 	/// we don't globally cache weather so vv and modifications are easy.
 	var/list/weather_datums
@@ -21,6 +25,10 @@
 	/// this must work with pickweight
 	//  todo: unit test that weather_datums contains everything in here.
 	var/list/weather_transitions
+	/// chances of weather at roundstart / load; null = pick randomly with even chance.
+	var/list/weather_roundstart
+	/// override what we're going to next
+	var/datum/weather_next
 
 	//? visuals
 

@@ -21,19 +21,17 @@
 	var/transient = FALSE
 	#warn hook
 
-	//? duration
+	//? duration - this is added ontop of transition times.
 	/// use gaussian?
-	var/duration_gaussian = FALSE
-	/// duration if not randomizing / randomizing vars are still null
-	var/duration = 5 MINUTES
+	var/duration_gaussian = TRUE
 	/// duration high if not gaussian
 	var/duration_high
 	/// duration low if not gaussian
 	var/duration_low
 	/// duration center if gaussian
-	var/duration_center
+	var/duration_center = 2 MINUTES
 	/// duration stddev if gaussian
-	var/duration_deviation
+	var/duration_deviation = 1 MINUTES
 	#warn hook
 
 	//? temperature

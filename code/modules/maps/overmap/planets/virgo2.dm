@@ -1,5 +1,5 @@
 // V2 doesnt actually have its own weather so this is gonna be here for now
-/datum/atmosphere/planet/virgo2
+/datum/atmosphere/planet/virgo_2
 	base_gases = list(
 	/datum/gas/nitrogen = 0.10,
 	/datum/gas/oxygen = 0.03,
