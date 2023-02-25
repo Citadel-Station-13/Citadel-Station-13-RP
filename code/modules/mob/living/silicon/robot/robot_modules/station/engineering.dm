@@ -141,7 +141,9 @@
 		"Borgi" = "borgi-eng",
 		"Engineering Hound" = "engihound",
 		"Engineering Hound Dark" = "engihounddark",
-		"F3-LINE" = "FELI-Engineer"
+		"F3-LINE" = "FELI-Engineer",
+		"Drake" = "drakeeng",
+		"Otie" = "otiee"
 	)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)

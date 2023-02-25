@@ -232,13 +232,15 @@
 
 	if(href_list["ready"])
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
-			var/list/warnings = list()
-			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
-			if(length(warnings))
-				to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
-				if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up? Check the chat panel for details.", "Spawn Checks", list("Yes", "No")) != "Yes")
-					return
-			ready = text2num(href_list["ready"])
+			var/want_to_be_ready = text2num(href_list["ready"])
+			if(want_to_be_ready)
+				var/list/warnings = list()
+				client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
+				if(length(warnings))
+					to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+					if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up? Check the chat panel for details.", "Spawn Checks", list("Yes", "No")) != "Yes")
+						return
+			ready = want_to_be_ready
 		else
 			ready = 0
 

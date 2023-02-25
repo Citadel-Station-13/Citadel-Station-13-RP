@@ -123,7 +123,7 @@
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
-	N.synths = list(synths_by_kind[MATSYN_NANOPASTE])
+	N.synths = list(synths_by_kind[MATSYN_NANITES])
 	. += N
 
 	var/obj/item/dogborg/sleeper/compactor/analyzer/B = new /obj/item/dogborg/sleeper/compactor/analyzer(src)
