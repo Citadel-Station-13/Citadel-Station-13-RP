@@ -40,17 +40,11 @@
 		/obj/item/storage/secure/briefcase
 		)
 
-	req_access = list()
-	req_one_access = list()
-
 	glove_type = null
 	helm_type = null
 	boot_type = null
 
 /obj/item/rig/internalaffairs/equipped
-
-	req_access = list(ACCESS_COMMAND_IAA)
-
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/device/flash,
@@ -90,10 +84,6 @@
 		/obj/item/rcd
 		)
 
-	req_access = list()
-	req_one_access = list()
-
-
 /obj/item/rig/industrial/equipped
 
 	initial_modules = list(
@@ -131,8 +121,6 @@
 		/obj/item/rcd
 		)
 
-	req_access = list()
-	req_one_access = list()
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/gauntlets/rig/eva
@@ -140,9 +128,12 @@
 	siemens_coefficient = 0
 
 /obj/item/rig/eva/equipped
+<<<<<<< HEAD
 
 	req_access = list(ACCESS_ENGINEERING_MAIN)
 
+=======
+>>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/maneuvering_jets,
@@ -179,9 +170,6 @@
 		/obj/item/t_scanner,
 		/obj/item/rcd
 		)
-
-	req_access = list()
-	req_one_access = list()
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/gauntlets/rig/ce
@@ -192,9 +180,12 @@
 	slowdown_on = 0
 
 /obj/item/rig/ce/equipped
+<<<<<<< HEAD
 
 	req_access = list(ACCESS_ENGINEERING_CE)
 
+=======
+>>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
@@ -238,13 +229,13 @@
 		/obj/item/storage/backpack,
 		/obj/item/storage/bag/fossils)
 
-	req_access = list()
-	req_one_access = list()
-
 /obj/item/rig/hazmat/equipped
+<<<<<<< HEAD
 
 	req_access = list(ACCESS_SCIENCE_RD)
 
+=======
+>>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
@@ -276,13 +267,13 @@
 		/obj/item/roller
 		)
 
-	req_access = list()
-	req_one_access = list()
-
 /obj/item/rig/medical/equipped
+<<<<<<< HEAD
 
 	req_access = list(ACCESS_MEDICAL_MAIN)
 
+=======
+>>>>>>> citrp/master
 	initial_modules = list(
 		/obj/item/rig_module/sprinter,
 		/obj/item/rig_module/chem_dispenser/injector,
@@ -313,10 +304,6 @@
 		/obj/item/suit_cooling_unit,
 		/obj/item/melee/baton
 		)
-
-	req_access = list()
-	req_one_access = list()
-
 
 /obj/item/rig/hazard/equipped
 

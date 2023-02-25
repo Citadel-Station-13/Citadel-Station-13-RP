@@ -289,7 +289,7 @@ type BackendContext = {
     title: string,
     status: number,
     interface: string,
-    refreshing: boolean,
+    refreshing: number,
     window: {
       key: string,
       fancy: boolean,

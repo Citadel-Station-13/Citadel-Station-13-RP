@@ -68,6 +68,7 @@
 //? General
 
 #define CD_INDEX_SONAR_PULSE				"sonar_pulse"
+#define CD_INDEX_SONAR_NOISE			"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 
 //? Items

@@ -585,6 +585,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
+"Hh" = (
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/mining_airlock)
 "Ho" = (
 /obj/effect/overlay/snow/floor/grav_surround{
 	dir = 1
@@ -20763,7 +20772,7 @@ KS
 KS
 aW
 QE
-vr
+Hh
 lP
 Tr
 pw
