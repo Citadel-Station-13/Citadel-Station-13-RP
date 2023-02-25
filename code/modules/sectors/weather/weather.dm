@@ -131,6 +131,12 @@
 	var/list/transition_messages_indoors
 	#warn hook
 
+	//? advanced
+	/// components to attach; typepaths, gets init'd in start.
+	var/list/datum/weather_component/weather_components = list(
+
+	)
+
 /**
  * what to do on start
  */
