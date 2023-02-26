@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/datum/holocall/outgoing_call
 	/// active holocalls - inbound
 	var/list/datum/holocall/active_calls
-	/// inbound holocalls
+	/// inbound holocalls - still ringing
 	var/list/datum/holocalls/ringing
 
 	//? appearance
@@ -241,13 +241,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * checks if we're in a connected incoming call
  */
 /obj/machinery/holopad/proc/incoming_calls_connected()
-	#warn impl
+	return length(active_calls)
 
 /**
  * checks if we have incoming calls, whether or not connected
  */
 /obj/machinery/holopad/proc/incoming_calls_exist()
-	#warn impl
+	return length(active_calls) || length(ringing)
 
 /**
  * is call source
@@ -265,8 +265,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * checks if we should automatically answer a holocall
  */
 /obj/machinery/holopad/proc/should_auto_pickup(datum/holocall/inbound)
-	#warn impl but for now TRUE for debug
-	return TRUE
+	return call_auto_pickup
 
 //? Relaying say / emote
 
@@ -320,6 +319,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["isAIProjecting"] = isAI(user) && is_ai_projecting(user)
 	.["aiRequested"] = last_ai_request && ((world.time - last_ai_request) >= ai_request_cooldown)
 	.["callVisibility"] = call_visibility
 	.["sectorAnonymous"] = call_anonymous_sector
@@ -337,12 +337,22 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	switch(action)
 		// user requesting ai
 		if("ai_request")
-			#warn impl
+			if(!ai_request_cooldown())
+				return TRUE
+			request_ai()
+			return TRUE
 		// ai requesting project
 		if("ai_project")
 			/// do they want to start or end
 			var/mode = text2num(params["mode"])
-			#warn impl
+			if(mode && !is_ai_projecting(usr))
+				// check to make sure they don't have another
+				var/mob/living/silicon/ai/the_ai = usr
+				the_ai.holopad?.kill_ai_hologram(the_ai)
+				initiate_ai_hologram(the_ai)
+			else if(!mode && is_ai_projecting(usr))
+				kill_ai_hologram(usr)
+			return TRUE
 		// user requesting to hang up a call, or all calls
 		if("disconnect")
 			// id, null for all
@@ -443,7 +453,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /**
  * requests AI presence
  */
-/obj/machinery/holopad/proc/request_ai()
+/obj/machinery/holopad/proc/request_ai(mob/user)
+	last_ai_request = world.time
+	for(var/mob/living/silicon/ai/AI in living_mob_list)
+		if(!AI.client)
+			continue
+		to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
+
+/**
+ * is request ai on cooldown
+ */
+/obj/machinery/holopad/proc/request_ai_cooldown()
+	return last_ai_request + ai_request_cooldown < world.time
 
 /**
  * starts AI presence
@@ -452,6 +473,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	. = FALSE
 	if(the_ai.holopad)
 		CRASH("already had holopad")
+	//? legacy-ish
+	if(the_ai.hologram_follow)
+		the_ai.eyeobj.setLoc(get_turf(src))
+	//? end
 	the_ai.holopad = src
 	the_ai.hologram = create_hologram(the_ai.hologram_appearance())
 	the_ai.hologram.owner = the_ai
@@ -480,6 +505,15 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	update_icon()
 	return TRUE
 
+/**
+ * is an AI projecting via us?
+ *
+ * @params
+ * * the_ai - (optional) specific ai; if not specified, then if any.
+ */
+/obj/machinery/holopad/proc/is_ai_projecting(mob/living/silicon/ai/the_ai)
+	return the_ai? (the_ai in ais_projecting) : length(ais_projecting)
+
 //? Legacy - Attack Handling
 /obj/machinery/holopad/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
@@ -489,33 +523,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 #warn parse below
 
-/obj/machinery/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
-	if(!istype(user))
-		return
-	if(tgui_alert(user, "Would you like to request an AI's presence?", "Request AI", list("Yes", "No")) == "Yes")
-		if(last_request + 200 < world.time) //don't spam the AI with requests you jerk!
-			last_request = world.time
-			to_chat(user, SPAN_NOTICE("You request an AI's presence."))
-			var/area/area = get_area(src)
-			for(var/mob/living/silicon/ai/AI in living_mob_list)
-				if(!AI.client)	continue
-				to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
-		else
-			to_chat(user, SPAN_WARNING("A request for AI presence was already sent recently."))
-
-/obj/machinery/holopad/attack_ai(mob/living/silicon/ai/user)
-	if(!istype(user))
-		return
-	/*There are pretty much only three ways to interact here.
-	I don't need to check for client since they're clicking on an object.
-	This may change in the future but for now will suffice.*/
-	if(user.eyeobj.loc != src.loc)//Set client eye on the object if it's not already.
-		user.eyeobj.setLoc(get_turf(src))
-	else if(!masters[user])//If there is no hologram, possibly make one.
-		activate_holo(user)
-	else//If there is a hologram, remove it.
-		clear_holo(user)
-	return
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
@@ -549,13 +556,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 	return
-
-/obj/machinery/holopad/proc/request_ai_hologram(mob/living/silicon/ai/requesting, turf/T = get_turf(src))
-
-/obj/machinery/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
-	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	hologram.set_light(2)	//hologram lighting
-	return TRUE
 
 /obj/machinery/holopad/process(delta_time)
 	for (var/mob/living/silicon/ai/master in masters)
