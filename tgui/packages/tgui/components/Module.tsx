@@ -5,7 +5,7 @@
  * Suffer.
  *
  * Basically, how this works, is we inject the module's
- * id, ref, data, and act into context.
+ * id, ref, data, and act into context, fetched with useModule().
  *
  * id: The tgui's module id from props
  * module: The tgui module's interface name
@@ -28,9 +28,9 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
     let { id } = this.props;
     let { modules } = useBackend(this.context);
-    let ref = modules[id].$ref;
     let data = modules[id];
-    let ui_name = modules[id].$tgui;
+    let ref = data['$src'];
+    let ui_name = data['$tgui'];
     return {
       ...this.context,
       m_id: id,
@@ -39,11 +39,13 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     };
   }
 
-  render(props: ModuleProps, context) {
-    let ui_name = context.m_tgui;
+  render() {
+    let { modules } = useBackend(this.context);
+    let { id } = this.props;
+    let ui_name = modules[id]['$tgui'];
     const Component = directlyRouteComponent(ui_name);
     return (
-      <Component />
+      <Component tgui_module={ui_name} />
     );
   }
 }

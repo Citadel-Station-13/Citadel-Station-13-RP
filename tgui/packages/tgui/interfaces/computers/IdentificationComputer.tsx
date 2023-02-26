@@ -23,7 +23,7 @@ export const IdentificationComputer = (props, context) => {
   const { data, act } = useBackend<IdentificationComputerContext>(context);
   const [currentTab, setCurrentTab] = useLocalState<number>(context, 'currentTab', 0);
   return (
-    <Window width={250} height={700}>
+    <Window width={500} height={700}>
       <Window.Content>
         <Section title="Authentication">
           <IDSlot card={IDCardOrDefault(data.auth_card)} onClick={() => act('auth')} />
@@ -43,6 +43,7 @@ export const IdentificationComputer = (props, context) => {
         {currentTab === 0 && data.authed_cardmod? (
           <Section>
             <IDSlot card={IDCardOrDefault(data.modify_card)} onClick={() => act('modify')} />
+            <Module id="modify" />
           </Section>
         ) : (
           <Section>
@@ -62,7 +63,6 @@ export const IdentificationComputer = (props, context) => {
             <CrewManifestContent />
           </Section>
         )}
-        <Module id="modify" />
       </Window.Content>
     </Window>
   );

@@ -13,7 +13,9 @@ export interface IDCard {
   owner?: string;
 }
 
-export const IDCardOrDefault = (card: IDCard = IDCARD_BLANK) => card;
+export const IDCardOrDefault = (card: IDCard | null | undefined) => {
+  return card || IDCARD_BLANK;
+};
 
 const IDCARD_BLANK = {
   name: "-----",

@@ -67,7 +67,7 @@ export const backendReducer = (state = initialState, action) => {
       const merging = payload.modules;
       for (let id of Object.keys(merging)) {
         modules[id] = {
-          ...modules[data],
+          ...modules[id],
           ...merging[id],
         };
       }

@@ -27,7 +27,7 @@
  * * authing - /obj/item/card/id that's being used to auth
  */
 /datum/tgui_module/card_mod
-	tgui_id = "UICardMod"
+	tgui_id = "TGUICardMod"
 
 /**
  * are we allowed to edit the given accesses?
