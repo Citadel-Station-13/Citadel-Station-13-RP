@@ -122,13 +122,11 @@ export const TGUICardMod = (props: CardModProps, context) => {
               direction="column">
               <Flex.Item>
                 <Tabs>
-                  {data.ranks.map((dept) => {
-                    return (
-                      <Tabs.Tab key={dept} onClick={setDepartment(dept.name)}>
-                        {dept}
-                      </Tabs.Tab>
-                    );
-                  })}
+                  {data.ranks.map((dept) => (
+                    <Tabs.Tab key={dept} onClick={setDepartment(dept.name)}>
+                      {dept}
+                    </Tabs.Tab>
+                  ))}
                 </Tabs>
               </Flex.Item>
               <Flex.Item grow={1}>
