@@ -53,13 +53,15 @@ export const IdentificationComputer = (props, context) => {
           </Section>
         )}
         {currentTab === 1 && (
-          <Section buttons={
-            <Button
-              content={data.printing? "Printing" : "Print"}
-              disabled={data.printing}
-              icon="print"
-              onClick={() => act('print_manifest')} />
-          }>
+          <Section
+            title="Manifest"
+            buttons={
+              <Button
+                content={data.printing? "Printing" : "Print"}
+                disabled={data.printing}
+                icon="print"
+                onClick={() => act('print_manifest')} />
+            }>
             <CrewManifestContent />
           </Section>
         )}

@@ -41,7 +41,7 @@
  * @return values we were allowed to edit
  */
 /datum/tgui_module/card_mod/proc/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
-	return FALSE
+	return list()
 
 /**
  * are we allowed to switch someone to a rank?
@@ -154,7 +154,7 @@
 /datum/tgui_module/card_mod/proc/auth_source()
 	return null
 
-/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	.["modify_type"] = query_access_types(user, editing, authing)
@@ -171,7 +171,7 @@
 			"ranks" = ranks_by_department[department],
 		))
 
-/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
 	. = ..()
 	.["card_account"] = editing?.associated_account_number
 	.["card_name"] = editing?.registered_name
@@ -218,13 +218,13 @@
 			return TRUE
 		if("grant")
 			var/cat = params["cat"]
-			var/list/resultant = auth_access_edit(usr, target, source, list(SSjob.access_ids_of_category(cat)))
+			var/list/resultant = auth_access_edit(usr, target, source, cat? SSjob.access_ids_of_category(cat) : SSjob.access_ids())
 			LAZYINITLIST(target.access)
 			target.access |= resultant
 			return TRUE
 		if("deny")
 			var/cat = params["cat"]
-			var/list/resultant = auth_access_edit(usr, target, source, list(SSjob.access_ids_of_category(cat)))
+			var/list/resultant = auth_access_edit(usr, target, source, cat? SSjob.access_ids_of_category(cat) : SSjob.access_ids())
 			LAZYINITLIST(target.access)
 			target.access -= resultant
 			return TRUE
