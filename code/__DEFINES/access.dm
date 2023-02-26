@@ -29,13 +29,13 @@ DEFINE_SHARED_BITFIELD(access_region, list(
 ))
 
 GLOBAL_LIST_INIT(access_region_names, list(
-	ACCESS_REGION_GENERAL = "General",
-	ACCESS_REGION_COMMAND = "Command",
-	ACCESS_REGION_SECURITY = "Security",
-	ACCESS_REGION_ENGINEERING = "Engineering",
-	ACCESS_REGION_MEDBAY = "Medical",
-	ACCESS_REGION_RESEARCH = "Science",
-	ACCESS_REGION_SUPPLY = "Supply",
+	"[ACCESS_REGION_GENERAL]" = "General",
+	"[ACCESS_REGION_COMMAND]" = "Command",
+	"[ACCESS_REGION_SECURITY]" = "Security",
+	"[ACCESS_REGION_ENGINEERING]" = "Engineering",
+	"[ACCESS_REGION_MEDBAY]" = "Medical",
+	"[ACCESS_REGION_RESEARCH]" = "Science",
+	"[ACCESS_REGION_SUPPLY]" = "Supply",
 ))
 
 //? Access Types
@@ -60,10 +60,10 @@ DEFINE_SHARED_BITFIELD(access_type, list(
 ))
 
 GLOBAL_LIST_INIT(access_type_names, list(
-	ACCESS_TYPE_CENTCOM = "Central Command",
-	ACCESS_TYPE_STATION = "Station",
-	ACCESS_TYPE_SYNDICATE = "Mercenary",
-	ACCESS_TYPE_PRIVATE = "Unknown",
+	"[ACCESS_TYPE_CENTCOM]" = "Central Command",
+	"[ACCESS_TYPE_STATION]" = "Station",
+	"[ACCESS_TYPE_SYNDICATE]" = "Mercenary",
+	"[ACCESS_TYPE_PRIVATE]" = "Unknown",
 ))
 
 //? Access Values - constants & datums                ?//
