@@ -267,10 +267,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/should_auto_pickup(datum/holocall/inbound)
 	return call_auto_pickup
 
-//? Relaying say / emote
-
-#warn impl
-
 //? UI
 
 /**
@@ -337,7 +333,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	switch(action)
 		// user requesting ai
 		if("ai_request")
-			if(!ai_request_cooldown())
+			if(!request_ai_cooldown())
 				return TRUE
 			request_ai()
 			return TRUE
@@ -428,7 +424,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	else if(!active && active_emissive_overlay)
 		cut_overlay(active_emissive_overlay)
 		active_emissive_overlay = null
-	set_light(l_power = active? active_light_power : inactive_light_poewr)
+	set_light(l_power = active? active_light_power : inactive_light_power)
 	update_activity_hologram(active)
 
 /**
@@ -523,40 +519,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 #warn parse below
 
-/*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
-For the other part of the code, check silicon say.dm. Particularly robot talk.*/
-/obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
-	if(M)
-		for(var/mob/living/silicon/ai/master in masters)
-			if(!master.say_understands(M, speaking))//The AI will be able to understand most mobs talking through the holopad.
-				if(speaking)
-					text = speaking.scramble(text)
-				else
-					text = stars(text)
-			var/name_used = M.GetVoice()
-			//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
-			var/rendered
-			if(speaking)
-				rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span></i>"
-			else
-				rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span></i>"
-			master.show_message(rendered, 2)
-
-/obj/machinery/holopad/see_emote(mob/living/M, text)
-	if(M)
-		for(var/mob/living/silicon/ai/master in masters)
-			//var/name_used = M.GetVoice()
-			var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[text]</span></span></i>"
-			//The lack of name_used is needed, because message already contains a name.  This is needed for simple mobs to emote properly.
-			master.show_message(rendered, 2)
-	return
-
-/obj/machinery/holopad/show_message(msg, type, alt, alt_type)
-	for(var/mob/living/silicon/ai/master in masters)
-		var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[msg]</span></span></i>"
-		master.show_message(rendered, type)
-	return
-
 /obj/machinery/holopad/process(delta_time)
 	for (var/mob/living/silicon/ai/master in masters)
 		var/active_ai = (master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
@@ -580,7 +542,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		if((HOLOPAD_MODE == RANGE_BASED && (get_dist(H, src) > holo_range)))
 			clear_holo(user)
 
-		if(HOLOPAD_MODE == AREA_BASED)
+		if(HOLOPAD_MODE == bAREA_BASED)
 			var/area/holopad_area = get_area(src)
 			var/area/hologram_area = get_area(H)
 
@@ -597,7 +559,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/holopad/see_emote(mob/living/M, text)
 	. = ..()
-	relay_intercepted_emote(M, msg)
+	relay_intercepted_emote(M, text)
 
 /obj/machinery/holopad/show_message(msg, type, alt, alt_type)
 	. = ..()
@@ -624,17 +586,19 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
  */
 /obj/machinery/holopad/proc/relay_intercepted_emote(visible_name, msg)
 
+#warn impl all
+
 /**
  * relays a say sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_say(mob/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says")
-	var/scrambled = stars(message)
+/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says")
+	var/scrambled = stars(msg)
 	var/for_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
 	var/for_not_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
 	for(var/atom/movable/AM as anything in get_hearers_in_view(world.view, src))
 		if(ismob(AM))
 			var/mob/M = AM
-			if(M.say_understands(src, speaking))
+			if(M.say_understands(src, using_language))
 				M.show_message(for_knowers, 2)
 			else
 				M.show_message(for_not_knowers, 2)
@@ -642,14 +606,19 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			var/obj/O = AM
 			if(O == src)
 				continue
-			O.hear_talk(src, message, using_verb, using_language)
-
-#warn impl all
+			O.hear_talk(src, msg, using_verb, using_language)
+	// relay to relevant AIs too
+	var/list/relevant_ais = ais_projecting - speaker
+	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
+		if(the_ai.say_understands(speaker, using_language))
+			the_ai.show_message("(Holopad) [for_knowers]")
+		else
+			the_ai.show_message("(Holopad) [for_not_knowers]")
 
 /**
  * relays an emote sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_emote(mob/speaker, obj/effect/overlay/hologram/holo, speaker_name, msg)
+/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, obj/effect/overlay/hologram/holo, speaker_name, msg)
 	// attempt autodetect
 	if(!speaker_name)
 		speaker_name = speaker.name
@@ -660,6 +629,10 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(!(holo in holograms))
 		return FALSE
 	holo.relay_emote(speaker_name, msg)
+	// relay to relevant AIs too
+	var/list/relevant_ais = ais_projecting - speaker
+	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
+		the_ai.show_message("(Holopad) [SPAN_NAME(speaker_name)] [msg]")
 
 //? holograms
 
@@ -748,6 +721,14 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		return FALSE
 	return TRUE
 
+
+#warn icons/screen/actions/generic.dmi hang_up, swap_cam
+#warn background icon set to icons/screen/actions/backgrounds too!!
+
+/datum/action/holocall/hang_up
+
+/datum/action/holocall/swap_view
+
 #warn relay procs too
 
 /**
@@ -813,9 +794,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	cheap_become_emissive()
 
 	#warn impl
-
-#warn icons/screen/actions/generic.dmi hang_up, swap_cam
-#warn background icon set to icons/screen/actions/backgrounds too!!
 
 /obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message)
 	// TODO: ATOM SAY(), not janky ass atom_say().

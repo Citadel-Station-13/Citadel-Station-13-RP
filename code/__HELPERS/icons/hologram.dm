@@ -30,12 +30,18 @@
  * returns a /mutable_appearance
  *
  * @params
- * * rendering - what to render; must be /atom, /appearance, /mutable_appearance, or /icon
+ * * rendering - what to render; must be /atom, /appearance, /image, /mutable_appearance, or /icon
  * * use_alpha - what alpha to render it as
  */
 /proc/make_hologram_appearance(rendering, use_alpha = (140 / 255))
-	var/mutable_appearance/rendered
-	APPEARANCEIFY(rendering, rendered)
+	var/appearance/compiling
+	if(isicon(rendering))
+		compiling = icon2appearance(rendering)
+	else if(ismutableappearance(rendering))
+		compiling = rendering:appearance
+	else // /atom, /appearance, /image
+		compiling = rendering:appearance
+	var/mutable_appearance/rendered = new(compiling)
 	if(!isnull(use_alpha))
 		rendered.alpha = use_alpha
 	#warn alpha mask scanlines
