@@ -816,6 +816,8 @@
 		if(L && !(L.name in M.languages))
 			processed = L.scramble(message)
 			no_runechat = TRUE
+			if(!processed)
+				return
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
