@@ -346,7 +346,6 @@
 			if("mod/")	// module act
 				var/action = copytext(type, 5)
 				var/ref = payload["$m_ref"]
-				var/id = payload["$m_id"]
 				// get the datum
 				var/datum/module = locate(ref)
 				if(QDELETED(module))
