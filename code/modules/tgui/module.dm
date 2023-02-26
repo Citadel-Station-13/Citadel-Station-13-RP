@@ -106,9 +106,9 @@
  * route a received ui_act for module handling
  * remember that $id, $ref in params corrosponds to module id, module ref.
  *
- * this proc is somewhat weird, it's best to not override it unnecessarily.
+ * we use id instead of module to prevent potential security issues down the line.
  */
-/datum/proc/ui_module_route(action, list/params, datum/tgui/ui, datum/module)
+/datum/proc/ui_module_route(action, list/params, datum/tgui/ui, id)
 	if(module == src)
 		// i know that guy!
 		// it's me!
@@ -116,8 +116,6 @@
 	// it's not us, respect overrides that wish to hook module behavior
 	if(ui_module_act(module, action, params, ui))
 		return TRUE
-	// didn't override, send to module
-	return module.ui_act(action, params, ui)
 
 /**
  * called as a hook for intercepting ui acts from a module

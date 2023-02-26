@@ -480,8 +480,8 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
   return (action: string, payload: object = {}) => {
     let sent = {
       ...payload,
-      $m_id: id,
-      $m_ref: ref,
+      "$m_id": id,
+      "$m_ref": ref,
     };
     // Validate that payload is an object
     const isObject = typeof payload === 'object'

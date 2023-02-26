@@ -100,9 +100,9 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   return (
     <Section
       title="Access Modification"
+      scrollable
       buttons={
         <>
-          test1
           <Button
             icon="check-double"
             content="Grant All"
@@ -141,7 +141,6 @@ export const AccessListMod = (props: AccessListModProps, context) => {
             {
               !!selectedCategory && (
                 <>
-                  test2
                   <Flex.Item>
                     <Button
                       icon="check"

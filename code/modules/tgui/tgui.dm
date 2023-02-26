@@ -345,11 +345,7 @@
 				return FALSE
 			if("mod/")	// module act
 				var/action = copytext(type, 5)
-				var/ref = payload["$m_ref"]
-				// get the datum
-				var/datum/module = locate(ref)
-				if(QDELETED(module))
-					return
+				var/id = payload["$m_id"]
 				// log, update status
 				log_tgui(user, "Action: [action] [href_list["payload"]]",
 					window = window,
@@ -362,7 +358,7 @@
 				// we're kind of stuck doing this
 				// maybe in the future we'll just have ui modules list but for now
 				// eh.
-				if(src_object.ui_module_route(action, payload, src, module))
+				if(src_object.ui_module_route(action, payload, src, id))
 					SStgui.update_uis(src_object)
 				return FALSE
 	switch(type)

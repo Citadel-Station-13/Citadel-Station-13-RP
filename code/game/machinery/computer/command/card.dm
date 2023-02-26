@@ -21,6 +21,14 @@
 	QDEL_NULL(tgui_cardmod)
 	return ..()
 
+/obj/machinery/computer/card/ui_module_route(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	if(.)
+		return
+	switch(id)
+		if("modify")
+			return tgui_cardmod.ui_act(action, params, ui)
+
 /obj/machinery/computer/card/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["modify"] = tgui_cardmod.data(user, editing, authing)

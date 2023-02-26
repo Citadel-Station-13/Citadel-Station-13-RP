@@ -6,8 +6,10 @@
 import { BooleanLike } from "common/react";
 import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
+import { SectionProps } from "../../components/Section";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
+import { WindowProps } from "../../layouts/Window";
 import { Access, AccessId, AccessListMod } from "../common/Access";
 
 
@@ -40,11 +42,12 @@ export const TGUICardMod = (props: CardModProps, context) => {
   const { data, act } = useModule<CardModContext>(context);
   const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
   const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
-  const windowProps = {
+  const windowProps: WindowProps = {
     width: 500,
     height: 500,
+    title: "Card Modify",
   };
-  const sectionProps ={
+  const sectionProps: SectionProps ={
     fill: true,
   };
   return (
