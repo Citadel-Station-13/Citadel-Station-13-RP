@@ -7,7 +7,7 @@
  * Basically, how this works, is we inject the module's
  * id, ref, data, and act into context, fetched with useModule().
  *
- * id: The tgui's module id from props
+ * id: The tgui's module id from props; obviously must be unique
  * module: The tgui module's interface name
  * ref: The tgui_module's datum ref
  * data: The module's data passed into data.modules

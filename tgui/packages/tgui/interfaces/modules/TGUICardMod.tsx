@@ -40,7 +40,7 @@ interface CardModProps extends ModuleProps {
 
 export const TGUICardMod = (props: CardModProps, context) => {
   const { data, act } = useModule<CardModContext>(context);
-  const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
+  const [mode, setMode] = useLocalState<number>(context, `${props.id}_mode`, 0);
   const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
   const windowProps: WindowProps = {
     width: 500,
@@ -59,7 +59,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
             {data.can_rename? (
               <Input
                 value={data.card_name}
-                onEnter={(e, val) => { act('name', { set: val }); }} />
+                onEnter={(e, val) => act('name', { set: val })} />
             ) : (
               data.card_name || "-----"
             )}
@@ -69,7 +69,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
             {data.modify_account? (
               <Input
                 value={data.card_account}
-                onEnter={(e, val) => { act('account', { set: val }); }} />
+                onEnter={(e, val) => act('account', { set: val })} />
             ) : (
               data.card_account || "-----"
             )}
@@ -86,11 +86,12 @@ export const TGUICardMod = (props: CardModProps, context) => {
       </Tabs>
       {mode === 0 && (
         <AccessListMod
+          uid={props.id}
           access={data.access}
           selected={data.granted || (new Array<number>())}
-          set={(id) => { act('toggle', { access: id }); }}
-          grant={(cat) => { act('grant', { cat: cat }); }}
-          deny={(cat) => { act('deny', { cat: cat }); }} />
+          set={(id) => act('toggle', { access: id })}
+          grant={(cat) => act('grant', { cat: cat })}
+          deny={(cat) => act('deny', { cat: cat })} />
       )}
       {mode === 1 && (
         <Section
@@ -107,13 +108,13 @@ export const TGUICardMod = (props: CardModProps, context) => {
               label="Rank">
               <Input
                 value={data.card_rank}
-                onEnter={(e, val) => { act('rank_custom', { rank: val }); }} />
+                onEnter={(e, val) => act('rank_custom', { rank: val })} />
             </LabeledList.Item>
             <LabeledList.Item
               label="Assignment / Title">
               <Input
                 value={data.card_assignment}
-                onEnter={(e, val) => { act('assignment', { rank: val }); }} />
+                onEnter={(e, val) => act('assignment', { rank: val })} />
             </LabeledList.Item>
           </LabeledList>
           <Section title="Reassign Rank">
@@ -131,11 +132,13 @@ export const TGUICardMod = (props: CardModProps, context) => {
                 </Tabs>
               </Flex.Item>
               <Flex.Item grow={1}>
-                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => {
+                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => (
                   <Button.Confirm
+                    key={rank}
                     content={rank}
-                    onClick={() => { act('rank', { rank: rank }); }} />;
-                })}
+                    onClick={() => act('rank', { rank: rank })} />
+                )
+                )}
               </Flex.Item>
             </Flex>
           </Section>

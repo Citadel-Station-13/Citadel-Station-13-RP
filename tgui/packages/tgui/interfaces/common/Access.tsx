@@ -22,6 +22,7 @@ export enum AccessListSet {
 
 export interface AccessListProps {
   access: Array<Access>, // all available accesses
+  uid: string, // must be unique in a window, to avoid localstate collisions.
 }
 
 interface AccessListSelectProps extends AccessListProps {
@@ -69,7 +70,7 @@ const diffMap = {
 };
 
 export const AccessListMod = (props: AccessListModProps, context) => {
-  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, `${props.uid}_selectedCategory`, null);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
   props.access.forEach((a) => {

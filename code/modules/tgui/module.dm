@@ -85,7 +85,9 @@
  * called directly, if operating standalone.
  */
 /datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
-	return TRUE
+	// we only override this to provide comment
+	// yes yes proc overhead sue me it's called like 10k times a round, tops.
+	return ..()
 
 /**
  * returns static module data
