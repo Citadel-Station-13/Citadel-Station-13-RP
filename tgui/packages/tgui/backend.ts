@@ -491,6 +491,6 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
       logger.error(`Payload for module act() must be an object, got this:`, payload);
       return;
     }
-    Byond.sendMessage('mod/' + action, payload);
+    Byond.sendMessage('mod/' + action, sent);
   };
 };

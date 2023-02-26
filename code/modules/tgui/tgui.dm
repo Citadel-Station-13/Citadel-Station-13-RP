@@ -347,7 +347,7 @@
 				var/action = copytext(type, 5)
 				var/id = payload["$m_id"]
 				// log, update status
-				log_tgui(user, "Action: [action] [href_list["payload"]]",
+				log_tgui(user, "Module: [action] [href_list["payload"]]",
 					window = window,
 					src_object = src_object)
 				process_status()

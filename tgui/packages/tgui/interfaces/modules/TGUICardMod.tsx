@@ -123,7 +123,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
               <Flex.Item>
                 <Tabs>
                   {data.ranks.map((dept) => (
-                    <Tabs.Tab key={dept} onClick={setDepartment(dept.name)}>
+                    <Tabs.Tab key={dept} onClick={() => setDepartment(dept.name)}>
                       {dept}
                     </Tabs.Tab>
                   ))}

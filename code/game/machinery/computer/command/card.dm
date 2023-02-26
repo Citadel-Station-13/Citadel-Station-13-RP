@@ -7,7 +7,7 @@
 	light_color = "#0099ff"
 	circuit = /obj/item/circuitboard/card
 	/// modification module
-	var/datum/tgui_module/card_mod/standard/tgui_cardmod
+	var/datum/tgui_module/card_mod/standard/id_computer/tgui_cardmod
 	/// authing ID
 	var/obj/item/card/id/authing
 	/// editing ID

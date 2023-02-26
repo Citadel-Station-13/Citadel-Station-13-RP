@@ -163,7 +163,9 @@ export const AccessListMod = (props: AccessListModProps, context) => {
             }
           </Flex>
           {
-            props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+            props.access.filter((_a) => _a.category === selectedCategory).sort(
+              (a, b) => (a.name.localeCompare(b.name))
+            ).map((a) => {
               return (
                 <Button.Checkbox
                   key={a.value}
@@ -243,7 +245,9 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
           }
           <LabeledList>
             {
-              props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+              props.access.filter((_a) => _a.category === selectedCategory).sort(
+                (a, b) => (a.name.localeCompare(b.name))
+              ).map((a) => {
                 return (
                   <LabeledList.Item
                     key={a.value}
@@ -305,7 +309,9 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
           }
         </Flex.Item>
         <Flex.Item grow={1}>
-          {props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
+          {props.access.filter((_a) => _a.category === selectedCategory).sort(
+            (a, b) => (a.name.localeCompare(b.name))
+          ).map((a) => {
             return (
               <Button
                 fluid
