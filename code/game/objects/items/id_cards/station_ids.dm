@@ -149,6 +149,7 @@
 
 /obj/item/card/id/vv_get_dropdown()
 	. = ..()
+	VV_DROPDOWN_OPTION(null, "-----")
 	VV_DROPDOWN_OPTION(VV_HK_ID_MOD, "Modify ID")
 
 /obj/item/card/id/vv_do_topic(list/href_list)

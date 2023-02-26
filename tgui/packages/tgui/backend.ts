@@ -450,13 +450,24 @@ export type ModuleBackend<TData extends ModuleData> = {
  * returns:
  * {
  *    backend - what useBackend usually sends; you usually don't want to use this.
- *    data - our module's id
+ *    data - our module's data, got from their id
  *    act - a pre-bound module act function that works the same from the UI side
  *        whether or not we're in a module, or being used as a root UI
  * }
+ *
+ * todo: bind useLocalState, useSharedState properly *somehow*
+ *       maybe with a useModuleLocal, useModuleShared?
  */
 export const useModule = <TData extends ModuleData>(context): ModuleBackend<TData> => {
+  const { is_module } = context;
   let backend = useBackend<TData>(context);
+  if (!is_module) {
+    return { // not operating in module mode, just send normal backend
+      backend: backend,
+      data: backend.data,
+      act: backend.act,
+    };
+  }
   let { modules } = backend;
   return {
     backend: backend,

@@ -18,14 +18,24 @@ $separator-color: colors.$primary !default;
   background-color: functions.fake-alpha($background-color, base.$color-bg);
   background-color: $background-color;
   box-sizing: border-box;
+  display: block;
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
+.Section__titleContainer {
+  display: block;
+  position: relative;
+  width: 100%;
+  border: 5px;
+  background-color: grey;
+}
+
 .Section__title {
   position: relative;
+  width: 100%;
   padding: 0.5em;
   border-bottom: base.em(2px) solid $separator-color;
 }
@@ -37,8 +47,7 @@ $separator-color: colors.$primary !default;
 }
 
 .Section__buttons {
-  position: absolute;
-  display: inline-block;
+  position: relative;
   right: 0.5em;
   margin-top: base.em(-1px);
 }

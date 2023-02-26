@@ -41,34 +41,36 @@ export const TGUICardMod = (props: CardModProps, context) => {
   const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
   const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
   return (
-    <Modular width={250} height={500}>
-      <LabeledList>
-        <LabeledList.Item
-          label="Owner">
-          {data.can_rename? (
-            <Input
-              value={data.card_name}
-              onEnter={(e, val) => { act('name', { set: val }); }} />
-          ) : (
-            data.card_name
-          )}
-        </LabeledList.Item>
-        <LabeledList.Item
-          label="Account Number">
-          {data.modify_account? (
-            <Input
-              value={data.card_account}
-              onEnter={(e, val) => { act('account', { set: val }); }} />
-          ) : (
-            data.card_account
-          )}
-        </LabeledList.Item>
-      </LabeledList>
+    <Modular width={500} height={500}>
+      <Section title="Data Fields">
+        <LabeledList>
+          <LabeledList.Item
+            label="Owner">
+            {data.can_rename? (
+              <Input
+                value={data.card_name}
+                onEnter={(e, val) => { act('name', { set: val }); }} />
+            ) : (
+              data.card_name || "-----"
+            )}
+          </LabeledList.Item>
+          <LabeledList.Item
+            label="Account Number">
+            {data.modify_account? (
+              <Input
+                value={data.card_account}
+                onEnter={(e, val) => { act('account', { set: val }); }} />
+            ) : (
+              data.card_account || "-----"
+            )}
+          </LabeledList.Item>
+        </LabeledList>
+      </Section>
       <Tabs>
-        <Tabs.Tab onClick={setMode(0)}>
+        <Tabs.Tab onClick={() => setMode(0)} selected={mode === 0}>
           Access
         </Tabs.Tab>
-        <Tabs.Tab onClick={setMode(1)}>
+        <Tabs.Tab onClick={() => setMode(1)} selected={mode === 1}>
           Rank
         </Tabs.Tab>
       </Tabs>
@@ -81,37 +83,27 @@ export const TGUICardMod = (props: CardModProps, context) => {
           deny={(cat) => { act('deny', { cat: cat }); }} />
       )}
       {mode === 1 && (
-        <Section>
+        <Section
+          title="Rank Modification"
+          buttons={
+            data.can_demote
+              && <Button.Confirm
+                content="Demote"
+                className="bad"
+                onClick={() => act('demote')} />
+          }>
           <LabeledList>
             <LabeledList.Item
               label="Rank">
-              <Flex
-                direction="column">
-                <Flex.Item grow={1}>
-                  <Input
-                    value={data.card_rank}
-                    onEnter={(e, val) => { act('rank_custom', { rank: val }); }} />
-                </Flex.Item>
-                {data.can_demote && (
-                  <Flex.Item>
-                    <Button.Confirm
-                      content="Demote"
-                      className="bad"
-                      onClick={() => act('demote')} />
-                  </Flex.Item>
-                )}
-              </Flex>
+              <Input
+                value={data.card_rank}
+                onEnter={(e, val) => { act('rank_custom', { rank: val }); }} />
             </LabeledList.Item>
             <LabeledList.Item
               label="Assignment / Title">
-              <Flex
-                direction="column">
-                <Flex.Item grow={1}>
-                  <Input
-                    value={data.card_assignment}
-                    onEnter={(e, val) => { act('assignment', { rank: val }); }} />
-                </Flex.Item>
-              </Flex>
+              <Input
+                value={data.card_assignment}
+                onEnter={(e, val) => { act('assignment', { rank: val }); }} />
             </LabeledList.Item>
           </LabeledList>
           <Section title="Reassign Rank">

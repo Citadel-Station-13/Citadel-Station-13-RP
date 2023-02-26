@@ -98,54 +98,77 @@ export const AccessListMod = (props: AccessListModProps, context) => {
     return 2;
   };
   return (
-    <Section>
+    <Section
+      title="Access Modification"
+      buttons={
+        <>
+          test1
+          <Button
+            icon="check-double"
+            content="Grant All"
+            color="good"
+            onClick={() => props.grant && props.grant()} />
+          <Button
+            icon="undo"
+            content="Deny All"
+            color="bad"
+            onClick={() => props.deny && props.deny()} />
+        </>
+      }>
       <Flex>
-        <Flex.Item>
-          <Tabs vertical />
-          {
-            categories.map((cat) => {
-              const { icon, color } = diffMap[checkCategory(cat)];
-              return (
-                <Tabs.Tab
-                  key={cat}
-                  altSelection
-                  color={color}
-                  icon={icon}
-                  selected={cat === selectedCategory}
-                  onClick={() => setSelectedCategory(cat)}>
-                  {cat}
-                </Tabs.Tab>
-              );
-            })
-          }
+        <Flex.Item pr={2}>
+          <Tabs vertical>
+            {
+              categories.map((cat) => {
+                const { icon, color } = diffMap[checkCategory(cat)];
+                return (
+                  <Tabs.Tab
+                    key={cat}
+                    altSelection
+                    color={color}
+                    icon={icon}
+                    selected={cat === selectedCategory}
+                    onClick={() => setSelectedCategory(cat)}>
+                    {cat}
+                  </Tabs.Tab>
+                );
+              })
+            }
+          </Tabs>
         </Flex.Item>
         <Flex.Item grow={1}>
-          {
-            !!selectedCategory && (
-              <Flex>
-                <Flex.Item>
-                  <Button
-                    icon="check"
-                    content="Grant Category"
-                    color="bad"
-                    onClick={() => props.grant && props.grant(selectedCategory)}
-                    fluid />
-                  <Button
-                    icon="times"
-                    content="Deny Category"
-                    color="bad"
-                    onClick={() => props.deny && props.deny(selectedCategory)}
-                    fluid />
-                </Flex.Item>
-              </Flex>
-            )
-          }
+          <Flex direction="row" justify="flex-end">
+            {
+              !!selectedCategory && (
+                <>
+                  test2
+                  <Flex.Item>
+                    <Button
+                      icon="check"
+                      content="Grant Category"
+                      color="good"
+                      onClick={() => props.grant && props.grant(selectedCategory)}
+                      fluid />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Button
+                      icon="times"
+                      content="Deny Category"
+                      color="bad"
+                      onClick={() => props.deny && props.deny(selectedCategory)}
+                      fluid />
+                  </Flex.Item>
+                </>
+              )
+            }
+          </Flex>
           {
             props.access.filter((_a) => _a.category === selectedCategory).map((a) => {
               return (
-                <Button
+                <Button.Checkbox
                   key={a.value}
-                  selected={props.selected.includes(a.value)}
+                  fluid
+                  checked={props.selected.includes(a.value)}
                   content={a.name}
                   onClick={() => props.set && props.set(a.value)} />
               );

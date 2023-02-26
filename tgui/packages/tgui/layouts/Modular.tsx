@@ -20,8 +20,9 @@ export interface ModularProps extends WindowProps{
  * If not rendering directly, it will act like a <Box>.
  */
 export const Modular = (props: ModularProps, context: any) => {
+  const { is_module } = context;
   return (
-    props.tgui_root? (
+    !is_module? (
       <Window {...props}>
         {props.direct}
         <Window.Content>

@@ -69,12 +69,14 @@ export class Section extends Component<SectionProps> {
         ])}
         {...computeBoxProps(rest)}>
         {hasTitle && (
-          <div className="Section__title">
-            <span className="Section__titleText">
-              {title}
-            </span>
-            <div className="Section__buttons">
-              {buttons}
+          <div className="Section__titleContainer">
+            <div className="Section__title">
+              <span className="Section__titleText">
+                {title}
+              </span>
+              <div className="Section__buttons">
+                {buttons}
+              </div>
             </div>
           </div>
         )}

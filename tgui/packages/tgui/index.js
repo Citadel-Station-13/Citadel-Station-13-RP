@@ -38,7 +38,7 @@ const renderApp = createRenderer(() => {
   const Component = getRoutedComponent(store);
   return (
     <StoreProvider store={store}>
-      <Component tgui_root />
+      <Component />
     </StoreProvider>
   );
 });

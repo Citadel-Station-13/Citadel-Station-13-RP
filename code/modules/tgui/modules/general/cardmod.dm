@@ -166,10 +166,10 @@
 	var/list/built_department = list()
 	.["ranks"] = built_department
 	for(var/department in ranks_by_department)
-		built_department += list(
+		built_department += list(list(
 			"name" = department,
 			"ranks" = ranks_by_department[department],
-		)
+		))
 
 /datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = ..()

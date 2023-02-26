@@ -33,6 +33,7 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     let ui_name = data['$tgui'];
     return {
       ...this.context,
+      is_module: true,
       m_id: id,
       m_ref: ref,
       m_tgui: ui_name,

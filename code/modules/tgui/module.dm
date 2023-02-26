@@ -69,11 +69,23 @@
 		ui = new(user, src, tgui_id)
 		ui.open()
 
+/**
+ * called directly, if operating standalone. routes to static_data(user), with all other args skipped.
+ */
 /datum/tgui_module/ui_static_data(mob/user)
 	return static_data(user)
 
+/**
+ * called directly, if operating standalone. routes to data(user), with all other args skipped.
+ */
 /datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return data(user)
+
+/**
+ * called directly, if operating standalone.
+ */
+/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
+	return TRUE
 
 /**
  * returns static module data

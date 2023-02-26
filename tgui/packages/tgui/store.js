@@ -86,11 +86,16 @@ const createStackAugmentor = store => (stack, error) => {
 
 /**
  * Store provider for Inferno apps.
+ *
+ * Citadel edit: this also injects is_module into context.
  */
 export class StoreProvider extends Component {
   getChildContext() {
     const { store } = this.props;
-    return { store };
+    return {
+      store,
+      is_module: false,
+    };
   }
 
   render() {
