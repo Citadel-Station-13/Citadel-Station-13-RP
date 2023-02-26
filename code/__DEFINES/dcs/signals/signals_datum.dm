@@ -20,7 +20,7 @@
 	////#define COMPONENT_VV_HANDLED (1<<0)
 /// From datum ui_act (usr, action, list/params, datum/tgui/ui)
 #define COMSIG_UI_ACT "ui_act"
-/// From datum ui_module_act (usr, datum/module, action, list/params, datum/tgui/ui)
+/// From datum ui_module_act (usr, module_id, action, list/params, datum/tgui/ui)
 #define COMSIG_UI_MODULE_ACT "ui_module_act"
 
 /// Fires on the target datum when an element is attached to it (/datum/element)

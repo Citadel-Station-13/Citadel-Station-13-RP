@@ -109,25 +109,29 @@
  * we use id instead of module to prevent potential security issues down the line.
  */
 /datum/proc/ui_module_route(action, list/params, datum/tgui/ui, id)
-	if(module == src)
+	if(!id)
+		// no id?
 		// i know that guy!
 		// it's me!
 		return ui_act(action, params, ui)
 	// it's not us, respect overrides that wish to hook module behavior
-	if(ui_module_act(module, action, params, ui))
+	if(ui_module_act(action, params, ui, id))
 		return TRUE
 
 /**
  * called as a hook for intercepting ui acts from a module
  * remember that $id, $ref in params corrosponds to module id, module ref.
+ * we don't provide $ref directly for security reasons.
+ * you can use it if you know what you're doing.
+ *
+ * this is an advanced proc.
+ * the module's ui_status() is *not* checked for you in ..()!
  *
  * return TRUE for ui update + prevent propagation to the module
  */
-/datum/proc/ui_module_act(datum/module, action, list/params, datum/tgui/ui)
+/datum/proc/ui_module_act(action, list/params, datum/tgui/ui, id)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, module, action, params, ui)
-	if(!(module?.ui_status(usr) != UI_INTERACTIVE))
-		return TRUE
+	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, id, action, params, ui)
 
 /**
  * called to inject ui module data.
