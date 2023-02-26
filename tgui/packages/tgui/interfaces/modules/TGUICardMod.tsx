@@ -40,8 +40,15 @@ export const TGUICardMod = (props: CardModProps, context) => {
   const { data, act } = useModule<CardModContext>(context);
   const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
   const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
+  const windowProps = {
+    width: 500,
+    height: 500,
+  };
+  const sectionProps ={
+    fill: true,
+  };
   return (
-    <Modular width={500} height={500}>
+    <Modular window={windowProps} section={sectionProps}>
       <Section title="Data Fields">
         <LabeledList>
           <LabeledList.Item

@@ -9,7 +9,7 @@ import { Component, createRef, InfernoNode, RefObject } from 'inferno';
 import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-interface SectionProps extends BoxProps {
+export interface SectionProps extends BoxProps {
   className?: string;
   title?: InfernoNode;
   buttons?: InfernoNode;
@@ -69,14 +69,12 @@ export class Section extends Component<SectionProps> {
         ])}
         {...computeBoxProps(rest)}>
         {hasTitle && (
-          <div className="Section__titleContainer">
-            <div className="Section__title">
-              <span className="Section__titleText">
-                {title}
-              </span>
-              <div className="Section__buttons">
-                {buttons}
-              </div>
+          <div className="Section__title">
+            <span className="Section__titleText">
+              {title}
+            </span>
+            <div className="Section__buttons">
+              {buttons}
             </div>
           </div>
         )}
