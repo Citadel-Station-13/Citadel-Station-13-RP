@@ -21,7 +21,7 @@ export enum AccessListSet {
 }
 
 export interface AccessListProps {
-  access: [Access], // all available accesses
+  access: Array<Access>, // all available accesses
 }
 
 interface AccessListSelectProps extends AccessListProps {
@@ -30,7 +30,7 @@ interface AccessListSelectProps extends AccessListProps {
 }
 
 interface AccessListModProps extends AccessListProps {
-  selected: [AccessId],
+  selected: Array<AccessId>,
   set?(id: AccessId): void,
   grant?(category?: string): void,
   deny?(category?: string): void,
@@ -39,8 +39,8 @@ interface AccessListModProps extends AccessListProps {
 interface AccessListAuthProps extends AccessListProps {
   set?(id: AccessId, mode: AccessListSet): void,
   wipe?(category?: string): void,
-  req_access?: [AccessId],
-  req_one_access?: [AccessId],
+  req_access?: Array<AccessId>,
+  req_one_access?: Array<AccessId>,
 }
 
 export type AccessId = number;

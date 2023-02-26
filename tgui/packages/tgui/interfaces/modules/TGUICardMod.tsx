@@ -12,19 +12,19 @@ import { Access, AccessId, AccessListMod } from "../common/Access";
 
 
 interface CardModContext extends ModuleData {
-  access: [Access], // all avail access
-  ranks: [Department], // all avail rank
+  access: Array<Access>, // all avail access
+  ranks: Array<Department>, // all avail rank
   can_demote: BooleanLike, // can we demote?
   can_rename: BooleanLike, // can we rename?
-  granted: [AccessId], // access ids on card
+  granted?: Array<AccessId>, // access ids on card
   modify_account: BooleanLike, // can modify card bank account id
-  card_account: number, // card bank account id
+  card_account?: number, // card bank account id
   modify_region: AccessRegions, // what we can modify
   modify_type: AccessTypes, // what we can modify
-  modify_ids: [AccessId], // what we can specifically edit regardless of region / type
-  card_name: string, // card name as string
-  card_rank: string, // card rank as string
-  card_assignment: string,
+  modify_ids: Array<AccessId>, // what we can specifically edit regardless of region / type
+  card_name?: string, // card name as string
+  card_rank?: string, // card rank as string
+  card_assignment?: string,
 }
 
 interface Department {
@@ -36,7 +36,7 @@ interface CardModProps extends ModuleProps {
   // nothing
 }
 
-export const UICardMod = (props: CardModProps, context) => {
+export const TGUICardMod = (props: CardModProps, context) => {
   const { data, act } = useModule<CardModContext>(context);
   const [mode, setMode] = useLocalState<number>(context, 'mode', 0);
   const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
@@ -75,7 +75,7 @@ export const UICardMod = (props: CardModProps, context) => {
       {mode === 0 && (
         <AccessListMod
           access={data.access}
-          selected={data.granted}
+          selected={data.granted || (new Array<number>())}
           set={(id) => { act('toggle', { access: id }); }}
           grant={(cat) => { act('grant', { cat: cat }); }}
           deny={(cat) => { act('deny', { cat: cat }); }} />

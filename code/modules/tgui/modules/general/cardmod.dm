@@ -173,11 +173,11 @@
 
 /datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = ..()
-	.["card_account"] = editing.associated_account_number
-	.["card_name"] = editing.registered_name
-	.["card_rank"] = editing.rank
-	.["card_assignment"] = editing.assignment
-	.["granted"] = editing.access
+	.["card_account"] = editing?.associated_account_number
+	.["card_name"] = editing?.registered_name
+	.["card_rank"] = editing?.rank
+	.["card_assignment"] = editing?.assignment
+	.["granted"] = editing?.access
 	.["can_demote"] = auth_demote(user, editing, authing)
 
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
@@ -252,7 +252,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
-	for(var/id in authing.access)
+	for(var/id in authing?.access)
 		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
 		if(isnull(A))
 			continue
