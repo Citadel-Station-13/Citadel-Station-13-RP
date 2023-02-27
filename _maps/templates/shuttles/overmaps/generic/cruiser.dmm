@@ -8143,7 +8143,9 @@
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},

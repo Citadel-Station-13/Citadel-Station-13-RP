@@ -9,8 +9,8 @@
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
 
 	base_skin_colours = list(
-		"Standard"="",
-		"Alternate" = "alt"
+		"Standard"  = null,
+		"Alternate" = "alt",
 	)
 
 	tail = "tail"
