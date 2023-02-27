@@ -5536,6 +5536,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "pW" = (
@@ -12349,7 +12352,9 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /obj/item/clothing/mask/breath,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,

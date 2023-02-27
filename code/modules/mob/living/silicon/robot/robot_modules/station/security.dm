@@ -99,7 +99,8 @@
 		"Secborg model V-2" = "secborg",
 		"Borgi" = "borgi-sec",
 		"Otieborg" = "oties",
-		"F3-LINE" = "FELI-Security"
+		"F3-LINE" = "FELI-Security",
+		"Drake" = "drakesec"
 	)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)

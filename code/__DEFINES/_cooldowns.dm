@@ -24,6 +24,7 @@
 
 // INDEXES FOR TIMER COOLDOWNS - Must be unique!
 #define CD_INDEX_SONAR_PULSE				"sonar_pulse"
+#define CD_INDEX_SONAR_NOISE			"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 #define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
 #define CD_INDEX_TAPE_PRINT					"tape_print"
