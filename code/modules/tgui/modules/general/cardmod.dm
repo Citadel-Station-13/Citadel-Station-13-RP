@@ -318,7 +318,7 @@
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
-	if(ACCESS_COMMAND_CARDMOD in editing.access)
+	if(ACCESS_COMMAND_CARDMOD in authing?.access)
 		for(var/datum/role/job/J as anything in SSjob.all_jobs())
 			var/dep_name = (length(J.departments) && J.departments[1]) || "Miscellaneous"
 			LAZYINITLIST(.[dep_name])

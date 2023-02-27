@@ -144,7 +144,10 @@ export const TGUICardMod = (props: CardModProps, context) => {
                 <Flex.Item grow={0.35}>
                   <Tabs vertical>
                     {data.ranks.sort((a, b) => (a.name.localeCompare(b.name))).map((dept) => (
-                      <Tabs.Tab key={dept.name} onClick={() => setDepartment(dept.name)}>
+                      <Tabs.Tab
+                        selected={department === dept.name}
+                        key={dept.name}
+                        onClick={() => setDepartment(dept.name)}>
                         {capitalize(dept.name)}
                       </Tabs.Tab>
                     ))}
