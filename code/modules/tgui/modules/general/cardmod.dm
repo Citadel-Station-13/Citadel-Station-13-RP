@@ -46,6 +46,8 @@
 /**
  * are we allowed to switch someone to a rank?
  *
+ * called with rank / assignments as null for a generic "can we edit at all"
+ *
  * @params
  * * user - user of UI
  * * editing - (optional) card being edited
@@ -179,6 +181,7 @@
 	.["modify_cats"] = query_access_categories(user, editing, authing, direct_cache)
 	.["modify_account"] = auth_account_edit(user, editing, authing)
 	.["can_rename"] = auth_rename(user, editing, authing)
+	.["can_rank"] = auth_rank(user, editing, authing)
 	var/list/ranks_by_department = query_ranks(user, editing, authing)
 	var/list/built_department = list()
 	.["ranks"] = built_department
@@ -368,6 +371,8 @@
 		return FALSE
 	if(ACCESS_COMMAND_CARDMOD in authing.access)
 		return TRUE
+	if(isnull(new_rank)) // generic query
+		return FALSE
 	var/datum/role/job/authing_job = SSjob.job_by_title(authing.rank)
 	if(isnull(authing_job))
 		return FALSE

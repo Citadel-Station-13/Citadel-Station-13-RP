@@ -19,6 +19,7 @@ interface CardModContext extends ModuleData {
   ranks: Array<Department>, // all avail rank
   can_demote: BooleanLike, // can we demote?
   can_rename: BooleanLike, // can we rename?
+  can_rank: BooleanLike, // can we change ranks at all?
   granted?: Array<AccessId>, // access ids on card
   modify_account: BooleanLike, // can modify card bank account id
   card_account?: number, // card bank account id
@@ -108,7 +109,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
         <Section
           title="Rank Modification"
           buttons={
-            data.can_demote
+            !!data.can_demote
               && <Button.Confirm
                 content="Demote"
                 className="bad"
@@ -117,15 +118,23 @@ export const TGUICardMod = (props: CardModProps, context) => {
           <LabeledList>
             <LabeledList.Item
               label="Rank">
-              <Input
-                value={data.card_rank}
-                onChange={(e, val) => act('rank_custom', { rank: val })} />
+              {data.can_rank? (
+                <Input
+                  value={data.card_rank}
+                  onChange={(e, val) => act('rank_custom', { rank: val })} />
+              ) : (
+                data.card_rank || "-----"
+              )}
             </LabeledList.Item>
             <LabeledList.Item
               label="Assignment / Title">
-              <Input
-                value={data.card_assignment}
-                onChange={(e, val) => act('assignment', { set: val })} />
+              {data.can_rank? (
+                <Input
+                  value={data.card_assignment}
+                  onChange={(e, val) => act('assignment', { set: val })} />
+              ) : (
+                data.card_assignment || "-----"
+              )}
             </LabeledList.Item>
           </LabeledList>
           <Section title="Reassign Rank">
