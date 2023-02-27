@@ -532,7 +532,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["base_skin"])
 		if(!has_flag(mob_species, HAS_BASE_SKIN_COLOR))
 			return PREFERENCES_NOACTION
-		var/new_s_base = tgui_input_list(user, "Choose your character's base Appearance:", "Character preference", mob_species.base_skin_colours)
+		var/new_s_base = tgui_input_list(user, "Choose your character's base appearance:", "Character preference", mob_species.base_skin_colours)
 		if(new_s_base && CanUseTopic(user))
 			pref.s_base = new_s_base
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
