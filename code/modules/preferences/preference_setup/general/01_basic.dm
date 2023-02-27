@@ -155,7 +155,12 @@
 /datum/category_item/player_setup_item/general/basic/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	. = ..()
 	if(length(prefs.metadata) < 10)
-		errors += "Missing OOC Notes - See Character Setup for information."
+		var/enforcing = CONFIG_GET(flag/enforce_fooc_text)
+		var/error = "Missing or insufficient OOC Notes - See Character Setup for information."
+		if(enforcing)
+			errors += error
+		else
+			warnings += error
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
 	var/datum/species/S = pref.real_species_datum()

@@ -237,7 +237,7 @@
 				var/list/errors = list()
 				var/list/warnings = list()
 				var/failing = FALSE
-				client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors = errors, warnings = warnings)
+				if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors = errors, warnings = warnings))
 					to_chat(src, "<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
 					failing = TRUE
 				if(length(warnings))
