@@ -165,8 +165,6 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
-	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
-
 	if(L)
 		if (istype(L, /datum/ai_laws))
 			laws = L

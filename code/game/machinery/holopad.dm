@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	/// active holocalls - inbound
 	var/list/datum/holocall/active_calls
 	/// inbound holocalls - still ringing
-	var/list/datum/holocalls/ringing
+	var/list/datum/holocall/ringing
 
 	//? appearance
 	/// current emissive
