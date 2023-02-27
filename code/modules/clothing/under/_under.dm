@@ -70,6 +70,8 @@
 		return
 	..()
 
+#warn styles
+
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
 	CONSTRUCT_BODYTYPES(worn_rolldown_bodytypes)

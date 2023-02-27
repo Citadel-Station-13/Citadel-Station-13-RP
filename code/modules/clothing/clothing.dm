@@ -155,3 +155,27 @@
 		icon = sprite_sheets_obj[target_species]
 	else
 		icon = initial(icon)
+
+//? styles
+
+/**
+ * returns available styles as name = state
+ */
+/obj/item/clothing/proc/available_styles(mob/user)
+	#warn impl
+
+/**
+ * sets us to a specific style
+ */
+/obj/item/clothing/proc/set_style(style)
+	#warn impl
+
+/**
+ * prompts a user to pick style
+ */
+ /obj/item/clothing/proc/pick_style(mob/user)
+	#warn impl
+
+#warn verb???
+
+// todo: alt interact radials.
