@@ -4,16 +4,32 @@
  * @license MIT
  */
 
-import { Component } from 'inferno';
-import { Box } from './Box';
+import { BooleanLike } from 'common/react';
+import { Component, InfernoNode } from 'inferno';
+import { Box, BoxProps } from './Box';
 import { Button } from './Button';
 
-export class Collapsible extends Component {
+interface CollapsibleProps extends BoxProps {
+  buttons?: InfernoNode;
+  color?: string;
+  title?: string;
+  open?: BooleanLike;
+}
+
+interface CollapsibleState {
+  open: boolean;
+}
+
+export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
+  state: CollapsibleState = {
+    open: false,
+  }
+
   constructor(props) {
     super(props);
     const { open } = props;
     this.state = {
-      open: open || false,
+      open: !!open || false,
     };
   }
 

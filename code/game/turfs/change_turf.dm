@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_lighting_overlay = lighting_overlay
 	var/old_dynamic_lighting = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
 	var/old_corners          = corners
-	var/old_ao_neighbors     = ao_neighbors
+	var/old_ao_junction      = ao_junction
 	// var/old_is_open          = is_open()
 
 	// store/invalidae atmos
@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	queue_zone_update()
 
 	// restore lighting
-	W.ao_neighbors = old_ao_neighbors
+	W.ao_junction = old_ao_junction
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_overlay = old_lighting_overlay

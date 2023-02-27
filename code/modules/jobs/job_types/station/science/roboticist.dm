@@ -19,8 +19,16 @@
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/prototype/alt_title/biomech,
 		"Mechatronic Engineer" = /datum/prototype/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/alt_title/prosthetists
+		"Prosthetists" = /datum/prototype/alt_title/prosthetists,
+		"Artificer-Specialist" = /datum/prototype/alt_title/artificer_specialist
 		)
+
+/datum/prototype/alt_title/artificer_specialist
+	title = "Artificer-Specialist"
+	background_allow = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/biomech
 	title = "Biomechanical Engineer"
