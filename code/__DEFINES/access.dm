@@ -320,7 +320,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBIO, station/science/xenobiology, "Xeno
 #define ACCESS_SCIENCE_XENOBOTANY 77
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBOTANY, station/science/xenobotany, "Xenobotany Garden")
 
-#define ACCESS_SCIENCE_EDIT 304
+#define ACCESS_SCIENCE_EDIT 307
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_EDIT, station/science/edit, "Science - Access Edit")
 	sort_order = -1000
 	access_edit_region = ACCESS_REGION_RESEARCH
