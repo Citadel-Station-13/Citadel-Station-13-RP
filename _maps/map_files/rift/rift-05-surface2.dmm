@@ -30,7 +30,7 @@
 	icon_state = "0-4"
 	},
 /obj/item/paper{
-	info = "Instructions on resleeving. Step 1: Remove the mirror using a Mirror Tool. Step 2: Slot the tool into the console to transfer the mirror. Step 3: Print the users body, move the body to the pod, and use the console to sleeve the occupant. Manually inserting a mirror inso the console is possible in the event of body destruction, or surgical removal due to loss of the provided Mirror tool.";
+	info = "Instructions on resleeving. Step 1: Remove the mirror using a Mirror Tool. Step 2: Slot the tool into the console to transfer the mirror. Step 3: Print the users body, move the body to the pod, and use the console to sleeve the occupant. Manually inserting a mirror into the console is possible in the event of body destruction, or surgical removal due to loss of the provided Mirror tool.";
 	name = "Simplified resleeving instructions"
 	},
 /turf/simulated/floor/tiled/white,
