@@ -197,49 +197,67 @@
 	var/obj/item/card/id/source = auth_source()
 	switch(action)
 		if("account")
+			if(!target)
+				return TRUE
 			var/number = text2num(params["set"])
 			if(auth_account_edit(usr, target, source, target.associated_account_number, number))
 				target.associated_account_number = number
 			return TRUE
 		if("name")
+			if(!target)
+				return TRUE
 			var/new_name = params["set"]
 			if(auth_rename(usr, target, source, target.registered_name, new_name))
 				reassign_name(target, target.registered_name, new_name)
 			return TRUE
 		if("demote")
+			if(!target)
+				return TRUE
 			if(auth_demote(usr, target, source, target.rank))
 				reassign_rank(target, "Unassigned", "Unassigned", target.registered_name)
 				target.access = list()
 			return TRUE
 		if("rank")
+			if(!target)
+				return TRUE
 			var/rank = params["rank"]
 			if(auth_rank(usr, target, source, old_rank = target.rank, new_rank = rank))
 				reassign_rank(target, rank, rank, target.registered_name)
 				target.access = SSjob.job_by_title(rank)?.get_access() || list()
 			return TRUE
 		if("rank_custom")
+			if(!target)
+				return TRUE
 			var/rank = params["rank"]
 			if(auth_rank(usr, target, source, old_rank = target.rank, new_rank = rank))
 				reassign_rank(target, rank, rank, target.registered_name)
 			return TRUE
 		if("assignment")
+			if(!target)
+				return TRUE
 			var/assignment = params["set"]
 			if(auth_rank(usr, target, source, old_assignment = target.assignment, new_assignment = assignment))
 				reassign_rank(target, target.rank, assignment, target.registered_name)
 			return TRUE
 		if("grant")
+			if(!target)
+				return TRUE
 			var/cat = params["cat"]
 			var/list/resultant = auth_access_edit(usr, target, source, cat? SSjob.access_ids_of_category(cat) : SSjob.access_ids())
 			LAZYINITLIST(target.access)
 			target.access |= resultant
 			return TRUE
 		if("deny")
+			if(!target)
+				return TRUE
 			var/cat = params["cat"]
 			var/list/resultant = auth_access_edit(usr, target, source, cat? SSjob.access_ids_of_category(cat) : SSjob.access_ids())
 			LAZYINITLIST(target.access)
 			target.access -= resultant
 			return TRUE
 		if("toggle")
+			if(!target)
+				return TRUE
 			var/id = text2num(params["access"])
 			if(!id)
 				return TRUE

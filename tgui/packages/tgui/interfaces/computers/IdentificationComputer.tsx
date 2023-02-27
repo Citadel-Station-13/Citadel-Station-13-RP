@@ -40,17 +40,33 @@ export const IdentificationComputer = (props, context) => {
             Crew Manifest
           </Tabs.Tab>
         </Tabs>
-        {currentTab === 0 && data.authed_cardmod? (
-          <Section>
-            <IDSlot card={IDCardOrDefault(data.modify_card)} onClick={() => act('modify')} />
-            <Module id="modify" />
-          </Section>
-        ) : (
-          <Section>
-            <NoticeBox warning>
-              Authentication required for ID modification.
-            </NoticeBox>
-          </Section>
+        {currentTab === 0 && (
+          <>
+            <Section title="Target">
+              <IDSlot card={IDCardOrDefault(data.modify_card)} onClick={() => act('modify')} />
+            </Section>
+            <Section>
+              {
+                data.authed_cardmod? (
+                  data.modify_card? (
+                    <Section>
+                      <Module id="modify" />
+                    </Section>
+                  ) : (
+                    <>
+                      Please insert target card.
+                    </>
+                  )
+                ) : (
+                  <Section>
+                    <NoticeBox warning>
+                      Authentication required for ID modification.
+                    </NoticeBox>
+                  </Section>
+                )
+              }
+            </Section>
+          </>
         )}
         {currentTab === 1 && (
           <Section
