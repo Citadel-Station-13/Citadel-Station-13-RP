@@ -153,6 +153,7 @@
 	return ..()
 
 /datum/category_item/player_setup_item/general/basic/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+	. = TRUE
 	if(length(prefs.metadata) < 10)
 		var/enforcing = CONFIG_GET(flag/enforce_ooc_notes)
 		var/error = "Missing or insufficient OOC Notes - See Character Setup for information."
