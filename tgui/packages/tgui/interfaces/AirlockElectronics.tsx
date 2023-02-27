@@ -12,10 +12,13 @@ export const AirlockElectronics = (props, context) => {
   const { act, data } = useBackend<AirlockElectronicsData>(context);
   return (
     <Window
-      width={420}
-      height={485}>
+      title="Airlock Electronics"
+      width={450}
+      height={600}>
       <Window.Content>
         <AccessListAuth
+          fill
+          uid="AccessListAuth"
           access={data.access}
           req_access={data.req_access}
           req_one_access={data.req_one_access}

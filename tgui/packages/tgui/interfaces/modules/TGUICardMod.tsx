@@ -4,6 +4,7 @@
  */
 
 import { BooleanLike } from "common/react";
+import { capitalize } from "common/string";
 import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
 import { SectionProps } from "../../components/Section";
@@ -24,6 +25,7 @@ interface CardModContext extends ModuleData {
   modify_region: AccessRegions, // what we can modify
   modify_type: AccessTypes, // what we can modify
   modify_ids: Array<AccessId>, // what we can specifically edit regardless of region / type
+  modify_cats: Array<string>, // what categories we can edit
   card_name?: string, // card name as string
   card_rank?: string, // card rank as string
   card_assignment?: string,
@@ -47,9 +49,19 @@ export const TGUICardMod = (props: CardModProps, context) => {
     height: 500,
     title: "Card Modify",
   };
-  const sectionProps: SectionProps ={
+  const sectionProps: SectionProps = {
     fill: true,
   };
+  const modifiable: Array<Access> = data.access.filter((a) => (
+    (
+      (a.region | data.modify_region)
+      && (a.type | data.modify_type)
+    ) || (
+      data.modify_cats.includes(a.category)
+    ) || (
+      data.modify_ids.includes(a.value)
+    )
+  ));
   return (
     <Modular window={windowProps} section={sectionProps}>
       <Section title="Data Fields">
@@ -87,7 +99,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
       {mode === 0 && (
         <AccessListMod
           uid={props.id}
-          access={data.access}
+          access={modifiable}
           selected={data.granted || (new Array<number>())}
           set={(id) => act('toggle', { access: id })}
           grant={(cat) => act('grant', { cat: cat })}
@@ -114,17 +126,17 @@ export const TGUICardMod = (props: CardModProps, context) => {
               label="Assignment / Title">
               <Input
                 value={data.card_assignment}
-                onChange={(e, val) => act('assignment', { rank: val })} />
+                onChange={(e, val) => act('assignment', { set: val })} />
             </LabeledList.Item>
           </LabeledList>
           <Section title="Reassign Rank">
             <Flex
-              direction="column">
-              <Flex.Item>
-                <Tabs>
-                  {data.ranks.map((dept) => (
-                    <Tabs.Tab key={dept} onClick={() => setDepartment(dept.name)}>
-                      {dept}
+              direction="row">
+              <Flex.Item grow={0.35}>
+                <Tabs vertical>
+                  {data.ranks.sort((a, b) => (a.name.localeCompare(b.name))).map((dept) => (
+                    <Tabs.Tab key={dept.name} onClick={() => setDepartment(dept.name)}>
+                      {capitalize(dept.name)}
                     </Tabs.Tab>
                   ))}
                 </Tabs>
@@ -133,6 +145,9 @@ export const TGUICardMod = (props: CardModProps, context) => {
                 {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => (
                   <Button.Confirm
                     key={rank}
+                    color="transparent"
+                    selected={rank === data.card_rank}
+                    fluid
                     content={rank}
                     onClick={() => act('rank', { rank: rank })} />
                 )

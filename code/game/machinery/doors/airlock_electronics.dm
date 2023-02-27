@@ -35,7 +35,7 @@
 			var/access = text2num(params["id"])
 			if(!access)
 				return
-			if(mode)
+			if(!mode)
 				if(access in conf_req_one_access)
 					LAZYREMOVE(conf_req_one_access, access)
 				else

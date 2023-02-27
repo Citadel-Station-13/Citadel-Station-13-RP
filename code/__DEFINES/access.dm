@@ -393,7 +393,7 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_SYNDICATE, faction/syndicate, "Syndicate")
 //? Pirate
 
 #define ACCESS_FACTION_PIRATE 168//Pirate Crew Access (Blackbeard was born in 1680.)
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_SYNDICATE, faction/pirate, "Pirate")
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 
 //? Trader
 

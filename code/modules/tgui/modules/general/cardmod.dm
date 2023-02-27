@@ -143,6 +143,16 @@
 	return ACCESS_REGION_NONE
 
 /**
+ * return access categories we can edit
+ *
+ * @params
+ * * user - user of UI
+ * * editing - (optional) card being edited
+ */
+/datum/tgui_module/card_mod/proc/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+	return list()
+
+/**
  * returns target id to edit
  */
 /datum/tgui_module/card_mod/proc/edit_target()
@@ -160,6 +170,7 @@
 	.["modify_type"] = query_access_types(user, editing, authing)
 	.["modify_region"] = query_access_regions(user, editing, authing)
 	.["modify_ids"] = query_access_ids(user, editing, authing)
+	.["modify_cats"] = query_access_categories(user, editing, authing)
 	.["modify_account"] = auth_account_edit(user, editing, authing)
 	.["can_rename"] = auth_rename(user, editing, authing)
 	var/list/ranks_by_department = query_ranks(user, editing, authing)
@@ -270,6 +281,15 @@
 		if(A.access_edit_type)
 			. |= A.access_edit_type
 
+/datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+	. = NONE
+	for(var/id in authing?.access)
+		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
+		if(isnull(A))
+			continue
+		if(A.access_edit_category)
+			. |= A.access_edit_category
+
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = NONE
 	for(var/id in authing?.access)
@@ -281,15 +301,21 @@
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
-	var/datum/role/job/J = SSjob.job_by_title(authing?.rank)
-	for(var/dep_name in J?.departments_managed)
-		var/datum/department/D = SSjob.department_datums[dep_name]
-		if(isnull(D))
-			continue
-		var/list/ranks = list()
-		.[D.name] = ranks
-		for(var/title in D.primary_jobs)
-			ranks += title
+	if(ACCESS_COMMAND_CARDMOD in editing)
+		for(var/datum/role/job/J as anything in SSjob.all_jobs())
+			var/dep_name = (length(J.departments) && J.departments[1]) || "Miscellaneous"
+			LAZYINITLIST(.[dep_name])
+			.[dep_name] += J.title
+	else
+		var/datum/role/job/J = SSjob.job_by_title(authing?.rank)
+		for(var/dep_name in J?.departments_managed)
+			var/datum/department/D = SSjob.department_datums[dep_name]
+			if(isnull(D))
+				continue
+			var/list/ranks = list()
+			.[D.name] = ranks
+			for(var/title in D.primary_jobs)
+				ranks += title
 
 /datum/tgui_module/card_mod/standard/auth_access_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/accesses)
 	. = list()
