@@ -109,13 +109,13 @@
 
 	base_skin_colours = list(
 		"Turquoise"   = "", // First so it's default.
-		"Amethyst"    = "_purple",
-		"Emerald"     = "_green",
-		"Jet"         = "_black",
-		"Quartz"      = "_white",
-		"Ruby"        = "_red",
-		"Sapphire"    = "_blue",
-		"Topaz"       = "_yellow",
+		"Amethyst"    = "purple",
+		"Emerald"     = "green",
+		"Jet"         = "black",
+		"Quartz"      = "white",
+		"Ruby"        = "red",
+		"Sapphire"    = "blue",
+		"Topaz"       = "yellow",
 	)
 
 	wikilink = "N/A"

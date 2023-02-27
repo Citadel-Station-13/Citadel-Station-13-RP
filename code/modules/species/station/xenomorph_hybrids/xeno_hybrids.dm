@@ -10,7 +10,7 @@
 
 	base_skin_colours = list(
 		"Standard"="",
-		"Alternate" = "_alt"
+		"Alternate" = "alt"
 	)
 
 	tail = "tail"
