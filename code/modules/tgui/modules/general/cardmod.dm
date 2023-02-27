@@ -282,7 +282,7 @@
 			. |= A.access_edit_type
 
 /datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
-	. = NONE
+	. = list()
 	for(var/id in authing?.access)
 		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
 		if(isnull(A))
