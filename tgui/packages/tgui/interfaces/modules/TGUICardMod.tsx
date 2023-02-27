@@ -109,11 +109,11 @@ export const TGUICardMod = (props: CardModProps, context) => {
         <Section
           title="Rank Modification"
           buttons={
-            !!data.can_demote
-              && <Button.Confirm
-                content="Demote"
-                className="bad"
-                onClick={() => act('demote')} />
+            <Button.Confirm
+              disabled={!data.can_demote}
+              content="Demote"
+              className="bad"
+              onClick={() => act('demote')} />
           }>
           <LabeledList>
             <LabeledList.Item
@@ -137,32 +137,34 @@ export const TGUICardMod = (props: CardModProps, context) => {
               )}
             </LabeledList.Item>
           </LabeledList>
-          <Section title="Reassign Rank">
-            <Flex
-              direction="row">
-              <Flex.Item grow={0.35}>
-                <Tabs vertical>
-                  {data.ranks.sort((a, b) => (a.name.localeCompare(b.name))).map((dept) => (
-                    <Tabs.Tab key={dept.name} onClick={() => setDepartment(dept.name)}>
-                      {capitalize(dept.name)}
-                    </Tabs.Tab>
-                  ))}
-                </Tabs>
-              </Flex.Item>
-              <Flex.Item grow={1}>
-                {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => (
-                  <Button.Confirm
-                    key={rank}
-                    color="transparent"
-                    selected={rank === data.card_rank}
-                    fluid
-                    content={rank}
-                    onClick={() => act('rank', { rank: rank })} />
-                )
-                )}
-              </Flex.Item>
-            </Flex>
-          </Section>
+          {!!data.can_rank && (
+            <Section title="Reassign Rank">
+              <Flex
+                direction="row">
+                <Flex.Item grow={0.35}>
+                  <Tabs vertical>
+                    {data.ranks.sort((a, b) => (a.name.localeCompare(b.name))).map((dept) => (
+                      <Tabs.Tab key={dept.name} onClick={() => setDepartment(dept.name)}>
+                        {capitalize(dept.name)}
+                      </Tabs.Tab>
+                    ))}
+                  </Tabs>
+                </Flex.Item>
+                <Flex.Item grow={1}>
+                  {!!department && data.ranks.find((dept) => dept.name === department)?.ranks.map((rank) => (
+                    <Button.Confirm
+                      key={rank}
+                      color="transparent"
+                      selected={rank === data.card_rank}
+                      fluid
+                      content={rank}
+                      onClick={() => act('rank', { rank: rank })} />
+                  )
+                  )}
+                </Flex.Item>
+              </Flex>
+            </Section>
+          )}
         </Section>
       )}
     </Modular>

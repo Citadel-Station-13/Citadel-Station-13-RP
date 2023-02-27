@@ -143,7 +143,7 @@ STANDARD_ACCESS_DATUM(ACCESS_GENERAL_MIME, station/general/mime, "Mime Office")
 #define ACCESS_GENERAL_TOMFOOLERY 137
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_TOMFOOLERY, station/general/tomfoolery, "Tomfoolery Closet")
 
-#define ACCESS_GENERAL_EDIT 303
+#define ACCESS_GENERAL_EDIT 305
 STANDARD_ACCESS_DATUM(ACCESS_GENERAL_EDIT, station/general/edit, "General - Access Edit")
 	sort_order = -1000
 	access_edit_region = ACCESS_REGION_GENERAL
@@ -212,7 +212,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_MAIN, station/security/main, "Security")
 #define ACCESS_SECURITY_HOS 58
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_HOS, station/security/hos, "Head of Security")
 
-#define ACCESS_SECURITY_EDIT 303
+#define ACCESS_SECURITY_EDIT 306
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EDIT, station/security/edit, "Security - Access Edit")
 	sort_order = -1000
 	access_edit_region = ACCESS_REGION_SECURITY
@@ -320,7 +320,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBIO, station/science/xenobiology, "Xeno
 #define ACCESS_SCIENCE_XENOBOTANY 77
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBOTANY, station/science/xenobotany, "Xenobotany Garden")
 
-#define ACCESS_SCIENCE_EDIT 303
+#define ACCESS_SCIENCE_EDIT 304
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_EDIT, station/science/edit, "Science - Access Edit")
 	sort_order = -1000
 	access_edit_region = ACCESS_REGION_RESEARCH
