@@ -122,7 +122,7 @@ STANDARD_ACCESS_DATUM(ACCESS_GENERAL_PATHFINDER, station/general/pathfinder, "Pa
 	access_edit_list = list(
 		/datum/access/station/general/explorer,
 		/datum/access/station/general/pilot,
-		/datum/access/station/general/pilot,
+		/datum/access/station/general/pathfinder,
 	)
 
 #define ACCESS_GENERAL_GATEWAY 62

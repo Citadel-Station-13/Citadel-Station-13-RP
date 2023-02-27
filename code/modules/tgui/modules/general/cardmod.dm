@@ -269,8 +269,6 @@
 			continue
 		if(A.access_edit_list)
 			. |= A.access_edit_list
-		if(A.access_edit_category)
-			. |= SSjob.access_ids_of_category(A.access_edit_category)
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = NONE
@@ -296,7 +294,7 @@
 		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
 		if(isnull(A))
 			continue
-		if(A.access_edit_type)
+		if(A.access_edit_region)
 			. |= A.access_edit_region
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
