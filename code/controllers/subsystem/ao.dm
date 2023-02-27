@@ -26,10 +26,10 @@ SUBSYSTEM_DEF(ao)
 
 		if (!QDELETED(target))
 			if (target.ao_queued == AO_UPDATE_REBUILD)
-				var/old_n = target.ao_neighbors
-				var/old_z = target.ao_neighbors_mimic
-				target.calculate_ao_neighbors()
-				if (old_n != target.ao_neighbors || old_z != target.ao_neighbors_mimic)
+				var/old_n = target.ao_junction
+				var/old_z = target.ao_junction_mimic
+				target.calculate_ao_junction()
+				if (old_n != target.ao_junction || old_z != target.ao_junction_mimic)
 					target.update_ao()
 			else
 				target.update_ao()
