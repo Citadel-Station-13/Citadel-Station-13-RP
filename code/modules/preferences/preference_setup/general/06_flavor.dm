@@ -91,12 +91,12 @@
 	return ..()
 
 /datum/category_item/player_setup_item/general/flavor/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
-	. = ..()
 	if(!length(prefs.flavor_texts["general"]))
 		var/enforcing = CONFIG_GET(flag/enforce_flavor_text)
 		var/error = "Missing or insufficient general flavor text - See Character Setup for information."
 		if(enforcing)
 			errors += error
+			. = FALSE
 		else
 			warnings += error
 
