@@ -103,7 +103,6 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   return (
     <Section
       title="Access Modification"
-      scrollable
       fill={props.fill}
       buttons={
         <>
@@ -141,34 +140,38 @@ export const AccessListMod = (props: AccessListModProps, context) => {
           </Tabs>
         </Flex.Item>
         <Flex.Item grow={1}>
-          <Section
-            buttons={
-              <>
-                <Button
-                  icon="check"
-                  content="Grant Category"
-                  color="good"
-                  onClick={() => props.grant && props.grant(selectedCategory)} />
-                <Button
-                  icon="times"
-                  content="Deny Category"
-                  color="bad"
-                  onClick={() => props.deny && props.deny(selectedCategory)} />
-              </>
-            }>
-            {
-              props.access.filter((_a) => _a.category === selectedCategory).sort(
-                (a, b) => (a.name.localeCompare(b.name))
-              ).map((a) => (
-                <Button.Checkbox
-                  key={a.value}
-                  fluid
-                  checked={props.selected.includes(a.value)}
-                  content={a.name}
-                  onClick={() => props.set && props.set(a.value)} />
-              ))
-            }
-          </Section>
+          {
+            !!selectedCategory && (
+              <Section
+                buttons={
+                  <>
+                    <Button
+                      icon="check"
+                      content="Grant Category"
+                      color="good"
+                      onClick={() => props.grant && props.grant(selectedCategory)} />
+                    <Button
+                      icon="times"
+                      content="Deny Category"
+                      color="bad"
+                      onClick={() => props.deny && props.deny(selectedCategory)} />
+                  </>
+                }>
+                {
+                  props.access.filter((_a) => _a.category === selectedCategory).sort(
+                    (a, b) => (a.name.localeCompare(b.name))
+                  ).map((a) => (
+                    <Button.Checkbox
+                      key={a.value}
+                      fluid
+                      checked={props.selected.includes(a.value)}
+                      content={a.name}
+                      onClick={() => props.set && props.set(a.value)} />
+                  ))
+                }
+              </Section>
+            )
+          }
         </Flex.Item>
       </Flex>
     </Section>
@@ -207,7 +210,6 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
     <Section
       title="Access Authorization"
       fill={props.fill}
-      scrollable
       buttons={
         <Button
           icon="times"

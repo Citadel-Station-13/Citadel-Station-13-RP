@@ -857,6 +857,10 @@ They should be easy to scan for relevant and actionable information.
 Elements, like text and images, should be placed in them in a way that
 clearly indicates hierarchy.
 
+Known bugs:
+
+- Scrollbars are broken. If you need one, put it on the parent window.
+
 Section can also be titled to clearly define its purpose.
 
 ```jsx
@@ -1197,6 +1201,11 @@ Can be scrollable.
 
 Automatically renders as either a centered box, or a full window.
 Used for /datum/tgui_module's, which are interfaces that can act both as standalone and as embedded..
+
+Known bugs:
+
+- Do not use `fill` and `scrollable` at the same time on the Section-specific props, or it will mis-position and become invisible.
+- Scrollbars are broken. If you need one, put it on the parent window.
 
 **Props:**
 

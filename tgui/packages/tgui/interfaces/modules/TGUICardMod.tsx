@@ -50,12 +50,11 @@ export const TGUICardMod = (props: CardModProps, context) => {
     title: "Card Modify",
   };
   const sectionProps: SectionProps = {
-    fill: true,
   };
   const modifiable: Array<Access> = data.access.filter((a) => (
     (
-      (a.region | data.modify_region)
-      && (a.type | data.modify_type)
+      (a.region & data.modify_region)
+      && (a.type & data.modify_type)
     ) || (
       data.modify_cats.includes(a.category)
     ) || (

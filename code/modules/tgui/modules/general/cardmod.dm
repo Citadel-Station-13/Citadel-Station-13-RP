@@ -116,8 +116,9 @@
  * * user - user of UI
  * * editing - (optional) card being edited
  * * authing - (optional) card authorizing the edit
+ * * direct - (optional) direct list of relevant access ids to check for speed
  */
-/datum/tgui_module/card_mod/proc/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/proc/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return list()
 
 /**
@@ -127,8 +128,9 @@
  * * user - user of UI
  * * editing - (optional) card being edited
  * * authing - (optional) card authorizing the edit
+ * * direct - (optional) direct list of relevant access ids to check for speed
  */
-/datum/tgui_module/card_mod/proc/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/proc/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return ACCESS_TYPE_NONE
 
 /**
@@ -138,8 +140,9 @@
  * * user - user of UI
  * * editing - (optional) card being edited
  * * authing - (optional) card authorizing the edit
+ * * direct - (optional) direct list of relevant access ids to check for speed
  */
-/datum/tgui_module/card_mod/proc/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/proc/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return ACCESS_REGION_NONE
 
 /**
@@ -148,8 +151,10 @@
  * @params
  * * user - user of UI
  * * editing - (optional) card being edited
+ * * authing - (optional) card authorizing the edit
+ * * direct - (optional) direct list of relevant access ids to check for speed
  */
-/datum/tgui_module/card_mod/proc/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/proc/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return list()
 
 /**
@@ -167,10 +172,11 @@
 /datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
-	.["modify_type"] = query_access_types(user, editing, authing)
-	.["modify_region"] = query_access_regions(user, editing, authing)
-	.["modify_ids"] = query_access_ids(user, editing, authing)
-	.["modify_cats"] = query_access_categories(user, editing, authing)
+	var/list/direct_cache = ((authing?.access || list()) & SSjob.cached_access_edit_relevant)
+	.["modify_type"] = query_access_types(user, editing, authing, direct_cache)
+	.["modify_region"] = query_access_regions(user, editing, authing, direct_cache)
+	.["modify_ids"] = query_access_ids(user, editing, authing, direct_cache)
+	.["modify_cats"] = query_access_categories(user, editing, authing, direct_cache)
 	.["modify_account"] = auth_account_edit(user, editing, authing)
 	.["can_rename"] = auth_rename(user, editing, authing)
 	var/list/ranks_by_department = query_ranks(user, editing, authing)
@@ -279,41 +285,33 @@
  */
 /datum/tgui_module/card_mod/standard
 
-/datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in authing?.access)
-		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
-		if(isnull(A))
+	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+		var/datum/access/A = SSjob.access_lookup(id)
+		if(isnull(A.access_edit_list))
 			continue
-		if(A.access_edit_list)
-			. |= A.access_edit_list
+		. |= A.access_edit_list
 
-/datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in authing?.access)
-		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
-		if(isnull(A))
-			continue
-		if(A.access_edit_type)
-			. |= A.access_edit_type
+	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+		var/datum/access/A = SSjob.access_lookup(id)
+		. |= A.access_edit_type
 
-/datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in authing?.access)
-		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
-		if(isnull(A))
-			continue
-		if(A.access_edit_category)
-			. |= A.access_edit_category
+	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+		var/datum/access/A = SSjob.access_lookup(id)
+		. |= A.access_edit_category
 
-/datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in authing?.access)
-		var/datum/access/A = SSjob.cached_access_edit_lookup["[id]"]
-		if(isnull(A))
+	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+		var/datum/access/A = SSjob.access_lookup(id)
+		if(isnull(A.access_edit_region))
 			continue
-		if(A.access_edit_region)
-			. |= A.access_edit_region
+		. |= A.access_edit_region
 
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
@@ -404,13 +402,13 @@
 	return GLOB.admin_state
 
 
-/datum/tgui_module/card_mod/admin/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/admin/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return SSjob.access_ids()
 
-/datum/tgui_module/card_mod/admin/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/admin/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return ACCESS_TYPE_ALL
 
-/datum/tgui_module/card_mod/admin/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
+/datum/tgui_module/card_mod/admin/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return ACCESS_REGION_ALL
 
 /datum/tgui_module/card_mod/admin/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)

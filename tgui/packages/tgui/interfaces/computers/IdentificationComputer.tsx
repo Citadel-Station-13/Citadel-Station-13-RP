@@ -24,7 +24,7 @@ export const IdentificationComputer = (props, context) => {
   const [currentTab, setCurrentTab] = useLocalState<number>(context, 'currentTab', 0);
   return (
     <Window width={500} height={700}>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section title="Authentication">
           <IDSlot card={IDCardOrDefault(data.auth_card)} onClick={() => act('auth')} />
         </Section>
@@ -49,20 +49,16 @@ export const IdentificationComputer = (props, context) => {
               {
                 data.authed_cardmod? (
                   data.modify_card? (
-                    <Section>
-                      <Module id="modify" />
-                    </Section>
+                    <Module id="modify" />
                   ) : (
-                    <>
+                    <NoticeBox warning>
                       Please insert target card.
-                    </>
+                    </NoticeBox>
                   )
                 ) : (
-                  <Section>
-                    <NoticeBox warning>
-                      Authentication required for ID modification.
-                    </NoticeBox>
-                  </Section>
+                  <NoticeBox warning>
+                    Authentication required for ID modification.
+                  </NoticeBox>
                 )
               }
             </Section>
