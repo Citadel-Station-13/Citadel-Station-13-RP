@@ -47,7 +47,7 @@
  * authed for at least one possible access change OR rank change
  */
 /obj/machinery/computer/card/proc/authed_for_edit(obj/item/card/id/checking = authing)
-	return checking?.access && (SSjob.cached_access_edit_relevant & checking.access)
+	return checking?.access && length(SSjob.cached_access_edit_relevant & checking.access)
 
 /obj/machinery/computer/card/AltClick(mob/user)
 	. = ..()
