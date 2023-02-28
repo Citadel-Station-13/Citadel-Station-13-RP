@@ -971,6 +971,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/research/xenoflora
 	name = "\improper Xenoflora Maintenance"
 
+/area/maintenance/research/xenobio
+	name = "\improper Xenobio Maintenance"
 /area/maintenance/security
 	name = "Security Maintenance"
 	icon_state = "security"
@@ -2734,6 +2736,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/rnd/xenoarch_storage
 	name = "\improper Xenoarch Storage"
 	icon_state = "research"
+
+/area/rnd/telescience_lab
+	name = "\improper Telescience Lab"
+	icon_state = "research"
+
+/area/rnd/telescience_lab/foyer
+	name = "\improper Telescience Lab Foyer"
+
+/area/rnd/telescience_lab/chamber
+	name = "\improper Telescience Teleportation Chamber"
+
+/area/rnd/telescience_lab/storage
+	name = "\improper Telescience Storage"
 
 // Research Outpost
 /area/rnd/outpost/airlock

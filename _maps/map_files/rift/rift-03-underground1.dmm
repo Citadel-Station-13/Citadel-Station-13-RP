@@ -3284,6 +3284,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"kA" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "kB" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -12266,6 +12272,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/maintenance/engineering)
+"Wp" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "Wq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -19529,9 +19539,9 @@ WR
 WR
 WR
 WR
-WR
-WR
-WR
+es
+es
+es
 WR
 WR
 Va
@@ -19723,9 +19733,9 @@ WR
 WR
 WR
 WR
-WR
-WR
-WR
+es
+es
+es
 WR
 WR
 WR
@@ -19917,9 +19927,9 @@ WR
 WR
 WR
 WR
-WR
-WR
-WR
+es
+es
+es
 WR
 WR
 WR
@@ -20916,7 +20926,7 @@ OV
 MX
 Qw
 Qw
-Ty
+Qw
 Qw
 Qw
 rV
@@ -21110,8 +21120,8 @@ OV
 MX
 Qw
 WR
-WR
-WR
+es
+Wp
 rV
 rV
 WR
@@ -21305,8 +21315,8 @@ Qw
 Qw
 WR
 WR
-WR
-WR
+kA
+kA
 WR
 WR
 WR
