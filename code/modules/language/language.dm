@@ -54,6 +54,13 @@
 	/// The shorthand name of this language, used for the indicators in chat. Should be only a handful of all-caps letters.
 	var/shorthand = "???"
 
+	//if it uses direct symbol replacement cipher(instead of syllable scrambling)
+	var/uses_replace = FALSE
+	//list of letters to exclude from the symbol replacement above (IE, you don't want the ciphered language to have the letter "a")
+	var/list/exclude_letters = list()
+	//list of symbols to replace with, formatted as "a" = "<symbol>"
+	var/list/replace_letters = list()
+
 /datum/language/New()
 	if(isnull(id))
 		id = ckey(name)
@@ -76,7 +83,21 @@
 
 	return "[trim(full_name)]"
 
+/datum/language/proc/replacesymbols(input)
+	var/list/transformed = splittext_char(input,"")
+	if(LAZYLEN(exclude_letters))
+		for(var/l in transformed)
+			for(var/excluded in exclude_letters)
+				if(l == excluded)
+					LAZYREMOVE(transformed,l)
+	for(var/i in 1 to LAZYLEN(transformed))
+		transformed[i] = replace_letters[transformed[i]] || transformed[i]
+	return jointext(transformed, "")
+
 /datum/language/proc/scramble(input, list/known_languages)
+	if(uses_replace)
+		var/text = replacesymbols(input)
+		return text
 	var/understand_chance = 0
 	for(var/datum/language/L in known_languages)
 		if(partial_understanding && partial_understanding[L.name])

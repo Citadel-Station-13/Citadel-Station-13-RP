@@ -338,3 +338,60 @@
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Pilot voidsuit crate"
 	access = access_pilot
+
+//Cryosuits
+/datum/supply_pack/voidsuits/cryosec
+	name = "Security cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/security/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/security/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Security cryosuit crate"
+	access = access_armory
+
+/datum/supply_pack/voidsuits/cryoengi
+	name = "Engineering cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/engineering/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/engineering/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Engineering cryosuit crate"
+	access = access_engine_equip
+
+/datum/supply_pack/voidsuits/cryoatmos
+	name = "Atmospherics cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/atmos/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/atmos/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Atmospherics cryosuit crate"
+	access = access_atmospherics
+
+/datum/supply_pack/voidsuits/cryomining
+	name = "Mining cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/mining/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/mining/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Mining cryosuit crate"
+	access = access_mining

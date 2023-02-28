@@ -59,12 +59,21 @@
 
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
 
-/// Updates the icon state of the atom.
+/**
+ * Updates the icon state of the atom.
+ *
+ * Make sure to call return ..() last, so the comsig can force updates.
+ */
 /atom/proc/update_icon_state()
 	SHOULD_CALL_PARENT(TRUE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON_STATE)
 
-/// Updates the overlays of the atom.
+
+/**
+ * Updates the icon state of the atom.
+ *
+ * Make sure to call return ..() last, so the comsig can force updates.
+ */
 /atom/proc/update_overlays()
 	SHOULD_CALL_PARENT(TRUE)
 	. = list()

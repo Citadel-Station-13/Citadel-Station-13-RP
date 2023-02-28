@@ -11,15 +11,16 @@
 	rarity_value = 4
 
 	blurb = "The Scori are the native inhabitants of Surt. Much of their history has been lost,	save for artistic \
-	depictions sometimes recovered on archaeological digs. Insular and deeply xenophobic, the Scori are more commonly \
+	depictions sometimes recovered on archaeological digs. Insular and xenophobic, the Scori are more commonly \
 	known as Ashlanders. Until recently, the Scori were believed to have gone extinct some tens of thousands of years ago \
 	when Surt underwent an as yet unknown cataclysm. Instead, the modern Scori seem to have descended from the cataclysm's \
 	survivors. Dwelling deep underground in caves, or travelling across the planet's surface in nomadic caravans, sightings \
-	of Scori tribesmen were treated as hoaxes. NanoTrasen pathfinding teams operating in the wake of the expedition to Kristen's \
-	Harmony have since confirmed the presence of a nearby Scori tribe."
+	of Scori tribesmen were historically treated as hoaxes. NanoTrasen pathfinding teams operating in the wake of the expedition \
+	to Kristen's Harmony have since confirmed the presence of a nearby Scori tribe."
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Scori"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'

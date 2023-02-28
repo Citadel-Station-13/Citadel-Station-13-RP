@@ -3267,12 +3267,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
-"ks" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/public_bunker)
 "kt" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -3284,12 +3278,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"kA" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under1)
 "kB" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4179,6 +4167,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"pR" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "pT" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
@@ -6881,6 +6873,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
+"Bg" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/public_bunker)
 "Bi" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -12101,6 +12102,12 @@
 /obj/structure/window/basic,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/crew_quarters/pool)
+"VE" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "VF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/tiled/techmaint,
@@ -12272,10 +12279,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/maintenance/engineering)
-"Wp" = (
-/obj/structure/stairs/spawner/north,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under1)
 "Wq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -21121,7 +21124,7 @@ MX
 Qw
 WR
 es
-Wp
+pR
 rV
 rV
 WR
@@ -21315,8 +21318,8 @@ Qw
 Qw
 WR
 WR
-kA
-kA
+VE
+VE
 WR
 WR
 WR
@@ -27653,7 +27656,7 @@ aa
 aa
 aZ
 rc
-ks
+Bg
 aj
 cb
 aZ
