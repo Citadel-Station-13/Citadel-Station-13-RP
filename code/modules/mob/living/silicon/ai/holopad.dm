@@ -1,10 +1,14 @@
 /mob/living/silicon/ai/proc/initiate_holopad_connection(obj/machinery/holopad/pad)
+	#warn impl
 
 /mob/living/silicon/ai/proc/terminate_holopad_connection()
 	#warn impl
 
-#warn impl
+/mob/living/silicon/ai/proc/move_active_hologram(turf/target)
+	hologram.move_to_target(target)
 
+/mob/living/silicon/ai/proc/stop_moving_hologram()
+	hologram.stop_moving()
 
 /**
  * get something we can feed into from_appearance() on a hologram

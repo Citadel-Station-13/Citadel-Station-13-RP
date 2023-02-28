@@ -675,9 +675,7 @@ var/list/ai_verbs_default = list(
 
 	hologram_follow = !hologram_follow
 	// Required to stop movement because we use walk_to(wards) in hologram.dm
-	if(holo)
-		var/obj/effect/overlay/aiholo/hologram = holo.masters[src]
-		walk(hologram, 0)
+	stop_moving_hologram()
 	to_chat(usr, "Your hologram will [hologram_follow ? "follow" : "no longer follow"] you now.")
 
 

@@ -443,6 +443,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/process(delta_time)
 	outgoing_call.validate()
 	#warn impl - ai?
+	#warn impl - locations
+
+/obj/machinery/holopad/proc/check_hologram(obj/effect/overlay/hologram/holopad/holo)
+	if(!isturf(holo.loc) || !turf_in_range(holo.loc))
+		#warn impl
+		return FALSE
+	return TRUE
 
 //? AI holograms
 
@@ -527,28 +534,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			continue
 
 		use_power(power_per_hologram)
-	return TRUE
-
-/obj/machinery/holopad/proc/move_hologram(mob/living/silicon/ai/user)
-	if(masters[user])
-		var/obj/effect/overlay/aiholo/H = masters[user]
-		if(H.bellied)
-			walk_to(H, user.eyeobj) //Walk-to respects obstacles
-		else
-			walk_towards(H, user.eyeobj) //Walk-towards does not
-		//Hologram left the screen (got stuck on a wall or something)
-		if(get_dist(H, user.eyeobj) > world.view)
-			clear_holo(user)
-		if((HOLOPAD_MODE == RANGE_BASED && (get_dist(H, src) > holo_range)))
-			clear_holo(user)
-
-		if(HOLOPAD_MODE == bAREA_BASED)
-			var/area/holopad_area = get_area(src)
-			var/area/hologram_area = get_area(H)
-
-			if(!(hologram_area in holopad_area))
-				clear_holo(user)
-
 	return TRUE
 
 
@@ -744,12 +729,31 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	opacity = FALSE
 	pass_flags = ATOM_PASS_ALL
 	pass_flags_self = ATOM_PASS_BLOB | ATOM_PASS_GLASS | ATOM_PASS_GRILLE | ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_THROWN | ATOM_PASS_TABLE
-#warn impl
 
-/obj/effect/overlay/hologram/Initialize(mapload, appearance/clone_from)
+/obj/effect/overlay/hologram/Initialize(mapload, appearance/clone_from = /datum/hologram/general/holo_female)
 	. = ..()
 	if(clone_from)
 		from_appearance(clone_from)
+
+/obj/effect/overlay/hologram/Destroy()
+	walk(src, NONE)
+	return ..()
+
+/obj/effect/overlay/hologram/proc/move_to_target(turf/T)
+	if(density)
+		walk_to(T)
+	else
+		walk_towards(T)
+
+/obj/effect/overlay/hologram/proc/stop_moving()
+	walk(src, NONE)
+
+/obj/effect/overlay/hologram/Moved()
+	. = ..()
+	check_location()
+
+/obj/effect/overlay/hologram/proc/check_location()
+	return
 
 /**
  * used to set or generate holograms
@@ -819,6 +823,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	pad.unregister_hologram(src)
 	pad = null
 	return ..()
+
+/obj/effect/overlay/hologram/holopad/check_location()
+	pad.check_hologram(src)
 
 /**
  * AI holograms
