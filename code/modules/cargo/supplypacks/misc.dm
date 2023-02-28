@@ -194,7 +194,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Belt-miner gear crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/misc/eva_rig
 	name = "eva hardsuit (empty)"
@@ -204,10 +204,10 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "eva hardsuit crate"
-	access = list(access_mining,
-				  access_eva,
-				  access_explorer,
-				  access_pilot)
+	access = list(ACCESS_SUPPLY_MINE,
+				  ACCESS_COMMAND_EVA,
+				  ACCESS_GENERAL_EXPLORER,
+				  ACCESS_GENERAL_PILOT)
 	one_access = TRUE
 
 /datum/supply_pack/misc/mining_rig
@@ -218,8 +218,8 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "industrial hardsuit crate"
-	access = list(access_mining,
-				  access_eva)
+	access = list(ACCESS_SUPPLY_MINE,
+				  ACCESS_COMMAND_EVA)
 	one_access = TRUE
 
 /datum/supply_pack/misc/medical_rig
@@ -230,7 +230,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "medical hardsuit crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
@@ -251,7 +251,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "hazard hardsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/misc/science_rig
 	name = "ami hardsuit (empty)"
@@ -261,7 +261,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "ami hardsuit crate"
-	access = access_rd
+	access = ACCESS_SCIENCE_RD
 
 /datum/supply_pack/misc/ce_rig
 	name = "advanced voidsuit (empty)"
@@ -271,7 +271,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "advanced voidsuit crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 
 /datum/supply_pack/misc/colored_lights

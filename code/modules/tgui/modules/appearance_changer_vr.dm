@@ -1,26 +1,26 @@
-/datum/tgui_module/appearance_changer/vore
+/datum/tgui_module_old/appearance_changer/vore
 	name = "Appearance Editor (Vore)"
 	flags = APPEARANCE_ALL
 
-/datum/tgui_module/appearance_changer/vore/ui_state(mob/user)
+/datum/tgui_module_old/appearance_changer/vore/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.tgui_conscious_state
 
-/datum/tgui_module/appearance_changer/vore/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_module_old/appearance_changer/vore/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	if(!isbelly(owner.loc))
 		return UI_CLOSE
 	return ..()
 
-/datum/tgui_module/appearance_changer/vore/update_active_camera_screen()
+/datum/tgui_module_old/appearance_changer/vore/update_active_camera_screen()
 	cam_screen.vis_contents = list(owner)
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, 1, 1)
 	local_skybox.cut_overlays()
 
-/datum/tgui_module/appearance_changer/vore/ui_close(mob/user)
+/datum/tgui_module_old/appearance_changer/vore/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	QDEL_IN(src, 1)
 
-/datum/tgui_module/appearance_changer/vore/changed_hook(flag)
+/datum/tgui_module_old/appearance_changer/vore/changed_hook(flag)
 	var/mob/living/carbon/human/M = owner
 	var/mob/living/O = usr
 
