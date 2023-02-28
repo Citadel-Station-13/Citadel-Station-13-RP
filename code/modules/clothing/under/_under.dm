@@ -97,6 +97,20 @@
 	else
 		sensor_mode = SUIT_SENSOR_OFF
 
+//? Styles
+
+/obj/item/clothing/under/available_styles(mob/user)
+	. = ..()
+	if(.)
+		return
+	#warn impl
+
+/obj/item/clothing/under/set_style(style)
+	. = ..()
+	if(.)
+		return
+	#warn impl
+
 //! Inventory
 /obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
@@ -194,7 +208,7 @@
 		if(UNIFORM_ROLL_FALSE)
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(UPPER_TORSO | ARMS)
+			body_parts_covered &= ~(UPPER_TORSO | ARMS | HANDS)
 			to_chat(user, SPAN_NOTICE("You roll [src] down."))
 		if(UNIFORM_ROLL_TRUE)
 			worn_rolled_down = UNIFORM_ROLL_FALSE
@@ -223,7 +237,7 @@
 		if(UNIFORM_ROLL_FALSE)
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
 			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(ARMS)
+			body_parts_covered &= ~(ARMS | HANDS)
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
 		if(UNIFORM_ROLL_TRUE)
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE

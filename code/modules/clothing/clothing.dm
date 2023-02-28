@@ -162,19 +162,19 @@
  * returns available styles as name = state
  */
 /obj/item/clothing/proc/available_styles(mob/user)
-	#warn impl
+	return list()
 
 /**
  * sets us to a specific style
  */
 /obj/item/clothing/proc/set_style(style)
-	#warn impl
+	return FALSE
 
 /**
  * prompts a user to pick style
  */
 /obj/item/clothing/proc/pick_style(mob/user)
-	#warn impl
+	#warn impl - render with icon_state from icon (?)
 
 #warn verb???
 
