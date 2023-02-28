@@ -173,7 +173,7 @@
 /**
  * prompts a user to pick style
  */
- /obj/item/clothing/proc/pick_style(mob/user)
+/obj/item/clothing/proc/pick_style(mob/user)
 	#warn impl
 
 #warn verb???
