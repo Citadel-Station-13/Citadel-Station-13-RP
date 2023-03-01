@@ -150,8 +150,8 @@
 	matter = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
-		to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
-		playsound(user, 'sound/machines/click.ogg', 50, TRUE)
-		var/obj/machinery/cell_charger/C = new(user.loc)
-		C.add_fingerprint(user)
-		qdel(src)
+	to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
+	playsound(user, 'sound/machines/click.ogg', 50, TRUE)
+	var/obj/machinery/cell_charger/C = new(user.loc)
+	C.add_fingerprint(user)
+	qdel(src)

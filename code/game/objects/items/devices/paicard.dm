@@ -227,7 +227,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 			"}
 	user << browse(dat, "window=paicard")
 	onclose(user, "paicard")
-	return
 
 /obj/item/paicard/Topic(href, href_list)
 

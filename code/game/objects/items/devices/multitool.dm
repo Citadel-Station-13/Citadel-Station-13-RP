@@ -66,8 +66,6 @@
 
 	update_icon()
 
-	return ..()
-
 /obj/item/multitool/is_multitool()
 	return TRUE
 

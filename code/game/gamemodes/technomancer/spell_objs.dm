@@ -200,7 +200,6 @@
 /obj/item/spell/attack_self(mob/user)
 	if(run_checks() && (cast_methods & CAST_USE))
 		on_use_cast(user)
-	..()
 
 // Proc: attackby()
 // Parameters: 2 (W - the item this spell object is hitting, user - the technomancer who clicked the other object)

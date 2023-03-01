@@ -233,7 +233,6 @@
 	else
 		visible_message("[user] triggers \the [src.name]!", "You accidentally trigger \the [src.name]!")
 		prime(user, TRUE)
-	return
 
 /obj/item/mine/proc/prime(mob/user as mob, var/explode_now = FALSE)
 	visible_message("\The [src.name] beeps as the priming sequence completes.")

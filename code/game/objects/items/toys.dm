@@ -785,7 +785,6 @@
 // Attack self
 /obj/item/toy/plushie/carp/attack_self(mob/user)
 	playsound(src, bitesound, 20, 1)
-	return ..()
 
 /obj/random/carp_plushie
 	name = "Random Carp Plushie"
@@ -1442,7 +1441,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/griffin
 	name = "griffin action figure"
@@ -1461,7 +1459,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/cowgirlprize
 	name = "cyan cowgirl action figure"
@@ -1480,7 +1477,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/snakeoilprize
 	name = "snake oil salesman action figure"
@@ -1499,17 +1495,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
-
-/* NYET.
-/obj/item/toddler
-	icon_state = "toddler"
-	name = "toddler"
-	desc = "This baby looks almost real. Wait, did it just burp?"
-	force = 5
-	w_class = ITEMSIZE_LARGE
-	slot_flags = SLOT_BACK
-*/
 
 //This should really be somewhere else but I don't know where. w/e
 

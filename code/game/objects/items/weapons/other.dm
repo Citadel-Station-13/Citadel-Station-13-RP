@@ -149,8 +149,6 @@
 		user.put_in_hands(concealed_blade)
 		user.put_in_hands(src)
 		concealed_blade = null
-	else
-		..()
 
 /obj/item/cane/concealed/attackby(obj/item/material/butterfly/W, mob/user)
 	if(!src.concealed_blade && istype(W))

@@ -52,7 +52,6 @@
 			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
-	return ..()
 
 /obj/item/card/id/guest/Initialize(mapload)
 	. = ..()

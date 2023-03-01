@@ -51,7 +51,6 @@
 		to_chat(M, "This stack of blue paper means nothing to you.") //monkeys cannot into projecting
 		return
 	interact()
-	return
 
 /obj/item/blueprints/Topic(href, href_list)
 	..()
