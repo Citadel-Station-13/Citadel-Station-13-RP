@@ -18,7 +18,7 @@
 	icon = 'icons/obj/bots/floorbots.dmi'
 	icon_state = "floorbot"
 	base_icon_state = "toolbox"
-	req_one_access = list(access_robotics, access_construction)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_ENGINEERING_CONSTRUCTION)
 
 	wait_if_pulled = TRUE
 	min_target_dist = 0
@@ -101,7 +101,7 @@
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
-/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

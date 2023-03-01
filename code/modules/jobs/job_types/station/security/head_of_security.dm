@@ -3,8 +3,13 @@
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"
 	flag = HOS
-	departments_managed = list(DEPARTMENT_SECURITY)
-	departments = list(DEPARTMENT_SECURITY, DEPARTMENT_COMMAND)
+	departments_managed = list(
+		DEPARTMENT_SECURITY,
+	)
+	departments = list(
+		DEPARTMENT_SECURITY,
+		DEPARTMENT_COMMAND,
+	)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE
@@ -16,14 +21,30 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
-						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
-	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
-						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
+	minimal_access = list(
+		ACCESS_COMMAND_ANNOUNCE,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_COMMAND_LOCKERS,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_GENERAL_GATEWAY,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SECURITY_ARMORY,
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_EDIT,
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_SECURITY_HOS,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_MINE,
+	)
 	minimum_character_age = 25
 	minimal_player_age = 14
 

@@ -55,7 +55,7 @@
 	icon_opened = "secureresopen"
 	icon_broken = "secureresbroken"
 	icon_off = "secureresoff"
-	req_access = list(access_tox_storage)
+	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist,
@@ -99,7 +99,7 @@
 		/obj/item/hand_labeler)
 
 /obj/machinery/alarm/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 
 /obj/machinery/alarm/monitor/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)

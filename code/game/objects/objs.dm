@@ -28,8 +28,10 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-	// Access levels, used in modules\jobs\access.dm
+	//? Access - see [modules/jobs/access.dm]
+	/// If set, all of these accesses are needed to access this object.
 	var/list/req_access
+	/// If set, at least one of these accesses are needed to access this object.
 	var/list/req_one_access
 
 	/// Set when a player renames a renamable object.
