@@ -103,8 +103,8 @@ var/global/list/sparring_attack_cache = list()
 				W = new /datum/wound/bruise(5)
 				W.force_infect()
 				attack_message = "scratches and pummels, their infested fluids mixing with [target]!"
-			if(LAZYLEN(affecting.wounds))
-				for(var/datum/wound/other in affecting.wounds)
+			if(length(affecting.wounds))
+				for(var/datum/wound/other as anything in affecting.wounds)
 					if(other.can_merge(W))
 						other.merge_wound(W)
 						W = null

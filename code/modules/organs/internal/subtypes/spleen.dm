@@ -63,7 +63,7 @@
 		var/obj/item/organ/external/Target = owner.get_organ(parent_organ)
 		var/datum/wound/W = new /datum/wound/internal_bleeding(round(20 * spleen_efficiency))
 		owner.adjustToxLoss(15 * spleen_efficiency)
-		Target.wounds += W
+		LAZYADD(Target.wounds, W)
 
 /obj/item/organ/internal/spleen/skrell
 	name = "lymphatic hub"

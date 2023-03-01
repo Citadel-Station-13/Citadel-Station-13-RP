@@ -64,7 +64,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/external/O in H.bad_external_organs)//for-loop that covers all injured external organs
-			for(var/datum/wound/W in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
+			for(var/datum/wound/W as anything in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
 				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
 					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
 					if(W.damage <= 0)//If the wound is healed,
@@ -753,7 +753,7 @@
 		var/mob/living/carbon/human/H = M
 		var/wound_heal = removed * repair_strength
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			for(var/datum/wound/W in O.wounds)
+			for(var/datum/wound/W as anything in O.wounds)
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
