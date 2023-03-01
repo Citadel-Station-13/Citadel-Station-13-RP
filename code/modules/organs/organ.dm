@@ -5,7 +5,6 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
-
 //! ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
