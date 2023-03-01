@@ -11635,6 +11635,12 @@
 /obj/structure/catwalk,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
+"izk" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "izD" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -27197,15 +27203,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/rift/station/public_garden/gantry)
-"utZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "uuX" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
@@ -31898,17 +31895,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
-"xNK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/component/binary/passive_gate/on{
-	dir = 8;
-	pressure_resistance = 750;
-	target_pressure = 750
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "xOs" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -38907,7 +38893,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-xNK
+uIZ
 uIZ
 uIZ
 pBj
@@ -39101,7 +39087,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-utZ
+uIZ
 uIZ
 uIZ
 pBj
@@ -41430,7 +41416,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+tVG
 pBj
 pBj
 pBj
@@ -41624,7 +41610,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+tVG
 pBj
 pBj
 pBj
@@ -41818,7 +41804,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+tVG
 pBj
 pBj
 pBj
@@ -42012,7 +41998,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+tVG
 pBj
 pBj
 pBj
@@ -42206,7 +42192,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+pBj
 pBj
 pBj
 pBj
@@ -42400,7 +42386,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+pBj
 pBj
 pBj
 pBj
@@ -42594,8 +42580,8 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
-uIZ
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -42781,9 +42767,9 @@ xec
 cUW
 utv
 utv
-utv
+izk
 cUW
-utv
+izk
 utv
 utv
 cUW
