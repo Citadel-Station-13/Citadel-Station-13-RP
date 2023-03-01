@@ -83,7 +83,7 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
-				for(var/datum/wound/W in as anything in O.wounds)
+				for(var/datum/wound/W as anything in O.wounds)
 					if(W.bleeding())
 						if(W.damage <= 20)//Bleed threshhold is 30
 							W.bandaged = 1//act as if bandaged
