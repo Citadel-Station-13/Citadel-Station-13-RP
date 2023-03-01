@@ -47,7 +47,7 @@
  *
  * return list Statuic Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list()
 
 /**
@@ -74,17 +74,39 @@
 
 /**
  * immediately shunts this data to either an user, an ui, or all users.
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
  */
-/datum/proc/send_tgui_data_immediate(mob/user, datum/tgui/ui, list/data)
-	ASSERT(data)
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
 	if(!user)
 		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.send_custom_update(data)
+			window.push_data(data)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_custom_update(data)
+		ui.push_data(data)
+
+/**
+ * immediately pushes module updates to user, an ui, or all users
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ */
+/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.push_modules(updates)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.push_modules(updates)
 
 /**
  * public
@@ -97,9 +119,9 @@
  *
  * return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE
@@ -122,7 +144,7 @@
  * This allows modules/datums to have the UI attached to them,
  * and be a part of another object.
  */
-/datum/proc/ui_host(mob/user)
+/datum/proc/ui_host(mob/user, datum/tgui_module/module)
 	return src // Default src.
 
 /**
@@ -131,7 +153,7 @@
  * The UI's state controller to be used for created uis
  * This is a proc over a var for memory reasons
  */
-/datum/proc/ui_state(mob/user)
+/datum/proc/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.default_state
 
 /**
@@ -168,8 +190,12 @@
  *
  * Called on a UI's object when the UI is closed, not to be confused with
  * client/verb/uiclose(), which closes the ui window
+ *
+ * @params
+ * * user - closing mob
+ * * module - (optional) the module it came from, if any
  */
-/datum/proc/ui_close(mob/user)
+/datum/proc/ui_close(mob/user, datum/tgui_module/module)
 	SIGNAL_HANDLER
 
 /**

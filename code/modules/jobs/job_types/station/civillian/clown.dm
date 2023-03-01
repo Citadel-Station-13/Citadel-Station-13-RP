@@ -8,8 +8,8 @@
 	spawn_positions = 1
 	supervisors = "the spirit of laughter"
 	selection_color = "#515151"
-	access = list(access_entertainment)
-	minimal_access = list(access_entertainment)
+	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	desc = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
 	outfit_type = /datum/outfit/job/station/clown
@@ -24,9 +24,9 @@
 
 /datum/role/job/station/clown/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels, access_entertainment, access_clown, access_tomfoolery)
+		return list(ACCESS_ENGINEERING_MAINT, ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_CLOWN, ACCESS_GENERAL_TOMFOOLERY)
 	else
-		return list(access_entertainment, access_clown, access_tomfoolery)
+		return list(ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_CLOWN, ACCESS_GENERAL_TOMFOOLERY)
 
 /datum/outfit/job/station/clown
 	name = OUTFIT_JOB_NAME("Clown")

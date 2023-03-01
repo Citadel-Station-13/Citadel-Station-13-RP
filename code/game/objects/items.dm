@@ -25,6 +25,9 @@
 	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_persist_flags = NONE
+  /// This is used to determine how default item-level interaction hooks are handled.
+	/// flags for interaction - see [code/__DEFINES/_flags/interaction_flags.dm]
+	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -708,6 +711,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/rped_rating()
 	return get_rating()
 
+// todo: WHAT?
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)

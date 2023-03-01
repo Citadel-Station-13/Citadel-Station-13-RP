@@ -6,7 +6,7 @@
 	icon_opened = "secureceopen"
 	icon_broken = "securecebroken"
 	icon_off = "secureceoff"
-	req_access = list(access_ce)
+	req_access = list(ACCESS_ENGINEERING_CE)
 
 	starts_with = list(
 		/obj/item/clothing/shoes/magboots/advanced,
@@ -58,7 +58,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengelecbroken"
 	icon_off = "secureengelecoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow = 2,
@@ -77,7 +77,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengweldbroken"
 	icon_off = "secureengweldoff"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 
 	starts_with = list(
 		/obj/item/clothing/head/welding = 3,
@@ -93,7 +93,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -133,7 +133,7 @@
 	icon_opened = "secureatmopen"
 	icon_broken = "secureatmbroken"
 	icon_off = "secureatmoff"
-	req_access = list(access_atmospherics)
+	req_access = list(ACCESS_ENGINEERING_ATMOS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -173,7 +173,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,

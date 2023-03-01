@@ -2,7 +2,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 
 /datum/ghostrole_menu
 
-/datum/ghostrole_menu/ui_state(mob/user)
+/datum/ghostrole_menu/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.observer_state
 
 /datum/ghostrole_menu/ui_interact(mob/user, datum/tgui/ui)

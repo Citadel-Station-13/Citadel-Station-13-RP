@@ -59,7 +59,7 @@
 	icon_state = "glasses"
 	var/datum/nano_module/arscreen
 	var/arscreen_path
-	var/datum/tgui_module/tgarscreen
+	var/datum/tgui_module_old/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
 	enables_planes = list(VIS_AUGMENTED)
@@ -137,7 +137,7 @@
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
 	prescription = 1
-	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
+	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
 	enables_planes = list(VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)

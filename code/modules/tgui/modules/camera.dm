@@ -1,4 +1,4 @@
-/datum/tgui_module/camera
+/datum/tgui_module_old/camera
 	name = "Security Cameras"
 	tgui_id = "CameraConsole"
 
@@ -20,7 +20,7 @@
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
-/datum/tgui_module/camera/New(host, list/network_computer)
+/datum/tgui_module_old/camera/New(host, list/network_computer)
 	. = ..()
 	if(!LAZYLEN(network_computer))
 		access_based = TRUE
@@ -60,7 +60,7 @@
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 
-/datum/tgui_module/camera/Destroy()
+/datum/tgui_module_old/camera/Destroy()
 	if(active_camera)
 		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
@@ -71,7 +71,7 @@
 	qdel(cam_foreground)
 	return ..()
 
-/datum/tgui_module/camera/ui_interact(mob/user, datum/tgui/ui = null)
+/datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 	// Show static if can't use the camera
@@ -97,7 +97,7 @@
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/datum/tgui_module/camera/ui_data()
+/datum/tgui_module_old/camera/ui_data()
 	var/list/data = list()
 	data["activeCamera"] = null
 	if(active_camera)
@@ -107,7 +107,7 @@
 		)
 	return data
 
-/datum/tgui_module/camera/ui_static_data(mob/user)
+/datum/tgui_module_old/camera/ui_static_data(mob/user)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	var/list/cameras = get_available_cameras(user)
@@ -122,7 +122,7 @@
 		data["allNetworks"] |= C.network
 	return data
 
-/datum/tgui_module/camera/ui_act(action, params)
+/datum/tgui_module_old/camera/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -168,7 +168,7 @@
 				update_active_camera_screen()
 				. = TRUE
 
-/datum/tgui_module/camera/proc/update_active_camera_screen()
+/datum/tgui_module_old/camera/proc/update_active_camera_screen()
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		show_camera_static()
@@ -204,7 +204,7 @@
 // This proc operates in two distinct ways depending on the context in which the module is created.
 // It can either return a list of cameras sharing the same the internal `network` variable, or
 // It can scan all station networks and determine what cameras to show based on the access of the user.
-/datum/tgui_module/camera/proc/get_available_cameras(mob/user)
+/datum/tgui_module_old/camera/proc/get_available_cameras(mob/user)
 	var/list/all_networks = list()
 	// Access Based
 	if(access_based)
@@ -234,22 +234,22 @@
 			D["[ckey(C.c_tag)]"] = C
 	return D
 
-/datum/tgui_module/camera/proc/can_access_network(mob/user, network_access, station_network = 0)
+/datum/tgui_module_old/camera/proc/can_access_network(mob/user, network_access, station_network = 0)
 	// No access passed, or 0 which is considered no access requirement. Allow it.
 	if(!network_access)
 		return 1
 
 	if(station_network)
-		return check_access(user, network_access) || check_access(user, access_security) || check_access(user, access_heads)
+		return check_access(user, network_access) || check_access(user, ACCESS_SECURITY_EQUIPMENT) || check_access(user, ACCESS_COMMAND_BRIDGE)
 	else
 		return check_access(user, network_access)
 
-/datum/tgui_module/camera/proc/show_camera_static()
+/datum/tgui_module_old/camera/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
 
-/datum/tgui_module/camera/ui_close(mob/user)
+/datum/tgui_module_old/camera/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	var/user_ref = REF(user)
 	var/is_living = isliving(user)
@@ -269,17 +269,17 @@
 // Please note, this isn't a very good replacement for converting modular computers 100% to TGUI
 // If/when that is done, just move all the PC_ specific data and stuff to the modular computers themselves
 // instead of copying this approach here.
-/datum/tgui_module/camera/ntos
+/datum/tgui_module_old/camera/ntos
 	ntos = TRUE
 
 // ERT Version provides some additional networks.
-/datum/tgui_module/camera/ntos/ert
+/datum/tgui_module_old/camera/ntos/ert
 	additional_networks = list(NETWORK_ERT, NETWORK_CRESCENT)
 
 // Hacked version also provides some additional networks,
 // but we want it to show *all* the networks 24/7, so we convert it into a non-access-based UI.
-/datum/tgui_module/camera/ntos/hacked
+/datum/tgui_module_old/camera/ntos/hacked
 	additional_networks = list(NETWORK_MERCENARY, NETWORK_ERT, NETWORK_CRESCENT)
 
-/datum/tgui_module/camera/ntos/hacked/New(host)
+/datum/tgui_module_old/camera/ntos/hacked/New(host)
 	. = ..(host, GLOB.using_map.station_networks.Copy())

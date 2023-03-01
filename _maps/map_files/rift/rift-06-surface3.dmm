@@ -18564,6 +18564,9 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
+/obj/machinery/computer/card{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aLS" = (

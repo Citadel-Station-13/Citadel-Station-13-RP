@@ -50,7 +50,7 @@ const renderApp = createRenderer(() => {
   const { Panel } = require('./Panel');
   return (
     <StoreProvider store={store}>
-      <Panel />
+      <Panel tgui_root={1} />
     </StoreProvider>
   );
 });

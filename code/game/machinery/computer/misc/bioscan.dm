@@ -79,7 +79,7 @@
 
 /obj/machinery/computer/bioscan/proc/void_scan()
 	buffer = null
-	send_tgui_data_immediate(data = list("scan" = null))
+	push_ui_data(data = list("scan" = null))
 
 /obj/machinery/computer/bioscan/proc/scan()
 	var/list/new_data = list()
@@ -124,4 +124,4 @@
 		assembled[++assembled.len] = gottem
 	new_data["levels"] = assembled
 	buffer = new_data
-	send_tgui_data_immediate(data = list("scan" = buffer))
+	push_ui_data(data = list("scan" = buffer))
