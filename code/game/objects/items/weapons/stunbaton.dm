@@ -288,6 +288,17 @@
 	icon_state = "stunsword"
 	item_state = "baton"
 
+/obj/item/melee/baton/stunlance
+	name = "stun lance"
+	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	icon_state = "stunlance"
+	w_class = ITEMSIZE_NORMAL
+	reach = 2
+
+/obj/item/melee/baton/stunlance/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 /obj/item/melee/baton/loaded/mini
 	name = "Personal Defense Baton"
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."

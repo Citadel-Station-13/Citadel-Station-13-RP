@@ -94,7 +94,7 @@
 	base_icon = "fireaxe"
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
-	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
+	description_info = "A hefty two-handed cutting implement. Used for chopping through wood, glass, metal grating, wild animals, and even trees, shockingly enough. Good thing NanoTrasen stocks these for free."
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.5 // 12/30 with hardness 60 (steel) and 0.25 unwielded divisor
 	dulled_divisor = 0.6	//Still metal on a stick
@@ -161,11 +161,11 @@
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
 	default_material = "bone"
-	icon_state = "fireaxe_mask0"
-	base_icon = "fireaxe_mask"
-	applies_material_colour = 1
+	icon_state = "bone_axe0"
+	base_icon = "bone_axe"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -186,10 +186,14 @@
 	icon_state = "scythe0"
 	base_icon = "scythe"
 	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	desc = "A sharp and curved blade on a long fibremetal handle. An ancient design from Terra, it's useful for cutting large swaths of grain, but the shape alone implies much more grim work."
 	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
+
+/obj/item/material/twohanded/fireaxe/scythe/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 //spears, bay edition
 /obj/item/material/twohanded/spear
@@ -218,6 +222,10 @@
 	slowdown = 1.05
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /obj/item/material/twohanded/spear/examine(mob/user)
 	. = ..()
@@ -267,11 +275,11 @@
 
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
-	desc = "A primitive yet deadly weapon of ancient design."
+	desc = "A simple, yet effective, weapon, built from bone."
 	default_material = "bone"
-	icon_state = "spear_mask0"
-	base_icon = "spear_mask"
-	applies_material_colour = 1
+	icon_state = "bone_spear0"
+	base_icon = "bone_spear"
+	applies_material_colour = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
 	..(mapload,"bone")
@@ -288,7 +296,7 @@
 	icon_state = "sledgehammer0"
 	base_icon = "sledgehammer"
 	name = "sledgehammer"
-	desc = "A long, heavy hammer meant to be used with both hands. Typically used for breaking rocks and driving posts, it can also be used for breaking bones or driving points home."
+	desc = "A long, heavy hammer meant to be used with both hands. For breaking rocks or breaking bones, accept no substitutes."
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
@@ -337,36 +345,3 @@
 	if(isliving(target))
 		cleave(user, target)
 	return ..()
-
-/obj/item/material/twohanded/sledgehammer/mjollnir
-	icon_state = "mjollnir0"
-	base_icon = "mjollnir0"
-	name = "Mjollnir"
-	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
-	force_divisor = 2
-	hitsound = 'sound/effects/lightningbolt.ogg'
-	force = 50
-	throw_force = 15
-	force_wielded = 75
-	slowdown = 0
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/afterattack(mob/living/G, mob/user)
-	..()
-
-	if(wielded)
-		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
-			return
-		if(prob(10))
-			G.dust()
-			return
-		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
-			G.take_organ_damage(10)
-			G.Unconscious(20)
-			playsound(src.loc, "sparks", 50, 1)
-			return
-
-/obj/item/material/twohanded/sledgehammer/mjollnir/update_icon()  //Currently only here to fuck with the on-mob icons.
-	icon_state = "mjollnir[wielded]"
-	return

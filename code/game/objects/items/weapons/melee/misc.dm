@@ -174,8 +174,13 @@
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
+	reach = 2
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/items/bikehorn.ogg'
+
+/obj/item/melee/clownstaff/Initialize(mapload, material_key)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 //Clown Dagger
 /obj/item/melee/clownop
@@ -227,6 +232,173 @@
 	user.gib()
 	new /mob/living/simple_mob/mechanical/cyber_horror(T)
 	return
+
+//Interestingly, a magic flame sword has a lot in common with the thermal cutter Tech and I made for Goblins. So I decided it should share some of that code.
+/obj/item/melee/ashlander
+	name = "bone sword"
+	desc = "A sharp sword crafted from knapped bone. In spite of its primitive appearance, it is still incredibly deadly."
+	icon_state = "bonesword"
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	force = 20
+	throw_force = 10
+	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BELT
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
+	sharp = 1
+	edge = 1
+
+/obj/item/melee/ashlander/elder
+	name = "elder bone sword"
+	desc = "These swords are crafted from one solid piece of a gigantic bone. Carried by the Ashlander priesthood, these weapons are considered holy relics and are often preserved over the lives of their wielders."
+	icon_state = "elderbonesword"
+	var/active = 0
+	var/flame_intensity = 2
+	var/flame_color = "#FF9933"
+	var/SA_bonus_damage = 25 // 50 total against demons and aberrations.
+	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+
+/obj/item/melee/ashlander/elder/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
+
+/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user)
+	if(isliving(A))
+		var/mob/living/tm = A // targeted mob
+		if(SA_vulnerability & tm.mob_class)
+			tm.apply_damage(SA_bonus_damage) // fuck em
+
+/obj/item/melee/ashlander/elder/attack_self(mob/user)
+	if(!active)
+		activate()
+	else if(active)
+		deactivate()
+
+/obj/item/melee/ashlander/elder/update_icon()
+	..()
+	if(active)
+		icon_state = "[initial(icon_state)]_1"
+	else
+		icon_state = initial(icon_state)
+
+	// Lights
+	if(active && flame_intensity)
+		set_light(flame_intensity, flame_intensity, flame_color)
+	else
+		set_light(0)
+
+	var/mob/M = loc
+	if(istype(M))
+		M.update_inv_l_hand()
+		M.update_inv_r_hand()
+
+/obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
+	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
+	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
+	src.force = 20
+	src.damtype = "fire"
+	src.w_class = ITEMSIZE_LARGE
+	src.hitsound = 'sound/weapons/gun_flamethrower2.ogg'
+	active = 1
+	update_icon()
+
+/obj/item/melee/ashlander/elder/proc/deactivate(mob/living/user)
+	to_chat(user, "<span class='notice'>You douse \the [src]'s sacred flame.</span>")
+	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
+	src.force = 20
+	src.damtype = "brute"
+	src.w_class = initial(src.w_class)
+	src.hitsound = initial(src.hitsound)
+	src.active = 0
+	update_icon()
+
+/obj/item/melee/ashlander/elder/proc/isOn()
+	return active
+
+/obj/item/melee/ashlander/elder/is_hot()
+	return isOn()
+
+/obj/item/melee/shiv
+	name = "shiv"
+	desc = "A crude improvised weapon. Although visually frightening, shivs are usually more effective for maiming than killing."
+	icon_state = "shiv"
+	item_state = "knife"
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "stabbed", "sliced", "diced", "cut")
+	force = 8
+	throw_force = 5
+	w_class = ITEMSIZE_SMALL
+	sharp = 1
+
+//I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
+/obj/item/melee/twohanded
+	name = "Two Handed Weapon"
+	desc = "You shouldn't be seeing this. Report to a Maintainer."
+	w_class = ITEMSIZE_LARGE
+	var/wielded = 0
+	var/force_wielded = 0
+	var/force_unwielded
+	var/wieldsound = null
+	var/unwieldsound = null
+
+//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
+/obj/item/melee/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
+		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+		return 1
+	return 0
+
+/obj/item/melee/twohanded/attack_self(mob/user)
+	. = ..()
+	if(!wielded)
+		wielded = 1
+	else if(wielded)
+		wielded = 0
+	update_icon()
+
+/obj/item/melee/twohanded/update_icon()
+	..()
+	if(wielded)
+		icon_state = "[icon_state]_1"
+		item_state = icon_state
+	else
+		icon_state = initial(icon_state)
+		item_state = icon_state
+
+/obj/item/melee/twohanded/mjollnir
+	name = "Mjollnir"
+	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
+	icon_state = "mjollnir"
+	hitsound = 'sound/effects/lightningbolt.ogg'
+	force = 0
+	throw_force = 30
+	force_wielded = 75
+	force_unwielded = 50
+	w_class = ITEMSIZE_HUGE
+	edge = 1
+	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
+	armor_penetration = 50
+	slowdown = 0
+
+//This currently just kills the user. lol
+/*
+/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/living/G, mob/user)
+	..()
+
+	if(wielded || isliving(target))
+		if(prob(10))
+			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			return
+		if(prob(10))
+			G.dust()
+			return
+		else
+			G.stun_effect_act(10 , 50, BP_TORSO, src)
+			G.take_organ_damage(10)
+			G.Unconscious(20)
+			playsound(src.loc, "sparks", 50, 1)
+			return
+*/
 
 //The Tyrmalin equivalent of the plasma cutter. I'm not making it a plasma cutter subtype because it has to be snowflaked. It should match most cutter stats, otherwise.
 #define FUEL_BURN_INTERVAL 15

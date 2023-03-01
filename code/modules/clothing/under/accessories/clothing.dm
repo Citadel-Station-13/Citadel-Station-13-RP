@@ -62,9 +62,9 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_species_id() == SPECIES_ID_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
-		else if(H.species.name == SPECIES_VOX)
+		else if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
@@ -151,6 +151,17 @@
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
+
+//Just a little extra aesthetic for Goliath armor.
+/obj/item/clothing/accessory/poncho/rough_cloak/ashlander
+	name = "goliath hide half cloak"
+	desc = "Thinner and more lightweight than a hooded Goliath cloak, the half-cloak is more comfortable to wear over armor. However, as a result it does not provide the same protection from heat."
+	color = "#870606"
+	allowed = list(
+		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
+		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
+		/obj/item/gun/ballistic/musket/pistol)
+	action_button_name = "Adjust Cloak"
 
 /*
  * Cloak

@@ -1,4 +1,4 @@
-/datum/job/station/doctor
+/datum/role/job/station/doctor
 	id = JOB_ID_MEDICAL_DOCTOR
 	title = "Medical Doctor"
 	flag = DOCTOR
@@ -10,60 +10,69 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	economic_modifier = 7
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS, ACCESS_COMMAND_EVA)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA)
 	outfit_type = /datum/outfit/job/station/medical_doctor
 	desc = "A Medical Doctor is a Jack-of-All-Trades Medical title, covering a variety of skill levels and minor specializations. They are likely \
 						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
 						patients they encounter."
 	alt_titles = list(
-		"Surgeon" = /datum/alt_title/surgeon,
-		"Emergency Physician" = /datum/alt_title/emergency_physician,
-		"Nurse" = /datum/alt_title/nurse,
-		"Virologist" = /datum/alt_title/virologist,
-		"Medical Resident" = /datum/alt_title/doctor/resident,
-		"Medical Intern" = /datum/alt_title/doctor/intern,
-		"Orderly" = /datum/alt_title/orderly
+		"Surgeon" = /datum/prototype/alt_title/surgeon,
+		"Emergency Physician" = /datum/prototype/alt_title/emergency_physician,
+		"Nurse" = /datum/prototype/alt_title/nurse,
+		"Virologist" = /datum/prototype/alt_title/virologist,
+		"Medical Resident" = /datum/prototype/alt_title/doctor/resident,
+		"Medical Intern" = /datum/prototype/alt_title/doctor/intern,
+		"Orderly" = /datum/prototype/alt_title/orderly,
+		"Biotechnician" = /datum/prototype/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles
-/datum/alt_title/surgeon
+
+/datum/prototype/alt_title/biotechnician
+	title = "Biotechnician"
+	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
+
+/datum/prototype/alt_title/surgeon
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
 
-/datum/alt_title/orderly
+/datum/prototype/alt_title/orderly
 	title = "Orderly"
 	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
 					and dirty labor around the department."
 	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
-/datum/alt_title/emergency_physician
+/datum/prototype/alt_title/emergency_physician
 	title = "Emergency Physician"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
 					They are generally the first response for any such individual brought to the Medbay, and can sometimes be expected to help their patients \
 					make a full recovery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/emergency_physician
 
-/datum/alt_title/nurse
+/datum/prototype/alt_title/nurse
 	title = "Nurse"
 	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
-/datum/alt_title/virologist
+/datum/prototype/alt_title/virologist
 	title = "Virologist"
 	title_blurb = "A Virologist cures active diseases in the crew, and prepares antibodies for possible infections. They also have the skills \
 					to produce the various types of virus foods or mutagens."
 	title_outfit = /datum/outfit/job/station/medical_doctor/virologist
 
-/datum/alt_title/doctor/resident
+/datum/prototype/alt_title/doctor/resident
 	title = "Medical Resident"
 
-/datum/alt_title/doctor/intern
+/datum/prototype/alt_title/doctor/intern
 	title = "Medical Intern"
 
 /datum/outfit/job/station/medical_doctor

@@ -150,7 +150,7 @@
 		data["range"] = range
 		data["next_shot"] = round(get_next_shot_seconds())
 		data["nopower"] = !data["faillink"] && (!front.powered() || !middle.powered() || !back.powered())
-		data["skill"] = user.get_skill_value(core_skill) > skill_offset
+		data["skill"] = TRUE // todo: skills
 
 		var/charge = "UNKNOWN ERROR"
 		if(get_charge_type() == OVERMAP_WEAKNESS_NONE)
@@ -162,7 +162,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -183,20 +183,21 @@
 			. = TRUE
 
 		if("skill_calibration")
-			for(var/i = 1 to min(caldigit, usr.get_skill_value(core_skill) - skill_offset))
+			// todo: skills
+			for(var/i in 1 to 2)
 				calibration[i] = calexpected[i]
 			. = TRUE
 
 		if("strength")
 			var/input = input("1-5", "disperser strength", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				strength = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE
 
 		if("range")
 			var/input = input("1-5", "disperser radius", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				range = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE

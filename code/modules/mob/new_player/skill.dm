@@ -5,12 +5,12 @@ var/global/const
 	SKILL_EXPERT = 3
 	SKILL_PROF = 4
 
-/datum/skill/var
-	ID = "none"		// ID of the skill, used in code
-	name = "None"	// Name of the skill
-	desc = "Placeholder skill" // Detailed description of the skill
-	field = "Misc"	// The field under which the skill will be listed
-	secondary = 0	// Secondary skills only have two levels and cost significantly less
+/datum/skill
+	var/ID = "none"		// ID of the skill, used in code
+	var/name = "None"	// Name of the skill
+	var/desc = "Placeholder skill" // Detailed description of the skill
+	var/field = "Misc"	// The field under which the skill will be listed
+	var/secondary = 0	// Secondary skills only have two levels and cost significantly less
 
 var/global/list/SKILLS = null
 var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_BASIC, "construction" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "engines" = SKILL_ADEPT)
@@ -24,30 +24,12 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 	name = "Command"
 	desc = "Your ability to manage and commandeer other crew members."
 
-/datum/skill/combat
-	ID = "combat"
-	name = "Close Combat"
-	desc = "This skill describes your training in hand-to-hand combat or melee weapon usage. While expertise in this area is rare in the era of firearms, experts still exist among athletes."
-	field = "Security"
-
-/datum/skill/weapons
-	ID = "weapons"
-	name = "Weapons Expertise"
-	desc = "This skill describes your expertise with and knowledge of weapons. A low level in this skill implies knowledge of simple weapons, for example tazers and flashes. A high level in this skill implies knowledge of complex weapons, such as grenades, riot shields, pulse rifles or bombs. A low level in this skill is typical for security officers, a high level of this skill is typical for special agents and soldiers."
-	field = "Security"
-
 /datum/skill/EVA
 	ID = "EVA"
 	name = "Extra-vehicular activity"
 	desc = "This skill describes your skill and knowledge of space-suits and working in vacuum."
 	field = "Engineering"
 	secondary = 1
-
-/datum/skill/forensics
-	ID = "forensics"
-	name = "Forensics"
-	desc = "Describes your skill at performing forensic examinations and identifying vital evidence. Does not cover analytical abilities, and as such isn't the only indicator for your investigation skill. Note that in order to perform autopsy, the surgery skill is also required."
-	field = "Security"
 
 /datum/skill/construction
 	ID = "construction"

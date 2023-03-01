@@ -47,10 +47,6 @@
 	for(var/obj/item/I in contents)
 		w_class = max(w_class, I.w_class)
 
-	var/cur_storage_space = storage_space_used()
-	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
-		w_class++
-
 // -----------------------------
 //          Trash bag
 // -----------------------------
@@ -203,6 +199,13 @@
 		else
 			stored_ore[O.name] = 1
 
+//Ashlander variant!
+/obj/item/storage/bag/ore/ashlander
+	name = "goliath hide mining satchel"
+	desc = "This hide bag can be used to store and transport ores."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "golisatchel"
+
 // -----------------------------
 //          Plant bag
 // -----------------------------
@@ -220,6 +223,11 @@
 	name = "large plant bag"
 	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 45
+
+/obj/item/storage/bag/plants/ashlander
+	name = "goliath hide plant bag"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "golisatchel_plant"
 
 // -----------------------------
 //        Sheet Snatcher

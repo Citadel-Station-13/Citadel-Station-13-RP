@@ -135,7 +135,6 @@
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
-
 /datum/material/steel
 	id = "steel"
 	name = MAT_STEEL
@@ -873,7 +872,8 @@
 	id = "bone"
 	name = "bone"
 	icon_colour = "#e6dfc8"
-	icon_base = "bone"
+	stack_type = /obj/item/stack/material/bone
+	icon_base = 'icons/turf/walls/stone.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"
@@ -882,6 +882,8 @@
 	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
+	door_icon_base = "stone"
+	table_icon_base = "stone"
 
 /datum/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L

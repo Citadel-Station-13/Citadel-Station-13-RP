@@ -1,6 +1,7 @@
-/datum/job/station/pilot
+/datum/role/job/station/pilot
 	id = JOB_ID_PILOT
 	title = "Pilot"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM
 	flag = PILOT
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
@@ -9,23 +10,22 @@
 	supervisors = "the Pathfinder and the Head of Personnel"
 	idtype = /obj/item/card/id/explorer/pilot
 	selection_color = "#515151"
-	economic_modifier = 5
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
-	access = list(access_pilot, access_external_airlocks)
-	minimal_access = list(access_pilot, access_external_airlocks)
+	additional_access = list(ACCESS_GENERAL_PILOT, ACCESS_ENGINEERING_AIRLOCK)
+	minimal_access = list(ACCESS_GENERAL_PILOT, ACCESS_ENGINEERING_AIRLOCK)
 	outfit_type = /datum/outfit/job/station/pilot
 	desc = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 	alt_titles = list(
-		"Co-Pilot" = /datum/alt_title/co_pilot,
-		"Navigator" = /datum/alt_title/navigator
+		"Co-Pilot" = /datum/prototype/alt_title/co_pilot,
+		"Navigator" = /datum/prototype/alt_title/navigator
 		)
 
-/datum/alt_title/co_pilot
+/datum/prototype/alt_title/co_pilot
 	title = "Co-Pilot"
 	title_blurb = "A Co-Pilot is there primarily to assist main pilot as well as learn from them"
 
-/datum/alt_title/navigator
+/datum/prototype/alt_title/navigator
 	title = "Navigator"
 
 /datum/outfit/job/station/pilot

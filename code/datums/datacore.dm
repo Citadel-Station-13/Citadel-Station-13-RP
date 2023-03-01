@@ -102,7 +102,7 @@
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 
-			var/datum/job/J = SSjob.get_job(real_rank)
+			var/datum/role/job/J = SSjob.get_job(real_rank)
 			if(J?.offmap_spawn)
 				off[name] = rank
 
@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	var/list/all_jobs = get_job_datums()
 
-	for(var/datum/job/J in all_jobs)
+	for(var/datum/role/job/J in all_jobs)
 		if(J.title == rank)					//If we have a rank, just default to using that.
 			real_title = rank
 			break
@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
 		var/assignment = GetAssignment(H)
 		var/hidden
-		var/datum/job/J = SSjob.get_job(H.mind.assigned_role)
+		var/datum/role/job/J = SSjob.get_job(H.mind.assigned_role)
 		hidden = J?.offmap_spawn
 
 		/* Note: Due to cached_character_icon, a number of emergent properties occur due to the initialization

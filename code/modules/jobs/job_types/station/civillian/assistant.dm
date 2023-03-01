@@ -1,4 +1,4 @@
-/datum/job/station/assistant
+/datum/role/job/station/assistant
 	id = JOB_ID_ASSISTANT
 	title = USELESS_JOB
 	flag = ASSISTANT
@@ -9,40 +9,37 @@
 	spawn_positions = -1
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
-	economic_modifier = 1
-	access = list()			//See /datum/job/station/assistant/get_access()
-	minimal_access = list()	//See /datum/job/station/assistant/get_access()
 	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(
-		"Visitor" = /datum/alt_title/visitor,
-		"Server" = /datum/alt_title/server,
-		"Morale Officer" = /datum/alt_title/morale_officer,
-		"Assistant" = /datum/alt_title/assistant
+		"Visitor" = /datum/prototype/alt_title/visitor,
+		"Server" = /datum/prototype/alt_title/server,
+		"Morale Officer" = /datum/prototype/alt_title/morale_officer,
+		"Assistant" = /datum/prototype/alt_title/assistant
 	)
 
-/datum/job/station/assistant/get_access()
+/datum/role/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels)
+		return list(ACCESS_ENGINEERING_MAINT)
 	else
 		return list()
 
-/datum/job/station/assistant/get_access()
+/datum/role/job/station/assistant/get_access()
 	return list()
 
-/datum/alt_title/visitor
+/datum/prototype/alt_title/visitor
 	title = "Visitor"
 	title_outfit = /datum/outfit/job/station/assistant/visitor
 
-/datum/alt_title/server
+/datum/prototype/alt_title/server
 	title = "Server"
 	title_outfit = /datum/outfit/job/station/assistant/server
 
-/datum/alt_title/morale_officer
+/datum/prototype/alt_title/morale_officer
 	title = "Morale Officer"
 
-/datum/alt_title/assistant
+/datum/prototype/alt_title/assistant
 	title = "Assistant"
 	title_outfit = /datum/outfit/job/station/assistant
 

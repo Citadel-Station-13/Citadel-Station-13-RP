@@ -39,6 +39,7 @@ Make sure to add new items to this list if you document new components.
     - [`LabeledList.Item`](#labeledlistitem)
     - [`LabeledList.Divider`](#labeledlistdivider)
     - [`Modal`](#modal)
+    - [`Module`](#module)
     - [`NoticeBox`](#noticebox)
     - [`NumberInput`](#numberinput)
     - [`Popper`](#popper)
@@ -57,6 +58,7 @@ Make sure to add new items to this list if you document new components.
   - [`tgui/layouts`](#tguilayouts)
     - [`Window`](#window)
     - [`Window.Content`](#windowcontent)
+    - [`Modular`](#modular)
 
 ## General Concepts
 
@@ -716,6 +718,15 @@ Must be a direct child of a layout component (e.g. [Window](#window)).
 
 - See inherited props: [Box](#box)
 
+### `Module`
+
+A TGUI module. Data is pushed via ui_module_data(), and modules have their own
+systems for rendering. Modules are automatically centered within themselves.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+
 ### `NoticeBox`
 
 A notice box, which warns you about something very important.
@@ -845,6 +856,10 @@ Section is a surface that displays content and actions on a single topic.
 They should be easy to scan for relevant and actionable information.
 Elements, like text and images, should be placed in them in a way that
 clearly indicates hierarchy.
+
+Known bugs:
+
+- Scrollbars are broken. If you need one, put it on the parent window.
 
 Section can also be titled to clearly define its purpose.
 
@@ -1181,3 +1196,19 @@ Can be scrollable.
 - `fitted: boolean` - If true, removes all padding.
 - `scrollable: boolean` - Shows or hides the scrollbar.
 - `children: any` - Main content of your window.
+
+### `Modular`
+
+Automatically renders as either a centered box, or a full window.
+Used for /datum/tgui_module's, which are interfaces that can act both as standalone and as embedded..
+
+Known bugs:
+
+- Do not use `fill` and `scrollable` at the same time on the Section-specific props, or it will mis-position and become invisible.
+- Scrollbars are broken. If you need one, put it on the parent window.
+
+**Props:**
+
+- See inherited props: [Window](#window)
+- `direct: InfernoNode` - Child elements that are rendered directly inside the window
+when in standalone mode, and at the same level as other child elements when in embedded mode.

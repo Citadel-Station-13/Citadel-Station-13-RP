@@ -13,7 +13,7 @@
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
-	req_access = list(access_engine, access_robotics)
+	req_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	integrated_light_power = 3
 	local_transmit = 1
 

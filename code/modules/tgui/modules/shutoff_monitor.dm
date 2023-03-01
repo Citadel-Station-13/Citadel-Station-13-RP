@@ -1,8 +1,8 @@
-/datum/tgui_module/shutoff_monitor
+/datum/tgui_module_old/shutoff_monitor
 	name = "Shutoff Valve Monitoring"
 	tgui_id = "ShutoffMonitor"
 
-/datum/tgui_module/shutoff_monitor/ui_act(action, params)
+/datum/tgui_module_old/shutoff_monitor/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -24,7 +24,7 @@
 				S.open()
 			return TRUE
 
-/datum/tgui_module/shutoff_monitor/ui_data(mob/user)
+/datum/tgui_module_old/shutoff_monitor/ui_data(mob/user)
 	var/list/data = list()
 	var/list/valves = list()
 
@@ -42,5 +42,5 @@
 	data["valves"] = valves
 	return data
 
-/datum/tgui_module/shutoff_monitor/ntos
+/datum/tgui_module_old/shutoff_monitor/ntos
 	ntos = TRUE

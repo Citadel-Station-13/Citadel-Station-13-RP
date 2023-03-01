@@ -72,18 +72,20 @@ DEFINE_BITFIELD(runlevels, list(
  *? The numbers just define the ordering, they are meaningless otherwise.
  */
 
-#define INIT_ORDER_FAIL2TOPIC      104
-#define INIT_ORDER_STATPANELS      103
-#define INIT_ORDER_PROTOTYPES      102
-#define INIT_ORDER_DBCORE          101
-#define INIT_ORDER_INPUT           100
-#define INIT_ORDER_JOBS            99
-#define INIT_ORDER_CHARACTERS      98
-#define INIT_ORDER_SOUNDS          95
+// todo: tg init brackets
+
+#define INIT_ORDER_FAIL2TOPIC      200
+#define INIT_ORDER_TIMER           195
+#define INIT_ORDER_DBCORE          190
+#define INIT_ORDER_REPOSITORY      180
+#define INIT_ORDER_STATPANELS      170
+#define INIT_ORDER_INPUT           160
+#define INIT_ORDER_JOBS            150
+#define INIT_ORDER_CHARACTERS      140
+#define INIT_ORDER_SOUNDS          130
+#define INIT_ORDER_GARBAGE         120
 #define INIT_ORDER_VIS             80
-#define INIT_ORDER_GARBAGE         70
 #define INIT_ORDER_SERVER_MAINT    65
-#define INIT_ORDER_TIMER           60
 #define INIT_ORDER_INSTRUMENTS     50
 #define INIT_ORDER_EARLY_ASSETS    48
 #define INIT_ORDER_SQLITE          40
@@ -125,39 +127,62 @@ DEFINE_BITFIELD(runlevels, list(
  *? If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
  */
 
+//? Background Subsystems - Below normal
+// Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
+// This means by default, ../subsystem/processing/.. is here!
+
+#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_GARBAGE      15
+#define FIRE_PRIORITY_CHARACTERS   25
+#define FIRE_PRIORITY_PARALLAX     30
+#define FIRE_PRIORITY_AIR          35
+#define FIRE_PRIORITY_PROCESS      45
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_PLANETS      75
+
+//? Normal Subsystems - Above background, below ticker
+// Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
+
 #define FIRE_PRIORITY_PING         5
 #define FIRE_PRIORITY_SHUTTLES     5
-#define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_PLANTS       5
+#define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_VOTE         9
-#define FIRE_PRIORITY_AI           10
 #define FIRE_PRIORITY_VIS          10
 #define FIRE_PRIORITY_SERVER_MAINT 10
 #define FIRE_PRIORITY_ZMIMIC       10
-#define FIRE_PRIORITY_GARBAGE      15
 #define FIRE_PRIORITY_ALARMS       20
-#define FIRE_PRIORITY_CHARSETUP    25
 #define FIRE_PRIORITY_SPACEDRIFT   25
 #define FIRE_PRIORITY_AIRFLOW      30
-#define FIRE_PRIORITY_PARALLAX     30
-#define FIRE_PRIORITY_AIR          35
 #define FIRE_PRIORITY_OBJ          40
-#define FIRE_PRIORITY_PROCESS      45
-#define FIRE_PRIORITY_DEFAULT      50
-#define FIRE_PRIORITY_LIGHTING     50
-#define FIRE_PRIORITY_PLANETS      75
-#define FIRE_PRIORITY_INSTRUMENTS  90
-#define FIRE_PRIORITY_MACHINES     100
-#define FIRE_PRIORITY_ASSETS       105
-#define FIRE_PRIORITY_TGUI         110
-#define FIRE_PRIORITY_PROJECTILES  150
-#define FIRE_PRIORITY_THROWING     150
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_LIGHTING         50
+#define FIRE_PRIORITY_INSTRUMENTS      90
+#define FIRE_PRIORITY_ASSET_LOADING    100
+#define FIRE_PRIORITY_MACHINES         100
+#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_STATPANELS       400
+#define FIRE_PRIORITY_OVERLAYS         500
+
+//? Ticker Subsystems - Highest priority
+// Any subsystem flagged with SS_TICKER is here!
+// Do not unnecessarily set your subsystem as TICKER.
+// Is your feature as important as movement, chat, or timers?
+// Probably not! Go to normal bracket instead!
+
+#define FIRE_PRIORITY_AI           10	 //! WHY IS THIS SSTICKER???
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_PROJECTILES  150   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_THROWING     150   //! this probably shouldn't be ssticker
 #define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_STATPANELS   400
-#define FIRE_PRIORITY_OVERLAYS     500
-#define FIRE_PRIORITY_SMOOTHING    500
+#define FIRE_PRIORITY_SMOOTHING    500   //! this probably shouldn't be ssticker
 #define FIRE_PRIORITY_TIMER        700
 #define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
+
+//? Special
+
+/// This is used as the default regardless of bucket. Check above.
+#define FIRE_PRIORITY_DEFAULT      50
 
 /**
  * Create a new timer and add it to the queue.

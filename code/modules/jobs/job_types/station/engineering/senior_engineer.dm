@@ -1,6 +1,7 @@
-/datum/job/station/senior_engineer
+/datum/role/job/station/senior_engineer
 	title = "Senior Engineer"
 	id = JOB_ID_SENIOR_ENGINEER
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	flag = SENIOR_ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
@@ -9,11 +10,10 @@
 	supervisors = "the Chief Engineer"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/card/id/engineering/engineer
-	economic_modifier = 5
 	pto_type = PTO_ENGINEERING
 
-	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
+	additional_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_ENGINEERING_CONSTRUCTION, ACCESS_ENGINEERING_ATMOS)
+	minimal_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_ENGINEERING_CONSTRUCTION)
 
 	minimal_player_age = 14
 
@@ -24,6 +24,16 @@
 	desc = "A Senior Engineer fulfills similar duties to other engineers, but usually occupies spare time with with training of other, newer Engineers \
 					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
 
+	alt_titles = list(
+		"Artificer-Adept" = /datum/prototype/alt_title/artificer_adept
+		)
+
+/datum/prototype/alt_title/artificer_adept
+	title = "Artificer-Adept"
+	background_allow = list(
+		/datum/lore/character_background/faction/naramadiguilds
+	)
+	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")

@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/proc/queue_update()
 	addtimer(CALLBACK(src, /datum/proc/update_static_data), 0, TIMER_UNIQUE | TIMER_OVERRIDE)
 
-/datum/join_menu/ui_state(mob/user)
+/datum/join_menu/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.explicit_new_player_state
 
 /datum/join_menu/ui_static_data(mob/user)
@@ -34,9 +34,9 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	data["jobs"] = jobs
 
 	// collect
-	var/list/datum/job/eligible = list()
+	var/list/datum/role/job/eligible = list()
 	for(var/title in SSjob.name_occupations)
-		var/datum/job/J = SSjob.name_occupations[title]
+		var/datum/role/job/J = SSjob.name_occupations[title]
 		if(!(J.join_types & JOB_LATEJOIN))
 			continue
 		if(!IsJobAvailable(J, N))
@@ -44,7 +44,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		eligible += J
 
 	// make
-	for(var/datum/job/J as anything in eligible)	// already type filtered
+	for(var/datum/role/job/J as anything in eligible)	// already type filtered
 		// faction
 		var/list/faction
 		if(!jobs[J.faction])
@@ -75,7 +75,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	var/list/ghostroles = list()
 	data["ghostroles"] = ghostroles
 	for(var/id in GLOB.ghostroles)
-		var/datum/ghostrole/R = GLOB.ghostroles[id]
+		var/datum/role/ghostrole/R = GLOB.ghostroles[id]
 		// can't afford runtime here
 		if(!istype(R) || !IsGhostroleAvailable(R, N))
 			continue
@@ -133,28 +133,28 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * checks if job is available
  * if not, it shouldn't even show
  */
-/datum/join_menu/proc/IsJobAvailable(datum/job/J, mob/new_player/N)
+/datum/join_menu/proc/IsJobAvailable(datum/role/job/J, mob/new_player/N)
 	return J.check_client_availability_one(N.client, TRUE, TRUE) == ROLE_AVAILABLE
 
 /**
  * checks if ghostrole is available
  * if not, it shouldn't even show
  */
-/datum/join_menu/proc/IsGhostroleAvailable(datum/ghostrole/G, mob/new_player/N)
+/datum/join_menu/proc/IsGhostroleAvailable(datum/role/ghostrole/G, mob/new_player/N)
 	return G.AllowSpawn(N.client)
 
 /**
  * return effective title - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveTitle(datum/job/J, mob/new_player/N)
+/datum/join_menu/proc/EffectiveTitle(datum/role/job/J, mob/new_player/N)
 	return N.client.prefs.get_job_alt_title_name(J) || J.title
 
 /**
  * returns effective desc - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveDesc(datum/job/J, mob/new_player/N)
+/datum/join_menu/proc/EffectiveDesc(datum/role/job/J, mob/new_player/N)
 	var/title = N.client.prefs.get_job_alt_title_name(J)
-	var/datum/alt_title/T = J.alt_titles?[title]
+	var/datum/prototype/alt_title/T = J.alt_titles?[title]
 	return isnull(T)? J.desc : (initial(T.title_blurb) || J.desc)
 
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
@@ -188,7 +188,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		. = max(hpc, epc)
 */
 
-/datum/join_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/join_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	var/mob/new_player/N = usr
 	if(!istype(N))
@@ -209,14 +209,14 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					if(!config_legacy.enter_allowed)
 						to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game."))
 						return
-					var/datum/job/J = SSjob.job_by_id(id)
+					var/datum/role/job/J = SSjob.job_by_id(id)
 					if(!J)
 						to_chat(usr, SPAN_WARNING("Failed to find job [id]."))
 						return
 					to_chat(usr, SPAN_NOTICE("Attempting to latespawn as [id] ([J.title])."))
 					N.AttemptLateSpawn(J.title)	// todo: remove shim
 				if("ghostrole")
-					var/datum/ghostrole/R = get_ghostrole_datum(id)
+					var/datum/role/ghostrole/R = get_ghostrole_datum(id)
 					if(!R)
 						to_chat(usr, SPAN_WARNING("Failed to find ghostrole [R]"))
 						return

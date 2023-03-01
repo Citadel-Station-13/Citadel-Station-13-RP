@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply")
+var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Hadii's Folly Governmental Authority", "Supply")
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
@@ -9,7 +9,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
-	req_one_access = list(access_lawyer, access_heads, access_armory, access_qm)
+	req_one_access = list(ACCESS_COMMAND_IAA, ACCESS_COMMAND_BRIDGE, ACCESS_SECURITY_ARMORY, ACCESS_SUPPLY_QM)
 
 	density = 0
 	use_power = USE_POWER_IDLE

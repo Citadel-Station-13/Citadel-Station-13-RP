@@ -685,3 +685,24 @@ var/list/flooring_types
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
 	//color = "#00ffe1"
+
+/singleton/flooring/sandstone
+	name = "sandstone floor"
+	desc = "A tile made out of sand that has been compacted and hardened until it's nearly as dense as stone."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "sandstone"
+	build_type = /obj/item/stack/tile/floor/sandstone
+	flooring_flags = TURF_REMOVE_CROWBAR
+
+/singleton/flooring/bone
+	name = "bone floor"
+	desc = "A plate of solid bone etched into a subtle tiled pattern."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "bone"
+	build_type = null
+	flooring_flags = TURF_ACID_IMMUNE
+
+/singleton/flooring/bone/engraved
+	name = "engraved bone floor"
+	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
+	icon_base = "bonecarve"

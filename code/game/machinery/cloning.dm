@@ -32,7 +32,7 @@
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
-	req_access = list(access_genetics) // For premature unlocking.
+	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 	var/mob/living/occupant
 	/// The clone is released once its health reaches this level.
 	var/heal_level = 20
@@ -80,7 +80,7 @@
 	if(clonemind.current && clonemind.current.stat != DEAD) // Mind is associated with a non-dead body.
 		return FALSE
 	if(clonemind.active) // Somebody is using that mind.
-		if(ckey(clonemind.key) != R.ckey)
+		if(clonemind.ckey != R.ckey)
 			return FALSE
 	else
 		for(var/mob/observer/dead/G in GLOB.player_list)

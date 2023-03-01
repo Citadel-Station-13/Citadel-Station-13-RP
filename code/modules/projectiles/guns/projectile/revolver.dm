@@ -192,7 +192,7 @@
 
 /obj/item/gun/ballistic/revolver/lemat
 	name = "LeMat Revolver"
-	desc = "The LeMat Revolver is a 9 shot revolver with a secondary firing barrel loading shotgun shells. For when you really need something dead. Uses .38-Special and 12g rounds depending on the barrel."
+	desc = "The LeMat revolver is a 9-shot revolver with a secondar barrel for firing shotgun shells. Cybersun Industries still produces this iconic revolver in limited numbers, deliberately inflating the value of these collectible reproduction pistols. Uses .38 rounds and 12g shotgun shells."
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -326,7 +326,7 @@
 
 //NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
-	name = "NT-R-7 combat revolver"
+	name = "NT-SO combat revolver"
 	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"

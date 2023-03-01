@@ -131,3 +131,14 @@
 		heal_amount -= posion_damage
 
 	H.nutrition += heal_amount
+
+/datum/species/xenohybrid/alt
+	uid = SPECIES_ID_XENOHYBRID_ALT
+	id = SPECIES_ID_XENOHYBRID
+	name = SPECIES_XENOHYBRID_ALT
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_FLEXIBLE
+	override_worn_legacy_bodytype = SPECIES_XENOHYBRID
+
+	icobase = 'icons/mob/species/xenohybrid/xeno_parts_greyscale.dmi'
+	//tail = ""
+

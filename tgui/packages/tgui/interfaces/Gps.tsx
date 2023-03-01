@@ -8,6 +8,7 @@ type GpsContext = {
   tag: string,
   visible: BooleanLike,
   long_range: BooleanLike,
+  local_mode: BooleanLike,
   has_stealth: BooleanLike,
   updating: BooleanLike,
   x: number,
@@ -64,8 +65,8 @@ export const Gps = (props, context) => {
             <LabeledList.Item label="Range">
               <Button
                 icon="sync"
-                content={data.long_range? "Maximum" : "Local"}
-                selected={!data.long_range}
+                content={data.local_mode? "Local" : "Maximum"}
+                selected={!data.local_mode}
                 onClick={() => act('range')} />
             </LabeledList.Item>
             <LabeledList.Item label="Updating">
@@ -139,7 +140,7 @@ export const Gps = (props, context) => {
                 </Table.Row>
                 {
                   data.signals.map(signal => (
-                    <Table.Row key={signal.ref} className="candystripe">
+                    <Table.Row key={`${signal.ref} ${signal.level}`} className="candystripe">
                       <Table.Cell bold color="label">
                         {signal.name}
                       </Table.Cell>
@@ -189,7 +190,7 @@ export const Gps = (props, context) => {
                 </Table.Row>
                 {
                   data.waypoints.map(signal => (
-                    <Table.Row key={signal.ref} className="candystripe">
+                    <Table.Row key={`${signal.ref} ${signal.level}`} className="candystripe">
                       <Table.Cell bold color="label">
                         {signal.name}
                       </Table.Cell>

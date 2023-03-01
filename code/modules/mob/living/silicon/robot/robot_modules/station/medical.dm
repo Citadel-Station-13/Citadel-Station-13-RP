@@ -118,7 +118,8 @@
 		"Dark Medical Hound" = "medihounddark",
 		"Mediborg model V-2" = "vale",
 		"Borgi" = "borgi-medi",
-		"F3-LINE" = "FELI-Medical"
+		"F3-LINE" = "FELI-Medical",
+		"Drake" = "drakemed"
 	)
 
 /obj/item/robot_module/robot/quad/medi/get_modules()

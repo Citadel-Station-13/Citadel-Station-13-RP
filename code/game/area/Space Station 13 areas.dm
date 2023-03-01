@@ -119,6 +119,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Large Escape Pod Two"
 	music = "music/escape.ogg"
 
+/area/cryo
+	name = "\improper Cryogenic Storage"
+
 /area/shuttle/cryo
 	name = "\improper Cryogenic Storage"
 
@@ -3428,6 +3431,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_env = SMALL_ENCLOSED
 	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
 	requires_power = FALSE
+	area_limited_icon_smoothing = /area/turbolift
 
 	var/lift_floor_label = null
 	var/lift_floor_name = null

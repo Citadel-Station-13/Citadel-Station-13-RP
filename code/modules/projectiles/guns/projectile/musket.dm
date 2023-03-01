@@ -22,8 +22,10 @@
 	fire_delay = 35
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	recoil = 4
+	no_pin_required = 1
 
 	ammo_type = /obj/item/ammo_casing/musket
+	safety_state = GUN_SAFETY_OFF
 
 	var/has_powder = FALSE
 
@@ -64,13 +66,17 @@
 	desc = "An ivory container for gunpowder."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "powderhorn"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
 	volume = 30
 
-/obj/item/reagent_containers/glass/powder_horn/Initialize(mapload)
+/obj/item/reagent_containers/glass/powder_horn/filled
+	name = "powder horn"
+	desc = "An ivory container for gunpowder."
+
+/obj/item/reagent_containers/glass/powder_horn/filled/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gunpowder", 30)
 
@@ -79,6 +85,13 @@
 	desc = "An literal powder horn constructed from sinew and the horn of an unknown creature."
 	icon_state = "powderhorn-scor"
 
+/obj/item/reagent_containers/glass/powder_horn/tribal/filled
+	name = "tribal powder horn"
+	desc = "An literal powder horn constructed from sinew and the horn of an unknown creature."
+
+/obj/item/reagent_containers/glass/powder_horn/tribal/filled/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("gunpowder", 30)
 
 /obj/item/gun/ballistic/musket/taj
 	name = "adhomian musket"

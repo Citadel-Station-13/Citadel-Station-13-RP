@@ -9,8 +9,6 @@
 	var/obj/effect/overmap/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
-	var/skill_needed = SKILL_BASIC
-	var/operator_skill = SKILL_BASIC
 
 /datum/shuttle/autodock/overmap/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
@@ -51,13 +49,6 @@
 
 /datum/shuttle/autodock/overmap/can_force()
 	return ..() && can_go()
-
-/datum/shuttle/autodock/overmap/process_launch()
-	if(prob(10*max(0, skill_needed - operator_skill)))
-		var/places = get_possible_destinations()
-		var/place = pick(places)
-		set_destination(places[place])
-	..()
 
 /datum/shuttle/autodock/overmap/proc/set_destination(var/obj/effect/shuttle_landmark/A)
 	if(A != current_location)
