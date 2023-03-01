@@ -145,7 +145,7 @@
 	if (tool.w_class > get_max_wclass(affected)/2 && prob(50) && (affected.robotic < ORGAN_ROBOT))
 		to_chat(user, "<font color='red'> You tear some blood vessels trying to fit such a big object in this cavity.</font>")
 		var/datum/wound/internal_bleeding/I = new (10)
-		LAZYADD(affecting.wounds, I)
+		LAZYADD(affected.wounds, I)
 		affected.owner.custom_pain("You feel something rip in your [affected.name]!", 1)
 	if(!user.transfer_item_to_loc(tool, affected))
 		return
