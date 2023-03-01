@@ -175,9 +175,6 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
 				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
-				if (gendered_icon)
-					TO_WORLD("[owner.name]'s [src.name] generated Icon with sbase [src.s_base], gender [gender](owner has gender [owner.gender]),")
-					TO_WORLD("icobase [species.get_icobase(owner, (status & ORGAN_MUTATED))], state: [icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			apply_colouration(mob_icon)
 
