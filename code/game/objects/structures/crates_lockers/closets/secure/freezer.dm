@@ -14,7 +14,7 @@
 
 /obj/structure/closet/secure_closet/freezer/kitchen
 	name = "kitchen cabinet"
-	req_access = list(access_kitchen)
+	req_access = list(ACCESS_GENERAL_KITCHEN)
 
 	starts_with = list(
 		/obj/item/reagent_containers/food/condiment/flour = 7,
@@ -61,7 +61,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
-	req_access = list(access_heads_vault)
+	req_access = list(ACCESS_COMMAND_VAULT)
 
 
 	starts_with = list(

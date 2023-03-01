@@ -137,3 +137,6 @@
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"
 */
+
+// /obj/item/card/id
+#define VV_HK_ID_MOD "id_mod"

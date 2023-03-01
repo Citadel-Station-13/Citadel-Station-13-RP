@@ -46,7 +46,7 @@
 	var/obj/item/cell/cell = null
 	var/obj/machinery/camera/camera = null
 	var/obj/item/mmi/mmi = null
-	var/list/req_access = list(access_robotics) //Access needed to pop out the brain.
+	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS) //Access needed to pop out the brain.
 	var/positronic
 
 	can_enter_vent_with = list(
@@ -138,7 +138,7 @@
 			var/obj/item/pda/pda = O
 			id_card = pda.id
 
-		if(access_robotics in id_card.access)
+		if(ACCESS_SCIENCE_ROBOTICS in id_card.access)
 			to_chat(user, "<span class='notice'>You swipe your access card and pop the brain out of \the [src].</span>")
 			eject_brain()
 			if(held_item)

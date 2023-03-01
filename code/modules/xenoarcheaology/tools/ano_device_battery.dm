@@ -51,7 +51,7 @@
 /obj/item/anodevice/attack_self(var/mob/user as mob)
 	return ui_interact(user)
 
-/obj/item/anodevice/ui_state(mob/user)
+/obj/item/anodevice/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/anodevice/ui_interact(mob/user, datum/tgui/ui)
@@ -82,7 +82,7 @@
 
 	return data
 
-/obj/item/anodevice/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/anodevice/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

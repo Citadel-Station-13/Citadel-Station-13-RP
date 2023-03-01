@@ -121,7 +121,7 @@
 
 /obj/item/gun/energy/toxgun
 	name = "phoron pistol"
-	desc = "A specialized firearm designed to fire lethal bolts of phoron."
+	desc = "A failed experiment in anti-personnel weaponry from the onset of the Syndicate Wars. The Mk.1 NT-P uses an internal resevoir of phoron gas, excited into a photonic state with a standard weapon cell, to fire lethal bolts of phoron-based plasma."
 	icon_state = "toxgun"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
@@ -185,7 +185,7 @@
 
 /obj/item/gun/energy/dakkalaser
 	name = "suppression gun"
-	desc = "A massive weapon designed to pressure the opposition by raining down a torrent of energy pellets."
+	desc = "Coined 'Sparkers' by Tyrmalin dissidents on Larona upon it's inception, the HI-LLG is an energy-based suppression system, used to overwhelm the opposition in a hail of laser blasts."
 	icon_state = "dakkalaser"
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"

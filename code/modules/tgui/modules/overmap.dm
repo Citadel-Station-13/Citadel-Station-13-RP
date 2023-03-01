@@ -1,15 +1,15 @@
-/datum/tgui_module/ship
+/datum/tgui_module_old/ship
 	var/obj/effect/overmap/visitable/ship/linked
 	var/list/viewers
 	var/extra_view = 0
 
-/datum/tgui_module/ship/New()
+/datum/tgui_module_old/ship/New()
 	. = ..()
 	sync_linked()
 	if(linked)
 		name = "[linked.name] [name]"
 
-/datum/tgui_module/ship/Destroy()
+/datum/tgui_module_old/ship/Destroy()
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
@@ -17,7 +17,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module/ship/ui_status(mob/user)
+/datum/tgui_module_old/ship/ui_status(mob/user)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_overmap(user))
@@ -25,32 +25,32 @@
 		return
 	unlook(user)
 
-/datum/tgui_module/ship/ui_close(mob/user)
+/datum/tgui_module_old/ship/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
 
-/datum/tgui_module/ship/proc/sync_linked()
+/datum/tgui_module_old/ship/proc/sync_linked()
 	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)
 
-/datum/tgui_module/ship/proc/attempt_hook_up_recursive(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up_recursive(obj/effect/overmap/visitable/ship/sector)
 	if(attempt_hook_up(sector))
 		return sector
 	for(var/obj/effect/overmap/visitable/ship/candidate in sector)
 		if((. = .(candidate)))
 			return
 
-/datum/tgui_module/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(ui_host()))
 		linked = sector
 		return 1
 
-/datum/tgui_module/ship/proc/look(var/mob/user)
+/datum/tgui_module_old/ship/proc/look(var/mob/user)
 	if(!linked)
 		to_chat(user, SPAN_DANGER("No linked ship. Something's wrong."))
 		return
@@ -60,16 +60,16 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
-/datum/tgui_module/ship/proc/unlook(var/mob/user)
+/datum/tgui_module_old/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()
 	user.client?.reset_temporary_view()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
-/datum/tgui_module/ship/proc/viewing_overmap(mob/user)
+/datum/tgui_module_old/ship/proc/viewing_overmap(mob/user)
 	return (WEAKREF(user) in viewers)
 
-/datum/tgui_module/ship/check_eye(var/mob/user)
+/datum/tgui_module_old/ship/check_eye(var/mob/user)
 	if(!get_dist(user, ui_host()) > 1 || user.blinded || !linked)
 		unlook(user)
 		return -1
@@ -77,11 +77,11 @@
 		return 0
 
 // Navigation
-/datum/tgui_module/ship/nav
+/datum/tgui_module_old/ship/nav
 	name = "Navigation Display"
 	tgui_id = "OvermapNavigation"
 
-/datum/tgui_module/ship/nav/ui_interact(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/ship/nav/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		var/obj/machinery/computer/ship/navigation/host = ui_host()
 		if(istype(host))
@@ -102,7 +102,7 @@
 
 	. = ..()
 
-/datum/tgui_module/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
@@ -124,7 +124,7 @@
 
 	return data
 
-/datum/tgui_module/ship/nav/ui_act(action, params)
+/datum/tgui_module_old/ship/nav/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -135,11 +135,11 @@
 		viewing_overmap(usr) ? unlook(usr) : look(usr)
 		return TRUE
 
-/datum/tgui_module/ship/nav/ntos
+/datum/tgui_module_old/ship/nav/ntos
 	ntos = TRUE
 
 // Full monty control computer
-/datum/tgui_module/ship/fullmonty
+/datum/tgui_module_old/ship/fullmonty
 	name = "Full Monty Overmap Control"
 	tgui_id = "OvermapFull"
 	// HELM
@@ -153,10 +153,10 @@
 	// SENSORS
 	var/obj/machinery/shipsensors/sensors
 
-/datum/tgui_module/ship/fullmonty/ui_state(mob/user)
+/datum/tgui_module_old/ship/fullmonty/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
-/datum/tgui_module/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
+/datum/tgui_module_old/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
 	. = ..()
 	if(!istype(new_linked))
 		CRASH("Warning, [new_linked] is not an overmap ship! Something went horribly wrong for [usr]!")
@@ -178,7 +178,7 @@
 			break
 
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
-/datum/tgui_module/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	// HELM
@@ -294,7 +294,7 @@
 	return data
 
 // Beware ye eyes. This holds all of the ACTIONS from helm, engine, and sensor control all at once.
-/datum/tgui_module/ship/fullmonty/ui_act(action, params)
+/datum/tgui_module_old/ship/fullmonty/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -445,9 +445,9 @@
 		/* END SENSORS */
 
 // We don't want these to do anything.
-/datum/tgui_module/ship/fullmonty/sync_linked()
+/datum/tgui_module_old/ship/fullmonty/sync_linked()
 	return
-/datum/tgui_module/ship/fullmonty/attempt_hook_up_recursive()
+/datum/tgui_module_old/ship/fullmonty/attempt_hook_up_recursive()
 	return
-/datum/tgui_module/ship/fullmonty/attempt_hook_up()
+/datum/tgui_module_old/ship/fullmonty/attempt_hook_up()
 	return

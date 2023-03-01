@@ -25,7 +25,7 @@
 	max_micro_utility_equip = 1
 	max_micro_weapon_equip = 1
 	//add_req_access = 0
-	//operation_req_access = list(access_hos)
+	//operation_req_access = list(ACCESS_SECURITY_HOS)
 	damage_absorption = list("brute"=1,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
 	var/am = "d3c2fbcadca903a41161ccc9df9cf948"
 	damage_minimum = 0				//Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.

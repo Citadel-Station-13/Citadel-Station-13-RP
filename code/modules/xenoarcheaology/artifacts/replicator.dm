@@ -152,7 +152,7 @@
 	data["tgui_construction"] = tgui_construction
 	return data
 
-/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -16,7 +16,7 @@
 
 /obj/item/gun/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
-	desc = "A self recharging, ranged mining tool that does increased damage in low pressure."
+	desc = "A self-recharging mining tool that fires unstable blasts of kinetic energy, because management wouldn't let you have the ripper saws or line cutters. Especially effective in low-pressure environments."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"

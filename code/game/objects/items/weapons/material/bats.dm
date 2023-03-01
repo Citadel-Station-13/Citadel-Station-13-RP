@@ -1,6 +1,6 @@
 /obj/item/material/twohanded/baseballbat
 	name = "bat"
-	desc = "HOME RUN!"
+	desc = "From the former United States of America, this weapon was used in an old sport known as 'baseball'. It's made for hitting high-speed balls, but it's often re-purposed for knocking someone's lights out."
 	icon_state = "metalbat0"
 	base_icon = "metalbat"
 	throw_force = 7
@@ -36,7 +36,7 @@
 
 /obj/item/material/twohanded/baseballbat/penbat
 	name = "penetrator"
-	desc = "The letter E has been lovingly engraved into the handle. When this wobbles, it sounds exactly like shame."
+	desc = "I won't dignify this one with a description."
 	icon_state = "penbat0"
 	base_icon = "penbat"
 	force = 10

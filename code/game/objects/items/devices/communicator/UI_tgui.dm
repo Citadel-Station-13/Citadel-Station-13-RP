@@ -86,7 +86,7 @@
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user)
+/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -111,7 +111,7 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-/obj/item/communicator/ui_close(mob/user)
+/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	parallax.Remove(user.client)
 
@@ -310,7 +310,7 @@
 // Proc: tgui-act()
 // Parameters: 4 (standard ui_act arguments)
 // Description: Responds to UI button presses.
-/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

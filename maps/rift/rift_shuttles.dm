@@ -29,13 +29,13 @@
 /obj/machinery/computer/shuttle_control/triumph_backup
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
-	req_one_access = list(access_heads,access_pilot)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 */
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
-	req_one_access = list(access_syndicate)
+	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
 /*
 /obj/machinery/computer/shuttle_control/multi/ninja
@@ -51,19 +51,19 @@
 /obj/machinery/computer/shuttle_control/multi/specops
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
-	req_one_access = list(access_cent_specops)
+	req_one_access = list(ACCESS_CENTCOM_ERT)
 */
 
 /obj/machinery/computer/shuttle_control/multi/trade
 	name = "vessel control console"
 	shuttle_tag = "Trade"
-	req_one_access = list(access_trader)
+	req_one_access = list(ACCESS_FACTION_TRADER)
 
 /*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 */
 
 //
@@ -128,7 +128,7 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // COURSER SHUTTLE DATA
 
@@ -157,7 +157,7 @@
 /obj/machinery/computer/shuttle_control/explore/courser
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // Public Civilian Shuttle
 
@@ -264,5 +264,5 @@
 /obj/machinery/computer/shuttle_control/explore/tourbus
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 */

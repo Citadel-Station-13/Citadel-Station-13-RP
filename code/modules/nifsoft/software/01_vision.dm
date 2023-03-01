@@ -35,7 +35,7 @@
 	desc = "Like the civilian model, but provides medical records access and virus database lookup."
 	list_pos = NIF_MEDICAL_AR
 	cost = 150
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 	a_drain = 0.01
 	planes_enabled = list(VIS_AUGMENTED)
 	data_huds = list(DATA_HUD_MEDICAL)
@@ -47,7 +47,7 @@
 	desc = "Like the civilian model, but provides access to arrest status and security records."
 	list_pos = NIF_SECURITY_AR
 	cost = 150
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -59,7 +59,7 @@
 	desc = "Like the civilian model, but provides station alert notices."
 	list_pos = NIF_ENGINE_AR
 	cost = 150
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_ID_JOB)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -71,7 +71,7 @@
 	desc = "Like the civilian model, but provides ... well, nothing. For now."
 	list_pos = NIF_SCIENCE_AR
 	cost = 50
-	access = access_research
+	access = ACCESS_SCIENCE_MAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_ID_JOB)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -83,7 +83,7 @@
 	desc = "Like the civilian model, but provides most of the features of the medical and security overlays as well."
 	list_pos = NIF_OMNI_AR
 	cost = 250
-	access = access_captain
+	access = ACCESS_COMMAND_CAPTAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -113,7 +113,7 @@
 	desc = "Enables a high-speed shielding response to intense light, such as flashes, to block them."
 	list_pos = NIF_FLASHPROT
 	cost = 250
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	a_drain = 0.05
 	vision_flags = (NIF_V_FLASHPROT)
 
@@ -125,7 +125,7 @@
 	list_pos = NIF_MESONS
 	cost = 250
 	a_drain = 0.1
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT, VIS_MESONS)
 	vision_flags = (NIF_V_MESONS)
@@ -139,7 +139,7 @@
 	list_pos = NIF_MATERIAL
 	cost = 250
 	a_drain = 0.1
-	access = access_research
+	access = ACCESS_SCIENCE_MAIN
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_MATERIAL)
@@ -168,7 +168,7 @@
 	list_pos = NIF_NIGHTVIS
 	cost = 300 // op as shit
 	a_drain = 0.1
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)
