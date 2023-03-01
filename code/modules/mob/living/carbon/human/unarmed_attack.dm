@@ -99,7 +99,7 @@ var/global/list/sparring_attack_cache = list()
 				W = affecting.create_specific_wound(/datum/wound/cut/small, 5)
 				attack_message = "leaves behind infested residue in [target]!"
 			else
-				W.affecting.create_specific_wound(/datum/wound/bruise, 5)
+				W = affecting.create_specific_wound(/datum/wound/bruise, 5)
 				attack_message = "scratches and pummels, their infested fluids mixing with [target]!"
 			W?.force_infect()
 

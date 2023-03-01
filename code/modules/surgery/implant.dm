@@ -37,7 +37,7 @@
 	var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, scraping around inside [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, scraping around inside [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20)
+	affected.create_wound(CUT, 20)
 
 ///////////////////////////////////////////////////////////////
 // Space Making Surgery
