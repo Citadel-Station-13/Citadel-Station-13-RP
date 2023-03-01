@@ -109,10 +109,10 @@
 
 	if(!ispath(gift_type,/obj/item))
 		return
-	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-	var/obj/item/I = new gift_type(M)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	var/obj/item/I = new gift_type(user)
+	user.put_in_hands(I)
+	I.add_fingerprint(user)
 	qdel(src)
 
 /obj/item/b_gift
@@ -198,10 +198,10 @@
 
 	if(!ispath(gift_type,/obj/item))	return
 
-	var/obj/item/I = new gift_type(M)
-	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	var/obj/item/I = new gift_type(user)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	user.put_in_hands(I)
+	I.add_fingerprint(user)
 	qdel(src)
 
 /*

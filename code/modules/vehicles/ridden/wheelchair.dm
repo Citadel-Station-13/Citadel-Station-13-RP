@@ -56,11 +56,11 @@
 	. = ..()
 	if(.)
 		return
-		var/obj/vehicle/ridden/wheelchair/R = new /obj/vehicle/ridden/wheelchair(user.loc)
-		R.add_fingerprint(user)
-		R.name = src.name
-		R.color = src.color
-		qdel(src)
+	var/obj/vehicle/ridden/wheelchair/R = new /obj/vehicle/ridden/wheelchair(user.loc)
+	R.add_fingerprint(user)
+	R.name = src.name
+	R.color = src.color
+	qdel(src)
 
 /obj/vehicle/ridden/wheelchair/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()

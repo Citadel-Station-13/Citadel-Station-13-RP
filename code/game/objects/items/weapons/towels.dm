@@ -26,12 +26,15 @@
 	. = ..()
 	if(.)
 		return
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
 	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
 	playsound(user, 'sound/weapons/towelwipe.ogg', 25, 1)
-	if(user.fire_stacks > 0)
-		user.fire_stacks = (max(0, user.fire_stacks - 1.5))
-	else if(user.fire_stacks < 0)
-		user.fire_stacks = (min(0, user.fire_stacks + 1.5))
+	if(H.fire_stacks > 0)
+		H.fire_stacks = (max(0, H.fire_stacks - 1.5))
+	else if(H.fire_stacks < 0)
+		H.fire_stacks = (min(0, H.fire_stacks + 1.5))
 
 /obj/item/towel/random/Initialize(mapload)
 	. = ..()
