@@ -60,10 +60,9 @@
 	..()
 	if(owner)
 		owner.add_modifier(/datum/modifier/trait/haemophilia, round(15 MINUTES * spleen_efficiency))
-		var/obj/item/organ/external/Target = owner.get_organ(parent_organ)
-		var/datum/wound/W = new /datum/wound/internal_bleeding(round(20 * spleen_efficiency))
+		var/obj/item/organ/external/affecting = owner.get_organ(parent_organ)
+		affecting.create_specific_wound(/datum/wound/internal_bleeding, round(20 * spleen_efficiency))
 		owner.adjustToxLoss(15 * spleen_efficiency)
-		LAZYADD(Target.wounds, W)
 
 /obj/item/organ/internal/spleen/skrell
 	name = "lymphatic hub"

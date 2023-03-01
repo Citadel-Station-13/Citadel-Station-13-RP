@@ -240,11 +240,13 @@
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 				if(W.internal)
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/gold
 	name = "Gold"

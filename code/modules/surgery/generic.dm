@@ -59,13 +59,13 @@
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>")
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Laser Scalpel Surgery
@@ -102,7 +102,7 @@
 	//Could be cleaner ...
 	affected.open = 1
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	spread_germs_to_organ(affected, user)
 
@@ -110,8 +110,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 7.5)
-	affected.createwound(BURN, 12.5)
+	affected.create_wound(CUT, 7.5)
+	affected.create_wound(BURN, 12.5)
 
 ///////////////////////////////////////////////////////////////
 // Incision Management Surgery
@@ -148,7 +148,7 @@
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	affected.open = 2
 
@@ -156,8 +156,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20)
-	affected.createwound(BURN, 15)
+	affected.create_wound(CUT, 20)
+	affected.create_wound(BURN, 15)
 
 ///////////////////////////////////////////////////////////////
 // Hemostat Surgery
@@ -197,7 +197,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",	\
 	"<font color='red'>Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",)
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Retractor Surgery
@@ -344,5 +344,5 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, sawing through the bone in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, sawwing through the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 30)
+	affected.create_wound(CUT, 30)
 	affected.fracture()

@@ -135,10 +135,8 @@
 					if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 						affected.status &= ~ORGAN_BROKEN
 
-					for(var/datum/wound/W as anything in affected.wounds) // Fix IB
-						if(istype(W, /datum/wound/internal_bleeding))
-							affected.wounds -= W
-							affected.update_damages()
+				// fix IB
+				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 				H.restore_blood()
 				if(!iscultist(H))

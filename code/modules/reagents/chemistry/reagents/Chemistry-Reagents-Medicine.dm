@@ -68,7 +68,9 @@
 				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
 					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
 					if(W.damage <= 0)//If the wound is healed,
-						O.wounds -= W//remove the wound
+						O.cure_exact_wound(W)
+						continue
+
 /*
 /datum/reagent/bicaridine/topical//Main way to obtain is destiller
 	name = "Bicaridaze"
@@ -757,11 +759,13 @@
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 				if(W.internal)
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/respirodaxon
 	name = "Respirodaxon"

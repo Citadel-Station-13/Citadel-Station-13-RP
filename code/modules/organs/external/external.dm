@@ -293,11 +293,7 @@
 				parent.children = list()
 			parent.children.Add(src)
 			//Remove all stump wounds since limb is not missing anymore
-			for(var/datum/wound/lost_limb/W as anything in parent.wounds)
-				parent.wounds -= W
-				qdel(W)
-				break
-			parent.update_damages()
+			parent.cure_specific_wound(/datum/wound/lost_limb)
 
 /****************************************************
 			   DAMAGE PROCS
@@ -340,13 +336,13 @@
 		if(brute)
 			if(can_cut)
 				if(sharp && !edge)
-					createwound( PIERCE, brute )
+					create_wound( PIERCE, brute )
 				else
-					createwound( CUT, brute )
+					create_wound( CUT, brute )
 			else
-				createwound( BRUISE, brute )
+				create_wound( BRUISE, brute )
 		if(burn)
-			createwound( BURN, burn )
+			create_wound( BURN, burn )
 	else
 		//If we can't inflict the full amount of damage, spread the damage in other ways
 		//How much damage can we actually cause?
@@ -357,11 +353,11 @@
 				//Inflict all burte damage we can
 				if(can_cut)
 					if(sharp && !edge)
-						createwound( PIERCE, min(brute,can_inflict) )
+						create_wound( PIERCE, min(brute,can_inflict) )
 					else
-						createwound( CUT, min(brute,can_inflict) )
+						create_wound( CUT, min(brute,can_inflict) )
 				else
-					createwound( BRUISE, min(brute,can_inflict) )
+					create_wound( BRUISE, min(brute,can_inflict) )
 				//How much more damage can we inflict
 				brute_overflow = max(0, brute - can_inflict)
 				//How much brute damage is left to inflict
@@ -371,7 +367,7 @@
 
 			if (burn > 0 && can_inflict)
 				//Inflict all burn damage we can
-				createwound(BURN, min(burn,can_inflict))
+				create_wound(BURN, min(burn,can_inflict))
 				//How much burn damage is left to inflict
 				burn_overflow = max(0, burn - can_inflict)
 				spillover += burn_overflow
@@ -450,7 +446,7 @@
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
-	src.update_wounds()
+	src.process_wounds() // todo: this should not be here - this has side effects of processing.
 	owner.updatehealth()
 
 	var/result = update_icon()
@@ -564,61 +560,6 @@
 		I.remove_rejuv()
 	..()
 
-/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage)
-	if(damage == 0) return
-
-	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
-	//Possibly trigger an internal wound, too.
-	var/local_damage = brute_dam + burn_dam + damage
-	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
-		LAZYADD(wounds, I)
-		owner.custom_pain("You feel something rip in your [name]!", 50)
-
-//Burn damage can cause fluid loss due to blistering and cook-off
-
-	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
-		owner.remove_blood(fluid_loss)
-
-	// first check whether we can widen an existing wound
-	if(length(wounds) > 0 && prob(max(50+(wound_tally-1)*10,90)))
-		if((type == CUT || type == BRUISE) && damage >= 5)
-			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
-			var/list/compatible_wounds = list()
-			for (var/datum/wound/W as anything in wounds)
-				if (W.can_worsen(type, damage))
-					compatible_wounds += W
-
-			if(compatible_wounds.len)
-				var/datum/wound/W = pick(compatible_wounds)
-				W.open_wound(damage)
-				if(prob(25))
-					if(robotic >= ORGAN_ROBOT)
-						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
-						"<span class='danger'>The damage to your [name] worsens.</span>",\
-						"<span class='danger'>You hear the screech of abused metal.</span>")
-					else
-						owner.visible_message("<span class='danger'>The wound on [owner.name]'s [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>The wound on your [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>You hear a nasty ripping noise, as if flesh is being torn apart.</span>")
-				return
-
-	//Creating wound
-	var/wound_type = get_wound_type(type, damage)
-
-	if(wound_type)
-		var/datum/wound/W = new wound_type(damage)
-
-		//Check whether we can add the wound to an existing wound
-		for(var/datum/wound/other as anything in wounds)
-			if(other.can_merge(W))
-				other.merge_wound(W)
-				W = null // to signify that the wound was added
-				break
-		if(W)
-			LAZYADD(wounds, W)
-
 /****************************************************
 			   PROCESSING & UPDATING
 ****************************************************/
@@ -656,7 +597,7 @@
 		//	return
 
 		// Process wounds, doing healing etc. Only do this every few ticks to save processing power
-		update_wounds()
+		process_wounds()
 
 		//Chem traces slowly vanish
 		if(owner.life_tick % 10 == 0)
@@ -767,7 +708,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				child.germ_level += 110 //Burst of infection from a parent organ becoming necrotic
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
-/obj/item/organ/external/proc/update_wounds()
+/obj/item/organ/external/proc/process_wounds()
 
 	if((robotic >= ORGAN_ROBOT) || (species.species_flags & UNDEAD)) //Robotic and dead limbs don't heal or get worse.
 		for(var/datum/wound/W as anything in wounds) //Repaired wounds disappear though
@@ -1262,7 +1203,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!owner || loc != owner)
 		return
 	if(owner.species.species_flags & IS_SLIME)
-		createwound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
+		create_wound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)
 		return 0
