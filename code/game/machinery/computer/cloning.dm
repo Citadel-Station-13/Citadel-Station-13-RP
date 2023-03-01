@@ -4,7 +4,7 @@
 	icon_screen = "dna"
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/cloning
-	req_access = list(access_heads) //Only used for record deletion right now.
+	req_access = list(ACCESS_COMMAND_BRIDGE) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
 	var/list/pods = list() //Linked cloning pods.
 	var/temp = ""
@@ -322,9 +322,9 @@
 			return
 	if ((!subject.ckey) || (!subject.client))
 		scantemp = "Error: Mental interface failure."
-		if(subject.stat == DEAD && subject.mind && subject.mind.key) // If they're dead and not in their body, tell them to get in it.
+		if(subject.stat == DEAD && subject.mind && subject.mind.ckey) // If they're dead and not in their body, tell them to get in it.
 			for(var/mob/observer/dead/ghost in GLOB.player_list)
-				if(ghost.ckey == ckey(subject.mind.key))
+				if(ghost.ckey == ckey(subject.mind.ckey))
 					ghost.notify_revive("Someone is trying to scan your body in the cloner. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 					break
 		return

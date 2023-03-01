@@ -53,6 +53,10 @@
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
 
+/obj/item/soap/primitive
+	desc = "Lye and fat processed into a solid state. This hand crafted bar is unscented and uneven."
+	icon_state = "soapprim"
+
 /obj/item/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
@@ -847,3 +851,40 @@
 	icon_state = "spring"
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 40)
+
+//Yay Saddles.
+/obj/item/saddle
+	name = "saddle"
+	desc = "A portable seat designed to be mounted on trained animals. You shouldn't be seeing this version!"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "saddle"
+	w_class = ITEMSIZE_LARGE
+
+/obj/item/saddle/horse
+	desc = "A portable seat designed to be mounted on trained animals. This leather design originates from Old Earth, where it was primarily used on horses."
+
+/obj/item/saddle/shank
+	name = "goliath hide saddle"
+	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
+	icon_state = "saddle_lavaland"
+
+//Ashlander Specific Crafting Item - I'll eventually just make an item .dm for these guys at this rate.
+//This item will replace soulstones in Lavaland recipes/features.
+/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
+	name = "Scorian Religion - Elder Stones"
+	desc = "Originally depicted in Scorian carvings and cave paintings discovered at various dig sites around Surt, \
+	actual samples of these curious gems only recently became available. These gems, whose name most closely translates \
+	to 'Elder Stone' in Galactic Common, are considered items of intense religious significance to Scorian tribes. \
+	Outlanders who have been seen in possession of elder stones are frequently treated with hostility by the Scorian people, \
+	leading to several diplomatic incidents in recent months. Elder stones possess subtle anomalous properties, most notably \
+	a musical chiming tone, similar to the constant ringing of a bell. They are considered especially valuable by anomalous \
+	study groups and anthropological initiatives alike."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/obj/item/elderstone
+	name = "elder stone"
+	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "elderstone"
+	w_class = ITEMSIZE_SMALL
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)

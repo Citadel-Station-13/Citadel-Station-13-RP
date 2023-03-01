@@ -17,7 +17,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 // This is a global singleton. Keep in mind that all operations should occur on usr, not src.
 /datum/character_directory
-/datum/character_directory/ui_state(mob/user)
+/datum/character_directory/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.always_state
 
 /datum/character_directory/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -101,7 +101,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	return data
 
 
-/datum/character_directory/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/character_directory/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

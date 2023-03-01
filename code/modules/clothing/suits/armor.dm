@@ -852,3 +852,21 @@
 	icon_state = "swatarmor_pirate"
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
+
+//Ashlander armor
+/obj/item/clothing/suit/armor/ashlander
+	name = "ashen lamellar panoply"
+	desc = "This worn armor is fashioned out of bronze plates connected by dried sinew. The hammered plates are scuffed by ash and soot."
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "lamellar"
+	armor = list(melee = 20, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+//More Warhammer Fun
+/obj/item/clothing/suit/armor/utilitarian
+	name = "utilitarian military armor"
+	desc = "This high tech armor serves to protect the user from ranged attacks, rather than melee."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tau"
+	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

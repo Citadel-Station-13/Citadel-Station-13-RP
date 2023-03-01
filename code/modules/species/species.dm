@@ -375,7 +375,8 @@
 	/// Relative rarity/collector value for this species.
 	var/rarity_value = 1
 	/// How much money this species makes
-	var/economic_modifier = 2
+	// todo: implement species economic modifiers
+	var/economy_payscale = 1
 
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(

@@ -453,3 +453,15 @@
 /datum/gear/suit/utility_fur_coat
 	name = "Utility Fur Coat"
 	path = /obj/item/clothing/suit/storage/utility_fur_coat
+
+/datum/gear/suit/hobo
+	name = "Ragged Coat"
+	path = /obj/item/clothing/suit/storage/hobo
+
+/datum/gear/suit/kamina
+	name = "Spiral Hero Cloak"
+	path = /obj/item/clothing/suit/storage/kamina
+
+/datum/gear/suit/nerdshirt
+	name = "Nerdy Shirt"
+	path = /obj/item/clothing/suit/nerdshirt

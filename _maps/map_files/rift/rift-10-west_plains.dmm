@@ -6869,6 +6869,9 @@
 /obj/structure/cable{
 	icon_state = "8-10"
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "FP" = (

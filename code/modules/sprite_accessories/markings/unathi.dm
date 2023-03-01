@@ -37,6 +37,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
+/datum/sprite_accessory/marking/unathi/unathihood_inner
+	name = "Cobra Hood (Inner)"
+	id = "marking_unathi_hood_inner"
+	icon_state = "unathihood_inner"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
+
 /datum/sprite_accessory/marking/unathi/unathidoublehorns
 	name = "Double Unathi Horns"
 	id = "marking_unathi_horns_double"

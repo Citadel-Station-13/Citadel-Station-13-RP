@@ -2,7 +2,7 @@
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
  * default prefix is rp_
- * find replace case sensitive %_PREFIX_%
+ * find replace case sensitive rp_
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
@@ -14,6 +14,32 @@ CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   `minor` TINYINT(3) unsigned NOT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--           Player lookup table                   --
+-- Used to look up player ID from ckey, as well as --
+-- store last computerid/ip for a ckey.            --
+CREATE TABLE IF NOT EXISTS `rp_player_lookup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) NOT NULL,
+  `firstseen` datetime NOT NULL,
+  `lastseen` datetime NOT NULL,
+  `ip` varchar(18) NOT NULL,
+  `computerid` varchar(32) NOT NULL,
+  `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
+  `playerid` int(11),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ckey` (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--              Primary player table               --
+-- Allows for one-to-many player-ckey association. --
+CREATE TABLE IF NOT EXISTS `rp_player` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flags` int(24) NOT NULL DEFAULT 0,
+  `firstseen` datetime NOT NULL DEFAULT Now(),
+  `lastseen` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -29,6 +55,47 @@ CREATE TABLE IF NOT EXISTS `rp_round` (
   `server_port` SMALLINT(5) UNSIGNED NOT NULL,
   `commit_hash` CHAR(40) NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--            Connection log           --
+-- Logs all connections to the server. --
+CREATE TABLE IF NOT EXISTS `rp_connection_log` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `datetime` datetime NOT NULL,
+  `serverip` varchar(16) NOT NULL,
+  `ckey` varchar(32) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `computerid` varchar(32) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Persistence - Object Storage: Strings --
+CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- /datum/character - Character Table --
+CREATE TABLE IF NOT EXISTS `rp_character` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `last_played` DATETIME NULL,
+  `last_persisted` DATETIME NULL,
+  `playerid` INT(11) NOT NULL,
+  `canonical_name` VARCHAR(128) NOT NULL,
+  `persist_data` MEDIUMTEXT NULL,
+  `character_type` VARCHAR(64) NOT NULL,
+  PRIMARY KEY(`id`),
+  CONSTRAINT `character_has_player` FOREIGN KEY (`playerid`)
+  REFERENCES `rp_player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  UNIQUE (`playerid`, `canonical_name`, `character_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_admin` (
@@ -85,27 +152,6 @@ CREATE TABLE IF NOT EXISTS `rp_feedback` (
   `details` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
-
-CREATE TABLE IF NOT EXISTS `rp_player_lookup` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ckey` varchar(32) NOT NULL,
-  `firstseen` datetime NOT NULL,
-  `lastseen` datetime NOT NULL,
-  `ip` varchar(18) NOT NULL,
-  `computerid` varchar(32) NOT NULL,
-  `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
-  `playerid` int(11),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ckey` (`ckey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_player` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `flags` int(24) NOT NULL DEFAULT 0,
-  `firstseen` datetime NOT NULL DEFAULT Now(),
-  `lastseen` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -224,25 +270,3 @@ CREATE TABLE IF NOT EXISTS `rp_population` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_connection_log` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `datetime` datetime NOT NULL,
-  `serverip` varchar(16) NOT NULL,
-  `ckey` varchar(32) NOT NULL,
-  `ip` varchar(16) NOT NULL,
-  `computerid` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/* Object Persistence Store */
-/* These are not multi-server synchronization safe! It is expected that you DO NOT share these databases */
-CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
-  `created` DATETIME NOT NULL DEFAULT Now(),
-  `modified` DATETIME NOT NULL,
-  `key` VARCHAR(64) NOT NULL,
-  `value` MEDIUMTEXT NULL,
-  `group` VARCHAR(64) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`key`, `group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

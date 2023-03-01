@@ -10,10 +10,10 @@
  * gets list of species we can play of those who are whitelisted
  */
 /datum/preferences/proc/resolve_whitelisted_species()
-	var/list/names = config.all_alien_whitelists_for(client_ckey)
+	var/list/ids = config.all_alien_whitelists_for(client_ckey)
 	. = list()
 	for(var/datum/character_species/CS as anything in SScharacters.all_character_species())
-		if(ckey(CS.name) in names)
+		if((ckey(CS.uid) in ids) || (CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE && (ckey(CS.superspecies_id) in ids)))
 			. += CS.uid
 
 /**
@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 
-/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_species_picker/ui_static_data(mob/user)
@@ -124,12 +124,12 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/ui_close(mob/user)
+/datum/tgui_species_picker/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

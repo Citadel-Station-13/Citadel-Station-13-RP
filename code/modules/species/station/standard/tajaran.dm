@@ -38,7 +38,6 @@
 
 	max_age = 80
 
-	economic_modifier = 10
 
 	blurb = {"
 	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.

@@ -97,6 +97,14 @@ module.exports = (env = {}, argv) => {
             },
           ],
         },
+        {
+          test: /(readme|README)\.(md)$/,
+          use: [
+            {
+              loader: require.resolve('ignore-loader'),
+            },
+          ],
+        },
       ],
     },
     optimization: {

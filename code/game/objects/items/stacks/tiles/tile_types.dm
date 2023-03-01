@@ -241,6 +241,14 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	stacktype = /obj/item/stack/tile/floor
 	build_type = /obj/item/stack/tile/floor
 
+/obj/item/stack/tile/floor/sandstone
+	name = "sandstone tile"
+	singular_name = "sandstone tile"
+	desc = "Hardened sand compacted into a brick akin to stone in toughness."
+	icon_state = "tile-sandstone"
+	matter = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
 /obj/item/stack/tile/linoleum
 	name = "linoleum"
 	singular_name = "linoleum"
@@ -287,6 +295,16 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/roofing
 	build_type = /obj/item/stack/tile/roofing
+
+/obj/item/stack/tile/roofing/wood
+	name = "wood roofing"
+	singular_name = "wood roofing"
+	icon_state = "tile-wood"
+
+/obj/item/stack/tile/roofing/bone
+	name = "bone roofing"
+	singular_name = "bone roofing"
+	icon_state = "tile-white"
 
 /obj/item/stack/tile/bananium
 	name = "bananium tile"

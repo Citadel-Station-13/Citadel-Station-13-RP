@@ -164,6 +164,22 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	/mob/living/simple_mob/animal/gutshank = 100
 	)
 
+/obj/structure/mob_spawner/stormdrifter
+	name = "Violent Downdraft"
+	desc = "The air here seems especially hot. A swirling wind agitates the ash and sand, kicking up eddies and small dust devils."
+	icon_state = "punch"
+	spawn_delay = 10 MINUTES
+	simultaneous_spawns = 6
+	mob_faction = "lavaland"
+	total_spawns = 12
+	anchored = 1
+	destructible = 1
+	health = 1000
+	spawn_types = list(
+	/mob/living/simple_mob/animal/stormdrifter = 60,
+	/mob/living/simple_mob/animal/stormdrifter/bull = 30
+	)
+
 //Scanners
 /obj/structure/mob_spawner/scanner/corgi
 	name = "Corgi Lazy Spawner"

@@ -7,7 +7,7 @@
 	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
-	req_one_access = list(access_armory)
+	req_one_access = list(ACCESS_SECURITY_ARMORY)
 
 /obj/structure/closet/secure_closet/guncabinet/Initialize(mapload)
 	. = ..()
@@ -59,7 +59,7 @@
 //SC Guncabinet files
 /obj/structure/closet/secure_closet/guncabinet/sidearm
 	name = "emergency weapon cabinet"
-	req_one_access = list(access_armory,access_captain)
+	req_one_access = list(ACCESS_SECURITY_ARMORY,ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/gun/energy/gun = 4)
@@ -67,7 +67,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/rifle
 	name = "rifle cabinet"
-	req_one_access = list(access_explorer,access_brig)
+	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
 		/obj/item/ammo_magazine/clip/c762/hunter = 9,
@@ -82,7 +82,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/phase
 	name = "explorer weapon cabinet"
-	req_one_access = list(access_explorer,access_brig)
+	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
 		/obj/item/gun/energy/phasegun = 2,
@@ -91,11 +91,11 @@
 
 /obj/structure/closet/secure_closet/guncabinet/robotics
 	name = "exosuit equipment cabinet"
-	req_one_access = list(access_robotics,access_research)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_MAIN)
 
 /obj/structure/closet/secure_closet/guncabinet/excursion
 	name = "expedition weaponry cabinet"
-	req_one_access = list(access_explorer,access_armory)
+	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_ARMORY)
 
 /obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
 	for(var/i in 1 to 4)

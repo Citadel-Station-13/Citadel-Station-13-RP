@@ -16,7 +16,7 @@
  *
  * return UI_state The state of the UI.
  */
-/datum/proc/ui_status(mob/user, datum/ui_state/state)
+/datum/proc/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	var/src_object = ui_host(user)
 	. = UI_CLOSE
 	if(!state)

@@ -6,7 +6,7 @@
 	program_key_state = "id_key"
 	program_menu_icon = "key"
 	extended_desc = "Program for programming crew ID cards."
-	required_access = access_change_ids
+	required_access = ACCESS_COMMAND_CARDMOD
 	requires_ntnet = 0
 	size = 8
 
@@ -169,7 +169,6 @@
 			if(computer && can_run(user, 1))
 				id_card.assignment = "Dismissed"
 				id_card.access = list()
-				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(computer && can_run(user, 1))
 				if(href_list["name"])
@@ -194,9 +193,9 @@
 					if(module.is_centcom)
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum
-						for(var/jobtype in typesof(/datum/job))
-							var/datum/job/J = new jobtype
+						var/datum/role/job/jobdatum
+						for(var/jobtype in typesof(/datum/role/job))
+							var/datum/role/job/J = new jobtype
 							if(ckey(J.title) == ckey(t1))
 								jobdatum = J
 								break

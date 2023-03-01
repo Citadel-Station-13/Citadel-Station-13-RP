@@ -19,12 +19,18 @@
 	if(updates & UPDATE_ICON)
 		. |= update_icon(updates)
 
-/// Updates the name of the atom
+/**
+ * Updates the name of the atom
+ * Always call ..() *LAST* when overriding.
+ */
 /atom/proc/update_name(updates=ALL)
 	// SHOULD_CALL_PARENT(TRUE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_NAME, updates)
 
-/// Updates the description of the atom
+/**
+ * Updates the desc of the atom
+ * Always call ..() *LAST* when overriding.
+ */
 /atom/proc/update_desc(updates=ALL)
 	// SHOULD_CALL_PARENT(TRUE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_DESC, updates)
@@ -59,12 +65,21 @@
 
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
 
-/// Updates the icon state of the atom.
+/**
+ * Updates the icon state of the atom.
+ *
+ * Make sure to call return ..() last, so the comsig can force updates.
+ */
 /atom/proc/update_icon_state()
 	SHOULD_CALL_PARENT(TRUE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON_STATE)
 
-/// Updates the overlays of the atom.
+
+/**
+ * Updates the icon state of the atom.
+ *
+ * Make sure to call return ..() last, so the comsig can force updates.
+ */
 /atom/proc/update_overlays()
 	SHOULD_CALL_PARENT(TRUE)
 	. = list()

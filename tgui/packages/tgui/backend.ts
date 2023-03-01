@@ -22,6 +22,7 @@ const logger = createLogger('backend');
 
 export const backendUpdate = createAction('backend/update');
 export const backendData = createAction('backend/data');
+export const backendModuleData = createAction('backend/modules');
 export const backendSetSharedState = createAction('backend/setSharedState');
 export const backendSuspendStart = createAction('backend/suspendStart');
 
@@ -35,6 +36,7 @@ export const backendSuspendSuccess = () => ({
 const initialState = {
   config: {},
   data: {},
+  modules: {},
   shared: {},
   // Start as suspended
   suspended: Date.now(),
@@ -53,9 +55,23 @@ export const backendReducer = (state = initialState, action) => {
     // Merge data
     const data = {
       ...state.data,
-      ...payload.static_data,
+      ...payload.static,
       ...payload.data,
     };
+    // Merge module data
+    // Merge modules
+    const modules = {
+      ...state.modules,
+    };
+    if (payload.modules) {
+      const merging = payload.modules;
+      for (let id of Object.keys(merging)) {
+        modules[id] = {
+          ...modules[id],
+          ...merging[id],
+        };
+      }
+    }
     // Merge shared states
     const shared = { ...state.shared };
     if (payload.shared) {
@@ -74,6 +90,7 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       config,
       data,
+      modules,
       shared,
       suspended: false,
     };
@@ -83,12 +100,32 @@ export const backendReducer = (state = initialState, action) => {
     // Merge data
     const data = {
       ...state.data,
-      ...payload.data,
+      ...payload,
     };
     // Return new state
     return {
       ...state,
       data,
+    };
+  }
+
+  if (type === 'backend/modules') {
+    // Merge modules
+    const modules = {
+      ...state.modules,
+    };
+    for (let id of Object.keys(payload)) {
+      const data = payload[id];
+      const merged = {
+        ...modules[data],
+        ...data,
+      };
+      modules[id] = merged;
+    }
+    // Return new state
+    return {
+      ...state,
+      modules,
     };
   }
 
@@ -145,6 +182,10 @@ export const backendMiddleware = store => {
     if (type === 'data') {
       store.dispatch(backendData(payload));
       return;
+    }
+
+    if (type === 'modules') {
+      store.dispatch(backendModuleData(payload));
     }
 
     if (type === 'suspend') {
@@ -225,11 +266,13 @@ export const backendMiddleware = store => {
   };
 };
 
+export type actFunctionType = (action: string, payload?: object) => void;
+
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
  */
-export const sendAct = (action: string, payload: object = {}) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null
@@ -241,15 +284,14 @@ export const sendAct = (action: string, payload: object = {}) => {
   Byond.sendMessage('act/' + action, payload);
 };
 
-type BackendState<TData> = {
+type BackendContext = {
   config: {
     title: string,
     status: number,
     interface: string,
-    refreshing: boolean,
+    refreshing: number,
     window: {
       key: string,
-      size: [number, number],
       fancy: boolean,
       locked: boolean,
     },
@@ -263,16 +305,21 @@ type BackendState<TData> = {
       observer: number,
     },
   },
-  data: TData,
+  modules: Record<string, any>,
   shared: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
+};
+
+export type Backend<TData> = BackendContext & {
+  data: TData,
+  act: actFunctionType,
 }
 
 /**
  * Selects a backend-related slice of Redux state
  */
-export const selectBackend = <TData>(state: any): BackendState<TData> => (
+export const selectBackend = <TData>(state: any): Backend<TData> => (
   state.backend || {}
 );
 
@@ -284,7 +331,7 @@ export const selectBackend = <TData>(state: any): BackendState<TData> => (
  *
  * You can make
  */
-export const useBackend = <TData>(context: any) => {
+export const useBackend = <TData>(context: any): Backend<TData> => {
   const { store } = context;
   const state = selectBackend<TData>(store.getState());
   return {
@@ -376,4 +423,74 @@ export const useSharedState = <T>(
       });
     },
   ];
+};
+
+//* TGUI Module Backend
+
+export interface ModuleProps {
+  id: string, // module id, this lets it autoload from context
+}
+
+export interface ModuleData {
+  $tgui: string, // module interface
+  $ref: string, // byond ref to self
+}
+
+export type ModuleBackend<TData extends ModuleData> = {
+  data: TData;
+  act: actFunctionType;
+  backend: Backend<{}>;
+}
+
+/**
+ * a hook for getting the module state
+ *
+ * id is not provided in returned object because it's in props.
+ *
+ * returns:
+ * {
+ *    backend - what useBackend usually sends; you usually don't want to use this.
+ *    data - our module's data, got from their id
+ *    act - a pre-bound module act function that works the same from the UI side
+ *        whether or not we're in a module, or being used as a root UI
+ * }
+ *
+ * todo: bind useLocalState, useSharedState properly *somehow*
+ *       maybe with a useModuleLocal, useModuleShared?
+ */
+export const useModule = <TData extends ModuleData>(context): ModuleBackend<TData> => {
+  const { is_module } = context;
+  let backend = useBackend<TData>(context);
+  if (!is_module) {
+    return { // not operating in module mode, just send normal backend
+      backend: backend,
+      data: backend.data,
+      act: backend.act,
+    };
+  }
+  let { modules } = backend;
+  return {
+    backend: backend,
+    data: (modules && modules[context.m_id]) || {},
+    act: constructModuleAct(context.m_id, context.m_ref),
+  };
+};
+
+export const constructModuleAct = (id: string, ref: string): actFunctionType => {
+  return (action: string, payload: object = {}) => {
+    let sent = {
+      ...payload,
+      "$m_id": id,
+      "$m_ref": ref,
+    };
+    // Validate that payload is an object
+    const isObject = typeof payload === 'object'
+      && payload !== null
+      && !Array.isArray(payload);
+    if (!isObject) {
+      logger.error(`Payload for module act() must be an object, got this:`, payload);
+      return;
+    }
+    Byond.sendMessage('mod/' + action, sent);
+  };
 };

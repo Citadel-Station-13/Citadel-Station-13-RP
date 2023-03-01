@@ -1,4 +1,4 @@
-/datum/job/station/lawyer
+/datum/role/job/station/lawyer
 	id = JOB_ID_LAWYER
 	title = "Internal Affairs Agent"
 	flag = LAWYER
@@ -9,22 +9,21 @@
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/internal_affairs_agent
-	economic_modifier = 7
-	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
-	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
+	additional_access = list(ACCESS_COMMAND_IAA, ACCESS_SECURITY_MAIN, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_BRIDGE)
+	minimal_access = list(ACCESS_COMMAND_IAA, ACCESS_SECURITY_MAIN, ACCESS_COMMAND_BRIDGE)
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/internal_affairs_agent
-	alt_titles = list("Regulatory Affairs Agent" = /datum/alt_title/iaa/regulator)
+	alt_titles = list("Regulatory Affairs Agent" = /datum/prototype/alt_title/iaa/regulator)
 	desc = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
 						assuming their paperwork is in order."
 
-/datum/alt_title/iaa/regulator
+/datum/prototype/alt_title/iaa/regulator
 	title = "Regulatory Affairs Agent"
 
 /*
-/datum/job/station/lawyer/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/lawyer/equip(var/mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)
