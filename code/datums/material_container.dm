@@ -18,8 +18,21 @@
  */
 /datum/material_container/proc/dump_everything(atom/where)
 
-/// inserts sheets - use()'s / deletes the sheets as needed. if you're just ticking materials up, directly access the list.
-/datum/material_container/proc/insert_sheets(obj/item/stack/sheet/inserting, amount = INFINITY, force = FALSE)
+/**
+ * Inserts sheets
+ *
+ * Will use() / delete the sheets as needed
+ *
+ * If you want to just tick materials up, directly access the lists.
+ *
+ * @params
+ * * inserting - sheets
+ * * amount - max to insert
+ * * force - ignore capacity
+ *
+ * @return sheets consumed
+ */
+/datum/material_container/proc/insert_sheets(obj/item/stack/inserting, amount = INFINITY, force = FALSE)
 
 /**
  * uses the given resources, failing if not enough
