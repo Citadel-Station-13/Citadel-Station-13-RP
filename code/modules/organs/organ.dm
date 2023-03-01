@@ -16,8 +16,12 @@
 //! STATUS VARS
 	/// Various status flags
 	var/status = 0
-	/// Lose a vital limb, die immediately.
-	var/vital
+	/**
+	 * Is this organ vital? If so, this being amputated / removed / dying will immediately kill someone.
+	 *
+	 * todo: some species shouldn't have the same organs vital as others (?)
+	 */
+	var/vital = FALSE
 	/// Current damage to the organ
 	var/damage = 0
 	/// What kind of robotic organ, if valid.
