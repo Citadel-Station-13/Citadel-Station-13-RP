@@ -28,6 +28,9 @@
 		update_icon()
 
 /obj/item/syringe_cartridge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(syringe)
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
@@ -93,6 +96,9 @@
 	next = null
 
 /obj/item/gun/launcher/syringe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(next)
 		user.visible_message("[user] unlatches and carefully relaxes the bolt on [src].", "<span class='warning'>You unlatch and carefully relax the bolt on [src], unloading the spring.</span>")
 		next = null

@@ -24,6 +24,9 @@
 	return NONE
 
 /obj/item/stack/telecrystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.accept_tcrystals) //Checks to see if antag type allows for tcrystals
 		to_chat(user, "<span class='notice'>You use \the [src], adding [src.amount] to your balance.</span>")
 		user.mind.tcrystals += amount

@@ -27,6 +27,9 @@
 	. += "<span class = 'notice'>There are [uses] uses remaining.</span>"
 
 /obj/item/disposable_teleporter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!uses)
 		to_chat(user, "<span class='danger'>\The [src] has ran out of uses, and is now useless to you!</span>")
 		return

@@ -130,6 +130,9 @@
 	return ..()
 
 /obj/item/duct_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "You remove a piece of tape from the roll.")
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	user.put_in_hands(tape)
@@ -178,6 +181,9 @@
 	copy_overlays(W)
 
 /obj/item/duct_tape_piece/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stuck)
 		return
 

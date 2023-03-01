@@ -26,6 +26,9 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 
 /obj/item/gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(src.gift)
 		user.put_in_active_hand(gift)
@@ -57,6 +60,9 @@
 	qdel(src)
 
 /obj/item/a_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/gift_type = pick(
 		/obj/item/storage/wallet,
 		/obj/item/storage/photo_album,
@@ -123,6 +129,9 @@
 	pixel_y = rand(-10,10)
 
 /obj/item/gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(gift)
 		user.put_in_active_hand(gift)
@@ -135,6 +144,9 @@
 	qdel(src)
 
 /obj/item/b_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/gift_type = pick(
 		/obj/item/reagent_containers/hard_candy/lollipop,
 		/obj/item/reagent_containers/hard_candy/lollipop/bicard,

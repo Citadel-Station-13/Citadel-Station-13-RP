@@ -104,6 +104,9 @@
 
 // Changes which mode it is on.
 /obj/item/rcd/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	var/list/choices = list(
 		"Airlock" = radial_image_airlock,
@@ -361,6 +364,9 @@
 
 // Old method for swapping modes as there is no way to bring up the radial.
 /obj/item/rcd/electric/mounted/rig/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(mode_index >= modes.len) // Shouldn't overflow unless someone messes with it in VV poorly but better safe than sorry.
 		mode_index = 1
 	else

@@ -139,6 +139,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	return ..()
 
 /obj/item/radio/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	interact(user)
 

@@ -30,6 +30,9 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	adjust_mask(user)
 
 /obj/item/clothing/mask/breath/verb/toggle()

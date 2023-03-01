@@ -32,6 +32,9 @@
 	return
 
 /obj/item/analyzer/xeno_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	print_report(user)
 	return 0
 

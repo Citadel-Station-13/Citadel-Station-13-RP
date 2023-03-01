@@ -105,6 +105,9 @@
 	return module_string
 
 /obj/item/switchtool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return
 	if(deployed)

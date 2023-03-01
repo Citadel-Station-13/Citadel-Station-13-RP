@@ -67,6 +67,9 @@
 
 //Allow for capped syringe mode
 /obj/item/reagent_containers/syringe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch(mode)
 		if(SYRINGE_CAPPED)
 			mode = SYRINGE_DRAW

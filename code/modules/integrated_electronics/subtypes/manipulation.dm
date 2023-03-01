@@ -292,6 +292,9 @@
 	push_data()
 
 /obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	drop_all()
 	update_outputs()
 	push_data()
@@ -852,6 +855,9 @@
 		..()
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(installed_gun)
 		user.put_in_hands_or_drop(installed_gun)
 		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
@@ -959,6 +965,9 @@
 		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(attached_grenade)
 		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
 		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)

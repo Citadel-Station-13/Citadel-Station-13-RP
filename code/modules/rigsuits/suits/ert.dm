@@ -116,6 +116,9 @@
 		)
 
 /obj/item/rig/ert/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !anti_magic && !emp_proof && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE

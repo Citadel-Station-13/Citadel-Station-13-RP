@@ -50,6 +50,9 @@
 	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
 /obj/item/extinguisher/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	safety = !safety
 	icon_state = "[sprite_name][!safety]"
 	desc = "The safety is [safety ? "on" : "off"]."

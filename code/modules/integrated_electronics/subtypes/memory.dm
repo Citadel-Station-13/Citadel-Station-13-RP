@@ -87,6 +87,9 @@
 	O.push_data()
 
 /obj/item/integrated_circuit/memory/constant/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/datum/integrated_io/O = outputs[1]
 	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", list("string","number","ref", "null"))
 	if(!CanInteract(user, GLOB.physical_state))

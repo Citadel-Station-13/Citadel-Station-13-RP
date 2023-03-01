@@ -63,6 +63,9 @@
 			return TRUE
 
 /obj/item/integrated_electronics/detailer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 	// Leaving this commented out in case someone decides that this would be better as an "any color" selection system
 	// Just uncomment this and get rid of all of the TGUI bullshit lol

@@ -85,6 +85,9 @@
 	D.name = "small parcel - 'EFTPOS access code'"
 
 /obj/item/eftpos/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(get_dist(src,user) <= 1)
 		var/dat = "<b>[eftpos_name]</b><br>"
 		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting IT Support</i><br>"

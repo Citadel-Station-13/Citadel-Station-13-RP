@@ -51,6 +51,9 @@
 	desc += instructions
 
 /obj/item/storage/single_use/med_pouch/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open(user)
 
 /*handled by single_use

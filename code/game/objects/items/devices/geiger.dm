@@ -131,6 +131,9 @@
 	update_appearance()
 
 /obj/item/geiger_counter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	scanning = !scanning
 	if(scanning)
 		START_PROCESSING(SSobj, src)

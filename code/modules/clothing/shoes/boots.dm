@@ -213,6 +213,9 @@
 	var/blessed = FALSE
 
 /obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
 		clothing_flags |= NOSLIP

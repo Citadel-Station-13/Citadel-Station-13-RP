@@ -8,6 +8,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/bodybag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
@@ -125,6 +128,9 @@
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/bodybag/cryobag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
 	R.add_fingerprint(user)
 	if(syringe)

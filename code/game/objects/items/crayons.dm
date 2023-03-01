@@ -42,7 +42,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/mime/attack_self(mob/user) //inversion
+/obj/item/pen/crayon/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -61,6 +64,9 @@
 	uses = 0
 
 /obj/item/pen/crayon/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Crayon colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
 	return
@@ -159,7 +165,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/marker/mime/attack_self(mob/user) //inversion
+/obj/item/pen/crayon/marker/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -178,6 +187,9 @@
 	uses = 0
 
 /obj/item/pen/crayon/marker/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Marker colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return

@@ -31,6 +31,9 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/pen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.next_move > world.time)
 		return
 	user.setClickCooldown(1 SECOND)
@@ -62,6 +65,9 @@
 	return
 
 /obj/item/pen/multi/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(++selectedColor > 3)
 		selectedColor = 1
 
@@ -78,6 +84,9 @@
 	name = "clicker pen"
 
 /obj/item/pen/click/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
@@ -245,6 +254,9 @@
 	var/signature = ""
 
 /obj/item/pen/chameleon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	/*
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()
@@ -341,6 +353,9 @@
 	name = "[colourName] chalk"
 
 /obj/item/pen/crayon/chalk/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/pen/charcoal

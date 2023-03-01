@@ -109,6 +109,9 @@
 		return ..()
 
 /obj/item/melee/baton/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_external_power)
 		//try to find our power cell
 		var/mob/living/silicon/robot/R = loc

@@ -26,6 +26,9 @@
 	return
 
 /obj/item/reagent_containers/food/drinks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!is_open_container())
 		open(user)
 

@@ -124,6 +124,9 @@
 
 
 /obj/item/flamethrower/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.stat || user.restrained() || user.lying)	return
 	user.set_machine(src)
 	if(!ptank)

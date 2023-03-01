@@ -135,6 +135,9 @@
 
 
 /obj/item/lightreplacer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	/* // This would probably be a bit OP. If you want it though, uncomment the code.
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user

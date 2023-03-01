@@ -439,6 +439,9 @@
 	TIMER_COOLDOWN_START(src, CD_INDEX_TAPE_PRINT, 30 SECONDS)
 
 /obj/item/tape_recorder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(is_playing())
 		stop_playing(user)
 	else if(is_recording())

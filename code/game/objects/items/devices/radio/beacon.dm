@@ -88,6 +88,9 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
 
 /obj/item/radio/beacon/syndicate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user)
 		to_chat(user, SPAN_NOTICE("Locked In"))
 		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)

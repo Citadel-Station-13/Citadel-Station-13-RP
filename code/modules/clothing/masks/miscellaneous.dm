@@ -260,6 +260,9 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 
 /obj/item/clothing/mask/paper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	reskin_paper_mask(user)
 
 /obj/item/clothing/mask/paper/proc/reskin_paper_mask(mob/living/L)

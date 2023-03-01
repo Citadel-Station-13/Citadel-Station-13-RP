@@ -23,6 +23,9 @@
 
 //hit yourself with it
 /obj/item/holowarrant/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = null
 	var/list/warrants = list()
 	if(!isnull(data_core.general))

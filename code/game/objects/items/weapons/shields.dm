@@ -125,6 +125,9 @@
 	return embedded_flash.attack_mob(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	. = embedded_flash.attack_self(user)
 	update_icon()
 
@@ -326,6 +329,9 @@
 	return base_block_chance
 
 /obj/item/shield/energy/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		user.take_organ_damage(5)
@@ -403,6 +409,9 @@
 		return 0
 */
 /obj/item/shield/riot/tele/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	icon_state = "teleriot[active]"
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)

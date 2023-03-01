@@ -7,6 +7,9 @@
 	var/deploy_path = /obj/structure/inflatable
 
 /obj/item/inflatable/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	inflate(user,user.loc)
 
 /obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
@@ -250,6 +253,9 @@
 	icon_state = "folded_wall_torn"
 
 /obj/item/inflatable/torn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
 	add_fingerprint(user)
 
@@ -260,6 +266,9 @@
 	icon_state = "folded_door_torn"
 
 /obj/item/inflatable/door/torn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
 	add_fingerprint(user)
 

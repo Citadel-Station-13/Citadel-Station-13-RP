@@ -54,6 +54,9 @@
 	A.name = "[A.name] ([label])"
 
 /obj/item/hand_labeler/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)

@@ -141,6 +141,9 @@
 	return ..()
 
 /obj/item/tool/wirecutters/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))

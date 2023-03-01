@@ -49,6 +49,9 @@
 					to_chat(user, "<span class='notice'>[src] is projecting at max capacity!</span>")
 
 /obj/item/holosign_creator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(signs.len)
 		for(var/H in signs)
 			qdel(H)
@@ -112,6 +115,9 @@
 	var/shock = 0
 
 /obj/item/holosign_creator/cyborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 

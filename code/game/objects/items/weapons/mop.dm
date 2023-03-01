@@ -27,6 +27,9 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 
 /obj/item/mop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP

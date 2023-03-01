@@ -108,6 +108,9 @@
 //	return ..()
 
 /obj/item/pipe_dispenser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/pipe_dispenser/ui_assets(mob/user)

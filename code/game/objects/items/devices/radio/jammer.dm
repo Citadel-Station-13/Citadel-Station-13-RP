@@ -79,6 +79,9 @@ var/global/list/active_radio_jammers = list()
 		return ..()
 
 /obj/item/radio_jammer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(on)
 		turn_off(user)
 	else

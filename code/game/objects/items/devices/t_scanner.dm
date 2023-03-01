@@ -27,6 +27,9 @@
 	set_active(!on)
 
 /obj/item/t_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_active(!on)
 
 /obj/item/t_scanner/proc/set_active(var/active)

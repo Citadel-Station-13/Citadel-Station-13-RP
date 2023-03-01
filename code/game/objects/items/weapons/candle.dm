@@ -62,6 +62,9 @@
 		T.hotspot_expose(700, 5)
 
 /obj/item/flame/candle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(lit)
 		lit = 0
 		update_icon()

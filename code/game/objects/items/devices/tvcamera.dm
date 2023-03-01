@@ -44,6 +44,9 @@
 	..()
 
 /obj/item/tvcamera/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 	user.set_machine(src)
 	var/dat = list()

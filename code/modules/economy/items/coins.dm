@@ -104,6 +104,9 @@
 	else ..()
 
 /obj/item/coin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/result = rand(1, sides)
 	var/comment = ""
 	if(result == 1)

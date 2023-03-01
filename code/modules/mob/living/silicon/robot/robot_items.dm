@@ -17,6 +17,9 @@
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
 /obj/item/portable_destructive_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/response = alert(user, 	"Analyzing the item inside will *DESTROY* the item for good.\n\
 							Syncing to the research server will send the data that is stored inside to research.\n\
 							Ejecting will place the loaded item onto the floor.",
@@ -272,6 +275,9 @@
 	var/mode = 1
 
 /obj/item/pen/robopen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
 	if(!choice) return
@@ -330,6 +336,9 @@
 		deploy_paper(get_turf(target))
 
 /obj/item/form_printer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
@@ -360,6 +369,9 @@
 	return ..()
 
 /obj/item/borg/combat/shield/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_shield_level()
 
 /obj/item/borg/combat/shield/process(delta_time)
@@ -432,6 +444,9 @@
 	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
 /obj/item/inflatable_dispenser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 

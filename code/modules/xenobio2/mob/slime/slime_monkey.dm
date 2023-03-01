@@ -9,6 +9,9 @@ Slime cube lives here.
 	var/searching = 0
 
 /obj/item/slime_cube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!searching)
 		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		request_player()

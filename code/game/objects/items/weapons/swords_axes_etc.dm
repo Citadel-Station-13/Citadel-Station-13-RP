@@ -57,6 +57,9 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/telebaton/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		on = 1
 		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
@@ -190,6 +193,9 @@
 	hitsound = "sound/items/bikehorn.ogg"
 
 /obj/item/melee/stool/faiza/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(on == 0)
 		user.visible_message("<span class='notice'>In a quick motion, [user] extends their collapsible stool.</span>")

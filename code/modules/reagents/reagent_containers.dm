@@ -23,6 +23,9 @@
 	create_reagents(volume)
 
 /obj/item/reagent_containers/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)

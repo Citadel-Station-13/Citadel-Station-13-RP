@@ -112,6 +112,9 @@
 	chained = null
 
 /obj/item/clothing/shoes/orange/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	remove_cuffs(user)
 

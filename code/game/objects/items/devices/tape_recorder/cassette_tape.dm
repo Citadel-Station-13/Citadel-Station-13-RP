@@ -99,6 +99,9 @@
 
 /obj/item/cassette_tape/attack_self(mob/user)
 	. = ..()
+	if(.)
+		return
+	. = ..()
 	if(user.a_intent != INTENT_HARM)
 		return
 	if(!ruined)

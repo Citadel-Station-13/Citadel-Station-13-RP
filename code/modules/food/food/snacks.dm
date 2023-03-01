@@ -45,6 +45,9 @@
 		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -920,6 +923,9 @@
 	var/has_been_heated = 0
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(has_been_heated)
 		to_chat(user, "<span class='notice'>The heating chemicals have already been spent.</span>")
 		return
@@ -1836,6 +1842,9 @@
 	reagents.add_reagent("protein", 10)
 
 /obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(wrapped)
 		Unwrap(user)
 
@@ -3257,6 +3266,9 @@
 	. = ..()
 
 /obj/item/pizzabox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if( boxes.len > 0 )
 		return

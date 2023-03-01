@@ -54,6 +54,9 @@
 
 
 /obj/item/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")

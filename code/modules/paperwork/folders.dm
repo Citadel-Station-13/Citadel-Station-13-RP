@@ -76,6 +76,9 @@
 		return ..()
 
 /obj/item/folder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/folder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

@@ -378,6 +378,9 @@ HALOGEN COUNTER	- Radcount on mobs
 	return atmosanalyzer_scan(src, air, user)
 
 /obj/item/analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
@@ -431,6 +434,9 @@ HALOGEN COUNTER	- Radcount on mobs
 		icon_state = initial(icon_state)
 
 /obj/item/mass_spectrometer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")

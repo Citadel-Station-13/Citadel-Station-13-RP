@@ -195,6 +195,9 @@
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
 /obj/item/wheelchair/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
 		R.add_fingerprint(user)
 		R.name = src.name

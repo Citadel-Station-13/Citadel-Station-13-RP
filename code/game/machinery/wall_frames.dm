@@ -24,6 +24,9 @@
 	..()
 
 /obj/item/frame/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	update_type_list()
 	var/datum/frame/frame_types/frame_type
 	if(!build_machine_type)

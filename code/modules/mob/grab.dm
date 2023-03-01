@@ -200,6 +200,9 @@
 				affecting.Blind(3)
 
 /obj/item/grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return s_click(hud)
 
 /obj/item/grab/throw_resolve_actual(mob/user)

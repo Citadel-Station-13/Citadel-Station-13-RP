@@ -28,6 +28,9 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 

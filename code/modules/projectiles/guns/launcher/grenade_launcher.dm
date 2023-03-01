@@ -66,6 +66,9 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
 /obj/item/gun/launcher/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	pump(user)
 
 /obj/item/gun/launcher/grenade/attackby(obj/item/I, mob/user)
@@ -102,6 +105,9 @@
 	max_grenades = 0
 
 /obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 //load and unload directly into chambered

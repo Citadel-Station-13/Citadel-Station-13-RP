@@ -14,6 +14,9 @@ after the sprite has been set you can use it again to remove overlays that may h
 	var/state
 
 /obj/item/spritechanger/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user)
 		if(path && state)
 			user.icon = icon(path)

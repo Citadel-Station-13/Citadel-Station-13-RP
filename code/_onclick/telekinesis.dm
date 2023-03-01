@@ -81,6 +81,9 @@ var/const/tk_maxrange = 15
 		qdel(src)
 
 /obj/item/tk_grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(focus)
 		focus.attack_self_tk(user)
 

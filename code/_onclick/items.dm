@@ -1,7 +1,9 @@
-//? If you change any of these procs, you better find/replace *every single* proc signature to match
-//? Obviously you don't need to do this for default arguments, because that'd insert a lot of compiled in isnull()'s
-//? But the whole point of this refactor is to standardize.
-//? All PRs that breach convention will be held until in compliance.
+//* If you change any of these procs, you better find/replace *every single* proc signature to match
+//* Obviously you don't need to do this for default arguments, because that'd insert a lot of compiled in isnull()'s
+//* But the whole point of this refactor is to standardize.
+//* All PRs that breach convention will be held until in compliance.
+
+//? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
 /**
  * Called when trying to click something that the user can Reachability() to.

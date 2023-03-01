@@ -45,6 +45,9 @@
 		icon_state = "hdiffuser_off"
 
 /obj/item/shield_diffuser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	enabled = !enabled
 	update_icon()
 	if(enabled)

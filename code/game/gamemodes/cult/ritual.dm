@@ -309,6 +309,9 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	to_chat(target, "<span class='danger'>You feel searing heat inside!</span>")
 
 /obj/item/book/tome/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
@@ -424,6 +427,9 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	var/cultistsonly = 1
 
 /obj/item/book/tome/imbued/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.cultistsonly && !iscultist(usr))
 		return
 	if(!cultwords["travel"])

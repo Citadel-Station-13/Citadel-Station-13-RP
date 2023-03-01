@@ -225,6 +225,9 @@
 	icon_state = "radio"
 
 /obj/item/radio/uplink/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
@@ -233,6 +236,9 @@
 	hidden_uplink = new(src)
 
 /obj/item/multitool/uplink/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 

@@ -194,6 +194,9 @@
 	update_icon()
 
 /obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		turnOn(user)
 	else
@@ -367,6 +370,9 @@
 		..()
 
 /obj/item/stack/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/obj/item/stack/flag/F = locate() in get_turf(src)
 

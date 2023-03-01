@@ -121,6 +121,9 @@
 	updateicon()
 
 /obj/item/suit_cooling_unit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cover_open && cell)
 		if(ishuman(user))
 			user.put_in_hands(cell)

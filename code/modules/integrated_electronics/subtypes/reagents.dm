@@ -310,6 +310,9 @@
 
 
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Check if no beaker attached
 	if(!current_beaker)
 		to_chat(user, "<span class='notice'>There is currently no beaker attached.</span>")

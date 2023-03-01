@@ -394,6 +394,9 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user)
 	. = ..()
+	if(.)
+		return
+	. = ..()
 	if (closed)
 		closed = 0
 		playsound(loc,"canopen", rand(10,50), 1)

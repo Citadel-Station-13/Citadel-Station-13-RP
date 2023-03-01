@@ -58,6 +58,9 @@
 
 
 /obj/item/reagent_containers/organic/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")

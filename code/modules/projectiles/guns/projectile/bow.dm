@@ -42,6 +42,9 @@
 	update_icon()
 
 /obj/item/gun/ballistic/bow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(loaded.len)
 		src.ready = 1
 		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")

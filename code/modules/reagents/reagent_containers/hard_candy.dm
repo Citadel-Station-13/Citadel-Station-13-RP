@@ -35,6 +35,9 @@
 		qdel(src)
 
 /obj/item/reagent_containers/hard_candy/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/hard_candy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

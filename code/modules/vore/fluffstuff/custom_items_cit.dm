@@ -28,6 +28,9 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	check_owner()

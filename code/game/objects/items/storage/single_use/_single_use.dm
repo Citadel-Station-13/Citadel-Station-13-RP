@@ -22,6 +22,9 @@
 	return ..(user, TRUE)
 
 /obj/item/storage/single_use/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open(user)
 
 /obj/item/storage/single_use/update_icon()

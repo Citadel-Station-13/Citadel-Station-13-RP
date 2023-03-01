@@ -214,6 +214,9 @@
 	return 0
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !( active )
 	if (active)
 		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
@@ -698,6 +701,9 @@
 	var/blessed = FALSE
 
 /obj/item/clothing/suit/armor/vest/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE

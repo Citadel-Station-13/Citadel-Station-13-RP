@@ -72,6 +72,9 @@
 
 
 /obj/item/evidencebag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\

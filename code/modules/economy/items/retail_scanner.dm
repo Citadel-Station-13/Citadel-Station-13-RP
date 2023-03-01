@@ -47,6 +47,9 @@
 	pixel_y = 0
 
 /obj/item/retail_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	interact(user)
 

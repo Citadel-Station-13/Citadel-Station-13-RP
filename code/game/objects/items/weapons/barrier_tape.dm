@@ -138,6 +138,9 @@ var/list/tape_roll_applications = list()
 	return ..()
 
 /obj/item/barrier_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!start)
 		start = get_turf(src)
 		to_chat(user, "<span class='notice'>You place the first end of \the [src].</span>")

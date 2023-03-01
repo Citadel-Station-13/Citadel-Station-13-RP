@@ -85,6 +85,9 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(safety_check())
 		return
 	list_recipes(user)

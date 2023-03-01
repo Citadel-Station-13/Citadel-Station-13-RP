@@ -26,6 +26,9 @@
 	var/list/last_reagents
 
 /obj/item/analyzer/plant_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/analyzer/plant_analyzer/ui_interact(mob/user, datum/tgui/ui)

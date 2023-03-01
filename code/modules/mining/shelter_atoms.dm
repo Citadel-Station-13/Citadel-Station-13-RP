@@ -36,6 +36,9 @@
 	. += template.description
 
 /obj/item/survivalcapsule/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)

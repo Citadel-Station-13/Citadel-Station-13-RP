@@ -40,6 +40,9 @@
 	return (BRUTELOSS)
 
 /obj/item/beartrap/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(!deployed)
 		user.visible_message(

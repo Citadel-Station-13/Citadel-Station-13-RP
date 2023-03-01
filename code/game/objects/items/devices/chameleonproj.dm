@@ -25,6 +25,9 @@
 	disrupt()
 
 /obj/item/chameleon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 /obj/item/chameleon/afterattack(atom/target, mob/user , proximity)

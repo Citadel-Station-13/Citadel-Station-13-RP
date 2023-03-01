@@ -22,6 +22,9 @@
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -60,6 +63,9 @@
 	w_class = ITEMSIZE_TINY
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!( istype(user.loc, /turf) ))
 		return
 
@@ -187,6 +193,9 @@
 		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -295,6 +304,9 @@
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(!enabled)
 		R.scrubbing = TRUE
@@ -337,7 +349,10 @@
 	var/cooldown = 0
 	var/datum/matter_synth/glass = null
 
-/obj/item/lightreplacer/dogborg/attack_self(mob/user)//Recharger refill is so last season. Now we recycle without magic!
+/obj/item/lightreplacer/dogborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return//Recharger refill is so last season. Now we recycle without magic!
 	if(uses >= max_uses)
 		to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 		return
@@ -368,6 +383,9 @@
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	R.leap()
 

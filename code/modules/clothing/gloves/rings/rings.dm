@@ -7,6 +7,9 @@
 	item_state = "diamond_s"
 
 /obj/item/clothing/gloves/ring/engagement/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
 
 /obj/item/clothing/gloves/ring/cti
@@ -98,6 +101,9 @@
 	var/nameset = FALSE
 
 /obj/item/clothing/gloves/ring/seal/signet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(nameset)
 		to_chat(user, "<span class='notice'>The [src] has already been claimed!</span>")
 		return
@@ -119,6 +125,9 @@
 	var/partnername = ""
 
 /obj/item/clothing/gloves/ring/wedding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	partnername = copytext(sanitize(input(user, "Would you like to change the holoengraving on the ring?", "Name your spouse", "Bae") as null|text),1,MAX_NAME_LEN)
 	name = "[initial(name)] - [partnername]"
 

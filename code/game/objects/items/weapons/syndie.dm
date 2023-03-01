@@ -79,6 +79,9 @@
 	var/obj/item/syndie/c4explosive/bomb
 
 /obj/item/flame/lighter/zippo/c4detonator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!detonator_mode)
 		..()
 

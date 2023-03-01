@@ -813,6 +813,9 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 /obj/item/newspaper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/dat

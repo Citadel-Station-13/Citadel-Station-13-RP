@@ -12,6 +12,9 @@
 	deploy_path = /obj/machinery/power/supply_beacon/supermatter
 
 /obj/item/supply_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='notice'>\The [user] begins setting up \the [src].</span>")
 	if(!do_after(user, deploy_time))
 		return

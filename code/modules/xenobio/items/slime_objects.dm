@@ -8,6 +8,9 @@
 	var/searching = 0
 
 /obj/item/slime_cube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!searching)
 		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		icon_state = "slime cube active"
@@ -91,6 +94,9 @@
 	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
 	safe_blink(user, 14)
 	qdel(src)

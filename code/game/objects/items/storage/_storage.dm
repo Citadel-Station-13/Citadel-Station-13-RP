@@ -599,6 +599,9 @@
 	..()
 
 /obj/item/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.get_active_held_item() == src) || (isrobot(user)) && allow_quick_empty)
 		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
 			src.quick_empty()
@@ -721,6 +724,9 @@
 	. = ..()
 
 /obj/item/storage/trinketbox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open = !open
 	update_icon()
 	..()

@@ -78,6 +78,9 @@
 	return transfer
 
 /obj/item/stack/material/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		..()
 

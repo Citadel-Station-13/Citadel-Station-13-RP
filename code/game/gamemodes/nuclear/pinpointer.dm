@@ -14,6 +14,9 @@
 
 
 /obj/item/pinpointer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		workdisk()
@@ -62,6 +65,9 @@
 	var/obj/target = null
 
 /obj/item/pinpointer/advpinpointer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		if(mode == 0)
@@ -184,6 +190,9 @@
 	var/obj/machinery/computer/shuttle_control/multi/syndicate/home = null
 
 /obj/item/pinpointer/nukeop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		if(!mode)
@@ -270,6 +279,9 @@
 	var/obj/machinery/computer/shuttle_control/our_shuttle = null
 
 /obj/item/pinpointer/shuttle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = TRUE
 		find_shuttle()

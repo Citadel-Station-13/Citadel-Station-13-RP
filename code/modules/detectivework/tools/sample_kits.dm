@@ -61,6 +61,9 @@
 	item_state = "paper"
 
 /obj/item/sample/print/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(evidence && evidence.len)
 		return
 	if(!ishuman(user))

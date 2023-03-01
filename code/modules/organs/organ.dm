@@ -548,6 +548,9 @@
 	qdel(src)
 
 /obj/item/organ/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	// Convert it to an edible form, yum yum.
 	if(!(robotic >= ORGAN_ROBOT) && user.a_intent == INTENT_HELP && user.zone_sel.selecting == O_MOUTH)

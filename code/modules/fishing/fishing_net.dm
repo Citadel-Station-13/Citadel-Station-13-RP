@@ -59,6 +59,9 @@
 	return ..()
 
 /obj/item/material/fishing_net/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	for(var/mob/M in src)
 		M.forceMove(get_turf(src))
 		user.visible_message("<span class='notice'>[user] releases [M] from \the [src].</span>", "<span class='notice'>You release [M] from \the [src].</span>")

@@ -429,6 +429,9 @@
 	item_state = "card-id"
 
 /obj/item/cmo_disk_holder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(src, 'sound/items/poster_ripped.ogg', 50)
 	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
 	attacker.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)

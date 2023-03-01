@@ -63,6 +63,9 @@
 	germ_level = 0
 
 /obj/item/backup_implanter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!istype(user))
 		return
 

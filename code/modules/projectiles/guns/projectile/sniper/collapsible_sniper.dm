@@ -69,6 +69,9 @@
 	trigger_group = src
 
 /obj/item/sniper_rifle_part/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(part_count == 1)
 		to_chat(user, "<span class='warning'>You can't disassemble this further!</span>")
 		return

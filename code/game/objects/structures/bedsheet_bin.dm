@@ -20,6 +20,9 @@ LINEN BINS
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
 /obj/item/bedsheet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user.drop_item_to_ground(src))
 		return
 	if(layer == initial(layer))

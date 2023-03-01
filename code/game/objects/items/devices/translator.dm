@@ -89,6 +89,9 @@
 	ours.copy_knowledge(theirs)
 
 /obj/item/universal_translator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!listening) //Turning ON
 		var/list/allowed = list()
 		for(var/datum/language/L in user.languages)

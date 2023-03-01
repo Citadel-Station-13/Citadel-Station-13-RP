@@ -23,6 +23,9 @@
 	P.change_color(pipe_colors[mode])
 
 /obj/item/pipe_painter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = input("Which colour do you want to use?", "Pipe painter", mode) in modes
 
 /obj/item/pipe_painter/examine(mob/user)

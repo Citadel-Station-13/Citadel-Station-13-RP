@@ -219,6 +219,9 @@
 
 
 /obj/item/book/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(carved)
 		if(store)
 			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
@@ -374,6 +377,9 @@
 		user << browse(dat, "window=[name]")
 
 /obj/item/book/bundle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.show_content(user)
 	add_fingerprint(usr)
 	update_icon()
@@ -412,6 +418,9 @@
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
 /obj/item/barcodescanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode += 1
 	if(mode > 3)
 		mode = 0

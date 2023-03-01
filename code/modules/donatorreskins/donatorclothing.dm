@@ -226,6 +226,9 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/donator/dancer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	adjust_mask(user)
 
 /obj/item/clothing/mask/donator/dancer/verb/toggle()

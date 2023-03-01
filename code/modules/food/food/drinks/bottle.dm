@@ -107,6 +107,9 @@
 	..()
 
 /obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(rag)
 		remove_rag(user)
 	else

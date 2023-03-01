@@ -11,6 +11,9 @@
 	var/active = 1
 
 /obj/item/implanter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
 	update()

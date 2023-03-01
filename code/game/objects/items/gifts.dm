@@ -33,6 +33,9 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	. += SPAN_NOTICE("It contains \a [initial(contains_type.name)].")
 
 /obj/item/a_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	qdel(src)
 

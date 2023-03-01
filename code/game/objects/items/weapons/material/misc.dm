@@ -101,6 +101,9 @@
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
 /obj/item/material/snow/snowball/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		visible_message("[user] has smashed the snowball in their hand!", "You smash the snowball in your hand.")
 		var/atom/S = new /obj/item/stack/material/snow(user.loc)

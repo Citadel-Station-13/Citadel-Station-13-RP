@@ -57,6 +57,9 @@
 	name = "[colour] lipstick"
 
 /obj/item/lipstick/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You twist \the [src] [open ? "closed" : "open"].</span>")
 	open = !open
 	if(open)
@@ -100,6 +103,9 @@
 	icon_state = "purplecomb"
 
 /obj/item/haircomb/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/text = "person"
 	if(ishuman(user))
 		var/mob/living/carbon/human/U = user
@@ -125,6 +131,9 @@
 	var/list/ui_users = list()
 
 /obj/item/makeover/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(ishuman(user))
 		to_chat(user, "<span class='notice'>You flip open \the [src] and begin to adjust your appearance.</span>")
 		var/datum/nano_module/appearance_changer/AC = ui_users[user]

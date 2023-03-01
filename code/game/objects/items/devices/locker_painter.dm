@@ -118,6 +118,9 @@
 		return
 
 /obj/item/closet_painter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = input("Do you wish to change the regular closet colour or the secure closet colour?") as null|anything in list("Regular Closet Colour","Secure Closet Colour")
 	if(choice == "Regular Closet Colour")
 		choose_colour()

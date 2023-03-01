@@ -62,6 +62,9 @@
 
 
 /obj/item/reagent_containers/glass/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You put the lid on \the [src].</span>")

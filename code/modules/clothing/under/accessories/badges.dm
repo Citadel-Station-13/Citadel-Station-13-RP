@@ -29,6 +29,9 @@
 /obj/item/clothing/accessory/badge/proc/set_desc(var/mob/living/carbon/human/H)
 
 /obj/item/clothing/accessory/badge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!stored_name)
 		to_chat(user, "You polish your old badge fondly, shining up the surface.")
@@ -54,6 +57,9 @@
 	item_state = "goldbadge"
 
 /obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("[user] shows their sheriff badge. There's a new sheriff in town!",\
 		"You flash the sheriff badge to everyone around you!")
 
@@ -74,6 +80,9 @@
 	slot_flags = SLOT_MASK | SLOT_TIE | SLOT_BELT
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stored_name)
 		to_chat(user, "Waving around a holobadge before swiping an ID would be pretty pointless.")
 		return

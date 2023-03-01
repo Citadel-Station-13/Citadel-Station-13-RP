@@ -39,6 +39,9 @@
 		..()
 
 /obj/item/plastique/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(user.get_active_held_item() == src)
 		newtime = clamp(newtime, 10, 60000)

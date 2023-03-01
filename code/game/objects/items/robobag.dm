@@ -9,6 +9,9 @@
 	origin_tech = list(TECH_ENGINEERING = 3)
 
 /obj/item/bodybag/cryobag/robobag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/cryobag/robobag/R = new /obj/structure/closet/body_bag/cryobag/robobag(user.loc)
 	R.add_fingerprint(user)
 	if(syringe)

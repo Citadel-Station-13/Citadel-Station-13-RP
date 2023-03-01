@@ -304,6 +304,9 @@
 	return FALSE
 
 /obj/item/holo/esword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	if (active)
 		force = 30

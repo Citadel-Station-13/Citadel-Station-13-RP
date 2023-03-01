@@ -259,6 +259,9 @@
 				qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!seed)
 		return

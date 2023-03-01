@@ -130,6 +130,9 @@
 	var/tag_x
 
 /obj/item/smallDelivery/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (src.wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
 		wrapped.loc = user.loc
 		if(ishuman(user))
@@ -344,6 +347,9 @@
 	return data
 
 /obj/item/destTagger/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/destTagger/ui_act(action, params)

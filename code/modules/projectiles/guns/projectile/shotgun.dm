@@ -27,6 +27,9 @@
 	return null
 
 /obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(world.time >= recentpump + 10)
 		pump(user)
 		recentpump = world.time

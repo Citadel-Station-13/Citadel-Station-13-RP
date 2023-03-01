@@ -138,6 +138,9 @@
 		+ "</body></html>", "window=[name]")
 
 /obj/item/paper_bundle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.show_content(user)
 	add_fingerprint(usr)
 	update_icon()

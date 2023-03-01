@@ -131,6 +131,9 @@
 	return
 
 /obj/item/paper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "scrap")
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")

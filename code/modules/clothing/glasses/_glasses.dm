@@ -31,6 +31,9 @@ BLIND     // can't see anything
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/glasses/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(toggleable)
 		if(active)
 			active = 0
@@ -448,6 +451,9 @@ BLIND     // can't see anything
 	tint = TINT_HEAVY
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()
@@ -549,6 +555,9 @@ BLIND     // can't see anything
 	activation_sound = 'sound/effects/pop.ogg'
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(toggleable && !user.incapacitated())
 		on = !on
 		if(on)
@@ -667,6 +676,9 @@ BLIND     // can't see anything
 	species_restricted = list(SPECIES_TESHARI)
 
 /obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 /obj/item/clothing/glasses/aerogelgoggles/verb/toggle()

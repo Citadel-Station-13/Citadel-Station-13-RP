@@ -12,6 +12,9 @@
 	var/obj/item/held //Item inside locket.
 
 /obj/item/clothing/accessory/locket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!base_icon)
 		base_icon = icon_state
 

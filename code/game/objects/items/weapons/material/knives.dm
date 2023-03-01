@@ -56,6 +56,9 @@
 	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
 
 /obj/item/material/butterfly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	if(active)
 		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")

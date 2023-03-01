@@ -94,6 +94,9 @@
 
 
 /obj/item/cell/device/weapon/gunsword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))

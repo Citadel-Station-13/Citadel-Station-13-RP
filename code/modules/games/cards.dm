@@ -213,6 +213,9 @@
 	..()
 
 /obj/item/deck/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	shuffle()
 
 
@@ -285,6 +288,9 @@
 
 
 /obj/item/pack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class ='danger'>[user] rips open \the [src]!</span>")
 	var/obj/item/hand/H = new()
 
@@ -344,6 +350,9 @@
 		qdel(src)
 
 /obj/item/hand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	concealed = !concealed
 	update_icon()
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")

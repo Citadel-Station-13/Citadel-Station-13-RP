@@ -42,6 +42,9 @@
 		return
 
 /obj/item/megaphone/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!can_broadcast(user))
 		return
 

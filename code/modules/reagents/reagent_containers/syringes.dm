@@ -38,6 +38,9 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT

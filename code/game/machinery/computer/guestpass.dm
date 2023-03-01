@@ -40,6 +40,9 @@
 	return
 
 /obj/item/card/id/guest/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "guest_invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")

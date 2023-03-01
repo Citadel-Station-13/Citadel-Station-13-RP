@@ -81,6 +81,9 @@
 	adjust_mask(usr)
 
 /obj/item/clothing/mask/gas/half/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	adjust_mask(user)
 
 //Plague Dr suit can be found in clothing/suits/bio.dm
@@ -122,6 +125,9 @@
 	return
 
 /obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	feeding_port(user)
 	..()
 
