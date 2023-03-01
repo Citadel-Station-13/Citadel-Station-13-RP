@@ -100,7 +100,8 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_SHUTTLES        3
 #define INIT_ORDER_DEFAULT         0
 #define INIT_ORDER_AIR            -1
-#define INIT_ORDER_PLANETS        -2
+// init after everything spawns, adjust air / lighting as necessary
+#define INIT_ORDER_SECTORS        -2
 #define INIT_ORDER_PERSISTENCE    -3
 #define INIT_ORDER_ASSETS         -4
 #define INIT_ORDER_MISC_LATE      -5
@@ -119,7 +120,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
 #define INIT_ORDER_OPENSPACE      -99
-#define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
+#define INIT_ORDER_CHAT           -1000  //! Should be last to ensure chat remains smooth during init.
 
 
 /**
@@ -138,7 +139,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_AIR          35
 #define FIRE_PRIORITY_PROCESS      45
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PLANETS      75
+#define FIRE_PRIORITY_SECTORS      75
 
 //? Normal Subsystems - Above background, below ticker
 // Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!

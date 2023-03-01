@@ -1,3 +1,10 @@
+/**
+ * Sector module
+ *
+ * Handles sector registration and lookups
+ *
+ * Does **not** handle sector ticking!
+ */
 /datum/controller/subsystem/mapping
 	/// sector by id
 	var/list/sector_lookup = list()

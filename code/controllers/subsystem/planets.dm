@@ -1,7 +1,5 @@
 SUBSYSTEM_DEF(planets)
 	name = "Planets"
-	init_order = INIT_ORDER_PLANETS
-	priority = FIRE_PRIORITY_PLANETS
 	wait = 2 SECONDS
 	subsystem_flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
