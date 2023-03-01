@@ -125,7 +125,7 @@ var/global/list/image/splatter_cache=list()
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/l = user
+	var/mob/living/carbon/human/l = user
 	if(!istype(l))
 		return
 	if (amount && istype(l))
