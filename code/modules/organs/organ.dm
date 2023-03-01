@@ -200,7 +200,7 @@
 		return TRUE
 	status |= ORGAN_DEAD
 	damage = max_damage
-	on_death()
+	on_die()
 	if(owner)
 		handle_organ_mod_special(TRUE)
 		if(vital)
