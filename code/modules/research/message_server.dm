@@ -134,7 +134,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 			Console.set_light(2)
 
 
-/obj/machinery/message_server/attack_hand(user as mob)
+/obj/machinery/message_server/attack_hand(mob/user, list/params)
 //	to_chat(user, "<font color=#4F49AF>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</font>")
 	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
 	active = !active

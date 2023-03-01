@@ -197,7 +197,7 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/toggle_injecting()

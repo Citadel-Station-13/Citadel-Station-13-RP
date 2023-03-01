@@ -21,7 +21,7 @@
 	. = ..()
 	activate()
 
-/obj/machinery/holoplant/attack_hand(var/mob/living/user)
+/obj/machinery/holoplant/attack_hand(mob/user, list/params)
 	if(!istype(user) || interference)
 		return
 

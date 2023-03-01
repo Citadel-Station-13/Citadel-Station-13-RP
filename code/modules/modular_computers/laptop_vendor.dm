@@ -214,7 +214,7 @@
 		return 1
 	return 0
 
-/obj/machinery/lapvend/attack_hand(var/mob/user)
+/obj/machinery/lapvend/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)

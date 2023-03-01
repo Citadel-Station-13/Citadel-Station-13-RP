@@ -843,7 +843,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user)
+/obj/item/perfect_tele/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -1102,7 +1102,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \

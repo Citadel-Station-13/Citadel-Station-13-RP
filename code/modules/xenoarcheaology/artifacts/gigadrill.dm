@@ -9,7 +9,7 @@
 	density = 1
 	layer = ABOVE_JUNK_LAYER
 
-/obj/machinery/giga_drill/attack_hand(mob/user as mob)
+/obj/machinery/giga_drill/attack_hand(mob/user, list/params)
 	if(active)
 		active = 0
 		icon_state = "gigadrill"

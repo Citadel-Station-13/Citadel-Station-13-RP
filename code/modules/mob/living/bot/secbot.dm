@@ -162,7 +162,7 @@
 
 	return data
 
-/mob/living/bot/secbot/attack_hand(var/mob/user)
+/mob/living/bot/secbot/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui)

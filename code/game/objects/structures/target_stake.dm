@@ -29,7 +29,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/attack_hand(mob/user as mob)
+/obj/structure/target_stake/attack_hand(mob/user, list/params)
 	// taking pinned targets off!
 	if(pinned_target)
 		pinned_target.layer = OBJ_LAYER

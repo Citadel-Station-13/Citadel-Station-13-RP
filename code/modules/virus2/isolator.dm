@@ -41,7 +41,7 @@
 
 	src.attack_hand(user)
 
-/obj/machinery/disease2/isolator/attack_hand(mob/user)
+/obj/machinery/disease2/isolator/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)

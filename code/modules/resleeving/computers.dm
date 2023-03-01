@@ -132,7 +132,7 @@
 /obj/machinery/computer/transhuman/resleeving/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/transhuman/resleeving/attack_hand(mob/user as mob)
+/obj/machinery/computer/transhuman/resleeving/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	add_fingerprint(user)
 

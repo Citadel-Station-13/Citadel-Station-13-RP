@@ -72,7 +72,7 @@
 /obj/structure/inflatable/blob_act()
 	puncture()
 
-/obj/structure/inflatable/attack_hand(mob/user as mob)
+/obj/structure/inflatable/attack_hand(mob/user, list/params)
 		add_fingerprint(user)
 		return
 
@@ -175,7 +175,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/attack_hand(mob/user as mob)
+/obj/structure/inflatable/door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)

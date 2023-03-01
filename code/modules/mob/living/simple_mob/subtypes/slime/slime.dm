@@ -161,7 +161,7 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else

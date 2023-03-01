@@ -107,7 +107,7 @@
 				spawn(10) update_icon()
 
 
-/obj/structure/closet/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/closet/fireaxecabinet/attack_hand(mob/user, list/params)
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1

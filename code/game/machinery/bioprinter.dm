@@ -129,7 +129,7 @@
 
 	. = ..()
 
-/obj/machinery/organ_printer/attack_hand(mob/user)
+/obj/machinery/organ_printer/attack_hand(mob/user, list/params)
 
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

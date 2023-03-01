@@ -123,7 +123,7 @@
 	else
 		icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user)
+/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	interact(user)

@@ -18,7 +18,7 @@
 	if(broken)
 		. += "<span class = 'danger'>It looks damaged, the ringer is stuck firmly inside.</span>"
 
-/obj/item/deskbell/attack_hand(mob/user)
+/obj/item/deskbell/attack_hand(mob/user, list/params)
 
 	//This defines the radials and what call we're assiging to them.
 	var/list/options = list()

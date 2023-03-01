@@ -31,7 +31,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
 
-/obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/faxmachine/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)

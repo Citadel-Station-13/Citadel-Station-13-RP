@@ -435,7 +435,7 @@
 
 	return data
 
-/obj/machinery/power/shield_generator/attack_hand(mob/user)
+/obj/machinery/power/shield_generator/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(panel_open && Adjacent(user))

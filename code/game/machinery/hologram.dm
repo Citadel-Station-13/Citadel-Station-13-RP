@@ -51,7 +51,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 		attack_hand(user)
 	return
 
-/obj/machinery/hologram/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
+/obj/machinery/hologram/holopad/attack_hand(mob/user, list/params) //Carn: Hologram requests.
 	if(!istype(user))
 		return
 	if(tgui_alert(user, "Would you like to request an AI's presence?", "Request AI", list("Yes", "No")) == "Yes")

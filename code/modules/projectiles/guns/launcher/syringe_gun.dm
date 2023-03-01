@@ -108,7 +108,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/gun/launcher/syringe/attack_hand(mob/living/user as mob)
+/obj/item/gun/launcher/syringe/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")

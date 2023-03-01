@@ -296,7 +296,7 @@
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/communications/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))

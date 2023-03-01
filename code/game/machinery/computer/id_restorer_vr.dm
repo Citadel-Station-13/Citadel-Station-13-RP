@@ -27,7 +27,7 @@
 		return
 	..()
 
-/obj/machinery/computer/id_restorer/attack_hand(mob/user)
+/obj/machinery/computer/id_restorer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(machine_stat & (NOPOWER|BROKEN))

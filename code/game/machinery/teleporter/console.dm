@@ -84,7 +84,7 @@
 
 	return
 
-/obj/machinery/computer/teleporter/attack_hand(mob/user)
+/obj/machinery/computer/teleporter/attack_hand(mob/user, list/params)
 	if(..()) return
 
 	/* Ghosts can't use this one because it's a direct selection */

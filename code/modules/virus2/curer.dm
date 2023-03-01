@@ -36,7 +36,7 @@
 /obj/machinery/computer/curer/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/curer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/curer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	user.machine = src

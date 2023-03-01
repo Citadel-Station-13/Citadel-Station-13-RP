@@ -231,7 +231,7 @@ Thus, the two variables affect pump operation are set in New():
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/pump/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)

@@ -68,7 +68,7 @@
 	// floor_markings.layer = FLOOR_DECAL_LAYER
 	update_icon()
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user, list/params)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return

@@ -246,7 +246,7 @@
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/living/user as mob)
+/obj/item/attack_hand(mob/user, list/params)
 	attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/user)

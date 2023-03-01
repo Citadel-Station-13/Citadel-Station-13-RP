@@ -72,7 +72,7 @@
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
 
 
-/obj/item/assembly/mousetrap/attack_hand(var/mob/living/user)
+/obj/item/assembly/mousetrap/attack_hand(mob/user, list/params)
 	if(armed)
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"

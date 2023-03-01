@@ -77,7 +77,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/grenade/attack_hand(mob/user)
+/obj/item/gun/launcher/grenade/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else

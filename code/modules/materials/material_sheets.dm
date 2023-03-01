@@ -287,7 +287,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()

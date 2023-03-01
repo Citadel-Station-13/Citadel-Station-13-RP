@@ -37,7 +37,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/structure/cult/pylon/attack_hand(mob/M as mob)
+/obj/structure/cult/pylon/attack_hand(mob/user, list/params)
 	attackpylon(M, 5)
 
 /obj/structure/cult/pylon/attack_generic(var/mob/user, var/damage)

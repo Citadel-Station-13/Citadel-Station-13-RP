@@ -31,7 +31,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)

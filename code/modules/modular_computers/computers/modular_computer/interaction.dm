@@ -109,7 +109,7 @@
 /obj/item/modular_computer/attack_ai(mob/user)
 	return attack_self(user)
 
-/obj/item/modular_computer/attack_hand(mob/user)
+/obj/item/modular_computer/attack_hand(mob/user, list/params)
 	if(anchored)
 		return attack_self(user)
 	return ..()

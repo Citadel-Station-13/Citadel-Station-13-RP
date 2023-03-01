@@ -53,7 +53,7 @@
 			locks -= L
 	..()
 
-/obj/machinery/door/blast/puzzle/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/puzzle/attack_hand(mob/user, list/params)
 	if(check_locks())
 		force_toggle(1, user)
 	else

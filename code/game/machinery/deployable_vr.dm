@@ -56,7 +56,7 @@
 		topple()
 	..()
 
-/obj/structure/barricade/cutout/attack_hand(mob/user)
+/obj/structure/barricade/cutout/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 

@@ -116,7 +116,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/vehicle_old/train/attack_hand(mob/user as mob)
+/obj/vehicle_old/train/attack_hand(mob/user, list/params)
 	if(user.stat || user.restrained() || !Adjacent(user))
 		return 0
 

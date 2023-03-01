@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user as mob)
+/obj/item/melee/baton/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()

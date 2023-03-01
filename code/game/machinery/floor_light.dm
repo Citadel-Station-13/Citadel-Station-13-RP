@@ -60,7 +60,7 @@ var/list/floor_light_cache = list()
 		attack_hand(user)
 	return
 
-/obj/machinery/floor_light/attack_hand(mob/user)
+/obj/machinery/floor_light/attack_hand(mob/user, list/params)
 
 	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(machine_stat & BROKEN))

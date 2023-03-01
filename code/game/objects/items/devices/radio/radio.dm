@@ -808,7 +808,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/bluespace_radio/ui_action_click()
 	toggle_handset()
 
-/obj/item/bluespace_radio/attack_hand(mob/user)
+/obj/item/bluespace_radio/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_handset()
 	else

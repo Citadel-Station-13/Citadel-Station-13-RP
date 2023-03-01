@@ -52,7 +52,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/attack_hand()
+/obj/item/reagent_containers/organic/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 

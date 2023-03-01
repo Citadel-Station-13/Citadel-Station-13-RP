@@ -23,7 +23,7 @@
 	injector.computer = null
 	..()
 
-/obj/machinery/computer/xenobio2/attack_hand(mob/user)
+/obj/machinery/computer/xenobio2/attack_hand(mob/user, list/params)
 	if(..())
 		return 1
 	nano_ui_interact(user)

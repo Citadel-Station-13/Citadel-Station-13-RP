@@ -1012,7 +1012,7 @@
 		qdel(src)
 	return
 
-/obj/mecha/attack_hand(mob/user as mob)
+/obj/mecha/attack_hand(mob/user, list/params)
 	if(user == occupant)
 		show_radial_occupant(user)
 		return

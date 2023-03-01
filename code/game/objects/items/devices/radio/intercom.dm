@@ -124,7 +124,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user as mob)
+/obj/item/radio/intercom/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)

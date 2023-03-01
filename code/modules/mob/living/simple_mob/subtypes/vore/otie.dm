@@ -219,7 +219,7 @@
 
 //Pet 4 friendly
 
-/mob/living/simple_mob/otie/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
 
 	switch(M.a_intent)
 		if(INTENT_HELP)

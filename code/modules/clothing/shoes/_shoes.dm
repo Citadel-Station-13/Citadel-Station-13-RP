@@ -67,7 +67,7 @@
 
 	update_icon()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
+/obj/item/clothing/shoes/attack_hand(mob/user, list/params)
 	if(can_hold_knife == 1 && holding && src.loc == M)
 		draw_knife()
 		return

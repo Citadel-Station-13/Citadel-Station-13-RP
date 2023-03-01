@@ -51,7 +51,7 @@
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Sally/attack_hand()
+/mob/living/simple_mob/horror/Sally/attack_hand(mob/user, list/params)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

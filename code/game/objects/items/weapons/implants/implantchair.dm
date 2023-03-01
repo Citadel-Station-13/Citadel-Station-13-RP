@@ -24,7 +24,7 @@
 	..()
 	add_implants()
 
-/obj/machinery/implantchair/attack_hand(mob/user as mob)
+/obj/machinery/implantchair/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	var/health_text = ""
 	if(src.occupant)

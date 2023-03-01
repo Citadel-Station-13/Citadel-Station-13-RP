@@ -218,7 +218,7 @@
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/effect/alien/hybrid_resin/attack_hand()
+/obj/effect/alien/hybrid_resin/attack_hand(mob/user, list/params)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")

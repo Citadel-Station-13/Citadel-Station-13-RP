@@ -13,7 +13,7 @@
 	var/label_x
 	var/tag_x
 
-/obj/structure/bigDelivery/attack_hand(mob/user as mob)
+/obj/structure/bigDelivery/attack_hand(mob/user, list/params)
 	unwrap()
 
 /obj/structure/bigDelivery/proc/unwrap()

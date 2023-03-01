@@ -45,7 +45,7 @@
 			if(prob(25))
 				density = 0
 
-/obj/machinery/optable/attack_hand(mob/user)
+/obj/machinery/optable/attack_hand(mob/user, list/params)
 	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE

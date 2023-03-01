@@ -182,7 +182,7 @@ var/list/table_icon_cache = list()
 
 	return ..()
 
-/obj/structure/table/attack_hand(mob/user as mob)
+/obj/structure/table/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))

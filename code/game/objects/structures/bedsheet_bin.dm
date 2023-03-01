@@ -216,7 +216,7 @@ LINEN BINS
 		hidden = I
 		to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
 
-/obj/structure/bedsheetbin/attack_hand(mob/user as mob)
+/obj/structure/bedsheetbin/attack_hand(mob/user, list/params)
 	if(amount >= 1)
 		amount--
 

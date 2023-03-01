@@ -166,7 +166,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/attack_hand()
+/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 

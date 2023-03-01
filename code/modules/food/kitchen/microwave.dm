@@ -160,7 +160,7 @@
 	if(istype(user, /mob/living/silicon/robot) && Adjacent(user))
 		attack_hand(user)
 
-/obj/machinery/microwave/attack_hand(mob/user as mob)
+/obj/machinery/microwave/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

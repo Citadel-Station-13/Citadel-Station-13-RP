@@ -105,7 +105,7 @@
 	update_icon()
 
 
-/obj/machinery/gateway/centerstation/attack_hand(mob/user as mob)
+/obj/machinery/gateway/centerstation/attack_hand(mob/user, list/params)
 	if(!ready)
 		detect()
 		return
@@ -215,7 +215,7 @@
 	update_icon()
 
 
-/obj/machinery/gateway/centeraway/attack_hand(mob/user as mob)
+/obj/machinery/gateway/centeraway/attack_hand(mob/user, list/params)
 	if(!ready)
 		detect()
 		return

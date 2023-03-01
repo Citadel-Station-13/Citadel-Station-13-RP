@@ -27,7 +27,7 @@ var/prison_shuttle_timeleft = 0
 /obj/machinery/computer/prison_shuttle/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prison_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/prison_shuttle/attack_hand(mob/user, list/params)
 	if(!src.allowed(user) && (!hacked))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return

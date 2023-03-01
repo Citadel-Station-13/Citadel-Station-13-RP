@@ -35,7 +35,7 @@
 		else
 			deactivate()
 
-/obj/machinery/suspension_gen/attack_hand(var/mob/user)
+/obj/machinery/suspension_gen/attack_hand(mob/user, list/params)
 	if(panel_open)
 		if(cell)
 			to_chat(user, SPAN_NOTICE("You remove [cell]."))

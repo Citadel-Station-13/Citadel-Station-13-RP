@@ -20,7 +20,7 @@
 	collection_mode = 1
 	var/linked
 
-/obj/item/storage/laundry_basket/attack_hand(mob/living/user as mob)
+/obj/item/storage/laundry_basket/attack_hand(mob/user, list/params)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.get_organ("r_hand")

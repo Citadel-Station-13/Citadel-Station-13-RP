@@ -96,7 +96,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()

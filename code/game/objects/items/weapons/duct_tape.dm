@@ -202,7 +202,7 @@
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
-/obj/item/duct_tape_piece/attack_hand(mob/living/L)
+/obj/item/duct_tape_piece/attack_hand(mob/user, list/params)
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 

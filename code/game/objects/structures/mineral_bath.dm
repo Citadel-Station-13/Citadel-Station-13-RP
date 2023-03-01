@@ -66,7 +66,7 @@
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
-/obj/structure/adherent_bath/attack_hand(var/mob/user)
+/obj/structure/adherent_bath/attack_hand(mob/user, list/params)
 	eject_occupant()
 
 /obj/structure/adherent_bath/proc/eject_occupant()

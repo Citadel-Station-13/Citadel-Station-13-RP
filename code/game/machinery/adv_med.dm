@@ -244,7 +244,7 @@
 	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(user as mob)
+/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 

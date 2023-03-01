@@ -50,7 +50,7 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand()
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 

@@ -109,7 +109,7 @@
 	..()
 
 // You can remove the power cell from the magazine by hand, but it's way slower than using a screwdriver
-/obj/item/ammo_magazine/smart/attack_hand(mob/user)
+/obj/item/ammo_magazine/smart/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(attached_cell)
 			to_chat(user, "You struggle to remove \the [attached_cell] from \the [src].")

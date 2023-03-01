@@ -50,7 +50,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand()
+/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
 	if(engaged)
 		disengage()
 	else

@@ -37,7 +37,7 @@
 /obj/machinery/computer/fission_monitor/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/fission_monitor/attack_hand(mob/user)
+/obj/machinery/computer/fission_monitor/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

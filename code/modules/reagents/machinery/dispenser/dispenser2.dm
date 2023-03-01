@@ -185,7 +185,7 @@
 /obj/machinery/chemical_dispenser/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/chemical_dispenser/attack_hand(mob/user)
+/obj/machinery/chemical_dispenser/attack_hand(mob/user, list/params)
 	if(machine_stat & BROKEN)
 		return
 	ui_interact(user)

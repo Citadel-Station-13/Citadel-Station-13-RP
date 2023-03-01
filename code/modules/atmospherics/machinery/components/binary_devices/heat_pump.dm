@@ -117,7 +117,7 @@
 			"You hear ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	src.add_fingerprint(usr)

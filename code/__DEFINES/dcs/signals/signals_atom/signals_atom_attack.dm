@@ -37,7 +37,7 @@
 	////#define COMPONENT_SKIP_ATTACK (1<<1)
 /// From base of atom/attack_ghost(): (mob/observer/dead/ghost)
 #define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
-/// From base of atom/attack_hand(): (mob/user, list/modifiers)
+/// From base of atom/attack_hand(mob/user, list/params): (mob/user, list/modifiers)
 ////#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
 /// From base of atom/attack_paw(): (mob/user)
 ////#define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"

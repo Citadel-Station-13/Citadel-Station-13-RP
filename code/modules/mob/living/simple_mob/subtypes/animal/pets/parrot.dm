@@ -72,7 +72,7 @@
 	return ..()
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/living/L)
+/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/user, list/params)
 	if(L.a_intent == INTENT_GRAB && my_headset)
 		remove_headset(L)
 	else

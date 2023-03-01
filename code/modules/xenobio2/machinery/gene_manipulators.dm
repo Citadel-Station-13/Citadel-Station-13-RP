@@ -59,7 +59,7 @@
 /obj/machinery/xenobio/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/xenobio/attack_hand(mob/user as mob)
+/obj/machinery/xenobio/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)

@@ -147,7 +147,7 @@
 		pill_bottle = null
 	return ..()
 
-/obj/machinery/chem_master/attack_hand(mob/user)
+/obj/machinery/chem_master/attack_hand(mob/user, list/params)
 	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)

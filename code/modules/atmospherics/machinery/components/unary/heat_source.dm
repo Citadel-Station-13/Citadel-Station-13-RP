@@ -77,7 +77,7 @@
 /obj/machinery/atmospherics/component/unary/heater/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/heater/ui_interact(mob/user, datum/tgui/ui)

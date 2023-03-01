@@ -17,7 +17,7 @@
 		..()
 	return
 
-/obj/item/mecha_parts/micro/chassis/attack_hand()
+/obj/item/mecha_parts/micro/chassis/attack_hand(mob/user, list/params)
 	return
 
 //Gopher

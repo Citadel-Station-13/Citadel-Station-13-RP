@@ -3,7 +3,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/atom/movable/attack_hand(mob/living/user)
+/atom/movable/attack_hand(mob/user, list/params)
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

@@ -34,7 +34,7 @@
 	density = 0
 	color = DEAD_PLANT_COLOUR
 
-/obj/effect/dead_plant/attack_hand()
+/obj/effect/dead_plant/attack_hand(mob/user, list/params)
 	qdel(src)
 
 /obj/effect/dead_plant/attackby()

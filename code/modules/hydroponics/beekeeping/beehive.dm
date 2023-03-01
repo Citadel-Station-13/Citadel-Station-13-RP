@@ -122,7 +122,7 @@
 			qdel(src)
 		return
 
-/obj/machinery/beehive/attack_hand(var/mob/user)
+/obj/machinery/beehive/attack_hand(mob/user, list/params)
 	if(!closed)
 		if(honeycombs < 100)
 			to_chat(user, "<span class='notice'>There are no filled honeycombs.</span>")

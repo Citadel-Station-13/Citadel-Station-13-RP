@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	add_hiddenprint(user)
 	ui_interact(user)
 
-/obj/machinery/power/smes/attack_hand(mob/user)
+/obj/machinery/power/smes/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	ui_interact(user)
 

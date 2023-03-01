@@ -145,7 +145,7 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/living/hander)
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, list/params)
 	if(hander.a_intent == INTENT_HELP) //if lime intent
 		get_scooped(hander) //get scooped
 	else

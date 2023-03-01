@@ -30,7 +30,7 @@
 		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
 	. = ..()
 
-/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
+/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	interact(user)

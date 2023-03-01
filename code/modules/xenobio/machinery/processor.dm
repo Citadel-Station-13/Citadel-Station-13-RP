@@ -24,7 +24,7 @@
 	. = ..()
 	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
 
-/obj/machinery/processor/attack_hand(mob/living/user)
+/obj/machinery/processor/attack_hand(mob/user, list/params)
 	if(processing)
 		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
 		return

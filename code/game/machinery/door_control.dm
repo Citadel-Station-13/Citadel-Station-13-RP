@@ -34,7 +34,7 @@
 		playsound(src.loc, "sparks", 100, TRUE)
 		return 1
 
-/obj/machinery/button/remote/attack_hand(mob/user as mob)
+/obj/machinery/button/remote/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

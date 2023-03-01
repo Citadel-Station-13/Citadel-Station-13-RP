@@ -21,7 +21,7 @@
 	return
 
 
-/obj/item/implantpad/attack_hand(mob/living/user as mob)
+/obj/item/implantpad/attack_hand(mob/user, list/params)
 	if ((src.case && user.is_holding(src)))
 		user.put_in_active_hand(case)
 

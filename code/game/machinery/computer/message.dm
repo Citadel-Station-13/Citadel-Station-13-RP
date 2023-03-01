@@ -78,7 +78,7 @@
 			linkedServer = message_servers[1]
 	return ..()
 
-/obj/machinery/computer/message_monitor/attack_hand(mob/living/user)
+/obj/machinery/computer/message_monitor/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(!istype(user))

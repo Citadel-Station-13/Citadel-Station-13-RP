@@ -213,7 +213,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user, list/params)
 	attack_self(user)
 
 //Bed

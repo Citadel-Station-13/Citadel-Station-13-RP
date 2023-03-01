@@ -32,7 +32,7 @@
 		else
 			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
 
-/obj/machinery/robotic_fabricator/attack_hand(user as mob)
+/obj/machinery/robotic_fabricator/attack_hand(mob/user, list/params)
 	var/dat
 	if(..())
 		return

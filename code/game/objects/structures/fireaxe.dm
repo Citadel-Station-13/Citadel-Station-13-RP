@@ -92,7 +92,7 @@
 			toggle_close_open()
 
 
-/obj/structure/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/fireaxecabinet/attack_hand(mob/user, list/params)
 	//var/hasaxe = 0	//Fuck this. Fuck everything about this. Who wrote this. Why.
 	//if(fireaxe)
 	//	hasaxe = 1

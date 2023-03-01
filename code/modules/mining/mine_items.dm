@@ -360,7 +360,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(user as mob)
+/obj/item/stack/flag/attack_hand(mob/user, list/params)
 	if(upright)
 		upright = 0
 		icon_state = base_state

@@ -25,7 +25,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/living/M as mob)
+/mob/living/carbon/human/attack_hand(mob/user, list/params)
 	var/datum/gender/TT = GLOB.gender_datums[M.get_visible_gender()]
 	var/mob/living/carbon/human/H = M
 	if(istype(H))

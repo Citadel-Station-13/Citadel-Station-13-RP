@@ -102,7 +102,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/atmospherics/component/quaternary/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

@@ -66,7 +66,7 @@
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user)
+/obj/item/defib_kit/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_paddles()
 	else

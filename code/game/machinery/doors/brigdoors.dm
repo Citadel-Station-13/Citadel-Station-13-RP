@@ -158,7 +158,7 @@
 /obj/machinery/door_timer/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/door_timer/attack_hand(mob/user)
+/obj/machinery/door_timer/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

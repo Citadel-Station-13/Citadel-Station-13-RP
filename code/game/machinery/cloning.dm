@@ -61,7 +61,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user)
+/obj/machinery/clonepod/attack_hand(mob/user, list/params)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))

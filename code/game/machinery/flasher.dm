@@ -127,7 +127,7 @@
 	name = "flasher button"
 	desc = "A remote control switch for a mounted flasher."
 
-/obj/machinery/button/flasher/attack_hand(mob/user)
+/obj/machinery/button/flasher/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

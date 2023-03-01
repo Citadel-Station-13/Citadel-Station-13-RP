@@ -82,7 +82,7 @@
 		..()
 		CheckHardness()
 
-/obj/structure/statue/attack_hand(mob/living/user)
+/obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")

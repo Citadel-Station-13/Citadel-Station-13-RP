@@ -150,7 +150,7 @@
 			chambered = AC
 		update_icon()
 
-/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump = 1)
 	else

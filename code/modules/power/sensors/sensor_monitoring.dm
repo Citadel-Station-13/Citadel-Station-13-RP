@@ -41,7 +41,7 @@
 	..()
 
 // On user click opens the UI of this computer.
-/obj/machinery/computer/power_monitor/attack_hand(mob/user)
+/obj/machinery/computer/power_monitor/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 
 	if(machine_stat & (BROKEN|NOPOWER))

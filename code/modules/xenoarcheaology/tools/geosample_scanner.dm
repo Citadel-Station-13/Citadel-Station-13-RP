@@ -115,7 +115,7 @@
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant
 
-/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user)
+/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/radiocarbon_spectrometer/ui_interact(mob/user, datum/tgui/ui)

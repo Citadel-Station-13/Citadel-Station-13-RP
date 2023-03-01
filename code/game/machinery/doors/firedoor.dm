@@ -130,7 +130,7 @@
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user as mob)
+/obj/machinery/door/firedoor/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.

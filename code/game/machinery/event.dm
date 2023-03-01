@@ -65,7 +65,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 		else
 	return
 
-/obj/machinery/magma_pump/attack_hand(mob/user)
+/obj/machinery/magma_pump/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/magma_pump/interact(mob/user)
@@ -211,7 +211,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 		else
 	return
 
-/obj/machinery/magma_reservoir/attack_hand(mob/user)
+/obj/machinery/magma_reservoir/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/magma_reservoir/interact(mob/user)

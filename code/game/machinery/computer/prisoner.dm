@@ -16,7 +16,7 @@
 /obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prisoner/attack_hand(mob/user)
+/obj/machinery/computer/prisoner/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)

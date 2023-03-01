@@ -79,7 +79,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/quantumpad/attack_hand(mob/user)
+/obj/machinery/power/quantumpad/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

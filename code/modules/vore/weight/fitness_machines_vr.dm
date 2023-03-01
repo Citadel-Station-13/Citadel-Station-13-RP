@@ -11,7 +11,7 @@
 	var/cooldown = 10
 	var/weightloss_power = 1
 
-/obj/machinery/fitness/attack_hand(var/mob/living/user)
+/obj/machinery/fitness/attack_hand(mob/user, list/params)
 	if(user.nutrition < 70)
 		to_chat(user, "<span class='notice'>You need more energy to workout with the [src]!</span>")
 
@@ -62,7 +62,7 @@
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		return
 
-/obj/machinery/fitness/heavy/attack_hand(var/mob/living/user)
+/obj/machinery/fitness/heavy/attack_hand(mob/user, list/params)
 	if(!anchored)
 		to_chat(user, "<span class='notice'>For safety reasons, you are required to have this equipment wrenched down before using it!</span>")
 		return
@@ -92,7 +92,7 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/scale/attack_hand(var/mob/living/user)
+/obj/machinery/scale/attack_hand(mob/user, list/params)
 	if(user.loc != loc)
 		to_chat(user, "<span class='notice'>You need to be standing on top of the scale for it to work!</span>")
 		return

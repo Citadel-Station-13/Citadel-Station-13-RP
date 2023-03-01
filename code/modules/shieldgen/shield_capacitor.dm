@@ -67,7 +67,7 @@
 	else
 		..()
 
-/obj/machinery/shield_capacitor/attack_hand(mob/user)
+/obj/machinery/shield_capacitor/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

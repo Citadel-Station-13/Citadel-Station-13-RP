@@ -85,7 +85,7 @@
 	else if(default_part_replacement(user, W))
 		return
 
-/obj/machinery/cell_charger/attack_hand(mob/user)
+/obj/machinery/cell_charger/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 
 	if(charging)

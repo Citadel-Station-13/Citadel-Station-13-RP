@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
 	return ..()
 
-/obj/machinery/bioscan_antenna/attack_hand(mob/user)
+/obj/machinery/bioscan_antenna/attack_hand(mob/user, list/params)
 	// todo: better xenomorphs
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

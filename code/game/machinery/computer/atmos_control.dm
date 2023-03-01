@@ -30,7 +30,7 @@
 /obj/machinery/computer/atmoscontrol/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/computer/atmoscontrol/attack_hand(mob/user)
+/obj/machinery/computer/atmoscontrol/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

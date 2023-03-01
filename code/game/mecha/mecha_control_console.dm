@@ -13,7 +13,7 @@
 /obj/machinery/computer/mecha/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/computer/mecha/attack_hand(mob/user)
+/obj/machinery/computer/mecha/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)

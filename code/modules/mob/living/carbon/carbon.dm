@@ -44,7 +44,7 @@
 				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
+/mob/living/carbon/attack_hand(mob/user, list/params)
 	if(!istype(M, /mob/living/carbon)) return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M

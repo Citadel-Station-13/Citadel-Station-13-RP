@@ -121,7 +121,7 @@ var/global/list/image/splatter_cache=list()
 	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 	amount = 0
 
-/obj/effect/debris/cleanable/blood/attack_hand(mob/living/carbon/human/user)
+/obj/effect/debris/cleanable/blood/attack_hand(mob/user, list/params)
 	..()
 	if (amount && istype(user))
 		if (user.gloves)

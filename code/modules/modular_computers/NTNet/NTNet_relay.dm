@@ -70,7 +70,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/ntnet_relay/attack_hand(var/mob/living/user)
+/obj/machinery/ntnet_relay/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/ntnet_relay/Topic(href, href_list)

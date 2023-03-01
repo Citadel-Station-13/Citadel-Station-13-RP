@@ -1,5 +1,5 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/living/L)
+/mob/living/simple_mob/attack_hand(mob/user, list/params)
 	..()
 
 	switch(L.a_intent)

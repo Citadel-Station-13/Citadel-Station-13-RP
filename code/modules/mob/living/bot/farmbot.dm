@@ -69,7 +69,7 @@
 
 	return data
 
-/mob/living/bot/farmbot/attack_hand(mob/user)
+/mob/living/bot/farmbot/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -404,5 +404,5 @@
 
 		created_name = t
 
-/obj/item/farmbot_arm_assembly/attack_hand(mob/user as mob)
+/obj/item/farmbot_arm_assembly/attack_hand(mob/user, list/params)
 	return //it's a converted watertank, no you cannot pick it up and put it in your backpack

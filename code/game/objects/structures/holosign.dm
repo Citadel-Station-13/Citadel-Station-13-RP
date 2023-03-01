@@ -24,7 +24,7 @@
 		projector = null
 	return ..()
 
-/obj/structure/holosign/attack_hand(mob/living/user)
+/obj/structure/holosign/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

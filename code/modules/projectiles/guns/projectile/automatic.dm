@@ -170,7 +170,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -262,7 +262,7 @@
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else

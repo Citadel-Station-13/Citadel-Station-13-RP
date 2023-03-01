@@ -448,7 +448,7 @@
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, user)
 
-/obj/item/storage/attack_hand(mob/user as mob)
+/obj/item/storage/attack_hand(mob/user, list/params)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.

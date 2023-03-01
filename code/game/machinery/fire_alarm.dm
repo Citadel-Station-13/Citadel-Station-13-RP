@@ -128,7 +128,7 @@ FIRE ALARM
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user)
+/obj/machinery/firealarm/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
@@ -247,7 +247,7 @@ Just a object used in constructing fire alarms
 	idle_power_usage = 2
 	active_power_usage = 6
 
-/obj/machinery/partyalarm/attack_hand(mob/user)
+/obj/machinery/partyalarm/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		return
 

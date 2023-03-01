@@ -64,7 +64,7 @@
 /obj/effect/energy_field/take_damage(var/damage)
 	adjust_strength(-damage / 20)
 
-/obj/effect/energy_field/attack_hand(var/mob/living/user)
+/obj/effect/energy_field/attack_hand(mob/user, list/params)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()
 

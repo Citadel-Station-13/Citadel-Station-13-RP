@@ -166,7 +166,7 @@
 	else
 		return ..()
 
-/obj/machinery/iv_drip/attack_hand(mob/user)
+/obj/machinery/iv_drip/attack_hand(mob/user, list/params)
 	if(reagent_container)
 		reagent_container.loc = get_turf(src)
 		reagent_container = null

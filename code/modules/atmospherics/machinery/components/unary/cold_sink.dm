@@ -59,7 +59,7 @@
 /obj/machinery/atmospherics/component/unary/freezer/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/freezer/ui_interact(mob/user, datum/tgui/ui)

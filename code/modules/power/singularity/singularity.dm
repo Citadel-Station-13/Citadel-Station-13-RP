@@ -46,7 +46,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/singularity/attack_hand(mob/user as mob)
+/obj/singularity/attack_hand(mob/user, list/params)
 	consume(user)
 	return 1
 

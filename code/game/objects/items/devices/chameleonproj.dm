@@ -110,7 +110,7 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/attack_hand()
+/obj/effect/dummy/chameleon/attack_hand(mob/user, list/params)
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

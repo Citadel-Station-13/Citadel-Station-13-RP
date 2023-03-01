@@ -17,7 +17,7 @@
 /obj/machinery/computer/sm_monitor/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/computer/sm_monitor/attack_hand(mob/user)
+/obj/machinery/computer/sm_monitor/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

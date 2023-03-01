@@ -111,7 +111,7 @@
 // Proc: attack_hand()
 // Parameters: None
 // Description: Opens the UI as usual, and if cover is removed opens the wiring panel.
-/obj/machinery/power/smes/buildable/attack_hand()
+/obj/machinery/power/smes/buildable/attack_hand(mob/user, list/params)
 	..()
 	if(open_hatch)
 		wires.Interact(usr)
