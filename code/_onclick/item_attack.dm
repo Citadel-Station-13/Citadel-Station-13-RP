@@ -29,21 +29,15 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	I.standard_melee_attack(src, user, clickchain_flags, params) // damage_multiplier on attackby is being removed, don't.
+/atom/proc/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
-/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/mob/living/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
-/*
-		if(I.can_do_surgery(src,user))
-			return NONE
-		else
-			return NONE
-*/
 		return NONE
 	if(attempt_vr(src,"vore_attackby",args))
 		return
-	return I.standard_melee_attack(src, user, clickchain_flags, params2list(params), damage_multiplier, user.zone_sel?.selecting, user.a_intent)
+	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.

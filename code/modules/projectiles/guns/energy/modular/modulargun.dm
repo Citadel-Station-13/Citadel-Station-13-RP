@@ -189,7 +189,7 @@
 		new_mode.apply_to(src)
 		return FALSE
 
-/obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled

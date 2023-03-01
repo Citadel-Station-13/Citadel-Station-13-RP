@@ -30,7 +30,7 @@
 	var/stupid_fucking_shim = list2params(params)
 
 	// todo: refactor
-	if(resolve_attackby(target, user, stupid_fucking_shim))
+	if(resolve_attackby(target, user, params))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	// todo: signal for afterattack here & anywhere that calls afterattack

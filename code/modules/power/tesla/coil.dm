@@ -45,7 +45,7 @@
 	else
 		icon_state = "coil[anchored]"
 
-/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 
 	//if(default_deconstruction_screwdriver(user, "coil_open[anchored]", "coil[anchored]", W))
@@ -115,7 +115,7 @@
 	else
 		icon_state = "grounding_rod[anchored]"
 
-/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user)
 	//if(default_deconstruction_screwdriver(user, "grounding_rod_open[anchored]", "grounding_rod[anchored]", W))
 	if(default_deconstruction_screwdriver(user, W))
 		return
