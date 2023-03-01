@@ -348,7 +348,7 @@
 		//How much damage can we actually cause?
 		var/can_inflict = max_damage * config_legacy.organ_health_multiplier - (brute_dam + burn_dam)
 		var/spillover = 0
-		if(can_inflict)
+		if(can_inflict >= 0)
 			if (brute > 0)
 				//Inflict all burte damage we can
 				if(can_cut)
@@ -641,11 +641,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		//** Syncing germ levels with external wounds
 		handle_germ_sync()
 
+		// removal temporary, pending health rework
 		//** Handle antibiotics and curing infections
-		handle_antibiotics()
+		// handle_antibiotics()
 
-		//** Handle the effects of infections
-		handle_germ_effects()
+		// //** Handle the effects of infections
+		// handle_germ_effects()
 
 /obj/item/organ/external/proc/handle_germ_sync()
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
@@ -663,7 +664,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/handle_germ_effects()
 	. = ..() //May be null or an infection level, if null then no specific processing needed here
-	if(!.) return
+	if(!.)
+		return
 
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 

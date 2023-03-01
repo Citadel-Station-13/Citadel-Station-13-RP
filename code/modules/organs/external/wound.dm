@@ -11,8 +11,7 @@
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
 	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
-		LAZYADD(wounds, I)
+		create_specific_wound(/datum/wound/internal_bleeding, min(damage - 15, 15))
 		owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off

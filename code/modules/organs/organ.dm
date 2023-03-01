@@ -320,11 +320,12 @@
 		germ_level = 0
 		return
 
-	if(owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Handle antibiotics and curing infections
-		handle_antibiotics()
-		handle_rejection()
-		handle_germ_effects()
+	// removal temporary, pending health rework
+	// if(owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
+	// 	//** Handle antibiotics and curing infections
+	// 	handle_antibiotics()
+	// 	handle_rejection()
+	// 	handle_germ_effects()
 
 	if(can_decay())
 		handle_decay(dt)
