@@ -151,6 +151,9 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	var/gender = "f"
 	if(owner && owner.gender == MALE)
 		gender = "m"
+	if(owner && owner.gender == FEMALE)
+		gender = "f"
+
 
 	if(!force_icon_key)
 		icon_cache_key = "[icon_name]_[species ? species.get_bodytype_legacy() : SPECIES_HUMAN]"
@@ -166,17 +169,15 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 			if(!gendered_icon)
 				gender = null
-			else
-				if(dna.GetUIState(DNA_UI_GENDER))
-					gender = "f"
-				else
-					gender = "m"
 
 			if(skeletal)
 				mob_icon = new /icon('icons/mob/species/human/skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
 				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
+				if (gendered_icon)
+					TO_WORLD("[owner.name]'s [src.name] generated Icon with sbase [src.s_base], gender [gender](owner has gender [owner.gender]),")
+					TO_WORLD("icobase [species.get_icobase(owner, (status & ORGAN_MUTATED))], state: [icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			apply_colouration(mob_icon)
 
