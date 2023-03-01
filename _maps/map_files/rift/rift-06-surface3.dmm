@@ -3652,8 +3652,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/landmark/observer_spawn,
-/obj/machinery/hologram/holopad,
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "agP" = (
@@ -4987,13 +4986,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
-"ajF" = (
-/obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "ajG" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -6744,15 +6736,6 @@
 "ane" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/freezer)
-"anf" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "ang" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17450,7 +17433,6 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aJD" = (
@@ -25368,15 +25350,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"bCJ" = (
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "bFp" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -25606,20 +25579,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fsc" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 4
-	},
+/obj/structure/bed/chair/sofa/black/right,
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
-"ftB" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/flame/candle{
-	pixel_y = 17
-	},
-/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "fxA" = (
@@ -25668,6 +25631,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
+"fQQ" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/hologram/holopad,
+/obj/landmark/observer_spawn,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "fVL" = (
 /obj/effect/debris/cleanable/cobweb2,
 /obj/random/fishing_junk,
@@ -25696,11 +25665,9 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "gHz" = (
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 4
-	},
+/obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/plain{
-	dir = 10
+	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -25961,6 +25928,15 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
+"naw" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "nfF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -37711,7 +37687,7 @@ aZm
 aym
 fsc
 gHz
-aZm
+naw
 aHQ
 aNg
 aUj
@@ -37903,9 +37879,9 @@ aUm
 aZm
 aZm
 aym
-ajF
-ftB
-aZm
+agc
+aGB
+aZf
 aHQ
 aNg
 abH
@@ -38095,10 +38071,10 @@ aaV
 kIf
 aEl
 idS
-bIN
+fQQ
 aMz
-bCJ
-anf
+aZm
+aZm
 aZm
 aHQ
 aNg
