@@ -9,7 +9,7 @@
 		var/obj/item/cell/C = build_path
 		desc = "Allows the construction of power cells that can hold [initial(C.maxcharge)] units of energy."
 
-/datum/design/item/powercell/Fabricate()
+/datum/design/item/powercell/print(atom/where)
 	var/obj/item/cell/C = ..()
 	C.charge = 0 //shouldn't produce power out of thin air.
 	return C

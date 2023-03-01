@@ -197,7 +197,7 @@
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.Fabricate(drop_location(), src)
+		var/obj/new_item = D.legacy_print(drop_location(), src)
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
 				for(var/i in new_item.matter)

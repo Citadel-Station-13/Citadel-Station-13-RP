@@ -363,7 +363,7 @@
   * * D - Design datum to attempt to dispense.
   */
 /obj/machinery/mecha_part_fabricator/proc/dispense_built_part(datum/design/D)
-	var/obj/item/I = D.Fabricate(src, src)
+	var/obj/item/I = D.legacy_print(src, src)
 	// I.material_flags |= MATERIAL_NO_EFFECTS //Find a better way to do this.
 	// I.set_custom_materials(build_materials)
 

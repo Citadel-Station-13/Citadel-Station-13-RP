@@ -56,6 +56,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
+	BITFIELD(HTML_USE_INITIAL_ICON),
 ))
 
 //! /atom/movable/var/movable_flags

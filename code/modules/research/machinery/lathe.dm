@@ -1,2 +1,0 @@
-/obj/machinery/lathe
-

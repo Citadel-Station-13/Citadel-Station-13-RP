@@ -89,16 +89,32 @@ other types of metals and chemistry for reagents).
 		desc = "Allows for the construction of \a [item_name]."
 	return
 
-//Returns a new instance of the item for this design
-//This is to allow additional initialization to be performed, including possibly additional contructor arguments.
-/datum/design/proc/Fabricate(var/newloc, var/fabricator)
-	return new build_path(newloc)
+/**
+ * Return a new instance of the item for the design
+ * This is called even before the fabricator can touch the item.
+ */
+/datum/design/proc/print(atom/where)
+	return new build_path(where)
+
+/**
+ * called when a lathe prints a design, instead of print()
+ */
+/datum/design/proc/lathe_print(atom/where, obj/machinery/lathe/fabricator)
+	return print(where)
+
+//? legacy below
+
+/**
+ * for legacy lathes
+ */
+/datum/design/proc/legacy_print(atom/where, fabricator)
+	return print(where)
 
 /datum/design/item
 	build_type = PROTOLATHE
 
 //Make sure items don't get free power
-/datum/design/item/Fabricate()
+/datum/design/item/print(atom/where)
 	var/obj/item/I = ..()
 	var/obj/item/cell/C = I.get_cell()
 	if(C)

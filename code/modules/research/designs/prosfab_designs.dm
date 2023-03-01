@@ -7,10 +7,10 @@
 	category = list("Prosthetics")
 
 // Make new external organs and make 'em robotish
-/datum/design/item/prosfab/pros/Fabricate(var/newloc, var/fabricator)
+/datum/design/item/prosfab/pros/legacy_print(atom/where, fabricator)
 	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
 		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
-		var/obj/item/organ/O = new build_path(newloc)
+		var/obj/item/organ/O = new build_path(where)
 		if(prosfab.manufacturer)
 			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
 
@@ -36,7 +36,7 @@
 	return ..()
 
 // Deep Magic for the torso since it needs to be a new mob
-/datum/design/item/prosfab/pros/torso/Fabricate(var/newloc, var/fabricator)
+/datum/design/item/prosfab/pros/torso/legacy_print(atom/where, fabricator)
 	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
 		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/newspecies = SPECIES_HUMAN
@@ -52,7 +52,7 @@
 			else
 				newspecies = prosfab.species
 
-		var/mob/living/carbon/human/H = new(newloc,newspecies)
+		var/mob/living/carbon/human/H = new(where,newspecies)
 		H.set_stat(DEAD)
 		H.gender = gender
 		for(var/obj/item/organ/external/EO in H.organs)
