@@ -510,22 +510,24 @@
 
 	return TRUE
 
+/obj/item/organ/external/rejuvenate()
+	..()
+	brute_dam = 0
+	burn_dam = 0
+	wounds = null
+	wound_tally = 0
 
 /**
  * This function completely restores a damaged organ to perfect condition.
  */
-/obj/item/organ/external/rejuvenate(ignore_prosthetic_prefs)
+/obj/item/organ/external/rejuvenate_legacy(ignore_prosthetic_prefs)
+	rejuvenate()
 	damage_state = "00"
 	status = 0
-	brute_dam = 0
-	burn_dam = 0
-	germ_level = 0
-	wounds = null
-	wound_tally = 0
 
 	// handle internal organs
 	for(var/obj/item/organ/current_organ in internal_organs)
-		current_organ.rejuvenate(ignore_prosthetic_prefs)
+		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
