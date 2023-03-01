@@ -6,10 +6,15 @@
  * ranged_attack_chain
  * attackby
  * pre_attack
+ * standard_melee_attack and related
+ * attack_mob and related
+ * attack_obj and related
  * afterattack
  * MouseDrop
  * OnMouseDrop
  * MouseDroppedOn
+ *
+ * These are *not* used for attack_hand, attack_robot, attack_xeno, and similar specific attack procs.
  */
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted

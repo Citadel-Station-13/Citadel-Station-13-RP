@@ -162,6 +162,9 @@
 
 // Clicked on by empty hand.
 /mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else

@@ -222,6 +222,12 @@
 	update_appearance()
 
 /mob/living/bot/medibot/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/attacker = user
+	if(!istype(attacker))
+		return
 	if(attacker.a_intent == INTENT_DISARM && !is_tipped)
 		attacker.visible_message(
 			SPAN_DANGER("[attacker] begins tipping over [src]."),

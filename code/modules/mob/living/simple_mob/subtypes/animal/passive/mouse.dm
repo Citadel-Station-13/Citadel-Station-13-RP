@@ -146,6 +146,9 @@
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
 /mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, list/params)
+	var/mob/living/hander = user
+	if(!istype(hander))
+		return
 	if(hander.a_intent == INTENT_HELP) //if lime intent
 		get_scooped(hander) //get scooped
 	else
@@ -157,5 +160,5 @@
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
-			user.setClickCooldown(U.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			user.setClickCooldown(user.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")

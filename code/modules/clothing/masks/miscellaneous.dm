@@ -22,7 +22,7 @@
 
 // Clumsy folks can't take the mask off themselves.
 /obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
-	if(user.wear_mask == src && !user.IsAdvancedToolUser())
+	if(user.item_by_slot(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
 /obj/item/clothing/mask/surgical

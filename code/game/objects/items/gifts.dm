@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		user.put_in_hands(I)
 		I.add_fingerprint(user)
 	else
-		user.visible_message(SPAN_DANGER("Oh no! The present that [M] opened had nothing inside it!"))
+		user.visible_message(SPAN_DANGER("Oh no! The present that [user] opened had nothing inside it!"))
 
 /obj/item/a_gift/proc/get_gift_type()
 	var/gift_type_list = list(

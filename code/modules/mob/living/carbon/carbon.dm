@@ -45,7 +45,9 @@
 	..()
 
 /mob/living/carbon/attack_hand(mob/user, list/params)
-	if(!istype(M, /mob/living/carbon)) return ..()
+	var/mob/living/carbon/M = user
+	if(!istype(M))
+		return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]

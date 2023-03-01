@@ -221,6 +221,9 @@
 
 /mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
 
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	switch(M.a_intent)
 		if(INTENT_HELP)
 			if(health > 0)

@@ -129,16 +129,17 @@
 	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/machinery/camera/attack_hand(mob/user, list/params)
-	if(!istype(user))
+	var/mob/living/carbon/human/L = user
+	if(!istype(L))
 		return
 
-	if(user.species.can_shred(user))
+	if(L.species.can_shred(L))
 		set_status(0)
-		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		L.do_attack_animation(src)
+		L.setClickCooldown(L.get_attack_speed())
+		visible_message("<span class='warning'>\The [L] slashes at [src]!</span>")
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
-		add_hiddenprint(user)
+		add_hiddenprint(L)
 		destroy()
 
 /obj/machinery/camera/attack_generic(mob/user as mob)

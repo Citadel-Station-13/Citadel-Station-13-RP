@@ -156,6 +156,9 @@
 	mouse_opacity = 0
 
 /obj/machinery/shower/attack_hand(mob/user, list/params)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	on = !on
 	update_icon()
 	if(on)

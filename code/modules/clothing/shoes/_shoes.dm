@@ -68,7 +68,7 @@
 	update_icon()
 
 /obj/item/clothing/shoes/attack_hand(mob/user, list/params)
-	if(can_hold_knife == 1 && holding && src.loc == M)
+	if(can_hold_knife == 1 && holding && src.loc == user)
 		draw_knife()
 		return
 	..()

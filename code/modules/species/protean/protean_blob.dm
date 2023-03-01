@@ -261,6 +261,9 @@
 		return ..()
 
 /mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
 		src.get_scooped(L)
 	else
