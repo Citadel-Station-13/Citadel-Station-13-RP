@@ -75,7 +75,7 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/energy/attack_self(mob/living/user as mob)
+/obj/item/melee/energy/attack_self(mob/user)
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
 			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
@@ -514,7 +514,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/energy/blade/attack_self(mob/user as mob)
+/obj/item/melee/energy/blade/attack_self(mob/user)
 	qdel(src)
 
 /obj/item/melee/energy/blade/dropped(mob/user, atom_flags, atom/newLoc)
@@ -636,7 +636,7 @@
 /obj/item/melee/energy/hfmachete/update_icon()
 	icon_state = "[base_state][active]"
 
-/obj/item/melee/energy/hfmachete/attack_self(mob/living/user)
+/obj/item/melee/energy/hfmachete/attack_self(mob/user)
 	toggleActive(user)
 	add_fingerprint(user)
 

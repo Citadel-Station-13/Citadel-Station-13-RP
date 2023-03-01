@@ -101,7 +101,7 @@
 	force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self()
+/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
 	return
 
 //load and unload directly into chambered

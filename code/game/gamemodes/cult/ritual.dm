@@ -423,7 +423,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	w_class = ITEMSIZE_SMALL
 	var/cultistsonly = 1
 
-/obj/item/book/tome/imbued/attack_self(mob/user as mob)
+/obj/item/book/tome/imbued/attack_self(mob/user)
 	if(src.cultistsonly && !iscultist(usr))
 		return
 	if(!cultwords["travel"])

@@ -11,7 +11,7 @@
 	var/open
 	var/obj/item/held //Item inside locket.
 
-/obj/item/clothing/accessory/locket/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/locket/attack_self(mob/user)
 	if(!base_icon)
 		base_icon = icon_state
 

@@ -41,7 +41,7 @@
 			spamcheck = 0
 		return
 
-/obj/item/megaphone/attack_self(mob/living/user as mob)
+/obj/item/megaphone/attack_self(mob/user)
 	if(!can_broadcast(user))
 		return
 

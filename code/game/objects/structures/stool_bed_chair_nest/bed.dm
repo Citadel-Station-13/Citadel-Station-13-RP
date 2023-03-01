@@ -314,7 +314,7 @@
 	. = ..()
 	held = new /obj/item/roller(src)
 
-/obj/item/roller_holder/attack_self(mob/user as mob)
+/obj/item/roller_holder/attack_self(mob/user)
 
 	if(!held)
 		to_chat(user, "<span class='notice'>The rack is empty.</span>")

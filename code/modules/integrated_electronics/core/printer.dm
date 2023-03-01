@@ -170,7 +170,7 @@
 		dirty_items = TRUE
 	return ..()
 
-/obj/item/integrated_circuit_printer/attack_self(var/mob/user)
+/obj/item/integrated_circuit_printer/attack_self(mob/user)
 	ui_interact(user)
 
 /obj/item/integrated_circuit_printer/ui_state(mob/user, datum/tgui_module/module)

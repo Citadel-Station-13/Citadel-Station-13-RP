@@ -27,7 +27,7 @@
 		'sound/items/toysqueak3.ogg'
 		)
 
-/obj/item/toy/tennis/rainbow/attack_self(mob/user as mob)
+/obj/item/toy/tennis/rainbow/attack_self(mob/user)
 	playsound(src.loc, pick(squeak_sounds), 50, 1,)
 
 /obj/item/toy/tennis/red

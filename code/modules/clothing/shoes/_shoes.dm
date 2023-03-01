@@ -104,7 +104,7 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
+/obj/item/clothing/shoes/attack_self(mob/user) //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")

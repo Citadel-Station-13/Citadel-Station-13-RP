@@ -71,7 +71,7 @@
 		var/turf/real_target = prob(failchance)? pick(trange(failrange, user)) : ToTurf
 		AM.locationTransitForceMove(real_target, allow_pulled = FALSE, allow_grabbed = GRAB_AGGRESSIVE)
 
-/obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
+/obj/item/bluespace_harpoon/attack_self(mob/user)
 	return chande_fire_mode(user)
 
 /obj/item/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)

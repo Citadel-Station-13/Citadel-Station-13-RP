@@ -51,7 +51,7 @@
 		label = ""
 		name = initial(name)
 
-/obj/item/reagent_containers/chem_disp_cartridge/attack_self()
+/obj/item/reagent_containers/chem_disp_cartridge/attack_self(mob/user)
 	..()
 	if (is_open_container())
 		to_chat(usr, "<span class = 'notice'>You put the cap on \the [src].</span>")

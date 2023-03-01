@@ -46,7 +46,7 @@
 	setDir(SOUTH)
 	pixel_y = 0
 
-/obj/item/retail_scanner/attack_self(mob/user as mob)
+/obj/item/retail_scanner/attack_self(mob/user)
 	user.set_machine(src)
 	interact(user)
 

@@ -173,7 +173,7 @@
 	w_class = 2
 	attack_verb = list("drilled")
 
-/obj/item/pickaxe/excavationdrill/attack_self(mob/user as mob)
+/obj/item/pickaxe/excavationdrill/attack_self(mob/user)
 	var/depth = input("Put the desired depth (1-30 centimeters).", "Set Depth", 30) as num
 	if(depth>30 || depth<1)
 		to_chat(user, "<span class='notice'>Invalid depth.</span>")

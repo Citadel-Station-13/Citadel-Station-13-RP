@@ -151,7 +151,7 @@
 	else
 		..()
 
-/obj/item/holder/mouse/attack_self(var/mob/U)
+/obj/item/holder/mouse/attack_self(mob/user)
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && U.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
 			U.setClickCooldown(U.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this

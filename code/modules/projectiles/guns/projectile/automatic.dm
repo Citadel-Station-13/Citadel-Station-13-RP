@@ -253,7 +253,7 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else

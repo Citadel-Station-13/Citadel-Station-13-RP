@@ -447,7 +447,7 @@ BLIND     // can't see anything
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
 
-/obj/item/clothing/glasses/welding/attack_self()
+/obj/item/clothing/glasses/welding/attack_self(mob/user)
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()
@@ -666,7 +666,7 @@ BLIND     // can't see anything
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
-/obj/item/clothing/glasses/aerogelgoggles/attack_self()
+/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user)
 	toggle()
 
 /obj/item/clothing/glasses/aerogelgoggles/verb/toggle()

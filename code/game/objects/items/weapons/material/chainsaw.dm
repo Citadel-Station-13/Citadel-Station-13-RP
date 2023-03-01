@@ -58,7 +58,7 @@
 	on = 0
 	update_icon()
 
-/obj/item/chainsaw/attack_self(mob/user as mob)
+/obj/item/chainsaw/attack_self(mob/user)
 	if(!on)
 		turnOn(user)
 	else

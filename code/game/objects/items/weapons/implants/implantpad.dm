@@ -48,7 +48,7 @@
 	return
 
 
-/obj/item/implantpad/attack_self(mob/user as mob)
+/obj/item/implantpad/attack_self(mob/user)
 	user.set_machine(src)
 	var/dat = "<B>Implant Mini-Computer:</B><HR>"
 	if (src.case)

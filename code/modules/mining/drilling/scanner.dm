@@ -71,7 +71,7 @@
 	if(length(metals))
 		for(var/ore_type in metals)
 			var/result = "no sign"
-	
+
 			if(exact_amount)
 				result = "- [metals[ore_type]] of [ore_type]"
 			else

@@ -41,7 +41,7 @@
 		update_icon()
 		return
 
-/obj/item/glass_jar/attack_self(var/mob/user)
+/obj/item/glass_jar/attack_self(mob/user)
 	switch(contains)
 		if(1)
 			for(var/obj/O in src)

@@ -303,7 +303,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(mob/living/user as mob)
+/obj/item/holo/esword/attack_self(mob/user)
 	active = !active
 	if (active)
 		force = 30

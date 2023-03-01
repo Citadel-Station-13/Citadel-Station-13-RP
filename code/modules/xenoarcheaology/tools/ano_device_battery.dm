@@ -48,7 +48,7 @@
 	else
 		return ..()
 
-/obj/item/anodevice/attack_self(var/mob/user as mob)
+/obj/item/anodevice/attack_self(mob/user)
 	return ui_interact(user)
 
 /obj/item/anodevice/ui_state(mob/user, datum/tgui_module/module)

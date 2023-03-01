@@ -80,7 +80,7 @@ var/const/tk_maxrange = 15
 	if(slot != SLOT_ID_HANDS)
 		qdel(src)
 
-/obj/item/tk_grab/attack_self(mob/user as mob)
+/obj/item/tk_grab/attack_self(mob/user)
 	if(focus)
 		focus.attack_self_tk(user)
 

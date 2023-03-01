@@ -31,7 +31,7 @@
 	icon_state = "paladinhelm"
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]1"
 		to_chat(user, "You raise the helmet's visor.")
@@ -170,7 +170,7 @@
 	icon_state = "paladinhelm"
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user as mob)
+/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]1"
 		to_chat(user, "You raise the helmet's visor.")

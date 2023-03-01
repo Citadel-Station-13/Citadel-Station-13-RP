@@ -22,7 +22,7 @@
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
 //hit yourself with it
-/obj/item/holowarrant/attack_self(mob/living/user as mob)
+/obj/item/holowarrant/attack_self(mob/user)
 	active = null
 	var/list/warrants = list()
 	if(!isnull(data_core.general))

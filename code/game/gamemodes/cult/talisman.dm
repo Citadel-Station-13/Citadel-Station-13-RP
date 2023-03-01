@@ -5,7 +5,7 @@
 	var/uses = 0
 	info = "<center><img src='talisman.png'></center><br/><br/>"
 
-/obj/item/paper/talisman/attack_self(mob/living/user as mob)
+/obj/item/paper/talisman/attack_self(mob/user)
 	if(iscultist(user))
 		var/delete = 1
 		// who the hell thought this was a good idea :(

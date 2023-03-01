@@ -12,7 +12,7 @@
 	force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
-/obj/item/scrying/attack_self(mob/user as mob)
+/obj/item/scrying/attack_self(mob/user)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(user, "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>")
 		return
@@ -375,7 +375,7 @@
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
 	user.update_mobility()
 
-/obj/item/warpwhistle/attack_self(mob/living/carbon/user)
+/obj/item/warpwhistle/attack_self(mob/user)
 	if(!istype(user) || on_cooldown)
 		return
 	var/turf/T = get_turf(user)

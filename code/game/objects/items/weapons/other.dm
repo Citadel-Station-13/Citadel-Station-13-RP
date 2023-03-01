@@ -203,7 +203,7 @@
 	force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user as mob)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
 	on = !on
 	if(on)
 		user.visible_message(

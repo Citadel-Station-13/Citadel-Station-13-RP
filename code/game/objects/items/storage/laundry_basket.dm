@@ -35,7 +35,7 @@
 		return
 	return ..()
 
-/obj/item/storage/laundry_basket/attack_self(mob/user as mob)
+/obj/item/storage/laundry_basket/attack_self(mob/user)
 	var/turf/T = get_turf(user)
 	to_chat(user, "<span class='notice'>You dump the [src]'s contents onto \the [T].</span>")
 	return ..()

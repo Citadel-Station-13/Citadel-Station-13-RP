@@ -13,7 +13,7 @@
 	var/active = 0
 
 
-/obj/item/pinpointer/attack_self()
+/obj/item/pinpointer/attack_self(mob/user)
 	if(!active)
 		active = 1
 		workdisk()
@@ -61,7 +61,7 @@
 	var/turf/location = null
 	var/obj/target = null
 
-/obj/item/pinpointer/advpinpointer/attack_self()
+/obj/item/pinpointer/advpinpointer/attack_self(mob/user)
 	if(!active)
 		active = 1
 		if(mode == 0)
@@ -183,7 +183,7 @@
 	var/mode = 0	//Mode 0 locates disk, mode 1 locates the shuttle
 	var/obj/machinery/computer/shuttle_control/multi/syndicate/home = null
 
-/obj/item/pinpointer/nukeop/attack_self(mob/user as mob)
+/obj/item/pinpointer/nukeop/attack_self(mob/user)
 	if(!active)
 		active = 1
 		if(!mode)
@@ -269,7 +269,7 @@
 	var/shuttle_comp_id = null
 	var/obj/machinery/computer/shuttle_control/our_shuttle = null
 
-/obj/item/pinpointer/shuttle/attack_self(mob/user as mob)
+/obj/item/pinpointer/shuttle/attack_self(mob/user)
 	if(!active)
 		active = TRUE
 		find_shuttle()

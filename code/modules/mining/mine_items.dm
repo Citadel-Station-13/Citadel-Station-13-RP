@@ -193,7 +193,7 @@
 	active = 0
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
 	if(!active)
 		turnOn(user)
 	else
@@ -366,7 +366,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user as mob)
+/obj/item/stack/flag/attack_self(mob/user)
 
 	var/obj/item/stack/flag/F = locate() in get_turf(src)
 

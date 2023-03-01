@@ -27,7 +27,7 @@
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user)
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	check_owner()

@@ -97,7 +97,7 @@
 	return
 
 
-/obj/item/assembly/attack_self(mob/user as mob)
+/obj/item/assembly/attack_self(mob/user)
 	if(!user)
 		return FALSE
 	user.set_machine(src)

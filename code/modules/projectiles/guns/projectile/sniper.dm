@@ -29,7 +29,7 @@
 	else
 		icon_state = "heavysniper"
 
-/obj/item/gun/ballistic/heavysniper/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/heavysniper/attack_self(mob/user)
 	playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 	bolt_open = !bolt_open
 	if(bolt_open)

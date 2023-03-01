@@ -27,7 +27,7 @@
 	else
 		return ..()
 
-/obj/item/picket_sign/attack_self(mob/living/carbon/human/user)
+/obj/item/picket_sign/attack_self(mob/user)
 	if( last_wave + 20 < world.time )
 		last_wave = world.time
 		if(label)

@@ -32,7 +32,7 @@
 	return TRUE
 
 
-/obj/item/assembly/igniter/attack_self(var/mob/user)
+/obj/item/assembly/igniter/attack_self(mob/user)
 	activate()
 	add_fingerprint(user)
 
