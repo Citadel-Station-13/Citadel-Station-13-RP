@@ -23,10 +23,10 @@ avoid code duplication. This includes items that may sometimes act as a standard
 */
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
-/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
+/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1, clickchain_flags)
 	if(!(atom_flags & NOPRINT))
 		add_fingerprint(user)
-	return A.attackby(src, user, params, NONE, attack_modifier)
+	return A.attackby(src, user, params, clickchain_flags, attack_modifier)
 
 // No comment
 /atom/proc/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
