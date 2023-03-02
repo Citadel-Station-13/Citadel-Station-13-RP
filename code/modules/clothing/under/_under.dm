@@ -37,6 +37,10 @@
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
 	var/worn_rolled_sleeves = UNIFORM_ROLL_NULLED
+	/// rolldown state override - applies to new rendering, will replace worn_state as well as icon_state.
+	var/worn_rolldown_state
+	/// rollsleeve state override - applies to new rendering, will replace worn_state as well as icon_state.
+	var/worn_rollsleeve_state
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this
 	// todo: awful shit.
@@ -103,13 +107,38 @@
 	. = ..()
 	if(.)
 		return
-	#warn impl
+	.["normal"] = worn_state || initial(icon_state)
+	if(worn_rolled_down != UNIFORM_ROLL_NULLED)
+		.["rolled down"] = (worn_has_rolldown == UNIFORM_AUTODETECT_ROLL)? (initial(icon_state)) : (worn_rolldown_state || "[worn_state || initial(icon_state)]_down")
+	if(worn_rolled_sleeves != UNIFORM_ROLL_NULLED)
+		.["rolled sleeves"] = (worn_has_rolldown == UNIFORM_AUTODETECT_ROLL)? (initial(icon_state)) : (worn_rollsleeve_state || "[worn_state || initial(icon_state)]_sleeves")
 
-/obj/item/clothing/under/set_style(style)
+/obj/item/clothing/under/set_style(style, mob/user)
 	. = ..()
 	if(.)
 		return
-	#warn impl
+	switch(style)
+		if("normal")
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			body_parts_covered = initial(body_parts_covered)
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
+			return TRUE
+		if("rolled down")
+			worn_rolled_down = UNIFORM_ROLL_TRUE
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			body_parts_covered = (initial(body_parts_covered) & ~(UPPER_TORSO | ARMS | HANDS))
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src] down."))
+			return TRUE
+		if("rolled sleeves")
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+			body_parts_covered = (initial(body_parts_covered) & ~(ARMS | HANDS))
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
+			return TRUE
 
 //! Inventory
 /obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
@@ -188,64 +217,6 @@
 /obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
 	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
-
-/obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Jumpsuit"
-	set category = "Object"
-	set src in usr
-
-	var/mob/user = usr
-	// todo: mobility flags
-	if(!istype(user, /mob/living)) return
-	if(user.stat) return
-
-	update_rolldown(TRUE)
-
-	switch(worn_rolled_down)
-		if(UNIFORM_ROLL_NULLED)
-			to_chat(user, SPAN_NOTICE("[src] cannot be rolled down."))
-			return
-		if(UNIFORM_ROLL_FALSE)
-			worn_rolled_down = UNIFORM_ROLL_TRUE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(UPPER_TORSO | ARMS | HANDS)
-			to_chat(user, SPAN_NOTICE("You roll [src] down."))
-		if(UNIFORM_ROLL_TRUE)
-			worn_rolled_down = UNIFORM_ROLL_FALSE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered = initial(body_parts_covered)
-			to_chat(user, SPAN_NOTICE("You roll [src] up."))
-
-	update_worn_icon()
-
-/obj/item/clothing/under/verb/rollsleeves()
-	set name = "Roll Up Sleeves"
-	set category = "Object"
-	set src in usr
-
-	var/mob/user = usr
-	// todo: mobility flags
-	if(!istype(user, /mob/living)) return
-	if(user.stat) return
-
-	update_rollsleeve(TRUE)
-
-	switch(worn_rolled_sleeves)
-		if(UNIFORM_ROLL_NULLED)
-			to_chat(user, SPAN_NOTICE("[src] cannot have its sleeves rolled."))
-			return
-		if(UNIFORM_ROLL_FALSE)
-			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered &= ~(ARMS | HANDS)
-			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
-		if(UNIFORM_ROLL_TRUE)
-			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_parts_covered = initial(body_parts_covered)
-			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves back down."))
-
-	update_worn_icon()
 
 //! Examine
 /obj/item/clothing/under/examine(mob/user)

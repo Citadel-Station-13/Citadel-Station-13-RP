@@ -162,12 +162,12 @@
  * returns available styles as name = state
  */
 /obj/item/clothing/proc/available_styles(mob/user)
-	return list()
+	. = list()
 
 /**
  * sets us to a specific style
  */
-/obj/item/clothing/proc/set_style(style)
+/obj/item/clothing/proc/set_style(style, mob/user)
 	return FALSE
 
 /**
