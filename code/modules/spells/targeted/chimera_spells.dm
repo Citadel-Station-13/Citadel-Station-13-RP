@@ -58,7 +58,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		toggle_sight(user)
-		addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(toggle_sight),H), duration, TIMER_UNIQUE)
 		..()
 
 /spell/targeted/chimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
@@ -217,12 +217,12 @@
 		//These are only messages to give the player and everyone around them an idea of which stage they're at
 		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
 		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"),4 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat),H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"),4 MINUTES)
 
 		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat),H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 MINUTES)
 
-		addtimer(CALLBACK(src, .proc/add_pop,H,), 10 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(add_pop),H,), 10 MINUTES)
 
 /spell/targeted/chimera/hatch/proc/add_pop(mob/user = usr)
 	if(ishuman(user))
@@ -303,7 +303,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		toggle_breath(user)
-		addtimer(CALLBACK(src, .proc/toggle_breath,H), duration, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(toggle_breath),H), duration, TIMER_UNIQUE)
 	..()
 
 /spell/targeted/chimera/no_breathe/proc/toggle_breath(mob/living/carbon/human/H)

@@ -293,7 +293,7 @@
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src
-	RegisterSignal(held_blade, COMSIG_ITEM_DROPPED, .proc/magnetic_catch)
+	RegisterSignal(held_blade, COMSIG_ITEM_DROPPED, PROC_REF(magnetic_catch))
 
 /obj/item/rig_module/armblade/proc/magnetic_catch(datum/source)
 	var/obj/item/I = source

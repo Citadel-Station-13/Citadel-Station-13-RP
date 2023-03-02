@@ -198,7 +198,7 @@
 	if(delay > play_skip_threshold)
 		audible_message("[SPAN_BOLD("[src]")]: Skipping [round(delay * 0.1)] seconds of silence.")
 		delay = 3 SECONDS
-	play_timerid = addtimer(CALLBACK(src, .proc/_play_next), delay, TIMER_STOPPABLE)
+	play_timerid = addtimer(CALLBACK(src, PROC_REF(_play_next)), delay, TIMER_STOPPABLE)
 
 /obj/item/tape_recorder/verb/playback_memory()
 	set name = "Playback Tape"

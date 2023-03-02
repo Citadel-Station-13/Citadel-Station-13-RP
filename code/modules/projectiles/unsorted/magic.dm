@@ -381,7 +381,7 @@
 
 /obj/structure/closet/decay/proc/decay()
 	animate(src, alpha = 0, time = 30)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 30)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), 30)
 
 /obj/structure/closet/decay/open(mob/living/user)
 	. = ..()
@@ -389,12 +389,12 @@
 		if(icon_state == magic_icon) //check if we used the magic icon at all before giving it the lesser magic icon
 			unmagify()
 		else
-			addtimer(CALLBACK(src, .proc/decay), 15 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(decay)), 15 SECONDS)
 
 /obj/structure/closet/decay/proc/unmagify()
 	icon_state = weakened_icon
 	update_icon()
-	addtimer(CALLBACK(src, .proc/decay), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(decay)), 15 SECONDS)
 
 /obj/item/projectile/magic/aoe
 	name = "Area Bolt"
@@ -482,7 +482,7 @@
 			return
 	var/turf/T = get_turf(target)
 	for(var/i=0, i<50, i+=10)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
 
 /obj/item/projectile/magic/nuclear
 	name = "\proper blazing manliness"

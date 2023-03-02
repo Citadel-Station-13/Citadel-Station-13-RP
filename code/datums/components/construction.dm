@@ -15,7 +15,7 @@
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY,.proc/action)
 	update_parent(index)
 

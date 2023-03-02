@@ -16,8 +16,8 @@
 			stack_trace("ARCHAEOLOGY WARNING: [parent] contained a null probability value in [i].")
 	callback = _callback
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY,.proc/Dig)
-	RegisterSignal(parent, COMSIG_ATOM_EX_ACT, .proc/BombDig)
-	RegisterSignal(parent, COMSIG_ATOM_SING_PULL, .proc/SingDig)
+	RegisterSignal(parent, COMSIG_ATOM_EX_ACT, PROC_REF(BombDig))
+	RegisterSignal(parent, COMSIG_ATOM_SING_PULL, PROC_REF(SingDig))
 
 /datum/component/archaeology/InheritComponent(datum/component/archaeology/A, i_am_original)
 	var/list/other_archdrops = A.archdrops

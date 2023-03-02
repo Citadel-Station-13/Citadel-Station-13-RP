@@ -23,7 +23,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	health = config_legacy.default_brain_health
-	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
+	addtimer(CALLBACK(src, PROC_REF(clear_brainmob_hud)), 15)
 
 /obj/item/organ/internal/brain/Destroy()
 	QDEL_NULL(brainmob)
@@ -177,7 +177,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	. = ..()
 	create_reagents(50)
 	set_owner_vars()
-	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 10 SECONDS)
 
 /obj/item/organ/internal/brain/slime/proc/set_owner_vars()
 	if(!ishuman(owner))
@@ -307,7 +307,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/brain/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))
