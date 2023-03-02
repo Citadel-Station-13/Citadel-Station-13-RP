@@ -13,6 +13,8 @@
 	var/flags_inv = NONE
 	/// flags for the bodyparts this item covers when worn.
 	var/body_parts_covered = NONE
+	/// flags for interaction - see [code/__DEFINES/_flags/interaction_flags.dm]
+	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -698,6 +700,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/rped_rating()
 	return get_rating()
 
+// todo: WHAT?
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)

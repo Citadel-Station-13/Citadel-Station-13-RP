@@ -14,8 +14,8 @@
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 
-	access = list(access_heads, access_keycard_auth)
-	minimal_access = list(access_heads, access_keycard_auth)
+	additional_access = list(ACCESS_COMMAND_BRIDGE, ACCESS_COMMAND_KEYAUTH)
+	minimal_access = list(ACCESS_COMMAND_BRIDGE, ACCESS_COMMAND_KEYAUTH)
 
 	outfit_type = /datum/outfit/job/station/command_secretary
 	desc = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \

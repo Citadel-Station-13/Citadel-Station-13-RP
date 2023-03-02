@@ -78,20 +78,22 @@ export const BioscanConsole = (props, context) => {
           {data.scan? (
             data.scan.levels.map((level) => (
               <Collapsible title={level.id} key={level.id} color="transparent">
-                <LabeledList>
-                  <LabeledList.Item label="Lifesigns - Total">
-                    {level.all}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Lifesigns - Complex">
-                    {level.complex}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Lifesigns - Complex / Alive">
-                    {level.complex_alive}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Lifesigns - Complex / Dead">
-                    {level.complex_dead}
-                  </LabeledList.Item>
-                </LabeledList>
+                <Section>
+                  <LabeledList>
+                    <LabeledList.Item label="Lifesigns - Total">
+                      {level.all}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Lifesigns - Complex">
+                      {level.complex}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Lifesigns - Complex / Alive">
+                      {level.complex_alive}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Lifesigns - Complex / Dead">
+                      {level.complex_dead}
+                    </LabeledList.Item>
+                  </LabeledList>
+                </Section>
               </Collapsible>
             ))
           ) : (

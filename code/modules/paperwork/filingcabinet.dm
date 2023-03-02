@@ -83,7 +83,7 @@
 			return
 	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
 
-/obj/structure/filingcabinet/ui_state(mob/user)
+/obj/structure/filingcabinet/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/structure/filingcabinet/ui_interact(mob/user, datum/tgui/ui)

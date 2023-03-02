@@ -1,4 +1,4 @@
-/datum/tgui_module/email_client
+/datum/tgui_module_old/email_client
 	name = "Email Client"
 	tgui_id = "NtosEmailClient"
 
@@ -24,7 +24,7 @@
 	var/datum/computer_file/data/email_account/current_account = null
 	var/datum/computer_file/data/email_message/current_message = null
 
-/datum/tgui_module/email_client/proc/log_in()
+/datum/tgui_module_old/email_client/proc/log_in()
 	for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
 		if(!account.can_login)
 			continue
@@ -43,7 +43,7 @@
 
 // Returns 0 if no new messages were received, 1 if there is an unread message but notification has already been sent.
 // and 2 if there is a new message that appeared in this tick (and therefore notification should be sent by the program).
-/datum/tgui_module/email_client/proc/check_for_new_messages(var/messages_read = FALSE)
+/datum/tgui_module_old/email_client/proc/check_for_new_messages(var/messages_read = FALSE)
 	if(!current_account)
 		return 0
 
@@ -60,14 +60,14 @@
 	if(messages_read)
 		read_message_count = allmails.len
 
-/datum/tgui_module/email_client/proc/log_out()
+/datum/tgui_module_old/email_client/proc/log_out()
 	current_account = null
 	downloading = null
 	download_progress = 0
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/tgui_module/email_client/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/email_client/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	// Password has been changed by other client connected to this email account
@@ -186,7 +186,7 @@
 
 	return data
 
-/datum/tgui_module/email_client/proc/find_message_by_fuid(var/fuid)
+/datum/tgui_module_old/email_client/proc/find_message_by_fuid(var/fuid)
 	if(!istype(current_account))
 		return
 
@@ -198,7 +198,7 @@
 		if(message.uid == fuid)
 			return message
 
-/datum/tgui_module/email_client/proc/clear_message()
+/datum/tgui_module_old/email_client/proc/clear_message()
 	new_message = FALSE
 	msg_title = ""
 	msg_body = ""
@@ -206,7 +206,7 @@
 	msg_attachment = null
 	current_message = null
 
-/datum/tgui_module/email_client/proc/relayed_process(var/netspeed)
+/datum/tgui_module_old/email_client/proc/relayed_process(var/netspeed)
 	download_speed = netspeed
 	if(!downloading)
 		return
@@ -228,7 +228,7 @@
 	return 1
 
 
-/datum/tgui_module/email_client/ui_act(action, params)
+/datum/tgui_module_old/email_client/ui_act(action, params)
 	if(..())
 		return TRUE
 

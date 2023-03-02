@@ -2,7 +2,7 @@
 	name = "harpoon"
 	sharp = 1
 	edge = 0
-	desc = "Tharr she blows!"
+	desc = "A common design throughout the galaxy, this is a metal spear used for hunting fish (or people in voidsuits, to devestating effect)."
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	force_divisor = 0.3 // 18 with hardness 60 (steel)
@@ -16,7 +16,7 @@
 
 /obj/item/material/knife/machete/hatchet
 	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	desc = "A one-handed axe, with a short fibremetal handle. There's an infinite amount of variations in the galaxy, but this one's used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hatchet"
 	force_divisor = 0.2 // 12 with hardness 60 (steel)
@@ -38,7 +38,7 @@
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	desc = "Though honor duels have fallen out of fashion in this new era, that doesn't stop some Unathi from carrying these wooden duelling blades as a status symbol. Or Vox from using these for their intended purpose in 'quill duels'."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "unathiknife"
 	attack_verb = list("ripped", "torn", "cut")
@@ -66,7 +66,7 @@
 
 /obj/item/material/minihoe // -- Numbers
 	name = "mini hoe"
-	desc = "It's used for removing weeds or scratching your back."
+	desc = "It's used for removing weeds and tilling soil."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	force_divisor = 0.25 // 5 with weight 20 (steel)
