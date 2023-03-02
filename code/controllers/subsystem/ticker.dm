@@ -323,7 +323,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(CONFIG_GET(flag/sql_enabled))
 		//THIS REQUIRES THE INVOKE ASYNC.
-		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(statistic_cycle)) // Polls population totals regularly and stores them in an SQL DB -- TLE
+		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(statistic_cycle)) // Polls population totals regularly and stores them in an SQL DB
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer

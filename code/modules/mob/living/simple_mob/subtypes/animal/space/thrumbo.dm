@@ -142,11 +142,11 @@
 	var/beforehealth = icon_living
 	var/healthpercent = health/maxHealth
 	switch(healthpercent)
-		if(0.25 to 0)
+		if(0 to 0.25)
 			icon_living = "thrumbo-25"
-		if(0.50 to 0.26)
+		if(0.26 to 0.50)
 			icon_living = "thrumbo-50"
-		if(0.75 to 0.51)
+		if(0.51 to 0.75)
 			icon_living = "thrumbo-75"
 		if(0.76 to INFINITY)
 			icon_living = "thrumbo-100"
