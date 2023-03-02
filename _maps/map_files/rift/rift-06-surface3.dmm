@@ -2625,6 +2625,10 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_x = 32;
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aeK" = (
@@ -5768,6 +5772,9 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "alf" = (
@@ -12141,11 +12148,27 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "ayh" = (
-/obj/item/radio/intercom{
+/obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutter control";
+	pixel_x = 26;
+	pixel_y = -8;
+	req_one_access = list(25)
+	},
+/obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/button/holosign{
+	id = "bar_sign";
+	pixel_x = 24;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "ayi" = (
@@ -24856,6 +24879,9 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aYW" = (
@@ -24987,10 +25013,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aZg" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aZh" = (
@@ -25699,9 +25726,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/machinery/holoposter{
-	pixel_y = 32
-	},
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -26079,27 +26103,8 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full{
 	pixel_y = 7
 	},
-/obj/machinery/button/holosign{
-	id = "bar_sign";
-	pixel_x = -7;
-	pixel_y = 24
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "bar_shutters";
-	name = "Bar Shutter control";
-	pixel_x = 9;
-	pixel_y = 26;
-	req_one_access = list(25)
-	},
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_y = 24
-	},
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
