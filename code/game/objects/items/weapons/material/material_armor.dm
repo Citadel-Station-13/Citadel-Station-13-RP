@@ -258,7 +258,7 @@ Protectiveness | Armor %
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
 	name = "improvised armor (bucket)"
-	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
+	desc = "It's a bucket with a large hole cut into it. Desperate times require desperate measures, and you can't get more desperate than trusting a CleanMate bucket as a helmet."
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
