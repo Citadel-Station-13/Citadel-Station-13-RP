@@ -151,8 +151,6 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	var/gender = "f"
 	if(owner && owner.gender == MALE)
 		gender = "m"
-	if(owner && owner.gender == FEMALE)
-		gender = "f"
 
 
 	if(!force_icon_key)
