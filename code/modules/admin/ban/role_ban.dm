@@ -28,7 +28,7 @@
 	usr = old_usr
 
 /**
- * ban someone from a role for a certain time, specified in deciseconds.
+ * ban someone from a role for a certain time, specified in minutes.
  *
  * BAN_ROLE_SERVER is not allowed here.
  *
@@ -36,12 +36,12 @@
  * * ckey - the player's ckey
  * * character_id - the character's id, null for global account ban
  * * role - role enum check [code/__DEFINES/admin/bans.dm] - BAN_ROLE_SERVER is not allowed here!
- * * time - deciseconds from Now() - null for permanent
+ * * minutes - minutes from Now() - null for permanent
  *
  * @return TRUE / FALSE on success / failure
  */
-/proc/role_ban_ckey(ckey, character_id, role, time)
-	ASSERT(isnull(time) || (isnum(time) && time > 0))
+/proc/role_ban_ckey(ckey, character_id, role, minutes)
+	ASSERT(isnull(minutes) || (isnum(minutes) && minutes > 0))
 
 	// isolate from proccall, this is sanitized
 	var/mob/old_usr = usr
@@ -50,10 +50,10 @@
 	//? shitcode alert: for now, db bans *must* be anchored to an admind atum.
 
 	var/datum/admins/holder_datum = old_usr?.client?.holder
-	if(!istype(holder_datum)) // hard istype, no rnutimes allowed
+	if(!istype(holder_datum)) // hard istype, no rnuminutess allowed
 		. = FALSE
 	else
-		. = holder_datum.DB_ban_record(isnull(time)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(time)? -1 : duration, job = role, banckey = ckey)
+		. = holder_datum.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey)
 
 	// restore admin proccall
 	usr = old_usr
