@@ -871,7 +871,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, BAN_ROLE_OOC, minutes = minutes, reason = reason)
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
@@ -883,7 +883,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, BAN_ROLE_OOC, reason = reason)
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
