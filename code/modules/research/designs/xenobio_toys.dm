@@ -1,17 +1,17 @@
-/datum/design/item/xenobio/AssembleDesignName()
+/datum/design/science/xenobio/AssembleDesignName()
 	..()
 	name = "Xenobiology equipment design ([item_name])"
 
 // Xenobio Weapons
 
-/datum/design/item/xenobio/slimebaton
+/datum/design/science/xenobio/slimebaton
 	id = "slimebaton"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_POWER = 3, TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 5000)
 	build_path = /obj/item/melee/baton/slime
 	sort_string = "HAAAA"
 
-/datum/design/item/xenobio/slimetaser
+/datum/design/science/xenobio/slimetaser
 	id = "slimetaser"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 5000)
@@ -20,7 +20,7 @@
 
 // Other
 
-/datum/design/item/xenobio/slime_scanner
+/datum/design/science/xenobio/slime_scanner
 	name = "slime scanner"
 	desc = "A hand-held body scanner able to learn information about slimes."
 	id = "slime_scanner"

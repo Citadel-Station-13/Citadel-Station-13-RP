@@ -110,11 +110,11 @@ other types of metals and chemistry for reagents).
 /datum/design/proc/legacy_print(atom/where, fabricator)
 	return print(where)
 
-/datum/design/item
+/datum/design/science
 	build_type = PROTOLATHE
 
 //Make sure items don't get free power
-/datum/design/item/print(atom/where)
+/datum/design/science/print(atom/where)
 	var/obj/item/I = ..()
 	var/obj/item/cell/C = I.get_cell()
 	if(C)

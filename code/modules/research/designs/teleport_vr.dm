@@ -2,11 +2,11 @@
 	P - teleporteing item stuff
 */
 
-/datum/design/item/teleport/AssembleDesignName()
+/datum/design/science/teleport/AssembleDesignName()
 	..()
 	name = "Teleportation device prototype ([item_name])"
 
-/datum/design/item/teleport/translocator
+/datum/design/science/teleport/translocator
 	name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
@@ -15,7 +15,7 @@
 	sort_string = "PAAAA"
 
 /*
-/datum/design/item/teleport/bluespace_crystal
+/datum/design/science/teleport/bluespace_crystal
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)

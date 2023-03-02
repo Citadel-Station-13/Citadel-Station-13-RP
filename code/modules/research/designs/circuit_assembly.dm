@@ -1,10 +1,10 @@
 // Integrated circuits stuff
 
-/datum/design/item/integrated_circuitry/AssembleDesignName()
+/datum/design/science/integrated_circuitry/AssembleDesignName()
 	..()
 	name = "Circuitry device design ([item_name])"
 
-/datum/design/item/integrated_circuitry/custom_circuit_printer
+/datum/design/science/integrated_circuitry/custom_circuit_printer
 	name = "Portable integrated circuit printer"
 	desc = "A portable(ish) printer for modular machines."
 	id = "ic_printer"
@@ -13,7 +13,7 @@
 	build_path = /obj/item/integrated_circuit_printer
 	sort_string = "UAAAA"
 
-/datum/design/item/integrated_circuitry/custom_circuit_printer_upgrade
+/datum/design/science/integrated_circuitry/custom_circuit_printer_upgrade
 	name = "Integrated circuit printer upgrade - advanced designs"
 	desc = "Allows the integrated circuit printer to create advanced circuits"
 	id = "ic_printer_upgrade_adv"
@@ -22,7 +22,7 @@
 	build_path = /obj/item/disk/integrated_circuit/upgrade/advanced
 	sort_string = "UBAAA"
 
-/datum/design/item/integrated_circuitry/wirer
+/datum/design/science/integrated_circuitry/wirer
 	name = "Custom wirer tool"
 	id = "wirer"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
@@ -30,7 +30,7 @@
 	build_path = /obj/item/integrated_electronics/wirer
 	sort_string = "UCAAA"
 
-/datum/design/item/integrated_circuitry/debugger
+/datum/design/science/integrated_circuitry/debugger
 	name = "Custom circuit debugger tool"
 	id = "debugger"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
@@ -40,11 +40,11 @@
 
 // Assemblies
 
-/datum/design/item/integrated_circuitry/assembly/AssembleDesignName()
+/datum/design/science/integrated_circuitry/assembly/AssembleDesignName()
 	..()
 	name = "Circuitry assembly design ([item_name])"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_small
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_small
 	name = "Small custom assembly"
 	desc = "A customizable assembly for simple, small devices."
 	id = "assembly-small"
@@ -53,7 +53,7 @@
 	build_path = /obj/item/electronic_assembly
 	sort_string = "UDAAA"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_medium
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_medium
 	name = "Medium custom assembly"
 	desc = "A customizable assembly suited for more ambitious mechanisms."
 	id = "assembly-medium"
@@ -62,7 +62,7 @@
 	build_path = /obj/item/electronic_assembly/medium
 	sort_string = "UDAAB"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_large
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_large
 	name = "Large custom assembly"
 	desc = "A customizable assembly for large machines."
 	id = "assembly-large"
@@ -71,7 +71,7 @@
 	build_path = /obj/item/electronic_assembly/large
 	sort_string = "UDAAC"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_drone
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_drone
 	name = "Drone custom assembly"
 	desc = "A customizable assembly optimized for autonomous devices."
 	id = "assembly-drone"
@@ -80,7 +80,7 @@
 	build_path = /obj/item/electronic_assembly/drone
 	sort_string = "UDAAD"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_device
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_device
 	name = "Device custom assembly"
 	desc = "An customizable assembly designed to interface with other devices."
 	id = "assembly-device"
@@ -89,7 +89,7 @@
 	build_path = /obj/item/assembly/electronic_assembly
 	sort_string = "UDAAE"
 
-/datum/design/item/integrated_circuitry/assembly/custom_circuit_assembly_implant
+/datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_implant
 	name = "Implant custom assembly"
 	desc = "An customizable assembly for very small devices, implanted into living entities."
 	id = "assembly-implant"

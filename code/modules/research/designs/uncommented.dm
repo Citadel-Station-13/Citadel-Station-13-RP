@@ -6,7 +6,7 @@
 	build_path = /obj/item/circuitboard/general_alert
 
 // Removal of loyalty implants. Can't think of a way to add this to the config option.
-/datum/design/item/implant/loyalty
+/datum/design/science/implant/loyalty
 	name = "loyalty"
 	id = "implant_loyal"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)

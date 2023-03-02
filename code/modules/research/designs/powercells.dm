@@ -1,20 +1,20 @@
-/datum/design/item/powercell
+/datum/design/science/powercell
 	build_type = PROTOLATHE | MECHFAB
 
-/datum/design/item/powercell/AssembleDesignName()
+/datum/design/science/powercell/AssembleDesignName()
 	name = "Power Cell Model ([item_name])"
 
-/datum/design/item/powercell/AssembleDesignDesc()
+/datum/design/science/powercell/AssembleDesignDesc()
 	if(build_path)
 		var/obj/item/cell/C = build_path
 		desc = "Allows the construction of power cells that can hold [initial(C.maxcharge)] units of energy."
 
-/datum/design/item/powercell/print(atom/where)
+/datum/design/science/powercell/print(atom/where)
 	var/obj/item/cell/C = ..()
 	C.charge = 0 //shouldn't produce power out of thin air.
 	return C
 
-/datum/design/item/powercell/basic
+/datum/design/science/powercell/basic
 	name = "basic"
 	build_type = PROTOLATHE | MECHFAB
 	id = "basic_cell"
@@ -24,7 +24,7 @@
 	category = "Misc"
 	sort_string = "DAAAA"
 
-/datum/design/item/powercell/high
+/datum/design/science/powercell/high
 	name = "high-capacity"
 	build_type = PROTOLATHE | MECHFAB
 	id = "high_cell"
@@ -34,7 +34,7 @@
 	category = "Misc"
 	sort_string = "DAAAB"
 
-/datum/design/item/powercell/super
+/datum/design/science/powercell/super
 	name = "super-capacity"
 	id = "super_cell"
 	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 2)
@@ -43,7 +43,7 @@
 	category = "Misc"
 	sort_string = "DAAAC"
 
-/datum/design/item/powercell/hyper
+/datum/design/science/powercell/hyper
 	name = "hyper-capacity"
 	id = "hyper_cell"
 	req_tech = list(TECH_POWER = 5, TECH_MATERIAL = 4)
@@ -52,7 +52,7 @@
 	category = "Misc"
 	sort_string = "DAAAD"
 
-/datum/design/item/powercell/device
+/datum/design/science/powercell/device
 	name = "device"
 	build_type = PROTOLATHE
 	id = "device"
@@ -61,7 +61,7 @@
 	category = "Misc"
 	sort_string = "DAABA"
 
-/datum/design/item/powercell/weapon
+/datum/design/science/powercell/weapon
 	name = "weapon"
 	build_type = PROTOLATHE
 	id = "weapon"

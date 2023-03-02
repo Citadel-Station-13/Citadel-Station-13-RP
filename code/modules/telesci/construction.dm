@@ -55,7 +55,7 @@
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HAAC"
 
-/datum/design/item/bluespace_crystal
+/datum/design/science/bluespace_crystal
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)

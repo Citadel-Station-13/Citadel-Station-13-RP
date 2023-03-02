@@ -107,7 +107,7 @@
 	sort_string = "XACAD"
 
 // AI file, AI tool
-/datum/design/item/intellicard
+/datum/design/science/intellicard
 	name = "'intelliCore', AI preservation and transportation system"
 	desc = "Allows for the construction of an intelliCore."
 	id = "intellicore"

@@ -1,20 +1,20 @@
 // Implants
 
-/datum/design/item/implant
+/datum/design/science/implant
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/datum/design/item/implant/AssembleDesignName()
+/datum/design/science/implant/AssembleDesignName()
 	..()
 	name = "Implantable biocircuit design ([item_name])"
 
-/datum/design/item/implant/chemical
+/datum/design/science/implant/chemical
 	name = "chemical"
 	id = "implant_chem"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)
 	build_path = /obj/item/implantcase/chem
 	sort_string = "MFAAA"
 
-/datum/design/item/implant/freedom
+/datum/design/science/implant/freedom
 	name = "freedom"
 	id = "implant_free"
 	req_tech = list(TECH_ILLEGAL = 2, TECH_BIO = 3)
