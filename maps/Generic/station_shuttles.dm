@@ -25,7 +25,7 @@
 /obj/machinery/computer/shuttle_control/explore/tourbus
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 
 ////////////////////////////////////////
@@ -88,12 +88,12 @@
 /obj/machinery/computer/shuttle_control/tether_backup
 	name = "tether backup shuttle control console"
 	shuttle_tag = "Tether Backup"
-	req_one_access = list(access_heads,access_pilot)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 
 /obj/machinery/computer/shuttle_control/surface_mining_outpost
 	name = "surface mining outpost shuttle control console"
 	shuttle_tag = "Mining Outpost"
-	req_one_access = list(access_mining)
+	req_one_access = list(ACCESS_SUPPLY_MINE)
 
 //////////////////////
 

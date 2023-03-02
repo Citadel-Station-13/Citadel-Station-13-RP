@@ -121,7 +121,7 @@
 
 	return data
 
-/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

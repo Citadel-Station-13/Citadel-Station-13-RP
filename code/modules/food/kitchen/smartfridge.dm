@@ -70,7 +70,7 @@
 /obj/machinery/smartfridge/secure/extract
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
-	req_access = list(access_research)
+	req_access = list(ACCESS_SCIENCE_MAIN)
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))
@@ -84,7 +84,7 @@
 	desc = "A refrigerated storage unit for storing medicine and chemicals."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
-	req_one_access = list(access_medical,access_chemistry)
+	req_one_access = list(ACCESS_MEDICAL_MAIN,ACCESS_MEDICAL_CHEMISTRY)
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/))
@@ -98,7 +98,7 @@
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
 	desc = "A refrigerated storage unit for storing viral material."
-	req_access = list(access_virology)
+	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 	icon_state = "smartfridge_virology"
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"

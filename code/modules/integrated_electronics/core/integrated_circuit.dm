@@ -125,10 +125,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
 		displayed_name = input
 
-/obj/item/integrated_circuit/ui_state(mob/user)
+/obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
-/obj/item/integrated_circuit/ui_host(mob/user)
+/obj/item/integrated_circuit/ui_host(mob/user, datum/tgui_module/module)
 	if(istype(loc, /obj/item/electronic_assembly))
 		return loc.ui_host()
 	return ..()
@@ -206,7 +206,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	return pindata
 
-/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

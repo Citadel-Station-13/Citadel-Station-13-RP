@@ -15,7 +15,6 @@
  * the listed turf, however, gets sent to native Stat() so it supports native mouse
  * handling among other things.
  */
-
 //! external - state
 
 /client/proc/statpanel_init()

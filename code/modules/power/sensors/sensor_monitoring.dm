@@ -17,7 +17,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
-	var/datum/tgui_module/power_monitor/power_monitor
+	var/datum/tgui_module_old/power_monitor/power_monitor
 
 // On creation automatically connects to active sensors. This is delayed to ensure sensors already exist.
 /obj/machinery/computer/power_monitor/Initialize(mapload)

@@ -79,8 +79,12 @@
 		else
 			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
 			return FALSE
+	var/old_z = get_z(src)
 	if(!Move(destination))
 		return FALSE
+	var/new_z = get_z(src)
+	if(old_z != new_z)
+		onTransitZ(old_z, new_z)
 	return TRUE
 
 /mob/proc/can_overcome_gravity()

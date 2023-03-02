@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
-import { IdentificationComputerContent } from "./IdentificationComputer";
+import { IdentificationComputerContent } from "./computers/IdentificationComputer";
 
 export const NtosIdentificationComputer = (props, context) => {
   const { act, data } = useBackend(context);
