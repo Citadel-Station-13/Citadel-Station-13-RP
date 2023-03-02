@@ -95,7 +95,7 @@
 /datum/ghostrole_instantiator/human/random/AfterSpawn(mob/created, list/params)
 	. = ..()
 	if(can_change_appearance) //I think it's either this or the line above.
-		INVOKE_ASYNC(src, /datum/ghostrole_instantiator/human/random/proc/PickAppearance, created, params)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/ghostrole_instantiator/human/random, PickAppearance), created, params)
 
 /datum/ghostrole_instantiator/human/random/proc/PickAppearance(mob/living/carbon/human/H)
 	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")

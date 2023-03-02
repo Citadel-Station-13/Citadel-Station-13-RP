@@ -331,7 +331,7 @@
 	sonar_automata.receiver = src
 	sonar_automata.setup_auto(get_turf(src), 14)
 	sonar_automata.start()
-	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(plane_holder, TYPE_PROC_REF(/datum/plane_holder, set_vis), VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"

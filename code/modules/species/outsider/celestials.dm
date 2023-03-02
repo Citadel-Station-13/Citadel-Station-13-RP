@@ -45,13 +45,14 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/flying_toggle,
+		/mob/living/proc/glow_color,
+		/mob/living/proc/glow_toggle,
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/proc/toggle_pass_table,
-		/mob/living/proc/glow_toggle,
-		/mob/living/proc/glow_color)
+	)
 
 /datum/species/dremachir
 	uid = SPECIES_ID_DREMACHIR
@@ -96,8 +97,8 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/succubus_drain,
+		/mob/living/carbon/human/proc/tie_hair,
 	)

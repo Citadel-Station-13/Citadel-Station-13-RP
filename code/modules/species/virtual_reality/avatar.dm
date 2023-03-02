@@ -30,15 +30,15 @@
 	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime, O_EYES = /obj/item/organ/internal/eyes) // Slime core.
 	heal_rate = 0		// Avatars don't naturally heal like prometheans, at least not for now
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
-		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
-		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+		/mob/living/carbon/human/proc/exit_vr,
 		/mob/living/carbon/human/proc/regenerate,
 		// /mob/living/carbon/human/proc/shapeshifter_change_opacity,	GO FUCK YOURSELF, THAT ENTIRE PROC WAS A DUMPSTER FIRE AND YOU SHOULD KNOW BETTER
-		/mob/living/carbon/human/proc/exit_vr
-		)
+		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
+		/mob/living/carbon/human/proc/shapeshifter_select_hair,
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+	)
 
 
 /datum/species/shapeshifter/promethean/avatar/handle_death(var/mob/living/carbon/human/H)
@@ -116,4 +116,4 @@
 
 	if(istype(vr_holder.loc, /obj/machinery/vr_sleeper))
 		var/obj/machinery/vr_sleeper/V = vr_holder.loc
-		INVOKE_ASYNC(V, /obj/machinery/vr_sleeper/proc/go_out, TRUE)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/machinery/vr_sleeper, go_out), TRUE)

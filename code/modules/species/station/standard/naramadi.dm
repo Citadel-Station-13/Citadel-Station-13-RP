@@ -80,6 +80,6 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
-		/mob/living/carbon/human/proc/tie_hair,
+		TYPE_PROC_REF(/mob/living, shred_limb),
+		TYPE_PROC_REF(/mob/living/carbon/human, tie_hair),
 	)

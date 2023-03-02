@@ -56,8 +56,8 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/flying_toggle,
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/start_wings_hovering,
 	)

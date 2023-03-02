@@ -106,10 +106,10 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
-		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair,
-		)
+		/mob/living/proc/eat_trash,
+		/mob/living/proc/shred_limb,
+	)
 
 /datum/species/vox/get_random_name(gender)
 	var/datum/language/species_language = SScharacters.resolve_language_id(default_language)

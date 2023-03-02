@@ -30,7 +30,8 @@
 
 	organ_verbs = list(
 		/mob/living/carbon/human/proc/augment_menu,
-		/mob/living/carbon/human/proc/toggle_shades)
+		/mob/living/carbon/human/proc/toggle_shades,
+	)
 
 	integrated_object_type = /obj/item/clothing/glasses/hud/security/jensenshades
 

@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_module_sprites(sprites)
 
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
-	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
+	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
 	// Setup synths, modules, and modules with custom init code.
 	synths_by_kind = get_synths(R)
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.icon_dimension_x = 64
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
-		/mob/living/silicon/robot/proc/rest_style
+		/mob/living/silicon/robot/proc/rest_style,
 	))
 	if (can_shred)
 		add_verb(R, /mob/living/proc/shred_limb)
@@ -258,9 +258,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.icon = initial(R.icon)
 	R.base_pixel_x = initial(R.pixel_x)
 	remove_verb(R, list(
-		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/proc/shred_limb,
-		/mob/living/silicon/robot/proc/rest_style
+		/mob/living/silicon/robot/proc/ex_reserve_refill,
+		/mob/living/silicon/robot/proc/rest_style,
 	))
 	R.scrubbing = FALSE
 	R.dogborg = FALSE

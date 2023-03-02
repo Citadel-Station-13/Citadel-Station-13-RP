@@ -7,9 +7,9 @@ var/list/wrapped_species_by_ref = list()
 	abstract_type = /datum/species/shapeshifter
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+		/mob/living/carbon/human/proc/shapeshifter_select_hair,
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 	)
 
 	var/list/valid_transform_species = list()

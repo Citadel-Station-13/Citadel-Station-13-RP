@@ -1,420 +1,423 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 var/list/admin_verbs_default = list(
-	/datum/admins/proc/show_player_panel,	//shows an interface for individual players, with various links (links require additional flags,
-//	/client/proc/player_panel,
-	/client/proc/deadmin_self,			//destroys our own admin datum so we can play as a regular player,
-	/client/proc/hide_verbs,			//hides all our adminverbs,
-	/client/proc/hide_most_verbs,		//hides all our hideable adminverbs,
-	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
+	// /client/proc/check_antagonists,       // Shows all antags.
+	/client/proc/cmd_check_new_players,   // Allows us to see every new player.
+	// /client/proc/cmd_mod_say,
+	// /client/proc/deadchat,                // Toggles deadchat on/off.
+	/client/proc/deadmin_self,            // Destroys our own admin datum so we can play as a regular player.
+	/client/proc/debug_variables,         // Allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify.
+	/client/proc/hide_most_verbs,         // hides all our hideable adminverbs.
+	/client/proc/hide_verbs,              // hides all our adminverbs.
 	/client/proc/mark_datum_mapview,
-	/client/proc/cmd_check_new_players,	//allows us to see every new player
-//	/client/proc/check_antagonists,		//shows all antags,
-//	/client/proc/cmd_mod_say,
-//	/client/proc/deadchat				//toggles deadchat on/off,
-//	/client/proc/toggle_ahelp_sound,
-	)
+	/client/proc/player_panel,
+	// /client/verb/toggle_ahelp_sound,
+	/datum/admins/proc/show_player_panel, // Shows an interface for individual players, with various links (links require additional flags,
+)
 
 var/list/admin_verbs_admin = list(
-	/client/proc/player_panel, //shows an interface for all players, with links to various panels,
-	/datum/admins/proc/set_tcrystals,
-	/datum/admins/proc/add_tcrystals,
-	/client/proc/invisimin,				//allows our mob to go invisible/visible,
-	/client/proc/getserverlogs,		/*for accessing server logs*/
-	/client/proc/getcurrentlogs,		/*for accessing server logs*/
-	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind.,
-	/datum/admins/proc/show_game_mode,  //Configuration window for the current game mode.,
-	/datum/admins/proc/force_mode_latespawn, //Force the mode to try a latespawn proc,
-	/datum/admins/proc/force_antag_latespawn, //Force a specific template to try a latespawn proc,
-	/datum/admins/proc/toggleenter,		//toggles whether people can join the current game,
-	/datum/admins/proc/toggleguests,	//toggles whether guests can join the current game,
-	/datum/admins/proc/announce,		//priority announce something to all clients.,
-	/datum/admins/proc/intercom,		//send a fake intercom message, like an arrivals announcement,
-	/datum/admins/proc/intercom_convo,	//send a fake intercom conversation, like an ATC exchange,
-	/client/proc/colorooc,				//allows us to set a custom colour for everythign we say in ooc,
-	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
-	/client/proc/toggle_view_range,		//changes how far we can see,
-	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
-	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
-	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
-	/client/proc/cmd_admin_icsubtle_message, //send a message to someone as a voice from centcom
-	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
-	/client/proc/cmd_admin_check_contents,	//displays the contents of an instance,
-	/client/proc/cmd_admin_check_player_logs,	//checks a player's attack logs,
-	/client/proc/cmd_admin_check_dialogue_logs,	//checks a player's dialogue logs,
-	/datum/admins/proc/access_news_network,	//allows access of newscasters,
-	/client/proc/jumptocoord,			//we ghost and jump to a coordinate,
-	/client/proc/Getmob,				//teleports a mob to our location,
-	/client/proc/Getkey,				//teleports a mob with a certain ckey to our location,
-	/client/proc/SetCKey,				//set the ckey of a mob
-//	/client/proc/sendmob,				//sends a mob somewhere, -Removed due to it needing two sorting procs to work, which were executed every time an admin right-clicked. ~Errorage,
-	/client/proc/Jump,
-	/client/proc/jumptokey,				//allows us to jump to the location of a mob with a certain ckey,
-	/client/proc/jumptomob,				//allows us to jump to a specific mob,
-	/client/proc/jumptoturf,			//allows us to jump to a specific turf,
-	/client/proc/admin_call_shuttle,	//allows us to call the emergency shuttle,
-	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
-	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
-	/client/proc/cmd_admin_create_centcom_report,
-	/client/proc/check_words,			//displays cult-words,
-	/client/proc/check_ai_laws,			//shows AI and borg laws,
-	/client/proc/rename_silicon,		//properly renames silicons,
-	/client/proc/manage_silicon_laws,	// Allows viewing and editing silicon laws. ,
-	/client/proc/check_antagonists,
-	/client/proc/admin_memo,			//admin memo system. show/delete/write. +SERVER needed to delete admin memos of others,
-	/client/proc/dsay,					//talk in deadchat using our ckey/fakekey,
-//	/client/proc/toggle_hear_deadcast,	//toggles whether we hear deadchat,
-	/client/proc/investigate_show,		//various admintools for investigation. Such as a singulo grief-log,
-	/client/proc/secrets,
-	/datum/admins/proc/toggleooc,		//toggles ooc on/off for everyone,
-	/datum/admins/proc/togglelooc,		//toggles looc on/off for everyone,
-	/datum/admins/proc/toggleoocdead,	//toggles ooc on/off for everyone who is dead,
-	/datum/admins/proc/togglehubvisibility, //toggles visibility on the BYOND Hub.,
-	/datum/admins/proc/toggledsay,		//toggles dsay on/off for everyone,
-	/client/proc/game_panel,			//game panel, allows to change game-mode etc,
-	/client/proc/cmd_admin_say,			//admin-only ooc chat,
-	/client/proc/cmd_mod_say,
-	/client/proc/cmd_event_say,
-	/datum/admins/proc/PlayerNotes,
-	/datum/admins/proc/show_player_info,
-	/client/proc/free_slot,			//frees slot for chosen job,
-	/client/proc/cmd_admin_change_custom_event,
-	/client/proc/cmd_admin_rejuvenate,
-	/client/proc/toggleghostwriters,
-	/client/proc/toggledrones,
-//	/datum/admins/proc/show_skills,
-	/client/proc/check_customitem_activity,
-	/client/proc/man_up,
-	/client/proc/global_man_up,
-	/client/proc/response_team, // Response Teams admin verb
-	/client/proc/trader_ship, // Trader ship admin verb
-	/client/proc/toggle_antagHUD_use,
-	/client/proc/toggle_antagHUD_restrictions,
-	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
-	/client/proc/event_manager_panel,
-	/client/proc/empty_ai_core_toggle_latejoin,
-	/client/proc/empty_ai_core_toggle_latejoin,
+	/client/proc/addbunkerbypass,
+	/client/proc/admin_call_shuttle,              // Allows us to call the emergency shuttle.
+	/client/proc/admin_cancel_shuttle,            // Allows us to cancel the emergency shuttle, sending it back to CentCom.
+	/client/proc/admin_ghost,                     // Allows us to ghost/reenter body at will.
+	/client/proc/admin_memo,                      // Admin memo system. show/delete/write. +SERVER needed to delete admin memos of others.
+	/client/proc/allow_character_respawn,         // Allows a ghost to respawn.
 	/client/proc/aooc,
-	/client/proc/change_human_appearance_admin,	// Allows an admin to change the basic appearance of human-based mobs ,
-	/client/proc/change_human_appearance_self,	// Allows the human-based mob itself change its basic appearance ,
+	/client/proc/change_human_appearance_admin,   // Allows an admin to change the basic appearance of human-based mobs.
+	/client/proc/change_human_appearance_self,    // Allows the human-based mob itself change its basic appearance.
 	/client/proc/change_security_level,
-	/client/proc/view_chemical_reaction_logs,
-	/client/proc/makePAI,
-	/client/proc/toggle_debug_logs,
-	/client/proc/toggle_attack_logs,
-	/datum/admins/proc/paralyze_mob,
+	/client/proc/check_ai_laws,                   // Shows AI and borg laws.
+	/client/proc/check_antagonists,
+	/client/proc/check_customitem_activity,
+	/client/proc/check_words,                     // Displays cult-words.
+	/client/proc/cmd_admin_change_custom_event,
+	/client/proc/cmd_admin_check_contents,        // Displays the contents of an instance.
+	/client/proc/cmd_admin_check_dialogue_logs,   // Checks a player's dialogue logs.
+	/client/proc/cmd_admin_check_player_logs,     // Checks a player's attack logs.
+	/client/proc/cmd_admin_create_centcom_report,
+	/client/proc/cmd_admin_delete,                // Delete an instance/object/mob/etc.
+	/client/proc/cmd_admin_direct_narrate,        // Send text directly to a player with no padding. Useful for narratives and fluff-text.
+	/client/proc/cmd_admin_icsubtle_message,      // Send a message to someone as a voice from centcom.
+	/client/proc/cmd_admin_local_narrate,
+	/client/proc/cmd_admin_pm_context,            // Right-click adminPM interface.
+	/client/proc/cmd_admin_pm_panel,              // Admin-pm list.
+	/client/proc/cmd_admin_rejuvenate,
+	/client/proc/cmd_admin_say,                   // Admin-only ooc chat.
+	/client/proc/cmd_admin_subtle_message,        // Send an message to somebody as a 'voice in their head'.
+	/client/proc/cmd_admin_world_narrate,         // Sends text to all players with no padding.
+	/client/proc/cmd_event_say,
+	/client/proc/cmd_mod_say,
+	/client/proc/colorooc,                        // Allows us to set a custom colour for everythign we say in ooc.
+	/client/proc/despawn_player,
+	/client/proc/dsay,                            // Talk in deadchat using our ckey/fakekey.
+	/client/proc/empty_ai_core_toggle_latejoin,
+	/client/proc/empty_ai_core_toggle_latejoin,
+	/client/proc/event_manager_panel,
 	/client/proc/fixatmos,
+	/client/proc/free_slot,                       // Frees slot for chosen job.
+	/client/proc/game_panel,                      // Game panel, allows to change game-mode etc.
+	/client/proc/getcurrentlogs,                  // For accessing server logs.
+	/client/proc/Getkey,                          // Teleports a mob with a certain ckey to our location.
+	/client/proc/Getmob,                          // Teleports a mob to our location.
+	/client/proc/getserverlogs,                   // For accessing server logs.
+	/client/proc/global_man_up,
+	/client/proc/investigate_show,                // Various admintools for investigation. Such as a singulo grief-log.
+	/client/proc/invisimin,                       // Allows our mob to go invisible/visible.
+	/client/proc/Jump,
+	/client/proc/jumptocoord,                     // We ghost and jump to a coordinate.
+	/client/proc/jumptokey,                       // Allows us to jump to the location of a mob with a certain ckey.
+	/client/proc/jumptomob,                       // Allows us to jump to a specific mob.
+	/client/proc/jumptoturf,                      // Allows us to jump to a specific turf.
+	/client/proc/list_event_volunteers,
+	/client/proc/makePAI,
+	/client/proc/man_up,
+	/client/proc/manage_silicon_laws,             // Allows viewing and editing silicon laws.
+	/client/proc/player_panel,                    // Shows an interface for all players, with links to various panels.
+	/client/proc/rename_silicon,                  // Properly renames silicons.
+	/client/proc/response_team,                   // Response Teams admin verb.
+	/client/proc/revokebunkerbypass,
+	/client/proc/secrets,
+	// /client/proc/sendmob,                         // Sends a mob somewhere, -Removed due to it needing two sorting procs to work, which were executed every time an admin right-clicked. ~Errorage.
+	/client/proc/SetCKey,                         // Set the ckey of a mob.
+	/client/proc/toggle_AI_interact,
+	/client/proc/toggle_antagHUD_restrictions,
+	/client/proc/toggle_antagHUD_use,
+	/client/proc/toggle_attack_logs,
+	/client/proc/toggle_debug_logs,
+	// /client/proc/toggle_hear_deadcast,            // Toggles whether we hear deadchat.
+	/client/proc/toggle_view_range,               // Changes how far we can see.
+	/client/proc/toggledrones,
+	/client/proc/toggleghostwriters,
+	/client/proc/trader_ship,                     // Trader ship admin verb.
+	/client/proc/view_chemical_reaction_logs,
+	/datum/admins/proc/access_news_network,       //allows access of newscasters.
+	/datum/admins/proc/add_tcrystals,
+	/datum/admins/proc/announce,                  // Priority announce something to all clients.
+	/datum/admins/proc/force_antag_latespawn,     // Force a specific template to try a latespawn proc.
+	/datum/admins/proc/force_mode_latespawn,      // Force the mode to try a latespawn proc.
+	/datum/admins/proc/intercom_convo,            // Send a fake intercom conversation, like an ATC exchange.
+	/datum/admins/proc/intercom,                  // Send a fake intercom message, like an arrivals announcement.
+	/datum/admins/proc/paralyze_mob,
+	/datum/admins/proc/PlayerNotes,
 	/datum/admins/proc/quick_nif,
 	/datum/admins/proc/sendFax,
-	/client/proc/despawn_player,
-	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass,
-	/client/proc/toggle_AI_interact,
-	/client/proc/list_event_volunteers
-	)
+	/datum/admins/proc/set_tcrystals,
+	/datum/admins/proc/show_game_mode,            // Configuration window for the current game mode.
+	/datum/admins/proc/show_player_info,
+	// /datum/admins/proc/show_skills,
+	/datum/admins/proc/show_traitor_panel,        // Interface which shows a mob's mind.
+	/datum/admins/proc/toggledsay,                // Toggles dsay on/off for everyone.
+	/datum/admins/proc/toggleenter,               // Toggles whether people can join the current game.
+	/datum/admins/proc/toggleguests,              // Toggles whether guests can join the current game.
+	/datum/admins/proc/togglehubvisibility,       // Toggles visibility on the BYOND Hub.
+	/datum/admins/proc/togglelooc,                // Toggles looc on/off for everyone.
+	/datum/admins/proc/toggleooc,                 // Toggles ooc on/off for everyone.
+	/datum/admins/proc/toggleoocdead,             // Toggles ooc on/off for everyone who is dead.
+)
 
 var/list/admin_verbs_ban = list(
+	/client/proc/jobbans,
 	/client/proc/unban_panel,
-	/client/proc/jobbans
-	)
+)
 
 var/list/admin_verbs_sounds = list(
+	/client/proc/manual_play_web_sound,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/manual_play_web_sound,
-	/client/proc/stop_sounds
-	)
+	/client/proc/stop_sounds,
+)
 
 var/list/admin_verbs_fun = list(
-	/client/proc/object_talk,
-	/datum/admins/proc/cmd_admin_dress,
-	/client/proc/cmd_admin_gib_self,
-	/client/proc/drop_bomb,
-	/client/proc/everyone_random,
+	/client/proc/admin_lightning_strike,
 	/client/proc/cinematic,
-	/datum/admins/proc/toggle_aliens,
-	/datum/admins/proc/toggle_space_ninja,
 	/client/proc/cmd_admin_add_freeform_ai_law,
 	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/make_sound,
-	/client/proc/toggle_random_events,
+	/client/proc/cmd_admin_gib_self,
+	/client/proc/drop_bomb,
 	/client/proc/editappear,
+	/client/proc/everyone_random,
+	/client/proc/make_sound,
+	/client/proc/object_talk,
 	/client/proc/roll_dices,
-	/datum/admins/proc/call_supply_drop,
-	/datum/admins/proc/call_drop_pod,
 	/client/proc/smite_vr,
 	/client/proc/smite,
-	/client/proc/admin_lightning_strike
-	)
-
-var/list/admin_verbs_spawn = list(
-	/datum/admins/proc/spawn_fruit,
-	/datum/admins/proc/spawn_custom_item,
-	/datum/admins/proc/check_custom_items,
-	/datum/admins/proc/spawn_plant,
-	/datum/admins/proc/spawn_atom, // Allows us to spawn instances,
-	/client/proc/respawn_character,
-	/client/proc/spawn_character_mob,
-	/client/proc/virus2_editor,
-	/client/proc/spawn_chemdisp_cartridge,
-	/client/proc/map_template_load,
-	/client/proc/map_template_upload,
-	/client/proc/map_template_load_on_new_z
-	)
-
-var/list/admin_verbs_server = list(
-	/datum/admins/proc/capture_map,
-	/client/proc/Set_Holiday,
-	/client/proc/ToRban,
-	/datum/admins/proc/startnow,
-	/datum/admins/proc/restart,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
-	/datum/admins/proc/toggleaban,
-	/client/proc/cmd_mod_say,
-	/client/proc/everyone_random,
-	/datum/admins/proc/toggleAI,
-	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
-	/client/proc/cmd_debug_del_all,
-	/client/proc/cmd_admin_clear_mobs,
-	/datum/admins/proc/adrev,
-	/datum/admins/proc/adspawn,
-	/datum/admins/proc/adjump,
+	/client/proc/toggle_random_events,
+	/datum/admins/proc/call_drop_pod,
+	/datum/admins/proc/call_supply_drop,
+	/datum/admins/proc/cmd_admin_dress,
 	/datum/admins/proc/toggle_aliens,
 	/datum/admins/proc/toggle_space_ninja,
-	/client/proc/toggle_random_events,
+)
+
+var/list/admin_verbs_spawn = list(
+	/client/proc/map_template_load_on_new_z,
+	/client/proc/map_template_load,
+	/client/proc/map_template_upload,
+	/client/proc/respawn_character,
+	/client/proc/spawn_character_mob,
+	/client/proc/spawn_chemdisp_cartridge,
+	/client/proc/virus2_editor,
+	/datum/admins/proc/check_custom_items,
+	/datum/admins/proc/spawn_atom,           // Allows us to spawn instances.
+	/datum/admins/proc/spawn_custom_item,
+	/datum/admins/proc/spawn_fruit,
+	/datum/admins/proc/spawn_plant,
+)
+
+var/list/admin_verbs_server = list(
 	/client/proc/check_customitem_activity,
-	/client/proc/nanomapgen_DumpImage,
-	/client/proc/modify_server_news,
-	/client/proc/recipe_dump,
-	/client/proc/panicbunker,
+	/client/proc/cmd_admin_clear_mobs,
+	/client/proc/cmd_admin_delete,          // Delete an instance/object/mob/etc.
+	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_mod_say,
+	/client/proc/everyone_random,
 	/client/proc/ip_reputation,
+	/client/proc/modify_server_news,
+	/client/proc/nanomapgen_DumpImage,
+	/client/proc/panicbunker,
 	/client/proc/paranoia_logging,
-	/client/proc/reestablish_db_connection
-	)
+	/client/proc/recipe_dump,
+	/client/proc/reestablish_db_connection,
+	/client/proc/Set_Holiday,
+	/client/proc/toggle_random_events,
+	/client/proc/ToRban,
+	/datum/admins/proc/adjump,
+	/datum/admins/proc/adrev,
+	/datum/admins/proc/adspawn,
+	/datum/admins/proc/capture_map,
+	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/startnow,
+	/datum/admins/proc/toggle_aliens,
+	/datum/admins/proc/toggle_space_ninja,
+	/datum/admins/proc/toggleaban,
+	/datum/admins/proc/toggleAI,
+)
 
 var/list/admin_verbs_debug = list(
-	/client/proc/cmd_admin_list_open_jobs,
-	/client/proc/Debug2,
-	/client/proc/kill_air,
-	/client/proc/ZASSettings,
-	/client/proc/reload_configuration,
-	/client/proc/cmd_debug_make_powernets,
-	/client/proc/kill_airgroup,
-	/client/proc/debug_controller,
-	/client/proc/debug_antagonist_template,
-	/client/proc/cmd_debug_mob_lists,
+	/client/proc/admin_ghost,               // Allows us to ghost/reenter body at will.
+	/client/proc/admin_give_modifier,
+	/client/proc/air_report,
+	/client/proc/apply_random_map,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
 	/client/proc/cmd_admin_delete,
+	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_make_powernets,
+	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_init_log,
 	/client/proc/cmd_display_overlay_log,
-	/client/proc/air_report,
+	/client/proc/create_random_map,
+	/client/proc/debug_antagonist_template,
+	/client/proc/debug_controller,
+	/client/proc/debug_rogueminer,
+	/client/proc/Debug2,
+	/client/proc/delete_random_map,
+	/client/proc/dsay,
+	/client/proc/enable_debug_verbs,
+	/client/proc/Jump,
+	/client/proc/jumptocoord,
+	/client/proc/jumptomob,
+	/client/proc/kill_air,
+	/client/proc/kill_airgroup,
+	/client/proc/overlay_random_map,
+	/client/proc/print_random_map,
 	/client/proc/reload_admins,
+	/client/proc/reload_configuration,
 	/client/proc/reload_eventMs,
 	/client/proc/restart_controller,
-	/datum/admins/proc/restart,
-	/client/proc/print_random_map,
-	/client/proc/create_random_map,
-	/client/proc/apply_random_map,
-	/client/proc/overlay_random_map,
-	/client/proc/delete_random_map,
-	/client/proc/show_plant_genes,
-	/client/proc/enable_debug_verbs,
-	/client/proc/callproc,
-	/client/proc/callproc_datum,
 	/client/proc/SDQL2_query,
-	/client/proc/Jump,
-	/client/proc/debug_rogueminer,
+	/client/proc/show_gm_status,
+	/client/proc/show_line_profiling,
+	/client/proc/show_plant_genes,
+	/client/proc/simple_DPS,
 	/client/proc/start_line_profiling,
 	/client/proc/stop_line_profiling,
-	/client/proc/show_line_profiling,
-	/client/proc/jumptomob,
-	/client/proc/jumptocoord,
-	/client/proc/dsay,
 	/client/proc/toggle_debug_logs,
-	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
-	/datum/admins/proc/view_runtimes,
-	/client/proc/show_gm_status,
-	/datum/admins/proc/change_weather,
+	/client/proc/ZASSettings,
 	/datum/admins/proc/change_time,
-	/client/proc/admin_give_modifier,
-	/client/proc/simple_DPS
-	)
+	/datum/admins/proc/change_weather,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/view_runtimes,
+)
 
 var/list/admin_verbs_paranoid_debug = list(
-	/client/proc/callproc,
 	/client/proc/callproc_datum,
-	/client/proc/debug_controller
-	)
+	/client/proc/callproc,
+	/client/proc/debug_controller,
+)
 
 var/list/admin_verbs_possess = list(
 	/proc/possess,
-	/proc/release
-	)
+	/proc/release,
+)
+
 var/list/admin_verbs_permissions = list(
-	/client/proc/edit_admin_permissions
-	)
+	/client/proc/edit_admin_permissions,
+)
+
 var/list/admin_verbs_rejuv = list(
-	/client/proc/respawn_character
-	)
+	/client/proc/respawn_character,
+)
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
-	/client/proc/deadmin_self,
-//	/client/proc/deadchat,
-	/datum/admins/proc/show_traitor_panel,
-	/datum/admins/proc/toggleenter,
-	/datum/admins/proc/toggleguests,
-	/datum/admins/proc/announce,
-	/client/proc/colorooc,
-	/client/proc/admin_ghost,
-	/client/proc/toggle_view_range,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_icsubtle_message,
-	/client/proc/cmd_admin_check_contents,
-	/client/proc/cmd_admin_check_player_logs,
-	/client/proc/cmd_admin_check_dialogue_logs,
-	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
-	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,
+	/client/proc/admin_ghost,
+	/client/proc/air_report,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
 	/client/proc/check_words,
+	/client/proc/cinematic,
+	/client/proc/cmd_admin_add_freeform_ai_law,
+	/client/proc/cmd_admin_add_random_ai_law,
+	/client/proc/cmd_admin_add_random_ai_law,
+	/client/proc/cmd_admin_check_contents,
+	/client/proc/cmd_admin_check_dialogue_logs,
+	/client/proc/cmd_admin_check_player_logs,
+	/client/proc/cmd_admin_clear_mobs,
+	/client/proc/cmd_admin_create_centcom_report,
+	/client/proc/cmd_admin_direct_narrate,
+	/client/proc/cmd_admin_gib_self,
+	/client/proc/cmd_admin_icsubtle_message,
+	/client/proc/cmd_admin_list_open_jobs,
+	/client/proc/cmd_admin_local_narrate,
+	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_world_narrate,
+	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_make_powernets,
+	/client/proc/cmd_debug_mob_lists,
+	/client/proc/cmd_debug_tog_aliens,
+	/client/proc/cmd_display_del_log,
+	/client/proc/colorooc,
+	// /client/proc/deadchat,
+	/client/proc/deadmin_self,
+	/client/proc/debug_controller,
+	/client/proc/Debug2,
+	/client/proc/drop_bomb,
+	/client/proc/enable_debug_verbs,
+	/client/proc/everyone_random,
+	/client/proc/kill_air,
+	/client/proc/kill_airgroup,
+	/client/proc/make_sound,
+	/client/proc/manual_play_web_sound,
+	/client/proc/object_talk,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/manual_play_web_sound,
-	/client/proc/stop_sounds,
-	/client/proc/object_talk,
-	/datum/admins/proc/cmd_admin_dress,
-	/client/proc/cmd_admin_gib_self,
-	/client/proc/drop_bomb,
-	/client/proc/cinematic,
-	/datum/admins/proc/toggle_aliens,
-	/datum/admins/proc/toggle_space_ninja,
-	/client/proc/cmd_admin_add_freeform_ai_law,
-	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/cmd_admin_create_centcom_report,
-	/client/proc/make_sound,
-	/client/proc/toggle_random_events,
-	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/Set_Holiday,
-	/client/proc/ToRban,
-	/datum/admins/proc/startnow,
-	/datum/admins/proc/restart,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
-	/datum/admins/proc/toggleaban,
-	/client/proc/everyone_random,
+	/client/proc/reload_admins,
 	/client/proc/reload_configuration,
-	/datum/admins/proc/toggleAI,
+	/client/proc/restart_controller,
+	/client/proc/roll_dices,
+	/client/proc/Set_Holiday,
+	/client/proc/simple_DPS,
+	/client/proc/startSinglo,
+	/client/proc/stop_sounds,
+	/client/proc/toggle_random_events,
+	/client/proc/toggle_view_range,
+	/client/proc/ToRban,
+	/datum/admins/proc/access_news_network,
+	/datum/admins/proc/adjump,
 	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
-	/datum/admins/proc/adjump,
-	/client/proc/restart_controller,
-	/client/proc/cmd_admin_list_open_jobs,
-	/client/proc/callproc,
-	/client/proc/callproc_datum,
-	/client/proc/Debug2,
-	/client/proc/reload_admins,
-	/client/proc/kill_air,
-	/client/proc/cmd_debug_make_powernets,
-	/client/proc/kill_airgroup,
-	/client/proc/debug_controller,
-	/client/proc/startSinglo,
-	/client/proc/simple_DPS,
-	/client/proc/cmd_debug_mob_lists,
-	/client/proc/cmd_debug_del_all,
-	/client/proc/cmd_admin_clear_mobs,
-	/client/proc/cmd_debug_tog_aliens,
-	/client/proc/cmd_display_del_log,
-	/client/proc/air_report,
-	/client/proc/enable_debug_verbs,
-	/client/proc/roll_dices,
+	/datum/admins/proc/announce,
+	/datum/admins/proc/cmd_admin_dress,
+	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/set_tcrystals,
+	/datum/admins/proc/show_traitor_panel,
+	/datum/admins/proc/startnow,
+	/datum/admins/proc/toggle_aliens,
+	/datum/admins/proc/toggle_space_ninja,
+	/datum/admins/proc/toggleaban,
+	/datum/admins/proc/toggleAI,
+	/datum/admins/proc/toggleenter,
+	/datum/admins/proc/toggleguests,
 	/proc/possess,
 	/proc/release,
-	/datum/admins/proc/set_tcrystals
-	)
+)
+
 var/list/admin_verbs_mod = list(
-	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
-	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
-	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game.,
-	/datum/admins/proc/PlayerNotes,
-	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
-	/client/proc/cmd_mod_say,
-	/client/proc/cmd_event_say,
-	/datum/admins/proc/show_player_info,
-	/client/proc/player_panel,
-	/client/proc/dsay,
-//	/datum/admins/proc/show_skills,
-	/datum/admins/proc/show_player_panel,
-	/client/proc/check_antagonists,
-	/client/proc/aooc,
-	/client/proc/jobbans,
-	/client/proc/toggle_attack_logs,
-	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
-	/client/proc/cmd_admin_icsubtle_message,
-	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
-	/datum/admins/proc/sendFax,
 	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass
+	/client/proc/admin_ghost,                // Allows us to ghost/reenter body at will.
+	/client/proc/allow_character_respawn,    // Allows a ghost to respawn.
+	/client/proc/aooc,
+	/client/proc/check_antagonists,
+	/client/proc/cmd_admin_direct_narrate,
+	/client/proc/cmd_admin_icsubtle_message,
+	/client/proc/cmd_admin_pm_context,       // Right-click adminPM interface.
+	/client/proc/cmd_admin_pm_panel,         // Admin-pm list.
+	/client/proc/cmd_admin_subtle_message,   // Send an message to somebody as a 'voice in their head'.
+	/client/proc/cmd_event_say,
+	/client/proc/cmd_mod_say,
+	/client/proc/debug_variables,            // Allows us to -see- the variables of any instance in the game.
+	/client/proc/dsay,
+	/client/proc/jobbans,
+	/client/proc/player_panel,
+	/client/proc/revokebunkerbypass,
+	/client/proc/toggle_attack_logs,
+	/datum/admins/proc/paralyze_mob,
+	/datum/admins/proc/PlayerNotes,
+	/datum/admins/proc/sendFax,
+	/datum/admins/proc/show_player_info,
+	/datum/admins/proc/show_player_panel,
+	// /datum/admins/proc/show_skills,
 )
 
 var/list/admin_verbs_event_manager = list(
-	/client/proc/cmd_event_say,
-	/client/proc/cmd_admin_pm_context,
-	/client/proc/cmd_admin_pm_panel,
-	/datum/admins/proc/PlayerNotes,
 	/client/proc/admin_ghost,
-	/datum/admins/proc/show_player_info,
-	/client/proc/dsay,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_icsubtle_message,
-	/client/proc/debug_variables,
-	/client/proc/check_antagonists,
-	/client/proc/aooc,
-	/client/proc/cmd_admin_clear_mobs,
-	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/allow_character_respawn,
-	/datum/admins/proc/sendFax,
-	/client/proc/respawn_character,
-	/proc/possess,
-	/proc/release,
-	/client/proc/callproc,
-	/client/proc/callproc_datum,
-	/client/proc/debug_controller,
-	/client/proc/show_gm_status,
-	/datum/admins/proc/change_weather,
-	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
-	/client/proc/Jump,
-	/client/proc/jumptomob,
-	/client/proc/jumptocoord,
-	/client/proc/cmd_admin_delete,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
-	/client/proc/Set_Holiday,
-	/client/proc/make_sound,
-	/client/proc/toggle_random_events,
-	/datum/admins/proc/cmd_admin_dress,
-	/client/proc/cmd_admin_gib_self,
-	/client/proc/drop_bomb,
+	/client/proc/allow_character_respawn,
+	/client/proc/aooc,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
+	/client/proc/check_antagonists,
 	/client/proc/cmd_admin_add_freeform_ai_law,
 	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/make_sound,
-	/client/proc/toggle_random_events,
+	/client/proc/cmd_admin_clear_mobs,
+	/client/proc/cmd_admin_delete,
+	/client/proc/cmd_admin_direct_narrate,
+	/client/proc/cmd_admin_gib_self,
+	/client/proc/cmd_admin_icsubtle_message,
+	/client/proc/cmd_admin_pm_context,
+	/client/proc/cmd_admin_pm_panel,
+	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_event_say,
+	/client/proc/debug_controller,
+	/client/proc/debug_variables,
+	/client/proc/drop_bomb,
+	/client/proc/dsay,
 	/client/proc/editappear,
+	/client/proc/Jump,
+	/client/proc/jumptocoord,
+	/client/proc/jumptomob,
+	/client/proc/make_sound,
+	/client/proc/make_sound,
+	/client/proc/respawn_character,
 	/client/proc/roll_dices,
+	/client/proc/Set_Holiday,
+	/client/proc/show_gm_status,
+	/client/proc/toggle_random_events,
+	/client/proc/toggle_random_events,
+	/datum/admins/proc/call_drop_pod,
 	/datum/admins/proc/call_supply_drop,
-	/datum/admins/proc/call_drop_pod
+	/datum/admins/proc/change_time,
+	/datum/admins/proc/change_weather,
+	/datum/admins/proc/cmd_admin_dress,
+	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/paralyze_mob,
+	/datum/admins/proc/PlayerNotes,
+	/datum/admins/proc/sendFax,
+	/datum/admins/proc/show_player_info,
+	/proc/possess,
+	/proc/release,
 )
 
 /client/proc/add_admin_verbs()

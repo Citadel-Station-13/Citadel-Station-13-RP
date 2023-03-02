@@ -10,7 +10,7 @@
 /mob/living/silicon
 	var/list/silicon_subsystems = list(
 		/mob/living/silicon/proc/subsystem_alarm_monitor,
-		/mob/living/silicon/proc/subsystem_law_manager
+		/mob/living/silicon/proc/subsystem_law_manager,
 	)
 
 /mob/living/silicon/ai
@@ -20,7 +20,7 @@
 		/mob/living/silicon/proc/subsystem_crew_monitor,
 		/mob/living/silicon/proc/subsystem_law_manager,
 		/mob/living/silicon/proc/subsystem_power_monitor,
-		/mob/living/silicon/proc/subsystem_rcon
+		/mob/living/silicon/proc/subsystem_rcon,
 	)
 
 /mob/living/silicon/robot/syndicate

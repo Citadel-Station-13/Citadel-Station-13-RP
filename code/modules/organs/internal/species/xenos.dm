@@ -87,10 +87,10 @@
 	organ_tag = O_ACID
 
 	organ_verbs = list(
+		/mob/living/carbon/human/proc/acidspit,
 		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
-		/mob/living/carbon/human/proc/acidspit
-		)
+	)
 
 /obj/item/organ/internal/xenos/acidgland/grey
 	icon_state = "acidgland_grey"
@@ -131,9 +131,9 @@
 	organ_tag = O_RESIN
 
 	/*organ_verbs = list(
+		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/plant
-		)
+	)
 	edit because the xenos that use it have the verbs anyways and hybrids dont want the plant verb*/
 
 /obj/item/organ/internal/xenos/resinspinner/grey

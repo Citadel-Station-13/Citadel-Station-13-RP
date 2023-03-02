@@ -71,12 +71,12 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/succubus_drain,
-		/mob/living/carbon/human/proc/succubus_drain_finalize,
-		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/alraune_fruit_select,
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/alraune_fruit_select,
+		/mob/living/carbon/human/proc/succubus_drain_finalize,
+		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/tie_hair,
 	) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 

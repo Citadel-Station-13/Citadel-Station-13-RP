@@ -196,14 +196,14 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/plant,
-		/mob/living/carbon/human/proc/transfer_plasma,
+		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/evolve,
+		/mob/living/carbon/human/proc/plant,
+		/mob/living/carbon/human/proc/regurgitate,
 		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/corrosive_acid
-		)
+		/mob/living/carbon/human/proc/transfer_plasma,
+		/mob/living/proc/ventcrawl,
+	)
 
 /datum/species/xenos/drone/handle_post_spawn(var/mob/living/carbon/human/H)
 
@@ -235,11 +235,11 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/gut,
-		/mob/living/carbon/human/proc/leap,
-		/mob/living/carbon/human/proc/psychic_whisper,
+		TYPE_PROC_REF(/mob/living, ventcrawl),
+		TYPE_PROC_REF(/mob/living/carbon/human, tackle),
+		TYPE_PROC_REF(/mob/living/carbon/human, gut),
+		TYPE_PROC_REF(/mob/living/carbon/human, leap),
+		TYPE_PROC_REF(/mob/living/carbon/human, psychic_whisper),
 		/mob/living/carbon/human/proc/regurgitate
 		)
 
@@ -267,12 +267,12 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/corrosive_acid,
-		/mob/living/carbon/human/proc/neurotoxin,
+		TYPE_PROC_REF(/mob/living, ventcrawl),
+		TYPE_PROC_REF(/mob/living/carbon/human, tackle),
+		TYPE_PROC_REF(/mob/living/carbon/human, regurgitate),
+		TYPE_PROC_REF(/mob/living/carbon/human, transfer_plasma),
+		TYPE_PROC_REF(/mob/living/carbon/human, corrosive_acid),
+		TYPE_PROC_REF(/mob/living/carbon/human, neurotoxin),
 		/mob/living/carbon/human/proc/acidspit
 		)
 
@@ -306,15 +306,15 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/plant,
-		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/corrosive_acid,
-		/mob/living/carbon/human/proc/neurotoxin,
-		/mob/living/carbon/human/proc/acidspit,
+		TYPE_PROC_REF(/mob/living, ventcrawl),
+		TYPE_PROC_REF(/mob/living/carbon/human, psychic_whisper),
+		TYPE_PROC_REF(/mob/living/carbon/human, regurgitate),
+		TYPE_PROC_REF(/mob/living/carbon/human, lay_egg),
+		TYPE_PROC_REF(/mob/living/carbon/human, plant),
+		TYPE_PROC_REF(/mob/living/carbon/human, transfer_plasma),
+		TYPE_PROC_REF(/mob/living/carbon/human, corrosive_acid),
+		TYPE_PROC_REF(/mob/living/carbon/human, neurotoxin),
+		TYPE_PROC_REF(/mob/living/carbon/human, acidspit),
 		/mob/living/carbon/human/proc/resin
 		)
 

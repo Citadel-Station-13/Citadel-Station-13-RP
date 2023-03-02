@@ -42,14 +42,14 @@
 		"Your chitin feels hot."
 		)
 	inherent_verbs = list(
+		/mob/living/carbon/human/proc/hybrid_plant, // Replaced from the normal weed node to place a singular weed
+		/mob/living/carbon/human/proc/hybrid_resin,
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/toggle_pass_table,
-		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/sonar_ping,
-		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
-		)
+	)
 
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
@@ -141,4 +141,3 @@
 
 	icobase = 'icons/mob/species/xenohybrid/xeno_parts_greyscale.dmi'
 	//tail = ""
-

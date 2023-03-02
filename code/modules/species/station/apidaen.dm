@@ -74,11 +74,11 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
+		/mob/living/carbon/human/proc/nectar_select,
+		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
-		/mob/living/carbon/human/proc/tie_hair,
 	)
 
 // Did you know it's actually called a honey stomach? I didn't!

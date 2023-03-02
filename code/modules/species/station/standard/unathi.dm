@@ -130,8 +130,8 @@
 	descriptors = list()
 
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/shred_limb,
 	)
 
 /datum/species/unathi/equip_survival_gear(mob/living/carbon/human/H)
