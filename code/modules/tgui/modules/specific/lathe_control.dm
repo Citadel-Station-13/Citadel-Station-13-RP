@@ -6,9 +6,6 @@
  *
  * This is not great because we'll potentially have to duplicate code.
  * So, we use a module to abstract it.
- *
- * This module somewhat 'abuses' the TGUI module / data reducer,
- * by keying designs in such a way that streaming new designs doesn't reqiure a full refresh.
  */
 /datum/tgui_module/lathe_control
 	tgui_id = "TGUILatheControl"
