@@ -1,47 +1,3 @@
-/datum/atmosphere/planet/lythios43c
-	base_gases = list(
-	/datum/gas/nitrogen = 0.66,
-	/datum/gas/oxygen = 0.34
-	)
-	base_target_pressure = 76.9
-	minimum_pressure = 76.9
-	maximum_pressure = 76.9
-	minimum_temp = 220.14
-	maximum_temp = 241.72
-
-
-/datum/time/lythios43c
-	seconds_in_day = 10 HOURS
-
-/datum/planet/lythios43c
-	name = "Lythios-43c"
-	desc = "A freezing ball of ice,"
-	current_time = new /datum/time/lythios43c()
-
-
-/* // These need to be defined in your map's define folders
-var/datum/planet/lythios43c/planet_lythios43c = null
-
-/datum/planet/lythios43c
-	expected_z_levels = list(
-						Z_LEVEL_UNDERGROUND_FLOOR,
-						Z_LEVEL_UNDERGROUND_DEEP,
-						Z_LEVEL_UNDERGROUND,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_WEST_BASE,
-						Z_LEVEL_WEST_DEEP,
-						Z_LEVEL_WEST_CAVERN,
-						Z_LEVEL_WEST_PLAIN
-						)
-*/
-
-
-/datum/planet/lythios43c/New()
-	..()
-	planet_lythios43c = src
-	weather_holder = new /datum/weather_holder/lythios43c(src)
 
 /datum/planet/lythios43c/update_sun()
 	..()
@@ -428,19 +384,6 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 			if(show_message)
 				to_chat(H, pick(effect_message))
-
-/datum/weather/lythios43c/blood_moon
-	name = "blood moon"
-	light_modifier = 0.5
-	light_color = "#FF0000"
-	flight_failure_modifier = 25
-	transition_chances = list(
-		WEATHER_BLOODMOON = 100
-		)
-	observed_message = "Everything is red. Something really ominous is going on."
-	transition_messages = list(
-		"The sky turns blood red!"
-	)
 
 /datum/weather/lythios43c/fallout
 	name = "fallout"
