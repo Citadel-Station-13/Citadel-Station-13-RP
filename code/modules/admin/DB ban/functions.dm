@@ -98,6 +98,9 @@
 	message_admins("[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database.",1)
 	. = TRUE
 
+	// reload
+	jobban_loadbanfile()
+
 /datum/admins/proc/DB_ban_unban(ckey, bantype, job = "")
 
 	if(!check_rights(R_BAN))
@@ -166,6 +169,9 @@
 		return
 
 	DB_ban_unban_by_id(ban_id)
+
+	// reload
+	jobban_loadbanfile()
 
 /datum/admins/proc/DB_ban_edit(banid = null, param = null)
 

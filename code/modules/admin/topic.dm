@@ -858,6 +858,11 @@
 			// if you have to be ooc banned as an admin you should just be de-adminned?
 			// we'll add the function later when we overhaul banning
 			return
+
+		if(is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
+			to_chat(usr, SPAN_WARNING("[target_ckey] is already OOC banned. Use Unban-Panel to unban them."))
+			return
+
 		switch(alert(usr, "Temporary OOC Ban?", "OOC Ban", "Yes", "No", "Cancel"))
 			if("Yes")
 				var/minutes = input(usr, "How long in minutes?", "OOC Ban", 1440) as num|null
