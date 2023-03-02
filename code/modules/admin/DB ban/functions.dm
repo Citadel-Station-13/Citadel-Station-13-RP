@@ -96,8 +96,7 @@
 	)
 	to_chat(usr, "<font color=#4F49AF>Ban saved to database.</font>")
 	message_admins("[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database.",1)
-
-
+	. = TRUE
 
 /datum/admins/proc/DB_ban_unban(ckey, bantype, job = "")
 

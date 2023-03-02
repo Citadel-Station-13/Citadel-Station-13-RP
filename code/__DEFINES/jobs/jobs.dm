@@ -1,3 +1,7 @@
+//? job ids - these should never change after usage.
+//? they're used for savefiles, bans, and persistence.
+//? formatting should always be using underscores.
+
 #define JOB_ID_CAPTAIN "captain"
 #define JOB_ID_COMMAND_SECRETARY "command_secretary"
 
