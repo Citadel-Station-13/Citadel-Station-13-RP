@@ -9243,10 +9243,6 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
-"asu" = (
-/obj/structure/sign/double/barsign,
-/turf/simulated/wall,
-/area/crew_quarters/bar_backroom)
 "asv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -19276,17 +19272,6 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/obj/machinery/button/remote/airlock{
-	id = "barbackdoor";
-	name = "Back Door Locks";
-	pixel_x = 8;
-	pixel_y = -24;
-	req_one_access = list(25);
-	specialfunctions = 4
-	},
-/obj/machinery/light_switch{
-	pixel_y = -24
-	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aNr" = (
@@ -20572,6 +20557,17 @@
 /obj/item/material/ashtray/glass,
 /obj/item/material/ashtray/glass,
 /obj/item/material/ashtray/glass,
+/obj/machinery/button/remote/airlock{
+	id = "barbackdoor";
+	name = "Back Door Locks";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_one_access = list(25);
+	specialfunctions = 4
+	},
+/obj/machinery/light_switch{
+	pixel_y = -24
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aQb" = (
@@ -26199,6 +26195,9 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/structure/sign/double/barsign{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "tXJ" = (
@@ -38649,7 +38648,7 @@ jDU
 aRF
 eYo
 aQa
-asu
+aIs
 tvp
 kkA
 oHL
