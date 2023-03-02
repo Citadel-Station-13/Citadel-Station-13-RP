@@ -347,6 +347,19 @@
 	var/turf/T = locate(1, 1, index)
 	return !T.Above()
 
+//? base subtypes
+
+/**
+ * used for hardcoded world sectors
+ */
+/datum/world_sector/hardcoded
+	abstract_type = /datum/world_sector/hardcoded
+
+/**
+ * used for proc-gen'd world sectors
+ */
+/datum/world_sector/generated
+
 //? mobs
 
 /**
