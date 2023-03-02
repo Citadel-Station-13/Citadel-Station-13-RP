@@ -13,13 +13,13 @@
 /// Lythios4c (station) atmosphere ID
 #define ATMOSPHERE_ID_LYTHIOS43C		/datum/atmosphere/planet/lythios_43c
 /// Class H World Atmos IDs
-#define ATMOSPHERE_ID_DESERT			/datum/atmosphere/planet/classh
+#define ATMOSPHERE_ID_DESERT			/datum/atmosphere/planet/class_h
 /// Gaia PlanetAtmos IDs
-#define ATMOSPHERE_ID_GAIA				/datum/atmosphere/planet/classm
+#define ATMOSPHERE_ID_GAIA				/datum/atmosphere/planet/class_m
 /// Frozen World Atmos ID
-#define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/classp
+#define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/class_p
 /// Mining Planet PlanetAtmos IDs
-#define ATMOSPHERE_ID_MININGPLANET		/datum/atmosphere/planet/classg
+#define ATMOSPHERE_ID_MININGPLANET		/datum/atmosphere/planet/class_g
 /// Triumph Planet Atmos ID (If needed)
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo_3b
@@ -33,4 +33,4 @@
 #define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland
 
 /// Class D planetary atmosphere ID
-#define ATMOSPHERE_ID_CLASSD			/datum/atmosphere/planet/classd
+#define ATMOSPHERE_ID_CLASSD			/datum/atmosphere/planet/class_d

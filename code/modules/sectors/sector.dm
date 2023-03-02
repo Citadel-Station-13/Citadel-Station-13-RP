@@ -11,10 +11,12 @@
  */
 /datum/world_sector
 	//? identity
-	/// canonical name in code
+	/// canonical name in code - not player facing
 	var/name = "Unnamed Sector"
-	/// canonical description in code
-	var/desc = "A poor sector that was neglected and has no description."
+	/// player facing name
+	var/player_name = "Unknown"
+	/// description - player facing
+	var/player_desc = "A poor sector that was neglected and has no description."
 	/// our id - must be unique and immnutable once registered!
 	var/id
 	/// next id
@@ -123,6 +125,10 @@
 	var/atom/movable/screen/sector_parallax/render_holder
 	/// our tile holder, applied to all outdoor turfs on our zlevel
 	var/atom/movable/sector_visuals/tile_holder
+
+	//? fluff
+	/// what the sky beyond any covering + without any cycles is - null for none.
+	var/sky_description
 
 /datum/world_sector/New()
 	id = "[++id_next]"
