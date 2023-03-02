@@ -858,7 +858,6 @@
 			// if you have to be ooc banned as an admin you should just be de-adminned?
 			// we'll add the function later when we overhaul banning
 			return
-		var/mob/existing_mob = _existing_client?.mob
 		switch(alert(usr, "Temporary OOC Ban?", "OOC Ban", "Yes", "No", "Cancel"))
 			if("Yes")
 				var/minutes = input(usr, "How long in minutes?", "OOC Ban", 1440) as num|null
