@@ -135,7 +135,7 @@
 	for(var/pin in typesof(/obj/item/clothing/head/pin))
 		var/obj/item/clothing/head/pin/pin_type = pin
 		pins[initial(pin_type.name)] = pin_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(pins, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(pins, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/gear/head/hardhat
 	name = "Hardhat Selection"
@@ -148,7 +148,7 @@
 	for(var/hardhat in typesof(/obj/item/clothing/head/hardhat))
 		var/obj/item/clothing/head/hardhat/hardhat_type = hardhat
 		hardhats[initial(hardhat_type.name)] = hardhat_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hardhats, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hardhats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/gear/head/boater
 	name = "Hat, Boatsman"
@@ -193,7 +193,7 @@
 	for(var/santahat in typesof(/obj/item/clothing/head/santa))
 		var/obj/item/clothing/head/santa/santahat_type = santahat
 		santahats[initial(santahat_type.name)] = santahat_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(santahats, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(santahats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/gear/head/hijab
 	name = "Hijab (Colorable)"
@@ -305,7 +305,7 @@
 	for(var/orion_style in typesof(/obj/item/clothing/head/beret/orion))
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(orions, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(orions, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/gear/head/surgery
 	name = "Surgical Cap Selection"
