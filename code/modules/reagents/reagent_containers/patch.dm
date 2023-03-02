@@ -5,7 +5,7 @@
 
 /obj/item/reagent_containers/pill/patch
 	name = "patch"
-	desc = "A patch."
+	desc = "A thin, sticky patch, capable of suffusing chemicals through the skin."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	base_icon_state = "patch"
