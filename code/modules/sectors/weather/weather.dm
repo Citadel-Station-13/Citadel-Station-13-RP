@@ -133,9 +133,8 @@
 
 	//? advanced
 	/// components to attach; typepaths, gets init'd in start.
-	var/list/datum/weather_component/weather_components = list(
-
-	)
+	var/list/datum/weather_component/weather_components
+	#warn hook
 
 /**
  * what to do on start
