@@ -19276,6 +19276,17 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
+/obj/machinery/button/remote/airlock{
+	id = "barbackdoor";
+	name = "Back Door Locks";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_one_access = list(25);
+	specialfunctions = 4
+	},
+/obj/machinery/light_switch{
+	pixel_y = -24
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aNr" = (
@@ -24399,17 +24410,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "aXS" = (
-/obj/machinery/button/remote/airlock{
-	id = "barbackdoor";
-	name = "Back Door Locks";
-	pixel_x = 8;
-	pixel_y = -24;
-	req_one_access = list(25);
-	specialfunctions = 4
-	},
-/obj/machinery/light_switch{
-	pixel_y = -24
-	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
