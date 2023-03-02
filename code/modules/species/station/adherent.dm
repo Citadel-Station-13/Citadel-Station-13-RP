@@ -108,7 +108,7 @@
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 
 	base_skin_colours = list(
-		"Turquoise"   = "", // First so it's default.
+		"Turquoise"   = null, // First so it's default.
 		"Amethyst"    = "purple",
 		"Emerald"     = "green",
 		"Jet"         = "black",
