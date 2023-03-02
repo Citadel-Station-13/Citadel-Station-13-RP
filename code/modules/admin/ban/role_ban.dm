@@ -46,28 +46,21 @@
  * * role - role enum check [code/__DEFINES/admin/bans.dm] - BAN_ROLE_SERVER is not allowed here!
  * * minutes - minutes from Now() - null for permanent
  * * reason - why?
+ * * admin - the banning admin, if any
  *
  * @return TRUE / FALSE on success / failure
  */
-/proc/role_ban_ckey(ckey, character_id, role, minutes, reason)
+/proc/role_ban_ckey(ckey, character_id, role, minutes, reason, datum/admins/admin)
 	ASSERT(isnull(minutes) || (isnum(minutes) && minutes > 0))
 	// sanitize just in case
 	ckey = ckey(ckey)
 
-	// isolate from proccall, this is sanitized
-	var/mob/old_usr = usr
-	usr = null
+	if(IsAdminAdvancedProcCall())
+		return // use the panel!
 
-	//? shitcode alert: for now, db bans *must* be anchored to an admind atum.
+	//? shitcode alert: for now, db bans *must* be anchored to an admin datum.
 
-	var/datum/admins/holder_datum = old_usr?.client?.holder
-	if(!istype(holder_datum)) // hard istype, no rnuminutess allowed
-		. = FALSE
-	else
-		. = holder_datum.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey, reason = reason)
-
-	// restore admin proccall
-	usr = old_usr
+	. = admin?.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey, reason = reason) || FALSE
 
 // todo: query_role_banned_ckey(ckey)
 // todo: why_role_banned_ckey(ckey)

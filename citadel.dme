@@ -1780,6 +1780,7 @@
 #include "code\modules\admin\player_panel.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\ToRban.dm"
+#include "code\modules\admin\ban\ban_system.dm"
 #include "code\modules\admin\ban\role_ban.dm"
 #include "code\modules\admin\ban\server_ban.dm"
 #include "code\modules\admin\callproc\callproc.dm"
