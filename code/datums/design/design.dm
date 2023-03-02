@@ -39,6 +39,19 @@ other types of metals and chemistry for reagents).
 
 	/// Must be unique - identifier of design in CamelCase.
 	var/identifier
+	/// list of materials needed - typepath or id to amonut.
+	var/list/materials
+	/// list of reagents needed - typepath or id to amount.
+	var/list/reagents
+	/// types of lathes that can print us
+	var/lathe_type = NONE
+	/// time needed in deciseconds
+	var/work = 5 SECONDS
+	/// category - string or list, or null; null results in undefined behavior depending on UI.
+	var/category = "Misc"
+
+	#warn build path? how to handle?
+	#warn parse below
 
 	///Name of the created object. If null it will be 'guessed' from build_path if possible.
 	var/name = null
@@ -46,20 +59,8 @@ other types of metals and chemistry for reagents).
 	var/desc = null
 	///An item name before it is modified by various name-modifying procs
 	var/item_name = null
-	///Flag as to what kind machine the design is built in. See defines.
-	var/build_type = null
-	///List of materials. Format: "id" = amount.
-	var/list/materials = list()
-	///List of chemicals.
-	var/list/chemicals = list()
 	///The path of the object that gets created.
 	var/build_path = null
-	///How many ticks it requires to build
-	var/time = 6
-	///Primarily used for Mech Fabricators, but can be used for anything.
-	var/list/category = list()
-	///Optional string that interfaces can use as part of search filters. See- item/borg/upgrade/ai and the Exosuit Fabs.
-	var/search_metadata
 
 /datum/design/New()
 	if(!islist(category))
@@ -95,8 +96,13 @@ other types of metals and chemistry for reagents).
 
 /**
  * called when a lathe prints a design, instead of print()
+ *
+ * @params
+ * * where - where to put the finished product
+ * * fabricator - the lathe printing the product
+ * * utilizing - extra items used in the print, if applicable
  */
-/datum/design/proc/lathe_print(atom/where, obj/machinery/lathe/fabricator)
+/datum/design/proc/lathe_print(atom/where, obj/machinery/lathe/fabricator, list/obj/item/utilizing)
 	return print(where)
 
 //? legacy below
@@ -107,6 +113,9 @@ other types of metals and chemistry for reagents).
 /datum/design/proc/legacy_print(atom/where, fabricator)
 	return print(where)
 
+/**
+ * legacy science designs
+ */
 /datum/design/science
 	build_type = PROTOLATHE
 	///IDs of that techs the object originated from and the minimum level requirements.
