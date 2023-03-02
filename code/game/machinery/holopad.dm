@@ -187,6 +187,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(src)
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
+		if(!pad.operable())
+			continue
 		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(pad)
 		if(!our_sector || !their_sector)
 			if((sector_only || pad.sector_only) || (get_z(src) != get_z(pad)))
@@ -266,6 +268,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/should_auto_pickup(datum/holocall/inbound)
 	return call_auto_pickup
+
+/**
+ * hang up all calls
+ */
+/obj/machinery/holopad/proc/disconnect_all_calls()
+	#warn impl
+
+/**
+ * hang up a call
+ */
+/obj/machinery/holopad/proc/disconnect_call(datum/holocall/disconnecting)
+	#warn impl
 
 //? UI
 
@@ -412,7 +426,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * returns if we're projecting
  */
 /obj/machinery/holopad/proc/is_active()
-	#warn impl
+	return length(holograms)
 
 /obj/machinery/holopad/update_icon()
 	. = ..()
@@ -441,13 +455,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 //? Ticking
 
 /obj/machinery/holopad/process(delta_time)
+	if(!operable())
+		kill_all_ai_holograms()
+		disconnect_all_calls()
+		return
+
 	outgoing_call.validate()
-	#warn impl - ai?
-	#warn impl - locations
+	for(var/obj/effect/overlay/hologram/hologram as anything in holograms)
+		use_power_oneoff(power_per_hologram)
+		hologram.check_location()
 
 /obj/machinery/holopad/proc/check_hologram(obj/effect/overlay/hologram/holopad/holo)
 	if(!isturf(holo.loc) || !turf_in_range(holo.loc))
-		#warn impl
 		return FALSE
 	return TRUE
 
@@ -518,27 +537,14 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	return the_ai? (the_ai in ais_projecting) : length(ais_projecting)
 
 //? Legacy - Attack Handling
-/obj/machinery/holopad/attackby(obj/item/I, mob/user)
+/obj/machinery/holopad/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	. = ..()
+	if(.)
+		return
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
 		attack_hand(user)
-
-#warn parse below
-
-/obj/machinery/holopad/process(delta_time)
-	for (var/mob/living/silicon/ai/master in masters)
-		var/active_ai = (master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
-		if((machine_stat & NOPOWER) || !active_ai)
-			clear_holo(master)
-			continue
-
-		use_power(power_per_hologram)
-	return TRUE
-
-
-#warn parse above
-
 
 //? Say / Emote
 
@@ -755,6 +761,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/effect/overlay/hologram/proc/check_location()
 	return
 
+/obj/effect/overlay/hologram/proc/on_out_of_bounds()
+	return
+
 /**
  * used to set or generate holograms
  *
@@ -825,7 +834,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	return ..()
 
 /obj/effect/overlay/hologram/holopad/check_location()
-	pad.check_hologram(src)
+	if(!pad.check_hologram(src))
+		on_out_of_bounds()
+
+/obj/effect/overlay/hologram/holopad/on_out_of_bounds()
+	forceMove(get_turf(pad))
 
 /**
  * AI holograms
@@ -855,6 +868,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[owner];ooc_notes=1'>\[View\]</a>\n")
 	if(vored)
 		. += SPAN_WARNING("It seems to have [vored] inside of it!")
+
+/obj/effect/overlay/hologram/holopad/ai/on_out_of_bounds()
+	owner?.terminate_holopad_connection()
 
 /obj/effect/overlay/hologram/holopad/ai/proc/vore_someone(mob/living/victim, mob/living/silicon/ai/user)
 	if(vored)
