@@ -6,3 +6,15 @@ ROUND_END_COUNTDOWN 180
 
 ## How many seconds to wait before roundstart until starting the gamemode vote
 LOBBY_GAMEMODE_VOTE_DELAY 60
+
+## Should we appear on the hub?
+# HUB
+
+## At what pop to take us off the hub - 0 for disabled
+# MAX_HUB_POP 0
+
+## Enforce OOC notes before joining
+# ENFORCE_OOC_NOTES
+
+## Enforce flavor text to be set before joining
+# ENFORCE_FLAVOR_TEXT

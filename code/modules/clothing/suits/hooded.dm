@@ -352,7 +352,8 @@
 	name = "ratvarian winter coat"
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
 	icon_state = "coatratvar"
-	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
+	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/ratvar
 	var/real = TRUE
 
@@ -381,7 +382,8 @@
 	name = "narsian winter coat"
 	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "rad" = 10)
+	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/narsie
 	var/real = TRUE
 
