@@ -17,7 +17,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/card/id/gold
 	selection_color = "#2F2F7F"
 	req_admin_notify = 1
-	access = list() 			//See get_access()
+	additional_access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
 
@@ -35,9 +35,8 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 		"Captain" = /datum/prototype/alt_title/captain/captain
 	)
 
-
 /datum/role/job/station/captain/get_access()
-	return get_all_station_access().Copy()
+	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /datum/prototype/alt_title/overseer
 	title = "Overseer"

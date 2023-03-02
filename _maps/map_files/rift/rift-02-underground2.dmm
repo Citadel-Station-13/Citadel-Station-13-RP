@@ -819,7 +819,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ct" = (
-/obj/machinery/suit_storage_unit/atmos,
+/obj/machinery/suit_storage_unit/cryosuit,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "cu" = (
@@ -1581,11 +1581,10 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "eC" = (
-/obj/machinery/suit_storage_unit/engineering,
-/obj/machinery/suit_storage_unit/engineering,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/suit_storage_unit/cryosuit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "eG" = (
@@ -3914,6 +3913,9 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/machinery/computer/card{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "lE" = (
@@ -5537,6 +5539,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "pW" = (
@@ -6371,10 +6376,10 @@
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "th" = (
-/obj/machinery/suit_storage_unit/engineering,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/suit_storage_unit/cryosuit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "ti" = (
@@ -10286,8 +10291,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Lt" = (
-/obj/machinery/suit_storage_unit/atmos,
 /obj/structure/window/reinforced,
+/obj/machinery/suit_storage_unit/cryosuit,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Lu" = (
@@ -10299,7 +10304,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lw" = (
-/obj/machinery/suit_storage_unit/engineering,
+/obj/machinery/suit_storage_unit/cryosuit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Lx" = (
@@ -10320,13 +10325,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "LB" = (
-/obj/machinery/suit_storage_unit/engineering,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/suit_storage_unit/cryosuit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "LC" = (
@@ -12350,7 +12355,9 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+	},
 /obj/item/clothing/mask/breath,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,

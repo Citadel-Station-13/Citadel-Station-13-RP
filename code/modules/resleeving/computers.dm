@@ -6,7 +6,7 @@
 	icon_screen = "dna"
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/resleeving_control
-	req_access = list(access_heads) //Only used for record deletion right now.
+	req_access = list(ACCESS_COMMAND_BRIDGE) //Only used for record deletion right now.
 	var/list/pods = list() //Linked grower pods.
 	var/list/spods = list()
 	var/list/sleevers = list() //Linked resleeving booths.

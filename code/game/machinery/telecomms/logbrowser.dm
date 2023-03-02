@@ -4,7 +4,7 @@
 
 /obj/machinery/computer/telecomms/server
 	name = "Telecommunications Server Monitor"
-	desc = "View communication logs here. Translation not guaranteed."
+	desc = "View communication logs and operate triangulation systems here. Translation not guaranteed."
 	icon_screen = "comm_logs"
 
 	var/list/servers = list()	// the servers located by the computer
@@ -16,7 +16,7 @@
 
 	var/universal_translate = 0 // set to 1 if it can translate nonhuman speech
 
-	req_access = list(access_tcomsat)
+	req_access = list(ACCESS_ENGINEERING_TELECOMMS)
 
 /obj/machinery/computer/telecomms/server/ui_data(mob/user)
 	var/list/data = list()
@@ -37,7 +37,9 @@
 		data["selectedServer"] = list(
 			"id" = SelectedServer.id,
 			"totalTraffic" = SelectedServer.totaltraffic,
-			"logs" = list()
+			"logs" = list(),
+			"triangulating" = SelectedServer.triangulating,
+			"triangulation" = SelectedServer.triangulation_data(),
 		)
 
 		var/i = 0
@@ -137,6 +139,10 @@
 		if("cleartemp")
 			temp = null
 			. = TRUE
+
+		if("toggle_triangulation")
+			SelectedServer.set_triangulating(!SelectedServer.triangulating)
+			return TRUE
 
 /obj/machinery/computer/telecomms/server/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)

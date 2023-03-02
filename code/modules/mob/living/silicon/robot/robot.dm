@@ -72,7 +72,7 @@
 	/// Admin-settable for combat module use.
 	var/crisis
 	var/crisis_override = 0
-	var/integrated_light_power = 6
+	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
 
 //! ## Icon stuff
@@ -123,7 +123,7 @@
 	var/wiresexposed = FALSE
 	var/locked = TRUE
 	var/has_power = TRUE
-	var/list/req_access = list(access_robotics)
+	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	var/ident = 0
 	//var/list/laws = list()
 	var/viewalerts = FALSE
@@ -435,11 +435,22 @@
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
 	if (lights_on)
-		radio.set_light(integrated_light_power)
+		radio.set_light(integrated_light_power, 0.75, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
 	updateicon()
+
+/mob/living/silicon/robot/proc/get_light_color_for_icontype()
+	. = LIGHT_COLOR_TUNGSTEN
+	if (icon in GLOB.borg_light_color_lut)
+		var/list/lut = GLOB.borg_light_color_lut[icon]
+		if (module_sprites[icontype] in lut)
+			return lut[module_sprites[icontype]]
+
+	// Don't want to runtime if an admin is varediting a borg's icon.
+	else if (!(datum_flags & DF_VAR_EDITED))
+		CRASH("[icon] is missing entries in the borg flashlight LUT.")
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -886,16 +897,27 @@
 	. = ..()
 	updateicon()
 
-/mob/living/silicon/robot/updateicon()
-	if (wideborg)
-		zmm_flags |= ZMM_LOOKAHEAD
-	else
-		zmm_flags &= ~ZMM_LOOKAHEAD
 
+/mob/living/silicon/robot/updateicon()
 	cut_overlays()
+
+	if (dogborg)
+		// Resting dogborgs don't get overlays.
+		if (stat == CONSCIOUS && resting)
+			if(sitting)
+				icon_state = "[module_sprites[icontype]]-sit"
+			else if(bellyup)
+				icon_state = "[module_sprites[icontype]]-bellyup"
+			else
+				icon_state = "[module_sprites[icontype]]-rest"
+			return
+
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
-			add_overlay("eyes-[module_sprites[icontype]]")
+			add_overlay(list(
+				"eyes-[module_sprites[icontype]]",
+				emissive_appearance(icon, "eyes-[module_sprites[icontype]]")
+			))
 
 	if(opened)
 		var/panelprefix = custom_sprite ? "[src.ckey]-[src.sprite_name]" : "ov"
@@ -917,34 +939,32 @@
 		else
 			icon_state = module_sprites[icontype]
 
-	if(dogborg == TRUE && stat == CONSCIOUS)
-		if(sleeper_g == TRUE)
-			add_overlay("[module_sprites[icontype]]-sleeper_g")
-		if(sleeper_r == TRUE)
-			add_overlay("[module_sprites[icontype]]-sleeper_r")
-		if(istype(module_active,/obj/item/gun/energy/laser/mounted))
-			add_overlay("laser")
-		if(istype(module_active,/obj/item/gun/energy/taser/mounted/cyborg))
-			add_overlay("taser")
-		if(istype(module_active,/obj/item/gun/energy/taser/xeno/robot))
-			add_overlay("taser")
-		if(lights_on)
-			add_overlay("eyes-[module_sprites[icontype]]-lights")
-		if(resting)
-			cut_overlays() // Hide that gut for it has no ground sprite yo.
-			if(sitting)
-				icon_state = "[module_sprites[icontype]]-sit"
-			if(bellyup)
-				icon_state = "[module_sprites[icontype]]-bellyup"
-			else if(!sitting && !bellyup)
-				icon_state = "[module_sprites[icontype]]-rest"
-		else
+	if (dogborg)
+		if (stat == CONSCIOUS)
 			icon_state = "[module_sprites[icontype]]"
+			if(sleeper_g)
+				var/state = "[module_sprites[icontype]]-sleeper_g"
+				if (icon_exists(icon, state, FALSE))
+					add_overlay(state)
+				else
+					// This one seems to always be present.
+					add_overlay("[module_sprites[icontype]]-sleeper_r")
+			if(sleeper_r)
+				add_overlay("[module_sprites[icontype]]-sleeper_r")
 
-	if(dogborg == TRUE && stat == DEAD)
-		icon_state = "[module_sprites[icontype]]-wreck"
-		add_overlay("wreck-overlay")
+			if(istype(module_active, /obj/item/gun/energy/taser/mounted/cyborg))
+				add_overlay("taser")
+			else if(istype(module_active, /obj/item/gun/energy/laser/mounted))
+				add_overlay("laser")
+			else if(istype(module_active, /obj/item/gun/energy/taser/xeno/robot))
+				add_overlay("taser")
 
+			if(lights_on)
+				add_overlay("eyes-[module_sprites[icontype]]-lights")
+
+		else if (stat == DEAD)
+			icon_state = "[module_sprites[icontype]]-wreck"
+			add_overlay("wreck-overlay")
 
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)

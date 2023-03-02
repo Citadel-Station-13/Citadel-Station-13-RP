@@ -6,7 +6,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "comm"
 	light_color = "#0099ff"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/communications
 	var/prints_intercept = 1
 	var/authenticated = 0
@@ -72,7 +72,7 @@
 			if (I && istype(I))
 				if(src.check_access(I))
 					authenticated = 1
-				if(access_captain in I.access)
+				if(ACCESS_COMMAND_CAPTAIN in I.access)
 					authenticated = 2
 					crew_announcement.announcer = GetNameAndAssignmentFromId(I)
 		if("logout")
