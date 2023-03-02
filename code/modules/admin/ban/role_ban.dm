@@ -1,3 +1,8 @@
+//? Role ban system
+//? Rolebans are for taking functionality away from problematic players.
+//? If you want a player off the server / there's no point in keeping then,
+//? use server_ban.dm functions instead.
+
 /**
  * master proc to check if someone's banned from a role
  *
@@ -9,6 +14,9 @@
  * @return TRUE / FALSE for if they are banned right now
  */
 /proc/is_role_banned_ckey(ckey, character_id, role)
+	// sanitize just in case
+	ckey = ckey
+
 	// isolate from proccall, this is sanitized
 	var/mob/old_usr = usr
 	usr = null
@@ -37,11 +45,14 @@
  * * character_id - the character's id, null for global account ban
  * * role - role enum check [code/__DEFINES/admin/bans.dm] - BAN_ROLE_SERVER is not allowed here!
  * * minutes - minutes from Now() - null for permanent
+ * * reason - why?
  *
  * @return TRUE / FALSE on success / failure
  */
-/proc/role_ban_ckey(ckey, character_id, role, minutes)
+/proc/role_ban_ckey(ckey, character_id, role, minutes, reason)
 	ASSERT(isnull(minutes) || (isnum(minutes) && minutes > 0))
+	// sanitize just in case
+	ckey = ckey(ckey)
 
 	// isolate from proccall, this is sanitized
 	var/mob/old_usr = usr
@@ -53,7 +64,7 @@
 	if(!istype(holder_datum)) // hard istype, no rnuminutess allowed
 		. = FALSE
 	else
-		. = holder_datum.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey)
+		. = holder_datum.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey, reason = reason)
 
 	// restore admin proccall
 	usr = old_usr
