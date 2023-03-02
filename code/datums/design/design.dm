@@ -37,16 +37,15 @@ other types of metals and chemistry for reagents).
 	/// Abstract type.
 	abstract_type = /datum/design
 
+	/// Must be unique - identifier of design in CamelCase.
+	var/identifier
+
 	///Name of the created object. If null it will be 'guessed' from build_path if possible.
 	var/name = null
 	///Description of the created object. If null it will use group_desc and name where applicable.
 	var/desc = null
 	///An item name before it is modified by various name-modifying procs
 	var/item_name = null
-	///ID of the created object for easy refernece. Alphanumeric, lower-case, no symbols.
-	var/id = "id"
-	///IDs of that techs the object originated from and the minimum level requirements.
-	var/list/req_tech = list()
 	///Flag as to what kind machine the design is built in. See defines.
 	var/build_type = null
 	///List of materials. Format: "id" = amount.
@@ -59,8 +58,6 @@ other types of metals and chemistry for reagents).
 	var/time = 6
 	///Primarily used for Mech Fabricators, but can be used for anything.
 	var/list/category = list()
-	///Sorting order
-	var/sort_string = "ZZZZZ"
 	///Optional string that interfaces can use as part of search filters. See- item/borg/upgrade/ai and the Exosuit Fabs.
 	var/search_metadata
 
@@ -112,6 +109,8 @@ other types of metals and chemistry for reagents).
 
 /datum/design/science
 	build_type = PROTOLATHE
+	///IDs of that techs the object originated from and the minimum level requirements.
+	var/list/req_tech = list()
 
 //Make sure items don't get free power
 /datum/design/science/print(atom/where)
