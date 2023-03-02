@@ -88,3 +88,9 @@
 
 /obj/machinery/lathe/proc/tgui_controller()
 	return ui_controller || (ui_controller = new(src))
+
+/obj/machinery/lathe/proc/available_design_ids()
+	#warn impl
+
+/obj/machinery/lathe/proc/available_designs()
+	#warn impl
