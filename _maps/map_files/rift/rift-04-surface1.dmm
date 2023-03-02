@@ -10107,7 +10107,7 @@
 	},
 /obj/item/rig/medical/equipped{
 	req_access = list(5)
-},
+	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -36337,6 +36337,12 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/light,
 /mob/living/simple_mob/animal/passive/cat/runtime,
+/obj/machinery/computer/card{
+	dir = 1
+	},
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "xcD" = (

@@ -156,7 +156,7 @@
 
 	return data
 
-/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

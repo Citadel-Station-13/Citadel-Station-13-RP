@@ -11,7 +11,7 @@
 	icon_state = "pcu"
 	icon_keyboard = "pcu_key"
 	light_color = "#5284e7"
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/skills/pcu
 	density = FALSE
 	var/obj/item/card/id/scan = null

@@ -8,7 +8,7 @@
 	icon_opened = "secureexpopen"
 	icon_broken = "secureexpbroken"
 	icon_off = "secureexpoff"
-	req_access = list(access_explorer)
+	req_access = list(ACCESS_GENERAL_EXPLORER)
 
 	starts_with = list(
 		/obj/item/clothing/under/explorer,
@@ -81,7 +81,7 @@
 //Pilot Locker
 /obj/structure/closet/secure_closet/pilot
 	name = "pilot locker"
-	req_access = list(access_pilot)
+	req_access = list(ACCESS_GENERAL_PILOT)
 
 /obj/structure/closet/secure_closet/pilot
 	starts_with = list(
@@ -125,7 +125,7 @@
 	icon_opened = "secureexpopen"
 	icon_broken = "secureexpbroken"
 	icon_off = "secureexpoff"
-	req_access = list(access_gateway)
+	req_access = list(ACCESS_GENERAL_GATEWAY)
 
 	starts_with = list(
 		/obj/item/clothing/under/explorer,

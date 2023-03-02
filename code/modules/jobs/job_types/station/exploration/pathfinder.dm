@@ -15,8 +15,8 @@
 	minimal_player_age = 7
 	pto_type = PTO_EXPLORATION
 
-	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
-	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
+	additional_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_EXPLORER, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_GATEWAY, ACCESS_GENERAL_PATHFINDER)
+	minimal_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_EXPLORER, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_GATEWAY, ACCESS_GENERAL_PATHFINDER)
 	outfit_type = /datum/outfit/job/station/pathfinder
 	desc = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(

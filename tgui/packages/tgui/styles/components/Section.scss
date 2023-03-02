@@ -30,6 +30,11 @@ $separator-color: colors.$primary !default;
   border-bottom: base.em(2px) solid $separator-color;
 }
 
+.Section__titleHolder {
+position: relative;
+padding: 0.5em;
+}
+
 .Section__titleText {
   font-size: base.em(14px);
   font-weight: bold;
@@ -40,7 +45,6 @@ $separator-color: colors.$primary !default;
   position: absolute;
   display: inline-block;
   right: 0.5em;
-  margin-top: base.em(-1px);
 }
 
 .Section__rest {

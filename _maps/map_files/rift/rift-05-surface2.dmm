@@ -2093,6 +2093,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
+/obj/structure/dogbed{
+	desc = "A bed made especially for dogs, or other similarly sized pets. Brutus has since grown out of his bed it seems.";
+	name = "Brutus' Bed"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "byv" = (
@@ -4010,7 +4014,7 @@
 /obj/structure/table/rack/shelf,
 /obj/item/rig/hazmat/equipped{
 	req_access = list(65)
-},
+	},
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -14521,6 +14525,9 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
+/obj/machinery/computer/card{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "kMS" = (
@@ -21961,9 +21968,8 @@
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
 	},
-/obj/structure/dogbed{
-	desc = "A bed made especially for dogs, or other similarly sized pets. Brutus has since grown out of his bed it seems.";
-	name = "Brutus' Bed"
+/obj/machinery/computer/card{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)

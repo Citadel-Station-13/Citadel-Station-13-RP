@@ -170,7 +170,7 @@
 /obj/machinery/computer/arcade/clawmachine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ClawMachine", name, ui_x = 300, ui_y = 400)
+		ui = new(user, src, "ClawMachine", name)
 		ui.autoupdate = TRUE
 		ui.open()
 
