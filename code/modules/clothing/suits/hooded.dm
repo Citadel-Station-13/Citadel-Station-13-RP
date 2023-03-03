@@ -63,8 +63,9 @@
 				else
 					hood.atom_flags &= ~PHORONGUARD
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
-				if(armor)
-					hood.armor = armor.Copy()
+				hood.armor = armor?.Copy()
+				hood.atom_colours = atom_colours?.Copy()
+				hood.update_atom_colour()
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]-t"
