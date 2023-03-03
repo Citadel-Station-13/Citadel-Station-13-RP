@@ -139,7 +139,7 @@
 			src.currmsg = 0
 			src.state = STATE_MESSAGELIST
 		if("toggleatc")
-			src.ATC.squelched = !src.ATC.squelched
+			src.ATC.reroute_traffic()
 		if("viewmessage")
 			src.state = STATE_VIEWMESSAGE
 			if (!src.currmsg)
