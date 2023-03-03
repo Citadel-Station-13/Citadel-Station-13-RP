@@ -2723,7 +2723,6 @@
 #include "code\modules\lore_hardcoded\species\species.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\_base.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\citizenship.dm"
-#include "code\modules\lore_hardcoded\species\tajaran\faction.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\origin.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\religion.dm"
 #include "code\modules\mapping\map_config.dm"
