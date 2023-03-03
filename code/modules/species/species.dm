@@ -45,6 +45,8 @@
 	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
+	/// default culture
+	var/default_culture = /datum/lore/character_background/culture/custom
 	/// fluff flags
 	var/species_fluff_flags = NONE
 

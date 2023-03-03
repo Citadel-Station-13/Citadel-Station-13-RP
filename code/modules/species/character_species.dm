@@ -23,6 +23,7 @@
 	template.default_citizenship = default_citizenship
 	template.default_faction = default_faction
 	template.default_religion = default_religion
+	template.default_culture = default_culture
 	template.species_fluff_flags = species_fluff_flags
 	// copy language
 	template.default_language = default_language
@@ -95,6 +96,8 @@
 	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
+	/// default culture
+	var/default_culture = /datum/lore/character_background/culture/custom
 
 	//! Languages - IDs only, as typepaths are too expensive to resolve
 	/// has galactic common? you better not disable this unless you know what you're doing
@@ -133,6 +136,9 @@
 
 /datum/character_species/proc/get_default_religion_id()
 	return SScharacters.resolve_religion(default_religion).id
+
+/datum/character_species/proc/get_default_culture_id()
+	return SScharacters.resolve_culture(default_culture).id
 
 /datum/character_species/proc/get_intrinsic_language_ids()
 	RETURN_TYPE(/list)
