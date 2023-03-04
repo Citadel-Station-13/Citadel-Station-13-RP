@@ -60,8 +60,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	else
 		if(squelched)
 			msg("Resuming broadcast of ATC communications.")
-		squelched = FALSE
-		START_PROCESSING(SSobj, src)
+			squelched = FALSE
+			START_PROCESSING(SSobj, src)
 
 /datum/lore/atc_controller/proc/shift_ending(evac = FALSE)
 	msg("[GLOB.using_map.shuttle_name], this is [GLOB.using_map.dock_name] Control, you are cleared to complete routine transfer from [GLOB.using_map.station_name] to [GLOB.using_map.dock_name].")
