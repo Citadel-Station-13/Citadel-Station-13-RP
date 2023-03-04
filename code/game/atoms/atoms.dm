@@ -34,7 +34,26 @@
 
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials
-	var/worth = 0
+	var/worth_intrinsic = 0
+	/// static worth of contents - only read if getting a static worth from typepath.
+	var/worth_containing = 0
+	/// static worth of raw materials - only read if getting a static worth from typepath.
+	var/worth_materials = 0
+	/// intrinsic worth default markup when buying as factor (2 for 2x)
+	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
+	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
+	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
+	/**
+	 * * DANGER * - do not touch this variable unless you know what you are doing.
+	 *
+	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
+	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
+	 * In those cases, use the other variables to control its static worth.
+	 *
+	 * This means that things like cargo should avoid "intuiting" the value of this object
+	 * through initial()'s alone.
+	 */
+	var/worth_dynamic = FALSE
 
 	//? Colors
 	/**
