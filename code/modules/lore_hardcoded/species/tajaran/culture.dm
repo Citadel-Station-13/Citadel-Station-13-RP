@@ -1,17 +1,21 @@
 /datum/lore/character_background/culture/species/tajaran/primary
 	name = "Tajaran"
+	id = "culture_tajaran_main"
 	desc = "The first Tajaran ethnicity who Humanity came in contact with is generally viewed as the 'typical Tajara', which is reinforced by their numerical superiority over the other groups. Additionally, given their large numbers and capabilities, they most often serve in governmental positions and as ambassadors to other races; this leads to them being taken as the 'face' of the Tajaran race, as it were. Hharar trend towards being the most intellectual of all Tajaran groups, and as such their physical prowess is significantly reduced. The Hharar are the stereotypical 'worker' Tajara, commonly described as loyal employees who are passionate and not afraid to voice their opinions. The Hharar are usually beaver brown, kochiba, or taupe in coloration."
 
 /datum/lore/character_background/culture/species/tajaran/ethnicity_zhan
 	name = "Zhan"
+	id = "culture_tajaran_zhan"
 	desc = "The second most populous of Tajaran ethnicities, and are considered to be the backbone of the Tajaran workforce. Because of their history of hard work and the way they adapted to harsh mountain life, Zhan-Khazan are more physically intimidating than other Tajara. Featuring more toned, muscular bodies, thicker fur coats, and heavier bodyweight, they are well-suited to tasks requiring brute strength and heavy lifting. Due to their status as laborer they suffer discrimination and are usually regarded as less intelligent. Prior to the Great Frost, a great number of Zhan-Khazan died in order to produce the Hearth Engines for a number of elites, however as the storm grew closer instead of leaving their worksite, many Zhan-Khazan occupied it after rebelling against the nobility who initially hired them to create it. Zhan-Khazan are usually blue-grey, dark gray, or chocolate in coloration."
 
 /datum/lore/character_background/culture/species/tajaran/ethnicity_msai
 	name = "M'sai"
+	id = "culture_tajaran_msai"
 	desc = "The third most populous Tajaran ethnic group, the M'sai were at one point the hunters for ancient Tajara and evolved to have lithe, slender forms, and light fur that hid them in the blizzards on Adhomai. As Tajaran society advanced, M'sai could be found in many roles related to combat, including law enforcement and military service. They are very loyal to their friends and family but aren't as overt about it as the Zhan-Khazan. With wide eyes and acute senses, they make great soldiers, with vision adapted to compensation for the heavy blizzards that plague their home planet. They are also great survivalists and are capable of scrounging food for themselves via hunting. With the Great Frost, M’sai were the luckiest of all Tajara. Some M’sai returned to an almost tribal way of life if not near Hearths but struggled to survive, however those who were lucky enough to have a Hearth Engine thrived in the new world. M'sai are usually white, ivory, wheat, or silver in coloration."
 
 /datum/lore/character_background/culture/species/tajaran/ethnicity_njarir
 	name = "Njarir"
+	id = "culture_tajaran_njarir"
 	innate_languages = list(
 		/datum/language/tajaranakhani
 	)
