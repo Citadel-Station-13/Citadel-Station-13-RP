@@ -2,7 +2,7 @@
 	name = "Faction"
 	save_key = CHARACTER_DATA_FACTION
 	load_order = PREFERENCE_LOAD_ORDER_LORE_FACTION
-	sort_order = 5
+	sort_order = 7
 
 /datum/category_item/player_setup_item/background/faction/content(datum/preferences/prefs, mob/user, data)
 	. = list()

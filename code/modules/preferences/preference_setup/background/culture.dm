@@ -1,7 +1,7 @@
 /datum/category_item/player_setup_item/background/culture
 	name = "Culture"
 	save_key = CHARACTER_DATA_CULTURE
-	sort_order = 3
+	sort_order = 5
 
 /datum/category_item/player_setup_item/background/culture/content(datum/preferences/prefs, mob/user, data)
 	. = list()

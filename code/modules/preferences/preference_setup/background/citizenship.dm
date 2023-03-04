@@ -1,7 +1,7 @@
 /datum/category_item/player_setup_item/background/citizenship
 	name = "Citizenship"
 	save_key = CHARACTER_DATA_CITIZENSHIP
-	sort_order = 3
+	sort_order = 4
 
 /datum/category_item/player_setup_item/background/citizenship/content(datum/preferences/prefs, mob/user, data)
 	. = list()

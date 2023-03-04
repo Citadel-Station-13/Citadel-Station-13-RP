@@ -1,7 +1,7 @@
 /datum/category_item/player_setup_item/background/origin
 	name = "Origin"
 	save_key = CHARACTER_DATA_ORIGIN
-	sort_order = 2
+	sort_order = 3
 
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
