@@ -28,7 +28,7 @@
 	name = "Advanced anti-particle rifle"
 	icon_state = "particle"
 	item_state = "particle_item"
-	desc = "An antiparticle projector gun with an enhanced power-generation unit."
+	desc = "A Kawashima Material Technology Model E-8 anti-particle projector. A down-scale of the same technology behind the Model 9 anti-particle cannon, fitted with an enhanced power-generation unit for theoretically infinite recharges."
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
@@ -44,7 +44,7 @@
 
 /obj/item/gun/energy/particle/cannon //particle version of laser cannon
 	name = "Anti-particle cannon"
-	desc = "A giant beast of an antimatter gun, packed with an internal reactor to allow for extreme longevity on remote mining expeditions."
+	desc = "A Kawashima Material Technology Model 9 anti-particle projector. The heaviest weapon on-offer from KMT, and a miner's best friend in the void, this massive antimatter weapon is powered by an internal reactor for increased longevity in the field."
 	icon_state = "heavyparticle"
 	item_state = "heavyparticle_item"
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
