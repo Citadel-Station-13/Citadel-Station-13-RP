@@ -3854,7 +3854,7 @@
 #include "code\modules\reagents\chemistry\logging.dm"
 #include "code\modules\reagents\chemistry\machinery.dm"
 #include "code\modules\reagents\chemistry\metabolism.dm"
-#include "code\modules\reagents\chemistry\reagents.dm"
+#include "code\modules\reagents\chemistry\reagent.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Core.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Dispenser.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Food-Drinks.dm"

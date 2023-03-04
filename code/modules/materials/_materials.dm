@@ -162,6 +162,9 @@
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
+	//? Economy
+	/// Raw worth per cm3
+	var/worth = 0
 
 /// Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
