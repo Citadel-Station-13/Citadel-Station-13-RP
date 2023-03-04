@@ -50,6 +50,9 @@
  * * buying - buying instead of selling
  *
  * @return worth as number or null if unable
+ *
+ *
+ *
  */
 /proc/get_worth_static(path, flags = GET_WORTH_DEFAULT, buying)
 

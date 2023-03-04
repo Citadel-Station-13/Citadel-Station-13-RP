@@ -33,7 +33,7 @@
 	var/bubble_icon = "normal"
 
 	//? Economy
-	/// intrinsic worth without accounting containing reagents / materials
+	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0
 	/// static worth of contents - only read if getting a static worth from typepath.
 	var/worth_containing = 0

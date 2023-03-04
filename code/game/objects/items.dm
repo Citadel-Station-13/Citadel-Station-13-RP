@@ -5,17 +5,27 @@
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 
+	//? Core
 	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
 	var/item_flags = NONE
+
+	//? Inventory / Clothing
 	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
 	var/clothing_flags = NONE
 	/// flags for items hidden by this item when worn. as of right now, some flags only work in some slots.
 	var/flags_inv = NONE
 	/// flags for the bodyparts this item covers when worn.
 	var/body_parts_covered = NONE
+
+	//? Interaction
 	/// flags for interaction - see [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
+	//? Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+
+	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
