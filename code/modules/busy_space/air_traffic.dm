@@ -52,10 +52,9 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	ASSERT(message)
 	GLOB.global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
 
-/datum/lore/atc_controller/proc/reroute_traffic(yes = TRUE)
-	if(yes)
-		if(!squelched)
-			msg("Ceasing broadcast of ATC communications.")
+/datum/lore/atc_controller/proc/reroute_traffic()
+	if(!squelched)
+		msg("Ceasing broadcast of ATC communications.")
 		squelched = TRUE
 		STOP_PROCESSING(SSobj, src) //muh performance
 	else
