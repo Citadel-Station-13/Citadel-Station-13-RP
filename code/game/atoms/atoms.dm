@@ -32,6 +32,10 @@
 	/// What icon the atom uses for speechbubbles.
 	var/bubble_icon = "normal"
 
+	//? Economy
+	/// intrinsic worth without accounting containing reagents / materials
+	var/worth = 0
+
 	//? Colors
 	/**
 	 * used to store the different colors on an atom
