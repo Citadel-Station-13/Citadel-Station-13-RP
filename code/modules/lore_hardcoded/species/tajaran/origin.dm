@@ -1,6 +1,5 @@
-/datum/lore/character_background/location/species/tajaran
+/datum/lore/character_background/location/species/tajaran/ahdomai
 	name = "Ahdomai"
-	capital = "None"
 	desc = "Ahdomai, the homeworld of the Tajaran peoples. It is the fourth planet from S’randarr. It is a cold and icy world, having just suffered a brutal ice age it’s inhabitants call, “The Frost”. The planet still is suffering from almost perpetual snowfall and extremely low temperatures which are only survivable due to massive generators and natural geothermal sources. On the galactic stage the Confederate Commonwealth represents the Tajara, but the situation planetside is far more complicated. The Confederate Commonwealth is actually made up of numerous city states, with only a few global “super”powers, all vying for power and their own ideals."
 
 /datum/lore/character_background/location/species/tajaran/ccss
