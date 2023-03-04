@@ -15,7 +15,7 @@
  */
 /proc/is_role_banned_ckey(ckey, character_id, role)
 	// sanitize just in case
-	ckey = ckey
+	ckey = ckey(ckey)
 
 	// isolate from proccall, this is sanitized
 	var/mob/old_usr = usr
