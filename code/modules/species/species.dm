@@ -51,17 +51,17 @@
 	var/species_fluff_flags = NONE
 
 	//! Language - IDs
-	/// default language used when speaking
+	/// default language used when speaking - typepaths are allowed
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
 	var/galactic_language = TRUE
-	/// intrinsic species languages - list() or singular language or null
+	/// intrinsic species languages - list() or singular language or null - typepaths are allowed
 	// todo: linter check for language default being in here
 	var/list/intrinsic_languages
-	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
+	/// language our name is in - used for namegen; null to force stock ss13 namegen instead - typepaths are allowed
 	// todo: language for namegen is questionaable
 	var/name_language = LANGUAGE_ID_COMMON
-	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
+	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language - typepaths are allowed
 	var/list/whitelist_languages
 	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
 	var/max_additional_languages = 3
