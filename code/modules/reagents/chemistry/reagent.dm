@@ -58,6 +58,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//? Economy
 	/// Raw intrinsic worth of this reagent
 	var/worth = 0
+	/// economic category of the reagent
+	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
 /datum/reagent/proc/remove_self(var/amount) // Shortcut
 	if(holder)
