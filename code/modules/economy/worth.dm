@@ -8,6 +8,12 @@
  */
 
 /**
+ * gets our worth
+ */
+/atom/proc/worth(flags = GET_WORTH_DEFAULT, buying)
+	return worth_provider().get_worth(flags, buying)
+
+/**
  * estimate our total worth
  *
  * @params
@@ -16,8 +22,16 @@
  *
  * @return worth as number
  */
-/atom/proc/get_worth(flags = GET_WORTH_DEFAULT, buying)
-	#warn impl
+/atom/proc/get_worth(flags, buying)
+	. = 0
+	if(flags & GET_WORTH_INTRINSIC)
+		. = worth_intrinsic
+	if(flags & GET_WORTH_MATERIALS)
+		. += get_materials_worth(flags, buying)
+	if(flags & GET_WORTH_CONTAINING)
+		. += get_containing_worth(flags, buying)
+	if(buying)
+		. *= worth_buy_factor
 
 /**
  * estimate our raw materials worth
@@ -29,6 +43,7 @@
  * @return worth as number
  */
 /atom/proc/get_materials_worth(flags, buying)
+	return 0
 
 /**
  * estimates our contents worth
@@ -40,6 +55,23 @@
  * @return worth as number
  */
 /atom/proc/get_containing_worth(flags, buying)
+	. = 0
+	for(var/atom/target as anything in worth_containing(flags, buying))
+		. += target.worth(flags, buying)
+
+/**
+ * gets relevant atoms inside us to be checked for containing worth
+ */
+/atom/proc/worth_containing(flags, buying)
+	return list()
+
+/**
+ * used to change the "real" target of what we're checking the worth of.
+ *
+ * usefulf for things like skateboards and roller beds.
+ */
+/atom/proc/worth_provider()
+	return src
 
 /**
  * estimate a typepath's worth
@@ -50,9 +82,6 @@
  * * buying - buying instead of selling
  *
  * @return worth as number or null if unable
- *
- *
- *
  */
 /proc/get_worth_static(path, flags = GET_WORTH_DEFAULT, buying)
 
