@@ -4,7 +4,9 @@
 	icon_state = "dispenser"
 
 	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
-	var/list/synth_modules
+	var/list/obj/item/reagent_synth/synthesizers
+	/// cartridges in us, usable for dispensing with.
+	var/list/obj/item/reagent_containers/chem_disp_cartridge/cartridges
 
 
 	var/obj/item/reagent_containers/container = null
