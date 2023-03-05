@@ -41,7 +41,12 @@
 	)
 	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
 
-#warn define bitfield
+DEFINE_BITFIELD(economic_category_obj, list(
+	BITFIELD(ECONOMIC_CATEGORY_OBJ_HAZARD),
+	BITFIELD(ECONOMIC_CATEGORY_OBJ_ALIEN),
+	BITFIELD(ECONOMIC_CATEGORY_OBJ_OCCULT),
+	BITFIELD(ECONOMIC_CATEGORY_OBJ_EXOTIC),
+))
 
 //? categories for items
 
@@ -92,22 +97,75 @@
 	)
 	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
 
-#warn define bitfield
+DEFINE_BITFIELD(economic_category_item, list(
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_CLOTHING),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_FASHION),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_GUN),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_MELEE),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_ARMOR),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_TOOL),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_ENGINEERING),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_MEDICAL),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_SURGICAL),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_TOY),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_COLLECTABLE),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_PAPERWORK),
+	BITFIELD(ECONOMIC_CATEGORY_ITEM_ELECTRONICS),
+))
 
 //? categories for mobs
 
 #define ECONOMIC_CATEGORY_MOB_DEFAULT (NONE)
 
+/// "normal" livestock
+#define ECONOMIC_CATEGORY_MOB_LIVESTOCK (1<<0)
+
+/proc/economic_category_mob_name(cat)
+	var/static/list/lookup = list(
+		"Livestock",
+	)
+	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+
+DEFINE_BITFIELD(economic_category_mob, list(
+	BITFIELD(ECONOMIC_CATEGORY_MOB_LIVESTOCK),
+))
+
 //? categories for materials
 
 #define ECONOMIC_CATEGORY_MATERIAL_DEFAULT (NONE)
 
-#warn add more
+/// staple bulk construction materials
+#define ECONOMIC_CATEGORY_MATERIAL_CONSTRUCTION (1<<0)
+/// luxury goods like exotic animal furs or whatever
+#define ECONOMIC_CATEGORY_MATERIAL_LUXURY (1<<1)
+/// industrial stuff
+#define ECONOMIC_CATEGORY_MATERIAL_INDUSTRIAL (1<<2)
+/// rare earth stuff like diamonds
+#define ECONOMIC_CATEGORY_MATERIAL_RARE (1<<3)
+/// extremely rare stuff like morphium
+#define ECONOMIC_CATEGORY_MATERIAL_EXOTIC (1<<4)
+/// biological like wood or whatever
+#define ECONOMIC_CATEGORY_MATERIAL_ORGANIC (1<<5)
 
 /proc/economic_category_material_name(cat)
 	var/static/list/lookup = list(
+		"Bulk Construction",
+		"Luxury Materials",
+		"Industrial Resources",
+		"Rare Elements",
+		"Exotic Matter",
+		"Organic Products",
 	)
 	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+
+DEFINE_BITFIELD(economic_category_material, list(
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_CONSTRUCTION),
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_LUXURY),
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_INDUSTRIAL),
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_RARE),
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_EXOTIC),
+	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_ORGANIC),
+))
 
 #warn define bitfield
 

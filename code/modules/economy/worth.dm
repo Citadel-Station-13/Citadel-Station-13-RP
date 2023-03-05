@@ -71,6 +71,8 @@
  * usefulf for things like skateboards and roller beds.
  */
 /atom/proc/worth_provider()
+	RETURN_TYPE(/atom)
+
 	return src
 
 /**
