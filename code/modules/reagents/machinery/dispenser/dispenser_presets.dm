@@ -1,65 +1,16 @@
 /obj/machinery/chemical_dispenser/full
-	spawn_cartridges = list(
-			/obj/item/reagent_containers/chem_disp_cartridge/hydrogen,
-			/obj/item/reagent_containers/chem_disp_cartridge/lithium,
-			/obj/item/reagent_containers/chem_disp_cartridge/carbon,
-			/obj/item/reagent_containers/chem_disp_cartridge/nitrogen,
-			/obj/item/reagent_containers/chem_disp_cartridge/oxygen,
-			/obj/item/reagent_containers/chem_disp_cartridge/fluorine,
-			/obj/item/reagent_containers/chem_disp_cartridge/sodium,
-			/obj/item/reagent_containers/chem_disp_cartridge/aluminum,
-			/obj/item/reagent_containers/chem_disp_cartridge/silicon,
-			/obj/item/reagent_containers/chem_disp_cartridge/phosphorus,
-			/obj/item/reagent_containers/chem_disp_cartridge/sulfur,
-			/obj/item/reagent_containers/chem_disp_cartridge/chlorine,
-			/obj/item/reagent_containers/chem_disp_cartridge/potassium,
-			/obj/item/reagent_containers/chem_disp_cartridge/iron,
-			/obj/item/reagent_containers/chem_disp_cartridge/copper,
-			/obj/item/reagent_containers/chem_disp_cartridge/mercury,
-			/obj/item/reagent_containers/chem_disp_cartridge/radium,
-			/obj/item/reagent_containers/chem_disp_cartridge/water,
-			/obj/item/reagent_containers/chem_disp_cartridge/ethanol,
-			/obj/item/reagent_containers/chem_disp_cartridge/sugar,
-			/obj/item/reagent_containers/chem_disp_cartridge/sacid,
-			/obj/item/reagent_containers/chem_disp_cartridge/tungsten,
-			/obj/item/reagent_containers/chem_disp_cartridge/calcium
-		)
+	synth_modules = list(
+		/obj/item/reagent_synth/chemistry,
+	)
 
 /obj/machinery/chemical_dispenser/full/unanchored
 	anchored = FALSE
 
 /obj/machinery/chemical_dispenser/ert
 	name = "medicine dispenser"
-	spawn_cartridges = list(
-			/obj/item/reagent_containers/chem_disp_cartridge/inaprov,
-			/obj/item/reagent_containers/chem_disp_cartridge/ryetalyn,
-			/obj/item/reagent_containers/chem_disp_cartridge/paracetamol,
-			/obj/item/reagent_containers/chem_disp_cartridge/tramadol,
-			/obj/item/reagent_containers/chem_disp_cartridge/oxycodone,
-			/obj/item/reagent_containers/chem_disp_cartridge/sterilizine,
-			/obj/item/reagent_containers/chem_disp_cartridge/leporazine,
-			/obj/item/reagent_containers/chem_disp_cartridge/kelotane,
-			/obj/item/reagent_containers/chem_disp_cartridge/dermaline,
-			/obj/item/reagent_containers/chem_disp_cartridge/dexalin,
-			/obj/item/reagent_containers/chem_disp_cartridge/dexalin_p,
-			/obj/item/reagent_containers/chem_disp_cartridge/tricord,
-			/obj/item/reagent_containers/chem_disp_cartridge/dylovene,
-			/obj/item/reagent_containers/chem_disp_cartridge/synaptizine,
-			/obj/item/reagent_containers/chem_disp_cartridge/hyronalin,
-			/obj/item/reagent_containers/chem_disp_cartridge/arithrazine,
-			/obj/item/reagent_containers/chem_disp_cartridge/alkysine,
-			/obj/item/reagent_containers/chem_disp_cartridge/imidazoline,
-			/obj/item/reagent_containers/chem_disp_cartridge/peridaxon,
-			/obj/item/reagent_containers/chem_disp_cartridge/bicaridine,
-			/obj/item/reagent_containers/chem_disp_cartridge/hyperzine,
-			/obj/item/reagent_containers/chem_disp_cartridge/rezadone,
-			/obj/item/reagent_containers/chem_disp_cartridge/spaceacillin,
-			/obj/item/reagent_containers/chem_disp_cartridge/ethylredox,
-			/obj/item/reagent_containers/chem_disp_cartridge/sleeptox,
-			/obj/item/reagent_containers/chem_disp_cartridge/chloral,
-			/obj/item/reagent_containers/chem_disp_cartridge/cryoxadone,
-			/obj/item/reagent_containers/chem_disp_cartridge/clonexadone
-		)
+	synth_modules = list(
+		/obj/item/reagent_synth/medicine,
+	)
 
 /obj/machinery/chemical_dispenser/bar_soft
 	name = "soft drink dispenser"

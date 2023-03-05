@@ -3,9 +3,10 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
 
-	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
+	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
+	var/list/synth_modules
 
-	var/list/cartridges = list() // Associative, label -> cartridge
+
 	var/obj/item/reagent_containers/container = null
 
 	var/ui_title = "Chemical Dispenser"

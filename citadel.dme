@@ -3881,6 +3881,7 @@
 #include "code\modules\reagents\machinery\dispenser\dispenser_presets.dm"
 #include "code\modules\reagents\machinery\dispenser\dispenser_presets_vr.dm"
 #include "code\modules\reagents\machinery\dispenser\supply.dm"
+#include "code\modules\reagents\machinery\dispenser\synthesizer.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\acid.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\beer.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\foam.dm"
