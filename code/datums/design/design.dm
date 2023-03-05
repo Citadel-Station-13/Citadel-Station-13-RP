@@ -65,6 +65,8 @@ other types of metals and chemistry for reagents).
 	var/item_name = null
 	///The path of the object that gets created.
 	var/build_path = null
+	///IDs of that techs the object originated from and the minimum level requirements.
+	var/list/req_tech = list()
 
 /datum/design/New()
 	if(!islist(category))
@@ -122,8 +124,6 @@ other types of metals and chemistry for reagents).
  */
 /datum/design/science
 	build_type = PROTOLATHE
-	///IDs of that techs the object originated from and the minimum level requirements.
-	var/list/req_tech = list()
 
 //Make sure items don't get free power
 /datum/design/science/print(atom/where)
