@@ -7,9 +7,12 @@
 	. = list()
 	var/list/datum/lore/character_background/culture/available = SScharacters.available_cultures(prefs.character_species_id())
 	var/list/categories = list()
+	var/datum/lore/character_background/culture/current = SScharacters.resolve_culture(data)
+	var/current_category
 	for(var/datum/lore/character_background/culture/O as anything in available)
 		LAZYADD(categories[O.category], O)
-	var/datum/lore/character_background/culture/current = SScharacters.resolve_culture(data)
+		if(O == current)
+			current_category = O.category
 	. += "<center>"
 	. += "<b>Culture</b><br>"
 	if(length(categories) > 1)
@@ -20,6 +23,8 @@
 	for(var/datum/lore/character_background/culture/O in available)
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
+		else if(current_category && O.category != current_category)
+			continue
 		else
 			. += href_simple(prefs, "pick", "[O.name]", O.id)
 		. += " "
