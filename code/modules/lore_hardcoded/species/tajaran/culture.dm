@@ -1,5 +1,5 @@
 /datum/lore/character_background/culture/species/tajaran/primary
-	name = "Tajaran"
+	name = "Hharar"
 	id = "culture_tajaran_main"
 	desc = "The first Tajaran ethnicity who Humanity came in contact with is generally viewed as the 'typical Tajara', which is reinforced by their numerical superiority over the other groups. Additionally, given their large numbers and capabilities, they most often serve in governmental positions and as ambassadors to other races; this leads to them being taken as the 'face' of the Tajaran race, as it were. Hharar trend towards being the most intellectual of all Tajaran groups, and as such their physical prowess is significantly reduced. The Hharar are the stereotypical 'worker' Tajara, commonly described as loyal employees who are passionate and not afraid to voice their opinions. The Hharar are usually beaver brown, kochiba, or taupe in coloration."
 
