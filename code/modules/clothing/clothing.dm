@@ -174,8 +174,22 @@
  * prompts a user to pick style
  */
 /obj/item/clothing/proc/pick_style(mob/user)
-	#warn impl - render with icon_state from icon (?)
+	var/list/available = available_styles(user)
+	var/list/assembled = list()
+	var/list/states = icon_states(icon)
+	for(var/name in available)
+		var/state_using = available[name]
+		assembled[name] = image(icon, icon_state = (state_using in states? state_using : icon_state))
+	show_radial_menu(user, src, assembled)
 
-#warn verb???
+/obj/item/clothing/verb/pick_style_verb()
+	set name = "Set Worn Style"
+	set category = "IC"
+	set desc = "Wear this piece of clothing in a different style."
+	set src in usr
 
-// todo: alt interact radials.
+	// todo: mobility flags
+	if(!IS_CONSCIOUS(usr))
+		return
+
+	pick_style(usr)

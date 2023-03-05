@@ -158,8 +158,12 @@
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
 	. = ..()
 	if(worn_rolled_down == UNIFORM_ROLL_TRUE)
+		if(worn_rolldown_state)
+			return worn_rolldown_state
 		. += "_down"
 	else if(worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
+		if(worn_rollsleeve_state)
+			return worn_rollsleeve_state
 		. += "_sleeves"
 
 /obj/item/clothing/under/proc/update_rolldown(updating)
@@ -177,10 +181,8 @@
 			has_roll = autodetect_rolldown(detected_bodytype)
 
 	if(!has_roll)
-		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		worn_rolled_down = UNIFORM_ROLL_NULLED
 	else
-		add_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		if(worn_rolled_down == UNIFORM_ROLL_NULLED)
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 	if(!updating)
@@ -201,10 +203,8 @@
 			has_sleeves = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
-		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		worn_rolled_sleeves = UNIFORM_ROLL_NULLED
 	else
-		add_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		if(worn_rolled_sleeves == UNIFORM_ROLL_NULLED)
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 	if(!updating)
