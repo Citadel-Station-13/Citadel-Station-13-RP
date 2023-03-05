@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * update holocall target ui
  */
 /obj/machinery/holopad/proc/push_ui_connectivity_data()
-	send_tgui_data_immediate(data = list("connectivity" = ui_connectivity_data()))
+	push_ui_data(data = list("connectivity" = ui_connectivity_data()))
 
 //? Holocalls
 
@@ -273,18 +273,34 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * hang up all calls
  */
 /obj/machinery/holopad/proc/disconnect_all_calls()
-	for(var/datum/holocall/call as anything in incoming_calls)
-		disconnect_call(call)
-	for(var/datum/holocall/call as anything in ringing_calls)
-		disconnect_call(call)
+	for(var/datum/holocall/disconnecting as anything in incoming_calls)
+		disconnect_call(disconnecting)
+	for(var/datum/holocall/disconnecting as anything in ringing_calls)
+		disconnect_call(disconnecting)
 	if(outgoing_call)
 		disconnect_call(outgoing_call)
 
 /**
  * hang up a call, or terminate a ringing call
+ *
+ * this assumes you checked that the call is actually valid.
  */
 /obj/machinery/holopad/proc/disconnect_call(datum/holocall/disconnecting)
 	disconnecting.disconnect()
+
+/**
+ * connect a ringing call
+ *
+ * this assumes you checked that the call is actually valid.
+ */
+/obj/machinery/holopad/proc/connect_call(datum/holocall/connecting)
+	connecting.connect()
+
+/**
+ * makes a new call / rings a holopad
+ */
+/obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
+	#warn impl & check for existing calls
 
 //? UI
 
@@ -344,7 +360,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	. |= ui_call_data()
 	.["ringing"] = list()
 	#warn impl ringing
-	#warn impl
 	#warn anonymous dial
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -376,15 +391,15 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			if(outgoing_call?.destination == pad)
 				disconnect_call(outgoing_call)
 				return TRUE
-			for(var/datum/holocall/call as anything in incoming_calls)
-				if(call.destination != pad)
+			for(var/datum/holocall/disconnecting as anything in incoming_calls)
+				if(disconnecting.destination != pad)
 					continue
-				disconnect_call(call)
+				disconnect_call(disconnecting)
 				return TRUE
-			for(var/datum/holocall/call as anything in ringing_calls)
-				if(call.destination != pad)
+			for(var/datum/holocall/disconnecting as anything in ringing_calls)
+				if(disconnecting.destination != pad)
 					continue
-				disconnect_call(call)
+				disconnect_call(disconnecting)
 				return TRUE
 			return TRUE
 		// user requesting to call
@@ -392,14 +407,16 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			var/id = params["id"]
 			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 			#warn 30 second per unique holopad cooldown for ringing
+			make_call(pad)
+			return TRUE
 		// user requesting to connect an incoming/ringing call
 		if("connect")
 			var/id = params["id"]
 			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
-			for(var/datum/holocall/call as anything in ringing_calls)
-				if(call.destination != pad)
+			for(var/datum/holocall/connecting as anything in ringing_calls)
+				if(connecting.destination != pad)
 					continue
-				call.connect()
+				connect_call(connecting)
 				return TRUE
 			return TRUE
 		// user toggling holocall ringer
@@ -694,7 +711,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	/// toggle view action
 	var/datum/action/holocall/swap_view/action_swap_view
 	/// our hologram
-	var/obj/effect/overlay/holographic
+	var/obj/effect/overlay/hologram/holopad/hologram
 
 /datum/holocall/New(obj/machinery/holopad/sender, obj/machinery/holopad/receiver)
 	action_hang_up = new(src)
@@ -714,10 +731,24 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/proc/cleanup_remote_presence()
 
 /datum/holocall/proc/connect()
+	connected = TRUE
+	destination.incoming_calls += src
+	destination.ringing_calls -= src
 
 /datum/holocall/proc/register()
+	ASSERT(isnull(source.outgoing_call))
+	source.outgoing_call = src
+	destination.ringing_calls += src
 
 /datum/holocall/proc/cleanup()
+	if(remoting)
+		cleanup_remote_presence()
+	if(source.outgoing_call == src)
+		source.outgoing_call = null
+	source = null
+	destination?.incoming_calls -= src
+	destination?.ringing_calls -= src
+	destination = null
 
 /datum/holocall/proc/ring()
 
@@ -739,7 +770,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(!destination.holocall_connectivity(source))
 		return FALSE
 	return TRUE
-
 
 #warn icons/screen/actions/generic.dmi hang_up, swap_cam
 #warn background icon set to icons/screen/actions/backgrounds too!!
