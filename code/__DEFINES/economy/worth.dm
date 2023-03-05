@@ -33,13 +33,17 @@
 #define ECONOMIC_CATEGORY_OBJ_EXOTIC (1<<3)
 
 /proc/economic_category_obj_name(cat)
-	var/static/list/lookup = list(
-		"Hazardous Materials",
-		"Alien Technology",
-		"Occult Debris",
-		"Exotic Goods",
-	)
-	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
+	switch(cat)
+		if(ECONOMIC_CATEGORY_OBJ_HAZARD)
+			return "Hazardous Materials"
+		if(ECONOMIC_CATEGORY_OBJ_ALIEN)
+			return "Alien Technology"
+		if(ECONOMIC_CATEGORY_OBJ_OCCULT)
+			return "Occult Debris"
+		if(ECONOMIC_CATEGORY_OBJ_EXOTIC)
+			return "Exotic Goods"
+		else
+			return "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_obj, list(
 	BITFIELD(ECONOMIC_CATEGORY_OBJ_HAZARD),
@@ -80,22 +84,35 @@ DEFINE_BITFIELD(economic_category_obj, list(
 #define ECONOMIC_CATEGORY_ITEM_ELECTRONICS (1<<12)
 
 /proc/economic_category_item_name(cat)
-	var/static/list/lookup = list(
-		"Clothing",
-		"Fashion",
-		"Ranged Weapons",
-		"Melee Weapons",
-		"Armor / Shields",
-		"Tools",
-		"Engineering Equipment",
-		"Medical Tools",
-		"Medical Equipment",
-		"Toys",
-		"Collectables",
-		"Recordkeeping",
-		"Information Technology",
-	)
-	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
+	switch(cat)
+		if(ECONOMIC_CATEGORY_ITEM_CLOTHING)
+			return "Clothing"
+		if(ECONOMIC_CATEGORY_ITEM_FASHION)
+			return "Fashion"
+		if(ECONOMIC_CATEGORY_ITEM_GUN)
+			return "Ranged Weaponry"
+		if(ECONOMIC_CATEGORY_ITEM_MELEE)
+			return "Melee Weaponry"
+		if(ECONOMIC_CATEGORY_ITEM_ARMOR)
+			return "Defense Equipment"
+		if(ECONOMIC_CATEGORY_ITEM_TOOL)
+			return "Tools"
+		if(ECONOMIC_CATEGORY_ITEM_ENGINEERING)
+			return "Engineering Equipment"
+		if(ECONOMIC_CATEGORY_ITEM_MEDICAL)
+			return "Medicine"
+		if(ECONOMIC_CATEGORY_ITEM_SURGICAL)
+			return "Medical Equipment"
+		if(ECONOMIC_CATEGORY_ITEM_TOY)
+			return "Toys"
+		if(ECONOMIC_CATEGORY_ITEM_COLLECTABLE)
+			return "Collectables"
+		if(ECONOMIC_CATEGORY_ITEM_PAPERWORK)
+			return "Recordkeeping"
+		if(ECONOMIC_CATEGORY_ITEM_ELECTRONICS)
+			return "Information Technology"
+		else
+			return "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_item, list(
 	BITFIELD(ECONOMIC_CATEGORY_ITEM_CLOTHING),
@@ -121,10 +138,11 @@ DEFINE_BITFIELD(economic_category_item, list(
 #define ECONOMIC_CATEGORY_MOB_LIVESTOCK (1<<0)
 
 /proc/economic_category_mob_name(cat)
-	var/static/list/lookup = list(
-		"Livestock",
-	)
-	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
+	switch(cat)
+		if(ECONOMIC_CATEGORY_MOB_LIVESTOCK)
+			return "Livestock"
+		else
+			return "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_mob, list(
 	BITFIELD(ECONOMIC_CATEGORY_MOB_LIVESTOCK),
@@ -148,15 +166,19 @@ DEFINE_BITFIELD(economic_category_mob, list(
 #define ECONOMIC_CATEGORY_MATERIAL_ORGANIC (1<<5)
 
 /proc/economic_category_material_name(cat)
-	var/static/list/lookup = list(
-		"Bulk Construction",
-		"Luxury Materials",
-		"Industrial Resources",
-		"Rare Elements",
-		"Exotic Matter",
-		"Organic Products",
-	)
-	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
+	switch(cat)
+		if(ECONOMIC_CATEGORY_MATERIAL_CONSTRUCTION)
+			return "Bulk Construction"
+		if(ECONOMIC_CATEGORY_MATERIAL_LUXURY)
+			return "Luxury Materials"
+		if(ECONOMIC_CATEGORY_MATERIAL_INDUSTRIAL)
+			return "Industrial Resources"
+		if(ECONOMIC_CATEGORY_MATERIAL_RARE)
+			return "Rare Elements"
+		if(ECONOMIC_CATEGORY_MATERIAL_EXOTIC)
+			return "Exotic Matter"
+		if(ECONOMIC_CATEGORY_MATERIAL_ORGANIC)
+			return "Organic Products"
 
 DEFINE_BITFIELD(economic_category_material, list(
 	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_CONSTRUCTION),
@@ -203,15 +225,22 @@ DEFINE_BITFIELD(economic_category_reagent, list(
 ))
 
 /proc/economic_category_reagent_name(cat)
-	var/static/list/lookup = list(
-		"Medicine",
-		"Raw Reagents",
-		"Drugs",
-		"Toxins",
-		"Explosives",
-		"Exotic",
-		"Hydroponics",
-		"Catering",
-		"Toy Products",
-	)
-	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
+	switch(cat)
+		if(ECONOMIC_CATEGORY_REAGENT_MEDICINE)
+			return "Medicine"
+		if(ECONOMIC_CATEGORY_REAGENT_RAW)
+			return "Raw Reagents"
+		if(ECONOMIC_CATEGORY_REAGENT_NARCOTICS)
+			return "Drugs"
+		if(ECONOMIC_CATEGORY_REAGENT_POISON)
+			return "Toxins"
+		if(ECONOMIC_CATEGORY_REAGENT_PYROTECHNICS)
+			return "Explosives"
+		if(ECONOMIC_CATEGORY_REAGENT_EXOTIC)
+			return "Exotic"
+		if(ECONOMIC_CATEGORY_REAGENT_AGRICULTURAL)
+			return "Hydroponics"
+		if(ECONOMIC_CATEGORY_REAGENT_FOOD)
+			return "Catering"
+		if(ECONOMIC_CATEGORY_REAGENT_TOYS)
+			return "Toy Products"
