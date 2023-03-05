@@ -477,6 +477,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/request_ai(mob/user)
 	last_ai_request = world.time
+	var/area/area = get_area(src)
 	for(var/mob/living/silicon/ai/AI in living_mob_list)
 		if(!AI.client)
 			continue
@@ -672,13 +673,16 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/New(obj/machinery/holopad/sender, obj/machinery/holopad/receiver)
 	action_hang_up = new(src)
 	action_swap_view = new(src)
-	#warn impl
+	src.source = sender
+	src.destination = receiver
+	register()
+	ring()
 
 /datum/holocall/Destroy()
 	disconnect()
+	cleanup()
 	QDEL_NULL(action_hang_up)
 	QDEL_NULL(action_swap_view)
-	#warn impl
 	return ..()
 
 /datum/holocall/proc/initiate_remote_presence(mob/user)
