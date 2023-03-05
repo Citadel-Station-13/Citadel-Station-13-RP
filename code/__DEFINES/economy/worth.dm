@@ -1,4 +1,4 @@
-//? op flags for /atom/proc/get_worth
+//? op flags for /atom/proc/worth
 /// consider intrinsic value
 #define GET_WORTH_INTRINSIC (1<<0)
 /// consider raw materials value of the item itself
