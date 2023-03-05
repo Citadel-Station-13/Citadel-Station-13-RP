@@ -11,7 +11,7 @@
 		return
 	. = 0
 	for(var/id in dispense_reagents)
-		var/datum/reagent/R = SSchemistry.chemical_reagents[id]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[id]
 		if(!R)
 			stack_trace("[src] at [x],[y],[z] failed to find reagent '[id]'!")
 			dispense_reagents -= id

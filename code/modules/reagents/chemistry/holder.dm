@@ -11,15 +11,15 @@
 	my_atom = A
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!SSchemistry.chemical_reagents)
+	if(!SSchemistry.reagent_lookup)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 		var/paths = typesof(/datum/reagent) - /datum/reagent
-		SSchemistry.chemical_reagents = list()
+		SSchemistry.reagent_lookup = list()
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			if(!D.name)
 				continue
-			SSchemistry.chemical_reagents[D.id] = D
+			SSchemistry.reagent_lookup[D.id] = D
 
 	reagents_holder_flags = new_flags
 
@@ -146,7 +146,7 @@
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
-	var/datum/reagent/D = SSchemistry.chemical_reagents[id]
+	var/datum/reagent/D = SSchemistry.reagent_lookup[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
 		reagent_list += R
