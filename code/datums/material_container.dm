@@ -4,7 +4,8 @@
     /// space available for materials - list with ids for specific, null for infinite, just a number for combined
     var/list/capacity
 
-/datum/material_container/New(atom/container, materials_capacity)
+/datum/material_container/New(list/materials_capacity)
+	#warn impl
 
 /datum/material_container/Destroy()
 	#warn impl

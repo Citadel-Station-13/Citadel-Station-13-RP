@@ -7,6 +7,8 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
+	#warn component parts & upgrade handling
+
 	/// print speed - multiplier. affects power cost.
 	var/speed_multiplier = 1
 	/// power efficiency - multiplier. affects power cost.
@@ -14,10 +16,17 @@
 	/// material efficiency - multiplier.
 	var/efficiency_multiplier = 1
 
-	/// material holder datum
+	/// what kind of lathe is this
+	var/lathe_type = NONE
+
+	/// material container datum
 	var/datum/material_container/materials
+	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
+	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 	/// items held inside us, if any
 	var/list/obj/item/items
+	/// max items held inside us
+	var/items_max = 0
 
 	/// queued design ids
 	var/list/queue
@@ -26,10 +35,15 @@
 	/// progress in deciseconds on current design
 	var/progress
 
+	/// designs held - set to instance to instantiate.
+	var/datum/design_holder/design_holder = /datum/design_holder
+
 	/// allow controlling from self
 	var/has_interface = FALSE
 	/// our lathe control instance, lazy init'd
 	var/datum/tgui_module/lathe_control/ui_controller
+
+	#warn recycling
 
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
@@ -37,6 +51,8 @@
 
 /obj/machinery/lathe/Destroy()
 	delete_storages()
+	if(design_holder?.owner == src)
+		QDEL_NULL(design_holder)
 	return ..()
 
 /obj/machinery/lathe/proc/create_storages()

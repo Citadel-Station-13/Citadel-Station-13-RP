@@ -5,12 +5,15 @@ export interface Design {
   desc: string;
   materials: Record<string, number>;
   reagents: Record<string, number>;
-  requiredItem: BooleanLike;
-  requiredItemName?: string;
-  requiredItemDesc?: string;
-  requiredItemIconSheet?: string;
-  requiredItemIconPath?: string; // direct access if sheet not provided, if sheet provided we use the spritesheet
+  requiredItems: Array<DesignItem>;
   id: string;
+}
+
+export interface DesignItem {
+  name?: string;
+  desc?: string;
+  iconSheet?: string;
+  iconPath?: string; // direct access if sheet not provided, if sheet provided we use the spritesheet
 }
 
 export interface LatheDesignEntryProps {

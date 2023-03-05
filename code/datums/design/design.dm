@@ -50,6 +50,10 @@ other types of metals and chemistry for reagents).
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = "Misc"
 
+	/// type of what we build
+	var/build_path
+
+
 	#warn build path? how to handle?
 	#warn parse below
 

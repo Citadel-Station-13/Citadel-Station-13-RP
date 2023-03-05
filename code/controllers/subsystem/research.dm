@@ -2,8 +2,14 @@ SUBSYSTEM_DEF(research)
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_RESEARCH
 
+	//? designs
 	/// design lookup id = instance
 	var/list/design_lookup
+
+	//? designs - caches
+	/// cached autolathe desgi nids
+	var/list/autolathe_design_ids
+	#warn hook
 
 /datum/controller/subsystem/research/Initialize()
 	#warn impl
