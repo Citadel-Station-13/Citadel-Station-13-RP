@@ -167,8 +167,6 @@ DEFINE_BITFIELD(economic_category_material, list(
 	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_ORGANIC),
 ))
 
-#warn define bitfield
-
 //? categories for reagents
 
 #define ECONOMIC_CATEGORY_REAGENT_DEFAULT (NONE)
