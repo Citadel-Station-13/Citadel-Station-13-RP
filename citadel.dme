@@ -3877,6 +3877,7 @@
 #include "code\modules\reagents\machinery\dispenser\cartridge_presets.dm"
 #include "code\modules\reagents\machinery\dispenser\cartridge_presets_vr.dm"
 #include "code\modules\reagents\machinery\dispenser\cartridge_spawn.dm"
+#include "code\modules\reagents\machinery\dispenser\dispenser.dm"
 #include "code\modules\reagents\machinery\dispenser\dispenser2.dm"
 #include "code\modules\reagents\machinery\dispenser\dispenser2_energy.dm"
 #include "code\modules\reagents\machinery\dispenser\dispenser_presets.dm"

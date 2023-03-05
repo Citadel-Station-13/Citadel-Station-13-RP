@@ -1,30 +1,4 @@
 /obj/machinery/chemical_dispenser
-	name = "chemical dispenser"
-	icon = 'icons/obj/medical/chemical.dmi'
-	icon_state = "dispenser"
-
-	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
-	var/list/obj/item/reagent_synth/synthesizers
-	/// cartridges in us, usable for dispensing with.
-	var/list/obj/item/reagent_containers/chem_disp_cartridge/cartridges
-
-
-	var/obj/item/reagent_containers/container = null
-
-	var/ui_title = "Chemical Dispenser"
-
-	var/accept_drinking = 0
-	var/amount = 30
-
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 100
-	anchored = 1
-
-/obj/machinery/chemical_dispenser/Initialize(mapload)
-	. = ..()
-	if(spawn_cartridges)
-		for(var/type in spawn_cartridges)
-			add_cartridge(new type(src))
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
