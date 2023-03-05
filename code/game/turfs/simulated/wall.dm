@@ -304,7 +304,7 @@
 
 /turf/simulated/wall/proc/set_rad_insulation()
 	var/total_rad_insulation = material.weight + material.radiation_resistance + (reinf_material ? (reinf_material.weight + reinf_material.radiation_resistance) / 4 : 0) + (girder_material ? (girder_material.weight + girder_material.radiation_resistance) / 16 : 0)
-	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation default. 1.35 exponential function helps us to also hit the 0.25 plasteel wall goal of 0.25.
+	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation. 1.35 exponential function helps us to also hit the plasteel wall goal of 0.25.
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))
