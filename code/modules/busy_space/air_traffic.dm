@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	ASSERT(message)
 	GLOB.global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
 
-/datum/lore/atc_controller/proc/reroute_traffic()
+/datum/lore/atc_controller/proc/toggle_broadcast()
 	if(!squelched)
 		msg("Ceasing broadcast of ATC communications.")
 		squelched = TRUE
