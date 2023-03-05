@@ -39,7 +39,7 @@
 		"Occult Debris",
 		"Exotic Goods",
 	)
-	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_obj, list(
 	BITFIELD(ECONOMIC_CATEGORY_OBJ_HAZARD),
@@ -95,7 +95,7 @@ DEFINE_BITFIELD(economic_category_obj, list(
 		"Recordkeeping",
 		"Information Technology",
 	)
-	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_item, list(
 	BITFIELD(ECONOMIC_CATEGORY_ITEM_CLOTHING),
@@ -124,7 +124,7 @@ DEFINE_BITFIELD(economic_category_item, list(
 	var/static/list/lookup = list(
 		"Livestock",
 	)
-	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_mob, list(
 	BITFIELD(ECONOMIC_CATEGORY_MOB_LIVESTOCK),
@@ -156,7 +156,7 @@ DEFINE_BITFIELD(economic_category_mob, list(
 		"Exotic Matter",
 		"Organic Products",
 	)
-	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
 
 DEFINE_BITFIELD(economic_category_material, list(
 	BITFIELD(ECONOMIC_CATEGORY_MATERIAL_CONSTRUCTION),
@@ -214,4 +214,4 @@ DEFINE_BITFIELD(economic_category_reagent, list(
 		"Catering",
 		"Toy Products",
 	)
-	return (cat && lookup[min(9, log(2, cat) + 1)]) || "Miscellaneous"
+	return (cat && lookup[min(length(lookup), log(2, cat) + 1)]) || "Miscellaneous"
