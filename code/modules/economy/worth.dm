@@ -72,7 +72,6 @@
  */
 /atom/proc/worth_provider()
 	RETURN_TYPE(/atom)
-
 	return src
 
 /**
@@ -86,6 +85,12 @@
  * @return worth as number or null if unable
  */
 /proc/get_worth_static(path, flags = GET_WORTH_DEFAULT, buying)
+	var/atom/fetching = path
+	if(initial(fetching.worth_dynamic))
+		return null
+	. = initial(fetching.worth_intrinsic)
+	. += get_materials_worth_static(path, flags, buying)
+	. += get_containing_worth_static(path, flags, buying)
 
 /**
  * estimates a typepath's raw materials worth
@@ -98,6 +103,8 @@
  * @return worth as number or null if unable
  */
 /proc/get_materials_worth_static(path, flags, buying)
+	var/atom/fetching = path
+	return initial(fetching.worth_materials)
 
 /**
  * estimates a typepath's contents worth
@@ -110,3 +117,5 @@
  * @return worth as number or null if unable
  */
 /proc/get_containing_worth_static(path, flags, buying)
+	var/atom/fetching = path
+	return initial(fetching.worth_containing)
