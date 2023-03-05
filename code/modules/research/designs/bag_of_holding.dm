@@ -11,7 +11,6 @@
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6)
 	materials = list(MAT_GOLD = 3000, MAT_DIAMOND = 1500, MAT_URANIUM = 250)
 	build_path = /obj/item/storage/backpack/holding
-	sort_string = "QAAAA"
 
 /datum/design/science/boh/dufflebag_holding
 	name = "DuffleBag of Holding"
@@ -20,4 +19,3 @@
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6)
 	materials = list(MAT_GOLD = 3000, MAT_DIAMOND = 1500, MAT_URANIUM = 250)
 	build_path = /obj/item/storage/backpack/holding/duffle
-	sort_string = "QAAAB"

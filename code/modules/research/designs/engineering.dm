@@ -11,7 +11,6 @@
 	req_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 70, MAT_GLASS = 120, MAT_PHORON = 100)
 	build_path = /obj/item/weldingtool/experimental
-	sort_string = "NAAAA"
 
 /datum/design/science/tool/hand_drill
 	name = "Hand drill"
@@ -20,7 +19,6 @@
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	materials = list(MAT_STEEL = 300, MAT_SILVER = 100)
 	build_path = /obj/item/tool/screwdriver/power
-	sort_string = "NAAAB"
 
 /datum/design/science/tool/jaws_life
 	name = "Jaws of life"
@@ -29,7 +27,6 @@
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	materials = list(MAT_STEEL = 300, MAT_SILVER = 100)
 	build_path = /obj/item/tool/crowbar/power
-	sort_string = "NAAAC"
 
 /datum/design/science/tool/switchtool
 	name = "Switchtool"
@@ -38,7 +35,6 @@
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000)
 	build_path = /obj/item/switchtool
-	sort_string = "NAAAD"
 
 // Other devices
 
@@ -53,7 +49,6 @@
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 	materials = list(MAT_STEEL = 200)
 	build_path = /obj/item/t_scanner
-	sort_string = "NBAAA"
 
 /datum/design/science/engineering/t_scanner_upg
 	name = "Upgraded T-ray Scanner"
@@ -62,7 +57,6 @@
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
 	materials = list(MAT_STEEL = 500, MAT_PHORON = 150)
 	build_path = /obj/item/t_scanner/upgraded
-	sort_string = "NBAAB"
 
 /datum/design/science/engineering/t_scanner_adv
 	name = "Advanced T-ray Scanner"
@@ -71,7 +65,6 @@
 	req_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6, TECH_MATERIAL = 6)
 	materials = list(MAT_STEEL = 1250, MAT_PHORON = 500, MAT_SILVER = 50)
 	build_path = /obj/item/t_scanner/advanced
-	sort_string = "NBAAC"
 
 /datum/design/science/engineering/atmosanalyzer
 	name = "Atmospheric Analyzer"
@@ -80,7 +73,6 @@
 	req_tech = list(TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 200, MAT_GLASS = 100)
 	build_path = /obj/item/analyzer
-	sort_string = "NBABA"
 
 /datum/design/science/engineering/atmosanalyzerlongrange
 	name = "Long Range Atmospheric Analyzer"
@@ -89,4 +81,3 @@
 	req_tech = list(TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
 	build_path = /obj/item/analyzer/longrange
-	sort_string = "NBABB"

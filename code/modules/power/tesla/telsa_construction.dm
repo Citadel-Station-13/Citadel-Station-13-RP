@@ -16,7 +16,6 @@
 	id = "tesla_coil"
 	build_path = /obj/item/circuitboard/tesla_coil
 	req_tech = list(TECH_MAGNET = 2, TECH_POWER = 4)
-	sort_string = "MAAAC"
 
 // Grounding rods can be built as machines using a circuit made in an autolathe.
 /obj/item/circuitboard/grounding_rod

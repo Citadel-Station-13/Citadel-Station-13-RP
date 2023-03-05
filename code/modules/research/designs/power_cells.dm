@@ -23,7 +23,6 @@
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 	build_path = /obj/item/cell
 	category = list("Misc")
-	sort_string = "BAAAA"
 
 /datum/design/science/powercell/high
 	name = "high-capacity"
@@ -33,7 +32,6 @@
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 60)
 	build_path = /obj/item/cell/high
 	category = list("Misc")
-	sort_string = "BAAAB"
 
 /datum/design/science/powercell/super
 	name = "super-capacity"
@@ -42,7 +40,6 @@
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 70)
 	build_path = /obj/item/cell/super
 	category = list("Misc")
-	sort_string = "BAAAC"
 
 /datum/design/science/powercell/hyper
 	name = "hyper-capacity"
@@ -51,7 +48,6 @@
 	materials = list(MAT_STEEL = 400, MAT_GOLD = 150, MAT_SILVER = 150, MAT_GLASS = 70)
 	build_path = /obj/item/cell/hyper
 	category = list("Misc")
-	sort_string = "BAAAD"
 
 /datum/design/science/powercell/device
 	name = "device"
@@ -60,7 +56,6 @@
 	materials = list(MAT_STEEL = 350, MAT_GLASS = 25)
 	build_path = /obj/item/cell/device
 	category = list("Misc")
-	sort_string = "BAABA"
 
 /datum/design/science/powercell/weapon
 	name = "weapon"
@@ -69,4 +64,3 @@
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 	build_path = /obj/item/cell/device/weapon
 	category = list("Misc")
-	sort_string = "BAABB"

@@ -11,7 +11,6 @@
 	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 4, TECH_DATA = 5)
 	materials = list(MAT_STEEL = 10000)
 	build_path = /obj/item/integrated_circuit_printer
-	sort_string = "UAAAA"
 
 /datum/design/science/integrated_circuitry/custom_circuit_printer_upgrade
 	name = "Integrated circuit printer upgrade - advanced designs"
@@ -20,7 +19,6 @@
 	req_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 4)
 	materials = list(MAT_STEEL = 2000)
 	build_path = /obj/item/disk/integrated_circuit/upgrade/advanced
-	sort_string = "UBAAA"
 
 /datum/design/science/integrated_circuitry/wirer
 	name = "Custom wirer tool"
@@ -28,7 +26,6 @@
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/integrated_electronics/wirer
-	sort_string = "UCAAA"
 
 /datum/design/science/integrated_circuitry/debugger
 	name = "Custom circuit debugger tool"
@@ -36,7 +33,6 @@
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/integrated_electronics/debugger
-	sort_string = "UCBBB"
 
 // Assemblies
 
@@ -51,7 +47,6 @@
 	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 2, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 10000)
 	build_path = /obj/item/electronic_assembly
-	sort_string = "UDAAA"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_medium
 	name = "Medium custom assembly"
@@ -60,7 +55,6 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3, TECH_POWER = 3)
 	materials = list(MAT_STEEL = 20000)
 	build_path = /obj/item/electronic_assembly/medium
-	sort_string = "UDAAB"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_large
 	name = "Large custom assembly"
@@ -69,7 +63,6 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 4, TECH_POWER = 4)
 	materials = list(MAT_STEEL = 40000)
 	build_path = /obj/item/electronic_assembly/large
-	sort_string = "UDAAC"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_drone
 	name = "Drone custom assembly"
@@ -78,7 +71,6 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 4, TECH_POWER = 4)
 	materials = list(MAT_STEEL = 30000)
 	build_path = /obj/item/electronic_assembly/drone
-	sort_string = "UDAAD"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_device
 	name = "Device custom assembly"
@@ -87,7 +79,6 @@
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 5000)
 	build_path = /obj/item/assembly/electronic_assembly
-	sort_string = "UDAAE"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_implant
 	name = "Implant custom assembly"
@@ -96,4 +87,3 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 4, TECH_POWER = 3, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 2000)
 	build_path = /obj/item/implant/integrated_circuit
-	sort_string = "UDAAF"

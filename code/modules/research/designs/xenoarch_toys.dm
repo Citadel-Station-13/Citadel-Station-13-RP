@@ -11,7 +11,6 @@
 	req_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	build_path = /obj/item/ano_scanner
-	sort_string = "GAAAA"
 
 /datum/design/science/xenoarch/depth_scanner
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -19,7 +18,6 @@
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/depth_scanner
-	sort_string = "GAAAB"
 
 /datum/design/science/xenoarch/xenoarch_multi_tool
 	name = "xenoarcheology multitool"
@@ -27,7 +25,6 @@
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3)
 	build_path = /obj/item/xenoarch_multi_tool
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_URANIUM = 500, MAT_PHORON = 500)
-	sort_string = "GAAAC"
 
 /datum/design/science/xenoarch/excavationdrill
 	name = "Excavation Drill"
@@ -36,4 +33,3 @@
 	build_type = PROTOLATHE
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/pickaxe/excavationdrill
-	sort_string = "GAAAD"

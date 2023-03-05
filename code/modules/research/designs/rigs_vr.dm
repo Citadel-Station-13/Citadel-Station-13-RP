@@ -24,25 +24,21 @@
 	name = "eva hardsuit (empty)"
 	id = "eva_hardsuit"
 	build_path = /obj/item/rig/eva
-	sort_string = "OAAAA"
 
 /datum/design/science/rig/mining
 	name = "industrial hardsuit (empty)"
 	id = "ind_hardsuit"
 	build_path = /obj/item/rig/industrial
-	sort_string = "OAAAB"
 
 /datum/design/science/rig/research
 	name = "ami hardsuit (empty)"
 	id = "ami_hardsuit"
 	build_path = /obj/item/rig/hazmat
-	sort_string = "OAAAC"
 
 /datum/design/science/rig/medical
 	name = "medical hardsuit (empty)"
 	id = "med_hardsuit"
 	build_path = /obj/item/rig/medical
-	sort_string = "OAAAD"
 */
 
 /datum/design/science/rig_module
@@ -57,75 +53,63 @@
 	name = "maneuvering jets"
 	id = "rigmod_maneuveringjets"
 	build_path = /obj/item/rig_module/maneuvering_jets
-	sort_string = "OBAAA"
 
 /datum/design/science/rig_module/sprinter
 	name = "sprinter"
 	id = "rigmod_sprinter"
 	build_path = /obj/item/rig_module/sprinter
-	sort_string = "OBAAB"
 
 /datum/design/science/rig_module/plasma_cutter
 	name = "plasma cutter"
 	id = "rigmod_plasmacutter"
 	build_path = /obj/item/rig_module/device/plasmacutter
-	sort_string = "OBABA"
 
 /datum/design/science/rig_module/diamond_drill
 	name = "diamond drill"
 	id = "rigmod_diamonddrill"
 	build_path = /obj/item/rig_module/device/drill
-	sort_string = "OBABB"
 
 /datum/design/science/rig_module/anomaly_scanner
 	name = "anomaly scanner"
 	id = "rigmod_anomalyscanner"
 	build_path = /obj/item/rig_module/device/anomaly_scanner
-	sort_string = "OBABC"
 
 /datum/design/science/rig_module/orescanner
 	name = "ore scanner"
 	id = "rigmod_orescanner"
 	build_path = /obj/item/rig_module/device/orescanner
-	sort_string = "OBABD"
 
 /datum/design/science/rig_module/orescanneradv
 	name = "adv. ore scanner"
 	id = "rigmod_orescanneradv"
 	build_path = /obj/item/rig_module/device/orescanner/advanced
-	sort_string = "OBABE"
 
 /datum/design/science/rig_module/rescue_pharm
 	name = "rescue pharm"
 	id = "rigmod_rescue_pharm"
 	build_path = /obj/item/rig_module/rescue_pharm
-	sort_string = "OBACA"
 
 /datum/design/science/rig_module/lasercannon
 	name = "laser cannon"
 	id = "rigmod_lasercannon"
 	build_path = /obj/item/rig_module/mounted
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
-	sort_string = "OBADA"
 
 /datum/design/science/rig_module/egun
 	name = "energy gun"
 	id = "rigmod_egun"
 	build_path = /obj/item/rig_module/mounted/egun
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 1000)
-	sort_string = "OBADB"
 
 /datum/design/science/rig_module/taser
 	name = "taser"
 	id = "rigmod_taser"
 	build_path = /obj/item/rig_module/mounted/taser
-	sort_string = "OBADC"
 
 /datum/design/science/rig_module/armblade
 	name = "arm-mounted blade"
 	id = "rigmod_armblade"
 	build_path = /obj/item/rig_module/armblade
-	sort_string = "OBADD"
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_GOLD = 2000)
 
 /datum/design/science/rig_module/rcd
@@ -133,18 +117,15 @@
 	id = "rigmod_rcd"
 	build_path = /obj/item/rig_module/device/rcd
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
-	sort_string = "OBAEA"
 
 /datum/design/science/rig_module/rigwelder
 	name = "RIG arc-welder"
 	id = "rigmod_welder"
 	build_path = /obj/item/rig_module/device/rigwelder
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
-	sort_string = "OBAEB"
 
 /datum/design/science/rig_module/toolset
 	name = "RIG toolset"
 	id = "rigmod_tools"
 	build_path = /obj/item/rig_module/device/toolset
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_PLASTEEL = 1000)
-	sort_string = "OBAEC"
