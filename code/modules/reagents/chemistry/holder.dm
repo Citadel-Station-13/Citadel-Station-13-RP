@@ -125,6 +125,10 @@
 /* Holder-to-chemical */
 
 /datum/reagents/proc/add_reagent(id, amount, data = null, safety = 0)
+	if(ispath(id))
+		var/datum/reagent/accessing = id
+		id = initial(accessing.id)
+
 	if(!isnum(amount) || amount <= 0)
 		return 0
 
