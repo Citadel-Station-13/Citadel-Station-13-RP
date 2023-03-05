@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 	if(GLOB.lore_atc.squelched == FALSE)
-		GLOB.lore_atc.reroute_traffic()
+		GLOB.lore_atc.toggle_broadcast()
 
 //calls the shuttle for a routine crew transfer
 /datum/controller/subsystem/emergencyshuttle/proc/call_transfer()
