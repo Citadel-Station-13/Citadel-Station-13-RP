@@ -96,9 +96,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	/// active holocall - outgoing
 	var/datum/holocall/outgoing_call
 	/// active holocalls - inbound
-	var/list/datum/holocall/active_calls
+	var/list/datum/holocall/incoming_calls
 	/// inbound holocalls - still ringing
-	var/list/datum/holocall/ringing
+	var/list/datum/holocall/ringing_calls
 
 	//? appearance
 	/// current emissive
@@ -243,13 +243,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * checks if we're in a connected incoming call
  */
 /obj/machinery/holopad/proc/incoming_calls_connected()
-	return length(active_calls)
+	return length(incoming_calls)
 
 /**
  * checks if we have incoming calls, whether or not connected
  */
 /obj/machinery/holopad/proc/incoming_calls_exist()
-	return length(active_calls) || length(ringing)
+	return length(incoming_calls) || length(ringing_calls)
 
 /**
  * is call source
@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * is call destination
  */
 /obj/machinery/holopad/proc/is_call_destination()
-	return length(active_calls)
+	return length(incoming_calls)
 
 /**
  * checks if we should automatically answer a holocall
@@ -273,13 +273,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * hang up all calls
  */
 /obj/machinery/holopad/proc/disconnect_all_calls()
-	#warn impl
+	for(var/datum/holocall/call as anything in incoming_calls)
+		disconnect_call(call)
+	for(var/datum/holocall/call as anything in ringing_calls)
+		disconnect_call(call)
+	if(outgoing_call)
+		disconnect_call(outgoing_call)
 
 /**
- * hang up a call
+ * hang up a call, or terminate a ringing call
  */
 /obj/machinery/holopad/proc/disconnect_call(datum/holocall/disconnecting)
-	#warn impl
+	disconnecting.disconnect()
 
 //? UI
 
@@ -367,15 +372,36 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if("disconnect")
 			// id, null for all
 			var/id = params["id"]
-			#warn impl
+			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
+			if(outgoing_call?.destination == pad)
+				disconnect_call(outgoing_call)
+				return TRUE
+			for(var/datum/holocall/call as anything in incoming_calls)
+				if(call.destination != pad)
+					continue
+				disconnect_call(call)
+				return TRUE
+			for(var/datum/holocall/call as anything in ringing_calls)
+				if(call.destination != pad)
+					continue
+				disconnect_call(call)
+				return TRUE
+			return TRUE
 		// user requesting to call
 		if("call")
 			var/id = params["id"]
+			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 			#warn 30 second per unique holopad cooldown for ringing
 		// user requesting to connect an incoming/ringing call
 		if("connect")
 			var/id = params["id"]
-			#warn impl
+			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
+			for(var/datum/holocall/call as anything in ringing_calls)
+				if(call.destination != pad)
+					continue
+				call.connect()
+				return TRUE
+			return TRUE
 		// user toggling holocall ringer
 		if("toggle_ringer")
 			if(!ringer_toggleable)
@@ -676,10 +702,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	src.source = sender
 	src.destination = receiver
 	register()
-	ring()
 
 /datum/holocall/Destroy()
-	disconnect()
 	cleanup()
 	QDEL_NULL(action_hang_up)
 	QDEL_NULL(action_swap_view)
