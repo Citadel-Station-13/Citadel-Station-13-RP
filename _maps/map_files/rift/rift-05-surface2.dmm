@@ -7961,7 +7961,6 @@
 /area/maintenance/research/rnd)
 "fUX" = (
 /obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
