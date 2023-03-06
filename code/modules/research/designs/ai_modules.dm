@@ -10,56 +10,56 @@
 
 /datum/design/aimodule/safeguard
 	name = "Safeguard"
-	id = "safeguard"
+	identifier = "safeguard"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/safeguard
 
 /datum/design/aimodule/onehuman
 	name = "OneCrewMember"
-	id = "onehuman"
+	identifier = "onehuman"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/oneHuman
 
 /datum/design/aimodule/protectstation
 	name = "ProtectStation"
-	id = "protectstation"
+	identifier = "protectstation"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/protectStation
 
 /datum/design/aimodule/notele
 	name = "TeleporterOffline"
-	id = "notele"
+	identifier = "notele"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/aiModule/teleporterOffline
 
 /datum/design/aimodule/quarantine
 	name = "Quarantine"
-	id = "quarantine"
+	identifier = "quarantine"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/quarantine
 
 /datum/design/aimodule/oxygen
 	name = "OxygenIsToxicToHumans"
-	id = "oxygen"
+	identifier = "oxygen"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/oxygen
 
 /datum/design/aimodule/freeform
 	name = "Freeform"
-	id = "freeform"
+	identifier = "freeform"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/freeform
 
 /datum/design/aimodule/reset
 	name = "Reset"
-	id = "reset"
+	identifier = "reset"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/reset
 	sort_string = "XAAAZ"	// Duplicate string, really need to redo this whole thing
 
 /datum/design/aimodule/purge
 	name = "Purge"
-	id = "purge"
+	identifier = "purge"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/purge
 
@@ -75,22 +75,22 @@
 
 /datum/design/aimodule/core/freeformcore
 	name = "Freeform"
-	id = "freeformcore"
+	identifier = "freeformcore"
 	build_path = /obj/item/aiModule/freeformcore
 
 /datum/design/aimodule/core/asimov
 	name = "Asimov"
-	id = "asimov"
+	identifier = "asimov"
 	build_path = /obj/item/aiModule/asimov
 
 /datum/design/aimodule/core/paladin
 	name = "P.A.L.A.D.I.N."
-	id = "paladin"
+	identifier = "paladin"
 	build_path = /obj/item/aiModule/paladin
 
 /datum/design/aimodule/core/tyrant
 	name = "T.Y.R.A.N.T."
-	id = "tyrant"
+	identifier = "tyrant"
 	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 2, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/tyrant
 
@@ -98,7 +98,7 @@
 /datum/design/science/intellicard
 	name = "'intelliCore', AI preservation and transportation system"
 	desc = "Allows for the construction of an intelliCore."
-	id = "intellicore"
+	identifier = "intellicore"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 4)
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 200)
 	build_path = /obj/item/aicard

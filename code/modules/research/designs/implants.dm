@@ -9,12 +9,12 @@
 
 /datum/design/science/implant/chemical
 	name = "chemical"
-	id = "implant_chem"
+	identifier = "implant_chem"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)
 	build_path = /obj/item/implantcase/chem
 
 /datum/design/science/implant/freedom
 	name = "freedom"
-	id = "implant_free"
+	identifier = "implant_free"
 	req_tech = list(TECH_ILLEGAL = 2, TECH_BIO = 3)
 	build_path = /obj/item/implantcase/freedom
