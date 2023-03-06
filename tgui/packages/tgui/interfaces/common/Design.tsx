@@ -1,6 +1,7 @@
 import { BooleanLike } from "common/react";
 
 export interface Design {
+  full_name: string;
   name: string;
   desc: string;
   materials: Record<string, number>;

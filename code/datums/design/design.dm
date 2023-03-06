@@ -39,41 +39,74 @@ other types of metals and chemistry for reagents).
 
 	/// Must be unique - identifier of design in CamelCase.
 	var/identifier
-	/// list of materials needed - typepath or id to amonut.
+	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/materials
-	/// list of reagents needed - typepath or id to amount.
+	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/reagents
 	/// types of lathes that can print us
 	var/lathe_type = NONE
 	/// time needed in deciseconds
 	var/work = 5 SECONDS
-	/// category - string or list, or null; null results in undefined behavior depending on UI.
-	var/category = "Misc"
 
 	/// type of what we build
 	var/build_path
+
+	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
+	var/name
+	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
+	var/build_name
+	/// desc of design, shows in UIs. if null, it'll be auto-detected from the build_path if possible.
+	var/desc
+	/// category - string or list, or null; null results in undefined behavior depending on UI.
+	var/category = "Misc"
 
 
 	#warn build path? how to handle?
 	#warn parse below
 
-	///Name of the created object. If null it will be 'guessed' from build_path if possible.
-	var/name = null
-	///Description of the created object. If null it will use group_desc and name where applicable.
-	var/desc = null
-	///An item name before it is modified by various name-modifying procs
-	var/item_name = null
-	///The path of the object that gets created.
-	var/build_path = null
+	//? legacy
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 
 /datum/design/New()
+	autodetect()
+	generate()
+
 	if(!islist(category))
 		log_runtime(EXCEPTION("Warning: Design [type] defined a non-list category. Please fix this."))
 		category = list(category)
 	item_name = name
 	AssembleDesignInfo()
+
+/datum/design/proc/autodetect()
+	#warn handle non-build-path'd ones
+	var/obj/item/instance
+	if(isnull(materials))
+		if(isnull(instance))
+			instance = new build_path
+		#warn impl
+	if(isnull(reagents))
+		reagents = list() // nah no autodetect for now.
+	if(!name)
+		if(isnull(instance))
+			instance = new build_path
+	if(!desc)
+		if(isnull(instance))
+			instance = new build_path
+
+/datum/design/proc/generate()
+	generate_name()
+
+/datum/design/proc/generate_name()
+	name = build_name || name
+
+/datum/design/proc/ui_data_list()
+	return list(
+		"full_name" = name,
+		"name" = build_name,
+		"id" = id,
+	)
+	#warn Design.tsx, how to handle materials / reagents?
 
 //These procs are used in subtypes for assigning names and descriptions dynamically
 /datum/design/proc/AssembleDesignInfo()
