@@ -52,12 +52,15 @@ DEFINE_BITFIELD(species_flags, list(
 #define SPECIES_FLUFF_PICKY_CITIZENSHIP (1<<2)
 /// deny religions that don't specifically whitelist us
 #define SPECIES_FLUFF_PICKY_RELIGION (1<<3)
+/// deny cultures that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_CULTURE (1<<3)
 
 DEFINE_BITFIELD(species_fluff_flags, list(
 	BITFIELD(SPECIES_FLUFF_PICKY_FACTION),
 	BITFIELD(SPECIES_FLUFF_PICKY_ORIGIN),
 	BITFIELD(SPECIES_FLUFF_PICKY_CITIZENSHIP),
 	BITFIELD(SPECIES_FLUFF_PICKY_RELIGION),
+	BITFIELD(SPECIES_FLUFF_PICKY_CULTURE),
 ))
 
 //! species_spawn_flags
