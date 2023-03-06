@@ -24,39 +24,3 @@
 			. = 1
 	if(.)
 		SStgui.update_uis(src)
-
-/obj/machinery/chemical_dispenser
-	dispense_reagents = list(
-		"hydrogen", "lithium", "carbon", "nitrogen", "oxygen", "fluorine", "sodium",
-		"aluminum", "silicon", "phosphorus", "sulfur", "chlorine", "potassium", "iron",
-		"copper", "mercury", "radium", "water", "ethanol", "sugar", "sacid", "tungsten"
-		)
-
-/obj/machinery/chemical_dispenser/ert
-	dispense_reagents = list(
-		"inaprovaline", "ryetalyn", "paracetamol", "tramadol", "oxycodone", "sterilizine", "leporazine",
-		"kelotane", "dermaline", "dexalin", "dexalinp", "tricordrazine", "anti_toxin", "synaptizine",
-		"hyronalin", "arithrazine", "alkysine", "imidazoline", "peridaxon", "bicaridine", "hyperzine",
-		"rezadone", "spaceacillin", "ethylredoxrazine", "stoxin", "chloralhydrate", "cryoxadone",
-		"clonexadone"
-		)
-
-/obj/machinery/chemical_dispenser/bar_soft
-	dispense_reagents = list(
-		"water", "ice", "coffee", "cream", "tea", "icetea", "cola", "spacemountainwind", "dr_gibb", "space_up", "tonic",
-		"sodawater", "lemon_lime", "sugar", "orangejuice", "limejuice", "watermelonjuice", "thirteenloko", "grapesoda",
-		"sarsaparilla", "sassafras"
-		)
-
-/obj/machinery/chemical_dispenser/bar_alc
-	dispense_reagents = list(
-		"lemon_lime", "sugar", "orangejuice", "limejuice", "sodawater", "tonic", "beer", "kahlua",
-		"whiskey", "wine", "vodka", "cider", "gin", "rum", "tequila", "vermouth", "cognac", "ale", "mead", "bitters",
-		"alcsassafras"
-		)
-
-/obj/machinery/chemical_dispenser/bar_coffee
-	dispense_reagents = list(
-		"coffee", "cafe_latte", "soy_latte", "hot_coco", "milk", "cream", "tea", "ice",
-		"orangejuice", "lemonjuice", "limejuice", "berryjuice", "mint"//, "decaf"
-		)

@@ -28,6 +28,8 @@
 	container_name = "soda dispenser crate"
 	group = "Reagents"
 
+#warn nuke everything from orbit
+
 /datum/supply_pack/reagents
 	name = "Chemistry dispenser refill"
 	contains = list(

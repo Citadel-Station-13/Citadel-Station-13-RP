@@ -11,7 +11,7 @@
 	var/reagents_drain = 4 // ~5k units on 10k cell
 
 /obj/item/reagent_synth/Initialize(mapload)
-	if(has_typelist(NAMEOF(src, reagentS_provided)))
+	if(has_typelist(NAMEOF(src, reagents_provided)))
 		reagents_provided = get_typelist(NAMEOF(src, reagents_provided))
 	else
 		reagents_provided = typelist(NAMEOF(src, reagents_provided), resolve_reagents_provided())
