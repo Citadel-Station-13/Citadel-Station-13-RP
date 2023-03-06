@@ -7,8 +7,6 @@
 	var/reagents_group
 	/// reagents by typepath or id that we allow syntehsis of
 	var/list/reagents_provided
-	/// power in kilojoules per unit synthesized
-	var/reagents_drain = 4 // ~5k units on 10k cell
 
 /obj/item/reagent_synth/Initialize(mapload)
 	if(has_typelist(NAMEOF(src, reagents_provided)))

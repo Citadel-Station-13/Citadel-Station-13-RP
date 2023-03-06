@@ -1,66 +1,7 @@
-/obj/item/reagent_containers/chem_disp_cartridge
-	name = "chemical dispenser cartridge"
-	desc = "This goes in a chemical dispenser."
-	icon_state = "cartridge"
 
-	w_class = ITEMSIZE_NORMAL
+#warn impl
 
-	volume = CARTRIDGE_VOLUME_LARGE
-	amount_per_transfer_from_this = 50
-	// Large, but inaccurate. Use a chem dispenser or beaker for accuracy.
-	possible_transfer_amounts = list(50, 100, 250, 500)
-	unacidable = 1
-
-	var/spawn_reagent = null
-	var/label = ""
-
-/obj/item/reagent_containers/chem_disp_cartridge/Initialize(mapload)
-	. = ..()
-	if(spawn_reagent)
-		reagents.add_reagent(spawn_reagent, volume)
-		var/datum/reagent/R = SSchemistry.reagent_lookup[spawn_reagent]
-		setLabel(R.name)
-
-/obj/item/reagent_containers/chem_disp_cartridge/examine(mob/user)
-	. = ..()
-	. += "It has a capacity of [volume] units."
-	if(reagents.total_volume <= 0)
-		. += "It is empty."
-	else
-		. += "It contains [reagents.total_volume] units of liquid."
-	if(!is_open_container())
-		. += "The cap is sealed."
-
-/obj/item/reagent_containers/chem_disp_cartridge/verb/verb_set_label(L as text)
-	set name = "Set Cartridge Label"
-	set category = "Object"
-	set src in view(usr, 1)
-
-	setLabel(L, usr)
-
-/obj/item/reagent_containers/chem_disp_cartridge/proc/setLabel(L, mob/user = null)
-	if(L)
-		if(user)
-			to_chat(user, "<span class='notice'>You set the label on \the [src] to '[L]'.</span>")
-
-		label = L
-		name = "[initial(name)] - '[L]'"
-	else
-		if(user)
-			to_chat(user, "<span class='notice'>You clear the label on \the [src].</span>")
-		label = ""
-		name = initial(name)
-
-/obj/item/reagent_containers/chem_disp_cartridge/attack_self()
-	..()
-	if (is_open_container())
-		to_chat(usr, "<span class = 'notice'>You put the cap on \the [src].</span>")
-		atom_flags ^= OPENCONTAINER
-	else
-		to_chat(usr, "<span class = 'notice'>You take the cap off \the [src].</span>")
-		atom_flags |= OPENCONTAINER
-
-/obj/item/reagent_containers/chem_disp_cartridge/afterattack(obj/target, mob/user , flag)
+/obj/item/reagent_containers/cartridge/dispenser/afterattack(obj/target, mob/user , flag)
 	if (!is_open_container() || !flag)
 		return
 
