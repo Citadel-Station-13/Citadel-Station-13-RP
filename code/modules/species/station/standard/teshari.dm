@@ -55,7 +55,7 @@
 
 	slowdown          = -0.5
 	snow_movement     = -1
-	item_slowdown_mod = 0.25
+	item_slowdown_mod = 0.5
 
 	total_health = 75
 	brute_mod    = 1.1
