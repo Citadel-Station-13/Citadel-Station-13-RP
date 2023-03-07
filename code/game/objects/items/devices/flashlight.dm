@@ -463,6 +463,7 @@
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
 	light_color = LIGHT_COLOR_YELLOW
+	light_wedge = LIGHT_OMNI
 	w_class = ITEMSIZE_TINY
 	brightness_on = 6
 	on = TRUE //Bio-luminesence has one setting, on.
