@@ -40,6 +40,8 @@
 	var/dispense_amount = 10
 	/// power in kilojoules per unit synthesized
 	var/kj_per_unit = 4 // ~5k units on 10k cell
+	/// is recharging active?
+	var/charging = TRUE
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
@@ -56,6 +58,21 @@
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Alt-click while the panel is open to remove cartridges.")
+
+/obj/machinery/chemical_dispenser/process(delta_time)
+	// todo: rework power handling
+	if(machine_stat & NOPOWER)
+		return
+	if(!cell)
+		return
+	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
+	if(!wanted)
+		return
+	var/kw_used = use_power_oneoff(min(recharge_rate * delta_time, wanted))
+	if(!kw_used)
+		return
+	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))
+	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
