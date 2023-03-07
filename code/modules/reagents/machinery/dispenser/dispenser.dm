@@ -31,11 +31,11 @@
 	/// inserted beaker / whatever
 	var/obj/item/reagent_containers/inserted
 	/// allow beakers
-	var/allow_beakers = TRUE
+	// var/allow_beakers = TRUE
 	/// allow drinking glasses
 	var/allow_drinking = TRUE
 	/// allow all other opencontainer reagent containers
-	var/allow_other = FALSE
+	// var/allow_other = FALSE
 	/// current dispense amount
 	var/dispense_amount = 10
 	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
@@ -210,7 +210,7 @@
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
 	if(panel_open)
@@ -233,8 +233,28 @@
 	if(istype(I, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/container = I
 		// trying to insert
-
-		#warn impl
+		if(!container.is_open_container())
+			user.action_feedback(SPAN_WARNING("[I] can't be directly filled."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		// check
+		if(istype(container, /obj/item/reagent_containers/cartridge))
+			// always fine
+		else if(istype(container, /obj/item/reagent_containers/food) && !allow_drinking)
+			user.action_feedback(SPAN_WARNING("[src] doesn't accept beakers."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		// insert
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		// process swap?
+		if(inserted)
+			user.visible_action_feedback(SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+		else
+			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			user.put_in_hand_or_drop(inserted)
+		inserted = I
+		SStgui.update_uis(src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/machinery/chemical_dispenser/proc/check_reagent_id(id)
 	for(var/obj/item/reagent_synth/synth as anything in synthesizers)
