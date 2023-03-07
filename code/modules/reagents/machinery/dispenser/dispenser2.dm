@@ -1,8 +1,3 @@
-/obj/machinery/chemical_dispenser
-
-/obj/machinery/chemical_dispenser/examine(mob/user)
-	. = ..()
-	. += "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more."
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/W, mob/user)
 	else if(istype(W, /obj/item/reagent_containers/glass) || istype(W, /obj/item/reagent_containers/food))
@@ -60,54 +55,18 @@
 	return data
 
 /obj/machinery/chemical_dispenser/ui_act(action, params)
-	if(..())
-		return TRUE
-
-	. = TRUE
-	switch(action)
-		if("amount")
-			amount = clamp(round(text2num(params["amount"]), 1), 0, 120) // round to nearest 1 and clamp 0 - 120
-		if("dispense")
-			var/label = params["reagent"]
-			if(cartridges[label] && container && container.is_open_container())
-				var/obj/item/reagent_containers/chem_disp_cartridge/C = cartridges[label]
-				playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
-				C.reagents.trans_to(container, amount)
-		if("remove")
-			var/amount = text2num(params["amount"])
-			if(!container || !amount)
-				return
-			var/datum/reagents/R = container.reagents
-			var/id = params["reagent"]
-			if(amount > 0)
-				R.remove_reagent(id, amount)
-			else if(amount == -1) // Isolate
-				R.isolate_reagent(id)
-		if("ejectBeaker")
-			if(!container)
-				return
-			if(!usr)
-				return
-			usr.grab_item_from_interacted_with(container, src)
-			container = null
-		else
-			return FALSE
-
-	add_fingerprint(usr)
+	if("ejectBeaker")
+		if(!container)
+			return
+		if(!usr)
+			return
+		usr.grab_item_from_interacted_with(container, src)
+		container = null
+	else
+		return FALSE
 
 /obj/machinery/chemical_dispenser/attack_ghost(mob/user)
 	. = ..()
 	if(machine_stat & BROKEN)
 		return
 	ui_interact(user)
-
-/obj/machinery/chemical_dispenser/attack_ai(mob/user)
-	attack_hand(user)
-
-/obj/machinery/chemical_dispenser/attack_hand(mob/user)
-	if(machine_stat & BROKEN)
-		return
-	ui_interact(user)
-
-/obj/machinery/chemical_dispenser/unanchored
-	anchored = FALSE

@@ -38,6 +38,8 @@
 	var/allow_other = FALSE
 	/// current dispense amount
 	var/dispense_amount = 10
+	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
+	var/dispense_amount_max = 60
 	/// power in kilojoules per unit synthesized
 	var/kj_per_unit = 4 // ~5k units on 10k cell
 	/// is recharging active?
@@ -55,9 +57,14 @@
 			created += new path(src)
 		synthesizers = created
 
+/obj/machinery/chemical_dispenser/Destroy()
+	QDEL_LIST_NULL(cartridges)
+	QDEL_LIST_NULL(synthesizers)
+	return ..()
+
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Alt-click while the panel is open to remove cartridges.")
+	. += "It has [length(cartridges)] cartridges installed, and has space for [cartridges_max - length(cartridges)] more."
 
 /obj/machinery/chemical_dispenser/process(delta_time)
 	// todo: rework power handling
@@ -110,6 +117,60 @@
 
 /obj/machinery/chemical_dispenser/ui_act(action, params)
 	. = ..()
+	if(.)
+		return
+	add_fingerprint(usr)
+	switch(action)
+		if("reagent")
+			if(isnull(inserted?.reagents))
+				return TRUE
+			var/id = params["id"]
+			if(!check_reagent_id(id))
+				return TRUE
+			var/amount = round(text2num(params["amount"]))
+			if(!amount)
+				return TRUE
+			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
+			inserted.reagents.add_reagent(id, amount)
+			return TRUE
+		if("cartridge")
+			if(isnull(inserted?.reagents))
+				return TRUE
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/obj/item/reagent_containers/cartridge/dispenser/cart
+			for(cart as anything in cartridges)
+				if(cart.label == id)
+					break
+			if(cart?.label != id)
+				return TRUE
+			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
+			cart.reagents.trans_to(inserted, dispense_amount)
+			return TRUE
+		if("amount")
+			var/target = text2num(params["set"])
+			if(isnull(target))
+				return TRUE
+			target = round(target)
+			dispense_amount = clamp(target, 0, dispense_amount_max)
+			return TRUE
+		if("isolate")
+			var/id = params["reagent"]
+			if(isnull(id))
+				return TRUE
+			inserted?.reagents?.isolate_reagent(id)
+			return TRUE
+		if("purge")
+			var/id = params["reagent"]
+			if(isnull(id))
+				return TRUE
+			var/amount = round(text2num(params["amount"]))
+			if(!amount)
+				return TRUE
+			inserted?.reagents?.remove_reagent(id, amount)
+			return TRUE
+		if("eject")
 
 /obj/machinery/chemical_dispenser/AltClick(mob/user)
 	. = ..()
@@ -167,13 +228,16 @@
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart, atom/where = drop_location())
 	ASSERT(cart in cartridges)
-	cartrdiges -= cart
+	LAZYREMOVE(cartridges, cart)
 	cart.forceMove(where)
 	update_static_data()
 
 /obj/machinery/chemical_dispenser/proc/insert_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart)
 	ASSERT(cart.label)
-	cartridges += cart
+	for(var/obj/item/reagent_containers/cartridge/dispenser/other as anything in cartridges)
+		if(other.label == cart.label)
+			CRASH("collision on label.")
+	LAZYADD(cartridges, cart)
 	cart.forceMove(src)
 	update_static_data()
 
@@ -217,3 +281,13 @@
 		if(TOOL_SCREWDRIVER)
 			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
 	return ..()
+
+/obj/machinery/chemical_dispenser/drop_products(method)
+	. = ..()
+	for(var/obj/item/I as anything in (synthesizers | cartridges))
+		I.forceMove(drop_location())
+	synthesizers = null
+	cartridges = null
+
+/obj/machinery/chemical_dispenser/unanchored
+	anchored = FALSE
