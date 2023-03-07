@@ -180,7 +180,13 @@
 	for(var/name in available)
 		var/state_using = available[name]
 		assembled[name] = image(icon, icon_state = (state_using in states? state_using : icon_state))
-	show_radial_menu(user, src, assembled)
+	if(!length(available))
+		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
+		return
+	var/choice = show_radial_menu(user, src, assembled)
+	if(isnull(choice))
+		return
+	set_style(choice, user)
 
 /obj/item/clothing/verb/pick_style_verb()
 	set name = "Set Worn Style"
