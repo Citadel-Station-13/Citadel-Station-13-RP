@@ -218,7 +218,7 @@
 	contains = list(
 			/obj/item/book/manual/rust_engine,
 			/obj/machinery/power/fusion_core,
-			/obj/item/circuitboard/fusion_core
+			/obj/item/circuitboard/fusion_core_control
 			)
 
 /datum/supply_pack/eng/fusion_fuel_injector
@@ -230,7 +230,7 @@
 	contains = list(
 			/obj/machinery/fusion_fuel_injector,
 			/obj/machinery/fusion_fuel_injector,
-			/obj/item/circuitboard/fusion_injector
+			/obj/item/circuitboard/fusion_fuel_control
 			)
 
 /datum/supply_pack/eng/gyrotron
@@ -249,7 +249,13 @@
 	cost = 10
 	container_name = "Fusion Fuel Compressor circuitry crate"
 	container_type = /obj/structure/closet/crate/engineering
-	contains = list(/obj/item/circuitboard/fusion_fuel_compressor)
+	contains = list(
+			/obj/item/circuitboard/fusion_fuel_compressor,
+			/obj/item/stock_parts/manipulator/nano = 2,
+			/obj/item/stock_parts/matter_bin/super = 2,
+			/obj/item/stock_parts/console_screen = 1,
+			/obj/item/stack/cable_coil = 5
+			)
 
 /datum/supply_pack/eng/tritium
 	name = "Tritium crate"
