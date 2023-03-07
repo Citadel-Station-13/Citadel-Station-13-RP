@@ -55,6 +55,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()
 
+	//? wiki markup generation additional
+	/// override "name"
+	var/wiki_name
+	/// override "desc"
+	var/wiki_desc
+	/// wiki category - determines what table to put it into
+	var/wiki_category = "Miscellaneous"
+	/// forced sort ordering in its category - falls back to name otherwise.
+	var/wiki_sort = 0
+
 /datum/reagent/proc/remove_self(var/amount) // Shortcut
 	if(holder)
 		holder.remove_reagent(id, amount)
