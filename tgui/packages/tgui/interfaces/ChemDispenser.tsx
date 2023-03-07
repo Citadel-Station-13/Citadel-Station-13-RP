@@ -1,6 +1,7 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
+import { ReagentContentsData } from "./common/Reagents";
 
 interface ReagentData {
   name: string;
@@ -12,12 +13,20 @@ interface CartridgeData {
   amount: number;
 }
 
+interface BeakerData {
+  volume: number;
+  capacity: BeakerData;
+  data: ReagentContentsData;
+}
+
 interface ChemDispenserData {
   cell_charge: number;
   cell_capacity: number;
   has_cell: BooleanLike;
   cartridges: Array<CartridgeData>;
   reagents: Array<ReagentData>;
+  has_beaker: BooleanLike;
+  beaker: BeakerData;
 }
 
 export const ChemDispenser = (props, context) => {

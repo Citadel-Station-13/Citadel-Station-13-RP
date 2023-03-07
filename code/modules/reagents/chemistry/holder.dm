@@ -515,3 +515,16 @@
 		if(C.can_happen(src))
 			do_happen = TRUE
 	return do_happen
+
+/**
+ * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
+ */
+/datum/reagents/proc/tgui_reagent_contents()
+	var/list/built = list()
+	for(var/datum/reagent/R as anything in reagent_list)
+		built[++built.len] = list(
+			"name" = R.name,
+			"amount" = R.volume,
+			"id" = R.id,
+		)
+	return built

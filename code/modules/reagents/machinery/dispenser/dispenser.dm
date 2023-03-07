@@ -114,6 +114,12 @@
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell.charge
 	.["cell_capacity"] = cell.maxcharge
+	.["has_beaker"] = !!inserted
+	.["beaker"] = inserted?.reagents? list(
+		"volume" = inserted.reagents.total_volume,
+		"capacity" = inserted.reagents.maximum_volume,
+		"data" = inserted.reagents.tgui_reagent_contents(),
+	) : null
 
 /obj/machinery/chemical_dispenser/ui_act(action, params)
 	. = ..()
@@ -212,7 +218,7 @@
 			if(!user.transfer_item_to_loc(I, src))
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!add_cartridge(I))
+			if(!insert_cartridge(I))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			user.visible_message(SPAN_NOTICE("[user] inserts [I] into [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
