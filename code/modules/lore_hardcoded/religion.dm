@@ -12,3 +12,4 @@
 	name = "Other"
 	id = "custom"
 	desc = "Whether you're in a small sect of a niche religion, or simply have nonstandard beliefs, you don't fit into any of the above."
+	category = "Misc"

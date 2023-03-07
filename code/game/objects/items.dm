@@ -26,9 +26,14 @@
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_persist_flags = NONE
   /// This is used to determine how default item-level interaction hooks are handled.
-	/// flags for interaction - see [code/__DEFINES/_flags/interaction_flags.dm]
+	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
+	//? Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+
+	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
