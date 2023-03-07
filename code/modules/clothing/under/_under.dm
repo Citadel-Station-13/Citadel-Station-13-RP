@@ -102,9 +102,7 @@
 //? Styles
 
 /obj/item/clothing/under/available_styles(mob/user)
-	. = ..()
-	if(.)
-		return
+	. = list()
 	.["normal"] = worn_state || initial(icon_state)
 	if(worn_rolled_down != UNIFORM_ROLL_NULLED)
 		.["rolled down"] = (worn_has_rolldown == UNIFORM_AUTODETECT_ROLL)? (initial(icon_state)) : (worn_rolldown_state || "[worn_state || initial(icon_state)]_down")
