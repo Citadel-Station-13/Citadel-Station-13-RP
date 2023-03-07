@@ -83,6 +83,24 @@
 			"amount" = cart.reagents?.total_volume || 0,
 		)
 	.["cartridges"] = carts_built
+	var/list/chems_built = list()
+	// gather
+	for(var/obj/item/reagent_synth/synth as anything in synthesizers)
+		for(var/id in synth.reagents_provided)
+			if(chems_built[id])
+				continue
+			var/datum/reagent/R = SSchemistry.get_reagent(id)
+			if(!R)
+				continue
+			chems_built[id] = list(
+				"id" = id,
+				"name" = R.name,
+			)
+	// build
+	var/list/chems_final = list()
+	for(var/id in chems_built)
+		chems_final += list(chems_built[id])
+	.["reagents"] = chems_built
 
 /obj/machinery/chemical_dispenser/ui_data(mob/user)
 	. = ..()
@@ -140,6 +158,12 @@
 		// trying to insert
 
 		#warn impl
+
+/obj/machinery/chemical_dispenser/proc/check_reagent_id(id)
+	for(var/obj/item/reagent_synth/synth as anything in synthesizers)
+		if(id in synth.reagents_provided)
+			return TRUE
+	return FALSE
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart, atom/where = drop_location())
 	ASSERT(cart in cartridges)

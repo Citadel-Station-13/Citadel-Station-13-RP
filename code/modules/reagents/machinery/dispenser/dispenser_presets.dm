@@ -8,7 +8,7 @@
 
 #warn repath, use whitelists
 
-/obj/machinrey/chemical_dispenser/catering
+/obj/machinery/chemical_dispenser/catering
 	abstract_type = /obj/machinery/chemical_dispenser/catering
 	allow_drinking = TRUE
 	allow_beakers = TRUE

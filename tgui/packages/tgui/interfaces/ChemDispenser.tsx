@@ -1,9 +1,28 @@
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Slider, Section } from "../components";
-import { BeakerContents } from "../interfaces/common/BeakerContents";
 import { Window } from "../layouts";
 
+interface ReagentData {
+
+}
+
+interface ChemDispenserData {
+
+}
+
+export const ChemDispenser = (props, context) => {
+  const { act, data } = useBackend<ChemDispenserData>(context);
+  return (
+    <Window
+      width={400}
+      height={600}>
+      <Window.Content>
+        test
+      </Window.Content>
+    </Window>
+  );
+};
+
+/*
 const dispenseAmounts = [5, 10, 20, 30, 40, 60];
 const removeAmounts = [1, 5, 10];
 
@@ -168,3 +187,4 @@ const ChemDispenserBeaker = (properties, context) => {
     </Section>
   );
 };
+*/
