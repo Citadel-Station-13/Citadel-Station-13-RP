@@ -27,6 +27,7 @@ interface ChemDispenserData {
   reagents: Array<ReagentData>;
   has_beaker: BooleanLike;
   beaker: BeakerData;
+  panel_open: BooleanLike;
 }
 
 export const ChemDispenser = (props, context) => {

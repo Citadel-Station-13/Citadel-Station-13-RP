@@ -120,6 +120,7 @@
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell.charge
 	.["cell_capacity"] = cell.maxcharge
+	.["panel_open"] = panel_open
 	.["has_beaker"] = !!inserted
 	.["beaker"] = inserted?.reagents? list(
 		"volume" = inserted.reagents.total_volume,
@@ -183,6 +184,9 @@
 			inserted?.reagents?.remove_reagent(id, amount)
 			return TRUE
 		if("eject")
+			#warn impl
+		if("eject_cart")
+			#warn impl
 
 /obj/machinery/chemical_dispenser/AltClick(mob/user)
 	. = ..()
@@ -202,19 +206,16 @@
 	remove_cartridge(target, user)
 	user.put_in_hands_or_drop(target)
 	update_static_data()
+	#warn move to tgui
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	. = ..()
 	if(.)
 		return
 
-	if(istype(I, /obj/item/reagent_containers))
-		var/obj/item/reagent_containers/container = I
+	if(panel_open)
 		if(istype(I, /obj/item/reagent_containers/cartridge/dispenser))
 			var/obj/item/reagent_containers/cartridge/dispenser/cart = I
-			if(!panel_open)
-				user.action_feedback(SPAN_WARNING("How are you going to insert that while [src] is closed?"), src)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!cart.label)
 				user.action_feedback(SPAN_WARNING("[I] has no label!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -228,6 +229,9 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			user.visible_message(SPAN_NOTICE("[user] inserts [I] into [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	if(istype(I, /obj/item/reagent_containers))
+		var/obj/item/reagent_containers/container = I
 		// trying to insert
 
 		#warn impl

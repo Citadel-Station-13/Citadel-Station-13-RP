@@ -25,9 +25,6 @@
 /obj/item/reagent_containers/attack_self(mob/user as mob)
 	return
 
-/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
-	return
-
 /obj/item/reagent_containers/proc/reagentlist() // For attack logs
 	if(reagents)
 		return reagents.get_reagents()
