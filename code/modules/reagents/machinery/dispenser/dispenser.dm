@@ -81,6 +81,12 @@
 	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))
 	SStgui.update_uis(src)
 
+/obj/machinery/chemical_dispenser/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemDispenser")
+		ui.open()
+
 /obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/list/carts_built = list()
