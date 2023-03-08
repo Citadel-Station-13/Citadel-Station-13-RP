@@ -6,7 +6,7 @@
 #define MESSAGE_RANGE_COMBAT_LOUD				7
 
 /// message range for most construction / deconstruction actions
-#define MESSAGE_RANGE_CONSTRUCTION 5
+#define MESSAGE_RANGE_CONSTRUCTION 3
 /// message range for most machine / structure configuration actions
 #define MESSAGE_RANGE_CONFIGURATION 3
 /// silent-ish inv ops like swapping beacons

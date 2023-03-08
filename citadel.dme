@@ -3957,6 +3957,7 @@
 #include "code\modules\research\designs\circuits\disks.dm"
 #include "code\modules\research\designs\circuits\machine.dm"
 #include "code\modules\research\designs\circuits\computers\misc.dm"
+#include "code\modules\research\designs\circuits\machines\chemistry.dm"
 #include "code\modules\research\designs\circuits\machines\misc.dm"
 #include "code\modules\resleeving\circuitboards.dm"
 #include "code\modules\resleeving\computers.dm"

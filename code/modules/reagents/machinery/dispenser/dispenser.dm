@@ -1,7 +1,19 @@
+/obj/item/circuitboard/machine/chemistry_dispenser
+	name = T_BOARD("chemical dispenser")
+	build_path = /obj/machinery/chemical_dispenser
+	req_components = list(
+		/obj/item/stock_parts/capacitor = 2,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/cell = 1,
+		/obj/item/stock_parts/console_screen = 1,
+	)
+
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
+	circuit = /obj/item/circuitboard/machine/chemical_dispenser
+
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
@@ -10,9 +22,6 @@
 	allow_deconstruct = TRUE
 
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON
-
-	#warn circuitboard
-	#warn stock parts + cell
 
 	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
 	var/list/obj/item/reagent_synth/synthesizers
@@ -40,8 +49,10 @@
 	var/kj_per_unit = 4 // ~5k units on 10k cell
 	/// is recharging active?
 	var/charging = TRUE
-	/// macros: list of list("name" = name, "data" = list("id" = amount, ...))
+	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
 	var/list/macros
+	/// awful code but lets us identify macros regardless of tgui sort order.
+	var/macro_index_next = 0
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
@@ -61,7 +72,28 @@
 	if(inserted)
 		QDEL_NULL(inserted)
 	macros = null
+	if(cell)
+		QDEL_NULL(cell)
 	return ..()
+
+/obj/machinery/chemical_dispenser/RefreshParts()
+	var/total_capacitor_rating = 0
+	var/total_capacitors = 0
+	for(var/obj/item/stock_parts/capacitor/cap in component_parts)
+		total_capacitors++
+		total_capacitor_rating += cap.rating
+	recharge_rate = initial(recharge_rate) * (0.5 + (total_capacitor_rating / (total_capacitors || 1)) * 0.5)
+	var/total_manip_rating = 0
+	var/total_manips = 0
+	for(var/obj/item/stock_parts/manipulator/manip in component_parts)
+		total_manips++
+		total_manip_rating += manip.rating
+	kj_per_unit = max(0, initial(kj_per_unit) - 0.25 * (total_manip_rating / (total_manips || 1)))
+	var/obj/item/cell/comp_cell = locate() in component_parts
+	if(comp_cell)
+		if(cell)
+			qdel(cell)
+		cell = comp_cell
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
@@ -148,12 +180,13 @@
 			if(!amount)
 				return TRUE
 			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
-			inserted.reagents.add_reagent(id, amount)
+			var/avail = min(amount, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(amount * kj_per_unit)))
+			inserted.reagents.add_reagent(id, avail)
 			return TRUE
 		if("cartridge")
 			if(isnull(inserted?.reagents))
 				return TRUE
-			var/id = params["id"]
+			var/id = params["label"]
 			if(!id)
 				return TRUE
 			var/obj/item/reagent_containers/cartridge/dispenser/cart
@@ -182,15 +215,44 @@
 			var/id = params["reagent"]
 			if(isnull(id))
 				return TRUE
-			var/amount = round(text2num(params["amount"]))
+			var/amount = isnull(params["amount"])? INFINITY : round(text2num(params["amount"]))
 			if(!amount)
 				return TRUE
 			inserted?.reagents?.remove_reagent(id, amount)
 			return TRUE
 		if("eject")
-			#warn impl
+			if(!inserted)
+				return TRUE
+			usr.grab_item_from_interacted_with(inserted, src)
+			usr.visible_action_feedback(SPAN_NOTICE("[usr] ejects [inserted] from [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			return TRUE
 		if("eject_cart")
-			#warn impl
+			if(!panel_open)
+				return TRUE
+			var/index = text2num(params["index"])
+			if(isnull(index) || index > length(cartridges))
+				return TRUE
+			var/obj/item/reagent_containers/cartridge/dispenser/cart = cartridges[index]
+			remove_cartridge(cart, usr)
+			usr.grab_item_from_interacted_with(cart, src)
+			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cart] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			update_static_data()
+			return TRUE
+		if("eject_cell")
+			if(!panel_open)
+				return TRUE
+			if(!cell)
+				return TRUE
+			usr.grab_item_from_interacted_with(cell, src)
+			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cell] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			cell = null
+			return TRUE
+		if("macro")
+			var/index = text2num(params["index"])
+			if(isnull(index) || (length(macros) < index))
+				return TRUE
+			#warn impl dispense
+			return TRUE
 		if("add_macro")
 			#warn validate
 			return TRUE
@@ -201,26 +263,6 @@
 			macros.Cut(index, index + 1)
 			update_static_data()
 			return TRUE
-
-/obj/machinery/chemical_dispenser/AltClick(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(!panel_open)
-		return
-	. = TRUE
-	if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_ALT_CLICK))
-		return
-	START_INTERACTING_WITH(user, src, INTERACTING_FOR_ALT_CLICK)
-	var/obj/item/reagent_containers/cartridge/dispenser/target = show_radial_menu(user, src, cartridges)
-	STOP_INTERACTING_WITH(user, src, INTERACTING_FOR_ALT_CLICK)
-	if(!(target in cartridges))
-		return
-	user.visible_message(SPAN_NOTICE("[user] removes [target] from src."), range = MESSAGE_RANGE_CONSTRUCTION)
-	remove_cartridge(target, user)
-	user.put_in_hands_or_drop(target)
-	update_static_data()
-	#warn move to tgui
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	. = ..()
@@ -242,7 +284,7 @@
 			if(!insert_cartridge(I))
 				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_message(SPAN_NOTICE("[user] inserts [I] into [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/reagent_synth))
 			var/obj/item/reagent_synth/synth = I
@@ -255,7 +297,18 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			synthesizers += synth
+			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			update_static_data()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(istype(I, /obj/item/cell))
+			if(I)
+				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!user.attempt_insert_item_for_installation(I, src))
+				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			cell = I
+			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/reagent_containers))
@@ -349,10 +402,14 @@
 /obj/machinery/chemical_dispenser/drop_products(method)
 	. = ..()
 	for(var/obj/item/I as anything in (synthesizers | cartridges))
-		I.forceMove(drop_location())
+		drop_product(method, I)
 	synthesizers = null
 	cartridges = null
-	inserted.forceMove(drop_location())
-
+	if(inserted)
+		drop_product(method, inserted)
+		inserted = null
+	if(cell)
+		drop_product(method, cell)
+		cell = null
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE

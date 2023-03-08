@@ -470,6 +470,7 @@
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
 	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)

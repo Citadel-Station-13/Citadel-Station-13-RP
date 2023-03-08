@@ -38,6 +38,7 @@ interface ChemDispenserData {
 interface DispenserMacro {
   name: string;
   data: Array<Record<string, number>>;
+  index: number;
 }
 
 export const ChemDispenser = (props, context) => {
@@ -50,15 +51,19 @@ export const ChemDispenser = (props, context) => {
       <Window.Content>
         <Section title="Dispenser">
           <LabeledList>
-            <LabeledList.Item label="Cell">
+            <LabeledList.Item label="Cell" buttons={
+              <Button
+                title="Eject"
+                disabled={!data.panel_open}
+                onClick={() => act('eject_cell')} />
+            }>
               <ProgressBar minValue={0} maxValue={data.cell_capacity} value={data.cell_charge}>
                 {Math.round(data.cell_charge / data.cell_capacity)}%
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Amount">
-              <Slider>
-                test
-              </Slider>
+              <Slider value={data.amount} minValue={0} maxValue={data.amount_max} unit="u"
+                onChange={(_, val) => act('amount', { set: val })} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -68,10 +73,20 @@ export const ChemDispenser = (props, context) => {
               arrayBucketSplit(data.macros.sort((a, b) => (b.name.localeCompare(a.name))), 4).map((arr) => (
                 <Flex.Item key>
                   {arr.map((m) => (
-                    <Button
-                      key={m.name}
-                      title={m.name}
-                      onClick={} />
+                    <Flex direction="column" key={m}>
+                      <Flex.Item grow={1}>
+                        <Button
+                          key={m.name}
+                          title={m.name}
+                          onClick={() => act('macro', { index: m.index })} />
+                      </Flex.Item>
+                      <Flex.Item>
+                        <Button
+                          key={m.name}
+                          icon="trash"
+                          onClick={() => act('del_macro', { index: m.index })} />
+                      </Flex.Item>
+                    </Flex>
                   ))}
                 </Flex.Item>
               ))
@@ -87,7 +102,7 @@ export const ChemDispenser = (props, context) => {
                     key={reagent.id}
                     fluid
                     title={reagent.name}
-                    onClick={} />
+                    onClick={() => act('reagent', { id: reagent.id })} />
                 ))}
               </Flex.Item>
             ))}
@@ -95,13 +110,28 @@ export const ChemDispenser = (props, context) => {
         </Section>
         <Section title="Cartridges">
           {data.cartridges.sort((a, b) => (b.label.localeCompare(a.label))).map((cart) => (
-            <Button
-              title={`${cart.label} (${cart.amount})`}
-              key={cart.label}
-              onClick={} />
+            <Flex direction="column" key={cart.label}>
+              <Flex.Item grow={1}>
+                <Button
+                  title={`${cart.label} (${cart.amount})`}
+                  onClick={() => act('cartridge', { label: cart.label })} />
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  icon="trash"
+                  disabled={!data.panel_open}
+                  onClick={() => act('eject_cart', { label: cart.label })} />
+              </Flex.Item>
+            </Flex>
           ))}
         </Section>
-        <Section title="Beaker">
+        <Section title="Beaker"
+          buttons={
+            <Button
+              title="Eject"
+              disabled={!data.has_beaker}
+              onClick={() => act('eject')} />
+          }>
           {data.has_beaker? (
             <ReagentContents
               reagents={data.beaker.data}
@@ -109,15 +139,18 @@ export const ChemDispenser = (props, context) => {
                 <>
                   <Button
                     title="Isolate"
-                    onClick={} />
+                    onClick={() => act('isolate', { id: id })} />
                   {
                     [1, 2, 3, 5, 10, 20].map((n) => (
                       <Button
                         key={n}
                         title={`-${n}`}
-                        onClick={} />
+                        onClick={() => act('purge', { id: id, amount: n })} />
                     ))
                   }
+                  <Button
+                    title="Purge"
+                    onClick={() => act('purge', { id: id })} />
                 </>
               )} />
           ) : (
