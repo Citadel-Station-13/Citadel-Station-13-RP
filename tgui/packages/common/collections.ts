@@ -310,3 +310,35 @@ export const binaryInsertWith = <T, U = unknown>(getKey: (value: T) => U):
     return copy;
   };
 };
+
+/**
+ * splits an array into x arrays of max size divisor
+ * does not balance between the buckets
+ */
+export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
+  Array<Array<T>> => {
+  let output = new Array<Array<T>>();
+  while (arrIn.length > amt) {
+    output.push(arrIn.splice(0, amt));
+  }
+  if (arrIn.length > 0) {
+    output.push(arrIn);
+  }
+  return output;
+};
+
+/**
+ * splits an array between x buckets evenly
+ */
+export const arrayBucketSplit = <T>(arrIn: Array<T>, amt: number):
+Array<Array<T>> => {
+  let output = new Array<Array<T>>();
+  let want = Math.ceil(arrIn.length / amt);
+  while (arrIn.length > want) {
+    output.push(arrIn.splice(0, want));
+  }
+  if (arrIn.length > 0) {
+    output.push(arrIn);
+  }
+  return output;
+};

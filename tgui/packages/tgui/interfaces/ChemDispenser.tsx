@@ -1,5 +1,6 @@
+import { arrayBucketSplit } from "common/collections";
 import { BooleanLike } from "common/react";
-import { useBackend } from "../backend";
+import { useBackend, useSharedState } from "../backend";
 import { Button, Flex, LabeledList, NoticeBox, ProgressBar, Section, Slider } from "../components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
@@ -41,19 +42,7 @@ interface DispenserMacro {
 
 export const ChemDispenser = (props, context) => {
   const { act, data } = useBackend<ChemDispenserData>(context);
-  let built = new Array<Array<ReagentData>>();
-  let counter = 0;
-  let batch = new Array<ReagentData>();
-  data.reagents.sort((a, b) => (b.name.localeCompare(a.name)));
-  data.reagents.forEach((reagent) => {
-    if (++counter > 10) {
-      built.push(batch);
-    }
-    batch.push(reagent);
-  });
-  if (batch.length > 0) {
-    built.push(batch);
-  }
+  const [macro, setMacro] = useSharedState<Array<Record<string, number>> | undefined>(context, 'recording', undefined);
   return (
     <Window
       width={400}
@@ -74,11 +63,24 @@ export const ChemDispenser = (props, context) => {
           </LabeledList>
         </Section>
         <Section title="Macros">
-          test
+          <Flex direction="column">
+            {
+              arrayBucketSplit(data.macros.sort((a, b) => (b.name.localeCompare(a.name))), 4).map((arr) => (
+                <Flex.Item key>
+                  {arr.map((m) => (
+                    <Button
+                      key={m.name}
+                      title={m.name}
+                      onClick={} />
+                  ))}
+                </Flex.Item>
+              ))
+            }
+          </Flex>
         </Section>
         <Section title="Synthesis">
           <Flex direction="column">
-            {built.map((reagentArray) => (
+            {arrayBucketSplit(data.reagents.sort((a, b) => (b.name.localeCompare(a.name))), 4).map((reagentArray) => (
               <Flex.Item key={reagentArray}>
                 {reagentArray.map((reagent) => (
                   <Button

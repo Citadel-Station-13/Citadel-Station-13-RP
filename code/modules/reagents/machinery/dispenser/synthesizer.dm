@@ -17,6 +17,7 @@
 	return ..()
 
 /obj/item/reagent_synth/proc/resolve_reagents_provided()
+
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/thing in reagents_provided)
