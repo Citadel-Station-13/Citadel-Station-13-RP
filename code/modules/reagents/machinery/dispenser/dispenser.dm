@@ -8,6 +8,9 @@
 		/obj/item/stock_parts/console_screen = 1,
 	)
 
+#define MAX_MACROS 20
+#define MAX_MACRO_STEPS 50
+
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
 	icon = 'icons/obj/medical/chemical.dmi'
@@ -50,6 +53,7 @@
 	/// is recharging active?
 	var/charging = TRUE
 	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
+	//  todo: macros utilizing cartridges
 	var/list/macros
 	/// awful code but lets us identify macros regardless of tgui sort order.
 	var/macro_index_next = 0
@@ -148,6 +152,8 @@
 		chems_final += list(chems_built[id])
 	.["reagents"] = chems_built
 	.["macros"] = macros || list()
+	.["macros_full"] = length(macros) >= MAX_MACROS
+	.["macros_max_steps"] = MAX_MACRO_STEPS
 
 /obj/machinery/chemical_dispenser/ui_data(mob/user)
 	. = ..()
@@ -182,6 +188,7 @@
 			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
 			var/avail = min(amount, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(amount * kj_per_unit)))
 			inserted.reagents.add_reagent(id, avail)
+			investigate_log("[key_name(usr)] dispensed [avail] of [id]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("cartridge")
 			if(isnull(inserted?.reagents))
@@ -209,6 +216,7 @@
 			var/id = params["reagent"]
 			if(isnull(id))
 				return TRUE
+			investigate_log("[key_name(usr)] isolated [id]", INVESTIGATE_REAGENTS)
 			inserted?.reagents?.isolate_reagent(id)
 			return TRUE
 		if("purge")
@@ -218,6 +226,7 @@
 			var/amount = isnull(params["amount"])? INFINITY : round(text2num(params["amount"]))
 			if(!amount)
 				return TRUE
+			investigate_log("[key_name(usr)] purged[amount == INFINITY? "" : " [amount] of"] [id]", INVESTIGATE_REAGENTS)
 			inserted?.reagents?.remove_reagent(id, amount)
 			return TRUE
 		if("eject")
@@ -225,6 +234,7 @@
 				return TRUE
 			usr.grab_item_from_interacted_with(inserted, src)
 			usr.visible_action_feedback(SPAN_NOTICE("[usr] ejects [inserted] from [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			investigate_log("[key_name(usr)] ejected [ref_name_path(src)]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("eject_cart")
 			if(!panel_open)
@@ -251,10 +261,44 @@
 			var/index = text2num(params["index"])
 			if(isnull(index) || (length(macros) < index))
 				return TRUE
-			#warn impl dispense
+			playsound(src, 'sound/machines/reagent_dispense.ogg')
+			var/list/the_list = macros[index]["data"]
+			if(!length(the_list))
+				return TRUE
+			var/list/logstr = list()
+			for(var/id in the_list)
+				if(!check_reagent_id(id))
+					logstr += "[id]: skipped"
+					break
+				var/amount = the_list[id]
+				amount = min(amount, dispense_amount_max)
+				if(!amount)
+					continue
+				amount = min(amount, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(amount * kj_per_unit)))
+				if(!amount)
+					logstr += "interrupt-nopower"
+					break
+				logstr += "[id]: [amount]"
+				inserted.reagents.add_reagent(id, amount)
+			investigate_log("[key_name(usr)] dispensed macro [jointext(logstr, ", ")]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("add_macro")
-			#warn validate
+			var/list/raw = params["data"]
+			var/name = params["name"]
+			if(length(macros) > MAX_MACROS)
+				return TRUE
+			if(!length(raw) || !name)
+				return TRUE
+			var/list/built = list()
+			for(var/id in raw)
+				built[id] = max(0, round(text2num(raw[id])))
+			raw.len = min(raw.len, MAX_MACRO_STEPS)
+			LAZYINITLIST(macros)
+			macros[++macros.len] = list(
+				"name" = name,
+				"index" = ++macro_index_next,
+				"data" = built,
+			)
 			return TRUE
 		if("del_macro")
 			var/index = text2num(params["index"])
@@ -329,10 +373,12 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// process swap?
 		if(inserted)
+			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
 			user.visible_action_feedback(SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			user.put_in_hand_or_drop(inserted)
 		else
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
-			user.put_in_hand_or_drop(inserted)
+		investigate_log("[key_name(user)] inserted [ref_name_path(I)]", INVESTIGATE_REAGENTS)
 		inserted = I
 		SStgui.update_uis(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE

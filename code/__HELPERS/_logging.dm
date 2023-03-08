@@ -391,6 +391,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
 
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
+
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
 	if (config_legacy.log_debug)

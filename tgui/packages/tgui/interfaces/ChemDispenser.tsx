@@ -44,6 +44,13 @@ interface DispenserMacro {
 export const ChemDispenser = (props, context) => {
   const { act, data } = useBackend<ChemDispenserData>(context);
   const [macro, setMacro] = useSharedState<Array<Record<string, number>> | undefined>(context, 'recording', undefined);
+  const isRecording = () => (macro !== undefined);
+  const recordReagent = (id: string, amount: number) => {
+    macro?.push({ id: amount });
+  };
+  const finalizeMacro = (name: string) => {
+    act("add_macro", { data: macro, name: name });
+  };
   return (
     <Window
       width={400}
@@ -67,7 +74,21 @@ export const ChemDispenser = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Macros">
+        <Section title="Macros"
+          buttons={
+            macro === undefined? (<Button
+              title={macro === undefined? "Record" : "Stop"}
+              onClick={() => setMacro(new Array<Record<string, number>>())}
+              icon={macro === undefined? "circle" : "square"}
+              color={macro === undefined? "good" : "bad"} />
+            ) : (
+              <Button.Input
+                onCommit={(_, val) => finalizeMacro(val)}
+                title="Stop"
+                defaultValue="Macro"
+                icon="square"
+                color="bad" />)
+          }>
           <Flex direction="column">
             {
               arrayBucketSplit(data.macros.sort((a, b) => (b.name.localeCompare(a.name))), 4).map((arr) => (
@@ -125,6 +146,13 @@ export const ChemDispenser = (props, context) => {
             </Flex>
           ))}
         </Section>
+        {macro !== undefined && (
+          <Section title="Macro Recording">
+            {
+              macro.map()
+            }
+          </Section>
+        )}
         <Section title="Beaker"
           buttons={
             <Button

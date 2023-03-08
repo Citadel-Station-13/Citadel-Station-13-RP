@@ -2,7 +2,8 @@
 	name = "reagent synthesis module"
 	desc = "Some kind of complex device used for synthesizing reagents."
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
-	#warn sprite
+	icon = 'icons/items/parts/reagent_synth.dmi'
+	icon_state = "synth_prefab"
 
 	/// type enum
 	var/reagents_group
