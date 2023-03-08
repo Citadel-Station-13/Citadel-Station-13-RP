@@ -14,6 +14,7 @@
 	sanitize_preference(/datum/category_item/player_setup_item/background/faction)
 	sanitize_preference(/datum/category_item/player_setup_item/background/origin)
 	sanitize_preference(/datum/category_item/player_setup_item/background/religion)
+	sanitize_preference(/datum/category_item/player_setup_item/background/culture)
 	// do language last
 	sanitize_preference(/datum/category_item/player_setup_item/background/language)
 	// lastly, do general job titles after
@@ -25,6 +26,7 @@
 		lore_citizenship_datum(),
 		lore_origin_datum(),
 		lore_religion_datum(),
+		lore_culture_datum(),
 	)
 
 /datum/preferences/proc/all_background_ids()

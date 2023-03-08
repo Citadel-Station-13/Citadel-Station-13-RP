@@ -5,15 +5,35 @@
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 
-	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
+	//? Flags
+	/// Item flags.
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_flags = NONE
-	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
+	/// Miscellaneous flags pertaining to equippable objects.
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/clothing_flags = NONE
-	/// flags for items hidden by this item when worn. as of right now, some flags only work in some slots.
-	var/flags_inv = NONE
+	/// Flags for items (or in some cases mutant parts) hidden by this item when worn.
+	/// As of right now, some flags only work in some slots.
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/inv_hide_flags = NONE
 	/// flags for the bodyparts this item covers when worn.
-	var/body_parts_covered = NONE
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/body_cover_flags = NONE
+	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
+	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
+	var/slot_flags = NONE
+	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/item_persist_flags = NONE
+  /// This is used to determine how default item-level interaction hooks are handled.
+	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
+	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
+	//? Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+
+	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
@@ -23,8 +43,6 @@
 	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
 	var/hitsound = HITSOUND_UNSET
 	var/storage_cost = null
-	/// This is used to determine on which slots an item can fit.
-	var/slot_flags = 0
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
 	pass_flags = ATOM_PASS_TABLE
@@ -472,7 +490,7 @@
 	var/mob/living/carbon/human/U = user
 	if(istype(H))
 		for(var/obj/item/protection in list(H.head, H.wear_mask, H.glasses))
-			if(protection && (protection.body_parts_covered & EYES))
+			if(protection && (protection.body_cover_flags & EYES))
 				// you can't stab someone in the eyes wearing a mask!
 				to_chat(user, "<span class='warning'>You're going to need to remove the eye covering first.</span>")
 				return
@@ -698,6 +716,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/rped_rating()
 	return get_rating()
 
+// todo: WHAT?
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)

@@ -222,6 +222,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Sort subsystems by display setting for easy access.
 	tim_sort(subsystems, /proc/cmp_subsystem_display)
 
+	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
+		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
+
 	// Set world options.
 
 	world.fps = config_legacy.fps

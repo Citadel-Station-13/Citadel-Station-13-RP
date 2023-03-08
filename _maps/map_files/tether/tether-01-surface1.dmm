@@ -648,7 +648,9 @@
 /area/tether/surfacebase/surface_one_hall)
 "abd" = (
 /obj/structure/table/rack,
-/obj/item/rig/medical/equipped,
+/obj/item/rig/medical/equipped{
+	req_access = list(5)
+},
 /obj/structure/fireaxecabinet{
 	pixel_x = -32
 	},

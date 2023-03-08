@@ -1,4 +1,4 @@
-/datum/tgui_module/uav
+/datum/tgui_module_old/uav
 	name = "UAV Control"
 	tgui_id = "UAV"
 	ntos = TRUE
@@ -8,7 +8,7 @@
 	var/list/viewers //Who's viewing a UAV through us
 	var/adhoc_range = 30 //How far we can operate on a UAV without NTnet
 
-/datum/tgui_module/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	if(current_uav)
@@ -38,7 +38,7 @@
 	data["paired_uavs"] = paired_map
 	return data
 
-/datum/tgui_module/uav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -89,7 +89,7 @@
 							unlook(M)
 				return TRUE
 
-/datum/tgui_module/uav/proc/set_current(var/obj/item/uav/U)
+/datum/tgui_module_old/uav/proc/set_current(var/obj/item/uav/U)
 	if(current_uav == U)
 		return
 
@@ -103,7 +103,7 @@
 			if(M)
 				look(M)
 
-/datum/tgui_module/uav/proc/clear_current()
+/datum/tgui_module_old/uav/proc/clear_current()
 	if(!current_uav)
 		return
 
@@ -118,7 +118,7 @@
 				to_chat(M, "<span class='warning'>You're disconnected from the UAV's camera!</span>")
 				unlook(M)
 
-/datum/tgui_module/uav/proc/current_uav_changed_z(old_z, new_z)
+/datum/tgui_module_old/uav/proc/current_uav_changed_z(old_z, new_z)
 	signal_strength = get_signal_to(current_uav)
 	if(!signal_strength)
 		clear_current()
@@ -126,7 +126,7 @@
 ////
 //// Finding signal strength between us and the UAV
 ////
-/datum/tgui_module/uav/proc/get_signal_to(atom/movable/AM)
+/datum/tgui_module_old/uav/proc/get_signal_to(atom/movable/AM)
 	// Following roughly the ntnet signal levels
 	// 0 is none
 	// 1 is weak
@@ -172,7 +172,7 @@
 		return max(our_signal, their_signal)
 
 /* All handling viewers */
-/datum/tgui_module/uav/Destroy()
+/datum/tgui_module_old/uav/Destroy()
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
@@ -180,7 +180,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module/uav/ui_status(mob/user)
+/datum/tgui_module_old/uav/ui_status(mob/user)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_uav(user))
@@ -188,14 +188,14 @@
 		return
 	unlook(user)
 
-/datum/tgui_module/uav/ui_close(mob/user)
+/datum/tgui_module_old/uav/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	unlook(user)
 
-/datum/tgui_module/uav/proc/viewing_uav(mob/user)
+/datum/tgui_module_old/uav/proc/viewing_uav(mob/user)
 	return (weakref(user) in viewers)
 
-/datum/tgui_module/uav/proc/look(mob/user)
+/datum/tgui_module_old/uav/proc/look(mob/user)
 	if(issilicon(user)) //Too complicated for me to want to mess with at the moment
 		to_chat(user, "<span class='warning'>Regulations prevent you from controlling several corporeal forms at the same time!</span>")
 		return
@@ -209,14 +209,14 @@
 	current_uav.add_master(user)
 	LAZYDISTINCTADD(viewers, weakref(user))
 
-/datum/tgui_module/uav/proc/unlook(mob/user)
+/datum/tgui_module_old/uav/proc/unlook(mob/user)
 	user.unset_machine()
 	user.reset_view()
 	if(current_uav)
 		current_uav.remove_master(user)
 	LAZYREMOVE(viewers, weakref(user))
 
-/datum/tgui_module/uav/check_eye(mob/user)
+/datum/tgui_module_old/uav/check_eye(mob/user)
 	if(get_dist(user, ui_host()) > 1 || user.blinded || !current_uav)
 		unlook(user)
 		return -1
@@ -231,14 +231,14 @@
 ////
 //// Relaying movements to the UAV
 ////
-/datum/tgui_module/uav/relaymove(var/mob/user, direction)
+/datum/tgui_module_old/uav/relaymove(var/mob/user, direction)
 	if(current_uav)
 		return current_uav.relaymove(user, direction, signal_strength)
 
 ////
 ////  The effects when looking through a UAV
 ////
-/datum/tgui_module/uav/apply_visual(mob/M)
+/datum/tgui_module_old/uav/apply_visual(mob/M)
 	if(!M.client)
 		return
 	if(weakref(M) in viewers)
@@ -252,7 +252,7 @@
 	else
 		remove_visual(M)
 
-/datum/tgui_module/uav/remove_visual(mob/M)
+/datum/tgui_module_old/uav/remove_visual(mob/M)
 	if(!M.client)
 		return
 	M.clear_fullscreen("fishbed",0)

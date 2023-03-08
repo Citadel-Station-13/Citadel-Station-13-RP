@@ -22,7 +22,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security equipment crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
@@ -30,7 +30,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Energy sidearms crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
@@ -41,7 +41,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Flare gun crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
@@ -51,7 +51,7 @@
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Experimental weapons crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
@@ -59,7 +59,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Energy weapons crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/shotgun
 	name = "Weapons - Shotgun crate"
@@ -71,7 +71,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Shotgun crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/erifle
 	name = "Weapons - Energy marksman"
@@ -79,7 +79,7 @@
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/heph
 	container_name = "Energy marksman crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/burstlaser
 	name = "Weapons - Burst laser"
@@ -87,7 +87,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Burst laser crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
@@ -98,7 +98,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Electromagnetic weapons crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/ionpistols
 	name = "Weapons - Electromagnetic pistols"
@@ -109,7 +109,7 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Electromagnetic weapons crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
@@ -117,7 +117,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/ward
 	container_name = "Ballistic weapon crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
@@ -125,7 +125,7 @@
 	cost = 80
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Ballistic weapon crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/bolt_rifles_competitive
  	name = "Weapons - Competitive shooting rifles"
@@ -140,7 +140,7 @@
  	cost = 40
  	container_type = /obj/structure/closet/crate/secure/weapon
  	container_name = "Ballistic Weapons crate"
- 	access = access_armory
+ 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
@@ -148,7 +148,7 @@
 	cost = 120
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
@@ -156,7 +156,7 @@
 	cost = 200
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
@@ -164,7 +164,7 @@
 	cost = 130
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
@@ -175,7 +175,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/beanbagammo
 	name = "Ammunition - Beanbag shells"
@@ -183,7 +183,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate
 	container_name = "Ballistic ammunition crate"
-	access = access_armory // Guns are for the armory.
+	access = ACCESS_SECURITY_ARMORY // Guns are for the armory.
 
 /datum/supply_pack/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
@@ -191,7 +191,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
@@ -199,7 +199,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
@@ -207,7 +207,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/pcellammo
 	name = "Ammunition - Power cell"
@@ -215,7 +215,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/einstein
 	container_name = "Energy ammunition crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/munitions/firingpins
 	name = "Weapons - Standard firing pins"
@@ -223,7 +223,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Firing pin crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/munitions/expeditionguns
 	name = "Frontier phaser (station-locked) crate"
@@ -234,7 +234,7 @@
 	cost = 35
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "frontier phaser crate"
-	access = access_explorer
+	access = ACCESS_GENERAL_EXPLORER
 
 //Culture Update
 /datum/supply_pack/munitions/weaponry_apidean
@@ -247,7 +247,7 @@
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Apidean Weaponry crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/misc/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
@@ -261,4 +261,4 @@
 	cost = 175
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Weaponry crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT

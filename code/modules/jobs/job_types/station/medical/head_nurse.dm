@@ -11,8 +11,8 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS, ACCESS_COMMAND_EVA)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA)
 	outfit_type = /datum/outfit/job/station/medical_doctor/head_nurse
 	desc = "A Head Nurse is a senior medical professional from the nursing field. They are expected to coordinate and perform the duties associated with \
 	nurses, such as sensors monitoring and non-critical care, as well as provide them and other medical staff with guidance and oversight when presented with \
@@ -25,7 +25,16 @@
 	alt_titles = list (
 		"Medical Specialist" = /datum/prototype/alt_title/medical_specialist,
 		"Consultant Physician" = /datum/prototype/alt_title/consultant_physician,
+		"Biotechnical Advisor" = /datum/prototype/alt_title/biotechnical_advisor
 	)
+
+/datum/prototype/alt_title/biotechnical_advisor
+	title = "Biotechnical Advisor"
+	title_outfit = /datum/outfit/job/station/medical_doctor // todo: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/medical_specialist
 	title = "Medical Specialist"

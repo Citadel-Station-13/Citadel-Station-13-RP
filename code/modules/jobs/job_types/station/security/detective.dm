@@ -9,8 +9,8 @@
 	supervisors = "the Head of Security"
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
-	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig)
-	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
+	additional_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SECURITY_BRIG)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective
@@ -18,8 +18,16 @@
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
 		"Forensic Technician" = /datum/prototype/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi
+		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi,
+		"Investigatory Specialist" = /datum/prototype/alt_title/detective/inv_spec
 		)
+
+/datum/prototype/alt_title/detective/inv_spec
+	title = "Investigatory Specialist"
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/detective/csi
 	title = "Crime Scene Investigator"

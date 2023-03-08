@@ -6,7 +6,7 @@
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
-	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HEAD
@@ -101,7 +101,7 @@
 	icon_state = "helmet_combat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 50, bullet = 50, laser = 50 ,energy = 30, bomb = 30, bio = 0, rad = 0)
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
 
@@ -122,7 +122,7 @@
 	desc = "They're often used by highly trained SWAT Officers."
 	icon_state = "swat"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
@@ -153,7 +153,7 @@
 	desc = "Ave, Imperator, morituri te salutant."
 	icon_state = "gladiator"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "vhelmet", SLOT_ID_LEFT_HAND = "vhelmet")
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	siemens_coefficient = 1
 	valid_accessory_slots = null
 
@@ -168,8 +168,10 @@
 /obj/item/clothing/head/helmet/ashlander
 	name = "ashen lamellar helmet"
 	desc = "This bronze helmet is wrapped in Goliath hide. Dull bronze plates connected by dry sinew are mounted to the exterior for protection."
-	icon_state = "lamellar"
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "lamellarhelm"
 	armor = list(melee = 15, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -178,7 +180,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
-	flags_inv = HIDEEARS|BLOCKHAIR
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
 
@@ -188,7 +190,7 @@
 	icon_state = "v62"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
@@ -200,7 +202,7 @@
 	icon_state = "eraticator-head"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
 
@@ -368,3 +370,21 @@
 
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
+
+//More Warhammer Fun
+/obj/item/clothing/head/helmet/utilitarian
+	name = "utilitarian military helmet"
+	desc = "This high tech helmet provides plenty of battlefield telemetry and aim assistance. It is designed to protect the wearer almost exclusively from ranged attacks."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tauhelm"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
+	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/helmet/duraskull
+	name = "durasteel skull mask"
+	desc = "The process of working durasteel into such a shape is no small feat. Whoever commissioned this wanted to send a serious message."
+	icon = 'icons/clothing/head/duraskull.dmi'
+	icon_state = "ahelm"
+	armor = list(melee = 40, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

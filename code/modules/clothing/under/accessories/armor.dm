@@ -14,15 +14,15 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.wear_suit == S)
-			if((body_parts_covered & ARMS) && istype(H.gloves, /obj/item/clothing))
+			if((body_cover_flags & ARMS) && istype(H.gloves, /obj/item/clothing))
 				var/obj/item/clothing/G = H.gloves
-				if(G.body_parts_covered & ARMS)
+				if(G.body_cover_flags & ARMS)
 					to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [G], it's in the way.</span>")
 					S.accessories -= src
 					return
-			else if((body_parts_covered & LEGS) && istype(H.shoes, /obj/item/clothing))
+			else if((body_cover_flags & LEGS) && istype(H.shoes, /obj/item/clothing))
 				var/obj/item/clothing/Sh = H.shoes
-				if(Sh.body_parts_covered & LEGS)
+				if(Sh.body_cover_flags & LEGS)
 					to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [Sh], it's in the way.</span>")
 					S.accessories -= src
 					return
@@ -88,7 +88,7 @@
 	name = "light armor plate"
 	desc = "A basic armor plate made of steel-reinforced synthetic fibers. Attaches to a plate carrier."
 	icon_state = "armor_light"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 30, bullet = 15, laser = 40, energy = 10, bomb = 25, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_C
 
@@ -179,7 +179,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
-	body_parts_covered = ARMS
+	body_cover_flags = ARMS
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_A
 
@@ -238,7 +238,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_L
 

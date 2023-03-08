@@ -6,28 +6,56 @@
  */
 /atom
 	layer = TURF_LAYER
-	var/level = 2
 
-	/// Used for changing icon states for different base sprites.
-	var/base_icon_state
+	//? Core
 	/// Atom flags.
 	var/atom_flags = NONE
+
+	//? Interaction
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE
-	/// Holder for the last time we have been bumped.
-	var/last_bumped = 0
+
+	//? Physics
 	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
 	var/pass_flags_self = NONE
+
+	//? Unsorted / Legacy
+	var/level = 2
+	/// Used for changing icon states for different base sprites.
+	var/base_icon_state
+	/// Holder for the last time we have been bumped.
+	var/last_bumped = 0
 	/// The higher the germ level, the more germ on the atom.
 	var/germ_level = GERM_LEVEL_AMBIENT
 	/// The 'action' the atom takes to speak.
 	var/atom_say_verb = "says"
 	/// What icon the atom uses for speechbubbles.
 	var/bubble_icon = "normal"
-	/// The orbiter comopnent if we're being orbited.
-	var/datum/component/orbiter/orbiters
 
-	//! Colors
+	//? Economy
+	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
+	var/worth_intrinsic = 0
+	/// static worth of contents - only read if getting a static worth from typepath.
+	var/worth_containing = 0
+	/// static worth of raw materials - only read if getting a static worth from typepath.
+	var/worth_materials = 0
+	/// intrinsic worth default markup when buying as factor (2 for 2x)
+	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
+	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
+	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
+	/**
+	 * * DANGER * - do not touch this variable unless you know what you are doing.
+	 *
+	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
+	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
+	 * In those cases, use the other variables to control its static worth.
+	 *
+	 * This means that things like cargo should avoid "intuiting" the value of this object
+	 * through initial()'s alone.
+	 */
+	var/worth_dynamic = FALSE
+
+	//? Colors
 	/**
 	 * used to store the different colors on an atom
 	 *
@@ -35,7 +63,7 @@
 	 */
 	var/list/atom_colours
 
-	//! Health
+	//? Health
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
 	/// max health
@@ -49,13 +77,13 @@
 	// todo: use integrity & procs on turf and obj level
 	// todo: armor system, how?
 
-	//! ## HUDs
+	//? HUDs
 	/// This atom's HUD (med/sec, etc) images. Associative list.
 	var/list/image/hud_list = null
 	/// HUD images that this atom can provide.
 	var/list/hud_possible
 
-	//! ## Icon Smoothing
+	//? Icon Smoothing
 	/// Icon-smoothing behavior.
 	var/smoothing_flags = NONE
 	/// What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
@@ -81,10 +109,12 @@
 	 */
 	var/list/canSmoothWith = null
 
-	//! ## Chemistry
+	//? Chemistry
+	// todo: properly finalize the semantics of this variable and what it's for.
 	var/datum/reagents/reagents = null
 
-	//! ## Detective Work
+	//? Detective Work
+	// todo: rework a lot of this, especially flurescent
 	/// Used for the duplicate data points kept in the scanners.
 	var/list/original_atom
 	/// List of all fingerprints on the atom.
@@ -102,7 +132,7 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
-	//! Radiation
+	//? Radiation
 	/// radiation flags
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
@@ -110,18 +140,19 @@
 	/// contamination insulation; null defaults to rad_insulation
 	var/rad_stickiness
 
-	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
+	//? Overlays
+	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
 	var/list/managed_vis_overlays
-	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
+	/// overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
 	var/list/managed_overlays
 
-	//! ## Layers
+	//? Layers
 	/// Base layer - defaults to layer.
 	var/base_layer
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
-	//! Pixel Offsets
+	//? Pixel Offsets
 	/// Default pixel x shifting for the atom's icon.
 	var/base_pixel_x = 0
 	/// Default pixel y shifting for the atom's icon.
@@ -131,13 +162,15 @@
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
 	var/icon_dimension_y = 32
 
-	//! Filters
+	//? Filters
 	/// For handling persistent filters
 	var/list/filter_data
 
-	//! Misc
+	//? Misc
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
+	/// The orbiter comopnent if we're being orbited.
+	var/datum/component/orbiter/orbiters
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -805,47 +838,8 @@
 /atom/proc/GenerateTag()
 	return
 
-// todo: refactor this shit to be unified saycode, christ
-/atom/proc/atom_say(message, datum/language/L)
-	if(!message)
-		return
-	var/list/speech_bubble_hearers = list()
-	var/no_runechat = FALSE
-	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
-		var/processed = message
-		if(L && !(L.name in M.languages))
-			processed = L.scramble(message)
-			no_runechat = TRUE
-		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
-		if(M.client)
-			speech_bubble_hearers += M.client
+//? Radiation
 
-	if(length(speech_bubble_hearers) && !no_runechat)
-		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
-		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, null, FALSE, speech_bubble_hearers, 30)
-
-/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
-	var/list/speech_bubble_hearers = list()
-	var/italics
-	if(whispering)
-		italics = TRUE
-	for(var/mob/M in get_mobs_in_view(message_range, src))
-		if(M.client)
-			speech_bubble_hearers += M.client
-	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
-
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
-	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
-	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
-	return I
-
-/atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
-	return
-
-//! Radiation
 /**
  * called when we're hit by a radiation wave
  */
@@ -873,7 +867,7 @@
 	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
 	RA?.clean(str, mul)
 
-//! ## Atom Colour Priority System
+//? Atom Colour Priority System
 /**
  * A System that gives finer control over which atom colour to colour the atom with.
  * The "highest priority" one is always displayed as opposed to the default of
@@ -958,8 +952,8 @@
 /atom/proc/get_cell()
 	return
 
+//? Filters
 
-//! Filters
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
 	LAZYINITLIST(filter_data)
 	var/list/copied_parameters = params.Copy()
@@ -1020,7 +1014,8 @@
 	filter_data = null
 	filters = null
 
-//! Layers
+//? Layers
+
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
 	ASSERT(isnum(new_layer))
@@ -1051,7 +1046,8 @@
 	plane = initial(plane)
 	set_base_layer(initial(layer))
 
-//! Pixel Offsets
+//? Pixel Offsets
+
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
 

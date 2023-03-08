@@ -45,7 +45,7 @@
 /obj/machinery/computer/shuttle_control/explore/talonboat
 	name = "boat control console"
 	shuttle_tag = "Talon's boat"
-	req_one_access = list(access_talon)
+	req_one_access = list(ACCESS_FACTION_TALON)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talonboat
@@ -90,7 +90,7 @@
 /obj/machinery/computer/shuttle_control/explore/talon_lifeboat
 	name = "lifeboat control console"
 	shuttle_tag = "Talon lifeboat"
-	req_one_access = list(access_talon)
+	req_one_access = list(ACCESS_FACTION_TALON)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat
@@ -162,7 +162,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/item/card/id/synthetic/talon/Initialize(mapload)
 	. = ..()
-	access = list(access_talon, access_synth)
+	access = list(ACCESS_FACTION_TALON, ACCESS_SPECIAL_SILICONS)
 
 /obj/machinery/power/smes/buildable/offmap_spawn/Initialize(mapload, install_coils)
 	. = ..()
@@ -174,7 +174,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/machinery/power/apc/talon
 	req_access = list()
-	req_one_access = list(access_talon)
+	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1
 
 /obj/machinery/power/apc/talon/hyper
@@ -182,12 +182,12 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/machinery/alarm/talon
 	req_access = list()
-	req_one_access = list(access_talon)
+	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1
 
 /obj/machinery/door/firedoor/glass/talon
 	req_access = list()
-	req_one_access = list(access_talon)
+	req_one_access = list(ACCESS_FACTION_TALON)
 
 /obj/machinery/door/firedoor/glass/talon/hidden
 	name = "\improper Emergency Shutter System"
@@ -244,7 +244,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/structure/closet/secure_closet/talon_captain
 	name = "talon captain's locker"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/captain
 
 	starts_with = list(
@@ -264,7 +264,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/structure/closet/secure_closet/talon_guard
 	name = "talon guard's locker"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/guard
 
 	starts_with = list(
@@ -293,7 +293,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/structure/closet/secure_closet/talon_doctor
 	name = "talon doctor's locker"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/doctor
 
 	starts_with = list(
@@ -315,7 +315,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/structure/closet/secure_closet/talon_engineer
 	name = "talon engineer's locker"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/engineer
 
 	starts_with = list(
@@ -338,7 +338,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/structure/closet/secure_closet/talon_pilot
 	name = "talon pilot's locker"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/pilot
 
 	starts_with = list(
@@ -372,8 +372,8 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	filedesc = "Helmet Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to Talon helmet camera systems."
 	size = 4 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module/camera/ntos/talon_helmet
-	required_access = access_talon
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_helmet
+	required_access = ACCESS_FACTION_TALON
 
 // Talon ship cameras
 /datum/computer_file/program/camera_monitor/talon_ship
@@ -381,39 +381,39 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	filedesc = "Ship Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to the Talon's camera system."
 	size = 10 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module/camera/ntos/talon_ship
-	required_access = access_talon
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_ship
+	required_access = ACCESS_FACTION_TALON
 
-/datum/tgui_module/camera/ntos/talon_ship
+/datum/tgui_module_old/camera/ntos/talon_ship
 	name = "Talon Ship Camera Monitor"
-/datum/tgui_module/camera/ntos/talon_ship/New(host)
+/datum/tgui_module_old/camera/ntos/talon_ship/New(host)
 	. = ..(host, list(NETWORK_TALON_SHIP, NETWORK_THUNDER))
 
-/datum/tgui_module/camera/ntos/talon_helmet
+/datum/tgui_module_old/camera/ntos/talon_helmet
 	name = "Talon Helmet Camera Monitor"
-/datum/tgui_module/camera/ntos/talon_helmet/New(host)
+/datum/tgui_module_old/camera/ntos/talon_helmet/New(host)
 	. = ..(host, list(NETWORK_TALON_HELMETS))
 
 /datum/computer_file/program/power_monitor/talon
 	filename = "tpowermonitor"
 	filedesc = "Power Monitoring (Talon)"
-	required_access = access_talon
+	required_access = ACCESS_FACTION_TALON
 /datum/computer_file/program/alarm_monitor/talon
 	filename = "talarmmonitoreng"
 	filedesc = "Alarm Monitoring (Talon)"
-	required_access = access_talon
+	required_access = ACCESS_FACTION_TALON
 /datum/computer_file/program/rcon_console/talon
 	filename = "trconconsole"
 	filedesc = "RCON Remote Control (Talon)"
-	required_access = access_talon
+	required_access = ACCESS_FACTION_TALON
 /datum/computer_file/program/atmos_control/talon
 	filename = "tatmoscontrol"
 	filedesc = "Atmosphere Control (Talon)"
-	required_access = access_talon
+	required_access = ACCESS_FACTION_TALON
 /datum/computer_file/program/suit_sensors/talon
 	filename = "tsensormonitor"
 	filedesc = "Suit Sensors Monitoring (Talon)"
-	required_access = access_talon
+	required_access = ACCESS_FACTION_TALON
 
 // Modular computer/console presets
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot

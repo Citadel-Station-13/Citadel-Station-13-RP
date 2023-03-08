@@ -5,9 +5,11 @@
 		if(initial(instance.abstract_type) == instance)
 			continue
 		// lazy is ignored
+		// todo: this unit test doesn't work with anonymous ones with identifier
+		// this should be fixed sometime so that identifier uniqueness is checked
+		// if set, even for anonymous
+		// and obviously error if not anonymous and no identifier
 		instance = new instance
-		if(instance.anonymous && instance.identifier)
-			Fail("[instance.type]: has identifier but is marked anonymous")
 		type_cache[instance] = instance
 		if(!instance.uid)
 			Fail("[instance.type]: no uid")

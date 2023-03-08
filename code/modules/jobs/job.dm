@@ -18,12 +18,14 @@
 	/// starting money multiplier
 	var/economy_payscale = ECONOMY_PAYSCALE_JOB_DEFAULT
 
-	//? unsorted
-	// Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
-	/// Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population).
+	//? Access
+	// Job access. The use of minimal_access and additional_access is determined by a config setting: config.jobs_have_minimal_access
+	/// Minimal access
 	var/list/minimal_access = list()
-	/// Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!).
-	var/list/access = list()
+	/// With minimal access off, this gets added
+	var/list/additional_access = list()
+
+	//? Unsorted
 	/// Bitflags for the job.
 	var/flag = NONE
 	var/department_flag = 0
@@ -41,9 +43,6 @@
 	var/selection_color = COLOR_WHITE
 	/// List of alternate titles; There is no need for an alt-title datum for the base job title.
 	var/list/alt_titles = null
-	// todo: optimize this, it's very non-performant.
-	/// Strict title mode: If an alt title is available for a specific background someone has, only that and other alt titles with that background can be chosen.
-	var/strict_titles = FALSE
 	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 	/// If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
@@ -88,7 +87,7 @@
 
 /datum/role/job/New()
 	. = ..()
-	GLOB.department_accounts = GLOB.department_accounts || departments_managed
+	department_accounts = department_accounts || departments_managed
 
 //? Availability
 
@@ -242,74 +241,67 @@
 //? Alt Titles
 
 /**
- * get available alt title names for a given set of character backgrounds
+ * all alt title datums
  */
-/datum/role/job/proc/alt_title_query(list/datum/lore/character_background/backgrounds = list())
-	RETURN_TYPE(/list)
-	var/list/transformed = list()
-	for(var/datum/lore/character_background/bg as anything in backgrounds)
-		transformed += bg.id
-	if(strict_titles)
-		var/list/normal = list(title)
-		var/list/restricted = list()
-		for(var/title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
-			if(isnull(alt_datum))
-				continue
-			if(isnull(alt_datum.background_restricted))
-				normal |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted & transformed))
-				normal -= alt_datum.title
-				// allow us to forcefully register the "main" title under alt title system
-				continue
-			restricted |= alt_datum.title
-		. = length(restricted)? restricted : normal
-	else
-		var/list/found = list(title)
-		for(var/title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
-			if(isnull(alt_datum))
-				continue
-			if(isnull(alt_datum.background_restricted))
-				found |= alt_datum.title
-				continue
-			if(!length(alt_datum.background_restricted & transformed))
-				found -= alt_datum.title
-				// allow us to forcefully register the "main" title under alt title system
-				continue
-			found |= alt_datum.title
-		. = found
-	return length(.)? . : list(title)
+/datum/role/job/proc/alt_title_datums()
+	. = list()
+	// todo: why do we do assoc list? why don't we just cache? why why why????
+	for(var/title in alt_titles)
+		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+		if(!alt_datum)
+			continue
+		. += alt_datum
 
 /**
- * chcek if an alt title is available for a given set of backgrounds
+ * get available alt title names for a given set of character backgrounds
  */
-/datum/role/job/proc/alt_title_check(alt_title, list/datum/lore/character_background/backgrounds = list())
-	var/list/transformed = list()
-	for(var/datum/lore/character_background/bg as anything in backgrounds)
-		transformed += bg.id
-	if(strict_titles)
-		var/found = FALSE
-		for(var/other_title in alt_titles)
-			var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[other_title])
-			if(length(alt_datum.background_restricted & transformed))
-				found = TRUE
-				break
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
-		if(isnull(alt_datum))
-			if(alt_title == title)
-				return !found
-			else
-				return FALSE
-		return length(alt_datum.background_restricted & transformed) || (!found && !alt_datum.background_restricted)
-	else
-		if(alt_title == title)
-			return TRUE
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
-		if(isnull(alt_datum))
-			return FALSE
-		return isnull(alt_datum.background_restricted) || length(transformed & alt_datum.background_restricted)
+/datum/role/job/proc/alt_title_query(list/background_ids)
+	RETURN_TYPE(/list)
+	var/strict = FALSE
+	var/list/strict_titles = list()
+	var/list/all_titles = list()
+	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+		// check if we can be picked at all
+		if(!alt_datum.check_background_ids(background_ids, FALSE))
+			continue
+		// yes? add to all titles
+		all_titles |= alt_datum.title
+		// check if we can be picked under enforcement
+		if(alt_datum.check_background_ids(background_ids, TRUE))
+			strict_titles |= alt_datum.title
+			// are we enforcing? if so, flip it so we choose from strict_titles after
+			// this is only valid if we're valid under enforcement
+			if(alt_datum.background_enforce)
+				strict = TRUE
+	// return list, always ensuring there's atleast one title
+	// if we're enforcing strictness there should already be one so we don't check
+	// if we're not we always add our own title regardless of what alt datums say so there's one title
+	if(strict)
+		return strict_titles
+	return all_titles | title
+
+/**
+ * check if an alt title is available for a given set of backgrounds
+ */
+/datum/role/job/proc/alt_title_check(alt_title, list/background_ids)
+	var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
+	return alt_datum?.check_background_ids(background_ids)
+
+/**
+ * check if we enforce an alt title that isn't root for a list of backgrounds.
+ *
+ * @return enforced title as string, or null for none
+ */
+/datum/role/job/proc/alt_title_enforcement(list/background_ids)
+	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+		// don't need to potentially enforce
+		if(!alt_datum.background_enforce)
+			continue
+		// we perform a strict check, as enforcement only happens against strict checks
+		if(!alt_datum.check_background_ids(background_ids, TRUE))
+			continue
+		// both enforcing and strictly avail, this is a valid title for someone without one
+		return alt_datum.title
 
 //? Unsorted
 
@@ -366,10 +358,7 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/role/job/proc/get_access()
-	if(!config || config_legacy.jobs_have_minimal_access)
-		return src.minimal_access.Copy()
-	else
-		return src.access.Copy()
+	return minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/role/job/proc/player_old_enough(client/C)

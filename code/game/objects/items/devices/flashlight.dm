@@ -153,7 +153,7 @@
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-				if(istype(C) && (C.body_parts_covered & EYES))
+				if(istype(C) && (C.body_cover_flags & EYES))
 					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
 					return
 
@@ -463,6 +463,7 @@
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
 	light_color = LIGHT_COLOR_YELLOW
+	light_wedge = LIGHT_OMNI
 	w_class = ITEMSIZE_TINY
 	brightness_on = 6
 	on = TRUE //Bio-luminesence has one setting, on.

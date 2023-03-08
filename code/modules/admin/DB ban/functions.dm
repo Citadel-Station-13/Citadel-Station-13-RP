@@ -96,8 +96,10 @@
 	)
 	to_chat(usr, "<font color=#4F49AF>Ban saved to database.</font>")
 	message_admins("[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database.",1)
+	. = TRUE
 
-
+	// reload
+	jobban_loadbanfile()
 
 /datum/admins/proc/DB_ban_unban(ckey, bantype, job = "")
 
@@ -167,6 +169,9 @@
 		return
 
 	DB_ban_unban_by_id(ban_id)
+
+	// reload
+	jobban_loadbanfile()
 
 /datum/admins/proc/DB_ban_edit(banid = null, param = null)
 
@@ -341,7 +346,7 @@
 	output += "<tr><td width='50%' align='right'><b>Duration:</b> <input type='text' name='dbbaddduration'></td>"
 	output += "<td width='50%' align='right'><b>Job:</b><select name='dbbanaddjob'>"
 	output += "<option value=''>--</option>"
-	for(var/j in get_all_jobs())
+	for(var/j in SSjob.all_job_titles())
 		output += "<option value='[j]'>[j]</option>"
 	for(var/j in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 		output += "<option value='[j]'>[j]</option>"

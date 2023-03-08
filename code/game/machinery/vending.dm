@@ -86,7 +86,7 @@
 	var/list/log = list()
 
 	/// Default access for checking logs is cargo.
-	var/req_log_access = access_cargo
+	var/req_log_access = ACCESS_SUPPLY_BAY
 	/// Defaults to 0, set to anything else for vendor to have logs.
 	var/has_logs = NONE
 
@@ -682,8 +682,8 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
-	req_access = list(access_bar)
-	req_log_access = access_bar
+	req_access = list(ACCESS_GENERAL_BAR)
+	req_log_access = ACCESS_GENERAL_BAR
 	has_logs = 1
 
 /obj/machinery/vending/assist
@@ -881,7 +881,7 @@
 	product_slogans = "Carts to go!"
 	icon_state = "cart"
 	icon_deny = "cart-deny"
-	req_access = list(access_hop)
+	req_access = list(ACCESS_COMMAND_HOP)
 	products = list(
 		/obj/item/cartridge/medical = 10,
 		/obj/item/cartridge/engineering = 10,
@@ -892,7 +892,7 @@
 		/obj/item/cartridge/captain = 3,
 		/obj/item/cartridge/quartermaster = 10,
 	)
-	req_log_access = access_hop
+	req_log_access = ACCESS_COMMAND_HOP
 	has_logs = 1
 
 /obj/machinery/vending/cigarette
@@ -942,7 +942,7 @@
 	icon_state = "med"
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 4,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -975,7 +975,7 @@
 		/obj/item/reagent_containers/pill/antitox = 6,
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/phoronresearch
@@ -991,7 +991,7 @@
 		/obj/item/assembly/prox_sensor = 6,
 		/obj/item/assembly/igniter = 6,
 	)
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/wallmed1
@@ -1014,7 +1014,7 @@
 		/obj/item/reagent_containers/syringe/antiviral = 4,
 		/obj/item/reagent_containers/pill/tox = 1,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 // Modified version from tether_things.dm
@@ -1041,7 +1041,7 @@
 		/obj/item/healthanalyzer = 1,
 	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/wallmed2
@@ -1066,7 +1066,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/pill/tox = 3,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/security
@@ -1075,7 +1075,7 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	products = list(
 		/obj/item/handcuffs = 8,
 		/obj/item/grenade/flashbang = 4,
@@ -1095,7 +1095,7 @@
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/box/donut = 2,
 	)
-	req_log_access = access_armory
+	req_log_access = ACCESS_SECURITY_ARMORY
 	has_logs = 1
 
 /obj/machinery/vending/hydronutrients
@@ -1277,7 +1277,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
-	//req_access = list(access_maint_tunnels) //Maintenance access
+	//req_access = list(ACCESS_ENGINEERING_MAINT) //Maintenance access
 	products = list(
 		/obj/item/stack/cable_coil/random = 10,
 		/obj/item/tool/crowbar = 5,
@@ -1301,7 +1301,7 @@
 	premium = list(
 		/obj/item/clothing/gloves/yellow = 1,
 	)
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engivend
@@ -1309,7 +1309,7 @@
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/geiger_counter = 4,
 		/obj/item/clothing/glasses/meson = 2,
@@ -1350,7 +1350,7 @@
 		/obj/item/storage/belt/utility = 3,
 	)
 	product_records = list()
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engineering
@@ -1358,7 +1358,7 @@
 	desc = "Everything you need for do-it-yourself station repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/clothing/under/rank/chief_engineer = 4,
 		/obj/item/clothing/under/rank/engineer = 4,
@@ -1388,7 +1388,7 @@
 	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
 	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/robotics
@@ -1396,7 +1396,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	products = list(
 		/obj/item/clothing/suit/storage/toggle/labcoat = 4,
 		/obj/item/clothing/under/rank/roboticist = 4,
@@ -1414,7 +1414,7 @@
 		/obj/item/tool/crowbar = 5,
 	)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/giftvendor
@@ -1615,7 +1615,7 @@
 	product_ads = "The true life juice!;Vampire's choice!;Home-grown blood only!;Donate today, be saved tomorrow!;Approved by Zeng-Hu Pharmaceuticals Incorporated!; Curse you, Vey-Med artificial blood!"
 	icon_state = "blood"
 	idle_power_usage = 211
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/blood/prelabeled/APlus = 3,
 		/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,
@@ -1632,7 +1632,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/glass/bottle/stoxin = 2,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/loadout
@@ -1699,6 +1699,7 @@
 		/obj/item/clothing/shoes/boots/winter = 5,
 		/obj/item/clothing/shoes/boots/workboots = 5,
 		/obj/item/clothing/shoes/footwraps = 5,
+		/obj/item/clothing/shoes/utilitarian = 5,
 	)
 	premium = list(
 		/obj/item/clothing/gloves/rainbow = 1,
@@ -2072,6 +2073,13 @@
 		/obj/item/clothing/under/redcoatformal = 2,
 		/obj/item/clothing/under/leotardcolor = 5,
 		/obj/item/clothing/under/leotard = 5,
+		/obj/item/clothing/under/toga = 5,
+		/obj/item/clothing/under/countess = 5,
+		/obj/item/clothing/under/baroness = 5,
+		/obj/item/clothing/under/revealing = 5,
+		/obj/item/clothing/under/belial = 5,
+		/obj/item/clothing/under/lilin = 5,
+		/obj/item/clothing/under/asmodai = 5,
 		/obj/item/storage/backpack/ = 5,
 		/obj/item/storage/backpack/messenger = 5,
 		/obj/item/storage/backpack/satchel = 5,
@@ -2244,6 +2252,9 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 5,
 		/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5,
 		/obj/item/clothing/suit/storage/gothcoat = 3,
+		/obj/item/clothing/suit/storage/hobo = 3,
+		/obj/item/clothing/suit/storage/kamina = 3,
+		/obj/item/clothing/suit/nerdshirt = 3,
 	)
 	premium = list(
 		/obj/item/clothing/suit/imperium_monk = 3,
@@ -2390,6 +2401,17 @@
 		/obj/item/clothing/shoes/boots/ysing = 1,
 		/obj/item/clothing/suit/hevsuit = 3,
 		/obj/item/clothing/head/hevhelm = 3,
+		/obj/item/clothing/suit/banana = 3,
+		/obj/item/clothing/suit/assassin = 3,
+		/obj/item/clothing/head/bard = 3,
+		/obj/item/clothing/under/aquiline_enforcer = 3,
+		/obj/item/clothing/under/yoko = 3,
+		/obj/item/clothing/under/kamina = 3,
+		/obj/item/clothing/under/tape = 3,
+		/obj/item/clothing/under/redcoat = 3,
+		/obj/item/clothing/under/general = 3,
+		/obj/item/clothing/under/american = 3,
+		/obj/item/clothing/under/prussian = 3,
 	)
 	premium = list(
 		/obj/item/clothing/suit/imperium_monk = 3,

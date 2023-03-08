@@ -112,7 +112,7 @@
 		)
 
 /datum/species/vox/get_random_name(gender)
-	var/datum/language/species_language = SScharacters.resolve_language_id(default_language)
+	var/datum/language/species_language = SScharacters.resolve_language(default_language)
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)

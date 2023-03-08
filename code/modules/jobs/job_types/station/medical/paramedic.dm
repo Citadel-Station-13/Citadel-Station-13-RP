@@ -10,15 +10,24 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_MEDICAL_PSYCH)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
 	outfit_type = /datum/outfit/job/station/paramedic
 	desc = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/alt_title/emt,
-		"Medical Responder" = /datum/prototype/alt_title/medical_responder
+		"Medical Responder" = /datum/prototype/alt_title/medical_responder,
+		"Biotechnical Responder" = /datum/prototype/alt_title/biotech_responder
 		)
+		
+/datum/prototype/alt_title/biotech_responder
+	title = "Biotechnical Responder"
+	title_outfit = /datum/outfit/job/station/paramedic/emt  //TODO: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/alt_title/emt
 	title = "Emergency Medical Technician"

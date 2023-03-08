@@ -24,8 +24,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/bee_hood
 
 /obj/item/clothing/head/donator/bee_hood
@@ -35,14 +35,14 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee") //Does not exist -S2-
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/mask/red_mask
 	name = "Explorer's Red Lensed Mask"
 	desc = "A gas mask with red lenses."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	icon_state = "gas_mining"
 
 /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
@@ -60,8 +60,8 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecloak"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/cloak_hood
 
 /obj/item/clothing/head/donator/cloak_hood
@@ -71,7 +71,7 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecap"
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/under/donator/pinksuit
 	name = "pink latex jumpsuit"
@@ -96,7 +96,7 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blackberet", SLOT_ID_LEFT_HAND = "blackberet")
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/under/carcharodon
 	name = "Carcharodon Suit"
@@ -161,14 +161,6 @@
 	icon_state = "chaospriesth"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 
-/obj/item/clothing/under/skirt/donator/doopytoots
-	name = "high-waisted business skirt"
-	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
-	icon_state = "hueyskirt"
-	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
-
 /obj/item/clothing/under/donator/mikubikini
 	name = "starlight singer bikini"
 	desc = " "
@@ -184,7 +176,7 @@
 /obj/item/clothing/head/donator/mikuhair
 	name = "starlight singer hair"
 	desc = " "
-	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	icon_state = "mikuhair"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
@@ -215,7 +207,7 @@
 	icon_state = "dancer_veil"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	flags_inv = HIDEFACE
+	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Veil"
 	var/hanging = 0
 
@@ -223,11 +215,11 @@
 	if(!user.incapacitated() && !user.restrained() && !user.stat)
 		hanging = !hanging
 		if (hanging)
-			body_parts_covered = body_parts_covered & ~FACE
+			body_cover_flags = body_cover_flags & ~FACE
 			icon_state = "dancer_veil_down"
 			to_chat(user, "You drape the veil to one side.")
 		else
-			body_parts_covered = initial(body_parts_covered)
+			body_cover_flags = initial(body_cover_flags)
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the veil over to cover your face.")

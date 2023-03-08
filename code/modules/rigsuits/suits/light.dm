@@ -39,7 +39,7 @@
 	desc = "An advanced powered armour suit with many cyberwarfare enhancements. Comes with built-in insulated gloves for safely tampering with electronics."
 	icon_state = "hacker_rig"
 
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 
 	airtight = 1
 	seal_delay = 5 //Being straight out of a cyberpunk space movie has its perks.
@@ -62,7 +62,7 @@
 /obj/item/clothing/head/helmet/space/rig/light/hacker
 	name = "headgear"
 	siemens_coefficient = 0.4
-	flags_inv = HIDEEARS
+	inv_hide_flags = HIDEEARS
 
 /obj/item/clothing/suit/space/rig/light/hacker
 	siemens_coefficient = 0.4
@@ -89,7 +89,7 @@
 	boot_type = /obj/item/clothing/shoes/magboots/rig/light/ninja
 	cell_type =  /obj/item/cell/hyper
 
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 
 	initial_modules = list(
 		/obj/item/rig_module/teleporter,
@@ -123,7 +123,7 @@
 	desc = "A highly advanced and expensive suit designed for covert operations."
 	icon_state = "stealth_rig"
 
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 
 	initial_modules = list(
 		/obj/item/rig_module/stealth_field,

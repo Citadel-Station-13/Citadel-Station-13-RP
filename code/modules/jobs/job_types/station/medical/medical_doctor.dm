@@ -10,8 +10,8 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS, ACCESS_COMMAND_EVA)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA)
 	outfit_type = /datum/outfit/job/station/medical_doctor
 	desc = "A Medical Doctor is a Jack-of-All-Trades Medical title, covering a variety of skill levels and minor specializations. They are likely \
 						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
@@ -23,10 +23,20 @@
 		"Virologist" = /datum/prototype/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/alt_title/orderly
+		"Orderly" = /datum/prototype/alt_title/orderly,
+		"Biotechnician" = /datum/prototype/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles
+
+/datum/prototype/alt_title/biotechnician
+	title = "Biotechnician"
+	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
+
 /datum/prototype/alt_title/surgeon
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \

@@ -87,7 +87,7 @@
 	speak_emote = list("chitters")
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
@@ -115,6 +115,8 @@
 /mob/living/simple_mob/animal/roach/Greta
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
+	
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
 
@@ -160,6 +162,8 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 3
+	
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
 	var/spawn_delay = 20
@@ -284,8 +288,6 @@
 	armor = list(
 				"bio" = 100
 				)
-
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
 	var/poison_chance = 50
 	var/poison_per_bite = 5
