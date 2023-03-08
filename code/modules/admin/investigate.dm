@@ -7,7 +7,6 @@
 	var/F = investigate_subject2file(subject)
 	if(!F)
 		CRASH("invalid file / no file")
-		return
 	F << "<small>[time2text(world.timeofday,"hh:mm")] \ref[src] ([x],[y],[z])</small> || [src] [message]<br>"
 
 //ADMINVERBS
@@ -25,6 +24,6 @@
 		return
 	var/F = investigate_subject2file(subject)
 	if(!F)
-		to_chat(src, "<font color='red'>Error: admin_investigate: [INVESTIGATE_DIR][subject] is an invalid path or cannot be accessed.</font>")
+		to_chat(src, "<font color='red'>Error: admin_investigate: [F? F : "!!NO PATH - CHECK RUNTIMES!!"] is an invalid path or cannot be accessed.</font>")
 		return
 	src << browse(F,"window=investigate[subject];size=800x300")
