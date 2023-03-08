@@ -32,8 +32,15 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in allow_species)
 		if(ispath(thing))
-			allow_species += SScharacters.resolve_character_species(thing).uid
+			var/resolved
+			if(ispath(thing, /datum/species))
+				var/datum/species/access = thing
+				resolved = initial(access.uid)
+			else if(ispath(thing, /datum/character_species))
+				var/datum/character_species/access = thing
+				resolved = initial(access.uid)
 			allow_species -= thing
+			allow_species += resolved
 		else if(istext(thing))
 			ASSERT(!!SScharacters.resolve_character_species(thing))
 		else
@@ -42,8 +49,15 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in forbid_species)
 		if(ispath(thing))
-			forbid_species += SScharacters.resolve_character_species(thing).uid
-			forbid_species -= thing
+			var/resolved
+			if(ispath(thing, /datum/species))
+				var/datum/species/access = thing
+				resolved = initial(access.uid)
+			else if(ispath(thing, /datum/character_species))
+				var/datum/character_species/access = thing
+				resolved = initial(access.uid)
+			allow_species -= thing
+			allow_species += resolved
 		else if(istext(thing))
 			ASSERT(!!SScharacters.resolve_character_species(thing))
 		else

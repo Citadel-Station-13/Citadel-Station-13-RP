@@ -101,7 +101,7 @@
 /obj/item/circuitboard/ntnet_relay
 	name = "Circuit board (NTNet Quantum Relay)"
 	build_path = "/obj/machinery/ntnet_relay"
-	board_type = "machine"
+	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 4)
 	req_components = list(
 		/obj/item/stack/cable_coil = 15,

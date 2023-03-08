@@ -2,15 +2,18 @@
 	name = "Faction"
 	save_key = CHARACTER_DATA_FACTION
 	load_order = PREFERENCE_LOAD_ORDER_LORE_FACTION
-	sort_order = 5
+	sort_order = 7
 
 /datum/category_item/player_setup_item/background/faction/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/faction/available = SScharacters.available_factions(prefs.character_species_id(), prefs.lore_origin_id(), prefs.lore_citizenship_id())
 	var/list/categories = list()
+	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
+	var/current_category
 	for(var/datum/lore/character_background/faction/O as anything in available)
 		LAZYADD(categories[O.category], O)
-	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
+		if(O == current)
+			current_category = O.category
 	. += "<center>"
 	. += "<b>Faction</b><br>"
 	if(length(categories) > 1)
@@ -21,6 +24,8 @@
 	for(var/datum/lore/character_background/faction/O in available)
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
+		else if(current_category && O.category != current_category)
+			continue
 		else
 			. += href_simple(prefs, "pick", "[O.name]", O.id)
 		. += " "

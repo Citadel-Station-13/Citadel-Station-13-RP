@@ -7,7 +7,7 @@
 	icon_state = "tesh_cloak_bn"
 	item_state = "tesh_cloak_bn"
 	species_restricted = list(SPECIES_TESHARI)
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/storage/teshari/cloak/standard/black_red
 	name = "black and red cloak"
@@ -297,7 +297,7 @@
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
 	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoat"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
 
 /obj/item/clothing/suit/storage/toggle/tesharicoatwhite
@@ -306,7 +306,7 @@
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
 	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoatwhite"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
 
 
@@ -319,8 +319,8 @@
 	icon_state = "tesh_hcloak_bo"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hcloak_bo", SLOT_ID_LEFT_HAND = "tesh_hcloak_bo")
 	species_restricted = list(SPECIES_TESHARI)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER|HIDETIE
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER|HIDETIE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
@@ -336,8 +336,8 @@
 	icon = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hood_bo"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hood_bo", SLOT_ID_LEFT_HAND = "tesh_hood_bo")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 	cold_protection = HEAD|FACE
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 

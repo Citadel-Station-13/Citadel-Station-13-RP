@@ -9,7 +9,7 @@
 /obj/item/clothing/under/moth/puffy_pants
 	name = "puffy pants"
 	desc = "A pair of puffy pants. The holes are too small for human proportions."
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 
 /obj/item/clothing/under/moth/puffy_pants/red
 	name = "red puffy pants"
@@ -66,7 +66,7 @@
 	desc = "A pair of pants. The holes are too small for human proportions."
 	icon_state = "gray_tight_pants"
 	item_state = "gray_tight_pants"
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 
 /obj/item/clothing/under/moth/tight_pants/red
 	name = "red pants"
@@ -117,13 +117,13 @@
 	name = "white pants"
 	icon_state = "white_tight_pants"
 	item_state = "white_tight_pants"
-	
+
 /obj/item/clothing/under/moth/moth_skirt
 	name = "skirt"
 	desc = "A long skirt. The holes are too small for human proportions."
 	icon_state = "gray_moth_skirt"
 	item_state = "gray_moth_skirt"
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 
 /obj/item/clothing/under/moth/moth_skirt/red
 	name = "red skirt"
@@ -174,7 +174,7 @@
 	name = "white skirt"
 	icon_state = "white_moth_skirt"
 	item_state = "white_moth_skirt"
-	
+
 
 // Uppers
 
@@ -187,7 +187,7 @@
 /obj/item/clothing/accessory/vest/moth/abdomen_guard
 	name = "abdomen guard"
 	desc = "A piece of cloth intended to be tied against an abdomen with included leather belts. Not fitted for human proportions."
-	body_parts_covered = LOWER_TORSO // it's a piece of cloth man
+	body_cover_flags = LOWER_TORSO // it's a piece of cloth man
 
 /obj/item/clothing/accessory/vest/moth/abdomen_guard/red
 	name = "red abdomen guard"
@@ -238,13 +238,13 @@
 	name = "white abdomen guard"
 	item_state = "white_abdomen_guard"
 	icon_state = "white_abdomen_guard_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/tunic_top
 	name = "tunic"
 	desc = "A breezy tunic, held on by one strap on the shoulder. Includes leather belts to tie the bottom off. Not fitted for human proportions."
 	item_state = "gray_tunic_top"
 	icon_state = "gray_tunic_top_s"
-	body_parts_covered = LOWER_TORSO|UPPER_TORSO
+	body_cover_flags = LOWER_TORSO|UPPER_TORSO
 
 /obj/item/clothing/accessory/vest/moth/tunic_top/red
 	name = "red tunic"
@@ -295,13 +295,13 @@
 	name = "white tunic"
 	item_state = "white_tunic_top"
 	icon_state = "white_tunic_top_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/cloth_strap_top
 	name = "cloth strap top"
 	desc = "Two straps, overlapping each other. A piece of velcro adorns the end of the straps, to be connected at the back. Not fitted to human proportions."
 	item_state = "gray_cloth_strap_top"
 	icon_state = "gray_cloth_strap_top_s"
-	body_parts_covered = 0 // that shit don't cover nothing
+	body_cover_flags = 0 // that shit don't cover nothing
 
 /obj/item/clothing/accessory/vest/moth/cloth_strap_top/red
 	name = "red cloth strap top"
@@ -352,13 +352,13 @@
 	name = "white cloth strap top"
 	item_state = "white_cloth_strap_top"
 	icon_state = "white_cloth_strap_top_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/shoulder_pad_right
 	name = "right shoulder pad"
 	desc = "A cloth shoulder pad, fastened to the body with a leather belt. Not fitted to human proportions."
 	item_state = "gray_shoulder_pad_right"
 	icon_state = "gray_shoulder_pad_right_s"
-	body_parts_covered = 0 // that shit don't cover nothing
+	body_cover_flags = 0 // that shit don't cover nothing
 
 /obj/item/clothing/accessory/vest/moth/shoulder_pad_right/red
 	name = "red shoulder pad"
@@ -409,13 +409,13 @@
 	name = "white shoulder pad"
 	item_state = "white_shoulder_pad_right"
 	icon_state = "white_shoulder_pad_right_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/shoulder_pad_left
 	name = "left shoulder pad"
 	desc = "A cloth shoulder pad, fastened to the body with a leather belt. Not fitted to human proportions."
 	item_state = "gray_shoulder_pad_left"
 	icon_state = "gray_shoulder_pad_left_s"
-	body_parts_covered = 0 // that shit don't cover nothing
+	body_cover_flags = 0 // that shit don't cover nothing
 
 /obj/item/clothing/accessory/vest/moth/shoulder_pad_left/red
 	name = "red shoulder pad"
@@ -466,13 +466,13 @@
 	name = "white shoulder pad"
 	item_state = "white_shoulder_pad_left"
 	icon_state = "white_shoulder_pad_left_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/front_tunic
 	name = "backless tunic"
 	desc = "A cloth tunic, with leather belts to tie off the bottom. A single cloth loop goes around the neck, leaving the back exposed. Not fitted to human proportions."
 	item_state = "gray_front_tunic"
 	icon_state = "gray_front_tunic_s"
-	body_parts_covered = LOWER_TORSO|UPPER_TORSO
+	body_cover_flags = LOWER_TORSO|UPPER_TORSO
 
 /obj/item/clothing/accessory/vest/moth/front_tunic/red
 	name = "red backless tunic"
@@ -523,13 +523,13 @@
 	name = "white backless tunic"
 	item_state = "white_front_tunic"
 	icon_state = "white_front_tunic_s"
-	
+
 /obj/item/clothing/accessory/vest/moth/gaiter
 	name = "gaiter"
 	desc = "A cloth gaiter, with a single button to connect the ends. Not fitted to human proportions."
 	item_state = "gray_gaiter"
 	icon_state = "gray_gaiter_s"
-	body_parts_covered = 0 // that shit don't cover nothing
+	body_cover_flags = 0 // that shit don't cover nothing
 
 /obj/item/clothing/accessory/vest/moth/gaiter/red
 	name = "red gaiter"
