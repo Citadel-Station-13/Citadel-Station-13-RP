@@ -14,7 +14,8 @@
  * OnMouseDrop
  * MouseDroppedOn
  *
- * These are *not* used for attack_hand, attack_robot, attack_xeno, and similar specific attack procs.
+ * These are *not* used for attack_hand, attack_robot, attack_xeno, and similar clicked-by-specific-mob attack procs.
+ * These are also not used for attack_self, as that isn't even a true clickcode proc.
  */
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
