@@ -6,7 +6,7 @@
 	program_key_state = "id_key"
 	program_menu_icon = "key"
 	extended_desc = "Program for programming crew ID cards."
-	required_access = access_change_ids
+	required_access = ACCESS_COMMAND_CARDMOD
 	requires_ntnet = 0
 	size = 8
 
@@ -169,7 +169,6 @@
 			if(computer && can_run(user, 1))
 				id_card.assignment = "Dismissed"
 				id_card.access = list()
-				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(computer && can_run(user, 1))
 				if(href_list["name"])

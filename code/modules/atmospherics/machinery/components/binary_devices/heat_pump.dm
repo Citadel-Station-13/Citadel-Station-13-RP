@@ -201,7 +201,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_state(mob/user)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, params)

@@ -4,7 +4,7 @@
 
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	desc = "The DeForest-model Medical hypospray, from Vey-Med, is a sterile air-needle autoinjector for rapid administration of medicinal drugs to patients."
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "hypo"

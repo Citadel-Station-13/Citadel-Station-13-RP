@@ -54,7 +54,7 @@
 // 	ui_interact(user)
 // 	return TRUE
 
-/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -109,7 +109,7 @@
 		return
 	unlook(user)
 
-/obj/machinery/computer/ship/ui_close(mob/user)
+/obj/machinery/computer/ship/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)

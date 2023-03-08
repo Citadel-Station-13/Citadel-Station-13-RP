@@ -10,8 +10,8 @@
 	name = "Cleanbot"
 	desc = "A little cleaning robot, it looks so excited!"
 	icon_state = "cleanbot0"
-	req_one_access = list(access_robotics, access_janitor)
-	botcard_access = list(access_janitor)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_GENERAL_JANITOR)
+	botcard_access = list(ACCESS_GENERAL_JANITOR)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot)
 
 	locked = FALSE //Starts unlocked so roboticist can set them to patrol.
@@ -163,7 +163,7 @@
 	data["version"] = "v2.0"
 	return data
 
-/mob/living/bot/cleanbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/cleanbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -10,21 +10,21 @@
 		if(NETWORK_THUNDER)
 			return 0
 		if(NETWORK_ENGINE,NETWORK_ALARM_ATMOS,NETWORK_ALARM_FIRE,NETWORK_ALARM_POWER)
-			return access_engine
+			return ACCESS_ENGINEERING_MAIN
 		if(NETWORK_CIRCUITS)
-			return access_research
+			return ACCESS_SCIENCE_MAIN
 		if(NETWORK_ERT)
-			return access_cent_specops
+			return ACCESS_CENTCOM_ERT
 
 	if(network in GLOB.using_map.station_networks)
-		return access_security // Default for all other station networks
+		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
 
 /datum/computer_file/program/camera_monitor
 	filename = "cammon"
 	filedesc = "Camera Monitoring"
-	tguimodule_path = /datum/tgui_module/camera/ntos
+	tguimodule_path = /datum/tgui_module_old/camera/ntos
 	program_icon_state = "cameras"
 	program_key_state = "generic_key"
 	program_menu_icon = "search"
@@ -39,5 +39,5 @@
 	filedesc = "Advanced Camera Monitoring"
 	extended_desc = "This program allows remote access to the camera system. Some camera networks may have additional access requirements. This version has an integrated database with additional encrypted keys."
 	size = 14
-	tguimodule_path = /datum/tgui_module/camera/ntos/ert
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/ert
 	available_on_ntnet = 0

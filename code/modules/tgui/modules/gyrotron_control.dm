@@ -1,11 +1,11 @@
-/datum/tgui_module/gyrotron_control
+/datum/tgui_module_old/gyrotron_control
 	name = "Gyrotron Control"
 	tgui_id = "GyrotronControl"
 
 	var/gyro_tag = ""
 	var/scan_range = 25
 
-/datum/tgui_module/gyrotron_control/ui_act(action, params)
+/datum/tgui_module_old/gyrotron_control/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -43,7 +43,7 @@
 				G.rate = new_delay
 			return TRUE
 
-/datum/tgui_module/gyrotron_control/ui_data(mob/user)
+/datum/tgui_module_old/gyrotron_control/ui_data(mob/user)
 	var/list/data = list()
 	var/list/gyros = list()
 
@@ -64,5 +64,5 @@
 	data["gyros"] = gyros
 	return data
 
-/datum/tgui_module/gyrotron_control/ntos
+/datum/tgui_module_old/gyrotron_control/ntos
 	ntos = TRUE

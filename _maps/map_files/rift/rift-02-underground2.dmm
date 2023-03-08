@@ -3913,6 +3913,9 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/machinery/computer/card{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "lE" = (
@@ -12354,7 +12357,7 @@
 	},
 /obj/item/rig/ce/equipped{
 	req_access = list(56)
-},
+	},
 /obj/item/clothing/mask/breath,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,

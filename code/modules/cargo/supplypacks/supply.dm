@@ -114,7 +114,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Shaft miner equipment"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /* //MULE Bots can't traverse the Tether.
 /datum/supply_pack/supply/mule
@@ -137,4 +137,4 @@
 	cost = 300
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE

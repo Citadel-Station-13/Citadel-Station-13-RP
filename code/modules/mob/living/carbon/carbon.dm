@@ -282,7 +282,7 @@
 	if(!species)
 		return null
 
-	return species.default_language ? SScharacters.resolve_language_id(species.default_language) : null
+	return species.default_language ? SScharacters.resolve_language(species.default_language) : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0

@@ -162,7 +162,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -190,14 +190,14 @@
 
 		if("strength")
 			var/input = input("1-5", "disperser strength", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				strength = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE
 
 		if("range")
 			var/input = input("1-5", "disperser radius", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				range = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE

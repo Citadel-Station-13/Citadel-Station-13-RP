@@ -222,4 +222,4 @@
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
 	icon_state = "syndicate-id"
-	access = list(access_syndicate, access_external_airlocks)
+	access = list(ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)
