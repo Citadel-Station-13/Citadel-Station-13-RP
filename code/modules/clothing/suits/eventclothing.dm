@@ -1,7 +1,7 @@
 /obj/item/clothing/under/event_reward/foxmiko
 	name = "Miko Garb"
 	desc = "The creative reinterpretation of Shinto miko attire."
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	icon = 'icons/obj/clothing/eventclothing.dmi'
 	icon_override = 'icons/mob/eventclothing.dmi'
 	icon_state = "foxmiko"
@@ -56,21 +56,21 @@
 
 
 /obj/item/clothing/under/event_reward/foxmiko/proc/switchsprite() //Handles the ultimate state of the icon as well as what parts of body the attire covers
-	body_parts_covered = initial(body_parts_covered) //Resets to default coverage for this uniform - upper and lower body
+	body_cover_flags = initial(body_cover_flags) //Resets to default coverage for this uniform - upper and lower body
 	if(kimono) //If the kimono is parted
 		if(skirt) //If the skirt is parted too
 			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks
 			icon_state = "foxmiko_ks" //This is for item icon - NOT WORN ICON
-			body_parts_covered &= ~(UPPER_TORSO|LOWER_TORSO) //If kimono is open and skirt lifted uncover both upper and lower body
+			body_cover_flags &= ~(UPPER_TORSO|LOWER_TORSO) //If kimono is open and skirt lifted uncover both upper and lower body
 		else //But skirt is not lifted too
 			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_k" //We use [snowflake_worn_state] rather than an explicit declaration because the game appends a _s to icon states
 			icon_state = "foxmiko_k"
-			body_parts_covered &= ~(UPPER_TORSO)
+			body_cover_flags &= ~(UPPER_TORSO)
 	else //If kimono is not parted
 		if(skirt) //If skirt is lifted
 			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_s" //Meaning in the icon sprite files this is foxmiko_s_s
 			icon_state = "foxmiko_s"
-			body_parts_covered &= ~(LOWER_TORSO)
+			body_cover_flags &= ~(LOWER_TORSO)
 		else //But skirt is not lifted too - default state
 			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
 			icon_state = "foxmiko"

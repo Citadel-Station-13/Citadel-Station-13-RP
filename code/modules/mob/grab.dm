@@ -453,7 +453,7 @@
 	user.visible_message("<span class='notice'>[user] starts inspecting [affecting]'s [E.name] carefully.</span>")
 	if(!do_mob(user,H, 10))
 		to_chat(user, "<span class='notice'>You must stand still to inspect [E] for wounds.</span>")
-	else if(E.wounds.len)
+	else if(length(E.wounds))
 		to_chat(user, "<span class='warning'>You find [E.get_wounds_desc()]</span>")
 	else
 		to_chat(user, "<span class='notice'>You find no visible wounds.</span>")
@@ -518,7 +518,7 @@
 		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
 		return
 	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
-		if(protection && (protection.body_parts_covered & EYES))
+		if(protection && (protection.body_cover_flags & EYES))
 			to_chat(attacker, "<span class='danger'>You're going to need to remove the eye covering first.</span>")
 			return
 	if(!target.has_eyes())

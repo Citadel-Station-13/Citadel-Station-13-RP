@@ -9,55 +9,55 @@
 
 	//exosuits and helmets obscure our view and stuff.
 	if(wear_suit)
-		if(wear_suit.flags_inv & HIDESUITSTORAGE)
+		if(wear_suit.inv_hide_flags & HIDESUITSTORAGE)
 			skip_gear |= EXAMINE_SKIPSUITSTORAGE
 
-		if(wear_suit.flags_inv & HIDEJUMPSUIT)
+		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
 			skip_body |= EXAMINE_SKIPARMS | EXAMINE_SKIPLEGS | EXAMINE_SKIPBODY | EXAMINE_SKIPGROIN
 			skip_gear |= EXAMINE_SKIPJUMPSUIT | EXAMINE_SKIPTIE | EXAMINE_SKIPHOLSTER
 
-		else if(wear_suit.flags_inv & HIDETIE)
+		else if(wear_suit.inv_hide_flags & HIDETIE)
 			skip_gear |= EXAMINE_SKIPTIE | EXAMINE_SKIPHOLSTER
 
-		else if(wear_suit.flags_inv & HIDEHOLSTER)
+		else if(wear_suit.inv_hide_flags & HIDEHOLSTER)
 			skip_gear |= EXAMINE_SKIPHOLSTER
 
-		if(wear_suit.flags_inv & HIDESHOES)
+		if(wear_suit.inv_hide_flags & HIDESHOES)
 			skip_gear |= EXAMINE_SKIPSHOES
 			skip_body |= EXAMINE_SKIPFEET
 
-		if(wear_suit.flags_inv & HIDEGLOVES)
+		if(wear_suit.inv_hide_flags & HIDEGLOVES)
 			skip_gear |= EXAMINE_SKIPGLOVES
 			skip_body |= EXAMINE_SKIPHANDS
 
 	if(w_uniform)
-		if(w_uniform.body_parts_covered & LEGS)
+		if(w_uniform.body_cover_flags & LEGS)
 			skip_body |= EXAMINE_SKIPLEGS
-		if(w_uniform.body_parts_covered & ARMS)
+		if(w_uniform.body_cover_flags & ARMS)
 			skip_body |= EXAMINE_SKIPARMS
-		if(w_uniform.body_parts_covered & UPPER_TORSO)
+		if(w_uniform.body_cover_flags & UPPER_TORSO)
 			skip_body |= EXAMINE_SKIPBODY
-		if(w_uniform.body_parts_covered & LOWER_TORSO)
+		if(w_uniform.body_cover_flags & LOWER_TORSO)
 			skip_body |= EXAMINE_SKIPGROIN
 
-	if(gloves && (gloves.body_parts_covered & HANDS))
+	if(gloves && (gloves.body_cover_flags & HANDS))
 		skip_body |= EXAMINE_SKIPHANDS
 
-	if(shoes && (shoes.body_parts_covered & FEET))
+	if(shoes && (shoes.body_cover_flags & FEET))
 		skip_body |= EXAMINE_SKIPFEET
 
 	if(head)
-		if(head.flags_inv & HIDEMASK)
+		if(head.inv_hide_flags & HIDEMASK)
 			skip_gear |= EXAMINE_SKIPMASK
-		if(head.flags_inv & HIDEEYES)
+		if(head.inv_hide_flags & HIDEEYES)
 			skip_gear |= EXAMINE_SKIPEYEWEAR
 			skip_body |= EXAMINE_SKIPEYES
-		if(head.flags_inv & HIDEEARS)
+		if(head.inv_hide_flags & HIDEEARS)
 			skip_gear |= EXAMINE_SKIPEARS
-		if(head.flags_inv & HIDEFACE)
+		if(head.inv_hide_flags & HIDEFACE)
 			skip_body |= EXAMINE_SKIPFACE
 
-	if(wear_mask && (wear_mask.flags_inv & HIDEFACE))
+	if(wear_mask && (wear_mask.inv_hide_flags & HIDEFACE))
 		skip_body |= EXAMINE_SKIPFACE
 
 	//This is what hides what
@@ -77,7 +77,7 @@
 
 	. = list()
 
-	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	var/skipface = (wear_mask && (wear_mask.inv_hide_flags & HIDEFACE)) || (head && (head.inv_hide_flags & HIDEFACE))
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
@@ -403,7 +403,7 @@
 				else
 					built = SPAN_WARNING("[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!")
 				continue
-			else if(temp.wounds.len > 0 || temp.open)
+			else if(length(temp.wounds) > 0 || temp.open)
 				if(temp.is_stump() && temp.parent_organ && organs_by_name[temp.parent_organ])
 					var/obj/item/organ/external/parent = organs_by_name[temp.parent_organ]
 					built = SPAN_WARNING("[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].")

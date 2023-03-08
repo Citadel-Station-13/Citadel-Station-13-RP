@@ -128,7 +128,7 @@ emp_act
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_parts_covered & def_zone.body_part)) // Is that body part being targeted covered?
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
 	return siemens_coefficient
@@ -159,7 +159,7 @@ emp_act
 	var/list/results = list()
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_parts_covered & def_zone.body_part))
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part))
 			results.Add(C)
 	return results
 
@@ -195,7 +195,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
+		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
 			return gear
 	return null
 
@@ -203,7 +203,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
+		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
 			return gear
 	return null
 
@@ -542,21 +542,21 @@ emp_act
 		)
 
 	for(var/obj/item/clothing/C in src.get_equipped_items())
-		if(C.permeability_coefficient == 1 || !C.body_parts_covered)
+		if(C.permeability_coefficient == 1 || !C.body_cover_flags)
 			continue
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			perm_by_part["head"] *= C.permeability_coefficient
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			perm_by_part["upper_torso"] *= C.permeability_coefficient
-		if(C.body_parts_covered & LOWER_TORSO)
+		if(C.body_cover_flags & LOWER_TORSO)
 			perm_by_part["lower_torso"] *= C.permeability_coefficient
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			perm_by_part["legs"] *= C.permeability_coefficient
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			perm_by_part["feet"] *= C.permeability_coefficient
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			perm_by_part["arms"] *= C.permeability_coefficient
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			perm_by_part["hands"] *= C.permeability_coefficient
 
 	for(var/part in perm_by_part)

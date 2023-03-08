@@ -45,7 +45,7 @@
 	name = "sandals"
 	icon_state = "wizard"
 	species_restricted = null
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 	wizard_garb = 1
 
@@ -58,7 +58,7 @@
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
 	icon_state = "black"
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_ARCANE = 5)
 
 /obj/item/clothing/shoes/clown_shoes
