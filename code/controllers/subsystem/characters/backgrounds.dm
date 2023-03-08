@@ -4,12 +4,14 @@
 	var/list/character_citizenships
 	var/list/character_religions
 	var/list/character_factions
+	var/list/character_cultures
 
 /datum/controller/subsystem/characters/proc/rebuild_backgrounds()
 	character_origins = list()
 	character_citizenships = list()
 	character_religions = list()
 	character_factions = list()
+	character_cultures = list()
 
 	for(var/path in subtypesof(/datum/lore/character_background))
 		var/datum/lore/character_background/L = path
@@ -39,11 +41,18 @@
 				stack_trace("dupe [L.id] on [L.type]")
 				continue
 			character_factions[L.id] = L
+		if(istype(L, /datum/lore/character_background/culture))
+			if(character_cultures[L.id])
+				stack_trace("dupe [L.id] on [L.type]")
+				continue
+			character_cultures[L.id] = L
+
 
 	tim_sort(character_origins, /proc/cmp_auto_compare, TRUE)
 	tim_sort(character_citizenships, /proc/cmp_auto_compare, TRUE)
 	tim_sort(character_religions, /proc/cmp_auto_compare, TRUE)
 	tim_sort(character_factions, /proc/cmp_auto_compare, TRUE)
+	tim_sort(character_cultures, /proc/cmp_auto_compare, TRUE)
 
 /datum/controller/subsystem/characters/proc/available_citizenships(species_id, category)
 	. = list()
@@ -85,6 +94,15 @@
 		if(L.check_species_id(species_id))
 			. += L
 
+/datum/controller/subsystem/characters/proc/available_cultures(species_id, category)
+	. = list()
+	for(var/id in character_cultures)
+		var/datum/lore/character_background/culture/L = character_cultures[id]
+		if(category && (L.category != category))
+			continue
+		if(L.check_species_id(species_id))
+			. += L
+
 /datum/controller/subsystem/characters/proc/resolve_citizenship(id_or_typepath)
 	RETURN_TYPE(/datum/lore/character_background/citizenship)
 	if(ispath(id_or_typepath))
@@ -112,3 +130,10 @@
 		var/datum/lore/character_background/bg = id_or_typepath
 		id_or_typepath = initial(bg.id)
 	return character_origins[id_or_typepath]
+
+/datum/controller/subsystem/characters/proc/resolve_culture(id_or_typepath)
+	RETURN_TYPE(/datum/lore/character_background/culture)
+	if(ispath(id_or_typepath))
+		var/datum/lore/character_background/bg = id_or_typepath
+		id_or_typepath = initial(bg.id)
+	return character_cultures[id_or_typepath]

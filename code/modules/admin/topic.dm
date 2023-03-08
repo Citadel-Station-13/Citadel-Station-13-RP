@@ -840,6 +840,64 @@
 				var/job = t_split[2]
 				DB_ban_unban(ckey(key), BANTYPE_JOB_PERMA, job)
 
+	else if(href_list["oocban"])
+
+		if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
+			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
+			return
+
+		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN, 0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
+			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
+			return
+
+		var/target_ckey = href_list["oocban"]
+		// clients can gc at any time, do not use this outside of getting existing mob
+		var/client/_existing_client = GLOB.directory[target_ckey]
+		// i lied check it first
+		if(_existing_client?.holder)
+			// if you have to be ooc banned as an admin you should just be de-adminned?
+			// we'll add the function later when we overhaul banning
+			return
+
+		if(is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
+			to_chat(usr, SPAN_WARNING("[target_ckey] is already OOC banned. Use Unban-Panel to unban them."))
+			return
+
+		switch(alert(usr, "Temporary OOC Ban?", "OOC Ban", "Yes", "No", "Cancel"))
+			if("Yes")
+				var/minutes = input(usr, "How long in minutes?", "OOC Ban", 1440) as num|null
+				if(minutes <= 0)
+					return
+				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
+				if(!reason)
+					return
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
+				// incase they switched mobs
+				var/client/target_client = GLOB.directory[target_ckey]
+				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
+				message_admins("<font color=#4F49AF>[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.</font>")
+				log_admin("[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
+				to_chat(target_client, SPAN_BIG(SPAN_BOLDWARNING("You have been banned from OOC by [usr.ckey]. Reason: [reason]. This will be removed in [minutes] minutes.")))
+
+			if("No")
+				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
+				if(!reason)
+					return
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
+				// incase they switched mobs
+				var/client/target_client = GLOB.directory[target_ckey]
+				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
+				message_admins("<font color=#4F49AF>[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].</font>")
+				log_admin("[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
+				to_chat(target_client, SPAN_BIG(SPAN_BOLDWARNING("You have been banned from OOC by [usr.ckey]. Reason: [reason].")))
+
+			if("Cancel")
+				return
+
+		// todo: i'm not going to put feedback gathering in right now for this
+		//       because this verb needs redone later anyways
+		//       and our feedback system is frankly a mess
+
 	else if(href_list["newban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
 			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")

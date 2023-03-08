@@ -39,7 +39,7 @@
 				if(H.glasses)
 					to_chat(user, "<span class='warning'>\The [H] is already wearing somethign on their eyes.</span>")
 					return
-				if(H.head && (H.head.body_parts_covered & FACE))
+				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping over \the [H]'s eyes!</span>")
@@ -59,7 +59,7 @@
 				if(!can_place)
 					return
 
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.has_eyes() || H.glasses || (H.head && (H.head.body_parts_covered & FACE)))
+				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.has_eyes() || H.glasses || (H.head && (H.head.body_cover_flags & FACE)))
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
@@ -78,7 +78,7 @@
 				if(H.wear_mask)
 					to_chat(user, "<span class='warning'>\The [H] is already wearing a mask.</span>")
 					return
-				if(H.head && (H.head.body_parts_covered & FACE))
+				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping up \the [H]'s mouth!</span>")
@@ -98,7 +98,7 @@
 				if(!can_place)
 					return
 
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.check_has_mouth() || (H.head && (H.head.body_parts_covered & FACE)))
+				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.check_has_mouth() || (H.head && (H.head.body_cover_flags & FACE)))
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")

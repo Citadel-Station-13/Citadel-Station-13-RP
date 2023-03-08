@@ -17,3 +17,9 @@
 	default = 0 //0 means disabled
 	integer = TRUE
 	min_val = 0
+
+/// Enforce OOC notes
+/datum/config_entry/flag/enforce_ooc_notes
+
+/// Enforce flavortext
+/datum/config_entry/flag/enforce_flavor_text

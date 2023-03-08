@@ -170,7 +170,7 @@
 			var/list/clothes = list(H.head, H.wear_mask, H.wear_suit, H.w_uniform, H.gloves, H.shoes)
 			for(var/obj/item/clothing/C in clothes)
 				if(C && istype(C))
-					if(C.body_parts_covered & select_area.body_part)
+					if(C.body_cover_flags & select_area.body_part)
 						nudity = 0
 		if (nudity)
 			for (var/ID in victim.virus2)

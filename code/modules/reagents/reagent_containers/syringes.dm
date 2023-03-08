@@ -4,7 +4,7 @@
 
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe."
+	desc = "A disposable syringe. A small sticker on the side reminds you to dispose after one use."
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"

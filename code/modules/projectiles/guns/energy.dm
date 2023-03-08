@@ -1,6 +1,6 @@
 /obj/item/gun/energy
 	name = "energy gun"
-	desc = "A basic energy-based gun."
+	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energy"
 	fire_sound_text = "laser blast"

@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	if(owner.h_style)
 		var/style = owner.h_style
 		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[style]
-		if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
+		if(owner.head && (owner.head.inv_hide_flags & BLOCKHEADHAIR))
 			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
 				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
 		if(hair_style && (!hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in hair_style.species_allowed)))
@@ -145,9 +145,13 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 /obj/item/organ/external/proc/get_icon(var/skeletal)
 
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		s_base = LAZYACCESS(species.base_skin_colours, H.s_base)
 	var/gender = "f"
 	if(owner && owner.gender == MALE)
 		gender = "m"
+
 
 	if(!force_icon_key)
 		icon_cache_key = "[icon_name]_[species ? species.get_bodytype_legacy() : SPECIES_HUMAN]"
@@ -163,16 +167,11 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 			if(!gendered_icon)
 				gender = null
-			else
-				if(dna.GetUIState(DNA_UI_GENDER))
-					gender = "f"
-				else
-					gender = "m"
 
 			if(skeletal)
 				mob_icon = new /icon('icons/mob/species/human/skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
-				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
+				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 			apply_colouration(mob_icon)
@@ -188,7 +187,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 					icon_cache_key += "[M][markings[M]["color"]]"
 
 			if(body_hair && islist(h_col) && h_col.len >= 3)
-				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
+				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]-[s_base]"
 				if(!GLOB.limb_icon_cache[cache_key])
 					var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
 					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)

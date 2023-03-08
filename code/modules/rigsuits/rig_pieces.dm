@@ -6,8 +6,8 @@
 	name = "helmet"
 	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB | ALLOWINTERNALS
-	flags_inv      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
+	inv_hide_flags      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
 	cold_protection    = HEAD|FACE|EYES
 	brightness_on = 4
@@ -46,7 +46,7 @@
 	name = "gauntlets"
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
-	body_parts_covered = HANDS
+	body_cover_flags = HANDS
 	heat_protection    = HANDS
 	cold_protection    = HANDS
 
@@ -80,7 +80,7 @@
 	name = "boots"
 	atom_flags = PHORONGUARD
 	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	cold_protection    = FEET
 	heat_protection    = FEET
 
@@ -118,11 +118,11 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 
 	//Flags
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	clothing_flags     = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	atom_flags              = PHORONGUARD
-	flags_inv          = HIDEJUMPSUIT|HIDETAIL
+	inv_hide_flags          = HIDEJUMPSUIT|HIDETAIL
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 	slowdown = NONE
@@ -217,17 +217,17 @@
 	name = "mask"
 	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
-	body_parts_covered = HEAD|FACE|EYES
+	body_cover_flags = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
 	cold_protection    = HEAD|FACE|EYES
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
 	allowed = list(/obj/item/flashlight)
-	flags_inv = HIDEJUMPSUIT
+	inv_hide_flags = HIDEJUMPSUIT
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -236,7 +236,7 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	species_restricted = null
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	cold_protection    = FEET
 	heat_protection    = FEET
 
@@ -245,6 +245,6 @@
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	species_restricted = null
-	body_parts_covered = HANDS
+	body_cover_flags = HANDS
 	heat_protection    = HANDS
 	cold_protection    = HANDS

@@ -2850,6 +2850,18 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"ceA" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/obj/structure/table/woodentable,
+/obj/item/clothing/glasses/threedglasses,
+/obj/item/tool/wrench/red,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area)
 "ceD" = (
 /obj/structure/table/glass,
 /obj/item/inflatable_duck,
@@ -3627,13 +3639,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "cKs" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
-/obj/structure/table/woodentable,
-/obj/item/clothing/glasses/threedglasses,
-/turf/simulated/floor/wood,
-/area/crew_quarters/recreation_area)
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "cKC" = (
 /obj/item/radio/intercom/department/medbay{
 	dir = 1;
@@ -12351,15 +12366,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "jeX" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/pool)
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/crew_quarters/recreation_area)
 "jff" = (
 /turf/simulated/wall,
 /area/holodeck_control)
@@ -12435,10 +12445,12 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "jjf" = (
-/obj/machinery/fitness/heavy/lifter,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
+/obj/structure/fitness/weightlifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "jjr" = (
@@ -18929,6 +18941,10 @@
 "ocv" = (
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
+"odc" = (
+/obj/machinery/fitness/heavy/lifter,
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area)
 "odk" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -22085,10 +22101,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "qyH" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "qyY" = (
@@ -29748,13 +29764,13 @@
 /turf/simulated/floor/plating,
 /area/security/brig)
 "wxq" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/fitness/weightlifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "wxx" = (
@@ -31562,7 +31578,6 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xTw" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -58541,8 +58556,8 @@ jTH
 jTH
 jTH
 agp
-jeX
 rHN
+cKs
 sen
 gHa
 sen
@@ -58734,9 +58749,9 @@ pBj
 pBj
 pBj
 iQr
-iQr
 qic
 mhd
+qic
 qic
 qic
 iQr
@@ -58927,10 +58942,10 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 oQY
 lrw
+jjf
 xTw
 wxq
 qCM
@@ -59121,9 +59136,9 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 djA
+dOd
 dOd
 qxp
 gUb
@@ -59315,11 +59330,11 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 djA
 dOd
-jjf
+odc
+qxp
 qyH
 dOd
 aJG
@@ -59509,15 +59524,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 bJz
+dOd
 dOd
 qxp
 xPx
 dOd
 dOd
-iQr
+jeX
 cqn
 vVr
 whY
@@ -59703,9 +59718,9 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
-cKs
+ceA
+dOd
 dPH
 erQ
 vem
@@ -59897,7 +59912,7 @@ pBj
 pBj
 pBj
 pBj
-pBj
+iQr
 iQr
 iQr
 iQr
