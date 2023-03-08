@@ -1,6 +1,7 @@
 /obj/item/reagent_synth
 	name = "reagent synthesis module"
 	desc = "Some kind of complex device used for synthesizing reagents."
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	#warn sprite
 
 	/// type enum
@@ -24,8 +25,6 @@
 		else if(ispath(thing))
 			var/datum/reagent/accessing = thing
 			. += accessing.id
-
-#warn rnd designs
 
 /obj/item/reagent_synth/chemistry
 	name = "reagent synthesis module (Chemistry)"

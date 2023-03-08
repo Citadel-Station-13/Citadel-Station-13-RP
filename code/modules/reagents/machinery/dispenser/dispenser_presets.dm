@@ -6,14 +6,12 @@
 /obj/machinery/chemical_dispenser/full/unanchored
 	anchored = FALSE
 
-#warn repath, use whitelists
-
 /obj/machinery/chemical_dispenser/catering
 	abstract_type = /obj/machinery/chemical_dispenser/catering
 	allow_drinking = TRUE
-	allow_beakers = TRUE
+	synthesizers_swappable = FALSE
 
-/obj/machinery/chemical_dispenser/bar_soft
+/obj/machinery/chemical_dispenser/catering/bar_soft
 	name = "soft drink dispenser"
 	desc = "A soda machine."
 	icon_state = "soda_dispenser"
@@ -22,31 +20,29 @@
 		/obj/item/reagent_synth/drink,
 	)
 
-/obj/machinery/chemical_dispenser/bar_soft/unanchored
+/obj/machinery/chemical_dispenser/catering/bar_soft/unanchored
 	anchored = FALSE
 
-/obj/machinery/chemical_dispenser/bar_alc
+/obj/machinery/chemical_dispenser/catering/bar_alc
 	name = "booze dispenser"
 	desc = "A beer machine. Like a soda machine, but more fun!"
 	icon_state = "booze_dispenser"
-	synthesizers_swappable = FALSE
 	synthesizers = list(
 		/obj/item/reagent_synth/bar,
 	)
 
-/obj/machinery/chemical_dispenser/bar_alc/unanchored
+/obj/machinery/chemical_dispenser/catering/bar_alc/unanchored
 	anchored = FALSE
 
-/obj/machinery/chemical_dispenser/bar_coffee
+/obj/machinery/chemical_dispenser/catering/bar_coffee
 	name = "coffee dispenser"
 	desc = "Driving crack dealers out of employment since 2280."
 	icon_state = "coffee_dispenser"
-	synthesizers_swappable = FALSE
 	synthesizers = list(
 		/obj/item/reagent_synth/cafe,
 	)
 
-/obj/machinery/chemical_dispenser/bar_coffee/unanchored
+/obj/machinery/chemical_dispenser/catering/bar_coffee/unanchored
 	anchored = FALSE
 
 /obj/machinery/chemical_dispenser/xenoflora

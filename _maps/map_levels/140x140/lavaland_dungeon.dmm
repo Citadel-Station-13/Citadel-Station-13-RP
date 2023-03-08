@@ -582,7 +582,7 @@
 /area/lavaland/dungeon/facility)
 "zq" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy{

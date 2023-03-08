@@ -30,12 +30,8 @@
 	var/recharge_rate = 5
 	/// inserted beaker / whatever
 	var/obj/item/reagent_containers/inserted
-	/// allow beakers
-	// var/allow_beakers = TRUE
 	/// allow drinking glasses
 	var/allow_drinking = TRUE
-	/// allow all other opencontainer reagent containers
-	// var/allow_other = FALSE
 	/// current dispense amount
 	var/dispense_amount = 10
 	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
@@ -44,6 +40,8 @@
 	var/kj_per_unit = 4 // ~5k units on 10k cell
 	/// is recharging active?
 	var/charging = TRUE
+	/// macros: list of list("name" = name, "data" = list("id" = amount, ...))
+	var/list/macros
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
@@ -60,6 +58,9 @@
 /obj/machinery/chemical_dispenser/Destroy()
 	QDEL_LIST_NULL(cartridges)
 	QDEL_LIST_NULL(synthesizers)
+	if(inserted)
+		QDEL_NULL(inserted)
+	macros = null
 	return ..()
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
@@ -114,9 +115,12 @@
 	for(var/id in chems_built)
 		chems_final += list(chems_built[id])
 	.["reagents"] = chems_built
+	.["macros"] = macros || list()
 
 /obj/machinery/chemical_dispenser/ui_data(mob/user)
 	. = ..()
+	.["amount"] = dispense_amount
+	.["amount_max"] = dispense_amount_max
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell.charge
 	.["cell_capacity"] = cell.maxcharge
@@ -187,6 +191,16 @@
 			#warn impl
 		if("eject_cart")
 			#warn impl
+		if("add_macro")
+			#warn validate
+			return TRUE
+		if("del_macro")
+			var/index = text2num(params["index"])
+			if(isnull(index) || (length(macros) < index))
+				return TRUE
+			macros.Cut(index, index + 1)
+			update_static_data()
+			return TRUE
 
 /obj/machinery/chemical_dispenser/AltClick(mob/user)
 	. = ..()
@@ -222,12 +236,26 @@
 			if(length(cartridges) >= cartridges_max)
 				user.action_feedback(SPAN_WARNING("[src] has no more room for cartridges."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!user.transfer_item_to_loc(I, src))
+			if(!user.attempt_insert_item_for_installation(I, src))
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!insert_cartridge(I))
+				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			user.visible_message(SPAN_NOTICE("[user] inserts [I] into [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(istype(I, /obj/item/reagent_synth))
+			var/obj/item/reagent_synth/synth = I
+			if(synth.reagents_group)
+				for(var/obj/item/reagent_synth/other as anything in synthesizers)
+					if(other.reagents_group == synth.reagents_group)
+						user.action_feedback(SPAN_WARNING("[src] already has a synthesis module of this type."), src)
+						return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!user.attempt_insert_item_for_installation(I, src))
+				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			synthesizers += synth
+			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/reagent_containers))
@@ -324,6 +352,7 @@
 		I.forceMove(drop_location())
 	synthesizers = null
 	cartridges = null
+	inserted.forceMove(drop_location())
 
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE

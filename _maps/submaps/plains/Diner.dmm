@@ -342,7 +342,7 @@
 /area/submap/Diner)
 "be" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_coffee,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bf" = (

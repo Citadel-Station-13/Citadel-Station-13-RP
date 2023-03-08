@@ -11,7 +11,7 @@
 /datum/supply_pack/beer_dispenser
 	name = "Booze dispenser"
 	contains = list(
-			/obj/machinery/chemical_dispenser/bar_alc/unanchored
+			/obj/machinery/chemical_dispenser/catering/bar_alc/unanchored
 		)
 	cost = 20
 	container_type = /obj/structure/largecrate
@@ -21,7 +21,7 @@
 /datum/supply_pack/soda_dispenser
 	name = "Soda dispenser"
 	contains = list(
-			/obj/machinery/chemical_dispenser/bar_soft/unanchored
+			/obj/machinery/chemical_dispenser/catering/bar_soft/unanchored
 		)
 	cost = 20
 	container_type = /obj/structure/largecrate

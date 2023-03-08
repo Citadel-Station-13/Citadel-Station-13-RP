@@ -1,5 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
+import { Button, Flex, LabeledList, ProgressBar, Section, Slider } from "../components";
 import { Window } from "../layouts";
 import { ReagentContentsData } from "./common/Reagents";
 
@@ -28,16 +29,74 @@ interface ChemDispenserData {
   has_beaker: BooleanLike;
   beaker: BeakerData;
   panel_open: BooleanLike;
+  macros: Array<DispenserMacro>;
+  amount: number;
+  amount_max: number;
+}
+
+interface DispenserMacro {
+  name: string;
+  data: Array<Record<string, number>>;
 }
 
 export const ChemDispenser = (props, context) => {
   const { act, data } = useBackend<ChemDispenserData>(context);
+  let built = new Array<Array<ReagentData>>();
+  let counter = 0;
+  let batch = new Array<ReagentData>();
+  data.reagents.sort((a, b) => (b.name.localeCompare(a.name)));
+  data.reagents.forEach((reagent) => {
+    if (++counter > 10) {
+      built.push(batch);
+    }
+    batch.push(reagent);
+  });
+  if (batch.length > 0) {
+    built.push(batch);
+  }
   return (
     <Window
       width={400}
       height={600}>
       <Window.Content>
-        test
+        <Section title="Dispenser">
+          <LabeledList>
+            <LabeledList.Item label="Cell">
+              <ProgressBar minValue={0} maxValue={data.cell_capacity} value={data.cell_charge}>
+                {Math.round(data.cell_charge / data.cell_capacity)}%
+              </ProgressBar>
+            </LabeledList.Item>
+            <LabeledList.Item label="Amount">
+              <Slider>
+                test
+              </Slider>
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+        <Section title="Macros">
+          test
+        </Section>
+        <Section title="Synthesis">
+          <Flex direction="column">
+            {built.map((reagentArray) => (
+              <Flex.Item key={reagentArray}>
+                {reagentArray.map((reagent) => (
+                  <Button
+                    key={reagent.id}
+                    fluid
+                    title={reagent.name}
+                    onClick={} />
+                ))}
+              </Flex.Item>
+            ))}
+          </Flex>
+        </Section>
+        <Section title="Cartridges">
+          test
+        </Section>
+        <Section title="Beaker">
+          test
+        </Section>
       </Window.Content>
     </Window>
   );
