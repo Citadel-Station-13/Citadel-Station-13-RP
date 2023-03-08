@@ -310,6 +310,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100,
 		/obj/item/material/knife/machete/hatchet = 75,
+		/obj/item/surgical/saw_primitive = 60
 	)
 	req_open = 0
 
