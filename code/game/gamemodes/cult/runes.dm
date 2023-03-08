@@ -280,16 +280,14 @@ var/list/sacrificed = list()
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
 					H.sdisabilities &= ~SDISABILITY_NERVOUS
+			// check their limbs
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
+				// fix bones
 				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
-				for(var/datum/wound/W in affected.wounds)
-					if(istype(W, /datum/wound/internal_bleeding))
-						affected.wounds -= W
-						affected.update_damages()
-	return
-
+				// fix IB
+				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 //! SEVENTH RUNE
 /obj/effect/rune/proc/seer()

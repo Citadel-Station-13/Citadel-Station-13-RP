@@ -69,7 +69,7 @@
 				reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
 
-			for(var/datum/wound/W in affecting.wounds)
+			for(var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)//ignore internal wounds and check the remaining
 					continue
 				if(W.bandaged)//already bandaged wounds dont need to be bandaged again

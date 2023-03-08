@@ -170,7 +170,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		for(var/obj/item/organ/external/temp in bad_external_organs)
 			if(!(temp.status & ORGAN_BLEEDING) || (temp.robotic >= ORGAN_ROBOT))
 				continue
-			for(var/datum/wound/W in temp.wounds)
+			for(var/datum/wound/W as anything in temp.wounds)
 				if(W.bleeding())
 					if(W.damage_type == PIERCE) //gunshots and spear stabs bleed more
 						blood_loss_divisor = max(blood_loss_divisor - 5, 1)

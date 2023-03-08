@@ -83,12 +83,14 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
-				for(var/datum/wound/W in O.wounds)
-					if(W.bleeding())
-						if(W.damage <= 20)//Bleed threshhold is 30
-							W.bandaged = 1//act as if bandaged
-						else if(W.damage <= 0)// healed wounds can be removed, not sure if this check is still needed as we dont heal with this.
-							O.wounds -= W
+				for(var/datum/wound/W as anything in O.wounds)
+					if(!W.bleeding())
+						continue
+					if(W.damage <= 20)//Bleed threshhold is 30
+						W.bandaged = 1//act as if bandaged
+					else if(W.damage <= 0)// healed wounds can be removed, not sure if this check is still needed as we dont heal with this.
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/topical/neurolaze
 	name = "Neurolaze"
