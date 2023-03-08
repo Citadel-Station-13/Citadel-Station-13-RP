@@ -6,7 +6,7 @@
 	desc = "You... you're not actually going to wear that, right?"
 	icon_state = "fishskull"
 	icon = 'icons/obj/clothing/hats.dmi'
-	flags_inv = HIDEEARS|BLOCKHAIR
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 /obj/item/clothing/head/crown
 	name = "crown"
@@ -26,8 +26,8 @@
 	name = "shiny hood"
 	desc = "You can be a super-hero in this! Just don't forget your suit!"
 	icon_state = "hood_o"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = FACE|HEAD
+	inv_hide_flags = HIDEFACE|BLOCKHAIR
+	body_cover_flags = FACE|HEAD
 
 /obj/item/clothing/head/shiny_hood/poly
 	name = "polychromic shiny hood"

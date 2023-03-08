@@ -7,10 +7,10 @@
 	desc = "A uniform service jacket, plain and undecorated."
 	icon_state = "blackservice"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/pen,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/analyzer,/obj/item/radio,/obj/item/barrier_tape_roll)
 
 /obj/item/clothing/suit/storage/service/sysguard
@@ -110,7 +110,7 @@
 	name = "dress jacket"
 	desc = "A uniform dress jacket, fancy."
 	icon_state = "greydress"
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/radio,/obj/item/pen)
@@ -160,7 +160,7 @@
 	desc = "A black synthleather jacket. The word 'MARSHAL' is stenciled onto the back in gold lettering."
 	icon_state = "marshal_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 //OriCon Uniform Suits
 

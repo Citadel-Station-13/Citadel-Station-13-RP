@@ -204,7 +204,7 @@
 	if(!covering)
 		return
 
-	if(!(covering.body_parts_covered & (I.body_parts_covered | extra_flags)))
+	if(!(covering.body_cover_flags & (I.body_cover_flags | extra_flags)))
 		return
 
 	return covering

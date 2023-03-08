@@ -152,7 +152,7 @@
 	for(var/obj/item/clothing/clothes in H)
 		if(H.is_holding(clothes))
 			continue
-		if((clothes.body_parts_covered & UPPER_TORSO) && (clothes.body_parts_covered & LOWER_TORSO))
+		if((clothes.body_cover_flags & UPPER_TORSO) && (clothes.body_cover_flags & LOWER_TORSO))
 			covered = 1
 			break
 

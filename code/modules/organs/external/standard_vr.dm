@@ -42,7 +42,7 @@
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_ADD)
 			overlays_to_add.Add(image(facial_s, "pixel_y" = head_offset))
 
-	if(owner.h_style && !(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR)))
+	if(owner.h_style && !(owner.head && (owner.head.inv_hide_flags & BLOCKHEADHAIR)))
 		var/datum/sprite_accessory/hair_style = GLOB.legacy_hair_lookup[owner.h_style]
 		if(hair_style && (!hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in hair_style.species_allowed)))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")

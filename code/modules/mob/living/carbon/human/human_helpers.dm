@@ -35,19 +35,19 @@
 /mob/living/carbon/human/proc/get_coverage()
 	var/list/coverage = list()
 	for(var/obj/item/clothing/C in get_equipped_items())
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			coverage += list(organs_by_name[BP_HEAD])
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			coverage += list(organs_by_name[BP_TORSO])
-		if(C.body_parts_covered & LOWER_TORSO)
+		if(C.body_cover_flags & LOWER_TORSO)
 			coverage += list(organs_by_name[BP_GROIN])
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			coverage += list(organs_by_name[BP_L_LEG], organs_by_name[BP_R_LEG])
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			coverage += list(organs_by_name[BP_R_ARM], organs_by_name[BP_L_ARM])
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			coverage += list(organs_by_name[BP_L_FOOT], organs_by_name[BP_R_FOOT])
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			coverage += list(organs_by_name[BP_L_HAND], organs_by_name[BP_R_HAND])
 	return coverage
 
@@ -126,14 +126,14 @@
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 
 	// Look at their head.
-	if(!head || !(head && (head.flags_inv & HIDEFACE)))
+	if(!head || !(head && (head.inv_hide_flags & HIDEFACE)))
 		// Exactly robotic, not higher as lifelike is higher.
 		if(H && H.robotic == ORGAN_ROBOT)
 			return TRUE
 
 	// Look at their torso.
-	if(!wear_suit || (wear_suit && !(wear_suit.flags_inv & HIDEJUMPSUIT)))
-		if(!w_uniform || (w_uniform && !(w_uniform.body_parts_covered & UPPER_TORSO)))
+	if(!wear_suit || (wear_suit && !(wear_suit.inv_hide_flags & HIDEJUMPSUIT)))
+		if(!w_uniform || (w_uniform && !(w_uniform.body_cover_flags & UPPER_TORSO)))
 			if(T && T.robotic == ORGAN_ROBOT)
 				return TRUE
 
