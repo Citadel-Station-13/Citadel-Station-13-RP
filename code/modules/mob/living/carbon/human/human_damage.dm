@@ -22,7 +22,7 @@
 
 	if(old != health)
 		update_hud_med_all()
-	
+
 // todo: sort file and move to damage_procs
 
 /mob/living/carbon/human/afflict_radiation(amt, run_armor, damage_zone)
@@ -424,7 +424,7 @@ This function restores all organs.
 */
 /mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
 	for(var/obj/item/organ/external/current_organ in organs)
-		current_organ.rejuvenate(ignore_prosthetic_prefs)
+		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
 	var/obj/item/organ/external/E = get_organ(zone)

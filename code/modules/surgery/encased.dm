@@ -61,7 +61,7 @@
 	user.visible_message("<font color='red'>[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!</font>" )
 
-	affected.createwound(CUT, 20)
+	affected.create_wound(CUT, 20)
 	affected.fracture()
 
 ///////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@
 	var/self_msg = "<font color='red'>Your hand slips, cracking [target]'s  [affected.encased]!</font>"
 	user.visible_message(msg, self_msg)
 
-	affected.createwound(BRUISE, 20)
+	affected.create_wound(BRUISE, 20)
 	affected.fracture()
 
 ///////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@
 	var/self_msg = "<font color='red'>Your hand slips, bending [target]'s [affected.encased] the wrong way!</font>"
 	user.visible_message(msg, self_msg)
 
-	affected.createwound(BRUISE, 20)
+	affected.create_wound(BRUISE, 20)
 	affected.fracture()
 
 	/*if (prob(40)) //TODO: ORGAN REMOVAL UPDATE.
@@ -265,8 +265,8 @@
 	user.visible_message("<font color='red'>[user]'s hand slips, searing [target]'s [affected.encased] with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, searing [target]'s [affected.encased] with \the [tool]!</font>" )
 
-	affected.createwound(CUT, 20)
-	affected.createwound(BURN, 15)
+	affected.create_wound(CUT, 20)
+	affected.create_wound(BURN, 15)
 	if(prob(affected.damage))
 		affected.fracture()
 

@@ -44,9 +44,8 @@
 			owner.Weaken(10)
 
 			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)
-			var/datum/wound/W = new /datum/wound/internal_bleeding(20)
+			groin.create_specific_wound(/datum/wound/internal_bleeding, 20)
 			owner.adjustToxLoss(25)
-			groin.wounds += W
 			inflamed = 1
 
 /obj/item/organ/internal/appendix/removed()

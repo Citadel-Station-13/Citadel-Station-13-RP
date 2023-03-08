@@ -88,7 +88,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>" , \
 		"<font color='red'>Your hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(BRUISE, 5)
+	affected.create_wound(BRUISE, 5)
 
 ///////////////////////////////////////////////////////////////
 // Skull Mending Surgery
@@ -127,7 +127,7 @@
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging [target]'s face with \the [tool]!</font>"  , \
 		"<font color='red'>Your hand slips, damaging [target]'s face with \the [tool]!</font>")
 	var/obj/item/organ/external/head/h = affected
-	h.createwound(BRUISE, 10)
+	h.create_wound(BRUISE, 10)
 	h.disfigured = 1
 
 ///////////////////////////////////////////////////////////////
@@ -210,4 +210,4 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>" , \
 		"<font color='red'>Your hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(BRUISE, 5)
+	affected.create_wound(BRUISE, 5)

@@ -109,8 +109,7 @@
 
 		for(var/eo in nif.human.bad_external_organs)
 			var/obj/item/organ/external/EO = eo
-			for(var/w in EO.wounds)
-				var/datum/wound/W = w
+			for(var/datum/wound/W as anything in EO.wounds)
 				if(W.damage <= 5)
 					W.heal_damage(0.1)
 					EO.update_damages()
