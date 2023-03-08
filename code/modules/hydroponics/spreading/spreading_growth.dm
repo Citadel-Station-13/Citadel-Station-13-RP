@@ -63,6 +63,10 @@
 
 	// Handle life.
 	var/turf/simulated/T = get_turf(src)
+	// todo: proper refactor to plants, for now this is a bandaid
+	if(!T)
+		qdel(src)
+		return
 	if(istype(T))
 		health -= seed.handle_environment(T,T.return_air(),null,1)
 	if(health < max_health)
