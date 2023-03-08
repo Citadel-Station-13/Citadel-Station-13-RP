@@ -1,8 +1,8 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
-import { Button, Flex, LabeledList, ProgressBar, Section, Slider } from "../components";
+import { Button, Flex, LabeledList, NoticeBox, ProgressBar, Section, Slider } from "../components";
 import { Window } from "../layouts";
-import { ReagentContentsData } from "./common/Reagents";
+import { ReagentContents, ReagentContentsData } from "./common/Reagents";
 
 interface ReagentData {
   name: string;
@@ -92,10 +92,37 @@ export const ChemDispenser = (props, context) => {
           </Flex>
         </Section>
         <Section title="Cartridges">
-          test
+          {data.cartridges.sort((a, b) => (b.label.localeCompare(a.label))).map((cart) => (
+            <Button
+              title={`${cart.label} (${cart.amount})`}
+              key={cart.label}
+              onClick={} />
+          ))}
         </Section>
         <Section title="Beaker">
-          test
+          {data.has_beaker? (
+            <ReagentContents
+              reagents={data.beaker.data}
+              reagentButtons={(id) => (
+                <>
+                  <Button
+                    title="Isolate"
+                    onClick={} />
+                  {
+                    [1, 2, 3, 5, 10, 20].map((n) => (
+                      <Button
+                        key={n}
+                        title={`-${n}`}
+                        onClick={} />
+                    ))
+                  }
+                </>
+              )} />
+          ) : (
+            <NoticeBox>
+              No beaker inserted.
+            </NoticeBox>
+          )}
         </Section>
       </Window.Content>
     </Window>
