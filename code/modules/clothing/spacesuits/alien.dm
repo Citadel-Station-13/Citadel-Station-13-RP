@@ -45,7 +45,7 @@
 	siemens_coefficient = 0.2
 	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL | ALLOWINTERNALS
-	flags_inv = 0
+	inv_hide_flags = 0
 	species_restricted = list(SPECIES_VOX)
 
 /obj/item/clothing/head/helmet/space/vox/pressure

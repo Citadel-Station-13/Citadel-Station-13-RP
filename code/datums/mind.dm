@@ -621,16 +621,33 @@
 		return
 	return SScharacters.resolve_faction(id)
 
+/datum/mind/proc/original_background_culture()
+	RETURN_TYPE(/datum/lore/character_background/culture)
+	var/id = original_save_data?[CHARACTER_DATA_CULTURE]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_culture(id)
+
 /datum/mind/proc/original_background_datums()
+	if(isnull(original_save_data))
+		return list()
 	. = list(
 		original_background_citizenship(),
 		original_background_faction(),
 		original_background_origin(),
 		original_background_religion(),
+		original_background_culture(),
 	)
 	listclearnulls(.)
 
 /datum/mind/proc/original_background_ids()
-	. = list()
-	for(var/datum/lore/character_background/bg as anything in original_background_datums())
-		. += bg.id
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_save_data[CHARACTER_DATA_CITIZENSHIP],
+		original_save_data[CHARACTER_DATA_ORIGIN],
+		original_save_data[CHARACTER_DATA_FACTION],
+		original_save_data[CHARACTER_DATA_CULTURE],
+		original_save_data[CHARACTER_DATA_RELIGION],
+	)
+	listclearnulls(.)

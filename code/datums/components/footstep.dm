@@ -85,7 +85,7 @@
 			return
 		if(ishuman(LM)) //for proper humans, they're special
 			var/mob/living/carbon/human/H = LM
-			var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET))
+			var/feetCover = (H.wear_suit && (H.wear_suit.body_cover_flags & FEET)) || (H.w_uniform && (H.w_uniform.body_cover_flags & FEET))
 
 			if(H.shoes || feetCover) //are we wearing shoes
 				playsound(T, pick(GLOB.footstep[T.footstep][1]),

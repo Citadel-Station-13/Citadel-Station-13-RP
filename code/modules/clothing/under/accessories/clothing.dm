@@ -53,7 +53,7 @@
 	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -139,12 +139,12 @@
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_open"
 		src.item_state = "[item_state]_open"
-		flags_inv = HIDETIE|HIDEHOLSTER
+		inv_hide_flags = HIDETIE|HIDEHOLSTER
 		to_chat(user, "You flip the cloak over your shoulder.")
 	else
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
-		flags_inv = HIDEHOLSTER
+		inv_hide_flags = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
 	update_worn_icon()	//so our mob-overlays update
 
@@ -171,7 +171,7 @@
 	desc = "An elaborate brown and gold cloak."
 	icon_state = "qmcloak"
 	item_state = "qmcloak"
-	body_parts_covered = null
+	body_cover_flags = null
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce
 	name = "chief engineer's cloak"
@@ -288,7 +288,7 @@
 	icon_state = "hawaii"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -315,7 +315,7 @@
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -367,7 +367,7 @@
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_DECOR
@@ -385,7 +385,7 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -538,7 +538,7 @@
 	name = "Antediluvian bracers"
 	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
 	icon_state = "antediluvian"
-	//body_parts_covered = HANDS|ARMS
+	//body_cover_flags = HANDS|ARMS
 
 /obj/item/clothing/accessory/mekkyaku
 	name = "Mekkyaku turtleneck"

@@ -377,7 +377,7 @@
 	for(var/obj/item/clothing/C in M)
 		if(M.is_holding(C))
 			continue
-		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
+		if((C.body_cover_flags & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
 			to_chat(user, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
 	return ..()

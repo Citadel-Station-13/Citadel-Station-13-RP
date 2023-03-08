@@ -10,29 +10,35 @@
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
 
-//! Core
+	//? Core
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
 
-//! Rendering
+	//? Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! Intents
-	/// How are we intending to move? Walk/run/etc.
+	//? Intents
+	/// How are we intending to move? Walk / run / etc.
 	var/m_intent = MOVE_INTENT_RUN
+	/// How are we intending to act? Help / harm / etc.
+	var/a_intent = INTENT_HELP
 
-//! Perspectives
+	//? Economy
+	/// This mob's economic category
+	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
+
+	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-//! Buckling
+	//? Buckling
 	/// Atom we're buckled to
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-//! Movespeed
+	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
@@ -46,7 +52,7 @@
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
 
-//! Actionspeed
+	//? Actionspeed
 	/// List of action speed modifiers applying to this mob
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
@@ -54,7 +60,7 @@
 	/// The calculated mob action speed slowdown based on the modifiers list
 	var/cached_multiplicative_actions_slowdown
 
-//! Pixel Offsets
+	//? Pixel Offsets
 	/// are we shifted by the user?
 	var/shifted_pixels = FALSE
 	/// shifted pixel x
@@ -62,15 +68,16 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 
-//! Size
+	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
 	/// our size multiplier
 	var/size_multiplier = 1
 
-//! Misc
+	//? Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
 
+	//? unsorted / legacy
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/stat = CONSCIOUS
@@ -204,7 +211,6 @@
 	var/weakened = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
-	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
 
