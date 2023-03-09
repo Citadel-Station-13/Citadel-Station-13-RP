@@ -498,7 +498,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	desc = "An advanced biomechanical prosthetic with pegs for feet."
 	icon = 'icons/mob/cyberlimbs/replikant/replikant.dmi'
 	lifelike = 1
-	skin_tone = 1
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
