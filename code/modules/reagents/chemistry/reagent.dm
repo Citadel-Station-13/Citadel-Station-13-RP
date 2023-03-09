@@ -9,8 +9,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent
+	abstract_type = /datum/reagent
+
+	//? core
+	/// id - must be unique and in CamelCase.
+	var/id
+	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_flags = NONE
+
+	//? legacy / unsorted
 	var/name = "Reagent"
-	var/id = "reagent"
 	var/description = "A non-descript chemical."
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable

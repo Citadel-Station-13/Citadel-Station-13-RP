@@ -46,7 +46,9 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 /datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reagents()
 	var/paths = typesof(/datum/reagent) - /datum/reagent
 	reagent_lookup = list()
-	for(var/path in paths)
+	for(var/datum/reagent/path as anything in paths)
+		if(initial(path.abstract_type) == path)
+			continue
 		var/datum/reagent/D = new path()
 		if(!D.name)
 			continue

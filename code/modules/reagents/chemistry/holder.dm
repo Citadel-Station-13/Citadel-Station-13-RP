@@ -1,8 +1,15 @@
 /datum/reagents
+	//? core
+	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_holder_flags = NONE
+
+	///? legacy / unsorted
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
+
 	var/atom/my_atom = null
+	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
 	var/reagents_holder_flags
 
 /datum/reagents/New(max = 100, atom/A = null, new_flags = NONE)

@@ -38,7 +38,7 @@
 	return "<pre>[jointext(built, "<br><br>")]</pre>"
 
 /proc/browse_wiki_markup_for_reagents(mob/user = usr)
-	browse("<html><head><title>Chemistry Wiki Generation</title></head><body>[generate_wiki_markup_for_reagents()]</body></html>", "window=chemwiki;display=1;size=600x600;can_close=1;can_resize=1;can_minimize=0;titlebar=1")
+	user << browse("<html><head><title>Chemistry Wiki Generation</title></head><body>[generate_wiki_markup_for_reagents()]</body></html>", "window=chemwiki;display=1;size=600x600;can_close=1;can_resize=1;can_minimize=0;titlebar=1")
 
 /proc/cmp_reagents_wiki(datum/reagent/A, datum/reagent/B)
 	return (A.wiki_sort == B.wiki_sort)? (sorttext(B.name, A.name)) : (B.wiki_sort - A.wiki_sort)
