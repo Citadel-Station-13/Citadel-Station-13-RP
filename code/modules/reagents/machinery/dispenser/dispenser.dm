@@ -94,7 +94,7 @@
 	kj_per_unit = max(0, initial(kj_per_unit) - 0.25 * (total_manip_rating / (total_manips || 1)))
 	var/obj/item/cell/comp_cell = locate() in component_parts
 	if(comp_cell)
-		if(cell)
+		if(cell && comp_cell != cell)
 			qdel(cell)
 		cell = comp_cell
 
