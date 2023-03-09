@@ -7,7 +7,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_GLASS = 2000)
 	chemicals = list("sacid" = 20)
-	time = 5
+	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/design/circuit/AssembleDesignName()
 	..()

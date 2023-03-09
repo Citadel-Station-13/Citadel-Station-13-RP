@@ -91,7 +91,7 @@
 
 //////////////////// Prosthetics ////////////////////
 /datum/design/science/prosfab/pros/torso
-	time = 35
+	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 30000, MAT_GLASS = 7500)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 	var/gender = MALE
@@ -114,7 +114,7 @@
 	name = "Prosthetic Head"
 	identifier = "pros_head"
 	build_path = /obj/item/organ/external/head
-	time = 30
+	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 18750, MAT_GLASS = 3750)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 
@@ -122,56 +122,56 @@
 	name = "Prosthetic Left Arm"
 	identifier = "pros_l_arm"
 	build_path = /obj/item/organ/external/arm
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 10125)
 
 /datum/design/science/prosfab/pros/l_hand
 	name = "Prosthetic Left Hand"
 	identifier = "pros_l_hand"
 	build_path = /obj/item/organ/external/hand
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3375)
 
 /datum/design/science/prosfab/pros/r_arm
 	name = "Prosthetic Right Arm"
 	identifier = "pros_r_arm"
 	build_path = /obj/item/organ/external/arm/right
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 10125)
 
 /datum/design/science/prosfab/pros/r_hand
 	name = "Prosthetic Right Hand"
 	identifier = "pros_r_hand"
 	build_path = /obj/item/organ/external/hand/right
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3375)
 
 /datum/design/science/prosfab/pros/l_leg
 	name = "Prosthetic Left Leg"
 	identifier = "pros_l_leg"
 	build_path = /obj/item/organ/external/leg
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 8437)
 
 /datum/design/science/prosfab/pros/l_foot
 	name = "Prosthetic Left Foot"
 	identifier = "pros_l_foot"
 	build_path = /obj/item/organ/external/foot
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 2813)
 
 /datum/design/science/prosfab/pros/r_leg
 	name = "Prosthetic Right Leg"
 	identifier = "pros_r_leg"
 	build_path = /obj/item/organ/external/leg/right
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 8437)
 
 /datum/design/science/prosfab/pros/r_foot
 	name = "Prosthetic Right Foot"
 	identifier = "pros_r_foot"
 	build_path = /obj/item/organ/external/foot/right
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 2813)
 
 /datum/design/science/prosfab/pros/internal
@@ -181,7 +181,7 @@
 	name = "Prosthetic Powercell"
 	identifier = "pros_cell"
 	build_path = /obj/item/organ/internal/cell
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_GLASS = 3000)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -189,7 +189,7 @@
 	name = "Prosthetic Eyes"
 	identifier = "pros_eyes"
 	build_path = /obj/item/organ/internal/eyes/robot
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5625, MAT_GLASS = 5625)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -197,35 +197,35 @@
 	name = "Hydraulic Hub"
 	identifier = "pros_hydraulic"
 	build_path = /obj/item/organ/internal/heart/machine
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/reagcycler
 	name = "Reagent Cycler"
 	identifier = "pros_reagcycler"
 	build_path = /obj/item/organ/internal/stomach/machine
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/heatsink
 	name = "Heatsink"
 	identifier = "pros_heatsink"
 	build_path = /obj/item/organ/internal/robotic/heatsink
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/diagnostic
 	name = "Diagnostic Controller"
 	identifier = "pros_diagnostic"
 	build_path = /obj/item/organ/internal/robotic/diagnostic
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/heart
 	name = "Prosthetic Heart"
 	identifier = "pros_heart"
 	build_path = /obj/item/organ/internal/heart
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5625, MAT_GLASS = 1000)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -233,7 +233,7 @@
 	name = "Prosthetic Lungs"
 	identifier = "pros_lung"
 	build_path = /obj/item/organ/internal/lungs
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5625, MAT_GLASS = 1000)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -241,7 +241,7 @@
 	name = "Prosthetic Liver"
 	identifier = "pros_liver"
 	build_path = /obj/item/organ/internal/liver
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5625, MAT_GLASS = 1000)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -249,7 +249,7 @@
 	name = "Prosthetic Kidneys"
 	identifier = "pros_kidney"
 	build_path = /obj/item/organ/internal/kidneys
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5625, MAT_GLASS = 1000)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -257,7 +257,7 @@
 	name = "Prosthetic Spleen"
 	identifier = "pros_spleen"
 	build_path = /obj/item/organ/internal/spleen
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 750)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
@@ -265,21 +265,21 @@
 	name = "Prosthetic Larynx"
 	identifier = "pros_larynx"
 	build_path = /obj/item/organ/internal/voicebox
-	time = 15
+	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 750, MAT_PLASTIC = 500)
 
 /datum/design/science/prosfab/pros/internal/backup_battery
 	name = "Synthetic Back-Up Battery"
 	identifier = "synth_backup_battery"
 	build_path = /obj/item/fbp_backup_cell
-	time = 10
+	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1500)
 //////////////// Cybernetic Augments //////////////////
 
 /datum/design/science/prosfab/augment
 	category = list("Augments")
 	build_type = PROSFAB
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3750, MAT_GLASS = 1750)
 
 /datum/design/science/prosfab/augment/hand
@@ -347,56 +347,56 @@
 //////////////////// Cyborg Parts ////////////////////
 /datum/design/science/prosfab/cyborg
 	category = list("Cyborg Parts")
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3750)
 
 /datum/design/science/prosfab/cyborg/exoskeleton
 	name = "Robot Exoskeleton"
 	identifier = "robot_exoskeleton"
 	build_path = /obj/item/robot_parts/robot_suit
-	time = 50
+	work = (50 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 37500)
 
 /datum/design/science/prosfab/cyborg/torso
 	name = "Robot Torso"
 	identifier = "robot_torso"
 	build_path = /obj/item/robot_parts/chest
-	time = 35
+	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 30000)
 
 /datum/design/science/prosfab/cyborg/head
 	name = "Robot Head"
 	identifier = "robot_head"
 	build_path = /obj/item/robot_parts/head
-	time = 35
+	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 18750)
 
 /datum/design/science/prosfab/cyborg/l_arm
 	name = "Robot Left Arm"
 	identifier = "robot_l_arm"
 	build_path = /obj/item/robot_parts/l_arm
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 13500)
 
 /datum/design/science/prosfab/cyborg/r_arm
 	name = "Robot Right Arm"
 	identifier = "robot_r_arm"
 	build_path = /obj/item/robot_parts/r_arm
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 13500)
 
 /datum/design/science/prosfab/cyborg/l_leg
 	name = "Robot Left Leg"
 	identifier = "robot_l_leg"
 	build_path = /obj/item/robot_parts/l_leg
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 11250)
 
 /datum/design/science/prosfab/cyborg/r_leg
 	name = "Robot Right Leg"
 	identifier = "robot_r_leg"
 	build_path = /obj/item/robot_parts/r_leg
-	time = 20
+	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 11250)
 
 
@@ -404,7 +404,7 @@
 /datum/design/science/prosfab/cyborg/component
 	category = list("Cyborg Internals")
 	build_type = PROSFAB
-	time = 12
+	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
 
 /datum/design/science/prosfab/cyborg/component/binary_communication_device
@@ -451,7 +451,7 @@
 /datum/design/science/prosfab/robot_upgrade
 	category = list("Cyborg Modules")
 	build_type = PROSFAB
-	time = 12
+	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
 
 /datum/design/science/prosfab/robot_upgrade/rename

@@ -4,7 +4,7 @@
 	req_tech = list(TECH_DATA = 3)
 	materials = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
 	chemicals = list("pacid" = 10)
-	time = 5
+	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/design/circuit/disk/AssembleDesignName()
 	..()
