@@ -131,6 +131,9 @@
 
 	wikilink = "N/A"
 
+/datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot_meta/abstract/put_in_backpack)
+
 /datum/species/adherent/New()
 	/*equip_adjust = list(
 		"[SLOT_ID_LEFT_HAND]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
