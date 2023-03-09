@@ -290,8 +290,8 @@
 			if(!length(raw) || !name)
 				return TRUE
 			var/list/built = list()
-			for(var/id in raw)
-				built[id] = max(0, round(text2num(raw[id])))
+			for(var/list/L as anything in raw)
+				built[L[1]] = max(0, round(text2num(L[2])))
 			raw.len = min(raw.len, MAX_MACRO_STEPS)
 			LAZYINITLIST(macros)
 			macros[++macros.len] = list(
