@@ -1,7 +1,11 @@
-/obj/item/organ/internal/die()
-	..()
-	if((status & ORGAN_DEAD) && dead_icon)
-		icon_state = dead_icon
+/****************************************************
+				INTERNAL ORGANS DEFINES
+****************************************************/
+/obj/item/organ/internal
+	/// Icon to use when the organ has died.
+	var/dead_icon
+
+// Yep... That's it. - @Zandario
 
 /obj/item/organ/internal/Destroy()
 	if(owner)
@@ -13,6 +17,16 @@
 		var/obj/item/organ/external/E = owner.organs_by_name[parent_organ]
 		if(istype(E)) E.internal_organs -= src
 	return ..()
+
+/obj/item/organ/internal/on_die()
+	. = ..()
+	if(dead_icon)
+		icon_state = dead_icon
+
+/obj/item/organ/internal/on_revive()
+	. = ..()
+	if(dead_icon)
+		icon_state = initial(icon_state)
 
 /obj/item/organ/internal/remove_rejuv()
 	if(owner)

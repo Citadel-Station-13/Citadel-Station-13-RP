@@ -10,7 +10,7 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
-//	flags_inv = HIDEEARS|BLOCKHAIR
+//	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)

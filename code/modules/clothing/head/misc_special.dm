@@ -20,8 +20,8 @@
 	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-	body_parts_covered = HEAD|FACE|EYES
+	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+	body_cover_flags = HEAD|FACE|EYES
 	action_button_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
@@ -46,16 +46,16 @@
 	if(usr.canmove && !usr.stat && !usr.restrained())
 		if(src.up)
 			src.up = !src.up
-			body_parts_covered |= (EYES|FACE)
-			flags_inv |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+			body_cover_flags |= (EYES|FACE)
+			inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = base_state
 			flash_protection = FLASH_PROTECTION_MAJOR
 			tint = initial(tint)
 			to_chat(usr, "You flip the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
-			body_parts_covered &= ~(EYES|FACE)
-			flags_inv &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+			body_cover_flags &= ~(EYES|FACE)
+			inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[base_state]up"
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
@@ -111,7 +111,7 @@
 	desc = "It's tasty looking!"
 	icon_state = "cake0"
 	var/onfire = 0
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/head/cakehat/process(delta_time)
 	if(!onfire)
@@ -148,7 +148,7 @@
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
-	flags_inv = HIDEEARS
+	inv_hide_flags = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
@@ -166,8 +166,8 @@
 	name = "carved pumpkin"
 	desc = "A jack o' lantern! Believed to ward off evil spirits."
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
 	brightness_on = 2
 	light_overlay = "helmet_light"
 	w_class = ITEMSIZE_NORMAL
@@ -181,7 +181,7 @@
 	name = "kitty ears"
 	desc = "A pair of kitty ears. Meow!"
 	icon_state = "kitty"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	siemens_coefficient = 1.5
 	item_icons = list()
 
@@ -190,22 +190,22 @@
 	desc = "You can hear the distant sounds of rhythmic electronica."
 	icon_state = "richard"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chickenhead", SLOT_ID_LEFT_HAND = "chickenhead")
-	body_parts_covered = HEAD|FACE
-	flags_inv = BLOCKHAIR
+	body_cover_flags = HEAD|FACE
+	inv_hide_flags = BLOCKHAIR
 
 /obj/item/clothing/head/santa
 	name = "santa hat"
 	desc = "It's a festive christmas hat, in red!"
 	icon_state = "santahatnorm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahat", SLOT_ID_LEFT_HAND = "santahat")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/santa/green
 	name = "green santa hat"
 	desc = "It's a festive christmas hat, in green!"
 	icon_state = "santahatgreen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahatgreen", SLOT_ID_LEFT_HAND = "santahatgreen")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /*
  * Xenoarch/Surface Loot Hats
@@ -294,6 +294,6 @@
 	description_info = "It looks like you can wear it in your head slot."
 	icon_state = "cone"
 	item_state = "cone"
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	attack_verb = list("warned", "cautioned", "smashed")
 	armor = list("melee" = 5)

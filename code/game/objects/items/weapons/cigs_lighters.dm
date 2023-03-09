@@ -77,7 +77,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable
 	name = "smokable item"
 	desc = "You're not sure what this is. You should probably ahelp it."
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/lit = 0
 	var/icon_on
 	var/type_butt = null

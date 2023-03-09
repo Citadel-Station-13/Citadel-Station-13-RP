@@ -72,8 +72,9 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
 /obj/effect/plant/Destroy()
-	if(SSplants)
-		SSplants.remove_plant(src)
+	plant = null
+	parent = null
+	SSplants.remove_plant(src)
 	for(var/obj/effect/plant/neighbor in range(1,src))
 		SSplants.add_plant(neighbor)
 	return ..()

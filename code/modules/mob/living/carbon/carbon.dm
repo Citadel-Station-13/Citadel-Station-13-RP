@@ -318,13 +318,13 @@
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
-	// 	if(head.flags_inv & HIDEMASK)
+	// 	if(head.inv_hide_flags & HIDEMASK)
 	// 		LAZYOR(., SLOT_MASK)
-	// 	if(head.flags_inv & HIDEEYES)
+	// 	if(head.inv_hide_flags & HIDEEYES)
 	// 		LAZYOR(., SLOT_EYES)
-	// 	if(head.flags_inv & HIDEEARS)
+	// 	if(head.inv_hide_flags & HIDEEARS)
 	// 		LAZYOR(., SLOT_EARS)
 
 	if(wear_mask)
-		if(wear_mask.flags_inv & HIDEEYES)
+		if(wear_mask.inv_hide_flags & HIDEEYES)
 			LAZYOR(., SLOT_EYES)

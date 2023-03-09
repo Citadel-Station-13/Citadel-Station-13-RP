@@ -10,6 +10,7 @@
 	icon_state = "mirror_implant_f"
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
+	item_flags = ITEM_NOBLUDGEON
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
 
@@ -42,8 +43,9 @@
 		human.mirror = src
 
 /obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+	if (!istype(target))
+		return
 	target.active_mr = stored_mind
-	. = ..()
 
 /obj/item/implant/mirror/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mirrorscanner))
@@ -101,10 +103,11 @@
 	throw_range = 10
 	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	item_flags = ITEM_NOBLUDGEON
 
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
-	desc = "A tool for the installation and removal of Mirrors"
+	desc = "A tool for the installation and removal of Mirrors. The tool has a set of barbs for removing Mirrors from a body, and a slot for depositing it directly into a resleeving console."
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirrortool"
 	item_state = "healthanalyzer"
@@ -115,13 +118,14 @@
 	throw_range = 10
 	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	item_flags = ITEM_NOBLUDGEON
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/mirrortool/afterattack(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return
-	if(target_zone == BP_TORSO && imp == null)
+	if(user.zone_sel.selecting == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
@@ -137,7 +141,7 @@
 		else
 			to_chat(usr, "This person has no mirror installed.")
 
-	else if (target_zone == BP_TORSO && imp != null)
+	else if (user.zone_sel.selecting == BP_TORSO && imp != null)
 		if (imp)
 			if(!H.client)
 				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
@@ -170,9 +174,29 @@
 		imp = null
 		update_icon()
 
+/obj/item/mirrortool/attack_hand(mob/user as mob)
+	if(user.get_inactive_held_item() == src)
+		user.put_in_hands_or_drop(imp)
+		imp = null
+		update_icon()
+	. = ..()
+
 /obj/item/mirrortool/update_icon() //uwu
 	..()
 	if(imp == null)
 		icon_state = "mirrortool"
 	else
 		icon_state = "mirrortool_loaded"
+
+/obj/item/mirrortool/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/implant/mirror))
+		if(imp)
+			to_chat(usr, "This mirror tool already contains a mirror.")
+			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
+		imp = I
+		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
+	update_icon()
+	update_held_icon()
+	return

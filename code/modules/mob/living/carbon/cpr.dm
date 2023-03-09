@@ -27,7 +27,7 @@
 		SLOT_ID_HEAD,
 		SLOT_ID_MASK
 	))
-		if(!(in_the_way.body_parts_covered & FACE))
+		if(!(in_the_way.body_cover_flags & FACE))
 			continue
 		to_chat(user, SPAN_WARNING("[src]'s [in_the_way] is in the way!"))
 		return
@@ -35,7 +35,7 @@
 		SLOT_ID_HEAD,
 		SLOT_ID_MASK
 	))
-		if(!(in_the_way.body_parts_covered & FACE))
+		if(!(in_the_way.body_cover_flags & FACE))
 			continue
 		to_chat(user, SPAN_WARNING("Your [in_the_way] is in the way!"))
 		return

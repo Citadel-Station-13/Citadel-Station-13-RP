@@ -1,7 +1,155 @@
+/**
+ * Creates a wound on this organ.
+ *
+ * todo: better documentation
+ */
+/obj/item/organ/external/proc/create_wound(var/type = CUT, var/damage)
+	if(damage == 0)
+		return
 
-/****************************************************
-					WOUNDS
-****************************************************/
+	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
+	//Possibly trigger an internal wound, too.
+	var/local_damage = brute_dam + burn_dam + damage
+	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
+		create_specific_wound(/datum/wound/internal_bleeding, min(damage - 15, 15))
+		owner.custom_pain("You feel something rip in your [name]!", 50)
+
+//Burn damage can cause fluid loss due to blistering and cook-off
+
+	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
+		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
+		owner.remove_blood(fluid_loss)
+
+	// first check whether we can widen an existing wound
+	if(length(wounds) > 0 && prob(max(50+(wound_tally-1)*10,90)))
+		if((type == CUT || type == BRUISE) && damage >= 5)
+			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
+			var/list/compatible_wounds = list()
+			for (var/datum/wound/W as anything in wounds)
+				if (W.can_worsen(type, damage))
+					compatible_wounds += W
+
+			if(compatible_wounds.len)
+				var/datum/wound/W = pick(compatible_wounds)
+				W.open_wound(damage)
+				if(prob(25))
+					if(robotic >= ORGAN_ROBOT)
+						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
+						"<span class='danger'>The damage to your [name] worsens.</span>",\
+						"<span class='danger'>You hear the screech of abused metal.</span>")
+					else
+						owner.visible_message("<span class='danger'>The wound on [owner.name]'s [name] widens with a nasty ripping noise.</span>",\
+						"<span class='danger'>The wound on your [name] widens with a nasty ripping noise.</span>",\
+						"<span class='danger'>You hear a nasty ripping noise, as if flesh is being torn apart.</span>")
+				return
+
+	//Creating wound
+	var/wound_type = get_wound_type(type, damage)
+
+	if(wound_type)
+		var/datum/wound/W = new wound_type(damage)
+
+		//Check whether we can add the wound to an existing wound
+		for(var/datum/wound/other as anything in wounds)
+			if(other.can_merge(W))
+				other.merge_wound(W)
+				W = null // to signify that the wound was added
+				break
+		if(W)
+			LAZYADD(wounds, W)
+
+/**
+ * Creates a specific kind of wound on this organ.
+ *
+ * This only creates the wound, it does not do damage side effects,
+ * like vaporizing blood with burns, etc
+ *
+ * Such side effects should not be in the procs for making wounds!
+ *
+ * If you need to modify variables other than "damage", grab the returned wound.
+ *
+ * @params
+ * * path - typepath of /datum/wound to create.
+ * * damage - amount of damage it should have.
+ * * updating - update damages?
+ *
+ * @return the /datum/wound created, *or* the /datum/wound merged, *or* null if it was rejected.
+ */
+/obj/item/organ/external/proc/create_specific_wound(path, damage, updating = TRUE)
+	ASSERT(ispath(path, /datum/wound))
+
+	var/datum/wound/creating = new path(damage)
+	var/datum/wound/merged
+
+	for(var/datum/wound/other as anything in wounds)
+		if(other.can_merge(creating))
+			other.merge_wound(creating)
+			merged = other
+			break
+
+	if(isnull(merged))
+		// didn't merge, add
+		LAZYADD(wounds, creating)
+		. = creating
+	else
+		// merged, return merged
+		// we don't manually qdel creating - hopefully no one actually does something
+		// deranged down the line like making wounds reference externally!
+		. = merged
+
+	if(updating)
+		update_damages()
+
+/**
+ * Immediately cures a specific typepath of wound, or a specific instance of wound
+ *
+ * @params
+ * * path - path of wound to cure, all subtypes count!
+ * * all - cure all instances, or just one?
+ * * updating - update damages?
+ *
+ * @return TRUE / FALSE based on if anything was removed.
+ */
+/obj/item/organ/external/proc/cure_specific_wound(datum/wound/path_or_instance, all = FALSE, updating = TRUE)
+	. = FALSE
+	// todo: remove the assert / is in check, free performance, only here to prevent accidental misuse for now.
+	ASSERT(ispath(path_or_instance, /datum/wound))
+	for(var/datum/wound/W in wounds)
+		if(istype(W, path_or_instance))
+			wounds -= W
+			. = TRUE
+			if(all)
+				break
+
+	if(!.)
+		return
+
+	if(updating)
+		update_damages()
+
+/**
+ * Immediately cures a wound instance.
+ *
+ * Use this proc from within loops over the wounds list.
+ *
+ * Warning: We do not check if the wound exists.s
+ *
+ * @params
+ * * wound - the wound to cure
+ * * updating - update damages?
+ */
+/obj/item/organ/external/proc/cure_exact_wound(datum/wound/wound, updating = TRUE)
+	wounds -= wound
+
+	if(updating)
+		update_damages()
+
+/**
+ * Wound datums
+ *
+ * Does as its name implies - tracks a wound, or a group of similar wounds,
+ * on an /obj/item/organ/external.
+ */
 /datum/wound
 	// number representing the current stage
 	var/current_stage = 0
@@ -287,137 +435,3 @@
 				if(0 to 15)
 					return /datum/wound/burn/moderate
 	return null //no wound
-
-/** CUTS **/
-/datum/wound/cut
-	bleed_threshold = 5
-	damage_type = CUT
-
-/datum/wound/cut/small
-	// link wound descriptions to amounts of damage
-	// Minor cuts have max_bleeding_stage set to the stage that bears the wound type's name.
-	// The major cut types have the max_bleeding_stage set to the clot stage (which is accordingly given the "blood soaked" descriptor).
-	max_bleeding_stage = 3
-	stages = list("ugly ripped cut" = 20, "ripped cut" = 10, "cut" = 5, "healing cut" = 2, "small scab" = 0)
-
-/datum/wound/cut/deep
-	max_bleeding_stage = 3
-	stages = list("ugly deep ripped cut" = 25, "deep ripped cut" = 20, "deep cut" = 15, "clotted cut" = 8, "scab" = 2, "fresh skin" = 0)
-
-/datum/wound/cut/flesh
-	max_bleeding_stage = 4
-	stages = list("ugly ripped flesh wound" = 35, "ugly flesh wound" = 30, "flesh wound" = 25, "blood soaked clot" = 15, "large scab" = 5, "fresh skin" = 0)
-
-/datum/wound/cut/gaping
-	max_bleeding_stage = 3
-	stages = list("gaping wound" = 50, "large blood soaked clot" = 25, "blood soaked clot" = 15, "small angry scar" = 5, "small straight scar" = 0)
-
-/datum/wound/cut/gaping_big
-	max_bleeding_stage = 3
-	stages = list("big gaping wound" = 60, "healing gaping wound" = 40, "large blood soaked clot" = 25, "large angry scar" = 10, "large straight scar" = 0)
-
-/datum/wound/cut/massive
-	max_bleeding_stage = 3
-	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive blood soaked clot" = 25, "massive angry scar" = 10,  "massive jagged scar" = 0)
-
-/** PUNCTURES **/
-/datum/wound/puncture
-	bleed_threshold = 5
-	damage_type = PIERCE
-
-/datum/wound/puncture/can_worsen(damage_type, damage)
-	return 0 //puncture wounds cannot be enlargened
-
-/datum/wound/puncture/small
-	max_bleeding_stage = 2
-	stages = list("puncture" = 5, "healing puncture" = 2, "small scab" = 0)
-	damage_type = PIERCE
-
-/datum/wound/puncture/flesh
-	max_bleeding_stage = 2
-	stages = list("puncture wound" = 15, "blood soaked clot" = 5, "large scab" = 2, "small round scar" = 0)
-	damage_type = PIERCE
-
-/datum/wound/puncture/gaping
-	max_bleeding_stage = 3
-	stages = list("gaping hole" = 30, "large blood soaked clot" = 15, "blood soaked clot" = 10, "small angry scar" = 5, "small round scar" = 0)
-	damage_type = PIERCE
-
-/datum/wound/puncture/gaping_big
-	max_bleeding_stage = 3
-	stages = list("big gaping hole" = 50, "healing gaping hole" = 20, "large blood soaked clot" = 15, "large angry scar" = 10, "large round scar" = 0)
-	damage_type = PIERCE
-
-/datum/wound/puncture/massive
-	max_bleeding_stage = 3
-	stages = list("massive wound" = 60, "massive healing wound" = 30, "massive blood soaked clot" = 25, "massive angry scar" = 10,  "massive jagged scar" = 0)
-	damage_type = PIERCE
-
-/** BRUISES **/
-/datum/wound/bruise
-	stages = list("monumental bruise" = 80, "huge bruise" = 50, "large bruise" = 30,
-				  "moderate bruise" = 20, "small bruise" = 10, "tiny bruise" = 5)
-	bleed_threshold = 20
-	max_bleeding_stage = 2 //only huge bruise and above can bleed.
-	damage_type = BRUISE
-
-/** BURNS **/
-/datum/wound/burn
-	damage_type = BURN
-	max_bleeding_stage = 0
-
-/datum/wound/burn/bleeding()
-	return 0
-
-/datum/wound/burn/moderate
-	stages = list("ripped burn" = 10, "moderate burn" = 5, "healing moderate burn" = 2, "fresh skin" = 0)
-
-/datum/wound/burn/large
-	stages = list("ripped large burn" = 20, "large burn" = 15, "healing large burn" = 5, "fresh skin" = 0)
-
-/datum/wound/burn/severe
-	stages = list("ripped severe burn" = 35, "severe burn" = 30, "healing severe burn" = 10, "burn scar" = 0)
-
-/datum/wound/burn/deep
-	stages = list("ripped deep burn" = 45, "deep burn" = 40, "healing deep burn" = 15,  "large burn scar" = 0)
-
-/datum/wound/burn/carbonised
-	stages = list("carbonised area" = 50, "healing carbonised area" = 20, "massive burn scar" = 0)
-
-/** INTERNAL BLEEDING **/
-/datum/wound/internal_bleeding
-	internal = TRUE
-	stages = list("severed artery" = 30, "cut artery" = 20, "damaged artery" = 10, "bruised artery" = 5)
-	autoheal_cutoff = 5
-	max_bleeding_stage = 4	//all stages bleed. It's called internal bleeding after all.
-
-/** EXTERNAL ORGAN LOSS **/
-/datum/wound/lost_limb
-
-/datum/wound/lost_limb/New(var/obj/item/organ/external/lost_limb, var/losstype, var/clean)
-	var/damage_amt = lost_limb.max_damage
-	if(clean) damage_amt /= 2
-
-	switch(losstype)
-		if(DROPLIMB_EDGE, DROPLIMB_BLUNT)
-			damage_type = CUT
-			max_bleeding_stage = 3 //clotted stump and above can bleed.
-			stages = list(
-				"ripped stump" = damage_amt*1.3,
-				"bloody stump" = damage_amt,
-				"clotted stump" = damage_amt*0.5,
-				"scarred stump" = 0
-				)
-		if(DROPLIMB_BURN)
-			damage_type = BURN
-			stages = list(
-				"ripped charred stump" = damage_amt*1.3,
-				"charred stump" = damage_amt,
-				"scarred stump" = damage_amt*0.5,
-				"scarred stump" = 0
-				)
-
-	..(damage_amt)
-
-/datum/wound/lost_limb/can_merge(var/datum/wound/other)
-	return FALSE //cannot be merged
