@@ -170,7 +170,7 @@
 
 	return data
 
-/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -201,7 +201,7 @@
 			loaded_disk = null
 			return TRUE
 
-/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -299,7 +299,7 @@
 
 	return data
 
-/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

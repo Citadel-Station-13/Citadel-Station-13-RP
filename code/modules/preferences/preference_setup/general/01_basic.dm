@@ -146,16 +146,22 @@
 
 	else if(href_list["metadata"])
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see in terms of roleplay preferences (including any ERP consent / preference information). This information is considered OOC, unlike 'Flavor Text'.", "OOC Notes" , html_decode(pref.metadata)) as message, extra = 0)
-		if(new_metadata && CanUseTopic(user))
+		if(!isnull(new_metadata) && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return PREFERENCES_REFRESH
 
 	return ..()
 
 /datum/category_item/player_setup_item/general/basic/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
-	. = ..()
-	if(!length(prefs.metadata))
-		warnings += "Missing OOC Notes - See Character Setup for information."
+	. = TRUE
+	if(length(prefs.metadata) < 10)
+		var/enforcing = CONFIG_GET(flag/enforce_ooc_notes)
+		var/error = "Missing or insufficient OOC Notes - See Character Setup for information."
+		if(enforcing)
+			errors += error
+			. = FALSE
+		else
+			warnings += error
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
 	var/datum/species/S = pref.real_species_datum()

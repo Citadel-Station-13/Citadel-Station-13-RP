@@ -55,7 +55,9 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		return
 
 	if(!mob)
 		return
@@ -70,9 +72,7 @@
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
-	// if(is_banned_from(ckey, "OOC"))
-	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
-	// 	return
+
 	if(QDELETED(src))
 		return
 
@@ -147,6 +147,10 @@
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 
 	msg = sanitize(msg)

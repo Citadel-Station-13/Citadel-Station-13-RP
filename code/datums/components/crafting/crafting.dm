@@ -326,7 +326,7 @@
 	if(user == parent)
 		INVOKE_ASYNC(src, .proc/ui_interact, user)
 
-/datum/component/personal_crafting/ui_state(mob/user)
+/datum/component/personal_crafting/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.not_incapacitated_turf_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom

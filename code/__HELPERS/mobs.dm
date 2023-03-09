@@ -170,6 +170,7 @@
 	return humans
 
 /proc/cached_character_icon(mob/desired)
+	desired.compile_overlays()
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

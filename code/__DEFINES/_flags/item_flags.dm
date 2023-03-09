@@ -82,7 +82,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(EQUIP_ALLOW_SINGLE_LIMB),
 ))
 
-//!# bitflags for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
+//!# bitflags for the /obj/item/var/inv_hide_flags variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
 #define HIDEGLOVES      	(1<<0)
 #define HIDESUITSTORAGE 	(1<<1)
@@ -105,7 +105,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 /// Hides the user's hair, facial and otherwise.
 #define BLOCKHAIR			(1<<12)
 
-DEFINE_BITFIELD(flags_inv, list(
+DEFINE_BITFIELD(inv_hide_flags, list(
 	BITFIELD(HIDEGLOVES),
 	BITFIELD(HIDESUITSTORAGE),
 	BITFIELD(HIDEJUMPSUIT),
@@ -121,7 +121,7 @@ DEFINE_BITFIELD(flags_inv, list(
 	BITFIELD(BLOCKHAIR),
 ))
 
-//!# bitflags for /obj/item/var/body_parts_covered
+//!# bitflags for /obj/item/var/body_cover_flags
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
 #define EYES        (1<<2)
@@ -141,7 +141,7 @@ DEFINE_BITFIELD(flags_inv, list(
 #define HANDS       (HAND_LEFT | HAND_RIGHT)
 #define FULL_BODY   (ALL)
 
-DEFINE_BITFIELD(body_parts_covered, list(
+DEFINE_BITFIELD(body_cover_flags, list(
 	BITFIELD(HEAD),
 	BITFIELD(FACE),
 	BITFIELD(EYES),
@@ -157,24 +157,18 @@ DEFINE_BITFIELD(body_parts_covered, list(
 	BITFIELD(HAND_RIGHT),
 ))
 
-// Flags for the organ_flags var on /obj/item/organ
-/*
-/// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
-#define ORGAN_SYNTHETIC			(1<<0)
-/// Frozen organs, don't deteriorate
-#define ORGAN_FROZEN			(1<<1)
-/// Failing organs perform damaging effects until replaced or fixed
-#define ORGAN_FAILING			(1<<2)
-/// Was this organ implanted/inserted/etc, if true will not be removed during species change.
-#define ORGAN_EXTERNAL			(1<<3)
-/// Currently only the brain
-#define ORGAN_VITAL				(1<<4)
-/// Do not spoil under any circumstances
-#define ORGAN_NO_SPOIL			(1<<5)
-/// Immune to disembowelment.
-#define ORGAN_NO_DISMEMBERMENT	(1<<6)
-/// Is a snack? :D
-#define ORGAN_EDIBLE			(1<<7)
-/// Synthetic organ affected by an EMP. Deteriorates over time.
-#define ORGAN_SYNTHETIC_EMP		(1<<6)
-*/
+//? Bitflags for /obj/item/var/item_persist_flags
+/// consider this item for loadout at all
+#define ITEM_PERSIST_LOADOUT (1<<0)
+/// item can survive a loadout reset - great for reward items you want someone to keep.
+#define ITEM_PERSIST_LOADOUT_PERMANENT (1<<1)
+
+/// these flags are persisted with the item when item is being stored into generic obj storage system.
+#define ITEM_PERSIST_FLAGS_STICKY (ITEM_PERSIST_LOADOUT | ITEM_PERSIST_LOADOUT_PERMANENT)
+
+DEFINE_BITFIELD(item_persist_flags, list(
+	BITFIELD(ITEM_PERSIST_LOADOUT),
+	BITFIELD(ITEM_PERSIST_LOADOUT_PERMANENT),
+))
+
+

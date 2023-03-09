@@ -9,7 +9,7 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/crew
-	var/datum/tgui_module/crew_monitor/crew_monitor
+	var/datum/tgui_module_old/crew_monitor/crew_monitor
 
 /obj/machinery/computer/crew/Initialize(mapload)
 	. = ..()

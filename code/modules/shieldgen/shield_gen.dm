@@ -8,7 +8,7 @@
 	var/max_field_radius = 150
 	var/list/field = list()
 	density = 1
-	req_one_access = list(access_engine,access_captain,access_security)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_COMMAND_CAPTAIN,ACCESS_SECURITY_EQUIPMENT)
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2

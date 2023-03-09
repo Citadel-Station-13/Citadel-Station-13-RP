@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	use_power = USE_POWER_OFF
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell

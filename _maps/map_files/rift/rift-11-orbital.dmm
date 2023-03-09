@@ -7845,16 +7845,6 @@
 /area/centcom/specops)
 "Dz" = (
 /obj/structure/table/reinforced,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_magazine/nsfw_mag,
-/obj/item/gun/ballistic/nsfw,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "DF" = (

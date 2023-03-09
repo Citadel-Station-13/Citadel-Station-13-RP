@@ -11,8 +11,8 @@
 	selection_color = "#999440"
 	pto_type = PTO_EXPLORATION
 	idtype = /obj/item/card/id/explorer/explorer
-	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
-	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
+	additional_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
+	minimal_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
 	outfit_type = /datum/outfit/job/station/explorer
 	desc = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(

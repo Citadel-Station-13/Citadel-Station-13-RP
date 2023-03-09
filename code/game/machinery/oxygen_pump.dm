@@ -103,7 +103,7 @@
 	if(target.wear_mask && target != breather)
 		to_chat(user, SPAN_WARNING("\The [target] is already wearing a mask."))
 		return
-	if(target.head && (target.head.body_parts_covered & FACE))
+	if(target.head && (target.head.body_cover_flags & FACE))
 		to_chat(user, SPAN_WARNING("Remove their [target.head] first."))
 		return
 	if(!tank)

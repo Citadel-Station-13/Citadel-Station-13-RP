@@ -106,6 +106,15 @@
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
 
+	//* Construction / Deconstruction
+	/// Can be constructed / deconstructed by players by default
+	//  todo: proc for allow / disallow, refactor
+	var/allow_deconstruct = FALSE
+	/// Can be anchored / unanchored by players without deconstructing by default
+	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
+	var/allow_unanchor = FALSE
+
+	//* unsorted
 	var/machine_stat = 0
 	var/emagged = FALSE
 	/**

@@ -4,3 +4,8 @@
 #define MESSAGE_RANGE_COMBAT_SUBTLE				3
 /// message range for loud combat actions
 #define MESSAGE_RANGE_COMBAT_LOUD				7
+
+/// message range for most construction / deconstruction actions
+#define MESSAGE_RANGE_CONSTRUCTION 5
+/// message range for most machine / structure configuration actions
+#define MESSAGE_RANGE_CONFIGURATION 3

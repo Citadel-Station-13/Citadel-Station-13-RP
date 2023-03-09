@@ -11222,9 +11222,15 @@
 	name = "Engineering Hardsuits";
 	req_access = list(11)
 	},
-/obj/item/rig/eva/equipped,
-/obj/item/rig/eva/equipped,
-/obj/item/rig/eva/equipped,
+/obj/item/rig/eva/equipped{
+	req_access = list(10)
+},
+/obj/item/rig/eva/equipped{
+	req_access = list(10)
+},
+/obj/item/rig/eva/equipped{
+	req_access = list(10)
+},
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -12366,7 +12372,9 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24

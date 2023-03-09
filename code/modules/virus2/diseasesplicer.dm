@@ -130,7 +130,7 @@
 			ping("\The [src] pings, \"Backup disk saved.\"")
 			SStgui.update_uis(src)
 
-/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

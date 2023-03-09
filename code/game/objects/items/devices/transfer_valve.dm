@@ -73,7 +73,7 @@
 /obj/item/transfer_valve/attack_self(mob/user)
 	ui_interact(user)
 
-/obj/item/transfer_valve/ui_state(mob/user)
+/obj/item/transfer_valve/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/transfer_valve/ui_interact(mob/user, datum/tgui/ui = null)

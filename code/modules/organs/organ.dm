@@ -1,3 +1,84 @@
+/obj/item/organ
+	name = "organ"
+	icon = 'icons/obj/surgery.dmi'
+	germ_level = 0
+	drop_sound = 'sound/items/drop/flesh.ogg'
+	pickup_sound = 'sound/items/pickup/flesh.ogg'
+
+//! ## STRINGS VARS
+	/// Unique identifier.
+	var/organ_tag = "organ"
+	/// The organ holding this object.
+	var/parent_organ = BP_TORSO
+
+
+//! STATUS VARS
+	/// Various status flags
+	var/status = 0
+	/**
+	 * Is this organ vital? If so, this being amputated / removed / dying will immediately kill someone.
+	 *
+	 * todo: some species shouldn't have the same organs vital as others (?)
+	 */
+	var/vital = FALSE
+	/// Current damage to the organ
+	var/damage = 0
+	/// What kind of robotic organ, if valid.
+	var/robotic = 0
+	/// If true, this organ can't feel pain.
+	var/stapled_nerves = FALSE
+
+
+//! ##REFERENCE VARS
+	/// Current mob owning the organ.
+	var/mob/living/carbon/human/owner
+	/// Transplant match data.
+	var/list/transplant_data
+	/// Trauma data for forensics.
+	var/list/autopsy_data = list()
+	/// Traces of chemicals in the organ.
+	var/list/trace_chemicals = list()
+	/// Original DNA.
+	var/datum/dna/dna
+	/// Original species.
+	var/datum/species/species
+	var/s_base
+
+
+//! ## DAMAGE VARS
+	/// Damage before considered bruised
+	var/min_bruised_damage = 10
+	/// Damage before becoming broken
+	var/min_broken_damage = 30
+	/// Damage cap
+	var/max_damage
+	/// Can this organ reject?
+	var/can_reject = TRUE
+	/// Is this organ already being rejected?
+	var/rejecting
+	/// Can this organ decay at all?
+	var/decays = TRUE
+	/// decay rate
+	var/decay_rate = ORGAN_DECAY_PER_SECOND_DEFAULT
+
+//! ## LANGUAGE VARS - For organs that assist with certain languages.
+	var/list/will_assist_languages = list()
+	var/list/datum/language/assists_languages = list()
+
+
+//! ## VERB VARS
+	/// Verbs added by the organ when present in the body.
+	var/list/organ_verbs
+	/// Is the parent supposed to be organic, robotic, assisted?
+	var/list/target_parent_classes = list()
+	/// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
+	var/forgiving_class = TRUE
+
+	/// Can we butcher this organ.
+	var/butcherable = TRUE
+	/// What does butchering, if possible, make?
+	var/meat_type
+
 /obj/item/organ/Initialize(mapload, internal)
 	. = ..(mapload)
 	create_reagents(5)
@@ -32,6 +113,9 @@
 		if(owner.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species
+			if(ishuman(C))
+				var/mob/living/carbon/human/H = C
+				s_base = LAZYACCESS(species.base_skin_colours, H.s_base)
 		else
 			stack_trace("[src] at [loc] spawned without a proper DNA.")
 		var/mob/living/carbon/human/H = C
@@ -97,36 +181,84 @@
 /obj/item/organ/proc/is_dead()
 	return (status & ORGAN_DEAD)
 
+/**
+ * Checks if we can currently die.
+ */
 /obj/item/organ/proc/can_die()
 	return (robotic < ORGAN_ROBOT)
 
-/obj/item/organ/proc/die()
-	if(!can_die() || is_dead())
-		return
+/**
+ * Called to kill this organ.
+ *
+ * @params
+ * * force - ignore can_die()
+ *
+ * @return TRUE / FALSE based on if this actually killed the organ. Returns TRUE if the organ was already dead.
+ */
+/obj/item/organ/proc/die(force = FALSE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!can_die() && !force)
+		return FALSE
+	if(is_dead())
+		return TRUE
 	status |= ORGAN_DEAD
 	damage = max_damage
+	on_die()
 	if(owner)
 		handle_organ_mod_special(TRUE)
 		if(vital)
 			owner.death()
 	reconsider_processing()
+	return TRUE
 
-/obj/item/organ/proc/revive(full_heal = FALSE)
-	if(!is_dead())
-		if(full_heal)
-			germ_level = 0
-			heal_damage_i(damage, TRUE, FALSE)
-		return FALSE
+/**
+ * Called when we die (*not* our owner).
+ */
+/obj/item/organ/proc/on_die()
+	return
+
+/**
+ * Checks if we're currently able to be revived.
+ */
+/obj/item/organ/proc/can_revive()
+	return damage < max_damage
+
+/**
+ * Called to heal all damages
+ */
+/obj/item/organ/proc/rejuvenate()
+	damage = 0
+	germ_level = 0
+
+/**
+ * Called to bring us back to life.
+ *
+ * @params
+ * * full_heal - heal all maladies
+ * * force - ignore can_revive()
+ *
+ * @return TRUE / FALSE based on if this actually ended up reviving the organ. Returns TRUE if organ was already alive.
+ */
+/obj/item/organ/proc/revive(full_heal = FALSE, force = FALSE)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(full_heal)
-		damage = 0
-		germ_level = 0
-	else if(damage >= max_damage)
+		rejuvenate()
+	if(!is_dead())
+		return TRUE
+	if(!can_revive() && !force)
 		return FALSE
 	status &= ~ORGAN_DEAD
+	on_revive()
 	if(owner)
 		handle_organ_mod_special(FALSE)
 	reconsider_processing()
 	return TRUE
+
+/**
+ * Called when we're brought back to life.
+ */
+/obj/item/organ/proc/on_revive()
+	return
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
@@ -142,7 +274,7 @@
 /obj/item/organ/proc/remove_rejuv()
 	qdel(src)
 
-/obj/item/organ/proc/rejuvenate(var/ignore_prosthetic_prefs)
+/obj/item/organ/proc/rejuvenate_legacy(var/ignore_prosthetic_prefs)
 	damage = 0
 	status = 0
 	germ_level = 0
@@ -320,11 +452,12 @@
 		germ_level = 0
 		return
 
-	if(owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Handle antibiotics and curing infections
-		handle_antibiotics()
-		handle_rejection()
-		handle_germ_effects()
+	// removal temporary, pending health rework
+	// if(owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
+	// 	//** Handle antibiotics and curing infections
+	// 	handle_antibiotics()
+	// 	handle_rejection()
+	// 	handle_germ_effects()
 
 	if(can_decay())
 		handle_decay(dt)

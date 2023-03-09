@@ -13,7 +13,7 @@
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
 	var/access = list()
-	access = access_crate_cash
+	access = ACCESS_MISC_CASHCRATE
 	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'

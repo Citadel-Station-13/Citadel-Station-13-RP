@@ -220,7 +220,7 @@
 				var/obj/item/I = usr.get_active_held_item()
 				if (istype(I, /obj/item/card))
 					var/obj/item/card/id/C = I
-					if((access_cent_captain in C.access) || (access_hop in C.access) || (access_captain in C.access))
+					if((ACCESS_CENTCOM_ADMIRAL in C.access) || (ACCESS_COMMAND_HOP in C.access) || (ACCESS_COMMAND_CAPTAIN in C.access))
 						access_code = 0
 						to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>Access code reset to 0.</span>")
 				else if (istype(I, /obj/item/card/emag))

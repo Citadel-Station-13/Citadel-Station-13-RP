@@ -363,7 +363,7 @@
 
 /obj/item/gun/ballistic/r9
 	name = "C96-Red 9"
-	desc = "A variation on the Mauser C-96 - the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using stripper clips."
+	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
 	caliber = "9mm"

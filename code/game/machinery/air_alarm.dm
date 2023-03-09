@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = ENVIRON
-	req_one_access = list(access_atmospherics, access_engine_equip)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	clicksound = "button"
 	clickvol = 30
 	//blocks_emissive = NONE
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/alarm/server/Initialize(mapload)
 	. = ..()
-	req_access = list(access_rd, access_atmospherics, access_engine_equip)
+	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	TLV[/datum/gas/oxygen] =			list(16,   19,   135, 140) // Partial pressure, kpa
 	TLV[/datum/gas/carbon_dioxide] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
 	TLV[/datum/gas/phoron] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa

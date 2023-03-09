@@ -450,7 +450,7 @@
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -459,7 +459,7 @@
 			if(running < SHIELD_RUNNING) // Discharging or off
 				return
 			var/alert = alert(usr, "Are you sure you wish to do this? It will drain the power inside the internal storage rapidly.", "Are you sure?", "Yes", "No")
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return
 			if(running < SHIELD_RUNNING)
 				return

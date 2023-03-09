@@ -19033,7 +19033,9 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/rig/hazmat/equipped,
+/obj/item/rig/hazmat/equipped{
+	req_access = list(65)
+},
 /obj/structure/table/rack,
 /obj/machinery/light_switch{
 	pixel_y = 36

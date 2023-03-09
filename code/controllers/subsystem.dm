@@ -301,3 +301,6 @@
  */
 /datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
 	return
+
+// todo: generic json-based save/load for subsystems, for simple state storage
+// todo: generic K-V store for subsystems, for storing stuff that's rare needed but still persistent.

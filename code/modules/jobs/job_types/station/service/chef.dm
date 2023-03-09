@@ -10,8 +10,8 @@
 	selection_color = "#515151"
 	pto_type = PTO_CIVILIAN
 	idtype = /obj/item/card/id/civilian/chef
-	access = list(access_hydroponics, access_bar, access_kitchen)
-	minimal_access = list(access_kitchen)
+	additional_access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
+	minimal_access = list(ACCESS_GENERAL_KITCHEN)
 
 	outfit_type = /datum/outfit/job/station/chef
 	desc = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."

@@ -31,7 +31,7 @@
 	layer = MOB_LAYER
 	pressure_resistance = 1
 	slot_flags = SLOT_HEAD
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	attack_verb = list("bapped")
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'

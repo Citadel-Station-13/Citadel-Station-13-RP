@@ -24,7 +24,7 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 //Courser Shuttle Data
 /obj/effect/overmap/visitable/ship/landable/courser

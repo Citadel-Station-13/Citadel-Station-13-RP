@@ -326,7 +326,7 @@
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 
-/obj/item/destTagger/ui_state(mob/user)
+/obj/item/destTagger/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui)

@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	access = list()
+	additional_access = list()
 	minimal_access = list()
 	minimal_player_age = 14
 	whitelist_only = 1

@@ -22,7 +22,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	var/codes_txt
 	/// assoc. list of transponder codes.
 	var/list/codes = list()
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 
 /obj/machinery/navbeacon/Initialize(mapload)
 	. = ..()

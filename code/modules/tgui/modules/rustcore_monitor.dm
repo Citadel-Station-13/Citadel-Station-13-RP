@@ -1,10 +1,10 @@
-/datum/tgui_module/rustcore_monitor
+/datum/tgui_module_old/rustcore_monitor
 	name = "R-UST Core Monitoring"
 	tgui_id = "RustCoreMonitor"
 
 	var/core_tag = ""
 
-/datum/tgui_module/rustcore_monitor/ui_act(action, params)
+/datum/tgui_module_old/rustcore_monitor/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -35,7 +35,7 @@
 			C.target_field_strength = new_strength
 			return TRUE
 
-/datum/tgui_module/rustcore_monitor/ui_data(mob/user)
+/datum/tgui_module_old/rustcore_monitor/ui_data(mob/user)
 	var/list/data = list()
 	var/list/cores = list()
 
@@ -69,5 +69,5 @@
 	data["cores"] = cores
 	return data
 
-/datum/tgui_module/rustcore_monitor/ntos
+/datum/tgui_module_old/rustcore_monitor/ntos
 	ntos = TRUE

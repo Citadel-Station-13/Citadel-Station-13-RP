@@ -10,8 +10,8 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/janitor
-	access = list(access_janitor, access_maint_tunnels)
-	minimal_access = list(access_janitor, access_maint_tunnels)
+	additional_access = list(ACCESS_GENERAL_JANITOR, ACCESS_ENGINEERING_MAINT)
+	minimal_access = list(ACCESS_GENERAL_JANITOR, ACCESS_ENGINEERING_MAINT)
 
 	outfit_type = /datum/outfit/job/station/janitor
 	desc = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."

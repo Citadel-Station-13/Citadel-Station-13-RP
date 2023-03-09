@@ -115,7 +115,7 @@
 	/// Required access level for mecha operation.
 	var/list/operation_req_access = list()
 	/// Required access level to open cell compartment.
-	var/list/internals_req_access = list(access_engine,access_robotics)
+	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)
 
 	/// Normalizes internal air mixture temperature.
 	var/datum/global_iterator/pr_int_temp_processor

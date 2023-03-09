@@ -252,6 +252,7 @@
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
 	T.set_materials(M, reinf_material, girder_material)
+	T.set_rad_insulation()
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)

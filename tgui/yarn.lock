@@ -4820,6 +4820,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ignore-loader@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "ignore-loader@npm:0.1.2"
+  checksum: 26b5f81b24e59c575d5314e1416c4ae21fb88e65b3c60c90581288ef925fcaa2b39e7f8f96cd449e488c217337d5240fba5a916f9aec073ec04495d7a5716ac4
+  languageName: node
+  linkType: hard
+
 "ignore@npm:^4.0.6":
   version: 4.0.6
   resolution: "ignore@npm:4.0.6"
@@ -8359,6 +8366,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-react: ^7.24.0
     eslint-plugin-unused-imports: ^1.1.4
     file-loader: ^6.2.0
+    ignore-loader: ^0.1.2
     inferno: ^7.4.8
     jest: ^27.0.6
     jest-circus: ^27.0.6

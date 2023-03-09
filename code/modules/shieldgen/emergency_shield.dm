@@ -125,7 +125,7 @@
 	opacity = 0
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 	var/const/max_health = 100
 	var/health = max_health
 	var/active = 0

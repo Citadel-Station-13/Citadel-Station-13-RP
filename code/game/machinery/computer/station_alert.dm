@@ -6,15 +6,15 @@
 	icon_screen = "alert:0"
 	light_color = "#e6ffff"
 	circuit = /obj/item/circuitboard/stationalert_engineering
-	var/datum/tgui_module/alarm_monitor/alarm_monitor
-	var/monitor_type = /datum/tgui_module/alarm_monitor/engineering
+	var/datum/tgui_module_old/alarm_monitor/alarm_monitor
+	var/monitor_type = /datum/tgui_module_old/alarm_monitor/engineering
 
 /obj/machinery/computer/station_alert/security
-	monitor_type = /datum/tgui_module/alarm_monitor/security
+	monitor_type = /datum/tgui_module_old/alarm_monitor/security
 	circuit = /obj/item/circuitboard/stationalert_security
 
 /obj/machinery/computer/station_alert/all
-	monitor_type = /datum/tgui_module/alarm_monitor/all
+	monitor_type = /datum/tgui_module_old/alarm_monitor/all
 	circuit = /obj/item/circuitboard/stationalert_all
 
 /obj/machinery/computer/station_alert/Initialize(mapload)

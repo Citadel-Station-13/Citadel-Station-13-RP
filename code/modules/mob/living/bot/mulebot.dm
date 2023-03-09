@@ -32,7 +32,7 @@
 	max_target_dist = 250
 	target_speed = 3
 	max_frustration = 5
-	botcard_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	botcard_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_QM, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
 
 	var/atom/movable/load
 

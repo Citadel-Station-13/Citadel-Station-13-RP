@@ -1,11 +1,11 @@
 /mob/living/silicon
 	var/register_alarms = 1
-	var/datum/tgui_module/alarm_monitor/all/robot/alarm_monitor
-	var/datum/tgui_module/atmos_control/robot/atmos_control
-	var/datum/tgui_module/crew_monitor/robot/crew_monitor
+	var/datum/tgui_module_old/alarm_monitor/all/robot/alarm_monitor
+	var/datum/tgui_module_old/atmos_control/robot/atmos_control
+	var/datum/tgui_module_old/crew_monitor/robot/crew_monitor
 	var/datum/nano_module/law_manager/law_manager
-	var/datum/tgui_module/power_monitor/robot/power_monitor
-	var/datum/tgui_module/rcon/robot/rcon
+	var/datum/tgui_module_old/power_monitor/robot/power_monitor
+	var/datum/tgui_module_old/rcon/robot/rcon
 
 /mob/living/silicon
 	var/list/silicon_subsystems = list(

@@ -363,7 +363,7 @@
 	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "serdy_armor"
 	item_state = "serdy_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
 
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
@@ -394,13 +394,13 @@
 	name = "purple robes"
 	desc = "Heavy, royal purple robes threaded with silver lining."
 	icon_state = "psyamp"
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/head/fluff/pink_tiara
 	name = "Pink Tourmaline Tiara"
 	desc = "A small, steel tiara with a large, pink tourmaline gem in the center."
 	icon_state = "amp"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Lots of people are using this now.
 /obj/item/clothing/accessory/collar/vmcrystal
@@ -1200,7 +1200,7 @@
 	icon_state = "centcom"
 	registered_name = "Amy Lessen"
 	assignment = "Xenobiology Director"
-	access = list(access_cent_general,access_cent_thunder,access_cent_medical,access_cent_living,access_cent_storage,access_cent_teleporter,access_research,access_xenobiology,access_maint_tunnels,access_xenoarch,access_robotics,access_tox_storage,access_tox) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
+	access = list(ACCESS_CENTCOM_GENERAL,ACCESS_CENTCOM_THUNDERDOME,ACCESS_CENTCOM_MEDICAL,ACCESS_CENTCOM_DORMS,ACCESS_CENTCOM_STORAGE,ACCESS_CENTCOM_TELEPORTER,ACCESS_SCIENCE_MAIN,ACCESS_SCIENCE_XENOBIO,ACCESS_ENGINEERING_MAINT,ACCESS_SCIENCE_XENOARCH,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_TOXINS,ACCESS_SCIENCE_FABRICATION) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
 	age = 39
 	blood_type = "O-"
 	sex = "Female"

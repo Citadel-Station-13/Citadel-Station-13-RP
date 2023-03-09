@@ -5664,6 +5664,9 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
 

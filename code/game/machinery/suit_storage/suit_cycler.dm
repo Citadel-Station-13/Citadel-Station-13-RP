@@ -12,7 +12,7 @@
 	icon = 'icons/obj/suitstorage.dmi'
 	icon_state = "suitstorage000000100"
 
-	req_access = list(access_captain,access_heads)
+	req_access = list(ACCESS_COMMAND_CAPTAIN,ACCESS_COMMAND_BRIDGE)
 
 	var/active = 0          // PLEASE HOLD.
 	var/safeties = 1        // The cycler won't start with a living thing inside it unless safeties are off.
@@ -53,63 +53,63 @@
 /obj/machinery/suit_cycler/engineering
 	name = "Engineering suit cycler"
 	model_text = "Engineering"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 	departments = list("Engineering","Atmos","HAZMAT","Construction", "No Change")
 
 /obj/machinery/suit_cycler/mining
 	name = "Mining suit cycler"
 	model_text = "Mining"
-	req_access = list(access_mining)
+	req_access = list(ACCESS_SUPPLY_MINE)
 	departments = list("Mining", "No Change")
 
 /obj/machinery/suit_cycler/security
 	name = "Security suit cycler"
 	model_text = "Security"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	departments = list("Security","Crowd Control", "No Change")
 
 /obj/machinery/suit_cycler/medical
 	name = "Medical suit cycler"
 	model_text = "Medical"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	departments = list("Medical","Biohazard","Emergency Medical Response", "No Change")
 
 /obj/machinery/suit_cycler/syndicate
 	name = "Nonstandard suit cycler"
 	model_text = "Nonstandard"
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 	departments = list("Mercenary", "Charring", "No Change")
 	can_repair = 1
 
 /obj/machinery/suit_cycler/exploration
 	name = "Explorer suit cycler"
 	model_text = "Exploration"
-	req_access = list(access_explorer) //Old Exploration needs fixing up
+	req_access = list(ACCESS_GENERAL_EXPLORER) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
 /obj/machinery/suit_cycler/pathfinder
 	name = "Pathfinder suit cycler"
 	model_text = "Pathfinder"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	departments = list("Pathfinder", "No Change")
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
 	model_text = "Pilot"
-	req_access = list(access_pilot)
+	req_access = list(ACCESS_GENERAL_PILOT)
 	departments = list("Pilot", "No Change") //Pilot Blue needs fixing up
 
 /obj/machinery/suit_cycler/director
 	name = "Director suit cycler"
 	model_text = "Director"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 	departments = list("Director", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 
 /obj/machinery/suit_cycler/headofsecurity
 	name = "Head of Security suit cycler"
 	model_text = "Head of Security"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	departments = list("Head of Security", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 
@@ -657,42 +657,42 @@
 /obj/machinery/suit_cycler/vintage/tcrew
 	name = "Talon crew suit cycler"
 	model_text = "Talon crew"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Crew","No Change")
 
 /obj/machinery/suit_cycler/vintage/tpilot
 	name = "Talon pilot suit cycler"
 	model_text = "Talon pilot"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Pilot (Bubble Helm)","Talon Pilot (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tengi
 	name = "Talon engineer suit cycler"
 	model_text = "Talon engineer"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Engineering","No Change")
 
 /obj/machinery/suit_cycler/vintage/tguard
 	name = "Talon guard suit cycler"
 	model_text = "Talon guard"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Marine","Talon Mercenary","No Change")
 
 /obj/machinery/suit_cycler/vintage/tmedic
 	name = "Talon doctor suit cycler"
 	model_text = "Talon doctor"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Medical (Bubble Helm)","Talon Medical (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tcaptain
 	name = "Talon captain suit cycler"
 	model_text = "Talon captain"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Officer","No Change")
 
 //Pirate
 /obj/machinery/suit_cycler/pirate
 	name = "Black Market suit cycler"
 	model_text = "Pirate"
-	req_access = list(access_pirate)
+	req_access = list(ACCESS_FACTION_PIRATE)
 	departments = list("No Change")

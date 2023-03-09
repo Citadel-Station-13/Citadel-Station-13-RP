@@ -79,7 +79,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -111,7 +111,7 @@
 		switch(action)
 			if("range")
 				var/nrange = input("Set new sensors range", "Sensor range", sensors.range) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return FALSE
 				if(nrange)
 					sensors.set_range(clamp(nrange, 1, world.view))

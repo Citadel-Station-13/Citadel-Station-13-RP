@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/proc/queue_update()
 	addtimer(CALLBACK(src, /datum/proc/update_static_data), 0, TIMER_UNIQUE | TIMER_OVERRIDE)
 
-/datum/join_menu/ui_state(mob/user)
+/datum/join_menu/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.explicit_new_player_state
 
 /datum/join_menu/ui_static_data(mob/user)
@@ -188,7 +188,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		. = max(hpc, epc)
 */
 
-/datum/join_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/join_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	var/mob/new_player/N = usr
 	if(!istype(N))

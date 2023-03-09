@@ -92,7 +92,7 @@
 		ui = new(user, src, "Wires", "[proper_name] wires")
 		ui.open()
 
-/datum/wires/ui_state(mob/user)
+/datum/wires/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /datum/wires/ui_data(mob/user)

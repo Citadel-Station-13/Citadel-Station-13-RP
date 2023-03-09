@@ -28,6 +28,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	// attack_self isn't really part of the item attack chain.
 	// todo: move this to items.dm as it has not much to actually do with click attacks
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		interact(user)
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)

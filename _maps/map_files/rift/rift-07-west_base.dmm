@@ -907,6 +907,9 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "SE" = (

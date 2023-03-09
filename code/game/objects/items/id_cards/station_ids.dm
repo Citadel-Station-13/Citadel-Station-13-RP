@@ -38,6 +38,12 @@
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 	var/engineer_points = 0	// For redeeming at engineering equipment vendors
 
+/obj/item/card/id/Initialize(mapload)
+	. = ..()
+	var/datum/role/job/J = SSjob.get_job(rank)
+	if(J)
+		access = J.get_access()
+
 /obj/item/card/id/examine(mob/user)
 	..()
 	. = dat()
@@ -45,12 +51,35 @@
 
 /obj/item/card/id/examine_more(mob/user)
 	. = ..()
-	var/list/msg = list(SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>"))
+	. += SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>")
 
 	if(mining_points)
-		msg += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
-	return msg
+		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
 
+/obj/item/card/id/update_name()
+	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"
+
+/**
+ * Sets our registered name
+ *
+ * @params
+ * * name - What name to set to.
+ */
+/obj/item/card/id/proc/set_registered_name(name)
+	src.registered_name = name
+	update_name()
+
+/**
+ * Sets our registered rank / assignment
+ *
+ * @params
+ * * rank - what rank to set to. This is the job title. Defaults to unchanged.
+ * * assignment - what assignment to set to. This is the job alt title, if any. Defaults to the rank.
+ */
+/obj/item/card/id/proc/set_registered_rank(rank = src.rank, assignment)
+	src.rank = rank
+	src.assignment = assignment || rank
+	update_name()
 
 /obj/item/card/id/proc/prevent_tracking()
 	return 0
@@ -63,10 +92,6 @@
 	popup.set_content(dat())
 	popup.open()
 	return
-
-/obj/item/card/id/update_name()
-	. = ..()
-	name = "[src.registered_name]'s ID Card ([src.assignment])"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
 	var/icon/charicon = cached_character_icon(M)
@@ -128,12 +153,16 @@
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 
-/obj/item/card/id/Initialize(mapload)
+/obj/item/card/id/vv_get_dropdown()
 	. = ..()
-	last_job_switch = world.time
-	var/datum/role/job/J = SSjob.get_job(rank)
-	if(J)
-		access = J.get_access()
+	VV_DROPDOWN_OPTION(null, "-----")
+	VV_DROPDOWN_OPTION(VV_HK_ID_MOD, "Modify ID")
+
+/obj/item/card/id/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ID_MOD])
+		var/datum/tgui_module/card_mod/admin/card_vv/mod = new(src)
+		mod.ui_interact(usr)
 
 /obj/item/card/id/silver
 	name = "command identification card"
@@ -183,7 +212,7 @@
 
 /obj/item/card/id/synthetic/Initialize(mapload)
 	. = ..()
-	access = get_all_station_access().Copy() + access_synth
+	access = SSjob.access_ids_of_type(ACCESS_TYPE_STATION) + ACCESS_SPECIAL_SILICONS
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -194,11 +223,11 @@
 
 /obj/item/card/id/centcom/Initialize(mapload)
 	. = ..()
-	access = get_all_centcom_access().Copy()
+	access = SSjob.access_ids_of_type(ACCESS_TYPE_CENTCOM)
 
 /obj/item/card/id/centcom/station/Initialize(mapload)
 	. = ..()
-	access |= get_all_station_access()
+	access |= SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /obj/item/card/id/centcom/vip
 	name = "\improper V.I.P. ID"

@@ -340,7 +340,7 @@
 	return data
 
 /obj/item/gps/proc/push_waypoint_data()
-	send_tgui_data_immediate(data = list("waypoints" = ui_waypoint_data()))
+	push_ui_data(data = list("waypoints" = ui_waypoint_data()))
 
 /obj/item/gps/ui_static_data(mob/user)
 	. = ..()
@@ -384,7 +384,7 @@
 				"name" = sig.gps_tag
 			))
 
-/obj/item/gps/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/gps/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

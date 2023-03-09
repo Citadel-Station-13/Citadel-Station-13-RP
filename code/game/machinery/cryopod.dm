@@ -27,7 +27,7 @@
 	var/storage_name = "Cryogenic Oversight Control"
 	var/allow_items = TRUE
 
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 
 /obj/machinery/computer/cryopod/update_icon()
 	..()

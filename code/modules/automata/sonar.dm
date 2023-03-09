@@ -31,6 +31,12 @@
 	return ..()
 
 /datum/automata/wave/sonar/proc/flick_sonar(atom/movable/AM)
+	if(ismob(AM))
+		var/mob/M = AM
+		if(M.client && !TIMER_COOLDOWN_CHECK(M, CD_INDEX_SONAR_NOISE))
+			to_chat(M, SPAN_WARNING("You hear a quiet click."))
+			TIMER_COOLDOWN_START(M, CD_INDEX_SONAR_NOISE, 7.5 SECONDS)
+		// todo: M.provoke() for AI...
 	var/atom/movable/holder = AM.make_sonar_image(resolution)
 	if(holder)
 		holder.alpha = 0

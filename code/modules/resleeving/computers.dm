@@ -1,12 +1,13 @@
 /obj/machinery/computer/transhuman/resleeving
 	name = "resleeving control console"
+	desc = "A control console for the resleeving and grower pods. It has a small slot for inserting a mirror tool for direct transfer of mirrors."
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
 						/datum/category_item/catalogue/technology/resleeving)
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/resleeving_control
-	req_access = list(access_heads) //Only used for record deletion right now.
+	req_access = list(ACCESS_COMMAND_BRIDGE) //Only used for record deletion right now.
 	var/list/pods = list() //Linked grower pods.
 	var/list/spods = list()
 	var/list/sleevers = list() //Linked resleeving booths.
@@ -99,6 +100,7 @@
 			hasmirror = MT.imp
 			MT.imp = null
 			user.visible_message("Mirror successfully transferred.")
+			MT.update_icon()
 		else
 			if(!MT.imp)
 				user.visible_message("This Mirror Installation Tool is empty.")
@@ -109,6 +111,7 @@
 			hasmirror = MT.imp
 			MT.imp = null
 			user.visible_message("Mirror successfully transferred.")
+			MT.update_icon()
 		else
 			if(!MT.imp)
 				user.visible_message("This Mirror Installation Tool is empty.")

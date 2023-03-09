@@ -11,7 +11,7 @@
 	var/mapping = 0//For the overview file, interesting bit of code.
 	var/list/network = list()
 
-	var/datum/tgui_module/camera/camera
+	var/datum/tgui_module_old/camera/camera
 
 /obj/machinery/computer/security/Initialize(mapload)
 	. = ..()

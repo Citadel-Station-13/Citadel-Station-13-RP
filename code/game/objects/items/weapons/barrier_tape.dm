@@ -71,7 +71,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/medical
 	name = "medical tape"
 	desc = "A length of medical tape.  Do not cross."
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	color = COLOR_WHITE
 
 /obj/item/barrier_tape_roll/police
@@ -83,7 +83,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/police
 	name = "police tape"
 	desc = "A length of police tape.  Do not cross."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	color = COLOR_RED_LIGHT
 
 /obj/item/barrier_tape_roll/engineering
@@ -98,7 +98,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/engineering
 	name = "engineering tape"
 	desc = "A length of engineering tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_YELLOW
 
 /obj/item/barrier_tape_roll/atmos
@@ -110,7 +110,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/barrier_tape_roll/update_icon()

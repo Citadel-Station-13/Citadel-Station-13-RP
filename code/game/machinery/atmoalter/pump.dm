@@ -120,7 +120,7 @@
 		ui.open()
 
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_state(mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user)

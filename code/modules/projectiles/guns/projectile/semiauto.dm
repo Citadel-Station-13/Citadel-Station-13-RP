@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/garand
 	name = "\improper M1 Garand"
-	desc = "This is the vintage semi-automatic rifle that famously helped win the second World War. What the hell it's doing aboard a space station in the 26th century, you can only imagine. Uses 7.62mm rounds."
+	desc = "This is the vintage semi-automatic rifle that famously helped win the second World War on ancient Terra. Another Cybersun Industries reproduction, the blueprints have since proliferated through the exonet, with most back-alley flash-forges creating their own variations of the iconic rifle."
 	icon_state = "garand"
 	item_state = "boltaction"
 	w_class = ITEMSIZE_LARGE
@@ -25,7 +25,7 @@
 
 /obj/item/gun/ballistic/garand/sniper
 	name = "M1A Garand"
-	desc = "A reproduction model of the rare M1A Garand rifle. This one seems to have been modified by a gun smith."
+	desc = "A reproduction of the rare MIA Garand rifle. Most likely, it was once a standard Cybersun reproduction, modified by a competant gunsmith into a proper M1A model."
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
 	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter

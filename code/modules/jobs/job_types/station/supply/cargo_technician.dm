@@ -9,8 +9,8 @@
 	spawn_positions = 2
 	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
+	additional_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
+	minimal_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MAIN)
 
 	outfit_type = /datum/outfit/job/station/cargo_technician
 	desc = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \

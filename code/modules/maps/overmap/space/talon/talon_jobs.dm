@@ -35,8 +35,8 @@
 	selection_color = "#999999"
 	minimal_player_age = 14
 	pto_type = null
-	access = list(access_talon)
-	minimal_access = list(access_talon)
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
 	alt_titles = list("Talon Commander" = /datum/prototype/alt_title/talon_commander)
 
 /datum/prototype/alt_title/talon_commander
@@ -58,9 +58,15 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
+<<<<<<< HEAD
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
+	alt_titles = list("Talon Medic" = /datum/alt_title/talon_medic)
+=======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
 	alt_titles = list("Talon Medic" = /datum/prototype/alt_title/talon_medic)
+>>>>>>> citrp/master
 
 /datum/prototype/alt_title/talon_medic
 	title = "Talon Medic"
@@ -82,9 +88,15 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
+<<<<<<< HEAD
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
+	alt_titles = list("Talon Technician" = /datum/alt_title/talon_tech)
+=======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
 	alt_titles = list("Talon Technician" = /datum/prototype/alt_title/talon_tech)
+>>>>>>> citrp/master
 
 /datum/prototype/alt_title/talon_tech
 	title = "Talon Technician"
@@ -106,9 +118,15 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
+<<<<<<< HEAD
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
+	alt_titles = list("Talon Helmsman" = /datum/alt_title/talon_helmsman)
+=======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
 	alt_titles = list("Talon Helmsman" = /datum/prototype/alt_title/talon_helmsman)
+>>>>>>> citrp/master
 
 /datum/prototype/alt_title/talon_helmsman
 	title = "Talon Helmsman"
@@ -130,9 +148,15 @@
 	selection_color = "#aaaaaa"
 	minimal_player_age = 14
 	pto_type = null
+<<<<<<< HEAD
+	access = list(ACCESS_FACTION_TALON)
+	minimal_access = list(ACCESS_FACTION_TALON)
+	alt_titles = list("Talon Security" = /datum/alt_title/talon_security)
+=======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
 	alt_titles = list("Talon Security" = /datum/prototype/alt_title/talon_security)
+>>>>>>> citrp/master
 
 /datum/prototype/alt_title/talon_security
 	title = "Talon Security"

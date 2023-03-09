@@ -135,7 +135,7 @@
 
 	return data
 
-/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

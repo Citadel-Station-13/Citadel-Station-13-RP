@@ -5,7 +5,7 @@
 	icon_state = "retail_idle"
 	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
 

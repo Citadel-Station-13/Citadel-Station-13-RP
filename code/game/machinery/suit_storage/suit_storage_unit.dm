@@ -87,7 +87,7 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
+/obj/machinery/suit_storage_unit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.notcontained_state
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)

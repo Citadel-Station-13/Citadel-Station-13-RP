@@ -9,7 +9,7 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/hud/health/Initialize(mapload)
 	. = ..()
@@ -27,7 +27,7 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/hud/security/Initialize(mapload)
 	. = ..()
@@ -59,7 +59,7 @@
 	icon_state = "glasses"
 	var/datum/nano_module/arscreen
 	var/arscreen_path
-	var/datum/tgui_module/tgarscreen
+	var/datum/tgui_module_old/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
 	enables_planes = list(VIS_AUGMENTED)
@@ -137,7 +137,7 @@
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
 	prescription = 1
-	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
+	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
 	enables_planes = list(VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
@@ -202,7 +202,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "projector"
 	off_state = "projector-off"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	toggleable = 1
 	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
@@ -265,7 +265,7 @@
     desc = "An eyepatch with built in scanners, that analyzes those in view and provides accurate data about their ID status and security records."
     icon_state = "hudpatch"
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
-    body_parts_covered = 0
+    body_cover_flags = 0
     enables_planes = list(VIS_AUGMENTED)
     var/eye = null
 
@@ -288,7 +288,7 @@
 	desc = "A eyepatch equipped with a scanning lens and mounted retinal projector. For when you take style over smarts."
 	icon_state = "mesonpatch"
 	off_state = "eyepatch"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	toggleable = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
@@ -323,5 +323,5 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one's an eyepatch."
 	icon_state = "medpatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
-	body_parts_covered = 0
+	body_cover_flags = 0
 	enables_planes = list(VIS_AUGMENTED)
