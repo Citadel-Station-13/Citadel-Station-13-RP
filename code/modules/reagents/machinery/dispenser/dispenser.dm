@@ -1,4 +1,4 @@
-/obj/item/circuitboard/machine/chemistry_dispenser
+/obj/item/circuitboard/machine/chemical_dispenser
 	name = T_BOARD("chemical dispenser")
 	build_path = /obj/machinery/chemical_dispenser
 	req_components = list(

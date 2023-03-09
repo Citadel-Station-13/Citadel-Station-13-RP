@@ -11,7 +11,7 @@
 	allow_drinking = TRUE
 	synthesizers_swappable = FALSE
 
-/obj/item/circuitboard/machine/chemistry_dispenser/soda
+/obj/item/circuitboard/machine/chemical_dispenser/soda
 	build_path = /obj/machinery/chemical_dispenser/catering/bar_soft
 
 /obj/machinery/chemical_dispenser/catering/bar_soft
@@ -27,7 +27,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_soft/unanchored
 	anchored = FALSE
 
-/obj/item/circuitboard/machine/chemistry_dispenser/booze
+/obj/item/circuitboard/machine/chemical_dispenser/booze
 	build_path = /obj/machinery/chemical_dispenser/catering/bar_alc
 
 /obj/machinery/chemical_dispenser/catering/bar_alc
@@ -42,7 +42,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_alc/unanchored
 	anchored = FALSE
 
-/obj/item/circuitboard/machine/chemistry_dispenser/cafe
+/obj/item/circuitboard/machine/chemical_dispenser/cafe
 	build_path = /obj/machinery/chemical_dispenser/catering/bar_coffee
 
 /obj/machinery/chemical_dispenser/catering/bar_coffee

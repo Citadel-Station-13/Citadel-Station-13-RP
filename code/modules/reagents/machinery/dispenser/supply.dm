@@ -1,4 +1,4 @@
-/datum/supply_pack/chemistry_dispenser
+/datum/supply_pack/chemical_dispenser
 	name = "Reagent dispenser (Empty)"
 	contains = list(
 			/obj/machinery/chemical_dispenser/unanchored
