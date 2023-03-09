@@ -97,6 +97,7 @@
 // Parameters: None
 // Description: Adds standard components for this SMES, and forces recalculation of properties.
 /obj/machinery/power/smes/buildable/Initialize(mapload, install_coils = TRUE)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stack/cable_coil(src,30)
 	wires = new /datum/wires/smes(src)
@@ -106,7 +107,6 @@
 		for(var/i = 1, i <= cur_coils, i++)
 			component_parts += new /obj/item/smes_coil(src)
 		recalc_coils()
-	return ..()
 
 // Proc: attack_hand()
 // Parameters: None
