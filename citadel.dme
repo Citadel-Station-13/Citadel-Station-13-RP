@@ -1438,6 +1438,7 @@
 #include "code\game\objects\items\devices\tape_recorder\tape_iterator.dm"
 #include "code\game\objects\items\devices\tape_recorder\tape_recorder.dm"
 #include "code\game\objects\items\id_cards\cards.dm"
+#include "code\game\objects\items\id_cards\contractor_ids.dm"
 #include "code\game\objects\items\id_cards\emag.dm"
 #include "code\game\objects\items\id_cards\sprite_stacks_cit.dm"
 #include "code\game\objects\items\id_cards\station_ids.dm"

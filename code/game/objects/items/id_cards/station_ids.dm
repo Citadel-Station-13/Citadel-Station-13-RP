@@ -18,8 +18,12 @@
 	var/dna_hash = "\[UNSET\]"
 	var/fingerprint_hash = "\[UNSET\]"
 	var/sex = "\[UNSET\]"
+	var/species = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+
+	var/last_job_switch
+	var/lost_access = list()
 
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
@@ -29,15 +33,15 @@
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
-	var/dorm = 0			// determines if this ID has claimed a dorm already
 
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 	var/engineer_points = 0	// For redeeming at engineering equipment vendors
 
 /obj/item/card/id/examine(mob/user)
-	. = ..()
-	show(user)
+	..()
+	. = dat()
+	//show(user)
 
 /obj/item/card/id/examine_more(mob/user)
 	. = ..()
@@ -84,18 +88,20 @@
 /mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
 	..()
 	id_card.age = age
+	id_card.species = src.species.name
 
 /obj/item/card/id/proc/dat()
 	var/dat = ("<table><tr><td>")
 	dat += text("Name: []</A><BR>", registered_name)
-	dat += text("Sex: []</A><BR>\n", sex)
-	dat += text("Age: []</A><BR>\n", age)
-	dat += text("Rank: []</A><BR>\n", assignment)
-	dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
-	dat += text("Blood Type: []<BR>\n", blood_type)
-	dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
-	if(front && side)
-		dat +="<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4><img src=side.png height=80 width=80 border=4></td>"
+	dat += text("Sex: []</A><BR>", sex)
+	dat += text("Age: []</A><BR>", age)
+	dat += text("Rank: []</A><BR>", assignment)
+	dat += text("Species: []</A><BR>", species)
+	//dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
+	dat += text("Blood Type: []<BR>", blood_type)
+	//dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
+	/*if(front && side)
+		dat +="<td align = center valign = top>Photo</td>"*/
 	dat += "</tr></table>"
 	return dat
 
@@ -124,6 +130,7 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
+	last_job_switch = world.time
 	var/datum/role/job/J = SSjob.get_job(rank)
 	if(J)
 		access = J.get_access()
