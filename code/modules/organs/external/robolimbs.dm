@@ -493,6 +493,15 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
+/datum/robolimb/replika
+	company = "Replikant"
+	desc = "An advanced biomechanical prosthetic with pegs for feet."
+	icon = 'icons/mob/cyberlimbs/replikant/replikant.dmi'
+	lifelike = 1
+	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
+
 /obj/item/disk/limb
 	name = "Limb Blueprints"
 	desc = "A disk containing the blueprints for prosthetics."
@@ -607,7 +616,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	company = "Vulcan Brassworks Inc."
 	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "datadisk2"
-	
+
 /datum/robolimb/spectre
 	company = "Hoffman Tech - RACS Spectre "
 	desc = "A simple robotic limb design used for the Hoffman Tech RASC Spectre. A lightweight robotic chassis ideal for exploration and security duties."
