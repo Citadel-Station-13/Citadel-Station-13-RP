@@ -159,8 +159,8 @@
 	.["amount"] = dispense_amount
 	.["amount_max"] = dispense_amount_max
 	.["has_cell"] = !!cell
-	.["cell_charge"] = cell.charge
-	.["cell_capacity"] = cell.maxcharge
+	.["cell_charge"] = cell?.charge
+	.["cell_capacity"] = cell?.maxcharge
 	.["panel_open"] = panel_open
 	.["has_beaker"] = !!inserted
 	.["beaker"] = inserted?.reagents? list(
