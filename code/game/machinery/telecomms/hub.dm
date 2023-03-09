@@ -21,10 +21,6 @@
 	long_range_link = 1
 	netspeed = 40
 
-/obj/machinery/telecomms/hub/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/telecomms/hub/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 	if(is_freq_listening(signal))
 		if(istype(machine_from, /obj/machinery/telecomms/receiver))

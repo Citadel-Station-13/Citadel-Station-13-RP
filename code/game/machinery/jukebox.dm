@@ -66,10 +66,6 @@
 	)
 
 
-/obj/machinery/media/jukebox/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
 	wires = null

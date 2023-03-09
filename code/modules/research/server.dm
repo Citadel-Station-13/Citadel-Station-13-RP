@@ -18,10 +18,6 @@
 	req_access = list(ACCESS_SCIENCE_RD) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
 	..()
