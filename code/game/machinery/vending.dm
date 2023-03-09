@@ -2463,11 +2463,9 @@
 	name = "\improper Adherent Tool Dispenser"
 	desc = "This looks like a heavily modified vending machine. It contains technology that doesn't appear to be human in origin."
 	product_ads = "\[C#\]\[Cb\]\[Db\]. \[Ab\]\[A#\]\[Bb\]. \[E\]\[C\]\[Gb\]\[B#\]. \[C#\].;\[Cb\]\[A\]\[F\]\[Cb\]\[C\]\[E\]\[Cb\]\[E\]\[Fb\]. \[G#\]\[C\]\[Ab\]\[A\]\[C#\]\[B\]. \[Eb\]\[choral\]. \[E#\]\[C#\]\[Ab\]\[E\]\[C#\]\[Fb\]\[Cb\]\[F#\]\[C#\]\[Gb\]."
-//	icon_state = "adh-tool"
-//	icon_deny = "adh-tool-deny"
-//	icon_vend = "adh-tool-vend"
-	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
+	icon_state = "adh-tool"
+	icon_deny = "adh-tool-deny"
+	icon_vend = "adh-tool-vend"
 	vend_delay = 5
 	products = list(/obj/item/weldingtool/electric/crystal = 5,
 					/obj/item/tool/wirecutters/crystal = 5,
