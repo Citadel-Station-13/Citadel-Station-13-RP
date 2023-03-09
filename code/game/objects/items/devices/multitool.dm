@@ -118,3 +118,11 @@
 
 /obj/item/multitool/green
 	color_overlay = "multi_g"
+
+/obj/item/multitool/crystal
+	name = "crystalline multitool"
+	desc = "A crystalline energy patterning tool of an alien make."
+	icon_state = "crystal_multitool"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)

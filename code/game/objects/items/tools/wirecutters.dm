@@ -147,3 +147,16 @@
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+
+/obj/item/tool/wirecutters/crystal
+	name = "crystalline shears"
+	desc = "A crystalline shearing tool of an alien make."
+	icon_state = "crystal_wirecutter"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+
+/obj/item/tool/wirecutters/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

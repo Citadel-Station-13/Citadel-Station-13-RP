@@ -32,11 +32,22 @@
 	min_age              = 10000
 	max_age              = 12000
 	// antaghud_offset_y    = 14
-	warning_low_pressure = 50
-	hazard_low_pressure  = -1
 	mob_size             = MOB_LARGE
 	// strength             = STR_HIGH
 	has_glowing_eyes     = TRUE
+
+	warning_low_pressure = 50
+	hazard_low_pressure  = -1
+	hazard_high_pressure = INFINITY
+	radiation_mod		 = 0
+	toxins_mod			 = 0
+	breath_type 		 = null
+	poison_type 		 = null
+	brute_mod			 =	2
+	burn_mod 			 =	0.1
+	total_health 		 = 75
+
+	hunger_factor 		 = 0.04
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -49,7 +60,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | NO_POISON
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 

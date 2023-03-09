@@ -151,3 +151,16 @@
 	. = ..()
 	if(random_color)
 		icon_state = "prybar[pick("","_green","_aubergine","_blue")]"
+
+/obj/item/tool/crowbar/crystal
+	name = "crystalline prytool"
+	desc = "A crystalline prying tool of an alien make."
+	icon_state = "crystal_crowbar"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+
+/obj/item/tool/crowbar/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)
