@@ -17,7 +17,6 @@
 	icon_state = "dispenser"
 	circuit = /obj/item/circuitboard/machine/chemical_dispenser
 
-
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	anchored = TRUE

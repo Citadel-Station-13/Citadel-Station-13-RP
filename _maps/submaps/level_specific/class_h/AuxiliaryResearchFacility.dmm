@@ -136,7 +136,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cE" = (
@@ -431,7 +431,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "jN" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -2119,7 +2119,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Xw" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "XD" = (

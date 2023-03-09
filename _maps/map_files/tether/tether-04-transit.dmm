@@ -129,7 +129,7 @@
 /area/maintenance/tether_midpoint)
 "nu" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -626,7 +626,7 @@
 /area/tether/elevator)
 "Xi" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 8
 	},
 /turf/simulated/floor/wood,

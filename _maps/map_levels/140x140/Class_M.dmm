@@ -543,7 +543,7 @@
 /area/class_m/inside)
 "na" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/structure/sign/double/barsign{
 	pixel_y = 32
 	},
@@ -821,7 +821,7 @@
 /area/class_m/inside)
 "sk" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1761,7 +1761,7 @@
 /area/class_m/inside)
 "MG" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "MK" = (

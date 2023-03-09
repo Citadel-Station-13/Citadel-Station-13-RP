@@ -7451,7 +7451,7 @@
 /area/itglight/showers)
 "Zd" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Zf" = (

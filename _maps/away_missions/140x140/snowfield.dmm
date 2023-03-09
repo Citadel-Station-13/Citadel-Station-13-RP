@@ -795,7 +795,7 @@
 /area/awaymission/snowfield/base)
 "cg" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},

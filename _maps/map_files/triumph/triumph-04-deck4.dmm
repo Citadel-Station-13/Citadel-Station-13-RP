@@ -3108,7 +3108,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "ctm" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "ctv" = (
@@ -7658,7 +7658,7 @@
 /area/security/warden)
 "fAN" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -12656,7 +12656,7 @@
 /area/security/brig)
 "jhL" = (
 /obj/structure/table/steel,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -15782,7 +15782,7 @@
 /area/security/brig)
 "lxU" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "lxY" = (
@@ -20090,7 +20090,7 @@
 /area/exploration/meeting)
 "oHO" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -22163,7 +22163,7 @@
 /area/crew_quarters/lounge)
 "qaR" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
@@ -23617,7 +23617,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/civvie/cockpit)
 "qVj" = (
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /obj/structure/table/woodentable,
@@ -26605,7 +26605,7 @@
 /area/hallway/secondary/docking_hallway)
 "sVx" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "sVA" = (
@@ -30183,7 +30183,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "vBD" = (
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
 	dir = 1
@@ -33783,7 +33783,7 @@
 /area/security/lobby)
 "xXe" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/CMO_quarters)
 "xXQ" = (

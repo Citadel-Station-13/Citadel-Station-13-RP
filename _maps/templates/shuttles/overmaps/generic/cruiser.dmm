@@ -414,17 +414,17 @@
 /area/mothership/breakroom)
 "aY" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ba" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "bb" = (

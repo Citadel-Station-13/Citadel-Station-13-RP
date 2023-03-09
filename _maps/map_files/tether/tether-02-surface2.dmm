@@ -18931,7 +18931,7 @@
 /area/bridge/meeting_room)
 "aIV" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -22792,7 +22792,7 @@
 /area/engineering/lower/breakroom)
 "aQW" = (
 /obj/structure/table/glass,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,

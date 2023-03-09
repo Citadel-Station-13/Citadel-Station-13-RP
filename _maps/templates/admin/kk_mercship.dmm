@@ -5235,7 +5235,7 @@
 /area/ship/manta/armoury_as)
 "zo" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
@@ -7956,7 +7956,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/radiator_port)
 "Or" = (
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 4
 	},
 /obj/structure/table/woodentable,

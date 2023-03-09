@@ -1091,13 +1091,13 @@
 /area/lavaland/central/base/common)
 "ui" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "uk" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "ut" = (

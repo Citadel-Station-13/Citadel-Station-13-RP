@@ -2567,7 +2567,7 @@
 /area/talon/maintenance/decktwo_aft)
 "DQ" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1;
 	req_access = ""
 	},
@@ -2941,7 +2941,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "Is" = (
-/obj/machinery/chemical_dispenser/catering/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /obj/structure/table/marble,
@@ -3143,7 +3143,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/decktwo_aft)
 "Kn" = (
-/obj/machinery/chemical_dispenser/catering/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 8
 	},
 /obj/structure/table/marble,

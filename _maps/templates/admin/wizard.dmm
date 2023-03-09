@@ -13,7 +13,7 @@
 	},
 /area/wizard_station)
 "ad" = (
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/structure/table/marble,
 /turf/unsimulated/floor{
 	icon_state = "white"

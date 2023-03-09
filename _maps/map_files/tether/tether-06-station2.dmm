@@ -21067,7 +21067,7 @@
 /area/quartermaster/qm)
 "oYF" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
 "oZR" = (

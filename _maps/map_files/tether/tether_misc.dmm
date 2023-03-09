@@ -2486,7 +2486,7 @@
 /area/centcom/simulated/medical)
 "mv" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "mF" = (
@@ -2744,7 +2744,7 @@
 /turf/space/internal_edge/bottomright,
 /area/space)
 "qT" = (
-/obj/machinery/chemical_dispenser/catering/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 8
 	},
 /obj/structure/table/marble,
@@ -3670,7 +3670,7 @@
 /area/centcom/simulated/restaurant)
 "Da" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/camera/network/crescent{
 	dir = 1
 	},

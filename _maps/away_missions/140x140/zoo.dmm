@@ -657,7 +657,7 @@
 /area/awaymission/zoo/tradeship)
 "cb" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/catering/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "cc" = (

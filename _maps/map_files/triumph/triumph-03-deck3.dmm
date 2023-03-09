@@ -3319,7 +3319,7 @@
 /area/medical/medbay4)
 "cTd" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "cTv" = (
