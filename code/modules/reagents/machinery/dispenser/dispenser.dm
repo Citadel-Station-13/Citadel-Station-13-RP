@@ -60,6 +60,13 @@
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
+	// default_apply_parts runs in ..()
+	component_parts -= cell
+	if(cell)
+		qdel(cell)
+	if(cell_type)
+		cell = new cell_type(src)
+		component_parts |= cell
 	if(islist(synthesizers))
 		var/list/created = list()
 		for(var/path in synthesizers)

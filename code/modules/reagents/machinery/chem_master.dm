@@ -64,7 +64,6 @@
 /obj/machinery/chem_master/Initialize(mapload, newdir)
 	. = ..()
 	create_reagents(1000)
-	default_apply_parts()
 
 /obj/machinery/chem_master/Destroy()
 	QDEL_NULL(beaker)

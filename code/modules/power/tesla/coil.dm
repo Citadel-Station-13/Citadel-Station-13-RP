@@ -24,7 +24,7 @@
 /obj/machinery/power/tesla_coil/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	default_apply_parts()
+
 
 /obj/machinery/power/tesla_coil/Destroy()
 	QDEL_NULL(wires)

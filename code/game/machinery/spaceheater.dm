@@ -200,10 +200,6 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize(mapload)
-	.=..()
-	default_apply_parts()
-
 /obj/machinery/power/thermoregulator/examine(mob/user)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"

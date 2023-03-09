@@ -27,7 +27,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			if(PC != src && PC.id_tag == id_tag)
 				warning("Two [src] with the same id_tag of [id_tag]")
 				id_tag = null
-	default_apply_parts()
 
 /obj/machinery/pointdefense_control/get_description_interaction(mob/user)
 	. = ..()

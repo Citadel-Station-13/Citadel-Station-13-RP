@@ -36,8 +36,7 @@
 	var/faketank_integrity
 
 /obj/machinery/bomb_tester/Initialize(mapload)
-	.=..()
-	default_apply_parts()
+	. = ..()
 	faketank = new
 
 /obj/machinery/bomb_tester/Destroy()

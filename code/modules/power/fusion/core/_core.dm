@@ -31,7 +31,6 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
-	default_apply_parts()
 	if(anchored)
 		connect_to_network()
 

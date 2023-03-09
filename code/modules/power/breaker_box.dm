@@ -32,7 +32,6 @@
 /obj/machinery/power/breakerbox/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
 	icon_state = "bbox_on"

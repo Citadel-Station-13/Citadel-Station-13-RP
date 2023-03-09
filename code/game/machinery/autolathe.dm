@@ -37,7 +37,6 @@
 	if(!autolathe_recipes)
 		autolathe_recipes = new()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)
