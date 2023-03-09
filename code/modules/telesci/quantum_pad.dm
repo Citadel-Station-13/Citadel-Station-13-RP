@@ -22,7 +22,6 @@
 
 /obj/machinery/power/quantumpad/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	connect_to_network()
 	if(map_pad_id)
 		mapped_quantum_pads[map_pad_id] = src
