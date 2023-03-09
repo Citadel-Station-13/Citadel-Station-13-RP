@@ -155,6 +155,7 @@
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
 	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
 
 /obj/item/tool/wirecutters/crystal/Initialize()
 	. = ..()
