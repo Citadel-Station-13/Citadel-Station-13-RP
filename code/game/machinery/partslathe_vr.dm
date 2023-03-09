@@ -49,7 +49,6 @@
 
 /obj/machinery/partslathe/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 	update_recipe_list()
 

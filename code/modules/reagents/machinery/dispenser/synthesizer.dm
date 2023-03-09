@@ -26,7 +26,7 @@
 			. += thing
 		else if(ispath(thing))
 			var/datum/reagent/accessing = thing
-			. += accessing.id
+			. += initial(accessing.id)
 
 /obj/item/reagent_synth/chemistry
 	name = "reagent synthesis module (Chemistry)"

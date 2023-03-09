@@ -24,7 +24,6 @@
 /obj/machinery/pipelayer/Initialize(mapload)
 	. = ..()
 	W = new(src)
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/pipelayer/Destroy()

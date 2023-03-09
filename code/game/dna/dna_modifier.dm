@@ -57,10 +57,6 @@
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_containers/glass/beaker = null
 
-/obj/machinery/dna_scannernew/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/dna_scannernew/relaymove(mob/user)
 	if (user.stat)
 		return

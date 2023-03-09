@@ -61,10 +61,6 @@
 		"Adrenal Valve Cluster" = list(/obj/item/organ/internal/heart/replicant/rage, 80)
 		)
 
-/obj/machinery/organ_printer/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/organ_printer/update_icon_state()
 	. = ..()
 	if(machine_stat & NOPOWER)

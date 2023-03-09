@@ -61,7 +61,6 @@
 	R.my_atom = src
 
 	beaker = new /obj/item/reagent_containers/glass/bottle(src)
-	default_apply_parts()
 
 	item_list = list()
 	item_list["Food Items"] = list(

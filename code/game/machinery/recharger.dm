@@ -18,10 +18,6 @@
 	var/base_power_draw = 20000
 	circuit = /obj/item/circuitboard/recharger
 
-/obj/machinery/recharger/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"

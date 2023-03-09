@@ -156,6 +156,7 @@
 
 	if(ispath(circuit))
 		circuit = new circuit(src)
+		default_apply_parts()
 
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
