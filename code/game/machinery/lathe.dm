@@ -23,13 +23,11 @@
 	var/datum/material_container/materials
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
-	/// items held inside us, if any
-	var/list/obj/item/items
-	/// max items held inside us
-	var/items_max = 0
 
-	/// queued design ids
+	/// queued design ids associated to amounts.
 	var/list/queue
+	/// currently printing design
+	var/datum/design/printing
 	/// processing queue?
 	var/printing = FALSE
 	/// progress in deciseconds on current design

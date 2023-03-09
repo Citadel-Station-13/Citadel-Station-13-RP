@@ -60,10 +60,6 @@ other types of metals and chemistry for reagents).
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = "Misc"
 
-
-	#warn build path? how to handle?
-	#warn parse below
-
 	//? legacy
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
