@@ -2475,3 +2475,9 @@
 					/obj/item/multitool/crystal = 5,
 					/obj/item/storage/belt/utility/crystal = 5,
 					/obj/item/storage/toolbox/crystal = 5)
+
+/obj/machinery/vending/tool/adherent/vend(datum/stored_item/vending_product/, mob/living/carbon/user)
+	if (emagged || istype(user) && user.species.name == SPECIES_ADHERENT)
+		return ..()
+	to_chat(user, SPAN_WARNING("\The [src] emits a discordant chime."))
+
