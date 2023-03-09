@@ -33,7 +33,8 @@
 	var/list/obj/item/reagent_containers/cartridge/dispenser/cartridges
 	/// max cartridges
 	var/cartridges_max = 50
-	/// our cell
+	/// our cell - this is in component_parts too.
+	//  todo: component_parts supporting "use this and don't keep this in component_parts".
 	var/obj/item/cell/cell
 	/// initial cell type
 	var/cell_type = /obj/item/cell/high
@@ -77,6 +78,7 @@
 	macros = null
 	if(cell)
 		QDEL_NULL(cell)
+		component_parts -= cell
 	return ..()
 
 /obj/machinery/chemical_dispenser/RefreshParts()
@@ -93,10 +95,7 @@
 		total_manip_rating += manip.rating
 	kj_per_unit = max(0, initial(kj_per_unit) - 0.25 * (total_manip_rating / (total_manips || 1)))
 	var/obj/item/cell/comp_cell = locate() in component_parts
-	if(comp_cell)
-		if(cell && comp_cell != cell)
-			qdel(cell)
-		cell = comp_cell
+	cell = comp_cell
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
@@ -254,6 +253,7 @@
 				return TRUE
 			usr.grab_item_from_interacted_with(cell, src)
 			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cell] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			component_parts -= cell
 			cell = null
 			return TRUE
 		if("macro")
@@ -351,6 +351,7 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			cell = I
+			component_parts |= cell
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -454,7 +455,8 @@
 		drop_product(method, inserted)
 		inserted = null
 	if(cell)
-		drop_product(method, cell)
+		if(cell.loc == src)
+			drop_product(method, cell)
 		cell = null
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE
