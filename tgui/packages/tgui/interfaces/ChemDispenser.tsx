@@ -46,7 +46,10 @@ export const ChemDispenser = (props, context) => {
   const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
   const isRecording = () => (macro !== undefined);
   const recordReagent = (id: string, amount: number) => {
-    let appended = macro?.slice() || [];
+    if (macro === undefined) {
+      return;
+    }
+    let appended = macro?.slice();
     if (appended[appended.length - 1][0] === id) {
       appended[appended.length - 1][1] += amount;
     }

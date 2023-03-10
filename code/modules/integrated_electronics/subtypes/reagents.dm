@@ -239,11 +239,11 @@
 		if(!source.is_open_container() || !target.is_open_container())
 			return
 		if(direc)
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				return
 			source.reagents.trans_to(target, transfer_amount)
 		else
-			if(!source.reagents.get_free_space())
+			if(!source.reagents.available_volume())
 				return
 			target.reagents.trans_to(source, transfer_amount)
 		activate_pin(2)
@@ -604,7 +604,7 @@
 			return
 		if(!source.is_open_container() || !target.is_open_container())
 			return
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			return
 		for(var/datum/reagent/G in source.reagents.reagent_list)
 			if (!direc)

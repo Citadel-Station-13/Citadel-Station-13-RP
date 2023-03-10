@@ -38,7 +38,7 @@
 			to_chat(user, "<span class='notice'>There is no condiment left in \the [src].</span>")
 			return
 
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			to_chat(user, "<span class='notice'>You can't add more condiment to \the [target].</span>")
 			return
 

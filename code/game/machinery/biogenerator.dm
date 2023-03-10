@@ -215,7 +215,7 @@
 				if(cost > points)
 					to_chat(usr, SPAN_DANGER("Insufficient biomass."))
 					return
-				var/amt_to_actually_dispense = round(min(beaker.reagents.get_free_space(), br.reagent_amt))
+				var/amt_to_actually_dispense = round(min(beaker.reagents.available_volume(), br.reagent_amt))
 				if(amt_to_actually_dispense <= 0)
 					to_chat(usr, SPAN_DANGER("The loaded beaker is full!"))
 					return

@@ -53,9 +53,6 @@
 
 /* Internal procs */
 
-/datum/reagents/proc/get_free_space() // Returns free space.
-	return maximum_volume - total_volume
-
 /datum/reagents/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
 	var/the_reagent = null
 	var/the_volume = 0
@@ -140,7 +137,7 @@
 		return 0
 
 	update_total()
-	amount = min(amount, get_free_space())
+	amount = min(amount, available_volume())
 
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
@@ -282,7 +279,7 @@
 	if(!target || !istype(target))
 		return
 
-	amount = max(0, min(amount, total_volume, target.get_free_space() / multiplier))
+	amount = max(0, min(amount, total_volume, target.available_volume() / multiplier))
 
 	if(!amount)
 		return
@@ -522,6 +519,16 @@
 		if(C.can_happen(src))
 			do_happen = TRUE
 	return do_happen
+
+//? Queries - Whole
+
+/**
+ * returns volume remaining
+ */
+/datum/reagents/proc/available_volume()
+	return maximum_volume - total_volume
+
+//? UI
 
 /**
  * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx

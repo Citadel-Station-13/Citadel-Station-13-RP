@@ -71,7 +71,7 @@
 	var/injtime = time // Calculated 'true' injection time (as added to by hardsuits and whatnot), 66% of this goes to warmup, then every 33% after injects 5u
 	switch(mode)
 		if(SYRINGE_DRAW)
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				to_chat(user, "<span class='warning'>The syringe is full.</span>")
 				mode = SYRINGE_INJECT
 				return
@@ -82,7 +82,7 @@
 					return
 
 				if(istype(target, /mob/living/carbon))
-					var/amount = reagents.get_free_space()
+					var/amount = reagents.available_volume()
 					var/mob/living/carbon/T = target
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
@@ -143,7 +143,7 @@
 				update_icon()
 
 
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				mode = SYRINGE_INJECT
 				update_icon()
 
@@ -158,7 +158,7 @@
 			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_containers/food) && !istype(target, /obj/item/slime_extract) && !istype(target, /obj/item/clothing/mask/smokable/cigarette) && !istype(target, /obj/item/storage/fancy/cigarettes))
 				to_chat(user, "<span class='notice'>You cannot directly fill this object.</span>")
 				return
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				to_chat(user, "<span class='notice'>[target] is full.</span>")
 				return
 

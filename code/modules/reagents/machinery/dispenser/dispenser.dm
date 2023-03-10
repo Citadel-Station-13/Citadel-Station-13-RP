@@ -187,11 +187,12 @@
 			var/id = params["id"]
 			if(!check_reagent_id(id))
 				return TRUE
-			var/amount = round(text2num(params["amount"]))
+			var/amount = round(dispense_amount)
 			if(!amount)
 				return TRUE
 			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
-			var/avail = min(amount, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(amount * kj_per_unit)))
+			var/wanted = clamp(amount, 0, inserted.reagents.maximum_volume - inserted.reagents.total_volume)
+			var/avail = min(wanted, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(wanted * kj_per_unit)))
 			inserted.reagents.add_reagent(id, avail)
 			investigate_log("[key_name(usr)] dispensed [avail] of [id]", INVESTIGATE_REAGENTS)
 			return TRUE
@@ -218,14 +219,14 @@
 			dispense_amount = clamp(target, 0, dispense_amount_max)
 			return TRUE
 		if("isolate")
-			var/id = params["reagent"]
+			var/id = params["id"]
 			if(isnull(id))
 				return TRUE
 			investigate_log("[key_name(usr)] isolated [id]", INVESTIGATE_REAGENTS)
 			inserted?.reagents?.isolate_reagent(id)
 			return TRUE
 		if("purge")
-			var/id = params["reagent"]
+			var/id = params["id"]
 			if(isnull(id))
 				return TRUE
 			var/amount = isnull(params["amount"])? INFINITY : round(text2num(params["amount"]))

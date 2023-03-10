@@ -27,7 +27,7 @@
 
 	if(reagents.total_volume)
 
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			to_chat(user, "<span class='notice'>[target] is full.</span>")
 			return
 

@@ -106,7 +106,7 @@
 	else
 		data["occupant"] = 0
 	if(S.beaker)
-		data["beaker"] = S.beaker.reagents.get_free_space()
+		data["beaker"] = S.beaker.reagents.available_volume()
 	else
 		data["beaker"] = -1
 	data["filtering"] = S.filtering
