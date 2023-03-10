@@ -61,9 +61,9 @@
 	name = "CondiMaster 3000"
 	condi = TRUE
 
-/obj/machinery/chem_master/Initialize(mapload, newdir)
-	. = ..()
-	create_reagents(1000)
+/obj/machinery/chem_master/Initialize(mapload)
+	create_reagents(1000) // refreshparts needs reagents
+	return ..()
 
 /obj/machinery/chem_master/Destroy()
 	QDEL_NULL(beaker)
