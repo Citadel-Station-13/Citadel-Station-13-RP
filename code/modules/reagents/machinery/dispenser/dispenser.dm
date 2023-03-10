@@ -155,7 +155,7 @@
 	var/list/chems_final = list()
 	for(var/id in chems_built)
 		chems_final += list(chems_built[id])
-	.["reagents"] = chems_built
+	.["reagents"] = chems_final
 	.["macros"] = macros || list()
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
@@ -305,6 +305,7 @@
 				"index" = ++macro_index_next,
 				"data" = built,
 			)
+			update_static_data()
 			return TRUE
 		if("del_macro")
 			var/index = text2num(params["index"])

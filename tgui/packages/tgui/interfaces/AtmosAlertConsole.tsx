@@ -2,10 +2,18 @@ import { useBackend } from '../backend';
 import { Button, Section } from '../components';
 import { Window } from '../layouts';
 
+interface AtmosAlertConsoleData {
+  priority_alarms: Array<AtmosAlert>;
+  minor_alarms: Array<AtmosAlert>;
+}
+
+interface AtmosAlert {
+  name: string;
+  ref: string;
+}
+
 export const AtmosAlertConsole = (props, context) => {
-  const { act, data } = useBackend(context);
-  const priorityAlerts = data.priority_alarms || [];
-  const minorAlerts = data.minor_alarms || [];
+  const { act, data } = useBackend<AtmosAlertConsoleData>(context);
   return (
     <Window
       width={350}
@@ -13,30 +21,30 @@ export const AtmosAlertConsole = (props, context) => {
       <Window.Content scrollable>
         <Section title="Alarms">
           <ul>
-            {priorityAlerts.length === 0 && (
+            {data.priority_alarms.length === 0 && (
               <li className="color-good">
                 No Priority Alerts
               </li>
             )}
-            {priorityAlerts.map(alert => (
-              <li key={alert}>
+            {data.priority_alarms.map(alert => (
+              <li key={alert.ref}>
                 <Button
                   icon="times"
-                  content={alert}
+                  content={alert.name}
                   color="bad"
                   onClick={() => act('clear', { zone: alert })} />
               </li>
             ))}
-            {minorAlerts.length === 0 && (
+            {data.minor_alarms.length === 0 && (
               <li className="color-good">
                 No Minor Alerts
               </li>
             )}
-            {minorAlerts.map(alert => (
-              <li key={alert}>
+            {data.minor_alarms.map(alert => (
+              <li key={alert.ref}>
                 <Button
                   icon="times"
-                  content={alert}
+                  content={alert.name}
                   color="average"
                   onClick={() => act('clear', { zone: alert })} />
               </li>
