@@ -42,8 +42,6 @@ var/global/list/minor_air_alarms = list()
 	.["priority_alarms"] = major_alarms
 	.["minor_alarms"] = minor_alarms
 
-	return data
-
 /obj/machinery/computer/atmos_alert/update_icon()
 	if(!(machine_stat & (NOPOWER|BROKEN)))
 		var/list/alarms = atmosphere_alarm.major_alarms()
