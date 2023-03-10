@@ -37,7 +37,7 @@
 	var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, scraping around inside [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, scraping around inside [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20)
+	affected.create_wound(CUT, 20)
 
 ///////////////////////////////////////////////////////////////
 // Space Making Surgery
@@ -144,8 +144,7 @@
 	"<font color=#4F49AF>You put \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" )
 	if (tool.w_class > get_max_wclass(affected)/2 && prob(50) && (affected.robotic < ORGAN_ROBOT))
 		to_chat(user, "<font color='red'> You tear some blood vessels trying to fit such a big object in this cavity.</font>")
-		var/datum/wound/internal_bleeding/I = new (10)
-		affected.wounds += I
+		affected.create_specific_wound(/datum/wound/internal_bleeding, 10)
 		affected.owner.custom_pain("You feel something rip in your [affected.name]!", 1)
 	if(!user.transfer_item_to_loc(tool, affected))
 		return

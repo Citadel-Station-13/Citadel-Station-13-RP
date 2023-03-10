@@ -28,10 +28,10 @@
 
 /datum/surgery_step/generic/cut_open
 	allowed_tools = list(
-		/obj/item/surgical/scalpel = 100,		\
+		/obj/item/surgical/scalpel = 100,
 		/obj/item/surgical/scalpel_primitive = 80,
-		/obj/item/material/knife = 75,	\
-		/obj/item/material/shard = 50, 		\
+		/obj/item/material/knife = 75,
+		/obj/item/material/shard = 50,
 	)
 	req_open = 0
 
@@ -59,13 +59,13 @@
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>")
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Laser Scalpel Surgery
@@ -102,7 +102,7 @@
 	//Could be cleaner ...
 	affected.open = 1
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	spread_germs_to_organ(affected, user)
 
@@ -110,8 +110,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 7.5)
-	affected.createwound(BURN, 12.5)
+	affected.create_wound(CUT, 7.5)
+	affected.create_wound(BURN, 12.5)
 
 ///////////////////////////////////////////////////////////////
 // Incision Management Surgery
@@ -119,7 +119,7 @@
 
 /datum/surgery_step/generic/incision_manager
 	allowed_tools = list(
-		/obj/item/surgical/scalpel/manager = 100
+		/obj/item/surgical/scalpel/manager = 100,
 	)
 
 	priority = 2
@@ -148,7 +148,7 @@
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	affected.open = 2
 
@@ -156,8 +156,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20)
-	affected.createwound(BURN, 15)
+	affected.create_wound(CUT, 20)
+	affected.create_wound(BURN, 15)
 
 ///////////////////////////////////////////////////////////////
 // Hemostat Surgery
@@ -165,10 +165,10 @@
 
 /datum/surgery_step/generic/clamp_bleeders
 	allowed_tools = list(
-		/obj/item/surgical/hemostat = 100,	\
-		/obj/item/stack/cable_coil = 75, 	\
-		/obj/item/surgical/hemostat_primitive = 50,	\
-		/obj/item/assembly/mousetrap = 20
+		/obj/item/surgical/hemostat = 100,
+		/obj/item/stack/cable_coil = 75,
+		/obj/item/surgical/hemostat_primitive = 50,
+		/obj/item/assembly/mousetrap = 20,
 	)
 
 	min_duration = 40
@@ -197,7 +197,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",	\
 	"<font color='red'>Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",)
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Retractor Surgery
@@ -205,9 +205,9 @@
 
 /datum/surgery_step/generic/retract_skin
 	allowed_tools = list(
-		/obj/item/surgical/retractor = 100,	\
-		/obj/item/surgical/retractor_primitive = 75, \
-		/obj/item/material/kitchen/utensil/fork = 50
+		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
+		/obj/item/material/kitchen/utensil/fork = 50,
 	)
 
 	allowed_procs = list(IS_CROWBAR = 75)
@@ -266,11 +266,11 @@
 
 /datum/surgery_step/generic/cauterize
 	allowed_tools = list(
-		/obj/item/surgical/cautery = 100,			\
-		/obj/item/clothing/mask/smokable/cigarette = 75,	\
-		/obj/item/surgical/cautery_primitive = 70,	\
-		/obj/item/flame/lighter = 50,			\
-		/obj/item/weldingtool = 25
+		/obj/item/surgical/cautery = 100,
+		/obj/item/clothing/mask/smokable/cigarette = 75,
+		/obj/item/surgical/cautery_primitive = 70,
+		/obj/item/flame/lighter = 50,
+		/obj/item/weldingtool = 25,
 	)
 
 	min_duration = 70
@@ -308,9 +308,9 @@
 
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
-		/obj/item/surgical/circular_saw = 100, \
-		/obj/item/material/knife/machete/hatchet = 75, \
-		/obj/item/surgical/circular_saw = 60
+		/obj/item/surgical/circular_saw = 100,
+		/obj/item/material/knife/machete/hatchet = 75,
+		/obj/item/surgical/saw_primitive = 60,
 	)
 	req_open = 0
 
@@ -344,5 +344,5 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, sawing through the bone in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, sawwing through the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 30)
+	affected.create_wound(CUT, 30)
 	affected.fracture()

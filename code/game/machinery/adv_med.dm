@@ -355,7 +355,7 @@
 					organStatus["bleeding"] = 1
 				if(E.status & ORGAN_DEAD)
 					organStatus["dead"] = 1
-				for(var/datum/wound/W in E.wounds)
+				for(var/datum/wound/W as anything in E.wounds)
 					if(W.internal)
 						organStatus["internalBleeding"] = 1
 						break
@@ -517,9 +517,10 @@
 				var/internal_bleeding = ""
 				var/lung_ruptured = ""
 				var/o_dead = ""
-				for(var/datum/wound/W in e.wounds) if(W.internal)
-					internal_bleeding = "<br>Internal bleeding"
-					break
+				for(var/datum/wound/W as anything in e.wounds)
+					if(W.internal)
+						internal_bleeding = "<br>Internal bleeding"
+						break
 				if(istype(e, /obj/item/organ/external/chest) && occupant.is_lung_ruptured())
 					lung_ruptured = "Lung ruptured:"
 				if(e.splinted)
