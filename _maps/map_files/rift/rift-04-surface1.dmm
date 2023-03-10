@@ -574,7 +574,7 @@
 "axm" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "axD" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/debris/cleanable/blood,
@@ -1290,6 +1290,10 @@
 "bdy" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
+"bdL" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "bdR" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/borderfloor{
@@ -1724,7 +1728,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
 	on = 1;
-	scrub_id = "central_airlock_two_scrubber"
+	scrub_id = "sci_surface_lock_1_scrubber"
 	},
 /obj/structure/railing{
 	dir = 8
@@ -2810,15 +2814,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"cdn" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
 "cdP" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -7327,6 +7322,9 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "eUk" = (
@@ -7503,6 +7501,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
+"fcf" = (
+/obj/structure/sign/securearea,
+/turf/simulated/wall/r_wall,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "fcI" = (
 /obj/machinery/door/airlock/security{
 	name = "Confinement Storage";
@@ -8312,10 +8314,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "fLh" = (
-/obj/structure/catwalk,
-/obj/structure/ladder/up,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/open,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "fLj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
@@ -11391,18 +11391,6 @@
 /obj/structure/barricade/cutout/swarmer,
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
-"hGF" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/xenobiology/outpost_hallway)
 "hGN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -14276,6 +14264,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "jnU" = (
@@ -14438,7 +14429,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "jwH" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -15358,9 +15349,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kah" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -19464,8 +19452,9 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/obj/structure/catwalk,
-/turf/simulated/open/lythios43c,
+/obj/structure/ladder/up,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "mwN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26850,6 +26839,12 @@
 /obj/item/storage/box/gloves,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_cell_hallway)
+"qSm" = (
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "qSH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -31236,9 +31231,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
-"tGe" = (
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
 "tGL" = (
 /obj/structure/table/glass,
 /obj/machinery/firealarm{
@@ -36376,6 +36368,13 @@
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"wNQ" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network/outside{
+	dir = 9
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "wOm" = (
 /obj/structure/railing{
 	dir = 8
@@ -36570,6 +36569,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
+"wUT" = (
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "wVx" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorwhite,
@@ -44377,16 +44386,16 @@ xoc
 lcN
 lcN
 vgp
-vUA
-vUA
-vUA
-vUA
+qqW
+qqW
+qqW
+qqW
 lcN
 lcN
 lcN
 tJx
-sHD
-sHD
+sGn
+sGn
 ykF
 osx
 osx
@@ -44571,16 +44580,16 @@ lcN
 lcN
 lcN
 vgp
-vUA
+qqW
 axm
 axm
-vUA
-lcN
-lcN
-lcN
-tJx
-sHD
-sHD
+qqW
+mix
+mix
+mix
+bdL
+sGn
+sGn
 ykF
 iwl
 qLA
@@ -44765,16 +44774,16 @@ lcN
 lcN
 lcN
 vgp
-vUA
-tGe
-tGe
-vUA
+qqW
+sya
+sya
+qqW
 kXk
 nlB
 kXk
 kXk
-sHD
-sHD
+sGn
+sGn
 ykF
 hnh
 oqk
@@ -44959,15 +44968,15 @@ lcN
 lcN
 lcN
 vgp
-rWo
-cdn
+vGZ
+bvx
 jwv
-vUA
+qqW
 ueH
 tet
 jqF
 kXk
-sHD
+sGn
 sHD
 ykF
 aWt
@@ -45153,15 +45162,15 @@ lcN
 lcN
 lcN
 vgp
-rWo
-cdn
+vGZ
+bvx
 jwv
-vUA
+qqW
 ueH
 pTw
 ueH
 kXk
-bSW
+wNQ
 iCm
 ykF
 jKk
@@ -45347,10 +45356,10 @@ lcN
 lcN
 lcN
 vgp
-rWo
-cdn
+vGZ
+bvx
 jwv
-vUA
+qqW
 ueH
 pTw
 ueH
@@ -46127,7 +46136,7 @@ vGZ
 wqA
 qIZ
 eTW
-hGF
+vBx
 vBx
 tYL
 jaA
@@ -46514,9 +46523,9 @@ vgp
 vGZ
 mDM
 vKj
-vGZ
-lcN
-tJx
+wUT
+fLh
+fLh
 fLh
 kUL
 kUL
@@ -46708,13 +46717,13 @@ vgp
 vGZ
 rZO
 dQD
-vGZ
-lcN
-tJx
-sHD
-sHD
+qSm
+fLh
+fLh
+fLh
+vUA
 mwx
-sHD
+mLf
 jPz
 pdl
 mbD
@@ -46903,12 +46912,12 @@ qqW
 wqA
 iKr
 qqW
-lcN
-lcN
-btn
-btn
-fxg
-sHD
+rWo
+rWo
+vUA
+vUA
+mLf
+mLf
 ctY
 nho
 sHv
@@ -46930,7 +46939,7 @@ xWS
 caD
 pOV
 wQR
-sHD
+sGn
 lcM
 lcN
 lcN
@@ -47101,7 +47110,7 @@ lcN
 lcN
 lcN
 lcN
-tJx
+fxg
 sHD
 ctY
 ilP
@@ -47471,7 +47480,7 @@ iFN
 iFN
 iFN
 iFN
-qqW
+fcf
 qqW
 qqW
 qqW
