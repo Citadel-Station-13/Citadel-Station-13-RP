@@ -256,7 +256,7 @@ HALOGEN COUNTER	- Radcount on mobs
 			if(e.has_infected_wound())
 				dat += SPAN_WARNING("\nInfected wound detected in subject [e.name]. Disinfection recommended.")
 			// IB
-			for(var/datum/wound/W in e.wounds)
+			for(var/datum/wound/W as anything in e.wounds)
 				if(W.internal)
 					if(advscan >= 1 && showadvscan == 1)
 						ib_dat += SPAN_WARNING("\nInternal bleeding detected in subject [e.name].")
