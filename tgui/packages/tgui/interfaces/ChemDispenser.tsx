@@ -1,4 +1,4 @@
-import { arrayBucketSplit } from "common/collections";
+import { arrayBucketFill } from "common/collections";
 import { BooleanLike } from "common/react";
 import { useBackend, useSharedState } from "../backend";
 import { Button, LabeledList, NoticeBox, ProgressBar, Section, Slider, Stack } from "../components";
@@ -46,11 +46,16 @@ export const ChemDispenser = (props, context) => {
   const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
   const isRecording = () => (macro !== undefined);
   const recordReagent = (id: string, amount: number) => {
-    let appended = macro?.slice();
-    appended?.push([id, amount]);
+    let appended = macro?.slice() || [];
+    if (appended[appended.length - 1][0] === id) {
+      appended[appended.length - 1][1] += amount;
+    }
+    else {
+      appended?.push([id, amount]);
+    }
     setMacro(appended);
   };
-  const finalizeMacro = (name: string) => {
+  const finalizeMacro = (name?: string) => {
     act("add_macro", { data: macro, name: name });
     setMacro(undefined);
   };
@@ -86,30 +91,35 @@ export const ChemDispenser = (props, context) => {
           buttons={
             <Button
               content={macro === undefined? "Record" : "Stop"}
-              onClick={() => macro === undefined? setMacro(new Array<[string, number]>()) : finalizeMacro("ERROR")}
+              onClick={() => macro === undefined? setMacro(new Array<[string, number]>()) : finalizeMacro()}
               icon={macro === undefined? "circle" : "square"}
               color={macro === undefined? "good" : "bad"} />
           }>
-          <Stack>
+          <Stack vertical>
             {
-              arrayBucketSplit(data.macros.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((arr) => (
+              arrayBucketFill(data.macros.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((arr) => (
                 // yes, this is shitcode for key, but maybe it shouldn't be so damn PICKY
-                <Stack.Item grow={1} key={Math.random()}>
+                <Stack.Item key={Math.random()}>
                   {arr.map((m) => (
-                    <Stack key={m.index}>
+                    // ditto
+                    <Stack key={Math.random()}>
                       <Stack.Item grow={1}>
-                        <Button
-                          icon="forward"
-                          fluid
-                          key={m.name}
-                          content={m.name}
-                          onClick={() => act('macro', { index: m.index })} />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button.Confirm
-                          key={m.name}
-                          icon="trash"
-                          onClick={() => act('del_macro', { index: m.index })} />
+                        <Stack>
+                          <Stack.Item grow={1}>
+                            <Button
+                              icon="forward"
+                              fluid
+                              key={m.name}
+                              content={m.name}
+                              onClick={() => act('macro', { index: m.index })} />
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Button.Confirm
+                              key={m.name}
+                              icon="trash"
+                              onClick={() => act('del_macro', { index: m.index })} />
+                          </Stack.Item>
+                        </Stack>
                       </Stack.Item>
                     </Stack>
                   ))}
@@ -119,20 +129,23 @@ export const ChemDispenser = (props, context) => {
           </Stack>
         </Section>
         <Section title="Synthesis">
-          <Stack>
-            {arrayBucketSplit(data.reagents.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((reagentArray) => (
-              <Stack.Item grow={1} key={Math.random()}>
-                {reagentArray.map((reagent) => (
-                  <Button
-                    fluid
-                    icon="tint"
-                    key={reagent.id}
-                    content={reagent.name}
-                    onClick={() => {
-                      act('reagent', { id: reagent.id });
-                      recordReagent(reagent.id, data.amount);
-                    }} />
-                ))}
+          <Stack vertical>
+            {arrayBucketFill(data.reagents.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((reagentArray) => (
+              <Stack.Item key={Math.random()}>
+                <Stack>
+                  {reagentArray.map((reagent) => (
+                    <Stack.Item grow={1} key={reagent.id}>
+                      <Button
+                        fluid
+                        icon="tint"
+                        content={reagent.name}
+                        onClick={() => {
+                          act('reagent', { id: reagent.id });
+                          recordReagent(reagent.id, data.amount);
+                        }} />
+                    </Stack.Item>
+                  ))}
+                </Stack>
               </Stack.Item>
             ))}
           </Stack>
