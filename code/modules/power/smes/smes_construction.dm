@@ -324,9 +324,10 @@
 
 		// Superconducting Magnetic Coil - Upgrade the SMES
 		else if(istype(W, /obj/item/smes_coil))
-			if(!user.attempt_insert_item_for_installation(W, src))
-				return
 			if (cur_coils < max_coils)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+					return
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
 					return
