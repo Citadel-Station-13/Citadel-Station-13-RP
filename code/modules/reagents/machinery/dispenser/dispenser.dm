@@ -126,7 +126,7 @@
 /obj/machinery/chemical_dispenser/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ChemDispenser")
+		ui = new(user, src, "ChemDispenser", name)
 		ui.open()
 
 /obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -239,7 +239,8 @@
 				return TRUE
 			usr.grab_item_from_interacted_with(inserted, src)
 			usr.visible_action_feedback(SPAN_NOTICE("[usr] ejects [inserted] from [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
-			investigate_log("[key_name(usr)] ejected [ref_name_path(src)]", INVESTIGATE_REAGENTS)
+			investigate_log("[key_name(usr)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
+			inserted = null
 			return TRUE
 		if("eject_cart")
 			if(!panel_open)
@@ -291,6 +292,8 @@
 		if("add_macro")
 			var/list/raw = params["data"]
 			var/name = params["name"]
+			if(isnull(name))
+				name = input(usr, "Name this macro", "Chemical Macro", "Macro")
 			if(length(macros) > MAX_MACROS)
 				return TRUE
 			if(!length(raw) || !name)

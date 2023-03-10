@@ -318,11 +318,18 @@ export const binaryInsertWith = <T, U = unknown>(getKey: (value: T) => U):
 export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
   Array<Array<T>> => {
   let output = new Array<Array<T>>();
-  while (arrIn.length > amt) {
-    output.push(arrIn.splice(0, amt));
+  if (amt <= 0) {
+    return output;
   }
-  if (arrIn.length > 0) {
-    output.push(arrIn);
+  let left = arrIn.length;
+  let curr = 0;
+  while (left >= amt) {
+    output.push(arrIn.slice(curr, curr + amt));
+    curr += amt;
+    left -= amt;
+  }
+  if (left > 0) {
+    output.push(arrIn.slice(curr));
   }
   return output;
 };
@@ -333,12 +340,22 @@ export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
 export const arrayBucketSplit = <T>(arrIn: Array<T>, amt: number):
 Array<Array<T>> => {
   let output = new Array<Array<T>>();
-  let want = Math.ceil(arrIn.length / amt);
-  while (arrIn.length > want) {
-    output.push(arrIn.splice(0, want));
+  if (amt <= 0) {
+    return output;
   }
-  if (arrIn.length > 0) {
-    output.push(arrIn);
+  let want = Math.ceil(arrIn.length / amt);
+  if (want <= 0) {
+    return output;
+  }
+  let left = arrIn.length;
+  let curr = 0;
+  while (left >= want) {
+    output.push(arrIn.slice(curr, curr + want));
+    curr += want;
+    left -= want;
+  }
+  if (left > 0) {
+    output.push(arrIn.slice(curr));
   }
   return output;
 };

@@ -6,7 +6,7 @@
  */
 
 import { InfernoNode } from "inferno";
-import { LabeledList, Section } from "../../components";
+import { LabeledList, NoticeBox, Section } from "../../components";
 
 interface ReagentContentsProps {
   buttons?: InfernoNode;
@@ -26,6 +26,11 @@ export const ReagentContents = (props: ReagentContentsProps, context) => {
   return (
     <Section buttons={props.buttons}>
       <LabeledList>
+        {props.reagents.length === 0 && (
+          <NoticeBox>
+            Container is empty.
+          </NoticeBox>
+        )}
         {
           props.reagents.map((reagent) => (
             <LabeledList.Item
