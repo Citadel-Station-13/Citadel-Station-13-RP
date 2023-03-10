@@ -1,7 +1,7 @@
 import { arrayBucketSplit } from "common/collections";
 import { BooleanLike } from "common/react";
 import { useBackend, useSharedState } from "../backend";
-import { Button, Flex, LabeledList, NoticeBox, ProgressBar, Section, Slider, Stack } from "../components";
+import { Button, LabeledList, NoticeBox, ProgressBar, Section, Slider, Stack } from "../components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
 
@@ -46,10 +46,13 @@ export const ChemDispenser = (props, context) => {
   const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
   const isRecording = () => (macro !== undefined);
   const recordReagent = (id: string, amount: number) => {
-    macro?.push([id, amount]);
+    let appended = macro?.slice();
+    appended?.push([id, amount]);
+    setMacro(appended);
   };
   const finalizeMacro = (name: string) => {
     act("add_macro", { data: macro, name: name });
+    setMacro(undefined);
   };
   return (
     <Window
@@ -74,7 +77,7 @@ export const ChemDispenser = (props, context) => {
         <Section title="Dispenser">
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <Slider value={data.amount} minValue={0} maxValue={data.amount_max} unit="u"
+              <Slider step={1} stepPixelSize={8} value={data.amount} minValue={0} maxValue={data.amount_max} unit="u"
                 onChange={(_, val) => act('amount', { set: val })} />
             </LabeledList.Item>
           </LabeledList>
@@ -87,27 +90,28 @@ export const ChemDispenser = (props, context) => {
               icon={macro === undefined? "circle" : "square"}
               color={macro === undefined? "good" : "bad"} />
           }>
-          <Stack direction="column">
+          <Stack>
             {
               arrayBucketSplit(data.macros.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((arr) => (
                 // yes, this is shitcode for key, but maybe it shouldn't be so damn PICKY
                 <Stack.Item grow={1} key={Math.random()}>
                   {arr.map((m) => (
-                    <Flex direction="column" key={m}>
-                      <Flex.Item grow={1}>
+                    <Stack key={m.index}>
+                      <Stack.Item grow={1}>
                         <Button
-                          icon="rewind"
+                          icon="forward"
+                          fluid
                           key={m.name}
                           content={m.name}
                           onClick={() => act('macro', { index: m.index })} />
-                      </Flex.Item>
-                      <Flex.Item>
+                      </Stack.Item>
+                      <Stack.Item>
                         <Button.Confirm
                           key={m.name}
                           icon="trash"
                           onClick={() => act('del_macro', { index: m.index })} />
-                      </Flex.Item>
-                    </Flex>
+                      </Stack.Item>
+                    </Stack>
                   ))}
                 </Stack.Item>
               ))
@@ -135,7 +139,7 @@ export const ChemDispenser = (props, context) => {
         </Section>
         <Section title="Cartridges">
           {data.cartridges.sort((a, b) => (a.label.localeCompare(b.label))).map((cart) => (
-            <Stack direction="column" key={cart.label}>
+            <Stack key={cart.label}>
               <Stack.Item>
                 <Button
                   icon="tint"
@@ -174,9 +178,10 @@ export const ChemDispenser = (props, context) => {
                 <>
                   <Button
                     content="Isolate"
+                    icon="compress-arrows-alt"
                     onClick={() => act('isolate', { id: id })} />
                   {
-                    [1, 2, 3, 5, 10, 20].map((n) => (
+                    [1, 2, 3, 5].map((n) => (
                       <Button
                         key={n}
                         content={`-${n}`}
@@ -185,6 +190,7 @@ export const ChemDispenser = (props, context) => {
                   }
                   <Button
                     content="Purge"
+                    icon="trash"
                     onClick={() => act('purge', { id: id })} />
                 </>
               )} />
