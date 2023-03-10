@@ -20328,6 +20328,20 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"pdK" = (
+/obj/structure/table/bench/steel,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/job/blueshield,
+/turf/simulated/floor/tiled/monotile,
+/area/security/security_lockerroom)
 "pdZ" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Restroom";
@@ -48460,7 +48474,7 @@ kUl
 ciC
 sjU
 uSd
-mjL
+pdK
 lSx
 sjU
 ciC

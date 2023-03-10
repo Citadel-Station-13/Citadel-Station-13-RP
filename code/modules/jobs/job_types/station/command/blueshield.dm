@@ -1,0 +1,59 @@
+/datum/role/job/station/blueshield
+	id = JOB_ID_BLUESHIELD
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
+	title = "Blueshield"
+	departments = list(DEPARTMENT_COMMAND,DEPARTMENT_SECURITY)
+	department_flag = ENGSEC
+	total_positions = 1
+	spawn_positions = 1
+	pto_type = PTO_COMMAND
+	supervisors = "the Facility Director, Corporate Regulations, and Head of Security"
+	idtype = /obj/item/card/id/silver/blueshield
+	selection_color = "#1D1D4F"
+	minimal_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_CAPTAIN,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_HOP,
+		ACCESS_COMMAND_IAA,
+		ACCESS_COMMAND_LOCKERS,
+		ACCESS_COMMAND_TELEPORTER,
+		ACCESS_COMMAND_VAULT,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_GENERAL_GATEWAY,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_MINE,
+	)
+	minimal_player_age = 10
+
+	outfit_type = /datum/outfit/job/station/blueshield
+	desc = "A blueshield is concerned with maintaining the safety and security of the Director alone, dealing with direct threats and \
+						not going out of their way to apprehend criminals. A Blueshield is responsible for the health and safety \
+						of the Director, and other command entities. No one is above the Law, however. Not Security or Command."
+
+/datum/outfit/job/station/blueshield
+	name = OUTFIT_JOB_NAME("Blueshield")
+	uniform = /obj/item/clothing/under/rank/security
+	l_pocket = /obj/item/flash
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	l_ear = /obj/item/radio/headset/heads/hos
+	gloves = /obj/item/clothing/gloves/black
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+
+	id_type = /obj/item/card/id/silver/blueshield
+	pda_type = /obj/item/pda/heads/hop
+
+	backpack = /obj/item/storage/backpack/security
+	backpack_contents = list(/obj/item/handcuffs = 1)
+	satchel_one = /obj/item/storage/backpack/satchel/sec
+	messenger_bag = /obj/item/storage/backpack/messenger/sec
+	dufflebag = /obj/item/storage/backpack/dufflebag/sec
