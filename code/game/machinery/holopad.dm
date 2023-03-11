@@ -302,6 +302,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
 	#warn impl & check for existing calls
 
+/**
+ * get ring'd by a call
+ */
+/obj/machinery/holopad/proc/ring(datum/holocall/incoming)
+	#warn impl
+
 //? UI
 
 /**
@@ -727,8 +733,23 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	return ..()
 
 /datum/holocall/proc/initiate_remote_presence(mob/user)
+	if(remoting)
+		cleanup_remote_presence()
+	if(!user.shunt_perspective(remote_perspective()))
+		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
+		return FALSE
+	remoting = user
+	action_hang_up.grant(remoting)
+	action_swap_view.grant(remoting)
+	return TRUE
 
 /datum/holocall/proc/cleanup_remote_presence()
+	if(!remoting)
+		return
+	remoting.unshunt_perspective()
+	action_hang_up.remove(remoting)
+	action_swap_view.remove(remoting)
+	remoting = null
 
 /datum/holocall/proc/connect()
 	connected = TRUE
@@ -751,8 +772,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	destination = null
 
 /datum/holocall/proc/ring()
+	destination.ring(src)
 
 /datum/holocall/proc/disconnect()
+	if(!QDELING(src))
+		qdel(src)
 
 /datum/holocall/proc/validate()
 	if(!check())

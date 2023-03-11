@@ -1,6 +1,7 @@
 /mob/living/silicon/ai/proc/initiate_holopad_connection(obj/machinery/holopad/pad)
 	#warn impl
 
+
 /mob/living/silicon/ai/proc/terminate_holopad_connection()
 	#warn impl
 
