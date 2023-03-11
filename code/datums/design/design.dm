@@ -6,8 +6,10 @@
 	var/identifier
 	/// types of lathes that can print us
 	var/lathe_type = NONE
-	/// time needed in deciseconds
+	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
 	var/work = 5 SECONDS
+	/// is stack? autodetected.
+	var/is_stack = FALSE
 
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
 	var/build_name
@@ -41,6 +43,8 @@
 	generate()
 
 /datum/design/proc/autodetect()
+	if(ispath(build_path, /obj/item/stack))
+		is_stack = TRUE
 	#warn handle non-build-path'd ones
 	var/obj/item/instance
 	if(isnull(materials))

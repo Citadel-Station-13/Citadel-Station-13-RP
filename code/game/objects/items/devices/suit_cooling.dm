@@ -25,6 +25,9 @@
 
 	//TODO: make it heat up the surroundings when not in space
 
+/obj/item/suit_cooling_unit/empty
+	cell = null
+
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 

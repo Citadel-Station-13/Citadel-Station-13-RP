@@ -1,12 +1,7 @@
 /datum/design/tool/cable
 	identifier = "StackCableCoil"
+	work = 0.1 SECONDS
 	build_path = /obj/item/stack/cable_coil
-
-	#warn impl?
-	/*
-	is_stack = TRUE
-	no_scale = TRUE //prevents material duplication exploits
-	*/
 
 /datum/design/tool/crowbar
 	identifier = "ToolCrowbar"
@@ -67,3 +62,11 @@
 /datum/design/tool/maglight
 	identifier = "ToolMaglight"
 	build_path = /obj/item/flashlight/maglight
+
+/datum/design/tool/welding_goggles
+	identifier = "ToolWeldingGoggles"
+	build_path = /obj/item/clothing/glasses/welding
+
+/datum/design/tool/welding_mask
+	identifier = "ToolWeldingMask"
+	build_path = /obj/item/clothing/head/welding
