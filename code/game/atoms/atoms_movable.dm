@@ -18,7 +18,7 @@
 	var/atom/orbit_target
 
 	/// Movement types, see __DEFINES/flags/movement.dm
-	var/movement_type = GROUND
+	var/movement_type = MOVEMENT_GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
 	///Used for the calculate_adjacencies proc for icon smoothing.
@@ -539,4 +539,4 @@
  * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
  */
 /atom/movable/proc/is_avoiding_ground()
-    return (movement_type != GROUND) || throwing
+    return (movement_type != MOVEMENT_GROUND) || throwing
