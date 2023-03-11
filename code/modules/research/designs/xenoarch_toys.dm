@@ -1,6 +1,6 @@
 /datum/design/science/xenoarch/AssembleDesignName()
 	..()
-	name = "Xenoarcheology equipment design ([item_name])"
+	name = "Xenoarcheology equipment design ([build_name])"
 
 // Xenoarch tools
 

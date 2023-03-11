@@ -1,7 +1,7 @@
 // Various AI/mind holding device
 /datum/design/science/ai_holder/AssembleDesignName()
 	..()
-	name = "Mind storage device prototype ([item_name])"
+	name = "Mind storage device prototype ([build_name])"
 
 /datum/design/science/ai_holder/mmi
 	name = "Man-machine interface"

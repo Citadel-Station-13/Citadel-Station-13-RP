@@ -2,7 +2,7 @@
 
 /datum/design/science/anomaly/AssembleDesignName()
 	..()
-	name = "Anomalous prototype ([item_name])"
+	name = "Anomalous prototype ([build_name])"
 
 /datum/design/science/anomaly/AssembleDesignDesc()
 	if(!desc)
@@ -23,7 +23,7 @@
 
 /datum/design/science/precursor/AssembleDesignName()
 	..()
-	name = "Alien prototype ([item_name])"
+	name = "Alien prototype ([build_name])"
 
 /datum/design/science/precursor/AssembleDesignDesc()
 	if(!desc)

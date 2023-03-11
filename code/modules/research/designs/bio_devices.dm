@@ -3,7 +3,7 @@
 
 /datum/design/science/biotech/AssembleDesignName()
 	..()
-	name = "Biotech device prototype ([item_name])"
+	name = "Biotech device prototype ([build_name])"
 
 // Biotech of various types
 

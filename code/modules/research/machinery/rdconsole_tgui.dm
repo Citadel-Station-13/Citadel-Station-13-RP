@@ -228,8 +228,8 @@
 			mat_list.Add("[D.materials[M] * P.mat_efficiency] [CallMaterialName(M)]")
 
 		var/list/chem_list = list()
-		for(var/T in D.chemicals)
-			chem_list.Add("[D.chemicals[T] * P.mat_efficiency] [CallReagentName(T)]")
+		for(var/T in D.reagents)
+			chem_list.Add("[D.reagents[T] * P.mat_efficiency] [CallReagentName(T)]")
 
 		data.Add(list(list(
 			"name" = D.name,
@@ -266,8 +266,8 @@
 			mat_list.Add("[D.materials[M] * P.mat_efficiency] [CallMaterialName(M)]")
 
 		var/list/chem_list = list()
-		for(var/T in D.chemicals)
-			chem_list.Add("[D.chemicals[T] * P.mat_efficiency] [CallReagentName(T)]")
+		for(var/T in D.reagents)
+			chem_list.Add("[D.reagents[T] * P.mat_efficiency] [CallReagentName(T)]")
 
 		data.Add(list(list(
 			"name" = D.name,

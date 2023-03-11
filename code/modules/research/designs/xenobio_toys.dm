@@ -1,6 +1,6 @@
 /datum/design/science/xenobio/AssembleDesignName()
 	..()
-	name = "Xenobiology equipment design ([item_name])"
+	name = "Xenobiology equipment design ([build_name])"
 
 // Xenobio Weapons
 

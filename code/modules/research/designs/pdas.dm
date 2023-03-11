@@ -16,7 +16,7 @@
 
 /datum/design/science/pda_cartridge/AssembleDesignName()
 	..()
-	name = "PDA accessory ([item_name])"
+	name = "PDA accessory ([build_name])"
 
 /datum/design/science/pda_cartridge/cart_basic
 	identifier = "cart_basic"

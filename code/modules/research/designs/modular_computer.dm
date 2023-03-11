@@ -1,7 +1,7 @@
 // Modular computer components
 /datum/design/science/modularcomponent/AssembleDesignName()
 	..()
-	name = "Computer part design ([item_name])"
+	name = "Computer part design ([build_name])"
 
 // Hard drives
 
@@ -170,7 +170,7 @@
 
 /datum/design/science/modularcomponent/portabledrive/AssembleDesignName()
 	..()
-	name = "Portable data drive design ([item_name])"
+	name = "Portable data drive design ([build_name])"
 
 /datum/design/science/modularcomponent/portabledrive/basic
 	name = "basic data crystal"

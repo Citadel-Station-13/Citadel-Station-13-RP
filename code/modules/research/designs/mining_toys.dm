@@ -1,6 +1,6 @@
 /datum/design/science/mining/AssembleDesignName()
 	..()
-	name = "Mining equipment design ([item_name])"
+	name = "Mining equipment design ([build_name])"
 
 // Mining digging devices
 

@@ -6,7 +6,7 @@ CIRCUITS BELOW
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_GLASS = 2000)
-	chemicals = list("sacid" = 20)
+	reagents = list("sacid" = 20)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/design/circuit/AssembleDesignName()
@@ -14,15 +14,15 @@ CIRCUITS BELOW
 	if(build_path)
 		var/obj/item/circuitboard/C = build_path
 		if(initial(C.board_type) == "machine")
-			name = "Machine circuit design ([item_name])"
+			name = "Machine circuit design ([build_name])"
 		else if(initial(C.board_type) == "computer")
-			name = "Computer circuit design ([item_name])"
+			name = "Computer circuit design ([build_name])"
 		else
-			name = "Circuit design ([item_name])"
+			name = "Circuit design ([build_name])"
 
 /datum/design/circuit/AssembleDesignDesc()
 	if(!desc)
-		desc = "Allows for the construction of \a [item_name] circuit board."
+		desc = "Allows for the construction of \a [build_name] circuit board."
 
 /datum/design/circuit/arcademachine
 	name = "battle arcade machine"

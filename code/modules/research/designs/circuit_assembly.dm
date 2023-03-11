@@ -2,7 +2,7 @@
 
 /datum/design/science/integrated_circuitry/AssembleDesignName()
 	..()
-	name = "Circuitry device design ([item_name])"
+	name = "Circuitry device design ([build_name])"
 
 /datum/design/science/integrated_circuitry/custom_circuit_printer
 	name = "Portable integrated circuit printer"
@@ -38,7 +38,7 @@
 
 /datum/design/science/integrated_circuitry/assembly/AssembleDesignName()
 	..()
-	name = "Circuitry assembly design ([item_name])"
+	name = "Circuitry assembly design ([build_name])"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_small
 	name = "Small custom assembly"

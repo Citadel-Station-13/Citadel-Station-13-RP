@@ -2,7 +2,7 @@
 	build_type = PROTOLATHE | MECHFAB
 
 /datum/design/science/powercell/AssembleDesignName()
-	name = "Power Cell Model ([item_name])"
+	name = "Power Cell Model ([build_name])"
 
 /datum/design/science/powercell/AssembleDesignDesc()
 	if(build_path)

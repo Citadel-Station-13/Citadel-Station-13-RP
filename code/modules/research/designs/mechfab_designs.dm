@@ -428,7 +428,7 @@
 
 /datum/design/science/mecha/AssembleDesignDesc()
 	if(!desc)
-		desc = "Allows for the construction of \a '[item_name]' exosuit module."
+		desc = "Allows for the construction of \a '[build_name]' exosuit module."
 
 /datum/design/science/mecha/tracking
 	name = "Exosuit Tracking Beacon"

@@ -2,7 +2,7 @@
 
 /datum/design/science/general/AssembleDesignName()
 	..()
-	name = "General purpose design ([item_name])"
+	name = "General purpose design ([build_name])"
 
 /datum/design/science/general/communicator
 	name = "Communicator"
@@ -43,7 +43,7 @@
 
 /datum/design/science/illegal/AssembleDesignName()
 	..()
-	name = "Nonstandard design ([item_name])"
+	name = "Nonstandard design ([build_name])"
 
 /datum/design/science/illegal/binaryencrypt
 	name = "Binary encryption key"

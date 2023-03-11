@@ -5,10 +5,10 @@
 
 /datum/design/science/hud/AssembleDesignName()
 	..()
-	name = "HUD glasses prototype ([item_name])"
+	name = "HUD glasses prototype ([build_name])"
 
 /datum/design/science/hud/AssembleDesignDesc()
-	desc = "Allows for the construction of \a [item_name] HUD glasses."
+	desc = "Allows for the construction of \a [build_name] HUD glasses."
 
 /datum/design/science/hud/health
 	name = "health scanner"

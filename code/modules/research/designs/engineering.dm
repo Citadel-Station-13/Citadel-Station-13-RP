@@ -2,7 +2,7 @@
 
 /datum/design/science/tool/AssembleDesignName()
 	..()
-	name = "Experimental tool prototype ([item_name])"
+	name = "Experimental tool prototype ([build_name])"
 
 /datum/design/science/tool/experimental_welder
 	name = "Experimental welding tool"
@@ -40,7 +40,7 @@
 
 /datum/design/science/engineering/AssembleDesignName()
 	..()
-	name = "Engineering device prototype ([item_name])"
+	name = "Engineering device prototype ([build_name])"
 
 /datum/design/science/engineering/t_scanner
 	name = "T-ray Scanner"

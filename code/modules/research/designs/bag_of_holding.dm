@@ -2,7 +2,7 @@
 
 /datum/design/science/boh/AssembleDesignName()
 	..()
-	name = "Infinite capacity storage prototype ([item_name])"
+	name = "Infinite capacity storage prototype ([build_name])"
 
 /datum/design/science/boh/bag_holding
 	name = "Bag of Holding"

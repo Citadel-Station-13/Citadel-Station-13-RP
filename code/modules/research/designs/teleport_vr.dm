@@ -4,7 +4,7 @@
 
 /datum/design/science/teleport/AssembleDesignName()
 	..()
-	name = "Teleportation device prototype ([item_name])"
+	name = "Teleportation device prototype ([build_name])"
 
 /datum/design/science/teleport/translocator
 	name = "Personal translocator"

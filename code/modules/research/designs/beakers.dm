@@ -1,7 +1,7 @@
 // Various beakers
 
 /datum/design/science/beaker/AssembleDesignName()
-	name = "Beaker prototype ([item_name])"
+	name = "Beaker prototype ([build_name])"
 
 /datum/design/science/beaker/noreact
 	name = "cryostasis"

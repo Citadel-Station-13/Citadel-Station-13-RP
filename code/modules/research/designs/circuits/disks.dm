@@ -3,7 +3,7 @@
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 3)
 	materials = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
-	chemicals = list("pacid" = 10)
+	reagents = list("pacid" = 10)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/design/circuit/disk/AssembleDesignName()
@@ -11,9 +11,9 @@
 	if(build_path)
 		var/obj/item/disk/D = build_path
 		if(istype(D, /obj/item/disk/species))
-			name = "Species Prosthetic design ([item_name])"
+			name = "Species Prosthetic design ([build_name])"
 		else
-			name = "Disk design ([item_name])"
+			name = "Disk design ([build_name])"
 
 /datum/design/circuit/disk/skrellprint
 	name = SPECIES_SKRELL

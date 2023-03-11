@@ -8,7 +8,7 @@
 
 /datum/design/science/stock_part/AssembleDesignName()
 	..()
-	name = "Component design ([item_name])"
+	name = "Component design ([build_name])"
 
 /datum/design/science/stock_part/AssembleDesignDesc()
 	if(!desc)

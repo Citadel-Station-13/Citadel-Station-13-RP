@@ -3,7 +3,7 @@
 
 /datum/design/science/medical/AssembleDesignName()
 	..()
-	name = "Medical equipment prototype ([item_name])"
+	name = "Medical equipment prototype ([build_name])"
 
 // Surgical devices
 
@@ -144,7 +144,7 @@
 // ML-3M medigun and cells
 /datum/design/science/medical/cell_based/AssembleDesignName()
 	..()
-	name = "Cell-based medical prototype ([item_name])"
+	name = "Cell-based medical prototype ([build_name])"
 
 /datum/design/science/medical/cell_based/cell_medigun_mag_advanced
 	name = "advanced medical cell magazine"

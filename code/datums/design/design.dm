@@ -9,6 +9,8 @@
 	/// time needed in deciseconds
 	var/work = 5 SECONDS
 
+	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
+	var/build_name
 	/// type of what we build
 	var/build_path
 
@@ -25,8 +27,6 @@
 
 	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
 	var/name
-	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
-	var/build_name
 	/// desc of design, shows in UIs. if null, it'll be auto-detected from the build_path if possible.
 	var/desc
 	/// category - string or list, or null; null results in undefined behavior depending on UI.

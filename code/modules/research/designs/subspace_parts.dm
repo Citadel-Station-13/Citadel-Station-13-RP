@@ -2,7 +2,7 @@
 
 /datum/design/science/stock_part/subspace/AssembleDesignName()
 	..()
-	name = "Subspace component design ([item_name])"
+	name = "Subspace component design ([build_name])"
 
 /datum/design/science/stock_part/subspace/subspace_ansible
 	identifier = "s-ansible"

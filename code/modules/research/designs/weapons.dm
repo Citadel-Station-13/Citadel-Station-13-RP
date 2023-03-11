@@ -1,10 +1,10 @@
 /datum/design/science/weapon/AssembleDesignName()
 	..()
-	name = "Weapon prototype ([item_name])"
+	name = "Weapon prototype ([build_name])"
 
 /datum/design/science/weapon/ammo/AssembleDesignName()
 	..()
-	name = "Weapon ammo prototype ([item_name])"
+	name = "Weapon ammo prototype ([build_name])"
 
 /datum/design/science/weapon/AssembleDesignDesc()
 	if(!desc)
@@ -17,7 +17,7 @@
 
 /datum/design/science/weapon/energy/AssembleDesignName()
 	..()
-	name = "Energy weapon prototype ([item_name])"
+	name = "Energy weapon prototype ([build_name])"
 
 /datum/design/science/weapon/energy/stunrevolver
 	identifier = "stunrevolver"
@@ -67,7 +67,7 @@
 
 /datum/design/science/weapon/ballistic/AssembleDesignName()
 	..()
-	name = "Ballistic weapon prototype ([item_name])"
+	name = "Ballistic weapon prototype ([build_name])"
 
 /datum/design/science/weapon/ballistic/advanced_smg
 	identifier = "smg"
@@ -154,7 +154,7 @@
 
 /datum/design/science/weapon/phase/AssembleDesignName()
 	..()
-	name = "Phase weapon prototype ([item_name])"
+	name = "Phase weapon prototype ([build_name])"
 
 /datum/design/science/weapon/phase/phase_pistol
 	identifier = "phasepistol"
@@ -238,7 +238,7 @@
 
 /datum/design/science/weapon/melee/AssembleDesignName()
 	..()
-	name = "Melee weapon prototype ([item_name])"
+	name = "Melee weapon prototype ([build_name])"
 
 /datum/design/science/weapon/melee/esword
 	name = "Portable Energy Blade"
@@ -257,7 +257,7 @@
 // Grenade stuff
 /datum/design/science/weapon/grenade/AssembleDesignName()
 	..()
-	name = "Grenade casing prototype ([item_name])"
+	name = "Grenade casing prototype ([build_name])"
 
 /datum/design/science/weapon/grenade/large_grenade
 	identifier = "large_Grenade"
@@ -316,7 +316,7 @@
 
 /datum/design/science/weapon/particle/AssembleDesignName()
 	..()
-	name = "Anti-particle weapon prototype ([item_name])"
+	name = "Anti-particle weapon prototype ([build_name])"
 
 /datum/design/science/weapon/particle/advparticle
 	name = "Advanced anti-particle rifle"
@@ -342,7 +342,7 @@
 // NSFW gun and cells
 /datum/design/science/weapon/cell_based/AssembleDesignName()
 	..()
-	name = "Cell-based weapon prototype ([item_name])"
+	name = "Cell-based weapon prototype ([build_name])"
 
 /datum/design/science/weapon/cell_based/prototype_nsfw
 	name = "cell-loaded revolver"
@@ -717,7 +717,7 @@
 //Firing pins to shoot your guns with
 /datum/design/science/pin/AssembleDesignName()
 	..()
-	name = "Weapon firing pin ([item_name])"
+	name = "Weapon firing pin ([build_name])"
 
 /datum/design/science/pin/test
 	name = "Testing range"

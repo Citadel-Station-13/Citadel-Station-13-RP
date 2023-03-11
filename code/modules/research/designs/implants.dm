@@ -5,7 +5,7 @@
 
 /datum/design/science/implant/AssembleDesignName()
 	..()
-	name = "Implantable biocircuit design ([item_name])"
+	name = "Implantable biocircuit design ([build_name])"
 
 /datum/design/science/implant/chemical
 	name = "chemical"

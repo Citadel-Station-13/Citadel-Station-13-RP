@@ -201,8 +201,8 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
 			return 0
-	for(var/C in D.chemicals)
-		if(!reagents.has_reagent(C, D.chemicals[C] * mat_efficiency))
+	for(var/C in D.reagents)
+		if(!reagents.has_reagent(C, D.reagents[C] * mat_efficiency))
 			return 0
 	return 1
 
@@ -213,8 +213,8 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			if(ret != "")
 				ret += ", "
 			ret += "[D.materials[M] - materials[M]] [M]"
-	for(var/C in D.chemicals)
-		if(!reagents.has_reagent(C, D.chemicals[C]))
+	for(var/C in D.reagents)
+		if(!reagents.has_reagent(C, D.reagents[C]))
 			if(ret != "")
 				ret += ", "
 			ret += C
@@ -228,8 +228,8 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	use_power(power)
 	for(var/M in D.materials)
 		materials[M] = max(0, materials[M] - D.materials[M] * mat_efficiency)
-	for(var/C in D.chemicals)
-		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
+	for(var/C in D.reagents)
+		reagents.remove_reagent(C, D.reagents[C] * mat_efficiency)
 
 	if(D.build_path)
 		var/obj/new_item = D.legacy_print(src, src)
