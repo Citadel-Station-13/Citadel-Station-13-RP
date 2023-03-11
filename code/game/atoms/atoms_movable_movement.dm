@@ -573,6 +573,8 @@
 
 	on_update_movement_type(old_type, new_type)
 
+/atom/movable/proc/on_update_movement_type(old_type, new_type)
+
 /atom/movable/proc/add_atom_flying(source)
 	ADD_TRAIT(src, TRAIT_ATOM_FLYING, source)
 	update_movement_type()
