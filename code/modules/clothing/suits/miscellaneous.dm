@@ -333,6 +333,26 @@
 	desc = "Traditional Japanese menswear."
 	icon_state = "kamishimo"
 
+/obj/item/clothing/suit/furcoat
+	name = "furcoat"
+	desc = "The finest hopefully inorganic furs attached to fake leather. The provider has assured it is not of a sapient species origin."
+	icon_state = "furcoat"
+
+/obj/item/clothing/suit/noble_coat
+	name = "noble coat"
+	desc = "A splash of a colorful palette to denote the nobility, or gaudy fashion taste of whoever wears this."
+	icon_state = "noble_coat"
+
+/obj/item/clothing/suit/cyberpunk
+	name = "cyberpunk jacket"
+	desc = "A brown, closed jacket for the punkiest in the cyberspace from the famous brand Blandevistan."
+	icon_state = "cyberpunksleek"
+
+/obj/item/clothing/suit/cyberpunk_long
+	name = "cyberpunk long jacket"
+	desc = "A brown, closed jacket for the punkiest in the cyberspace from the famous brand Blandevistan. This one has extra length."
+	icon_state = "cyberpunksleek_long"
+
 /*
  * coats
  */
