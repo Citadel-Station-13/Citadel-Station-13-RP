@@ -594,6 +594,7 @@
 #include "code\datums\armor\antagonist\changeling.dm"
 #include "code\datums\armor\antagonist\cult.dm"
 #include "code\datums\armor\station\exploration.dm"
+#include "code\datums\armor\station\medical.dm"
 #include "code\datums\armor\station\security.dm"
 #include "code\datums\autolathe\arms.dm"
 #include "code\datums\autolathe\autolathe.dm"
