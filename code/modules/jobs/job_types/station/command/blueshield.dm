@@ -38,7 +38,7 @@
 	outfit_type = /datum/outfit/job/station/blueshield
 	desc = "A blueshield is concerned with maintaining the safety and security of the Director alone, dealing with direct threats and \
 						not going out of their way to apprehend criminals. A Blueshield is responsible for the health and safety \
-						of the Director, and other command entities. No one is above the Law, however. Not Security or Command."
+						of the Director, and other command entities in their absence. No one is above the Law, however. Neither Security nor Command."
 
 /datum/outfit/job/station/blueshield
 	name = OUTFIT_JOB_NAME("Blueshield")
