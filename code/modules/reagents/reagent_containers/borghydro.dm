@@ -39,7 +39,7 @@
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = SSchemistry.chemical_reagents[T]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[T]
 		reagent_names += R.name
 
 	START_PROCESSING(SSobj, src)
@@ -117,11 +117,11 @@
 		if(t)
 			playsound(src, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
-			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+			var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
-	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+	var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 	. = ..()
 	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 
@@ -192,7 +192,7 @@
 		to_chat(user, "<span class='notice'>[src] is out of this reagent, give it some time to refill.</span>")
 		return
 
-	if(!target.reagents.get_free_space())
+	if(!target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return
 

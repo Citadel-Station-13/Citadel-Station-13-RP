@@ -133,3 +133,11 @@
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6)
 	materials = list(MAT_PLASTIC = 5000, MAT_GOLD = 1500, MAT_URANIUM = 250, MAT_PHORON = 1500)
 	build_path = /obj/item/storage/bag/trash/bluespace
+
+/datum/design/item/reagent_synth_chemistry
+	name = "Chemistry Synthesis Module"
+	desc = "A reagent synthesis module required for dispenser functionality"
+	id = "ReagentSynth"
+	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6, TECH_BIO = 5)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 500, MAT_GOLD = 500, MAT_SILVER = 500)
+	build_path = /obj/item/reagent_synth/chemistry

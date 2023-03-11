@@ -6,10 +6,19 @@
 
 import { clamp01, scale, keyOfMatchingRange, toFixed } from 'common/math';
 import { classes, pureComponentHooks } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from './Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { CSS_COLORS } from '../constants';
 
-export const ProgressBar = props => {
+interface ProgressBarProps extends BoxProps {
+  className?: string;
+  value: number;
+  minValue?: number;
+  maxValue?: number;
+  ranges?: Record<any, [number, number]>;
+  color?: any;
+}
+
+export const ProgressBar = (props: ProgressBarProps) => {
   const {
     className,
     value,

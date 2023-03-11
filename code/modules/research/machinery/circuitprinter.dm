@@ -51,10 +51,6 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/r_n_d/circuit_imprinter/process(delta_time)
 	..()
 	if(machine_stat)

@@ -21,7 +21,6 @@ var/list/fuel_injectors = list()
 /obj/machinery/fusion_fuel_injector/Initialize(mapload)
 	. = ..()
 	fuel_injectors += src
-	default_apply_parts()
 
 /obj/machinery/fusion_fuel_injector/Destroy()
 	if(cur_assembly)

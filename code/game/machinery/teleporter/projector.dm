@@ -15,7 +15,6 @@
 
 /obj/machinery/tele_projector/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_appearance()
 
 	return INITIALIZE_HINT_LATELOAD

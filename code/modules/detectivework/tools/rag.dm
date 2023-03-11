@@ -152,7 +152,7 @@
 		return
 
 	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))
-		if(!reagents.get_free_space())
+		if(!reagents.available_volume())
 			to_chat(user, "<span class='warning'>\The [src] is already soaked.</span>")
 			return
 

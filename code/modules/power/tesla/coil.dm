@@ -24,7 +24,6 @@
 /obj/machinery/power/tesla_coil/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/power/tesla_coil/Destroy()
 	QDEL_NULL(wires)
@@ -37,7 +36,6 @@
 		power_multiplier += C.rating
 		zap_cooldown -= (C.rating * 20)
 	input_power_multiplier = power_multiplier
-
 
 /obj/machinery/power/tesla_coil/update_icon()
 	if(panel_open)

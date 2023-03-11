@@ -51,9 +51,8 @@
 	/// How many beakers can the machine hold?
 	var/container_limit = 3
 
-/obj/machinery/clonepod/Initialize(mapload, newdir)
+/obj/machinery/clonepod/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/clonepod/attack_ai(mob/user)

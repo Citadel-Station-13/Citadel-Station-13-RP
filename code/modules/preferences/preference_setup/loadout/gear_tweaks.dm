@@ -180,7 +180,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 		. = valid_reagents[pick(valid_reagents)]
 	else
 		. = valid_reagents[metadata]
-	I.reagents.add_reagent(., I.reagents.get_free_space())
+	I.reagents.add_reagent(., I.reagents.available_volume())
 
 //Custom name and desciption code
 //note to devs downstream: where 'gear_tweaks = list(gear_tweak_free_color_choice)' was used before for color selection

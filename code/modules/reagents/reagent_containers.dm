@@ -28,9 +28,6 @@
 		return
 	return
 
-/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
-	return
-
 /obj/item/reagent_containers/proc/reagentlist() // For attack logs
 	if(reagents)
 		return reagents.get_reagents()
@@ -44,7 +41,7 @@
 		to_chat(user, "<span class='notice'>[target] is empty.</span>")
 		return 1
 
-	if(reagents && !reagents.get_free_space())
+	if(reagents && !reagents.available_volume())
 		to_chat(user, "<span class='notice'>[src] is full.</span>")
 		return 1
 
@@ -60,7 +57,7 @@
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
 		return 1
 
-	if(target.reagents && !target.reagents.get_free_space())
+	if(target.reagents && !target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return 1
 
@@ -139,7 +136,7 @@
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
 		return 1
 
-	if(!target.reagents.get_free_space())
+	if(!target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return 1
 
