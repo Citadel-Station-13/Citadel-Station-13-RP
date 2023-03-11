@@ -52,17 +52,16 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	ASSERT(message)
 	GLOB.global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
 
-/datum/lore/atc_controller/proc/reroute_traffic(yes = TRUE)
-	if(yes)
-		if(!squelched)
-			msg("Re-routing traffic and fleet patterns around [GLOB.using_map.station_name].")
+/datum/lore/atc_controller/proc/toggle_broadcast()
+	if(!squelched)
+		msg("Ceasing broadcast of ATC communications.")
 		squelched = TRUE
 		STOP_PROCESSING(SSobj, src) //muh performance
 	else
 		if(squelched)
-			msg("Resuming normal fleet patterns and traffic.")
-		squelched = FALSE
-		START_PROCESSING(SSobj, src)
+			msg("Resuming broadcast of ATC communications.")
+			squelched = FALSE
+			START_PROCESSING(SSobj, src)
 
 /datum/lore/atc_controller/proc/shift_ending(evac = FALSE)
 	msg("[GLOB.using_map.shuttle_name], this is [GLOB.using_map.dock_name] Control, you are cleared to complete routine transfer from [GLOB.using_map.station_name] to [GLOB.using_map.dock_name].")
@@ -162,7 +161,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	//RIP MBT. this might make travel advisories a little more common, but probably not significantly so given the odds involved
 	else if(source_org_type == "retired" || secondary_org_type == "retired")
 		chatter_type = "traveladvisory"
-		
+
 	//this is ugly but when I tried to use (not-smuggler-or-not-pirate)-and-pirate it tripped a pirate-v-pirate skirmish, still not sure why even after doublechecking all the orgtypes and the logic itself. might as well stick it up here so it takes priority over other combos.
 	else if((source_org_type == "government" || source_org_type == "neutral" || source_org_type == "military" || source_org_type == "corporate" || source_org_type == "system defense") && secondary_org_type == "pirate")
 		chatter_type = "distress"
@@ -190,7 +189,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 	//SDF-specific events that need to filter based on the second party (basically just the following SDF-unique list with the soft-result ship scan thrown in)
 	else if(source_org_type == "system defense" && (secondary_org_type == "government" || secondary_org_type == "neutral" || secondary_org_type == "military" || secondary_org_type == "corporate")) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
-		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate", 
+		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate",
 		"docking_request_chain" = 200, "undocking_request_chain" = 80, "normal"))
 
 	//SDF-specific events that don't require the secondary at all, in the event that we manage to roll SDF + hostile/smuggler or something
