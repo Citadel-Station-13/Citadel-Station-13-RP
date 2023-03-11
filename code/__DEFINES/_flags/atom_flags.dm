@@ -122,8 +122,9 @@ DEFINE_BITFIELD(pass_flags_self, list(
 #define MOVEMENT_PHASING      (1<<3)
 /// Floating movement like no gravity etc etc.
 #define MOVEMENT_FLOATING     (1<<4)
-/// Ventcrawling.
-#define MOVEMENT_VENTCRAWLING (1<<5)
+
+/// main modes of movement
+#define MOVEMENT_TYPES (MOVEMENT_GROUND | MOVEMENT_PHASING | MOVEMENT_FLOATING | MOVEMENT_FLYING)
 
 DEFINE_BITFIELD(movement_type, list(
 	BITFIELD(MOVEMENT_UNSTOPPABLE),
@@ -131,7 +132,6 @@ DEFINE_BITFIELD(movement_type, list(
 	BITFIELD(MOVEMENT_FLYING),
 	BITFIELD(MOVEMENT_PHASING),
 	BITFIELD(MOVEMENT_FLOATING),
-	BITFIELD(MOVEMENT_VENTCRAWLING),
 ))
 
 //! /atom/movable buckle_flags

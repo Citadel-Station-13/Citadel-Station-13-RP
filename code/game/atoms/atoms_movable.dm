@@ -17,18 +17,16 @@
 	/// Reference to atom being orbited.
 	var/atom/orbit_target
 
-	/// Movement types, see __DEFINES/flags/movement.dm
-	var/movement_type = MOVEMENT_GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
 
-	//! Intrinsics
+	//? Intrinsics
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
 	var/movable_flags = NONE
 
-	//! Movement
+	//? Movement
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
 	/// Who's currently pulling us
@@ -45,8 +43,11 @@
 	var/last_move_dir = NONE
 	/// Our default glide_size. Null to use global default.
 	var/default_glide_size
+	/// Movement types, see [code/__DEFINES/flags/movement.dm]
+	/// Do *not* manually edit this variable in most cases. Use the helpers in [code/game/atoms/atoms_movement.dm].
+	var/movement_type = MOVEMENT_GROUND
 
-	//! Spacedrift
+	//? Spacedrift
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting
@@ -58,11 +59,11 @@
 	/// Delay between each drifting move.
 	var/inertia_move_delay = 5
 
-	//! Perspectives
+	//? Perspectives
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
-	//! Buckling
+	//? Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
 	var/buckle_allowed = FALSE
 	/// buckle flags, see [code/__DEFINES/_flags/atom_flags.dm]
@@ -78,7 +79,7 @@
 	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
 	var/buckle_restrained_resist_time = 2 MINUTES
 
-	//! move force, resist, anchoring
+	//? move force, resist, anchoring
 	/// anchored to ground? prevent movement absolutely if so
 	var/anchored = FALSE
 	/// movement force to resist
@@ -93,7 +94,7 @@
 	var/move_speed = 10
 	var/l_move_time = 1
 
-	//! Throwing
+	//? Throwing
 	var/datum/thrownthing/throwing
 	/// default throw speed
 	var/throw_speed = 2
@@ -117,7 +118,7 @@
 	 */
 	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
-	//! Icon Scale
+	//? Icon Scale
 	/// Used to scale icons up or down horizonally in update_transform().
 	var/icon_scale_x = 1
 	/// Used to scale icons up or down vertically in update_transform().
@@ -125,13 +126,13 @@
 	/// Used to rotate icons in update_transform()
 	var/icon_rotation = 0
 
-	//! Pixel Offsets
+	//? Pixel Offsets
 	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
 	var/buckle_pixel_x = 0
 	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
 	var/buckle_pixel_y = 0
 
-	//! Emissives
+	//? Emissives
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
 	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
@@ -424,7 +425,7 @@
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
 
-//! Perspectives
+//? Perspectives
 /**
  * get perspective to use when shifting eye to us,
  */
@@ -454,7 +455,7 @@
 	if(!self_perspective)
 		make_perspective()
 
-//! Layers
+//? Layers
 /atom/movable/set_base_layer(new_layer)
 	. = ..()
 	update_emissive_layers()
@@ -463,7 +464,7 @@
 	. = ..()
 	update_emissive_layers()
 
-//! Pixel Offsets
+//? Pixel Offsets
 /atom/movable/get_centering_pixel_x_offset(dir, atom/aligning)
 	. = ..()
 	. *= icon_scale_x
@@ -472,7 +473,7 @@
 	. = ..()
 	. *= icon_scale_y
 
-//! Emissives
+//? Emissives
 /atom/movable/proc/update_emissive_layers()
 	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
 	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
@@ -539,4 +540,4 @@
  * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
  */
 /atom/movable/proc/is_avoiding_ground()
-    return (movement_type != MOVEMENT_GROUND) || throwing
+    return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing

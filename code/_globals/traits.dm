@@ -4,6 +4,9 @@
  quirks have it's own panel so we don't need them here.
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
+	/atom/movable = list(
+
+	),
 	/mob = list(
 		/*
 		"TRAIT_BLIND" = TRAIT_BLIND,
