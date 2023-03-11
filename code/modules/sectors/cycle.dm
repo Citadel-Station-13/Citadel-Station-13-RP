@@ -133,22 +133,26 @@
 			light_color = "#000000";
 			light_power = 0;
 			temperature_adjust = -5;
+			phase_power = 0;
 		},
 		/datum/sector_phase{ // morning
 			relative_ratio = 0.2;
 			light_color = "#AA3300";
-			light_power = 0.4;
+			light_power = 0.7;
+			phase_power = 0.75;
 		},
 		/datum/sector_phase{ // noon
 			relative_ratio = 0.2;
 			light_color = "#EEEEEE";
 			light_power = 1;
 			temperature_adjust = 3;
+			phase_power = 1;
 		},
 		/datum/sector_phase{ // evening
 			relative_ratio = 0.2;
 			light_color = "#88CC00";
-			light_power = 0.4;
+			light_power = 0.7;
+			phase_power = 0.6;
 		},
 	)
 
