@@ -7437,7 +7437,7 @@
 /area/bridge/office)
 "aoC" = (
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15617,7 +15617,7 @@
 "aFF" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -24002,7 +24002,7 @@
 /area/ai_upload_foyer)
 "aXa" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -24370,7 +24370,7 @@
 /area/maintenance/commandmaint)
 "aXJ" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_alc,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aXK" = (
@@ -25640,7 +25640,7 @@
 /area/crew_quarters/bar)
 "fxA" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -26133,7 +26133,7 @@
 /area/maintenance/bar/lower)
 "qgY" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -26226,7 +26226,7 @@
 /area/rift/surfacebase/outside/outside3)
 "tvp" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/spline/plain,

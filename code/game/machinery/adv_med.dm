@@ -15,10 +15,6 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/bodyscanner/Destroy()
 	if(console)
 		console.scanner = null

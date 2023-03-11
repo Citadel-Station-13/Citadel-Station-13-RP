@@ -52,3 +52,7 @@
 #define INTERACTING_FOR_DO_AFTER "do_after"
 /// Dynaimc tool usage in progress
 #define INTERACTING_FOR_DYNAMIC_TOOL "dynamic_tools"
+/// Generic 'something' in attack hand
+#define INTERACTING_FOR_ATTACK_HAND "attack_hand"
+/// Generic 'something' in alt click
+#define INTERACTING_FOR_ALT_CLICK "alt_click"

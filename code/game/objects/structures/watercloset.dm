@@ -317,7 +317,7 @@
 			if(istype(L))
 				process_heat(L)
 	wash_floor()
-	reagents.add_reagent("water", reagents.get_free_space())
+	reagents.add_reagent("water", reagents.available_volume())
 
 /obj/machinery/shower/proc/wash_floor()
 	if(!ismist && is_washing)

@@ -40,7 +40,6 @@
 /obj/machinery/atmospherics/component/binary/algae_farm/Initialize(mapload)
 	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
-	default_apply_parts()
 	update_icon()
 	var/list/overlays_to_add = list()
 	// TODO - Make these in actual icon states so its not silly like this

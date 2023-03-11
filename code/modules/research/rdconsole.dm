@@ -70,7 +70,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	return return_name
 
 /obj/machinery/computer/rdconsole/proc/CallReagentName(var/ID)
-	var/datum/reagent/R = SSchemistry.chemical_reagents["[ID]"]
+	var/datum/reagent/R = SSchemistry.reagent_lookup["[ID]"]
 	if(!R)
 		return ID
 	return R.name

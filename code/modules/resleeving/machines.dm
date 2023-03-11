@@ -198,7 +198,6 @@
 
 /obj/machinery/transhuman/synthprinter/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/transhuman/synthprinter/RefreshParts()
@@ -418,7 +417,6 @@
 
 /obj/machinery/transhuman/resleever/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/transhuman/resleever/RefreshParts()

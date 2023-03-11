@@ -19,10 +19,6 @@
 	var/set_temperature = T20C	//thermostat
 	var/heating = 0		//mainly for icon updates
 
-/obj/machinery/atmospherics/component/unary/heater/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/atmospherics/component/unary/heater/atmos_init()
 	if(node)
 		return
