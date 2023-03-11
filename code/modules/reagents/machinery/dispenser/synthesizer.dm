@@ -51,6 +51,7 @@
 		/datum/reagent/acid,
 		/datum/reagent/tungsten,
 		/datum/reagent/calcium,
+		/datum/reagent/potassium,
 	)
 
 /obj/item/reagent_synth/bar
