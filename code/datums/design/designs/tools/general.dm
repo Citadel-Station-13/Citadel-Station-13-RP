@@ -59,3 +59,11 @@
 /datum/design/tool/prybar
 	identifier = "ToolPrybar"
 	build_path = /obj/item/tool/prybar
+
+/datum/design/tool/flashlight
+	identifier = "ToolFlashlight"
+	build_path = /obj/item/flashlight
+
+/datum/design/tool/maglight
+	identifier = "ToolMaglight"
+	build_path = /obj/item/flashlight/maglight
