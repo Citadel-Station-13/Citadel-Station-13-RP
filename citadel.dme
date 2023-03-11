@@ -4052,6 +4052,7 @@
 #include "code\modules\sectors\weather\instances\misc.dm"
 #include "code\modules\sectors\weather\instances\rain.dm"
 #include "code\modules\sectors\weather\instances\snow.dm"
+#include "code\modules\sectors\weather\instances\wasteland.dm"
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
 #include "code\modules\shieldgen\directional_shield.dm"

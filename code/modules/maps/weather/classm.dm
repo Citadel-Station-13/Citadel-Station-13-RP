@@ -10,13 +10,6 @@
 	maximum_temp = 307.3
 
 
-/datum/time/classm
-	seconds_in_day = 3 HOURS
-
-/datum/planet/classm
-	name = "Class-M Gaia Planet"
-	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
-	current_time = new /datum/time/classm()
 
 /datum/planet/classm/update_sun()
 	..()
