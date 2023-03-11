@@ -7,7 +7,7 @@
 	work = 1 SECONDS
 
 /datum/design/misc/drink_glass/square
-	identifier = "GlassHalfPint""
+	identifier = "GlassHalfPint"
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/square
 
 /datum/design/misc/drink_glass/rocks
