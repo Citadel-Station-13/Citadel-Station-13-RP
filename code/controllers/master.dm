@@ -313,7 +313,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	//(higher subsystems will be sooner in the queue, adding them later in the loop means we don't have to loop thru them next queue add)
 	tim_sort(SStickersubsystems, /proc/cmp_subsystem_priority)
 	for(var/I in runlevel_sorted_subsystems)
-		tim_sort(runlevel_sorted_subsystems, /proc/cmp_subsystem_priority)
+		tim_sort(I, /proc/cmp_subsystem_priority)
 		I += SStickersubsystems
 
 	var/cached_runlevel = current_runlevel
