@@ -128,6 +128,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	GLOB.holopad_lookup -= holopad_uid
 	return ..()
 
+/obj/machinery/holopad/get_perspective()
+	ensure_self_perspective() // no lazy/temp-perspectives.
+	return ..()
+
 //? movement hooks
 
 /obj/machinery/holopad/Moved(atom/old_loc, direction, forced)
@@ -307,6 +311,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/ring(datum/holocall/incoming)
 	#warn impl
+
+/**
+ * get hung up by a call
+ */
+/obj/machinery/holopad/proc/hung_up(datum/holocall/disconnecting, we_hung_up)
 
 //? UI
 
@@ -743,6 +752,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	action_swap_view.grant(remoting)
 	return TRUE
 
+/datum/holocall/proc/remote_perspective()
+	return destination.get_perspective()
+
 /datum/holocall/proc/cleanup_remote_presence()
 	if(!remoting)
 		return
@@ -774,7 +786,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/proc/ring()
 	destination.ring(src)
 
-/datum/holocall/proc/disconnect()
+/datum/holocall/proc/disconnect(we_hung_up)
+	destination.hung_up(src, we_hung_up)
 	if(!QDELING(src))
 		qdel(src)
 
@@ -795,14 +808,29 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return FALSE
 	return TRUE
 
-#warn icons/screen/actions/generic.dmi hang_up, swap_cam
-#warn background icon set to icons/screen/actions/backgrounds too!!
+/datum/action/holocall
+	abstract_type = /datum/action/holocall
+	target_type = /datum/holocall
 
 /datum/action/holocall/hang_up
+	button_icon = 'icons/screen/actions/generic.dmi'
+	button_icon_state = "hang_up"
+	background_icon = 'icons/screen/actions/backgrounds.dmi'
+	background_icon_state = "default"
+
+/datum/action/holocall/hang_up/on_trigger(mob/user, datum/holocall/receiver)
+	. = ..()
+	receiver.disconnect(TRUE)
 
 /datum/action/holocall/swap_view
+	button_icon = 'icons/screen/actions/generic.dmi'
+	button_icon_state = "swap_cam"
+	background_icon = 'icons/screen/actions/backgrounds.dmi'
+	background_icon_state = "default"
 
-#warn relay procs too
+/datum/action/holocall/swap_view/on_trigger(mob/user, datum/holocall/receiver)
+	. = ..()
+	receiver.cleanup_remote_presence()
 
 /**
  * obj used for holograms

@@ -37,6 +37,10 @@
 	var/desc = "An action."
 	/// target; it will receive ui_action_click(user, us).
 	VAR_PRIVATE/datum/target
+	/// expected target type
+	var/target_type
+
+	//? legacy / unsorted
 	/// action type for legacy non-default handling
 	var/action_type = AB_ITEM
 	var/procname = null
@@ -60,7 +64,7 @@
  * checks if a datum is a valid target for us
  */
 /datum/action/proc/target_compatible(datum/target)
-	return isdatum(target)
+	return isnull(target_type) || istype(target, target_type)
 
 /datum/action/Destroy()
 	if(owner)
@@ -121,10 +125,10 @@
  *
  * @params
  * - user - user triggering
- * - receiver - object receiving
+ * - receiver - object receiving - this is just the "target" variable.
  */
 /datum/action/proc/on_trigger(mob/user, datum/receiver)
-	target.ui_action_click(src, user)
+	target?.ui_action_click(src, user)
 
 /datum/action/proc/Activate()
 	return
