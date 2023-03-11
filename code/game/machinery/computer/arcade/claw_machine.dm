@@ -160,7 +160,7 @@
 /obj/machinery/computer/arcade/clawmachine/Initialize(mapload)
 	. = ..()
 
-/obj/machinery/computer/arcade/clawmachine/attack_hand(mob/living/user)
+/obj/machinery/computer/arcade/clawmachine/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)

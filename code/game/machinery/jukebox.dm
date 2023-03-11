@@ -66,10 +66,6 @@
 	)
 
 
-/obj/machinery/media/jukebox/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
 	wires = null
@@ -303,7 +299,7 @@
 /obj/machinery/media/jukebox/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/media/jukebox/attack_hand(mob/user)
+/obj/machinery/media/jukebox/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/media/jukebox/proc/explode()

@@ -49,7 +49,11 @@
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 
 	message = emoji_parse(say_emphasis(message))

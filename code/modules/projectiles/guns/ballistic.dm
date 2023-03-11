@@ -236,13 +236,16 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/ballistic/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else
 		unload_ammo(user)
 
-/obj/item/gun/ballistic/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else

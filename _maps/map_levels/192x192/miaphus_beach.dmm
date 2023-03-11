@@ -883,7 +883,7 @@
 /area/tether_away/beach/resort/fishing)
 "fL" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
 "fO" = (
@@ -2451,7 +2451,7 @@
 /area/tether_away/beach/aa)
 "td" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
 "tj" = (
@@ -3391,7 +3391,7 @@
 /area/tether_away/beach/resort/bunk)
 "Ce" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
@@ -4994,7 +4994,7 @@
 /area/tether_away/beach/desalinator)
 "QX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,

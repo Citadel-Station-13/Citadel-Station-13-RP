@@ -170,7 +170,7 @@
 	icon_state = "autolokhelmet"
 	item_state = "autolokhelmet"
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX)	//this thing can autoadapt too
-	flags_inv = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
+	inv_hide_flags = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
 
 /obj/item/clothing/head/helmet/space/void/autolok
 	sprite_sheets_obj = list(

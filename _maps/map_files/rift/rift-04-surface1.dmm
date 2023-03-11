@@ -4335,7 +4335,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/item/storage/box/glasses/meta{
 	pixel_x = -14
 	},
@@ -6836,7 +6836,7 @@
 /turf/simulated/wall,
 /area/maintenance/engineering/pumpstation)
 "eFx" = (
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/reinforced,
 /area/maintenance/maint_bar)
@@ -20930,7 +20930,7 @@
 /area/maintenance/security/lower)
 "nzE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -22650,7 +22650,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfaceone)
 "otX" = (
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/structure/table/woodentable,
 /obj/item/stack/rods,
 /obj/item/stack/rods,
@@ -31521,7 +31521,7 @@
 /area/rift/surfacebase/outside/outside1)
 "ubH" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/light_construct/small{
 	dir = 1
 	},
@@ -33919,7 +33919,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "vBD" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood,
 /area/maintenance/starboard)
 "vBV" = (
@@ -35005,7 +35005,7 @@
 /area/quartermaster/garage)
 "wnB" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "wnK" = (
@@ -37254,7 +37254,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "xKh" = (
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/structure/table/woodentable,
 /obj/structure/sign/poster{
 	pixel_y = 32

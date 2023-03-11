@@ -7,10 +7,6 @@
 
 	circuit = /obj/item/circuitboard/fusion_fuel_compressor
 
-/obj/machinery/fusion_fuel_compressor/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/fusion_fuel_compressor/MouseDroppedOnLegacy(var/atom/movable/target, var/mob/user)
 	if(user.incapacitated() || !user.Adjacent(src))
 		return

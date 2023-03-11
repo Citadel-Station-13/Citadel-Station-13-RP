@@ -4753,7 +4753,7 @@
 /area/talon/deckone/bridge_hallway)
 "Md" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "Mj" = (

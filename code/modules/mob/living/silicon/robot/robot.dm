@@ -811,7 +811,7 @@
 	module = null
 	updatename("Default")
 
-/mob/living/silicon/robot/attack_hand(mob/user)
+/mob/living/silicon/robot/attack_hand(mob/user, list/params)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

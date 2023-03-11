@@ -37,7 +37,7 @@
 		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/utility/fleet
 	name = "fleet utility cover"
@@ -73,7 +73,7 @@
 		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/service/marine
 	name = "marine wheel cover"
@@ -111,7 +111,7 @@
 		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/dress/expedition
 	name = "\improper SifGuard dress cap"

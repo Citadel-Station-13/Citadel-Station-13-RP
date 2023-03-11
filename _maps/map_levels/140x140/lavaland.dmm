@@ -182,7 +182,7 @@
 /area/lavaland/central/base/common)
 "fh" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
@@ -451,7 +451,7 @@
 /area/lavaland/central/base/common)
 "kq" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "kr" = (

@@ -386,7 +386,7 @@
 				var/organpath = species.has_organ[organtype]
 				var/obj/item/organ/Int = new organpath(src, TRUE)
 
-				Int.rejuvenate(TRUE)
+				Int.rejuvenate_legacy(TRUE)
 
 		handle_organs(2) // Update everything
 

@@ -39,7 +39,10 @@
 	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
-/obj/item/beartrap/attack_self(mob/user as mob)
+/obj/item/beartrap/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(!deployed)
 		user.visible_message(
@@ -82,7 +85,7 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user)
+/obj/item/beartrap/attack_hand(mob/user, list/params)
 	// check unbuckle first
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE

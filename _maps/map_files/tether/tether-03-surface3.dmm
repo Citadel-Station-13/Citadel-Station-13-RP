@@ -13710,7 +13710,7 @@
 /area/vacant/vacant_shop)
 "axY" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
@@ -30023,7 +30023,7 @@
 /area/crew_quarters/bar)
 "bdu" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -33083,7 +33083,7 @@
 	dir = 6
 	},
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -34368,7 +34368,7 @@
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -40490,7 +40490,7 @@
 /area/tether/surfacebase/security/hos)
 "sVw" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/shuttle/tourbus/general)
 "sWs" = (
@@ -41523,7 +41523,7 @@
 /area/tether/surfacebase/security/upperhall)
 "vrU" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/machinery/light{
 	dir = 8
 	},

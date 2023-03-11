@@ -10,7 +10,7 @@
 	name = "Facility Director's hat"
 	icon_state = "captain"
 	desc = "It's good being the king."
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/caphat/cap
 	name = "Facility Director's cap"
@@ -34,8 +34,8 @@
 	desc = "It's a hood that covers the head. It keeps you warm during the space winters."
 	icon_state = "chaplain_hood"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Chaplain but spookier
 /obj/item/clothing/head/chaplain_hood/whiteout
@@ -50,15 +50,15 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun_hood"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
 	desc = "A beret, an artists favorite headwear."
 	icon_state = "beret"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Security
 /obj/item/clothing/head/beret/sec
@@ -130,7 +130,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "", SLOT_ID_LEFT_HAND = "")
 	valid_accessory_slots = null
 	show_examine = FALSE
-	flags_inv = null
+	inv_hide_flags = null
 
 /obj/item/clothing/head/det
 	name = "fedora"
@@ -181,7 +181,7 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_blue", SLOT_ID_LEFT_HAND = "beret_blue")
-	flags_inv = BLOCKHEADHAIR
+	inv_hide_flags = BLOCKHEADHAIR
 
 /obj/item/clothing/head/surgery/purple
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."

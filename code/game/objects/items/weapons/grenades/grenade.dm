@@ -53,7 +53,10 @@
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
 
-/obj/item/grenade/attack_self(mob/user as mob)
+/obj/item/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")
@@ -108,7 +111,7 @@
 	..()
 	return
 
-/obj/item/grenade/attack_hand()
+/obj/item/grenade/attack_hand(mob/user, list/params)
 	walk(src, null, null)
 	..()
 	return

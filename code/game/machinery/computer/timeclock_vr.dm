@@ -63,7 +63,7 @@
 		return
 	. = ..()
 
-/obj/machinery/computer/timeclock/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/timeclock/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	user.set_machine(src)
@@ -237,7 +237,7 @@
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
 		return FALSE
-	else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
+	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))

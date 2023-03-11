@@ -25,10 +25,6 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
 	set category = "Object"
@@ -124,7 +120,7 @@
 		..()
 	update_icon()
 
-/obj/machinery/washing_machine/attack_hand(mob/user as mob)
+/obj/machinery/washing_machine/attack_hand(mob/user, list/params)
 	switch(state)
 		if(1)
 			state = 2

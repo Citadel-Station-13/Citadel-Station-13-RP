@@ -2469,7 +2469,7 @@
 /area/tradeport/facility)
 "jB" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -2477,7 +2477,7 @@
 /area/tradeport/cafeteria)
 "jE" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "jF" = (
@@ -11234,7 +11234,7 @@
 /area/space)
 "QO" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /obj/machinery/light/small,

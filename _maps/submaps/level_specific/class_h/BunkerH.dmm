@@ -47,7 +47,7 @@
 /area/class_h/POIs/vault)
 "cA" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 1
@@ -622,7 +622,7 @@
 /area/class_h/explored)
 "Vw" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)

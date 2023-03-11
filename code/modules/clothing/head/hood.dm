@@ -2,9 +2,9 @@
 	name = "hood"
 	desc = "A generic hood."
 	icon_state = "generic_hood"
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	cold_protection = HEAD
-	flags_inv = HIDEEARS | BLOCKHAIR
+	inv_hide_flags = HIDEEARS | BLOCKHAIR
 
 // Winter coats
 /obj/item/clothing/head/hood/winter
@@ -130,7 +130,7 @@
 	name = "ronin heating coils"
 	desc = "Glowing coils designed to ward off cold temperatures."
 	icon_state = "ronin_hood"
-	flags_inv = NONE
+	inv_hide_flags = NONE
 
 //Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
@@ -227,13 +227,13 @@
 	name = "Springtime Pariah Moto Jacket hood"
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
-	flags_inv = NONE
+	inv_hide_flags = NONE
 
 /obj/item/clothing/head/hood/runner
 	name = "Runner Jacket hood"
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
-	flags_inv = NONE
+	inv_hide_flags = NONE
 
 /obj/item/clothing/head/hood/runner/half_pint
 	name = "Half-Pint hood"

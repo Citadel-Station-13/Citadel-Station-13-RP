@@ -2164,7 +2164,7 @@
 /area/centcom/control)
 "dF" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/effect/floor_decal/corner/blue/diagonal{
 	dir = 4
 	},
@@ -7860,7 +7860,7 @@
 /area/centcom/security)
 "oD" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/item/storage/box/glasses/square,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -9232,7 +9232,7 @@
 /area/centcom/command)
 "rc" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -13271,7 +13271,7 @@
 /area/centcom/restaurant)
 "yM" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
@@ -14254,7 +14254,7 @@
 /area/centcom/bar)
 "Az" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
@@ -14262,7 +14262,7 @@
 /area/centcom/bar)
 "AA" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"

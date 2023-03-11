@@ -18931,7 +18931,7 @@
 /area/bridge/meeting_room)
 "aIV" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -22792,7 +22792,7 @@
 /area/engineering/lower/breakroom)
 "aQW" = (
 /obj/structure/table/glass,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -31440,7 +31440,7 @@
 	},
 /area/tcommsat/chamber)
 "blc" = (
-/obj/machinery/pda_multicaster/prebuilt,
+/obj/machinery/pda_multicaster,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},

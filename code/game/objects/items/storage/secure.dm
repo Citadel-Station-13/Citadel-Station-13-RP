@@ -77,7 +77,10 @@
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user as mob)
+/obj/item/storage/secure/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
@@ -152,7 +155,7 @@
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
 	if ((src.loc == user) && (src.locked == 1))
 		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
 	else if ((src.loc == user) && (!src.locked))
@@ -213,5 +216,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user as mob)
+/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
 	return attack_self(user)

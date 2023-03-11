@@ -23,7 +23,10 @@
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(MAT_STEEL = 400)
 
-/obj/item/locator/attack_self(mob/user as mob)
+/obj/item/locator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	var/dat
 	if (src.temp)
@@ -130,7 +133,10 @@ Frequency:
 	matter = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
-/obj/item/hand_tele/attack_self(mob/user as mob)
+/obj/item/hand_tele/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/turf/current_location = get_turf(user)//What turf is the user on?
 	if(!current_location || (current_location.z in GLOB.using_map.admin_levels) || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
 		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")

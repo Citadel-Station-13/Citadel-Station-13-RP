@@ -385,7 +385,7 @@
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/pai/attack_hand(mob/user as mob)
+/mob/living/silicon/pai/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_HELP)
 		visible_message("<span class='notice'>[user.name] pats [src].</span>")
 	else
