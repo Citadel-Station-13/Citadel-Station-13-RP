@@ -315,13 +315,15 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/obj_count_finished
 
 	//Statclick
-	var/obj/effect/statclick/SDQL2_delete/delete_click = new(null, "", src)
-	var/obj/effect/statclick/SDQL2_action/action_click = new(null, "", src)
+	var/obj/effect/statclick/SDQL2_delete/delete_click
+	var/obj/effect/statclick/SDQL2_action/action_click
 
 /datum/SDQL2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
 		qdel(src)
 		return
+	delete_click = new(null, "", src)
+	action_click = new(null, "", src)
 	LAZYADD(GLOB.sdql2_queries, src)
 	superuser = SU
 	allow_admin_interact = admin_interact
