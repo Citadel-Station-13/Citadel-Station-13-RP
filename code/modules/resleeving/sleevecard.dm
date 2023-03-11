@@ -42,6 +42,9 @@
 	return ..()
 
 /obj/item/sleevecard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 
 	if(!infomorph)

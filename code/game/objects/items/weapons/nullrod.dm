@@ -41,6 +41,9 @@
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
 /obj/item/nullrod/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
 
@@ -353,7 +356,10 @@
 	hitsound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
-/obj/item/nullrod/carp/attack_self(mob/living/user)
+/obj/item/nullrod/carp/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")

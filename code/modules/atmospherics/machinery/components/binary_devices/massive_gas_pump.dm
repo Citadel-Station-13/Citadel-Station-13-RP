@@ -147,7 +147,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)

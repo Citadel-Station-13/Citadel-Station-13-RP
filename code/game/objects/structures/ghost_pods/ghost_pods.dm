@@ -43,7 +43,7 @@
 /obj/structure/ghost_pod/manual
 	var/confirm_before_open = FALSE // Recommended to be TRUE if the pod contains a surprise.
 
-/obj/structure/ghost_pod/manual/attack_hand(var/mob/living/user)
+/obj/structure/ghost_pod/manual/attack_hand(mob/user, list/params)
 	if(!used)
 		if(confirm_before_open)
 			if(alert(user, "Are you sure you want to touch \the [src]?", "Confirm", "No", "Yes") == "No")

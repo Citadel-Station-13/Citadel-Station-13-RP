@@ -558,7 +558,10 @@
 	icon_state = "reindeer0"
 	action_button_name = "Toggle Nose"
 
-/obj/item/clothing/head/reindeer/attack_self(mob/user as mob)
+/obj/item/clothing/head/reindeer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_on"
 		to_chat(user, "You turn the glowing nose on.")

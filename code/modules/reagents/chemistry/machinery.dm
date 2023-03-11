@@ -160,7 +160,7 @@
 	if(AM in holdingitems)
 		holdingitems -= AM
 
-/obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
+/obj/machinery/reagentgrinder/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/reagentgrinder/interact(mob/user as mob) // The microwave Menu //I am reasonably certain that this is not a microwave

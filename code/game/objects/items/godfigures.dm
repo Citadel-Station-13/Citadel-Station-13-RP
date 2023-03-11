@@ -11,6 +11,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/godfig/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	resprite_figure(user)
 
 /obj/item/godfig/proc/resprite_figure(mob/living/L)

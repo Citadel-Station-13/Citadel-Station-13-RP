@@ -13,6 +13,9 @@
 	..()
 
 /obj/item/clothing/head/soft/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	flipped = !flipped
 	if(flipped)
 		icon_state = "[icon_state]_flipped"

@@ -110,8 +110,13 @@
 		var/obj/belly/B = loc
 		sting(B.owner)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/living/L)
-	..()
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(isliving(L) && Adjacent(L))
 		var/mob/living/M = L
 		visible_message("<span class='warning'>\The [src][is_dead()?"'s corpse":""] flails at [M]!</span>")

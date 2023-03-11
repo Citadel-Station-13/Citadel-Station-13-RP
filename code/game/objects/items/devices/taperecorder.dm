@@ -57,7 +57,7 @@
 	return ..()
 
 
-/obj/item/tape_recorder/attack_hand(mob/user)
+/obj/item/tape_recorder/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()
@@ -342,6 +342,9 @@
 
 
 /obj/item/tape_recorder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(recording || playing)
 		stop()
 	else
@@ -387,6 +390,9 @@
 	ruin()
 
 /obj/item/cassette_tape/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!ruined)
 		to_chat(user, "<span class='notice'>You pull out all the tape!</span>")
 		ruin()

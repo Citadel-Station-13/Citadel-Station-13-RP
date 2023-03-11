@@ -93,7 +93,7 @@
 // Proc: attack_hand()
 // Parameters: 1 (user - the person clicking on the machine)
 // Description: Opens the TGUI interface with ui_interact()
-/obj/machinery/exonet_node/attack_hand(mob/user)
+/obj/machinery/exonet_node/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 // Proc: ui_interact()

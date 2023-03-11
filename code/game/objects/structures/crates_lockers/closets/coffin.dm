@@ -30,7 +30,7 @@
 	max_closets = 1
 	opened = 1
 
-/obj/structure/closet/grave/attack_hand(mob/user as mob)
+/obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")

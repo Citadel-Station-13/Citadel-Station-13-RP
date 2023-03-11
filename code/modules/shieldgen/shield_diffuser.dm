@@ -55,7 +55,7 @@
 	else
 		icon_state = "fdiffuser_on"
 
-/obj/machinery/shield_diffuser/attack_hand(mob/user as mob)
+/obj/machinery/shield_diffuser/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(alarm)

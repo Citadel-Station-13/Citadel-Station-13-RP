@@ -183,7 +183,7 @@
 		return
 	..()
 
-/obj/machinery/mining/drill/attack_hand(mob/user as mob)
+/obj/machinery/mining/drill/attack_hand(mob/user, list/params)
 	check_supports()
 
 	if (panel_open && cell && user.Adjacent(src))

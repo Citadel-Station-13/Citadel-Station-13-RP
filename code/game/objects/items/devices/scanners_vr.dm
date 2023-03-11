@@ -23,7 +23,10 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		scan_mob(target, user)
 	to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
-/obj/item/sleevemate/attack_self(mob/living/user)
+/obj/item/sleevemate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stored_mind)
 		to_chat(user,"<span class='warning'>No stored mind in \the [src].</span>")
 		return
