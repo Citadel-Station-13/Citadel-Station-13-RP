@@ -11,6 +11,7 @@
 	idtype = /obj/item/card/id/silver/blueshield
 	selection_color = "#1D1D4F"
 	minimal_access = list(
+		ACCESS_COMMAND_BLUESHIELD,
 		ACCESS_COMMAND_BRIDGE,
 		ACCESS_COMMAND_CAPTAIN,
 		ACCESS_COMMAND_EVA,
@@ -18,7 +19,6 @@
 		ACCESS_COMMAND_IAA,
 		ACCESS_COMMAND_LOCKERS,
 		ACCESS_COMMAND_TELEPORTER,
-		ACCESS_COMMAND_VAULT,
 		ACCESS_ENGINEERING_AIRLOCK,
 		ACCESS_ENGINEERING_CONSTRUCTION,
 		ACCESS_ENGINEERING_MAIN,
@@ -36,21 +36,23 @@
 	minimal_player_age = 10
 
 	outfit_type = /datum/outfit/job/station/blueshield
-	desc = "A blueshield is concerned with maintaining the safety and security of the Director alone, dealing with direct threats and \
-						not going out of their way to apprehend criminals. A Blueshield is responsible for the health and safety \
-						of the Director, and other command entities in their absence. No one is above the Law, however. Neither Security nor Command."
+	desc = "A Blueshield is concerned with maintaining the safety and security of command personnel, dealing with direct threats while \
+						not going out of their way to apprehend distant criminals. A Blueshield is directly responsible for the health and safety \
+						of the Director and other command entities, within reason. Being only one person, use your best judgement on who needs \
+						overseeing at that very moment, as well as over the course of the shift. No one is above corporate regulations however, \
+						neither Security nor Command."
 
 /datum/outfit/job/station/blueshield
 	name = OUTFIT_JOB_NAME("Blueshield")
-	uniform = /obj/item/clothing/under/rank/security
+	uniform = /obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield
 	l_pocket = /obj/item/flash
-	glasses = /obj/item/clothing/glasses/sunglasses/sechud
-	l_ear = /obj/item/radio/headset/heads/hos
+	glasses = /obj/item/clothing/glasses/sunglasses/medhud
+	l_ear = /obj/item/radio/headset/heads/blueshield
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 
 	id_type = /obj/item/card/id/silver/blueshield
-	pda_type = /obj/item/pda/heads/hop
+	pda_type = /obj/item/pda/heads/blueshield
 
 	backpack = /obj/item/storage/backpack/security
 	backpack_contents = list(/obj/item/handcuffs = 1)

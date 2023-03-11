@@ -319,6 +319,11 @@
 	icon_badge = "officerwebvest_badge"
 	icon_nobadge = "officerwebvest_nobadge"
 
+/obj/item/clothing/suit/storage/vest/blueshield
+	name = "blueshield armored vest"
+	desc = "A synthetic polymer-woven armor vest. This one is marked with Blueshield lettering."
+	icon_state = "solvest"
+
 /obj/item/clothing/suit/storage/vest/warden
 	name = "warden armor vest"
 	desc = "A standard kevlar vest with webbing attached. This one has a silver badge clipped to the chest."

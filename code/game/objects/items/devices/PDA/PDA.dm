@@ -150,6 +150,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	default_cartridge = /obj/item/cartridge/hos
 	icon_state = "pda-hos"
 
+/obj/item/pda/heads/blueshield
+	default_cartridge = /obj/item/cartridge/security
+	icon_state = "pda-hop"
+
 /obj/item/pda/heads/ce
 	default_cartridge = /obj/item/cartridge/ce
 	icon_state = "pda-ce"
