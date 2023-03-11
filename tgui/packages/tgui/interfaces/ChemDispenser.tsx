@@ -50,7 +50,7 @@ export const ChemDispenser = (props, context) => {
       return;
     }
     let appended = macro?.slice();
-    if (appended[appended.length - 1][0] === id) {
+    if (appended.length && appended[appended.length - 1][0] === id) {
       appended[appended.length - 1][1] += amount;
     }
     else {
@@ -59,7 +59,9 @@ export const ChemDispenser = (props, context) => {
     setMacro(appended);
   };
   const finalizeMacro = (name?: string) => {
-    act("add_macro", { data: macro, name: name });
+    if (macro?.length) {
+      act("add_macro", { data: macro, name: name });
+    }
     setMacro(undefined);
   };
   return (
@@ -73,11 +75,16 @@ export const ChemDispenser = (props, context) => {
               <Button
                 icon="eject"
                 content="Eject"
-                disabled={!data.panel_open}
+                disabled={!data.panel_open || !data.has_cell}
                 onClick={() => act('eject_cell')} />
             }>
-              <ProgressBar minValue={0} maxValue={data.cell_capacity} value={data.cell_charge}>
-                {Math.round(data.cell_charge / data.cell_capacity * 100)}%
+              <ProgressBar
+                minValue={0}
+                maxValue={data.has_cell? data.cell_capacity : 100}
+                value={data.has_cell? data.cell_charge : 0}>
+                {!!data.has_cell && (
+                  `${Math.round(data.cell_charge / data.cell_capacity * 100)}%`
+                )}
               </ProgressBar>
             </LabeledList.Item>
           </LabeledList>
@@ -103,10 +110,10 @@ export const ChemDispenser = (props, context) => {
               arrayBucketFill(data.macros.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((arr) => (
                 // yes, this is shitcode for key, but maybe it shouldn't be so damn PICKY
                 <Stack.Item key={Math.random()}>
-                  {arr.map((m) => (
+                  <Stack>
+                    {arr.map((m) => (
                     // ditto
-                    <Stack key={Math.random()}>
-                      <Stack.Item grow={1}>
+                      <Stack.Item grow={1} key={Math.random()}>
                         <Stack>
                           <Stack.Item grow={1}>
                             <Button
@@ -124,8 +131,8 @@ export const ChemDispenser = (props, context) => {
                           </Stack.Item>
                         </Stack>
                       </Stack.Item>
-                    </Stack>
-                  ))}
+                    ))}
+                  </Stack>
                 </Stack.Item>
               ))
             }
@@ -211,9 +218,11 @@ export const ChemDispenser = (props, context) => {
                 </>
               )} />
           ) : (
-            <NoticeBox>
-              No beaker inserted.
-            </NoticeBox>
+            <Section>
+              <NoticeBox>
+                No beaker inserted.
+              </NoticeBox>
+            </Section>
           )}
         </Section>
       </Window.Content>

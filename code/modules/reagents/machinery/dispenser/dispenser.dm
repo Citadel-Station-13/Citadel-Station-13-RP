@@ -294,7 +294,7 @@
 			var/list/raw = params["data"]
 			var/name = params["name"]
 			if(isnull(name))
-				name = input(usr, "Name this macro", "Chemical Macro", "Macro")
+				name = input(usr, "Name this macro", "Chemical Macro", "Macro") as text|null
 			if(length(macros) > MAX_MACROS)
 				return TRUE
 			if(!length(raw) || !name)
@@ -356,7 +356,7 @@
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/cell))
-			if(I)
+			if(cell)
 				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_insert_item_for_installation(I, src))
