@@ -370,7 +370,7 @@
 			if(!user.attempt_insert_item_for_installation(I, src))
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			synthesizers += synth
+			LAZYADD(synthesizers, synth)
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
