@@ -57,7 +57,7 @@
 
 /datum/weather_holder/New(datum/world_sector/sector)
 	src.sector = sector
-	init_weather
+	init_weather()
 
 //? core
 
@@ -72,7 +72,8 @@
 			built[instance.type] = instance
 		else
 			stack_trace("unexpected [thing] in weather datums not /datum/weather or path to such; skipping.")
-	weather_datums = built()
+	weather_datums = built
+	advance_weather()
 
 /**
  * set current weather

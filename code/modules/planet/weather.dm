@@ -5,14 +5,6 @@
 	var/wind_dir = 0
 	/// How fast or slow a mob can be due to wind acting on them.
 	var/wind_speed = 0
-	/// Assoc list of weather identifiers, containing the actual weather datum.
-	var/list/allowed_weather_types = list()
-	/// Assoc list of weather identifiers and their odds of being picked to happen at roundstart.
-	var/list/roundstart_weather_chances = list()
-	/// world.time when the weather subsystem will advance the forecast.
-	var/next_weather_shift = null
-	/// A list of what the weather will be in the future. This allows it to be pre-determined and planned around.
-	var/list/forecast = list()
 
 	// Holds the weather icon, using vis_contents. Documentation says an /atom/movable is required for placing inside another atom's vis_contents.
 	var/atom/movable/weather_visuals/visuals = null
@@ -69,33 +61,6 @@
 	else
 		current_weather.process_effects()
 		current_weather.process_sounds()
-
-
-// Should only have to be called once.
-/datum/weather_holder/proc/initialize_weather()
-	if(!current_weather)
-		change_weather(get_next_weather())
-		build_forecast()
-
-
-/**
- * Used to determine what the weather will be soon, in a semi-random fashion.
- * The forecast is made by calling this repeatively, from the bottom (highest index) of the forecast list.
- */
-/datum/weather_holder/proc/get_next_weather(datum/weather/W)
-	// At roundstart, choose a suitable initial weather.
-	if(!current_weather)
-		return pickweight(roundstart_weather_chances)
-	return pickweight(W?.transition_chances)
-
-
-/datum/weather_holder/proc/advance_forecast()
-	var/new_weather = forecast[1]
-	// Remove what we just took out, shortening the list.
-	forecast.Cut(1, 2)
-	change_weather(new_weather)
-	// To fill the forecast to the desired length.
-	build_forecast()
 
 
 /**
@@ -161,10 +126,6 @@
 			if(!T.outdoors)
 				continue
 			to_chat(M, message)
-
-
-/datum/weather_holder/proc/get_weather_datum(desired_type)
-	return allowed_weather_types[desired_type]
 
 
 /datum/weather_holder/proc/show_transition_message()
