@@ -256,7 +256,7 @@ HALOGEN COUNTER	- Radcount on mobs
 			if(e.has_infected_wound())
 				dat += SPAN_WARNING("\nInfected wound detected in subject [e.name]. Disinfection recommended.")
 			// IB
-			for(var/datum/wound/W in e.wounds)
+			for(var/datum/wound/W as anything in e.wounds)
 				if(W.internal)
 					if(advscan >= 1 && showadvscan == 1)
 						ib_dat += SPAN_WARNING("\nInternal bleeding detected in subject [e.name].")
@@ -377,7 +377,10 @@ HALOGEN COUNTER	- Radcount on mobs
 
 	return atmosanalyzer_scan(src, air, user)
 
-/obj/item/analyzer/attack_self(mob/user as mob)
+/obj/item/analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
@@ -430,7 +433,10 @@ HALOGEN COUNTER	- Radcount on mobs
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/mass_spectrometer/attack_self(mob/user as mob)
+/obj/item/mass_spectrometer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (user.stat)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")

@@ -22,7 +22,6 @@
 
 /obj/machinery/power/quantumpad/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	connect_to_network()
 	if(map_pad_id)
 		mapped_quantum_pads[map_pad_id] = src
@@ -46,7 +45,7 @@
 	teleport_cooldown = initial(teleport_cooldown)
 	teleport_cooldown -= (E * 100)
 
-/obj/machinery/power/quantumpad/attackby(obj/item/I, mob/user, params)
+/obj/machinery/power/quantumpad/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 
@@ -79,7 +78,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/quantumpad/attack_hand(mob/user)
+/obj/machinery/power/quantumpad/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

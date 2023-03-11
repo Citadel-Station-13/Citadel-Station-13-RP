@@ -31,7 +31,7 @@
 	layer = MOB_LAYER
 	pressure_resistance = 1
 	slot_flags = SLOT_HEAD
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	attack_verb = list("bapped")
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
@@ -130,7 +130,10 @@
 		add_fingerprint(usr)
 	return
 
-/obj/item/paper/attack_self(mob/living/user as mob)
+/obj/item/paper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "scrap")
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")

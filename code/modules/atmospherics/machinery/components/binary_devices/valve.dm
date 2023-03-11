@@ -130,7 +130,7 @@
 /obj/machinery/atmospherics/valve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/valve/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/valve/attack_hand(mob/user, list/params)
 	src.add_fingerprint(usr)
 	update_icon()
 	sleep(10)
@@ -234,7 +234,7 @@
 /obj/machinery/atmospherics/valve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user, list/params)
 	if(!powered())
 		return
 	if(!src.allowed(user))

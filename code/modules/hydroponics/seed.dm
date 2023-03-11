@@ -157,7 +157,7 @@
 			if(target.is_holding(clothes))
 				return
 			if(clothes.clothing_flags & THICKMATERIAL)
-				body_coverage &= ~(clothes.body_parts_covered)
+				body_coverage &= ~(clothes.body_cover_flags)
 
 		if(!body_coverage)
 			return
@@ -192,7 +192,7 @@
 			for(var/obj/item/clothing/clothes in M)
 				if(M.is_holding(clothes))
 					return
-				body_coverage &= ~(clothes.body_parts_covered)
+				body_coverage &= ~(clothes.body_cover_flags)
 			if(!body_coverage)
 				continue
 			var/datum/reagents/R = M.reagents
@@ -440,7 +440,7 @@
 
 		for(var/x=1;x<=additional_chems;x++)
 
-			var/new_chem = pick(SSchemistry.chemical_reagents)
+			var/new_chem = pick(SSchemistry.reagent_lookup)
 			if(new_chem in banned_chems)
 				continue
 			banned_chems += new_chem

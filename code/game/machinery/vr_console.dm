@@ -17,10 +17,6 @@
 
 /obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
-
-/obj/machinery/vr_sleeper/Initialize(mapload)
-	. = ..()
 	update_icon()
 
 /obj/machinery/vr_sleeper/process(delta_time)

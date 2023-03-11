@@ -162,6 +162,9 @@
 	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Rechraged [A] with [used] units of power."))
 
 /obj/item/inducer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(opened && cell)
 		user.visible_message("<span class='notice'>[user] removes [cell] from [src]!</span>", "<span class='notice'>You remove [cell].</span>")
 		cell.update_icon()

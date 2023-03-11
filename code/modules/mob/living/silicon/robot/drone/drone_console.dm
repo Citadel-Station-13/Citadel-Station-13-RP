@@ -19,7 +19,7 @@
 		return UI_CLOSE
 	return ..()
 
-/obj/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/drone_control/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

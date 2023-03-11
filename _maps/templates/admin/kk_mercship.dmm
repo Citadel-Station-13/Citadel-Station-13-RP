@@ -972,7 +972,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "eF" = (
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/effect/floor_decal/techfloor{
@@ -5235,7 +5235,7 @@
 /area/ship/manta/armoury_as)
 "zo" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
@@ -7956,7 +7956,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/radiator_port)
 "Or" = (
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 4
 	},
 /obj/structure/table/woodentable,

@@ -115,7 +115,7 @@
 
 //Proc: attack_hand
 //Description: Attacked with empty hand. Only to allow special attack_bys.
-/obj/machinery/door/blast/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))

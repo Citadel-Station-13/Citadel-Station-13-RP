@@ -1,8 +1,15 @@
 /datum/reagents
+	//? core
+	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_holder_flags = NONE
+
+	///? legacy / unsorted
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
+
 	var/atom/my_atom = null
+	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
 	var/reagents_holder_flags
 
 /datum/reagents/New(max = 100, atom/A = null, new_flags = NONE)
@@ -11,15 +18,15 @@
 	my_atom = A
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!SSchemistry.chemical_reagents)
+	if(!SSchemistry.reagent_lookup)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 		var/paths = typesof(/datum/reagent) - /datum/reagent
-		SSchemistry.chemical_reagents = list()
+		SSchemistry.reagent_lookup = list()
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			if(!D.name)
 				continue
-			SSchemistry.chemical_reagents[D.id] = D
+			SSchemistry.reagent_lookup[D.id] = D
 
 	reagents_holder_flags = new_flags
 
@@ -45,9 +52,6 @@
 	return english_list(data)
 
 /* Internal procs */
-
-/datum/reagents/proc/get_free_space() // Returns free space.
-	return maximum_volume - total_volume
 
 /datum/reagents/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
 	var/the_reagent = null
@@ -125,11 +129,15 @@
 /* Holder-to-chemical */
 
 /datum/reagents/proc/add_reagent(id, amount, data = null, safety = 0)
+	if(ispath(id))
+		var/datum/reagent/accessing = id
+		id = initial(accessing.id)
+
 	if(!isnum(amount) || amount <= 0)
 		return 0
 
 	update_total()
-	amount = min(amount, get_free_space())
+	amount = min(amount, available_volume())
 
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
@@ -146,7 +154,7 @@
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
-	var/datum/reagent/D = SSchemistry.chemical_reagents[id]
+	var/datum/reagent/D = SSchemistry.reagent_lookup[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
 		reagent_list += R
@@ -271,7 +279,7 @@
 	if(!target || !istype(target))
 		return
 
-	amount = max(0, min(amount, total_volume, target.get_free_space() / multiplier))
+	amount = max(0, min(amount, total_volume, target.available_volume() / multiplier))
 
 	if(!amount)
 		return
@@ -511,3 +519,26 @@
 		if(C.can_happen(src))
 			do_happen = TRUE
 	return do_happen
+
+//? Queries - Whole
+
+/**
+ * returns volume remaining
+ */
+/datum/reagents/proc/available_volume()
+	return maximum_volume - total_volume
+
+//? UI
+
+/**
+ * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
+ */
+/datum/reagents/proc/tgui_reagent_contents()
+	var/list/built = list()
+	for(var/datum/reagent/R as anything in reagent_list)
+		built[++built.len] = list(
+			"name" = R.name,
+			"amount" = R.volume,
+			"id" = R.id,
+		)
+	return built

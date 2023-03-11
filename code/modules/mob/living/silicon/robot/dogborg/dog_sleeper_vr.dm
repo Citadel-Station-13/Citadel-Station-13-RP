@@ -178,6 +178,9 @@
 	hound.cell.charge = hound.cell.charge - amt
 
 /obj/item/dogborg/sleeper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(..())
 		return
 	sleeperUI(user)
@@ -189,12 +192,12 @@
 		dat += "<h3>Injector</h3>"
 		if(patient)// && patient.health > min_health) //Not necessary, leave the buttons on, but the feedback during injection will give more information.
 			for(var/re in injection_chems)
-				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
+				var/datum/reagent/C = SSchemistry.reagent_lookup[re]
 				if(C)
 					dat += "<A href='?src=\ref[src];inject=[C.id]'>Inject [C.name]</A><BR>"
 		else
 			for(var/re in injection_chems)
-				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
+				var/datum/reagent/C = SSchemistry.reagent_lookup[re]
 				if(C)
 					dat += "<span class='linkOff'>Inject [C.name]</span><BR>"
 
@@ -399,7 +402,7 @@
 				patient.reagents.add_reagent(chem, inject_amount)
 				drain(750) //-750 charge per injection
 			var/units = round(patient.reagents.get_reagent_amount(chem))
-			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [SSchemistry.chemical_reagents[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
+			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [SSchemistry.reagent_lookup[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
 
 //For if the dogborg's existing patient uh, doesn't make it.
 /obj/item/dogborg/sleeper/proc/update_patient()

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
 	name = "under"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -67,7 +67,7 @@
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
 // todo kick to item flag for auto-unequip-without-clickdrag
-/obj/item/clothing/under/attack_hand(var/mob/user)
+/obj/item/clothing/under/attack_hand(mob/user, list/params)
 	if(LAZYLEN(accessories))
 		..()
 	if ((ishuman(usr) || issmall(usr)) && src.loc == user)

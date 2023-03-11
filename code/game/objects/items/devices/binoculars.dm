@@ -13,4 +13,7 @@
 
 
 /obj/item/binoculars/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	zoom()

@@ -5228,7 +5228,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/wood,

@@ -28,7 +28,10 @@
 		reveal()
 		watchowner = null
 
-/obj/item/deadringer/attack_self(var/mob/living/user as mob)
+/obj/item/deadringer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/H = src.loc
 	if (!istype(H, /mob/living/carbon/human))
 		to_chat(H,"<font color=#4F49AF>You have no clue what to do with this thing.</font>")

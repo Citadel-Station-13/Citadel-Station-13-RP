@@ -41,7 +41,10 @@
 		return
 	update_icon()
 
-/obj/item/gun/ballistic/bow/attack_self(mob/living/user)
+/obj/item/gun/ballistic/bow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(loaded.len)
 		src.ready = 1
 		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
@@ -51,7 +54,7 @@
 	else
 		return
 
-/obj/item/gun/ballistic/bow/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/bow/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
