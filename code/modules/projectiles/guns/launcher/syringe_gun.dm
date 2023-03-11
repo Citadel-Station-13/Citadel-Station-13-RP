@@ -28,6 +28,9 @@
 		update_icon()
 
 /obj/item/syringe_cartridge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(syringe)
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
@@ -92,7 +95,10 @@
 	darts -= next
 	next = null
 
-/obj/item/gun/launcher/syringe/attack_self(mob/living/user as mob)
+/obj/item/gun/launcher/syringe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(next)
 		user.visible_message("[user] unlatches and carefully relaxes the bolt on [src].", "<span class='warning'>You unlatch and carefully relax the bolt on [src], unloading the spring.</span>")
 		next = null
@@ -102,7 +108,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/gun/launcher/syringe/attack_hand(mob/living/user as mob)
+/obj/item/gun/launcher/syringe/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")

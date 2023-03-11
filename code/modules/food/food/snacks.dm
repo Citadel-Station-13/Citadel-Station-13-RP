@@ -44,7 +44,10 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -920,6 +923,9 @@
 	var/has_been_heated = 0
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(has_been_heated)
 		to_chat(user, "<span class='notice'>The heating chemicals have already been spent.</span>")
 		return
@@ -1835,7 +1841,10 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(wrapped)
 		Unwrap(user)
 
@@ -3231,7 +3240,7 @@
 	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand( mob/user as mob )
+/obj/item/pizzabox/attack_hand(mob/user, list/params)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -3256,7 +3265,10 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self( mob/user as mob )
+/obj/item/pizzabox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if( boxes.len > 0 )
 		return
@@ -4796,7 +4808,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
 	. = ..()
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()

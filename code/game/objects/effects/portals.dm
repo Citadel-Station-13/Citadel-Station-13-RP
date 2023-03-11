@@ -21,7 +21,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	. = ..()
 	teleport(AM)
 
-/obj/effect/portal/attack_hand(mob/user as mob)
+/obj/effect/portal/attack_hand(mob/user, list/params)
 	if(istype(user) && !(istype(user,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	spawn(0)

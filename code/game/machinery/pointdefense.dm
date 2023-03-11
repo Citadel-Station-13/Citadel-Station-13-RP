@@ -43,7 +43,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
 		ui.open()
 
-/obj/machinery/pointdefense_control/attack_hand(mob/user)
+/obj/machinery/pointdefense_control/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

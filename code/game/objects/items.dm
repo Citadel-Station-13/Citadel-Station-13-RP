@@ -260,7 +260,7 @@
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/living/user as mob)
+/obj/item/attack_hand(mob/user, list/params)
 	attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/user)
@@ -734,3 +734,22 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  */
 /obj/item/proc/get_attack_verb(atom/target, mob/user)
 	return length(attack_verb)? pick(attack_verb) : attack_verb
+
+//? Interaction
+
+/**
+ * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @params
+ * * user - The person using us in hand
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/attack_self(mob/user)
+	// SHOULD_CALL_PARENT(TRUE)
+	// attack_self isn't really part of the item attack chain.
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		interact(user)

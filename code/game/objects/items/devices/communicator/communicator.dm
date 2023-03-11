@@ -219,6 +219,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Description: Makes an exonet datum if one does not exist, allocates an address for it, maintains the lists of all devies, clears the alert icon, and
 //				finally makes NanoUI appear.
 /obj/item/communicator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()

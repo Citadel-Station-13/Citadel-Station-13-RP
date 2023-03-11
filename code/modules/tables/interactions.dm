@@ -55,7 +55,7 @@
 				return 1
 	return 1
 
-/obj/structure/table/attackby(obj/item/W, mob/user, params)
+/obj/structure/table/attackby(obj/item/W, mob/user, list/params)
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
@@ -135,13 +135,12 @@
 		if(!user.transfer_item_to_loc(W, loc))
 			return
 		if(item_pixel_place)
-			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
-			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+			if(!params || !params["icon-x"] || !params["icon-y"])
 				return
 			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-			W.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			W.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			W.pixel_x = clamp(text2num(params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			W.pixel_y = clamp(text2num(params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 		return
 	return ..()
 

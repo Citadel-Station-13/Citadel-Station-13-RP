@@ -140,7 +140,7 @@
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
-/obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

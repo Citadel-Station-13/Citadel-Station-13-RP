@@ -167,6 +167,10 @@
 "ay" = (
 /turf/simulated/wall,
 /area/maintenance/substation/atmos)
+"az" = (
+/obj/structure/dispenser/phoron,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_eva)
 "aA" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/chief)
@@ -31832,7 +31836,7 @@ iD
 iN
 Ko
 DB
-va
+az
 ct
 Lt
 IM

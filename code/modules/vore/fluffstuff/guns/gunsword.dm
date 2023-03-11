@@ -93,13 +93,17 @@
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/living/user as mob)
+/obj/item/cell/device/weapon/gunsword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H?.take_organ_damage(5,5)
 		deactivate(user)
 		update_icon()
 		update_held_icon()

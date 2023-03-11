@@ -89,7 +89,7 @@
 
 	return data
 
-/mob/living/bot/floorbot/attack_hand(var/mob/user)
+/mob/living/bot/floorbot/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /mob/living/bot/floorbot/emag_act(var/remaining_charges, var/mob/user)

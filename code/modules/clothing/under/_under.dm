@@ -63,7 +63,7 @@
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
 // todo kick to item flag for auto-unequip-without-clickdrag
-/obj/item/clothing/under/attack_hand(var/mob/user)
+/obj/item/clothing/under/attack_hand(mob/user, list/params)
 	if(LAZYLEN(accessories))
 		..()
 	if ((ishuman(usr) || issmall(usr)) && src.loc == user)

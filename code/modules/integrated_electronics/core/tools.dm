@@ -78,6 +78,9 @@
 				return
 
 /obj/item/integrated_electronics/wirer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch(mode)
 		if(WIRE)
 			mode = UNWIRE
@@ -113,6 +116,9 @@
 	var/copy_values = FALSE
 
 /obj/item/integrated_electronics/debugger/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", list("string","number","ref", "copy", "list", "null"))
 	if(!CanInteract(user, GLOB.physical_state))
 		return
@@ -198,6 +204,9 @@
 	var/mode = 0
 
 /obj/item/multitool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")

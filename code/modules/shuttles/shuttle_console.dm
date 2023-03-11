@@ -11,7 +11,7 @@
 	var/skip_act = FALSE
 	var/tgui_subtemplate = "ShuttleControlConsoleDefault"
 
-/obj/machinery/computer/shuttle_control/attack_hand(user as mob)
+/obj/machinery/computer/shuttle_control/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 	if(!allowed(user))

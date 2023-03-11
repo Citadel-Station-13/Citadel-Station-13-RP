@@ -310,7 +310,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
-/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
@@ -444,7 +447,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	name = "empty [initial(name)]"
 
-/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user as mob)
+/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
@@ -594,7 +600,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = icon_state
 	base_state = icon_state
 
-/obj/item/flame/lighter/attack_self(mob/living/user)
+/obj/item/flame/lighter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
@@ -609,10 +618,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 			else
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
+				var/mob/living/carbon/human/H = ishuman(user)? user : null
 				if (user.get_held_item_of_index(1) == src)
-					user.apply_damage(2,BURN,"l_hand")
+					H?.apply_damage(2,BURN,"l_hand")
 				else
-					user.apply_damage(2,BURN,"r_hand")
+					H?.apply_damage(2,BURN,"r_hand")
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 		set_light(2)
