@@ -6,7 +6,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	equip_sound = 'sound/items/jumpsuit_equip.ogg'
 	w_class = ITEMSIZE_NORMAL
 	show_messages = 1

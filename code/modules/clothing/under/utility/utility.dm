@@ -4,7 +4,7 @@
 	icon = 'icons/clothing/uniform/rank/utility.dmi'
 	icon_state = "black"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL

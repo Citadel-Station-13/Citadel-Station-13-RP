@@ -32,6 +32,18 @@
 	/// What icon the atom uses for speechbubbles.
 	var/bubble_icon = "normal"
 
+	//? Armor
+	/// armor datm - this armor mitigates damage
+	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
+	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	var/datum/armor/r_armor
+	/// armor datum type
+	var/r_armor_type
+	/// armor soak data - this armor directly deducts damage. use sparingly.
+	var/datum/armor/r_armor_soak
+	/// armor soak type
+	var/r_armor_soak_type
+
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0

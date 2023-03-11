@@ -1,0 +1,1 @@
+/datum/armor/none

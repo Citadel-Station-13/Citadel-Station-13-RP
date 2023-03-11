@@ -56,5 +56,5 @@
 	desc = "A crappy paper hat that you are REQUIRED to wear."
 	inv_hide_flags = 0
 	body_cover_flags = 0
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 

@@ -38,7 +38,7 @@
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
+	r_armor_type = /datum/armor/none //No armor at all.
 
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)
 	. = ..()
@@ -54,7 +54,7 @@
 	clothing_flags = NONE
 	inv_hide_flags = BLOCKHAIR
 	item_flags = ITEM_DROPDEL
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/shoes/magboots/changeling

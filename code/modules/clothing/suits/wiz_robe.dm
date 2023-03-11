@@ -97,14 +97,14 @@
 	desc = "A rather dull, blue robe meant to mimick real wizard robes."
 	icon_state = "wizard-fake"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wizard", SLOT_ID_LEFT_HAND = "wizard")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	siemens_coefficient = 1.0
 
 /obj/item/clothing/head/wizard/marisa/fake
 	name = "Witch Hat"
 	desc = "Strange-looking hat-wear, makes you want to cast fireballs."
 	icon_state = "marisa"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	siemens_coefficient = 1.0
 
 /obj/item/clothing/suit/wizrobe/marisa/fake
@@ -112,5 +112,5 @@
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	siemens_coefficient = 1.0

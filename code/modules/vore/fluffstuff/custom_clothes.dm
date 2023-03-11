@@ -88,7 +88,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "freddyhead_mob"
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	inv_hide_flags = HIDEMASK|HIDEEARS
 	cold_protection = HEAD
 	siemens_coefficient = 0.9
@@ -126,7 +126,7 @@
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
@@ -261,7 +261,7 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) // Considering only staff heads get to pick it
+	r_armor_type = /datum/armor/none // Considering only staff heads get to pick it
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"

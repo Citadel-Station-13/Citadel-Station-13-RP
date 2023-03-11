@@ -88,8 +88,6 @@
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown = 0
-	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	var/list/armorsoak = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	/// Suit storage stuff.
 	var/list/allowed = null
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
