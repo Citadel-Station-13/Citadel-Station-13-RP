@@ -75,7 +75,6 @@
 	l_ear = /obj/item/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
 	shoes = /obj/item/clothing/shoes/brown
-	l_hand = /obj/item/clipboard
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
 
 	id_type = /obj/item/card/id/science/head
