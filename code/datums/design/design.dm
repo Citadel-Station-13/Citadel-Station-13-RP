@@ -1,48 +1,9 @@
-/***************************************************************
-**						Design Datums						  **
-**	All the data for building stuff and tracking reliability. **
-***************************************************************/
-/*
-For the materials datum, it assumes you need reagents unless specified otherwise. To designate a material that isn't a reagent,
-you use one of the material IDs below. These are NOT ids in the usual sense (they aren't defined in the object or part of a datum),
-they are simply references used as part of a "has materials?" type proc. They all start with a  to denote that they aren't reagents.
-The currently supporting non-reagent materials:
-
-Don't add new keyword/IDs if they are made from an existing one (such as rods which are made from metal). Only add raw materials.
-
-Design Guidlines
-- When adding new designs, check rdreadme.dm to see what kind of things have already been made and where new stuff is needed.
-- A single sheet of anything is 2000 units of material. Materials besides metal/glass require help from other jobs (mining for
-other types of metals and chemistry for reagents).
-
-*/
-//Note: More then one of these can be added to a design.
-
-/**
- * makes new datums for all hardcoded designs
- */
-/proc/instantiate_all_hardcoded_designs()
-	. = list()
-	for(var/path in subtypesof(/datum/design))
-		var/datum/design/D = path
-		if(initial(D.abstract_type) == path)
-			continue
-		if(initial(D.id) == "id")
-			continue
-		D = new path
-		. += D
-
-///Datum for object designs, used in construction
 /datum/design
 	/// Abstract type.
 	abstract_type = /datum/design
 
 	/// Must be unique - identifier of design in CamelCase.
 	var/identifier
-	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
-	var/list/materials
-	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
-	var/list/reagents
 	/// types of lathes that can print us
 	var/lathe_type = NONE
 	/// time needed in deciseconds
@@ -51,9 +12,15 @@ other types of metals and chemistry for reagents).
 	/// type of what we build
 	var/build_path
 
+	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	var/list/materials
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
+	//  * warning * - using this will not play nicely with auto-detection.
+	//  set materials list yourself if you use this.
 	var/list/material_parts
+	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	var/list/reagents
 	// todo: reagent_parts?
 
 	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.

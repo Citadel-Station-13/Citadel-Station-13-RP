@@ -56,33 +56,6 @@
 	hidden = 1
 
 //! ## .45
-/datum/category_item/autolathe/arms/pistol_45
-	name = "pistol magazine (.45)"
-	path =/obj/item/ammo_magazine/m45
-	hidden = 1
-
-/datum/category_item/autolathe/arms/pistol_45h
-	name = "pistol magazine (.45 hunter)"
-	path =/obj/item/ammo_magazine/m45/hunter
-	hidden = 1
-
-/datum/category_item/autolathe/arms/pistol_45p
-	name = "pistol magazine (.45 practice)"
-	path =/obj/item/ammo_magazine/m45/practice
-
-/datum/category_item/autolathe/arms/pistol_45r
-	name = "pistol magazine (.45 rubber)"
-	path =/obj/item/ammo_magazine/m45/rubber
-
-/datum/category_item/autolathe/arms/pistol_45f
-	name = "pistol magazine (.45 flash)"
-	path =/obj/item/ammo_magazine/m45/flash
-
-/datum/category_item/autolathe/arms/pistol_45uzi
-	name = "uzi magazine (.45)"
-	path =/obj/item/ammo_magazine/m45uzi
-	hidden = 1
-
 /datum/category_item/autolathe/arms/tommymag
 	name = "Tommy Gun magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommy
