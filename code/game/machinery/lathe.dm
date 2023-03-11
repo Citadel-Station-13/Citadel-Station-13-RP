@@ -1,3 +1,6 @@
+/obj/item/circuitboard/machine/lathe
+	#warn impl
+
 /obj/machinery/lathe
 	abstract_type = /obj/machinery/lathe
 	name = "lathe"
@@ -24,7 +27,7 @@
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 
-	/// queued design ids associated to amounts.
+	/// queued of /datum/lathe_queued's.
 	var/list/queue
 	/// currently printing design
 	var/datum/design/printing
@@ -108,3 +111,14 @@
 
 /obj/machinery/lathe/proc/available_designs()
 	#warn impl
+
+/**
+ * holder datum for queue data
+ */
+/datum/lathe_queued
+	/// design id
+	var/design_id
+	/// amount
+	var/amount = 1
+	/// material parts to use, key to id
+	var/list/material_parts

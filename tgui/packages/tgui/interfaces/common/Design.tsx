@@ -5,8 +5,9 @@ export interface Design {
   name: string;
   desc: string;
   materials: Record<string, number>;
+  material_parts: Record<string, number>;
   reagents: Record<string, number>;
-  requiredItems: Array<DesignItem>;
+  resultItem: DesignItem;
   id: string;
 }
 

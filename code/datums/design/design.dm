@@ -51,6 +51,11 @@ other types of metals and chemistry for reagents).
 	/// type of what we build
 	var/build_path
 
+	/// for variable-material designs: assoc list of key to amounts
+	/// the key will be fed into print() during creation with the material id the user picked
+	var/list/material_parts
+	// todo: reagent_parts?
+
 	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
 	var/name
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
@@ -67,12 +72,6 @@ other types of metals and chemistry for reagents).
 /datum/design/New()
 	autodetect()
 	generate()
-
-	if(!islist(category))
-		log_runtime(EXCEPTION("Warning: Design [type] defined a non-list category. Please fix this."))
-		category = list(category)
-	item_name = name
-	AssembleDesignInfo()
 
 /datum/design/proc/autodetect()
 	#warn handle non-build-path'd ones
@@ -107,10 +106,12 @@ other types of metals and chemistry for reagents).
 //These procs are used in subtypes for assigning names and descriptions dynamically
 /datum/design/proc/AssembleDesignInfo()
 	AssembleDesignName()
+	#warn nuke from orbit
 	AssembleDesignDesc()
 	return
 
 /datum/design/proc/AssembleDesignName()
+	#warn nuke from orbit
 	if(!name && build_path)					//Get name from build path if posible
 		var/atom/movable/A = build_path
 		name = initial(A.name)
@@ -118,6 +119,7 @@ other types of metals and chemistry for reagents).
 	return
 
 /datum/design/proc/AssembleDesignDesc()
+	#warn nuke from orbit
 	if(!desc)								//Try to make up a nice description if we don't have one
 		desc = "Allows for the construction of \a [item_name]."
 	return
@@ -125,8 +127,12 @@ other types of metals and chemistry for reagents).
 /**
  * Return a new instance of the item for the design
  * This is called even before the fabricator can touch the item.
+ *
+ * @params
+ * * where - where to put the finished product
+ * * fabricator - the lathe printing the product
  */
-/datum/design/proc/print(atom/where)
+/datum/design/proc/print(atom/where, list/material_parts)
 	return new build_path(where)
 
 /**
@@ -135,9 +141,9 @@ other types of metals and chemistry for reagents).
  * @params
  * * where - where to put the finished product
  * * fabricator - the lathe printing the product
- * * utilizing - extra items used in the print, if applicable
+ * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
-/datum/design/proc/lathe_print(atom/where, obj/machinery/lathe/fabricator, list/obj/item/utilizing)
+/datum/design/proc/lathe_print(atom/where, list/material_parts, obj/machinery/lathe/fabricator)
 	return print(where)
 
 //? legacy below
