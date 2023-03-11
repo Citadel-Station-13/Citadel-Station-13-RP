@@ -80,10 +80,30 @@
  *
  * @params
  * * damage - raw damage
+ * * damage_type - (optional) raw damage type
  * * penetration - % of armor to ignore
  * * armor_type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ *
+ * @return resulting damage
  */
-/atom/proc/run_armor(damage, penetration, armor_type)
+/atom/proc/check_armor(damage, damage_type, penetration, armor_type)
+	SHOULD_BE_PURE(TRUE)
+	#warn impl
+
+/**
+ * runs armor against an incoming attack
+ * this proc can have side effects
+ *
+ * @params
+ * * damage - raw damage
+ * * damage_type - (optional) raw damage type
+ * * penetration - % of armor to ignore
+ * * armor_type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * weapon - (optional) attacking weapon / mob for unarmed, or just a /datum - implementation-defined.
+ *
+ * @return resulting damage
+ */
+/atom/proc/run_armor(damage, damage_type, penetration, armor_type, datum/weapon)
 	#warn impl
 
 #warn vv admin armor with /datum/tgui_input_multi
