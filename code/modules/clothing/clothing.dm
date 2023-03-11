@@ -159,7 +159,7 @@
 //? styles
 
 /**
- * returns available styles as name = state
+ * returns available styles as name = state or image or mutable_appearance
  */
 /obj/item/clothing/proc/available_styles(mob/user)
 	. = list()
@@ -176,7 +176,6 @@
 /obj/item/clothing/proc/pick_style(mob/user)
 	var/list/available = available_styles(user)
 	var/list/assembled = list()
-	var/list/states = icon_states(icon)
 	for(var/name in available)
 		var/using = available[name]
 		if(istext(using))
