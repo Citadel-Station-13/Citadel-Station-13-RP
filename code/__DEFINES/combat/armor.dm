@@ -1,10 +1,10 @@
 //? --- armor defines ---
-//? Want to add more?
-//? Update [code/__HELPERS/datastructs/armor.dm]
-//? Add an armor var, define it here,
-//? and update to_list() and from_list().
-//? The system will handle the rest.
-//? Make sure the var names match the names in here!
+//* Want to add more?
+//* Update [code/__HELPERS/datastructs/armor.dm]
+//* Add an armor var, define it here,
+//* and update to_list() and from_list().
+//* The system will handle the rest.
+//* Make sure the var names match the names in here!
 
 #define ARMOR_MELEE "melee"
 #define ARMOR_BULLET "bullet"

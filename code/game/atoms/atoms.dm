@@ -38,11 +38,11 @@
 	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
 	var/datum/armor/r_armor
 	/// armor datum type
-	var/r_armor_type
+	var/r_armor_type = /datum/armor/none
 	/// armor soak data - this armor directly deducts damage. use sparingly.
 	var/datum/armor/r_armor_soak
 	/// armor soak type
-	var/r_armor_soak_type
+	var/r_armor_soak_type = /datum/armor/none
 
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.

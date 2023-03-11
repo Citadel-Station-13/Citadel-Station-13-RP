@@ -1,6 +1,8 @@
 //! Welcome to the atom damage module.
 //! Enjoy the bitfield and #define vomit.
 
+//? Deconstruction
+
 /**
  * called to semantically deconstruct an atom
  *
@@ -27,7 +29,7 @@
  * @params
  * - method - how we were deconstructed
  */
-/atom/proc/deconstructed()
+/atom/proc/deconstructed(method)
 	return
 
 /**
@@ -38,3 +40,50 @@
  */
 /atom/proc/drop_products(method)
 	return
+
+//? Armor
+
+/**
+ * sets our armor
+ *
+ * @params
+ * * what - list of armor values or a /datum/armor path
+ */
+/atom/proc/set_armor(what)
+	r_armor = fetch_armor_struct(what)
+
+/**
+ * sets our armor soak
+ *
+ * @params
+ * * what - list of armor values or a /datum/armor path
+ */
+/atom/proc/set_armor_soak(what)
+	r_armor_soak = fetch_armor_struct(what)
+
+/**
+ * gets our armor datum or otherwise make sure it exists
+ */
+/atom/proc/fetch_armor()
+	RETURN_TYPE(/datum/armor)
+	return r_armor || (r_armor = fetch_armor_struct(r_armor_type))
+
+/**
+ * gets our armor soak datum or otherwise make sure it exists
+ */
+/atom/proc/fetch_armor_soak()
+	RETURN_TYPE(/datum/armor)
+	return r_armor_soak || (r_armor_soak = fetch_armor_struct(r_armor_soak_type))
+
+/**
+ * calculates the resulting damage from an attack, taking into account our armor and soak
+ *
+ * @params
+ * * damage - raw damage
+ * * penetration - % of armor to ignore
+ * * armor_type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ */
+/atom/proc/run_armor(damage, penetration, armor_type)
+	#warn impl
+
+#warn vv admin armor with /datum/tgui_input_multi
