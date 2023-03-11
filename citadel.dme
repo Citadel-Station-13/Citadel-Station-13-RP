@@ -591,6 +591,8 @@
 #include "code\datums\announce\location\main_station.dm"
 #include "code\datums\announce\location\overmap_sector.dm"
 #include "code\datums\armor\core.dm"
+#include "code\datums\armor\antagonist\changeling.dm"
+#include "code\datums\armor\antagonist\cult.dm"
 #include "code\datums\autolathe\arms.dm"
 #include "code\datums\autolathe\autolathe.dm"
 #include "code\datums\autolathe\devices.dm"

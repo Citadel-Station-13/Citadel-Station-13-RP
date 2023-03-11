@@ -59,7 +59,7 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	inv_hide_flags = HIDEFACE
 	body_cover_flags = HEAD
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/cult/robes
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
@@ -84,7 +84,7 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade)
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/cult/robes
 	inv_hide_flags = HIDEJUMPSUIT
 	siemens_coefficient = 0
 
@@ -106,7 +106,7 @@
 	desc = "A space worthy helmet used by the followers of Nar-Sie."
 	icon_state = "cult_helmet"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)
+	r_armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
 
 /obj/item/clothing/head/helmet/space/cult/cultify()
@@ -120,7 +120,7 @@
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)
+	r_armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
 	inv_hide_flags = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS

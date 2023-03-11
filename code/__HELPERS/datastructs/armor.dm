@@ -7,6 +7,7 @@
 	var/bullet = 0
 	var/laser = 0
 	var/energy = 0
+	var/bomb = 0
 	var/bio = 0
 	var/rad = 0
 
@@ -16,7 +17,7 @@
 	return ..()
 
 /datum/armor/proc/from_list(list/values)
-	melee = values[AROMR_MELEE] || 0
+	melee = values[ARMOR_MELEE] || 0
 	bullet = values[ARMOR_BULLET] || 0
 	laser = values[ARMOR_LASER] || 0
 	energy = values[ARMOR_ENERGY] || 0
@@ -49,6 +50,26 @@
 	for(var/key in adjusting)
 		adjusting[key] = adjusting[key] + values[key]
 	return fetch_armor_struct(adjusting)
+
+/**
+ * returns a /datum/armor with the given values overwritten but only if they were below
+ */
+/datum/armor/proc/boosted(list/values)
+	var/list/boosting = to_list()
+	for(var/key in boosting)
+		if(values[key] > boosting[key])
+			boosting[key] = values[key]
+	return fetch_armor_struct(boosting)
+
+/**
+ * returns if we're atleast the values given, for the values given
+ */
+/datum/armor/proc/is_atleast(list/values)
+	var/list/us = to_list()
+	for(var/key in values)
+		if(us[key] < values[key])
+			return FALSE
+	return TRUE
 
 GLOBAL_LIST_EMPTY(struct_armor_hardcoded)
 GLOBAL_LIST_EMPTY(struct_armor_dynamic)
