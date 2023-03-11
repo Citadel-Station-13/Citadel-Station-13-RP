@@ -118,7 +118,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/turretid/attack_hand(mob/user)
+/obj/machinery/turretid/attack_hand(mob/user, list/params)
 	if(isLocked(user))
 		return
 

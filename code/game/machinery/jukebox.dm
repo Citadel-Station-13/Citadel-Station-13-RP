@@ -299,7 +299,7 @@
 /obj/machinery/media/jukebox/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/media/jukebox/attack_hand(mob/user)
+/obj/machinery/media/jukebox/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/media/jukebox/proc/explode()

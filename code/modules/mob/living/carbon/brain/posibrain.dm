@@ -34,6 +34,9 @@
 			question(ghost)
 
 /obj/item/mmi/digital/posibrain/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, SPAN_NOTICE("You carefully locate the manual activation switch and start the positronic brain's boot process."))

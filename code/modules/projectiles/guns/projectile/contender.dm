@@ -13,7 +13,10 @@
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/contender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(chambered)
 		chambered.loc = get_turf(src)
 		chambered = null

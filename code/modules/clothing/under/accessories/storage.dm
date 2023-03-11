@@ -19,7 +19,7 @@
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
 	if (has_suit)	//if we are part of a suit
 		hold.open(user)
 		return
@@ -41,7 +41,10 @@
 	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You empty [src].</span>")
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)

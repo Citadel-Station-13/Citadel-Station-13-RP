@@ -273,7 +273,7 @@
 
 	updateDialog()
 
-/obj/machinery/power/turbine/attack_hand(var/mob/user as mob)
+/obj/machinery/power/turbine/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)
@@ -340,7 +340,7 @@
 			id = new_ident
 		return
 
-/obj/machinery/computer/turbine_computer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/turbine_computer/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)

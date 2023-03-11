@@ -77,7 +77,10 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		..()
 
@@ -284,7 +287,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()

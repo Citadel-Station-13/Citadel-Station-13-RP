@@ -254,7 +254,10 @@
 	. = ..()
 	name += spellname
 
-/obj/item/spellbook/oneuse/attack_self(mob/user as mob)
+/obj/item/spellbook/oneuse/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/spell/S = new spell(user)
 	for(var/spell/knownspell in user.spell_list)
 		if(knownspell.type == S.type)

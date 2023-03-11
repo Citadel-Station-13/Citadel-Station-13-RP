@@ -43,7 +43,7 @@
 	else
 		icon_state = "coil[anchored]"
 
-/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 
 	//if(default_deconstruction_screwdriver(user, "coil_open[anchored]", "coil[anchored]", W))
@@ -59,7 +59,7 @@
 		return wires.Interact(user)
 	return ..()
 
-/obj/machinery/power/tesla_coil/attack_hand(mob/user)
+/obj/machinery/power/tesla_coil/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
@@ -113,7 +113,7 @@
 	else
 		icon_state = "grounding_rod[anchored]"
 
-/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user)
 	//if(default_deconstruction_screwdriver(user, "grounding_rod_open[anchored]", "grounding_rod[anchored]", W))
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -125,7 +125,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/grounding_rod/attack_hand(mob/user)
+/obj/machinery/power/grounding_rod/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()

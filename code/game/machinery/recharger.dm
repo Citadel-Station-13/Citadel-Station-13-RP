@@ -100,7 +100,7 @@
 	else if(default_part_replacement(user, G))
 		return
 
-/obj/machinery/recharger/attack_hand(mob/user)
+/obj/machinery/recharger/attack_hand(mob/user, list/params)
 	if(istype(user,/mob/living/silicon))
 		return
 

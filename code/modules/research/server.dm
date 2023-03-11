@@ -284,7 +284,7 @@
 			target.files.known_tech |= from.files.known_tech
 			return TRUE
 
-/obj/machinery/computer/rdservercontrol/attack_hand(mob/user as mob)
+/obj/machinery/computer/rdservercontrol/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

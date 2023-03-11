@@ -50,7 +50,7 @@
 
 	return data
 
-/obj/machinery/computer/telecomms/monitor/attack_hand(mob/user)
+/obj/machinery/computer/telecomms/monitor/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

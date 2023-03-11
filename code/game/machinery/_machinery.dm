@@ -265,7 +265,7 @@
 	else
 		return attack_hand(user)
 
-/obj/machinery/attack_hand(mob/user)
+/obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
 	if(inoperable(MAINT))

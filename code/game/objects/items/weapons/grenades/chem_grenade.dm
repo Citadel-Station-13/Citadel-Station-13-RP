@@ -25,7 +25,10 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
-/obj/item/grenade/chem_grenade/attack_self(mob/user as mob)
+/obj/item/grenade/chem_grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc

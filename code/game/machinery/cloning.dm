@@ -60,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user)
+/obj/machinery/clonepod/attack_hand(mob/user, list/params)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -525,7 +525,10 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user as mob)
+/obj/item/disk/data/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	read_only = !read_only
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 

@@ -124,7 +124,10 @@
 	dat += "</tr></table>"
 	return dat
 
-/obj/item/card/id/attack_self(mob/user as mob)
+/obj/item/card/id/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("\The [user] shows you: [icon2html(thing = src, target = world)] [src.name]. The assignment on the card: [src.assignment]",\
 		"You flash your ID card: [icon2html(thing = src, target = user)] [src.name]. The assignment on the card: [src.assignment]")
 

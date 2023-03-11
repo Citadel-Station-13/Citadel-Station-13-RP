@@ -1,7 +1,12 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/living/L)
-	..()
+/mob/living/simple_mob/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
 
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	switch(L.a_intent)
 		if(INTENT_HELP)
 			if(health > 0)

@@ -52,7 +52,6 @@
 		to_chat(user, SPAN_NOTICE("You put the cap off of \the [src]."))
 		atom_flags |= OPENCONTAINER
 
-
 /obj/item/reagent_containers/cartridge/dispenser/large
 	name = "large dispenser cartridge"
 	volume = 1000
