@@ -161,6 +161,19 @@
 		ponchos[initial(poncho.name)] = poncho
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
 
+/datum/gear/suit/dust_cloak_selection
+	name = "Dust cloak Selection"
+	path = /obj/item/clothing/accessory/poncho/dust_cloak
+
+/datum/gear/suit/dust_cloak_selection/New()
+	..()
+	var/list/dustcloak_selection = list()
+	for(var/dustcloak in typesof(/obj/item/clothing/accessory/poncho/dust_cloak))
+		var/obj/item/clothing/accessory/poncho/dustcloak_type = dustcloak
+		dustcloak_selection[initial(dustcloak_type.name)] = dustcloak_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(dustcloak_selection, /proc/cmp_text_asc))
+
+
 // A colorable cloak
 /datum/gear/suit/roles/poncho/cloak
 	name = "Cloak - Glowing Light"
@@ -465,3 +478,31 @@
 /datum/gear/suit/nerdshirt
 	name = "Nerdy Shirt"
 	path = /obj/item/clothing/suit/nerdshirt
+
+/datum/gear/suit/brownfancycoat
+	name = "Brown Fancy Coat"
+	path = /obj/item/clothing/suit/storage/toggle/brown_fancycoat
+
+/datum/gear/suit/motojacket
+	name = "Motorcycle Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/moto_jacket
+
+/datum/gear/suit/furcoat
+	name = "Furcoat"
+	path = /obj/item/clothing/suit/furcoat
+
+/datum/gear/suit/noble_coat
+	name = "Colorful Noble Coat"
+	path = /obj/item/clothing/suit/noble_coat
+
+/datum/gear/suit/mercy_hoodie
+	name = "Mercy Robe"
+	path = /obj/item/clothing/suit/storage/hooded/mercy
+
+/datum/gear/suit/cyberpunk
+	name = "Cyber Jacket"
+	path = /obj/item/clothing/suit/cyberpunk
+
+/datum/gear/suit/cyberpunk_long
+	name = "Cyber Jacket Long"
+	path = /obj/item/clothing/suit/cyberpunk_long

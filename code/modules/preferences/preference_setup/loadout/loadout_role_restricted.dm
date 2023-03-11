@@ -768,6 +768,37 @@
 	name = "Medical Poncho"
 	path = /obj/item/clothing/accessory/poncho/roles/medical
 
+/datum/gear/restricted/medical/suit/labcoat_viro_classic
+	name = "Medical Labcoat - Virologist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist/classic
+	allowed_roles = list("Virologist")
+
+/datum/gear/restricted/medical/suit/labcoat_viro
+	name = "Medical Labcoat - Virologist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist
+	allowed_roles = list("Virologist")
+
+/datum/gear/restricted/medical/suit/labcoat_geneticist
+	name = "Medical Labcoat - Geneticist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/genetics
+
+/datum/gear/restricted/medical/suit/labcoat_geneticist_classic
+	name = "Medical Labcoat - Geneticist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/genetics/classic
+
+/datum/gear/restricted/medical/suit/labcoat_chemist
+	name = "Medical Labcoat - Chemist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/chemist
+	allowed_roles = list("Chemist")
+
+/datum/gear/restricted/medical/suit/labcoat_chemist_classic
+	name = "Medical Labcoat - Chemist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/chemist/classic
+	allowed_roles = list("Chemist")
+
+/datum/gear/restricted/medical/suit/labcoat_emt
+	name = "Medical Labcoat - EMT"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist/classic
 
 //Shoes
 /datum/gear/restricted/medical/shoes/winterboots
@@ -1176,6 +1207,15 @@
 /datum/gear/restricted/science/suit/labcoat/roboticist
 	name = "Research Labcoat - Robotics"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	allowed_roles = list("Research Director", "Roboticist")
+
+/datum/gear/restricted/science/suit/labcoat_classic
+	name = "Research Labcoat (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/science/classic
+
+/datum/gear/restricted/science/suit/labcoat/roboticist_classic
+	name = "Research Labcoat - Robotics (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics/classic
 	allowed_roles = list("Research Director", "Roboticist")
 
 /datum/gear/restricted/science/suit/labcoat/rd
