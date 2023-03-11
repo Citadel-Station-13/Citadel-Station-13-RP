@@ -117,7 +117,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	//# 1. load configs
 	if(!config_legacy)
 		load_configuration()
-	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 	if(!config)
 		config = new
 
@@ -127,6 +126,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		rand_seed(random_seed)
 
 	//# 3. create subsystems
+	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
