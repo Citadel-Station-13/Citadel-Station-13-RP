@@ -29,6 +29,10 @@
 	var/list/weather_roundstart
 	/// override what we're going to next
 	var/datum/weather_next
+	/// forecast - weather *instances*.
+	var/list/forecast
+	/// forecast size
+	var/forecast_size = 3
 
 	//? visuals
 
@@ -51,6 +55,25 @@
 
 	#warn impl all
 
+/datum/weather_holder/New(datum/world_sector/sector)
+	src.sector = sector
+	init_weather
+
+//? core
+
+/datum/weather_holder/proc/init_weather()
+	LAZYINITLIST(weather_datums)
+	var/list/built = list()
+	for(var/thing in weather_datums)
+		if(ispath(thing, /datum/weather))
+			built[thing] = new thing
+		else if(istype(thing, /datum/weather))
+			var/datum/weather/instance = thing
+			built[instance.type] = instance
+		else
+			stack_trace("unexpected [thing] in weather datums not /datum/weather or path to such; skipping.")
+	weather_datums = built()
+
 /**
  * set current weather
  */
@@ -59,3 +82,59 @@
 
 
 #warn impl all
+
+/datum/weather_holder/proc/build_forecast()
+	forecast_size = clamp(forecast_size, 0, 10)
+	LAZYINITLIST(forecast)
+	if(length(forecast) >= forecast_size)
+		return
+	while(length(forecast) < forecast_size)
+
+	#warn impl
+
+/**
+ * random path to roundstart weather
+ */
+/datum/weather_holder/proc/random_roundstart_weather_type()
+	return length(weather_roundstart)? pickweight(weather_roundstart) : (length(weather_datums)? pick(weather_datums) : null)
+
+/**
+ * gets our next weather based on probabilities set in transitions
+ *
+ * @params
+ * * override - path or instance to use instead
+ */
+/datum/weather_holder/proc/next_weather(datum/weather/override)
+	var/effective_path = override?.type || active?.type || random_roundstart_weather_type()
+	if(!effective_path)
+		// what?
+		return
+	var/list/probabilities = weather_transitions?[effective_path]
+	var/path
+	if(length(probabilities))
+		path = pickweight(probabilities)
+	else
+		stack_trace("no probabilities on [path], defaulting.")
+		path = random_roundstart_weather_type()
+	. = weather_datums[path]
+	if(!.)
+		stack_trace("no datum for [path], nulling.")
+
+/datum/weather_holder/proc/advance_weather()
+	if(!length(forecast))
+		build_forecast()
+	if(!length(forecast))
+		return
+	set_weather(forecast[1])
+	forecast.Cut(1, 2)
+	build_forecast()
+
+/datum/weather_holder/proc/on_weather_change()
+	#warn impl
+
+/datum/weather_holder/proc/tick(delta_time)
+	#warn impl
+
+//? visuals
+
+#warn impl

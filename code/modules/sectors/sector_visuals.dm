@@ -53,13 +53,13 @@ GLOBAL_DATUM_INIT(sector_occlusion_graphics, /atom/movable/sector_occlusion, new
 		remove_occlusion()
 
 /datum/world_sector/proc/needs_occlusion()
-	if(weather_holder?.weather?.has_visuals())
+	if(weather?.has_visuals())
 		return TRUE
 	return FALSE
 
 /datum/world_sector/proc/add_occlusion()
 	ensure_visuals()
-	tile_holderr.vis_contents |= GLOB.sector_occlusion_graphics
+	tile_holder.vis_contents |= GLOB.sector_occlusion_graphics
 
 /datum/world_sector/proc/remove_occlusion()
-	tile_holderr?.vis_contents -= GLOB.sector_occlusion_graphics
+	tile_holder?.vis_contents -= GLOB.sector_occlusion_graphics

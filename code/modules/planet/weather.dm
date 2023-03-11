@@ -21,11 +21,6 @@
 
 /datum/weather_holder/New(source)
 	..()
-	our_planet = source
-	for(var/A in allowed_weather_types)
-		var/datum/weather/W = allowed_weather_types[A]
-		if(istype(W))
-			W.holder = src
 	visuals = new()
 	special_visuals = new()
 
