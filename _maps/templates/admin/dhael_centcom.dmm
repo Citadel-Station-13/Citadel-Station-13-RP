@@ -14081,7 +14081,7 @@
 /area/centcom/security)
 "TY" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

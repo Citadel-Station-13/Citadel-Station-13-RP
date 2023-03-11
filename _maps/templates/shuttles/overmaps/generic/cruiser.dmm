@@ -2613,7 +2613,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "fN" = (

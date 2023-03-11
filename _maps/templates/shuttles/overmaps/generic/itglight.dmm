@@ -6432,7 +6432,7 @@
 /turf/simulated/floor,
 /area/itglight/portengi)
 "RZ" = (
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /obj/structure/table/reinforced,
 /obj/machinery/light{
 	dir = 8

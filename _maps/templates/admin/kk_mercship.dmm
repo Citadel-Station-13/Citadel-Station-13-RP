@@ -972,7 +972,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "eF" = (
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/effect/floor_decal/techfloor{

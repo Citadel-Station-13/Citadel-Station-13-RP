@@ -3243,7 +3243,7 @@
 /area/ship/ert/med)
 "yJ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
