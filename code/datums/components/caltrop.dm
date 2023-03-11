@@ -37,7 +37,7 @@
 		if(O.status == BODYPART_ROBOTIC)
 			return
 
-		var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET))
+		var/feetCover = (H.wear_suit && (H.wear_suit.body_cover_flags & FEET)) || (H.w_uniform && (H.w_uniform.body_cover_flags & FEET))
 
 		if(!(flags & CALTROP_BYPASS_SHOES) && (H.shoes || feetCover))
 			return

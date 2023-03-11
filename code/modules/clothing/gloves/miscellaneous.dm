@@ -183,7 +183,10 @@
 
 	var/blessed = FALSE
 
-/obj/item/clothing/gloves/swat/para/attack_self(mob/user as mob)
+/obj/item/clothing/gloves/swat/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
 		siemens_coefficient = 0
@@ -207,7 +210,7 @@
 	name = "armwraps"
 	desc = "A series of armwraps. Makes you pretty keen to start punching people."
 	icon_state = "armwraps"
-	body_parts_covered = ARMS
+	body_cover_flags = ARMS
 	cold_protection = ARMS
 	strip_delay = 300 //you can't just yank them off
 	obj_flags = UNIQUE_RENAME
@@ -436,7 +439,7 @@
 	icon_state = "mauler_gauntlets"
 	item_state = "mauler_gauntlets"
 	transfer_prints = FALSE
-	body_parts_covered = ARMS|HANDS
+	body_cover_flags = ARMS|HANDS
 	cold_protection = ARMS|HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
@@ -623,7 +626,7 @@
 	name = "bone bracers"
 	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."
 	icon_state = "bracers"
-	body_parts_covered = ARMS
+	body_cover_flags = ARMS
 	cold_protection = HANDS
 	heat_protection = HANDS
 	armor = list("melee" = 15, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)

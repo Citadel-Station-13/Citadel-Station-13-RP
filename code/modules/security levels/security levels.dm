@@ -78,9 +78,8 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 				FA.mode = 3
 
 		if(level >= SEC_LEVEL_RED)
-			GLOB.lore_atc.reroute_traffic(TRUE) // Tell them fuck off we're busy.
-		else
-			GLOB.lore_atc.reroute_traffic(FALSE)
+			if(GLOB.lore_atc.squelched == FALSE) // Do nothing, ATC relay is already off
+				GLOB.lore_atc.toggle_broadcast()
 
 		spawn()
 			SSnightshift.check_nightshift()

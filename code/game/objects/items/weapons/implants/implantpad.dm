@@ -21,7 +21,7 @@
 	return
 
 
-/obj/item/implantpad/attack_hand(mob/living/user as mob)
+/obj/item/implantpad/attack_hand(mob/user, list/params)
 	if ((src.case && user.is_holding(src)))
 		user.put_in_active_hand(case)
 
@@ -48,7 +48,10 @@
 	return
 
 
-/obj/item/implantpad/attack_self(mob/user as mob)
+/obj/item/implantpad/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	var/dat = "<B>Implant Mini-Computer:</B><HR>"
 	if (src.case)

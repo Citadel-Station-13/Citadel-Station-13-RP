@@ -85,7 +85,10 @@
 		update_icon()
 	return worth
 
-/obj/item/spacecash/attack_self()
+/obj/item/spacecash/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/amount = input(usr, "How many Thalers do you want to take? (0 to [src.worth])", "Take Money", 20) as num
 	if(!src || QDELETED(src))
 		return
@@ -184,7 +187,10 @@
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/attack_self()
+/obj/item/spacecash/ewallet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return //Don't act
 
 /obj/item/spacecash/ewallet/attackby()

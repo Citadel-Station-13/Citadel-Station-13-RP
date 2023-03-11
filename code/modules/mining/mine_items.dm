@@ -5,7 +5,8 @@
 	icon_state = "lantern"
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
-	light_color = "FF9933" // A slight yellow/orange color.
+	light_color = "#ff9933" // A slight yellow/orange color.
+	light_wedge = LIGHT_OMNI
 
 /*****************************Pickaxe********************************/
 
@@ -193,7 +194,10 @@
 	active = 0
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		turnOn(user)
 	else
@@ -357,7 +361,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(user as mob)
+/obj/item/stack/flag/attack_hand(mob/user, list/params)
 	if(upright)
 		upright = 0
 		icon_state = base_state
@@ -366,7 +370,10 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user as mob)
+/obj/item/stack/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/obj/item/stack/flag/F = locate() in get_turf(src)
 

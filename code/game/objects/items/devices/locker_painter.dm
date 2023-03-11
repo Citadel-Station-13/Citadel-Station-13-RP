@@ -117,7 +117,10 @@
 		to_chat(user, "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>")
 		return
 
-/obj/item/closet_painter/attack_self(var/mob/user)
+/obj/item/closet_painter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = input("Do you wish to change the regular closet colour or the secure closet colour?") as null|anything in list("Regular Closet Colour","Secure Closet Colour")
 	if(choice == "Regular Closet Colour")
 		choose_colour()

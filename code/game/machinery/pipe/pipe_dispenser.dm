@@ -11,7 +11,7 @@
 	var/disposals = FALSE
 
 
-/obj/machinery/pipedispenser/attack_hand(var/mob/user as mob)
+/obj/machinery/pipedispenser/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	ui_interact(user)

@@ -143,7 +143,7 @@
 	. = ..()
 	activate()
 
-/obj/effect/catwalk_plated/attack_hand()
+/obj/effect/catwalk_plated/attack_hand(mob/user, list/params)
 	attack_generic()
 
 /obj/effect/catwalk_plated/attack_ghost()

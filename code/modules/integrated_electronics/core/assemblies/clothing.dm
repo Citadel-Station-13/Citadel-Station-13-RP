@@ -69,6 +69,9 @@
 		..()
 
 /obj/item/clothing/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(EA && EA.opened)
 		EA.attack_self(user)
 	else

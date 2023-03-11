@@ -93,8 +93,13 @@
 	return 0
 
 // Clicking with an empty hand
-/mob/living/attack_hand(mob/living/L)
-	..()
+/mob/living/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)

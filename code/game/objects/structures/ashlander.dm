@@ -249,7 +249,7 @@
 	src.updateUsrDialog()
 	return 0
 
-/obj/structure/ashlander/calcinator/attack_hand(mob/user as mob)
+/obj/structure/ashlander/calcinator/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/structure/ashlander/calcinator/AltClick(mob/user)
@@ -337,7 +337,7 @@
 	. = ..()
 	set_light(3, 2, "#9463bb")
 
-/obj/structure/ashlander/statue/attack_hand(mob/user)
+/obj/structure/ashlander/statue/attack_hand(mob/user, list/params)
 	var/choice = tgui_alert(user, "Do you wish to pray to the statue?", "Interact With the Statue", list("Yes", "No"))
 	if(choice != "Yes")
 		return

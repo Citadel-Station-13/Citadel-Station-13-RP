@@ -22,10 +22,6 @@
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/telecomms/relay/onTransitZ(old_z, new_z)
 	. = ..()
 	listening_level = z

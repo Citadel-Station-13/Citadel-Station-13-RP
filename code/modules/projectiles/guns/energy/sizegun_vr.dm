@@ -29,6 +29,9 @@
 
 /obj/item/gun/energy/sizegun/attack_self(mob/user)
 	. = ..()
+	if(.)
+		return
+	. = ..()
 	select_size()
 
 /obj/item/gun/energy/sizegun/consume_next_projectile()

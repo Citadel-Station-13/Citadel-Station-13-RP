@@ -3,9 +3,9 @@
 	name = "mask"
 	icon = 'icons/obj/clothing/masks.dmi' //custom species support.
 	inhand_default_type = INHAND_DEFAULT_ICON_MASKS
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	slot_flags = SLOT_MASK
-	body_parts_covered = FACE|EYES
+	body_cover_flags = FACE|EYES
 	blood_sprite_state = "maskblood"
 
 	var/voicechange = 0

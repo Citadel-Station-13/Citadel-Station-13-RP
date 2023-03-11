@@ -441,7 +441,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define HERM "herm"
 // For custom species
 #define STARTING_SPECIES_POINTS	1
-#define MAX_SPECIES_TRAITS		5
+#define MAX_SPECIES_TRAITS		7
 
 // Xenochimera thing mostly
 #define REVIVING_NOW		-1

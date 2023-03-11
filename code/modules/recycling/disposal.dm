@@ -217,7 +217,7 @@
 	interact(user, 1)
 
 // human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user as mob)
+/obj/machinery/disposal/attack_hand(mob/user, list/params)
 
 	if(machine_stat & BROKEN)
 		return

@@ -42,15 +42,16 @@
 					continue
 				O.heal_damage(0, heal_power / 4, internal = 1, robo_repair = 0)
 
-			for(var/obj/item/organ/E in H.bad_external_organs) // Fix bones
+			// check their limbs
+			// todo: what the fuck why is this two loops
+			for(var/obj/item/organ/E in H.bad_external_organs)
+				// Fix bones
 				var/obj/item/organ/external/affected = E
 				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 
-				for(var/datum/wound/W in affected.wounds) // Fix IB
-					if(istype(W, /datum/wound/internal_bleeding))
-						affected.wounds -= W
-						affected.update_damages()
+				// fix IB
+				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 			H.restore_blood() // Fix bloodloss
 		qdel(src)

@@ -913,6 +913,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
+/obj/structure/flora/pottedplant/largebush,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "abB" = (
@@ -2625,6 +2626,10 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_x = 32;
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aeK" = (
@@ -3652,8 +3657,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/landmark/observer_spawn,
-/obj/machinery/hologram/holopad,
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "agP" = (
@@ -4987,13 +4991,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
-"ajF" = (
-/obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "ajG" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5776,6 +5773,9 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "alf" = (
@@ -6585,6 +6585,8 @@
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/cargo,
+/obj/fiftyspawner/wood,
+/obj/fiftyspawner/wmarble,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "amP" = (
@@ -6744,15 +6746,6 @@
 "ane" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/freezer)
-"anf" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "ang" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7444,7 +7437,7 @@
 /area/bridge/office)
 "aoC" = (
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9253,10 +9246,6 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
-"asu" = (
-/obj/structure/sign/double/barsign,
-/turf/simulated/wall,
-/area/crew_quarters/bar_backroom)
 "asv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -12070,12 +12059,19 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "axY" = (
-/obj/structure/window/basic{
-	dir = 8
-	},
 /obj/structure/window/basic,
 /obj/structure/window/basic{
 	dir = 1
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
+	dir = 8
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -12158,11 +12154,27 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "ayh" = (
-/obj/item/radio/intercom{
+/obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutter control";
+	pixel_x = 26;
+	pixel_y = -8;
+	req_one_access = list(25)
+	},
+/obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/button/holosign{
+	id = "bar_sign";
+	pixel_x = 24;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "ayi" = (
@@ -15605,7 +15617,7 @@
 "aFF" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -17450,7 +17462,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/machinery/media/jukebox,
+/obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aJD" = (
@@ -18938,6 +18950,9 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aMA" = (
@@ -18962,6 +18977,8 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/blackcandle_box,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aMD" = (
@@ -19333,7 +19350,9 @@
 	name = "Kitchen";
 	sortType = "Kitchen"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aNy" = (
@@ -20556,6 +20575,17 @@
 /obj/item/material/ashtray/glass,
 /obj/item/material/ashtray/glass,
 /obj/item/material/ashtray/glass,
+/obj/machinery/button/remote/airlock{
+	id = "barbackdoor";
+	name = "Back Door Locks";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_one_access = list(25);
+	specialfunctions = 4
+	},
+/obj/machinery/light_switch{
+	pixel_y = -24
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "aQb" = (
@@ -23159,9 +23189,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aVv" = (
@@ -23974,7 +24002,7 @@
 /area/ai_upload_foyer)
 "aXa" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -24342,7 +24370,7 @@
 /area/maintenance/commandmaint)
 "aXJ" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_alc,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aXK" = (
@@ -24394,17 +24422,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "aXS" = (
-/obj/machinery/button/remote/airlock{
-	id = "barbackdoor";
-	name = "Back Door Locks";
-	pixel_x = 8;
-	pixel_y = -24;
-	req_one_access = list(25);
-	specialfunctions = 4
-	},
-/obj/machinery/light_switch{
-	pixel_y = -24
-	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
@@ -24741,12 +24758,22 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "aYK" = (
-/obj/structure/window/basic{
-	dir = 4
-	},
 /obj/structure/window/basic,
 /obj/structure/window/basic{
 	dir = 1
+	},
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -24874,6 +24901,9 @@
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 158
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aYW" = (
@@ -25005,10 +25035,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aZg" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "aZh" = (
@@ -25368,15 +25399,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"bCJ" = (
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "bFp" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -25519,6 +25541,10 @@
 /obj/structure/window/basic{
 	dir = 1
 	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey,
 /turf/simulated/open,
 /area/crew_quarters/bar)
 "els" = (
@@ -25606,25 +25632,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fsc" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 4
-	},
+/obj/structure/bed/chair/sofa/black/right,
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"ftB" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/flame/candle{
-	pixel_y = 17
-	},
-/obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "fxA" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -25668,6 +25684,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
+"fQQ" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/hologram/holopad,
+/obj/landmark/observer_spawn,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "fVL" = (
 /obj/effect/debris/cleanable/cobweb2,
 /obj/random/fishing_junk,
@@ -25696,11 +25718,9 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "gHz" = (
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 4
-	},
+/obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/plain{
-	dir = 10
+	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -25732,9 +25752,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/machinery/holoposter{
-	pixel_y = 32
-	},
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -25744,6 +25761,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -25961,6 +25981,19 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
+"mXo" = (
+/obj,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"naw" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "nfF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -26100,30 +26133,11 @@
 /area/maintenance/bar/lower)
 "qgY" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	pixel_y = 7
-	},
-/obj/machinery/button/holosign{
-	id = "bar_sign";
-	pixel_x = -7;
-	pixel_y = 24
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "bar_shutters";
-	name = "Bar Shutter control";
-	pixel_x = 9;
-	pixel_y = 26;
-	req_one_access = list(25)
-	},
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_y = 24
 	},
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -26212,12 +26226,15 @@
 /area/rift/surfacebase/outside/outside3)
 "tvp" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	pixel_y = 7
 	},
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/structure/sign/double/barsign{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "tXJ" = (
@@ -32655,7 +32672,7 @@ aOi
 aOi
 aOi
 aOi
-aOi
+mXo
 aOi
 aOi
 aOi
@@ -37711,7 +37728,7 @@ aZm
 aym
 fsc
 gHz
-aZm
+naw
 aHQ
 aNg
 aUj
@@ -37903,9 +37920,9 @@ aUm
 aZm
 aZm
 aym
-ajF
-ftB
-aZm
+agc
+aGB
+aZf
 aHQ
 aNg
 abH
@@ -38095,10 +38112,10 @@ aaV
 kIf
 aEl
 idS
-bIN
+fQQ
 aMz
-bCJ
-anf
+aZm
+aZm
 aZm
 aHQ
 aNg
@@ -38668,7 +38685,7 @@ jDU
 aRF
 eYo
 aQa
-asu
+aIs
 tvp
 kkA
 oHL

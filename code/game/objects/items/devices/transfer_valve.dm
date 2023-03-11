@@ -71,6 +71,9 @@
 	return ..()
 
 /obj/item/transfer_valve/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/transfer_valve/ui_state(mob/user, datum/tgui_module/module)

@@ -5,8 +5,8 @@
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knighthelm"
 	armor = list(melee = 40, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
-	body_parts_covered = HEAD|FACE|EYES
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/medieval/red
@@ -31,7 +31,10 @@
 	icon_state = "paladinhelm"
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]1"
 		to_chat(user, "You raise the helmet's visor.")
@@ -48,8 +51,8 @@
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knight"
 	slowdown = 1
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/armor/medieval/red
@@ -144,8 +147,8 @@
 	desc = "A plastic replica of knight helmet. Great for tabletop and LARP sessions, not great at stopping melee attacks."
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knighthelm"
-	body_parts_covered = HEAD|FACE|EYES
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/medievalfake/green
@@ -170,7 +173,10 @@
 	icon_state = "paladinhelm"
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user as mob)
+/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]1"
 		to_chat(user, "You raise the helmet's visor.")
@@ -185,8 +191,8 @@
 	desc = "A plastic replica of knight armor. Great for tabletop and LARP sessions, not great at stopping melee attacks."
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knight"
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/medievalfake/green

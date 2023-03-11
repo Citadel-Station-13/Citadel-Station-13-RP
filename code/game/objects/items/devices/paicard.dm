@@ -34,6 +34,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	return ..()
 
 /obj/item/paicard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!in_range(src, user))
 		return
 	user.set_machine(src)
@@ -227,7 +230,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 			"}
 	user << browse(dat, "window=paicard")
 	onclose(user, "paicard")
-	return
 
 /obj/item/paicard/Topic(href, href_list)
 

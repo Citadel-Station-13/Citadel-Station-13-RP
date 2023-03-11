@@ -27,10 +27,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			if(PC != src && PC.id_tag == id_tag)
 				warning("Two [src] with the same id_tag of [id_tag]")
 				id_tag = null
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 
 /obj/machinery/pointdefense_control/get_description_interaction(mob/user)
 	. = ..()
@@ -43,7 +39,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
 		ui.open()
 
-/obj/machinery/pointdefense_control/attack_hand(mob/user)
+/obj/machinery/pointdefense_control/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -140,10 +136,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/power/pointdefense/Initialize(mapload)
 	. = ..()
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 	if(anchored)
 		connect_to_network()
 	update_icon()
