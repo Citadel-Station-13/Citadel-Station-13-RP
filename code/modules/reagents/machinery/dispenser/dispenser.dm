@@ -177,6 +177,7 @@
 		"volume" = inserted.reagents.total_volume,
 		"capacity" = inserted.reagents.maximum_volume,
 		"data" = inserted.reagents.tgui_reagent_contents(),
+		"name" = inserted.name,
 	) : null
 	.["recharging"] = charging
 	.["recharge_rate"] = recharge_rate
