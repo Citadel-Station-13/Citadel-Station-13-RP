@@ -37,7 +37,7 @@
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
@@ -56,7 +56,7 @@
 	desc = "A vest with heavy padding to protect against melee attacks."
 	icon_state = "riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/riot
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/suit/armor/riot/alt
@@ -70,7 +70,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/bulletproof/alt
@@ -84,7 +84,7 @@
 	icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -117,7 +117,7 @@
 	icon_state = "combat"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor = list(melee = 50, bullet = 50, laser = 50, energy = 30, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/suit/armor/tactical
@@ -128,7 +128,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	slowdown = 1
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/swat
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/swat
@@ -143,7 +143,7 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
 	w_class = ITEMSIZE_HUGE
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
+	r_armor_type = /datum/armor/security/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -161,7 +161,6 @@
 	inv_hide_flags = 0
 	body_cover_flags = UPPER_TORSO|ARMS
 
-
 /obj/item/clothing/suit/armor/det_suit
 	name = "armor"
 	desc = "An armored vest with a detective's badge on it."
@@ -169,14 +168,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/aromr/security/medium
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"
 	desc = "They used to beat you for pointing at the sign. Now, vengeance has come. WARNING: This is just a sign with straps attached to anchor it. Vengeance not guaranteed."
 	icon_state = "caution"
 	blood_overlay_type = "armor"
-	armor = list(melee = 5, bullet = 1, laser = 5, energy = 5, bomb = 1, bio = 50, rad = 0)
+	r_armor = /datum/armor/none
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
@@ -187,8 +186,7 @@
 	icon_state = "reactiveoff"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor_reflec_old", SLOT_ID_LEFT_HAND = "armor_reflec_old")
 	blood_overlay_type = "armor"
-	slowdown = 1
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(prob(50))
@@ -270,7 +268,7 @@
 	icon_state = "ertarmor_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/ert
 	valid_accessory_slots = null
 
 //Commander
@@ -302,7 +300,7 @@
 	desc = "A standard kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/medium
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
@@ -385,7 +383,7 @@
 	name = "\improper Orion Confederation armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation."
 	icon_state = "solvest"
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/storage/vest/oricon/heavy
 	name = "\improper Orion Confederation heavy armored vest"
@@ -439,7 +437,7 @@
 	desc = "A heavy kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high
 	slowdown = 0.5
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
@@ -480,14 +478,14 @@
 	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high/merc
 	slowdown = 0
 
 /obj/item/clothing/suit/storage/vest/capcarapace
 	name = "captain's carapace"
 	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
 	icon_state = "capcarapace"
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high/captain
 
 //All of the armor below is mostly unused
 
@@ -509,7 +507,7 @@
 	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/bulky_kinetic
 	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -520,7 +518,7 @@
 /obj/item/clothing/suit/armor/tdome
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/thunderdome
 
 /obj/item/clothing/suit/armor/tdome/red
 	name = "Thunderdome suit (red)"
