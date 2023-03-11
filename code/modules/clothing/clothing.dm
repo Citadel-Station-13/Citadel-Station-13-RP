@@ -178,8 +178,11 @@
 	var/list/assembled = list()
 	var/list/states = icon_states(icon)
 	for(var/name in available)
-		var/state_using = available[name]
-		assembled[name] = image(icon, icon_state = (state_using in states? state_using : icon_state))
+		var/using = available[name]
+		if(istext(using))
+			assembled[name] = image(icon, icon_state = using)
+		else if(isimage(using) || ismutableappearance(using))
+			assembled[name] = using
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return

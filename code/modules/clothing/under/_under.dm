@@ -103,11 +103,21 @@
 
 /obj/item/clothing/under/available_styles(mob/user)
 	. = list()
-	.["normal"] = worn_state || initial(icon_state)
+	var/old_roll = worn_rolled_down
+	var/old_sleeves = worn_rolled_sleeves
+	worn_rolled_down = UNIFORM_ROLL_FALSE
+	worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	.["normal"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
 	if(worn_rolled_down != UNIFORM_ROLL_NULLED)
-		.["rolled down"] = (worn_has_rolldown == UNIFORM_AUTODETECT_ROLL)? (initial(icon_state)) : (worn_rolldown_state || "[worn_state || initial(icon_state)]_down")
+		worn_rolled_down = UNIFORM_ROLL_TRUE
+		.["rolled down"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
+		worn_rolled_down = UNIFORM_ROLL_FALSE
 	if(worn_rolled_sleeves != UNIFORM_ROLL_NULLED)
-		.["rolled sleeves"] = (worn_has_rolldown == UNIFORM_AUTODETECT_ROLL)? (initial(icon_state)) : (worn_rollsleeve_state || "[worn_state || initial(icon_state)]_sleeves")
+		worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+		.["rolled sleeves"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
+		worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	worn_rolled_down = old_roll
+	worn_rolled_sleeves = old_sleeves
 
 /obj/item/clothing/under/set_style(style, mob/user)
 	. = ..()
