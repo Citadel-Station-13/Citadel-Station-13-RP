@@ -8,7 +8,7 @@
 	dir = 8
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/sleeper_console
 
 /obj/machinery/sleep_console/Initialize(mapload, newdir)
@@ -106,7 +106,7 @@
 	else
 		data["occupant"] = 0
 	if(S.beaker)
-		data["beaker"] = S.beaker.reagents.get_free_space()
+		data["beaker"] = S.beaker.reagents.available_volume()
 	else
 		data["beaker"] = -1
 	data["filtering"] = S.filtering
@@ -182,7 +182,6 @@
 /obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	default_apply_parts()
 
 /obj/machinery/sleeper/Destroy()
 	if(console)

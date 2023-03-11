@@ -1116,7 +1116,7 @@
 /area/antag/antag_base)
 "bN" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -2394,7 +2394,7 @@
 /area/antag/antag_base)
 "dS" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},

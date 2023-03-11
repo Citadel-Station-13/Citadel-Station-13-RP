@@ -38,10 +38,6 @@
 	. = ..()
 	server_radio = new()
 
-/obj/machinery/telecomms/server/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/telecomms/server/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 
 	if(signal.data["message"])

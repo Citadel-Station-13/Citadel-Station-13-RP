@@ -105,7 +105,7 @@
 /area/skipjack_station)
 "aq" = (
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},

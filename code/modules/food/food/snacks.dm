@@ -4016,8 +4016,8 @@ END CITADEL CHANGE */
 	var/id = C.id
 
 	//First make sure there's space for our batter
-	if (reagents.get_free_space() < req+5)
-		var/extra = req+5 - reagents.get_free_space()
+	if (reagents.available_volume() < req+5)
+		var/extra = req+5 - reagents.available_volume()
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder

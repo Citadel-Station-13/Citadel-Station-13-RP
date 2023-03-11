@@ -10246,7 +10246,7 @@
 /area/maintenance/lower/mining)
 "Ld" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/white/diagonal,

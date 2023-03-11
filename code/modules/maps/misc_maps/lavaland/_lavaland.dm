@@ -20,7 +20,7 @@
 	icon_state = "qpad-idle"
 	anchored = 1
 	use_power = USE_POWER_IDLE
-	interact_offline = 0
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
 /obj/machinery/lavaland_entryportal/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/silicon/ai)) // lets not teleport AI cores

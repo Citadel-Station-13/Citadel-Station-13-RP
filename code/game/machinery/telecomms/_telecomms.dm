@@ -321,7 +321,7 @@
 	data["multitool"] = FALSE
 	data["multitool_buffer"] = null
 
-	if(on || interact_offline)
+	if(on || (interaction_flags_machine & INTERACT_MACHINE_OFFLINE))
 		data["id"] = id
 		data["network"] = network
 		data["autolinkers"] = !!LAZYLEN(autolinkers)
@@ -505,7 +505,7 @@
 	return data
 
 /obj/machinery/telecomms/broadcaster
-	interact_offline = TRUE // because you can accidentally nuke power grids with these, need to be able to fix mistake
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
 /obj/machinery/telecomms/broadcaster/Options_Act(action, params)
 	if(..())
@@ -527,7 +527,7 @@
 	return data
 
 /obj/machinery/telecomms/receiver
-	interact_offline = TRUE // because you can accidentally nuke power grids with these, need to be able to fix mistake
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
 /obj/machinery/telecomms/receiver/Options_Act(action, params)
 	if(..())

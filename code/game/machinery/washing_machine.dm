@@ -25,10 +25,6 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
 	set category = "Object"

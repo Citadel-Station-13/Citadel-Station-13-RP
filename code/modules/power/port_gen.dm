@@ -526,7 +526,6 @@
 	. = ..()
 	if(ispath(circuit))
 		circuit = new circuit(src)
-	default_apply_parts()
 	connect_to_network()
 
 /obj/machinery/power/rtg/process()
