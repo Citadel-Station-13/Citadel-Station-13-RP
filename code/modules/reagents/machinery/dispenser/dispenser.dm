@@ -49,7 +49,7 @@
 	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
 	var/dispense_amount_max = 60
 	/// power in kilojoules per unit synthesized
-	var/kj_per_unit = 4 // ~5k units on 10k cell
+	var/kj_per_unit = 2
 	/// is recharging active?
 	var/charging = TRUE
 	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
@@ -246,10 +246,15 @@
 		if("eject_cart")
 			if(!panel_open)
 				return TRUE
-			var/index = text2num(params["index"])
-			if(isnull(index) || index > length(cartridges))
+			var/label = params["label"]
+			if(isnull(label))
 				return TRUE
-			var/obj/item/reagent_containers/cartridge/dispenser/cart = cartridges[index]
+			var/obj/item/reagent_containers/cartridge/dispenser/cart
+			for(cart as anything in cartridges)
+				if(cart.label == label)
+					break
+			if(cart?.label != label)
+				return TRUE
 			remove_cartridge(cart, usr)
 			usr.grab_item_from_interacted_with(cart, src)
 			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cart] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
@@ -282,12 +287,16 @@
 				amount = min(amount, dispense_amount_max)
 				if(!amount)
 					continue
-				amount = min(amount, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(amount * kj_per_unit)))
-				if(!amount)
+				var/wanted = min(inserted.reagents.available_volume(), amount)
+				if(!wanted)
+					logstr += "interrupt-nospace"
+					break
+				wanted = min(wanted, cell.use(DYNAMIC_KJ_TO_CELL_UNITS(wanted * kj_per_unit)))
+				if(!wanted)
 					logstr += "interrupt-nopower"
 					break
-				logstr += "[id]: [amount]"
-				inserted.reagents.add_reagent(id, amount)
+				logstr += "[id]: [wanted]"
+				inserted.reagents.add_reagent(id, wanted)
 			investigate_log("[key_name(usr)] dispensed macro [jointext(logstr, ", ")]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("add_macro")
@@ -408,6 +417,7 @@
 	update_static_data()
 
 /obj/machinery/chemical_dispenser/proc/insert_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart)
+	. = FALSE
 	ASSERT(cart.label)
 	for(var/obj/item/reagent_containers/cartridge/dispenser/other as anything in cartridges)
 		if(other.label == cart.label)
@@ -415,6 +425,7 @@
 	LAZYADD(cartridges, cart)
 	cart.forceMove(src)
 	update_static_data()
+	return TRUE
 
 /obj/machinery/chemical_dispenser/crowbar_act(obj/item/I, mob/user, flags, hint)
 	if(!allow_deconstruct || !panel_open)

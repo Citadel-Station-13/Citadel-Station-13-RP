@@ -82,8 +82,10 @@ export const ChemDispenser = (props, context) => {
                 minValue={0}
                 maxValue={data.has_cell? data.cell_capacity : 100}
                 value={data.has_cell? data.cell_charge : 0}>
-                {!!data.has_cell && (
+                {data.has_cell ? (
                   `${Math.round(data.cell_charge / data.cell_capacity * 100)}%`
+                ) : (
+                  "No Cell"
                 )}
               </ProgressBar>
             </LabeledList.Item>
@@ -171,7 +173,7 @@ export const ChemDispenser = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  icon="trash"
+                  icon="eject"
                   disabled={!data.panel_open}
                   onClick={() => act('eject_cart', { label: cart.label })} />
               </Stack.Item>
