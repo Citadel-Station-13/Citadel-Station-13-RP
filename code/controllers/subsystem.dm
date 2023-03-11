@@ -50,9 +50,7 @@
 	 */
 	//var/init_stage = INITSTAGE_MAIN
 
-	/**
-	 * This var is set to TRUE after the subsystem has been initialized.
-	 */
+	/// This var is set to TRUE after the subsystem has been initialized.
 	var/initialized = FALSE
 
 	/**
@@ -67,78 +65,48 @@
 	 */
 	var/runlevels = RUNLEVELS_DEFAULT
 
-	/**
-	 *# The following variables are managed by the MC and should not be modified directly.
-	 */
+	//# The following variables are managed by the MC and should not be modified directly.
 
-	/**
-	 * Last world.time the subsystem completed a run (as in wasn't paused by [MC_TICK_CHECK]).
-	 */
+	/// Last world.time the subsystem completed a run (as in wasn't paused by [MC_TICK_CHECK]).
 	var/last_fire = 0
 
-	/**
-	 * Scheduled world.time for next fire().
-	 */
+	/// Scheduled world.time for next fire().
 	var/next_fire = 0
 
-	/**
-	 * Running average of the amount of milliseconds it takes the subsystem to complete a run (including all resumes but not the time spent paused).
-	 */
+	/// Running average of the amount of milliseconds it takes the subsystem to complete a run (including all resumes but not the time spent paused).
 	var/cost = 0
 
-	/**
-	 * Running average of the amount of tick usage in percents of a tick it takes the subsystem to complete a run.
-	 */
+	/// Running average of the amount of tick usage in percents of a tick it takes the subsystem to complete a run.
 	var/tick_usage = 0
 
-	/**
-	 * Running average of the amount of tick usage (in percents of a game tick) the subsystem has spent past its allocated time without pausing.
-	 */
+	/// Running average of the amount of tick usage (in percents of a game tick) the subsystem has spent past its allocated time without pausing.
 	var/tick_overrun = 0
 
-	/**
-	 * How much of a tick (in percents of a tick) were we allocated last fire.
-	 */
+	/// How much of a tick (in percents of a tick) were we allocated last fire.
 	var/tick_allocation_last = 0
 
-	/**
-	 * How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
-	 */
+	/// How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
 	var/tick_allocation_avg = 0
 
-	/**
-	 * Tracks the current execution state of the subsystem. Used to handle subsystems that sleep in fire so the mc doesn't run them again while they are sleeping.
-	 */
+	/// Tracks the current execution state of the subsystem. Used to handle subsystems that sleep in fire so the mc doesn't run them again while they are sleeping.
 	var/state = SS_IDLE
 
-	/**
-	 * Tracks how many fires the subsystem has consecutively paused on in the current run.
-	 */
+	/// Tracks how many fires the subsystem has consecutively paused on in the current run.
 	var/paused_ticks = 0
 
-	/**
-	 * Tracks how much of a tick the subsystem has consumed in the current run.
-	 */
+	/// Tracks how much of a tick the subsystem has consumed in the current run.
 	var/paused_tick_usage
 
-	/**
-	 * Tracks how many fires the subsystem takes to complete a run on average.
-	 */
+	/// Tracks how many fires the subsystem takes to complete a run on average.
 	var/ticks = 1
 
-	/**
-	 * Tracks the amount of completed runs for the subsystem.
-	 */
+	/// Tracks the amount of completed runs for the subsystem.
 	var/times_fired = 0
 
-	/**
-	 * How many fires have we been requested to postpone.
-	 */
+	/// How many fires have we been requested to postpone.
 	var/postponed_fires = 0
 
-	/**
-	 * Time the subsystem entered the queue, (for timing and priority reasons).
-	 */
+	/// Time the subsystem entered the queue, (for timing and priority reasons).
 	var/queued_time = 0
 
 	/**
@@ -153,14 +121,10 @@
 	 */
 	var/static/list/failure_strikes
 
-	/**
-	 * Next subsystem in the queue of subsystems to run this tick.
-	 */
+	/// Next subsystem in the queue of subsystems to run this tick.
 	var/datum/controller/subsystem/queue_next
 
-	/**
-	 * Previous subsystem in the queue of subsystems to run this tick.
-	 */
+	/// Previous subsystem in the queue of subsystems to run this tick.
 	var/datum/controller/subsystem/queue_prev
 
 	/**
@@ -202,7 +166,10 @@
 	return
 
 
-/// This is used so the mc knows when the subsystem sleeps. do not override.
+/**
+ * This is used so the mc knows when the subsystem sleeps.
+ * DO NOT OVERRIDE THIS.
+ */
 /datum/controller/subsystem/proc/ignite(resumed = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
@@ -216,6 +183,7 @@
 	. = state
 	if (state == SS_SLEEPING)
 		state = SS_IDLE
+
 	if (state == SS_PAUSING)
 		var/QT = queued_time
 		enqueue()
@@ -239,6 +207,7 @@
 	subsystem_flags |= SS_NO_FIRE
 	if (Master)
 		Master.subsystems -= src
+
 	return ..()
 
 
@@ -261,44 +230,51 @@
 		if (queue_node_flags & SS_TICKER)
 			if (!(SS_flags & SS_TICKER))
 				continue
+
 			if (queue_node_priority < SS_priority)
 				break
 
 		else if (queue_node_flags & SS_BACKGROUND)
 			if (!(SS_flags & SS_BACKGROUND))
 				break
+
 			if (queue_node_priority < SS_priority)
 				break
 
 		else
 			if (SS_flags & SS_BACKGROUND)
 				continue
+
 			if (SS_flags & SS_TICKER)
 				break
+
 			if (queue_node_priority < SS_priority)
 				break
 
 	queued_time = world.time
 	queued_priority = SS_priority
 	state = SS_QUEUED
-	if (SS_flags & SS_BACKGROUND) //update our running total
+	if (SS_flags & SS_BACKGROUND) // Update our running total.
 		Master.queue_priority_count_bg += SS_priority
 	else
 		Master.queue_priority_count += SS_priority
 
 	queue_next = queue_node
-	if (!queue_node)//we stopped at the end, add to tail
+	if (!queue_node) // We stopped at the end, add to tail.
 		queue_prev = Master.queue_tail
 		if (Master.queue_tail)
 			Master.queue_tail.queue_next = src
-		else //empty queue, we also need to set the head
+
+		else // Empty queue, we also need to set the head.
 			Master.queue_head = src
+
 		Master.queue_tail = src
 
-	else if (queue_node == Master.queue_head)//insert at start of list
+	else if (queue_node == Master.queue_head) // Insert at start of list.
 		Master.queue_head.queue_prev = src
 		Master.queue_head = src
 		queue_prev = null
+
 	else
 		queue_node.queue_prev.queue_next = src
 		queue_prev = queue_node.queue_prev
@@ -308,12 +284,16 @@
 /datum/controller/subsystem/proc/dequeue()
 	if (queue_next)
 		queue_next.queue_prev = queue_prev
+
 	if (queue_prev)
 		queue_prev.queue_next = queue_next
+
 	if (src == Master.queue_tail)
 		Master.queue_tail = queue_prev
+
 	if (src == Master.queue_head)
 		Master.queue_head = queue_next
+
 	queued_time = 0
 	if (state == SS_QUEUED)
 		state = SS_IDLE
@@ -324,6 +304,7 @@
 	switch(state)
 		if(SS_RUNNING)
 			state = SS_PAUSED
+
 		if(SS_SLEEPING)
 			state = SS_PAUSING
 
@@ -331,6 +312,7 @@
 /// Called after the config has been loaded or reloaded.
 /datum/controller/subsystem/proc/OnConfigLoad()
 	return
+
 
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
@@ -351,7 +333,7 @@
 
 
 /**
- * hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
+ * Hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
  */
 /datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
@@ -368,19 +350,23 @@
 	switch (state)
 		if (SS_RUNNING)
 			. = "R"
+
 		if (SS_QUEUED)
 			. = "Q"
+
 		if (SS_PAUSED, SS_PAUSING)
 			. = "P"
+
 		if (SS_SLEEPING)
 			. = "S"
+
 		if (SS_IDLE)
 			. = "  "
 
 
 /**
- * could be used to postpone a costly subsystem for (default one) var/cycles, cycles
- * for instance, during cpu intensive operations like explosions
+ * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.
+ * For instance, during cpu intensive operations like explosions.
  */
 /datum/controller/subsystem/proc/postpone(cycles = 1)
 	if(next_fire - world.time < wait)
@@ -388,8 +374,8 @@
 
 
 /**
- * usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
- * should attempt to salvage what it can from the old instance of subsystem
+ * Usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash).
+ * Should attempt to salvage what it can from the old instance of subsystem.
  */
 /datum/controller/subsystem/Recover()
 	return TRUE
@@ -398,16 +384,22 @@
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)
 		if (NAMEOF(src, can_fire))
-			//this is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
+			// This is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
 			if (var_value)
 				next_fire = world.time + wait
-		if (NAMEOF(src, queued_priority)) //editing this breaks things.
+
+		if (NAMEOF(src, queued_priority)) // Editing this breaks things.
 			return FALSE
+
 	. = ..()
 
 
 /**
- * called when max z is changed since subsystems hook it so much
+ * Called when max z is changed since subsystems hook it so much.
+ *
+ * Arguments:
+ * * old_z_count - The old z count.
+ * * new_z_count - The new z count.
  */
 /datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
 	return

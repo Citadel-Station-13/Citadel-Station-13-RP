@@ -1,17 +1,11 @@
 /datum/controller
-	/**
-	 * Stub for subsystem names.
-	 */
+	/// Stub for subsystem names.
 	var/name
 
-	/**
-	 * The object used for the clickable stat() button.
-	 */
+	/// The object used for the clickable stat() button.
 	var/obj/effect/statclick/statclick
 
-	/**
-	 * debug/verbose logging?
-	 */
+	/// debug/verbose logging?
 	var/verbose_logging = FALSE
 
 
@@ -19,23 +13,17 @@
 	return
 
 
-/**
- * Cleanup actions.
- */
+/// Cleanup actions.
 /datum/controller/proc/Shutdown()
 	return
 
 
-/**
- * When we enter dmm_suite.load_map
- */
+/// When we enter dmm_suite.load_map
 /datum/controller/proc/StartLoadingMap()
 	return
 
 
-/**
- * When we exit dmm_suite.load_map
- */
+/// When we exit dmm_suite.load_map
 /datum/controller/proc/StopLoadingMap()
 	return
 

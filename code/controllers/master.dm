@@ -21,34 +21,22 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master
 	name = "Master"
 
-	/**
-	 * Are we processing (higher values increase the processing delay by n ticks)
-	 */
+	/// Are we processing (higher values increase the processing delay by n ticks)
 	var/processing = TRUE
 
-	/**
-	 * How many times have we ran?
-	 */
+	/// How many times have we ran?
 	var/iteration = 0
 
-	/**
-	 * Are we initialized?
-	 */
+	/// Are we initialized?
 	var/initialized = FALSE
 
-	/**
-	 * Are we loading in a new map?
-	 */
+	/// Are we loading in a new map?
 	var/map_loading = FALSE
 
-	/**
-	 * world.time of last fire, for tracking lag outside of the mc.
-	 */
+	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
-	/**
-	 * List of subsystems to process().
-	 */
+	/// List of subsystems to process().
 	var/list/subsystems
 
 	//# Vars for keeping track of tick drift.
@@ -56,46 +44,30 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/init_time
 	var/tickdrift = 0
 
-	/**
-	 * How long is the MC sleeping between runs, read only (set by Loop() based off of anti-tick-contention heuristics).
-	 */
+	/// How long is the MC sleeping between runs, read only (set by Loop() based off of anti-tick-contention heuristics).
 	var/sleep_delta = 1
 
-	/**
-	 * Makes the mc main loop runtime.
-	 */
+	/// Makes the mc main loop runtime.
 	var/make_runtime = FALSE
 
 	var/initializations_finished_with_no_players_logged_in // I wonder what this could be?
 
-	/**
-	 * The type of the last subsystem to be process()'d.
-	 */
+	/// The type of the last subsystem to be process()'d.
 	var/last_type_processed
 
-	/**
-	 * Start of queue linked list.
-	 */
+	/// Start of queue linked list.
 	var/datum/controller/subsystem/queue_head
 
-	/**
-	 * End of queue linked list (used for appending to the list).
-	 */
+	/// End of queue linked list (used for appending to the list).
 	var/datum/controller/subsystem/queue_tail
 
-	/**
-	 * Running total so that we don't have to loop thru the queue each run to split up the tick.
-	 */
+	/// Running total so that we don't have to loop thru the queue each run to split up the tick.
 	var/queue_priority_count = 0
 
-	/**
-	 * Total background subsystems in the queue.
-	 */
+	/// Total background subsystems in the queue.
 	var/queue_priority_count_bg = 0
 
-	/**
-	 * For scheduling different subsystems for different stages of the round.
-	 */
+	/// For scheduling different subsystems for different stages of the round.
 	var/current_runlevel
 
 	var/sleep_offline_after_initializations = TRUE
@@ -108,7 +80,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	/**
 	 * current tick limit, assigned before running a subsystem.
-	 * used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits
+	 * used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits.
 	 */
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
@@ -175,6 +147,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for(var/datum/controller/subsystem/ss in subsystems)
 		log_world("Shutting down [ss.name] subsystem...")
 		ss.Shutdown()
+
 	log_world("Shutdown complete")
 
 
@@ -199,6 +172,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		new/datum/controller/master()
 	catch
 		return -1
+
 	return 1
 
 
@@ -208,13 +182,16 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		switch (varname)
 			if("name", "tag", "bestF", "type", "parent_type", "vars", "statclick") // Built-in junk.
 				continue
+
 			else
 				var/varval = Master.vars[varname]
 				if (istype(varval, /datum)) // Check if it has a type var.
 					var/datum/D = varval
 					msg += "\t [varname] = [D]([D.type])\n"
+
 				else
 					msg += "\t [varname] = [varval]\n"
+
 	log_world(msg)
 
 	var/datum/controller/subsystem/BadBoy = Master.last_type_processed
@@ -226,9 +203,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			if(2)
 				msg = "The [BadBoy.name] subsystem was the last to fire for 2 controller restarts. It will be recovered now and disabled if it happens again."
 				FireHim = TRUE
+
 			if(3)
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
+
 		if(msg)
 			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
@@ -236,10 +215,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if (istype(Master.subsystems))
 		if(FireHim)
 			Master.subsystems += new BadBoy.type // NEW_SS_GLOBAL will remove the old one.
+
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
 		initialized = TRUE
 		StartProcessing(10)
+
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE)
@@ -272,8 +253,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.subsystem_flags & SS_NO_INIT)
 			continue
+
 		SS.Initialize(REALTIMEOFDAY)
 		CHECK_TICK
+
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
@@ -381,6 +364,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			if(ss_runlevels & GLOB.bitflags[I])
 				while(runlevel_sorted_subsystems.len < I)
 					runlevel_sorted_subsystems += list(list())
+
 				runlevel_sorted_subsystems[I] += SS
 				added_to_any = TRUE
 
@@ -468,6 +452,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
 			subsystems_to_check = current_runlevel_subsystems
+
 		else
 			subsystems_to_check = SStickersubsystems
 
@@ -529,26 +514,31 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/thing in subsystemstocheck)
 		if (!thing)
 			subsystemstocheck -= thing
+
 		SS = thing
 		if (SS.state != SS_IDLE)
 			continue
+
 		if (SS.can_fire <= 0)
 			continue
+
 		if (SS.next_fire > world.time)
 			continue
+
 		SS_flags = SS.subsystem_flags
 		if (SS_flags & SS_NO_FIRE)
 			subsystemstocheck -= SS
 			continue
+
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
+
 		SS.enqueue()
+
 	. = TRUE
 
 
-/**
- * Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage.
- */
+/// Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage.
 /datum/controller/master/proc/RunQueue()
 	. = FALSE
 	var/datum/controller/subsystem/queue_node
@@ -561,7 +551,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/tick_remaining
 	var/ran = TRUE // This is right.
 	var/ran_non_SSticker = FALSE
-	var/bg_calc //! Have we swtiched current_tick_budget to background mode yet?
+	var/bg_calc // Have we swtiched current_tick_budget to background mode yet?
 	var/tick_usage
 
 	/**
@@ -602,6 +592,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (current_tick_budget > 0 && queue_node_priority > 0)
 				tick_precentage = tick_remaining / (current_tick_budget / queue_node_priority)
+
 			else
 				tick_precentage = tick_remaining
 
@@ -612,6 +603,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (!(queue_node_flags & SS_TICKER))
 				ran_non_SSticker = TRUE
+
 			ran = TRUE
 
 			queue_node_paused = (queue_node.state == SS_PAUSED || queue_node.state == SS_PAUSING)
@@ -625,11 +617,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (state == SS_RUNNING)
 				state = SS_IDLE
+
 			current_tick_budget -= queue_node_priority
 
 
 			if (tick_usage < 0)
 				tick_usage = 0
+
 			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_precentage))
 			queue_node.state = state
 
@@ -650,6 +644,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (queue_node_flags & SS_BACKGROUND) // Update our running total.
 				queue_priority_count_bg -= queue_node_priority
+
 			else
 				queue_priority_count -= queue_node_priority
 
@@ -658,10 +653,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (queue_node_flags & SS_TICKER)
 				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)
+
 			else if (queue_node_flags & SS_POST_FIRE_TIMING)
 				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
+
 			else if (queue_node_flags & SS_KEEP_TIMING)
 				queue_node.next_fire += queue_node.wait
+
 			else
 				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
 
@@ -687,6 +685,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if (!istype(subsystems) || !istype(SSticker_SS) || !istype(runlevel_SS))
 		log_world("MC: SoftReset: Bad list contents: '[subsystems]' '[SSticker_SS]' '[runlevel_SS]'")
 		return
+
 	var/subsystemstocheck = subsystems + SSticker_SS
 	for(var/I in runlevel_SS)
 		subsystemstocheck |= I
@@ -699,22 +698,28 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			SSticker_SS -= list(SS)
 			for(var/I in runlevel_SS)
 				I -= list(SS)
+
 			log_world("MC: SoftReset: Found bad entry in subsystem list, '[SS]'")
 			continue
+
 		if (SS.queue_next && !istype(SS.queue_next))
 			log_world("MC: SoftReset: Found bad data in subsystem queue, queue_next = '[SS.queue_next]'")
+
 		SS.queue_next = null
 		if (SS.queue_prev && !istype(SS.queue_prev))
 			log_world("MC: SoftReset: Found bad data in subsystem queue, queue_prev = '[SS.queue_prev]'")
+
 		SS.queue_prev = null
 		SS.queued_priority = 0
 		SS.queued_time = 0
 		SS.state = SS_IDLE
 	if (queue_head && !istype(queue_head))
 		log_world("MC: SoftReset: Found bad data in subsystem queue, queue_head = '[queue_head]'")
+
 	queue_head = null
 	if (queue_tail && !istype(queue_tail))
 		log_world("MC: SoftReset: Found bad data in subsystem queue, queue_tail = '[queue_tail]'")
+
 	queue_tail = null
 	queue_priority_count = 0
 	queue_priority_count_bg = 0
@@ -730,9 +735,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Disallow more than one map to load at once, multithreading it will just cause race conditions.
 	while(map_loading)
 		stoplag()
+
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StartLoadingMap()
+
 	map_loading = TRUE
 
 

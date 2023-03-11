@@ -6,9 +6,7 @@
 
 var/datum/controller/failsafe/Failsafe
 
-/**
- * This thing pretty much just keeps poking the master controller.
- */
+/// This thing pretty much just keeps poking the master controller.
 /datum/controller/failsafe
 	name = "Failsafe"
 
@@ -42,6 +40,7 @@ var/datum/controller/failsafe/Failsafe
 	if(Failsafe != src)
 		if(istype(Failsafe))
 			qdel(Failsafe)
+
 	Failsafe = src
 	Initialize()
 
@@ -65,6 +64,7 @@ var/datum/controller/failsafe/Failsafe
 		if(!Master)
 			// Replace the missing Master! This should never, ever happen.
 			new /datum/controller/master()
+
 		// Only poke it if overrides are not in effect.
 		if(processing_interval > 0)
 			if(Master.processing && Master.iteration)
@@ -73,14 +73,16 @@ var/datum/controller/failsafe/Failsafe
 					switch(defcon)
 						if(4,5)
 							--defcon
+
 						if(3)
 							to_chat(GLOB.admins, "<span class='adminnotice'>Notice: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks.</span>")
 							--defcon
+
 						if(2)
 							to_chat(GLOB.admins, "<span class='boldannounce'>Warning: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks. Automatic restart in [processing_interval] ticks.</span>")
 							--defcon
-						if(1)
 
+						if(1)
 							to_chat(GLOB.admins, "<span class='boldannounce'>Warning: DEFCON [defcon_pretty()]. The Master Controller has still not fired within the last [(5-defcon) * processing_interval] ticks. Killing and restarting...</span>")
 							--defcon
 							var/rtn = Recreate_MC()
@@ -88,9 +90,11 @@ var/datum/controller/failsafe/Failsafe
 								defcon = 4
 								master_iteration = 0
 								to_chat(GLOB.admins, "<span class='adminnotice'>MC restarted successfully</span>")
+
 							else if(rtn < 0)
 								log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
 								to_chat(GLOB.admins, "<span class='boldannounce'>ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying.</span>")
+
 							/**
 							 * If the return number was 0, it just means the mc was restarted too recently, and it just needs some time before we try again.
 							 * No need to handle that specially when defcon 0 can handle it.
@@ -101,13 +105,17 @@ var/datum/controller/failsafe/Failsafe
 								defcon = 4
 								master_iteration = 0
 								to_chat(GLOB.admins, "<span class='adminnotice'>MC restarted successfully</span>")
+
 				else
 					defcon = min(defcon + 1,5)
 					master_iteration = Master.iteration
+
 			if (defcon <= 1)
 				sleep(processing_interval*2)
+
 			else
 				sleep(processing_interval)
+
 		else
 			defcon = 5
 			sleep(initial(processing_interval))
