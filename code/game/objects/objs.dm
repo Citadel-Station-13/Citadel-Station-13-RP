@@ -11,6 +11,19 @@
 	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
 
+	//? Access - see [modules/jobs/access.dm]
+	/// If set, all of these accesses are needed to access this object.
+	var/list/req_access
+	/// If set, at least one of these accesses are needed to access this object.
+	var/list/req_one_access
+
+	//? Economy
+	/// economic category for objects
+	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+
+	//? misc / legacy
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
 	/// Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
@@ -27,15 +40,6 @@
 
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
-
-	//? Access - see [modules/jobs/access.dm]
-	/// If set, all of these accesses are needed to access this object.
-	var/list/req_access
-	/// If set, at least one of these accesses are needed to access this object.
-	var/list/req_one_access
-
-	/// Set when a player renames a renamable object.
-	var/renamed_by_player = FALSE
 
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
@@ -203,7 +207,7 @@
 /obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	return
 
-/obj/attack_hand(mob/living/user)
+/obj/attack_hand(mob/user, list/params)
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()

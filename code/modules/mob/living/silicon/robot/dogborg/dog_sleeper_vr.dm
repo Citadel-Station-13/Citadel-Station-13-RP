@@ -178,6 +178,9 @@
 	hound.cell.charge = hound.cell.charge - amt
 
 /obj/item/dogborg/sleeper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(..())
 		return
 	sleeperUI(user)

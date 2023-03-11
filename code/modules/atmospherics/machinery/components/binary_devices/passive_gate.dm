@@ -168,7 +168,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)

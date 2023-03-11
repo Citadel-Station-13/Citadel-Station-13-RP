@@ -168,7 +168,10 @@
 	O.brainmob.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/mmi_tank/attack_self(var/mob/user)
+/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(installed_brain)
 		RemoveBrain()
 		to_chat(user, "<span class='notice'>You slowly lift [installed_brain] out of the MMI tank.</span>")
@@ -292,7 +295,10 @@
 	O.pai.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/pAI_connector/attack_self(var/mob/user)
+/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(installed_pai)
 		RemovepAI()
 		to_chat(user, "<span class='notice'>You slowly disconnect the circuit's pins from the [installed_pai].</span>")

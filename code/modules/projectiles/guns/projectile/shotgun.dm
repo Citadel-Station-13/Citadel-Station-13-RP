@@ -26,7 +26,10 @@
 		return chambered.get_projectile()
 	return null
 
-/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/living/user as mob)
+/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(world.time >= recentpump + 10)
 		pump(user)
 		recentpump = world.time

@@ -100,7 +100,10 @@
 
 	new painting_decal(F, painting_dir, painting_colour)
 
-/obj/item/floor_painter/attack_self(var/mob/user)
+/obj/item/floor_painter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = input("Do you wish to change the decal type, paint direction, or paint colour?") as null|anything in list("Decal","Direction", "Colour")
 	if(choice == "Decal")
 		choose_decal()

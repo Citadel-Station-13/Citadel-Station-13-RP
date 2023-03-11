@@ -51,7 +51,7 @@
 		attach_mask(target)
 		src.add_fingerprint(usr)
 
-/obj/machinery/oxygen_pump/attack_hand(mob/user)
+/obj/machinery/oxygen_pump/attack_hand(mob/user, list/params)
 	if((machine_stat & MAINT) && tank)
 		user.visible_message( \
 			SPAN_NOTICE("\The [user] removes \the [tank] from \the [src]."), \
@@ -103,7 +103,7 @@
 	if(target.wear_mask && target != breather)
 		to_chat(user, SPAN_WARNING("\The [target] is already wearing a mask."))
 		return
-	if(target.head && (target.head.body_parts_covered & FACE))
+	if(target.head && (target.head.body_cover_flags & FACE))
 		to_chat(user, SPAN_WARNING("Remove their [target.head] first."))
 		return
 	if(!tank)

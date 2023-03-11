@@ -62,7 +62,7 @@
 
 /obj/item/clothing/head/helmet/space/rig/vox
 	species_restricted = list(SPECIES_VOX)
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 
 /obj/item/clothing/shoes/magboots/rig/vox
 	name = "talons"

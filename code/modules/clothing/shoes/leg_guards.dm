@@ -1,7 +1,7 @@
 /obj/item/clothing/shoes/leg_guard
 	name = "leg guards"
 	desc = "These will protect your legs and feet."
-	body_parts_covered = LEGS|FEET
+	body_cover_flags = LEGS|FEET
 	slowdown = SHOES_SLOWDOWN+0.5
 	species_restricted = null	//Unathi and Taj can wear leg armor now
 	w_class = ITEMSIZE_NORMAL
@@ -21,11 +21,11 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.wear_suit)
-		if(H.wear_suit.body_parts_covered & LEGS)
+		if(H.wear_suit.body_cover_flags & LEGS)
 			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit], it's in the way.</span>")
 			return FALSE
 		for(var/obj/item/clothing/accessory/A in H.wear_suit)
-			if(A.body_parts_covered & LEGS)
+			if(A.body_cover_flags & LEGS)
 				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way.</span>")
 				return FALSE
 	return TRUE

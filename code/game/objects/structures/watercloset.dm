@@ -17,7 +17,7 @@
 	open = round(rand(0, 1))
 	update_icon()
 
-/obj/structure/toilet/attack_hand(mob/living/user as mob)
+/obj/structure/toilet/attack_hand(mob/user, list/params)
 	if(swirlie)
 		usr.setClickCooldown(user.get_attack_speed())
 		usr.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", "<span class='notice'>You slam the toilet seat onto [swirlie.name]'s head!</span>", "You hear reverberating porcelain.")
@@ -155,7 +155,10 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/machinery/shower/attack_hand(mob/M as mob)
+/obj/machinery/shower/attack_hand(mob/user, list/params)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	on = !on
 	update_icon()
 	if(on)
@@ -243,19 +246,19 @@
 			var/washglasses = 1
 
 			if(H.wear_suit)
-				washgloves = !(H.wear_suit.flags_inv & HIDEGLOVES)
-				washshoes = !(H.wear_suit.flags_inv & HIDESHOES)
+				washgloves = !(H.wear_suit.inv_hide_flags & HIDEGLOVES)
+				washshoes = !(H.wear_suit.inv_hide_flags & HIDESHOES)
 
 			if(H.head)
-				washmask = !(H.head.flags_inv & HIDEMASK)
-				washglasses = !(H.head.flags_inv & HIDEEYES)
-				washears = !(H.head.flags_inv & HIDEEARS)
+				washmask = !(H.head.inv_hide_flags & HIDEMASK)
+				washglasses = !(H.head.inv_hide_flags & HIDEEYES)
+				washears = !(H.head.inv_hide_flags & HIDEEARS)
 
 			if(H.wear_mask)
 				if (washears)
-					washears = !(H.wear_mask.flags_inv & HIDEEARS)
+					washears = !(H.wear_mask.inv_hide_flags & HIDEEARS)
 				if (washglasses)
-					washglasses = !(H.wear_mask.flags_inv & HIDEEYES)
+					washglasses = !(H.wear_mask.inv_hide_flags & HIDEEYES)
 
 			if(H.head)
 				if(H.head.clean_blood())
@@ -368,7 +371,7 @@
 	thing.reagents.clear_reagents()
 	thing.update_icon()
 
-/obj/structure/sink/attack_hand(mob/user as mob)
+/obj/structure/sink/attack_hand(mob/user, list/params)
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -477,7 +480,7 @@
 	icon_state = "puddle"
 	desc = "A small pool of some liquid, ostensibly water."
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
+/obj/structure/sink/puddle/attack_hand(mob/user, list/params)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
@@ -501,7 +504,7 @@
 	reagents.add_reagent(dispensedreagent, 20)
 
 /* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
-/obj/structure/sink/oil_well/attack_hand(mob/M)
+/obj/structure/sink/oil_well/attack_hand(mob/user, list/params)
 	flick("puddle-oil-splash",src)
 	reagents.reaction(M, 20) //Covers target in 20u of oil.
 	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")

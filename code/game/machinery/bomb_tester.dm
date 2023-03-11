@@ -110,7 +110,7 @@
 			return
 	..()
 
-/obj/machinery/bomb_tester/attack_hand(mob/user)
+/obj/machinery/bomb_tester/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	ui_interact(user)
 

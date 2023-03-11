@@ -103,7 +103,10 @@
 		to_chat(user, "<font color=#4F49AF>You detach the string from the coin.</font>")
 	else ..()
 
-/obj/item/coin/attack_self(mob/user as mob)
+/obj/item/coin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/result = rand(1, sides)
 	var/comment = ""
 	if(result == 1)

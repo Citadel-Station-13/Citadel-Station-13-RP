@@ -6,7 +6,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_hats.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_hats.dmi',
 		)
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	slot_flags = SLOT_HEAD
 	w_class = ITEMSIZE_SMALL
 	blood_sprite_state = "helmetblood"
@@ -23,6 +23,9 @@
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/clothing/head/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(brightness_on)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc]")

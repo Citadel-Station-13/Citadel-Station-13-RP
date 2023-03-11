@@ -50,7 +50,7 @@
 /obj/machinery/pda_multicaster/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/pda_multicaster/attack_hand(mob/user)
+/obj/machinery/pda_multicaster/attack_hand(mob/user, list/params)
 	toggle_power(user)
 
 /obj/machinery/pda_multicaster/proc/toggle_power(mob/user)

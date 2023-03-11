@@ -73,7 +73,7 @@
 	busy = 0
 
 
-/obj/machinery/power/breakerbox/attack_hand(mob/user)
+/obj/machinery/power/breakerbox/attack_hand(mob/user, list/params)
 	if(update_locked)
 		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
 		return

@@ -1,4 +1,90 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/mob/living/simple_mob/otie/red/friendly{
+	desc = "The Head of Security's loyal Red Otie. Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though.";
+	name = "Brutus"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/hos)
+"aab" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/item/mirrortool,
+/obj/structure/table/standard,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/item/paper{
+	info = "Instructions on resleeving. Step 1: Remove the mirror using a Mirror Tool. Step 2: Slot the tool into the console to transfer the mirror. Step 3: Print the users body, move the body to the pod, and use the console to sleeve the occupant. Manually inserting a mirror into the console is possible in the event of body destruction, or surgical removal due to loss of the provided Mirror tool.";
+	name = "Simplified resleeving instructions"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/resleeving)
+"aac" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/morgue{
+	dir = 2
+	},
+/obj/machinery/camera/network/medbay,
+/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor,
+/area/medical/morgue)
+"aad" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "robotics_inner";
+	pixel_x = -22;
+	pixel_y = 24
+	},
+/obj/machinery/button/windowtint{
+	id = "robotics_outer";
+	pixel_x = -22;
+	pixel_y = 32
+	},
+/obj/structure/dogbed,
+/mob/living/simple_mob/animal/passive/dog/tamaskan{
+	desc = "The robotics spry new canine friend! The name 'Sprocket' Can be found on her collar. She seems to love old rock music from Sol.";
+	name = "Sprocket"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/assembly/robotics)
+"aae" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
+/turf/simulated/floor/tiled/monotile,
+/area/crew_quarters/heads/hor)
+"aaf" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/overlay/snow/floor,
+/mob/living/simple_mob/slime/feral/dark_blue,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/outside2)
 "aaA" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -2850,6 +2936,18 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"ceA" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/obj/structure/table/woodentable,
+/obj/item/clothing/glasses/threedglasses,
+/obj/item/tool/wrench/red,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area)
 "ceD" = (
 /obj/structure/table/glass,
 /obj/item/inflatable_duck,
@@ -3627,13 +3725,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "cKs" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
-/obj/structure/table/woodentable,
-/obj/item/clothing/glasses/threedglasses,
-/turf/simulated/floor/wood,
-/area/crew_quarters/recreation_area)
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "cKC" = (
 /obj/item/radio/intercom/department/medbay{
 	dir = 1;
@@ -7961,7 +8062,6 @@
 /area/maintenance/research/rnd)
 "fUX" = (
 /obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
@@ -8059,10 +8159,6 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/red,
 /area/security/observation)
-"fZq" = (
-/turf/simulated/open/lythios43c,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside2)
 "fZv" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -12351,15 +12447,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "jeX" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/pool)
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/crew_quarters/recreation_area)
 "jff" = (
 /turf/simulated/wall,
 /area/holodeck_control)
@@ -12435,10 +12526,12 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "jjf" = (
-/obj/machinery/fitness/heavy/lifter,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
+/obj/structure/fitness/weightlifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "jjr" = (
@@ -14755,12 +14848,6 @@
 /obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
-"kVm" = (
-/mob/living/simple_mob/slime/feral/dark_blue,
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside2)
 "kVL" = (
 /obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor/shifted{
@@ -18602,19 +18689,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
-"nPo" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/mob/living/simple_mob/otie/red/friendly{
-	desc = "The Head of Security's loyal Red Otie. Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though.";
-	name = "Brutus"
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/heads/hos)
 "nPM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18929,6 +19003,10 @@
 "ocv" = (
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
+"odc" = (
+/obj/machinery/fitness/heavy/lifter,
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area)
 "odk" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -20056,30 +20134,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"oXB" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/bordercorner{
-	dir = 1
-	},
-/obj/machinery/button/windowtint{
-	id = "robotics_inner";
-	pixel_x = -22;
-	pixel_y = 24
-	},
-/obj/machinery/button/windowtint{
-	id = "robotics_outer";
-	pixel_x = -22;
-	pixel_y = 32
-	},
-/mob/living/simple_mob/animal/passive/dog/tamaskan{
-	desc = "The robotics spry new canine friend! The name 'Sprocket' Can be found on her collar. She seems to love old rock music from Sol.";
-	name = "Sprocket"
-	},
-/obj/structure/dogbed,
-/turf/simulated/floor/tiled/steel,
-/area/assembly/robotics)
 "oXW" = (
 /obj/structure/railing{
 	dir = 8
@@ -22085,10 +22139,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "qyH" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "qyY" = (
@@ -25473,11 +25527,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"tpk" = (
-/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
-/area/crew_quarters/heads/hor)
 "tpn" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -28766,25 +28815,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
-"vMk" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 9
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/item/mirrortool,
-/obj/structure/table/standard,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/resleeving)
 "vMq" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -29690,21 +29720,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
-"wwb" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/morgue{
-	dir = 2
-	},
-/obj/machinery/camera/network/medbay,
-/turf/simulated/floor/plating,
-/turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
 "wwg" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -29748,13 +29763,13 @@
 /turf/simulated/floor/plating,
 /area/security/brig)
 "wxq" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/fitness/weightlifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "wxx" = (
@@ -31562,7 +31577,6 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xTw" = (
-/obj/machinery/fitness/heavy/lifter,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -41410,7 +41424,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-fZq
+uIZ
 uIZ
 uIZ
 uIZ
@@ -42627,7 +42641,7 @@ pBj
 pBj
 wJl
 wJl
-vMk
+aab
 wTJ
 iOf
 klD
@@ -43219,7 +43233,7 @@ dyj
 wBH
 bdU
 nXX
-wwb
+aac
 wbl
 jQD
 cHW
@@ -47710,7 +47724,7 @@ xWq
 bhU
 xdG
 kqZ
-tpk
+aae
 nLm
 aBA
 xUP
@@ -47938,7 +47952,7 @@ pBj
 pBj
 pBj
 tmJ
-kVm
+aaf
 vUE
 wQd
 enB
@@ -48473,7 +48487,7 @@ ngb
 fre
 uEQ
 dLr
-oXB
+aad
 ocv
 aVu
 aVu
@@ -52708,7 +52722,7 @@ hLf
 cvH
 qgw
 cqp
-nPo
+aaa
 dwr
 gQH
 ioQ
@@ -58541,8 +58555,8 @@ jTH
 jTH
 jTH
 agp
-jeX
 rHN
+cKs
 sen
 gHa
 sen
@@ -58734,9 +58748,9 @@ pBj
 pBj
 pBj
 iQr
-iQr
 qic
 mhd
+qic
 qic
 qic
 iQr
@@ -58927,10 +58941,10 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 oQY
 lrw
+jjf
 xTw
 wxq
 qCM
@@ -59121,9 +59135,9 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 djA
+dOd
 dOd
 qxp
 gUb
@@ -59315,11 +59329,11 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 djA
 dOd
-jjf
+odc
+qxp
 qyH
 dOd
 aJG
@@ -59509,15 +59523,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
 bJz
+dOd
 dOd
 qxp
 xPx
 dOd
 dOd
-iQr
+jeX
 cqn
 vVr
 whY
@@ -59703,9 +59717,9 @@ pBj
 pBj
 pBj
 pBj
-pBj
 iQr
-cKs
+ceA
+dOd
 dPH
 erQ
 vem
@@ -59897,7 +59911,7 @@ pBj
 pBj
 pBj
 pBj
-pBj
+iQr
 iQr
 iQr
 iQr

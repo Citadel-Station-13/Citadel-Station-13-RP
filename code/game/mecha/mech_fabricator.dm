@@ -475,7 +475,7 @@
 		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
-/obj/machinery/mecha_part_fabricator/attack_hand(var/mob/user)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))

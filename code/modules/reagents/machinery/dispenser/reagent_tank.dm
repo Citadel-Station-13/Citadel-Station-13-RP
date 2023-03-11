@@ -151,7 +151,7 @@
 		if(rig)
 			. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
 
-/obj/structure/reagent_dispensers/fueltank/attack_hand()
+/obj/structure/reagent_dispensers/fueltank/attack_hand(mob/user, list/params)
 	if (rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20))
@@ -379,7 +379,7 @@
 			to_chat(user, "<span class='warning'>There is already a cup dispenser there!</span>")
 		return
 
-/obj/structure/reagent_dispensers/water_cooler/attack_hand(mob/user)
+/obj/structure/reagent_dispensers/water_cooler/attack_hand(mob/user, list/params)
 	if(cups)
 		new /obj/item/reagent_containers/food/drinks/sillycup(src.loc)
 		cups--

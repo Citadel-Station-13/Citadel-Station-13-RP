@@ -776,7 +776,7 @@
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
 		fire_alert = max(fire_alert, 2)
 
-	else if(bodytemperature <= species.cold_level_1)
+	else if(bodytemperature <= species.cold_level_1 && !IS_DEAD(src)) // dead check is temporary bandaid for health rework
 		//Body temperature is too cold.
 		fire_alert = max(fire_alert, 1)
 
@@ -981,7 +981,7 @@
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if((I == l_hand | I == r_hand) && !((src.wear_suit.body_parts_covered & HANDS) | src.gloves | (src.w_uniform.body_parts_covered & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+						else if((I == l_hand | I == r_hand) && !((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)
@@ -1124,7 +1124,7 @@
 		//Check rig first because it's two-check and other checks will override it.
 		if(istype(back,/obj/item/rig))
 			var/obj/item/rig/O = back
-			if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
+			if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
 					blinded = 1
 
@@ -1478,7 +1478,7 @@
 						found_welder = 1
 				if(!found_welder && istype(back, /obj/item/rig))
 					var/obj/item/rig/O = back
-					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
+					if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
 							found_welder = 1
 				if(absorbed) found_welder = 1
