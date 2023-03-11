@@ -33,6 +33,8 @@ interface ChemDispenserData {
   macros: Array<DispenserMacro>;
   amount: number;
   amount_max: number;
+  recharging: BooleanLike;
+  recharge_rate: number;
 }
 
 interface DispenserMacro {
@@ -88,6 +90,15 @@ export const ChemDispenser = (props, context) => {
                   "No Cell"
                 )}
               </ProgressBar>
+            </LabeledList.Item>
+            <LabeledList.Item label="Charging" buttons={
+              <Button
+                content={data.recharging? "On" : "Off"}
+                icon="power-off"
+                color={data.recharging? "good" : "bad"}
+                onClick={() => act('toggle_charge')} />
+            }>
+              {data.recharging? `Drawing ${data.recharge_rate}kW` : ``}
             </LabeledList.Item>
           </LabeledList>
         </Section>

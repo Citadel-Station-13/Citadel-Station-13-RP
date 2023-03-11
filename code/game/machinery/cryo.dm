@@ -7,7 +7,7 @@
 	density = TRUE
 	anchored = TRUE
 	layer = UNDER_JUNK_LAYER
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
 	var/on = FALSE
 	use_power = USE_POWER_IDLE

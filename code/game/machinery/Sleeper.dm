@@ -8,7 +8,7 @@
 	dir = 8
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/sleeper_console
 
 /obj/machinery/sleep_console/Initialize(mapload, newdir)

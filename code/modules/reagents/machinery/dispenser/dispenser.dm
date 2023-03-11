@@ -39,7 +39,7 @@
 	/// initial cell type
 	var/cell_type = /obj/item/cell/high
 	/// recharge rate in KW
-	var/recharge_rate = 5
+	var/recharge_rate = 10
 	/// inserted beaker / whatever
 	var/obj/item/reagent_containers/inserted
 	/// allow drinking glasses
@@ -49,7 +49,7 @@
 	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
 	var/dispense_amount_max = 60
 	/// power in kilojoules per unit synthesized
-	var/kj_per_unit = 2
+	var/kj_per_unit = 4
 	/// is recharging active?
 	var/charging = TRUE
 	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
@@ -100,7 +100,7 @@
 	for(var/obj/item/stock_parts/manipulator/manip in component_parts)
 		total_manips++
 		total_manip_rating += manip.rating
-	kj_per_unit = max(0, initial(kj_per_unit) - 0.25 * (total_manip_rating / (total_manips || 1)))
+	kj_per_unit = max(0, initial(kj_per_unit) - 0.25 * ((total_manip_rating / (total_manips || 1)) - 1))
 	var/obj/item/cell/comp_cell = locate() in component_parts
 	cell = comp_cell
 
@@ -117,6 +117,7 @@
 	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
 	if(!wanted)
 		return
+	// todo: this is shit, it doesn't update area power because our power code is primitive.
 	var/kw_used = use_power_oneoff(min(recharge_rate * delta_time, wanted))
 	if(!kw_used)
 		return
@@ -129,15 +130,18 @@
 		ui = new(user, src, "ChemDispenser", name)
 		ui.open()
 
-/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
+/obj/machinery/chemical_dispenser/proc/ui_cartridge_data()
 	var/list/carts_built = list()
 	for(var/obj/item/reagent_containers/cartridge/dispenser/cart as anything in cartridges)
 		carts_built[++carts_built.len] = list(
 			"label" = cart.label,
 			"amount" = cart.reagents?.total_volume || 0,
 		)
-	.["cartridges"] = carts_built
+	return carts_built
+
+/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["cartridges"] = ui_cartridge_data()
 	var/list/chems_built = list()
 	// gather
 	for(var/obj/item/reagent_synth/synth as anything in synthesizers)
@@ -174,6 +178,8 @@
 		"capacity" = inserted.reagents.maximum_volume,
 		"data" = inserted.reagents.tgui_reagent_contents(),
 	) : null
+	.["recharging"] = charging
+	.["recharge_rate"] = recharge_rate
 
 /obj/machinery/chemical_dispenser/ui_act(action, params)
 	. = ..()
@@ -181,6 +187,9 @@
 		return
 	add_fingerprint(usr)
 	switch(action)
+		if("toggle_charge")
+			charging = !charging
+			return TRUE
 		if("reagent")
 			if(isnull(inserted?.reagents))
 				return TRUE
@@ -210,6 +219,7 @@
 				return TRUE
 			playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
 			cart.reagents.trans_to(inserted, dispense_amount)
+			push_ui_data(data = list("cartridges" = ui_cartridge_data()))
 			return TRUE
 		if("amount")
 			var/target = text2num(params["set"])

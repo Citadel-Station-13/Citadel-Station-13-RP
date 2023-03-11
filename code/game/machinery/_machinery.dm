@@ -139,8 +139,6 @@
 	var/clicksound
 	///Volume of interface sounds.
 	var/clickvol = 40
-	///Can the machine be interacted with while de-powered.
-	var/interact_offline = FALSE
 	var/obj/item/circuitboard/circuit = null
 	///If false, SSmachines. If true, SSfastprocess.
 	var/speed_process = FALSE
@@ -245,7 +243,7 @@
 	return (machine_stat & (NOPOWER | BROKEN | additional_flags))
 
 /obj/machinery/CanUseTopic(mob/user)
-	if(!interact_offline && (machine_stat & (NOPOWER | BROKEN)))
+	if(!(interaction_flags_machine & INTERACT_MACHINE_OFFLINE) && (machine_stat & (NOPOWER | BROKEN)))
 		return UI_CLOSE
 	return ..()
 
