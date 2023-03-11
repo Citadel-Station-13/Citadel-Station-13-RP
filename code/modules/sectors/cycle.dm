@@ -55,6 +55,8 @@
 	var/tmp/light_power = 0
 	/// current temperature adjust
 	var/tmp/temperature_adjust = 0
+	/// current phase poewr
+	var/tmp/phase_power = 0
 
 	//? fluff
 	/// can we be seen in look-up at all?
@@ -63,6 +65,12 @@
 	var/sky_desc = "Some kind of orbiting body."
 	/// level - if above obscuration, obscuring thing obscures us from view
 	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT
+
+/datum/sector_cycle/New()
+	#warn normalize phaess to 1 ratio total
+
+/datum/sector_cycle/proc/normalize_phases()
+	#warn impl
 
 /**
  * called to do special effects
@@ -76,7 +84,30 @@
 	#warn hook
 
 /datum/sector_cycle/proc/update(timeofday_ratio)
+	// check for phases
+	if(!length(phases))
+		light_power = 0
+		temperature_adjust = 0
+		phase_power = 0
+		return
+	else if(length(phases) == 1)
+		light_power = phases[1].light_power
+		temperature_adjust = phases[1].temperature_adjust
+		phase_power = 0
+		return
+	// 2+ phases, do normal stuff
+	// gather / compute phases
+	for(var/datum/sector_phase/phase as anything in phases)
 	#warn impl
+
+	// interpolate
+	light_color = rgb(
+		LERP(phase_behind.light_color_cached[1], phase_ahead.light_color_cached[1], phase_ratio),
+		LERP(phase_behind.light_color_cached[2], phase_ahead.light_color_cached[2], phase_ratio),
+		LERP(phase_behind.light_color_cached[3], phase_ahead.light_color_cached[3], phase_ratio),
+	)
+	light_power = LERP(phase_behind.light_power, phase_ahead.light_power, phase_ratio)
+	temperature_adjust = LERP(phase_behind.temperature_adjust, phase_ahead.temperature_adjust, phase_ratio)
 
 /**
  * return msg of look-up message, or null if we're not visible
@@ -95,7 +126,31 @@
 	main = TRUE
 
 /datum/sector_cycle/sun/main/default
-	#warn imppl
+	ratio_offset = -0.333
+	phases = list(
+		/datum/sector_phase{ // night
+			relative_ratio = 0.4;
+			light_color = "#000000";
+			light_power = 0;
+			temperature_adjust = -5;
+		},
+		/datum/sector_phase{ // morning
+			relative_ratio = 0.2;
+			light_color = "#AA3300";
+			light_power = 0.4;
+		},
+		/datum/sector_phase{ // noon
+			relative_ratio = 0.2;
+			light_color = "#EEEEEE";
+			light_power = 1;
+			temperature_adjust = 3;
+		},
+		/datum/sector_phase{ // evening
+			relative_ratio = 0.2;
+			light_color = "#88CC00";
+			light_power = 0.4;
+		},
+	)
 
 /datum/sector_cycle/moon
 	name = "Moon"
@@ -122,7 +177,7 @@
 		}
 	)
 	sky_visible = TRUE
-	sky_desc = "[SPAN_DANGER("Run.")]"
+	sky_desc = SPAN_DANGER("Run.")
 
 /**
  * cycle stages
@@ -134,6 +189,8 @@
 	var/light_power = 0
 	/// light color
 	var/light_color = "#ffffff"
+	/// light color as rgb values cached
+	var/list/light_color_cached
 	/// are we visible in the sky?
 	var/sky_visible = FALSE
 	/// are we visible in the sky leading / following this phase, even if the previous/next ones aren't?
@@ -146,6 +203,8 @@
 	var/override_skyset_msg
 	/// temperature adjust
 	var/temperature_adjust = 0
-	/// phase poewr
+	/// phase power
 	var/phase_power = 1
 
+/datum/sector_phase/New()
+	light_color_cached = hex2rgb(light_color)

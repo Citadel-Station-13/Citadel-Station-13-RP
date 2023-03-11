@@ -1,13 +1,3 @@
-/datum/atmosphere/planet/class_m
-	base_gases = list(
-	/datum/gas/oxygen = 0.22,
-	/datum/gas/nitrogen = 0.78
-	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 293.3
-	maximum_temp = 307.3
 
 
 
@@ -59,36 +49,6 @@
 			high_brightness = 1.0
 			high_color = "#FFFFFF"
 			min = 0.70
-
-	var/interpolate_weight = (abs(min - sun_position)) * 4
-	var/weather_light_modifier = 1
-	if(weather_holder && weather_holder.current_weather)
-		weather_light_modifier = weather_holder.current_weather.light_modifier
-
-	var/new_brightness = (LERP(low_brightness, high_brightness, interpolate_weight) ) * weather_light_modifier
-
-	var/new_color = null
-	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
-		new_color = weather_holder.current_weather.light_color
-	else
-		var/list/low_color_list = hex2rgb(low_color)
-		var/low_r = low_color_list[1]
-		var/low_g = low_color_list[2]
-		var/low_b = low_color_list[3]
-
-		var/list/high_color_list = hex2rgb(high_color)
-		var/high_r = high_color_list[1]
-		var/high_g = high_color_list[2]
-		var/high_b = high_color_list[3]
-
-		var/new_r = LERP(low_r, high_r, interpolate_weight)
-		var/new_g = LERP(low_g, high_g, interpolate_weight)
-		var/new_b = LERP(low_b, high_b, interpolate_weight)
-
-		new_color = rgb(new_r, new_g, new_b)
-
-	update_sun_deferred(new_brightness, new_color)
-
 
 /datum/weather_holder/classm
 	temperature = T0C
