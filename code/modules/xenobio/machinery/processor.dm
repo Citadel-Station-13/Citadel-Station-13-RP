@@ -24,7 +24,7 @@
 	. = ..()
 	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
 
-/obj/machinery/processor/attack_hand(mob/living/user)
+/obj/machinery/processor/attack_hand(mob/user, list/params)
 	if(processing)
 		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
 		return
@@ -36,7 +36,7 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
-/obj/machinery/processor/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+/obj/machinery/processor/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(default_unfasten_wrench(user, I, 40))
 		return
 	return ..()

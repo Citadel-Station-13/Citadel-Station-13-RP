@@ -39,7 +39,7 @@
 /obj/structure/lift/attack_generic(var/mob/user)
 	return attack_hand(user)
 
-/obj/structure/lift/attack_hand(var/mob/user)
+/obj/structure/lift/attack_hand(mob/user, list/params)
 	return interact(user)
 
 /obj/structure/lift/interact(var/mob/user)

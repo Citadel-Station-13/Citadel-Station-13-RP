@@ -770,6 +770,9 @@
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch_firemodes(user)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)

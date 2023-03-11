@@ -162,7 +162,7 @@ var/bomb_set
 				return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user)
+/obj/machinery/nuclearbomb/attack_hand(mob/user, list/params)
 	if(extended)
 		if(!ishuman(user))
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")

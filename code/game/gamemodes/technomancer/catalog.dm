@@ -103,6 +103,9 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Parameters: 1 (user - the mob clicking on the catalog)
 // Description: Shows an HTML window, to buy equipment and spells, if the user is the legitimate owner.  Otherwise it cannot be used.
 /obj/item/technomancer_catalog/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return 0
 	if(owner && user != owner)

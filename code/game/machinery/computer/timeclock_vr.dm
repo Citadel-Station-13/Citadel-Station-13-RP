@@ -63,7 +63,7 @@
 		return
 	. = ..()
 
-/obj/machinery/computer/timeclock/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/timeclock/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	user.set_machine(src)

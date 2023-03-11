@@ -505,7 +505,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/alarm/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/alarm/attack_hand(mob/user)
+/obj/machinery/alarm/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -664,7 +664,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		data["thresholds"] = thresholds
 	return data
 
-/obj/machinery/alarm/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/alarm/ui_act(action, params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -696,7 +696,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	// Yes, this is kinda snowflaky; however, I would argue it would be far more snowflakey
 	// to include "custom hrefs" and all the other bullshit that nano states have just for the
 	// like, two UIs, that want remote access to other UIs.
-	if((locked && !issilicon(usr) && !istype(state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
+	if((locked && !issilicon(usr) && !istype(ui.state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
 		return
 
 	var/device_id = params["id_tag"]

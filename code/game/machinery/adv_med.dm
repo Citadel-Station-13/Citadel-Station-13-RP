@@ -15,10 +15,6 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/bodyscanner/Destroy()
 	if(console)
 		console.scanner = null
@@ -244,7 +240,7 @@
 	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(user as mob)
+/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 

@@ -138,7 +138,7 @@
 
 	last_process_time = world.time
 
-/obj/machinery/replicator/attack_hand(mob/user as mob)
+/obj/machinery/replicator/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/replicator/ui_interact(mob/user, datum/tgui/ui)

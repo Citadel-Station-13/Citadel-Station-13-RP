@@ -35,7 +35,7 @@
 		..()
 
 
-/obj/machinery/computer/aiupload/attack_hand(mob/user)
+/obj/machinery/computer/aiupload/attack_hand(mob/user, list/params)
 	if(machine_stat & NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return
@@ -71,7 +71,7 @@
 		return ..()
 
 
-/obj/machinery/computer/borgupload/attack_hand(mob/user)
+/obj/machinery/computer/borgupload/attack_hand(mob/user, list/params)
 	if(machine_stat& NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return

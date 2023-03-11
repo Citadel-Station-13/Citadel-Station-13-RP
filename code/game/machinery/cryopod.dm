@@ -15,7 +15,7 @@
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.

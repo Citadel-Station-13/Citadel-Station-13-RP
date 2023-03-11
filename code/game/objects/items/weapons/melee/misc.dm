@@ -48,7 +48,10 @@
 	. = ..()
 	update_icon()
 
-/obj/item/melee/umbrella/attack_self()
+/obj/item/melee/umbrella/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.toggle_umbrella()
 
 /obj/item/melee/umbrella/proc/toggle_umbrella()
@@ -268,6 +271,9 @@
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
 /obj/item/melee/ashlander/elder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		activate()
 	else if(active)
@@ -349,6 +355,9 @@
 	return 0
 
 /obj/item/melee/twohanded/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	. = ..()
 	if(!wielded)
 		wielded = 1
@@ -482,6 +491,9 @@
 			location.hotspot_expose(700, 50, 1)
 
 /obj/item/melee/thermalcutter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	activate()
 
 //Returns the amount of fuel in the welder

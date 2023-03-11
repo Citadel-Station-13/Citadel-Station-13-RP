@@ -61,10 +61,9 @@
 	name = "CondiMaster 3000"
 	condi = TRUE
 
-/obj/machinery/chem_master/Initialize(mapload, newdir)
-	. = ..()
-	create_reagents(1000)
-	default_apply_parts()
+/obj/machinery/chem_master/Initialize(mapload)
+	create_reagents(1000) // refreshparts needs reagents
+	return ..()
 
 /obj/machinery/chem_master/Destroy()
 	QDEL_NULL(beaker)
@@ -100,7 +99,7 @@
 	if (prob(50))
 		qdel(src)
 
-/obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
+/obj/machinery/chem_master/attackby(obj/item/I, mob/user)
 	if(default_unfasten_wrench(user, I, 20))
 		return
 	else if(default_deconstruction_screwdriver(user, I))
@@ -147,7 +146,7 @@
 		pill_bottle = null
 	return ..()
 
-/obj/machinery/chem_master/attack_hand(mob/user)
+/obj/machinery/chem_master/attack_hand(mob/user, list/params)
 	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)
