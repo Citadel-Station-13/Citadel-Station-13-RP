@@ -7461,10 +7461,10 @@
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
 "aoE" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
 "aoF" = (
@@ -25433,10 +25433,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
 "bIN" = (
@@ -25669,14 +25669,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "fak" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
@@ -25823,18 +25823,18 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "hfX" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
@@ -25971,13 +25971,13 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "jMq" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 10
-	},
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -24
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
@@ -26612,11 +26612,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "yeC" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 6
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
