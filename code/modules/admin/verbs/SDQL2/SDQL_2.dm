@@ -315,8 +315,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/obj_count_finished
 
 	//Statclick
-	var/obj/effect/statclick/SDQL2_delete/delete_click
-	var/obj/effect/statclick/SDQL2_action/action_click
+	var/obj/effect/statclick/SDQL2_delete/delete_click = new(null, "", src)
+	var/obj/effect/statclick/SDQL2_action/action_click = new(null, "", src)
 
 /datum/SDQL2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
@@ -1204,16 +1204,16 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		query_list += word
 	return query_list
 
-/obj/effect/statclick/SDQL2_delete/Click()
-	if(!usr.client?.holder)
+/obj/effect/statclick/SDQL2_delete/statpanel_click(client/C, action)
+	if(!C?.holder)
 		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
 		return
 	var/datum/SDQL2_query/Q = target
 	Q.delete_click()
 
-/obj/effect/statclick/SDQL2_action/Click()
-	if(!usr.client?.holder)
+/obj/effect/statclick/SDQL2_action/statpanel_click(client/C, action)
+	if(!C?.holder)
 		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
 		return
@@ -1223,9 +1223,9 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 /obj/effect/statclick/SDQL2_VV_all
 	name = "VIEW VARIABLES"
 
-/obj/effect/statclick/sdql2_vv_all/Click()
-	if(!usr.client?.holder)
+/obj/effect/statclick/SDQL2_VV_all/statpanel_click(client/C, action)
+	if(!C?.holder)
 		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
 		return
-	usr.client.debug_variables(GLOB.sdql2_queries)
+	C.debug_variables(GLOB.sdql2_queries)
