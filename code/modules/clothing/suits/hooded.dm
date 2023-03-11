@@ -595,7 +595,7 @@
 	name = "Mercy Robe"
 	desc = "A pearlescent white, soft robe covered in various anti-bacterial silks. It seems to be preferred by medical professionals. Comes with a hood."
 	icon_state = "mercy_hoodie"
-	iv_hide_flags = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
