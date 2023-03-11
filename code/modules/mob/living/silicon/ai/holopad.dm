@@ -1,9 +1,11 @@
 /mob/living/silicon/ai/proc/initiate_holopad_connection(obj/machinery/holopad/pad)
-	#warn impl
+	if(holopad)
+		terminate_holopad_connection()
+	pad.initiate_ai_hologram(src)
 
 
 /mob/living/silicon/ai/proc/terminate_holopad_connection()
-	#warn impl
+	holopad?.kill_ai_hologram(src)
 
 /mob/living/silicon/ai/proc/move_active_hologram(turf/target)
 	hologram.move_to_target(target)

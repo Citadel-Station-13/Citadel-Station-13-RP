@@ -4,4 +4,4 @@
 	return eyeobj?.get_perspective() || ..()
 
 /mob/living/silicon/ai/perspective_shunted()
-	return (using_perspective == eyeobj?.self_perspective) || ..()
+	return !(using_perspective == eyeobj?.self_perspective) && ..()

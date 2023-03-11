@@ -799,7 +799,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(remoting && !destination.video_enabled)
 		cleanup_remote_presence()
 
-
 /datum/holocall/proc/check()
 	// check bidirectional connectivity
 	if(!source.holocall_connectivity(destination))
