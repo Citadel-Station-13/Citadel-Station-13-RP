@@ -10,7 +10,7 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
-//	flags_inv = HIDEEARS|BLOCKHAIR
+//	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)
@@ -224,6 +224,9 @@
 
 // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
 /obj/item/clothing/suit/space/void/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle_helmet()
 
 /obj/item/clothing/suit/space/void/verb/eject_tank()

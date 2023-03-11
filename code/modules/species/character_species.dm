@@ -23,6 +23,7 @@
 	template.default_citizenship = default_citizenship
 	template.default_faction = default_faction
 	template.default_religion = default_religion
+	template.default_culture = default_culture
 	template.species_fluff_flags = species_fluff_flags
 	// copy language
 	template.default_language = default_language
@@ -95,6 +96,8 @@
 	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
+	/// default culture
+	var/default_culture = /datum/lore/character_background/culture/custom
 
 	//! Languages - IDs only, as typepaths are too expensive to resolve
 	/// has galactic common? you better not disable this unless you know what you're doing
@@ -134,24 +137,45 @@
 /datum/character_species/proc/get_default_religion_id()
 	return SScharacters.resolve_religion(default_religion).id
 
+/datum/character_species/proc/get_default_culture_id()
+	return SScharacters.resolve_culture(default_culture).id
+
 /datum/character_species/proc/get_intrinsic_language_ids()
 	RETURN_TYPE(/list)
-	. = intrinsic_languages? (islist(intrinsic_languages)? intrinsic_languages.Copy() : list(intrinsic_languages)) : list()
+	if(!intrinsic_languages)
+		return galactic_language? list(LANGUAGE_ID_COMMON) : list()
+	. = list()
+	if(islist(intrinsic_languages))
+		for(var/datum/language/id_or_path as anything in intrinsic_languages)
+			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
+	else
+		var/datum/language/L = intrinsic_languages
+		. += ispath(L)? initial(L.id) : L
 	if(galactic_language)
 		. |= LANGUAGE_ID_COMMON
 
 /datum/character_species/proc/get_name_language_id()
-	return name_language
+	var/datum/language/L = name_language
+	return ispath(name_language)? initial(L.id) : name_language
 
 /datum/character_species/proc/get_max_additional_languages()
 	return max_additional_languages
 
 /datum/character_species/proc/get_whitelisted_language_ids()
 	RETURN_TYPE(/list)
-	return whitelist_languages? (islist(whitelist_languages)? whitelist_languages.Copy() : list(whitelist_languages)) : list()
+	if(!whitelist_languages)
+		return list()
+	. = list()
+	if(islist(whitelist_languages))
+		for(var/datum/language/id_or_path as anything in whitelist_languages)
+			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
+	else
+		var/datum/language/L = whitelist_languages
+		. += ispath(L)? initial(L.id) : L
 
 /datum/character_species/proc/get_default_language_id()
-	return default_language
+	var/datum/language/L = default_language
+	return ispath(L)? initial(L.id) : L
 
 /datum/character_species/proc/real_species_uid()
 	var/datum/species/S = SScharacters.resolve_species_path(real_species_type)

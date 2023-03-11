@@ -41,7 +41,7 @@
 	if(!force_process && !bad_external_organs.len)
 		return
 
-	number_wounds = 0 // You have to reduce this at some point...
+	wound_tally = 0 // You have to reduce this at some point...
 	for(var/obj/item/organ/external/E in bad_external_organs)
 		if(!E)
 			continue
@@ -53,7 +53,7 @@
 				E.tick_death(dt)
 			else
 				E.tick_life(dt)
-			number_wounds += E.number_wounds
+			wound_tally += E.wound_tally
 
 			if (!lying && !buckled && world.time - l_move_time < 15)
 			//Moving around with fractured ribs won't do you any good
@@ -63,8 +63,8 @@
 					Stun(2)
 
 				//Moving makes open wounds get infected much faster
-				if (E.wounds.len)
-					for(var/datum/wound/W in E.wounds)
+				if (length(E.wounds))
+					for(var/datum/wound/W as anything in E.wounds)
 						if (W.infection_check())
 							W.germ_level += 1
 

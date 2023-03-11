@@ -204,7 +204,7 @@
 		/obj/item/seeds/whitebeetseed = 3
 		)
 
-/obj/machinery/seed_storage/attack_hand(mob/user as mob)
+/obj/machinery/seed_storage/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 

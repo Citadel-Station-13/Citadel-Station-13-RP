@@ -5,6 +5,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
 	density = 1
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	var/health = 100.0
 	w_class = ITEMSIZE_HUGE
 
@@ -37,7 +38,6 @@
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
-	interact_offline = 1 // Allows this to be used when not in powered area.
 	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
@@ -317,7 +317,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
+/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
 	return src.ui_interact(user)
 
 /obj/machinery/portable_atmospherics/canister/ui_state(mob/user, datum/tgui_module/module)

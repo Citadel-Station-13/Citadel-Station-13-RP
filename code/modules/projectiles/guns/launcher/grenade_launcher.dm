@@ -66,6 +66,9 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
 /obj/item/gun/launcher/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	pump(user)
 
 /obj/item/gun/launcher/grenade/attackby(obj/item/I, mob/user)
@@ -74,7 +77,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/grenade/attack_hand(mob/user)
+/obj/item/gun/launcher/grenade/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -101,7 +104,10 @@
 	force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self()
+/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 //load and unload directly into chambered

@@ -35,7 +35,10 @@
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self()
+/obj/item/survivalcapsule/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
@@ -210,7 +213,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user, list/params)
 	attack_self(user)
 
 //Bed

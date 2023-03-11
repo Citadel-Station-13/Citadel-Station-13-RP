@@ -18,8 +18,8 @@
 			continue
 		if(!SM.Adjacent(user) || !SM.Adjacent(target)) // Cleaving only hits mobs near the target mob and user.
 			continue
-		if(resolve_attackby(SM, user, attack_modifier = 0.5)) // Hit them with the weapon.  This won't cause recursive cleaving due to the cleaving variable being set to true.
-			hit_mobs++
+		standard_melee_attack(SM, user, mult = 0.5)
+		hit_mobs++
 
 	cleave_visual(user, target)
 

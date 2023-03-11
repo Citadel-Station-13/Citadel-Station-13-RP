@@ -246,7 +246,10 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/living/user)
+/obj/item/cataloguer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/cataloguer/interact(mob/user)

@@ -106,7 +106,7 @@
 
 	return 0
 
-/turf/simulated/wall/attack_hand(var/mob/user)
+/turf/simulated/wall/attack_hand(mob/user, list/params)
 
 	radiate()
 	add_fingerprint(user)

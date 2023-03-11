@@ -24,7 +24,7 @@
 	if(!owned_scanner)
 		owned_scanner = locate(/obj/machinery/artifact_scanpad) in orange(1, src)
 
-/obj/machinery/artifact_analyser/attack_hand(mob/user)
+/obj/machinery/artifact_analyser/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (NOPOWER|BROKEN) || get_dist(src, user) > 1)
 		return

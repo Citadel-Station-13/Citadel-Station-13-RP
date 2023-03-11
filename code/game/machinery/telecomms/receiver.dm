@@ -24,10 +24,6 @@
 
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/receiver/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/telecomms/receiver/proc/link_radio(var/obj/item/radio/R)
 	if(!istype(R))
 		return

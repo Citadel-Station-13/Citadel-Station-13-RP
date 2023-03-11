@@ -269,6 +269,9 @@
 		return
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newlaws = input(user,"Please Input Laws","Compliance Laws",laws) as message
 	newlaws = sanitize(newlaws,2048)
 	if(newlaws)
