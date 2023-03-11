@@ -164,7 +164,7 @@
 				update_icon()
 
 
-/obj/structure/medical_stand/attack_hand(mob/user as mob)
+/obj/structure/medical_stand/attack_hand(mob/user, list/params)
 	var/list/available_options = list()
 	if (tank)
 		available_options += "Toggle valve"

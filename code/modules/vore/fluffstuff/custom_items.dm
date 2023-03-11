@@ -139,7 +139,10 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
 
@@ -208,7 +211,10 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(mob/user as mob)
+/obj/item/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
@@ -326,7 +332,10 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured)
 		return ..()
 
@@ -436,7 +445,10 @@
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
 		return 0
@@ -556,6 +568,9 @@
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(last_use + cooldown >= world.time)
 		return
 	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
@@ -677,6 +692,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.ckey == "pontifexminimus")
 		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
 	else
@@ -704,7 +722,10 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(mob/user as mob)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured == 1)
 		return ..()
 
@@ -822,7 +843,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user)
+/obj/item/perfect_tele/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -832,6 +853,9 @@
 		return ..()
 
 /obj/item/perfect_tele/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!(user.ckey in warned_users))
 		warned_users |= user.ckey
 		alert(user,"This device can be easily used to break ERP preferences due to the nature of teleporting \
@@ -1078,7 +1102,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -1091,6 +1115,9 @@
 	..()
 
 /obj/item/perfect_tele_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isliving(user))
 		return
 	var/mob/living/L = user
@@ -1181,7 +1208,10 @@
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!stored_name)
 		to_chat(user, "You huff along the front of your badge, then rub your sleeve on it to polish it up.")
@@ -1411,6 +1441,9 @@
 			update_held_icon()
 
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
@@ -1479,12 +1512,16 @@
 	edge = initial(edge)
 	w_class = initial(w_class)
 
-/obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
+/obj/item/melee/fluffstuff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H?.take_organ_damage(5,5)
 		deactivate(user)
 	else
 		activate(user)

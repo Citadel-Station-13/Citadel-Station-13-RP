@@ -61,7 +61,10 @@
 	base_desc = desc
 
 
-/obj/item/reagent_containers/glass/attack_self()
+/obj/item/reagent_containers/glass/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You put the lid on \the [src].</span>")
@@ -163,7 +166,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/attack_hand()
+/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 

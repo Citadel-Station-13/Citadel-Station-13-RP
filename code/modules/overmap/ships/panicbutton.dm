@@ -23,7 +23,7 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/structure/panic_button/attack_hand(mob/living/user)
+/obj/structure/panic_button/attack_hand(mob/user, list/params)
 	if(!istype(user))
 		return ..()
 

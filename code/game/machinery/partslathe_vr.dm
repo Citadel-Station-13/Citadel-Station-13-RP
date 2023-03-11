@@ -212,7 +212,7 @@
 /obj/machinery/partslathe/attack_ai(mob/user)
 	src.attack_hand(user)
 
-/obj/machinery/partslathe/attack_hand(mob/user)
+/obj/machinery/partslathe/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)

@@ -68,7 +68,10 @@
 	valid_accessory_slots = null
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/helmet/riot/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/riot/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
 		to_chat(user, "You raise the visor on the riot helmet.")
@@ -269,7 +272,10 @@
 
 	var/blessed = TRUE
 
-/obj/item/clothing/head/helmet/para/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state) && user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
@@ -295,7 +301,10 @@
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 10, bio = 0, rad = 0)
 	action_button_name = "Enable Wards"
 
-/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE

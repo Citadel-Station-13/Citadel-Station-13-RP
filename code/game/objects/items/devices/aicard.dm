@@ -22,6 +22,9 @@
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/aicard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	nano_ui_interact(user)
 

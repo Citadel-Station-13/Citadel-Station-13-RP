@@ -237,7 +237,7 @@
 	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
 
-/obj/structure/window/attack_hand(mob/user as mob)
+/obj/structure/window/attack_hand(mob/user, list/params)
 	user.setClickCooldown(user.get_attack_speed())
 	if(MUTATION_HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
@@ -733,7 +733,7 @@
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
-/obj/machinery/button/windowtint/attack_hand(mob/user as mob)
+/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
 	if(..())
 		return 1
 

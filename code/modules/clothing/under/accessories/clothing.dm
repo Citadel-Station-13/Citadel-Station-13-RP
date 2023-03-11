@@ -135,7 +135,10 @@
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	action_button_name = "Adjust Cloak"
 
-/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_open"
 		src.item_state = "[item_state]_open"

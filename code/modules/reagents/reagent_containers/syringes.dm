@@ -37,7 +37,10 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_containers/syringe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -47,7 +50,7 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand()
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 

@@ -37,7 +37,7 @@
 /obj/machinery/sleep_console/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/sleep_console/attack_hand(mob/user)
+/obj/machinery/sleep_console/attack_hand(mob/user, list/params)
 	if(..())
 		return 1
 
