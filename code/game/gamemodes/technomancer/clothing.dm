@@ -4,7 +4,7 @@
 	icon_state = "technomancer_suit"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
 	allowed = list(/obj/item/tank)
-	armor = list(melee = 50, bullet = 20, laser = 30, energy = 30, bomb = 10, bio = 0, rad = 40)
+	r_armor_type = /datum/armor/technomancer/standard
 	siemens_coefficient = 0.75
 
 /obj/item/clothing/under/technomancer
@@ -12,7 +12,7 @@
 	desc = "It's a blue colored jumpsuit.  There appears to be light-weight armor padding underneath, providing some protection.  \
 	There is also a healthy amount of insulation underneath."
 	icon_state = "initiate"
-	armor = list(melee = 10, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/technomancer/jumpsuit
 	siemens_coefficient = 0.3
 
 /obj/item/clothing/under/technomancer/apprentice
@@ -31,7 +31,7 @@
 	name = "initiate's hat"
 	desc = "It's a somewhat silly looking blue pointed hat."
 	icon_state = "initiate"
-	armor = list(melee = 10, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/technomancer/standard
 	siemens_coefficient = 0.3
 
 /obj/item/clothing/head/technomancer/apprentice

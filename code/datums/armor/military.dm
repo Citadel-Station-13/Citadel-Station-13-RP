@@ -8,4 +8,3 @@
 	energy = 0.2
 	bomb = 0.2
 	bio = 0.2
-	acid = 0.5

@@ -82,7 +82,7 @@
  */
 /atom/proc/check_armor(damage, tier, flag)
 	SHOULD_BE_PURE(TRUE)
-	return fetch_armor.resultant_damage(damage, tier, flag)
+	return fetch_armor().resultant_damage(damage, tier, flag)
 
 /**
  * runs armor against an incoming attack
@@ -96,6 +96,6 @@
  * @return resulting damage
  */
 /atom/proc/run_armor(damage, tier, flag)
-	return fetch_armor.resultant_damage(damage, tier, flag)
+	return fetch_armor().resultant_damage(damage, tier, flag)
 
 #warn vv admin armor with /datum/tgui_input_multi
