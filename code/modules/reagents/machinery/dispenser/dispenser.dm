@@ -124,6 +124,10 @@
 	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))
 	SStgui.update_uis(src)
 
+/obj/machinery/chemical_dispenser/attack_ai(mob/user)
+	ui_interact(user)
+	return TRUE
+
 /obj/machinery/chemical_dispenser/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -492,5 +496,9 @@
 		if(cell.loc == src)
 			drop_product(method, cell)
 		cell = null
+		
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE
+
+#undef MAX_MACROS
+#undef MAX_MACRO_STEPS
