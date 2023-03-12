@@ -595,6 +595,7 @@
 #include "code\datums\armor\military.dm"
 #include "code\datums\armor\antagonist\changeling.dm"
 #include "code\datums\armor\antagonist\cult.dm"
+#include "code\datums\armor\station\civilian.dm"
 #include "code\datums\armor\station\engineering.dm"
 #include "code\datums\armor\station\exploration.dm"
 #include "code\datums\armor\station\general.dm"

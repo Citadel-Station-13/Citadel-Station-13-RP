@@ -1,8 +1,2 @@
 /datum/armor/medical/jumpsuit
-	melee = 0
-	bullet = 0
-	laser = 0
-	energy = 0
-	bomb = 0
-	bio = 20
-	rad = 0
+	bio = 40
