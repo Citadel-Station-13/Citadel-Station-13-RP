@@ -41,6 +41,7 @@
 #define SPAN_CULTITALIC(str) ("<span class='cultitalic'>[str]</span>")
 #define SPAN_CULTLARGE(str) ("<span class='cultlarge'>[str]</span>")
 #define SPAN_DANGER(str) ("<span class='danger'>[str]</span>")
+#define C_SPAN_DANGER(str) ("<span class='danger'>" + str + "</span>")
 #define SPAN_DEADSAY(str) ("<span class='deadsay'>[str]</span>")
 #define SPAN_DEBUG(str) ("<span class='debug_debug'>[str]</span>")
 #define SPAN_DEBUGERROR(str) ("<span class='debug_error'>[str]</span>")

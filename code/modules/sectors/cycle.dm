@@ -37,6 +37,8 @@
 	var/additive = FALSE
 	/// our relative strength, if competitive
 	var/relative_strength = 1
+	/// modifier - used for seasonal stuff like moons
+	var/multiplier = 1
 
 	//? stages
 	/// ratio offset of the first stage
@@ -66,7 +68,7 @@
 	/// level - if above obscuration, obscuring thing obscures us from view
 	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT
 
-/datum/sector_cycle/New()
+/datum/sector_cycle/New(days_at_start)
 	#warn normalize phaess to 1 ratio total
 
 /datum/sector_cycle/proc/normalize_phases()
@@ -164,8 +166,70 @@
 	sky_visible = TRUE
 	sky_desc = "The planet's moon."
 
+	/// days per cycle
+	var/lunar_cycle_days = 30
+	/// days offset
+	var/lunar_cycle_offset = 0
+	/// current part of the lunar cycle
+	var/lunar_cycle
+
+/datum/sector_cycle/moon/New(days_at_start)
+	..()
+	compute_moon(days_at_start)
+
+/datum/sector_cycle/moon/proc/compute_moon(days_at_start)
+	var/days_in = (days_at_start - lunar_cycle_offset) % lunar_cycle_days
+	var/days_ratio = round(days_in / lunar_cycle_days * 1000)
+	switch(days_ratio)
+		if(0 to 125)
+			lunar_cycle = LUNAR_CYCLE_NEW_MOON
+		if(126 to 250)
+			lunar_cycle = LUANR_CYCLE_WAXING_CRESCENT
+		if(256 to 375)
+			lunar_cycle = LUNAR_CYCLE_FIRST_QUARTER
+		if(376 to 500)
+			lunar_cycle = LUNAR_CYCLE_WAXING_GIBBOUS
+		if(501 to 625)
+			lunar_cycle = LUNAR_CYCLE_FULL_MOON
+		if(626 to 750)
+			lunar_cycle = LUNAR_CYCLE_WANING_GIBBOUS
+		if(751 to 875)
+			lunar_cycle = LUNAR_CYCLE_LAST_QUARTER
+		if(876 to 100)
+			lunar_cycle = LUNAR_CYCLE_WANING_CRESCENT
+	update_moon()
+
+/datum/sector_cycle/moon/proc/update_moon()
+	switch(lunar_cycle)
+		if(LUNAR_CYCLE_NEW_MOON)
+			sky_desc = "You can see the planet's moon. It's currently a new moon."
+			multiplier = 0.125
+		if(LUANR_CYCLE_WAXING_CRESCENT)
+			sky_desc = "You can see the planet's moon. It's almost to its first quarter."
+			multiplier = 0.25
+		if(LUNAR_CYCLE_FIRST_QUARTER)
+			sky_desc = "You can see the planet's moon. It's on its first quarter."
+			multiplier = 0.5
+		if(LUNAR_CYCLE_WAXING_GIBBOUS)
+			sky_desc = "You can see the planet's moon. It's almost a full moon."
+			multiplier = 0.75
+		if(LUNAR_CYCLE_FULL_MOON)
+			sky_desc = "You can see the planet's moon. It's the full moon today - pretty!"
+			multiplier = 1
+		if(LUNAR_CYCLE_WANING_GIBBOUS)
+			sky_desc = "You can see the planet's moon. It's receding from the full moon."
+			multiplier = 0.75
+		if(LUNAR_CYCLE_LAST_QUARTER)
+			sky_desc = "You can see the planet's moon. It's on its last quarter."
+			multiplier = 0.5
+		if(LUNAR_CYCLE_WANING_CRESCENT)
+			sky_desc = "You can see the planet's moon. It's on its last sliver."
+			multiplier = 0.25
+
 /datum/sector_cycle/moon/default
 	desc = "The orbit of the planet's primary moon."
+	phases = list(
+	)
 	#warn imppl
 
 /datum/sector_cycle/eldritch_fucking_horror
@@ -181,7 +245,7 @@
 		}
 	)
 	sky_visible = TRUE
-	sky_desc = SPAN_DANGER("Run.")
+	sky_desc = C_SPAN_DANGER("Run.")
 
 /**
  * cycle stages
