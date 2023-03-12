@@ -12,7 +12,20 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 200
+	matter = list(
+		MAT_STEEL = 8000,
+		MAT_GLASS = 2500,
+	)
 	var/panel_req = TRUE
+
+/obj/item/storage/part_repalcer/basic
+	name = "basic part exchanger"
+	desc = "A basic part exchanger. It can't seem to store much."
+	storage_slots = 35
+	matter = list(
+		MAT_STEEL = 4000,
+		MAT_GLASS = 1500,
+	)
 
 /obj/item/storage/part_replacer/adv
 	name = "advanced rapid part exchange device"
@@ -28,6 +41,10 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 400
+	matter = list(
+		MAT_STEEL = 12000,
+		MAT_GLASS = 4000,
+	)
 
 /obj/item/storage/part_replacer/adv/discount_bluespace
 	name = "discount bluespace rapid part exchange device"

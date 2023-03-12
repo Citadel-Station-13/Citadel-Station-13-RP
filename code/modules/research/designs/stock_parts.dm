@@ -182,7 +182,6 @@
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	identifier = "rped"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
-	materials = list(MAT_STEEL = 15000, MAT_GLASS = 5000)
 	build_path = /obj/item/storage/part_replacer
 
 /datum/design/science/stock_part/ARPED
@@ -190,5 +189,4 @@
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity."
 	identifier = "arped"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)
-	materials = list(MAT_STEEL = 30000, MAT_GLASS = 10000)
 	build_path = /obj/item/storage/part_replacer/adv
