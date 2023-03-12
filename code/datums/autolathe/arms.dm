@@ -1,54 +1,8 @@
-/datum/category_item/autolathe/arms/syringegun_ammo
-	name = "syringe gun cartridge"
-	path =/obj/item/syringe_cartridge
-
-/datum/category_item/autolathe/arms/receiver
-	name = "receiver"
-	path =/obj/item/weaponcrafting/receiver
-
-////////////////
-/*Ammo casings*/
-////////////////
-
-/datum/category_item/autolathe/arms/shotgun_blanks
-	name = "ammunition (12g, blank)"
-	path =/obj/item/ammo_casing/a12g/blank
-
-/datum/category_item/autolathe/arms/shotgun_beanbag
-	name = "ammunition (12g, beanbag)"
-	path =/obj/item/ammo_casing/a12g/beanbag
-
-/datum/category_item/autolathe/arms/shotgun_flare
-	name = "ammunition (12g, flare)"
-	path =/obj/item/ammo_casing/a12g/flare
-
-/datum/category_item/autolathe/arms/shotgun
-	name = "ammunition (12g, slug)"
-	path =/obj/item/ammo_casing/a12g
-	hidden = 1
-
-/datum/category_item/autolathe/arms/shotgun_pellet
-	name = "ammunition (12g, pellet)"
-	path =/obj/item/ammo_casing/a12g/pellet
-	hidden = 1
-
-/datum/category_item/autolathe/arms/stunshell
-	name = "ammunition (stun cartridge, shotgun)"
-	path =/obj/item/ammo_casing/a12g/stunshell
-	hidden = 1
 
 //////////////////
 /*Ammo magazines*/
 //////////////////
 
-//! ## 5mm
-/*
-/datum/category_item/autolathe/arms/pistol_5mm
-	name = "pistol magazine (5mm)"
-	path =/obj/item/ammo_magazine/c5mm
-	category = list("Arms and Ammunition")
-	hidden = 1
-*/
 ////// 10x24mm
 /datum/category_item/autolathe/arms/usmc/small
 	name = "small m41a magazine"
@@ -64,47 +18,6 @@
 /datum/category_item/autolathe/arms/tommydrum
 	name = "Tommy Gun drum magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommydrum
-	hidden = 1
-
-//! ## 9mm
-
-// Full size pistol mags.
-/datum/category_item/autolathe/arms/pistol_9mm
-	name = "pistol magazine (9mm)"
-	path =/obj/item/ammo_magazine/m9mm
-	hidden = 1
-
-/datum/category_item/autolathe/arms/pistol_9mmr
-	name = "pistol magazine (9mm rubber)"
-	path =/obj/item/ammo_magazine/m9mm/rubber
-
-/datum/category_item/autolathe/arms/pistol_9mmp
-	name = "pistol magazine (9mm practice)"
-	path =/obj/item/ammo_magazine/m9mm/practice
-
-/datum/category_item/autolathe/arms/pistol_9mmf
-	name = "pistol magazine (9mm flash)"
-	path =/obj/item/ammo_magazine/m9mm/flash
-
-// Small mags for small or old guns.
-/datum/category_item/autolathe/arms/pistol_9mm_compact
-	name = "compact pistol magazine (9mm)"
-	path =/obj/item/ammo_magazine/m9mm/compact
-	hidden = 1
-
-/datum/category_item/autolathe/arms/pistol_9mmr_compact
-	name = "compact pistol magazine (9mm rubber)"
-	path =/obj/item/ammo_magazine/m9mm/compact/rubber
-	hidden = 1 // These are all hidden because they are traitor mags and will otherwise just clutter the Autolathe.
-
-/datum/category_item/autolathe/arms/pistol_9mmp_compact
-	name = "compact pistol magazine (9mm practice)"
-	path =/obj/item/ammo_magazine/m9mm/compact/practice
-	hidden = 1
-
-/datum/category_item/autolathe/arms/pistol_9mmf_compact
-	name = "compact pistol magazine (9mm flash)"
-	path =/obj/item/ammo_magazine/m9mm/compact/flash
 	hidden = 1
 
 // SMG mags
@@ -194,29 +107,6 @@
 /*Ammo clips and Speedloaders*/
 ///////////////////////////////
 
-/datum/category_item/autolathe/arms/speedloader_357
-	name = "speedloader (.357)"
-	path =/obj/item/ammo_magazine/s357
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_38
-	name = "speedloader (.38)"
-	path =/obj/item/ammo_magazine/s38
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_38r
-	name = "speedloader (.38 rubber)"
-	path =/obj/item/ammo_magazine/s38/rubber
-
-/datum/category_item/autolathe/arms/speedloader_45
-	name = "speedloader (.45)"
-	path = /obj/item/ammo_magazine/s45
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_45r
-	name = "speedloader (.45 rubber)"
-	path = /obj/item/ammo_magazine/s45/rubber
-
 /datum/category_item/autolathe/arms/rifle_clip_545
 	name = "ammo clip (5.45mm)"
 	path =/obj/item/ammo_magazine/clip/c545
@@ -253,31 +143,6 @@
 	hidden = 1
 
 //! ## VR FILE MERGE ## !//
-
-/datum/category_item/autolathe/arms/speedloader_357_flash
-	name = "speedloader (.357 flash)"
-	path =/obj/item/ammo_magazine/s357/flash
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_357_stun
-	name = "speedloader (.357 stun)"
-	path =/obj/item/ammo_magazine/s357/stun
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_357_rubber
-	name = "speedloader (.357 rubber)"
-	path =/obj/item/ammo_magazine/s357/rubber
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_44
-	name = "speedloader (.44)"
-	path =/obj/item/ammo_magazine/s44
-	hidden = 1
-
-/datum/category_item/autolathe/arms/speedloader_44_rubber
-	name = "speedloader (.44 rubber)"
-	path =/obj/item/ammo_magazine/s44/rubber
-	hidden = 1
 
 /datum/category_item/autolathe/arms/mag_44
 	name = "magazine (.44)"
