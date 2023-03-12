@@ -21,10 +21,6 @@
 	var/mob/living/carbon/human/victim
 	var/beep = TRUE
 
-/obj/machinery/vitals_monitor/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/vitals_monitor/Destroy()
 	victim = null
 	. = ..()

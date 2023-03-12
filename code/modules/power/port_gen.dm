@@ -42,7 +42,7 @@
 /obj/machinery/power/powered()
 	return 1 //doesn't require an external power source
 
-/obj/machinery/power/port_gen/attack_hand(mob/user as mob)
+/obj/machinery/power/port_gen/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!anchored)
@@ -301,7 +301,7 @@
 			return
 	return ..()
 
-/obj/machinery/power/port_gen/pacman/attack_hand(mob/user as mob)
+/obj/machinery/power/port_gen/pacman/attack_hand(mob/user, list/params)
 	..()
 	if (!anchored)
 		return
@@ -526,7 +526,6 @@
 	. = ..()
 	if(ispath(circuit))
 		circuit = new circuit(src)
-	default_apply_parts()
 	connect_to_network()
 
 /obj/machinery/power/rtg/process()
@@ -612,7 +611,7 @@
 		log_and_message_admins("[ADMIN_LOOKUPFLW(Proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
 		asplod()
 
-/obj/machinery/power/rtg/abductor/attack_hand(var/mob/living/user)
+/obj/machinery/power/rtg/abductor/attack_hand(mob/user, list/params)
 	if(!istype(user) || (. = ..()))
 		return
 

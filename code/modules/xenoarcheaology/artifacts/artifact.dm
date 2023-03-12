@@ -174,7 +174,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_NITRO && !secondary_effect.activated)
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/attack_hand(var/mob/user as mob)
+/obj/machinery/artifact/attack_hand(mob/user, list/params)
 	if (get_dist(user, src) > 1)
 		to_chat(user, "<font color='red'>You can't reach [src] from here.</font>")
 		return

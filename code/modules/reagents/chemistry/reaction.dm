@@ -1,6 +1,12 @@
 /datum/chemical_reaction
+	//? core
+	/// id - must be unique and in CamelCase.
+	var/id
+	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
+	var/chemical_reaction_flags = NONE
+
+	//? legacy / unsorted
 	var/name = null
-	var/id = null
 	var/result = null
 	var/list/required_reagents = list()
 	var/list/catalysts = list()

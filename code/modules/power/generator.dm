@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	else
 		..()
 
-/obj/machinery/power/generator/attack_hand(mob/user)
+/obj/machinery/power/generator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER) || !anchored)
 		return

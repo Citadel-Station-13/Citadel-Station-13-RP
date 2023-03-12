@@ -18,10 +18,6 @@
 	req_access = list(ACCESS_SCIENCE_RD) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
 	..()
@@ -288,7 +284,7 @@
 			target.files.known_tech |= from.files.known_tech
 			return TRUE
 
-/obj/machinery/computer/rdservercontrol/attack_hand(mob/user as mob)
+/obj/machinery/computer/rdservercontrol/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

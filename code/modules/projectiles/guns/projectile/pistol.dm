@@ -74,7 +74,7 @@
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(var/mob/living/user)
+/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
@@ -211,7 +211,7 @@
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
-/obj/item/gun/ballistic/pistol/attack_hand(mob/living/user as mob)
+/obj/item/gun/ballistic/pistol/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(silenced)
 			if(!user.is_holding(src))
@@ -431,7 +431,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user)
+/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else

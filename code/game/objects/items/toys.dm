@@ -266,6 +266,9 @@
 	attack_verb = list("attacked", "struck", "hit")
 
 /obj/item/toy/sword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.active = !( src.active )
 	if (src.active)
 		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
@@ -422,7 +425,10 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
-/obj/item/toy/bosunwhistle/attack_self(mob/user as mob)
+/obj/item/toy/bosunwhistle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cooldown < world.time - 35)
 		to_chat(user, "<span class='notice'>You blow on [src], creating an ear-splitting noise!</span>")
 		playsound(user, 'sound/misc/boatswain.ogg', 20, 1)
@@ -437,13 +443,16 @@
 	var/cooldown = 0
 
 //all credit to skasi for toy mech fun ideas
-/obj/item/toy/prize/attack_self(mob/user as mob)
+/obj/item/toy/prize/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cooldown < world.time - 8)
 		to_chat(user, "<span class='notice'>You play with [src].</span>")
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
-/obj/item/toy/prize/attack_hand(mob/user as mob)
+/obj/item/toy/prize/attack_hand(mob/user, list/params)
 	if(loc == user)
 		if(cooldown < world.time - 8)
 			to_chat(user, "<span class='notice'>You play with [src].</span>")
@@ -521,7 +530,10 @@
 	. = ..()
 	desc = "A \"Space Life\" brand [name]"
 
-/obj/item/toy/figure/attack_self(mob/user as mob)
+/obj/item/toy/figure/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cooldown < world.time)
 		cooldown = (world.time + 30) //3 second cooldown
 		user.visible_message("<span class='notice'>The [src] says \"[toysay]\".</span>")
@@ -783,9 +795,11 @@
 	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
 // Attack self
-/obj/item/toy/plushie/carp/attack_self(mob/user as mob)
+/obj/item/toy/plushie/carp/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(src, bitesound, 20, 1)
-	return ..()
 
 /obj/random/carp_plushie
 	name = "Random Carp Plushie"
@@ -846,7 +860,7 @@
 	density = 1
 	var/phrase = "I don't want to exist anymore!"
 
-/obj/structure/plushie/attack_hand(mob/user)
+/obj/structure/plushie/attack_hand(mob/user, list/params)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
@@ -893,7 +907,10 @@
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
-/obj/item/toy/plushie/attack_self(mob/user as mob)
+/obj/item/toy/plushie/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(world.time - last_message <= 1 SECOND)
 		return
 	if(user.a_intent == INTENT_HELP)
@@ -1342,7 +1359,10 @@
 	var/cooldown = 0
 	var/list/possible_answers = list("Definitely.", "All signs point to yes.", "Most likely.", "Yes.", "Ask again later.", "Better not tell you now.", "Future unclear.", "Maybe.", "Doubtful.", "No.", "Don't count on it.", "Never.")
 
-/obj/item/toy/eight_ball/attack_self(mob/user as mob)
+/obj/item/toy/eight_ball/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown)
 		var/answer = pick(possible_answers)
 		user.visible_message("<span class='notice'>[user] focuses on their question and [use_action]...</span>")
@@ -1415,6 +1435,9 @@
 	var/cooldown = 0
 /*
 /obj/item/toy/AI/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown) //for the sanity of everyone
 		var/message = generate_ion_law()
 		to_chat(user, "<span class='notice'>You press the button on [src].</span>")
@@ -1434,6 +1457,9 @@
 	var/cooldown = 0
 
 /obj/item/toy/owl/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("You won't get away this time, Griffin!", "Stop right there, criminal!", "Hoot! Hoot!", "I am the night!")
 		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
@@ -1442,7 +1468,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/griffin
 	name = "griffin action figure"
@@ -1453,6 +1478,9 @@
 	var/cooldown = 0
 
 /obj/item/toy/griffin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("You can't stop me, Owl!", "My plan is flawless! The vault is mine!", "Caaaawwww!", "You will never catch me!")
 		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
@@ -1461,7 +1489,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/cowgirlprize
 	name = "cyan cowgirl action figure"
@@ -1472,6 +1499,9 @@
 	var/cooldown = 0
 
 /obj/item/toy/cowgirlprize/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("Yee haw!", "Enjoy my signature CC Root Beer, y'all!", "Shuck 'em up!", "What in tarnation?")
 		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
@@ -1480,7 +1510,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
 
 /obj/item/toy/snakeoilprize
 	name = "snake oil salesman action figure"
@@ -1491,6 +1520,9 @@
 	var/cooldown = 0
 
 /obj/item/toy/snakeoilprize/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!cooldown) //for the sanity of everyone
 		var/message = pick("Mwahahaha!", "Try my snake oil! Guaranteed to solve all problems!", "Time to skedaddle.", "Money money money!")
 		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
@@ -1499,17 +1531,6 @@
 		cooldown = 1
 		spawn(30) cooldown = 0
 		return
-	..()
-
-/* NYET.
-/obj/item/toddler
-	icon_state = "toddler"
-	name = "toddler"
-	desc = "This baby looks almost real. Wait, did it just burp?"
-	force = 5
-	w_class = ITEMSIZE_LARGE
-	slot_flags = SLOT_BACK
-*/
 
 //This should really be somewhere else but I don't know where. w/e
 
@@ -1544,7 +1565,10 @@
 	max_w_class = ITEMSIZE_SMALL
 	max_storage_space = INVENTORY_BOX_SPACE
 
-/obj/item/storage/daki/attack_self(mob/living/user)
+/obj/item/storage/daki/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/body_choice
 	var/custom_name
 

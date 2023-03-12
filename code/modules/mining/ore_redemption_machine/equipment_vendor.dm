@@ -102,10 +102,6 @@
 	src.equipment_path = path
 	src.cost = cost
 
-/obj/machinery/power/quantumpad/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/mineral/equipment_vendor/power_change()
 	var/old_stat = machine_stat
 	..()
@@ -123,7 +119,7 @@
 	else
 		icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user)
+/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	interact(user)

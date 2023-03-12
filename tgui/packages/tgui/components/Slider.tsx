@@ -5,12 +5,29 @@
  */
 
 import { clamp01, keyOfMatchingRange, scale } from 'common/math';
-import { classes } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from './Box';
+import { BooleanLike, classes } from 'common/react';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { DraggableControl } from './DraggableControl';
 import { NumberInput } from './NumberInput';
 
-export const Slider = props => {
+interface SliderProps extends BoxProps {
+  animated?: BooleanLike;
+  color?: string;
+  value: number;
+  unit?: string;
+  minValue: number;
+  maxValue: number;
+  fillValue?: number;
+  ranges?: Record<string, [number, number]>;
+  step?: number;
+  stepPixelSize?: number;
+  format?: (n: number) => number;
+  suppressFlicker?: number;
+  onChange?: Function;
+  onDrag?: Function;
+}
+
+export const Slider = (props: SliderProps) => {
   // IE8: I don't want to support a yet another component on IE8.
   if (Byond.IS_LTE_IE8) {
     return (

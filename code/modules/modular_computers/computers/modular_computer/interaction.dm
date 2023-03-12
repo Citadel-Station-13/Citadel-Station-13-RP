@@ -109,13 +109,16 @@
 /obj/item/modular_computer/attack_ai(mob/user)
 	return attack_self(user)
 
-/obj/item/modular_computer/attack_hand(mob/user)
+/obj/item/modular_computer/attack_hand(mob/user, list/params)
 	if(anchored)
 		return attack_self(user)
 	return ..()
 
 /// On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(enabled && screen_on)
 		nano_ui_interact(user)
 	else if(!enabled && screen_on)

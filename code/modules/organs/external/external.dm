@@ -183,7 +183,10 @@
 	if(burn_damage)
 		take_damage(0, burn_damage * emp_mod)
 
-/obj/item/organ/external/attack_self(var/mob/living/user)
+/obj/item/organ/external/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!contents.len)
 		return ..()
 	var/list/removable_objects = list()

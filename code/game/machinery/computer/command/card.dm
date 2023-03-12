@@ -105,7 +105,7 @@
 /obj/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/card/attack_hand(mob/user as mob)
+/obj/machinery/computer/card/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(machine_stat & (NOPOWER|BROKEN))

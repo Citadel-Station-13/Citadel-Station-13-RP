@@ -175,17 +175,17 @@
 /area/tether_away/beach/resort/janibar)
 "aN" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/janibar)
 "aO" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/janibar)
 "aP" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/janibar)
 "aQ" = (
@@ -787,7 +787,7 @@
 /area/tether_away/beach/powershed)
 "mu" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/lino,

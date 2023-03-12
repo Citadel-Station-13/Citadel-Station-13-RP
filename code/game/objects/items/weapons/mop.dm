@@ -26,7 +26,10 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	create_reagents(30)
 
 
-/obj/item/mop/attack_self(var/mob/user)
+/obj/item/mop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP

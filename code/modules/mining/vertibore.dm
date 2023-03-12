@@ -74,6 +74,9 @@
 	. = ..()
 
 /obj/item/vertibore/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(mat_cost > mat_storage)
 		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
 		return

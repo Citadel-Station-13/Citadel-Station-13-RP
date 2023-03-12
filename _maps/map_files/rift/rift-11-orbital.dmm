@@ -5968,7 +5968,7 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rT" = (
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 8
 	},
 /obj/structure/table/marble,
@@ -5986,7 +5986,7 @@
 /obj/machinery/camera/network/crescent{
 	dir = 1
 	},
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 1
 	},
 /obj/structure/table/reinforced,
@@ -5994,7 +5994,7 @@
 /area/centcom/simulated/bar)
 "rX" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /turf/simulated/floor/lino,

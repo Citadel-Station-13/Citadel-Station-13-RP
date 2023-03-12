@@ -78,6 +78,9 @@
 
 // This dumps all the bullets right on the floor
 /obj/item/ammo_magazine/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(can_remove_ammo)
 		if(!stored_ammo.len)
 			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
@@ -98,7 +101,7 @@
 		return
 
 // This puts one bullet from the magazine into your hand
-/obj/item/ammo_magazine/attack_hand(mob/user)
+/obj/item/ammo_magazine/attack_hand(mob/user, list/params)
 	if(can_remove_ammo)	// For Smart Magazines
 		if(user.get_inactive_held_item() == src)
 			if(stored_ammo.len)
