@@ -47,7 +47,6 @@
 	name = OUTFIT_JOB_NAME("Blueshield")
 	uniform = /obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield
 	l_pocket = /obj/item/flash
-	r_pocket = /obj/item/handcuffs
 	glasses = /obj/item/clothing/glasses/sunglasses/medhud
 	l_ear = /obj/item/radio/headset/heads/blueshield
 	gloves = /obj/item/clothing/gloves/black
