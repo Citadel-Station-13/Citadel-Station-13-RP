@@ -1,3 +1,3 @@
 /datum/armor/civilian/jumpsuit/janitor
-	bio = 20
+	bio = 30
 	rad = 10

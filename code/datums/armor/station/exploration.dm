@@ -1,8 +1,9 @@
 /datum/armor/exploration/soft
-	melee = 50
+	melee = 35
+	melee = MELEE_TIER_DEFAULT
 	bullet = 20
-	laser = 20
-	energy = 50
-	rad = 50
-
-/datum/armor/exploration/space
+	bullet_tier = BULLET_TIER_DEFAULT
+	laser = 25
+	laser_tier = LASER_TIER_DEFAULT
+	energy = 20
+	rad = 35

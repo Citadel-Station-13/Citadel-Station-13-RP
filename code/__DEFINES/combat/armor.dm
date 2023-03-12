@@ -58,3 +58,7 @@ GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 //? laser
 
 #define LASER_TIER_DEFAULT ARMOR_TIER_DEFAULT
+
+//? --- armor calculations ---
+
+
