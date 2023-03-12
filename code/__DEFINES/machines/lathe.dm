@@ -15,3 +15,10 @@ DEFINE_BITFIELD(lathe_type, list(
 	BITFIELD(LATHE_TYPE_MECHA),
 	BITFIELD(LATHE_TYPE_BIOPRINTER),
 ))
+
+//? design_unlock bitfield
+
+/// any lathe that can print us should have us always
+#define DESIGN_UNLOCK_INTRINSIC (1<<0)
+/// any lathe that can print us can have us uploaded
+#define DESIGN_UNLOCK_UPLOAD (1<<1)

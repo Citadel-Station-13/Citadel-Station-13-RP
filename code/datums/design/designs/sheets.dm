@@ -3,6 +3,8 @@
 
 /datum/design/sheet/reinforced_glass
 	identifier = "SheetReinforcedGlass"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials = list(
 		MAT_STEEL = 1000,
 		MAT_GLASS = 2000,
@@ -12,6 +14,8 @@
 
 /datum/design/sheet/metal_rods
 	identifier = "SheetSteelRods"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials = list(
 		MAT_STEEL = 1000
 	)

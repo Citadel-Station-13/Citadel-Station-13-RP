@@ -1,3 +1,8 @@
+/**
+ * design datums for holding what lathes can print.
+ *
+ * relevant bitfields are in [code/__DEFINES/machines/lathe.dm]
+ */
 /datum/design
 	/// Abstract type.
 	abstract_type = /datum/design
@@ -6,6 +11,8 @@
 	var/identifier
 	/// types of lathes that can print us
 	var/lathe_type = NONE
+	/// how are we unlocked
+	var/design_unlock = NONE
 	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
 	var/work = 5 SECONDS
 	/// is stack? autodetected.

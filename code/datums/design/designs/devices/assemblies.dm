@@ -5,32 +5,48 @@
 
 /datum/design/assembly/igniter
 	identifier = "AseemblyIgniter"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/igniter
 
 /datum/design/assembly/signaler
 	identifier = "AseemblySignaler"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/signaler
 
 /datum/design/assembly/infrared
 	identifier = "AseemblyInfrared"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/infra
 
 /datum/design/assembly/timer
 	identifier = "AseemblyTimer"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/timer
 
 /datum/design/assembly/proximity
 	identifier = "AseemblyProximity"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/prox_sensor
 
 /datum/design/assembly/mousetrap
 	identifier = "AseemblyMousetrap"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/mousetrap
 
 /datum/design/assembly/voice
 	identifier = "AseemblyVoice"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/voice
 
 /datum/design/assembly/electropack
 	identifier = "AseemblyElectropack"
-	build_path = /obj/item/assembly/shock_kit
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/radio/electropack

@@ -6,11 +6,6 @@
 	name = "cell charger kit"
 	path =/obj/item/cell_charger_kit
 
-/datum/category_item/autolathe/devices/electropack
-	name = "electropack"
-	path =/obj/item/radio/electropack
-	hidden = 1
-
 /datum/category_item/autolathe/devices/geiger
 	name = "geiger counter"
 	path =/obj/item/geiger_counter
