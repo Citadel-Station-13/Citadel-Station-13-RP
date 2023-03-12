@@ -198,26 +198,6 @@
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
-	/// Values for normal run_mob_armor() checks
-	var/list/armor = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 100,
-				"rad" = 100
-				)
-	/// Values for run_mob_soak() checks.
-	var/list/armor_soak = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0

@@ -77,11 +77,13 @@
  * * damage - raw damage
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - reserved - todo: pointer to damage mode to allow for dampening of piercing / etc.
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  *
  * @return resulting damage
  */
-/atom/proc/check_armor(damage, tier, flag)
-	SHOULD_BE_PURE(TRUE)
+/atom/proc/check_armor(damage, tier, flag, mode, attack_type, datum/weapon)
 	return fetch_armor().resultant_damage(damage, tier, flag)
 
 /**
@@ -92,10 +94,35 @@
  * * damage - raw damage
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - reserved - todo: pointer to damage mode to allow for dampening of piercing / etc.
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  *
  * @return resulting damage
  */
-/atom/proc/run_armor(damage, tier, flag)
+/atom/proc/run_armor(damage, tier, flag, mode, attack_type, datum/weapon)
 	return fetch_armor().resultant_damage(damage, tier, flag)
 
 #warn vv admin armor with /datum/tgui_input_multi
+
+//? shieldcalls
+
+/**
+ * checks for shields
+ * not always accurate
+ *
+ * params are modified and then returned as a list.
+ */
+/atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCHECK, args)
+	return args.Copy()
+
+/**
+ * runs an attack against shields
+ * side effects are allowed
+ *
+ * params are modified and then returned as a list
+ */
+/atom/proc/atom_shieldcall(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, args)
+	return args.Copy()

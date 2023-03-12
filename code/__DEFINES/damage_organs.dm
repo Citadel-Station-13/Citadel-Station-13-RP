@@ -10,6 +10,8 @@
 #define BIOACID     "bioacid"
 #define SEARING     "searing"
 
+// todo: these things should be damage modes / flags
+
 #define CUT       "cut"
 #define BRUISE    "bruise"
 #define PIERCE    "pierce"

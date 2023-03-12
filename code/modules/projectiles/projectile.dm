@@ -101,13 +101,22 @@
 	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
 	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
 
+	//? Damage - default handling
+	/// damage amount
 	var/damage = 10
-	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
+	/// damage tier - goes hand in hand with [damage_armor]
+	var/damage_tier = BULLET_TIER_DEFAULT
+	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
+	var/damage_type = BRUTE
+	/// armor flag for damage - goes hand in hand with [damage_tier]
+	var/damage_flag = ARMOR_BULLET
+	/// damage mode - reserved for later ues
+	var/damage_mode = NONE
+
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
-	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
 	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
