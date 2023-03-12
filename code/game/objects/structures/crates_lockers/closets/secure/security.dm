@@ -232,7 +232,7 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
-		/obj/item/gun/energy/gun,
+		/obj/item/gun/energy/gun/fluff/dominator,
 		/obj/item/cell/device/weapon,
 		/obj/item/melee/telebaton,
 		/obj/item/gps/command/blueshield,
