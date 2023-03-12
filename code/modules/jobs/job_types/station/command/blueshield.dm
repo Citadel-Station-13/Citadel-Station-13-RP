@@ -46,6 +46,7 @@
 	name = OUTFIT_JOB_NAME("Blueshield")
 	uniform = /obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield
 	l_pocket = /obj/item/flash
+	r_pocket = /obj/item/handcuffs
 	glasses = /obj/item/clothing/glasses/sunglasses/medhud
 	l_ear = /obj/item/radio/headset/heads/blueshield
 	gloves = /obj/item/clothing/gloves/black
@@ -54,8 +55,7 @@
 	id_type = /obj/item/card/id/silver/blueshield
 	pda_type = /obj/item/pda/heads/blueshield
 
-	backpack = /obj/item/storage/backpack/security
-	backpack_contents = list(/obj/item/handcuffs = 1)
-	satchel_one = /obj/item/storage/backpack/satchel/sec
-	messenger_bag = /obj/item/storage/backpack/messenger/sec
-	dufflebag = /obj/item/storage/backpack/dufflebag/sec
+	backpack = /obj/item/storage/backpack/blueshield
+	satchel_one = /obj/item/storage/backpack/satchel/blueshield
+	messenger_bag = /obj/item/storage/backpack/messenger/blueshield
+	dufflebag = /obj/item/storage/backpack/dufflebag/blueshield
