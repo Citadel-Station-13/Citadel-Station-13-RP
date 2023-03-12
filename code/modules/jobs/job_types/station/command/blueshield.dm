@@ -39,7 +39,8 @@
 	desc = "A Blueshield is concerned with maintaining the safety and security of command personnel, dealing with direct threats while \
 						not going out of their way to apprehend distant criminals. A Blueshield is directly responsible for the health and safety \
 						of the Director and other command entities, within reason. Being only one person, use your best judgement on who needs \
-						overseeing at that very moment, as well as over the course of the shift. No one is above corporate regulations however, \
+						overseeing at that very moment, as well as over the course of the shift. The priority of a Blueshield is to ensure extraction \
+						and security of the client, not the apprehension or neutralization of the offender. No one is above corporate regulations however, \
 						neither Security nor Command."
 
 /datum/outfit/job/station/blueshield
