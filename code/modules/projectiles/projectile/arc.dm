@@ -9,7 +9,7 @@
 /obj/item/projectile/arc
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
-	movement_type = UNSTOPPABLE
+	movement_type = MOVEMENT_UNSTOPPABLE
 	plane = ABOVE_PLANE // Since projectiles are 'in the air', they might visually overlap mobs while in flight, so the projectile needs to be above their plane.
 	var/fired_dir = null		// Which direction was the projectile fired towards. Needed to invert the projectile turning based on if facing left or right.
 	var/distance_to_fly = null // How far, in pixels, to fly for. Will call on_range() when this is passed.

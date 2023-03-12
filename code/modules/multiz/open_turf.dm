@@ -19,13 +19,13 @@
 
 /turf/simulated/open/Entered(atom/movable/mover)
 	..()
-	if(mover.movement_type & GROUND)
+	if(mover.movement_type & MOVEMENT_GROUND)
 		mover.fall()
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(AM.movement_type & GROUND)
+	if(AM.movement_type & MOVEMENT_GROUND)
 		AM.fall()
 
 /turf/simulated/open/proc/queue()

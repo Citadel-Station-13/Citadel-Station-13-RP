@@ -27,9 +27,7 @@
 	return null
 
 /obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
+	// todo: this breaks other attack self interactions :(
 	if(world.time >= recentpump + 10)
 		pump(user)
 		recentpump = world.time
