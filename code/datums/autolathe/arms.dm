@@ -20,29 +20,6 @@
 	path =/obj/item/ammo_magazine/m45tommydrum
 	hidden = 1
 
-// SMG mags
-/datum/category_item/autolathe/arms/smg_9mm
-	name = "top-mounted SMG magazine (9mm)"
-	path =/obj/item/ammo_magazine/m9mmt
-	hidden = 1
-
-/datum/category_item/autolathe/arms/smg_9mmh
-	name = "top-mounted SMG magazine (9mm hunter)"
-	path =/obj/item/ammo_magazine/m9mmt/hunter
-	hidden = 1
-
-/datum/category_item/autolathe/arms/smg_9mmr
-	name = "top-mounted SMG magazine (9mm rubber)"
-	path =/obj/item/ammo_magazine/m9mmt/rubber
-
-/datum/category_item/autolathe/arms/smg_9mmp
-	name = "top-mounted SMG magazine (9mm practice)"
-	path =/obj/item/ammo_magazine/m9mmt/practice
-
-/datum/category_item/autolathe/arms/smg_9mmf
-	name = "top-mounted SMG magazine (9mm flash)"
-	path =/obj/item/ammo_magazine/m9mmt/flash
-
 //! ## 10mm
 /datum/category_item/autolathe/arms/smg_10mm
 	name = "SMG magazine (10mm)"
@@ -75,33 +52,6 @@
 	name = "rifle magazine (7.62mm)"
 	path =/obj/item/ammo_magazine/m762
 	hidden = 1
-
-/*
-/datum/category_item/autolathe/arms/rifle_small_762
-	name = "rifle magazine (7.62mm)"
-	path =/obj/item/ammo_magazine/s762
-	hidden = 1
-*/
-
-//! ## Shotgun
-
-/datum/category_item/autolathe/arms/shotgun_clip_beanbag
-	name = "2-round 12g speedloader (beanbag)"
-	path =/obj/item/ammo_magazine/clip/c12g/beanbag
-
-/datum/category_item/autolathe/arms/shotgun_clip_slug
-	name = "2-round 12g speedloader (slug)"
-	path =/obj/item/ammo_magazine/clip/c12g
-	hidden = 1
-
-/datum/category_item/autolathe/arms/shotgun_clip_pellet
-	name = "2-round 12g speedloader (buckshot)"
-	path =/obj/item/ammo_magazine/clip/c12g/pellet
-	hidden = 1
-
-/datum/category_item/autolathe/arms/shotgun_clip_beanbag
-	name = "2-round 12g speedloader (beanbag)"
-	path =/obj/item/ammo_magazine/clip/c12g/beanbag
 
 ///////////////////////////////
 /*Ammo clips and Speedloaders*/
