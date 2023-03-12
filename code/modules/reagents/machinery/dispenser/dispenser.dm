@@ -294,11 +294,12 @@
 			if(!length(the_list))
 				return TRUE
 			var/list/logstr = list()
-			for(var/id in the_list)
+			for(var/list/L as anything in the_list)
+				var/id = L[1]
 				if(!check_reagent_id(id))
 					logstr += "[id]: skipped"
 					break
-				var/amount = the_list[id]
+				var/amount = L[2]
 				amount = min(amount, dispense_amount_max)
 				if(!amount)
 					continue
@@ -316,6 +317,9 @@
 			return TRUE
 		if("add_macro")
 			var/list/raw = params["data"]
+			if(length(raw) > MAX_MACRO_STEPS)
+				to_chat(usr, SPAN_WARNING("This macro is too long. Discarding. Max: [MAX_MACRO_STEPS] steps."))
+				return TRUE
 			var/name = params["name"]
 			if(isnull(name))
 				name = input(usr, "Name this macro", "Chemical Macro", "Macro") as text|null
@@ -325,7 +329,9 @@
 				return TRUE
 			var/list/built = list()
 			for(var/list/L as anything in raw)
-				built[L[1]] = max(0, round(text2num(L[2])))
+				built[++built.len] = list(
+					L[1], round(text2num(L[2]))
+				)
 			raw.len = min(raw.len, MAX_MACRO_STEPS)
 			LAZYINITLIST(macros)
 			macros[++macros.len] = list(
@@ -485,6 +491,8 @@
 
 /obj/machinery/chemical_dispenser/drop_products(method)
 	. = ..()
+	if(synthesizers && !synthesizers_swappable)
+		QDEL_LIST(synthesizers) // nope
 	for(var/obj/item/I as anything in (synthesizers | cartridges))
 		drop_product(method, I)
 	synthesizers = null

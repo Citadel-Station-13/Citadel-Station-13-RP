@@ -40,7 +40,7 @@ interface ChemDispenserData {
 
 interface DispenserMacro {
   name: string;
-  data: Array<Record<string, number>>;
+  data: Array<[string, number]>;
   index: number;
 }
 
@@ -54,9 +54,12 @@ export const ChemDispenser = (props, context) => {
     }
     let appended = macro?.slice();
     if (appended.length && appended[appended.length - 1][0] === id) {
-      appended[appended.length - 1][1] += amount;
+      let remaining = Math.max(0, data.amount_max - appended[appended.length - 1][1]);
+      let wanted = Math.min(remaining, amount);
+      appended[appended.length - 1][1] += wanted;
+      amount -= wanted;
     }
-    else {
+    if (amount > 0) {
       appended?.push([id, amount]);
     }
     setMacro(appended);
