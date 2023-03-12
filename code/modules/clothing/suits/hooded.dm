@@ -134,7 +134,7 @@
 	inv_hide_flags = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/civilian/coat
 	hoodtype = /obj/item/clothing/head/hood/winter
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
@@ -156,7 +156,7 @@
 	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
 	icon_state = "coatcaptain"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcaptain", SLOT_ID_LEFT_HAND = "coatcaptain")
-	armor = list(melee = 20, bullet = 15, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/low
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -167,7 +167,7 @@
 	name = "head of personnel's winter coat"
 	desc = "A cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana."
 	icon_state = "coathop"
-	armor = list("melee" = 5, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 5, "bio" = 5, "rad" = 0)
+	r_armor_type = /datum/armor/security/low
 	hoodtype = /obj/item/clothing/head/hood/winter/hop
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security
@@ -175,7 +175,7 @@
 	desc = "A heavy jacket made from greyshirt hide, there seems to be a sewed in holster, as well as a thin weave of protection against most damage.'"
 	icon_state = "coatsecurity"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatsecurity", SLOT_ID_LEFT_HAND = "coatsecurity")
-	armor = list(melee = 25, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/low
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -194,7 +194,7 @@
 	desc = "A heavy jacket made from 'synthetic' animal furs, there's a thick weave of sterile material, good for virus outbreaks!"
 	icon_state = "coatmedical"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatmedical", SLOT_ID_LEFT_HAND = "coatmedical")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
+	r_armor_type = /datum/armor/medical/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/medical
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
@@ -237,7 +237,7 @@
 	desc = "A heavy jacket made from 'synthetic' animal furs, a small tag says 'Bomb Proof! (not fully bomb proof)'."
 	icon_state = "coatscience"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatscience", SLOT_ID_LEFT_HAND = "coatscience")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/science/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/science
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
@@ -263,7 +263,7 @@
 	desc = "A heavy jacket made from 'synthetic' animal furs, there seems to be a thin weave of lead on the inside."
 	icon_state = "coatengineer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatengineer", SLOT_ID_LEFT_HAND = "coatengineer")
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 20)
+	r_armor_type = /datum/armor/engineering/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer, /obj/item/flashlight,
@@ -282,7 +282,6 @@
 	name = "chief engineer's winter coat"
 	desc = "A white winter coat with reflective green and yellow stripes. Stuffed with asbestos, treated with fire retardant PBDE, lined with a micro thin sheet of lead foil and snugly fitted to your body's measurements. This baby's ready to save you from anything except the thyroid cancer and systemic fibrosis you'll get from wearing it. The zipper tab is a tiny golden wrench."
 	icon_state = "coatce"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 5, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 30)
 	hoodtype = /obj/item/clothing/head/hood/winter/ce
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/hydro
@@ -307,7 +306,7 @@
 	icon_state = "coatminer"
 	desc = "A heavy jacket made from real animal furs, the miner who made this must have been through the Underdark."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatminer", SLOT_ID_LEFT_HAND = "coatminer")
-	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/cargo/mining/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/miner
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
 	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/tank, /obj/item/radio, /obj/item/pickaxe, /obj/item/storage/bag/ore)
@@ -354,7 +353,7 @@
 	name = "ratvarian winter coat"
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
 	icon_state = "coatratvar"
-	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	r_armor_type = /datum/armor/cult/coat
 	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/ratvar
 	var/real = TRUE
@@ -384,7 +383,7 @@
 	name = "narsian winter coat"
 	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
-	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	r_armor_type = /datum/armor/cult/coat
 	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/narsie
 	var/real = TRUE
@@ -408,7 +407,7 @@
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red piece of plastic as an inset."
 	icon_state = "coatratvar"
 	item_state = "coatratvar"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0)
+	r_armor_type = /datum/armor/none
 	real = FALSE
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/narsie/fake
@@ -416,14 +415,14 @@
 	desc = "A dusty button up winter coat in the tones of oblivion and ash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
 	item_state = "coatnarsie"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0)
+	r_armor_type = /datum/armor/none
 	real = FALSE
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/durathread
 	name = "durathread winter coat"
 	desc = "The one coat to rule them all. Extremely durable while providing the utmost comfort."
 	icon_state = "coatdurathread"
-	armor = list("melee" = 15, "bullet" = 8, "laser" = 25, "energy" = 5, "bomb" = 12, "bio" = 0, "rad" = 0)
+	r_armor_type = /datum/armor/civilian/coat/durathread
 	hoodtype = /obj/item/clothing/head/hood/winter/durathread
 
 //Hazardous Softsuits
@@ -439,7 +438,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/explorer
 	siemens_coefficient = 0.9
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35) // Inferior to sec vests in bullet/laser but better for environmental protection.
+	r_armor_type = /datum/armor/exploration/soft
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/gun,
@@ -465,7 +464,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
-	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 55, bio = 50, rad = 65)
+	r_armor_type = /datum/armor/cargo/mining/soft
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/material/knife,
@@ -490,7 +489,6 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/ronin
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
@@ -504,7 +502,6 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/runner
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)

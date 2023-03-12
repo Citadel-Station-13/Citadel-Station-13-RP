@@ -18,4 +18,10 @@
 
 // he's got that drip
 /datum/armor/cult/coat
-
+	melee = 0.4
+	bullet = 0.45
+	laser = 0.4
+	energy = 0.3
+	bomb = 0.3
+	bio = 0.7
+	rad = 0.4

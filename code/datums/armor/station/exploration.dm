@@ -6,4 +6,5 @@
 	laser = 0.25
 	laser_tier = LASER_TIER_DEFAULT
 	energy = 0.3
-	rad = 0.35
+	bio = 0.5
+	rad = 0.45
