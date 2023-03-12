@@ -597,6 +597,7 @@
 #include "code\datums\armor\antagonist\changeling.dm"
 #include "code\datums\armor\antagonist\cult.dm"
 #include "code\datums\armor\antagonist\technomancer.dm"
+#include "code\datums\armor\species\phoronoid.dm"
 #include "code\datums\armor\station\civilian.dm"
 #include "code\datums\armor\station\engineering.dm"
 #include "code\datums\armor\station\exploration.dm"
