@@ -64,15 +64,6 @@
 	r_armor = fetch_armor_struct(what)
 
 /**
- * sets our armor soak
- *
- * @params
- * * what - list of armor values or a /datum/armor path
- */
-/atom/proc/set_armor_soak(what)
-	r_armor_soak = fetch_armor_struct(what)
-
-/**
  * gets our armor datum or otherwise make sure it exists
  */
 /atom/proc/fetch_armor()
@@ -80,24 +71,16 @@
 	return r_armor || (r_armor = fetch_armor_struct(r_armor_type))
 
 /**
- * gets our armor soak datum or otherwise make sure it exists
- */
-/atom/proc/fetch_armor_soak()
-	RETURN_TYPE(/datum/armor)
-	return r_armor_soak || (r_armor_soak = fetch_armor_struct(r_armor_soak_type))
-
-/**
  * calculates the resulting damage from an attack, taking into account our armor and soak
  *
  * @params
  * * damage - raw damage
- * * damage_type - (optional) raw damage type
- * * penetration - % of armor to ignore
- * * armor_type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * tier - penetration / attack tier
+ * * type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  *
  * @return resulting damage
  */
-/atom/proc/check_armor(damage, damage_type, penetration, armor_type)
+/atom/proc/check_armor(damage, tier, type)
 	SHOULD_BE_PURE(TRUE)
 	#warn impl
 
@@ -107,14 +90,12 @@
  *
  * @params
  * * damage - raw damage
- * * damage_type - (optional) raw damage type
- * * penetration - % of armor to ignore
- * * armor_type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * weapon - (optional) attacking weapon / mob for unarmed, or just a /datum - implementation-defined.
+ * * tier - penetration / attack tier
+ * * type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  *
  * @return resulting damage
  */
-/atom/proc/run_armor(damage, damage_type, penetration, armor_type, datum/weapon)
+/atom/proc/run_armor(damage, tier, type)
 	#warn impl
 
 #warn vv admin armor with /datum/tgui_input_multi

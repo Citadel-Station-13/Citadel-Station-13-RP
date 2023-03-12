@@ -4,8 +4,11 @@
  */
 /datum/armor
 	var/melee = 0
+	var/melee_tier = ARMOR_TIER_DEFAULT
 	var/bullet = 0
+	var/bullet_tier = ARMOR_TIER_DEFAULT
 	var/laser = 0
+	var/laser_tier = ARMOR_TIER_DEFAULT
 	var/energy = 0
 	var/bomb = 0
 	var/bio = 0
@@ -17,19 +20,27 @@
 	return ..()
 
 /datum/armor/proc/from_list(list/values)
-	melee = values[ARMOR_MELEE] || 0
-	bullet = values[ARMOR_BULLET] || 0
-	laser = values[ARMOR_LASER] || 0
-	energy = values[ARMOR_ENERGY] || 0
-	bomb = values[ARMOR_BOMB] || 0
-	bio = values[ARMOR_BIO] || 0
-	rad = values[ARMOR_RAD] || 0
+	#define UNPACK_OR(var, key, default) ##var = isnull(values[key])? default : values[key]
+	UNPACK_OR(melee, ARMOR_MELEE, 0)
+	UNPACK_OR(melee_tier, ARMOR_MELEE_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(bullet, ARMOR_BULLET, 0)
+	UNPACK_OR(bullet_tier, ARMOR_BULLET_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(laser, ARMOR_LASER, 0)
+	UNPACK_OR(laser_tier, ARMOR_LASER_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(energy, AMROR_ENERGY, 0)
+	UNPACK_OR(bomb, AMROR_BOMB, 0)
+	UNPACK_OR(bio, ARMOR_BIO, 0)
+	UNPACK_OR(rad, ARMOR_RAD, 0)
+	#undef UNPACK_OR
 
 /datum/armor/proc/to_list()
 	return list(
 		ARMOR_MELEE = melee,
+		ARMOR_MELEE_TIER = melee_tier,
 		ARMOR_BULLET = bullet,
+		ARMOR_BULLET_TIER = bullet_tier,
 		ARMOR_LASER = laser,
+		ARMOR_LASER_TIER = laser_tier,
 		ARMOR_ENERGY = energy,
 		ARMOR_BOMB = bomb,
 		ARMOR_BIO = bio,
