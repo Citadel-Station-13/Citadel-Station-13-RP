@@ -531,6 +531,6 @@
 	name = "Oriental Coat"
 	path = /obj/item/clothing/suit/triadkiller
 
-/datum/gear/suit/triadkiller
+/datum/gear/suit/furbomberfancy
 	name = "Fancy Fur Bomber Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/fur_bomber
