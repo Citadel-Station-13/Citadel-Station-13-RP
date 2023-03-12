@@ -1,14 +1,4 @@
 
-//////////////////
-/*Ammo magazines*/
-//////////////////
-
-////// 10x24mm
-/datum/category_item/autolathe/arms/usmc/small
-	name = "small m41a magazine"
-	path = /obj/item/ammo_magazine/m10x24mm/small
-	hidden = 1
-
 //! ## .45
 /datum/category_item/autolathe/arms/tommymag
 	name = "Tommy Gun magazine (.45)"
@@ -76,21 +66,6 @@
 /datum/category_item/autolathe/arms/rifle_clip_762_practice
 	name = "ammo clip (7.62mm practice)"
 	path =/obj/item/ammo_magazine/clip/c762/practice
-
-/datum/category_item/autolathe/arms/knuckledusters
-	name = "knuckle dusters"
-	path =/obj/item/clothing/gloves/knuckledusters
-	hidden = 1
-
-/datum/category_item/autolathe/arms/tacknife
-	name = "tactical knife"
-	path =/obj/item/material/knife/tacknife
-	hidden = 1
-
-/datum/category_item/autolathe/arms/flamethrower
-	name = "flamethrower"
-	path =/obj/item/flamethrower/full
-	hidden = 1
 
 //! ## VR FILE MERGE ## !//
 

@@ -131,7 +131,7 @@
 	name = "knuckle dusters"
 	desc = "A pair of brass knuckles. Generally used to enhance the user's punches."
 	icon_state = "knuckledusters"
-	matter = list("brass" = 500)
+	matter = list(MAT_STEEL = 500)
 	attack_verb = list("punched", "beaten", "struck")
 	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 1
