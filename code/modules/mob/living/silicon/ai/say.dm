@@ -36,7 +36,7 @@
 		return
 
 	if(holopad)
-		if(!holopad.relay_inbound_emote(src, hologram, name, message))
+		if(!holopad.relay_inbound_emote(src, name, message, hologram))
 			to_chat(src, "Failed to relay to holopad.")
 			return FALSE
 		to_chat(src, "Holopad action relayed: [SPAN_NAME(name)] [message]")

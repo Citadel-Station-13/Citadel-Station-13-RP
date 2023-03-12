@@ -622,11 +622,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /obj/machinery/holopad/see_emote(mob/living/M, text)
 	. = ..()
-	relay_intercepted_emote(M, text)
+	relay_intercepted_emote(M, M.name, text)
 
 /obj/machinery/holopad/show_message(msg, type, alt, alt_type)
 	. = ..()
-	relay_intercepted_emote("-- INTERCEPTED -- ", msg)
+	relay_intercepted_emote(M, "-- INTERCEPTED -- ", msg)
 
 /obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
 	. = ..()
@@ -636,20 +636,33 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	. = ..()
 	relay_intercepted_say(M, M.name, text, speaking, TRUE)
 
-
-#warn impl all
-
 /**
  * relays a heard say
  */
-/obj/machinery/holopad/proc/relay_intercepted_say(voice_name, msg, datum/language/using_language)
+/obj/machinery/holopad/proc/relay_intercepted_say(atom/movable/speaking, voice_name, msg, datum/language/using_language)
+	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
+	if(istype(speaking, /obj/machinery/holopad))
+		return
+	// relay to whereever we're calling to
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language)
+	// relay to whoever's calling us
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
 
 /**
  * relays a seen emote
  */
-/obj/machinery/holopad/proc/relay_intercepted_emote(visible_name, msg)
-
-#warn impl all
+/obj/machinery/holopad/proc/relay_intercepted_emote(atom/movable/emoting, visible_name, msg)
+	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
+	if(istype(emoting, /obj/machinery/holopad))
+		return
+	// if it's the outgoing caller, send to other side
+	if(emoting == outgoing_call?.remoting)
+		outgoing_call?.hologram.relay_emote(visible_name, msg)
+		return
+	// otherwise, anyone on our side can see it
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		holocall.remoting?.show_message("[SPAN_NAME(visible_name)] [msg]", 1)
 
 /**
  * relays a say sent to us
@@ -681,7 +694,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /**
  * relays an emote sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, obj/effect/overlay/hologram/holo, speaker_name, msg)
+/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo)
 	// attempt autodetect
 	if(!speaker_name)
 		speaker_name = speaker.name
@@ -689,9 +702,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if(isAI(speaker))
 			var/mob/living/silicon/ai/AI = speaker
 			holo = AI.hologram
-	if(!(holo in holograms))
-		return FALSE
-	holo.relay_emote(speaker_name, msg)
+	if(holo)
+		holo.relay_emote(speaker_name, msg)
+	else
+		visible_message("[SPAN_NAME(speaker_name)] [msg]")
 	// relay to relevant AIs too
 	var/list/relevant_ais = ais_projecting - speaker
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
@@ -937,17 +951,26 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		var/datum/hologram/holo = GLOB.holograms[appearancelike]
 		if(!holo)
 			return FALSE
-		appearancelike = holo.get_image()
+		#warn impl
+	else if(istype(appearancelike, /datum/hologram))
+		var/datum/hologram/holo = appearancelike
+		#warn impl
+	else if(ispath(appearancelike, /datum/hologram))
+		var/datum/hologram/holo = appearancelike
+		holo = GLOB.holograms[initial(holo.name)]
+		if(!holo)
+			return FALSE
+		#warn impl
 	else if(isicon(appearancelike))
 		var/image/I = image(icon = appearancelike)
 		if(process_appearance)
-			#warn process
+			I = cheap? make_hologram_appearance(I) : render_hologram_icon(I)
 		appearancelike = I
 	else if(IS_APPEARANCE(appearancelike) || istype(appearancelike, /mutable_appearance))
 		var/image/I = image()
 		I.appearance = appearancelike
 		if(process_appearance)
-			#warn process
+			I = cheap? make_hologram_appearance(I) : render_hologram_icon(I)
 		appearancelike = I
 	else if(isatom(appearancelike))
 		appearancelike = cheap? make_hologram_appearance(appearancelike, 255) : render_hologram_icon(appearancelike, 255)
@@ -961,14 +984,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// emissive-fy
 	cheap_become_emissive()
 
-	#warn impl
-
-/obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message)
+/obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message, datum/language/lang)
 	// TODO: ATOM SAY(), not janky ass atom_say().
-	#warn impl
+	atom_say("[SPAN_NAME(speaker_name)] says, [message]", lang)
 
 /obj/effect/overlay/hologram/proc/relay_emote(speaker_name, message)
-	visible_message("[icon2html(src)] [SPAN_NAME(speaker_name)] [message]")
+	visible_message("[SPAN_NAME(speaker_name)] [message]")
 
 /**
  * holopad holograms - has some state tracking

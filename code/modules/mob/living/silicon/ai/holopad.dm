@@ -27,7 +27,7 @@
 	// process
 	if(istype(holomodel, /datum/hologram))
 		var/datum/hologram/model = holomodel
-		return model.get_image()
+		return model
 	if(isicon(holomodel))
 		return image(icon = holomodel)
 	else if(isimage(holomodel))
@@ -36,7 +36,7 @@
 		return holomodel
 	else
 		var/static/datum/hologram/fallback_hologram = new /datum/hologram/general/holo_female
-		return fallback_hologram.get_image()
+		return fallback_hologram
 
 //I am the icon meister. Bow fefore me.	//>fefore
 /mob/living/silicon/ai/proc/ai_hologram_change()
