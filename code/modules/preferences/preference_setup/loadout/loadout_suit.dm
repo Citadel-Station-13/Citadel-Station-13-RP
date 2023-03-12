@@ -500,9 +500,37 @@
 	path = /obj/item/clothing/suit/storage/hooded/mercy
 
 /datum/gear/suit/cyberpunk
-	name = "Cyber Jacket"
+	name = "Cyber Coat"
 	path = /obj/item/clothing/suit/cyberpunk
 
 /datum/gear/suit/cyberpunk_long
-	name = "Cyber Jacket Long"
-	path = /obj/item/clothing/suit/cyberpunk_long
+	name = "Cyber Coat Long"
+	path = /obj/item/clothing/suit/cyberpunk/long
+
+/datum/gear/suit/bladerunner
+	name = "Gun Walker Coat"
+	path = /obj/item/clothing/suit/bladerunner
+
+/datum/gear/suit/overcoat_fancy
+	name = "Fancy Overcoat Brown"
+	path = /obj/item/clothing/suit/overcoat_fancy
+
+/datum/gear/suit/drive
+	name = "Relatable Jacket"
+	path = /obj/item/clothing/suit/drive
+
+/datum/gear/suit/boxer
+	name = "Boxer Jacket"
+	path = /obj/item/clothing/suit/drive/boxer
+
+/datum/gear/suit/tunnelsnake
+	name = "Maintenance Python Jacket"
+	path = /obj/item/clothing/suit/tunnelsnake
+
+/datum/gear/suit/triadkiller
+	name = "Oriental Coat"
+	path = /obj/item/clothing/suit/triadkiller
+
+/datum/gear/suit/triadkiller
+	name = "Fancy Fur Bomber Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/fur_bomber
