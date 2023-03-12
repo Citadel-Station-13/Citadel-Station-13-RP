@@ -334,7 +334,7 @@
 	probability = 50
 	
 /datum/particle_smasher_recipe/steel_plasteel
-	reagents = list("MAT_PHORON" = 5)
+	reagents = list("MAT_PHORON" = 40) //two sheet of phoron and one sheet of steel
 
 	result = /obj/item/stack/material/plasteel
 	required_material = /obj/item/stack/material/steel
