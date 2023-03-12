@@ -332,6 +332,82 @@
 	required_atmos_temp_min = 1000
 	required_atmos_temp_max = 8000
 	probability = 50
+	
+/datum/particle_smasher_recipe/steel_plasteel
+	reagents = list("MAT_PHORON" = 5)
+
+	result = /obj/item/stack/material/plasteel
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 100
+	required_energy_max = 250
+
+	probability = 50
+	
+/datum/particle_smasher_recipe/platinum_osmium
+	reagents = list("hydrogen" = 25)
+
+	result = /obj/item/stack/material/osmium
+	required_material = /obj/item/stack/material/platinum
+
+	required_energy_min = 500                      
+	required_energy_max = 600
+
+	required_atmos_temp_min = 500
+	required_atmos_temp_max = 1000
+	probability = 20	
+	
+/datum/particle_smasher_recipe/osmium_platinum
+	reagents = list("hydrogen" = 25, "MAT_PHORON" = 5)
+
+	result = /obj/item/stack/material/platinum
+	required_material = /obj/item/stack/material/osmium
+
+	required_energy_min = 200                      
+	required_energy_max = 300
+
+	required_atmos_temp_min = 30
+	required_atmos_temp_max = 60
+	probability = 20	
+
+/datum/particle_smasher_recipe/steel_gold
+	reagents = list("MAT_PHORON" = 5)
+
+	result = /obj/item/stack/material/gold
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 550                      
+	required_energy_max = 600
+
+	required_atmos_temp_min = 1150
+	required_atmos_temp_max = 1250
+	probability = 5	
+
+/datum/particle_smasher_recipe/gold_platinum
+	reagents = list("hydrogen" = 20)
+
+	result = /obj/item/stack/material/platinum
+	required_material = /obj/item/stack/material/gold
+
+	required_energy_min = 570                      
+	required_energy_max = 600
+
+	required_atmos_temp_min = 555
+	required_atmos_temp_max = 777
+	probability = 10
+
+/datum/particle_smasher_recipe/gold_copper
+	reagents = list("hydrogen" = 50)
+
+	result = /obj/item/stack/material/copper
+	required_material = /obj/item/stack/material/gold
+
+	required_energy_min = 300                  
+	required_energy_max = 400
+
+	required_atmos_temp_min = 293
+	required_atmos_temp_max = 298
+	probability = 15
 
 /datum/particle_smasher_recipe/phoron_valhollide
 	reagents = list(MAT_PHORON = 10, "pacid" = 10)
