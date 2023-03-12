@@ -16512,7 +16512,7 @@
 /area/security/hallway)
 "mfG" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "mfM" = (
@@ -21781,7 +21781,7 @@
 /area/medical/sleeper)
 "qjh" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/light{
 	dir = 1
 	},

@@ -14,7 +14,7 @@
 	if(A)
 		contain(A)
 
-/obj/structure/stasis_cage/attack_hand(var/mob/user)
+/obj/structure/stasis_cage/attack_hand(mob/user, list/params)
 	release()
 
 /obj/structure/stasis_cage/attack_robot(var/mob/user)
@@ -69,9 +69,9 @@
 /mob/living/simple_mob/proc/can_be_involuntarily_caged(obj/structure/stasis_cage/over_object, mob/living/user)
 	if(istype(buckled, /obj/effect/energy_net))
 		return TRUE
-	
+
 	var/obj/item/grab/G = user.get_active_held_item()
 	if(istype(G) && G.affecting == src && G.state >= GRAB_AGGRESSIVE)
 		return TRUE
-	
+
 	return FALSE

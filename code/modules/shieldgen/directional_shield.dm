@@ -206,7 +206,10 @@
 	for(var/obj/effect/directional_shield/S in active_shields)
 		S.update_color(new_color)
 
-/obj/item/shield_projector/attack_self(var/mob/living/user)
+/obj/item/shield_projector/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(active)
 		if(always_on)
 			to_chat(user, "<span class='warning'>You can't seem to deactivate \the [src].</span>")
@@ -398,7 +401,10 @@
 	else
 		my_tool.set_ready_state(1)
 
-/obj/item/shield_projector/line/exosuit/attack_self(var/mob/living/user)
+/obj/item/shield_projector/line/exosuit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(active)
 		if(always_on)
 			to_chat(user, "<span class='warning'>You can't seem to deactivate \the [src].</span>")

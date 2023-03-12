@@ -322,7 +322,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return 1
 
 
-/obj/item/pda/ai/attack_self(mob/user as mob)
+/obj/item/pda/ai/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if ((honkamt > 0) && (prob(60)))//For clown virus.
 		honkamt--
 		playsound(loc, 'sound/items/bikehorn.ogg', 30, 1)
@@ -670,7 +673,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	ui.set_auto_update(auto_update)
 
 //NOTE: graphic resources are loaded on client login
-/obj/item/pda/attack_self(mob/user as mob)
+/obj/item/pda/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	user.set_machine(src)
 

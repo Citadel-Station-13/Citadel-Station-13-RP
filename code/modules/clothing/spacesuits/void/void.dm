@@ -224,6 +224,9 @@
 
 // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
 /obj/item/clothing/suit/space/void/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle_helmet()
 
 /obj/item/clothing/suit/space/void/verb/eject_tank()

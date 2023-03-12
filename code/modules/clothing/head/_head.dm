@@ -23,6 +23,9 @@
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/clothing/head/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(brightness_on)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc]")

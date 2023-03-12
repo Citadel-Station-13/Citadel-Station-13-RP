@@ -58,6 +58,9 @@
 	..()
 
 /obj/item/material/gravemarker/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.add_fingerprint(user)
 
 	if(!isturf(user.loc))

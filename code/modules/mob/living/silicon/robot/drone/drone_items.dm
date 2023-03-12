@@ -260,7 +260,10 @@
 
 /obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
 
-/obj/item/gripper/no_use/attack_self(mob/user as mob)
+/obj/item/gripper/no_use/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.
@@ -272,7 +275,10 @@
 		/obj/item/stack/material
 		)
 
-/obj/item/gripper/attack_self(mob/user as mob)
+/obj/item/gripper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(wrapped)
 		return wrapped.attack_self(user)
 	return ..()

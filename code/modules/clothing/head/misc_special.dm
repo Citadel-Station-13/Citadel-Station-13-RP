@@ -31,7 +31,10 @@
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/clothing/head/welding/attack_self()
+/obj/item/clothing/head/welding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 
@@ -127,7 +130,10 @@
 	if (istype(location, /turf))
 		location.hotspot_expose(700, 1)
 
-/obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
+/obj/item/clothing/head/cakehat/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	onfire = !(onfire)
 	if (onfire)
 		force = 3
@@ -151,7 +157,10 @@
 	inv_hide_flags = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
-/obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
+/obj/item/clothing/head/ushanka/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == "ushankadown")
 		src.icon_state = "ushankaup"
 		to_chat(user, "You raise the ear flaps on the ushanka.")

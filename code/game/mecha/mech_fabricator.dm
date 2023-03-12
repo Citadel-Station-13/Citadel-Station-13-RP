@@ -101,9 +101,7 @@
 
 		materials[Name] = 0
 
-	default_apply_parts()
 	files = new /datum/research(src) //Setup the research data holder.
-
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()
 	. = ..()
@@ -475,7 +473,7 @@
 		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
-/obj/machinery/mecha_part_fabricator/attack_hand(var/mob/user)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))

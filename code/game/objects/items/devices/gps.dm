@@ -163,6 +163,8 @@
 
 /obj/item/gps/attack_self(mob/user)
 	. = ..()
+	if(.)
+		return
 	// TODO: ATTACK_SELF REFACTOR
 	ui_interact(user)
 

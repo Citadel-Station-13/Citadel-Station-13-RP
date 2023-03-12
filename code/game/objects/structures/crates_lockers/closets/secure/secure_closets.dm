@@ -118,7 +118,7 @@
 			visible_message("<span class='warning'>\The [src] sparks and breaks open!</span>", "You hear a faint electrical spark.")
 		return 1
 
-/obj/structure/closet/secure_closet/attack_hand(mob/user as mob)
+/obj/structure/closet/secure_closet/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	if(src.locked)
 		src.togglelock(user)

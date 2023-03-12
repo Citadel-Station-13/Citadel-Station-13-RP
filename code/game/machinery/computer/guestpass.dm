@@ -39,7 +39,10 @@
 	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
 	return
 
-/obj/item/card/id/guest/attack_self(mob/living/user as mob)
+/obj/item/card/id/guest/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "guest_invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
@@ -52,7 +55,6 @@
 			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
-	return ..()
 
 /obj/item/card/id/guest/Initialize(mapload)
 	. = ..()
@@ -113,7 +115,7 @@
 /obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

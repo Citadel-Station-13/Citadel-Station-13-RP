@@ -14,7 +14,7 @@
 	var/list/materials = list()		// Materials this machine can accept.
 	var/list/hidden_materials = list()	// Materials this machine will not display, unless it contains them. Must be in the materials list as well.
 
-/obj/machinery/r_n_d/attack_hand(mob/user as mob)
+/obj/machinery/r_n_d/attack_hand(mob/user, list/params)
 	return
 
 /obj/machinery/r_n_d/proc/getMaterialType(var/name)

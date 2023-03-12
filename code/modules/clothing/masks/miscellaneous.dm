@@ -21,8 +21,8 @@
 	say_verbs = list("mumbles", "says")
 
 // Clumsy folks can't take the mask off themselves.
-/obj/item/clothing/mask/muzzle/attack_hand(mob/living/user as mob)
-	if(user.wear_mask == src && !user.IsAdvancedToolUser())
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
+	if(user.item_by_slot(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
 /obj/item/clothing/mask/surgical
@@ -260,6 +260,9 @@
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 
 /obj/item/clothing/mask/paper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	reskin_paper_mask(user)
 
 /obj/item/clothing/mask/paper/proc/reskin_paper_mask(mob/living/L)
