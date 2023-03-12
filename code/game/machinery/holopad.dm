@@ -206,15 +206,28 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if(long_range && pad.long_range)
 			. += pad
 
+/**
+ * our holopad name
+ */
+/obj/machinery/holopad/proc/holocall_name()
+	return holopad_name || "[get_area(src)]"
+
 //? Holocall Helpers
 
 /**
  * generate holocall target ui
  */
 /obj/machinery/holopad/proc/ui_connectivity_data()
-	. = list()
+	var/list/built = list()
 	for(var/obj/machinery/holopad/pad as anything in holocall_query())
-	#warn impl - include refs
+		var/obj/effect/overmap/visitable/sector = get_overmap_sector(pad)
+		built[++built.len] = list(
+			"id" = pad.holopad_uid,
+			"name" = pad.holocall_name(),
+			"category" = null,
+			"sector" = sector.scanner_name || name,
+		)
+	return built
 
 /**
  * update holocall target ui
@@ -727,6 +740,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/datum/action/holocall/swap_view/action_swap_view
 	/// our hologram
 	var/obj/effect/overlay/hologram/holopad/hologram
+	/// last hologram move
+	var/hologram_last_move
 
 /datum/holocall/New(obj/machinery/holopad/sender, obj/machinery/holopad/receiver)
 	action_hang_up = new(src)
@@ -744,24 +759,40 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/proc/initiate_remote_presence(mob/user)
 	if(remoting)
 		cleanup_remote_presence()
+	if(!user.request_movement_intercept(src))
+		user.action_feedback(SPAN_WARNING("You're already controlling something else!"), source)
+		return FALSE
 	if(!user.shunt_perspective(remote_perspective()))
+		user.clear_movement_intercept()
 		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
 		return FALSE
 	remoting = user
+	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
+	hologram = destination.create_hologram(user)
 	return TRUE
 
 /datum/holocall/proc/remote_perspective()
 	return destination.get_perspective()
 
+/datum/holocall/intercept_mob_move(mob/moving, dir)
+	if(hologram_last_move + 1 > world.time)
+		return
+	hologram_last_move = world.time
+	hologram.hologram_step(dir)
+
 /datum/holocall/proc/cleanup_remote_presence()
 	if(!remoting)
 		return
 	remoting.unshunt_perspective()
+	remoting.clear_movement_intercept()
+	UnregisterSignal(remoting, COMISG_MOB_RESET_PERSPECTIVE)
 	action_hang_up.remove(remoting)
 	action_swap_view.remove(remoting)
 	remoting = null
+	if(hologram)
+		qdel(hologram)
 
 /datum/holocall/proc/connect()
 	connected = TRUE
@@ -796,8 +827,20 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		disconnect()
 		return FALSE
 	. = TRUE
-	if(remoting && !destination.video_enabled)
-		cleanup_remote_presence()
+	if(remoting)
+		if(!destination.video_enabled)
+			cleanup_remote_presence()
+		if(!check_remoting())
+			cleanup_remote_presence()
+
+/datum/holocall/proc/check_remoting()
+	if(!IS_CONSCIOUS(remoting))
+		return FALSE
+	if(remoting.lying)
+		return FALSE
+	if(remoting.stunned)
+		return TRUE
+	return TRUE
 
 /datum/holocall/proc/check()
 	// check bidirectional connectivity
@@ -854,7 +897,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	walk(src, NONE)
 	return ..()
 
-/obj/effect/overlay/hologram/proc/move_to_target(turf/T)
+/obj/effect/overlay/hologram/proc/hologram_step(dir)
+	move_to_target(get_step(src, dir))
+
+/obj/effect/overlay/hologram/proc/move_to_target(turf/T, kill_on_failure)
 	if(density)
 		walk_to(T)
 	else
@@ -948,6 +994,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /obj/effect/overlay/hologram/holopad/on_out_of_bounds()
 	forceMove(get_turf(pad))
+
+/obj/effect/overlay/hologram/holopad/move_to_target(turf/T, kill_on_failure)
+	if(!pad.turf_in_range(T))
+		if(kill_on_failure)
+			qdel(src)
+		return FALSE
+	return ..()
 
 /**
  * AI holograms

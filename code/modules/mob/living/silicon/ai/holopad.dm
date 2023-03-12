@@ -8,7 +8,7 @@
 	holopad?.kill_ai_hologram(src)
 
 /mob/living/silicon/ai/proc/move_active_hologram(turf/target)
-	hologram.move_to_target(target)
+	hologram.move_to_target(target, TRUE)
 
 /mob/living/silicon/ai/proc/stop_moving_hologram()
 	hologram.stop_moving()

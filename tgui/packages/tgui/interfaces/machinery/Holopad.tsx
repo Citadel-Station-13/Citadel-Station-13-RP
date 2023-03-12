@@ -23,7 +23,7 @@ interface HolopadContext {
   toggleVisibility: BooleanLike; // if we can toggle call visibility
   callVisibility: BooleanLike; // are we visible in call list?
   sectorCall: BooleanLike; // if we can go across sectors
-  reachablePads: [ReachableHolopad]; // reachable holopads
+  reachablePads: Array<ReachableHolopad>; // reachable holopads
   calling: null | HolopadCalling; // call status
   calldata: null | OutgoingCallContext | IncomingCallsContext; // call data
   videoEnabled: BooleanLike; // if inbound video calling is enabled
@@ -34,20 +34,20 @@ interface HolopadContext {
   autoToggle: BooleanLike; // if we can toggle auto accepting calls
   sectorAnonymous: BooleanLike;
   sectorAnonymousToggle: BooleanLike;
-  ringing: [TargetHolopad]; // incoming rings
+  ringing: Array<TargetHolopad>; // incoming rings
 }
 
 // reachable holopads
 type ReachableHolopad = {
   id: HolopadId;
   name: string;
-  category: string;
-  sector: string;
+  category?: string;
+  sector?: string;
 }
 
 type TargetHolopad = {
   name: string;
-  sector: string;
+  sector?: string;
   id: HolopadId;
 }
 
@@ -233,16 +233,19 @@ const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
   data.reachablePads.map((pad: ReachableHolopad) => {
-    if (padMap[pad.sector] === undefined) {
-      padMap[pad.sector] = {};
+    if (padMap[pad.sector || "Misc"] === undefined) {
+      padMap[pad.sector || "Misc"] = {};
     }
-    if (padMap[pad.sector][pad.category] === undefined) {
-      padMap[pad.sector][pad.category] = new Array<ReachableHolopad>();
+    if (padMap[pad.sector || "Misc"][pad.category || "Misc"] === undefined) {
+      padMap[pad.sector || "Misc"][pad.category || "Misc"] = new Array<ReachableHolopad>();
     }
-    padMap[pad.sector][pad.category].push(pad);
+    padMap[pad.sector || "Misc"][pad.category || "Misc"].push(pad);
   });
   const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
   const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
+  let effectiveCategory = (sector && Object.keys(padMap[sector]).length && (
+    Object.keys(padMap[sector]).length === 1 ? Object.keys(padMap[sector])[0] : category
+  ));
   return (
     <Flex
       direction="column">
@@ -262,19 +265,23 @@ const HolopadDirectory = (props, context) => {
           <Flex
             direction="row">
             <Flex.Item>
-              <Tabs>
-                {sector && Object.keys(padMap[sector]).map((cat) => {
-                  <Tabs.Tab
-                    selected={cat === category}
-                    onClick={() => setCategory(cat)}>
-                    {cat}
-                  </Tabs.Tab>;
-                })}
-              </Tabs>
+              {
+                sector && !!Object.keys(padMap[sector]).length && (
+                  <Tabs>
+                    {Object.keys(padMap[sector]).map((cat) => {
+                      <Tabs.Tab
+                        selected={cat === category}
+                        onClick={() => setCategory(cat)}>
+                        {cat}
+                      </Tabs.Tab>;
+                    })}
+                  </Tabs>
+                )
+              }
             </Flex.Item>
             <Flex.Item grow={1}>
               <LabeledList>
-                {(sector && category && padMap[sector][category].map((pad) => {
+                {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => {
                   <LabeledList.Item
                     label={pad.name}
                     buttons={

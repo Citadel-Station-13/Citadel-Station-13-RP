@@ -43,6 +43,3 @@ GLOBAL_LIST_INIT(holograms, __init_holograms())
 	var/already_colored = FALSE
 	/// do we already have scanlines? if so, don't apply scanline overlays
 	var/already_scanlined = FALSE
-
-/datum/hologram/proc/get_image()
-	#warn impl

@@ -1,5 +1,6 @@
 /**
  * expensive way of rendering a hologram icon
+ * does not color the appearance
  *
  * returns an /icon
  *
@@ -26,6 +27,7 @@
 
 /**
  * cheap way of just rendering an appearance for a hologram
+ * does not color the appearance
  *
  * returns a /mutable_appearance
  *
