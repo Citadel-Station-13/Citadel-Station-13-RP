@@ -1,20 +1,20 @@
 /datum/armor/cult/robes
-	melee = 100
-	bullet = 50
-	laser = 100
-	energy = 400
-	bomb = 33
-	bio = 10
-	rad = 0
+	melee = 0.5
+	bullet = 0.3
+	laser = 0.5
+	energy = 0.6
+	bomb = 0.5
+	bio = 0.2
+	rad = 0.3
 
 /datum/armor/cult/space
-	melee = 200
-	bullet = 100
-	laser = 50
-	energy = 400
-	bomb = 50
-	bio = 75
-	rad = 50
+	melee = 0.65
+	bullet = 0.5
+	laser = 0.4
+	energy = 0.6
+	bomb = 0.5
+	bio = 0.2
+	rad = 0.3
 
 // he's got that drip
 /datum/armor/cult/coat

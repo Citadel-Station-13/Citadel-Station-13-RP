@@ -76,13 +76,13 @@
  * @params
  * * damage - raw damage
  * * tier - penetration / attack tier
- * * type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  *
  * @return resulting damage
  */
-/atom/proc/check_armor(damage, tier, type)
+/atom/proc/check_armor(damage, tier, flag)
 	SHOULD_BE_PURE(TRUE)
-	#warn impl
+	return fetch_armor.resultant_damage(damage, tier, flag)
 
 /**
  * runs armor against an incoming attack
@@ -91,11 +91,11 @@
  * @params
  * * damage - raw damage
  * * tier - penetration / attack tier
- * * type - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  *
  * @return resulting damage
  */
-/atom/proc/run_armor(damage, tier, type)
-	#warn impl
+/atom/proc/run_armor(damage, tier, flag)
+	return fetch_armor.resultant_damage(damage, tier, flag)
 
 #warn vv admin armor with /datum/tgui_input_multi

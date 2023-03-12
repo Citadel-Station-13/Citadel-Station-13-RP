@@ -1,11 +1,11 @@
 /datum/armor/military/jumpsuit
-	melee = 20
+	melee = 0.2
 	melee_tier = MELEE_TIER_DEFAULT
-	bullet = 10
+	bullet = 0.1
 	bullet_tier = BULLET_TIER_DEFAULT
-	laser = 10
+	laser = 0.1
 	laser_tier = LASER_TIER_DEFAULT
-	energy = 20
-	bomb = 20
-	bio = 20
-	acid = 50
+	energy = 0.2
+	bomb = 0.2
+	bio = 0.2
+	acid = 0.5

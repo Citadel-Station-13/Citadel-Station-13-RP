@@ -1,2 +1,2 @@
 /datum/armor/medical/jumpsuit
-	bio = 40
+	bio = 0.4

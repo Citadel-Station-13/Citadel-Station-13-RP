@@ -6,7 +6,7 @@
 //* The system will handle the rest.
 //* Make sure the var names match the names in here!
 
-//? Tiered - used to model attacks - stacked with tier system
+//? Tiered - used to model attacks - stacked with tier system when layered.
 
 #define ARMOR_MELEE "melee"
 #define ARMOR_MELEE_TIER "melee_t"
@@ -15,7 +15,10 @@
 #define ARMOR_LASER "laser"
 #define ARMOR_LASER_TIER "laser_t"
 
-//? Flat - stacked multiplicatively
+//? Flat - stacked multiplicatively when layered
+//? Standalone:
+//? If > 0, decreases damage linearly with 1 being 0x damage.
+//? If < 0, increases damage linearly with -1 being 2x damage, -2 being 3x damage.
 
 #define ARMOR_ENERGY "energy"
 #define ARMOR_BOMB "bomb"
@@ -61,4 +64,4 @@ GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 
 //? --- armor calculations ---
 
-
+#define ARMOR_TIER_CALC(_armor, _tierdiff) ((_tierdiff) > 0? ((_armor) ** (1 / (1 + (_tierdiff)))) : ((_armor) * (1 / (1 - (_tierdiff)))))

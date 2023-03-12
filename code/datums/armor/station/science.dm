@@ -1,3 +1,3 @@
 /datum/armor/science/jumpsuit
-	bomb = 20
-	bio = 30
+	bomb = 0.2
+	bio = 0.3

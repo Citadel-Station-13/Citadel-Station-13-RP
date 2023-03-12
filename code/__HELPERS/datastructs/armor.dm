@@ -47,6 +47,26 @@
 		ARMOR_RAD = rad,
 	)
 
+/datum/armor/proc/resultant_damage(damage, tier, flag)
+	switch(flag)
+		if(ARMOR_MELEE)
+			var/tdiff = melee_tier - tier
+			return tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : tdiff
+		if(ARMOR_BULLET)
+			var/tdiff = bullet_tier - tier
+			return tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : tdiff
+		if(ARMOR_LASER)
+			var/tdiff = laser_tier - tier
+			return tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : tdiff
+		if(ARMOR_ENERGY)
+			return damage * (1 - energy)
+		if(ARMOR_BOMB)
+			return damage * (1 - bomb)
+		if(ARMOR_BIO)
+			return damage * (1 - bio)
+		if(ARMOR_RAD)
+			return damage * (1 - rad)
+
 /**
  * returns a /datum/armor with the given values overwritten
  */
@@ -59,7 +79,7 @@
 /datum/armor/proc/adjusted(list/values)
 	var/list/adjusting = to_list()
 	for(var/key in adjusting)
-		adjusting[key] = adjusting[key] + values[key]
+		adjusting[key] = clamp(adjusting[key] + values[key], 0, 1)
 	return fetch_armor_struct(adjusting)
 
 /**
@@ -69,7 +89,7 @@
 	var/list/boosting = to_list()
 	for(var/key in boosting)
 		if(values[key] > boosting[key])
-			boosting[key] = values[key]
+			boosting[key] = clamp(values[key], 0, 1)
 	return fetch_armor_struct(boosting)
 
 /**

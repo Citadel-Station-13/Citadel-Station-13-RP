@@ -1,2 +1,2 @@
 /datum/armor/engineering/jumpsuit
-	rad = 30
+	rad = 0.3
