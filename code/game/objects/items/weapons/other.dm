@@ -5,7 +5,7 @@
 	desc = "Should anything ever go wrong..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "red_phone"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 2.0
 	throw_speed = 1
 	throw_range = 4
@@ -123,7 +123,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_STEEL = 50)
@@ -204,7 +204,7 @@
 		)
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 3
+	damage_force = 3
 	var/on = 0
 
 /obj/item/cane/whitecane/collapsible/attack_self(mob/user)
@@ -221,7 +221,7 @@
 		icon_state = "whitecane1out"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
 		w_class = ITEMSIZE_NORMAL
-		force = 5
+		damage_force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
 		user.visible_message(
@@ -232,7 +232,7 @@
 		icon_state = "whitecane1in"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 		w_class = ITEMSIZE_SMALL
-		force = 3
+		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
 	if(istype(user,/mob/living/carbon/human))
@@ -291,7 +291,7 @@
 	name = "wet floor sign"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "caution"
-	force = 1.0
+	damage_force = 1.0
 	throw_force = 3.0
 	throw_speed = 1
 	throw_range = 5
@@ -363,7 +363,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 	)
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -388,7 +388,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stick"
 	item_state = "cane"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5

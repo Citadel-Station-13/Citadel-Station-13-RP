@@ -2,7 +2,7 @@
 	name = "boots"
 	desc = "Generic boots."
 	icon_state = "workboots"
-	force = 3
+	damage_force = 3
 	can_hold_knife = 1
 	step_volume_mod = 1.2
 
@@ -181,7 +181,7 @@
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat"
 	icon_state = "swat"
-	force = 5
+	damage_force = 5
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6

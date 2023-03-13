@@ -35,7 +35,7 @@
 
 	//? Combat
 	/// Amount of damage we do on melee.
-	var/force = 0
+	var/damage_force = 0
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier

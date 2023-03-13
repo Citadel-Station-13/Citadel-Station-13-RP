@@ -4,7 +4,7 @@
 	desc = "A non-descript bone. It's so old and worn you can barely tell which part of the body it's from."
 	icon = 'icons/obj/bones.dmi'
 	icon_state = "bone"
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL

@@ -91,7 +91,7 @@
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 		return
 
-	if(prob(I.force * 2))
+	if(prob(I.damage_force * 2))
 		visible_message("<span class='warning'>[user] smashes [src] with [I]!</span>")
 		if(glass)
 			shatter()

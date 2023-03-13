@@ -78,7 +78,7 @@
 			Dismantle(1)
 
 	else
-		hardness -= W.force/100
+		hardness -= W.damage_force/100
 		..()
 		CheckHardness()
 

@@ -105,7 +105,7 @@
 	icon_state = "golden_cup"
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
-	force = 14
+	damage_force = 14
 	throw_force = 10
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null

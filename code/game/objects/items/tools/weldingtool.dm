@@ -11,7 +11,7 @@
 	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -250,7 +250,7 @@
 			else if(T)
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
-			src.force = 15
+			src.damage_force = 15
 			src.damtype = "fire"
 			src.w_class = ITEMSIZE_LARGE
 			src.hitsound = 'sound/items/welder.ogg'
@@ -272,7 +272,7 @@
 		else if(T)
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
-		src.force = 3
+		src.damage_force = 3
 		src.damtype = "brute"
 		src.w_class = initial(src.w_class)
 		src.welding = 0

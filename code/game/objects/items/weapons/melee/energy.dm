@@ -33,7 +33,7 @@
 	else
 		item_state = "[icon_state]_blade"
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -50,7 +50,7 @@
 	item_state = "[icon_state]"
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
@@ -196,9 +196,9 @@
 	active_force = 60
 	active_throwforce = 35
 	active_w_class = ITEMSIZE_HUGE
-	//force = 40
+	//damage_force = 40
 	//throw_force = 25
-	force = 20
+	damage_force = 20
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
@@ -229,7 +229,7 @@
 	desc = "An energised axe."
 	active_force = 35
 	active_throwforce = 20
-	force = 15
+	damage_force = 15
 	use_cell = TRUE
 	hitcost = 120
 
@@ -243,13 +243,13 @@
 /obj/item/melee/energy/sword
 	color
 	name = "energy sword"
-	desc = "May the force be within you."
+	desc = "May the damage_force be within you."
 	icon_state = "esword"
 	item_state = "esword"
 	active_force = 30
 	active_throwforce = 20
 	active_w_class = ITEMSIZE_LARGE
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
@@ -340,7 +340,7 @@
 	desc = "Handle with care."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
-	force = 3
+	damage_force = 3
 	active_force = 60
 	throw_force = 5
 	throw_speed = 3
@@ -404,14 +404,14 @@
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
 		L.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(L), 'sound/effects/EMPulse.ogg', 100, 1)
-		L.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
+		L.adjustFireLoss(damage_force * 3) // 15 Burn, for 20 total.
 		playsound(get_turf(L), 'sound/weapons/blade1.ogg', 100, 1)
 
 		// Make lesser robots really mad at us.
 		if(L.mob_class & MOB_CLASS_SYNTHETIC)
 			if(L.has_AI())
 				L.taunt(user)
-			L.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
+			L.adjustFireLoss(damage_force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"
@@ -458,7 +458,7 @@
 	desc = "Make sure you bought batteries."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
-	force = 3
+	damage_force = 3
 	active_force = 50
 	throw_force = 5
 	throw_speed = 3
@@ -489,7 +489,7 @@
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
 	item_state = "blade"
-	force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
+	damage_force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
 	armor_penetration = 100
 	sharp = 1
 	edge = 1
@@ -583,7 +583,7 @@
 	armor_penetration = 75
 	sharp = 1
 	edge = 1
-	force = 5
+	damage_force = 5
 	throw_force = 10
 	throw_speed = 7
 	throw_range = 11
@@ -626,7 +626,7 @@
 	icon_state = "hfmachete0"
 	sharp = TRUE
 	edge = TRUE
-	force = 20 // You can be crueler than that, Jack.
+	damage_force = 20 // You can be crueler than that, Jack.
 	throw_force = 40
 	throw_speed = 8
 	throw_range = 8
@@ -659,7 +659,7 @@
 		else
 			active = !active
 	if(active)
-		force = 40
+		damage_force = 40
 		throw_force = 20
 		throw_speed = 3
 		// sharpness = 1.7
@@ -670,7 +670,7 @@
 		w_class = WEIGHT_CLASS_BULKY
 		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	else
-		force = initial(force)
+		damage_force = initial(damage_force)
 		throw_force = initial(throw_force)
 		throw_speed = initial(throw_speed)
 		// sharpness = initial(sharpness)

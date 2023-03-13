@@ -352,7 +352,7 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
-			hit(W.force)
+			hit(W.damage_force)
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()

@@ -147,9 +147,9 @@
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.damage_force
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.damage_force * 0.1
 	healthcheck()
 	..()
 	return

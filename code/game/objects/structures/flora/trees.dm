@@ -53,7 +53,7 @@
 
 	visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W]!</span>")
 
-	var/damage_to_do = W.force
+	var/damage_to_do = W.damage_force
 	if(!W.sharp && !W.edge)
 		damage_to_do = round(damage_to_do / 4)
 	if(damage_to_do > 0)

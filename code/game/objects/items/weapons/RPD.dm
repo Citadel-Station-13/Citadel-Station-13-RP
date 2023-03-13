@@ -18,7 +18,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 	item_flags = ITEM_NOBLUDGEON
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5

@@ -10,7 +10,7 @@
 	item_state = "crowbar"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_CROWBAR
-	force = 6
+	damage_force = 6
 	throw_force = 7
 	pry = 1
 	item_state = "crowbar"
@@ -79,7 +79,7 @@
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbars in industrial synthetics."
 	tool_sound = 'sound/items/jaws_pry.ogg'
-	force = 10
+	damage_force = 10
 	tool_speed = 0.5
 
 /obj/item/tool/crowbar/RIGset
@@ -96,7 +96,7 @@
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	tool_sound = 'sound/items/jaws_pry.ogg'
-	force = 15
+	damage_force = 15
 	tool_speed = 0.25
 	var/obj/item/tool/wirecutters/power/counterpart = null
 
@@ -133,7 +133,7 @@
 	icon = 'icons/obj/tools_vr.dmi'
 	icon_state = "prybar"
 	slot_flags = SLOT_BELT
-	force = 4
+	damage_force = 4
 	throw_force = 5
 	pry = 1
 	item_state = "crowbar"

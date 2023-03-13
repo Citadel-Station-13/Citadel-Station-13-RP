@@ -62,7 +62,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "riot"
 	slot_flags = SLOT_BACK
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
@@ -183,7 +183,7 @@
 	icon_state = "makeshift_shield"
 	item_state = "metal"
 	slot_flags = null
-	force = 10
+	damage_force = 10
 	throw_force = 7
 
 /obj/item/shield/riot/tower
@@ -192,7 +192,7 @@
 	armor = list("melee" = 95, "bullet" = 95, "laser" = 75, "energy" = 60, "bomb" = 90, "bio" = 90, "rad" = 0, "fire" = 90, "acid" = 10) //Armor for the item, dosnt transfer to user
 	item_state = "metal"
 	icon_state = "metal"
-	force = 16
+	damage_force = 16
 	slowdown = 2
 	throw_force = 15 //Massive piece of metal
 	w_class = ITEMSIZE_HUGE
@@ -294,7 +294,7 @@
 	item_state = "eshield"
 	slot_flags = SLOT_EARS
 	atom_flags = NOCONDUCT
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
@@ -338,7 +338,7 @@
 		H?.take_organ_damage(5)
 	active = !active
 	if (active)
-		force = 10
+		damage_force = 10
 		update_icon()
 		w_class = ITEMSIZE_LARGE
 		slot_flags = null
@@ -346,7 +346,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
 
 	else
-		force = 3
+		damage_force = 3
 		update_icon()
 		w_class = ITEMSIZE_TINY
 		slot_flags = SLOT_EARS
@@ -396,7 +396,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "teleriot0"
 	slot_flags = null
-	force = 3
+	damage_force = 3
 	throw_force = 3
 	throw_speed = 3
 	throw_range = 4
@@ -418,14 +418,14 @@
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 
 	if(active)
-		force = 8
+		damage_force = 8
 		throw_force = 5
 		throw_speed = 2
 		w_class = ITEMSIZE_LARGE
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
-		force = 3
+		damage_force = 3
 		throw_force = 3
 		throw_speed = 3
 		w_class = ITEMSIZE_NORMAL
@@ -453,7 +453,7 @@
 	icon = 'icons/obj/weapons_vr.dmi'
 	icon_state = "wolfgirlshield"
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
@@ -472,7 +472,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
@@ -485,7 +485,7 @@
 	icon_state = "foamriot"
 	slot_flags = SLOT_BACK
 	base_block_chance = 5
-	force = 0
+	damage_force = 0
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6

@@ -83,7 +83,7 @@
 		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
 		puncture()
 	if(W.damtype == BRUTE || W.damtype == BURN)
-		hit(W.force)
+		hit(W.damage_force)
 		..()
 	return
 

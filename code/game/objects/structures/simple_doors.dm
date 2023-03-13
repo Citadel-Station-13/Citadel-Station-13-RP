@@ -133,7 +133,7 @@
 			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
 			Dismantle()
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
-		hardness -= W.force/10
+		hardness -= W.damage_force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
 		if(material == get_material_by_name("resin"))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
@@ -151,7 +151,7 @@
 	return
 
 /obj/structure/simple_door/bullet_act(var/obj/item/projectile/Proj)
-	hardness -= Proj.force/10
+	hardness -= Proj.damage_force/10
 	CheckHardness()
 
 /obj/structure/simple_door/take_damage(var/damage)

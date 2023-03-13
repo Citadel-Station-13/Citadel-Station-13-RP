@@ -136,12 +136,12 @@
 		return
 	onfire = !(onfire)
 	if (onfire)
-		force = 3
+		damage_force = 3
 		damtype = "fire"
 		icon_state = "cake1"
 		START_PROCESSING(SSobj, src)
 	else
-		force = null
+		damage_force = 0
 		damtype = "brute"
 		icon_state = "cake0"
 	return
