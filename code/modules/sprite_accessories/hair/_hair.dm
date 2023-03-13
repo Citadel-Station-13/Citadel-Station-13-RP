@@ -1426,3 +1426,9 @@
 	icon_state = "grudge"
 	hair_flags = HAIR_TIEABLE
 
+/datum/sprite_accessory/hair/zone
+	name = "Zone"
+	id = "hair_zone"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "zone"
