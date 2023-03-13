@@ -45,3 +45,12 @@
 	bomb = 0.3
 	bio = 0.1
 	rad = 0.1
+
+/datum/armor/station/bomb
+	melee = 0.2
+	bullet = 0.1
+	laser = 0.1
+	energy = 0.05
+	bomb = 1.0
+	bio = 0.55
+	rad = 0.35

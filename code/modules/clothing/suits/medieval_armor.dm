@@ -47,7 +47,7 @@
 /obj/item/clothing/suit/armor/medieval
 	name = "plate armour"
 	desc = "A classic suit of plate armour, effective at stopping melee attacks."
-	armor = list(melee = 50, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/medieval
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knight"
 	slowdown = 1
@@ -76,7 +76,7 @@
 /obj/item/clothing/suit/armor/medieval/hauberk
 	name = "hauberk"
 	desc = "A chainmail hauberk worn beneath a dark leather jerkin. Although it grants less protection, it provides greater mobility."
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/medieval/light
 	icon = 'icons/clothing/suit/armor/medieval/bastard.dmi'
 	icon_state = "bastard"
 	slowdown = 0
@@ -84,7 +84,7 @@
 /obj/item/clothing/suit/armor/medieval/paladin
 	name = "elite paladin plate"
 	desc = "This armor is worn from years of use. A fusion of chainmail and plate, it serves to provide supreme mobility without sacrificing much protection."
-	armor = list(melee = 40, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/medieval/mesh
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladin"
 	slowdown = 0

@@ -46,7 +46,7 @@
 	name = "bomb hood"
 	desc = "Use in case of bomb."
 	icon_state = "bombsuit"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 100, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0
@@ -59,7 +59,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	slowdown = 2
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 100, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
