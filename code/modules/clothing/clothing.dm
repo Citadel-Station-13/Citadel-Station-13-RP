@@ -66,6 +66,23 @@
 	if(enables_planes)
 		user.recalculate_vis()
 
+/obj/item/clothing/examine_more(mob/user)
+	. = ..()
+	if(user.using_perspective?.eye && get_dist(user.using_perspective?.eye, src) <= 2)
+		. += "From this distance you can determine its <a href='?src=[REF(src)];examine_armor=1'>armor</a> with a close examination."
+
+/obj/item/clothing/Topic(href, list/hreF_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["examine_armor"])
+		if(!usr.using_perspective || get_dist(usr.using_perspective?.eye, src) > 2)
+			to_chat(usr, SPAN_WARNING("You are too far away!"))
+			return TRUE
+		var/list/assembled = fetch_armor().describe_list()
+		to_chat(usr, SPAN_BLOCKQUOTE("<center>--- Armor: [src] ---</center><hr>[jointext(assembled, "<br>")]"))
+		return TRUE
+
 /obj/item/clothing/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 

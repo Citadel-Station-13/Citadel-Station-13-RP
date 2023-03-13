@@ -76,6 +76,17 @@
 		if(ARMOR_RAD)
 			return damage * (1 - rad)
 
+/datum/armor/proc/describe_list()
+	RETURN_TYPE(/list)
+	. = list()
+	. += "Melee: [round(melee * 100, 0.1)]% [melee_soak] flat @ [melee_tier] hardness"
+	. += "Bullet: [round(bullet * 100, 0.1)]% [bullet_soak] flat @ [bullet_tier] hardness"
+	. += "Laser: [round(laser * 100, 0.1)]% [laser_soak] flat @ [laser_tier] hardness"
+	. += "Energy: [round(energy * 100, 0.1)]%"
+	. += "Bomb: [round(bomb * 100, 0.1)]%"
+	. += "Bio: [round(bio * 100, 0.1)]%"
+	. += "Radiation: [round(rad * 100, 0.1)]%"
+
 /**
  * returns a /datum/armor with the given values overwritten
  */
