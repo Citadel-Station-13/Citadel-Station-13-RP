@@ -303,7 +303,10 @@
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(mob/living/user as mob)
+/obj/item/holo/esword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	if (active)
 		force = 30
@@ -417,7 +420,7 @@
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user as mob)
+/obj/machinery/readybutton/attack_hand(mob/user, list/params)
 
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")

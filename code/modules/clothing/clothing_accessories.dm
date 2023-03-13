@@ -73,7 +73,7 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(var/mob/user)
+/obj/item/clothing/attack_hand(mob/user, list/params)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
 		for(var/obj/item/clothing/accessory/A in accessories)

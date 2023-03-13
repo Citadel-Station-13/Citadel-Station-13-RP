@@ -87,7 +87,7 @@
 
 /datum/role/job/New()
 	. = ..()
-	GLOB.department_accounts = GLOB.department_accounts || departments_managed
+	department_accounts = department_accounts || departments_managed
 
 //? Availability
 

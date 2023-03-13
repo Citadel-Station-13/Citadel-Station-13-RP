@@ -23,6 +23,9 @@
 		slowdown += slowdown_on
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
@@ -77,6 +80,9 @@
 	action_button_name = "Toggle the magclaws"
 
 /obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0

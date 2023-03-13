@@ -81,7 +81,7 @@
 	else
 		return ..()
 
-/obj/structure/bonfire/attack_hand(mob/user)
+/obj/structure/bonfire/attack_hand(mob/user, list/params)
 	if(has_buckled_mobs())
 		return ..()
 
@@ -288,7 +288,7 @@
 	else
 		return ..()
 
-/obj/structure/fireplace/attack_hand(mob/user)
+/obj/structure/fireplace/attack_hand(mob/user, list/params)
 	if(get_fuel_amount())
 		remove_fuel(user)
 

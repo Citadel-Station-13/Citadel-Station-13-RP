@@ -322,6 +322,8 @@
 	set hidden = TRUE
 	set instant = TRUE
 
+	if(length(statpanel_tabs) > 50)
+		return // bail
 	statpanel_tabs |= tab
 
 /client/verb/hook_statpanel_remove_tab(tab as text)

@@ -923,7 +923,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		wires.cut_all()
 		update_icon()
 
-/obj/machinery/power/apc/attack_hand(mob/user)
+/obj/machinery/power/apc/attack_hand(mob/user, list/params)
 //	if (!can_use(user)) This already gets called in interact() and in topic()
 //		return
 	if(!user)

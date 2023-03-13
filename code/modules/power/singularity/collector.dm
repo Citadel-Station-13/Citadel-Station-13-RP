@@ -44,7 +44,7 @@
 	. = ..()
 	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
-/obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
+/obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
 	if(anchored)
 		if(!src.locked)
 			toggle_power()

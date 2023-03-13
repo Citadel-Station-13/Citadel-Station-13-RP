@@ -109,8 +109,7 @@
 
 		for(var/eo in nif.human.bad_external_organs)
 			var/obj/item/organ/external/EO = eo
-			for(var/w in EO.wounds)
-				var/datum/wound/W = w
+			for(var/datum/wound/W as anything in EO.wounds)
 				if(W.damage <= 5)
 					W.heal_damage(0.1)
 					EO.update_damages()
@@ -173,9 +172,10 @@
 				nif.notify("Respirocytes now fully saturated.")
 
 /datum/nifsoft/spare_breath/proc/resp_breath()
-	if(!active) return null
+	if(!active)
+		return null
 	var/datum/gas_mixture/breath = new(BREATH_VOLUME)
-	breath.adjust_gas("oxygen", BREATH_MOLES)
+	breath.adjust_gas(/datum/gas/oxygen, BREATH_MOLES)
 	breath.temperature = T20C
 	return breath
 /*

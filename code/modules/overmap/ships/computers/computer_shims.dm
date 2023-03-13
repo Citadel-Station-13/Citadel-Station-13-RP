@@ -80,7 +80,7 @@
 
 // If you don't call parent in this proc, you must make all appropriate checks yourself.
 // If you do, you must respect the return value.
-/obj/machinery/computer/ship/attack_hand(mob/user)
+/obj/machinery/computer/ship/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(!allowed(user))

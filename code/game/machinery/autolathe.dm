@@ -37,7 +37,6 @@
 	if(!autolathe_recipes)
 		autolathe_recipes = new()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)
@@ -204,7 +203,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/autolathe/attack_hand(mob/user as mob)
+/obj/machinery/autolathe/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

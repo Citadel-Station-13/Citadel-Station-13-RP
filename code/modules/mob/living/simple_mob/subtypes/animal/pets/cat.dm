@@ -189,7 +189,10 @@
 	icon_state = "box"
 	var/cattype = /mob/living/simple_mob/animal/passive/cat
 
-/obj/item/cat_box/attack_self(var/mob/user)
+/obj/item/cat_box/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/turf/catturf = get_turf(src)
 	to_chat(user, "<span class='notice'>You peek into \the [name]-- and a cat jumps out!</span>")
 	new cattype(catturf)
