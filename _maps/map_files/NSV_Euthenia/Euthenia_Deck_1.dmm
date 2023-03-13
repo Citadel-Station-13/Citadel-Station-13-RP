@@ -655,6 +655,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
+"ayS" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/security/lobby)
 "azb" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
@@ -3132,6 +3136,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
+"ciy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "cjB" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
@@ -4628,6 +4639,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
+"dwN" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "dwW" = (
 /obj/structure/railing{
 	dir = 1
@@ -5647,6 +5667,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "enV" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "eof" = (
@@ -6060,6 +6083,9 @@
 	pixel_y = 29
 	},
 /obj/landmark/spawnpoint/job/xenobotanist,
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "eAJ" = (
@@ -7823,6 +7849,9 @@
 	dir = 1
 	},
 /obj/landmark/spawnpoint/job/roboticist,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "fOl" = (
@@ -7855,6 +7884,9 @@
 	dir = 8;
 	pixel_x = -4;
 	pixel_y = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
@@ -9407,6 +9439,9 @@
 /obj/machinery/camera/network/research{
 	dir = 8
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "gXT" = (
@@ -9695,6 +9730,15 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/surgery)
+"hlQ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "hmu" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -10779,6 +10823,7 @@
 /area/security/security_lockerroom)
 "ifl" = (
 /obj/machinery/light,
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "ifB" = (
@@ -10916,6 +10961,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
+"iiE" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "ijW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
@@ -11047,6 +11101,9 @@
 /area/crew_quarters/sleep/Dorm_4)
 "inH" = (
 /obj/machinery/light,
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "inQ" = (
@@ -12991,6 +13048,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/techfloor/hole/right,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "jRG" = (
@@ -13073,6 +13131,15 @@
 /obj/structure/closet/crate/nanotrasen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/deck_one/aft/starboard)
+"jWG" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "jWO" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -14489,7 +14556,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "kSS" = (
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/robotics)
 "kTs" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -15217,6 +15284,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
+"lvJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/robotics)
 "lvM" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -15470,6 +15543,12 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_4)
+"lFm" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/space)
 "lFq" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -18107,6 +18186,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "nKb" = (
@@ -18642,6 +18724,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_one/aft/starboard)
 "oml" = (
@@ -19148,6 +19233,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "oLz" = (
@@ -19172,7 +19260,7 @@
 	req_access = list(29,47);
 	req_one_access = list(47)
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/robotics/mechbay)
 "oLD" = (
 /obj/structure/table/rack/shelf/steel,
@@ -19198,7 +19286,7 @@
 	id = "mechbay";
 	name = "Mech Bay"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/robotics/mechbay)
 "oML" = (
 /obj/machinery/firealarm{
@@ -19416,6 +19504,12 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "oVs" = (
@@ -19433,6 +19527,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/space)
+"oVR" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/xenobiology/xenoflora)
 "oVV" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -21820,6 +21920,9 @@
 	dir = 4
 	},
 /obj/structure/filingcabinet/chestdrawer,
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "rez" = (
@@ -23815,6 +23918,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "sJj" = (
@@ -25085,6 +25194,9 @@
 /obj/machinery/camera/network/research{
 	dir = 4
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "tNF" = (
@@ -25728,6 +25840,12 @@
 /area/maintenance/deck_one/port)
 "ukF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "umz" = (
@@ -26718,6 +26836,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_one/aft/starboard)
 "uUL" = (
@@ -27151,6 +27272,9 @@
 /area/space)
 "vmk" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "vmy" = (
@@ -27672,6 +27796,9 @@
 "vFM" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
+	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_one/aft/starboard)
@@ -28225,6 +28352,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_one/aft/starboard)
 "vYo" = (
@@ -28287,6 +28417,7 @@
 /area/medical/surgery2)
 "waV" = (
 /obj/machinery/camera/network/security,
+/obj/structure/bed/chair,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "wbH" = (
@@ -28452,6 +28583,15 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
+"wid" = (
+/obj/effect/floor_decal/corner/mauve{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/maintenance/deck_one/aft/starboard)
 "wif" = (
 /turf/simulated/floor/reinforced{
 	name = "Holodeck Projector Floor"
@@ -30342,6 +30482,14 @@
 	},
 /turf/simulated/floor/crystal,
 /area/space)
+"xNd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/techfloor/hole,
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research/researchdivision)
 "xNz" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -41223,9 +41371,9 @@ hKx
 hKx
 nwB
 boG
-oih
+hlQ
 oLo
-oih
+iiE
 ukn
 oOK
 boG
@@ -41418,7 +41566,7 @@ hKx
 nwB
 sRX
 sJi
-ukF
+ciy
 ukF
 xcD
 mKY
@@ -42192,7 +42340,7 @@ hKx
 hKx
 hKx
 nwB
-nJF
+dwN
 xgU
 rvm
 rvm
@@ -42580,8 +42728,8 @@ hKx
 hKx
 hKx
 fTm
-nJF
-jQV
+jWG
+xNd
 srO
 rQY
 rQY
@@ -43352,7 +43500,7 @@ gMs
 rkL
 vbU
 jCx
-oRH
+wid
 vFM
 omb
 wKm
@@ -43934,7 +44082,7 @@ dhe
 mPf
 fnl
 jCx
-oRH
+wid
 uUG
 vYd
 aGC
@@ -44524,10 +44672,10 @@ vMh
 toR
 nxk
 dpB
-dpB
-dpB
+lFm
+lFm
 dQq
-kSS
+lvJ
 tNx
 kSS
 xsa
@@ -44695,7 +44843,7 @@ aZH
 aZH
 aZH
 fWj
-iUa
+ayS
 iUa
 myO
 myO
@@ -45083,7 +45231,7 @@ aZH
 aZH
 aZH
 fWj
-iUa
+ayS
 iUa
 nlb
 iUa
@@ -46462,7 +46610,7 @@ mEM
 mEM
 bjs
 eAb
-enV
+oVR
 inH
 aiY
 aRD

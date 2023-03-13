@@ -623,6 +623,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
+"ka" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/starboard)
 "kh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -951,6 +957,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"pO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/starboard)
 "pQ" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/deck_four/forward)
@@ -2275,6 +2290,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"JI" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up/supply,
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/starboard)
 "JJ" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_monitoring)
@@ -2683,6 +2706,15 @@
 "QA" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/hallway)
+"QD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/starboard)
 "QH" = (
 /obj/machinery/libraryscanner,
 /turf/simulated/floor/wood,
@@ -15001,7 +15033,7 @@ Za
 kL
 YE
 YE
-qk
+ka
 qk
 qk
 qk
@@ -15195,7 +15227,7 @@ Za
 kL
 YE
 YE
-qk
+pO
 qk
 qk
 qk
@@ -15388,8 +15420,8 @@ Za
 Za
 Ji
 YE
-qk
-qk
+JI
+QD
 qk
 qk
 qk

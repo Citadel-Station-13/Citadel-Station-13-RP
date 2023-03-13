@@ -19653,6 +19653,7 @@
 /obj/structure/sign/deck2{
 	pixel_y = 32
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/space)
 "oBj" = (
@@ -21474,6 +21475,7 @@
 /obj/structure/cable/green{
 	icon_state = "16-0"
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/aft/starboard)
 "pRJ" = (
@@ -22560,6 +22562,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/space)
 "qQn" = (
@@ -22885,6 +22888,7 @@
 /obj/structure/cable/green{
 	icon_state = "16-0"
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/aft/starboard)
 "qYd" = (
@@ -25063,6 +25067,7 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable/green,
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/forward/starboard)
 "sGG" = (
@@ -26613,6 +26618,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/port)
 "tMI" = (
@@ -29234,6 +29240,7 @@
 /obj/structure/cable/green{
 	icon_state = "16-0"
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "vIs" = (
