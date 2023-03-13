@@ -1,9 +1,9 @@
 /datum/armor/security/jumpsuit
-	melee = 0.2
-	bullet = 0.1
-	laser = 0.1
-	energy = 0.1
-	bomb = 0.1
+	melee = 0.1
+	bullet = 0.05
+	laser = 0.05
+	energy = 0.05
+	bomb = 0.05
 	bio = 0.1
 	rad = 0.1
 
@@ -17,6 +17,7 @@
 	rad = 0.2
 
 /datum/armor/security/space/riot
+
 	melee = 0.7
 	bullet = 0.2
 	laser = 0.3
@@ -63,15 +64,6 @@
 
 /datum/armor/security/high/captain/space
 	melee = 0.65
-
-/datum/armor/security/high/merc
-	melee = 0.6
-	bullet = 0.6
-	laser = 0.6
-	energy = 0.45
-	bomb = 0.4
-	bio = 0.2
-	rad = 0.3
 
 /datum/armor/security/hos
 	melee = 0.55

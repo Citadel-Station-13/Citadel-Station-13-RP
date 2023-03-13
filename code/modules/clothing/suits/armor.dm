@@ -478,7 +478,7 @@
 	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/security/high/merc
+	r_armor_type = /datum/armor/merc/heavy
 	slowdown = 0
 
 /obj/item/clothing/suit/storage/vest/capcarapace
