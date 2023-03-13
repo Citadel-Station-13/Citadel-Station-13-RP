@@ -2737,6 +2737,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Xenoarch Storage"
 	icon_state = "research"
 
+/**Telescience */
 /area/rnd/telescience_lab
 	name = "\improper Telescience Lab"
 	icon_state = "research"
@@ -2749,6 +2750,32 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/rnd/telescience_lab/storage
 	name = "\improper Telescience Storage"
+
+/**Science Secure Storage */
+
+
+
+/area/rnd/secure_storage
+	name = "\improper Secure Science Storage"
+	icon_state = "research"
+
+/area/rnd/secure_storage/upper
+	name = "\improper Secure Science Storage Upper"
+
+/area/rnd/secure_storage/lower
+	name = "\improper Secure Science Storage Lower"
+
+/area/rnd/secure_storage/critical
+	name = "\improper Critical Science Storage"
+
+/area/rnd/secure_storage/critical/vault1
+	name = "\improper Critical Science Storage Vault 1"
+
+/area/rnd/secure_storage/critical/vault2
+	name = "\improper Critical Science Storage Vault 2"
+
+/area/rnd/secure_storage/critical/records
+	name = "\improper Critical Science Storage Records"
 
 // Research Outpost
 /area/rnd/outpost/airlock

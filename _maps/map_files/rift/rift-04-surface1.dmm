@@ -4162,6 +4162,23 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"cZs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/camera/network/research{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "cZB" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor,
@@ -4783,6 +4800,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
+"dmo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/xenobio)
 "dmC" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -5140,6 +5172,23 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
 /area/medical/psych)
+"dyt" = (
+/obj/structure/disposalpipe/down{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "32-1"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/maintenance/research/xenobio)
 "dyB" = (
 /obj/structure/closet/secure_closet/paramedic,
 /obj/item/stack/medical/splint,
@@ -10798,6 +10847,10 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 1
 	},
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "hmr" = (
@@ -16260,6 +16313,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/forensics)
+"kDO" = (
+/obj/machinery/power/apc/direction_bump/north,
+/obj/structure/cable/green{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/xenobio)
 "kDP" = (
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
@@ -18662,13 +18722,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"mfG" = (
-/obj/structure/catwalk,
-/obj/machinery/camera/network/outside{
-	dir = 9
-	},
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "mfX" = (
 /obj/structure/railing{
 	dir = 8
@@ -19500,6 +19553,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
@@ -20803,14 +20859,23 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "noX" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -23396,6 +23461,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "oJs" = (
@@ -25765,6 +25833,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qhZ" = (
@@ -28027,6 +28098,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "rGg" = (
@@ -28809,6 +28883,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/door/airlock/glass_research,
 /obj/machinery/door/firedoor/glass,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "shL" = (
@@ -32099,6 +32174,12 @@
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"ufU" = (
+/obj/machinery/camera/network/research{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "ufV" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/musician/piano,
@@ -35121,6 +35202,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
+"wcq" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/maintenance/research/xenobio)
 "wcC" = (
 /obj/machinery/light{
 	dir = 4
@@ -35403,6 +35488,7 @@
 	},
 /obj/machinery/door/airlock/glass_research,
 /obj/machinery/door/firedoor/glass,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "wkd" = (
@@ -35804,6 +35890,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/delivery)
+"wvy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/maintenance/research/xenobio)
 "wvD" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -44782,7 +44877,7 @@ slF
 amO
 slF
 slF
-sGn
+ujT
 sGn
 ykF
 hnh
@@ -44975,8 +45070,8 @@ qqW
 wGO
 oJo
 hmq
-slF
-sGn
+wcq
+ujT
 sHD
 ykF
 aWt
@@ -45166,11 +45261,11 @@ vGZ
 jOr
 qpj
 qqW
-wGO
+kDO
 noX
-wGO
-slF
-mfG
+wvy
+dyt
+ujT
 lkU
 ykF
 jKk
@@ -45361,7 +45456,7 @@ jOr
 qpj
 qqW
 wGO
-noX
+dmo
 wGO
 kUL
 kUL
@@ -47492,7 +47587,7 @@ vGZ
 ucY
 qqW
 mSy
-iKr
+cZs
 qqW
 lcN
 lcN
@@ -47873,7 +47968,7 @@ nDp
 nDp
 nDp
 rKJ
-kMx
+ufU
 uth
 cjZ
 peC
@@ -50208,7 +50303,7 @@ wes
 pbf
 qqW
 iQC
-iKr
+cZs
 qqW
 sHD
 sHD
@@ -52344,7 +52439,7 @@ paX
 wkd
 gWM
 ocz
-wAv
+cec
 paX
 woJ
 woJ
