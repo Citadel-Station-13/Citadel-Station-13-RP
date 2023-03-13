@@ -26423,6 +26423,15 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
+"ugG" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/camera/network/command{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge/bridge_hallway)
 "uoG" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -26595,6 +26604,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
+	},
+/obj/machinery/camera/network/command{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
@@ -49401,7 +49413,7 @@ aaA
 aAN
 aCh
 auv
-amb
+ugG
 aYh
 aFU
 aeD
