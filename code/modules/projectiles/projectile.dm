@@ -153,6 +153,8 @@
 	var/vacuum_traversal = TRUE //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
 
 	var/temporary_unstoppable_movement = FALSE
+	var/no_attack_log = FALSE
+	var/hitsound
 
 /obj/projectile/proc/Range()
 	range--

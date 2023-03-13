@@ -151,7 +151,7 @@
 	return
 
 /obj/structure/simple_door/bullet_act(var/obj/projectile/Proj)
-	hardness -= Proj.damage_force/10
+	hardness -= Proj.damage/10
 	CheckHardness()
 
 /obj/structure/simple_door/take_damage(var/damage)

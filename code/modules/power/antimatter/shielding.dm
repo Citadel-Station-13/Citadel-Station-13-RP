@@ -101,7 +101,7 @@
 
 /obj/machinery/am_shielding/bullet_act(var/obj/projectile/Proj)
 	if(Proj.damage_flag != "bullet")
-		stability -= Proj.damage_force/2
+		stability -= Proj.damage/2
 	return 0
 
 
