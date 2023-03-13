@@ -5812,8 +5812,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/aft/starboard)
 "eiQ" = (
@@ -8432,15 +8430,17 @@
 /turf/simulated/floor/plating,
 /area/space)
 "giT" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/space)
@@ -10760,6 +10760,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos)
+"ibf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/aft/starboard)
 "ibm" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -11274,6 +11279,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"iut" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/aft/starboard)
 "iuz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -19519,17 +19532,6 @@
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/primary/central_two)
-"oww" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/zpipe/up/supply,
-/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
-/obj/structure/lattice,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/open,
-/area/maintenance/deck_two/aft/starboard)
 "owx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/machinery/camera/network/engine{
@@ -29768,6 +29770,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/forward)
+"vXA" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rnd/robotics)
 "vXP" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "Emergency Bunker"
@@ -30701,13 +30707,14 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "wyg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/airlock/atmos{
 	name = "Science Atmospherics Backup";
 	req_access = list(24)
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/space)
 "wyz" = (
@@ -31017,6 +31024,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
+"wKb" = (
+/obj/machinery/atmospherics/pipe/zpipe/up/supply,
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/aft/starboard)
 "wKl" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -31238,6 +31250,14 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_smes)
+"wTi" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/aft/starboard)
 "wTj" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
@@ -44949,11 +44969,11 @@ pmk
 unu
 mRB
 qHi
-qHi
-pcK
-qHi
-qHi
-tKR
+wKb
+wTi
+ibf
+ibf
+iut
 adB
 pPg
 ekM
@@ -44968,7 +44988,7 @@ dcQ
 ncb
 ncb
 wTj
-nBH
+vXA
 kLI
 kLI
 kLI
@@ -45162,7 +45182,7 @@ exc
 lmU
 nhm
 fNq
-nBH
+vXA
 kLI
 kLI
 kLI
@@ -45356,7 +45376,7 @@ uoI
 lha
 wTj
 kyU
-nBH
+vXA
 kLI
 kLI
 kLI
@@ -45725,7 +45745,7 @@ xRi
 xRi
 xbc
 uEW
-oww
+jPa
 eiG
 wyg
 giT

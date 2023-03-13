@@ -1660,6 +1660,10 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/port)
+"Bh" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "Bx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -1816,6 +1820,9 @@
 "DM" = (
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"DR" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/deck_four/aft/starboard)
 "DS" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
@@ -2130,11 +2137,17 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "HQ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -2483,6 +2496,15 @@
 /obj/item/book/codex/lore/news,
 /turf/simulated/floor/wood,
 /area/library)
+"NN" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "Od" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/starboard)
@@ -2579,6 +2601,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/deck_four/aft/port)
+"Pz" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "PA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2630,6 +2658,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"Qa" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "Qi" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -3141,6 +3175,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/starboard)
+"WJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "WL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -12070,7 +12110,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -12264,7 +12304,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -12458,7 +12498,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -12652,7 +12692,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -12846,7 +12886,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -13040,7 +13080,7 @@ qk
 qk
 qk
 qk
-qk
+YE
 qk
 qk
 qk
@@ -13230,11 +13270,11 @@ YE
 YE
 qk
 qk
+DR
+DR
 qk
 qk
-qk
-qk
-qk
+YE
 qk
 qk
 yK
@@ -13421,11 +13461,11 @@ qk
 qk
 qk
 YE
-qk
-qQ
+YE
+YE
 kw
-kw
-kw
+IJ
+IJ
 kw
 kw
 kw
@@ -13622,7 +13662,7 @@ IJ
 IJ
 HB
 HQ
-IJ
+Qa
 MA
 mb
 kw
@@ -13814,9 +13854,9 @@ qQ
 Et
 IJ
 IJ
-IJ
-HQ
-IJ
+WJ
+NN
+WJ
 MA
 mb
 kw
@@ -14007,7 +14047,7 @@ YE
 qQ
 kw
 IJ
-IJ
+Bh
 kw
 kw
 ko
@@ -14201,7 +14241,7 @@ qk
 qQ
 kw
 bT
-IJ
+Bh
 na
 Yy
 EF
@@ -14210,7 +14250,7 @@ lo
 EF
 yH
 na
-IJ
+Pz
 IJ
 kw
 qk
@@ -14395,7 +14435,7 @@ YE
 qQ
 kw
 IJ
-IJ
+Bh
 na
 Zr
 cw
@@ -14404,7 +14444,7 @@ cw
 FP
 ol
 na
-IJ
+Pz
 IJ
 kw
 qk
@@ -14590,14 +14630,14 @@ qQ
 kw
 IJ
 IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
 IJ
 IJ
 kw
@@ -15565,8 +15605,8 @@ qk
 qk
 uX
 uX
-eC
-eC
+PZ
+PZ
 uX
 uX
 uX

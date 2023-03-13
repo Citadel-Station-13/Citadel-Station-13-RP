@@ -266,6 +266,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "aoW" = (
@@ -363,6 +366,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -1824,6 +1830,9 @@
 	dir = 8
 	},
 /obj/machinery/light,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "bKu" = (
@@ -1917,6 +1926,9 @@
 "bLD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -3436,6 +3448,12 @@
 	},
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
+"dms" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "dmN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4179,6 +4197,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -4944,6 +4965,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -6371,6 +6395,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "fLa" = (
@@ -6515,6 +6542,15 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
+"fSB" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "fSH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7182,6 +7218,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"gzl" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "gzH" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -7745,6 +7787,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "gWu" = (
@@ -8177,6 +8222,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "hqf" = (
@@ -8256,6 +8304,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -11715,6 +11766,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
+"knu" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "knx" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -12004,6 +12061,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -12947,6 +13007,9 @@
 "lpZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "lqh" = (
@@ -14759,6 +14822,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"mTq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "mTw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -14868,6 +14946,9 @@
 "mWS" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -15858,6 +15939,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "nUv" = (
@@ -16219,6 +16303,9 @@
 /obj/structure/sign/deck/third{
 	pixel_x = 32
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "ohy" = (
@@ -16406,6 +16493,21 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/space)
+"opJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "opM" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 8
@@ -16882,6 +16984,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -17450,6 +17555,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
+"pnf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "pns" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -18342,6 +18458,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "qmE" = (
@@ -18605,6 +18722,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "qAb" = (
@@ -18639,6 +18757,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -19393,6 +19514,10 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/surgeryroom1)
+"rmn" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "rmv" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_access = list(47)
@@ -19506,6 +19631,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "rqb" = (
@@ -21153,6 +21279,9 @@
 "sLd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -23513,6 +23642,9 @@
 /turf/simulated/floor,
 /area/chapel/main)
 "uRt" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "uRB" = (
@@ -24249,6 +24381,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "vDj" = (
@@ -24499,6 +24632,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "vQL" = (
@@ -24676,6 +24812,9 @@
 "vWD" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -25431,6 +25570,21 @@
 "wFh" = (
 /turf/simulated/floor/reinforced,
 /area/space)
+"wFj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "wFE" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
@@ -25560,6 +25714,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "wNA" = (
@@ -26121,6 +26276,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "xkD" = (
@@ -26339,6 +26495,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -26667,6 +26826,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
@@ -36597,8 +36759,8 @@ upO
 upO
 upO
 dDD
-xMz
-uRt
+wFj
+rmn
 uwH
 wPh
 wPh
@@ -36791,8 +36953,8 @@ udW
 udW
 udW
 gUW
-xMz
-uRt
+wFj
+rmn
 lPO
 lPO
 lPO
@@ -36985,8 +37147,8 @@ sUg
 sUg
 udW
 gUW
-xMz
-uRt
+wFj
+rmn
 lPO
 sfg
 kht
@@ -37374,7 +37536,7 @@ sUg
 gUW
 gUW
 eIf
-uRt
+rmn
 lPO
 udF
 jmq
@@ -37565,10 +37727,10 @@ sUg
 kuI
 kuI
 kuI
-uRt
+dms
 vWD
-xMz
-uRt
+opJ
+rmn
 lPO
 dVQ
 hRt
@@ -37760,9 +37922,9 @@ kuI
 kuI
 kuI
 ohs
-vWD
-xMz
-uRt
+fSB
+mTq
+rmn
 lPO
 bAX
 hRt
@@ -37956,7 +38118,7 @@ emk
 gUW
 gUW
 vQH
-uRt
+rmn
 lPO
 sZZ
 gVa
@@ -38149,8 +38311,8 @@ uVS
 kuI
 vYz
 qoR
-xMz
-uRt
+wFj
+rmn
 lPO
 blr
 mtk
@@ -38531,12 +38693,12 @@ fEk
 ikJ
 vsF
 xwb
-qmb
-qmb
-qmb
-qmb
-qmb
-qmb
+pnf
+pnf
+pnf
+pnf
+pnf
+pnf
 dUa
 rpR
 oAi
@@ -38725,14 +38887,14 @@ fEk
 yjY
 jVK
 vCD
-uRt
-uRt
-uRt
-uRt
-uRt
-uRt
+knu
+knu
+knu
+knu
+knu
+knu
 mWS
-uRt
+gzl
 lPO
 seV
 vwV
