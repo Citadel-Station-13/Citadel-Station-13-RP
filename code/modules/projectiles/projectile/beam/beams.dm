@@ -5,7 +5,7 @@
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage = 40
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	eyeblur = 4
 	var/frequency = 1
 	hitscan = TRUE
@@ -24,7 +24,7 @@
 	icon_state = "laser"
 	damage = 0
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	eyeblur = 2
 	impact_sounds = null
 
@@ -154,7 +154,7 @@
 	eyeblur = 0
 	no_attack_log = 1
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 
 	combustion = FALSE
 

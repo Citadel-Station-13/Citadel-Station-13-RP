@@ -44,7 +44,7 @@
 
 /obj/projectile/energy/blob/toxic
 	damage_type = TOX
-	check_armour = "bio"
+	damage_flag = ARMOR_BIO
 	my_chems = list("amatoxin")
 
 /obj/projectile/energy/blob/toxic/splattering
@@ -52,7 +52,7 @@
 
 /obj/projectile/energy/blob/acid
 	damage_type = BURN
-	check_armour = "bio"
+	damage_flag = ARMOR_BIO
 	my_chems = list("sacid", "mold")
 
 /obj/projectile/energy/blob/acid/splattering

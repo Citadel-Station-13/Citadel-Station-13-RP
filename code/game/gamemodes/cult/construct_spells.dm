@@ -571,7 +571,7 @@
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 	damage = 15
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	armor_penetration = 60
 	light_range = 2
 	light_power = -2

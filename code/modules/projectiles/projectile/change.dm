@@ -4,7 +4,7 @@
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
 

@@ -49,7 +49,7 @@
 	nodamage = TRUE
 	no_attack_log = TRUE
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"
 
 	combustion = FALSE

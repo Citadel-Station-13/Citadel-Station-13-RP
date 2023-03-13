@@ -308,7 +308,7 @@
 	nodamage = TRUE
 	damage = 0 //We're just here to mark people. This is still a melee weapon.
 	damage_type = BRUTE
-	check_armour = "bomb"
+	damage_flag = ARMOR_BOMB
 	range = 6
 	accuracy = INFINITY	// NO.
 	// log_override = TRUE

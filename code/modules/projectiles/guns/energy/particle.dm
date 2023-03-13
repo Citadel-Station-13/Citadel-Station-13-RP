@@ -175,7 +175,7 @@
 	icon_state = "particle"
 	damage = 40
 	damage_type = BURN
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	embed_chance = 0
 
 /obj/projectile/bullet/particle/heavy

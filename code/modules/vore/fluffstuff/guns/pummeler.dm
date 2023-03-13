@@ -31,7 +31,7 @@
 	icon_state = "sound"
 	damage = 5
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
 	range = 6 //Scary name, but just deletes the projectile after this range

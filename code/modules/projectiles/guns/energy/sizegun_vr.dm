@@ -66,7 +66,7 @@
 	icon_state = "xray"
 	nodamage = 1
 	damage = 0
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	var/set_size = 1 //Let's default to 100%
 
 	muzzle_type = /obj/effect/projectile/muzzle/xray

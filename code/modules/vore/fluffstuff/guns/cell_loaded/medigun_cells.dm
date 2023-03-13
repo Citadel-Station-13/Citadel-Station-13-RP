@@ -11,7 +11,7 @@
 	icon_state = "medbeam"
 	nodamage = 1
 	damage = 0
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"
 
 	combustion = FALSE

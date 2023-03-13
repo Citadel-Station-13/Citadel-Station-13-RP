@@ -92,7 +92,7 @@
 	damage = 35
 	armor_penetration = 35
 	damage_type = BRUTE
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
 	embed_chance = 0
@@ -108,7 +108,7 @@
 	damage = 20
 	armor_penetration = 35
 	damage_type = BRUTE
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
 	embed_chance = 0

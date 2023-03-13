@@ -5,7 +5,7 @@
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_range = 2
 	light_power = 0.5
 	light_color = "#55AAFF"
@@ -53,7 +53,7 @@
 	damage_type = BURN
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
-	check_armour = "energy" // It actually checks heat/cold protection.
+	damage_flag = ARMOR_ENERGY // It actually checks heat/cold protection.
 	var/target_temperature = 50
 	light_range = 2
 	light_power = 0.5
@@ -126,7 +126,7 @@
 	damage = 0
 	damage_type = TOX
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_range = 2
 	light_power = 0.5
 	light_color = "#33CC00"
@@ -173,7 +173,7 @@
 	damage = 0
 	damage_type = TOX
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	var/singleton/plantgene/gene = null
 
 /obj/projectile/energy/florayield
@@ -183,7 +183,7 @@
 	damage = 0
 	damage_type = TOX
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FFFFFF"
@@ -263,7 +263,7 @@
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage = 70
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	light_range = 4
 	light_power = 3
 	light_color = "#3300ff"

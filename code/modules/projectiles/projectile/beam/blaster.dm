@@ -3,7 +3,7 @@
 	icon_state = "laser"
 	damage = 20
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 
 /obj/projectile/beam/blaster/pellet
 	damage = 15

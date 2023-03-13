@@ -206,7 +206,7 @@
 	icon_state = null
 	damage = 30
 	damage_type = BRUTE
-	check_armour = "bomb"
+	damage_flag = ARMOR_BOMB
 	range = 4
 	// log_override = TRUE
 

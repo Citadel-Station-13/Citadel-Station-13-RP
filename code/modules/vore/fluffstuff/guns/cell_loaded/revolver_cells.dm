@@ -45,7 +45,7 @@
 	spread_step = 10
 	embed_chance = 0
 	sharp = 0
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 
 /obj/item/ammo_casing/microbattery/combat/ion
 	name = "\'Hydra\' microbattery - ION"
@@ -65,7 +65,7 @@
 	agony = 5
 	embed_chance = 0
 	sharp = 0
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/stripper/on_hit(var/atom/stripped)
 	if(ishuman(stripped))

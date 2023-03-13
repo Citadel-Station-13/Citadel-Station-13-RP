@@ -4,7 +4,7 @@
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_range = 2
 	light_power = 0.5
 	light_color = "#55AAFF"

@@ -11,7 +11,7 @@
 	damage = 5
 	speed = 2
 	damage_type = BURN
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
 	var/impact_sound = 'sound/effects/uncloak.ogg'

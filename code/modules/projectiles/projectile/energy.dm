@@ -3,7 +3,7 @@
 	icon_state = "spark"
 	damage = 0
 	damage_type = BURN
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	var/flash_strength = 10
 
 //releases a burst of light on impact or after travelling a distance
@@ -106,7 +106,7 @@
 	damage = 5
 	damage_type = TOX
 	agony = 120
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
 
@@ -128,7 +128,7 @@
 	damage = 30
 	damage_type = BURN
 	agony = 10
-	check_armour = "bio"
+	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid
 
 	combustion = FALSE
@@ -139,7 +139,7 @@
 	damage = 5
 	damage_type = BIOACID
 	agony = 80
-	check_armour = "bio"
+	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
 	combustion = FALSE
@@ -150,7 +150,7 @@
 	damage = 20
 	damage_type = BIOACID
 	agony = 20
-	check_armour = "bio"
+	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
 /obj/projectile/energy/phoron
@@ -214,7 +214,7 @@
 	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = BURN
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	light_color = "#0000FF"
 
 	embed_chance = 0
