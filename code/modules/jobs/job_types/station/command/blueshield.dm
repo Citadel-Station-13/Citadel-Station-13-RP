@@ -2,7 +2,7 @@
 	id = JOB_ID_BLUESHIELD
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Blueshield"
-	departments = list(DEPARTMENT_COMMAND,DEPARTMENT_SECURITY)
+	departments = list(DEPARTMENT_COMMAND)
 	department_flag = ENGSEC
 	total_positions = 1
 	spawn_positions = 1
