@@ -31,6 +31,8 @@
 	return dat
 
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
+	if(!istype(src, /mob/living/carbon/human))
+		return
 	spawn(20)
 	if((H.client.prefs.organ_data[O_BRAIN] != null))
 		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
