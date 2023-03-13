@@ -53,7 +53,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "arm_blade"
 	w_class = ITEMSIZE_HUGE
-	force = 5
+	damage_force = 5
 	anchored = 1
 	throw_force = 0 //Just to be on the safe side
 	throw_range = 0
@@ -132,7 +132,7 @@
 	name = "arm blade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "arm_blade"
-	force = 40
+	damage_force = 40
 	armor_penetration = 15
 	sharp = 1
 	edge = 1
@@ -152,7 +152,7 @@
 	name = "hand claw"
 	desc = "A grotesque claw made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "ling_claw"
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -161,7 +161,7 @@
 
 /obj/item/melee/changeling/claw/greater
 	name = "hand greatclaw"
-	force = 20
+	damage_force = 20
 	armor_penetration = 20
 	pry = 1
 	defend_chance = 60

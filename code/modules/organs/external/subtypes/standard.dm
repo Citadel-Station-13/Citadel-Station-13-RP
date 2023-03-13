@@ -88,7 +88,7 @@
 	joint = "left elbow"
 	amputation_point = "left shoulder"
 	can_grasp = TRUE
-	force = 7
+	damage_force = 7
 	throw_force = 10
 
 /obj/item/organ/external/arm/handle_germ_effects()
@@ -129,7 +129,7 @@
 	joint = "left knee"
 	amputation_point = "left hip"
 	can_stand = TRUE
-	force = 10
+	damage_force = 10
 	throw_force = 12
 
 /obj/item/organ/external/leg/handle_germ_effects()
@@ -168,7 +168,7 @@
 	joint = "left ankle"
 	amputation_point = "left ankle"
 	can_stand = TRUE
-	force = 3
+	damage_force = 3
 	throw_force = 6
 
 /obj/item/organ/external/foot/handle_germ_effects()
@@ -209,7 +209,7 @@
 	can_grasp = TRUE
 	organ_rel_size = 10
 	base_miss_chance = 50
-	force = 3
+	damage_force = 3
 	throw_force = 5
 
 /obj/item/organ/external/hand/handle_germ_effects()
@@ -255,7 +255,7 @@
 	cannot_gib = TRUE
 	encased = "skull"
 	base_miss_chance = 40
-	force = 3
+	damage_force = 3
 	throw_force = 7
 
 	var/can_intake_reagents = TRUE
