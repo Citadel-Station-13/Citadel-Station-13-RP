@@ -118,7 +118,7 @@
 
 
 /obj/machinery/power/am_control_unit/bullet_act(var/obj/projectile/Proj)
-	if(Proj.check_armour != "bullet")
+	if(Proj.damage_flag != "bullet")
 		stability -= Proj.damage_force
 	return 0
 

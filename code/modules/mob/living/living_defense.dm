@@ -125,8 +125,8 @@
 		ai_holder.react_to_attack(P.firer)
 
 	//Armor
-	var/soaked = get_armor_soak(def_zone, P.check_armour, P.armor_penetration)
-	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
+	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
+	var/absorb = run_armor_check(def_zone, P.damage_flag, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
 	var/final_damage = P.get_final_damage(src)
@@ -135,7 +135,7 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	if ((proj_sharp || proj_edge) && prob(run_mob_armor(def_zone, P.check_armour)))
+	if ((proj_sharp || proj_edge) && prob(run_mob_armor(def_zone, P.damage_flag)))
 		proj_sharp = 0
 		proj_edge = 0
 

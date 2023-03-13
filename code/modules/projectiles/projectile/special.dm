@@ -279,7 +279,7 @@
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 
-			var/target_armor = H.run_mob_armor(def_zone, check_armour)
+			var/target_armor = H.run_mob_armor(def_zone, damage_flag)
 			var/obj/item/organ/external/target_limb = H.get_organ(def_zone)
 
 			var/armor_special = 0

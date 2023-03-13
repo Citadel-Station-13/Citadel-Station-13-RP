@@ -69,8 +69,8 @@
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = P.damage_type
 		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-		var/armorcheck = run_armor_check(null, P.check_armour)
-		var/soakedcheck = get_armor_soak(null, P.check_armour)
+		var/armorcheck = run_armor_check(null, P.damage_flag)
+		var/soakedcheck = get_armor_soak(null, P.damage_flag)
 		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
 			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")

@@ -445,7 +445,7 @@
 				M.GetDrilled(TRUE)
 	if(modifier)
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
-			var/armor = L.run_armor_check(K.def_zone, K.check_armour)
+			var/armor = L.run_armor_check(K.def_zone, K.damage_flag)
 			// var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
 			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
 			// L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
