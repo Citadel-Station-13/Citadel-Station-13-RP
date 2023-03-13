@@ -125,8 +125,7 @@
 	desc = "A woven armor plate with additional plating, providing good protection against high-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_ballistic"
 	slowdown = 0.6
-	armor = list(melee = 10, bullet = 70, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 0, bullet = 10, laser = 0, energy = 5, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/riot
@@ -134,8 +133,7 @@
 	desc = "A thick armor plate with additional padding, providing good protection against low-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_riot"
 	slowdown = 0.6
-	armor = list(melee = 70, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 10, bullet = 0, laser = 0, energy = 5, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/laserproof
@@ -143,8 +141,7 @@
 	desc = "A durasteel-scaled synthetic armor plate, providing good protection against lasers. Attaches to a plate carrier."
 	icon_state = "armor_ablative"
 	slowdown = 0.6
-	armor = list(melee = 10, bullet = 10, laser = 70, energy = 50, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 0, bullet = 0, laser = 10, energy = 15, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -211,7 +208,7 @@
 	icon_state = "armguards_ablative"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
-	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/armguards/bulletproof
 	name = "bullet resistant arm guards"
@@ -219,7 +216,7 @@
 	icon_state = "armguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/armguards/riot
 	name = "riot arm guards"
@@ -227,7 +224,7 @@
 	icon_state = "armguards_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/riot
 
 //////////////
 //Leg guards
@@ -270,7 +267,7 @@
 	icon_state = "legguards_ablative"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
-	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/legguards/bulletproof
 	name = "bullet resistant leg guards"
@@ -278,7 +275,7 @@
 	icon_state = "legguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/legguards/riot
 	name = "riot leg guards"
@@ -286,7 +283,7 @@
 	icon_state = "legguards_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/riot
 
 //////////////////////////
 //Decorative attachments
