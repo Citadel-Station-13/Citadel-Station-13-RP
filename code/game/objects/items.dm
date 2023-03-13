@@ -146,9 +146,9 @@
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
-			embed_chance = max(5, round(force/w_class))
+			embed_chance = max(5, round(damage_force/w_class))
 		else
-			embed_chance = max(5, round(force/(w_class*3)))
+			embed_chance = max(5, round(damage_force/(w_class*3)))
 	if(hitsound == HITSOUND_UNSET)
 		if(damtype == "fire")
 			hitsound = 'sound/items/welder.ogg'

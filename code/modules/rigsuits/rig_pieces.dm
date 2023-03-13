@@ -14,7 +14,7 @@
 
 	max_pressure_protection = null
 	min_pressure_protection = null
-	force = 3 // if you're headbutting someone with something meant to protect you from space...
+	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -85,7 +85,7 @@
 	heat_protection    = FEET
 
 	icon_base = null
-	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
+	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 	species_restricted = list(
 		SPECIES_AKULA,

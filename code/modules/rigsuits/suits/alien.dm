@@ -29,7 +29,7 @@
 
 /obj/item/clothing/head/helmet/space/rig/breacher
 	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
-	force = 5
+	damage_force = 5
 
 /obj/item/clothing/suit/space/rig/breacher
 	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)

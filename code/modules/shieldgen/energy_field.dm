@@ -49,8 +49,8 @@
 	adjust_strength(-Proj.get_structure_damage() / 10)
 
 /obj/effect/energy_field/attackby(obj/item/W, mob/user)
-	if(W.force)
-		adjust_strength(-W.force / 20)
+	if(W.damage_force)
+		adjust_strength(-W.damage_force / 20)
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed(W))
 	..()

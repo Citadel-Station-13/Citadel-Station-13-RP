@@ -50,7 +50,7 @@
 /obj/item/clothing/gloves/combat/advanced //punchy combat glubbs
 	name = "advanced combat gloves"
 	desc = "These advanced tactical gloves are fire and impact resistant, with the addition of weighted knuckles and durable synthetics."
-	force = 5
+	damage_force = 5
 	punch_force = 5
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 
@@ -104,7 +104,7 @@
 	name = "tactical gloves"
 	icon_state = "work"
 	item_state = "wgloves"
-	force = 5
+	damage_force = 5
 	punch_force = 3
 	siemens_coefficient = 0.75
 	permeability_coefficient = 0.05
@@ -137,7 +137,7 @@
 	siemens_coefficient = 1
 	fingerprint_chance = 100
 	overgloves = 1
-	force = 5
+	damage_force = 5
 	punch_force = 5
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
@@ -285,7 +285,7 @@
 	name = "armwraps of unyielding resolve"
 	desc = "A series of armwraps, soaked in holy water. Makes you pretty keen to smite evil magic users."
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	enhancement = 2 //It is not magic that makes you punch harder, but force of will. Trust me.
+	enhancement = 2 //It is not magic that makes you punch harder, but damage_force of will. Trust me.
 	secondary_trait = TRAIT_ANTIMAGIC
 	var/chaplain_spawnable = TRUE
 

@@ -134,7 +134,7 @@
 	..()
 
 /obj/mecha/combat/phazon/janus/dynattackby(obj/item/W as obj, mob/user as mob)
-	if(prob(max(1, (50 - round((W.force / 2) * damage_absorption["brute"])) * (1 - (W.armor_penetration / 100)))))
+	if(prob(max(1, (50 - round((W.damage_force / 2) * damage_absorption["brute"])) * (1 - (W.armor_penetration / 100)))))
 		src.occupant_message("<span class='alien'>The armor absorbs the incoming attack's force, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming attack's force, negating it!</span>")
 		src.log_append_to_last("Armor absorbed.")

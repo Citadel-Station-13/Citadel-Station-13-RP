@@ -109,7 +109,7 @@
 	icon_state = "microdrill"
 	equip_cooldown = 30
 	energy_drain = 10
-	force = 15
+	damage_force = 15
 	equip_type = EQUIP_MICRO_UTILITY
 	required_type = list(/obj/mecha/micro/utility)
 

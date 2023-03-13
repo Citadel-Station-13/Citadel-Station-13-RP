@@ -43,7 +43,7 @@
 	if(!istype(W)) return
 
 	//Calculate damage
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		src.health -= aforce
 

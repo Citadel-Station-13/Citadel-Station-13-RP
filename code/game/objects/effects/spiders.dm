@@ -25,7 +25,7 @@
 
 	visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W

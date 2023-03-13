@@ -223,7 +223,7 @@ var/list/blobs = list()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force
+	var/damage = W.damage_force
 	switch(W.damtype)
 		if(BURN)
 			if(overmind)

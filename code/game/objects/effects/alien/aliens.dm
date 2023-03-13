@@ -133,7 +133,7 @@
 /obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()
@@ -326,7 +326,7 @@ Alien plants should do something if theres a lot of poison
 	user.setClickCooldown(user.get_attack_speed(W))
 	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -527,7 +527,7 @@ Alien plants should do something if theres a lot of poison
 		Burst()
 		return
 	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
