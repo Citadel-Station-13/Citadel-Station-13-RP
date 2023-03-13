@@ -5,10 +5,13 @@
 /datum/armor
 	var/melee = 0
 	var/melee_tier = ARMOR_TIER_DEFAULT
+	var/melee_soak = 0
 	var/bullet = 0
 	var/bullet_tier = ARMOR_TIER_DEFAULT
+	var/bullet_soak = 0
 	var/laser = 0
 	var/laser_tier = ARMOR_TIER_DEFAULT
+	var/laser_soak = 0
 	var/energy = 0
 	var/bomb = 0
 	var/bio = 0
@@ -23,10 +26,13 @@
 	#define UNPACK_OR(var, key, default) ##var = isnull(values[key])? default : values[key]
 	UNPACK_OR(melee, ARMOR_MELEE, 0)
 	UNPACK_OR(melee_tier, ARMOR_MELEE_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(melee_soak, ARMOR_MELEE_SOAK, 0)
 	UNPACK_OR(bullet, ARMOR_BULLET, 0)
 	UNPACK_OR(bullet_tier, ARMOR_BULLET_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(bullet_soak, ARMOR_BULLET_SOAK, 0)
 	UNPACK_OR(laser, ARMOR_LASER, 0)
 	UNPACK_OR(laser_tier, ARMOR_LASER_TIER, ARMOR_TIER_DEFAULT)
+	UNPACK_OR(laser_soak, ARMOR_LASER_SOAK, 0)
 	UNPACK_OR(energy, ARMOR_ENERGY, 0)
 	UNPACK_OR(bomb, ARMOR_BOMB, 0)
 	UNPACK_OR(bio, ARMOR_BIO, 0)
@@ -37,10 +43,13 @@
 	return list(
 		ARMOR_MELEE = melee,
 		ARMOR_MELEE_TIER = melee_tier,
+		ARMOR_MELEE_SOAK = melee_soak,
 		ARMOR_BULLET = bullet,
 		ARMOR_BULLET_TIER = bullet_tier,
+		ARMOR_BULLET_SOAK = bullet_soak,
 		ARMOR_LASER = laser,
 		ARMOR_LASER_TIER = laser_tier,
+		ARMOR_LASER_SOAK = laser_soak,
 		ARMOR_ENERGY = energy,
 		ARMOR_BOMB = bomb,
 		ARMOR_BIO = bio,
@@ -51,13 +60,13 @@
 	switch(flag)
 		if(ARMOR_MELEE)
 			var/tdiff = melee_tier - tier
-			return tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : tdiff
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : (damage * melee)) - melee_soak)
 		if(ARMOR_BULLET)
 			var/tdiff = bullet_tier - tier
-			return tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : tdiff
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : (damage * bullet)) - bullet_soak)
 		if(ARMOR_LASER)
 			var/tdiff = laser_tier - tier
-			return tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : tdiff
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : (damage * laser)) - laser_soak)
 		if(ARMOR_ENERGY)
 			return damage * (1 - energy)
 		if(ARMOR_BOMB)
