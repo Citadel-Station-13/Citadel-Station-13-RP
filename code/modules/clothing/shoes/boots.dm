@@ -2,6 +2,7 @@
 	name = "boots"
 	desc = "Generic boots."
 	icon_state = "workboots"
+	r_armor_type = /datum/armor/shoes/boots
 	damage_force = 3
 	can_hold_knife = 1
 	step_volume_mod = 1.2
@@ -25,7 +26,6 @@
 	name = "jackboots"
 	desc = "Standard-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "jackboots"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -68,7 +68,6 @@
 	name = "workboots"
 	desc = "A pair of steel-toed work boots designed for use in industrial settings. Safety first."
 	icon_state = "workboots"
-	armor = list(melee = 40, bullet = 0, laser = 0, energy = 15, bomb = 20, bio = 0, rad = 20)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/workboots/toeless
@@ -152,28 +151,25 @@
 	name = "tactical boots"
 	desc = "Tan boots with extra padding and armor."
 	icon_state = "jungle"
-	armor = list(melee = 40, bullet = 30, laser = 40,energy = 25, bomb = 50, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/duty
 	name = "duty boots"
 	desc = "A pair of steel-toed synthleather boots with a mirror shine."
 	icon_state = "duty"
-	armor = list(melee = 40, bullet = 0, laser = 0, energy = 15, bomb = 20, bio = 0, rad = 20)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/jungle
 	name = "jungle boots"
 	desc = "A pair of durable brown boots. Waterproofed for use planetside."
 	icon_state = "jungle"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/swat
 	name = "\improper SWAT shoes"
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -182,7 +178,7 @@
 	desc = "When you REALLY want to turn up the heat"
 	icon_state = "swat"
 	damage_force = 5
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -196,7 +192,7 @@
 	name = "combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time.  It can hold a Strategical knife."
 	icon_state = "jackboots"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/shoes/boots/swat
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/cowboyboots/black
@@ -244,7 +240,6 @@
 	desc = "These boots seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tauboots"
-	armor = list(melee = 10, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -255,7 +250,6 @@
 	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladinboot"
-	armor = list(melee = 20, bullet = 10, laser = 10, energy = 10, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'

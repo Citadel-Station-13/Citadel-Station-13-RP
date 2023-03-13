@@ -36,6 +36,7 @@
 		SLOT_ID_LEFT_HAND = "helmet",
 		SLOT_ID_RIGHT_HAND = "helmet",
 		)
+	r_armor_type = /datum/armor/jumpsuit/utility
 	siemens_coefficient = 0.9
 	body_cover_flags = 0
 
@@ -43,14 +44,12 @@
 	name = "fleet utility cover"
 	desc = "A navy blue utility cover bearing the crest of a OCG Fleet."
 	icon_state = "navyutility"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/head/utility/marine
 	name = "marine utility cover"
 	desc = "A grey utility cover bearing the crest of the OCG Marine Corps."
 	icon_state = "greyutility"
-	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/utility/marine/tan
 	name = "tan utility cover"
