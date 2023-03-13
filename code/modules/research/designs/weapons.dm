@@ -459,6 +459,7 @@
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 	sort_string = "MAVCG"
 
+/*
 
 /datum/design/item/modweapon/AssembleDesignName()
 	..()
@@ -803,6 +804,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/fiveburst
 	sort_string = "MAVFI"
+
+*/
 
 //Firing pins to shoot your guns with
 /datum/design/item/pin/AssembleDesignName()
