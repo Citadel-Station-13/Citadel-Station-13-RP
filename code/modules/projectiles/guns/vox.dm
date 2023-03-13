@@ -60,18 +60,18 @@
 	w_class = ITEMSIZE_HUGE
 	heavy = TRUE
 	charge_cost = 300
-	projectile_type = /obj/item/projectile/beam/stun/darkmatter
+	projectile_type = /obj/projectile/beam/stun/darkmatter
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	accuracy = 30
 
 	firemodes = list(
-		list(mode_name="stunning", burst=1, fire_delay=null, move_delay=null, burst_accuracy=list(30), dispersion=null, projectile_type=/obj/item/projectile/beam/stun/darkmatter, charge_cost = 300),
-		list(mode_name="focused", burst=1, fire_delay=null, move_delay=null, burst_accuracy=list(30), dispersion=null, projectile_type=/obj/item/projectile/beam/darkmatter, charge_cost = 400),
-		list(mode_name="scatter burst", burst=8, fire_delay=null, move_delay=4, burst_accuracy=list(0, 0, 0, 0, 0, 0, 0, 0), dispersion=list(3, 3, 3, 3, 3, 3, 3, 3, 3), projectile_type=/obj/item/projectile/energy/darkmatter, charge_cost = 300),
+		list(mode_name="stunning", burst=1, fire_delay=null, move_delay=null, burst_accuracy=list(30), dispersion=null, projectile_type=/obj/projectile/beam/stun/darkmatter, charge_cost = 300),
+		list(mode_name="focused", burst=1, fire_delay=null, move_delay=null, burst_accuracy=list(30), dispersion=null, projectile_type=/obj/projectile/beam/darkmatter, charge_cost = 400),
+		list(mode_name="scatter burst", burst=8, fire_delay=null, move_delay=4, burst_accuracy=list(0, 0, 0, 0, 0, 0, 0, 0), dispersion=list(3, 3, 3, 3, 3, 3, 3, 3, 3), projectile_type=/obj/projectile/energy/darkmatter, charge_cost = 300),
 		)
 
-/obj/item/projectile/beam/stun/darkmatter
+/obj/projectile/beam/stun/darkmatter
 	name = "dark matter wave"
 	icon_state = "darkt"
 	fire_sound = 'sound/weapons/eLuger.ogg'
@@ -85,7 +85,7 @@
 	tracer_type = /obj/effect/projectile/tracer/darkmatterstun
 	impact_type = /obj/effect/projectile/impact/darkmatterstun
 
-/obj/item/projectile/beam/darkmatter
+/obj/projectile/beam/darkmatter
 	name = "dark matter bolt"
 	icon_state = "darkb"
 	fire_sound = 'sound/weapons/eLuger.ogg'
@@ -101,7 +101,7 @@
 	tracer_type = /obj/effect/projectile/tracer/darkmatter
 	impact_type = /obj/effect/projectile/impact/darkmatter
 
-/obj/item/projectile/energy/darkmatter
+/obj/projectile/energy/darkmatter
 	name = "dark matter pellet"
 	icon_state = "dark_pellet"
 	fire_sound = 'sound/weapons/eLuger.ogg'
@@ -127,31 +127,31 @@
 	battery_lock = 1
 	charge_cost = 400
 
-	projectile_type=/obj/item/projectile/sonic/weak
+	projectile_type=/obj/projectile/sonic/weak
 
 	firemodes = list(
-		list(mode_name="suppressive", projectile_type=/obj/item/projectile/sonic/weak, charge_cost = 200),
-		list(mode_name="normal", projectile_type=/obj/item/projectile/sonic/strong, charge_cost = 600),
+		list(mode_name="suppressive", projectile_type=/obj/projectile/sonic/weak, charge_cost = 200),
+		list(mode_name="normal", projectile_type=/obj/projectile/sonic/strong, charge_cost = 600),
 		)
 
-/obj/item/projectile/sonic
+/obj/projectile/sonic
 	name = "sonic pulse"
 	icon_state = "sound"
 	fire_sound = 'sound/effects/basscannon.ogg'
 	damage = 5
 	armor_penetration = 30
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
 
-/obj/item/projectile/sonic/weak
+/obj/projectile/sonic/weak
 	agony = 50
 
-/obj/item/projectile/sonic/strong
+/obj/projectile/sonic/strong
 	damage = 45
 
-/obj/item/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(ismob(target))
 		var/throwdir = get_dir(firer,target)
 		target.throw_at_old(get_edge_target_turf(target, throwdir), rand(1,6), 10)

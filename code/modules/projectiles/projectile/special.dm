@@ -37,7 +37,7 @@
 	name ="explosive bolt"
 	icon_state= "bolter"
 	damage = 50
-	check_armour = "bullet"
+	damage_flag = ARMOR_BULLET
 	sharp = 1
 	edge = 1
 
@@ -99,7 +99,7 @@
 	damage = 0
 	damage_type = BRUTE
 	nodamage = 1
-	check_armour = "bullet"
+	damage_flag = ARMOR_BULLET
 
 /obj/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
@@ -366,7 +366,7 @@
 /obj/projectile/bullet/organic
 	damage = 10
 	damage_type = BRUTE
-	check_armour = "bullet"
+	damage_flag = ARMOR_BULLET
 	hitsound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
