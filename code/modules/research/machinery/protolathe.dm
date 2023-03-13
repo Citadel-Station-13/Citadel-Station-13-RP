@@ -194,10 +194,10 @@
 
 	if(D.build_path)
 		var/obj/new_item = D.legacy_print(drop_location(), src)
-		if(mat_efficiency != 1) // No matter out of nowhere
-			if(new_item.matter && new_item.matter.len > 0)
-				for(var/i in new_item.matter)
-					new_item.matter[i] = new_item.matter[i] * mat_efficiency
+		if(mat_efficiency != 1) // No materials out of nowhere
+			if(new_item.materials && new_item.materials.len > 0)
+				for(var/i in new_item.materials)
+					new_item.materials[i] = new_item.materials[i] * mat_efficiency
 
 /obj/machinery/r_n_d/protolathe/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0

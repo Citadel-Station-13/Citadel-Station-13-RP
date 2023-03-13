@@ -44,7 +44,7 @@
 	if(!material.conductive)
 		atom_flags |= NOCONDUCT
 
-	matter = material.get_matter()
+	materials = material.get_matter()
 	update_strings()
 
 /obj/item/stack/material/get_material()

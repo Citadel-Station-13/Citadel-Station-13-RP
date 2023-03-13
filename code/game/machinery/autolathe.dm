@@ -148,7 +148,7 @@
 
 	///Resources are being loaded.
 	var/obj/item/eating = O
-	if(!eating.matter)
+	if(!eating.materials)
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
 
@@ -159,7 +159,7 @@
 	///Amount of material constituting one sheet.
 	var/mass_per_sheet = 0
 
-	for(var/material in eating.matter)
+	for(var/material in eating.materials)
 
 		if(isnull(stored_material[material]) || isnull(storage_capacity[material]))
 			continue
@@ -167,7 +167,7 @@
 		if(stored_material[material] >= storage_capacity[material])
 			continue
 
-		var/total_material = eating.matter[material]
+		var/total_material = eating.materials[material]
 
 		//If it's a stack, we eat multiple sheets.
 		if(istype(eating,/obj/item/stack))
@@ -182,7 +182,7 @@
 
 		stored_material[material] += total_material
 		total_used += total_material
-		mass_per_sheet += eating.matter[material]
+		mass_per_sheet += eating.materials[material]
 
 	if(!filltype)
 		to_chat(user, SPAN_NOTICE("\The [src] is full. Please remove material from the autolathe in order to insert more."))

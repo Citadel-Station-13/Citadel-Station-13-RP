@@ -77,4 +77,4 @@
 	name = T_BOARD("timeclock")
 	build_path = /obj/machinery/computer/timeclock
 	board_type = new /datum/frame/frame_types/timeclock_terminal
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)

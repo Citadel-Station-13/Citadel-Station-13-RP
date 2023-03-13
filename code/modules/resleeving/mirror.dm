@@ -101,7 +101,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NOBLUDGEON
 
@@ -116,7 +116,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NOBLUDGEON
 	var/obj/item/implant/mirror/imp = null

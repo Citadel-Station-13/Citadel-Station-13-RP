@@ -230,7 +230,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(D.build_path)
 		var/obj/new_item = D.legacy_print(src, src)
 		new_item.loc = loc
-		if(mat_efficiency != 1) // No matter out of nowhere
-			if(new_item.matter && new_item.matter.len > 0)
-				for(var/i in new_item.matter)
-					new_item.matter[i] = new_item.matter[i] * mat_efficiency
+		if(mat_efficiency != 1) // No materials out of nowhere
+			if(new_item.materials && new_item.materials.len > 0)
+				for(var/i in new_item.materials)
+					new_item.materials[i] = new_item.materials[i] * mat_efficiency

@@ -13,7 +13,7 @@
 	throw_force = 7
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 150)
+	materials = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	tool_sound = 'sound/items/ratchet.ogg'
 	tool_speed = 1
@@ -121,7 +121,7 @@
 	icon_state = "drill_bolt"
 	item_state = "drill"
 	tool_sound = 'sound/items/drill_use.ogg'
-	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
+	materials = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8
 	w_class = ITEMSIZE_SMALL

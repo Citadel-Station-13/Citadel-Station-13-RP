@@ -52,7 +52,7 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "crossbow"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2, TECH_ILLEGAL = 5)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	silenced = 1
 	projectile_type = /obj/item/projectile/energy/bolt
@@ -70,7 +70,7 @@
 	desc = "A weapon favored by mercenary infiltration teams."
 	w_class = ITEMSIZE_LARGE
 	force = 10
-	matter = list(MAT_STEEL = 200000)
+	materials = list(MAT_STEEL = 200000)
 	slot_flags = SLOT_BELT
 	projectile_type = /obj/item/projectile/energy/bolt/large
 

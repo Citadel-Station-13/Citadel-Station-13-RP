@@ -68,7 +68,7 @@
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -264,7 +264,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -276,7 +276,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -489,7 +489,7 @@
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
-	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
+	materials = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',

@@ -106,10 +106,10 @@ Note: Must be placed within 3 tiles of the R&D Console
 		for(var/obj/item/B in replacer.contents)
 			if(B.rped_rating() > lowest_rating)
 				continue
-			if(lathe_to_fill && B.matter) // Sending salvaged materials to the lathe...
-				for(var/t in B.matter)
+			if(lathe_to_fill && B.materials) // Sending salvaged materials to the lathe...
+				for(var/t in B.materials)
 					if(t in lathe_to_fill.materials)
-						lathe_to_fill.materials[t] += B.matter[t] * src.decon_mod
+						lathe_to_fill.materials[t] += B.materials[t] * src.decon_mod
 			qdel(B)
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		rped_recycler_ready = FALSE

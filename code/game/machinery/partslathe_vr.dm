@@ -203,10 +203,10 @@
 	var/obj/new_item = D.build(loc);
 	if(new_item)
 		new_item.loc = loc
-		if(mat_efficiency < 1) //No matter out of nowhere
-			if(new_item.matter && new_item.matter.len > 0)
-				for(var/i in new_item.matter)
-					new_item.matter[i] = CEILING((new_item.matter[i] * mat_efficiency), 1)
+		if(mat_efficiency < 1) //No materials out of nowhere
+			if(new_item.materials && new_item.materials.len > 0)
+				for(var/i in new_item.materials)
+					new_item.materials[i] = CEILING((new_item.materials[i] * mat_efficiency), 1)
 
 /obj/machinery/partslathe/attack_ai(mob/user)
 	src.attack_hand(user)
@@ -342,7 +342,7 @@
 			if(getHighestOriginTechLevel(I) > 1)
 				qdel(I)
 				continue // Ignore high-tech parts
-			if(!I.matter)
+			if(!I.materials)
 				qdel(I)
 				continue // Ignore parts we can't build
 
@@ -350,8 +350,8 @@
 			recipie.name = I.name
 			recipie.path = type
 			recipie.resources = list()
-			for(var/material in I.matter)
-				recipie.resources[material] = I.matter[material]*1.25 // More expensive to produce than they are to recycle.
+			for(var/material in I.materials)
+				recipie.resources[material] = I.materials[material]*1.25 // More expensive to produce than they are to recycle.
 			partslathe_recipies[type] = recipie
 			qdel(I)
 

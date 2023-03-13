@@ -445,7 +445,7 @@ BLIND     // can't see anything
 	icon_state = "welding-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
 	action_button_name = "Flip Welding Goggles"
-	matter = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -858,4 +858,4 @@ BLIND     // can't see anything
 	icon_state = "laconic-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
 	action_button_name = "Adjust Goggles"
-	matter = list("brass" = 1500, MAT_GLASS = 1000)
+	materials = list("brass" = 1500, MAT_GLASS = 1000)

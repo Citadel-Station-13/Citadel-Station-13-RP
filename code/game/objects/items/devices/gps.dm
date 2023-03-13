@@ -25,7 +25,7 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"

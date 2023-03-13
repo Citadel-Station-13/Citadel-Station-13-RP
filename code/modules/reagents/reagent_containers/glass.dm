@@ -147,7 +147,7 @@
 	icon_state = "beaker"
 	base_icon_state = "beaker"
 	item_state = "beaker"
-	matter = list(MAT_GLASS = 500)
+	materials = list(MAT_GLASS = 500)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -201,7 +201,7 @@
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
 	base_icon_state = "beakerlarge"
-	matter = list(MAT_GLASS = 1000)
+	materials = list(MAT_GLASS = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
@@ -212,7 +212,7 @@
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
 	base_icon_state = "beakernoreact"
-	matter = list(MAT_GLASS = 500)
+	materials = list(MAT_GLASS = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
 	atom_flags = OPENCONTAINER | NOREACT
@@ -222,7 +222,7 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
 	base_icon_state = "beakerbluespace"
-	matter = list(MAT_GLASS = 5000)
+	materials = list(MAT_GLASS = 5000)
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
@@ -233,7 +233,7 @@
 	desc = "A small glass vial."
 	icon_state = "vial0"
 	base_icon_state = "vial"
-	matter = list(MAT_GLASS = 250)
+	materials = list(MAT_GLASS = 250)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
@@ -256,7 +256,7 @@
 	icon_state = "bucket"
 	base_icon_state = "bucket"
 	item_state = "bucket"
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
@@ -312,7 +312,7 @@
 	icon_state = "woodbucket"
 	base_icon_state = "woodbucket"
 	item_state = "woodbucket"
-	matter = list(MAT_WOOD = 50)
+	materials = list(MAT_WOOD = 50)
 	w_class = ITEMSIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
@@ -349,7 +349,7 @@
 	icon_state = "sandbucket"
 	base_icon_state = "sandbucket"
 	item_state = "woodbucket"
-	matter = list("sandstone" = 50)
+	materials = list("sandstone" = 50)
 	w_class = ITEMSIZE_LARGE
 	unacidable = 1
 
@@ -374,7 +374,7 @@
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler_bottle"
 	base_icon_state = "water_cooler_bottle"
-	matter = list(MAT_GLASS = 2000)
+	materials = list(MAT_GLASS = 2000)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
@@ -387,7 +387,7 @@
 	icon = 'icons/obj/tank.dmi'
 	icon_state = "portable_fuelcan"
 	base_icon_state = "portable_fuelcan"
-	matter = list("metal" = 2000)
+	materials = list("metal" = 2000)
 	w_class = ITEMSIZE_SMALL
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,50,100)
@@ -415,7 +415,7 @@
 	desc = "A tiny fuel canister used to refuel tools and gear in the field. Useful for single recharges."
 	icon_state = "portable_fuelcan_tiny"
 	base_icon_state = "portable_fuelcan_tiny"
-	matter = list("metal" = 500)
+	materials = list("metal" = 500)
 	w_class = ITEMSIZE_TINY
 	volume = 20
 

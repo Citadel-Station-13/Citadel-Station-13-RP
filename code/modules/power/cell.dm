@@ -24,7 +24,7 @@
 	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
-	matter = list(MAT_STEEL = 700, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.

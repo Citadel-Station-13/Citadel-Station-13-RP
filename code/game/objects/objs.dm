@@ -21,11 +21,16 @@
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
 
+	//? Materials
+	/// static materials in us
+	var/list/materials
+	/// material parts - lazy list, set by lathe or otherwise; lets us track what we're made of. make sure to default it properly
+	/// so lathes can autodetect.
+	var/list/material_parts
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
-	/// Used to store information about the contents of the object.
-	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	var/sharp = 0		// whether this object cuts
@@ -191,16 +196,16 @@
 
 /obj/examine(mob/user)
 	. = ..()
-	if(matter)
-		if(!matter.len)
+	if(materials)
+		if(!materials.len)
 			return
 		var/materials_list
 		var/i = 1
-		while(i<matter.len)
-			materials_list += lowertext(matter[i])
+		while(i<materials.len)
+			materials_list += lowertext(materials[i])
 			materials_list += ", "
 			i++
-		materials_list += matter[i]
+		materials_list += materials[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
 
@@ -218,4 +223,4 @@
 //? materials
 
 /obj/get_materials()
-	. = matter.Copy()
+	. = materials.Copy()

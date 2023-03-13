@@ -3,7 +3,7 @@
 	desc = "A basic capacitor used in the construction of a variety of devices."
 	icon_state = "capacitor"
 	origin_tech = list(TECH_POWER = 1)
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 	var/charge = 0
 	var/max_charge = 1000
@@ -29,7 +29,7 @@
 	icon_state = "capacitor_adv"
 	origin_tech = list(TECH_POWER = 3)
 	rating = 2
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/stock_parts/capacitor/super
 	name = "super capacitor"
@@ -37,7 +37,7 @@
 	icon_state = "capacitor_super"
 	origin_tech = list(TECH_POWER = 5, TECH_MATERIAL = 4)
 	rating = 3
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/stock_parts/capacitor/hyper
 	name = "hyper capacitor"
@@ -45,7 +45,7 @@
 	icon_state = "capacitor_hyper"
 	origin_tech = list(TECH_POWER = 6, TECH_MATERIAL = 5, TECH_BLUESPACE = 1, TECH_ARCANE = 1)
 	rating = 4
-	matter = list(MAT_STEEL = 80, MAT_GLASS = 40)
+	materials = list(MAT_STEEL = 80, MAT_GLASS = 40)
 
 /obj/item/stock_parts/capacitor/omni
 	name = "omni-capacitor"
@@ -53,4 +53,4 @@
 	icon_state = "capacitor_omni"
 	origin_tech = list(TECH_POWER = 7, TECH_MATERIAL = 6, TECH_BLUESPACE = 3, TECH_PRECURSOR  = 1)
 	rating = 5
-	matter = list(MAT_STEEL = 80, MAT_GLASS = 40)
+	materials = list(MAT_STEEL = 80, MAT_GLASS = 40)
