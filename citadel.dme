@@ -597,6 +597,7 @@
 #include "code\datums\armor\core.dm"
 #include "code\datums\armor\military.dm"
 #include "code\datums\armor\rig.dm"
+#include "code\datums\armor\unsorted.dm"
 #include "code\datums\armor\antagonist\changeling.dm"
 #include "code\datums\armor\antagonist\cult.dm"
 #include "code\datums\armor\antagonist\technomancer.dm"

@@ -5,7 +5,7 @@
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -146,6 +146,7 @@
 	name = "\improper Thunderdome helmet"
 	desc = "<i>'Let the battle commence!'</i>"
 	icon_state = "thunderdome"
+	r_armor_type = /datum/armor/thunderdome
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 10, bomb = 25, bio = 10, rad = 0)
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -231,7 +232,7 @@
 	desc = "An in-atmosphere helmet worn by members of the NanoTrasen Emergency Response Team. Protects the head from impacts."
 	icon_state = "erthelmet_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
+	r_armor_type = /datum/armor/security/ert
 	valid_accessory_slots = null
 
 //Commander
@@ -264,7 +265,7 @@
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	armor = list(melee = 60, bullet = 60, laser = 60,energy = 60, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/ert/paracausal
 	valid_accessory_slots = null
 	action_button_name = "Cycle MAW"
 
@@ -298,7 +299,7 @@
 	desc = "This wide brimmed hat projects authority and a vaguely mystical presence. It also grants its bearer the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "witchhunterhat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/ert/paracausal
 	action_button_name = "Enable Wards"
 
 /obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)

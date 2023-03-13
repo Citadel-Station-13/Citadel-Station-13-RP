@@ -279,6 +279,7 @@
 	allowed = list(/obj/item/gun,
 			/obj/item/flashlight,
 			/obj/item/tank,
+
 			/obj/item/suit_cooling_unit,
 			/obj/item/melee,
 			/obj/item/grenade,

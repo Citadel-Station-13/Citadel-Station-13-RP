@@ -8,6 +8,22 @@
 	rad = 0.1
 
 /datum/armor/security/space
+	melee = 0.5
+	bullet = 0.35
+	laser = 0.4
+	energy = 0.25
+	bomb = 0.35
+	bio = 1.0
+	rad = 0.2
+
+/datum/armor/security/space/riot
+	melee = 0.7
+	bullet = 0.2
+	laser = 0.3
+	energy = 0.05
+	bomb = 0.35
+	bio = 1.0
+	rad = 0.3
 
 /datum/armor/security/medium
 	melee = 0.45
@@ -45,6 +61,9 @@
 	bio = 0.2
 	rad = 0.2
 
+/datum/armor/security/high/captain/space
+	melee = 0.65
+
 /datum/armor/security/high/merc
 	melee = 0.6
 	bullet = 0.6
@@ -53,6 +72,24 @@
 	bomb = 0.4
 	bio = 0.2
 	rad = 0.3
+
+/datum/armor/security/hos
+	melee = 0.55
+	bullet = 0.35
+	laser = 0.35
+	energy = 0.3
+	bomb = 0.2
+	bio = 0.2
+	rad = 0.2
+
+/datum/armor/security/hos/space
+	melee = 0.7
+	bullet = 0.4
+	laser = 0.4
+	energy = 0.35
+	bomb = 0.5
+	bio = 1.0
+	rad = 0.5
 
 /datum/armor/security/swat
 	melee = 0.65
@@ -71,6 +108,9 @@
 	bomb = 0.4
 	bio = 0.2
 	rad = 0.2
+
+/datum/armor/security/ert/paracausal
+	energy = 0.6
 
 /datum/armor/security/deathsquad
 	melee = 0.8
@@ -106,12 +146,3 @@
 	bomb = 0.5
 	bio = 0.5
 	rad = 0.5
-
-/datum/armor/security/special/thunderdome
-	melee = 0.5
-	bullet = 0.5
-	laser = 0.5
-	energy = 0.25
-	bomb = 0.3
-	bio = 0.3
-	rad = 0.3

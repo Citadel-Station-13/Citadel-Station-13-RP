@@ -518,7 +518,7 @@
 /obj/item/clothing/suit/armor/tdome
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	r_armor_type = /datum/armor/security/special/thunderdome
+	r_armor_type = /datum/armor/thunderdome
 
 /obj/item/clothing/suit/armor/tdome/red
 	name = "Thunderdome suit (red)"
