@@ -334,7 +334,7 @@
 	probability = 50
 	
 /datum/particle_smasher_recipe/steel_plasteel
-	reagents = list("MAT_PHORON" = 40) //two sheet of phoron and one sheet of steel
+	reagents = list(MAT_PHORON = 40) //two sheet of phoron and one sheet of steel
 
 	result = /obj/item/stack/material/plasteel
 	required_material = /obj/item/stack/material/steel
@@ -358,7 +358,7 @@
 	probability = 20	
 	
 /datum/particle_smasher_recipe/osmium_platinum
-	reagents = list("hydrogen" = 25, "MAT_PHORON" = 5)
+	reagents = list("hydrogen" = 25, MAT_PHORON = 5)
 
 	result = /obj/item/stack/material/platinum
 	required_material = /obj/item/stack/material/osmium
@@ -371,7 +371,7 @@
 	probability = 20	
 
 /datum/particle_smasher_recipe/steel_gold
-	reagents = list("MAT_PHORON" = 5)
+	reagents = list(MAT_PHORON = 5)
 
 	result = /obj/item/stack/material/gold
 	required_material = /obj/item/stack/material/steel
