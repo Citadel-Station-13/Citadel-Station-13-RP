@@ -33,6 +33,18 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//? Combat
+	/// Amount of damage we do on melee.
+	var/force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_DEFAULT
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	// todo: port over damtype
+
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -55,7 +67,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-	var/force = 0
 
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/heat_protection = 0

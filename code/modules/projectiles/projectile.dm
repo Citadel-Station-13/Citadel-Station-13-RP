@@ -110,7 +110,7 @@
 	var/damage_type = BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
-	/// damage mode - reserved for later ues
+	/// damage mode - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
