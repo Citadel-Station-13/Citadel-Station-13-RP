@@ -1,5 +1,5 @@
 /datum/design/science/powercell
-	build_type = PROTOLATHE | MECHFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA
 
 /datum/design/science/powercell/AssembleDesignName()
 	name = "Power Cell Model ([build_name])"
@@ -17,7 +17,7 @@
 
 /datum/design/science/powercell/basic
 	name = "basic"
-	build_type = PROTOLATHE | MECHFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA
 	identifier = "basic_cell"
 	req_tech = list(TECH_POWER = 1)
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
@@ -26,7 +26,7 @@
 
 /datum/design/science/powercell/high
 	name = "high-capacity"
-	build_type = PROTOLATHE | MECHFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA
 	identifier = "high_cell"
 	req_tech = list(TECH_POWER = 2)
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 60)
@@ -51,7 +51,7 @@
 
 /datum/design/science/powercell/device
 	name = "device"
-	build_type = PROTOLATHE
+	lathe_type = LATHE_TYPE_PROTOLATHE
 	identifier = "device"
 	materials = list(MAT_STEEL = 350, MAT_GLASS = 25)
 	build_path = /obj/item/cell/device
@@ -59,7 +59,7 @@
 
 /datum/design/science/powercell/weapon
 	name = "weapon"
-	build_type = PROTOLATHE
+	lathe_type = LATHE_TYPE_PROTOLATHE
 	identifier = "weapon"
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 	build_path = /obj/item/cell/device/weapon

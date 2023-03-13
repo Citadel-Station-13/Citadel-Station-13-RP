@@ -59,8 +59,8 @@
 	var/res_max_amount = 200000
 
 	var/datum/research/files
-	var/valid_buildtype = MECHFAB
-	///A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
+	var/valid_buildtype = LATHE_TYPE_MECHA
+	///A list of categories that valid LATHE_TYPE_MECHA design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 		"Cyborg",
 		"Ripley",
@@ -387,7 +387,7 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(list/part_list)
 	for(var/datum/design/D in files.known_designs)
-		if((D.build_type & valid_buildtype) && (D.id in part_list))
+		if((D.lathe_type & valid_buildtype) && (D.id in part_list))
 			add_to_queue(D)
 
 /**
@@ -496,7 +496,7 @@
 		final_sets += part_set
 
 	for(var/datum/design/D in files.known_designs)
-		if((D.build_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
+		if((D.lathe_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
 			// This is for us.
 			var/list/part = output_part_info(D, TRUE)
 
@@ -572,7 +572,7 @@
 			// Add a specific part to queue
 			var/T = params["id"]
 			for(var/datum/design/D in files.known_designs)
-				if((D.build_type & valid_buildtype) && (D.id == T))
+				if((D.lathe_type & valid_buildtype) && (D.id == T))
 					add_to_queue(D)
 					break
 			return
@@ -606,7 +606,7 @@
 			var/id = params["id"]
 			var/datum/design/D = null
 			for(var/datum/design/D_new in files.known_designs)
-				if((D_new.build_type == valid_buildtype) && (D_new.id == id))
+				if((D_new.lathe_type == valid_buildtype) && (D_new.id == id))
 					D = D_new
 					break
 

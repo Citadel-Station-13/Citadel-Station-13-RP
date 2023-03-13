@@ -1,5 +1,5 @@
 /datum/design/science/mechfab
-	build_type = MECHFAB
+	lathe_type = LATHE_TYPE_MECHA
 	category = list("Other")
 	req_tech = list(TECH_MATERIAL = 1)
 
@@ -421,7 +421,7 @@
 	materials = list(MAT_STEEL = 37500, MAT_OSMIUM = 7500, MAT_PLASTIC = 5000, MAT_SILENCIUM = 20000)
 
 /datum/design/science/mecha
-	build_type = MECHFAB
+	lathe_type = LATHE_TYPE_MECHA
 	category = list("Exosuit Equipment")
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
@@ -873,7 +873,7 @@
 	name = "Synthetic Flash"
 	identifier = "sflash"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
-	build_type = MECHFAB
+	lathe_type = LATHE_TYPE_MECHA
 	materials = list(MAT_STEEL = 562, MAT_GLASS = 562)
 	build_path = /obj/item/flash/synthetic
 	category = list("Misc")
@@ -886,7 +886,7 @@
 	name = "Mecha Actuator"
 	identifier = "mactuator"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
-	build_type = MECHFAB
+	lathe_type = LATHE_TYPE_MECHA
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/mecha_parts/component/actuator
 	category = list("Components")
@@ -980,7 +980,7 @@
  */
 
 /datum/design/science/mechfab/vehicle
-	build_type = MECHFAB
+	lathe_type = LATHE_TYPE_MECHA
 	category = list("Vehicle")
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
 

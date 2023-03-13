@@ -30,6 +30,6 @@
 	name = "Excavation Drill"
 	identifier = "excavationdrill"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
-	build_type = PROTOLATHE
+	lathe_type = LATHE_TYPE_PROTOLATHE
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/pickaxe/excavationdrill

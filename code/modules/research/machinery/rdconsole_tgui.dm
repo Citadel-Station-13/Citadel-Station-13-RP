@@ -170,7 +170,7 @@
 			)
 			if(d_disk.blueprint)
 				data["info"]["d_disk"]["name"] = d_disk.blueprint.name
-				data["info"]["d_disk"]["build_type"] = d_disk.blueprint.build_type
+				data["info"]["d_disk"]["build_type"] = d_disk.blueprint.lathe_type
 				data["info"]["d_disk"]["materials"] = d_disk.blueprint.materials
 
 	return data
@@ -218,7 +218,7 @@
 	// For some reason, this is faster than direct access.
 	var/list/known_designs = files.known_designs
 	for(var/datum/design/D in known_designs)
-		if(!D.build_path || !(D.build_type & PROTOLATHE))
+		if(!D.build_path || !(D.lathe_type & LATHE_TYPE_PROTOLATHE))
 			continue
 		if(search && !findtext(D.name, search))
 			continue
@@ -256,7 +256,7 @@
 	// For some reason, this is faster than direct access.
 	var/list/known_designs = files.known_designs
 	for(var/datum/design/D in known_designs)
-		if(!D.build_path || !(D.build_type & IMPRINTER))
+		if(!D.build_path || !(D.lathe_type & LATHE_TYPE_CIRCUIT))
 			continue
 		if(search && !findtext(D.name, search))
 			continue

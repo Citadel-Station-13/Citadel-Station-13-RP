@@ -3,7 +3,7 @@ CIRCUITS BELOW
 */
 
 /datum/design/circuit
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_GLASS = 2000)
 	reagents = list("sacid" = 20)
@@ -35,7 +35,6 @@ CIRCUITS BELOW
 	identifier = "oriontrail"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/arcade/orion_trail
-	sort_string = "MAAAB"		// Duplicate string, really need to redo this whole thing
 
 /datum/design/circuit/clawmachine
 	name = "grab-a-gift arcade machine"
@@ -53,7 +52,6 @@ CIRCUITS BELOW
 	name = "security camera monitor"
 	identifier = "seccamera"
 	build_path = /obj/item/circuitboard/security
-	sort_string = "DAAAZ"	// Duplicate string, really need to redo this whole thing
 
 /datum/design/circuit/secdata
 	name = "security records console"
@@ -332,14 +330,12 @@ CIRCUITS BELOW
 	name = "supply ordering console"
 	identifier = "ordercomp"
 	build_path = /obj/item/circuitboard/supplycomp
-	sort_string = "KAAAY"	// Duplicate string, really need to redo this whole thing
 
 /datum/design/circuit/supplycomp
 	name = "supply control console"
 	identifier = "supplycomp"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/supplycomp/control
-	sort_string = "KAAAZ"	// Duplicate string, really need to redo this whole thing
 
 /datum/design/circuit/biogenerator
 	name = "biogenerator"

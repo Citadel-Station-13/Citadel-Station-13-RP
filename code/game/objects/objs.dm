@@ -24,9 +24,13 @@
 	//? Materials
 	/// static materials in us
 	var/list/materials
-	/// material parts - lazy list, set by lathe or otherwise; lets us track what we're made of. make sure to default it properly
-	/// so lathes can autodetect.
+	/// material parts - lazy list, set by lathe or otherwise; lets us track what we're made of.
+	/// key = cost in cm3
 	var/list/material_parts
+	/// material parts on spawn
+	/// key = material id
+	/// wiped after spawn - used to call relevant init procs
+	var/list/material_defaults
 
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
@@ -50,6 +54,11 @@
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
+	if(!isnull(material_parts))
+		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+	if(!isnull(material_defaults))
+		material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
+		init_materials()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -224,3 +233,23 @@
 
 /obj/get_materials()
 	. = materials.Copy()
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_materials()
+	if(material_defaults)
+		set_material_parts(material_defaults)
+		for(var/key in material_defaults)
+			var/mat = material_defaults[key]
+			var/amt = material_parts[key]
+			materials[mat] += amt
+		material_defaults = null
+
+/**
+ * sets our material parts to a list by key / value
+ * this does not update [materials], you have to do that manually
+ * this is usually done in init using init_materials
+ */
+/obj/proc/set_material_parts(list/parts)
+	return

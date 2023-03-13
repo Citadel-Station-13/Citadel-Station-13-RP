@@ -35,8 +35,8 @@
 		MAT_MORPHIUM = 0)
 	res_max_amount = 200000
 
-	valid_buildtype = PROSFAB
-	///A list of categories that valid PROSFAB design datums will broadly categorise themselves under.
+	valid_buildtype = LATHE_TYPE_PROSTHETICS
+	///A list of categories that valid LATHE_TYPE_PROSTHETICS design datums will broadly categorise themselves under.
 	part_sets = list(
 					"Cyborg",
 					"Ripley",

@@ -18,7 +18,7 @@
 	desc = "Allows for the construction of circuit boards used to build a core control console for the RUST fusion engine."
 	identifier = "rust_core_control"
 	req_tech = list("programming" = 4, "engineering" = 4)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20)
 	build_path = "/obj/item/circuitboard/rust_core_control"
 
@@ -27,7 +27,7 @@ datum/design/rust_fuel_control
 	desc = "Allows for the construction of circuit boards used to build a fuel injector control console for the RUST fusion engine."
 	identifier = "rust_fuel_control"
 	req_tech = list("programming" = 4, "engineering" = 4)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20)
 	build_path = "/obj/item/circuitboard/rust_fuel_control"
 
@@ -36,7 +36,7 @@ datum/design/rust_fuel_port
 	desc = "Allows for the construction of circuit boards used to build a fuel injection port for the RUST fusion engine."
 	identifier = "rust_fuel_port"
 	req_tech = list("engineering" = 4, "materials" = 5)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_URANIUM = 3000)
 	build_path = "/obj/item/module/rust_fuel_port"
 
@@ -45,7 +45,7 @@ datum/design/rust_fuel_compressor
 	desc = "Allows for the construction of circuit boards used to build a fuel compressor of the RUST fusion engine."
 	identifier = "rust_fuel_compressor"
 	req_tech = list("materials" = 6, "phorontech" = 4)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_PHORON = 3000, MAT_DIAMOND = 1000)
 	build_path = "/obj/item/module/rust_fuel_compressor"
 
@@ -54,7 +54,7 @@ datum/design/rust_core
 	desc = "The circuit board that for a RUST-pattern tokamak fusion core."
 	identifier = "pacman"
 	req_tech = list(bluespace = 3, phorontech = 4, magnets = 5, powerstorage = 6)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_PHORON = 3000, MAT_DIAMOND = 2000)
 	build_path = "/obj/item/circuitboard/rust_core"
 
@@ -63,7 +63,7 @@ datum/design/rust_injector
 	desc = "The circuit board that for a RUST-pattern particle accelerator."
 	identifier = "pacman"
 	req_tech = list(powerstorage = 3, engineering = 4, phorontech = 4, materials = 6)
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_PHORON = 3000, MAT_URANIUM = 2000)
 	build_path = "/obj/item/circuitboard/rust_core"
 */

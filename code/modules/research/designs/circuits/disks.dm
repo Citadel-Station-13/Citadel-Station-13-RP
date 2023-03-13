@@ -1,6 +1,6 @@
 
 /datum/design/circuit/disk
-	build_type = IMPRINTER
+	lathe_type = LATHE_TYPE_CIRCUIT
 	req_tech = list(TECH_DATA = 3)
 	materials = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
 	reagents = list("pacid" = 10)

@@ -1,5 +1,5 @@
 /datum/design/science/prosfab
-	build_type = PROSFAB
+	lathe_type = LATHE_TYPE_PROSTHETICS
 	category = list("Misc")
 	req_tech = list(TECH_MATERIAL = 1)
 
@@ -278,7 +278,7 @@
 
 /datum/design/science/prosfab/augment
 	category = list("Augments")
-	build_type = PROSFAB
+	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3750, MAT_GLASS = 1750)
 
@@ -403,7 +403,7 @@
 //////////////////// Cyborg Internals ////////////////////
 /datum/design/science/prosfab/cyborg/component
 	category = list("Cyborg Internals")
-	build_type = PROSFAB
+	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
 
@@ -450,7 +450,7 @@
 //////////////////// Cyborg Modules ////////////////////
 /datum/design/science/prosfab/robot_upgrade
 	category = list("Cyborg Modules")
-	build_type = PROSFAB
+	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
 

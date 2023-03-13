@@ -7,7 +7,7 @@
 	name = "Man-machine interface"
 	identifier = "mmi"
 	req_tech = list(TECH_DATA = 2, TECH_BIO = 3)
-	build_type = PROTOLATHE | PROSFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	build_path = /obj/item/mmi
 	category = list("Misc")
@@ -16,7 +16,7 @@
 	name = "Positronic brain"
 	identifier = "posibrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 6, TECH_BLUESPACE = 2, TECH_DATA = 4)
-	build_type = PROTOLATHE | PROSFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500, MAT_PHORON = 500, MAT_DIAMOND = 100)
 	build_path = /obj/item/mmi/digital/posibrain
 	category = list("Misc")
@@ -25,7 +25,7 @@
 	name = "Robotic intelligence circuit"
 	identifier = "dronebrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 5, TECH_DATA = 4)
-	build_type = PROTOLATHE | PROSFAB
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500)
 	build_path = /obj/item/mmi/digital/robot
 	category = list("Misc")
