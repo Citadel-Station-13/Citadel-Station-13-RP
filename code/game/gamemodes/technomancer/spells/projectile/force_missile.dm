@@ -24,4 +24,4 @@
 	icon_state = "force_missile"
 	damage = 25
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE

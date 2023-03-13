@@ -87,8 +87,8 @@
 
 /obj/item/kinetic_crusher/examine(mob/living/user)
 	. = ..()
-	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
-	. += "<span class='notice'>Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.</span>"
+	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[damage_force + detonation_damage]</b> damage.</span>"
+	. += "<span class='notice'>Does <b>[damage_force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[damage_force + detonation_damage]</b>.</span>"
 /*
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
