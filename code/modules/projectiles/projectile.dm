@@ -146,7 +146,7 @@
 	/// Multiplier for damage if antimagic is on the target
 	var/antimagic_damage_factor = 0
 
-	embed_chance = 0	//Base chance for a projectile to embed
+	var/embed_chance = 0	//Base chance for a projectile to embed
 
 	var/fire_sound = 'sound/weapons/Gunshot_old.ogg' // Can be overriden in gun.dm's fire_sound var. It can also be null but I don't know why you'd ever want to do that. -Ace
 
