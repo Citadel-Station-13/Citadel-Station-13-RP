@@ -410,7 +410,7 @@
 	icon_state = "toolbox-blue"
 	base_icon_state = "toolbox"
 	skin = "blue"
-	force = 3
+	damage_force = 3
 	throw_force = 10
 	throw_speed = 2
 	throw_range = 5

@@ -108,13 +108,13 @@
 			else
 				to_chat(user, "<span class='notice'>Unable to repair while [src] is off.</span>")
 
-	else if(hasvar(W,"force") && hasvar(W,"damtype"))
+	else if(hasvar(W,"damage_force") && hasvar(W,"damtype"))
 		user.setClickCooldown(user.get_attack_speed(W))
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.damage_force * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
+				health -= W.damage_force * brute_dam_coeff
 		..()
 		healthcheck()
 	else

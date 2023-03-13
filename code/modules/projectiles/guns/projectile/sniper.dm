@@ -6,7 +6,7 @@
 	icon_state = "heavysniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "l6closed-empty", SLOT_ID_LEFT_HAND = "l6closed-empty") // placeholder
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
-	force = 10
+	damage_force = 10
 	heavy = TRUE
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
@@ -82,7 +82,7 @@
 	icon_state = "SVD"
 	item_state = "SVD"
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BACK // Needs a sprite.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = "7.62mm"

@@ -6,7 +6,7 @@
 	wielded_item_state = "ionrifle-wielded"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BACK
 	heavy = TRUE
 	projectile_type = /obj/item/projectile/ion
@@ -21,7 +21,7 @@
 	icon_state = "ionpistol"
 	item_state = null
 	w_class = ITEMSIZE_NORMAL
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	heavy = FALSE
 	charge_cost = 480
@@ -305,7 +305,7 @@
 /obj/item/gun/energy/medigun //Adminspawn/ERT etc
 	name = "directed restoration system"
 	desc = "The BL-3 'Phoenix' is an adaptation on the ML-3 'Medbeam' design that channels the power of the beam into a single healing laser. It is highly energy-inefficient, but its medical power cannot be denied."
-	force = 5
+	damage_force = 5
 	icon_state = "medbeam"
 	item_state = "medbeam"
 	icon = 'icons/obj/gun/energy.dmi'
@@ -325,7 +325,7 @@
 	icon_state = "service_grip"
 	item_state = "service_grip"
 	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/silver
@@ -413,7 +413,7 @@
 	icon = 'icons/obj/gun/magic.dmi'
 	icon_state = "staffofchaos"
 	item_state = "staffofchaos"
-	force = 5
+	damage_force = 5
 	charge_meter = 0
 	projectile_type = /obj/item/projectile/beam/emitter
 	fire_delay = 10
@@ -434,7 +434,7 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
@@ -459,5 +459,5 @@
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	one_handed_penalty = 60

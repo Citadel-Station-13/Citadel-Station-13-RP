@@ -81,7 +81,7 @@
 	icon_state = "spellblade"
 	item_state = "spellblade"
 	hitsound = 'sound/weapons/rapierhit.ogg'
-	force = 20
+	damage_force = 20
 	armour_penetration = 75
 	block_chance = 50
 	sharpness = SHARP_EDGED

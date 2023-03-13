@@ -19,7 +19,7 @@
 	if(prob(run_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
-		hit_embed_chance = I.force/(I.w_class*3)
+		hit_embed_chance = I.damage_force/(I.w_class*3)
 
 	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
@@ -96,7 +96,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!W.edge || !W.force || W.damtype != BRUTE)
+	if(!W.edge || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -116,7 +116,7 @@
 
 	var/total_damage = 0
 	for(var/i in 1 to 3)
-		var/damage = min(W.force*1.5, 20)*damage_mod
+		var/damage = min(W.damage_force*1.5, 20)*damage_mod
 		apply_damage(damage, W.damtype, "head", 0, sharp=W.sharp, edge=W.edge)
 		total_damage += damage
 
@@ -144,7 +144,7 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!W.sharp || !W.force || W.damtype != BRUTE)
+	if(!W.sharp || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
@@ -160,7 +160,7 @@
 	return 1
 
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
-	var/damage = W.force
+	var/damage = W.damage_force
 	var/damage_mod = 1
 	if(W.edge)
 		damage = damage * 1.25 //small damage bonus for having sharp and edge

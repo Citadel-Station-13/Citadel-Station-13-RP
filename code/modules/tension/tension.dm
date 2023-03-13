@@ -174,7 +174,7 @@
 
 	else
 		var/weapon_attack_speed = get_attack_speed(I) / (1 SECOND)
-		var/weapon_damage = I.force
+		var/weapon_damage = I.damage_force
 
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.outgoing_melee_damage_percent))

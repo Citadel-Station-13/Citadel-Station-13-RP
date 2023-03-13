@@ -37,7 +37,7 @@
 	item_state = "gsaberoff"
 	maxcharge = 2400
 	charge_amount = 20
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
@@ -65,7 +65,7 @@
 	item_state = "gsaber"
 	active = 1
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -84,7 +84,7 @@
 	item_state = "gsaberoff"
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)

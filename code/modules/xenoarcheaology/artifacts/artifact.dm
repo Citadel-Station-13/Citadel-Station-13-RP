@@ -240,7 +240,7 @@
 			secondary_effect.ToggleActivate(0)
 	else
 		..()
-		if (my_effect.trigger == TRIGGER_FORCE && W.force >= 10)
+		if (my_effect.trigger == TRIGGER_FORCE && W.damage_force >= 10)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)

@@ -135,7 +135,7 @@
 	desc = "The perfect handgun for shooters with a need to hit targets through a wall and behind a fridge in your neighbor's house. Uses .44 rounds."
 	icon_state = "deagle"
 	item_state = "deagle"
-	force = 14.0
+	damage_force = 14.0
 	caliber = ".44"
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE

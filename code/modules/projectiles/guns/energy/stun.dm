@@ -69,7 +69,7 @@
 	name = "energy crossbow"
 	desc = "A weapon favored by mercenary infiltration teams."
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	matter = list(MAT_STEEL = 200000)
 	slot_flags = SLOT_BELT
 	projectile_type = /obj/item/projectile/energy/bolt/large

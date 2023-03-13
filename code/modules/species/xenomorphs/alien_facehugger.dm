@@ -61,7 +61,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	return
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/I, mob/user)
-	if(I.force)
+	if(I.damage_force)
 		user.do_attack_animation(src)
 		Die()
 	return
@@ -343,7 +343,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	return
 
 /mob/living/simple_mob/animal/space/alien/facehugger/attackby(obj/item/I, mob/user)
-	if(I.force)
+	if(I.damage_force)
 		user.do_attack_animation(src)
 		Die()
 	return

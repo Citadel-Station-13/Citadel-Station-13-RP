@@ -26,7 +26,7 @@
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 100
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
 	fire_delay = 6
 	heavy = TRUE
@@ -51,7 +51,7 @@
 	projectile_type = /obj/item/projectile/beam/stun
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
 	slot_flags = SLOT_BELT
-	force = 8 //looks heavier than a pistol
+	damage_force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
 	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
@@ -79,7 +79,7 @@
 	projectile_type = /obj/item/projectile/beam/stun/disabler
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
+	damage_force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
 	w_class = ITEMSIZE_NORMAL
 	fire_delay = 6	//standard rate
 	battery_lock = 0

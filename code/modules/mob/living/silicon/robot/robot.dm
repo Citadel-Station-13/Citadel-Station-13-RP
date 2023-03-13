@@ -758,7 +758,7 @@
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
-			if(W.force > 0)
+			if(W.damage_force > 0)
 				spark_system.start()
 		return ..()
 

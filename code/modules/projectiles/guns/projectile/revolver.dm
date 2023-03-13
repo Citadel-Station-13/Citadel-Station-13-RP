@@ -57,7 +57,7 @@
 	icon_state = "knifegun"
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 

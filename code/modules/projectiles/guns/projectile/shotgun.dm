@@ -6,7 +6,7 @@
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
@@ -157,7 +157,7 @@
 	max_shells = 2
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
@@ -201,7 +201,7 @@
 			icon_state = "sawnshotgun"
 			item_state = "sawnshotgun"
 			w_class = ITEMSIZE_NORMAL
-			force = 5
+			damage_force = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
 			name = "sawn-off shotgun"
@@ -220,7 +220,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
-	force = 5
+	damage_force = 5
 	one_handed_penalty = 5
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt
@@ -241,7 +241,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
-	force = 5
+	damage_force = 5
 	accuracy = 40
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
@@ -267,7 +267,7 @@
 	ammo_type = /obj/item/ammo_casing/a10g/silver
 	w_class = ITEMSIZE_NORMAL
 	safety_state = GUN_SAFETY_OFF
-	force = 15
+	damage_force = 15
 
 //Flaregun Code that may work?
 /obj/item/gun/ballistic/shotgun/flare
@@ -279,7 +279,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
 	w_class = ITEMSIZE_SMALL
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BELT
 	caliber = "12g"
 	accuracy = -15 //Its a flaregun and you expected accuracy?
@@ -315,7 +315,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
 	w_class = ITEMSIZE_LARGE
-	force = 25
+	damage_force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 	sharp = 1
@@ -343,7 +343,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_shotgun"
 	max_shells = 8
-	force = 5
+	damage_force = 5
 	caliber = "foamdart"
 	ammo_type = /obj/item/ammo_casing/foam
 	projectile_type = /obj/item/projectile/bullet/reusable/foam

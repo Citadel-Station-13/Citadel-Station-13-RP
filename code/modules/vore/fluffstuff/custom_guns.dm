@@ -107,7 +107,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ge_pistol_r", SLOT_ID_LEFT_HAND = "ge_pistol_l")
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/imperial
@@ -300,7 +300,7 @@ END OF CITADEL CHANGES */
 	item_state = "energystun100" //This is temporary.
 	fire_sound = 'sound/weapons/Taser.ogg'
 	charge_cost = 100
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_LARGE
 	fire_delay = 6
 	pixel_x = -16

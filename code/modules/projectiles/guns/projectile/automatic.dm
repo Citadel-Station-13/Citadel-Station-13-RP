@@ -44,7 +44,7 @@
 	icon_state = "c20r"
 	item_state = "c20r"
 	w_class = ITEMSIZE_NORMAL
-	force = 10
+	damage_force = 10
 	caliber = "10mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -72,7 +72,7 @@
 	wielded_item_state = "arifle-wielded"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "5.45mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -135,7 +135,7 @@
 	item_state = "z8carbine"
 	wielded_item_state = "z8carbine-wielded"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
@@ -208,7 +208,7 @@
 	icon_state = "l6closed50"
 	item_state = "l6closed"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	slot_flags = 0
 	max_shells = 50
 	caliber = "5.45mm"
@@ -337,7 +337,7 @@
 	icon_state = "ashot"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -478,7 +478,7 @@
 	icon_state = "bullpup-small"
 	item_state = "bullpup"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -513,7 +513,7 @@
 	icon_state = "fal"
 	item_state = "fal"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -542,7 +542,7 @@
 	item_state = "automat"
 	fire_anim = "automat_fire"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
@@ -576,7 +576,7 @@
 	item_state = null
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -608,7 +608,7 @@
 	wielded_item_state = "clownrifle_wielded"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	caliber = "organic"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -714,7 +714,7 @@
 	desc = "A DONKsoft rendition of an infamous submachine gun."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_c20"
-	force = 5
+	damage_force = 5
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/c20
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
@@ -739,7 +739,7 @@
 	desc = "This plastic replica of a common light machine gun weighs about half as much. It's still pretty bulky, but nothing lays down suppressive fire like this bad boy. The bane of schoolyards across the galaxy."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_lmgclosed100"
-	force = 5
+	damage_force = 5
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)

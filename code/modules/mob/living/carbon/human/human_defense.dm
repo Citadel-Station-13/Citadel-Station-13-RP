@@ -226,7 +226,7 @@ emp_act
 	if(!hit_zone)
 		return null
 
-	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
+	if(check_shields(I.damage_force, I, user, target_zone, "the [I.name]"))
 		return
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -264,7 +264,7 @@ emp_act
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
 	if(user.a_intent == INTENT_DISARM)
-		effective_force *= 0.5 //reduced effective force...
+		effective_force *= 0.5 //reduced effective damage_force...
 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
 			return 0
 

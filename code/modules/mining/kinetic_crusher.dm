@@ -10,7 +10,7 @@
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	force = 0 //You can't hit stuff unless wielded
+	damage_force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	throw_force = 5
@@ -49,7 +49,7 @@
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
-	force = 10 //wouldn't want to give a borg a 20 brute melee weapon unemagged now would we
+	damage_force = 10 //wouldn't want to give a borg a 20 brute melee weapon unemagged now would we
 	detonation_damage = 60
 	wielded = 1
 
@@ -291,7 +291,7 @@
 			)
 	item_state = "machete"
 	w_class = WEIGHT_CLASS_SMALL
-	force = 15
+	damage_force = 15
 	requires_wield = FALSE
 	charge_overlay = FALSE
 	// yeah yeah buff but rp mobs are tough as fuck.
@@ -496,14 +496,14 @@
 /obj/item/crusher_trophy/demon_claws/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
-		H.force += bonus_value * 0.2
+		H.damage_force += bonus_value * 0.2
 		H.detonation_damage += bonus_value * 0.8
 		if(requires_wield)
 			AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
 /obj/item/crusher_trophy/demon_claws/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
-		H.force -= bonus_value * 0.2
+		H.damage_force -= bonus_value * 0.2
 		H.detonation_damage -= bonus_value * 0.8
 		if(requires_wield)
 			AddComponent(/datum/component/two_handed, force_wielded=20)

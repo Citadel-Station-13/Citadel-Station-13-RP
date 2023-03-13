@@ -8,7 +8,7 @@
 	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
@@ -113,7 +113,7 @@
 	icon_state = "caplaser"
 	item_state = "caplaser"
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
 	projectile_type = /obj/item/projectile/beam
@@ -172,7 +172,7 @@
 	slot_flags = SLOT_BACK
 	charge_cost = 600
 	fire_delay = 35
-	force = 10
+	damage_force = 10
 	heavy = TRUE
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
@@ -209,7 +209,7 @@
 	slot_flags = SLOT_BACK
 	charge_cost = 1300
 	fire_delay = 20
-	force = 8
+	damage_force = 8
 	heavy = TRUE
 	w_class = ITEMSIZE_LARGE
 	accuracy = 70
@@ -231,7 +231,7 @@
 	icon_state = "ecshotgun"
 	item_state = "cshotgun"
 	charge_cost = 1000
-	force = 12
+	damage_force = 12
 	accuracy = 70
 	scoped_accuracy = 95
 
@@ -314,7 +314,7 @@
 	fire_delay = 6
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
 	projectile_type = /obj/item/projectile/beam/midlaser

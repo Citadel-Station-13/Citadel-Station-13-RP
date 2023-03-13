@@ -109,7 +109,7 @@
 			var/mob/living/carbon/human/H = L
 			if(H.get_active_held_item())
 				var/obj/item/I = H.get_active_held_item()
-				if(I.force >= 1.20 * melee_damage_upper)
+				if(I.damage_force >= 1.20 * melee_damage_upper)
 					return TRUE
 		else if(istype(L, /mob/living/simple_mob))
 			var/mob/living/simple_mob/S = L

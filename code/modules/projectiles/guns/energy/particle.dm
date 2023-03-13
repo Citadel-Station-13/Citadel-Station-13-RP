@@ -30,7 +30,7 @@
 	item_state = "particle_item"
 	desc = "A Kawashima Material Technology Model E-8 anti-particle projector. A down-scale of the same technology behind the Model 9 anti-particle cannon, fitted with an enhanced power-generation unit for theoretically infinite recharges."
 	slot_flags = SLOT_BELT
-	force = 8 //looks heavier than a pistol
+	damage_force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
@@ -54,7 +54,7 @@
 	battery_lock = 1
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
-	force = 10
+	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
 	charge_cost = 400 // 6 shots

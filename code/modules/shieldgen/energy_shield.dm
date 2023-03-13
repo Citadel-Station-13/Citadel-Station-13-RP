@@ -256,11 +256,11 @@
 	if(gen.check_flag(MODEFLAG_HYPERKINETIC))
 		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
 		if(I.damtype == BURN)
-			take_damage(I.force, SHIELD_DAMTYPE_HEAT)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_HEAT)
 		else if (I.damtype == BRUTE)
-			take_damage(I.force, SHIELD_DAMTYPE_PHYSICAL)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_PHYSICAL)
 		else
-			take_damage(I.force, SHIELD_DAMTYPE_EM)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_EM)
 	else
 		user.visible_message("<span class='danger'>\The [user] tries to attack \the [src] with \the [I], but it passes through!</span>")
 

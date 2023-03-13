@@ -5,7 +5,7 @@
 	icon_state = "pulse"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	slot_flags = SLOT_BELT|SLOT_BACK
-	force = 10
+	damage_force = 10
 	projectile_type = /obj/item/projectile/beam
 	charge_cost = 120
 	sel_mode = 2
@@ -41,7 +41,7 @@
 	icon_state = "pulse_pistol"
 	item_state = null
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	force = 10
+	damage_force = 10
 	projectile_type = /obj/item/projectile/beam
 	charge_cost = 240
 	sel_mode = 2

@@ -4,7 +4,7 @@
 	icon_state = "slimebaton"
 	item_state = "slimebaton"
 	slot_flags = SLOT_BELT
-	force = 9
+	damage_force = 9
 	lightcolor = "#33CCFF"
 	origin_tech = list(TECH_COMBAT = 2, TECH_BIO = 2)
 	agonyforce = 10	//It's not supposed to be great at stunning human beings.

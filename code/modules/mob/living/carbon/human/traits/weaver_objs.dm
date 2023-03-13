@@ -18,7 +18,7 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 		qdel(src)
 
