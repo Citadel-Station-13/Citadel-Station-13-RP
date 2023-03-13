@@ -56,7 +56,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	projectiletype = /obj/item/projectile/bullet/honker
+	projectiletype = /obj/projectile/bullet/honker
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = FALSE
 
@@ -184,7 +184,7 @@
 	desc = "A brightly adorned clown armed with a weird pistol."
 	icon_state = "clownop_ranged"
 	icon_living = "clownop_ranged"
-	projectiletype = /obj/item/projectile/bullet/honker/lethal
+	projectiletype = /obj/projectile/bullet/honker/lethal
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = TRUE
 	reload_max = 12

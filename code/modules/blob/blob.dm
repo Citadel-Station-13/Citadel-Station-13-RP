@@ -122,7 +122,7 @@
 		return
 	B.pulse(forceLeft - 1, dirs)
 
-/obj/effect/blob/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/blob/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)
 		return
 

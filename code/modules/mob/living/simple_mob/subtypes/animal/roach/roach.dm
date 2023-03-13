@@ -115,7 +115,7 @@
 /mob/living/simple_mob/animal/roach/Greta
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
@@ -162,7 +162,7 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 3
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
@@ -343,7 +343,7 @@
 				)
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/energy/blob/toxic
+	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
@@ -388,7 +388,7 @@
 				)
 
 	base_attack_cooldown = 8
-	projectiletype = /obj/item/projectile/energy/declone
+	projectiletype = /obj/projectile/energy/declone
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
@@ -425,7 +425,7 @@
 				)
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/energy/dart
+	projectiletype = /obj/projectile/energy/dart
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
@@ -535,7 +535,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 

@@ -7,7 +7,7 @@
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_STEEL = 1000)
 	recoil = 0
-	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns
+	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
 	var/caliber = ".357"		//determines which casings will fit
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled

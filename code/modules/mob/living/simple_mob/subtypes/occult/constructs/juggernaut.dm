@@ -63,7 +63,7 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura/strong)
 
-/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
@@ -71,7 +71,7 @@
 		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
 		var/armorcheck = run_armor_check(null, P.check_armour)
 		var/soakedcheck = get_armor_soak(null, P.check_armour)
-		if(!(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)))
+		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
 			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
@@ -138,7 +138,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \

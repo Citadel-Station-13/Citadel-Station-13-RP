@@ -55,9 +55,9 @@
 
 /obj/effect/directional_shield/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
-		if(istype(P, /obj/item/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
+		if(istype(P, /obj/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
 			return TRUE
 
 		var/bad_arc = REVERSE_DIR(dir) // Arc of directions from which we cannot block.
@@ -65,7 +65,7 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/directional_shield/bullet_act(var/obj/item/projectile/P)
+/obj/effect/directional_shield/bullet_act(var/obj/projectile/P)
 	adjust_health(-P.get_structure_damage())
 	P.on_hit()
 	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)

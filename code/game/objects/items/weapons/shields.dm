@@ -5,8 +5,8 @@
 /proc/check_shield_arc(mob/user, var/bad_arc, atom/damage_source = null, mob/attacker = null)
 	//check attack direction
 	var/attack_dir = 0 //direction from the user to the source of the attack
-	if(istype(damage_source, /obj/item/projectile))
-		var/obj/item/projectile/P = damage_source
+	if(istype(damage_source, /obj/projectile))
+		var/obj/projectile/P = damage_source
 		attack_dir = get_dir(get_turf(user), P.starting)
 	else if(attacker)
 		attack_dir = get_dir(get_turf(user), get_turf(attacker))
@@ -19,7 +19,7 @@
 
 /proc/default_parry_check(mob/user, mob/attacker, atom/damage_source)
 	//parry only melee attacks
-	if(istype(damage_source, /obj/item/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
+	if(istype(damage_source, /obj/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
 		return 0
 
 	//block as long as they are not directly behind us
@@ -82,9 +82,9 @@
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			//At this point, we succeeded in our roll for a block attempt, however these kinds of shields struggle to stand up
 			//to strong bullets and lasers.  They still do fine to pistol rounds of all kinds, however.
-			if(istype(damage_source, /obj/item/projectile))
-				var/obj/item/projectile/P = damage_source
-				if((is_sharp(P) && P.armor_penetration >= 10) || istype(P, /obj/item/projectile/beam))
+			if(istype(damage_source, /obj/projectile))
+				var/obj/projectile/P = damage_source
+				if((is_sharp(P) && P.armor_penetration >= 10) || istype(P, /obj/projectile/beam))
 					//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 					//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 					//useless.  Extremely penetrating projectiles will go through the shield without less damage.
@@ -322,9 +322,9 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 
 /obj/item/shield/energy/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
-	if(istype(damage_source, /obj/item/projectile))
-		var/obj/item/projectile/P = damage_source
-		if((is_sharp(P) && damage > 10) || istype(P, /obj/item/projectile/beam))
+	if(istype(damage_source, /obj/projectile))
+		var/obj/projectile/P = damage_source
+		if((is_sharp(P) && damage > 10) || istype(P, /obj/projectile/beam))
 			return (base_block_chance - round(damage / 3)) //block bullets and beams using the old block chance
 	return base_block_chance
 

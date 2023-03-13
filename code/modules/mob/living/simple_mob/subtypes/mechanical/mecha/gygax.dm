@@ -31,7 +31,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/beam/midlaser
+	projectiletype = /obj/projectile/beam/midlaser
 
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
 

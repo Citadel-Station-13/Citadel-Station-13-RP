@@ -58,7 +58,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -502,7 +502,7 @@ Alien plants should do something if theres a lot of poison
 						break
 		return 1
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/egg/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()

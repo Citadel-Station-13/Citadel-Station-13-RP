@@ -12,7 +12,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 4)
 	slot_flags = null
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
@@ -21,8 +21,8 @@
 	modifystate = "gbuster"
 
 	firemodes = list(
-	list(mode_name="stun", charge_cost=240,projectile_type=/obj/item/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/item/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
+	list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 

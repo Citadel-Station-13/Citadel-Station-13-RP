@@ -10,7 +10,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead
 	fire_sound = 'sound/weapons/wave.ogg'
 	charge_cost = 240
-	projectile_type = /obj/item/projectile/beam/sizelaser
+	projectile_type = /obj/projectile/beam/sizelaser
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
@@ -18,7 +18,7 @@
 	var/size_set_to = 1
 	firemodes = list(
 		list(mode_name		= "select size",
-			projectile_type	= /obj/item/projectile/beam/sizelaser,
+			projectile_type	= /obj/projectile/beam/sizelaser,
 			modifystate		= "sizegun-grow",
 			fire_sound		= 'sound/weapons/pulse3.ogg'
 		))
@@ -36,7 +36,7 @@
 
 /obj/item/gun/energy/sizegun/consume_next_projectile()
 	. = ..()
-	var/obj/item/projectile/beam/sizelaser/G = .
+	var/obj/projectile/beam/sizelaser/G = .
 	if(istype(G))
 		G.set_size = size_set_to
 
@@ -61,7 +61,7 @@
 // Beams for size gun
 //
 
-/obj/item/projectile/beam/sizelaser
+/obj/projectile/beam/sizelaser
 	name = "size beam"
 	icon_state = "xray"
 	nodamage = 1
@@ -73,7 +73,7 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/sizelaser/on_hit(var/atom/target)
+/obj/projectile/beam/sizelaser/on_hit(var/atom/target)
 	var/mob/living/M = target
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
@@ -91,11 +91,11 @@
 		return 1
 
 
-/obj/item/projectile/beam/sizelaser/shrink
+/obj/projectile/beam/sizelaser/shrink
 	set_size = 0.5 //50% of current size
 
 
-/obj/item/projectile/beam/sizelaser/grow
+/obj/projectile/beam/sizelaser/grow
 	set_size = 2.0 //200% of current size
 
 
@@ -107,7 +107,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead
 	fire_sound = 'sound/weapons/wave.ogg'
 	charge_cost = 240
-	projectile_type = /obj/item/projectile/bullet/stripper
+	projectile_type = /obj/projectile/bullet/stripper
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1

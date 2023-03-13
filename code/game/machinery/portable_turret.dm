@@ -214,7 +214,7 @@
 	maxhealth = 200
 	turret_type = "industrial"
 
-/obj/machinery/porta_turret/industrial/bullet_act(obj/item/projectile/Proj)
+/obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/Proj)
 	var/damage = round(Proj.get_structure_damage() * 1.33)
 
 	if(!damage)
@@ -378,7 +378,7 @@
 
 /obj/machinery/porta_turret/proc/setup()
 	var/obj/item/gun/energy/E = installation	//All energy-based weapons are applicable
-	var/obj/item/projectile/P = initial(E.projectile_type)
+	var/obj/projectile/P = initial(E.projectile_type)
 	//var/obj/item/ammo_casing/shottype = E.projectile_type
 
 	projectile = P
@@ -386,16 +386,16 @@
 	shot_sound = initial(P.fire_sound)
 	lethal_shot_sound = shot_sound
 
-	if(istype(P, /obj/item/projectile/energy))
+	if(istype(P, /obj/projectile/energy))
 		icon_color = "orange"
 
-	else if(istype(P, /obj/item/projectile/beam/stun))
+	else if(istype(P, /obj/projectile/beam/stun))
 		icon_color = "blue"
 
-	else if(istype(P, /obj/item/projectile/beam/lasertag))
+	else if(istype(P, /obj/projectile/beam/lasertag))
 		icon_color = "blue"
 
-	else if(istype(P, /obj/item/projectile/beam))
+	else if(istype(P, /obj/projectile/beam))
 		icon_color = "red"
 
 	else
@@ -409,30 +409,30 @@
 	switch(guntype)
 		if(/obj/item/gun/energy/gun/burst)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam/burstlaser
+			lethal_projectile = /obj/projectile/beam/burstlaser
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 			shot_delay = 1 SECOND
 
 		if(/obj/item/gun/energy/phasegun)
 			icon_color = "orange"
 			lethal_icon_color = "orange"
-			lethal_projectile = /obj/item/projectile/energy/phase/heavy
+			lethal_projectile = /obj/projectile/energy/phase/heavy
 			shot_delay = 1 SECOND
 
 		if(/obj/item/gun/energy/gun)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/gun/nuclear)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/xray)
 			lethal_icon_color = "green"
-			lethal_projectile = /obj/item/projectile/beam/xray
-			projectile = /obj/item/projectile/beam/stun // Otherwise we fire xrays on both modes.
+			lethal_projectile = /obj/projectile/beam/xray
+			projectile = /obj/projectile/beam/stun // Otherwise we fire xrays on both modes.
 			lethal_shot_sound = 'sound/weapons/eluger.ogg'
 			shot_sound = 'sound/weapons/Taser.ogg'
 
@@ -652,7 +652,7 @@
 	if(health <= 0)
 		die()	//the death process :(
 
-/obj/machinery/porta_turret/bullet_act(obj/item/projectile/Proj)
+/obj/machinery/porta_turret/bullet_act(obj/projectile/Proj)
 	var/damage = Proj.get_structure_damage()
 
 	if(!damage)
@@ -908,7 +908,7 @@
 		return
 
 	update_icon()
-	var/obj/item/projectile/A
+	var/obj/projectile/A
 	if(emagged || lethal)
 		A = new lethal_projectile(loc)
 		playsound(loc, lethal_shot_sound, 75, 1)

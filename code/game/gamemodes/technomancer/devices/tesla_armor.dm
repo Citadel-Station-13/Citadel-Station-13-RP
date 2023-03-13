@@ -24,8 +24,8 @@
 /obj/item/clothing/suit/armor/tesla/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	//First, some retaliation.
 	if(active)
-		if(istype(damage_source, /obj/item/projectile))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile))
+			var/obj/projectile/P = damage_source
 			if(P.firer && get_dist(user, P.firer) <= 3)
 				if(ready)
 					shoot_lightning(P.firer, 40)
@@ -79,7 +79,7 @@
 	..()
 
 /obj/item/clothing/suit/armor/tesla/proc/shoot_lightning(mob/target, power)
-	var/obj/item/projectile/beam/lightning/lightning = new(get_turf(src))
+	var/obj/projectile/beam/lightning/lightning = new(get_turf(src))
 	lightning.power = power
 	lightning.old_style_target(target)
 	lightning.fire()

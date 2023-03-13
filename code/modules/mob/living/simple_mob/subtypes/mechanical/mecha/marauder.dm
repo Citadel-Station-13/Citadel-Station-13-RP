@@ -31,7 +31,7 @@
 	melee_damage_lower = 45
 	melee_damage_upper = 45
 	base_attack_cooldown = 2 SECONDS
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 
 
 

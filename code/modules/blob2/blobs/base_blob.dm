@@ -55,8 +55,8 @@ var/list/blobs = list()
 		var/mob/living/L = mover
 		if(L.faction == "blob")
 			return TRUE
-	else if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	else if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
 	return FALSE
@@ -250,7 +250,7 @@ var/list/blobs = list()
 	adjust_integrity(-damage)
 	return
 
-/obj/structure/blob/bullet_act(var/obj/item/projectile/P)
+/obj/structure/blob/bullet_act(var/obj/projectile/P)
 	if(!P)
 		return
 

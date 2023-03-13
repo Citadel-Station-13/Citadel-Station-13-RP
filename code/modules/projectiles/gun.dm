@@ -66,7 +66,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
-	var/projectile_type = /obj/item/projectile	//On ballistics, only used to check for the cham gun
+	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	var/obj/item/ammo_casing/chambered = null
 
@@ -463,8 +463,8 @@
 			handle_click_empty()
 			break
 
-		if(istype(projectile, /obj/item/projectile))
-			var/obj/item/projectile/P = projectile
+		if(istype(projectile, /obj/projectile))
+			var/obj/projectile/P = projectile
 
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
@@ -597,7 +597,7 @@
 	update_icon()
 
 /obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -618,7 +618,7 @@
 	P.damage *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -652,7 +652,7 @@
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
 
@@ -671,7 +671,7 @@
 
 	return launched
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
+/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
@@ -698,11 +698,11 @@
 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
 		mouthshoot = 0
 		return
-	var/obj/item/projectile/in_chamber = consume_next_projectile()
+	var/obj/projectile/in_chamber = consume_next_projectile()
 	if (istype(in_chamber))
 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
 		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/item/projectile/beam/lasertag))
+		if(istype(in_chamber, /obj/projectile/beam/lasertag))
 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 			mouthshoot = 0
 			return

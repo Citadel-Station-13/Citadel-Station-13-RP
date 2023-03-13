@@ -165,8 +165,8 @@
 /obj/structure/foamedmetal/legacy_ex_act(severity)
 	qdel(src)
 
-/obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/P)
-	if(istype(P, /obj/item/projectile/test))
+/obj/structure/foamedmetal/bullet_act(var/obj/projectile/P)
+	if(istype(P, /obj/projectile/test))
 		return
 	else if(metal == 1 || prob(50))
 		qdel(src)

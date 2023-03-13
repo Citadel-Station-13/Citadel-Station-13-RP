@@ -323,7 +323,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "projgun"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/item/projectile/beam/disable
+	projectile_type = /obj/projectile/beam/disable
 	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
 	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
 	//cell_type = null //Same cell as a taser until edits are made.

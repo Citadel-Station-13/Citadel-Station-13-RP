@@ -94,7 +94,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/pistol
+	projectiletype = /obj/projectile/bullet/pistol
 	base_attack_cooldown = 0.5 SECONDS
 	needs_reload = TRUE
 	reload_max = 30

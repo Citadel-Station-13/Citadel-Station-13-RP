@@ -82,7 +82,7 @@
 	visible_message("<span class='warning'>\The [src] has been [I.get_attack_verb(src, user)] with \the [I] by [user].</span>")
 	take_damage(I.damage_force)
 
-/obj/structure/mob_spawner/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/mob_spawner/bullet_act(var/obj/projectile/Proj)
 	..()
 	if(destructible)
 		take_damage(Proj.get_structure_damage())

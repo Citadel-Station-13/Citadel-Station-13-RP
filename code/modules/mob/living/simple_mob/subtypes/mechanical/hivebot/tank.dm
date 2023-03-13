@@ -146,8 +146,8 @@
 	var/reflect_chance = 40 // Same as regular ablative.
 
 // Ablative Hivebots can reflect lasers just like humans.
-/mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser/bullet_act(obj/item/projectile/P)
-	if(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam))
+/mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser/bullet_act(obj/projectile/P)
+	if(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam))
 		var/reflect_prob = reflect_chance - round(P.damage/3)
 		if(prob(reflect_prob))
 			visible_message(SPAN_DANGER("The [P.name] gets reflected by [src]'s armor!"), \

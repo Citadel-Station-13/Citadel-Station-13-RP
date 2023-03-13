@@ -1129,9 +1129,9 @@
 	return
 
 
-/obj/mecha/bullet_act(var/obj/item/projectile/Proj) //wrapper
-	if(istype(Proj, /obj/item/projectile/test))
-		var/obj/item/projectile/test/Test = Proj
+/obj/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
+	if(istype(Proj, /obj/projectile/test))
+		var/obj/projectile/test/Test = Proj
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return
 
@@ -1140,7 +1140,7 @@
 	..()
 	return
 
-/obj/mecha/proc/dynbulletdamage(var/obj/item/projectile/Proj)
+/obj/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
@@ -1171,7 +1171,7 @@
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
-		if(istype(Proj, /obj/item/projectile/beam/pulse))	//ATM, this is literally only for the pulse rifles used mostly by deathsquads.
+		if(istype(Proj, /obj/projectile/beam/pulse))	//ATM, this is literally only for the pulse rifles used mostly by deathsquads.
 			ignore_threshold = 1
 
 		var/pass_damage = Proj.damage

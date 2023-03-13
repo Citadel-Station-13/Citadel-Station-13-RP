@@ -172,7 +172,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/hybrid_resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/hybrid_resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()

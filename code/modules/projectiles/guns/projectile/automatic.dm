@@ -4,7 +4,7 @@
 	icon_state = "c05r"	//Used because it's not used anywhere else
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
@@ -51,7 +51,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m10mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m10mm)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -79,7 +79,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	projectile_type = /obj/projectile/bullet/rifle/a545
 	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
 	heavy = TRUE
@@ -116,7 +116,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/automatic/wt550/update_icon_state()
 	. = ..()
@@ -142,7 +142,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
@@ -217,7 +217,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	projectile_type = /obj/projectile/bullet/rifle/a545
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
@@ -317,7 +317,7 @@
 	caliber = "7.62mm"
 	magazine_type = /obj/item/ammo_magazine/m762_m60
 	allowed_magazines = list(/obj/item/ammo_magazine/m762_m60)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	one_handed_penalty = 100
 
 	firemodes = list(
@@ -344,7 +344,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
@@ -485,7 +485,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	heavy = TRUE
 	one_handed_penalty = 45
 
@@ -521,7 +521,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762m
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	heavy = TRUE
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -583,7 +583,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/holyshot_mag
 	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 
 	one_handed_penalty = 40
 
@@ -615,7 +615,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
-	projectile_type = /obj/item/projectile/bullet/organic
+	projectile_type = /obj/projectile/bullet/organic
 
 	one_handed_penalty = 30
 
@@ -718,7 +718,7 @@
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/c20
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
-	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 
@@ -743,7 +743,7 @@
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
-	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
 	heavy = FALSE

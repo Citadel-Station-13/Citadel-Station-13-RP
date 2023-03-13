@@ -1,4 +1,4 @@
-/obj/item/projectile/energy
+/obj/projectile/energy
 	name = "energy"
 	icon_state = "spark"
 	damage = 0
@@ -7,7 +7,7 @@
 	var/flash_strength = 10
 
 //releases a burst of light on impact or after travelling a distance
-/obj/item/projectile/energy/flash
+/obj/projectile/energy/flash
 	name = "chemical shell"
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
@@ -17,7 +17,7 @@
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
-/obj/item/projectile/energy/flash/on_impact(var/atom/A)
+/obj/projectile/energy/flash/on_impact(var/atom/A)
 	var/turf/T = flash_range? src.loc : get_turf(A)
 	if(!istype(T)) return
 
@@ -47,7 +47,7 @@
 	new /obj/effect/particle_effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
-/obj/item/projectile/energy/flash/flare
+/obj/projectile/energy/flash/flare
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
 	damage = 20
 	flash_range = 1
@@ -56,7 +56,7 @@
 	incendiary = 1
 	flammability = 2
 
-/obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
+/obj/projectile/energy/flash/flare/on_impact(var/atom/A)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
 
 	..() //initial flash
@@ -64,7 +64,7 @@
 	//residual illumination
 	new /obj/effect/particle_effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
 
-/obj/item/projectile/energy/electrode
+/obj/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
 	fire_sound = 'sound/weapons/Gunshot2.ogg'
@@ -75,19 +75,19 @@
 	light_color = "#FFFFFF"
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
-/obj/item/projectile/energy/electrode/strong
+/obj/projectile/energy/electrode/strong
 	agony = 55
 
-/obj/item/projectile/energy/electrode/stunshot
+/obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage = 5
 	agony = 80
 
-/obj/item/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
+/obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
 	name = "taser bolt"
 	agony = 80
 
-/obj/item/projectile/energy/declone
+/obj/projectile/energy/declone
 	name = "declone"
 	icon_state = "declone"
 	fire_sound = 'sound/weapons/pulse3.ogg'
@@ -100,7 +100,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/dart
+/obj/projectile/energy/dart
 	name = "dart"
 	icon_state = "toxin"
 	damage = 5
@@ -110,7 +110,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/bolt
+/obj/projectile/energy/bolt
 	name = "bolt"
 	icon_state = "cbbolt"
 	damage = 10
@@ -118,11 +118,11 @@
 	agony = 40
 	stutter = 10
 
-/obj/item/projectile/energy/bolt/large
+/obj/projectile/energy/bolt/large
 	name = "largebolt"
 	damage = 20
 
-/obj/item/projectile/energy/acid //Slightly up-gunned (Read: The thing does agony and checks bio resist) variant of the simple alien mob's projectile, for queens and sentinels.
+/obj/projectile/energy/acid //Slightly up-gunned (Read: The thing does agony and checks bio resist) variant of the simple alien mob's projectile, for queens and sentinels.
 	name = "acidic spit"
 	icon_state = "neurotoxin"
 	damage = 30
@@ -133,7 +133,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/neurotoxin
+/obj/projectile/energy/neurotoxin
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	damage = 5
@@ -144,7 +144,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
+/obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	damage = 20
@@ -153,7 +153,7 @@
 	check_armour = "bio"
 	armor_penetration = 25	// It's acid-based
 
-/obj/item/projectile/energy/phoron
+/obj/projectile/energy/phoron
 	name = "phoron bolt"
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
@@ -166,7 +166,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/plasmastun
+/obj/projectile/energy/plasmastun
 	name = "plasma pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
@@ -177,7 +177,7 @@
 	damage_type = BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 
-/obj/item/projectile/energy/plasmastun/proc/bang(var/mob/living/carbon/M)
+/obj/projectile/energy/plasmastun/proc/bang(var/mob/living/carbon/M)
 
 	to_chat(M, "<span class='danger'>You hear a loud roar.</span>")
 	playsound(M.loc, 'sound/effects/bang.ogg', 50, 1)
@@ -202,11 +202,11 @@
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 	M.update_icons() //Just to apply matrix transform for laying asap
 
-/obj/item/projectile/energy/plasmastun/on_hit(var/atom/target)
+/obj/projectile/energy/plasmastun/on_hit(var/atom/target)
 	bang(target)
 	. = ..()
 
-/obj/item/projectile/energy/blue_pellet
+/obj/projectile/energy/blue_pellet
 	name = "suppressive pellet"
 	icon_state = "blue_pellet"
 	fire_sound = 'sound/weapons/Laser.ogg'
@@ -220,7 +220,7 @@
 	embed_chance = 0
 	muzzle_type = /obj/effect/projectile/muzzle/pulse
 
-/obj/item/projectile/energy/phase
+/obj/projectile/energy/phase
 	name = "phase wave"
 	icon_state = "phase"
 	range = 25
@@ -228,15 +228,15 @@
 	SA_bonus_damage = 45	// 50 total on animals
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
-/obj/item/projectile/energy/phase/light
+/obj/projectile/energy/phase/light
 	range = 15
 	SA_bonus_damage = 35	// 40 total on animals
 
-/obj/item/projectile/energy/phase/heavy
+/obj/projectile/energy/phase/heavy
 	range = 20
 	SA_bonus_damage = 55	// 60 total on animals
 
-/obj/item/projectile/energy/phase/heavy/cannon
+/obj/projectile/energy/phase/heavy/cannon
 	range = 30
 	damage = 15
 	SA_bonus_damage = 60	// 75 total on animals

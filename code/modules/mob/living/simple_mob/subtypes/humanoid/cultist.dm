@@ -341,7 +341,7 @@
 	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
@@ -441,7 +441,7 @@
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 2
 	base_attack_cooldown = 7.5
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
@@ -506,7 +506,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
@@ -566,7 +566,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 4
 
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	base_attack_cooldown = 5
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 	var/obj/item/shield_projector/shields = null
@@ -639,7 +639,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 0 //This is so he can't be kited well
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 
 	base_attack_cooldown = 7.5
 

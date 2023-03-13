@@ -1,4 +1,4 @@
-/obj/item/projectile/beam/disable
+/obj/projectile/beam/disable
     name = "disabler beam"
     icon_state = "omnilaser"
     nodamage = 1
@@ -11,10 +11,10 @@
     tracer_type = /obj/effect/projectile/tracer/laser_omni
     impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/item/projectile/beam/stun
+/obj/projectile/beam/stun
 	agony = 35
 
-/obj/item/projectile/beam/energy_net
+/obj/projectile/beam/energy_net
 	name = "energy net projection"
 	icon_state = "xray"
 	nodamage = 1
@@ -26,15 +26,15 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/energy_net/on_hit(var/atom/netted)
+/obj/projectile/beam/energy_net/on_hit(var/atom/netted)
 	do_net(netted)
 	..()
 
-/obj/item/projectile/beam/energy_net/proc/do_net(var/mob/M)
+/obj/projectile/beam/energy_net/proc/do_net(var/mob/M)
 	var/obj/item/energy_net/net = new (get_turf(M))
 	net.throw_impact(M)
 
-/obj/item/projectile/beam/stun/blue
+/obj/projectile/beam/stun/blue
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
@@ -42,7 +42,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/item/projectile/beam/medigun
+/obj/projectile/beam/medigun
 	name = "healing beam"
 	icon_state = "healbeam"
 	damage = 0 //stops it damaging walls
@@ -58,7 +58,7 @@
 	tracer_type = /obj/effect/projectile/tracer/medigun
 	impact_type = /obj/effect/projectile/impact/medigun
 
-/obj/item/projectile/beam/medigun/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/medigun/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if(M.health < M.maxHealth)

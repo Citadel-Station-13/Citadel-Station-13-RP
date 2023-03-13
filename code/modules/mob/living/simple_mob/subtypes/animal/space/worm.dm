@@ -196,7 +196,7 @@
 
 	if(istype(mover, /mob/living/simple_mob/animal/space/space_worm))	// Worms don't run over worms. That's weird. And also really annoying.
 		return TRUE
-	else if(src.stat == DEAD && !istype(mover, /obj/item/projectile))	// Projectiles need to do their normal checks.
+	else if(src.stat == DEAD && !istype(mover, /obj/projectile))	// Projectiles need to do their normal checks.
 		return TRUE
 	return ..()
 

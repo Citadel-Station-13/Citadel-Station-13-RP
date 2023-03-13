@@ -8,7 +8,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
@@ -175,7 +175,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/cap
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 
 /obj/item/gun/ballistic/revolver/judge
 	name = "\"The Judge\""
@@ -187,7 +187,7 @@
 	recoil = 2 // ow my fucking hand
 	accuracy = -15 // smooth bore + short barrel = shit accuracy
 	ammo_type = /obj/item/ammo_casing/a12g
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
 /obj/item/gun/ballistic/revolver/lemat
@@ -200,7 +200,7 @@
 	max_shells = 9
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 	var/secondary_max_shells = 1
 	var/secondary_caliber = "12g"
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g

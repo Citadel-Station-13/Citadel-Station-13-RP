@@ -31,5 +31,5 @@
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	projectiletype = /obj/item/projectile/energy/declone
+	projectiletype = /obj/projectile/energy/declone
 

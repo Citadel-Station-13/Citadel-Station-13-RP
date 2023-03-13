@@ -46,7 +46,7 @@
 	base_attack_cooldown = 1.5 SECONDS
 	attacktext = list("nipped", "bit", "pinched")
 
-	projectiletype = /obj/item/projectile/energy/blob/freezing
+	projectiletype = /obj/projectile/energy/blob/freezing
 
 	special_attack_cooldown = 5 SECONDS
 	special_attack_min_range = 0

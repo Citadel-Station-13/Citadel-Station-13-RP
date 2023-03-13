@@ -239,7 +239,7 @@
 
 
 // Projectiles
-/obj/effect/shield/bullet_act(var/obj/item/projectile/proj)
+/obj/effect/shield/bullet_act(var/obj/projectile/proj)
 	if(proj.damage_type == BURN)
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
@@ -342,7 +342,7 @@
 	return !gen.check_flag(MODEFLAG_HYPERKINETIC)
 
 // Beams
-/obj/item/projectile/beam/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/obj/projectile/beam/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_PHOTONIC)
 
 

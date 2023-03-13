@@ -88,8 +88,8 @@
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
-		var/obj/item/projectile/P = damage_source
+	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
+		var/obj/projectile/P = damage_source
 
 		if(P.reflected) // Can't reflect twice
 			return ..()

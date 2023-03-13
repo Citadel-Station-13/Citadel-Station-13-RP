@@ -207,7 +207,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	projectiletype = /obj/item/projectile/bullet/incendiary/flamethrower
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower
 	base_attack_cooldown = 10
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
@@ -417,7 +417,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 

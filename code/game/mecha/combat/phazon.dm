@@ -119,13 +119,13 @@
 		visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
 	return
 
-/obj/mecha/combat/phazon/janus/dynbulletdamage(var/obj/item/projectile/Proj)
-	if((Proj.damage && !Proj.nodamage) && !istype(Proj, /obj/item/projectile/beam) && prob(max(1, 33 - round(Proj.damage / 4))))
+/obj/mecha/combat/phazon/janus/dynbulletdamage(var/obj/projectile/Proj)
+	if((Proj.damage && !Proj.nodamage) && !istype(Proj, /obj/projectile/beam) && prob(max(1, 33 - round(Proj.damage / 4))))
 		src.occupant_message("<span class='alien'>The armor absorbs the incoming projectile's force, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming projectile's force, negating it!</span>")
 		src.log_append_to_last("Armor negated.")
 		return
-	else if((Proj.damage && !Proj.nodamage) && istype(Proj, /obj/item/projectile/beam) && prob(max(1, (50 - round((Proj.damage / 2) * damage_absorption["laser"])) * (1 - (Proj.armor_penetration / 100)))))	// Base 50% chance to deflect a beam,lowered by half the beam's damage scaled to laser absorption, then multiplied by the remaining percent of non-penetrated armor, with a minimum chance of 1%.
+	else if((Proj.damage && !Proj.nodamage) && istype(Proj, /obj/projectile/beam) && prob(max(1, (50 - round((Proj.damage / 2) * damage_absorption["laser"])) * (1 - (Proj.armor_penetration / 100)))))	// Base 50% chance to deflect a beam,lowered by half the beam's damage scaled to laser absorption, then multiplied by the remaining percent of non-penetrated armor, with a minimum chance of 1%.
 		src.occupant_message("<span class='alien'>The armor reflects the incoming beam, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] reflects the incoming beam, negating it!</span>")
 		src.log_append_to_last("Armor reflected.")

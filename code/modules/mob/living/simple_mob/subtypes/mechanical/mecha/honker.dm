@@ -31,7 +31,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/honker/lethal
+	projectiletype = /obj/projectile/bullet/honker/lethal
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
@@ -76,4 +76,4 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/honker/lethal/heavy
+	projectiletype = /obj/projectile/bullet/honker/lethal/heavy

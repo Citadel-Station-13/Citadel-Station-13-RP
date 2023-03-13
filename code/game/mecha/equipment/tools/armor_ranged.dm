@@ -13,8 +13,8 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/handle_projectile_contact(var/obj/item/projectile/Proj, var/inc_damage)
-	if(istype(Proj, /obj/item/projectile/test))
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/handle_projectile_contact(var/obj/projectile/Proj, var/inc_damage)
+	if(istype(Proj, /obj/projectile/test))
 		return inc_damage// Don't care about test projectiles, just what comes after them
 	if(!action_checks(src))
 		return inc_damage
@@ -70,8 +70,8 @@
 	..()
 	return
 
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/proc/dynbulletdamage(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/test))
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/proc/dynbulletdamage(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/test))
 		return // Don't care about test projectiles, just what comes after them
 	if(!action_checks(src))
 		return chassis.dynbulletdamage(Proj)

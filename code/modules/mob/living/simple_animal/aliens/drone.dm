@@ -30,7 +30,7 @@
 	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 	destroy_surroundings = 0
 	hovering = TRUE
@@ -62,7 +62,7 @@
 /mob/living/simple_mob/hostile/malf_drone/Initialize(mapload)
 	. = ..()
 	if(prob(5))
-		projectiletype = /obj/item/projectile/beam/pulse/drone
+		projectiletype = /obj/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'
 	ion_trail = new
 	ion_trail.set_up(src)
@@ -280,10 +280,10 @@
 
 	..()
 
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 15
 
-/obj/item/projectile/beam/pulse/drone
+/obj/projectile/beam/pulse/drone
 	damage = 10
 
 // A slightly easier drone, for POIs.

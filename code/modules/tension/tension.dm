@@ -30,7 +30,7 @@
 		// Treat potential_damage as estimated DPS. If the enemy attacks twice as fast as usual, it will double the number.
 		potential_damage *= 1 SECOND / (base_attack_cooldown + melee_attack_delay)
 	else
-		var/obj/item/projectile/P = new projectiletype(src)
+		var/obj/projectile/P = new projectiletype(src)
 		if(P.nodamage || P.taser_effect) // Tasers are somewhat less scary.
 			potential_damage = P.agony / 2
 		else
@@ -183,7 +183,7 @@
 		if(istype(I, /obj/item/gun))
 			will_point_blank = TRUE
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			P = new G.projectile_type()
 

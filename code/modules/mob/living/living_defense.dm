@@ -111,7 +111,7 @@
 	else
 		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
-/mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/bullet_act(var/obj/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
 	if(istype(get_active_held_item(),/obj/item/assembly/signaler))

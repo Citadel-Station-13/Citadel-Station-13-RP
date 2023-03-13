@@ -127,8 +127,8 @@
 	else
 		set_light(0, 0, "#FFFFFF")
 
-/obj/machinery/particle_smasher/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/beam))
+/obj/machinery/particle_smasher/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/beam))
 		if(Proj.damage >= 50)
 			TryCraft()
 	return 0

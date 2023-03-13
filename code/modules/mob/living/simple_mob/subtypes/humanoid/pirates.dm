@@ -164,7 +164,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(25))
 		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
@@ -239,7 +239,7 @@
 	needs_reload = TRUE
 	reload_max = 1
 
-	projectiletype = /obj/item/projectile/bullet/shotgun
+	projectiletype = /obj/projectile/bullet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 
 	loot_list = list(/obj/item/gun/ballistic/pirate = 100, /obj/item/material/knife/tacknife = 100)
@@ -276,7 +276,7 @@
 	needs_reload = TRUE
 	reload_max = 2
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
@@ -312,7 +312,7 @@
 	needs_reload = TRUE
 	reload_max = 1
 
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
@@ -374,7 +374,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 
-	projectiletype = /obj/item/projectile/beam/midlaser
+	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
 
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -417,7 +417,7 @@
 	melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
 
@@ -445,7 +445,7 @@
 	melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
-	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectiletype = /obj/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
 	base_attack_cooldown = 10
 
@@ -467,7 +467,7 @@
 	needs_reload = TRUE
 	reload_max = 4  // More than capable to shredding explo's shield especially when backed up by a few mates.
 
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 
@@ -583,7 +583,7 @@
 	needs_reload = TRUE
 	reload_max = 2
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
@@ -615,7 +615,7 @@
 	needs_reload = TRUE
 	reload_max = 1
 
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
@@ -672,7 +672,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 
-	projectiletype = /obj/item/projectile/beam/midlaser
+	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
 
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -711,7 +711,7 @@
 	melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
 
@@ -737,7 +737,7 @@
 	melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
-	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectiletype = /obj/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
 	base_attack_cooldown = 10
 
@@ -757,7 +757,7 @@
 	needs_reload = TRUE
 	reload_max = 4  // More than capable to shredding explo's shield especially when backed up by a few mates.
 
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 

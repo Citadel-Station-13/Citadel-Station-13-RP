@@ -286,7 +286,7 @@
 					new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
 	. = ..()
 	if(Proj.excavation_amount)
 		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below

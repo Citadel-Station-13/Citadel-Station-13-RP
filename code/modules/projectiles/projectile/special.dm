@@ -1,4 +1,4 @@
-/obj/item/projectile/ion
+/obj/projectile/ion
 	name = "ion bolt"
 	icon_state = "ion"
 	fire_sound = 'sound/weapons/Laser.ogg'
@@ -17,23 +17,23 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/item/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
 		empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
 		return 1
 
-/obj/item/projectile/ion/small
+/obj/projectile/ion/small
 	sev1_range = -1
 	sev2_range = 0
 	sev3_range = 0
 	sev4_range = 1
 
-/obj/item/projectile/ion/pistol
+/obj/projectile/ion/pistol
 	sev1_range = 0
 	sev2_range = 0
 	sev3_range = 0
 	sev4_range = 0
 
-/obj/item/projectile/bullet/gyro
+/obj/projectile/bullet/gyro
 	name ="explosive bolt"
 	icon_state= "bolter"
 	damage = 50
@@ -41,11 +41,11 @@
 	sharp = 1
 	edge = 1
 
-/obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
 	explosion(target, -1, 0, 2)
 	..()
 
-/obj/item/projectile/temp
+/obj/projectile/temp
 	name = "freeze beam"
 	icon_state = "ice_2"
 	fire_sound = 'sound/weapons/pulse3.ogg'
@@ -61,7 +61,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/temp/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/temp/on_hit(atom/target, blocked = FALSE)
 	..()
 	if(isliving(target))
 		var/mob/living/L = target
@@ -86,13 +86,13 @@
 
 	return 1
 
-/obj/item/projectile/temp/hot
+/obj/projectile/temp/hot
 	name = "heat beam"
 	target_temperature = 1000
 
 	combustion = TRUE
 
-/obj/item/projectile/meteor
+/obj/projectile/meteor
 	name = "meteor"
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "smallf"
@@ -101,7 +101,7 @@
 	nodamage = 1
 	check_armour = "bullet"
 
-/obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
+/obj/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
 		return
 
@@ -113,13 +113,13 @@
 			shake_camera(M, 3, 1)
 	qdel(src)
 
-/obj/item/projectile/meteor/slug
+/obj/projectile/meteor/slug
 	name = "meteor"
 	damage = 25
 	damage_type = BRUTE
 	nodamage = 0
 
-/obj/item/projectile/energy/floramut
+/obj/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
@@ -133,7 +133,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
@@ -166,7 +166,7 @@
 	else
 		return 1
 
-/obj/item/projectile/energy/floramut/gene
+/obj/projectile/energy/floramut/gene
 	name = "gamma somatoray"
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
@@ -176,7 +176,7 @@
 	check_armour = "energy"
 	var/singleton/plantgene/gene = null
 
-/obj/item/projectile/energy/florayield
+/obj/projectile/energy/florayield
 	name = "beta somatoray"
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
@@ -188,7 +188,7 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/item/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
@@ -200,17 +200,17 @@
 		return 1
 
 
-/obj/item/projectile/beam/mindflayer
+/obj/projectile/beam/mindflayer
 	name = "flayer ray"
 
 	combustion = FALSE
 
-/obj/item/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))
 
-/obj/item/projectile/chameleon
+/obj/projectile/chameleon
 	name = "bullet"
 	icon_state = "bullet"
 	damage = 1 // stop trying to murderbone with a fake gun dumbass!!!
@@ -219,7 +219,7 @@
 	damage_type = HALLOSS
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 
-/obj/item/projectile/bola
+/obj/projectile/bola
 	name = "bola"
 	icon_state = "bola"
 	damage = 5
@@ -229,7 +229,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		var/obj/item/handcuffs/legcuffs/bola/B = new(src.loc)
@@ -238,7 +238,7 @@
 				qdel(B)
 	..()
 
-/obj/item/projectile/webball
+/obj/projectile/webball
 	name = "ball of web"
 	icon_state = "bola"
 	damage = 10
@@ -248,7 +248,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target.loc))
 		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
@@ -256,7 +256,7 @@
 			new /obj/effect/spider/stickyweb(target.loc)
 	..()
 
-/obj/item/projectile/beam/tungsten
+/obj/projectile/beam/tungsten
 	name = "core of molten tungsten"
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
@@ -272,7 +272,7 @@
 	tracer_type = /obj/effect/projectile/tungsten/tracer
 	impact_type = /obj/effect/projectile/tungsten/impact
 
-/obj/item/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
 		L.add_modifier(/datum/modifier/grievous_wounds, 30 SECONDS)
@@ -318,7 +318,7 @@
 
 	..()
 
-/obj/item/projectile/beam/tungsten/on_impact(var/atom/A)
+/obj/projectile/beam/tungsten/on_impact(var/atom/A)
 	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
@@ -328,14 +328,14 @@
 				explosion(blastloc, -1, -1, 2, 3)
 	..()
 
-/obj/item/projectile/beam/tungsten/Bump(atom/A, forced=0)
+/obj/projectile/beam/tungsten/Bump(atom/A, forced=0)
 	if(istype(A, /obj/structure/window)) //It does not pass through windows. It pulverizes them.
 		var/obj/structure/window/W = A
 		W.shatter()
 		return 0
 	..()
 
-/obj/item/projectile/bullet/honker
+/obj/projectile/bullet/honker
 	damage = 0
 	nodamage = TRUE
 	hitsound = 'sound/items/bikehorn.ogg'
@@ -343,39 +343,39 @@
 	icon_state = "banana"
 	range = 200
 
-/obj/item/projectile/bullet/honker/Initialize(mapload)
+/obj/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
 
-/obj/item/projectile/bullet/honker/lethal
+/obj/projectile/bullet/honker/lethal
 	damage = 20
 	nodamage = FALSE
 	damage_type = BRUTE
 
-/obj/item/projectile/bullet/honker/lethal/Initialize(mapload)
+/obj/projectile/bullet/honker/lethal/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
 
-/obj/item/projectile/bullet/honker/lethal/light
+/obj/projectile/bullet/honker/lethal/light
 	damage = 10
 
-/obj/item/projectile/bullet/honker/lethal/heavy
+/obj/projectile/bullet/honker/lethal/heavy
 	damage = 40
 
 //Bio-Organic
-/obj/item/projectile/bullet/organic
+/obj/projectile/bullet/organic
 	damage = 10
 	damage_type = BRUTE
 	check_armour = "bullet"
 	hitsound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
-/obj/item/projectile/bullet/organic/wax
+/obj/projectile/bullet/organic/wax
 	damage_type = HALLOSS
 	color = "#E6E685"
 	icon_state = "organic"
 
-/obj/item/projectile/bullet/organic/stinger
+/obj/projectile/bullet/organic/stinger
 	damage = 15
 	damage_type = TOX
 	hitsound = 'sound/weapons/bladeslice.ogg'

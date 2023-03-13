@@ -40,7 +40,7 @@
 
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			if(istype(I, /obj/item/gun/energy))
 				var/obj/item/gun/energy/energy_gun = G

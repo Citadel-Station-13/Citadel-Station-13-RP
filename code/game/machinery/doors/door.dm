@@ -166,7 +166,7 @@
 		else
 			do_animate("deny")
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
