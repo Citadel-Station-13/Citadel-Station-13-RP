@@ -85,6 +85,9 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(safety_check())
 		return
 	list_recipes(user)
@@ -361,7 +364,7 @@
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user)
+/obj/item/stack/attack_hand(mob/user, list/params)
 	if(safety_check())
 		return
 	if(user.get_inactive_held_item() == src)

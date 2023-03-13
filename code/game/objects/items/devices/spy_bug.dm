@@ -21,6 +21,9 @@
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>You crush the [src] under your foot, breaking it.</span>")
 		visible_message("[user.name] crushes the [src] under their foot, breaking it!</span>")
@@ -135,6 +138,9 @@
 	var/list/obj/machinery/camera/bug/cameras = new()
 
 /obj/item/bug_monitor/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(operating)
 		return
 

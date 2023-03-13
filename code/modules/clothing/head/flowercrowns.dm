@@ -3,7 +3,7 @@
 	desc = "A small wood circlet for making a flower crown."
 	icon_state = "woodcirclet"
 	w_class = ITEMSIZE_SMALL
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/woodcirclet/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/complete
@@ -44,38 +44,38 @@
 	name = "sunflower crown"
 	desc = "A flower crown weaved with sunflowers."
 	icon_state = "sunflower_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/lavender_crown
 	name = "lavender crown"
 	desc = "A flower crown weaved with lavender."
 	icon_state = "lavender_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 /obj/item/clothing/head/harebell_crown
 	name = "harebell crown"
 	desc = "A flower crown weaved with harebell."
 	icon_state = "lavender_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/poppy_crown
 	name = "poppy crown"
 	desc = "A flower crown weaved with poppies."
 	icon_state = "poppy_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/rose_crown
 	name = "rose crown"
 	desc = "A flower crown weaved with roses."
 	icon_state = "poppy_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 /obj/item/clothing/head/nettle_crown
 	name = "crown of thorns"
 	desc = "A crown weaved with nettles and other thorny plants. Itchy."
 	icon_state = "nettle_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/nettle_death_crown
 	name = "crown of spines"
 	desc = "A crown weaved with death nettles and other thorny plants. Smells faintly of burning."
 	icon_state = "nettle_death_crown"
-	body_parts_covered = 0
+	body_cover_flags = 0

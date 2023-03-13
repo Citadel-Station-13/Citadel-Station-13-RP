@@ -44,8 +44,10 @@
 				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return ..()
+/mob/living/carbon/attack_hand(mob/user, list/params)
+	var/mob/living/carbon/M = user
+	if(!istype(M))
+		return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -318,13 +320,13 @@
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
-	// 	if(head.flags_inv & HIDEMASK)
+	// 	if(head.inv_hide_flags & HIDEMASK)
 	// 		LAZYOR(., SLOT_MASK)
-	// 	if(head.flags_inv & HIDEEYES)
+	// 	if(head.inv_hide_flags & HIDEEYES)
 	// 		LAZYOR(., SLOT_EYES)
-	// 	if(head.flags_inv & HIDEEARS)
+	// 	if(head.inv_hide_flags & HIDEEARS)
 	// 		LAZYOR(., SLOT_EARS)
 
 	if(wear_mask)
-		if(wear_mask.flags_inv & HIDEEYES)
+		if(wear_mask.inv_hide_flags & HIDEEYES)
 			LAZYOR(., SLOT_EYES)

@@ -9,8 +9,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent
+	abstract_type = /datum/reagent
+
+	//? core
+	/// id - must be unique and in CamelCase.
+	var/id
+	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_flags = NONE
+
+	//? legacy / unsorted
 	var/name = "Reagent"
-	var/id = "reagent"
 	var/description = "A non-descript chemical."
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
@@ -60,6 +68,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/worth = 0
 	/// economic category of the reagent
 	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
+
+	//? wiki markup generation additional
+	/// override "name"
+	var/wiki_name
+	/// override "desc"
+	var/wiki_desc
+	/// wiki category - determines what table to put it into
+	var/wiki_category = "Miscellaneous"
+	/// forced sort ordering in its category - falls back to name otherwise.
+	var/wiki_sort = 0
 
 /datum/reagent/proc/remove_self(var/amount) // Shortcut
 	if(holder)

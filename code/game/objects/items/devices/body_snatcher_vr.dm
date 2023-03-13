@@ -67,5 +67,8 @@
 	else
 		to_chat(user,"<span class='warning'> A warning pops up on the LED display on the side of the device, informing you that the target is not able to have their mind swapped with!</span>")
 
-/obj/item/bodysnatcher/attack_self(mob/living/user)
+/obj/item/bodysnatcher/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user,"<span class='warning'> A message pops up on the LED display, informing you that you that the mind transfer to yourself was successful... Wait, did that even do anything?</span>")

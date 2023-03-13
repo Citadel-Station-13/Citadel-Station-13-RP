@@ -13,7 +13,7 @@
 /obj/machinery/igniter/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/igniter/attack_hand(mob/user)
+/obj/machinery/igniter/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -121,7 +121,7 @@
 	name = "ignition switch"
 	desc = "A remote control switch for a mounted igniter."
 
-/obj/machinery/button/ignition/attack_hand(mob/user)
+/obj/machinery/button/ignition/attack_hand(mob/user, list/params)
 
 	if(..())
 		return

@@ -7,7 +7,7 @@
 	item_icons = list(SLOT_ID_HEAD = 'icons/mob/clothing/pilot_helmet.dmi')
 	clothing_flags = THICKMATERIAL
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
-	flags_inv = HIDEEARS
+	inv_hide_flags = HIDEEARS
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HEAD
@@ -188,7 +188,10 @@
 	icon_state = "pilot_helmet2"
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/pilot/alt/attack_self(mob/user as mob)
+/obj/item/clothing/head/pilot/alt/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
 		to_chat(user, "You raise the visor on the pilot helmet.")

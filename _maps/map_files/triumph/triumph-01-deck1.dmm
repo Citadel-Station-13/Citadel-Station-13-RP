@@ -8454,7 +8454,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "EV" = (
-/obj/machinery/pda_multicaster/prebuilt,
+/obj/machinery/pda_multicaster,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},

@@ -36,7 +36,7 @@
 	desc = "Feminine fashion for the style conscious RD. Its fabric provides minor protection from biological contaminants."
 	icon_state = "dress_rd"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/research_director/turtleneck
 	desc = "A dark purple turtleneck and tan khakis, for a director with a superior sense of style."
@@ -192,7 +192,7 @@
 	icon_state = "nursesuit"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/nurse
@@ -202,7 +202,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "nursesuit", SLOT_ID_LEFT_HAND = "nursesuit")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/orderly
@@ -256,7 +256,7 @@
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one has a cross on the chest denoting that the wearer is trained medical personnel."
 	icon_state = "medical_short"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs

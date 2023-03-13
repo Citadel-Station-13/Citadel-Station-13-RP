@@ -265,3 +265,8 @@
 	name = "「 The Mind Electric 」"
 	path = /obj/item/clothing/suit/storage/mindelectric
 	ckeywhitelist = list("lectronyx")
+
+/datum/gear/donator/tajcigarcase
+	name = "S'rendarr's Hand case"
+	path = /obj/item/storage/fancy/cigar/taj
+	ckeywhitelist = list("vailthewolf")

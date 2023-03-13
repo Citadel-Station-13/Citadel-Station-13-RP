@@ -138,7 +138,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	return ..()
 
-/obj/item/radio/attack_self(mob/user as mob)
+/obj/item/radio/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	interact(user)
 
@@ -805,7 +808,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/bluespace_radio/ui_action_click()
 	toggle_handset()
 
-/obj/item/bluespace_radio/attack_hand(mob/user)
+/obj/item/bluespace_radio/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_handset()
 	else

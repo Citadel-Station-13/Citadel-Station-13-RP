@@ -254,7 +254,10 @@
 	. = ..()
 	name += spellname
 
-/obj/item/spellbook/oneuse/attack_self(mob/user as mob)
+/obj/item/spellbook/oneuse/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/spell/S = new spell(user)
 	for(var/spell/knownspell in user.spell_list)
 		if(knownspell.type == S.type)
@@ -409,7 +412,7 @@
 		to_chat(user, "<font size='15' color='red'><b>HOR-SIE HAS RISEN</b></font>")
 		var/obj/item/clothing/mask/horsehead/magichead = new /obj/item/clothing/mask/horsehead
 		ADD_TRAIT(magichead, TRAIT_ITEM_NODROP, MAGIC_TRAIT)
-		magichead.flags_inv = null	//so you can still see their face
+		magichead.inv_hide_flags = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
 		user.drop_item_to_ground(user.wear_mask, INV_OP_FORCE)
 		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)

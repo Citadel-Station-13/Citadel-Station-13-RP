@@ -23,7 +23,6 @@ var/list/gyrotrons = list()
 /obj/machinery/power/emitter/gyrotron/Initialize(mapload)
 	gyrotrons += src
 	active_power_usage = mega_energy * 50000
-	default_apply_parts()
 	. = ..()
 
 /obj/machinery/power/emitter/gyrotron/Destroy()

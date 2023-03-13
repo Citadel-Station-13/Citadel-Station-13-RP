@@ -8,7 +8,7 @@
 /area/class_h/POIs/saloon)
 "bF" = (
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "cr" = (

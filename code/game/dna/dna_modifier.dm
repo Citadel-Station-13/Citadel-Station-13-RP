@@ -49,17 +49,13 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 300
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/clonescanner
 
 	var/locked = FALSE
 	var/opened = FALSE
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_containers/glass/beaker = null
-
-/obj/machinery/dna_scannernew/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/dna_scannernew/relaymove(mob/user)
 	if (user.stat)
@@ -335,7 +331,7 @@
 	src.add_hiddenprint(user)
 	nano_ui_interact(user)
 
-/obj/machinery/computer/scan_consolenew/attack_hand(mob/user)
+/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, list/params)
 	if(!..())
 		nano_ui_interact(user)
 

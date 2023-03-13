@@ -15,7 +15,6 @@
 
 /obj/machinery/tele_projector/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_appearance()
 
 	return INITIALIZE_HINT_LATELOAD
@@ -50,7 +49,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand()
+/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
 	if(engaged)
 		disengage()
 	else

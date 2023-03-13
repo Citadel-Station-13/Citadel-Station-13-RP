@@ -789,7 +789,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
-	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
+	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
 		return move_trail

@@ -1,7 +1,7 @@
 /obj/item/clothing/gloves/arm_guard
 	name = "arm guards"
 	desc = "These arm guards will protect your hands and arms."
-	body_parts_covered = HANDS|ARMS
+	body_cover_flags = HANDS|ARMS
 	overgloves = 1
 	punch_force = 3
 	w_class = ITEMSIZE_NORMAL
@@ -19,11 +19,11 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.wear_suit)
-		if(H.wear_suit.body_parts_covered & ARMS)
+		if(H.wear_suit.body_cover_flags & ARMS)
 			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit], it's in the way.</span>")
 			return FALSE
 		for(var/obj/item/clothing/accessory/A in H.wear_suit)
-			if(A.body_parts_covered & ARMS)
+			if(A.body_cover_flags & ARMS)
 				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way.</span>")
 				return FALSE
 	return TRUE

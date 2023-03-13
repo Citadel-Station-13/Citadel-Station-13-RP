@@ -145,7 +145,7 @@
 	eject_slime()
 
 //Here lies the UI
-/obj/machinery/slime/extractor/attack_hand(mob/user as mob)
+/obj/machinery/slime/extractor/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

@@ -633,6 +633,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"bD" = (
+/obj/structure/sign/securearea,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/underground/under2)
 "bF" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -694,15 +698,6 @@
 "bQ" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_core)
-"bR" = (
-/obj/machinery/door/airlock/command{
-	id_tag = "RDdoor";
-	name = "Classified Science Records";
-	req_access = list(30)
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor,
-/area/rift/surfacebase/underground/under2)
 "bT" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/paper_bin,
@@ -737,6 +732,12 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"bW" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "bX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -821,6 +822,12 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
+"co" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "cp" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
@@ -1596,6 +1603,10 @@
 /obj/machinery/suit_storage_unit/cryosuit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
+"eE" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/underground/under2)
 "eG" = (
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
@@ -1619,10 +1630,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"eJ" = (
-/obj/structure/closet/secure_closet/guncabinet/robotics,
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "eK" = (
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
@@ -1776,13 +1783,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_smes)
-"fe" = (
-/obj/structure/stairs/spawner/south,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "ff" = (
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/chief)
@@ -2101,6 +2101,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"gg" = (
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
+	special_temperature = 233
+	},
+/area/rift/surfacebase/underground/under2)
 "gk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light,
@@ -2508,6 +2513,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"ho" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/science{
+	req_one_access = list(20,30);
+	name = "Secure Storage"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "hr" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
@@ -2830,6 +2847,11 @@
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
+"iA" = (
+/obj/machinery/door/airlock/maintenance/rnd,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under2)
 "iC" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -2872,6 +2894,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
+"iL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/science{
+	req_one_access = list(20,30);
+	name = "Secure Storage"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "iM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -3711,9 +3745,6 @@
 /obj/machinery/cryopod,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/cryo)
-"kL" = (
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "kM" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -3832,10 +3863,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
-"li" = (
-/obj/structure/sign/warning/secure_area,
-/turf/simulated/wall/r_wall,
-/area/rift/surfacebase/underground/under2)
 "lk" = (
 /turf/simulated/open/lythios43c{
 	outdoors = 0
@@ -3876,6 +3903,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"lp" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under2)
 "lq" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -3904,17 +3941,21 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/lino,
 /area/chapel/office)
+"lv" = (
+/obj/machinery/door/airlock/command{
+	id_tag = "RDdoor";
+	name = "Classified Science Records";
+	req_access = list(30)
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/surfacebase/underground/under2)
 "lw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
-"ly" = (
-/obj/structure/girder/reinforced,
-/obj/structure/foamedmetal,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under2)
 "lz" = (
 /obj/structure/table/steel,
 /obj/item/storage/fancy/candle_box,
@@ -4205,6 +4246,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
+"mn" = (
+/obj/structure/dispenser/phoron,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_eva)
 "mo" = (
 /obj/structure/railing{
 	dir = 4
@@ -4309,15 +4354,6 @@
 "mC" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
-"mD" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/airlock_sensor/phoron{
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
 "mE" = (
 /turf/simulated/floor/tiled,
@@ -4542,23 +4578,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"nd" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
-	},
-/obj/machinery/access_button/airlock_exterior{
-	pixel_x = -24;
-	dir = 4;
-	master_tag = "secure_science_stroage_airlock"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "ne" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4917,6 +4936,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
+"nQ" = (
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under2)
 "nR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4982,17 +5004,15 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"od" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
+"ob" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/folder{
+	pixel_y = 2
 	},
-/obj/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "secure_science_stroage_airlock_control";
-	name = "Secure Storage Access Controller";
-	pixel_x = 25;
-	dir = 8
+/obj/item/folder{
+	pixel_x = -4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/reinforced,
 /area/rift/surfacebase/underground/under2)
 "oe" = (
 /obj/structure/catwalk,
@@ -5605,6 +5625,23 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
+"pT" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/science{
+	req_one_access = list(20,30);
+	name = "Secure Storage"
+	},
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = -24;
+	dir = 4;
+	master_tag = "secure_science_stroage_airlock"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "pV" = (
 /obj/structure/railing{
 	dir = 4
@@ -5659,9 +5696,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "qg" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/secure/briefcase,
-/turf/simulated/floor/reinforced,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
 "qi" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5678,14 +5716,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
-"ql" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/door/airlock/glass_research,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "qm" = (
 /turf/simulated/wall,
 /area/rift/surfacebase/underground/under2)
@@ -5696,10 +5726,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"qq" = (
-/obj/structure/table/rack/shelf,
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "qr" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -5842,12 +5868,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
-"qS" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "qU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -6039,6 +6059,9 @@
 /area/maintenance/lower/mining)
 "rv" = (
 /turf/simulated/mineral,
+/area/rift/surfacebase/underground/under2)
+"rx" = (
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/underground/under2)
 "rz" = (
 /obj/structure/railing,
@@ -6271,26 +6294,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
-"so" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
-	},
-/obj/machinery/access_button/airlock_interior{
-	command = "cycle_exterior";
-	frequency = 1382;
-	master_tag = "secure_science_stroage_airlock";
-	name = "Xenobiology Access Control";
-	pixel_x = -24;
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "sq" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/underground/under2)
@@ -6356,12 +6359,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/locker_room)
-"sB" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "sD" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/cable{
@@ -6513,18 +6510,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"tn" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "to" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6780,6 +6765,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
+"uq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "ur" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -6796,6 +6787,10 @@
 /obj/machinery/mineral/equipment_vendor/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
+"uv" = (
+/obj/structure/closet/secure_closet/guncabinet/robotics,
+/turf/simulated/floor/reinforced,
+/area/rift/surfacebase/underground/under2)
 "uw" = (
 /obj/structure/railing{
 	dir = 8
@@ -7097,12 +7092,6 @@
 /obj/machinery/shield_gen/external,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
-"vR" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "vT" = (
 /obj/effect/floor_decal/chapel{
 	dir = 4
@@ -7270,16 +7259,6 @@
 /obj/item/flame/lighter/zippo/black,
 /turf/simulated/floor/lino,
 /area/chapel/office)
-"wF" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under2)
 "wG" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -7645,6 +7624,12 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"xZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "ya" = (
 /obj/item/bone/leg,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -7719,6 +7704,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"ys" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/airlock_sensor/phoron{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "yw" = (
 /obj/effect/blocker,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -7789,6 +7783,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
+"yO" = (
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "yQ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -7879,6 +7877,12 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/lino,
 /area/chapel/office)
+"zl" = (
+/obj/item/storage/secure/safe{
+	pixel_x = 36
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/surfacebase/underground/under2)
 "zm" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
@@ -7918,12 +7922,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"zx" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "zy" = (
 /turf/simulated/wall,
 /area/maintenance/atmos)
@@ -8057,6 +8055,10 @@
 "Aw" = (
 /turf/simulated/wall,
 /area/chapel/chapel_morgue)
+"Ax" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under2)
 "Ay" = (
 /obj/random/trash_pile,
 /obj/structure/railing{
@@ -8329,12 +8331,8 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
-"BI" = (
-/obj/structure/stairs/spawner/south,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+"BH" = (
+/turf/simulated/floor/tiled/white,
 /area/rift/surfacebase/underground/under2)
 "BJ" = (
 /obj/structure/table/reinforced,
@@ -8404,6 +8402,14 @@
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"Cc" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "Cd" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -8508,9 +8514,6 @@
 "CC" = (
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"CD" = (
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under2)
 "CF" = (
 /obj/structure/table/rack/shelf,
 /obj/item/storage/box/lights/mixed,
@@ -8809,12 +8812,6 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_waste)
-"DT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "DV" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
@@ -8883,15 +8880,10 @@
 /obj/item/clothing/gloves/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/locker_room)
-"En" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
+"Ej" = (
+/obj/structure/stairs/spawner/south,
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
@@ -8922,11 +8914,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
-"Eu" = (
-/obj/machinery/door/airlock/maintenance/rnd,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under2)
 "Ev" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -9468,17 +9455,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"Gz" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
-	req_one_access = list(47);
-	name = "General Storage"
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/rift/surfacebase/underground/under2)
 "GB" = (
 /obj/structure/toilet{
 	dir = 8
@@ -9521,19 +9497,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/chapel/chapel_morgue)
-"GK" = (
-/obj/structure/filingcabinet{
-	desc = "A large cabinet with drawers. They seem to be ominously empty.";
-	name = "Classified Science Records"
-	},
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "GL" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
+"GN" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "GO" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -9641,6 +9616,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/office)
+"Hy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "Hz" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9699,12 +9680,6 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
-"HP" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "HQ" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -9777,9 +9752,8 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Ic" = (
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
-	special_temperature = 233
-	},
+/obj/structure/filingcabinet,
+/turf/simulated/floor/reinforced,
 /area/rift/surfacebase/underground/under2)
 "Ie" = (
 /obj/structure/catwalk,
@@ -9818,9 +9792,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
-"Ik" = (
-/turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under2)
 "Im" = (
 /turf/simulated/wall,
 /area/maintenance/substation/engineering)
@@ -9872,12 +9843,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
-"Iz" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "IB" = (
 /obj/machinery/door/window/westleft{
 	dir = 2;
@@ -10117,6 +10082,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"Jy" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 2;
+	req_one_access = list(47);
+	name = "General Storage"
+	},
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/surfacebase/underground/under2)
 "JA" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10226,14 +10202,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
-"JY" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/machinery/door/airlock/glass_research,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "JZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/solar,
@@ -10346,10 +10314,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"Kv" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "Kw" = (
 /turf/simulated/wall/r_wall,
 /area/cryo)
@@ -10429,12 +10393,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
-"KM" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "KQ" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Showers"
@@ -10482,14 +10440,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"Ld" = (
-/obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/white/diagonal,
-/turf/simulated/floor/tiled,
-/area/engineering/break_room)
 "Lg" = (
 /obj/effect/map_effect/portal/master/side_a{
 	dir = 4;
@@ -11143,6 +11093,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
+"NF" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/secure/briefcase,
+/turf/simulated/floor/reinforced,
+/area/rift/surfacebase/underground/under2)
 "NG" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -11198,6 +11153,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"NM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "NN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11214,12 +11175,6 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under2)
-"NQ" = (
-/obj/item/storage/secure/safe{
-	pixel_x = 36
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/rift/surfacebase/underground/under2)
 "NT" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/surround,
@@ -11274,10 +11229,6 @@
 	name = "abandoned"
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
-"On" = (
-/obj/structure/sign/securearea,
-/turf/simulated/wall/r_wall,
 /area/rift/surfacebase/underground/under2)
 "Or" = (
 /obj/structure/noticeboard{
@@ -11419,6 +11370,10 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"OY" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/reinforced,
+/area/rift/surfacebase/underground/under2)
 "OZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -11677,6 +11632,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"Qa" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "Qc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -11800,16 +11759,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
-"QG" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/folder{
-	pixel_y = 2
-	},
-/obj/item/folder{
-	pixel_x = -4
-	},
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "QI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11856,10 +11805,6 @@
 "QX" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
-"Ra" = (
-/obj/effect/floor_decal/borderfloor,
-/turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
 "Rb" = (
 /obj/structure/railing,
@@ -12042,6 +11987,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
+"Sc" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "Se" = (
 /turf/simulated/wall,
 /area/chapel/office)
@@ -12170,6 +12123,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
+"SF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "SG" = (
 /obj/item/digestion_remains/skull/teshari,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -12207,6 +12166,14 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"Ta" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled,
+/area/engineering/break_room)
 "Td" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12250,6 +12217,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"Tj" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "Tk" = (
 /obj/machinery/door/airlock/glass{
 	name = "Chapel"
@@ -12273,9 +12246,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"Tp" = (
-/turf/simulated/floor/tiled/techfloor,
-/area/rift/surfacebase/underground/under2)
 "Tq" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -12397,6 +12367,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"TO" = (
+/turf/simulated/floor/reinforced,
+/area/rift/surfacebase/underground/under2)
 "TQ" = (
 /obj/machinery/shower{
 	dir = 1
@@ -12442,6 +12415,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"Ub" = (
+/obj/structure/girder/reinforced,
+/obj/structure/foamedmetal,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under2)
 "Ud" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light,
@@ -12693,12 +12671,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"Vm" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "Vo" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -13037,12 +13009,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"Wz" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/reinforced,
-/area/rift/surfacebase/underground/under2)
 "WA" = (
 /turf/simulated/floor/sky/depths/lythios43c,
+/area/rift/surfacebase/underground/under2)
+"WC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/airlock/access_controller{
+	id_tag = "secure_science_stroage_airlock_control";
+	name = "Secure Storage Access Controller";
+	pixel_x = 25;
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
 "WD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13050,6 +13030,26 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"WF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/science{
+	req_one_access = list(20,30);
+	name = "Secure Storage"
+	},
+/obj/machinery/access_button/airlock_interior{
+	command = "cycle_exterior";
+	frequency = 1382;
+	master_tag = "secure_science_stroage_airlock";
+	name = "Xenobiology Access Control";
+	pixel_x = -24;
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "WG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -13538,10 +13538,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
-"YS" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under2)
 "YX" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
@@ -13729,10 +13725,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "ZS" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 8
+/obj/structure/filingcabinet{
+	desc = "A large cabinet with drawers. They seem to be ominously empty.";
+	name = "Classified Science Records"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/reinforced,
 /area/rift/surfacebase/underground/under2)
 "ZT" = (
 /obj/structure/table/bench/padded,
@@ -13748,6 +13745,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
+"ZX" = (
+/obj/structure/stairs/spawner/south,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
 "ZZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -19696,7 +19700,7 @@ aa
 aa
 su
 su
-Ic
+gg
 aa
 aa
 aa
@@ -19889,8 +19893,8 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
@@ -20083,8 +20087,8 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
@@ -20095,25 +20099,25 @@ aa
 aa
 aa
 qm
-CD
-CD
-CD
-CD
+nQ
+nQ
+nQ
+nQ
 qm
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
 qm
 qm
 qm
@@ -20277,8 +20281,8 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
@@ -20289,29 +20293,29 @@ aa
 aa
 aa
 qm
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
 qm
 aa
 aa
@@ -20471,8 +20475,8 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
@@ -20483,29 +20487,29 @@ aa
 aa
 aa
 qm
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
-CD
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
 qm
-CD
-CD
-CD
+nQ
+nQ
+nQ
 qm
 aa
 aa
@@ -20665,9 +20669,9 @@ aa
 aa
 aa
 aa
-Ic
-Ic
-Ic
+gg
+gg
+gg
 aa
 aa
 aa
@@ -20677,7 +20681,7 @@ aa
 aa
 aa
 ML
-Eu
+iA
 ML
 ML
 ML
@@ -20697,9 +20701,9 @@ ML
 ML
 ML
 ML
-CD
-CD
-CD
+nQ
+nQ
+nQ
 qm
 aa
 aa
@@ -20860,40 +20864,40 @@ aa
 aa
 aa
 aa
+gg
+gg
+gg
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ML
+NM
+SF
+GN
+Ej
+ML
+uv
+rx
+rx
+TO
+ML
+TO
+rx
+rx
+TO
+ML
 Ic
+rx
+rx
 Ic
-Ic
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 ML
-Iz
-KM
-HP
-BI
-ML
-eJ
-Tp
-Tp
-kL
-ML
-kL
-Tp
-Tp
-kL
-ML
-Wz
-Tp
-Tp
-Wz
-ML
-CD
-CD
-CD
+nQ
+nQ
+nQ
 qm
 aa
 aa
@@ -21054,40 +21058,40 @@ aa
 aa
 aa
 aa
+gg
+gg
+gg
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ML
+qg
+Qa
+xZ
+ZX
+ML
+OY
+rx
+rx
+OY
+ML
+OY
+rx
+rx
+OY
+ML
 Ic
+rx
+rx
 Ic
-Ic
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 ML
-vR
-Kv
-Vm
-fe
-ML
-qq
-Tp
-Tp
-qq
-ML
-qq
-Tp
-Tp
-qq
-ML
-Wz
-Tp
-Tp
-Wz
-ML
-CD
-CD
-CD
+nQ
+nQ
+nQ
 qm
 aa
 ML
@@ -21248,57 +21252,57 @@ aa
 aa
 aa
 aa
+gg
+gg
+gg
+gg
+aa
+aa
+aa
+aa
+aa
+aa
+ML
+qg
+yO
+BH
+BH
+ML
+OY
+rx
+rx
+OY
+ML
+OY
+rx
+rx
+OY
+ML
 Ic
+rx
+rx
 Ic
-Ic
-Ic
-aa
-aa
-aa
-aa
-aa
-aa
 ML
-vR
-Ra
-Ik
-Ik
-ML
-qq
-Tp
-Tp
-qq
-ML
-qq
-Tp
-Tp
-qq
-ML
-Wz
-Tp
-Tp
-Wz
-ML
-CD
-CD
+nQ
+nQ
 ML
 ML
 ML
 ML
-ly
-ly
-ly
-ly
-ly
-ly
-ly
-ly
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
 ML
-ly
-ly
-ly
-ly
-ly
+Ub
+Ub
+Ub
+Ub
+Ub
 ML
 aa
 aa
@@ -21445,41 +21449,39 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
 aa
 aa
 ML
-vR
-Ra
-Ik
-Ik
-On
-YS
-Tp
-Gz
-YS
+qg
+yO
+BH
+BH
+bD
+Ax
+rx
+Jy
+Ax
 ML
-YS
-Tp
-Gz
-YS
-ML
-ML
-Tp
-Gz
+Ax
+rx
+Jy
+Ax
 ML
 ML
-Eu
+rx
+Jy
 ML
 ML
-wF
-wF
+iA
 ML
 ML
+lp
+lp
 ML
 ML
 ML
@@ -21492,7 +21494,9 @@ ML
 ML
 ML
 ML
-ly
+ML
+ML
+Ub
 ML
 aa
 aa
@@ -21639,54 +21643,54 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
 aa
 aa
 ML
-vR
-ZS
-KM
-KM
-JY
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-nd
-KM
-KM
-so
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-KM
-zx
+qg
+Tj
+SF
+SF
+Sc
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+pT
+SF
+SF
+WF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+co
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -21833,54 +21837,54 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
 aa
 aa
 ML
-qS
-DT
-DT
-DT
-ql
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-En
-mD
-od
-tn
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-DT
-sB
+Hy
+bW
+bW
+bW
+Cc
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+ho
+ys
+WC
+iL
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+uq
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -22028,8 +22032,8 @@ aa
 aa
 aa
 aa
-Ic
-Ic
+gg
+gg
 aa
 aa
 aa
@@ -22040,41 +22044,41 @@ ML
 ML
 ML
 ML
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-Ik
-li
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+eE
 ML
 ML
 ML
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -22252,21 +22256,21 @@ ML
 ML
 ML
 ML
-ly
+Ub
 ML
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
-Tp
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
+rx
 ML
 ML
 ML
@@ -22446,23 +22450,23 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
 ML
 ML
-bR
+lv
 ML
 ML
 ML
 ML
-kL
+TO
 ML
 ML
 ML
-kL
+TO
 ML
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -22610,11 +22614,11 @@ aa
 aa
 aa
 aa
-Ic
-Ic
-Ic
-Ic
-Ic
+gg
+gg
+gg
+gg
+gg
 am
 am
 am
@@ -22640,23 +22644,23 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
-GK
-Tp
-Tp
-Tp
-GK
+ZS
+rx
+rx
+rx
+ZS
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -22805,10 +22809,10 @@ aa
 aa
 aa
 aa
-Ic
-Ic
-Ic
-Ic
+gg
+gg
+gg
+gg
 am
 am
 am
@@ -22834,23 +22838,23 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
-qg
-Tp
-Tp
-Tp
-qg
+NF
+rx
+rx
+rx
+NF
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -23028,23 +23032,23 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
-QG
-Tp
-Tp
-Tp
-qg
+ob
+rx
+rx
+rx
+NF
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-kL
-kL
-kL
+TO
+TO
+TO
 ML
-ly
+Ub
 ML
 aa
 aa
@@ -23222,15 +23226,13 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
-GK
-NQ
-NQ
-NQ
-GK
-ML
-ML
+ZS
+zl
+zl
+zl
+ZS
 ML
 ML
 ML
@@ -23238,7 +23240,9 @@ ML
 ML
 ML
 ML
-ly
+ML
+ML
+Ub
 ML
 aa
 aa
@@ -23416,7 +23420,7 @@ aa
 aa
 aa
 ML
-ly
+Ub
 ML
 ML
 ML
@@ -23424,15 +23428,15 @@ ML
 ML
 ML
 ML
-ly
-ly
-ly
-ly
-ly
-ly
-ly
-ly
-ly
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
 ML
 aa
 aa
@@ -23610,15 +23614,15 @@ aa
 aa
 aa
 ML
-ly
-ly
-ly
-ly
-ly
-ly
-ly
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
 ML
-ly
+Ub
 ML
 ML
 ML
@@ -30949,7 +30953,7 @@ DB
 Qj
 Ko
 Ko
-Ld
+Ta
 DB
 KA
 Uz
@@ -32121,7 +32125,7 @@ iD
 iN
 Ko
 DB
-va
+mn
 ct
 Lt
 IM

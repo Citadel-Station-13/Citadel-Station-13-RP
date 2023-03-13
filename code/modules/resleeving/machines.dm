@@ -198,7 +198,6 @@
 
 /obj/machinery/transhuman/synthprinter/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/transhuman/synthprinter/RefreshParts()
@@ -342,7 +341,7 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/attack_hand(mob/user)
+/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, list/params)
 	if((busy == 0) || (machine_stat & NOPOWER))
 		return
 	to_chat(user, "Current print cycle is [busy]% complete.")
@@ -418,7 +417,6 @@
 
 /obj/machinery/transhuman/resleever/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/transhuman/resleever/RefreshParts()
@@ -432,7 +430,7 @@
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
-/obj/machinery/transhuman/resleever/attack_hand(mob/user)
+/obj/machinery/transhuman/resleever/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	var/health_text = ""
 	var/mind_text = ""

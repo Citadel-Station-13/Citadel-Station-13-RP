@@ -21,7 +21,6 @@ var/list/fuel_injectors = list()
 /obj/machinery/fusion_fuel_injector/Initialize(mapload)
 	. = ..()
 	fuel_injectors += src
-	default_apply_parts()
 
 /obj/machinery/fusion_fuel_injector/Destroy()
 	if(cur_assembly)
@@ -80,7 +79,7 @@ var/list/fuel_injectors = list()
 
 	return ..()
 
-/obj/machinery/fusion_fuel_injector/attack_hand(mob/user)
+/obj/machinery/fusion_fuel_injector/attack_hand(mob/user, list/params)
 
 	if(injecting)
 		to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")

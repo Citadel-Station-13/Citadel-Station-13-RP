@@ -4,7 +4,7 @@
 	icon_state = "wizard"
 	//Not given any special protective value since the magic robes are full-body protection --NEO
 	siemens_coefficient = 0.8
-	body_parts_covered = 0
+	body_cover_flags = 0
 	wizard_garb = 1
 
 /obj/item/clothing/head/wizard/red
@@ -17,7 +17,7 @@
 	name = "wizard hat"
 	desc = "It has WIZZARD written across it in sequins. Comes with a cool beard."
 	icon_state = "wizard-fake"
-	body_parts_covered = HEAD|FACE
+	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/head/wizard/marisa
 	name = "Witch Hat"
@@ -30,7 +30,7 @@
 	desc = "A mysterious helmet that hums with an unearthly power"
 	icon_state = "magus"
 	siemens_coefficient = 0.8
-	body_parts_covered = HEAD|FACE|EYES
+	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/head/wizard/amp
 	name = "psychic amplifier"
@@ -53,7 +53,7 @@
 	permeability_coefficient = 0.01
 	armor = list(melee = 30, bullet = 20, laser = 20,energy = 20, bomb = 20, bio = 20, rad = 20)
 	allowed = list(/obj/item/teleportation_scroll)
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.8
 	wizard_garb = 1
 
@@ -71,13 +71,13 @@
 	name = "Magus Robe"
 	desc = "A set of armoured robes that seem to radiate a dark power"
 	icon_state = "magusblue"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 
 /obj/item/clothing/suit/wizrobe/magusred
 	name = "Magus Robe"
 	desc = "A set of armoured robes that seem to radiate a dark power"
 	icon_state = "magusred"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 
 /obj/item/clothing/suit/wizrobe/psypurple
 	name = "purple robes"
@@ -89,8 +89,8 @@
 	desc = "A heavy threaded twead gray jacket. For a different sort of Gentleman."
 	icon_state = "gentlecoat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "greatcoat", SLOT_ID_LEFT_HAND = "greatcoat")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/wizrobe/fake
 	name = "wizard robe"
@@ -111,6 +111,6 @@
 	name = "Witch Robe"
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 1.0
