@@ -36,25 +36,25 @@
 
 /datum/design/circuit/telesci_console
 	name = "Telepad Control Console"
-	id = "telesci_console"
+	identifier = "telesci_console"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 3, TECH_PHORON = 4)
 	build_path = /obj/item/circuitboard/telesci_console
 
 /datum/design/circuit/telesci_pad
 	name = "Telepad"
-	id = "telesci_pad"
+	identifier = "telesci_pad"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/telesci_pad
 
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
-	id = "quantum_pad"
+	identifier = "quantum_pad"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/quantumpad
 
 /datum/design/science/bluespace_crystal
 	name = "Artificial Bluespace Crystal"
-	id = "bluespace_crystal"
+	identifier = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)
 	materials = list(MAT_DIAMOND = 1500, MAT_PHORON = 1500)
 	build_path = /obj/item/ore/bluespace_crystal/artificial

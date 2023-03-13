@@ -73,7 +73,7 @@
 
 /obj/item/card/
 
-/obj/item/card/id/digest_act()
+/obj/item/card/id/digest_act(atom/item_storage)
 	return FALSE
 
 /obj/item/reagent_containers/food/digest_act(var/atom/movable/item_storage = null)

@@ -195,7 +195,7 @@
 		for(var/datum/design/D in S.files.known_designs)
 			designs.Add(list(list(
 				"name" = D.name,
-				"id" = D.id,
+				"id" = D.identifier,
 			)))
 		server_list.Add(list(server_data))
 
@@ -261,8 +261,8 @@
 			var/choice = alert("Design Data Deletion", "Are you sure you want to delete this design? If you still have the prerequisites for the design, it'll reset to its base reliability. Data lost cannot be recovered.", "Continue", "Cancel")
 			if(choice == "Continue")
 				for(var/datum/design/D in target.files.known_designs)
-					if(D.id == params["design"])
-						target.files.known_design_ids -= D.id
+					if(D.identifier == params["design"])
+						target.files.known_design_ids -= D.identifier
 						target.files.known_designs -= D
 						break
 			target.files.RefreshResearch()
