@@ -36,3 +36,21 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mml
+
+/datum/design/ammo/smg/a10mm
+	identifier = "AmmoSMG10mm"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m10mm
+
+/datum/design/ammo/smg/a45tommy
+	identifier = "AmmoSMG45Tommy"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m45tommy
+
+/datum/design/ammo/smg/a45tommydrum
+	identifier = "AmmoSMG45TommyDrum"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m45tommydrum

@@ -7,6 +7,18 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m762
 
+/datum/design/ammo/rifle/m545mm
+	identifier = "AmmoRifle545mm"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m545
+
+/datum/design/ammo/rifle/m545mm_practice
+	identifier = "AmmoRifle545mmPractice"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m545/practice
+
 /datum/design/ammo/rifle/c545mm
 	identifier = "AmmoClip545mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
