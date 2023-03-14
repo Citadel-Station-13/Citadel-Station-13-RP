@@ -88,11 +88,10 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_INSTRUMENTS     50
 #define INIT_ORDER_EARLY_ASSETS    48
-#define INIT_ORDER_SQLITE          40
 #define INIT_ORDER_CHEMISTRY       35
+#define INIT_ORDER_RESEARCH        34
 #define INIT_ORDER_MATERIALS       30
 #define INIT_ORDER_MAPPING         25
-#define INIT_ORDER_DECALS          20
 #define INIT_ORDER_PLANTS          19
 #define INIT_ORDER_ALARMS          18
 #define INIT_ORDER_ATOMS           15
@@ -118,7 +117,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_OPENSPACE      -99
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 

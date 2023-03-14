@@ -269,7 +269,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD))
 		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
 		var/max = refactory.max_storage
-		for(var/material in refactory.materials)
+		for(var/material in refactory.stored_materials)
 			var/amount = refactory.get_stored_material(material)
 			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
 	else
