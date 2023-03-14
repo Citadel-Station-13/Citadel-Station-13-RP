@@ -34,7 +34,7 @@
 	if(canBuild(D))
 		busy = 1
 		progress += speed
-		if(progress >= D.time)
+		if((progress * 20) >= D.work)
 			build(D)
 			progress = 0
 			removeFromQueue(1)

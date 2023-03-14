@@ -96,10 +96,10 @@
 	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
 	for(var/datum/material/M as anything in SSmaterials.all_materials())
 		var/Name = M.name
-		if(Name in materials)
+		if(Name in stored_materials)
 			continue
 
-		materials[Name] = 0
+		stored_materials[Name] = 0
 
 	files = new /datum/research(src) //Setup the research data holder.
 
@@ -119,7 +119,7 @@
 		add_overlay("[base_icon_state]-active")
 
 /obj/machinery/mecha_part_fabricator/dismantle()
-	for(var/f in materials)
+	for(var/f in stored_materials)
 		eject_materials(f, -1)
 	..()
 
@@ -215,8 +215,8 @@
 /obj/machinery/mecha_part_fabricator/proc/output_available_resources()
 	var/list/material_data = list()
 
-	for(var/mat_id in materials)
-		var/amount = materials[mat_id]
+	for(var/mat_id in stored_materials)
+		var/amount = stored_materials[mat_id]
 		var/list/material_info = list(
 			"name" = mat_id,
 			"amount" = amount,
@@ -275,7 +275,7 @@
 	. = TRUE
 	var/list/coeff_required = get_resources_w_coeff(D)
 	for(var/mat_id in coeff_required)
-		if(materials[mat_id] < coeff_required[mat_id])
+		if(stored_materials[mat_id] < coeff_required[mat_id])
 			return FALSE
 
 /**
@@ -315,7 +315,7 @@
 
 	build_materials = get_resources_w_coeff(D)
 	for(var/mat_id in build_materials)
-		materials[mat_id] -= build_materials[mat_id]
+		stored_materials[mat_id] -= build_materials[mat_id]
 
 	being_built = D
 	build_finish = world.time + get_construction_time_w_coeff(initial(D.time))
@@ -648,22 +648,22 @@
 
 	if(istype(I,/obj/item/stack/material))
 		var/obj/item/stack/material/S = I
-		if(!(S.material.name in materials))
+		if(!(S.material.name in stored_materials))
 			to_chat(user, SPAN_WARNING("The [src] doesn't accept [S.material]!"))
 			return
 
 		var/sname = "[S.name]"
 		var/matname = "[S.material.name]"
 		var/amnt = S.perunit
-		if(materials[S.material.name] + amnt <= res_max_amount)
+		if(stored_materials[S.material.name] + amnt <= res_max_amount)
 			if(S && S.get_amount() >= 1)
 				var/count = 0
 				//This is dumb that it happens here but whatever. I guess it's a TODO then.
 				add_overlay("[initial(icon_state)]-load-[matname]")
 				spawn(10)
 					cut_overlay("[initial(icon_state)]-load-[matname]")
-				while(materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
-					materials[S.material.name] += amnt
+				while(stored_materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
+					stored_materials[S.material.name] += amnt
 					S.use(1)
 					count++
 				to_chat(user, "You insert [count] [sname] into the fabricator.")
@@ -696,7 +696,7 @@
 /obj/machinery/mecha_part_fabricator/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	var/matstring = lowertext(material)
-	var/contains = materials[matstring]
+	var/contains = stored_materials[matstring]
 	if(!contains)
 		return
 	var/datum/material/M = get_material_by_name(matstring)
@@ -709,6 +709,6 @@
 	if(S.amount <= 0)
 		qdel(S)
 		return
-	materials[matstring] -= ejected * S.perunit
+	stored_materials[matstring] -= ejected * S.perunit
 	if(recursive && contains >= S.perunit)
 		eject_materials(matstring, -1)

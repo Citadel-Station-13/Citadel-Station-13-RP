@@ -103,9 +103,9 @@ research holder datum.
 	return
 
 /datum/research/proc/AddDesign2Known(var/datum/design/D)
-	if(known_design_ids[D.id])
+	if(known_design_ids[D.identifier])
 		return
-	known_design_ids[D.id] = D
+	known_design_ids[D.identifier] = D
 	known_designs += D
 
 ///Refreshes known_tech and known_designs list
