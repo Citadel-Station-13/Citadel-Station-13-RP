@@ -91,7 +91,7 @@
 	name = "Pirate voidsuit helmet"
 	desc = "Pirates come from many walks of life. Drawn by the allure of easy riches, many pirates must come to terms with the realities of funding their own expeditions. As such, they find their fun where they can, like with decorative helmet elements."
 	icon_state = "spacepirate"
-	armor = list(melee = 50, bullet = 20, laser = 30, energy = 5, bomb = 20, bio = 100, rad = 70)
+	r_armor_type = /datum/armor/pirate/space
 
 /obj/item/clothing/head/helmet/space/void/pirate/alt
 	name = "Pirate voidsuit helmet"
@@ -101,7 +101,7 @@
 	name = "Pirate voidsuit"
 	desc = "The majority of pirate crews purchase bulk or surplus voidsuits and attempt to improve their armor themselves to cut costs. Although effective when facing their preferred targets, this often leaves pirate bands vulnerable to retaliation from SDF and Security forces. Pirate voidsuits sport a wide array of cosmetic paint jobs, usually related to the band its owner belongs to. These suits are sometimes recovered and collected as pieces of art."
 	icon_state = "spacepirate"
-	armor = list(melee = 50, bullet = 20, laser = 30, energy = 5, bomb = 20, bio = 100, rad = 70)
+	r_armor_type = /datum/armor/pirate/space
 
 //Pirate Red Mining Suit variant.
 /obj/item/clothing/head/helmet/space/void/pirate/scrapper

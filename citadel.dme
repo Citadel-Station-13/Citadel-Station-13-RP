@@ -609,6 +609,7 @@
 #include "code\datums\armor\clothing\mask.dm"
 #include "code\datums\armor\clothing\shoes.dm"
 #include "code\datums\armor\outsider\merc.dm"
+#include "code\datums\armor\outsider\pirate.dm"
 #include "code\datums\armor\outsider\vintage.dm"
 #include "code\datums\armor\species\phoronoid.dm"
 #include "code\datums\armor\station\armor.dm"
