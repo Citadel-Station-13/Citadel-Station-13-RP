@@ -75,7 +75,10 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/energy/attack_self(mob/living/user as mob)
+/obj/item/melee/energy/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
 			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
@@ -86,7 +89,8 @@
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H.take_organ_damage(5,5)
 		deactivate(user)
 	else
 		activate(user)
@@ -514,7 +518,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/energy/blade/attack_self(mob/user as mob)
+/obj/item/melee/energy/blade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	qdel(src)
 
 /obj/item/melee/energy/blade/dropped(mob/user, atom_flags, atom/newLoc)
@@ -586,8 +593,6 @@
 	active_throwforce = 30
 	active_w_class = ITEMSIZE_HUGE
 	colorable = TRUE
-
-
 	lcolor = "#800080"
 
 /obj/item/melee/energy/spear/activate(mob/living/user)
@@ -595,6 +600,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
 	..()
 	attack_verb = list("jabbed", "stabbed", "impaled")
+	AddComponent(/datum/component/jousting)
 
 
 /obj/item/melee/energy/spear/deactivate(mob/living/user)
@@ -602,6 +608,7 @@
 		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
 	..()
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
+	DelComponent(/datum/component/jousting)
 
 /obj/item/melee/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
@@ -636,7 +643,10 @@
 /obj/item/melee/energy/hfmachete/update_icon()
 	icon_state = "[base_state][active]"
 
-/obj/item/melee/energy/hfmachete/attack_self(mob/living/user)
+/obj/item/melee/energy/hfmachete/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggleActive(user)
 	add_fingerprint(user)
 

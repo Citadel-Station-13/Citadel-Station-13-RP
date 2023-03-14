@@ -637,17 +637,23 @@
 	name = "wooden arrow"
 	desc = "An arrow made of wood, typically fired from a bow."
 
+/obj/item/ammo_casing/arrow/bone
+	name = "bone arrow"
+	desc = "An arrow made of bone, knapped to a piercing tip."
+	icon_state = "ashenarrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
+
 /obj/item/ammo_casing/arrow/ash
 	name = "ashen arrow"
 	desc = "An arrow made of wood, hardened by fire."
 	icon_state = "ashenarrow"
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow/ash
 
-/obj/item/ammo_casing/arrow/bone
-	name = "bone arrow"
+/obj/item/ammo_casing/arrow/bone_ap
+	name = "hardened bone arrow"
 	desc = "An arrow made of bone and sinew. The tip is sharp enough to pierce through a goliath plate."
 	icon_state = "bonearrow"
-	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone_ap
 
 /obj/item/ammo_casing/arrow/bronze
 	name = "bronze arrow"

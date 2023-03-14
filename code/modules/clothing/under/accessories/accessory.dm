@@ -130,7 +130,7 @@
 	..()
 
 //default attack_hand behaviour
-/obj/item/clothing/accessory/attack_hand(mob/user as mob)
+/obj/item/clothing/accessory/attack_hand(mob/user, list/params)
 	if(has_suit)
 		return	//we aren't an object on the ground so don't call parent
 	..()
@@ -383,7 +383,10 @@
 	slot = ACCESSORY_SLOT_DECOR
 	action_button_name = "Adjust Gaiter"
 
-/obj/item/clothing/accessory/gaiter/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You pull the gaiter up over your nose.")
@@ -542,7 +545,10 @@
 	overlay_state = "choker_cst_overlay"
 	var/customized = 0
 
-/obj/item/clothing/accessory/choker/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/choker/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!customized)
 		var/design = input(user,"Descriptor?","Pick descriptor","") in list("plain","simple","ornate","elegant","opulent")
 		var/material = input(user,"Material?","Pick material","") in list("leather","velvet","lace","fabric","latex","plastic","metal","chain","silver","gold","platinum","steel","bead","ruby","sapphire","emerald","diamond")
@@ -578,7 +584,7 @@
 		if(istype(has_suit) && ishuman(has_suit.loc))
 			H = has_suit.loc
 	if(istype(H))
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_species_id() == SPECIES_ID_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
 		update_worn_icon()
 
@@ -793,7 +799,10 @@
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/collar/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
 	else
@@ -868,15 +877,23 @@
 //Primal
 /obj/item/clothing/accessory/talisman
 	name = "bone talisman"
-	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
+	desc = "A Scori religious talisman. Some say the Buried Ones smile on those who wear it."
 	icon_state = "talisman"
 	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	slot = ACCESSORY_SLOT_TIE
+
+/obj/item/clothing/accessory/disenchanted_talisman
+	name = "disenchanted bone talisman"
+	desc = "A Scori religious talisman, perhaps given as a gift. Whatever protections such an item may have once brought have since faded away."
+	icon_state = "talisman"
+	slot = ACCESSORY_SLOT_TIE
 
 /obj/item/clothing/accessory/skullcodpiece
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
 	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/skullcodpiece/fake
 	name = "false codpiece"

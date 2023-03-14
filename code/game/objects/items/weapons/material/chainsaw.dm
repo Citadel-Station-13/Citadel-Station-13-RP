@@ -58,7 +58,10 @@
 	on = 0
 	update_icon()
 
-/obj/item/chainsaw/attack_self(mob/user as mob)
+/obj/item/chainsaw/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!on)
 		turnOn(user)
 	else
@@ -125,7 +128,7 @@
 
 /obj/item/chainsaw/chainsword
 	name = "chainsaw sword"
-	desc = "This weapon requires extensive training to wield effectively. Its spinning teeth are able to cut through metal as easily as flesh. Handle with care."
+	desc = "The whirring assembly normally found in a chainsaw, now affixed to a sword-hilt. This weapon requires extensive training to wield effectively."
 	icon_state = "chainsword0"
 	item_state = "chainsword0"
 	slot_flags = SLOT_BELT

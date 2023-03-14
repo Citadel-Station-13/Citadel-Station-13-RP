@@ -1,24 +1,26 @@
 // todo: refactor _job.dm
 /datum/controller/subsystem/job
 
+//? Jobs
+
 /datum/controller/subsystem/job/proc/job_by_id(id)
-	RETURN_TYPE(/datum/job)
+	RETURN_TYPE(/datum/role/job)
 	return job_lookup[id]
 
 /datum/controller/subsystem/job/proc/job_by_type(path)
-	RETURN_TYPE(/datum/job)
+	RETURN_TYPE(/datum/role/job)
 	return type_occupations[path]
 
 // todo: this should not be used most of the time, id/type is better
 /datum/controller/subsystem/job/proc/job_by_title(title)
-	RETURN_TYPE(/datum/job)
+	RETURN_TYPE(/datum/role/job)
 	return name_occupations[title]
 
 /datum/controller/subsystem/job/proc/all_job_ids(faction)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
-		for(var/datum/job/J as anything in occupations)
+		for(var/datum/role/job/J as anything in occupations)
 			if(J.faction != faction)
 				continue
 			. += J.id
@@ -30,7 +32,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
-		for(var/datum/job/J as anything in occupations)
+		for(var/datum/role/job/J as anything in occupations)
 			if(J.faction != faction)
 				continue
 			. += J.type
@@ -43,7 +45,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
-		for(var/datum/job/J as anything in occupations)
+		for(var/datum/role/job/J as anything in occupations)
 			if(J.faction != faction)
 				continue
 			. += J.title
@@ -55,10 +57,14 @@
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
-		for(var/datum/job/J as anything in occupations)
+		for(var/datum/role/job/J as anything in occupations)
 			if(J.faction != faction)
 				continue
 			. += J
 	else
-		for(var/datum/job/J as anything in occupations)
+		for(var/datum/role/job/J as anything in occupations)
 			. += J
+
+//? Departments
+
+// todo: dept stuff

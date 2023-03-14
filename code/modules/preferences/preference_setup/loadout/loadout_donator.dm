@@ -186,12 +186,6 @@
 	path = /obj/item/faketvcamera
 	ckeywhitelist = list("fauxmagician")
 
-/datum/gear/donator/hueyskirt
-	name = "High-Waisted Business Skirt"
-	slot = SLOT_ID_SUIT
-	path = /obj/item/clothing/under/skirt/donator/doopytoots
-	ckeywhitelist = list("doopytoots")
-
 /datum/gear/donator/mikubikini
 	name = "starlight singer bikini"
 	path = /obj/item/clothing/under/donator/mikubikini
@@ -271,3 +265,8 @@
 	name = "「 The Mind Electric 」"
 	path = /obj/item/clothing/suit/storage/mindelectric
 	ckeywhitelist = list("lectronyx")
+
+/datum/gear/donator/tajcigarcase
+	name = "S'rendarr's Hand case"
+	path = /obj/item/storage/fancy/cigar/taj
+	ckeywhitelist = list("vailthewolf")

@@ -39,7 +39,7 @@ About the Holder:
 
 	Procs:
 
-		get_free_space()
+		available_volume()
 			Returns the remaining free volume in the holder.
 
 		get_master_reagent()

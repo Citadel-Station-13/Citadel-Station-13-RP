@@ -1,16 +1,16 @@
-/datum/job/station/emergency_responder //For staff managing/leading ERTs
+/datum/role/job/station/emergency_responder //For staff managing/leading ERTs
 	id = JOB_ID_EMERGENCY_RESPONDER
 	title = "Emergency Responder"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_ADMIN
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	access = list()
+	additional_access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	economic_modifier = 20
 	whitelist_only = 1
 	join_types = JOB_LATEJOIN
 	outfit_type = /datum/outfit/job/station/emergency_responder
@@ -21,7 +21,7 @@
 
 	pto_type = PTO_CIVILIAN
 
-/datum/job/station/emergency_responder/get_access()
+/datum/role/job/station/emergency_responder/get_access()
 	return get_all_accesses().Copy()
 
 /datum/outfit/job/station/emergency_responder

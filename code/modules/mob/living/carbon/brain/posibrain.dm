@@ -5,7 +5,7 @@
 	icon_state = "posibrain"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 
 	/// Message sent to the user when polling ghosts
 	var/begin_activation_message = SPAN_NOTICE("You carefully locate the manual activation switch and start the positronic brain's boot process.")
@@ -34,6 +34,9 @@
 			question(ghost)
 
 /obj/item/mmi/digital/posibrain/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, SPAN_NOTICE("You carefully locate the manual activation switch and start the positronic brain's boot process."))

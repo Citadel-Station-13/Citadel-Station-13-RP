@@ -74,7 +74,7 @@
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(var/mob/living/user)
+/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
@@ -211,7 +211,7 @@
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
-/obj/item/gun/ballistic/pistol/attack_hand(mob/living/user as mob)
+/obj/item/gun/ballistic/pistol/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(silenced)
 			if(!user.is_holding(src))
@@ -363,7 +363,7 @@
 
 /obj/item/gun/ballistic/r9
 	name = "C96-Red 9"
-	desc = "A variation on the Mauser C-96 - the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using stripper clips."
+	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
 	caliber = "9mm"
@@ -431,7 +431,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user)
+/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else

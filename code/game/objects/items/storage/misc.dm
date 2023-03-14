@@ -180,8 +180,12 @@
 	name = "munition box (musket)"
 	desc = "A tanned leather pouch large enough to hold a few loose musket balls."
 	icon_state = "musket_box"
+	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_TINY * 6
 	can_hold = list(
 		/obj/item/ammo_casing/musket
 		)
 	starts_with = list(/obj/item/ammo_casing/musket = 6)
+
+/obj/item/storage/box/munition_box/empty
+	starts_with = list()

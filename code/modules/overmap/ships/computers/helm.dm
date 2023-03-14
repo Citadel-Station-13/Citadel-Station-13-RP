@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/speedlimit = 1/(20 SECONDS)
 	/// Manual limiter for acceleration.
 	var/accellimit = 0.001
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // fancy sprite
 /obj/machinery/computer/ship/helm/adv
@@ -83,7 +83,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 			// All other cases, move toward direction
 			else if(speed + acceleration <= speedlimit)
 				linked.accelerate(direction, accellimit)
-		linked.operator_skill = null	// If this is on you can't dodge meteors
 		return
 
 /obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui)
@@ -146,7 +145,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["locations"] = locations
 	return data
 
-/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -157,7 +156,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		if("add")
 			var/datum/computer_file/data/waypoint/R = new()
 			var/sec_name = input("Input navigation entry name", "New navigation entry", "Sector #[known_sectors.len]") as text
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return FALSE
 			if(!sec_name)
 				sec_name = "Sector #[known_sectors.len]"
@@ -171,10 +170,10 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 					R.fields["y"] = linked.y
 				if("new")
 					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.x) as num
-					if(ui_status(usr, state) != UI_INTERACTIVE)
+					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return TRUE
 					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.y) as num
-					if(ui_status(usr, state) != UI_INTERACTIVE)
+					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return FALSE
 					R.fields["x"] = clamp(newx, 1, world.maxx)
 					R.fields["y"] = clamp(newy, 1, world.maxy)
@@ -191,14 +190,14 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		if("setcoord")
 			if(params["setx"])
 				var/newx = input("Input new destiniation x coordinate", "Coordinate input", dx) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return
 				if(newx)
 					dx = clamp(newx, 1, world.maxx)
 
 			if(params["sety"])
 				var/newy = input("Input new destiniation y coordinate", "Coordinate input", dy) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return
 				if(newy)
 					dy = clamp(newy, 1, world.maxy)
@@ -228,8 +227,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 		if("move")
 			var/ndir = text2num(params["dir"])
-			if(prob(usr.skill_fail_chance(/datum/skill/pilot, 50, linked.skill_needed, factor = 1)))
-				ndir = turn(ndir,pick(90,-90))
 			linked.relaymove(usr, ndir, accellimit)
 			. = TRUE
 
@@ -263,7 +260,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	icon_keyboard = "generic_key"
 	icon_screen = "helm"
 	circuit = /obj/item/circuitboard/nav
-	var/datum/tgui_module/ship/nav/nav_tgui
+	var/datum/tgui_module_old/ship/nav/nav_tgui
 
 /obj/machinery/computer/ship/navigation/Initialize(mapload)
 	. = ..()

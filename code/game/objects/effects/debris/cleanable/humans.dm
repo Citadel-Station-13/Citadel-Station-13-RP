@@ -121,21 +121,26 @@ var/global/list/image/splatter_cache=list()
 	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 	amount = 0
 
-/obj/effect/debris/cleanable/blood/attack_hand(mob/living/carbon/human/user)
-	..()
-	if (amount && istype(user))
-		if (user.gloves)
+/obj/effect/debris/cleanable/blood/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/l = user
+	if(!istype(l))
+		return
+	if (amount && istype(l))
+		if (l.gloves)
 			return
 		var/taken = rand(1,amount)
 		amount -= taken
-		to_chat(user, SPAN_NOTICE("You get some of \the [src] on your hands."))
-		if (!user.blood_DNA)
-			user.blood_DNA = list()
-		user.blood_DNA |= blood_DNA.Copy()
-		user.bloody_hands += taken
-		user.hand_blood_color = basecolor
-		user.update_inv_gloves(1)
-		add_verb(user, /mob/living/carbon/human/proc/bloody_doodle)
+		to_chat(l, SPAN_NOTICE("You get some of \the [src] on your hands."))
+		if (!l.blood_DNA)
+			l.blood_DNA = list()
+		l.blood_DNA |= blood_DNA.Copy()
+		l.bloody_hands += taken
+		l.hand_blood_color = basecolor
+		l.update_inv_gloves(1)
+		add_verb(l, /mob/living/carbon/human/proc/bloody_doodle)
 
 /obj/effect/debris/cleanable/blood/splatter
         random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")

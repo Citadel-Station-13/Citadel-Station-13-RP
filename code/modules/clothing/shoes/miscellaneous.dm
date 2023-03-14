@@ -45,7 +45,7 @@
 	name = "sandals"
 	icon_state = "wizard"
 	species_restricted = null
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 	wizard_garb = 1
 
@@ -58,7 +58,7 @@
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
 	icon_state = "black"
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_ARCANE = 5)
 
 /obj/item/clothing/shoes/clown_shoes
@@ -265,3 +265,11 @@
 	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
 	icon_state = "galoshes_sc"
 	slowdown = SHOES_SLOWDOWN
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/utilitarian
+	name = "utilitarian shoes"
+	desc = "These shoes seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "taushoe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

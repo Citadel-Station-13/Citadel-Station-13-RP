@@ -5,7 +5,7 @@
 	icon_screen = "power_monitor"
 	light_color = "#a97faa"
 	circuit = /obj/item/circuitboard/shutoff_monitor
-	var/datum/tgui_module/shutoff_monitor/monitor
+	var/datum/tgui_module_old/shutoff_monitor/monitor
 
 /obj/machinery/computer/shutoff_monitor/Initialize(mapload)
 	. = ..()
@@ -15,7 +15,7 @@
 	QDEL_NULL(monitor)
 	..()
 
-/obj/machinery/computer/shutoff_monitor/attack_hand(mob/user)
+/obj/machinery/computer/shutoff_monitor/attack_hand(mob/user, list/params)
 	..()
 	monitor.ui_interact(user)
 

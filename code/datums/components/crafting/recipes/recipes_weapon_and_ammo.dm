@@ -427,17 +427,6 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
-/datum/crafting_recipe/bone_arrow
-	name = "Bone Arrow"
-	result = /obj/item/ammo_casing/arrow/bone
-	time = 5
-	//always_available = FALSE
-	reqs = list(/obj/item/stack/material/bone = 1,
-				 /obj/item/stack/sinew = 1,
-				 /obj/item/ammo_casing/arrow/ash = 1)
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
-
 /datum/crafting_recipe/ashen_arrow
 	name = "Ashen Arrow"
 	result = /obj/item/ammo_casing/arrow/ash
@@ -447,6 +436,29 @@
 	reqs = list(/obj/item/ammo_casing/arrow/wood = 1)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/bone_arrow
+	name = "Bone Arrow"
+	result = /obj/item/ammo_casing/arrow/bone
+	time = 5
+	//always_available = FALSE
+	reqs = list(/obj/item/stack/material/bone = 1,
+				 /obj/item/stack/sinew = 1)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+	always_available = FALSE
+
+/datum/crafting_recipe/hard_bone_arrow
+	name = "Hardened Bone Arrow"
+	result = /obj/item/ammo_casing/arrow/bone_ap
+	tools = list(TOOL_WELDER)
+	time = 5
+	//always_available = FALSE
+	reqs = list(/obj/item/stack/material/bone = 1,
+				 /obj/item/ammo_casing/arrow/bone = 1)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+	always_available = FALSE
 
 //Munitions
 /datum/crafting_recipe/smartdart

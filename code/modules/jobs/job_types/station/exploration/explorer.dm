@@ -1,6 +1,7 @@
-/datum/job/station/explorer
+/datum/role/job/station/explorer
 	id = JOB_ID_EXPLORER
 	title = "Explorer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
@@ -8,34 +9,33 @@
 	spawn_positions = 4
 	supervisors = "the Pathfinder and the Research Director"
 	selection_color = "#999440"
-	economic_modifier = 6
 	pto_type = PTO_EXPLORATION
 	idtype = /obj/item/card/id/explorer/explorer
-	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
-	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
+	additional_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
+	minimal_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
 	outfit_type = /datum/outfit/job/station/explorer
 	desc = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(
-		"Surveyor" = /datum/alt_title/surveyor,
-		"Offsite Scout" = /datum/alt_title/offsite_scout,
-		"Field Scout" = /datum/alt_title/explorer/field_scout,
-		"Pioneer" = /datum/alt_title/explorer/pioneer,
-		"Jr. Explorer" = /datum/alt_title/explorer/junior
+		"Surveyor" = /datum/prototype/alt_title/surveyor,
+		"Offsite Scout" = /datum/prototype/alt_title/offsite_scout,
+		"Field Scout" = /datum/prototype/alt_title/explorer/field_scout,
+		"Pioneer" = /datum/prototype/alt_title/explorer/pioneer,
+		"Jr. Explorer" = /datum/prototype/alt_title/explorer/junior
 		)
 
-/datum/alt_title/surveyor
+/datum/prototype/alt_title/surveyor
 	title = "Surveyor"
 
-/datum/alt_title/offsite_scout
+/datum/prototype/alt_title/offsite_scout
 	title = "Offsite Scout"
 
-/datum/alt_title/explorer/field_scout
+/datum/prototype/alt_title/explorer/field_scout
 	title = "Field Scout"
 
-/datum/alt_title/explorer/pioneer
+/datum/prototype/alt_title/explorer/pioneer
 	title = "Pioneer"
 
-/datum/alt_title/explorer/junior
+/datum/prototype/alt_title/explorer/junior
 	title = "Jr. Explorer"
 
 /datum/outfit/job/station/explorer

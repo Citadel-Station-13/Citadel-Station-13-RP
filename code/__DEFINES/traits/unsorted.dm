@@ -67,6 +67,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define TRAIT_ANTIMAGIC			"anti_magic"
 #define TRAIT_HOLY				"holy"
+#define TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT "ai_pause_movement"
 /*
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"

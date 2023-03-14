@@ -385,3 +385,7 @@
 /datum/gear/head/half_pint
 	name = "Half-Pint Headband"
 	path = /obj/item/clothing/head/half_pint
+
+/datum/gear/head/bard
+	name = "Audacious Wide Brimmed Hat"
+	path = /obj/item/clothing/head/bard

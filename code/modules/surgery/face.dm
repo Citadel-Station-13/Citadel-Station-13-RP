@@ -48,7 +48,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing [target]'s throat wth \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, slicing [target]'s throat wth \the [tool]!</font>" )
-	affected.createwound(CUT, 60)
+	affected.create_wound(CUT, 60)
 	target.AdjustLosebreath(10)
 
 ///////////////////////////////////////////////////////////////

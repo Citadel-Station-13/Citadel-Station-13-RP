@@ -7,7 +7,7 @@
 SUBSYSTEM_DEF(characters)
 	name = "Characters"
 	init_order = INIT_ORDER_CHARACTERS
-	priority = FIRE_PRIORITY_CHARSETUP
+	priority = FIRE_PRIORITY_CHARACTERS
 	subsystem_flags = SS_BACKGROUND
 	wait = 1 SECOND
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT

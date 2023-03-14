@@ -22,6 +22,13 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
+/obj/item/material/butterflyblade/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/duct_tape_roll))
+		to_chat(user, "You wrap the blade with the entire roll of duct tape.")
+		new /obj/item/melee/shiv(user.loc)
+		qdel(W)
+		return
+
 /obj/item/material/butterflyhandle
 	name = "concealed knife grip"
 	desc = "A plasteel grip with screw fittings for a blade."

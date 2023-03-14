@@ -47,7 +47,6 @@
 
 	max_age = 260
 
-	economic_modifier = 10
 
 	cold_level_1 = 280
 	cold_level_2 = 220

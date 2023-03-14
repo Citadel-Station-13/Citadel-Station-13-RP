@@ -55,12 +55,12 @@
 	desc = "They look like human remains. They've been here a long time."
 	icon_state = "mummified2"
 
-/obj/effect/decal/remains/attack_hand(mob/user as mob)
+/obj/effect/decal/remains/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>[src] sinks together into a pile of ash.</span>")
 	var/turf/simulated/floor/F = get_turf(src)
 	if (istype(F))
 		new /obj/effect/debris/cleanable/ash(F)
 	qdel(src)
 
-/obj/effect/decal/remains/robot/attack_hand(mob/user as mob)
+/obj/effect/decal/remains/robot/attack_hand(mob/user, list/params)
 	return

@@ -111,7 +111,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts bandaging [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start bandaging [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if(W.bandaged)
@@ -173,7 +173,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [H]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [H]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if(W.bandaged)
@@ -281,7 +281,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if (W.bandaged && W.disinfected)
@@ -445,3 +445,112 @@
 		else
 			icon_state = "[initial(icon_state)]_10"
 // End Citadel Changes
+
+//Ashlander Poultices - They basically use the same stack system as ointment and bruise packs. Gotta dupe some of the code since bruise pack/ointment chat messages are too specific.
+/obj/item/stack/medical/poultice_brute
+	name = "poultice (juhtak)"
+	singular_name = "poultice (juhtak)"
+	desc = "A damp mush made from the pulp of a juhtak. It is used to treat flesh injuries."
+	icon_state = "poulticebrute"
+	no_variants = TRUE
+	apply_sounds = list('sound/effects/ointment.ogg')
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
+
+/obj/item/stack/medical/poultice_brute/checked_application(mob/M, mob/user)
+	if(!(. = ..()))
+		return
+
+	if (istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+
+		if(affecting.open)
+			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a salve!</span>")
+			return
+
+		if(affecting.is_bandaged())
+			to_chat(user, "<span class='warning'>The wounds on [H]'s [affecting.name] have already been covered.</span>")
+			return
+		else
+			user.visible_message("<span class='notice'>\The [user] starts treating [H]'s [affecting.name].</span>", \
+					             "<span class='notice'>You start treating [H]'s [affecting.name].</span>" )
+			var/used = 0
+			for (var/datum/wound/W as anything in affecting.wounds)
+				if (W.internal)
+					continue
+				if(W.bandaged)
+					continue
+				if(used == amount)
+					break
+				if(!do_mob(user, H, W.damage/5))
+					to_chat(user, "<span class='notice'>You must stand still to cover wounds.</span>")
+					break
+
+				if(affecting.is_bandaged())
+					to_chat(user, "<span class='warning'>The wounds on [H]'s [affecting.name] have already been covered.</span>")
+					return
+
+				if (W.current_stage <= W.max_bleeding_stage)
+					user.visible_message("<span class='notice'>\The [user] covers \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You cover \a [W.desc] on [H]'s [affecting.name].</span>" )
+					//H.add_side_effect("Itch")
+				else if (W.damage_type == BRUISE)
+					user.visible_message("<span class='notice'>\The [user] spreads the poultice over \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You spread the poultice over \a [W.desc] on [H]'s [affecting.name].</span>" )
+				else
+					user.visible_message("<span class='notice'>\The [user] spreads the poultice over \a [W.desc] on [H]'s [affecting.name].</span>", \
+					                              "<span class='notice'>You spread the poultice over \a [W.desc] on [H]'s [affecting.name].</span>" )
+				W.bandage()
+				playsound(src, pick(apply_sounds), 25)
+				used++
+				H.bitten = 0
+			affecting.update_damages()
+			if(used == amount)
+				if(affecting.is_bandaged())
+					to_chat(user, "<span class='warning'>\The [src] is used up.</span>")
+				else
+					to_chat(user, "<span class='warning'>\The [src] is used up, but there are more wounds to treat on \the [affecting.name].</span>")
+			use(used)
+
+/obj/item/stack/medical/poultice_burn
+	name = "poultice (pyrrhlea)"
+	desc = "A damp mush infused with pyrrhlea petals. It is used to treat burns."
+	gender = PLURAL
+	singular_name = "poultice (pyrrhlea)"
+	icon_state = "poulticeburn"
+	heal_burn = 1
+	no_variants = TRUE
+	apply_sounds = list('sound/effects/ointment.ogg')
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
+
+/obj/item/stack/medical/poultice_burn/checked_application(mob/M, mob/user)
+	if(!(. = ..()))
+		return
+
+	if (istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+
+		if(affecting.open)
+			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a salve!</span>")
+			return
+
+		if(affecting.is_salved())
+			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been covered.</span>")
+			return
+		else
+			user.visible_message("<span class='notice'>\The [user] starts covering wounds on [M]'s [affecting.name].</span>", \
+					             "<span class='notice'>You start covering the wounds on [M]'s [affecting.name].</span>" )
+			if(!do_mob(user, M, 10))
+				to_chat(user, "<span class='notice'>You must stand still to cover wounds.</span>")
+				return
+			if(affecting.is_salved()) // We do a second check after the delay, in case it was bandaged after the first check.
+				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been covered.</span>")
+				return
+			user.visible_message("<span class='notice'>[user] covered wounds on [M]'s [affecting.name].</span>", \
+			                         "<span class='notice'>You covered wounds on [M]'s [affecting.name].</span>" )
+			use(1)
+			affecting.salve()
+			playsound(src, pick(apply_sounds), 25)

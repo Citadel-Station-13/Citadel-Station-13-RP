@@ -22,7 +22,7 @@
 /obj/machinery/computer/shuttle_control/explore/screebarge
 	name = "short jump console"
 	shuttle_tag = "XN-29 Prototype Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/screebarge

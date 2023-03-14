@@ -2965,15 +2965,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
-"ciP" = (
-/obj/machinery/power/rtg{
-	power_gen = 100000
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/plating,
-/area/rift/trade_shop)
 "cjx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4344,7 +4335,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/item/storage/box/glasses/meta{
 	pixel_x = -14
 	},
@@ -5276,7 +5267,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
 	},
-/obj/machinery/vending/hydroseeds,
+/obj/machinery/seed_storage/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "dFP" = (
@@ -6845,7 +6836,7 @@
 /turf/simulated/wall,
 /area/maintenance/engineering/pumpstation)
 "eFx" = (
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/reinforced,
 /area/maintenance/maint_bar)
@@ -7584,7 +7575,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "fnO" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/appliance/cooker/grill/stand,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "foq" = (
@@ -10114,7 +10105,9 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/rig/medical/equipped,
+/obj/item/rig/medical/equipped{
+	req_access = list(5)
+	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -20930,11 +20923,14 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/lower)
 "nzE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -22654,7 +22650,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfaceone)
 "otX" = (
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /obj/structure/table/woodentable,
 /obj/item/stack/rods,
 /obj/item/stack/rods,
@@ -31525,7 +31521,7 @@
 /area/rift/surfacebase/outside/outside1)
 "ubH" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/light_construct/small{
 	dir = 1
 	},
@@ -33923,7 +33919,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "vBD" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood,
 /area/maintenance/starboard)
 "vBV" = (
@@ -34654,10 +34650,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/green,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -35007,7 +35005,7 @@
 /area/quartermaster/garage)
 "wnB" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "wnK" = (
@@ -36339,6 +36337,12 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/light,
 /mob/living/simple_mob/animal/passive/cat/runtime,
+/obj/machinery/computer/card{
+	dir = 1
+	},
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "xcD" = (
@@ -37250,7 +37254,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "xKh" = (
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/structure/table/woodentable,
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -37794,12 +37798,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "ybd" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/lattice,
 /obj/structure/cable/green{
-	icon_state = "32-1"
+	icon_state = "32-2"
 	},
 /turf/simulated/open,
 /area/rift/trade_shop)
@@ -46453,7 +46454,7 @@ iFN
 iFN
 iFN
 kAb
-ciP
+eCC
 ybd
 dOX
 wci

@@ -760,3 +760,103 @@ Swimsuits
 /datum/gear/uniform/halfmoon
 	name = "Half Moon Outfit"
 	path = /obj/item/clothing/under/half_moon
+
+/datum/gear/uniform/toga
+	name = "Toga"
+	path = /obj/item/clothing/under/toga
+
+/datum/gear/uniform/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/countess
+
+/datum/gear/uniform/baroness
+	name = "Baroness Dress"
+	path = /obj/item/clothing/under/baroness
+
+/datum/gear/uniform/yoko
+	name = "Scavenging Sniper Set"
+	path = /obj/item/clothing/under/yoko
+
+/datum/gear/uniform/kamina
+	name = "Spiral Hero Outfit"
+	path = /obj/item/clothing/under/kamina
+
+/datum/gear/uniform/tape
+	name = "Body Tape Wrapping"
+	path = /obj/item/clothing/under/tape
+
+/datum/gear/uniform/revealing
+	name = "Revealing Cocktail Dress"
+	path = /obj/item/clothing/under/revealing
+
+/datum/gear/uniform/belial
+	name = "Belial Striped Shirt and Shorts"
+	path = /obj/item/clothing/under/belial
+
+/datum/gear/uniform/lilin
+	name = "Lilin Sash Dress"
+	path = /obj/item/clothing/under/lilin
+
+/datum/gear/uniform/asmodai
+	name = "Asmodai Laced Blouse"
+	path = /obj/item/clothing/under/asmodai
+
+/datum/gear/uniform/summerdress_selection
+	name = "Summer Dress Selection"
+	path = /obj/item/clothing/under/dress/summer
+
+/datum/gear/uniform/summerdress_selection/New()
+	..()
+	var/list/summerdress_selection = list()
+	for(var/summerdress in typesof(/obj/item/clothing/under/dress/summer))
+		var/obj/item/clothing/under/summerdress_type = summerdress
+		summerdress_selection[initial(summerdress_type.name)] = summerdress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summerdress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/skinsuit_selection
+	name = "Skinsuit Selection - Male"
+	path = /obj/item/clothing/under/skinsuit
+
+/datum/gear/uniform/skinsuit_selection/New()
+	..()
+	var/list/skinsuit_selection = list()
+	for(var/skinsuit in typesof(/obj/item/clothing/under/skinsuit))
+		var/obj/item/clothing/under/skinsuit_type = skinsuit
+		skinsuit_selection[initial(skinsuit_type.name)] = skinsuit_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(skinsuit_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/skinsuitfem_selection
+	name = "Skinsuit Selection - Female"
+	path = /obj/item/clothing/under/skinsuit_fem
+
+/datum/gear/uniform/skinsuitfem_selection/New()
+	..()
+	var/list/skinsuitfem_selection = list()
+	for(var/skinsuitfem in typesof(/obj/item/clothing/under/skinsuit_fem))
+		var/obj/item/clothing/under/skinsuitfem_type = skinsuitfem
+		skinsuitfem_selection[initial(skinsuitfem_type.name)] = skinsuitfem_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(skinsuitfem_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/altbodysuit_selection
+	name = "Alternate Bodysuit Selection - Male"
+	path = /obj/item/clothing/under/bodysuit/alt
+
+/datum/gear/uniform/altbodysuit_selection/New()
+	..()
+	var/list/altbodysuit_selection = list()
+	for(var/altbodysuit in typesof(/obj/item/clothing/under/bodysuit/alt))
+		var/obj/item/clothing/under/altbodysuit_type = altbodysuit
+		altbodysuit_selection[initial(altbodysuit_type.name)] = altbodysuit_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(altbodysuit_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/altbodysuitfem_selection
+	name = "Alternate Bodysuit Selection - Female"
+	path = /obj/item/clothing/under/bodysuit/alt_fem
+
+/datum/gear/uniform/altbodysuitfem_selection/New()
+	..()
+	var/list/altbodysuitfem_selection = list()
+	for(var/altbodysuitfem in typesof(/obj/item/clothing/under/bodysuit/alt_fem))
+		var/obj/item/clothing/under/altbodysuitfem_type = altbodysuitfem
+		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(altbodysuitfem_selection, /proc/cmp_text_asc))

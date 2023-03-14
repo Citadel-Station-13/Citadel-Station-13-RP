@@ -1,7 +1,7 @@
 /datum/outfit/pirate
 	abstract_type = /datum/outfit/pirate
 
-	name = "Pirate"
+	name = "Pirate - Classic"
 	uniform = /obj/item/clothing/under/pirate
 	shoes = /obj/item/clothing/shoes/brown
 	head = /obj/item/clothing/head/bandana
@@ -18,7 +18,7 @@
 	flags = OUTFIT_HAS_JETPACK
 
 /datum/outfit/pirate/vox
-	name = "Vox Raider"
+	name = "Pirate - Vox Raider"
 	uniform = /obj/item/clothing/under/color/black
 	suit = /obj/item/clothing/suit/armor/vox_scrap
 	shoes = /obj/item/clothing/shoes/magboots/vox

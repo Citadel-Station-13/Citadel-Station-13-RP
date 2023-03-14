@@ -12,7 +12,10 @@
 	force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
-/obj/item/scrying/attack_self(mob/user as mob)
+/obj/item/scrying/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(user, "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>")
 		return
@@ -46,6 +49,9 @@
 	var/spawn_fast = 0 //if 1, ignores checking for mobs on loc before spawning
 
 /obj/item/veilrender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(charges > 0)
 		new /obj/effect/rend(get_turf(user), spawn_type, spawn_amt, rend_desc, spawn_fast)
 		charges--
@@ -276,6 +282,9 @@
 		user.unset_machine()
 
 /obj/item/voodoo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!target && length(possible))
 		target = input(user, "Select your victim!", "Voodoo") as null|anything in possible
 		return
@@ -375,7 +384,10 @@
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
 	user.update_mobility()
 
-/obj/item/warpwhistle/attack_self(mob/living/carbon/user)
+/obj/item/warpwhistle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!istype(user) || on_cooldown)
 		return
 	var/turf/T = get_turf(user)

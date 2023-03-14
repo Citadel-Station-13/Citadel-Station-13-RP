@@ -3,7 +3,7 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	anchored = 1
 
 	var/locked = 1
@@ -39,7 +39,7 @@
 			. += "It's completely empty."
 
 
-/obj/machinery/cash_register/attack_hand(mob/user as mob)
+/obj/machinery/cash_register/attack_hand(mob/user, list/params)
 	// Don't be accessible from the wrong side of the machine
 	if(get_dir(src, user) & GLOB.reverse_dir[src.dir]) return
 

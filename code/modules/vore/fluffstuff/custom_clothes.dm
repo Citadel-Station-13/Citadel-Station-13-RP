@@ -52,7 +52,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 //! ## For general use
 /obj/item/clothing/accessory/fluff/smilepin
@@ -89,7 +89,7 @@
 	item_state = "freddyhead_mob"
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEMASK|HIDEEARS
+	inv_hide_flags = HIDEMASK|HIDEEARS
 	cold_protection = HEAD
 	siemens_coefficient = 0.9
 
@@ -124,10 +124,10 @@
 
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
 
@@ -207,7 +207,7 @@
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
 	item_icons = list()
 
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/shoes/black/cuffs/red
 	name = "red leg wraps"
@@ -335,7 +335,7 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "trek_ds9_coat_mob"
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
 	allowed = list(
 		/obj/item/flashlight, /obj/item/analyzer,
@@ -351,7 +351,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/suits.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -374,7 +374,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -389,7 +389,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -404,7 +404,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -558,7 +558,7 @@
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"
 
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 //Aztectornado:Tron inspired Siren outfit
 /obj/item/clothing/under/fluff/siren
@@ -651,7 +651,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "aika_coat_mob"
-	flags_inv = HIDEJUMPSUIT | HIDETIE
+	inv_hide_flags = HIDEJUMPSUIT | HIDETIE
 
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
@@ -684,7 +684,7 @@
 	icon_state = "melanie_skeleton"
 	item_state = "melanie_skeleton_mob"
 
-	body_parts_covered = NONE
+	body_cover_flags = NONE
 
 	species_restricted = list("exclude", SPECIES_TESHARI)
 

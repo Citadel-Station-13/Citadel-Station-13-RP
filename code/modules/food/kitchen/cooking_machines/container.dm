@@ -161,3 +161,10 @@
 	shortname = "rack"
 	desc = "Put ingredients 'in'/on this; designed for use with a grill. Warranty void if used incorrectly. Alt click to remove contents."
 	icon_state = "grillrack"
+
+/obj/item/reagent_containers/cooking_container/grill/spit
+	name = "bone skewer"
+	shortname = "skewer"
+	desc = "A pointed stick designed for use with a rotisserie spit. Alt click to remove contents."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "spit"

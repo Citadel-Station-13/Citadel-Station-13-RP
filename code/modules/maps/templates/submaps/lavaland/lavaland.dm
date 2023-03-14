@@ -36,12 +36,15 @@
 	discard_prob = 25
 	fixed_orientation = TRUE // this really doesn't work, but i dont see a way to fix it without redoing the system
 
+//Commenting this one out since we've got the village to the East now.
+/*
 /datum/map_template/submap/level_specific/lavaland/ashlander_camp
 	name = "Lava Land - Ashlander Camp"
 	suffix = "ashlandercamp.dmm"
 	cost = 5
 	discard_prob = 50
 	allow_duplicates = TRUE
+*/
 
 /datum/map_template/submap/level_specific/lavaland/shelter
 	name = "Lava Land - Shelter"

@@ -1,4 +1,4 @@
-/datum/job/station/mime
+/datum/role/job/station/mime
 	id = JOB_ID_MIME
 	title = "Mime"
 	flag = MIME
@@ -8,23 +8,22 @@
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
-	economic_modifier = 1
-	access = list(access_entertainment)
-	minimal_access = list(access_entertainment)
+	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
 	desc = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
-	alt_titles = list("Poseur" = /datum/alt_title/mime/poseur)
+	alt_titles = list("Poseur" = /datum/prototype/alt_title/mime/poseur)
 	whitelist_only = 1
 	outfit_type = /datum/outfit/job/station/mime
 	pto_type = PTO_CIVILIAN
 
-/datum/alt_title/mime/poseur
+/datum/prototype/alt_title/mime/poseur
 	title = "Poseur"
 
-/datum/job/station/mime/get_access()
+/datum/role/job/station/mime/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels, access_entertainment, access_tomfoolery, access_mime)
+		return list(ACCESS_ENGINEERING_MAINT, ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_TOMFOOLERY, ACCESS_GENERAL_MIME)
 	else
-		return list(access_entertainment, access_tomfoolery, access_mime)
+		return list(ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_TOMFOOLERY, ACCESS_GENERAL_MIME)
 
 /datum/outfit/job/station/mime
 	name = OUTFIT_JOB_NAME("Mime")

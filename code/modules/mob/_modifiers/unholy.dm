@@ -130,15 +130,14 @@
 				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
 
-				for(var/obj/item/organ/E in H.bad_external_organs) // Fix bones
+				// check limbs
+				for(var/obj/item/organ/E in H.bad_external_organs)
+					// Fix bones
 					var/obj/item/organ/external/affected = E
 					if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 						affected.status &= ~ORGAN_BROKEN
-
-					for(var/datum/wound/W in affected.wounds) // Fix IB
-						if(istype(W, /datum/wound/internal_bleeding))
-							affected.wounds -= W
-							affected.update_damages()
+					// fix IB
+					affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 				H.restore_blood()
 				if(!iscultist(H))
@@ -173,7 +172,7 @@
 
 	else
 		var/mob/living/carbon/human/H = L
-		if(H.species.name == SPECIES_DIONA)
+		if(H.species.get_species_id() == SPECIES_ID_DIONA)
 			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
 			return FALSE // Happy trees aren't affected by incredible hunger.
 

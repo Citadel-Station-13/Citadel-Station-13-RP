@@ -24,11 +24,11 @@
 		// Now for prommies.
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			if(H.species && H.species.name == SPECIES_PROMETHEAN)
+			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				var/agony_to_apply = 60 - agonyforce
 				H.apply_damage(agony_to_apply, HALLOSS)
-	if(user.a_intent == INTENT_HARM)
-		return ..()	// harmbaton
+
+	return ..() // do normal effects too
 
 /obj/item/melee/baton/slime/loaded/Initialize(mapload)
 	bcell = new/obj/item/cell/device(src)
@@ -103,7 +103,7 @@
 
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			if(H.species && H.species.name == SPECIES_PROMETHEAN)
+			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				if(agony == initial(agony)) // ??????
 					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
 

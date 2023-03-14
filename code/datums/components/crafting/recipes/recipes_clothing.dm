@@ -451,3 +451,14 @@
 	reqs = list(/obj/item/stack/material/steel = 3,
 				/obj/item/stack/material/leather = 8)
 	category = CAT_CLOTHING
+
+/datum/crafting_recipe/duraskull
+	name = "durasteel skull mask"
+	result = /obj/item/clothing/head/helmet/duraskull
+	reqs = list(/obj/item/stack/material/durasteel = 5,
+				/obj/item/clothing/head/hardhat = 1)
+	time = 60
+	tools = list(TOOL_WRENCH,
+				TOOL_SCREWDRIVER,
+				TOOL_WELDER)
+	category = CAT_CLOTHING

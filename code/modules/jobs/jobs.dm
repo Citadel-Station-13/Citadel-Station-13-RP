@@ -61,10 +61,10 @@ var/const/TRADER			=(1<<15)
 
 /proc/get_job_datums()
 	var/list/occupations = list()
-	var/list/all_jobs = typesof(/datum/job)
+	var/list/all_jobs = typesof(/datum/role/job)
 
 	for(var/A in all_jobs)
-		var/datum/job/job = new A()
+		var/datum/role/job/job = new A()
 		if(!job)	continue
 		occupations += job
 
@@ -74,7 +74,7 @@ var/const/TRADER			=(1<<15)
 	var/list/jobs = get_job_datums()
 	var/list/titles = list()
 
-	for(var/datum/job/J in jobs)
+	for(var/datum/role/job/J in jobs)
 		if(J.title == job)
 			titles = J.alt_titles
 

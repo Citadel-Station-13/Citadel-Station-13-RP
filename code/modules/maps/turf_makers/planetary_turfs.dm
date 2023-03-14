@@ -293,12 +293,16 @@ LAVALAND_TURF_CREATE(/turf/simulated/wall)
 LAVALAND_TURF_CREATE(/turf/simulated/wall/wood)
 LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstone)
 LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
+LAVALAND_TURF_CREATE(/turf/simulated/wall/bone)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/water)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/noblend)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/indoors)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/indoors/noblend)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/water/deep)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/water/shoreline)
@@ -310,6 +314,9 @@ LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/plating)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/wood)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/wood/broken)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/sandstone)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/bone)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/bone/engraved)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/old_tile)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/monotile)
@@ -325,6 +332,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/cave)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+LAVALAND_TURF_CREATE(/turf/simulated/mineral/ignore_cavegen)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/triumph)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/rich/triumph)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/bluegrid)
@@ -350,12 +358,14 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
 /// know. This will need to be looked into at some point soon
 /turf/simulated/mineral/triumph/lavaland
 	outdoors = TRUE
+	edge_blending_priority = 2
 
 /turf/simulated/mineral/triumph/rich/lavaland
 	outdoors = TRUE
 
 /turf/simulated/mineral/rich/triumph/lavaland
 	outdoors = TRUE
+	edge_blending_priority = 2
 
 // Lava Land turfs
 
@@ -365,6 +375,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	outdoors = 1
+	edge_blending_priority = 2
 	base_icon_state = "asteroid"
 	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /singleton/flooring/outdoors/lavaland

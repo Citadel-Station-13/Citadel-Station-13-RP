@@ -53,7 +53,9 @@
 		"F3-LINE" = "FELI-Mining",
 		"K-MINE" = "kmine",
 		"Cargo Hound" = "cargohound",
-		"Cargo Hound Dark" = "cargohounddark"
+		"Cargo Hound Dark" = "cargohounddark",
+		"Drake" = "drakemine",
+		"Otie" = "otiec"
 	)
 	channels = list("Supply" = 1)
 	can_be_pushed = 0

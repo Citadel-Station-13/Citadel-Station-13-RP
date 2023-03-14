@@ -232,7 +232,23 @@
 
 	if(href_list["ready"])
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
-			ready = text2num(href_list["ready"])
+			var/want_to_be_ready = text2num(href_list["ready"])
+			if(want_to_be_ready)
+				var/list/errors = list()
+				var/list/warnings = list()
+				var/failing = FALSE
+				if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors = errors, warnings = warnings))
+					to_chat(src, "<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+					failing = TRUE
+				if(length(warnings))
+					to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+				if(failing)
+					return
+				else if(length(warnings))
+					if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
+						return
+
+			ready = want_to_be_ready
 		else
 			ready = 0
 
@@ -468,7 +484,7 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
-	var/datum/job/J = SSjob.job_by_title(rank)
+	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
 		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
@@ -476,9 +492,18 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
+	var/list/warnings = list()
+	var/failing = FALSE
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors = errors, warnings = warnings))
+		to_chat(src, "<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+		failing = TRUE
+	if(length(warnings))
+		to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+	if(failing)
 		return FALSE
+	else if(length(warnings))
+		if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
+			return
 
 	//Find our spawning point.
 	var/list/join_props = SSjob.LateSpawn(client, rank)
@@ -558,8 +583,9 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
+	// warnings ignored for now.
 	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
+		to_chat(src, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return FALSE
 	spawning = 1
 	close_spawn_windows()
@@ -689,16 +715,6 @@
 
 /mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
-
-	//No Flavor Text
-	if (config_legacy.require_flavor && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
-		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
-		pass = FALSE
-
-	//No OOC notes
-	if (config_legacy.allow_Metadata && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
-		to_chat(src,"<span class='warning'>Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup.</span>")
-		pass = FALSE
 
 	//Are they on the VERBOTEN LIST?
 	if (prevent_respawns.Find(client.prefs.real_name))

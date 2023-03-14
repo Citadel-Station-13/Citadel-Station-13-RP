@@ -62,18 +62,26 @@
 	ammo_type = /obj/item/ammo_casing/arrow/wood
 	//broken_type = /obj/item/trash/broken_arrow
 
+//Ashlander Base Arrow
+/obj/item/projectile/bullet/reusable/arrow/bone
+	name = "bone arrow"
+	desc = "Arrow made of bone and sinew."
+	damage = 15
+	icon_state = "arrow"
+	ammo_type = /obj/item/ammo_casing/arrow/bone
+
 /obj/item/projectile/bullet/reusable/arrow/ash
 	name = "ashen arrow"
 	desc = "Fire harderned arrow."
 	damage = 25
 	ammo_type = /obj/item/ammo_casing/arrow/ash
 
-/obj/item/projectile/bullet/reusable/arrow/bone //AP for ashwalkers
-	name = "bone arrow"
+/obj/item/projectile/bullet/reusable/arrow/bone_ap //AP for ashwalkers
+	name = "hardened bone arrow"
 	desc = "Arrow made of bone and sinew."
 	damage = 35
 	armor_penetration = 10
-	ammo_type = /obj/item/ammo_casing/arrow/bone
+	ammo_type = /obj/item/ammo_casing/arrow/bone_ap
 
 /obj/item/projectile/bullet/reusable/arrow/bronze //Just some AP shots
 	name = "bronze arrow"

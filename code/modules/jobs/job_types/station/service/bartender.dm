@@ -1,4 +1,4 @@
-/datum/job/station/bartender
+/datum/role/job/station/bartender
 	id = JOB_ID_BARTENDER
 	title = "Bartender"
 	flag = BARTENDER
@@ -10,24 +10,24 @@
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/bartender
 	pto_type = PTO_CIVILIAN
-	access = list(access_hydroponics, access_bar, access_kitchen)
-	minimal_access = list(access_bar)
+	additional_access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
+	minimal_access = list(ACCESS_GENERAL_BAR)
 
 	outfit_type = /datum/outfit/job/station/bartender
 	desc = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
 	alt_titles = list(
-		"Barista" = /datum/alt_title/bartender/barista,
-		"Barkeeper" = /datum/alt_title/bartender/barkeeper,
-		"Barmaid" = /datum/alt_title/bartender/barmaid
+		"Barista" = /datum/prototype/alt_title/bartender/barista,
+		"Barkeeper" = /datum/prototype/alt_title/bartender/barkeeper,
+		"Barmaid" = /datum/prototype/alt_title/bartender/barmaid
 	)
 
-/datum/alt_title/bartender/barkeeper
+/datum/prototype/alt_title/bartender/barkeeper
 	title = "Barkeeper"
 
-/datum/alt_title/bartender/barmaid
+/datum/prototype/alt_title/bartender/barmaid
 	title = "Barmaid"
 
-/datum/alt_title/bartender/barista
+/datum/prototype/alt_title/bartender/barista
 	title = "Barista"
 	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
 					or deny service to unruly patrons."

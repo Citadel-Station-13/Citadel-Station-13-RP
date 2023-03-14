@@ -315,7 +315,7 @@ SUBSYSTEM_DEF(zmimic)
 			TO.plane = t_target
 			TO.mouse_opacity = initial(TO.mouse_opacity)
 
-		T.queue_ao(T.ao_neighbors_mimic == null)	// If ao_neighbors hasn't been set yet, we need to do a rebuild
+		T.queue_ao(T.ao_junction_mimic == null) // If ao_junction hasn't been set yet, we need to do a rebuild.
 
 		// Explicitly copy turf delegates so they show up properly on below levels.
 		//   I think it's possible to get this to work without discrete delegate copy objects, but I'd rather this just work.

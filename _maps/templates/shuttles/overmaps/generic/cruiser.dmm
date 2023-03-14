@@ -414,17 +414,17 @@
 /area/mothership/breakroom)
 "aY" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ba" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "bb" = (
@@ -2613,7 +2613,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "fN" = (
@@ -5703,7 +5703,7 @@
 /obj/machinery/status_display{
 	pixel_y = 29
 	},
-/obj/machinery/computer/card/centcom,
+/obj/machinery/computer/card,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "mr" = (
@@ -8143,7 +8143,9 @@
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},

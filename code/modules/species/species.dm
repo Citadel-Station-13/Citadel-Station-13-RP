@@ -45,21 +45,23 @@
 	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
+	/// default culture
+	var/default_culture = /datum/lore/character_background/culture/custom
 	/// fluff flags
 	var/species_fluff_flags = NONE
 
 	//! Language - IDs
-	/// default language used when speaking
+	/// default language used when speaking - typepaths are allowed
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
 	var/galactic_language = TRUE
-	/// intrinsic species languages - list() or singular language or null
+	/// intrinsic species languages - list() or singular language or null - typepaths are allowed
 	// todo: linter check for language default being in here
 	var/list/intrinsic_languages
-	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
+	/// language our name is in - used for namegen; null to force stock ss13 namegen instead - typepaths are allowed
 	// todo: language for namegen is questionaable
 	var/name_language = LANGUAGE_ID_COMMON
-	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
+	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language - typepaths are allowed
 	var/list/whitelist_languages
 	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
 	var/max_additional_languages = 3
@@ -375,7 +377,8 @@
 	/// Relative rarity/collector value for this species.
 	var/rarity_value = 1
 	/// How much money this species makes
-	var/economic_modifier = 2
+	// todo: implement species economic modifiers
+	var/economy_payscale = 1
 
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
@@ -786,7 +789,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
-	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
+	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
 		return move_trail

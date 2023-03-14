@@ -109,17 +109,17 @@ var/datum/planet/lavaland/planet_lavaland = null
 		Z_LEVEL_LAVALAND,
 		Z_LEVEL_LAVALAND_EAST)
 
-///////////////////////
-/// Virgo 4 Weather ///
-///////////////////////
-var/datum/planet/virgo4/planet_virgo4 = null
+////////////////////////////
+/// Miaphus'irra Weather ///
+////////////////////////////
+var/datum/planet/miaphus/planet_miaphus = null
 
-/datum/planet/virgo4/New()
+/datum/planet/miaphus/New()
 	..()
-	planet_virgo4 = src
-	weather_holder = new /datum/weather_holder/virgo4(src)
+	planet_miaphus = src
+	weather_holder = new /datum/weather_holder/miaphus(src)
 
-/datum/planet/virgo4
+/datum/planet/miaphus
 	expected_z_levels = list(Z_LEVEL_BEACH, Z_LEVEL_DESERT)
 
 

@@ -42,7 +42,6 @@
 	female_scream_sound = 'sound/effects/mob_effects/teshariscream.ogg'
 
 	max_age = 75
-	economic_modifier = 6
 	health_hud_intensity = 3
 
 	color_mult   = 1
@@ -55,8 +54,8 @@
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	slowdown          = -0.5
-	snow_movement     = -1 // Ignores light snow
-	item_slowdown_mod = 1.25 // Tiny birds don't like heavy things
+	snow_movement     = -1
+	item_slowdown_mod = 0.5
 
 	total_health = 75
 	brute_mod    = 1.1

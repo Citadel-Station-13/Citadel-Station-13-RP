@@ -4,7 +4,7 @@
 
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	desc = "The DeForest-model Medical hypospray, from Vey-Med, is a sterile air-needle autoinjector for rapid administration of medicinal drugs to patients."
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "hypo"
@@ -94,7 +94,7 @@
 	volume = loaded_vial.volume
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 
-/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user as mob)
+/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(loaded_vial)
 			reagents.trans_to_holder(loaded_vial.reagents,volume)
@@ -393,6 +393,9 @@
 	icon_state = "[initial(icon_state)]_used"
 
 /obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	. = ..()
 	if (closed)
 		closed = 0

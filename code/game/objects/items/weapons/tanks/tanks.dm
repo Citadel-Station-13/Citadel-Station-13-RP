@@ -209,7 +209,10 @@ var/list/global/tank_gauge_cache = list()
 
 
 
-/obj/item/tank/attack_self(mob/user as mob)
+/obj/item/tank/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 	if (!(src.air_contents))
 		return
@@ -219,7 +222,7 @@ var/list/global/tank_gauge_cache = list()
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
-/obj/item/weapon/tank/ui_state(mob/user)
+/obj/item/weapon/tank/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/tank/ui_interact(mob/user, datum/tgui/ui)

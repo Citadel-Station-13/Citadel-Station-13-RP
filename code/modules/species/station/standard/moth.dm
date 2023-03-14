@@ -42,7 +42,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	// todo: this is only so high BECAUSE EVERY OTHER GODDAMN RACE IS 10, WHO DESGINED THIS?
 	// todo: nerf everyone else and rework this fucked economy
-	economic_modifier = 8
 
 	// see defines - as of right now, detects reagents at 7% instead of 15%
 	taste_sensitivity = TASTE_SENSITIVE

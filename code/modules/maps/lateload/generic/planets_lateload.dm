@@ -97,7 +97,7 @@
 /datum/map_template/lateload/planets/away_p_world
 	name = "ExoPlanet - Z5 Planet"
 	desc = "A Cold Frozen Planet."
-	mappath = "_maps/map_levels/192x192//Class_P.dmm"
+	mappath = "_maps/map_levels/192x192/Class_P.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_p_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -111,13 +111,13 @@
 	base_turf = /turf/simulated/floor/outdoors/ice/classp
 
 /////////////////////////////////
-/// Virgo 4 - Beach and caves ///
+/// Miaphus'irra (Formerly V4) - Beach and caves ///
 /////////////////////////////////
 
 /datum/map_template/lateload/planets/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
-	mappath = "_maps/map_levels/140x140/virgo4_beach.dmm"
+	mappath = "_maps/map_levels/192x192/miaphus_beach.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach
 
 /datum/map_z_level/planets_lateload/away_beach
@@ -127,12 +127,12 @@
 /datum/map_template/lateload/planets/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
-	mappath = "_maps/map_levels/140x140/virgo4_cave.dmm"
+	mappath = "_maps/map_levels/192x192/miaphus_cave.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach_cave
 
 /datum/map_template/lateload/planets/away_beach_cave/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 150, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
+	seed_submaps(list(z), 225, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
 	//seed_submaps(list(z), 70, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/deep)
 
 	// Now for the tunnels.
@@ -146,12 +146,12 @@
 /datum/map_template/lateload/planets/away_desert
 	name = "Desert Planet - Z3 Desert"
 	desc = "The inland desert of V-4."
-	mappath = "_maps/map_levels/140x140/virgo4_desert.dmm"
+	mappath = "_maps/map_levels/192x192/miaphus_desert.dmm"
 	associated_map_datum = /datum/map_template/submap/level_specific/class_h
 
 /datum/map_template/lateload/planets/away_desert/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 150, /area/tether_away/beach/desert/unexplored, /datum/map_template/submap/level_specific/class_h)
+	seed_submaps(list(z), 225, /area/tether_away/beach/desert/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 /datum/map_z_level/planets_lateload/away_desert
 	name = "Away Mission - Desert"

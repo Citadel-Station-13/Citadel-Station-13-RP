@@ -5,7 +5,7 @@
 	brightness_on = 4 //luminosity when on
 	light_overlay = "hardhat_light"
 	armor = list(melee = 30, bullet = 5, laser = 20,energy = 10, bomb = 20, bio = 10, rad = 20)
-	flags_inv = 0
+	inv_hide_flags = 0
 	siemens_coefficient = 0.9
 	action_button_name = "Toggle Head-light"
 	w_class = ITEMSIZE_NORMAL
@@ -46,7 +46,7 @@
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_helmet"
 	light_overlay = "helmet_light"
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 
 /obj/item/clothing/head/hardhat/ranger/Initialize(mapload)
 	. = ..()

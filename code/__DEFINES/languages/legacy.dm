@@ -44,3 +44,5 @@
 #define LANGUAGE_VOX "Vox-Pidgin"
 #define LANGUAGE_XENO "Xenomorph"
 #define LANGUAGE_ZADDAT "Vedahq"
+#define LANGUAGE_SCORI "Scori"
+#define LANGUAGE_KEISANI "Keisanis"

@@ -8,11 +8,17 @@
 #define CHARACTER_DATA_CITIZENSHIP "lore_citizenship"
 #define CHARACTER_DATA_RELIGION "lore_religion"
 #define CHARACTER_DATA_FACTION "lore_faction"
+#define CHARACTER_DATA_CULTURE "lore_culture"
+#define CHARACTER_DATA_LANGUAGES "languages"
+
+//? Species
 #define CHARACTER_DATA_REAL_SPECIES "real_species"
 #define CHARACTER_DATA_CHAR_SPECIES "char_species"
-#define CHARACTER_DATA_LANGUAGES "languages"
 
 //? Occupations
 #define CHARACTER_DATA_JOBS "jobs"
 #define CHARACTER_DATA_ALT_TITLES "alt_titles"
 #define CHARACTER_DATA_OVERFLOW_MODE "overflow_mode"
+
+//? Skills
+#define CHARACTER_DATA_SKILLS "skills"

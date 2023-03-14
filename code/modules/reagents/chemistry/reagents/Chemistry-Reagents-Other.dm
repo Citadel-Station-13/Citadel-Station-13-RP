@@ -236,15 +236,17 @@
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
-			for(var/datum/wound/W in O.wounds)
+			for(var/datum/wound/W as anything in O.wounds)
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 				if(W.internal)
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/gold
 	name = "Gold"
@@ -595,3 +597,12 @@
 	reagent_state = REAGENT_SOLID
 	color = "#464650"
 	taste_description = "salt"
+
+//Ashlander Alchemy!
+/datum/reagent/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	description = "A compound of ash and sulphuric acid, used on Surt as a base for alchemical processes."
+	reagent_state = REAGENT_LIQUID
+	color = "#5a5e3c"
+	taste_description = "sour ash"

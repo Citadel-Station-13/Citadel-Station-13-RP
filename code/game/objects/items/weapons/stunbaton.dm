@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user as mob)
+/obj/item/melee/baton/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
@@ -109,6 +109,9 @@
 		return ..()
 
 /obj/item/melee/baton/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_external_power)
 		//try to find our power cell
 		var/mob/living/silicon/robot/R = loc
@@ -287,6 +290,17 @@
 	desc = "Not actually sharp, this sword is functionally identical to its baton counterpart."
 	icon_state = "stunsword"
 	item_state = "baton"
+
+/obj/item/melee/baton/stunlance
+	name = "stun lance"
+	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	icon_state = "stunlance"
+	w_class = ITEMSIZE_NORMAL
+	reach = 2
+
+/obj/item/melee/baton/stunlance/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
 
 /obj/item/melee/baton/loaded/mini
 	name = "Personal Defense Baton"

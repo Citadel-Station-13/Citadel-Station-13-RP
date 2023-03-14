@@ -10,7 +10,7 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ert
 
-	req_access = list(access_cent_specops)
+	req_access = list(ACCESS_CENTCOM_ERT)
 	siemens_coefficient= 0.5
 
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
@@ -115,7 +115,10 @@
 		/obj/item/rig_module/self_destruct
 		)
 
-/obj/item/rig/ert/para/attack_self(mob/user as mob)
+/obj/item/rig/ert/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !anti_magic && !emp_proof && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE

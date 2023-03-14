@@ -11,7 +11,10 @@
 	name = "inactive supermatter supply beacon"
 	deploy_path = /obj/machinery/power/supply_beacon/supermatter
 
-/obj/item/supply_beacon/attack_self(var/mob/user)
+/obj/item/supply_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='notice'>\The [user] begins setting up \the [src].</span>")
 	if(!do_after(user, deploy_time))
 		return
@@ -54,7 +57,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/supply_beacon/attack_hand(mob/user)
+/obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params)
 
 	if(expended)
 		update_use_power(USE_POWER_OFF)

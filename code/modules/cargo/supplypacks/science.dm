@@ -11,7 +11,7 @@
 	cost = 25
 	container_type = "/obj/structure/closet/crate/secure"
 	container_name = "Virus sample crate"
-	access = access_cmo
+	access = ACCESS_MEDICAL_CMO
 
 /datum/supply_pack/sci/coolanttank
 	name = "Coolant tank crate"
@@ -34,7 +34,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Phoron assembly crate"
-	access = access_tox_storage
+	access = ACCESS_SCIENCE_TOXINS
 
 /datum/supply_pack/sci/exoticseeds
 	name = "Exotic seeds crate"
@@ -49,7 +49,7 @@
 	cost = 15
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Exotic Seeds crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
@@ -85,7 +85,7 @@
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/science
 	container_name = "Xenoarchaeology Tech crate"
-	access = access_research
+	access = ACCESS_SCIENCE_MAIN
 
 /datum/supply_pack/sci/jukebox_circuitboard
 	name = "Jukebox Circuit Board crate"
@@ -100,12 +100,12 @@
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/pred
 	container_name = "Dangerous Predator crate"
-	access = access_xenobiology
+	access = ACCESS_SCIENCE_XENOBIO
 
 /datum/supply_pack/sci/pred_doom
 	name = "EXTREMELY Dangerous Predator crate"
 	cost = 200
 	container_type = /obj/structure/largecrate/animal/dangerous
 	container_name = "EXTREMELY Dangerous Predator crate"
-	access = access_xenobiology
+	access = ACCESS_SCIENCE_XENOBIO
 	contraband = 1

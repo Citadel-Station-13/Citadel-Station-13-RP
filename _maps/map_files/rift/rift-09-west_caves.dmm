@@ -916,6 +916,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "kF" = (
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "kJ" = (
@@ -2427,14 +2430,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Cv" = (
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/mining_scanner,
-/obj/item/clothing/shoes/magboots,
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
-/obj/structure/table/rack/shelf,
+/obj/machinery/suit_storage_unit/cryosuit/mining,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/outpost/storage)
 "Cy" = (
@@ -4254,7 +4250,11 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/rack/shelf,
+/obj/item/mining_scanner,
+/obj/item/mining_scanner,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "WL" = (

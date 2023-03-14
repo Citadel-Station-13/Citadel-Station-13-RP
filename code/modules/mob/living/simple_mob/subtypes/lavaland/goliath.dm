@@ -41,6 +41,7 @@
 	icon_living = "goliath"
 	icon_dead = "goliath_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath)
 
 	maxHealth = 300
 	health = 300
@@ -52,6 +53,7 @@
 	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
+	taser_kill = FALSE
 	movement_cooldown = 10
 	movement_sound = 'sound/weapons/heavysmash.ogg'
 	special_attack_min_range = 2
@@ -68,15 +70,16 @@
 	hide_type = /obj/item/stack/animalhide/goliath_hide
 	exotic_type = /obj/item/stack/sinew
 	meat_amount = 5
-	bone_amount = 5
-	hide_amount = 5
-	exotic_amount = 5
+	bone_amount = 10
+	hide_amount = 10
+	exotic_amount = 10
 
 	faction = "lavaland"
 	speak_emote = list("bellows")
 	say_list_type = /datum/say_list/goliath
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
+	var/datum/reagents/goliath_sac = null
 	var/pre_attack = 0
 	var/tentacle_warning = 0.5 SECONDS
 	var/pre_attack_icon = "goliath2"
@@ -134,9 +137,19 @@
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
+	goliath_sac = new(50)
+	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
+	var/obj/item/reagent_containers/glass/G = O
+	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
+		user.visible_message("<span class='notice'>[user] drains the sac of the [src] using \the [O].</span>")
+		var/transfered = goliath_sac.trans_id_to(G, "gunpowder", rand(15,30))
+		if(G.reagents.total_volume >= G.volume)
+			to_chat(user, "<font color='red'>The [O] is full.</font>")
+		if(!transfered)
+			to_chat(user, "<font color='red'>The sac is empty. Wait a bit longer...</font>")
 	if(istype(O, /obj/item/seeds) && !breedable)
 		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")
 		breedable = 1
@@ -169,6 +182,14 @@
 	visible_message("<span class='warning'>The [src] disgorges a small calf from a large fissure in its back!</span>")
 	pregnant = 0
 	new child_type(get_turf(src))
+
+/mob/living/simple_mob/animal/goliath/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		if(goliath_sac && prob(5))
+			goliath_sac.add_reagent("gunpowder", rand(5, 10))
 
 /mob/living/simple_mob/animal/goliath/death()
 	STOP_PROCESSING(SSobj, src)
@@ -283,6 +304,7 @@
 	maxHealth = 400
 	health = 400
 	tentacle_warning = 1 SECOND
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath/ancient)
 
 //Calves
 /datum/category_item/catalogue/fauna/goliath/calf
@@ -300,6 +322,7 @@
 	icon_state = "goliath_baby"
 	maxHealth = 150
 	health = 150
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath/calf)
 
 	movement_cooldown = 7
 	special_attack_min_range = 1

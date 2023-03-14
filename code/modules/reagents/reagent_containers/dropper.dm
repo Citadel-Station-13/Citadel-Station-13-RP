@@ -27,7 +27,7 @@
 
 	if(reagents.total_volume)
 
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			to_chat(user, "<span class='notice'>[target] is full.</span>")
 			return
 
@@ -50,10 +50,10 @@
 
 				var/obj/item/safe_thing = null
 				if(victim.wear_mask)
-					if (victim.wear_mask.body_parts_covered & EYES)
+					if (victim.wear_mask.body_cover_flags & EYES)
 						safe_thing = victim.wear_mask
 				if(victim.head)
-					if (victim.head.body_parts_covered & EYES)
+					if (victim.head.body_cover_flags & EYES)
 						safe_thing = victim.head
 				if(victim.glasses)
 					if (!safe_thing)
@@ -108,6 +108,19 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
 	volume = 10
+
+/obj/item/reagent_containers/dropper/ashlander
+	name = "stone dropper"
+	desc = "A hand-carved dropper. Roughly hewn out of softened volcanic stone, it still allows for precise measurement of fluids."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "ashdropper0"
+	unacidable = 1
+
+/obj/item/reagent_containers/dropper/ashlander/update_icon()
+	if(reagents.total_volume)
+		icon_state = "ashdropper1"
+	else
+		icon_state = "ashdropper0"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Droppers. END

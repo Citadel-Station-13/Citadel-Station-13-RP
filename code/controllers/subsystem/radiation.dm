@@ -5,6 +5,7 @@
 
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
+	priority = FIRE_PRIORITY_RADIATION
 	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
 	wait = 1 SECONDS
 

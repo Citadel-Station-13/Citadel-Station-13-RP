@@ -3736,7 +3736,6 @@
 "lt" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/terminal)
@@ -3761,7 +3760,6 @@
 "lx" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/main_hall)
@@ -4479,7 +4477,6 @@
 "ny" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/restaurant)
@@ -4512,7 +4509,6 @@
 "nF" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/medical)
@@ -4520,7 +4516,6 @@
 /obj/structure/sign/department/medbay,
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/simulated/medical)
@@ -5973,7 +5968,7 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rT" = (
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 8
 	},
 /obj/structure/table/marble,
@@ -5991,7 +5986,7 @@
 /obj/machinery/camera/network/crescent{
 	dir = 1
 	},
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 1
 	},
 /obj/structure/table/reinforced,
@@ -5999,7 +5994,7 @@
 /area/centcom/simulated/bar)
 "rX" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
 /turf/simulated/floor/lino,
@@ -6532,7 +6527,6 @@
 /obj/structure/sign/warning/lethal_turrets,
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/main_hall)
@@ -6552,7 +6546,6 @@
 "xN" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/main_hall)
@@ -6713,7 +6706,6 @@
 "yq" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/tdome/tdomeadmin)
@@ -7370,6 +7362,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"Ay" = (
+/obj/machinery/computer/cryopod/ert{
+	pixel_x = 32
+	},
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "Az" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -7536,7 +7534,6 @@
 "Bb" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/command)
@@ -7848,16 +7845,6 @@
 /area/centcom/specops)
 "Dz" = (
 /obj/structure/table/reinforced,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_magazine/nsfw_mag,
-/obj/item/gun/ballistic/nsfw,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "DF" = (
@@ -9779,7 +9766,6 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/main_hall)
@@ -28755,7 +28741,7 @@ Ha
 Cp
 ss
 Cw
-Cw
+Ay
 Cw
 ss
 Cv

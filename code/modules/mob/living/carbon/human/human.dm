@@ -265,9 +265,9 @@
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
-	if( wear_mask && (wear_mask.flags_inv&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
+	if( wear_mask && (wear_mask.inv_hide_flags&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
 		return get_id_name("Unknown")
-	if( head && (head.flags_inv&HIDEFACE) )
+	if( head && (head.inv_hide_flags&HIDEFACE) )
 		return get_id_name("Unknown")		//Likewise for hats
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
@@ -622,6 +622,8 @@
 				return
 	..()
 	return
+/mob/living/carbon/human/needs_to_breathe()
+	return !!organs_by_name[O_LUNGS] || ..()
 
 ///eyecheck()
 ///Returns a number between -1 to 2
@@ -879,7 +881,7 @@
 		reset_perspective()
 
 /mob/living/carbon/human/get_visible_gender()
-	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
+	if(wear_suit && wear_suit.inv_hide_flags & HIDEJUMPSUIT && ((head && head.inv_hide_flags & HIDEMASK) || wear_mask))
 		return PLURAL //plural is the gender-neutral default
 	if(species)
 		if(species.ambiguous_genders)
@@ -1328,21 +1330,21 @@
 	var/feet_exposed = 1
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			head_exposed = 0
-		if(C.body_parts_covered & FACE)
+		if(C.body_cover_flags & FACE)
 			face_exposed = 0
-		if(C.body_parts_covered & EYES)
+		if(C.body_cover_flags & EYES)
 			eyes_exposed = 0
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			torso_exposed = 0
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			arms_exposed = 0
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			hands_exposed = 0
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			legs_exposed = 0
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
 	flavor_text = ""
@@ -1388,7 +1390,7 @@
 	var/list/equipment = list(src.w_uniform,src.wear_suit,src.shoes)
 	var/footcoverage_check = FALSE
 	for(var/obj/item/clothing/C in equipment)
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			footcoverage_check = TRUE
 			break
 	if((species.species_flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
@@ -1654,11 +1656,11 @@
 /mob/living/carbon/human/check_obscured_slots()
 	. = ..()
 	if(wear_suit)
-		if(wear_suit.flags_inv & HIDEGLOVES)
+		if(wear_suit.inv_hide_flags & HIDEGLOVES)
 			LAZYOR(., SLOT_GLOVES)
-		if(wear_suit.flags_inv & HIDEJUMPSUIT)
+		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
 			LAZYOR(., SLOT_ICLOTHING)
-		if(wear_suit.flags_inv & HIDESHOES)
+		if(wear_suit.inv_hide_flags & HIDESHOES)
 			LAZYOR(., SLOT_FEET)
 
 //! Pixel Offsets

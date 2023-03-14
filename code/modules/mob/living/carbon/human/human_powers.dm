@@ -134,7 +134,7 @@
 		nutrition -= 50
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
-			if(H.species.name == src.species.name)
+			if(H.species.get_species_id() == src.species.get_species_id())
 				return
 			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 			H.drip(1)
@@ -386,7 +386,7 @@
 				var/organpath = species.has_organ[organtype]
 				var/obj/item/organ/Int = new organpath(src, TRUE)
 
-				Int.rejuvenate(TRUE)
+				Int.rejuvenate_legacy(TRUE)
 
 		handle_organs(2) // Update everything
 

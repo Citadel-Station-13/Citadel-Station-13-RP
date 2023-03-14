@@ -21,10 +21,6 @@
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
 
-/obj/machinery/r_n_d/protolathe/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
 	if(machine_stat)

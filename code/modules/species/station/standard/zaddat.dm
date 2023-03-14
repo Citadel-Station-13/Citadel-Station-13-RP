@@ -31,7 +31,6 @@
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-	economic_modifier = 3
 
 	max_age = 90
 

@@ -13,7 +13,7 @@
 	. = ..()
 	logged_in = "Cargo Department"
 
-/obj/machinery/computer/stockexchange/attack_hand(mob/user)
+/obj/machinery/computer/stockexchange/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 

@@ -111,27 +111,27 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_BUCKLED),
 ))
 
-//! /atom/movable movement_type
+//? /atom/movable movement_type - only one should be on the atom at a time, but these are flags for quick checks.
 /// Can not be stopped from moving from Cross(), CanPass(), or Uncross() failing. Still bumps everything it passes through, though.
-#define UNSTOPPABLE  (1<<0)
+#define MOVEMENT_UNSTOPPABLE  (1<<0)
 /// Ground movement.
-#define GROUND       (1<<1)
+#define MOVEMENT_GROUND       (1<<1)
 /// Flying movement.
-#define FLYING       (1<<2)
+#define MOVEMENT_FLYING       (1<<2)
 /// Phasing movement (phazons, shadekins, etc).
-#define PHASING      (1<<3)
+#define MOVEMENT_PHASING      (1<<3)
 /// Floating movement like no gravity etc etc.
-#define FLOATING     (1<<4)
-/// Ventcrawling.
-#define VENTCRAWLING (1<<5)
+#define MOVEMENT_FLOATING     (1<<4)
+
+/// main modes of movement
+#define MOVEMENT_TYPES (MOVEMENT_GROUND | MOVEMENT_PHASING | MOVEMENT_FLOATING | MOVEMENT_FLYING)
 
 DEFINE_BITFIELD(movement_type, list(
-	BITFIELD(UNSTOPPABLE),
-	BITFIELD(GROUND),
-	BITFIELD(FLYING),
-	BITFIELD(PHASING),
-	BITFIELD(FLOATING),
-	BITFIELD(VENTCRAWLING),
+	BITFIELD(MOVEMENT_UNSTOPPABLE),
+	BITFIELD(MOVEMENT_GROUND),
+	BITFIELD(MOVEMENT_FLYING),
+	BITFIELD(MOVEMENT_PHASING),
+	BITFIELD(MOVEMENT_FLOATING),
 ))
 
 //! /atom/movable buckle_flags
@@ -149,6 +149,8 @@ DEFINE_BITFIELD(movement_type, list(
 #define BUCKLING_NO_DEFAULT_RESIST            (1<<5)
 /// Don't let us buckle people to ourselves.
 #define BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF (1<<6)
+/// Lets the user avoid step checks.
+#define BUCKLING_GROUND_HOIST				  (1<<7)
 
 DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_REQUIRES_RESTRAINTS),
@@ -158,4 +160,5 @@ DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_NO_DEFAULT_UNBUCKLE),
 	BITFIELD(BUCKLING_NO_DEFAULT_RESIST),
 	BITFIELD(BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF),
+	BITFIELD(BUCKLING_GROUND_HOIST),
 ))

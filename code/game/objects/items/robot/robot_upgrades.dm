@@ -39,7 +39,10 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user as mob)
+/obj/item/borg/upgrade/rename/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
 /obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
@@ -208,10 +211,7 @@
 	if(..())
 		return FALSE
 
-	if(istype(R.translation_context, /datum/translation_context/simple/silicons))
-		qdel(R.translation_context)
-		R.translation_context = new /datum/translation_context/variable/learning/silicons
-		R.sync_translation_context()
+	R.create_translation_context(/datum/translation_context/variable/learning/silicons)
 
 	return TRUE
 

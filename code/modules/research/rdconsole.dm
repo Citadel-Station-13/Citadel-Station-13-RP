@@ -45,7 +45,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/id = 0			//ID of the computer (for server restrictions).
 	var/sync = 1		//If sync = 0, it doesn't show up on Server Control Console
 
-	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
+	req_access = list(ACCESS_SCIENCE_MAIN)	//Data and setting manipulation requires scientist access.
 
 	var/protofilter //String to filter protolathe designs by
 	var/circuitfilter //String to filter circuit designs by
@@ -70,7 +70,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	return return_name
 
 /obj/machinery/computer/rdconsole/proc/CallReagentName(var/ID)
-	var/datum/reagent/R = SSchemistry.chemical_reagents["[ID]"]
+	var/datum/reagent/R = SSchemistry.reagent_lookup["[ID]"]
 	if(!R)
 		return ID
 	return R.name
@@ -165,7 +165,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	dat += "</UL>"
 	return dat.Join()
 
-/obj/machinery/computer/rdconsole/attack_hand(mob/user as mob)
+/obj/machinery/computer/rdconsole/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
@@ -173,7 +173,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/robotics
 	name = "Robotics R&D Console"
 	id = 2
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 
 /obj/machinery/computer/rdconsole/core
 	name = "Core R&D Console"

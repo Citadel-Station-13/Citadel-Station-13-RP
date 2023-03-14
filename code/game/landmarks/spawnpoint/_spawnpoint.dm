@@ -136,7 +136,7 @@
  * name - spawnee's name
  * job_name - job's name - useful for alt titles
  */
-/obj/landmark/spawnpoint/proc/RenderAnnounceMessage(mob/M, client/C, datum/job/J, name, job_name)
+/obj/landmark/spawnpoint/proc/RenderAnnounceMessage(mob/M, client/C, datum/role/job/J, name, job_name)
 	return "[name || "Unknown"] will arrive shortly."
 
 /**

@@ -1,4 +1,4 @@
-/datum/ghostrole/lavaland_vet
+/datum/role/ghostrole/lavaland_vet
 	name = "Lavaland Vet"
 	desc = "You are a animal doctor who just woke up in lavaland"
 	assigned_role = "Translocated Vet"
@@ -10,7 +10,7 @@
 /obj/structure/ghost_role_spawner/lavaland_vet
 	name = "broken rejuvenation pod"
 	desc = "A small sleeper typically used to instantly restore minor wounds. This one seems broken, and its occupant is comatose."
-	role_type = /datum/ghostrole/lavaland_vet
+	role_type = /datum/role/ghostrole/lavaland_vet
 
 /obj/structure/ghost_role_spawner/lavaland_vet/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())

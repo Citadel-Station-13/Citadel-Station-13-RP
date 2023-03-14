@@ -1,10 +1,10 @@
-/datum/tgui_module/computer_configurator
+/datum/tgui_module_old/computer_configurator
 	name = "NTOS Computer Configuration Tool"
 	ntos = TRUE
 	tgui_id = "Configuration"
 	var/obj/item/modular_computer/movable = null
 
-/datum/tgui_module/computer_configurator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/computer_configurator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	movable = ui_host()
 	// No computer connection, we can't get data from that.
 	if(!istype(movable))
@@ -37,7 +37,7 @@
 	data["hardware"] = all_entries
 	return data
 
-/datum/tgui_module/computer_configurator/ui_act(action, params)
+/datum/tgui_module_old/computer_configurator/ui_act(action, params)
 	if(..())
 		return
 	switch(action)

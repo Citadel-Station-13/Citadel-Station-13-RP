@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		g = "female"
 	*/
 
-	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
+	var/icon_key = "[species.get_race_key(src)][s_base][g][s_tone][r_skin][g_skin][b_skin]"
 	if(lip_style)
 		icon_key += "[lip_style]"
 	else
@@ -208,6 +208,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			icon_key += "0"
 			continue
 		if(part)
+			icon_key += "[part.name]"
 			icon_key += "[part.species.get_race_key(part.owner)]"
 			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]"
 			icon_key += "[part.s_tone]"
@@ -384,7 +385,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	//masks and helmets can obscure our hair.
-	if( (head && (head.flags_inv & BLOCKHAIR)) || (wear_mask && (wear_mask.flags_inv & BLOCKHAIR)))
+	if( (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
 		return
 
 	//base icons
@@ -401,7 +402,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(h_style)
 		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
-		if(head && (head.flags_inv & BLOCKHEADHAIR))
+		if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
 			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
 				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
 
@@ -467,7 +468,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	//Our glowy eyes should be hidden if some equipment hides them.
-	if(!should_have_organ(O_EYES) || (head && (head.flags_inv & BLOCKHAIR)) || (wear_mask && (wear_mask.flags_inv & BLOCKHAIR)))
+	if(!should_have_organ(O_EYES) || (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
 		return
 
 	//Get the head, we'll need it later.
@@ -576,14 +577,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!w_uniform)
 		return
 
-	if(wear_suit && (wear_suit.flags_inv & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/rig))
+	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/rig))
 		return //Wearing a suit that prevents uniform rendering
 
 	//Build a uniform sprite
 	var/icon/c_mask = tail_style?.clip_mask
 	if(c_mask)
 		var/obj/item/clothing/suit/S = wear_suit
-		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
+		if((wear_suit?.inv_hide_flags & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
 	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype(src, w_uniform, SLOT_ID_UNIFORM))
 
@@ -647,7 +648,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(EARS_LAYER)
 
-	if((head && head.flags_inv & (BLOCKHAIR | BLOCKHEADHAIR)) || (wear_mask && wear_mask.flags_inv & (BLOCKHAIR | BLOCKHEADHAIR)))
+	if((head && head.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)) || (wear_mask && wear_mask.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)))
 		return //Ears are blocked (by hair being blocked, overloaded)
 
 	if(!l_ear && !r_ear)
@@ -670,7 +671,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(SHOES_LAYER)
 	remove_layer(SHOES_LAYER_ALT) //Dumb alternate layer for shoes being under the uniform.
 
-	if(!shoes || (wear_suit && wear_suit.flags_inv & HIDESHOES) || (w_uniform && w_uniform.flags_inv & HIDESHOES))
+	if(!shoes || (wear_suit && wear_suit.inv_hide_flags & HIDESHOES) || (w_uniform && w_uniform.inv_hide_flags & HIDESHOES))
 		return //Either nothing to draw, or it'd be hidden.
 
 	for(var/f in list(BP_L_FOOT, BP_R_FOOT))
@@ -786,7 +787,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(FACEMASK_LAYER)
 
-	if(!wear_mask || (head && head.flags_inv & HIDEMASK))
+	if(!wear_mask || (head && head.inv_hide_flags & HIDEMASK))
 		return //Why bother, nothing in mask slot.
 
 	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype(src, wear_mask, SLOT_ID_MASK))
@@ -911,7 +912,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
 	//This one is actually not that bad I guess.
-	if(species_tail && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
+	if(species_tail && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL))
 		var/icon/tail_s = get_tail_icon()
 		overlays_standing[used_tail_layer] = image(icon = tail_s, icon_state = "[species_tail]_s", layer = BODY_LAYER+used_tail_layer)
 		animate_tail_reset()
@@ -1147,7 +1148,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return image(wing_s)
 
 	//If you have custom wings selected
-	if(wing_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !wing_style.clothing_can_hide))
+	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)

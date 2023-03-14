@@ -567,40 +567,43 @@ End Citadel Change */
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
+		if(!H.internal_organs_by_name[O_EYES])
+			eyes_covered = TRUE
+			safe_thing = "Lack of eyes"
 		if(H.head)
-			if(H.head.body_parts_covered & EYES)
+			if(H.head.body_cover_flags & EYES)
 				eyes_covered = 1
 				safe_thing = H.head
-			if((H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
+			if((H.head.body_cover_flags & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.head
 		if(H.wear_mask)
-			if(!eyes_covered && H.wear_mask.body_parts_covered & EYES)
+			if(!eyes_covered && H.wear_mask.body_cover_flags & EYES)
 				eyes_covered = 1
 				safe_thing = H.wear_mask
-			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
+			if(!mouth_covered && (H.wear_mask.body_cover_flags & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.wear_mask
-		if(H.glasses && H.glasses.body_parts_covered & EYES)
+		if(H.glasses && H.glasses.body_cover_flags & EYES)
 			if(!eyes_covered)
 				eyes_covered = 1
 				if(!safe_thing)
 					safe_thing = H.glasses
 		if(alien == IS_SLIME)
 			for(var/obj/item/clothing/C in H.get_equipped_items())
-				if(C.body_parts_covered & HEAD)
+				if(C.body_cover_flags & HEAD)
 					head_covered = 1
-				if(C.body_parts_covered & UPPER_TORSO)
+				if(C.body_cover_flags & UPPER_TORSO)
 					chest_covered = 1
-				if(C.body_parts_covered & LOWER_TORSO)
+				if(C.body_cover_flags & LOWER_TORSO)
 					groin_covered = 1
-				if(C.body_parts_covered & LEGS)
+				if(C.body_cover_flags & LEGS)
 					legs_covered = 1
-				if(C.body_parts_covered & ARMS)
+				if(C.body_cover_flags & ARMS)
 					arms_covered = 1
-				if(C.body_parts_covered & HANDS)
+				if(C.body_cover_flags & HANDS)
 					hands_covered = 1
-				if(C.body_parts_covered & FEET)
+				if(C.body_cover_flags & FEET)
 					feet_covered = 1
 				if(head_covered && chest_covered && groin_covered && legs_covered && arms_covered && hands_covered && feet_covered)
 					break

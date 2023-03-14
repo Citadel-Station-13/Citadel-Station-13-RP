@@ -1648,7 +1648,7 @@
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "adN" = (
@@ -5825,7 +5825,7 @@
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "amH" = (
@@ -10048,7 +10048,7 @@
 /area/engineering/break_room)
 "avL" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full{
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -14258,7 +14258,9 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/ce/equipped,
+/obj/item/rig/ce/equipped{
+	req_access = list(56)
+},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aQh" = (

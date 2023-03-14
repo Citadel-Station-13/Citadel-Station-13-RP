@@ -46,7 +46,10 @@
 				return
 		update_icon()
 
-/obj/item/multitool/attack_self(mob/living/user)
+/obj/item/multitool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = alert("What do you want to do with \the [src]?","Multitool Menu", "Switch Mode", "Clear Buffers", "Cancel")
 	switch(choice)
 		if("Cancel")
@@ -65,8 +68,6 @@
 			mode_switch(user)
 
 	update_icon()
-
-	return ..()
 
 /obj/item/multitool/is_multitool()
 	return TRUE

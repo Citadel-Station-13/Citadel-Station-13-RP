@@ -26,17 +26,27 @@
  */
 
 /datum/mind
-	var/key
+	/// ckey of mind
+	var/ckey
 	/// Replaces mob/var/original_name
 	var/name
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
+
+	//? Characteristics
+	/// characteristics holder
+	var/datum/characteristics_holder/characteristics
+
+	//? Preferences
 	/**
 	 * original save data
 	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
+	 * todo: don't actually remove it, just only save relevant data (?)
 	 */
 	var/list/original_save_data
+	/// original economic modifier from backgrounds
+	var/original_pref_economic_modifier = 1
 
 	var/memory
 	var/list/learned_recipes
@@ -48,7 +58,7 @@
 
 	var/role_alt_title
 
-	var/datum/job/assigned_job
+	var/datum/role/job/assigned_job
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
@@ -82,10 +92,21 @@
 	/// Used to store what traits the player had picked out in their preferences before joining, in text form.
 	var/list/traits = list()
 
-/datum/mind/New(var/key)
-	src.key = key
+/datum/mind/New(ckey)
+	src.ckey = ckey
 
-	..()
+/datum/mind/Destroy()
+	QDEL_NULL(characteristics)
+	return ..()
+
+/**
+ * make sure we have a characteristics holder
+ */
+/datum/mind/proc/characteristics_holder()
+	if(!characteristics)
+		characteristics = new
+		characteristics.associate_with_mind(src)
+	return characteristics
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -95,6 +116,7 @@
 			current.remove_changeling_powers()
 			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 		current.mind = null
+		characteristics?.disassociate_from_mob(current)
 
 		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
@@ -102,12 +124,13 @@
 
 	current = new_character		//link ourself to our new body
 	new_character.mind = src	//and link our new body to ourself
+	characteristics?.associate_with_mob(current)
 
 	if(changeling)
 		new_character.make_changeling()
 
 	if(active)
-		new_character.key = key //now transfer the key to link the client to our new body
+		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
 	// if(new_character.client) //TODO: Eye Contact
 	// 	LAZYCLEARLIST(new_character.client.recent_examines)
 
@@ -137,7 +160,7 @@
 		return
 
 	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
+	out += "Mind currently owned by ckey: [ckey] [active?"(synced)":"(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "<hr>"
 	out += "Factions and special roles:<br><table>"
@@ -415,7 +438,7 @@
 				//	var/obj/item/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind
 					var/crystals
 					crystals = tcrystals
-					crystals = input("Amount of telecrystals for [key]", crystals) as null|num
+					crystals = input("Amount of telecrystals for [ckey]", crystals) as null|num
 					if (!isnull(crystals))
 						tcrystals = crystals
 
@@ -494,9 +517,9 @@
 //Initialisation procs
 /mob/proc/mind_initialize()
 	if(mind)
-		mind.key = key
+		mind.ckey = ckey
 	else
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(ckey)
 		mind.original = src
 		if(SSticker)
 			SSticker.minds += mind
@@ -567,3 +590,64 @@
 	. = ..()
 	mind.assigned_role = "Juggernaut"
 	mind.special_role = "Cultist"
+
+//? Preferences Checks
+
+/datum/mind/proc/original_background_religion()
+	RETURN_TYPE(/datum/lore/character_background/religion)
+	var/id = original_save_data?[CHARACTER_DATA_RELIGION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_religion(id)
+
+/datum/mind/proc/original_background_citizenship()
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
+	var/id = original_save_data?[CHARACTER_DATA_CITIZENSHIP]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_citizenship(id)
+
+/datum/mind/proc/original_background_origin()
+	RETURN_TYPE(/datum/lore/character_background/origin)
+	var/id = original_save_data?[CHARACTER_DATA_ORIGIN]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_origin(id)
+
+/datum/mind/proc/original_background_faction()
+	RETURN_TYPE(/datum/lore/character_background/faction)
+	var/id = original_save_data?[CHARACTER_DATA_FACTION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_faction(id)
+
+/datum/mind/proc/original_background_culture()
+	RETURN_TYPE(/datum/lore/character_background/culture)
+	var/id = original_save_data?[CHARACTER_DATA_CULTURE]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_culture(id)
+
+/datum/mind/proc/original_background_datums()
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_background_citizenship(),
+		original_background_faction(),
+		original_background_origin(),
+		original_background_religion(),
+		original_background_culture(),
+	)
+	listclearnulls(.)
+
+/datum/mind/proc/original_background_ids()
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_save_data[CHARACTER_DATA_CITIZENSHIP],
+		original_save_data[CHARACTER_DATA_ORIGIN],
+		original_save_data[CHARACTER_DATA_FACTION],
+		original_save_data[CHARACTER_DATA_CULTURE],
+		original_save_data[CHARACTER_DATA_RELIGION],
+	)
+	listclearnulls(.)

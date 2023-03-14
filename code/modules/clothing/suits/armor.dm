@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	clothing_flags = THICKMATERIAL
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
@@ -24,10 +24,10 @@
 	var/mob/living/carbon/human/H = M
 
 	for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
-		if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
+		if(I && (src.body_cover_flags & ARMS && I.body_cover_flags & ARMS) )
 			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
 			return FALSE
-		if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
+		if(I && (src.body_cover_flags & LEGS && I.body_cover_flags & LEGS) )
 			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
 			return FALSE
 	return TRUE
@@ -125,8 +125,8 @@
 	desc = "A suit of armor most often used by Special Weapons and Tactics squads. Includes padded vest with pockets along with shoulder and kneeguards."
 	icon_state = "swatarmor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	slowdown = 1
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
@@ -139,12 +139,12 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	clothing_flags = THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
 	w_class = ITEMSIZE_HUGE
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
@@ -158,8 +158,8 @@
 	icon_state = "detective"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "detective", SLOT_ID_LEFT_HAND = "detective")
 	blood_overlay_type = "coat"
-	flags_inv = 0
-	body_parts_covered = UPPER_TORSO|ARMS
+	inv_hide_flags = 0
+	body_cover_flags = UPPER_TORSO|ARMS
 
 
 /obj/item/clothing/suit/armor/det_suit
@@ -168,7 +168,7 @@
 	icon_state = "detective-armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/caution
@@ -213,7 +213,10 @@
 		return PROJECTILE_FORCE_MISS
 	return 0
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !( active )
 	if (active)
 		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
@@ -238,7 +241,7 @@
 	blood_overlay_type = "armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	slowdown = -1
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
 	siemens_coefficient = 0.4
 	valid_accessory_slots = null
@@ -250,7 +253,7 @@
 	description_info = "It has a 40% chance to completely nullify an incoming attack."
 	icon_state = "alien_tank"
 	slowdown = 0
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 70, bullet = 70, laser = 70, energy = 70, bomb = 70, bio = 0, rad = 40)
 	block_chance = 40
 
@@ -266,7 +269,7 @@
 	desc = "A set of armor worn by members of the Emergency Response Team."
 	icon_state = "ertarmor_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
 	valid_accessory_slots = null
 
@@ -302,7 +305,7 @@
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	clothing_flags = THICKMATERIAL
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
@@ -331,14 +334,14 @@
 	name = "Warden's jacket"
 	desc = "An armoured jacket with silver rank pips and livery."
 	icon_state = "warden_jacket"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/vest/wardencoat/alt
 	name = "Warden's jacket"
 	desc = "An armoured jacket with silver rank pips and livery."
 	icon_state = "warden_alt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/suit/storage/vest/hos
 	name = "head of security armor vest"
@@ -352,15 +355,15 @@
 	name = "armored coat"
 	desc = "A greatcoat enhanced with a special alloy for some protection and style."
 	icon_state = "hos"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/vest/hos_overcoat
 	name = "security overcoat"
 	desc = "A fashionable leather overcoat lined with a lightweight, yet tough armor."
 	icon_state = "leathercoat-sec"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 
 //Jensen cosplay gear
@@ -368,7 +371,7 @@
 	name = "armored trenchcoat"
 	desc = "A trenchcoat augmented with a special alloy for some protection and style."
 	icon_state = "hostrench"
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/vest/pcrc
 	name = "PCRC armor vest"
@@ -494,9 +497,9 @@
 	icon_state = "centcom"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	w_class = ITEMSIZE_LARGE//bulky item
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
@@ -509,14 +512,14 @@
 	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
 	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	slowdown = 5 // If you're a tank you're gonna move like a tank.
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/tdome
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/tdome/red
@@ -538,8 +541,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
 	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
 	w_class = ITEMSIZE_LARGE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
 
@@ -584,15 +587,15 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.gloves)
-		if(H.gloves.body_parts_covered & ARMS)
+		if(H.gloves.body_cover_flags & ARMS)
 			for(var/obj/item/clothing/accessory/A in src)
-				if(A.body_parts_covered & ARMS)
+				if(A.body_cover_flags & ARMS)
 					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
 					return FALSE
 	if(H.shoes)
-		if(H.shoes.body_parts_covered & LEGS)
+		if(H.shoes.body_cover_flags & LEGS)
 			for(var/obj/item/clothing/accessory/A in src)
-				if(A.body_parts_covered & LEGS)
+				if(A.body_cover_flags & LEGS)
 					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
 					return FALSE
 	return TRUE
@@ -690,14 +693,17 @@
 	desc = "Light armor emblazoned with the device of an Eye. When equipped by trained PMD agents, runes set into the interior begin to glow."
 	icon_state = "para_ert_armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 60, bomb = 20, bio = 0, rad = 0)
 	action_button_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
@@ -716,7 +722,7 @@
 	icon_state = "witchhunter"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	action_button_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
@@ -729,9 +735,9 @@
 	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
 	w_class = ITEMSIZE_HUGE // massively bulky item
 	gas_transfer_coefficient = 0.90
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	slowdown = 5 // If you're a tank you're gonna move like a tank.
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0
 
 
@@ -766,7 +772,7 @@
 	name = "armored trenchcoat"
 	desc = "A trenchcoat augmented with a special alloy for some protection and style."
 	icon_state = "hostrench"
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"
@@ -788,13 +794,13 @@
 	name = "marine body armor"
 	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon - and we had to <i>share</i> the rock!"
 	icon_state = "unsc_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO // ToDo: Break up the armor into smaller bits.
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO // ToDo: Break up the armor into smaller bits.
 
 /obj/item/clothing/suit/armor/combat/imperial
 	name = "imperial soldier armor"
 	desc = "Made out of an especially light metal, it lets you conquer in style."
 	icon_state = "ge_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/armor/combat/imperial/centurion
 	name = "imperial centurion armor"
@@ -806,7 +812,7 @@
 	desc = "A tribal armor plate, crafted from animal bone."
 	icon_state = "bonearmor"
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 //Strange Plate Armor
 /obj/item/clothing/suit/armor/bulletproof/kettle
@@ -852,3 +858,21 @@
 	icon_state = "swatarmor_pirate"
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
+
+//Ashlander armor
+/obj/item/clothing/suit/armor/ashlander
+	name = "ashen lamellar panoply"
+	desc = "This worn armor is fashioned out of bronze plates connected by dried sinew. The hammered plates are scuffed by ash and soot."
+	icon = 'icons/clothing/suit/ashlander.dmi'
+	icon_state = "lamellar"
+	armor = list(melee = 20, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+//More Warhammer Fun
+/obj/item/clothing/suit/armor/utilitarian
+	name = "utilitarian military armor"
+	desc = "This high tech armor serves to protect the user from ranged attacks, rather than melee."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tau"
+	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

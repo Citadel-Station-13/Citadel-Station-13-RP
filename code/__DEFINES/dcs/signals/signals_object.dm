@@ -327,7 +327,7 @@
 	///? Prevents click from happening.
 	////#define COMPONENT_CANCEL_EQUIPMENT_CLICK (1<<0)
 
-////#define COMSIG_ITEM_ATTACK "item_attack"
+#define COMSIG_ITEM_ATTACK "item_attack"
 /// From base of obj/item/attack_self(): (/mob)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 /// From base of obj/item/attack_self_secondary(): (/mob)

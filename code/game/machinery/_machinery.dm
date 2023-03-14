@@ -106,6 +106,15 @@
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
 
+	//* Construction / Deconstruction
+	/// Can be constructed / deconstructed by players by default
+	//  todo: proc for allow / disallow, refactor
+	var/allow_deconstruct = FALSE
+	/// Can be anchored / unanchored by players without deconstructing by default
+	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
+	var/allow_unanchor = FALSE
+
+	//* unsorted
 	var/machine_stat = 0
 	var/emagged = FALSE
 	/**
@@ -130,8 +139,6 @@
 	var/clicksound
 	///Volume of interface sounds.
 	var/clickvol = 40
-	///Can the machine be interacted with while de-powered.
-	var/interact_offline = FALSE
 	var/obj/item/circuitboard/circuit = null
 	///If false, SSmachines. If true, SSfastprocess.
 	var/speed_process = FALSE
@@ -147,6 +154,7 @@
 
 	if(ispath(circuit))
 		circuit = new circuit(src)
+		default_apply_parts()
 
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
@@ -235,7 +243,7 @@
 	return (machine_stat & (NOPOWER | BROKEN | additional_flags))
 
 /obj/machinery/CanUseTopic(mob/user)
-	if(!interact_offline && (machine_stat & (NOPOWER | BROKEN)))
+	if(!(interaction_flags_machine & INTERACT_MACHINE_OFFLINE) && (machine_stat & (NOPOWER | BROKEN)))
 		return UI_CLOSE
 	return ..()
 
@@ -257,7 +265,7 @@
 	else
 		return attack_hand(user)
 
-/obj/machinery/attack_hand(mob/user)
+/obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
 	if(inoperable(MAINT))
@@ -461,6 +469,7 @@
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
 	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)

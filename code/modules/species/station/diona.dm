@@ -29,7 +29,6 @@
 
 	max_age = 300
 
-	economic_modifier = 4
 
 	blurb = {"
 	Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective

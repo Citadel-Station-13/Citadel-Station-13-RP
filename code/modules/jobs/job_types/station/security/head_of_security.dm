@@ -1,9 +1,15 @@
-/datum/job/station/head_of_security
+/datum/role/job/station/head_of_security
 	id = JOB_ID_HEAD_OF_SECURITY
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"
 	flag = HOS
-	departments_managed = list(DEPARTMENT_SECURITY)
-	departments = list(DEPARTMENT_SECURITY, DEPARTMENT_COMMAND)
+	departments_managed = list(
+		DEPARTMENT_SECURITY,
+	)
+	departments = list(
+		DEPARTMENT_SECURITY,
+		DEPARTMENT_COMMAND,
+	)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE
@@ -15,15 +21,30 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
-	economic_modifier = 10
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
-						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
-	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
-						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-						access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
+	minimal_access = list(
+		ACCESS_COMMAND_ANNOUNCE,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_COMMAND_LOCKERS,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_GENERAL_GATEWAY,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SECURITY_ARMORY,
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_EDIT,
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_SECURITY_HOS,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_MINE,
+	)
 	minimum_character_age = 25
 	minimal_player_age = 14
 
@@ -32,18 +53,18 @@
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
 	alt_titles = list(
-		"Security Commander" = /datum/alt_title/hos/commander,
-		"Chief of Security" = /datum/alt_title/hos/chief,
-		"Defense Director" = /datum/alt_title/hos/director
+		"Security Commander" = /datum/prototype/alt_title/hos/commander,
+		"Chief of Security" = /datum/prototype/alt_title/hos/chief,
+		"Defense Director" = /datum/prototype/alt_title/hos/director
 		)
 
-/datum/alt_title/hos/commander
+/datum/prototype/alt_title/hos/commander
 	title = "Security Commander"
 
-/datum/alt_title/hos/chief
+/datum/prototype/alt_title/hos/chief
 	title = "Chief of Security"
 
-/datum/alt_title/hos/director
+/datum/prototype/alt_title/hos/director
 	title = "Defense Director"
 
 /datum/outfit/job/station/head_of_security

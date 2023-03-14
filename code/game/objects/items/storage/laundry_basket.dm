@@ -20,11 +20,11 @@
 	collection_mode = 1
 	var/linked
 
-/obj/item/storage/laundry_basket/attack_hand(mob/living/user as mob)
+/obj/item/storage/laundry_basket/attack_hand(mob/user, list/params)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.get_organ("r_hand")
-		if (user.hand)
+		if (H.hand)
 			temp = H.get_organ("l_hand")
 		if(!temp)
 			to_chat(user, "<span class='warning'>You need two hands to pick this up!</span>")
@@ -35,7 +35,10 @@
 		return
 	return ..()
 
-/obj/item/storage/laundry_basket/attack_self(mob/user as mob)
+/obj/item/storage/laundry_basket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/turf/T = get_turf(user)
 	to_chat(user, "<span class='notice'>You dump the [src]'s contents onto \the [T].</span>")
 	return ..()

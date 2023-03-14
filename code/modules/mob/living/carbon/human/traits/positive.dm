@@ -15,7 +15,7 @@
 	name = "Major Hardy"
 	desc = "Allows you to carry heavy equipment with almost no slowdown."
 	cost = 2
-	var_changes = list("item_slowdown_mod" = 0.1)
+	var_changes = list("item_slowdown_mod" = 0.25)
 
 /datum/trait/positive/endurance_plus
 	name = "Better Endurance"

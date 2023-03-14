@@ -9,6 +9,8 @@
 	var/name = "Unknown"
 	/// id - **must be unique on subtypes
 	var/id
+	/// category
+	var/category = "Misc"
 	/// description/what the player sees
 	var/desc = "What is this?"
 	/// subspecies are counted as the master species
@@ -21,6 +23,8 @@
 	var/list/innate_languages
 	/// modify max custom language amount
 	var/language_amount_mod = 0
+	/// economic background modfiier for starting pay
+	var/economy_payscale = 1
 
 /datum/lore/character_background/New()
 	// resolve typepaths
@@ -28,8 +32,15 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in allow_species)
 		if(ispath(thing))
-			allow_species += SScharacters.resolve_character_species(thing).uid
+			var/resolved
+			if(ispath(thing, /datum/species))
+				var/datum/species/access = thing
+				resolved = initial(access.uid)
+			else if(ispath(thing, /datum/character_species))
+				var/datum/character_species/access = thing
+				resolved = initial(access.uid)
 			allow_species -= thing
+			allow_species += resolved
 		else if(istext(thing))
 			ASSERT(!!SScharacters.resolve_character_species(thing))
 		else
@@ -38,8 +49,15 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in forbid_species)
 		if(ispath(thing))
-			forbid_species += SScharacters.resolve_character_species(thing).uid
-			forbid_species -= thing
+			var/resolved
+			if(ispath(thing, /datum/species))
+				var/datum/species/access = thing
+				resolved = initial(access.uid)
+			else if(ispath(thing, /datum/character_species))
+				var/datum/character_species/access = thing
+				resolved = initial(access.uid)
+			allow_species -= thing
+			allow_species += resolved
 		else if(istext(thing))
 			ASSERT(!!SScharacters.resolve_character_species(thing))
 		else

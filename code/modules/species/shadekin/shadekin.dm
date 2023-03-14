@@ -42,6 +42,7 @@
 
 	brute_mod = 0.7 // Naturally sturdy.
 	burn_mod = 1.2 // Furry
+	radiation_mod = 0
 
 	warning_low_pressure = 50
 	hazard_low_pressure = -1

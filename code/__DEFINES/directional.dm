@@ -30,6 +30,7 @@
 #define DIRFLIP(d)       turn(d, 180)
 
 /// Inverse direction, taking into account UP|DOWN if necessary.
+//? STOP USING THIS. Use global.reverse_dir!!
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
 
 /// Create directional subtypes for a path to simplify mapping.

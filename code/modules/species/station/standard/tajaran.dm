@@ -14,12 +14,12 @@
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
 	max_additional_languages = 3
-	name_language = LANGUAGE_ID_TAJARAN
-	intrinsic_languages = LANGUAGE_ID_TAJARAN
+	name_language = /datum/language/tajaran
+	intrinsic_languages = /datum/language/tajaran
 	whitelist_languages = list(
-		LANGUAGE_ID_TAJARAN,
-		LANGUAGE_ID_TAJARAN_ALT,
-		LANGUAGE_ID_TAJARAN_SIGN
+		/datum/language/tajaran,
+		/datum/language/tajaranakhani,
+		/datum/language/tajsign,
 	)
 
 	darksight = 8
@@ -38,7 +38,6 @@
 
 	max_age = 80
 
-	economic_modifier = 10
 
 	blurb = {"
 	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.

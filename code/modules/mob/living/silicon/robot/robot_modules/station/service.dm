@@ -196,7 +196,8 @@
 		"Borgi" = "borgi-jani",
 		"Otieborg" = "otiej",
 		"Janihound, J9" = "J9",
-		"F3-LINE" = "FELI-Janitor"
+		"F3-LINE" = "FELI-Janitor",
+		"Drake" = "drakejanit"
 	)
 	channels = list("Service" = 1)
 	can_be_pushed = 0

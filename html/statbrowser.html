@@ -244,14 +244,18 @@ function set_style_sheet(sheet) {
 
 	.grid-item-text {
 		display: inline-block;
-		width: calc(98%);
+		width: calc(100%);
 		background-color: #F0F0F0;
 		margin: 0 -6px;
-		padding: 0 6px;
+		padding: 0px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		pointer-events: none;
+	}
+
+	.grid-item-text:hover {
+		padding: 0 3px;
 	}
 
 	.dark .grid-item-text {
@@ -368,6 +372,8 @@ const ELEMENT_ID_ATOM_TABLE = "atom_elem"
 
 /// how long to wait before re-loading missing images
 var IMAGE_RETRY_DELAY = 1000;
+/// how many times before we give up
+var IMAGE_RETRY_LIMIT = 5;
 
 /////////////////////// ELEMENTS ////////////////////////
 
@@ -1120,9 +1126,14 @@ function lambda_onclick_verb(verb) {
 function lambda_reload_image(node) {
 	var re_ref = node;
 	return setTimeout(function() {
-		var old_src = re_ref.old_src
+		var attempts = parseInt(node.getAttribute('img-reload-n'), 10) || 0;
+		if(attempts >= IMAGE_RETRY_LIMIT){
+			return;
+		}
+		var old_src = re_ref.src
 		re_ref.src = null;
 		re_ref.src = old_src + '#' + (Math.random() * 1000);
+		re_ref.setAttribute('img-reload-n', attempts + 1);
 	}, IMAGE_RETRY_DELAY);
 }
 

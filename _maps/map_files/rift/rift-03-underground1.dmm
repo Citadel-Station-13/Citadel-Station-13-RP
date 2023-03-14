@@ -3271,6 +3271,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "kt" = (
@@ -9531,7 +9534,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "LE" = (
-/obj/machinery/pda_multicaster/prebuilt,
+/obj/machinery/pda_multicaster,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "LF" = (

@@ -1,24 +1,30 @@
 /datum/category_item/player_setup_item/background/origin
 	name = "Origin"
 	save_key = CHARACTER_DATA_ORIGIN
-	sort_order = 2
+	sort_order = 3
 
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
 	var/list/categories = list()
+	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
+	var/current_category
 	for(var/datum/lore/character_background/origin/O as anything in available)
 		LAZYADD(categories[O.category], O)
-	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
+		if(O == current)
+			current_category = O.category
 	. += "<center>"
 	. += "<b>Origin</b><br>"
-	for(var/category in categories)
-		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
-		. += " "
-	. += "<br>"
+	if(length(categories) > 1)
+		for(var/category in categories)
+			. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+			. += " "
+		. += "<br>"
 	for(var/datum/lore/character_background/origin/O in categories[current.category])
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
+		else if(current_category && O.category != current_category)
+			continue
 		else
 			. += href_simple(prefs, "pick", "[O.name]", O.id)
 		. += " "
@@ -38,6 +44,7 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this origin."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
+			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
 		if("category")
 			var/cat = params["category"]
@@ -64,7 +71,7 @@
 		M.add_language(id)
 	return TRUE
 
-/datum/category_item/player_setup_item/background/origin/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/origin/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid origin for your current species.")
@@ -84,4 +91,5 @@
 	return get_character_data(CHARACTER_DATA_ORIGIN)
 
 /datum/preferences/proc/lore_origin_datum()
+	RETURN_TYPE(/datum/lore/character_background/origin)
 	return SScharacters.resolve_origin(lore_origin_id())

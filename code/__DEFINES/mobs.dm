@@ -202,13 +202,13 @@
 #define INV_ACCESSORIES_DEF_ICON 'icons/mob/clothing/ties.dmi'
 
 // Character's economic class
-#define CLASS_UPPER  "Wealthy"
-#define CLASS_UPMID  "Well-off"
-#define CLASS_MIDDLE "Average"
+#define CLASS_UPPER  "Well-Off"
+#define CLASS_MIDDLE  "Average"
 #define CLASS_LOWMID "Underpaid"
-#define CLASS_LOWER  "Poor"
+#define CLASS_LOWISH "Poor"
+#define CLASS_LOW  "Impoverished"
 
-#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
+#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWISH,CLASS_LOW)
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
 #define MOB_HUGE  		40

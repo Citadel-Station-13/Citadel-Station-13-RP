@@ -6,7 +6,7 @@
 	icon_opened = "capsecureopen"
 	icon_broken = "capsecurebroken"
 	icon_off = "capsecureoff"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
@@ -34,7 +34,7 @@
 	icon_opened = "hopsecureopen"
 	icon_broken = "hopsecurebroken"
 	icon_off = "hopsecureoff"
-	req_access = list(access_hop)
+	req_access = list(ACCESS_COMMAND_HOP)
 
 	starts_with = list(
 		/obj/item/clothing/suit/storage/vest,
@@ -58,7 +58,7 @@
 	icon_opened = "hopsecureopen"
 	icon_broken = "hopsecurebroken"
 	icon_off = "hopsecureoff"
-	req_access = list(access_hop)
+	req_access = list(ACCESS_COMMAND_HOP)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/head_of_personnel,
@@ -86,14 +86,14 @@
 /*
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's locker"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	icon_state = "hossecure1"
 	icon_closed = "hossecure"
 	icon_locked = "hossecure1"
 	icon_opened = "hossecureopen"
 	icon_broken = "hossecurebroken"
 	icon_off = "hossecureoff"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -152,7 +152,7 @@
 	icon_opened = "hossecureopen"
 	icon_broken = "hossecurebroken"
 	icon_off = "hossecureoff"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -189,7 +189,7 @@
 	icon_opened = "hossecureopen"
 	icon_broken = "hossecurebroken"
 	icon_off = "hossecureoff"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	// citadel edit NSFW > Multiphase
@@ -217,7 +217,7 @@
 	icon_opened = "wardensecureopen"
 	icon_broken = "wardensecurebroken"
 	icon_off = "wardensecureoff"
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 
 	starts_with = list(
 		/obj/item/clothing/suit/storage/vest/warden,
@@ -269,7 +269,7 @@
 	icon_opened = "secopen"
 	icon_broken = "secbroken"
 	icon_off = "secoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
 		/obj/item/clothing/suit/storage/vest/officer,
@@ -337,7 +337,7 @@
 	icon_opened = "cabinetdetective_open"
 	icon_broken = "cabinetdetective_broken"
 	icon_off = "cabinetdetective_broken"
-	req_access = list(access_forensics_lockers)
+	req_access = list(ACCESS_SECURITY_FORENSICS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
@@ -377,7 +377,7 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
 		/obj/item/reagent_containers/syringe/ld50_syringe/choral = 2)
@@ -386,7 +386,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	anchored = 1
 	var/id = null
 
@@ -396,7 +396,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/posters
 	name = "morale storage"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	anchored = 1
 
 	starts_with = list(
@@ -408,7 +408,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
-	req_access = list(access_lawyer)
+	req_access = list(ACCESS_COMMAND_IAA)
 
 	starts_with = list(
 		/obj/item/clothing/shoes/brown,
@@ -427,7 +427,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "wall-lockeropen"
 	icon_broken = "wall-lockerbroken"
 	icon_off = "wall-lockeroff"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	density = 1
 
 	//too small to put a man in
@@ -455,7 +455,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -503,7 +503,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(
@@ -557,7 +557,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_opened = "secCopen"
 	icon_broken = "secCbroken"
 	icon_off = "seCcoff"
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(

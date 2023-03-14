@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/disabilities = 0
 	var/mirror = TRUE
 
-	var/economic_status = "Average"
+	var/economic_status = CLASS_MIDDLE
 
 	var/uplinklocation = "PDA"
 

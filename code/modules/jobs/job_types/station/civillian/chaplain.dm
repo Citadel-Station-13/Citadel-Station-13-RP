@@ -1,4 +1,4 @@
-/datum/job/station/chaplain
+/datum/role/job/station/chaplain
 	id = JOB_ID_CHAPLAIN
 	title = "Chaplain"
 	flag = CHAPLAIN
@@ -9,29 +9,29 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/chaplain
-	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
-	minimal_access = list(access_chapel_office, access_crematorium)
+	additional_access = list(ACCESS_MEDICAL_MORGUE, ACCESS_GENERAL_CHAPEL, ACCESS_GENERAL_CREMATOR, ACCESS_ENGINEERING_MAINT)
+	minimal_access = list(ACCESS_GENERAL_CHAPEL, ACCESS_GENERAL_CREMATOR)
 
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
-		"Counselor" = /datum/alt_title/counselor,
-		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor
+		"Counselor" = /datum/prototype/alt_title/counselor,
+		"Religious Affairs Advisor" = /datum/prototype/alt_title/chaplain/advisor
 		)
 
 // Chaplain Alt Titles
-/datum/alt_title/counselor
+/datum/prototype/alt_title/counselor
 	title = "Counselor"
 	title_blurb = "The Counselor attends to the emotional needs of the crew, without a specific medicinal or spiritual focus."
 
-/datum/alt_title/chaplain/advisor
+/datum/prototype/alt_title/chaplain/advisor
 	title = "Religious Affairs Advisor"
 
-/datum/job/station/chaplain/equip(mob/living/carbon/human/H, src)
+/datum/role/job/station/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE
-/datum/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
+/datum/role/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)
 		return

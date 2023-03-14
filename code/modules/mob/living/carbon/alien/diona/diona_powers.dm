@@ -19,7 +19,7 @@
 
 		if(istype(C,/mob/living/carbon/human))
 			var/mob/living/carbon/human/D = C
-			if(D.species && D.species.name == SPECIES_DIONA)
+			if(D.species && D.species.get_species_id() == SPECIES_ID_DIONA)
 				choices += C
 
 	var/mob/living/M = input(src,"Who do you wish to merge with?") in null|choices

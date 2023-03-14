@@ -58,7 +58,7 @@
 	for(var/id in data)
 		H.add_language(id)
 
-/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE

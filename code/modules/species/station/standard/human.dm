@@ -29,7 +29,6 @@
 
 	max_age = 130
 
-	economic_modifier = 10
 
 	health_hud_intensity = 1.5
 

@@ -3,7 +3,7 @@
 	desc = "Used to monitor the station's drone population and the assembler that services them."
 	icon_keyboard = "power_key"
 	icon_screen = "generic"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	circuit = /obj/item/circuitboard/drone_control
 
 	//Used when pinging drones.
@@ -19,7 +19,7 @@
 		return UI_CLOSE
 	return ..()
 
-/obj/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/drone_control/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

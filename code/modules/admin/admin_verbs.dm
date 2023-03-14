@@ -158,7 +158,6 @@ var/list/admin_verbs_spawn = list(
 	/client/proc/respawn_character,
 	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,
-	/client/proc/spawn_chemdisp_cartridge,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/map_template_load_on_new_z
@@ -242,6 +241,7 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
+	/client/proc/fucky_wucky,
 	/client/proc/simple_DPS
 	)
 
@@ -1021,7 +1021,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in SSjob.occupations)
+		for (var/datum/role/job/J in SSjob.occupations)
 			if (J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
 		if (!jobs.len)

@@ -605,10 +605,10 @@ SUBSYSTEM_DEF(ticker)
 		var/temprole = Mind.special_role
 		if(temprole)							//if they are an antagonist of some sort.
 			if(temprole in total_antagonists)	//If the role exists already, add the name to it
-				total_antagonists[temprole] += ", [Mind.name]([Mind.key])"
+				total_antagonists[temprole] += ", [Mind.name]([Mind.ckey])"
 			else
 				total_antagonists.Add(temprole) //If the role doesnt exist in the list, create it and add the mob
-				total_antagonists[temprole] += ": [Mind.name]([Mind.key])"
+				total_antagonists[temprole] += ": [Mind.name]([Mind.ckey])"
 
 	//Now print them all into the log!
 	log_game("Antagonists at round end were...")

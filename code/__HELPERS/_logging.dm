@@ -315,8 +315,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
+		ckey = mind.ckey
 		if(mind.current)
 			M = mind.current
 			if(M.client)
@@ -391,6 +390,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		return "([AREACOORD(T)])"
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
+
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
 
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
