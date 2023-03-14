@@ -418,8 +418,8 @@
 	required_energy_min = 400                     
 	required_energy_max = 500 
 
-	required_atmos_temp_min = 200
-	required_atmos_temp_max = 230
+	required_atmos_temp_min = 369
+	required_atmos_temp_max = 388
 	probability = 50
 		
 /datum/particle_smasher_recipe/platinum_osmium
