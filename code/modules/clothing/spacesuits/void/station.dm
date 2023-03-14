@@ -86,7 +86,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating."
 	icon_state = "rig0-mining"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mining_helm", SLOT_ID_LEFT_HAND = "mining_helm")
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
+	r_armor_type = /datum/armor/cargo/mining/space
 	light_overlay = "helmet_light_dual"
 
 /obj/item/clothing/suit/space/void/mining
@@ -95,7 +95,7 @@
 	icon_state = "rig-mining"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mining_voidsuit", SLOT_ID_LEFT_HAND = "mining_voidsuit")
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
+	r_armor_type = /datum/armor/cargo/mining/space
 
 //Mining Surplus Voidsuit
 
@@ -103,13 +103,13 @@
 	name = "frontier mining voidsuit helmet"
 	desc = "An armored cheap voidsuit helmet. Someone must have through they were pretty cool when they painted a mohawk on it."
 	icon_state = "rig0-miningalt"
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
+	r_armor_type = /datum/armor/cargo/mining/space/frontier
 
 /obj/item/clothing/suit/space/void/mining/alt
 	icon_state = "rig-miningalt"
 	name = "frontier mining voidsuit"
 	desc = "A cheap prospecting voidsuit. What it lacks in comfort it makes up for in armor plating and street cred."
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
+	r_armor_type = /datum/armor/cargo/mining/space/frontier
 
 //Medical
 /obj/item/clothing/head/helmet/space/void/medical
