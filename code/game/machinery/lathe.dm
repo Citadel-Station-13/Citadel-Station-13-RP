@@ -23,7 +23,7 @@
 	var/lathe_type = NONE
 
 	/// material container datum
-	var/datum/material_container/materials
+	var/datum/material_container/stored
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 
