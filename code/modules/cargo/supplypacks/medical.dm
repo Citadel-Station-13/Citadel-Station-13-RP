@@ -422,7 +422,7 @@
 	container_name = "Compact Defibrillator crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
-/datum/supply_pack/med/ml3m
+/datum/supply_pack/med/medigun
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
 			/obj/item/gun/ballistic/cell_loaded/medical = 1,
@@ -433,7 +433,7 @@
 	container_name = "Cell-Loaded Medigun crate"
 	access = ACCESS_MEDICAL_CMO
 
-/datum/supply_pack/med/ml3m_cells
+/datum/supply_pack/med/medigun_cells
 	name = "Cell-Loaded Medigun Cell Pack crate"
 	contains = list(
 			/obj/item/ammo_casing/microbattery/medical/brute = 3,

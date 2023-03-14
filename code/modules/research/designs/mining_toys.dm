@@ -1,6 +1,5 @@
-/datum/design/science/mining/AssembleDesignName()
-	..()
-	name = "Mining equipment design ([build_name])"
+/datum/design/science/mining/generate_name(template)
+	return "Mining eqiupment design ([..()])"
 
 // Mining digging devices
 

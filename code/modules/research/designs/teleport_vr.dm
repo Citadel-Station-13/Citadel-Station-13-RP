@@ -2,9 +2,8 @@
 	P - teleporteing item stuff
 */
 
-/datum/design/science/teleport/AssembleDesignName()
-	..()
-	name = "Teleportation device prototype ([build_name])"
+/datum/design/science/teleport/generate_name(template)
+	return "Teleportation device prototype ([..()])"
 
 /datum/design/science/teleport/translocator
 	name = "Personal translocator"

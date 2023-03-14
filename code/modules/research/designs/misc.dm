@@ -1,8 +1,7 @@
 // Everything that didn't fit elsewhere
 
-/datum/design/science/general/AssembleDesignName()
-	..()
-	name = "General purpose design ([build_name])"
+/datum/design/science/general/generate_name(template)
+	return "General purpose design ([..()])"
 
 /datum/design/science/general/communicator
 	name = "Communicator"
@@ -41,9 +40,8 @@
 	materials = list(MAT_STEEL = 1500, MAT_SILVER = 150, MAT_GLASS = 3000)
 	build_path = /obj/item/lightreplacer
 
-/datum/design/science/illegal/AssembleDesignName()
-	..()
-	name = "Nonstandard design ([build_name])"
+/datum/design/science/illegal/generate_name(template)
+	return "Non-standard design ([..()])"
 
 /datum/design/science/illegal/binaryencrypt
 	name = "Binary encryption key"

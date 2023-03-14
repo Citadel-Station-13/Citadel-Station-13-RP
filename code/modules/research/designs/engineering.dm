@@ -1,8 +1,7 @@
 // Tools
 
-/datum/design/science/tool/AssembleDesignName()
-	..()
-	name = "Experimental tool prototype ([build_name])"
+/datum/design/science/tool/generate_name(template)
+	return "Experimental tool prototype ([..()])"
 
 /datum/design/science/tool/experimental_welder
 	name = "Experimental welding tool"
@@ -38,9 +37,8 @@
 
 // Other devices
 
-/datum/design/science/engineering/AssembleDesignName()
-	..()
-	name = "Engineering device prototype ([build_name])"
+/datum/design/science/engineering/generate_name(template)
+	return "Engineering device prototype ([..()])"
 
 /datum/design/science/engineering/t_scanner
 	name = "T-ray Scanner"

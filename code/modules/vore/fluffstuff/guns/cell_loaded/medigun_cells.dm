@@ -197,11 +197,11 @@
 
 /obj/item/projectile/beam/medical_cell/haste/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.add_modifier(/datum/modifier/ml3mhaste, 20 SECONDS)
+		target.add_modifier(/datum/modifier/medigunhaste, 20 SECONDS)
 	else
 		return 1
 
-/datum/modifier/ml3mhaste
+/datum/modifier/medigunhaste
 	name = "haste"
 	desc = "You can move much faster!"
 	mob_overlay_state = "haste"

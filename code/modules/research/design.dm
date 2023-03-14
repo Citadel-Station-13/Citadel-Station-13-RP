@@ -3,7 +3,7 @@
  * legacy science designs
  */
 /datum/design/science
-	build_type = LATHE_TYPE_PROTOLATHE
+	lathe_type = LATHE_TYPE_PROTOLATHE
 
 //Make sure items don't get free power
 /datum/design/science/print(atom/where)

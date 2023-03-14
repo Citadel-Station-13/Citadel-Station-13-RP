@@ -3,9 +3,8 @@
 /datum/design/science/implant
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/datum/design/science/implant/AssembleDesignName()
-	..()
-	name = "Implantable biocircuit design ([build_name])"
+/datum/design/science/implant/generate_name(template)
+	return "Implantable biocircuit design ([..()])"
 
 /datum/design/science/implant/chemical
 	name = "chemical"

@@ -4,9 +4,8 @@
 	req_tech = list(TECH_MATERIAL = 2, TECH_DATA = 2, TECH_BLUESPACE = 2)
 	materials = list(MAT_STEEL = 500)
 
-/datum/design/science/gps/AssembleDesignName()
-	..()
-	name = "Triangulating device design ([name])"
+/datum/design/science/gps/generate_name(template)
+	return "Triangulating device design ([..()])"
 
 /datum/design/science/gps/generic
 	name = "GEN"
@@ -50,9 +49,8 @@
 
 // Other locators
 
-/datum/design/science/locator/AssembleDesignName()
-	..()
-	name = "Locator device design ([name])"
+/datum/design/science/locator/generate_name(template)
+	return "Locator device design ([..()])"
 
 /datum/design/science/locator/beacon_locator
 	name = "Tracking beacon pinpointer"

@@ -1,7 +1,6 @@
 // Modular computer components
-/datum/design/science/modularcomponent/AssembleDesignName()
-	..()
-	name = "Computer part design ([build_name])"
+/datum/design/science/modularcomponent/generate_name(template)
+	return "Computer part design ([..()])"
 
 // Hard drives
 

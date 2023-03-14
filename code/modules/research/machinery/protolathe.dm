@@ -67,7 +67,7 @@
 
 /obj/machinery/r_n_d/protolathe/dismantle()
 	for(var/f in stored_materials)
-		eject_stored_materials(f, -1)
+		eject_materials(f, -1)
 	..()
 
 /obj/machinery/r_n_d/protolathe/update_overlays()
@@ -184,7 +184,7 @@
 /obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
-		power += round(D.stored_materials[M] / 5)
+		power += round(D.materials[M] / 5)
 	power = max(active_power_usage, power)
 	use_power(power)
 	for(var/M in D.materials)

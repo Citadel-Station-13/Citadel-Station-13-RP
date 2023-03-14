@@ -1,6 +1,5 @@
-/datum/design/science/disk/AssembleDesignName()
-	..()
-	name = "Data storage design ([name])"
+/datum/design/science/disk/generate_name(template)
+	return "Data storage design ([..()])"
 
 /datum/design/science/disk/design_disk
 	name = "Design Storage Disk"

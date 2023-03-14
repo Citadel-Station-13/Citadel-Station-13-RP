@@ -14,9 +14,8 @@
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/datum/design/science/pda_cartridge/AssembleDesignName()
-	..()
-	name = "PDA accessory ([build_name])"
+/datum/design/science/pda_cartridge/generate_name(template)
+	return "PDA cartridge ([..()])"
 
 /datum/design/science/pda_cartridge/cart_basic
 	identifier = "cart_basic"

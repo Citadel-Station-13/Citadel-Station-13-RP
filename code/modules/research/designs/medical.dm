@@ -1,9 +1,8 @@
 /datum/design/science/medical
 	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/datum/design/science/medical/AssembleDesignName()
-	..()
-	name = "Medical equipment prototype ([build_name])"
+/datum/design/science/medical/generate_name(template)
+	return "Medical equipment prototype ([..()])"
 
 // Surgical devices
 
@@ -153,142 +152,141 @@
 	materials = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
 	build_path = /obj/item/ammo_magazine/cell_mag/medical/advanced
 
-/datum/design/science/ml3m_cell/AssembleDesignName()
-	..()
-	name = "Nanite cell prototype ([name])"
+/datum/design/science/medigun_cell/generate_name(template)
+	return "Nanite cell prototype ([..()])"
 
 //Tier 1
 
-/datum/design/science/ml3m_cell/toxin
+/datum/design/science/medigun_cell/toxin
 	name = "TOXIN"
-	identifier = "ml3m_cell_toxin"
+	identifier = "medigun_cell_toxin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin
 
-/datum/design/science/ml3m_cell/omni
+/datum/design/science/medigun_cell/omni
 	name = "OMNI"
-	identifier = "ml3m_cell_omni"
+	identifier = "medigun_cell_omni"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
 	build_path = /obj/item/ammo_casing/microbattery/medical/omni
 
-/datum/design/science/ml3m_cell/antirad
+/datum/design/science/medigun_cell/antirad
 	name = "ANTIRAD"
-	identifier = "ml3m_cell_antirad"
+	identifier = "medigun_cell_antirad"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
 	build_path = /obj/item/ammo_casing/microbattery/medical/antirad
 
 //Tier 2
 
-/datum/design/science/ml3m_cell/brute2
+/datum/design/science/medigun_cell/brute2
 	name = "BRUTE-II"
-	identifier = "ml3m_cell_brute2"
+	identifier = "medigun_cell_brute2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/brute2
 
-/datum/design/science/ml3m_cell/burn2
+/datum/design/science/medigun_cell/burn2
 	name = "BURN-II"
-	identifier = "ml3m_cell_burn2"
+	identifier = "medigun_cell_burn2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/burn2
 
-/datum/design/science/ml3m_cell/stabilize2
+/datum/design/science/medigun_cell/stabilize2
 	name = "STABILIZE-II"
-	identifier = "ml3m_cell_stabilize2"
+	identifier = "medigun_cell_stabilize2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_SILVER = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/stabilize2
 
-/datum/design/science/ml3m_cell/omni2
+/datum/design/science/medigun_cell/omni2
 	name = "OMNI-II"
-	identifier = "ml3m_cell_omni2"
+	identifier = "medigun_cell_omni2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/omni2
 
 //Tier 3
 
-/datum/design/science/ml3m_cell/toxin2
+/datum/design/science/medigun_cell/toxin2
 	name = "TOXIN-II"
-	identifier = "ml3m_cell_toxin2"
+	identifier = "medigun_cell_toxin2"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900, MAT_SILVER = 900, MAT_DIAMOND = 500)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin2
 
-/datum/design/science/ml3m_cell/haste
+/datum/design/science/medigun_cell/haste
 	name = "HASTE"
-	identifier = "ml3m_cell_haste"
+	identifier = "medigun_cell_haste"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_SILVER = 900, MAT_DIAMOND = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/haste
 
-/datum/design/science/ml3m_cell/resist
+/datum/design/science/medigun_cell/resist
 	name = "RESIST"
-	identifier = "ml3m_cell_resist"
+	identifier = "medigun_cell_resist"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_URANIUM = 900, MAT_DIAMOND = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/resist
 
-/datum/design/science/ml3m_cell/corpse_mend
+/datum/design/science/medigun_cell/corpse_mend
 	name = "CORPSE MEND"
-	identifier = "ml3m_cell_corpse_mend"
+	identifier = "medigun_cell_corpse_mend"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_PHORON = 3000, MAT_DIAMOND = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/medical/corpse_mend
 
 //Tier 4
 
-/datum/design/science/ml3m_cell/brute3
+/datum/design/science/medigun_cell/brute3
 	name = "BRUTE-III"
-	identifier = "ml3m_cell_brute3"
+	identifier = "medigun_cell_brute3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/brute3
 
-/datum/design/science/ml3m_cell/burn3
+/datum/design/science/medigun_cell/burn3
 	name = "BURN-III"
-	identifier = "ml3m_cell_burn3"
+	identifier = "medigun_cell_burn3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/burn3
 
-/datum/design/science/ml3m_cell/toxin3
+/datum/design/science/medigun_cell/toxin3
 	name = "TOXIN-III"
-	identifier = "ml3m_cell_toxin3"
+	identifier = "medigun_cell_toxin3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin3
 
-/datum/design/science/ml3m_cell/omni3
+/datum/design/science/medigun_cell/omni3
 	name = "OMNI-III"
-	identifier = "ml3m_cell_omni3"
+	identifier = "medigun_cell_omni3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/omni3
 
 //Tierless
 
-/datum/design/science/ml3m_cell/shrink
+/datum/design/science/medigun_cell/shrink
 	name = "SHRINK"
-	identifier = "ml3m_cell_shrink"
+	identifier = "medigun_cell_shrink"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
 	build_path = /obj/item/ammo_casing/microbattery/medical/shrink
 
-/datum/design/science/ml3m_cell/grow
+/datum/design/science/medigun_cell/grow
 	name = "GROW"
-	identifier = "ml3m_cell_grow"
+	identifier = "medigun_cell_grow"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
 	build_path = /obj/item/ammo_casing/microbattery/medical/grow
 
-/datum/design/science/ml3m_cell/normalsize
+/datum/design/science/medigun_cell/normalsize
 	name = "NORMALSIZE"
-	identifier = "ml3m_cell_normalsize"
+	identifier = "medigun_cell_normalsize"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
 	build_path = /obj/item/ammo_casing/microbattery/medical/normalsize

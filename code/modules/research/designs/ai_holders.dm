@@ -1,7 +1,6 @@
 // Various AI/mind holding device
-/datum/design/science/ai_holder/AssembleDesignName()
-	..()
-	name = "Mind storage device prototype ([build_name])"
+/datum/design/science/ai_holder/generate_name(template)
+	return "Mind storage device prototype ([..()])"
 
 /datum/design/science/ai_holder/mmi
 	name = "Man-machine interface"

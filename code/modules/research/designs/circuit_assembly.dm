@@ -1,8 +1,7 @@
 // Integrated circuits stuff
 
-/datum/design/science/integrated_circuitry/AssembleDesignName()
-	..()
-	name = "Circuitry device design ([build_name])"
+/datum/design/science/integrated_circuitry/generate_name(template)
+	return "Circuitry device design ([..()])"
 
 /datum/design/science/integrated_circuitry/custom_circuit_printer
 	name = "Portable integrated circuit printer"

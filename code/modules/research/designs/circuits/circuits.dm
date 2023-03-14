@@ -9,20 +9,18 @@ CIRCUITS BELOW
 	reagents = list("sacid" = 20)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
-/datum/design/circuit/AssembleDesignName()
-	..()
+/datum/design/circuit/generate_name(template)
 	if(build_path)
 		var/obj/item/circuitboard/C = build_path
 		if(initial(C.board_type) == "machine")
-			name = "Machine circuit design ([build_name])"
+			return "Machine circuit design ([..()])"
 		else if(initial(C.board_type) == "computer")
-			name = "Computer circuit design ([build_name])"
+			return "Computer circuit design ([..()])"
 		else
-			name = "Circuit design ([build_name])"
+			return "Circuit design ([..()])"
 
-/datum/design/circuit/AssembleDesignDesc()
-	if(!desc)
-		desc = "Allows for the construction of \a [build_name] circuit board."
+/datum/design/circuit/generate_desc(template)
+	return "Allows for the construction of \a [build_name] circuit board."
 
 /datum/design/circuit/arcademachine
 	name = "battle arcade machine"

@@ -45,9 +45,8 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
-/datum/design/science/rig_module/AssembleDesignName()
-	..()
-	name = "rig module prototype ([name])"
+/datum/design/science/rig_module/generate_name(template)
+	return "rig module prototype ([..()])"
 
 /datum/design/science/rig_module/maneuvering_jets
 	name = "maneuvering jets"

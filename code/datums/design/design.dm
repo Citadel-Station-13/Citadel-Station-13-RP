@@ -76,15 +76,15 @@
 
 /datum/design/proc/generate()
 	if(!name)
-		generate_name(build_name)
+		name = generate_name(build_name)
 	if(!desc)
-		generate_desc()
+		desc = generate_desc()
 
 /datum/design/proc/generate_name(template)
-	name = template
+	return template
 
 /datum/design/proc/generate_desc(template)
-	desc = template
+	return template
 
 /datum/design/proc/ui_data_list()
 	return list(

@@ -1,23 +1,10 @@
-/datum/design/science/weapon/AssembleDesignName()
-	..()
-	name = "Weapon prototype ([build_name])"
-
-/datum/design/science/weapon/ammo/AssembleDesignName()
-	..()
-	name = "Weapon ammo prototype ([build_name])"
-
-/datum/design/science/weapon/AssembleDesignDesc()
-	if(!desc)
-		if(build_path)
-			var/obj/item/I = build_path
-			desc = initial(I.desc)
-		..()
+/datum/design/science/weapon/generate_name(template)
+	return "Weapon prototype ([..()])"
 
 // Energy weapons
 
-/datum/design/science/weapon/energy/AssembleDesignName()
-	..()
-	name = "Energy weapon prototype ([build_name])"
+/datum/design/science/weapon/energy/generate_name(template)
+	return "Energy weapon prototype ([..()])"
 
 /datum/design/science/weapon/energy/stunrevolver
 	identifier = "stunrevolver"
@@ -358,9 +345,8 @@
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
 	build_path = /obj/item/ammo_magazine/cell_mag/combat/prototype
 
-/datum/design/science/nsfw_cell/AssembleDesignName()
-	..()
-	name = "Microbattery prototype ([name])"
+/datum/design/science/nsfw_cell/generate_name(template)
+	return "Microbattery prototype ([..()])"
 
 /datum/design/science/nsfw_cell/stun
 	name = "STUN"
@@ -412,9 +398,8 @@
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 
 
-/datum/design/science/modweapon/AssembleDesignName()
-	..()
-	name = "Modular weapon prototype ([name])"
+/datum/design/science/modweapon/generate_name(template)
+	return "Modular weapon prototype ([..()])"
 
 /datum/design/science/modweapon/basic
 	name = "modular energy pistol"
@@ -479,9 +464,8 @@
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_LEAD = 20000, MAT_URANIUM = 20000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/nuke
 
-/datum/design/science/modweaponnodule/AssembleDesignName()
-	..()
-	name = "Modular weapon module design ([name])"
+/datum/design/science/modweaponnodule/generate_name(template)
+	return "Modular weapon module design ([..()])"
 
 /datum/design/science/modweaponnodule/stunmedium
 	name = "stun medium"
@@ -715,9 +699,8 @@
 	build_path = /obj/item/modularlaser/controller/fiveburst
 
 //Firing pins to shoot your guns with
-/datum/design/science/pin/AssembleDesignName()
-	..()
-	name = "Weapon firing pin ([build_name])"
+/datum/design/science/pin/generate_name(template)
+	return "Weapon firing pin ([..()])"
 
 /datum/design/science/pin/test
 	name = "Testing range"

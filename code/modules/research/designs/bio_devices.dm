@@ -1,9 +1,8 @@
 /datum/design/science/biotech
 	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/datum/design/science/biotech/AssembleDesignName()
-	..()
-	name = "Biotech device prototype ([build_name])"
+/datum/design/science/biotech/generate_name(template)
+	return "Biotech device prototype ([..()])"
 
 // Biotech of various types
 

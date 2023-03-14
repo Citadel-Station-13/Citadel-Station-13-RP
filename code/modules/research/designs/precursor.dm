@@ -1,15 +1,7 @@
 //Anomaly
 
-/datum/design/science/anomaly/AssembleDesignName()
-	..()
-	name = "Anomalous prototype ([build_name])"
-
-/datum/design/science/anomaly/AssembleDesignDesc()
-	if(!desc)
-		if(build_path)
-			var/obj/item/I = build_path
-			desc = initial(I.desc)
-		..()
+/datum/design/science/anomaly/generate_name(template)
+	return "Anomalous prototype ([..()])"
 
 /datum/design/science/anomaly/camotrap
 	name = "Chameleon Trap"
@@ -21,16 +13,8 @@
 
 // Precursor
 
-/datum/design/science/precursor/AssembleDesignName()
-	..()
-	name = "Alien prototype ([build_name])"
-
-/datum/design/science/precursor/AssembleDesignDesc()
-	if(!desc)
-		if(build_path)
-			var/obj/item/I = build_path
-			desc = initial(I.desc)
-		..()
+/datum/design/science/precursor/generate_name(template)
+	return "Alien prototype ([..()])"
 
 /datum/design/science/precursor/crowbar
 	name = "Hybrid Crowbar"

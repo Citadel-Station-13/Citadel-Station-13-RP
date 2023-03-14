@@ -1,8 +1,7 @@
 // Bags of holding
 
-/datum/design/science/boh/AssembleDesignName()
-	..()
-	name = "Infinite capacity storage prototype ([build_name])"
+/datum/design/science/boh/generate_name(template)
+	return "Bluespace storage prototype ([..()])"
 
 /datum/design/science/boh/bag_holding
 	name = "Bag of Holding"

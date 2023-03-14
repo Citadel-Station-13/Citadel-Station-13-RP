@@ -6,13 +6,8 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds. //Sets an independent time for stock parts, currently one third normal print time.
 
-/datum/design/science/stock_part/AssembleDesignName()
-	..()
-	name = "Component design ([build_name])"
-
-/datum/design/science/stock_part/AssembleDesignDesc()
-	if(!desc)
-		desc = "A stock part used in the construction of various devices."
+/datum/design/science/stock_part/generate_name(template)
+	return "Component design ([..()])"
 
 // Matter Bins
 

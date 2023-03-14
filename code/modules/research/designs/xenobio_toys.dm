@@ -1,6 +1,5 @@
-/datum/design/science/xenobio/AssembleDesignName()
-	..()
-	name = "Xenobiology equipment design ([build_name])"
+/datum/design/science/xenobio/generate_name(template)
+	return "Xenobiology equipment design ([..()])"
 
 // Xenobio Weapons
 

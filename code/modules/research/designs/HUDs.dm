@@ -3,12 +3,11 @@
 /datum/design/science/hud
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/datum/design/science/hud/AssembleDesignName()
-	..()
-	name = "HUD glasses prototype ([build_name])"
+/datum/design/science/hud/generate_name(template)
+	return "HUD glasses prototype ([..()])"
 
-/datum/design/science/hud/AssembleDesignDesc()
-	desc = "Allows for the construction of \a [build_name] HUD glasses."
+/datum/design/science/hud/generate_desc(template)
+	return "Allows for the construction of \a [build_name] HUD glasses."
 
 /datum/design/science/hud/health
 	name = "health scanner"
