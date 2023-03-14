@@ -79,23 +79,16 @@ var/list/floating_chat_colors = list()
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
-//	animate(I, alpha = 0, pixel_y = 12 * ((X?.size_multiplier * 1.1) || 1), easing = BOUNCE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+	animate(I, alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
 
 	if(expression & STATING)
-		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+		style += ""
 	if(expression & WHISPERING)
-		style += "font-weight: lighter; font-style: italic; "
-//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
+		style += "font-size: 6px; font-style: italic; "
 	if(expression & YELLING)
 		style += "font-weight: bold; "
-//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
-//		animate(pixel_x = 24, easing = BOUNCE_EASING, time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
-//		animate(pixel_x = -24, easing = BOUNCE_EASING, time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
-//		animate(pixel_x = -round(I.maptext_width/2) + 16, easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
 	if(expression & ASKING)
 		style += "font-style: oblique; "
-//		animate(alpha = 255, pixel_y = 24 * ((X?.size_multiplier * 1.1) || 1), easing = SINE_EASING, time = 0.2 SECONDS, flags = ANIMATION_PARALLEL)
-
 	I.maptext = MAPTEXT_CENTER("<span style=\"[style]\">[message]</span>") // whoa calm down!!
 
 	for(var/image/old in holder.stored_chat_text)
@@ -103,7 +96,7 @@ var/list/floating_chat_colors = list()
 	LAZYADD(holder.stored_chat_text, I)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration + 24)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_images_from_clients, I, show_to), duration + 24)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_images_from_clients, I, show_to), duration + 28)
 
 	return I
 
