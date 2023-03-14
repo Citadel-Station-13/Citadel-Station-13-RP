@@ -35,7 +35,7 @@
 	///Coefficient for the efficiency of material usage in item building. Based on the installed parts.
 	var/component_coeff = 1
 
-	var/list/materials = list(
+	var/list/stored_materials = list(
 		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,
@@ -200,7 +200,7 @@
 		"id" = D.id,
 		"subCategory" = sub_category,
 		"categoryOverride" = category_override,
-		"searchMeta" = D.search_metadata
+		"searchMeta" = "", // temporarily removed
 	)
 
 	return part

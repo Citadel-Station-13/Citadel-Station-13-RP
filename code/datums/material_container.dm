@@ -5,11 +5,7 @@
     var/list/capacity
 
 /datum/material_container/New(list/materials_capacity)
-	#warn impl
-
-/datum/material_container/Destroy()
-	#warn impl
-	return ..()
+	src.materials_capacity = materials_capacity
 
 /**
  * dumps everything out
@@ -18,6 +14,7 @@
  * * where - where to put everything
  */
 /datum/material_container/proc/dump_everything(atom/where)
+	#warn impl
 
 /**
  * Inserts sheets
@@ -34,6 +31,7 @@
  * @return sheets consumed
  */
 /datum/material_container/proc/insert_sheets(obj/item/stack/inserting, amount = INFINITY, force = FALSE)
+	#warn impl
 
 /**
  * uses the given resources, failing if not enough
@@ -43,8 +41,10 @@
  *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/material_container/proc/checked_use(list/sheets)
-
+/datum/material_container/proc/checked_use(list/using)
+	if(!has(using))
+		return FALSE
+	return use(using)
 
 /**
  * uses the given resources
@@ -52,8 +52,12 @@
  * @params
  * * sheets - units of sheets to use
  */
-/datum/material_container/proc/use(list/sheets)
-
+/datum/material_container/proc/use(list/using)
+	for(var/key in using)
+		if(isnull(sheets[key]))
+			continue
+		sheets[key] = max(0, sheets[key] - using[key])
+	return TRUE
 
 /**
  * checks if we have the given resources
@@ -61,5 +65,8 @@
  * @params
  * * sheets - units of sheets
  */
-/datum/material_container/proc/has(list/sheets)
-
+/datum/material_container/proc/has(list/wanted)
+	for(var/key in wanted)
+		if(sheets?[key] < wanted[key])
+			return FALSE
+	return TRUE
