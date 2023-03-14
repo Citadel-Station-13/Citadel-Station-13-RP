@@ -334,7 +334,7 @@
 	probability = 50
 	
 /datum/particle_smasher_recipe/steel_plasteel
-	reagents = list(MAT_PHORON = 40) //two sheet of phoron and one sheet of steel
+	reagents = list(MAT_PHORON = 60) //three sheet of phoron and one sheet of steel
 
 	result = /obj/item/stack/material/plasteel
 	required_material = /obj/item/stack/material/steel
@@ -367,7 +367,7 @@
 	required_energy_max = 600 //As we have no way to set ambient pressure we use the emitter to provide pressure for industrial diamonds think of compressing a Hohlraum to start fusion
 
 	required_atmos_temp_min = 7800 //extreme temperature assuming the focus can be set to inert conditions and ambient atmosphere cannot react with what is basically hot carbon
-	required_atmos_temp_max = 10000
+	required_atmos_temp_max = 7830
 	probability = 10
 
 /datum/particle_smasher_recipe/copper_silver
