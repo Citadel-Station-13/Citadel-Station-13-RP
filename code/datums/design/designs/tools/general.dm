@@ -104,3 +104,15 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/clothing/head/welding
+
+/datum/design/tool/extinguisher
+	identifier = "ToolExtinguisher"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/extinguisher
+
+/datum/design/tool/extinguisher/mini
+	identifier = "ToolExtinguisherMini"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/extinguisher/mini
