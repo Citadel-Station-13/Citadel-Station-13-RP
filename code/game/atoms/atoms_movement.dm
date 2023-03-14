@@ -38,7 +38,7 @@
 	// SHOULD_NOT_OVERRIDE(TRUE)
 	// SHOULD_BE_PURE(TRUE)
 	// SHOULD_CALL_PARENT(TRUE)
-	if(mover.movement_type & UNSTOPPABLE)
+	if(mover.movement_type & MOVEMENT_UNSTOPPABLE)
 		return TRUE
 	. = CanAllowThrough(mover, target)
 	// This is cheaper than calling the proc every time since most things dont override CanPassThrough

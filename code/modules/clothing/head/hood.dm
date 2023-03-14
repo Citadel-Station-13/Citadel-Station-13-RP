@@ -237,3 +237,8 @@
 
 /obj/item/clothing/head/hood/runner/half_pint
 	name = "Half-Pint hood"
+
+/obj/item/clothing/head/hood/mercy
+	name = "Mercy Hood"
+	desc = "A comfortable, sterile hood covered in Areaian Silk."
+	icon_state = "mercy_hood"
