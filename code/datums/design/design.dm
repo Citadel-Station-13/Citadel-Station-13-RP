@@ -9,6 +9,8 @@
 
 	/// Must be unique - identifier of design in CamelCase.
 	var/identifier
+	/// design flags - see [code/__DEFINES/machines/lathe.dm]
+	var/design_flags = NONE
 	/// types of lathes that can print us
 	var/lathe_type = NONE
 	/// how are we unlocked

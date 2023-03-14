@@ -1,6 +1,18 @@
 /datum/design/ammo/pistol
 	abstract_type = /datum/design/ammo/pistol
 
+/datum/design/ammo/pistol/a44
+	identifier = "AmmoPistol44"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m44
+
+/datum/design/ammo/pistol/a44_rubber
+	identifier = "AmmoPistol44Rubber"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/m44/rubber
+
 /datum/design/ammo/pistol/a45
 	identifier = "AmmoPistol45"
 	lathe_type = LATHE_TYPE_AUTOLATHE

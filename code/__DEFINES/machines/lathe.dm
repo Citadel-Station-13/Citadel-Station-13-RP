@@ -22,3 +22,8 @@ DEFINE_BITFIELD(lathe_type, list(
 #define DESIGN_UNLOCK_INTRINSIC (1<<0)
 /// any lathe that can print us can have us uploaded
 #define DESIGN_UNLOCK_UPLOAD (1<<1)
+
+//? design_flags bitfield
+
+/// do not scale with efficiency
+#define DESIGN_NO_SCALE (1<<0)
