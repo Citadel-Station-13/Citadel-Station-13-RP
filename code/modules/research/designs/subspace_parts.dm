@@ -1,8 +1,7 @@
 // Telecomm parts
 
-/datum/design/science/stock_part/subspace/AssembleDesignName()
-	..()
-	name = "Subspace component design ([build_name])"
+/datum/design/science/stock_part/subspace/generate_name(template)
+	return "Subspace component design ([..()])"
 
 /datum/design/science/stock_part/subspace/subspace_ansible
 	identifier = "s-ansible"

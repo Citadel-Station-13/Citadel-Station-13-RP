@@ -6,14 +6,14 @@
 	reagents = list("pacid" = 10)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
-/datum/design/circuit/disk/AssembleDesignName()
-	..()
+/datum/design/circuit/disk/generate_name(template)
 	if(build_path)
 		var/obj/item/disk/D = build_path
-		if(istype(D, /obj/item/disk/species))
-			name = "Species Prosthetic design ([build_name])"
+		if(ispath(D, /obj/item/disk/species))
+			return "Species prosthetic design ([..()])"
 		else
-			name = "Disk design ([build_name])"
+			return "Disk design ([..()])"
+	return ..()
 
 /datum/design/circuit/disk/skrellprint
 	name = SPECIES_SKRELL

@@ -35,9 +35,8 @@
 
 // Assemblies
 
-/datum/design/science/integrated_circuitry/assembly/AssembleDesignName()
-	..()
-	name = "Circuitry assembly design ([build_name])"
+/datum/design/science/integrated_circuitry/assembly/generate_name(template)
+	return "Circuitry assembly design ([..()])"
 
 /datum/design/science/integrated_circuitry/assembly/custom_circuit_assembly_small
 	name = "Small custom assembly"

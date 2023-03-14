@@ -141,9 +141,8 @@
 	build_path = /obj/item/reagent_containers/hypospray/science
 
 // ML-3M medigun and cells
-/datum/design/science/medical/cell_based/AssembleDesignName()
-	..()
-	name = "Cell-based medical prototype ([build_name])"
+/datum/design/science/medical/cell_based/generate_name(template)
+	return "Cell-based medical prototype ([..()])"
 
 /datum/design/science/medical/cell_based/cell_medigun_mag_advanced
 	name = "advanced medical cell magazine"

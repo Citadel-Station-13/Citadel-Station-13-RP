@@ -1,6 +1,9 @@
 /datum/design/science/weapon/generate_name(template)
 	return "Weapon prototype ([..()])"
 
+/datum/design/science/weapon/ammo/generate_name(template)
+	return "Weapon ammo ([..()])"
+
 // Energy weapons
 
 /datum/design/science/weapon/energy/generate_name(template)
@@ -52,9 +55,8 @@
 
 // Ballistic weapons
 
-/datum/design/science/weapon/ballistic/AssembleDesignName()
-	..()
-	name = "Ballistic weapon prototype ([build_name])"
+/datum/design/science/weapon/ballistic/generate_name(template)
+	return "Ballistic weapon prototype ([..()])"
 
 /datum/design/science/weapon/ballistic/advanced_smg
 	identifier = "smg"
@@ -72,9 +74,8 @@
 
 // Ballistic ammo
 
-/datum/design/science/weapon/ballistic/ammo/AssembleDesignName()
-	..()
-	name = "Ballistic weapon ammo prototype ([name])"
+/datum/design/science/weapon/ballistic/ammo/generate_name(template)
+	return "Ballistic weapon ammo ([..()])"
 
 /datum/design/science/weapon/ballistic/ammo/ammo_9mmAdvanced
 	name = "9mm magazine"
@@ -223,9 +224,8 @@
 
 // Melee weapons
 
-/datum/design/science/weapon/melee/AssembleDesignName()
-	..()
-	name = "Melee weapon prototype ([build_name])"
+/datum/design/science/weapon/melee/generate_name(template)
+	return "Melee weapon prototype ([..()])"
 
 /datum/design/science/weapon/melee/esword
 	name = "Portable Energy Blade"
@@ -242,9 +242,8 @@
 	build_path = /obj/item/melee/energy/axe/charge
 
 // Grenade stuff
-/datum/design/science/weapon/grenade/AssembleDesignName()
-	..()
-	name = "Grenade casing prototype ([build_name])"
+/datum/design/science/weapon/grenade/generate_name(template)
+	return "Grenade casing prototype ([..()])"
 
 /datum/design/science/weapon/grenade/large_grenade
 	identifier = "large_Grenade"
@@ -301,9 +300,8 @@
 
 // Anti-particle stuff
 
-/datum/design/science/weapon/particle/AssembleDesignName()
-	..()
-	name = "Anti-particle weapon prototype ([build_name])"
+/datum/design/science/weapon/particle/generate_name(template)
+	return "Anti-particle weapon prototype ([..()])"
 
 /datum/design/science/weapon/particle/advparticle
 	name = "Advanced anti-particle rifle"
@@ -327,9 +325,8 @@
 	build_path = /obj/item/pressurelock
 
 // NSFW gun and cells
-/datum/design/science/weapon/cell_based/AssembleDesignName()
-	..()
-	name = "Cell-based weapon prototype ([build_name])"
+/datum/design/science/weapon/cell_based/generate_name(template)
+	return "Cell-based weapon prototype ([..()])"
 
 /datum/design/science/weapon/cell_based/prototype_nsfw
 	name = "cell-loaded revolver"

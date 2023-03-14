@@ -167,9 +167,8 @@
 
 // Data crystals (USB flash drives)
 
-/datum/design/science/modularcomponent/portabledrive/AssembleDesignName()
-	..()
-	name = "Portable data drive design ([build_name])"
+/datum/design/science/modularcomponent/portabledrive/generate_name(template)
+	return "Portable data drive design ([..()])"
 
 /datum/design/science/modularcomponent/portabledrive/basic
 	name = "basic data crystal"
