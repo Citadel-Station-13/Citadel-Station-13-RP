@@ -388,7 +388,7 @@ var/list/channel_to_radio_key = new
 	*/
 	var/atom/emitter = src
 	if(!isobserver(emitter) || !IsAdminGhost(emitter))
-		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
+		emitter.say_overhead(message = say_emphasis_strip(message), whispering = whispering, message_range = message_range, speaking = speaking)
 
 
 	//Main 'say' and 'whisper' message delivery

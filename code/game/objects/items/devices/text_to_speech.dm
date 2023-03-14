@@ -25,15 +25,15 @@
 		named = 1
 		*/
 	playsound(src, 'sound/items/tts/started_type.ogg', 25, TRUE)
-	user.say_overhead("typing...")
+	user.say_overhead(message = "typing...")
 	var/message = sanitize(input(user,"Choose a message to relay to those around you.") as text|null)
 	if(message)
 		var/obj/item/text_to_speech/O = src
 		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[message]\"")
-		user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD) // I don't like this, I wish I could just invoke what this calls directly!
+		user.say_overhead(message = message, whispering = FALSE, message_range = MESSAGE_RANGE_COMBAT_LOUD) // I don't like this, I wish I could just invoke what this calls directly!
 	else
 		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)
-		user.say_overhead("stopped typing.")
+		user.say_overhead(message = "stopped typing.")
 
 
 /obj/item/text_to_speech/AltClick(mob/user) // QOL Change
