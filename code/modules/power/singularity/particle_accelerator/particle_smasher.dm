@@ -457,7 +457,7 @@
 	required_energy_min = 550                      
 	required_energy_max = 600
 
-	required_atmos_temp_min = 5150
+	required_atmos_temp_min = 5200
 	required_atmos_temp_max = 5250
 	probability = 5	
 
