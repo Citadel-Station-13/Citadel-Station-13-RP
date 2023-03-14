@@ -30,14 +30,14 @@
 	return null
 
 /obj/machinery/r_n_d/proc/eject(var/material, var/amount)
-	if(!(material in materials))
+	if(!(material in stored_materials))
 		return
 	var/obj/item/stack/material/sheetType = getMaterialType(material)
 	var/perUnit = initial(sheetType.perunit)
-	var/eject = round(materials[material] / perUnit)
+	var/eject = round(stored_materials[material] / perUnit)
 	eject = amount == -1 ? eject : min(eject, amount)
 	if(eject < 1)
 		return
 	var/obj/item/stack/material/S = new sheetType(loc)
 	S.amount = eject
-	materials[material] -= eject * perUnit
+	stored_materials[material] -= eject * perUnit

@@ -47,8 +47,8 @@
 
 /obj/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/t = 0
-	for(var/f in materials)
-		t += materials[f]
+	for(var/f in stored_materials)
+		t += stored_materials[f]
 	return t
 
 /obj/machinery/r_n_d/protolathe/RefreshParts()
@@ -66,8 +66,8 @@
 	speed = T / 2
 
 /obj/machinery/r_n_d/protolathe/dismantle()
-	for(var/f in materials)
-		eject_materials(f, -1)
+	for(var/f in stored_materials)
+		eject_stored_materials(f, -1)
 	..()
 
 /obj/machinery/r_n_d/protolathe/update_overlays()
@@ -115,7 +115,7 @@
 		return 1
 
 	var/obj/item/stack/material/S = O
-	if(!(S.material.name in materials))
+	if(!(S.material.name in stored_materials))
 		to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
 		return
 
@@ -123,17 +123,17 @@
 	var/sname = "[S.name]"
 	var/amnt = S.perunit
 	var/max_res_amount = max_material_storage
-	for(var/mat in materials)
-		max_res_amount -= materials[mat]
+	for(var/mat in stored_materials)
+		max_res_amount -= stored_materials[mat]
 
-	if(materials[S.material.name] + amnt <= max_res_amount)
+	if(stored_materials[S.material.name] + amnt <= max_res_amount)
 		if(S && S.get_amount() >= 1)
 			var/count = 0
 			add_overlay("fab-load-metal")
 			spawn(10)
 				cut_overlay("fab-load-metal")
-			while(materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
-				materials[S.material.name] += amnt
+			while(stored_materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
+				stored_materials[S.material.name] += amnt
 				S.use(1)
 				count++
 			to_chat(user, "You insert [count] [sname] into the fabricator.")
@@ -160,7 +160,7 @@
 
 /obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
 	for(var/M in D.materials)
-		if(materials[M] < (D.materials[M] * mat_efficiency))
+		if(stored_materials[M] < (D.materials[M] * mat_efficiency))
 			return 0
 	for(var/C in D.reagents)
 		if(!reagents.has_reagent(C, D.reagents[C] * mat_efficiency))
@@ -170,10 +170,10 @@
 /obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""
 	for(var/M in D.materials)
-		if(materials[M] < D.materials[M])
+		if(stored_materials[M] < D.materials[M])
 			if(ret != "")
 				ret += ", "
-			ret += "[D.materials[M] - materials[M]] [M]"
+			ret += "[D.materials[M] - stored_materials[M]] [M]"
 	for(var/C in D.reagents)
 		if(!reagents.has_reagent(C, D.reagents[C]))
 			if(ret != "")
@@ -184,11 +184,11 @@
 /obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
-		power += round(D.materials[M] / 5)
+		power += round(D.stored_materials[M] / 5)
 	power = max(active_power_usage, power)
 	use_power(power)
 	for(var/M in D.materials)
-		materials[M] = max(0, materials[M] - D.materials[M] * mat_efficiency)
+		stored_materials[M] = max(0, stored_materials[M] - D.materials[M] * mat_efficiency)
 	for(var/C in D.reagents)
 		reagents.remove_reagent(C, D.reagents[C] * mat_efficiency)
 
@@ -216,11 +216,11 @@
 	var/obj/item/stack/material/S = new mattype(loc)
 	if(amount <= 0)
 		amount = S.max_amount
-	var/ejected = min(round(materials[material] / S.perunit), amount)
+	var/ejected = min(round(stored_materials[material] / S.perunit), amount)
 	S.amount = min(ejected, amount)
 	if(S.amount <= 0)
 		qdel(S)
 		return
-	materials[material] -= ejected * S.perunit
-	if(recursive && materials[material] >= S.perunit)
+	stored_materials[material] -= ejected * S.perunit
+	if(recursive && stored_materials[material] >= S.perunit)
 		eject_materials(material, -1)

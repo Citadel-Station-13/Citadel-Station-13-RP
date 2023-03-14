@@ -67,8 +67,8 @@
 			)
 
 			var/list/materials = list()
-			for(var/M in linked_lathe.materials)
-				var/amount = linked_lathe.materials[M]
+			for(var/M in linked_lathe.stored_materials)
+				var/amount = linked_lathe.stored_materials[M]
 				var/hidden_mat = FALSE
 				for(var/HM in linked_lathe.hidden_materials)
 					if(M == HM && amount == 0)
@@ -115,8 +115,8 @@
 			)
 
 			var/list/materials = list()
-			for(var/M in linked_imprinter.materials)
-				var/amount = linked_imprinter.materials[M]
+			for(var/M in linked_imprinter.stored_materials)
+				var/amount = linked_imprinter.stored_materials[M]
 				var/hidden_mat = FALSE
 				for(var/HM in linked_imprinter.hidden_materials)
 					if(M == HM && amount == 0)
@@ -429,8 +429,8 @@
 						files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
 					if(linked_lathe && linked_destroy.loaded_item.materials) // Also sends salvaged materials to a linked protolathe, if any.
 						for(var/t in linked_destroy.loaded_item.materials)
-							if(t in linked_lathe.materials)
-								linked_lathe.materials[t] += min(linked_lathe.max_material_storage - linked_lathe.TotalMaterials(), linked_destroy.loaded_item.materials[t] * linked_destroy.decon_mod)
+							if(t in linked_lathe.stored_materials)
+								linked_lathe.stored_materials[t] += min(linked_lathe.max_material_storage - linked_lathe.TotalMaterials(), linked_destroy.loaded_item.materials[t] * linked_destroy.decon_mod)
 
 
 					linked_destroy.loaded_item = null
