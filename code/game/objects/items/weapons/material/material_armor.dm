@@ -183,11 +183,13 @@ Protectiveness | Armor %
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
 			number = clamp( number, 0,  100)
 
-		armor["melee"] = melee_armor
-		armor["bullet"] = bullet_armor
-		armor["laser"] = laser_armor
-		armor["energy"] = energy_armor
-		armor["bomb"] = bomb_armor
+		set_armor(list(
+			ARMOR_MELEE = melee_armor,
+			ARMOR_BULLET = bullet_armor,
+			ARMOR_LASER = laser_armor,
+			ARMOR_ENERGY = energy_armor,
+			ARMOR_BOMB = bomb_armor,
+		))
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)

@@ -595,6 +595,7 @@
 #include "code\datums\announce\location\main_station.dm"
 #include "code\datums\announce\location\overmap_sector.dm"
 #include "code\datums\armor\core.dm"
+#include "code\datums\armor\mecha.dm"
 #include "code\datums\armor\military.dm"
 #include "code\datums\armor\rig.dm"
 #include "code\datums\armor\unsorted.dm"
