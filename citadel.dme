@@ -193,6 +193,7 @@
 #include "code\__DEFINES\languages\translation.dm"
 #include "code\__DEFINES\machines\lathe.dm"
 #include "code\__DEFINES\mapping\multiz.dm"
+#include "code\__DEFINES\materials\misc.dm"
 #include "code\__DEFINES\misc\message_ranges.dm"
 #include "code\__DEFINES\mobs\characteristics.dm"
 #include "code\__DEFINES\mobs\grab.dm"

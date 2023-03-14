@@ -280,7 +280,6 @@
 	if(stack_type)
 		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
-
 // As above.
 /datum/material/proc/place_shard(turf/target)
 	if(shard_type)
