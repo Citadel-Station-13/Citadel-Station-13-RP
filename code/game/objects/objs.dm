@@ -24,12 +24,11 @@
 	//? Materials
 	/// static materials in us
 	var/list/materials
-	/// material parts - lazy list, set by lathe or otherwise; lets us track what we're made of.
+	/// material parts - lazy list; lets us track what we're made of.
 	/// key = cost in cm3
 	var/list/material_parts
 	/// material parts on spawn
 	/// key = material id
-	/// wiped after spawn - used to call relevant init procs
 	var/list/material_defaults
 
 	//? misc / legacy
@@ -238,13 +237,12 @@
  * initialize materials
  */
 /obj/proc/init_materials()
-	if(material_defaults)
+	if(!isnull(material_defaults))
 		set_material_parts(material_defaults)
 		for(var/key in material_defaults)
 			var/mat = material_defaults[key]
 			var/amt = material_parts[key]
 			materials[mat] += amt
-		material_defaults = null
 
 /**
  * sets our material parts to a list by key / value

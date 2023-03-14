@@ -1,12 +1,11 @@
-import { BooleanLike } from "common/react";
+import { MaterialsContext } from "./Materials";
 
 export interface Design {
-  full_name: string;
   name: string;
   desc: string;
-  materials: Record<string, number>;
-  material_parts: Record<string, number>;
-  reagents: Record<string, number>;
+  materials?: Record<string, number>;
+  material_parts?: Record<string, number>;
+  reagents?: Record<string, number>;
   resultItem: DesignItem;
   id: string;
 }
@@ -20,7 +19,7 @@ export interface DesignItem {
 
 export interface LatheDesignEntryProps {
   design: Design;
-  minimal?: BooleanLike;
+  materialsContext: MaterialsContext;
   printButtonAct?: Function;
   printButtonText?: string;
 }

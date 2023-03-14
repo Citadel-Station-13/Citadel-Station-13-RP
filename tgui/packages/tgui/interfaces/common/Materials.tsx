@@ -5,6 +5,10 @@ import { formatMoney, formatSiUnit } from '../../format';
 import { useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
 
+export interface MaterialsContext {
+
+}
+
 export const MATERIAL_KEYS = {
   "iron": "sheet-metal_3",
   "glass": "sheet-glass_3",
