@@ -800,7 +800,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
 	if(!no_runechat)
-		send_runechat_to_atom_movable(message = (message ? message : deaf_message), speaking = null, small = FALSE, show_to = heard_to_floating_message, duration = 3 SECONDS)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message = (message ? message : deaf_message)), speaking = null, small = FALSE, show_to = heard_to_floating_message | hear, duration = 3 SECONDS)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))

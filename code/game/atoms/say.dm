@@ -25,13 +25,11 @@
 /atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
 	var/list/speech_bubble_hearers = list()
 	var/italics
-	if(whispering)
-		italics = TRUE
 	for(var/mob/M in get_mobs_in_view(message_range, src))
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message = message, speaking = speaking, small = whispering, heard = passed_hearing_list | speech_bubble_hearers, 3 SECONDS)
 
 /proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
 	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
