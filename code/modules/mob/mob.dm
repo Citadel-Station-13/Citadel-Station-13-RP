@@ -26,16 +26,21 @@
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-	init_rendering()
 	hook_vr("mob_new",list(src))
+	// rendering
+	init_rendering()
 	// resize
 	update_transform()
 	// offset
 	reset_pixel_offsets()
+	// physiology
+	init_physiology()
+	// movespeed
+	update_movespeed(TRUE)
+	// actionspeed
+	initialize_actionspeed()
 	. = ..()
 	update_config_movespeed()
-	update_movespeed(TRUE)
-	initialize_actionspeed()
 
 /**
  * Delete a mob
