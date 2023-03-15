@@ -99,6 +99,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/list/datum/holocall/incoming_calls
 	/// inbound holocalls - still ringing
 	var/list/datum/holocall/ringing_calls
+	/// lazy assoc list to track last "loud" ring of holopadid = time
+	var/list/holocall_anti_spam
 
 	//? appearance
 	/// current emissive
@@ -626,7 +628,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /obj/machinery/holopad/show_message(msg, type, alt, alt_type)
 	. = ..()
-	relay_intercepted_emote(M, "-- INTERCEPTED -- ", msg)
+	relay_intercepted_emote(null, "-- INTERCEPTED -- ", msg)
 
 /obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
 	. = ..()
@@ -801,7 +803,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	remoting.unshunt_perspective()
 	remoting.clear_movement_intercept()
-	UnregisterSignal(remoting, COMISG_MOB_RESET_PERSPECTIVE)
+	UnregisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE)
 	action_hang_up.remove(remoting)
 	action_swap_view.remove(remoting)
 	remoting = null
@@ -1081,8 +1083,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	pass_flags_self = initial(pass_flags_self)
 	color = HOLO_NORMAL_COLOR
 	alpha = HOLO_NORMAL_ALPHA
-
-#warn impl
 
 #undef HOLO_NORMAL_COLOR
 #undef HOLO_VORE_COLOR

@@ -24,6 +24,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
     - /landmarks - landmark icons
     - /spawners - things like window spawners
+  - /objects - miscellaneous objects that are not items, machinery, or structures
   - /overmaps - **All** overmap sprites, whether or not it's screen   rendering, goes in here
   - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
     - **Warning!** - everything not in this folder cannot be accessed by   "filename" and must be compiled in with 'filename'.

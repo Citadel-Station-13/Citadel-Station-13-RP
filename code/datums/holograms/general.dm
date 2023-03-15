@@ -4,7 +4,10 @@
 
 /datum/hologram/general/excalamation_point
 	name = "Generic - Exclamation Point"
-	#warn impl
+	icon = 'icons/objects/holograms.dmi'
+	icon_state = "exclamation_mark"
+	already_colored = FALSE
+	already_scanlined = FALSE
 
 /datum/hologram/general/holo_male
 	name = "Generic - Male"
