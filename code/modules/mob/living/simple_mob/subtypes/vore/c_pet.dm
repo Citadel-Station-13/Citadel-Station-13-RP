@@ -37,15 +37,6 @@
 				"bio" = 0,
 				"rad" = 0
 				)
-	armor_soak = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
 
 	has_langs = list("Coulrian")
 
@@ -78,15 +69,6 @@
 	attacktext = list("...")
 
 	armor_legacy_mob = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,
