@@ -597,6 +597,7 @@
 #include "code\datums\armor\core.dm"
 #include "code\datums\armor\mecha.dm"
 #include "code\datums\armor\military.dm"
+#include "code\datums\armor\misc.dm"
 #include "code\datums\armor\rig.dm"
 #include "code\datums\armor\unsorted.dm"
 #include "code\datums\armor\antagonist\agent.dm"
