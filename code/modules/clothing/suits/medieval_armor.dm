@@ -4,7 +4,7 @@
 	desc = "A classic metal helmet, effective at stopping melee attacks."
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knighthelm"
-	armor = list(melee = 40, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/medieval
 	body_cover_flags = HEAD|FACE|EYES
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

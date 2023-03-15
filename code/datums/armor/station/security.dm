@@ -53,6 +53,15 @@
 	bio = 0.2
 	rad = 0.2
 
+/datum/armor/security/detective
+	melee = 0.3
+	bullet = 0.15
+	laser = 0.2
+	energy = 0.2
+	bomb = 0.1
+	bio = 0.1
+	rad = 0.05
+
 /datum/armor/security/high/captain
 	melee = 0.5
 	bullet = 0.5

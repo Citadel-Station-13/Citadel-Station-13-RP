@@ -4,6 +4,15 @@
 /datum/armor/medical/coat
 	bio = 0.6
 
+/datum/armor/medical/coat/field_medic
+	melee = 0.2
+	bullet = 0.1
+	laser = 0.1
+	energy = 0.1
+	bomb = 0.05
+	bio = 0.65
+	rad = 0.1
+
 /datum/armor/medical/space
 	melee = 0.2
 	bullet = 0.05

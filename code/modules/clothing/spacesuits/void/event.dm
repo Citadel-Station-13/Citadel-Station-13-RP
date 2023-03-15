@@ -10,7 +10,6 @@
 	icon_state = "rig0-vintagecrew"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	r_armor_type = /datum/armor/vintage/space
-	armor = list(melee = 30, bullet = 15, laser = 15,energy = 5, bomb = 20, bio = 100, rad = 50)
 	light_overlay = "helmet_light"
 
 /obj/item/clothing/suit/space/void/refurb

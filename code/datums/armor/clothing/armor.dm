@@ -33,3 +33,19 @@
 
 /datum/armor/general/beekeeper
 	bio = 1.0
+
+/datum/armor/general/space
+	melee = 0.2
+	bullet = 0.05
+	laesr = 0.1
+	energy = 0.1
+	bomb = 0.15
+	bio = 1.0
+	rad = 0.2
+
+/datum/armor/general/space/armored
+	melee = 0.4
+	bullet = 0.15
+	laser = 0.25
+	energy = 0.15
+	bomb = 0.35
