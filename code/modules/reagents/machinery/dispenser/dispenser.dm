@@ -124,7 +124,13 @@
 	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))
 	SStgui.update_uis(src)
 
+// todo: refactor ai
 /obj/machinery/chemical_dispenser/attack_ai(mob/user)
+	ui_interact(user)
+	return TRUE
+
+// todo: refactor robot
+/obj/machinery/chemical_dispenser/attack_robot(mob/user)
 	ui_interact(user)
 	return TRUE
 
