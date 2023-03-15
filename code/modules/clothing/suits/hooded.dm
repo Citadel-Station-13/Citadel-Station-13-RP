@@ -143,7 +143,7 @@
 	name = "centcom winter coat"
 	icon_state = "coatcentcom"
 	item_state = "coatcentcom"
-	armor = list("melee" = 40, "bullet" = 45, "laser" = 45, "energy" = 35, "bomb" = 40, "bio" = 25, "rad" = 25)
+	r_armor_type = /datum/armor/centcom/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/centcom
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/olive

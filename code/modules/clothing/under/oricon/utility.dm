@@ -4,7 +4,7 @@
 /obj/item/clothing/under/oricon/utility/sysguard
 	name = "explorer's uniform"
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has silver trim."
-	r_armor_type = /datum/armor/jumpsuit/utility
+	r_armor_type = /datum/armor/uniform/utility
 	icon_state = "black_crew"
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL

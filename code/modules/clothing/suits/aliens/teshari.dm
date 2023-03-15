@@ -323,7 +323,7 @@
 	inv_hide_flags = HIDEHOLSTER|HIDETIE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/teshari/hood_cloak
 	action_button_name = "Toggle Cloak Hood"
 	hoodtype = /obj/item/clothing/head/tesh_hood
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)

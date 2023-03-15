@@ -22,3 +22,14 @@
 	energy = 0.1
 	bio = 0.6
 	rad = 1.0
+
+/datum/armor/general/biosuit
+	melee = 0.1
+	bullet = 0.05
+	laser = 0.05
+	energy = 0.05
+	bio = 1.0
+	rad = 0.3
+
+/datum/armor/general/beekeeper
+	bio = 1.0
