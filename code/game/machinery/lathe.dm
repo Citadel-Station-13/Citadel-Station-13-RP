@@ -27,8 +27,10 @@
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 
-	/// queued of /datum/lathe_queued's.
-	var/list/queue
+	/// max queue length in items
+	var/queue_max = 100
+	/// queued of /datum/lathe_queue_entry's.
+	var/list/datum/lathe_queue_entry/queue
 	/// currently printing design
 	var/datum/design/printing
 	/// processing queue?
@@ -66,24 +68,61 @@
 		QDEL_NULL(reagents)
 
 /obj/machinery/lathe/proc/has_design(datum/design/id_or_instance)
+	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.identifier)
 
 /obj/machinery/lathe/proc/has_capabilities_for(datum/design/instance)
+	return lathe_type & instance.lathe_type
 
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance)
 
-/obj/machinery/lathe/proc/can_print(datum/design/instance)
+/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts)
+	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts)
 
-/obj/machinery/lathe/proc/do_print(datum/design/instance)
-
-#warn impl
+/obj/machinery/lathe/proc/do_print(datum/design/instance, list/material_parts)
+	return instance.lathe_print(drop_location(), material_parts, src)
 
 /obj/machinery/lathe/process(delta_time)
 
 /obj/machinery/lathe/proc/progress_queue(time)
 
-/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1)
+/obj/machinery/lathe/proc/reconsider_queue()
+	#warn impl
 
+/**
+ * enqueues an instance with given material_parts
+ *
+ * amount variable is reserved but unused at this given time.
+ */
+/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts)
+	if(length(queue) >= queue_max)
+		return FALSE
+	var/datum/lathe_queue_entry/inserting = new
+	inserting.design_id = instance.identifier
+	inserting.material_parts = material_parts
+	LAZYINITLIST(queue)
+	queue += inserting
+	reconsider_queue()
+	return TRUE
+
+/**
+ * dequeues the instance with the given position
+ *
+ * amount variable is reserved but unused at this given time.
+ */
 /obj/machinery/lathe/proc/dequeue(position, amount)
+	if(position > 0 && position < length(queue))
+		queue.Cut(position, position + 1)
+	else
+		return FALSE
+	reconsider_queue()
+	return TRUE
+
+/obj/machinery/lathe/proc/clear_queue()
+	if(!length(queue))
+		return FALSE
+	queue = null
+	reconsider_queue()
+	return TRUE
 
 /obj/machinery/lathe/ui_module_route(action, list/params, datum/tgui/ui, id)
 	. = ..()
@@ -107,18 +146,16 @@
 	return ui_controller || (ui_controller = new(src))
 
 /obj/machinery/lathe/proc/available_design_ids()
-	#warn impl
+	return design_holder.available_ids()
 
 /obj/machinery/lathe/proc/available_designs()
-	#warn impl
+	return design_holder.available_designs()
 
 /**
  * holder datum for queue data
  */
-/datum/lathe_queued
+/datum/lathe_queue_entry
 	/// design id
 	var/design_id
-	/// amount
-	var/amount = 1
 	/// material parts to use, key to id
 	var/list/material_parts
