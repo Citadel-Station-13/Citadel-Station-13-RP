@@ -26,6 +26,8 @@
 	var/datum/material_container/stored
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
+	/// has reagents? if above 0, we make reagents datum.
+	var/reagents_max = 0
 
 	/// max queue length in items
 	var/queue_max = 100
@@ -59,7 +61,9 @@
 	return ..()
 
 /obj/machinery/lathe/proc/create_storages()
-	#warn impl
+	stored = new(materials_max)
+	if(reagents_max)
+		reagents = new(reagents_max)
 
 /obj/machinery/lathe/proc/delete_storages()
 	if(materials)

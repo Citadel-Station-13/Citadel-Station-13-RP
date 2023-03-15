@@ -195,9 +195,9 @@
 	var/list/part = list(
 		"name" = D.name,
 		"desc" = initial(built_item.desc),
-		"printTime" = get_construction_time_w_coeff(initial(D.time))/10,
+		"printTime" = get_construction_time_w_coeff(initial(D.work)),
 		"cost" = cost,
-		"id" = D.id,
+		"id" = D.identifier,
 		"subCategory" = sub_category,
 		"categoryOverride" = category_override,
 		"searchMeta" = "", // temporarily removed
@@ -270,7 +270,7 @@
   * * D - Design datum to calculate the modified resource cost of.
   */
 /obj/machinery/mecha_part_fabricator/proc/check_resources(datum/design/D)
-	if(length(D.chemicals)) // No reagents storage - no reagent designs.
+	if(length(D.reagents)) // No reagents storage - no reagent designs.
 		return FALSE
 	. = TRUE
 	var/list/coeff_required = get_resources_w_coeff(D)
@@ -318,7 +318,7 @@
 		stored_materials[mat_id] -= build_materials[mat_id]
 
 	being_built = D
-	build_finish = world.time + get_construction_time_w_coeff(initial(D.time))
+	build_finish = world.time + get_construction_time_w_coeff(initial(D.work))
 	build_start = world.time
 	desc = "It's building \a [D.name]."
 
@@ -387,7 +387,7 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(list/part_list)
 	for(var/datum/design/D in files.known_designs)
-		if((D.lathe_type & valid_buildtype) && (D.id in part_list))
+		if((D.lathe_type & valid_buildtype) && (D.identifier in part_list))
 			add_to_queue(D)
 
 /**
@@ -496,7 +496,7 @@
 		final_sets += part_set
 
 	for(var/datum/design/D in files.known_designs)
-		if((D.lathe_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
+		if((D.lathe_type & valid_buildtype) && D.identifier != "id") // bugfix for weird null entries
 			// This is for us.
 			var/list/part = output_part_info(D, TRUE)
 
@@ -532,7 +532,7 @@
 		var/list/part = list(
 			"name" = being_built.name,
 			"duration" = build_finish - world.time,
-			"printTime" = get_construction_time_w_coeff(initial(being_built.time))
+			"printTime" = get_construction_time_w_coeff(initial(being_built.work))
 		)
 		data["buildingPart"] = part
 	else
@@ -572,7 +572,7 @@
 			// Add a specific part to queue
 			var/T = params["id"]
 			for(var/datum/design/D in files.known_designs)
-				if((D.lathe_type & valid_buildtype) && (D.id == T))
+				if((D.lathe_type & valid_buildtype) && (D.identifier == T))
 					add_to_queue(D)
 					break
 			return
@@ -606,7 +606,7 @@
 			var/id = params["id"]
 			var/datum/design/D = null
 			for(var/datum/design/D_new in files.known_designs)
-				if((D_new.lathe_type == valid_buildtype) && (D_new.id == id))
+				if((D_new.lathe_type == valid_buildtype) && (D_new.identifier == id))
 					D = D_new
 					break
 

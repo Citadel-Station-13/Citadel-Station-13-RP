@@ -9,7 +9,6 @@ SUBSYSTEM_DEF(research)
 	//? designs - caches
 	/// cached autolathe desgin ids
 	var/list/autolathe_design_ids
-	#warn hook
 
 /datum/controller/subsystem/research/Initialize()
 	build_designs()

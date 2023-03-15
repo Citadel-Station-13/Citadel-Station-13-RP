@@ -324,9 +324,8 @@
 	build_path = /obj/item/pressurelock
 
 // NSFW gun and cells
-/datum/design/science/weapon/cell_based/AssembleDesignName()
-	..()
-	name = "Cell-based weapon prototype ([build_name])"
+/datum/design/science/weapon/cell_based/generate_name(template)
+	return "Cell-based weapon prototype ([..()])"
 
 /datum/design/science/weapon/cell_based/prototype_nsfw
 	name = "cell-loaded revolver"

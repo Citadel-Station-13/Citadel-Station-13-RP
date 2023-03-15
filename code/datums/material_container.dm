@@ -5,7 +5,7 @@
     var/list/capacity
 
 /datum/material_container/New(list/materials_capacity)
-	src.materials_capacity = materials_capacity
+	src.capacity = materials_capacity
 
 /**
  * dumps everything out
