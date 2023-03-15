@@ -71,7 +71,7 @@
 	if(user.using_perspective?.eye && get_dist(user.using_perspective?.eye, src) <= 2)
 		. += "From this distance you can determine its <a href='?src=[REF(src)];examine_armor=1'>armor</a> with a close examination."
 
-/obj/item/clothing/Topic(href, list/hreF_list)
+/obj/item/clothing/Topic(href, list/href_list)
 	. = ..()
 	if(.)
 		return
@@ -80,7 +80,7 @@
 			to_chat(usr, SPAN_WARNING("You are too far away!"))
 			return TRUE
 		var/list/assembled = fetch_armor().describe_list()
-		to_chat(usr, SPAN_BLOCKQUOTE("<center>--- Armor: [src] ---</center><hr>[jointext(assembled, "<br>")]"))
+		to_chat(usr, SPAN_BLOCKQUOTE("<center>--- Armor: [src] ---</center><hr>[jointext(assembled, "<br>")]", null))
 		return TRUE
 
 /obj/item/clothing/can_equip(mob/M, slot, mob/user, flags)
