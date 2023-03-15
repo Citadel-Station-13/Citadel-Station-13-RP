@@ -69,7 +69,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
+	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
 	corpse = /obj/spawner/corpse/syndicatesoldier
 	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
@@ -336,7 +336,7 @@
 
 	movement_cooldown = 0
 
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
 	min_oxy = 0
 	max_oxy = 0
@@ -362,7 +362,7 @@
 
 	movement_cooldown = 0
 
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
 	min_oxy = 0
 	max_oxy = 0
@@ -483,7 +483,7 @@
 	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
+	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/suppressor
 	say_list_type = /datum/say_list/merc/elite
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor // it's high velocity
@@ -512,7 +512,7 @@
 	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
-	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
+	armor_legacy_mob = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
 	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
 	grenade_timer = 30 // well, look what you've done, you've grouped up
@@ -605,7 +605,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Matching Merc voidsuit stats to represent toughness.
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Matching Merc voidsuit stats to represent toughness.
 
 	min_oxy = 0 //Vox are spaceproof.
 	max_oxy = 0
@@ -760,7 +760,7 @@
 	icon_dead = "voxsuppresor_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/suppressor)
 
-	armor = list(melee = 30, bullet = 50, laser = 60, energy = 30, bomb = 35, bio = 100, rad = 100)	// Boosted armor to represent Tank role.
+	armor_legacy_mob = list(melee = 30, bullet = 50, laser = 60, energy = 30, bomb = 35, bio = 100, rad = 100)	// Boosted armor to represent Tank role.
 
 	projectiletype = /obj/projectile/sonic/weak
 	projectilesound = 'sound/effects/basscannon.ogg'
@@ -792,7 +792,7 @@
 	icon_dead = "voxcaptain_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/captain)
 
-	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
 
 	projectiletype = /obj/projectile/beam/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'

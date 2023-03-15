@@ -45,7 +45,7 @@
 	movement_shake_radius = 5
 
 	taser_kill = FALSE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
 				"bullet" = 20,
 				"laser" = 10,

@@ -228,23 +228,16 @@
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
+	//  todo: remove
+	/// legacy armor, applied on init
+	var/list/armor_legacy_mob
+
 	///Does the simple mob drop organs when butchered?
 	butchery_drops_organs = FALSE
 
-//* randomization code. *//
-/mob/living/simple_mob/proc/randomize()
-	if(randomized == TRUE)
-		var/mod = rand(mod_min,mod_max)/100
-		size_multiplier = mod
-		maxHealth = round(maxHealth*mod)
-		health = round(health*mod)
-		melee_damage_lower = round(melee_damage_lower*mod)
-		melee_damage_upper = round(melee_damage_upper*mod)
-		movement_cooldown = round(movement_cooldown*mod)
-		meat_amount = round(meat_amount*mod)
-		update_icons()
-
 /mob/living/simple_mob/Initialize(mapload)
+	if(armor_legacy_mob)
+		set_armor(armor_legacy_mob)
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
@@ -270,6 +263,19 @@
 	if(has_eye_glow)
 		remove_eyes()
 	return ..()
+
+//* randomization code. *//
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
 
 /mob/living/simple_mob/death()
 	update_icon()

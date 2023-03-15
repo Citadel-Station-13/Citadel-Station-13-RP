@@ -46,7 +46,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -125,7 +125,7 @@
 	icon_scale_y = 2
 	var/energy = 0
 	var/max_energy = 1000
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 60,
 				"bullet" = 60,
 				"laser" = 60,

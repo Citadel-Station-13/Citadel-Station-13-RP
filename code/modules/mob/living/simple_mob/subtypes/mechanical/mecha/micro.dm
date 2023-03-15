@@ -22,7 +22,7 @@
 	faction = "mouse_army"
 
 	maxHealth = 150
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 25,
 				"bullet" = 20,
 				"laser" = 30,
@@ -61,7 +61,7 @@
 
 	maxHealth = 200
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 0,
 				"bullet" = 20,
 				"laser" = 50,
@@ -99,7 +99,7 @@
 
 	maxHealth = 300
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 20,
 				"bullet" = 50,
 				"laser" = 50,

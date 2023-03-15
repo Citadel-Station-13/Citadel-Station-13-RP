@@ -28,7 +28,7 @@
 	melee_damage_upper = 0
 	attacktext = list("honked")
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,
@@ -77,7 +77,7 @@
 	melee_damage_upper = 0
 	attacktext = list("...")
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,

@@ -69,7 +69,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
@@ -237,7 +237,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
+	armor_legacy_mob = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 2
 
@@ -287,7 +287,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
+	armor_legacy_mob = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
@@ -338,7 +338,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
+	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 	projectiletype = /obj/projectile/beam/inversion
@@ -389,7 +389,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
+	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 
@@ -437,7 +437,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
+	armor_legacy_mob = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 2
 	base_attack_cooldown = 7.5
@@ -487,7 +487,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
@@ -562,7 +562,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 4
 
@@ -635,7 +635,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 0 //This is so he can't be kited well
 

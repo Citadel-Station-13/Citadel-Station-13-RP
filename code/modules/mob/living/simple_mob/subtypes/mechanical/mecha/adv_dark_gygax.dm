@@ -84,7 +84,7 @@
 	maxHealth = 450
 	deflect_chance = 25
 	has_repair_droid = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 50,
 				"laser"		= 50,

@@ -57,7 +57,7 @@
 	icon_state = "piratemelee-armor"
 	icon_living = "piratemelee-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_armor
@@ -98,7 +98,7 @@
 	icon_state = "piratemelee-machete-armor"
 	icon_living = "piratemelee-machete-armor"
 	movement_cooldown = 3
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_machete_armor
@@ -133,7 +133,7 @@
 	icon_state = "piratemelee-las-armor"
 	icon_living = "piratemelee-las-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_energy_armor
@@ -181,7 +181,7 @@
 	icon_state = "piratemelee-shield-armor"
 	icon_living = "piratemelee-shield-armor"
 	movement_cooldown = 3
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/shield/riot/tower = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_shield_armor
@@ -219,7 +219,7 @@
 	icon_state = "piratemelee-shield-machete-armor"
 	icon_living = "piratemelee-shield-machete-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/shield/riot/tower = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_shield_machete_armor
@@ -256,7 +256,7 @@
 	icon_state = "pirateranged-armor"
 	icon_living = "pirateranged-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/ballistic/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
 	corpse = /obj/spawner/corpse/pirate/ranged_armor
@@ -292,7 +292,7 @@
 	icon_state = "pirateranged-blunder-armor"
 	icon_living = "pirateranged-blunder-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
 	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss_armor
@@ -328,7 +328,7 @@
 	icon_state = "pirateranged-handcannon-armor"
 	icon_living = "pirateranged-handcannon-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/energy/zip = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
 	corpse = /obj/spawner/corpse/pirate/ranged_laser_armor
@@ -350,7 +350,7 @@
 
 	attack_sound = 'sound/weapons/blade1.ogg'
 
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
@@ -597,7 +597,7 @@
 	icon_state = "pirateranged-blunder-armor"
 	icon_living = "pirateranged-blunder-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 
 ///////////////////////////////
@@ -629,7 +629,7 @@
 	icon_state = "pirateranged-handcannon-armor"
 	icon_living = "pirateranged-handcannon-armor"
 	movement_cooldown = 4
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/energy/zip = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 
 ///////////////////////////////
@@ -649,7 +649,7 @@
 
 	attack_sound = 'sound/weapons/blade1.ogg'
 
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/pirate = 100)
 

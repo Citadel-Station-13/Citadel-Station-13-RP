@@ -42,7 +42,7 @@
 	base_attack_cooldown = 1 SECOND
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,
 		"bullet" = 5,
 		"laser" = 5,

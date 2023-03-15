@@ -47,7 +47,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 20,
 				"laser"		= 50,
@@ -84,7 +84,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 30,
 				"bullet"	= 40,
 				"laser"		= 50,

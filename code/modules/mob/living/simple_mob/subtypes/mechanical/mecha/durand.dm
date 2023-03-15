@@ -25,7 +25,7 @@
 
 	maxHealth = 400
 	deflect_chance = 20
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 35,
 				"laser"		= 15,

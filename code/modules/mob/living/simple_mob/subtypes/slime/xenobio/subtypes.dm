@@ -88,7 +88,7 @@
 
 	// The sloped armor.
 	// It's resistant to most weapons (but a spraybottle still kills it rather fast).
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 25,
 				"bullet" = 25,
 				"laser" = 25,

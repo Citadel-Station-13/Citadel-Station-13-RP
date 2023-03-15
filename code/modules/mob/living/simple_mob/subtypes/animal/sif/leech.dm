@@ -70,7 +70,7 @@
 	attack_sharp = TRUE
 	attacktext = list("nipped", "bit", "pinched")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 10,
 		"bullet" = 15,
 		"laser" = -10,

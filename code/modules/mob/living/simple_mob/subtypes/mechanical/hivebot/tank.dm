@@ -56,7 +56,7 @@
 	// Note that armor effectively makes lasers do about 9 damage instead of 30,
 	// so it has an effective health of ~16.6 LASERS_TO_KILL if regular lasers are used.
 	// Xrays will do much better against this.
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 40,
 				"bullet"	= 40,
 				"laser"		= 40,
@@ -79,7 +79,7 @@
 	name = "riot hivebot"
 	desc = "A robot specialized in close quarters combat."
 	player_msg = "You are heavily armored against close quarters combat."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 70,
 				"bullet"	= 0,
 				"laser"		= 0,
@@ -102,7 +102,7 @@
 	name = "bulletproof hivebot"
 	desc = "A robot specialized in ballistic defense."
 	player_msg = "You are heavily armored against ballistic weapons."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 70,
 				"laser"		= 0,
@@ -125,7 +125,7 @@
 	name = "ablative hivebot"
 	desc = "A robot specialized in photonic defense."
 	player_msg = "You are heavily armored against laser weapons."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 0,
 				"laser"		= 70,

@@ -65,7 +65,7 @@
 
 	shock_resistance = 0.9 //Electricity isn't very effective on stone, especially that from hell.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 10,
 				"laser" = 10,
@@ -197,7 +197,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -351,7 +351,7 @@
 	icon_scale = 2
 	var/energy = 0
 	var/max_energy = 1000
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 60,
 				"bullet" = 60,
 				"laser" = 60,
@@ -408,7 +408,7 @@
 	environment_smash = 1
 	attack_sound = 'sound/weapons/pierce.ogg'
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,

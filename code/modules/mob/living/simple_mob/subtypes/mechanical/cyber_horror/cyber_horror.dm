@@ -35,7 +35,7 @@
 	movement_cooldown = 3
 	movement_sound = 'sound/effects/houndstep.ogg'
 	// To promote a more diverse weapon selection.
-	armor = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
 	hovering = FALSE
 
 	say_list_type = /datum/say_list/cyber_horror
@@ -68,7 +68,7 @@
 	icon_state = "plasma_cyber_horror"
 	icon_dead = "plasma_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
 	maxHealth = 75
 	health = 75
 
@@ -123,7 +123,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
  // You do NOT Want to get in touchy range of this thing.
-	armor = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
 	hovering = FALSE
 
 
@@ -205,7 +205,7 @@
 	icon_state = "vox_cyber_horror"
 	icon_dead = "vox_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	meat_amount = 2
@@ -320,7 +320,7 @@
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	armor = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
 
 /obj/projectile/arc/blue_energy
 	name = "energy missle"
@@ -407,7 +407,7 @@
 	icon_dead = "the_changed_dead"
 	maxHealth = 450
 	health = 450
-	armor = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
 	response_harm = "harmlessly punches"
 	harm_intent_damage = 0
 	melee_damage_lower = 5
@@ -588,7 +588,7 @@
 	desc = "The casing and writhing flesh of this body have been adorned in ritual wax and religious icons. Burned prayer sheets daubed in its own dripping blood flap in the stifling air. The cruciform body integrated into the machine wriggles feebly, its jaw tightly wagging up and down - it has no mouth."
 	maxHealth = 1500
 	health = 1500
-	armor = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
 	movement_cooldown = 4
 	melee_damage_lower = 15
 	melee_damage_upper = 25
