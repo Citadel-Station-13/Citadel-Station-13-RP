@@ -16,6 +16,7 @@ interface CartridgeData {
 }
 
 interface BeakerData {
+  name: string;
   volume: number;
   capacity: BeakerData;
   data: ReagentContentsData;
@@ -208,28 +209,30 @@ export const ChemDispenser = (props, context) => {
               onClick={() => act('eject')} />
           }>
           {data.has_beaker? (
-            <ReagentContents
-              reagents={data.beaker.data}
-              reagentButtons={(id) => (
-                <>
-                  <Button
-                    content="Isolate"
-                    icon="compress-arrows-alt"
-                    onClick={() => act('isolate', { id: id })} />
-                  {
-                    [1, 2, 3, 5].map((n) => (
-                      <Button
-                        key={n}
-                        content={`-${n}`}
-                        onClick={() => act('purge', { id: id, amount: n })} />
-                    ))
-                  }
-                  <Button
-                    content="Purge"
-                    icon="trash"
-                    onClick={() => act('purge', { id: id })} />
-                </>
-              )} />
+            <Section title={`${data.beaker.name} - ${data.beaker.volume} / ${data.beaker.capacity}`}>
+              <ReagentContents
+                reagents={data.beaker.data}
+                reagentButtons={(id) => (
+                  <>
+                    <Button
+                      content="Isolate"
+                      icon="compress-arrows-alt"
+                      onClick={() => act('isolate', { id: id })} />
+                    {
+                      [1, 2, 3, 5].map((n) => (
+                        <Button
+                          key={n}
+                          content={`-${n}`}
+                          onClick={() => act('purge', { id: id, amount: n })} />
+                      ))
+                    }
+                    <Button
+                      content="Purge"
+                      icon="trash"
+                      onClick={() => act('purge', { id: id })} />
+                  </>
+                )} />
+            </Section>
           ) : (
             <Section>
               <NoticeBox>
