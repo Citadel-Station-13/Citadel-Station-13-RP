@@ -523,7 +523,7 @@
 	action_button_name = "Toggle Eldritch Hood"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
-	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
+	r_armor_type = /datum/armor/lavaland/eldritch
 	siemens_coefficient = 0.9
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
@@ -538,7 +538,7 @@
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
 		/obj/item/gun/ballistic/musket/pistol
 		)
-	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
+	r_armor_type = /datum/armor/lavaland/goliath
 	hoodtype = /obj/item/clothing/head/hood/goliath
 	body_cover_flags = UPPER_TORSO|ARMS|LEGS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -548,7 +548,7 @@
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake."
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
-	armor = list("melee" = 70, "bullet" = 20, "laser" = 35, "energy" = 25, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	r_armor_type = /datum/armor/lavaland/drake
 	hoodtype = /obj/item/clothing/head/hood/drake
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

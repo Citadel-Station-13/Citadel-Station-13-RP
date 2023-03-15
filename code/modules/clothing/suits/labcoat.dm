@@ -7,7 +7,7 @@
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
+	r_armor_type = /datum/armor/suit/labcoat
 
 /obj/item/clothing/suit/storage/toggle/labcoat/green
 	name = "green labcoat"
@@ -50,7 +50,7 @@
 	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "virologist_labcoat", SLOT_ID_LEFT_HAND = "virologist_labcoat")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
+	r_armor_type = /datum/armor/suit/labcoat/viro
 
 /obj/item/clothing/suit/storage/toggle/labcoat/science
 	name = "Scientist labcoat"

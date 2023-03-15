@@ -84,7 +84,7 @@
 	inv_hide_flags = BLOCKHAIR
 	clothing_flags = THICKMATERIAL
 	body_cover_flags = HEAD|FACE|EYES
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 100)
+	r_armor_type = /datum/armor/general/radsuit
 
 /obj/item/clothing/suit/radiation
 	name = "Radiation suit"
@@ -96,6 +96,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
 	slowdown = 1.5
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 100)
+	r_armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = THICKMATERIAL

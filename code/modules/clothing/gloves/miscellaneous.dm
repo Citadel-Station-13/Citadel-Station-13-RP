@@ -46,13 +46,13 @@
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+	r_armor_type = /datum/armor/gloves/combat
 
 /obj/item/clothing/gloves/combat/advanced //punchy combat glubbs
 	name = "advanced combat gloves"
 	desc = "These advanced tactical gloves are fire and impact resistant, with the addition of weighted knuckles and durable synthetics."
 	damage_force = 5
 	punch_force = 5
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 
 /obj/item/clothing/gloves/sterile
 	name = "sterile gloves"
@@ -97,7 +97,7 @@
 	name = "work gloves"
 	icon_state = "work"
 	item_state = "wgloves"
-	armor = list(melee = 10, bullet = 10, laser = 10, energy = 5, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/gloves/padded
 
 /obj/item/clothing/gloves/tactical
 	desc = "These brown tactical gloves are made from a durable synthetic, and have hardened knuckles."
@@ -108,7 +108,7 @@
 	punch_force = 3
 	siemens_coefficient = 0.75
 	permeability_coefficient = 0.05
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/gloves/combat
 
 /obj/item/clothing/gloves/vox
 	desc = "These bizarre gauntlets seem to be fitted for... bird claws?"

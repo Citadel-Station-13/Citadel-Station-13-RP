@@ -240,7 +240,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	slowdown = -1
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
+	r_armor_type = /datum/armor/alien/medium
 	siemens_coefficient = 0.4
 	valid_accessory_slots = null
 	var/block_chance = 20
@@ -252,7 +252,7 @@
 	icon_state = "alien_tank"
 	slowdown = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(melee = 70, bullet = 70, laser = 70, energy = 70, bomb = 70, bio = 0, rad = 40)
+	r_armor_type = /datum/armor/alien/heavy
 	block_chance = 40
 
 /obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")

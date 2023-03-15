@@ -21,7 +21,7 @@
 	name = "\improper Orion Confederation Government helmet"
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
 	icon_state = "helmet_sol"
-	armor = list(melee = 50, bullet = 50, laser = 50,energy = 25, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/oricon/peacekeeper
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/oricon/command
@@ -48,6 +48,7 @@
 	name = "tactical helmet"
 	desc = "A tan helmet made from advanced ceramic. Comfortable and robust."
 	icon_state = "helmet_tac"
+	r_armor_type = /datum/armor/station/tactical
 	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
 
@@ -55,15 +56,15 @@
 	name = "combat helmet"
 	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
 	icon_state = "helmet_merc"
-	armor = list(melee = 70, bullet = 70, laser = 70, energy = 35, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/merc/heavy
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."
 	icon_state = "riot"
+	r_armor_type = /datum/armor/station/riot
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
 	action_button_name = "Toggle Visor"
@@ -85,7 +86,7 @@
 	desc = "It's a helmet specifically designed to protect against energy projectiles."
 	icon_state = "helmet_reflec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
-	armor = list(melee = 10, bullet = 10, laser = 80 ,energy = 50, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 	valid_accessory_slots = null
 
@@ -94,7 +95,7 @@
 	desc = "It's a helmet specifically designed to protect against ballistic projectiles."
 	icon_state = "helmet_bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
-	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
 
@@ -103,7 +104,7 @@
 	desc = "It's a general purpose combat helmet, designed to protect against typical dangers to your head."
 	icon_state = "helmet_combat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
-	armor = list(melee = 50, bullet = 50, laser = 50 ,energy = 30, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/combat
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
@@ -112,7 +113,7 @@
 	name = "tactical light helmet"
 	desc = "A tan helmet made from advanced ceramic with an integrated tactical flashlight."
 	icon_state = "flexitac"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/tactical
 	siemens_coefficient = 0.6
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
@@ -124,7 +125,7 @@
 	name = "\improper SWAT helmet"
 	desc = "They're often used by highly trained SWAT Officers."
 	icon_state = "swat"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/security/deathsquad
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -135,19 +136,18 @@
 	desc = "It's quite larger than your head, but it might still protect it."
 	icon_state = "alienhelmet"
 	siemens_coefficient = 0.4
-	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
+	r_armor_type = /datum/armor/alien/medium
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/alien/tank
 	name = "alien warhelm"
-	armor = list(melee = 70, bullet = 70, laser = 70, energy = 70, bomb = 70, bio = 0, rad = 40)
+	r_armor_type = /datum/armor/alien/heavy
 
 /obj/item/clothing/head/helmet/thunderdome
 	name = "\improper Thunderdome helmet"
 	desc = "<i>'Let the battle commence!'</i>"
 	icon_state = "thunderdome"
 	r_armor_type = /datum/armor/thunderdome
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 10, bomb = 25, bio = 10, rad = 0)
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 1
