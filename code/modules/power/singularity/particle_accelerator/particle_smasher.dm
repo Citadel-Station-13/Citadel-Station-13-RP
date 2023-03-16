@@ -398,7 +398,7 @@
 
 /datum/particle_smasher_recipe/deuterium_mhydrogen
     reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) 
-	
+
 	result = /obj/item/stack/material/mhydrogen
 	required_material = /obj/item/stack/material/deuterium
 
@@ -412,41 +412,41 @@
 /datum/particle_smasher_recipe/steel_uranium //gamy way of doing uranium enrichment
     reagents = list("uranium" = 10, "fluorine" = 10) 
 	
-	result = /obj/item/stack/material/uranium //one sheet of uranium turns into two sheets while sacrficing steel and time yeah yeah not realistic at all but hey who cares its fun
+	result = /obj/item/stack/material/uranium
 	required_material = /obj/item/stack/material/steel 
 
-	required_energy_min = 400                     
+	required_energy_min = 400
 	required_energy_max = 500 
 
 	required_atmos_temp_min = 369
 	required_atmos_temp_max = 388
 	probability = 50
-		
+
 /datum/particle_smasher_recipe/platinum_osmium
 	reagents = list("hydrogen" = 25)
 
 	result = /obj/item/stack/material/osmium
 	required_material = /obj/item/stack/material/platinum
 
-	required_energy_min = 500                      
+	required_energy_min = 500
 	required_energy_max = 600
 
 	required_atmos_temp_min = 500
 	required_atmos_temp_max = 1000
-	probability = 20	
-	
+	probability = 20
+
 /datum/particle_smasher_recipe/osmium_platinum
 	reagents = list("hydrogen" = 25, MAT_PHORON = 5)
 
 	result = /obj/item/stack/material/platinum
 	required_material = /obj/item/stack/material/osmium
 
-	required_energy_min = 200                      
+	required_energy_min = 200     
 	required_energy_max = 300
 
 	required_atmos_temp_min = 30
 	required_atmos_temp_max = 60
-	probability = 20	
+	probability = 20
 
 /datum/particle_smasher_recipe/steel_gold
 	reagents = list(MAT_PHORON = 5)
@@ -454,7 +454,7 @@
 	result = /obj/item/stack/material/gold
 	required_material = /obj/item/stack/material/steel
 
-	required_energy_min = 550                      
+	required_energy_min = 550          
 	required_energy_max = 600
 
 	required_atmos_temp_min = 5200
