@@ -2580,6 +2580,7 @@
 #include "code\modules\jobs\job_types\station\civillian\librarian.dm"
 #include "code\modules\jobs\job_types\station\civillian\mime.dm"
 #include "code\modules\jobs\job_types\station\civillian\pilot.dm"
+#include "code\modules\jobs\job_types\station\command\blueshield.dm"
 #include "code\modules\jobs\job_types\station\command\captain.dm"
 #include "code\modules\jobs\job_types\station\command\command_secretary.dm"
 #include "code\modules\jobs\job_types\station\command\head_of_personnel.dm"
