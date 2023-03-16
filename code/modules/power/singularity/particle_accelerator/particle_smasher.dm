@@ -350,7 +350,7 @@
 	result = /obj/item/stack/material/durasteel
 	required_material = /obj/item/stack/material/plasteel
 
-	required_energy_min = 590                      
+	required_energy_min = 590
 	required_energy_max = 650
 
 	required_atmos_temp_min = 888
@@ -359,7 +359,7 @@
 
 /datum/particle_smasher_recipe/plastic_diamond
 	reagents = list(MAT_CARBON = 100, "ethanol" = 50) //read a paper sometime ago that some guys grew industrial diamonds from various alcoholic drinks
-	
+
 	result = /obj/item/stack/material/diamond
 	required_material = /obj/item/stack/material/plastic //eh close enough to graphite
 
@@ -372,7 +372,7 @@
 
 /datum/particle_smasher_recipe/copper_silver
 	reagents = list("chlorine" = 25, "fluorine" = 25) 
-	
+
 	result = /obj/item/stack/material/silver
 	required_material = /obj/item/stack/material/copper
 
@@ -385,7 +385,7 @@
 
 /datum/particle_smasher_recipe/plasteel_titanium
 	reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) // :')
-	
+
 	result = /obj/item/stack/material/titanium
 	required_material = /obj/item/stack/material/plasteel
 
@@ -396,13 +396,13 @@
 	required_atmos_temp_max = 566
 	probability = 50
 
-/datum/particle_smasher_recipe/deuterium_mhydrogen //stupidly low temperatures high energy requirement and another fun hurdle to get mhydrogen from deuterium
+/datum/particle_smasher_recipe/deuterium_mhydrogen
     reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) 
 	
 	result = /obj/item/stack/material/mhydrogen
 	required_material = /obj/item/stack/material/deuterium
 
-	required_energy_min = 500                      
+	required_energy_min = 500 
 	required_energy_max = 600 
 
 	required_atmos_temp_min = 20
