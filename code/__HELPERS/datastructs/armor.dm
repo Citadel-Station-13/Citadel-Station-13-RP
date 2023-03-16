@@ -87,6 +87,13 @@
 	. += "Bio: [round(bio * 100, 0.1)]%"
 	. += "Radiation: [round(rad * 100, 0.1)]%"
 
+/datum/armor/proc/log_string()
+	var/list/built = list()
+	var/list/ours = to_list()
+	for(var/key in ours)
+		built += "[key]: [ours[key]]"
+	return jointext(built, ", ")
+
 /**
  * returns a /datum/armor with the given values overwritten
  */

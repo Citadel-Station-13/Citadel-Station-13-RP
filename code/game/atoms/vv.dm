@@ -73,12 +73,13 @@
 		var/turf/curturf = get_turf(src)
 		if(curturf)
 			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
-	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
-	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_ARMOR, "Edit Armor")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_COLOR_MATRIX, "Edit Color as Matrix")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
@@ -140,10 +141,24 @@
 	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
 		var/client/C = usr.client
 		C?.open_filter_editor(src)
-
 	if(href_list[VV_HK_EDIT_COLOR_MATRIX] && check_rights(R_VAREDIT))
 		var/client/C = usr.client
 		C?.open_color_matrix_editor(src)
+	if(href_list[VV_HK_EDIT_ARMOR] && check_rights(R_VAREDIT))
+		// todo: tgui armor editor?
+		var/list/pickerlist = list()
+		var/list/armorlist = r_armor.to_list()
+		for (var/i in armorlist)
+			pickerlist += list(list("value" = armorlist[i], "name" = i))
+		var/list/result = presentpicker(usr, "Modify armor", "Modify armor: [src]", Button1="Save", Button2 = "Cancel", Timeout=FALSE, inputtype = "text", values = pickerlist)
+		if(!islist(result) || result["button"] != 2) // 2 is cancel
+			return
+		var/list/built
+		for(var/key in results["values"])
+			built[key] = text2num(results["values"][key])
+		r_armor = r_armor.overwritten(built)
+		log_admin("[key_name(usr)] modified the armor on [src] ([type]) to [r_armor.log_string()]")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] modified the armor on [src] ([type]) to [r_armor.log_string()]"))
 
 /atom/vv_get_header()
 	. = ..()
