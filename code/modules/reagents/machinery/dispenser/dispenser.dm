@@ -110,7 +110,7 @@
 	// todo: rework power handling
 	if(machine_stat & NOPOWER)
 		return
-	if(!cell)
+	if(!cell || !charging)
 		return
 	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
 	if(!wanted)
