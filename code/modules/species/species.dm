@@ -21,22 +21,22 @@
 	/// Abstract type.
 	abstract_type = /datum/species
 
-	//! Intrinsics
+	//? Intrinsics
 	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
-	//! Appearance
+	//? Appearance
 	/// Appearance/display related features.
 	var/species_appearance_flags = NONE
 
-	//! Spawning
+	//? Spawning
 	/// Flags that specify who can spawn as this species
 	var/species_spawn_flags = NONE
 
-	//! Culture/Background - Typepaths
+	//? Culture/Background - Typepaths
 	/// default origin
 	var/default_origin = /datum/lore/character_background/origin/custom
 	/// default citizenship
@@ -50,7 +50,7 @@
 	/// fluff flags
 	var/species_fluff_flags = NONE
 
-	//! Language - IDs
+	//? Language - IDs
 	/// default language used when speaking - typepaths are allowed
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
@@ -65,6 +65,10 @@
 	var/list/whitelist_languages
 	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
 	var/max_additional_languages = 3
+
+	//? Abilities
+	/// abilities - typepaths, new'd on init.
+	var/list/datum/ability/abilities
 
 //! ## Languages (old)
 	/// The languages the species can't speak without an assisted organ.
@@ -505,6 +509,16 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
+	if(abilities)
+		var/list/built = list()
+		for(var/path in abilities)
+			if(istype(path, /datum/ability))
+				built += path
+			else if(!ispath(path))
+				continue
+			built += new path
+		abilities = built
+
 /**
  * called when we apply to a mob
  *
@@ -534,6 +548,8 @@
 		var/datum/trait/T = all_traits[name]
 		T.apply(src, H)
 
+	#warn grant abilities
+
 /**
  * called when we are removed from a mob
  */
@@ -551,6 +567,8 @@
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
+
+	#warn remove abilities
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

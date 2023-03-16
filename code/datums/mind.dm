@@ -38,6 +38,10 @@
 	/// characteristics holder
 	var/datum/characteristics_holder/characteristics
 
+	//? Abilities
+	/// mind-level abilities
+	var/list/datum/ability/abilities
+
 	//? Preferences
 	/**
 	 * original save data
@@ -118,6 +122,8 @@
 		current.mind = null
 		characteristics?.disassociate_from_mob(current)
 
+		#warn remove abilities
+
 		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
 		new_character.mind.current = null
@@ -133,6 +139,8 @@
 		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
 	// if(new_character.client) //TODO: Eye Contact
 	// 	LAZYCLEARLIST(new_character.client.recent_examines)
+
+	#warn grant abliities
 
 /datum/mind/proc/store_memory(new_text)
 	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)

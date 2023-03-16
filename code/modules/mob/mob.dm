@@ -27,6 +27,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	init_rendering()
+	#warn init abilities
 	hook_vr("mob_new",list(src))
 	// resize
 	update_transform()
@@ -75,6 +76,8 @@
 		client.screen = list()
 	if(mind && mind.current == src)
 		spellremove(src)
+		mind.current = null
+	#warn nuke abilities
 	// this kicks out client
 	ghostize()
 	if(hud_used)
@@ -1111,7 +1114,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
 
-//! Pixel Offsets
+//? Pixel Offsets
+
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
@@ -1178,20 +1182,30 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	pixel_y += val
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//! Reachability
+//? Reachability
+
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
-//! Radioactivity
+//? Radioactivity
+
 /mob/clean_radiation(str, mul, cheap)
 	. = ..()
 	if(cheap)
 		return
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
+
+//? Abilities
+
+/mob/proc/register_ability(datum/ability/ability)
+	#warn impl
+
+/mob/proc/unregister_ability(datum/ability/ability)
+	#warn impl
 
 //! Misc
 /**

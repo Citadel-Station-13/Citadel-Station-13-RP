@@ -68,6 +68,10 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 
+	//? Abilities
+	/// our abilities - set to list of paths to init to intrinsic abilities.
+	var/list/datum/ability/abilities
+
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
 	/// our size multiplier
