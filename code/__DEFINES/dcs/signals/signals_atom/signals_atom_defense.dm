@@ -1,7 +1,5 @@
 //? shieldcall signals - these gather what to call on.
 
-/// runs shield checks - from base of /atom/proc/atom_shieldcheck: (list/considering)
-#define COMSIG_ATOM_SHIELDCHECK "atom_shieldcheck"
 /// runs shield checks - from base of /atom/proc/atom_shieldcall: (list/considering)
 #define COMSIG_ATOM_SHIELDCALL "atom_shieldcall"
 
@@ -36,3 +34,5 @@
 #define SHIELDCALL_PARTIALLY_MITIGATED (1<<1)
 /// attack was forcefully missed e.g. by reactive teleport armor
 #define SHIELDCALL_FORCED_MISS (1<<2)
+/// fake; this is a check
+#define SHIELDCALL_JUST_CHECKING (1<<3)

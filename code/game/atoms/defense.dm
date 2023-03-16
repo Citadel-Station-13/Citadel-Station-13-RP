@@ -114,7 +114,8 @@
  * params are modified and then returned as a list.
  */
 /atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCHECK, args)
+	retval |= SHIELDCALL_JUST_CHECKING
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, args)
 	return args.Copy()
 
 /**
