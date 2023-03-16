@@ -163,6 +163,8 @@
 
 /obj/item/gps/attack_self(mob/user)
 	. = ..()
+	if(.)
+		return
 	// TODO: ATTACK_SELF REFACTOR
 	ui_interact(user)
 
@@ -466,6 +468,10 @@
 
 /obj/item/gps/command/on
 	on = TRUE
+
+/obj/item/gps/command/blueshield
+	gps_tag = "BLU0"
+
 
 /obj/item/gps/security
 	icon_state = "gps-sec"

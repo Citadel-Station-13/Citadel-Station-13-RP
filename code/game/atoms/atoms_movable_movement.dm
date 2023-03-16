@@ -549,3 +549,52 @@
  */
 /atom/movable/proc/check_pass_flags(flags)
 	return pass_flags & flags
+
+//? movement types
+
+/atom/movable/proc/update_movement_type()
+	var/old_type = movement_type & MOVEMENT_TYPES
+
+	#define RESET_MOVE_TYPE(type) movement_type = (movement_type & ~(movement_type & MOVEMENT_TYPES)) | type
+	if(HAS_TRAIT(src, TRAIT_ATOM_PHASING))
+		RESET_MOVE_TYPE(MOVEMENT_PHASING)
+	else if(HAS_TRAIT(src, TRAIT_ATOM_FLYING))
+		RESET_MOVE_TYPE(MOVEMENT_FLYING)
+	else if(HAS_TRAIT(src, TRAIT_ATOM_FLOATING))
+		RESET_MOVE_TYPE(MOVEMENT_FLOATING)
+	else
+		RESET_MOVE_TYPE(MOVEMENT_GROUND)
+	#undef RESET_MOVE_TYPE
+
+	var/new_type = movement_type & MOVEMENT_TYPES
+
+	if(old_type == new_type)
+		return
+
+	on_update_movement_type(old_type, new_type)
+
+/atom/movable/proc/on_update_movement_type(old_type, new_type)
+
+/atom/movable/proc/add_atom_flying(source)
+	ADD_TRAIT(src, TRAIT_ATOM_FLYING, source)
+	update_movement_type()
+
+/atom/movable/proc/add_atom_phasing(source)
+	ADD_TRAIT(src, TRAIT_ATOM_PHASING, source)
+	update_movement_type()
+
+/atom/movable/proc/add_atom_floating(source)
+	ADD_TRAIT(src, TRAIT_ATOM_FLOATING, source)
+	update_movement_type()
+
+/atom/movable/proc/remove_atom_flying(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_FLYING, source)
+	update_movement_type()
+
+/atom/movable/proc/remove_atom_phasing(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_PHASING, source)
+	update_movement_type()
+
+/atom/movable/proc/remove_atom_floating(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_FLOATING, source)
+	update_movement_type()

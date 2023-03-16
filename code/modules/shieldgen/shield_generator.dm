@@ -54,10 +54,6 @@
 	. = ..()
 	if(!wires)
 		wires = new(src)
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 	connect_to_network()
 
 	mode_list = list()
@@ -435,7 +431,7 @@
 
 	return data
 
-/obj/machinery/power/shield_generator/attack_hand(mob/user)
+/obj/machinery/power/shield_generator/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(panel_open && Adjacent(user))

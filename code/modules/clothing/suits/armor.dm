@@ -213,7 +213,10 @@
 		return PROJECTILE_FORCE_MISS
 	return 0
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !( active )
 	if (active)
 		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
@@ -318,6 +321,16 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	icon_badge = "officerwebvest_badge"
 	icon_nobadge = "officerwebvest_nobadge"
+
+/obj/item/clothing/suit/storage/vest/blueshield
+	name = "blueshield armored vest"
+	desc = "A synthetic polymer-woven armor vest. This one is marked with Blueshield lettering."
+	icon_state = "blueshieldvest"
+
+/obj/item/clothing/suit/storage/vest/blueshield/heavy
+	name = "\improper Blueshield heavy armored vest"
+	desc = "A synthetic polymer-woven armor vest with BLUESHIELD printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates."
+	icon_state = "blueshieldwebvest"
 
 /obj/item/clothing/suit/storage/vest/warden
 	name = "warden armor vest"
@@ -697,7 +710,10 @@
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE

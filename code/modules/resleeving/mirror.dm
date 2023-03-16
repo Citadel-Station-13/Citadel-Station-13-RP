@@ -166,7 +166,10 @@
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/mirrortool/attack_self(var/mob/user)
+/obj/item/mirrortool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!imp)
 		to_chat(usr, "No mirror is loaded.")
 	else

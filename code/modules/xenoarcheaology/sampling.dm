@@ -151,7 +151,10 @@
 	else
 		to_chat(user, "<span class='warning'>You are unable to take a sample of [item_to_sample].</span>")
 
-/obj/item/core_sampler/attack_self(var/mob/living/user)
+/obj/item/core_sampler/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(filled_bag)
 		to_chat(user, "<span class='notice'>You eject the full sample bag.</span>")
 		var/success = 0

@@ -121,7 +121,7 @@
 /area/class_h/POIs/WW_Town)
 "ua" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "ug" = (

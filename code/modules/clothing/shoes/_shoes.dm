@@ -67,8 +67,8 @@
 
 	update_icon()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
-	if(can_hold_knife == 1 && holding && src.loc == M)
+/obj/item/clothing/shoes/attack_hand(mob/user, list/params)
+	if(can_hold_knife == 1 && holding && src.loc == user)
 		draw_knife()
 		return
 	..()
@@ -104,7 +104,10 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
+/obj/item/clothing/shoes/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
