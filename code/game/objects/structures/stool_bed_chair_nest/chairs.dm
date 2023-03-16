@@ -2,13 +2,16 @@
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
 	icon = 'icons/obj/furniture_vr.dmi' // Using Eris furniture //TODO: Ew how about not.
-	icon_state = "chair_preview"
+	icon_state = "chair"
 	color = "#666666"
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	icon_dimension_y = 32
+	var/hitsound = 'sound/effects/metal_chair_clang.ogg'
+	var/picked_up_item = /obj/item/material/twohanded/folded_metal_chair
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
+	var/stacked_size = 0
 
 /obj/structure/bed/chair/Initialize(mapload)
 	. = ..()
@@ -18,10 +21,46 @@
 	. = ..()
 	update_layer()
 
-/obj/structure/bed/chair/attackby(obj/item/W, mob/user)
-	..()
-	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
-		var/obj/item/assembly/shock_kit/SK = W
+/obj/structure/bed/chair/OnMouseDrop(atom/over, mob/user)
+	. = ..()
+	if(!picked_up_item)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!Adjacent(over, FALSE))
+		return
+	if(has_buckled_mobs())
+		to_chat(H, SPAN_NOTICE("You cannot fold the chair while someone is buckled to it!"))
+		return
+	if(stacked_size)
+		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
+		return
+	var/obj/item/material/twohanded/folded_metal_chair/C = new picked_up_item(loc)
+	if(H.put_in_active_hand(C))
+		qdel(src)
+	else if(H.put_in_inactive_hand(C))
+		qdel(src)
+	else
+		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
+		qdel(C)
+
+/obj/structure/bed/chair/attack_hand(mob/user)
+	if(stacked_size)
+		if(!Adjacent(user,FALSE))
+			return
+		var/obj/item/material/twohanded/folded_metal_chair/F = new /obj/item/material/twohanded/folded_metal_chair(loc)
+		user.put_in_active_hand(F)
+		to_chat(user, SPAN_NOTICE("You take a chair off the stack."))
+		stacked_size--
+		update_overlays()
+		if(!stacked_size)
+			layer = OBJ_LAYER
+			can_buckle = TRUE
+			density = FALSE
+	. = ..()
+
+/obj/structure/bed/chair/attackby(obj/item/I, mob/user)
+	if(!padding_material && istype(I, /obj/item/assembly/shock_kit) && !stacked_size)
+		var/obj/item/assembly/shock_kit/SK = I
 		if(!SK.status)
 			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
@@ -34,6 +73,37 @@
 		SK.forceMove(E)
 		SK.master = E
 		qdel(src)
+
+	if(istype(I, /obj/item/tool/wrench) && stacked_size)
+		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
+		return FALSE
+	if(istype(I, /obj/item/material/twohanded/folded_metal_chair) && picked_up_item)
+		if(locate(/mob/living) in loc)
+			to_chat(user, SPAN_NOTICE("There's someone in the way!"))
+			return FALSE
+		qdel(I)
+		stacked_size++
+		update_overlays()
+
+		if(stacked_size == 1)
+			layer = ABOVE_MOB_LAYER
+			can_buckle = FALSE
+			density = TRUE
+			return FALSE
+
+		if(stacked_size > 8)
+			to_chat(user, SPAN_WARNING("The stack of chairs looks unstable!"))
+			if(prob(sqrt(50 * stacked_size)))
+				stack_collapse()
+				return FALSE
+		return FALSE
+
+	return ..()
+
+/obj/structure/bed/chair/user_buckle_mob()
+	if(stacked_size)
+		return
+	..()
 
 /obj/structure/bed/chair/attack_tk(mob/user)
 	if(has_buckled_mobs())
@@ -91,6 +161,71 @@
 
 	src.setDir(turn(src.dir, 270))
 
+/obj/structure/bed/chair/proc/stack_collapse()
+	visible_message(SPAN_DANGER("The stack of chairs collapses!!!"))
+	var/turf/starting_turf = get_turf(src)
+	playsound(starting_turf, 'sound/effects/metal_chair_crash.ogg', 30, 1, 30)
+	for(var/i in 1 to stacked_size)
+		stacked_size--
+		update_overlays()
+
+		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(loc)
+		var/list/candidate_target_turfs = range(round(stacked_size/2), starting_turf)
+		candidate_target_turfs -= starting_turf
+		var/turf/target_turf = candidate_target_turfs[rand(1, length(candidate_target_turfs))]
+
+		C.forceMove(starting_turf)
+		C.pixel_x = rand(-8, 8)
+		C.pixel_y = rand(-8, 8)
+		C.throw_at(target_turf, rand(2, 5), 6, null)
+	var/obj/item/material/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
+	I.throw_at(starting_turf, rand(2, 5), 6, null)
+	qdel(src)
+
+/obj/structure/bed/chair/update_overlays()
+	overlays.Cut()
+	if(!stacked_size)
+		name = initial(name)
+		desc = initial(desc)
+		return
+	name = "stack of folding chairs"
+	desc = "There seems to be [stacked_size + 1] in the stack, wow!"
+	icon_state = base_icon
+	for(var/i in 1 to stacked_size)
+		var/image/I = image(icon = icon, loc = loc, icon_state = icon_state)
+		I.dir = dir
+		var/image/previous_chair_overlay
+		if(i == 1)
+			switch(dir)
+				if(NORTH)
+					I.pixel_y = pixel_y + 2
+				if(SOUTH)
+					I.pixel_y = pixel_y + 2
+				if(EAST)
+					I.pixel_x = pixel_x + 1
+					I.pixel_y = pixel_y + 3
+				if(WEST)
+					I.pixel_x = pixel_x - 1
+					I.pixel_y = pixel_y + 3
+		else
+			previous_chair_overlay = overlays[i - 1]
+			switch(src.dir)
+				if(NORTH)
+					I.pixel_y = previous_chair_overlay.pixel_y + 2
+				if(SOUTH)
+					I.pixel_y = previous_chair_overlay.pixel_y + 2
+				if(EAST)
+					I.pixel_x = previous_chair_overlay.pixel_x + 1
+					I.pixel_y = previous_chair_overlay.pixel_y + 3
+				if(WEST)
+					I.pixel_x = previous_chair_overlay.pixel_x - 1
+					I.pixel_y = previous_chair_overlay.pixel_y + 3
+		if(stacked_size > 8)
+			I.pixel_x = I.pixel_x + pick(list(-1, 1))
+		overlays += I
+	color = material.icon_colour
+	return ..()
+
 /obj/structure/bed/chair/shuttle
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
@@ -103,6 +238,7 @@
 /obj/structure/bed/chair/comfy
 	desc = "It's a chair. It looks comfy."
 	icon_state = "comfychair_preview"
+	picked_up_item = null
 
 /obj/structure/bed/chair/comfy/brown/Initialize(mapload, newmaterial)
 	return ..(mapload, "steel", "leather")
@@ -136,6 +272,7 @@
 
 /obj/structure/bed/chair/office
 	anchored = FALSE
+	picked_up_item = null
 
 /obj/structure/bed/chair/office/update_icon()
 	return
@@ -211,6 +348,7 @@
 	icon_state = "sofamiddle"
 	applies_material_colour = 1
 	var/sofa_material = "carpet"
+	picked_up_item = null
 
 /obj/structure/bed/chair/sofa/update_icon()
 	if(applies_material_colour && sofa_material)
@@ -396,6 +534,7 @@
 	icon = 'icons/obj/sofas.dmi'
 	base_icon = "pewmiddle"
 	icon_state = "pewmiddle"
+	picked_up_item = null
 
 
 /obj/structure/bed/chair/pew/Initialize(mapload, new_material)
@@ -419,6 +558,7 @@
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
 	icon_state = "queenthrone"
 	base_icon = "queenthrone"
+	picked_up_item = null
 
 /obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
@@ -429,6 +569,7 @@
 	desc = "A specially crafted stool made out of hardened wax. Often found on Apidean colonies and vessels."
 	icon_state = "stool_apidean"
 	base_icon = "stool_apidean"
+	picked_up_item = null
 
 /obj/structure/bed/chair/apidean_stool/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
@@ -439,6 +580,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "horsepost"
 	base_icon = "horsepost"
+	picked_up_item = null
 
 /obj/structure/bed/chair/post/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
@@ -447,3 +589,38 @@
 
 /obj/structure/bed/chair/post/Initialize(mapload, new_material)
 	. = ..(mapload, "bone", null)
+
+/obj/item/material/twohanded/folded_metal_chair //used for when someone picks up the chair
+	name = "metal folding chair"
+	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "folding_chair0"
+	base_icon = "folding_chair"
+	attack_verb = list("bashed", "battered", "chaired")
+	force = 1
+	throw_force = 3
+	sharp = null
+	edge = 0
+	w_class = ITEMSIZE_LARGE
+	force_wielded = 10
+	hitsound = 'sound/effects/metal_chair_slam.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
+	drop_sound = 'sound/effects/metal_chair_clang.ogg'
+	var/placed_object = /obj/structure/bed/chair
+
+/obj/item/material/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
+	if(isturf(target))
+		var/turf/T = target
+		if(!(istype(T)) || !proximity || T.density)
+			return
+		for(var/atom/movable/AM in T.contents)
+			if(AM.density || istype(AM, /obj/structure/bed))
+				to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
+				return
+		var/obj/O = new placed_object(T)
+		O.dir = user.dir
+		qdel(src)
+
+/obj/item/material/twohanded/folded_metal_chair/throw_impacted(atom/A, datum/thrownthing/TT)
+	playsound(get_turf(src), 'sound/effects/metal_chair_slam.ogg', 50, 1)
+	. = ..()
