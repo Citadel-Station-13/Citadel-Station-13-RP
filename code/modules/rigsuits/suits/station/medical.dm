@@ -16,10 +16,11 @@
 		/obj/item/suit_cooling_unit,
 		/obj/item/storage/firstaid,
 		/obj/item/healthanalyzer,
-		/obj/item/storage/backpack,
 		/obj/item/stack/medical,
-		/obj/item/roller
-		)
+		/obj/item/roller,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 /datum/armor/rig/medical
 	melee = 0.3

@@ -12,10 +12,28 @@
 	req_access = list(ACCESS_CENTCOM_ERT)
 
 	armor = list(melee = 60, bullet = 50, laser = 35,energy = 15, bomb = 30, bio = 100, rad = 95)
-	allowed = list(/obj/item/flashlight, /obj/item/tank, /obj/item/t_scanner, /obj/item/rcd, /obj/item/tool/crowbar, \
-	/obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/multitool, \
-	/obj/item/radio, /obj/item/analyzer,/obj/item/storage/briefcase/inflatable, /obj/item/melee/baton, /obj/item/gun, \
-	/obj/item/storage/firstaid, /obj/item/reagent_containers/hypospray, /obj/item/roller, /obj/item/storage/backpack)
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/tank,
+		/obj/item/t_scanner,
+		/obj/item/rcd,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
+		/obj/item/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/multitool,
+		/obj/item/radio,
+		/obj/item/analyzer,
+		/obj/item/storage/briefcase/inflatable,
+		/obj/item/melee/baton,
+		/obj/item/gun,
+		/obj/item/storage/firstaid,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/roller,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 /obj/item/rig/pmc/commander
 	name = "PMC-C hardsuit control module"
