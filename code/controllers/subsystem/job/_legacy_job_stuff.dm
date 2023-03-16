@@ -122,7 +122,7 @@
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 		var/datum/role/job/job = get_job(command_position)
-		if(!job)
+		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
 		if(!candidates.len)
