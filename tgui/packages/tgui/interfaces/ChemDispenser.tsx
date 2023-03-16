@@ -16,6 +16,7 @@ interface CartridgeData {
 }
 
 interface BeakerData {
+  name: string;
   volume: number;
   capacity: BeakerData;
   data: ReagentContentsData;
@@ -39,7 +40,7 @@ interface ChemDispenserData {
 
 interface DispenserMacro {
   name: string;
-  data: Array<Record<string, number>>;
+  data: Array<[string, number]>;
   index: number;
 }
 
@@ -53,9 +54,12 @@ export const ChemDispenser = (props, context) => {
     }
     let appended = macro?.slice();
     if (appended.length && appended[appended.length - 1][0] === id) {
-      appended[appended.length - 1][1] += amount;
+      let remaining = Math.max(0, data.amount_max - appended[appended.length - 1][1]);
+      let wanted = Math.min(remaining, amount);
+      appended[appended.length - 1][1] += wanted;
+      amount -= wanted;
     }
-    else {
+    if (amount > 0) {
       appended?.push([id, amount]);
     }
     setMacro(appended);
@@ -208,28 +212,30 @@ export const ChemDispenser = (props, context) => {
               onClick={() => act('eject')} />
           }>
           {data.has_beaker? (
-            <ReagentContents
-              reagents={data.beaker.data}
-              reagentButtons={(id) => (
-                <>
-                  <Button
-                    content="Isolate"
-                    icon="compress-arrows-alt"
-                    onClick={() => act('isolate', { id: id })} />
-                  {
-                    [1, 2, 3, 5].map((n) => (
-                      <Button
-                        key={n}
-                        content={`-${n}`}
-                        onClick={() => act('purge', { id: id, amount: n })} />
-                    ))
-                  }
-                  <Button
-                    content="Purge"
-                    icon="trash"
-                    onClick={() => act('purge', { id: id })} />
-                </>
-              )} />
+            <Section title={`${data.beaker.name} - ${data.beaker.volume} / ${data.beaker.capacity}`}>
+              <ReagentContents
+                reagents={data.beaker.data}
+                reagentButtons={(id) => (
+                  <>
+                    <Button
+                      content="Isolate"
+                      icon="compress-arrows-alt"
+                      onClick={() => act('isolate', { id: id })} />
+                    {
+                      [1, 2, 3, 5].map((n) => (
+                        <Button
+                          key={n}
+                          content={`-${n}`}
+                          onClick={() => act('purge', { id: id, amount: n })} />
+                      ))
+                    }
+                    <Button
+                      content="Purge"
+                      icon="trash"
+                      onClick={() => act('purge', { id: id })} />
+                  </>
+                )} />
+            </Section>
           ) : (
             <Section>
               <NoticeBox>

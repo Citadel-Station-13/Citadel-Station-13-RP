@@ -132,7 +132,7 @@
 			if(checkFace())
 				if(checkCardCooldown())
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
-					usr.put_in_hands(card)
+					usr.put_in_hands_or_drop(card)
 					card = null
 			update_icon()
 			return TRUE
@@ -140,7 +140,7 @@
 			if(checkFace())
 				if(checkCardCooldown())
 					makeOffDuty()
-					usr.put_in_hands(card)
+					usr.put_in_hands_or_drop(card)
 					card = null
 			update_icon()
 			return TRUE

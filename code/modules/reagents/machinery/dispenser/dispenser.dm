@@ -55,8 +55,6 @@
 	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
 	//  todo: macros utilizing cartridges
 	var/list/macros
-	/// awful code but lets us identify macros regardless of tgui sort order.
-	var/macro_index_next = 0
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
@@ -124,6 +122,16 @@
 	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))
 	SStgui.update_uis(src)
 
+// todo: refactor ai
+/obj/machinery/chemical_dispenser/attack_ai(mob/user)
+	ui_interact(user)
+	return TRUE
+
+// todo: refactor robot
+/obj/machinery/chemical_dispenser/attack_robot(mob/user)
+	ui_interact(user)
+	return TRUE
+
 /obj/machinery/chemical_dispenser/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -138,6 +146,13 @@
 			"amount" = cart.reagents?.total_volume || 0,
 		)
 	return carts_built
+
+/obj/machinery/chemical_dispenser/proc/ui_macro_data()
+	var/list/macros_built = list()
+	var/index = 0
+	for(var/list/L as anything in macros)
+		macros_built[++macros_built.len] = L | list("index" = ++index)
+	return macros_built
 
 /obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -160,7 +175,7 @@
 	for(var/id in chems_built)
 		chems_final += list(chems_built[id])
 	.["reagents"] = chems_final
-	.["macros"] = macros || list()
+	.["macros"] = ui_macro_data()
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
 
@@ -177,6 +192,7 @@
 		"volume" = inserted.reagents.total_volume,
 		"capacity" = inserted.reagents.maximum_volume,
 		"data" = inserted.reagents.tgui_reagent_contents(),
+		"name" = inserted.name,
 	) : null
 	.["recharging"] = charging
 	.["recharge_rate"] = recharge_rate
@@ -289,11 +305,13 @@
 			if(!length(the_list))
 				return TRUE
 			var/list/logstr = list()
-			for(var/id in the_list)
+			var/sound_lim = 4
+			for(var/list/L as anything in the_list)
+				var/id = L[1]
 				if(!check_reagent_id(id))
 					logstr += "[id]: skipped"
 					break
-				var/amount = the_list[id]
+				var/amount = L[2]
 				amount = min(amount, dispense_amount_max)
 				if(!amount)
 					continue
@@ -307,10 +325,16 @@
 					break
 				logstr += "[id]: [wanted]"
 				inserted.reagents.add_reagent(id, wanted)
+				if(sound_lim)
+					sound_lim--
+					playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
 			investigate_log("[key_name(usr)] dispensed macro [jointext(logstr, ", ")]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("add_macro")
 			var/list/raw = params["data"]
+			if(length(raw) > MAX_MACRO_STEPS)
+				to_chat(usr, SPAN_WARNING("This macro is too long. Discarding. Max: [MAX_MACRO_STEPS] steps."))
+				return TRUE
 			var/name = params["name"]
 			if(isnull(name))
 				name = input(usr, "Name this macro", "Chemical Macro", "Macro") as text|null
@@ -320,12 +344,13 @@
 				return TRUE
 			var/list/built = list()
 			for(var/list/L as anything in raw)
-				built[L[1]] = max(0, round(text2num(L[2])))
+				built[++built.len] = list(
+					L[1], round(text2num(L[2]))
+				)
 			raw.len = min(raw.len, MAX_MACRO_STEPS)
 			LAZYINITLIST(macros)
 			macros[++macros.len] = list(
 				"name" = name,
-				"index" = ++macro_index_next,
 				"data" = built,
 			)
 			update_static_data()
@@ -370,7 +395,7 @@
 			if(!user.attempt_insert_item_for_installation(I, src))
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			synthesizers += synth
+			LAZYADD(synthesizers, synth)
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -480,6 +505,8 @@
 
 /obj/machinery/chemical_dispenser/drop_products(method)
 	. = ..()
+	if(synthesizers && !synthesizers_swappable)
+		QDEL_LIST(synthesizers) // nope
 	for(var/obj/item/I as anything in (synthesizers | cartridges))
 		drop_product(method, I)
 	synthesizers = null
@@ -491,5 +518,9 @@
 		if(cell.loc == src)
 			drop_product(method, cell)
 		cell = null
+
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE
+
+#undef MAX_MACROS
+#undef MAX_MACRO_STEPS

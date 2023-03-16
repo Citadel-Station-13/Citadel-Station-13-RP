@@ -305,10 +305,10 @@
 /obj/projectile/beam/excavation
 	name = "excavation beam"
 	icon_state = "emitter"
-	fire_sound = 'sound/weapons/emitter.ogg'
+	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	light_color = "#00CC33"
 	damage = 1 //mining tool
-	excavation_amount = 500	// 1 shot to dig a standard rock turf. Made for mining.
+	excavation_amount = 1000	// 1 shot to dig a standard rock turf. Made for mining. Should be able to consistently one hit rocks now
 
 	muzzle_type = /obj/effect/projectile/muzzle/emitter
 	tracer_type = /obj/effect/projectile/tracer/emitter

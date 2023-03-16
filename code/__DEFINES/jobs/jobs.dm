@@ -4,6 +4,7 @@
 
 #define JOB_ID_CAPTAIN "captain"
 #define JOB_ID_COMMAND_SECRETARY "command_secretary"
+#define JOB_ID_BLUESHIELD "blueshield"
 
 #define JOB_ID_QUARTERMASTER "quartermaster"
 #define JOB_ID_CARGO_TECHNICIAN "cargo_technician"

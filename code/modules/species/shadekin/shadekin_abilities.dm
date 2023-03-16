@@ -116,7 +116,7 @@
 		alpha = initial(alpha)
 
 		// probably replace with a trait later.
-		set_movement_type(GROUND)
+		set_movement_type(MOVEMENT_GROUND)
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -161,7 +161,7 @@
 		alpha = 127
 
 		// probably replace with a trait later.
-		set_movement_type(PHASING)
+		set_movement_type(MOVEMENT_PHASING)
 
 		canmove = original_canmove
 		incorporeal_move = TRUE

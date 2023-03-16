@@ -369,7 +369,7 @@
 	if(.)
 		if(temporary_unstoppable_movement)
 			temporary_unstoppable_movement = FALSE
-			movement_type &= ~UNSTOPPABLE
+			movement_type &= ~MOVEMENT_UNSTOPPABLE
 		if(fired && can_hit_target(original, permutated, TRUE))
 			Bump(original)
 

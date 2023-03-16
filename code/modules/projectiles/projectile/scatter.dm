@@ -101,21 +101,21 @@
 	damage = 60
 	armor_penetration = 30
 	submunitions = list(
-		/obj/projectile/beam/heavylaser = 3
+		/obj/projectile/beam/heavylaser = 1 //nope
 		)
 
 /obj/projectile/scatter/laser/heavylaser/cannon
 	damage = 80
 	armor_penetration = 50
 	submunitions = list(
-		/obj/projectile/beam/heavylaser/cannon = 2
+		/obj/projectile/beam/heavylaser/cannon = 1 //haha no
 		)
 
 /obj/projectile/scatter/stun
 	submunition_spread_max = 70
 	submunition_spread_min = 30
 	submunitions = list(
-		/obj/projectile/beam/stun = 4
+		/obj/projectile/beam/stun = 2
 		)
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
@@ -123,13 +123,13 @@
 
 /obj/projectile/scatter/stun/weak
 	submunitions = list(
-		/obj/projectile/beam/stun/weak = 4
+		/obj/projectile/beam/stun/weak = 2
 		)
 	agony = 20
 
 /obj/projectile/scatter/stun/electrode
 	submunitions = list(
-		/obj/projectile/energy/electrode = 3
+		/obj/projectile/energy/electrode = 1
 		)
 	agony = 55
 
