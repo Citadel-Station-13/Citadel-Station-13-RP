@@ -383,6 +383,32 @@
 	required_atmos_temp_max = 140
 	probability = 20
 
+/datum/particle_smasher_recipe/deuterium_mhydrogen
+	reagents = list("potassium" = 10, "chlorine" = 10, "sacid" = 10 )
+
+	result = /obj/item/stack/material/mhydrogen
+	required_material = /obj/item/stack/material/deuterium
+
+	required_energy_min = 500
+	required_energy_max = 600
+
+	required_atmos_temp_min = 20
+	required_atmos_temp_max = 25
+	probability = 90
+	
+/datum/particle_smasher_recipe/steel_uranium
+	reagents = list("uranium" = 10, "fluorine")
+
+	result = /obj/item/stack/material/uranium
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 400
+	required_energy_max = 500
+
+	required_atmos_temp_min = 369
+	required_atmos_temp_max = 388
+	probability = 50
+
 /datum/particle_smasher_recipe/plasteel_titanium
 	reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) // :')
 
@@ -394,32 +420,6 @@
 
 	required_atmos_temp_min = 555
 	required_atmos_temp_max = 566
-	probability = 50
-
-/datum/particle_smasher_recipe/deuterium_mhydrogen
-    reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) 
-
-	result = /obj/item/stack/material/mhydrogen
-	required_material = /obj/item/stack/material/deuterium
-
-	required_energy_min = 500 
-	required_energy_max = 600 
-
-	required_atmos_temp_min = 20
-	required_atmos_temp_max = 25
-	probability = 90
-
-/datum/particle_smasher_recipe/steel_uranium //gamy way of doing uranium enrichment
-    reagents = list("uranium" = 10, "fluorine" = 10) 
-	
-	result = /obj/item/stack/material/uranium
-	required_material = /obj/item/stack/material/steel 
-
-	required_energy_min = 400
-	required_energy_max = 500 
-
-	required_atmos_temp_min = 369
-	required_atmos_temp_max = 388
 	probability = 50
 
 /datum/particle_smasher_recipe/platinum_osmium
