@@ -43,3 +43,24 @@ GLOBAL_LIST_INIT(holograms, __init_holograms())
 	var/already_colored = FALSE
 	/// do we already have scanlines? if so, don't apply scanline overlays
 	var/already_scanlined = FALSE
+
+/datum/hologram/proc/render(cheap, alpha = 140 / 255, color = "#55ccff")
+	if(cheap)
+		var/mutable_appearance/rendering = make_hologram_appearance(image(icon = icon, icon_state = icon_state), alpha)
+		rendering.color = rgba_auto_greyscale_matrix(color)
+		return rendering
+	else
+		var/icon/rendering = render_hologram_icon(image(icon = icon, icon_state = icon_state), alpha)
+		rendering.MapColors(arglist(rgba_auto_greyscale_matrix(color)))
+		return rendering
+
+/datum/hologram/proc/render_greyscale(cheap, alpha = 140 / 255)
+	if(cheap)
+		var/mutable_appearance/rendering = make_hologram_appearance(image(icon = icon, icon_state = icon_state), alpha)
+		rendering.color = color_matrix_greyscale()
+		return rendering
+
+	else
+		var/icon/rendering = render_hologram_icon(image(icon = icon, icon_state = icon_state), alpha)
+		rendering.MapColors(arglist(color_matrix_greyscale()))
+		return rendering

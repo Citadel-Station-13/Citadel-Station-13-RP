@@ -953,16 +953,16 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		var/datum/hologram/holo = GLOB.holograms[appearancelike]
 		if(!holo)
 			return FALSE
-		#warn impl
+		appearancelike = holo.render(cheap, 255)
 	else if(istype(appearancelike, /datum/hologram))
 		var/datum/hologram/holo = appearancelike
-		#warn impl
+		appearancelike = holo.render(cheap, 255)
 	else if(ispath(appearancelike, /datum/hologram))
 		var/datum/hologram/holo = appearancelike
 		holo = GLOB.holograms[initial(holo.name)]
 		if(!holo)
 			return FALSE
-		#warn impl
+		appearancelike = holo.render(cheap, 255)
 	else if(isicon(appearancelike))
 		var/image/I = image(icon = appearancelike)
 		if(process_appearance)
