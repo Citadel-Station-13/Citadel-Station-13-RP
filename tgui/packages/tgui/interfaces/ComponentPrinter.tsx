@@ -1,6 +1,6 @@
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Material, MaterialAmount, MaterialFormatting, Materials, MATERIAL_KEYS } from './common/Materials';
+import { LegacyMaterial, MaterialAmount, MaterialFormatting, Materials, MATERIAL_KEYS } from './common/Materials';
 import { Window } from '../layouts';
 import { Box, Button, Input, Section, Stack, Tabs } from '../components';
 
@@ -24,12 +24,12 @@ type Design = {
 
 type ComponentPrinterData = {
   designs: Record<string, Design>,
-  materials: Material[],
+  materials: LegacyMaterial[],
 };
 
 const canProduce = (
   designMaterials: Design["materials"],
-  storedMaterials: Material[],
+  storedMaterials: LegacyMaterial[],
 ) => {
   for (const material of storedMaterials) {
     const amountNeeded = designMaterials[material.name];

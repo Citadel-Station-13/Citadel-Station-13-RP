@@ -79,3 +79,17 @@ SUBSYSTEM_DEF(materials)
  */
 /proc/get_material_by_name(name)
 	return SSmaterials.legacy_material_lookup[name]
+
+/**
+ * tgui materials context
+ *
+ * generates data for tgui/interfaces/common/Materials.tsx:
+ * * MaterialsContext
+ * * FullMaterialsContext
+ *
+ * @params
+ * * ids - material ids.
+ * * full - for FullMaterialsContext? usually not needed.
+ */
+/datum/controller/subsystem/materials/proc/tgui_materials_context()
+	#warn impl

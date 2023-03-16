@@ -36,7 +36,7 @@
 	/// currently printing design
 	var/datum/design/printing
 	/// processing queue?
-	var/printing = FALSE
+	var/queue_active = FALSE
 	/// progress in deciseconds on current design
 	var/progress
 
@@ -90,7 +90,7 @@
 /obj/machinery/lathe/proc/progress_queue(time)
 
 /obj/machinery/lathe/proc/reconsider_queue()
-	#warn impl
+	progress_queue(0)
 
 /**
  * enqueues an instance with given material_parts
@@ -144,9 +144,8 @@
 	. = ..()
 	.["control"] = ui_controller.data(user)
 
-#warn impl
-
 /obj/machinery/lathe/proc/tgui_controller()
+	RETURN_TYPE(/datum/tgui_module)
 	return ui_controller || (ui_controller = new(src))
 
 /obj/machinery/lathe/proc/available_design_ids()
@@ -154,6 +153,11 @@
 
 /obj/machinery/lathe/proc/available_designs()
 	return design_holder.available_designs()
+
+/obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(!has_interface)
+		return
+	tgui_controller().ui_interact(user, ui, parent_ui)
 
 /**
  * holder datum for queue data

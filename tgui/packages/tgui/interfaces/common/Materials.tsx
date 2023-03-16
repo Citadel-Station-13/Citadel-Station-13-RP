@@ -6,6 +6,18 @@ import { useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
 
 export interface MaterialsContext {
+  materials: Record<string, DetailedMaterial>;
+}
+
+export interface FullMaterialsContext {
+  materials: Record<string, Material>;
+}
+
+export interface Material {
+
+}
+
+export interface DetailedMaterial extends Material {
 
 }
 
@@ -23,7 +35,7 @@ export const MATERIAL_KEYS = {
   "plastic": "sheet-plastic_3",
 } as const;
 
-export type Material = {
+export type LegacyMaterial = {
   name: keyof typeof MATERIAL_KEYS;
   ref: string;
   amount: number;
