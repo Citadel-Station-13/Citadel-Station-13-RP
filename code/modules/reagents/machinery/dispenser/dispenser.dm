@@ -55,8 +55,6 @@
 	/// macros: list of list("name" = name, "index" = number, "data" = list("id" = amount, ...))
 	//  todo: macros utilizing cartridges
 	var/list/macros
-	/// awful code but lets us identify macros regardless of tgui sort order.
-	var/macro_index_next = 0
 
 /obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
@@ -143,6 +141,13 @@
 		)
 	return carts_built
 
+/obj/machinery/chemical_dispenser/proc/ui_macro_data()
+	var/list/macros_built = list()
+	var/index = 0
+	for(var/list/L as anything in macros)
+		macros_built[++macros_built.len] = L | list("index" = ++index)
+	return macros_built
+
 /obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["cartridges"] = ui_cartridge_data()
@@ -164,7 +169,7 @@
 	for(var/id in chems_built)
 		chems_final += list(chems_built[id])
 	.["reagents"] = chems_final
-	.["macros"] = macros || list()
+	.["macros"] = ui_macro_data()
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
 
@@ -294,11 +299,13 @@
 			if(!length(the_list))
 				return TRUE
 			var/list/logstr = list()
-			for(var/id in the_list)
+			var/sound_lim = 4
+			for(var/list/L as anything in the_list)
+				var/id = L[1]
 				if(!check_reagent_id(id))
 					logstr += "[id]: skipped"
 					break
-				var/amount = the_list[id]
+				var/amount = L[2]
 				amount = min(amount, dispense_amount_max)
 				if(!amount)
 					continue
@@ -312,10 +319,16 @@
 					break
 				logstr += "[id]: [wanted]"
 				inserted.reagents.add_reagent(id, wanted)
+				if(sound_lim)
+					sound_lim--
+					playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
 			investigate_log("[key_name(usr)] dispensed macro [jointext(logstr, ", ")]", INVESTIGATE_REAGENTS)
 			return TRUE
 		if("add_macro")
 			var/list/raw = params["data"]
+			if(length(raw) > MAX_MACRO_STEPS)
+				to_chat(usr, SPAN_WARNING("This macro is too long. Discarding. Max: [MAX_MACRO_STEPS] steps."))
+				return TRUE
 			var/name = params["name"]
 			if(isnull(name))
 				name = input(usr, "Name this macro", "Chemical Macro", "Macro") as text|null
@@ -325,12 +338,13 @@
 				return TRUE
 			var/list/built = list()
 			for(var/list/L as anything in raw)
-				built[L[1]] = max(0, round(text2num(L[2])))
+				built[++built.len] = list(
+					L[1], round(text2num(L[2]))
+				)
 			raw.len = min(raw.len, MAX_MACRO_STEPS)
 			LAZYINITLIST(macros)
 			macros[++macros.len] = list(
 				"name" = name,
-				"index" = ++macro_index_next,
 				"data" = built,
 			)
 			update_static_data()
@@ -485,6 +499,8 @@
 
 /obj/machinery/chemical_dispenser/drop_products(method)
 	. = ..()
+	if(synthesizers && !synthesizers_swappable)
+		QDEL_LIST(synthesizers) // nope
 	for(var/obj/item/I as anything in (synthesizers | cartridges))
 		drop_product(method, I)
 	synthesizers = null
@@ -496,7 +512,7 @@
 		if(cell.loc == src)
 			drop_product(method, cell)
 		cell = null
-		
+
 /obj/machinery/chemical_dispenser/unanchored
 	anchored = FALSE
 
