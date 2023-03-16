@@ -23,3 +23,11 @@
 	energy = 0.25
 	bomb = 0.5
 	rad = 0.4
+
+/datum/armor/lavaland/ashlander
+	melee = 0.2
+	laser = 0.4
+	energy = 0.4
+	bomb = 0.2
+	bio = 0.3
+	rad = 0.2

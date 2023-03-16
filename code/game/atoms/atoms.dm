@@ -39,10 +39,6 @@
 	var/datum/armor/r_armor
 	/// armor datum type
 	var/r_armor_type = /datum/armor/none
-	/// armor soak data - this armor directly deducts damage. use sparingly.
-	var/datum/armor/r_armor_soak
-	/// armor soak type
-	var/r_armor_soak_type = /datum/armor/none
 
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.

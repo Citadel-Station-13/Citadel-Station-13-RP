@@ -362,13 +362,13 @@
 	desc = "Shiny blue helmet, complete with far-too-big golden visor. It probably doesn't protects from bright flashes."
 	name = "Facility Director voidsuit helmet"
 	icon_state = "capvoid"
-	r_armor_type = /datum/armor/security/high/captain
+	r_armor_type = /datum/armor/security/captain
 
 /obj/item/clothing/suit/space/void/captain
 	desc = "Sleek, blue and gold suit, fitted with spaceproofing and protective inserts. Fits like an oversized, shiny glove."
 	name = "Facility Director voidsuit"
 	icon_state = "capsuit_void"
-	r_armor_type = /datum/armor/security/high/captain
+	r_armor_type = /datum/armor/security/captain
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	slowdown = 1.5
 
@@ -393,7 +393,7 @@
 	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
 	icon_state = "para_ert_void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_helm", SLOT_ID_LEFT_HAND = "sec_helm")
-	r_armor_type = /datum/armor/security/ert/paracausal
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual" //explorer_light
 	flash_protection = FLASH_PROTECTION_MAJOR
@@ -404,7 +404,7 @@
 	desc = "A spaceproof suit covered in foreign spells and magical protection, meant to defend a trained wearer in more than one way."
 	icon_state = "para_ert_void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit", SLOT_ID_LEFT_HAND = "sec_voidsuit")
-	r_armor_type = /datum/armor/security/ert/paracausal
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
 	siemens_coefficient = 0.7
 	var/anti_magic = TRUE

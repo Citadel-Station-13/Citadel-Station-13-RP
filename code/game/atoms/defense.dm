@@ -55,6 +55,12 @@
 //? Armor
 
 /**
+ * resets our armor to initial values
+ */
+/atom/proc/reset_armor()
+	set_armor(initial(r_armor_type))
+
+/**
  * sets our armor
  *
  * @params

@@ -62,7 +62,7 @@
 					hood.atom_flags |= PHORONGUARD
 				else
 					hood.atom_flags &= ~PHORONGUARD
-				hood.armor = armor?.Copy()
+				hood.set_armor(r_armor)
 				hood.atom_colours = atom_colours?.Copy()
 				hood.update_atom_colour()
 				// equip after armor / color changes

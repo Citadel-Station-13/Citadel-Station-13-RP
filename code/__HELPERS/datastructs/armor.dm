@@ -125,12 +125,22 @@
 GLOBAL_LIST_EMPTY(struct_armor_hardcoded)
 GLOBAL_LIST_EMPTY(struct_armor_dynamic)
 
+/**
+ * fetches armor datum
+ *
+ * @params
+ * * armor_or_path - either a path to an armor datum, an armor datum instance, or a list of armor values
+ *
+ * @return an armor datum; if a datum was passed in, it is passed back without replacement.
+ */
 /proc/fetch_armor_struct(list/armor_or_path)
 	if(ispath(armor_or_path))
 		ASSERT(ispath(armor_or_path, /datum/armor))
 		if(isnull(GLOB.struct_armor_hardcoded[armor_or_path]))
 			GLOB.struct_armor_hardcoded[armor_or_path] = new armor_or_path
 		return GLOB.struct_armor_hardcoded[armor_or_path]
+	if(istype(armor_or_path, /datum/armor))
+		return armor_or_path
 	// the lack of sorting is intentional
 	// most of these calls are from /datum/armor's overwritten / adjusted calls
 	// so it's generally already pre-sorted.

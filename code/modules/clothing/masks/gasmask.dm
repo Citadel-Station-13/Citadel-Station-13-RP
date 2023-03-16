@@ -59,7 +59,7 @@
 			body_cover_flags = body_cover_flags & ~FACE
 			clothing_flags &= ~(BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS)
 			inv_hide_flags = 0
-			r_armor_type = /datum/armor/none
+			set_armor(/datum/armor/none)
 			icon_state = "halfgas_up"
 			to_chat(usr, "Your mask is now hanging on your neck.")
 		else
@@ -68,7 +68,7 @@
 			body_cover_flags = initial(body_cover_flags)
 			clothing_flags = initial(clothing_flags)
 			inv_hide_flags = initial(inv_hide_flags)
-			armor = initial(armor)
+			reset_armor()
 			icon_state = initial(icon_state)
 			to_chat(usr, "You pull the mask up to cover your face.")
 		update_worn_icon()

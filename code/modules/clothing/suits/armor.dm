@@ -143,7 +143,7 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
 	w_class = ITEMSIZE_HUGE
-	r_armor_type = /datum/armor/security/deathsquad
+	r_armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -268,7 +268,7 @@
 	icon_state = "ertarmor_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	r_armor_type = /datum/armor/security/ert
+	r_armor_type = /datum/armor/centcom/ert
 	valid_accessory_slots = null
 
 //Commander
@@ -415,14 +415,13 @@
 	desc = "A heavy armored vest in a fetching tan. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
 	icon_state = "tacwebvest"
 	item_state = "tacwebvest"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/suit/storage/vest/heavy/flexitac //a reskin of the above to have a matching armor set
 	name = "tactical light vest"
 	desc = "An armored vest made from advanced flexible ceramic plates. It's surprisingly mobile, if a little unfashionable."
 	icon_state = "flexitac"
 	item_state = "flexitac"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = T0C - 20
 	slowdown = 0.3
@@ -495,7 +494,7 @@
 	name = "captain's carapace"
 	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
 	icon_state = "capcarapace"
-	r_armor_type = /datum/armor/security/high/captain
+	r_armor_type = /datum/armor/security/captain
 
 //All of the armor below is mostly unused
 
@@ -544,10 +543,10 @@
 
 /obj/item/clothing/suit/armor/samurai
 	name = "karuta-gane"
-	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. Designed for foot combat in an era where melee combat was the predominant focus, this suit offers no protection against ballistics or energy attacks, although its lacquered exterior may occasionally deflect laser bolts."
+	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. Designed for foot combat in an era where melee combat was the predominant focus, this suit offers no protection against energy attacks, although its lacquered exterior may occasionally deflect laser bolts."
 	icon_state = "samurai"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
-	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/samurai
 	w_class = ITEMSIZE_LARGE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
@@ -702,7 +701,7 @@
 	icon_state = "para_ert_armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 60, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
@@ -731,7 +730,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
@@ -740,7 +739,7 @@
 	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/special/bulky_kinetic
 	w_class = ITEMSIZE_HUGE // massively bulky item
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -768,13 +767,6 @@
 	else
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 		return FALSE
-
-// HoS armor improved to be slightly better than normal security stuff.
-/obj/item/clothing/suit/storage/vest/hoscoat
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
-
-/obj/item/clothing/suit/storage/vest/hos
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
 	name = "armored trenchcoat"
@@ -858,13 +850,13 @@
 /obj/item/clothing/suit/storage/vest/tactical/pirate
 	name = "surplus tactical vest"
 	desc = "A surplus tactical vest. Although its aging webbing remains intact, its original armor plating has long since been replaced."
-	armor = list(melee = 20, bullet = 20, laser = 30, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/pirate/light
 
 /obj/item/clothing/suit/armor/tactical/pirate
 	name = "defaced tactical armor"
 	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
 	icon_state = "swatarmor_pirate"
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/pirate/light
 	siemens_coefficient = 0.7
 
 //Ashlander armor
@@ -873,7 +865,7 @@
 	desc = "This worn armor is fashioned out of bronze plates connected by dried sinew. The hammered plates are scuffed by ash and soot."
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellar"
-	armor = list(melee = 20, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/lavaland/ashlander
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //More Warhammer Fun
@@ -882,5 +874,5 @@
 	desc = "This high tech armor serves to protect the user from ranged attacks, rather than melee."
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tau"
-	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

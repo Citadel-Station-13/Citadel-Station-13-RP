@@ -49,7 +49,6 @@
 	desc = "A tan helmet made from advanced ceramic. Comfortable and robust."
 	icon_state = "helmet_tac"
 	r_armor_type = /datum/armor/station/tactical
-	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/head/helmet/merc
@@ -125,7 +124,7 @@
 	name = "\improper SWAT helmet"
 	desc = "They're often used by highly trained SWAT Officers."
 	icon_state = "swat"
-	r_armor_type = /datum/armor/security/deathsquad
+	r_armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -174,7 +173,7 @@
 	desc = "This bronze helmet is wrapped in Goliath hide. Dull bronze plates connected by dry sinew are mounted to the exterior for protection."
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellarhelm"
-	armor = list(melee = 15, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/lavaland/ashlander
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/tactical
@@ -182,8 +181,7 @@
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
 	icon_state = "swathelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/tactical
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
@@ -193,7 +191,7 @@
 	desc = "A helmet with optical and cranial augments coupled to it."
 	icon_state = "v62"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	r_armor_type = /datum/armor/misc/augment_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -205,7 +203,7 @@
 	desc = "The 'head' of an Eraticator Artillery Platform, ripped off of the chassis. May be worn for totemic purposes."
 	icon_state = "eraticator-head"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
-	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/misc/eraticator_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
@@ -224,7 +222,7 @@
 	name = "kabuto"
 	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case."
 	icon_state = "kabuto"
-	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/samurai
 
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
@@ -232,7 +230,7 @@
 	desc = "An in-atmosphere helmet worn by members of the NanoTrasen Emergency Response Team. Protects the head from impacts."
 	icon_state = "erthelmet_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	r_armor_type = /datum/armor/security/ert
+	r_armor_type = /datum/armor/centcom/ert
 	valid_accessory_slots = null
 
 //Commander
@@ -265,7 +263,7 @@
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	r_armor_type = /datum/armor/security/ert/paracausal
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	valid_accessory_slots = null
 	action_button_name = "Cycle MAW"
 
@@ -299,7 +297,7 @@
 	desc = "This wide brimmed hat projects authority and a vaguely mystical presence. It also grants its bearer the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "witchhunterhat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	r_armor_type = /datum/armor/security/ert/paracausal
+	r_armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Wards"
 
 /obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)
@@ -324,7 +322,7 @@
 	name = "riding helmet"
 	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
 	icon_state = "sport"
-	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/head/hardhat
 
 	color = "#ffffff"
 
@@ -388,7 +386,7 @@
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tauhelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	armor = list(melee = 15, bullet = 40, laser = 60, energy = 30, bomb = 20, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/general/utilitarian_military_helmet
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/duraskull
@@ -396,5 +394,5 @@
 	desc = "The process of working durasteel into such a shape is no small feat. Whoever commissioned this wanted to send a serious message."
 	icon = 'icons/clothing/head/duraskull.dmi'
 	icon_state = "ahelm"
-	armor = list(melee = 40, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/head/duraskull_mask
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
