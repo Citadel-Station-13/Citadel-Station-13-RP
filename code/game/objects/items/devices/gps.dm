@@ -469,6 +469,10 @@
 /obj/item/gps/command/on
 	on = TRUE
 
+/obj/item/gps/command/blueshield
+	gps_tag = "BLU0"
+
+
 /obj/item/gps/security
 	icon_state = "gps-sec"
 	gps_tag = "SEC0"

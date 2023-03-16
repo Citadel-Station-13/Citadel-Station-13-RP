@@ -192,6 +192,9 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_VAULT, station/command/vault, "Main Vault")
 #define ACCESS_COMMAND_BANKING 68
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_BANKING, station/command/bank_manage, "Account Uplink")
 
+#define ACCESS_COMMAND_BLUESHIELD 69
+STANDARD_ACCESS_DATUM(ACCESS_COMMAND_BLUESHIELD, station/command/blueshield, "Blueshield")
+
 //? Security
 
 #define ACCESS_SECURITY_EQUIPMENT 1
