@@ -93,3 +93,4 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/tgui_materials_context()
 	#warn impl
+	#warn tgui_icon_key

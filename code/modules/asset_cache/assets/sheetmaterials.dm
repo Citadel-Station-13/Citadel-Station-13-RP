@@ -7,3 +7,4 @@
 
 	// Special case to handle Bluespace Crystals
 	Insert("polycrystal", 'icons/obj/telescience.dmi', "polycrystal")
+	#warn icons/interface/materials.dmi
