@@ -8,9 +8,10 @@
  * * rendering - what to render; must be /atom, /appearance, /mutable_appearance, or /icon.
  *     if you use an /icon it should only have one state if at all possible.
  * * use_alpha - what alpha to render it as
+ * * scanlines - include scanlines
  * * no_anim - kill any animations.
  */
-/proc/render_hologram_icon(rendering, use_alpha = (140 / 255), no_anim)
+/proc/render_hologram_icon(rendering, use_alpha = (140 / 255), no_anim, scanlines = TRUE)
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
@@ -20,10 +21,13 @@
 			processing = icon(rendering, frame = 1)
 		else
 			processing = icon(rendering)
-	#warn render in scanlines
+	if(scanlines)
+		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', "scanline"))
 	if(!isnull(use_alpha))
 		processing.MapColors(arglist(rgba_construct_color_matrix(aa = use_alpha)))
 	return processing
+
+GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 
 /**
  * cheap way of just rendering an appearance for a hologram
@@ -34,8 +38,9 @@
  * @params
  * * rendering - what to render; must be /atom, /appearance, /image, /mutable_appearance, or /icon
  * * use_alpha - what alpha to render it as
+ * * scanlines - include scanlines
  */
-/proc/make_hologram_appearance(rendering, use_alpha = (140 / 255))
+/proc/make_hologram_appearance(rendering, use_alpha = (140 / 255), scanlines = TRUE)
 	var/appearance/compiling
 	if(isicon(rendering))
 		compiling = icon2appearance(rendering)
@@ -46,6 +51,18 @@
 	var/mutable_appearance/rendered = new(compiling)
 	if(!isnull(use_alpha))
 		rendered.alpha = use_alpha
-	#warn alpha mask scanlines
+	if(scanlines)
+		var/width = rendered.icon.Width()
+		var/height = rendered.icon.Height()
+		var/key = "[width]x[height]"
+		if(!GLOB.hologram_scanline_cache[key])
+			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
+			generated.Scale(width, height)
+			GLOB.hologram_scanline_cache = generated
+		rendered.filters += filter(
+			type = "alpha",
+			icon = GLOB.hologram_scanline_cache[key],
+		)
+	rendered.appearance_flags |= KEEP_TOGETHER
 	return rendered
 

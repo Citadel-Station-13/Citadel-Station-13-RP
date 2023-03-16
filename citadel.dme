@@ -307,6 +307,7 @@
 #include "code\__HELPERS\files\md5.dm"
 #include "code\__HELPERS\files\paths.dm"
 #include "code\__HELPERS\files\walk.dm"
+#include "code\__HELPERS\icons\alpha.dm"
 #include "code\__HELPERS\icons\download.dm"
 #include "code\__HELPERS\icons\flatten.dm"
 #include "code\__HELPERS\icons\hologram.dm"
