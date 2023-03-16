@@ -47,6 +47,10 @@
 		/obj/item/rig_module/vision/meson
 		)
 
+/obj/item/clothing/head/helmet/space/rig/eva
+	light_overlay = "helmet_light_dual"
+	camera_networks = list(NETWORK_ENGINEERING)
+
 /obj/item/rig/ce
 	name = "advanced voidsuit control module"
 	suit_type = "advanced voidsuit"
@@ -102,3 +106,6 @@
 		/obj/item/rig_module/device/rigwelder, // CE gets tools in their RIG
 		/obj/item/rig_module/device/toolset
 		)
+
+/obj/item/clothing/head/helmet/space/rig/ce
+	camera_networks = list(NETWORK_ENGINEERING,NETWORK_COMMAND)

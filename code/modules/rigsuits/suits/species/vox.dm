@@ -8,7 +8,14 @@
 	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.2
 	offline_slowdown = 5
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
+	allowed = list(
+		/obj/item/gun,
+		/obj/item/flashlight,
+		/obj/item/tank,
+		/obj/item/suit_cooling_unit,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 	air_type = /obj/item/tank/vox
 	helm_type = /obj/item/clothing/head/helmet/space/rig/vox
 	boot_type = /obj/item/clothing/shoes/magboots/rig/vox

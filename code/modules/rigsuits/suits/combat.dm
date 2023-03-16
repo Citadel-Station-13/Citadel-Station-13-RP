@@ -12,8 +12,29 @@
 	offline_vision_restriction = 1
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/combat
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
-
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/tank,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/handcuffs,
+		/obj/item/t_scanner,
+		/obj/item/rcd,
+		/obj/item/weldingtool,
+		/obj/item/tool,
+		/obj/item/multitool,
+		/obj/item/radio,
+		/obj/item/analyzer,
+		/obj/item/storage/briefcase/inflatable,
+		/obj/item/melee/baton,
+		/obj/item/gun,
+		/obj/item/storage/firstaid,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/roller,
+		/obj/item/suit_cooling_unit,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 /obj/item/rig/combat/equipped
 

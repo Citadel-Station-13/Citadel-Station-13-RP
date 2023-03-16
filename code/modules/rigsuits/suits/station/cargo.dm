@@ -16,13 +16,14 @@
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/tank,
-		/obj/item/storage/backpack,
 		/obj/item/suit_cooling_unit,
 		/obj/item/storage/bag/ore,
 		/obj/item/t_scanner,
 		/obj/item/pickaxe,
-		/obj/item/rcd
-		)
+		/obj/item/rcd,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 /datum/armor/rig/industrial
 	melee = 0.6
@@ -34,7 +35,6 @@
 	rad = 0.7
 
 /obj/item/rig/industrial/equipped
-
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/device/drill,
@@ -42,3 +42,6 @@
 		/obj/item/rig_module/vision/material,
 		/obj/item/rig_module/maneuvering_jets,
 		)
+
+/obj/item/clothing/head/helmet/space/rig/industrial
+	camera_networks = list(NETWORK_MINE)

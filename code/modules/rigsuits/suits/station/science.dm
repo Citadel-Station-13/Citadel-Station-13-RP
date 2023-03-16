@@ -26,8 +26,9 @@
 		/obj/item/beacon_locator,
 		/obj/item/radio/beacon,
 		/obj/item/pickaxe/hand,
-		/obj/item/storage/backpack,
 		/obj/item/storage/bag/fossils,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
 	)
 
 /datum/armor/rig/ami
@@ -43,5 +44,10 @@
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/anomaly_scanner
+		/obj/item/rig_module/device/anomaly_scanner,
+		/obj/item/rig_module/device/drill,
 		)
+
+/obj/item/clothing/head/helmet/space/rig/hazmat
+	light_overlay = "hardhat_light"
+	camera_networks = list(NETWORK_RESEARCH,NETWORK_COMMAND)

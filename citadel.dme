@@ -4052,7 +4052,6 @@
 #include "code\modules\rigsuits\suits\light.dm"
 #include "code\modules\rigsuits\suits\merc.dm"
 #include "code\modules\rigsuits\suits\pmc.dm"
-#include "code\modules\rigsuits\suits\station.dm"
 #include "code\modules\rigsuits\suits\station_vr.dm"
 #include "code\modules\rigsuits\suits\species\protean.dm"
 #include "code\modules\rigsuits\suits\species\unathi.dm"
