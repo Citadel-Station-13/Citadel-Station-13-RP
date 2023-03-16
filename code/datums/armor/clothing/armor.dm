@@ -37,7 +37,7 @@
 /datum/armor/general/space
 	melee = 0.2
 	bullet = 0.05
-	laesr = 0.1
+	laser = 0.1
 	energy = 0.1
 	bomb = 0.15
 	bio = 1.0
@@ -49,3 +49,9 @@
 	laser = 0.25
 	energy = 0.15
 	bomb = 0.35
+
+/datum/armor/general/bone
+	melee = 0.25
+	bullet = 0.05
+	laser = 0.05
+	energy = 0

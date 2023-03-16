@@ -629,7 +629,7 @@
 	body_cover_flags = ARMS
 	cold_protection = HANDS
 	heat_protection = HANDS
-	armor = list("melee" = 15, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)
+	r_armor_type = /datum/armor/general/bone
 
 /obj/item/clothing/gloves/hasie
 	name = "Hasie fingerless gloves"
