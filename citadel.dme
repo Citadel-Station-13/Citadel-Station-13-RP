@@ -4048,7 +4048,6 @@
 #include "code\modules\rigsuits\modules\vision.dm"
 #include "code\modules\rigsuits\suits\combat.dm"
 #include "code\modules\rigsuits\suits\ert.dm"
-#include "code\modules\rigsuits\suits\ert_vr.dm"
 #include "code\modules\rigsuits\suits\light.dm"
 #include "code\modules\rigsuits\suits\merc.dm"
 #include "code\modules\rigsuits\suits\pmc.dm"
