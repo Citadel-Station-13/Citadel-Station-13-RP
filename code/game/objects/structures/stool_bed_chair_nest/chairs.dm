@@ -180,7 +180,7 @@
 		C.throw_at(target_turf, rand(2, 5), 1, null)
 	stacked_size = 0
 	var/obj/item/material/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
-	I.throw_at(starting_turf, rand(2, 5), 6, null)
+	I.throw_at(starting_turf, 1, 1)
 	qdel(src)
 
 /obj/structure/bed/chair/update_overlays()
