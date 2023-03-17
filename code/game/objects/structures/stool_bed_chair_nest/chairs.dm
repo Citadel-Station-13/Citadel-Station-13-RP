@@ -23,40 +23,46 @@
 
 /obj/structure/bed/chair/OnMouseDrop(atom/over, mob/user)
 	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(!user.has_hands)
+		return
 	if(!picked_up_item)
-		return
-	var/mob/living/carbon/human/H = user
-	if(!Adjacent(over, FALSE))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(over != user) // they're not dragging us to them
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!IS_CONSCIOUS(user)) // todo: mobility flags
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!Adjacent(over, FALSE)) // they're not adjacent
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(has_buckled_mobs())
-		to_chat(H, SPAN_NOTICE("You cannot fold the chair while someone is buckled to it!"))
-		return
+		to_chat(user, SPAN_NOTICE("You cannot fold the chair while someone is buckled to it!"))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(stacked_size)
-		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
-		return
-	var/obj/item/material/twohanded/folded_metal_chair/C = new picked_up_item(loc)
-	if(H.put_in_active_hand(C))
-		qdel(src)
-	else if(H.put_in_inactive_hand(C))
-		qdel(src)
-	else
-		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
+		to_chat(user, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	var/obj/item/material/twohanded/folded_metal_chair/C = new picked_up_item
+	if(!user.put_in_hands(C))
+		to_chat(user, SPAN_NOTICE("You need a free hand to fold up the chair."))
 		qdel(C)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	to_chat(user, SPAN_NOTICE("You fold up the chair."))
+	qdel(src)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/structure/bed/chair/attack_hand(mob/user)
-	if(stacked_size)
-		if(!Adjacent(user,FALSE))
-			return
-		var/obj/item/material/twohanded/folded_metal_chair/F = new /obj/item/material/twohanded/folded_metal_chair(loc)
-		user.put_in_active_hand(F)
-		to_chat(user, SPAN_NOTICE("You take a chair off the stack."))
-		stacked_size--
-		update_overlays()
-		if(!stacked_size)
-			layer = OBJ_LAYER
-			can_buckle = TRUE
-			density = FALSE
-	. = ..()
+	if(!stacked_sized)
+		return ..()
+	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)
+	user.put_in_active_hand(F)
+	to_chat(user, SPAN_NOTICE("You take a chair off the stack."))
+	stacked_size--
+	update_overlays()
+	if(!stacked_size)
+		layer = OBJ_LAYER
+		can_buckle = TRUE
+		density = FALSE
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/structure/bed/chair/attackby(obj/item/I, mob/user)
 	if(!padding_material && istype(I, /obj/item/assembly/shock_kit) && !stacked_size)
@@ -102,8 +108,8 @@
 
 /obj/structure/bed/chair/user_buckle_mob()
 	if(stacked_size)
-		return
-	..()
+		return FALSE
+	return ..()
 
 /obj/structure/bed/chair/attack_tk(mob/user)
 	if(has_buckled_mobs())
@@ -165,19 +171,14 @@
 	visible_message(SPAN_DANGER("The stack of chairs collapses!!!"))
 	var/turf/starting_turf = get_turf(src)
 	playsound(starting_turf, 'sound/effects/metal_chair_crash.ogg', 30, 1, 30)
+	var/list/turf/candidates = range(min(7, round(stacked_size / 2)), starting_turf) - starting_turf
 	for(var/i in 1 to stacked_size)
-		stacked_size--
-		update_overlays()
-
-		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(loc)
-		var/list/candidate_target_turfs = range(round(stacked_size/2), starting_turf)
-		candidate_target_turfs -= starting_turf
-		var/turf/target_turf = candidate_target_turfs[rand(1, length(candidate_target_turfs))]
-
-		C.forceMove(starting_turf)
+		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(starting_turf)
+		var/turf/target_turf = pick(candidates)
 		C.pixel_x = rand(-8, 8)
 		C.pixel_y = rand(-8, 8)
-		C.throw_at(target_turf, rand(2, 5), 6, null)
+		C.throw_at(target_turf, rand(2, 5), 1, null)
+	stacked_size = 0
 	var/obj/item/material/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
 	I.throw_at(starting_turf, rand(2, 5), 6, null)
 	qdel(src)
@@ -187,41 +188,28 @@
 	if(!stacked_size)
 		name = initial(name)
 		desc = initial(desc)
-		return
+		return ..()
 	name = "stack of folding chairs"
 	desc = "There seems to be [stacked_size + 1] in the stack, wow!"
 	icon_state = base_icon
+	var/next_x = 0
+	var/next_y = 0
 	for(var/i in 1 to stacked_size)
-		var/image/I = image(icon = icon, loc = loc, icon_state = icon_state)
+		var/image/I = image(icon = icon, icon_state = icon_state)
 		I.dir = dir
-		var/image/previous_chair_overlay
-		if(i == 1)
-			switch(dir)
-				if(NORTH)
-					I.pixel_y = pixel_y + 2
-				if(SOUTH)
-					I.pixel_y = pixel_y + 2
-				if(EAST)
-					I.pixel_x = pixel_x + 1
-					I.pixel_y = pixel_y + 3
-				if(WEST)
-					I.pixel_x = pixel_x - 1
-					I.pixel_y = pixel_y + 3
-		else
-			previous_chair_overlay = overlays[i - 1]
-			switch(src.dir)
-				if(NORTH)
-					I.pixel_y = previous_chair_overlay.pixel_y + 2
-				if(SOUTH)
-					I.pixel_y = previous_chair_overlay.pixel_y + 2
-				if(EAST)
-					I.pixel_x = previous_chair_overlay.pixel_x + 1
-					I.pixel_y = previous_chair_overlay.pixel_y + 3
-				if(WEST)
-					I.pixel_x = previous_chair_overlay.pixel_x - 1
-					I.pixel_y = previous_chair_overlay.pixel_y + 3
-		if(stacked_size > 8)
-			I.pixel_x = I.pixel_x + pick(list(-1, 1))
+		switch(dir)
+			if(NORTH)
+				next_y += 2
+			if(SOUTH)
+				next_y += 2
+			if(EAST)
+				next_y += 3
+				next_x += 1
+			if(WEST)
+				next_y += 3
+				next_x -= 1
+		I.pixel_x = next_x
+		I.pixel_y = next_y + (stacked_size > 8? pick(1, -1) : 0)
 		overlays += I
 	color = material.icon_colour
 	return ..()
@@ -609,18 +597,22 @@
 	var/placed_object = /obj/structure/bed/chair
 
 /obj/item/material/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
-	if(isturf(target))
-		var/turf/T = target
-		if(!(istype(T)) || !proximity || T.density)
+	if(!isturf(target)) // not turf
+		return ..()
+	if(!proximity) // not adjacent
+		return ..()
+	if(target.density) // is dense
+		return ..()
+	var/turf/T = target
+	for(var/atom/movable/AM as anything in T.contents) // no typecheck
+		if(AM.density || istype(AM, /obj/structure/bed))
+			to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
 			return
-		for(var/atom/movable/AM in T.contents)
-			if(AM.density || istype(AM, /obj/structure/bed))
-				to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
-				return
-		var/obj/O = new placed_object(T)
-		O.dir = user.dir
-		qdel(src)
+	var/obj/O = new placed_object(T)
+	O.setDir(user.dir)
+	qdel(src)
+	return CLICKCHAIN_DO_NOT_PROPAGATE // terminate click handling
 
 /obj/item/material/twohanded/folded_metal_chair/throw_impacted(atom/A, datum/thrownthing/TT)
-	playsound(get_turf(src), 'sound/effects/metal_chair_slam.ogg', 50, 1)
-	. = ..()
+	playsound(src, 'sound/effects/metal_chair_slam.ogg', 50, 1)
+	return ..()
