@@ -8,7 +8,6 @@
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	icon_dimension_y = 32
-	var/hitsound = 'sound/effects/metal_chair_clang.ogg'
 	var/picked_up_item = /obj/item/material/twohanded/folded_metal_chair
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 	var/stacked_size = 0
@@ -25,7 +24,7 @@
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	if(!user.has_hands)
+	if(!user.has_hands())
 		return
 	if(!picked_up_item)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -51,13 +50,14 @@
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/structure/bed/chair/attack_hand(mob/user)
-	if(!stacked_sized)
+	if(!stacked_size)
 		return ..()
 	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)
 	user.put_in_active_hand(F)
 	to_chat(user, SPAN_NOTICE("You take a chair off the stack."))
 	stacked_size--
 	update_overlays()
+	playsound(src, 'sound/items/drop/toolbox.ogg', 20, 1)
 	if(!stacked_size)
 		layer = OBJ_LAYER
 		can_buckle = TRUE
@@ -89,6 +89,7 @@
 			return FALSE
 		qdel(I)
 		stacked_size++
+		playsound(src, 'sound/effects/metal_close.ogg', 20, 1)
 		update_overlays()
 
 		if(stacked_size == 1)
