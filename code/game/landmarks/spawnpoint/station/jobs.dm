@@ -76,7 +76,7 @@
 /obj/landmark/spawnpoint/job/blueshield
 	name = "Blueshield"
 	icon_state = "Blueshield"
-	//job_path = /datum/role/job/station/blueshield
+	job_path = /datum/role/job/station/blueshield
 
 /obj/landmark/spawnpoint/job/detective
 	name = "Detective"
