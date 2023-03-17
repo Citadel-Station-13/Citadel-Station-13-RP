@@ -1306,6 +1306,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Command - HoP's Office"
 	icon_state = "head_quarters"
 
+/area/crew_quarters/heads/blueshield
+	name = "Command - Blueshield's Office"
+	icon_state = "head_quarters"
+
 /area/crew_quarters/heads/hor
 	name = "Research - RD's Office"
 	icon_state = "head_quarters"

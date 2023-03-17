@@ -194,6 +194,10 @@
 	name = "Costume Suit - Mad Scientist Coat"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/mad
 
+/datum/gear/seasonal/halloween/costumes/suit/madscientist
+	name = "Costume Suit - Mad Scientist Coat"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/mad/classic
+
 /datum/gear/seasonal/halloween/costumes/suit/carp
 	name = "Costume Suit - Carp"
 	path = /obj/item/clothing/suit/storage/hooded/carp_costume
