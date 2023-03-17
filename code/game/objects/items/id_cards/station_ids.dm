@@ -184,7 +184,7 @@
 	name = "\improper Blueshield ID"
 	assignment = "Blueshield"
 	rank = "Blueshield"
-	job_access_type = /datum/role/job/station/blueshield
+	//job_access_type = /datum/role/job/station/blueshield
 
 /obj/item/card/id/gold
 	name = "gold identification card"
