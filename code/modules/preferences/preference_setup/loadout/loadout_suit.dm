@@ -177,7 +177,7 @@
 	name = "Cyberpunk Coat Selection"
 	path = /obj/item/clothing/suit/storage/cyberpunk
 
-/datum/gear/suit/cyberpunk_cloak_selection/New()
+/datum/gear/suit/cyberpunk_coat_selection/New()
 	..()
 	var/list/cybercoat_selection = list()
 	for(var/cybercoat in typesof(/obj/item/clothing/suit/storage/cyberpunk))
@@ -551,7 +551,7 @@
 	name = "Bomj Coat"
 	path = /obj/item/clothing/suit/storage/bomj
 
-/datum/gear/suit/violet
+/datum/gear/suit/violetjacket
 	name = "Violet Jacket"
 	path = /obj/item/clothing/suit/storage/violet
 

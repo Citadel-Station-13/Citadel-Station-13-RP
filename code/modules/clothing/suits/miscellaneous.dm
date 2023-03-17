@@ -453,7 +453,7 @@
 	name = "violet jacket"
 	desc = "A suave, smooth jacket with tasteful violet tones. According to the label, it comes with a single free cigarette tucked in an inner pocket, which can guarantee a 'trip to the finest Lunarian brothel for free'. The cigarette is missing."
 	icon = 'icons/clothing/suit/jackets/drive.dmi'
-	icon_state = "violet"
+	icon_state = "violet_jacket"
 	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
