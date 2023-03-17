@@ -250,9 +250,6 @@
 	return
 
 /obj/item/mmi/digital/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
