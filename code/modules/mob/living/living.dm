@@ -736,7 +736,7 @@ default behaviour is:
 								if(!L || L.is_broken())
 									blood_vomit = 1
 
-					Stun(5)
+					afflict_stun(20 * 5)
 					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 

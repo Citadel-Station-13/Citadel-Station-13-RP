@@ -225,7 +225,7 @@
 				return
 	if (disabilities & DISABILITY_TOURETTES)
 		if ((prob(10) && paralysis <= 1))
-			Stun(10)
+			afflict_stun(20 * 10)
 			spawn( 0 )
 				switch(rand(1, 3))
 					if(1)

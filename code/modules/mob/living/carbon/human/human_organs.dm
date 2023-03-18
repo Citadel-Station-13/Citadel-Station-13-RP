@@ -60,7 +60,7 @@
 				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
 					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50)
 					drop_active_held_item()
-					Stun(2)
+					afflict_stun(20 * 2)
 
 				//Moving makes open wounds get infected much faster
 				if (length(E.wounds))

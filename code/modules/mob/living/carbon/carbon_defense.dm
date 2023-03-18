@@ -79,7 +79,7 @@
 	if(stun)
 		switch(shock_damage)
 			if(16 to 20)
-				Stun(2)
+				afflict_stun(20 * 2)
 			if(21 to 25)
 				Weaken(2)
 			if(26 to 30)

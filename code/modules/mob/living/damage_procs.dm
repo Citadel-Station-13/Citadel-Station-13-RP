@@ -71,7 +71,7 @@
 
 	switch(effecttype)
 		if(STUN)
-			Stun(effect * blocked)
+			afflict_stun(20 * effect * blocked)
 		if(WEAKEN)
 			Weaken(effect * blocked)
 		if(PARALYZE)

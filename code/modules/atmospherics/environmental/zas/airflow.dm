@@ -150,9 +150,9 @@ Contains helper procs for airflow, handled in /connection_group.
 
 	if(airflow_speed > 10)
 		Unconscious(round(airflow_speed * impact_stun))
-		Stun(paralysis + 3)
+		afflict_stun(20 * (paralysis + 3))
 	else
-		Stun(round(airflow_speed * impact_stun/2))
+		afflict_stun(20 * round(airflow_speed * impact_stun/2))
 	return ..()
 
 /datum/zas_zone/proc/movables()

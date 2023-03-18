@@ -116,7 +116,7 @@
 			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
 			"<span class='warning'>You hear an electrical crack.</span>")
 		if(prob(20))
-			Stun(2)
+			afflict_stun(20 * 2)
 		return
 
 /mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
