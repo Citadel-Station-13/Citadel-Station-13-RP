@@ -52,7 +52,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(scare_chance))
-			L.Stun(1)
+			L.stun(20 * 1)
 			L.visible_message("<span class='danger'>\the [src] scares \the [L]!</span>")
 
 // Spookiest of bats

@@ -69,7 +69,7 @@
 			to_chat(L, "<span class='danger'>You feel a deep shock course through your body!</span>")
 			sleep(1)
 			L.burn_skin(85)
-			L.Stun(600)
+			L.stun(20 * 6)
 	visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='danger'>You hear a deep sharp shock!</span>")
 
 	A.power_light = light

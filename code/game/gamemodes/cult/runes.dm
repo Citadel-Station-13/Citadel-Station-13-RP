@@ -1059,7 +1059,7 @@ var/list/sacrificed = list()
 				if(C.stuttering < 1 && (!(MUTATION_HULK in C.mutations)))
 					C.stuttering = 1
 				C.Weaken(1)
-				C.Stun(1)
+				C.stun(20 * 1)
 				C.show_message("<span class='danger'>The rune explodes in a bright flash.</span>", 3)
 				add_attack_logs(usr,C,"Stun rune")
 
@@ -1088,7 +1088,7 @@ var/list/sacrificed = list()
 				if (!(MUTATION_HULK in C.mutations))
 					C.silent += 15
 				C.Weaken(25)
-				C.Stun(25)
+				C.stun(20 * 25)
 				add_attack_logs(usr,C,"Stun rune")
 		return
 

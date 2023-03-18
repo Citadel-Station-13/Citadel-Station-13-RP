@@ -109,7 +109,7 @@ var/global/list/weavable_items = list()
 				"<b>You hear a squishy noise!</b>"
 				)
 			buckle_mob(L, BUCKLE_OP_FORCE)
-			L.Stun(1)
+			L.stun(20 * 1)
 			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
 			trap_active = FALSE
 			desc += " Actually, it looks like it's been all spent."

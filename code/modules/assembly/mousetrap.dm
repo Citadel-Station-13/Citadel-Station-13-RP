@@ -34,7 +34,7 @@
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_organ(type)
-					H.Stun(3)
+					H.stun(20 * 3)
 		if(affecting)
 			if(affecting.take_damage(1, 0))
 				H.UpdateDamageIcon()

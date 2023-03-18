@@ -269,7 +269,7 @@
 			continue
 		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
 		tripanim()
-		C.Stun(2)
+		C.stun(20 * 2)
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/mecha/M in loc)

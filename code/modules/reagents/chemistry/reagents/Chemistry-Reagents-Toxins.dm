@@ -537,7 +537,7 @@
 		M.adjustToxLoss(3 * removed)
 		if(prob(10))
 			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
-			M.Stun(6)
+			M.stun(20 * 6)
 		return
 	if(alien == IS_SKRELL)
 		M.take_organ_damage(2.4 * removed, 0)

@@ -92,7 +92,7 @@
 		if(has_genitals() || get_pain() + agony_amount > max_damage)
 			owner.Weaken(6)
 		else
-			owner.Stun(6)
+			owner.stun(20 * 6)
 			owner.drop_l_hand()
 			owner.drop_r_hand()
 		return 1

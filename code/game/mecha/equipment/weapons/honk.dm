@@ -30,7 +30,7 @@
 		M.ear_deaf += 30
 		M.ear_damage += rand(5, 20)
 		M.Weaken(3)
-		M.Stun(5)
+		M.stun(20 * 5)
 	chassis.use_power(energy_drain)
 	log_message("Used a sound emission device.")
 	do_after_cooldown()

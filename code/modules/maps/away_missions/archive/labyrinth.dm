@@ -176,7 +176,7 @@
 			M.ear_deaf += 30
 			M.Weaken(3)
 			if(prob(30))
-				M.Stun(10)
+				M.stun(20 * 10)
 				M.Unconscious(4)
 			else
 				M.make_jittery(500)

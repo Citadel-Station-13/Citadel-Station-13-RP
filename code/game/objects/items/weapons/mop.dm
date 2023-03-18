@@ -114,7 +114,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		else if (user)
 			//You hit a wall!
 			user.setClickCooldown(2)
-			user.Stun(2)
+			user.stun(20 * 2)
 			shake_camera(user, 1, 1)
 			playsound(T,"thud", 20, 1, -3)
 			to_chat(user, "<span class='warning'>There's not enough space for broad sweeps here!</span>")

@@ -94,7 +94,7 @@
 			return
 
 		playsound(src, 'sound/effects/femur_breaker.ogg', 100, FALSE)
-		H.Stun(BREAKER_ANIMATION_LENGTH)
+		H.stun(20 * BREAKER_ANIMATION_LENGTH)
 		addtimer(CALLBACK(src, .proc/damage_leg, H), BREAKER_ANIMATION_LENGTH, TIMER_UNIQUE)
 		log_combat(user, H, "femur broke", src)
 

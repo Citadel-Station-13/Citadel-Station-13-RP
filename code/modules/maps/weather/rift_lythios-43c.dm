@@ -333,7 +333,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 					var/obj/item/melee/umbrella/U = L.get_active_held_item()
 					if(U.open)
 						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
-						L.Stun(20)	// This is not nearly as long as it seems
+						L.stun(20 * 20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
 				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()

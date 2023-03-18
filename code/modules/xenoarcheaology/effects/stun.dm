@@ -13,7 +13,7 @@
 			to_chat(C, "<font color='red'>A powerful force overwhelms your consciousness.</font>")
 			C.Weaken(rand(1,10) * susceptibility)
 			C.stuttering += 30 * susceptibility
-			C.Stun(rand(1,10) * susceptibility)
+			C.stun(20 * rand(1,10) * susceptibility)
 
 /datum/artifact_effect/stun/DoEffectAura()
 	if(holder)
@@ -25,7 +25,7 @@
 				C.Weaken(2)
 				C.stuttering += 2
 				if(prob(10))
-					C.Stun(1)
+					C.stun(20 * 1)
 			else if(prob(10))
 				to_chat(C, "<font color='red'>You feel numb.</font>")
 

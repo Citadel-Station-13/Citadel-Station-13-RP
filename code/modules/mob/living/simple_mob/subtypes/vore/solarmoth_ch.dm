@@ -85,7 +85,7 @@
 			A.emp_act(4) //The weakest strength of EMP
 			playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
 			L.Weaken(4)
-			L.Stun(4)
+			L.stun(20 * 4)
 			L.stuttering = max(L.stuttering, 4)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, L)

@@ -134,7 +134,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 	//disabling
 	target.Weaken(amt_weakened)
 	target.Unconscious(amt_paralysis)
-	target.Stun(amt_stunned)
+	target.stun(20 * amt_stunned)
 	if(amt_weakened || amt_paralysis || amt_stunned)
 		if(target.buckled)
 			target.buckled = null

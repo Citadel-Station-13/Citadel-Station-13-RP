@@ -110,7 +110,7 @@
 		if (isliving(AM))
 			var/mob/living/L = AM
 			L.notransform = TRUE
-			L.Stun(200)
+			L.stun(20 * 200)
 			L.resting = TRUE
 
 		var/oldtransform = AM.transform

@@ -105,7 +105,7 @@
 			for(var/mob/O in viewers(victim, null))
 				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", L, victim), 1)
 		if(prob(10))
-			victim.Stun(rand(1,3))
+			victim.stun(20 * rand(1,3))
 			victim.take_organ_damage(3)
 			return
 		else
@@ -129,7 +129,7 @@
 			for(var/mob/O in viewers(victim, null))
 				O.show_message(text("<span class='danger'>[] slams [] in the face with the tray!</span>", L, victim), 1)
 		if(prob(30))
-			victim.Stun(rand(2,4))
+			victim.stun(20 * rand(2,4))
 			victim.take_organ_damage(4)
 			return
 		else
