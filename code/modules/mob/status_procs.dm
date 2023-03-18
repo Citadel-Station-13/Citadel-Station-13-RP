@@ -16,13 +16,13 @@
 /mob/proc/is_stunned()
 	#warn impl
 
-/mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
+/mob/proc/set_stunned(20 * amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & STATUS_CAN_STUN)
 		stunned = max(amount,0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/AdjustStunned(amount)
+/mob/proc/adjust_stunned(amount)
 	if(status_flags & STATUS_CAN_STUN)
 		stunned = max(stunned + amount,0)
 		update_canmove()	//updates lying, canmove and icons

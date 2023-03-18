@@ -18,7 +18,7 @@
 
 	forceMove(T)
 	var/original_canmove = canmove
-	SetStunned(0)
+	set_stunned(0)
 	SetWeakened(0)
 	if(buckled)
 		buckled.unbuckle_mob()
@@ -130,7 +130,7 @@
 	shift_state = AB_SHIFT_ACTIVE
 	forceMove(T)
 	var/original_canmove = canmove
-	SetStunned(0)
+	set_stunned(0)
 	SetWeakened(0)
 	if(buckled)
 		buckled.unbuckle_mob()

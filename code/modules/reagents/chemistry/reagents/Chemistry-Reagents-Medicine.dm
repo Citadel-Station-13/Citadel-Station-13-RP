@@ -585,7 +585,7 @@
 		chem_effective = 0.5
 	M.drowsyness = max(M.drowsyness - 5, 0)
 	M.AdjustUnconscious(-1)
-	M.AdjustStunned(-1)
+	M.adjust_stunned(20 * -1)
 	M.AdjustWeakened(-1)
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)//Primary use

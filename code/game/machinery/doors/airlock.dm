@@ -1330,7 +1330,7 @@ About the new airlock wires panel:
 /mob/living/airlock_crush(var/crush_damage)
 	. = ..()
 	adjustBruteLoss(crush_damage)
-	SetStunned(5)
+	set_stunned(20 * 5)
 	SetWeakened(5)
 	var/turf/T = get_turf(src)
 	T.add_blood(src)

@@ -107,7 +107,7 @@
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_stunned(20 * -1)
 	return stunned
 
 /mob/living/proc/handle_weakened()

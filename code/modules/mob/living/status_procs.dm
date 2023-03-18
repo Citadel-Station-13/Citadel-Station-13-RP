@@ -4,14 +4,14 @@
 			amount = round(amount * M.disable_duration_percent)
 	return ..()
 
-/mob/living/SetStunned(amount)
+/mob/living/set_stunned(20 * amount)
 	..()
 	if(stunned <= 0)
 		remove_status_indicator("stunned")
 	else
 		add_status_indicator("stunned")
 
-/mob/living/AdjustStunned(amount)
+/mob/living/adjust_stunned(amount)
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.disable_duration_percent))

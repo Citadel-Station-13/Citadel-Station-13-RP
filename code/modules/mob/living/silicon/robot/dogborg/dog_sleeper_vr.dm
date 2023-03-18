@@ -638,7 +638,7 @@
 			patient.adjustOxyLoss(-1) //Heal some oxygen damage if they're in critical condition
 			patient.updatehealth()
 			drain()
-		patient.AdjustStunned(-4)
+		patient.adjust_stunned(20 * -4)
 		patient.AdjustWeakened(-4)
 		drain(1)
 		return

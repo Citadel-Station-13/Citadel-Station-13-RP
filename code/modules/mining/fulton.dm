@@ -90,7 +90,7 @@ var/global/list/total_extraction_beacons = list()
 			var/mutable_appearance/balloon3
 			if(isliving(A))
 				var/mob/living/M = A
-				M.AdjustStunned(10) // Keep them from moving during the duration of the extraction
+				M.adjust_stunned(20 * 10) // Keep them from moving during the duration of the extraction
 				if(M.buckled)
 					M.buckled.unbuckle_mob(M)
 			else
@@ -124,7 +124,7 @@ var/global/list/total_extraction_beacons = list()
 			animate(holder_obj, pixel_z = 1000, time = 30)
 			if(ishuman(A))
 				var/mob/living/carbon/L = A
-				L.AdjustStunned(stuntime)
+				L.adjust_stunned(20 * stuntime)
 				L.drowsyness = 0
 			sleep(30)
 			var/list/flooring_near_beacon = list()

@@ -22,7 +22,7 @@
 	C.setOxyLoss(0)
 	C.setCloneLoss(0)
 	C.SetUnconscious(0)
-	C.SetStunned(0)
+	C.set_stunned(0)
 	C.SetWeakened(0)
 	C.radiation = 0
 	C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())

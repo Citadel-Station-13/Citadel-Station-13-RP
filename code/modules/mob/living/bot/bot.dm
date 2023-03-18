@@ -117,7 +117,7 @@
 		return TRUE
 
 	SetWeakened(0)
-	SetStunned(0)
+	set_stunned(0)
 	SetUnconscious(0)
 
 	if(on && !client && !busy)

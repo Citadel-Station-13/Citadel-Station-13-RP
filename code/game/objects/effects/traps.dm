@@ -268,7 +268,7 @@ Add those other swinging traps you mentioned above!
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, TOX)
-		M.SetStunned(15)
+		M.set_stunned(20 * 15)
 		M.visible_message("<span class='danger'>[M] falls into a writhing mass of tentacles!</span>", \
 						"<span class='userdanger'>You are entwined by a writhing mass of tentacles!</span>")
 

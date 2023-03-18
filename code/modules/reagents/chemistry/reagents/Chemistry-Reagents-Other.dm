@@ -214,7 +214,7 @@
 	M.eye_blurry = 0
 	M.SetBlinded(0)
 	M.SetWeakened(0)
-	M.SetStunned(0)
+	M.set_stunned(0)
 	M.SetUnconscious(0)
 	M.silent = 0
 	M.dizziness = 0

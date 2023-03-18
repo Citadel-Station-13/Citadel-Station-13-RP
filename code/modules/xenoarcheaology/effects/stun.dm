@@ -39,4 +39,4 @@
 				C.SetWeakened(4 * susceptibility)
 				C.stuttering = 4 * susceptibility
 				if(prob(10))
-					C.SetStunned(1 * susceptibility)
+					C.set_stunned(20 * 1 * susceptibility)

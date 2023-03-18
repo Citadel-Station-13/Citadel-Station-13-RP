@@ -537,7 +537,7 @@ default behaviour is:
 	setCloneLoss(0)
 	setBrainLoss(0)
 	SetUnconscious(0)
-	SetStunned(0)
+	set_stunned(0)
 	SetWeakened(0)
 
 	// shut down ongoing problems

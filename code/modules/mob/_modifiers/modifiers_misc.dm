@@ -88,7 +88,7 @@ the artifact triggers the rage.
 
 	// End all stuns.
 	holder.SetUnconscious(0)
-	holder.SetStunned(0)
+	holder.set_stunned(0)
 	holder.SetWeakened(0)
 	holder.setHalLoss(0)
 	holder.lying = 0

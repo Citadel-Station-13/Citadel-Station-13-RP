@@ -179,7 +179,7 @@
 				if(M.on_fire)
 					src.IgniteMob()
 			AdjustUnconscious(-3)
-			AdjustStunned(-3)
+			adjust_stunned(20 * -3)
 			AdjustWeakened(-3)
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
