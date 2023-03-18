@@ -206,9 +206,6 @@
 
 	/// How long this guy is overeating. //?Carbon
 	var/overeatduration = 0
-	var/paralysis = 0
-	var/stunned = 0
-	var/weakened = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
 	var/m_int = null //?Living
