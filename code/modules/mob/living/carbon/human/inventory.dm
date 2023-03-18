@@ -224,7 +224,7 @@
 
 	// then, check bodyparts
 	if(I.item_flags & EQUIP_IGNORE_DELIMB)
-		return
+		return TRUE
 	var/allow_single = (I.item_flags & EQUIP_ALLOW_SINGLE_LIMB)
 
 	var/has_part = TRUE
