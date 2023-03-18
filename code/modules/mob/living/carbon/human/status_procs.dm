@@ -3,7 +3,7 @@
 		return FALSE
 	return ..()
 
-/mob/living/carbon/human/afflict_knockdown(20 * amount)
+/mob/living/carbon/human/afflict_knockdown(amount)
 	if(MUTATION_HULK in mutations)
 		return FALSE
 	return ..()

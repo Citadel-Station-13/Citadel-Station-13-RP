@@ -31,7 +31,7 @@
 	if(lying)
 		stop_aiming(no_message=1)
 
-/mob/living/afflict_knockdown(20 * amount)
+/mob/living/afflict_knockdown(amount)
 	stop_aiming(no_message=1)
 	..()
 
