@@ -113,13 +113,6 @@ default behaviour is:
 	else
 		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
-/mob/living/proc/updatehealth()
-	if(status_flags & STATUS_GODMODE)
-		health = 100
-		set_stat(CONSCIOUS)
-	else
-		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
 /mob/living/proc/calculate_affecting_pressure(var/pressure)
@@ -140,7 +133,7 @@ default behaviour is:
 			if(!affecting)	continue
 			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
-		H.updatehealth()
+		H.update_health()
 		return 1
 	else if(istype(src, /mob/living/silicon/ai))
 		return 0
@@ -195,7 +188,7 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	bruteloss = min(max(bruteloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/getOxyLoss()
 	return oxyloss
@@ -215,7 +208,7 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	oxyloss = min(max(oxyloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setOxyLoss(var/amount)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
@@ -239,7 +232,7 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	toxloss = min(max(toxloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setToxLoss(var/amount)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
@@ -269,7 +262,7 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	fireloss = min(max(fireloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/getCloneLoss()
 	return cloneloss
@@ -289,7 +282,7 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	cloneloss = min(max(cloneloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setCloneLoss(var/amount)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
@@ -324,7 +317,7 @@ default behaviour is:
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 	halloss = min(max(halloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setHalLoss(var/amount)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
@@ -485,27 +478,27 @@ default behaviour is:
 /mob/living/proc/heal_organ_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
-	src.updatehealth()
+	src.update_health()
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
-	src.updatehealth()
+	src.update_health()
 
 // heal MANY external organs, in random order
 /mob/living/proc/heal_overall_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
-	src.updatehealth()
+	src.update_health()
 
 // damage MANY external organs, in random order
 /mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
-	src.updatehealth()
+	src.update_health()
 
 /mob/living/proc/restore_all_organs()
 	return

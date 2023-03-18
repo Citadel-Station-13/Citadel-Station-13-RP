@@ -85,15 +85,8 @@
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
 /mob/living/proc/handle_regular_UI_updates()
-	updatehealth()
-	if(stat != DEAD)
-		if(paralysis)
-			set_stat(UNCONSCIOUS)
-		else if (status_flags & STATUS_FAKEDEATH)
-			set_stat(UNCONSCIOUS)
-		else
-			set_stat(CONSCIOUS)
-		return 1
+	update_health()
+	update_stat()
 
 /mob/living/proc/handle_statuses()
 	handle_stunned()
@@ -104,16 +97,6 @@
 	handle_drugged()
 	handle_slurring()
 	handle_confused()
-
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		adjust_stunned(20 * -1)
-	return stunned
-
-/mob/living/proc/handle_weakened()
-	if(weakened)
-		adjust_paralyzed(20 * -1)
-	return weakened
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -134,11 +117,6 @@
 	if(slurring)
 		slurring = max(slurring-1, 0)
 	return slurring
-
-/mob/living/proc/handle_paralysed()
-	if(paralysis)
-		adjust_unconscious\(20 * -1)
-	return paralysis
 
 /mob/living/proc/handle_confused()
 	if(confused)

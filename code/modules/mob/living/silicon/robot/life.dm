@@ -73,7 +73,7 @@
 		else
 			src.camera.set_status(1)
 
-	updatehealth()
+	update_health()
 
 	if(src.sleeping)
 		afflict_unconscious(20 * 3)

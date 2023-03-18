@@ -452,7 +452,7 @@
 
 		silence_spells(purge)
 
-/mob/living/simple_animal/construct/updatehealth() //Special icons.
+/mob/living/simple_animal/construct/update_health() //Special icons.
 	health = getMaxHealth() - getToxLoss() - getFireLoss() - getBruteLoss()
 
 	//Alive, becoming dead

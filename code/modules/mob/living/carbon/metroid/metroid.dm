@@ -204,7 +204,7 @@
 	adjustBruteLoss(b_loss)
 	adjustFireLoss(f_loss)
 
-	updatehealth()
+	update_health()
 
 /mob/living/carbon/slime/attack_ui(slot)
 	return
@@ -305,7 +305,7 @@
 						"<span class='danger'>[M] has punched [src]!</span>")
 
 				adjustBruteLoss(damage)
-				updatehealth()
+				update_health()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				visible_message("<span class='danger'>[M] has attempted to punch [src]!</span>")

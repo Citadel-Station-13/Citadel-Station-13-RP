@@ -448,7 +448,7 @@
 		for(var/i = 1 to 10)
 			adjustBruteLoss(rand(damage_min, damage_max))
 		afflict_paralyze(20 * 4)
-		updatehealth()
+		update_health()
 
 /mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
 	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))

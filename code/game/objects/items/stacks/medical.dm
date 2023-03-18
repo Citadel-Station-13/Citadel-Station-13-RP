@@ -65,7 +65,7 @@
 		)
 		use(1)
 		. = FALSE // already did so
-	C.updatehealth()
+	C.update_health()
 	return TRUE
 
 /obj/item/stack/medical/proc/upgrade_stack(var/upgrade_amount)

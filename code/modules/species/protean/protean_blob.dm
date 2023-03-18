@@ -72,7 +72,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/proc/usehardsuit)
-		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
+		INVOKE_ASYNC(src, /mob/living/proc/update_health)
 	else
 		update_icon()
 
@@ -93,7 +93,7 @@
 	if(humanform && C.statpanel_tab("Species", TRUE))
 		. += humanform.species.statpanel_status(C, humanform)
 
-/mob/living/simple_mob/protean_blob/updatehealth()
+/mob/living/simple_mob/protean_blob/update_health()
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically

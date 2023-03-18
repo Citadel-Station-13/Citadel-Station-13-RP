@@ -140,7 +140,7 @@
 						return
 					if(affecting.take_damage(force, 0))
 						H.UpdateDamageIcon()
-					H.updatehealth()
+					H.update_health()
 					if(affecting.organ_can_feel_pain())
 						H.afflict_paralyze(20 * 3)
 					return

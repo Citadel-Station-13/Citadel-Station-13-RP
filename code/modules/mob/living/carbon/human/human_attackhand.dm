@@ -313,7 +313,7 @@
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
 	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
-	updatehealth()
+	update_health()
 	return TRUE
 
 //Used to attack a joint through grabbing

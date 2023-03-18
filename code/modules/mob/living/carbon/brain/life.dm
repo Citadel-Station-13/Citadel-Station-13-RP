@@ -18,7 +18,7 @@
 	// 			radiation--
 	// 			if(prob(25))
 	// 				adjustToxLoss(1)
-	// 				updatehealth()
+	// 				update_health()
 
 	// 		if(50 to 74)
 	// 			radiation -= 2
@@ -29,12 +29,12 @@
 	// 					to_chat(src, "<font color='red'>You feel weak.</font>")
 	// 				else
 	// 					to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
-	// 			updatehealth()
+	// 			update_health()
 
 	// 		if(75 to 100)
 	// 			radiation -= 3
 	// 			adjustToxLoss(3)
-	// 			updatehealth()
+	// 			update_health()
 
 
 /mob/living/carbon/brain/handle_environment(datum/gas_mixture/environment)
@@ -85,12 +85,12 @@
 	else
 		dizziness = max(0, dizziness - 1)
 
-	updatehealth()
+	update_health()
 
 	return //TODO: DEFERRED
 
 /mob/living/carbon/brain/handle_regular_UI_updates()	//TODO: comment out the unused bits >_>
-	updatehealth()
+	update_health()
 
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1

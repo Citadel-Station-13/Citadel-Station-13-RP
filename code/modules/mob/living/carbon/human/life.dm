@@ -295,7 +295,7 @@
 		adjustFireLoss(-rads)
 		adjustOxyLoss(-rads)
 		adjustToxLoss(-rads)
-		updatehealth()
+		update_health()
 		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds) + rads)
 		return
 	// not enough to care: stop
@@ -1036,7 +1036,7 @@
 	if(!isSynthetic())
 		handle_trace_chems()
 
-	updatehealth()
+	update_health()
 
 	return //TODO: DEFERRED
 
@@ -1056,7 +1056,7 @@
 		blinded = 1
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
-		updatehealth()	//TODO
+		update_health()	//TODO
 
 		if(health <= config_legacy.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
 			death()

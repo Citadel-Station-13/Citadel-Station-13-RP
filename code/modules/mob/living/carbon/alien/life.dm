@@ -39,7 +39,7 @@
 		blinded = 1
 		silent = 0
 	else
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			death()
 			blinded = 1

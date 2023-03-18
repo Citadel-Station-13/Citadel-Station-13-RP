@@ -180,7 +180,7 @@
 				H.adjustBruteLoss(damage)
 
 			H.UpdateDamageIcon()
-			H.updatehealth()
+			H.update_health()
 	return
 
 /obj/structure/proc/can_touch(var/mob/user)

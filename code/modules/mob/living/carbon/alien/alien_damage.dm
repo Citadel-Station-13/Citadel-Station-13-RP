@@ -30,4 +30,4 @@
 	adjustBruteLoss(b_loss)
 	adjustFireLoss(f_loss)
 
-	updatehealth()
+	update_health()

@@ -382,7 +382,7 @@
 	// sync the organ's damage with its wounds
 	src.update_damages()
 	if(owner)
-		owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
+		owner.update_health() //droplimb will call update_health() again if it does end up being called
 
 	//If limb took enough damage, try to cut or tear it off
 	if(owner && loc == owner && !is_stump())
@@ -450,7 +450,7 @@
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 	src.process_wounds() // todo: this should not be here - this has side effects of processing.
-	owner.updatehealth()
+	owner.update_health()
 
 	var/result = update_icon()
 	return result
@@ -549,7 +549,7 @@
 					robotize(robodata, null, null, TRUE)
 				else
 					robotize()
-		owner.updatehealth()
+		owner.update_health()
 
 /obj/item/organ/external/remove_rejuv()
 	if(owner)
@@ -907,7 +907,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	spawn(1)
 		if(istype(victim))
-			victim.updatehealth()
+			victim.update_health()
 			victim.UpdateDamageIcon()
 			victim.update_icons_body()
 		else

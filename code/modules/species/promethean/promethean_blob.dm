@@ -85,12 +85,12 @@
 	..()
 	if(H)
 		humanform = H
-		updatehealth()
+		update_health()
 
 	else
 		qdel(src)
 
-/mob/living/simple_mob/slime/promethean/updatehealth()
+/mob/living/simple_mob/slime/promethean/update_health()
 	if(!humanform)
 		return ..()
 

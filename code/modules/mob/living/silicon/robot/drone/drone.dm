@@ -269,7 +269,7 @@
 //DRONE LIFE/DEATH
 
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.
-/mob/living/silicon/robot/drone/updatehealth()
+/mob/living/silicon/robot/drone/update_health()
 	if(status_flags & STATUS_GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)

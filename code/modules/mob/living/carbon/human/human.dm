@@ -1166,7 +1166,7 @@
 	species.create_blood(src)
 	species.handle_post_spawn(src)
 	species.update_attack_types() // Required for any trait that updates unarmed_types in setup.
-	updatehealth()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
+	update_health()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()

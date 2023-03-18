@@ -72,9 +72,9 @@
 			adjustBruteLoss(-10)
 			adjustFireLoss(-10)
 			adjustCloneLoss(-10)
-			updatehealth()
+			update_health()
 			if(Victim)
-				Victim.updatehealth()
+				Victim.update_health()
 
 			sleep(30) // Deal damage every 3 seconds
 		else

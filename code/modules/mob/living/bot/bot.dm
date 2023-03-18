@@ -127,7 +127,7 @@
 		spawn(0)
 			handleAI()
 
-/mob/living/bot/updatehealth()
+/mob/living/bot/update_health()
 	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
@@ -174,7 +174,7 @@
 					fireloss = 0
 				else
 					fireloss = fireloss - 10
-				updatehealth()
+				update_health()
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
 				playsound(src, O.tool_sound, 50, 1)
 			else

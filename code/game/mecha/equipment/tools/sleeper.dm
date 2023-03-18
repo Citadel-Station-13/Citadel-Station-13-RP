@@ -233,7 +233,7 @@
 		return
 	if(M.health > 0)
 		M.adjustOxyLoss(-1)
-		M.updatehealth()
+		M.update_health()
 	M.adjust_stunned(20 * -4)
 	M.adjust_paralyzed(20 * -4)
 	M.adjust_stunned(20 * -4)

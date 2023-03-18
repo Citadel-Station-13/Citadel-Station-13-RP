@@ -15,7 +15,7 @@
 			reset_perspective()
 			disconnect_shell("Disconnecting from remote shell due to local system failure.")
 
-		src.updatehealth()
+		src.update_health()
 
 		if (!hardware_integrity() || !backup_capacitor())
 			death()
@@ -161,7 +161,7 @@
 	var/area/A = get_area(src)
 	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)
 
-/mob/living/silicon/ai/updatehealth()
+/mob/living/silicon/ai/update_health()
 	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)

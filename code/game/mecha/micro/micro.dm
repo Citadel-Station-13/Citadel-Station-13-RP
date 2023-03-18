@@ -63,7 +63,7 @@
 						else
 							return
 					if(update)	H.UpdateDamageIcon()
-				H.updatehealth()
+				H.update_health()
 
 			else
 				switch(damtype)
@@ -80,7 +80,7 @@
 								M.reagents.add_reagent("cryptobiolin", force)
 					else
 						return
-				M.updatehealth()
+				M.update_health()
 			src.occupant_message("You hit [target].")
 			src.visible_message("<font color='red'><b>[src.name] hits [target].</b></font>")
 		else

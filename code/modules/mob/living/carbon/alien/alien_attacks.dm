@@ -54,7 +54,7 @@
 						if ((O.client && !( O.blinded )))
 							O.show_message(text("<font color='red'><B>[] has weakened []!</B></font>", L, src), 1, "<font color='red'>You hear someone fall.</font>", 2)
 				adjustBruteLoss(damage)
-				updatehealth()
+				update_health()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				for(var/mob/O in viewers(src, null))

@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/updatehealth()
+/mob/living/silicon/robot/update_health()
 	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)

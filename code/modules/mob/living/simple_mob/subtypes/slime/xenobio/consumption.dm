@@ -72,7 +72,7 @@
 			stop_consumption()
 
 		if(victim)
-			victim.updatehealth()
+			victim.update_health()
 
 	else
 		stop_consumption()

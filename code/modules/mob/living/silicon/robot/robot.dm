@@ -591,7 +591,7 @@
 		if (WT.remove_fuel(0))
 			user.setClickCooldown(user.get_attack_speed(WT))
 			adjustBruteLoss(-30)
-			updatehealth()
+			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
@@ -607,7 +607,7 @@
 		if (coil.use(1))
 			user.setClickCooldown(user.get_attack_speed(W))
 			adjustFireLoss(-30)
-			updatehealth()
+			update_health()
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
 

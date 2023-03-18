@@ -72,7 +72,7 @@
 				if(carded_ai.deployed_shell && prob(carded_ai.oxyloss)) //You feel it creeping? Eventually will reach 100, resulting in the second half of the AI's remaining life being lonely.
 					carded_ai.disconnect_shell("Disconnecting from remote shell due to insufficent power.")
 				carded_ai.adjustOxyLoss(2)
-				carded_ai.updatehealth()
+				carded_ai.update_health()
 				sleep(10)
 			flush = 0
 	if (href_list["radio"])

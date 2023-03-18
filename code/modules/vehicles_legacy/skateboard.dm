@@ -90,7 +90,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else if (rough_terrain)
@@ -101,7 +101,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else
@@ -235,7 +235,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else if (rough_terrain || prob(70))
@@ -246,7 +246,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else
@@ -296,7 +296,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else
@@ -325,7 +325,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else
@@ -621,7 +621,7 @@
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
-			H.updatehealth()
+			H.update_health()
 		visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 */

@@ -636,7 +636,7 @@
 		update_patient()
 		if(patient.health < 0)
 			patient.adjustOxyLoss(-1) //Heal some oxygen damage if they're in critical condition
-			patient.updatehealth()
+			patient.update_health()
 			drain()
 		patient.adjust_stunned(20 * -4)
 		patient.adjust_paralyzed(20 * -4)

@@ -984,7 +984,7 @@
 		C.adjustOxyLoss(-25)
 		C.adjustBrainLoss(-25)
 		C.adjustCloneLoss(-25)
-		C.updatehealth()
+		C.update_health()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"

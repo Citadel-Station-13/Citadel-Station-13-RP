@@ -117,7 +117,7 @@
 	H.afflict_unconscious(20 * 4)
 
 	// Here let's calculate their health so the pod doesn't immediately eject them!!!
-	H.updatehealth()
+	H.update_health()
 
 	clonemind.transfer_to(H)
 	H.ckey = R.ckey

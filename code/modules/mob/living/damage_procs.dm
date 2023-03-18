@@ -45,7 +45,7 @@
 			else
 				adjustToxLoss(damage * blocked)
 	flash_weak_pain()
-	updatehealth()
+	update_health()
 	return 1
 
 
@@ -87,7 +87,7 @@
 			eye_blurry = max(eye_blurry,(effect * blocked))
 		if(DROWSY)
 			drowsyness = max(drowsyness,(effect * blocked))
-	updatehealth()
+	update_health()
 	return 1
 
 /mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0, var/blocked = 0, var/ignite = 0, var/flammable = 0)
