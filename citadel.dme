@@ -701,6 +701,7 @@
 #include "code\datums\soundbytes\machinery\terminal.dm"
 #include "code\datums\status_effects\status_effect.dm"
 #include "code\datums\status_effects\debuffs\crusher_mark.dm"
+#include "code\datums\status_effects\debuffs\incapacitation.dm"
 #include "code\datums\status_effects\neutral\crusher_track.dm"
 #include "code\datums\underwear\bottom.dm"
 #include "code\datums\underwear\socks.dm"

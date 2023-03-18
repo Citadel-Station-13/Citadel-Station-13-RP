@@ -1,4 +1,4 @@
 PROCESSING_SUBSYSTEM_DEF(status_effects)
-	wait = 1
-	subsystem_flags = SS_TICKER
+	wait = 0.5
+	subsystem_flags = NONE
 	name = "Status Effects"

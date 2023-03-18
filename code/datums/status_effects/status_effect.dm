@@ -4,8 +4,12 @@
 
 /datum/status_effect
 	var/id = "effect" //Used for screen alerts.
-	var/duration = -1 //How long the status effect lasts in DECISECONDS. Enter -1 for an effect that never ends unless removed through some means.
-	var/tick_interval = 10 //How many deciseconds between ticks, approximately. Leave at 10 for every second.
+	/// duration in deciseconds - 0 for permanent.
+	var/duration
+	#warn hook
+	/// deciseconds per tick. null for no ticking.
+	var/tick_interval
+	#warn hook
 	var/next_tick //The scheduled time for the next tick.
 	var/mob/living/owner //The mob affected by the status effect.
 	var/on_remove_on_mob_delete = FALSE //if we call on_remove() when the mob is deleted
@@ -15,7 +19,9 @@
 	/// How many of the effect can be on one mob, and what happens when you try to add another
 	var/status_type = STATUS_EFFECT_UNIQUE
 
-/datum/status_effect/New(list/arguments)
+/datum/status_effect/New(list/arguments, duration)
+	if(!isnull(duration))
+		src.duration = duration
 	on_creation(arglist(arguments))
 
 /datum/status_effect/proc/on_creation(mob/living/new_owner, ...)
