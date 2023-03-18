@@ -372,7 +372,7 @@
 						continue
 
 				M.flash_eyes()
-				M.stun(20 * 5)
+				M.afflict_stun(20 * 5)
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"

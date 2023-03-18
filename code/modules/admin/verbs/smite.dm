@@ -95,6 +95,6 @@
 		target.gib()
 	else
 		target.adjustBruteLoss( min( 99 , (target.health - 1) )    )
-		target.stun(20 * 20)
+		target.afflict_stun(20 * 20)
 		target.Weaken(20)
 		target.stuttering = 20

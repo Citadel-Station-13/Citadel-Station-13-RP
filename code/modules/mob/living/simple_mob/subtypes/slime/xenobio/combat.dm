@@ -22,7 +22,7 @@
 						)
 					playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
 					L.Weaken(4)
-					L.stun(20 * 4)
+					L.afflict_stun(20 * 4)
 					do_attack_animation(L)
 					if(L.buckled)
 						L.buckled.unbuckle_mob() // To prevent an exploit where being buckled prevents slimes from jumping on you.

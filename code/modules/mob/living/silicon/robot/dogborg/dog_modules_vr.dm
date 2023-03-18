@@ -268,7 +268,7 @@
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
-			L.stun(20 * 1)
+			L.afflict_stun(20 * 1)
 			L.Weaken(1)
 			L.apply_effect(STUTTER, 1)
 			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \

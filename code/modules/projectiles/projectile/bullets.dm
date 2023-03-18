@@ -438,7 +438,7 @@
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
 		if(prob(10) && !blocked)
-			L.stun(20 * 1)
+			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 
@@ -453,7 +453,7 @@
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
 		if(prob(10) && !blocked)
-			L.stun(20 * 1)
+			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 

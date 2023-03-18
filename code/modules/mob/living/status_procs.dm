@@ -1,0 +1,101 @@
+/mob/living/afflict_stun(amount)
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.disable_duration_percent))
+			amount = round(amount * M.disable_duration_percent)
+	return ..()
+
+/mob/living/SetStunned(amount)
+	..()
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
+
+/mob/living/AdjustStunned(amount)
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.disable_duration_percent))
+				amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
+
+/mob/living/Weaken(amount)
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.disable_duration_percent))
+			amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(weakened > 0)
+		add_status_indicator("weakened")
+
+/mob/living/SetWeakened(amount)
+	..()
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
+
+/mob/living/AdjustWeakened(amount)
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.disable_duration_percent))
+				amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
+
+/mob/living/Unconscious(amount)
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.disable_duration_percent))
+			amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(paralysis > 0)
+		add_status_indicator("paralysis")
+
+/mob/living/SetUnconscious(amount)
+	..()
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
+
+/mob/living/AdjustUnconscious(amount)
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.disable_duration_percent))
+				amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
+
+/mob/living/Sleeping(amount)
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.disable_duration_percent))
+			amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(sleeping > 0)
+		add_status_indicator("sleeping")
+
+/mob/living/SetSleeping(amount)
+	..()
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")
+
+/mob/living/AdjustSleeping(amount)
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.disable_duration_percent))
+				amount = round(amount * M.disable_duration_percent)
+	..(amount)
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")

@@ -792,7 +792,7 @@
 				H.Confuse(2)
 		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
 			if(H.losebreath >= 15 && prob(H.losebreath))
-				H.stun(20 * 2)
+				H.afflict_stun(20 * 2)
 			else
 				H.losebreath = clamp(H.losebreath + 3, 0, 20)
 		else
@@ -1163,7 +1163,7 @@
 			if(prob(25))
 				if(prob(25))
 					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
-				M.stun(20 * 2)
+				M.afflict_stun(20 * 2)
 				spawn(30)
 					M.Weaken(2)
 		if(dose >= 10 || M.toxloss >= 25) //Internal skeletal tubes are rupturing, allowing the chemical to breach them.

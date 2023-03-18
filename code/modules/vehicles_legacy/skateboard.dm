@@ -616,7 +616,7 @@
 		var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
 		unbuckle_mob(H)
 		H.throw_at_old(throw_target, 4, 3)
-		H.DefaultCombatKnockdown(30)
+		H.default_combat_knockdown(30)
 		H.adjustStaminaLoss(30)
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))

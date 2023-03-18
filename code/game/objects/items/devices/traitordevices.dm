@@ -42,7 +42,7 @@ effective or pretty fucking useless.
 
 				M.Weaken(rand(10,20))
 				if(prob(25))
-					M.stun(20 * rand(5,10))
+					M.afflict_stun(20 * rand(5,10))
 				to_chat(M, "<span class='danger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
 
 			else

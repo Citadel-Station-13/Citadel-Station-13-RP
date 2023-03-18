@@ -290,11 +290,11 @@
 	if(severity == 2)
 		to_chat(usr, "<span class='userdanger'>You suddenly feel extremely nauseated and hunch over until it passes.</span>")
 		//gamer.adjust_disgust(110)
-		gamer.stun(20 * 60)
+		gamer.afflict_stun(20 * 60)
 	if(severity >= 3) //you didn't pray hard enough
 		to_chat(gamer, "<span class='warning'>An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit.</span>")
 		//gamer.adjust_disgust(150) //max this bitch out so they barf a lot
-		gamer.stun(20 * 100)
+		gamer.afflict_stun(20 * 100)
 */
 #define BUTTON_KEEP_SPEED "Keep Speed"
 #define BUTTON_SLOW_DOWN "Slow Down"
@@ -438,7 +438,7 @@
 	if(game.obj_flags & EMAGGED)
 		playsound(game.loc, 'sound/effects/supermatter.ogg', 100, TRUE)
 		game.say("A miniature black hole suddenly appears in front of [game], devouring [gamer] alive!")
-		gamer.stun(20 * 200, ignore_canstun = TRUE) //you can't run :^)
+		gamer.afflict_stun(20 * 200, ignore_canstun = TRUE) //you can't run :^)
 		var/black_hole = new /obj/singularity/academy(gamer.loc)
 		addtimer(CALLBACK(game, /atom/movable/proc/say, "[black_hole] winks out, just as suddenly as it appeared."), 50)
 		QDEL_IN(black_hole, 5 SECONDS)

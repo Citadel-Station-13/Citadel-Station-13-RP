@@ -78,7 +78,7 @@
 					eye_coverage = M.eyecheck()
 				if(eye_coverage < 2)
 					M.flash_eyes()
-					M.stun(20 * 2)
+					M.afflict_stun(20 * 2)
 					M.Weaken(10)
 
 		if(searing)

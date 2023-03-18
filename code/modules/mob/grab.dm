@@ -173,7 +173,7 @@
 				affecting.Weaken(2)
 
 	if(state >= GRAB_NECK)
-		affecting.stun(20 * 3)
+		affecting.afflict_stun(20 * 3)
 
 	if(state >= GRAB_KILL)
 		//affecting.apply_effect(STUTTER, 5) //would do this, but affecting isn't declared as mob/living for some stupid reason.
@@ -309,7 +309,7 @@
 		add_attack_logs(assailant,affecting,"Neck grabbed")
 		hud.icon_state = "kill"
 		hud.name = "kill"
-		affecting.stun(20 * 10) //10 ticks of ensured grab
+		affecting.afflict_stun(20 * 10) //10 ticks of ensured grab
 	else if(state < GRAB_KILL)
 		assailant.visible_message("<span class='danger'>[assailant] starts to tighten [TU.his] grip on [affecting]'s neck!</span>")
 		hud.icon_state = "kill1"

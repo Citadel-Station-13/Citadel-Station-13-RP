@@ -259,7 +259,7 @@
 			GiveHint(target)
 		else if(I.get_sharpness())
 			to_chat(target, "<span class='userdanger'>You feel a stabbing pain in [parse_zone(user.zone_selected)]!</span>")
-			target.DefaultCombatKnockdown(40)
+			target.default_combat_knockdown(40)
 			GiveHint(target)
 		else if(istype(I, /obj/item/bikehorn))
 			to_chat(target, "<span class='userdanger'>HONK</span>")

@@ -239,7 +239,7 @@
 	M.AdjustStunned(-4)
 	M.Unconscious(2)
 	M.Weaken(2)
-	M.stun(20 * 2)
+	M.afflict_stun(20 * 2)
 	if(M.reagents.get_reagent_amount("inaprovaline") < 5)
 		M.reagents.add_reagent("inaprovaline", 5)
 	S.chassis.use_power(S.energy_drain)

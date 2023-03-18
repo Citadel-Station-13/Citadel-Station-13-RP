@@ -110,7 +110,7 @@
 		if (isliving(AM))
 			var/mob/living/L = AM
 			L.notransform = TRUE
-			L.stun(20 * 200)
+			L.afflict_stun(20 * 200)
 			L.resting = TRUE
 
 		var/oldtransform = AM.transform
