@@ -2,6 +2,7 @@
 	name = "labcoat"
 	desc = "A suit that protects against minor chemical spills."
 	icon_state = "labcoat"
+	icon = 'icons/clothing/suit/coats/labcoats.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
