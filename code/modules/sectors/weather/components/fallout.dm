@@ -1,4 +1,4 @@
 /datum/weather_component/fallout
-	requires_ticking = TRUE
+	ticks_general = TRUE
 
 #warn impl

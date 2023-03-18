@@ -1,4 +1,4 @@
 /datum/weather_component/lightning
-	requires_ticking = TRUE
+	ticks_general = TRUE
 
 #warn impl
