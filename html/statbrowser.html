@@ -723,6 +723,7 @@ function quote_verb_text(text) {
 //////////////////// WINSET / WINGET / SKIN /////////////
 
 function winset_focus_map() {
+	current_mouse_target = null;
 	yield_invoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
 }
 
@@ -934,6 +935,8 @@ function erase_turf_tab() { erase_tab("Turf"); }
 
 ///////////////////////// VERBS /////////////////////////
 
+var current_mouse_target = null;
+
 ///////////////////// DRAWING - MISC ////////////////////
 
 function draw_loading(){
@@ -957,7 +960,8 @@ function draw_tab(tab) {
 		for(var i = 0; i < iterating.length; ++i) {
 			var verb = iterating[i];
 			var button = document.createElement("button");
-			button.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
+			button.onmousedown = lambda_onmousedown_verb(button, verb.replace(/\s/g, "-"));
+			button.onmouseup = lambda_onmouseup_verb(button, verb.replace(/\s/g, "-"))
 			button.className = "grid-item";
 			var t = document.createElement("span");
 			t[PROP_TEXT_CONTENT] = verb;
@@ -1104,9 +1108,18 @@ function atom_invoke(event, ref){
 /**
  * creates the onclick for verbs
  */
-function lambda_onclick_verb(verb) {
+function lambda_onmousedown_verb(element, verb) {
 	return function(e) {
-		yield_invoke(function() {transmit_verb(verb);});
+		current_mouse_target = element;
+	}
+}
+
+function lambda_onmouseup_verb(element, verb) {
+	return function(e) {
+		if(current_mouse_target === element){
+			yield_invoke(function() {transmit_verb(verb);});
+		}
+		current_mouse_target = null;
 	}
 }
 

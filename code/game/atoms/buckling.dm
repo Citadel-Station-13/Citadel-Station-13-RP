@@ -3,15 +3,19 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/atom/movable/attack_hand(mob/living/user)
+/atom/movable/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
 	if(click_unbuckle_interaction(user))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+		return TRUE
 
 /atom/movable/attack_robot(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(click_unbuckle_interaction(user))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+		return TRUE
 
 //! movable stuff
 /**

@@ -17,7 +17,7 @@
 	. = ..()
 	layCable(new_turf,M_Dir)
 
-/obj/machinery/cablelayer/attack_hand(mob/user)
+/obj/machinery/cablelayer/attack_hand(mob/user, list/params)
 	if(!cable&&!on)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any cable loaded."))
 		return

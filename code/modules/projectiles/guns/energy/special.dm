@@ -338,6 +338,9 @@
 	safety_state = GUN_SAFETY_OFF
 
 /obj/item/gun/energy/service/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	cycle_weapon(user)
 
 /obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)

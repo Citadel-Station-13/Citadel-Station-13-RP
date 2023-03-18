@@ -19,10 +19,6 @@
 	circuit = /obj/item/circuitboard/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
-/obj/machinery/telecomms/processor/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/telecomms/processor/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 
 	if(is_freq_listening(signal))

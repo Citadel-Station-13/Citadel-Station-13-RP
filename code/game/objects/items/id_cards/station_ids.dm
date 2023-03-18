@@ -124,7 +124,10 @@
 	dat += "</tr></table>"
 	return dat
 
-/obj/item/card/id/attack_self(mob/user as mob)
+/obj/item/card/id/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("\The [user] shows you: [icon2html(thing = src, target = world)] [src.name]. The assignment on the card: [src.assignment]",\
 		"You flash your ID card: [icon2html(thing = src, target = user)] [src.name]. The assignment on the card: [src.assignment]")
 
@@ -176,6 +179,12 @@
 	rank = "Head of Personnel"
 	desc = "A card which represents the balance between those that serve and those that are served."
 	job_access_type = /datum/role/job/station/head_of_personnel
+
+/obj/item/card/id/silver/blueshield
+	name = "\improper Blueshield ID"
+	assignment = "Blueshield"
+	rank = "Blueshield"
+	job_access_type = /datum/role/job/station/blueshield
 
 /obj/item/card/id/gold
 	name = "gold identification card"

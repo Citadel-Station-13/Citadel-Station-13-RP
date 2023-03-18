@@ -96,7 +96,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()
@@ -195,6 +195,9 @@
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
 /obj/item/wheelchair/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
 		R.add_fingerprint(user)
 		R.name = src.name

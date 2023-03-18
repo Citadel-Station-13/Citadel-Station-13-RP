@@ -1,4 +1,7 @@
-/obj/item/reagent_containers/blood/attack_self(mob/living/user as mob)
+/obj/item/reagent_containers/blood/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.species.is_vampire)

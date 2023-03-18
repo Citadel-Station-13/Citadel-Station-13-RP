@@ -164,12 +164,12 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
-/obj/item/clothing/suit/space/rig/attack_hand(mob/living/M)
+/obj/item/clothing/suit/space/rig/attack_hand(mob/user, list/params)
 	if(tacknife)
 		tacknife.loc = get_turf(src)
-		if(M.put_in_active_hand(tacknife))
-			to_chat(M, SPAN_NOTICE("You slide \the [tacknife] out of [src]."))
-			playsound(M, 'sound/weapons/flipblade.ogg', 40, TRUE)
+		if(user.put_in_active_hand(tacknife))
+			to_chat(user, SPAN_NOTICE("You slide \the [tacknife] out of [src]."))
+			playsound(user, 'sound/weapons/flipblade.ogg', 40, TRUE)
 			tacknife = null
 			update_icon()
 		return

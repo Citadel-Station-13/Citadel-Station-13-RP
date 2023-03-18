@@ -183,7 +183,10 @@
 
 	var/blessed = FALSE
 
-/obj/item/clothing/gloves/swat/para/attack_self(mob/user as mob)
+/obj/item/clothing/gloves/swat/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
 		siemens_coefficient = 0

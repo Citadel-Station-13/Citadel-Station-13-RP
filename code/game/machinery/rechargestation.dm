@@ -32,9 +32,8 @@
 	/// Power used per point of burn damage repaired.
 	var/wire_power_use = 500
 
-/obj/machinery/recharge_station/Initialize(mapload, newdir)
+/obj/machinery/recharge_station/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/recharge_station/proc/has_cell_power()

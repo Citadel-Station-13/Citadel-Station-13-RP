@@ -150,6 +150,9 @@
 			location.hotspot_expose(700, 50, 1)
 
 /obj/item/weldingtool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	setWelding(!welding, user)
 
 //Returns the amount of fuel in the welder
@@ -618,7 +621,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user as mob)
+/obj/item/weldingtool/electric/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()

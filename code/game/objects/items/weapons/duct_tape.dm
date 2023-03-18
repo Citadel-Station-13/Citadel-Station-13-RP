@@ -130,6 +130,9 @@
 	return ..()
 
 /obj/item/duct_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "You remove a piece of tape from the roll.")
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	user.put_in_hands(tape)
@@ -178,6 +181,9 @@
 	copy_overlays(W)
 
 /obj/item/duct_tape_piece/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stuck)
 		return
 
@@ -196,7 +202,7 @@
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
-/obj/item/duct_tape_piece/attack_hand(mob/living/L)
+/obj/item/duct_tape_piece/attack_hand(mob/user, list/params)
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 

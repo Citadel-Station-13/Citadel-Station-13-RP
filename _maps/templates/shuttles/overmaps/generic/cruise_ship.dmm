@@ -458,7 +458,7 @@
 /area/shuttle/cruise_ship)
 "QK" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_coffee/full{
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -574,7 +574,7 @@
 /area/shuttle/cruise_ship)
 "YK" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/bar_alc/full{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 4
 	},
 /turf/simulated/floor/wood,

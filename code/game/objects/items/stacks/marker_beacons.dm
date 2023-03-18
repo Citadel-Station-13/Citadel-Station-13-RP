@@ -51,6 +51,9 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
 
 /obj/item/stack/marker_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isturf(user.loc))
 		to_chat(user, "<span class='warning'>You need more space to place a [singular_name] here.</span>")
 		return
@@ -103,7 +106,7 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])
 
-/obj/structure/marker_beacon/attack_hand(mob/living/user)
+/obj/structure/marker_beacon/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You start picking [src] up...</span>")
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)

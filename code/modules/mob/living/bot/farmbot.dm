@@ -69,7 +69,7 @@
 
 	return data
 
-/mob/living/bot/farmbot/attack_hand(mob/user)
+/mob/living/bot/farmbot/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -152,22 +152,26 @@
 				return
 
 /mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
-	for(var/trayDir in list(NORTH, SOUTH, EAST, WEST))
-		target_path = AStar(get_turf(loc), get_step(get_turf(target), trayDir), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_target_dist, id = botcard)
-		if(target_path)
-			break
+	target_path = AStar(
+		get_turf(loc),
+		get_turf(target),
+		/turf/proc/CardinalTurfsWithAccess,
+		/turf/proc/Distance,
+		0,
+		max_target_dist,
+		1,
+		id = botcard,
+	)
 	if(!target_path)
 		ignore_list |= target
 		target = null
 		target_path = list()
-	return
 
 /mob/living/bot/farmbot/stepToTarget() // Same reason
 	var/turf/T = get_turf(target)
 	if(!target_path.len || !T.Adjacent(target_path[target_path.len]))
 		calcTargetPath()
 	makeStep(target_path)
-	return
 
 /mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
 	if(!..())
@@ -404,5 +408,5 @@
 
 		created_name = t
 
-/obj/item/farmbot_arm_assembly/attack_hand(mob/user as mob)
+/obj/item/farmbot_arm_assembly/attack_hand(mob/user, list/params)
 	return //it's a converted watertank, no you cannot pick it up and put it in your backpack

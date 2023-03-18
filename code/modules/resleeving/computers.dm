@@ -135,7 +135,7 @@
 /obj/machinery/computer/transhuman/resleeving/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/transhuman/resleeving/attack_hand(mob/user as mob)
+/obj/machinery/computer/transhuman/resleeving/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	add_fingerprint(user)
 
@@ -431,12 +431,15 @@
 	icon_state = "cmoemergency"
 	item_state = "card-id"
 
-/obj/item/cmo_disk_holder/attack_self(var/mob/attacker)
+/obj/item/cmo_disk_holder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(src, 'sound/items/poster_ripped.ogg', 50)
-	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
-	attacker.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	to_chat(user, "<span class='warning'>You tear open \the [name].</span>")
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	var/obj/item/disk/transcore/newdisk = new(get_turf(src))
-	attacker.put_in_hands_or_drop(newdisk)
+	user.put_in_hands_or_drop(newdisk)
 	qdel(src)
 
 /obj/item/disk/transcore

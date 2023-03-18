@@ -248,7 +248,7 @@
 /area/shuttle/specops/centcom)
 "aD" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/chemical_dispenser/biochemistry/full,
+/obj/machinery/chemical_dispenser/biochemistry,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)

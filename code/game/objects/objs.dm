@@ -209,7 +209,7 @@
 /obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	return
 
-/obj/attack_hand(mob/living/user)
+/obj/attack_hand(mob/user, list/params)
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()

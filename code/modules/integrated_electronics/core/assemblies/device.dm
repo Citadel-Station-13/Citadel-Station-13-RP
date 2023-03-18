@@ -39,7 +39,10 @@
 	if(opened)
 		icon_state = icon_state + "-open"
 
-/obj/item/assembly/electronic_assembly/attack_self(mob/user as mob)
+/obj/item/assembly/electronic_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(EA)
 		EA.attack_self(user)
 

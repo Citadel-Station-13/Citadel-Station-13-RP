@@ -94,28 +94,28 @@
 	submunition_spread_max = 60
 	submunition_spread_min = 30
 	submunitions = list(
-		/obj/item/projectile/beam/gamma = 3
+		/obj/item/projectile/beam/gamma = 3 
 		)
 
 /obj/item/projectile/scatter/laser/heavylaser
 	damage = 60
 	armor_penetration = 30
 	submunitions = list(
-		/obj/item/projectile/beam/heavylaser = 3
+		/obj/item/projectile/beam/heavylaser = 1 //nope
 		)
 
 /obj/item/projectile/scatter/laser/heavylaser/cannon
 	damage = 80
 	armor_penetration = 50
 	submunitions = list(
-		/obj/item/projectile/beam/heavylaser/cannon = 2
+		/obj/item/projectile/beam/heavylaser/cannon = 1 //haha no
 		)
 
 /obj/item/projectile/scatter/stun
 	submunition_spread_max = 70
 	submunition_spread_min = 30
 	submunitions = list(
-		/obj/item/projectile/beam/stun = 4
+		/obj/item/projectile/beam/stun = 2 
 		)
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
@@ -123,13 +123,13 @@
 
 /obj/item/projectile/scatter/stun/weak
 	submunitions = list(
-		/obj/item/projectile/beam/stun/weak = 4
+		/obj/item/projectile/beam/stun/weak = 2 
 		)
 	agony = 20
 
 /obj/item/projectile/scatter/stun/electrode
 	submunitions = list(
-		/obj/item/projectile/energy/electrode = 3
+		/obj/item/projectile/energy/electrode = 1
 		)
 	agony = 55
 

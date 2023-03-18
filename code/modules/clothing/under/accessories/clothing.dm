@@ -135,7 +135,10 @@
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	action_button_name = "Adjust Cloak"
 
-/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_open"
 		src.item_state = "[item_state]_open"
@@ -559,3 +562,22 @@
 	name = "Stirrup Sleeve"
 	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
 	icon_state = "armsock_right"
+
+/obj/item/clothing/accessory/poncho/dust_cloak
+	name = "Dust Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime."
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "terrandress"
+	item_state = "terrandress"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/dark
+	name = "Dust Cloak -- Embroidered"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is embroidered."
+	icon_state = "terrandress_off"
+	item_state = "terrandress_off"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/white
+	name = "Dust Cloak --  White"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is white."
+	icon_state = "terrandress_comm"
+	item_state = "terrandress_comm"

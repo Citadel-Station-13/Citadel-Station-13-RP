@@ -13,7 +13,8 @@
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/grinder
 	var/inuse = 0
-	var/obj/item/reagent_containers/beaker
+	/// beaker - set to path to start with a beaker.
+	var/obj/item/reagent_containers/beaker = /obj/item/reagent_containers/glass/beaker/large
 	var/limit = 10
 	var/list/holdingitems = list()
 	var/list/sheet_reagents = list( //have a number of reageents divisible by REAGENTS_PER_SHEET (default 20) unless you like decimals,
@@ -37,10 +38,10 @@
 	var/static/radial_grind = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_grind")
 	var/no_panel = FALSE
 
-/obj/machinery/reagentgrinder/Initialize(mapload, newdir)
+/obj/machinery/reagentgrinder/Initialize(mapload)
 	. = ..()
-	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	default_apply_parts()
+	if(ispath(beaker))
+		beaker = new beaker(src)
 
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
@@ -159,7 +160,7 @@
 	if(AM in holdingitems)
 		holdingitems -= AM
 
-/obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
+/obj/machinery/reagentgrinder/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/reagentgrinder/interact(mob/user as mob) // The microwave Menu //I am reasonably certain that this is not a microwave
