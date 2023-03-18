@@ -97,6 +97,12 @@
 	icon_state = "beret_corporate_hos"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
+/obj/item/clothing/head/beret/sec/corporate/blueshield
+	name = "Blueshield beret"
+	desc = "A corporate black beret with a Blueshield's rank emblem. For officers that are more inclined towards style than safety."
+	icon_state = "beret_corporate_blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
+
 /obj/item/clothing/head/beret/sec/corporate/warden
 	name = "warden beret"
 	desc = "A corporate black beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
