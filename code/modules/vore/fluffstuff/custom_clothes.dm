@@ -553,10 +553,9 @@
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
-	item_icons = list(SLOT_ID_UNIFORM = 'icons/vore/custom_clothes_vr.dmi')
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "latexmaid"
-	item_state = "latexmaid_mob"
+	icon = 'icons/clothing/uniform/costume/maid.dmi'
+	icon_state = "latex"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 

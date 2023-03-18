@@ -441,6 +441,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/sec.dmi'
 	icon_state = "cryohelm_sec"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 /obj/item/clothing/suit/space/void/security/cryo
 	name = "security cryosuit"
@@ -448,6 +449,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/sec.dmi'
 	icon_state = "cryo_sec"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 //Engi
 /obj/item/clothing/head/helmet/space/void/engineering/cryo
@@ -456,6 +458,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/engi.dmi'
 	icon_state = "cryohelm_engi"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 /obj/item/clothing/suit/space/void/engineering/cryo
 	name = "engineering cryosuit"
@@ -463,6 +466,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/engi.dmi'
 	icon_state = "cryo_engi"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 //Atmospherics
 /obj/item/clothing/head/helmet/space/void/atmos/cryo
@@ -471,6 +475,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/atmos.dmi'
 	icon_state = "cryohelm_atmos"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 /obj/item/clothing/suit/space/void/atmos/cryo
 	name = "atmos cryosuit"
@@ -478,6 +483,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/atmos.dmi'
 	icon_state = "cryo_atmos"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 //Mining
 /obj/item/clothing/head/helmet/space/void/mining/cryo
@@ -486,6 +492,7 @@
 	icon = 'icons/clothing/gearsets/cryosuit/mining.dmi'
 	icon_state = "cryohelm_mining"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING
 
 /obj/item/clothing/suit/space/void/mining/cryo
 	name = "mining cryosuit"
@@ -493,3 +500,4 @@
 	icon = 'icons/clothing/gearsets/cryosuit/mining.dmi'
 	icon_state = "cryo_mining"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	RENDER_LEGACY_PATCH_NO_CYCLING

@@ -108,11 +108,11 @@
 	worn_rolled_down = UNIFORM_ROLL_FALSE
 	worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 	.["normal"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
-	if(worn_rolled_down != UNIFORM_ROLL_NULLED)
+	if(old_roll != UNIFORM_ROLL_NULLED)
 		worn_rolled_down = UNIFORM_ROLL_TRUE
 		.["rolled down"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
 		worn_rolled_down = UNIFORM_ROLL_FALSE
-	if(worn_rolled_sleeves != UNIFORM_ROLL_NULLED)
+	if(old_sleeves != UNIFORM_ROLL_NULLED)
 		worn_rolled_sleeves = UNIFORM_ROLL_TRUE
 		.["rolled sleeves"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
 		worn_rolled_sleeves = UNIFORM_ROLL_FALSE
