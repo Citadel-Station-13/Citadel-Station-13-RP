@@ -115,7 +115,7 @@
 	qdel(src)
 
 /proc/wabbajack(mob/living/M)
-	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (GODMODE & M.status_flags))
+	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (STATUS_GODMODE & M.status_flags))
 		return
 
 	M.mob_transforming = TRUE

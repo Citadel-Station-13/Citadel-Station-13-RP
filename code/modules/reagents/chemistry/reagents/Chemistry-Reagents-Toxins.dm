@@ -300,7 +300,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.status_flags |= FAKEDEATH
+	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(3 * removed)
 	M.Weaken(10)
 	M.silent = max(M.silent, 10)
@@ -309,7 +309,7 @@
 /datum/reagent/toxin/zombiepowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+		M.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/lichpowder
@@ -326,7 +326,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.status_flags |= FAKEDEATH
+	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(1 * removed)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
@@ -338,7 +338,7 @@
 /datum/reagent/toxin/lichpowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+		M.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/fertilizer //Reagents used for plant fertilizers.

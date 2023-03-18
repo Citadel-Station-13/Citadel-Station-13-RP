@@ -401,7 +401,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	for(var/mob/living/carbon/M in oviewers(8, src))
 		if(istype(M, /mob/living/carbon/brain)) //Ignore brains
 			continue
-		if(M.status_flags & GODMODE)
+		if(M.status_flags & STATUS_GODMODE)
 			continue
 		if(M.stat == CONSCIOUS)
 			if (istype(M,/mob/living/carbon/human))

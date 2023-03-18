@@ -27,7 +27,7 @@
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 
 	universal_speak = 0
 	universal_understand = 1

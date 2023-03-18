@@ -128,7 +128,7 @@
 			handleAI()
 
 /mob/living/bot/updatehealth()
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
 	else

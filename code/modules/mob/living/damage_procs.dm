@@ -81,7 +81,7 @@
 		if(IRRADIATE)
 			afflict_radiation(effect, TRUE)
 		if(STUTTER)
-			if(status_flags & CANSTUN) // stun is usually associated with stutter
+			if(status_flags & STATUS_CAN_STUN) // stun is usually associated with stutter
 				stuttering = max(stuttering,(effect * blocked))
 		if(EYE_BLUR)
 			eye_blurry = max(eye_blurry,(effect * blocked))

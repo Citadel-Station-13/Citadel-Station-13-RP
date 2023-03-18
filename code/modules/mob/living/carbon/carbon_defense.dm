@@ -52,7 +52,7 @@
 	return 0
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
 		if(species.species_flags & IS_PLANT)

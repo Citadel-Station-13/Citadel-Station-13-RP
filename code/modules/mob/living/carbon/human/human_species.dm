@@ -84,7 +84,7 @@
 
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
-	status_flags = GODMODE|CANPUSH
+	status_flags = STATUS_GODMODE|STATUS_CAN_PUSH
 	no_vore = TRUE //Dummies don't need bellies.
 
 // species_flags --> NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB

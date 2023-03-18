@@ -33,7 +33,7 @@
 
 /mob/living/carbon/alien/handle_regular_UI_updates()
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & STATUS_GODMODE)	return 0
 
 	if(stat == DEAD)
 		blinded = 1

@@ -1,6 +1,6 @@
 //Updates the mob's health from organs and mob damage variables
 /mob/living/carbon/human/updatehealth()
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
 		update_hud_med_all()
@@ -32,7 +32,7 @@
 
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -49,7 +49,7 @@
 
 /mob/living/carbon/human/setBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -64,7 +64,7 @@
 
 /mob/living/carbon/human/getBrainLoss()
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -390,7 +390,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 // damage MANY external organs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
-	if(status_flags & GODMODE)	return	//godmode
+	if(status_flags & STATUS_GODMODE)	return	//godmode
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )

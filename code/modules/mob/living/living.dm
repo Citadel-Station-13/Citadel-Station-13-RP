@@ -73,7 +73,7 @@
 /mob/living/pointed(atom/A as mob|obj|turf in view())
 	if(src.stat || src.restrained())
 		return 0
-	if(src.status_flags & FAKEDEATH)
+	if(src.status_flags & STATUS_FAKEDEATH)
 		return 0
 	if(!..())
 		return 0
@@ -114,7 +114,7 @@ default behaviour is:
 		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
 /mob/living/proc/updatehealth()
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)
 	else
@@ -181,7 +181,7 @@ default behaviour is:
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/proc/adjustBruteLoss(var/amount,var/include_robo)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -201,7 +201,7 @@ default behaviour is:
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -218,14 +218,14 @@ default behaviour is:
 	updatehealth()
 
 /mob/living/proc/setOxyLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	oxyloss = amount
 
 /mob/living/proc/getToxLoss()
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -242,7 +242,7 @@ default behaviour is:
 	updatehealth()
 
 /mob/living/proc/setToxLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	toxloss = amount
 
 /mob/living/proc/getFireLoss()
@@ -256,7 +256,7 @@ default behaviour is:
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/proc/adjustFireLoss(var/amount,var/include_robo)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.incoming_damage_percent))
@@ -275,7 +275,7 @@ default behaviour is:
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -292,25 +292,25 @@ default behaviour is:
 	updatehealth()
 
 /mob/living/proc/setCloneLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	cloneloss = amount
 
 /mob/living/proc/getBrainLoss()
 	return brainloss
 
 /mob/living/proc/adjustBrainLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	brainloss = min(max(brainloss + amount, 0),(getMaxHealth()*2))
 
 /mob/living/proc/setBrainLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	brainloss = amount
 
 /mob/living/proc/getHalLoss()
 	return halloss
 
 /mob/living/proc/adjustHalLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.incoming_damage_percent))
@@ -327,7 +327,7 @@ default behaviour is:
 	updatehealth()
 
 /mob/living/proc/setHalLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	halloss = amount
 
 // Use this to get a mob's max health whenever possible.  Reading maxHealth directly will give inaccurate results if any modifiers exist.
@@ -592,7 +592,7 @@ default behaviour is:
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
 	src.updatehealth()
@@ -605,7 +605,7 @@ default behaviour is:
 
 // damage MANY external organs, in random order
 /mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
 	src.updatehealth()

@@ -89,7 +89,7 @@
 	if(stat != DEAD)
 		if(paralysis)
 			set_stat(UNCONSCIOUS)
-		else if (status_flags & FAKEDEATH)
+		else if (status_flags & STATUS_FAKEDEATH)
 			set_stat(UNCONSCIOUS)
 		else
 			set_stat(CONSCIOUS)

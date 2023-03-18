@@ -1343,8 +1343,6 @@
 	M.adjustOxyLoss(-2 * removed)
 	M.heal_organ_damage(20 * removed, 20 * removed)
 	M.adjustToxLoss(-20 * removed)
-	if(dose > 3)
-		M.status_flags &= ~DISFIGURED
 	if(dose > 10)
 		M.make_dizzy(5)
 		M.make_jittery(5)

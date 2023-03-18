@@ -291,7 +291,7 @@
 		return
 
 	last_special = world.time + 75
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
@@ -299,7 +299,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")

@@ -139,7 +139,6 @@
 	update_hair(0)
 
 	mutations.Add(MUTATION_HUSK)
-	status_flags |= DISFIGURED	//makes them unknown without fucking up other stuff like admintools
 	update_icons_body()
 	return
 
@@ -158,6 +157,5 @@
 	update_hair(0)
 
 	mutations.Add(MUTATION_SKELETON)
-	status_flags |= DISFIGURED
 	update_icons_body()
 	return

@@ -219,7 +219,7 @@
 				var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 				if(heart && !(heart.robotic >= ORGAN_ROBOT))
 					heartbeat = 1
-				if(H.stat == DEAD || (H.status_flags&FAKEDEATH))
+				if(H.stat == DEAD || (H.status_flags&STATUS_FAKEDEATH))
 					sound_strength = "cannot hear"
 					sound = "anything"
 				else

@@ -75,19 +75,15 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define CANSTUN     0x1
-#define CANWEAKEN   0x2
-#define CANPARALYSE 0x4
-#define CANPUSH     0x8
-#define LEAPING     0x10
-#define HIDING      0x20
-/// Mob has a cortical borer or holders inside of it that need to see emotes.
-#define PASSEMOTES  0x40
-#define GODMODE     0x1000
+#define STATUS_CAN_STUN     0x1
+#define STATUS_CAN_WEAKEN   0x2
+#define STATUS_CAN_PARALYZE 0x4
+#define STATUS_CAN_PUSH     0x8
+#define STATUS_LEAPING     0x10
+#define STATUS_HIDING      0x20
+#define STATUS_GODMODE     0x1000
 /// Replaces stuff like changeling.changeling_fakedeath.
-#define FAKEDEATH   0x2000
-/// Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
-#define DISFIGURED  0x4000
+#define STATUS_FAKEDEATH   0x2000
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2

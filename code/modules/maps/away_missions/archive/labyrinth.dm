@@ -292,7 +292,7 @@
 	melee_damage_upper = 1
 	attacktext = "honked"
 	attack_sound = 'sound/items/bikehorn.ogg'
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	min_oxy = 5
 	max_oxy = 0
 	min_tox = 0

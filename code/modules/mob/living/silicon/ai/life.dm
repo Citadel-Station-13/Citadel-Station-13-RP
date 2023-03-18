@@ -162,7 +162,7 @@
 	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)
 
 /mob/living/silicon/ai/updatehealth()
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)
 		setOxyLoss(0)

@@ -239,7 +239,7 @@
 	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & STATUS_FAKEDEATH)))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())

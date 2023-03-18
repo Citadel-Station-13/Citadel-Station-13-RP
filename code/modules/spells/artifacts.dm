@@ -378,7 +378,7 @@
 
 /obj/item/warpwhistle/proc/end_effect(mob/living/carbon/user)
 	user.invisibility = initial(user.invisibility)
-	user.status_flags &= ~GODMODE
+	user.status_flags &= ~STATUS_GODMODE
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
@@ -407,7 +407,7 @@
 	if(interrupted(user))
 		return
 	user.invisibility = INVISIBILITY_MAXIMUM
-	user.status_flags |= GODMODE
+	user.status_flags |= STATUS_GODMODE
 	sleep(20)
 	if(interrupted(user))
 		end_effect(user)

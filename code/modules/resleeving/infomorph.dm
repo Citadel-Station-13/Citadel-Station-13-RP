@@ -587,7 +587,7 @@ var/global/list/default_infomorph_software = list()
 		death(null,"gives one shrill beep before falling lifeless.")
 
 /mob/living/silicon/infomorph/updatehealth()
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)
 	else

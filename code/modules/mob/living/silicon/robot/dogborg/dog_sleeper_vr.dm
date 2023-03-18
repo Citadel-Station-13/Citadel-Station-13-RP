@@ -521,7 +521,7 @@
 		var/volume = 0
 		for(var/mob/living/T in (touchable_items))
 			touchable_items -= T //Exclude mobs from loose item picking.
-			if((T.status_flags & GODMODE) || !T.digestable)
+			if((T.status_flags & STATUS_GODMODE) || !T.digestable)
 				items_preserved |= T
 			else
 				var/old_brute = T.getBruteLoss()

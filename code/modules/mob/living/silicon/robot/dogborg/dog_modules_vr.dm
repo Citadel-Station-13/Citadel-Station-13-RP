@@ -422,7 +422,7 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
@@ -433,7 +433,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")

@@ -169,11 +169,11 @@
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	M.status_flags ^= GODMODE
-	to_chat(usr, "<font color=#4F49AF> Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]</font>")
+	M.status_flags ^= STATUS_GODMODE
+	to_chat(usr, "<font color=#4F49AF> Toggled [(M.status_flags & STATUS_GODMODE) ? "ON" : "OFF"]</font>")
 
-	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
-	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]"
+	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & STATUS_GODMODE) ? "On" : "Off"]")
+	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & STATUS_GODMODE) ? "On" : "Off"]"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","GOD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

@@ -402,7 +402,7 @@
 
 
 /mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return
 
 	if(suiciding)
@@ -755,7 +755,7 @@
 	if(bodytemperature >= species.heat_level_1)
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)
+		if(status_flags & STATUS_GODMODE)
 			return 1	//godmode
 
 		var/burn_dam = 0
@@ -780,7 +780,7 @@
 		//Body temperature is too cold.
 		fire_alert = max(fire_alert, 1)
 
-		if(status_flags & GODMODE)
+		if(status_flags & STATUS_GODMODE)
 			return 1	//godmode
 
 
@@ -800,7 +800,7 @@
 
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 1	//godmode
 
 	if(adjusted_pressure >= species.hazard_high_pressure)
@@ -985,10 +985,10 @@
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)
-				if(!(status_flags & GODMODE))
+				if(!(status_flags & STATUS_GODMODE))
 					adjustToxLoss(total_phoronloss)
 
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return FALSE	//godmode
 
 	if(species.light_dam)
@@ -1045,7 +1045,7 @@
 	if(skip_some_updates())
 		return FALSE
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & STATUS_GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
 	var/was_ssd = FALSE
@@ -1637,7 +1637,7 @@
 					qdel(M)
 					continue
 				if(air_master.current_cycle%3==1)
-					if(!(M.status_flags & GODMODE))
+					if(!(M.status_flags & STATUS_GODMODE))
 						M.adjustBruteLoss(5)
 					nutrition += 10
 
@@ -1688,7 +1688,7 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	if(!can_feel_pain()) return
 
 	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
@@ -1793,7 +1793,7 @@
 	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
-	if(status_flags & FAKEDEATH)
+	if(status_flags & STATUS_FAKEDEATH)
 		temp = PULSE_NONE		//pretend that we're dead. unlike actual death, can be inflienced by meds
 
 	if(!isnull(modifier_set))

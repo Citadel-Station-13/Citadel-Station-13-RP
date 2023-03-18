@@ -257,7 +257,7 @@
  */
 /mob/living/proc/can_bump_push_mob(mob/living/them)
 	// check status flags
-	if(!(them.status_flags & CANPUSH))
+	if(!(them.status_flags & STATUS_CAN_PUSH))
 		return FALSE
 	//? TRAIT_PUSHIMMUNE checked in movable bump
 	//! this isn't active until we get mobility flags, right click, and shoving

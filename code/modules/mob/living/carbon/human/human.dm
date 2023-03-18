@@ -304,7 +304,7 @@
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if (!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -1539,7 +1539,7 @@
 		equip_to_appropriate_slot(permit) // If for some reason it can't find room, it'll still be on the floor.
 
 /mob/living/carbon/human/proc/update_icon_special() //For things such as teshari hiding and whatnot.
-	if(status_flags & HIDING) // Hiding? Carry on.
+	if(status_flags & STATUS_HIDING) // Hiding? Carry on.
 		// Stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work.
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 			reveal(null)

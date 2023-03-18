@@ -11,7 +11,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_cooldown, stuncd)
 	if(last_airflow_stun > world.time - stuncd)	return 0
 
-	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
+	if(!(status_flags & STATUS_CAN_STUN) && !(status_flags & STATUS_CAN_WEAKEN))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
 		return 0
 	if(buckled)
@@ -85,7 +85,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	return 1
 
 /mob/AirflowCanMove(n)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 0
 	if(buckled)
 		return 0

@@ -20,7 +20,7 @@
 		if(INTENT_GRAB)
 			if (L == src)
 				return
-			if (!(status_flags & CANPUSH))
+			if (!(status_flags & STATUS_CAN_PUSH))
 				return
 			if(!incapacitated(INCAPACITATION_ALL) && prob(grab_resist))
 				L.visible_message("<span class='warning'>\The [L] tries to grab \the [src] but fails!</span>")
