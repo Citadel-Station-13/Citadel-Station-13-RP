@@ -14,7 +14,7 @@
 
 		if(!istype(H))
 			return
-		H.SetWeakened(0)
+		H.set_weakened(0)
 		S.finish(H)
 
 /datum/genetics/side_effect

@@ -212,7 +212,7 @@
 			H.visible_message("<span class = 'warning'> [H] lays eerily still. Something about them seems off, even when dead.</span>","<span class = 'notice'>We begin to gather up whatever is left to begin regrowth.</span>")
 		else
 			H.visible_message("<span class = 'warning'> [H] suddenly collapses, seizing up and going eerily still. </span>", "<span class = 'notice'>We begin the regrowth process to start anew.</span>")
-			H.SetUnconscious(8000) //admin style self-stun
+			H.set_unconscious(20 * 8000) //admin style self-stun
 
 		//These are only messages to give the player and everyone around them an idea of which stage they're at
 		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
@@ -264,7 +264,7 @@
 	//Drop everything
 	H.drop_inventory(TRUE, TRUE)
 	H.visible_message("<span class = 'warning'>[H] emerges from a cloud of viscera!</b>")
-	H.SetUnconscious(0)
+	H.set_unconscious(0)
 	//Unfreeze some things
 	H.does_not_breathe = FALSE
 	H.update_canmove()

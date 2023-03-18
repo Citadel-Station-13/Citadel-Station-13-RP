@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					human.afflict_knockdown(20 * 5)
 					to_chat(human,"<span class='danger'>A wave of weakness rolls over you.</span>")
 				if(3)
-					human.Sleeping(5)
+					human.afflict_sleeping(20 * 5)
 					to_chat(human,"<span class='danger'>You suddenly black out!</span>")
 
 		//Finishing up

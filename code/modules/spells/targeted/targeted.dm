@@ -133,7 +133,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 	target.adjustOxyLoss(amt_dam_oxy)
 	//disabling
 	target.afflict_knockdown(20 * amt_weakened)
-	target.Unconscious(amt_paralysis)
+	target.afflict_unconscious(20 * amt_paralysis)
 	target.afflict_stun(20 * amt_stunned)
 	if(amt_weakened || amt_paralysis || amt_stunned)
 		if(target.buckled)

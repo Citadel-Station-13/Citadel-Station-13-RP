@@ -75,7 +75,7 @@
 		if(WEAKEN)
 			afflict_knockdown(20 * effect * blocked)
 		if(PARALYZE)
-			Unconscious(effect * blocked)
+			afflict_unconscious(20 * effect * blocked)
 		if(AGONY)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)

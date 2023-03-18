@@ -1331,7 +1331,7 @@ About the new airlock wires panel:
 	. = ..()
 	adjustBruteLoss(crush_damage)
 	set_stunned(20 * 5)
-	SetWeakened(5)
+	set_weakened(20 * 5)
 	var/turf/T = get_turf(src)
 	T.add_blood(src)
 

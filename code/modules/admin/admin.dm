@@ -1427,12 +1427,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	if(check_rights(R_ADMIN|R_MOD))
 		if (H.paralysis == 0)
-			H.SetUnconscious(8000)
+			H.set_unconscious(20 * 8000)
 			msg = "has paralyzed [key_name(H)]."
 			log_and_message_admins(msg)
 		else
 			if(alert(src, "[key_name(H)] is paralyzed, would you like to unparalyze them?",,"Yes","No") == "Yes")
-				H.SetUnconscious(0)
+				H.set_unconscious(0)
 				msg = "has unparalyzed [key_name(H)]."
 				log_and_message_admins(msg)
 

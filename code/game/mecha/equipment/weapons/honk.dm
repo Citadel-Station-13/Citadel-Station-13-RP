@@ -26,7 +26,7 @@
 				return
 		to_chat(M, "<span class='warning'>Your ears feel like they're bleeding!</span>")
 		playsound(M, 'sound/items/airhorn.ogg', 100, 1, 30)
-		M.SetSleeping(0)
+		M.set_sleeping(0)
 		M.ear_deaf += 30
 		M.ear_damage += rand(5, 20)
 		M.afflict_knockdown(20 * 3)

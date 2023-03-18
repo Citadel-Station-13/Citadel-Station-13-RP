@@ -168,12 +168,12 @@ Gunshots/explosions/opening doors/less rare audio (done)
 			if(71 to 72)
 				//Fake death
 //				src.sleeping_willingly = 1
-				SetSleeping(20)
+				set_sleeping(20 * 20)
 				hal_crit = 1
 				hal_screwyhud = 1
 				spawn(rand(50,100))
 //					src.sleeping_willingly = 0
-					SetSleeping(0)
+					set_sleeping(0)
 					hal_crit = 0
 					hal_screwyhud = 0
 	handling_hal = 0

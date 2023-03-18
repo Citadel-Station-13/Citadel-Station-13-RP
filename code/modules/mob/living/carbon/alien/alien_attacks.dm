@@ -40,7 +40,7 @@
 				if (MUTATION_HULK in L.mutations)
 					damage += 5
 					spawn(0)
-						Unconscious(1)
+						afflict_unconscious(20 * 1)
 						step_away(src,L,15)
 						sleep(3)
 						step_away(src,L,15)

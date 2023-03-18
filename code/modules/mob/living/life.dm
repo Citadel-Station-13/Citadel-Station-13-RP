@@ -112,7 +112,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		AdjustWeakened(-1)
+		adjust_weakened(20 * -1)
 	return weakened
 
 /mob/living/proc/handle_stuttering()
@@ -137,7 +137,7 @@
 
 /mob/living/proc/handle_paralysed()
 	if(paralysis)
-		AdjustUnconscious(-1)
+		adjust_unconscious\(20 * -1)
 	return paralysis
 
 /mob/living/proc/handle_confused()

@@ -177,7 +177,7 @@
 			M.afflict_knockdown(20 * 3)
 			if(prob(30))
 				M.afflict_stun(20 * 10)
-				M.Unconscious(4)
+				M.afflict_unconscious(20 * 4)
 			else
 				M.make_jittery(500)
 		chassis.use_power(energy_drain)

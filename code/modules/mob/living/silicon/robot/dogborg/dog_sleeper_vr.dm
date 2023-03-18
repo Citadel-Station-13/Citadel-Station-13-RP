@@ -639,7 +639,7 @@
 			patient.updatehealth()
 			drain()
 		patient.adjust_stunned(20 * -4)
-		patient.AdjustWeakened(-4)
+		patient.adjust_weakened(20 * -4)
 		drain(1)
 		return
 

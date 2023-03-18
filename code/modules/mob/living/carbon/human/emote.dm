@@ -379,7 +379,7 @@
 			message = "faints."
 			if(src.sleeping)
 				return //Can't faint while asleep
-			Sleeping(10) //Short-short nap
+			afflict_sleeping(20 * 10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")
@@ -768,7 +768,7 @@
 					m_type = 1
 
 		if ("collapse")
-			Unconscious(2)
+			afflict_unconscious(20 * 2)
 			message = "collapses!"
 			m_type = 2
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)

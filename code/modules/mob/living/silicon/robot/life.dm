@@ -29,9 +29,9 @@
 /mob/living/silicon/robot/proc/clamp_values()
 
 //	set_stunned(20 * min(stunned, 30))
-	SetUnconscious(min(paralysis, 30))
-//	SetWeakened(min(weakened, 20))
-	SetSleeping(0)
+	set_unconscious(20 * min(paralysis, 30))
+//	set_weakened(20 * min(weakened, 20))
+	set_sleeping(0)
 	adjustBruteLoss(0)
 	adjustToxLoss(0)
 	adjustOxyLoss(0)
@@ -76,8 +76,8 @@
 	updatehealth()
 
 	if(src.sleeping)
-		Unconscious(3)
-		AdjustSleeping(-1)
+		afflict_unconscious(20 * 3)
+		adjust_sleeping(20 * -1)
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
@@ -88,9 +88,9 @@
 			if (src.stunned > 0)
 				adjust_stunned(20 * -1)
 			if (src.weakened > 0)
-				AdjustWeakened(-1)
+				adjust_weakened(20 * -1)
 			if (src.paralysis > 0)
-				AdjustUnconscious(-1)
+				adjust_unconscious\(20 * -1)
 				src.blinded = 1
 			else
 				src.blinded = 0

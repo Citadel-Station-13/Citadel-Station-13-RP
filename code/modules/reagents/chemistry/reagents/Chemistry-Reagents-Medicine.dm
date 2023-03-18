@@ -541,7 +541,7 @@
 		var/mob/living/carbon/human/H = M
 		if(prob(1))
 			to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
-			H.AdjustWeakened(5) //Fall onto the floor for a few moments.
+			H.adjust_weakened(20 * 5) //Fall onto the floor for a few moments.
 			H.Confuse(15) //Be unable to walk correctly for a bit longer.
 		if(prob(1))
 			if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
@@ -584,9 +584,9 @@
 			M.adjustFireLoss(-1 * removed)
 		chem_effective = 0.5
 	M.drowsyness = max(M.drowsyness - 5, 0)
-	M.AdjustUnconscious(-1)
+	M.adjust_unconscious\(20 * -1)
 	M.adjust_stunned(20 * -1)
-	M.AdjustWeakened(-1)
+	M.adjust_weakened(20 * -1)
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)//Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
@@ -634,7 +634,7 @@
 		if(M.brainloss >= 10)
 			M.afflict_knockdown(20 * 5)
 		if(dose >= 10 && M.paralysis < 40)
-			M.AdjustUnconscious(1) //Messing with the core with a simple chemical probably isn't the best idea.
+			M.adjust_unconscious\(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
 	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
 
@@ -734,7 +734,7 @@
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
 				H.custom_pain("You feel a terrible agony tear through your bones!",60)
-				H.AdjustWeakened(1)		//Bones being regrown will knock you over
+				H.adjust_weakened(20 * 1)		//Bones being regrown will knock you over
 
 /datum/reagent/myelamine
 	name = "Myelamine"

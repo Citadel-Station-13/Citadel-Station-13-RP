@@ -127,8 +127,8 @@
 	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
-		M.Unconscious(60)
-		M.Sleeping(90)
+		M.afflict_unconscious(20 * 60)
+		M.afflict_sleeping(20 * 90)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy*3)
@@ -175,8 +175,8 @@
 	if(dose * strength_mod >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
 	if(dose * strength_mod >= strength * 7) // Pass out
-		M.Unconscious(20)
-		M.Sleeping(30)
+		M.afflict_unconscious(20 * 20)
+		M.afflict_sleeping(20 * 30)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy)
@@ -472,7 +472,7 @@
 				M.afflict_knockdown(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants

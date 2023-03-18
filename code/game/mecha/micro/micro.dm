@@ -68,7 +68,7 @@
 			else
 				switch(damtype)
 					if("brute")
-						M.Unconscious(1)
+						M.afflict_unconscious(20 * 1)
 						M.take_overall_damage(rand(force/2, force))
 					if("fire")
 						M.take_overall_damage(0, rand(force/2, force))

@@ -448,7 +448,7 @@
 // Called when struck by lightning.
 /mob/living/proc/lightning_act()
 	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
-	Unconscious(5)
+	afflict_unconscious(20 * 5)
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)

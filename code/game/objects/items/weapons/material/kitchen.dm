@@ -138,6 +138,6 @@
 	if ((MUTATION_CLUMSY in L.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
 		L.take_organ_damage(10)
-		L.Unconscious(2)
+		L.afflict_unconscious(20 * 2)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

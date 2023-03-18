@@ -151,7 +151,7 @@
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
 			else if(lying || src.sleeping)
-				AdjustSleeping(-5)
+				adjust_sleeping(20 * -5)
 				if(H) H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
@@ -178,9 +178,9 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustUnconscious(-3)
+			adjust_unconscious\(20 * -3)
 			adjust_stunned(20 * -3)
-			AdjustWeakened(-3)
+			adjust_weakened(20 * -3)
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
@@ -249,7 +249,7 @@
 		to_chat(usr, "<font color='red'>You are already sleeping</font>")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.AdjustSleeping(20)
+		usr.adjust_sleeping(20 * 20)
 
 /mob/living/carbon/Bump(atom/A)
 	. = ..()

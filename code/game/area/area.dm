@@ -586,10 +586,10 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
 			H.adjust_stunned(20 * 6)
-			H.AdjustWeakened(6)
+			H.adjust_weakened(20 * 6)
 		else
 			H.adjust_stunned(20 * 3)
-			H.AdjustWeakened(3)
+			H.adjust_weakened(20 * 3)
 		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 

@@ -93,7 +93,7 @@
 
 	//Apply damage
 	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
-	H.Unconscious(4)
+	H.afflict_unconscious(20 * 4)
 	H.updatehealth()
 
 	//Grower specific mutations

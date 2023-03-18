@@ -23,7 +23,7 @@
 		if(3.0)
 			b_loss += 30
 			if (prob(50))
-				Unconscious(1)
+				afflict_unconscious(20 * 1)
 			ear_damage += 15
 			ear_deaf += 60
 

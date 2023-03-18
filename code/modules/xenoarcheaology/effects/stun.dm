@@ -36,7 +36,7 @@
 			var/susceptibility = GetAnomalySusceptibility(C)
 			if(prob(100 * susceptibility))
 				to_chat(C, "<font color='red'>A wave of energy overwhelms your senses!</font>")
-				C.SetWeakened(4 * susceptibility)
+				C.set_weakened(20 * 4 * susceptibility)
 				C.stuttering = 4 * susceptibility
 				if(prob(10))
 					C.set_stunned(20 * 1 * susceptibility)

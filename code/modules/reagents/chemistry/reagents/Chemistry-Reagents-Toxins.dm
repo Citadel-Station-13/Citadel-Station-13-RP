@@ -171,7 +171,7 @@
 /datum/reagent/toxin/cyanide/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
 	M.adjustOxyLoss(20 * removed)
-	M.Sleeping(1)
+	M.afflict_sleeping(20 * 1)
 
 /datum/reagent/toxin/mold
 	name = "Mold"
@@ -743,7 +743,7 @@
 			else
 				M.afflict_knockdown(20 * 2)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 		M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/chloralhydrate
@@ -787,7 +787,7 @@
 			M.afflict_knockdown(20 * 30)
 			M.Confuse(40)
 		else
-			M.Sleeping(30)
+			M.afflict_sleeping(20 * 30)
 
 	if(effective_dose > 1 * threshold)
 		M.adjustToxLoss(removed)

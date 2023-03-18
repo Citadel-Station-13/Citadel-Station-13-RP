@@ -80,7 +80,7 @@
 
 	var/stasis = inStasisNow()
 	if(getStasis() > 2)
-		Sleeping(20)
+		afflict_sleeping(20 * 20)
 
 	handle_changeling()
 
@@ -215,7 +215,7 @@
 				if(O == src)
 					continue
 				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
-			Unconscious(10)
+			afflict_unconscious(20 * 10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
 		if ((prob(5) && paralysis <= 1))
@@ -254,7 +254,7 @@
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
 				to_chat(src, "<span class='danger'>You suddenly black out!</span>")
-				Unconscious(10)
+				afflict_unconscious(20 * 10)
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				afflict_knockdown(20 * 10)
@@ -566,11 +566,11 @@
 		if(SA_pp > SA_para_min)
 
 			// 3 gives them one second to wake up and run away a bit!
-			Unconscious(3)
+			afflict_unconscious(20 * 3)
 
 			// Enough to make us sleep as well
 			if(SA_pp > SA_sleep_min)
-				Sleeping(5)
+				afflict_sleeping(20 * 5)
 
 		// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 		else if(SA_pp > 0.15)
@@ -1050,7 +1050,7 @@
 	//SSD check, if a logged player is awake put them back to sleep!
 	var/was_ssd = FALSE
 	if(species.get_ssd(src) && !client && !teleop && !override_ssd && !temporary_form)
-		Sleeping(2)
+		afflict_sleeping(20 * 2)
 		was_ssd = TRUE
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
@@ -1066,7 +1066,7 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
-			Unconscious(3)
+			afflict_unconscious(20 * 3)
 
 		if(hallucination)
 			if(hallucination >= 20 && !(species.species_flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
@@ -1091,7 +1091,7 @@
 		if(halloss >= species.total_health)
 			to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
 			src.visible_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.")
-			Unconscious(10)
+			afflict_unconscious(20 * 10)
 			setHalLoss(species.total_health - 1)
 
 		if(paralysis || sleeping)
@@ -1105,7 +1105,7 @@
 				if (mind)
 					//Are they SSD? If so we'll keep them asleep but work off some of that sleep var in case of stoxin or similar.
 					if(!was_ssd || sleeping > 3)
-						AdjustSleeping(-1)
+						adjust_sleeping(20 * -1)
 				if( prob(2) && health && !hal_crit )
 					spawn(0)
 						emote("snore")
@@ -1188,8 +1188,8 @@
 			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
-				Sleeping(1)
-				Unconscious(5)
+				afflict_sleeping(20 * 1)
+				afflict_unconscious(20 * 5)
 
 		// If you're dirty, your gloves will become dirty, too.
 		if(gloves && germ_level > gloves.germ_level && prob(10))
@@ -1731,7 +1731,7 @@
 	if(shock_stage >= 120)
 		if (prob(2))
 			to_chat(src, "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You are about to lose consciousness")]!</span>")
-			Unconscious(5)
+			afflict_unconscious(20 * 5)
 
 	if(shock_stage == 150)
 		emote("me",1,"can no longer stand, collapsing!")

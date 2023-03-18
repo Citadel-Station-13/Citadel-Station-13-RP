@@ -536,9 +536,9 @@ default behaviour is:
 	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
-	SetUnconscious(0)
+	set_unconscious(0)
 	set_stunned(0)
-	SetWeakened(0)
+	set_weakened(0)
 
 	// shut down ongoing problems
 	radiation = 0

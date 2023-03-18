@@ -30,7 +30,7 @@
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
 			M.drop_item_to_ground(I, INV_OP_FORCE)
 		//teleport person to cell
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)	//so they black out before warping
 		M.loc = pick(prisonwarp)
 		if(istype(M, /mob/living/carbon/human))

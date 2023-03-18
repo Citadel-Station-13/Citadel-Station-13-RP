@@ -116,9 +116,9 @@
 		death()
 		return TRUE
 
-	SetWeakened(0)
+	set_weakened(0)
 	set_stunned(0)
-	SetUnconscious(0)
+	set_unconscious(0)
 
 	if(on && !client && !busy)
 		spawn(0)
