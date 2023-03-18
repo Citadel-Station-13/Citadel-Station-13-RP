@@ -142,7 +142,7 @@
 						H.UpdateDamageIcon()
 					H.updatehealth()
 					if(affecting.organ_can_feel_pain())
-						H.afflict_knockdown(20 * 3)
+						H.afflict_paralyze(20 * 3)
 					return
 				check -= picked
 			return

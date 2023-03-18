@@ -116,7 +116,7 @@
 		death()
 		return TRUE
 
-	set_weakened(0)
+	set_paralyzed(0)
 	set_stunned(0)
 	set_unconscious(0)
 

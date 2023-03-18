@@ -163,7 +163,7 @@
 		C.setCloneLoss(0)
 		C.set_unconscious(0)
 		C.set_stunned(0)
-		C.set_weakened(0)
+		C.set_paralyzed(0)
 		C.radiation = 0
 		C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())
 		C.reagents.clear_reagents()

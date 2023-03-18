@@ -550,7 +550,7 @@
 					M.drop_active_held_item()
 				M.eye_blurry += 10
 				M.afflict_unconscious(20 * 1)
-				M.afflict_knockdown(20 * 4)
+				M.afflict_paralyze(20 * 4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")

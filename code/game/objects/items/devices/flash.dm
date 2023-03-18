@@ -233,7 +233,7 @@
 			user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
 		else
 			user.visible_message("<span class='notice'>[user] overloads [M]'s sensors with the flash!</span>")
-			M.afflict_knockdown(20 * rand(5,10))
+			M.afflict_paralyze(20 * rand(5,10))
 	else
 		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
 
@@ -284,7 +284,7 @@
 		var/safety = C.eyecheck()
 		if(safety <= 0)
 			C.adjustHalLoss(halloss_per_flash)
-			//C.afflict_knockdown(20 * 10)
+			//C.afflict_paralyze(20 * 10)
 			C.flash_eyes()
 			for(var/mob/M in viewers(C, null))
 				M.show_message("<span class='disarm'>[C] is blinded by the flash!</span>")

@@ -69,7 +69,7 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.afflict_knockdown(20 * 5)
+					if (prob(15))	M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = BP_HEAD)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
 					if(material)
@@ -90,7 +90,7 @@
 					return
 			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
 				M.forceMove(get_turf(src))
-				M.afflict_knockdown(20 * 5)
+				M.afflict_paralyze(20 * 5)
 				visible_message("<span class='danger'>[G.assailant] puts [G.affecting] on \the [src].</span>")
 			qdel(W)
 			return

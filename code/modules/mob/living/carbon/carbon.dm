@@ -180,7 +180,7 @@
 					src.IgniteMob()
 			adjust_unconscious\(20 * -3)
 			adjust_stunned(20 * -3)
-			adjust_weakened(20 * -3)
+			adjust_paralyzed(20 * -3)
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
@@ -265,7 +265,7 @@
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	afflict_knockdown(20 * FLOOR(stun_duration/2, 1))
+	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)

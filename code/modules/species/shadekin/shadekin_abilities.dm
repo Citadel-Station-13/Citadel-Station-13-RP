@@ -79,7 +79,7 @@
 	forceMove(T)
 	var/original_canmove = canmove
 	set_stunned(0)
-	set_weakened(0)
+	set_paralyzed(0)
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(pulledby)

@@ -37,7 +37,7 @@
 
 	if((MUTATION_CLUMSY in L.mutations) && prob(50))              //What if he's a clown?
 		to_chat(victim, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
-		L.afflict_knockdown(20 * 1)
+		L.afflict_paralyze(20 * 1)
 		L.take_organ_damage(2)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
@@ -59,7 +59,7 @@
 		add_attack_logs(L,victim,"Hit with [src]")
 
 		if(prob(15))
-			victim.afflict_knockdown(20 * 3)
+			victim.afflict_paralyze(20 * 3)
 			victim.take_organ_damage(3)
 		else
 			victim.take_organ_damage(5)
@@ -135,7 +135,7 @@
 		else
 			victim.take_organ_damage(8)
 			if(prob(30))
-				victim.afflict_knockdown(20 * 2)
+				victim.afflict_paralyze(20 * 2)
 				return
 			return
 

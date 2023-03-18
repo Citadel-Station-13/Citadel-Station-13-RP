@@ -64,7 +64,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.afflict_knockdown(20 * 3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 // Subtypes.

@@ -98,7 +98,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.afflict_knockdown(20 * 10)
+		M.afflict_paralyze(20 * 10)
 
 	if(master && wires & 1)
 		master.receive_signal()

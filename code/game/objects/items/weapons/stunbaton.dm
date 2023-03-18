@@ -133,7 +133,7 @@
 /obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
-		user.afflict_knockdown(20 * 30)
+		user.afflict_paralyze(20 * 30)
 		deductcharge(hitcost)
 		return
 	deductcharge(hitcost)

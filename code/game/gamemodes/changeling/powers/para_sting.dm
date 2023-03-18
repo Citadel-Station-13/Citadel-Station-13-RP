@@ -14,6 +14,6 @@
 		return 0
 	add_attack_logs(src,T,"Paralysis sting (changeling)")
 	to_chat(T, "<span class='danger'>Your muscles begin to painfully tighten.</span>")
-	T.afflict_knockdown(20 * 20)
+	T.afflict_paralyze(20 * 20)
 	feedback_add_details("changeling_powers","PS")
 	return 1

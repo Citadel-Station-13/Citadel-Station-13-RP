@@ -105,7 +105,7 @@
 
 		visible_message(SPAN_DANGER("\The [src] appears in a flurry of slashes \the [L]!"))
 		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
-		L.afflict_knockdown(20 * 3)
+		L.afflict_paralyze(20 * 3)
 		overshoot = FALSE
 
 	if(!overshoot) // We hit the target, or something, at destination, so we're done.
@@ -148,7 +148,7 @@
 		if(T.check_density(ignore_mobs = TRUE))
 			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
 			playsound(src, "punch", 75, 1)
-			afflict_knockdown(20 * 5)
+			afflict_paralyze(20 * 5)
 			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
 			return FALSE // Hit a wall.
 

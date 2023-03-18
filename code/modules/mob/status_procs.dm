@@ -50,6 +50,42 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+/mob/proc/is_paralyzed()
+	#warn impl
+
+/mob/proc/afflict_paralyze(amount)
+	#warn impl
+
+/mob/proc/adjust_paralyzed(amount)
+	#warn impl
+
+/mob/proc/set_paralyzed(amount)
+	#warn impl
+
+/mob/proc/is_rooted()
+	#warn impl
+
+/mob/proc/afflict_root(amount)
+	#warn impl
+
+/mob/proc/adjust_rooted(amount)
+	#warn impl
+
+/mob/proc/set_rooted(amount)
+	#warn impl
+
+/mob/proc/is_dazed()
+	#warn impl
+
+/mob/proc/afflict_daze(amount)
+	#warn impl
+
+/mob/proc/adjust_dazed(amount)
+	#warn impl
+
+/mob/proc/set_dazed(amount)
+	#warn impl
+
 /mob/proc/is_unconscious()
 	#warn impl
 

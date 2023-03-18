@@ -72,7 +72,7 @@
 		if(issilicon(M))
 			SEND_SOUND(M, sound('sound/weapons/flash.ogg'))
 			to_chat(M, "<span class='notice'>Auditory input overloaded.  Reinitializing...</span>")
-			M.afflict_knockdown(20 * rand(5,10))
+			M.afflict_paralyze(20 * rand(5,10))
 			affected += M
 
 	for(var/obj/machinery/light/L in range(range, src))

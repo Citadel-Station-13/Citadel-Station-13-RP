@@ -112,7 +112,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		adjust_weakened(20 * -1)
+		adjust_paralyzed(20 * -1)
 	return weakened
 
 /mob/living/proc/handle_stuttering()

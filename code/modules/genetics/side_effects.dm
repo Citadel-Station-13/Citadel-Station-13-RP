@@ -9,12 +9,12 @@
 		spawn(20)
 			if(!istype(H))
 				return
-			H.afflict_knockdown(20 * rand(0, S.duration / 50))
+			H.afflict_paralyze(20 * rand(0, S.duration / 50))
 		sleep(S.duration)
 
 		if(!istype(H))
 			return
-		H.set_weakened(0)
+		H.set_paralyzed(0)
 		S.finish(H)
 
 /datum/genetics/side_effect

@@ -32,7 +32,7 @@
 
 	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.species_flags & NOSLIP)) && prob(current_size*5))
 		to_chat(src, "<span class='danger'>A strong gravitational force slams you to the ground!</span>")
-		afflict_knockdown(20 * current_size)
+		afflict_paralyze(20 * current_size)
 	..()
 
 /obj/singularity_act()

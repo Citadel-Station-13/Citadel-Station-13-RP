@@ -89,7 +89,7 @@ the artifact triggers the rage.
 	// End all stuns.
 	holder.set_unconscious(0)
 	holder.set_stunned(0)
-	holder.set_weakened(0)
+	holder.set_paralyzed(0)
 	holder.setHalLoss(0)
 	holder.lying = 0
 	holder.update_canmove()

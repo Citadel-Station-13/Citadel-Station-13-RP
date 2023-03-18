@@ -269,7 +269,7 @@
 			if(R.cell.charge <= 666)
 				return
 			L.afflict_stun(20 * 1)
-			L.afflict_knockdown(20 * 1)
+			L.afflict_paralyze(20 * 1)
 			L.apply_effect(STUTTER, 1)
 			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \
 								"<span class='userdanger'>[user] has shocked you with its tongue! You can feel the betrayal.</span>")
@@ -281,7 +281,7 @@
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
-				H.afflict_knockdown(20 * 3)
+				H.afflict_paralyze(20 * 3)
 	else
 		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
 		if(do_after(user, 50, target = target))
@@ -442,7 +442,7 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.afflict_knockdown(20 * 3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")

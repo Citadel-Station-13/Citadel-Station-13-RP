@@ -723,7 +723,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
-		M.afflict_knockdown(20 * 10)
+		M.afflict_paralyze(20 * 10)
 	return
 
 /obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)

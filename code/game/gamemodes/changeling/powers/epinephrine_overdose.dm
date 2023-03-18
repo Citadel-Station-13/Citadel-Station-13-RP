@@ -32,7 +32,7 @@
 	C.set_stat(CONSCIOUS)
 	C.set_unconscious(0)
 	C.set_stunned(0)
-	C.set_weakened(0)
+	C.set_paralyzed(0)
 	C.lying = 0
 	C.update_canmove()
 //	C.reagents.add_reagent("toxin", 10)
@@ -61,6 +61,6 @@
 	M.adjustHalLoss(-30)
 	M.adjust_unconscious\(20 * -2)
 	M.adjust_stunned(20 * -2)
-	M.adjust_weakened(20 * -2)
+	M.adjust_paralyzed(20 * -2)
 	..()
 	return

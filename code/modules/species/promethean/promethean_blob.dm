@@ -372,7 +372,7 @@
 	if(r_hand) blob.prev_right_hand = r_hand
 
 	//Put our owner in it (don't transfer var/mind)
-	blob.afflict_knockdown(20 * 2)
+	blob.afflict_paralyze(20 * 2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
 	blob.ooc_notes = ooc_notes
@@ -440,7 +440,7 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	afflict_knockdown(20 * 2)
+	afflict_paralyze(20 * 2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey

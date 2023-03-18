@@ -30,7 +30,7 @@
 			if("feet")
 				if(!H.shoes)
 					affecting = H.get_organ(pick("l_leg", "r_leg"))
-					H.afflict_knockdown(20 * 3)
+					H.afflict_paralyze(20 * 3)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_organ(type)

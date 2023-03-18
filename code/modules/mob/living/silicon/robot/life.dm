@@ -30,7 +30,7 @@
 
 //	set_stunned(20 * min(stunned, 30))
 	set_unconscious(20 * min(paralysis, 30))
-//	set_weakened(20 * min(weakened, 20))
+//	set_paralyzed(20 * min(weakened, 20))
 	set_sleeping(0)
 	adjustBruteLoss(0)
 	adjustToxLoss(0)
@@ -88,7 +88,7 @@
 			if (src.stunned > 0)
 				adjust_stunned(20 * -1)
 			if (src.weakened > 0)
-				adjust_weakened(20 * -1)
+				adjust_paralyzed(20 * -1)
 			if (src.paralysis > 0)
 				adjust_unconscious\(20 * -1)
 				src.blinded = 1

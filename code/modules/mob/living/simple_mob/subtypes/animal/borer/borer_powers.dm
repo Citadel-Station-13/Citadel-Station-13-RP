@@ -262,7 +262,7 @@
 
 	to_chat(src, "<font color='red'>You focus your psychic lance on [M] and freeze their limbs with a wave of terrible dread.</font>")
 	to_chat(M, "<font color='red'>You feel a creeping, horrible sense of dread come over you, freezing your limbs and setting your heart racing.</font>")
-	M.afflict_knockdown(20 * 10)
+	M.afflict_paralyze(20 * 10)
 
 	used_dominate = world.time
 

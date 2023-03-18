@@ -96,5 +96,5 @@
 	else
 		target.adjustBruteLoss( min( 99 , (target.health - 1) )    )
 		target.afflict_stun(20 * 20)
-		target.afflict_knockdown(20 * 20)
+		target.afflict_paralyze(20 * 20)
 		target.stuttering = 20

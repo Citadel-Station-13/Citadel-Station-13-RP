@@ -481,7 +481,7 @@
 	M.reload_fullscreen()
 
 	M.emote("gasp")
-	M.afflict_knockdown(20 * rand(10,25))
+	M.afflict_paralyze(20 * rand(10,25))
 	M.updatehealth()
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)

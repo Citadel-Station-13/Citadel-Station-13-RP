@@ -96,7 +96,7 @@
 		break
 
 	if(victim)
-		victim.afflict_knockdown(20 * 2)
+		victim.afflict_paralyze(20 * 2)
 		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
 		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE

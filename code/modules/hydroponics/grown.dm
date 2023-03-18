@@ -160,7 +160,7 @@
 			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 			M.afflict_stun(20 * 8)
-			M.afflict_knockdown(20 * 5)
+			M.afflict_paralyze(20 * 5)
 			seed.thrown_at(src,M)
 			qdel(src)
 			return

@@ -657,7 +657,7 @@
 		var/mob/living/L = hit_atom
 		L.visible_message("<span class='danger'>\The [user] [attack_message] \the [L], sending them flying!</span>")
 		playsound(src, "punch", 50, 1)
-		L.afflict_knockdown(20 * 2)
+		L.afflict_paralyze(20 * 2)
 		L.adjustBruteLoss(rand(30, 50))
 		var/throwdir = get_dir(src, L)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)

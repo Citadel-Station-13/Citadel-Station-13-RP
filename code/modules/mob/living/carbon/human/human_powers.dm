@@ -68,13 +68,13 @@
 
 	var/failed
 	if(prob(75))
-		T.afflict_knockdown(20 * rand(0.5,3))
+		T.afflict_paralyze(20 * rand(0.5,3))
 	else
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 	if(failed)
-		src.afflict_knockdown(20 * rand(2,4))
+		src.afflict_paralyze(20 * rand(2,4))
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))

@@ -19,7 +19,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		return 0
 	if(!lying)
 		to_chat(src, "<span class='warning'>The sudden rush of air knocks you over!</span>")
-	afflict_knockdown(20 * 2)
+	afflict_paralyze(20 * 2)
 	last_airflow_stun = world.time
 
 /mob/living/silicon/airflow_stun()
@@ -111,7 +111,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
 	var/weak_amt = istype(A,/obj/item) ? A:w_class : rand(1,5) //Heheheh
-	afflict_knockdown(20 * weak_amt)
+	afflict_paralyze(20 * weak_amt)
 	return ..()
 
 /obj/airflow_hit(atom/A)

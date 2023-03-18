@@ -213,7 +213,7 @@
 	M.sdisabilities = 0
 	M.eye_blurry = 0
 	M.SetBlinded(0)
-	M.set_weakened(0)
+	M.set_paralyzed(0)
 	M.set_stunned(0)
 	M.set_unconscious(0)
 	M.silent = 0
@@ -307,7 +307,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.set_unconscious(0)
-	M.set_weakened(0)
+	M.set_paralyzed(0)
 	M.adjustToxLoss(rand(3))
 
 /datum/reagent/water/holywater

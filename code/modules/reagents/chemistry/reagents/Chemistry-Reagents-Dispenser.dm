@@ -469,7 +469,7 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_knockdown(20 * 2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
 			M.afflict_sleeping(20 * 20)

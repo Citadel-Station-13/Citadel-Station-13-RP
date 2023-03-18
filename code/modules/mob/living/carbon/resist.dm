@@ -1,6 +1,6 @@
 /mob/living/carbon/resist_fire()
 	adjust_fire_stacks(-1.2)
-	afflict_knockdown(20 * 3)
+	afflict_paralyze(20 * 3)
 	spin(32,2)
 	visible_message(
 		SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),

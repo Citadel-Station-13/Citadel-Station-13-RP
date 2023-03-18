@@ -117,7 +117,7 @@
 			if(limb_pain)
 				emote("scream")
 			custom_emote(1, "collapses!")
-		afflict_knockdown(20 * 5) //can't emote while weakened, apparently.
+		afflict_paralyze(20 * 5) //can't emote while weakened, apparently.
 
 /mob/living/carbon/human/proc/handle_grasp()
 	if(!l_hand && !r_hand)

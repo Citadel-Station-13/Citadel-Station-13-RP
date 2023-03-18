@@ -1194,7 +1194,7 @@
 					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 				else
 					if(prob(30)) // Little known fact: HRP is /tg/ + 10
-						src.afflict_knockdown(20 * 2)
+						src.afflict_paralyze(20 * 2)
 						if(prob(50))
 							src.adjustBruteLoss(1)
 							message = "attempts to do a flip and falls on their face. Ouch!"

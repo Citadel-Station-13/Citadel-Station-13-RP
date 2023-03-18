@@ -538,7 +538,7 @@ default behaviour is:
 	setBrainLoss(0)
 	set_unconscious(0)
 	set_stunned(0)
-	set_weakened(0)
+	set_paralyzed(0)
 
 	// shut down ongoing problems
 	radiation = 0
@@ -705,11 +705,11 @@ default behaviour is:
 		lastpuke = 1
 		if(isSynthetic())
 			to_chat(src, "<span class='danger'>A sudden, dizzying wave of internal feedback rushes over you!</span>")
-			src.afflict_knockdown(20 * 5)
+			src.afflict_paralyze(20 * 5)
 		else
 			if (nutrition <= 100)
 				to_chat(src, "<span class='danger'>You gag as you want to throw up, but there's nothing in your stomach!</span>")
-				src.afflict_knockdown(20 * 10)
+				src.afflict_paralyze(20 * 10)
 			else
 				to_chat(src, "<span class='warning'>You feel nauseous...</span>")
 

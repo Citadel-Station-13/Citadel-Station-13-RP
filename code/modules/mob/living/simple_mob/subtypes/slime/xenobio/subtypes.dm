@@ -415,7 +415,7 @@
 		if(L.mob_size <= MOB_MEDIUM)
 			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with the impact!"))
 			playsound(src, "punch", 50, 1)
-			L.afflict_knockdown(20 * 1)
+			L.afflict_paralyze(20 * 1)
 			var/throwdir = get_dir(src, L)
 			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else

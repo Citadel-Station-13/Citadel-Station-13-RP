@@ -64,7 +64,7 @@
 			if(!L.buckled && !issilicon(L))
 				if(!L.Check_Shoegrip())
 					L.throw_at_old(get_step_rand(L),1,5)
-				L.afflict_knockdown(20 * 5)
+				L.afflict_paralyze(20 * 5)
 			if(L.client)
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
 				shake_camera(L, 6, 1)

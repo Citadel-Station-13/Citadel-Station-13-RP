@@ -170,7 +170,7 @@
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
 				force_down = 0
 			else
-				affecting.afflict_knockdown(20 * 2)
+				affecting.afflict_paralyze(20 * 2)
 
 	if(state >= GRAB_NECK)
 		affecting.afflict_stun(20 * 3)
@@ -178,7 +178,7 @@
 	if(state >= GRAB_KILL)
 		//affecting.apply_effect(STUTTER, 5) //would do this, but affecting isn't declared as mob/living for some stupid reason.
 		affecting.stuttering = max(affecting.stuttering, 5) //It will hamper your voice, being choked and all.
-		affecting.afflict_knockdown(20 * 5)	//Should keep you down unless you get help.
+		affecting.afflict_paralyze(20 * 5)	//Should keep you down unless you get help.
 		affecting.losebreath = max(affecting.losebreath + 2, 3)
 
 	adjust_position()
@@ -586,7 +586,7 @@
 
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
-	target.afflict_knockdown(20 * 3)
+	target.afflict_paralyze(20 * 3)
 	target.lying = 1
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim

@@ -79,7 +79,7 @@
 				if(eye_coverage < 2)
 					M.flash_eyes()
 					M.afflict_stun(20 * 2)
-					M.afflict_knockdown(20 * 10)
+					M.afflict_paralyze(20 * 10)
 
 		if(searing)
 			if(blocked)

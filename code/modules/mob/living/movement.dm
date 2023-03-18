@@ -170,7 +170,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species.lightweight && prob(50))
-			H.afflict_knockdown(20 * 5)
+			H.afflict_paralyze(20 * 5)
 			H.visible_message(SPAN_WARNING("[src] bumps into [H], knocking them to the floor!"))
 			return TRUE
 

@@ -423,7 +423,7 @@
 				flick("baton_active", src)
 				user.afflict_stun(20 * 10)
 				user.stuttering = 10
-				user.afflict_knockdown(20 * 10)
+				user.afflict_paralyze(20 * 10)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20

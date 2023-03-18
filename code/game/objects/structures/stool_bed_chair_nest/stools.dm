@@ -84,7 +84,7 @@ var/global/list/stool_cache = list() //haha stool
 		dismantle()
 		qdel(src)
 		var/mob/living/T = target
-		T.afflict_knockdown(20 * 10)
+		T.afflict_paralyze(20 * 10)
 		T.apply_damage(20)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 

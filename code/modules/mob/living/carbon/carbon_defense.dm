@@ -81,11 +81,11 @@
 			if(16 to 20)
 				afflict_stun(20 * 2)
 			if(21 to 25)
-				afflict_knockdown(20 * 2)
+				afflict_paralyze(20 * 2)
 			if(26 to 30)
-				afflict_knockdown(20 * 5)
+				afflict_paralyze(20 * 5)
 			if(31 to INFINITY)
-				afflict_knockdown(20 * 10) //This should work for now, more is really silly and makes you lay there forever
+				afflict_paralyze(20 * 10) //This should work for now, more is really silly and makes you lay there forever
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)
