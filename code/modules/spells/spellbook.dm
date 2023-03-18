@@ -399,7 +399,7 @@
 /obj/item/spellbook/oneuse/knock/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You're knocked down!</span>")
-	user.Weaken(20)
+	user.afflict_knockdown(20 * 20)
 
 /obj/item/spellbook/oneuse/horsemask
 	spell = /spell/targeted/equip_item/horsemask

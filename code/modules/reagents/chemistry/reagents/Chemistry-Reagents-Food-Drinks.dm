@@ -125,7 +125,7 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_knockdown(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
 			M.Sleeping(20)
@@ -616,7 +616,7 @@ End Citadel Change */
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
 		M.afflict_stun(20 * 5)
-		M.Weaken(5)
+		M.afflict_knockdown(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
@@ -629,7 +629,7 @@ End Citadel Change */
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 2)
 		M.afflict_stun(20 * 5)
-		M.Weaken(5)
+		M.afflict_knockdown(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	if(alien == IS_SLIME)
@@ -788,7 +788,7 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_knockdown(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
 			M.Sleeping(20)
@@ -1507,7 +1507,7 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_knockdown(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
 			M.Sleeping(20)
@@ -3090,7 +3090,7 @@ End Citadel Change */
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.Weaken(3)
+	M.afflict_knockdown(20 * 3)
 
 /datum/reagent/ethanol/patron
 	name = "Patron"

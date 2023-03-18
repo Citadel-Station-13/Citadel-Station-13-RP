@@ -115,7 +115,7 @@
 /mob/living/simple_mob/animal/roach/Greta
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
@@ -162,7 +162,7 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 3
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
@@ -528,7 +528,7 @@
 	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(stealthed_weaken_amount)
+			L.afflict_knockdown(20 * stealthed_weaken_amount)
 			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()

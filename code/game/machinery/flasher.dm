@@ -91,7 +91,7 @@
 			if(!O.blinded && isliving(O))
 				var/mob/living/L = O
 				L.flash_eyes()
-		O.Weaken(flash_time)
+		O.afflict_knockdown(20 * flash_time)
 
 /obj/machinery/flasher/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))

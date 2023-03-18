@@ -37,7 +37,7 @@
 	if(!bellied) return
 	playsound('sound/effects/stealthoff.ogg',50,0)
 	bellied.forceMove(get_turf(src))
-	bellied.Weaken(2)
+	bellied.afflict_knockdown(20 * 2)
 	bellied.visible_message("[bellied] flops out of \the [src].","You flop out of \the [src].","You hear a thud.")
 	bellied = null
 

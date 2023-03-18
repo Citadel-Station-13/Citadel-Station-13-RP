@@ -364,7 +364,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Weaken(15)
+				M.afflict_knockdown(20 * 15)
 
 			if(4 to 5)
 				if(hasvar(M, "glasses"))

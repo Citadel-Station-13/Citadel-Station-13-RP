@@ -174,7 +174,7 @@
 
 	if (stun_amount)
 		afflict_stun(20 * stun_amount)
-		Weaken(stun_amount)
+		afflict_knockdown(20 * stun_amount)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 

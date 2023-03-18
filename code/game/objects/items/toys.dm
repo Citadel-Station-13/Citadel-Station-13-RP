@@ -206,7 +206,7 @@
 
 		return
 	else if (bullets == 0)
-		user.Weaken(5)
+		user.afflict_knockdown(20 * 5)
 		for(var/mob/O in viewers(world.view, user))
 			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
@@ -231,7 +231,7 @@
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
 				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
-		user.Weaken(5)
+		user.afflict_knockdown(20 * 5)
 
 /obj/item/toy/ammo/crossbow
 	name = "foam dart"

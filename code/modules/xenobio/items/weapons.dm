@@ -19,7 +19,7 @@
 				var/mob/living/simple_mob/slime/S = L
 				S.slimebatoned(user, 5) // Feral and xenobio slimes will react differently to this.
 			else
-				L.Weaken(5)
+				L.afflict_knockdown(20 * 5)
 
 		// Now for prommies.
 		if(ishuman(L))
@@ -99,7 +99,7 @@
 				var/mob/living/simple_mob/slime/S = L
 				S.slimebatoned(firer, round(agony/2))
 			else
-				L.Weaken(round(agony/2))
+				L.afflict_knockdown(20 * round(agony/2))
 
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L

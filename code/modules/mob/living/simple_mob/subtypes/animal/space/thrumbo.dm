@@ -87,7 +87,7 @@
 			var/mob/living/M = AM
 			visible_message("<span class='warning'>[src] rams [AM]!</span>")
 			M.afflict_stun(20 * 5)
-			M.Weaken(3)
+			M.afflict_knockdown(20 * 3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder

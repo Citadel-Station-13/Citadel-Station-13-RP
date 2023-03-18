@@ -11,7 +11,7 @@
 		var/susceptibility = GetAnomalySusceptibility(C)
 		if(prob(susceptibility * 100))
 			to_chat(C, "<font color='red'>A powerful force overwhelms your consciousness.</font>")
-			C.Weaken(rand(1,10) * susceptibility)
+			C.afflict_knockdown(20 * rand(1,10) * susceptibility)
 			C.stuttering += 30 * susceptibility
 			C.afflict_stun(20 * rand(1,10) * susceptibility)
 
@@ -22,7 +22,7 @@
 			var/susceptibility = GetAnomalySusceptibility(C)
 			if(prob(10 * susceptibility))
 				to_chat(C, "<font color='red'>Your body goes numb for a moment.</font>")
-				C.Weaken(2)
+				C.afflict_knockdown(20 * 2)
 				C.stuttering += 2
 				if(prob(10))
 					C.afflict_stun(20 * 1)

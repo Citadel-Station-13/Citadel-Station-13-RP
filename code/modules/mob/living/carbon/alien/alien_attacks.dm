@@ -49,7 +49,7 @@
 					if ((O.client && !( O.blinded )))
 						O.show_message(text("<font color='red'><B>[] has punched []!</B></font>", L, src), 1)
 				if (damage > 4.9)
-					Weaken(rand(10,15))
+					afflict_knockdown(20 * rand(10,15))
 					for(var/mob/O in viewers(L, null))
 						if ((O.client && !( O.blinded )))
 							O.show_message(text("<font color='red'><B>[] has weakened []!</B></font>", L, src), 1, "<font color='red'>You hear someone fall.</font>", 2)

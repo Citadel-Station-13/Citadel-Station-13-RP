@@ -73,7 +73,7 @@
 		if(STUN)
 			afflict_stun(20 * effect * blocked)
 		if(WEAKEN)
-			Weaken(effect * blocked)
+			afflict_knockdown(20 * effect * blocked)
 		if(PARALYZE)
 			Unconscious(effect * blocked)
 		if(AGONY)

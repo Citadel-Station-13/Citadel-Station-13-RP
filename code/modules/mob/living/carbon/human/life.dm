@@ -257,7 +257,7 @@
 				Unconscious(10)
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
-				Weaken(10)
+				afflict_knockdown(20 * 10)
 
 /mob/living/carbon/human/handle_mutations_and_radiation(seconds)
 	if(inStasisNow())
@@ -323,7 +323,7 @@
 				to_chat(src, SPAN_WARNING("Ionization detected in systems. Rebooting..."))
 				if(!lying)
 					emote("collapse")
-				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
+				afflict_knockdown(20 * RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
 #endif
 	else
 		if(radiation >= RAD_MOB_WARNING_THRESHOLD)
@@ -339,7 +339,7 @@
 				to_chat(src, SPAN_WARNING("You feel weak..."))
 				if(!lying)
 					emote("collapse")
-				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
+				afflict_knockdown(20 * RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
 		if(radiation >= RAD_MOB_HAIRLOSS_THRESHOLD)
 			if(prob(RAD_MOB_HAIRLOSS_CHANCE(radiation, seconds)))
 				to_chat(src, SPAN_WARNING("Your hair starts falling out in clumps..."))
@@ -1721,12 +1721,12 @@
 		if(shock_stage == 60) emote("me",1,"'s body becomes limp.")
 		if (prob(2))
 			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please&#44; just end the pain", "Your whole body is going numb")]!</span>")
-			Weaken(20)
+			afflict_knockdown(20 * 20)
 
 	if(shock_stage >= 80)
 		if (prob(5))
 			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please&#44; just end the pain", "Your whole body is going numb")]!</span>")
-			Weaken(20)
+			afflict_knockdown(20 * 20)
 
 	if(shock_stage >= 120)
 		if (prob(2))
@@ -1735,10 +1735,10 @@
 
 	if(shock_stage == 150)
 		emote("me",1,"can no longer stand, collapsing!")
-		Weaken(20)
+		afflict_knockdown(20 * 20)
 
 	if(shock_stage >= 150)
-		Weaken(20)
+		afflict_knockdown(20 * 20)
 
 /mob/living/carbon/human/proc/handle_pulse()
 	if(life_tick % 5)

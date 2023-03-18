@@ -1052,7 +1052,7 @@
 	if(istype(O, /obj/item/melee/spike))
 		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
-		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
+		afflict_knockdown(20 * 2) // having a very jagged stick jammed into your bits is Bad for your health
 	organ.take_damage(rand(1,3), 0, 0)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING

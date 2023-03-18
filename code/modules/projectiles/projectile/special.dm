@@ -141,7 +141,7 @@
 			if(prob(15))
 				// todo: less stunlock capability
 				M.afflict_radiation(RAD_MOB_AFFLICT_FLORARAY_ON_PLANT, TRUE)
-				M.Weaken(5)
+				M.afflict_knockdown(20 * 5)
 				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
 					V.show_message("<font color='red'>[M] writhes in pain as [TM.his] vacuoles boil.</font>", 3, "<font color='red'>You hear the crunching of leaves.</font>", 2)

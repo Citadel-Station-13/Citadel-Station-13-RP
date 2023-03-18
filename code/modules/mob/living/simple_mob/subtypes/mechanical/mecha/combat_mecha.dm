@@ -30,7 +30,7 @@
 		if(L.mob_size <= MOB_MEDIUM)
 			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their mechanized fist!"))
 			playsound(src, "punch", 50, 1)
-			L.Weaken(weaken_amount)
+			L.afflict_knockdown(20 * weaken_amount)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)

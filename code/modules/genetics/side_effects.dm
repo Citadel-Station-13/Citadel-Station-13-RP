@@ -9,7 +9,7 @@
 		spawn(20)
 			if(!istype(H))
 				return
-			H.Weaken(rand(0, S.duration / 50))
+			H.afflict_knockdown(20 * rand(0, S.duration / 50))
 		sleep(S.duration)
 
 		if(!istype(H))

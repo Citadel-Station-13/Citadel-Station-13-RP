@@ -260,7 +260,7 @@
 			if(H.losebreath >= 10)
 				H.losebreath = max(10, H.losebreath - 10)
 			H.adjustOxyLoss(2)
-			H.Weaken(10)
+			H.afflict_knockdown(20 * 10)
 
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
@@ -281,7 +281,7 @@
 			if(H.losebreath >= 10)
 				H.losebreath = max(10, M.losebreath-10)
 			H.adjustOxyLoss(2)
-			H.Weaken(10)
+			H.afflict_knockdown(20 * 10)
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed * 3)
 
@@ -302,7 +302,7 @@
 		return
 	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(3 * removed)
-	M.Weaken(10)
+	M.afflict_knockdown(20 * 10)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
 
@@ -731,7 +731,7 @@
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else if(effective_dose < 5 * threshold)
 		if(prob(50))
-			M.Weaken(2)
+			M.afflict_knockdown(20 * 2)
 		M.drowsyness = max(M.drowsyness, 20)
 	else
 		if(alien == IS_SLIME) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
@@ -741,7 +741,7 @@
 				M.ear_deaf = max(M.ear_deaf, 4)
 				M.Confuse(2)
 			else
-				M.Weaken(2)
+				M.afflict_knockdown(20 * 2)
 		else
 			M.Sleeping(20)
 		M.drowsyness = max(M.drowsyness, 60)
@@ -777,14 +777,14 @@
 		M.Confuse(2)
 		M.drowsyness += 2
 	else if(effective_dose < 2 * threshold)
-		M.Weaken(30)
+		M.afflict_knockdown(20 * 30)
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else
 		if(alien == IS_SLIME)
 			if(prob(30))
 				M.ear_deaf = max(M.ear_deaf, 4)
 			M.eye_blurry = max(M.eye_blurry, 60)
-			M.Weaken(30)
+			M.afflict_knockdown(20 * 30)
 			M.Confuse(40)
 		else
 			M.Sleeping(30)

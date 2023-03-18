@@ -131,11 +131,11 @@
 				buckle_mob(victim)
 				victim.setDir(pick(GLOB.cardinal))
 				to_chat(victim, "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>")
-				victim.Weaken(1)
+				victim.afflict_knockdown(20 * 1)
 				victim.adjustToxLoss(rand(0.5,1.25))
 				seed.do_thorns(victim,src)
 			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
-				victim.Weaken(1.5)
+				victim.afflict_knockdown(20 * 1.5)
 				victim.adjustToxLoss(rand(1,3.5))
 				attack_mob(victim,rand(2,3.5))

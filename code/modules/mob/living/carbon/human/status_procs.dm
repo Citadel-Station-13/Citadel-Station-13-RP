@@ -3,15 +3,12 @@
 		return FALSE
 	return ..()
 
-/mob/living/carbon/human/Weaken(amount)
+/mob/living/carbon/human/afflict_knockdown(20 * amount)
 	if(MUTATION_HULK in mutations)
-		return
-	..()
+		return FALSE
+	return ..()
 
-/mob/living/carbon/human/Unconscious(amount)
+/mob/living/carbon/human/afflict_unconscious(amount)
 	if(MUTATION_HULK in mutations)
-		return
-	// Notify our AI if they can now control the suit.
-	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
-		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
-	..()
+		return FALSE
+	return ..()

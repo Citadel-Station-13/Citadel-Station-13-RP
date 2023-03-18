@@ -71,7 +71,7 @@
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
 	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
 		if (ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
-			user.Weaken(5) //They get tackled anyway whether they're edible or not.
+			user.afflict_knockdown(20 * 5) //They get tackled anyway whether they're edible or not.
 			user.visible_message("<span class='danger'>\the [user] swats \the [src] with \the [O] and promptly gets tackled!</span>!")
 			if (will_eat(user))
 				set_AI_busy(TRUE)

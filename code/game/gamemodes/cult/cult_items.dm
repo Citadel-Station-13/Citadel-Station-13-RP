@@ -30,7 +30,7 @@
 		to_chat(user, "<span class='danger'>An inexplicable force rips through your [affecting.name], tearing the sword from your grasp!</span>")
 		//random amount of damage between half of the blade's force and the full force of the blade.
 		H.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
-		H.Weaken(5)
+		H.afflict_knockdown(20 * 5)
 	else if(!istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='danger'>An inexplicable force rips through you, tearing the sword from your grasp!</span>")
 	else

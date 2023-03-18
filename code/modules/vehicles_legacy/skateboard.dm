@@ -92,7 +92,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else if (rough_terrain)
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
@@ -103,7 +103,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
 			Move(backdir)
@@ -131,7 +131,7 @@
 			var/atom/throw_target = get_edge_target_turf(src)
 			L.throw_at_old(throw_target, 2, 2)
 			visible_message("<span class='danger'>[L] loses their footing and slams on the ground!</span>")
-			L.Weaken(40)
+			L.afflict_knockdown(20 * 40)
 			grinding = FALSE
 			icon_state = board_icon
 			return
@@ -237,7 +237,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else if (rough_terrain || prob(70))
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
@@ -248,7 +248,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
 			Move(backdir)
@@ -298,7 +298,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
 			Move(backdir)
@@ -327,7 +327,7 @@
 				H.setBrainLoss(2,5)
 				H.updatehealth()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_knockdown(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
 			Move(backdir)

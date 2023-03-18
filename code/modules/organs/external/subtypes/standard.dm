@@ -144,7 +144,7 @@
 	if (. >= 2)
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
-			owner.Weaken(5)
+			owner.afflict_knockdown(20 * 5)
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -183,7 +183,7 @@
 	if (. >= 2)
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
-			owner.Weaken(5)
+			owner.afflict_knockdown(20 * 5)
 
 /obj/item/organ/external/foot/right
 	organ_tag = BP_R_FOOT

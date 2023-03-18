@@ -238,7 +238,7 @@
 	M.AdjustWeakened(-4)
 	M.adjust_stunned(20 * -4)
 	M.Unconscious(2)
-	M.Weaken(2)
+	M.afflict_knockdown(20 * 2)
 	M.afflict_stun(20 * 2)
 	if(M.reagents.get_reagent_amount("inaprovaline") < 5)
 		M.reagents.add_reagent("inaprovaline", 5)

@@ -90,7 +90,7 @@
 	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
 		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
 		if(has_genitals() || get_pain() + agony_amount > max_damage)
-			owner.Weaken(6)
+			owner.afflict_knockdown(20 * 6)
 		else
 			owner.afflict_stun(20 * 6)
 			owner.drop_l_hand()

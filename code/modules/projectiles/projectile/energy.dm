@@ -189,7 +189,7 @@
 		M.Confuse(30)
 	else if (!ear_safety)
 		M.afflict_stun(20 * 10)
-		M.Weaken(2)
+		M.afflict_knockdown(20 * 2)
 		M.ear_damage += rand(1, 10)
 		M.ear_deaf = max(M.ear_deaf,15)
 	if (M.ear_damage >= 15)

@@ -268,7 +268,7 @@
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
-			M.Weaken(6)
+			M.afflict_knockdown(20 * 6)
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
@@ -294,7 +294,7 @@
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
 			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
-			M.Weaken(3)
+			M.afflict_knockdown(20 * 3)
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
@@ -375,7 +375,7 @@
 		if(alien == IS_SLIME)
 			chem_effective = 0.25
 			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
-			M.Weaken(10)
+			M.afflict_knockdown(20 * 10)
 			M.silent = max(M.silent, 10)
 			M.make_jittery(4)
 		M.adjustCloneLoss(-10 * removed * chem_effective)//Clone damage, either occured during cloning or from xenobiology slimes.
@@ -401,7 +401,7 @@
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.Weaken(20)
+			M.afflict_knockdown(20 * 20)
 			M.silent = max(M.silent, 20)
 			M.make_jittery(4)
 		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
@@ -435,7 +435,7 @@
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.Weaken(20)
+			M.afflict_knockdown(20 * 20)
 			M.silent = max(M.silent, 20)
 			M.make_jittery(4)
 		if(M.stat != DEAD)
@@ -632,7 +632,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
-			M.Weaken(5)
+			M.afflict_knockdown(20 * 5)
 		if(dose >= 10 && M.paralysis < 40)
 			M.AdjustUnconscious(1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
@@ -1165,7 +1165,7 @@
 					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
 				M.afflict_stun(20 * 2)
 				spawn(30)
-					M.Weaken(2)
+					M.afflict_knockdown(20 * 2)
 		if(dose >= 10 || M.toxloss >= 25) //Internal skeletal tubes are rupturing, allowing the chemical to breach them.
 			M.adjustToxLoss(removed * 4)
 			M.make_jittery(5)
@@ -1183,7 +1183,7 @@
 	if(prob(20))
 		M.Confuse(5)
 	if(prob(20))
-		M.Weaken(5)
+		M.afflict_knockdown(20 * 5)
 	if(prob(20))
 		M.make_dizzy(5)
 	if(prob(20))

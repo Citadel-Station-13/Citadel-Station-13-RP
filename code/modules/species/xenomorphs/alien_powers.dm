@@ -305,7 +305,7 @@
 		to_chat(src, "<span class='warning'>You miss!</span>")
 		return
 
-	T.Weaken(3)
+	T.afflict_knockdown(20 * 3)
 
 	var/use_hand = "left"
 	if(l_hand)

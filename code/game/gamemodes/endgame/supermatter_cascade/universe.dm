@@ -112,7 +112,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 		if(!istype(M.current,/mob/living))
 			continue
 		if(M.current.stat!=2)
-			M.current.Weaken(10)
+			M.current.afflict_knockdown(20 * 10)
 			M.current.flash_eyes()
 
 		clear_antag_roles(M)

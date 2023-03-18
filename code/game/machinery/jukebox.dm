@@ -242,7 +242,7 @@
 				//M.SetSleeping(0)
 				//M.stuttering += 20
 				//M.ear_deaf += 30
-				//M.Weaken(3)
+				//M.afflict_knockdown(20 * 3)
 				//if(prob(30))
 					//M.afflict_stun(20 * 10)
 					//M.Unconscious(4)
