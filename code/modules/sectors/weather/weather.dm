@@ -117,7 +117,7 @@
 	/// obscuration level - if below sector cycle level, anything above us is obscured.
 	var/sky_level = SECTOR_CYCLE_LEVEL_DEFAULT_OBSCURE
 	/// what the person sees when they look up; this is if we're not blocked.
-	var/sky_cover_message = "Some unknown meteorological phenomenom is obscuring your view."
+	var/sky_message = "Some unknown meteorological phenomenom is obscuring your view."
 	#warn hook
 
 	//? messages

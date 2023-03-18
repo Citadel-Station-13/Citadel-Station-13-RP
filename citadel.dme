@@ -4046,6 +4046,7 @@
 #include "code\modules\sectors\weather\weather.dm"
 #include "code\modules\sectors\weather\weather_holder.dm"
 #include "code\modules\sectors\weather\components\fallout.dm"
+#include "code\modules\sectors\weather\components\inflicts_wet.dm"
 #include "code\modules\sectors\weather\components\lightning.dm"
 #include "code\modules\sectors\weather\instances\clear.dm"
 #include "code\modules\sectors\weather\instances\cloudy.dm"
