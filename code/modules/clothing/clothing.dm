@@ -155,3 +155,49 @@
 		icon = sprite_sheets_obj[target_species]
 	else
 		icon = initial(icon)
+
+//? styles
+
+/**
+ * returns available styles as name = state or image or mutable_appearance
+ */
+/obj/item/clothing/proc/available_styles(mob/user)
+	. = list()
+
+/**
+ * sets us to a specific style
+ */
+/obj/item/clothing/proc/set_style(style, mob/user)
+	return FALSE
+
+/**
+ * prompts a user to pick style
+ */
+/obj/item/clothing/proc/pick_style(mob/user)
+	var/list/available = available_styles(user)
+	var/list/assembled = list()
+	for(var/name in available)
+		var/using = available[name]
+		if(istext(using))
+			assembled[name] = image(icon, icon_state = using)
+		else if(isimage(using) || ismutableappearance(using))
+			assembled[name] = using
+	if(!length(available))
+		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
+		return
+	var/choice = show_radial_menu(user, src, assembled)
+	if(isnull(choice))
+		return
+	set_style(choice, user)
+
+/obj/item/clothing/verb/pick_style_verb()
+	set name = "Set Worn Style"
+	set category = "IC"
+	set desc = "Wear this piece of clothing in a different style."
+	set src in usr
+
+	// todo: mobility flags
+	if(!IS_CONSCIOUS(usr))
+		return
+
+	pick_style(usr)
