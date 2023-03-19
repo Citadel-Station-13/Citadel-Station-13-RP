@@ -9,7 +9,7 @@
 	bio = 1.0
 	rad = 0.7
 
-/datum/light/pirate/light
+/datum/armor/pirate/light
 	melee = 0.3
 	bullet = 0.3
 	laser = 0.4

@@ -879,7 +879,7 @@
 	name = "bone talisman"
 	desc = "A Scori religious talisman. Some say the Buried Ones smile on those who wear it."
 	icon_state = "talisman"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	r_armor_type = /datum/armor/lavaland/trinket
 	slot = ACCESSORY_SLOT_TIE
 
 /obj/item/clothing/accessory/disenchanted_talisman
@@ -892,11 +892,11 @@
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	r_armor_type = /datum/armor/lavaland/trinket
 	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/skullcodpiece/fake
 	name = "false codpiece"
 	desc = "A plastic ornament, intended to protect the important things in life. It's not very good at it."
 	icon_state = "skull"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	r_armor_type = /datum/armor/none

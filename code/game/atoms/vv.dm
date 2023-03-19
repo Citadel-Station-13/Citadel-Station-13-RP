@@ -154,8 +154,8 @@
 		if(!islist(result) || result["button"] != 2) // 2 is cancel
 			return
 		var/list/built
-		for(var/key in results["values"])
-			built[key] = text2num(results["values"][key])
+		for(var/key in result["values"])
+			built[key] = text2num(result["values"][key])
 		r_armor = r_armor.overwritten(built)
 		log_admin("[key_name(usr)] modified the armor on [src] ([type]) to [r_armor.log_string()]")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] modified the armor on [src] ([type]) to [r_armor.log_string()]"))

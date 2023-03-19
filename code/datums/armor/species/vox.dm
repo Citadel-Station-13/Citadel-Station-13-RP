@@ -11,3 +11,9 @@
 	bio = 1.0
 	rad = 0.5
 
+/datum/armor/vox/scrap
+	melee = 0.6
+	bullet = 0.3
+	laser = 0.3
+	energy = 0.15
+	bomb = 0.4

@@ -255,7 +255,6 @@
 	name = "research director's winter coat"
 	desc = "A thick arctic winter coat with an outdated atomic model instead of a plastic zipper tab. Most in the know are heavily aware that Bohr's model of the atom was outdated by the time of the 1930s when the Heisenbergian and Schrodinger models were generally accepted for true. Nevertheless, we still see its use in anachronism, roleplaying, and, in this case, as a zipper tab. At least it should keep you warm on your ivory pillar."
 	icon_state = "coatrd"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 5,"energy" = 0, "bomb" = 15, "bio" = 5, "rad" = 5)
 	hoodtype = /obj/item/clothing/head/hood/winter/rd
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering
@@ -597,7 +596,6 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/mercy
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 40, rad = 20)
 
 //Donator jacket.
 /obj/item/clothing/suit/storage/hooded/pariah
@@ -609,4 +607,3 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/pariah
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)

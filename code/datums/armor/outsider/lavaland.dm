@@ -1,5 +1,13 @@
 /datum/armor/lavaland
 
+/datum/armor/lavaland/trinket
+	melee = 0.05
+	bullet = 0.05
+	laser = 0.05
+	bomb = 0.1
+	bio = 0.2
+	rad = 0.05
+
 /datum/armor/lavaland/eldritch
 	melee = 0.2
 	laser = 0.4

@@ -89,7 +89,7 @@
 	desc = "A basic armor plate made of steel-reinforced synthetic fibers. Attaches to a plate carrier."
 	icon_state = "armor_light"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 30, bullet = 15, laser = 40, energy = 10, bomb = 25, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/low
 	slot = ACCESSORY_SLOT_ARMOR_C
 
 /obj/item/clothing/accessory/armorplate/get_fibers()
@@ -99,26 +99,26 @@
 	name = "mesh armor plate"
 	desc = "A mesh armor plate made of steel-reinforced synthetic fibers, great for dealing with small blades. Attaches to a plate carrier."
 	icon_state = "armor_stab"
-	armor = list(melee = 25, bullet = 5, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
-	armorsoak = list(melee = 7, bullet = 5, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/accessory/armor/armorplate/medium
 	name = "medium armor plate"
 	desc = "A plasteel-reinforced synthetic armor plate, providing good protection. Attaches to a plate carrier."
 	icon_state = "armor_medium"
+	r_armor_type = /datum/armor/security/high
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armorplate/tactical
 	name = "tactical armor plate"
 	desc = "A medium armor plate with additional ablative coating. Attaches to a plate carrier."
 	icon_state = "armor_tactical"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/accessory/armor/armorplate/merc
 	name = "heavy armor plate"
 	desc = "A ceramics-reinforced synthetic armor plate, providing state of of the art protection. Attaches to a plate carrier."
 	icon_state = "armor_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armorplate/bulletproof
 	name = "ballistic armor plate"
@@ -177,7 +177,7 @@
 	icon_state = "armguards"
 	gender = PLURAL
 	body_cover_flags = ARMS
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_A
 
 /obj/item/clothing/accessory/armor/armguards/blue
@@ -200,7 +200,7 @@
 	name = "heavy arm guards"
 	desc = "A pair of red-trimmed black arm pads reinforced with heavy armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armguards/laserproof
 	name = "ablative arm guards"
@@ -236,7 +236,7 @@
 	icon_state = "legguards"
 	gender = PLURAL
 	body_cover_flags = LEGS
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_L
 
 /obj/item/clothing/accessory/armor/legguards/blue
@@ -259,7 +259,7 @@
 	name = "heavy leg guards"
 	desc = "A pair of heavily armored leg pads in red-trimmed black. Attaches to a plate carrier."
 	icon_state = "legguards_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/legguards/laserproof
 	name = "ablative leg guards"
@@ -422,7 +422,7 @@
 
 //Debug variant
 /obj/item/clothing/accessory/armor/limb_plate
-	name = "armurr plating"
+	name = "armor plating"
 	desc = "You shouldn't be seeing this. Contact a Maintainer."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_override = 'icons/mob/clothing/ties.dmi'
