@@ -8,6 +8,8 @@
 	density = TRUE
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 //	use_power = 0
+	var/datum/gas_mixture/air_contents = new
+	var/obj/machinery/atmospherics/portables_connector/connected_port
 	var/obj/item/tank/phoron/P = null
 	/// stored power in kilojoules
 	var/stored_power = 0
@@ -43,6 +45,7 @@
 /obj/machinery/power/rad_collector/Initialize(mapload)
 	. = ..()
 	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
+	air_contents.volume = 0.00001 //Gotta make it some stupid small number or else it just divides by 0
 
 /obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
 	if(anchored)
@@ -65,6 +68,13 @@
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		src.P = W
+		air_contents = P.air_contents
+		if(connected_port)
+			//Enforce the air sharing from tank/collector to network
+			var/datum/pipe_network/network = connected_port.return_network(src)
+			if(network && !network.gases.Find(air_contents))
+				network.gases += air_contents
+				network.update = 1
 		update_icons()
 		return 1
 	else if(W.is_crowbar())
@@ -81,9 +91,16 @@
 			"You [anchored? "secure":"undo"] the external bolts.", \
 			"You hear a ratchet.")
 		if(anchored)
+			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
+			if(possible_port)
+				if(connect(possible_port))
+					to_chat(user, "<span class='notice'>You connect \the [src] to the port.</span>")
 			connect_to_network()
 		else
 			disconnect_from_network()
+			if(connected_port)
+				disconnect()
+				to_chat(user, "<span class='notice'>You disconnect \the [src] from the port.</span>")
 		return 1
 	else if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if (src.allowed(user))
@@ -100,6 +117,8 @@
 
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
+	. += "<span class='notice'>It seems to possess a port adaptor. A warning label reads the following:</span>"
+	. += "<span class='warning'>Warning! Not pressure regulated! Risk of fracture!</span>"
 	if(active)
 		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
 	else
@@ -118,7 +137,13 @@
 		return
 	Z.loc = get_turf(src)
 	Z.layer = initial(Z.layer)
+	if(connected_port)
+		var/datum/pipe_network/network = connected_port.return_network(src)
+		if(network)
+			network.gases -= air_contents
 	src.P = null
+	air_contents = initial(air_contents) //This was the best way I could figure out how to seperate the air contents of both
+	air_contents = new(air_contents)
 	if(active)
 		toggle_power()
 	else
@@ -132,6 +157,10 @@
 	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
 		return
 	P.air_contents.adjust_gas(/datum/gas/phoron, -gas_needed)
+	if(connected_port) //we touched the gas, lets go and tell mom
+		var/datum/pipe_network/network = connected_port.return_network(src)
+		if (network)
+			network.update = 1
 	if(!P.air_contents.gas[/datum/gas/phoron])
 		investigate_log("ran out of gas", INVESTIGATE_SINGULO)
 		eject()
@@ -201,3 +230,29 @@
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
+
+//Shamelessly copied and modifed from portable_atmospherics.dm
+/obj/machinery/power/rad_collector/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
+	//Make sure not already connected to something else
+	if(connected_port || !new_port || new_port.connected_device)
+		return 0
+
+	//Make sure are close enough for a valid connection
+	if(new_port.loc != loc)
+		return 0
+
+	//Perform the connection
+	connected_port = new_port
+	connected_port.connected_device = src
+	connected_port.on = 1 //Activate port updates
+
+	return 1
+
+/obj/machinery/power/rad_collector/proc/disconnect()
+	if(!connected_port)
+		return 0
+
+	connected_port.connected_device = null
+	connected_port = null
+
+	return 1
