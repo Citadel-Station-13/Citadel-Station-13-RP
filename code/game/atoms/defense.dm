@@ -109,8 +109,6 @@
 /atom/proc/run_armor(damage, tier, flag, mode, attack_type, datum/weapon)
 	return fetch_armor().resultant_damage(damage, tier, flag)
 
-#warn vv admin armor with /datum/tgui_input_multi
-
 //? shieldcalls
 
 /**

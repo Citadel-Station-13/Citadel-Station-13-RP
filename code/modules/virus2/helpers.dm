@@ -17,7 +17,7 @@
 			var/obj/item/I = M.wear_mask
 			//masks provide a small bonus and can replace overall bio protection
 			if(I)
-				score = max(score, round(0.06*I.armor["bio"]))
+				score = max(score, round(0.06*I.get_armor().fetch(ARMOR_BIO)))
 				if (istype(I, /obj/item/clothing/mask))
 					score += 1 //this should be added after
 
@@ -51,7 +51,7 @@
 	if (vector == "Airborne")
 		var/obj/item/I = M.wear_mask
 		if (istype(I))
-			protection = max(protection, I.armor["bio"])
+			protection = max(protection, I.get_armor().fetch(ARMOR_BIO))
 
 	return prob(protection)
 

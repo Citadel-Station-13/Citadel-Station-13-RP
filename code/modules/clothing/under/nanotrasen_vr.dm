@@ -13,7 +13,7 @@
 	desc = "The security uniform of NanoTrasen's security. It looks sturdy and well padded"
 	icon_state = "navyutility_sec"
 	snowflake_worn_state = "navyutility_sec"
-	armor = list(melee = 10, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/nanotrasen/security/warden
 	name = "NanoTrasen warden uniform"
@@ -37,7 +37,7 @@
 		SLOT_ID_LEFT_HAND = "darkbluesoft",
 		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
-	armor = list(melee = 10, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/head/beret/nanotrasen
 	name = "NanoTrasen security beret"
@@ -51,5 +51,5 @@
 	desc = "A Sturdy kevlar plate carrier with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/station/tactical
 	slowdown = 0.5

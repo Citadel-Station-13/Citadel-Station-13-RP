@@ -173,7 +173,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "rig0-hos_mob"
-	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
+	r_armor_type = /datum/armor/security/hos
 	species_restricted = null
 
 /obj/item/storage/belt/utility/fluff/vulpine
@@ -261,14 +261,14 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	r_armor_type = /datum/armor/none // Considering only staff heads get to pick it
+	r_armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
 	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
 	icon_state = "trek_engsec"
 	item_state = "trek_engsec"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) // since they're shared between jobs and kinda moot.
+	r_armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/medsci
 	name = "MedSci Uniform"
@@ -276,7 +276,7 @@
 	icon_state = "trek_medsci"
 	item_state = "trek_medsci"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0) // basically a copy of vanilla sci/med
+	r_armor_type = /datum/armor/medical/jumpsuit
 
 //TNG
 /obj/item/clothing/under/rank/trek/command/next
@@ -345,7 +345,7 @@
 		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
 		)
-	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
+	r_armor_type = /datum/armor/security/low
 
 /obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)
 	..()
@@ -362,7 +362,7 @@
 	desc = "Admirality specialty coat to keep flag officers fashionable and protected."
 	icon_state = "trek_ds9_coat_adm"
 	item_state = "trek_ds9_coat_adm_mob"
-	armor = list(melee = 45, bullet = 35, laser = 35, energy = 20, bomb = 0, bio = 40, rad = 55)
+	r_armor_type = /datum/armor/security/hos
 
 
 /obj/item/clothing/under/rank/trek/command/ds9

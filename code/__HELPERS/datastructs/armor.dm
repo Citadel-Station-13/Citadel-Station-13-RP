@@ -56,6 +56,33 @@
 		ARMOR_RAD = rad,
 	)
 
+/datum/armor/proc/fetch(flag)
+	switch(flag)
+		if(ARMOR_MELEE)
+			return melee
+		if(ARMOR_MELEE_SOAK)
+			return melee_soak
+		if(ARMOR_MELEE_TIER)
+			return melee_tier
+		if(ARMOR_BULLET)
+			return bullet
+		if(ARMOR_BULLET_SOAK)
+			return bullet_soak
+		if(ARMOR_BULLET_TIER)
+			return bullet_tier
+		if(ARMOR_LASER)
+			return laser
+		if(ARMOR_LASER_SOAK)
+			return laser_soak
+		if(ARMOR_ENERGY)
+			return energy
+		if(ARMOR_BOMB)
+			return bomb
+		if(ARMOR_BIO)
+			return bio
+		if(ARMOR_RAD)
+			return rad
+
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)
 		if(ARMOR_MELEE)

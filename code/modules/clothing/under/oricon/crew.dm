@@ -33,7 +33,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/blueshield/crew)
 	name = "blueshield's utility uniform"
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has silver trim."
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
+	r_armor_type = /datum/armor/security/jumpsuit
 	icon = 'icons/clothing/uniform/rank/utility/blueshield.dmi'
 	icon_state = "black"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
