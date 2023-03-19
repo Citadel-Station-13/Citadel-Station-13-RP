@@ -46,6 +46,7 @@
 		qdel(C)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	to_chat(user, SPAN_NOTICE("You fold up the chair."))
+	playsound(src, 'sound/machines/crate_close.ogg', 20, 1)
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -222,6 +223,7 @@
 	color = null
 	base_icon = "shuttle_chair"
 	applies_material_colour = 0
+	picked_up_item = null
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
@@ -311,6 +313,7 @@
 	name = "wooden chair"
 	desc = "Old is never too old to not be in fashion."
 	icon_state = "wooden_chair"
+	picked_up_item = null
 
 /obj/structure/bed/chair/wood/update_icon()
 	return
@@ -610,6 +613,7 @@
 			to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
 			return
 	var/obj/O = new placed_object(T)
+	playsound(src, 'sound/machines/closet_open.ogg', 20, 1)
 	O.setDir(user.dir)
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE // terminate click handling
