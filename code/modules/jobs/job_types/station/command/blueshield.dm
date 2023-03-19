@@ -3,6 +3,7 @@
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Blueshield"
 	departments = list(DEPARTMENT_COMMAND)
+	sorting_order = 2
 	department_flag = ENGSEC
 	total_positions = 1
 	spawn_positions = 1
