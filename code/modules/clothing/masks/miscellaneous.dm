@@ -44,14 +44,14 @@
 		if (src.hanging)
 			gas_transfer_coefficient = 1
 			body_cover_flags = body_cover_flags & ~FACE
-			r_armor_type = /datum/armor/none
+			set_armor(/datum/armor/none)
 			icon_state = "steriledown"
 			to_chat(usr, "You pull the mask below your chin.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_cover_flags = initial(body_cover_flags)
 			icon_state = initial(icon_state)
-			armor = initial(armor)
+			reset_armor()
 			to_chat(usr, "You pull the mask up to cover your face.")
 		update_worn_icon()
 

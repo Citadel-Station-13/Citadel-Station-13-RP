@@ -1,6 +1,15 @@
 /obj/item/clothing/head/helmet/space/rig/pmc
 	light_overlay = "helmet_light_dual"
 
+/datum/armor/rig/pmc
+	melee = 0.6
+	bullet = 0.5
+	laser = 0.35
+	energy = 0.15
+	bomb = 0.3
+	bio = 1.0
+	rad = 0.95
+
 /obj/item/rig/pmc
 	name = "PMC hardsuit control module"
 	desc = "A suit worn by private military contractors. Armoured and space ready."
@@ -10,8 +19,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/pmc
 
 	req_access = list(ACCESS_CENTCOM_ERT)
+	r_armor_type = /datum/armor/rig/pmc
 
-	armor = list(melee = 60, bullet = 50, laser = 35,energy = 15, bomb = 30, bio = 100, rad = 95)
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/tank,
@@ -60,12 +69,15 @@
 		/obj/item/rig_module/datajack,
 		)
 
+/datum/armor/rig/pmc/engineer
+	rad = 1.0
+
 /obj/item/rig/pmc/engineer
 	name = "PMC-E suit control module"
 	desc = "A suit worn by private military contractors. This one is setup for engineering. Armoured and space ready."
 	suit_type = "PMC engineer"
 	icon_state = "pmc_engineergrey_rig"
-	armor = list(melee = 60, bullet = 50, laser = 35,energy = 15, bomb = 30, bio = 100, rad = 100)
+	r_armor_type = /datum/armor/rig/pmc/engineer
 	siemens_coefficient = 0
 
 /obj/item/rig/pmc/engineer/grey/equipped

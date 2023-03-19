@@ -119,7 +119,6 @@
 /obj/item/clothing/head/helmet/space/plasman/med/rescue
 	icon_state = "plasmaman_helmetparamedic"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in medical colors, and is thicker."
-	armor = list(melee = 30, bullet = 5, laser = 20, energy = 5, bomb = 25, bio = 100, rad = 50)
 	r_armor_type = /datum/armor/phoronoid/medical/paramedic
 
 /obj/item/clothing/head/helmet/space/plasman/med/chemist
@@ -143,7 +142,6 @@
 	icon_state = "plasmaman_suitscience"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in science colors."
 	r_armor_type = /datum/armor/phoronoid/science
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 20, bio = 100, rad = 100)
 
 /obj/item/clothing/suit/space/plasman/science/explorer
 	r_armor_type = /datum/armor/phoronoid/science

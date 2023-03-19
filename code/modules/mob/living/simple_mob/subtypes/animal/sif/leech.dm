@@ -11,15 +11,6 @@
 	bio = 1.0
 	rad = 1.0
 
-	armor_legacy_mob = list(
-		"melee" = 10,
-		"bullet" = 15,
-		"laser" = -10,
-		"energy" = 0,
-		"bomb" = 10,
-		"bio" = 100,
-		"rad" = 100
-		)
 
 /datum/category_item/catalogue/fauna/iceleech
 	name = "Sivian Fauna - River Leech"

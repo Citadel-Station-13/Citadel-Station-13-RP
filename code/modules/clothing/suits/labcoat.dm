@@ -75,7 +75,6 @@
 	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder. It looks old-fashioned."
 	icon_state = "labcoat_virclassic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "virologist_labcoat", SLOT_ID_LEFT_HAND = "virologist_labcoat")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
 
 /obj/item/clothing/suit/storage/toggle/labcoat/science
 	name = "Scientist labcoat"

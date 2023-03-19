@@ -185,14 +185,14 @@
 
 // Armor
 /mob/living/simple_mob/run_mob_armor(def_zone, type)
-	var/armorval = armor[type]
+	var/armorval = fetch_armor().get(type)
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
 /mob/living/simple_mob/run_mob_soak(def_zone, attack_flag)
-	var/armorval = armor_soak[attack_flag]
+	var/armorval = fetch_armor().get(attack_flag)
 	if(!armorval)
 		return 0
 	else

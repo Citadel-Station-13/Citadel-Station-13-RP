@@ -112,8 +112,6 @@
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	damage = 0
 	ammo_type = /obj/item/ammo_casing/foam
-	drop_sound = 'sound/items/drop/accessory.ogg'
-	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	embed_chance = 0 // nope
 
 /obj/projectile/bullet/reusable/foam/riot
