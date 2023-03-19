@@ -26,6 +26,8 @@
 #define NO_DEFIB (1<<11)
 ///(Phoron) Contamination doesnt affect them.
 #define CONTAMINATION_IMMUNE (1<<12)
+/// Cannot be ignited
+#define NO_IGNITE (1<<13)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),

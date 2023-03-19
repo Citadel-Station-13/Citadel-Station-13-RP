@@ -333,6 +333,167 @@
 	desc = "Traditional Japanese menswear."
 	icon_state = "kamishimo"
 
+/obj/item/clothing/suit/storage/furcoat
+	name = "furcoat"
+	desc = "The finest hopefully inorganic furs attached to fake leather. The provider has assured it is not of a sapient species origin."
+	icon = 'icons/clothing/suit/coats/furcoat.dmi'
+	icon_state = "furcoat"
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/cyberpunk
+	name = "brown cyberpunk coat"
+	desc = "A closed coat for the punkiest in the cyberspace from the famous brand Blandevistan."
+	icon = 'icons/clothing/suit/coats/cyberpunk.dmi'
+	icon_state = "cyberpunksleek"
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/cyberpunk/green
+	name = "green cyberpunk coat"
+	icon = 'icons/clothing/suit/coats/cyberpunk.dmi'
+	icon_state = "cyberpunksleek_green"
+
+/obj/item/clothing/suit/storage/cyberpunk/black
+	name = "black cyberpunk coat"
+	icon = 'icons/clothing/suit/coats/cyberpunk.dmi'
+	icon_state = "cyberpunksleek_black"
+
+/obj/item/clothing/suit/storage/cyberpunk/white
+	name = "white cyberpunk coat"
+	icon = 'icons/clothing/suit/coats/cyberpunk.dmi'
+	icon_state = "cyberpunksleek_white"
+
+/obj/item/clothing/suit/storage/cyberpunk/long
+	name = "brown cyberpunk long coat"
+	desc = "A closed coat for the punkiest in the cyberspace from the famous brand Blandevistan. This one has extra length."
+	icon_state = "cyberpunksleek_long"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+
+/obj/item/clothing/suit/storage/cyberpunk/long/green
+	name = "green cyberpunk long coat"
+	icon_state = "cyberpunksleek_long_green"
+
+/obj/item/clothing/suit/storage/cyberpunk/long/black
+	name = "black cyberpunk long coat"
+	icon_state = "cyberpunksleek_long_black"
+
+/obj/item/clothing/suit/storage/cyberpunk/long/white
+	name = "white cyberpunk long coat"
+	icon_state = "cyberpunksleek_long_white"
+
+/obj/item/clothing/suit/storage/bladerunner
+	name = "gunwalker coat"
+	desc = "A popular, almost-vogue coat to keep you warm and comfortable during the most somber stares up into the sky while lying on a decrepit staircase."
+	icon = 'icons/clothing/suit/coats/bladerunner.dmi'
+	icon_state = "bladerunner_coat"
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/overcoat_fancy
+	name = "brown overcoat"
+	desc = "A brown coat with little style and far more function."
+	icon = 'icons/clothing/suit/coats/overcoat.dmi'
+	icon_state = "overcoat_brown"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/overcoat_fancy/black
+	name = "black overcoat"
+	desc = "A black coat with little style and far more function."
+	icon_state = "overcoat_black"
+
+/obj/item/clothing/suit/storage/drive
+	name = "relatable jacket"
+	desc = "An all white jacket with a shine. It seems easy to identify with the wearer."
+	icon = 'icons/clothing/suit/jackets/drive.dmi'
+	icon_state = "drive_jacket"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/drive/boxer
+	name = "boxer jacket"
+	desc = "A sporty jacket worn by athletes."
+	icon = 'icons/clothing/suit/jackets/drive.dmi'
+	icon_state = "boxer_jacket"
+
+/obj/item/clothing/suit/storage/tunnelsnake
+	name = "maintenance python jacket"
+	desc = "A jacket resembling the infamous Maintenance Python gang member uniform. It seems to have been treated with a genuine maintenance wear and tear. It stinks of oil."
+	icon = 'icons/clothing/suit/jackets/tunnelsnake.dmi'
+	icon_state = "tunnelsnake"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/triadkiller
+	name = "oriental coat"
+	desc = "A coat fashioned after the many variations of different continents."
+	icon = 'icons/clothing/suit/coats/triadkillers.dmi'
+	icon_state = "triadkillers"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/bomj
+	name = "bomj coat"
+	desc = "A cheap, padded brown coat that's been worn, torn and hopefully not born in. Worn by the poor. The bumps are guaranteed to be drug free, but the same can't be said for the inner coating and space syphilis."
+	icon = 'icons/clothing/suit/jackets/bomj.dmi'
+	icon_state = "bomj"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/violet
+	name = "violet jacket"
+	desc = "A suave, smooth jacket with tasteful violet tones. According to the label, it comes with a single free cigarette tucked in an inner pocket, which can guarantee a 'trip to the finest Lunarian brothel for free'. The cigarette is missing."
+	icon = 'icons/clothing/suit/jackets/drive.dmi'
+	icon_state = "violet_jacket"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/jamrock
+	name = "jamrock blazer"
+	desc = "A perfect blazer to revive disco with, just make sure you have enough vitality to get your tie off the fan. And maybe don't listen to it when it tells you to stick it into a bottle of gasoline."
+	icon = 'icons/clothing/suit/jackets/jamrock.dmi'
+	icon_state = "jamrock_blazer"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/khaki
+	name = "khaki jacket"
+	desc = "A smooth, clean khaki jacket. It stains instantly. In fact, it looks pre-stained so you don't feel bad when someone inevitably pours a single droplet of schnapps that stays there forever."
+	icon = 'icons/clothing/suit/jackets/khaki.dmi'
+	icon_state = "khaki"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/punkvest
+	name = "punk vest"
+	desc = "For the spiritual rebels that nevertheless wish to conform to standard goth trends. You're totally showing them your anti-authority spunk. Sold by Nanotrasen Gimmick Wardrobes, co-funded by Nanotrasen Security."
+	icon = 'icons/clothing/suit/jackets/punkvest.dmi'
+	icon_state = "punkvest"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/onestar
+	name = "onestar coat"
+	desc = "A perfect coat for going on odd misadventures with. The label says that it came with a 'Lie'. You're not sure that's true."
+	icon = 'icons/clothing/suit/coats/onestar.dmi'
+	icon_state = "onestar_coat"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /*
  * coats
  */
@@ -382,6 +543,15 @@
 	icon_state = "customs_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_blue", SLOT_ID_LEFT_HAND = "suit_blue")
 	inv_hide_flags = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/noble_coat
+	name = "noble coat"
+	desc = "A splash of a colorful palette to denote the nobility, or gaudy fashion taste of whoever wears this."
+	icon = 'icons/clothing/suit/coats/noble.dmi'
+	icon_state = "noble_coat"
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/greyjacket
 	name = "grey jacket"
@@ -474,6 +644,44 @@
 	blood_overlay_type = "coat"
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	inv_hide_flags = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat
+	name = "brown fancy coat"
+	desc = "A rain-proof trench coat straight out of the noire novels."
+	icon = 'icons/clothing/suit/coats/trenchcoat.dmi'
+	icon_state = "brtrenchcoat"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat/black
+	name = "black fancy coat"
+	icon_state = "bltrenchcoat"
+
+/obj/item/clothing/suit/storage/toggle/moto_jacket
+	name = "motorcycle jacket"
+	desc = "A recreation of one of the famous Sol-based biwheeled driver assemblies. Patches on the back denote an AI-generated 'biker logo'. It looks unintelligible."
+	icon = 'icons/clothing/suit/jackets/motojacket.dmi'
+	icon_state = "motojacket"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_jacket", SLOT_ID_LEFT_HAND = "leather_jacket")
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/toggle/fur_bomber
+	name = "fur bomber jacket"
+	desc = "One of many variations of the famous, six hundred year old Human Air Force design. The fur-bits were theorised to help pilots maintain adequate levels of cool during air-transit."
+	icon = 'icons/clothing/suit/jackets/furbomber.dmi'
+	icon_state = "fur_bomber"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_jacket", SLOT_ID_LEFT_HAND = "leather_jacket")
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /*
  * stripper
  */

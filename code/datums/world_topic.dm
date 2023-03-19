@@ -164,7 +164,7 @@
 /datum/world_topic/jsonstatus/Run(list/input, addr)
 	. = list()
 	.["mode"] = master_mode
-	// .["round_id"] = null // GLOB.round_id
+	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]

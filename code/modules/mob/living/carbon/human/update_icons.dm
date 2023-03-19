@@ -427,6 +427,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/ears_s = get_ears_overlay()
 	if(ears_s)
+		if(ears_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
 		face_standing.Blend(ears_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
@@ -436,6 +438,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/horns_s = get_horns_overlay()
 	if(horns_s)
+		if(horns_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ

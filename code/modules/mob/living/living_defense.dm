@@ -373,6 +373,11 @@
 		handle_light()
 		update_fire()
 
+/mob/living/carbon/human/IgniteMob()
+	if(!(species.species_flags & NO_IGNITE))
+		return ..()
+
+
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
 		on_fire = 0
