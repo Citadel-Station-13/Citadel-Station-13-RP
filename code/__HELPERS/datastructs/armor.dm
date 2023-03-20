@@ -17,6 +17,11 @@
 	var/bio = 0
 	var/rad = 0
 
+/datum/armor/New(list/from_values)
+	if(from_values)
+		from_list(from_values)
+	name = to_name()
+
 /datum/armor/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	if(var_name in global.armor_enums)
 		return FALSE // no.
@@ -55,6 +60,17 @@
 		ARMOR_BIO = bio,
 		ARMOR_RAD = rad,
 	)
+
+/datum/armor/proc/to_name()
+	return jointext(list(
+		"[melee]@[melee_tier]-[melee_soak]",
+		"[bullet]@[bullet_tier]-[bullet_soak]",
+		"[laser]@[laser_tier]-[laser_soak]",
+		"[energy]",
+		"[bomb]",
+		"[bio]",
+		"[rad]",
+	), "-")
 
 /datum/armor/proc/raw(flag)
 	switch(flag)
