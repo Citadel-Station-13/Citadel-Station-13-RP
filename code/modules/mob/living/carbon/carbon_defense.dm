@@ -16,7 +16,7 @@
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 	var/hit_embed_chance = I.embed_chance
-	if(prob(run_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 		hit_embed_chance = I.damage_force/(I.w_class*3)

@@ -115,6 +115,8 @@
  * checks for shields
  * not always accurate
  *
+ * todo: use pointers instead
+ *
  * params are modified and then returned as a list.
  */
 /atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
@@ -125,6 +127,8 @@
 /**
  * runs an attack against shields
  * side effects are allowed
+ *
+ * todo: use pointers instead
  *
  * params are modified and then returned as a list
  */

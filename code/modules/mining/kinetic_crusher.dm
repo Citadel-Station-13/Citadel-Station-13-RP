@@ -179,7 +179,7 @@
 			C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 		new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 		var/backstab_dir = get_dir(user, L)
-		var/def_check = L.run_mob_armor(type = "bomb")
+		var/def_check = L.legacy_mob_armor(type = "bomb")
 		var/detonation_damage = src.detonation_damage * (!ishuman(L)? 1 : human_damage_nerf)
 		var/backstab_bonus = src.backstab_bonus * (!ishuman(L)? 1 : human_backstab_nerf)
 		var/thrown_bonus = thrown? (src.thrown_bonus * (!ishuman(L)? 1 : human_damage_nerf)) : 0

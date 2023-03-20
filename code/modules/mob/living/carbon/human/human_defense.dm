@@ -74,7 +74,7 @@ emp_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/run_mob_armor(var/def_zone, var/type)
+/mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
 	var/armorval = 0
 	var/total = 0
 
@@ -96,8 +96,8 @@ emp_act
 				total += weight
 	return (armorval/max(total, 1))
 
-//Like run_mob_armor, but the value it returns will be numerical damage reduction
-/mob/living/carbon/human/run_mob_soak(var/def_zone, var/type)
+//Like legacy_mob_armor, but the value it returns will be numerical damage reduction
+/mob/living/carbon/human/legacy_mob_soak(var/def_zone, var/type)
 	var/soakval = 0
 	var/total = 0
 

@@ -184,14 +184,14 @@
 	return poison_resist
 
 // Armor
-/mob/living/simple_mob/run_mob_armor(def_zone, type)
+/mob/living/simple_mob/legacy_mob_armor(def_zone, type)
 	var/armorval = fetch_armor().raw(type) * 100
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
-/mob/living/simple_mob/run_mob_soak(def_zone, attack_flag)
+/mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
 	var/armorval = fetch_armor().raw(attack_flag) * 100
 	if(!armorval)
 		return 0

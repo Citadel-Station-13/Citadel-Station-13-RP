@@ -1,5 +1,4 @@
 
-
 #warn impl
 
 
@@ -17,12 +16,12 @@
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
-		log_world("## DEBUG: run_mob_armor() was called.")
+		log_world("## DEBUG: legacy_mob_armor() was called.")
 
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = run_mob_armor(def_zone, attack_flag)
+	var/armor = legacy_mob_armor(def_zone, attack_flag)
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
@@ -51,7 +50,7 @@
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = run_mob_armor(def_zone, attack_flag)
+	var/armor = legacy_mob_armor(def_zone, attack_flag)
 	var/absorb = 0
 
 	//Roll armour
@@ -83,17 +82,17 @@
 
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
-	var/soaked = run_mob_soak(def_zone, attack_flag)
+	var/soaked = legacy_mob_soak(def_zone, attack_flag)
 	//5 points of armor pen negate one point of soak
 	if(armour_pen)
 		soaked = max(soaked - (armour_pen/5), 0)
 	return soaked
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/run_mob_armor(var/def_zone, var/type)
+/mob/living/proc/legacy_mob_armor(var/def_zone, var/type)
 	return 0
 
-/mob/living/proc/run_mob_soak(var/def_zone, var/type)
+/mob/living/proc/legacy_mob_soak(var/def_zone, var/type)
 	return 0
 
 // Clicking with an empty hand
@@ -139,7 +138,7 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	if ((proj_sharp || proj_edge) && prob(run_mob_armor(def_zone, P.damage_flag)))
+	if ((proj_sharp || proj_edge) && prob(legacy_mob_armor(def_zone, P.damage_flag)))
 		proj_sharp = 0
 		proj_edge = 0
 
@@ -260,11 +259,11 @@
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 
-	if(run_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
+	if(legacy_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	if(prob(max(run_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+	if(prob(max(legacy_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
