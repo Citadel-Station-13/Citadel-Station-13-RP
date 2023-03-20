@@ -22,7 +22,7 @@
 	req_access = list(ACCESS_CENTCOM_ERT)
 	siemens_coefficient= 0.5
 
-	r_armor_type = /datum/armor/rig/ert
+	armor_type = /datum/armor/rig/ert
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/tank,
@@ -116,7 +116,7 @@
 	desc = "A heavy suit worn by the highest level of Asset Protection, don't mess with the person wearing this. Armoured and space ready."
 	suit_type = "heavy asset protection"
 	icon_state = "asset_protection_rig"
-	r_armor_type = /datum/armor/rig/ert/deathsquad
+	armor_type = /datum/armor/rig/ert/deathsquad
 	siemens_coefficient= 0.3
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
 

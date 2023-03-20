@@ -37,7 +37,7 @@
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
 	blood_overlay_type = "armor"
-	r_armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
@@ -56,7 +56,7 @@
 	desc = "A vest with heavy padding to protect against melee attacks."
 	icon_state = "riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/security/special/riot
+	armor_type = /datum/armor/security/special/riot
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/suit/armor/riot/alt
@@ -70,7 +70,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	r_armor_type = /datum/armor/security/special/ballistic
+	armor_type = /datum/armor/security/special/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/bulletproof/alt
@@ -84,7 +84,7 @@
 	icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	r_armor_type = /datum/armor/security/special/ablative
+	armor_type = /datum/armor/security/special/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -117,7 +117,7 @@
 	icon_state = "combat"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	r_armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/security/high
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/suit/armor/tactical
@@ -128,7 +128,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	slowdown = 1
-	r_armor_type = /datum/armor/security/swat
+	armor_type = /datum/armor/security/swat
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/swat
@@ -143,7 +143,7 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
 	w_class = ITEMSIZE_HUGE
-	r_armor_type = /datum/armor/centcom/deathsquad
+	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -168,14 +168,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	r_armor_type = /datum/aromr/security/medium
+	armor_type = /datum/aromr/security/medium
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"
 	desc = "They used to beat you for pointing at the sign. Now, vengeance has come. WARNING: This is just a sign with straps attached to anchor it. Vengeance not guaranteed."
 	icon_state = "caution"
 	blood_overlay_type = "armor"
-	r_armor = /datum/armor/none
+	armor = /datum/armor/none
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
@@ -186,7 +186,7 @@
 	icon_state = "reactiveoff"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor_reflec_old", SLOT_ID_LEFT_HAND = "armor_reflec_old")
 	blood_overlay_type = "armor"
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(prob(50))
@@ -240,7 +240,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	slowdown = -1
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	r_armor_type = /datum/armor/alien/medium
+	armor_type = /datum/armor/alien/medium
 	siemens_coefficient = 0.4
 	valid_accessory_slots = null
 	var/block_chance = 20
@@ -252,7 +252,7 @@
 	icon_state = "alien_tank"
 	slowdown = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	r_armor_type = /datum/armor/alien/heavy
+	armor_type = /datum/armor/alien/heavy
 	block_chance = 40
 
 /obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -268,7 +268,7 @@
 	icon_state = "ertarmor_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	r_armor_type = /datum/armor/centcom/ert
+	armor_type = /datum/armor/centcom/ert
 	valid_accessory_slots = null
 
 //Commander
@@ -300,7 +300,7 @@
 	desc = "A standard kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	r_armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/security/medium
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
@@ -393,7 +393,7 @@
 	name = "\improper Orion Confederation armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation."
 	icon_state = "solvest"
-	r_armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/storage/vest/oricon/heavy
 	name = "\improper Orion Confederation heavy armored vest"
@@ -415,7 +415,7 @@
 	desc = "A heavy armored vest in a fetching tan. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
 	icon_state = "tacwebvest"
 	item_state = "tacwebvest"
-	r_armor_type = /datum/armor/station/tactical
+	armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/suit/storage/vest/heavy/flexitac //a reskin of the above to have a matching armor set
 	name = "tactical light vest"
@@ -446,7 +446,7 @@
 	desc = "A heavy kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/security/high
 	slowdown = 0.5
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
@@ -487,14 +487,14 @@
 	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/merc/heavy
 	slowdown = 0
 
 /obj/item/clothing/suit/storage/vest/capcarapace
 	name = "captain's carapace"
 	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
 	icon_state = "capcarapace"
-	r_armor_type = /datum/armor/security/captain
+	armor_type = /datum/armor/security/captain
 
 //All of the armor below is mostly unused
 
@@ -516,7 +516,7 @@
 	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/security/special/bulky_kinetic
+	armor_type = /datum/armor/security/special/bulky_kinetic
 	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -527,7 +527,7 @@
 /obj/item/clothing/suit/armor/tdome
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	r_armor_type = /datum/armor/thunderdome
+	armor_type = /datum/armor/thunderdome
 
 /obj/item/clothing/suit/armor/tdome/red
 	name = "Thunderdome suit (red)"
@@ -546,7 +546,7 @@
 	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. Designed for foot combat in an era where melee combat was the predominant focus, this suit offers no protection against energy attacks, although its lacquered exterior may occasionally deflect laser bolts."
 	icon_state = "samurai"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
-	r_armor_type = /datum/armor/general/samurai
+	armor_type = /datum/armor/general/samurai
 	w_class = ITEMSIZE_LARGE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
@@ -701,7 +701,7 @@
 	icon_state = "para_ert_armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	r_armor_type = /datum/armor/centcom/ert/paracausal
+	armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
@@ -730,7 +730,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	r_armor_type = /datum/armor/centcom/ert/paracausal
+	armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
@@ -739,7 +739,7 @@
 	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/security/special/bulky_kinetic
+	armor_type = /datum/armor/security/special/bulky_kinetic
 	w_class = ITEMSIZE_HUGE // massively bulky item
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -811,7 +811,7 @@
 	name = "bone armor"
 	desc = "A tribal armor plate, crafted from animal bone."
 	icon_state = "bonearmor"
-	r_armor_type = /datum/armor/lavaland/bone
+	armor_type = /datum/armor/lavaland/bone
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 //Strange Plate Armor
@@ -819,13 +819,13 @@
 	name = "bulky imperial plate"
 	desc = "Often sold in tandem with KTL helmets, this sturdy plate armor offers impressive protection against bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
 	icon_state = "ironplate"
-	r_armor_type = /datum/armor/imperial/plate
+	armor_type = /datum/armor/imperial/plate
 
 /obj/item/clothing/suit/armor/bulletproof/kettle/adamant
 	name = "adamant imperial plate"
 	desc = "Much more rare than standard Imperial plate, adamant armor protects against lasers and radiation as well as bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
 	icon_state = "aplate"
-	r_armor_type = /datum/armor/imperial/adamant
+	armor_type = /datum/armor/imperial/adamant
 
 //Plate Harness Armor. Has no intrinsic protective value, but serves as a lightweight anchor for limb plating.
 /obj/item/clothing/suit/armor/plate_harness
@@ -850,13 +850,13 @@
 /obj/item/clothing/suit/storage/vest/tactical/pirate
 	name = "surplus tactical vest"
 	desc = "A surplus tactical vest. Although its aging webbing remains intact, its original armor plating has long since been replaced."
-	r_armor_type = /datum/armor/pirate/light
+	armor_type = /datum/armor/pirate/light
 
 /obj/item/clothing/suit/armor/tactical/pirate
 	name = "defaced tactical armor"
 	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
 	icon_state = "swatarmor_pirate"
-	r_armor_type = /datum/armor/pirate/light
+	armor_type = /datum/armor/pirate/light
 	siemens_coefficient = 0.7
 
 //Ashlander armor
@@ -865,7 +865,7 @@
 	desc = "This worn armor is fashioned out of bronze plates connected by dried sinew. The hammered plates are scuffed by ash and soot."
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellar"
-	r_armor_type = /datum/armor/lavaland/ashlander
+	armor_type = /datum/armor/lavaland/ashlander
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //More Warhammer Fun
@@ -874,5 +874,5 @@
 	desc = "This high tech armor serves to protect the user from ranged attacks, rather than melee."
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tau"
-	r_armor_type = /datum/armor/general/utilitarian_military
+	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

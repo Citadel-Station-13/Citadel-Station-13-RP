@@ -46,7 +46,7 @@
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
-	r_armor_type = /datum/armor/gloves/combat
+	armor_type = /datum/armor/gloves/combat
 
 /obj/item/clothing/gloves/combat/advanced //punchy combat glubbs
 	name = "advanced combat gloves"
@@ -97,7 +97,7 @@
 	name = "work gloves"
 	icon_state = "work"
 	item_state = "wgloves"
-	r_armor_type = /datum/armor/gloves/padded
+	armor_type = /datum/armor/gloves/padded
 
 /obj/item/clothing/gloves/tactical
 	desc = "These brown tactical gloves are made from a durable synthetic, and have hardened knuckles."
@@ -108,7 +108,7 @@
 	punch_force = 3
 	siemens_coefficient = 0.75
 	permeability_coefficient = 0.05
-	r_armor_type = /datum/armor/gloves/combat
+	armor_type = /datum/armor/gloves/combat
 
 /obj/item/clothing/gloves/vox
 	desc = "These bizarre gauntlets seem to be fitted for... bird claws?"
@@ -629,7 +629,7 @@
 	body_cover_flags = ARMS
 	cold_protection = HANDS
 	heat_protection = HANDS
-	r_armor_type = /datum/armor/general/bone
+	armor_type = /datum/armor/general/bone
 
 /obj/item/clothing/gloves/hasie
 	name = "Hasie fingerless gloves"

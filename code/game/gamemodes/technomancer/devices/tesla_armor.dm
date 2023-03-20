@@ -13,7 +13,7 @@
 	icon_state = "tesla_armor_1" //wip
 	blood_overlay_type = "armor"
 	slowdown = 1
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	action_button_name = "Toggle Tesla Armor"
 	var/active = 1	//Determines if the armor will zap or block
 	var/ready = 1 //Determines if the next attack will be blocked, as well if a strong lightning bolt is sent out at the attacker.

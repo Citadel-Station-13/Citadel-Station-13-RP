@@ -3,7 +3,7 @@
 	suit_type = "hazmat hardsuit"
 	desc = "An Anomalous Material Interaction hardsuit that protects against the strangest energies the universe can throw at it."
 	icon_state = "science_rig"
-	r_armor_type = /datum/armor/rig/ami
+	armor_type = /datum/armor/rig/ami
 	slowdown = 1
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75

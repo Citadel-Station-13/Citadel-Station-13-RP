@@ -140,7 +140,7 @@
 	clothing_flags = THICKMATERIAL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	r_armor_type = /datum/armor/exploration/soft
+	armor_type = /datum/armor/exploration/soft
 
 /obj/item/clothing/head/hood/miner
 	name = "miner hood"
@@ -151,7 +151,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	r_armor_type = /datum/armor/cargo/mining/soft
+	armor_type = /datum/armor/cargo/mining/soft
 
 // Eldritch suit
 /obj/item/clothing/head/hood/eldritch
@@ -160,7 +160,7 @@
 	icon_state = "eldritch"
 	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.9
-	r_armor_type = /datum/armor/lavaland/eldritch
+	armor_type = /datum/armor/lavaland/eldritch
 
 // Costumes
 /obj/item/clothing/head/hood/carp_hood
@@ -194,7 +194,7 @@
 	name = "goliath cloak hood"
 	icon_state = "golhood"
 	desc = "A protective & concealing hood."
-	r_armor_type = /datum/armor/lavaland/goliath
+	armor_type = /datum/armor/lavaland/goliath
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -202,7 +202,7 @@
 	name = "drake helm"
 	icon_state = "dragon"
 	desc = "The skull of a dragon."
-	r_armor_type = /datum/armor/lavaland/drake
+	armor_type = /datum/armor/lavaland/drake
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 

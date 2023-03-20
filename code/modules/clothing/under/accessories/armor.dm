@@ -89,7 +89,7 @@
 	desc = "A basic armor plate made of steel-reinforced synthetic fibers. Attaches to a plate carrier."
 	icon_state = "armor_light"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	r_armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/low
 	slot = ACCESSORY_SLOT_ARMOR_C
 
 /obj/item/clothing/accessory/armorplate/get_fibers()
@@ -99,32 +99,32 @@
 	name = "mesh armor plate"
 	desc = "A mesh armor plate made of steel-reinforced synthetic fibers, great for dealing with small blades. Attaches to a plate carrier."
 	icon_state = "armor_stab"
-	r_armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/accessory/armor/armorplate/medium
 	name = "medium armor plate"
 	desc = "A plasteel-reinforced synthetic armor plate, providing good protection. Attaches to a plate carrier."
 	icon_state = "armor_medium"
-	r_armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/security/high
 
 /obj/item/clothing/accessory/armor/armorplate/tactical
 	name = "tactical armor plate"
 	desc = "A medium armor plate with additional ablative coating. Attaches to a plate carrier."
 	icon_state = "armor_tactical"
-	r_armor_type = /datum/armor/station/tactical
+	armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/accessory/armor/armorplate/merc
 	name = "heavy armor plate"
 	desc = "A ceramics-reinforced synthetic armor plate, providing state of of the art protection. Attaches to a plate carrier."
 	icon_state = "armor_merc"
-	r_armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armorplate/bulletproof
 	name = "ballistic armor plate"
 	desc = "A woven armor plate with additional plating, providing good protection against high-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_ballistic"
 	slowdown = 0.6
-	r_armor_type = /datum/armor/station/ballistic
+	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/riot
@@ -132,7 +132,7 @@
 	desc = "A thick armor plate with additional padding, providing good protection against low-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_riot"
 	slowdown = 0.6
-	r_armor_type = /datum/armor/station/riot
+	armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/laserproof
@@ -140,7 +140,7 @@
 	desc = "A durasteel-scaled synthetic armor plate, providing good protection against lasers. Attaches to a plate carrier."
 	icon_state = "armor_ablative"
 	slowdown = 0.6
-	r_armor_type = /datum/armor/station/ablative
+	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -176,7 +176,7 @@
 	icon_state = "armguards"
 	gender = PLURAL
 	body_cover_flags = ARMS
-	r_armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_A
 
 /obj/item/clothing/accessory/armor/armguards/blue
@@ -199,7 +199,7 @@
 	name = "heavy arm guards"
 	desc = "A pair of red-trimmed black arm pads reinforced with heavy armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_merc"
-	r_armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armguards/laserproof
 	name = "ablative arm guards"
@@ -207,7 +207,7 @@
 	icon_state = "armguards_ablative"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
-	r_armor_type = /datum/armor/station/ablative
+	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/armguards/bulletproof
 	name = "bullet resistant arm guards"
@@ -215,7 +215,7 @@
 	icon_state = "armguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
-	r_armor_type = /datum/armor/station/ballistic
+	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/armguards/riot
 	name = "riot arm guards"
@@ -223,7 +223,7 @@
 	icon_state = "armguards_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
-	r_armor_type = /datum/armor/station/riot
+	armor_type = /datum/armor/station/riot
 
 //////////////
 //Leg guards
@@ -235,7 +235,7 @@
 	icon_state = "legguards"
 	gender = PLURAL
 	body_cover_flags = LEGS
-	r_armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_L
 
 /obj/item/clothing/accessory/armor/legguards/blue
@@ -258,7 +258,7 @@
 	name = "heavy leg guards"
 	desc = "A pair of heavily armored leg pads in red-trimmed black. Attaches to a plate carrier."
 	icon_state = "legguards_merc"
-	r_armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/legguards/laserproof
 	name = "ablative leg guards"
@@ -266,7 +266,7 @@
 	icon_state = "legguards_ablative"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
-	r_armor_type = /datum/armor/station/ablative
+	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/legguards/bulletproof
 	name = "bullet resistant leg guards"
@@ -274,7 +274,7 @@
 	icon_state = "legguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
-	r_armor_type = /datum/armor/station/ballistic
+	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/legguards/riot
 	name = "riot leg guards"
@@ -282,7 +282,7 @@
 	icon_state = "legguards_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
-	r_armor_type = /datum/armor/station/riot
+	armor_type = /datum/armor/station/riot
 
 //////////////////////////
 //Decorative attachments
@@ -426,7 +426,7 @@
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "bronze"
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/accessory/armor/limb_plate/arm_l
 	name = "left shoulder plate"

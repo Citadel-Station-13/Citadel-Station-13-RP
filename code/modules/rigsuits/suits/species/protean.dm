@@ -2,7 +2,7 @@
 	name = "nanosuit control cluster"
 	suit_type = "nanomachine"
 	icon_state = "nanomachine_rig"
-	r_armor_type = /datum/armor/rig/protean
+	armor_type = /datum/armor/rig/protean
 	siemens_coefficient = 0.5
 	slowdown = 0
 	offline_slowdown = 0

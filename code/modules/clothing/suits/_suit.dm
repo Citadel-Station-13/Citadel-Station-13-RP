@@ -6,7 +6,7 @@
 	var/fire_resist = T0C+100
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	allowed = list(/obj/item/tank/emergency/oxygen)
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9

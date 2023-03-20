@@ -36,7 +36,7 @@
 	icon_state = "leg_guards_laser"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
-	r_armor_type = /datum/armor/station/ablative
+	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/shoes/leg_guard/bulletproof
 	name = "bullet resistant leg guards"
@@ -44,7 +44,7 @@
 	icon_state = "leg_guards_bullet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
-	r_armor_type = /datum/armor/station/ballistic
+	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/shoes/leg_guard/riot
 	name = "riot leg guards"
@@ -52,7 +52,7 @@
 	icon_state = "leg_guards_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
-	r_armor_type = /datum/armor/station/riot
+	armor_type = /datum/armor/station/riot
 
 /obj/item/clothing/shoes/leg_guard/combat
 	name = "combat leg guards"
@@ -60,7 +60,7 @@
 	icon_state = "leg_guards_combat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.6
-	r_armor_type = /datum/armor/station/combat
+	armor_type = /datum/armor/station/combat
 
 /obj/item/clothing/shoes/leg_guard/flexitac
 	name = "tactical leg guards"
@@ -69,6 +69,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.6
 	slowdown = SHOES_SLOWDOWN+0.2
-	r_armor_type = /datum/armor/station/tactical
+	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = LEGS

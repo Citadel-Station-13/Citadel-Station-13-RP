@@ -88,7 +88,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "freddyhead_mob"
 	permeability_coefficient = 0.01
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEMASK|HIDEEARS
 	cold_protection = HEAD
 	siemens_coefficient = 0.9
@@ -126,7 +126,7 @@
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
@@ -173,7 +173,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "rig0-hos_mob"
-	r_armor_type = /datum/armor/security/hos
+	armor_type = /datum/armor/security/hos
 	species_restricted = null
 
 /obj/item/storage/belt/utility/fluff/vulpine
@@ -261,14 +261,14 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
 	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
 	icon_state = "trek_engsec"
 	item_state = "trek_engsec"
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/medsci
 	name = "MedSci Uniform"
@@ -276,7 +276,7 @@
 	icon_state = "trek_medsci"
 	item_state = "trek_medsci"
 	permeability_coefficient = 0.50
-	r_armor_type = /datum/armor/medical/jumpsuit
+	armor_type = /datum/armor/medical/jumpsuit
 
 //TNG
 /obj/item/clothing/under/rank/trek/command/next
@@ -345,7 +345,7 @@
 		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
 		)
-	r_armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/low
 
 /obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)
 	..()
@@ -362,7 +362,7 @@
 	desc = "Admirality specialty coat to keep flag officers fashionable and protected."
 	icon_state = "trek_ds9_coat_adm"
 	item_state = "trek_ds9_coat_adm_mob"
-	r_armor_type = /datum/armor/security/hos
+	armor_type = /datum/armor/security/hos
 
 
 /obj/item/clothing/under/rank/trek/command/ds9

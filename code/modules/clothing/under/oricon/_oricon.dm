@@ -1,7 +1,7 @@
 /obj/item/clothing/under/oricon
 	name = "master oricon uniform"
 	desc = "You shouldn't be seeing this."
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 	siemens_coefficient = 0.8
 	// default to false
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL

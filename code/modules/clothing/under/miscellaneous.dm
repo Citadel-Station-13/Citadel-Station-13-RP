@@ -98,7 +98,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	r_armor_type = /datum/armor/invulnerable
+	armor_type = /datum/armor/invulnerable
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
@@ -1871,7 +1871,7 @@
 
 //Same as Nanotrasen Security Uniforms
 /obj/item/clothing/under/ert
-	r_armor_type = /datum/armor/centcom/jumpsuit
+	armor_type = /datum/armor/centcom/jumpsuit
 
 /obj/item/clothing/under/laconic
 	name = "laconic field suit"

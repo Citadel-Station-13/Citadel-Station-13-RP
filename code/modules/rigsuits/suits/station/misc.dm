@@ -3,7 +3,7 @@
 	suit_type = "augmented suit"
 	desc = "The last suit you'll ever wear."
 	icon_state = "internalaffairs_rig"
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	slowdown = 0
 	offline_slowdown = 0

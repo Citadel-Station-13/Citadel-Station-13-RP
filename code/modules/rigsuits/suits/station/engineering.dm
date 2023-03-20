@@ -3,7 +3,7 @@
 	suit_type = "EVA hardsuit"
 	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels."
 	icon_state = "eva_rig"
-	r_armor_type = /datum/armor/rig/eva
+	armor_type = /datum/armor/rig/eva
 	slowdown = 0
 	offline_slowdown = 1
 	offline_vision_restriction = 1
@@ -56,7 +56,7 @@
 	suit_type = "advanced voidsuit"
 	desc = "An advanced voidsuit that protects against hazardous, low pressure environments. Shines with a high polish."
 	icon_state = "ce_rig"
-	r_armor_type = /datum/armor/rig/ce
+	armor_type = /datum/armor/rig/ce
 	slowdown = 0
 	offline_slowdown = 0
 	offline_vision_restriction = 0

@@ -15,7 +15,7 @@
 	desc = "A sleek and dangerous hardsuit for active combat."
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
-	r_armor_type = /datum/armor/rig/combat
+	armor_type = /datum/armor/rig/combat
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1
@@ -64,7 +64,7 @@
 	desc = "An austere hardsuit used by paramilitary groups and real soldiers alike."
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
-	r_armor_type = /datum/armor/rig/military
+	armor_type = /datum/armor/rig/military
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1

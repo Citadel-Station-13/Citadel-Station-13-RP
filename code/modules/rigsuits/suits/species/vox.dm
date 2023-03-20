@@ -3,7 +3,7 @@
 	desc = "This metal box writhes and squirms as if it were alive..."
 	suit_type = "alien"
 	icon_state = "vox_rig"
-	r_armor_type = /datum/armor/rig/vox
+	armor_type = /datum/armor/rig/vox
 	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.2

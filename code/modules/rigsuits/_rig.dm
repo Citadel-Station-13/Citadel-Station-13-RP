@@ -24,7 +24,7 @@
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
-	r_armor_type = /datum/armor/rig
+	armor_type = /datum/armor/rig
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2

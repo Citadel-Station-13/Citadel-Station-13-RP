@@ -3,7 +3,7 @@
 	suit_type = "hazard hardsuit"
 	desc = "A Security hardsuit designed for prolonged EVA in dangerous environments."
 	icon_state = "hazard_rig"
-	r_armor_type = /datum/armor/rig/hazard
+	armor_type = /datum/armor/rig/hazard
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1

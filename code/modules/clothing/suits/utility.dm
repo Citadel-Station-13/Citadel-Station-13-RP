@@ -46,7 +46,7 @@
 	name = "bomb hood"
 	desc = "Use in case of bomb."
 	icon_state = "bombsuit"
-	r_armor_type = /datum/armor/station/bomb
+	armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0
@@ -59,7 +59,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	slowdown = 2
-	r_armor_type = /datum/armor/station/bomb
+	armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -84,7 +84,7 @@
 	inv_hide_flags = BLOCKHAIR
 	clothing_flags = THICKMATERIAL
 	body_cover_flags = HEAD|FACE|EYES
-	r_armor_type = /datum/armor/general/radsuit
+	armor_type = /datum/armor/general/radsuit
 
 /obj/item/clothing/suit/radiation
 	name = "Radiation suit"
@@ -96,6 +96,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
 	slowdown = 1.5
-	r_armor_type = /datum/armor/general/radsuit
+	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = THICKMATERIAL

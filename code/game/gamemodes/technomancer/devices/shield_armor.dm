@@ -17,7 +17,7 @@
 	icon_state = "shield_armor_0"
 	blood_overlay_type = "armor"
 	slowdown = 0
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	action_button_name = "Toggle Shield Projector"
 	var/active = 0
 	var/damage_to_energy_multiplier = 50.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 750 energy cost

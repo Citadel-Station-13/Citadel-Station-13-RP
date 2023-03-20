@@ -6,7 +6,7 @@
 	clothing_flags = 0
 	inv_hide_flags = HIDEFACE|BLOCKHAIR
 	permeability_coefficient = 0.01
-	r_armor_type = /datum/armor/security/captain/space
+	armor_type = /datum/armor/security/captain/space
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
@@ -24,7 +24,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
 	slowdown = 1.5
-	r_armor_type = /datum/armor/security/captain
+	armor_type = /datum/armor/security/captain
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -38,7 +38,7 @@
 	desc = "That's not red paint. That's real blood."
 	icon_state = "deathsquad"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black-red", SLOT_ID_LEFT_HAND = "syndicate-helm-black-red")
-	r_armor_type = /datum/armor/centcom/deathsquad
+	armor_type = /datum/armor/centcom/deathsquad
 	clothing_flags = THICKMATERIAL
 	inv_hide_flags = BLOCKHAIR
 	siemens_coefficient = 0.6
@@ -75,7 +75,7 @@
 	name = "pirate hat"
 	desc = "Yarr."
 	icon_state = "pirate"
-	r_armor_type = /datum/armor/pirate/medium
+	armor_type = /datum/armor/pirate/medium
 	clothing_flags = 0
 	inv_hide_flags = BLOCKHAIR
 	body_cover_flags = 0
@@ -88,7 +88,7 @@
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
 	slowdown = 0
-	r_armor_type = /datum/armor/pirate/medium
+	armor_type = /datum/armor/pirate/medium
 	siemens_coefficient = 0.9
 	inv_hide_flags = HIDETAIL|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|ARMS

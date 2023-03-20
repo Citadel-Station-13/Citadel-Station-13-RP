@@ -8,7 +8,7 @@
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Seems like it doesn't protect from much else."
 	slowdown = 1
 	clothing_flags = ALLOWINTERNALS
-	r_armor_type = /datum/armor/phoronoid
+	armor_type = /datum/armor/phoronoid
 	allowed = list(/obj/item/tank)
 	can_breach = 0 // w h y ?
 	valid_accessory_slots = (\
@@ -33,7 +33,7 @@
 	icon_override = 'icons/mob/plasmeme/helmet.dmi'
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Comes with a little light built in!"
 	clothing_flags = ALLOWINTERNALS | FLEXIBLEMATERIAL
-	r_armor_type = /datum/armor/phoronoid
+	armor_type = /datum/armor/phoronoid
 	light_overlay = "plasmaman_overlay"
 
 //
@@ -42,7 +42,7 @@
 /obj/item/clothing/suit/space/plasman/sec
 	icon_state = "plasmaman_suitsecurity"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
-	r_armor_type = /datum/armor/phoronoid/security
+	armor_type = /datum/armor/phoronoid/security
 
 /obj/item/clothing/suit/space/plasman/sec/detective
 	icon_state = "plasmaman_suitdetective"
@@ -54,7 +54,7 @@
 /obj/item/clothing/suit/space/plasman/sec/hos
 	icon_state = "plasmaman_suithos"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Head of Security!"
-	r_armor_type = /datum/armor/phoronoid/security/head
+	armor_type = /datum/armor/phoronoid/security/head
 
 /obj/item/clothing/suit/space/plasman/sec/hop
 	icon_state = "plasmaman_suithop"
@@ -66,7 +66,7 @@
 
 /obj/item/clothing/head/helmet/space/plasman/sec
 	icon_state = "plasmaman_helmetsecurity"
-	r_armor_type = /datum/armor/phoronoid/security
+	armor_type = /datum/armor/phoronoid/security
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
 
 /obj/item/clothing/head/helmet/space/plasman/sec/detective
@@ -75,7 +75,7 @@
 
 /obj/item/clothing/head/helmet/space/plasman/sec/hos
 	icon_state = "plasmaman_helmethos"
-	r_armor_type = /datum/armor/phoronoid/security/head
+	armor_type = /datum/armor/phoronoid/security/head
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Head of Security!"
 
 /obj/item/clothing/head/helmet/space/plasman/sec/hop
@@ -92,12 +92,12 @@
 /obj/item/clothing/suit/space/plasman/med
 	icon_state = "plasmaman_suitmedical"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in medical colors."
-	r_armor_type = /datum/armor/phoronoid/medical
+	armor_type = /datum/armor/phoronoid/medical
 
 /obj/item/clothing/suit/space/plasman/med/rescue
 	icon_state = "plasmaman_suitparamedic"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in medical colors, and is thicker."
-	r_armor_type = /datum/armor/phoronoid/medical/paramedic
+	armor_type = /datum/armor/phoronoid/medical/paramedic
 
 /obj/item/clothing/suit/space/plasman/med/chemist
 	icon_state = "plasmaman_suitchemist"
@@ -114,12 +114,12 @@
 /obj/item/clothing/head/helmet/space/plasman/med
 	icon_state = "plasmaman_helmetmedical"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in medical colors."
-	r_armor_type = /datum/armor/phoronoid/medical
+	armor_type = /datum/armor/phoronoid/medical
 
 /obj/item/clothing/head/helmet/space/plasman/med/rescue
 	icon_state = "plasmaman_helmetparamedic"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in medical colors, and is thicker."
-	r_armor_type = /datum/armor/phoronoid/medical/paramedic
+	armor_type = /datum/armor/phoronoid/medical/paramedic
 
 /obj/item/clothing/head/helmet/space/plasman/med/chemist
 	icon_state = "plasmaman_helmetchemist"
@@ -132,7 +132,7 @@
 /obj/item/clothing/head/helmet/space/plasman/med/cmo
 	icon_state = "plasmaman_helmetcmo"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for the Chief Medical Officer!"
-	r_armor_type = /datum/armor/phoronoid/head
+	armor_type = /datum/armor/phoronoid/head
 
 //
 // SCIENCE
@@ -141,28 +141,28 @@
 /obj/item/clothing/suit/space/plasman/science
 	icon_state = "plasmaman_suitscience"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in science colors."
-	r_armor_type = /datum/armor/phoronoid/science
+	armor_type = /datum/armor/phoronoid/science
 
 /obj/item/clothing/suit/space/plasman/science/explorer
-	r_armor_type = /datum/armor/phoronoid/science
+	armor_type = /datum/armor/phoronoid/science
 
 /obj/item/clothing/suit/space/plasman/science/rd
 	icon_state = "plasmaman_suitrd"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for the Research Director!"
-	r_armor_type = /datum/armor/phoronoid/head
+	armor_type = /datum/armor/phoronoid/head
 
 /obj/item/clothing/head/helmet/space/plasman/science
 	icon_state = "plasmaman_helmetscience"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is painted in science colors."
-	r_armor_type = /datum/armor/phoronoid/science
+	armor_type = /datum/armor/phoronoid/science
 
 /obj/item/clothing/head/helmet/space/plasman/science/explorer
-	r_armor_type = /datum/armor/phoronoid/science
+	armor_type = /datum/armor/phoronoid/science
 
 /obj/item/clothing/head/helmet/space/plasman/science/rd
 	icon_state = "plasmaman_helmetrd"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for the Research Director!"
-	r_armor_type = /datum/armor/phoronoid/head
+	armor_type = /datum/armor/phoronoid/head
 
 //
 // ENGINEERING
@@ -171,35 +171,35 @@
 /obj/item/clothing/suit/space/plasman/engi
 	icon_state = "plasmaman_suitengineer"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is in engineering colors, and radiation-proof."
-	r_armor_type = /datum/armor/phoronoid/engineering
+	armor_type = /datum/armor/phoronoid/engineering
 
 /obj/item/clothing/suit/space/plasman/engi/atmos
 	icon_state = "plasmaman_suitatmos"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is in atmospherics colors, and more resilient to higher temperatures."
-	r_armor_type = /datum/armor/phoronoid/engineering
+	armor_type = /datum/armor/phoronoid/engineering
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/space/plasman/engi/ce
 	icon_state = "plasmaman_suitce"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for the Chief Engineer!"
-	r_armor_type = /datum/armor/phoronoid/engineering
+	armor_type = /datum/armor/phoronoid/engineering
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/helmet/space/plasman/engi
 	icon_state = "plasmaman_helmetengineer"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is in engineering colors, and radiation-proof."
-	r_armor_type = /datum/armor/phoronoid/engineering
+	armor_type = /datum/armor/phoronoid/engineering
 
 /obj/item/clothing/head/helmet/space/plasman/engi/atmos
 	icon_state = "plasmaman_helmetatmos"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is in atmospherics colors, and more resilient to higher temperatures."
-	r_armor_type = /datum/armor/phoronoid/engineering
+	armor_type = /datum/armor/phoronoid/engineering
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/helmet/space/plasman/engi/ce
 	icon_state = "plasmaman_helmetce"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for the Chief Engineer!"
-	r_armor_type = /datum/armor/phoronoid/head
+	armor_type = /datum/armor/phoronoid/head
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 //
@@ -213,7 +213,7 @@
 /obj/item/clothing/suit/space/plasman/cargo/miner
 	icon_state = "plasmaman_suitminer"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for miners, and seems to have some light armor."
-	r_armor_type = /datum/armor/phoronoid/miner
+	armor_type = /datum/armor/phoronoid/miner
 
 /obj/item/clothing/head/helmet/space/plasman/cargo
 	icon_state = "plasmaman_helmetcargo"
@@ -222,7 +222,7 @@
 /obj/item/clothing/head/helmet/space/plasman/cargo/miner
 	icon_state = "plasmaman_helmetminer"
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is for miners, and seems to have some light armor."
-	r_armor_type = /datum/armor/phoronoid/miner
+	armor_type = /datum/armor/phoronoid/miner
 
 //
 // OTHER (Service, IAA, etc.)

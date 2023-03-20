@@ -35,7 +35,7 @@
 	clothing_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
-	r_armor_type = /datum/armor/mask/surgical
+	armor_type = /datum/armor/mask/surgical
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)

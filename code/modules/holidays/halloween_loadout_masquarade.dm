@@ -2,7 +2,7 @@
 	name = what; \
 	desc = "A costume of unknown origin."; \
 	w_class = WEIGHT_CLASS_SMALL; \
-	r_armor_type = /datum/armor/none; \
+	armor_type = /datum/armor/none; \
 	atom_flags = PHORONGUARD; \
 	inv_hide_flags = HIDEHOLSTER|HIDEFACE|BLOCKHAIR; \
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;
@@ -11,7 +11,7 @@
 	name = what; \
 	desc = "A costume of unknown origin."; \
 	w_class = WEIGHT_CLASS_SMALL; \
-	r_armor_type = /datum/armor/none; \
+	armor_type = /datum/armor/none; \
 	atom_flags = PHORONGUARD; \
 	inv_hide_flags = HIDEHOLSTER; \
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;

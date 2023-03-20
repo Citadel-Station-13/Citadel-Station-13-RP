@@ -12,7 +12,7 @@
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
-	r_armor_type = /datum/armor/rig/light
+	armor_type = /datum/armor/rig/light
 	emp_protection = 10
 	slowdown = 0
 	clothing_flags = THICKMATERIAL

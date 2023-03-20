@@ -3,25 +3,25 @@
 	desc = "It's a high visibility jumpsuit given to those engineers insane enough to achieve the rank of \"Chief engineer\". It has minor radiation shielding."
 	name = "chief engineer's jumpsuit"
 	icon_state = "chief"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/chief_engineer/jeans
 	name = "chief engineer's jumpjeans"
 	desc = "Casual jeans and a high visibility top given to those more insane than those with the average CE jumpsuit. It bears minor radiation shielding."
 	icon_state = "chiefj"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/chief_engineer/fem_jeans
 	name = "chief engineer's jumpjeans"
 	desc = "Casual jeans and a high visibility top given to those more insane than those with the average CE jumpsuit. It bears minor radiation shielding."
 	icon_state = "chiefjf"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/chief_engineer/skirt_pleated
 	name = "chief engineer's pleated skirt"
 	desc = "It's a high visibility pleated skirt given to those insane enough to achieve the rank of 'Chief Engineer'. It comes with minor rediation shielding."
 	icon_state = "chiefengineer_skirt"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/atmospheric_technician
 	desc = "It's a jumpsuit worn by atmospheric technicians."
@@ -47,25 +47,25 @@
 	desc = "It's an orange high visibility jumpsuit worn by engineers. It has minor radiation shielding."
 	name = "engineer's jumpsuit"
 	icon_state = "engine"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/engineer/jeans
 	name = "engineer's jumpjeans"
 	desc = "Casual jeans and a sturdy shirt make for minor radiation shielding. The shirt has orange bands around the forearm, showing the wearer's an engineer."
 	icon_state = "enginej"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/engineer/fem_jeans
 	name = "engineer's jumpjeans"
 	desc = "Casual jeans and a sturdy shirt make for minor radiation shielding. The shirt is high visibility, showing the wearer's an engineer."
 	icon_state = "enginejf"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/engineer/skirt_pleated
 	name = "engineer's pleated skirt"
 	desc = "It's a high visibility pleated skirt worn by some engineers. It has minor radiation shielding."
 	icon_state = "engine_skirt"
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 
 /obj/item/clothing/under/rank/engineer/turtleneck
 	name = "engineering turtleneck"

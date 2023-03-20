@@ -38,7 +38,7 @@
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
-	r_armor_type = /datum/armor/none //No armor at all.
+	armor_type = /datum/armor/none //No armor at all.
 
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)
 	. = ..()
@@ -54,7 +54,7 @@
 	clothing_flags = NONE
 	inv_hide_flags = BLOCKHAIR
 	item_flags = ITEM_DROPDEL
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/shoes/magboots/changeling
@@ -94,7 +94,7 @@
 	desc = "A tough, hard covering of black chitin."
 	icon_state = "lingarmor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	r_armor_type = /datum/armor/changeling/chitin
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	slowdown = 3
@@ -110,7 +110,7 @@
 	name = "chitinous mass"
 	desc = "A tough, hard covering of black chitin with transparent chitin in front."
 	icon_state = "lingarmorhelmet"
-	r_armor_type = /datum/armor/changeling/chitin
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -124,7 +124,7 @@
 	name = "chitinous gauntlets"
 	desc = "Very resilient gauntlets made out of black chitin.  It looks very durable, and can probably resist electrical shock in addition to the elements."
 	icon_state = "lingarmorgloves"
-	r_armor_type = /datum/armor/changeling/chitin
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/boots/combat/changeling //Noslips
@@ -132,7 +132,7 @@
 	name = "Footwear made out of a hard, black chitinous material.  The bottoms of these appear to have spikes that can protrude or extract itself into and out \
 	of the floor at will, granting the wearer stability."
 	icon_state = "lingboots"
-	r_armor_type = /datum/armor/changeling/chitin
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE

@@ -36,7 +36,7 @@
 		SLOT_ID_LEFT_HAND = "helmet",
 		SLOT_ID_RIGHT_HAND = "helmet",
 		)
-	r_armor_type = /datum/armor/uniform/utility
+	armor_type = /datum/armor/uniform/utility
 	siemens_coefficient = 0.9
 	body_cover_flags = 0
 

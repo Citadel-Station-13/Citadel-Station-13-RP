@@ -36,9 +36,9 @@
 	/// armor datm - this armor mitigates damage
 	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
 	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
-	var/datum/armor/r_armor
+	var/datum/armor/armor
 	/// armor datum type
-	var/r_armor_type = /datum/armor/none
+	var/armor_type = /datum/armor/none
 
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.

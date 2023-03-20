@@ -58,7 +58,7 @@
  * resets our armor to initial values
  */
 /atom/proc/reset_armor()
-	set_armor(initial(r_armor_type))
+	set_armor(initial(armor_type))
 
 /**
  * sets our armor
@@ -67,14 +67,14 @@
  * * what - list of armor values or a /datum/armor path
  */
 /atom/proc/set_armor(what)
-	r_armor = fetch_armor_struct(what)
+	armor = fetch_armor_struct(what)
 
 /**
  * gets our armor datum or otherwise make sure it exists
  */
 /atom/proc/fetch_armor()
 	RETURN_TYPE(/datum/armor)
-	return r_armor || (r_armor = fetch_armor_struct(r_armor_type))
+	return armor || (armor = fetch_armor_struct(armor_type))
 
 /**
  * calculates the resulting damage from an attack, taking into account our armor and soak

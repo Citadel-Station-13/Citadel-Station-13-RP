@@ -2,7 +2,7 @@
 	name = "rusted metal armor"
 	desc = "A hodgepodge of various pieces of metal scrapped together into a rudimentary vox-shaped piece of armor."
 	allowed = list(/obj/item/gun, /obj/item/tank)
-	r_armor_type = /datum/armor/vox/scrap
+	armor_type = /datum/armor/vox/scrap
 	icon_state = "vox-scrap"
 	icon_state = "vox-scrap"
 	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS

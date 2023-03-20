@@ -61,7 +61,7 @@
 	special_attack_min_range = 0
 	special_attack_max_range = 4
 
-	r_armor_type = /datum/armor/physiology/frostfly
+	armor_type = /datum/armor/physiology/frostfly
 
 	var/datum/effect_system/smoke_spread/frost/smoke_special
 

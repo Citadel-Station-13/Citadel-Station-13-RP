@@ -21,7 +21,7 @@
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/security
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has silver trim."
-	r_armor_type = /datum/armor/uniform/utility/padded
+	armor_type = /datum/armor/uniform/utility/padded
 	siemens_coefficient = 0.9
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/crew)
 	name = "crew security uniform"
@@ -33,7 +33,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/blueshield/crew)
 	name = "blueshield's utility uniform"
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has silver trim."
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 	icon = 'icons/clothing/uniform/rank/utility/blueshield.dmi'
 	icon_state = "black"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
@@ -93,7 +93,7 @@
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew/security
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has gold trim."
-	r_armor_type = /datum/armor/uniform/utility/padded
+	armor_type = /datum/armor/uniform/utility/padded
 	siemens_coefficient = 0.9
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/crew)
 	name = "security officer uniform"

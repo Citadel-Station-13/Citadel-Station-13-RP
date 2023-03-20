@@ -4,7 +4,7 @@
 	icon_state = "bio"
 	desc = "A hood that protects the head and face from biological comtaminants."
 	permeability_coefficient = 0.01
-	r_armor_type = /datum/armor/general/biosuit
+	armor_type = /datum/armor/general/biosuit
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
@@ -21,7 +21,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	slowdown = 1.0
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
-	r_armor_type = /datum/armor/general/biosuit
+	armor_type = /datum/armor/general/biosuit
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
@@ -98,7 +98,7 @@
 	icon_state = "beekeeper"
 	desc = "A wide brimmed hat with a mesh screen that protects the face from stinging insects."
 	permeability_coefficient = 0.01
-	r_armor_type = /datum/armor/general/beekeeper
+	armor_type = /datum/armor/general/beekeeper
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
@@ -115,7 +115,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	slowdown = 1.0
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
-	r_armor_type = /datum/armor/general/beekeeper
+	armor_type = /datum/armor/general/beekeeper
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD

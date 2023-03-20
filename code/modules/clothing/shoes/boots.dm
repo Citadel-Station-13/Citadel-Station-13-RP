@@ -2,7 +2,7 @@
 	name = "boots"
 	desc = "Generic boots."
 	icon_state = "workboots"
-	r_armor_type = /datum/armor/shoes/boots
+	armor_type = /datum/armor/shoes/boots
 	damage_force = 3
 	can_hold_knife = 1
 	step_volume_mod = 1.2
@@ -92,7 +92,7 @@
 	name = "security winter boots"
 	desc = "A pair of winter boots. These ones are lined with grey fur, and coloured an angry red."
 	icon_state = "winterboots_sec"
-	r_armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/low
 
 /obj/item/clothing/shoes/boots/winter/science
 	name = "science winter boots"
@@ -138,7 +138,7 @@
 	name = "explorer winter boots"
 	desc = "Steel-toed winter boots for mining or exploration in hazardous environments. Very good at keeping toes warm and uncrushed."
 	icon_state = "explorer"
-	r_armor_type = /datum/armor/exploration/soft
+	armor_type = /datum/armor/exploration/soft
 
 // Allows the wearer to climb cliffs, which could allow for shortcuts or sequence-breaking.
 /obj/item/clothing/shoes/boots/winter/climbing
@@ -169,7 +169,7 @@
 	name = "\improper SWAT shoes"
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
-	r_armor_type = /datum/armor/shoes/boots/swat
+	armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -178,7 +178,7 @@
 	desc = "When you REALLY want to turn up the heat"
 	icon_state = "swat"
 	damage_force = 5
-	r_armor_type = /datum/armor/shoes/boots/swat
+	armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -192,7 +192,7 @@
 	name = "combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time.  It can hold a Strategical knife."
 	icon_state = "jackboots"
-	r_armor_type = /datum/armor/shoes/boots/swat
+	armor_type = /datum/armor/shoes/boots/swat
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/cowboyboots/black

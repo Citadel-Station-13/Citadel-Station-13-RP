@@ -5,7 +5,7 @@
 	desc = "A comfortable turtleneck and black trousers sporting nanotrasen symbols."
 	icon_state = "navyutility"
 	snowflake_worn_state = "navyutility"
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/nanotrasen/security
@@ -13,7 +13,7 @@
 	desc = "The security uniform of NanoTrasen's security. It looks sturdy and well padded"
 	icon_state = "navyutility_sec"
 	snowflake_worn_state = "navyutility_sec"
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/nanotrasen/security/warden
 	name = "NanoTrasen warden uniform"
@@ -37,7 +37,7 @@
 		SLOT_ID_LEFT_HAND = "darkbluesoft",
 		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
-	r_armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/head/beret/nanotrasen
 	name = "NanoTrasen security beret"
@@ -51,5 +51,5 @@
 	desc = "A Sturdy kevlar plate carrier with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	r_armor_type = /datum/armor/station/tactical
+	armor_type = /datum/armor/station/tactical
 	slowdown = 0.5

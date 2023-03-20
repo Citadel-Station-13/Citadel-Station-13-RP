@@ -19,7 +19,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/pmc
 
 	req_access = list(ACCESS_CENTCOM_ERT)
-	r_armor_type = /datum/armor/rig/pmc
+	armor_type = /datum/armor/rig/pmc
 
 	allowed = list(
 		/obj/item/flashlight,
@@ -77,7 +77,7 @@
 	desc = "A suit worn by private military contractors. This one is setup for engineering. Armoured and space ready."
 	suit_type = "PMC engineer"
 	icon_state = "pmc_engineergrey_rig"
-	r_armor_type = /datum/armor/rig/pmc/engineer
+	armor_type = /datum/armor/rig/pmc/engineer
 	siemens_coefficient = 0
 
 /obj/item/rig/pmc/engineer/grey/equipped

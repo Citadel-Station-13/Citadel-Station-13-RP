@@ -181,7 +181,6 @@
 	//if(SLOT_ID_UNIFORM)
 	if(item_by_slot(SLOT_ID_UNIFORM))
 		worn_under = item_by_slot(SLOT_ID_UNIFORM)
-		//worn_under_armor = SLOT_ID_UNIFORM.armor["melee"]
 		worn_under_armor = worn_under.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_under_armor = 0

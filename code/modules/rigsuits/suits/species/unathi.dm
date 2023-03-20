@@ -3,7 +3,7 @@
 	desc = "A cheap NT knock-off of an Unathi battle-rig. Looks like a fish, moves like a fish, steers like a cow."
 	suit_type = "\improper NT breacher"
 	icon_state = "breacher_rig_cheap"
-	r_armor_type = /datum/armor/rig/breacher
+	armor_type = /datum/armor/rig/breacher
 	emp_protection = -20
 	slowdown = 6
 	offline_slowdown = 10
@@ -28,7 +28,7 @@
 	desc = "An authentic Unathi breacher chassis. Huge, bulky and absurdly heavy. It must be like wearing a tank."
 	suit_type = "breacher chassis"
 	icon_state = "breacher_rig"
-	r_armor_type = /datum/armor/rig/breacher/upgraded
+	armor_type = /datum/armor/rig/breacher/upgraded
 	vision_restriction = 0
 	siemens_coefficient = 0.2
 

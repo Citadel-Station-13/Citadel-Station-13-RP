@@ -5,7 +5,7 @@
 	icon_state = "syndicate"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	has_sensors = UNIFORM_HAS_NO_SENSORS
-	r_armor_type = /datum/armor/agent/jumpsuit
+	armor_type = /datum/armor/agent/jumpsuit
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/syndicate/skirt_pleated

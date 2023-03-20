@@ -60,7 +60,7 @@
 	name = "tactical combat uniform"
 	desc = "A dark colored uniform worn by CentCom's conscripted military forces."
 	icon_state = "military"
-	r_armor_type = /datum/armor/military/jumpsuit
+	armor_type = /datum/armor/military/jumpsuit
 
 /obj/item/clothing/under/rank/centcom/military/eng
 	name = "tactical engineering uniform"

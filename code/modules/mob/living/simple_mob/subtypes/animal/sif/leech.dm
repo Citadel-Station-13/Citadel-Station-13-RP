@@ -82,7 +82,7 @@
 	attack_sharp = TRUE
 	attacktext = list("nipped", "bit", "pinched")
 
-	r_armor_type = /datum/armor/physiology/sif_leach
+	armor_type = /datum/armor/physiology/sif_leach
 	say_list_type = /datum/say_list/leech
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/leech
 

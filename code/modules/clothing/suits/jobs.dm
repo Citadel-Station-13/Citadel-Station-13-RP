@@ -118,7 +118,7 @@
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
-	r_armor_type = /datum/armor/security/detective
+	armor_type = /datum/armor/security/detective
 
 /obj/item/clothing/suit/storage/det_trench/grey
 	name = "grey trenchcoat"
@@ -135,7 +135,7 @@
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
-	r_armor_type = /datum/armor/security/detective
+	armor_type = /datum/armor/security/detective
 
 /obj/item/clothing/suit/storage/forensics/red
 	name = "red jacket"
@@ -265,7 +265,7 @@
 	icon_state = "coatsar"
 	item_icons = list(SLOT_ID_SUIT= 'icons/map_assets/southern_cross/mob/sc_suits.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_suits.dmi'
-	r_armor_type = /datum/armor/medical/coat/field_medic
+	armor_type = /datum/armor/medical/coat/field_medic
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
 	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,

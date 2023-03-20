@@ -3,7 +3,7 @@
 	icon = 'icons/clothing/uniform/rank/pt.dmi'
 	desc = "Shorts! Shirt! Miami! Sexy!"
 	icon_state = "miami"
-	r_armor_type = /datum/armor/none
+	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER

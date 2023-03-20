@@ -3,7 +3,7 @@
 	suit_type = "rescue hardsuit"
 	desc = "A durable suit designed for medical rescue in high risk areas."
 	icon_state = "medical_rig"
-	r_armor_type = /datum/armor/rig/medical
+	armor_type = /datum/armor/rig/medical
 	slowdown = 1
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75

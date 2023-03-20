@@ -16,7 +16,7 @@
 	desc = "A blood-red hardsuit featuring some fairly illegal technology."
 	icon_state = "merc_rig"
 	suit_type = "crimson hardsuit"
-	r_armor_type = /datum/armor/rig/merc
+	armor_type = /datum/armor/rig/merc
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1

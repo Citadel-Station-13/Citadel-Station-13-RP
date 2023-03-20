@@ -7,7 +7,7 @@
 	icon_state = "hazard"
 	snowflake_worn_state = "hazard"
 	siemens_coefficient = 0.8
-	r_armor_type = /datum/armor/engineering/jumpsuit
+	armor_type = /datum/armor/engineering/jumpsuit
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/under/sterile
@@ -16,7 +16,7 @@
 	icon_state = "sterile"
 	snowflake_worn_state = "sterile"
 	permeability_coefficient = 0.50
-	r_armor_type = /datum/armor/medical/jumpsuit
+	armor_type = /datum/armor/medical/jumpsuit
 
 //Pirate Mate Fatigues
 /obj/item/clothing/under/worn_fatigues

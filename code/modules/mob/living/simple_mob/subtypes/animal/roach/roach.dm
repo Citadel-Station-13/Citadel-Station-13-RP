@@ -58,7 +58,7 @@
 	health = 15
 	randomized = TRUE
 
-	r_armor_type = /datum/armor/physiology/roach
+	armor_type = /datum/armor/physiology/roach
 
 	see_in_dark = 6
 	universal_understand = 1
@@ -225,7 +225,7 @@
 
 	movement_cooldown = 7
 
-	r_armor_type = /datum/armor/physiology/roach/panzer
+	armor_type = /datum/armor/physiology/roach/panzer
 
 /datum/armor/physiology/roach/jaegar
 	melee = 0.1
@@ -259,7 +259,7 @@
 
 	movement_cooldown = 4
 
-	r_armor_type = /datum/armor/physiology/roach/jaegar
+	armor_type = /datum/armor/physiology/roach/jaegar
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //When I said roaches made me sick, this isn't what I meant.
@@ -290,7 +290,7 @@
 	health = 15
 
 	taser_kill = 0
-	r_armor_type = /datum/armor/physiology/roach/bio
+	armor_type = /datum/armor/physiology/roach/bio
 
 	var/poison_chance = 50
 	var/poison_per_bite = 5
@@ -344,7 +344,7 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 
-	r_armor_type = /datum/armor/physiology/roach/atomar
+	armor_type = /datum/armor/physiology/roach/atomar
 
 	base_attack_cooldown = 4
 	projectiletype = /obj/projectile/energy/blob/toxic
@@ -386,7 +386,7 @@
 
 	melee_damage_lower = 5
 	melee_damage_upper = 10
-	r_armor_type = /datum/armor/physiology/roach/uberfallen
+	armor_type = /datum/armor/physiology/roach/uberfallen
 
 	base_attack_cooldown = 8
 	projectiletype = /obj/projectile/energy/declone
@@ -423,7 +423,7 @@
 	health = 20
 
 	taser_kill = 0
-	r_armor_type = /datum/armor/physiology/roach/strahland
+	armor_type = /datum/armor/physiology/roach/strahland
 
 	base_attack_cooldown = 4
 	projectiletype = /obj/projectile/energy/dart
@@ -467,7 +467,7 @@
 
 	movement_cooldown = 3
 
-	r_armor_type = /datum/armor/physiology/roach/zeitraum
+	armor_type = /datum/armor/physiology/roach/zeitraum
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
@@ -582,4 +582,4 @@
 
 	movement_cooldown = 6
 
-	r_armor_type = /datum/armor/physiology/roach/fuhrer
+	armor_type = /datum/armor/physiology/roach/fuhrer
