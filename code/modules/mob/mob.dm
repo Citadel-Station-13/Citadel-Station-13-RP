@@ -27,6 +27,8 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	hook_vr("mob_new",list(src))
+	// inventory
+	init_inventory()
 	// rendering
 	init_rendering()
 	// resize

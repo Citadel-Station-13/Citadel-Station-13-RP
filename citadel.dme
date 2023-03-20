@@ -3025,6 +3025,7 @@
 #include "code\modules\mob\inventory\helpers.dm"
 #include "code\modules\mob\inventory\inventory.dm"
 #include "code\modules\mob\inventory\items.dm"
+#include "code\modules\mob\inventory\mobs.dm"
 #include "code\modules\mob\inventory\rendering.dm"
 #include "code\modules\mob\inventory\slot_meta.dm"
 #include "code\modules\mob\inventory\stripping.dm"

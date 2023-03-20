@@ -74,6 +74,10 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 
+	//? Inventory
+	/// our inventory datum, if any.
+	var/datum/inventory/inventory
+
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
 	/// our size multiplier

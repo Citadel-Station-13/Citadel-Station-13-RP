@@ -6,6 +6,10 @@
 	organ_tag = "limb"
 	decays = FALSE
 
+	//? Coverage
+	/// body_cover_flags that count as covering us
+	var/body_cover_flags = NONE
+
 	//? Wounds
 	/// Wound datum list.
 	var/list/wounds
@@ -52,7 +56,7 @@
 	/// Icon state base.
 	var/icon_name = null
 	/// Part flag
-	var/body_part = null
+	var/body_cover_flags = NONE
 	/// Used in mob overlay layering calculations.
 	var/icon_position = 0
 	/// Used when caching robolimb icons.
@@ -482,9 +486,9 @@
 
 	if(user == src.owner)
 		var/grasp
-		if(user.l_hand == tool && (src.body_part & (ARM_LEFT|HAND_LEFT)))
+		if(user.l_hand == tool && (src.body_cover_flags & (ARM_LEFT|HAND_LEFT)))
 			grasp = BP_L_HAND
-		else if(user.r_hand == tool && (src.body_part & (ARM_RIGHT|HAND_RIGHT)))
+		else if(user.r_hand == tool && (src.body_cover_flags & (ARM_RIGHT|HAND_RIGHT)))
 			grasp = BP_R_HAND
 
 		if(grasp)
@@ -980,12 +984,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		holder = owner
 	if(!holder)
 		return
-	if (holder.handcuffed && (body_part in list(ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT)))
+	if (holder.handcuffed && (body_cover_flags in list(ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT)))
 		holder.visible_message(\
 			"\The [holder.handcuffed.name] falls off of [holder.name].",\
 			"\The [holder.handcuffed.name] falls off you.")
 		holder.drop_item_to_ground(holder.handcuffed, INV_OP_FORCE)
-	if (holder.legcuffed && (body_part in list(FOOT_LEFT, FOOT_RIGHT, LEG_LEFT, LEG_RIGHT)))
+	if (holder.legcuffed && (body_cover_flags in list(FOOT_LEFT, FOOT_RIGHT, LEG_LEFT, LEG_RIGHT)))
 		holder.visible_message(\
 			"\The [holder.legcuffed.name] falls off of [holder.name].",\
 			"\The [holder.legcuffed.name] falls off you.")
@@ -1398,7 +1402,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/list/covering_clothing = list()
 
 	if(!target_covering)
-		target_covering = src.body_part
+		target_covering = src.body_cover_flags
 
 	if(owner)
 		var/list/protective_gear = list(owner.head, owner.wear_mask, owner.wear_suit, owner.w_uniform, owner.gloves, owner.shoes, owner.glasses)
@@ -1407,7 +1411,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				covering_clothing |= gear
 			if(LAZYLEN(gear.accessories))
 				for(var/obj/item/clothing/accessory/bling in gear.accessories)
-					if(bling.body_cover_flags & src.body_part)
+					if(bling.body_cover_flags & src.body_cover_flags)
 						covering_clothing |= bling
 
 	return covering_clothing
