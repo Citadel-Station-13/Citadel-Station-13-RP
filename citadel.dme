@@ -613,6 +613,7 @@
 #include "code\datums\armor\clothing\suit.dm"
 #include "code\datums\armor\clothing\uniform.dm"
 #include "code\datums\armor\outsider\autolok.dm"
+#include "code\datums\armor\outsider\imperial.dm"
 #include "code\datums\armor\outsider\lavaland.dm"
 #include "code\datums\armor\outsider\merc.dm"
 #include "code\datums\armor\outsider\oricon.dm"

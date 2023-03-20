@@ -811,7 +811,7 @@
 	name = "bone armor"
 	desc = "A tribal armor plate, crafted from animal bone."
 	icon_state = "bonearmor"
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
+	r_armor_type = /datum/armor/lavaland/bone
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 //Strange Plate Armor
@@ -819,13 +819,13 @@
 	name = "bulky imperial plate"
 	desc = "Often sold in tandem with KTL helmets, this sturdy plate armor offers impressive protection against bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
 	icon_state = "ironplate"
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	r_armor_type = /datum/armor/imperial/plate
 
 /obj/item/clothing/suit/armor/bulletproof/kettle/adamant
 	name = "adamant imperial plate"
 	desc = "Much more rare than standard Imperial plate, adamant armor protects against lasers and radiation as well as bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
 	icon_state = "aplate"
-	armor = list(melee = 10, bullet = 60, laser = 40, energy = 40, bomb = 0, bio = 0, rad = 60)
+	r_armor_type = /datum/armor/imperial/adamant
 
 //Plate Harness Armor. Has no intrinsic protective value, but serves as a lightweight anchor for limb plating.
 /obj/item/clothing/suit/armor/plate_harness

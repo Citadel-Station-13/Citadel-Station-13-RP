@@ -180,8 +180,7 @@
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
 		piece.unacidable = unacidable
-		if(islist(armor)) piece.armor = armor.Copy()
-		if(islist(armorsoak)) piece.armorsoak = armorsoak.Copy()
+		piece.set_armor(fetch_armor())
 
 	update_icon(1)
 

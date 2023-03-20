@@ -56,7 +56,7 @@
 		ARMOR_RAD = rad,
 	)
 
-/datum/armor/proc/fetch(flag)
+/datum/armor/proc/raw(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
 			return melee
@@ -82,6 +82,37 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
+
+/datum/armor/proc/mitigation(flag, tier = ARMOR_TIER_DEFAULT)
+	switch(flag)
+		if(ARMOR_MELEE)
+			var/tdiff = melee_tier - tier
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : (damage * melee)))
+		if(ARMOR_BULLET)
+			var/tdiff = bullet_tier - tier
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : (damage * bullet)))
+		if(ARMOR_LASER)
+			var/tdiff = laser_tier - tier
+			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : (damage * laser)))
+		if(ARMOR_ENERGY)
+			return damage * (1 - energy)
+		if(ARMOR_BOMB)
+			return damage * (1 - bomb)
+		if(ARMOR_BIO)
+			return damage * (1 - bio)
+		if(ARMOR_RAD)
+			return damage * (1 - rad)
+
+/datum/armor/proc/soak(flag)
+	switch(flag)
+		if(ARMOR_MELEE)
+			return melee_soak
+		if(ARMOR_BULLET)
+			return bullet_soak
+		if(ARMOR_LASER)
+			return laser_soak
+		else
+			return 0
 
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)

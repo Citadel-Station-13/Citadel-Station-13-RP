@@ -50,22 +50,15 @@
 
 	armor_legacy_mob = list(
 		"melee" = 30,
+		"melee_soak" = 5,
 		"bullet" = 15,
+		"bullet_soak" = 5,
 		"laser" = 5,
+		"laser_soak" = 5,
 		"energy" = 0,
 		"bomb" = 10,
 		"bio" = 100,
 		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 5,
-		"bullet" = 5,
-		"laser" = 5,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
 		)
 
 	say_list_type = /datum/say_list/kururak

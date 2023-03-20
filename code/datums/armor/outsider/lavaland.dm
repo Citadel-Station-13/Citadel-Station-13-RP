@@ -39,3 +39,10 @@
 	bomb = 0.2
 	bio = 0.3
 	rad = 0.2
+
+/datum/armor/lavaland/bone
+	melee = 0.35
+	bullet = 0.25
+	laser = 0.25
+	energy = 0.1
+	bomb = 0.25

@@ -1,5 +1,14 @@
 /datum/armor/centcom
 
+/datum/armor/centcom/jumpsuit
+	melee = 0.1
+	bullet = 0.1
+	laser = 0.1
+	energy = 0.1
+	bomb = 0.1
+
+/datum/armor/centcom/jumpsuit/ert
+
 /datum/armor/centcom/coat
 	melee = 0.4
 	bullet = 0.45

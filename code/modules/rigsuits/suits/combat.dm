@@ -1,12 +1,21 @@
 /obj/item/clothing/head/helmet/space/rig/combat
 	light_overlay = "helmet_light_dual_green"
 
+/datum/armor/rig/combat
+	melee = 0.8
+	bullet = 0.65
+	laser = 0.5
+	energy = 0.25
+	bomb = 0.6
+	bio = 1.0
+	rad = 0.6
+
 /obj/item/rig/combat
 	name = "combat hardsuit control module"
 	desc = "A sleek and dangerous hardsuit for active combat."
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	r_armor_type = /datum/armor/rig/combat
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1
@@ -41,12 +50,21 @@
 		/obj/item/rig_module/electrowarfare_suite,
 		)
 
+/datum/armor/rig/military
+	melee = 0.8
+	bullet = 0.7
+	laser = 0.55
+	energy = 0.15
+	bomb = 0.8
+	bio = 1.0
+	rad = 0.3
+
 /obj/item/rig/military
 	name = "military hardsuit control module"
 	desc = "An austere hardsuit used by paramilitary groups and real soldiers alike."
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
-	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 30)
+	r_armor_type = /datum/armor/rig/military
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1

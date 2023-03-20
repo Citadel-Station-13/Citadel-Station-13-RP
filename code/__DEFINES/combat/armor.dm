@@ -2,7 +2,7 @@
 //* Want to add more?
 //* Update [code/__HELPERS/datastructs/armor.dm]
 //* Add an armor var, define it here,
-//* and update to_list() and from_list().
+//* and update the procs accordingly.
 //* The system will handle the rest.
 //* Make sure the var names match the names in here!
 

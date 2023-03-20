@@ -47,17 +47,10 @@
 	taser_kill = FALSE
 	armor_legacy_mob = list(
 				"melee" = 40,
+				"melee_soak" = 10,
 				"bullet" = 20,
+				"bullet_soak" = 5,
 				"laser" = 10,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
-				"melee" = 10,
-				"bullet" = 5,
-				"laser" = 0,
 				"energy" = 0,
 				"bomb" = 0,
 				"bio" = 0,

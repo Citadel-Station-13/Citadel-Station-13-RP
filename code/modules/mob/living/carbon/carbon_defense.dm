@@ -112,7 +112,7 @@
 	var/obj/item/clothing/head/helmet = item_by_slot(SLOT_ID_HEAD)
 	if(istype(helmet) && (helmet.body_cover_flags & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
 		//we don't do an armor_check here because this is not an impact effect like a weapon swung with momentum, that either penetrates or glances off.
-		damage_mod = 1.0 - (helmet.armor["melee"]/100)
+		damage_mod = 1.0 - (helmet.fetch_armor().raw(ARMOR_MELEE)/100)
 
 	var/total_damage = 0
 	for(var/i in 1 to 3)
@@ -174,7 +174,7 @@
 	if(item_by_slot(SLOT_ID_SUIT))
 		worn_suit = item_by_slot(SLOT_ID_SUIT)
 		//worn_suit = item_by_slot(SLOT_ID_SUIT)
-		worn_suit_armor = worn_suit.armor["melee"]
+		worn_suit_armor = worn_suit.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_suit_armor = 0
 
@@ -182,7 +182,7 @@
 	if(item_by_slot(SLOT_ID_UNIFORM))
 		worn_under = item_by_slot(SLOT_ID_UNIFORM)
 		//worn_under_armor = SLOT_ID_UNIFORM.armor["melee"]
-		worn_under_armor = worn_under.armor["melee"]
+		worn_under_armor = worn_under.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_under_armor = 0
 
