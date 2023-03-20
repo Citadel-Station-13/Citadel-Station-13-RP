@@ -31,7 +31,7 @@
 	return dat
 
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
-	if(!istype(H, /mob/living/carbon/human))
+	if(!istype(H))
 		return
 	spawn(20)
 	if((H.client.prefs.organ_data[O_BRAIN] != null))
