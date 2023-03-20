@@ -147,11 +147,11 @@
 	if(href_list[VV_HK_EDIT_ARMOR] && check_rights(R_VAREDIT))
 		// todo: tgui armor editor?
 		var/list/pickerlist = list()
-		var/list/armorlist = armor.to_list()
+		var/list/armorlist = fetch_armor().to_list()
 		for (var/i in armorlist)
 			pickerlist += list(list("value" = armorlist[i], "name" = i))
-		var/list/result = presentpicker(usr, "Modify armor", "Modify armor: [src]", Button1="Save", Button2 = "Cancel", Timeout=FALSE, inputtype = "text", values = pickerlist)
-		if(!islist(result) || result["button"] != 2) // 2 is cancel
+		var/list/result = presentpicker(usr, "Modify armor", "Modify armor: [src]", Button1="Save", Button2 = "Cancel", Timeout=FALSE, inputtype = "text", values = pickerlist, width = 300, height = 800)
+		if(!islist(result) || result["button"] == 2) // 2 is cancel
 			return
 		var/list/built
 		for(var/key in result["values"])
