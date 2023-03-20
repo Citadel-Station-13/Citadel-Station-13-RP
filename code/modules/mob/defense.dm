@@ -38,14 +38,15 @@
 #warn above - how to handle inventory?
 
 /**
- * optimized call for energy / bomb / bio / radiation fullbody checks.
+ * check overall armor
  */
-/mob/proc/check_overall_armor(damage, flag)
+/mob/proc/check_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = check_armor(damage, tier, flag, mode, attack_type, weapon)
+	return damage
 
 /**
- * optimized call for energy / bomb / bio / radiation fullbody checks.
- * run for side effects during impact / hits.
+ * check overall armor
  */
-/mob/proc/run_overall_armor(damage, flag)
-
-#warn above - optimized?
+/mob/proc/run_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = run_armor(damage, tier, flag, mode, attack_type, weapon)
+	return damage

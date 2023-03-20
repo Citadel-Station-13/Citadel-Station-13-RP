@@ -1,4 +1,8 @@
 
+
+#warn impl
+
+
 /*
 	run_armor_check(a,b)
 	args

@@ -378,9 +378,9 @@
 
 					//sealed pieces become airtight, protecting against diseases
 					if (is_sealing)
-						piece.set_armor(piece.fetch_armor().boosted(ARMOR_BIO = 100))
+						piece.set_armor(piece.fetch_armor().boosted(list(ARMOR_BIO = 100)))
 					else
-						piece.set_armor(piece.fetch_armor().overwritten(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO)))
+						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO))))
 				else
 					failed_to_seal = 1
 
