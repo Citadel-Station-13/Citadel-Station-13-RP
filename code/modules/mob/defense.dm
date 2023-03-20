@@ -35,8 +35,6 @@
 	damage = run_armor(damage, tier, flag, mode, attack_type, weapon)
 	return damage
 
-#warn above - how to handle inventory?
-
 /**
  * check overall armor
  */
