@@ -141,7 +141,10 @@ DEFINE_BITFIELD(inv_hide_flags, list(
 #define HANDS       (HAND_LEFT | HAND_RIGHT)
 #define FULL_BODY   (ALL)
 
-DEFINE_BITFIELD(body_cover_flags, list(
+DEFINE_SHARED_BITFIELDS(body_cover_flags, list(
+	"body_cover_flags",
+	"body_part_flags",
+), list(
 	BITFIELD(HEAD),
 	BITFIELD(FACE),
 	BITFIELD(EYES),

@@ -128,7 +128,7 @@ emp_act
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_cover_flags & def_zone.body_cover_flags)) // Is that body part being targeted covered?
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
 	return siemens_coefficient
@@ -159,7 +159,7 @@ emp_act
 	var/list/results = list()
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_cover_flags & def_zone.body_cover_flags))
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags))
 			results.Add(C)
 	return results
 
