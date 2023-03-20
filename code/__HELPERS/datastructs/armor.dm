@@ -86,22 +86,19 @@
 /datum/armor/proc/mitigation(flag, tier = ARMOR_TIER_DEFAULT)
 	switch(flag)
 		if(ARMOR_MELEE)
-			var/tdiff = melee_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : (damage * melee)))
+			return 1 - ARMOR_TIER_CALC(melee, tdiff)
 		if(ARMOR_BULLET)
-			var/tdiff = bullet_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : (damage * bullet)))
+			return 1 - ARMOR_TIER_CALC(bullet, tdiff)
 		if(ARMOR_LASER)
-			var/tdiff = laser_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : (damage * laser)))
+			return 1 - ARMOR_TIER_CALC(laser, tdiff)
 		if(ARMOR_ENERGY)
-			return damage * (1 - energy)
+			return energy
 		if(ARMOR_BOMB)
-			return damage * (1 - bomb)
+			return bomb
 		if(ARMOR_BIO)
-			return damage * (1 - bio)
+			return bio
 		if(ARMOR_RAD)
-			return damage * (1 - rad)
+			return rad
 
 /datum/armor/proc/soak(flag)
 	switch(flag)
@@ -118,13 +115,13 @@
 	switch(flag)
 		if(ARMOR_MELEE)
 			var/tdiff = melee_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(melee, tdiff)) : (damage * melee)) - melee_soak)
+			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
 		if(ARMOR_BULLET)
 			var/tdiff = bullet_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(bullet, tdiff)) : (damage * bullet)) - bullet_soak)
+			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
 		if(ARMOR_LASER)
 			var/tdiff = laser_tier - tier
-			return max(0, (tdiff? (damage * ARMOR_TIER_CALC(laser, tdiff)) : (damage * laser)) - laser_soak)
+			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
 		if(ARMOR_ENERGY)
 			return damage * (1 - energy)
 		if(ARMOR_BOMB)

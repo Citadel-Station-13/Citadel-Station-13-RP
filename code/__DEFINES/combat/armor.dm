@@ -70,4 +70,5 @@ GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 
 //? --- armor calculations ---
 
+/// tierdiff is tier difference of armor against attack; positive = armor is higher tier.
 #define ARMOR_TIER_CALC(_armor, _tierdiff) ((_tierdiff) > 0? ((_armor) ** (1 / (1 + (_tierdiff)))) : ((_armor) * (1 / (1 - (_tierdiff)))))
