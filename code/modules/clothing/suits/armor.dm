@@ -168,7 +168,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor_type = /datum/aromr/security/medium
+	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"

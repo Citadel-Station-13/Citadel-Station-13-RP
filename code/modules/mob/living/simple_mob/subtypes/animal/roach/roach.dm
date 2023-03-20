@@ -290,7 +290,7 @@
 	health = 15
 
 	taser_kill = 0
-	armor_type = /datum/armor/physiology/roach/bio
+	armor_type = /datum/armor/physiology/roach/seuche
 
 	var/poison_chance = 50
 	var/poison_per_bite = 5

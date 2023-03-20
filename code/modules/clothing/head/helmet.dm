@@ -191,7 +191,7 @@
 	desc = "A helmet with optical and cranial augments coupled to it."
 	icon_state = "v62"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
-	armor_type = /datum/armor/misc/augment_helmet
+	armor_type = /datum/armor/head/augment_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -203,7 +203,7 @@
 	desc = "The 'head' of an Eraticator Artillery Platform, ripped off of the chassis. May be worn for totemic purposes."
 	icon_state = "eraticator-head"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
-	armor_type = /datum/armor/misc/eraticator_helmet
+	armor_type = /datum/armor/head/eraticator_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
@@ -386,7 +386,7 @@
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tauhelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
-	armor_type = /datum/armor/general/utilitarian_military_helmet
+	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/duraskull

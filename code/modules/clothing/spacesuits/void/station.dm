@@ -103,13 +103,13 @@
 	name = "frontier mining voidsuit helmet"
 	desc = "An armored cheap voidsuit helmet. Someone must have through they were pretty cool when they painted a mohawk on it."
 	icon_state = "rig0-miningalt"
-	armor_type = /datum/armor/cargo/mining/space/frontier
+	armor_type = /datum/armor/cargo/mining/space/armored
 
 /obj/item/clothing/suit/space/void/mining/alt
 	icon_state = "rig-miningalt"
 	name = "frontier mining voidsuit"
 	desc = "A cheap prospecting voidsuit. What it lacks in comfort it makes up for in armor plating and street cred."
-	armor_type = /datum/armor/cargo/mining/space/frontier
+	armor_type = /datum/armor/cargo/mining/space/armored
 
 //Medical
 /obj/item/clothing/head/helmet/space/void/medical
