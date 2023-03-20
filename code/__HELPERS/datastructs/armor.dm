@@ -3,6 +3,9 @@
  * globally cached.
  */
 /datum/armor
+	/// just for vv
+	var/name
+	
 	var/melee = 0
 	var/melee_tier = ARMOR_TIER_DEFAULT
 	var/melee_soak = 0
