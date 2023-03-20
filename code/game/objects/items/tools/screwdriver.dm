@@ -176,3 +176,18 @@
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+
+
+/obj/item/tool/screwdriver/crystal
+	name = "crystalline screwdriver"
+	desc = "A crystalline screwdriving tool of an alien make."
+	icon_state = "crystal_screwdriver"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/screwdriver/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

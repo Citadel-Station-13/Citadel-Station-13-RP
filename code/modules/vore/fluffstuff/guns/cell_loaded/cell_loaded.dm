@@ -69,9 +69,6 @@
 	update_icon()
 
 /obj/item/gun/ballistic/cell_loaded/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!chambered)
 		return
 

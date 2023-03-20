@@ -37,6 +37,10 @@
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
 	var/worn_rolled_sleeves = UNIFORM_ROLL_NULLED
+	/// rolldown state override - applies to new rendering, will replace worn_state as well as icon_state.
+	var/worn_rolldown_state
+	/// rollsleeve state override - applies to new rendering, will replace worn_state as well as icon_state.
+	var/worn_rollsleeve_state
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this
 	// todo: awful shit.
@@ -95,6 +99,53 @@
 	else
 		sensor_mode = SUIT_SENSOR_OFF
 
+//? Styles
+
+/obj/item/clothing/under/available_styles(mob/user)
+	. = list()
+	var/old_roll = worn_rolled_down
+	var/old_sleeves = worn_rolled_sleeves
+	worn_rolled_down = UNIFORM_ROLL_FALSE
+	worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	.["normal"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
+	if(old_roll != UNIFORM_ROLL_NULLED)
+		worn_rolled_down = UNIFORM_ROLL_TRUE
+		.["rolled down"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
+		worn_rolled_down = UNIFORM_ROLL_FALSE
+	if(old_sleeves != UNIFORM_ROLL_NULLED)
+		worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+		.["rolled sleeves"] = render_mob_appearance(user, SLOT_ID_UNIFORM)
+		worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	worn_rolled_down = old_roll
+	worn_rolled_sleeves = old_sleeves
+
+/obj/item/clothing/under/set_style(style, mob/user)
+	. = ..()
+	if(.)
+		return
+	switch(style)
+		if("normal")
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			body_cover_flags = initial(body_cover_flags)
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
+			return TRUE
+		if("rolled down")
+			worn_rolled_down = UNIFORM_ROLL_TRUE
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			body_cover_flags = (initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src] down."))
+			return TRUE
+		if("rolled sleeves")
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+			body_cover_flags = (initial(body_cover_flags) & ~(ARMS | HANDS))
+			update_worn_icon()
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
+			return TRUE
+
 //! Inventory
 /obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
@@ -113,8 +164,12 @@
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
 	. = ..()
 	if(worn_rolled_down == UNIFORM_ROLL_TRUE)
+		if(worn_rolldown_state)
+			return worn_rolldown_state
 		. += "_down"
 	else if(worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
+		if(worn_rollsleeve_state)
+			return worn_rollsleeve_state
 		. += "_sleeves"
 
 /obj/item/clothing/under/proc/update_rolldown(updating)
@@ -132,10 +187,8 @@
 			has_roll = autodetect_rolldown(detected_bodytype)
 
 	if(!has_roll)
-		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		worn_rolled_down = UNIFORM_ROLL_NULLED
 	else
-		add_obj_verb(src, /obj/item/clothing/under/verb/rollsuit)
 		if(worn_rolled_down == UNIFORM_ROLL_NULLED)
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 	if(!updating)
@@ -156,10 +209,8 @@
 			has_sleeves = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
-		remove_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		worn_rolled_sleeves = UNIFORM_ROLL_NULLED
 	else
-		add_obj_verb(src, /obj/item/clothing/under/verb/rollsleeves)
 		if(worn_rolled_sleeves == UNIFORM_ROLL_NULLED)
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 	if(!updating)
@@ -172,64 +223,6 @@
 /obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
 	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
-
-/obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Jumpsuit"
-	set category = "Object"
-	set src in usr
-
-	var/mob/user = usr
-	// todo: mobility flags
-	if(!istype(user, /mob/living)) return
-	if(user.stat) return
-
-	update_rolldown(TRUE)
-
-	switch(worn_rolled_down)
-		if(UNIFORM_ROLL_NULLED)
-			to_chat(user, SPAN_NOTICE("[src] cannot be rolled down."))
-			return
-		if(UNIFORM_ROLL_FALSE)
-			worn_rolled_down = UNIFORM_ROLL_TRUE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_cover_flags &= ~(UPPER_TORSO | ARMS)
-			to_chat(user, SPAN_NOTICE("You roll [src] down."))
-		if(UNIFORM_ROLL_TRUE)
-			worn_rolled_down = UNIFORM_ROLL_FALSE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_cover_flags = initial(body_cover_flags)
-			to_chat(user, SPAN_NOTICE("You roll [src] up."))
-
-	update_worn_icon()
-
-/obj/item/clothing/under/verb/rollsleeves()
-	set name = "Roll Up Sleeves"
-	set category = "Object"
-	set src in usr
-
-	var/mob/user = usr
-	// todo: mobility flags
-	if(!istype(user, /mob/living)) return
-	if(user.stat) return
-
-	update_rollsleeve(TRUE)
-
-	switch(worn_rolled_sleeves)
-		if(UNIFORM_ROLL_NULLED)
-			to_chat(user, SPAN_NOTICE("[src] cannot have its sleeves rolled."))
-			return
-		if(UNIFORM_ROLL_FALSE)
-			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_cover_flags &= ~(ARMS)
-			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
-		if(UNIFORM_ROLL_TRUE)
-			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			// todo: update_bodypart_coverage() for clothing damage
-			body_cover_flags = initial(body_cover_flags)
-			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves back down."))
-
-	update_worn_icon()
 
 //! Examine
 /obj/item/clothing/under/examine(mob/user)
