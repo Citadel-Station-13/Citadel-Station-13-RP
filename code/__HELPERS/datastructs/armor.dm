@@ -86,10 +86,13 @@
 /datum/armor/proc/mitigation(flag, tier = ARMOR_TIER_DEFAULT)
 	switch(flag)
 		if(ARMOR_MELEE)
+			var/tdiff = melee_tier - tier
 			return 1 - ARMOR_TIER_CALC(melee, tdiff)
 		if(ARMOR_BULLET)
+			var/tdiff = bullet_tier - tier
 			return 1 - ARMOR_TIER_CALC(bullet, tdiff)
 		if(ARMOR_LASER)
+			var/tdiff = laser_tier - tier
 			return 1 - ARMOR_TIER_CALC(laser, tdiff)
 		if(ARMOR_ENERGY)
 			return energy

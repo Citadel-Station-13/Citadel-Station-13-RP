@@ -179,7 +179,7 @@ emp_act
 	var/soaked = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		soaked += gear.fetch_armor().raw_soak(type)
+		soaked += gear.fetch_armor().soak(type)
 	return soaked
 
 // Checked in borer code

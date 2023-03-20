@@ -58,21 +58,15 @@
 	// Xrays will do much better against this.
 	armor_legacy_mob = list(
 				"melee"		= 40,
+				"melee_soak" = 15,
 				"bullet"	= 40,
+				"bullet_soak" = 10,
 				"laser"		= 40,
+				"laser_soak" = 15,
 				"energy"	= 30,
 				"bomb"		= 30,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 15,
-				"bullet"	= 10,
-				"laser"		= 15,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_melee
@@ -81,21 +75,13 @@
 	player_msg = "You are heavily armored against close quarters combat."
 	armor_legacy_mob = list(
 				"melee"		= 70,
+				"melee_soak" = 20,
 				"bullet"	= 0,
 				"laser"		= 0,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 20,
-				"bullet"	= 0,
-				"laser"		= 0,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_bullet
@@ -105,20 +91,12 @@
 	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 70,
+				"bullet_soak" = 20,
 				"laser"		= 0,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 0,
-				"bullet"	= 20,
-				"laser"		= 0,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser
@@ -129,20 +107,13 @@
 				"melee"		= 0,
 				"bullet"	= 0,
 				"laser"		= 70,
+				"laser_soak" = 20,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	armor_soak = list(
-				"melee"		= 0,
-				"bullet"	= 0,
-				"laser"		= 20,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
-				)
+				
 	var/reflect_chance = 40 // Same as regular ablative.
 
 // Ablative Hivebots can reflect lasers just like humans.

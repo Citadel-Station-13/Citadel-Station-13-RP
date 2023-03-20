@@ -106,7 +106,6 @@
 	desc = "A plasteel-reinforced synthetic armor plate, providing good protection. Attaches to a plate carrier."
 	icon_state = "armor_medium"
 	r_armor_type = /datum/armor/security/high
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armorplate/tactical
 	name = "tactical armor plate"
@@ -427,7 +426,7 @@
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "bronze"
-	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 5, bio = 5, rad = 0)
+	r_armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/accessory/armor/limb_plate/arm_l
 	name = "left shoulder plate"

@@ -373,7 +373,7 @@
 
 	var/list/covering_clothing = E.get_covering_clothing()
 	for(var/obj/item/clothing/C in covering_clothing)
-		if(C.armor["melee"] >= 40 + attack_armor_pen)
+		if(C.fetch_armor().raw(ARMOR_MELEE) * 100 >= 40 + attack_armor_pen)
 			to_chat(user, SPAN_NOTICE("You cannot get through that host's protective gear."))
 			return
 

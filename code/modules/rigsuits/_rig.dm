@@ -2,6 +2,15 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
+/datum/armor/rig
+	melee = 0.4
+	bullet = 0.05
+	laser = 0.2
+	energy = 0.05
+	bomb = 0.35
+	bio = 1.0
+	rad = 0.2
+
 /*
  * Defines the behavior of hardsuits/rigs/power armour.
  */
@@ -15,7 +24,7 @@
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	r_armor_type = /datum/armor/rig
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
@@ -369,10 +378,9 @@
 
 					//sealed pieces become airtight, protecting against diseases
 					if (is_sealing)
-						piece.armor["bio"] = 100
+						piece.set_armor(piece.fetch_armor().boosted(ARMOR_BIO = 100))
 					else
-						piece.armor["bio"] = src.armor["bio"]
-
+						piece.set_armor(piece.fetch_armor().overwritten(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO)))
 				else
 					failed_to_seal = 1
 

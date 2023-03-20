@@ -2,6 +2,15 @@
 	light_overlay = "helmet_light_dual"
 	camera_networks = list(NETWORK_ERT)
 
+/datum/armor/rig/ert
+	melee = 0.6
+	bullet = 0.5
+	laser = 0.3
+	energy = 0.15
+	bomb = 0.3
+	bio = 1.0
+	rad = 1.0
+
 /obj/item/rig/ert
 	name = "ERT-C hardsuit control module"
 	desc = "A suit worn by the commander of an Emergency Response Team. Has blue highlights. Armoured and space ready."
@@ -13,7 +22,7 @@
 	req_access = list(ACCESS_CENTCOM_ERT)
 	siemens_coefficient= 0.5
 
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+	r_armor_type = /datum/armor/rig/ert
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/tank,
@@ -48,7 +57,6 @@
 	desc = "A suit worn by the engineering division of an Emergency Response Team. Has orange highlights. Armoured and space ready."
 	suit_type = "ERT engineer"
 	icon_state = "ert_engineer_rig"
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
 
 	initial_modules = list(
@@ -95,12 +103,20 @@
 		/obj/item/rig_module/grenade_launcher/cleaner,
 		)
 
+/datum/armor/rig/ert/deathsquad
+	melee = 0.8
+	bullet = 0.65
+	laser = 0.5
+	energy = 0.25
+	bomb = 0.8
+	bio = 1.0
+
 /obj/item/rig/ert/assetprotection
 	name = "Heavy Asset Protection suit control module"
 	desc = "A heavy suit worn by the highest level of Asset Protection, don't mess with the person wearing this. Armoured and space ready."
 	suit_type = "heavy asset protection"
 	icon_state = "asset_protection_rig"
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	r_armor_type = /datum/armor/rig/ert/deathsquad
 	siemens_coefficient= 0.3
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
 

@@ -55,8 +55,6 @@
 	var/transparent = 0
 	/// Icon state base.
 	var/icon_name = null
-	/// Part flag
-	var/body_cover_flags = NONE
 	/// Used in mob overlay layering calculations.
 	var/icon_position = 0
 	/// Used when caching robolimb icons.
