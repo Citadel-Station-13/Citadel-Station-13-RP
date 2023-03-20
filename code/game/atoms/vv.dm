@@ -153,7 +153,7 @@
 		var/list/result = presentpicker(usr, "Modify armor", "Modify armor: [src]", Button1="Save", Button2 = "Cancel", Timeout=FALSE, inputtype = "text", values = pickerlist, width = 300, height = 800)
 		if(!islist(result) || result["button"] == 2) // 2 is cancel
 			return
-		var/list/built
+		var/list/built = list()
 		for(var/key in result["values"])
 			built[key] = text2num(result["values"][key])
 		set_armor(armor.overwritten(built))
