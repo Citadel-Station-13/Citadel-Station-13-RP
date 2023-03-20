@@ -18,7 +18,6 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	else
 		START_PROCESSING(SSobj, src)
 
-
 /datum/component/horror_aura/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
