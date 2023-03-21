@@ -21,6 +21,8 @@
 	var/procname = null
 	var/atom/movable/target = null
 	var/check_flags = 0
+	/// required mobility flags
+	var/mobility_flags = NONE
 	var/processing = 0
 	var/active = 0
 	var/atom/movable/screen/movable/action_button/button = null
@@ -94,11 +96,13 @@
 /datum/action/proc/Checks()// returns 1 if all checks pass
 	if(!owner)
 		return 0
+	if(mobility_flags && !CHECK_MOBILITY(owner, mobility_flags))
+		return FALSE
 	if(check_flags & AB_CHECK_RESTRAINED)
 		if(owner.restrained())
 			return 0
 	if(check_flags & AB_CHECK_STUNNED)
-		if(owner.stunned)
+		if(!CHECK_MOBILITY(owner, MOBILITY_USE))
 			return 0
 	if(check_flags & AB_CHECK_LYING)
 		if(owner.lying)

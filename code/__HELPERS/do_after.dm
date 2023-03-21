@@ -122,6 +122,10 @@
 			. = FALSE
 			break
 
+		if(!isnull(additional_checks) && !additional_checks.Invoke())
+			. = FALSE
+			break
+
 	if(!QDELETED(progbar))
 		qdel(progbar)
 

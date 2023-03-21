@@ -201,6 +201,7 @@
 #include "code\__DEFINES\mobs\organs.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
 #include "code\__DEFINES\mobs\sprite_accessories.dm"
+#include "code\__DEFINES\mobs\stat.dm"
 #include "code\__DEFINES\overmaps\misc.dm"
 #include "code\__DEFINES\overmaps\overmap.dm"
 #include "code\__DEFINES\power\power.dm"

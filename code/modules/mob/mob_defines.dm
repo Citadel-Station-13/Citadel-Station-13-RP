@@ -77,10 +77,14 @@
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
 
+	//? Mobility / Stat
+	/// mobility flags from [code/__DEFINES/mobs/mobility.dm], updated by update_mobility(). use traits to remove these.
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
+	var/stat = CONSCIOUS
+
 	//? unsorted / legacy
 	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
