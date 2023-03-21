@@ -9,25 +9,3 @@
 #define STATUS_EFFECT_REPLACE 2
 /// if it only allows one, and new instances just instead refresh the timer
 #define STATUS_EFFECT_REFRESH 3
-///////////
-// BUFFS //
-///////////
-
-/////////////
-// DEBUFFS //
-/////////////
-
-///if struck with a proto-kinetic crusher, takes a ton of damage
-#define STATUS_EFFECT_CRUSHERMARK /datum/status_effect/crusher_mark
-/////////////
-// NEUTRAL //
-/////////////
-///tracks total kinetic crusher damage on a target
-#define STATUS_EFFECT_CRUSHERDAMAGETRACKING /datum/status_effect/crusher_damage
-/////////////
-//  SLIME  //
-/////////////
-
-/////////////
-// GROUPED //
-/////////////

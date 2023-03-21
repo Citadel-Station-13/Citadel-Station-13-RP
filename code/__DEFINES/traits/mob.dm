@@ -1,4 +1,4 @@
-//? mobility - write-only, no read ; call update_mobility(). update_mobility() may assign additional flags.
+//? mobility ; call update_mobility(). update_mobility() may assign additional flags.
 
 #define TRAIT_MOBILITY_MOVE_BLOCKED "mobility_no_move"
 DATUM_TRAIT(/mob, TRAIT_MOBILITY_MOVE_BLOCKED)
@@ -18,6 +18,13 @@ DATUM_TRAIT(/mob, TRAIT_MOBILITY_PULL_BLOCKED)
 DATUM_TRAIT(/mob, TRAIT_MOBILITY_HOLD_BLOCKED)
 #define TRAIT_MOBILITY_RESIST_BLOCKED "mobility_no_resist"
 DATUM_TRAIT(/mob, TRAIT_MOBILITY_RESIST_BLOCKED)
+
+//? stat ; call update_stat(). update_stat() has the right to ignore.
+
+#define TRAIT_MOB_UNCONSCIOUS "mob_unconscious"
+DATUM_TRAIT(/mob, TRAIT_MOB_UNCONSCIOUS)
+#define TRAIT_MOB_SLEEPING "mob_sleeping"
+DATUM_TRAIT(/mob, TRAIT_MOB_SLEEPING)
 
 //? misc
 
