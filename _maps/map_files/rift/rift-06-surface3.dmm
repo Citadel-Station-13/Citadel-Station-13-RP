@@ -25693,6 +25693,9 @@
 	icon_state = "4-8"
 	},
 /obj/item/barrier_tape_segment/engineering,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "eYo" = (

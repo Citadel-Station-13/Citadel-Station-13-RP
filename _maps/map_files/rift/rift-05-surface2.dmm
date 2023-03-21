@@ -307,11 +307,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
-"aoH" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab/foyer)
 "aoS" = (
 /obj/machinery/smartfridge/secure/extract,
 /turf/simulated/floor/tiled/white,
@@ -1710,6 +1705,9 @@
 	icon_state = "4-8"
 	},
 /obj/item/barrier_tape_segment/engineering,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "bfV" = (
@@ -8224,6 +8222,16 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
+"fVF" = (
+/obj/machinery/door/airlock/glass_research{
+	name = "Telescience Wing"
+	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/foyer)
 "fXh" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12143,11 +12151,6 @@
 /obj/random/contraband,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"iKX" = (
-/obj/structure/grille,
-/obj/structure/grille,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside2)
 "iLd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -37801,7 +37804,7 @@ bAh
 mhX
 jZo
 scS
-aoH
+qIa
 fOe
 uQA
 lpy
@@ -38001,7 +38004,7 @@ cuh
 cuh
 cuh
 hUN
-hUN
+fVF
 cuh
 bft
 cuh
@@ -41676,15 +41679,15 @@ uIZ
 uIZ
 uIZ
 tVG
+bAh
+bAh
 pBj
 pBj
-pBj
-pBj
-uIZ
-uIZ
-uIZ
-uIZ
-uIZ
+cnh
+cnh
+cnh
+cnh
+cnh
 cnh
 ufF
 ufF
@@ -41870,16 +41873,16 @@ uIZ
 uIZ
 uIZ
 tVG
-pBj
-pBj
-pBj
-pBj
-uIZ
-uIZ
-uIZ
-uIZ
-uIZ
-iKX
+bAh
+bAh
+bAh
+bAh
+ufF
+ufF
+ufF
+ufF
+ufF
+ufF
 ufF
 ufF
 cnh
@@ -42064,16 +42067,16 @@ uIZ
 uIZ
 uIZ
 tVG
-pBj
-pBj
-pBj
-pBj
-uIZ
-uIZ
-uIZ
-uIZ
-uIZ
-cnh
+bAh
+bAh
+bAh
+bAh
+ufF
+ufF
+ufF
+ufF
+ufF
+ufF
 ufF
 ufF
 cnh
@@ -42258,15 +42261,15 @@ uIZ
 uIZ
 uIZ
 tVG
+bAh
 pBj
 pBj
 pBj
-pBj
-uIZ
-uIZ
-uIZ
-uIZ
-uIZ
+cnh
+cnh
+cnh
+cnh
+cnh
 cnh
 ufF
 ufF
