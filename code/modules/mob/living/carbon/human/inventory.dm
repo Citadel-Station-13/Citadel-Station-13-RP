@@ -223,9 +223,9 @@
 		return FALSE
 
 	// then, check bodyparts
-	if(I.item_flags & EQUIP_IGNORE_DELIMB)
+	if(I.clothing_flags & CLOTHING_IGNORE_DELIMB)
 		return TRUE
-	var/allow_single = (I.item_flags & EQUIP_ALLOW_SINGLE_LIMB)
+	var/allow_single = (I.clothing_flags & CLOTHING_ALLOW_SINGLE_LIMB)
 
 	var/has_part = TRUE
 	var/part_text

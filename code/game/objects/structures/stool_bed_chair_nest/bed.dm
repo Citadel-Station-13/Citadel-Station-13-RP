@@ -22,6 +22,7 @@
 	var/datum/material/padding_material
 	var/base_icon = "bed"
 	var/applies_material_colour = 1
+	var/can_buckle = TRUE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
@@ -119,7 +120,7 @@
 		playsound(src, W.tool_sound, 100, 1)
 		remove_padding()
 
-	else if(istype(W, /obj/item/grab))
+	else if(istype(W, /obj/item/grab) && can_buckle)
 		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it

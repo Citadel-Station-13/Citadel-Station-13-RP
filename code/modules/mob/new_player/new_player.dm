@@ -475,7 +475,8 @@
 	return timer - world.time
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
+		return
 	if (src != usr)
 		return 0
 	if(SSticker.current_state != GAME_STATE_PLAYING)
