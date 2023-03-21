@@ -364,10 +364,6 @@
 			return TRUE
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-
 	if(panel_open)
 		if(istype(I, /obj/item/reagent_containers/cartridge/dispenser))
 			var/obj/item/reagent_containers/cartridge/dispenser/cart = I
@@ -438,6 +434,8 @@
 		inserted = I
 		SStgui.update_uis(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
+		
+	return ..()
 
 /obj/machinery/chemical_dispenser/proc/check_reagent_id(id)
 	for(var/obj/item/reagent_synth/synth as anything in synthesizers)

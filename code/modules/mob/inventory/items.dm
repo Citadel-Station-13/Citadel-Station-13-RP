@@ -204,7 +204,7 @@
  * todo: non-singular-letter proc args
  */
 /obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, flags)
-	if(clothing_flags & EQUIP_IGNORE_BELTLINK)
+	if(clothing_flags & CLOTHING_IGNORE_BELTLINK)
 		return TRUE
 
 	if(!ishuman(M))
