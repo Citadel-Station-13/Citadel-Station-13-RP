@@ -59,6 +59,7 @@
 		new /datum/data/mining_equipment("Hardsuit - Smoke Bomb Deployer",	/obj/item/rig_module/grenade_launcher/smoke,					2000),
 		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						3000),
 		new /datum/data/mining_equipment("Industrial Equipment - Sheet-Snatcher",/obj/item/storage/bag/sheetsnatcher,				500),
+		new /datum/data/mining_equipment("Repurposed Equipment - Mining Carbine",	/obj/item/gun/energy/gun/miningcarbine,						5000),
 		new /datum/data/mining_equipment("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	500),
 		new /datum/data/mining_equipment("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,	1000),
 		new /datum/data/mining_equipment("Super Resonator",				/obj/item/resonator/upgraded,										2500),
