@@ -94,7 +94,7 @@
 	submunition_spread_max = 60
 	submunition_spread_min = 30
 	submunitions = list(
-		/obj/item/projectile/beam/gamma = 3 
+		/obj/item/projectile/beam/gamma = 3
 		)
 
 /obj/item/projectile/scatter/laser/heavylaser
@@ -115,7 +115,7 @@
 	submunition_spread_max = 70
 	submunition_spread_min = 30
 	submunitions = list(
-		/obj/item/projectile/beam/stun = 2 
+		/obj/item/projectile/beam/stun = 2
 		)
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
@@ -123,7 +123,7 @@
 
 /obj/item/projectile/scatter/stun/weak
 	submunitions = list(
-		/obj/item/projectile/beam/stun/weak = 2 
+		/obj/item/projectile/beam/stun/weak = 2
 		)
 	agony = 20
 
@@ -144,9 +144,10 @@
 		)
 
 /obj/item/projectile/scatter/excavation
-	damage = 10
+	damage = 2 //mining tool
 	submunition_spread_max = 80
 	submunition_spread_min = 40
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	submunitions = list(
 		/obj/item/projectile/beam/excavation = 2
 		)
