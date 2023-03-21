@@ -59,6 +59,8 @@ SUBSYSTEM_DEF(job)
 		for(var/depname in department_datums)
 			if(faction[depname])
 				asinine_sort[depname] = faction[depname]
+				// todo: WHY
+				tim_sort(asinine_sort[depname], /proc/cmp_job_datums)
 				faction -= depname
 		faction.Insert(1, asinine_sort)
 		for(var/depname in asinine_sort)
