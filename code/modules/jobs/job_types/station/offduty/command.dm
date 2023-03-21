@@ -3,7 +3,7 @@
 	title = "Off-duty Command"
 	timeoff_factor = -1
 	total_positions = -1
-	departments = list(DEPARTMENT_OFFDUTY, DEPARTMENT_COMMAND)
+	departments = list(DEPARTMENT_OFFDUTY)
 	selection_color = "#9b633e"
 	additional_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
 	minimal_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
