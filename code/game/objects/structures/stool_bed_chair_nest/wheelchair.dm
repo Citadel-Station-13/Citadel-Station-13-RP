@@ -33,7 +33,7 @@
 		return
 	last_active_move = world.time
 
-	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_HOLD))
 		if(user==pulling_along)
 			pulling_along = null
 			user.pulledby = null

@@ -89,9 +89,6 @@
 	update_stat()
 
 /mob/living/proc/handle_statuses()
-	handle_stunned()
-	handle_weakened()
-	handle_paralysed()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()

@@ -209,7 +209,7 @@
 		return
 
 	if (disabilities & DISABILITY_EPILEPSY)
-		if ((prob(1) && paralysis < 1))
+		if (prob(1) && IS_CONSCIOUS(src))
 			to_chat(src, "<font color='red'>You have a seizure!</font>")
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
@@ -218,13 +218,13 @@
 			afflict_unconscious(20 * 10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
-		if ((prob(5) && paralysis <= 1))
+		if (prob(5) && IS_CONSCIOUS(src))
 			drop_active_held_item()
 			spawn( 0 )
 				emote("cough")
 				return
 	if (disabilities & DISABILITY_TOURETTES)
-		if ((prob(10) && paralysis <= 1))
+		if (prob(10) && IS_CONSCIOUS(src))
 			afflict_stun(20 * 10)
 			spawn( 0 )
 				switch(rand(1, 3))
