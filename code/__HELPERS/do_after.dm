@@ -55,7 +55,8 @@
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null, ignore_resist = FALSE)
+#warn additional_checks
+/proc/do_after(mob/user, delay, atom/target, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_USE, ignore_movement = FALSE, max_distance = null, datum/callback/additional_checks)
 	if(!user)
 		return 0
 	if(!delay)
@@ -87,7 +88,7 @@
 		if(progress)
 			progbar.update(world.time - starttime)
 
-		if(!user || user.incapacitated(incapacitation_flags))
+		if(!user || !CHECK_ALL_MOBILITY(user, mobility_flags))
 			. = FALSE
 			break
 
@@ -126,3 +127,6 @@
 
 	if(target)
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
+
+/proc/do_self(mob/user, delay, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_USE, ignore_movement = FALSE, datum/callback/additional_checks)
+	return do_after(user, delay, null, needhand, progress, mobility_flags, ignore_movement, null, additional_callbacks)

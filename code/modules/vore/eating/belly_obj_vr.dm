@@ -529,7 +529,7 @@
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
 		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 
-		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(R, escapetime, owner, mobility_flags = MOBILITY_RESIST))
 			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
 				release_specific_contents(R)
 				return

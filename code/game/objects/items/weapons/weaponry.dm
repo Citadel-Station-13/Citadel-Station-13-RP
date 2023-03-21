@@ -83,7 +83,7 @@
 		return
 	M.setClickCooldown(M.get_attack_speed())
 	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
-	if(!do_after(M, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+	if(!do_after(M, escape_time, src, mobility_flags = MOBILITY_RESIST))
 		return FALSE
 	visible_message("<span class='danger'>[M] manages to tear \the [src] apart!</span>")
 	qdel(src)

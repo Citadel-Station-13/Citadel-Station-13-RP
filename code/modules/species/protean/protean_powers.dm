@@ -39,7 +39,7 @@
 		// var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
 		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
-		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
+		if(do_self(src, 5 SECONDS, needhand = FALSE, mobility_flags = NONE, ignore_movement = TRUE))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
 			if(!refactory.use_stored_material(MAT_STEEL,PER_LIMB_STEEL_COST))
 				return
 			var/list/limblist = species.has_limbs[choice]
@@ -132,7 +132,7 @@
 
 		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
-		if(do_after(blob,5 SECONDS))
+		if(do_self(blob, 5 SECONDS, needhand = FALSE, mobility_flags = NONE, ignore_movement = TRUE))
 			synthetic = usable_manufacturers[manu_choice]
 			torso.robotize(manu_choice) //Will cascade to all other organs.
 			regenerate_icons()
@@ -152,7 +152,7 @@
 	active_regen = TRUE
 
 	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-	if(do_after(blob, delay_length, null, 0))
+	if(do_self(blob, 5 SECONDS, needhand = FALSE, mobility_flags = NONE, ignore_movement = TRUE))
 		if(stat != DEAD && refactory)
 			//Not enough resources (AND spends the resources, should be the last check)
 			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))

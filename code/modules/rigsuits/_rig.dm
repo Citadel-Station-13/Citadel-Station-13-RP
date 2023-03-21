@@ -351,7 +351,7 @@
 
 				if(!failed_to_seal && (M.back == src || M.belt == src) && piece == compare_piece)
 
-					if(seal_delay && !instant && !do_after(M,seal_delay,needhand=0))
+					if(seal_delay && !instant && !do_after(M, seal_delay, needhand = FALSE, ignore_movement = TRUE))
 						failed_to_seal = 1
 
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"

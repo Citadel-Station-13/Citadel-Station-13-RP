@@ -251,7 +251,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Close"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!IS_CONSCIOUS(src))
 		return
 
 	if(src.loc == card)

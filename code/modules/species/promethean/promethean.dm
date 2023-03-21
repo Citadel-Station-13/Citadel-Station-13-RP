@@ -246,7 +246,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		return
 
 	//Human form
-	else if(stat || paralysis || stunned || weakened || restrained())
+	else if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || restrained())
 		to_chat(src, SPAN_WARNING("You can only do this while not stunned."))
 		return
 	else

@@ -233,13 +233,13 @@
 	return incapacitated(INCAPACITATION_KNOCKDOWN)
 
 /mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
-	if ((incapacitation_flags & INCAPACITATION_STUNNED) && stunned)
+	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_USE))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting))
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_STAND))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & STATUS_FAKEDEATH)))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_CONSCIOUS))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())

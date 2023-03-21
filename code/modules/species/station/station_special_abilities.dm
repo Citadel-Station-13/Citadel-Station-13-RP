@@ -344,7 +344,7 @@
 	/*if(last_special > world.time)
 		return*/
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite anyone in your current state!")
 		return
 
@@ -362,7 +362,7 @@
 
 	//if(last_special > world.time) return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")
 		return
 
@@ -689,7 +689,7 @@
 		to_chat(src,"<span class='warning'>You can't shred that type of creature.</span>")
 		return FALSE
 	//Needs to be capable (replace with incapacitated call?)
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying || restrained() || buckled)
 		to_chat(src,"<span class='warning'>You cannot do that in your current state!</span>")
 		return FALSE
 	//Needs to be adjacent, at the very least.

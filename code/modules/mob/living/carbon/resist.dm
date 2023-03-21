@@ -46,7 +46,7 @@
 			SPAN_DANGER("[src] is trying to break [I]!"),
 			SPAN_WARNING("You attempt to break your [I]. (This will take around 5 seconds and you need to stand still)"))
 
-		if(do_after(src, 5 SECONDS, target = src, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(src, 5 SECONDS, target = src, mobility_flags = MOBILITY_RESIST))
 			if(!I || buckled)
 				return
 			visible_message(
@@ -71,7 +71,7 @@
 	visible_message(
 		SPAN_DANGER("[src] attempts to remove [I]!"),
 		SPAN_WARNING("You attempt to remove [I]. (This will take around [displaytime] seconds and you need to stand still)"))
-	if(do_after(src, breakouttime, target = src, incapacitation_flags = INCAPACITATION_DISABLED & INCAPACITATION_KNOCKDOWN))
+	if(do_after(src, breakouttime, target = src, mobility_flags = MOBILITY_RESIST))
 		visible_message(
 			SPAN_DANGER("[src] manages to remove [I]!"),
 			SPAN_NOTICE("You successfully remove [I]."))
