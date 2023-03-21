@@ -264,11 +264,11 @@
 	//Drop everything
 	H.drop_inventory(TRUE, TRUE)
 	H.visible_message("<span class = 'warning'>[H] emerges from a cloud of viscera!</b>")
-	H.SetUnconscious(0)
+	H.set_unconscious(0)
 	//Unfreeze some things
 	H.does_not_breathe = FALSE
 	H.update_canmove()
-	H.weakened = 2
+	H.afflict_paralyze(2)
 	//Visual effects
 	var/T = get_turf(H)
 	new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)

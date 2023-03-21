@@ -814,7 +814,7 @@
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
 		return
 
-	if(usr == wearer && (usr.stat||usr.paralysis||usr.stunned)) // If the usr isn't wearing the suit it's probably an AI.
+	if(usr == wearer && !CHECK_MOBILITY(user, MOBILITY_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
 		return
 
 	if(trapSprung == 1)

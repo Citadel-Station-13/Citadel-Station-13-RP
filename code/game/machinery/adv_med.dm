@@ -285,8 +285,8 @@
 			occupantData["radLoss"] = H.radiation
 			occupantData["cloneLoss"] = H.getCloneLoss()
 			occupantData["brainLoss"] = H.getBrainLoss()
-			occupantData["paralysis"] = H.paralysis
-			occupantData["paralysisSeconds"] = round(H.paralysis / 4)
+			occupantData["paralysis"] = H.is_unconscious()
+			occupantData["paralysisSeconds"] = round(H.is_unconscious?().time_left() / 10)
 			occupantData["bodyTempC"] = H.bodytemperature-T0C
 			occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
 

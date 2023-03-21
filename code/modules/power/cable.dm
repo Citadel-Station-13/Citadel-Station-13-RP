@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(usr.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_USE))
 			return 1
 	return 0
 

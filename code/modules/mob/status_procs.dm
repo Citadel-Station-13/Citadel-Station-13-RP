@@ -8,6 +8,7 @@
 	return
 
 /mob/proc/is_stunned()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_stun(amount)
@@ -29,6 +30,7 @@
 	return
 
 /mob/proc/is_knockdown()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_knockdown(amount)
@@ -51,6 +53,7 @@
 	return
 
 /mob/proc/is_paralyzed()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_paralyze(amount)
@@ -63,6 +66,7 @@
 	#warn impl
 
 /mob/proc/is_rooted()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_root(amount)
@@ -75,6 +79,7 @@
 	#warn impl
 
 /mob/proc/is_dazed()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_daze(amount)
@@ -87,6 +92,7 @@
 	#warn impl
 
 /mob/proc/is_unconscious()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_unconscious(amount)
@@ -106,6 +112,7 @@
 	return
 
 /mob/proc/is_sleeping()
+	RETURN_TYPE(/datum/status_effect)
 	#warn impl
 
 /mob/proc/afflict_sleeping(amount)

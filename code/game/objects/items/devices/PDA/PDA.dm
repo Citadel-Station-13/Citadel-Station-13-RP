@@ -475,7 +475,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return 0
 
 	var/mob/M = loc
-	if(M.stat || M.restrained() || M.paralysis || M.stunned || M.weakened)
+	if(!CHECK_MOBILITY(M, MOBILITY_USE))
 		return 0
 	if((src in M.contents) || ( istype(loc, /turf) && in_range(src, M) ))
 		return 1

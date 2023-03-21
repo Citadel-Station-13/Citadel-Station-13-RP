@@ -81,7 +81,7 @@
 /atom/movable/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
+	if(!CHECK_MOBILITY(usr, MOBILITY_STORAGE))
 		return 1
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
