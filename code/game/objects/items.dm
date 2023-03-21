@@ -764,3 +764,24 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
+
+//? Mob Armor
+
+/**
+ * called to be checked for mob armor
+ * 
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+/**
+ * called to be used as mob armor
+ * side effects are allowed
+ * 
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
