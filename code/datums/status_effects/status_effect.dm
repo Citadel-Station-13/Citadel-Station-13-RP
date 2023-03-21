@@ -3,7 +3,8 @@
 //When making a new status effect, add a define to status_effects.dm in __DEFINES for ease of use!
 
 /datum/status_effect
-	var/id = "effect" //Used for screen alerts.
+	/// unique identifierentifier
+	var/identifier = "effect"
 	/// duration in deciseconds - 0 for permanent.
 	var/duration
 	#warn hook
@@ -36,7 +37,7 @@
 		duration = world.time + duration
 	next_tick = world.time + tick_interval
 	// if(alert_type)
-		// var/atom/movable/screen/alert/status_effect/A = owner.throw_alert(id, alert_type)
+		// var/atom/movable/screen/alert/status_effect/A = owner.throw_alert(identifier, alert_type)
 		// A.attached_effect = src //so the alert can reference us, if it needs to
 		// linked_alert = A //so we can reference the alert, if we need to
 	START_PROCESSING(SSstatus_effects, src)
@@ -45,7 +46,7 @@
 /datum/status_effect/Destroy()
 	STOP_PROCESSING(SSstatus_effects, src)
 	if(owner)
-		// owner.clear_alert(id)
+		// owner.clear_alert(identifier)
 		LAZYREMOVE(owner.status_effects, src)
 		on_remove()
 		owner = null
@@ -75,7 +76,7 @@
 	return TRUE
 
 /datum/status_effect/proc/be_replaced() //Called instead of on_remove when a status effect is replaced by itself or when a status effect with on_remove_on_mob_delete = FALSE has its mob deleted
-	// owner.clear_alert(id)
+	// owner.clear_alert(identifier)
 	LAZYREMOVE(owner.status_effects, src)
 	owner = null
 	qdel(src)
@@ -107,7 +108,7 @@
 	var/datum/status_effect/S1 = effect
 	LAZYINITLIST(status_effects)
 	for(var/datum/status_effect/S in status_effects)
-		if(S.id == initial(S1.id) && S.status_type)
+		if(S.identifier == initial(S1.identifier) && S.status_type)
 			if(S.status_type == STATUS_EFFECT_REPLACE)
 				S.be_replaced()
 			else if(S.status_type == STATUS_EFFECT_REFRESH)
@@ -126,7 +127,7 @@
 	if(status_effects)
 		var/datum/status_effect/S1 = effect
 		for(var/datum/status_effect/S in status_effects)
-			if(initial(S1.id) == S.id && S.before_remove(arguments))
+			if(initial(S1.identifier) == S.identifier && S.before_remove(arguments))
 				qdel(S)
 				. = TRUE
 
@@ -135,7 +136,7 @@
 	if(status_effects)
 		var/datum/status_effect/S1 = effect
 		for(var/datum/status_effect/S in status_effects)
-			if(initial(S1.id) == S.id)
+			if(initial(S1.identifier) == S.identifier)
 				return S
 
 /mob/living/proc/has_status_effect_list(effect) //returns a list of effects with matching IDs that the mod owns; use for effects there can be multiple of
@@ -143,7 +144,7 @@
 	if(status_effects)
 		var/datum/status_effect/S1 = effect
 		for(var/datum/status_effect/S in status_effects)
-			if(initial(S1.id) == S.id)
+			if(initial(S1.identifier) == S.identifier)
 				. += S
 
 //////////////////////
@@ -151,7 +152,7 @@
 //////////////////////
 
 /datum/status_effect/stacking
-	id = "stacking_base"
+	identifier = "stacking_base"
 	duration = -1 //removed under specific conditions
 	alert_type = null
 	var/stacks = 0 //how many stacks are accumulated, also is # of stacks that target will have when first applied

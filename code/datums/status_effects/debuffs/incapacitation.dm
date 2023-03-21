@@ -3,31 +3,31 @@
 	var/requires_stat_update = FALSE
 
 /datum/status_effect/incapacitation/stun
-	id = "stun"
+	identifier = "stun"
 	requires_mobility_update = TRUE
 
 /datum/status_effect/incapacitation/knockdown
-	id = "knockdown"
+	identifier = "knockdown"
 	requires_mobility_update = TRUE
 
 /datum/status_effect/incapacitation/paralyze
-	id = "paralyze"
+	identifier = "paralyze"
 	requires_mobility_update = TRUE
 
 /datum/status_effect/incapacitation/root
-	id = "root"
+	identifier = "root"
 	requires_mobility_update = TRUE
 
 /datum/status_effect/incapacitation/daze
-	id = "daze"
+	identifier = "daze"
 	requires_mobility_update = TRUE
 
 /datum/status_effect/incapacitation/unconscious
-	id = "unconscious"
+	identifier = "unconscious"
 	requires_stat_update = TRUE
 
 /datum/status_effect/incapacitation/sleeping
-	id = "sleeping"
+	identifier = "sleeping"
 	requires_stat_update = TRUE
 
 #warn impl all

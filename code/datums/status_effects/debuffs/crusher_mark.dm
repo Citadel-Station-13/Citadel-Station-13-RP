@@ -1,5 +1,5 @@
 /datum/status_effect/crusher_mark
-	id = "crusher_mark"
+	identifier = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = null
