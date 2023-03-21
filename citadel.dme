@@ -630,7 +630,6 @@
 #include "code\datums\armor\station\civilian.dm"
 #include "code\datums\armor\station\engineering.dm"
 #include "code\datums\armor\station\exploration.dm"
-#include "code\datums\armor\station\general.dm"
 #include "code\datums\armor\station\medical.dm"
 #include "code\datums\armor\station\science.dm"
 #include "code\datums\armor\station\security.dm"
