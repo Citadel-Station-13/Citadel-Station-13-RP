@@ -225,12 +225,12 @@
 		/obj/item/radio/headset/heads/blueshield/alt,
 		/obj/item/clothing/glasses/sunglasses/medhud,
 		/obj/item/clothing/head/beret/sec/corporate/blueshield,
-		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield
-		/obj/item/clothing/gloves/black
-		/obj/item/clothing/shoes/boots/jackboots
+		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/suit/storage/vest/blueshield,
 		/obj/item/clothing/suit/storage/vest/blueshield/heavy,
-		/obj/item/storage/backpack/blueshield
+		/obj/item/storage/backpack/blueshield,
 		/obj/item/clothing/accessory/badge/holo,
 		/obj/item/clothing/accessory/badge/holo/cord,
 		/obj/item/barrier_tape_roll/police,
