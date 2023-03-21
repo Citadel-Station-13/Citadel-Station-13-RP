@@ -474,6 +474,7 @@
 		/obj/item/gun/energy/kinetic_accelerator,
 		/obj/item/kinetic_crusher,
 		/obj/item/resonator,
+		/obj/item/gun/energy/gun/miningcarbine,
 		/obj/item/gun/magnetic/matfed
 		)
 

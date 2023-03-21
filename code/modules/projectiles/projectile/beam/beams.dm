@@ -305,7 +305,7 @@
 /obj/projectile/beam/excavation
 	name = "excavation beam"
 	icon_state = "emitter"
-	fire_sound = 'sound/weapons/gauss_shoot.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	light_color = "#00CC33"
 	damage = 1 //mining tool
 	excavation_amount = 1000	// 1 shot to dig a standard rock turf. Made for mining. Should be able to consistently one hit rocks now

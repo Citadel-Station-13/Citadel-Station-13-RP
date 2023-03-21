@@ -144,9 +144,10 @@
 		)
 
 /obj/projectile/scatter/excavation
-	damage = 10
+	damage = 2 //mining tool
 	submunition_spread_max = 80
 	submunition_spread_min = 40
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	submunitions = list(
 		/obj/projectile/beam/excavation = 2
 		)
