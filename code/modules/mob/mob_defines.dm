@@ -83,6 +83,10 @@
 	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
 	var/stat = CONSCIOUS
 
+	//? Status Effects
+	/// A list of all status effects the mob has
+	var/list/status_effects
+
 	//? unsorted / legacy
 	var/datum/mind/mind
 

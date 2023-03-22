@@ -18,9 +18,6 @@
 	/// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
 	var/mob_class = null
 
-	/// A list of all status effects the mob has
-	var/list/status_effects
-
 	//* Damage related vars *// NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
 	/// Brutal damage caused by brute force. (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
 	var/bruteloss = 0.0
