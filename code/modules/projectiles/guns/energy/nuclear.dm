@@ -50,7 +50,7 @@
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 20
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_LARGE
 	fire_delay = 3
 	projectile_type = /obj/item/projectile/beam/excavation
