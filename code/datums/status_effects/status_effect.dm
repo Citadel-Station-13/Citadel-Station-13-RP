@@ -7,14 +7,18 @@
 	var/identifier = "effect"
 	/// duration in deciseconds - 0 for permanent.
 	var/duration
+	#warn hook
 	/// expiration timerid
-	var/decay_timerid
+	var/expire_timer
+	#warn hook
+	/// start time - when refreshing we just bump this to world.time or something.
+	var/started
 	#warn hook
 	/// deciseconds per tick. null for no ticking.
 	var/tick_interval
 	#warn hook
-	/// last world.time we ticked.
-	var/tick_last
+	/// next world.time we should tick.
+	var/tick_next
 	/// screen alert thrown
 	var/alert_type = /atom/movable/screen/alert/status_effect
 	/// screen alert instance if it exists
@@ -72,14 +76,25 @@
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
-/datum/status_effect/proc/tick() //Called every tick.
+/datum/status_effect/proc/tick()
+	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/status_effect/proc/before_remove() //! Called before being removed; returning FALSE will cancel removal
 	return TRUE
 
-/datum/status_effect/proc/on_remove() //Called whenever the buff expires or is removed; do note that at the point this is called, it is out of the owner's status_effects but owner is not yet null
+/**
+ * called on full removal
+ */
+/datum/status_effect/proc/on_remove()
 	SHOULD_CALL_PARENT(TRUE)
-	return TRUE
+	return
+
+/**
+ * called after add
+ */
+/datum/status_effect/proc/on_apply()
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /datum/status_effect/proc/be_replaced() //Called instead of on_remove when a status effect is replaced by itself or when a status effect with on_remove_on_mob_delete = FALSE has its mob deleted
 	// owner.clear_alert(identifier)
@@ -88,10 +103,7 @@
 	qdel(src)
 
 /datum/status_effect/proc/refresh()
-	var/original_duration = initial(duration)
-	if(original_duration == -1)
-		return
-	duration = world.time + original_duration
+	#warn impl
 
 /datum/status_effect/proc/time_left()
 	#warn impl
