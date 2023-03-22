@@ -41,6 +41,7 @@
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 	pulling = AM
 	AM.pulledby = src
+	AM.on_start_pulled_by(src)
 	recursive_glidesize_update()
 
 	if(ismob(AM))
@@ -59,6 +60,7 @@
 		. = pulling
 		pulling.pulledby = null
 		pulling.reset_glide_size()
+		pulling.on_stop_pulled_by()
 		pulling = null
 
 /**
@@ -163,3 +165,15 @@
 			M.set_glide_size(glide_size, FALSE)
 			ran[M] = TRUE
 		updating = updating.pulling
+
+/**
+ * on start pull
+ */
+/atom/movable/proc/on_start_pulled_by(atom/movable/puller)
+	return
+
+/**
+ * on stop pull
+ */
+/atom/movable/proc/on_stop_pulled_by(atom/movable/puller)
+	return

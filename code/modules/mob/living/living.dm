@@ -784,6 +784,7 @@ default behaviour is:
 		lying_prev = lying
 		update_transform()
 		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
+	#warn redo
 
 	return canmove
 

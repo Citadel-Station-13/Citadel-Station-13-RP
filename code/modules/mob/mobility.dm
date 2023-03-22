@@ -14,13 +14,10 @@
  * 		being dead (duh) can impact mobility, not the other way around.
  */
 
-// todo: mobility system
-
-// for now, just dumb wrappers
-
-
-
-/// Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
-/mob/proc/update_canmove()
-	return canmove
-
+/**
+ * updates mobility flags
+ *
+ * @return new mobility flags
+ */
+/mob/proc/update_mobility()
+	#warn impl

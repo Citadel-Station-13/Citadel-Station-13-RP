@@ -2,6 +2,10 @@
 	name = "observer"
 	desc = "This shouldn't appear"
 	density = 0
+	mobility_flags = NONE
+
+/mob/observer/updatE_mobility()
+	return
 
 /mob/observer/dead
 	name = "ghost"

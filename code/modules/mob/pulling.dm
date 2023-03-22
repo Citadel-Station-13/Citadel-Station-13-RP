@@ -137,3 +137,10 @@
 
 /mob/proc/update_pull_hud_icon()
 	pullin?.icon_state = pulling? "pull1" : "pull0"
+
+/mob/on_start_pulled_by(atom/movable/puller)
+	update_mobility()
+
+/mob/on_stop_pulled_by(atom/movable/puller)
+	. = ..()
+	update_mobility()

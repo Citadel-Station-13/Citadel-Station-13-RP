@@ -277,8 +277,6 @@
 		dat += "<span style='[toxcolor]'>\t-Toxin Content %: [patient.getToxLoss()]</span><BR>"
 		dat += "<span style='[burncolor]'>\t-Burn Severity %: [patient.getFireLoss()]</span><BR>"
 
-		if(round(patient.paralysis / 4) >= 1)
-			dat += text("<HR>Patient paralyzed for: []<BR>", round(patient.paralysis / 4) >= 1 ? "[round(patient.paralysis / 4)] seconds" : "None")
 		if(patient.getBrainLoss())
 			dat += "<div class='line'><span class='average'>Significant brain damage detected.</span></div><br>"
 		if(patient.getCloneLoss())

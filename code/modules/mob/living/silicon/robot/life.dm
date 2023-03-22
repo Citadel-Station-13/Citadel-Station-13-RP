@@ -312,11 +312,14 @@
 			weapon_lock = 0
 			weaponlock_time = 120
 
-/mob/living/silicon/robot/update_canmove()
-	..() // Let's not reinvent the wheel.
-	if(lockdown || !is_component_functioning("actuator"))
-		canmove = FALSE
-	return canmove
+// todo: better way
+/mob/living/silicon/robot/update_mobility()
+	. = ..()
+	if(!is_component_functioning("actuator"))
+		mobility_flags &= ~MOBILITY_MOVE
+	if(lockdown)
+		mobility_flags &= ~(MOBILITY_FLAGS_ANY_INTERACTION | MOBILITY_MOVE | MOBILITY_PULL | MOBILITY_RESIST)
+	return mobility_flags
 
 /mob/living/silicon/robot/update_fire()
 	cut_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state()))
