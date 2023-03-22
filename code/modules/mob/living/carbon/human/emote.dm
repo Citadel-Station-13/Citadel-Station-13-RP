@@ -1202,7 +1202,7 @@
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
-			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained() || involved_parts.len < 2)
+			if(!CHECK_MOBILITY(src, MOBILITY_MOVE) || involved_parts.len < 2)
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else

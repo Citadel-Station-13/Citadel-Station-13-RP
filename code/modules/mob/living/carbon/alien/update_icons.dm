@@ -12,7 +12,7 @@
 
 	if(stat == DEAD)
 		icon_state = "[initial(icon_state)][state]_dead"
-	else if (stunned)
+	else if (!CHECK_MOBILITY(src, MOBILITY_MOVE | MOBILITY_USE))
 		icon_state = "[initial(icon_state)][state]_stun"
 	else if(lying || resting)
 		icon_state = "[initial(icon_state)][state]_sleep"

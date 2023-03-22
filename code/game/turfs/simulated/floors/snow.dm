@@ -55,7 +55,7 @@
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
 	. = ..()
 	if(istype(M, /mob/living))
-		if(M.stunned == 0)
+		if(!M.is_stunned())
 			to_chat(M, "<span class='warning'>You slide across the ice!</span>")
 		M.set_stunned(20 * 1)
 		step(M,M.dir)

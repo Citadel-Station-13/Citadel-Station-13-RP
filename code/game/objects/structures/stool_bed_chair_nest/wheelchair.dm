@@ -40,7 +40,7 @@
 			to_chat(user, "<span class='warning'>You lost your grip!</span>")
 		return
 	if(has_buckled_mobs() && pulling_along && (user in buckled_mobs))
-		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
+		if(!CHECK_ALL_MOBILITY(pulling_along, MOBILITY_MOVE | MOBILITY_STAND))
 			pulling_along.pulledby = null
 			pulling_along = null
 	if((user.pulling != src) && (user == pulling_along))

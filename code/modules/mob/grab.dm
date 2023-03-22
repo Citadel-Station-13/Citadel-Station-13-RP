@@ -405,7 +405,7 @@
 		if(GRAB_NECK)
 			grab_name = "headlock"
 			//If the you move when grabbing someone then it's easier for them to break free. Same if the affected mob is immune to stun.
-			if(world.time - assailant.l_move_time < 30 || !affecting.stunned)
+			if(world.time - assailant.l_move_time < 30 || !affecting.is_stunned())
 				break_strength++
 			break_chance_table = list(3, 18, 45, 100)
 

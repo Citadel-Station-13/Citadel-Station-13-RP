@@ -150,7 +150,7 @@ Contains helper procs for airflow, handled in /connection_group.
 
 	if(airflow_speed > 10)
 		afflict_unconscious(20 * round(airflow_speed * impact_stun))
-		afflict_stun(20 * (paralysis + 3))
+		afflict_stun(20 * (round(airflow_speed * impact_stun) + 3))
 	else
 		afflict_stun(20 * round(airflow_speed * impact_stun/2))
 	return ..()
