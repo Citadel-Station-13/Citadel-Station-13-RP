@@ -1003,7 +1003,7 @@
 			user.client.prefs_vr.digest_leave_remains = user.digest_leave_remains
 
 	if(href_list["togglehealbelly"])
-		var/choice = alert(user, "This button is for those who don't like healbelly used on them as a mechanic. It does not affect anything, but is displayed under mechanical prefs for ease of quick checks. You are currently: [user.allowmobvore ? "Okay" : "Not Okay"] with players using healbelly on you.", "", "Allow Healing Belly", "Cancel", "Disallow Healing Belly")
+		var/choice = alert(user, "This button is for those who don't like healbelly used on them as a mechanic. It does not affect anything, but is displayed under mechanical prefs for ease of quick checks. You are currently: [user.permit_healbelly ? "Okay" : "Not Okay"] with players using healbelly on you.", "", "Allow Healing Belly", "Cancel", "Disallow Healing Belly")
 		switch(choice)
 			if("Cancel")
 				return FALSE
