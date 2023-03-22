@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(radiation)
 	/// queue not processed
 	var/list/next_wave_set
 	/// waves
-	var/list/datum/radiation_wave/waves = list()
+	var/list/datum/radiation_wave_legacy/waves = list()
 	/// wave index in lieu of currentrun
 	var/wave_index
 
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(radiation)
 	if(stage == SSRADIATION_RADIATE)
 		// pulse all waves until complete
 		while(length(waves))
-			var/datum/radiation_wave/wave
+			var/datum/radiation_wave_legacy/wave
 			while(wave_index <= length(waves))
 				wave = waves[wave_index]
 				if(wave.propagate())
@@ -155,10 +155,10 @@ SUBSYSTEM_DEF(radiation)
 				for(var/atom/A as anything in radiating)
 					insulation *= A.rad_insulation
 					A.rad_act(intensity)
-			new /datum/radiation_wave(T, NORTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave(T, SOUTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave(T, EAST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave(T, WEST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
+			new /datum/radiation_wave_legacy(T, NORTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
+			new /datum/radiation_wave_legacy(T, SOUTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
+			new /datum/radiation_wave_legacy(T, EAST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
+			new /datum/radiation_wave_legacy(T, WEST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
 		if(MC_TICK_CHECK)
 			next_wave_set.Cut(1, i + 1)
 			return
@@ -167,10 +167,10 @@ SUBSYSTEM_DEF(radiation)
 /datum/controller/subsystem/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
 	// if not contaminating we immediately release, pointless to keep going
 	if(!can_contaminate)
-		new /datum/radiation_wave(source, NORTH, intensity, falloff, FALSE)
-		new /datum/radiation_wave(source, SOUTH, intensity, falloff, FALSE)
-		new /datum/radiation_wave(source, EAST, intensity, falloff, FALSE)
-		new /datum/radiation_wave(source, WEST, intensity, falloff, FALSE)
+		new /datum/radiation_wave_legacy(source, NORTH, intensity, falloff, FALSE)
+		new /datum/radiation_wave_legacy(source, SOUTH, intensity, falloff, FALSE)
+		new /datum/radiation_wave_legacy(source, EAST, intensity, falloff, FALSE)
+		new /datum/radiation_wave_legacy(source, WEST, intensity, falloff, FALSE)
 	var/list/datum/radiation_burst/queue = queued_waves[source]
 	if(!queue)
 		queue = list()

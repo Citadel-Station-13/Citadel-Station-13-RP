@@ -12,7 +12,7 @@
 	src.intensity = src.highest = intensity
 	src.falloff = falloff
 
-/datum/radiation_wave
+/datum/radiation_wave_legacy
 	/// current center of wave
 	var/turf/current
 	/// how far we've moved
@@ -36,7 +36,7 @@
 	/// how many emitters of atleast RAD_MOB_ACT_PROTECTION we're from
 	var/relevant_count
 
-/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE, relevant_count = 1, contam_left)
+/datum/radiation_wave_legacy/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE, relevant_count = 1, contam_left)
 	src.current = starting
 	src.dir = dir
 	src.starting_intensity = src.current_intensity = intensity
@@ -48,7 +48,7 @@
 	hit_mobs = list()
 	SSradiation.waves += src
 
-/datum/radiation_wave/Destroy()
+/datum/radiation_wave_legacy/Destroy()
 	SSradiation.waves -= src
 	hit_mobs = null
 	..()
@@ -57,7 +57,7 @@
 /**
  * return true if not deleted
  */
-/datum/radiation_wave/proc/propagate()
+/datum/radiation_wave_legacy/proc/propagate()
 	current = get_step(current, dir)
 	if(!current)
 		qdel(src)
@@ -77,7 +77,7 @@
 		remaining_contam = max(0, remaining_contam - contaminated)
 	return TRUE
 
-/datum/radiation_wave/proc/atoms_within_line()
+/datum/radiation_wave_legacy/proc/atoms_within_line()
 	. = list()
 	var/cmove_dir = dir
 	// prevent corners overlapping
@@ -108,7 +108,7 @@
  * which is a shit model of radiation but hey it's faster than
  * fully raycasting everything (kinda) (probably)
  */
-/datum/radiation_wave/proc/process_obstructions(list/atoms)
+/datum/radiation_wave_legacy/proc/process_obstructions(list/atoms)
 	var/cwidth = 1 + ((dir & (NORTH|SOUTH)) ? (steps - 1) : steps) * 2
 	for(var/atom/A as anything in atoms)
 		if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_WAVE_PASSING, src, cwidth) & COMPONENT_RAD_WAVE_HANDLED)
@@ -120,7 +120,7 @@
  * hits atoms with radiation wave
  * hits amount of contamination inflicted
  */
-/datum/radiation_wave/proc/radiate(list/atoms, strength)
+/datum/radiation_wave_legacy/proc/radiate(list/atoms, strength)
 	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION || !can_contaminate || !remaining_contam
 	var/list/contaminating = list()
 	for(var/atom/A as anything in atoms)

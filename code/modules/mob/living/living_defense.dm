@@ -104,7 +104,7 @@
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
 
-/mob/living/rad_act(strength, datum/radiation_wave/wave)
+/mob/living/rad_act(strength, datum/radiation_wave_legacy/wave)
 	. = ..()
 	if(wave)
 		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count, TRUE)

@@ -125,7 +125,7 @@
 		update_icons()
 
 // todo: rework
-/obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave/wave)
+/obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave_legacy/wave)
 	. = ..()
 	var/power_produced = max(0, (strength - flat_loss) * efficiency)
 	var/gas_needed = power_produced * gas_usage_factor

@@ -111,11 +111,7 @@
 	examine_list += out.Join()
 
 /datum/component/radioactive/proc/rad_attack(datum/source, atom/movable/target, mob/living/user)
-	radiation_pulse(parent, strength/20)
-	target.rad_act(strength/2)
-	if(!hl3_release_date)
-		return
-	strength -= strength / hl3_release_date
+	emit(1 SECONDS)
 
 /datum/component/radioactive/proc/clean(str, mul)
 	strength -= strength * mul + str

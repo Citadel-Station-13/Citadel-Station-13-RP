@@ -846,7 +846,7 @@
  * this is only called on the top level atoms directly on a turf
  * for nested atoms, you need /datum/component/radiation_listener
  */
-/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+/atom/proc/rad_act(strength, datum/radiation_wave_legacy/wave)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
 
