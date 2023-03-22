@@ -327,11 +327,6 @@
 			dat += "<a style='background:#173d15;' href='?src=\ref[src];toggledlm=1'>Toggle Leaving Remains (Currently: ON)</a>"
 		if(FALSE)
 			dat += "<a style='background:#990000;' href='?src=\ref[src];toggledlm=1'>Toggle Leaving Remains (Currently: OFF)</a>"
-	switch(user.allowmobvore)
-		if(TRUE)
-			dat += "<br><a style='background:#173d15;' href='?src=\ref[src];togglemv=1'>Toggle Mob Vore (Currently: ON)</a>"
-		if(FALSE)
-			dat += "<br><a style='background:#990000;' href='?src=\ref[src];togglemv=1'>Toggle Mob Vore (Currently: OFF)</a>"
 	switch(user.permit_healbelly)
 		if(TRUE)
 			dat += "<a style='background:#173d15;' href='?src=\ref[src];togglehealbelly=1'>Toggle Healbelly Permission (Currently: ON)</a>"
@@ -1006,19 +1001,6 @@
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.digest_leave_remains = user.digest_leave_remains
-
-	if(href_list["togglemv"])
-		var/choice = alert(user, "This button is for those who don't like being eaten by mobs. Mobs are currently: [user.allowmobvore ? "Allowed to eat" : "Prevented from eating"] you.", "", "Allow Mob Predation", "Cancel", "Prevent Mob Predation")
-		switch(choice)
-			if("Cancel")
-				return FALSE
-			if("Allow Mob Predation")
-				user.allowmobvore = TRUE
-			if("Prevent Mob Predation")
-				user.allowmobvore = FALSE
-
-		if(user.client.prefs_vr)
-			user.client.prefs_vr.allowmobvore = user.allowmobvore
 
 	if(href_list["togglehealbelly"])
 		var/choice = alert(user, "This button is for those who don't like healbelly used on them as a mechanic. It does not affect anything, but is displayed under mechanical prefs for ease of quick checks. You are currently: [user.allowmobvore ? "Okay" : "Not Okay"] with players using healbelly on you.", "", "Allow Healing Belly", "Cancel", "Disallow Healing Belly")
