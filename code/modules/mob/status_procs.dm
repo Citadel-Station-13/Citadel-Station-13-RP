@@ -14,20 +14,30 @@
 /mob/proc/afflict_stun(amount)
 	if(!(status_flags & STATUS_CAN_STUN))
 		return FALSE
-	#warn impl
+	apply_status_effect(/datum/status_effect/incapacitation/stun, amount)
 	return TRUE
 
-/mob/proc/set_stunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
-	if(status_flags & STATUS_CAN_STUN)
-		stunned = max(amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
+/mob/proc/set_stunned(amount)
+	if(!(status_flags & STATUS_CAN_STUN))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/stun)
+	else
+		var/datum/status_effect/effect = is_stunned()
+		if(effect)
+			effect.set_duration_from_now(amount)
+	return TRUE
 
 /mob/proc/adjust_stunned(amount)
-	if(status_flags & STATUS_CAN_STUN)
-		stunned = max(stunned + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
+	if(!(status_flags & STATUS_CAN_STUN))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/stun)
+	else
+		var/datum/status_effect/effect = is_stunned()
+		if(effect)
+			effect.adjust_duration(amount)
+	return TRUE
 
 /mob/proc/is_knockdown()
 	RETURN_TYPE(/datum/status_effect)

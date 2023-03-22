@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(status_effects)
 		effect = currentrun[i]
 		if(effect.tick_next > world.time)
 			continue
-		effect.tick()
+		effect.tick(effect.tick_interval)
 		effect.tick_next = world.time + effect.tick_interval
 		if(MC_TICK_CHECK_USAGE) // effect.tick() is SHOULD NOT SLEEP.
 			return

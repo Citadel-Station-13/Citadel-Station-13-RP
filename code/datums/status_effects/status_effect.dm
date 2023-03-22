@@ -76,7 +76,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
-/datum/status_effect/proc/tick()
+/datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/status_effect/proc/before_remove() //! Called before being removed; returning FALSE will cancel removal
@@ -106,6 +106,15 @@
 	#warn impl
 
 /datum/status_effect/proc/time_left()
+	#warn impl
+
+/datum/status_effect/proc/set_duration_from_apply()
+	#warn impl
+
+/datum/status_effect/proc/set_duration_from_now()
+	#warn impl
+
+/datum/status_effect/proc/adjust_duration(ds)
 	#warn impl
 
 ////////////////
