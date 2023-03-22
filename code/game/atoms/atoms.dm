@@ -842,6 +842,9 @@
 
 /**
  * called when we're hit by a radiation wave
+ * 
+ * this is only called on the top level atoms directly on a turf
+ * for nested atoms, you need /datum/component/radiation_listener
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)

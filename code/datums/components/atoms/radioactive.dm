@@ -26,6 +26,7 @@
 		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, .proc/rad_attack)
 		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, .proc/rad_attack)
 	else
+		. = COMPONENT_INCOMPATIBLE
 		CRASH("Something that wasn't an atom was given /datum/component/radioactive")
 
 	if(strength > RAD_MINIMUM_CONTAMINATION)
