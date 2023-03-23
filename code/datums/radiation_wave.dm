@@ -6,19 +6,22 @@
 	/// dirs of spread
 	var/list/dirs
 
-	/// current cycles
+	/// current cycles - this determines our current falloff-applied power. starts at 0, meaning 3x3 = 0 dist, not 1x1.
 	var/cycles
 	/// initial power
-	var/power 
+	var/power
+	/// falloff rate as a multipier
+	var/falloff_modifier = 1 
 	
 	/// turfs next, associated to power
 	var/list/turfs_next
 	/// dirs of spread next
 	var/list/dirs_next
 	
-/datum/radiation_wave/New(turf/source, power)
+/datum/radiation_wave/New(turf/source, power, falloff_modifier = RAD_FALLOFF_NORMAL)
 	src.source = source
 	src.power = power
+	src.falloff_modifier = falloff_modifier
 
 /datum/radiation_wave/proc/start()
 	cycles = 0
@@ -98,13 +101,14 @@
 	var/power_next
 	var/atom/movable/AM
 	var/dir
+	var/inverse_square_factor = 1 / (2 ** (falloff_modifier * cycles))
 	
 	for(i in length(turfs) to 1 step -1)
 		T = turfs[i]
 		power = turfs[T]
 		dir = dirs[i]
 
-		power_next = irradiate_turf(T, power)
+		power_next = irradiate_turf(T, power * inverse_square_factor)
 		
 		F = get_step(T, dir)
 		if(!isnull(F))
