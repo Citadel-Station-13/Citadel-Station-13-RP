@@ -60,6 +60,7 @@ var/list/ai_verbs_default = list(
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
+	see_invisible = SEE_INVISIBLE_LIVING
 
 	/// The network we have access to.
 	var/list/network = list(NETWORK_DEFAULT)
@@ -315,6 +316,10 @@ var/list/ai_verbs_default = list(
 
 	if(aiCommunicator)
 		aiCommunicator.register_device(src.name)
+
+/mob/living/silicon/ai/handle_regular_hud_updates()
+	see_invisible = SEE_INVISIBLE_LIVING
+	. = ..()
 
 /*
 	The AI Power supply is a dummy object used for powering the AI since only machinery should be using power.

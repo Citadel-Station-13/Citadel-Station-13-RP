@@ -44,6 +44,26 @@
 		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="fm-2tkill"),
 		)
 
+/obj/item/gun/energy/gun/miningcarbine
+	name = "mining carbine"
+	desc = "Following Miner's demand for a portable excavation laser, a military-favourite FM-2t has been modified to shoot excavation lasers."
+	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
+	item_state = null	//so the human update icon uses the icon_state instead.
+	charge_cost = 20
+	force = 8
+	w_class = ITEMSIZE_LARGE
+	fire_delay = 3
+	projectile_type = /obj/item/projectile/beam/excavation
+	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
+	modifystate = "fm-2tstun"
+
+	firemodes = list(
+		list(mode_name="mine", burst=1, projectile_type=/obj/item/projectile/beam/excavation, modifystate="fm-2tstun", charge_cost = 20),
+		list(mode_name="mine burst", burst=5, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/excavation, modifystate="fm-2tstun"),
+		list(mode_name="scatter", burst=1, projectile_type=/obj/item/projectile/scatter/excavation, modifystate="fm-2tkill", charge_cost = 40),
+		list(mode_name="scatter burst", burst=5, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/scatter/excavation, modifystate="fm-2tkill"),
+		)
+
 /obj/item/gun/energy/gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized reactor."

@@ -1,6 +1,7 @@
 /datum/language/scori
 	id = LANGUAGE_ID_SCORI
 	name = LANGUAGE_SCORI
+	language_flags = LANGUAGE_WHITELISTED
 	translation_class = TRANSLATION_CLASS_TRIBAL
 	desc = "The language of the Scori, this barbaric tongue is punctuated by clicks and mutterings."
 	speech_verb = "says"
