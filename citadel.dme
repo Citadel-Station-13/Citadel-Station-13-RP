@@ -571,7 +571,7 @@
 #include "code\datums\profile.dm"
 #include "code\datums\progressbar.dm"
 #include "code\datums\prototype.dm"
-#include "code\datums\radiation_pulse.dm"
+#include "code\datums\radiation_wave.dm"
 #include "code\datums\radiation_wave_legacy.dm"
 #include "code\datums\recipe.dm"
 #include "code\datums\soul_link.dm"
