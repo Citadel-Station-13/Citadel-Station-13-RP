@@ -93,11 +93,11 @@
 	var/i
 	var/turf/T // current
 	var/turf/F // forwards
-	var/turf/S // side
+	var/dir_diag
 	var/power
 	var/power_next
 	var/atom/movable/AM
-	var/dirs
+	var/dir
 	
 	for(i in length(turf) to 1 step -1)
 		T = turf[i]
@@ -110,14 +110,16 @@
 		if(!isnull(F))
 			turfs_next[F] = max(turfs_next[F], power_next)
 			dirs_next[F] = dir
-		F = get_step(T, turn(dir, 90))
+		dir_diag = turn(dir, 45)
+		F = get_step(T, dir_diag)
 		if(!isnull(F))
 			turfs_next[F] = max(turfs_next[F], power_next)
-			dirs_next[F] = turn(dir, 90)
-		F = get_step(T, turn(dir, -90))
+			dirs_next[F] = dir_diag
+		dir_diag = turn(dir, -45)
+		F = get_step(T, dir_diag)
 		if(!isnull(F))
 			turfs_next[F] = max(turfs_next[F], power_next)
-			dirs_next[F] = turn(dir, -90)
+			dirs_next[F] = dir_diag
 
 		if(TICK_USAGE > ticklimit)	
 			break
