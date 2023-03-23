@@ -8,7 +8,7 @@
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
 		#ifdef CIBUILDING
-			#include "templates.dm"
+			#include "..\maps\templates.dm"
 		#endif
 	#endif
 #endif

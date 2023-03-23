@@ -15,7 +15,6 @@
 // BEGIN_INCLUDE
 #include "_mapload\_basemap.dm"
 #include "_mapload\rift.dm"
-#include "maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\__global_init.dm"
@@ -4511,5 +4510,6 @@
 #include "maps\submaps\_helpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
+#include "maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "maps\~map_system\maps.dm"
 // END_INCLUDE
