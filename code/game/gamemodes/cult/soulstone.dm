@@ -75,7 +75,6 @@
 		if ("Summon")
 			for(var/mob/living/simple_mob/construct/shade/A in src)
 				A.status_flags &= ~STATUS_GODMODE
-				A.canmove = 1
 				to_chat(A, "<b>You have been released from your prison, but you are still bound to [U.name]'s will. Help them suceed in their goals at all costs.</b>")
 				A.forceMove(U.loc)
 				A.cancel_camera()
@@ -134,7 +133,6 @@
 	var/mob/living/simple_mob/construct/shade/S = new /mob/living/simple_mob/construct/shade( T.loc )
 	S.forceMove(src) //put shade in stone
 	S.status_flags |= STATUS_GODMODE //So they won't die inside the stone somehow
-	S.canmove = 0//Can't move out of the soul stone
 	S.name = "Shade of [T.real_name]"
 	S.real_name = "Shade of [T.real_name]"
 	S.icon = T.icon
@@ -170,7 +168,6 @@
 
 	T.forceMove(src) //put shade in stone
 	T.status_flags |= STATUS_GODMODE
-	T.canmove = 0
 	T.health = T.getMaxHealth()
 	src.icon_state = "soulstone2"
 

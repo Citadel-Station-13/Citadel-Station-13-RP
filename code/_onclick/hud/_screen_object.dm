@@ -51,7 +51,7 @@
 	if(!usr.canClick())
 		return
 
-	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
+	if(usr.stat || usr.restrained() || !CHECK_MOBILITY(usr, MOBILITY_USE))
 		return 1
 
 	if(!(owner in usr))

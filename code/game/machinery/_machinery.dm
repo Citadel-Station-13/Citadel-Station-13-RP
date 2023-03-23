@@ -353,7 +353,7 @@
 
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
-		if(user.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_USE))
 			return 1
 	return 0
 

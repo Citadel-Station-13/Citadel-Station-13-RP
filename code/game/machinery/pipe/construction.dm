@@ -104,7 +104,7 @@ Buildable meters
 	set name = "Flip Pipe"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return
 
 	do_a_flip()
@@ -126,7 +126,7 @@ Buildable meters
 	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if (!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return
 
 	setDir(turn(src.dir, -90)) // Rotate clockwise

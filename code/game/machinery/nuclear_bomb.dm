@@ -216,7 +216,7 @@ var/bomb_set
 	set name = "Make Deployable"
 	set src in oview(1)
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return
 	if(!ishuman(usr))
 		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
@@ -232,7 +232,7 @@ var/bomb_set
 
 /obj/machinery/nuclearbomb/Topic(href, href_list)
 	..()
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_machine(src)

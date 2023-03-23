@@ -307,7 +307,7 @@
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
-	if(M.health > -100 && (M.health < 0 || M.sleeping))
+	if(!IS_DEAD(M))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
 	occupant = M
 	occupant.update_perspective()

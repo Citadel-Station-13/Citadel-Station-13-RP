@@ -183,7 +183,7 @@
 	LAZYINITLIST(buckled_mobs)
 	buckled_mobs[M] = semantic
 	M.setDir(dir)
-	M.update_canmove()
+	M.update_mobility()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
@@ -217,7 +217,7 @@
 		M.buckled = null
 	buckled_mobs -= M
 	UNSETEMPTY(buckled_mobs)
-	M.update_canmove()
+	M.update_mobility()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))

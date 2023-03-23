@@ -94,7 +94,7 @@
 			MiddleClickOn(A)
 			return 1
 
-	if(stat || paralysis || stunned || weakened)
+	if(!IS_CONSCIOUS(src))
 		return
 
 	face_atom(A) // change direction to face what you clicked on
@@ -112,6 +112,10 @@
 		setClickCooldown(10)
 		RestrainedClickOn(A)
 		return 1
+	
+	if(!CHECK_MOBILITY(src, MOBILITY_USE))
+		to_chat(src, SPAN_WARNING("You can't do that right now."))
+		return
 
 	if(throw_mode_check())
 		if(isturf(A) || isturf(A.loc))
