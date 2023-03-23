@@ -1,7 +1,12 @@
-//Status effects are used to apply temporary or permanent effects to mobs. Mobs are aware of their status effects at all times.
-//This file contains their code, plus code for applying and removing them.
-//When making a new status effect, add a define to status_effects.dm in __DEFINES for ease of use!
-
+/**
+ * ## Status Effects
+ * 
+ * permanent / temporary tickable effects applied to mobs that are able to track
+ * instance data.
+ * 
+ * each effect potentially has its own amount of variable arguments that
+ * can be passed into apply_status_effect. they will be detailed per-file.
+ */
 /datum/status_effect
 	/// unique identifier
 	var/identifier = "effect"
@@ -30,7 +35,6 @@
 	if(!isnull(duration))
 		src.duration = duration
 	on_apply(arglist(arguments))
-
 
 /datum/status_effect/Destroy()
 	if(owner)
@@ -85,7 +89,7 @@
  * 
  * @params
  * * duration - if supplied, refreshes us to that long from now (if we weren't already at or above).
- * * ... - rest of parameters, passed to on_refreshed.
+ * * ... - rest of parameters from /mob/apply_status_effect(), passed to on_refreshed.
  */
 /datum/status_effect/proc/refresh(duration, ...)
 	#warn impl
@@ -139,11 +143,11 @@
  * @params
  * * path - path to effect
  * * duration - (optional) duration of effect; defaults to what the effect specifies.
- * * ... - all further args passed to effect.
+ * * list/additional - all further args passed to effect.
  *
  * @return effect datum created / refreshed / whatever, null on failure
  */
-/mob/proc/apply_status_effect(datum/status_effect/path, duration, ...)
+/mob/proc/apply_status_effect(datum/status_effect/path, duration, list/additional)
 	if(isnull(status_effects))
 		status_effects = list()
 	var/id = initial(path.identifier)
