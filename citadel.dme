@@ -15,8 +15,8 @@
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\rift.dm"
-#include "_maps\map_files\generic\reservation_base_level.dmm"
-#include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
+#include "maps\map_files\generic\reservation_base_level.dmm"
+#include "maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\__global_init.dm"
