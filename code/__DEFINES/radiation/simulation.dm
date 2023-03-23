@@ -23,13 +23,13 @@
 /// default falloff for smashed anomalies
 #define RAD_FALLOFF_ANOMALY_SHARDS 0.33
 /// fission engine
-#define RAD_FALLOFF_ENGINE_FISSION 0.75
+#define RAD_FALLOFF_ENGINE_FISSION 0.5
 /// fusion engine
-#define RAD_FALLOFF_ENGINE_FUSION 0.75
+#define RAD_FALLOFF_ENGINE_FUSION 0.5
 /// supermatter
-#define RAD_FALLOFF_ENGINE_SUPERMATTER 0.75
+#define RAD_FALLOFF_ENGINE_SUPERMATTER 0.5
 /// singulo
-#define RAD_FALLOFF_ENGINE_SINGULARITY 0.75
+#define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
 
 //! Pulse - Z Falloff
 //* Keep in mind that these are low because things are usually really far away and the point of Z rad is to hit most things.
