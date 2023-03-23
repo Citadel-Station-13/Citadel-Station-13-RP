@@ -324,7 +324,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
 	if(length(incoming_calls))
 		return FALSE // already being called / connected
-	for(var/datum/holocall/call as anything in other.ringing_calls | other.incoming_calls)
+	for(var/datum/holocall/call as anything in (other.ringing_calls | other.incoming_calls))
 		if(call.source == src)
 			return FALSE
 	var/datum/holocall/call = new(src, other)
@@ -360,17 +360,31 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// it's very important wet set the values properly!
 	if(outgoing_call_connected())
 		// SOURCE MODE
+		var/list/connected = list()
+		if(outgoing_call.connected)
+			for(var/datum/holocall/call as anything in outgoing_call.destination.incoming_calls)
+				connected[++connected.len] = call.ui_caller_id()
 		.["calling"] = "source"
-		.["connected"] = list()
-		.["remoting"] = FALSE
-		.["ringing"] = FALSE
+		.["calldata"] = list(
+			"target" = outgoing_call.destination.holopad_uid,
+			"connected" = connected,
+			"ringing" = !outgoing_call.connected,
+			"remoting" = !!outgoing_call.remoting,
+		)
 		#warn impl
 	else if(incoming_calls_connected())
 		// DESITNATION MODE
+		var/list/projecting = list()
+		var/list/callers = list()
+		for(var/datum/holocall/call as anything in incoming_calls)
+			callers[++callers.len] = call.ui_caller_id()
+			if(call.remoting)
+				projecting += call.source.holopad_uid
 		.["calling"] = "destination"
-		.["callers"] = list()
-		.["projecting"] = list()
-		#warn impl
+		.["calldata"] = list(
+			"callers" = callers,
+			"projecting" = projecting,
+		)
 	else
 		.["calling"] = "none"
 		.["calldata"] = null
@@ -795,7 +809,15 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	return ..()
 
 /datum/holocall/proc/caller_id()
-	#warn impl
+	return (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name()
+
+/datum/holocall/proc/ui_caller_id()
+	// todo: overmap sector names for anonymous.
+	return list(
+		"name" = (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name(),
+		"sector" = "[get_overmap_sector(source) || "Unknown"]",
+		"id" = source.holopad_uid,
+	)
 
 /datum/holocall/proc/initiate_remote_presence(mob/user)
 	if(remoting)
