@@ -7,12 +7,17 @@
  */
 /datum/component/latently_radioactive
 	/// strength left
-	var/strength_left
+	var/strength_left = 1000
 	/// multiplier for catalyzing our latent radioactivity
 	var/activation_multiplier = 0.01 // slow buildup, even in chain reactions.
+	/// falloff for component
+	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
+	/// half life for component
+	var/half_life = RAD_HALF_LIFE_DEFAULT
 
-/datum/component/latently_radioactive/Initialize(strength_left = 1000)
-	src.strength_left = strength_left
+/datum/component/latently_radioactive/Initialize(strength_left)
+	if(!isnull(strength_left))
+		src.strength_left = strength_left
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 	return ..()
@@ -26,5 +31,4 @@
 	UnregisterSignal(parent, COMSIG_ATOM_RAD_ACT)
 	
 /datum/component/latently_radioactive/proc/on_radiated(atom/source, strength, datum/radiation_wave/wave)
-
-	#warn impl
+	parent.AddComponent(/datum/component/radioactive, strength, half_life, null, falloff)
