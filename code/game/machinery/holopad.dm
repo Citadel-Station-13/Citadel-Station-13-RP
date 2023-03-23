@@ -333,9 +333,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/ring(datum/holocall/incoming)
 	update_icon()
-	if(LAZYACCESS(holocall_anti_spam, incoming.holopad_uid) > world.time)
+	if(LAZYACCESS(holocall_anti_spam, incoming.source.holopad_uid) > world.time)
 		return
-	LAZYSET(holocall_anti_spam, incoming.holopad_uid, 30 SECONDS)
+	LAZYSET(holocall_anti_spam, incoming.source.holopad_uid, 30 SECONDS)
 	playsound(src, 'sound/machines/beep.ogg', 75)
 	atom_say("Incoming holocall from [incoming.caller_id()]")
 	if(!incoming.cross_sector)
@@ -372,15 +372,14 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			"ringing" = !outgoing_call.connected,
 			"remoting" = !!outgoing_call.remoting,
 		)
-		#warn impl
 	else if(incoming_calls_connected())
 		// DESITNATION MODE
 		var/list/projecting = list()
 		var/list/callers = list()
 		for(var/datum/holocall/holocall as anything in incoming_calls)
 			callers[++callers.len] = holocall.ui_caller_id()
-			if(call.remoting)
-				projecting += call.source.holopad_uid
+			if(holocall.remoting)
+				projecting += holocall.source.holopad_uid
 		.["calling"] = "destination"
 		.["calldata"] = list(
 			"callers" = callers,
@@ -513,10 +512,19 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			return TRUE
 		// user requesting to use remote presence
 		if("start_remote")
-			#warn impl
+			if(isnull(outgoing_call))
+				return TRUE
+			if(!isAI(usr) && usr.loc != loc)
+				to_chat(usr, SPAN_WARNING("You have to be standing on [src] to use remote telepresence!"))
+				return TRUE
+			outgoing_call.initiate_remote_presence(usr)
+			return TRUE
 		// user requesting to stop remote presence
 		if("stop_remote")
-			#warn impl
+			if(isnull(outgoing_call))
+				return TRUE
+			outgoing_call.cleanup_remote_presence()
+			return TRUE
 
 /obj/machinery/holopad/ui_close(mob/user)
 	. = ..()
@@ -967,9 +975,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /obj/effect/overlay/hologram/proc/move_to_target(turf/T, kill_on_failure)
 	if(density)
-		walk_to(T)
+		walk_to(src, T)
 	else
-		walk_towards(T)
+		walk_towards(src, T)
 
 /obj/effect/overlay/hologram/proc/stop_moving()
 	walk(src, NONE)
@@ -1018,7 +1026,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			I = cheap? make_hologram_appearance(I) : render_hologram_icon(I)
 		appearancelike = I
 	else if(IS_APPEARANCE(appearancelike) || istype(appearancelike, /mutable_appearance))
-		var/image/I = image()
+		var/image/I = image(icon = appearancelike.icon)
 		I.appearance = appearancelike
 		if(process_appearance)
 			I = cheap? make_hologram_appearance(I) : render_hologram_icon(I)

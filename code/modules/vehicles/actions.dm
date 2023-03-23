@@ -118,5 +118,6 @@
 	desc = "Take your key out of the vehicle's ignition"
 	button_icon_state = "car_removekey"
 
-/datum/action/vehicle/sealed/remove_key/Trigger()
+/datum/action/vehicle/sealed/remove_key/on_trigger(mob/user, datum/receiver)
+	. = ..()
 	vehicle_entered_target.remove_key(owner)

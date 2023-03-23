@@ -1,5 +1,5 @@
 /datum/hologram/reference
-	abstract_type = /datum/hologram/references
+	abstract_type = /datum/hologram/reference
 	category = "Movies"
 
 /datum/hologram/reference/truecaptain

@@ -54,6 +54,7 @@
 		if(oldarea != newarea)
 			oldarea.Exited(src, newloc)
 
+		// todo: remove uncrossed
 		for(var/i in oldloc)
 			if(i == src) // Multi tile objects
 				continue
@@ -64,6 +65,7 @@
 		if(oldarea != newarea)
 			newarea.Entered(src, oldloc)
 
+		// todo: remove crossed
 		for(var/i in loc)
 			if(i == src) // Multi tile objects
 				continue
@@ -424,14 +426,15 @@
 				oldloc.Exited(src, destination)
 				if(old_area && old_area != destarea)
 					old_area.Exited(src, destination)
+
+			// todo: remove uncrossed
 			for(var/atom/movable/AM in oldloc)
 				AM.Uncrossed(src)
-			var/turf/oldturf = get_turf(oldloc)
-			var/turf/destturf = get_turf(destination)
 			destination.Entered(src, oldloc)
 			if(destarea && old_area != destarea)
 				destarea.Entered(src, oldloc)
 
+			// todo: remove crossed
 			for(var/atom/movable/AM in destination)
 				if(AM == src)
 					continue
@@ -453,15 +456,11 @@
 		pulledby?.stop_pulling()
 		if(pulling)
 			stop_pulling()
-		var/old_z
 		if (loc)
 			var/area/old_area = get_area(oldloc)
-			var/turf/oldturf = get_turf(oldloc)
 			oldloc.Exited(src, null)
 			if(old_area)
 				old_area.Exited(src, null)
-			if(oldturf)
-				old_z = oldturf.z
 		loc = null
 
 	Moved(oldloc, NONE, TRUE)

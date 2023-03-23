@@ -47,7 +47,6 @@
 	if(check_unable())
 		return
 
-	var/input
 	var/choice = alert(src, "Would you like to select a hologram based on a (visible) crew member, switch to unique avatar, or load your character from your character slot?", "Hologram Change", "Crew Member", "Unique", "My Character")
 
 	switch(choice)
@@ -63,9 +62,7 @@
 			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
 		if("My Character")
 			var/appearance/looks = client?.prefs.render_to_appearance(
-				PREF_COPY_TO_UNRESTRICTED_LOADOUT |
-				PREF_COPY_TO_FOR_RENDER |
-				PREF_COPY_TO_NO_CHECK_SPECIES
+				PREF_COPY_TO_UNRESTRICTED_LOADOUT | PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES,
 			)
 			if(!looks)
 				to_chat(src, SPAN_WARNING("Slot load-clone errored. Please report this to a coder."), type = MESSAGE_TYPE_WARNING)
