@@ -23,10 +23,9 @@ SUBSYSTEM_DEF(radiation)
 	var/list/datum/component/radioactive/currentrun
 	/// queue not processed
 	var/list/next_wave_set
-	/// waves
-	var/list/datum/radiation_wave_legacy/waves = list()
-	/// wave index in lieu of currentrun
-	var/wave_index
+
+	/// current waves
+	var/list/datum/radiation_wave/waves = list()
 
 /datum/controller/subsystem/radiation/Recover()
 	z_listeners.len = world.maxz
@@ -79,16 +78,15 @@ SUBSYSTEM_DEF(radiation)
 		wave_index = 1
 	if(stage == SSRADIATION_RADIATE)
 		// pulse all waves until complete
-		while(length(waves))
-			var/datum/radiation_wave_legacy/wave
-			while(wave_index <= length(waves))
-				wave = waves[wave_index]
-				if(wave.propagate())
-					// if they return false they didn't stick around so we process the next one in their place
-					++wave_index
+		var/i
+		var/datum/radiation_wave/wave
+		for(i in 1 to length(waves))
+			while(!wave.iterate(Master.current_ticklimit))
 				if(MC_TICK_CHECK)
+					waves.Cut(1, i + 1)
 					return
-			wave_index = 1
+		#warn this doesn't play nicely with qdels / is just bad
+		waves.Cut(1, i + 1)
 
 /datum/controller/subsystem/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len

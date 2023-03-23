@@ -22,6 +22,11 @@
 	src.source = source
 	src.power = power
 	src.falloff_modifier = falloff_modifier
+	SSradiation.waves += src
+
+/datum/radiation_wave/Destroy()
+	SSradiation.waves -= src
+	return ..()
 
 /datum/radiation_wave/proc/start()
 	cycles = 0
@@ -80,6 +85,8 @@
 	turfs_next = list()
 	dirs_next = list()
 
+#warn handle RAD_BACKGROUND_RADIATION in above start().
+
 /datum/radiation_wave/proc/irradiate_turf(turf/T, power)
 	. = power * T.rad_insulation
 	T.rad_act(power, src)
@@ -109,6 +116,9 @@
 		dir = dirs[i]
 
 		power_next = irradiate_turf(T, power * inverse_square_factor)
+
+		if(power_next < RAD_BACKGROUND_RADIATION)
+			continue
 		
 		F = get_step(T, dir)
 		if(!isnull(F))
