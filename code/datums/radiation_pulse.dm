@@ -27,7 +27,7 @@
 	// north and south are slightly narrower to prevent overlap.
 	turfs = list()
 	dirs = list()
-	var/turfs/irradiating = get_step(source, NORTH)
+	var/turf/irradiating = get_step(source, NORTH)
 	var/atom/movable/AM
 	if(!isnull(irradiating))
 		turfs[irradiating] = after_center
@@ -99,9 +99,9 @@
 	var/atom/movable/AM
 	var/dir
 	
-	for(i in length(turf) to 1 step -1)
-		T = turf[i]
-		power = turf[T]
+	for(i in length(turfs) to 1 step -1)
+		T = turfs[i]
+		power = turfs[T]
 		dir = dirs[i]
 
 		power_next = irradiate_turf(T, power)
