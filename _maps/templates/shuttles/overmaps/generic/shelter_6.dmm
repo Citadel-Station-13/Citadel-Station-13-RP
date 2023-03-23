@@ -1338,6 +1338,7 @@
 /obj/item/spaceflare,
 /obj/item/perfect_tele,
 /obj/item/healthanalyzer/phasic,
+/obj/item/bluespace_radio/commerce,
 /obj/item/cat_box,
 /obj/item/cat_box,
 /obj/item/cat_box/black,

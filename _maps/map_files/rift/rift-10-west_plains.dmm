@@ -3586,7 +3586,7 @@
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
 "qw" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost)
 "qx" = (
@@ -7702,7 +7702,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "JX" = (
@@ -8352,7 +8352,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "MN" = (
@@ -10562,7 +10562,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/testing_lab)
 "Xv" = (

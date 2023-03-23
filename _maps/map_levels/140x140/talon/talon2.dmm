@@ -1571,6 +1571,7 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
+/obj/item/bluespace_radio/commerce,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "st" = (

@@ -66,6 +66,7 @@
 /obj/item/storage/box/survival/space,
 /obj/item/gun/energy/frontier/locked/holdout,
 /obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/bluespace_radio/commerce,
 /obj/item/storage/box/survival/comp,
 /obj/item/storage/box/survival/comp,
 /obj/item/binoculars,

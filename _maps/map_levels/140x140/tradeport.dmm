@@ -9676,6 +9676,7 @@
 /area/tradeport/cafeteria)
 "Lc" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/bluespace_radio/commerce,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Li" = (

@@ -11236,6 +11236,7 @@
 /area/shuttle/trade_ship/general)
 "Ra" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/bluespace_radio/commerce,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Rc" = (
