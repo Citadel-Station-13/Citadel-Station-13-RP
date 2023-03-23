@@ -26,43 +26,21 @@
 	/// mob we're affecting
 	var/mob/owner
 
-	var/examine_text //If defined, this text will appear when the mob is examined - to use he, she etc. use "SUBJECTPRONOUN" and replace it in the examines themselves
-	/// How many of the effect can be on one mob, and what happens when you try to add another
-	var/status_type = STATUS_EFFECT_UNIQUE
-
 /datum/status_effect/New(duration, list/arguments)
 	if(!isnull(duration))
 		src.duration = duration
-	on_creation(arglist(arguments))
+	on_apply(arglist(arguments))
 
-/datum/status_effect/proc/on_creation(mob/living/new_owner, ...)
-	if(new_owner)
-		owner = new_owner
-	if(owner)
-		LAZYADD(owner.status_effects, src)
-	if(!owner || !on_apply())
-		qdel(src)
-		return
-	if(duration != -1)
-		duration = world.time + duration
-	next_tick = world.time + tick_interval
-	// if(alert_type)
-		// var/atom/movable/screen/alert/status_effect/A = owner.throw_alert(identifier, alert_type)
-		// A.attached_effect = src //so the alert can reference us, if it needs to
-		// linked_alert = A //so we can reference the alert, if we need to
-	START_PROCESSING(SSstatus_effects, src)
-	return TRUE
 
 /datum/status_effect/Destroy()
 	if(owner)
 		owner.status_effects?[identifier] = null
 	on_remove()
 	owner = null
+	if(expire_timer)
+		deltimer(expire_timer)
+		expire_timer = null
 	return ..()
-
-/datum/status_effect/proc/on_apply() //Called whenever the buff is applied; returning FALSE will cause it to autoremove itself.
-	SHOULD_CALL_PARENT(TRUE)
-	return TRUE
 
 /datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -78,21 +56,24 @@
  */
 /datum/status_effect/proc/on_remove()
 	SHOULD_CALL_PARENT(TRUE)
-	return
+	SSstatus_effects.ticking -= src
 
 /**
  * called after add
+ * 
+ * @params
+ * * ... - rest of parameters from /mob/apply_status_effect()
  */
-/datum/status_effect/proc/on_apply()
+/datum/status_effect/proc/on_apply(...)
 	SHOULD_CALL_PARENT(TRUE)
-	return
+	SSstatus_effects.ticking += src
 
 /**
  * called on refresh
  * 
  * @params
  * * old_timeleft - old time remaining
- * * ... - rest of parameters.
+ * * ... - rest of parameters from /mob/apply_status_effect() or /datum/status_effect/refresh()
  */
 /datum/status_effect/proc/on_refreshed(old_timeleft, ...)
 	return
@@ -128,6 +109,7 @@
 /datum/status_effect/proc/rebuild_decay_timer()
 	if(decay_timer)
 		deltimer(decay_timer)
+		decay_timer = null
 	if(isnull(duration))
 		return
 	var/time_left = time_left()
@@ -143,6 +125,9 @@
 	switch(var_name)
 		if(NAMEOF(src, duration))
 			rebuild_decay_timer()
+
+/datum/status_effect/proc/on_examine(list/examine_list)
+	return
 
 //? Mob procs
 
