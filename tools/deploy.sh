@@ -10,7 +10,7 @@ if [[ $# -eq 2 ]] ; then
 fi
 
 mkdir -p \
-    $1/_maps \
+    $1/maps \
     $1/icons/runtime \
 	$1/prototypes \
     $1/sound/runtime \
@@ -24,7 +24,7 @@ if [ -d ".git" ]; then
 fi
 
 cp citadel.dmb citadel.rsc $1/
-cp -r _maps/* $1/_maps/
+cp -r maps/* $1/maps/
 cp -r icons/runtime/* $1/icons/runtime/
 cp -r prototypes/* $1/prototypes/
 cp -r sound/runtime/* $1/sound/runtime/
@@ -32,10 +32,10 @@ cp -r strings/* $1/strings/
 cp -r tgui/public/* $1/tgui/public/
 cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
 
-#remove .dm files from _maps
+#remove .dm files from maps
 
 #this regrettably doesn't work with windows find
-#find $1/_maps -name "*.dm" -type f -delete
+#find $1/maps -name "*.dm" -type f -delete
 
 #dlls on windows
 if [ "$(uname -o)" = "Msys" ]; then
