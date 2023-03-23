@@ -101,6 +101,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/list/datum/holocall/ringing_calls
 	/// lazy assoc list to track last "loud" ring of holopadid = time
 	var/list/holocall_anti_spam
+	/// last radio'd ring
+	var/holocall_last_radio
 
 	//? appearance
 	/// current emissive
@@ -125,7 +127,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		LAZYADD(our_area.holopads, src)
 
 /obj/machinery/holopad/Destroy()
-	#warn impl rest like disconnect
+	disconnect_all_calls()
+	kill_all_ai_holograms()
 	destroy_holograms()
 	GLOB.holopad_lookup -= holopad_uid
 	return ..()
@@ -319,13 +322,27 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * makes a new call / rings a holopad
  */
 /obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
-	#warn impl & check for existing calls
+	if(length(incoming_calls))
+		return FALSE // already being called / connected
+	for(var/datum/holocall/call as anything in other.ringing_calls | other.incoming_calls)
+		if(call.source == src)
+			return FALSE
+	var/datum/holocall/call = new(src, other)
+	call.ring()
 
 /**
  * get ring'd by a call
  */
 /obj/machinery/holopad/proc/ring(datum/holocall/incoming)
-	#warn impl
+	playsound(src, 'sound/machines/beep.ogg', 75)
+	atom_say("Incoming holocall from [incoming.caller_id()]")
+	update_icon()
+	if(!incoming.cross_sector)
+		return // don't need the radio part
+	if(world.time < holocall_last_radio + 30 SECONDS)
+		return
+	holocall_last_radio = world.time
+	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id()] at [get_area(src)].", name, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
 
 /**
  * get hung up by a call
@@ -516,9 +533,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /**
  * makes sure we have an activity hologram if we need one
+ *
+ * @params
+ * * state - are we on?
  */
 /obj/machinery/holopad/proc/update_activity_hologram(state)
-	var/needed = state? (!length(holograms)) : FALSE
+	var/needed = state? (!length(holograms)) : length(ringing_calls)
 	if(needed && !activity_hologram)
 		activity_hologram = new(loc, activity_hologram_style, src)
 		activity_hologram.set_light(2)
@@ -748,6 +768,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/obj/machinery/holopad/destination
 	/// are we connected? did they pick up?
 	var/connected = FALSE
+	/// cross sector call
+	var/cross_sector = FALSE
 	/// the mob on the pad we're relaying right now (if any); their emotes will be relayed.
 	var/mob/remoting
 	/// hang up action
@@ -771,6 +793,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	QDEL_NULL(action_hang_up)
 	QDEL_NULL(action_swap_view)
 	return ..()
+
+/datum/holocall/proc/caller_id()
+	#warn impl
 
 /datum/holocall/proc/initiate_remote_presence(mob/user)
 	if(remoting)
@@ -819,6 +844,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	ASSERT(isnull(source.outgoing_call))
 	source.outgoing_call = src
 	destination.ringing_calls += src
+	cross_sector = get_overmap_sector(source) != get_overmap_sector(destination)
 
 /datum/holocall/proc/cleanup()
 	if(remoting)
