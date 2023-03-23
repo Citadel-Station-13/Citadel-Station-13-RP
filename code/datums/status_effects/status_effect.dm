@@ -19,8 +19,8 @@
 	#warn hook
 	/// next world.time we should tick.
 	var/tick_next
-	/// screen alert thrown
-	var/alert_type = /atom/movable/screen/alert/status_effect
+	/// path of screen alert thrown 
+	var/alert_type
 	/// screen alert instance if it exists
 	var/atom/movable/screen/alert/status_effect/alert_linked
 	/// mob we're affecting
@@ -37,9 +37,9 @@
 		owner.status_effects?[identifier] = null
 	on_remove()
 	owner = null
-	if(expire_timer)
-		deltimer(expire_timer)
-		expire_timer = null
+	if(decay_timer)
+		deltimer(decay_timer)
+		decay_timer = null
 	return ..()
 
 /datum/status_effect/proc/tick(dt)
