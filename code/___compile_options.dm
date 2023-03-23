@@ -126,7 +126,7 @@
 
 
 #ifdef LOWMEMORYMODE
-	#define FORCE_MAP "_maps/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
+	#define FORCE_MAP "_mapload/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
 #endif
 
 
