@@ -324,8 +324,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
 	if(length(incoming_calls))
 		return FALSE // already being called / connected
-	for(var/datum/holocall/call as anything in (other.ringing_calls | other.incoming_calls))
-		if(call.source == src)
+	for(var/datum/holocall/holocall as anything in (other.ringing_calls | other.incoming_calls))
+		if(holocall.source == src)
 			return FALSE
 	var/datum/holocall/call = new(src, other)
 	call.ring()
@@ -362,8 +362,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		// SOURCE MODE
 		var/list/connected = list()
 		if(outgoing_call.connected)
-			for(var/datum/holocall/call as anything in outgoing_call.destination.incoming_calls)
-				connected[++connected.len] = call.ui_caller_id()
+			for(var/datum/holocall/holocall as anything in outgoing_call.destination.incoming_calls)
+				connected[++connected.len] = holocall.ui_caller_id()
 		.["calling"] = "source"
 		.["calldata"] = list(
 			"target" = outgoing_call.destination.holopad_uid,
@@ -419,9 +419,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	.["ringerEnabled"] = ringer_enabled
 	.["autoPickup"] = call_auto_pickup
 	. |= ui_call_data()
-	.["ringing"] = list()
-	#warn impl ringing
-	#warn anonymous dial
+	var/list/ringing = list()
+	for(var/datum/holocall/holocall as anything in ringing_calls)
+		ringing[++ringing.len] = holocall.ui_caller_id()
+	.["ringing"] = ringing
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
