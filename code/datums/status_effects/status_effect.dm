@@ -157,24 +157,6 @@
 	else
 		#warn impl
 
-/mob/living/proc/apply_status_effect(effect, ...) //applies a given status effect to this mob, returning the effect if it was successful
-	. = FALSE
-	var/datum/status_effect/S1 = effect
-	LAZYINITLIST(status_effects)
-	for(var/datum/status_effect/S in status_effects)
-		if(S.identifier == initial(S1.identifier) && S.status_type)
-			if(S.status_type == STATUS_EFFECT_REPLACE)
-				S.be_replaced()
-			else if(S.status_type == STATUS_EFFECT_REFRESH)
-				S.refresh()
-				return
-			else
-				return
-	var/list/arguments = args.Copy()
-	arguments[1] = src
-	S1 = new effect(arguments)
-	. = S1
-
 /**
  * remove a status effect
  *
@@ -189,7 +171,13 @@
 	var/datum/status_effect/found = status_effects?[id]
 	if(isnull(found))
 		return 0
-	#warn impl
+	if(istype(found, /datum/status_effect/stacking))
+		var/datum/status_effect/stacking/stacking = found
+		. = min(stacking.stacks, stacks)
+		stacking.adjust_stacks(-stacks, FALSE)
+	else
+		. = 1
+		qdel(found)
 
 /mob/living/proc/remove_status_effect(effect, ...) //removes all of a given status effect from this mob, returning TRUE if at least one was removed
 	. = FALSE

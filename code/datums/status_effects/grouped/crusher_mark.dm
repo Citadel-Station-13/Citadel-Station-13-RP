@@ -1,4 +1,4 @@
-/datum/status_effect/crusher_mark
+/datum/status_effect/grouped/crusher_mark
 	identifier = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
 	var/mutable_appearance/marked_underlay
@@ -6,11 +6,11 @@
 
 #warn fix all
 
-/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/kinetic_crusher/new_hammer_synced)
+/datum/status_effect/grouped/crusher_mark/on_creation(mob/living/new_owner, obj/item/kinetic_crusher/new_hammer_synced)
 	hammer_synced = new_hammer_synced
 	return ..()
 
-/datum/status_effect/crusher_mark/on_apply()
+/datum/status_effect/grouped/crusher_mark/on_apply()
 	. = ..()
 	if(hammer_synced? hammer_synced.can_mark(owner) : TRUE)
 		marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield2")
@@ -20,13 +20,13 @@
 		return TRUE
 	return FALSE
 
-/datum/status_effect/crusher_mark/Destroy()
+/datum/status_effect/grouped/crusher_mark/Destroy()
 	hammer_synced = null
 	if(owner)
 		owner.underlays -= marked_underlay
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-/datum/status_effect/crusher_mark/be_replaced()
+/datum/status_effect/grouped/crusher_mark/be_replaced()
 	owner.underlays -= marked_underlay //if this is being called, we should have an owner at this point.
 	..()

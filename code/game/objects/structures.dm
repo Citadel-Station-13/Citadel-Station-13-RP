@@ -118,7 +118,7 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, incapacitation_flags = INCAPACITATION_ALL))
+	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_MOVE | MOBILITY_USE))
 		climbers -= user
 		return
 

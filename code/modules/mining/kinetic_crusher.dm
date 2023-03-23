@@ -164,8 +164,8 @@
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
-	var/datum/status_effect/crusher_mark/CM = L.has_status_effect(/datum/status_effect/crusher_mark)
-	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(/datum/status_effect/crusher_mark))
+	var/datum/status_effect/grouped/crusher_mark/CM = L.has_status_effect(/datum/status_effect/grouped/crusher_mark)
+	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
 		return
 	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
@@ -198,7 +198,7 @@
 	if(!isliving(A))
 		return
 	var/mob/living/L = A
-	if(!L.has_status_effect(/datum/status_effect/crusher_mark))
+	if(!L.has_status_effect(/datum/status_effect/grouped/crusher_mark))
 		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
@@ -321,9 +321,9 @@
 /obj/item/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_status_effect(/datum/status_effect/crusher_mark, hammer_synced)
-		// var/had_effect = (L.has_status_effect(/datum/status_effect/crusher_mark)) //used as a boolean
-		// var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/crusher_mark, hammer_synced)
+		L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
+		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
+		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
 /*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)
@@ -373,7 +373,7 @@
 	return TRUE
 /obj/item/crusher_trophy/proc/on_melee_hit(mob/living/target, mob/living/user) //the target and the user
 /obj/item/crusher_trophy/proc/on_projectile_fire(obj/item/projectile/destabilizer/marker, mob/living/user) //the projectile fired and the user
-/obj/item/crusher_trophy/proc/on_mark_application(mob/living/target, datum/status_effect/crusher_mark/mark, had_mark) //the target, the mark applied, and if the target had a mark before
+/obj/item/crusher_trophy/proc/on_mark_application(mob/living/target, datum/status_effect/grouped/crusher_mark/mark, had_mark) //the target, the mark applied, and if the target had a mark before
 /obj/item/crusher_trophy/proc/on_mark_detonation(mob/living/target, mob/living/user) //the target and the user
 //goliath
 /obj/item/crusher_trophy/goliath_tentacle
