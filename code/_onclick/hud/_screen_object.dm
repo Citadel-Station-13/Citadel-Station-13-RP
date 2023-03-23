@@ -243,7 +243,7 @@
 		if("internal")
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = usr
-				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
+				if(CHECK_MOBILITY(C, MOBILITY_USE))
 					if(C.internal)
 						C.internal = null
 						to_chat(C, "<span class='notice'>No longer running on internals.</span>")

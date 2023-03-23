@@ -170,7 +170,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE) || !in_range(loc, usr))
 		return TRUE
 	var/playeffect = TRUE
 	switch(action)

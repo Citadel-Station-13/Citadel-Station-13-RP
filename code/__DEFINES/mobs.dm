@@ -85,8 +85,7 @@
 /// Replaces stuff like changeling.changeling_fakedeath.
 #define STATUS_FAKEDEATH   (1<<7)
 #define STATUS_CAN_KNOCKDOWN (1<<8)
-#define STATUS_CAN_DAZE (1<<9)
-#define STATUS_CAN_ROOT (1<<10)
+#define STATUS_CAN_ROOT (1<<9)
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2

@@ -1,3 +1,5 @@
+//? Incapacitation
+
 /**
  * default method of kicking a poor guy down to the ground
  *
@@ -5,7 +7,7 @@
  * - amount - standard strength in deciseconds
  */
 /mob/proc/default_combat_knockdown(amount)
-	return
+	return afflict_knockdown(amount)
 
 /mob/proc/is_stunned()
 	RETURN_TYPE(/datum/status_effect)
@@ -103,19 +105,6 @@
 	#warn impl
 
 /mob/proc/set_rooted(amount)
-	#warn impl
-
-/mob/proc/is_dazed()
-	RETURN_TYPE(/datum/status_effect)
-	#warn impl
-
-/mob/proc/afflict_daze(amount)
-	#warn impl
-
-/mob/proc/adjust_dazed(amount)
-	#warn impl
-
-/mob/proc/set_dazed(amount)
 	#warn impl
 
 /mob/proc/is_unconscious()

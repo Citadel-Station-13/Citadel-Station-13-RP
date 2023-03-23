@@ -2,6 +2,13 @@
 	var/requires_mobility_update = TRUE
 	var/requires_stat_update = FALSE
 
+/datum/status_effect/incapacitation/on_apply()
+	. = ..()
+	if(requires_mobility_update)
+		owner.update_mobility()
+	if(requires_stat_update)
+		owner.update_stat()
+
 /datum/status_effect/incapacitation/stun
 	identifier = "stun"
 	requires_mobility_update = TRUE
@@ -18,10 +25,6 @@
 	identifier = "root"
 	requires_mobility_update = TRUE
 
-/datum/status_effect/incapacitation/daze
-	identifier = "daze"
-	requires_mobility_update = TRUE
-
 /datum/status_effect/incapacitation/unconscious
 	identifier = "unconscious"
 	requires_stat_update = TRUE
@@ -30,4 +33,4 @@
 	identifier = "sleeping"
 	requires_stat_update = TRUE
 
-#warn impl all
+#warn impl in mobility / stat updates.

@@ -270,7 +270,11 @@
 		return
 
 	if(anchored)
-		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
+		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
+		return
+	
+	if(!CHECK_MOBILITY(user, MOBILITY_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
 	if (hasorgans(user))
