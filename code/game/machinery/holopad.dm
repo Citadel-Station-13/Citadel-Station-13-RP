@@ -5,8 +5,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_NORMAL_ALPHA 120
 #define HOLO_VORE_ALPHA 200
 
-#warn add sector calls to all shuttles, maps
-
 /obj/machinery/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
@@ -327,16 +325,19 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	for(var/datum/holocall/holocall as anything in (other.ringing_calls | other.incoming_calls))
 		if(holocall.source == src)
 			return FALSE
-	var/datum/holocall/call = new(src, other)
-	call.ring()
+	var/datum/holocall/holocall = new(src, other)
+	holocall.ring()
 
 /**
  * get ring'd by a call
  */
 /obj/machinery/holopad/proc/ring(datum/holocall/incoming)
+	update_icon()
+	if(LAZYACCESS(holocall_anti_spam, incoming.holopad_uid) > world.time)
+		return
+	LAZYSET(holocall_anti_spam, incoming.holopad_uid, 30 SECONDS)
 	playsound(src, 'sound/machines/beep.ogg', 75)
 	atom_say("Incoming holocall from [incoming.caller_id()]")
-	update_icon()
 	if(!incoming.cross_sector)
 		return // don't need the radio part
 	if(world.time < holocall_last_radio + 30 SECONDS)
@@ -376,8 +377,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		// DESITNATION MODE
 		var/list/projecting = list()
 		var/list/callers = list()
-		for(var/datum/holocall/call as anything in incoming_calls)
-			callers[++callers.len] = call.ui_caller_id()
+		for(var/datum/holocall/holocall as anything in incoming_calls)
+			callers[++callers.len] = holocall.ui_caller_id()
 			if(call.remoting)
 				projecting += call.source.holopad_uid
 		.["calling"] = "destination"
@@ -468,7 +469,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if("call")
 			var/id = params["id"]
 			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
-			#warn 30 second per unique holopad cooldown for ringing
 			make_call(pad)
 			return TRUE
 		// user requesting to connect an incoming/ringing call

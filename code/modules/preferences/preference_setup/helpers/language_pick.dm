@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 			"desc" = L.desc,
 			"category" = L.category
 		)
-		LAZYOR(categories, L.category)
+		LAZYDISTINCTADD(categories, L.category)
 	data["languages"] = built
 	data["categories"] = categories
 	return data
