@@ -9,7 +9,7 @@
 	var/duration
 	#warn hook
 	/// expiration timerid
-	var/expire_timer
+	var/decay_timer
 	#warn hook
 	/// start time - when refreshing we just bump this to world.time or something.
 	var/started
@@ -30,7 +30,7 @@
 	/// How many of the effect can be on one mob, and what happens when you try to add another
 	var/status_type = STATUS_EFFECT_UNIQUE
 
-/datum/status_effect/New(list/arguments, duration)
+/datum/status_effect/New(duration, list/arguments)
 	if(!isnull(duration))
 		src.duration = duration
 	on_creation(arglist(arguments))
@@ -54,23 +54,11 @@
 	return TRUE
 
 /datum/status_effect/Destroy()
-	STOP_PROCESSING(SSstatus_effects, src)
 	if(owner)
-		// owner.clear_alert(identifier)
-		LAZYREMOVE(owner.status_effects, src)
-		on_remove()
-		owner = null
+		owner.status_effects?[identifier] = null
+	on_remove()
+	owner = null
 	return ..()
-
-/datum/status_effect/process()
-	if(!owner)
-		qdel(src)
-		return
-	if(next_tick < world.time)
-		tick()
-		next_tick = world.time + tick_interval
-	if(duration != -1 && duration < world.time)
-		qdel(src)
 
 /datum/status_effect/proc/on_apply() //Called whenever the buff is applied; returning FALSE will cause it to autoremove itself.
 	SHOULD_CALL_PARENT(TRUE)
@@ -79,8 +67,11 @@
 /datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/status_effect/proc/before_remove() //! Called before being removed; returning FALSE will cancel removal
-	return TRUE
+/**
+ * decays - this *must* either delete ourselves or automatically reapply the decay timer!
+ */
+/datum/status_effect/proc/decay()
+	qdel(src)
 
 /**
  * called on full removal
@@ -96,35 +87,69 @@
 	SHOULD_CALL_PARENT(TRUE)
 	return
 
-/datum/status_effect/proc/be_replaced() //Called instead of on_remove when a status effect is replaced by itself or when a status effect with on_remove_on_mob_delete = FALSE has its mob deleted
-	// owner.clear_alert(identifier)
-	LAZYREMOVE(owner.status_effects, src)
-	owner = null
-	qdel(src)
+/**
+ * called on refresh
+ * 
+ * @params
+ * * old_timeleft - old time remaining
+ * * ... - rest of parameters.
+ */
+/datum/status_effect/proc/on_refreshed(old_timeleft, ...)
+	return
 
-/datum/status_effect/proc/refresh()
+/**
+ * refreshes our duration
+ * 
+ * if duration is supplied and it isn't necessary to refresh, on_refreshed is not called.
+ * 
+ * @params
+ * * duration - if supplied, refreshes us to that long from now (if we weren't already at or above).
+ * * ... - rest of parameters, passed to on_refreshed.
+ */
+/datum/status_effect/proc/refresh(duration, ...)
 	#warn impl
 
 /datum/status_effect/proc/time_left()
-	#warn impl
+	return (started + duration) - world.time
 
-/datum/status_effect/proc/set_duration_from_apply()
-	#warn impl
+/datum/status_effect/proc/set_duration_from_apply(duration)
+	src.duration = duration
+	rebuild_decay_timer()
 
-/datum/status_effect/proc/set_duration_from_now()
-	#warn impl
+/datum/status_effect/proc/set_duration_from_now(duration)
+	src.duration = duration
+	started = world.time
+	rebuild_decay_timer()
 
-/datum/status_effect/proc/adjust_duration(ds)
-	#warn impl
+/datum/status_effect/proc/adjust_duration(duration)
+	src.duration += duration
+	rebuild_decay_timer()
 
-////////////////
-// ALERT HOOK //
-////////////////
+/datum/status_effect/proc/rebuild_decay_timer()
+	if(decay_timer)
+		deltimer(decay_timer)
+	if(isnull(duration))
+		return
+	var/time_left = time_left()
+	if(time_left <= 0)
+		decay()
+		return
+	decay_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/status_effect, decay)), time_left, TIMER_STOPPABLE)
+
+/datum/status_effect/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	. = ..()
+	if(!. || raw_edit)
+		return
+	switch(var_name)
+		if(NAMEOF(src, duration))
+			rebuild_decay_timer()
 
 //? Mob procs
 
 /**
  * applies a status effect to this mob
+ * 
+ * if the status effect is already there, we will refresh it instead.
  *
  * @params
  * * path - path to effect

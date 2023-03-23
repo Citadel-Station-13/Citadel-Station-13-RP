@@ -1428,7 +1428,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
-	if(!HAS_TRAIT(H, TRAIT_MOB_UNCONSCIOUS, ADMIN_TRAIT))
+	if(!HAS_TRAIT(H, TRAIT_MOB_UNCONSCIOUS))
 		ADD_TRAIT(H, TRAIT_MOB_UNCONSCIOUS, ADMIN_TRAIT)
 		H.update_stat()
 		msg = "has paralyzed [key_name(H)]."

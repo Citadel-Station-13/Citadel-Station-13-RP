@@ -1,4 +1,25 @@
 /datum/status_effect/stacking
+	abstract_type = /datum/status_effect/stacking
+
+	/// decay amount - this can be negative.
+	var/decay_amount = 1
+
+/datum/status_effect/stacking/decay()
+	#warn impl
+
+/**
+ * called when stacks change
+ * when we're being removed, new_stacksi s 0.
+ * 
+ * @params
+ * * old_stacks - old stacks
+ * * new_stacks - new stacks
+ * * decayed - is this from decaying?
+ */
+/datum/status_effect/stacking/proc/on_stacks(old_stacks, new_stacks, decayed)
+	return
+
+/datum/status_effect/stacking
 	identifier = "stacking_base"
 	duration = -1 //removed under specific conditions
 	alert_type = null
@@ -16,6 +37,7 @@
 	var/underlay_state // the number is concatonated onto the string based on the number of stacks to get the correct state name
 	var/mutable_appearance/status_overlay
 	var/mutable_appearance/status_underlay
+
 
 /datum/status_effect/stacking/proc/threshold_cross_effect() //what happens when threshold is crossed
 
