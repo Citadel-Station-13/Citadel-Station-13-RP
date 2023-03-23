@@ -148,8 +148,3 @@
 	dirs = dirs_next
 	turfs_next = list()
 	dirs_next = list()
-
-
-/datum/radiation_wave/contaminating
-	/// remaining contamination
-	var/contamination
