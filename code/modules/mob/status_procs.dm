@@ -9,7 +9,7 @@
 
 /mob/proc/is_stunned()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/stun)
 
 /mob/proc/afflict_stun(amount)
 	if(!(status_flags & STATUS_CAN_STUN))
@@ -26,6 +26,8 @@
 		var/datum/status_effect/effect = is_stunned()
 		if(effect)
 			effect.set_duration_from_now(amount)
+		else if(amount > 0)
+			afflict_stun(amount)
 	return TRUE
 
 /mob/proc/adjust_stunned(amount)
@@ -37,30 +39,45 @@
 		var/datum/status_effect/effect = is_stunned()
 		if(effect)
 			effect.adjust_duration(amount)
+		else if(amount > 0)
+			afflict_stun(amount)
 	return TRUE
 
 /mob/proc/is_knockdown()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/knockdown)
 
 /mob/proc/afflict_knockdown(amount)
-	if(status_flags & STATUS_CAN_WEAKEN)
-		facing_dir = null
-		weakened = max(max(weakened,amount),0)
-		update_canmove()	//updates lying, canmove and icons
-	return
+	if(!(status_flags & STATUS_CAN_KNOCKDOWN))
+		return FALSE
+	apply_status_effect(/datum/status_effect/incapacitation/knockdown, amount)
+	return TRUE
 
 /mob/proc/set_knockdown(amount)
-	if(!(status_flags & STATUS_CAN_WEAKEN))
+	if(!(status_flags & STATUS_CAN_STUN))
 		return FALSE
-	#warn impl
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/knockdown)
+	else
+		var/datum/status_effect/effect = is_knockdown()
+		if(effect)
+			effect.set_duration_from_now(amount)
+		else if(amount > 0)
+			afflict_knockdown(amount)
 	return TRUE
 
 /mob/proc/adjust_knockdown(amount)
-	if(status_flags & STATUS_CAN_WEAKEN)
-		weakened = max(weakened + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
+	if(!(status_flags & STATUS_CAN_KNOCKDOWN))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/knockdown)
+	else
+		var/datum/status_effect/effect = is_knockdown()
+		if(effect)
+			effect.adjust_duration(amount)
+		else if(amount > 0)
+			afflict_knockdown(amount)
+	return TRUE
 
 /mob/proc/is_paralyzed()
 	RETURN_TYPE(/datum/status_effect)

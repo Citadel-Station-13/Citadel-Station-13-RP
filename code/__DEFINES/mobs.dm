@@ -75,15 +75,18 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define STATUS_CAN_STUN     0x1
-#define STATUS_CAN_WEAKEN   0x2
-#define STATUS_CAN_PARALYZE 0x4
-#define STATUS_CAN_PUSH     0x8
-#define STATUS_LEAPING     0x10
-#define STATUS_HIDING      0x20
-#define STATUS_GODMODE     0x1000
+#define STATUS_CAN_STUN     (1<<0)
+#define STATUS_CAN_WEAKEN   (1<<1)
+#define STATUS_CAN_PARALYZE (1<<2)
+#define STATUS_CAN_PUSH     (1<<3)
+#define STATUS_LEAPING     (1<<4)
+#define STATUS_HIDING      (1<<5)
+#define STATUS_GODMODE     (1<<6)
 /// Replaces stuff like changeling.changeling_fakedeath.
-#define STATUS_FAKEDEATH   0x2000
+#define STATUS_FAKEDEATH   (1<<7)
+#define STATUS_CAN_KNOCKDOWN (1<<8)
+#define STATUS_CAN_DAZE (1<<9)
+#define STATUS_CAN_ROOT (1<<10)
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2
