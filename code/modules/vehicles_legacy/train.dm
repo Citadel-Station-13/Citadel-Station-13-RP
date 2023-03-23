@@ -106,7 +106,7 @@
 	return 1
 
 /obj/vehicle_old/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !CHECK_MOBILITY(user, MOBILITY_MOVE)))
 		return
 	if(istype(C,/obj/vehicle_old/train))
 		latch(C, user)
@@ -138,7 +138,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE) || !Adjacent(usr))
 		return
 
 	unattach(usr)

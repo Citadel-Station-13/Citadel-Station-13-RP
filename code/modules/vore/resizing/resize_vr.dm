@@ -273,7 +273,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			return
 
 	//They can't be stepping on anyone
-	if(!canmove || buckled)
+	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
 		return
 
 	//Test/set if human

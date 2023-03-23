@@ -121,9 +121,7 @@
 
 	//Unfreeze some things
 	does_not_breathe = FALSE
-	update_canmove()
-	weakened = 2
-
+	
 	//Visual effects
 	var/T = get_turf(src)
 	new /obj/effect/gibspawner/human/xenochimera(T)

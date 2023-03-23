@@ -443,7 +443,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return 0
 
 	switch(unbuttoned)
