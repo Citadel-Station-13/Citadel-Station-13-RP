@@ -11,12 +11,3 @@
 
 /// From /datum/radiation_wave's iteration: (strength, datum/radiation_wave/wave)
 #define COMSIG_ATOM_RAD_PULSE_ITERATE "rad_pulse_iterate"
-
-#warn legacy
-
-/// From base of datum/radiation_wave_legacy/radiate(): (strength)
-#define COMSIG_ATOM_RAD_CONTAMINATING "atom_rad_contam"
-	#define COMPONENT_BLOCK_CONTAMINATION (1<<0)
-/// From base of datum/radiation_wave_legacy/check_obstructions(): (datum/radiation_wave_legacy, width)
-#define COMSIG_ATOM_RAD_WAVE_PASSING "atom_rad_wave_pass"
-	#define COMPONENT_RAD_WAVE_HANDLED (1<<0)

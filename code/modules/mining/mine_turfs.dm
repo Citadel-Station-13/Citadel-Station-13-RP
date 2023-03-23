@@ -703,7 +703,7 @@
 
 /obj/item/artifact_shards/Initialize(mapload, intensity = 1000, half_life = rand(0.5 MINUTES, 3 MINUTES), falloff = RAD_FALLOFF_ANOMALY_SHARDS)
 	. = ..()
-	AddComponent(/datum/component/radioactive, intensity, half_life, falloff = falloff)
+	AddComponent(/datum/component/radiation_emitter, intensity, half_life, falloff = falloff)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds
