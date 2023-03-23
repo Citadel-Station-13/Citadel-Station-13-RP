@@ -9,6 +9,11 @@
 //! that's all it does, and there's literally no point in sending arg-less signals!
 //! If we ever decide to make the signal have an arg, then yes, feel free to. For now, DON'T.
 
+/// From /datum/radiation_wave's iteration: (strength, datum/radiation_wave/wave)
+#define COMSIG_ATOM_RAD_PULSE_ITERATE "rad_pulse_iterate"
+
+#warn legacy
+
 /// From base of datum/radiation_wave_legacy/radiate(): (strength)
 #define COMSIG_ATOM_RAD_CONTAMINATING "atom_rad_contam"
 	#define COMPONENT_BLOCK_CONTAMINATION (1<<0)

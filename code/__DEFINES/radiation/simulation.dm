@@ -5,6 +5,11 @@
  */
 #define RAD_BACKGROUND_RADIATION 9
 
+/**
+ * maximum cycles a pulse can go for
+ */
+#define RAD_MAXIMUM_CYCLES 50
+
 //! Pulse - Falloff
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
 
