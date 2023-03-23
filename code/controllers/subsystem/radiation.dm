@@ -75,18 +75,16 @@ SUBSYSTEM_DEF(radiation)
 				return
 		// done; we DO NOT need to set resumed
 		stage = SSRADIATION_RADIATE
-		wave_index = 1
 	if(stage == SSRADIATION_RADIATE)
 		// pulse all waves until complete
-		var/i
 		var/datum/radiation_wave/wave
-		for(i in 1 to length(waves))
+		while(length(waves))
+			wave = waves[length(waves)]
+			// tick to completion
 			while(!wave.iterate(Master.current_ticklimit))
 				if(MC_TICK_CHECK)
-					waves.Cut(1, i + 1)
 					return
-		#warn this doesn't play nicely with qdels / is just bad
-		waves.Cut(1, i + 1)
+			qdel(wave)
 
 /datum/controller/subsystem/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len
@@ -118,57 +116,13 @@ SUBSYSTEM_DEF(radiation)
 		var/list/radiating = get_rad_contents(T)
 		var/list/L = next_wave_set[T]
 		for(var/datum/radiation_burst/B as anything in L)
-			var/insulation = 1
-			var/intensity = B.intensity
-			var/left
-			if(intensity > RAD_MINIMUM_CONTAMINATION)
-				var/list/contaminating = list()
-				for(var/atom/A as anything in radiating)
-					insulation *= A.rad_insulation
-					A.rad_act(intensity)
-					if(radiation_infect_ignore[A.type])
-						continue
-					if(A.rad_flags & RAD_NO_CONTAMINATE)
-						continue
-					if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_CONTAMINATING, intensity) & COMPONENT_BLOCK_CONTAMINATION)
-						continue
-					contaminating += A
-				var/contam_remaining = intensity * insulation * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
-				var/max_str = B.highest * insulation * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
-				var/apply_str = length(contaminating) && min(max_str, contam_remaining / length(contaminating), intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
-				var/used = 0
-				for(var/atom/A as anything in contaminating)
-					var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
-					var/effective_stack = (isnull(A.rad_stickiness)? A.rad_insulation : A.rad_stickiness) * max_str	// rad insulation helps against contamination by blocking it too
-					if(effective_stack < RAD_CONTAMINATION_MEANINGFUL)
-						continue
-					if(!R)
-						A.AddComponent(/datum/component/radioactive, min(apply_str, effective_stack))
-						used += apply_str
-					else
-						used += R.constructive_interference(effective_stack, apply_str)
-				left = max(0, contam_remaining - used)
-			else
-				left = 0
-				for(var/atom/A as anything in radiating)
-					insulation *= A.rad_insulation
-					A.rad_act(intensity)
-			new /datum/radiation_wave_legacy(T, NORTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave_legacy(T, SOUTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave_legacy(T, EAST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-			new /datum/radiation_wave_legacy(T, WEST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
+			var/datum/radiation_wave/wave = new /datum/radiation_wave(T, B.intensity, B.falloff)
+			wave.start()
 		if(MC_TICK_CHECK)
-			next_wave_set.Cut(1, i + 1)
-			return
+			break
 	next_wave_set.Cut(1, i + 1)
 
 /datum/controller/subsystem/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
-	// if not contaminating we immediately release, pointless to keep going
-	if(!can_contaminate)
-		new /datum/radiation_wave_legacy(source, NORTH, intensity, falloff, FALSE)
-		new /datum/radiation_wave_legacy(source, SOUTH, intensity, falloff, FALSE)
-		new /datum/radiation_wave_legacy(source, EAST, intensity, falloff, FALSE)
-		new /datum/radiation_wave_legacy(source, WEST, intensity, falloff, FALSE)
 	var/list/datum/radiation_burst/queue = queued_waves[source]
 	if(!queue)
 		queue = list()

@@ -1,3 +1,15 @@
+/datum/radiation_burst
+	var/falloff
+	var/intensity
+	var/highest
+	var/emitter_count
+
+/datum/radiation_burst/New(intensity, falloff)
+	src.falloff = falloff
+	src.intensity = intensity
+	src.highest = intensity
+	src.emitter_count = 1
+
 /datum/radiation_wave
 	/// source turf
 	var/turf/source

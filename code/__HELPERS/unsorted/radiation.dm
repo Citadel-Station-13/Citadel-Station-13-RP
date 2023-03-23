@@ -28,7 +28,7 @@
  * - intensity - how much
  * - falloff_modifier - 0.5 = goes twice as far, 2 = goes half as far, etc
  * - log - emit game log?
- * - can_contaminate - allow contamination? if null, will default
+ * - can_contaminate - allow contamination? if null, will default. Contamination is currently disabled.
  * - override_turf - override where
  */
 /proc/radiation_pulse(atom/source, intensity, falloff_modifier = RAD_FALLOFF_NORMAL, log, can_contaminate = RAD_CONTAMINATION_DEFAULT)
