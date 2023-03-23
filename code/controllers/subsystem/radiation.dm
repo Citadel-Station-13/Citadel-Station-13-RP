@@ -18,9 +18,9 @@ SUBSYSTEM_DEF(radiation)
 	/// waves about to be sent out on next tick; list [ turf = list(burst) ]
 	var/list/queued_waves = list()
 	/// radioactivity sources we're ticking
-	var/list/datum/component/radiation_emitter/sources = list()
+	var/list/datum/component/radioactive/sources = list()
 	/// radioactive sources we're about to tick
-	var/list/datum/component/radiation_emitter/currentrun
+	var/list/datum/component/radioactive/currentrun
 	/// queue not processed
 	var/list/next_wave_set
 
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(radiation)
 			for(var/atom/A in atoms)
 				z_listeners[A.z] += A
 	if(islist(SSradiation.sources))
-		for(var/datum/component/radiation_emitter/R in SSradiation.sources)
+		for(var/datum/component/radioactive/R in SSradiation.sources)
 			sources += R
 
 /datum/controller/subsystem/radiation/fire(resumed)
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(radiation)
 			currentrun = sources.Copy()
 		if(length(currentrun))
 			var/i
-			var/datum/component/radiation_emitter/source
+			var/datum/component/radioactive/source
 			var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : (wait)
 			for(i in 1 to length(currentrun))
 				source = currentrun[i]
@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(radiation)
 	for(var/i in old + 1 to z_listeners.len)
 		z_listeners[i] = list()
 
-/datum/controller/subsystem/radiation/proc/warn(datum/component/radiation_emitter/contamination)
+/datum/controller/subsystem/radiation/proc/warn(datum/component/radioactive/contamination)
 	if(!contamination || QDELETED(contamination))
 		return
 	var/ref = REF(contamination.parent)
@@ -138,12 +138,12 @@ SUBSYSTEM_DEF(radiation)
 				var/apply_str = length(contaminating) && min(max_str, contam_remaining / length(contaminating), intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
 				var/used = 0
 				for(var/atom/A as anything in contaminating)
-					var/datum/component/radiation_emitter/R = A.GetComponent(/datum/component/radiation_emitter)
+					var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
 					var/effective_stack = (isnull(A.rad_stickiness)? A.rad_insulation : A.rad_stickiness) * max_str	// rad insulation helps against contamination by blocking it too
 					if(effective_stack < RAD_CONTAMINATION_MEANINGFUL)
 						continue
 					if(!R)
-						A.AddComponent(/datum/component/radiation_emitter, min(apply_str, effective_stack))
+						A.AddComponent(/datum/component/radioactive, min(apply_str, effective_stack))
 						used += apply_str
 					else
 						used += R.constructive_interference(effective_stack, apply_str)

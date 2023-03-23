@@ -867,7 +867,7 @@
 		rad_flags &= ~RAD_BLOCK_CONTENTS
 
 /atom/proc/clean_radiation(str, mul, cheap)
-	var/datum/component/radiation_emitter/RA = GetComponent(/datum/component/radiation_emitter)
+	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
 	RA?.clean(str, mul)
 
 //? Atom Colour Priority System

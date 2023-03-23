@@ -160,7 +160,7 @@
 		var/atom/thing = i
 		if(!thing)
 			continue
-		var/datum/component/radiation_emitter/radiation = thing.GetComponent(/datum/component/radiation_emitter)
+		var/datum/component/radioactive/radiation = thing.GetComponent(/datum/component/radioactive)
 		if(radiation)
 			rad_strength += radiation.strength
 

@@ -18,7 +18,7 @@
 
 /datum/component/latently_radioactive/UnregisterFromParent()
 	. = ..()
-	UnregsisterSignal(parent, COMSIG_ATOM_RAD_ACT)
+	UnregisterSignal(parent, COMSIG_ATOM_RAD_ACT)
 	
 /datum/component/latently_radioactive/proc/on_radiated(atom/source, strength, datum/radiation_wave/wave)
 	#warn impl
