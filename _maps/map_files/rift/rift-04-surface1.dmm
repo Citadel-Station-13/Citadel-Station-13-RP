@@ -17502,7 +17502,7 @@
 "lkU" = (
 /obj/structure/catwalk,
 /obj/structure/stairs/spawner/east,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "llv" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -45078,7 +45078,7 @@ oJo
 hmq
 wcq
 ujT
-sHD
+sGn
 ykF
 aWt
 hic

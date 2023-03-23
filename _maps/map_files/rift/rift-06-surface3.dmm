@@ -25893,9 +25893,8 @@
 /area/maintenance/research/xenobio)
 "hAi" = (
 /obj/item/barrier_tape_segment/engineering,
-/obj/machinery/light_construct{
-	dir = 1
-	},
+/obj/structure/door_assembly/door_assembly_research,
+/obj/structure/firedoor_assembly,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "hAM" = (
@@ -26830,6 +26829,15 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
+"tuh" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light_construct{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/rnd/telescience_lab)
 "tvp" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_alc{
@@ -31544,7 +31552,7 @@ mTQ
 mTQ
 jZk
 vPu
-rZg
+tuh
 lPF
 klx
 nin
