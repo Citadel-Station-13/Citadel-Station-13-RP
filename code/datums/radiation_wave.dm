@@ -119,7 +119,6 @@
 	var/dir_diag
 	var/power
 	var/power_next
-	var/atom/movable/AM
 	var/dir
 	var/inverse_square_factor = 1 / (2 ** (falloff_modifier * cycles))
 
@@ -151,8 +150,10 @@
 		if(TICK_USAGE > ticklimit)
 			break
 
-	turfs.len -= length(turfs) - i
-	dirs.len -= length(turfs) - i
+	turfs.len -= length(turfs) - i + 1
+	dirs.len -= length(turfs) - i + 1
+	if(!length(turfs))
+		next()
 	++cycles
 	return !length(turfs) && cycles < RAD_MAXIMUM_CYCLES
 

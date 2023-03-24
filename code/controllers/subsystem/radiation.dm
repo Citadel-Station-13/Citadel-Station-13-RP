@@ -113,7 +113,6 @@ SUBSYSTEM_DEF(radiation)
 	var/list/next_wave_set = src.next_wave_set
 	for(i in 1 to length(next_wave_set))
 		var/turf/T = next_wave_set[i]
-		var/list/radiating = get_rad_contents(T)
 		var/list/L = next_wave_set[T]
 		for(var/datum/radiation_burst/B as anything in L)
 			var/datum/radiation_wave/wave = new /datum/radiation_wave(T, B.intensity, B.falloff)

@@ -15,7 +15,7 @@
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	teardown()
 
-/datum/component/radiation_listener/proc/teardown(atom/root = parent.loc)
+/datum/component/radiation_listener/proc/teardown(atom/root = parent:loc)
 	var/atom/movable/last
 	while(ismovable(root))
 		last = root
@@ -24,7 +24,7 @@
 	if(!isnull(last))
 		RegisterSignal(last, COMSIG_ATOM_RAD_PULSE_ITERATE, TYPE_PROC_REF(/datum/component/radiation_listener, relay))
 
-/datum/component/radiation_listener/proc/construct(atom/root = parent.loc)
+/datum/component/radiation_listener/proc/construct(atom/root = parent:loc)
 	var/atom/movable/last
 	while(ismovable(root))
 		last = root
