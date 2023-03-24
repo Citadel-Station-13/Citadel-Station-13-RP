@@ -1,4 +1,3 @@
-import { arrayBucketFill } from "common/collections";
 import { BooleanLike } from "common/react";
 import { useBackend, useSharedState } from "../backend";
 import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "../components";
@@ -48,6 +47,10 @@ export const ChemDispenser = (props, context) => {
   const { act, data } = useBackend<ChemDispenserData>(context);
   const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
   const isRecording = () => (macro !== undefined);
+  const sortedMacros = data.macros.sort((a, b) => a.name.localeCompare(b.name));
+  const sortedReagents = data.reagents.sort((a, b) => a.name.localeCompare(b.name));
+  const windowWidth = 575;
+  const buttonWidth = (windowWidth - 50) / 4;
   const recordReagent = (id: string, amount: number) => {
     if (macro === undefined) {
       return;
@@ -72,7 +75,7 @@ export const ChemDispenser = (props, context) => {
   };
   return (
     <Window
-      width={565}
+      width={windowWidth}
       height={720}>
       <Window.Content>
         <Section title="Power">
@@ -108,23 +111,27 @@ export const ChemDispenser = (props, context) => {
         </Section>
         <Section title="Dispenser">
           <LabeledList>
-            <LabeledList.Item label="Amount">
-              {
-                [1, 5, 10, 15, 20, 30].map((n) => (
-                  <Button
-                    key={`${n}`}
-                    title={`${n}`}
-                    selected={data.amount === n}
-                    onClick={() => act('amount', { set: n })} />
-                ))
-              }
-              <NumberInput
-                value={data.amount}
-                step={1}
-                minValue={1}
-                maxValue={data.amount_max}
-                onChange={(_, val) => act('amount', { set: val })} />
-            </LabeledList.Item>
+            <LabeledList.Item label="Amount" buttons={
+              <>
+                {
+                  [1, 5, 10, 15, 20, 30, 60].map((n) => (
+                    <Button
+                      icon="plus"
+                      key={`${n}`}
+                      content={`${n}`}
+                      selected={data.amount === n}
+                      onClick={() => act('amount', { set: n })} />
+                  ))
+                }
+                <NumberInput
+                  width="40px"
+                  value={data.amount}
+                  step={1}
+                  minValue={1}
+                  maxValue={data.amount_max}
+                  onChange={(_, val) => act('amount', { set: val })} />
+              </>
+            } />
           </LabeledList>
         </Section>
         <Section title="Macros"
@@ -135,67 +142,46 @@ export const ChemDispenser = (props, context) => {
               icon={macro === undefined? "circle" : "square"}
               color={macro === undefined? "good" : "bad"} />
           }>
-          <Stack vertical>
-            {
-              arrayBucketFill(data.macros.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((arr) => (
-                // yes, this is shitcode for key, but maybe it shouldn't be so damn PICKY
-                <Stack.Item key={Math.random()}>
-                  <Stack>
-                    {arr.map((m) => (
-                    // ditto
-                      <Stack.Item grow={1} key={Math.random()}>
-                        <Stack>
-                          <Stack.Item grow={1}>
-                            <Button
-                              icon="forward"
-                              fluid
-                              key={m.name}
-                              content={m.name}
-                              onClick={() => act('macro', { index: m.index })} />
-                          </Stack.Item>
-                          <Stack.Item>
-                            <Button.Confirm
-                              key={m.name}
-                              icon="trash"
-                              onClick={() => act('del_macro', { index: m.index })} />
-                          </Stack.Item>
-                        </Stack>
-                      </Stack.Item>
-                    ))}
-                  </Stack>
+          {
+            sortedMacros.map((macro) => (
+              <Stack mr="5px" inline width={`${buttonWidth}px`} key={`${macro.index} ${macro.name}`}>
+                <Stack.Item grow={1}>
+                  <Button
+                    icon="forward"
+                    fluid
+                    content={macro.name}
+                    onClick={() => act('macro', { index: macro.index })} />
                 </Stack.Item>
-              ))
-            }
-          </Stack>
+                <Stack.Item>
+                  <Button.Confirm
+                    icon="trash"
+                    onClick={() => act('del_macro', { index: macro.index })} />
+                </Stack.Item>
+              </Stack>
+            ))
+          }
         </Section>
         <Section title="Synthesis">
-          <Stack vertical>
-            {arrayBucketFill(data.reagents.sort((a, b) => (a.name.localeCompare(b.name))), 4).map((reagentArray) => (
-              <Stack.Item key={Math.random()}>
-                <Stack>
-                  {reagentArray.map((reagent) => (
-                    <Stack.Item grow={1} key={reagent.id}>
-                      <Button
-                        fluid
-                        icon="tint"
-                        content={reagent.name}
-                        onClick={() => {
-                          act('reagent', { id: reagent.id });
-                          recordReagent(reagent.id, data.amount);
-                        }} />
-                    </Stack.Item>
-                  ))}
-                </Stack>
-              </Stack.Item>
-            ))}
-          </Stack>
+          {sortedReagents.map((reagent) => (
+            <Button
+              icon="tint"
+              mr="5px"
+              width={`${buttonWidth}px`}
+              content={reagent.name}
+              key={reagent.id}
+              onClick={() => {
+                act('reagent', { id: reagent.id });
+                recordReagent(reagent.id, data.amount);
+              }} />
+          ))}
         </Section>
         <Section title="Cartridges">
           {data.cartridges.sort((a, b) => (a.label.localeCompare(b.label))).map((cart) => (
-            <Stack key={cart.label}>
+            <Stack mr="5px" inline key={cart.label} width={`${buttonWidth}px`}>
               <Stack.Item>
                 <Button
                   icon="tint"
+                  fluid
                   content={`${cart.label} (${cart.amount})`}
                   onClick={() => act('cartridge', { label: cart.label })} />
               </Stack.Item>
