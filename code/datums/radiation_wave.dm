@@ -50,7 +50,7 @@
 /datum/radiation_wave/proc/start()
 	cycles = 0
 	// we have to stagger a bit, so we preprocess *part* of a 3x3.
-	var/after_center = irradiate_turf(source, power)
+	var/after_center = power * irradiate_turf(source, power)
 	if(after_center <= RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
@@ -117,8 +117,13 @@
 	dirs_next = list()
 	spreads_next = list()
 
+/**
+ * irradiates a turf
+ *
+ * returns rad insulation
+ */
 /datum/radiation_wave/proc/irradiate_turf(turf/T, power)
-	. = power * T.rad_insulation
+	. = T.rad_insulation
 	T.rad_act(power, src)
 	var/atom/movable/AM
 	for(AM as anything in T)
@@ -147,9 +152,9 @@
 		dir = dirs[i]
 		spread = spreads[i]
 
-		power_next = irradiate_turf(T, power * inverse_square_factor)
+		power_next = power * irradiate_turf(T, power * inverse_square_factor)
 
-		if(power_next < RAD_BACKGROUND_RADIATION)
+		if(power_next * inverse_square_factor < RAD_BACKGROUND_RADIATION)
 			continue
 
 		F = get_step(T, dir)
