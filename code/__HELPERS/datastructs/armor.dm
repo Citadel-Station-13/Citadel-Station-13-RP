@@ -101,6 +101,8 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
+		else
+			CRASH("Invalid flag: [flag]")
 
 /datum/armor/proc/mitigation(flag, tier = ARMOR_TIER_DEFAULT)
 	switch(flag)
@@ -121,6 +123,8 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
+		else
+			CRASH("Invalid flag: [flag]")
 
 /datum/armor/proc/soak(flag)
 	switch(flag)
@@ -152,6 +156,8 @@
 			return damage * (1 - bio)
 		if(ARMOR_RAD)
 			return damage * (1 - rad)
+		else
+			CRASH("Invalid flag: [flag]")
 
 /datum/armor/proc/describe_list()
 	RETURN_TYPE(/list)
