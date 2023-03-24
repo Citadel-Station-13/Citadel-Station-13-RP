@@ -26,7 +26,7 @@
 
 /datum/component/radiation_listener/proc/construct(atom/root = parent:loc)
 	var/atom/movable/last
-	while(ismovable(root))
+	while(ismovable(root) && !(root.rad_flags & RAD_BLOCK_CONTENTS))
 		last = root
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/component/radiation_listener, update))
 		root = root.loc
