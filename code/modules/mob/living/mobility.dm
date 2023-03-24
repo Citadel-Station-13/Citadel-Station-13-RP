@@ -2,7 +2,7 @@
 	if(restrained())
 		blocked |= MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_HOLD | MOBILITY_PULL | MOBILITY_STORAGE | MOBILITY_UI
 		if(pulledby)
-			blocked |= MOBILITY_MOVE
+			blocked |= MOBILITY_MOVE | MOBILITY_RESIST
 
 	. = ..(blocked, forced)
 
