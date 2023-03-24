@@ -599,6 +599,9 @@ default behaviour is:
 			process_resist()
 
 /mob/living/proc/process_resist()
+	if(!CHECK_MOBILITY(src, MOBILITY_RESIST))
+		return
+
 	//unbuckling yourself
 	if(buckled)
 		resist_buckle()
@@ -610,13 +613,7 @@ default behaviour is:
 		C.container_resist(src)
 		return TRUE
 
-	else if(canmove)
-		if(on_fire)
-			resist_fire() //stop, drop, and roll
-		else
-			resist_restraints()
-
-	else if(canmove)
+	else
 		if(on_fire)
 			resist_fire() //stop, drop, and roll
 		else

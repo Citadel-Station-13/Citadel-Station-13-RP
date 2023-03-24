@@ -405,7 +405,6 @@
 			var/wheelchair_type = R?.unfolded_type || /obj/structure/bed/chair/wheelchair
 			var/obj/structure/bed/chair/wheelchair/W = new wheelchair_type(H.loc)
 			W.buckle_mob(H)
-			H.update_canmove()
 			W.setDir(H.dir)
 			W.add_fingerprint(H)
 			if(R)

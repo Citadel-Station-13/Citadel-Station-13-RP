@@ -16,7 +16,7 @@
 	plane = PLANE_GHOSTS
 	alpha = 127
 	stat = DEAD
-	canmove = FALSE
+	mobility_flags = NONE
 	blinded = FALSE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER

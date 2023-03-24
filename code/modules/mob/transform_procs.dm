@@ -3,8 +3,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	stunned = 1
 	icon = null
 	invisibility = 101
@@ -52,8 +52,8 @@
 	if (transforming)
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	return ..()
@@ -103,8 +103,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -160,8 +160,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -183,8 +183,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)	//this really should not be necessary
@@ -213,8 +213,8 @@
 	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 

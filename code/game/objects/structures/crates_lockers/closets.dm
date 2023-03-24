@@ -385,7 +385,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		return
 
 	if(ishuman(usr) || isrobot(usr))

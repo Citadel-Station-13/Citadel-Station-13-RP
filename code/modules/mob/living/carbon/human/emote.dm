@@ -824,7 +824,7 @@
 					M = null
 
 				if (M)
-					if (M.canmove && !M.r_hand && !M.restrained())
+					if (CHECK_MOBILITY(M, MOBILITY_USE))
 						message = "shakes hands with [M]."
 					else
 						message = "holds out [T.his] hand to [M]."
