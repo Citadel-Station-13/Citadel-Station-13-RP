@@ -66,14 +66,14 @@
 
 /datum/armor/proc/to_name()
 	return jointext(list(
-		"[melee]@[melee_tier]-[melee_soak]",
-		"[bullet]@[bullet_tier]-[bullet_soak]",
-		"[laser]@[laser_tier]-[laser_soak]",
-		"[energy]",
-		"[bomb]",
-		"[bio]",
-		"[rad]",
-	), "-")
+		"[round(melee * 100, 0.1)]@[melee_tier]-[melee_soak]",
+		"[round(bullet * 100, 0.1)]@[bullet_tier]-[bullet_soak]",
+		"[round(laser * 100, 0.1)]@[laser_tier]-[laser_soak]",
+		"[round(energy * 100, 0.1)]",
+		"[round(bomb * 100, 0.1)]",
+		"[round(bio * 100, 0.1)]",
+		"[round(rad * 100, 0.1)]",
+	), " | ")
 
 /datum/armor/proc/raw(flag)
 	switch(flag)
