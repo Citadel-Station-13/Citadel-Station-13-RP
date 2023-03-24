@@ -640,7 +640,7 @@ default behaviour is:
 	set name = "Rest"
 	set category = "IC"
 
-	resting = !resting
+	toggle_resting()
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 	update_canmove()
 

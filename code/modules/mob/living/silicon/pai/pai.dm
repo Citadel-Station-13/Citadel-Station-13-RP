@@ -258,7 +258,7 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
 		return
 
 	if(src.loc != card)
@@ -310,7 +310,7 @@
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
 		return
 
 	if(src.loc == card)
@@ -356,17 +356,17 @@
 
 	// Pass lying down or getting up to our pet human, if we're in a rig.
 	if(istype(src.loc,/obj/item/paicard))
-		resting = 0
+		set_resting(FALSE)
 		var/obj/item/rig/rig = src.get_rig()
 		if(istype(rig))
 			rig.force_rest(src)
 	else
-		resting = !resting
+		toggle_resting()
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
 		update_icon()
 		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
-	canmove = !resting
+	update_mobility()
 
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
@@ -416,8 +416,8 @@
 	card.forceMove(loc)
 	forceMove(card)
 	update_perspective()
-	canmove = TRUE
-	resting = FALSE
+	set_resting(FALSE)
+	update_mobility()
 	icon_state = "[chassis]"
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
