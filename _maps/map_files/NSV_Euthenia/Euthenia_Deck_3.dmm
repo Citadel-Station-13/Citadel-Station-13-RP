@@ -47,12 +47,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"abd" = (
-/obj/machinery/pda_multicaster/prebuilt,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/tcommsat/chamber)
 "abt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -2928,6 +2922,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_three/aft)
+"cNc" = (
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/hallway/primary/central_three)
 "cNd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -3735,6 +3734,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
+"dAV" = (
+/turf/space/basic,
+/area/space)
 "dBh" = (
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
@@ -3888,12 +3890,6 @@
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
-"dHl" = (
-/obj/machinery/door/airlock/maintenance/cargo,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/reinforced,
-/area/space)
 "dHC" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -17323,9 +17319,6 @@
 /area/space)
 "oUB" = (
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc{
-	pixel_y = 10
-	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "oVg" = (
@@ -18210,6 +18203,10 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"pID" = (
+/obj/structure/stairs/spawner/west,
+/turf/simulated/floor/reinforced,
+/area/space)
 "pIF" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-4"
@@ -18356,9 +18353,6 @@
 	dir = 6
 	},
 /obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "pPh" = (
@@ -20377,6 +20371,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
+"rMn" = (
+/obj/machinery/door/airlock/maintenance/cargo,
+/turf/simulated/floor/reinforced,
+/area/space)
 "rMs" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/window/reinforced{
@@ -22495,10 +22493,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"tCH" = (
-/obj/structure/bookcase,
-/turf/simulated/floor/plating,
-/area/maintenance/deck_three)
 "tDo" = (
 /obj/structure/flora/pottedplant/tropical,
 /turf/simulated/floor/wood,
@@ -22547,10 +22541,6 @@
 "tGW" = (
 /turf/simulated/wall,
 /area/maintenance/security/starboard)
-"tHd" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
-/turf/simulated/floor/tiled/steel_ridged,
-/area/hallway/primary/central_three)
 "tHl" = (
 /obj/structure/table,
 /obj/random/trash,
@@ -23800,12 +23790,6 @@
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"uNj" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/hallway/primary/central_three)
 "uNp" = (
 /obj/machinery/holoplant,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -24728,7 +24712,6 @@
 /area/rnd/research)
 "vDj" = (
 /obj/structure/ladder/up,
-/obj/structure/bookcase,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_three)
 "vDw" = (
@@ -25417,6 +25400,9 @@
 	},
 /turf/simulated/floor/outdoors/dirt,
 /area/hydroponics/garden)
+"wnl" = (
+/turf/simulated/wall/r_wall,
+/area/maintenance/deck_three)
 "woh" = (
 /obj/structure/cable/green{
 	icon_state = "32-1"
@@ -26585,6 +26571,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"xjd" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/hallway/primary/central_three)
 "xje" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/wooden_reinforced,
@@ -26708,9 +26701,6 @@
 	dir = 1
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc{
-	pixel_y = 10
-	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "xpm" = (
@@ -38439,7 +38429,7 @@ nCu
 sIT
 rrN
 sIT
-abd
+fJt
 kyL
 mTJ
 wFO
@@ -41552,7 +41542,7 @@ eAh
 nyX
 xWr
 xWr
-xWr
+wnl
 jdi
 xWr
 wSL
@@ -41746,7 +41736,7 @@ afn
 nyX
 vDj
 xWr
-xWr
+wnl
 jdi
 xWr
 wSL
@@ -41938,9 +41928,9 @@ stI
 ldh
 mUP
 nyX
-tCH
 xWr
 xWr
+wnl
 jdi
 xWr
 wSL
@@ -42132,9 +42122,9 @@ stI
 tSs
 hRR
 nyX
-tCH
 xWr
 xWr
+wnl
 jdi
 xWr
 xWr
@@ -42326,9 +42316,9 @@ tVK
 aKJ
 fBl
 nyX
-tCH
-jdi
-jdi
+xWr
+xWr
+wnl
 jdi
 jdi
 jdi
@@ -42520,11 +42510,11 @@ nyX
 nyX
 nyX
 nyX
-xWr
-jdi
-xWr
-xWr
-xWr
+wnl
+wnl
+wnl
+rKv
+cmP
 xWr
 xWr
 cmP
@@ -42714,10 +42704,10 @@ xWr
 xWr
 xWr
 cmP
-cmP
-rKv
-cmP
-cmP
+xWr
+jdi
+jdi
+jdi
 wWQ
 wWQ
 wWQ
@@ -43060,11 +43050,11 @@ dff
 dff
 dff
 sVT
-dJS
-pAF
-pAF
-pAF
-dJS
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 pVf
@@ -43254,11 +43244,11 @@ vva
 vva
 dff
 sVT
-pAF
-jMZ
-jMZ
-jMZ
-miU
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 llG
@@ -43301,9 +43291,9 @@ jdi
 xWr
 xWr
 wWQ
-tHd
-tHd
-tHd
+lWV
+lWV
+lWV
 wWQ
 jdi
 xWr
@@ -43448,11 +43438,11 @@ rOW
 vva
 vva
 sVT
-pAF
-jMZ
-jMZ
-jMZ
-miU
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 llG
@@ -43495,9 +43485,9 @@ jdi
 tob
 eTY
 wWQ
-lWV
-lWV
-lWV
+cNc
+cNc
+cNc
 wWQ
 jdi
 xWr
@@ -43642,11 +43632,11 @@ kiV
 vva
 vva
 sVT
-pAF
-jMZ
-jMZ
-jMZ
-miU
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 pVf
@@ -43836,11 +43826,11 @@ hRZ
 vva
 vva
 sVT
-pAF
-jMZ
-jMZ
-jMZ
-miU
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 pVf
@@ -43888,8 +43878,8 @@ lWV
 lWV
 lWV
 lWV
+xjd
 lWV
-uNj
 lWV
 evD
 syW
@@ -44030,25 +44020,25 @@ vDw
 vva
 vva
 sVT
-dJS
-pAF
-pAF
-pAF
-dJS
+dAV
+dAV
+dAV
+dAV
+dAV
 pVf
 pVf
 pVf
 wFh
 sVT
-vWE
-vWE
-vWE
-vWE
+sVT
+sVT
+sVT
+sVT
 xwv
 uyV
 uyV
 uyV
-uyV
+xZj
 xwv
 sFi
 cUO
@@ -44076,14 +44066,14 @@ jMZ
 oTA
 oTA
 oTA
-uNj
+xjd
 lWV
 lWV
 lWV
 lWV
 lWV
+xjd
 lWV
-uNj
 lWV
 evD
 syW
@@ -44229,15 +44219,15 @@ wFh
 wFh
 wFh
 wFh
-pVf
-pVf
-pVf
+nyc
+jAM
+jAM
+jAM
+uBz
 wFh
-sVT
-sVT
-sVT
-sVT
-sVT
+tQR
+rMn
+pJr
 xwv
 eUq
 xwv
@@ -44270,7 +44260,7 @@ jMZ
 oTA
 oTA
 oTA
-uNj
+xjd
 lWV
 lWV
 lWV
@@ -44423,15 +44413,15 @@ sVT
 sVT
 sVT
 sVT
-nyc
-jAM
-jAM
-jAM
-uBz
 wFh
 wFh
 wFh
-pJr
+wFh
+wFh
+wFh
+wFh
+wFh
+wFh
 feB
 uyV
 mCP
@@ -44464,7 +44454,7 @@ jMZ
 oTA
 oTA
 oTA
-uNj
+xjd
 lWV
 lWV
 lWV
@@ -44612,19 +44602,19 @@ rtF
 vva
 vva
 sVT
-sVT
+pID
+wFh
+dJS
+pAF
+pAF
+pAF
+dJS
 wFh
 wFh
 wFh
-sVT
-wFh
-tQR
 wFh
 wFh
-wFh
-wFh
-wFh
-wFh
+eCW
 wFh
 feB
 uyV
@@ -44806,13 +44796,13 @@ rtF
 vva
 vva
 sVT
-sVT
 wFh
 wFh
-uyO
-dHl
-uyO
-uyO
+pAF
+jMZ
+jMZ
+jMZ
+pAF
 uyO
 uyO
 uyO
@@ -45000,13 +44990,13 @@ rtF
 vva
 vva
 sVT
-sVT
 wFh
 wFh
-wFh
-sVT
-wFh
-eCW
+pAF
+jMZ
+jMZ
+jMZ
+miU
 wFh
 wFh
 qFU
@@ -45194,13 +45184,13 @@ rtF
 vva
 vva
 sVT
-sVT
 wFh
 wFh
-wFh
-sVT
-wFh
-wFh
+pAF
+jMZ
+jMZ
+jMZ
+miU
 wFh
 uyU
 ahp
@@ -45388,13 +45378,13 @@ rtF
 vva
 vva
 sVT
-sVT
 wFh
 wFh
-wFh
-sVT
-wFh
-wFh
+pAF
+jMZ
+jMZ
+jMZ
+pAF
 wFh
 wFh
 tZE
@@ -45406,7 +45396,7 @@ feB
 uyV
 ffQ
 xHM
-uyV
+xZj
 xwv
 vBb
 cUO
@@ -45582,13 +45572,13 @@ fkE
 vva
 vva
 sVT
-sVT
 wFh
 wFh
-wFh
-sVT
-wFh
-wFh
+dJS
+pAF
+pAF
+pAF
+dJS
 wFh
 wFh
 wFh
@@ -45776,7 +45766,7 @@ fkE
 vva
 vva
 sVT
-sVT
+wFh
 wFh
 wFh
 wFh
