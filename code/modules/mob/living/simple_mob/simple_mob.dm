@@ -237,7 +237,10 @@
 
 /mob/living/simple_mob/Initialize(mapload)
 	if(armor_legacy_mob)
-		set_armor(armor_legacy_mob)
+		var/list/translated = list()
+		for(var/key in armor_legacy_mob)
+			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
+		set_armor(translated)
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
