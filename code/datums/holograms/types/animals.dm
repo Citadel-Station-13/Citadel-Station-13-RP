@@ -45,7 +45,7 @@
 	already_colored = TRUE
 
 /datum/hologram/animal/corgi
-	name = "Animal - Carp"
+	name = "Animal - Corgi"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "holo-corgi"
 	already_colored = TRUE
@@ -55,7 +55,6 @@
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "holo-creature"
 	already_colored = TRUE
-
 
 /datum/hologram/animal/horror
 	name = "Animal - Void Horror"
