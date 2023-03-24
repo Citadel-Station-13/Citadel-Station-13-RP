@@ -172,6 +172,7 @@
 			dir_diag = turn(dir, -45)
 			F = get_step(T, dir_diag)
 			if(!isnull(F))
+				existing = turfs_next[F]
 				if(isnull(existing))
 					turfs_next[F] = power_next
 					dirs_next += dir
