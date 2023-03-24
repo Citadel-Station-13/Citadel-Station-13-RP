@@ -26,7 +26,8 @@ fi
 cp citadel.dmb citadel.rsc $1/
 # todo: remove _mapload after .jsons are removed.
 cp -r _mapload/* $1/_mapload/
-cp -r maps/**.dmm $1/maps/
+# todo: filter out .dm files
+cp -r maps/* $1/maps/
 cp -r icons/runtime/* $1/icons/runtime/
 cp -r sound/runtime/* $1/sound/runtime/
 cp -r strings/* $1/strings/
