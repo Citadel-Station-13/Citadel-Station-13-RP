@@ -35,14 +35,11 @@
 /mob/proc/adjust_stunned(amount)
 	if(!(status_flags & STATUS_CAN_STUN))
 		return FALSE
-	if(amount == 0)
-		remove_status_effect(/datum/status_effect/incapacitation/stun)
-	else
-		var/datum/status_effect/effect = is_stunned()
-		if(effect)
-			effect.adjust_duration(amount)
-		else if(amount > 0)
-			afflict_stun(amount)
+	var/datum/status_effect/effect = is_stunned()
+	if(effect)
+		effect.adjust_duration(amount)
+	else if(amount > 0)
+		afflict_stun(amount)
 	return TRUE
 
 /mob/proc/is_knockdown()
@@ -56,7 +53,7 @@
 	return TRUE
 
 /mob/proc/set_knockdown(amount)
-	if(!(status_flags & STATUS_CAN_STUN))
+	if(!(status_flags & STATUS_CAN_KNOCKDOWN))
 		return FALSE
 	if(amount == 0)
 		remove_status_effect(/datum/status_effect/incapacitation/knockdown)
@@ -71,41 +68,78 @@
 /mob/proc/adjust_knockdown(amount)
 	if(!(status_flags & STATUS_CAN_KNOCKDOWN))
 		return FALSE
-	if(amount == 0)
-		remove_status_effect(/datum/status_effect/incapacitation/knockdown)
-	else
-		var/datum/status_effect/effect = is_knockdown()
-		if(effect)
-			effect.adjust_duration(amount)
-		else if(amount > 0)
-			afflict_knockdown(amount)
+	var/datum/status_effect/effect = is_knockdown()
+	if(effect)
+		effect.adjust_duration(amount)
+	else if(amount > 0)
+		afflict_knockdown(amount)
 	return TRUE
 
 /mob/proc/is_paralyzed()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/paralyze)
 
 /mob/proc/afflict_paralyze(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_PARALYZE))
+		return FALSE
+	apply_status_effect(/datum/status_effect/incapacitation/paralyze, amount)
+	return TRUE
 
 /mob/proc/adjust_paralyzed(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_PARALYZE))
+		return FALSE
+	var/datum/status_effect/effect = is_paralyzed()
+	if(effect)
+		effect.adjust_duration(amount)
+	else if(amount > 0)
+		afflict_paralyze(amount)
+	return TRUE
 
 /mob/proc/set_paralyzed(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_PARALYZE))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/paralyze)
+	else
+		var/datum/status_effect/effect = is_paralyzed()
+		if(effect)
+			effect.set_duration_from_now(amount)
+		else if(amount > 0)
+			afflict_paralyze(amount)
+	return TRUE
 
 /mob/proc/is_rooted()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/root)
 
 /mob/proc/afflict_root(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	apply_status_effect(/datum/status_effect/incapacitation/root, amount)
+	return TRUE
 
 /mob/proc/adjust_rooted(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	var/datum/status_effect/effect = is_rooted()
+	if(effect)
+		effect.adjust_duration(amount)
+	else if(amount > 0)
+		afflict_root(amount)
+	return TRUE
 
 /mob/proc/set_rooted(amount)
-	#warn impl
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/root)
+	else
+		var/datum/status_effect/effect = is_rooted()
+		if(effect)
+			effect.set_duration_from_now(amount)
+		else if(amount > 0)
+			afflict_root(amount)
+	return TRUE
 
 /mob/proc/is_unconscious()
 	RETURN_TYPE(/datum/status_effect)
