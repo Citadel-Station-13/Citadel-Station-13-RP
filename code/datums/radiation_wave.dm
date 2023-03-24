@@ -23,13 +23,13 @@
 	/// initial power
 	var/power
 	/// falloff rate as a multipier
-	var/falloff_modifier = 1 
-	
+	var/falloff_modifier = 1
+
 	/// turfs next, associated to power
 	var/list/turfs_next
 	/// dirs of spread next
 	var/list/dirs_next
-	
+
 /datum/radiation_wave/New(turf/source, power, falloff_modifier = RAD_FALLOFF_NORMAL)
 	src.source = source
 	src.power = power
@@ -44,6 +44,9 @@
 	cycles = 0
 	// we have to stagger a bit, so we preprocess *part* of a 3x3.
 	var/after_center = irradiate_turf(source, power)
+	if(after_center <= RAD_BACKGROUND_RADIATION)
+		qdel(src)
+		return
 	// north and south are slightly narrower to prevent overlap.
 	turfs = list()
 	dirs = list()
@@ -56,7 +59,7 @@
 	if(!isnull(irradiating))
 		turfs[irradiating] = after_center
 		dirs += SOUTH
-	// east and west aren't, but to prevent diagonal leakage, 
+	// east and west aren't, but to prevent diagonal leakage,
 	// we manually get their resistances.
 	var/power_east
 	irradiating = get_step(source, EAST)
@@ -75,7 +78,7 @@
 		for(AM as anything in irradiating)
 			power_west *= AM.rad_insulation
 	// and then make emissions on diagonals
-	if(power_east)
+	if(power_east > RAD_BACKGROUND_RADIATION)
 		irradiating = get_step(source, NORTHEAST)
 		if(!isnull(irradiating))
 			turfs[irradiating] = power_east
@@ -84,7 +87,7 @@
 		if(!isnull(irradiating))
 			turfs[irradiating] = power_east
 			dirs += EAST
-	if(power_west)
+	if(power_west > RAD_BACKGROUND_RADIATION)
 		irradiating = get_step(source, NORTHWEST)
 		if(!isnull(irradiating))
 			turfs[irradiating] = power_west
@@ -96,8 +99,6 @@
 
 	turfs_next = list()
 	dirs_next = list()
-
-#warn handle RAD_BACKGROUND_RADIATION in above start().
 
 /datum/radiation_wave/proc/irradiate_turf(turf/T, power)
 	. = power * T.rad_insulation
@@ -121,7 +122,7 @@
 	var/atom/movable/AM
 	var/dir
 	var/inverse_square_factor = 1 / (2 ** (falloff_modifier * cycles))
-	
+
 	for(i in length(turfs) to 1 step -1)
 		T = turfs[i]
 		power = turfs[T]
@@ -131,7 +132,7 @@
 
 		if(power_next < RAD_BACKGROUND_RADIATION)
 			continue
-		
+
 		F = get_step(T, dir)
 		if(!isnull(F))
 			turfs_next[F] = max(turfs_next[F], power_next)
@@ -147,9 +148,9 @@
 			turfs_next[F] = max(turfs_next[F], power_next)
 			dirs_next[F] = dir_diag
 
-		if(TICK_USAGE > ticklimit)	
+		if(TICK_USAGE > ticklimit)
 			break
-	
+
 	turfs.len -= length(turfs) - i
 	dirs.len -= length(turfs) - i
 	++cycles

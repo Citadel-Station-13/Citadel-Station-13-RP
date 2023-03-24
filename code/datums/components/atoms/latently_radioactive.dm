@@ -1,6 +1,6 @@
 /**
  * allows things to get contaminated by passing radiation waves.
- * 
+ *
  * said thing needs to be hit with rad_act for this to work,
  * so use /datum/component/radiation_listener if you need it to
  * receive rad_act inside of something.
@@ -29,6 +29,8 @@
 /datum/component/latently_radioactive/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, COMSIG_ATOM_RAD_ACT)
-	
+
 /datum/component/latently_radioactive/proc/on_radiated(atom/source, strength, datum/radiation_wave/wave)
+	if(wave.source == get_turf(parent))
+		return // very shitty self-catalyzing check. yes, this will fail. yes, that's intended.
 	parent.AddComponent(/datum/component/radioactive, strength, half_life, null, falloff)
