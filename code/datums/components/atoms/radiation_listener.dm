@@ -16,26 +16,22 @@
 	teardown()
 
 /datum/component/radiation_listener/proc/teardown(atom/root = parent:loc)
-	var/atom/movable/last
 	while(ismovable(root))
-		last = root
 		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
 		root = root.loc
-	if(!isnull(last))
-		UnregisterSignal(last, COMSIG_ATOM_RAD_PULSE_ITERATE)
+	if(isturf(root))
+		UnregisterSignal(root, COMSIG_ATOM_RAD_PULSE_ITERATE)
 
 /datum/component/radiation_listener/proc/construct(atom/root = parent:loc)
-	var/atom/movable/last
 	while(ismovable(root) && !(root.rad_flags & RAD_BLOCK_CONTENTS))
-		last = root
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/component/radiation_listener, update))
 		root = root.loc
-	if(!isnull(last))
-		RegisterSignal(last, COMSIG_ATOM_RAD_PULSE_ITERATE, TYPE_PROC_REF(/datum/component/radiation_listener, relay))
+	if(isturf(root))
+		RegisterSignal(root, COMSIG_ATOM_RAD_PULSE_ITERATE, TYPE_PROC_REF(/datum/component/radiation_listener, relay))
 
-/datum/component/radiation_listener/proc/update(atom/source)
-	teardown(source.loc)
-	construct(source.loc)
+/datum/component/radiation_listener/proc/update(atom/source, atom/oldloc)
+	teardown(oldloc)
+	construct(source.wloc)
 
 /datum/component/radiation_listener/proc/relay(datum/source, strength, datum/radiation_wave/wave)
 	var/atom/A = parent

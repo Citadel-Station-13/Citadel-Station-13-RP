@@ -123,13 +123,9 @@
  * returns rad insulation
  */
 /datum/radiation_wave/proc/irradiate_turf(turf/T, power)
-	. = T.rad_insulation
+	. = T.rad_insulation * T.rad_insulation_contents
 	T.rad_act(power, src)
-	var/atom/movable/AM
-	for(AM as anything in T)
-		AM.rad_act(power, src)
-		SEND_SIGNAL(AM, COMSIG_ATOM_RAD_PULSE_ITERATE, power, src)
-		. *= AM.rad_insulation
+	SEND_SIGNAL(T, COMSIG_ATOM_RAD_PULSE_ITERATE, power, src)
 
 /**
  * returns TRUE / FALSE based on if we're completed.

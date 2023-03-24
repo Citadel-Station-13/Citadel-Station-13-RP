@@ -8,7 +8,7 @@
 	luminosity = 1
 	level = 1
 
-	//! Flags
+	//? Flags
 	/// turf flags
 	var/turf_flags = NONE
 	/// multiz flags
@@ -16,7 +16,7 @@
 
 	var/holy = 0
 
-	//! atmospherics
+	//? atmospherics
 	/**
 	 * the gas we start out as
 	 * can be:
@@ -24,7 +24,8 @@
 	 * - an atmosphere id (use defines please)
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	//! outdoors
+
+	//? outdoors
 	/**
 	 * are we considered outdoors for things like weather effects?
 	 * todo: single var doing this is inefficient & bad, flags maybe?
@@ -36,6 +37,10 @@
 	 * null - use area default
 	 */
 	var/outdoors = FALSE
+
+	//? Radiation
+	/// cached rad insulation of contents
+	var/rad_insulation_contents = 1
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -540,3 +545,10 @@
 		SSambient_lighting.queued += src
 		return TRUE
 	return FALSE
+
+//? Radiation
+
+/turf/proc/update_rad_insulation()
+	rad_insulation_contents = 1
+	for(var/atom/movable/AM as anything in contents)
+		rad_insulation_contents *= AM.rad_insulation
