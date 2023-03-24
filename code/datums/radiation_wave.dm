@@ -154,10 +154,17 @@
 			continue
 
 		F = get_step(T, dir)
-		if(!isnull(F))
-			turfs_next[F] = max(turfs_next[F], power_next)
+
+		if(isnull(F))
+			continue
+
+		existing = turfs_next[F]
+		if(isnull(existing))
+			turfs_next[F] = power_next
 			dirs_next += dir
 			spreads_next += spread
+		else
+			turfs_next[F] = max(turfs_next[F], power_next)
 		if(spread != SPREAD_RIGHT)
 			dir_diag = turn(dir, 45)
 			F = get_step(T, dir_diag)
