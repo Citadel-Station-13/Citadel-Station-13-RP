@@ -242,3 +242,14 @@
 	name = "Mercy Hood"
 	desc = "A comfortable, sterile hood covered in Areaian Silk."
 	icon_state = "mercy_hood"
+
+//The Covert/Overt Spec Ops Carrier Hood - This is technically a helmet, but due to how it works I'm putting it here.
+/obj/item/clothing/head/hood/covertcarrier
+	name = "advanced retractable helmet"
+	desc = "A heavily modified NT-DDO standard issue combat helmet. Although this configuration is necessarily not spaceworthy, it retains its counterpart's protections."
+	icon = 'icons/obj/clothing/spacesuits.dmi'
+	icon_state = "deathsquad"
+	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 100, rad = 60)
+	clothing_flags = THICKMATERIAL
+	inv_hide_flags = BLOCKHAIR
+	siemens_coefficient = 0.6
