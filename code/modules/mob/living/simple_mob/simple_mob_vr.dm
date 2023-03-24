@@ -97,57 +97,6 @@
 		return 0
 	return 1
 
-/mob/living/simple_mob/apply_attack(atom/A, damage_to_do)
-	if(isliving(A)) // Converts target to living
-		var/mob/living/L = A
-
-		//ai_log("vr/do_attack() [L]", 3)
-		// If we're not hungry, call the sideways "parent" to do normal punching
-		if(!vore_active)
-			return ..()
-
-		// If target is standing we might pounce and knock them down instead of attacking
-		var/pouncechance = CanPounceTarget(L)
-		if(pouncechance)
-			return PounceTarget(L, pouncechance)
-
-		// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
-		if(will_eat(L) && (!L.canmove || vore_standing_too))
-			return EatTarget(L)
-		else
-			return ..()
-	else
-		return ..()
-
-
-/mob/living/simple_mob/proc/CanPounceTarget(var/mob/living/M) //returns either FALSE or a %chance of success
-	if(!M.canmove || issilicon(M) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
-		return FALSE
-	if(!prob(vore_pounce_chance) || !will_eat(M)) //mob doesn't want to pounce
-		return FALSE
-	if(vore_standing_too) //100% chance of hitting people we can eat on the spot
-		return 100
-	var/TargetHealthPercent = (M.health/M.getMaxHealth())*100 //now we start looking at the target itself
-	if (TargetHealthPercent > vore_pounce_maxhealth) //target is too healthy to pounce
-		return FALSE
-	else
-		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
-
-
-/mob/living/simple_mob/proc/PounceTarget(var/mob/living/M, var/successrate = 100)
-	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
-	if(prob(successrate)) // pounce success!
-		M.afflict_paralyze(20 * 5)
-		M.visible_message("<span class='danger'>\the [src] pounces on \the [M]!</span>!")
-	else // pounce misses!
-		M.visible_message("<span class='danger'>\the [src] attempts to pounce \the [M] but misses!</span>!")
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-
-	if(will_eat(M) && (!M.canmove || vore_standing_too)) //if they're edible then eat them too
-		return EatTarget(M)
-	else
-		return //just leave them
-
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
 /mob/living/simple_mob/proc/EatTarget(var/mob/living/M)

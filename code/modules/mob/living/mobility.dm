@@ -1,7 +1,7 @@
 /mob/living/update_mobility(blocked, forced)
 	if(restrained())
 		blocked |= MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_HOLD | MOBILITY_PULL | MOBILITY_STORAGE | MOBILITY_UI
-		if(pulledby)
+		if(pulledby || buckled)
 			blocked |= MOBILITY_MOVE | MOBILITY_RESIST
 
 	. = ..(blocked, forced)

@@ -397,7 +397,7 @@
 
 		if ("faint")
 			message = "faints."
-			if(src.sleeping)
+			if(!IS_CONSCIOUS(src))
 				return //Can't faint while asleep
 			afflict_sleeping(20 * 10) //Short-short nap
 			m_type = 1

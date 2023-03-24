@@ -139,7 +139,7 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/protean
 
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
 		return
 	forced_move(direction, user, FALSE, TRUE)
 

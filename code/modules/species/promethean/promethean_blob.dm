@@ -112,7 +112,6 @@
 	//Grab any other interesting values
 	confused = humanform.confused
 	radiation = humanform.radiation
-	paralysis = humanform.paralysis
 
 	//Update our hud if we have one
 	if(healths)

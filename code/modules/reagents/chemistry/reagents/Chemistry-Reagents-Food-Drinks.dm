@@ -3360,7 +3360,7 @@ End Citadel Change */
 		drug_strength = drug_strength * 0.8
 
 	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
+	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_MOVE))
 		step(M, pick(GLOB.cardinal))
 
 /datum/reagent/ethanol/sakebomb

@@ -85,12 +85,7 @@
 	if (src.stat != 2) //Alive.
 		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
 			src.set_stat(UNCONSCIOUS)
-			if (src.stunned > 0)
-				adjust_stunned(20 * -1)
-			if (src.weakened > 0)
-				adjust_paralyzed(20 * -1)
 			if (src.paralysis > 0)
-				adjust_unconscious\(20 * -1)
 				src.blinded = 1
 			else
 				src.blinded = 0

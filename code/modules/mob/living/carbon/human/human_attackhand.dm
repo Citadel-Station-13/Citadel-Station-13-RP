@@ -134,14 +134,14 @@
 					accurate = 1
 				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
-					if(src.canmove && src!=H && prob(20))
+					if(CHECK_MOBILITY(src, MOBILITY_MOVE) && src!=H && prob(20))
 						block = 1
 
 			if (L.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
 				rand_damage = max(1, rand_damage - 2)
 
-			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H)
+			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 5
 
