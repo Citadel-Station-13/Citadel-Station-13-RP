@@ -581,3 +581,49 @@
 	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is white."
 	icon_state = "terrandress_comm"
 	item_state = "terrandress_comm"
+
+/obj/item/clothing/accessory/pridepin
+	name = "Sexuality Pin (Gay)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "gaypin"
+	item_state = "pridepins"
+
+/obj/item/clothing/accessory/pridepin/bi
+	name = "Sexuality Pin (Bisexual)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "bisexualpin"
+
+/obj/item/clothing/accessory/pridepin/lesbian
+	name = "Sexuality Pin (Lesbian)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "lesbianpin"
+
+/obj/item/clothing/accessory/pridepin/pan
+	name = "Sexuality Pin (Pansexual)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "pansexualpin"
+
+/obj/item/clothing/accessory/pridepin/trans
+	name = "Sexuality Pin (Transgender)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "transgenderpin"
+
+/obj/item/clothing/accessory/pridepin/nonbinary
+	name = "Sexuality Pin (Nonbinary)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "nonbinarypin"
+
+/obj/item/clothing/accessory/pridepin/asexual
+	name = "Sexuality Pin (Asexual)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "asexualpin"
+
+/obj/item/clothing/accessory/pridepin/aromantic
+	name = "Sexuality Pin (Aromantic)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "aromanticpin"
+
+/obj/item/clothing/accessory/pridepin/intersex
+	name = "Sexuality Pin (Intersex)"
+	desc = "A colorful pin denoting the wearer's sexual preference."
+	icon_state = "intersexpin"
