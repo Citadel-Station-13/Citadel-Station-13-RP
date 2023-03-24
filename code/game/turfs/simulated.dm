@@ -188,3 +188,10 @@
 
 /turf/simulated/floor/plating
 	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+
+//? Radiation
+
+/turf/simulated/update_rad_insulation()
+	. = ..()
+	for(var/atom/movable/AM as anything in contents)
+		rad_insulation_contents *= AM.rad_insulation

@@ -550,5 +550,3 @@
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1
-	for(var/atom/movable/AM as anything in contents)
-		rad_insulation_contents *= AM.rad_insulation
