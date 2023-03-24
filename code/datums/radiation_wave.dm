@@ -106,12 +106,12 @@
 		if(!isnull(irradiating))
 			turfs[irradiating] = power_west
 			dirs += WEST
-			spreads += SPREAD_LEFT
+			spreads += SPREAD_RIGHT
 		irradiating = get_step(source, SOUTHWEST)
 		if(!isnull(irradiating))
 			turfs[irradiating] = power_west
 			dirs += WEST
-			spreads += SPREAD_RIGHT
+			spreads += SPREAD_LEFT
 
 	turfs_next = list()
 	dirs_next = list()

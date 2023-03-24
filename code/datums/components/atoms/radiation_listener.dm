@@ -31,7 +31,7 @@
 
 /datum/component/radiation_listener/proc/update(atom/source, atom/oldloc)
 	teardown(oldloc)
-	construct(source.wloc)
+	construct(source.loc)
 
 /datum/component/radiation_listener/proc/relay(datum/source, strength, datum/radiation_wave/wave)
 	var/atom/A = parent
