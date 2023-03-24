@@ -1,7 +1,7 @@
 import { arrayBucketFill } from "common/collections";
 import { BooleanLike } from "common/react";
 import { useBackend, useSharedState } from "../backend";
-import { Button, LabeledList, NoticeBox, ProgressBar, Section, Slider, Stack } from "../components";
+import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "../components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
 
@@ -109,7 +109,20 @@ export const ChemDispenser = (props, context) => {
         <Section title="Dispenser">
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <Slider step={1} stepPixelSize={8} value={data.amount} minValue={0} maxValue={data.amount_max} unit="u"
+              {
+                [1, 5, 10, 15, 20, 30].map((n) => (
+                  <Button
+                    key={`${n}`}
+                    title={`${n}`}
+                    selected={data.amount === n}
+                    onClick={() => act('amount', { set: n })} />
+                ))
+              }
+              <NumberInput
+                value={data.amount}
+                step={1}
+                minValue={1}
+                maxValue={data.amount_max}
                 onChange={(_, val) => act('amount', { set: val })} />
             </LabeledList.Item>
           </LabeledList>
@@ -222,7 +235,7 @@ export const ChemDispenser = (props, context) => {
                       icon="compress-arrows-alt"
                       onClick={() => act('isolate', { id: id })} />
                     {
-                      [1, 2, 3, 5].map((n) => (
+                      [1, 5, 10, 15, 30].map((n) => (
                         <Button
                           key={n}
                           content={`-${n}`}
