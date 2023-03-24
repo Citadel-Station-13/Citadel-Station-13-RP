@@ -56,14 +56,13 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
-/mob/living/carbon/brain/update_mobility()
-	. = ..()
+/mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
 		use_me = TRUE
+		return ..(blocked, forced)
 	else
-		mobility_flags = NONE
-		. = NONE
 		use_me = FALSE
+		return ..(ALL, forced)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)

@@ -783,8 +783,6 @@ default behaviour is:
 		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
 	#warn redo
 
-	return canmove
-
 // Mob holders in these slots will be spilled if the mob goes prone.
 /mob/living/proc/get_mob_riding_slots()
 	return list(back)

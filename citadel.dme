@@ -165,6 +165,7 @@
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_main.dm"
+#include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_mobility.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_organs.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_perspectiive.dm"
 #include "code\__DEFINES\economy\economy.dm"

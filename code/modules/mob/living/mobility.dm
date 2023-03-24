@@ -1,6 +1,15 @@
-/mob/living/update_mobility()
-	. = ..()
+/mob/living/update_mobility(blocked, forced)
+	if(restrained())
+		blocked |= MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_HOLD | MOBILITY_PULL | MOBILITY_STORAGE | MOBILITY_UI
+		if(pulledby)
+			blocked |= MOBILITY_MOVE
 
+	. = ..(blocked, forced)
+
+	if(!(mobility_flags & MOBILITY_HOLD))
+		drop_all_held_items()
+	if(!(mobility_flags & MOBILITY_PULL))
+		stop_pulling()
 
 #warn impl
 

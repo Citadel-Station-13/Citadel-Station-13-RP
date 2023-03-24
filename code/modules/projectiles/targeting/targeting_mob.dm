@@ -26,8 +26,8 @@
 	if(..())
 		stop_aiming(no_message=1)
 
-/mob/living/update_canmove()
-	..()
+/mob/living/update_mobility()
+	. = ..()
 	if(lying)
 		stop_aiming(no_message=1)
 

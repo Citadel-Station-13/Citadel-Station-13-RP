@@ -17,11 +17,16 @@
 /**
  * updates mobility flags
  *
+ * @params
+ * * blocked - what to deny
+ * * forced - what to always allow. overrides blocked.
+ *
  * @return new mobility flags
  */
-/mob/proc/update_mobility()
+/mob/proc/update_mobility(blocked, forced)
 	if(transforming)
 		. = mobility_flags = NONE
+		SEND_SIGNAL(src, COMSIG_MOB_ON_UPDATE_MOBILITY, .)
 		return
 	. = MOBILITY_FLAGS_DEFAULT
 	if(!IS_CONSCIOUS(src))
@@ -54,3 +59,5 @@
 		. &= ~MOBILITY_STORAGE
 
 	mobility_flags = .
+
+	SEND_SIGNAL(src, COMSIG_MOB_ON_UPDATE_MOBILITY, .)

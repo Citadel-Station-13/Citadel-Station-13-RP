@@ -5,7 +5,6 @@
 	regenerate_icons()
 	transforming = TRUE
 	update_mobility()
-	stunned = 1
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -18,9 +17,8 @@
 	sleep(48)
 	//animation = null
 
-	transforming = 0
-	stunned = 0
-	update_canmove()
+	transforming = FALSE
+	update_mobility()
 	invisibility = initial(invisibility)
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
