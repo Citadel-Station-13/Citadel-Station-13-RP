@@ -18,13 +18,18 @@ const logger = createLogger('Button');
 type ButtonProps = BoxProps & {
   fluid?: BooleanLike;
   icon?: string | BooleanLike;
+  iconRotation?: number;
+  iconSpin?: BooleanLike;
+  iconColor?: any;
+  iconPosition?: 'right' | 'left';
   color?: string | BooleanLike;
   disabled?: BooleanLike;
   selected?: BooleanLike;
   tooltip?: string;
   tooltipPosition?: Placement;
   ellipsis?: BooleanLike;
-  title?: string;
+  circular?: BooleanLike;
+  content?: any;
   onClick?: (e) => void;
   verticalAlignContent?: 'top' | 'middle' | 'bottom';
 }

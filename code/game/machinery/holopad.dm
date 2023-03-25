@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			"id" = pad.holopad_uid,
 			"name" = pad.holocall_name(),
 			"category" = null,
-			"sector" = sector.scanner_name || name,
+			"sector" = sector?.scanner_name || name,
 		)
 	return built
 
@@ -576,7 +576,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		disconnect_all_calls()
 		return
 
-	outgoing_call.validate()
+	outgoing_call?.validate()
 	for(var/obj/effect/overlay/hologram/hologram as anything in holograms)
 		use_power_oneoff(power_per_hologram)
 		hologram.check_location()

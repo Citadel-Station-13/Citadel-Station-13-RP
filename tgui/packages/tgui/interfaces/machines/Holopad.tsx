@@ -23,7 +23,7 @@ interface HolopadContext {
   toggleVisibility: BooleanLike; // if we can toggle call visibility
   callVisibility: BooleanLike; // are we visible in call list?
   sectorCall: BooleanLike; // if we can go across sectors
-  reachablePads: Array<ReachableHolopad>; // reachable holopads
+  connectivity: Array<ReachableHolopad>; // reachable holopads
   calling: null | HolopadCalling; // call status
   calldata: null | OutgoingCallContext | IncomingCallsContext; // call data
   videoEnabled: BooleanLike; // if inbound video calling is enabled
@@ -75,14 +75,14 @@ export const Holopad = (props, context) => {
 
   return (
     <Window
+      title="Holopad"
       width={600}
       height={300}>
       <Window.Content>
         <Section
-          title="Holopad"
           buttons={data.isAI? (
             <Button
-              title={data.aiEnabled
+              content={data.aiEnabled
                 ?(data.isAIProjecting? "Start Projecting" : "Stop Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
@@ -91,7 +91,7 @@ export const Holopad = (props, context) => {
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (
             !!data.aiRequestAllowed && <Button
-              title={data.aiEnabled
+              content={data.aiEnabled
                 ?(data.aiRequested? "AI Requested" : "Request AI")
                 : "AI Disabled"}
               disabled={data.aiRequested}
@@ -138,7 +138,7 @@ const HolopadCallOutgoing = (props, context) => {
       title={`Outgoing Call${data.sectorAnonymous? " (Anonymous)" : ""}`}
       buttons={
         <Button.Confirm
-          title="Disconnect"
+          content="Disconnect"
           icon="phone-xmark"
           onClick={() => act('disconnect')} />
       }>
@@ -152,7 +152,7 @@ const HolopadCallOutgoing = (props, context) => {
             <Section title="Remote Presence">
               {
                 <Button
-                  title={callContext.remoting? "Projecting" : "Not Projecting"}
+                  content={callContext.remoting? "Projecting" : "Not Projecting"}
                   selected={callContext.remoting}
                   onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
               }
@@ -180,7 +180,7 @@ const HolopadCallIncoming = (props, context) => {
     <Section title="Active Calls"
       buttons={
         <Button.Confirm
-          title="Disconnect All"
+          content="Disconnect All"
           icon="phone-xmark"
           onClick={() => act('disconnect')} />
       }>
@@ -193,11 +193,11 @@ const HolopadCallIncoming = (props, context) => {
               buttons={
                 <>
                   <Button
-                    title="Projecting"
+                    content="Projecting"
                     disabled
                     selected={callContext.projecting.includes(pad.id)} />
                   <Button.Confirm
-                    title="Disconnect"
+                    content="Disconnect"
                     icon="phone-hangup"
                     onClick={() => act('disconnect', { id: pad.id })} />
                 </>
@@ -232,7 +232,7 @@ const HolopadRinging = (props, context) => {
 const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
-  data.reachablePads.map((pad: ReachableHolopad) => {
+  data.connectivity.map((pad: ReachableHolopad) => {
     if (padMap[pad.sector || "Misc"] === undefined) {
       padMap[pad.sector || "Misc"] = {};
     }
@@ -309,7 +309,7 @@ const HolopadSettings = (props, context) => {
           label="Ringer"
           buttons={
             <Button
-              title={data.ringerEnabled? "Enabled" : "Disabled"}
+              content={data.ringerEnabled? "Enabled" : "Disabled"}
               selected={data.ringerEnabled}
               disabled={data.ringerToggle}
               onClick={() => act('toggle_ringer')} />
@@ -318,7 +318,7 @@ const HolopadSettings = (props, context) => {
           label="Visibility"
           buttons={
             <Button
-              title={data.callVisibility? "Visible" : "Invisible"}
+              content={data.callVisibility? "Visible" : "Invisible"}
               selected={data.callVisibility}
               disabled={data.toggleVisibility}
               onClick={() => act('toggle_visibility')} />
@@ -327,7 +327,7 @@ const HolopadSettings = (props, context) => {
           label="Hide Identity (Sector)"
           buttons={
             <Button
-              title={data.sectorAnonymous? "Broadcast Identity" : "Mask Identity"}
+              content={data.sectorAnonymous? "Broadcast Identity" : "Mask Identity"}
               selected={data.sectorAnonymous}
               disabled={data.sectorAnonymousToggle}
               onClick={() => act('toggle_anonymous_sector')} />
@@ -336,7 +336,7 @@ const HolopadSettings = (props, context) => {
           label="Auto Pickup"
           buttons={
             <Button
-              title={data.autoPickup? "Enabled" : "Disabled"}
+              content={data.autoPickup? "Enabled" : "Disabled"}
               selected={data.autoPickup}
               disabled={data.autoToggle}
               onClick={() => act('toggle_auto')} />
@@ -345,7 +345,7 @@ const HolopadSettings = (props, context) => {
           label="Inbound Video"
           buttons={
             <Button
-              title={data.videoEnabled? "Enabled" : "Disabled"}
+              content={data.videoEnabled? "Enabled" : "Disabled"}
               selected={data.videoEnabled}
               disabled={data.videoToggle}
               onClick={() => act('toggle_video')} />
