@@ -227,7 +227,7 @@
 	name = "proxy bucket"
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "bucket_proxy"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 10.0
 	throw_speed = 2
 	throw_range = 5

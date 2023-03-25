@@ -405,7 +405,8 @@
 		slot_meta = resolve_inventory_slot_meta(slot_or_id)
 	if(isnull(bodytype) && H)
 		bodytype = H.species.get_effective_bodytype(H, src, slot_meta)
-	return resolve_worn_assets(M, slot_meta, isnum(slot_or_id), bodytype)
+	. = resolve_worn_assets(M, slot_meta, isnum(slot_or_id), bodytype)
+	.[WORN_DATA_ICON] = "[.[WORN_DATA_ICON]]"
 
 // todo: remove, aka get rid of fucking uniform _s state
 /obj/item/proc/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)

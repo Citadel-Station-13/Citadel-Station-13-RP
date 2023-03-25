@@ -216,7 +216,7 @@
 	path = /obj/item/clothing/shoes/boots/laconic
 
 /datum/gear/shoes/bountyskin
-	name = "Bounty Hunter's Heels"
+	name = "Bounty Hunters Heels"
 	path = /obj/item/clothing/shoes/bountyskin
 
 /datum/gear/shoes/antediluvian

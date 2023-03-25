@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
-	force = 10
+	damage_force = 10
 	matter = list(MAT_STEEL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
@@ -30,7 +30,7 @@
 	hitsound = null	//it is much lighter, after all.
 	throw_force = 2
 	w_class = ITEMSIZE_SMALL
-	force = 3.0
+	damage_force = 3.0
 	max_water = 150
 	spray_particles = 3
 	sprite_name = "miniFE"

@@ -11,7 +11,7 @@
 	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -250,7 +250,7 @@
 			else if(T)
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
-			src.force = 15
+			src.damage_force = 15
 			src.damtype = "fire"
 			src.w_class = ITEMSIZE_LARGE
 			src.hitsound = 'sound/items/welder.ogg'
@@ -272,7 +272,7 @@
 		else if(T)
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
-		src.force = 3
+		src.damage_force = 3
 		src.damtype = "brute"
 		src.w_class = initial(src.w_class)
 		src.welding = 0
@@ -700,3 +700,62 @@
 			setWelding(FALSE, M.occupant)
 
 #undef WELDER_FUEL_BURN_INTERVAL
+
+/obj/item/weldingtool/electric/crystal
+	name = "crystalline arc welder"
+	desc = "A crystalline welding tool of an alien make."
+	icon_state = "crystal_welder"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	cell_type = null
+	charge_cost = null
+	tool_speed = 0.2
+	use_external_power = 1
+
+/obj/item/weldingtool/electric/crystal/attackby(var/obj/item/W, var/mob/user)
+	return
+
+/obj/item/weldingtool/electric/crystal/update_icon()
+	icon_state = welding ? "crystal_welder_on" : "crystal_welder"
+	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
+	var/mob/M = loc
+	if(istype(M))
+		M.update_inv_l_hand()
+		M.update_inv_r_hand()
+
+/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
+	if(user.species.name == SPECIES_ADHERENT)
+		if(user.nutrition >= 40)
+			setWelding(!welding, user)
+		else
+			to_chat(user, "<span class='notice'>You need more charge to activate your arc welder.</span>")
+	else
+		to_chat(user, "<span class='notice'>This tool is beyond your understanding.</span>")
+
+/obj/item/weldingtool/electric/crystal/get_fuel()
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/R = src.loc
+		if(R.species.name == SPECIES_ADHERENT)
+			return R.nutrition
+		else
+			return
+
+/obj/item/weldingtool/electric/crystal/get_external_power_supply()
+	return get_fuel()
+
+/obj/item/weldingtool/electric/crystal/get_max_fuel()
+	return get_fuel()
+
+/obj/item/weldingtool/electric/crystal/remove_fuel(var/amount = 1, var/mob/M = null)
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/R = src.loc
+		if(R.species.name == SPECIES_ADHERENT)
+			if(R.nutrition >= amount)
+				R.nutrition = R.nutrition - amount
+				return 1
+			else
+				if(M)
+					to_chat(M, "<span class='notice'>You need more energy to complete this task.</span>")
+				update_icon()
+				return 0

@@ -34,12 +34,12 @@
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -52,7 +52,7 @@
 		force_unwielded = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
 		throw_force = 150
-		force = force_unwielded
+		damage_force = force_unwielded
 		return
 	if(sharp || edge)
 		force_wielded = material.get_edge_damage()
@@ -60,9 +60,9 @@
 		force_wielded = material.get_blunt_damage()
 	force_wielded = round(force_wielded*force_divisor)
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
-	force = force_unwielded
-	throw_force = round(force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
+	damage_force = force_unwielded
+	throw_force = round(damage_force*thrown_force_divisor)
+	//to_chat(world, "[src] has unwielded damage_force [force_unwielded], wielded damage_force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -115,13 +115,13 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -143,7 +143,7 @@
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 0
-	force = 0
+	damage_force = 0
 	applies_material_colour = 1
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
@@ -202,7 +202,7 @@
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
-	force = 10
+	damage_force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
@@ -316,13 +316,13 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()

@@ -26,7 +26,7 @@
 	var/obj/item/shield_projector/shields = null
 
 	maxHealth = 180
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 40,
 				"bullet"	= 25,
 				"laser"		= 10,
@@ -86,7 +86,7 @@
 	maxHealth = 350
 	deflect_chance = 40
 	has_repair_droid = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 60,
 				"bullet"	= 40,
 				"laser"		= 50,

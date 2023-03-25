@@ -42,7 +42,7 @@
 
 	name = "light replacer"
 	desc = "A device to automatically replace lights. Refill with working lightbulbs, broken lightbulbs, or sheets of glass."
-	force = 8
+	damage_force = 8
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
 	slot_flags = SLOT_BELT

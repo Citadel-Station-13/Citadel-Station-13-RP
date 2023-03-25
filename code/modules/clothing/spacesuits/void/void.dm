@@ -5,7 +5,7 @@
 	icon_state = "void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
 	heat_protection = HEAD
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/general/space/armored
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
@@ -38,7 +38,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "space_suit_syndicate", SLOT_ID_LEFT_HAND = "space_suit_syndicate")
 	desc = "A high-tech dark red space suit. Used for AI satellite maintenance."
 	slowdown = 1
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/general/space/armored
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -281,25 +281,25 @@
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
 				tank.forceMove(get_turf(src))
-				tank.clothing_flags &= ~EQUIP_IGNORE_DELIMB
+				tank.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.tank = null
 			else if(choice == cooler)
 				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
 				cooler.forceMove(get_turf(src))
-				cooler.clothing_flags &= ~EQUIP_IGNORE_DELIMB
+				cooler.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
-				helmet.clothing_flags &= ~EQUIP_IGNORE_DELIMB
+				helmet.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
 				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
-				boots.clothing_flags &= ~EQUIP_IGNORE_DELIMB
+				boots.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.boots = null
 		else
@@ -311,7 +311,7 @@
 		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You attach \the [W] to \the [src]'s helmet mount.")
 			helmet = W
-			helmet.clothing_flags |= EQUIP_IGNORE_DELIMB
+			helmet.clothing_flags |= CLOTHING_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/clothing/shoes/magboots))
 		if(boots)
@@ -319,7 +319,7 @@
 		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You attach \the [W] to \the [src]'s boot mounts.")
 			boots = W
-			boots.clothing_flags |= EQUIP_IGNORE_DELIMB
+			boots.clothing_flags |= CLOTHING_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/tank))
 		if(tank)
@@ -331,7 +331,7 @@
 		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
 			tank = W
-			tank.clothing_flags |= EQUIP_IGNORE_DELIMB
+			tank.clothing_flags |= CLOTHING_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/suit_cooling_unit))
 		if(cooler)
@@ -341,7 +341,7 @@
 		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
 			cooler = W
-			cooler.clothing_flags |= EQUIP_IGNORE_DELIMB
+			cooler.clothing_flags |= CLOTHING_IGNORE_DELIMB
 		return
 
 	..()

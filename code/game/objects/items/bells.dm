@@ -3,7 +3,7 @@
 	desc = "An annoying bell. Ring for service."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deskbell"
-	force = 2
+	damage_force = 2
 	throw_force = 2
 	w_class = 2.0
 	hitsound = 'sound/effects/deskbell.ogg'

@@ -9,7 +9,7 @@
 	item_state = "cutters"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WIRECUTTER
-	force = 6
+	damage_force = 6
 	throw_speed = 2
 	throw_range = 9
 	w_class = ITEMSIZE_SMALL
@@ -123,7 +123,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
 	tool_sound = 'sound/items/jaws_cut.ogg'
-	force = 15
+	damage_force = 15
 	tool_speed = 0.25
 	random_color = FALSE
 	var/obj/item/tool/crowbar/power/counterpart = null
@@ -150,3 +150,17 @@
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+
+/obj/item/tool/wirecutters/crystal
+	name = "crystalline shears"
+	desc = "A crystalline shearing tool of an alien make."
+	icon_state = "crystal_wirecutter"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/wirecutters/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

@@ -12,7 +12,7 @@
 	slot_flags = null
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
 	load_method = MAGAZINE
-	force = 3
+	damage_force = 3
 	recoil = 2
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
@@ -22,8 +22,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
 
 	firemodes = list(
-	list(mode_name="fold", icon_state="crestrose_fold",item_state = "laser",force=3),
-	list(mode_name="scythe", icon_state="crestrose",item_state = "crestrose",force=15),
+	list(mode_name="fold", icon_state="crestrose_fold",item_state = "laser",damage_force=3),
+	list(mode_name="scythe", icon_state="crestrose",item_state = "crestrose",damage_force=15),
 	)
 
 /obj/item/gun/ballistic/automatic/fluff/crestrose/switch_firemodes(mob/user)
