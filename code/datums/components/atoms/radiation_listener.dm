@@ -27,9 +27,12 @@
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/component/radiation_listener, update))
 		root = root.loc
 	if(isturf(root))
-		RegisterSignal(root, COMSIG_ATOM_RAD_PULSE_ITERATE, TYPE_PROC_REF(/datum/component/radiation_listener, relay))
+		// todo: remove override; stairs are bugged and double-Moved().
+		RegisterSignal(root, COMSIG_ATOM_RAD_PULSE_ITERATE, TYPE_PROC_REF(/datum/component/radiation_listener, relay), TRUE)
 
 /datum/component/radiation_listener/proc/update(atom/source, atom/oldloc)
+	if(source.loc == oldloc)
+		return
 	teardown(oldloc)
 	construct(source.loc)
 

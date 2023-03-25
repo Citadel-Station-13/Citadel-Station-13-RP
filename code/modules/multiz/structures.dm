@@ -356,13 +356,11 @@
 			use_stairs(AM, oldloc)
 	..()
 
-// warning: shitcode
-/obj/structure/stairs/top/Uncross(atom/movable/AM, atom/newloc)
+/obj/structure/stairs/top/Uncrossed(var/atom/movable/AM)
 	// Going down stairs from the topstair piece
 	if(AM.dir == turn(dir, 180) && check_integrity())
 		use_stairs_instant(AM)
-		return FALSE
-	return ..()
+		return
 
 /obj/structure/stairs/top/get_destination_turf()
 	return get_turf(bottom)
