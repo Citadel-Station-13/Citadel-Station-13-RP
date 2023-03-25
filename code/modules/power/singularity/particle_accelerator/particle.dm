@@ -49,7 +49,7 @@
 	if(!isturf(loc))
 		return
 	for(var/atom/movable/AM as anything in loc)
-		do_the_funny(A)
+		do_the_funny(AM)
 
 /obj/effect/accelerated_particle/proc/do_the_funny(atom/A)
 	if (A)
