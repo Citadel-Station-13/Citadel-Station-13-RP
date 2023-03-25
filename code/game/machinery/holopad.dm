@@ -213,7 +213,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * our holopad name
  */
 /obj/machinery/holopad/proc/holocall_name()
-	return holopad_name || "[get_area(src)]"
+	if(holopad_name)
+		return holopad_name
+	var/obj/effect/overmap/visitable/sector = get_overmap_sector(src)
+	return "[sector? "[sector.scanner_name]: " : ""][get_area(src)] - [holopad_uid]"
 
 //? Holocall Helpers
 
@@ -400,6 +403,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	.["connectivity"] = ui_connectivity_data()
 	.["isAI"] = isAI(user)
 	.["aiEnabled"] = allow_ai
+	.["holopadName"] = holocall_name()
 	.["aiRequestAllowed"] = ai_request_allowed
 	.["canCall"] = call_receiver
 	.["sectorAnonymousToggle"] = call_anonymous_sector_toggle

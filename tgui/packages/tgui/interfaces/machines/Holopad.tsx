@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -15,6 +15,7 @@ type HolopadId = string;
 // window data
 interface HolopadContext {
   isAI: BooleanLike; // ai user?
+  holopadName: string;
   isAIProjecting: BooleanLike; // we are currently projecting at this pad
   aiRequested: BooleanLike; // recently requested ai?
   aiEnabled: BooleanLike; // are ais allowed to use this?
@@ -72,6 +73,7 @@ type IncomingCallsContext = BaseCallContext & {
 
 export const Holopad = (props, context) => {
   const { act, data } = useBackend<HolopadContext>(context);
+  const [tab, setTab] = useLocalState<number>(context, 'tab', 1);
 
   return (
     <Window
@@ -80,6 +82,7 @@ export const Holopad = (props, context) => {
       height={300}>
       <Window.Content>
         <Section
+          title={data.holopadName}
           buttons={data.isAI? (
             <Button
               content={data.aiEnabled
@@ -98,11 +101,20 @@ export const Holopad = (props, context) => {
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
-          <Stack>
-            <Stack.Item grow={1}>
-              <Section title="test">
-                test
-              </Section>
+          <Tabs>
+            <Tabs.Tab
+              selected={tab === 1}
+              onClick={() => setTab(1)}>
+              Communications
+            </Tabs.Tab>
+            <Tabs.Tab
+              selected={tab === 2}
+              onClick={() => setTab(2)}>
+              Settings
+            </Tabs.Tab>
+          </Tabs>
+          {tab === 1 && (
+            <>
               {!!data.canCall && (
                 data.calling === HolopadCalling.None? (
                   <HolopadDirectory />
@@ -117,11 +129,11 @@ export const Holopad = (props, context) => {
               {!!data.ringing.length && (
                 <HolopadRinging />
               )}
-            </Stack.Item>
-            <Stack.Item>
-              <HolopadSettings />
-            </Stack.Item>
-          </Stack>
+            </>
+          )}
+          {tab === 2 && (
+            <HolopadSettings />
+          )}
         </Section>
       </Window.Content>
     </Window>
