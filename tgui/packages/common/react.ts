@@ -7,7 +7,7 @@
 /**
  * Helper for conditionally adding/removing classes in React
  */
-export const classes = (classNames: (string | BooleanLike)[]): string => {
+export const classes = (classNames: (string | BooleanLike)[]) => {
   let className = '';
   for (let i = 0; i < classNames.length; i++) {
     const part = classNames[i];
