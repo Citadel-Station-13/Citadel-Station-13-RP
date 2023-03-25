@@ -7,7 +7,7 @@
 	slot_flags = SLOT_BACK
 
 	//copied from tank.dm
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4

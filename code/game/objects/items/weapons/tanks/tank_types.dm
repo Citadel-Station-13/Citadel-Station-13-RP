@@ -140,7 +140,7 @@
 	gauge_cap = 3
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 4
+	damage_force = 4
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
 

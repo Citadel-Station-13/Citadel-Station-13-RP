@@ -69,7 +69,7 @@
 	desc = "Used to provide propulsion to a boat."
 	icon_state = "oar"
 	item_state = "oar"
-	force = 12
+	damage_force = 12
 	var/datum/material/material = null
 
 /obj/item/oar/sifwood/Initialize(mapload, material_name)

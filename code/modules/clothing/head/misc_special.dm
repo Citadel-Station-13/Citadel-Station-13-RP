@@ -19,7 +19,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
 	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	body_cover_flags = HEAD|FACE|EYES
 	action_button_name = "Flip Welding Mask"
@@ -136,12 +136,12 @@
 		return
 	onfire = !(onfire)
 	if (onfire)
-		force = 3
+		damage_force = 3
 		damtype = "fire"
 		icon_state = "cake1"
 		START_PROCESSING(SSobj, src)
 	else
-		force = null
+		damage_force = 0
 		damtype = "brute"
 		icon_state = "cake0"
 	return
@@ -305,4 +305,3 @@
 	item_state = "cone"
 	body_cover_flags = HEAD
 	attack_verb = list("warned", "cautioned", "smashed")
-	armor = list("melee" = 5)

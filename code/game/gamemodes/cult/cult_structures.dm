@@ -44,12 +44,12 @@
 	attackpylon(user, damage)
 
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
-	attackpylon(user, W.force)
+	attackpylon(user, W.damage_force)
 
 /obj/structure/cult/pylon/take_damage(var/damage)
 	pylonhit(damage)
 
-/obj/structure/cult/pylon/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
 	pylonhit(Proj.get_structure_damage())
 
 /obj/structure/cult/pylon/proc/pylonhit(var/damage)

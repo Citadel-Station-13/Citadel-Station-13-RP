@@ -13,13 +13,13 @@
 	desc = "Boring, but practical."
 	cast_methods = CAST_RANGED
 	aspect = ASPECT_LIGHT
-	spell_projectile = /obj/item/projectile/beam/blue
+	spell_projectile = /obj/projectile/beam/blue
 	energy_cost_per_shot = 400
 	instability_per_shot = 3
 	cooldown = 10
 	fire_sound = 'sound/weapons/Laser.ogg'
 
-/obj/item/projectile/beam/blue
+/obj/projectile/beam/blue
 	damage = 30
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_blue

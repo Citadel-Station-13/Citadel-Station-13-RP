@@ -54,7 +54,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/biovial
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
-	projectile_type = /obj/item/projectile/bullet/organic/stinger
+	projectile_type = /obj/projectile/bullet/organic/stinger
 	one_handed_penalty = 25
 
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()

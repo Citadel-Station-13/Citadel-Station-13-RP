@@ -81,7 +81,7 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/statue/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	check_health()
 
@@ -99,7 +99,7 @@
 		check_health()
 
 /obj/structure/closet/statue/attackby(obj/item/I as obj, mob/user as mob)
-	health -= I.force
+	health -= I.damage_force
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] strikes [src] with [I].</span>")
 	check_health()

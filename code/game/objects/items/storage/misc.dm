@@ -78,7 +78,7 @@
 	max_storage_space = ITEMSIZE_COST_TINY * 3
 	sharp = 1
 	edge = 1
-	force = 15
+	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'

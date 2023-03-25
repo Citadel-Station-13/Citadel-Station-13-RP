@@ -32,6 +32,14 @@
 	/// What icon the atom uses for speechbubbles.
 	var/bubble_icon = "normal"
 
+	//? Armor
+	/// armor datm - this armor mitigates damage
+	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
+	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	var/datum/armor/armor
+	/// armor datum type
+	var/armor_type = /datum/armor/none
+
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0
@@ -75,7 +83,6 @@
 	/// do we use the atom damage system?
 	var/use_integrity = FALSE
 	// todo: use integrity & procs on turf and obj level
-	// todo: armor system, how?
 
 	//? HUDs
 	/// This atom's HUD (med/sec, etc) images. Associative list.
@@ -337,7 +344,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 
-/atom/proc/bullet_act(obj/item/projectile/P, def_zone)
+/atom/proc/bullet_act(obj/projectile/P, def_zone)
 	P.on_hit(src, 0, def_zone)
 	. = 0
 

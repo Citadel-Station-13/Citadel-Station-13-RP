@@ -154,7 +154,7 @@
 
 /obj/effect/mine/frag
 	mineitemtype = /obj/item/mine/frag
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment)
 	var/num_fragments = 20  //total number of fragments produced by the grenade
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7
@@ -167,7 +167,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, 20, 7, list(/obj/item/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
+	src.fragmentate(O, 20, 7, list(/obj/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(s)

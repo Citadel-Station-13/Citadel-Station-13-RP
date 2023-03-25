@@ -45,12 +45,12 @@
 
 	last_shot = world.time
 
-	var/projectile = /obj/item/projectile/beam/stun/xeno
+	var/projectile = /obj/projectile/beam/stun/xeno
 	if(emagged)
-		projectile = /obj/item/projectile/beam/shock
+		projectile = /obj/projectile/beam/shock
 
 	playsound(loc, emagged ? 'sound/weapons/laser3.ogg' : 'sound/weapons/Taser.ogg', 50, 1)
-	var/obj/item/projectile/P = new projectile(loc)
+	var/obj/projectile/P = new projectile(loc)
 
 	P.firer = src
 	P.old_style_target(A)

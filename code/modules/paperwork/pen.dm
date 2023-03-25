@@ -175,7 +175,7 @@
 	active = 1
 	icon_state = active_icon_state
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 
 
@@ -201,7 +201,7 @@
 	active = 0
 	icon_state = default_icon_state
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)

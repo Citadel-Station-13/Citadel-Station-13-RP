@@ -1,11 +1,11 @@
-/obj/item/projectile/beam
+/obj/projectile/beam
 	name = "laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage = 40
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	eyeblur = 4
 	var/frequency = 1
 	hitscan = TRUE
@@ -19,37 +19,37 @@
 	tracer_type = /obj/effect/projectile/tracer/laser
 	impact_type = /obj/effect/projectile/impact/laser
 
-/obj/item/projectile/beam/practice
+/obj/projectile/beam/practice
 	name = "laser"
 	icon_state = "laser"
 	damage = 0
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	eyeblur = 2
 	impact_sounds = null
 
-/obj/item/projectile/beam/weaklaser
+/obj/projectile/beam/weaklaser
 	name = "weak laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage = 15
 
-/obj/item/projectile/beam/smalllaser
+/obj/projectile/beam/smalllaser
 	damage = 25
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
-/obj/item/projectile/beam/burstlaser
+/obj/projectile/beam/burstlaser
 	damage = 30
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 
-/obj/item/projectile/beam/midlaser
+/obj/projectile/beam/midlaser
 	damage = 40
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
-/obj/item/projectile/beam/heavylaser
+/obj/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
@@ -63,7 +63,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_heavy
 	impact_type = /obj/effect/projectile/impact/laser_heavy
 
-/obj/item/projectile/beam/heavylaser/fakeemitter
+/obj/projectile/beam/heavylaser/fakeemitter
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
@@ -74,12 +74,12 @@
 	tracer_type = /obj/effect/projectile/tracer/emitter
 	impact_type = /obj/effect/projectile/impact/emitter
 
-/obj/item/projectile/beam/heavylaser/cannon
+/obj/projectile/beam/heavylaser/cannon
 	damage = 80
 	armor_penetration = 50
 	light_color = "#FF0D00"
 
-/obj/item/projectile/beam/xray
+/obj/projectile/beam/xray
 	name = "xray beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
@@ -91,7 +91,7 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/gamma
+/obj/projectile/beam/gamma
 	name = "gamma beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
@@ -104,7 +104,7 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/cyan
+/obj/projectile/beam/cyan
 	name = "cyan beam"
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
@@ -115,7 +115,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/item/projectile/beam/pulse
+/obj/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"
 	fire_sound='sound/weapons/gauss_shoot.ogg' // Needs a more meaty sound than what pulse.ogg currently is; this will be a placeholder for now.
@@ -127,16 +127,16 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_pulse
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
-/obj/item/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
 		LEGACY_EX_ACT(target, 2, null)
 	..()
 
-/obj/item/projectile/beam/pulse/shotgun
+/obj/projectile/beam/pulse/shotgun
 	damage = 50
 	armor_penetration = 25
 
-/obj/item/projectile/beam/emitter
+/obj/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
@@ -148,17 +148,17 @@
 	tracer_type = /obj/effect/projectile/tracer/emitter
 	impact_type = /obj/effect/projectile/impact/emitter
 
-/obj/item/projectile/beam/lasertag
+/obj/projectile/beam/lasertag
 	name = "lasertag beam"
 	damage = 0
 	eyeblur = 0
 	no_attack_log = 1
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 
 	combustion = FALSE
 
-/obj/item/projectile/beam/lasertag/blue
+/obj/projectile/beam/lasertag/blue
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
@@ -166,25 +166,25 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/item/projectile/beam/lasertag/blue/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/blue/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/redtag))
 			M.Weaken(5)
 	return 1
 
-/obj/item/projectile/beam/lasertag/red
+/obj/projectile/beam/lasertag/red
 	icon_state = "laser"
 	light_color = "#FF0D00"
 
-/obj/item/projectile/beam/lasertag/red/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/red/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/bluetag))
 			M.Weaken(5)
 	return 1
 
-/obj/item/projectile/beam/lasertag/omni//A laser tag bolt that stuns EVERYONE
+/obj/projectile/beam/lasertag/omni//A laser tag bolt that stuns EVERYONE
 	icon_state = "omnilaser"
 	light_color = "#00C6FF"
 
@@ -192,14 +192,14 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/item/projectile/beam/lasertag/omni/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/omni/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))
 			M.Weaken(5)
 	return 1
 
-/obj/item/projectile/beam/sniper
+/obj/projectile/beam/sniper
 	name = "sniper beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
@@ -211,7 +211,7 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/stun
+/obj/projectile/beam/stun
 	name = "stun beam"
 	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
@@ -228,18 +228,18 @@
 	tracer_type = /obj/effect/projectile/tracer/stun
 	impact_type = /obj/effect/projectile/impact/stun
 
-/obj/item/projectile/beam/stun/weak
+/obj/projectile/beam/stun/weak
 	name = "weak stun beam"
 	icon_state = "stun"
 	agony = 25
 
-/obj/item/projectile/beam/stun/med
+/obj/projectile/beam/stun/med
 	name = "stun beam"
 	icon_state = "stun"
 	agony = 30
 
 //Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
-/obj/item/projectile/beam/disabler
+/obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
@@ -256,17 +256,17 @@
 	impact_type = /obj/effect/projectile/impact/lightning
 	impact_sounds = null
 
-/obj/item/projectile/beam/disabler/weak
+/obj/projectile/beam/disabler/weak
 	name = "weak disabler beam"
 	icon_state = "lightning"
 	agony = 25
 
-/obj/item/projectile/beam/disabler/strong
+/obj/projectile/beam/disabler/strong
 	name = "strong disabler beam"
 	icon_state = "lightning"
 	agony = 40
 
-/obj/item/projectile/beam/stun/disabler
+/obj/projectile/beam/stun/disabler
 	name = "disabler beam"
 	icon_state = "stun"
 	taser_effect = 0
@@ -276,7 +276,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/item/projectile/beam/stun/disabler/on_hit(atom/target, blocked = 0, def_zone)
+/obj/projectile/beam/stun/disabler/on_hit(atom/target, blocked = 0, def_zone)
 	. = ..(target, blocked, def_zone)
 
 	if(. && istype(target, /mob/living/silicon/robot) && prob(agony))
@@ -289,7 +289,7 @@
 			if(A.cell)
 				A.cell.give(drainamt * 2)
 
-/obj/item/projectile/beam/shock
+/obj/projectile/beam/shock
 	name = "shock beam"
 	icon_state = "lightning"
 	damage_type = ELECTROCUTE
@@ -302,7 +302,7 @@
 	agony = 15
 	eyeblur = 2
 
-/obj/item/projectile/beam/excavation
+/obj/projectile/beam/excavation
 	name = "excavation beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
@@ -314,7 +314,7 @@
 	tracer_type = /obj/effect/projectile/tracer/emitter
 	impact_type = /obj/effect/projectile/impact/emitter
 
-/obj/item/projectile/beam/pointdefense
+/obj/projectile/beam/pointdefense
 	name = "point defense salvo"
 	icon_state = "laser"
 	damage = 15
