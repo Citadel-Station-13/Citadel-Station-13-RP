@@ -49,8 +49,8 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(!mover.density && !mover.throwing)

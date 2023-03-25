@@ -51,7 +51,7 @@
 	icon_state = "wizard"
 	gas_transfer_coefficient = 0.01 // IT'S MAGICAL OKAY JEEZ +1 TO NOT DIE
 	permeability_coefficient = 0.01
-	armor = list(melee = 30, bullet = 20, laser = 20,energy = 20, bomb = 20, bio = 20, rad = 20)
+	armor_type = /datum/armor/wizard
 	allowed = list(/obj/item/teleportation_scroll)
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.8
@@ -97,14 +97,14 @@
 	desc = "A rather dull, blue robe meant to mimick real wizard robes."
 	icon_state = "wizard-fake"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wizard", SLOT_ID_LEFT_HAND = "wizard")
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	siemens_coefficient = 1.0
 
 /obj/item/clothing/head/wizard/marisa/fake
 	name = "Witch Hat"
 	desc = "Strange-looking hat-wear, makes you want to cast fireballs."
 	icon_state = "marisa"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	siemens_coefficient = 1.0
 
 /obj/item/clothing/suit/wizrobe/marisa/fake
@@ -112,5 +112,5 @@
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	siemens_coefficient = 1.0

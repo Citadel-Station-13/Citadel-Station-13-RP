@@ -212,7 +212,7 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwallgen/bullet_act(var/obj/projectile/Proj)
 	storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
@@ -277,7 +277,7 @@
 			gen_secondary.storedpower -= power_usage
 
 
-/obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwall/bullet_act(var/obj/projectile/Proj)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		if(prob(50))
@@ -321,5 +321,5 @@
 		return
 	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return prob(20)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return prob(10)

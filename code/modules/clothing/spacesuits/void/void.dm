@@ -5,7 +5,7 @@
 	icon_state = "void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
 	heat_protection = HEAD
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/general/space/armored
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
@@ -38,7 +38,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "space_suit_syndicate", SLOT_ID_LEFT_HAND = "space_suit_syndicate")
 	desc = "A high-tech dark red space suit. Used for AI satellite maintenance."
 	slowdown = 1
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/general/space/armored
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE

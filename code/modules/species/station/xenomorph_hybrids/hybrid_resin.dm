@@ -116,7 +116,7 @@
 		"<span class='notice'>You hear squelching...</span>")
 
 /obj/structure/bed/hybrid_nest/attackby(obj/item/W as obj, mob/user as mob)
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))
@@ -172,7 +172,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/hybrid_resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/hybrid_resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -247,7 +247,7 @@
 /obj/effect/alien/hybrid_resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()

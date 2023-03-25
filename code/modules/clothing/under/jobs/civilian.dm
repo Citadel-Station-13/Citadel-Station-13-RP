@@ -145,19 +145,19 @@
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
 	icon_state = "janitor"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/rank/janitor_fem
 	name = "janitor's jumpsuit"
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	icon_state = "janitor_fem"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/rank/janitor/skirt_pleated
 	name = "janitor's pleated skirt"
 	desc = "The official pleated skirt of the local janitor. It bears minor protection from biohazards."
 	icon_state = "janitor_skirt"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."

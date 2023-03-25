@@ -23,7 +23,7 @@
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
 	center_of_mass = list("x"=16, "y"=16)
 	w_class = ITEMSIZE_SMALL
-	force = 1
+	damage_force = 1
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()

@@ -234,7 +234,7 @@
 /area/space)
 "jU" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/omni3,
+/obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
@@ -450,12 +450,12 @@
 /area/shuttle/pirate/general)
 "uI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/toxin3,
+/obj/item/ammo_casing/microbattery/medical/toxin3,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "uJ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/burn3,
+/obj/item/ammo_casing/microbattery/medical/burn3,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "uV" = (
@@ -485,7 +485,7 @@
 /area/piratebase/facility)
 "wb" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/corpse_mend,
+/obj/item/ammo_casing/microbattery/medical/corpse_mend,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
@@ -534,7 +534,7 @@
 /area/piratebase/facility)
 "yr" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/stabilize2,
+/obj/item/ammo_casing/microbattery/medical/stabilize2,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
@@ -544,7 +544,7 @@
 /area/space)
 "yz" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/toxin3,
+/obj/item/ammo_casing/microbattery/medical/toxin3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
@@ -760,7 +760,7 @@
 /area/piratebase/facility)
 "Kw" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/stabilize2,
+/obj/item/ammo_casing/microbattery/medical/stabilize2,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "KP" = (
@@ -939,7 +939,7 @@
 /area/shuttle/pirate/general)
 "QF" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/brute3,
+/obj/item/ammo_casing/microbattery/medical/brute3,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "QK" = (
@@ -1060,7 +1060,7 @@
 /area/shuttle/pirate/general)
 "YD" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/projectile/beam/medical_cell/antirad,
+/obj/item/ammo_casing/microbattery/medical/antirad,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "YV" = (
