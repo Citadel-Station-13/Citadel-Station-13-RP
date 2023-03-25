@@ -44,7 +44,14 @@
 	src.setDir(dir)
 	INVOKE_ASYNC(src, .proc/move, 1)
 
-/obj/effect/accelerated_particle/Bump(atom/A)
+/obj/effect/accelerated_particle/Moved()
+	. = ..()
+	if(!isturf(loc))
+		return
+	for(var/atom/movable/AM as anything in loc)
+		do_the_funny(A)
+
+/obj/effect/accelerated_particle/proc/do_the_funny(atom/A)
 	if (A)
 		if(ismob(A))
 			toxmob(A)
@@ -65,11 +72,6 @@
 					PC.parent.plasma_temperature += mega_energy
 					PC.parent.energy += energy
 					loc = null
-
-
-/obj/effect/accelerated_particle/Bumped(atom/A)
-	if(ismob(A))
-		Bump(A)
 
 
 /obj/effect/accelerated_particle/legacy_ex_act(severity)
