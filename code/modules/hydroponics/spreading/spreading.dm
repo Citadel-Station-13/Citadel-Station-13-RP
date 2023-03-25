@@ -54,8 +54,9 @@
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 2
 
-	var/health = 15
-	var/max_health = 95 - TRAIT_POTENCY
+	integrity = 15
+	integrity_max = 95
+
 	var/growth_threshold = 0
 	var/growth_type = 1
 	var/max_growth = 0

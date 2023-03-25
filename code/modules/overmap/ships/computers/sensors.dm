@@ -139,12 +139,14 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "sensors"
 	anchored = 1
-	var/max_health = 200
-	var/health = 200
+	integrity = 200
+	integrity_max = 200
+
 	var/critical_heat = 50 // sparks and takes damage when active & above this heat
 	var/heat_reduction = 1.5 // mitigates this much heat per tick
 	var/heat = 0
 	var/range = 1
+
 	idle_power_usage = 5000
 
 /obj/machinery/shipsensors/attackby(obj/item/W, mob/user)

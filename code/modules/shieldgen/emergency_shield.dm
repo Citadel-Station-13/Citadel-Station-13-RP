@@ -8,9 +8,12 @@
 	anchored = 1
 	unacidable = 1
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-	var/const/max_health = 200
-	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
+
+	integrity = 200
+	integrity_max = 200
+
 	var/shield_generate_power = 7500	//how much power we use when regenerating
+
 	var/shield_idle_power = 1500		//how much power we use when just being sustained.
 
 /obj/machinery/shield/malfai
@@ -126,8 +129,10 @@
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
 	req_access = list(ACCESS_ENGINEERING_MAIN)
-	var/const/max_health = 100
-	var/health = max_health
+
+	integrity = 200
+	integrity_max = 200
+
 	var/active = 0
 	var/malfunction = 0 //Malfunction causes parts of the shield to slowly dissapate
 	var/list/deployed_shields = list()

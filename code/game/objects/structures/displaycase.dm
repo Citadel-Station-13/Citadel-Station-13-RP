@@ -6,7 +6,8 @@
 	density = 1
 	anchored = 1
 	unacidable = 1//Dissolving the case would also delete the gun.
-	var/health = 30
+	integrity = 60
+	integrity_max = 60
 	var/occupied = 1
 	var/destroyed = 0
 

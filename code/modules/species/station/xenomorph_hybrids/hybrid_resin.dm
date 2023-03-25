@@ -78,7 +78,9 @@
 	color = "#321a49"
 	material = "resin compound"
 	padding_material = "resin compound"
-	var/health = 100
+
+	integrity = 100
+	integrity_max = 100
 
 /obj/structure/bed/hybrid_nest/update_icon()
 	return
@@ -141,7 +143,10 @@
 	opacity = 1
 	anchored = 1
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-	var/health = 200
+
+	integrity = 200
+	integrity_max = 200
+
 	//var/mob/living/affecting = null
 
 /obj/effect/alien/hybrid_resin/wall
@@ -154,7 +159,8 @@
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
 	opacity = 0
-	health = 120
+	intercom_range_display_status = 120
+	integrity_max = 120
 
 /obj/effect/alien/hybrid_resin/Initialize(mapload)
 	. = ..()

@@ -6,13 +6,16 @@
 	density = 1
 	w_class = ITEMSIZE_HUGE
 	layer = UNDER_JUNK_LAYER
+
+	integrity = 200
+	integrity_max = 200
+
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 	var/opened = 0
 	var/sealed = 0
 	var/seal_tool = /obj/item/weldingtool	//Tool used to seal the closet, defaults to welder
 	var/wall_mounted = 0 //never solid (You can always pass over it)
-	var/health = 100
 
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/breakout_time = 2 //2 minutes by default

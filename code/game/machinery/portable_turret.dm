@@ -50,14 +50,13 @@
 	power_channel = EQUIP
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
+	integrity = 200
+	integrity_max = 200
+
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE
 	/// If the turret is currently opening or closing its cover.
 	var/raising= FALSE
-	/// The turret's health.
-	var/health = 80
-	/// The turret's maximum health.
-	var/maxhealth = 80
 	/// If the turret slowly repairs itself.
 	var/auto_repair = FALSE
 	/// If the turret's behaviour control access is locked.

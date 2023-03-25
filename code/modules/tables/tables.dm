@@ -17,9 +17,10 @@ var/list/table_icon_cache = list()
 	smoothing_groups = (SMOOTH_GROUP_TABLES)
 	canSmoothWith = (SMOOTH_GROUP_TABLES)
 
+	integrity = 200
+	integrity_max = 200
+
 	var/flipped = 0
-	var/maxhealth = 10
-	var/health = 10
 
 	// For racks.
 	var/can_reinforce = 1

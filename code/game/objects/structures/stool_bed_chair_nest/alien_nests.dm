@@ -6,7 +6,9 @@
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
 	color = "#261438"
-	var/health = 100
+
+	integrity = 100
+	integrity_max = 100
 
 /obj/structure/bed/nest/update_icon()
 	return

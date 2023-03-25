@@ -4,8 +4,12 @@
 	name = "holo sign"
 	icon = 'icons/effects/effects.dmi'
 	anchored = TRUE
+
+	integrity = 20
+	integrity_max = 20
+
 	var/obj/item/holosign_creator/projector
-	var/health = 10
+
 	explosion_resistance = 1
 
 /obj/structure/holosign/Initialize(mapload, source_projector)

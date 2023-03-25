@@ -10,9 +10,11 @@
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
+
+	integrity = 150
+	integrity_max = 150
+
 	var/broken = FALSE
-	var/health = 70
-	var/maxhealth = 70
 	var/check = 0
 
 /obj/structure/railing/grey

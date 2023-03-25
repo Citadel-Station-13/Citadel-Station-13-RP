@@ -6,9 +6,11 @@
 	pixel_x = -16
 	plane = MOB_PLANE // You know what, let's play it safe.
 	layer = ABOVE_MOB_LAYER
+
+	integrity = 400
+	integrity_max = 400
+
 	var/base_state = null	// Used for stumps.
-	var/health = 200		// Used for chopping down trees.
-	var/max_health = 200
 	var/shake_animation_degrees = 4	// How much to shake the tree when struck.  Larger trees should have smaller numbers or it looks weird.
 	var/obj/item/stack/material/product = null	// What you get when chopping this tree down.  Generally it will be a type of wood.
 	var/product_amount = 10 // How much of a stack you get, if the above is defined.

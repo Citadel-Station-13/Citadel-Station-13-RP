@@ -13,8 +13,8 @@ Barricades
 	pass_flags_self = ATOM_PASS_TABLE
 	anchored = TRUE
 	density = TRUE
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
 	var/datum/material/material
 
 /obj/structure/barricade/Initialize(mapload, material_name)
@@ -117,8 +117,8 @@ Barricades
 	density = TRUE
 	icon_state = "barrier0"
 	pass_flags_self = ATOM_PASS_TABLE
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
 	var/locked = FALSE
 //	req_access = list(ACCESS_ENGINEERING_MAINT)
 

@@ -33,7 +33,6 @@
 	// TODO: Remove this when falsewalls are implemented.
 	var/cached_wall_state
 
-	var/damage
 	var/tmp/image/damage_overlay
 	// Damage overlays are cached.
 	var/global/damage_overlays[16]

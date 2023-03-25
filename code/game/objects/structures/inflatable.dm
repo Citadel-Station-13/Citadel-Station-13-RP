@@ -36,7 +36,8 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
 
-	var/health = 50.0
+	integrity = 30
+	integrity_max = 30
 
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()

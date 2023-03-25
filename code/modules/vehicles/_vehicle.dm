@@ -8,7 +8,7 @@
 	desc = "Yell at coderbus."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "fuckyou"
-	// max_integrity = 300
+	// integrity_max = 300
 	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
 	density = TRUE
 	anchored = FALSE
@@ -45,7 +45,7 @@
 	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
-	var/healthpercent = obj_integrity/max_integrity * 100
+	var/healthpercent = obj_integrity/integrity_max * 100
 	switch(healthpercent)
 		if(50 to 99)
 			. += "It looks slightly damaged."

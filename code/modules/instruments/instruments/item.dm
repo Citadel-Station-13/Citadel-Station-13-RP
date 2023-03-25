@@ -2,7 +2,7 @@
 /obj/item/instrument
 	name = "generic instrument"
 	damage_force = 10
-//	max_integrity = 100
+//	integrity_max = 100
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	item_icons = list(

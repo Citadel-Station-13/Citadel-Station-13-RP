@@ -110,8 +110,9 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_SANDBAGS)
 	canSmoothWith = (SMOOTH_GROUP_SANDBAGS)
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
+
 	var/vestigial = TRUE
 
 /obj/structure/sandbag/Initialize(mapload, material_name)

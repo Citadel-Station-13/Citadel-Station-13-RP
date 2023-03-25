@@ -4,9 +4,9 @@
 	density = 1
 	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
+	integrity = 200
+	integrity_max = 200
 	var/state = 0
-	var/health = 200
-	var/max_health = 200
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.

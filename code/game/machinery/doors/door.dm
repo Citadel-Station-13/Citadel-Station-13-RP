@@ -13,6 +13,10 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	// todo: rad_insulation_open/closed
 	pass_flags_self = NONE
+
+	integrity = 300
+	integrity_max = 300
+
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
@@ -24,8 +28,6 @@
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/maxhealth = 300
-	var/health
 	var/destroy_hits = 10 //How many strong hits it takes to destroy the door
 	var/min_force = 10 //minimum amount of force needed to damage the door with a melee weapon
 	var/hitsound = 'sound/weapons/smash.ogg' //sound door makes when hit with a weapon

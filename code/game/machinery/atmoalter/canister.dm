@@ -6,7 +6,8 @@
 	icon_state = "yellow"
 	density = 1
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
-	var/health = 100.0
+	integrity = 200
+	integrity_max = 200
 	w_class = ITEMSIZE_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things

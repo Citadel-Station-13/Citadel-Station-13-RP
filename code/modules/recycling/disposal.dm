@@ -669,14 +669,15 @@
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
 
+	integrity = 100
+	integrity_max = 100
+
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	alpha = 128 // Set for the benefit of mapping.
 	#endif
 
 	/// Bitmask of pipe directions.
 	var/dpdir = 0
-	/// Health points 0-10
-	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

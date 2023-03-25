@@ -27,7 +27,8 @@
 	opacity = TRUE
 	anchored = TRUE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-	var/health = 200
+	integrity = 200
+	integrity_max = 200
 	//var/mob/living/affecting = null
 
 /obj/effect/alien/resin/wall
@@ -40,7 +41,8 @@
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
 	opacity = FALSE
-	health = 120
+	integrity = 120
+	integrity_max = 120
 
 /obj/effect/alien/resin/Initialize(mapload)
 	. = ..()
@@ -165,7 +167,8 @@
 	density = 0
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	var/health = 15
+	integrity = 20
+	integrity_max = 20
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
 	color = "#332342"
@@ -444,8 +447,11 @@ Alien plants should do something if theres a lot of poison
 	density = 0
 	anchored = 1
 
-	var/health = 100
+	integrity = 100
+	integrity_max = 100
+
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
+
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)

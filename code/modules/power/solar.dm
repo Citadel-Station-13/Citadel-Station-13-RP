@@ -18,8 +18,10 @@ GLOBAL_LIST_EMPTY(solars_list)
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
+	integrity = 100
+	integrity_max = 100
+
 	var/id = 0
-	var/health = 10
 	var/obscured = 0
 	var/sunfrac = 0
 	var/adir = SOUTH // actual dir

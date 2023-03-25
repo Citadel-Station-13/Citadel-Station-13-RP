@@ -224,7 +224,7 @@
 		var/obj/item/mecha_parts/component/comp = internal_components[slot]
 		if(!istype(comp))
 			continue
-		comp.adjust_integrity(-(round(rand(comp.max_integrity - 10, 0))))
+		comp.adjust_integrity(-(round(rand(comp.integrity_max - 10, 0))))
 
 	setInternalDamage(MECHA_INT_SHORT_CIRCUIT)
 */

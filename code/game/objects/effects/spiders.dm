@@ -5,7 +5,8 @@
 	icon = 'icons/effects/effects.dmi'
 	anchored = 1
 	density = 0
-	var/health = 15
+	integrity = 15
+	integrity_max = 15
 
 //similar to weeds, but only barfed out by nurses manually
 /obj/effect/spider/legacy_ex_act(severity)

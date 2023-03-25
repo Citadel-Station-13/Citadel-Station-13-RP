@@ -49,7 +49,6 @@
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
-	var/health = null
 	var/burn_point = null
 	var/burning = null
 	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
@@ -769,7 +768,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /**
  * called to be checked for mob armor
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
@@ -779,7 +778,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /**
  * called to be used as mob armor
  * side effects are allowed
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)

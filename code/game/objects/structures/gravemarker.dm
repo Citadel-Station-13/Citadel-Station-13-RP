@@ -10,8 +10,8 @@
 
 	layer = ABOVE_JUNK_LAYER
 
-	//Maybe make these calculate based on material?
-	var/health = 100
+	integrity = 300
+	integrity_max = 300
 
 	var/grave_name = ""		//Name of the intended occupant
 	var/epitaph = ""		//A quick little blurb

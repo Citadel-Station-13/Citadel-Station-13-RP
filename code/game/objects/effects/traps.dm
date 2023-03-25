@@ -422,10 +422,12 @@ Add those other swinging traps you mentioned above!
 	anchored = 1
 	density = 0
 	trap_floor_type = null
+
+	integrity = 200
+	integrity_max = 200
+
 	var/min_damage = 15
 	var/max_damage = 25
-	var/health = 200
-	var/maxhealth = 200
 
 /obj/effect/trap/pop_up/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage

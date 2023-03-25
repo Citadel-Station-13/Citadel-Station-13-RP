@@ -15,7 +15,9 @@
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
 	canSmoothWith = (SMOOTH_GROUP_GRILLE)
 
-	var/health = 10
+	integrity = 100
+	integrity_max = 100
+
 	var/destroyed = 0
 
 

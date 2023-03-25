@@ -23,13 +23,14 @@
 	description_info = "Alt click to strafe."
 	icon = 'icons/mecha/mecha.dmi'
 	/// Dense. To raise the heat.
-	density = 1
+	density = TRUE
 	/// Opaque. Menacing.
-	opacity = 1
+	opacity = TRUE
 	/// No pulling around.
-	anchored = 1
-	/// And no deleting hoomans inside.
-	unacidable = 1
+	anchored = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF
+	integrity = 300
+	integrity_max = 300
 	/// Icon draw layer.
 	layer = MOB_LAYER
 	/// Byond implementation is bugged.
@@ -47,10 +48,6 @@
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
 	var/step_energy_drain = 10
-	/// Health is healthdrain = 10
-	var/health = 300
-	/// Maxhealth is maxhealth.
-	var/maxhealth = 300
 	/// Chance to deflect the incoming projectiles, hits, or lesser the effect of legacy_ex_act.
 	var/deflect_chance = 10
 	/// The values in this list show how much damage will pass through, not how much will be absorbed.

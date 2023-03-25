@@ -9,13 +9,15 @@
 	anchored = 0
 	name = "fission core"
 	icon_state = "engine"
+
+	integrity = 200
+	integrity_max = 200
+
 	var/announce = 1
 	var/decay_archived = 0
 	var/exploded = 0
 	var/envefficiency = 0.01
 	var/gasefficiency = 0.5
-	var/health = 200
-	var/max_health = 200
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0

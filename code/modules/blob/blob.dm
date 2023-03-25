@@ -11,8 +11,9 @@
 	anchored = 1
 	mouse_opacity = 2
 
-	var/maxHealth = 30
-	var/health
+	integrity = 30
+	integrity_max = 30
+
 	var/brute_resist = 4
 	var/fire_resist = 1
 	var/expandType = /obj/effect/blob

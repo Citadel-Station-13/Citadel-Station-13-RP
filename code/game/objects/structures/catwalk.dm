@@ -14,8 +14,9 @@
 	smoothing_groups = (SMOOTH_GROUP_CATWALK + SMOOTH_GROUP_LATTICE + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_CATWALK)
 
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
+
 	var/obj/item/stack/tile/plated_tile = null
 	var/static/plating_color = list(
 		/obj/item/stack/tile/floor = "#858a8f",

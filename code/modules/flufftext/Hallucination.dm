@@ -225,6 +225,8 @@ proc/check_panel(mob/M)
 	density = 0
 	anchored = 1
 	opacity = 0
+	integrity = 100
+	integrity_max = 100
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null
@@ -238,8 +240,6 @@ proc/check_panel(mob/M)
 	var/image/up
 	var/collapse
 	var/image/down
-
-	var/health = 100
 
 /obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
