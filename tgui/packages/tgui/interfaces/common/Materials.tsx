@@ -6,15 +6,17 @@ import { useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
 
 export interface MaterialsContext {
-  materials: Record<string, DetailedMaterial>;
-}
-
-export interface FullMaterialsContext {
   materials: Record<string, Material>;
 }
 
-export interface Material {
+export interface FullMaterialsContext {
+  materials: Record<string, DetailedMaterial>;
+}
 
+export interface Material {
+  name: string;
+  id: string;
+  iconKey: string;
 }
 
 export interface DetailedMaterial extends Material {
@@ -59,7 +61,7 @@ export const MaterialIcon = (props: MaterialIconProps) => {
 };
 
 const EjectMaterial = (props: {
-  material: Material,
+  material: LegacyMaterial,
   onEject: (amount: number) => void,
 }, context) => {
   const {
@@ -98,7 +100,7 @@ const EjectMaterial = (props: {
 };
 
 export const Materials = (props: {
-  materials: Material[],
+  materials: LegacyMaterial[],
   onEject: (ref: string, amount: number) => void,
 }) => {
   return (

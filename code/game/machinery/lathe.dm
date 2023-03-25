@@ -10,6 +10,13 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
+	/// icon state when printing, if any
+	var/active_icon_state
+	/// icon state to flick when inserting sheets, if any
+	var/insert_icon_state
+	/// icon state to flick when recycling, if any
+	var/recycle_icon_state
+
 	#warn component parts & upgrade handling
 
 	/// print speed - multiplier. affects power cost.
@@ -30,7 +37,9 @@
 	var/reagents_max = 0
 
 	/// max queue length in items
-	var/queue_max = 100
+	var/queue_max = 20
+	/// maximum items we can print per tick - for stacks this is the item itself, not the stack amount.
+	var/max_items_per_tick = 4
 	/// queued of /datum/lathe_queue_entry's.
 	var/list/datum/lathe_queue_entry/queue
 	/// currently printing design
@@ -40,6 +49,11 @@
 	/// progress in deciseconds on current design
 	var/progress
 
+	/// can recycle
+	var/recycle = TRUE
+	/// recycle efficiency
+	var/recycle_efficiency = 0.8
+
 	/// designs held - set to instance to instantiate.
 	var/datum/design_holder/design_holder = /datum/design_holder
 
@@ -47,8 +61,6 @@
 	var/has_interface = FALSE
 	/// our lathe control instance, lazy init'd
 	var/datum/tgui_module/lathe_control/ui_controller
-
-	#warn recycling
 
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
@@ -98,11 +110,13 @@
  * amount variable is reserved but unused at this given time.
  */
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts)
+	#warn amount inject check
 	if(length(queue) >= queue_max)
 		return FALSE
 	var/datum/lathe_queue_entry/inserting = new
 	inserting.design_id = instance.identifier
 	inserting.material_parts = material_parts
+	inserting.amount = 1
 	LAZYINITLIST(queue)
 	queue += inserting
 	reconsider_queue()
@@ -110,11 +124,10 @@
 
 /**
  * dequeues the instance with the given position
- *
- * amount variable is reserved but unused at this given time.
  */
 /obj/machinery/lathe/proc/dequeue(position, amount)
 	if(position > 0 && position < length(queue))
+		#warn amount / extract check
 		queue.Cut(position, position + 1)
 	else
 		return FALSE
@@ -159,11 +172,19 @@
 		return
 	tgui_controller().ui_interact(user, ui, parent_ui)
 
+/obj/machinery/lathe/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	#warn impl
+	return ..()
+
+#warn recycling / clickdrag
+
 /**
  * holder datum for queue data
  */
 /datum/lathe_queue_entry
 	/// design id
 	var/design_id
+	/// amount
+	var/amount = 1
 	/// material parts to use, key to id
 	var/list/material_parts

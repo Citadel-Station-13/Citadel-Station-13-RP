@@ -2,7 +2,10 @@
 	name = "sheetmaterials"
 
 /datum/asset/spritesheet/sheetmaterials/create_spritesheets()
-	InsertAll("", 'icons/obj/stacks.dmi')
+
+
+
+	InsertAll("material-stack-", 'icons/obj/stacks.dmi')
 	//InsertAll("", 'icons/obj/stack_objects.dmi')
 
 	// Special case to handle Bluespace Crystals

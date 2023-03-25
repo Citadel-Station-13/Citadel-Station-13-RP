@@ -91,6 +91,14 @@ SUBSYSTEM_DEF(materials)
  * * ids - material ids.
  * * full - for FullMaterialsContext? usually not needed.
  */
-/datum/controller/subsystem/materials/proc/tgui_materials_context()
-	#warn impl
-	#warn tgui_icon_key
+/datum/controller/subsystem/materials/proc/tgui_materials_context(list/ids, full = FALSE)
+	var/list/data = list()
+	for(var/id in ids)
+		var/datum/material/mat = get_material(id)
+		var/list/built = list(
+			"name" = mat.display_name || mat.name,
+			"id" = mat.id,
+			"iconKey" = mat.tgui_icon_key,
+		)
+		data[++data.len] = built
+	return data
