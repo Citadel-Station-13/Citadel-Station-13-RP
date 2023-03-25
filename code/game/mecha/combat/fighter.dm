@@ -17,8 +17,8 @@
 
 	step_in = 2 //Fast
 
-	health = 400
-	maxhealth = 400
+	integrity = 400
+	integrity_max = 400
 
 	infra_luminosity = 6
 
@@ -402,8 +402,8 @@
 
 	ground_capable = FALSE
 
-	health = 500
-	maxhealth = 500
+	integrity = 500
+	integrity_max = 500
 
 /obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
@@ -476,8 +476,8 @@
 	icon_state = "cludge"
 	initial_icon = "cludge"
 
-	health = 100
-	maxhealth = 100
+	integrity = 100
+	integrity_max = 100
 
 	max_hull_equip = 0
 	max_weapon_equip = 0

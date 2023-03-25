@@ -471,7 +471,7 @@
 		. += "It does not seem to have a completed hull."
 
 
-	var/integrity = health/initial(health)*100
+	var/integrity = integrity/initial(integrity)*100
 	switch(integrity)
 		if(85 to 100)
 			. += "It's fully intact."
@@ -765,8 +765,8 @@
 		return 0
 
 	if(overload)//Check if you have leg overload
-		health--
-		if(health < initial(health) - initial(health)/3)
+		integrity--
+		if(integrity < initial(integrity) - initial(integrity)/3)
 			overload = 0
 			step_energy_drain = initial(step_energy_drain)
 			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
@@ -893,7 +893,7 @@
 /obj/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
 	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
 	if(prob(30))
-		if(ignore_threshold || src.health*100/initial(src.health) < src.internal_damage_threshold)
+		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
 			for(var/T in possible_int_damage)
 				if(internal_damage & T)
 					possible_int_damage -= T
@@ -903,7 +903,7 @@
 			return	//It already hurts to get some, lets not get both.
 
 	if(prob(10))
-		if(ignore_threshold || src.health*100/initial(src.health) < src.internal_damage_threshold)
+		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
 			var/obj/item/mecha_parts/mecha_equipment/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
@@ -946,7 +946,7 @@
 
 		damage = components_handle_damage(damage,type)
 
-		health -= damage
+		integrity -= damage
 
 		update_health()
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
@@ -1003,7 +1003,7 @@
 	return 1
 
 /obj/mecha/proc/update_health()
-	if(src.health > 0)
+	if(src.integrity > 0)
 		src.spark_system.start()
 	else
 		qdel(src)
@@ -1236,18 +1236,18 @@
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
 		if(1.0)
-			src.take_damage(initial(src.health), "bomb")
+			src.take_damage(initial(src.integrity), "bomb")
 		if(2.0)
 			if (prob(30))
-				src.take_damage(initial(src.health), "bomb")
+				src.take_damage(initial(src.integrity), "bomb")
 			else
-				src.take_damage(initial(src.health)/2, "bomb")
+				src.take_damage(initial(src.integrity)/2, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 		if(3.0)
 			if (prob(5))
 				qdel(src)
 			else
-				src.take_damage(initial(src.health)/5, "bomb")
+				src.take_damage(initial(src.integrity)/5, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
@@ -1488,9 +1488,9 @@
 				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
 		else
 			return
-		if(src.health<initial(src.health))
+		if(src.integrity<initial(src.integrity))
 			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
-			src.health += min(10, initial(src.health)-src.health)
+			src.integrity += min(10, initial(src.integrity)-src.integrity)
 			update_damage_alerts()
 		else
 			to_chat(user, "The [src.name] is at full integrity")
@@ -2120,7 +2120,7 @@
 
 
 /obj/mecha/proc/get_stats_part()
-	var/integrity = health/initial(health)*100
+	var/integrity = integrity/initial(integrity)*100
 	var/cell_charge = get_charge()
 	var/tank_pressure = internal_tank ? round(internal_tank.return_pressure(),0.01) : "None"
 	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
@@ -2835,7 +2835,7 @@
 						</html>"}
 
 	occupant << browse(output, "window=ex_debug")
-	//src.health = initial(src.health)/2.2
+	//src.integrity = initial(src.integrity)/2.2
 	//src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
 */
@@ -2857,7 +2857,7 @@
 
 /obj/mecha/proc/update_damage_alerts()
 	if(occupant)
-		var/integrity = health/initial(health)*100
+		var/integrity = integrity/initial(integrity)*100
 		switch(integrity)
 			if(30 to 45)
 				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 1)

@@ -99,7 +99,7 @@
 	if(output)
 		var/temp = ""
 		if(occupant)
-			temp = "<br />\[Occupant: [occupant] (Health: [occupant.health]%)\]<br /><a href='?src=\ref[src];view_stats=1'>View stats</a>|<a href='?src=\ref[src];eject=1'>Eject</a>"
+			temp = "<br />\[Occupant: [occupant] (Health: [occupant.integrity]%)\]<br /><a href='?src=\ref[src];view_stats=1'>View stats</a>|<a href='?src=\ref[src];eject=1'>Eject</a>"
 		return "[output] [temp]"
 	return
 
@@ -156,7 +156,7 @@
 			t1 = "*dead*"
 		else
 			t1 = "Unknown"
-	return {"<font color="[occupant.health > 50 ? "blue" : "red"]"><b>Health:</b> [occupant.health]% ([t1])</font><br />
+	return {"<font color="[occupant.integrity > 50 ? "blue" : "red"]"><b>Health:</b> [occupant.integrity]% ([t1])</font><br />
 				<font color="[occupant.bodytemperature > 50 ? "blue" : "red"]"><b>Core Temperature:</b> [src.occupant.bodytemperature-T0C]&deg;C ([src.occupant.bodytemperature*1.8-459.67]&deg;F)</font><br />
 				<font color="[occupant.getBruteLoss() < 60 ? "blue" : "red"]"><b>Brute Damage:</b> [occupant.getBruteLoss()]%</font><br />
 				<font color="[occupant.getOxyLoss() < 60 ? "blue" : "red"]"><b>Respiratory Damage:</b> [occupant.getOxyLoss()]%</font><br />
@@ -231,7 +231,7 @@
 	var/mob/living/carbon/M = S.occupant
 	if(!M)
 		return
-	if(M.health > 0)
+	if(M.integrity > 0)
 		M.adjustOxyLoss(-1)
 		M.updatehealth()
 	M.AdjustStunned(-4)

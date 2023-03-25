@@ -67,9 +67,9 @@
 				mech.occupant_message(SPAN_NOTICE("Fully charged."))
 			done = TRUE
 
-	if(repair && istype(mech) && mech.health < initial(mech.health))
-		mech.health = min(mech.health + repair, initial(mech.health))
-		if(mech.health == initial(mech.health))
+	if(repair && istype(mech) && mech.integrity < initial(mech.integrity))
+		mech.integrity = min(mech.integrity + repair, initial(mech.integrity))
+		if(mech.integrity == initial(mech.integrity))
 			mech.occupant_message(SPAN_NOTICE("Fully repaired."))
 		else
 			done = FALSE

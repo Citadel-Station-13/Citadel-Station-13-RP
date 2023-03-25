@@ -9,20 +9,20 @@
 	initial_icon = "odysseus"
 	step_in = 2
 	max_temperature = 15000
-	health = 70
-	maxhealth = 70
+	integrity = 70
+	integrity_max = 70
 	wreckage = /obj/effect/decal/mecha_wreckage/odysseus
 	internal_damage_threshold = 35
 	deflect_chance = 15
 	step_energy_drain = 6
-	var/obj/item/clothing/glasses/hud/health/mech/hud
+	var/obj/item/clothing/glasses/hud/integrity/mech/hud
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
 /obj/mecha/medical/odysseus/Initialize(mapload)
 	. = ..()
-	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
+	hud = new /obj/item/clothing/glasses/hud/integrity/mech(src)
 
 /obj/mecha/medical/odysseus/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(..())
@@ -68,7 +68,7 @@
 */
 
 //TODO - Check documentation for client.eye and client.perspective...
-/obj/item/clothing/glasses/hud/health/mech
+/obj/item/clothing/glasses/hud/integrity/mech
 	name = "Integrated Medical Hud"
 
 
@@ -104,7 +104,7 @@
 				holder.icon_state = "hudhealth-100"
 				C.images += holder
 			else
-				holder.icon_state = RoundHealth((patient.health-config.health_threshold_crit)/(patient.getMaxHealth()-config.health_threshold_crit)*100)
+				holder.icon_state = RoundHealth((patient.integrity-config.health_threshold_crit)/(patient.getMaxHealth()-config.health_threshold_crit)*100)
 				C.images += holder
 
 			holder = patient.hud_list[STATUS_HUD]
@@ -140,6 +140,6 @@
 
 /obj/mecha/medical/odysseus/old/Initialize(mapload)
 	. = ..()
-	health = 25
-	maxhealth = 50	//Just slightly worse.
+	integrity = 25
+	integrity_max = 50	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))

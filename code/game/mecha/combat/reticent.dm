@@ -5,8 +5,8 @@
 	initial_icon = "reticent"
 	step_in = 3
 	dir_in = 1 //Facing North.
-	health = 180
-	maxhealth = 180			//Don't forget to update the /old variant if  you change this number.
+	integrity = 180
+	integrity_max = 180			//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 25
 	damage_absorption = list("brute"=1,"fire"=0.75,"bullet"=0.85,"laser"=0.8,"energy"=0.7,"bomb"=1)
 	max_temperature = 25000
@@ -42,8 +42,8 @@
 	desc = "The current flagship mecha of Le Rien. The Reticence trades some speed for durability, but remains formidable. It is not commercially available."
 	icon_state = "reticence"
 	initial_icon = "reticence"
-	health = 350
-	maxhealth = 350
+	integrity = 350
+	integrity_max = 350
 	deflect_chance = 40
 	damage_absorption = list("brute"=0.8,"fire"=0.6,"bullet"=0.5,"laser"=0.65,"energy"=0.6,"bomb"=0.8)
 	max_temperature = 45000

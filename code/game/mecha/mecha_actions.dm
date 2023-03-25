@@ -298,7 +298,7 @@
 		return
 	if(usr!=src.occupant)
 		return
-	if(health < initial(health) - initial(health)/3)//Same formula as in movement, just beforehand.
+	if(integrity < initial(integrity) - initial(integrity)/3)//Same formula as in movement, just beforehand.
 		src.occupant_message("<font color='red'>Leg actuators damage critical, unable to engage overload.</font>")
 		overload = 0	//Just to be sure
 		return

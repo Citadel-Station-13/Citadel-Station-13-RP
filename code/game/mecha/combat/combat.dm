@@ -57,7 +57,7 @@
 			*/
 			if(ishuman(T))
 				var/mob/living/carbon/human/H = T
-	//			if (M.health <= 0) return
+	//			if (M.integrity <= 0) return
 
 				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
@@ -119,7 +119,7 @@
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 
 				if(istype(T, /obj/structure/girder))
-					T:take_damage(force * 3) //Girders have 200 health by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
+					T:take_damage(force * 3) //Girders have 200 integrity by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
 				else
 					T:take_damage(force)
 

@@ -44,7 +44,7 @@
 
 			if(istype(target, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = target
-	//			if (M.health <= 0) return
+	//			if (M.integrity <= 0) return
 
 				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
