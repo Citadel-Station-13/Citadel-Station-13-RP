@@ -3,7 +3,7 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage
 	maxHealth = 2 LASERS_TO_KILL // 60 health
 	health = 2 LASERS_TO_KILL
-	projectiletype = /obj/item/projectile/bullet/hivebot
+	projectiletype = /obj/projectile/bullet/hivebot
 
 // The regular ranged hivebot, that fires somewhat weak projectiles.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic
@@ -23,7 +23,7 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser
 	name = "laser hivebot"
 	desc = "A robot with a photonic weapon integrated into itself."
-	projectiletype = /obj/item/projectile/beam/blue
+	projectiletype = /obj/projectile/beam/blue
 	projectilesound = 'sound/weapons/Laser.ogg'
 	player_msg = "You have a <b>laser attack</b>."
 
@@ -35,7 +35,7 @@
 	icon_state = "yellow"
 	icon_living = "yellow"
 
-	projectiletype = /obj/item/projectile/ion
+	projectiletype = /obj/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 	player_msg = "You have a <b>ranged ion attack</b>, which is very strong against other synthetics.<br>\
 	Be careful to not hit yourself or your team, as it will affect you as well."
@@ -64,13 +64,13 @@
 	icon_state = "red"
 	icon_living = "red"
 
-	projectiletype = /obj/item/projectile/fire
+	projectiletype = /obj/projectile/fire
 	heat_resist = 1
 	player_msg = "Your attacks inflict a <b>damage over time</b> effect, that will \
 	harm your target slowly. The effect stacks with further attacks.<br>\
 	You are also immune to fire."
 
-/obj/item/projectile/fire
+/obj/projectile/fire
 	name = "ember"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion_particle"
@@ -86,12 +86,12 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline
 	name = "backline hivebot"
 	desc = "A robot that can fire short-ranged projectiles over their allies."
-	projectiletype = /obj/item/projectile/arc/blue_energy
+	projectiletype = /obj/projectile/arc/blue_energy
 	projectilesound = 'sound/weapons/Laser.ogg'
 	player_msg = "Your attacks are short-ranged, but can <b>arc over obstructions</b> such as allies \
 	or barriers."
 
-/obj/item/projectile/arc/blue_energy
+/obj/projectile/arc/blue_energy
 	name = "energy missile"
 	icon_state = "force_missile"
 	damage = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
@@ -104,7 +104,7 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege
 	name = "siege engine hivebot"
 	desc = "A large robot capable of delivering long range bombardment."
-	projectiletype = /obj/item/projectile/arc/test
+	projectiletype = /obj/projectile/arc/test
 	icon_scale_x = 2
 	icon_scale_y = 2
 	icon_state = "red"
@@ -119,17 +119,17 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/emp
 	name = "ionic artillery hivebot"
 	desc = "A large robot capable of annihilating electronics from a long distance."
-	projectiletype = /obj/item/projectile/arc/emp_blast
+	projectiletype = /obj/projectile/arc/emp_blast
 
-/obj/item/projectile/arc/emp_blast
+/obj/projectile/arc/emp_blast
 	name = "emp blast"
 	icon_state = "bluespace"
 
-/obj/item/projectile/arc/emp_blast/on_impact(turf/T)
+/obj/projectile/arc/emp_blast/on_impact(turf/T)
 	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
 	return ..()
 
-/obj/item/projectile/arc/emp_blast/weak/on_impact(turf/T)
+/obj/projectile/arc/emp_blast/weak/on_impact(turf/T)
 	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
 	return ..()
 
@@ -138,11 +138,11 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/radiation
 	name = "desolator hivebot"
 	desc = "A large robot capable of irradiating a large area from afar."
-	projectiletype = /obj/item/projectile/arc/radioactive
+	projectiletype = /obj/projectile/arc/radioactive
 
 
 // Essentially a long ranged frag grenade.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/fragmentation
 	name = "anti-personnel artillery hivebot"
 	desc = "A large robot capable of delivering fragmentation shells to rip apart their fleshy enemies."
-	projectiletype = /obj/item/projectile/arc/fragmentation
+	projectiletype = /obj/projectile/arc/fragmentation

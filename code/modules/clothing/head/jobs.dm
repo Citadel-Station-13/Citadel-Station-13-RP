@@ -143,7 +143,7 @@
 	desc = "A brown fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
 	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
-	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/light_formalwear
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null
 	show_examine = FALSE

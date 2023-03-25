@@ -7,7 +7,7 @@
 	item_state = "baton"
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -196,7 +196,7 @@
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -248,7 +248,7 @@
 	desc = "An improvised stun baton with a bluespace crystal attached to the tip."
 	icon_state = "teleprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -268,7 +268,7 @@
 	description_info = "Hitting a lesser lifeform with this while it is on will compel them to attack you above other nearby targets.  Otherwise \
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
-	force = 10
+	damage_force = 10
 	throw_force = 5
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
@@ -308,7 +308,7 @@
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
 	w_class = ITEMSIZE_SMALL
-	force = 5
+	damage_force = 5
 	stunforce = 5
 	throw_force = 2
 	agonyforce = 120	//one-hit

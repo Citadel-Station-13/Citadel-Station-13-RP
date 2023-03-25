@@ -6,7 +6,7 @@
 	icon_state = "pilot_helmet1"
 	item_icons = list(SLOT_ID_HEAD = 'icons/mob/clothing/pilot_helmet.dmi')
 	clothing_flags = THICKMATERIAL
-	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
+	armor_type = /datum/armor/exploration/space/pilot
 	inv_hide_flags = HIDEEARS
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
