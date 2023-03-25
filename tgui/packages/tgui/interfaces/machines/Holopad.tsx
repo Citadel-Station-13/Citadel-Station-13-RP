@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from "../../components";
+import { Button, Flex, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -94,36 +94,34 @@ export const Holopad = (props, context) => {
               content={data.aiEnabled
                 ?(data.aiRequested? "AI Requested" : "Request AI")
                 : "AI Disabled"}
-              disabled={data.aiRequested}
-              icon={data.aiRequested? `arrows-spin` : `megaphone`}
+              icon={data.aiRequested? `wifi` : `wifi`}
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
-          <Flex
-            direction="column">
-            <Flex.Item grow={1}>
-              <Flex direction="row">
-                {!!data.canCall && (
-                  <Flex.Item grow={1}>
-                    {data.calling === HolopadCalling.None? (
-                      <HolopadDirectory />
-                    ) : (
-                      data.calling === HolopadCalling.Destination? (
-                        <HolopadCallIncoming />
-                      ) : (
-                        <HolopadCallOutgoing />
-                      )
-                    )}
-                  </Flex.Item>
-                )}
-                {!!data.ringing.length
-                  && <HolopadRinging />}
-              </Flex>
-            </Flex.Item>
-            <Flex.Item>
+          <Stack>
+            <Stack.Item grow={1}>
+              <Section title="test">
+                test
+              </Section>
+              {!!data.canCall && (
+                data.calling === HolopadCalling.None? (
+                  <HolopadDirectory />
+                ) : (
+                  data.calling === HolopadCalling.Destination? (
+                    <HolopadCallIncoming />
+                  ) : (
+                    <HolopadCallOutgoing />
+                  )
+                )
+              )}
+              {!!data.ringing.length && (
+                <HolopadRinging />
+              )}
+            </Stack.Item>
+            <Stack.Item>
               <HolopadSettings />
-            </Flex.Item>
-          </Flex>
+            </Stack.Item>
+          </Stack>
         </Section>
       </Window.Content>
     </Window>
@@ -247,56 +245,58 @@ const HolopadDirectory = (props, context) => {
     Object.keys(padMap[sector]).length === 1 ? Object.keys(padMap[sector])[0] : category
   ));
   return (
-    <Flex
-      direction="column">
-      <Flex.Item grow={1}>
-        <Section title="Call">
-          <Tabs>
-            {
-              Object.keys(padMap).map((key: string) => {
-                <Tabs.Tab
-                  selected={sector === key}
-                  onClick={() => setSector(key)}>
-                  {key}
-                </Tabs.Tab>;
-              })
-            }
-          </Tabs>
-          <Flex
-            direction="row">
-            <Flex.Item>
+    <Section title="Directory">
+      <Flex
+        direction="column">
+        <Flex.Item grow={1}>
+          <Section title="Call">
+            <Tabs>
               {
-                sector && !!Object.keys(padMap[sector]).length && (
-                  <Tabs>
-                    {Object.keys(padMap[sector]).map((cat) => {
-                      <Tabs.Tab
-                        selected={cat === category}
-                        onClick={() => setCategory(cat)}>
-                        {cat}
-                      </Tabs.Tab>;
-                    })}
-                  </Tabs>
-                )
+                Object.keys(padMap).map((key: string) => {
+                  <Tabs.Tab
+                    selected={sector === key}
+                    onClick={() => setSector(key)}>
+                    {key}
+                  </Tabs.Tab>;
+                })
               }
-            </Flex.Item>
-            <Flex.Item grow={1}>
-              <LabeledList>
-                {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => {
-                  <LabeledList.Item
-                    label={pad.name}
-                    buttons={
-                      <Button.Confirm
-                        content="Call"
-                        onClick={() => act('call', { id: pad.id })} />
-                    }
-                  />;
-                })) || undefined}
-              </LabeledList>
-            </Flex.Item>
-          </Flex>
-        </Section>
-      </Flex.Item>
-    </Flex>
+            </Tabs>
+            <Flex
+              direction="row">
+              <Flex.Item>
+                {
+                  sector && !!Object.keys(padMap[sector]).length && (
+                    <Tabs>
+                      {Object.keys(padMap[sector]).map((cat) => {
+                        <Tabs.Tab
+                          selected={cat === category}
+                          onClick={() => setCategory(cat)}>
+                          {cat}
+                        </Tabs.Tab>;
+                      })}
+                    </Tabs>
+                  )
+                }
+              </Flex.Item>
+              <Flex.Item grow={1}>
+                <LabeledList>
+                  {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => {
+                    <LabeledList.Item
+                      label={pad.name}
+                      buttons={
+                        <Button.Confirm
+                          content="Call"
+                          onClick={() => act('call', { id: pad.id })} />
+                      }
+                    />;
+                  })) || undefined}
+                </LabeledList>
+              </Flex.Item>
+            </Flex>
+          </Section>
+        </Flex.Item>
+      </Flex>
+    </Section>
   );
 };
 

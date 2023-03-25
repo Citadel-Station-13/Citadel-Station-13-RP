@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["isAIProjecting"] = isAI(user) && is_ai_projecting(user)
-	.["aiRequested"] = last_ai_request && ((world.time - last_ai_request) >= ai_request_cooldown)
+	.["aiRequested"] = request_ai_cooldown()
 	.["callVisibility"] = call_visibility
 	.["sectorAnonymous"] = call_anonymous_sector
 	.["videoEnabled"] = video_enabled
@@ -600,10 +600,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
 
 /**
- * is request ai on cooldown
+ * is request ai available
  */
 /obj/machinery/holopad/proc/request_ai_cooldown()
-	return last_ai_request + ai_request_cooldown < world.time
+	return !isnull(last_ai_request) && (last_ai_request + ai_request_cooldown < world.time)
 
 /**
  * starts AI presence
