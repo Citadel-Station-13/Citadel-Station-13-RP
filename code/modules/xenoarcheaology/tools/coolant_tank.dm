@@ -34,6 +34,5 @@
 		else
 			env.temperature -= 50
 
-	sleep(10)
-	if(src)
-		qdel(src)
+	// NOW.
+	qdel(src)

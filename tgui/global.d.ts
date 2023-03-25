@@ -4,8 +4,6 @@
  * @license MIT
  */
 
-
-
 // Webpack asset modules.
 // Should match extensions used in webpack config.
 declare module '*.png' {

@@ -292,6 +292,7 @@
 		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
 			GetDrilled(0)
+			return
 
 		//destroy any archaeological finds
 		if(finds && finds.len)
