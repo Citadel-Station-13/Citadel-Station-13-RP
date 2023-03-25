@@ -75,13 +75,13 @@
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
 	/// max health
-	var/max_integrity
+	var/integrity_max
 	/// health
 	var/integrity
 	/// what integrity we call break at.
-	var/failure_integrity = 0
+	var/integrity_failure = 0
 	/// do we use the atom damage system?
-	var/use_integrity = FALSE
+	var/integrity_enabled = FALSE
 	// todo: use integrity & procs on turf and obj level
 
 	//? HUDs

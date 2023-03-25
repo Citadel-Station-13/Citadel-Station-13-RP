@@ -206,7 +206,7 @@
 	icon_state = "holoshield"
 	slowdown = 1
 	shield_flags = SHIELD_FLAGS_DEFAULT
-	max_integrity = 100
+	integrity_max = 100
 	obj_integrity = 100
 	can_shatter = FALSE
 	clothing_flags = ITEM_CAN_BLOCK
@@ -236,9 +236,9 @@
 			recharge_timerid = null
 
 /obj/item/shield/riot/implant/proc/recharge()
-	if(obj_integrity == max_integrity)
+	if(obj_integrity == integrity_max)
 		return
-	obj_integrity = max_integrity
+	obj_integrity = integrity_max
 	if(ismob(loc.loc))		//cyberimplant.user
 		to_chat(loc, "<span class='notice'>[src] has recharged its reinforcement matrix and is ready for use!</span>")
 */

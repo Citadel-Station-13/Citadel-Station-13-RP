@@ -7,6 +7,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "rift"
 	anchored = 1
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/last_spawn = 0
 	var/spawn_delay = 10 MINUTES
@@ -19,9 +20,6 @@
 	var/total_spawns = -1 //Total mob spawns, over all time, -1 for no limiteee
 	var/simultaneous_spawns = 3 //Max spawned mobs active at one time
 	var/mob_faction
-
-	var/destructible = 0
-	var/health = 50
 
 	var/list/spawned_mobs = list()
 
@@ -87,9 +85,10 @@
 	if(destructible)
 		take_damage(Proj.get_structure_damage())
 
+#warn ough
 /obj/structure/mob_spawner/take_damage(var/damage)
-	health -= damage
-	if(health <= 0)
+	integrity -= damage
+	if(integrity <= 0)
 		visible_message("<span class='warning'>\The [src] breaks apart!</span>")
 		qdel(src)
 
@@ -144,7 +143,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	total_spawns = 6
 	anchored = 1
 	destructible = 1
-	health = 500
+	integrity = 500
 	spawn_types = list(
 	/mob/living/simple_mob/animal/goliath = 100
 	)
@@ -159,7 +158,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	total_spawns = 12
 	anchored = 1
 	destructible = 1
-	health = 400
+	integrity = 400
 	spawn_types = list(
 	/mob/living/simple_mob/animal/gutshank = 100
 	)
@@ -174,7 +173,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	total_spawns = 12
 	anchored = 1
 	destructible = 1
-	health = 1000
+	integrity = 1000
 	spawn_types = list(
 	/mob/living/simple_mob/animal/stormdrifter = 60,
 	/mob/living/simple_mob/animal/stormdrifter/bull = 30
@@ -194,7 +193,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	simultaneous_spawns = 5
 	range = 7
 	destructible = 1
-	health = 200
+	integrity = 200
 	total_spawns = 100
 
 /obj/structure/mob_spawner/scanner/wild_animals
@@ -222,7 +221,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	mob_faction = "xeno"
 	total_spawns = -1
 	destructible = 1
-	health = 50
+	integrity = 50
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
@@ -241,7 +240,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	mob_faction = "xeno"
 	total_spawns = 1
 	destructible = 1
-	health = 50
+	integrity = 50
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
@@ -444,7 +443,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	simultaneous_spawns = 5
 	range = 7
 	destructible = 1
-	health = 200
+	integrity = 200
 	total_spawns = 100
 
 /obj/structure/mob_spawner/scanner/wild_animals
@@ -472,7 +471,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	mob_faction = "xeno"
 	total_spawns = -1
 	destructible = 1
-	health = 50
+	integrity = 50
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
@@ -491,7 +490,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	mob_faction = "xeno"
 	total_spawns = 1
 	destructible = 1
-	health = 50
+	integrity = 50
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"

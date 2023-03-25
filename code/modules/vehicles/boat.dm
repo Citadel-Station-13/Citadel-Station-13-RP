@@ -4,7 +4,7 @@
 	icon = 'icons/obj/vehicles_36x32.dmi'
 	icon_state = "boat"
 	integrity = 100
-	max_integrity = 100
+	integrity_max = 100
 	base_pixel_x = -2
 	icon_dimension_x = 36
 	icon_dimension_y = 32
@@ -34,7 +34,7 @@
 	icon = 'icons/obj/64x32.dmi'
 	icon_state = "dragon_boat"
 	integrity = 250
-	max_integrity = 250
+	integrity_max = 250
 	icon_dimension_x = 64
 	icon_dimension_y = 32
 	base_pixel_x = -16
@@ -55,7 +55,7 @@
 	icon = 'icons/obj/vehicles_36x32.dmi'
 	icon_state = "boat_older"
 	integrity = 150
-	max_integrity = 150
+	integrity_max = 150
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small/ashlander
 

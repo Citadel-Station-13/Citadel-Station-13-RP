@@ -31,7 +31,7 @@
 
 /datum/component/art/proc/on_obj_examine(datum/source, mob/M)
 	var/obj/O = parent
-	apply_moodlet(M, impressiveness *(O.obj_integrity/O.max_integrity))
+	apply_moodlet(M, impressiveness *(O.obj_integrity/O.integrity_max))
 
 /datum/component/art/proc/on_attack_hand(datum/source, mob/M)
 	to_chat(M, "You start examining [parent].")

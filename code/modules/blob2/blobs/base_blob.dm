@@ -12,7 +12,7 @@ var/list/blobs = list()
 	layer = MOB_LAYER + 0.1
 	integrity = 0
 	var/point_return = 0 //How many points the blob gets back when it removes a blob of that type. If less than 0, blob cannot be removed.
-	max_integrity = 30
+	integrity_max = 30
 	var/health_regen = 2 //how much health this blob regens when pulsed
 	var/pulse_timestamp = 0 //we got pulsed when?
 	var/heal_timestamp = 0 //we got healed when?
@@ -25,7 +25,7 @@ var/list/blobs = list()
 		overmind = new_overmind
 	update_icon()
 	if(!integrity)
-		integrity = max_integrity
+		integrity = integrity_max
 	setDir(pick(GLOB.cardinal))
 	blobs += src
 	consume_tile()
@@ -281,7 +281,7 @@ var/list/blobs = list()
 		overmind.blob_type.on_water(src, amount)
 
 /obj/structure/blob/proc/adjust_integrity(amount)
-	integrity = clamp( integrity + amount, 0,  max_integrity)
+	integrity = clamp( integrity + amount, 0,  integrity_max)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		if(overmind)

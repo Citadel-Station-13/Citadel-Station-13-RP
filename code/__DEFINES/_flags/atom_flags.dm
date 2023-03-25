@@ -1,4 +1,4 @@
-//! FLAG BITMASKS - Used in /atom/var/flags
+//? FLAG BITMASKS - Used in /atom/var/flags
 /// The atom is initialized
 #define ATOM_INITIALIZED    (1<<0)
 /// Item has priority to check when entering or leaving.
@@ -58,7 +58,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(NOPRINT),
 ))
 
-//! /atom/movable/var/movable_flags
+//? /atom/movable/var/movable_flags
 /// Throwing does not scale damage at all regardless of force.
 #define MOVABLE_NO_THROW_SPEED_SCALING  (1<<0)
 /// Throwing should ignore move force scaling entirely.
@@ -134,7 +134,28 @@ DEFINE_BITFIELD(movement_type, list(
 	BITFIELD(MOVEMENT_FLOATING),
 ))
 
-//! /atom/movable buckle_flags
+//? /atom integrity_flags
+/// cannot be broken, period
+#define INTEGRITY_INDESTRUCTIBLE (1<<0)
+/// completely immune to fire, can't even light
+#define INTEGRITY_FIREPROOF (1<<1)
+/// completely immune to acid, can't even have it stick
+#define INTEGRITY_ACIDPROOF (1<<2)
+/// completely immune to lava
+#define INTEGRITY_LAVAPROOF (1<<3)
+
+/// can be lit on fire
+#define INTEGRITY_FLAMMABLE (1<<23)
+
+DEFINE_BITFIELD(integrity_flags, list(
+	BITFIELD(INTEGRITY_INDESTRUCTIBLE),
+	BITFIELD(INTEGRITY_FIREPROOF),
+	BITFIELD(INTEGRITY_ACIDPROOF),
+	BITFIELD(INTEGRITY_LAVAPROOF),
+	BITFIELD(INTEGRITY_FLAMMABLE),
+))
+
+//? /atom/movable buckle_flags
 /// Requires restrained() (usually handcuffs) to work.
 #define BUCKLING_REQUIRES_RESTRAINTS          (1<<0)
 /// Buckling doesn't allow you to pull the person to try to move the object (assuming the object otherwise can be pulled). This does NOT stop them from pulling the buckled object!

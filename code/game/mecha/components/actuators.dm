@@ -14,8 +14,8 @@
 
 	required_type = null	// List, if it exists. Exosuits meant to use the component.
 
-	integrity_danger_mod = 0.6	// Multiplier for comparison to max_integrity before problems start.
-	max_integrity = 50
+	integrity_danger_mod = 0.6	// Multiplier for comparison to integrity_max before problems start.
+	integrity_max = 50
 
 	internal_damage_flag = MECHA_INT_CONTROL_LOST
 
@@ -32,6 +32,6 @@
 	emp_resistance = -1
 
 	integrity_danger_mod = 0.7
-	max_integrity = 60
+	integrity_max = 60
 
 	strafing_multiplier = 1.2

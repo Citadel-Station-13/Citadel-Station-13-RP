@@ -11,7 +11,7 @@
 	emp_resistance = 1
 
 	integrity_danger_mod = 0.4
-	max_integrity = 40
+	integrity_max = 40
 
 	step_delay = 0
 
@@ -23,6 +23,6 @@
 	name = "reinforced mecha life-support"
 
 	emp_resistance = 2
-	max_integrity = 80
+	integrity_max = 80
 
 	relative_size = 40

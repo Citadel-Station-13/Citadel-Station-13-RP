@@ -16,8 +16,8 @@
 	var/list/required_type = null	// List, if it exists. Exosuits meant to use the component (Unique var changes / effects)
 
 	integrity = 100
-	var/integrity_danger_mod = 0.5	// Multiplier for comparison to max_integrity before problems start.
-	max_integrity = 100
+	var/integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
+	integrity_max = 100
 
 	var/step_delay = 0
 
@@ -27,7 +27,7 @@
 
 /obj/item/mecha_parts/component/examine(mob/user)
 	. = ..()
-	var/show_integrity = round(integrity/max_integrity*100, 0.1)
+	var/show_integrity = round(integrity/integrity_max*100, 0.1)
 	switch(show_integrity)
 		if(85 to 100)
 			. += "It's fully intact."
@@ -44,7 +44,7 @@
 
 /obj/item/mecha_parts/component/Initialize(mapload)
 	. = ..()
-	integrity = max_integrity
+	integrity = integrity_max
 
 	if(start_damaged)
 		integrity = round(integrity * integrity_danger_mod)
@@ -64,7 +64,7 @@
 	take_damage((4 - severity) * round(integrity * 0.1, 0.1))
 
 /obj/item/mecha_parts/component/proc/adjust_integrity(var/amt = 0)
-	integrity = clamp(integrity + amt, 0, max_integrity)
+	integrity = clamp(integrity + amt, 0, integrity_max)
 	return
 
 /obj/item/mecha_parts/component/proc/damage_part(var/dam_amt = 0, var/type = BRUTE)
@@ -80,7 +80,7 @@
 	return TRUE
 
 /obj/item/mecha_parts/component/proc/get_efficiency()
-	var/integ_limit = round(max_integrity * integrity_danger_mod)
+	var/integ_limit = round(integrity_max * integrity_danger_mod)
 
 	if(integrity < integ_limit)
 		var/int_percent = round(integrity / integ_limit, 0.1)
@@ -109,7 +109,7 @@
 		chassis = target
 
 		if(internal_damage_flag)
-			if(integrity > (max_integrity * integrity_danger_mod))
+			if(integrity > (integrity_max * integrity_danger_mod))
 				if(chassis.hasInternalDamage(internal_damage_flag))
 					chassis.clearInternalDamage(internal_damage_flag)
 
@@ -139,8 +139,8 @@
 	if(istype(W,/obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/NP = W
 
-		if(integrity < max_integrity)
-			while(integrity < max_integrity && NP)
+		if(integrity < integrity_max)
+			while(integrity < integrity_max && NP)
 				if(do_after(user, 1 SECOND, src) && NP.use(1))
 					adjust_integrity(10)
 

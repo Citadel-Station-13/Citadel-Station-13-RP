@@ -1514,8 +1514,8 @@
 
 				if(C)
 
-					if(C.integrity < C.max_integrity)
-						while(C.integrity < C.max_integrity && NP && do_after(user, 1 SECOND, src))
+					if(C.integrity < C.integrity_max)
+						while(C.integrity < C.integrity_max && NP && do_after(user, 1 SECOND, src))
 							if(NP.use(1))
 								C.adjust_integrity(10)
 
@@ -2133,8 +2133,8 @@
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
 	var/output = {"[report_internal_damage()]
-						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.max_integrity * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
-						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.max_integrity * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
+						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.integrity_max * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
+						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.integrity_max * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
 						[integrity<30?"<font color='red'><b>DAMAGE LEVEL CRITICAL</b></font><br>":null]
 						<b>Chassis Integrity: </b> [integrity]%<br>
 						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/vehicles_64x64.dmi'
 	icon_state = "quad"
 	integrity = 200
-	max_integrity = 200
+	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/quadbike
 	key_type = /obj/item/key/quadbike
 	var/paint_color = "#666666" // Todo, put on _vehicle.dm

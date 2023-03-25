@@ -14,8 +14,8 @@
 
 	required_type = null	// List, if it exists. Exosuits meant to use the component.
 
-	integrity_danger_mod = 0.4	// Multiplier for comparison to max_integrity before problems start.
-	max_integrity = 120
+	integrity_danger_mod = 0.4	// Multiplier for comparison to integrity_max before problems start.
+	integrity_max = 120
 
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL
 
@@ -41,7 +41,7 @@
 	name = "blast-resistant mecha plating"
 
 	step_delay = 2
-	max_integrity = 80
+	integrity_max = 80
 
 	damage_absorption = list(
 									"brute"=0.8,
@@ -57,7 +57,7 @@
 /obj/item/mecha_parts/component/armor/lightweight
 	name = "lightweight mecha plating"
 
-	max_integrity = 50
+	integrity_max = 50
 	step_delay = 0
 
 	damage_absorption = list(
@@ -76,7 +76,7 @@
 
 	step_delay = 4
 
-	max_integrity = 80
+	integrity_max = 80
 
 	minimum_penetration = 10
 
@@ -94,7 +94,7 @@
 
 	step_delay = 4
 
-	max_integrity = 100
+	integrity_max = 100
 
 	emp_resistance = 2
 
@@ -130,7 +130,7 @@
 
 	step_delay = 3
 
-	max_integrity = 100
+	integrity_max = 100
 
 	emp_resistance = 3
 
@@ -181,7 +181,7 @@
 
 	step_delay = 4
 
-	max_integrity = 150
+	integrity_max = 150
 
 	emp_resistance = 3
 
