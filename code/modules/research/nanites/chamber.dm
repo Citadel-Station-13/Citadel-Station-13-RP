@@ -13,7 +13,8 @@
 	/// occupant person
 	var/mob/living/occupant
 	/// occupant nanoswarm brain
-	var/obj/item/mmi/digital/posibrain/nano/protean_core
+	var/obj/item/mmi/digital/posibrain/nano/protean_corew
+
 
 /obj/machinery/nanite_chamber/Initialize(mapload)
 	. = ..()
