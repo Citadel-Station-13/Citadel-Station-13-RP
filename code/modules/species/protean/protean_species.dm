@@ -219,6 +219,11 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
 	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
+	// force eject brain
+	var/obj/item/organ/internal/the_brain = H.internal_organs_by_name[O_BRAIN]
+	if(the_brain)
+		the_brain.removed(H)
+		the_brain.forceMove(H.drop_location())
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
