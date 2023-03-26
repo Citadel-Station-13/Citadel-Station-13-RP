@@ -281,7 +281,7 @@
 	if(anchored)
 		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
 		return
-	
+
 	if(!CHECK_MOBILITY(user, MOBILITY_PICKUP))
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
@@ -455,7 +455,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_PICKU) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
@@ -773,7 +773,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /**
  * called to be checked for mob armor
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
@@ -783,7 +783,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /**
  * called to be used as mob armor
  * side effects are allowed
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)

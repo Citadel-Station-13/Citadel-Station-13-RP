@@ -1,4 +1,4 @@
 /datum/status_effect/stacking/staggered
-	id = "staggered"
+	identifier = "staggered"
 
 	#warn impl

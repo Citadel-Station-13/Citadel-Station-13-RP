@@ -1,9 +1,9 @@
 /**
  * ## Status Effects
- * 
+ *
  * permanent / temporary tickable effects applied to mobs that are able to track
  * instance data.
- * 
+ *
  * each effect potentially has its own amount of variable arguments that
  * can be passed into apply_status_effect. they will be detailed per-file.
  */
@@ -24,7 +24,7 @@
 	#warn hook
 	/// next world.time we should tick.
 	var/tick_next
-	/// path of screen alert thrown 
+	/// path of screen alert thrown
 	var/alert_type
 	/// screen alert instance if it exists
 	var/atom/movable/screen/alert/status_effect/alert_linked
@@ -64,7 +64,7 @@
 
 /**
  * called after add
- * 
+ *
  * @params
  * * ... - rest of parameters from /mob/apply_status_effect()
  */
@@ -74,7 +74,7 @@
 
 /**
  * called on refresh
- * 
+ *
  * @params
  * * old_timeleft - old time remaining
  * * ... - rest of parameters from /mob/apply_status_effect() or /datum/status_effect/refresh()
@@ -84,9 +84,9 @@
 
 /**
  * refreshes our duration
- * 
+ *
  * if duration is supplied and it isn't necessary to refresh, on_refreshed is not called.
- * 
+ *
  * @params
  * * duration - if supplied, refreshes us to that long from now (if we weren't already at or above).
  * * ... - rest of parameters from /mob/apply_status_effect(), passed to on_refreshed.
@@ -137,7 +137,7 @@
 
 /**
  * applies a status effect to this mob
- * 
+ *
  * if the status effect is already there, we will refresh it instead.
  *
  * @params
@@ -178,16 +178,6 @@
 	else
 		. = 1
 		qdel(found)
-
-/mob/living/proc/remove_status_effect(effect, ...) //removes all of a given status effect from this mob, returning TRUE if at least one was removed
-	. = FALSE
-	var/list/arguments = args.Copy(2)
-	if(status_effects)
-		var/datum/status_effect/S1 = effect
-		for(var/datum/status_effect/S in status_effects)
-			if(initial(S1.identifier) == S.identifier && S.before_remove(arguments))
-				qdel(S)
-				. = TRUE
 
 /**
  * checks if we have a status effect
