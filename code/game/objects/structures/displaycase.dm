@@ -28,7 +28,7 @@
 				src.healthcheck()
 
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	src.healthcheck()
@@ -58,7 +58,7 @@
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
-	src.health -= W.force
+	src.health -= W.damage_force
 	src.healthcheck()
 	..()
 	return

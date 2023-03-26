@@ -194,7 +194,7 @@
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/P)
 	if(humanform)
 		return humanform.bullet_act(P)
 	else

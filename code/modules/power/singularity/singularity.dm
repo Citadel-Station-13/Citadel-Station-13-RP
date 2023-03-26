@@ -64,7 +64,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		if(3)
 			energy -= round(((energy+1)/4),1)
 
-/obj/singularity/bullet_act(obj/item/projectile/P)
+/obj/singularity/bullet_act(obj/projectile/P)
 	return 0 //Will there be an impact? Who knows. Will we see it? No.
 
 /obj/singularity/Bump(atom/A)

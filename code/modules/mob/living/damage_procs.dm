@@ -125,7 +125,7 @@
 	if(amt <= 0)
 		return
 	if(run_armor)
-		amt *= 1 - ((run_mob_armor(def_zone, ARMOR_RAD)) / 100)
+		amt *= 1 - ((legacy_mob_armor(def_zone, ARMOR_RAD)) / 100)
 	radiation += max(0, RAD_MOB_ADDITIONAL(amt, radiation))
 
 /**

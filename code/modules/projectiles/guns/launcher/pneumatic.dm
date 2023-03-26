@@ -112,7 +112,7 @@
 	else
 		. += "Nothing is attached to the tank valve!"
 
-/obj/item/gun/launcher/pneumatic/update_release_force(obj/item/projectile)
+/obj/item/gun/launcher/pneumatic/update_release_force(obj/projectile)
 	if(tank)
 		release_force = ((fire_pressure*tank.volume)/projectile.w_class)/force_divisor //projectile speed.
 		if(release_force > 80) release_force = 80 //damage cap.

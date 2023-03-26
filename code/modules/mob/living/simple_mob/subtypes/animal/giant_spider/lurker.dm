@@ -116,7 +116,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/giant_spider/lurker/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/giant_spider/lurker/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 

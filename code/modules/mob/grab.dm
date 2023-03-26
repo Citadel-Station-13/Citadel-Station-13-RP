@@ -543,7 +543,7 @@
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
 	if(istype(hat))
-		damage += hat.force * 3
+		damage += hat.damage_force * 3
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")

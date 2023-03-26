@@ -66,7 +66,7 @@
 	minbodytemp = 0
 	heat_damage_per_tick = 0 //Even if the atmos stuff doesn't work, at least it won't take any damage.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = -50,
 				"bullet" = 0,
 				"laser" = 50,

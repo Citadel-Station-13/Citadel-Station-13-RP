@@ -346,7 +346,7 @@
 	desc = "This roughly shaped board of flexible steel seems like it could be used to travel in style. It's just missing something..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "skate_assembly0"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 3.0
 	throw_speed = 2
 	throw_range = 5
@@ -358,7 +358,7 @@
 	desc = "This bulky board of reinforced steel seems like it could be used to travel in radical style. It's just missing something..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "skate_assembly0"
-	force = 6.0
+	damage_force = 6.0
 	throw_force = 6.0
 	throw_speed = 2
 	throw_range = 4

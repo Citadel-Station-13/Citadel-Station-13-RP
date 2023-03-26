@@ -25,7 +25,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 
 
 /*
@@ -36,7 +36,7 @@
 	desc = "A translucent balloon. There's nothing in it."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
-	force = 0
+	damage_force = 0
 
 /obj/item/toy/balloon/Initialize(mapload)
 	. = ..()
@@ -92,7 +92,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "syndballoon"
 	w_class = ITEMSIZE_LARGE
@@ -103,7 +103,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
 	w_class = ITEMSIZE_LARGE
@@ -300,7 +300,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 	slot_flags = SLOT_BELT | SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
@@ -358,7 +358,7 @@
 	item_state = "sunflower"
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
-	force = 0
+	damage_force = 0
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
@@ -1547,7 +1547,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
 	w_class = ITEMSIZE_TINY
-	force = 1
+	damage_force = 1
 	throw_force = 1
 
 //Dakimakuras, ported from Main.

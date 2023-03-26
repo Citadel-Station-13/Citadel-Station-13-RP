@@ -4,38 +4,26 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'	// NO LONGER A PLACEHOLDER
 	icon_state = "kevlar_upgrade"	// RIP PLACEHOLDERS WOOO
 
-/obj/item/kevlarupgrade/afterattack(atom/A, mob/user)
-	var/meleemax = FALSE
-	var/bulletmax = FALSE
-	var/lasermax = FALSE
-	var/used = FALSE
+/obj/item/kevlarupgrade/afterattack(atom/target, mob/user, proximity_flag)
+	if(!proximity_flag)
+		return ..()
 
-	if(isobj(A) && istype(A, /obj/item/clothing/under))
-		var/obj/item/clothing/under/C = A
-		if(C.armor["melee"] >= 10)
-			meleemax = TRUE
-		if(C.armor["bullet"] >= 5)
-			bulletmax = TRUE
-		if(C.armor["laser"] >= 5)
-			lasermax = TRUE
-
-		if(meleemax != TRUE)
-			C.armor["melee"] = 10
-			used = TRUE
-		if(bulletmax != TRUE)
-			C.armor["bullet"] = 5
-			used = TRUE
-		if(lasermax != TRUE)
-			C.armor["laser"] = 5
-			used = TRUE
-
-		if(used == TRUE)
-			to_chat(user, "Armor upgrade successful!")
-			qdel(src)
-			return
-		else
+	if(istype(target, /obj/item/clothing/under))
+		var/obj/item/clothing/under/C = target
+		if(C.fetch_armor().is_atleast(list(
+			ARMOR_MELEE = 40,
+			ARMOR_BULLET = 20,
+			ARMOR_LASER = 20,
+		)))
 			to_chat(user, "This item cannot be upgraded any further!")
-			return
-	else
-		return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		C.set_armor(C.fetch_armor().boosted(list(
+			ARMOR_MELEE = 40,
+			ARMOR_BULLET = 20,
+			ARMOR_LASER = 20,
+		)))
 
+		to_chat(user, "Armor upgrade successful!")
+		qdel(src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()

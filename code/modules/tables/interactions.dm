@@ -2,7 +2,7 @@
 	. = ..()
 	if(.)
 		return
-	if(istype(mover,/obj/item/projectile))
+	if(istype(mover,/obj/projectile))
 		return check_cover(mover,target)
 	if(flipped == 1)
 		if(get_dir(mover, target) & turn(dir, 180))
@@ -23,7 +23,7 @@
 	return !density || !(get_dir(loc, newLoc) & dir)
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
-/obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
+/obj/structure/table/proc/check_cover(obj/projectile/P, turf/from)
 	var/turf/cover
 	if(flipped==1)
 		cover = get_turf(src)

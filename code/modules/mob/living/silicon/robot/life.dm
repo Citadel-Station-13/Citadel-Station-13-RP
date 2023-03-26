@@ -11,12 +11,6 @@
 	if((. = ..()))
 		return
 
-	// For some reason borg Life() doesn't call ..()
-	handle_modifiers()
-	handle_light()
-	handle_regular_hud_updates()
-	handle_vision()
-
 	if(client)
 		update_items()
 	if (src.stat != DEAD) //still using power
@@ -142,11 +136,10 @@
 	return 1
 
 /mob/living/silicon/robot/handle_regular_hud_updates()
+	. = ..()
 	var/fullbright = FALSE
 	var/seemeson = FALSE
-	SetSeeInDarkSelf(8)
-	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
-	SetSightSelf(SIGHT_FLAGS_DEFAULT)
+
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
@@ -164,7 +157,6 @@
 
 	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
 	plane_holder?.set_vis(VIS_MESONS, seemeson)
-	..()
 
 	if (src.healths)
 		if (src.stat != 2)
@@ -203,18 +195,8 @@
 		else
 			src.healths.icon_state = "health7"
 
-	if (src.syndicate && src.client)
-		for(var/datum/mind/tra in traitors.current_antagonists)
-			if(tra.current)
-				// TODO: Update to new antagonist system.
-				var/I = image('icons/mob/mob.dmi', loc = tra.current, icon_state = "traitor")
-				src.client.images += I
+	if (src.syndicate) // WTF WHYYYY PAIN
 		src.disconnect_from_ai()
-		if(src.mind)
-			// TODO: Update to new antagonist system.
-			if(!src.mind.special_role)
-				src.mind.special_role = "traitor"
-				traitors.current_antagonists |= src.mind
 
 	if (src.cells)
 		if (src.cell)
@@ -233,18 +215,6 @@
 		else
 			src.cells.icon_state = "charge-empty"
 
-	if(bodytemp)
-		switch(src.bodytemperature) //310.055 optimal body temp
-			if(335 to INFINITY)
-				src.bodytemp.icon_state = "temp2"
-			if(320 to 335)
-				src.bodytemp.icon_state = "temp1"
-			if(300 to 320)
-				src.bodytemp.icon_state = "temp0"
-			if(260 to 300)
-				src.bodytemp.icon_state = "temp-1"
-			else
-				src.bodytemp.icon_state = "temp-2"
 
 //Oxygen and fire does nothing yet!!
 //	if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"

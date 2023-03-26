@@ -50,9 +50,6 @@
 	pulse(0)
 
 /obj/item/assembly/mousetrap/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else

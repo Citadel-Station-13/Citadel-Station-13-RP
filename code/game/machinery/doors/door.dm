@@ -166,7 +166,7 @@
 		else
 			do_animate("deny")
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
@@ -278,12 +278,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force)
+					take_damage(W.damage_force)
 			return
 
 	if(src.operating > 0 || isrobot(user))

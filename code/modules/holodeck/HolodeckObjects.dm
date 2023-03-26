@@ -202,7 +202,7 @@
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't dismantle it!</span>")
 	else
 		if(W.damtype == BRUTE || W.damtype == BURN)
-			hit(W.force)
+			hit(W.damage_force)
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()
@@ -225,7 +225,7 @@
 		return
 
 	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
-		var/aforce = I.force
+		var/aforce = I.damage_force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<font color='red'><B>[src] was hit by [I].</B></font>")
 		if(I.damtype == BRUTE || I.damtype == BURN)
@@ -278,7 +278,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
-	force = 3.0
+	damage_force = 3.0
 	throw_speed = 1
 	throw_range = 5
 	throw_force = 0
@@ -309,13 +309,13 @@
 		return
 	active = !active
 	if (active)
-		force = 30
+		damage_force = 30
 		item_state = "[icon_state]_blade"
 		w_class = ITEMSIZE_LARGE
 		playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
-		force = 3
+		damage_force = 3
 		item_state = "[icon_state]"
 		w_class = ITEMSIZE_SMALL
 		playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
@@ -387,7 +387,7 @@
 /obj/structure/holohoop/CanAllowThrough(atom/movable/mover, turf/target)
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return TRUE
 		if(prob(50))
 			I.forceMove(loc)

@@ -247,7 +247,7 @@ proc/check_panel(mob/M)
 		to_chat(M, "<font color='red'><B>[my_target] flails around wildly.</B></font>")
 	my_target.show_message("<font color='red'><B>[src] has been attacked by [my_target] </B></font>", 1) //Lazy.
 
-	src.health -= P.force
+	src.health -= P.damage_force
 
 /obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
 	. = ..()

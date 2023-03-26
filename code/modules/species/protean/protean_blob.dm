@@ -394,7 +394,6 @@
 		blob.devourable = P.devourable
 		blob.feeding = P.feeding
 		blob.digest_leave_remains = P.digest_leave_remains
-		blob.allowmobvore = P.allowmobvore
 		blob.vore_taste = P.vore_taste
 		blob.permit_healbelly = P.permit_healbelly
 		blob.can_be_drop_prey = P.can_be_drop_prey

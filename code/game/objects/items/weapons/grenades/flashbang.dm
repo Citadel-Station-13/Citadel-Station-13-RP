@@ -101,7 +101,7 @@
 	name = "stingbang"
 	desc = "A hand held grenade, with an adjustable timer, perfect for stopping riots and playing morally unthinkable pranks."
 	icon_state = "timeg"
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/rubber, /obj/item/projectile/bullet/pellet/fragment/rubber/strong)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment/rubber, /obj/projectile/bullet/pellet/fragment/rubber/strong)
 	var/num_fragments = 45  //total number of fragments produced by the grenade
 	var/spread_range = 6 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 
@@ -115,7 +115,7 @@
 /obj/item/grenade/flashbang/stingbang/shredbang
 	name = "shredbang"
 	desc = "A hand held grenade, with an adjustable timer, perfect for handling unruly citizens and getting detained by government officials."
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment)
 
 /obj/item/grenade/flashbang/clusterbang//Created by Polymorph, fixed by Sieve
 	desc = "Use of this weapon may constiute a war crime in your area, consult your local Facility Director."

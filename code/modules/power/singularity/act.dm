@@ -90,7 +90,7 @@
 	qdel(src)
 	return 50000
 
-/obj/item/projectile/beam/emitter/singularity_pull()
+/obj/projectile/beam/emitter/singularity_pull()
 	return
 
 /obj/effect/projectile/emitter/singularity_pull()

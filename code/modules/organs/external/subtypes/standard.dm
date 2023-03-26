@@ -11,7 +11,7 @@
 	max_damage = 100
 	min_broken_damage = 35
 	w_class = ITEMSIZE_HUGE
-	body_part = UPPER_TORSO
+	body_part_flags = UPPER_TORSO
 	vital = TRUE
 	amputation_point = "spine"
 	joint = "neck"
@@ -53,7 +53,7 @@
 	max_damage = 100
 	min_broken_damage = 35
 	w_class = ITEMSIZE_LARGE
-	body_part = LOWER_TORSO
+	body_part_flags = LOWER_TORSO
 	vital = TRUE
 	parent_organ = BP_TORSO
 	amputation_point = "lumbar"
@@ -83,12 +83,12 @@
 	max_damage = 80
 	min_broken_damage = 30
 	w_class = ITEMSIZE_NORMAL
-	body_part = ARM_LEFT
+	body_part_flags = ARM_LEFT
 	parent_organ = BP_TORSO
 	joint = "left elbow"
 	amputation_point = "left shoulder"
 	can_grasp = TRUE
-	force = 7
+	damage_force = 7
 	throw_force = 10
 
 /obj/item/organ/external/arm/handle_germ_effects()
@@ -112,7 +112,7 @@
 	organ_tag = BP_R_ARM
 	name = "right arm"
 	icon_name = "r_arm"
-	body_part = ARM_RIGHT
+	body_part_flags = ARM_RIGHT
 	joint = "right elbow"
 	amputation_point = "right shoulder"
 
@@ -123,13 +123,13 @@
 	max_damage = 80
 	min_broken_damage = 30
 	w_class = ITEMSIZE_NORMAL
-	body_part = LEG_LEFT
+	body_part_flags = LEG_LEFT
 	icon_position = LEFT
 	parent_organ = BP_GROIN
 	joint = "left knee"
 	amputation_point = "left hip"
 	can_stand = TRUE
-	force = 10
+	damage_force = 10
 	throw_force = 12
 
 /obj/item/organ/external/leg/handle_germ_effects()
@@ -150,7 +150,7 @@
 	organ_tag = BP_R_LEG
 	name = "right leg"
 	icon_name = "r_leg"
-	body_part = LEG_RIGHT
+	body_part_flags = LEG_RIGHT
 	icon_position = RIGHT
 	joint = "right knee"
 	amputation_point = "right hip"
@@ -162,13 +162,13 @@
 	max_damage = 50
 	min_broken_damage = 15
 	w_class = ITEMSIZE_SMALL
-	body_part = FOOT_LEFT
+	body_part_flags = FOOT_LEFT
 	icon_position = LEFT
 	parent_organ = BP_L_LEG
 	joint = "left ankle"
 	amputation_point = "left ankle"
 	can_stand = TRUE
-	force = 3
+	damage_force = 3
 	throw_force = 6
 
 /obj/item/organ/external/foot/handle_germ_effects()
@@ -189,7 +189,7 @@
 	organ_tag = BP_R_FOOT
 	name = "right foot"
 	icon_name = "r_foot"
-	body_part = FOOT_RIGHT
+	body_part_flags = FOOT_RIGHT
 	icon_position = RIGHT
 	parent_organ = BP_R_LEG
 	joint = "right ankle"
@@ -202,14 +202,14 @@
 	max_damage = 50
 	min_broken_damage = 15
 	w_class = ITEMSIZE_SMALL
-	body_part = HAND_LEFT
+	body_part_flags = HAND_LEFT
 	parent_organ = BP_L_ARM
 	joint = "left wrist"
 	amputation_point = "left wrist"
 	can_grasp = TRUE
 	organ_rel_size = 10
 	base_miss_chance = 50
-	force = 3
+	damage_force = 3
 	throw_force = 5
 
 /obj/item/organ/external/hand/handle_germ_effects()
@@ -233,7 +233,7 @@
 	organ_tag = BP_R_HAND
 	name = "right hand"
 	icon_name = "r_hand"
-	body_part = HAND_RIGHT
+	body_part_flags = HAND_RIGHT
 	parent_organ = BP_R_ARM
 	joint = "right wrist"
 	amputation_point = "right wrist"
@@ -246,7 +246,7 @@
 	max_damage = 75
 	min_broken_damage = 35
 	w_class = ITEMSIZE_NORMAL
-	body_part = HEAD
+	body_part_flags = HEAD
 	vital = TRUE
 	parent_organ = BP_TORSO
 	joint = "jaw"
@@ -255,7 +255,7 @@
 	cannot_gib = TRUE
 	encased = "skull"
 	base_miss_chance = 40
-	force = 3
+	damage_force = 3
 	throw_force = 7
 
 	var/can_intake_reagents = TRUE

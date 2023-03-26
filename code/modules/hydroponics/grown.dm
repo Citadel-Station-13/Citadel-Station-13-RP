@@ -58,7 +58,7 @@
 	if(reagents.total_volume > 0)
 		bitesize = 1+round(reagents.total_volume / 2, 1)
 	if(seed.get_trait(TRAIT_STINGS))
-		force = 1
+		damage_force = 1
 	catalogue_data = seed.catalog_data_grown
 
 /obj/item/reagent_containers/food/snacks/grown/update_desc()

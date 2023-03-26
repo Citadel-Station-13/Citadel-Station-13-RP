@@ -72,7 +72,7 @@
 
 // Handles the actual harming by a melee weapon.
 /mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-	effective_force = O.force
+	effective_force = O.damage_force
 
 	//Animals can't be stunned(?)
 	if(O.damtype == HALLOSS)
@@ -80,7 +80,7 @@
 	if(supernatural && istype(O,/obj/item/nullrod))
 		effective_force *= 2
 		purge = 3
-	if(O.force <= resistance)
+	if(O.damage_force <= resistance)
 		to_chat(user,"<span class='danger'>This weapon is ineffective, it does no damage.</span>")
 		return 2 //???
 
@@ -184,15 +184,15 @@
 	return poison_resist
 
 // Armor
-/mob/living/simple_mob/run_mob_armor(def_zone, type)
-	var/armorval = armor[type]
+/mob/living/simple_mob/legacy_mob_armor(def_zone, type)
+	var/armorval = fetch_armor().raw(type) * 100
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
-/mob/living/simple_mob/run_mob_soak(def_zone, attack_flag)
-	var/armorval = armor_soak[attack_flag]
+/mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
+	var/armorval = fetch_armor().raw(attack_flag) * 100
 	if(!armorval)
 		return 0
 	else

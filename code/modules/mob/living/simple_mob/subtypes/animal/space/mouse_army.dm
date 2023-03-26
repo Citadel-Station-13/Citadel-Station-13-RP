@@ -70,7 +70,7 @@
 
 	//Damage resistances
 	shock_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 30,
 		"bullet" = 20,
 		"laser" = 20,
@@ -162,7 +162,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/operative)
 
 	shock_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
 				"bullet" = 40,
 				"laser" = 30,
@@ -198,7 +198,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 20,
 				"bullet" = 20,
 				"laser" = 20,
@@ -207,7 +207,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	projectiletype = /obj/item/projectile/bullet/incendiary/flamethrower
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower
 	base_attack_cooldown = 10
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
@@ -270,7 +270,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
 				"bullet" = 30,
 				"laser" = 10,
@@ -336,7 +336,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 50,
 				"bullet" = 10,
 				"laser" = 10,
@@ -417,7 +417,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 

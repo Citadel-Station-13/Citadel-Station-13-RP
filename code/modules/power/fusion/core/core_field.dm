@@ -42,7 +42,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	. = ..()
 	ignore_types = typecacheof(list(
 		/obj/effect,
-		/obj/item/projectile,
+		/obj/projectile,
 		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
 	AddEnergy(Proj.damage)
 	update_icon()
 	return 0

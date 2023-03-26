@@ -11,7 +11,7 @@
 	melee_attack_delay = 1 SECOND
 	attacktext = list("punched", "slammed", "uppercutted", "pummeled")
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 30,
 				"bullet"	= 30,
 				"laser"		= 15,

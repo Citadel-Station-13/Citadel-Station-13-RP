@@ -155,7 +155,7 @@
 	return
 
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(var/obj/projectile/Proj)
 
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
@@ -352,7 +352,7 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
-			hit(W.force)
+			hit(W.damage_force)
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()

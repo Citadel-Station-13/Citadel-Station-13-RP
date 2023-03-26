@@ -8,16 +8,16 @@
 	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
-	projectile_type = /obj/item/projectile/beam/midlaser
+	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
-		list(mode_name="normal", fire_delay=8, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 240),
-		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
+		list(mode_name="normal", fire_delay=8, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 240),
+		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 		)
 
 /obj/item/gun/energy/laser/mounted
@@ -32,14 +32,14 @@
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the HI G40E, this one fires less concentrated energy bolts designed for target practice."
-	projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/projectile/beam/practice
 	charge_cost = 48
 
 	cell_type = /obj/item/cell/device
 
 	firemodes = list(
-		list(mode_name="normal", projectile_type=/obj/item/projectile/beam/practice, charge_cost = 48),
-		list(mode_name="suppressive", projectile_type=/obj/item/projectile/beam/practice, charge_cost = 12),
+		list(mode_name="normal", projectile_type=/obj/projectile/beam/practice, charge_cost = 48),
+		list(mode_name="suppressive", projectile_type=/obj/projectile/beam/practice, charge_cost = 12),
 		)
 
 /obj/item/gun/energy/retro
@@ -49,7 +49,7 @@
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 	fire_delay = 10 //old technology
 
 /obj/item/gun/energy/retro/mounted
@@ -102,7 +102,7 @@
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
 	charge_cost = 480 // Five shots.
 
-	projectile_type = /obj/item/projectile/beam/cyan
+	projectile_type = /obj/projectile/beam/cyan
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"
@@ -113,10 +113,10 @@
 	icon_state = "caplaser"
 	item_state = "caplaser"
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 	origin_tech = null
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
@@ -130,7 +130,7 @@
 	item_state = null
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_BACK
-	projectile_type = /obj/item/projectile/beam/heavylaser/cannon
+	projectile_type = /obj/projectile/beam/heavylaser/cannon
 	battery_lock = 1
 	fire_delay = 20
 	w_class = ITEMSIZE_LARGE
@@ -146,7 +146,7 @@
 	recharge_time = 10
 	//accuracy = 0 // Mounted cannons are just fine the way they are.
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
-	projectile_type = /obj/item/projectile/beam/heavylaser
+	projectile_type = /obj/projectile/beam/heavylaser
 	charge_cost = 400
 	fire_delay = 20
 
@@ -157,7 +157,7 @@
 	heavy = TRUE
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	projectile_type = /obj/item/projectile/beam/xray
+	projectile_type = /obj/projectile/beam/xray
 	charge_cost = 200
 
 /obj/item/gun/energy/sniperrifle
@@ -168,11 +168,11 @@
 	item_state = "sniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "z8carbine", SLOT_ID_LEFT_HAND = "z8carbine") //placeholder
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
-	projectile_type = /obj/item/projectile/beam/sniper
+	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 600
 	fire_delay = 35
-	force = 10
+	damage_force = 10
 	heavy = TRUE
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
@@ -205,11 +205,11 @@
 	icon_state = "eshotgun"
 	item_state = "shotgun"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_POWER = 3)
-	projectile_type = /obj/item/projectile/beam/sniper
+	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 1300
 	fire_delay = 20
-	force = 8
+	damage_force = 8
 	heavy = TRUE
 	w_class = ITEMSIZE_LARGE
 	accuracy = 70
@@ -231,7 +231,7 @@
 	icon_state = "ecshotgun"
 	item_state = "cshotgun"
 	charge_cost = 1000
-	force = 12
+	damage_force = 12
 	accuracy = 70
 	scoped_accuracy = 95
 
@@ -243,24 +243,24 @@
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
-	projectile_type = /obj/item/projectile/beam/lasertag/blue
+	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 
 /obj/item/gun/energy/lasertag/blue
 	icon_state = "bluetag"
 	item_state = "bluetag"
-	projectile_type = /obj/item/projectile/beam/lasertag/blue
+	projectile_type = /obj/projectile/beam/lasertag/blue
 	pin = /obj/item/firing_pin/tag/blue
 
 /obj/item/gun/energy/lasertag/red
 	icon_state = "redtag"
 	item_state = "redtag"
-	projectile_type = /obj/item/projectile/beam/lasertag/red
+	projectile_type = /obj/projectile/beam/lasertag/red
 	pin = /obj/item/firing_pin/tag/red
 
 /obj/item/gun/energy/lasertag/omni
-	projectile_type = /obj/item/projectile/beam/lasertag/omni
+	projectile_type = /obj/projectile/beam/lasertag/omni
 
 // Laser scattergun, proof of concept.
 
@@ -271,7 +271,7 @@
 	desc = "A strange Almachi weapon, utilizing a refracting prism to turn a single laser blast into a diverging cluster."
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 1, TECH_MATERIAL = 4)
 	heavy = TRUE
-	projectile_type = /obj/item/projectile/scatter/laser
+	projectile_type = /obj/projectile/scatter/laser
 
 // Other laser guns.
 
@@ -284,7 +284,7 @@
 	heavy = TRUE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
-	projectile_type = /obj/item/projectile/beam/weaklaser
+	projectile_type = /obj/projectile/beam/weaklaser
 	cell_type = /obj/item/cell/device/weapon
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 5, TECH_ILLEGAL = 3)
 
@@ -302,7 +302,7 @@
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
-	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot
+	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
 
 //NT SpecOps Laser Rifle
@@ -314,14 +314,14 @@
 	fire_delay = 6
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
-	projectile_type = /obj/item/projectile/beam/midlaser
+	projectile_type = /obj/projectile/beam/midlaser
 	heavy = FALSE
 	one_handed_penalty = 25
 
 	firemodes = list(
-		list(mode_name="normal", fire_delay=6, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 200),
-		list(mode_name="suppressive", fire_delay=3, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 50),
+		list(mode_name="normal", fire_delay=6, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 200),
+		list(mode_name="suppressive", fire_delay=3, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 50),
 		)

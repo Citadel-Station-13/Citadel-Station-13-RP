@@ -178,10 +178,10 @@
 	if(!hit_zone)
 		// missed
 		// log
-		add_attack_logs(user, L, "missed with [src] DT [damtype] F [force] I [user.a_intent]")
+		add_attack_logs(user, L, "missed with [src] DT [damtype] F [damage_force] I [user.a_intent]")
 		return melee_mob_miss(L, user, clickchain_flags, params, mult, target_zone, intent)
 	// log
-	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [force] I [user.a_intent]")
+	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [damage_force] I [user.a_intent]")
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
@@ -246,7 +246,7 @@
 	if(!isliving(target))
 		return
 	// harmless, just tap them and leave
-	if(!force)
+	if(!damage_force)
 		// todo: proper weapon sound ranges/rework
 		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
 		// feedback
@@ -260,7 +260,7 @@
 	visible_message(SPAN_DANGER("[L] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
 
 	//? legacy code start
-	var/power = force
+	var/power = damage_force
 	if(isliving(user))
 		var/mob/living/attacker = user
 		for(var/datum/modifier/mod in attacker.modifiers)

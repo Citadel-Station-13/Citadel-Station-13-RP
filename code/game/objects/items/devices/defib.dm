@@ -10,7 +10,7 @@
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
@@ -193,7 +193,7 @@
 	icon_state = "defibpaddles"
 	item_state = "defibpaddles"
 	gender = PLURAL
-	force = 2
+	damage_force = 2
 	throw_force = 6
 	w_class = ITEMSIZE_LARGE
 

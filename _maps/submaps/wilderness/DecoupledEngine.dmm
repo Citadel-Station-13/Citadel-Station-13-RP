@@ -43,7 +43,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DecoupledEngine)
 "al" = (
-/obj/item/projectile/bullet/magnetic/fuelrod,
+/obj/projectile/bullet/magnetic/fuelrod,
 /turf/template_noop,
 /area/submap/DecoupledEngine)
 "am" = (
