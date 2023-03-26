@@ -12,11 +12,21 @@
 //? Damage API
 
 /**
- * takes damage from a standard attack, taking into account armor but not shields.
+ * takes damage from a generic attack, taking into account armor but not shields.
+ * this does not handle playing sounds / anything, this is strictly generic damage handling
+ * usable by anything.
+ *
+ * @params
+ * * damage - raw damage
+ * * tier - penetration / attack tier
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - damage_mode
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  *
  * @return raw damage taken
  */
-/atom/proc/take_atom_damage(amount, tier, damage_type, damage_mode, armor_flag)
+/atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
 	#warn how to even deal with this?
@@ -239,8 +249,6 @@
  * checks for shields
  * not always accurate
  *
- * todo: use pointers instead
- *
  * params are modified and then returned as a list.
  */
 /atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
@@ -251,8 +259,6 @@
 /**
  * runs an attack against shields
  * side effects are allowed
- *
- * todo: use pointers instead
  *
  * params are modified and then returned as a list
  */

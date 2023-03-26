@@ -134,6 +134,7 @@
 #include "code\__DEFINES\combat\attack_types.dm"
 #include "code\__DEFINES\combat\damage.dm"
 #include "code\__DEFINES\combat\explosions.dm"
+#include "code\__DEFINES\combat\shieldcall.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\dbcore.dm"
 #include "code\__DEFINES\controllers\persistence.dm"
