@@ -206,22 +206,6 @@
 		if(protean_requires_healing(H) && refactory.get_stored_material(MAT_STEEL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
-		//MHydrogen adds speeeeeed
-		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
-
-		//Uranium adds brute armor
-		if(refactory.get_stored_material(MAT_URANIUM) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/uranium, origin = refactory)
-
-		//Gold adds burn armor
-		if(refactory.get_stored_material(MAT_GOLD) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/gold, origin = refactory)
-
-		//Silver adds darksight
-		if(refactory.get_stored_material(MAT_SILVER) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/silver, origin = refactory)
-
 	return ..()
 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
@@ -274,51 +258,6 @@
 	// stops you from consuming materials if the toggle is off
 	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()
-
-/datum/modifier/protean/mhydrogen
-	name = "Protean Effect - M.Hydrogen"
-	desc = "You're affected by the presence of metallic hydrogen."
-
-	on_created_text = "<span class='notice'>You feel yourself accelerate, the metallic hydrogen increasing your speed temporarily.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
-
-	material_name = MAT_METALHYDROGEN
-
-	slowdown = -1
-
-/datum/modifier/protean/uranium
-	name = "Protean Effect - Uranium"
-	desc = "You're affected by the presence of uranium."
-
-	on_created_text = "<span class='notice'>You feel yourself become nearly impervious to physical attacks as uranium is incorporated in your nanites.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the uranium, and you return to your normal nanites.</span>"
-
-	material_name = MAT_URANIUM
-
-	incoming_brute_damage_percent = 0.8
-
-/datum/modifier/protean/gold
-	name = "Protean Effect - Gold"
-	desc = "You're affected by the presence of gold."
-
-	on_created_text = "<span class='notice'>You feel yourself become more reflective, able to resist heat and fire better for a time.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the gold, and you return to your normal nanites.</span>"
-
-	material_name = MAT_GOLD
-
-	incoming_fire_damage_percent = 0.8
-
-/datum/modifier/protean/silver
-	name = "Protean Effect - Silver"
-	desc = "You're affected by the presence of silver."
-
-	on_created_text = "<span class='notice'>Your physical control is improved for a time, making it easier to hit targets, and avoid being hit.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the silver, and your motor control returns to normal.</span>"
-
-	material_name = MAT_SILVER
-
-	accuracy = 30
-	evasion = 30
 
 /datum/modifier/protean/steel
 	name = "Protean Effect - Steel"
