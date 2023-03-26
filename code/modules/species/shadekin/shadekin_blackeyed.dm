@@ -14,11 +14,9 @@
 	//TODO: Something more fitting for black-eyes
 	//TODO: CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why they're around wherever we are.
 	blurb = {"
-	Very little is known about these creatures. They appear to be largely mammalian in appearance.
-	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over,
-	but next to no verifiable evidence to their existence. However, they have recently been more verifiably
-	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have
-	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread.
+	Very little is known about these creatures. They appear to be largely mammalian in appearance and organic in nature.
+	A recent exodus has rendered them more populous in the vast expanses of space. A moniker of 'Shadekin' has been
+	given to them, due to their notable affinity, and ability to, create shade.
 	"}
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
@@ -31,7 +29,6 @@
 
 	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0 // Completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
 	darksight = 10 // Best darksight around
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
@@ -39,21 +36,10 @@
 
 	total_health = 75   // Fragile
 	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
-	burn_mod     = 1.25 // Furry
-	radiation_mod = 0
+	burn_mod     = 1.5 // Furry
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
 	hunger_factor = 0.2 // Gets hungrier faster than human baseline.
-
-	warning_low_pressure = 50
-	hazard_low_pressure = -1
-
-	warning_high_pressure = 300
-	hazard_high_pressure = INFINITY
-
-	cold_level_1 = -1 // Immune to cold
-	cold_level_2 = -1
-	cold_level_3 = -1
 
 	heat_level_1 = 850 // Resistant to heat
 	heat_level_2 = 1000
@@ -61,7 +47,7 @@
 
 	// Shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise)
 	species_flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
@@ -77,12 +63,7 @@
 	male_sneeze_sound   = null
 	female_sneeze_sound = null
 
-	speech_bubble_appearance = "ghost"
-
 	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM) //fuck it. shadekins with titties
-
-	breath_type = null //they don't breathe
-	poison_type = null
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_UNDERWEAR
 
@@ -112,7 +93,6 @@
 	)
 
 	var/list/crew_shadekin_abilities = list(
-		/datum/power/crew_shadekin/crewkin_regenerate_other,
 		/datum/power/crew_shadekin/crewkin_create_shade,
 	)
 

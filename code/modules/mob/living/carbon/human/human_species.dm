@@ -82,6 +82,9 @@
 /mob/living/carbon/human/adherent
 	species = /datum/species/adherent
 
+/mob/living/carbon/human/crew_shadekin
+	species = /datum/species/crew_shadekin
+
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
