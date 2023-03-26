@@ -180,6 +180,12 @@
 	desc = "A card which represents the balance between those that serve and those that are served."
 	job_access_type = /datum/role/job/station/head_of_personnel
 
+/obj/item/card/id/silver/blueshield
+	name = "\improper Blueshield ID"
+	assignment = "Blueshield"
+	rank = "Blueshield"
+	job_access_type = /datum/role/job/station/blueshield
+
 /obj/item/card/id/gold
 	name = "gold identification card"
 	desc = "A golden card which shows power and might."

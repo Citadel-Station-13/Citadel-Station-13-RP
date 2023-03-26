@@ -21,7 +21,7 @@
 /obj/item/melee/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
 	if(.)
 		return .
-	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile))
+	if(user.incapacitated() || !istype(damage_source, /obj/projectile))
 		return 0
 
 	var/bad_arc = REVERSE_DIR(user.dir)

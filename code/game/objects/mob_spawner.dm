@@ -74,15 +74,15 @@
 		spawned_mobs.Remove(L)
 
 /obj/structure/mob_spawner/attackby(var/obj/item/I, var/mob/living/user)
-	if(!I.force || I.item_flags & ITEM_NOBLUDGEON || !destructible)
+	if(!I.damage_force || I.item_flags & ITEM_NOBLUDGEON || !destructible)
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	visible_message("<span class='warning'>\The [src] has been [I.get_attack_verb(src, user)] with \the [I] by [user].</span>")
-	take_damage(I.force)
+	take_damage(I.damage_force)
 
-/obj/structure/mob_spawner/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/mob_spawner/bullet_act(var/obj/projectile/Proj)
 	..()
 	if(destructible)
 		take_damage(Proj.get_structure_damage())

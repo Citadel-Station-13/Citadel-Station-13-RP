@@ -84,7 +84,7 @@
 	maxHealth = 450
 	deflect_chance = 25
 	has_repair_droid = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 50,
 				"laser"		= 50,
@@ -97,7 +97,7 @@
 	special_attack_min_range = 1
 	special_attack_max_range = 7
 	special_attack_cooldown = 10 SECONDS
-	projectiletype = /obj/item/projectile/energy/homing_bolt // We're now a bullet hell game.
+	projectiletype = /obj/projectile/energy/homing_bolt // We're now a bullet hell game.
 	projectilesound = 'sound/weapons/wave.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
 	var/obj/effect/overlay/energy_ball/energy_ball = null
@@ -118,19 +118,19 @@
 		if(INTENT_GRAB) // Micro-singulo
 			launch_microsingularity(A)
 
-/obj/item/projectile/energy/homing_bolt
+/obj/projectile/energy/homing_bolt
 	name = "homing bolt"
 	icon_state = "force_missile"
 	damage = 20
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 
-/obj/item/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()
 	if(target)
 		set_homing_target(target)
 
-/obj/item/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
+/obj/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
 	..()
 	set_pixel_speed(0.5)
 
@@ -215,7 +215,7 @@
 				visible_message(SPAN_WARNING( "\The [src] fires a rocket into the air!"))
 				playsound(src, 'sound/weapons/rpg.ogg', 70, 1)
 				face_atom(T)
-				var/obj/item/projectile/arc/explosive_rocket/rocket = new(loc)
+				var/obj/projectile/arc/explosive_rocket/rocket = new(loc)
 				rocket.old_style_target(T, src)
 				rocket.fire()
 				sleep(1 SECOND)
@@ -225,11 +225,11 @@
 
 // Arcing rocket projectile that produces a weak explosion when it lands.
 // Shouldn't punch holes in the floor, but will still hurt.
-/obj/item/projectile/arc/explosive_rocket
+/obj/projectile/arc/explosive_rocket
 	name = "rocket"
 	icon_state = "mortar"
 
-/obj/item/projectile/arc/explosive_rocket/on_impact(turf/T)
+/obj/projectile/arc/explosive_rocket/on_impact(turf/T)
 	new /obj/effect/explosion(T) // Weak explosions don't produce this on their own, apparently.
 	explosion(T, 0, 0, 2, adminlog = FALSE)
 
@@ -238,15 +238,15 @@
 	visible_message(SPAN_WARNING( "\The [src] fires an energetic sphere into the air!"))
 	playsound(src, 'sound/weapons/Laser.ogg', 50, 1)
 	face_atom(T)
-	var/obj/item/projectile/arc/microsingulo/sphere = new(loc)
+	var/obj/projectile/arc/microsingulo/sphere = new(loc)
 	sphere.old_style_target(T, src)
 	sphere.fire()
 
-/obj/item/projectile/arc/microsingulo
+/obj/projectile/arc/microsingulo
 	name = "micro singularity"
 	icon_state = "bluespace"
 
-/obj/item/projectile/arc/microsingulo/on_impact(turf/T)
+/obj/projectile/arc/microsingulo/on_impact(turf/T)
 	new /obj/effect/temporary_effect/pulse/microsingulo(T)
 
 

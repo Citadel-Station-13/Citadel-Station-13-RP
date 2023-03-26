@@ -1,19 +1,19 @@
 #define STD_DEF(what) \
-	name = what;																								\
-	desc = "A costume of unknown origin.";																		\
-	w_class = WEIGHT_CLASS_SMALL; 																				\
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);		\
-	atom_flags = PHORONGUARD;																						\
-	inv_hide_flags = HIDEHOLSTER|HIDEFACE|BLOCKHAIR;																	\
+	name = what; \
+	desc = "A costume of unknown origin."; \
+	w_class = WEIGHT_CLASS_SMALL; \
+	armor_type = /datum/armor/none; \
+	atom_flags = PHORONGUARD; \
+	inv_hide_flags = HIDEHOLSTER|HIDEFACE|BLOCKHAIR; \
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;
 
 #define STD_DEF_NON_HIDING(what) \
-	name = what;																								\
-	desc = "A costume of unknown origin.";																		\
-	w_class = WEIGHT_CLASS_SMALL; 																				\
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);		\
-	atom_flags = PHORONGUARD;																						\
-	inv_hide_flags = HIDEHOLSTER;																					\
+	name = what; \
+	desc = "A costume of unknown origin."; \
+	w_class = WEIGHT_CLASS_SMALL; \
+	armor_type = /datum/armor/none; \
+	atom_flags = PHORONGUARD; \
+	inv_hide_flags = HIDEHOLSTER; \
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;
 
 /**

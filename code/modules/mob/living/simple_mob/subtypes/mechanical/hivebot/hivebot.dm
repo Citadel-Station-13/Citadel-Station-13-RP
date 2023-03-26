@@ -42,7 +42,7 @@
 	qdel(src)
 
 // The hivebot's default projectile.
-/obj/item/projectile/bullet/hivebot
+/obj/projectile/bullet/hivebot
 	damage = 10
 	damage_type = BRUTE
 	sharp = FALSE

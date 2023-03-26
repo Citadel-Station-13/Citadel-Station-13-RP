@@ -430,7 +430,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	show_examine = FALSE
 	owner = null
 	del_for_null_core = FALSE
@@ -503,14 +503,14 @@
 	icon_state = "generic"
 	desc = "This is a generic template that shoots projectiles.  If you can read this, the game broke!"
 	cast_methods = CAST_RANGED
-	var/obj/item/projectile/spell_projectile = null
+	var/obj/projectile/spell_projectile = null
 	var/pre_shot_delay = 0
 	var/fire_sound = null
 	var/energy_cost_per_shot = 5
 
 /obj/item/spell/construct/projectile/on_ranged_cast(atom/hit_atom, mob/living/user)
 	if(set_up(hit_atom, user))
-		var/obj/item/projectile/new_projectile = make_projectile(spell_projectile, user)
+		var/obj/projectile/new_projectile = make_projectile(spell_projectile, user)
 		new_projectile.old_style_target(hit_atom)
 		new_projectile.fire()
 		log_and_message_admins("has casted [src] at \the [hit_atom].")
@@ -519,8 +519,8 @@
 		return 1
 	return 0
 
-/obj/item/spell/construct/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
-	var/obj/item/projectile/P = new projectile_type(get_turf(user))
+/obj/item/spell/construct/projectile/proc/make_projectile(obj/projectile/projectile_type, mob/living/user)
+	var/obj/projectile/P = new projectile_type(get_turf(user))
 	return P
 
 /obj/item/spell/construct/projectile/proc/set_up(atom/hit_atom, mob/living/user)
@@ -560,18 +560,18 @@
 	icon_state = "generic"
 	desc = "Your manipulators fire searing beams of inverted light."
 	cast_methods = CAST_RANGED
-	spell_projectile = /obj/item/projectile/beam/inversion
+	spell_projectile = /obj/projectile/beam/inversion
 	pre_shot_delay = 0
 	cooldown = 5
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 
-/obj/item/projectile/beam/inversion
+/obj/projectile/beam/inversion
 	name = "inversion beam"
 	icon_state = "invert"
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 	damage = 15
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	armor_penetration = 60
 	light_range = 2
 	light_power = -2

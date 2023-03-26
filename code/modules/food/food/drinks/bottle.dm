@@ -7,7 +7,7 @@
 	amount_per_transfer_from_this = 10
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	force = 6
+	damage_force = 6
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
@@ -156,7 +156,7 @@
 		return //won't always break on the first hit
 
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = smash_duration + min(0, force - L.run_mob_armor(target_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
 
 	if(target_zone == "head" && istype(L, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
@@ -181,7 +181,7 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	force = 10
+	damage_force = 10
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 5

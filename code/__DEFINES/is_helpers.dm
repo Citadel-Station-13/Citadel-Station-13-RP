@@ -6,6 +6,10 @@
 
 #define isdatum(D) (istype(D, /datum))
 
+#define isimage(D) (istype(D, /image))
+
+#define ismutableappearance(D) (istype(D, /mutable_appearance))
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 //Datums

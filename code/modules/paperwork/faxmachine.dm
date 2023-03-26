@@ -6,7 +6,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/modules/paperwork/machinery/fax.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
 	req_one_access = list(ACCESS_COMMAND_IAA, ACCESS_COMMAND_BRIDGE, ACCESS_SECURITY_ARMORY, ACCESS_SUPPLY_QM)

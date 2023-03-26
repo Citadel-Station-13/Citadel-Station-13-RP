@@ -43,7 +43,7 @@
 	if(!istype(W)) return
 
 	//Calculate damage
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		src.health -= aforce
 
@@ -56,7 +56,7 @@
 
 	..()
 
-/obj/machinery/shield/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shield/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	check_failure()

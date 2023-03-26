@@ -6,7 +6,7 @@
 /obj/item/organ/external/stump/Initialize(mapload, internal, obj/item/organ/external/limb)
 	if(istype(limb))
 		organ_tag = limb.organ_tag
-		body_part = limb.body_part
+		body_part_flags = limb.body_part_flags
 		amputation_point = limb.amputation_point
 		joint = limb.joint
 		parent_organ = limb.parent_organ

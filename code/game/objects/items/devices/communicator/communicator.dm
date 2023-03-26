@@ -350,7 +350,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems. You can wear this one on your wrist!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "commwatch"
-	item_flags = EQUIP_ALLOW_SINGLE_LIMB
+	item_flags = CLOTHING_ALLOW_SINGLE_LIMB
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()

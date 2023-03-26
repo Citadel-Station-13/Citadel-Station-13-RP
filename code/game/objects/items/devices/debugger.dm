@@ -9,7 +9,7 @@
 	desc = "Used to debug electronic equipment."
 	icon = 'icons/obj/hacktool.dmi'
 	icon_state = "hacktool-g"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15

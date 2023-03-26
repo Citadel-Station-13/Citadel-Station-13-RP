@@ -9,7 +9,7 @@
 	item_state = "wrench"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WRENCH
-	force = 6
+	damage_force = 6
 	throw_force = 7
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -78,7 +78,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
-	force = 8
+	damage_force = 8
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	slowdown = 0.1
@@ -98,7 +98,7 @@
 	as a conventional wrench.\
 	<br><br>\
 	When an object is placed into the head section of the tool, the tool appears \
-	to force the object to be turned in a specific direction. The direction can be \
+	to damage_force the object to be turned in a specific direction. The direction can be \
 	inverted by pressing down on the mechanism on the handle. It is not known if \
 	this tool was intended by its creators to tighten fasteners or if it has a less obvious \
 	purpose, however it is very well suited to act in a wrench's capacity regardless."
@@ -123,7 +123,7 @@
 	tool_sound = 'sound/items/drill_use.ogg'
 	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
@@ -153,3 +153,17 @@
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the screw driver bit to [src].</span>")
+
+/obj/item/tool/wrench/crystal
+	name = "crystalline wrench"
+	desc = "A crystalline wrenching tool of an alien make."
+	icon_state = "crystal_wrench"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/wrench/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

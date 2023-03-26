@@ -26,7 +26,7 @@
 	melee_damage_upper = 35
 	grab_resist = 100
 
-	projectiletype = /obj/item/projectile/bullet/pistol/medium
+	projectiletype = /obj/projectile/bullet/pistol/medium
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
 	needs_reload = TRUE

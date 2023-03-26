@@ -341,6 +341,11 @@ department tags
 	desc = "Insignia denoting assignment to the security department. These fit Expeditionary Corps uniforms."
 	color = "#bf0000"
 
+/obj/item/clothing/accessory/oricon/department/blueshield
+	name = "blueshield insignia"
+	desc = "Insignia denoting assignment as a Blueshield. These fit utility uniforms."
+	color = "#404090"
+
 /obj/item/clothing/accessory/oricon/department/security/service
 	icon_state = "dept_exped_service"
 

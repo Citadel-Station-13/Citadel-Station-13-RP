@@ -7,7 +7,7 @@
 	if(istype(H) && H.species.get_virus_immune(H))
 		return 0
 
-	var/protection = M.run_mob_armor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
+	var/protection = M.legacy_mob_armor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
 	var/score = round(0.06*protection) 			//scales 100% protection to 6.
 
 	switch(vector)
@@ -17,7 +17,7 @@
 			var/obj/item/I = M.wear_mask
 			//masks provide a small bonus and can replace overall bio protection
 			if(I)
-				score = max(score, round(0.06*I.armor["bio"]))
+				score = max(score, round(0.06*100*I.fetch_armor().raw(ARMOR_BIO)))
 				if (istype(I, /obj/item/clothing/mask))
 					score += 1 //this should be added after
 
@@ -46,12 +46,12 @@
 	if (!istype(M))
 		return 0
 
-	var/protection = M.run_mob_armor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
+	var/protection = M.legacy_mob_armor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
 
 	if (vector == "Airborne")
 		var/obj/item/I = M.wear_mask
 		if (istype(I))
-			protection = max(protection, I.armor["bio"])
+			protection = max(protection, 100 * I.fetch_armor().raw(ARMOR_BIO))
 
 	return prob(protection)
 
@@ -170,7 +170,7 @@
 			var/list/clothes = list(H.head, H.wear_mask, H.wear_suit, H.w_uniform, H.gloves, H.shoes)
 			for(var/obj/item/clothing/C in clothes)
 				if(C && istype(C))
-					if(C.body_cover_flags & select_area.body_part)
+					if(C.body_cover_flags & select_area.body_part_flags)
 						nudity = 0
 		if (nudity)
 			for (var/ID in victim.virus2)

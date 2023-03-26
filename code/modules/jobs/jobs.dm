@@ -15,6 +15,7 @@ var/const/CLOWN				=(1<<13)
 var/const/MIME				=(1<<14)
 var/const/INTERN			=(1<<15)
 var/const/SENIOR_ENGINEER	=(1<<16)
+var/const/Blueshield		=(1<<17)
 
 var/const/MEDSCI			=(1<<1)
 

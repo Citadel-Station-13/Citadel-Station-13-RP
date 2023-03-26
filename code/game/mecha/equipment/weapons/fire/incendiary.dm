@@ -8,7 +8,7 @@
 	description_fluff = "A weapon designed by Hephaestus Industries, the DR-AC 3's design was plagued by prototype faults including but not limited to: Spontaneous combustion, spontaneous detonation, and excessive collateral conflagration."
 	icon_state = "mecha_drac3"
 	equip_cooldown = 20
-	projectile = /obj/item/projectile/bullet/incendiary
+	projectile = /obj/projectile/bullet/incendiary
 	fire_sound = 'sound/weapons/Gunshot_machinegun.ogg'
 	projectiles = 30
 	projectiles_per_shot = 2

@@ -173,7 +173,7 @@
 	..(-abs(amount)) // Heals them
 	return
 
-/mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/carbon/slime/bullet_act(var/obj/projectile/Proj)
 	attacked += 10
 	..(Proj)
 	return 0
@@ -312,16 +312,16 @@
 	return
 
 /mob/living/carbon/slime/attackby(obj/item/W, mob/user)
-	if(W.force > 0)
+	if(W.damage_force > 0)
 		attacked += 10
 		if(prob(25))
 			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0
-	if(W.force >= 3)
+	if(W.damage_force >= 3)
 		if(is_adult)
-			if(prob(5 + round(W.force/2)))
+			if(prob(5 + round(W.damage_force/2)))
 				if(Victim || Target)
 					if(prob(80) && !client)
 						Discipline++
@@ -338,14 +338,14 @@
 						if(user)
 							canmove = 0
 							step_away(src, user)
-							if(prob(25 + W.force))
+							if(prob(25 + W.damage_force))
 								sleep(2)
 								if(user)
 									step_away(src, user)
 								canmove = 1
 
 		else
-			if(prob(10 + W.force*2))
+			if(prob(10 + W.damage_force*2))
 				if(Victim || Target)
 					if(prob(80) && !client)
 						Discipline++
@@ -363,7 +363,7 @@
 						if(user)
 							canmove = 0
 							step_away(src, user)
-							if(prob(25 + W.force*4))
+							if(prob(25 + W.damage_force*4))
 								sleep(2)
 								if(user)
 									step_away(src, user)

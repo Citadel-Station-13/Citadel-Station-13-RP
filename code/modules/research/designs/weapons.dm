@@ -472,6 +472,8 @@
 	build_path = /obj/item/gun/energy/modular/basic
 	sort_string = "MAVDA"
 
+/*
+
 /datum/design/item/modweapon/adv
 	name = "advanced modular energy pistol"
 	id = "advmodpistol"
@@ -479,6 +481,8 @@
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 3000, MAT_GOLD = 2000, MAT_URANIUM = 3000)
 	build_path = /obj/item/gun/energy/modular/advanced
 	sort_string = "MAVDB"
+
+*/
 
 /datum/design/item/modweapon/carbine
 	name = "modular energy carbine"
@@ -504,6 +508,8 @@
 	build_path = /obj/item/gun/energy/modular/rifle/tribeam
 	sort_string = "MAVDE"
 
+/*
+
 /datum/design/item/modweapon/compact
 	name = "compact modular energy pistol"
 	id = "modcompact"
@@ -527,6 +533,8 @@
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/cannon
 	sort_string = "MAVDH"
+
+*/
 
 /datum/design/item/modweapon/nuclear
 	name = "modular AEG"
@@ -556,6 +564,8 @@
 	build_path = /obj/item/modularlaser/lasermedium/stun/weak
 	sort_string = "MAVEB"
 
+/*
+
 /datum/design/item/modweaponnodule/netmedium
 	name = "net projector medium"
 	id = "netmedium"
@@ -563,6 +573,8 @@
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000, MAT_URANIUM = 2000)
 	build_path = /obj/item/modularlaser/lasermedium/net
 	sort_string = "MAVEC"
+
+*/
 
 /datum/design/item/modweaponnodule/electrode
 	name = "electrode projector tube"
@@ -588,6 +600,8 @@
 	build_path = /obj/item/modularlaser/lasermedium/laser/weak
 	sort_string = "MAVEF"
 
+/*
+
 /datum/design/item/modweaponnodule/sniper
 	name = "laser sniper medium"
 	id = "sniperlaser"
@@ -611,6 +625,8 @@
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/cannon
 	sort_string = "MAVEI"
+
+*/
 
 /datum/design/item/modweaponnodule/xraser
 	name = "xraser medium"
@@ -676,6 +692,8 @@
 	build_path = /obj/item/modularlaser/lens/super
 	sort_string = "MAVER"
 
+/*
+
 /datum/design/item/modweaponnodule/scatterlens
 	name = "scatter lens"
 	id = "scatterlens"
@@ -691,6 +709,8 @@
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
 	build_path = /obj/item/modularlaser/lens/scatter/adv
 	sort_string = "MAVET"
+
+*/
 
 /datum/design/item/modweaponnodule/basiccap
 	name = "basic capacitor"
@@ -716,6 +736,8 @@
 	build_path = /obj/item/modularlaser/capacitor/eco/super
 	sort_string = "MAVEX"
 
+/*
+
 /datum/design/item/modweaponnodule/quickcap
 	name = "high throughput capactior"
 	id = "quickcap"
@@ -731,6 +753,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/capacitor/speed/advanced
 	sort_string = "MAVEZ"
+
+*/
 
 /datum/design/item/modweaponnodule/basicac
 	name = "cooling system"
@@ -756,6 +780,8 @@
 	build_path = /obj/item/modularlaser/cooling/efficient/super
 	sort_string = "MAVFC"
 
+/*
+
 /datum/design/item/modweaponnodule/superac
 	name = "supercharged cooling system"
 	id = "superac"
@@ -772,6 +798,8 @@
 	build_path = /obj/item/modularlaser/cooling/speed/adv
 	sort_string = "MAVFE"
 
+*/
+
 /datum/design/item/modweaponnodule/modcontrol
 	name = "controller"
 	id = "modcontrol"
@@ -779,6 +807,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/basic
 	sort_string = "MAVFF"
+
+/*
 
 /datum/design/item/modweaponnodule/an94
 	name = "AN-94 patterned fire controller"
@@ -788,6 +818,8 @@
 	build_path = /obj/item/modularlaser/controller/twoburst
 	sort_string = "MAVFG"
 
+*/
+
 /datum/design/item/modweaponnodule/threecontrol
 	name = "burst FCU"
 	id = "threecontrol"
@@ -796,6 +828,8 @@
 	build_path = /obj/item/modularlaser/controller/threeburst
 	sort_string = "MAVFH"
 
+/*
+
 /datum/design/item/modweaponnodule/fivecontrol
 	name = "quintburst FCU"
 	id = "fivecontrol"
@@ -803,6 +837,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/fiveburst
 	sort_string = "MAVFI"
+
+*/
 
 //Firing pins to shoot your guns with
 /datum/design/item/pin/AssembleDesignName()

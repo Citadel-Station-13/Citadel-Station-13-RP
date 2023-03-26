@@ -12,7 +12,7 @@
 	var/recharge_rate = 4
 	var/charge_tick = 0
 	var/can_charge = 1
-	var/ammo_type = /obj/item/projectile/magic
+	var/ammo_type = /obj/projectile/magic
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
 

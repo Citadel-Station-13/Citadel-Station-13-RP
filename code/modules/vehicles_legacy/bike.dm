@@ -174,7 +174,7 @@
 
 	..()
 
-/obj/vehicle_old/bike/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/bike/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)

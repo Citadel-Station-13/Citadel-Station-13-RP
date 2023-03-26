@@ -25,7 +25,7 @@
 	movement_cooldown = 5
 	see_in_dark = 3
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,//They thick as fuck boi
 		"bullet" = 15,
 		"laser" = 15,

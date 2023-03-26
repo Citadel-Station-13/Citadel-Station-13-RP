@@ -15,7 +15,7 @@
 	mob_size = MOB_LARGE
 
 	// Very close to the base 'damage_absorption' var on the base mecha class.
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 20,
 				"bullet"	= 10,
 				"laser"		= 0,
@@ -111,7 +111,7 @@
 	return ..()
 */
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/projectile/P)
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [P] is deflected by \the [src]'s armor!"))
 		deflect_sprite()

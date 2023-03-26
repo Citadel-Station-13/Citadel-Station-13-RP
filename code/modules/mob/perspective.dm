@@ -118,7 +118,9 @@
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
 
-////////// ALL OF THESE SHOULD BE REGEXED LATER /////////////
+//? Perspective - Self
+
+// * ALL OF THESE SHOULD BE REGEXED LATER *
 // However, there is currently no way to deal with the getters due to them requiring self_perspective be set, but
 // we don't necessarily want all mobs to have it, as perspectives are generally for client'd mobs
 // We'll decide later, the setters/getters work for now.
@@ -163,4 +165,3 @@
  */
 /mob/proc/GetSeeInDarkSelf()
 	return self_perspective? self_perspective.see_in_dark : see_in_dark
-

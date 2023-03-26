@@ -4,7 +4,6 @@
 	var/devourable = TRUE				// Can the mob be devoured at all?
 	var/feeding = TRUE					// Can the mob be vorishly force fed or fed to others?
 	var/digest_leave_remains = FALSE	// Will this mob leave bones/skull/etc after the melty demise?
-	var/allowmobvore = TRUE				// Will simplemobs attempt to eat the mob?
 	var/showvoreprefs = TRUE			// Determines if the mechanical vore preferences button will be displayed on the mob or not.
 	var/obj/belly/vore_selected			// Default to no vore capability.
 	var/list/vore_organs = list()		// List of vore containers inside a mob
@@ -231,7 +230,6 @@
 	P.devourable = src.devourable
 	P.feeding = src.feeding
 	P.digest_leave_remains = src.digest_leave_remains
-	P.allowmobvore = src.allowmobvore
 	P.vore_taste = src.vore_taste
 	P.vore_smell = src.vore_smell
 	P.permit_healbelly = src.permit_healbelly
@@ -265,7 +263,6 @@
 	devourable = P.devourable
 	feeding = P.feeding
 	digest_leave_remains = P.digest_leave_remains
-	allowmobvore = P.allowmobvore
 	vore_taste = P.vore_taste
 	vore_smell = P.vore_smell
 	permit_healbelly = P.permit_healbelly
@@ -775,7 +772,6 @@
 	dispvoreprefs += "<b>Devourable:</b> [devourable ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Feedable:</b> [feeding ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Leaves Remains:</b> [digest_leave_remains ? "Enabled" : "Disabled"]<br>"
-	dispvoreprefs += "<b>Mob Vore:</b> [allowmobvore ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Healbelly permission:</b> [permit_healbelly ? "Allowed" : "Disallowed"]<br>"
 	dispvoreprefs += "<b>Spontaneous vore prey:</b> [can_be_drop_prey ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Spontaneous vore pred:</b> [can_be_drop_pred ? "Enabled" : "Disabled"]<br>"
