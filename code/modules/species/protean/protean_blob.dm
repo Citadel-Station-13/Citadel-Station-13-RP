@@ -34,6 +34,9 @@
 	max_co2 = 0
 	min_n2 = 0
 	max_n2 = 0
+	// THIS IS INTENDED.
+	// "But why?"
+	// So proteans don't **die** from temperature, rather than being forced into blobform.
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	heat_resist = 1

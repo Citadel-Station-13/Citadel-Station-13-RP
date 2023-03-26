@@ -666,8 +666,6 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.get_species_id() == SPECIES_ID_PROTEAN)
-			return // dont modify protean heat levels
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
 		if(H.species.get_species_id() == SPECIES_ID_ADHERENT)
 			return // Don't modify Adherent heat levels ffs
@@ -692,7 +690,7 @@
 				"You feel uncomfortably cold.",
 				"You feel a chill within your wiring."
 				)
-			if(bodytemperature > species.heat_discomfort_level)
+			if(bodytemperature > species.heat_discomfort_level && !(H.species.get_species_id() == SPECIES_ID_PROTEAN))
 				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
 					if(src.nutrition <= 50) // do they have enough energy for this?
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
