@@ -82,7 +82,8 @@
 	var/integrity_failure = 0
 	/// do we use the atom damage system?
 	var/integrity_enabled = FALSE
-	// todo: use integrity & procs on turf and obj level
+	/// flags for resistances
+	var/integrity_flags = NONE
 
 	//? HUDs
 	/// This atom's HUD (med/sec, etc) images. Associative list.

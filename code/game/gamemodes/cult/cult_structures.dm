@@ -46,7 +46,7 @@
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.damage_force)
 
-/obj/structure/cult/pylon/take_damage(var/damage)
+/obj/structure/cult/pylon/take_damage_legacy(var/damage)
 	pylonhit(damage)
 
 /obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)

@@ -9,9 +9,10 @@
   * Also, if GLOB.Debug2 is FALSE, it sets the ADMIN_SPAWNED_1 flag on flags_1, which signifies
   * the object has been admin edited
   */
-/atom/vv_edit_var(var_name, var_value)
-	if(!GLOB.Debug2)
-		atom_flags |= ATOM_ADMINSPAWNED
+/atom/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	if(raw_edit)
+		return ..()
+
 	switch(var_name)
 		if(NAMEOF(src, smoothing_junction))
 			set_smoothed_icon_state(var_value)
@@ -25,6 +26,20 @@
 		if(NAMEOF(src, base_pixel_y))
 			set_base_pixel_y(var_value)
 			. = TRUE
+		if(NAMEOF(src, integrity))
+			if(!isnum(var_value))
+				return FALSE
+			if(var_value > integrity_max)
+				integrity_max = var_value
+			if(integrity_enabled)
+				set_integrity(var_value)
+				. = TRUE
+		if(NAMEOF(src, integrity_failure))
+			if(!isnum(var_value))
+				return FALSE
+		if(NAMEOF(src, integrity_max))
+			if(!isnum(var_value))
+				return FALSE
 		if(NAMEOF(src, contents))
 			var/list/O = contents
 			var/list/N = var_value
@@ -39,10 +54,9 @@
 		datum_flags |= DF_VAR_EDITED
 		return
 
-	if(!GLOB.Debug2)
-		atom_flags |= ATOM_ADMINSPAWNED
-
 	. = ..()
+	if(!.)
+		return
 
 	switch(var_name)
 		if(NAMEOF(src, color))
@@ -51,6 +65,16 @@
 			set_base_layer(var_value)
 		if(NAMEOF(src, relative_layer))
 			set_relative_layer(var_value)
+		if(NAMEOF(src, integrity_max))
+			integrity = min(integrity_max, integrity)
+		if(NAMEOF(src, integrity_failure))
+			if(integrity_enabled)
+				var/was_failing = integrity_failure >= integrity
+				var/now_failing = var_value >= integrity
+				if(!was_failing && now_failing)
+					atom_break()
+				else if(was_failing && !now_failing)
+					atom_fix()
 
 /atom/vv_get_var(var_name)
 	switch(var_name)

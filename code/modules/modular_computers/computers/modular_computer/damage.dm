@@ -16,7 +16,7 @@
 			H.take_damage(rand(10,30))
 	qdel()
 
-/obj/item/modular_computer/take_damage(amount, component_probability, damage_casing = TRUE, randomize = TRUE)
+/obj/item/modular_computer/take_damage_legacy(amount, component_probability, damage_casing = TRUE, randomize = TRUE)
 	if(randomize)
 		// 75%-125%, rand() works with integers, apparently.
 		amount *= (rand(75, 125) / 100.0)

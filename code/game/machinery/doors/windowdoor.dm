@@ -138,7 +138,7 @@
 	operating = FALSE
 	return TRUE
 
-/obj/machinery/door/window/take_damage(var/damage)
+/obj/machinery/door/window/take_damage_legacy(var/damage)
 	src.health = max(0, src.health - damage)
 	if (src.health <= 0)
 		shatter()

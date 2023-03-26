@@ -215,7 +215,7 @@
 	var/recharge_delay = 15 SECONDS
 
 /// Entirely overriden take_damage. This shouldn't exist outside of an implant (other than maybe christmas).
-/obj/item/shield/riot/implant/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
+/obj/item/shield/riot/implant/take_damage_legacy(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
 	obj_integrity -= damage_amount
 	if(obj_integrity < 0)
 		obj_integrity = 0

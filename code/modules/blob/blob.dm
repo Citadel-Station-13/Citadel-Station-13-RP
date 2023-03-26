@@ -41,7 +41,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/take_damage(damage)
+/obj/effect/blob/take_damage_legacy(damage)
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)

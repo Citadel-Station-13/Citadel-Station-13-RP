@@ -179,7 +179,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		dismantle()
 	return
 
-/obj/structure/sandbag/take_damage(var/damage)
+/obj/structure/sandbag/take_damage_legacy(var/damage)
 	health -= damage
 	CheckHealth()
 	return

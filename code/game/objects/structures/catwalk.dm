@@ -111,7 +111,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/catwalk/take_damage(amount)
+/obj/structure/catwalk/take_damage_legacy(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
@@ -206,7 +206,7 @@
 			if(51 to 100)
 				return
 
-/obj/structure/catwalk/plank/take_damage(amount)
+/obj/structure/catwalk/plank/take_damage_legacy(amount)
 	health -= amount
 	update_icon()
 	if(health <= 0)

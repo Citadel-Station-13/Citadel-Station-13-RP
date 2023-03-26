@@ -61,7 +61,7 @@
 			if(0.5 to 1.0)
 				. += "<span class='notice'>It has a few scrapes and dents.</span>"
 
-/obj/structure/railing/take_damage(amount)
+/obj/structure/railing/take_damage_legacy(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")

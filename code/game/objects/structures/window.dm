@@ -98,7 +98,7 @@
 		else
 			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
-/obj/structure/window/take_damage(var/damage = 0,  var/sound_effect = 1)
+/obj/structure/window/take_damage_legacy(var/damage = 0,  var/sound_effect = 1)
 	var/initialhealth = health
 
 	if(silicate)
@@ -790,7 +790,7 @@
 	force_threshold = 3
 	opacity = 1
 
-/obj/structure/window/wooden/take_damage(var/damage = 0,  var/sound_effect = 1)
+/obj/structure/window/wooden/take_damage_legacy(var/damage = 0,  var/sound_effect = 1)
 	var/initialhealth = health
 
 	health = max(0, health - damage)

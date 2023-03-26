@@ -4,9 +4,6 @@
 
 /atom/proc/attack_alien(mob/user)
 
-/atom/proc/take_damage(var/damage)
-	return 0
-
 /*
 	Humans:
 	Adds an exception for gloves, to allow special glove types like the ninja ones.

@@ -12,7 +12,7 @@
 /turf/simulated/wall/dungeon/legacy_ex_act()
 	return
 
-/turf/simulated/wall/dungeon/take_damage()	//These things are suppose to be unbreakable
+/turf/simulated/wall/dungeon/take_damage_legacy()	//These things are suppose to be unbreakable
 	return
 
 /turf/simulated/wall/solidrock //for more stylish anti-cheese.
@@ -52,5 +52,5 @@
 /turf/simulated/wall/solidrock/legacy_ex_act()
 	return
 
-/turf/simulated/wall/solidrock/take_damage()	//These things are suppose to be unbreakable
+/turf/simulated/wall/solidrock/take_damage_legacy()	//These things are suppose to be unbreakable
 	return

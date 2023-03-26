@@ -939,7 +939,7 @@
 ////////  Health related procs  ////////
 ////////////////////////////////////////
 
-/obj/mecha/take_damage(amount, type="brute")
+/obj/mecha/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()
 	if(amount)
 		var/damage = absorbDamage(amount,type)

@@ -537,7 +537,7 @@ var/global/list/light_type_cache = list()
 	broken()
 	return 1
 
-/obj/machinery/light/take_damage(var/damage)
+/obj/machinery/light/take_damage_legacy(var/damage)
 	if(!damage)
 		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)

@@ -587,6 +587,6 @@ update_flag
 	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
 
-/obj/machinery/portable_atmospherics/canister/take_damage(var/damage)
+/obj/machinery/portable_atmospherics/canister/take_damage_legacy(var/damage)
 	src.health -= damage
 	healthcheck()

@@ -384,7 +384,7 @@
 	spawn(1) healthcheck()
 	return 1
 
-/obj/vehicle_old/take_damage(var/damage)
+/obj/vehicle_old/take_damage_legacy(var/damage)
 	if(!damage)
 		return
 	src.health -= damage

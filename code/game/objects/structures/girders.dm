@@ -212,7 +212,7 @@
 	else
 		return ..()
 
-/obj/structure/girder/take_damage(var/damage)
+/obj/structure/girder/take_damage_legacy(var/damage)
 	health -= damage
 	if(health <= 0)
 		dismantle()

@@ -639,7 +639,7 @@
 		enabled = TRUE //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
 		return 1
 
-/obj/machinery/porta_turret/take_damage(force)
+/obj/machinery/porta_turret/take_damage_legacy(force)
 	if(!raised && !raising)
 		force = force / 8
 		if(force < 5)

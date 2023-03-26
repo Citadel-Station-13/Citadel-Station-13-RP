@@ -143,7 +143,7 @@
 		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
 	return 1
 
-/obj/structure/inflatable/take_damage(var/damage)
+/obj/structure/inflatable/take_damage_legacy(var/damage)
 	health -= damage
 	if(health <= 0)
 		visible_message("<span class='danger'>The [src] deflates!</span>")

@@ -489,7 +489,7 @@
 			return (loc.return_air_for_internal_lifeform(L))
 	return return_air()
 
-/obj/structure/closet/take_damage(var/damage)
+/obj/structure/closet/take_damage_legacy(var/damage)
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return
 	dump_contents()

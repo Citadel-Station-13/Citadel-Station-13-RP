@@ -90,6 +90,6 @@
 		. += "It seems to be slightly damaged."
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/computer_hardware/take_damage(amount)
+/obj/item/computer_hardware/take_damage_legacy(amount)
 	damage += round(amount) // We want nice rounded numbers here.
 	damage = clamp( damage, 0,  max_damage) // Clamp the value.

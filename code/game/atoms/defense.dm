@@ -1,6 +1,125 @@
 //! Welcome to the atom damage module.
 //! Enjoy the bitfield and #define vomit.
 
+//? Hooks / External
+
+#warn bullet_act hook
+#warn throw_impact hook
+#warn melee_object_hit hook
+#warn ex_act hook - objs / turfs only
+#warn take_damage
+#warn damage_integrity
+#warn heal_integrity
+#warn set_integrity
+#warn adjust_integrity
+
+#warn impact sounds...
+
+//? Damage API
+
+/**
+ * takes damage from a standard attack, taking into account armor but not shields.
+ *
+ * @return raw damage taken
+ */
+/atom/proc/take_damage(amount, tier, damage_type, damage_mode, armor_flag)
+	#warn impl
+
+//? Direct Integrity
+
+/**
+ * damages integrity directly, ignoring armor / shields
+ *
+ * @params
+ * * amount - how much
+ * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
+ */
+/atom/proc/damage_integrity(amount, gradual)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/was_working = integrity > integrity_failure
+	integrity = max(0, integrity - amount)
+	if(was_working && integrity <= integrity_failure)
+		atom_break()
+	if(!integrity)
+		atom_destruction()
+
+/**
+ * heals integrity directly
+ *
+ * @params
+ * * amount - how much
+ * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
+ */
+/atom/proc/heal_integrity(amount, gradual)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/was_failing = integrity <= integrity_failure
+	integrity = min(integrity_max, integrity + amount)
+	if(was_failing && integrity > integrity_failure)
+		atom_fix()
+
+/**
+ * directly sets integrity - ignores armor / sihelds
+ *
+ * @params
+ * * amount - how much to set to?
+ */
+/atom/proc/set_integrity(amount)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl
+
+/**
+ * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
+ *
+ * @params
+ * * amount - how much
+ * * gradual - burst or gradual?
+ */
+/atom/proc/adjust_integrity(amount, gradual)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(amount > 0)
+		return heal_integrity(amount, gradual)
+	else
+		return damage_integrity(amount, gradual)
+
+/**
+ * percent integrity, rounded.
+ */
+/atom/proc/percent_integrity(round_to = 0.1)
+	return integrity_max? round(integrity / integrity_max, round_to) : 0
+
+//? Thresholds & Events
+
+/**
+ * called when integrity reaches 0 from a non 0 value
+ */
+/atom/proc/atom_destruction()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(!(integrity_flags & INTEGRITY_NO_DECONSTRUCT))
+		deconstruct(ATOM_DECONSTRUCT_DESTROYED)
+
+/**
+ * called when integrity drops below or at integrity_failure
+ *
+ * if integrity_failure is 0, this is called before destruction.
+ */
+/atom/proc/atom_break()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * called when integrity rises above integrity_failure
+ *
+ * if integrity_failure is 0, this still works.
+ */
+/atom/proc/atom_fix()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
 //? Deconstruction
 
 /**

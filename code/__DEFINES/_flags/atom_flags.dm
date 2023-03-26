@@ -3,30 +3,28 @@
 #define ATOM_INITIALIZED    (1<<0)
 /// Item has priority to check when entering or leaving.
 #define ATOM_BORDER         (1<<1)
-/// Atom is admin spawned
-#define ATOM_ADMINSPAWNED   (1<<2)
 /// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
-#define ATOM_HEAR           (1<<3)
+#define ATOM_HEAR           (1<<2)
 /// Atom queued to SSoverlay for compile_overlays
-#define ATOM_OVERLAY_QUEUED (1<<4)
+#define ATOM_OVERLAY_QUEUED (1<<3)
 /// Atom is absolute-abstract - should not be interactable or movable in any way shape or form
-#define ATOM_ABSTRACT       (1<<5)
+#define ATOM_ABSTRACT       (1<<4)
 /// We are an holographic atom from a holodeck/AR system
-#define HOLOGRAM            (1<<6) // TODO: should this be an atom flag?
+#define HOLOGRAM            (1<<5) // TODO: should this be an atom flag?
 /// Used for items if they don't want to get a blood overlay.
-#define NOBLOODY            (1<<7) // TODO: item flag
+#define NOBLOODY            (1<<6) // TODO: item flag
 /// Reagents don't react inside this container.
-#define NOREACT             (1<<8) // TODO: reagent holder flag
+#define NOREACT             (1<<7) // TODO: reagent holder flag
 /// Doesn't Conduct electricity. (metal etc.)
-#define NOCONDUCT           (1<<9) // TODO: item flag
+#define NOCONDUCT           (1<<8) // TODO: item flag
 /// Is an open container for chemistry purposes.
-#define OPENCONTAINER       (1<<10) // TODO: reagent holder flags
+#define OPENCONTAINER       (1<<9) // TODO: reagent holder flags
 /// Does not get contaminated by phoron.
-#define PHORONGUARD         (1<<11) // TODO: item flag
+#define PHORONGUARD         (1<<10) // TODO: item flag
 /// Does not leave user's fingerprints/fibers when used on things?
-#define NOPRINT             (1<<12) // TODO: item flag
+#define NOPRINT             (1<<11) // TODO: item flag
 /// no bludgeoning or direct-target shooting
-#define ATOM_UNTARGETABLE (1<<13)
+#define ATOM_UNTARGETABLE   (1<<12)
 ///CITMAIN FLAG BITMASKS - Completely unused.
 /*
 /// Early returns mob.face_atom()
@@ -47,7 +45,6 @@
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
 	BITFIELD(ATOM_BORDER),
-	BITFIELD(ATOM_ADMINSPAWNED),
 	BITFIELD(ATOM_HEAR),
 	BITFIELD(ATOM_OVERLAY_QUEUED),
 	BITFIELD(ATOM_ABSTRACT),
@@ -146,6 +143,8 @@ DEFINE_BITFIELD(movement_type, list(
 #define INTEGRITY_ACIDPROOF (1<<2)
 /// completely immune to lava
 #define INTEGRITY_LAVAPROOF (1<<3)
+/// don't delete on atom_destruction()
+#define INTEGRITY_NO_DECONSTRUCT (1<<4)
 
 /// can be lit on fire
 #define INTEGRITY_FLAMMABLE (1<<23)
@@ -155,6 +154,7 @@ DEFINE_BITFIELD(integrity_flags, list(
 	BITFIELD(INTEGRITY_FIREPROOF),
 	BITFIELD(INTEGRITY_ACIDPROOF),
 	BITFIELD(INTEGRITY_LAVAPROOF),
+	BITFIELD(INTEGRITY_NO_DECONSTRUCT),
 	BITFIELD(INTEGRITY_FLAMMABLE),
 ))
 

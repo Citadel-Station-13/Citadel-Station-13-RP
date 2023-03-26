@@ -20,7 +20,7 @@
 	vis_flags = VIS_INHERIT_PLANE
 	// blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
-/obj/effect/take_damage(damage)
+/obj/effect/take_damage_legacy(damage)
 	return
 
 /obj/effect/fire_act()

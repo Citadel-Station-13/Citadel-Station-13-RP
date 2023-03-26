@@ -154,7 +154,7 @@
 	hardness -= Proj.damage/10
 	CheckHardness()
 
-/obj/structure/simple_door/take_damage(var/damage)
+/obj/structure/simple_door/take_damage_legacy(var/damage)
 	hardness -= damage/10
 	CheckHardness()
 

@@ -165,7 +165,7 @@
 /obj/effect/shield/attack_hand(mob/user, list/params)
 	flash_adjacent_segments(3)
 
-/obj/effect/shield/take_damage(var/damage, var/damtype, var/hitby)
+/obj/effect/shield/take_damage_legacy(var/damage, var/damtype, var/hitby)
 	if(!gen)
 		qdel(src)
 		return

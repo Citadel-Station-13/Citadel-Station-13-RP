@@ -74,7 +74,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/take_damage(var/damage)
+/obj/effect/alien/resin/take_damage_legacy(var/damage)
 	health -= damage
 	healthcheck()
 	return
@@ -348,7 +348,7 @@ Alien plants should do something if theres a lot of poison
 	healthcheck()
 	return
 
-/obj/effect/alien/weeds/take_damage(var/damage)
+/obj/effect/alien/weeds/take_damage_legacy(var/damage)
 	health -= damage
 	healthcheck()
 	return
@@ -447,8 +447,9 @@ Alien plants should do something if theres a lot of poison
 	density = 0
 	anchored = 1
 
-	integrity = 100
-	integrity_max = 100
+	integrity = 140
+	integrity_max = 140
+	integrity_failure = 40
 
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
 
@@ -508,11 +509,9 @@ Alien plants should do something if theres a lot of poison
 						break
 		return 1
 
-/obj/effect/alien/egg/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.damage
-	..()
-	healthcheck()
-	return
+/obj/effect/alien/egg/atom_break()
+	. = ..()
+	Burst(TRUE)
 
 /obj/effect/alien/egg/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
@@ -522,7 +521,7 @@ Alien plants should do something if theres a lot of poison
 	healthcheck()
 	return
 
-/obj/effect/alien/egg/take_damage(var/damage)
+/obj/effect/alien/egg/take_damage_legacy(var/damage)
 	health -= damage
 	healthcheck()
 	return

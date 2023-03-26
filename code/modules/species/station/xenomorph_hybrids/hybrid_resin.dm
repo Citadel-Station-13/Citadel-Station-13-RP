@@ -192,7 +192,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/take_damage(var/damage)
+/obj/effect/alien/hybrid_resin/take_damage_legacy(var/damage)
 	health -= damage
 	healthcheck()
 	return

@@ -110,7 +110,7 @@
 	switch_dmg_type_possible = TRUE
 	cloak_possible = FALSE
 
-/obj/mecha/combat/phazon/janus/take_damage(amount, type="brute")
+/obj/mecha/combat/phazon/janus/take_damage_legacy(amount, type="brute")
 	..()
 	if(phasing)
 		phasing = FALSE

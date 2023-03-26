@@ -69,7 +69,7 @@ Barricades
 		dismantle()
 	return
 
-/obj/structure/barricade/take_damage(damage)
+/obj/structure/barricade/take_damage_legacy(damage)
 	health -= damage
 	CheckHealth()
 	return
@@ -187,7 +187,7 @@ Barricades
 	CheckHealth()
 	return
 
-/obj/machinery/deployable/barrier/take_damage(damage)
+/obj/machinery/deployable/barrier/take_damage_legacy(damage)
 	health -= damage
 	CheckHealth()
 	return

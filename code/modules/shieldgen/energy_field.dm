@@ -61,7 +61,7 @@
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed())
 
-/obj/effect/energy_field/take_damage(var/damage)
+/obj/effect/energy_field/take_damage_legacy(var/damage)
 	adjust_strength(-damage / 20)
 
 /obj/effect/energy_field/attack_hand(mob/user, list/params)
