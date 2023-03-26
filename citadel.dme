@@ -747,6 +747,7 @@
 #include "code\datums\status_effects\status_effect.dm"
 #include "code\datums\status_effects\basic\crusher_track.dm"
 #include "code\datums\status_effects\basic\incapacitation.dm"
+#include "code\datums\status_effects\basic\staggered.dm"
 #include "code\datums\status_effects\grouped\crusher_mark.dm"
 #include "code\datums\underwear\bottom.dm"
 #include "code\datums\underwear\socks.dm"
@@ -3037,11 +3038,8 @@
 #include "code\modules\mob\living\damage_procs.dm"
 #include "code\modules\mob\living\death.dm"
 #include "code\modules\mob\living\default_language.dm"
-<<<<<<< HEAD
-#include "code\modules\mob\living\health.dm"
-=======
 #include "code\modules\mob\living\defense.dm"
->>>>>>> citrp/master
+#include "code\modules\mob\living\health.dm"
 #include "code\modules\mob\living\inventory.dm"
 #include "code\modules\mob\living\life.dm"
 #include "code\modules\mob\living\living.dm"

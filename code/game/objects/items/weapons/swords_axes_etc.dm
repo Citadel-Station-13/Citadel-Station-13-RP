@@ -99,11 +99,7 @@
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-<<<<<<< HEAD
-			user.afflict_paralyze(20 * 3 * force)
-=======
-			user.Weaken(3 * damage_force)
->>>>>>> citrp/master
+			user.afflict_paralyze(20 * 3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
