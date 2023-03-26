@@ -241,7 +241,7 @@
  */
 
 	if (old_turf?.z != new_turf?.z)
-		on_changed_z_level(old_turf, new_turf)
+		on_changed_z_level(old_turf?.z, new_turf?.z)
 
 /*
 	if(HAS_SPATIAL_GRID_CONTENTS(src))
@@ -465,11 +465,11 @@
 
 	Moved(oldloc, NONE, TRUE)
 
-/atom/movable/proc/on_changed_z_level(old_z,new_z)
+/atom/movable/proc/on_changed_z_level(old_z, new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		var/atom/movable/AM = item
-		AM.on_changed_z_level(old_z,new_z)
+		AM.on_changed_z_level(old_z, new_z)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()

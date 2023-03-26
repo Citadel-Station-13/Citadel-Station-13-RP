@@ -323,7 +323,7 @@ const HolopadSettings = (props, context) => {
             <Button
               content={data.ringerEnabled? "Enabled" : "Disabled"}
               selected={data.ringerEnabled}
-              disabled={data.ringerToggle}
+              disabled={!data.ringerToggle}
               onClick={() => act('toggle_ringer')} />
           } />
         <LabeledList.Item
@@ -332,7 +332,7 @@ const HolopadSettings = (props, context) => {
             <Button
               content={data.callVisibility? "Visible" : "Invisible"}
               selected={data.callVisibility}
-              disabled={data.toggleVisibility}
+              disabled={!data.toggleVisibility}
               onClick={() => act('toggle_visibility')} />
           } />
         <LabeledList.Item
@@ -341,7 +341,7 @@ const HolopadSettings = (props, context) => {
             <Button
               content={data.sectorAnonymous? "Broadcast Identity" : "Mask Identity"}
               selected={data.sectorAnonymous}
-              disabled={data.sectorAnonymousToggle}
+              disabled={!data.sectorAnonymousToggle}
               onClick={() => act('toggle_anonymous_sector')} />
           } />
         <LabeledList.Item
@@ -350,7 +350,7 @@ const HolopadSettings = (props, context) => {
             <Button
               content={data.autoPickup? "Enabled" : "Disabled"}
               selected={data.autoPickup}
-              disabled={data.autoToggle}
+              disabled={!data.autoToggle}
               onClick={() => act('toggle_auto')} />
           } />
         <LabeledList.Item
@@ -359,7 +359,7 @@ const HolopadSettings = (props, context) => {
             <Button
               content={data.videoEnabled? "Enabled" : "Disabled"}
               selected={data.videoEnabled}
-              disabled={data.videoToggle}
+              disabled={!data.videoToggle}
               onClick={() => act('toggle_video')} />
           } />
       </LabeledList>
