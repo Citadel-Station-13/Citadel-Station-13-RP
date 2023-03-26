@@ -55,7 +55,7 @@
 		grace = RAD_GRACE_PERIOD
 		last_tick_amount = current_tick_amount
 
-	else if(!(obj_flags & EMAGGED))
+	else if(!(obj_flags & OBJ_EMAGGED))
 		grace--
 		if(grace <= 0)
 			radiation_count = 0
@@ -70,7 +70,7 @@
 	if(!scanning)
 		return
 	. += SPAN_INFO("Alt-click it to clear stored radiation levels.")
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		. += SPAN_WARNING("The display seems to be incomprehensible.")
 		return
 	switch(radiation_count)
@@ -93,7 +93,7 @@
 	if(!scanning)
 		icon_state = "geiger_off"
 		return ..()
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		icon_state = "geiger_on_emag"
 		return ..()
 
@@ -145,7 +145,7 @@
 /obj/item/geiger_counter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(user.a_intent == INTENT_HELP)
-		if(!(obj_flags & EMAGGED))
+		if(!(obj_flags & OBJ_EMAGGED))
 			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), SPAN_NOTICE("You scan [target]'s radiation levels with [src]..."))
 			addtimer(CALLBACK(src, .proc/scan, target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
 		else
@@ -177,7 +177,7 @@
 		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] Target is free of radioactive contamination."))
 
 /obj/item/geiger_counter/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_SCREWDRIVER && (obj_flags & EMAGGED))
+	if(I.tool_behaviour == TOOL_SCREWDRIVER && (obj_flags & OBJ_EMAGGED))
 		if(scanning)
 			to_chat(user, SPAN_WARNING("Turn off [src] before you perform this action!"))
 			return FALSE
@@ -185,7 +185,7 @@
 		if(!I.use_tool(src, user, 4 SECONDS, volume = 40))
 			return FALSE
 		user.visible_message(SPAN_NOTICE("[user] refastens [src]'s maintenance panel!"), SPAN_NOTICE("You reset [src] to its factory settings!"))
-		obj_flags &= ~EMAGGED
+		obj_flags &= ~OBJ_EMAGGED
 		radiation_count = 0
 		update_appearance()
 		return TRUE
@@ -204,13 +204,13 @@
 
 /obj/item/geiger_counter/emag_act(mob/user)
 	. = ..()
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return
 	if(scanning)
 		to_chat(user, SPAN_WARNING("Turn off [src] before you perform this action!"))
 		return
 	to_chat(user, SPAN_WARNING("You override [src]'s radiation storing protocols. It will now generate small doses of radiation, and stored rads are now projected into creatures you scan."))
-	obj_flags |= EMAGGED
+	obj_flags |= OBJ_EMAGGED
 	return TRUE
 
 /obj/item/geiger_counter/cyborg

@@ -250,12 +250,12 @@
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 
-	adjust_integrity(-P.get_structure_damage())
+	adjust_integrity_emitter(-P.get_structure_damage())
 
 /obj/machinery/power/emitter/blob_act()
-	adjust_integrity(-1000) // This kills the emitter.
+	adjust_integrity_emitter(-1000) // This kills the emitter.
 
-/obj/machinery/power/emitter/proc/adjust_integrity(amount)
+/obj/machinery/power/emitter/proc/adjust_integrity_emitter(amount)
 	integrity = clamp( integrity + amount, 0,  initial(integrity))
 	if(integrity == 0)
 		if(powernet && avail(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.

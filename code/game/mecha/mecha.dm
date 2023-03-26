@@ -1514,7 +1514,7 @@
 					if(C.integrity < C.integrity_max)
 						while(C.integrity < C.integrity_max && NP && do_after(user, 1 SECOND, src))
 							if(NP.use(1))
-								C.adjust_integrity(10)
+								C.adjust_integrity_mecha(10)
 
 						to_chat(user, "<span class='notice'>You repair damage to \the [C].</span>")
 

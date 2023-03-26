@@ -20,7 +20,7 @@
 
 /obj/structure/blob/tesla_act(power)
 	..()
-	adjust_integrity(-power/400)
+	adjust_integrity_blob(-power/400)
 
 /obj/machinery/nuclearbomb/tesla_act(power, explosive)
 	..()

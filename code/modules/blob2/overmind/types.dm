@@ -96,7 +96,7 @@
 	attack_message_synth = ", and your external plating dissolves"
 
 /datum/blob_type/grey_goo/on_emp(obj/structure/blob/B, severity)
-	B.adjust_integrity(-(20 / severity))
+	B.adjust_integrity_blob(-(20 / severity))
 
 // Slow, tanky blobtype which uses not spores, but hivebots, as its soldiers.
 /datum/blob_type/fabrication_swarm
@@ -133,7 +133,7 @@
 	return ..()
 
 /datum/blob_type/fabrication_swarm/on_emp(obj/structure/blob/B, severity)
-	B.adjust_integrity(-(30 / severity))
+	B.adjust_integrity_blob(-(30 / severity))
 
 // A blob meant to be fought like a fire.
 /datum/blob_type/blazing_oil
@@ -158,7 +158,7 @@
 
 /datum/blob_type/blazing_oil/on_water(obj/structure/blob/B, amount)
 	spawn(1)
-		B.adjust_integrity(-(amount * 5))
+		B.adjust_integrity_blob(-(amount * 5))
 
 /datum/blob_type/blazing_oil/on_pulse(var/obj/structure/blob/B)
 	var/turf/T = get_turf(B)
@@ -235,7 +235,7 @@
 	var/turf/T = get_turf(S)
 	var/obj/structure/blob/B = locate(/obj/structure/blob) in T
 	if(B) // Is there already a blob here?  If so, just heal it.
-		B.adjust_integrity(10)
+		B.adjust_integrity_blob(10)
 	else
 		B = new /obj/structure/blob/normal(T, S.overmind) // Otherwise spread it.
 		B.visible_message("<span class='danger'>\A [B] forms on \the [T] as \the [S] bursts!</span>")
@@ -355,7 +355,7 @@
 		if(C == B)
 			continue // We'll damage this later.
 
-		C.adjust_integrity(-(damage / blobs_to_hurt.len))
+		C.adjust_integrity_blob(-(damage / blobs_to_hurt.len))
 
 	return damage / max(blobs_to_hurt.len, 1) // To hurt the blob that got hit.
 
@@ -642,6 +642,6 @@
 /datum/blob_type/volatile_alluvium/on_water(obj/structure/blob/B, amount)
 	spawn(1)
 		var/damage = amount * 2
-		B.adjust_integrity(-(damage))
+		B.adjust_integrity_blob(-(damage))
 		if(B && prob(damage))
 			B.visible_message("<span class='danger'>The [name] begins to crumble!</span>")

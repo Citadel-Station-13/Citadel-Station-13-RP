@@ -106,7 +106,7 @@
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] is busy!"))
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] makes a scratchy noise."))
 		return
@@ -138,7 +138,7 @@
 	playing = FALSE
 	update_icon()
 
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		tape.ruin()
 		audible_message("<font color=Maroon><B>Tape Recorder</B>: This tape recorder will self-destruct in... Five.</font>")
 		addtimer(CALLBACK(src, /atom/proc/audible_message, "<font color=Maroon><B>Tape Recorder</B>: Four.</font>"), 1 SECONDS)
@@ -261,7 +261,7 @@
 	if(!tape)
 		to_chat(usr, "<span class='notice'>There's no tape in \the [src].</span>")
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='notice'>The tape seems to be stuck inside.</span>")
 		return
 	to_chat(usr, "<span class='notice'>You remove [tape] from [src].</span>")
@@ -313,8 +313,8 @@
 //! end
 
 /obj/item/tape_recorder/emag_act(var/remaining_charges, var/mob/user)
-	if(obj_flags & EMAGGED)
-		obj_flags |= EMAGGED
+	if(obj_flags & OBJ_EMAGGED)
+		obj_flags |= OBJ_EMAGGED
 		recording = 0
 		to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
 		update_icon()
@@ -356,7 +356,7 @@
 
 	if(usr.incapacitated())
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(!tape)
@@ -383,7 +383,7 @@
 	if(tape.ruined)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(!print_ready())

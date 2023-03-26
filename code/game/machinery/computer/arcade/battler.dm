@@ -192,9 +192,9 @@
 	else if (href_list["newgame"]) //Reset everything
 		temp = "<br><center><h3>New Round<center><h3>"
 
-		if(obj_flags & EMAGGED)
+		if(obj_flags & OBJ_EMAGGED)
 			Reset()
-			obj_flags &= ~EMAGGED
+			obj_flags &= ~OBJ_EMAGGED
 
 		enemy_setup(gamerSkill)
 		screen_setup(usr)
@@ -240,7 +240,7 @@
 		attack_amount -= 5
 
 	//if emagged, cuban pete will set up a bomb acting up as a timer. when it reaches 0 the player fucking dies
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		switch(bomb_cooldown--)
 			if(18)
 				list_temp += "<br><center><h3>[enemy_name] takes two valve tank and links them together, what's he planning?<center><h3>"
@@ -403,18 +403,18 @@
 			temp = "<br><center><h3>[enemy_name] has fallen! Rejoice!<center><h3>"
 			playsound(loc, 'sound/arcade/win.ogg', 50, TRUE)
 
-			if(obj_flags & EMAGGED)
+			if(obj_flags & OBJ_EMAGGED)
 				new /obj/effect/spawner/newbomb/timer/syndicate(loc)
 				new /obj/item/clothing/head/collectable/petehat(loc)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				log_game("[key_name(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				Reset()
-				obj_flags &= ~EMAGGED
+				obj_flags &= ~OBJ_EMAGGED
 				xp_gained += 100
 			else
 				prizevend(user)
 				xp_gained += 50
-			//SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("win", (obj_flags & EMAGGED ? "emagged":"normal")))
+			//SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("win", (obj_flags & OBJ_EMAGGED ? "emagged":"normal")))
 
 	else if(player_hp <= 0)
 		if(timer_id)
@@ -424,11 +424,11 @@
 		temp = "<br><center><h3>You have been crushed! GAME OVER<center><h3>"
 		playsound(loc, 'sound/arcade/lose.ogg', 50, TRUE)
 		xp_gained += 10//pity points
-		if(obj_flags & EMAGGED)
+		if(obj_flags & OBJ_EMAGGED)
 			var/mob/living/living_user = user
 			if (istype(living_user))
 				living_user.gib()
-		//SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("loss", "hp", (obj_flags & EMAGGED ? "emagged":"normal")))
+		//SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("loss", "hp", (obj_flags & OBJ_EMAGGED ? "emagged":"normal")))
 
 //	if(gameover)
 //		user?.mind?.adjust_experience(/datum/skill/gaming, xp_gained+1)//always gain at least 1 point of XP
@@ -465,7 +465,7 @@
 	return .
 
 /obj/machinery/computer/arcade/battle/emag_act(mob/user)
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return
 
 	to_chat(user, SPAN_WARNING("A mesmerizing Rhumba beat starts playing from the arcade machine's speakers!"))
@@ -482,7 +482,7 @@
 	screen_setup(user)
 	gameover = FALSE
 
-	obj_flags |= EMAGGED
+	obj_flags |= OBJ_EMAGGED
 
 	enemy_name = "Cuban Pete"
 	name = "Outbomb Cuban Pete"

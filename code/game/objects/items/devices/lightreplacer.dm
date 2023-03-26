@@ -18,7 +18,7 @@
 // It can be manually refilled or by clicking on a storage item containing lights.
 // If it's part of a robot module, it will charge when the Robot is inside a Recharge Station.
 //
-// EMAGGED FEATURES
+// OBJ_EMAGGED FEATURES
 //
 // NOTICE: The Cyborg cannot use the emagged Light Replacer and the light's explosion was nerfed. It cannot create holes in the station anymore.
 //

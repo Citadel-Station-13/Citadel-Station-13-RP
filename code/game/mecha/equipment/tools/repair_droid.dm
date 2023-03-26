@@ -94,10 +94,10 @@
 		RD.chassis.integrity += min(health_boost, initial(RD.chassis.integrity)-RD.chassis.integrity)
 
 		if(AC)
-			AC.adjust_integrity(round(health_boost * 0.5, 0.5))
+			AC.adjust_integrity_mecha(round(health_boost * 0.5, 0.5))
 
 		if(HC)
-			HC.adjust_integrity(round(health_boost * 0.5, 0.5))
+			HC.adjust_integrity_mecha(round(health_boost * 0.5, 0.5))
 
 		repaired = 1
 	if(repaired)

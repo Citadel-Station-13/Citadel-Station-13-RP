@@ -76,12 +76,12 @@
 
 /obj/item/kinetic_crusher/emag_act()
 	. = ..()
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return
-	obj_flags |= EMAGGED
+	obj_flags |= OBJ_EMAGGED
 
 /obj/item/kinetic_crusher/proc/can_mark(mob/living/victim)
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return TRUE
 	return !ishuman(victim) && !issilicon(victim)
 

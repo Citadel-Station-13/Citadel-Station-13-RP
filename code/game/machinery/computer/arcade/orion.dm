@@ -181,7 +181,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 /obj/machinery/computer/arcade/orion_trail/ui_static_data(mob/user)
 	var/list/static_data = list()
 	static_data["gamename"] = name
-	static_data["emagged"] = obj_flags & EMAGGED
+	static_data["emagged"] = obj_flags & OBJ_EMAGGED
 	static_data["settlers"] = settlers
 	static_data["settlermoods"] = settlermoods
 	return static_data
@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	if(!event)
 		CRASH("Woah, hey! we could not find the specified event \"[path]\"! Add it to the events list, numb nuts!")
 	event.on_select(src, gamer_skill, gamer_skill_level, gamer_skill_rands)
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		event.emag_effect(src, gamer)
 
 /obj/machinery/computer/arcade/orion_trail/proc/set_game_over(user, given_reason)
@@ -349,20 +349,20 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	else
 		if(food <= 0)
 			reason = "You ran out of food and starved."
-			if(obj_flags & EMAGGED)
+			if(obj_flags & OBJ_EMAGGED)
 				gamer.set_nutrition(0) //yeah you pretty hongry
 				to_chat(gamer, "<span class='userdanger'>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</span>")
 		if(fuel <= 0)
 			reason = "You ran out of fuel, and drift, slowly, into a star."
-			if(obj_flags & EMAGGED)
+			if(obj_flags & OBJ_EMAGGED)
 				gamer.adjust_fire_stacks(5)
 				gamer.IgniteMob() //flew into a star, so you're on fire
 				to_chat(gamer, "<span class='userdanger'>You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames.</span>")
 
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(gamer, "<span class='userdanger'>You're never going to make it to Orion...</span>")
 		gamer.death()
-		obj_flags &= ~EMAGGED //removes the emagged status after you lose
+		obj_flags &= ~OBJ_EMAGGED //removes the emagged status after you lose
 		gameStatus = ORION_STATUS_START
 		name = "The Orion Trail"
 		desc = "Learn how our ancestors got to Orion, and have fun in the process!"
@@ -423,13 +423,13 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	playsound(loc ,'sound/weapons/Gunshot_deagle.ogg', 100, TRUE)
 	if(!settlers.len || !alive)
 		src.audible_message("<b>\The [src]</b> says, 'The last crewmember [sheriff], shot themselves, GAME OVER!'")
-		if(obj_flags & EMAGGED)
+		if(obj_flags & OBJ_EMAGGED)
 			gamer.death()
 		set_game_over(gamer, "Your last pioneer committed suicide.")
 		if(killed_crew >= ORION_STARTING_CREW_COUNT)
 			//gamer.mind?.adjust_experience(/datum/skill/gaming, -15)//no cheating by spamming game overs
 			report_player(gamer)
-	else if(obj_flags & EMAGGED)
+	else if(obj_flags & OBJ_EMAGGED)
 		if(findtext(gamer.name, sheriff))
 			src.audible_message("<b>\The [src]</b> says, 'The crew of the ship chose to kill [gamer]!'")
 			gamer.death()
@@ -466,24 +466,24 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 /obj/machinery/computer/arcade/orion_trail/proc/win(mob/user)
 	gameStatus = ORION_STATUS_START
 	src.audible_message("<b>\The [src]</b> says, 'Congratulations, you made it to Orion!'")
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		new /obj/item/orion_ship(loc)
 		message_admins("[ADMIN_LOOKUPFLW(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
 		log_game("[key_name(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
 	else
 		prizevend(user)
-	obj_flags &= ~EMAGGED
+	obj_flags &= ~OBJ_EMAGGED
 	name = initial(name)
 	desc = initial(desc)
 
 /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return
 	to_chat(user, SPAN_NOTICE("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
 	name = "The Orion Trail: Realism Edition"
 	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
 	newgame()
-	obj_flags |= EMAGGED
+	obj_flags |= OBJ_EMAGGED
 
 /mob/living/simple_mob/hostile/humanoid/orion
 	name = "spaceport security"

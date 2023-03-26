@@ -63,7 +63,7 @@
 
 	take_damage((4 - severity) * round(integrity * 0.1, 0.1))
 
-/obj/item/mecha_parts/component/proc/adjust_integrity(var/amt = 0)
+/obj/item/mecha_parts/component/proc/adjust_integrity_mecha(var/amt = 0)
 	integrity = clamp(integrity + amt, 0, integrity_max)
 	return
 
@@ -71,7 +71,7 @@
 	if(dam_amt <= 0)
 		return FALSE
 
-	adjust_integrity(-1 * dam_amt)
+	adjust_integrity_mecha(-1 * dam_amt)
 
 	if(chassis && internal_damage_flag)
 		if(get_efficiency() < 0.5)
@@ -142,7 +142,7 @@
 		if(integrity < integrity_max)
 			while(integrity < integrity_max && NP)
 				if(do_after(user, 1 SECOND, src) && NP.use(1))
-					adjust_integrity(10)
+					adjust_integrity_mecha(10)
 
 			return
 

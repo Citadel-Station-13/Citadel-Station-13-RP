@@ -435,7 +435,7 @@
 	..()
 /*
 /datum/orion_event/black_hole_death/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
-	if(game.obj_flags & EMAGGED)
+	if(game.obj_flags & OBJ_EMAGGED)
 		playsound(game.loc, 'sound/effects/supermatter.ogg', 100, TRUE)
 		game.say("A miniature black hole suddenly appears in front of [game], devouring [gamer] alive!")
 		gamer.Stun(200, ignore_canstun = TRUE) //you can't run :^)
@@ -523,7 +523,7 @@
 				game.set_game_over(usr, "You were gunned down by space port security.")
 				return ..()
 			text = "You failed to raid the spaceport! You lost [fuel*-1] Fuel and [food*-1] Food, AND [lost_crew] in your scramble to escape! ([fuel]fuel, [food] food, -Crew)"
-			if(game.obj_flags & EMAGGED)
+			if(game.obj_flags & OBJ_EMAGGED)
 				game.audible_message("<b>\The [src]</b> says, 'WEEWOO! WEEWOO! Spaceport security en route!'")
 				playsound(game, 'sound/items/weeoo1.ogg', 100, FALSE)
 				//for(var/i, i<=3, i++)

@@ -81,7 +81,7 @@ var/list/blobs = list()
 	if(pulse_timestamp <= world.time)
 		consume_tile()
 		if(heal_timestamp <= world.time)
-			adjust_integrity(health_regen)
+			adjust_integrity_blob(health_regen)
 			heal_timestamp = world.time + 2 SECONDS
 		update_icon()
 		pulse_timestamp = world.time + 1 SECOND
@@ -247,7 +247,7 @@ var/list/blobs = list()
 				playsound(src, 'sound/weapons/tap.ogg', 50, 1)
 	if(overmind)
 		damage = overmind.blob_type.on_received_damage(src, damage, W.damtype, user)
-	adjust_integrity(-damage)
+	adjust_integrity_blob(-damage)
 	return
 
 /obj/structure/blob/bullet_act(var/obj/projectile/P)
@@ -272,7 +272,7 @@ var/list/blobs = list()
 	if(overmind)
 		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
 
-	adjust_integrity(-damage)
+	adjust_integrity_blob(-damage)
 
 	return ..()
 
@@ -280,7 +280,7 @@ var/list/blobs = list()
 	if(overmind)
 		overmind.blob_type.on_water(src, amount)
 
-/obj/structure/blob/proc/adjust_integrity(amount)
+/obj/structure/blob/proc/adjust_integrity_blob(amount)
 	integrity = clamp( integrity + amount, 0,  integrity_max)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
