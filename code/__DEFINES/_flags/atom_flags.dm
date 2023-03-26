@@ -23,8 +23,7 @@
 #define PHORONGUARD         (1<<10) // TODO: item flag
 /// Does not leave user's fingerprints/fibers when used on things?
 #define NOPRINT             (1<<11) // TODO: item flag
-/// no bludgeoning or direct-target shooting
-#define ATOM_UNTARGETABLE   (1<<12)
+
 ///CITMAIN FLAG BITMASKS - Completely unused.
 /*
 /// Early returns mob.face_atom()
@@ -55,7 +54,6 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
-	BITFIELD(ATOM_UNTARGETABLE),
 ))
 
 //? /atom/movable/var/movable_flags

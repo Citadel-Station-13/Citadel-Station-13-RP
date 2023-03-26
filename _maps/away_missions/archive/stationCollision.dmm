@@ -408,7 +408,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cl" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cm" = (

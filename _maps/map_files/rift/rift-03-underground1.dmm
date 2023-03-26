@@ -2820,7 +2820,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "hX" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/barricade/cutout/lusty,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
@@ -4055,7 +4055,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "mO" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "mP" = (
@@ -4119,7 +4119,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "nj" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
@@ -9642,8 +9642,8 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/crew_quarters/pool)
 "IM" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/resin/wall{
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -10439,7 +10439,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
 "Ly" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "LD" = (
@@ -12289,8 +12289,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "SG" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/resin/membrane{
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/membrane{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -12466,7 +12466,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "TB" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/barricade/cutout/fukken_xeno,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)

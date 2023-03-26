@@ -7,12 +7,6 @@
 #warn throw_impact hook
 #warn melee_object_hit hook
 #warn ex_act hook - objs / turfs only
-#warn take_damage
-#warn damage_integrity
-#warn heal_integrity
-#warn set_integrity
-#warn adjust_integrity
-
 #warn impact sounds...
 
 //? Damage API
@@ -22,8 +16,10 @@
  *
  * @return raw damage taken
  */
-/atom/proc/take_damage(amount, tier, damage_type, damage_mode, armor_flag)
-	#warn impl
+/atom/proc/take_atom_damage(amount, tier, damage_type, damage_mode, armor_flag)
+	if(!integrity_enabled)
+		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
+	#warn how to even deal with this?
 
 //? Direct Integrity
 
@@ -68,7 +64,14 @@
 /atom/proc/set_integrity(amount)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	#warn impl
+	var/was_failing = integrity <= integrity_failure
+	integrity = clamp(amount, 0, integrity_max)
+	if(!was_failing && integrity <= integrity_failure)
+		atom_break()
+	else if(was_failing && integrity > integrity_failure)
+		atom_fix()
+	if(!integrity)
+		atom_destruction()
 
 /**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]

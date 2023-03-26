@@ -1,5 +1,4 @@
 /obj
-
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW

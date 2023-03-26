@@ -93,7 +93,7 @@
 	log_this()
 	spawn(0)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/V in vents)
-			new /obj/effect/alien/weeds/node(V.loc)
+			new /obj/structure/alien/weeds/node(V.loc)
 		for(var/xeno_type in list(MOTHER, EMPRESS, QUEEN, PRAE, SENTINEL, DRONE, HUNTER))
 			while(spawn_types[xeno_type] > 0)
 				var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)

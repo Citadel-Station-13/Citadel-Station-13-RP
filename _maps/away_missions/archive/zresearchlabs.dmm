@@ -58,7 +58,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "ap" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aq" = (
@@ -98,7 +98,7 @@
 /area/awaymission/labs/cave)
 "ax" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "ay" = (
@@ -198,7 +198,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "aP" = (
@@ -222,7 +222,7 @@
 	},
 /area/awaymission/labs/cave)
 "aY" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -461,7 +461,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -508,7 +508,7 @@
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -760,7 +760,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/desert)
 "cN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "cO" = (
@@ -995,7 +995,7 @@
 /area/awaymission/labs/researchdivision)
 "dt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1147,7 +1147,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1225,7 +1225,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -1345,7 +1345,7 @@
 	},
 /area/awaymission/labs/gateway)
 "ew" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -4377,7 +4377,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mu" = (
@@ -4820,7 +4820,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "nG" = (
@@ -5221,7 +5221,7 @@
 	},
 /area/awaymission/labs/command)
 "oL" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "oM" = (
@@ -5386,7 +5386,7 @@
 	external_pressure_bound = 140;
 	pressure_checks = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "ph" = (
@@ -5669,7 +5669,7 @@
 	},
 /area/awaymission/labs/command)
 "qc" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor/outdoors/dirt,
@@ -5998,7 +5998,7 @@
 	},
 /area/awaymission/labs/command)
 "ra" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /obj/effect/debris/cleanable/blood/gibs/up,
@@ -6047,7 +6047,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},

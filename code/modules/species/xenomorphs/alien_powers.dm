@@ -88,13 +88,13 @@
 		remove_verb(src, /mob/living/carbon/human/proc/lay_egg)
 		return
 
-	if(locate(/obj/effect/alien/egg) in get_turf(src))
+	if(locate(/obj/structure/alien/egg) in get_turf(src))
 		to_chat(src, "There's already an egg here.")
 		return
 
 	if(check_alien_ability(75,1,O_EGG))
 		visible_message("<span class='green'><B>[src] has laid an egg!</B></span>")
-		new /obj/effect/alien/egg(loc)
+		new /obj/structure/alien/egg(loc)
 
 	return
 
@@ -121,7 +121,7 @@
 
 	if(check_alien_ability(50,1,O_RESIN))
 		visible_message("<span class='green'><B>[src] has planted some alien weeds!</B></span>")
-		var/obj/O = new /obj/effect/alien/weeds/node(loc)
+		var/obj/O = new /obj/structure/alien/weeds/node(loc)
 		if(O)
 			O.color = "#321D37"
 	return
@@ -179,7 +179,7 @@
 		return
 
 	if(check_alien_ability(200,0,O_ACID))
-		new /obj/effect/alien/acid(get_turf(O), O)
+		new /obj/structure/alien/acid(get_turf(O), O)
 		visible_message("<span class='green'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
 	return
@@ -246,9 +246,9 @@
 		if("resin door")
 			O = new /obj/structure/simple_door/resin(loc)
 		if("resin wall")
-			O = new /obj/effect/alien/resin/wall(loc)
+			O = new /obj/structure/alien/resin/wall(loc)
 		if("resin membrane")
-			O = new /obj/effect/alien/resin/membrane(loc)
+			O = new /obj/structure/alien/resin/membrane(loc)
 		if("resin nest")
 			O = new /obj/structure/bed/nest(loc)
 		if("resin blob")

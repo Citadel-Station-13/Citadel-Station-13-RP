@@ -481,8 +481,8 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
 "ce" = (
-/obj/effect/alien/egg,
-/obj/effect/alien/weeds,
+/obj/structure/alien/egg,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "cf" = (

@@ -766,8 +766,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cF" = (
-/obj/effect/alien/egg,
-/obj/effect/alien/weeds,
+/obj/structure/alien/egg,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cG" = (

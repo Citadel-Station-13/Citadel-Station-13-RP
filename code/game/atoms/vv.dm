@@ -31,15 +31,17 @@
 				return FALSE
 			if(var_value > integrity_max)
 				integrity_max = var_value
+			var_value = max(0, var_value)
 			if(integrity_enabled)
 				set_integrity(var_value)
 				. = TRUE
 		if(NAMEOF(src, integrity_failure))
-			if(!isnum(var_value))
+			if(!isnum(var_value) || var_value < 0)
 				return FALSE
 		if(NAMEOF(src, integrity_max))
 			if(!isnum(var_value))
 				return FALSE
+			var_value = max(0, var_value)
 		if(NAMEOF(src, contents))
 			var/list/O = contents
 			var/list/N = var_value

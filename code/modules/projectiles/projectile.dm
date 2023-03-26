@@ -800,3 +800,18 @@
  */
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
+
+//? Targeting
+
+/**
+ * Checks if something is a valid target when directly clicked.
+ */
+/obj/projectile/proc/is_valid_target(atom/target)
+	if(isobj(target))
+		var/obj/O = target
+		return O.obj_flags & OBJ_RANGE_TARGETABLE
+	else if(isliving(target))
+		return TRUE
+	else if(isturf(target))
+		return target.density
+	return FALSE
