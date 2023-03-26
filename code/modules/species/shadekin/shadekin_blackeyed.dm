@@ -111,14 +111,14 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin),
 	)
 
-	/*
+
 	var/list/crew_shadekin_abilities = list(
-		/datum/power/crew_shadekin/crewkin_regenerate_other,
+		//datum/power/crew_shadekin/crewkin_regenerate_other,
 		/datum/power/crew_shadekin/crewkin_create_shade,
 	)
-	*/
 
-	//var/list/crew_shadekin_ability_datums = list()
+
+	var/list/crew_shadekin_ability_datums = list()
 	var/kin_type
 	var/energy_light = 0.25
 	var/energy_dark = 0.75
@@ -130,13 +130,13 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
-/*
+
 /datum/species/crew_shadekin/New()
 	..()
 	for(var/power in crew_shadekin_abilities)
 		var/datum/power/crew_shadekin/BESKP = new power(src)
 		crew_shadekin_ability_datums.Add(BESKP)
-*/
+
 
 /datum/species/crew_shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
@@ -144,7 +144,7 @@
 /datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H)
 	handle_shade(H)
 
-/*
+
 /datum/species/crew_shadekin/add_inherent_verbs(mob/living/carbon/human/H)
 	..()
 	add_crew_shadekin_abilities(H)
@@ -163,7 +163,7 @@
 				ability_icon_given = P.ability_icon_state,
 				arguments = list()
 			)
-*/
+
 
 /datum/species/crew_shadekin/proc/handle_shade(mob/living/carbon/human/H)
 	//Shifted kin don't gain/lose energy (and save time if we're at the cap)
