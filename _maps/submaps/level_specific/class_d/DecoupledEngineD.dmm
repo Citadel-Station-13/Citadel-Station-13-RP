@@ -32,7 +32,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/ship)
 "al" = (
-/obj/item/projectile/bullet/magnetic/fuelrod,
+/obj/projectile/bullet/magnetic/fuelrod,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/ship)
 "am" = (
@@ -292,7 +292,7 @@
 /area/class_d/POIs/ship)
 "be" = (
 /obj/effect/floor_decal/rust,
-/obj/item/projectile/bullet/magnetic/fuelrod,
+/obj/projectile/bullet/magnetic/fuelrod,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bf" = (

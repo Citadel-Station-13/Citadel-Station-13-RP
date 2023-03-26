@@ -80,19 +80,3 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	speak_chance = 1
 	wander = TRUE
 	base_wander_delay = 9
-
-// Activate Noms!
-/mob/living/simple_mob/animal/passive/gaslamp
-	vore_active = 1
-	vore_capacity = 2
-	vore_bump_chance = 90 //they're frickin' jellyfish anenome filterfeeders, get tentacled
-	vore_bump_emote = "lazily wraps its tentacles around"
-	vore_standing_too = 1 // Defaults to trying to give you that big tentacle hug.
-	vore_ignores_undigestable = 0 // they absorb rather than digest, you're going in either way
-	vore_default_mode = DM_HOLD
-	vore_digest_chance = 0			// Chance to switch to digest mode if resisted
-	vore_absorb_chance = 20			// BECOME A PART OF ME.
-	vore_pounce_chance = 5 // Small chance to punish people who abuse their nomming behaviour to try and kite them forever with repeated melee attacks.
-	vore_stomach_name = "internal chamber"
-	vore_stomach_flavor	= "You are squeezed into the tight embrace of the alien creature's warm and cozy insides."
-	vore_icons = SA_ICON_LIVING

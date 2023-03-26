@@ -82,6 +82,32 @@
 /mob/living/silicon/proc/show_laws()
 	return
 
+/mob/living/silicon/PhysicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+	handle_modifiers()
+	handle_light()
+	handle_regular_hud_updates()
+	handle_vision()
+
+/mob/living/silicon/handle_regular_hud_updates()
+	. = ..()
+	SetSeeInDarkSelf(8)
+	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
+	SetSightSelf(SIGHT_FLAGS_DEFAULT)
+	if(bodytemp)
+		switch(src.bodytemperature) //310.055 optimal body temp
+			if(335 to INFINITY)
+				src.bodytemp.icon_state = "temp2"
+			if(320 to 335)
+				src.bodytemp.icon_state = "temp1"
+			if(300 to 320)
+				src.bodytemp.icon_state = "temp0"
+			if(260 to 300)
+				src.bodytemp.icon_state = "temp-1"
+			else
+				src.bodytemp.icon_state = "temp-2"
+
 /mob/living/silicon/emp_act(severity)
 	switch(severity)
 		if(1)
@@ -125,7 +151,7 @@
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
 
-/mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/silicon/bullet_act(var/obj/projectile/Proj)
 
 	if(!Proj.nodamage)
 		switch(Proj.damage_type)

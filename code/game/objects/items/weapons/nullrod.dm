@@ -5,7 +5,7 @@
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
@@ -121,7 +121,7 @@
 	item_state = "godstaff-red"
 	name = "red holy staff"
 	desc = "It has a mysterious, protective aura."
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BACK
 	defend_chance = 50
 	var/shield_icon = "shield-red"
@@ -184,7 +184,7 @@
 	slot_flags = SLOT_BELT
 
 /obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	force = rand(1, 30)
+	damage_force = rand(1, 30)
 	return ..()
 
 /obj/item/nullrod/claymore/saber
@@ -213,7 +213,7 @@
 	icon_state = "sord"
 	item_state = "sord"
 	slot_flags = SLOT_BELT
-	force = 4.13
+	damage_force = 4.13
 	throw_force = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -281,7 +281,7 @@
 	item_state = "pride"
 	name = "Pride-struck Hammer"
 	desc = "It resonates an aura of Pride."
-	force = 16
+	damage_force = 16
 	throw_force = 15
 	w_class = 4
 	slot_flags = SLOT_BACK
@@ -304,7 +304,7 @@
 	icon_state = "chain"
 	item_state = "chain"
 	slot_flags = SLOT_BELT
-	force = 12
+	damage_force = 12
 	reach = 2
 	attack_verb = list("whipped", "lashed")
 	hitsound = 'sound/weapons/towelwhip.ogg'
@@ -316,7 +316,7 @@
 	item_state = "fedora"
 	slot_flags = SLOT_HEAD
 	icon = 'icons/obj/clothing/hats.dmi'
-	force = 0
+	damage_force = 0
 	throw_speed = 4
 	throw_range = 7
 	throw_force = 30
@@ -351,7 +351,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "basecarp"
 	item_state = "basecarp"
-	force = 15
+	damage_force = 15
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	hitsound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
@@ -369,7 +369,7 @@
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, it is now used to harass the clown."
-	force = 15
+	damage_force = 15
 	defend_chance = 40
 	slot_flags = SLOT_BACK
 	sharp = 1
@@ -435,7 +435,7 @@
 	item_state = null
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
-	force = 4
+	damage_force = 4
 	throw_force = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
 	drop_sound = 'sound/items/drop/card.ogg'

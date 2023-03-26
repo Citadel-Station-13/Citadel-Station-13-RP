@@ -5700,7 +5700,7 @@
 /obj/structure/table/woodentable,
 /obj/item/material/sword/katana{
 	desc = "A well-weathered sword meant to be kept at the side of an officer. It is not meant for real combat.";
-	force = 15;
+	damage_force = 15;
 	name = "Officer's Sword"
 	},
 /turf/simulated/floor{

@@ -178,7 +178,7 @@
 		return
 
 	for(var/obj/item/I in loc)
-		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
+		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 			var/add = 0
 			if(I.w_class == ITEMSIZE_TINY)
 				add = 1

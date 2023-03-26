@@ -12,7 +12,7 @@
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "micromech_laser"
 	energy_drain = 50
-	projectile = /obj/item/projectile/beam
+	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
@@ -25,7 +25,7 @@
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "micromech_lasercannon"
 	energy_drain = 120
-	projectile = /obj/item/projectile/beam/heavylaser
+	projectile = /obj/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
@@ -38,7 +38,7 @@
 	icon_state = "micromech_taser"
 	energy_drain = 40
 	equip_cooldown = 10
-	projectile = /obj/item/projectile/beam/stun
+	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
@@ -51,7 +51,7 @@
 	icon_state = "micromech_shotgun"
 	equip_cooldown = 15
 	var/mode = 0 //0 - buckshot, 1 - beanbag, 2 - slug.
-	projectile = /obj/item/projectile/bullet/pellet/shotgun
+	projectile = /obj/projectile/bullet/pellet/shotgun
 	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	fire_volume = 80
 	projectiles = 6
@@ -68,13 +68,13 @@
 		switch(mode)
 			if(0)
 				occupant_message("Now firing buckshot.")
-				projectile = /obj/item/projectile/bullet/pellet/shotgun
+				projectile = /obj/projectile/bullet/pellet/shotgun
 			if(1)
 				occupant_message("Now firing beanbags.")
-				projectile = /obj/item/projectile/bullet/shotgun/beanbag
+				projectile = /obj/projectile/bullet/shotgun/beanbag
 			if(2)
 				occupant_message("Now firing slugs.")
-				projectile = /obj/item/projectile/bullet/shotgun
+				projectile = /obj/projectile/bullet/shotgun
 
 	return
 
@@ -109,7 +109,7 @@
 	icon_state = "microdrill"
 	equip_cooldown = 30
 	energy_drain = 10
-	force = 15
+	damage_force = 15
 	equip_type = EQUIP_MICRO_UTILITY
 	required_type = list(/obj/mecha/micro/utility)
 

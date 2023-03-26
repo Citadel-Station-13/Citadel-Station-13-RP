@@ -56,7 +56,7 @@ var/list/floor_light_cache = list()
 		src.light_color = newcolor
 		update_brightness()
 		visible_message(SPAN_NOTICE("\The [user] has changed \the [src] color."))
-	else if(W.force && user.a_intent == "hurt")
+	else if(W.damage_force && user.a_intent == "hurt")
 		attack_hand(user)
 	return
 

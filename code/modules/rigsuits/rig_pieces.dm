@@ -5,7 +5,7 @@
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB | ALLOWINTERNALS
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | ALLOWINTERNALS
 	inv_hide_flags      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
@@ -14,7 +14,7 @@
 
 	max_pressure_protection = null
 	min_pressure_protection = null
-	force = 3 // if you're headbutting someone with something meant to protect you from space...
+	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
-	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = THICKMATERIAL | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = HANDS
 	heat_protection    = HANDS
@@ -79,13 +79,13 @@
 /obj/item/clothing/shoes/magboots/rig
 	name = "boots"
 	atom_flags = PHORONGUARD
-	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	body_cover_flags = FEET
 	cold_protection    = FEET
 	heat_protection    = FEET
 
 	icon_base = null
-	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
+	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -119,7 +119,7 @@
 
 	//Flags
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	clothing_flags     = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags     = THICKMATERIAL | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	atom_flags              = PHORONGUARD
 	inv_hide_flags          = HIDEJUMPSUIT|HIDETAIL
@@ -215,7 +215,7 @@
 
 /obj/item/clothing/head/lightrig
 	name = "mask"
-	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
@@ -225,7 +225,7 @@
 	name = "suit"
 	allowed = list(/obj/item/flashlight)
 	inv_hide_flags = HIDEJUMPSUIT
-	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = THICKMATERIAL | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -234,7 +234,7 @@
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
 	atom_flags = PHORONGUARD
-	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	species_restricted = null
 	body_cover_flags = FEET
 	cold_protection    = FEET
@@ -242,7 +242,7 @@
 
 /obj/item/clothing/gloves/gauntlets/lightrig
 	name = "gloves"
-	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	clothing_flags = THICKMATERIAL | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	species_restricted = null
 	body_cover_flags = HANDS

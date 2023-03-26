@@ -32,7 +32,7 @@
 	max_damage = 200
 	min_broken_damage = 50
 	w_class = ITEMSIZE_HUGE
-	body_part = UPPER_TORSO
+	body_part_flags = UPPER_TORSO
 	vital = TRUE
 	cannot_amputate = TRUE
 	parent_organ = null
@@ -44,7 +44,7 @@
 	max_damage = 100
 	min_broken_damage = 50
 	w_class = ITEMSIZE_LARGE
-	body_part = LOWER_TORSO
+	body_part_flags = LOWER_TORSO
 	parent_organ = BP_TORSO
 
 /obj/item/organ/external/diona/arm
@@ -54,7 +54,7 @@
 	max_damage = 30
 	min_broken_damage = 20
 	w_class = ITEMSIZE_NORMAL
-	body_part = ARM_LEFT
+	body_part_flags = ARM_LEFT
 	parent_organ = BP_TORSO
 	can_grasp = TRUE
 
@@ -62,7 +62,7 @@
 	name = "right upper tendril"
 	organ_tag = BP_R_ARM
 	icon_name = "r_arm"
-	body_part = ARM_RIGHT
+	body_part_flags = ARM_RIGHT
 
 /obj/item/organ/external/diona/leg
 	name = "left lower tendril"
@@ -71,7 +71,7 @@
 	max_damage = 30
 	min_broken_damage = 20
 	w_class = ITEMSIZE_NORMAL
-	body_part = LEG_LEFT
+	body_part_flags = LEG_LEFT
 	icon_position = LEFT
 	parent_organ = BP_GROIN
 	can_stand = TRUE
@@ -80,7 +80,7 @@
 	name = "right lower tendril"
 	organ_tag = BP_R_LEG
 	icon_name = "r_leg"
-	body_part = LEG_RIGHT
+	body_part_flags = LEG_RIGHT
 	icon_position = RIGHT
 
 /obj/item/organ/external/diona/foot
@@ -90,7 +90,7 @@
 	max_damage = 25
 	min_broken_damage = 10
 	w_class = ITEMSIZE_SMALL
-	body_part = FOOT_LEFT
+	body_part_flags = FOOT_LEFT
 	icon_position = LEFT
 	parent_organ = BP_R_LEG
 	can_stand = TRUE
@@ -99,7 +99,7 @@
 	name = "right foot"
 	organ_tag = BP_R_FOOT
 	icon_name = "r_foot"
-	body_part = FOOT_RIGHT
+	body_part_flags = FOOT_RIGHT
 	icon_position = RIGHT
 	parent_organ = BP_R_LEG
 	joint = "right ankle"
@@ -112,7 +112,7 @@
 	max_damage = 25
 	min_broken_damage = 15
 	w_class = ITEMSIZE_SMALL
-	body_part = HAND_LEFT
+	body_part_flags = HAND_LEFT
 	parent_organ = BP_L_ARM
 	can_grasp = TRUE
 
@@ -120,7 +120,7 @@
 	name = "right grasper"
 	organ_tag = BP_R_HAND
 	icon_name = "r_hand"
-	body_part = HAND_RIGHT
+	body_part_flags = HAND_RIGHT
 	parent_organ = BP_R_ARM
 
 //DIONA ORGANS.

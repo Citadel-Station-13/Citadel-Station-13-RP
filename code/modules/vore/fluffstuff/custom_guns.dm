@@ -107,10 +107,10 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ge_pistol_r", SLOT_ID_LEFT_HAND = "ge_pistol_l")
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	force = 10
+	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
-	projectile_type = /obj/item/projectile/beam/imperial
+	projectile_type = /obj/projectile/beam/imperial
 /* CITADEL CHANGE - Removes Virgo Fluff
 // jertheace : Jeremiah 'Ace' Acacius
 /obj/item/gun/ballistic/shotgun/pump/USDF/fluff/ace
@@ -300,22 +300,22 @@ END OF CITADEL CHANGES */
 	item_state = "energystun100" //This is temporary.
 	fire_sound = 'sound/weapons/Taser.ogg'
 	charge_cost = 100
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_LARGE
 	fire_delay = 6
 	pixel_x = -16
 
-	projectile_type = /obj/item/projectile/beam/stun/weak
+	projectile_type = /obj/projectile/beam/stun/weak
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 	modifystate = "g44estun"
 
 	one_handed_penalty = 60
 
 	firemodes = list(
-		list(mode_name="stun", burst=1, projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg', charge_cost = 100),
-		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg'),
-		list(mode_name="lethal", burst=1, projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg', charge_cost = 200),
-		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg'),
+		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg', charge_cost = 100),
+		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg'),
+		list(mode_name="lethal", burst=1, projectile_type=/obj/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg', charge_cost = 200),
+		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg'),
 		)*/
 
 /* CITADEL CHANGE - Removes Virgo Fluff
@@ -359,8 +359,8 @@ END OF CITADEL CHANGES */
 	modifystate = "elugerstun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	firemodes = list(
-	list(mode_name="stun", charge_cost=120,projectile_type=/obj/item/projectile/beam/stun, modifystate="elugerstun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=240,projectile_type=/obj/item/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg'),
+	list(mode_name="stun", charge_cost=120,projectile_type=/obj/projectile/beam/stun, modifystate="elugerstun", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", charge_cost=240,projectile_type=/obj/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg'),
 	)
 
 //////////////////// Eris Ported Guns ////////////////////
@@ -485,7 +485,7 @@ END OF CITADEL CHANGES */
 	icon_state = "PDW"
 	item_state = "gun"
 	w_class = ITEMSIZE_SMALL
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 	charge_cost = 1200
 	charge_meter = 0
 	modifystate = null
@@ -493,8 +493,8 @@ END OF CITADEL CHANGES */
 	fire_sound = 'sound/weapons/Taser.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_sound='sound/weapons/Taser.ogg', charge_cost = 600),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_sound='sound/weapons/Taser.ogg', charge_cost = 600),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
 		)
 
 /obj/item/gun/energy/gun/martin/update_overlays()
@@ -510,7 +510,7 @@ END OF CITADEL CHANGES */
 //////////////////// Custom Ammo ////////////////////
 /////////////////////////////////////////////////////
 //---------------- Beams ----------------
-/obj/item/projectile/beam/eluger
+/obj/projectile/beam/eluger
 	name = "laser beam"
 	icon_state = "xray"
 	light_color = "#00FF00"
@@ -518,7 +518,7 @@ END OF CITADEL CHANGES */
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/item/projectile/beam/imperial
+/obj/projectile/beam/imperial
 	name = "laser beam"
 	fire_sound = 'sound/weapons/mandalorian.ogg'
 	icon_state = "darkb"
@@ -527,7 +527,7 @@ END OF CITADEL CHANGES */
 	tracer_type = /obj/effect/projectile/tracer/darkmatter
 	impact_type = /obj/effect/projectile/impact/darkmatter
 
-/obj/item/projectile/beam/stun/kin21
+/obj/projectile/beam/stun/kin21
 	name = "kinh21 stun beam"
 	icon_state = "omnilaser"
 	light_color = "#0000FF"
@@ -549,7 +549,7 @@ END OF CITADEL CHANGES */
 	desc = "A 7.92x33mm Kurz casing."
 	icon_state = "rifle-casing"
 	caliber = "7.92x33mm"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 
 /obj/item/ammo_magazine/mtg/empty
 	initial_ammo = 0
@@ -569,9 +569,9 @@ END OF CITADEL CHANGES */
 	desc = "A 9.5x40mm bullet casing."
 	icon_state = "rifle-casing"
 	caliber = "9.5x40mm"
-	projectile_type = /obj/item/projectile/bullet/rifle/a95
+	projectile_type = /obj/projectile/bullet/rifle/a95
 
-/obj/item/projectile/bullet/rifle/a95
+/obj/projectile/bullet/rifle/a95
 	damage = 40
 
 /obj/item/ammo_magazine/m95/empty
@@ -626,7 +626,7 @@ END OF CITADEL CHANGES */
 	caliber = ".357"
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "stun357"
-	projectile_type = /obj/item/projectile/energy/electrode/stunshot/strong
+	projectile_type = /obj/projectile/energy/electrode/stunshot/strong
 
 /obj/item/ammo_magazine/s357/rubber
 	name = "speedloader (.357 rubber)"
@@ -642,7 +642,7 @@ END OF CITADEL CHANGES */
 	caliber = ".357"
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "rubber357"
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber/strong
+	projectile_type = /obj/projectile/bullet/pistol/rubber/strong
 
 /obj/item/ammo_magazine/s357/flash
 	name = "speedloader (.357 flash)"
@@ -657,13 +657,13 @@ END OF CITADEL CHANGES */
 	caliber = ".357"
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "flash357"
-	projectile_type = /obj/item/projectile/energy/flash/strong
+	projectile_type = /obj/projectile/energy/flash/strong
 
 //.380
 /obj/item/ammo_casing/a380
 	desc = "A .380 bullet casing."
 	caliber = ".380"
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/ammo_magazine/m380
 	name = "magazine (.380)"
@@ -680,7 +680,7 @@ END OF CITADEL CHANGES */
 /obj/item/ammo_casing/a44/rubber
 	icon_state = "r-casing"
 	desc = "A .44 rubber bullet casing."
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber/strong
+	projectile_type = /obj/projectile/bullet/pistol/rubber/strong
 
 /obj/item/ammo_magazine/m44/rubber
 	desc = "A magazine for .44 less-than-lethal ammo."
@@ -721,10 +721,10 @@ END OF CITADEL CHANGES */
 	var/recharging = 0
 	var/phase_power = 75
 
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/item/projectile/beam, charge_cost = 300),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, charge_cost = 300),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
 /obj/item/gun/energy/frontier/unload_ammo(var/mob/user)
@@ -771,8 +771,8 @@ END OF CITADEL CHANGES */
 
 	modifystate = "carbinekill"
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/item/projectile/beam, modifystate="carbinekill", charge_cost = 300),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="carbinekill", charge_cost = 300),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
 	)
 
 /obj/item/gun/energy/frontier/locked/carbine/update_icon_state()
@@ -795,9 +795,9 @@ END OF CITADEL CHANGES */
 	charge_cost = 600
 	modifystate = "holdoutkill"
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/item/projectile/beam, modifystate="holdoutkill", charge_cost = 600),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, modifystate="holdoutstun", charge_cost = 120),
-		list(mode_name="stun", fire_delay=12, projectile_type=/obj/item/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = 300),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="holdoutkill", charge_cost = 600),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="holdoutstun", charge_cost = 120),
+		list(mode_name="stun", fire_delay=12, projectile_type=/obj/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = 300),
 	)
 
 /obj/item/gun/energy/frontier/taj
@@ -809,7 +809,7 @@ END OF CITADEL CHANGES */
 	wielded_item_state = "phaser-taj"
 	charge_cost = 600
 
-	projectile_type = /obj/item/projectile/beam/midlaser
+	projectile_type = /obj/projectile/beam/midlaser
 
 
 	firemodes = list(

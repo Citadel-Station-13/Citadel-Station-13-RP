@@ -13,6 +13,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 	pressure_resistance = 15
+	surgery_odds = 70 // better than nothing
 	anchored = TRUE
 	buckle_allowed = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
@@ -22,6 +23,7 @@
 	var/datum/material/padding_material
 	var/base_icon = "bed"
 	var/applies_material_colour = 1
+	var/can_buckle = TRUE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
@@ -119,7 +121,7 @@
 		playsound(src, W.tool_sound, 100, 1)
 		remove_padding()
 
-	else if(istype(W, /obj/item/grab))
+	else if(istype(W, /obj/item/grab) && can_buckle)
 		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
