@@ -206,6 +206,7 @@
 #include "code\__DEFINES\mobs\sprite_accessories.dm"
 #include "code\__DEFINES\overmaps\misc.dm"
 #include "code\__DEFINES\overmaps\overmap.dm"
+#include "code\__DEFINES\power\balancing.dm"
 #include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\preferences\data_keys_character.dm"
 #include "code\__DEFINES\preferences\data_keys_global.dm"
