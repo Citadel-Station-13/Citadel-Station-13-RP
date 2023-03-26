@@ -223,12 +223,11 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/obj/item/organ/internal/the_brain = H.internal_organs_by_name[O_BRAIN]
 	if(the_brain)
 		the_brain.removed(H)
-		the_brain.forceMove(H.drop_location())
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
 	else if(!gibbed)
-		to_chat(H)
+		to_chat(H, deathmsg)
 		H.gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
