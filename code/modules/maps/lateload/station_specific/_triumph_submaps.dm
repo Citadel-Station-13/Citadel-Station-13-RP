@@ -1,7 +1,7 @@
 /datum/map_template/lateload/triumph/triumph_misc
 	name = "Triumph - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
-	mappath = "_maps/map_files/triumph/triumph_misc.dmm"
+	mappath = "maps/map_files/triumph/triumph_misc.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/ships
 
@@ -14,7 +14,7 @@
 /datum/map_template/lateload/triumph/triumph_ships
 	name = "Triumph - Ships"
 	desc = "Ship transit map and whatnot."
-	mappath = "_maps/map_files/triumph/triumph_ships.dmm"
+	mappath = "maps/map_files/triumph/triumph_ships.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/ships
 
