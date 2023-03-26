@@ -141,6 +141,18 @@
 			afflict_root(amount)
 	return TRUE
 
+/mob/proc/afflict_stagger(stacks, maximum)
+	#warn impl
+
+/mob/proc/cure_stagger(stacks)
+	#warn impl
+
+/mob/proc/is_staggered()
+	#warn impl
+
+/mob/proc/stacks_staggered()
+	#warn impl
+
 /mob/proc/is_unconscious()
 	RETURN_TYPE(/datum/status_effect)
 	#warn impl

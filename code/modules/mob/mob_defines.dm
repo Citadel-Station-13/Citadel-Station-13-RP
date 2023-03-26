@@ -272,7 +272,7 @@
 	var/update_icon = TRUE
 
 	/// Bitflags defining which status effects can be inflicted. (replaces canweaken, canstun, etc)
-	var/status_flags = STATUS_CAN_STUN|STATUS_CAN_WEAKEN|STATUS_CAN_PARALYZE|STATUS_CAN_PUSH
+	var/status_flags = STATUS_FLAGS_DEFAULT
 
 	var/area/lastarea = null
 
