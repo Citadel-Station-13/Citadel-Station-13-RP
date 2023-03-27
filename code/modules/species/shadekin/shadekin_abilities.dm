@@ -80,10 +80,8 @@
 	var/original_canmove = canmove
 	set_stunned(0)
 	set_paralyzed(0)
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(pulledby)
-		pulledby.stop_pulling()
+	unbuckle(BUCKLE_OP_FORCE)
+	break_pull()
 	stop_pulling()
 	canmove = FALSE
 

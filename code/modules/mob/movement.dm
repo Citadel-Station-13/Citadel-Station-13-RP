@@ -188,9 +188,9 @@
 	if(mob.buckled)
 		return mob.buckled.relaymove_from_buckled(mob, direct)
 
-	// todo: mobility refactor & move to mob
+	// todo: move to mob
 	// mobility check
-	if(!mob.canmove)
+	if(!CHECK_MOBILITY(mob, MOBILITY_MOVE))
 		return
 
 	// new mobility flags check todo

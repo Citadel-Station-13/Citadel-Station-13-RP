@@ -633,7 +633,7 @@
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
 			M.afflict_paralyze(20 * 5)
-		if(dose >= 10 && M.paralysis < 40)
+		if(dose >= 10 && M.is_unconscious())
 			M.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
 	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)

@@ -16,10 +16,25 @@
 
 #warn impl
 
-/mob/living/proc/toggle_resting()
+/mob/living/proc/toggle_resting(value, instant)
 	#warn impl
 
-/mob/living/proc/set_resting(value)
+/mob/living/proc/set_resting(value, instant)
 	#warn impl
 
-#warn delays on getting up
+/mob/living/proc/resist_a_rest()
+	#warn impl
+
+/mob/living/proc/set_intentionally_resting(value, instant)
+
+
+
+#warn refactor
+
+/mob/living/verb/lay_down()
+	set name = "Rest"
+	set category = "IC"
+
+	toggle_resting()
+	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	update_canmove()

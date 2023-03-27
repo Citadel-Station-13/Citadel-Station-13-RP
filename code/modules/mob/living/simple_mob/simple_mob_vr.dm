@@ -160,19 +160,6 @@
 		"The churning walls slowly pulverize you into meaty nutrients.",
 		"The stomach glorps and gurgles as it tries to work you into slop.")
 
-/mob/living/simple_mob/Bumped(var/atom/movable/AM, yes)
-	if(ismob(AM))
-		var/mob/tmob = AM
-		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
-			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
-				tmob.afflict_paralyze(20 * 5)
-			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
-			set_AI_busy(TRUE)
-			animal_nom(tmob)
-			update_icon()
-			set_AI_busy(FALSE)
-	..()
-
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
 	if(istype(newloc,/turf/simulated/floor/sky))

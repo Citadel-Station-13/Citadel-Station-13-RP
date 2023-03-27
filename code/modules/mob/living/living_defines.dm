@@ -105,7 +105,7 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
-	//! inventory
+	//? inventory
 	var/hand = null
 	var/obj/item/l_hand = null
 	var/obj/item/r_hand = null
@@ -117,10 +117,18 @@
 	/// Set to TRUE to enable the use of hands and the hands hud
 	var/has_hands = FALSE
 
-	//! movement
+	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
 	var/_pushing_bumped_atom = FALSE
 
-	//! throwing
+	//? throwing
 	/// the force we use when we throw things
 	var/throw_impulse = THROW_FORCE_DEFAULT
+
+	//? mobility
+	/// are we intentionally resting?
+	var/resting_intentionally = FALSE
+	/// are we resisting out of a resting state?
+	var/getting_up = FALSE
+	#warn AAA
+	// todo: move resting here

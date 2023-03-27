@@ -56,12 +56,19 @@
   * Stops pulling. Returns the object we "dropped" from our pull.
   */
 /atom/movable/proc/stop_pulling()
-	if(pulling)
-		. = pulling
-		pulling.pulledby = null
-		pulling.reset_glide_size()
-		pulling.on_stop_pulled_by()
-		pulling = null
+	if(isnull(pulling))
+		return
+	. = pulling
+	pulling.pulledby = null
+	pulling.reset_glide_size()
+	pulling.on_stop_pulled_by()
+	pulling = null
+
+/**
+ * stops a pull on ourselves
+ */
+/atom/movable/proc/break_pull()
+	pulledby?.stop_pulling()
 
 /**
   * Checks if a pull is valid. If it ain't, stop pulling.

@@ -629,14 +629,6 @@ default behaviour is:
 /mob/living/proc/resist_restraints()
 	return
 
-/mob/living/verb/lay_down()
-	set name = "Rest"
-	set category = "IC"
-
-	toggle_resting()
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-	update_canmove()
-
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(override_blindness_check || !(disabilities & SDISABILITY_NERVOUS))
