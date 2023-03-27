@@ -12,16 +12,12 @@
 	var/identifier = "effect"
 	/// duration in deciseconds - 0 for permanent.
 	var/duration
-	#warn hook
 	/// expiration timerid
 	var/decay_timer
-	#warn hook
 	/// start time - when refreshing we just bump this to world.time or something.
 	var/started
-	#warn hook
 	/// deciseconds per tick. null for no ticking.
 	var/tick_interval
-	#warn hook
 	/// next world.time we should tick.
 	var/tick_next
 	/// path of screen alert thrown
@@ -34,6 +30,8 @@
 /datum/status_effect/New(duration, list/arguments)
 	if(!isnull(duration))
 		src.duration = duration
+	started = world.time
+	rebuild_decay_timer()
 	on_apply(arglist(arguments))
 
 /datum/status_effect/Destroy()
@@ -60,7 +58,8 @@
  */
 /datum/status_effect/proc/on_remove()
 	SHOULD_CALL_PARENT(TRUE)
-	SSstatus_effects.ticking -= src
+	if(!isnull(tick_interval))
+		SSstatus_effects.ticking -= src
 
 /**
  * called after add
@@ -70,7 +69,8 @@
  */
 /datum/status_effect/proc/on_apply(...)
 	SHOULD_CALL_PARENT(TRUE)
-	SSstatus_effects.ticking += src
+	if(!isnull(tick_interval))
+		SSstatus_effects.ticking += src
 
 /**
  * called on refresh
@@ -88,11 +88,23 @@
  * if duration is supplied and it isn't necessary to refresh, on_refreshed is not called.
  *
  * @params
- * * duration - if supplied, refreshes us to that long from now (if we weren't already at or above).
+ * * duration - if supplied, refreshes us to that long from now (if we weren't already at or above). otherwise, refreshes us to what current duration was from now.
  * * ... - rest of parameters from /mob/apply_status_effect(), passed to on_refreshed.
+ *
+ * @return were we refreshed?
  */
 /datum/status_effect/proc/refresh(duration, ...)
-	#warn impl
+	SHOULD_NOT_SLEEP(TRUE)
+	var/left = time_left()
+	if(isnull(duration))
+		duration = src.duration
+	else if(duration < left)
+		return FALSE
+	set_duration_from_now(duration)
+	var/list/built = args.Copy()
+	built[1] = left
+	on_refreshed(arglist(built))
+	return TRUE
 
 /datum/status_effect/proc/time_left()
 	return (started + duration) - world.time
@@ -110,6 +122,14 @@
 	src.duration += duration
 	rebuild_decay_timer()
 
+/datum/status_effect/proc/set_tick_interval(interval)
+	var/was_ticking = !isnull(tick_interval)
+	tick_interval = interval
+	if(was_ticking && isnull(interval))
+		SSstatus_effects.ticking -= src
+	else if(!was_ticking && !isnull(interval))
+		SSstatus_effects.ticking += src
+
 /datum/status_effect/proc/rebuild_decay_timer()
 	if(decay_timer)
 		deltimer(decay_timer)
@@ -123,8 +143,17 @@
 	decay_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/status_effect, decay)), time_left, TIMER_STOPPABLE)
 
 /datum/status_effect/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	if(raw_edit)
+		return ..()
+	switch(var_name)
+		if(NAMEOF(src, tick_interval))
+			set_tick_interval(var_value)
+			. = TRUE
+	if(.)
+		datum_flags |= DF_VAR_EDITED
+		return
 	. = ..()
-	if(!. || raw_edit)
+	if(!.)
 		return
 	switch(var_name)
 		if(NAMEOF(src, duration))
@@ -153,9 +182,14 @@
 	var/id = initial(path.identifier)
 	if(status_effects[id])
 		var/datum/status_effect/existing = status_effects[id]
-		#warn impl
+		var/list/built = additional?.Copy() || list()
+		built.Insert(1, duration)
+		existing.refresh(arglist(built))
+		return existing
 	else
-		#warn impl
+		var/datum/status_effect/making = new path(duration, additional)
+		status_effects[making.identifier] = making
+		return making
 
 /**
  * remove a status effect
