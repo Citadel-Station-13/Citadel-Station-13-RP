@@ -17,8 +17,17 @@
 	/// default behavior: do we refresh decay timer to maximum (duration) when stacks increase from external sources?
 	var/stacking_resets_decay = TRUE
 
+/datum/status_effect/stacking/on_apply(stacks, ...)
+	src.stacks = isnull(stacks)? 1 : stacks
+	ASSERT(src.stacks > 0)
+	return ..()
+
 /datum/status_effect/stacking/decay()
-	#warn impl
+	adjust_stacks(decay_amount, TRUE)
+	if(!stacks)
+		return ..()
+	started = world.time
+	rebuild_decay_timer()
 
 /**
  * called when stacks change
@@ -34,27 +43,37 @@
 
 /**
  * called to modify stacks.
+ *
+ * @return stacks modified
  */
 /datum/status_effect/stacking/proc/adjust_stacks(stacks, decaying)
-	#warn impl
+	var/old = src.stacks
+	src.stacks = clamp(src.stacks + stacks, 0, max_stacks)
+	on_stacks(old, src.stacks, decaying)
+	if(!decaying)
+		qdel(src)
+	return src.stacks - old
 
 //? Mob procs
 
 /**
  * simple add or increment to stacks of a stacking effect
  *
- * @return effect datum
+ * maximum as well as the effect's maximum are both respected.
+ *
+ * @return stacks applied
  */
-/mob/proc/apply_stacking_effect(datum/status_effect/stacking/path, stacks)
+/mob/proc/apply_stacking_effect(datum/status_effect/stacking/path, stacks, maximum)
 	if(!ispath(path, /datum/status_effect/stacking))
 		CRASH("[path] is not a stacking effect.")
+	stacks = min(stacks, maximum) // just in case
 	ASSERT(stacks > 0)
 	var/datum/status_effect/stacking/effect = has_status_effect(path)
 	if(!effect)
 		effect = apply_status_effect(path, additional = list(stacks))
+		. = effect.stacks
 	else
-		effect.adjust_stacks(stacks, FALSE)
-	return effect
+		. = effect.adjust_stacks(clamp(stacks, 0, maximum - effect.stacks), FALSE)
 
 /**
  * simple decrement to stacks of a stacking effect

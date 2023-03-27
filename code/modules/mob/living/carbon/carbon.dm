@@ -150,9 +150,11 @@
 			if(show_ssd && !client && !teleop && (!istype(H) || !H.override_ssd))
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
-			else if(lying || src.sleeping)
-				adjust_sleeping(20 * -5)
-				if(H) H.in_stasis = 0
+			else if(lying || !IS_CONSCIOUS(src))
+				adjust_sleeping(-5 SECONDS)
+				adjust_unconscious(-2 SECONDS)
+				if(H)
+					H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
 			else
@@ -178,7 +180,7 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			adjust_unconscious\(20 * -3)
+			adjust_unconscious(20 * -3)
 			adjust_stunned(20 * -3)
 			adjust_paralyzed(20 * -3)
 
@@ -245,11 +247,12 @@
 	set name = "Sleep"
 	set category = "IC"
 
-	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+
+	if(is_sleeping())
+		to_chat(src, "<font color='red'>You are already sleeping</font>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.adjust_sleeping(20 * 20)
+	if(alert(src, "You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+		afflict_sleeping(20 SECONDS)
 
 /mob/living/carbon/Bump(atom/A)
 	. = ..()

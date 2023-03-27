@@ -26,3 +26,5 @@
  */
 /mob/proc/set_stat(new_stat)
 	stat = new_stat
+	if(!STAT_IS_CONSCIOUS(new_stat))
+		facing_dir = null

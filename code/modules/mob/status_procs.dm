@@ -142,53 +142,65 @@
 	return TRUE
 
 /mob/proc/afflict_stagger(stacks, maximum)
-	#warn impl
+	apply_stacking_effect(/datum/status_effect/stacking/staggered, stacks, maximum)
 
 /mob/proc/cure_stagger(stacks)
-	#warn impl
+	remove_stacking_effect(/datum/status_effect/stacking/staggered, stacks)
 
 /mob/proc/is_staggered()
-	#warn impl
+	RETURN_TYPE(/datum/status_effect/stacking/staggered)
+	return has_status_effect(/datum/status_effect/stacking/staggered)
 
 /mob/proc/stacks_staggered()
-	#warn impl
+	return is_staggered()?.stacks
 
 /mob/proc/is_unconscious()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/unconscious)
 
 /mob/proc/afflict_unconscious(amount)
-	if(status_flags & STATUS_CAN_PARALYZE)
-		facing_dir = null
-		paralysis = max(max(paralysis,amount),0)
-	return
+	apply_status_effect(/datum/status_effect/incapacitation/unconscious, amount)
+	return TRUE
 
 /mob/proc/set_unconscious(amount)
-	if(status_flags & STATUS_CAN_PARALYZE)
-		paralysis = max(amount,0)
-	return
+	var/datum/status_effect/incapacitation/unconscious/effect = is_unconscious()
+	if(isnull(effect))
+		apply_status_effect(/datum/status_effect/incapacitation/unconscious, amount)
+	else
+		effect.set_duration_from_now(amount)
+	return TRUE
 
 /mob/proc/adjust_unconscious(amount)
-	if(status_flags & STATUS_CAN_PARALYZE)
-		paralysis = max(paralysis + amount,0)
-	return
+	var/datum/status_effect/incapacitation/unconscious/effect = is_unconscious()
+	if(isnull(effect))
+		apply_status_effect(/datum/status_effect/incapacitation/unconscious, amount)
+	else
+		effect.adjust_duration(amount)
+	return TRUE
 
 /mob/proc/is_sleeping()
 	RETURN_TYPE(/datum/status_effect)
-	#warn impl
+	return has_status_effect(/datum/status_effect/incapacitation/sleeping)
 
 /mob/proc/afflict_sleeping(amount)
-	facing_dir = null
-	sleeping = max(max(sleeping,amount),0)
-	return
+	apply_status_effect(/datum/status_effect/incapacitation/sleeping, amount)
+	return TRUE
 
 /mob/proc/set_sleeping(amount)
-	sleeping = max(amount,0)
-	return
+	var/datum/status_effect/incapacitation/sleeping/effect = is_sleeping()
+	if(isnull(effect))
+		apply_status_effect(/datum/status_effect/incapacitation/sleeping, amount)
+	else
+		effect.set_duration_from_now(amount)
+	return TRUE
 
 /mob/proc/adjust_sleeping(amount)
-	sleeping = max(sleeping + amount,0)
-	return
+	var/datum/status_effect/incapacitation/sleeping/effect = is_sleeping()
+	if(isnull(effect))
+		apply_status_effect(/datum/status_effect/incapacitation/sleeping, amount)
+	else
+		effect.adjust_duration(amount)
+	return TRUE
 
 //? legacy
 

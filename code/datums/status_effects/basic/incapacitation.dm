@@ -32,5 +32,3 @@
 /datum/status_effect/incapacitation/sleeping
 	identifier = "sleeping"
 	requires_stat_update = TRUE
-
-#warn impl in mobility / stat updates.

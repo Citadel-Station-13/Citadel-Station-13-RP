@@ -59,7 +59,7 @@
 	M.add_chemical_effect(CE_SPEEDBOOST, 3)
 	M.add_chemical_effect(CE_PAINKILLER, 60)
 	M.adjustHalLoss(-30)
-	M.adjust_unconscious\(20 * -2)
+	M.adjust_unconscious(20 * -2)
 	M.adjust_stunned(20 * -2)
 	M.adjust_paralyzed(20 * -2)
 	..()

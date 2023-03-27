@@ -67,6 +67,12 @@
  * Returns QDEL_HINT_HARDDEL (don't change this)
  */
 /mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
+	// status effects
+	for(var/id in status_effects)
+		var/datum/status_effect/effect = status_effects[id]
+		qdel(effect)
+	status_effects = null
+	// mob lists
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
