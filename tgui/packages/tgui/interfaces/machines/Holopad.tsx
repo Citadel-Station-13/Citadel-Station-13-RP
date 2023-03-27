@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from "../../components";
+import { Box, Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -78,10 +78,12 @@ export const Holopad = (props, context) => {
   return (
     <Window
       title="Holopad"
-      width={600}
-      height={300}>
+      width={650}
+      height={400}>
       <Window.Content>
         <Section
+          fill
+          scrollable
           title={data.holopadName}
           buttons={data.isAI? (
             <Button
@@ -103,33 +105,39 @@ export const Holopad = (props, context) => {
           )}>
           <Tabs>
             <Tabs.Tab
+              width="50%"
               selected={tab === 1}
               onClick={() => setTab(1)}>
               Communications
             </Tabs.Tab>
             <Tabs.Tab
+              width="50%"
               selected={tab === 2}
               onClick={() => setTab(2)}>
               Settings
             </Tabs.Tab>
           </Tabs>
           {tab === 1 && (
-            <>
-              {!!data.canCall && (
-                data.calling === HolopadCalling.None? (
-                  <HolopadDirectory />
-                ) : (
-                  data.calling === HolopadCalling.Destination? (
-                    <HolopadCallIncoming />
+            <Stack>
+              <Stack.Item grow={1}>
+                {!!data.canCall && (
+                  data.calling === HolopadCalling.None? (
+                    <HolopadDirectory />
                   ) : (
-                    <HolopadCallOutgoing />
+                    data.calling === HolopadCalling.Destination? (
+                      <HolopadCallIncoming />
+                    ) : (
+                      data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
+                    )
                   )
-                )
-              )}
+                )}
+              </Stack.Item>
               {!!data.ringing.length && (
-                <HolopadRinging />
+                <Stack.Item>
+                  <HolopadRinging />
+                </Stack.Item>
               )}
-            </>
+            </Stack>
           )}
           {tab === 2 && (
             <HolopadSettings />
@@ -222,34 +230,34 @@ const HolopadCallIncoming = (props, context) => {
 const HolopadRinging = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   return ((
-    <Flex.Item>
-      <LabeledList>
-        <>
-          {data.ringing.map((pad) => {
-            <LabeledList.Item label={`${pad.name} - ${pad.sector}`}
-              buttons={
-                <Button.Confirm
-                  content="Connect"
-                  onClick={() => act('connect', { id: pad?.id })} />
-              } />;
-          })}
-        </>
-      </LabeledList>
-    </Flex.Item>
+    <LabeledList>
+      <>
+        {data.ringing.map((pad) => {
+          <LabeledList.Item label={`${pad.name} - ${pad.sector}`}
+            buttons={
+              <Button.Confirm
+                content="Connect"
+                onClick={() => act('connect', { id: pad?.id })} />
+            } />;
+        })}
+      </>
+    </LabeledList>
   ));
 };
 
 const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
-  const padMap: {[sector: string]: {[category: string]: ReachableHolopad[]}} = {};
+  const padMap: Record<string, Record<string, Array<ReachableHolopad>>> = {};
   data.connectivity.map((pad: ReachableHolopad) => {
-    if (padMap[pad.sector || "Misc"] === undefined) {
-      padMap[pad.sector || "Misc"] = {};
+    let effectiveSector = pad.sector || "Other";
+    let effectiveCategory = pad.category || "Misc";
+    if (padMap[effectiveSector] === undefined) {
+      padMap[effectiveSector] = {};
     }
-    if (padMap[pad.sector || "Misc"][pad.category || "Misc"] === undefined) {
-      padMap[pad.sector || "Misc"][pad.category || "Misc"] = new Array<ReachableHolopad>();
+    if (padMap[effectiveSector][effectiveCategory] === undefined) {
+      padMap[effectiveSector][effectiveCategory] = new Array<ReachableHolopad>();
     }
-    padMap[pad.sector || "Misc"][pad.category || "Misc"].push(pad);
+    padMap[effectiveSector][effectiveCategory].push(pad);
   });
   const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
   const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
@@ -257,112 +265,128 @@ const HolopadDirectory = (props, context) => {
     Object.keys(padMap[sector]).length === 1 ? Object.keys(padMap[sector])[0] : category
   ));
   return (
-    <Section title="Directory">
-      <Flex
-        direction="column">
-        <Flex.Item grow={1}>
-          <Section title="Call">
-            <Tabs>
-              {
-                Object.keys(padMap).map((key: string) => {
+    <Stack>
+      <Stack.Item width="20%">
+        <Box height="100%">
+          <Tabs vertical>
+            {
+              Object.keys(padMap).sort((a, b) => (a.localeCompare(b))).map((key: string) => (
+                <Tabs.Tab
+                  selected={sector === key}
+                  key={key}
+                  onClick={() => setSector(key)}>
+                  {key}
+                </Tabs.Tab>
+              ))
+            }
+          </Tabs>
+        </Box>
+      </Stack.Item>
+      <Stack.Item width="20%">
+        <Box height="100%">
+          {
+            sector && !!Object.keys(padMap[sector]).length && (
+              <Tabs vertical>
+                {Object.keys(padMap[sector]).sort((a, b) => (a.localeCompare(b))).map((cat) => (
                   <Tabs.Tab
-                    selected={sector === key}
-                    onClick={() => setSector(key)}>
-                    {key}
-                  </Tabs.Tab>;
-                })
-              }
-            </Tabs>
-            <Flex
-              direction="row">
-              <Flex.Item>
-                {
-                  sector && !!Object.keys(padMap[sector]).length && (
-                    <Tabs>
-                      {Object.keys(padMap[sector]).map((cat) => {
-                        <Tabs.Tab
-                          selected={cat === category}
-                          onClick={() => setCategory(cat)}>
-                          {cat}
-                        </Tabs.Tab>;
-                      })}
-                    </Tabs>
-                  )
-                }
-              </Flex.Item>
-              <Flex.Item grow={1}>
-                <LabeledList>
-                  {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => {
-                    <LabeledList.Item
-                      label={pad.name}
-                      buttons={
-                        <Button.Confirm
-                          content="Call"
-                          onClick={() => act('call', { id: pad.id })} />
-                      }
-                    />;
-                  })) || undefined}
-                </LabeledList>
-              </Flex.Item>
-            </Flex>
-          </Section>
-        </Flex.Item>
-      </Flex>
-    </Section>
+                    key={cat}
+                    selected={cat === category}
+                    onClick={() => setCategory(cat)}>
+                    {cat}
+                  </Tabs.Tab>
+                ))}
+              </Tabs>
+            )
+          }
+        </Box>
+      </Stack.Item>
+      <Stack.Item width="60%">
+        <Box height="100%">
+          {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => (
+            <Stack
+              key={pad.id}>
+              <Stack.Item grow={1}>
+                {pad.name}
+              </Stack.Item>
+              <Stack.Item>
+                <Button.Confirm
+                  fluid
+                  content="Call"
+                  color="transprent"
+                  onClick={() => act('call', { id: pad.id })} />
+              </Stack.Item>
+            </Stack>
+          ))) || undefined}
+        </Box>
+      </Stack.Item>
+    </Stack>
   );
 };
 
 const HolopadSettings = (props, context) => {
   let { data, act } = useBackend<HolopadContext>(context);
   return (
-    <Section title="System">
-      <LabeledList>
-        <LabeledList.Item
-          label="Ringer"
-          buttons={
-            <Button
-              content={data.ringerEnabled? "Enabled" : "Disabled"}
-              selected={data.ringerEnabled}
-              disabled={!data.ringerToggle}
-              onClick={() => act('toggle_ringer')} />
-          } />
-        <LabeledList.Item
-          label="Visibility"
-          buttons={
-            <Button
-              content={data.callVisibility? "Visible" : "Invisible"}
-              selected={data.callVisibility}
-              disabled={!data.toggleVisibility}
-              onClick={() => act('toggle_visibility')} />
-          } />
-        <LabeledList.Item
-          label="Hide Identity (Sector)"
-          buttons={
-            <Button
-              content={data.sectorAnonymous? "Broadcast Identity" : "Mask Identity"}
-              selected={data.sectorAnonymous}
-              disabled={!data.sectorAnonymousToggle}
-              onClick={() => act('toggle_anonymous_sector')} />
-          } />
-        <LabeledList.Item
-          label="Auto Pickup"
-          buttons={
-            <Button
-              content={data.autoPickup? "Enabled" : "Disabled"}
-              selected={data.autoPickup}
-              disabled={!data.autoToggle}
-              onClick={() => act('toggle_auto')} />
-          } />
-        <LabeledList.Item
-          label="Inbound Video"
-          buttons={
-            <Button
-              content={data.videoEnabled? "Enabled" : "Disabled"}
-              selected={data.videoEnabled}
-              disabled={!data.videoToggle}
-              onClick={() => act('toggle_video')} />
-          } />
-      </LabeledList>
-    </Section>
+    <Table>
+      <Table.Row>
+        <Table.Cell>
+          Ringer
+        </Table.Cell>
+        <Table.Cell width="25%">
+          <Button fluid
+            content={data.ringerEnabled? "Enabled" : "Disabled"}
+            selected={data.ringerEnabled}
+            disabled={!data.ringerToggle}
+            onClick={() => act('toggle_ringer')} />
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          Visibility
+        </Table.Cell>
+        <Table.Cell>
+          <Button fluid
+            content={data.callVisibility? "Visible" : "Invisible"}
+            selected={data.callVisibility}
+            disabled={!data.toggleVisibility}
+            onClick={() => act('toggle_visibility')} />
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          Anonymous Sector Calls
+        </Table.Cell>
+        <Table.Cell>
+          <Button fluid
+            content={data.sectorAnonymous? "Mask Identity" : "Broadcast Identity"}
+            selected={data.sectorAnonymous}
+            disabled={!data.sectorAnonymousToggle}
+            onClick={() => act('toggle_anonymous_sector')} />
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          Auto Pickup
+        </Table.Cell>
+        <Table.Cell>
+          <Button fluid
+            content={data.autoPickup? "Enabled" : "Disabled"}
+            selected={data.autoPickup}
+            disabled={!data.autoToggle}
+            onClick={() => act('toggle_auto')} />
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          Inbound Video
+        </Table.Cell>
+        <Table.Cell>
+          <Button fluid
+            content={data.videoEnabled? "Enabled" : "Disabled"}
+            selected={data.videoEnabled}
+            disabled={!data.videoToggle}
+            onClick={() => act('toggle_video')} />
+        </Table.Cell>
+      </Table.Row>
+    </Table>
   );
 };

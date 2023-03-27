@@ -216,7 +216,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(holopad_name)
 		return holopad_name
 	var/obj/effect/overmap/visitable/sector = get_overmap_sector(src)
-	return "[sector? "[sector.scanner_name]: " : ""][get_area(src)] - [holopad_uid]"
+	return "[sector? "[sector.scanner_name]: " : ""][get_area(src)?:name] - [holopad_uid]"
+
+/**
+ * our holocall category
+ */
+/obj/machinery/holopad/proc/holocall_category()
+	return "[get_area(src)?:name]"
 
 //? Holocall Helpers
 
@@ -230,8 +236,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		built[++built.len] = list(
 			"id" = pad.holopad_uid,
 			"name" = pad.holocall_name(),
-			"category" = null,
-			"sector" = sector?.scanner_name || name,
+			"category" = pad.holocall_category(),
+			"sector" = sector?.scanner_name,
 		)
 	return built
 
@@ -416,7 +422,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["isAIProjecting"] = isAI(user) && is_ai_projecting(user)
-	.["aiRequested"] = request_ai_cooldown()
+	.["aiRequested"] = !request_ai_cooldown()
 	.["callVisibility"] = call_visibility
 	.["sectorAnonymous"] = call_anonymous_sector
 	.["videoEnabled"] = video_enabled
