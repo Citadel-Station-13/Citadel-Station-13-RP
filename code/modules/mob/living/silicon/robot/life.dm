@@ -21,10 +21,11 @@
 	update_canmove()
 
 /mob/living/silicon/robot/proc/clamp_values()
+	var/datum/status_effect/effect
+	effect = is_unconscious()
+	if(effect.time_left() > 20 SECONDS)
+		effect.set_duration_from_now(20 SECONDS)
 
-//	set_stunned(20 * min(stunned, 30))
-	set_unconscious(20 * min(paralysis, 30))
-//	set_paralyzed(20 * min(weakened, 20))
 	set_sleeping(0)
 	adjustBruteLoss(0)
 	adjustToxLoss(0)

@@ -153,7 +153,7 @@
 // mouse drop another mob or self
 //
 /obj/machinery/disposal/MouseDroppedOnLegacy(mob/target, mob/user)
-	if(user.stat || !user.canmove || !istype(target))
+	if(!CHECK_MOBILITY(user, MOBILITY_USE) || !istype(target))
 		return
 	if(target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1)
 		return

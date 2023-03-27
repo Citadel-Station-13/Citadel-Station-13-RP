@@ -588,7 +588,7 @@ default behaviour is:
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
 		setClickCooldown(20)
 		resist_grab()
-		if(!weakened)
+		if(CHECK_MOBILITY(src, MOBILITY_RESIST))
 			process_resist()
 
 /mob/living/proc/process_resist()

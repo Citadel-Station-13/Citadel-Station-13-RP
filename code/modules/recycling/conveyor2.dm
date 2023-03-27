@@ -151,9 +151,9 @@
 
 // attack with hand, move pulled object onto conveyor
 /obj/machinery/conveyor/attack_hand(mob/user, list/params)
-	if ((!( user.canmove ) || user.restrained() || !( user.pulling )))
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_MOVE | MOBILITY_USE))
 		return
-	if (user.pulling.anchored)
+	if(isnull(user.pulling) || user.pulling.anchored)
 		return
 	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
@@ -165,7 +165,6 @@
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 		user.stop_pulling()
-	return
 
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID

@@ -51,7 +51,7 @@
 	action_button_name = "Adjust Face Mask"
 
 /obj/item/clothing/mask/gas/half/proc/adjust_mask(mob/user)
-	if(usr.canmove && !usr.stat)
+	if(CHECK_MOBILITY(user, MOBILITY_USE))
 		src.hanging = !src.hanging
 		if (src.hanging)
 			gas_transfer_coefficient = 1

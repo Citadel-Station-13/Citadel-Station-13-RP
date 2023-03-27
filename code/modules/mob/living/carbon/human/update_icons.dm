@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/anim_time = 3
 
 	//Due to some involuntary means, you're laying now
-	if(lying && !resting && !sleeping)
+	if(lying && !resting && !is_sleeping())
 		anim_time = 1 //Thud
 
 	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
