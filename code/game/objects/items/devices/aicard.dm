@@ -134,14 +134,14 @@
 		if(user.client)
 			to_chat(ai, "<span class='notice'><b>Transfer successful:</b></span> [ai.name] extracted from current device and placed within mobile core.")
 
-		ai.canmove = 1
+		ai.mobility_flags = initial(ai.mobility_flags)
 		update_icon()
 		return TRUE
 	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))
-		carded_ai.canmove = 0
+		carded_ai.mobility_flags = NONE
 		carded_ai.carded = 0
 	name = initial(name)
 	carded_ai = null
@@ -160,7 +160,7 @@
 	..()
 
 /obj/item/aicard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))

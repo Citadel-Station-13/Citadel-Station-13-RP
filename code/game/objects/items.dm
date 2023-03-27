@@ -455,7 +455,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!CHECK_MOBILITY(usr, MOBILITY_PICKU) || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_PICKUP) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")

@@ -183,6 +183,7 @@
 			H.update_health()
 	return
 
+// todo: remove
 /obj/structure/proc/can_touch(var/mob/user)
 	if (!user)
 		return 0
@@ -191,7 +192,7 @@
 	if (user.restrained() || user.buckled)
 		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
 		return 0
-	if (user.stat || user.paralysis || user.sleeping || user.lying || user.weakened)
+	if (!CHECK_MOBILITY(user, MOBILITY_USE))
 		return 0
 	if (isAI(user))
 		to_chat(user, "<span class='notice'>You need hands for this.</span>")

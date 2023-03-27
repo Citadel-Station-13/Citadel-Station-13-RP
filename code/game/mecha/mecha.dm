@@ -1129,9 +1129,9 @@
 	return
 
 
-/obj/mecha/bullet_act(var/obj/item/projectile/Proj) //wrapper
-	if(istype(Proj, /obj/item/projectile/test))
-		var/obj/item/projectile/test/Test = Proj
+/obj/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
+	if(istype(Proj, /obj/projectile/test))
+		var/obj/projectile/test/Test = Proj
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return
 
@@ -1140,7 +1140,7 @@
 	..()
 	return
 
-/obj/mecha/proc/dynbulletdamage(var/obj/item/projectile/Proj)
+/obj/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
@@ -1171,7 +1171,7 @@
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
-		if(istype(Proj, /obj/item/projectile/beam/pulse))	//ATM, this is literally only for the pulse rifles used mostly by deathsquads.
+		if(istype(Proj, /obj/projectile/beam/pulse))	//ATM, this is literally only for the pulse rifles used mostly by deathsquads.
 			ignore_threshold = 1
 
 		var/pass_damage = Proj.damage
@@ -1324,7 +1324,7 @@
 		to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
 		src.log_append_to_last("Armor saved.")
 
-	else if(W.force < temp_damage_minimum)	//Is your attack too PATHETIC to do anything. 3 damage to a person shouldn't do anything to a mech.
+	else if(W.damage_force < temp_damage_minimum)	//Is your attack too PATHETIC to do anything. 3 damage to a person shouldn't do anything to a mech.
 		src.occupant_message("<span class='notice'>\The [W] bounces off the armor.</span>")
 		src.visible_message("\The [W] bounces off \the [src] armor")
 		return
@@ -1339,7 +1339,7 @@
 		src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 		user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
 
-		var/pass_damage = W.force
+		var/pass_damage = W.damage_force
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)

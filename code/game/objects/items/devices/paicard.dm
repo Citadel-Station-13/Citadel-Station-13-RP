@@ -347,7 +347,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		qdel(src)
 
 /obj/item/paicard/see_emote(mob/living/M, text)
-	if(pai && pai.client && !pai.canmove)
+	if(pai && pai.client && (pai in contents))
 		var/rendered = "<span class='message'>[text]</span>"
 		pai.show_message(rendered, 2)
 	..()
