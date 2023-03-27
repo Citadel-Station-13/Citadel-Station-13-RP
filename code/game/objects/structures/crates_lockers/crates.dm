@@ -38,7 +38,7 @@
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(5, 1, src)
 				s.start()
-				if(usr.stunned)
+				if(!CHECK_MOBILITY(usr, MOBILITY_MOVE))
 					return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
@@ -184,7 +184,7 @@
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr) || isrobot(usr))

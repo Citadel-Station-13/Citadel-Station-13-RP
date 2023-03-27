@@ -1135,7 +1135,7 @@
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return
 
-	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).",1)
+	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.damage_flag]).",1)
 	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
 	..()
 	return
@@ -1195,7 +1195,7 @@
 			pass_damage_reduc_mod = 1
 
 		pass_damage = (pass_damage_reduc_mod*pass_damage)//Apply damage reduction before usage.
-		src.take_damage(pass_damage, Proj.check_armour)	//The take_damage() proc handles armor values
+		src.take_damage(pass_damage, Proj.damage_flag)	//The take_damage() proc handles armor values
 		if(prob(25))
 			spark_system.start()
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.

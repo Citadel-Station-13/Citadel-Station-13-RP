@@ -461,7 +461,7 @@ BLIND     // can't see anything
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.restrained())
+	if(CHECK_MOBILITY(usr, MOBILITY_USE))
 		if(src.up)
 			src.up = !src.up
 			inv_hide_flags |= HIDEEYES
@@ -686,7 +686,7 @@ BLIND     // can't see anything
 	set name = "Adjust Orange Goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
 		if(src.up)
 			src.up = !src.up
 			inv_hide_flags |= HIDEEYES

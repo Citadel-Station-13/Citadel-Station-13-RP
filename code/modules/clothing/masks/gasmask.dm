@@ -112,7 +112,7 @@
 	action_button_name = "Toggle Feeding Port"
 
 /obj/item/clothing/mask/gas/swat/vox/proc/feeding_port(mob/user)
-	if(user.canmove && !user.stat)
+	if(!CHECK_MOBILITY(user, MOBILITY_USE))
 		mask_open = !mask_open
 		if(mask_open)
 			body_cover_flags = EYES

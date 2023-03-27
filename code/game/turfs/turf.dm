@@ -242,7 +242,7 @@
 			FD.attack_hand(user)
 			return TRUE
 
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
+	if(!CHECK_MOBILITY(user, MOBILITY_MOVE) || user.restrained() || !(user.pulling))
 		return 0
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
