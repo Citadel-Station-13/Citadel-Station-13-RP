@@ -1,8 +1,8 @@
 /**
  * ## Stacking Status Effects
- * 
+ *
  * able to track stacks.
- * 
+ *
  * this and all subtypes have `stacks` as an argument on apply.
  */
 /datum/status_effect/stacking
@@ -22,8 +22,8 @@
 
 /**
  * called when stacks change
- * when we're being removed, new_stacksi s 0.
- * 
+ * when we're being removed, new_stacks is 0.
+ *
  * @params
  * * old_stacks - old stacks
  * * new_stacks - new stacks
@@ -37,3 +37,37 @@
  */
 /datum/status_effect/stacking/proc/adjust_stacks(stacks, decaying)
 	#warn impl
+
+//? Mob procs
+
+/**
+ * simple add or increment to stacks of a stacking effect
+ *
+ * @return effect datum
+ */
+/mob/proc/apply_stacking_effect(datum/status_effect/stacking/path, stacks)
+	if(!ispath(path, /datum/status_effect/stacking))
+		CRASH("[path] is not a stacking effect.")
+	ASSERT(stacks > 0)
+	var/datum/status_effect/stacking/effect = has_status_effect(path)
+	if(!effect)
+		effect = apply_status_effect(path, additional = list(stacks))
+	else
+		effect.adjust_stacks(stacks, FALSE)
+	return effect
+
+/**
+ * simple decrement to stacks of a stacking effect
+ *
+ * @return stacks left
+ */
+/mob/proc/remove_stacking_effect(datum/status_effect/stacking/path, stacks)
+	if(!ispath(path, /datum/status_effect/stacking))
+		CRASH("[path] is not a stacking effect.")
+	ASSERT(stacks > 0)
+	var/datum/status_effect/stacking/effect = has_status_effect(path)
+	if(!effect)
+		return 0
+	else
+		effect.adjust_stacks(-stacks, FALSE)
+		. = effect.stacks

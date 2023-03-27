@@ -8,6 +8,7 @@
  * can be passed into apply_status_effect. they will be detailed per-file.
  */
 /datum/status_effect
+	abstract_type = /datum/status_effect
 	/// unique identifier
 	var/identifier = "effect"
 	/// duration in deciseconds - 0 for permanent.

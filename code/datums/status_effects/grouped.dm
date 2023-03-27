@@ -1,5 +1,13 @@
+/**
+ * ## Grouped Status Effects
+ *
+ * status effects that can track source.
+ *
+ * this and all subtypes have `source` as an argument on apply.
+ */
 /datum/status_effect/grouped
-	status_type = STATUS_EFFECT_MULTIPLE //! Adds itself to sources and destroys itself if one exists already, there are never multiple
+	abstract_type = /datum/status_effect/grouped
+	/// sources list - associated to arbitrary values that evaluate to TRUE.
 	var/list/sources = list()
 
 /datum/status_effect/grouped/on_creation(mob/living/new_owner, source)
