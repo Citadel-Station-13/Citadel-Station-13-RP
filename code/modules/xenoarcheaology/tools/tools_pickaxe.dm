@@ -5,7 +5,7 @@
 	item_state = "syringe_0"
 	slot_flags = SLOT_EARS
 	digspeed = 20
-	force = 0
+	damage_force = 0
 	throw_force = 0
 	desc = "Thick metallic wires for clearing away dust and loose scree (1 centimetre excavation depth)."
 	excavation_amount = 1
@@ -18,7 +18,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick1"
 	item_state = "syringe_0"
-	force = 2
+	damage_force = 2
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (2 centimetre excavation depth)."
 	excavation_amount = 2
@@ -31,7 +31,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick2"
 	item_state = "syringe_0"
-	force = 2
+	damage_force = 2
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (4 centimetre excavation depth)."
 	excavation_amount = 4
@@ -44,7 +44,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick3"
 	item_state = "syringe_0"
-	force = 3
+	damage_force = 3
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (6 centimetre excavation depth)."
 	excavation_amount = 6
@@ -57,7 +57,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick4"
 	item_state = "syringe_0"
-	force = 3
+	damage_force = 3
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (8 centimetre excavation depth)."
 	excavation_amount = 8
@@ -70,7 +70,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick5"
 	item_state = "syringe_0"
-	force = 5
+	damage_force = 5
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (10 centimetre excavation depth)."
 	excavation_amount = 10
@@ -83,7 +83,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick6"
 	item_state = "syringe_0"
-	force = 5
+	damage_force = 5
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (12 centimetre excavation depth)."
 	excavation_amount = 12
@@ -96,7 +96,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick_hand"
 	item_state = "syringe_0"
-	force = 10
+	damage_force = 10
 	digspeed = 30
 	desc = "A smaller, more precise version of the pickaxe (30 centimetre excavation depth)."
 	excavation_amount = 30
@@ -169,7 +169,7 @@
 	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The tip is adjustable from 1 to 30 cm."
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "drilling"
-	force = 5
+	damage_force = 5
 	w_class = 2
 	attack_verb = list("drilled")
 

@@ -118,6 +118,8 @@
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
 
+//? Perspective - Shunting / Remote Viewing
+
 /**
  * wrapper for things like holocalls and overmaps that shunt our view
  * returns TRUE or FALSE based on if we moved their perspective
@@ -152,8 +154,9 @@
 /mob/proc/perspective_shunted()
 	return self_perspective == using_perspective
 
-//? wrappers for modifying our own sight/perspective stuff so they apply to perspective too
+//? Perspective - Self
 
+// * ALL OF THESE SHOULD BE REGEXED LATER *
 // However, there is currently no way to deal with the getters due to them requiring self_perspective be set, but
 // we don't necessarily want all mobs to have it, as perspectives are generally for client'd mobs
 // We'll decide later, the setters/getters work for now.
@@ -198,4 +201,3 @@
  */
 /mob/proc/GetSeeInDarkSelf()
 	return self_perspective? self_perspective.see_in_dark : see_in_dark
-

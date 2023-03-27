@@ -225,7 +225,7 @@
 	if(health < curhealth && on == TRUE)
 		react_to_attack(user)
 
-/mob/living/bot/secbot/bullet_act(var/obj/item/projectile/P)
+/mob/living/bot/secbot/bullet_act(var/obj/projectile/P)
 	var/curhealth = health
 	var/mob/shooter = P.firer
 	. = ..()

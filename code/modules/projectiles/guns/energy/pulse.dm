@@ -5,8 +5,8 @@
 	icon_state = "pulse"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	slot_flags = SLOT_BELT|SLOT_BACK
-	force = 10
-	projectile_type = /obj/item/projectile/beam
+	damage_force = 10
+	projectile_type = /obj/projectile/beam
 	charge_cost = 120
 	sel_mode = 2
 	accuracy = 90
@@ -14,9 +14,9 @@
 	heavy = TRUE
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 120),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 120),
-		list(mode_name="DESTROY", projectile_type=/obj/item/projectile/beam/pulse, fire_delay=null, charge_cost = 240),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_delay=null, charge_cost = 120),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_delay=null, charge_cost = 120),
+		list(mode_name="DESTROY", projectile_type=/obj/projectile/beam/pulse, fire_delay=null, charge_cost = 240),
 		)
 
 /obj/item/gun/energy/pulse_rifle/mounted
@@ -26,7 +26,7 @@
 /obj/item/gun/energy/pulse_rifle/destroyer
 	name = "\improper NT-PD-1 pulse destroyer"
 	desc = "A heavy-duty, pulse-based energy weapon. Because of its complexity and cost, it is rarely seen in use except by specialists."
-	projectile_type=/obj/item/projectile/beam/pulse
+	projectile_type=/obj/projectile/beam/pulse
 	charge_cost = 120
 
 /obj/item/gun/energy/pulse_rifle/destroyer/attack_self(mob/user)
@@ -41,17 +41,17 @@
 	icon_state = "pulse_pistol"
 	item_state = null
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	force = 10
-	projectile_type = /obj/item/projectile/beam
+	damage_force = 10
+	projectile_type = /obj/projectile/beam
 	charge_cost = 240
 	sel_mode = 2
 	accuracy = 90
 	one_handed_penalty = 10
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 240),
-		list(mode_name="DESTROY", projectile_type=/obj/item/projectile/beam/pulse, fire_delay=null, charge_cost = 480),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_delay=null, charge_cost = 240),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_delay=null, charge_cost = 240),
+		list(mode_name="DESTROY", projectile_type=/obj/projectile/beam/pulse, fire_delay=null, charge_cost = 480),
 		)
 
 //I've always liked the M1911, but it's kinda silly, the more I think about it. So I'm just gonna comment it out and put in the Pulse Pistol to replace it.
@@ -66,8 +66,8 @@
 	one_handed_penalty = 0
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 240),
-		list(mode_name="DESTROY", projectile_type=/obj/item/projectile/beam/pulse, fire_delay=null, charge_cost = 480),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_delay=null, charge_cost = 240),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_delay=null, charge_cost = 240),
+		list(mode_name="DESTROY", projectile_type=/obj/projectile/beam/pulse, fire_delay=null, charge_cost = 480),
 		)
 */

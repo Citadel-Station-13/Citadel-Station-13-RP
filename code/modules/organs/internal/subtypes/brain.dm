@@ -9,7 +9,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	vital = 1
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
-	force = 1.0
+	damage_force = 1.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 1.0
 	throw_speed = 3

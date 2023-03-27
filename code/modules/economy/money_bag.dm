@@ -4,7 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
-	force = 10.0
+	damage_force = 10.0
 	throw_force = 2.0
 	w_class = ITEMSIZE_LARGE
 

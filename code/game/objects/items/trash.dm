@@ -5,7 +5,7 @@
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	desc = "This is rubbish."
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'

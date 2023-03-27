@@ -46,7 +46,7 @@
 	update_nearby_tiles()
 	return ..()
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(var/obj/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
 
@@ -83,7 +83,7 @@
 		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
 		puncture()
 	if(W.damtype == BRUTE || W.damtype == BURN)
-		hit(W.force)
+		hit(W.damage_force)
 		..()
 	return
 

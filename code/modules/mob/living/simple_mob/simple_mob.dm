@@ -198,26 +198,6 @@
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
-	/// Values for normal run_mob_armor() checks
-	var/list/armor = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 100,
-				"rad" = 100
-				)
-	/// Values for run_mob_soak() checks.
-	var/list/armor_soak = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0
@@ -248,23 +228,19 @@
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
+	//  todo: remove
+	/// legacy armor, applied on init
+	var/list/armor_legacy_mob
+
 	///Does the simple mob drop organs when butchered?
 	butchery_drops_organs = FALSE
 
-//* randomization code. *//
-/mob/living/simple_mob/proc/randomize()
-	if(randomized == TRUE)
-		var/mod = rand(mod_min,mod_max)/100
-		size_multiplier = mod
-		maxHealth = round(maxHealth*mod)
-		health = round(health*mod)
-		melee_damage_lower = round(melee_damage_lower*mod)
-		melee_damage_upper = round(melee_damage_upper*mod)
-		movement_cooldown = round(movement_cooldown*mod)
-		meat_amount = round(meat_amount*mod)
-		update_icons()
-
 /mob/living/simple_mob/Initialize(mapload)
+	if(armor_legacy_mob)
+		var/list/translated = list()
+		for(var/key in armor_legacy_mob)
+			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
+		set_armor(translated)
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
@@ -290,6 +266,19 @@
 	if(has_eye_glow)
 		remove_eyes()
 	return ..()
+
+//* randomization code. *//
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
 
 /mob/living/simple_mob/death()
 	update_icon()

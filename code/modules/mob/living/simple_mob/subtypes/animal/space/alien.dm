@@ -114,7 +114,7 @@
 	health = 220
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin
+	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
 
@@ -141,7 +141,7 @@
 	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 
 	base_pixel_x = -16
 	icon_dimension_y = 64
@@ -175,7 +175,7 @@
 	maxHealth = 750
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
