@@ -249,7 +249,7 @@
 	desc = "A heavily modified NT-DDO standard issue combat helmet. Although this configuration is necessarily not spaceworthy, it retains its counterpart's protections."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "deathsquad"
-	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 100, rad = 60)
+	armor_type = /datum/armor/centcom/deathsquad
 	clothing_flags = THICKMATERIAL
 	inv_hide_flags = BLOCKHAIR
 	siemens_coefficient = 0.6
@@ -262,5 +262,6 @@
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/medium
 	siemens_coefficient = 1
+	starting_accessories = list(/obj/item/clothing/accessory/armor/helmcover/navy)

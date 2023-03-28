@@ -619,7 +619,6 @@
 	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_INSIGNIA\
@@ -666,5 +665,6 @@
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	icon_state = "pcarrier_navy"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)
