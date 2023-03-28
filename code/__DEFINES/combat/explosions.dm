@@ -19,6 +19,11 @@
 #define LEGACY_EXPLOSION_SEVERE_POWER EXPLOSION_CONSTANT_SEVERE
 #define LEGACY_EXPLOSION_MINOR_POWER EXPLOSION_CONSTANT_MINOR
 
+#define LEGACY_EXPLOSION_DEVASTATE_INTEGRITY 1000
+#define LEGACY_EXPLOSION_SEVERE_INTEGRITY 180
+#define LEGACY_EXPLOSION_MINOR_INTEGRITY 50
+#define LEGACY_EXPLOSION_INTEGRITY_MULT (0.01 * rand(70, 130))
+
 // why the extra numbers? so if someone does weird math we don't out of bounds
 GLOBAL_REAL(_legacy_expowers, /list) = list(
 	LEGACY_EXPLOSION_DEVASTATE_POWER,
@@ -28,6 +33,18 @@ GLOBAL_REAL(_legacy_expowers, /list) = list(
 	0,
 	0
 )
+
+// ditto
+GLOBAL_REAL(_legacy_ex_atom_damage, /list) = list(
+	LEGACY_EXPLOSION_DEVASTATE_INTEGRITY,
+	LEGACY_EXPLOSION_SEVERE_INTEGRITY,
+	LEGACY_EXPLOSION_MINOR_INTEGRITY,
+	0,
+	0,
+	0
+)
+
+#define LEGACY_EXPLOSION_ATOM_DAMAGE(P) (global._legacy_ex_atom_damage[P] * LEGACY_EXPLOSION_INTEGRITY_MULT)
 
 // this works out becuase epxlosions are 1-3 in legacy, so we can just use it as list indices
 #define LEGACY_EX_ACT(ATOM, POWER, TARGET) ATOM.legacy_ex_act(POWER, TARGET); ATOM.ex_act(_legacy_expowers[POWER]);

@@ -344,19 +344,6 @@
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
 	return
 
-/atom/proc/emp_act(var/severity)
-	// todo: SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
-
-
-/atom/proc/bullet_act(obj/projectile/P, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
-
-// Called when a blob expands onto the tile the atom occupies.
-/atom/proc/blob_act()
-	return
-
 ///Return true if we're inside the passed in atom
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -510,43 +497,10 @@
 	invisibility = new_invisibility
 	return TRUE
 
-/**
- * React to being hit by an explosion
- *
- * Should be called through the [EX_ACT] wrapper macro.
- * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
- * as well as calling [/atom/proc/contents_explosion].
- */
-/atom/proc/legacy_ex_act(severity, target)
-	set waitfor = FALSE
-
-/**
- * todo: implement on most atoms/generic damage system
- * todo: replace legacy_ex_act entirely with this
- *
- * React to being hit by an explosive shockwave
- *
- * ? Tip for overrides: . = ..() when you want signal to be sent, mdify power before if you need to; to ignore parent
- * ? block power, just `return power` in your proc after . = ..().
- *
- * @params
- * - power - power our turf was hit with
- * - direction - DIR_BIT bits; can bwe null if it wasn't a wave explosion!!
- * - explosion - explosion automata datum; can be null
- *
- * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
- */
-/atom/proc/ex_act(power, dir, datum/automata/wave/explosion/E)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
-	return power
-
 // todo: this really needs to be refactored
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 
-/atom/proc/fire_act()
-	return
 
 // Returns an assoc list of RCD information.
 // Example would be: list(RCD_VALUE_MODE = RCD_DECONSTRUCT, RCD_VALUE_DELAY = 50, RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 4)

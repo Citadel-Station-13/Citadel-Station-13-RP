@@ -3,11 +3,64 @@
 
 //? Hooks / External
 
-#warn bullet_act hook
-#warn throw_impact hook
-#warn melee_object_hit hook
-#warn ex_act hook - objs / turfs only
-#warn impact sounds...world
+/**
+ * React to being hit by an explosion
+ *
+ * Should be called through the [EX_ACT] wrapper macro.
+ * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
+ * as well as calling [/atom/proc/contents_explosion].
+ */
+/atom/proc/legacy_ex_act(severity, target)
+	set waitfor = FALSE
+
+/**
+ * todo: implement on most atoms/generic damage system
+ * todo: replace legacy_ex_act entirely with this
+ *
+ * React to being hit by an explosive shockwave
+ *
+ * ? Tip for overrides: . = ..() when you want signal to be sent, mdify power before if you need to; to ignore parent
+ * ? block power, just `return power` in your proc after . = ..().
+ *
+ * @params
+ * - power - power our turf was hit with
+ * - direction - DIR_BIT bits; can bwe null if it wasn't a wave explosion!!
+ * - explosion - explosion automata datum; can be null
+ *
+ * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
+ */
+/atom/proc/ex_act(power, dir, datum/automata/wave/explosion/E)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
+	return power
+
+/atom/proc/emp_act(var/severity)
+	// todo: SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
+
+/atom/proc/bullet_act(obj/projectile/P, def_zone)
+	P.on_hit(src, 0, def_zone)
+	. = 0
+
+// Called when a blob expands onto the tile the atom occupies.
+/atom/proc/blob_act()
+	return
+
+/atom/proc/fire_act()
+	return
+
+/**
+ * called on melee hit
+ *
+ * @params
+ * * user - person attacking
+ * * weapon - weapon used
+ * * target_zone - zone targeted
+ * * mult - damage multiplier
+ *
+ * @return did the hit process? a miss is still a process, return FALSE if we shouldn't be acted against at all.
+ */
+/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 
 //? Damage API
 
@@ -29,7 +82,14 @@
 /atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
-	#warn how to even deal with this?
+	var/list/returned = run_armor(arglist(args))
+	damage = returned[1]
+	mode = returned[4]
+	. = integrity
+	damage_integrity(damage)
+	. = . - integrity
+
+//? Hitsound API
 
 /**
  * gets hitsound override. return a value to be fed into playsound, or null for default.
@@ -42,6 +102,45 @@
  */
 /atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/weapon)
 	return // default is null
+
+/atom/proc/hitsound_melee(obj/item/I)
+	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_MELEE, I)
+	if(.)
+		return
+	. = hit_sound || I.attack_sound
+	if(.)
+		return
+	switch(I.damtype)
+		if(BRUTE)
+			return "swing_hit"
+		if(BURN)
+			return "'sound/items/welder.ogg"
+		else
+			return "swing_hit"
+
+/atom/proc/hitsound_projectile(obj/projectile/P)
+	. = hitsound_override(P.damtype, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
+	if(.)
+		return
+	#warn impl
+
+/atom/proc/hitsound_throwhit(obj/item/I)
+	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
+	if(.)
+		return
+	. = hit_sound || I.attack_sound
+	if(.)
+		return
+	switch(I.damtype)
+		if(BRUTE)
+			return "swing_hit"
+		if(BURN)
+			return "'sound/items/welder.ogg"
+		else
+			return "swing_hit"
+
+/atom/proc/hitsound_unarmed(mob/M)
+	#warn impl
 
 //? Direct Integrity
 

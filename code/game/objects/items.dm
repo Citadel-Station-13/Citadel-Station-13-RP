@@ -148,12 +148,6 @@
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
-	#warn refactor
-	if(hitsound == HITSOUND_UNSET)
-		if(damtype == "fire")
-			hitsound = 'sound/items/welder.ogg'
-		if(damtype == "brute")
-			hitsound = "swing_hit"
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
