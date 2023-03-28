@@ -15,7 +15,7 @@
 /datum/map_template/shuttle/overmap/generic/gecko_cargohauler_wreck
 	name = "OM Ship - Wrecked Gecko Cargo Hauler (new Z)"
 	desc = "A wrecked medium supply transport shuttle."
-	mappath = "_maps/submaps/level_specific/debrisfield_vr/gecko_cr_wreck.dmm"
+	mappath = "maps/submaps/level_specific/debrisfield_vr/gecko_cr_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

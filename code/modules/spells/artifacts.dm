@@ -9,7 +9,7 @@
 	throw_range = 7
 	throw_force = 10
 	damtype = BURN
-	force = 10
+	damage_force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
 /obj/item/scrying/attack_self(mob/user)
@@ -37,7 +37,7 @@
 	item_state = "knife"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
-	force = 15
+	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'

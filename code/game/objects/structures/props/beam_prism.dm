@@ -19,7 +19,7 @@
 	var/compass_directions = list("North" = 0, "South" = 180, "East" = 90, "West" = 270, "Northwest" = 315, "Northeast" = 45, "Southeast" = 135, "Southwest" = 225)
 	var/interaction_sound = 'sound/mecha/mechmove04.ogg'
 
-	var/redirect_type = /obj/item/projectile/beam
+	var/redirect_type = /obj/projectile/beam
 
 	var/dialID = null
 	var/obj/structure/prop/prismcontrol/remote_dial = null
@@ -117,7 +117,7 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/prop/prism/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj, redirect_type))
 		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
 		flick("[initial(icon_state)]+glow", src)

@@ -92,10 +92,10 @@
 /turf/simulated/wall/proc/get_default_material()
 	. = /datum/material/steel
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj,/obj/item/projectile/beam))
+/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)
-	else if(istype(Proj,/obj/item/projectile/ion))
+	else if(istype(Proj,/obj/projectile/ion))
 		burn(500)
 
 	var/proj_damage = Proj.get_structure_damage()
@@ -107,7 +107,7 @@
 		if(thermite)
 			thermitemelt()
 
-	if(istype(Proj,/obj/item/projectile/beam))
+	if(istype(Proj,/obj/projectile/beam))
 		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
 			var/new_damage = damage * material.reflectivity
 			var/outgoing_damage = damage - new_damage

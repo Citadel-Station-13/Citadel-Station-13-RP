@@ -201,7 +201,7 @@
 		for(var/obj/item/reagent_containers/food/I in pickup)
 
 
-			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
+			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 				var/add = 0
 				if(I.w_class == ITEMSIZE_TINY)
 					add = 1

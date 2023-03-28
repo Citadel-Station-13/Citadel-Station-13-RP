@@ -41,7 +41,7 @@
 
 	//Physical resistances and weaknesses.
 	brute_mod = 0.85
-	burn_mod = 0.15
+	burn_mod = 0.25
 	radiation_mod = 0.5
 	toxins_mod = 0.5
 

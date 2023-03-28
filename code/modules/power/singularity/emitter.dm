@@ -140,7 +140,7 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
+		var/obj/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
 		A.firer = src
 		A.fire(dir2angle(dir))
@@ -246,7 +246,7 @@
 		user.visible_message("[user.name] emags [src].","<span class='warning'>You short out the lock.</span>")
 		return 1
 
-/obj/machinery/power/emitter/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/power/emitter/bullet_act(var/obj/projectile/P)
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 
@@ -288,4 +288,4 @@
 	return burst_delay
 
 /obj/machinery/power/emitter/proc/get_emitter_beam()
-	return new /obj/item/projectile/beam/emitter(get_turf(src))
+	return new /obj/projectile/beam/emitter(get_turf(src))

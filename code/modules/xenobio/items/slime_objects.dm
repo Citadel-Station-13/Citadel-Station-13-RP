@@ -81,7 +81,7 @@
 	icon_state = "slime_crystal_small"
 	w_class = ITEMSIZE_TINY
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
-	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
+	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
 /obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()

@@ -94,7 +94,7 @@
 			if(do_after(user, 20, src))
 				health = maxhealth
 	else
-		take_damage(C.force)
+		take_damage(C.damage_force)
 		user.setClickCooldown(user.get_attack_speed(C))
 	return ..()
 

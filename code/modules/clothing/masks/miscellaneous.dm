@@ -35,7 +35,7 @@
 	clothing_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
+	armor_type = /datum/armor/mask/surgical
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)
@@ -44,14 +44,14 @@
 		if (src.hanging)
 			gas_transfer_coefficient = 1
 			body_cover_flags = body_cover_flags & ~FACE
-			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+			set_armor(/datum/armor/none)
 			icon_state = "steriledown"
 			to_chat(usr, "You pull the mask below your chin.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_cover_flags = initial(body_cover_flags)
 			icon_state = initial(icon_state)
-			armor = initial(armor)
+			reset_armor()
 			to_chat(usr, "You pull the mask up to cover your face.")
 		update_worn_icon()
 

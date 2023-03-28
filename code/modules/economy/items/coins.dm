@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"
 	icon_state = "coin"
-	force = 0.0
+	damage_force = 0.0
 	throw_force = 0.0
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
