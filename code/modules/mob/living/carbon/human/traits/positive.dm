@@ -15,7 +15,7 @@
 	name = "Major Hardy"
 	desc = "Allows you to carry heavy equipment with almost no slowdown."
 	cost = 2
-	var_changes = list("item_slowdown_mod" = 0.1)
+	var_changes = list("item_slowdown_mod" = 0.25)
 
 /datum/trait/positive/endurance_plus
 	name = "Better Endurance"
@@ -158,8 +158,8 @@
 
 /datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/flying_toggle
-	H.verbs |= /mob/living/proc/start_wings_hovering
+	add_verb(H, /mob/living/proc/flying_toggle)
+	add_verb(H, /mob/living/proc/start_wings_hovering)
 
 /datum/trait/positive/hardfeet
 	name = "Hard Feet"
@@ -177,7 +177,7 @@
 
 /datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/positive/thick_blood
 	name = "Thick Blood"
@@ -193,8 +193,8 @@
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/check_silk_amount
-	H.verbs |= /mob/living/carbon/human/proc/toggle_silk_production
-	H.verbs |= /mob/living/carbon/human/proc/weave_structure
-	H.verbs |= /mob/living/carbon/human/proc/weave_item
-	H.verbs |= /mob/living/carbon/human/proc/set_silk_color
+	add_verb(H, /mob/living/carbon/human/proc/check_silk_amount)
+	add_verb(H, /mob/living/carbon/human/proc/toggle_silk_production)
+	add_verb(H, /mob/living/carbon/human/proc/weave_structure)
+	add_verb(H, /mob/living/carbon/human/proc/weave_item)
+	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)

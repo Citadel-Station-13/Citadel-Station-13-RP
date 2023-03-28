@@ -79,23 +79,7 @@
 			icon_state = "[icon_rest]-[vore_fullness]"
 
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
-	if(client) //You do this yourself, dick!
-		return 0
-	if(!istype(M)) //Can't eat 'em if they ain't /mob/living
-		return 0
-	if(src == M) //Don't eat YOURSELF dork
-		return 0
-	if(vore_ignores_undigestable && !M.digestable) //Don't eat people with nogurgle prefs
-		return 0
-	if(!M.allowmobvore) // Don't eat people who don't want to be ate by mobs
-		return 0
-	if(M in prey_excludes) // They're excluded
-		return 0
-	if(M.size_multiplier < vore_min_size || M.size_multiplier > vore_max_size)
-		return 0
-	if(vore_capacity != 0 && (vore_fullness >= vore_capacity)) // We're too full to fit them
-		return 0
-	return 1
+	return FALSE // no more mobvore
 
 /mob/living/simple_mob/apply_attack(atom/A, damage_to_do)
 	if(isliving(A)) // Converts target to living
@@ -177,15 +161,15 @@
 		return
 
 	if(!IsAdvancedToolUser())
-		verbs |= /mob/living/simple_mob/proc/animal_nom
-		verbs |= /mob/living/proc/shred_limb
+		add_verb(src, /mob/living/simple_mob/proc/animal_nom)
+		add_verb(src, /mob/living/proc/shred_limb)
 
 	if(LAZYLEN(vore_organs))
 		return
 
 	// Since they have bellies, add verbs to toggle settings on them.
-	verbs |= /mob/living/simple_mob/proc/toggle_digestion
-	verbs |= /mob/living/simple_mob/proc/toggle_fancygurgle
+	add_verb(src, /mob/living/simple_mob/proc/toggle_digestion)
+	add_verb(src, /mob/living/simple_mob/proc/toggle_fancygurgle)
 
 	//A much more detailed version of the default /living implementation
 	var/obj/belly/B = new /obj/belly(src)

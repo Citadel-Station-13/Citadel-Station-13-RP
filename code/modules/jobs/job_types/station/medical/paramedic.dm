@@ -1,4 +1,4 @@
-/datum/job/station/paramedic
+/datum/role/job/station/paramedic
 	id = JOB_ID_PARAMEDIC
 	title = "Paramedic"
 	flag = PARAMEDIC
@@ -10,24 +10,32 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	economic_modifier = 4
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_MEDICAL_PSYCH)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
 	outfit_type = /datum/outfit/job/station/paramedic
 	desc = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
-		"Emergency Medical Technician" = /datum/alt_title/emt,
-		"Medical Responder" = /datum/alt_title/medical_responder
+		"Emergency Medical Technician" = /datum/prototype/alt_title/emt,
+		"Medical Responder" = /datum/prototype/alt_title/medical_responder,
+		"Biotechnical Responder" = /datum/prototype/alt_title/biotech_responder
 		)
+		
+/datum/prototype/alt_title/biotech_responder
+	title = "Biotechnical Responder"
+	title_outfit = /datum/outfit/job/station/paramedic/emt  //TODO: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
-/datum/alt_title/emt
+/datum/prototype/alt_title/emt
 	title = "Emergency Medical Technician"
 	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /datum/outfit/job/station/paramedic/emt
 
-/datum/alt_title/medical_responder
+/datum/prototype/alt_title/medical_responder
 	title = "Medical Responder"
 	title_blurb = "A Medical Responder is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."

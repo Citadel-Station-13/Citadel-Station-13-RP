@@ -22,7 +22,6 @@
 	species_paths = list()
 	species_names = list()
 	playable_species = list()
-	whitelisted_species = list()
 	custom_species_bases = list()
 	var/static/list/blacklisted_icon_ids = list(SPECIES_ID_CUSTOM, SPECIES_ID_PROMETHEAN)
 	var/static/list/whitelisted_icon_ids = list(SPECIES_ID_VULPKANIN, SPECIES_ID_XENOMORPH_HUNTER)
@@ -41,17 +40,15 @@
 		species_names[S.name] = S
 		species_paths[path] = S
 
-		if(S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
-			whitelisted_species += S.name
+
 		if(!(S.species_spawn_flags & SPECIES_SPAWN_SPECIAL))
-			playable_species += S.name
+			playable_species += S.uid
 		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_SPECIAL)) && !(S.get_species_id() in blacklisted_icon_ids)) || (S.get_species_id() in whitelisted_icon_ids))
 			custom_species_bases += S.name
 
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
 	tim_sort(species_names, /proc/cmp_auto_compare, TRUE)
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
-	tim_sort(whitelisted_species, /proc/cmp_auto_compare)
 	tim_sort(playable_species, /proc/cmp_auto_compare)
 	tim_sort(custom_species_bases, /proc/cmp_auto_compare)
 

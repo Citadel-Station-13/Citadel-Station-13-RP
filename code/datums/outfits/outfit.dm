@@ -161,15 +161,20 @@
 	if(!pda_slot || !pda_type)
 		return
 	var/obj/item/pda/pda = new pda_type(H)
-	if(H.equip_to_slot_or_del(pda, pda_slot))
-		pda.owner = H.real_name
-		pda.ownjob = assignment
-		pda.ownrank = rank
-		pda.name = "PDA-[H.real_name] ([assignment])"
-		if(H.client.prefs.ringtone) // if null we use the job default
-			pda.ringtone = H.client.prefs.ringtone
-		tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	pda.owner = H.real_name
+	pda.ownjob = assignment
+	pda.ownrank = rank
+	pda.name = "PDA-[H.real_name] ([assignment])"
+	if(H.client.prefs.ringtone) // if null we use the job default
+		pda.ringtone = H.client.prefs.ringtone
+	tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	if(H.equip_to_slot_if_possible(pda, pda_slot))
 		return pda
+	if(H.force_equip_to_slot(pda, /datum/inventory_slot_meta/abstract/put_in_backpack))
+		return pda
+	if(H.equip_to_slot_or_del(pda, SLOT_ID_HANDS))
+		return pda
+
 
 /datum/outfit/dd_SortValue()
 	return name
@@ -187,7 +192,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/gun/projectile/automatic/battlerifle
+	back = /obj/item/gun/ballistic/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF
@@ -208,7 +213,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/projectile/revolver/consul
+	belt = /obj/item/gun/ballistic/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/s44
 	r_pocket = /obj/item/ammo_magazine/s44
 	r_hand = /obj/item/clothing/accessory/holster/hip

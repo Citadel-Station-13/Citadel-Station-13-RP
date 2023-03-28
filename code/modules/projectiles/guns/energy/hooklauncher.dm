@@ -13,7 +13,7 @@
 	charge_cost = 300
 
 	cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/item/projectile/energy/hook
+	projectile_type = /obj/projectile/energy/hook
 
 // An easily concealable not-ripoff version. It would be silenced, if it didn't make it blatant you're the one using it.
 
@@ -31,9 +31,9 @@
 	charge_cost = 400
 	charge_meter = FALSE
 
-	projectile_type = /obj/item/projectile/energy/hook/ring
+	projectile_type = /obj/projectile/energy/hook/ring
 
 	firemodes = list(
-		list(mode_name="manipulate", fire_delay=15, projectile_type=/obj/item/projectile/energy/hook/ring, charge_cost = 400),
-		list(mode_name="battle", fire_delay=8, projectile_type=/obj/item/projectile/beam/xray, charge_cost = 260),
+		list(mode_name="manipulate", fire_delay=15, projectile_type=/obj/projectile/energy/hook/ring, charge_cost = 400),
+		list(mode_name="battle", fire_delay=8, projectile_type=/obj/projectile/beam/xray, charge_cost = 260),
 		)

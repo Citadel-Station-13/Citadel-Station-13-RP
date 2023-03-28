@@ -46,7 +46,7 @@ Key procs
 	var/max_tiles_per_second_boost = INFINITY
 
 	/// Movetypes this applies to
-	var/movetypes = ALL
+	var/movement_type = ALL
 
 	/// Movetypes this never applies to
 	var/blacklisted_movetypes = NONE
@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	var/list/conflict_tracker = list()
 	for(var/key in get_movespeed_modifiers())
 		var/datum/movespeed_modifier/M = movespeed_modification[key]
-		if(!(M.movetypes & movement_type)) // We don't affect any of these move types, skip
+		if(!(M.movement_type & movement_type)) // We don't affect any of these move types, skip
 			continue
 		if(M.blacklisted_movetypes & movement_type) // There's a movetype here that disables this modifier, skip
 			continue
@@ -249,6 +249,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /// Get the move speed modifier datums of this mob
 /mob/proc/get_movespeed_modifiers()
 	RETURN_TYPE(/list)
+	. = list()
 	for(var/id in movespeed_modification)
 		if(id in movespeed_mod_immunities)
 			continue

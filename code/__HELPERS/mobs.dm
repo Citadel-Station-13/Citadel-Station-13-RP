@@ -55,12 +55,12 @@
 		valid += id
 	return SAFEPICK(valid)
 
-/proc/sanitize_name(name, species = SPECIES_HUMAN)
+/proc/sanitize_species_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
 		current_species = SScharacters.resolve_species_name(species)
 
-	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
+	return current_species ? current_species.sanitize_species_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
 /proc/random_name(gender, species = SPECIES_HUMAN)
 
@@ -170,6 +170,7 @@
 	return humans
 
 /proc/cached_character_icon(mob/desired)
+	desired.compile_overlays()
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

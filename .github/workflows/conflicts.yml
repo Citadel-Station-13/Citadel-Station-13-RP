@@ -3,15 +3,14 @@ on:
   push:
     branches:
       - master
+      - 'project/**'
 jobs:
   triage:
-    runs-on: ubuntu-latest
-    if: github.repository == 'Citadel-Station-13/Citadel-Station-13-RP'
+    runs-on: ubuntu-20.04
     steps:
-      - uses: prince-chrismc/label-merge-conflicts-action@v3
+      - uses: mschilde/auto-label-merge-conflicts@2e8fcc76c6430272ec8bb64fb74ec1592156aa6a
         with:
           CONFLICT_LABEL_NAME: 'Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MAX_RETRIES: 12
+          # Default attempt count is 5, so default attempt delay is 5 * 10 = 50 seconds.
           WAIT_MS: 10000
-          conflict_comment: ''

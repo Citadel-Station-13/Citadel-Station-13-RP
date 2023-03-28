@@ -42,7 +42,7 @@ var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
+var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
 
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
@@ -58,7 +58,7 @@ var/global/list/endgame_safespawns = list()
 var/global/list/lavaland_entry = list()
 var/global/list/lavaland_exit = list()
 
-var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, access_external_airlocks)
+var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)
 
 /// Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(
@@ -573,26 +573,15 @@ var/global/list/contamination_colors = list("green",
 				"pink")
 
 ///For the mechanic of leaving remains. Ones listed below are basically ones that got no bones or leave no trace after death.
-var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
-				SPECIES_DIONA,
-				SPECIES_ALRAUNE,
-				SPECIES_PROTEAN,
-				SPECIES_MONKEY, //Exclude all monkey subtypes, to prevent abuse of it. They aren't,
-				SPECIES_MONKEY_TAJ, //set to have remains anyway, but making double sure,
-				SPECIES_MONKEY_SKRELL,
-				SPECIES_MONKEY_UNATHI,
-				SPECIES_MONKEY_AKULA,
-				SPECIES_MONKEY_NEVREAN,
-				SPECIES_MONKEY_SERGAL,
-				SPECIES_MONKEY_VULPKANIN,
-				SPECIES_XENO, //Same for xenos,
-				SPECIES_XENO_DRONE,
-				SPECIES_XENO_HUNTER,
-				SPECIES_XENO_SENTINEL,
-				SPECIES_XENO_QUEEN,
-				SPECIES_SHADOW,
-				SPECIES_GOLEM, //Some special species that may or may not be ever used in event too,
-				SPECIES_SHADEKIN) //Shadefluffers just poof away
+var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
+				SPECIES_ID_DIONA,
+				SPECIES_ID_ALRAUNE,
+				SPECIES_ID_PROTEAN,
+				SPECIES_ID_MONKEY, //Exclude all monkey subtypes, which is handled by ID
+				SPECIES_ID_XENOMORPH, //Same for xenos
+				SPECIES_ID_SHADOW,
+				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
+				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
 /hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths

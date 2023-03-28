@@ -19,7 +19,7 @@ var/specops_shuttle_timeleft = 0
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
 	light_color = "#00ffff"
-	req_access = list(access_cent_specops)
+	req_access = list(ACCESS_CENTCOM_ERT)
 //	req_access = list(ACCESS_CENT_SPECOPS)
 	var/temp = null
 	var/hacked = 0
@@ -255,7 +255,7 @@ var/specops_shuttle_timeleft = 0
 /obj/machinery/computer/specops_shuttle/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 
-/obj/machinery/computer/specops_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/specops_shuttle/attack_hand(mob/user, list/params)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return

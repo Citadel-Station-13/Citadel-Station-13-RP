@@ -30,9 +30,9 @@
 
 	taser_kill = 0 //It -is- the taser.
 
-	base_attack_cooldown = 10
+	base_attack_cooldown = 15
 	projectilesound = 'sound/weapons/taser2.ogg'
-	projectiletype = /obj/item/projectile/beam/stun/electric_spider
+	projectiletype = /obj/projectile/beam/stun/electric_spider
 
 	melee_damage_lower = 10
 	melee_damage_upper = 25
@@ -47,7 +47,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
 
-/obj/item/projectile/beam/stun/electric_spider
+/obj/projectile/beam/stun/electric_spider
 	name = "stun beam"
 	agony = 20
 

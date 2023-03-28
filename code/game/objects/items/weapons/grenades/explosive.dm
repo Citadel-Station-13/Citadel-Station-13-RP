@@ -5,7 +5,7 @@
 	icon_state = "frggrenade"
 	item_state = "grenade"
 
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong)
 	var/num_fragments = 63  //total number of fragments produced by the grenade
 	var/explosion_size = 2   //size of the center explosion
 
@@ -35,12 +35,12 @@
 	icon_state = "frag"
 	loadable = null
 
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment)
 	num_fragments = 200  //total number of fragments produced by the grenade
 
 
 
-/obj/proc/fragmentate(var/turf/T=get_turf(src), var/fragment_number = 30, var/spreading_range = 5, var/list/fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/))
+/obj/proc/fragmentate(var/turf/T=get_turf(src), var/fragment_number = 30, var/spreading_range = 5, var/list/fragtypes=list(/obj/projectile/bullet/pellet/fragment/))
 	set waitfor = 0
 	var/list/target_turfs = getcircle(T, spreading_range)
 	var/fragments_per_projectile = round(fragment_number/target_turfs.len)
@@ -48,7 +48,7 @@
 	for(var/turf/O in target_turfs)
 		sleep(0)
 		var/fragment_type = pickweight(fragtypes)
-		var/obj/item/projectile/bullet/pellet/fragment/P = new fragment_type(T)
+		var/obj/projectile/bullet/pellet/fragment/P = new fragment_type(T)
 		P.pellets = fragments_per_projectile
 		P.shot_from = name
 
@@ -60,17 +60,17 @@
 			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
 			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
 			if(M.lying && isturf(src.loc))
-				P.attack_mob(M, 0, 5)
+				P.projectile_attack_mob(M, 0, 5)
 			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.attack_mob(M, 0, 25) //you're holding a grenade, dude!
+				P.projectile_attack_mob(M, 0, 25) //you're holding a grenade, dude!
 			else
-				P.attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
+				P.projectile_attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
 
 /obj/item/grenade/explosive/mini
 	name = "mini fragmentation grenade"
 	desc = "A miniaturized fragmentation grenade, this one poses relatively little threat on its own."
 	icon_state = "minifrag"
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
@@ -79,7 +79,7 @@
 	name = "improvised explosive device"
 	desc = "A crude explosive device made out of common household materials, designed to rupture and send shrapnel out in a wide radius."
 	icon_state = "ied"
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
@@ -101,7 +101,7 @@
 	name = "\improper Tyrmalin mining charge"
 	desc = "A stick of dynamite with a crude blasting cap and timer assembly attached. These volatile explosives are frequently used by Tyrmalin for blast mining. It does not look safe."
 	icon_state = "goblincharge"
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 10
 	spread_range = 3
 	explosion_size = 1
@@ -116,7 +116,7 @@
 	name = "\improper Tyrmalin heavy-duty mining charge"
 	desc = "A hefty bundle of hastily rigged dynamite. These bulky explosives are preferred for Tyrmalin blast mining operations. It does not look safe."
 	icon_state = "goblincharge_big"
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/strong)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 30
 	spread_range = 5
 	explosion_size = 2

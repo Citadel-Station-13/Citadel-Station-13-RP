@@ -36,36 +36,34 @@
 	var/atom/movable/master = parent
 	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 2))
 	addtimer(CALLBACK(src, .proc/glow_loop, master), rand(1,19))//Things should look uneven
-
-	START_PROCESSING(SSradiation, src)
+	SSradiation.sources += src
 
 /datum/component/radioactive/Destroy()
-	STOP_PROCESSING(SSradiation, src)
+	SSradiation.sources -= src
 	var/atom/movable/master = parent
 	master.remove_filter("rad_glow")
 	return ..()
 
-/datum/component/radioactive/process(delta_time)
+/datum/component/radioactive/proc/emit(ds)
 	if(!prob(50))
 		return
 	if(!hl3_release_date)
 		radiation_pulse(parent, strength, falloff, FALSE, can_contaminate)
 		return
-	// delta time is in seconds, not deciseconds
-	// strength -= (1 / 2) ** ((delta_time * 0.1) / RAD_HALF_LIFE_DEFAULT
-	var/becoming = strength * ((1 / 2) ** (delta_time / (hl3_release_date * 0.1)))
+	// strength -= (1 / 2) ** ((ds) / RAD_HALF_LIFE_DEFAULT
+	var/becoming = strength * ((1 / 2) ** (ds / (hl3_release_date)))
 	radiation_pulse(parent, (strength - becoming) * RAD_CONTAMINATION_CHEAT_FACTOR, falloff, FALSE, can_contaminate)
 	strength = becoming
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
-		return PROCESS_KILL
+		SSradiation.sources -= src
 
 /datum/component/radioactive/proc/check_dissipate()
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
 	if(!(datum_flags & DF_ISPROCESSING))	// keep going
-		START_PROCESSING(SSradiation, src)
+		SSradiation.sources += src
 
 /datum/component/radioactive/proc/glow_loop(atom/movable/master)
 	var/filter = master.get_filter("rad_glow")

@@ -8,7 +8,7 @@ Buildable meters
 	desc = "A pipe."
 	var/pipe_type
 	var/pipename
-	force = 7
+	damage_force = 7
 	throw_force = 7
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
@@ -160,6 +160,9 @@ Buildable meters
 		setDir(turn(dir, 45))
 
 /obj/item/pipe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	setDir(turn(dir,-90))
 	fixdir()
 

@@ -443,12 +443,19 @@
 			/obj/item/clothing/head/medievalfake/green = 1,
 			/obj/item/clothing/head/medievalfake/blue = 1,
 			/obj/item/clothing/head/medievalfake/orange = 1,
+			/obj/item/clothing/head/medievalfake/alt = 1,
+			/obj/item/clothing/head/medievalfake/paladin = 1,
 			/obj/item/clothing/suit/medievalfake/red = 1,
 			/obj/item/clothing/suit/medievalfake/green = 1,
 			/obj/item/clothing/suit/medievalfake/blue = 1,
-			/obj/item/clothing/suit/medievalfake/orange = 1
+			/obj/item/clothing/suit/medievalfake/orange = 1,
+			/obj/item/clothing/suit/medievalfake/crimson = 1,
+			/obj/item/clothing/suit/medievalfake/forest = 1,
+			/obj/item/clothing/suit/medievalfake/hauberk = 1,
+			/obj/item/clothing/suit/medievalfake/paladin = 1,
+			/obj/item/clothing/shoes/boots/paladin_fake = 1
 			)
-	cost = 60
+	cost = 80
 	container_type = /obj/structure/closet/crate/nanothreads
 	container_name = "knight cosplay crate"
 

@@ -40,7 +40,7 @@
 			//visible_message("[usr] starts \the [src] up with a loud grinding!")
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = active_force
+			damage_force = active_force
 			edge = 1
 			sharp = 1
 			on = 1
@@ -52,13 +52,16 @@
 	to_chat(user, "You switch the gas nozzle on the chainsaw, turning it off.")
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = inactive_force
+	damage_force = inactive_force
 	edge = 0
 	sharp = 0
 	on = 0
 	update_icon()
 
-/obj/item/chainsaw/attack_self(mob/user as mob)
+/obj/item/chainsaw/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!on)
 		turnOn(user)
 	else
@@ -125,11 +128,11 @@
 
 /obj/item/chainsaw/chainsword
 	name = "chainsaw sword"
-	desc = "This weapon requires extensive training to wield effectively. Its spinning teeth are able to cut through metal as easily as flesh. Handle with care."
+	desc = "The whirring assembly normally found in a chainsaw, now affixed to a sword-hilt. This weapon requires extensive training to wield effectively."
 	icon_state = "chainsword0"
 	item_state = "chainsword0"
 	slot_flags = SLOT_BELT
-	force = 30
+	damage_force = 30
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
@@ -153,7 +156,7 @@
 			//visible_message("[usr] starts \the [src] up with a loud grinding!")
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = active_force
+			damage_force = active_force
 			edge = 1
 			sharp = 1
 			on = 1
@@ -165,7 +168,7 @@
 	to_chat(user, "You release the trigger on the chainsword, turning it off.")
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = inactive_force
+	damage_force = inactive_force
 	edge = 0
 	sharp = 0
 	on = 0

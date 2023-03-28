@@ -15,7 +15,7 @@
 	desc = "An old pair of trimmers with a pretty dull blade. You would probably have a hard time cutting anything but plants with it."
 	icon_state = "hedget"
 	item_state = "hedget"
-	force = 7 //One point extra than standard wire cutters.
+	damage_force = 7 //One point extra than standard wire cutters.
 
 /obj/item/analyzer/plant_analyzer
 	name = "plant analyzer"
@@ -26,6 +26,9 @@
 	var/list/last_reagents
 
 /obj/item/analyzer/plant_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/analyzer/plant_analyzer/ui_interact(mob/user, datum/tgui/ui)
@@ -34,7 +37,7 @@
 		ui = new(user, src, "PlantAnalyzer", name)
 		ui.open()
 
-/obj/item/analyzer/plant_analyzer/ui_state(mob/user)
+/obj/item/analyzer/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/analyzer/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -50,7 +53,7 @@
 
 	return data
 
-/obj/item/analyzer/plant_analyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/analyzer/plant_analyzer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -64,11 +64,11 @@
 		switch(href_list["flavor_text"])
 			if("open")
 			if("general")
-				var/msg = sanitize(input(usr,"Give a general description of your character. This will be shown regardless of clothings.","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)
+				var/msg = sanitize(input(usr,"Give a general description of your character. This will be shown regardless of clothings. Flavor text is what someone can see IC with a glance, please do not include OOC things like personality / backstory!","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 			else
-				var/msg = sanitize(input(usr,"Set the flavor text for your [href_list["flavor_text"]].","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)
+				var/msg = sanitize(input(usr,"Set the flavor text for your [href_list["flavor_text"]]. Flavor text is what someone can see IC with a glance, please do not include OOC things like personality / backstory!","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 		SetFlavorText(user)
@@ -78,17 +78,28 @@
 		switch(href_list["flavour_text_robot"])
 			if("open")
 			if("Default")
-				var/msg = sanitize(input(usr,"Set the default flavour text for your robot. It will be used for any module without individual setting.","Flavour Text",html_decode(pref.flavour_texts_robot["Default"])) as message, extra = 0, max_length = 8192)
+				var/msg = sanitize(input(usr,"Set the default flavour text for your robot. It will be used for any module without individual setting. Flavor text is what someone can see IC with a glance, please do not include OOC things like personality / backstory!","Flavour Text",html_decode(pref.flavour_texts_robot["Default"])) as message, extra = 0, max_length = 8192)
 				if(CanUseTopic(user))
 					pref.flavour_texts_robot[href_list["flavour_text_robot"]] = msg
 			else
-				var/msg = sanitize(input(usr,"Set the flavour text for your robot with [href_list["flavour_text_robot"]] module. If you leave this empty, default flavour text will be used for this module.","Flavour Text",html_decode(pref.flavour_texts_robot[href_list["flavour_text_robot"]])) as message, extra = 0, max_length = 8192)
+				var/msg = sanitize(input(usr,"Set the flavour text for your robot with [href_list["flavour_text_robot"]] module. If you leave this empty, default flavour text will be used for this module. Flavor text is what someone can see IC with a glance, please do not include OOC things like personality / backstory!","Flavour Text",html_decode(pref.flavour_texts_robot[href_list["flavour_text_robot"]])) as message, extra = 0, max_length = 8192)
 				if(CanUseTopic(user))
 					pref.flavour_texts_robot[href_list["flavour_text_robot"]] = msg
 		SetFlavourTextRobot(user)
 		return PREFERENCES_HANDLED
 
 	return ..()
+
+/datum/category_item/player_setup_item/general/flavor/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+	. = TRUE
+	if(!length(prefs.flavor_texts["general"]))
+		var/enforcing = CONFIG_GET(flag/enforce_flavor_text)
+		var/error = "Missing or insufficient general flavor text - See Character Setup for information."
+		if(enforcing)
+			errors += error
+			. = FALSE
+		else
+			warnings += error
 
 /datum/category_item/player_setup_item/general/flavor/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"

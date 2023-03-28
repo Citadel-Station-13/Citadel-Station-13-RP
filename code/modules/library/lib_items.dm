@@ -54,7 +54,7 @@
 	else
 		..()
 
-/obj/structure/bookcase/attack_hand(var/mob/user as mob)
+/obj/structure/bookcase/attack_hand(mob/user, list/params)
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
@@ -218,7 +218,10 @@
 	pickup_sound = 'sound/items/pickup/book.ogg'
 
 
-/obj/item/book/attack_self(var/mob/user as mob)
+/obj/item/book/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(carved)
 		if(store)
 			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
@@ -319,11 +322,13 @@
 	else
 		..()
 
-/obj/item/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/book/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(user.zone_sel.selecting == O_EYES)
-		user.visible_message("<span class='notice'>You open up the book and show it to [M]. </span>", \
-			"<span class='notice'> [user] opens up a book and shows it to [M]. </span>")
-		M << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
+		user.visible_message("<span class='notice'>You open up the book and show it to [target]. </span>", \
+			"<span class='notice'> [user] opens up a book and shows it to [target]. </span>")
+		target << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /*
@@ -371,7 +376,10 @@
 			dat += "<HTML><HEAD><TITLE>Page [page]</TITLE></HEAD><BODY>[pages[page]]</BODY></HTML>"
 		user << browse(dat, "window=[name]")
 
-/obj/item/book/bundle/attack_self(mob/user as mob)
+/obj/item/book/bundle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.show_content(user)
 	add_fingerprint(usr)
 	update_icon()
@@ -400,8 +408,9 @@
  */
 /obj/item/barcodescanner
 	name = "barcode scanner"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/modules/library/items/barcode_scanner.dmi'
 	icon_state ="scanner"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -409,7 +418,10 @@
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
-/obj/item/barcodescanner/attack_self(mob/user as mob)
+/obj/item/barcodescanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode += 1
 	if(mode > 3)
 		mode = 0

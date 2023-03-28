@@ -88,6 +88,14 @@
 	upperdrop = 8
 	outcropdrop = /obj/item/ore/uranium
 
+/obj/structure/outcrop/elder
+	name = "chiming outcrop"
+	desc = "A rocky outcrop. A faint chiming noise can be heard coming from inside."
+	icon_state = "outcrop"
+	mindrop = 1
+	upperdrop = 2
+	outcropdrop = /obj/item/elderstone
+
 /obj/structure/outcrop/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pickaxe))
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")

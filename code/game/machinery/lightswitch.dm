@@ -10,6 +10,8 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	power_channel = LIGHT
+	zmm_flags = ZMM_MANGLE_PLANES
+
 	var/on = TRUE
 	var/area/area = null
 	var/otherarea = null
@@ -50,7 +52,7 @@
 /obj/machinery/light_switch/examine(mob/user)
 	. += SPAN_NOTICE("A light switch. It is [on? "on" : "off"].")
 
-/obj/machinery/light_switch/attack_hand(mob/user)
+/obj/machinery/light_switch/attack_hand(mob/user, list/params)
 
 	on = !on
 

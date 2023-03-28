@@ -97,14 +97,17 @@
 	return
 
 
-/obj/item/assembly/attack_self(mob/user as mob)
+/obj/item/assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return FALSE
 	user.set_machine(src)
 	ui_interact(user)
 	return TRUE
 
-/obj/item/device/assembly/ui_state(mob/user)
+/obj/item/device/assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/device/assembly/ui_interact(mob/user, datum/tgui/ui)

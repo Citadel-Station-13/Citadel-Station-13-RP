@@ -109,11 +109,12 @@
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
-
+	if (vents.len <= 0)
+		return
 	spawn(0)
 		var/num = spawncount
 		var/spawn_type = pick(spawn_types)
-		while(vents.len > 0 && num > 0)
+		while(num > 0)
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 			num--
 			new spawn_type(V.loc)

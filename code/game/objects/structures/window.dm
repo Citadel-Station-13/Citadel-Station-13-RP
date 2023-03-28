@@ -32,11 +32,38 @@
 	var/glasstype = null // Set this in subtypes. Null is assumed strange osr otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 
-/obj/structure/window/Initialize(mapload)
+/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
+	. = ..(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
 	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
-	return ..()
+	if (start_dir)
+		setDir(start_dir)
+	//player-constructed windows
+	if (constructed)
+		anchored = 0
+		construction_state = 0
+		update_verbs()
+	health = maxhealth
+	AIR_UPDATE_ON_INITIALIZE_AUTO
+	update_nearby_icons()
+
+/obj/structure/window/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
+	var/turf/location = loc
+	. = ..()
+	for(var/obj/structure/window/W in orange(location, 1))
+		W.update_icon()
+
+/obj/structure/window/Move()
+	moving_right_now = dir
+	. = ..()
+	setDir(moving_right_now)
+	moving_right_now = null
+
+/obj/structure/window/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/structure/window/proc/check_fullwindow()
 	if(dir & (dir - 1))		//diagonal!
@@ -44,6 +71,8 @@
 	if(fulltile)
 		// clickcode requires this :(
 		atom_flags &= ~ATOM_BORDER
+		// update: atmos code now requires tihs :(
+		CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -126,7 +155,7 @@
 	return
 
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(var/obj/projectile/Proj)
 
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
@@ -208,7 +237,7 @@
 	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
 
-/obj/structure/window/attack_hand(mob/user as mob)
+/obj/structure/window/attack_hand(mob/user, list/params)
 	user.setClickCooldown(user.get_attack_speed())
 	if(MUTATION_HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
@@ -323,7 +352,7 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
-			hit(W.force)
+			hit(W.damage_force)
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()
@@ -386,40 +415,6 @@
 
 	return TRUE
 
-/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
-	. = ..(mapload)
-	if (start_dir)
-		setDir(start_dir)
-
-	//player-constructed windows
-	if (constructed)
-		anchored = 0
-		construction_state = 0
-		update_verbs()
-
-	health = maxhealth
-
-	update_nearby_tiles()
-	update_nearby_icons()
-
-/obj/structure/window/Destroy()
-	density = 0
-	update_nearby_tiles()
-	var/turf/location = loc
-	. = ..()
-	for(var/obj/structure/window/W in orange(location, 1))
-		W.update_icon()
-
-/obj/structure/window/Move()
-	moving_right_now = dir
-	. = ..()
-	setDir(moving_right_now)
-	moving_right_now = null
-
-/obj/structure/window/Moved()
-	. = ..()
-	update_nearby_tiles()
-
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
 	return fulltile
@@ -433,11 +428,11 @@
 //Updates the availabiliy of the rotation verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored || is_fulltile())
-		verbs -= /obj/structure/window/verb/rotate_counterclockwise
-		verbs -= /obj/structure/window/verb/rotate_clockwise
+		remove_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
+		remove_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 	else if(!is_fulltile())
-		verbs += /obj/structure/window/verb/rotate_counterclockwise
-		verbs += /obj/structure/window/verb/rotate_clockwise
+		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
+		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()
@@ -500,7 +495,7 @@
 		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
 		anchored = !unsecuring
-		air_update_turf()
+		CanAtmosPass = anchored? (is_fulltile()? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_PROC) : ATMOS_PASS_NOT_BLOCKED
 		update_verbs()
 		return
 	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
@@ -738,7 +733,7 @@
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
-/obj/machinery/button/windowtint/attack_hand(mob/user as mob)
+/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
 	if(..())
 		return 1
 

@@ -10,7 +10,7 @@
 		/obj/docking_port,
 		/obj/structure/lattice,
 		/obj/structure/stone_tile,
-		/obj/item/projectile,
+		/obj/projectile,
 		/obj/effect/projectile,
 		/obj/effect/portal,
 		/obj/effect/abstract,
@@ -65,7 +65,7 @@
 		return FALSE
 	if(!isliving(AM) && !isobj(AM))
 		return FALSE
-	if(is_type_in_typecache(AM, forbidden_types) || AM.throwing || (AM.movement_type & FLOATING))
+	if(is_type_in_typecache(AM, forbidden_types) || AM.throwing || (AM.movement_type & MOVEMENT_FLOATING))
 		return FALSE
 	//Flies right over the chasm
 	if(ismob(AM))

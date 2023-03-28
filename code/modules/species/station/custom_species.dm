@@ -1,7 +1,8 @@
 
 /datum/species/custom
-	name = SPECIES_CUSTOM
 	uid = SPECIES_ID_CUSTOM
+	id = SPECIES_ID_CUSTOM
+	name = SPECIES_CUSTOM
 	name_plural = "Custom"
 	selects_bodytype = TRUE
 	base_species = SPECIES_HUMAN

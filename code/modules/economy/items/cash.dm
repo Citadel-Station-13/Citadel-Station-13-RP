@@ -7,13 +7,13 @@
 	opacity = 0
 	density = 0
 	anchored = 0.0
-	force = 1.0
+	damage_force = 1.0
 	throw_force = 1.0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
 	var/access = list()
-	access = access_crate_cash
+	access = ACCESS_MISC_CASHCRATE
 	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
@@ -85,7 +85,10 @@
 		update_icon()
 	return worth
 
-/obj/item/spacecash/attack_self()
+/obj/item/spacecash/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/amount = input(usr, "How many Thalers do you want to take? (0 to [src.worth])", "Take Money", 20) as num
 	if(!src || QDELETED(src))
 		return
@@ -184,7 +187,10 @@
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/attack_self()
+/obj/item/spacecash/ewallet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return //Don't act
 
 /obj/item/spacecash/ewallet/attackby()

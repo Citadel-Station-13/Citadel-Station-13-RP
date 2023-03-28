@@ -230,6 +230,8 @@
 		return FALSE
 
 /mob/living/proc/handle_darksight()
+	if(!dsoverlay)
+		return
 	if(!seedarkness) //Cheap 'always darksight' var
 		dsoverlay.alpha = 255
 		return

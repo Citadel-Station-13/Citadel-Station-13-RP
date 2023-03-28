@@ -20,7 +20,7 @@
 
 /obj/item/reagent_containers/spray/Initialize(mapload)
 	. = ..()
-	src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
+	remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 
 /obj/item/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart))
@@ -69,7 +69,7 @@
 			D.set_up(my_target, spray_size, 10)
 	return
 
-/obj/item/reagent_containers/spray/attack_self(var/mob/user)
+/obj/item/reagent_containers/spray/attack_self(mob/user)
 	if(!possible_transfer_amounts)
 		return
 	amount_per_transfer_from_this = next_list_item(amount_per_transfer_from_this, possible_transfer_amounts)
@@ -133,7 +133,7 @@
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
-/obj/item/reagent_containers/spray/pepper/attack_self(var/mob/user)
+/obj/item/reagent_containers/spray/pepper/attack_self(mob/user)
 	safety = !safety
 	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
 
@@ -234,7 +234,7 @@
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 
-/obj/item/reagent_containers/spray/squirt/attack_self(var/mob/user)
+/obj/item/reagent_containers/spray/squirt/attack_self(mob/user)
 	pumped = !pumped
 	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
 

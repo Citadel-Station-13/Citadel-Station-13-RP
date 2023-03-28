@@ -39,10 +39,6 @@
 	name = T_BOARD("ID card modification console")
 	build_path = /obj/machinery/computer/card
 
-/obj/item/circuitboard/card/centcom
-	name = T_BOARD("CentCom ID card modification console")
-	build_path = /obj/machinery/computer/card/centcom
-
 /obj/item/circuitboard/teleporter
 	name = T_BOARD("teleporter control console")
 	build_path = /obj/machinery/computer/teleporter

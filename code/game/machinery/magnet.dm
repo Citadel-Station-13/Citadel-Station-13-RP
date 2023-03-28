@@ -9,7 +9,7 @@
 	icon_state = "floor_magnet-f"
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
@@ -251,7 +251,7 @@
 /obj/machinery/magnetic_controller/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/magnetic_controller/attack_hand(mob/user)
+/obj/machinery/magnetic_controller/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)

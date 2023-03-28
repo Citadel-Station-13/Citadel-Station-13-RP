@@ -25,12 +25,12 @@
 
 	var/health_deficiency = (getMaxHealth() - health)
 	if(health_deficiency >= 40)
-		tally += (health_deficiency / 25)
+		tally += (health_deficiency / 35)
 
 	if(can_feel_pain())
 		if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine stops pain slowdown
 			if(halloss >= 10)
-				tally += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
+				tally += (halloss / 45) //halloss shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if (hungry >= 70)
@@ -140,8 +140,8 @@
 	if(!T)
 		return 0
 
-	if(T.movement_cost)
-		var/turf_move_cost = T.movement_cost
+	if(T.slowdown)
+		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)
 				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.water_movement, 15)

@@ -1,4 +1,4 @@
-/datum/job/station/detective
+/datum/role/job/station/detective
 	id = JOB_ID_DETECTIVE
 	title = "Detective"
 	flag = DETECTIVE
@@ -9,24 +9,31 @@
 	supervisors = "the Head of Security"
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
-	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig)
-	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	economic_modifier = 5
+	additional_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SECURITY_BRIG)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective
 	desc = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
-		"Forensic Technician" = /datum/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/alt_title/detective/csi
+		"Forensic Technician" = /datum/prototype/alt_title/detective/forensics_tech,
+		"Crime Scene Investigator" = /datum/prototype/alt_title/detective/csi,
+		"Investigatory Specialist" = /datum/prototype/alt_title/detective/inv_spec
 		)
 
-/datum/alt_title/detective/csi
+/datum/prototype/alt_title/detective/inv_spec
+	title = "Investigatory Specialist"
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
+
+/datum/prototype/alt_title/detective/csi
 	title = "Crime Scene Investigator"
 
 /// Detective Alt Titles
-/datum/alt_title/detective/forensics_tech
+/datum/prototype/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
 	title_outfit = /datum/outfit/job/station/detective/forensic

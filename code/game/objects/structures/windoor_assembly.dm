@@ -203,55 +203,34 @@
 					density = 1 //Shouldn't matter but just incase
 					to_chat(user,"<span class='notice'>You finish the windoor!</span>")
 
+					var/obj/machinery/door/window/windoor
 					if(secure)
-						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)
+						windoor = new /obj/machinery/door/window/brigdoor(loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftsecureopen"
 							windoor.base_state = "leftsecure"
 						else
 							windoor.icon_state = "rightsecureopen"
 							windoor.base_state = "rightsecure"
-						windoor.setDir(src.dir)
-						windoor.density = 0
-						if(created_name)
-							windoor.name = created_name
-						spawn(0)
-							windoor.close()
-
-						if(src.electronics.one_access)
-							windoor.req_access = null
-							windoor.req_one_access = src.electronics.conf_access
-						else
-							windoor.req_access = src.electronics.conf_access
-						windoor.electronics = src.electronics
-						src.electronics.loc = windoor
 					else
-						var/obj/machinery/door/window/windoor = new /obj/machinery/door/window(src.loc)
+						windoor = new /obj/machinery/door/window(loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftopen"
 							windoor.base_state = "left"
 						else
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
-						windoor.setDir(src.dir)
-						windoor.density = 0
-						if(created_name)
-							windoor.name = created_name
-						spawn(0)
-							windoor.close()
-
-						if(src.electronics.one_access)
-							windoor.req_access = null
-							windoor.req_one_access = src.electronics.conf_access
-						else
-							windoor.req_access = src.electronics.conf_access
-						windoor.electronics = src.electronics
-						src.electronics.loc = windoor
-
-
+					windoor.setDir(src.dir)
+					windoor.density = 0
+					if(created_name)
+						windoor.name = created_name
+					spawn(0)
+						windoor.close()
+					windoor.req_access = electronics.conf_req_access?.Copy()
+					windoor.req_one_access = electronics.conf_req_one_access?.Copy()
+					windoor.electronics = electronics
+					electronics.forceMove(windoor)
 					qdel(src)
-
-
 			else
 				..()
 

@@ -7,7 +7,7 @@
 	anchored = 1.0
 	rad_flags = RAD_NO_CONTAMINATE
 	w_class = ITEMSIZE_NORMAL
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LATTICE)
@@ -33,17 +33,18 @@
 			L.updateOverlays()
 
 /obj/structure/lattice/Destroy()
-	for (var/dir in GLOB.cardinal)
-		var/obj/structure/lattice/L
-		if(locate(/obj/structure/lattice, get_step(src, dir)))
-			L = locate(/obj/structure/lattice, get_step(src, dir))
-			L.updateOverlays(src.loc)
-	if(istype(loc, /turf/simulated/open))
-		var/turf/simulated/open/O = loc
-		spawn(1)
-			if(istype(O)) // If we built a new floor with the lattice, the open turf won't exist anymore.
-				O.update() // This lattice may be supporting things on top of it.  If it's being deleted, they need to fall down.
+	var/turf/old_loc = get_turf(src)
 	. = ..()
+	if(istype(old_loc))
+		update_neighbors(old_loc)
+		for(var/atom/movable/AM in old_loc)
+			AM.fall(old_loc)
+
+/obj/structure/lattice/proc/update_neighbors(location = loc)
+	for (var/dir in GLOB.cardinal)
+		var/obj/structure/lattice/L = locate(/obj/structure/lattice, get_step(location, dir))
+		if(L)
+			L.update_icon()
 
 /obj/structure/lattice/legacy_ex_act(severity)
 	switch(severity)

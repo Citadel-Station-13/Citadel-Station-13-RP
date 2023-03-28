@@ -93,7 +93,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NSS Demeter"
+	dock_name     = "NTS Demeter"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -128,7 +128,8 @@
 							NETWORK_ROBOTS,
 							NETWORK_SECURITY,
 							NETWORK_TCOMMS,
-							NETWORK_LYTHIOS
+							NETWORK_LYTHIOS,
+							NETWORK_EXPLO_HELMETS
 							)
 	secondary_networks = list(
 							NETWORK_ERT,
@@ -183,7 +184,7 @@
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
 //		list("Western Canyon","Western Deep Caves","Western Caves","Western Plains"),	///Integration Test says these arent valid maps but everything works, will leave in for now but this prolly isnt needed -Bloop
 		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
 		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
@@ -222,7 +223,7 @@
 		/datum/planet/classh,
 		/datum/planet/classp,
 		/datum/planet/classm,
-		/datum/planet/virgo4
+		/datum/planet/miaphus
 		)
 
 // Overmap stuff. Main file is under code/modules/maps/overmap/_lythios43c.dm

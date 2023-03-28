@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(nanoui)
 		processing_uis |= SSnanoui.processing_uis
 
 /datum/controller/subsystem/nanoui/stat_entry()
-	return ..("[processing_uis.len] UIs")
+	return ..() + " [processing_uis.len] UIs"
 
 /datum/controller/subsystem/nanoui/fire(resumed)
 	for(var/thing in processing_uis)

@@ -154,7 +154,7 @@
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user)
+/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -204,7 +204,7 @@
 				)))*/
 	return data
 
-/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -309,6 +309,7 @@
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this?", "Rename", src.name, MAX_NAME_LEN)
@@ -513,6 +514,9 @@
 	return ..()
 
 /obj/item/electronic_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!check_interactivity(user))
 		return
 	ui_interact(user)

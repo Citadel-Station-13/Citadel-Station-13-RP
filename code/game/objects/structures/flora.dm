@@ -4,7 +4,7 @@
 	desc = "A perfectly generic plant."
 
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
+	plane = TURF_PLANE
 	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE
@@ -394,7 +394,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user)
+/obj/structure/flora/sif/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -515,7 +515,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

@@ -45,13 +45,13 @@
 	update_icon()
 
 
-/obj/structure/extinguisher_cabinet/attack_hand(mob/living/user)
+/obj/structure/extinguisher_cabinet/attack_hand(mob/user, list/params)
 	if(isrobot(user))
 		return
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (user.hand)
+		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")

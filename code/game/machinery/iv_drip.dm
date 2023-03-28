@@ -166,7 +166,7 @@
 	else
 		return ..()
 
-/obj/machinery/iv_drip/attack_hand(mob/user)
+/obj/machinery/iv_drip/attack_hand(mob/user, list/params)
 	if(reagent_container)
 		reagent_container.loc = get_turf(src)
 		reagent_container = null
@@ -183,7 +183,7 @@
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
 		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
 		chosen_limb.take_damage(3)
-		chosen_limb.createwound(CUT, 5)
+		chosen_limb.create_wound(CUT, 5)
 		detach_iv()
 		return PROCESS_KILL
 
@@ -258,7 +258,7 @@
 /obj/machinery/iv_drip/verb/eject_beaker()
 	set category = "Object"
 	set name = "Remove IV Container"
-	set src in view(1)
+	set src in oview(1)
 
 	if(!isliving(usr))
 		to_chat(usr, SPAN_WARNING("You can't do that!"))
@@ -278,7 +278,7 @@
 /obj/machinery/iv_drip/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Mode"
-	set src in view(1)
+	set src in oview(1)
 
 	if(!isliving(usr))
 		to_chat(usr, SPAN_WARNING("You can't do that!"))

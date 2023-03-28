@@ -3,7 +3,7 @@
 	desc = "A pair of binoculars."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "binoculars"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15
@@ -13,4 +13,7 @@
 
 
 /obj/item/binoculars/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	zoom()

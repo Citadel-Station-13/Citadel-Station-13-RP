@@ -4,6 +4,9 @@
  quirks have it's own panel so we don't need them here.
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
+	/atom/movable = list(
+
+	),
 	/mob = list(
 		/*
 		"TRAIT_BLIND" = TRAIT_BLIND,
@@ -58,6 +61,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		*/
 		"TRAIT_ANTIMAGIC" = TRAIT_ANTIMAGIC,
 		"TRAIT_HOLY" = TRAIT_HOLY,
+		"TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT" = TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT,
 		/*
 		"TRAIT_DEPRESSION" = TRAIT_DEPRESSION,
 		"TRAIT_JOLLY" = TRAIT_JOLLY,
@@ -92,7 +96,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_BOOZE_SLIDER" = TRAIT_BOOZE_SLIDER,
 		"TRAIT_UNINTELLIGIBLE_SPEECH" = TRAIT_UNINTELLIGIBLE_SPEECH,
 		"TRAIT_UNSTABLE" = TRAIT_UNSTABLE,
-		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED
+		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED,
 		*/
 	),
 	/*

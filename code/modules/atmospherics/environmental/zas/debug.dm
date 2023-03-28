@@ -1,11 +1,11 @@
-var/image/assigned = image('icons/Testing/Zone.dmi', icon_state = "assigned")
-var/image/created = image('icons/Testing/Zone.dmi', icon_state = "created")
-var/image/merged = image('icons/Testing/Zone.dmi', icon_state = "merged")
-var/image/invalid_zone = image('icons/Testing/Zone.dmi', icon_state = "invalid")
-var/image/air_blocked = image('icons/Testing/Zone.dmi', icon_state = "block")
-var/image/zone_blocked = image('icons/Testing/Zone.dmi', icon_state = "zoneblock")
-var/image/blocked = image('icons/Testing/Zone.dmi', icon_state = "fullblock")
-var/image/mark = image('icons/Testing/Zone.dmi', icon_state = "mark")
+var/image/assigned = image('icons/testing/Zone.dmi', icon_state = "assigned")
+var/image/created = image('icons/testing/Zone.dmi', icon_state = "created")
+var/image/merged = image('icons/testing/Zone.dmi', icon_state = "merged")
+var/image/invalid_zone = image('icons/testing/Zone.dmi', icon_state = "invalid")
+var/image/air_blocked = image('icons/testing/Zone.dmi', icon_state = "block")
+var/image/zone_blocked = image('icons/testing/Zone.dmi', icon_state = "zoneblock")
+var/image/blocked = image('icons/testing/Zone.dmi', icon_state = "fullblock")
+var/image/mark = image('icons/testing/Zone.dmi', icon_state = "mark")
 
 /datum/zas_edge/var/dbg_out = 0
 

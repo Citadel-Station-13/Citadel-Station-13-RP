@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "suspension2"
 	density = 1
-	req_access = list(access_research)
+	req_access = list(ACCESS_SCIENCE_MAIN)
 	var/obj/item/cell/cell
 	var/locked = TRUE
 	var/power_use = 5
@@ -35,7 +35,7 @@
 		else
 			deactivate()
 
-/obj/machinery/suspension_gen/attack_hand(var/mob/user)
+/obj/machinery/suspension_gen/attack_hand(mob/user, list/params)
 	if(panel_open)
 		if(cell)
 			to_chat(user, SPAN_NOTICE("You remove [cell]."))
@@ -67,7 +67,7 @@
 
 	return data
 
-/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

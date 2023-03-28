@@ -46,7 +46,7 @@
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
-			if(S.stacktype == stacktype)
+			if(can_merge(S))
 				merge(S)
 	update_icon()
 
@@ -85,6 +85,9 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(safety_check())
 		return
 	list_recipes(user)
@@ -240,6 +243,8 @@
 		return FALSE
 	if(mid_delete || other.mid_delete) // bandaid until new inventory code
 		return FALSE
+	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
+		return FALSE
 	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(used)
@@ -286,8 +291,6 @@
 	if (!get_amount())
 		return 0
 	if (!can_merge(S) && !type_verified)
-		return 0
-	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
 		return 0
 
 	if (isnull(tamount))
@@ -361,7 +364,7 @@
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user)
+/obj/item/stack/attack_hand(mob/user, list/params)
 	if(safety_check())
 		return
 	if(user.get_inactive_held_item() == src)

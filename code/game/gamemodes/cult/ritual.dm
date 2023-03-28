@@ -101,7 +101,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	return
 
 
-/obj/effect/rune/attack_hand(mob/user)
+/obj/effect/rune/attack_hand(mob/user, list/params)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
@@ -290,24 +290,28 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	for(var/V in cultwords)
 		words[cultwords[V]] = V
 
-/obj/item/book/tome/attack(mob/living/M, mob/user)
-	add_attack_logs(user,M,"Hit with [name]")
-	if(istype(M,/mob/observer/dead))
-		var/mob/observer/dead/D = M
+/obj/item/book/tome/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(istype(target,/mob/observer/dead))
+		var/mob/observer/dead/D = target
 		D.manifest(user)
-		return
-	if(!istype(M))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	var/mob/living/L = target
+	if(!istype(L))
+		return NONE
 	if(!iscultist(user))
 		return ..()
-	if(iscultist(M))
-		return
-	M.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
-	for(var/mob/O in viewers(M, null))
-		O.show_message("<span class='warning'>\The [user] beats \the [M] with \the [src]!</span>", 1)
-	to_chat(M, "<span class='danger'>You feel searing heat inside!</span>")
+	if(iscultist(target))
+		return NONE
+	add_attack_logs(user, L, "Hit with [name]")
+	L.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
+	for(var/mob/O in viewers(L, null))
+		O.show_message("<span class='warning'>\The [user] beats \the [L] with \the [src]!</span>", 1)
+	to_chat(target, "<span class='danger'>You feel searing heat inside!</span>")
 
 /obj/item/book/tome/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
@@ -422,7 +426,10 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	w_class = ITEMSIZE_SMALL
 	var/cultistsonly = 1
 
-/obj/item/book/tome/imbued/attack_self(mob/user as mob)
+/obj/item/book/tome/imbued/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.cultistsonly && !iscultist(usr))
 		return
 	if(!cultwords["travel"])

@@ -6,9 +6,12 @@
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
 
+	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = CAN_BE_HIT
-	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	var/set_obj_flags
 
+	//? misc / legacy
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
@@ -18,6 +21,7 @@
 	var/pry = 0			//Used in attackby() to open doors
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
+	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
 	var/armor_penetration = 0
 	var/show_messages
 	var/preserve_item = 0 //whether this object is preserved when its owner goes into cryo-storage, gateway, etc
@@ -26,10 +30,17 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-	// Access levels, used in modules\jobs\access.dm
+	//? Access - see [modules/jobs/access.dm]
+	/// If set, all of these accesses are needed to access this object.
 	var/list/req_access
+	/// If set, at least one of these accesses are needed to access this object.
 	var/list/req_one_access
 
+	//? Economy
+	/// economic category for objects
+	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+
+	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
 
@@ -166,9 +177,6 @@
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
 	return
 
-/obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-	return
-
 // Used to mark a turf as containing objects that are dangerous to step onto.
 /obj/proc/register_dangerous_to_step()
 	var/turf/T = get_turf(src)
@@ -202,7 +210,7 @@
 /obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	return
 
-/obj/attack_hand(mob/living/user)
+/obj/attack_hand(mob/user, list/params)
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()

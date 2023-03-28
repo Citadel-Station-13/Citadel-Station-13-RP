@@ -111,7 +111,7 @@
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/attack_hand(user)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!src.allowed(user))

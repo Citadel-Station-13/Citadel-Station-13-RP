@@ -298,17 +298,17 @@
 	var/list/mobs = list()
 	var/list/objs = list()
 
-	var/list/hear = dview(range,T,INVISIBILITY_MAXIMUM)
+	var/list/hear = list()
+	DVIEW(hear, range, T, INVISIBILITY_MAXIMUM)
 	var/list/hearturfs = list()
 
-	for(var/thing in hear)
-		// Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included.
-		if(istype(thing, /obj))
-			objs += thing
-			hearturfs |= get_turf(thing)
-		if(ismob(thing))
-			mobs += thing
-			hearturfs |= get_turf(thing)
+	for(var/atom/movable/AM in hear)
+		if(ismob(AM))
+			mobs += AM
+			hearturfs += get_turf(AM)
+		else if(isobj(AM))
+			objs += AM
+			hearturfs += get_turf(AM)
 
 	// A list of every mob with a client.
 	for(var/mob in GLOB.player_list)
@@ -333,9 +333,9 @@
 						mobs |= M
 
 	// For objects below the top level who still want to hear.
-	for(var/obj in listening_objects)
-		if(get_turf(obj) in hearturfs)
-			objs |= obj
+	for(var/obj/O in global.listening_objects)
+		if(get_turf(O) in hearturfs)
+			objs |= O
 
 	return list("mobs" = mobs, "objs" = objs)
 

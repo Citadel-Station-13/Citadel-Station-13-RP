@@ -22,6 +22,8 @@
  *! Text sanitization
  */
 
+// todo probably split this file into other files
+
 /// Used for preprocessing entered text.
 /proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
@@ -51,6 +53,14 @@
 		input = trim(input)
 
 	return input
+
+/**
+ * standard sanitization for atom names
+ *
+ * disallows linebreaks, trims, encodes html.
+ */
+/proc/sanitize_atom_name(str, max_len = 32)
+	return sanitize(str, max_len, TRUE, TRUE, FALSE)
 
 //TODO: Have to rewrite this sanitize code :djoy:
 /proc/sanitize_filename(t)
@@ -284,7 +294,7 @@
 /proc/trim_left(text)
 	for (var/i = 1 to length(text))
 		if (text2ascii(text, i) > 32)
-			return copytext(text, i)
+			return copytext_char(text, i)
 	return ""
 
 /**
@@ -293,7 +303,7 @@
 /proc/trim_right(text)
 	for (var/i = length(text), i > 0, i--)
 		if (text2ascii(text, i) > 32)
-			return copytext(text, 1, i + 1)
+			return copytext_char(text, 1, i + 1)
 	return ""
 
 /**
@@ -306,7 +316,7 @@
  * Returns a string with the first element of the string capitalized.
  */
 /proc/capitalize(t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 /**
  * Syntax is "stringtoreplace"="stringtoreplacewith".

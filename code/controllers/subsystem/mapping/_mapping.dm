@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
 
 	var/list/reservation_ready = list()
+
+
 	var/clearing_reserved_turfs = FALSE
 
 	/// Zlevel manager list of zlevels.
@@ -27,6 +29,7 @@ SUBSYSTEM_DEF(mapping)
 	var/static/datum/map_config/next_map_config
 
 	/// Cached map name for statpanel
+
 	var/static/stat_map_name = "Loading..."
 
 //dlete dis once #39770 is resolved
@@ -40,6 +43,9 @@ SUBSYSTEM_DEF(mapping)
 	stat_map_name = config.map_name
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	report_progress("Initializing [name] subsystem...")
+	// shim: this goes at the top
+	world.max_z_changed(0, world.maxz) // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	HACK_LoadMapConfig()
 	if(initialized)
 		return
@@ -47,11 +53,10 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Tethermap"))
 			config = old_config
 	loadWorld()
 	repopulate_sorted_areas()
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
 	load_map_templates()
 
@@ -91,7 +96,7 @@ SUBSYSTEM_DEF(mapping)
 	var/total_z = 0
 	var/list/parsed_maps = list()
 	for (var/file in files)
-		var/full_path = "_maps/[path]/[file]"
+		var/full_path = "_mapload/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
 		var/bounds = pm?.bounds
 		if (!bounds)

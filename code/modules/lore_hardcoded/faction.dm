@@ -1,6 +1,6 @@
 /datum/lore/character_background/faction
 	abstract_type = /datum/lore/character_background/faction
-	/// station job types you can play as under this - **typepaths** e.g. /datum/job/station/security_officer, etc
+	/// station job types you can play as under this - **typepaths** e.g. /datum/role/job/station/security_officer, etc
 	/// if null, you can play as everything
 	var/list/job_whitelist = list()
 	/// job blacklist
@@ -63,10 +63,10 @@
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SENIOR_ENGINEER,
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
 		JOB_ID_BOTANIST,
-		JOB_ID_JANITOR,
 		JOB_ID_ASSISTANT,
 		JOB_ID_OFFDUTY_CIVILLIAN,
 		JOB_ID_OFFDUTY_CARGO,
@@ -86,12 +86,8 @@
 		JOB_ID_CARGO_TECHNICIAN,
 		JOB_ID_BARTENDER,
 		JOB_ID_BOTANIST,
-		JOB_ID_CHEF,
-		JOB_ID_JANITOR,
-		JOB_ID_ENTERTAINER,
 		JOB_ID_ASSISTANT,
-		JOB_ID_CLOWN,
-		JOB_ID_MIME,
+		JOB_ID_CHEF,
 		JOB_ID_OFFDUTY_CIVILLIAN,
 		JOB_ID_OFFDUTY_CARGO
 		)
@@ -110,9 +106,6 @@
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
-		JOB_ID_PATHFINDER,
-		JOB_ID_EXPLORER,
-		JOB_ID_FIELD_MEDIC,
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_PARAMEDIC,
 		JOB_ID_PILOT,
@@ -121,10 +114,7 @@
 		JOB_ID_JANITOR,
 		JOB_ID_ENTERTAINER,
 		JOB_ID_ASSISTANT,
-		JOB_ID_CLOWN,
-		JOB_ID_MIME,
 		JOB_ID_OFFDUTY_CIVILLIAN,
-		JOB_ID_OFFDUTY_EXPLORER,
 		JOB_ID_OFFDUTY_MEDBAY,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER,
@@ -147,16 +137,11 @@
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
 		JOB_ID_SHAFT_MINER,
-		JOB_ID_PATHFINDER,
-		JOB_ID_EXPLORER,
 		JOB_ID_BARTENDER,
 		JOB_ID_CHEF,
 		JOB_ID_ENTERTAINER,
-		JOB_ID_CHAPLAIN,
-		JOB_ID_LIBRARIAN,
 		JOB_ID_ASSISTANT,
 		JOB_ID_OFFDUTY_CIVILLIAN,
-		JOB_ID_OFFDUTY_EXPLORER,
 		JOB_ID_OFFDUTY_CARGO
 		)
 
@@ -173,9 +158,13 @@
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
 		JOB_ID_SHAFT_MINER,
+		JOB_ID_ROBOTICIST,
+		JOB_ID_SENIOR_ENGINEER,
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
 		JOB_ID_ASSISTANT,
+		JOB_ID_DETECTIVE,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_CIVILLIAN,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER
@@ -211,15 +200,16 @@
 	contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
 	job_whitelist = list(
 		JOB_ID_FIELD_MEDIC,
+		JOB_ID_HEAD_NURSE,
 		JOB_ID_MEDICAL_DOCTOR,
+		JOB_ID_ROBOTICIST,
 		JOB_ID_PARAMEDIC,
 		JOB_ID_CHEMIST,
 		JOB_ID_PSYCHIATRIST,
-		JOB_ID_PILOT,
 		JOB_ID_ASSISTANT,
 		JOB_ID_OFFDUTY_CIVILLIAN,
-		JOB_ID_OFFDUTY_EXPLORER,
-		JOB_ID_OFFDUTY_MEDBAY
+		JOB_ID_OFFDUTY_MEDBAY,
+		JOB_ID_OFFDUTY_EXPLORER
 		)
 
 /datum/lore/character_background/faction/wardtakahashi
@@ -236,11 +226,10 @@
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
 		JOB_ID_SHAFT_MINER,
+		JOB_ID_SENIOR_ENGINEER,
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
-		JOB_ID_JANITOR,
 		JOB_ID_ASSISTANT,
-		JOB_ID_OFFDUTY_CIVILLIAN,,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER
 		)
@@ -256,7 +245,7 @@
 	constant economic speculation."
 	contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
 	job_whitelist = list(
-		JOB_ID_FIELD_MEDIC,
+		JOB_ID_HEAD_NURSE,
 		JOB_ID_MEDICAL_DOCTOR,
 		JOB_ID_PARAMEDIC,
 		JOB_ID_CHEMIST,
@@ -286,8 +275,10 @@
 		JOB_ID_SHAFT_MINER,
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_ROBOTICIST,
+		JOB_ID_DETECTIVE,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
 	origin_whitelist = list(
@@ -306,15 +297,14 @@
 	across the frontier."
 	contractor_info = "Neutrality of Onkhera Synthetic Solutions and Necropolis Industries has it's benefits, as You often get contracted with various corporations across the frontier. For you, this is just another assignement."
 	job_whitelist = list(
-		JOB_ID_FIELD_MEDIC,
 		JOB_ID_MEDICAL_DOCTOR,
 		JOB_ID_HEAD_NURSE,
 		JOB_ID_PARAMEDIC,
 		JOB_ID_CHEMIST,
 		JOB_ID_ROBOTICIST,
-		JOB_ID_SCIENTIST,
-		JOB_ID_SENIOR_RESEARCHER,
+		JOB_ID_DETECTIVE,
 		JOB_ID_OFFDUTY_MEDBAY,
+		JOB_ID_OFFDUTY_SECURITY,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
 
@@ -342,12 +332,7 @@
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
 		JOB_ID_SHAFT_MINER,
-		JOB_ID_SENIOR_RESEARCHER,
-		JOB_ID_SCIENTIST,
 		JOB_ID_ROBOTICIST,
-		JOB_ID_PATHFINDER,
-		JOB_ID_EXPLORER,
-		JOB_ID_FIELD_MEDIC,
 		JOB_ID_SENIOR_ENGINEER,
 		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
@@ -366,7 +351,6 @@
 		JOB_ID_LIBRARIAN,
 		JOB_ID_ASSISTANT,
 		JOB_ID_OFFDUTY_CIVILLIAN,
-		JOB_ID_OFFDUTY_EXPLORER,
 		JOB_ID_OFFDUTY_MEDBAY,
 		JOB_ID_OFFDUTY_CARGO,
 		JOB_ID_OFFDUTY_ENGINEER,

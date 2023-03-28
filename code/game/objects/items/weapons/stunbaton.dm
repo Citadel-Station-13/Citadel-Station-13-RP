@@ -7,7 +7,7 @@
 	item_state = "baton"
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user as mob)
+/obj/item/melee/baton/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
@@ -109,6 +109,9 @@
 		return ..()
 
 /obj/item/melee/baton/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_external_power)
 		//try to find our power cell
 		var/mob/living/silicon/robot/R = loc
@@ -127,7 +130,7 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack(mob/M, mob/user)
+/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.Weaken(30)
@@ -136,16 +139,19 @@
 	deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(isrobot(target))
+/obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(isrobot(L))
 		return ..()
 
 	var/agony = agonyforce
 	var/stun = stunforce
 	var/obj/item/organ/external/affecting = null
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		affecting = H.get_organ(hit_zone)
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		affecting = H.get_organ(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
 		. = ..()
@@ -154,23 +160,23 @@
 		stun *= 0.5
 	else if(!status)
 		if(affecting)
-			target.visible_message("<span class='warning'>[target] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
 		else
-			target.visible_message("<span class='warning'>[target] has been prodded with [src] by [user]. Luckily it was off.</span>")
+			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
 	else
 		if(affecting)
-			target.visible_message("<span class='danger'>[target] has been prodded in the [affecting.name] with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
 		else
-			target.visible_message("<span class='danger'>[target] has been prodded with [src] by [user]!</span>")
+			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, hit_zone, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+		L.stun_effect_act(stun, agony, target_zone, src)
+		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
+		if(ishuman(L))
+			var/mob/living/carbon/human/H = L
 			H.forcesay(hit_appends)
 	powercheck(hitcost)
 
@@ -190,7 +196,7 @@
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -225,11 +231,11 @@
 		else
 			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
 
-/obj/item/melee/baton/get_description_interaction()
+/obj/item/melee/baton/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(bcell)
-		results += "[desc_panel_image("offhand")]to remove the weapon cell."
+		results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 	else
 		results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
 
@@ -242,7 +248,7 @@
 	desc = "An improvised stun baton with a bluespace crystal attached to the tip."
 	icon_state = "teleprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -250,11 +256,9 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/apply_hit_effect(mob/living/L, mob/living/carbon/user, shoving = FALSE)//handles making things teleport when hit
+/obj/item/melee/baton/cattleprod/teleprod/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!. || L.anchored)
-		return
-	do_teleport(L, get_turf(L), 15)
+	do_teleport(target, get_turf(target), 15)
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -264,15 +268,18 @@
 	description_info = "Hitting a lesser lifeform with this while it is on will compel them to attack you above other nearby targets.  Otherwise \
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
-	force = 10
+	damage_force = 10
 	throw_force = 5
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	..(target, user, hit_zone)
-	if(status && target.has_AI())
-		target.taunt(user)
+/obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	. = ..()
+	if(status && L.has_AI())
+		L.taunt(user)
 
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
@@ -284,13 +291,24 @@
 	icon_state = "stunsword"
 	item_state = "baton"
 
+/obj/item/melee/baton/stunlance
+	name = "stun lance"
+	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	icon_state = "stunlance"
+	w_class = ITEMSIZE_NORMAL
+	reach = 2
+
+/obj/item/melee/baton/stunlance/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 /obj/item/melee/baton/loaded/mini
 	name = "Personal Defense Baton"
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
 	w_class = ITEMSIZE_SMALL
-	force = 5
+	damage_force = 5
 	stunforce = 5
 	throw_force = 2
 	agonyforce = 120	//one-hit
@@ -303,13 +321,15 @@
 		bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/loaded/mini/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/baton/loaded/mini/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	var/mob/living/carbon/human/H
-	if(ishuman(target))
-		H = target
+	if(ishuman(L))
+		H = L
 		if(!status)
-			..(target, user, hit_zone)
-			return
+			return ..()
 	else
 		return
 
@@ -326,7 +346,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	target.stun_effect_act(stunforce, agonyforce, hit_zone, src)
-	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

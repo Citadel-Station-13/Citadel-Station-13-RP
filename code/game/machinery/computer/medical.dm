@@ -18,7 +18,7 @@
 	icon_screen = "medcomp"
 	density = TRUE
 	light_color = "#315ab4"
-	req_one_access = list(access_medical, access_forensics_lockers, access_robotics)
+	req_one_access = list(ACCESS_MEDICAL_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/med_data
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -101,7 +101,7 @@
 /obj/machinery/computer/med_data/attack_ai(user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/med_data/attack_hand(mob/user as mob)
+/obj/machinery/computer/med_data/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

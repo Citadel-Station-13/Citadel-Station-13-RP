@@ -41,7 +41,6 @@
 	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP * 50//default is 200 L we give it 1000 L or 1m³
 
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
-	default_apply_parts()
 	update_icon()
 	var/list/overlays_to_add = list()
 	// TODO - Make these in actual icon states so its not silly like this
@@ -185,7 +184,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)

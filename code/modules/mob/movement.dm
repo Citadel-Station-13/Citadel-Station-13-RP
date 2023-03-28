@@ -49,12 +49,19 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(!mover.density && !mover.throwing)
 		return TRUE
+
+/mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if((buckled?.loc == target) && ismovable(blocker))
+		var/atom/movable/AM = blocker
+		if(AM.pass_flags & ATOM_PASS_BUCKLED)
+			return TRUE
+	return ..()
 
 /**
   * Toggle the move intent of the mob
@@ -73,9 +80,6 @@
 */
 	// nah, vorecode bad.
 	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
-
-#define MOVEMENT_DELAY_BUFFER 0.75
-#define MOVEMENT_DELAY_BUFFER_DELTA 1.25
 
 /**
   * Move a client in a direction
@@ -120,45 +124,51 @@
 	else
 		next_move_dir_add = 0
 		next_move_dir_sub = 0
-	var/old_move_delay = mob.move_delay		// IMPORTANT - mob move cooldown vs client.
-	mob.move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
-	if(!n || !direct)
+	// no tile, or new dir, or mob is transforming
+	if(!n || !direct || mob.transforming) // i'm moving something ahead of that check
 		return FALSE
-	if(mob.transforming)
-		return FALSE	//This is sota the goto stop mobs from moving var
+	// commented out - not needed without momentum preservation
+	// var/old_delay = mob.move_delay
+	// prevent more than one move per tick if we get interrupted from normal movement
+	mob.move_delay = world.time + world.tick_lag
+	// admin control (?)
 	if(mob.control_object)
 		return Move_object(direct)
+	// nonliving get handled differently
 	if(!isliving(mob))
 		return mob.Move(n, direct)
+	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
 		return FALSE
-
+	// don't move if there's a forced movement datum on us
 /*
 	if(mob.force_moving)
 		return FALSE
 */
-
-	var/mob/living/L = mob  //Already checked for isliving earlier
-	if(L.incorporeal_move)	//Move though walls
+	// already istype'd earlier ; cast for checks
+	var/mob/living/L = mob
+	// check for incorpmove aka move through walls
+	if(L.incorporeal_move)
 		Process_Incorpmove(direct)
 		return FALSE
-
+	// todo: proper relaymove system
+	// remote controlling something; relay move to that
 /*
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
 */
-
-	// handle possible Eye movement
+	// we have an eye; relay to that
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
-
+	// ai move specials
 /*
 	if(isAI(mob))
 		return AIMove(n,direct,mob)
 */
-
-// inherited shitcode, tear out when possible
+	//! WARNING: LEGACY CODE START
+	// unzoom
+	// todo: component/element/signal/datum/anything but this
 	if(isliving(mob))
 		if(mob.client)
 			if(mob.client.view != world.view) // If mob moves while zoomed in with device, unzoom them.
@@ -166,53 +176,74 @@
 					if(item.zoom)
 						item.zoom(user = mob)
 						break
-// end
 
+	// restrained by someone's grip
+	// todo: move intercept at mob level
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
+	//! END
 
-	if(mob.buckled)							//if we're buckled to something, tell it we moved.
+	// todo: proper relaymove system
+	// buckled ; relaymove to buckled
+	if(mob.buckled)
 		return mob.buckled.relaymove_from_buckled(mob, direct)
 
+	// todo: mobility refactor & move to mob
+	// mobility check
 	if(!mob.canmove)
 		return
 
-/*	// pending mobility flags
+	// new mobility flags check todo
+/*
 	if(!(L.mobility_flags & MOBILITY_MOVE))
 		return FALSE
 */
 
-	//Relaymove could handle it
+	// todo: proper relaymove handling
+	// machine might process relaymove
 	if(mob.machine)
 		var/result = mob.machine.relaymove(mob, direct)
 		if(result)
 			return result
 
-	if(!isturf(mob.loc))		// inside an object
+	// todo: proper relaymove handling
+	// inside something ; relay to them
+	if(!isturf(mob.loc))
 		var/atom/A = mob.loc
 		return A.relaymove_from_contents(mob, direct)
 
+	// todo: this should probably be on mob or something
+	// check for gravity
 	if(!mob.Process_Spacemove(direct))
 		return FALSE
 
+	//! WARNING: SHITCODE
+	// .... why
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)
+	//! End
 
-	var/move_delay_add_grab = 0
-	var/add_delay = mob.movement_delay(n, direct)
-	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
-		mob.move_delay = old_move_delay
-	else
-		mob.move_delay = world.time
+	//? All exceptions / modifiers handled, proceed to proper movement
 
+	//! SIKE, MORE
 	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+		mob.move_delay = world.time + 5 // 5 ds delay
 		return FALSE
-
 	if(length(mob.pinned))
+		mob.move_delay = world.time + 5 // 5 ds delay
 		to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
 		return FALSE
+	//! End
 
+	//? NOW we try to move.
+
+	// get additional delay from this move
+	var/add_delay = mob.movement_delay()
+	// for grabs (legacy code moment)
+	var/add_delay_grab = 0
+
+	//! WARNING: LEGACY CODE; I don't know how this works and I'm afraid to ask.
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
 		if(istype(mob.loc, /turf/space))
 			return // No wheelchair driving in space
@@ -234,11 +265,13 @@
 						if(prob(25))	direct = turn(direct, pick(90, -90))
 			add_delay += 2
 			return mob.buckled.relaymove(mob,direct)
+	//! oh god I hate this so much todo proper relaymove system for pulling fr fr
 
+	//! WARNING: LEGACY CODE I give up at this point
 	//We are now going to move
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
-		move_delay_add_grab = 7
+		add_delay_grab = 7
 		var/list/grabbed = mob.ret_grab()
 		if(grabbed)
 			if(grabbed.len == 2)
@@ -247,7 +280,7 @@
 				if(M)
 					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
 						var/turf/T = mob.loc
-						. = ..()
+						. = mob.SelfMove(n, direct)
 						if (isturf(M.loc))
 							var/diag = get_dir(mob, M)
 							if ((diag - 1) & diag)
@@ -268,7 +301,6 @@
 						M.other_mobs = null
 						M.animate_movement = 2
 						return
-
 	else
 		if(mob.confused)
 			switch(mob.m_intent)
@@ -281,19 +313,39 @@
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
 		. = mob.SelfMove(n, direct)
+	//! End
+
+	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
 			mob.setDir(GLOB.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
-	// end
+	//! End
 
-	add_delay = max(add_delay, move_delay_add_grab)
+	// take lower of the two
+	add_delay = max(add_delay, add_delay_grab)
 
-	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
+	// moved diagonally; obey euclidean dist
+	if((direct & (direct - 1)) && mob.loc == n)
 		add_delay *= SQRT_2
-	mob.move_delay += add_delay
+
+	// round to tick to prevent lurching instead of preserving momentum
+	mob.move_delay = world.time + round(add_delay, world.tick_lag)
+
+/*
+	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
+	// we need to store how much we're cheated out of our tick and carry it through
+	// make an intelligent guess at if they're trying to keep moving, tho!
+	if(mob.last_move_time > (world.time - add_delay * 1.25))
+		mob.move_delay = old_delay + add_delay
+	else
+		mob.move_delay = world.time + add_delay
+*/
+
+	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
+
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
@@ -485,6 +537,7 @@
 ///Hidden verb to turn east
 /mob/verb/eastface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(EAST)
@@ -494,6 +547,7 @@
 ///Hidden verb to turn west
 /mob/verb/westface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(WEST)
@@ -503,6 +557,7 @@
 ///Hidden verb to turn north
 /mob/verb/northface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
@@ -512,6 +567,7 @@
 ///Hidden verb to turn south
 /mob/verb/southface()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
@@ -521,6 +577,7 @@
 //! Pixel Shifting
 /mob/verb/eastshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_x < 16)
@@ -528,6 +585,7 @@
 
 /mob/verb/westshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_x > -16)
@@ -535,6 +593,7 @@
 
 /mob/verb/northshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_y < 16)
@@ -542,6 +601,7 @@
 
 /mob/verb/southshift()
 	set hidden = TRUE
+	set src = usr
 	if(!canface())
 		return FALSE
 	if(shift_pixel_y > -16)

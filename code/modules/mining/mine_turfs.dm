@@ -152,6 +152,7 @@
 	opacity = FALSE
 	recalc_atom_opacity()
 	reconsider_lights()
+	regenerate_ao()
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
@@ -166,6 +167,7 @@
 	opacity = TRUE
 	recalc_atom_opacity()
 	reconsider_lights()
+	regenerate_ao()
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
@@ -203,10 +205,10 @@
 
 /turf/simulated/mineral/custom_smooth(dirs)
 	smoothing_junction = dirs
-	update_icon()
+	update_appearance()
 
-/turf/simulated/mineral/update_icon()
-	cut_overlays()
+/turf/simulated/mineral/update_appearance(updates)
+	. = ..()
 
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
@@ -219,57 +221,50 @@
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
 
-		if(!(smoothing_junction & NORTH_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
-		if(!(smoothing_junction & SOUTH_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
-		if(!(smoothing_junction & EAST_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
-		if(!(smoothing_junction & WEST_JUNCTION))
-			add_overlay(get_cached_rock_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
-
-		if(archaeo_overlay)
-			add_overlay(archaeo_overlay)
-		if(excav_overlay)
-			add_overlay(excav_overlay)
-
 	//We are a sand floor
 	else
 		name = "sand"
 		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
+/turf/simulated/mineral/update_overlays()
+	. = ..()
+
+	//We are a wall (why does this system work like this??)
+	// todo: refactor this shitheap because this is pants on fucking head awful
+	if(density)
+
+		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
+		var/mutable_appearance/appearance
+		if(!(smoothing_junction & NORTH_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = EDGE_LAYER)
+			appearance.pixel_y = 32
+			. += appearance
+		if(!(smoothing_junction & SOUTH_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = EDGE_LAYER)
+			appearance.pixel_y = -32
+			. += appearance
+		if(!(smoothing_junction & WEST_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = EDGE_LAYER)
+			appearance.pixel_x = -32
+			. += appearance
+		if(!(smoothing_junction & EAST_JUNCTION))
+			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
+			appearance.pixel_x = 32
+			. += appearance
+
+		if(archaeo_overlay)
+			. += mutable_appearance(icon, archaeo_overlay)
+		if(excav_overlay)
+			. += mutable_appearance(icon, excav_overlay)
+
+	//We are a sand floor
+	else
 		if(sand_dug)
-			add_overlay("dug_overlay")
+			. += mutable_appearance(icon, "dug_overlay")
 		if(overlay_detail)
-			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
+			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
 
-	// ..() has to be last to prevent trampling managed overlays
-	return ..()
-
-GLOBAL_LIST_EMPTY(mining_overlay_cache)
-
-/proc/get_cached_rock_border(cache_id, direction, icon_file, icon_state)
-	cache_id = "[cache_id]_[direction]"
-	//Cache miss
-	if(!GLOB.mining_overlay_cache[cache_id])
-		var/image/new_cached_image = image(icon_file, icon_state, dir = direction, layer = ABOVE_TURF_LAYER)
-		switch(direction)
-			if(NORTH)
-				new_cached_image.pixel_y = 32
-			if(SOUTH)
-				new_cached_image.pixel_y = -32
-			if(EAST)
-				new_cached_image.pixel_x = 32
-			if(WEST)
-				new_cached_image.pixel_x = -32
-		GLOB.mining_overlay_cache[cache_id] = new_cached_image
-		return new_cached_image
-
-	//Cache hit
-	return GLOB.mining_overlay_cache[cache_id]
-
-/* smoothing end */
 
 /turf/simulated/mineral/legacy_ex_act(severity)
 
@@ -291,12 +286,13 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 					new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
 	. = ..()
 	if(Proj.excavation_amount)
 		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
 			GetDrilled(0)
+			return
 
 		//destroy any archaeological finds
 		if(finds && finds.len)
@@ -623,7 +619,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 		add_overlay(excav_overlay)
 
 	if(updateIcon)
-		update_icon()
+		update_appearance()
 
 /turf/simulated/mineral/proc/clear_ore_effects()
 	for(var/obj/effect/mineral/M in contents)

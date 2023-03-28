@@ -5,26 +5,32 @@
 
 // Define what criteria makes a turf a path or not
 
-// Turfs that will be colored as HOLOMAP_ROCK
-#define IS_ROCK(tile) (istype(tile, /turf/simulated/mineral) && tile.density)
+/datum/controller/subsystem/holomaps
+	var/list/rock_tcache
+	var/list/obstacle_tcache
+	var/list/path_tcache
+	var/list/space_tcache
+	var/list/unexplored_tcache
 
-// Turfs that will be colored as HOLOMAP_OBSTACLE
-#define IS_OBSTACLE(tile) ((!istype(tile, /turf/space) && istype(tile.loc, /area/mine/unexplored)) \
-					|| istype(tile, /turf/simulated/wall) \
-					|| istype(tile, /turf/unsimulated/mineral) \
-					|| (istype(tile, /turf/unsimulated/wall) && !istype(tile, /turf/unsimulated/wall/planetary)) \
-					/*|| istype(tile, /turf/simulated/shuttle/wall)*/ \
-					|| (locate(/obj/structure/grille) in tile) \
-					/*|| (locate(/obj/structure/window/full) in tile)*/)
-
-// Turfs that will be colored as HOLOMAP_PATH
-#define IS_PATH(tile) ((istype(tile, /turf/simulated/floor) && !istype(tile, /turf/simulated/floor/outdoors)) \
-					|| istype(tile, /turf/unsimulated/floor) \
-					/*|| istype(tile, /turf/simulated/shuttle/floor)*/ \
-					|| (locate(/obj/structure/catwalk) in tile))
+/datum/controller/subsystem/holomaps/proc/setup_tcaches()
+	rock_tcache = typecacheof(/turf/simulated/mineral)
+	obstacle_tcache = typecacheof(list(
+		/turf/simulated/wall,
+		/turf/unsimulated/mineral,
+		/turf/unsimulated/wall
+	)) - typecacheof(/turf/unsimulated/wall/planetary)
+	path_tcache = typecacheof(list(
+		/turf/simulated/floor,
+		/turf/unsimulated/floor
+	)) - typecacheof(/turf/simulated/floor/outdoors)
+	space_tcache = typecacheof(/turf/space)
+	unexplored_tcache = typecacheof(/area/mine/unexplored)
 
 /// Generates all the holo minimaps, initializing it all nicely, probably.
 /datum/controller/subsystem/holomaps/proc/generateHoloMinimaps()
+	if (!rock_tcache)
+		setup_tcaches()
+
 	// Build the base map for each z level
 	for (var/z = 1 to world.maxz)
 		holoMiniMaps |= z // hack, todo fix
@@ -53,22 +59,30 @@
 	// Sanity checks - Better to generate a helpful error message now than have DrawBox() runtime
 	var/icon/canvas = icon(HOLOMAP_ICON, "blank")
 	if(world.maxx + offset_x > canvas.Width())
-		stack_trace("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
+		CRASH("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
 	if(world.maxy + offset_y > canvas.Height())
-		stack_trace("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
+		CRASH("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
 
-	for(var/x = 1 to world.maxx)
-		for(var/y = 1 to world.maxy)
-			var/turf/tile = locate(x, y, zLevel)
-			if(tile && tile.loc:holomapAlwaysDraw())
-				if(IS_ROCK(tile))
-					canvas.DrawBox(HOLOMAP_ROCK, x + offset_x, y + offset_y)
-				if(IS_OBSTACLE(tile))
-					canvas.DrawBox(HOLOMAP_OBSTACLE, x + offset_x, y + offset_y)
-				else if(IS_PATH(tile))
-					canvas.DrawBox(HOLOMAP_PATH, x + offset_x, y + offset_y)
-		// Check sleeping after each row to avoid *completely* destroying the server
+	var/turf/T
+	var/area/A
+	var/Ttype
+	for (var/thing in Z_ALL_TURFS(zLevel))
+		T = thing
+		A = T.loc
+		Ttype = T.type
+
+		if (istype(A, /area/shuttle))
+			continue
+
+		if (rock_tcache[Ttype] && T.density)
+			continue
+		if (obstacle_tcache[Ttype] || (!space_tcache[Ttype] && unexplored_tcache[A.type]) || (T.contents.len && locate(/obj/structure/grille, T)))
+			canvas.DrawBox(HOLOMAP_OBSTACLE, T.x + offset_x, T.y + offset_y)
+		else if(path_tcache[Ttype] || (T.contents.len && locate(/obj/structure/catwalk, T)))
+			canvas.DrawBox(HOLOMAP_PATH, T.x + offset_x, T.y + offset_y)
+
 		CHECK_TICK
+
 	return canvas
 
 // Okay, what does this one do?
@@ -83,17 +97,17 @@
 	// Sanity checks - Better to generate a helpful error message now than have DrawBox() runtime
 	var/icon/canvas = icon(HOLOMAP_ICON, "blank")
 	if(world.maxx + offset_x > canvas.Width())
-		stack_trace("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
+		CRASH("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
 	if(world.maxy + offset_y > canvas.Height())
-		stack_trace("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
+		CRASH("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
 
-	for(var/x = 1 to world.maxx)
-		for(var/y = 1 to world.maxy)
-			var/turf/tile = locate(x, y, zLevel)
-			if(tile && tile.loc)
-				var/area/areaToPaint = tile.loc
-				if(areaToPaint.holomap_color)
-					canvas.DrawBox(areaToPaint.holomap_color, x + offset_x, y + offset_y)
+	var/turf/T
+	var/area/A
+	for (var/thing in Z_ALL_TURFS(zLevel))
+		T = thing
+		A = T.loc
+		if (A.holomap_color)
+			canvas.DrawBox(A.holomap_color, T.x + offset_x, T.y + offset_y)
 
 	// Save this nice area-colored canvas in case we want to layer it or something I guess
 	extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPAREAS]_[zLevel]"] = canvas
@@ -169,7 +183,3 @@
 // 	var/filter
 // 	var/icon = 'icons/holomap_markers.dmi'
 // 	var/icon_state
-
-#undef IS_ROCK
-#undef IS_OBSTACLE
-#undef IS_PATH

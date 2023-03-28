@@ -90,7 +90,7 @@
 	qdel(src)
 	return 50000
 
-/obj/item/projectile/beam/emitter/singularity_pull()
+/obj/projectile/beam/emitter/singularity_pull()
 	return
 
 /obj/effect/projectile/emitter/singularity_pull()
@@ -109,7 +109,7 @@
 	if(flooring && current_size >= STAGE_THREE)
 		if(prob(current_size / 2))
 			var/leave_tile = TRUE
-			if(broken || burnt || flooring.flags & TURF_IS_FRAGILE)
+			if(broken || burnt || flooring.flooring_flags & TURF_IS_FRAGILE)
 				leave_tile = FALSE
 			playsound(src, 'sound/items/crowbar.ogg', 50, 1)
 			make_plating(leave_tile)

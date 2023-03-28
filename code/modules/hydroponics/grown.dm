@@ -58,7 +58,7 @@
 	if(reagents.total_volume > 0)
 		bitesize = 1+round(reagents.total_volume / 2, 1)
 	if(seed.get_trait(TRAIT_STINGS))
-		force = 1
+		damage_force = 1
 	catalogue_data = seed.catalog_data_grown
 
 /obj/item/reagent_containers/food/snacks/grown/update_desc()
@@ -240,14 +240,16 @@
 					return
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	if(seed && seed.get_trait(TRAIT_STINGS))
 		if(!reagents || reagents.total_volume <= 0)
 			return
 		reagents.remove_any(rand(1,3))
-		seed.thrown_at(src, target)
+		seed.thrown_at(src, L)
 		sleep(-1)
 		if(!src)
 			return
@@ -256,7 +258,10 @@
 				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!seed)
 		return

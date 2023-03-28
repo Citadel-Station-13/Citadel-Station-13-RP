@@ -35,7 +35,10 @@
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self()
+/obj/item/survivalcapsule/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
@@ -167,8 +170,8 @@
 
 /obj/structure/table/survival_pod/Initialize(mapload)
 	material = get_material_by_name(MAT_STEEL)
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
 /obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
@@ -210,7 +213,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user, list/params)
 	attack_self(user)
 
 //Bed

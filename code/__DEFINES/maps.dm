@@ -25,7 +25,7 @@ The /tg/ codebase allows mixing of hardcoded and dynamically-loaded z-levels.
 Z-levels can be reordered as desired and their properties are set by "traits".
 See map_config.dm for how a particular station's traits may be chosen.
 The list DEFAULT_MAP_TRAITS at the bottom of this file should correspond to
-the maps that are hardcoded, as set in _maps/_basemap.dm. SSmapping is
+the maps that are hardcoded, as set in _mapload/_basemap.dm. SSmapping is
 responsible for loading every non-hardcoded z-level.
 
 As of 2018-02-04, the typical z-levels for a single-level station are:
@@ -46,7 +46,7 @@ require only minor tweaks.
 // helpers for modifying jobs, used in various job_changes.dm files
 #define MAP_JOB_CHECK if(SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) { return; }
 #define MAP_JOB_CHECK_BASE if(SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) { return ..(); }
-#define MAP_REMOVE_JOB(jobpath) /datum/job/##jobpath/map_check() { return (SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) && ..() }
+#define MAP_REMOVE_JOB(jobpath) /datum/role/job/##jobpath/map_check() { return (SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) && ..() }
 
 #define SPACERUIN_MAP_EDGE_PAD 15
 

@@ -12,7 +12,8 @@ var/list/marker_beacon_colors = list(
 "Indigo" = LIGHT_COLOR_DARK_BLUE,
 "Purple" = LIGHT_COLOR_PURPLE,
 "Violet" = LIGHT_COLOR_LAVENDER,
-"Fuchsia" = LIGHT_COLOR_PINK
+"Fuchsia" = LIGHT_COLOR_PINK,
+"Green" = LIGHT_COLOR_GREEN,
 )
 
 /obj/item/stack/marker_beacon
@@ -50,6 +51,9 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
 
 /obj/item/stack/marker_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isturf(user.loc))
 		to_chat(user, "<span class='warning'>You need more space to place a [singular_name] here.</span>")
 		return
@@ -102,7 +106,7 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])
 
-/obj/structure/marker_beacon/attack_hand(mob/living/user)
+/obj/structure/marker_beacon/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You start picking [src] up...</span>")
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)
@@ -151,8 +155,6 @@ var/list/marker_beacon_colors = list(
 	picked_color = "Yellow"
 
 /obj/structure/marker_beacon/yellow/update_icon()
-	while(!picked_color || !marker_beacon_colors[picked_color])
-		picked_color = "Yellow"
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])
 
@@ -160,7 +162,5 @@ var/list/marker_beacon_colors = list(
 	picked_color = "Green"
 
 /obj/structure/marker_beacon/green/update_icon()
-	while(!picked_color || !marker_beacon_colors[picked_color])
-		picked_color = "Green"
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])

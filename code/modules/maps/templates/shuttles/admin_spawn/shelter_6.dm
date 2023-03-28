@@ -18,7 +18,7 @@
 /obj/machinery/computer/shuttle_control/explore/tabiranth
 	name = "short jump console"
 	shuttle_tag = "NDV Tabiranth"
-	req_one_access = list(access_cent_general)
+	req_one_access = list(ACCESS_CENTCOM_GENERAL)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth

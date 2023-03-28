@@ -42,6 +42,9 @@
 	return ..()
 
 /obj/item/sleevecard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 
 	if(!infomorph)
@@ -85,8 +88,7 @@
 
 /obj/item/sleevecard/proc/setEmotion(emotion)
 	if(infomorph && emotion)
-		cut_overlays()
-		add_overlay(emotion)
+		set_overlays(emotion)
 		current_emotion = emotion
 
 /obj/item/sleevecard/emp_act(severity)

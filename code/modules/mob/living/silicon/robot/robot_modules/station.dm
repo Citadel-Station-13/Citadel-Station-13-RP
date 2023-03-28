@@ -10,15 +10,15 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
 //	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
-	"Quadruped"		= /obj/item/robot_module/robot/quad_basic,
-	"MediQuad"		= /obj/item/robot_module/robot/quad_medi,
-	"SecuriQuad"	= /obj/item/robot_module/robot/quad_sec,
-	"JaniQuad"		= /obj/item/robot_module/robot/quad_jani,
-	"SciQuad"		= /obj/item/robot_module/robot/quad_sci,
-	"EngiQuad"		= /obj/item/robot_module/robot/quad_engi,
-	"Mining Quad"	= /obj/item/robot_module/robot/quad_miner,
-	"Service Quad"	= /obj/item/robot_module/robot/clerical/quad_serv,
-	"ERT"			= /obj/item/robot_module/robot/ert
+	"Quadruped"		= /obj/item/robot_module/robot/quad/basic,
+	"MediQuad"		= /obj/item/robot_module/robot/quad/medi,
+	"SecuriQuad"	= /obj/item/robot_module/robot/quad/sec,
+	"JaniQuad"		= /obj/item/robot_module/robot/quad/jani,
+	"SciQuad"		= /obj/item/robot_module/robot/quad/sci,
+	"EngiQuad"		= /obj/item/robot_module/robot/quad/engi,
+	"Mining Quad"	= /obj/item/robot_module/robot/quad/miner,
+	"Service Quad"	= /obj/item/robot_module/robot/quad/serv,
+	"ERT"			= /obj/item/robot_module/robot/quad/ert
 	))
 
 /obj/item/robot_module
@@ -33,6 +33,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
+	/// Affects emotes.
+	var/is_the_law = FALSE
+	/// Enables a verb.
+	var/can_shred = FALSE
 
 	var/languages = list(
 		LANGUAGE_AKHANI = 0,
@@ -56,6 +60,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 	var/list/modules = list()
 	var/list/datum/matter_synth/synths = list()
+	var/list/synths_by_kind = list()
 	var/obj/item/emag = null
 	var/obj/item/borg/upgrade/jetpack = null
 	var/obj/item/borg/upgrade/advhealth = null
@@ -81,9 +86,23 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
+	handle_custom_item(R)
+
 	R.set_module_sprites(sprites)
+
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
+
+	// Setup synths, modules, and modules with custom init code.
+	synths_by_kind = get_synths(R)
+	for (var/key in synths_by_kind)
+		synths += synths_by_kind[key]
+
+	for (var/entry in get_modules())
+		modules += new entry(src)
+
+	for (var/thing in handle_special_module_init(R))
+		modules += thing
 
 	for(var/obj/item/I in modules)
 		ADD_TRAIT(I, TRAIT_ITEM_NODROP, CYBORG_MODULE_TRAIT)
@@ -96,7 +115,23 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 	if(R.radio)
 		R.radio.recalculateChannels()
-	R.choose_icon(0, R.set_module_sprites(list("Default" = "robot")))
+
+/// Get a list of all matter synths available to this module. Executes before handle_special_module_init.
+/obj/item/robot_module/proc/get_synths(mob/living/silicon/robot/R)
+	. = list()
+
+/// Get a list of typepaths that should be put into the modules list.
+/obj/item/robot_module/proc/get_modules()
+	SHOULD_CALL_PARENT(TRUE)
+	return list()
+
+// This is for modules that need special handling, not just being added to the modules list.
+/obj/item/robot_module/proc/handle_special_module_init(mob/living/silicon/robot/R)
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
+
+/obj/item/robot_module/proc/handle_custom_item(mob/living/silicon/robot/R)
+	return
 
 /obj/item/robot_module/Destroy()
 	for(var/module in modules)
@@ -105,6 +140,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		qdel(synth)
 	modules.Cut()
 	synths.Cut()
+	synths_by_kind = null
 	qdel(emag)
 	qdel(jetpack)
 	emag = null
@@ -168,10 +204,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	added_networks.Cut()
 
 /obj/item/robot_module/proc/add_subsystems(var/mob/living/silicon/robot/R)
-	R.verbs |= subsystems
+	add_verb(R, subsystems)
 
 /obj/item/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
-	R.verbs -= subsystems
+	remove_verb(R, subsystems)
 
 /obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
@@ -181,23 +217,95 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
 
-// Cyborgs (non-drones), default loadout. This will be given to every module.
-/obj/item/robot_module/robot/Initialize(mapload)
+/// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
+/obj/item/robot_module/proc/is_dog()
+	return FALSE
+
+/obj/item/robot_module/robot/get_modules()
 	. = ..()
-	src.modules += new /obj/item/flash/robot(src)
-	src.modules += new /obj/item/tool/crowbar/cyborg(src)
-	src.modules += new /obj/item/extinguisher(src)
-	src.modules += new /obj/item/gps/robot(src)
-	vr_new() // For modules in robot_modules_vr.dm //TODO: Integrate
+	// Common items that all modules have.
+	. |= list(
+		/obj/item/flash/robot,
+		/obj/item/tool/crowbar/cyborg,
+		/obj/item/extinguisher,
+		/obj/item/gps/robot
+	)
 
-//Just add a new proc with the robot_module type if you wish to run some other vore code
-/obj/item/robot_module/proc/vr_new() // Any Global modules, just add them before the return (This will also affect all the borgs in this file)
-	return
+/obj/item/robot_module/robot/quad
 
-// /obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
-// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
-// 	. = ..() //Any Global vore modules will come from here
+/obj/item/robot_module/robot/quad/Initialize()
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
+	ASSERT(istype(R))
 
-// /obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
-// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
-// 	. = ..() //Any Global vore modules will come from here
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
+	R.dogborg = TRUE
+	R.wideborg = TRUE
+	R.icon_dimension_x = 64
+	add_verb(R, list(
+		/mob/living/silicon/robot/proc/ex_reserve_refill,
+		/mob/living/silicon/robot/proc/rest_style
+	))
+	if (can_shred)
+		add_verb(R, /mob/living/proc/shred_limb)
+
+/obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
+	. = ..()
+	// Reset a bunch of wideborg specific things.
+	R.pixel_x = initial(R.pixel_x)
+	R.pixel_y = initial(R.pixel_y)
+	R.icon = initial(R.icon)
+	R.base_pixel_x = initial(R.pixel_x)
+	remove_verb(R, list(
+		/mob/living/silicon/robot/proc/ex_reserve_refill,
+		/mob/living/proc/shred_limb,
+		/mob/living/silicon/robot/proc/rest_style
+	))
+	R.scrubbing = FALSE
+	R.dogborg = FALSE
+	R.wideborg = FALSE
+
+/obj/item/robot_module/robot/quad/get_modules()
+	. = ..()
+	. |= list(
+		/obj/item/dogborg/boop_module //Boop people on the nose.
+	)
+
+/obj/item/robot_module/robot/quad/get_synths(mob/living/silicon/robot/R)
+	. = ..()
+	var/datum/matter_synth/water = new /datum/matter_synth(500)
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	R.water_res = water
+	.[MATSYN_WATER] = water
+
+/obj/item/robot_module/robot/quad/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
+
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
+	T.water = synths_by_kind[MATSYN_WATER]
+	. += T
+
+/obj/item/robot_module/robot/quad/is_dog()
+	var/mob/living/silicon/robot/R = loc
+	ASSERT(istype(R))
+	// This is the only non-canid dogborg type right now.
+	return R.icontype != "F3-LINE"
+
+// Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
+
+/obj/item/robot_module/robot/quad/engi/handle_custom_item(mob/living/silicon/robot/R)
+	. = ..()
+	if (R.client?.ckey == "nezuli")
+		sprites["Alina"] = "alina-eng"
+
+/obj/item/robot_module/robot/quad/medi/handle_custom_item(mob/living/silicon/robot/R)
+	. = ..()
+	if (R.client?.ckey == "nezuli")
+		sprites["Alina"] = "alina-med"
+
+/obj/item/robot_module/robot/quad/sec/handle_custom_item(mob/living/silicon/robot/R)
+	. = ..()
+	if (R.client?.ckey == "nezuli")
+		sprites["Alina"] = "alina-sec"

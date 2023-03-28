@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		return
 	else if (W)
 		src.add_fingerprint(user)
-		src.health -= W.force
+		src.health -= W.damage_force
 		src.healthcheck()
 	..()
 
@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/tracker = 0
 	var/glass_type = null
 
-/obj/item/solar_assembly/attack_hand(var/mob/user)
+/obj/item/solar_assembly/attack_hand(mob/user, list/params)
 	if(!anchored || !isturf(loc)) // You can't pick it up
 		..()
 
@@ -397,7 +397,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user)
+/obj/machinery/power/solar_control/attack_hand(mob/user, list/params)
 	if(!..())
 		interact(user)
 

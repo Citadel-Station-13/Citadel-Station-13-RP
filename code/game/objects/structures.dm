@@ -1,6 +1,7 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
+	pass_flags = ATOM_PASS_BUCKLED
 
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
@@ -16,7 +17,7 @@
 	. = ..()
 
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 
 	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)
@@ -34,7 +35,7 @@
 
 	return ..()
 
-/obj/structure/attack_hand(mob/user)
+/obj/structure/attack_hand(mob/user, list/params)
 	if(breakable)
 		if(MUTATION_HULK in user.mutations)
 			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
@@ -109,6 +110,7 @@
 			return O
 	return 0
 
+// todo: climbable obj-level (to avoid element/signal spam)
 /obj/structure/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
 		return
@@ -124,7 +126,10 @@
 		climbers -= user
 		return
 
-	usr.forceMove(get_turf(src))
+	var/old = pass_flags & (ATOM_PASS_BUCKLED)
+	pass_flags |= ATOM_PASS_BUCKLED
+	usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
+	pass_flags = (pass_flags & ~(ATOM_PASS_BUCKLED)) | (old & ATOM_PASS_BUCKLED)
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")

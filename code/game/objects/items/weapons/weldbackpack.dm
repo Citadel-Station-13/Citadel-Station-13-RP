@@ -84,7 +84,7 @@
 		to_chat(user,"<span class='warning'>The tank scoffs at your insolence. It only provides services to welders.</span>")
 	return
 
-/obj/item/weldpack/attack_hand(mob/user as mob)
+/obj/item/weldpack/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/wearer = user
 		if(wearer.back == src)

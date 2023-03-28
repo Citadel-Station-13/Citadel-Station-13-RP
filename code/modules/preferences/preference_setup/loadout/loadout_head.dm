@@ -17,6 +17,10 @@
 	name = "Beret - Red"
 	path = /obj/item/clothing/head/beret
 
+/datum/gear/head/beret/med
+	name = "Beret - Medical"
+	path = /obj/item/clothing/head/beret/medical
+
 /datum/gear/head/cap
 	name = "Cap - Black"
 	path = /obj/item/clothing/head/soft/black
@@ -381,3 +385,7 @@
 /datum/gear/head/half_pint
 	name = "Half-Pint Headband"
 	path = /obj/item/clothing/head/half_pint
+
+/datum/gear/head/bard
+	name = "Audacious Wide Brimmed Hat"
+	path = /obj/item/clothing/head/bard

@@ -1,9 +1,15 @@
-/datum/job/station/chief_medical_officer
+/datum/role/job/station/chief_medical_officer
 	id = JOB_ID_CHIEF_MEDICAL_OFFICER
 	title = "Chief Medical Officer"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CMO
-	departments_managed = list(DEPARTMENT_MEDICAL)
-	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_COMMAND)
+	departments_managed = list(
+		DEPARTMENT_MEDICAL,
+	)
+	departments = list(
+		DEPARTMENT_MEDICAL,
+		DEPARTMENT_COMMAND,
+	)
 	sorting_order = 2
 	department_flag = MEDSCI
 	pto_type = PTO_MEDICAL
@@ -14,13 +20,26 @@
 	selection_color = "#026865"
 	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
-	economic_modifier = 10
-	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+
+	minimal_access = list(
+		ACCESS_COMMAND_ANNOUNCE,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_MEDICAL_CMO,
+		ACCESS_MEDICAL_EDIT,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_MEDICAL_PSYCH,
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_VIROLOGY,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SCIENCE_GENETICS,
+	)
 
 	minimum_character_age = 25
 	minimal_player_age = 10
@@ -32,18 +51,18 @@
 						transported to Medical for treatment. They are expected to keep the crew informed about threats to their health and safety, and \
 						about the importance of Suit Sensors."
 	alt_titles = list (
-		"Chief Physician" = /datum/alt_title/cmo/physician,
-		"Director of Medicine" = /datum/alt_title/cmo/director,
-		"Chief Surgeon" = /datum/alt_title/cmo/surgeon
+		"Chief Physician" = /datum/prototype/alt_title/cmo/physician,
+		"Director of Medicine" = /datum/prototype/alt_title/cmo/director,
+		"Chief Surgeon" = /datum/prototype/alt_title/cmo/surgeon
 	)
 
-/datum/alt_title/cmo/physician
+/datum/prototype/alt_title/cmo/physician
 	title = "Chief Physician"
 
-/datum/alt_title/cmo/director
+/datum/prototype/alt_title/cmo/director
 	title = "Director of Medicine"
 
-/datum/alt_title/cmo/surgeon
+/datum/prototype/alt_title/cmo/surgeon
 	title = "Chief Surgeon"
 
 /datum/outfit/job/station/chief_medical_officer

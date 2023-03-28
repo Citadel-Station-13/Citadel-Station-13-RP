@@ -75,7 +75,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	QDEL_NULL(proxy_view)
 	return ..()
 
-/datum/color_matrix_editor/ui_state(mob/user)
+/datum/color_matrix_editor/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
 /datum/color_matrix_editor/ui_static_data(mob/user)
@@ -96,7 +96,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		ui = new(user, src, "ColorMatrixEditor")
 		ui.open()
 
-/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 			on_confirm()
 			SStgui.close_uis(src)
 
-/datum/color_matrix_editor/ui_close(mob/user)
+/datum/color_matrix_editor/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 

@@ -1,7 +1,8 @@
 /datum/species/apidaen
+	uid = SPECIES_ID_APIDAEN
+	id = SPECIES_ID_APIDAEN
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
-	uid = SPECIES_ID_APIDAEN
 
 	icobase      = 'icons/mob/species/apidaen/body.dmi'
 	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
@@ -140,8 +141,8 @@
 		var/selection = input(src, "Choose your character's nectar. Choosing nothing will result in a default of honey.", "Nectar Type", honey_stomach.nectar_type) as null|anything in acceptable_nectar_types
 		if(selection)
 			honey_stomach.nectar_type = selection
-		verbs |= /mob/living/carbon/human/proc/nectar_pick
-		verbs -= /mob/living/carbon/human/proc/nectar_select
+		add_verb(src, /mob/living/carbon/human/proc/nectar_pick)
+		remove_verb(src, /mob/living/carbon/human/proc/nectar_select)
 		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.owner]!", "nectar from [honey_stomach.owner]!")
 
 	else

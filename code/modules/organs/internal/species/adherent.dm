@@ -38,6 +38,9 @@
 /obj/item/organ/internal/powered/attack_self(mob/user)
 	. = ..()
 	if(.)
+		return
+	. = ..()
+	if(.)
 		playsound(user, sound('sound/effects/ding.ogg'))
 		if(is_broken())
 			to_chat(owner, SPAN_WARNING("\The [src] [gender == PLURAL ? "are" : "is"] too damaged to function."))
@@ -63,7 +66,7 @@
 
 /obj/item/organ/internal/powered/jets/Initialize(mapload)
 	. = ..()
-	//verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
+	//add_obj_verb(src, /obj/item/organ/internal/powered/jets/proc/activatej)
 
 /obj/item/organ/internal/powered/jets/ui_action_click()
 	activatej()
@@ -104,8 +107,8 @@
 
 /obj/item/organ/internal/powered/float/Initialize(mapload)
 	. = ..()
-	//verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
-	verbs |= /obj/item/organ/internal/powered/float/proc/hover
+	//add_obj_verb(src, /obj/item/organ/internal/powered/float/proc/flying_toggle)
+	add_obj_verb(src, /obj/item/organ/internal/powered/float/proc/hover)
 
 /obj/item/organ/internal/powered/float/ui_action_click()
 	hover()
@@ -121,7 +124,7 @@
 
 /obj/item/organ/internal/eyes/adherent/Initialize(mapload)
 	. = ..()
-	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color
+	add_obj_verb(src, /obj/item/organ/internal/eyes/proc/change_eye_color)
 
 
 /obj/item/organ/internal/cell/adherent
@@ -151,7 +154,7 @@
 
 /obj/item/organ/internal/powered/cooling_fins/Initialize(mapload)
 	. = ..()
-	verbs |= /obj/item/organ/internal/powered/cooling_fins/proc/activatecf
+	add_obj_verb(src, /obj/item/organ/internal/powered/cooling_fins/proc/activatecf)
 
 /obj/item/organ/internal/powered/cooling_fins/ui_action_click()
 	activatecf()

@@ -127,7 +127,7 @@ log transactions
 	else
 		..()
 
-/obj/machinery/atm/attack_hand(mob/user as mob)
+/obj/machinery/atm/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/silicon))
 		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 		return

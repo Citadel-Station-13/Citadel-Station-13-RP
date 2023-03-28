@@ -1,5 +1,17 @@
 // Small creatures that will embed themselves in unsuspecting victim's bodies, drink their blood, and/or eat their organs. Steals some things from borers.
 
+/datum/armor/physiology/sif_leach
+	melee = 0.1
+	melee_soak = 5
+	bullet = 0.15
+	bullet_soak = 5
+	laser = -0.1
+	energy = 0
+	bomb = 0.1
+	bio = 1.0
+	rad = 1.0
+
+
 /datum/category_item/catalogue/fauna/iceleech
 	name = "Sivian Fauna - River Leech"
 	desc = "Classification: S Hirudinea phorus \
@@ -70,26 +82,7 @@
 	attack_sharp = TRUE
 	attacktext = list("nipped", "bit", "pinched")
 
-	armor = list(
-		"melee" = 10,
-		"bullet" = 15,
-		"laser" = -10,
-		"energy" = 0,
-		"bomb" = 10,
-		"bio" = 100,
-		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 5,
-		"bullet" = 5,
-		"laser" = 0,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
-		)
-
+	armor_type = /datum/armor/physiology/sif_leach
 	say_list_type = /datum/say_list/leech
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/leech
 
@@ -118,18 +111,14 @@
 /mob/living/simple_mob/animal/sif/leech/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
-/mob/living/simple_mob/animal/sif/leech/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Chemicals", chemicals)
+/mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_ENTRY("Chemicals", chemicals)
 
 /mob/living/simple_mob/animal/sif/leech/do_special_attack(atom/A)
 	. = TRUE
@@ -280,7 +269,7 @@
 
 		var/list/covering_clothing = E.get_covering_clothing()
 		for(var/obj/item/clothing/C in covering_clothing)
-			if(C.armor["melee"] >= 20 + attack_armor_pen)
+			if(C.fetch_armor().raw(ARMOR_MELEE) * 100 >= 20 + attack_armor_pen + attack_armor_pen)
 				to_chat(user, SPAN_NOTICE("We cannot get through that host's protective gear."))
 				return
 
@@ -384,7 +373,7 @@
 
 	var/list/covering_clothing = E.get_covering_clothing()
 	for(var/obj/item/clothing/C in covering_clothing)
-		if(C.armor["melee"] >= 40 + attack_armor_pen)
+		if(C.fetch_armor().raw(ARMOR_MELEE) * 100 >= 40 + attack_armor_pen)
 			to_chat(user, SPAN_NOTICE("You cannot get through that host's protective gear."))
 			return
 

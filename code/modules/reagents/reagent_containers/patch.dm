@@ -5,7 +5,7 @@
 
 /obj/item/reagent_containers/pill/patch
 	name = "patch"
-	desc = "A patch."
+	desc = "A thin, sticky patch, capable of suffusing chemicals through the skin."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	base_icon_state = "patch"
@@ -40,12 +40,12 @@
 */
 //! End ofNon-implemented Subtypes
 
-/obj/item/reagent_containers/pill/patch/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_containers/pill/patch/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = user
 
-	if(M == L)
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
+	if(target == L)
+		if(istype(target, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = target
 			var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
 			if(!affecting)
 				to_chat(user, SPAN_WARNING("The limb is missing!"))
@@ -64,12 +64,12 @@
 
 
 			to_chat(H, SPAN_NOTICE("\The [src] is placed on your [affecting]."))
-			M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+			target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 			if(reagents.total_volume)
-				reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
+				reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
 
-			for(var/datum/wound/W in affecting.wounds)
+			for(var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)//ignore internal wounds and check the remaining
 					continue
 				if(W.bandaged)//already bandaged wounds dont need to be bandaged again
@@ -79,8 +79,8 @@
 			affecting.update_damages()
 			return TRUE
 
-	else if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
+	else if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
 		if(!affecting)
 			to_chat(user, SPAN_WARNING("The limb is missing!"))
@@ -100,7 +100,7 @@
 		user.visible_message(SPAN_WARNING("[user] attempts to place \the [src] onto [H]`s [affecting]."))
 
 		user.setClickCooldown(user.get_attack_speed(src))
-		if(!do_mob(user, M))
+		if(!do_mob(user, target))
 			return
 
 		user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
@@ -111,13 +111,13 @@
 		)
 
 		var/contained = reagentlist()
-		add_attack_logs(user, M, "Applied a patch containing [contained]")
+		add_attack_logs(user, target, "Applied a patch containing [contained]")
 
 		to_chat(H, SPAN_NOTICE("\The [src] is placed on your [affecting]."))
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+		target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 		if(reagents.total_volume)
-			reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
+			reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
 		qdel(src)
 
 		for(var/datum/wound/W in affecting.wounds)
@@ -129,5 +129,3 @@
 			break //dont bandage more than one wound, its only one patch you can have in your stack
 		affecting.update_damages()
 
-		return TRUE
-	return FALSE

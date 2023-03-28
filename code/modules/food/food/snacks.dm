@@ -23,7 +23,7 @@
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
 	center_of_mass = list("x"=16, "y"=16)
 	w_class = ITEMSIZE_SMALL
-	force = 1
+	damage_force = 1
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
@@ -44,10 +44,21 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
-/obj/item/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	attempt_feed(target, user)
+
+/obj/item/reagent_containers/food/snacks/proc/attempt_feed(mob/living/M, mob/living/user)
+	if(!istype(M) || !istype(user))
+		return
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
@@ -912,6 +923,9 @@
 	var/has_been_heated = 0
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(has_been_heated)
 		to_chat(user, "<span class='notice'>The heating chemicals have already been spent.</span>")
 		return
@@ -1397,6 +1411,20 @@
 	. = ..()
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+	name = "Hot Cheesie Honkers"
+	icon_state = "hot_cheesie_honkers"
+	desc = "Explosively spicy cheesie honkers! Warning, don't eat more than two bags in one go, we are not responsible for tongue-melting incidents."
+	trash = /obj/item/trash/hot_cheesie
+	filling_color = "#ff6905"
+	nutriment_amt = 6
+	nutriment_desc = list("cheese" = 5, "chips" = 2, "chilli peppers" = 2)
+
+/obj/item/reagent_containers/food/snacks/hotcheesiehonkers/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("capsaicin", 2)
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/syndicake // Buff 4 >> 5 (Contains Dr.'s Delight already
 	name = "Syndi-Cakes"
 	icon_state = "syndi_cakes"
@@ -1813,7 +1841,10 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(wrapped)
 		Unwrap(user)
 
@@ -3209,7 +3240,7 @@
 	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand( mob/user as mob )
+/obj/item/pizzabox/attack_hand(mob/user, list/params)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -3234,7 +3265,10 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self( mob/user as mob )
+/obj/item/pizzabox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if( boxes.len > 0 )
 		return
@@ -3982,8 +4016,8 @@ END CITADEL CHANGE */
 	var/id = C.id
 
 	//First make sure there's space for our batter
-	if (reagents.get_free_space() < req+5)
-		var/extra = req+5 - reagents.get_free_space()
+	if (reagents.available_volume() < req+5)
+		var/extra = req+5 - reagents.available_volume()
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
@@ -4774,7 +4808,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
 	. = ..()
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()

@@ -429,6 +429,24 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 /datum/category_item/catalogue/anomalous/precursor_b/precursor_b_basic
 	name = "Precursors - Precursor Group Beta"
 
+/datum/category_item/catalogue/anomalous/scorian_religion
+	name = "Scorian Religion"
+	desc = "To date, anthropologists and NanoTrasen researchers have been unable to fully decipher \
+	the Scorian language. A fusion of pictographs and script, much of the modern conception of Ashlander \
+	religious practices comes from diagrams and depictions found on carved sandstone monuments and cave \
+	paintings. The Scorian people appear to be monotheistic, with different tribes worshipping members of \
+	a pantheon known only to researchers as the 'Buried Ones'.\
+	<br><br>\
+	With the return of Ashlanders to the surface of Surt, archaeologists have confirmed several assumptions \
+	about the existence of a religious class within Scorian society. However, multiple hypotheses regarding \
+	religious rites and rituals have also been proven incorrect. The Scorian people are naturally insular and \
+	distrusting of outside observers. This distrust, paired with the existing language barrier, has prevented \
+	any further understanding of Scorian religion to develop. Therefore, many records in this entry may be \
+	disproven at a later date."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(
+		/datum/category_item/catalogue/anomalous/scorian_religion
+	)
 
 /datum/category_item/catalogue/material
 

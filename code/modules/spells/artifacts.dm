@@ -9,10 +9,13 @@
 	throw_range = 7
 	throw_force = 10
 	damtype = BURN
-	force = 10
+	damage_force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
-/obj/item/scrying/attack_self(mob/user as mob)
+/obj/item/scrying/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(user, "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>")
 		return
@@ -34,7 +37,7 @@
 	item_state = "knife"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
-	force = 15
+	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -46,6 +49,9 @@
 	var/spawn_fast = 0 //if 1, ignores checking for mobs on loc before spawning
 
 /obj/item/veilrender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(charges > 0)
 		new /obj/effect/rend(get_turf(user), spawn_type, spawn_amt, rend_desc, spawn_fast)
 		charges--
@@ -172,18 +178,19 @@
 /obj/item/necromantic_stone/unlimited
 	unlimited = 1
 
-/obj/item/necromantic_stone/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
-	if(!istype(M))
+/obj/item/necromantic_stone/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
+	if(!istype(H))
 		return ..()
 
 	if(!istype(user))
 		return
 
-	if(M.stat != DEAD)
+	if(H.stat != DEAD)
 		to_chat(user, "<span class='warning'>This artifact can only affect the dead!</span>")
 		return
 
-	if(!M.mind || !M.client)
+	if(!H.mind || !H.client)
 		to_chat(user, "<span class='warning'>There is no soul connected to this body...</span>")
 		return
 
@@ -192,13 +199,13 @@
 		to_chat(user, "<span class='warning'>This artifact can only affect three undead at a time!</span>")
 		return
 
-	M.set_species(/datum/species/skeleton, regen_icons=0)
-	M.revive()//full_heal = 1, admin_revive = 1)
-	spooky_scaries |= M
-	to_chat(M, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
-	to_chat(M, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")
+	H.set_species(/datum/species/skeleton, regen_icons=0)
+	H.revive()//full_heal = 1, admin_revive = 1)
+	spooky_scaries |= H
+	to_chat(H, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
+	to_chat(H, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")
 
-	equip_roman_skeleton(M)
+	equip_roman_skeleton(H)
 
 	desc = "A shard capable of resurrecting humans as skeleton thralls[unlimited ? "." : ", [spooky_scaries.len]/3 active thralls."]"
 
@@ -275,6 +282,9 @@
 		user.unset_machine()
 
 /obj/item/voodoo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!target && length(possible))
 		target = input(user, "Select your victim!", "Voodoo") as null|anything in possible
 		return
@@ -374,7 +384,10 @@
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
 	user.update_mobility()
 
-/obj/item/warpwhistle/attack_self(mob/living/carbon/user)
+/obj/item/warpwhistle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!istype(user) || on_cooldown)
 		return
 	var/turf/T = get_turf(user)

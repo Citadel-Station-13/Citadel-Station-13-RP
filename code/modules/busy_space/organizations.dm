@@ -2303,56 +2303,36 @@
 			"an active incident site"
 			)
 
-// Space Alien Rats.
-/datum/lore/organization/gov/altevian_hegemony
-	name = "The Altevian Hegemony"
-	short_name = "Altevian Hegemony"
-	acronym = "AH"
-	desc = "The Altevians are a space-faring race of rodents that resemble Earth-like rats. They do not have a place they call home in terms of a planet, and instead have massive multiple-kilometer-long colony-ships that are constantly on the move and typically keep operations outside of known populated systems to not eat the resources from others. Their primary focus is trade and slavage operations and can be expected to be seen around both densely populated and empty systems for their work."
-	history = ""
-	work = "salvage and trade operators"
-	headquarters = "AH-CV Migrant"
-	motto = ""
-	org_type = "government"
+//Cheeses
+/datum/lore/organization/gov/naramadi_ascendancy
+    name = "The Naramadi Ascendancy"
+    short_name = "Naramadi Ascendancy "
+    acronym = "NA"
+    desc = "The Naramadi Ascendancy is a member-state of the Moghes Hegemony, though operating largely independant in matters of diplomacy and Trade, often sending Traders and Diplomats out to establish relations."
+    history = ""
+    work = "trade and diplmacy"
+    headquarters = "Verkihar Minor"
+    motto = ""
+    org_type = "government"
 
-	ship_prefixes = list("AH-DV" = "a diplomatic", "AH-EV" = "an exploration", "AH-FV" = "a fueling", "AH-FV" = "a cargo", "AH-SV" = "a research", "AH-TV" = "a colony-transporter", "AH-RV" = "an emergency response", "AH-RV" = "a response", "AH-MV" = "a medical")
-	ship_names = list(
-			"Platinum",
-			"Warson",
-			"Mane",
-			"Holland",
-			"Arauz",
-			"Diamond",
-			"Gold",
-			"Steam",
-			"Boiler",
-			"Slip",
-			"Lavender",
-			"Wheel",
-			"Stuntson",
-			"Desto",
-			"Palos",
-			"Matterson",
-			"Mill",
-			"Smoke",
-			"Squeakson",
-			"Rabion",
-			"Strikedown",
-			"Cluster",
-			"Ratling",
-			"Archaeologist",
-			"Beaker"
-			)
-	destination_names = list(
-			"the AH-CV Migrant flagship",
-			"one of our research colony-ships",
-			"the AH-CV Lotus",
-			"the AH-CV Anvil",
-			"the AH-CV Generations",
-			"the AH-CV Galley",
-			"the AH-CV Prosperity",
-			"the AH-CV Kitsap",
-			"the AH-CV Diamondback",
-			"one of our colony-ships",
-			"one of our production fleets"
-			)
+    ship_prefixes = list("NA-DV" = "a diplomatic", "NA-RV" = "a quick response", "NA-TV" = "a trade", "NA-CV" = "a cargo", "NA-HV" = "a hunting")
+    ship_names = list(
+            "Seat of Power",
+            "Tools of Trade",
+            "Knowledge of Elders",
+            "Return What Is Taken",
+            "High and Mighty",
+            "Moral High Ground",
+            "Voice That Speaks",
+            "Map That Guides",
+            "Hand That Strikes",
+            "Hand That Feeds",
+            "Of Artificers Aplenty"
+            )
+    destination_names = list(
+            "the Moghes Hegemony",
+            "the Vikara Combine",
+            "Verkihar Major",
+            "Onkhera Synthetic Solutions production site",
+            "a distress beacon"
+            )

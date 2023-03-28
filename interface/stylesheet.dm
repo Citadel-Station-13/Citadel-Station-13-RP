@@ -2,9 +2,11 @@
 /// !!!!!!!!!!HEY LISTEN!!!!!!!!!!!!!!!!!!!!!!!!
 /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// If you modify this file you ALSO need to modify code/modules/goonchat/browserAssets/browserOutput.css and browserOutput_white.css
-// BUT you have to use PX font sizes with are on a x8 scale of these font sizes
-// Sample font-size: DM: 8 CSS: 64px
+/**
+ * If you modify this file you ALSO need to modify tgui/packages/tgui-panel/styles/goon/chat-dark.scss and tgui/packages/tgui-panel/styles/goon/chat-light.scss
+ * BUT you have to use PX font sizes with are on a x8 scale of these font sizes
+ * Sample font-size: DM: 8 CSS: 64px
+ */
 
 /client/script = {"<style>
 body					{font-family: Verdana, sans-serif;}
@@ -240,6 +242,7 @@ h1.alert, h2.alert		{color: #000000;}
 .enochian				{color: #848A33; letter-spacing:-1pt; word-spacing:4pt; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
 .daemon					{color: #5E339E; letter-spacing:-1pt; word-spacing:0pt; font-family: "Courier New", Courier, monospace;}
 .luinimma				{color: #d4bd11; font-family: "Trebuchet MS", cursive, sans-serif;}
+.keisani				{color: #AF7751;}
 .bug					{color: #9e9e39;}
 .vox					{color: #AA00AA;}
 .zaddat					{color: #941C1C;}
@@ -251,10 +254,10 @@ h1.alert, h2.alert		{color: #000000;}
 .squeakish				{color: #f54298;}
 
 //* Debug Logs *//
-.debug_error					{color:#FF0000; font-weight:bold}
-.debug_warning					{color:#FF0000;}
-.debug_info						{}
-.debug_debug					{color:#0000FF;}
+.debug_debug					{color:#007FFF;}
+.debug_error					{color:#FF7F00; font-weight:bold}
+.debug_warning					{color:#FF007F; font-weight:bold}
+.debug_info						{color:#7F7FFF;}
 .debug_trace					{color:#888888;}
 .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; text-align: center; }
 

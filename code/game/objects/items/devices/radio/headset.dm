@@ -68,7 +68,7 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/ui_state(mob/user)
+/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
@@ -84,9 +84,9 @@
 	ks1type = /obj/item/encryptionkey/syndicate
 
 /obj/item/radio/headset/raider
-	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
-	ks1type = /obj/item/encryptionkey/raider
+	icon_state = "pirate_headset"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/raider
 
 /obj/item/radio/headset/raider/Initialize(mapload)
 	. = ..()
@@ -95,7 +95,7 @@
 /obj/item/radio/headset/trader
 	name = "trade headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
+	syndie = 0
 	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/trader
 
@@ -238,6 +238,19 @@
 /obj/item/radio/headset/heads/hos/alt
 	name = "head of security's bowman headset"
 	desc = "The headset of the man who protects your worthless lifes."
+	icon_state = "com_headset_alt"
+	ear_protection = 2
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield
+	name = "blueshield's headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset"
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield/alt
+	name = "blueshield's bowman headset"
+	desc = "The headset of the person who protects command's valuable lives."
 	icon_state = "com_headset_alt"
 	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hos

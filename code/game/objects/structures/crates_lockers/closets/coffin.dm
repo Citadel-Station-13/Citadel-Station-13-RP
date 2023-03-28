@@ -30,7 +30,7 @@
 	max_closets = 1
 	opened = 1
 
-/obj/structure/closet/grave/attack_hand(mob/user as mob)
+/obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
@@ -152,7 +152,7 @@
 	.=..()
 	alpha = 255	// Needed because of grave hiding
 
-/obj/structure/closet/grave/bullet_act(var/obj/item/projectile/P)
+/obj/structure/closet/grave/bullet_act(var/obj/projectile/P)
 	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)

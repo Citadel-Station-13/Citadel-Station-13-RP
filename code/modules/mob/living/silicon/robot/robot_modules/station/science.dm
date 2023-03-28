@@ -2,62 +2,65 @@
 	name = "research module"
 	channels = list("Science" = 1)
 	sprites = list(
-					"L'Ouef" = "peaceborg",
-					"Cabeiri" = "eyebot-science",
-					"Haruka" = "marinaSCI",
-					"WTDove" = "whitespider",
-					"WTOperator" = "sleekscience",
-					"Droid" = "droid-science",
-					"Drone" = "drone-science",
-					"Handy" = "handy-science",
-					"Insekt" = "insekt-Sci",
-					"L3P1-D0T" = "Glitterfly-Research",
-					"Coffsearch" = "coffin-Research",
-					"X-88" = "xeightyeight-science",
-					"Acheron" = "mechoid-Science",
-					"ZOOM-BA" = "zoomba-research",
-					"W02M" = "worm-engineering"
-					)
+		"L'Ouef" = "peaceborg",
+		"Cabeiri" = "eyebot-science",
+		"Haruka" = "marinaSCI",
+		"WTDove" = "whitespider",
+		"WTOperator" = "sleekscience",
+		"Droid" = "droid-science",
+		"Drone" = "drone-science",
+		"Handy" = "handy-science",
+		"Insekt" = "insekt-Sci",
+		"L3P1-D0T" = "Glitterfly-Research",
+		"Coffsearch" = "coffin-Research",
+		"X-88" = "xeightyeight-science",
+		"Acheron" = "mechoid-Science",
+		"ZOOM-BA" = "zoomba-research",
+		"W02M" = "worm-engineering"
+	)
 
-/obj/item/robot_module/robot/research/Initialize(mapload)
+/obj/item/robot_module/robot/research/get_synths()
 	. = ..()
-	src.modules += new /obj/item/portable_destructive_analyzer(src)
-	src.modules += new /obj/item/gripper/research(src)
-	src.modules += new /obj/item/gripper/circuit(src)
-	src.modules += new /obj/item/gripper/no_use/organ/robotics(src)
-	src.modules += new /obj/item/gripper/no_use/mech(src)
-	src.modules += new /obj/item/gripper/no_use/loader(src)
-	src.modules += new /obj/item/robotanalyzer(src)
-	src.modules += new /obj/item/card/robot(src)
-	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/multitool(src)
-	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
-	src.modules += new /obj/item/surgical/circular_saw/cyborg(src)
-	src.modules += new /obj/item/reagent_containers/syringe(src)
-	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
-	src.modules += new /obj/item/storage/part_replacer(src)
-	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
-	src.modules += new /obj/item/melee/baton/slime/robot(src)
-	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
-	src.emag = new /obj/item/borg/combat/shield(src)
+	MATTER_SYNTH(MATSYN_NANITES, nanite, 10000)
+	MATTER_SYNTH(MATSYN_WIRE, wire)
 
-	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
-	synths += nanite
-	var/datum/matter_synth/wire = new /datum/matter_synth/wire()						//Added to allow repairs, would rather add cable now than be asked to add it later,
-	synths += wire																		//Cable code, taken from engiborg,
+/obj/item/robot_module/robot/research/get_modules()
+	. = ..()
+	. |= list(
+		/obj/item/portable_destructive_analyzer,
+		/obj/item/gripper/research,
+		/obj/item/gripper/circuit,
+		/obj/item/gripper/no_use/organ/robotics,
+		/obj/item/gripper/no_use/mech,
+		/obj/item/gripper/no_use/loader,
+		/obj/item/robotanalyzer,
+		/obj/item/card/robot,
+		/obj/item/weldingtool/electric/mounted/cyborg,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
+		/obj/item/tool/wirecutters/cyborg,
+		/obj/item/multitool,
+		/obj/item/surgical/scalpel/cyborg,
+		/obj/item/surgical/circular_saw/cyborg,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/glass/beaker/large,
+		/obj/item/storage/part_replacer,
+		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/melee/baton/slime/robot,
+		/obj/item/gun/energy/taser/xeno/robot
+	)
+
+/obj/item/robot_module/robot/research/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
+	src.emag = new /obj/item/borg/combat/shield(src)
 
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
-	N.synths = list(nanite)
+	N.synths = list(synths_by_kind[MATSYN_NANITES])
 	src.modules += N
 
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)	//Cable code, taken from engiborg,
-	C.synths = list(wire)
-	src.modules += C
+	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
@@ -70,82 +73,63 @@
 
 	..()
 
-/obj/item/robot_module/robot/quad_sci
+/obj/item/robot_module/robot/quad/sci
 	name = "SciQuad Module"
 	sprites = list(
-					"Research Hound" = "science",
-					"Borgi" = "borgi-sci",
-					"F3-LINE" = "FELI-Research",
-					"Sci-9" = "scihound",
-					"Sci-9 Dark" = "scihounddark"
-					)
+		"Research Hound" = "science",
+		"Borgi" = "borgi-sci",
+		"F3-LINE" = "FELI-Research",
+		"Sci-9" = "scihound",
+		"Sci-9 Dark" = "scihounddark"
+	)
 	channels = list("Science" = 1)
 	can_be_pushed = 0
+	can_shred = TRUE
 
-/obj/item/robot_module/robot/quad_sci/Initialize(mapload)
+/obj/item/robot_module/robot/quad/sci/get_modules()
 	. = ..()
-	var/mob/living/silicon/robot/R = loc
-	src.modules += new /obj/item/portable_destructive_analyzer(src)
-	src.modules += new /obj/item/dogborg/jaws/small(src)
-	src.modules += new /obj/item/dogborg/boop_module(src)
-	src.modules += new /obj/item/gripper/research(src)
-	src.modules += new /obj/item/gripper/circuit(src)
-	src.modules += new /obj/item/gripper/no_use/organ/robotics(src)
-	src.modules += new /obj/item/gripper/no_use/mech(src)
-	src.modules += new /obj/item/gripper/no_use/loader(src)
-	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/robotanalyzer(src)
-	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/multitool(src)
-	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
-	src.modules += new /obj/item/reagent_containers/syringe(src)
-	src.modules += new /obj/item/storage/part_replacer(src)
-	src.modules += new /obj/item/card/robot(src)
-	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
-	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/melee/baton/slime/robot(src)
-	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
-	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
-	src.modules += new /obj/item/surgical/circular_saw/cyborg(src)
-	src.emag = new /obj/item/borg/combat/shield(src)
+	. |= list(
+		/obj/item/portable_destructive_analyzer,
+		/obj/item/dogborg/jaws/small,
+		/obj/item/gripper/research,
+		/obj/item/gripper/circuit,
+		/obj/item/gripper/no_use/organ/robotics,
+		/obj/item/gripper/no_use/mech,
+		/obj/item/gripper/no_use/loader,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
+		/obj/item/robotanalyzer,
+		/obj/item/weldingtool/electric/mounted/cyborg,
+		/obj/item/multitool,
+		/obj/item/reagent_containers/glass/beaker/large,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/storage/part_replacer,
+		/obj/item/card/robot,
+		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/tool/wirecutters/cyborg,
+		/obj/item/melee/baton/slime/robot,
+		/obj/item/gun/energy/taser/xeno/robot,
+		/obj/item/surgical/scalpel/cyborg,
+		/obj/item/surgical/circular_saw/cyborg
+	)
 
-	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
-	synths += nanite
+/obj/item/robot_module/robot/quad/sci/get_synths()
+	. = ..()
+	MATTER_SYNTH(MATSYN_NANITES, nanite, 10000)
+	MATTER_SYNTH(MATSYN_WIRE, wire)
 
-	var/datum/matter_synth/water = new /datum/matter_synth(500)
-	water.name = "Water reserves"
-	water.recharge_rate = 0
-	R.water_res = water
-	synths += water
-
-	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
-	synths += wire
-
+/obj/item/robot_module/robot/quad/sci/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
-	N.synths = list(nanite)
-	src.modules += N
-
-	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
-	T.water = water
-	src.modules += T
+	N.synths = list(synths_by_kind[MATSYN_NANITES])
+	. += N
 
 	var/obj/item/dogborg/sleeper/compactor/analyzer/B = new /obj/item/dogborg/sleeper/compactor/analyzer(src)
-	B.water = water
-	src.modules += B
+	B.water = synths_by_kind[MATSYN_WATER]
+	. += B
 
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(wire)
-	src.modules += C
+	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
-	R.icon = 'icons/mob/robots_wide.dmi'
-	R.set_base_pixel_x(-16)
-	R.dogborg = TRUE
-	R.wideborg = TRUE
-	R.icon_dimension_x = 64
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-
+	src.emag = new /obj/item/borg/combat/shield(src)

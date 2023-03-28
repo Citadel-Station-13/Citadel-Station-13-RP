@@ -56,7 +56,6 @@
 	 */
 	client.statobj = src
 
-	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	update_client_color()
 
 	//Reload alternate appearances
@@ -98,6 +97,8 @@
 	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen
 	reload_rendering()
+	// reset statpanel of any verbs/whatnot
+	client.statpanel_reload()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

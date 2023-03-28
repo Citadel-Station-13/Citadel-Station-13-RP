@@ -45,7 +45,7 @@
 
 /datum/category_item/player_setup_item/general/background/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["econ_status"])
-		var/new_class = input(user, "Choose your economic status. This will affect the amount of money you will start with.", "Character Preference", pref.economic_status)  as null|anything in ECONOMIC_CLASS
+		var/new_class = tgui_input_list(user, "Choose your economic status. This will affect the amount of money you will start with.", "Character Preference", ECONOMIC_CLASS, pref.economic_status)
 		if(new_class && CanUseTopic(user))
 			pref.economic_status = new_class
 			return PREFERENCES_REFRESH

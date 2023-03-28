@@ -293,7 +293,7 @@ SUBSYSTEM_DEF(ticker)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
-	SSdbcore.SetRoundStart()
+	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
@@ -512,6 +512,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!round_end_announced) // Spam Prevention. Now it should announce only once.
 				to_chat(world, "<span class='danger'>The round has ended!</span>")
 				round_end_announced = 1
+		if(!SSemergencyshuttle.departed)
 			SSvote.autotransfer()
 
 	return 1
@@ -604,10 +605,10 @@ SUBSYSTEM_DEF(ticker)
 		var/temprole = Mind.special_role
 		if(temprole)							//if they are an antagonist of some sort.
 			if(temprole in total_antagonists)	//If the role exists already, add the name to it
-				total_antagonists[temprole] += ", [Mind.name]([Mind.key])"
+				total_antagonists[temprole] += ", [Mind.name]([Mind.ckey])"
 			else
 				total_antagonists.Add(temprole) //If the role doesnt exist in the list, create it and add the mob
-				total_antagonists[temprole] += ": [Mind.name]([Mind.key])"
+				total_antagonists[temprole] += ": [Mind.name]([Mind.ckey])"
 
 	//Now print them all into the log!
 	log_game("Antagonists at round end were...")

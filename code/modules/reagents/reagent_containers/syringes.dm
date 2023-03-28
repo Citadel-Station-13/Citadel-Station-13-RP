@@ -4,7 +4,7 @@
 
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe."
+	desc = "A disposable syringe. A small sticker on the side reminds you to dispose after one use."
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
@@ -17,6 +17,7 @@
 	sharp = 1
 	unacidable = 1 //glass
 	rad_flags = RAD_NO_CONTAMINATE
+	item_flags = ITEM_NOBLUDGEON
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -36,7 +37,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_containers/syringe/attack_self(mob/user)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -46,7 +47,7 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand()
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 
@@ -70,7 +71,7 @@
 	var/injtime = time // Calculated 'true' injection time (as added to by hardsuits and whatnot), 66% of this goes to warmup, then every 33% after injects 5u
 	switch(mode)
 		if(SYRINGE_DRAW)
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				to_chat(user, "<span class='warning'>The syringe is full.</span>")
 				mode = SYRINGE_INJECT
 				return
@@ -81,7 +82,7 @@
 					return
 
 				if(istype(target, /mob/living/carbon))
-					var/amount = reagents.get_free_space()
+					var/amount = reagents.available_volume()
 					var/mob/living/carbon/T = target
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
@@ -142,7 +143,7 @@
 				update_icon()
 
 
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				mode = SYRINGE_INJECT
 				update_icon()
 
@@ -157,7 +158,7 @@
 			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_containers/food) && !istype(target, /obj/item/slime_extract) && !istype(target, /obj/item/clothing/mask/smokable/cigarette) && !istype(target, /obj/item/storage/fancy/cigarettes))
 				to_chat(user, "<span class='notice'>You cannot directly fill this object.</span>")
 				return
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				to_chat(user, "<span class='notice'>[target] is full.</span>")
 				return
 
@@ -226,7 +227,8 @@
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
+			if(ismob(target) && affected)
+				dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
 
@@ -247,7 +249,7 @@
 		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
 			return
 
-		if (target != user && H.run_mob_armor(target_zone, "melee") > 5 && prob(50))
+		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
 			qdel(src)

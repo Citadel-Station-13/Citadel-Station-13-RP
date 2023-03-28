@@ -146,6 +146,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
+	species_statpanel = TRUE
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -218,11 +219,15 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
 	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
+	// force eject brain
+	var/obj/item/organ/internal/the_brain = H.internal_organs_by_name[O_BRAIN]
+	if(the_brain)
+		the_brain.removed(H)
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
 	else if(!gibbed)
-		to_chat(H)
+		to_chat(H, deathmsg)
 		H.gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
@@ -262,23 +267,23 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
 
-/datum/species/protean/Stat(var/mob/living/carbon/human/H)
-	..()
-	if(statpanel(SPECIES_PROTEAN))
-		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
-		if(refactory && !(refactory.status & ORGAN_DEAD))
-			stat(null, "- -- --- Refactory Metal Storage --- -- -")
-			var/max = refactory.max_storage
-			for(var/material in refactory.materials)
-				var/amount = refactory.get_stored_material(material)
-				stat("[capitalize(material)]", "[amount]/[max]")
-		else
-			stat(null, "- -- --- REFACTORY ERROR! --- -- -")
+/datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
+	. = ..()
+	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
+	if(refactory && !(refactory.status & ORGAN_DEAD))
+		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
+		var/max = refactory.max_storage
+		for(var/material in refactory.materials)
+			var/amount = refactory.get_stored_material(material)
+			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
+	else
+		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
 
-		stat(null, "- -- --- Abilities (Shift+LMB Examines) --- -- -")
-		for(var/ability in abilities)
-			var/obj/effect/protean_ability/A = ability
-			stat("[A.ability_name]",A.atom_button_text())
+	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
+	for(var/ability in abilities)
+		var/obj/effect/protean_ability/A = ability
+		A.atom_button_text()
+		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean

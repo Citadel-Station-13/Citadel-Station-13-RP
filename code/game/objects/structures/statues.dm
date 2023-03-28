@@ -78,16 +78,16 @@
 			Dismantle(1)
 
 	else
-		hardness -= W.force/100
+		hardness -= W.damage_force/100
 		..()
 		CheckHardness()
 
-/obj/structure/statue/attack_hand(mob/living/user)
+/obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-/obj/structure/statue/bullet_act(obj/item/projectile/Proj)
+/obj/structure/statue/bullet_act(obj/projectile/Proj)
 	hardness -= Proj.damage
 	..()
 	CheckHardness()

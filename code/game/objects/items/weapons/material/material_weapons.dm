@@ -27,6 +27,8 @@
 	var/default_material = MAT_STEEL
 	var/datum/material/material
 	var/drops_debris = 1
+	// todo: proper material opt-out system on /atom level or something, this is trash
+	var/no_force_calculations = FALSE
 
 /obj/item/material/Initialize(mapload, material_key)
 	. = ..()
@@ -50,22 +52,25 @@
 	return material
 
 /obj/item/material/proc/update_force()
+	if(no_force_calculations)
+		return
 	if(edge || sharp)
-		force = material.get_edge_damage()
+		damage_force = material.get_edge_damage()
 	else
-		force = material.get_blunt_damage()
-	force = round(force*force_divisor)
+		damage_force = material.get_blunt_damage()
+	damage_force = round(damage_force*force_divisor)
 	if(dulled)
-		force = round(force*dulled_divisor)
+		damage_force = round(damage_force*dulled_divisor)
 	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
+	// todo: remove, shitcode
 	if(material.name == "supermatter")
 		damtype = BURN //its hot
-		force = 150 //double the force of a durasteel claymore.
+		damage_force = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
 		throw_force = 150
 
 	//spawn(1)
-	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.name]")
+	//	to_chat(world, "[src] has damage_force [damage_force] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
@@ -84,8 +89,8 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/material/apply_hit_effect()
-	..()
+/obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
 	if(!unbreakable)
 		if(material.is_brittle())
 			health = 0

@@ -7,7 +7,7 @@
 /obj/structure/signpost/attackby(obj/item/W, mob/user)
 	return attack_hand(user)
 
-/obj/structure/signpost/attack_hand(mob/user)
+/obj/structure/signpost/attack_hand(mob/user, list/params)
 	switch(tgui_alert(user, "Do you want to go to SS13?", "Travel", list("Yes", "No")))
 		if("Yes")
 			user.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
@@ -49,7 +49,7 @@
 	density = 0
 	anchored = 0
 	w_class = ITEMSIZE_LARGE
-	force = 0.0
+	damage_force = 0.0
 	throw_force = 0.0
 	throw_speed = 1
 	throw_range = 20

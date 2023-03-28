@@ -47,9 +47,8 @@
 	. = ..()
 	create_reagents(usable_volume)
 
-/obj/item/organ/internal/fruitgland/process(delta_time)
-	if(!owner)
-		return
+/obj/item/organ/internal/fruitgland/tick_life(dt)
+	. = ..()
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen
 	if(parent && generated_reagents && owner) //Is it in the chest/an organ, has reagents, and is 'activated'

@@ -2,7 +2,7 @@
 	name = "snow"
 	icon_state = "snow"
 	edge_blending_priority = 1
-	movement_cost = 2
+	slowdown = 2
 	initial_flooring = /singleton/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
@@ -10,22 +10,16 @@
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_SNOW)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_SNOW)
 
-	var/list/crossed_dirs = list()
+	var/crossed_dirs = NONE
 
-/turf/simulated/floor/outdoors/snow/Entered(atom/A)
-	if(isliving(A))
-		var/mob/living/L = A
-		if(L.hovering) // Flying things shouldn't make footprints.
-			return ..()
-		var/mdir = "[A.dir]"
-		crossed_dirs[mdir] = 1
-		update_icon()
-	..()
-
-/turf/simulated/floor/outdoors/snow/update_icon()
-	..()
-	for(var/d in crossed_dirs)
-		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
+/turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
+	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
+		return ..()
+	if(isliving(AM))
+		if(!(crossed_dirs & AM.dir))
+			crossed_dirs |= AM.dir
+			add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = AM.dir))
+	return ..()
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
@@ -39,7 +33,7 @@
 	else
 		..()
 
-/turf/simulated/floor/outdoors/snow/attack_hand(mob/user as mob)
+/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, list/params)
 	visible_message("[user] starts scooping up some snow.", "You start scooping up some snow.")
 	if(do_after(user, 1 SECOND))
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
@@ -71,7 +65,7 @@
 	name = "ice"
 	icon_state = "ice"
 	desc = "Looks slippery."
-	movement_cost = 4
+	slowdown = 4
 	edge_blending_priority = 0
 
 // Ice that is safe to walk on.
@@ -79,7 +73,7 @@
 	name = "ice"
 	icon_state = "ice"
 	desc = "Seems safe enough to walk on."
-	movement_cost = 2
+	slowdown = 2
 	edge_blending_priority = 0
 
 // Snowy gravel

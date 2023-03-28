@@ -104,8 +104,7 @@
 	if(!target)
 		return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
-	text = sanitize(text)
+	text = sanitize(input("What would you like to say?", "Speak to creature", null, null) as message|null)
 
 	if(!text)
 		return
@@ -135,7 +134,7 @@
 		nutrition -= 50
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
-			if(H.species.name == src.species.name)
+			if(H.species.get_species_id() == src.species.get_species_id())
 				return
 			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 			H.drip(1)
@@ -158,11 +157,20 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
-		to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+	var/msg_style = alert("Do you want to whisper or to project?", "Psychic style", "Whisper", "Projection", "Cancel")
+	switch(msg_style)
+		if ("Whisper")
+			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+		if ("Projection")
+			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as message|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You projected: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -214,8 +222,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(src, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(src, /mob/living/carbon/human/proc/regenerate)
 
 		for(var/obj/item/organ/external/E in organs) // Just fall apart.
 			E.droplimb(TRUE)
@@ -378,7 +386,7 @@
 				var/organpath = species.has_organ[organtype]
 				var/obj/item/organ/Int = new organpath(src, TRUE)
 
-				Int.rejuvenate(TRUE)
+				Int.rejuvenate_legacy(TRUE)
 
 		handle_organs(2) // Update everything
 

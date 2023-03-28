@@ -1,10 +1,18 @@
-/datum/job/station/head_of_personnel
+/datum/role/job/station/head_of_personnel
 	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
-	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
+	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
+	departments = list(
+		DEPARTMENT_COMMAND,
+		DEPARTMENT_CIVILIAN,
+		DEPARTMENT_CARGO,
+	)
 	sorting_order = 2 // Above the QM, below captain.
-	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
+	departments_managed = list(
+		DEPARTMENT_CIVILIAN,
+		DEPARTMENT_CARGO,
+	)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
 	total_positions = 1
@@ -15,7 +23,6 @@
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	economic_modifier = 10
 
 	minimum_character_age = 25
 	ideal_character_age = 50
@@ -25,27 +32,52 @@
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(
-		"Crew Resources Officer" = /datum/alt_title/cro,
-		"Deputy Director" = /datum/alt_title/hop/deputy
+		"Crew Resources Officer" = /datum/prototype/alt_title/cro,
+		"Deputy Director" = /datum/prototype/alt_title/hop/deputy
 	)
 
-	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
+	minimal_access = list(
+		ACCESS_COMMAND_ANNOUNCE,
+		ACCESS_COMMAND_BANKING,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_CARDMOD,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_HOP,
+		ACCESS_COMMAND_IAA,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_COMMAND_LOCKERS,
+		ACCESS_COMMAND_UPLOAD,
+		ACCESS_COMMAND_VAULT,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_GENERAL_BAR,
+		ACCESS_GENERAL_BOTANY,
+		ACCESS_GENERAL_CHAPEL,
+		ACCESS_GENERAL_CREMATOR,
+		ACCESS_GENERAL_GATEWAY,
+		ACCESS_GENERAL_JANITOR,
+		ACCESS_GENERAL_KITCHEN,
+		ACCESS_GENERAL_LIBRARY,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SUPPLY_BAY,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_MINE,
+		ACCESS_SUPPLY_MINE_OUTPOST,
+		ACCESS_SUPPLY_MULEBOT,
+		ACCESS_SUPPLY_QM,
+	)
 
-/datum/alt_title/cro
+/datum/prototype/alt_title/cro
 	title = "Crew Resources Officer"
 
-/datum/alt_title/hop/deputy
+/datum/prototype/alt_title/hop/deputy
 	title = "Deputy Director"
 
 /datum/outfit/job/station/head_of_personnel

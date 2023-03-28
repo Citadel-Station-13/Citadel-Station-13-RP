@@ -5,7 +5,7 @@
 	name = "contraband item"
 	desc = "You probably shouldn't be holding this."
 	icon = 'icons/obj/contraband.dmi'
-	force = 0
+	damage_force = 0
 
 
 /obj/item/contraband/poster
@@ -158,7 +158,7 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user as mob)
+/obj/structure/sign/poster/attack_hand(mob/user, list/params)
 
 	if(ruined)
 		return

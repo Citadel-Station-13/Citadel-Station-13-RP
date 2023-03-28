@@ -88,7 +88,7 @@
 
 	// The sloped armor.
 	// It's resistant to most weapons (but a spraybottle still kills it rather fast).
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 25,
 				"bullet" = 25,
 				"laser" = 25,
@@ -96,16 +96,6 @@
 				"bomb" = 80,
 				"bio" = 100,
 				"rad" = 100
-				)
-
-	armor_soak = list(
-				"melee" = 5,
-				"bullet" = 5,
-				"laser" = 5,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
 				)
 
 	slime_mutation = list(
@@ -132,7 +122,7 @@
 	melee_damage_upper = 5
 	shock_resist = 1
 
-	projectiletype = /obj/item/projectile/beam/lightning/slime
+	projectiletype = /obj/projectile/beam/lightning/slime
 	projectilesound = 'sound/effects/lightningbolt.ogg'
 	glow_toggle = TRUE
 
@@ -163,7 +153,7 @@
 			power_charge = between(0, power_charge + 1, 10)
 	..()
 
-/obj/item/projectile/beam/lightning/slime
+/obj/projectile/beam/lightning/slime
 	power = 10
 	fire_sound = 'sound/effects/lightningbolt.ogg'
 
@@ -209,7 +199,7 @@
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/projectile/P, var/def_zone)
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
@@ -217,7 +207,7 @@
 		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W) && W.force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
@@ -295,8 +285,8 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/item/projectile/P, var/def_zone)
-	if(istype(P,/obj/item/projectile/beam) || istype(P, /obj/item/projectile/energy))
+/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/projectile/P, var/def_zone)
+	if(istype(P,/obj/projectile/beam) || istype(P, /obj/projectile/energy))
 		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
 
 		// Find a turf near or on the original location to bounce to
@@ -606,7 +596,7 @@
 /mob/living/simple_mob/slime/xenobio/gold/slimebatoned(mob/living/user, amount)
 	power_charge = between(0, power_charge + amount, 10)
 
-/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction() // So it doesn't say to use a baton on them.
+/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction(mob/user) // So it doesn't say to use a baton on them.
 	return list()
 
 
@@ -664,7 +654,7 @@
 	log_and_message_admins("[src] exploded due to exposure to fire.")
 	explode()
 
-/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/item/projectile/P, def_zone)
+/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/projectile/P, def_zone)
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		explode()
@@ -672,7 +662,7 @@
 		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
-	if(istype(W) && W.force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()
 	else

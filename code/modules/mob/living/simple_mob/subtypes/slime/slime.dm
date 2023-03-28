@@ -79,7 +79,7 @@
 	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/Initialize(mapload)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	update_mood()
 	glow_color = color
 	handle_light()
@@ -161,7 +161,10 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else

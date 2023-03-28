@@ -39,7 +39,7 @@
 	//The mind!
 	mind_ref = mind
 	mindname = mind.name
-	ckey = ckey(mind.key)
+	ckey = mind.ckey
 
 	cryo_at = 0
 

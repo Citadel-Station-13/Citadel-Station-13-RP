@@ -85,3 +85,31 @@
 	name = "Martian voidsuit"
 	desc = "An imported voidsuit commonly worn on Mars. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor."
 	icon_state = "mars"
+
+//Pirate Void Suits
+/obj/item/clothing/head/helmet/space/void/pirate
+	name = "Pirate voidsuit helmet"
+	desc = "Pirates come from many walks of life. Drawn by the allure of easy riches, many pirates must come to terms with the realities of funding their own expeditions. As such, they find their fun where they can, like with decorative helmet elements."
+	icon_state = "spacepirate"
+	armor_type = /datum/armor/pirate/space
+
+/obj/item/clothing/head/helmet/space/void/pirate/alt
+	name = "Pirate voidsuit helmet"
+	icon_state = "spacebandana"
+
+/obj/item/clothing/suit/space/void/pirate
+	name = "Pirate voidsuit"
+	desc = "The majority of pirate crews purchase bulk or surplus voidsuits and attempt to improve their armor themselves to cut costs. Although effective when facing their preferred targets, this often leaves pirate bands vulnerable to retaliation from SDF and Security forces. Pirate voidsuits sport a wide array of cosmetic paint jobs, usually related to the band its owner belongs to. These suits are sometimes recovered and collected as pieces of art."
+	icon_state = "spacepirate"
+	armor_type = /datum/armor/pirate/space
+
+//Pirate Red Mining Suit variant.
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper
+	name = "Scrapper voidsuit helmet"
+	desc = "A simple red voidsuit helmet. Although it has many after-market modifications, its paint job has been left relatively untouched, for a more serious design."
+	icon_state = "rig0-RedMiner"
+
+/obj/item/clothing/suit/space/void/pirate/scrapper
+	name = "Scrapper voidsuit"
+	desc = "Not all pirate crews go for flashy colors and intricate paint jobs. This refit mining suit functions both as a voidsuit capable of zero-G salvage and mining, and also as a robust raiding rig."
+	icon_state = "rig-RedMiner"

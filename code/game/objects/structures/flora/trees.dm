@@ -53,7 +53,7 @@
 
 	visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W]!</span>")
 
-	var/damage_to_do = W.force
+	var/damage_to_do = W.damage_force
 	if(!W.sharp && !W.edge)
 		damage_to_do = round(damage_to_do / 4)
 	if(damage_to_do > 0)
@@ -121,7 +121,7 @@
 /obj/structure/flora/tree/legacy_ex_act(var/severity)
 	adjust_health(-(max_health / severity), TRUE)
 
-/obj/structure/flora/tree/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/flora/tree/bullet_act(var/obj/projectile/Proj)
 	if(Proj.get_structure_damage())
 		adjust_health(-Proj.get_structure_damage(), TRUE)
 
@@ -129,11 +129,11 @@
 	adjust_health(-power / 100, TRUE) // Kills most trees in one lightning strike.
 	..()
 
-/obj/structure/flora/tree/get_description_interaction()
+/obj/structure/flora/tree/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!is_stump)
-		results += "[desc_panel_image("hatchet")]to cut down this tree into logs.  Any sharp and strong weapon will do."
+		results += "[desc_panel_image("hatchet", user)]to cut down this tree into logs.  Any sharp and strong weapon will do."
 
 	results += ..()
 
@@ -170,7 +170,7 @@
 /obj/structure/flora/tree/pine/xmas/presents/choose_icon_state()
 	return "pinepresents"
 
-/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/living/user)
+/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

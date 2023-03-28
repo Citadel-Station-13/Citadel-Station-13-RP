@@ -1,8 +1,9 @@
 var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
-/datum/job/station/captain
+/datum/role/job/station/captain
 	id = JOB_ID_CAPTAIN
 	title = "Facility Director"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_CAPTAIN
 	flag = CAPTAIN
 	disallow_jobhop = TRUE
 	departments = list(DEPARTMENT_COMMAND)
@@ -16,10 +17,9 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/card/id/gold
 	selection_color = "#2F2F7F"
 	req_admin_notify = 1
-	access = list() 			//See get_access()
+	additional_access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
-	economic_modifier = 20
 
 	minimum_character_age = 25
 	ideal_character_age = 70 // Old geezer captains ftw
@@ -29,26 +29,25 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Facility Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 	alt_titles = list(
-		"Overseer"= /datum/alt_title/overseer,
-		"Site Manager" = /datum/alt_title/captain/site,
-		"Director of Operations" = /datum/alt_title/captain/director,
-		"Captain" = /datum/alt_title/captain/captain
+		"Overseer"= /datum/prototype/alt_title/overseer,
+		"Site Manager" = /datum/prototype/alt_title/captain/site,
+		"Director of Operations" = /datum/prototype/alt_title/captain/director,
+		"Captain" = /datum/prototype/alt_title/captain/captain
 	)
 
+/datum/role/job/station/captain/get_access()
+	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
-/datum/job/station/captain/get_access()
-	return get_all_station_access().Copy()
-
-/datum/alt_title/overseer
+/datum/prototype/alt_title/overseer
 	title = "Overseer"
 
-/datum/alt_title/captain/site
+/datum/prototype/alt_title/captain/site
 	title = "Site Manager"
 
-/datum/alt_title/captain/director
+/datum/prototype/alt_title/captain/director
 	title = "Director of Operations"
 
-/datum/alt_title/captain/captain
+/datum/prototype/alt_title/captain/captain
 	title = "Captain"
 
 /datum/outfit/job/station/captain

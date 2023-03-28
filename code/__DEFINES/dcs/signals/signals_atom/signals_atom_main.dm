@@ -28,9 +28,9 @@
 	////#define COMSIG_ATOM_NO_UPDATE_DESC UPDATE_DESC
 	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its icon.
 	////#define COMSIG_ATOM_NO_UPDATE_ICON UPDATE_ICON
-/// From base of [/atom/proc/update_name]: (updates)
+/// From base of [/atom/proc/update_name], called after all overrides: (updates)
 #define COMSIG_ATOM_UPDATE_NAME "atom_update_name"
-/// From base of [/atom/proc/update_desc]: (updates)
+/// From base of [/atom/proc/update_desc], called after all overrides: (updates)
 #define COMSIG_ATOM_UPDATE_DESC "atom_update_desc"
 /// From base of [/atom/update_icon]: ()
 #define COMSIG_ATOM_UPDATE_ICON "atom_update_icon"
@@ -77,7 +77,7 @@
 /// Called when an atom stops orbiting another atom: (atom)
 ////#define COMSIG_ATOM_ORBIT_STOP "atom_orbit_stop"
 /// From base of atom/set_opacity(): (new_opacity)
-////#define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
+#define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
 /// From base of atom/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 ////#define COMSIG_ATOM_HITBY "atom_hitby"
 /// When an atom starts playing a song datum (datum/song)

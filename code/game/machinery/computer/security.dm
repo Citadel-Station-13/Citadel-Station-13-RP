@@ -12,7 +12,7 @@
 	icon_keyboard = "security_key"
 	icon_screen = "security"
 	light_color = "#a91515"
-	req_one_access = list(access_security, access_forensics_lockers, access_lawyer)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS, ACCESS_COMMAND_IAA)
 	circuit = /obj/item/circuitboard/secure_data
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -87,7 +87,7 @@
 /obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/secure_data/attack_hand(mob/user as mob)
+/obj/machinery/computer/secure_data/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(user)

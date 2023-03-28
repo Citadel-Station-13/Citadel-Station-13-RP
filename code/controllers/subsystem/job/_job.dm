@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(job)
 	/// List of all jobs
 	var/list/occupations
 	/// Dict of all jobs, keys are titles
-	var/list/datum/job/name_occupations
+	var/list/datum/role/job/name_occupations
 	/// Dict of all jobs, keys are types
 	var/list/type_occupations
 	/// jobs by id
@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
+	init_access()
 	if(!length(department_datums))
 		setup_departments()
 	if(!length(occupations))
@@ -29,6 +30,7 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
+	init_access()
 	occupations = SSjob.occupations
 	name_occupations = SSjob.name_occupations
 	job_lookup = SSjob.job_lookup
@@ -43,7 +45,7 @@ SUBSYSTEM_DEF(job)
 	// todo: this is shit but it works
 	job_pref_ui_cache = list()
 	for(var/id in job_lookup)
-		var/datum/job/J = job_lookup[id]
+		var/datum/role/job/J = job_lookup[id]
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
@@ -67,13 +69,13 @@ SUBSYSTEM_DEF(job)
 	job_lookup = list()
 	name_occupations = list()
 	type_occupations = list()
-	var/list/all_jobs = subtypesof(/datum/job)
+	var/list/all_jobs = subtypesof(/datum/role/job)
 	if(!all_jobs.len)
 		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))
 		return FALSE
 
 	for(var/J in all_jobs)
-		var/datum/job/job = J
+		var/datum/role/job/job = J
 		if(initial(job.abstract_type) == J)
 			continue
 		job = new J
@@ -104,7 +106,7 @@ SUBSYSTEM_DEF(job)
 
 	return TRUE
 
-/datum/controller/subsystem/job/proc/add_to_departments(datum/job/J)
+/datum/controller/subsystem/job/proc/add_to_departments(datum/role/job/J)
 	// Adds to the regular job lists in the departments, which allow multiple departments for a job.
 	for(var/D in J.departments)
 		var/datum/department/dept = LAZYACCESS(department_datums, D)
@@ -163,8 +165,8 @@ SUBSYSTEM_DEF(job)
 
 // Returns a reference to the primary department datum that a job is in.
 // Can receive job datum refs, typepaths, or job title strings.
-/datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/job/J)
-	if(!istype(J, /datum/job))
+/datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/role/job/J)
+	if(!istype(J, /datum/role/job))
 		if(ispath(J))
 			J = job_by_type(J)
 		else if(istext(J))

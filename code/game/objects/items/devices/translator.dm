@@ -68,18 +68,19 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/universal_translator/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
+/obj/item/universal_translator/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(!isrobot(M))
+	if(!isrobot(target))
 		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(context, /datum/translation_context/variable))
 		user.action_feedback(SPAN_WARNING("[src] does not have a variable translation matrix."), src)
 		return
 	if(!allow_knowledge_transfer)
 		user.action_feedback(SPAN_WARNING("[src] doesn't have a data port."), src)
 		return
-	var/mob/living/silicon/robot/R = M
+	var/mob/living/silicon/robot/R = target
 	var/datum/translation_context/variable/theirs = R.translation_context
 	if(!istype(theirs))
 		user.action_feedback(SPAN_WARNING("[R] does not have a variable translation matrix."), src)
@@ -88,6 +89,9 @@
 	ours.copy_knowledge(theirs)
 
 /obj/item/universal_translator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!listening) //Turning ON
 		var/list/allowed = list()
 		for(var/datum/language/L in user.languages)

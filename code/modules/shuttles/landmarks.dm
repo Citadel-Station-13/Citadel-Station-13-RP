@@ -56,6 +56,7 @@
 	if(GLOB.using_map.use_overmap)
 		var/obj/effect/overmap/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
+
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()
@@ -166,7 +167,10 @@
 	light_color = "#3728ff"
 	var/active
 
-/obj/item/spaceflare/attack_self(var/mob/user)
+/obj/item/spaceflare/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		visible_message("<span class='notice'>[user] pulls the cord, activating the [src].</span>")
 		activate()

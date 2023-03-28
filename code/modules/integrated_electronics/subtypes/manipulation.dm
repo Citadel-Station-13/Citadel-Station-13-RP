@@ -103,7 +103,7 @@
 	complexity = 4
 	cooldown_per_use = 2 SECOND
 	power_draw_per_use = 50
-	spawn_flags = IC_SPAWN_DEFAULT
+	spawn_flags = NONE
 	origin_tech = list(TECH_ENGINEERING = 2)
 	var/lock_enabled = -1
 
@@ -291,7 +291,10 @@
 	set_pin_data(IC_OUTPUT, 4, contents)
 	push_data()
 
-/obj/item/integrated_circuit/manipulation/grabber/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	drop_all()
 	update_outputs()
 	push_data()
@@ -851,7 +854,10 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(installed_gun)
 		user.put_in_hands_or_drop(installed_gun)
 		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
@@ -958,7 +964,10 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(attached_grenade)
 		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
 		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)

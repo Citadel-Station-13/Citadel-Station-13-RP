@@ -69,10 +69,10 @@
 
 			if(istype(I, /obj/item))
 				var/obj/item/W = I
-				W.attack(chosen_target, user)
+				W.melee_attack_chain(chosen_target, user)
 				W.afterattack(chosen_target, user)
 			else
-				I.attack(chosen_target, user)
+				I.melee_attack_chain(chosen_target, user)
 				I.afterattack(chosen_target, user)
 		else
 			chosen_target.attack_hand(user)

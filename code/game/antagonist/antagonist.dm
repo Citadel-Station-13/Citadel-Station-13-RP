@@ -179,17 +179,17 @@
 /datum/antagonist/proc/draft_antagonist(var/datum/mind/player)
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
 	if(!can_become_antag(player) || (player.assigned_role in roundstart_restricted))
-		log_debug(SPAN_DEBUG("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role."))
+		log_debug(SPAN_DEBUG("[player.ckey] was selected for [role_text] by lottery, but is not allowed to be that role."))
 		return 0
 	if(player.special_role)
-		log_debug(SPAN_DEBUG("[player.key] was selected for [role_text] by lottery, but they already have a special role."))
+		log_debug(SPAN_DEBUG("[player.ckey] was selected for [role_text] by lottery, but they already have a special role."))
 		return 0
 	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/new_player)))
-		log_debug(SPAN_DEBUG("[player.key] was selected for [role_text] by lottery, but they have not joined the game."))
+		log_debug(SPAN_DEBUG("[player.ckey] was selected for [role_text] by lottery, but they have not joined the game."))
 		return 0
 
 	pending_antagonists |= player
-	log_debug(SPAN_DEBUG("[player.key] has been selected for [role_text] by lottery."))
+	log_debug(SPAN_DEBUG("[player.ckey] has been selected for [role_text] by lottery."))
 
 	//Ensure that antags with ANTAG_OVERRIDE_JOB do not occupy job slots.
 	if(flags & ANTAG_OVERRIDE_JOB)

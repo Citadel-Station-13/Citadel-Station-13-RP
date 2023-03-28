@@ -22,3 +22,11 @@
 			// Add the delimiter before each successive node.
 			. += delimiter
 		. += SANITIZE_FILENAME(node)
+
+/**
+ * gets file name of a path
+ * expensive, duh.
+ */
+/proc/filepath_extract_name(path)
+	var/pos = findlasttext_char(path, "/")
+	return copytext(path, pos + 1)

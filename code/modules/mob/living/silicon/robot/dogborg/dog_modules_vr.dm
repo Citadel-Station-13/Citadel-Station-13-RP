@@ -3,7 +3,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "jaws"
 	desc = "The jaws of the law."
-	force = 10
+	damage_force = 10
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -14,7 +14,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
-	force = 5
+	damage_force = 5
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -22,6 +22,9 @@
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -30,7 +33,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "jaws"
 			desc = "The jaws of the law."
-			force = 10
+			damage_force = 10
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -40,7 +43,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
-			force = 5
+			damage_force = 5
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -53,13 +56,16 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!( istype(user.loc, /turf) ))
 		return
 
@@ -187,6 +193,9 @@
 		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -208,47 +217,47 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
-		to_chat(user, "<span class='warning'>You need to take \the [target.name] off before cleaning it!</span>")
+		to_chat(user, "<span class='warning'>You need to take [target] off before cleaning it!</span>")
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
-		user.visible_message("[user] begins to lap up water from [target.name].", "<span class='notice'>You begin to lap up water from [target.name].</span>")
-		if(do_after (user, 50))
+		user.visible_message("[user] begins to lap up water from [target].", "<span class='notice'>You begin to lap up water from [target].</span>")
+		if(do_after(user, 50, target = target))
 			water.add_charge(500)
 	else if(water.energy < 5)
 		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
 	else if(istype(target,/obj/effect/debris/cleanable))
-		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")
-		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
+		user.visible_message("[user] begins to lick off [target].", "<span class='notice'>You begin to lick off [target]...</span>")
+		if(do_after(user, 50, target = target))
+			to_chat(user, "<span class='notice'>You finish licking off [target].</span>")
 			water.use_charge(5)
 			qdel(target)
 			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
 	else if(istype(target,/obj/item))
 		if(istype(target,/obj/item/trash))
-			user.visible_message("[user] nibbles away at \the [target.name].", "<span class='notice'>You begin to nibble away at \the [target.name]...</span>")
-			if(do_after (user, 50))
-				user.visible_message("[user] finishes eating \the [target.name].", "<span class='notice'>You finish eating \the [target.name].</span>")
-				to_chat(user, "<span class='notice'>You finish off \the [target.name].</span>")
+			user.visible_message("[user] nibbles away at [target].", "<span class='notice'>You begin to nibble away at [target]...</span>")
+			if(do_after(user, 50, target = target))
+				user.visible_message("[user] finishes eating [target].", "<span class='notice'>You finish eating [target].</span>")
+				to_chat(user, "<span class='notice'>You finish off [target].</span>")
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
 				R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))
-			user.visible_message("[user] begins cramming \the [target.name] down its throat.", "<span class='notice'>You begin cramming \the [target.name] down your throat...</span>")
-			if(do_after (user, 50))
-				user.visible_message("[user] finishes gulping down \the [target.name].", "<span class='notice'>You finish swallowing \the [target.name].</span>")
-				to_chat(user, "<span class='notice'>You finish off \the [target.name], and gain some charge!</span>")
+			user.visible_message("[user] begins cramming [target] down its throat.", "<span class='notice'>You begin cramming \the [target.name] down your throat...</span>")
+			if(do_after(user, 50, target = target))
+				user.visible_message("[user] finishes gulping down [target].", "<span class='notice'>You finish swallowing [target].</span>")
+				to_chat(user, "<span class='notice'>You finish off [target], and gain some charge!</span>")
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
 				water.use_charge(5)
 				qdel(target)
 			return
-		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
-		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
+		if(do_after(user, 50, target = target))
+			to_chat(user, "<span class='notice'>You clean [target].</span>")
 			water.use_charge(5)
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
@@ -267,16 +276,16 @@
 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 			R.cell.charge -= 666
 		else
-			user.visible_message("<span class='notice'>\the [user] affectionally licks all over \the [target]'s face!</span>", "<span class='notice'>You affectionally lick all over \the [target]'s face!</span>")
+			user.visible_message("<span class='notice'>\The [user] affectionally licks all over [target]'s face!</span>", "<span class='notice'>You affectionally lick all over [target]'s face!</span>")
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
 				H.Weaken(3)
 	else
-		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
-		if(do_after (user, 50))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
+		if(do_after(user, 50, target = target))
+			to_chat(user, "<span class='notice'>You clean [target].</span>")
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
@@ -295,6 +304,9 @@
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(!enabled)
 		R.scrubbing = TRUE
@@ -311,7 +323,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "projgun"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/item/projectile/beam/disable
+	projectile_type = /obj/projectile/beam/disable
 	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
 	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
 	//cell_type = null //Same cell as a taser until edits are made.
@@ -321,7 +333,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
-	force = 20 //Takes 5 hits to 100-0
+	damage_force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
@@ -337,7 +349,10 @@
 	var/cooldown = 0
 	var/datum/matter_synth/glass = null
 
-/obj/item/lightreplacer/dogborg/attack_self(mob/user)//Recharger refill is so last season. Now we recycle without magic!
+/obj/item/lightreplacer/dogborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return//Recharger refill is so last season. Now we recycle without magic!
 	if(uses >= max_uses)
 		to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 		return
@@ -363,11 +378,14 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	R.leap()
 
@@ -441,33 +459,36 @@
 	w_class = ITEMSIZE_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/dogborg/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+/obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
+	if(!istype(H))
+		return
 	if(target_zone == BP_TORSO && imp == null)
-		for(var/obj/item/organ/I in M.organs)
+		for(var/obj/item/organ/I in H.organs)
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				if(imp == null)
-					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+					H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
 					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-					user.do_attack_animation(M)
-					var/turf/T1 = get_turf(M)
-					if (T1 && ((M == user) || do_after(user, 20)))
-						if(user && M && (get_turf(M) == T1) && src)
-							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
-							add_attack_logs(user,M,"Mirror removed by [user]")
+					user.do_attack_animation(H)
+					var/turf/T1 = get_turf(H)
+					if (T1 && ((H == user) || do_after(user, 20)))
+						if(user && H && (get_turf(H) == T1) && src)
+							H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+							add_attack_logs(user,H,"Mirror removed by [user]")
 							src.imp = MI
 							qdel(MI)
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+			H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 20)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
+			user.do_attack_animation(H)
+			var/turf/T1 = get_turf(H)
+			if (T1 && ((H == user) || do_after(user, 20)))
+				if(user && H && (get_turf(H) == T1) && src && src.imp)
+					H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+					add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
+					if(imp.handle_implant(H))
+						imp.post_implant(H)
 					src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")

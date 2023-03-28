@@ -5,7 +5,8 @@
 	icon_state = "lantern"
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
-	light_color = "FF9933" // A slight yellow/orange color.
+	light_color = "#ff9933" // A slight yellow/orange color.
+	light_wedge = LIGHT_OMNI
 
 /*****************************Pickaxe********************************/
 
@@ -14,7 +15,7 @@
 	desc = "The most basic of mining drills, for short excavations and small mineral extractions."
 	icon = 'icons/obj/items.dmi'
 	slot_flags = SLOT_BELT
-	force = 15.0
+	damage_force = 15.0
 	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
@@ -122,7 +123,7 @@
 	name = "icepick"
 	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
 	slot_flags = SLOT_BELT
-	force = 12
+	damage_force = 12
 	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
@@ -175,7 +176,7 @@
 			//visible_message("[usr] starts \the [src] up with a loud grinding!")
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = 15
+			damage_force = 15
 			sharp = 1
 			active = 1
 			update_icon()
@@ -187,13 +188,16 @@
 	to_chat(user, "You switch the gas nozzle on the drill, turning it off.")
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = 3
+	damage_force = 3
 	edge = 0
 	sharp = 0
 	active = 0
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		turnOn(user)
 	else
@@ -265,7 +269,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "shovel"
 	slot_flags = SLOT_BELT
-	force = 8.0
+	damage_force = 8.0
 	throw_force = 4.0
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
@@ -281,7 +285,7 @@
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "shovel_bone"
-	force = 15
+	damage_force = 15
 	throw_force = 12
 	tool_speed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
@@ -292,7 +296,7 @@
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
 	item_state = "spade"
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 
@@ -319,9 +323,11 @@
 	name = "flags"
 	desc = "Some colourful flags."
 	singular_name = "flag"
+	icon = 'icons/obj/mining.dmi'
 	amount = 10
 	max_amount = 10
-	icon = 'icons/obj/mining.dmi'
+	zmm_flags = ZMM_MANGLE_PLANES
+
 	var/upright = 0
 	var/base_state
 
@@ -355,7 +361,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(user as mob)
+/obj/item/stack/flag/attack_hand(mob/user, list/params)
 	if(upright)
 		upright = 0
 		icon_state = base_state
@@ -364,7 +370,10 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user as mob)
+/obj/item/stack/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/obj/item/stack/flag/F = locate() in get_turf(src)
 

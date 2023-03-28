@@ -39,8 +39,8 @@
 
 	can_infect = 0 //The only exception here. Sweeping a scanner probably won't transfer many germs.
 
-	min_duration = 20
-	max_duration = 40
+	min_duration = 10
+	max_duration = 20
 
 /datum/surgery_step/repairflesh/scan_injury/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -73,7 +73,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" , \
 	"<span class='warning'>Your hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" )
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(BRUISE, 10)
 
 //////////////////////////////////////////////////////////////////
 //						BURN STEP								//
@@ -92,8 +92,8 @@
 
 	priority = 3
 
-	min_duration = 90
-	max_duration = 120
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/repairflesh/repair_burns/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -124,7 +124,7 @@
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
-		affected.createwound(BRUISE, 10)
+		affected.create_wound(BRUISE, 10)
 	affected.heal_damage(0, 25, 0, 0)
 	if(!(affected.burn_dam))
 		affected.burn_stage = 0
@@ -137,8 +137,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
-	affected.createwound(BRUISE, 10)
-	affected.createwound(CUT, 5)
+	affected.create_wound(BRUISE, 10)
+	affected.create_wound(CUT, 5)
 	if(istype(tool, /obj/item/stack) && prob(30))
 		var/obj/item/stack/T = tool
 		T.use(1)
@@ -162,8 +162,8 @@
 
 	priority = 3
 
-	min_duration = 90
-	max_duration = 120
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/repairflesh/repair_brute/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -194,7 +194,7 @@
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
-		affected.createwound(BRUISE, 10)
+		affected.create_wound(BRUISE, 10)
 	affected.heal_damage(25, 0, 0, 0)
 	if(!(affected.brute_dam))
 		affected.brute_stage = 0
@@ -207,8 +207,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
-	affected.createwound(BRUISE, 10)
-	affected.createwound(CUT, 5)
+	affected.create_wound(BRUISE, 10)
+	affected.create_wound(CUT, 5)
 	if(istype(tool, /obj/item/stack) && prob(30))
 		var/obj/item/stack/T = tool
 		T.use(1)

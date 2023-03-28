@@ -77,7 +77,7 @@
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
 
-/obj/machinery/computer/telescience/attack_hand(mob/user)
+/obj/machinery/computer/telescience/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	nano_ui_interact(user)
@@ -213,7 +213,7 @@
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
-			if(!A || (A.area_flags & AREA_BLUE_SHIELDED))
+			if(!A || (A.area_flags & AREA_FLAG_BLUE_SHIELDED))
 				telefail()
 				temp_msg = "ERROR!<BR>Target is shielded from bluespace intersection!"
 				return

@@ -1,10 +1,10 @@
-/datum/tgui_module/rustfuel_control
+/datum/tgui_module_old/rustfuel_control
 	name = "Fuel Injector Control"
 	tgui_id = "RustFuelControl"
 
 	var/fuel_tag = ""
 
-/datum/tgui_module/rustfuel_control/ui_act(action, params)
+/datum/tgui_module_old/rustfuel_control/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -26,7 +26,7 @@
 			if(new_ident)
 				fuel_tag = new_ident
 
-/datum/tgui_module/rustfuel_control/ui_data(mob/user)
+/datum/tgui_module_old/rustfuel_control/ui_data(mob/user)
 	var/list/data = list()
 	var/list/fuels = list()
 
@@ -47,5 +47,5 @@
 	data["fuels"] = fuels
 	return data
 
-/datum/tgui_module/rustfuel_control/ntos
+/datum/tgui_module_old/rustfuel_control/ntos
 	ntos = TRUE

@@ -19,27 +19,27 @@
 
 //////////////////////////////Capturing////////////////////////////////////////////////////////
 
-/obj/item/soulstone/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	if(!istype(M, /mob/living/carbon/human))//If target is not a human.
+/obj/item/soulstone/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!istype(target, /mob/living/carbon/human))//If target is not a human.
 		return ..()
-	if(istype(M, /mob/living/carbon/human/dummy))
-		return..()
-	if(jobban_isbanned(M, "cultist"))
+	if(istype(target, /mob/living/carbon/human/dummy))
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(jobban_isbanned(target, "cultist"))
 		to_chat(user, "<span class='warning'>This person's soul is too corrupt and cannot be captured!</span>")
-		return..()
-
-	if(M.has_brain_worms()) //Borer stuff - RR
+		return
+	if(target.has_brain_worms()) //Borer stuff - RR
 		to_chat(user, "<span class='warning'>This being is corrupted by an alien intelligence and cannot be soul trapped.</span>")
-		return..()
-
-	add_attack_logs(user,M,"Soulstone'd with [src.name]")
-	transfer_soul("VICTIM", M, user)
-	return
-
+		return
+	add_attack_logs(user,target,"Soulstone'd with [src.name]")
+	transfer_soul("VICTIM", target, user)
 
 ///////////////////Options for using captured souls///////////////////////////////////////
 
 /obj/item/soulstone/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!in_range(src, user))
 		return
 	user.set_machine(src)

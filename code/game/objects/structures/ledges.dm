@@ -2,7 +2,7 @@
 	name = "rock ledge"
 	desc = "An easily scaleable rocky ledge."
 	icon = 'icons/obj/ledges.dmi'
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	density = TRUE
 	climbable = TRUE
 	anchored = TRUE
@@ -18,7 +18,7 @@
 	desc = "An easily scaleable rocky ledge."
 	icon = 'icons/obj/ledges.dmi'
 	density = TRUE
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	climbable = TRUE
 	anchored = TRUE
 	layer = STAIRS_LAYER

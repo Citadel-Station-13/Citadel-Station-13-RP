@@ -27,6 +27,9 @@
 	set_active(!on)
 
 /obj/item/t_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_active(!on)
 
 /obj/item/t_scanner/proc/set_active(var/active)
@@ -91,7 +94,7 @@
 		if(istype(scanned, /obj/machinery/atmospherics/pipe))
 			var/obj/machinery/atmospherics/pipe/P = scanned
 			I.color = P.pipe_color
-			I.add_overlay(P.overlays)
+			I.copy_overlays(P)
 
 		I.alpha = 128
 		I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT

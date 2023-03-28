@@ -3,14 +3,14 @@
 	set category = "IC"
 
 	if(zMove(UP))
-		to_chat(src, "<span class='notice'>You move upwards.</span>")
+		to_chat(src, SPAN_NOTICE("You move upwards."))
 
 /mob/verb/down()
-	set name = "Move Downwards" //cit change - dumb name, "Move Down" -> "Move Downwards"
+	set name = "Move Downwards"
 	set category = "IC"
 
 	if(zMove(DOWN))
-		to_chat(src, "<span class='notice'>You move down.</span>")
+		to_chat(src, SPAN_NOTICE("You move down."))
 
 /mob/proc/zMove(direction)
 	if(eyeobj)
@@ -21,64 +21,71 @@
 		return mech.relaymove(src,direction)
 
 	if(!can_ztravel())
-		to_chat(src, "<span class='warning'>You lack means of travel in that direction.</span>")
+		to_chat(src, SPAN_WARNING("You lack means of travel in that direction."))
 		return
 
 	var/turf/start = loc
 	if(!istype(start))
-		to_chat(src, "<span class='notice'>You are unable to move from here.</span>")
-		return 0
+		to_chat(src, SPAN_NOTICE("You are unable to move from here."))
+		return FALSE
 
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
 	if(!destination)
-		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
-		return 0
+		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
+		return FALSE
 
 	if(is_incorporeal())
 		forceMove(destination)
-		return 1
+		return TRUE
 
 	var/atom/obstructing = start.z_exit_obstruction(src, direction)
 	if(obstructing)
 		to_chat(src, SPAN_WARNING("\The [obstructing] is in the way."))
-		return 0
+		return FALSE
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
+
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
-			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
-			destination.audible_message("<span class='notice'>You hear something climbing up \the [lattice].</span>")
+			to_chat(src, SPAN_NOTICE("You grab \the [lattice] and start pulling yourself upward..."))
+			destination.audible_message(SPAN_NOTICE("You hear something climbing up \the [lattice]."))
 			if(do_after(src, pull_up_time))
-				to_chat(src, "<span class='notice'>You pull yourself up.</span>")
+				to_chat(src, SPAN_NOTICE("You pull yourself up."))
 			else
-				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
-				return 0
+				to_chat(src, SPAN_WARNING("You gave up on pulling yourself up."))
+				return FALSE
+
 		else if(ismob(src)) // Are they a mob, and are they currently flying??
 			var/mob/living/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
-					to_chat(src, "<span class='notice'>You can't fly in your current state.</span>")
+					to_chat(src, SPAN_NOTICE("You can't fly in your current state."))
 					H.stop_flying() //Should already be done, but just in case.
-					return 0
+					return FALSE
+
 				var/fly_time = max(7 SECONDS + (H.movement_delay() * 10), 1) //So it's not too useful for combat. Could make this variable somehow, but that's down the road.
-				to_chat(src, "<span class='notice'>You begin to fly upwards...</span>")
-				destination.audible_message("<span class='notice'>You hear the of air moving.</span>")
-				H.audible_message("<span class='notice'>[H] begins to soar upwards!</span>")
+				to_chat(src, SPAN_NOTICE("You begin to fly upwards..."))
+				destination.audible_message(SPAN_NOTICE("You hear the of air moving."))
+				H.audible_message(SPAN_NOTICE("[H] begins to soar upwards!"))
 				if(do_after(H, fly_time) && H.flying)
-					to_chat(src, "<span class='notice'>You fly upwards.</span>")
+					to_chat(src, SPAN_NOTICE("You fly upwards."))
 				else
-					to_chat(src, "<span class='warning'>You stopped flying upwards.</span>")
-					return 0
+					to_chat(src, SPAN_WARNING("You stopped flying upwards."))
+					return FALSE
 			else
-				to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-				return 0
+				to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
+				return FALSE
 		else
-			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-			return 0
+			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
+			return FALSE
+	var/old_z = get_z(src)
 	if(!Move(destination))
-		return 0
-	return 1
+		return FALSE
+	var/new_z = get_z(src)
+	if(old_z != new_z)
+		onTransitZ(old_z, new_z)
+	return TRUE
 
 /mob/proc/can_overcome_gravity()
 	return FALSE
@@ -326,15 +333,15 @@
 	else
 		locationTransitForceMove(landing)
 
-/atom/movable/proc/special_fall_handle(var/atom/A)
+/atom/movable/proc/special_fall_handle(atom/A)
 	return FALSE
 
-/mob/living/carbon/human/special_fall_handle(var/atom/A)
+/mob/living/carbon/human/special_fall_handle(atom/A)
 	if(species)
 		return species.fall_impact_special(src, A)
 	return FALSE
 
-/atom/movable/proc/find_fall_target(var/turf/oldloc, var/turf/landing)
+/atom/movable/proc/find_fall_target(turf/oldloc, turf/landing)
 	if(isopenturf(oldloc))
 		oldloc.visible_message("\The [src] falls down through \the [oldloc]!", "You hear something falling through the air.")
 
@@ -351,37 +358,46 @@
 	if(landing.CheckFall(src))
 		return landing
 
-/mob/living/carbon/human/find_fall_target(var/turf/landing)
+/mob/living/carbon/human/find_fall_target(turf/landing)
 	if(species)
 		var/atom/A = species.find_fall_target_special(src, landing)
 		if(A)
 			return A
 	return ..()
 
-//CheckFall landing.fall_impact(src)
+// CheckFall landing.fall_impact(src)
 
-// ## THE FALLING PROCS ###
+//! ## THE FALLING PROCS ###
 
-// Called on everything that falling_atom might hit. Return TRUE if you're handling it so find_fall_target() will stop checking.
-/atom/proc/CheckFall(var/atom/movable/falling_atom)
+
+/**
+ * Called on everything that falling_atom might hit.
+ * Return TRUE if you're handling it so find_fall_target() will stop checking.
+ */
+/atom/proc/CheckFall(atom/movable/falling_atom)
 	if(density && !(atom_flags & ATOM_BORDER))
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
-// If you are hit: how is it handled.
-// Return TRUE if the generic fall_impact should be called
-// Return FALSE if you handled it yourself or if there's no effect from hitting you
-/atom/proc/check_impact(var/atom/movable/falling_atom)
+
+/**
+ * If you are hit: how is it handled.
+ * Return TRUE if the generic fall_impact should be called.
+ * Return FALSE if you handled it yourself or if there's no effect from hitting you.
+ */
+/atom/proc/check_impact(atom/movable/falling_atom)
 	return TRUE
 
-// Called by CheckFall when we actually hit something. Various Vars will be described below
-// hit_atom is the thing we fall on
-// damage_min is the smallest amount of damage a thing (currently only mobs and mechs) will take from falling
-// damage_max is the largest amount of damage a thing (currently only mobs and mechs) will take from falling.
-// If silent is True, the proc won't play sound or give a message.
-// If planetary is True, it's harder to stop the fall damage
 
-/atom/movable/proc/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 10, var/silent = FALSE, var/planetary = FALSE)
+/**
+ * Called by CheckFall when we actually hit something. Various Vars will be described below.
+ * hit_atom is the thing we fall on.
+ * damage_min is the smallest amount of damage a thing (currently only mobs and mechs) will take from falling.
+ * damage_max is the largest amount of damage a thing (currently only mobs and mechs) will take from falling.
+ * If silent is True, the proc won't play sound or give a message.
+ * If planetary is True, it's harder to stop the fall damage.
+ */
+/atom/movable/proc/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 10, silent = FALSE, planetary = FALSE)
 	if(!silent)
 		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
@@ -389,34 +405,43 @@
 	for(var/mob/M in buckled_mobs)
 		M.fall_impact(hit_atom, damage_min, damage_max, silent, planetary)
 
-// Take damage from falling and hitting the ground
-/mob/living/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 5, var/silent = FALSE, var/planetary = FALSE)
+
+/// Take damage from falling and hitting the ground.
+/mob/living/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 5, silent = FALSE, planetary = FALSE)
 	var/turf/landing = get_turf(hit_atom)
-	if(planetary && src.CanParachute())
+	if(planetary && CanParachute())
 		if(!silent)
-			visible_message("<span class='warning'>\The [src] glides in from above and lands on \the [landing]!</span>", \
-				"<span class='danger'>You land on \the [landing]!</span>", \
-				"You hear something land \the [landing].")
+			visible_message(
+				SPAN_WARNING("\The [src] glides in from above and lands on \the [landing]!"),
+				SPAN_DANGER("You land on \the [landing]!"),
+				SPAN_HEAR("You hear something land \the [landing]."),
+			)
 		return
-	else if(!planetary && src.softfall) // Falling one floor and falling one atmosphere are very different things
+	else if(!planetary && softfall) // Falling one floor and falling one atmosphere are very different things
 		if(!silent)
-			visible_message("<span class='warning'>\The [src] falls from above and lands on \the [landing]!</span>", \
-				"<span class='danger'>You land on \the [landing]!</span>", \
-				"You hear something land \the [landing].")
+			visible_message(
+				SPAN_WARNING("\The [src] falls from above and lands on \the [landing]!"),
+				SPAN_DANGER("You land on \the [landing]!"),
+				SPAN_HEAR("You hear something land \the [landing]."),
+			)
 		return
 	else
 		if(!silent)
 			if(planetary)
-				visible_message("<span class='danger'><font size='3'>\A [src] falls out of the sky and crashes into \the [landing]!</font></span>", \
-					"<span class='danger'><font size='3'> You fall out of the sky and crash into \the [landing]!</font></span>", \
-					"You hear something slam into \the [landing].")
+				visible_message(
+					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
+					SPAN_USERDANGER("You fall out of the sky and crash into \the [landing]!"),
+					SPAN_HEAR("You hear something slam into \the [landing]."),
+				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
-				visible_message("<span class='warning'>\The [src] falls from above and slams into \the [landing]!</span>", \
-					"<span class='danger'>You fall off and hit \the [landing]!</span>", \
-					"You hear something slam into \the [landing].")
-			playsound(loc, "punch", 25, 1, -1)
+				visible_message(
+					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
+					SPAN_DANGER("You fall off and hit \the [landing]!"),
+					SPAN_HEAR("You hear something slam into \the [landing]."),
+				)
+			playsound(loc, "punch", 25, TRUE, -1)
 
 		// Because wounds heal rather quickly, 10 (the default for this proc) should be enough to discourage jumping off but not be enough to ruin you, at least for the first time.
 		// Hits 10 times, because apparently targeting individual limbs lets certain species survive the fall from atmosphere
@@ -431,27 +456,37 @@
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable
-	var/parachute = FALSE	// Is this thing a parachute itself?
-	var/hovering = FALSE	// Is the thing floating or flying in some way? If so, don't fall normally.	//Not implemented yet, idea is to let mobs/mechs ignore terrain slowdown and falling down floors
-	var/softfall = FALSE	// Is the thing able to lessen their impact upon falling?
-	var/parachuting = FALSE	// Is the thing able to jump out of planes and survive? Don't check this directly outside of CanParachute().
+	/// Is this thing a parachute itself?
+	var/parachute = FALSE
+	/**
+	 * Is the thing floating or flying in some way? If so, don't fall normally.
+	 *! Not implemented yet, idea is to let mobs/mechs ignore terrain slowdown and falling down floors.
+	 */
+	var/hovering = FALSE
+	/// Is the thing able to lessen their impact upon falling?
+	var/softfall = FALSE
+	/// Is the thing able to jump out of planes and survive? Don't check this directly outside of CanParachute().
+	var/parachuting = FALSE
 
 /atom/movable/proc/isParachute()
 	return parachute
 
-//This is what makes the parachute items know they've been used.
-//I made it /atom/movable so it can be retooled for other things (mobs, mechs, etc), though it's only currently called in human/CanParachute().
+
+/**
+ * This is what makes the parachute items know they've been used.
+ * I made it /atom/movable so it can be retooled for other things (mobs, mechs, etc), though it's only currently called in human/CanParachute().
+ */
 /atom/movable/proc/handleParachute()
 	return
 
-//Checks if the thing is allowed to survive a fall from space
+/// Checks if the thing is allowed to survive a fall from space.
 /atom/movable/proc/CanParachute()
 	return parachuting
 
-//For humans, this needs to be a wee bit more complicated
+/// For humans, this needs to be a wee bit more complicated.
 /mob/living/carbon/human/CanParachute()
-	//Certain slots don't really need to be checked for parachute ability, i.e. pockets, ears, etc. If this changes, just add them to the loop, I guess?
-	//This is done in Priority Order, so items lower down the list don't call handleParachute() unless they're actually used.
+	// Certain slots don't really need to be checked for parachute ability, i.e. pockets, ears, etc. If this changes, just add them to the loop, I guess?
+	// This is done in Priority Order, so items lower down the list don't call handleParachute() unless they're actually used.
 	if(back && back.isParachute())
 		back.handleParachute()
 		return TRUE
@@ -470,13 +505,13 @@
 	else
 		return parachuting
 
-//Mech Code
-/obj/mecha/handle_fall(var/turf/landing)
+// Mech Code
+/obj/mecha/handle_fall(turf/landing)
 	// First things first, break any lattice
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, loc)
 	if(lattice)
 		// Lattices seem a bit too flimsy to hold up a massive exosuit.
-		lattice.visible_message("<span class='danger'>\The [lattice] collapses under the weight of \the [src]!</span>")
+		lattice.visible_message(SPAN_DANGER("\The [lattice] collapses under the weight of \the [src]!"))
 		qdel(lattice)
 
 	// Then call parent to have us actually fall
@@ -485,7 +520,7 @@
 /obj/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
 	// Anything on the same tile as the landing tile is gonna have a bad day.
 	for(var/mob/living/L in hit_atom.contents)
-		L.visible_message("<span class='danger'>\The [src] crushes \the [L] as it lands on them!</span>")
+		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
 		L.adjustBruteLoss(rand(70, 100))
 		L.Weaken(8)
 
@@ -493,29 +528,37 @@
 
 	if(planetary && src.CanParachute())
 		if(!silent)
-			visible_message("<span class='warning'>\The [src] glides in from above and lands on \the [landing]!</span>", \
-				"<span class='danger'>You land on \the [landing]!</span>", \
-				"You hear something land \the [landing].")
+			visible_message(
+				SPAN_WARNING("\The [src] glides in from above and lands on \the [landing]!"),
+				SPAN_DANGER("You land on \the [landing]!"),
+				SPAN_HEAR("You hear something land \the [landing]."),
+			)
 		return
 	else if(!planetary && src.softfall) // Falling one floor and falling one atmosphere are very different things
 		if(!silent)
-			visible_message("<span class='warning'>\The [src] falls from above and lands on \the [landing]!</span>", \
-				"<span class='danger'>You land on \the [landing]!</span>", \
-				"You hear something land \the [landing].")
+			visible_message(
+				SPAN_WARNING("\The [src] falls from above and lands on \the [landing]!"),
+				SPAN_DANGER("You land on \the [landing]!"),
+				SPAN_HEAR("You hear something land \the [landing]."),
+			)
 		return
 	else
 		if(!silent)
 			if(planetary)
-				visible_message("<span class='danger'><font size='3'>\A [src] falls out of the sky and crashes into \the [landing]!</font></span>", \
-					"<span class='danger'><font size='3'> You fall out of the skiy and crash into \the [landing]!</font></span>", \
-					"You hear something slam into \the [landing].")
+				visible_message(
+					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
+					SPAN_USERDANGER("You fall out of the skiy and crash into \the [landing]!"),
+					SPAN_HEAR("You hear something slam into \the [landing]."),
+				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
-				visible_message("<span class='warning'>\The [src] falls from above and slams into \the [landing]!</span>", \
-					"<span class='danger'>You fall off and hit \the [landing]!</span>", \
-					"You hear something slam into \the [landing].")
-			playsound(loc, "punch", 25, 1, -1)
+				visible_message(
+					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
+					SPAN_DANGER("You fall off and hit \the [landing]!"),
+					SPAN_HEAR("You hear something slam into \the [landing]."),
+				)
+			playsound(loc, "punch", 25, TRUE, -1)
 
 	// And now to hurt the mech.
 	if(!planetary)
@@ -529,3 +572,13 @@
 	if(istype(hit_atom, /turf/simulated/floor))
 		var/turf/simulated/floor/ground = hit_atom
 		ground.break_tile()
+
+
+/mob/CheckFall(atom/movable/falling_atom)
+	return falling_atom.fall_impact(src)
+
+//! I didn't feel like removing @silicons' check in handle_fall(). @Zandario
+/mob/living/proc/dropped_onto(atom/hit_atom)
+	if(!isliving(hit_atom))
+		return FALSE
+	return TRUE

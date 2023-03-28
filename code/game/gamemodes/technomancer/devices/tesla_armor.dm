@@ -13,7 +13,7 @@
 	icon_state = "tesla_armor_1" //wip
 	blood_overlay_type = "armor"
 	slowdown = 1
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	action_button_name = "Toggle Tesla Armor"
 	var/active = 1	//Determines if the armor will zap or block
 	var/ready = 1 //Determines if the next attack will be blocked, as well if a strong lightning bolt is sent out at the attacker.
@@ -24,8 +24,8 @@
 /obj/item/clothing/suit/armor/tesla/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	//First, some retaliation.
 	if(active)
-		if(istype(damage_source, /obj/item/projectile))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile))
+			var/obj/projectile/P = damage_source
 			if(P.firer && get_dist(user, P.firer) <= 3)
 				if(ready)
 					shoot_lightning(P.firer, 40)
@@ -53,6 +53,9 @@
 	return 0
 
 /obj/item/clothing/suit/armor/tesla/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
 	update_icon()
@@ -76,7 +79,7 @@
 	..()
 
 /obj/item/clothing/suit/armor/tesla/proc/shoot_lightning(mob/target, power)
-	var/obj/item/projectile/beam/lightning/lightning = new(get_turf(src))
+	var/obj/projectile/beam/lightning/lightning = new(get_turf(src))
 	lightning.power = power
 	lightning.old_style_target(target)
 	lightning.fire()

@@ -18,12 +18,17 @@
 /obj/item/reagent_containers/food/condiment/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	return
 
-/obj/item/reagent_containers/food/condiment/attack_self(var/mob/user as mob)
+/obj/item/reagent_containers/food/condiment/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
-/obj/item/reagent_containers/food/condiment/attack(var/mob/M as mob, var/mob/user as mob, var/def_zone)
-	if(standard_feed_mob(user, M))
-		return
+/obj/item/reagent_containers/food/condiment/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/food/condiment/afterattack(var/obj/target, var/mob/user, var/flag)
 	if(standard_dispenser_refill(user, target))
@@ -36,7 +41,7 @@
 			to_chat(user, "<span class='notice'>There is no condiment left in \the [src].</span>")
 			return
 
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			to_chat(user, "<span class='notice'>You can't add more condiment to \the [target].</span>")
 			return
 

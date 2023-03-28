@@ -67,11 +67,11 @@
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/hide
-		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
-		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
-		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
-		verbs |= /mob/living/proc/usehardsuit
+		add_verb(src, /mob/living/proc/hide)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
 		update_icon()
@@ -88,11 +88,10 @@
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time
 
-/mob/living/simple_mob/protean_blob/Stat()
-	..()
-	if(humanform)
-		humanform.species.Stat(humanform)
-
+/mob/living/simple_mob/protean_blob/statpanel_data(client/C)
+	. = ..()
+	if(humanform && C.statpanel_tab("Species", TRUE))
+		. += humanform.species.statpanel_status(C, humanform)
 
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
@@ -261,7 +260,10 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
 		src.get_scooped(L)
 	else
@@ -392,7 +394,6 @@
 		blob.devourable = P.devourable
 		blob.feeding = P.feeding
 		blob.digest_leave_remains = P.digest_leave_remains
-		blob.allowmobvore = P.allowmobvore
 		blob.vore_taste = P.vore_taste
 		blob.permit_healbelly = P.permit_healbelly
 		blob.can_be_drop_prey = P.can_be_drop_prey

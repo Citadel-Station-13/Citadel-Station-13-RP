@@ -123,11 +123,9 @@
 	update_icon()
 
 /obj/item/storage/fancy/crayons/update_icon()
-	var/mutable_appearance/ma = new(src)
-	ma.cut_overlays()
+	cut_overlays()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		ma.add_overlay(image('icons/obj/crayons.dmi',crayon.colourName))
-	appearance = ma
+		add_overlay(crayon.colourName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon))
@@ -165,11 +163,9 @@
 	update_icon()
 
 /obj/item/storage/fancy/markers/update_icon()
-	var/mutable_appearance/ma = new(src)
-	ma.overlays = list()
+	cut_overlays()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		ma.add_overlay(image('icons/obj/crayons.dmi',"m"+marker.colourName))
-	appearance = ma
+		add_overlay("m[marker.colourName]")
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon/marker))
@@ -204,11 +200,9 @@
 	update_icon()
 
 /obj/item/storage/fancy/chalk/update_icon()
-	var/mutable_appearance/ma = new(src)
-	ma.overlays = list()
+	cut_overlays()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		ma.add_overlay(image('icons/obj/crayons.dmi',"c"+chalk.colourName))
-	appearance = ma
+		add_overlay("c[chalk.colourName]")
 
 /*
  * Cracker Packet
@@ -264,11 +258,8 @@
 		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
 	return ..()
 
-/obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M, /mob))
-		return
-
-	if(M == user && user.zone_sel.selecting == O_MOUTH)
+/obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(target == user && user.zone_sel.selecting == O_MOUTH)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 
@@ -420,7 +411,7 @@
 	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
 	max_storage_space = ITEMSIZE_COST_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6
-	req_access = list(access_virology)
+	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 
 /obj/item/storage/lockbox/vials/Initialize(mapload)
 	. = ..()

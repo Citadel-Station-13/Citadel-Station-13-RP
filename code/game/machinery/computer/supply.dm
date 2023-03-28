@@ -28,14 +28,14 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "supply"
 	light_color = "#b88b2e"
-	req_access = list(access_cargo)
+	req_access = list(ACCESS_SUPPLY_BAY)
 	circuit = /obj/item/circuitboard/supplycomp/control
 	authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/supplycomp/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))

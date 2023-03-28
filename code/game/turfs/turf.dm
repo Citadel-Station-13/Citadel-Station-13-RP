@@ -1,13 +1,18 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
+	abstract_type = /turf
+
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
 
+	//! Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
 	var/holy = 0
 
@@ -44,12 +49,20 @@
 
 	/**
 	 * Baseturfs
+	 *
+	 * Baseturfs can either be a list or a single turf type.
+	 * In class definitions it should always be a single type.
+	 * A de-duplicated/cached list will be created in init that builds the
+	 * baseturf "stack", so that we can access in runtime
+	 *
+	 * If this is a list, it's bottom first top last (so [1] is bottommost and [length] is topmost)
+	 *
+	 * To facilitate fast direct reads, we are not putting VAR_PRIVATE on this.
+	 *
+	 * ? Do not, under any circumstances, attempt to modify this list directly.
+	 * ? Helper procs will do that for you. Modfiying the list directly
+	 * ? WILL cause cache corruption and mess up the round.
 	 */
-	// baseturfs can be either a list or a single turf type.
-	// In class definition like here it should always be a single type.
-	// A list will be created in initialization that figures out the baseturf's baseturf etc.
-	// In the case of a list it is sorted from bottom layer to top.
-	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/baseturf_bottom
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
@@ -66,15 +79,15 @@
 
 	// General properties.
 	var/icon_old = null
-	/// How much does it cost to pathfind over this turf?
-	var/pathweight = 1
 	/// Has the turf been blessed?
 	var/blessed = FALSE
 
 	var/list/decals
 
 	/// How much the turf slows down movement, if any.
-	var/movement_cost = 0
+	var/slowdown = 0
+	/// Pathfinding cost; null defaults to slowdown
+	var/pathweight
 
 	var/list/footstep_sounds = null
 
@@ -87,6 +100,22 @@
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
 
+	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
+	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
+	// roofing tile). By default, it will ask the area for the state to use, and will update on
+	// area change. When dealing with weather, it will check the entire z-column for interruptions
+	// that will prevent it from using its own state, so a floor above a level will generally
+	// override both area is_outside, and turf is_outside. The only time the base value will be used
+	// by itself is if you are dealing with a non-multiz level, or the top level of a multiz chunk.
+
+	// Weather relies on is_outside to determine if it should apply to a turf or not and will be
+	// automatically updated on ChangeTurf set_outside etc. Don't bother setting it manually, it will
+	// get overridden almost immediately.
+
+	// TL;DR: just leave these vars alone.
+	// var/tmp/obj/abstract/weather_system/weather
+	var/tmp/is_outside = OUTSIDE_AREA
+
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
 	if(var_name in banned_edits)
@@ -98,23 +127,18 @@
  *
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
-/turf/Initialize(mapload)
+/turf/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(FALSE)
 	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_INITIALIZED
 
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.len = 0
-
 	assemble_baseturfs()
-
-	levelupdate()
 
 	SETUP_SMOOTHING()
 
-	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
-		QUEUE_SMOOTH(src)
+	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
+	QUEUE_SMOOTH(src)
 
 	//atom color stuff
 	if(color)
@@ -124,18 +148,23 @@
 		Entered(AM)
 
 	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
 
+	if (!mapload)
+		SSambient_lighting.queued += src
+
 	if (opacity)
 		has_opaque_atom = TRUE
 
-	//Pathfinding related
-	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
-		pathweight = movement_cost
+	if (mapload && permit_ao)
+		queue_ao()
+
+	if (mz_flags & MZ_MIMIC_BELOW)
+		setup_zmimic(mapload)
 
 	if(isnull(outdoors))
 		outdoors = A.initial_outdoors
@@ -158,6 +187,7 @@
 	if(force)
 		..()
 		//this will completely wipe turf state
+		vis_contents.len = 0
 		var/turf/B = new world.turf(src)
 		for(var/A in B.contents)
 			qdel(A)
@@ -168,24 +198,38 @@
 	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
 
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (mz_flags & MZ_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (mimic_proxy)
+		QDEL_NULL(mimic_proxy)
+
+	// clear vis contents here instead of in Init
 	vis_contents.len = 0
 
 	..()
 
 /turf/legacy_ex_act(severity)
-	return 0
+	return FALSE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
+
+/turf/proc/is_open()
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
 // Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
-/turf/attack_hand(mob/user)
+/turf/attack_hand(mob/user, list/params)
 	. = ..()
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)
@@ -307,7 +351,7 @@
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
 		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= (pathweight+t.pathweight)/2
+		cost *= ((isnull(pathweight)? slowdown : pathweight) + (isnull(t.pathweight)? t.slowdown : t.pathweight))/2
 		return cost
 	else
 		return get_dist(src,t)
@@ -431,3 +475,68 @@
 			return TRUE
 */
 	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+
+/* // TODO: Implement this. @Zandario
+/turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)
+
+	if(isnull(new_weather))
+		new_weather = global.weather_by_z["[z]"]
+
+	// We have a weather system and we are exposed to it; update our vis contents.
+	if(istype(new_weather) && is_outside())
+		if(weather != new_weather)
+			if(weather)
+				remove_vis_contents(src, weather.vis_contents_additions)
+			weather = new_weather
+			add_vis_contents(src, weather.vis_contents_additions)
+			. = TRUE
+
+	// We are indoors or there is no local weather system, clear our vis contents.
+	else if(weather)
+		remove_vis_contents(src, weather.vis_contents_additions)
+		weather = null
+		. = TRUE
+
+	// Propagate our weather downwards if we permit it.
+	if(force_update_below || (is_open() && .))
+		var/turf/below = GetBelow(src)
+		if(below)
+			below.update_weather(new_weather)
+*/
+
+/turf/proc/is_outside()
+
+	// Can't rain inside or through solid walls.
+	// TODO: dense structures like full windows should probably also block weather.
+	if(density)
+		return OUTSIDE_NO
+
+	// What would we like to return in an ideal world?
+	if(is_outside == OUTSIDE_AREA)
+		var/area/A = get_area(src)
+		. = A ? A.is_outside : OUTSIDE_NO
+	else
+		. = is_outside
+
+	// Notes for future self when confused: is_open() on higher
+	// turfs must match effective is_outside value if the turf
+	// should get to use the is_outside value it wants to. If it
+	// doesn't line up, we invert the outside value (roof is not
+	// open but turf wants to be outside, invert to OUTSIDE_NO).
+
+	// Do we have a roof over our head? Should we care?
+	if(HasAbove(z))
+		var/turf/top_of_stack = src
+		while(HasAbove(top_of_stack.z))
+			top_of_stack = GetAbove(top_of_stack)
+			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+				return !.
+
+/turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
+	if(is_outside != new_outside)
+		is_outside = new_outside
+		// if(!skip_weather_update)
+		// 	update_weather()
+		SSambient_lighting.queued += src
+		return TRUE
+	return FALSE

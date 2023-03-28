@@ -41,10 +41,8 @@
 /obj/item/laser_pointer/upgraded
 	diode = /obj/item/stock_parts/micro_laser/ultra
 
-
-
-/obj/item/laser_pointer/attack(mob/living/M, mob/user)
-	laser_act(M, user)
+/obj/item/laser_pointer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	laser_act(target, user)
 
 /obj/item/laser_pointer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stock_parts/micro_laser))

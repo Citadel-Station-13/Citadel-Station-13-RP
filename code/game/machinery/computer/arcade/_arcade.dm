@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/toy/blink								= 2,
 		/obj/item/clothing/under/syndicate/tacticool	= 2,
 		/obj/item/toy/sword								= 2,
-		/obj/item/gun/projectile/revolver/capgun		= 2,
+		/obj/item/gun/ballistic/revolver/capgun		= 2,
 		/obj/item/toy/crossbow							= 2,
 		/obj/item/clothing/suit/syndicatefake			= 2,
 		/obj/item/storage/fancy/crayons					= 2,

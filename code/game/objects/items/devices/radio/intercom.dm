@@ -72,7 +72,7 @@
 	. = ..()
 	internal_channels = list(
 		num2text(PUB_FREQ) = list(),
-		num2text(SEC_I_FREQ) = list(access_security)
+		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
@@ -91,18 +91,18 @@
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
 	desc = "Pirate radio, but not in the usual sense of the word."
 	frequency = RAID_FREQ
-	subspace_transmission = 1
-	syndie = 1
+	subspace_transmission = 0
+	syndie = 0
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
@@ -113,7 +113,7 @@
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(access_trader)
+	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -124,7 +124,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user as mob)
+/obj/item/radio/intercom/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)

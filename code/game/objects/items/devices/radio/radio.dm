@@ -1,25 +1,25 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(PUB_FREQ) = list(),
-	num2text(AI_FREQ)  = list(access_synth),
+	num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
 	num2text(ENT_FREQ) = list(),
-	num2text(ERT_FREQ) = list(access_cent_specops),
-	num2text(COMM_FREQ)= list(access_heads),
-	num2text(ENG_FREQ) = list(access_engine_equip, access_atmospherics),
-	num2text(MED_FREQ) = list(access_medical_equip),
-	num2text(MED_I_FREQ)=list(access_medical_equip),
-	num2text(SEC_FREQ) = list(access_security),
-	num2text(SEC_I_FREQ)=list(access_security),
-	num2text(SCI_FREQ) = list(access_tox, access_robotics, access_xenobiology, access_explorer),
-	num2text(SUP_FREQ) = list(access_cargo, access_mining_station),
-	num2text(SRV_FREQ) = list(access_janitor, access_library, access_hydroponics, access_bar, access_kitchen),
-	num2text(EXP_FREQ) = list(access_explorer, access_pilot, access_rd)
+	num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
+	num2text(COMM_FREQ)= list(ACCESS_COMMAND_BRIDGE),
+	num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
+	num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
+	num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
+	num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_GENERAL_EXPLORER),
+	num2text(SUP_FREQ) = list(ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MINE_OUTPOST),
+	num2text(SRV_FREQ) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_LIBRARY, ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN),
+	num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER, ACCESS_GENERAL_PILOT, ACCESS_SCIENCE_RD)
 ))
 
 GLOBAL_LIST_INIT(default_medbay_channels, list(
 	num2text(PUB_FREQ) = list(),
-	num2text(MED_FREQ) = list(access_medical_equip),
-	num2text(MED_I_FREQ) = list(access_medical_equip)
+	num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(MED_I_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT)
 ))
 
 /obj/item/radio
@@ -138,7 +138,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	return ..()
 
-/obj/item/radio/attack_self(mob/user as mob)
+/obj/item/radio/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	interact(user)
 
@@ -296,6 +299,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return UI_CLOSE
 	return ..()
 
+GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(null, null, null, 1))
+
 /obj/item/radio/proc/autosay(var/message, var/from, var/channel, list/zlevels = list(0)) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
@@ -309,7 +314,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if (!istype(connection))
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(null, null, null, 1)
+	var/mob/living/silicon/ai/announcer/A = GLOB.virtual_announcer_ai
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,
@@ -786,7 +791,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	icon_state = "radiopack"
 	item_state = "radiopack"
 	slot_flags = SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
@@ -805,7 +810,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/bluespace_radio/ui_action_click()
 	toggle_handset()
 
-/obj/item/bluespace_radio/attack_hand(mob/user)
+/obj/item/bluespace_radio/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_handset()
 	else

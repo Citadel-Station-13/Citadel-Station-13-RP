@@ -60,6 +60,7 @@ var/list/ai_verbs_default = list(
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
+	see_invisible = SEE_INVISIBLE_LIVING
 
 	/// The network we have access to.
 	var/list/network = list(NETWORK_DEFAULT)
@@ -126,12 +127,12 @@ var/list/ai_verbs_default = list(
 	var/carded
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	src.verbs |= ai_verbs_default
-	src.verbs |= silicon_subsystems
+	add_verb(src, ai_verbs_default)
+	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
-	src.verbs -= silicon_subsystems
+	remove_verb(src, ai_verbs_default)
+	remove_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
@@ -194,7 +195,7 @@ var/list/ai_verbs_default = list(
 			on_mob_init()
 
 	if(config_legacy.allow_ai_shells)
-		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
+		add_verb(src, /mob/living/silicon/ai/proc/deploy_to_shell_act)
 
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
@@ -248,12 +249,13 @@ var/list/ai_verbs_default = list(
 
 	return ..()
 
-/mob/living/silicon/ai/Stat()
-	..()
-	if(statpanel("Status"))
+/mob/living/silicon/ai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
 		if(!stat) // Make sure we're not unconscious/dead.
-			stat(null, text("System integrity: [(health+100)/2]%"))
-			stat(null, text("Connected synthetics: [connected_robots.len]"))
+			STATPANEL_DATA_LINE(text("System integrity: [(health+100)/2]%"))
+			STATPANEL_DATA_LINE(text("Connected synthetics: [connected_robots.len]"))
 			for(var/mob/living/silicon/robot/R in connected_robots)
 				var/robot_status = "Nominal"
 				if(R.shell)
@@ -263,11 +265,11 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				stat(null, text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				STATPANEL_DATA_LINE(text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
 				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]"))
-			stat(null, text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
+			STATPANEL_DATA_LINE(text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
 		else
-			stat(null, text("Systems nonfunctional"))
+			STATPANEL_DATA_LINE(text("Systems nonfunctional"))
 
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -310,6 +312,10 @@ var/list/ai_verbs_default = list(
 
 	if(aiCommunicator)
 		aiCommunicator.register_device(src.name)
+
+/mob/living/silicon/ai/handle_regular_hud_updates()
+	see_invisible = SEE_INVISIBLE_LIVING
+	. = ..()
 
 /*
 	The AI Power supply is a dummy object used for powering the AI since only machinery should be using power.

@@ -110,12 +110,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/job/station/assistant
+#define DEFAULT_JOB_TYPE /datum/role/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
-
-#define ECO_MODIFIER 10
 
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
@@ -443,7 +441,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define HERM "herm"
 // For custom species
 #define STARTING_SPECIES_POINTS	1
-#define MAX_SPECIES_TRAITS		5
+#define MAX_SPECIES_TRAITS		7
 
 // Xenochimera thing mostly
 #define REVIVING_NOW		-1
@@ -573,3 +571,11 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 //* metadata
 #define CASSETTE_METADATA_LANGUAGE "%"
 #define CASSETTE_METADATA_NAME "^"
+
+
+#define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
+
+//Turf/area values for 'this space is outside' checks
+#define OUTSIDE_AREA null
+#define OUTSIDE_NO   FALSE
+#define OUTSIDE_YES  TRUE

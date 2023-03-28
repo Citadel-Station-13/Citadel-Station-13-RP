@@ -1,5 +1,6 @@
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
+	id = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
 	category = "Unathi"
 	name_plural = SPECIES_UNATHI
@@ -46,7 +47,6 @@
 
 	max_age = 260
 
-	economic_modifier = 10
 
 	cold_level_1 = 280
 	cold_level_2 = 220

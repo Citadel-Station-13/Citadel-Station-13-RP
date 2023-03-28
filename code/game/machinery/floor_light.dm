@@ -56,11 +56,11 @@ var/list/floor_light_cache = list()
 		src.light_color = newcolor
 		update_brightness()
 		visible_message(SPAN_NOTICE("\The [user] has changed \the [src] color."))
-	else if(W.force && user.a_intent == "hurt")
+	else if(W.damage_force && user.a_intent == "hurt")
 		attack_hand(user)
 	return
 
-/obj/machinery/floor_light/attack_hand(mob/user)
+/obj/machinery/floor_light/attack_hand(mob/user, list/params)
 
 	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(machine_stat & BROKEN))

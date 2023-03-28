@@ -315,8 +315,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
+		ckey = mind.ckey
 		if(mind.current)
 			M = mind.current
 			if(M.client)
@@ -392,6 +391,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
 
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
+
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
 	if (config_legacy.log_debug)
@@ -441,8 +446,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_unit_test(text)
 	log_world("## UNIT_TEST: [text]")
 
-/proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+/proc/report_progress(progress_message)
+	admin_notice(SPAN_BOLDANNOUNCE("[progress_message]"), R_DEBUG)
 	log_world(progress_message)
 
 /proc/log_nsay(text, inside, mob/speaker)

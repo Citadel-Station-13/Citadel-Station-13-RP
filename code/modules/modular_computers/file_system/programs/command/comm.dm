@@ -11,7 +11,7 @@
 	program_menu_icon = "flag"
 	nanomodule_path = /datum/nano_module/program/comm
 	extended_desc = "Used to command and control. Can relay long-range communications. This program can not be run on tablet computers."
-	required_access = access_heads
+	required_access = ACCESS_COMMAND_BRIDGE
 	requires_ntnet = 1
 	size = 12
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
@@ -97,7 +97,7 @@
 
 /datum/nano_module/program/comm/proc/get_authentication_level(var/mob/user)
 	if(program)
-		if(program.can_run(user, 0, access_captain))
+		if(program.can_run(user, 0, ACCESS_COMMAND_CAPTAIN))
 			return 2
 		else
 			return program.can_run(user)

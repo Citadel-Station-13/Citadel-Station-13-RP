@@ -6,7 +6,7 @@ var/list/table_icon_cache = list()
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	anchored = TRUE
 	climbable = TRUE
 	layer = TABLE_LAYER
@@ -26,8 +26,8 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/datum/material/material = null
-	var/datum/material/reinforced = null
+	var/datum/material/material
+	var/datum/material/reinforced
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
@@ -182,7 +182,7 @@ var/list/table_icon_cache = list()
 
 	return ..()
 
-/obj/structure/table/attack_hand(mob/user as mob)
+/obj/structure/table/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -372,13 +372,13 @@ var/list/table_icon_cache = list()
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
+				var/image/I = get_table_image(icon, "[material.table_icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
 				overlays_to_add += I
 
 		// Reinforcements
 		if(reinforced)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[reinforced.icon_reinf]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
+				var/image/I = get_table_image(icon, "[reinforced.table_reinf_icon_base]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
 				overlays_to_add += I
 
 		if(carpeted)
@@ -403,7 +403,7 @@ var/list/table_icon_cache = list()
 
 		icon_state = "flip[type]"
 		if(material)
-			var/image/I = image(icon, "[material.icon_base]_flip[type]")
+			var/image/I = image(icon, "[material.table_icon_base]_flip[type]")
 			I.color = material.icon_colour
 			I.alpha = 255 * material.opacity
 			overlays_to_add += I
@@ -412,7 +412,7 @@ var/list/table_icon_cache = list()
 			name = "table frame"
 
 		if(reinforced)
-			var/image/I = image(icon, "[reinforced.icon_reinf]_flip[type]")
+			var/image/I = image(icon, "[reinforced.table_reinf_icon_base]_flip[type]")
 			I.color = reinforced.icon_colour
 			I.alpha = 255 * reinforced.opacity
 			overlays_to_add += I

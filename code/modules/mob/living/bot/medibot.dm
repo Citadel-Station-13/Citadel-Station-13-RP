@@ -29,8 +29,8 @@
 	icon = 'icons/obj/bots/medibots.dmi'
 	icon_state = "medibot"
 	base_icon_state = "medkit"
-	req_one_access = list(access_robotics, access_medical)
-	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_MEDICAL_MAIN)
+	botcard_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medibot)
 
 	var/healthanalyzer = /obj/item/healthanalyzer
@@ -99,7 +99,7 @@
 
 	cut_overlays()
 
-	/// We add our overlays to this list, then add them all at once to avoid appearance churn.
+	/// We add our overlays to this list, then add them all at once to reduce SSoverlays overhead.
 	var/list/temp_overlays = list()
 	temp_overlays.Add("[base_icon_state]-scanner")
 	if(busy)
@@ -112,7 +112,7 @@
 		else
 			temp_overlays.Add("[base_icon_state]-[on]")
 
-	add_overlay(temp_overlays) // This makes one appearance churn instead of three.
+	add_overlay(temp_overlays)
 
 
 /mob/living/bot/medibot/handleIdle()
@@ -221,7 +221,13 @@
 	busy = FALSE
 	update_appearance()
 
-/mob/living/bot/medibot/attack_hand(mob/living/carbon/human/attacker)
+/mob/living/bot/medibot/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/attacker = user
+	if(!istype(attacker))
+		return
 	if(attacker.a_intent == INTENT_DISARM && !is_tipped)
 		attacker.visible_message(
 			SPAN_DANGER("[attacker] begins tipping over [src]."),
@@ -304,7 +310,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

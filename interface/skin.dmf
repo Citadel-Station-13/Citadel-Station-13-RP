@@ -8,20 +8,16 @@ window "mainwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		icon = 'icons\\CS13.png'
 		macro = "default"
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "split"
 		type = CHILD
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		left = "mapwindow"
 		right = "infowindow"
@@ -32,7 +28,6 @@ window "mainwindow"
 		size = 200x200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = ""
 	elem "tooltip"
@@ -41,7 +36,6 @@ window "mainwindow"
 		size = 999x999
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = ""
 
@@ -178,7 +172,7 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -222,7 +216,7 @@ window "outputwindow"
 		anchor2 = -1,-1
 		saved-params = ""
 		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		command = "Toggle-Hotkeys"
 		button-type = pushbox
 	elem "output"
 		type = OUTPUT
@@ -241,20 +235,64 @@ window "outputwindow"
 		is-visible = false
 		saved-params = ""
 
-window "statwindow"
-	elem "statwindow"
+window "stat_pane_browser"
+	elem "stat_pane_browser"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Status Panel"
 		is-pane = true
 	elem "statbrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = ""
+
+window "stat_pane_byond"
+	elem "stat_pane_byond"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Turf / Misc"
+		is-pane = true
+	elem "statpanel"
 		type = INFO
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = ""
+
+window "statwindow"
+	elem "statwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "stat_tab"
+		type = TAB
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
+		tabs = "stat_pane_browser,stat_pane_byond"
+		current-tab = "stat_pane_browser,stat_pane_byond"
+		multi-line = false
+		on-tab = ".statswitcher [[*]]"
 

@@ -251,9 +251,11 @@ GLOBAL_LIST(topic_status_cache)
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
-		if (usr)
-			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
-			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		if (usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
+			message_admins("Blocked reboot request from [key_name_admin(usr)]. Please use the Reboot World verb.")
+			return // no thank you
+			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			// message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World immediately due to host request."))
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting world..."))
@@ -426,6 +428,7 @@ GLOBAL_LIST(topic_status_cache)
 // Things to do when a new z-level was just made.
 /world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
+	assert_gps_level_list()
 	for(var/datum/controller/subsystem/S in Master.subsystems)
 		S.on_max_z_changed(old_z_count, new_z_count)
 

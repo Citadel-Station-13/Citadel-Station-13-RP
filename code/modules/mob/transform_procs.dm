@@ -81,13 +81,15 @@
 		O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/job/station/ai)
+		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/role/job/station/ai)
 		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
 	O.on_mob_init()
 
 	O.add_ai_verbs()
+
+	O.view_core()
 
 	O.rename_self("ai")
 	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.

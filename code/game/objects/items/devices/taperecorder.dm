@@ -57,7 +57,7 @@
 	return ..()
 
 
-/obj/item/tape_recorder/attack_hand(mob/user)
+/obj/item/tape_recorder/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()
@@ -342,6 +342,9 @@
 
 
 /obj/item/tape_recorder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(recording || playing)
 		stop()
 	else
@@ -368,7 +371,7 @@
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
 	matter = list(MAT_STEEL=20, "glass"=5)
-	force = 1
+	damage_force = 1
 	throw_force = 0
 	var/max_capacity = 1800
 	var/used_capacity = 0
@@ -387,6 +390,9 @@
 	ruin()
 
 /obj/item/cassette_tape/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!ruined)
 		to_chat(user, "<span class='notice'>You pull out all the tape!</span>")
 		ruin()

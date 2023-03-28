@@ -41,11 +41,11 @@
 	progress += CPU.max_idle_programs
 	if(progress >= target_progress)
 		reset()
-		RFID.stored_card.access |= target_access.id
+		RFID.stored_card.access |= target_access.access_value
 		if(ntnet_global.intrusion_detection_enabled)
-			ntnet_global.add_log("IDS WARNING - Unauthorised access to primary keycode database from device: [computer.network_card.get_network_tag()]  - downloaded access codes for: [target_access.desc].")
+			ntnet_global.add_log("IDS WARNING - Unauthorised access to primary keycode database from device: [computer.network_card.get_network_tag()]  - downloaded access codes for: [target_access.access_name].")
 			ntnet_global.intrusion_detection_alarm = 1
-		message = "Successfully decrypted and saved operational key codes. Downloaded access codes for: [target_access.desc]"
+		message = "Successfully decrypted and saved operational key codes. Downloaded access codes for: [target_access.access_name]"
 		target_access = null
 
 /datum/computer_file/program/access_decrypter/Topic(href, href_list)
@@ -76,7 +76,7 @@
 
 /datum/nano_module/program/access_decrypter
 	name = "NTNet Access Decrypter"
-	var/list/restricted_access_codes = list(access_change_ids, access_network) // access codes that are not hackable due to balance reasons
+	var/list/restricted_access_codes = list(ACCESS_COMMAND_CARDMOD, ACCESS_SCIENCE_EXONET) // access codes that are not hackable due to balance reasons
 
 /datum/nano_module/program/access_decrypter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	if(!ntnet_global)

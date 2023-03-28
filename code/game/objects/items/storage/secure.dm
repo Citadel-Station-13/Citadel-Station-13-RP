@@ -77,7 +77,10 @@
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user as mob)
+/obj/item/storage/secure/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
@@ -104,8 +107,7 @@
 				l_set = 1
 			else if ((code == l_code) && (emagged == 0) && (l_set == 1))
 				locked = 0
-				cut_overlays()
-				add_overlay(image('icons/obj/storage.dmi', icon_opened))
+				set_overlays(icon_opened)
 				code = null
 			else
 				code = "ERROR"
@@ -129,10 +131,10 @@
 /obj/item/storage/secure/emag_act(remaining_charges, mob/user, feedback)
 	if(!emagged)
 		emagged = 1
-		add_overlay(image('icons/obj/storage.dmi', icon_sparking))
+		add_overlay(icon_sparking)
+		compile_overlays()
 		sleep(6)
-		cut_overlays()
-		add_overlay(image('icons/obj/storage.dmi', icon_locking))
+		set_overlays(icon_locking)
 		locked = 0
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
@@ -146,14 +148,14 @@
 	icon_state = "secure"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
 	if ((src.loc == user) && (src.locked == 1))
 		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
 	else if ((src.loc == user) && (!src.locked))
@@ -188,7 +190,7 @@
 	icon_state = "securev"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
-	force = 0
+	damage_force = 0
 	throw_speed = 1
 	throw_range = 4
 
@@ -203,7 +205,7 @@
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	force = 8.0
+	damage_force = 8.0
 	w_class = ITEMSIZE_NO_CONTAINER
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
 	anchored = 1.0
@@ -214,5 +216,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user as mob)
+/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
 	return attack_self(user)

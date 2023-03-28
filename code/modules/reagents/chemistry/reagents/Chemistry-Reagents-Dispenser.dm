@@ -26,7 +26,7 @@
 	color = "#1C1300"
 	ingest_met = REM * 5
 
-/datum/reagent/carbon/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
 	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
@@ -36,7 +36,7 @@
 				continue
 			M.ingested.remove_reagent(R.id, removed * effect)
 
-/datum/reagent/carbon/touch_turf(var/turf/T)
+/datum/reagent/carbon/touch_turf(turf/T)
 	if(!istype(T, /turf/space))
 		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
@@ -53,10 +53,10 @@
 	reagent_state = REAGENT_GAS
 	color = "#d1db77"
 
-/datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(1*REM, 0)
 
-/datum/reagent/chlorine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(1*REM, 0)
 
 /datum/reagent/copper
@@ -89,11 +89,11 @@
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
-/datum/reagent/ethanol/touch_mob(var/mob/living/L, var/amount)
+/datum/reagent/ethanol/touch_mob(mob/living/L, amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 15)
 
-/datum/reagent/ethanol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) //This used to do just toxin. That's boring. Let's make this FUN.
+/datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed) //This used to do just toxin. That's boring. Let's make this FUN.
 	if(issmall(M)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
 	if(alien == IS_SKRELL)
@@ -141,7 +141,7 @@
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci*3)
 
-/datum/reagent/ethanol/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
@@ -189,7 +189,7 @@
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci)
 
-/datum/reagent/ethanol/touch_obj(var/obj/O)
+/datum/reagent/ethanol/touch_obj(obj/O)
 	if(istype(O, /obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
@@ -214,10 +214,10 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/fluorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/fluorine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.adjustToxLoss(removed)
 
-/datum/reagent/fluorine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/fluorine/affect_touch(mob/living/carbon/M, alien, removed)
 	M.adjustToxLoss(removed)
 
 /datum/reagent/hydrogen
@@ -236,7 +236,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
 
-/datum/reagent/iron/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
@@ -248,7 +248,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
-/datum/reagent/lithium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -263,7 +263,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#484848"
 
-/datum/reagent/mercury/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -287,7 +287,7 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/oxygen/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 3)
 
@@ -299,7 +299,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#832828"
 
-/datum/reagent/phosphorus/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
 		if(prob(5))
 			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
@@ -321,7 +321,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
 
-/datum/reagent/radium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
 	if(issmall(M))
 		removed *= 2
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))
@@ -331,7 +331,7 @@
 			if(prob(5))
 				M.antibodies |= V.antigen
 
-/datum/reagent/radium/touch_turf(var/turf/T)
+/datum/reagent/radium/touch_turf(turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
@@ -351,11 +351,11 @@
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
 	M.take_organ_damage(0, removed * power * 2)
 
-/datum/reagent/acid/affect_touch(var/mob/living/carbon/M, var/alien, var/removed) // This is the most interesting
+/datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
@@ -415,7 +415,7 @@
 		else
 			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
-/datum/reagent/acid/touch_obj(var/obj/O)
+/datum/reagent/acid/touch_obj(obj/O)
 	if(O.unacidable)
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
@@ -455,7 +455,7 @@
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/sugar/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/sugar/affect_blood(mob/living/carbon/M, alien, removed)
 	M.nutrition += removed * 3
 
 	var/effective_dose = dose

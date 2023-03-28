@@ -38,7 +38,10 @@
 	else
 		..()
 
-/obj/item/plastique/attack_self(mob/user as mob)
+/obj/item/plastique/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(user.get_active_held_item() == src)
 		newtime = clamp(newtime, 10, 60000)
@@ -89,9 +92,6 @@
 	if(target)
 		target.cut_overlay(image_overlay)
 	qdel(src)
-
-/obj/item/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
-	return
 
 /obj/item/plastique/seismic
 	name = "seismic charge"

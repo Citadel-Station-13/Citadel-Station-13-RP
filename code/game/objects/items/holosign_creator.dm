@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "signmaker"
 	item_state = "electronic"
-	force = 0
+	damage_force = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 3
@@ -48,10 +48,10 @@
 				else
 					to_chat(user, "<span class='notice'>[src] is projecting at max capacity!</span>")
 
-/obj/item/holosign_creator/attack(mob/living/carbon/human/M, mob/user)
-	return
-
 /obj/item/holosign_creator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(signs.len)
 		for(var/H in signs)
 			qdel(H)
@@ -115,6 +115,9 @@
 	var/shock = 0
 
 /obj/item/holosign_creator/cyborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 

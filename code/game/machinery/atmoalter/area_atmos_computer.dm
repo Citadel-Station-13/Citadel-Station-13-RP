@@ -21,7 +21,7 @@
 /obj/machinery/computer/area_atmos/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/area_atmos/attack_hand(mob/user)
+/obj/machinery/computer/area_atmos/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 	ui_interact(user)

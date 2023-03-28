@@ -49,7 +49,7 @@
 				return
 			else
 				playsound(user, 'sound/effects/Glasshit.ogg', 100, 1) //We don't want this playing every time
-			if(W.force < 15)
+			if(W.damage_force < 15)
 				to_chat(user, "<span class='notice'>The cabinet's protective glass glances off the hit.</span>")
 			else
 				src.hitstaken++
@@ -107,7 +107,7 @@
 				spawn(10) update_icon()
 
 
-/obj/structure/closet/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/closet/fireaxecabinet/attack_hand(mob/user, list/params)
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
@@ -156,6 +156,7 @@
 /obj/structure/closet/fireaxecabinet/verb/toggle_openness() //nice name, huh? HUH?! -Erro //YEAH -Agouri
 	set name = "Open/Close"
 	set category = "Object"
+	set src in oview(1)
 
 	if (isrobot(usr) || src.locked || src.smashed)
 		if(src.locked)
@@ -170,6 +171,7 @@
 /obj/structure/closet/fireaxecabinet/verb/remove_fire_axe()
 	set name = "Remove Fire Axe"
 	set category = "Object"
+	set src in oview(1)
 
 	if (isrobot(usr))
 		return

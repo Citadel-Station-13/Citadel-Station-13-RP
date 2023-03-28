@@ -56,7 +56,7 @@
 	name = "cargo technician's jumpsuit"
 	desc = "Shooooorts! They're comfy and easy to wear!"
 	icon_state = "cargo"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/cargotech/jeans
 	name = "cargo technician's jumpjeans"
@@ -145,19 +145,19 @@
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
 	icon_state = "janitor"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/rank/janitor_fem
 	name = "janitor's jumpsuit"
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	icon_state = "janitor_fem"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/rank/janitor/skirt_pleated
 	name = "janitor's pleated skirt"
 	desc = "The official pleated skirt of the local janitor. It bears minor protection from biohazards."
 	icon_state = "janitor_skirt"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/civilian/jumpsuit/janitor
 
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
@@ -255,9 +255,9 @@
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
-	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -268,9 +268,9 @@
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
-	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
-	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 

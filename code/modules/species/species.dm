@@ -22,9 +22,9 @@
 	abstract_type = /datum/species
 
 	//! Intrinsics
-	/// uid - **must be unique**
+	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
-	/// if we're a subspecies, real id
+	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
@@ -45,21 +45,23 @@
 	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
+	/// default culture
+	var/default_culture = /datum/lore/character_background/culture/custom
 	/// fluff flags
 	var/species_fluff_flags = NONE
 
 	//! Language - IDs
-	/// default language used when speaking
+	/// default language used when speaking - typepaths are allowed
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
 	var/galactic_language = TRUE
-	/// intrinsic species languages - list() or singular language or null
+	/// intrinsic species languages - list() or singular language or null - typepaths are allowed
 	// todo: linter check for language default being in here
 	var/list/intrinsic_languages
-	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
+	/// language our name is in - used for namegen; null to force stock ss13 namegen instead - typepaths are allowed
 	// todo: language for namegen is questionaable
 	var/name_language = LANGUAGE_ID_COMMON
-	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
+	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language - typepaths are allowed
 	var/list/whitelist_languages
 	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
 	var/max_additional_languages = 3
@@ -375,7 +377,8 @@
 	/// Relative rarity/collector value for this species.
 	var/rarity_value = 1
 	/// How much money this species makes
-	var/economic_modifier = 2
+	// todo: implement species economic modifiers
+	var/economy_payscale = 1
 
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
@@ -451,6 +454,8 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+	/// do we have a species statpanel?
+	var/species_statpanel = FALSE
 
 	//!Weaver abilities
 	var/is_weaver = FALSE
@@ -547,7 +552,7 @@
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
 
-/datum/species/proc/sanitize_name(var/name)
+/datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
@@ -708,16 +713,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
-	return
+	if(!inherent_verbs)
+		return
+	remove_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
-	return
+	add_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
 	if(inherent_spells)
@@ -788,7 +789,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
-	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
+	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
 		return move_trail
@@ -818,8 +819,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return FALSE
 
 // Allow species to display interesting information in the human stat panels
-/datum/species/proc/Stat(var/mob/living/carbon/human/H)
-	return
+/datum/species/proc/statpanel_status(client/C, mob/living/carbon/human/H)
+	return list()
 
 /datum/species/proc/update_attack_types()
 	unarmed_attacks = list()

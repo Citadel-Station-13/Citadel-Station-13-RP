@@ -46,25 +46,28 @@
 	src.can_contaminate = can_contaminate
 	src.relevant_count = relevant_count
 	hit_mobs = list()
-	START_PROCESSING(SSradiation, src)
+	SSradiation.waves += src
 
 /datum/radiation_wave/Destroy()
-	STOP_PROCESSING(SSradiation, src)
+	SSradiation.waves -= src
 	hit_mobs = null
 	..()
 	return QDEL_HINT_IWILLGC
 
-/datum/radiation_wave/process(delta_time)
+/**
+ * return true if not deleted
+ */
+/datum/radiation_wave/proc/propagate()
 	current = get_step(current, dir)
 	if(!current)
 		qdel(src)
-		return
+		return FALSE
 	++steps
 	var/effective_steps = max(falloff_modifier * steps, 1)
 	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps, 1) : current_intensity
 	if(strength < RAD_BACKGROUND_RADIATION)
 		qdel(src)
-		return
+		return FALSE
 	var/list/atom/atoms = atoms_within_line()
 	// block **first**
 	process_obstructions(atoms)
@@ -72,6 +75,7 @@
 	var/contaminated = radiate(atoms, strength)
 	if(contaminated)
 		remaining_contam = max(0, remaining_contam - contaminated)
+	return TRUE
 
 /datum/radiation_wave/proc/atoms_within_line()
 	. = list()

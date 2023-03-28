@@ -1,6 +1,7 @@
-/datum/job/station/field_medic
+/datum/role/job/station/field_medic
 	id = JOB_ID_FIELD_MEDIC
 	title = "Field Medic"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -9,22 +10,21 @@
 	supervisors = "the Pathfinder and the Chief Medical Officer"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/medical/sar
-	economic_modifier = 6
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_pilot)
+	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_GENERAL_PILOT)
+	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_GENERAL_PILOT)
 	outfit_type = /datum/outfit/job/station/sar
 	desc = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(
-		"Expedition Medic" = /datum/alt_title/expedition_medic,
-		"Search and Rescue" = /datum/alt_title/field_medic/sar
+		"Expedition Medic" = /datum/prototype/alt_title/expedition_medic,
+		"Search and Rescue" = /datum/prototype/alt_title/field_medic/sar
 		)
 
-/datum/alt_title/expedition_medic
+/datum/prototype/alt_title/expedition_medic
 	title = "Expedition Medic"
 
-/datum/alt_title/field_medic/sar
+/datum/prototype/alt_title/field_medic/sar
 	title = "Search and Rescue"
 
 /datum/outfit/job/station/sar

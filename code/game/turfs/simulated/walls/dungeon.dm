@@ -3,8 +3,8 @@
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
 
-/turf/simulated/wall/dungeon/Initialize(mapload, materialtype, rmaterialtype, girder_material)
-	return ..(mapload, "dungeonium")
+/turf/simulated/wall/dungeon
+	material = /datum/material/alienalloy/dungeonium
 
 /turf/simulated/wall/dungeon/attackby()
 	return
@@ -19,31 +19,32 @@
 	name = "solid rock"
 	desc = "This rock seems dense, impossible to drill."
 	description_info = "Probably not going to be able to drill or bomb your way through this, best to try and find a way around."
-	icon_state = "bedrock"
-	var/base_state = "bedrock"
+	icon = 'icons/turf/walls/rock.dmi'
 	block_tele = TRUE
 
-/turf/simulated/wall/solidrock/find_type_in_direction(direction)
-	var/turf/T = get_step(src, direction)
-	if(!T)
-		return NULLTURF_BORDER
-	return T.density? ADJ_FOUND : NO_ADJ_FOUND
+	var/rock_side_icon_state = "rock_side"
 
-/turf/simulated/wall/solidrock/custom_smooth(dirs)
-	smoothing_junction = dirs
-
-	if(!(smoothing_junction & NORTH_JUNCTION))
-		add_overlay(get_cached_rock_border("rock_side", NORTH, 'icons/turf/walls.dmi', "rock_side"))
-	if(!(smoothing_junction & SOUTH_JUNCTION))
-		add_overlay(get_cached_rock_border("rock_side", SOUTH, 'icons/turf/walls.dmi', "rock_side"))
-	if(!(smoothing_junction & EAST_JUNCTION))
-		add_overlay(get_cached_rock_border("rock_side", EAST, 'icons/turf/walls.dmi', "rock_side"))
-	if(!(smoothing_junction & WEST_JUNCTION))
-		add_overlay(get_cached_rock_border("rock_side", WEST, 'icons/turf/walls.dmi', "rock_side"))
-
-/turf/simulated/wall/solidrock/Initialize(mapload)
+/turf/simulated/wall/solidrock/update_overlays()
 	. = ..()
-	icon_state = base_state
+
+	// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
+	var/mutable_appearance/appearance
+	if(!(smoothing_junction & NORTH_JUNCTION))
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = EDGE_LAYER)
+		appearance.pixel_y = 32
+		. += appearance
+	if(!(smoothing_junction & SOUTH_JUNCTION))
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = EDGE_LAYER)
+		appearance.pixel_y = -32
+		. += appearance
+	if(!(smoothing_junction & WEST_JUNCTION))
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = EDGE_LAYER)
+		appearance.pixel_x = -32
+		. += appearance
+	if(!(smoothing_junction & EAST_JUNCTION))
+		appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
+		appearance.pixel_x = 32
+		. += appearance
 
 /turf/simulated/wall/solidrock/attackby()
 	return

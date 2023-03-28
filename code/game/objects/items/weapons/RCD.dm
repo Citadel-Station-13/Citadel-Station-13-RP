@@ -12,7 +12,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 	item_flags = ITEM_NOBLUDGEON
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
@@ -103,7 +103,10 @@
 	return TRUE
 
 // Changes which mode it is on.
-/obj/item/rcd/attack_self(mob/living/user)
+/obj/item/rcd/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	var/list/choices = list(
 		"Airlock" = radial_image_airlock,
@@ -360,7 +363,10 @@
 /obj/item/rcd/electric/mounted/rig
 
 // Old method for swapping modes as there is no way to bring up the radial.
-/obj/item/rcd/electric/mounted/rig/attack_self(mob/living/user)
+/obj/item/rcd/electric/mounted/rig/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(mode_index >= modes.len) // Shouldn't overflow unless someone messes with it in VV poorly but better safe than sorry.
 		mode_index = 1
 	else

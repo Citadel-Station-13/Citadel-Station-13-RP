@@ -262,6 +262,7 @@
  * - user - the user, if any
  */
 /atom/proc/dynamic_tool_functions(obj/item/I, mob/user)
+	// todo: signal
 	return list()
 
 /atom/proc/_dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)

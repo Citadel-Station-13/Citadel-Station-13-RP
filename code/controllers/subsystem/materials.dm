@@ -23,14 +23,20 @@ SUBSYSTEM_DEF(materials)
 /datum/controller/subsystem/materials/proc/initialize_materials()
 	material_lookup = list()
 	legacy_material_lookup = list()
+
 	for(var/path in subtypesof(/datum/material))
-		var/datum/material/M = path
-		if(initial(M.abstract_type) == path)
+		var/datum/material/mat_ref = path
+		if(initial(mat_ref.abstract_type) == path)
 			continue
-		M = new path
+
+		mat_ref = new path
+		// Initialize the material. It'll return TRUE if everything went well.
+		if(!mat_ref.Initialize())
+			CRASH("Failed to initialize material [mat_ref.name]!")
+
 		// why are we doing initial() here? because the unit test checks for initial.
-		material_lookup[initial(M.id)] = M
-		legacy_material_lookup[lowertext(M.name)] = M
+		material_lookup[initial(mat_ref.id)] = mat_ref
+		legacy_material_lookup[lowertext(mat_ref.name)] = mat_ref
 
 /**
  * fetches material instance

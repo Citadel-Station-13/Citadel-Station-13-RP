@@ -4,7 +4,7 @@
 	desc = "Goo extracted from a slime, which can do different things depending on its color and what it is injected with."
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey slime extract"
-	force = 1
+	damage_force = 1
 	w_class = ITEMSIZE_TINY
 	throw_force = 0
 	throw_speed = 3
@@ -570,7 +570,7 @@
 			to_chat(S, "<span class='warning'>An intense wave of rage is felt from inside, but you remain in control of yourself.</span>")
 
 	for(var/mob/living/carbon/human/H in view(get_turf(holder.my_atom)))
-		if(H.species.name == SPECIES_PROMETHEAN)
+		if(H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 			H.add_modifier(/datum/modifier/berserk, 30 SECONDS)
 			to_chat(H, "<span class='warning'>An intense wave of rage is felt from inside, but you remain in control of yourself.</span>")
 

@@ -139,7 +139,7 @@
 // /obj/machinery/computer/shuttle_control/explore/vespaboat
     //name = "Vespa's Shuttle control console"
     //shuttle_tag = "Vespa's Ship's Boat"
-    //req_one_access = list(access_pilot)
+    //req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // A shuttle lateloader landmark
 // /obj/effect/shuttle_landmark/shuttle_initializer/vespaboat

@@ -14,29 +14,30 @@
 	var/reveal_blood = TRUE
 	var/reveal_fibers = FALSE
 
-/obj/item/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	if (!ishuman(M))
-		to_chat(user, SPAN_WARNING("\The [M] does not seem to be compatible with this device."))
+/obj/item/detective_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if (!ishuman(target))
+		to_chat(user, SPAN_WARNING("\The [target] does not seem to be compatible with this device."))
 		flick("[icon_state]0",src)
-		return FALSE
+		return
 
 	if(reveal_fingerprints)
-		if((!( istype(M.dna, /datum/dna) ) || M.gloves))
-			to_chat(user, "<span class='notice'>No fingerprints found on [M]</span>")
+		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot(SLOT_ID_GLOVES)))
+			to_chat(user, "<span class='notice'>No fingerprints found on [target]</span>")
 			flick("[icon_state]0",src)
-			return 0
+			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
-			P.attack(M, user)
+			P.melee_attack_chain(target, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
-	//		to_chat(user, "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]</span>")
+	//		to_chat(user, "<span class='notice'>[target]'s Fingerprints: [md5(target.dna.uni_identity)]</span>")
 
-	if(reveal_blood && M.blood_DNA && M.blood_DNA.len)
-		to_chat(user,"<span class='notice'>Blood found on [M]. Analysing...</span>")
+	if(reveal_blood && target.blood_DNA && target.blood_DNA.len)
+		to_chat(user,"<span class='notice'>Blood found on [target]. Analysing...</span>")
 		spawn(15)
-			for(var/blood in M.blood_DNA)
-				to_chat(user,"<span class='notice'>Blood type: [M.blood_DNA[blood]]\nDNA: [blood]</span>")
-	return
+			for(var/blood in target.blood_DNA)
+				to_chat(user,"<span class='notice'>Blood type: [target.blood_DNA[blood]]\nDNA: [blood]</span>")
 
 /obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
 	if(!proximity) return

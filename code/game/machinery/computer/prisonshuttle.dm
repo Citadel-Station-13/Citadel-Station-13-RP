@@ -17,7 +17,7 @@ var/prison_shuttle_timeleft = 0
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
 	light_color = "#00ffff"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	circuit = /obj/item/circuitboard/prison_shuttle
 	var/temp = null
 	var/hacked = 0
@@ -27,7 +27,7 @@ var/prison_shuttle_timeleft = 0
 /obj/machinery/computer/prison_shuttle/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prison_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/prison_shuttle/attack_hand(mob/user, list/params)
 	if(!src.allowed(user) && (!hacked))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return

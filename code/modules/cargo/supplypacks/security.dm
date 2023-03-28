@@ -6,11 +6,11 @@
 
 /datum/supply_pack/security
 	group = "Security"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/randomised/security
 	group = "Security"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/randomised/security/armor
 	name = "Armor - Security armor"
@@ -44,7 +44,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Plate Carrier crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/carriertags
 	name = "Armor - Plate carrier tags"
@@ -98,7 +98,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/randomised/security/carrierarms
 	name = "Armor - Security armguard attachments"
@@ -116,7 +116,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/randomised/security/carrierlegs
 	name = "Armor - Security legguard attachments"
@@ -134,7 +134,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/randomised/security/carrierbags
 	name = "Armor - Security pouch attachments"
@@ -154,7 +154,7 @@
 	cost = 60
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/riot_gear
 	name = "Gear - Riot"
@@ -169,7 +169,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Riot gear crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/riot_armor
 	name = "Armor - Riot"
@@ -182,7 +182,7 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Riot armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/riot_plates
 	name = "Armor - Riot plates"
@@ -196,7 +196,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Riot armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/ablative_armor
 	name = "Armor - Ablative"
@@ -209,7 +209,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ablative armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/ablative_plates
 	name = "Armor - Ablative plates"
@@ -223,7 +223,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ablative armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/bullet_resistant_armor
 	name = "Armor - Ballistic"
@@ -236,7 +236,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ballistic armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/bullet_resistant_plates
 	name = "Armor - Ballistic plates"
@@ -250,7 +250,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ballistic armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/combat_armor
 	name = "Armor - Combat"
@@ -263,14 +263,14 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Combat armor crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/tactical
 	name = "Armor - Tactical"
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Tactical armor crate"
 	cost = 40
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 	contains = list(
 			/obj/item/clothing/under/tactical,
 			/obj/item/clothing/suit/armor/tactical,
@@ -295,7 +295,7 @@
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Tactical Light armor crate"
 	cost = 75
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 	contains = list(
 				/obj/item/clothing/suit/storage/vest/heavy/flexitac,
 				/obj/item/clothing/head/helmet/flexitac,
@@ -327,7 +327,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Wall shield generators crate"
-	access = access_teleporter
+	access = ACCESS_COMMAND_TELEPORTER
 
 /datum/supply_pack/randomised/security/holster
 	name = "Gear - Holsters"
@@ -381,7 +381,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Forensic equipment"
-	access = access_forensics_lockers
+	access = ACCESS_SECURITY_FORENSICS
 
 /datum/supply_pack/security/detectivescan
 	name = "Forensic - Scanning Equipment"
@@ -394,7 +394,7 @@
 	cost = 60
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Forensic equipment"
-	access = access_forensics_lockers
+	access = ACCESS_SECURITY_FORENSICS
 
 /datum/supply_pack/security/detectiveclothes
 	name = "Forensic - Investigation apparel"
@@ -416,7 +416,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Investigation clothing"
-	access = access_forensics_lockers
+	access = ACCESS_SECURITY_FORENSICS
 
 /datum/supply_pack/security/officergear
 	name = "Gear - Officer equipment"
@@ -446,7 +446,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Officer equipment"
-	access = access_brig
+	access = ACCESS_SECURITY_BRIG
 
 /datum/supply_pack/security/wardengear
 	name = "Gear - Warden equipment"
@@ -474,7 +474,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Warden equipment"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/headofsecgear
 	name = "Gear - Head of security equipment"
@@ -500,7 +500,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Head of security equipment"
-	access = access_hos
+	access = ACCESS_SECURITY_HOS
 
 /datum/supply_pack/security/securityclothing
 	name = "Misc - Security uniform red"
@@ -576,7 +576,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security biohazard gear"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/posters
 	name = "Gear - Morale Posters"
@@ -586,7 +586,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Morale Posters"
-	access = access_maint_tunnels
+	access = ACCESS_ENGINEERING_MAINT
 
 /datum/supply_pack/security/biosuit
 	contains = list(
@@ -620,7 +620,7 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Kevlar Upgrade Kits"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/pcarriers/merc
 	name = "Armor - heavy plate carrier equipment"
@@ -633,7 +633,7 @@
 	cost = 65
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Plate carrier heavy crate"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 	contraband = 1
 
 /datum/supply_pack/security/helmets
@@ -645,7 +645,7 @@
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/security/wardengear
 	name = "Tracking Implants"
@@ -654,25 +654,25 @@
 			)
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
-			/obj/item/gun/projectile/automatic/battlerifle = 2,
+			/obj/item/gun/ballistic/automatic/battlerifle = 2,
 			/obj/item/ammo_magazine/m95 = 4
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/heph
-	access = access_armory
+	container_type = /obj/structure/closet/crate/secure/heph
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/quadshot
 	name = "Quad Shotgun Pack"
 	contains = list(
-			/obj/item/gun/projectile/shotgun/doublebarrel/quad = 2,
+			/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
 			/obj/item/storage/box/shotgunshells = 2,
 			/obj/item/storage/belt/security/tactical/bandolier = 2,
 			)
 	cost = 70
-	container_type = /obj/structure/closet/crate/heph
-	access = access_armory
+	container_type = /obj/structure/closet/crate/secure/heph
+	access = ACCESS_SECURITY_ARMORY

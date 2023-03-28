@@ -44,7 +44,7 @@
 	name = "\improper CentCom turtleneck skirt"
 	desc = "A skirt version of the CentCom turtleneck, rarer and more sought after than the original."
 	icon_state = "officer_skirt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/centcom/green/officer_skirt/replica
 	name = "\improper CentCom turtleneck skirt replica"
@@ -54,13 +54,13 @@
 	name = "\improper CentCom officer's suitskirt"
 	desc = "It's a suitskirt worn by CentCom's highest-tier Commanders."
 	icon_state = "centcom_skirt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/centcom/military
 	name = "tactical combat uniform"
 	desc = "A dark colored uniform worn by CentCom's conscripted military forces."
 	icon_state = "military"
-	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, fire = 50, acid = 40)
+	armor_type = /datum/armor/military/jumpsuit
 
 /obj/item/clothing/under/rank/centcom/military/eng
 	name = "tactical engineering uniform"

@@ -50,6 +50,8 @@
 	QDEL_NULL(closer)
 	return ..()
 
+
+
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
@@ -252,6 +254,10 @@
 		O.maptext = ""
 		O.hud_layerise()
 
+	// If we're not overloaded, force overlays to build now to reduce visual lag.
+	if (!TICK_CHECK)
+		storage_start.compile_overlays()
+
 	closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
@@ -352,7 +358,7 @@
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
-	W.item_flags |= IN_STORAGE
+	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -400,14 +406,14 @@
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
-	W.item_flags &= ~IN_STORAGE
+	W.item_flags &= ~ITEM_IN_STORAGE
 	update_icon()
 	return 1
 
 /obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.item_flags & IN_STORAGE)
+		if(I.item_flags & ITEM_IN_STORAGE)
 			remove_from_storage(I, null, FALSE)
 	return ..()
 
@@ -442,7 +448,7 @@
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, user)
 
-/obj/item/storage/attack_hand(mob/user as mob)
+/obj/item/storage/attack_hand(mob/user, list/params)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
@@ -516,14 +522,14 @@
 	. = ..()
 
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
 	else
-		verbs -= /obj/item/storage/verb/quick_empty
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 	else
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"
@@ -592,11 +598,21 @@
 			O.emp_act(severity)
 	..()
 
-/obj/item/storage/attack_self(mob/user as mob)
+/obj/item/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.get_active_held_item() == src) || (isrobot(user)) && allow_quick_empty)
 		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
 			src.quick_empty()
 			return 1
+
+	if(user in is_seeing)
+		src.close(user)
+	else if(isliving(user) && user.Reachability(src))
+		src.open(user)
+	else
+		return ..()
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.
@@ -707,7 +723,10 @@
 		closed_state = "[initial(icon_state)]"
 	. = ..()
 
-/obj/item/storage/trinketbox/attack_self()
+/obj/item/storage/trinketbox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open = !open
 	update_icon()
 	..()

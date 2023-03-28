@@ -2,7 +2,7 @@
 	for(var/mob/living/carbon/human/Q in living_mob_list)
 		if(self && ignore_self && self == Q)
 			continue
-		if(Q.species.name != SPECIES_XENO_QUEEN)
+		if(Q.species.get_species_id() != SPECIES_ID_XENOMORPH_QUEEN)
 			continue
 		if(!Q.key || !Q.client || Q.stat)
 			continue
@@ -85,7 +85,7 @@
 
 	if(!config_legacy.aliens_allowed)
 		to_chat(src, "You begin to lay an egg, but hesitate. You suspect it isn't allowed.")
-		verbs -= /mob/living/carbon/human/proc/lay_egg
+		remove_verb(src, /mob/living/carbon/human/proc/lay_egg)
 		return
 
 	if(locate(/obj/effect/alien/egg) in get_turf(src))
@@ -142,7 +142,7 @@
 			spitting = FALSE
 			return
 		visible_message("<span class='warning'>[src] spits [spit_name] at \the [A]!</span>", "<span class='green'>You spit [spit_name] at \the [A].</span>")
-		var/obj/item/projectile/P = new spit_projectile(get_turf(src))
+		var/obj/projectile/P = new spit_projectile(get_turf(src))
 		P.firer = src
 		P.old_style_target(A)
 		P.fire()
@@ -201,7 +201,7 @@
 	else
 		last_spit = world.time
 		spitting = TRUE
-		spit_projectile = /obj/item/projectile/energy/neurotoxin
+		spit_projectile = /obj/projectile/energy/neurotoxin
 		spit_name = "neurotoxin"
 		to_chat(src, "<span class='green'>You prepare to spit neurotoxin.</span>")
 
@@ -222,7 +222,7 @@
 	else
 		last_spit = world.time
 		spitting = TRUE
-		spit_projectile = /obj/item/projectile/energy/acid
+		spit_projectile = /obj/projectile/energy/acid
 		spit_name = "acid"
 		to_chat(src, "<span class='green'>You prepare to spit acid.</span>")
 

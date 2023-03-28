@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	icon_state = "cataloguer"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_DATA = 3, TECH_MAGNET = 3)
-	force = 0
+	damage_force = 0
 	var/points_stored = 0 // Amount of 'exploration points' this device holds.
 	var/scan_range = 3 // How many tiles away it can scan. Changing this also changes the box size.
 	var/credit_sharing_range = INFINITY // If another person is within this radius, they will also be credited with a successful scan.
@@ -246,7 +246,10 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/living/user)
+/obj/item/cataloguer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/cataloguer/interact(mob/user)

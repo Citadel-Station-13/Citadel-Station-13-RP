@@ -1,6 +1,6 @@
 // For all intents and purposes, these work exactly the same as pump shotguns. It's unnecessary to make their own procs for them.
 
-/obj/item/gun/projectile/shotgun/pump/rifle
+/obj/item/gun/ballistic/shotgun/pump/rifle
 	name = "bolt action rifle"
 	desc = "A reproduction of an almost ancient weapon design from the early 20th century. It's still popular among hunters and collectors due to its reliability. Uses 7.62mm rounds."
 	item_state = "boltaction"
@@ -14,41 +14,41 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	action_sound = 'sound/weapons/riflebolt.ogg'
 
-/obj/item/gun/projectile/shotgun/pump/rifle/practice // For target practice
+/obj/item/gun/ballistic/shotgun/pump/rifle/practice // For target practice
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with practice rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a762/practice
 
-/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial
+/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial
 	name = "ceremonial bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
 	ammo_type = /obj/item/ammo_casing/a762/blank
 
-/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/holy
+/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/holy
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/taj
+/obj/item/gun/ballistic/shotgun/pump/rifle/taj
 	name = "Adhomai bolt action rifle"
 	desc = "The A&K-c bolt action rifle. Though a simple and dated design, this Akhan and Khan rifle is a mainstay of the of the Imperial Adhomain Army and has kept Tajaran monarchy safe since the civil war."
 	item_state = "boltaction-taj"
 	icon_state = "boltaction-taj"
 	wielded_item_state = "boltaction-taj-wielded"
 
-/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting
+/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting
 	name = "vox hunting rifle"
 	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
 	icon_state = "vox_hunting"
 	item_state = "vox_hunting"
 	ammo_type = /obj/item/ammo_casing/a762
 	throw_force = 10
-	force = 20
+	damage_force = 20
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
-/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
@@ -71,7 +71,7 @@
 		..()
 
 //Lever actions are the same thing, but bigger.
-/obj/item/gun/projectile/shotgun/pump/rifle/lever
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever
 	name = "lever-action rifle"
 	desc = "A reproduction of an almost ancient weapon design from the 19th century. This one uses a lever-action to move new rounds into the chamber. Uses .357 rounds."
 	item_state = "leveraction"
@@ -83,12 +83,12 @@
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	one_handed_penalty = 15
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/holy
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a357/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
@@ -115,7 +115,7 @@
 	else
 		..()
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage
 	name = "vintage repeater"
 	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses .44 rounds."
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
@@ -127,12 +127,12 @@
 	animated_pump = 1
 	action_sound = 'sound/weapons/riflebolt.ogg'
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/holy
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a44/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
@@ -159,7 +159,7 @@
 	else
 		..()
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold
 	name = "lever-action shotgun"
 	desc = "The legendary Model 1887 Lever Action Shotgun, Hasta La Vista Bay-bee!"
 	item_state = "arnold"
@@ -171,12 +171,12 @@
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold/holy
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895
 	name = "Winchester 1895"
 	desc = "The Winchester Model 1895 rifle, unqiue for its ability to load using rifle stripper clips. Uses 7.62mm rounds."
 	item_state = "win1895"
@@ -189,12 +189,12 @@
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
 
-/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895/holy
+/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/scopedrifle
+/obj/item/gun/ballistic/shotgun/pump/scopedrifle
 	name = "scoped bolt action"
 	desc = "A bolt-action rifle with a scope afixed to it by a gun smith. Uses 7.62 rounds."
 	item_state = "boltaction"
@@ -212,7 +212,7 @@
 	accuracy = 50 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
-/obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
+/obj/item/gun/ballistic/shotgun/pump/scopedrifle/verb/scope()
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1

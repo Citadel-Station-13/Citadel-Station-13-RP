@@ -338,7 +338,7 @@ Add those other swinging traps you mentioned above!
 
 		playsound(src.loc, projectile_sound, 25, 1)
 
-		var/obj/item/projectile/bullet/shotgun/stake/P = get_projectile()
+		var/obj/projectile/bullet/shotgun/stake/P = get_projectile()
 		//P.firer = src
 		P.fire(dir2angle(dir))
 
@@ -382,32 +382,32 @@ Add those other swinging traps you mentioned above!
 
 //Stake Launcher
 /obj/effect/trap/launcher/stake
-	projectile_type = /obj/item/projectile/bullet/shotgun/stake
+	projectile_type = /obj/projectile/bullet/shotgun/stake
 	projectile_sound = 'sound/weapons/punchmiss.ogg'
 
 //Dart Launcher
 /obj/effect/trap/launcher/dart
-	projectile_type = /obj/item/projectile/energy/bolt
+	projectile_type = /obj/projectile/energy/bolt
 	projectile_sound = 'sound/weapons/slice.ogg'
 
 //Fireball Launcher
 /obj/effect/trap/launcher/fireball
-	projectile_type = /obj/item/projectile/bullet/incendiary/flamethrower/large
+	projectile_type = /obj/projectile/bullet/incendiary/flamethrower/large
 	projectile_sound = 'sound/effects/bamf.ogg'
 
 //Heavy Fireball Launcher
 /obj/effect/trap/launcher/fireball_aoe
-	projectile_type = /obj/item/projectile/magic/aoe/fireball
+	projectile_type = /obj/projectile/magic/aoe/fireball
 	projectile_sound = 'sound/weapons/cannon.ogg'
 
 //Web Launcher
 /obj/effect/trap/launcher/web
-	projectile_type = /obj/item/projectile/webball
+	projectile_type = /obj/projectile/webball
 	projectile_sound = 'sound/effects/splat.ogg'
 
 //Flesh Launcher
 /obj/effect/trap/launcher/flesh
-	projectile_type = /obj/item/projectile/bullet/organic
+	projectile_type = /obj/projectile/bullet/organic
 	projectile_sound = 'sound/effects/squelch1.ogg'
 
 //////////////////
@@ -427,7 +427,7 @@ Add those other swinging traps you mentioned above!
 	var/health = 200
 	var/maxhealth = 200
 
-/obj/effect/trap/pop_up/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/trap/pop_up/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -451,11 +451,8 @@ Add those other swinging traps you mentioned above!
 		Break()
 		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 		return
-	if(W.attack_verb.len)
-		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force / 4.0
+	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	var/damage = W.damage_force / 4.0
 
 
 

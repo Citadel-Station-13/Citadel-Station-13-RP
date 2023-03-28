@@ -217,7 +217,7 @@
 	interact(user, 1)
 
 // human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user as mob)
+/obj/machinery/disposal/attack_hand(mob/user, list/params)
 
 	if(machine_stat & BROKEN)
 		return
@@ -467,7 +467,7 @@
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
+	if(istype(AM, /obj/item) && !istype(AM, /obj/projectile))
 		if(prob(75))
 			AM.forceMove(src)
 			visible_message("\The [AM] lands in \the [src].")
@@ -475,11 +475,11 @@
 			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return 1
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return
 		if(prob(75))
 			I.forceMove(src)
@@ -664,14 +664,19 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
+	level = 1 // underfloor only
+	dir = 0 // dir will contain dominant direction for junction pipes
+	plane = TURF_PLANE
+	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
 
-	level = 1			// underfloor only
-	var/dpdir = 0		// bitmask of pipe directions
-	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
-	plane = PLATING_PLANE
-	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	base_icon_state	// initial icon state on map
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
+
+	/// Bitmask of pipe directions.
+	var/dpdir = 0
+	/// Health points 0-10
+	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

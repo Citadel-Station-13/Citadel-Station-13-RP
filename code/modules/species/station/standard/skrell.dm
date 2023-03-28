@@ -1,5 +1,6 @@
 /datum/species/skrell
 	uid = SPECIES_ID_SKRELL
+	id = SPECIES_ID_SKRELL
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
@@ -36,7 +37,6 @@
 
 	max_age = 130
 
-	economic_modifier = 10
 
 	darksight  = 4
 	flash_mod  = 1.2

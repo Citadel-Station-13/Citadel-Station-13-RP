@@ -7,7 +7,8 @@
 	//If they're SSD, remove it so they can wake back up.
 	update_antag_icons(mind)
 	client.screen |= GLOB.global_hud.darksight
-	client.images |= dsoverlay
+	if(dsoverlay)
+		client.images |= dsoverlay
 
 	if(ai_holder && !ai_holder.autopilot)
 		ai_holder.go_sleep()

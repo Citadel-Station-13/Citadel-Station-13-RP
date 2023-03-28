@@ -4,7 +4,6 @@
 	var/devourable = TRUE				// Can the mob be devoured at all?
 	var/feeding = TRUE					// Can the mob be vorishly force fed or fed to others?
 	var/digest_leave_remains = FALSE	// Will this mob leave bones/skull/etc after the melty demise?
-	var/allowmobvore = TRUE				// Will simplemobs attempt to eat the mob?
 	var/showvoreprefs = TRUE			// Determines if the mechanical vore preferences button will be displayed on the mob or not.
 	var/obj/belly/vore_selected			// Default to no vore capability.
 	var/list/vore_organs = list()		// List of vore containers inside a mob
@@ -45,13 +44,13 @@
 // Hook for generic creation of stuff on new creatures
 //
 /hook/living_new/proc/vore_setup(mob/living/M)
-	M.verbs += /mob/living/proc/escapeOOC
-	M.verbs += /mob/living/proc/lick
-	M.verbs += /mob/living/proc/smell
-	M.verbs += /mob/living/proc/switch_scaling
+	add_verb(M, /mob/living/proc/escapeOOC)
+	add_verb(M, /mob/living/proc/lick)
+	add_verb(M, /mob/living/proc/smell)
+	add_verb(M, /mob/living/proc/switch_scaling)
 	if(M.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
 		return TRUE
-	M.verbs += /mob/living/proc/insidePanel
+	add_verb(M, /mob/living/proc/insidePanel)
 
 	//Tries to load prefs if a client is present otherwise gives freebie stomach
 	spawn(2 SECONDS)
@@ -231,7 +230,6 @@
 	P.devourable = src.devourable
 	P.feeding = src.feeding
 	P.digest_leave_remains = src.digest_leave_remains
-	P.allowmobvore = src.allowmobvore
 	P.vore_taste = src.vore_taste
 	P.vore_smell = src.vore_smell
 	P.permit_healbelly = src.permit_healbelly
@@ -265,7 +263,6 @@
 	devourable = P.devourable
 	feeding = P.feeding
 	digest_leave_remains = P.digest_leave_remains
-	allowmobvore = P.allowmobvore
 	vore_taste = P.vore_taste
 	vore_smell = P.vore_smell
 	permit_healbelly = P.permit_healbelly
@@ -775,7 +772,6 @@
 	dispvoreprefs += "<b>Devourable:</b> [devourable ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Feedable:</b> [feeding ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Leaves Remains:</b> [digest_leave_remains ? "Enabled" : "Disabled"]<br>"
-	dispvoreprefs += "<b>Mob Vore:</b> [allowmobvore ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Healbelly permission:</b> [permit_healbelly ? "Allowed" : "Disallowed"]<br>"
 	dispvoreprefs += "<b>Spontaneous vore prey:</b> [can_be_drop_prey ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Spontaneous vore pred:</b> [can_be_drop_pred ? "Enabled" : "Disabled"]<br>"

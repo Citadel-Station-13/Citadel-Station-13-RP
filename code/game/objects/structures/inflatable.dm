@@ -7,6 +7,9 @@
 	var/deploy_path = /obj/structure/inflatable
 
 /obj/item/inflatable/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	inflate(user,user.loc)
 
 /obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
@@ -43,7 +46,7 @@
 	update_nearby_tiles()
 	return ..()
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(var/obj/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
 
@@ -69,7 +72,7 @@
 /obj/structure/inflatable/blob_act()
 	puncture()
 
-/obj/structure/inflatable/attack_hand(mob/user as mob)
+/obj/structure/inflatable/attack_hand(mob/user, list/params)
 		add_fingerprint(user)
 		return
 
@@ -80,7 +83,7 @@
 		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
 		puncture()
 	if(W.damtype == BRUTE || W.damtype == BURN)
-		hit(W.force)
+		hit(W.damage_force)
 		..()
 	return
 
@@ -126,7 +129,7 @@
 	if(isobserver(usr) || usr.restrained() || !usr.Adjacent(src))
 		return
 
-	verbs -= /obj/structure/inflatable/verb/hand_deflate
+	remove_obj_verb(src, /obj/structure/inflatable/verb/hand_deflate)
 	deflate()
 
 /obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)
@@ -172,7 +175,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/attack_hand(mob/user as mob)
+/obj/structure/inflatable/door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -250,6 +253,9 @@
 	icon_state = "folded_wall_torn"
 
 /obj/item/inflatable/torn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
 	add_fingerprint(user)
 
@@ -260,6 +266,9 @@
 	icon_state = "folded_door_torn"
 
 /obj/item/inflatable/door/torn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
 	add_fingerprint(user)
 

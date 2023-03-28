@@ -1,4 +1,4 @@
-/proc/getviewsize(view)
+/proc/decode_view_size(view)
 	if(isnum(view))
 		var/totalviewrange = 1 + 2 * view
 		return list(totalviewrange, totalviewrange)

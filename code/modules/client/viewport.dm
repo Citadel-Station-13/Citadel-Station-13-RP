@@ -353,13 +353,14 @@ GLOBAL_VAR(lock_client_view_y)
 	set name = "Fit Viewport"
 	set category = "OOC"
 	set desc = "Fit the width of the map window to match the viewport"
+
 	request_viewport_fit()
 
 /client/verb/force_map_zoom(n as num)
 	set name = ".viewport_zoom"
 	set hidden = TRUE
-	set src = usr
 	set category = "Debug"
+
 	if(!isnum(n) || n < 0)
 		to_chat(usr, SPAN_WARNING("invalid number"))
 		return
@@ -373,8 +374,8 @@ GLOBAL_VAR(lock_client_view_y)
 /client/verb/force_map_box(n as num)
 	set name = ".viewport_box"
 	set hidden = TRUE
-	set src = usr
 	set category = "Debug"
+
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
@@ -386,8 +387,8 @@ GLOBAL_VAR(lock_client_view_y)
 /client/verb/force_onresize_view_update()
 	set name = ".viewport_update"
 	set hidden = TRUE
-	set src = usr
 	set category = "Debug"
+
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
@@ -396,7 +397,6 @@ GLOBAL_VAR(lock_client_view_y)
 /client/verb/show_winset_debug_values()
 	set name = ".viewport_debug"
 	set hidden = TRUE
-	set src = usr
 	set category = "Debug"
 
 	var/divisor = text2num(winget(src, "mapwindow.map", "icon-size")) || world.icon_size

@@ -52,7 +52,7 @@
 /obj/machinery/computer/looking_glass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/looking_glass/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/looking_glass/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -85,7 +85,7 @@
 
 	return data
 
-/obj/machinery/computer/looking_glass/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/looking_glass/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

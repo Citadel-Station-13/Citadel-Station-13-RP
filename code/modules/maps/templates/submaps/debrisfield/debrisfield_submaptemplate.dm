@@ -2,7 +2,7 @@
 	name = "Debris Field Content"
 	desc = "For seeding submaps in debris field"
 	allow_duplicates = TRUE
-	prefix = "_maps/submaps/level_specific/debrisfield_vr/"
+	prefix = "maps/submaps/level_specific/debrisfield_vr/"
 
 /datum/map_template/submap/level_specific/debrisfield_vr/asteroids1
 	name = "Asteroids 1"

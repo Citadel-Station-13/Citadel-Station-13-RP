@@ -1,10 +1,19 @@
 var/const/enterloopsanity = 100
 /turf/Entered(atom/movable/AM)
-	..()
+	. = ..()
 
 	if(LAZYLEN(acting_automata))
 		for(var/datum/automata/A as anything in acting_automata)
 			A.act_cross(AM, acting_automata[A])
+
+	// If an opaque movable atom moves around we need to potentially update visibility.
+	if(AM?.opacity && !has_opaque_atom)
+		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
+		reconsider_lights()
+		#ifdef AO_USE_LIGHTING_OPACITY
+		// Hook for AO.
+		regenerate_ao()
+		#endif
 
 	/**
 	 * everything below this is legacy and deserves to burn in fire
@@ -19,7 +28,7 @@ var/const/enterloopsanity = 100
 			M.make_floating(1)
 		else if(!is_space())
 			M.make_floating(0)
-		if(isliving(M) && (M.movement_type & GROUND))
+		if(isliving(M) && (M.movement_type & MOVEMENT_GROUND))
 			var/mob/living/L = M
 			L.handle_footstep(src)
 
@@ -31,7 +40,7 @@ var/const/enterloopsanity = 100
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
 	var/CanPassSelf = CanPass(mover, src)
-	if(CanPassSelf || (mover.movement_type & UNSTOPPABLE))
+	if(CanPassSelf || (mover.movement_type & MOVEMENT_UNSTOPPABLE))
 		for(var/i in contents)
 			if(QDELETED(mover))
 				return FALSE		//We were deleted, do not attempt to proceed with movement.
@@ -41,7 +50,7 @@ var/const/enterloopsanity = 100
 			if(!thing.Cross(mover))
 				if(QDELETED(mover))		//Mover deleted from Cross/CanAllowThrough, do not proceed.
 					return FALSE
-				if(mover.movement_type & UNSTOPPABLE)
+				if(mover.movement_type & MOVEMENT_UNSTOPPABLE)
 					mover.Bump(thing)
 					continue
 				else
@@ -53,7 +62,7 @@ var/const/enterloopsanity = 100
 		firstbump = src
 	if(firstbump)
 		mover.Bump(firstbump)
-		return !QDELETED(mover) && (mover.movement_type & UNSTOPPABLE)
+		return !QDELETED(mover) && (mover.movement_type & MOVEMENT_UNSTOPPABLE)
 	return TRUE
 
 /turf/Exit(atom/movable/mover, atom/newloc)
@@ -67,7 +76,7 @@ var/const/enterloopsanity = 100
 		if(!thing.Uncross(mover, newloc))
 			if(thing.atom_flags & ATOM_BORDER)
 				mover.Bump(thing)
-			if(!(mover.movement_type & UNSTOPPABLE))
+			if(!(mover.movement_type & MOVEMENT_UNSTOPPABLE))
 				return FALSE
 		if(QDELETED(mover))
 			return FALSE		//We were deleted.

@@ -199,7 +199,10 @@
 			if(affecting.eye_blind < 3)
 				affecting.Blind(3)
 
-/obj/item/grab/attack_self()
+/obj/item/grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return s_click(hud)
 
 /obj/item/grab/throw_resolve_actual(mob/user)
@@ -332,7 +335,7 @@
 
 	return 1
 
-/obj/item/grab/attack(mob/M, mob/living/user)
+/obj/item/grab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)
@@ -344,7 +347,7 @@
 	reset_kill_state() //using special grab moves will interrupt choking them
 
 	//clicking on the victim while grabbing them
-	if(M == affecting)
+	if(target == affecting)
 		if(ishuman(affecting))
 			var/mob/living/carbon/human/H = affecting
 			var/hit_zone = assailant.zone_sel.selecting
@@ -375,7 +378,7 @@
 					pin_down(affecting, assailant)
 
 	//clicking on yourself while grabbing them
-	if(M == assailant && state >= GRAB_AGGRESSIVE)
+	if(target == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
 
 /obj/item/grab/proc/reset_kill_state()
@@ -453,7 +456,7 @@
 	user.visible_message("<span class='notice'>[user] starts inspecting [affecting]'s [E.name] carefully.</span>")
 	if(!do_mob(user,H, 10))
 		to_chat(user, "<span class='notice'>You must stand still to inspect [E] for wounds.</span>")
-	else if(E.wounds.len)
+	else if(length(E.wounds))
 		to_chat(user, "<span class='warning'>You find [E.get_wounds_desc()]</span>")
 	else
 		to_chat(user, "<span class='notice'>You find no visible wounds.</span>")
@@ -518,7 +521,7 @@
 		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
 		return
 	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
-		if(protection && (protection.body_parts_covered & EYES))
+		if(protection && (protection.body_cover_flags & EYES))
 			to_chat(attacker, "<span class='danger'>You're going to need to remove the eye covering first.</span>")
 			return
 	if(!target.has_eyes())
@@ -540,7 +543,7 @@
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
 	if(istype(hat))
-		damage += hat.force * 3
+		damage += hat.damage_force * 3
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")

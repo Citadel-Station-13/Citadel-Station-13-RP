@@ -2,10 +2,16 @@
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
 	uid = SPECIES_ID_XENOHYBRID
+	id = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
+
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
 
 	tail = "tail"
 	icobase_tail = 1
@@ -29,7 +35,7 @@
 
 	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_BASE_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"

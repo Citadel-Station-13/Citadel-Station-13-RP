@@ -1,5 +1,6 @@
 /datum/species/vulpkanin
 	uid = SPECIES_ID_VULPKANIN
+	id = SPECIES_ID_VULPKANIN
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
 	primitive_form = SPECIES_MONKEY_VULPKANIN

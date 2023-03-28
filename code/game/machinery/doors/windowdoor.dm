@@ -40,13 +40,8 @@
 
 		if(!src.req_access)    //This apparently has side effects that might
 			src.check_access() //update null r_a's? Leaving it just in case.
-
-		if(src.req_access)
-			ae.conf_access = src.req_access
-
-		else if(src.req_one_access)
-			ae.conf_access = src.req_one_access
-			ae.one_access = 1
+		ae.conf_req_access = req_access?.Copy()
+		ae.conf_req_one_access = req_one_access?.Copy()
 	else
 		ae = electronics
 		electronics = null
@@ -152,7 +147,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user as mob)
+/obj/machinery/door/window/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 
 	if(istype(user,/mob/living/carbon/human))
@@ -243,11 +238,8 @@
 						wa.electronics = new/obj/item/airlock_electronics()
 						if(!src.req_access)
 							src.check_access()
-						if(src.req_access.len)
-							wa.electronics.conf_access = src.req_access
-						else if (src.req_one_access.len)
-							wa.electronics.conf_access = src.req_one_access
-							wa.electronics.one_access = 1
+						wa.electronics.conf_req_access = req_access?.Copy()
+						wa.electronics.conf_req_one_access = req_one_access?.Copy()
 					else
 						wa.electronics = electronics
 						electronics = null
@@ -258,7 +250,7 @@
 		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
 		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
 			user.setClickCooldown(user.get_attack_speed(I))
-			var/aforce = I.force
+			var/aforce = I.damage_force
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 			visible_message("<span class='danger'>[src] was hit by [I].</span>")
 			if(I.damtype == BRUTE || I.damtype == BURN)
@@ -284,7 +276,7 @@
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	var/id = null
 	maxhealth = 300
 	health = 300.0 //Stronger doors for prison (regular window door health is 150)

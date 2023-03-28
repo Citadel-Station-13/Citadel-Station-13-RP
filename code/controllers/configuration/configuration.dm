@@ -211,9 +211,7 @@
 	return !(var_name in banned_edits) && ..()
 
 /datum/controller/configuration/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Edit", src)
-	stat("[name]:", statclick)
+	return "Edit"
 
 /datum/controller/configuration/proc/Get(entry_type)
 	var/datum/config_entry/E = GetEntryDatum(entry_type)
@@ -315,7 +313,7 @@
 
 		switch (command)
 			if ("map")
-				currentmap = load_map_config("_maps/[data].json")
+				currentmap = load_map_config("_mapload/[data].json")
 				if(currentmap.defaulted)
 					log_config("Failed to load map config for [data]!")
 					currentmap = null

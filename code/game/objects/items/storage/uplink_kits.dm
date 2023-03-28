@@ -21,7 +21,7 @@
 			new /obj/item/tank/emergency/oxygen/double(src)
 
 		if("guns")
-			new /obj/item/gun/projectile/revolver(src)
+			new /obj/item/gun/ballistic/revolver(src)
 			new /obj/item/ammo_magazine/s357(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
@@ -177,7 +177,7 @@
 	name = "\improper Smooth operator"
 	desc = "Compact 9mm with silencer kit."
 	starts_with = list(
-		/obj/item/gun/projectile/pistol,
+		/obj/item/gun/ballistic/pistol,
 		/obj/item/silencer
 	)
 
@@ -288,7 +288,7 @@
 	desc = "A heavy, locked briefcase."
 	description_fluff = "The container, upon opening, looks to have a few oddly shaped indentations in its packing."
 	description_antag = "This case will likely contain a charged fuel rod gun, and a few fuel rods to go with it. It can only hold the fuel rod gun, fuel rods, batteries, a screwdriver, and stock machine parts."
-	force = 12 //Anti-rad lined i.e. Lead, probably gonna hurt a bit if you get bashed with it.
+	damage_force = 12 //Anti-rad lined i.e. Lead, probably gonna hurt a bit if you get bashed with it.
 	can_hold = list(/obj/item/gun/magnetic/fuelrod, /obj/item/fuel_assembly, /obj/item/cell, /obj/item/stock_parts, /obj/item/tool/screwdriver)
 	cant_hold = list(/obj/item/tool/screwdriver/power)
 	starts_with = list(

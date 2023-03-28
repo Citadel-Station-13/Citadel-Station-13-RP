@@ -20,7 +20,7 @@ var/list/global/tank_gauge_cache = list()
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_NORMAL
 
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
@@ -209,7 +209,10 @@ var/list/global/tank_gauge_cache = list()
 
 
 
-/obj/item/tank/attack_self(mob/user as mob)
+/obj/item/tank/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 	if (!(src.air_contents))
 		return
@@ -219,7 +222,7 @@ var/list/global/tank_gauge_cache = list()
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
-/obj/item/weapon/tank/ui_state(mob/user)
+/obj/item/weapon/tank/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/tank/ui_interact(mob/user, datum/tgui/ui)
@@ -435,7 +438,7 @@ var/list/global/tank_gauge_cache = list()
 
 
 			var/num_fragments = round(rand(8,10) * sqrt(strength * mult))
-			src.fragmentate(T, num_fragments, rand(5) + 7, list(/obj/item/projectile/bullet/pellet/fragment/tank/small = 7,/obj/item/projectile/bullet/pellet/fragment/tank = 2,/obj/item/projectile/bullet/pellet/fragment/strong = 1))
+			src.fragmentate(T, num_fragments, rand(5) + 7, list(/obj/projectile/bullet/pellet/fragment/tank/small = 7,/obj/projectile/bullet/pellet/fragment/tank = 2,/obj/projectile/bullet/pellet/fragment/strong = 1))
 
 			if(istype(loc, /obj/item/transfer_valve))
 				var/obj/item/transfer_valve/TTV = loc
@@ -472,7 +475,7 @@ var/list/global/tank_gauge_cache = list()
 			var/mult = (air_contents.total_moles**2/3)/((29*0.64) **2/3) //tanks appear to be experiencing a reduction on scale of about 0.64 total moles
 
 			var/num_fragments = round(rand(6,8) * sqrt(strength * mult)) //Less chunks, but bigger
-			src.fragmentate(T, num_fragments, 7, list(/obj/item/projectile/bullet/pellet/fragment/tank/small = 1,/obj/item/projectile/bullet/pellet/fragment/tank = 5,/obj/item/projectile/bullet/pellet/fragment/strong = 4))
+			src.fragmentate(T, num_fragments, 7, list(/obj/projectile/bullet/pellet/fragment/tank/small = 1,/obj/projectile/bullet/pellet/fragment/tank = 5,/obj/projectile/bullet/pellet/fragment/strong = 4))
 
 			if(istype(loc, /obj/item/transfer_valve))
 				var/obj/item/transfer_valve/TTV = loc

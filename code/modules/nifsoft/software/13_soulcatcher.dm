@@ -15,7 +15,7 @@
 	name = "Soulcatcher"
 	desc = "A mind storage and processing system capable of capturing and supporting human-level minds in a small VR space."
 	list_pos = NIF_SOULCATCHER
-	cost = 100 //If I wanna trap people's minds and lood them, then by god I'll do so.
+	cost = 25 //If I wanna trap people's minds and lood them, then by god I'll do so.
 	wear = 1
 	p_drain = 0.01
 
@@ -47,14 +47,14 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			nif.human.verbs |= /mob/living/carbon/human/proc/nsay
-			nif.human.verbs |= /mob/living/carbon/human/proc/nme
+			add_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+			add_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		nif.human.verbs -= /mob/living/carbon/human/proc/nsay
-		nif.human.verbs -= /mob/living/carbon/human/proc/nme
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)
@@ -538,7 +538,7 @@
 		alpha_mask.blend_mode = BLEND_SUBTRACT
 		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
 		dummy.add_overlay(alpha_mask)
-		COMPILE_OVERLAYS(dummy)
+		dummy.compile_overlays()
 		dummy.alpha = 192
 
 		// remove hudlist

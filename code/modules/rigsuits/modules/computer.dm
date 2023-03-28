@@ -54,12 +54,12 @@
 		else
 			integrated_ai.get_rig_stats = 0
 
-/mob/living/Stat()
+/mob/living/statpanel_data(client/C)
 	. = ..()
 	if(get_rig_stats)
 		var/obj/item/rig/rig = get_rig()
 		if(rig)
-			SetupStat(rig)
+			. += legacy_rig_stat(rig, C)
 
 /obj/item/rig_module/ai_container/proc/update_verb_holder()
 	if(!verb_holder)

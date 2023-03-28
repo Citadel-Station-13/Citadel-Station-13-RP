@@ -209,4 +209,4 @@ SUBSYSTEM_DEF(shuttle)
 		overmap_halted ? ship_effect.halt() : ship_effect.unhalt()
 
 /datum/controller/subsystem/shuttle/stat_entry()
-	..("Shuttles:[process_shuttles.len]/[shuttles.len], Ships:[ships.len], L:[registered_shuttle_landmarks.len][overmap_halted ? ", HALT" : ""]")
+	return ..() + " Shuttles:[process_shuttles.len]/[shuttles.len], Ships:[ships.len], L:[registered_shuttle_landmarks.len][overmap_halted ? ", HALT" : ""]"

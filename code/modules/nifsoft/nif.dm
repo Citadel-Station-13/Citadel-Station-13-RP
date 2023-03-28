@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		human = H
 		human.nif = src
 		stat = NIF_INSTALLING
-		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		add_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 		menu = H.AddComponent(/datum/component/nif_menu)
 		if(starting_software)
 			for(var/path in starting_software)
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 	QDEL_NULL(menu)
 	H.nif = null
 	human = null
@@ -644,14 +644,15 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 ////////////////////////////////
 // Special Promethean """surgery"""
-/obj/item/nif/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!ishuman(M) || !ishuman(user) || (M == user))
+/obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 
 	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/T = M
+	var/mob/living/carbon/human/T = target
 
-	if(istype(T.species,/datum/species/shapeshifter/promethean) && target_zone == BP_TORSO)
+	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
 			return
@@ -677,7 +678,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		verbs -= /mob/living/carbon/human/proc/set_nif_examine
+		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

@@ -46,7 +46,7 @@
 			UnregisterSignal(screen_icon, COMSIG_CLICK)
 			QDEL_NULL(screen_icon)
 		if(ishuman(parent))
-			owner.verbs -= /mob/living/carbon/human/proc/nif_menu
+			remove_verb(owner, /mob/living/carbon/human/proc/nif_menu)
 
 
 /datum/component/nif_menu/proc/create_mob_button(mob/user)
@@ -60,7 +60,7 @@
 	LAZYADD(HUD.other_important, screen_icon)
 	user.client?.screen += screen_icon
 
-	user.verbs |= /mob/living/carbon/human/proc/nif_menu
+	add_verb(user, /mob/living/carbon/human/proc/nif_menu)
 
 /datum/component/nif_menu/proc/nif_menu_click(source, location, control, params, user)
 	var/mob/living/carbon/human/H = user
@@ -96,7 +96,7 @@
 /**
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
-/obj/item/nif/ui_state(mob/user)
+/obj/item/nif/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.ui_nif_main_state
 
 /**
@@ -152,7 +152,7 @@
 /**
  * tgui_act handles all user input in the UI.
  */
-/obj/item/nif/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

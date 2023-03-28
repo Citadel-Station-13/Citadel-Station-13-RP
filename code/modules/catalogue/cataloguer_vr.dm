@@ -19,6 +19,7 @@
 /obj/item/cataloguer/compact/verb/toggle()
 	set name = "Toggle Cataloguer"
 	set category = "Object"
+	set src in usr
 
 	if(busy)
 		to_chat(usr, SPAN_WARNING( "\The [src] is currently scanning something."))

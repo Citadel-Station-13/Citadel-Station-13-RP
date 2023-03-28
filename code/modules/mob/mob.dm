@@ -26,16 +26,23 @@
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-	init_rendering()
 	hook_vr("mob_new",list(src))
+	// inventory
+	init_inventory()
+	// rendering
+	init_rendering()
 	// resize
 	update_transform()
 	// offset
 	reset_pixel_offsets()
+	// physiology
+	init_physiology()
+	// movespeed
+	update_movespeed(TRUE)
+	// actionspeed
+	initialize_actionspeed()
 	. = ..()
 	update_config_movespeed()
-	update_movespeed(TRUE)
-	initialize_actionspeed()
 
 /**
  * Delete a mob
@@ -139,8 +146,13 @@
 	spell_masters = null
 	zone_sel = null
 
+/mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-/mob/proc/show_message(msg, type, alt, alt_type)
+/mob/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
 
@@ -264,7 +276,7 @@
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
@@ -284,6 +296,13 @@
 			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
 				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
+	do_examinate(A)
+
+/**
+ * examines something & sends results
+ * no pre-checks for dist/view/whatnot
+ */
+/mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
@@ -339,19 +358,35 @@
 	new_layer = clamp(new_layer, -100, 100)
 	set_relative_layer(new_layer)
 
-/mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_behind()
 	set name = "Move Behind"
 	set desc = "Move behind of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
 
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
+
+	if(QDELETED(M))
+		return
+
 	set_relative_layer(M.relative_layer - 1)
 
-/mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_infront()
 	set name = "Move Infront"
 	set desc = "Move infront of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
+
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
+
+	if(QDELETED(M))
+		return
 
 	set_relative_layer(M.relative_layer + 1)
 
@@ -476,8 +511,8 @@
 	// Try harder to find a key to use
 	if(!keytouse && key)
 		keytouse = ckey(key)
-	else if(!keytouse && mind?.key)
-		keytouse = ckey(mind.key)
+	else if(!keytouse && mind?.ckey)
+		keytouse = mind.ckey
 
 	GLOB.respawn_timers[keytouse] = world.time + time
 
@@ -709,87 +744,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
-/**
- * Output an update to the stat panel for the client
- *
- * calculates client ping, round id, server time, time dilation and other data about the round
- * and puts it in the mob status panel on a regular loop
- */
-/mob/Stat()
-	..()
-
-	//This is only called from client/Stat(), let's assume client exists.
-
-	if(statpanel("Status"))
-		//var/list/L = list()
-		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		//L += SSmapping.stat_map_name
-		stat("Round ID", "[GLOB.round_id || "ERROR"]")
-		// VIRGO START
-		stat("Station Time", stationtime2text())
-		stat("Station Date", stationdate2text())
-		stat("Round Duration", roundduration2text())
-		// VIRGO END
-		stat("Time dilation", SStime_track.stat_time_text)
-		//L += SSshuttle.emergency_shuttle_stat_text
-		//stat(null, "[L.Join("\n\n")]")
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
-
-	if(client.holder)
-		if(statpanel("MC"))
-			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu]")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
-			stat("Real time of day:", REALTIMEOFDAY)
-			GLOB.stat_entry()
-			config.stat_entry()
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-			//GLOB.GLOB.cameranet.stat_entry()
-		if(statpanel("Tickets"))
-			GLOB.ahelp_tickets.stat_entry()
-		if(length(GLOB.sdql2_queries))
-			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-				for(var/i in GLOB.sdql2_queries)
-					var/datum/SDQL2_query/Q = i
-					Q.generate_stat()
-
-
 /// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
 	return 0
@@ -797,8 +751,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
-
-
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)
@@ -886,7 +838,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -902,8 +854,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 
 		if(prob(selection.w_class * 5) && (affected.robotic < ORGAN_ROBOT)) //I'M SO ANEMIC I COULD JUST -DIE-.
-			var/datum/wound/internal_bleeding/I = new (min(selection.w_class * 5, 15))
-			affected.wounds += I
+			affected.create_specific_wound(/datum/wound/internal_bleeding, min(selection.w_class * 5, 15))
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 50)
 
 		if (ishuman(U))
@@ -980,18 +931,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/verb/northfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(NORTH))
 
 /mob/verb/southfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(SOUTH))
 
 /mob/verb/eastfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(EAST))
 
 /mob/verb/westfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(WEST))
 
 /mob/proc/adjustEarDamage()
@@ -1110,6 +1065,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set name = "diceroll"
 	set category = "OOC"
 	set desc = "Roll a random number between 1 and a chosen number."
+	set src = usr
 
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)
@@ -1257,3 +1213,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/mob/is_avoiding_ground()
+	return ..() || hovering || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST)

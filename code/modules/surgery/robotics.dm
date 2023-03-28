@@ -5,6 +5,7 @@
 
 /datum/surgery_step/robotics/
 	can_infect = 0
+	surface_odd_buff = 30 // can do it basically anywhere but a floor
 
 /datum/surgery_step/robotics/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (isslime(target))
@@ -291,7 +292,7 @@
 	"<span class='warning'>Your hand slips, gumming up the mechanisms inside of [target]'s [affected.name] with \the [tool]!</span>")
 
 	target.adjustToxLoss(5)
-	affected.createwound(CUT, 5)
+	affected.create_wound(CUT, 5)
 
 	for(var/obj/item/organ/I in affected.internal_organs)
 		if(I)
@@ -557,8 +558,8 @@
 
 	target.set_species(/datum/species/diona)
 
-	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
-	target.verbs |= /mob/living/carbon/human/proc/regenerate
+	add_verb(target, /mob/living/carbon/human/proc/diona_split_nymph)
+	add_verb(target, /mob/living/carbon/human/proc/regenerate)
 
 	spawn(0) //Name yourself on your own damn time
 		var/new_name = ""

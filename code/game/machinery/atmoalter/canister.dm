@@ -5,6 +5,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
 	density = 1
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	var/health = 100.0
 	w_class = ITEMSIZE_HUGE
 
@@ -37,7 +38,6 @@
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
-	interact_offline = 1 // Allows this to be used when not in powered area.
 	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
@@ -282,7 +282,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -294,7 +294,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/analyzer) && !istype(W, /obj/item/pda))
 		visible_message(SPAN_WARNING("\The [user] hits \the [src] with \a [W]!"))
-		src.health -= W.force
+		src.health -= W.damage_force
 		healthcheck()
 
 	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/tank/jetpack))
@@ -317,10 +317,10 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
+/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
 	return src.ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/ui_state(mob/user)
+/obj/machinery/portable_atmospherics/canister/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)

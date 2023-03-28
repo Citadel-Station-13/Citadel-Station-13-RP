@@ -54,7 +54,7 @@
 // 	ui_interact(user)
 // 	return TRUE
 
-/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -83,16 +83,18 @@
 		var/mob/living/L = user
 		L.looking_elsewhere = 1
 		L.handle_vision()
-	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
+	var/list/view_size = decode_view_size(world.view)
+	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
 
-/obj/machinery/computer/ship/proc/unlook(mob/user)
+/obj/machinery/computer/ship/proc/unlook(mob/user, vis_update)
 	user.reset_perspective()
-	user.client?.change_view(world.view, FALSE, translocate = TRUE)
+	user.client?.reset_temporary_view()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user
 		L.looking_elsewhere = 0
-		L.handle_vision()
+		if(!vis_update)
+			L.handle_vision()
 	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
@@ -107,14 +109,14 @@
 		return
 	unlook(user)
 
-/obj/machinery/computer/ship/ui_close(mob/user)
+/obj/machinery/computer/ship/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
 
-/obj/machinery/computer/ship/check_eye(mob/user)
+/obj/machinery/computer/ship/check_eye(mob/user, vis_update)
 	if(!get_dist(user, src) > 1 || user.blinded || !linked)
-		unlook(user)
+		unlook(user, vis_update)
 		return -1
 	else
 		return 0

@@ -32,7 +32,6 @@
 /obj/machinery/power/breakerbox/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
 	icon_state = "bbox_on"
@@ -73,7 +72,7 @@
 	busy = 0
 
 
-/obj/machinery/power/breakerbox/attack_hand(mob/user)
+/obj/machinery/power/breakerbox/attack_hand(mob/user, list/params)
 	if(update_locked)
 		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
 		return

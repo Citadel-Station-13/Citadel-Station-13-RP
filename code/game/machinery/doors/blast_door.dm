@@ -115,7 +115,7 @@
 
 //Proc: attack_hand
 //Description: Attacked with empty hand. Only to allow special attack_bys.
-/obj/machinery/door/blast/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -152,12 +152,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force*0.35) //it's a blast door, it should take a while. -Luke
+					take_damage(W.damage_force*0.35) //it's a blast door, it should take a while. -Luke
 				return
 
 	else if(istype(C, /obj/item/stack/material) && C.get_material_name() == "plasteel") // Repairing.
@@ -182,12 +182,12 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
-			if(W.force < min_force) //No actual non-weapon item shouls have a force greater than the min_force, but let's include this just in case.
+			if(W.damage_force < min_force) //No actual non-weapon item shouls have a force greater than the min_force, but let's include this just in case.
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 			else
 				user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 				playsound(src.loc, hitsound, 100, 1)
-				take_damage(W.force*0.15) //If the item isn't a weapon, let's make this take longer than usual to break it down.
+				take_damage(W.damage_force*0.15) //If the item isn't a weapon, let's make this take longer than usual to break it down.
 			return
 
 // Proc: attack_alien()

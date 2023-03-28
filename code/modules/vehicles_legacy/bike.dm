@@ -120,7 +120,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/vehicle_old/bike/attack_hand(var/mob/user as mob)
+/obj/vehicle_old/bike/attack_hand(mob/user, list/params)
 	if(user == load)
 		unload(load, user)
 		to_chat(user, "You unbuckle yourself from \the [src].")
@@ -174,7 +174,7 @@
 
 	..()
 
-/obj/vehicle_old/bike/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/bike/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)

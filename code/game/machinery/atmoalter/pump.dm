@@ -72,21 +72,13 @@
 		else
 			environment = loc.return_air()
 
-		var/pressure_delta
-		var/output_volume
-		var/air_temperature
+		var/transfer_moles
 		if(direction_out)
-			pressure_delta = target_pressure - environment.return_pressure()
-			output_volume = environment.volume * environment.group_multiplier
-			air_temperature = environment.temperature? environment.temperature : air_contents.temperature
+			transfer_moles = xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE)
 		else
-			pressure_delta = environment.return_pressure() - target_pressure
-			output_volume = air_contents.volume * air_contents.group_multiplier
-			air_temperature = air_contents.temperature? air_contents.temperature : environment.temperature
+			transfer_moles = -xgm_cheap_transfer_moles_single(environment, target_pressure)
 
-		var/transfer_moles = pressure_delta*output_volume/(air_temperature * R_IDEAL_GAS_EQUATION)
-
-		if (pressure_delta > 0.01)
+		if (transfer_moles > 0.01)
 			if (direction_out)
 				power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
 			else
@@ -118,7 +110,7 @@
 	. = ..()
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/powered/pump/attack_hand(var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/ui_interact(mob/user, datum/tgui/ui)
@@ -128,7 +120,7 @@
 		ui.open()
 
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_state(mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user)
@@ -216,7 +208,7 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the pump control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()

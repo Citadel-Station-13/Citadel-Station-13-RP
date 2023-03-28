@@ -42,7 +42,7 @@
 	base_attack_cooldown = 1 SECOND
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,
 		"bullet" = 5,
 		"laser" = 5,
@@ -50,16 +50,6 @@
 		"bomb" = 10,
 		"bio" = 100,
 		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 2,
-		"bullet" = 2,
-		"laser" = 0,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
 		)
 
 	say_list_type = /datum/say_list/sakimm
@@ -154,8 +144,8 @@
 /mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(randomize_size)
 		adjust_scale(rand(8, 11) / 10)

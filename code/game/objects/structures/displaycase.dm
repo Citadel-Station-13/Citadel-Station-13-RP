@@ -28,7 +28,7 @@
 				src.healthcheck()
 
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	src.healthcheck()
@@ -58,12 +58,12 @@
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
-	src.health -= W.force
+	src.health -= W.damage_force
 	src.healthcheck()
 	..()
 	return
 
-/obj/structure/displaycase/attack_hand(mob/user as mob)
+/obj/structure/displaycase/attack_hand(mob/user, list/params)
 	if (src.destroyed && src.occupied)
 		new /obj/item/gun/energy/captain( src.loc )
 		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")

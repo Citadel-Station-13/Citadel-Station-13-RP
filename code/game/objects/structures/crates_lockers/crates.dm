@@ -147,11 +147,11 @@
 
 /obj/structure/closet/crate/secure/Initialize(mapload)
 	. = ..()
-	cut_overlays()
+
 	if(locked)
-		add_overlay(redlight)
+		set_overlays(redlight)
 	else
-		add_overlay(greenlight)
+		set_overlays(greenlight)
 
 /obj/structure/closet/crate/secure/can_open()
 	return !locked
@@ -176,8 +176,8 @@
 	if(user)
 		for(var/mob/O in viewers(user, 3))
 			O.show_message( "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>", 1)
-	cut_overlays()
-	add_overlay(locked ? redlight : greenlight)
+
+	set_overlays(locked ? redlight : greenlight)
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance
@@ -193,7 +193,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)
@@ -217,8 +217,10 @@
 		overlays_to_add += emag
 		overlays_to_add += sparks
 		add_overlay(overlays_to_add)
+		compile_overlays()
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+			compile_overlays()
 		playsound(src.loc, "sparks", 60, 1)
 		locked = 0
 		broken = 1
@@ -230,16 +232,15 @@
 		O.emp_act(severity)
 	if(!broken && !opened  && prob(50/severity))
 		cut_overlays()
-		var/list/overlays_to_add = list()
 		if(!locked)
 			locked = 1
-			overlays_to_add += redlight
+			add_overlay(redlight)
 		else
-			overlays_to_add += emag
-			overlays_to_add += sparks
-			add_overlay(overlays_to_add)
+			add_overlay(list(emag, sparks))
+			compile_overlays()
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+				compile_overlays()
 			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
 			locked = 0
 	if(!opened && prob(20/severity))
@@ -250,7 +251,7 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 

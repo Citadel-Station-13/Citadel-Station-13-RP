@@ -137,7 +137,7 @@ var/list/all_maps = list()
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
-		allowed_jobs = subtypesof(/datum/job)
+		allowed_jobs = subtypesof(/datum/role/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/proc/get_zlevel_time(var/z)
@@ -239,18 +239,18 @@ var/list/all_maps = list()
 /datum/map/proc/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ)   = list(),
-		num2text(AI_FREQ)    = list(access_synth),
+		num2text(AI_FREQ)    = list(ACCESS_SPECIAL_SILICONS),
 		num2text(ENT_FREQ)   = list(),
-		num2text(ERT_FREQ)   = list(access_cent_specops),
-		num2text(COMM_FREQ)  = list(access_heads),
-		num2text(ENG_FREQ)   = list(access_engine_equip, access_atmospherics),
-		num2text(MED_FREQ)   = list(access_medical_equip),
-		num2text(MED_I_FREQ) = list(access_medical_equip),
-		num2text(SEC_FREQ)   = list(access_security),
-		num2text(SEC_I_FREQ) = list(access_security),
-		num2text(SCI_FREQ)   = list(access_tox,access_robotics,access_xenobiology),
-		num2text(SUP_FREQ)   = list(access_cargo),
-		num2text(SRV_FREQ)   = list(access_janitor, access_hydroponics),
+		num2text(ERT_FREQ)   = list(ACCESS_CENTCOM_ERT),
+		num2text(COMM_FREQ)  = list(ACCESS_COMMAND_BRIDGE),
+		num2text(ENG_FREQ)   = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
+		num2text(MED_FREQ)   = list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(MED_I_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(SEC_FREQ)   = list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(SCI_FREQ)   = list(ACCESS_SCIENCE_FABRICATION,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_XENOBIO),
+		num2text(SUP_FREQ)   = list(ACCESS_SUPPLY_BAY),
+		num2text(SRV_FREQ)   = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
 	)
 
 // Another way to setup the map datum that can be convenient.  Just declare all your zlevels as subtypes of a common

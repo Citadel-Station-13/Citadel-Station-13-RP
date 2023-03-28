@@ -4,7 +4,7 @@
 	icon_keyboard = "security_key"
 	icon_screen = "explosive"
 	light_color = "#a91515"
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 	circuit = /obj/item/circuitboard/prisoner
 	var/id = 0
 	var/temp = null
@@ -16,7 +16,7 @@
 /obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prisoner/attack_hand(mob/user)
+/obj/machinery/computer/prisoner/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)

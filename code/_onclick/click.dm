@@ -35,20 +35,24 @@
 	usr.MouseWheelOn(src, delta_x, delta_y, params)
 
 
-/*
-	Standard mob ClickOn()
-	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
 
-	After that, mostly just check your state, check whether you're holding an item,
-	check whether you're adjacent to the target, then pass off the click to whoever
-	is recieving it.
-	The most common are:
-	* mob/UnarmedAttack(atom,adjacent) - used here only when adjacent, with no item in hand; in the case of humans, checks gloves
-	* atom/attackby(item,user) - used only when adjacent
-	* item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
-	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
-*/
-/mob/proc/ClickOn(var/atom/A, var/params)
+/**
+ * click handling entrypoint
+ *
+ * handles some intercepts (many of which will be potentially moved into other procs later)
+ * handles root level intercepts like admin buildmode / panel
+ *
+ * ! Warning: Any custom calls to this must ensure 'params' argument adheres to BYOND specifications. !
+ *
+ * todo: better description
+ * todo: accept params as string from BYOND or pre-built list
+ *
+ * @params
+ * * A - /atom clicked on
+ * * params - byond params list
+ * * clickchain_flags - allows additional flags to be passed down from, say, the statpanel if this is a routed call.
+ */
+/mob/proc/ClickOn(atom/A, params, clickchain_flags)
 	if(world.time < next_click) // Hard check, before anything else, to avoid crashing
 		return
 	next_click = world.time + 1
@@ -63,6 +67,8 @@
 	// packed version things have to unpack a second or even third time
 	// because they can't check the test version???
 	var/list/unpacked_params = params2list(params)
+	// todo: this is shitcode, entire click params system needs an overhaul to support stuff better.
+	// notably we should stop relying on old button=1 params, as opposed to button=left/right/middle param.
 	if(unpacked_params["shift"] && unpacked_params["ctrl"])
 		CtrlShiftClickOn(A)
 		return 1
@@ -81,6 +87,12 @@
 	if(unpacked_params["ctrl"])
 		CtrlClickOn(A)
 		return 1
+	switch(unpacked_params["button"])
+		if("right")
+		if("left")
+		if("middle")
+			MiddleClickOn(A)
+			return 1
 
 	if(stat || paralysis || stunned || weakened)
 		return
@@ -126,18 +138,18 @@
 	if(Reachability(A, null, I?.reach, I))
 		//? attempt melee attack chain
 		if(I)
-			I.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+			I.melee_attack_chain(A, src, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
 		else
-			melee_attack_chain(A, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+			melee_attack_chain(A, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 	else if(ranged_generics_allowed)
 		//? attempt ranged attack chain
 		if(I)
-			I.ranged_attack_chain(A, src, NONE, params)
+			I.ranged_attack_chain(A, src, clickchain_flags, unpacked_params)
 		else
-			ranged_attack_chain(A, NONE, unpacked_params)
+			ranged_attack_chain(A, clickchain_flags, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
@@ -260,17 +272,22 @@
 
 /mob/proc/altclick_listed_turf(atom/A)
 	var/turf/T = get_turf(A)
-	if(T == A.loc || T == A)
-		if(T == listed_turf)
-			listed_turf = null
-		else if(TurfAdjacent(T))
-			listed_turf = T
-			client.statpanel = T.name
+	if(!T)
+		return
+	if(!TurfAdjacent(T))
+		return
+	if(!client)
+		return
+	if(T == client.statpanel_turf)
+		client.unlist_turf()
+		return
+	client.list_turf(T)
 
 /atom/proc/AltClick(var/mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	return FALSE
 
+// todo: rework
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
 
@@ -298,7 +315,7 @@
 	setClickCooldown(4)
 	var/turf/T = get_turf(src)
 
-	var/obj/item/projectile/beam/LE = new (T)
+	var/obj/projectile/beam/LE = new (T)
 	LE.icon = 'icons/effects/genetics.dmi'
 	LE.icon_state = "eyelasers"
 	playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)

@@ -23,10 +23,10 @@
 		"Courser Scouting Vessel" = list("rift_courser_hangar"),
 		"Civilian Transport" = list("rift_civvie_pad"),
 		"Dart EMT Shuttle" = list("rift_emt_pad"),
-		"Beruang Trade Ship" = list("rift_trade_dock")
+		"Beruang Trade Ship" = list("rift_trade_dock"),
+		"NDV Quicksilver" = list("rift_specops_dock"),
+		"Pirate Skiff" = list("rift_pirate_dock"),
 		)
-
-
 
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
@@ -69,4 +69,3 @@
 	//For ships, it's safe to assume they're big enough to not be sneaky
 	else if(istype(AM, /obj/effect/overmap/visitable/ship))
 		GLOB.lore_atc.msg(message)
-

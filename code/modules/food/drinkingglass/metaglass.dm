@@ -1005,3 +1005,16 @@ Drinks Data
 
 /datum/reagent/ethanol/holygrail
 	glass_icon_state = "holygrail"
+
+//Never Fade Away
+/datum/reagent/ethanol/silverhand
+	glass_icon_state = "silverhand"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/welles
+	glass_icon_state = "welles"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/martinez
+	glass_icon_state = "martinez"
+	glass_center_of_mass = list("x"=16, "y"=8)

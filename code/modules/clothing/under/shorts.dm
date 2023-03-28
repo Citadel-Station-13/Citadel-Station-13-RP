@@ -3,7 +3,7 @@
 	name = "athletic shorts"
 	desc = "95% Polyester, 5% Spandex!"
 	gender = PLURAL
-	body_parts_covered = LOWER_TORSO
+	body_cover_flags = LOWER_TORSO
 
 /obj/item/clothing/under/shorts/red
 	name = "red athletic shorts"
@@ -97,7 +97,7 @@
 	name = "short black skirt"
 	desc = "A skirt that is a shiny black."
 	icon_state = "skirt_short_black"
-	body_parts_covered = LOWER_TORSO
+	body_cover_flags = LOWER_TORSO
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/skirt/khaki
@@ -140,7 +140,7 @@
 	name = "black skirt"
 	desc = "A black skirt, very fancy!"
 	icon_state = "blackskirt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/skirt/outfit/plaid_blue
 	name = "blue plaid skirt"
@@ -182,7 +182,7 @@
 	desc = "It's an orange high visibility jumpskirt worn by engineers. It has minor radiation shielding."
 	name = "engineer's jumpskirt"
 	icon_state = "enginef"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
+	armor_type = /datum/armor/engineering/jumpsuit
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "engine", SLOT_ID_LEFT_HAND = "engine")
 
 /obj/item/clothing/under/rank/chief_engineer/skirt
@@ -207,7 +207,7 @@
 	name = "scientist's jumpskirt"
 	icon_state = "sciencef"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+	armor_type = /datum/armor/science/jumpsuit
 
 /obj/item/clothing/under/rank/medical/skirt
 	name = "medical doctor's jumpskirt"
@@ -234,7 +234,7 @@
 	name = "security officer's jumpskirt"
 	desc = "Standard feminine fashion for Security Officers.  It's made of sturdier material than the standard jumpskirts."
 	icon_state = "securityf"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/jumpsuit
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/warden/skirt

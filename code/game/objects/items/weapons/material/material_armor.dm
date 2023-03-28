@@ -73,8 +73,8 @@ Protectiveness | Armor %
 	if(!material || unbreakable)
 		return
 
-	if(istype(source, /obj/item/projectile))
-		var/obj/item/projectile/P = source
+	if(istype(source, /obj/projectile))
+		var/obj/projectile/P = source
 		if(P.check_pass_flags(ATOM_PASS_GLASS))
 			if(material.opacity - 0.3 <= 0)
 				return // Lasers ignore 'fully' transparent material.
@@ -132,8 +132,8 @@ Protectiveness | Armor %
 		return PROJECTILE_FORCE_MISS
 
 	if(material.reflectivity)
-		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
+			var/obj/projectile/P = damage_source
 
 			if(P.reflected) // Can't reflect twice
 				return ..()
@@ -183,11 +183,13 @@ Protectiveness | Armor %
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
 			number = clamp( number, 0,  100)
 
-		armor["melee"] = melee_armor
-		armor["bullet"] = bullet_armor
-		armor["laser"] = laser_armor
-		armor["energy"] = energy_armor
-		armor["bomb"] = bomb_armor
+		set_armor(list(
+			ARMOR_MELEE = melee_armor,
+			ARMOR_BULLET = bullet_armor,
+			ARMOR_LASER = laser_armor,
+			ARMOR_ENERGY = energy_armor,
+			ARMOR_BOMB = bomb_armor,
+		))
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
@@ -258,10 +260,10 @@ Protectiveness | Armor %
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
 	name = "improvised armor (bucket)"
-	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	desc = "It's a bucket with a large hole cut into it. Desperate times require desperate measures, and you can't get more desperate than trusting a CleanMate bucket as a helmet."
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
-	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/misc/bucket
 
 /obj/item/clothing/head/helmet/bucket/wood
 	name = "wooden bucket"
@@ -284,7 +286,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	default_material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift

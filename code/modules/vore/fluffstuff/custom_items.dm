@@ -83,7 +83,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "joanariamob"
 	origin_tech = "materials=7"
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -139,7 +139,10 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
 
@@ -208,14 +211,19 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(mob/user as mob)
+/obj/item/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
-/obj/item/flag/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/flag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
-
+		user.visible_message("<span class='warning'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
 
 /obj/item/flag/federation
 	name = "Federation Banner"
@@ -283,7 +291,7 @@
 
 	atom_flags = NOBLOODY
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
@@ -292,7 +300,7 @@
 //General use
 /obj/item/melee/fluff/holochain/mass
 	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
-	force = 8
+	damage_force = 8
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
 
@@ -324,7 +332,10 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured)
 		return ..()
 
@@ -361,7 +372,7 @@
 	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "serdy_armor"
 	item_state = "serdy_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
 
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
@@ -392,13 +403,13 @@
 	name = "purple robes"
 	desc = "Heavy, royal purple robes threaded with silver lining."
 	icon_state = "psyamp"
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/head/fluff/pink_tiara
 	name = "Pink Tourmaline Tiara"
 	desc = "A small, steel tiara with a large, pink tourmaline gem in the center."
 	icon_state = "amp"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Lots of people are using this now.
 /obj/item/clothing/accessory/collar/vmcrystal
@@ -434,7 +445,10 @@
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
 		return 0
@@ -525,7 +539,7 @@
 	icon_state = "browncane"
 	item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 50)
@@ -544,7 +558,7 @@
     icon_state = "alexiswand"
     item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
-    force = 1.0
+    damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
     matter = list(MAT_STEEL = 50)
@@ -554,6 +568,9 @@
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(last_use + cooldown >= world.time)
 		return
 	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
@@ -675,8 +692,11 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.ckey == "pontifexminimus")
-		user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
+		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
 	else
 		return
 
@@ -702,7 +722,10 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(mob/user as mob)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured == 1)
 		return ..()
 
@@ -820,7 +843,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user)
+/obj/item/perfect_tele/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -830,6 +853,9 @@
 		return ..()
 
 /obj/item/perfect_tele/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!(user.ckey in warned_users))
 		warned_users |= user.ckey
 		alert(user,"This device can be easily used to break ERP preferences due to the nature of teleporting \
@@ -1076,7 +1102,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -1089,6 +1115,9 @@
 	..()
 
 /obj/item/perfect_tele_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isliving(user))
 		return
 	var/mob/living/L = user
@@ -1170,13 +1199,19 @@
 	icon_state = "hisstective_badge"
 	//slot_flags = SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
-		user.do_attack_animation(M)
+		user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
+		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!stored_name)
 		to_chat(user, "You huff along the front of your badge, then rub your sleeve on it to polish it up.")
@@ -1195,7 +1230,7 @@
 	icon_state = "centcom"
 	registered_name = "Amy Lessen"
 	assignment = "Xenobiology Director"
-	access = list(access_cent_general,access_cent_thunder,access_cent_medical,access_cent_living,access_cent_storage,access_cent_teleporter,access_research,access_xenobiology,access_maint_tunnels,access_xenoarch,access_robotics,access_tox_storage,access_tox) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
+	access = list(ACCESS_CENTCOM_GENERAL,ACCESS_CENTCOM_THUNDERDOME,ACCESS_CENTCOM_MEDICAL,ACCESS_CENTCOM_DORMS,ACCESS_CENTCOM_STORAGE,ACCESS_CENTCOM_TELEPORTER,ACCESS_SCIENCE_MAIN,ACCESS_SCIENCE_XENOBIO,ACCESS_ENGINEERING_MAINT,ACCESS_SCIENCE_XENOARCH,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_TOXINS,ACCESS_SCIENCE_FABRICATION) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
 	age = 39
 	blood_type = "O-"
 	sex = "Female"
@@ -1210,10 +1245,12 @@
 	name = "Lesser Form Injector"
 	desc = "Turn the user into their lesser, more primal form."
 
-/obj/item/fluff/injector/monkey/attack(mob/living/M, mob/living/user)
-
-	if(usr == M) //Is the person using it on theirself?
-		if(ishuman(M)) //If so, monkify them.
+/obj/item/fluff/injector/monkey/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(usr == target) //Is the person using it on theirself?
+		if(ishuman(target)) //If so, monkify them.
 			var/mob/living/carbon/human/H = user
 			H.monkeyize()
 			qdel(src) //One time use.
@@ -1224,10 +1261,12 @@
 	name = "Numbing Venom Injector"
 	desc = "Injects the user with a high dose of some type of chemical, causing any chemical glands they have to kick into overdrive and create the production of a numbing enzyme that is injected via bites.."
 
-/obj/item/fluff/injector/numb_bite/attack(mob/living/M, mob/living/user)
-
-	if(usr == M) //Is the person using it on theirself?
-		if(ishuman(M)) //Give them numbing bites.
+/obj/item/fluff/injector/numb_bite/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(usr == target) //Is the person using it on theirself?
+		if(ishuman(target)) //Give them numbing bites.
 			var/mob/living/carbon/human/H = user
 			H.species.give_numbing_bite() //This was annoying, but this is the easiest way of performing it.
 			qdel(src) //One time use.
@@ -1278,7 +1317,7 @@
 /obj/item/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
-	source.verbs |= assigned_proc
+	add_verb(source, assigned_proc)
 	return 1
 
 /obj/item/implanter/reagent_generator/evian
@@ -1346,7 +1385,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
-	force = 5
+	damage_force = 5
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -1369,12 +1408,12 @@
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
-		force = 15
+		damage_force = 15
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
-		force = 8
+		damage_force = 8
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -1402,6 +1441,9 @@
 			update_held_icon()
 
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
@@ -1451,7 +1493,7 @@
 		return
 	active = 1
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -1464,18 +1506,22 @@
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
 
-/obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
+/obj/item/melee/fluffstuff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H?.take_organ_damage(5,5)
 		deactivate(user)
 	else
 		activate(user)
@@ -1504,7 +1550,7 @@
 	active_force = 15
 	active_throwforce = 7
 	active_w_class = ITEMSIZE_LARGE
-	force = 1
+	damage_force = 1
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 5

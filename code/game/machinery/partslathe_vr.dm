@@ -49,7 +49,6 @@
 
 /obj/machinery/partslathe/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 	update_recipe_list()
 
@@ -212,7 +211,7 @@
 /obj/machinery/partslathe/attack_ai(mob/user)
 	src.attack_hand(user)
 
-/obj/machinery/partslathe/attack_hand(mob/user)
+/obj/machinery/partslathe/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)
@@ -277,7 +276,7 @@
 
 	return data
 
-/obj/machinery/partslathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/partslathe/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

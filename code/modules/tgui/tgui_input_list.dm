@@ -134,11 +134,11 @@
 		ui = new(user, src, "ListInputModal")
 		ui.open()
 
-/datum/tgui_list_input/ui_close(mob/user)
+/datum/tgui_list_input/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 
-/datum/tgui_list_input/ui_state(mob/user)
+/datum/tgui_list_input/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.always_state
 
 /datum/tgui_list_input/ui_static_data(mob/user)

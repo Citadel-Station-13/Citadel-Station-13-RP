@@ -2,6 +2,15 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
+/datum/armor/rig
+	melee = 0.4
+	bullet = 0.05
+	laser = 0.2
+	energy = 0.05
+	bomb = 0.35
+	bio = 1.0
+	rad = 0.2
+
 /*
  * Defines the behavior of hardsuits/rigs/power armour.
  */
@@ -11,13 +20,11 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
-	req_one_access = list()
-	req_access = list()
 	w_class = ITEMSIZE_HUGE
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/rig
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
@@ -156,18 +163,18 @@
 		air_supply = new air_type(src)
 	if(glove_type)
 		gloves = new glove_type(src)
-		verbs |= /obj/item/rig/proc/toggle_gauntlets
+		add_obj_verb(src, /obj/item/rig/proc/toggle_gauntlets)
 	if(helm_type)
 		helmet = new helm_type(src)
-		verbs |= /obj/item/rig/proc/toggle_helmet
+		add_obj_verb(src, /obj/item/rig/proc/toggle_helmet)
 	if(boot_type)
 		boots = new boot_type(src)
-		verbs |= /obj/item/rig/proc/toggle_boots
+		add_obj_verb(src, /obj/item/rig/proc/toggle_boots)
 	if(chest_type)
 		chest = new chest_type(src)
 		if(allowed)
 			chest.allowed = allowed
-		verbs |= /obj/item/rig/proc/toggle_chest
+		add_obj_verb(src, /obj/item/rig/proc/toggle_chest)
 
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
@@ -182,8 +189,7 @@
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
 		piece.unacidable = unacidable
-		if(islist(armor)) piece.armor = armor.Copy()
-		if(islist(armorsoak)) piece.armorsoak = armorsoak.Copy()
+		piece.set_armor(fetch_armor())
 
 	update_icon(1)
 
@@ -372,10 +378,9 @@
 
 					//sealed pieces become airtight, protecting against diseases
 					if (is_sealing)
-						piece.armor["bio"] = 100
+						piece.set_armor(piece.fetch_armor().boosted(list(ARMOR_BIO = 100)))
 					else
-						piece.armor["bio"] = src.armor["bio"]
-
+						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO))))
 				else
 					failed_to_seal = 1
 
@@ -621,14 +626,6 @@
 
 	cell.use(cost*10)
 	return 1
-
-// this function displays the current cell charge in the stat panel
-/obj/item/rig/proc/show_cell_power()
-	if(cell)
-		stat(null, text("Charge Left: [round(cell.percent())]%"))
-		stat(null, text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-	else
-		stat(null, text("No Cell Inserted!"))
 
 /obj/item/rig/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
 	if(!user)
@@ -1158,13 +1155,6 @@
 //Shows cell charge on screen, ideally.
 
 var/atom/movable/screen/cells = null
-
-// update the status screen display
-/obj/item/rig/Stat()
-	..()
-	if (statpanel("Status"))
-		show_cell_power()
-
 
 #undef ONLY_DEPLOY
 #undef ONLY_RETRACT

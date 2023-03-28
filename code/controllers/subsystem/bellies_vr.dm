@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(bellies)
 	var/ignored_bellies = 0
 
 /datum/controller/subsystem/bellies/stat_entry()
-	..("#: [belly_list.len] | P: [ignored_bellies]")
+	return ..() + " #: [belly_list.len] | P: [ignored_bellies]"
 
 /datum/controller/subsystem/bellies/fire(resumed = 0)
 	if (!resumed)

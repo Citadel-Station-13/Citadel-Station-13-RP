@@ -49,13 +49,14 @@
 	update_icon()
 	pulse(0)
 
-/obj/item/assembly/mousetrap/attack_self(var/mob/living/user)
+/obj/item/assembly/mousetrap/attack_self(mob/user)
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
-			if(!user.hand)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			if(!H?.hand)
 				which_hand = "r_hand"
 			triggered(user, which_hand)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
@@ -68,11 +69,14 @@
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
 
 
-/obj/item/assembly/mousetrap/attack_hand(var/mob/living/user)
+/obj/item/assembly/mousetrap/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(armed)
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
-			if(!user.hand)
+			if(!L.hand)
 				which_hand = "r_hand"
 			triggered(user, which_hand)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \

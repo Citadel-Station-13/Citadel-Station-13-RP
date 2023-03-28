@@ -6,7 +6,7 @@ var/global/list/stool_cache = list() //haha stool
 	desc = "Apply butt."
 	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
@@ -26,7 +26,7 @@ var/global/list/stool_cache = list() //haha stool
 	if(!istype(material))
 		qdel(src)
 		return
-	force = round(material.get_blunt_damage()*0.4)
+	damage_force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
 /obj/item/stool/padded/Initialize(mapload, new_material)
@@ -72,19 +72,21 @@ var/global/list/stool_cache = list() //haha stool
 		padding_material = null
 	update_icon()
 
-/obj/item/stool/attack(mob/M as mob, mob/user as mob)
-	if (prob(5) && istype(M,/mob/living))
-		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
-		user.setClickCooldown(user.get_attack_speed())
-		user.do_attack_animation(M)
-		user.drop_item_to_ground(src, INV_OP_FORCE)
+/obj/item/stool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+
+	var/mob/living/L = user
+	if (prob(5) && istype(L) && istype(target, /mob/living))
+		L.visible_message("<span class='danger'>[L] breaks [src] over [target]'s back!</span>")
+		L.setClickCooldown(L.get_attack_speed())
+		L.do_attack_animation(target)
+		L.drop_item_to_ground(src, INV_OP_FORCE)
 		dismantle()
 		qdel(src)
-		var/mob/living/T = M
+		var/mob/living/T = target
 		T.Weaken(10)
 		T.apply_damage(20)
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/stool/legacy_ex_act(severity)
 	switch(severity)

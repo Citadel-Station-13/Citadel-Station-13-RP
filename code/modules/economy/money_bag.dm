@@ -4,11 +4,11 @@
 	icon = 'icons/obj/storage.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
-	force = 10.0
+	damage_force = 10.0
 	throw_force = 2.0
 	w_class = ITEMSIZE_LARGE
 
-/obj/item/moneybag/attack_hand(user as mob)
+/obj/item/moneybag/attack_hand(mob/user, list/params)
 	var/amt_supermatter = 0
 	var/amt_bananium = 0
 	var/amt_mhydrogen = 0

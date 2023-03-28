@@ -20,8 +20,10 @@
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
 
-/obj/item/handcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
-
+/obj/item/handcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/C = target
+	if(!istype(C))
+		return
 	if(!user.IsAdvancedToolUser())
 		return
 
@@ -223,7 +225,10 @@ var/last_chew = 0
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
+/obj/item/handcuffs/legcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/C = target
+	if(!istype(C))
+		return
 	if(!user.IsAdvancedToolUser())
 		return
 

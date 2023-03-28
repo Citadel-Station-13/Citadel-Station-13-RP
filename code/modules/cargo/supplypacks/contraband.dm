@@ -47,15 +47,15 @@
 /datum/supply_pack/munitions/bolt_rifles_militia
     name = "Weapon - Misplaced militia rifles"
     contains = list(
-            /obj/item/gun/projectile/shotgun/pump/rifle = 3,
+            /obj/item/gun/ballistic/shotgun/pump/rifle = 3,
             /obj/item/ammo_magazine/clip/c762 = 6
             )
     cost = 50
     contraband = 1
     container_type = /obj/structure/closet/crate/secure/weapon
     container_name = "Ballistic weapons crate"
-    access = access_armory
-	
+    access = ACCESS_SECURITY_ARMORY
+
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
 	num_contained = 1
@@ -78,7 +78,7 @@
 	name = "operator's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/ops/PopulateContents()
-	new /obj/item/gun/projectile/shotgun/pump/combat(src)
+	new /obj/item/gun/ballistic/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
@@ -90,7 +90,7 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor/PopulateContents()
 	new /obj/item/storage/firstaid/combat(src)
-	new /obj/item/gun/projectile/dartgun(src)
+	new /obj/item/gun/ballistic/dartgun(src)
 	new /obj/item/reagent_containers/hypospray(src)
 	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
 	new /obj/item/reagent_containers/glass/bottle/cyanide(src)
@@ -111,7 +111,7 @@
 	name = "spy's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
-	new /obj/item/gun/projectile/silenced(src)
+	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/chameleon(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
@@ -123,7 +123,7 @@
 	name = "professional's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/pro/PopulateContents()
-	new /obj/item/gun/projectile/silenced(src)
+	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)

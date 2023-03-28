@@ -13,8 +13,8 @@
 	icon_state = copy.icon_state
 	color = copy.color
 	item_state = copy.item_state
-	body_parts_covered = copy.body_parts_covered
-	flags_inv = copy.flags_inv
+	body_cover_flags = copy.body_cover_flags
+	inv_hide_flags = copy.inv_hide_flags
 	gender = copy.gender
 
 	if(copy.item_icons)
@@ -101,7 +101,7 @@
 	icon_state = "greysoft"
 	desc = "It looks like a plain hat, but upon closer inspection, there's an advanced holographic array installed inside. It seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/global/list/clothing_choices
 
 /obj/item/clothing/head/chameleon/Initialize(mapload)
@@ -432,12 +432,12 @@
 	matter = list()
 
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
-	projectile_type = /obj/item/projectile/chameleon
+	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
 	battery_lock = 1
 
-	var/obj/item/projectile/copy_projectile
+	var/obj/projectile/copy_projectile
 	var/global/list/gun_choices
 
 /obj/item/gun/energy/chameleon/Initialize(mapload)
@@ -450,7 +450,7 @@
 			src.gun_choices[initial(G.name)] = gun_type
 
 /obj/item/gun/energy/chameleon/consume_next_projectile()
-	var/obj/item/projectile/P = ..()
+	var/obj/projectile/P = ..()
 	if(P && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
 		P.icon = initial(copy_projectile.icon)
@@ -477,7 +477,7 @@
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
 
-	flags_inv = copy.flags_inv
+	inv_hide_flags = copy.inv_hide_flags
 	if(copy.fire_sound)
 		fire_sound = copy.fire_sound
 	else

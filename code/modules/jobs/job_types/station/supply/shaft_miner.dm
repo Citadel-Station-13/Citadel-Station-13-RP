@@ -1,7 +1,8 @@
-/datum/job/station/mining
+/datum/role/job/station/mining
 	id = JOB_ID_SHAFT_MINER
 	title = "Shaft Miner"
 	flag = MINER
+	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	pto_type = PTO_CARGO
@@ -10,22 +11,24 @@
 	spawn_positions = 3
 	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
-	economic_modifier = 5
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
-	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
+	additional_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
+	minimal_access = list(ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT)
 
 	outfit_type = /datum/outfit/job/station/shaft_miner
 	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
-		"Drill Technician" = /datum/alt_title/drill_tech,
-		"Belt Miner" = /datum/alt_title/miner/belt
+		"Drill Technician" = /datum/prototype/alt_title/miner/drill_tech,
+		"Belt Miner" = /datum/prototype/alt_title/miner/belt
 		)
 
-/datum/alt_title/drill_tech
+/datum/prototype/alt_title/miner
+	abstract_type = /datum/prototype/alt_title/miner
+
+/datum/prototype/alt_title/miner/drill_tech
 	title = "Drill Technician"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
-/datum/alt_title/miner/belt
+/datum/prototype/alt_title/miner/belt
 	title = "Belt Miner"
 
 /datum/outfit/job/station/shaft_miner

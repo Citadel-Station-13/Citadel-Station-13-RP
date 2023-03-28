@@ -19,7 +19,7 @@
 
 	var/toxicity = 1//factor of toxin damage dealt by improper application
 
-/datum/reagent/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/topical/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
@@ -83,12 +83,14 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
-				for(var/datum/wound/W in O.wounds)
-					if(W.bleeding())
-						if(W.damage <= 20)//Bleed threshhold is 30
-							W.bandaged = 1//act as if bandaged
-						else if(W.damage <= 0)// healed wounds can be removed, not sure if this check is still needed as we dont heal with this.
-							O.wounds -= W
+				for(var/datum/wound/W as anything in O.wounds)
+					if(!W.bleeding())
+						continue
+					if(W.damage <= 20)//Bleed threshhold is 30
+						W.bandaged = 1//act as if bandaged
+					else if(W.damage <= 0)// healed wounds can be removed, not sure if this check is still needed as we dont heal with this.
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/topical/neurolaze
 	name = "Neurolaze"
@@ -123,7 +125,7 @@
 		M.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
 
-/datum/reagent/topical/neurolaze/overdose(var/mob/living/carbon/M, var/alien)
+/datum/reagent/topical/neurolaze/overdose(mob/living/carbon/M, alien)
 	if(alien != IS_DIONA)
 		M.adjustBrainLoss(0.1)//deals braindamage on overdose
 

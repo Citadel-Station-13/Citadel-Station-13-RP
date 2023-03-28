@@ -10,7 +10,7 @@
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
@@ -66,7 +66,7 @@
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user)
+/obj/item/defib_kit/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_paddles()
 	else
@@ -193,7 +193,7 @@
 	icon_state = "defibpaddles"
 	item_state = "defibpaddles"
 	gender = PLURAL
-	force = 2
+	damage_force = 2
 	throw_force = 6
 	w_class = ITEMSIZE_LARGE
 
@@ -296,7 +296,7 @@
 /obj/item/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
 		for(var/obj/item/clothing/cloth in list(H.wear_suit, H.w_uniform))
-			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.clothing_flags & THICKMATERIAL))
+			if((cloth.body_cover_flags & UPPER_TORSO) && (cloth.clothing_flags & THICKMATERIAL))
 				return FALSE
 	return TRUE
 
@@ -336,35 +336,30 @@
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/shockpaddles/attack(mob/living/M, mob/living/user, var/target_zone)
-	var/mob/living/carbon/human/H = M
+/obj/item/shockpaddles/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
 	if(!istype(H) || user.a_intent == INTENT_HARM)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
-
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(can_use(user, H))
 		busy = 1
 		update_icon()
-
 		do_revive(H, user)
-
 		busy = 0
 		update_icon()
-
-	return 1
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(ishuman(target) && can_use(user, target))
+/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(ishuman(L) && can_use(user, L))
 		busy = 1
 		update_icon()
-
-		do_electrocute(target, user, hit_zone)
-
+		do_electrocute(L, user, target_zone)
 		busy = 0
 		update_icon()
-
-		return 1
-
+		return NONE
 	return ..()
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled

@@ -7,7 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
@@ -26,7 +26,10 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	create_reagents(30)
 
 
-/obj/item/mop/attack_self(var/mob/user)
+/obj/item/mop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP
@@ -103,7 +106,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 		//Get out of the way, ankles!
 		for (var/mob/living/L in T)
-			attack(L)
+			melee_attack_chain(L, user)
 
 		if (!is_blocked_turf(T))
 			T.clean(src, user, 1)
@@ -142,7 +145,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "advanced mop"
 	icon_state = "advmop"
 	item_state = "mop"
-	force = 6
+	damage_force = 6
 	throw_force = 11
 	mopspeed = 15
 	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.

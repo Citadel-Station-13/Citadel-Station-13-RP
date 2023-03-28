@@ -197,9 +197,9 @@
 	if(!equip_preview_mob)
 		return
 
-	var/datum/job/previewJob = SSjob.job_by_id(preview_job_id())
+	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
@@ -242,7 +242,7 @@
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
 	mannequin.update_transform()
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 
 	update_character_previews(new /mutable_appearance(mannequin))
 
@@ -291,6 +291,5 @@
 	mannequin.update_transform()
 	mannequin.toggle_tail_vr(setting = TRUE)
 	mannequin.toggle_wing_vr(setting = TRUE)
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 	update_character_previews(new /mutable_appearance(mannequin))
-

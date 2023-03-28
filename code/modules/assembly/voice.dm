@@ -26,6 +26,9 @@
 
 
 /obj/item/assembly/voice/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return FALSE
 	activate()

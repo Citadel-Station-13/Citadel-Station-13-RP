@@ -61,19 +61,19 @@ var/bomb_set
 		if(auth)
 			if(opened == FALSE)
 				opened = TRUE
-				add_overlay(image(icon, "npanel_open"))
+				add_overlay("npanel_open")
 				to_chat(user, "You unscrew the control panel of [src].")
 
 			else
 				opened = FALSE
-				cut_overlay(image(icon, "npanel_open"))
+				cut_overlay("npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 		else
 			if(opened == FALSE)
 				to_chat(user, "The [src] emits a buzzing noise, the panel staying locked in.")
 			if(opened == TRUE)
 				opened = FALSE
-				cut_overlay(image(icon, "npanel_open"))
+				cut_overlay("npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 			flick("nuclearbombc", src)
 
@@ -162,7 +162,7 @@ var/bomb_set
 				return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user)
+/obj/machinery/nuclearbomb/attack_hand(mob/user, list/params)
 	if(extended)
 		if(!ishuman(user))
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")

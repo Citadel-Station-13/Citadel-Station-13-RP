@@ -35,10 +35,10 @@
 	pref.age                = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
 	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.real_name		= sanitize_name(pref.real_name, species_name, is_FBP())
+	pref.real_name		= sanitize_species_name(pref.real_name, species_name, is_FBP())
 	if(!pref.real_name)
 		pref.real_name      = random_name(pref.identifying_gender, species_name)
-	pref.nickname		= sanitize_name(pref.nickname)
+	pref.nickname		= sanitize_species_name(pref.nickname)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
 
@@ -81,15 +81,14 @@
 	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	if(config_legacy.allow_Metadata)
-		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
-	. = jointext(.,null)
+	. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+	. = jointext(., null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
-			var/new_name = sanitize_name(raw_name, pref.real_species_name(), is_FBP())
+			var/new_name = sanitize_species_name(raw_name, pref.real_species_name(), is_FBP())
 			if(new_name)
 				pref.real_name = new_name
 				return PREFERENCES_REFRESH
@@ -108,7 +107,7 @@
 	else if(href_list["nickname"])
 		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
-			var/new_nickname = sanitize_name(raw_nickname, pref.real_species_name(), is_FBP())
+			var/new_nickname = sanitize_species_name(raw_nickname, pref.real_species_name(), is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
 				return PREFERENCES_REFRESH
@@ -117,13 +116,13 @@
 				return PREFERENCES_NOACTION
 
 	else if(href_list["bio_gender"])
-		var/new_gender = input(user, "Choose your character's biological sex:", "Character Preference", pref.biological_gender) as null|anything in get_genders()
+		var/new_gender = tgui_input_list(user, "Choose your character's biological sex:", "Character Preference", get_genders(), pref.biological_gender)
 		if(new_gender && CanUseTopic(user))
 			pref.set_biological_gender(new_gender)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
-		var/new_gender = input(user, "Choose your character's pronouns:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
+		var/new_gender = tgui_input_list(user, "Choose your character's pronouns:", "Character Preference", all_genders_define_list, pref.identifying_gender)
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
 		return PREFERENCES_REFRESH
@@ -140,18 +139,29 @@
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes)
 			spawnkeys += spawntype
-		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
+		var/choice = tgui_input_list(user, "Where would you like to spawn when late-joining?", "Spawnlocation", spawnkeys)
 		if(!choice || !spawntypes[choice] || !CanUseTopic(user))	return PREFERENCES_NOACTION
 		pref.spawnpoint = choice
 		return PREFERENCES_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0)
-		if(new_metadata && CanUseTopic(user))
+		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see in terms of roleplay preferences (including any ERP consent / preference information). This information is considered OOC, unlike 'Flavor Text'.", "OOC Notes" , html_decode(pref.metadata)) as message, extra = 0)
+		if(!isnull(new_metadata) && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return PREFERENCES_REFRESH
 
 	return ..()
+
+/datum/category_item/player_setup_item/general/basic/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+	. = TRUE
+	if(length(prefs.metadata) < 10)
+		var/enforcing = CONFIG_GET(flag/enforce_ooc_notes)
+		var/error = "Missing or insufficient OOC Notes - See Character Setup for information."
+		if(enforcing)
+			errors += error
+			. = FALSE
+		else
+			warnings += error
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
 	var/datum/species/S = pref.real_species_datum()

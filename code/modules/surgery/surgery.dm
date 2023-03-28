@@ -1,7 +1,10 @@
 /* SURGERY STEPS */
 
-/obj/
-	var/surgery_odds = 0 // Used for tables/etc which can have surgery done of them.
+/obj
+	var/surgery_odds = 60 // Used for tables/etc which can have surgery done of them.
+
+/turf
+	var/surgery_odds = 30 // temporary - surgery odds for on-turf.
 
 /datum/surgery_step
 	var/priority = 0	//steps with higher priority would be attempted first
@@ -26,6 +29,8 @@
 	var/can_infect = 0
 	//How much blood this step can get on surgeon. 1 - hands, 2 - full body.
 	var/blood_level = 0
+	// temp until refactor - buff to surface odds
+	var/surface_odd_buff = 0
 
 //returns how well tool is suited for this step
 /datum/surgery_step/proc/tool_quality(obj/item/tool)
@@ -93,8 +98,6 @@
 /datum/surgery_step/proc/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	return null
 
-
-
 /proc/spread_germs_to_organ(var/obj/item/organ/external/E, var/mob/living/carbon/human/user)
 	if(!istype(user) || !istype(E)) return
 
@@ -104,7 +107,8 @@
 
 	E.germ_level = max(germ_level,E.germ_level) //as funny as scrubbing microbes out with clean gloves is - no.
 
-
+/*
+//! no clue what this is for it always returned 0 so removed
 /obj/item/proc/can_do_surgery(mob/living/carbon/M, mob/living/user)
 	if(M == user)
 		return 0
@@ -117,23 +121,25 @@
 			if(!affected.open && S.req_open)
 				return 0
 	return 0
+*/
 
 /obj/item/proc/do_surgery(mob/living/carbon/M, mob/living/user)
 	if(!istype(M))
-		return 0
-	if (user.a_intent == INTENT_HARM && !istype(user, /mob/living/silicon/robot))	//check for Hippocratic Oath
-		return 0
+		return FALSE
+	if (user.a_intent == INTENT_HARM)
+		return FALSE
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
 		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
-		return 1
+		return TRUE
+	. = FALSE
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)
 		//check if tool is right or close enough and if this step is possible
 		if(S.tool_quality(src))
 			var/step_is_valid = S.can_use(user, M, zone, src)
 			if(step_is_valid && S.is_valid_target(M))
 				if(step_is_valid == SURGERY_FAILURE) // This is a failure that already has a message for failing.
-					return 1
+					return TRUE
 				M.op_stage.in_progress += zone
 				S.begin_step(user, M, zone, src)		//start on it
 				var/success = TRUE
@@ -144,7 +150,8 @@
 
 				// Bad or no surface may mean failure as well.
 				var/obj/surface = M.get_surgery_surface()
-				if(!surface || !prob(surface.surgery_odds))
+				var/turf/turf_surface = get_turf(M)
+				if(!((surface? surface.surgery_odds : turf_surface?.surgery_odds) + S.surface_odd_buff))
 					success = FALSE
 
 				// Not staying still fails you too.
@@ -163,8 +170,7 @@
 				if (ishuman(M))
 					var/mob/living/carbon/human/H = M
 					H.update_surgery()
-				return	1	  												//don't want to do weapony things after surgery
-	return 0
+				return TRUE	  												//don't want to do weapony things after surgery
 
 /proc/initialize_surgeries()
 	. = list()

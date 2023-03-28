@@ -75,6 +75,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 #include "core/_core.dm"
+#include "datum/_datum.dm"
 #include "human/_human.dm"
 #include "language/_language.dm"
 #include "mob/_mob.dm"
@@ -103,6 +104,7 @@
 // #include "pills.dm"
 // #include "plantgrowth_tests.dm"
 // #include "projectiles.dm"
+#include "prototypes.dm"
 // #include "reagent_id_typos.dm"
 // #include "reagent_mod_expose.dm"
 // #include "reagent_mod_procs.dm"

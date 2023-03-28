@@ -1,10 +1,10 @@
 /obj/item/modular_computer/proc/update_verbs()
 	verbs.Cut()
 	if(portable_drive)
-		verbs |= /obj/item/modular_computer/verb/eject_usb
+		add_obj_verb(src, /obj/item/modular_computer/verb/eject_usb)
 	if(card_slot)
-		verbs |= /obj/item/modular_computer/verb/eject_id
-	verbs |= /obj/item/modular_computer/verb/emergency_shutdown
+		add_obj_verb(src, /obj/item/modular_computer/verb/eject_id)
+	add_obj_verb(src, /obj/item/modular_computer/verb/emergency_shutdown)
 
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
@@ -109,13 +109,16 @@
 /obj/item/modular_computer/attack_ai(mob/user)
 	return attack_self(user)
 
-/obj/item/modular_computer/attack_hand(mob/user)
+/obj/item/modular_computer/attack_hand(mob/user, list/params)
 	if(anchored)
 		return attack_self(user)
 	return ..()
 
 /// On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(enabled && screen_on)
 		nano_ui_interact(user)
 	else if(!enabled && screen_on)

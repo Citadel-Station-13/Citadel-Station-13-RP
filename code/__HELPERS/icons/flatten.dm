@@ -41,9 +41,17 @@
 /proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
-	return get_flat_icon_new_actual(appearancelike, dir, no_anim, null, TRUE)
+	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
 
-/proc/get_flat_icon_new_actual(image/A, defdir, no_anim, deficon, start)
+/**
+ * @params
+ * * A - the appearance-like object to render
+ * * defdir - direction we treat it as
+ * * no_anim - (optional) trample animations to first frame
+ * * deficon - (optional) default icon to use instead of using the host appearance's
+ * * start - is this the first call in the recurse? this is important
+ */
+/proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -189,6 +197,10 @@
 	var/list/add_size[4]
 	// blend mode
 	var/blend_mode
+	// shift amounts if we resized our flat to accomodate add
+	// so the rest of the added / blended overlays apply properly
+	var/shift_x = 0
+	var/shift_y = 0
 
 	// blend in layers
 	for(copying as anything in gathered)
@@ -205,17 +217,17 @@
 		else
 			// use full get_flat_icon
 			blend_mode = copying.blend_mode
-			adding = get_flat_icon_new_actual(copying, defdir, no_anim, icon)
+			adding = _get_flat_icon(copying, defdir, no_anim, icon)
 
 		// if we got nothing, skip
 		if(!adding)
 			continue
 
 		// detect adding size, taking into account copying overlay's pixel offsets
-		add_size[INDEX_X_LOW] = min(flatX1, copying.pixel_x + 1)
-		add_size[INDEX_X_HIGH] = max(flatX2, copying.pixel_x + adding.Width())
-		add_size[INDEX_Y_LOW] = min(flatY1, copying.pixel_y + 1)
-		add_size[INDEX_Y_HIGH] = max(flatY2, copying.pixel_y + adding.Height())
+		addX1 = min(flatX1, copying.pixel_x + 1)
+		addX2 = max(flatX2, copying.pixel_x + adding.Width())
+		addY1 = min(flatY1, copying.pixel_y + 1)
+		addY2 = max(flatY2, copying.pixel_y + adding.Height())
 
 		// resize flat to fit if necessary
 		if(flat_size ~! add_size)
@@ -225,10 +237,17 @@
 				addX2 - flatX1 + 1,
 				addY2 - flatY1 + 1
 			)
-			flat_size = add_size.Copy()
+			shift_x += flatX1 - addX1
+			shift_y += flatY1 - addY1
+			flat_size = list(
+				1,
+				flat.Width(),
+				1,
+				flat.Height()
+			)
 
 		// blend the overlay/underlay in
-		flat.Blend(adding, blendMode2iconMode(blend_mode), copying.pixel_x + 2 - flatX1, copying.pixel_y + 2 - flatY1)
+		flat.Blend(adding, blendMode2iconMode(blend_mode), shift_x + copying.pixel_x + 1, shift_y + copying.pixel_y + 1)
 
 	// apply colors
 	if(A.color)

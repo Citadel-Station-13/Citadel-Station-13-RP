@@ -55,3 +55,4 @@
 	icon_state = "cxeno_hybrid1"
 	species_allowed = list(SPECIES_XENOHYBRID)
 	gender = NEUTER
+

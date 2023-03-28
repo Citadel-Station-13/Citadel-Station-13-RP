@@ -80,13 +80,13 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			key = W
-			verbs += /obj/vehicle_old/train/engine/verb/remove_key
+			add_obj_verb(src, /obj/vehicle_old/train/engine/verb/remove_key)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /*
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/cargo/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/train/cargo/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
@@ -134,24 +134,24 @@
 		..()
 		update_stats()
 
-		verbs -= /obj/vehicle_old/train/engine/verb/stop_engine
-		verbs -= /obj/vehicle_old/train/engine/verb/start_engine
+		remove_obj_verb(src, /obj/vehicle_old/train/engine/verb/stop_engine)
+		remove_obj_verb(src, /obj/vehicle_old/train/engine/verb/start_engine)
 
 		if(on)
-			verbs += /obj/vehicle_old/train/engine/verb/stop_engine
+			add_obj_verb(src, /obj/vehicle_old/train/engine/verb/stop_engine)
 		else
-			verbs += /obj/vehicle_old/train/engine/verb/start_engine
+			add_obj_verb(src, /obj/vehicle_old/train/engine/verb/start_engine)
 
 /obj/vehicle_old/train/engine/turn_off()
 	..()
 
-	verbs -= /obj/vehicle_old/train/engine/verb/stop_engine
-	verbs -= /obj/vehicle_old/train/engine/verb/start_engine
+	remove_obj_verb(src, /obj/vehicle_old/train/engine/verb/stop_engine)
+	remove_obj_verb(src, /obj/vehicle_old/train/engine/verb/start_engine)
 
 	if(!on)
-		verbs += /obj/vehicle_old/train/engine/verb/start_engine
+		add_obj_verb(src, /obj/vehicle_old/train/engine/verb/start_engine)
 	else
-		verbs += /obj/vehicle_old/train/engine/verb/stop_engine
+		add_obj_verb(src, /obj/vehicle_old/train/engine/verb/stop_engine)
 
 /obj/vehicle_old/train/RunOver(var/mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
@@ -269,7 +269,7 @@
 		usr.put_in_hands(key)
 	key = null
 
-	verbs -= /obj/vehicle_old/train/engine/verb/remove_key
+	remove_obj_verb(src, /obj/vehicle_old/train/engine/verb/remove_key)
 
 //-------------------------------------------
 // Loading/unloading procs

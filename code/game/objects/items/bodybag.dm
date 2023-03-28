@@ -8,6 +8,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/bodybag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
@@ -125,6 +128,9 @@
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/bodybag/cryobag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
 	R.add_fingerprint(user)
 	if(syringe)
@@ -155,7 +161,7 @@
 	QDEL_NULL(tank)
 	return ..()
 
-/obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
+/obj/structure/closet/body_bag/cryobag/attack_hand(mob/user, list/params)
 	if(used)
 		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
 		if(confirm == "Yes")
@@ -221,7 +227,7 @@
 		if(syringe)
 			. += "<span class='info'>It has a syringe added to it.</span>"
 		for(var/mob/living/L in contents)
-			L.examine(user)
+			user.do_examinate(L)
 
 /obj/structure/closet/body_bag/cryobag/attackby(obj/item/W, mob/user)
 	if(opened)
@@ -230,7 +236,7 @@
 		if(istype(W,/obj/item/healthanalyzer))
 			var/obj/item/healthanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.attack(L,user)
+				analyzer.melee_attack_chain(L,user)
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)

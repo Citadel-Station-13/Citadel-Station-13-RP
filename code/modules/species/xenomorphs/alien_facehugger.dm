@@ -22,7 +22,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = 3 //note: can be picked up by aliens unlike most other items of w_class below 4
-	body_parts_covered = FACE|EYES
+	body_cover_flags = FACE|EYES
 	throw_range = 5
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
@@ -30,16 +30,15 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/obj/item/clothing/mask/facehugger/attack_hand(user as mob)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/params)
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
 	..()
 
-/obj/item/clothing/mask/facehugger/attack(mob/living/M as mob, mob/user as mob)
-	..()
+/obj/item/clothing/mask/facehugger/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.drop_item_to_ground(src, INV_OP_FORCE)
-	Attach(M)
+	Attach(target)
 
 //Bypasses the config check because it's completely blocking spawn.
 /*
@@ -62,7 +61,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	return
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/I, mob/user)
-	if(I.force)
+	if(I.damage_force)
 		user.do_attack_animation(src)
 		Die()
 	return
@@ -232,7 +231,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(H.head && (H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
+		if(H.head && (H.head.body_cover_flags & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 			return 0
 	return 1
 
@@ -313,7 +312,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(user as mob)
+/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, list/params)
 
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
@@ -344,7 +343,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	return
 
 /mob/living/simple_mob/animal/space/alien/facehugger/attackby(obj/item/I, mob/user)
-	if(I.force)
+	if(I.damage_force)
 		user.do_attack_animation(src)
 		Die()
 	return
@@ -506,7 +505,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(H.head && (H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
+		if(H.head && (H.head.body_cover_flags & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 			return 0
 	return 1
 */

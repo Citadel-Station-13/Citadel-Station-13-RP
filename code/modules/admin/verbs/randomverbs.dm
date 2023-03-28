@@ -326,7 +326,7 @@ Ccomp's first proc.
 	if(config_legacy.antag_hud_allowed)
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				g.verbs -= /mob/observer/dead/verb/toggle_antagHUD
+				remove_verb(g, /mob/observer/dead/verb/toggle_antagHUD)
 			if(g.antagHUD)
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
@@ -337,7 +337,7 @@ Ccomp's first proc.
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				g.verbs += /mob/observer/dead/verb/toggle_antagHUD
+				add_verb(g, /mob/observer/dead/verb/toggle_antagHUD)
 			to_chat(g, "<font color=#4F49AF><B>The Administrator has enabled AntagHUD </B></font>")	// Notify all observers they can now use AntagHUD
 		config_legacy.antag_hud_allowed = 1
 		action = "enabled"
@@ -630,7 +630,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(SSjob)
-		for(var/datum/job/job in SSjob.occupations)
+		for(var/datum/role/job/job in SSjob.occupations)
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

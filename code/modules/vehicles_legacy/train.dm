@@ -61,7 +61,7 @@
 				add_attack_logs(D,M,"Ran over with [src.name]")
 
 //trains are commonly open topped, so there is a chance the projectile will hit the mob riding the train instead
-/obj/vehicle_old/train/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/train/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
@@ -116,7 +116,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/vehicle_old/train/attack_hand(mob/user as mob)
+/obj/vehicle_old/train/attack_hand(mob/user, list/params)
 	if(user.stat || user.restrained() || !Adjacent(user))
 		return 0
 

@@ -6,37 +6,39 @@
 	animate_movement = 2
 	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
+	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
 
-//! Core
+	//? Core
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
 
-//! Rendering
+	//? Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! Intents
-	/// How are we intending to move? Walk/run/etc.
+	//? Intents
+	/// How are we intending to move? Walk / run / etc.
 	var/m_intent = MOVE_INTENT_RUN
+	/// How are we intending to act? Help / harm / etc.
+	var/a_intent = INTENT_HELP
 
-//! Perspectives
+	//? Economy
+	/// This mob's economic category
+	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
+
+	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-//! Buckling
+	//? Buckling
 	/// Atom we're buckled to
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-
-	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
-
-//! Movespeed
+	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
@@ -45,12 +47,18 @@
 	var/cached_multiplicative_slowdown
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
-	/// Last world.time we finished a move
+	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
 
-//! Actionspeed
+	//? Physiology
+	/// overall physiology - see physiology.dm
+	var/datum/physiology/physiology
+	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
+	var/list/datum/physiology_modifier/physiology_modifiers
+
+	//? Actionspeed
 	/// List of action speed modifiers applying to this mob
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
@@ -58,7 +66,7 @@
 	/// The calculated mob action speed slowdown based on the modifiers list
 	var/cached_multiplicative_actions_slowdown
 
-//! Pixel Offsets
+	//? Pixel Offsets
 	/// are we shifted by the user?
 	var/shifted_pixels = FALSE
 	/// shifted pixel x
@@ -66,14 +74,23 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 
-//! Size
+	//? Inventory
+	/// our inventory datum, if any.
+	var/datum/inventory/inventory
+
+	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
 	/// our size multiplier
 	var/size_multiplier = 1
 
-//! Misc
+	//? Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
+
+	//? unsorted / legacy
+	var/datum/mind/mind
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
@@ -204,7 +221,6 @@
 	var/weakened = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
-	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
 
@@ -288,9 +304,6 @@
 	 * so don't treat them as being SSD even though their client var is null.
 	 */
 	var/mob/teleop = null //? This is mainly used for adghosts to hear things from their actual body.
-
-	/// The current turf being examined in the stat panel.
-	var/turf/listed_turf = null
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM

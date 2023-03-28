@@ -11,7 +11,7 @@
 /datum/map_template/lateload/unique/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
-	mappath = "_maps/map_levels/192x192/lavaland.dmm"
+	mappath = "maps/map_levels/192x192/lavaland.dmm"
 	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -35,7 +35,7 @@
 /datum/map_template/lateload/unique/lavaland_dungeon
 	name = "Away Mission - Lava Land (Dungeon)"
 	desc = "The flooded."
-	mappath = "_maps/map_levels/192x192/lavaland_dungeon.dmm"
+	mappath = "maps/map_levels/192x192/lavaland_dungeon.dmm"
 	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland_dungeon
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -56,7 +56,7 @@
 /datum/map_template/lateload/unique/lavaland_east
 	name = "Away Mission - Lava Land (East)"
 	desc = "The forgotten."
-	mappath = "_maps/map_levels/192x192/lavaland_east.dmm"
+	mappath = "maps/map_levels/192x192/lavaland_east.dmm"
 	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland_east
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -71,4 +71,4 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4)
 
 /obj/landmark/map_data/lavaland_east
-    height = 1
+	height = 1

@@ -53,7 +53,7 @@
 	component_parts += /obj/item/stock_parts/matter_bin
 	component_parts += /obj/item/stock_parts/matter_bin
 	if(output_options.len)
-		verbs += /obj/machinery/appliance/proc/choose_output
+		add_obj_verb(src, /obj/machinery/appliance/proc/choose_output)
 
 	if (!available_recipes)
 		available_recipes = new
@@ -543,7 +543,7 @@
 	smoke.set_up(10, 0, get_turf(src), 300)
 	smoke.start()
 
-/obj/machinery/appliance/attack_hand(var/mob/user)
+/obj/machinery/appliance/attack_hand(mob/user, list/params)
 	if (cooking_objs.len)
 		if (removal_menu(user))
 			return

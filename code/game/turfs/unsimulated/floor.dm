@@ -1,26 +1,29 @@
 /turf/unsimulated/floor
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "Floor3"
+	icon_state = "plating"
 
 	//! NOTICE: UNSIMULATED TURFS DO NOT SMOOTH, THIS IS MORESO FOR OTHER TURFS
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
-
-/turf/unsimulated/mask
-	name = "mask"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rockvault"
 
 /turf/unsimulated/floor/shuttle_ceiling
 	icon_state = "reinforced"
 
 /turf/unsimulated/floor/steel
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
+
+/turf/unsimulated/floor/dark
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "dark"
+
+/turf/unsimulated/floor/wood
+	icon = 'icons/turf/flooring/wood.dmi'
+	icon_state = "wood"
 
 /turf/unsimulated/floor/techfloor_grid
 	name = "floor"
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_grid"
 
 /turf/unsimulated/floor/maglev

@@ -13,7 +13,7 @@
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
-	req_access = list(access_engine, access_robotics)
+	req_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	integrated_light_power = 3
 	local_transmit = 1
 
@@ -91,8 +91,8 @@
 
 /mob/living/silicon/robot/drone/Initialize(mapload)
 	. = ..()
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)
@@ -110,7 +110,7 @@
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
-	verbs -= /mob/living/silicon/robot/verb/Namepick
+	remove_verb(src, /mob/living/silicon/robot/verb/Namepick)
 	updateicon()
 	updatename()
 
@@ -359,10 +359,10 @@
 	to_chat(src, "Use <b>say ;Hello</b> to talk to other drones and <b>say Hello</b> to speak silently to your nearby fellows.")
 
 /mob/living/silicon/robot/drone/add_robot_verbs()
-	src.verbs |= silicon_subsystems
+	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/drone/remove_robot_verbs()
-	src.verbs -= silicon_subsystems
+	remove_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/drone/construction/welcome_drone()
 	to_chat(src, "<b>You are a construction drone, an autonomous engineering and fabrication system.</b>.")
@@ -380,7 +380,7 @@
 
 /mob/living/silicon/robot/drone/construction/matriarch/init()
 	..()
-	verbs += /mob/living/silicon/robot/verb/Namepick
+	add_verb(src, /mob/living/silicon/robot/verb/Namepick)
 	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Heart Of The Swarm!'"
 
 /mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()

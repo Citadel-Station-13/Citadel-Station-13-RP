@@ -1,5 +1,6 @@
 /datum/species/akula
 	uid = SPECIES_ID_AKULA
+	id = SPECIES_ID_AKULA
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA

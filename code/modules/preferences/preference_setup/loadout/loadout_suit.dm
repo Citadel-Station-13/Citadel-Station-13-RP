@@ -161,6 +161,31 @@
 		ponchos[initial(poncho.name)] = poncho
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
 
+/datum/gear/suit/dust_cloak_selection
+	name = "Dust cloak Selection"
+	path = /obj/item/clothing/accessory/poncho/dust_cloak
+
+/datum/gear/suit/dust_cloak_selection/New()
+	..()
+	var/list/dustcloak_selection = list()
+	for(var/dustcloak in typesof(/obj/item/clothing/accessory/poncho/dust_cloak))
+		var/obj/item/clothing/accessory/poncho/dustcloak_type = dustcloak
+		dustcloak_selection[initial(dustcloak_type.name)] = dustcloak_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(dustcloak_selection, /proc/cmp_text_asc))
+
+/datum/gear/suit/cyberpunk_coat_selection
+	name = "Cyberpunk Coat Selection"
+	path = /obj/item/clothing/suit/storage/cyberpunk
+
+/datum/gear/suit/cyberpunk_coat_selection/New()
+	..()
+	var/list/cybercoat_selection = list()
+	for(var/cybercoat in typesof(/obj/item/clothing/suit/storage/cyberpunk))
+		var/obj/item/clothing/accessory/poncho/cybercoat_type = cybercoat
+		cybercoat_selection[initial(cybercoat_type.name)] = cybercoat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(cybercoat_selection, /proc/cmp_text_asc))
+
+
 // A colorable cloak
 /datum/gear/suit/roles/poncho/cloak
 	name = "Cloak - Glowing Light"
@@ -453,3 +478,95 @@
 /datum/gear/suit/utility_fur_coat
 	name = "Utility Fur Coat"
 	path = /obj/item/clothing/suit/storage/utility_fur_coat
+
+/datum/gear/suit/hobo
+	name = "Ragged Coat"
+	path = /obj/item/clothing/suit/storage/hobo
+
+/datum/gear/suit/kamina
+	name = "Spiral Hero Cloak"
+	path = /obj/item/clothing/suit/storage/kamina
+
+/datum/gear/suit/nerdshirt
+	name = "Nerdy Shirt"
+	path = /obj/item/clothing/suit/nerdshirt
+
+/datum/gear/suit/brownfancycoat
+	name = "Brown Fancy Coat"
+	path = /obj/item/clothing/suit/storage/toggle/brown_fancycoat
+
+/datum/gear/suit/motojacket
+	name = "Motorcycle Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/moto_jacket
+
+/datum/gear/suit/furcoat
+	name = "Furcoat"
+	path = /obj/item/clothing/suit/storage/furcoat
+
+/datum/gear/suit/noble_coat
+	name = "Colorful Noble Coat"
+	path = /obj/item/clothing/suit/storage/noble_coat
+
+/datum/gear/suit/mercy_hoodie
+	name = "Mercy Robe"
+	path = /obj/item/clothing/suit/storage/hooded/mercy
+
+/datum/gear/suit/cyberpunk
+	name = "Cyber Coat"
+	path = /obj/item/clothing/suit/storage/cyberpunk
+
+/datum/gear/suit/cyberpunk_long
+	name = "Cyber Coat Long"
+	path = /obj/item/clothing/suit/storage/cyberpunk/long
+
+/datum/gear/suit/bladerunner
+	name = "Gun Walker Coat"
+	path = /obj/item/clothing/suit/storage/bladerunner
+
+/datum/gear/suit/overcoat_fancy
+	name = "Fancy Overcoat Brown"
+	path = /obj/item/clothing/suit/storage/overcoat_fancy
+
+/datum/gear/suit/drive
+	name = "Relatable Jacket"
+	path = /obj/item/clothing/suit/storage/drive
+
+/datum/gear/suit/boxer
+	name = "Boxer Jacket"
+	path = /obj/item/clothing/suit/storage/drive/boxer
+
+/datum/gear/suit/tunnelsnake
+	name = "Maintenance Python Jacket"
+	path = /obj/item/clothing/suit/storage/tunnelsnake
+
+/datum/gear/suit/triadkiller
+	name = "Oriental Coat"
+	path = /obj/item/clothing/suit/storage/triadkiller
+
+/datum/gear/suit/furbomberfancy
+	name = "Fancy Fur Bomber Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/fur_bomber
+
+/datum/gear/suit/bomj
+	name = "Bomj Coat"
+	path = /obj/item/clothing/suit/storage/bomj
+
+/datum/gear/suit/violetjacket
+	name = "Violet Jacket"
+	path = /obj/item/clothing/suit/storage/violet
+
+/datum/gear/suit/jamrock
+	name = "Jamrock Blazer"
+	path = /obj/item/clothing/suit/storage/jamrock
+
+/datum/gear/suit/khakijacket
+	name = "Khaki Jacket"
+	path = /obj/item/clothing/suit/storage/khaki
+
+/datum/gear/suit/punkvest
+	name = "Punk Vest"
+	path = /obj/item/clothing/suit/storage/punkvest
+
+/datum/gear/suit/onestar
+	name = "One Star Coat"
+	path = /obj/item/clothing/suit/storage/onestar

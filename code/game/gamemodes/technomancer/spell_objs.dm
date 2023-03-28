@@ -9,7 +9,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null
@@ -198,9 +198,11 @@
 // Parameters: 1 (user - the Technomancer that invoked this proc)
 // Description: Tries to call on_use_cast() if it is allowed to do so.  Don't override this, override on_use_cast() instead.
 /obj/item/spell/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(run_checks() && (cast_methods & CAST_USE))
 		on_use_cast(user)
-	..()
 
 // Proc: attackby()
 // Parameters: 2 (W - the item this spell object is hitting, user - the technomancer who clicked the other object)

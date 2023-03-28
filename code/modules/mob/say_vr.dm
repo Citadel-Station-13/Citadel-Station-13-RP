@@ -47,6 +47,9 @@
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
+			if(istype(vismob, /mob/observer))
+				if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
+					continue
 			spawn(0)
 				M.show_message(message, 2)
 
@@ -86,7 +89,7 @@
 
 	if(input)
 		log_subtle_anti_ghost(message,src)
-		message = "<B>[src]</B> <I>[input]</I>"
+		message = "<B>[src]</B> " + SPAN_SINGING(input)
 	else
 		return
 
@@ -99,16 +102,17 @@
 		var/list/vis_objs = vis["objs"]
 
 		for(var/vismob in vis_mobs)
-			if(istype(vismob, /mob/observer))
-				continue
 			var/mob/M = vismob
-			spawn(0)
+			if(!istype(vismob, /mob/observer))
 				M.show_message(message, 2)
+			else //(istype(vismob, /mob/observer))
+				var/mob/observer/O = vismob
+				if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
+					O.show_message(message)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj
-			spawn(0)
-				O.see_emote(src, message, 2)
+			O.see_emote(src, message, 2)
 
 /////// END
 

@@ -6,27 +6,39 @@
 	gender = PLURAL // So it says "That's some lava." on examine.
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
-	edge_blending_priority = 1
-	light_range = 2
-	light_power = 0.75
-	light_color = LIGHT_COLOR_LAVA
+	edge_blending_priority = 0
 	// flags = TURF_HAS_EDGES
 	// todo: THE ABOVE FLAGS DOESNT WORK BECAUSE ITS ON FLOORING!
-	movement_cost = 2
+	slowdown = 2
 	special_temperature = T0C + 2200
+
+	ambient_light = LIGHT_COLOR_LAVA
+	ambient_light_multiplier = 1
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_LAVA)
 
+/turf/simulated/floor/outdoors/lava/noblend
+	edge_blending_priority = 0
+
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE
 
-// For maximum pedantry.
+/turf/simulated/floor/outdoors/lava/indoors/noblend
+	edge_blending_priority = 0
+
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
+
+	// For maximum pedantry.
 	if(!outdoors)
 		name = "magma"
+
 	return ..()
+
+/turf/simulated/floor/outdoors/lava/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
 
 /turf/simulated/floor/outdoors/lava/make_outdoors()
 	..()
@@ -66,20 +78,11 @@
 	if(AM)
 		thing_to_check = list(AM)
 
-	for(var/thing in thing_to_check)
-		if(isobj(thing))
-			var/obj/O = thing
-			if(O.throwing)
-				continue
-			. = TRUE
-			O.lava_act()
-
-		else if(isliving(thing))
-			var/mob/living/L = thing
-			if(L.hovering || L.throwing) // Flying over the lava. We're just gonna pretend convection doesn't exist.
-				continue
-			. = TRUE
-			L.lava_act()
+	for(var/atom/movable/thing as anything in thing_to_check)
+		if(thing.is_avoiding_ground()) // Flying/riding over the lava. We're just gonna pretend convection doesn't exist.
+			continue
+		. = TRUE
+		thing.lava_act()
 
 // Lava that does nothing at all.
 /turf/simulated/floor/outdoors/lava/harmless/burn_stuff(atom/movable/AM)
@@ -101,3 +104,10 @@
 		else if(do_after(user, 4))
 			material.use(2)
 			new /obj/structure/catwalk(src)
+	else if(istype(W,/obj/item/stack/tile/floor/sandstone))
+		var/obj/item/stack/tile/floor/sandstone/material = W
+		if(material.get_amount() < 2)
+			return 0
+		else if(do_after(user, 4))
+			material.use(2)
+			new /obj/structure/catwalk/ashlander(src)

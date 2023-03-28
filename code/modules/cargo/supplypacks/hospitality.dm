@@ -169,7 +169,7 @@
 	container_name = "Tallow tank crate"
 
 /datum/supply_pack/hospitality/vampcarepackage
-	name = "Vampire Care package"
+	name = "Vetalan Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
 	cost = 50

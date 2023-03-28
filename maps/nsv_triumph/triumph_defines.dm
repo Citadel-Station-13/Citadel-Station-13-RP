@@ -146,7 +146,7 @@
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
 		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet

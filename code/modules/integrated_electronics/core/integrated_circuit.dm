@@ -117,6 +117,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this circuit?", "Rename", src.name, MAX_NAME_LEN)
@@ -124,10 +125,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
 		displayed_name = input
 
-/obj/item/integrated_circuit/ui_state(mob/user)
+/obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
-/obj/item/integrated_circuit/ui_host(mob/user)
+/obj/item/integrated_circuit/ui_host(mob/user, datum/tgui_module/module)
 	if(istype(loc, /obj/item/electronic_assembly))
 		return loc.ui_host()
 	return ..()
@@ -205,7 +206,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	return pindata
 
-/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

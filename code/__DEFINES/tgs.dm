@@ -1,6 +1,6 @@
 // tgstation-server DMAPI
 
-#define TGS_DMAPI_VERSION "6.0.3"
+#define TGS_DMAPI_VERSION "6.0.6"
 
 // All functions and datums outside this document are subject to change with any version and should not be relied on.
 
@@ -102,6 +102,8 @@
 // #define TGS_EVENT_WORLD_REBOOT 20
 /// Watchdog event when TgsInitializationComplete() is called. No parameters.
 #define TGS_EVENT_WORLD_PRIME 21
+// DMAPI also doesnt implement this
+// #define TGS_EVENT_DREAM_DAEMON_LAUNCH 22
 
 // OTHER ENUMS
 
@@ -348,29 +350,29 @@
 /world/proc/TgsChatChannelInfo()
 	return
 
-/**
- * The MIT License
- *
- *! Copyright (c) 2017 Jordan Brown
- *
- * Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to
- * deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify,
- * merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom
- * the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice
- * shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
- * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+/*
+The MIT License
+
+Copyright (c) 2017 Jordan Brown
+
+Permission is hereby granted, free of charge,
+to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to
+deal in the Software without restriction, including
+without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom
+the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/

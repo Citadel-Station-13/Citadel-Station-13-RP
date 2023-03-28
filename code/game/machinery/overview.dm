@@ -2,7 +2,9 @@
 /obj/machinery/computer/security/verb/station_map()
 	set name = ".map"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
+	set hidden = TRUE
+
 	usr.set_machine(src)
 	if(!mapping)	return
 	log_game("[usr]([usr.key]) used station map L[z] in [src.loc.loc]")

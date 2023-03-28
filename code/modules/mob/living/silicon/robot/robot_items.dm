@@ -16,7 +16,10 @@
 	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
-/obj/item/portable_destructive_analyzer/attack_self(user as mob)
+/obj/item/portable_destructive_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/response = alert(user, 	"Analyzing the item inside will *DESTROY* the item for good.\n\
 							Syncing to the research server will send the data that is stored inside to research.\n\
 							Ejecting will place the loaded item onto the floor.",
@@ -146,11 +149,11 @@
 	dummy_card_type = /obj/item/card/id/syndicate/dummy_cyborg
 
 /obj/item/card/id/science/roboticist/dummy_cyborg
-	access = list(access_robotics)
+	access = list(ACCESS_SCIENCE_ROBOTICS)
 
 /obj/item/card/id/syndicate/dummy_cyborg/Initialize(mapload)
 	. = ..()
-	access |= access_robotics
+	access |= ACCESS_SCIENCE_ROBOTICS
 
 //A harvest item for serviceborgs.
 /obj/item/robot_harvester
@@ -198,7 +201,7 @@
 		for(var/obj/item/reagent_containers/food/I in pickup)
 
 
-			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
+			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 				var/add = 0
 				if(I.w_class == ITEMSIZE_TINY)
 					add = 1
@@ -271,7 +274,10 @@
 	name = "Printing Pen"
 	var/mode = 1
 
-/obj/item/pen/robopen/attack_self(mob/user as mob)
+/obj/item/pen/robopen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
 	if(!choice) return
@@ -321,9 +327,6 @@
 			)
 	item_state = "sheet-metal"
 
-/obj/item/form_printer/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	return
-
 /obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
 
 	if(!target || !flag)
@@ -332,7 +335,10 @@
 	if(istype(target,/obj/structure/table))
 		deploy_paper(get_turf(target))
 
-/obj/item/form_printer/attack_self(mob/user as mob)
+/obj/item/form_printer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
@@ -362,7 +368,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/borg/combat/shield/attack_self(var/mob/living/user)
+/obj/item/borg/combat/shield/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_shield_level()
 
 /obj/item/borg/combat/shield/process(delta_time)
@@ -434,7 +443,10 @@
 	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
 	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
-/obj/item/inflatable_dispenser/attack_self()
+/obj/item/inflatable_dispenser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 

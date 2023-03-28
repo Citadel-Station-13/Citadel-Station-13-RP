@@ -1,11 +1,11 @@
-/datum/ghostrole/space_hotel
+/datum/role/ghostrole/space_hotel
 	instantiator = /datum/ghostrole_instantiator/human/random/space_hotel
 	name = "Space Hotel Staff"
 	desc = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
 	automatic_objective = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
 	assigned_role = "Hotel Staff"
 
-/datum/ghostrole/space_hotel/security
+/datum/role/ghostrole/space_hotel/security
 	instantiator = /datum/ghostrole_instantiator/human/random/space_hotel/security
 	name = "Space Hotel Security"
 	desc = "You have been assigned to this hotel to protect the interests of the company while keeping the peace between \
@@ -25,7 +25,7 @@
 /obj/structure/ghost_role_spawner/space_hotel //not free antag u little shits
 	name = "staff sleeper"
 	desc = "A sleeper designed for long-term stasis between guest visits."
-	role_type = /datum/ghostrole/space_hotel
+	role_type = /datum/role/ghostrole/space_hotel
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 
@@ -35,7 +35,7 @@
 
 /obj/structure/ghost_role_spawner/space_hotel/security
 	name = "hotel security sleeper"
-	role_type = /datum/ghostrole/space_hotel/security
+	role_type = /datum/role/ghostrole/space_hotel/security
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"

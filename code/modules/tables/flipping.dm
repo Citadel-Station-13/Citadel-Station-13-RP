@@ -73,8 +73,8 @@
 	if( !straight_table_check(turn(direction,90)) || !straight_table_check(turn(direction,-90)) )
 		return 0
 
-	verbs -=/obj/structure/table/verb/do_flip
-	verbs +=/obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	add_obj_verb(src, /obj/structure/table/proc/do_put)
 
 	var/list/targets = list(get_step(src,dir),get_step(src,turn(dir, 45)),get_step(src,turn(dir, -45)))
 	for (var/atom/movable/A in get_turf(src))
@@ -100,8 +100,8 @@
 	return 1
 
 /obj/structure/table/proc/unflip()
-	verbs -=/obj/structure/table/proc/do_put
-	verbs +=/obj/structure/table/verb/do_flip
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
+	add_obj_verb(src, /obj/structure/table/verb/do_flip)
 
 	reset_plane_and_layer()
 	flipped = 0

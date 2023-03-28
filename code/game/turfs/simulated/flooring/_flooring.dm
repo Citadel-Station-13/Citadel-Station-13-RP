@@ -40,7 +40,7 @@ var/list/flooring_types
 	var/build_time = 0  // BYOND ticks.
 
 	var/descriptor = "tiles"
-	var/flags
+	var/flooring_flags
 	var/can_paint = TRUE
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 	var/is_plating = FALSE
@@ -112,12 +112,15 @@ var/list/flooring_types
 	var/list/movable_atom_whitelist = list()
 	var/list/movable_atom_blacklist = list()
 
-/singleton/flooring/proc/get_plating_type(var/turf/T)
+	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
+/singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type
 
-/singleton/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
+/singleton/flooring/proc/get_flooring_overlay(cache_key, base_state, icon_dir = 0, layer = FLOOR_DECAL_LAYER)
 	if(!flooring_cache[cache_key])
-		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
+		var/image/I = image(icon = icon, icon_state = base_state, dir = icon_dir)
 		I.layer = layer
 		flooring_cache[cache_key] = I
 	return flooring_cache[cache_key]
@@ -136,7 +139,7 @@ var/list/flooring_types
 	icon_base = "grass"
 	has_base_range = 3
 	damage_temperature = T0C+80
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flooring_flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
 
 /singleton/flooring/asteroid
@@ -144,7 +147,7 @@ var/list/flooring_types
 	desc = "Gritty and unpleasant."
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_base = "asteroid"
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flooring_flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = null
 
 /singleton/flooring/snow
@@ -176,7 +179,7 @@ var/list/flooring_types
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
 	icon = 'icons/turf/snow.dmi'
 	icon_base = "snow"
-	flags = TURF_HAS_EDGES
+	flooring_flags = TURF_HAS_EDGES
 
 /singleton/flooring/snow/gravsnow2
 	name = "gravsnow"
@@ -187,7 +190,7 @@ var/list/flooring_types
 	name = "snowy plating"
 	desc = "Steel plating coated with a light layer of snow."
 	icon_base = "snowyplating"
-	flags = null
+	flooring_flags = null
 
 /singleton/flooring/snow/ice
 	name = "ice"
@@ -204,7 +207,7 @@ var/list/flooring_types
 	icon_base = "carpet"
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
@@ -260,11 +263,11 @@ var/list/flooring_types
 /singleton/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // More ERIS Sprites... For now...
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
-	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+	flooring_flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
 	build_type = /obj/item/stack/tile/floor
 	can_paint = 1
 	footstep_sounds = list("human" = list(
@@ -276,7 +279,7 @@ var/list/flooring_types
 
 /singleton/flooring/tiling/tech
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_base = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
 	can_paint = null
@@ -288,7 +291,7 @@ var/list/flooring_types
 /singleton/flooring/tiling/new_tile
 	name = "floor"
 	icon_base = "tile_full"
-	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
+	flooring_flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
 	build_type = null
 
 /singleton/flooring/tiling/new_tile/cargo_one
@@ -322,13 +325,13 @@ var/list/flooring_types
 	icon_base = "lino"
 	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
-	flags = TURF_REMOVE_SCREWDRIVER
+	flooring_flags = TURF_REMOVE_SCREWDRIVER
 
 /singleton/flooring/tiling/red
 	name = "floor"
 	icon_base = "white"
 	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/red
 
 /singleton/flooring/tiling/steel
@@ -345,7 +348,7 @@ var/list/flooring_types
 	name = "floor"
 	icon_base = "asteroidfloor"
 	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/steel
 
 /singleton/flooring/tiling/white
@@ -358,7 +361,7 @@ var/list/flooring_types
 	name = "floor"
 	icon_base = "white"
 	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/yellow
 
 /singleton/flooring/tiling/dark
@@ -366,7 +369,7 @@ var/list/flooring_types
 	desc = "How ominous."
 	icon_base = "dark"
 	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/dark
 
 /singleton/flooring/tiling/hydro
@@ -391,7 +394,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "lightmarble"
 	build_type = /obj/item/stack/tile/wmarble
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/bmarble
 	name = "marble floor"
@@ -399,7 +402,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "darkmarble"
 	build_type = /obj/item/stack/tile/bmarble
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/bananium
 	name = "bananium floor"
@@ -407,7 +410,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "bananium"
 	build_type = /obj/item/stack/tile/bananium
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/silencium
 	name = "silencium floor"
@@ -415,7 +418,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "silencium"
 	build_type = /obj/item/stack/tile/silencium
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/silencium
 	name = "silencium floor"
@@ -423,7 +426,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "silencium"
 	build_type = /obj/item/stack/tile/silencium
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/plasteel
 	name = "plasteel floor"
@@ -431,7 +434,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "plasteel"
 	build_type = /obj/item/stack/tile/plasteel
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/durasteel
 	name = "durasteel floor"
@@ -439,7 +442,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "durasteel"
 	build_type = /obj/item/stack/tile/durasteel
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/silver
 	name = "silver floor"
@@ -447,7 +450,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "silver"
 	build_type = /obj/item/stack/tile/silver
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/gold
 	name = "gold floor"
@@ -455,7 +458,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "gold"
 	build_type = /obj/item/stack/tile/gold
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/phoron
 	name = "phoron floor"
@@ -463,7 +466,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "phoron"
 	build_type = /obj/item/stack/tile/phoron
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/uranium
 	name = "uranium floor"
@@ -471,7 +474,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "uranium"
 	build_type = /obj/item/stack/tile/uranium
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/diamond
 	name = "diamond floor"
@@ -479,7 +482,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "diamond"
 	build_type = /obj/item/stack/tile/diamond
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/brass
 	name = "brass floor"
@@ -487,18 +490,18 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "clockwork_floor"
 	build_type = /obj/item/stack/tile/brass
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
-	icon = 'icons/turf/flooring/wood_vr.dmi'
+	icon = 'icons/turf/flooring/wood.dmi'
 	icon_base = "wood"
 	has_damage_range = 6
 	damage_temperature = T0C+200
 	descriptor = "planks"
 	build_type = /obj/item/stack/tile/wood
-	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+	flooring_flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER | TURF_MZ_ON_BREAK
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/wood1.ogg',
 		'sound/effects/footstep/wood2.ogg',
@@ -509,7 +512,6 @@ var/list/flooring_types
 /singleton/flooring/wood/sif
 	name = "alien wooden floor"
 	desc = "Polished alien wood planks."
-	icon = 'icons/turf/flooring/wood.dmi'
 	icon_base = "sifwood"
 	build_type = /obj/item/stack/tile/wood/sif
 
@@ -518,7 +520,7 @@ var/list/flooring_types
 	desc = "Heavily reinforced with steel rods."
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_base = "reinforced"
-	flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
+	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
 	build_type = /obj/item/stack/rods
 	build_cost = 2
 	build_time = 30
@@ -531,7 +533,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_base = "bcircuit"
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
 	can_paint = 1
 
 /singleton/flooring/reinforced/circuit/green
@@ -545,7 +547,7 @@ var/list/flooring_types
 	icon_base = "cult"
 	build_type = null
 	has_damage_range = 6
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
+	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
 
 /singleton/flooring/outdoors/lavaland
@@ -652,10 +654,10 @@ var/list/flooring_types
 /singleton/flooring/trap
 	name = "suspicious flooring"
 	desc = "There's something off about this tile."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon = 'icons/turf/flooring/plating.dmi'
 	icon_base = "plating"
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
+	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
 
 /singleton/flooring/wax
@@ -665,7 +667,7 @@ var/list/flooring_types
 	icon_base = "wax"
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/wax
-	flags = TURF_REMOVE_CROWBAR
+	flooring_flags = TURF_REMOVE_CROWBAR
 
 /singleton/flooring/honeycomb
 	name = "honeycomb floor"
@@ -675,4 +677,32 @@ var/list/flooring_types
 	has_damage_range = 6
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/honeycomb
-	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+	flooring_flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+
+/singleton/flooring/crystal
+	name = "crystal floor"
+	icon = 'icons/turf/flooring/crystal.dmi'
+	build_type = null
+	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
+	//color = "#00ffe1"
+
+/singleton/flooring/sandstone
+	name = "sandstone floor"
+	desc = "A tile made out of sand that has been compacted and hardened until it's nearly as dense as stone."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "sandstone"
+	build_type = /obj/item/stack/tile/floor/sandstone
+	flooring_flags = TURF_REMOVE_CROWBAR
+
+/singleton/flooring/bone
+	name = "bone floor"
+	desc = "A plate of solid bone etched into a subtle tiled pattern."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "bone"
+	build_type = null
+	flooring_flags = TURF_ACID_IMMUNE
+
+/singleton/flooring/bone/engraved
+	name = "engraved bone floor"
+	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
+	icon_base = "bonecarve"

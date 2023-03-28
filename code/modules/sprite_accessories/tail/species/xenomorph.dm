@@ -32,6 +32,7 @@
 	id = "tail_xeno_drone_color"
 	icon_state = "xenos_drone_tail_hc_s"
 	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/xenohunter
 	name = "xenomorph hunter tail"
@@ -43,6 +44,7 @@
 	id = "tail_xeno_hunter_color"
 	icon_state = "xenos_hunter_tail_hc_s"
 	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/xenoqueen
 	name = "xenomorph queen tail"
@@ -54,6 +56,7 @@
 	id = "tail_xeno_queen_color"
 	icon_state = "xenos_queen_tail_hc_s"
 	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/xenosentinel
 	name = "xenomorph sentinel tail"
@@ -65,3 +68,13 @@
 	id = "tail_xeno_sentinel_color"
 	icon_state = "xenos_sentinel_tail_hc_s"
 	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/special/xenotail_wag
+	name = "Xenomorph tail (Waggable)"
+	id = "tail_xeno_wag"
+	icon = "icons/mob/sprite_accessories/xeno_parts.dmi"
+	icon_state = "xenotail"
+	ani_state = "xenotail_w"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY

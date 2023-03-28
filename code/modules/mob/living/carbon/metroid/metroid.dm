@@ -74,7 +74,7 @@
 	var/core_removal_stage = 0 //For removing cores.
 
 /mob/living/carbon/slime/Initialize(mapload, colour = "grey")
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 	src.colour = colour
 	number = rand(1, 1000)
@@ -155,28 +155,25 @@
 /mob/living/carbon/slime/Process_Spacemove()
 	return 2
 
-/mob/living/carbon/slime/Stat()
-	..()
-
-	statpanel("Status")
-	stat(null, "Health: [round((health / getMaxHealth()) * 100)]%")
-	stat(null, "Intent: [a_intent]")
-
-	if (client.statpanel == "Status")
-		stat(null, "Nutrition: [nutrition]/[get_max_nutrition()]")
+/mob/living/carbon/slime/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
+		STATPANEL_DATA_LINE("Intent: [a_intent]")
+		STATPANEL_DATA_LINE("Nutrition: [nutrition]/[get_max_nutrition()]")
 		if(amount_grown >= 10)
 			if(is_adult)
-				stat(null, "You can reproduce!")
+				STATPANEL_DATA_LINE("You can reproduce!")
 			else
-				stat(null, "You can evolve!")
-
-		stat(null,"Power Level: [powerlevel]")
+				STATPANEL_DATA_LINE("You can evolve!")
+		STATPANEL_DATA_LINE("Power Level: [powerlevel]")
 
 /mob/living/carbon/slime/adjustFireLoss(var/amount,var/include_robo)
 	..(-abs(amount)) // Heals them
 	return
 
-/mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/carbon/slime/bullet_act(var/obj/projectile/Proj)
 	attacked += 10
 	..(Proj)
 	return 0
@@ -212,7 +209,7 @@
 /mob/living/carbon/slime/attack_ui(slot)
 	return
 
-/mob/living/carbon/slime/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/carbon/slime/attack_hand(mob/user, list/params)
 
 	..()
 
@@ -315,16 +312,16 @@
 	return
 
 /mob/living/carbon/slime/attackby(obj/item/W, mob/user)
-	if(W.force > 0)
+	if(W.damage_force > 0)
 		attacked += 10
 		if(prob(25))
 			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0
-	if(W.force >= 3)
+	if(W.damage_force >= 3)
 		if(is_adult)
-			if(prob(5 + round(W.force/2)))
+			if(prob(5 + round(W.damage_force/2)))
 				if(Victim || Target)
 					if(prob(80) && !client)
 						Discipline++
@@ -341,14 +338,14 @@
 						if(user)
 							canmove = 0
 							step_away(src, user)
-							if(prob(25 + W.force))
+							if(prob(25 + W.damage_force))
 								sleep(2)
 								if(user)
 									step_away(src, user)
 								canmove = 1
 
 		else
-			if(prob(10 + W.force*2))
+			if(prob(10 + W.damage_force*2))
 				if(Victim || Target)
 					if(prob(80) && !client)
 						Discipline++
@@ -366,7 +363,7 @@
 						if(user)
 							canmove = 0
 							step_away(src, user)
-							if(prob(25 + W.force*4))
+							if(prob(25 + W.damage_force*4))
 								sleep(2)
 								if(user)
 									step_away(src, user)

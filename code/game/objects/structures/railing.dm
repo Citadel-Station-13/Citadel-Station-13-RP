@@ -4,7 +4,7 @@
 	desc = "A standard steel railing.  Play stupid games, win stupid prizes."
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
 	climbable = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE
@@ -26,7 +26,7 @@
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 
@@ -77,62 +77,63 @@
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 32
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 2
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
 	for (var/obj/structure/railing/R in get_step(src, Lturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 16
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 	for (var/obj/structure/railing/R in get_step(src, Rturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 1
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
 	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 64
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 4
 			if (UpdateNeighbors)
-				R.update_icon()
+				R.update_icon(UpdateNeighbors = FALSE)
 
-/obj/structure/railing/update_icon(UpdateNeighgors = TRUE)
-	NeighborsCheck(UpdateNeighgors)
+/obj/structure/railing/update_icon(updates, UpdateNeighbors = TRUE)
+	NeighborsCheck(UpdateNeighbors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
 	cut_overlays()
-	var/list/overlays_to_add = list()
 
 	if (!check || !anchored)//|| !anchored
 		icon_state = "railing0"
 	else
 		icon_state = "railing1"
 		if (check & 32)
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "corneroverlay")
+			add_overlay("corneroverlay")
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
+			add_overlay("frontoverlay_l")
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
+			var/list/overlays_to_add = list(
+				"frontoverlay_r"
+			)
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+						overlays_to_add += image('icons/obj/railing.dmi', "mcorneroverlay", pixel_y = 32)
 
-	add_overlay(overlays_to_add)
+			add_overlay(overlays_to_add)
 
 /obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"
@@ -258,7 +259,7 @@
 
 	else
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		take_damage(W.force)
+		take_damage(W.damage_force)
 		user.setClickCooldown(user.get_attack_speed(W))
 
 	return ..()
@@ -294,9 +295,9 @@
 		return
 
 	if(get_turf(user) == get_turf(src))
-		usr.forceMove(get_step(src, src.dir))
+		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 	else
-		usr.forceMove(get_turf(src))
+		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	if(!anchored)	take_damage(maxhealth) // Fatboy

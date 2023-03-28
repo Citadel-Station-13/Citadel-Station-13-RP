@@ -254,7 +254,10 @@
 	. = ..()
 	name += spellname
 
-/obj/item/spellbook/oneuse/attack_self(mob/user as mob)
+/obj/item/spellbook/oneuse/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/spell/S = new spell(user)
 	for(var/spell/knownspell in user.spell_list)
 		if(knownspell.type == S.type)
@@ -346,11 +349,11 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs -= V
+			remove_verb(user, V)
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in stored_swap.mind.special_verbs)
-			stored_swap.verbs -= V
+			remove_verb(stored_swap, V)
 
 	var/mob/observer/dead/ghost = stored_swap.ghostize(0)
 	ghost.spell_list = stored_swap.spell_list
@@ -360,7 +363,7 @@
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
 	ghost.mind.transfer_to(user)
 	user.key = ghost.key
@@ -368,7 +371,7 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
 	to_chat(stored_swap, "<span class='warning'>You're suddenly somewhere else... and someone else?!</span>")
 	to_chat(user, "<span class='warning'>Suddenly you're staring at [src] again... where are you, who are you?!</span>")
@@ -409,7 +412,7 @@
 		to_chat(user, "<font size='15' color='red'><b>HOR-SIE HAS RISEN</b></font>")
 		var/obj/item/clothing/mask/horsehead/magichead = new /obj/item/clothing/mask/horsehead
 		ADD_TRAIT(magichead, TRAIT_ITEM_NODROP, MAGIC_TRAIT)
-		magichead.flags_inv = null	//so you can still see their face
+		magichead.inv_hide_flags = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
 		user.drop_item_to_ground(user.wear_mask, INV_OP_FORCE)
 		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)

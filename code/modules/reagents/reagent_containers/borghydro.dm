@@ -39,7 +39,7 @@
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = SSchemistry.chemical_reagents[T]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[T]
 		reagent_names += R.name
 
 	START_PROCESSING(SSobj, src)
@@ -62,15 +62,16 @@
 					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
 	return 1
 
-/obj/item/reagent_containers/borghypo/attack(var/mob/living/M, var/mob/user)
-	if(!istype(M))
+/obj/item/reagent_containers/borghypo/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
 		to_chat(user, "<span class='warning'>The injector is empty.</span>")
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = L
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
@@ -82,19 +83,21 @@
 			return
 		*/
 
-	if(M.can_inject(user, 1, ignore_thickness = bypass_protection))
-		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
-		M.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+	if(L.can_inject(user, 1, ignore_thickness = bypass_protection))
+		to_chat(user, "<span class='notice'>You inject [L] with the injector.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
-		if(M.reagents)
+		if(L.reagents)
 			var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])
-			M.reagents.add_reagent(reagent_ids[mode], t)
+			L.reagents.add_reagent(reagent_ids[mode], t)
 			reagent_volumes[reagent_ids[mode]] -= t
-			add_attack_logs(user, M, "Borg injected with [reagent_ids[mode]]")
+			add_attack_logs(user, L, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
-	return
 
-/obj/item/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
+/obj/item/reagent_containers/borghypo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //Change the mode
 	var/t = ""
 	for(var/i = 1 to reagent_ids.len)
 		if(t)
@@ -114,11 +117,11 @@
 		if(t)
 			playsound(src, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
-			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+			var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
-	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+	var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 	. = ..()
 	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 
@@ -175,7 +178,7 @@
 		"whiskey",
 		"wine")
 
-/obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
+/obj/item/reagent_containers/borghypo/service/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return
 
 /obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)
@@ -189,7 +192,7 @@
 		to_chat(user, "<span class='notice'>[src] is out of this reagent, give it some time to refill.</span>")
 		return
 
-	if(!target.reagents.get_free_space())
+	if(!target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return
 

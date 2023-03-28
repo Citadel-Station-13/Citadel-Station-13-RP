@@ -46,7 +46,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -63,15 +63,15 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura/strong)
 
-/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = P.damage_type
 		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-		var/armorcheck = run_armor_check(null, P.check_armour)
-		var/soakedcheck = get_armor_soak(null, P.check_armour)
-		if(!(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)))
+		var/armorcheck = run_armor_check(null, P.damage_flag)
+		var/soakedcheck = get_armor_soak(null, P.damage_flag)
+		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
 			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
@@ -125,7 +125,7 @@
 	icon_scale_y = 2
 	var/energy = 0
 	var/max_energy = 1000
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 60,
 				"bullet" = 60,
 				"laser" = 60,
@@ -138,7 +138,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \

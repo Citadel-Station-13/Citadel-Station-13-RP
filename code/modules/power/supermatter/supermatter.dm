@@ -364,7 +364,7 @@
 	return 1
 
 
-/obj/machinery/power/supermatter/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/power/supermatter/bullet_act(var/obj/projectile/Proj)
 	var/turf/L = loc
 	if(!istype(L))		// We don't run process() when we are in space
 		return 0	// This stops people from being able to really power up the supermatter
@@ -373,7 +373,7 @@
 	var/added_energy
 	var/added_damage
 	var/proj_damage = Proj.get_structure_damage()
-	if(istype(Proj, /obj/item/projectile/beam))
+	if(istype(Proj, /obj/projectile/beam))
 		added_energy = proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
 		power += added_energy
 	else
@@ -393,7 +393,7 @@
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/power/supermatter/attack_hand(mob/user as mob)
+/obj/machinery/power/supermatter/attack_hand(mob/user, list/params)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\

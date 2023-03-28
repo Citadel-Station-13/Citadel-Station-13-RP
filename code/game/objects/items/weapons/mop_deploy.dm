@@ -2,7 +2,7 @@
 	name = "mop"
 	desc = "Deployable mop."
 	icon_state = "mop"
-	force = 3
+	damage_force = 3
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
@@ -52,7 +52,10 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/mop_deploy/attack_self(mob/user as mob)
+/obj/item/mop_deploy/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	qdel(src)
 
 /obj/item/mop_deploy/dropped(mob/user, flags, atom/newLoc)

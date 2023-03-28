@@ -45,7 +45,7 @@
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
-	force = 5
+	damage_force = 5
 	preserve_item = 1
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
@@ -66,7 +66,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
-	var/projectile_type = /obj/item/projectile	//On ballistics, only used to check for the cham gun
+	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	var/obj/item/ammo_casing/chambered = null
 
@@ -140,9 +140,9 @@
 	if(dna_lock)
 		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
-		verbs -= /obj/item/gun/verb/remove_dna
-		verbs -= /obj/item/gun/verb/give_dna
-		verbs -= /obj/item/gun/verb/allow_dna
+		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -249,17 +249,22 @@
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		handle_suicide(user)
-	else if(user.a_intent == INTENT_HARM) //point blank shooting
-		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
+/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/A = target
+	if(!istype(A))
+		return ..()
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+			handle_suicide(user)
+			return
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else
 			Fire(A, user, pointblank=1)
-	else
-		return ..() //Pistolwhippin'
+			return
+	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
@@ -271,9 +276,9 @@
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
 		attached_lock = A
 		dna_lock = 1
-		verbs += /obj/item/gun/verb/remove_dna
-		verbs += /obj/item/gun/verb/give_dna
-		verbs += /obj/item/gun/verb/allow_dna
+		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		add_obj_verb(src, /obj/item/gun/verb/give_dna)
+		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		return
 
 	if(A.is_screwdriver())
@@ -285,9 +290,9 @@
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
-				verbs -= /obj/item/gun/verb/remove_dna
-				verbs -= /obj/item/gun/verb/give_dna
-				verbs -= /obj/item/gun/verb/allow_dna
+				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 
@@ -458,8 +463,8 @@
 			handle_click_empty()
 			break
 
-		if(istype(projectile, /obj/item/projectile))
-			var/obj/item/projectile/P = projectile
+		if(istype(projectile, /obj/projectile))
+			var/obj/projectile/P = projectile
 
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
@@ -592,7 +597,7 @@
 	update_icon()
 
 /obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -613,7 +618,7 @@
 	P.damage *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -647,7 +652,7 @@
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
 
@@ -666,7 +671,7 @@
 
 	return launched
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
+/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
@@ -693,11 +698,11 @@
 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
 		mouthshoot = 0
 		return
-	var/obj/item/projectile/in_chamber = consume_next_projectile()
+	var/obj/projectile/in_chamber = consume_next_projectile()
 	if (istype(in_chamber))
 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
 		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/item/projectile/beam/lasertag))
+		if(istype(in_chamber, /obj/projectile/beam/lasertag))
 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 			mouthshoot = 0
 			return
@@ -765,6 +770,9 @@
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch_firemodes(user)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
@@ -782,7 +790,7 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
-	if(!(item_flags & IN_INVENTORY))
+	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 

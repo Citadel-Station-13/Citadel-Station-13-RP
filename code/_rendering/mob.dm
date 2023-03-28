@@ -11,7 +11,6 @@
 		client.CreateParallax()
 	else
 		client.parallax_holder.Reset(force = TRUE)
-
 	reload_fullscreen()
 	client.update_clickcatcher()
 	INVOKE_ASYNC(client, /client/proc/init_viewport_blocking)

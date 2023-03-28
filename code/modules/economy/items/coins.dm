@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"
 	icon_state = "coin"
-	force = 0.0
+	damage_force = 0.0
 	throw_force = 0.0
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
@@ -103,7 +103,10 @@
 		to_chat(user, "<font color=#4F49AF>You detach the string from the coin.</font>")
 	else ..()
 
-/obj/item/coin/attack_self(mob/user as mob)
+/obj/item/coin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/result = rand(1, sides)
 	var/comment = ""
 	if(result == 1)

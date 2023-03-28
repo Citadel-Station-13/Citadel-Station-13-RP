@@ -32,7 +32,7 @@ var/list/flooring_cache = list()
 				flooring_override = icon_state
 
 		// Apply edges, corners, and inner corners.
-		if(flooring.flags & TURF_HAS_EDGES)
+		if(flooring.flooring_flags & TURF_HAS_EDGES)
 			var/has_border = 0
 			for(var/step_dir in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(src, step_dir)
@@ -51,7 +51,7 @@ var/list/flooring_cache = list()
 			if((has_border & SOUTHWEST) == SOUTHWEST)
 				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHWEST]", "[flooring.icon_base]_edges", SOUTHWEST))
 
-			if(flooring.flags & TURF_HAS_CORNERS)
+			if(flooring.flooring_flags & TURF_HAS_CORNERS)
 				//Like above but checking for NO similar bits rather than both similar bits.
 				if((has_border & NORTHEAST) == 0) //Are connected NORTH and EAST
 					var/turf/simulated/floor/T = get_step(src, NORTHEAST)
@@ -69,9 +69,9 @@ var/list/flooring_cache = list()
 					var/turf/simulated/floor/T = get_step(src, SOUTHWEST)
 					if(!flooring.test_link(src, T))
 						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHWEST]", "[flooring.icon_base]_corners", SOUTHWEST))
-		if(!isnull(broken) && (flooring.flags & TURF_CAN_BREAK))
+		if(!isnull(broken) && (flooring.flooring_flags & TURF_CAN_BREAK))
 			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-broken-[broken]","broken[broken]"))
-		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
+		if(!isnull(burnt) && (flooring.flooring_flags & TURF_CAN_BURN))
 			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","burned[burnt]"))
 	else
 		// no flooring - just handle plating stuff
@@ -123,8 +123,8 @@ var/list/flooring_cache = list()
 		actual = state
 	else if("[state]-edge" in states)
 		actual = "[state]-edge"
-	var/image/I = image('icons/turf/outdoors_edge.dmi', icon_state = actual, layer = ABOVE_TURF_LAYER, dir = turn(dir, 180))
-	I.plane = FLOAT_PLANE
+	var/image/I = image('icons/turf/outdoors_edge.dmi', icon_state = actual, layer = FLOOR_DECAL_LAYER, dir = turn(dir, 180))
+	// I.layer = flooring.decal_layer
 	switch(dir)
 		if(NORTH)
 			I.pixel_y = 32

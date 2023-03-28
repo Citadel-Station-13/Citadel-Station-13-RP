@@ -87,7 +87,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		mybag.attackby(I, user)
 
 
-/obj/structure/janitorialcart/attack_hand(mob/user)
+/obj/structure/janitorialcart/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 	return
 
@@ -208,7 +208,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		to_chat(user, "<span class='notice'>You hook the trashbag onto the [callme].</span>")
 		mybag = I
 
-/obj/structure/bed/chair/janicart/attack_hand(mob/user)
+/obj/structure/bed/chair/janicart/attack_hand(mob/user, list/params)
 	if(mybag)
 		user.grab_item_from_interacted_with(mybag, src)
 		mybag = null
@@ -277,7 +277,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_x = -13
 					L.pixel_y = 7
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs())
 		if(prob(85))
 			var/mob/living/L = pick(buckled_mobs)
