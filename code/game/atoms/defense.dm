@@ -7,7 +7,7 @@
 #warn throw_impact hook
 #warn melee_object_hit hook
 #warn ex_act hook - objs / turfs only
-#warn impact sounds...
+#warn impact sounds...world
 
 //? Damage API
 
@@ -30,6 +30,18 @@
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
 	#warn how to even deal with this?
+
+/**
+ * gets hitsound override. return a value to be fed into playsound, or null for default.
+ *
+ * @params
+ * * damage_type - damage type like brute / burn / etc
+ * * damage_mode - damage mode for piercing / whatnot
+ * * attack_type - attack type enum like melee / projectile / thrown / unarmed / etc
+ * * weapon - attacking /obj/item for melee / thrown, /obj/projectile for ranged, /mob for unarmed
+ */
+/atom/proc/hitsound_query(damage_type, damage_mode, attack_type, datum/weapon)
+	return null // default
 
 //? Direct Integrity
 
