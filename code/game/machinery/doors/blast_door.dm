@@ -156,7 +156,7 @@
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
-					playsound(src.loc, hitsound, 100, 1)
+					playsound(src.loc, hit_sound, 100, 1)
 					take_damage(W.damage_force*0.35) //it's a blast door, it should take a while. -Luke
 				return
 
@@ -186,7 +186,7 @@
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 			else
 				user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
-				playsound(src.loc, hitsound, 100, 1)
+				playsound(src.loc, hit_sound, 100, 1)
 				take_damage(W.damage_force*0.15) //If the item isn't a weapon, let's make this take longer than usual to break it down.
 			return
 

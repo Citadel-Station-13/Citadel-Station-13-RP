@@ -238,7 +238,7 @@
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/doors/Doorglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	open_sound_powered = 'sound/machines/door/hall1o.ogg'
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	maxhealth = 300
@@ -308,7 +308,7 @@
 /obj/machinery/door/airlock/glass_command
 	name = "Command Airlock"
 	icon = 'icons/obj/doors/Doorcomglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -322,7 +322,7 @@
 /obj/machinery/door/airlock/glass_engineering
 	name = "Engineering Airlock"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -335,7 +335,7 @@
 /obj/machinery/door/airlock/glass_engineeringatmos
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Doorengatmoglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -348,7 +348,7 @@
 /obj/machinery/door/airlock/glass_security
 	name = "Security Airlock"
 	icon = 'icons/obj/doors/Doorsecglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -361,7 +361,7 @@
 /obj/machinery/door/airlock/glass_medical
 	name = "Medical Airlock"
 	icon = 'icons/obj/doors/Doormedglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -397,7 +397,7 @@
 /obj/machinery/door/airlock/glass_research
 	name = "Research Airlock"
 	icon = 'icons/obj/doors/Doorresearchglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -410,7 +410,7 @@
 /obj/machinery/door/airlock/glass_mining
 	name = "Mining Airlock"
 	icon = 'icons/obj/doors/Doorminingglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
@@ -423,7 +423,7 @@
 /obj/machinery/door/airlock/glass_atmos
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Dooratmoglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hit_sound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
