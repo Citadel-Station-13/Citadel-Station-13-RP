@@ -8,7 +8,7 @@
 "aq" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "aU" = (
 /obj/structure/fence{
@@ -21,6 +21,10 @@
 /obj/structure/fence/corner,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"aZ" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/sandstone,
+/area/class_m/outside)
 "bb" = (
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -28,18 +32,6 @@
 "be" = (
 /mob/living/simple_mob/animal/passive/fox,
 /turf/simulated/floor/outdoors/grass/classm,
-/area/class_m/outside)
-"bl" = (
-/obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "bn" = (
 /mob/living/simple_mob/animal/passive/cat,
@@ -242,7 +234,7 @@
 "iQ" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "jw" = (
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
@@ -384,7 +376,7 @@
 /area/class_m/outside)
 "lL" = (
 /obj/machinery/chem_master/condimaster,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "mb" = (
 /obj/structure/table/marble,
@@ -494,6 +486,10 @@
 "oc" = (
 /obj/item/ore,
 /turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
+"om" = (
+/obj/machinery/light,
+/turf/simulated/floor/outdoors/beach/sand/desert,
 /area/class_m/outside)
 "on" = (
 /obj/structure/table/woodentable,
@@ -642,7 +638,7 @@
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/food/drinks/shaker,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "rg" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -761,7 +757,7 @@
 /obj/machinery/microwave{
 	pixel_y = 6
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "uh" = (
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -913,7 +909,7 @@
 "xX" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "yg" = (
 /turf/simulated/floor/tiled/classm,
@@ -1014,7 +1010,7 @@
 	pixel_x = 8;
 	pixel_y = 16
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "Ag" = (
 /obj/effect/overlay/palmtree_r,
@@ -1047,7 +1043,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "AB" = (
 /obj/structure/railing{
@@ -1308,13 +1304,18 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Fj" = (
-/obj/structure/fence/end,
+/obj/structure/fence/end{
+	pass_flags_self = 481
+	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/class_m/outside)
 "Fn" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	pass_flags_self = 481
+	},
 /obj/structure/fence/end{
-	dir = 1
+	dir = 1;
+	pass_flags_self = 481
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/class_m/outside)
@@ -1370,7 +1371,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "Gp" = (
 /obj/structure/railing{
@@ -1384,16 +1385,6 @@
 /turf/simulated/floor/water/beach/corner{
 	dir = 4
 	},
-/area/class_m/outside)
-"GC" = (
-/obj/machinery/vending/fishing,
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "GE" = (
 /obj/structure/railing{
@@ -1564,7 +1555,7 @@
 	pixel_x = -6;
 	pixel_y = 9
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "Jh" = (
 /obj/machinery/vending/coffee,
@@ -1575,6 +1566,9 @@
 /area/class_m/inside)
 "Ji" = (
 /turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
+"Jl" = (
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "Jp" = (
 /turf/simulated/floor/water/beach{
@@ -1640,6 +1634,10 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"Kw" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/sandstone,
+/area/class_m/outside)
 "KC" = (
 /obj/machinery/door/airlock{
 	id_tag = "room2";
@@ -2133,6 +2131,12 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"Vh" = (
+/obj/structure/fence{
+	pass_flags_self = 481
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert,
+/area/class_m/outside)
 "Vx" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -2155,7 +2159,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "VU" = (
 /obj/machinery/door/airlock/glass,
@@ -2375,19 +2379,19 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 157
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "ZV" = (
 /obj/machinery/door/window/westright{
 	name = "Self-Service Bar"
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 "ZX" = (
 /obj/machinery/vending/boozeomat{
 	req_access = null
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/sandstone,
 /area/class_m/outside)
 
 (1,1,1) = {"
@@ -19401,8 +19405,8 @@ tF
 Lp
 Lp
 Lp
-Lp
-GC
+om
+Gl
 Lp
 oE
 Rq
@@ -19983,8 +19987,8 @@ tF
 tF
 Lp
 Lp
-Lp
-bl
+om
+VT
 Lp
 oE
 Rq
@@ -20574,8 +20578,8 @@ Lp
 Lp
 ZL
 Fn
-jL
-jL
+Vh
+Vh
 Fj
 ZL
 Lp
@@ -20958,7 +20962,7 @@ Jg
 Ac
 rb
 ZV
-Rq
+aZ
 oE
 Lp
 Lp
@@ -21149,9 +21153,9 @@ tF
 Lp
 Ee
 aq
-Lp
-Lp
-Lp
+Jl
+Jl
+Jl
 ZU
 oE
 Lp
@@ -21343,10 +21347,10 @@ Lp
 Lp
 Ee
 iQ
-Lp
-Lp
-oE
-Rq
+Jl
+Jl
+Kw
+aZ
 oE
 Lp
 Lp
@@ -21537,9 +21541,9 @@ Lp
 Lp
 Ee
 xX
-Lp
-Lp
-Lp
+Jl
+Jl
+Jl
 ZU
 oE
 ZL
@@ -21731,10 +21735,10 @@ Lp
 Lp
 Ee
 ZX
-Lp
-Lp
-oE
-Rq
+Jl
+Jl
+Kw
+aZ
 oE
 Lp
 Lp
@@ -21925,9 +21929,9 @@ tF
 Lp
 Ee
 lL
-Lp
-Lp
-Lp
+Jl
+Jl
+Jl
 ZU
 oE
 Lp
@@ -22119,10 +22123,10 @@ tF
 Lp
 Lp
 ud
-Lp
-Lp
-Lp
-Rq
+Jl
+Jl
+Jl
+aZ
 oE
 Lp
 Lp
