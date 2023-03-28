@@ -148,7 +148,7 @@
 	icon_state = "secure"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
 	max_w_class = ITEMSIZE_NORMAL
@@ -190,7 +190,7 @@
 	icon_state = "securev"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
-	force = 0
+	damage_force = 0
 	throw_speed = 1
 	throw_range = 4
 
@@ -205,7 +205,7 @@
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	force = 8.0
+	damage_force = 8.0
 	w_class = ITEMSIZE_NO_CONTAINER
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
 	anchored = 1.0

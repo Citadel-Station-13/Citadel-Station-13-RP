@@ -9,7 +9,7 @@
 	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
-	force = 6
+	damage_force = 6
 	w_class = ITEMSIZE_TINY
 	throw_force = 5
 	throw_speed = 3
@@ -142,7 +142,7 @@
 	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	throw_speed = 2

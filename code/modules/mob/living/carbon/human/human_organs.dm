@@ -149,7 +149,7 @@
 			continue
 
 		if((E.is_broken() || E.is_dislocated()) && !E.splinted)
-			switch(E.body_part)
+			switch(E.body_part_flags)
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue
@@ -163,7 +163,7 @@
 			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [E.name]!")
 
 		else if(E.is_malfunctioning())
-			switch(E.body_part)
+			switch(E.body_part_flags)
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue

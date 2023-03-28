@@ -214,5 +214,5 @@
 	if(holder && holder.wearer)
 		smoke.set_up(10, 0, holder.loc)
 		for(var/i = 1 to smoke_strength)
-			smoke.start(272727)
+			smoke.start(2)
 		holder.wearer.ash()

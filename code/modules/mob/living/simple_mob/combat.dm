@@ -119,7 +119,7 @@
 
 	face_atom(A)
 
-	var/obj/item/projectile/P = new projectiletype(src.loc)
+	var/obj/projectile/P = new projectiletype(src.loc)
 	if(!P)
 		return
 

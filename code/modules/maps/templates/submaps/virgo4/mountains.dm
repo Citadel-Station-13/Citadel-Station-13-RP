@@ -10,7 +10,7 @@
 /datum/map_template/submap/level_specific/mountains
 	name = "Mountain Content"
 	desc = "Don't dig too deep!"
-	prefix = "_maps/submaps/mountains/"
+	prefix = "maps/submaps/mountains/"
 
 // 'Normal' templates get used on the bottom half, and should be safer.
 /datum/map_template/submap/level_specific/mountains/normal

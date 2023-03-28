@@ -4,7 +4,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	var/net_type = /obj/effect/energy_net
 
 /obj/item/energy_net/dropped(mob/user, flags, atom/newLoc)

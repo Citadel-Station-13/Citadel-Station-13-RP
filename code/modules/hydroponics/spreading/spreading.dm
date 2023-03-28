@@ -246,8 +246,8 @@
 		sampled = 1
 	else
 		..()
-		if(W.force)
-			health -= W.force
+		if(W.damage_force)
+			health -= W.damage_force
 	check_health()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
