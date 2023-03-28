@@ -33,7 +33,7 @@
 		if(detonator)
 //				detonator.loc=src.loc
 			detonator.detached()
-			usr.put_in_hands(detonator)
+			usr.put_in_hands_or_drop(detonator)
 			detonator=null
 			det_time = null
 			stage=0
@@ -42,7 +42,7 @@
 			for(var/obj/B in beakers)
 				if(istype(B))
 					beakers -= B
-					user.put_in_hands(B)
+					user.put_in_hands_or_drop(B)
 		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 	if(stage > 1 && !active && clown_check(user))
 		to_chat(user, "<span class='warning'>You prime \the [name]!</span>")
