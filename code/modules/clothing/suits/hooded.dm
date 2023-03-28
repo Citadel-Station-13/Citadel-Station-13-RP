@@ -668,3 +668,9 @@
 					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
 					return FALSE
 	return TRUE
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield
+	name = "experimental plate carrier"
+	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)

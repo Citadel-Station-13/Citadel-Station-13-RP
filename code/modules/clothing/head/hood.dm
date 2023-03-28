@@ -253,3 +253,14 @@
 	clothing_flags = THICKMATERIAL
 	inv_hide_flags = BLOCKHAIR
 	siemens_coefficient = 0.6
+
+/obj/item/clothing/head/hood/covertcarrier/blueshield
+	name = "experimental retractable helmet"
+	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection.."
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "helmet"
+	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	clothing_flags = THICKMATERIAL
+	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	siemens_coefficient = 1
