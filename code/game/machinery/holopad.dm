@@ -329,8 +329,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * makes a new call / rings a holopad
  */
 /obj/machinery/holopad/proc/make_call(obj/machinery/holopad/other)
+	if(other == src)
+		return FALSE
 	if(length(incoming_calls))
 		return FALSE // already being called / connected
+	if(!isnull(outgoing_call))
+		return FALSE // already calling someone
 	for(var/datum/holocall/holocall as anything in (other.ringing_calls | other.incoming_calls))
 		if(holocall.source == src)
 			return FALSE
@@ -368,7 +372,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/ui_call_data()
 	. = list()
 	// it's very important wet set the values properly!
-	if(outgoing_call_connected())
+	if(outgoing_call_exists())
 		// SOURCE MODE
 		var/list/connected = list()
 		if(outgoing_call.connected)
@@ -878,13 +882,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /datum/holocall/proc/connect()
 	connected = TRUE
-	destination.incoming_calls += src
-	destination.ringing_calls -= src
+	LAZYADD(destination.incoming_calls, src)
+	LAZYREMOVE(destination.ringing_calls, src)
 
 /datum/holocall/proc/register()
 	ASSERT(isnull(source.outgoing_call))
 	source.outgoing_call = src
-	destination.ringing_calls += src
+	LAZYADD(destination.ringing_calls, src)
 	cross_sector = get_overmap_sector(source) != get_overmap_sector(destination)
 
 /datum/holocall/proc/cleanup()
@@ -893,8 +897,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(source.outgoing_call == src)
 		source.outgoing_call = null
 	source = null
-	destination?.incoming_calls -= src
-	destination?.ringing_calls -= src
+	LAZYREMOVE(destination.incoming_calls, src)
+	LAZYREMOVE(destination.ringing_calls, src)
 	destination = null
 
 /datum/holocall/proc/ring()

@@ -245,32 +245,29 @@ const HolopadRinging = (props, context) => {
   ));
 };
 
+const MISC_SECTOR = "Other";
+const MISC_CATEGORY = "Misc";
+
 const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
-  const padMap: Record<string, Record<string, Array<ReachableHolopad>>> = {};
-  data.connectivity.map((pad: ReachableHolopad) => {
-    let effectiveSector = pad.sector || "Other";
-    let effectiveCategory = pad.category || "Misc";
-    if (padMap[effectiveSector] === undefined) {
-      padMap[effectiveSector] = {};
-    }
-    if (padMap[effectiveSector][effectiveCategory] === undefined) {
-      padMap[effectiveSector][effectiveCategory] = new Array<ReachableHolopad>();
-    }
-    padMap[effectiveSector][effectiveCategory].push(pad);
-  });
+  const cats = {};
+  const sectors = {};
   const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
   const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
-  let effectiveCategory = (sector && Object.keys(padMap[sector]).length && (
-    Object.keys(padMap[sector]).length === 1 ? Object.keys(padMap[sector])[0] : category
-  ));
+  data.connectivity.forEach((pad: ReachableHolopad) => {
+    let effectiveSector = pad.sector || MISC_SECTOR;
+    sectors[effectiveSector] = 1;
+    if (effectiveSector === sector) {
+      cats[pad.category || MISC_CATEGORY] = 1;
+    }
+  });
   return (
     <Stack>
       <Stack.Item width="20%">
         <Box height="100%">
           <Tabs vertical>
             {
-              Object.keys(padMap).sort((a, b) => (a.localeCompare(b))).map((key: string) => (
+              Object.keys(sectors).sort((a, b) => (a.localeCompare(b))).map((key: string) => (
                 <Tabs.Tab
                   selected={sector === key}
                   key={key}
@@ -284,40 +281,41 @@ const HolopadDirectory = (props, context) => {
       </Stack.Item>
       <Stack.Item width="20%">
         <Box height="100%">
-          {
-            sector && !!Object.keys(padMap[sector]).length && (
-              <Tabs vertical>
-                {Object.keys(padMap[sector]).sort((a, b) => (a.localeCompare(b))).map((cat) => (
-                  <Tabs.Tab
-                    key={cat}
-                    selected={cat === category}
-                    onClick={() => setCategory(cat)}>
-                    {cat}
-                  </Tabs.Tab>
-                ))}
-              </Tabs>
-            )
-          }
+          <Tabs vertical>
+            {Object.keys(cats).sort((a, b) => (a.localeCompare(b))).map((cat) => (
+              <Tabs.Tab
+                key={cat}
+                selected={cat === category}
+                onClick={() => setCategory(cat)}>
+                {cat}
+              </Tabs.Tab>
+            ))}
+          </Tabs>
         </Box>
       </Stack.Item>
       <Stack.Item width="60%">
-        <Box height="100%">
-          {(sector && effectiveCategory && padMap[sector][effectiveCategory].map((pad) => (
-            <Stack
-              key={pad.id}>
-              <Stack.Item grow={1}>
-                {pad.name}
+        <Section height="100%">
+          <Stack vertical>
+            {(data.connectivity.filter((pad) => (
+              pad.category? (pad.category === category) : (category === MISC_CATEGORY)
+              && pad.sector? (pad.sector === sector) : (sector === MISC_SECTOR)
+            )).map((pad) => (
+              <Stack.Item key={pad.id}>
+                <Stack>
+                  <Stack.Item grow={1}>
+                    {pad.name}
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button.Confirm
+                      fluid
+                      content="Call"
+                      onClick={() => act('call', { id: pad.id })} />
+                  </Stack.Item>
+                </Stack>
               </Stack.Item>
-              <Stack.Item>
-                <Button.Confirm
-                  fluid
-                  content="Call"
-                  color="transprent"
-                  onClick={() => act('call', { id: pad.id })} />
-              </Stack.Item>
-            </Stack>
-          ))) || undefined}
-        </Box>
+            ))) || undefined}
+          </Stack>
+        </Section>
       </Stack.Item>
     </Stack>
   );
